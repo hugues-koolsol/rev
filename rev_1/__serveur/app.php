@@ -1,0 +1,227 @@
+<?php
+require_once('__definitions.php');
+$donnees_retournees=array(
+    /*statut de la réponse, à priori faux*/
+    __xst => __xer,
+    /*utilisateur connecté, à priori faux*/
+    __x_authentifie => __xer,
+    /*signaux d'erreur */
+    __x_signaux => array(
+            __xer => array(),
+            __xsu => array(),
+            __xal => array(),
+            __xif => array(),
+            __xdv => array()
+        ),
+    /*action*/
+    __x_action => '',
+    /*page*/
+    __x_page => '',
+    /*données retournées au client */
+    __xva => array(),
+    /* fichier traitant le programme */
+    __x_fichier => '',
+    /* ligne dans le fichier */
+    __x_ligne => [],
+    /* numéro d'erreur absolu */
+    __xnu => 0,
+    /* boutons */
+    __xbo => '',
+    /* boutons */
+    __X_VERSION => ''
+);
+/*
+  =====================================================================================================================
+*/
+function obtenir_les_menus(){
+
+    $t=array();
+    
+    if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
+
+        /* 10 3 11*/
+        /* 10 '<div class="hug_bouton" data-hug_click="c_divers1.ajoute_a_valeur_session(variable(compteur_session_php1),valeur(-1))" title="">👎-1</div>',*/
+        /* 11 '<div class="hug_bouton" data-hug_click="c_divers1.ajoute_a_valeur_session(variable(compteur_session_php1),valeur(1))" title="">+1👍</div>',*/
+        $t[]='<div data-id_menu="20" class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99),indice_menu(10))" title="tâches">tâches</div>' . PHP_EOL;
+        $t[]='<div data-id_menu="50" class="hug_bouton" data-hug_click="c_rev_mat1.page1(),indice_menu(50),maj_interface2(modifier( id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_rev1\'))))" title="convertir un source rev en matrice">mat</div>';
+        $t[]='<div data-id_menu="51" class="hug_bouton" data-hug_click="c_rev_js1.page1(),indice_menu(51),maj_interface2(modifier( id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_js_rev1\'))))" title="js &lt;-&gt; rev">js</div>';
+        $t[]='<div data-id_menu="52" class="hug_bouton" data-hug_click="c_rev_html1.page1(),indice_menu(52),maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_html_rev1\'))))" title="html &lt;-&gt; rev">html</div>';
+        $t[]='<div data-id_menu="53" class="hug_bouton" data-hug_click="c_rev_php1.page1(),indice_menu(53),maj_interface2(modifier( id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_php_rev1\'))))" title="php &lt;-&gt; rev">php</div>';
+        $t[]='<div data-id_menu="54" class="hug_bouton" data-hug_click="c_rev_sql1.page1(),indice_menu(54),maj_interface2(modifier( id(vv_txtarea_sql_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_sql_rev1\'))))" title="sql &lt;-&gt; rev">sql</div>';
+        $t[]='<div data-id_menu="55" class="hug_bouton" data-hug_click="c_rev_css1.page1(),indice_menu(55),maj_interface2(modifier( id(vv_txtarea_css_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_css_rev1\'))))" title="css &lt;-&gt; rev">css</div>';
+        $t[]='<div data-id_menu="61" class="hug_bouton" data-hug_click="c_rev_texte1.page1(),indice_menu(61),maj_interface2(modifier( id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_texte_rev1\'))))" title="texte &lt;-&gt; rev">txt</div>';
+        $t[]='<div data-id_menu="56" class="hug_bouton" data-hug_click="c_projets1.page_projets_liste1(indice_menu(56))" title="projets">projets</div>' . PHP_EOL;
+        
+        if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
+
+            $t[]='<div data-id_menu="57" class="hug_bouton" data-hug_click="c_dossiers1.page_dossiers_liste1(indice_menu(57))" title="fichiers et dossiers">fido</div>' . PHP_EOL;
+            $t[]='<div data-id_menu="60" class="hug_bouton" data-hug_click="c_sources1.page_liste_des_sources1(indice_menu(60))" title="sources">sources</div>' . PHP_EOL;
+            $t[]='<div data-id_menu="58" class="hug_bouton" data-hug_click="c_bases1.page_liste_des_bases1(indice_menu(58))" title="bases de données">bases</div>' . PHP_EOL;
+            $t[]='<div data-id_menu="59" class="hug_bouton" data-hug_click="c_requetes1.page_liste_des_requetes1(indice_menu(59))" title="requêtes">requêtes</div>' . PHP_EOL;
+            $t[]='<div data-id_menu="62" class="hug_bouton" data-hug_click="c_revs1.page_liste_des_revs1(indice_menu(62))" title="sources">revs</div>' . PHP_EOL;
+
+        }
+
+        $t[]='<div data-id_menu="11" class="hug_bouton" data-hug_click="c_pages1.recupere_la_page_des_coordonnees(),indice_menu(11)" title="mes coordonnées"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -7  20 21"><g style="stroke:rgb(0, 0, 255);fill:transparent;stroke-width:1;"><circle cx="0" cy="0" r="6"></circle><path d=" M -8 11 C -6 6 6 6 8 11 "></path><circle cx="-2" cy="-1" r="1"></circle><circle cx="2" cy="-1" r="1"></circle><path d="M -2 2 C -3 4 3 4 2 2 "></path><path d="M 0 0 V 2 "></path><path d="M -3 -1   H -6    "></path><path d="M 3 -1   H 6    "></path><path d="M -1 -1 c 0 -1 2 -1 2 0 "></path></g></svg></div>';
+
+    }else{
+
+    }
+
+    $t[]='<div data-id_menu="3" class="hug_bouton" id="vv_bouton_aide" data-hug_click="c_pages1.recupere_la_page_d_aide()" title="aide et paramètres">
+                       <svg viewBox="-106 -100  213 200" style="transform:scale(1,1) translate(0px, 0px)"><path d=" M 100 0 C 100 0 79.7763 5.9784 79.7763 5.9784 C 79.7763 5.9784 77.9942 17.8017 77.9942 17.8017 C 77.9942 17.8017 95.5573 29.4755 95.5573 29.4755 C 95.5573 29.4755 90.0969 43.3884 90.0969 43.3884 C 90.0969 43.3884 69.282 40 69.282 40 C 69.282 40 62.5465 49.8792 62.5465 49.8792 C 62.5465 49.8792 73.3052 68.0173 73.3052 68.0173 C 73.3052 68.0173 62.349 78.1831 62.349 78.1831 C 62.349 78.1831 45.0656 66.0991 45.0656 66.0991 C 45.0656 66.0991 34.7107 72.0775 34.7107 72.0775 L 32.8729 50.3378  A 60.1854 60.4115 0 1 0 -25.1945 54.3907 L -23.5792 76.4455 C -26.0652 75.4525 -34.7107 72.0775 -34.7107 72.0775 C -34.7107 72.0775 -50 86.6025 -50 86.6025 C -50 86.6025 -62.349 78.1831 -62.349 78.1831 C -62.349 78.1831 -54.4138 58.6441 -54.4138 58.6441 C -54.4138 58.6441 -62.5465 49.8792 -62.5465 49.8792 C -62.5465 49.8792 -82.6239 56.332 -82.6239 56.332 C -82.6239 56.332 -90.0969 43.3884 -90.0969 43.3884 C -90.0969 43.3884 -74.4699 29.2273 -74.4699 29.2273 C -74.4699 29.2273 -77.9942 17.8017 -77.9942 17.8017 C -77.9942 17.8017 -98.8831 14.9042 -98.8831 14.9042 C -98.8831 14.9042 -100 0 -100 0 C -100 0 -79.7763 -5.9784 -79.7763 -5.9784 C -79.7763 -5.9784 -77.9942 -17.8017 -77.9942 -17.8017 C -77.9942 -17.8017 -95.5573 -29.4755 -95.5573 -29.4755 C -95.5573 -29.4755 -90.0969 -43.3884 -90.0969 -43.3884 C -90.0969 -43.3884 -69.282 -40 -69.282 -40 C -69.282 -40 -62.5465 -49.8792 -62.5465 -49.8792 C -62.5465 -49.8792 -73.3052 -68.0173 -73.3052 -68.0173 C -73.3052 -68.0173 -62.349 -78.1831 -62.349 -78.1831 C -62.349 -78.1831 -45.0656 -66.0991 -45.0656 -66.0991 C -45.0656 -66.0991 -34.7107 -72.0775 -34.7107 -72.0775 C -34.7107 -72.0775 -36.5341 -93.0874 -36.5341 -93.0874 C -36.5341 -93.0874 -22.2521 -97.4928 -22.2521 -97.4928 C -22.2521 -97.4928 -11.9234 -79.1065 -11.9234 -79.1065 C -11.9234 -79.1065 0 -80 0 -80 C 0 -80 7.473 -99.7204 7.473 -99.7204 C 7.473 -99.7204 22.2521 -97.4928 22.2521 -97.4928 C 22.2521 -97.4928 23.5804 -76.4458 23.5804 -76.4458 C 23.5804 -76.4458 34.7107 -72.0775 34.7107 -72.0775 C 34.7107 -72.0775 50 -86.6025 50 -86.6025 C 50 -86.6025 62.349 -78.1831 62.349 -78.1831 C 62.349 -78.1831 54.4138 -58.6441 54.4138 -58.6441 C 54.4138 -58.6441 62.5465 -49.8792 62.5465 -49.8792 C 62.5465 -49.8792 82.6239 -56.332 82.6239 -56.332 C 82.6239 -56.332 90.0969 -43.3884 90.0969 -43.3884 C 90.0969 -43.3884 74.4699 -29.2273 74.4699 -29.2273 C 74.4699 -29.2273 77.9942 -17.8017 77.9942 -17.8017 C 77.9942 -17.8017 98.8831 -14.9042 98.8831 -14.9042 C 98.8831 -14.9042 100 0 100 0 C 100 0 100 0 100 0" style="stroke-width:1;stroke:blue;fill:blue;" transform="rotate(4.3643 0 0 )"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -19.9035 0.0665 H -47.5914 C -47.5803 -34.716 -29.2323 -48.6369 0.1918 -48.597 C 36.6062 -48.6442 45.8185 -25.4943 45.5704 -0.0489 C 45.13423 14.3612 35.214 28.2112 19.5487 43.9057 C 10.4376 51.5727 10.8315 58.2471 10.8315 61.997  H -12.0032 C -12.1844 60.6516 -11.786 47.7718 -8.6172 42.8653 C -1.4916 31.7469 17.8786 11.5852 17.915 -0.0303 C 18.6014 -16.3637 12.0753 -24.5501 -0.7396 -23.9992 C -13.9158 -23.9741 -20.6076 -15.9549 -20.0506 -0.1851 M -12.881 74.4678 H 11.4458 L 7.5960 93.5628 H -7.4803 Z" style="stroke:forestgreen;fill:forestgreen;stroke-width:1;"></path></svg>
+                    </div>' . PHP_EOL;
+    
+    if(isset($_COOKIE[__X_CLE_APPLICATION])){
+
+        $tcok=json_decode($_COOKIE[__X_CLE_APPLICATION],true);
+        
+        if(isset($tcok['aspect'])
+           && isset($tcok['aspect']['utiliser_les_sockets'])
+           && $tcok['aspect']['utiliser_les_sockets'] === 1
+        ){
+
+            $t[]='<div data-id_menu="4" id="vv_etat_chausette" class="hug_bouton yy__x_signaux_0" data-hug_click="c_worker1.connecter_la_chausette()" title="état de la connexion" style="" >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="5 5  30 30"><path d=" M 5 25 L 25 5 L 16 19 L 35 15 L 15 35 L 24 21  z" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:yellow;fill:orange;stroke-width:1;"></path></svg>
+                        </div>' . PHP_EOL;
+
+        }
+
+
+    }
+
+    return $t;
+
+}
+
+if(is_file(REPERTOIRE_DU_SERVEUR . DIRECTORY_SEPARATOR . '__version.txt')){
+
+    $donnees_retournees[__X_VERSION]=@file_get_contents(REPERTOIRE_DU_SERVEUR . DIRECTORY_SEPARATOR . '__version.txt');
+
+}
+
+demarre_services($donnees_retournees);
+/*
+  =====================================================================================================================
+*/
+
+if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__obj])){
+
+    $donnees_recues=json_decode($_POST['__obj'],true);
+    
+    if(isset($donnees_recues[__x_action])){
+
+        $donnees_retournees[__x_action]=$donnees_recues[__x_action];
+        /*
+          =====================================================================================================
+          la première page est une exception
+          =====================================================================================================
+        */
+        
+        if(substr($donnees_recues[__x_action],0,34) === 'recuperation_de_la_premiere_page()'){
+
+            $mat=array();
+            /* la première page [F5 ou CTRL-F5] ou l'arrivée sur le site est une exception */
+            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_pages1.php');
+            $obj_pages=new c_pages1($donnees_retournees,$mat,$donnees_recues);
+            /* =============== */
+            /* à priori */
+            /* =============== */
+            $fonction_a_appeler='c_pages1.recupere_la_page_d_accueil()';
+            
+            if(isset($donnees_recues['__xva'])){
+
+                $href='';
+                
+                if(!is_string($donnees_recues['__xva'])){
+
+                    
+                    if(isset($donnees_recues['__xva']['href'])){
+
+                        $href=$donnees_recues['__xva']['href'];
+
+                    }
+
+
+                }else{
+
+                    $href=$donnees_recues['__xva'];
+                }
+
+                
+                if($href !== ''){
+
+                    $pos=strpos($href,'#');
+                    
+                    if($pos !== false){
+
+                        $nom_de_fonction=substr($href,$pos + 1);
+                        
+                        if(substr($nom_de_fonction,0,9) === 'c_pages1.'){
+
+                            $nom_de_fonction=substr($nom_de_fonction,9);
+
+                        }
+
+                        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nom_de_fonction , true ) . '</pre>' ; exit(0);*/
+                        $nom_de_fonction_sans_parentheses=substr($nom_de_fonction,0,strpos($nom_de_fonction,'('));
+                        
+                        if(method_exists($obj_pages,$nom_de_fonction_sans_parentheses)){
+
+                            /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nom_de_fonction , true ) . '</pre>' ; exit(0);*/
+                            $donnees_retournees['fonction_a_appeler']='c_pages1.' . $nom_de_fonction;
+                            $fonction_a_appeler='c_pages1.' . $nom_de_fonction;
+                            /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $fonction_a_appeler , true ) . '</pre>' ; exit(0);*/
+
+                        }
+
+
+                    }
+
+
+                }
+
+
+            }
+
+            /* $donnees_retournees[__x_signaux][__xdv][]=__LINE__ . '<pre>' . var_export($donnees_recues , true) . '</pre>';*/
+            $donnees_recues['fonction_a_appeler']=$fonction_a_appeler;
+            /*
+              on récupère les menus du haut et bas et un contenu qui est à priori ( voir plus haut ) recupere_la_page_d_accueil, 
+              et éventuellement la page d'accueil
+            */
+            $donnees_retournees[__xva][__xme]=$obj_pages->recupere_de_la_page_initiale($donnees_retournees,$mat,$donnees_recues);
+            $donnees_retournees[__xst]=__xsu;
+            
+            if(!isset($donnees_retournees[__xva]['redirection'])){
+
+                $donnees_retournees[__xva]['redirection']=$fonction_a_appeler;
+
+            }
+
+            $donnees_retournees[__xbo]=obtenir_les_menus();
+            /*
+              le __x_action a peut être été mis à jour , on force ici
+            */
+            $donnees_retournees[__x_action]='recuperation_de_la_premiere_page()';
+
+        }else{
+
+            /*
+              toutes les autres pages, commandes, fonctions .... sont traitées ici
+            */
+            $donnees_retournees[__x_ligne][]=__LINE__;
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( __LINE__ , true ) . '</pre>' ; exit(0);*/
+            traite_autre_fonction($donnees_recues,$donnees_retournees);
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( __LINE__ , true ) . '</pre>' ; exit(0);*/
+        }
+
+
+    }
+
+
+}
+
+header('Content-Type: application/json; charset=utf-8');
+echo json_encode($donnees_retournees,JSON_FORCE_OBJECT) ;
+exit(0);

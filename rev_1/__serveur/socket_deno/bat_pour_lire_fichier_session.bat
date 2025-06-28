@@ -1,0 +1,1 @@
+C:\\wamp64\bin\php\php8.3.6\php.exe lire_fichier_session.php %1

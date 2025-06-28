@@ -1,0 +1,10 @@
+/*mon css*/
+@-ms-viewport{width:device-width;}
+*,*::before,*::after{box-sizing:border-box;}
+html{
+   /*fond*/
+   background:linear-gradient(to bottom, #ECEFF1 0%, #DBDEE0 100%);
+   /*hauteur*/
+   min-height:100%;
+}
+@media print{a[href]:after{content:none;}@page{size:auto;margin-bottom:0;}}

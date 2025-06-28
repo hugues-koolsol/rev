@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <!-- 
+      blu blu
+      =============================================================================================================
+      exemple de programme html simple avec une redirection 
+      Il y a un outil qui génère un fichier rev  à partir d'un fichier html
+      Il y a un outil qui génère un fichier html à partir d'un fichier rev
+      =============================================================================================================
+    -->
+    <head>
+        <meta http-equiv="refresh" content="300; url='./__client/'" />
+        <meta charset="utf-8" />
+        <title>exemple de page html</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style type="text/css">
+h1{text-align:center;}</style>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    </head>
+    <body>
+        <!-- redirection vers la page d'accueil -->
+        <h1>racine de l'application</h1>
+        <p style="text-align:center;font-size:1.3rem;" id="phrase">Dans
+            <b>
+                <span id="decompte">300</span>
+            </b>secondes, vous serez
+            <b>redirigé automatiquement</b>
+            <br />vers la la page principale de l'application
+        </p>
+        <div style="text-align:center;">
+            <a style="max-width: fit-content;" href="__client/">y aller maintenant</a>
+        </div>
+<script type="text/javascript">
+//<![CDATA[
+//<source_javascript_rev>
+/*
+  =====================================================================================================================
+  programme javascript d'affichage de décompte 
+  =====================================================================================================================
+*/
+var decompte=300;
+var a=document.getElementsByTagName( 'meta' );
+if(a && a.length > 0){
+    for( var i=0 ; i < a.length ; i++ ){
+        if(a[i].getAttribute( 'http-equiv' ) && a[i].getAttribute( 'http-equiv' ) == "refresh" && a[i].getAttribute( 'content' )){
+            var contenu=a[i].getAttribute( 'content' );
+            /* content="300; url='./rev_1/'" */
+            if(contenu.indexOf( ';' ) >= 0){
+                var temps_en_secondes=contenu.substr( 0 , contenu.indexOf( ';' ) );
+                if(!isNaN( temps_en_secondes ) && !isNaN( parseFloat( temps_en_secondes ) )){
+                    decompte=parseInt( temps_en_secondes , 10 );
+                    document.getElementById( 'phrase' ).innerHTML='Dans <b><span id="decompte">' + temps_en_secondes + '</span></b> secondes, vous serez ' + '<b>redirigé automatiquement</b> ' + '<br />' + 'vers la la page principale de l\'application';
+                    break;
+                }
+            }
+        }
+    }
+}
+function maj_decompte(){
+    decompte--;
+    document.getElementById( 'decompte' ).innerHTML=decompte;
+    setTimeout( maj_decompte , 1000 );
+}
+setTimeout( maj_decompte , 1000 );
+//</source_javascript_rev>
+//]]>
+</script>
+
+    </body>
+</html>
