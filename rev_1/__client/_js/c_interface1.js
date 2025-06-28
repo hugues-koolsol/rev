@@ -1341,8 +1341,12 @@ class _c_interface1{
                     }
                 }
             }
+
             la_pile_des_messages={"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []};
         }
+        this.les_messages={"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []};
+        this.__m_rev1.globale_messages={"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []};
+        
         this.zone_d_edition_en_cours='';
         if(liste_des_messages !== ''){
             if(document.getElementById( 'vv_les_messages' ) === null){
