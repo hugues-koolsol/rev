@@ -2349,7 +2349,7 @@ EOT;
           $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $tt '.var_export($tt,true);
         */
         $bouton_avant='';
-        $afficher_les_boutons=true;
+        $afficher_les_boutons_pour_dev_deux=true;
         
         if(__X_CLE_APPLICATION === 'rev_2'){
 
@@ -2364,7 +2364,7 @@ EOT;
                 /*
                   dans le projet rev_2 on ne peut avoir qu'un seul projet
                 */
-                $afficher_les_boutons=false;
+                $afficher_les_boutons_pour_dev_deux=false;
 
             }
 
@@ -2392,7 +2392,7 @@ EOT;
 
                 $lsttbl .= '<div class="hug_bouton_inactif">=&gt;</div>';
                 
-                if($afficher_les_boutons){
+                if($afficher_les_boutons_pour_dev_deux){
 
                     
                     if($v0['T0.chi_id_projet'] === 2){
@@ -2411,7 +2411,7 @@ EOT;
             }else{
 
                 
-                if($afficher_les_boutons){
+                if($afficher_les_boutons_pour_dev_deux){
 
                     
                     if($v0['T0.chi_id_projet'] === 2){
@@ -2430,7 +2430,7 @@ EOT;
             }
 
             
-            if($afficher_les_boutons){
+            if($afficher_les_boutons_pour_dev_deux){
 
                 
                 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])
@@ -2451,7 +2451,7 @@ EOT;
             if($v0['T0.chi_id_projet'] !== 1){
 
                 
-                if($afficher_les_boutons){
+                if($afficher_les_boutons_pour_dev_deux){
 
                     
                     if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])
@@ -2500,7 +2500,7 @@ EOT;
                 ){
 
                     
-                    if($afficher_les_boutons){
+                    if($afficher_les_boutons_pour_dev_deux){
 
                         $lsttbl .= '<div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_projets1.initialiser_projet_2()" title="initialiser projet 2">initialiser le projet 2</div>';
 
@@ -2517,12 +2517,15 @@ EOT;
                && $v0['T0.chi_id_projet'] === 2
             ){
 
-                /* if($afficher_les_boutons===false){*/
+                /* if($afficher_les_boutons_pour_dev_deux===false){*/
                 $lsttbl .= '<div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_projets1.initialiser_le_clone()" title="initialiser le clone">initialiser le clone</div>';
                 /* }*/
 
             }
 
+            if( __X_CLE_APPLICATION === 'rev_1' && $v0['T0.chi_id_projet'] > 2 ){
+                $lsttbl .= '<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_bases1.dump_de_la_base(chi_id_basedd(' . $v0['T0.chi_id_projet'] . '))" title="sauvegarder la base du projet">💾</div>';
+            }
             $lsttbl .= '</div>';
             $lsttbl .= '</td>';
             $lsttbl .= '<td style="text-align:center;">';

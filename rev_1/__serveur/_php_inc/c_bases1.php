@@ -2372,9 +2372,7 @@ class c_bases1{
     public function dump_de_la_base(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         /* dump_de_la_base(idxxx)*/
         
-        if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])
-           && $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'] === 1
-        ){
+        if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
 
             for( $i=1 ; $i < count($mat) ; $i++ ){
                 
@@ -2388,92 +2386,94 @@ class c_bases1{
 
                             $id_de_la_base=(int)($mat[$j + 1][1]);
                             
-                            if(isset($GLOBALS[__BDD][$id_de_la_base])){
+                            $chemin_bdd=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$id_de_la_base.'.sqlite';
+                            $chemin_dump=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$id_de_la_base.'.sqlite' . '.sql';
+                            
+                            if(!file_exists($chemin_bdd)){
 
-                                $chemin_bdd=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . $GLOBALS[__BDD][$id_de_la_base]['nom_bdd'];
-                                $chemin_dump=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . $GLOBALS[__BDD][$id_de_la_base]['nom_bdd'] . '.sql';
-                                
-                                if(!file_exists($chemin_bdd)){
-
-                                    $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ' le fichier est absent';
-
-                                }
-
-                                /*
-                                  https://stackoverflow.com/questions/6221816/how-do-i-perform-a-dump-on-sqlite-database-through-php
-                                */
-                                $db=new SQLite3($chemin_bdd);
-                                $db->busyTimeout(5000);
-                                $sql_structure='';
-                                $sql='/*' . PHP_EOL . '  ============================' . PHP_EOL . '  Il y a 3 parties dans ce fichier' . PHP_EOL . '  1°) au début, les créations de tables' . PHP_EOL . '  2°) au milieu les insertions' . PHP_EOL . '  3°) à la fin les index' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                                $tables=$db->query("SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';");
-                                $les_tables=array();
-                                while($table=$tables->fetchArray(SQLITE3_NUM)){
-                                    $definition_de_la_table=$db->querySingle("SELECT sql FROM sqlite_master WHERE name = '{$table[0]}'") . ";\n\n";
-                                    $sql .= $definition_de_la_table;
-                                    $sql_structure .= $definition_de_la_table;
-                                    $les_tables[]=$table[0];
-                                }
-                                $sql .= '/*' . PHP_EOL . '  ============================' . PHP_EOL . '  2°) au milieu les insertions' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                                $sql_insertion_des_valeurs='';
-                                foreach($les_tables as $k1 => $v1){
-                                    $rows=$db->query("SELECT * FROM " . $v1);
-                                    $sql_insert="INSERT INTO " . $v1 . " (";
-                                    $columns=$db->query("PRAGMA table_info(" . $v1 . ")");
-                                    $liste_des_champs=array();
-                                    while($column=$columns->fetchArray(SQLITE3_ASSOC)){
-                                        $liste_des_champs[]=$column["name"];
-                                    }
-                                    $sql_insert .= implode(",",$liste_des_champs) . ") VALUES";
-                                    $nb_enreg=0;
-                                    while($row=$rows->fetchArray(SQLITE3_ASSOC)){
-                                        $nb_enreg++;
-                                        foreach($row as $k => $v){
-                                            
-                                            if($v === null){
-
-                                                $row[$k]="NULL";
-
-                                            }else{
-
-                                                $row[$k]="'" . SQLite3::escapeString($v) . "'";
-                                            }
-
-                                        }
-                                        $sql_insert .= "\n(" . implode(",",$row) . "),";
-                                    }
-                                    
-                                    if($nb_enreg > 0){
-
-                                        $sql .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                                        $sql .= rtrim($sql_insert,",") . ";\n\n";
-                                        $sql_insertion_des_valeurs .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                                        $sql_insertion_des_valeurs .= rtrim($sql_insert,",") . ";\n\n";
-
-                                    }else{
-
-                                        $sql .= '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  PAS DE DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                                    }
-
-                                }
-                                $sql .= '/*' . PHP_EOL . '  ============================' . PHP_EOL . '  3°) à la fin les index' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                                $sql_insertion_des_index='';
-                                $indexes=$db->query("SELECT name , tbl_name FROM sqlite_master WHERE type ='index' AND name NOT LIKE 'sqlite_%';");
-                                while($index=$indexes->fetchArray(SQLITE3_NUM)){
-                                    $sql .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
-                                    $sql_insertion_des_index .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
-                                }
-                                file_put_contents($chemin_dump,$sql);
-                                $chemin_dump_creation=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . $GLOBALS[__BDD][$id_de_la_base]['nom_bdd'] . '._structure.sql';
-                                $chemin_dump_insertion=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . $GLOBALS[__BDD][$id_de_la_base]['nom_bdd'] . '._donnees.sql';
-                                $chemin_dump_index=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . $GLOBALS[__BDD][$id_de_la_base]['nom_bdd'] . '._index.sql';
-                                file_put_contents($chemin_dump_creation,$sql_structure);
-                                file_put_contents($chemin_dump_insertion,$sql_insertion_des_valeurs);
-                                file_put_contents($chemin_dump_index,$sql_insertion_des_index);
-                                $donnees_retournees[__x_signaux][__xsu][]=' le dump de la base "' . $id_de_la_base . '" a été réalisé [' . __LINE__ . ']';
-                                $donnees_retournees[__xst]=__xsu;
+                                $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ' le fichier est absent';
+                                return;
 
                             }
+
+                            /*
+                              https://stackoverflow.com/questions/6221816/how-do-i-perform-a-dump-on-sqlite-database-through-php
+                            */
+                            /*
+                            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_bdd , true ) . '</pre>' ; exit(0);
+                            */
+                            $db=new SQLite3($chemin_bdd);
+                            $db->busyTimeout(5000);
+                            $sql_structure='';
+                            $sql='/*' . PHP_EOL . '  ============================' . PHP_EOL . '  Il y a 3 parties dans ce fichier' . PHP_EOL . '  1°) au début, les créations de tables' . PHP_EOL . '  2°) au milieu les insertions' . PHP_EOL . '  3°) à la fin les index' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+                            $tables=$db->query("SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';");
+                            $les_tables=array();
+                            while($table=$tables->fetchArray(SQLITE3_NUM)){
+                                $definition_de_la_table=$db->querySingle("SELECT sql FROM sqlite_master WHERE name = '{$table[0]}'") . ";\n\n";
+                                $sql .= $definition_de_la_table;
+                                $sql_structure .= $definition_de_la_table;
+                                $les_tables[]=$table[0];
+                            }
+                            $sql .= '/*' . PHP_EOL . '  ============================' . PHP_EOL . '  2°) au milieu les insertions' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+                            $sql_insertion_des_valeurs='';
+                            foreach($les_tables as $k1 => $v1){
+                                $rows=$db->query("SELECT * FROM " . $v1);
+                                $sql_insert="INSERT INTO " . $v1 . " (";
+                                $columns=$db->query("PRAGMA table_info(" . $v1 . ")");
+                                $liste_des_champs=array();
+                                while($column=$columns->fetchArray(SQLITE3_ASSOC)){
+                                    $liste_des_champs[]=$column["name"];
+                                }
+                                $sql_insert .= implode(",",$liste_des_champs) . ") VALUES";
+                                $nb_enreg=0;
+                                while($row=$rows->fetchArray(SQLITE3_ASSOC)){
+                                    $nb_enreg++;
+                                    foreach($row as $k => $v){
+                                        
+                                        if($v === null){
+
+                                            $row[$k]="NULL";
+
+                                        }else{
+
+                                            $row[$k]="'" . SQLite3::escapeString($v) . "'";
+                                        }
+
+                                    }
+                                    $sql_insert .= "\n(" . implode(",",$row) . "),";
+                                }
+                                
+                                if($nb_enreg > 0){
+
+                                    $sql .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+                                    $sql .= rtrim($sql_insert,",") . ";\n\n";
+                                    $sql_insertion_des_valeurs .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+                                    $sql_insertion_des_valeurs .= rtrim($sql_insert,",") . ";\n\n";
+
+                                }else{
+
+                                    $sql .= '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  PAS DE DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+                                }
+
+                            }
+                            $sql .= '/*' . PHP_EOL . '  ============================' . PHP_EOL . '  3°) à la fin les index' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+                            $sql_insertion_des_index='';
+                            $indexes=$db->query("SELECT name , tbl_name FROM sqlite_master WHERE type ='index' AND name NOT LIKE 'sqlite_%';");
+                            while($index=$indexes->fetchArray(SQLITE3_NUM)){
+                                $sql .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
+                                $sql_insertion_des_index .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
+                            }
+                            file_put_contents($chemin_dump,$sql);
+                            $chemin_dump_creation=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$id_de_la_base.'.sqlite' . '._structure.sql';
+                            $chemin_dump_insertion=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$id_de_la_base.'.sqlite' . '._donnees.sql';
+                            $chemin_dump_index=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$id_de_la_base.'.sqlite' . '._index.sql';
+                            file_put_contents($chemin_dump_creation,$sql_structure);
+                            file_put_contents($chemin_dump_insertion,$sql_insertion_des_valeurs);
+                            file_put_contents($chemin_dump_index,$sql_insertion_des_index);
+                            $donnees_retournees[__x_signaux][__xsu][]=' le dump de la base "' . $id_de_la_base . '" a été réalisé [' . __LINE__ . ']';
+                            $donnees_retournees[__xst]=__xsu;
+
+                            
 
 
                         }
