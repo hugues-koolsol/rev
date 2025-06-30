@@ -1083,8 +1083,8 @@ class _c_interface1{
         /* debugger */
         let decallage_y=0;
         if(rectangles.length >= numero_bloc){
-            console.log( rectangles[numero_bloc].y );
-            console.log( rectangles[0].y );
+//            console.log( rectangles[numero_bloc].y );
+//            console.log( rectangles[0].y );
             /* decallage_y=parseInt(rectangles[numero_bloc].y-rectangles[0].y-rectangles[0].height,10); */
             /*
               à la fin de la formule çi dessous il y a un "-numero_bloc' comme si yl y avait in pixem en trop par ligne
@@ -1101,7 +1101,7 @@ class _c_interface1{
             decallage_y=decallage_y - le_height / 2;
         }
         /* la_textarea.scrollTo(0,0); */
-        console.log( 'decallage_y=' , decallage_y );
+//        console.log( 'decallage_y=' , decallage_y );
         function decal( par ){
             /* console.log(par) */
             par.la_textarea.scrollTo( 0 , par.decallage_y );
@@ -1855,7 +1855,6 @@ class _c_interface1{
                         let type='';
                         let valeur='';
                         let indice=0;
-                        /* afr éviter les calculs d'indices "+1" */
                         for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
                             if(mat[k][2] === 'f' && mat[k][1] === 'id' && mat[k][8] === 1){
                                 id=mat[k + 1][1];
@@ -1865,7 +1864,6 @@ class _c_interface1{
                             }
                         }
                         if(type === 'value' && id !== '' && document.getElementById( id )){
-                            /* afr blinder la valeur dans le cas d'une chaine avec apostrophes */
                             mat[indice][1]=document.getElementById( id ).value;
                         }else{
                             return({"__xst" : __xer ,"__xme" : 'erreur'});
@@ -2015,8 +2013,7 @@ class _c_interface1{
         if(elt[4] === 1){
             t=elt[1].replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' );
         }else{
-            /* afr */
-            debugger;
+            this.les_messages.__xer.push( this.__m_rev1.nl2() + 'il y a une erreur, type="' + elt[4] + '"' );
         }
         return t;
     }

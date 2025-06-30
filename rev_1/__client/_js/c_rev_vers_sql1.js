@@ -145,7 +145,6 @@ class c_rev_vers_sql1{
         if(operateur_rev === 'sql'){
             /*
               un sql dans un autre sql , par exemple select * from a where id in (select id from b); 
-              afr, il faut instancier un nouvel objet
             */
             debugger;
             return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'problème sur sql dans sql '} ));
@@ -1367,9 +1366,6 @@ class c_rev_vers_sql1{
                             }else if(this.#tb[j][1] === 'meta' && this.#tb[j][8] > 0){
                                 obj=this.__m_rev1.matrice_vers_source_rev1( this.#tb , j , true , j + 1 );
                                 if(obj.__xst === __xsu){
-                                    /*
-                                      afr, voir pourquoi les retours à la ligne ne fonctionnent pas 
-                                    */
                                     meta_du_champ+=this.__m_rev1.resps( niveau + 2 );
                                     meta_du_champ+='/*\n            meta(\n            ' + obj.__xva.replace( /\/\*/g , '' ).replace( /\*\//g , '' ).replace( /\),\(/g , '),\n            (' ) + '\n            )\n            */';
                                     meta_du_champ=meta_du_champ.replace( /\),\(/g , '),\n            (' );

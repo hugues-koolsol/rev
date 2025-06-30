@@ -72,7 +72,6 @@ class c_astphpparseur_vers_rev1{
         if(element.what.kind === 'propertylookup'){
             if(nomFonction.indexOf( 'element(' ) >= 0 && nomFonction.indexOf( 'nomf(' ) >= 0){
                 if(nomFonction.substr( 0 , 9 ) === 'propriete'){
-                    /* afr quand passe-t-on par ici */
                     debugger;
                     t+=this.#remplace_nom_fonction2( nomFonction , les_parametres );
                 }else{
@@ -2127,26 +2126,8 @@ class c_astphpparseur_vers_rev1{
                 
         }
         if(gauche.substr( 0 , 7 ) === 'concat(' && element.type !== '.'){
-            /*
-              afr
-              cas $b.$c+$d : ça donne avec ce parseur : 
-              plus( concat( $b , $c ) , $d), 
-              mais il faudrait que ça donne 
-              concat( $b , plus( $c , $d )), 
-              En attendant, on considère que la vraie façon d'écrire ceci en php est 
-              $b.($c+$d)
-              et dans ce dernier cas, ce parseur fonctionne
-            */
-            /*
-              var tableau1=this.__m_rev1.txt_en_tableau(t);
-              var o=functionToArray2(tableau1.__xva,false,true,'');
-            */
             var o=this.__m_rev1.rev_tm( t );
             if(o.__xst === __xsu){
-                /*
-                  afr je ne ma rappelle plus pourquoi j'ai mis un déverminage
-                */
-                /* debugger; */
             }else{
                 return(this.#astphp_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() ,"element" : element} ));
             }

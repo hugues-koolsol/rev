@@ -373,7 +373,6 @@ class c_svg_bdd1{
         }else{
         }
         if(mat === null){
-            /* afr */
             debugger;
             return;
         }

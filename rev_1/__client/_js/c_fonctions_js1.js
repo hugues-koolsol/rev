@@ -124,11 +124,16 @@ class c_fonctions_js1{
         /*  */
         this.#objet_conversion_html_vers_rev=new c_html_vers_rev1( '#objet_conversion_html_vers_rev' , this.#interface1.__m_rev1 , this.#objet_conversion_ast_js_vers_rev );
         /*  */
-        this.#objet_conversion_astphpparseur_vers_rev1=new c_astphpparseur_vers_rev1( '#objet_conversion_astphpparseur_vers_rev1' , this.#interface1.__m_rev1 , this.#objet_conversion_html_vers_rev );
-        this.#objet_conversion_astphpnikic_vers_rev1=new c_astphpnikic_vers_rev1( '#objet_conversion_astphpnikic_vers_rev1new' , this.#interface1.__m_rev1 , this.#objet_conversion_html_vers_rev );
-        /*  */
         this.#objet_conversion_astsqliteparseur_vers_rev1=new c_astsqliteparseur_vers_rev1( '#objet_conversion_astsqliteparseur_vers_rev1' , this.#interface1.__m_rev1 );
         this.#objet_conversion_ast_sql_parseur_cst_vers_rev1=new c_astsql_parseur_cst_vers_rev1( '#objet_conversion_ast_sql_parseur_cst_vers_rev1' , this.#interface1.__m_rev1 );
+        /*  */
+        this.#objet_conversion_astphpparseur_vers_rev1=new c_astphpparseur_vers_rev1( '#objet_conversion_astphpparseur_vers_rev1' , this.#interface1.__m_rev1 , this.#objet_conversion_html_vers_rev  );
+
+        this.#objet_conversion_astphpnikic_vers_rev1=new c_astphpnikic_vers_rev1( 
+            '#objet_conversion_astphpnikic_vers_rev1new' , 
+            this.#interface1.__m_rev1 , 
+            this.#objet_conversion_html_vers_rev 
+        );
         /*  */
         this.#objet_conversion_astcss_vers_rev1=new c_astpostcss_vers_rev1( '#objet_conversion_astcss_vers_rev1' , this.#interface1.__m_rev1 );
         /*  */
@@ -472,6 +477,7 @@ class c_fonctions_js1{
                 /*
                   on récupère les commentaires pour les meta 
                 */
+                                debugger
                 var tableau_des_commentaires=[];
                 const matches=reponse.__xva['contenu_disque'].match( /\/\*([\s\S]*?)\*\//g );
                 if(matches !== null){
@@ -484,7 +490,7 @@ class c_fonctions_js1{
                                 if(obj1.__xst === __xsu){
                                     tableau_des_commentaires.push( {"mat" : obj1.__xva ,"rev" : tt} );
                                 }else{
-                                    /* afr : dépiler l'erreur ou bien ne pas empiler lors de l'appel */
+                                    /* rien, on néglige les commentaires */
                                 }
                             }
                         }
@@ -1111,14 +1117,26 @@ J'aimerais bien que les navigateurs fassent la même chose dans le zones textare
                     let a_convertir=t1.value.replace( /\:/g , '___deux___points___' );
                     ast_de_sql=window.sql_parser_cst2.parse( a_convertir , options_pour_le_parseur );
                 }catch(e1){
-                    if(e1.message.indexOf( 'on line ' )){
+                    if(e1.message.indexOf( 'on line ' )>=0){
                         let tt=e1.message.substr( e1.message.indexOf( 'on line ' ) + 8 );
-                        console.log( tt );
                         if(this.#interface1.__m_rev1.est_num( tt )){
                             return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : e1.message ,"ligne" : parseInt( tt , 10 )} ));
                         }else{
                             return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : e1.message} ));
                         }
+                    }else if(e1.message.indexOf( 'undefined:' )>=0){
+                        let tt=e1.message.substr( e1.message.indexOf( 'undefined:' ) + 10 );
+                        if(tt.indexOf(':')>=1){
+                            tt=tt.substr(0,tt.indexOf(':'));
+                            if(this.#interface1.__m_rev1.est_num( tt )){
+                                return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : e1.message ,"ligne" : parseInt( tt , 10 )} ));
+                            }else{
+                                return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : e1.message} ));
+                            }
+                        }else{
+                            return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : e1.message} ));
+                        }
+                        
                     }else{
                         return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : e1.message} ));
                     }
@@ -1222,7 +1240,7 @@ J'aimerais bien que les navigateurs fassent la même chose dans le zones textare
                                     if(obj1.__xst === __xsu){
                                         tableau_des_commentaires.push( {"mat" : obj1.__xva ,"rev" : tt} );
                                     }else{
-                                        /* afr : dépiler l'erreur ou bien ne pas empiler lors de l'appel */
+                                        /* rien, on néglige les commentaires */
                                     }
                                 }
                             }

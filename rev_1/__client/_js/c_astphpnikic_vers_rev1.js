@@ -6,6 +6,9 @@ const __xal=2;
 const __xif=3;
 const __xdv=4;
 const NBESPACESREV=3;
+
+import {c_astsql_parseur_cst_vers_rev1} from './c_astsql_parseur_cst_vers_rev1.js';
+
 /*
   =====================================================================================================================
   conversion d'un AST produit par https://github.com/nikic/PHP-Parser en rev
@@ -21,6 +24,7 @@ class c_astphpnikic_vers_rev1{
     #globale_tableau_des_js3=[];
     __m_rev1=null;
     __module_html1=null;
+    objet_conversion_ast_sql_parseur_cst_vers_rev1=null;
     /*
       =============================================================================================================
       le seul argument est pour l'instant le nom de la variable qui est déclarée
@@ -31,6 +35,7 @@ class c_astphpnikic_vers_rev1{
         this.#globale_tableau_des_js3=[];
         this.__m_rev1=module_rev;
         this.__module_html1=module_html;
+        this.objet_conversion_ast_sql_parseur_cst_vers_rev1=new c_astsql_parseur_cst_vers_rev1( 'objet_conversion_ast_sql_parseur_cst_vers_rev1' , module_rev );
     }
     /*
       =============================================================================================================
@@ -50,6 +55,7 @@ class c_astphpnikic_vers_rev1{
     /*
       =============================================================================================================
     */
+    /*
     #recupNomOperateur( s ){
         switch (s){
             case 'typeof' : return 'Typeof';
@@ -78,6 +84,7 @@ class c_astphpnikic_vers_rev1{
                 
         }
     }
+    */
     /*
       =============================================================================================================
     */
@@ -399,14 +406,29 @@ class c_astphpnikic_vers_rev1{
             }
             var source=lesArgumentsCourts.substr( 1 , lesArgumentsCourts.length - 2 );
             var source=source.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' );
-            /* afr passe-t-on vraiement par là maintenant ? */
-            debugger;
-            /* var obj=convertion_texte_sql_en_rev(source); */
-            source=source.replace( /\/\*\*\//g , '' );
-            var ast=window.sqliteParser( source , {} );
-            var obj=__m_astsqliteparseur_vers_rev1.traite_ast_de_sqliteparseur( ast );
-            if(obj.__xst === __xsu){
-                t+='sql(' + obj.__xva + ')';
+
+            let options_pour_le_parseur={
+                "dialect" : "sqlite" ,
+                 /* These are optional: */
+                "includeSpaces" : true ,
+                 /* Adds spaces/tabs */
+                "includeNewlines" : true ,
+                 /* Adds newlines */
+                "includeComments" : true ,
+                 /* Adds comments */
+                "includeRange" : true ,
+                 /* Adds source code location data */
+            };
+            
+            
+            source=source.replace( /\:/g , '___deux___points___' );
+            
+            var ast_de_sql=window.sql_parser_cst2.parse( source , options_pour_le_parseur );
+            
+            
+            let obj1=this.objet_conversion_ast_sql_parseur_cst_vers_rev1.traite_ast_de_sql_parseur_cst( ast_de_sql , {} );
+            if(obj1.__xst === __xsu){
+                t+='sql(' + obj1.__xva.replace(/___deux___points___/g,':') + ')';
             }else{
                 return(this.#astphp_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() ,"element" : element} ));
             }

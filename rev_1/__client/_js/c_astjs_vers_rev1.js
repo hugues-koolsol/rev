@@ -1164,13 +1164,8 @@ class c_astjs_vers_rev1{
             }
         }else{
             if(type_parent === 'CallExpression'){
-                /*  */
-                if(true || type_propriete === 'Literal' && type_objet === 'Identifier'){
-                    t='tableau( nomt(' + objet + '),p(' + propriete + '))';
-                }else{
-                    /* afr debugger; */
-                    t='element(' + objet + '),nomf(' + propriete + ')';
-                }
+
+                t='tableau( nomt(' + objet + '),p(' + propriete + '))';
                 return({"__xst" : __xsu ,"__xva" : t});
             }else{
                 if(type_propriete === 'Identifier' && type_objet === 'Identifier'){
@@ -1541,10 +1536,6 @@ class c_astjs_vers_rev1{
                         }else{
                             return(this.#astjs_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() ,"element" : element} ));
                         }
-                        /*
-                          ok pour let  x1 = a?. b();
-                          afr pour let x13 = a.b ?. c ?. (); 
-                        */
                         if(element.expression.optional === true){
                             t+='chainé(' + t1.__xva + ',chainé(' + t2.__xva + ',appelf(nomf()' + les_arguments + ')))';
                         }else{

@@ -2330,10 +2330,6 @@ class c_rev_vers_js1{
                     return(this.#rev_js_le( {"__xst" : __xer ,"id" : id ,"__xme" : this.__m_rev1.nl2()} ));
                 }
             }else if(this.#tb[i][1] === 'defTab' && this.#tb[i][2] === 'f'){
-                /*
-                  afr vérifier premier argument, avant il y avait this.#tb ,
-                */
-                debugger;
                 var obj1=this.#js_traiteDefinitiontableau( i , niveau , {} );
                 if(obj1.__xst === __xsu){
                     if(obj1.__xva.startsWith( '[' ) && obj1.__xva.endsWith( ']' )){
@@ -3264,9 +3260,6 @@ class c_rev_vers_js1{
                       contenu=contenu.substr(0,contenu.length - 1);
                   }
                   debugger
-                */
-                /*
-                  afr hdf faut-il faire ceci ou l'inverse ???
                 */
                 if(nom_de_la_fonction_parente === 'forEach'
                        || nom_de_la_fonction_parente === 'then'
