@@ -661,22 +661,13 @@ class _c_interface1{
         /* let chemin_module1=e.getAttribute('data-chemin_module1'); */
         let txt_init=e.getAttribute( 'data-initialisation1' );
         let obj_init=JSON.parse( txt_init );
-        console.log( 'obj_init=' , obj_init );
+        /*
+          console.log( 'obj_init=' , obj_init );
+        */
         let that=this;
         let module=await import( './' + obj_init.module_js1 );
         __gi1.liste_des_modules_dynamiques[obj_init.chemin_module1].objet1=new module[obj_init.nom_module1]( obj_init );
         __gi1.liste_des_modules_dynamiques[obj_init.chemin_module1].objet1[obj_init.methode_initiale]( obj_init );
-        /*
-          import('./'+obj_init.module_js1).then(
-          (le_module ) =>{
-          debugger
-          //          __gi1.liste_des_modules_dynamiques.objet1 = new le_module[]();
-          }
-          ).catch(e => {
-          debugger
-          });
-        */
-        /* this.#liste_des_modules_dynamiques[chemin_module1].objet1=new nom_de_module(obj_init); */
     }
     /*
       =============================================================================================================

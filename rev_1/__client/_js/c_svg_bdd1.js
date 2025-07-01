@@ -430,45 +430,62 @@ class c_svg_bdd1{
         var nouveau_nom=document.getElementById( 'nouveau_nom' ).value;
         var nom_de_la_table=document.getElementById( 'ancien_nom' ).value;
         id_svg_conteneur_table=parseInt( id_svg_conteneur_table , 10 );
-        /* AFR, vérifier les noms des autres tables */
         if(nouveau_nom !== nom_de_la_table){
-            let source_sql='ALTER TABLE ' + nom_de_la_table + ' RENAME  TO ' + nouveau_nom + '';
-            var maj='';
-            maj+='maj_interface1(fermer_fenetre1())';
-            maj+='methode_module_dynamique1(';
-            maj+='  nom_du_module2("_js/c_svg_bdd1.js"),';
-            maj+='  methode2(apres_renommer_une_table1),';
-            maj+='  valeurs2(';
-            maj+='    id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + ')';
-            maj+='    id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
-            maj+='    id_svg_du_texte(' + id_svg_du_texte + ')';
-            maj+='    id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ')';
-            maj+='    nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-            maj+='    ancien_nom(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-            maj+='    nouveau_nom(\'' + nouveau_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-            maj+='  )';
-            maj+=')';
-            let obj={
-                 /*  */
-                "__x_action" : 'c_bases1.executer_sql3(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + '))' ,
-                "__xva" : {
-                     /*  */
-                    "source_sql" : source_sql ,
-                    "operation_table" : 'renommer_une_table' ,
-                    "maj" : maj
+         
+            let trouve=false;
+            var lst=document.getElementById(this.#id_svg_de_la_base_en_cours).getElementsByTagName('rect');
+            for(let i=0;i<lst.length;i++){
+                if(lst[i].getAttribute('type_element') && 'rectangle_de_table'===lst[i].getAttribute('type_element') ){
+                    if( parseInt( lst[i].id , 10)!== id_svg_rectangle_de_la_table ){
+                        if(lst[i].getAttribute('nom_de_la_table')===nouveau_nom){
+                            trouve=true;
+                            break
+                        }
+                    }
                 }
-            };
-            __gi1.envoyer_un_message_au_worker( obj );
-            return;
+            }
+
+            if(trouve===false){
+            
+            
+                
+                let source_sql='ALTER TABLE ' + nom_de_la_table + ' RENAME  TO ' + nouveau_nom + '';
+                var maj='';
+                maj+='maj_interface1(fermer_fenetre1())';
+                maj+='methode_module_dynamique1(';
+                maj+='  nom_du_module2("_js/c_svg_bdd1.js"),';
+                maj+='  methode2(apres_renommer_une_table1),';
+                maj+='  valeurs2(';
+                maj+='    id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + ')';
+                maj+='    id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+                maj+='    id_svg_du_texte(' + id_svg_du_texte + ')';
+                maj+='    id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ')';
+                maj+='    nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                maj+='    ancien_nom(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                maj+='    nouveau_nom(\'' + nouveau_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                maj+='  )';
+                maj+=')';
+                let obj={
+                     /*  */
+                    "__x_action" : 'c_bases1.executer_sql3(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + '))' ,
+                    "__xva" : {
+                         /*  */
+                        "source_sql" : source_sql ,
+                        "operation_table" : 'renommer_une_table' ,
+                        "maj" : maj
+                    }
+                };
+                __gi1.envoyer_un_message_au_worker( obj );
+                return;
+            }
         }
     }
     /*
       =============================================================================================================
-      matricée
     */
     #renommer_table_sur_svg( id_svg_du_texte , id_svg_conteneur_table , id_svg_rectangle_de_la_table , nouveau_nom , ancien_nom ){
         id_svg_conteneur_table=parseInt( id_svg_conteneur_table , 10 );
-        /* AFR, vérifier les noms des autres tables */
+        
         if(nouveau_nom !== ancien_nom){
             /* changement du visuel */
             id_svg_du_texte=parseInt( id_svg_du_texte , 10 );
@@ -611,7 +628,24 @@ class c_svg_bdd1{
         }
         var nouveau_nom=document.getElementById( 'nouveau_nom' ).value;
         var ancien_nom=document.getElementById( 'ancien_nom' ).value;
-        this.#renommer_table_sur_svg( id_svg_du_texte , id_svg_conteneur_table , id_svg_rectangle_de_la_table , nouveau_nom , ancien_nom );
+        if(nouveau_nom!==ancien_nom){
+         
+            let trouve=false;
+            var lst=document.getElementById(this.#id_svg_de_la_base_en_cours).getElementsByTagName('rect');
+            for(let i=0;i<lst.length;i++){
+                if(lst[i].getAttribute('type_element') && 'rectangle_de_table'===lst[i].getAttribute('type_element') ){
+                    if( parseInt( lst[i].id , 10)!== id_svg_rectangle_de_la_table ){
+                        if(lst[i].getAttribute('nom_de_la_table')===nouveau_nom){
+                            trouve=true;
+                            break
+                        }
+                    }
+                }
+            }
+            if(trouve===false){
+                this.#renommer_table_sur_svg( id_svg_du_texte , id_svg_conteneur_table , id_svg_rectangle_de_la_table , nouveau_nom , ancien_nom );
+            }
+        }
     }
     /*
       =============================================================================================================
@@ -647,26 +681,43 @@ class c_svg_bdd1{
             }
         }
         var nom_de_la_table=document.getElementById( id_de_la_zone ).value;
-        var j=0;
-        var i=0;
-        var indice_courant=this.#recuperer_prochain_id_svg();
-        var id_svg_conteneur_table=indice_courant;
-        var meta_table='';
-        meta_table+='meta(';
-        meta_table+='nom_de_la_table( \'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
-        meta_table+='table( \'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
-        meta_table+='genre_meta(table_de_base),';
-        meta_table+='nom_long_de_la_table( \'AFR ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
-        meta_table+='nom_court_de_la_table( \'AFR ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
-        meta_table+='nom_bref_de_la_table( \'AFR ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
-        meta_table+='transform_table_sur_svg( translate( 20 , 20 ))';
-        meta_table+=')';
-        var a=this.#ajouter_table_a_svg( nom_de_la_table , indice_courant , [20,20] , meta_table );
-        var id_svg_conteneur_table=a.id_svg_conteneur_table;
-        indice_courant+=2;
-        var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0 );
-        __gi1.fermer_fenetre1();
-        this.#dessiner_le_svg();
+        
+        
+        let trouve=false;
+        var lst=document.getElementById(this.#id_svg_de_la_base_en_cours).getElementsByTagName('rect');
+        for(let i=0;i<lst.length;i++){
+            if(lst[i].getAttribute('type_element') && 'rectangle_de_table'===lst[i].getAttribute('type_element') ){
+                if(lst[i].getAttribute('nom_de_la_table')===nom_de_la_table){
+                    trouve=true;
+                    break
+                }
+            }
+        }
+
+        if(trouve===false){
+            var j=0;
+            var i=0;
+            var indice_courant=this.#recuperer_prochain_id_svg();
+            var id_svg_conteneur_table=indice_courant;
+            var meta_table='';
+            meta_table+='meta(';
+            meta_table+='nom_de_la_table( \'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            meta_table+='table( \'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            meta_table+='genre_meta(table_de_base),';
+            meta_table+='nom_long_de_la_table( \'AFR ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            meta_table+='nom_court_de_la_table( \'AFR ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            meta_table+='nom_bref_de_la_table( \'AFR ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            meta_table+='transform_table_sur_svg( translate( 20 , 20 ))';
+            meta_table+=')';
+            var a=this.#ajouter_table_a_svg( nom_de_la_table , indice_courant , [20,20] , meta_table );
+            var id_svg_conteneur_table=a.id_svg_conteneur_table;
+            indice_courant+=2;
+            var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0 );
+            __gi1.fermer_fenetre1();
+            this.#dessiner_le_svg();
+        }
+        
+        
     }
     /*
       
@@ -705,6 +756,25 @@ class c_svg_bdd1{
         var champ_numero_de_revision=document.getElementById( 'champ_numero_de_revision' ).checked ? ( 1 ) : ( 0 );
         var j=0;
         var i=0;
+        
+        let trouve=false;
+        var lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName('text');
+        for(let i=0;i<lst.length;i++){
+            if(lst[i].getAttribute('type_element') && 'texte_de_champ'===lst[i].getAttribute('type_element') ){
+                if(lst[i].getAttribute('nom_du_champ')===nom_du_champ){
+                    trouve=true;
+                    break
+                }
+            }
+        }
+
+        if(trouve===true){
+         return;
+        }
+        
+        
+        
+        
         document.getElementById( 'zone_message_ajouter_un_champ' ).innerHTML='';
         if(chp_type_champ === '' || typologie === '' || nom_du_champ === ''){
             document.getElementById( 'zone_message_ajouter_un_champ' ).innerHTML='Vous devez choisir un type de champ et une typologie et renseigner le nom du champ';
@@ -718,7 +788,7 @@ class c_svg_bdd1{
             /*
               la référence croisée existe-t-elle dans le svg
             */
-            var trouve=false;
+            trouve=false;
             var elems2=document.getElementById( this.#id_svg_de_la_base_en_cours ).getElementsByTagName( 'rect' );
             for( var j=0 ; j < elems2.length && trouve === false ; j++ ){
                 if(elems2[j].getAttribute( 'type_element' )
@@ -752,7 +822,7 @@ class c_svg_bdd1{
         rev+='    champ_date_creation(' + champ_date_creation + ')';
         rev+='    champ_numero_de_revision(' + champ_numero_de_revision + ')';
         rev+=')';
-        /* afr ajouter les paramètres */
+
         /*
           a_une_valeur_par_defaut,
           valeur_par_defaut,
@@ -788,53 +858,79 @@ class c_svg_bdd1{
                 id_svg_conteneur_d_index=parseInt( mat[i + 1][1] , 10 );
             }
         }
+        
+        
+        
         var nouveau_nom=document.getElementById( 'nouveau_nom' ).value;
         var ancien_nom=document.getElementById( 'ancien_nom' ).value;
+        
+                
+        
         /* AFR, vérifier les noms des autres index */
         if(nouveau_nom !== ancien_nom){
-            /* changement du visuel */
-            var id_zone_element_svg=parseInt( id_svg_text , 10 );
-            var element_svg=document.getElementById( id_zone_element_svg );
-            var j=0;
-            for( j=0 ; j < element_svg.childNodes.length ; j++ ){
-                if(element_svg.childNodes[j].nodeName.toLowerCase() === '#text'){
-                    element_svg.childNodes[j].data=nouveau_nom;
-                    /* mise à jour de l'arbre */
-                    /*
-                      carré vert 
-                    */
-                    let t='';
-                    t+='<tspan ';
-                    t+=' style="cursor:pointer;" ';
-                    let f='';
-                    f+='interface1.module1(';
-                    f+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                    f+=' methode3(modale_modifier_l_index),';
-                    f+=' parametre3(';
-                    f+='  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
-                    f+='  nom_de_l_index(\'' + nouveau_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-                    f+='  id_svg_conteneur_d_index(' + id_svg_conteneur_d_index + ')';
-                    f+=' )';
-                    f+=')';
-                    t+=' data-hug_click="' + f + '" >🟩</tspan>' + nouveau_nom;
-                    this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_zone_element_svg].contenu=t;
-                    break;
+         
+            let trouve=false;
+            var lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName('rect');
+            for(let i=0;i<lst.length;i++){
+                if(lst[i].getAttribute('type_element') && 'rectangle_d_index'===lst[i].getAttribute('type_element') ){
+                    if( parseInt( lst[i].id , 10)!== id_svg_rectangle_de_l_index ){
+                        if(lst[i].getAttribute('nom_de_l_index')===nouveau_nom){
+                            trouve=true;
+                            break
+                        }
+                    }
                 }
             }
-            var lst=document.getElementById( id_svg_conteneur_table ).getElementsByTagName( '*' );
-            var i=0;
-            for( i=0 ; i < lst.length ; i++ ){
-                if('rectangle_d_index' === lst[i].getAttribute( 'type_element' )
-                       && parseInt( lst[i].id , 10 ) === id_svg_rectangle_de_l_index
-                ){
-                    lst[i].setAttribute( 'nom_de_l_index' , nouveau_nom );
-                    this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[lst[i].id].proprietes.nom_de_l_index=nouveau_nom;
+            if(trouve===false){
+                debugger
+                
+                
+             
+             
+                /* changement du visuel */
+                var id_zone_element_svg=parseInt( id_svg_text , 10 );
+                var element_svg=document.getElementById( id_zone_element_svg );
+                var j=0;
+                for( j=0 ; j < element_svg.childNodes.length ; j++ ){
+                    if(element_svg.childNodes[j].nodeName.toLowerCase() === '#text'){
+                        element_svg.childNodes[j].data=nouveau_nom;
+                        /* mise à jour de l'arbre */
+                        /*
+                          carré vert 
+                        */
+                        let t='';
+                        t+='<tspan ';
+                        t+=' style="cursor:pointer;" ';
+                        let f='';
+                        f+='interface1.module1(';
+                        f+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+                        f+=' methode3(modale_modifier_l_index),';
+                        f+=' parametre3(';
+                        f+='  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+                        f+='  nom_de_l_index(\'' + nouveau_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                        f+='  id_svg_conteneur_d_index(' + id_svg_conteneur_d_index + ')';
+                        f+=' )';
+                        f+=')';
+                        t+=' data-hug_click="' + f + '" >🟩</tspan>' + nouveau_nom;
+                        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_zone_element_svg].contenu=t;
+                        break;
+                    }
                 }
+                var lst=document.getElementById( id_svg_conteneur_table ).getElementsByTagName( '*' );
+                var i=0;
+                for( i=0 ; i < lst.length ; i++ ){
+                    if('rectangle_d_index' === lst[i].getAttribute( 'type_element' )
+                           && parseInt( lst[i].id , 10 ) === id_svg_rectangle_de_l_index
+                    ){
+                        lst[i].setAttribute( 'nom_de_l_index' , nouveau_nom );
+                        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[lst[i].id].proprietes.nom_de_l_index=nouveau_nom;
+                    }
+                }
+                this.#svg_ajuster_largeur_de_table( id_svg_conteneur_table );
+                __gi1.fermer_fenetre1();
+                this.#dessiner_le_svg();
             }
         }
-        this.#svg_ajuster_largeur_de_table( id_svg_conteneur_table );
-        __gi1.fermer_fenetre1();
-        this.#dessiner_le_svg();
     }
     /*
       =============================================================================================================
@@ -925,38 +1021,56 @@ class c_svg_bdd1{
         }
         var nouveau_nom=document.getElementById( 'nouveau_nom' ).value;
         var ancien_nom=document.getElementById( 'ancien_nom' ).value;
-        /* AFR, vérifier les noms des autres tables */
         if(nouveau_nom !== ancien_nom){
-            /*  */
-            let source_sql='ALTER TABLE ' + nom_de_la_table + ' RENAME COLUMN ' + ancien_nom + ' TO ' + nouveau_nom + '';
-            var maj='';
-            maj+='maj_interface1(fermer_fenetre1())';
-            maj+='methode_module_dynamique1(';
-            maj+='  nom_du_module2("_js/c_svg_bdd1.js"),';
-            maj+='  methode2(apres_renommer_un_champs1),';
-            maj+='  valeurs2(';
-            maj+='    id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + ')';
-            maj+='    id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
-            maj+='    id_svg_text(' + id_svg_text + ')';
-            maj+='    id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
-            maj+='    nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-            maj+='    nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-            maj+='    ancien_nom(\'' + ancien_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-            maj+='    nouveau_nom(\'' + nouveau_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-            maj+='  )';
-            maj+=')';
-            let obj={
-                 /*  */
-                "__x_action" : 'c_bases1.executer_sql3(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + '))' ,
-                "__xva" : {
-                     /*  */
-                    "source_sql" : source_sql ,
-                    "operation_table" : 'renommer_un_champs' ,
-                    "maj" : maj
+         
+         
+            let trouve=false;
+            var lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName('text');
+            for(let i=0;i<lst.length;i++){
+                if(lst[i].getAttribute('type_element') && 'texte_de_champ'===lst[i].getAttribute('type_element') ){
+                    if( parseInt( lst[i].id , 10)!== id_svg_text ){
+                        if(lst[i].getAttribute('nom_du_champ')===nouveau_nom){
+                            trouve=true;
+                            break
+                        }
+                    }
                 }
-            };
-            __gi1.envoyer_un_message_au_worker( obj );
-            return;
+            }
+
+            if(trouve===false){
+             
+             
+                /*  */
+                let source_sql='ALTER TABLE ' + nom_de_la_table + ' RENAME COLUMN ' + ancien_nom + ' TO ' + nouveau_nom + '';
+                var maj='';
+                maj+='maj_interface1(fermer_fenetre1())';
+                maj+='methode_module_dynamique1(';
+                maj+='  nom_du_module2("_js/c_svg_bdd1.js"),';
+                maj+='  methode2(apres_renommer_un_champs1),';
+                maj+='  valeurs2(';
+                maj+='    id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + ')';
+                maj+='    id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+                maj+='    id_svg_text(' + id_svg_text + ')';
+                maj+='    id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+                maj+='    nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                maj+='    nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                maj+='    ancien_nom(\'' + ancien_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                maj+='    nouveau_nom(\'' + nouveau_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                maj+='  )';
+                maj+=')';
+                let obj={
+                     /*  */
+                    "__x_action" : 'c_bases1.executer_sql3(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + '))' ,
+                    "__xva" : {
+                         /*  */
+                        "source_sql" : source_sql ,
+                        "operation_table" : 'renommer_un_champs' ,
+                        "maj" : maj
+                    }
+                };
+                __gi1.envoyer_un_message_au_worker( obj );
+                return;
+            }
         }
         /* changement du visuel */
     }
@@ -1063,9 +1177,25 @@ class c_svg_bdd1{
         }
         var nouveau_nom=document.getElementById( 'nouveau_nom' ).value;
         var ancien_nom=document.getElementById( 'ancien_nom' ).value;
-        /* AFR, vérifier les noms des autres tables */
         if(nouveau_nom !== ancien_nom){
-            this.#changer_le_nom_de_champ_sur_le_svg( id_svg_conteneur_table , id_svg_text , id_svg_champ_en_cours , nouveau_nom , ancien_nom );
+         
+         
+            let trouve=false;
+            var lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName('text');
+            for(let i=0;i<lst.length;i++){
+                if(lst[i].getAttribute('type_element') && 'texte_de_champ'===lst[i].getAttribute('type_element') ){
+                    if( parseInt( lst[i].id , 10)!== id_svg_text ){
+                        if(lst[i].getAttribute('nom_du_champ')===nouveau_nom){
+                            trouve=true;
+                            break
+                        }
+                    }
+                }
+            }
+
+            if(trouve===false){
+                this.#changer_le_nom_de_champ_sur_le_svg( id_svg_conteneur_table , id_svg_text , id_svg_champ_en_cours , nouveau_nom , ancien_nom );
+            }
         }
     }
     /*
@@ -1112,7 +1242,7 @@ class c_svg_bdd1{
                 nom_de_la_table=mat[i + 1][1];
             }
         }
-        debugger;
+
         var id_de_l_index=parseInt( document.getElementById( id_svg_rectangle_de_l_index ).parentNode.id , 10 );
         this.#supprimer_recursivement_les_elements_de_l_arbre( this.#id_bdd_de_la_base_en_cours , id_de_l_index );
         __gi1.fermer_fenetre1();
@@ -2597,7 +2727,7 @@ class c_svg_bdd1{
         rev+='  id_de_la_zone(\'vv_nom_de_la_nouvelle_table\')';
         rev+=' )';
         rev+=')';
-        t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + rev + '">enregistrer</div>';
+        t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + rev + '">ajouter la table</div>';
         t+='<hr /><h3>comparer la base physique et la base virtuelle</h3>';
         /* t+='<a class="yyinfo" href="javascript:' + this.#nom_de_la_variable + '.comparer_la_base_physique_et_la_base_virtuelle(' + this.#id_bdd_de_la_base_en_cours + ')">comparer</a>'; */
         rev='';
@@ -3069,23 +3199,39 @@ class c_svg_bdd1{
         if(nom_de_l_index === ''){
             return;
         }
-        var message_de_l_index=document.getElementById( 'message_de_l_index' ).value;
-        var unique=document.getElementById( 'unique' ).checked ? ( 1 ) : ( 0 );
-        var max_id=-1;
-        var lst=this.#svg_dessin.getElementsByTagName( '*' );
-        for( i=0 ; i < lst.length ; i++ ){
-            if(lst[i].id && __gi1.__m_rev1.est_num( lst[i].id )){
-                j=parseInt( lst[i].id , 10 );
-                if(j > max_id){
-                    max_id=j;
+        
+        let trouve=false;
+        var lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName('rect');
+        for(let i=0;i<lst.length;i++){
+            if(lst[i].getAttribute('type_element') && 'rectangle_d_index'===lst[i].getAttribute('type_element') ){
+                if(lst[i].getAttribute('nom_de_l_index')===nom_de_l_index){
+                    trouve=true;
+                    break
                 }
             }
         }
-        max_id++;
-        let donnees_rev_de_l_index='meta(#(),genre_meta(index_de_table),message(\'' + message_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'))';
-        var a=this.#ajouter_index_a_table( this.#id_bdd_de_la_base_en_cours , max_id , nom_de_l_index , id_svg_conteneur_table , nom_de_la_table , donnees_rev_de_l_index , liste_des_champs_de_l_index , unique );
-        __gi1.fermer_fenetre1();
-        this.#dessiner_le_svg();
+
+        if(trouve===false){
+            
+            
+            var message_de_l_index=document.getElementById( 'message_de_l_index' ).value;
+            var unique=document.getElementById( 'unique' ).checked ? ( 1 ) : ( 0 );
+            var max_id=-1;
+            var lst=this.#svg_dessin.getElementsByTagName( '*' );
+            for( i=0 ; i < lst.length ; i++ ){
+                if(lst[i].id && __gi1.__m_rev1.est_num( lst[i].id )){
+                    j=parseInt( lst[i].id , 10 );
+                    if(j > max_id){
+                        max_id=j;
+                    }
+                }
+            }
+            max_id++;
+            let donnees_rev_de_l_index='meta(#(),genre_meta(index_de_table),message(\'' + message_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'))';
+            var a=this.#ajouter_index_a_table( this.#id_bdd_de_la_base_en_cours , max_id , nom_de_l_index , id_svg_conteneur_table , nom_de_la_table , donnees_rev_de_l_index , liste_des_champs_de_l_index , unique );
+            __gi1.fermer_fenetre1();
+            this.#dessiner_le_svg();
+        }
     }
     /*
       
