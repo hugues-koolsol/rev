@@ -1,14 +1,15 @@
 <?php
 function sql_47($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur`
+      `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+      `T0`.`chi_compteur_socket1_utilisateur`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
       FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_utilisateurs T0    ';
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
-    $where0.=' AND `T0`.`chi_id_utilisateur` IN ('.sq0($par['T0_chi_id_utilisateur']).')'.PHP_EOL;
+    $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_utilisateur`',$par['T0_chi_id_utilisateur']);
     $sql0.=$where0;
     $donnees0=array();
     //echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' .  $sql0  . '</pre>' ; exit(0);
@@ -21,6 +22,10 @@ function sql_47($par,&$donnees_retournees,$that){
             $donnees0[]=array(
                 'T0.chi_id_utilisateur' => $tab0[0],
                 'T0.chp_nom_de_connexion_utilisateur' => $tab0[1],
+                'T0.chp_mot_de_passe_utilisateur' => $tab0[2],
+                'T0.chp_parametres_utilisateur' => $tab0[3],
+                'T0.chi_compteur1_utilisateur' => $tab0[4],
+                'T0.chi_compteur_socket1_utilisateur' => $tab0[5],
             );
         }
         return array(

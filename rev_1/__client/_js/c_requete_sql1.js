@@ -3592,7 +3592,7 @@ class c_requete_sql1{
       =============================================================================================================
     */
     traiter_donnees_bases( par ){
-        console.log( par );
+        /* console.log( par ); */
         this.traiter_donnees_bases_rev( par );
         if(par.fonction_appelee_apres_chargement !== ''){
             this[par.fonction_appelee_apres_chargement]( this.#obj_init , this );

@@ -56,7 +56,7 @@ class c_dossiers1{
 
                     }else{
 
-                        $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'AFR action1 non traitée "' . $action1 . '"';
+                        $donnees_retournees[__x_signaux][__xal][]='action non traitée "' . $action1 . '" [' . __LINE__ . ']';
                     }
 
 
@@ -75,7 +75,7 @@ class c_dossiers1{
 
                 }else{
 
-                    $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $donnees_recues ' . var_export($donnees_recues,true);
+                    $donnees_retournees[__x_signaux][__xal][]='traitement à réaliser pour $donnees_recues ' . var_export($donnees_recues,true) . ' [' . __LINE__ . ']';
                 }
 
                 break;
@@ -126,12 +126,12 @@ class c_dossiers1{
 
         }
 
-        /*
-          afr en modification
+        /*#
+          en modification
           4 a
-          5 b 
-          6 c
-          7 d
+           5 b 
+            6 c
+             7 d
           b(5=$id_actuel) ne peut être mis sous c(6=$chx_parent_dossier) ou  sous d(7=$chx_parent_dossier)
           
         */

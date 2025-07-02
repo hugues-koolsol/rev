@@ -129,6 +129,8 @@ class c_projets1{
         unset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet']);
         unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_requetes_projet']);
         unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']);
+        $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(0)))';
+        
         $donnees_retournees[__xbo]=obtenir_les_menus();
         $donnees_retournees[__xst]=__xsu;
         $this->page_projets_liste1(
@@ -306,13 +308,7 @@ class c_projets1{
                 $donnees_retournees[__xva]['php_des_sql']=$php_des_sql;//$tableau_contenu_js;
             }
         }
-        
-        
-//        
-
-        
-        
-        
+        $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML('.$chi_id_projet.')))';
         $donnees_retournees[__xbo]=obtenir_les_menus();
         $donnees_retournees[__xst]=__xsu;
         $this->page_projets_liste1(
@@ -668,10 +664,6 @@ EOT;
 
                 $donnees_retournees[__x_signaux][__xal][]='le dossier racine existe déjà, il faudra éventuellement reprendre ses fidos [' . __LINE__ . ']';
                 $reprendre_les_fido=true;
-                /*
-                  AFR si il existe déjà, il faut reprendre la structure des dossiers et les insérer en base
-                  
-                */
 
             }else{
 
@@ -868,8 +860,7 @@ EOT;
         }
 
         /*
-          Il faut vérifier 
-          2°] AFR que les tables dépendantes sont vides
+          Il faut vérifier que les tables dépendantes sont vides
           
           tbl_projets => tbl_dossiers
           => tbl_bdds
@@ -1290,7 +1281,7 @@ EOT;
         $o1 .= '      <span>projet</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input  type="text" value="afr" placeholder="insérez un nom de projet" id="chp_nom_projet" maxlength="64" style="width:100%;max-width:20em;" autocapitalize="off" />' . PHP_EOL;
+        $o1 .= '      <input  type="text" value="Nom du projet" placeholder="insérez un nom de projet" id="chp_nom_projet" maxlength="64" style="width:100%;max-width:20em;" autocapitalize="off" />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /* */

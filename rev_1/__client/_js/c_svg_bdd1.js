@@ -704,9 +704,9 @@ class c_svg_bdd1{
             meta_table+='nom_de_la_table( \'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             meta_table+='table( \'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             meta_table+='genre_meta(table_de_base),';
-            meta_table+='nom_long_de_la_table( \'AFR ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
-            meta_table+='nom_court_de_la_table( \'AFR ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
-            meta_table+='nom_bref_de_la_table( \'AFR ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            meta_table+='nom_long_de_la_table( \'A faire  ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            meta_table+='nom_court_de_la_table( \'A faire ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            meta_table+='nom_bref_de_la_table( \'A faire ' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             meta_table+='transform_table_sur_svg( translate( 20 , 20 ))';
             meta_table+=')';
             var a=this.#ajouter_table_a_svg( nom_de_la_table , indice_courant , [20,20] , meta_table );
@@ -866,7 +866,7 @@ class c_svg_bdd1{
         
                 
         
-        /* AFR, vérifier les noms des autres index */
+
         if(nouveau_nom !== ancien_nom){
          
             let trouve=false;
@@ -882,7 +882,6 @@ class c_svg_bdd1{
                 }
             }
             if(trouve===false){
-                debugger
                 
                 
              
@@ -962,8 +961,6 @@ class c_svg_bdd1{
         }else{
         }
         if(mat === null){
-            /* afr */
-            debugger;
             return;
         }
         /* id_svg_text , id_svg_conteneur_table ]{ */
@@ -1216,9 +1213,11 @@ class c_svg_bdd1{
                 nom_de_la_table=mat[i + 1][1];
             }
         }
-        liste_des_champs_de_l_index;
         id_svg_rectangle_de_l_index=parseInt( id_svg_rectangle_de_l_index , 10 );
-        /* afr tester l'existance des champs */
+
+        if(document.getElementById( 'liste_des_champs_de_l_index' ).value.trim()===''){
+         return;
+        }
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_l_index].proprietes['champs']=document.getElementById( 'liste_des_champs_de_l_index' ).value;
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_l_index].proprietes['unique']=document.getElementById( 'unique' ).checked ? ( 1 ) : ( 0 );
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_l_index].proprietes['donnees_rev_de_l_index']='meta( genre_meta(index_de_table) , message( \'' + document.getElementById( 'meta_modifier__message' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\' ))';
@@ -3192,11 +3191,11 @@ class c_svg_bdd1{
         var i=0;
         var j=0;
         var liste_des_champs_de_l_index=document.getElementById( 'liste_des_champs_de_l_index' ).value;
-        if(liste_des_champs_de_l_index === ''){
+        if(liste_des_champs_de_l_index.trim() === ''){
             return;
         }
         var nom_de_l_index=document.getElementById( 'nom_de_l_index' ).value;
-        if(nom_de_l_index === ''){
+        if(nom_de_l_index.trim() === ''){
             return;
         }
         
@@ -3550,9 +3549,9 @@ class c_svg_bdd1{
         t+='<br />a une valeur par défaut <input id="a_une_valeur_par_defaut" type="checkbox" />';
         t+=' , type caractère <input id="la_valeur_par_defaut_est_caractere" type="checkbox" />';
         t+=' , valeur : <input id="valeur_par_defaut" type="text" value="" autocapitalize="off"  /> ';
-        t+='<br />nom long du champ : <input type="text" id="meta_ajouter__nom_long_du_champ" value="AFR ..." autocapitalize="off" />';
-        t+='<br />nom court du champ : <input type="text" id="meta_ajouter__nom_court_du_champ" value="AFR ..." autocapitalize="off" />';
-        t+='<br />nom bref du champ : <input type="text" id="meta_ajouter__nom_bref_du_champ" value="AFR ..." autocapitalize="off" />';
+        t+='<br />nom long du champ : <input type="text" id="meta_ajouter__nom_long_du_champ" value="A faire ..." autocapitalize="off" />';
+        t+='<br />nom court du champ : <input type="text" id="meta_ajouter__nom_court_du_champ" value="A faire ..." autocapitalize="off" />';
+        t+='<br />nom bref du champ : <input type="text" id="meta_ajouter__nom_bref_du_champ" value="A faire ..." autocapitalize="off" />';
         t+='<br />afficher_champ_dans_svg : <input id="afficher_champ_dans_svg" type="checkbox" checked />';
         t+='<br />champ_date_modification : <input id="champ_date_modification" type="checkbox" />';
         t+='<br />champ_date_creation : <input id="champ_date_creation" type="checkbox" />';

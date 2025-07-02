@@ -58,22 +58,27 @@ class c_pages1{
         }
 
         $mdp=password_hash($donnees_recues[__xva]['vv_chp_mot_de_passe_utilisateur'],PASSWORD_BCRYPT,array( 'cost' => 10));
-        /*
-          afr
-          convertir cette requête
-        */
-        $sql0='';
-        $sql0 .= 'UPDATE bdd_1.tbl_utilisateurs SET ';
-        $sql0 .= '   `chp_nom_de_connexion_utilisateur` = ' . sq1($donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur']) . ' ';
-        $sql0 .= ' , `chp_mot_de_passe_utilisateur` = ' . sq1($mdp) . ' ';
-        $sql0 .= 'WHERE `chi_id_utilisateur` = ' . sq1($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']) . '  ';
-        /* $donnees_retournees[__x_signaux][__xer][]=$sql0; */
-        $err=error_reporting(0);
-        $stmt0=$GLOBALS[__BDD][1][LIEN_BDD]->exec($sql0);
-        error_reporting($err);
         
-        if($stmt0 === false){
+        $tt=/*sql_inclure_deb*/
+            /* sql_67()
 
+              UPDATE b1.tbl_utilisateurs SET 
+                 `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
+                 `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
+              WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
+             /*sql_67()*/ 67,
+            array( 
+              'n_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur'],
+              'n_chp_mot_de_passe_utilisateur' => $mdp ,
+              'c_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt[__xst] === __xer){
             $donnees_retournees[__x_signaux][__xer][]='Erreur';
             $this->recupere_la_page_des_coordonnees($donnees_retournees,$mat,$donnees_recues,$donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur']);
 
@@ -150,18 +155,23 @@ class c_pages1{
             $donnees_retournees[__xbo]=obtenir_les_menus();
             $donnees_retournees[__xst]=__xsu;
             $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
-            /*
-              afr
-              convertir cette requête
-            */
-            $sql0='';
-            $sql0 .= 'UPDATE bdd_1.tbl_utilisateurs SET ';
-            $sql0 .= '   `chi_compteur1_utilisateur` = chi_compteur1_utilisateur+1 ';
-            $sql0 .= 'WHERE `chi_id_utilisateur` = ' . sq1($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']) . '  ';
-            /* $donnees_retournees[__x_signaux][__xer][]=$sql0; */
-            $err=error_reporting(0);
-            $stmt0=$GLOBALS[__BDD][1][LIEN_BDD]->exec($sql0);
-            error_reporting($err);
+            
+            $tt=/*sql_inclure_deb*/
+                /*#
+                  sql_72()
+
+                  UPDATE b1.tbl_utilisateurs SET 
+                     `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
+                  WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
+                 /*sql_72()*/ 72,
+                array( 
+                  'c_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']
+                ),
+                $donnees_retournees
+            );
 
         }else{
 
@@ -300,23 +310,50 @@ class c_pages1{
     */
     function recupere_la_page_des_coordonnees(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues,$chp_nom_de_connexion_utilisateur='webmaster@example.com'){
         $txt='';
-        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_retournees , true ) . '</pre>' ; exit(0);*/
+        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);
         
         if(!isset($donnees_retournees[__x_authentifie]) || $donnees_retournees[__x_authentifie] === __xer){
 
             $txt .= $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
 
         }else{
-
-            $txt .= '<h1>mes coordonnées</h1>';
-            $txt .= '<div id="vv_formulaire_de_changement_de_nom_et_de_mot_de_passe">';
-            $txt .= '  <span>nouveau nom</span>';
-            $txt .= '  <input type="text" id="vv_chp_nom_de_connexion_utilisateur" value="' . $chp_nom_de_connexion_utilisateur . '" autocapitalize="off" />';
-            $txt .= '  <br />';
-            $txt .= '  <span>nouveau mot de passe</span>';
-            $txt .= '  <input type="password" id="vv_chp_mot_de_passe_utilisateur" value="" autocomplete="off" />';
-            $txt .= '  <div class="hug_bouton" data-hug_click="c_pages1.formulaire1(conteneur1(vv_formulaire_de_changement_de_nom_et_de_mot_de_passe))" title="Cliquez ici pour vous connecter">changer mes coordonnées</div>';
-            $txt .= '</div>';
+         
+         
+            $tt=/*sql_inclure_deb*/
+                /* sql_47()
+                  SELECT 
+                  `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+                  `T0`.`chi_compteur_socket1_utilisateur`
+                   FROM b1.tbl_utilisateurs T0
+                  WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+                  ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
+                 /*sql_47()*/ 47,
+                array( 
+                  'T0_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                ),
+                $donnees_retournees
+            );
+            
+            if($tt[__xst] === __xer){
+                $donnees_retournees[__x_signaux][__xer][]='Utilisateur non trouvé en base !!!! [' . __LINE__ . ']';
+             
+            }else{
+                $txt .= '<h1>mes coordonnées</h1>';
+                $txt .= '<div id="vv_formulaire_de_changement_de_nom_et_de_mot_de_passe">';
+                $txt .= '  <span>nouveau nom</span>';
+                $txt .= '  <input type="text" id="vv_chp_nom_de_connexion_utilisateur" value="' . $tt[__xva][0]['T0.chp_nom_de_connexion_utilisateur'] . '" autocapitalize="off" />';
+                $txt .= '  <br />';
+                $txt .= '  <span>nouveau mot de passe</span>';
+                $txt .= '  <input type="password" id="vv_chp_mot_de_passe_utilisateur" value="" autocomplete="off" />';
+                $txt .= '  <div class="hug_bouton" data-hug_click="c_pages1.formulaire1(conteneur1(vv_formulaire_de_changement_de_nom_et_de_mot_de_passe))" title="Cliquez ici pour vous connecter">changer mes coordonnées</div>';
+                $txt .= '</div>';
+                $txt .= '<div>';
+                $txt .= 'Vous vous êtes connecté ' . $tt[__xva][0]['T0.chi_compteur1_utilisateur'] .' fois ;-)';
+                $txt .= '</div>';
+            }
         }
 
         $txt .= $this->recupere_blocs_bidons('coordonnees');
@@ -656,10 +693,14 @@ EOT;
         $donnees_retournees[__x_page] .= '</main>';
         
         if($sans_menus1 === false){
-
+            $chi_id_projet=0;
+            if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
+             $chi_id_projet=$_SESSION[__X_CLE_APPLICATION]['chi_id_projet'];
+            }
+            
+            $donnees_retournees[__x_page] .= '<nav id="vv_bas_de_page">';
+            $donnees_retournees[__x_page] .='<div id="vv_projet_en_cours" style="border-width:0;">'.$chi_id_projet.'</div>';
             $donnees_retournees[__x_page] .= <<<EOT
-                <nav id="vv_bas_de_page">
-                    <button class="hug_bouton" onclick="mes_tests_js001()">js001</button>
                     <div class="hug_bouton" data-hug_click="c_pages1.recupere_la_page_d_accueil()" title="affiche la page d'accueil">Accueil</div>
                     <div class="hug_bouton" data-hug_click="c_pages1.recupere_la_page_de_connexion()">connexion</div>
                     <div class="hug_bouton" data-hug_click="c_pages1.recupere_la_page_d_aide()">aide</div>
@@ -670,6 +711,8 @@ EOT;
                 <dialog id="vv_sous_fenetre1"></dialog>
         
 EOT;
+
+            
 
         }
 

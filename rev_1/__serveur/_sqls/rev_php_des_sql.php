@@ -518,9 +518,10 @@ WHERE (`T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
   47 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur`
+`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+`T0`.`chi_compteur_socket1_utilisateur`
  FROM b1.tbl_utilisateurs T0
-WHERE `T0`.`chi_id_utilisateur` IN (:T0_chi_id_utilisateur)
+WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',
     'cht_commentaire_requete' => NULL,
   ),
@@ -743,6 +744,16 @@ WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
 ;',
     'cht_commentaire_requete' => NULL,
   ),
+  67 => 
+  array (
+    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
+
+UPDATE b1.tbl_utilisateurs SET 
+   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
+   `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
+    'cht_commentaire_requete' => '',
+  ),
   68 => 
   array (
     'cht_sql_requete' => 'SELECT 
@@ -777,5 +788,12 @@ WHERE `chx_projet_dossier` = :chx_projet_dossier ;',
 WHERE (`T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
 ;',
     'cht_commentaire_requete' => 'bases d\'un projet',
+  ),
+  72 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_utilisateurs SET 
+   `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
+    'cht_commentaire_requete' => NULL,
   ),
 );

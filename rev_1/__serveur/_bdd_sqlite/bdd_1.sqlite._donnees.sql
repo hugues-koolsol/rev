@@ -6,7 +6,7 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$1rlgEVI6wk.9ob9QvFKeZuIVfOryyn21Ic4wn0d10V8r5rDdrVbwW','','433','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00');
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','438','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00');
 
 
 /*
@@ -41,10 +41,10 @@ INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_p
 ('23','1','dump de la base en local','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('26','1','travaux en batch','8','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('26','1','travaux en batch','7','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('28','1','profils de css','50','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('29','1','astuces','9','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('29','1','astuces','8','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -110,9 +110,9 @@ et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00','2000-01-
 ('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('78','1','ne pas mettre plus de 1000 éléments dans un dossier','11','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('78','1','ne pas mettre plus de 1000 éléments dans un dossier','10','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('80','1','table des bugs','13','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('80','1','table des bugs','12','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('82','1','supprimer une projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('83','1','ajouter les champs 
@@ -125,7 +125,7 @@ dtc date technique de création','99','0','2000-01-01 00:00:00','2000-01-01 00:0
 ('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('88','1','sortable pour svg','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('90','1','dupliquer une table','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('90','1','dupliquer une table','13','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('92','1','quand on modifie le nom d''une table
 alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -141,7 +141,7 @@ dans le champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('99','1','corriger le bug : après tri des champs, on pert l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('100','1','ne pas masquer un champ si c''est une référence, une clé, un auto_increment
 ou si le champ appartient à un index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('101','1','ajouter des tests de validité sur le svg base','15','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('101','1','ajouter des tests de validité sur le svg base','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('102','1','sauvegarder une table sans champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('103','1','requetes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('104','1','mettre le dump de la base dans la liste des bases','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -221,7 +221,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chp__dtm_tache`)
 flag champ_date_modification','99','4','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','12','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','11','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -261,17 +261,19 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','10','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','6','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
-('170','1','initialiser ecran standard d''une table','7','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
-('171','1','gérer les menus','4','0','2025-06-26 17:24:34.522','2025-06-26 17:24:34.522'),
-('172','1','gérer les utilisateurs et les groupes et les métiers','5','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
-('173','1','gérer les paramètres','3','1','2025-06-29 09:28:25.098','2025-06-27 10:13:20.409'),
+comme3(xxx)','9','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
+('169','1','initialiser projet standard','5','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
+('170','1','initialiser ecran standard d''une table','6','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
+('171','1','gérer les menus','3','0','2025-06-26 17:24:34.522','2025-06-26 17:24:34.522'),
+('172','1','gérer les utilisateurs et les groupes et les métiers','4','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
+('173','1','gérer les paramètres ( liste des constantes )','1','2','2025-07-02 11:21:34.145','2025-06-27 10:13:20.409'),
 ('174','1','mettre en github
 ','99','0','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817'),
 ('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038'),
-('176','1','supprimer les afr','1','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
-('177','1','créer la base appli dans un autre répertoire que les bases de données','2','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962');
+('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
+('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962'),
+('178','1','ajouter un dictionnaire de données','2','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
+('179','1','corriger fichier_des_dependances','0','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399');
 
 
 /*
@@ -1302,17 +1304,25 @@ WHERE (`T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('47','1','select','sélectionner(
    base_de_reference(1),
-   valeurs( champ( `T0` , `chi_id_utilisateur` ) , champ( `T0` , `chp_nom_de_connexion_utilisateur` )),
+   valeurs(
+      champ( `T0` , `chi_id_utilisateur`),
+      champ( `T0` , `chp_nom_de_connexion_utilisateur`),
+      champ( `T0` , `chp_mot_de_passe_utilisateur`),
+      champ( `T0` , `chp_parametres_utilisateur`),
+      champ( `T0` , `chi_compteur1_utilisateur`),
+      champ( `T0` , `chi_compteur_socket1_utilisateur`)
+   ),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_utilisateurs , alias(T0) , base(b1) ))
       )
    ),
-   conditions( dans( champ( `T0` , `chi_id_utilisateur` ) , (:T0_chi_id_utilisateur) ))
+   conditions( egal( champ( `T0` , `chi_id_utilisateur` ) , (:T0_chi_id_utilisateur) ))
 )  ','SELECT 
-`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur`
+`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+`T0`.`chi_compteur_socket1_utilisateur`
  FROM b1.tbl_utilisateurs T0
-WHERE `T0`.`chi_id_utilisateur` IN (:T0_chi_id_utilisateur)
+WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('48','1','update','modifier(
    base_de_reference(1),
@@ -1744,6 +1754,22 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
 WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
    AND `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier)
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('67','1','update','#(meta(sur_base_de_reference(1))),
+modifier(
+   base_de_reference(1),
+   valeurs( affecte( champ( `chp_nom_de_connexion_utilisateur` ) , :n_chp_nom_de_connexion_utilisateur ) , affecte( champ( `chp_mot_de_passe_utilisateur` ) , :n_chp_mot_de_passe_utilisateur )),
+   provenance(
+      table_reference(
+         source( nom_de_la_table( tbl_utilisateurs , base(b1) ))
+      )
+   ),
+   conditions( egal( champ( `chi_id_utilisateur` ) , :c_chi_id_utilisateur ))
+)  ','/*meta(sur_base_de_reference(1))*/
+
+UPDATE b1.tbl_utilisateurs SET 
+   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
+   `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('68','1','select','sélectionner(
    base_de_reference(1),
    valeurs( compter( tous_les_champs() )),
@@ -1807,7 +1833,19 @@ WHERE `chx_projet_dossier` = :chx_projet_dossier ;',NULL,'dossier racine d''un p
 `T0`.`chi_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_rev_travail_basedd`
  FROM b1.tbl_bdds T0
 WHERE (`T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
-;',NULL,'bases d''un projet',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+;',NULL,'bases d''un projet',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('72','1','update','modifier(
+   base_de_reference(1),
+   valeurs( affecte( champ( `chi_compteur1_utilisateur` ) , plus( chi_compteur1_utilisateur , 1 ) )),
+   provenance(
+      table_reference(
+         source( nom_de_la_table( tbl_utilisateurs , base(b1) ))
+      )
+   ),
+   conditions( egal( champ( `chi_id_utilisateur` ) , :c_chi_id_utilisateur ))
+)  ','UPDATE b1.tbl_utilisateurs SET 
+   `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 
 /*
@@ -1847,7 +1885,8 @@ INSERT INTO tbl_dossiers (chi_id_dossier,chx_projet_dossier,chp_nom_dossier,chx_
 ('3','1','_bdd_sqlite','2','1','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('4','2',NULL,NULL,'0','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('6','1','_sqls','2','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
-('7','1','__client','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
+('7','1','__client','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('8','1','test','3','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 
 /*
@@ -3552,5 +3591,13 @@ ajouter_index(
    meta( nom_de_l_index(idx_1) , genre_meta(index_de_table) , message( '''' )),
    champs( ''chi_id_yyy''),
    unique()
-)','sqlite','3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+),
+#(=================================================================),
+ajouter_index(
+   #(),
+   nom_de_la_table_pour_l_index( ''tbl_yyys''),
+   nom_de_l_index( ''idx_2''),
+   meta( nom_de_l_index(idx_2) , genre_meta(index_de_table) , message( '''' )),
+   champs( ''chi_toto_yyy'')
+)','sqlite','8','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 

@@ -174,7 +174,7 @@ class c_sql0{
             /*
               echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_de_la_bdd , true ) . '</pre>' ; exit(0);
             */
-            $nom_fichier_dependances=$chemin_de_la_bdd . DIRECTORY_SEPARATOR . 'fichier_des_dependances.php';
+            $nom_fichier_dependances=$chemin_de_la_bdd . DIRECTORY_SEPARATOR . 'fichier_des_dependances_bdd_'.$par['id_bdd'].'.php';
             /*
               Attention, c'est un require SANS once ici car la variable $tableau_des_dependances DOIT être rechargée
             */
