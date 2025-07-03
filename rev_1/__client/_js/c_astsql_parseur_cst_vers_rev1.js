@@ -568,7 +568,7 @@ class c_astsql_parseur_cst_vers_rev1{
                         }
                         t+=name + args;
                     }else{
-                        return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' ' } ));
+                        return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' '} ));
                     }
                     break;
                     
@@ -588,7 +588,7 @@ class c_astsql_parseur_cst_vers_rev1{
                 case 'number_literal' : t+=element.items[i].value;
                     break;
                 default:
-                    return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' ' + element.items[i].type } ));
+                    return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' ' + element.items[i].type} ));
                     break;
                     
             }
@@ -665,7 +665,7 @@ class c_astsql_parseur_cst_vers_rev1{
             case 'IN' : t+='dans(' + t1 + ',' + t2 + ')';
                 break;
             default:
-                return(this.#astsql_le( {"__xst" : __xsu ,"__xme" : operator+ ' ' + this.__m_rev1.nl2()} ));
+                return(this.#astsql_le( {"__xst" : __xsu ,"__xme" : operator + ' ' + this.__m_rev1.nl2()} ));
                 break;
                 
         }
@@ -705,8 +705,7 @@ class c_astsql_parseur_cst_vers_rev1{
                 vient_de.pop();
                 break;
                 
-            default: 
-                return(this.#astsql_le( {"__xst" : __xsu ,"__xme" : this.__m_rev1.nl2()} ));
+            default: return(this.#astsql_le( {"__xst" : __xsu ,"__xme" : this.__m_rev1.nl2()} ));
                 break;
         }
         return({"__xst" : __xsu ,"__xva" : t});
@@ -1052,9 +1051,7 @@ class c_astsql_parseur_cst_vers_rev1{
                         }
                         break;
                         
-                    default:
-                        return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' '} ));
-                        
+                    default: return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' '} ));
                 }
                 break;
                 
@@ -1092,9 +1089,7 @@ class c_astsql_parseur_cst_vers_rev1{
                         }
                         break;
                         
-                    default:
-                        return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' '} ));
-                        
+                    default: return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' '} ));
                 }
                 break;
                 
@@ -1229,9 +1224,10 @@ class c_astsql_parseur_cst_vers_rev1{
                 vient_de.pop();
                 break;
                 
-            default: 
+            default:
                 return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' '} ));
                 break;
+                
         }
         return({"__xst" : __xsu ,"__xva" : t});
     }
@@ -1555,8 +1551,7 @@ class c_astsql_parseur_cst_vers_rev1{
                 vient_de.pop();
                 break;
                 
-            default:
-                return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' '} ));
+            default: return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' '} ));
         }
         return({"__xst" : __xsu ,"__xva" : t});
     }

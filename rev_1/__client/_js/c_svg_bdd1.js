@@ -431,24 +431,19 @@ class c_svg_bdd1{
         var nom_de_la_table=document.getElementById( 'ancien_nom' ).value;
         id_svg_conteneur_table=parseInt( id_svg_conteneur_table , 10 );
         if(nouveau_nom !== nom_de_la_table){
-         
             let trouve=false;
-            var lst=document.getElementById(this.#id_svg_de_la_base_en_cours).getElementsByTagName('rect');
-            for(let i=0;i<lst.length;i++){
-                if(lst[i].getAttribute('type_element') && 'rectangle_de_table'===lst[i].getAttribute('type_element') ){
-                    if( parseInt( lst[i].id , 10)!== id_svg_rectangle_de_la_table ){
-                        if(lst[i].getAttribute('nom_de_la_table')===nouveau_nom){
+            var lst=document.getElementById( this.#id_svg_de_la_base_en_cours ).getElementsByTagName( 'rect' );
+            for( let i=0 ; i < lst.length ; i++ ){
+                if(lst[i].getAttribute( 'type_element' ) && 'rectangle_de_table' === lst[i].getAttribute( 'type_element' )){
+                    if(parseInt( lst[i].id , 10 ) !== id_svg_rectangle_de_la_table){
+                        if(lst[i].getAttribute( 'nom_de_la_table' ) === nouveau_nom){
                             trouve=true;
-                            break
+                            break;
                         }
                     }
                 }
             }
-
-            if(trouve===false){
-            
-            
-                
+            if(trouve === false){
                 let source_sql='ALTER TABLE ' + nom_de_la_table + ' RENAME  TO ' + nouveau_nom + '';
                 var maj='';
                 maj+='maj_interface1(fermer_fenetre1())';
@@ -485,7 +480,6 @@ class c_svg_bdd1{
     */
     #renommer_table_sur_svg( id_svg_du_texte , id_svg_conteneur_table , id_svg_rectangle_de_la_table , nouveau_nom , ancien_nom ){
         id_svg_conteneur_table=parseInt( id_svg_conteneur_table , 10 );
-        
         if(nouveau_nom !== ancien_nom){
             /* changement du visuel */
             id_svg_du_texte=parseInt( id_svg_du_texte , 10 );
@@ -628,21 +622,20 @@ class c_svg_bdd1{
         }
         var nouveau_nom=document.getElementById( 'nouveau_nom' ).value;
         var ancien_nom=document.getElementById( 'ancien_nom' ).value;
-        if(nouveau_nom!==ancien_nom){
-         
+        if(nouveau_nom !== ancien_nom){
             let trouve=false;
-            var lst=document.getElementById(this.#id_svg_de_la_base_en_cours).getElementsByTagName('rect');
-            for(let i=0;i<lst.length;i++){
-                if(lst[i].getAttribute('type_element') && 'rectangle_de_table'===lst[i].getAttribute('type_element') ){
-                    if( parseInt( lst[i].id , 10)!== id_svg_rectangle_de_la_table ){
-                        if(lst[i].getAttribute('nom_de_la_table')===nouveau_nom){
+            var lst=document.getElementById( this.#id_svg_de_la_base_en_cours ).getElementsByTagName( 'rect' );
+            for( let i=0 ; i < lst.length ; i++ ){
+                if(lst[i].getAttribute( 'type_element' ) && 'rectangle_de_table' === lst[i].getAttribute( 'type_element' )){
+                    if(parseInt( lst[i].id , 10 ) !== id_svg_rectangle_de_la_table){
+                        if(lst[i].getAttribute( 'nom_de_la_table' ) === nouveau_nom){
                             trouve=true;
-                            break
+                            break;
                         }
                     }
                 }
             }
-            if(trouve===false){
+            if(trouve === false){
                 this.#renommer_table_sur_svg( id_svg_du_texte , id_svg_conteneur_table , id_svg_rectangle_de_la_table , nouveau_nom , ancien_nom );
             }
         }
@@ -681,20 +674,17 @@ class c_svg_bdd1{
             }
         }
         var nom_de_la_table=document.getElementById( id_de_la_zone ).value;
-        
-        
         let trouve=false;
-        var lst=document.getElementById(this.#id_svg_de_la_base_en_cours).getElementsByTagName('rect');
-        for(let i=0;i<lst.length;i++){
-            if(lst[i].getAttribute('type_element') && 'rectangle_de_table'===lst[i].getAttribute('type_element') ){
-                if(lst[i].getAttribute('nom_de_la_table')===nom_de_la_table){
+        var lst=document.getElementById( this.#id_svg_de_la_base_en_cours ).getElementsByTagName( 'rect' );
+        for( let i=0 ; i < lst.length ; i++ ){
+            if(lst[i].getAttribute( 'type_element' ) && 'rectangle_de_table' === lst[i].getAttribute( 'type_element' )){
+                if(lst[i].getAttribute( 'nom_de_la_table' ) === nom_de_la_table){
                     trouve=true;
-                    break
+                    break;
                 }
             }
         }
-
-        if(trouve===false){
+        if(trouve === false){
             var j=0;
             var i=0;
             var indice_courant=this.#recuperer_prochain_id_svg();
@@ -716,8 +706,6 @@ class c_svg_bdd1{
             __gi1.fermer_fenetre1();
             this.#dessiner_le_svg();
         }
-        
-        
     }
     /*
       
@@ -756,25 +744,19 @@ class c_svg_bdd1{
         var champ_numero_de_revision=document.getElementById( 'champ_numero_de_revision' ).checked ? ( 1 ) : ( 0 );
         var j=0;
         var i=0;
-        
         let trouve=false;
-        var lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName('text');
-        for(let i=0;i<lst.length;i++){
-            if(lst[i].getAttribute('type_element') && 'texte_de_champ'===lst[i].getAttribute('type_element') ){
-                if(lst[i].getAttribute('nom_du_champ')===nom_du_champ){
+        var lst=document.getElementById( id_svg_conteneur_table ).getElementsByTagName( 'text' );
+        for( let i=0 ; i < lst.length ; i++ ){
+            if(lst[i].getAttribute( 'type_element' ) && 'texte_de_champ' === lst[i].getAttribute( 'type_element' )){
+                if(lst[i].getAttribute( 'nom_du_champ' ) === nom_du_champ){
                     trouve=true;
-                    break
+                    break;
                 }
             }
         }
-
-        if(trouve===true){
-         return;
+        if(trouve === true){
+            return;
         }
-        
-        
-        
-        
         document.getElementById( 'zone_message_ajouter_un_champ' ).innerHTML='';
         if(chp_type_champ === '' || typologie === '' || nom_du_champ === ''){
             document.getElementById( 'zone_message_ajouter_un_champ' ).innerHTML='Vous devez choisir un type de champ et une typologie et renseigner le nom du champ';
@@ -822,7 +804,6 @@ class c_svg_bdd1{
         rev+='    champ_date_creation(' + champ_date_creation + ')';
         rev+='    champ_numero_de_revision(' + champ_numero_de_revision + ')';
         rev+=')';
-
         /*
           a_une_valeur_par_defaut,
           valeur_par_defaut,
@@ -858,34 +839,22 @@ class c_svg_bdd1{
                 id_svg_conteneur_d_index=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        
-        
-        
         var nouveau_nom=document.getElementById( 'nouveau_nom' ).value;
         var ancien_nom=document.getElementById( 'ancien_nom' ).value;
-        
-                
-        
-
         if(nouveau_nom !== ancien_nom){
-         
             let trouve=false;
-            var lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName('rect');
-            for(let i=0;i<lst.length;i++){
-                if(lst[i].getAttribute('type_element') && 'rectangle_d_index'===lst[i].getAttribute('type_element') ){
-                    if( parseInt( lst[i].id , 10)!== id_svg_rectangle_de_l_index ){
-                        if(lst[i].getAttribute('nom_de_l_index')===nouveau_nom){
+            var lst=document.getElementById( id_svg_conteneur_table ).getElementsByTagName( 'rect' );
+            for( let i=0 ; i < lst.length ; i++ ){
+                if(lst[i].getAttribute( 'type_element' ) && 'rectangle_d_index' === lst[i].getAttribute( 'type_element' )){
+                    if(parseInt( lst[i].id , 10 ) !== id_svg_rectangle_de_l_index){
+                        if(lst[i].getAttribute( 'nom_de_l_index' ) === nouveau_nom){
                             trouve=true;
-                            break
+                            break;
                         }
                     }
                 }
             }
-            if(trouve===false){
-                
-                
-             
-             
+            if(trouve === false){
                 /* changement du visuel */
                 var id_zone_element_svg=parseInt( id_svg_text , 10 );
                 var element_svg=document.getElementById( id_zone_element_svg );
@@ -1019,24 +988,19 @@ class c_svg_bdd1{
         var nouveau_nom=document.getElementById( 'nouveau_nom' ).value;
         var ancien_nom=document.getElementById( 'ancien_nom' ).value;
         if(nouveau_nom !== ancien_nom){
-         
-         
             let trouve=false;
-            var lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName('text');
-            for(let i=0;i<lst.length;i++){
-                if(lst[i].getAttribute('type_element') && 'texte_de_champ'===lst[i].getAttribute('type_element') ){
-                    if( parseInt( lst[i].id , 10)!== id_svg_text ){
-                        if(lst[i].getAttribute('nom_du_champ')===nouveau_nom){
+            var lst=document.getElementById( id_svg_conteneur_table ).getElementsByTagName( 'text' );
+            for( let i=0 ; i < lst.length ; i++ ){
+                if(lst[i].getAttribute( 'type_element' ) && 'texte_de_champ' === lst[i].getAttribute( 'type_element' )){
+                    if(parseInt( lst[i].id , 10 ) !== id_svg_text){
+                        if(lst[i].getAttribute( 'nom_du_champ' ) === nouveau_nom){
                             trouve=true;
-                            break
+                            break;
                         }
                     }
                 }
             }
-
-            if(trouve===false){
-             
-             
+            if(trouve === false){
                 /*  */
                 let source_sql='ALTER TABLE ' + nom_de_la_table + ' RENAME COLUMN ' + ancien_nom + ' TO ' + nouveau_nom + '';
                 var maj='';
@@ -1175,22 +1139,19 @@ class c_svg_bdd1{
         var nouveau_nom=document.getElementById( 'nouveau_nom' ).value;
         var ancien_nom=document.getElementById( 'ancien_nom' ).value;
         if(nouveau_nom !== ancien_nom){
-         
-         
             let trouve=false;
-            var lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName('text');
-            for(let i=0;i<lst.length;i++){
-                if(lst[i].getAttribute('type_element') && 'texte_de_champ'===lst[i].getAttribute('type_element') ){
-                    if( parseInt( lst[i].id , 10)!== id_svg_text ){
-                        if(lst[i].getAttribute('nom_du_champ')===nouveau_nom){
+            var lst=document.getElementById( id_svg_conteneur_table ).getElementsByTagName( 'text' );
+            for( let i=0 ; i < lst.length ; i++ ){
+                if(lst[i].getAttribute( 'type_element' ) && 'texte_de_champ' === lst[i].getAttribute( 'type_element' )){
+                    if(parseInt( lst[i].id , 10 ) !== id_svg_text){
+                        if(lst[i].getAttribute( 'nom_du_champ' ) === nouveau_nom){
                             trouve=true;
-                            break
+                            break;
                         }
                     }
                 }
             }
-
-            if(trouve===false){
+            if(trouve === false){
                 this.#changer_le_nom_de_champ_sur_le_svg( id_svg_conteneur_table , id_svg_text , id_svg_champ_en_cours , nouveau_nom , ancien_nom );
             }
         }
@@ -1214,9 +1175,8 @@ class c_svg_bdd1{
             }
         }
         id_svg_rectangle_de_l_index=parseInt( id_svg_rectangle_de_l_index , 10 );
-
-        if(document.getElementById( 'liste_des_champs_de_l_index' ).value.trim()===''){
-         return;
+        if(document.getElementById( 'liste_des_champs_de_l_index' ).value.trim() === ''){
+            return;
         }
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_l_index].proprietes['champs']=document.getElementById( 'liste_des_champs_de_l_index' ).value;
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_l_index].proprietes['unique']=document.getElementById( 'unique' ).checked ? ( 1 ) : ( 0 );
@@ -1241,7 +1201,6 @@ class c_svg_bdd1{
                 nom_de_la_table=mat[i + 1][1];
             }
         }
-
         var id_de_l_index=parseInt( document.getElementById( id_svg_rectangle_de_l_index ).parentNode.id , 10 );
         this.#supprimer_recursivement_les_elements_de_l_arbre( this.#id_bdd_de_la_base_en_cours , id_de_l_index );
         __gi1.fermer_fenetre1();
@@ -3198,21 +3157,17 @@ class c_svg_bdd1{
         if(nom_de_l_index.trim() === ''){
             return;
         }
-        
         let trouve=false;
-        var lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName('rect');
-        for(let i=0;i<lst.length;i++){
-            if(lst[i].getAttribute('type_element') && 'rectangle_d_index'===lst[i].getAttribute('type_element') ){
-                if(lst[i].getAttribute('nom_de_l_index')===nom_de_l_index){
+        var lst=document.getElementById( id_svg_conteneur_table ).getElementsByTagName( 'rect' );
+        for( let i=0 ; i < lst.length ; i++ ){
+            if(lst[i].getAttribute( 'type_element' ) && 'rectangle_d_index' === lst[i].getAttribute( 'type_element' )){
+                if(lst[i].getAttribute( 'nom_de_l_index' ) === nom_de_l_index){
                     trouve=true;
-                    break
+                    break;
                 }
             }
         }
-
-        if(trouve===false){
-            
-            
+        if(trouve === false){
             var message_de_l_index=document.getElementById( 'message_de_l_index' ).value;
             var unique=document.getElementById( 'unique' ).checked ? ( 1 ) : ( 0 );
             var max_id=-1;

@@ -133,7 +133,6 @@ class c_dossiers1{
             6 c
              7 d
           b(5=$id_actuel) ne peut être mis sous c(6=$chx_parent_dossier) ou  sous d(7=$chx_parent_dossier)
-          
         */
         
         if($id_actuel !== null){

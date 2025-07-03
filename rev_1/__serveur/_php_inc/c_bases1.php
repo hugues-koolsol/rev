@@ -1213,7 +1213,7 @@ class c_bases1{
                 /*
                   echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_de_la_bdd , true ) . '</pre>' ; exit(0);
                 */
-                $nom_fichier_dependances=$chemin_de_la_bdd . DIRECTORY_SEPARATOR . 'fichier_des_dependances_bdd_'.$donnees_recues[__xva]['id_bdd_de_la_base'].'.php';
+                $nom_fichier_dependances=$chemin_de_la_bdd . DIRECTORY_SEPARATOR . 'fichier_des_dependances_bdd_' . $donnees_recues[__xva]['id_bdd_de_la_base'] . '.php';
                 
                 if($fd=fopen($nom_fichier_dependances,'w')){
 
@@ -1610,55 +1610,56 @@ class c_bases1{
         );
         
         if($tt[__xst] === __xsu){
-         
+
             
-         
-            if(__X_CLE_APPLICATION==='rev'.'_1' || __X_CLE_APPLICATION==='rev'.'_2'  ){
-                if( $donnees_recues[__xva]['chx_dossier_id_basedd'] >=2 ){
+            if(__X_CLE_APPLICATION === 'rev' . '_1' || __X_CLE_APPLICATION === 'rev' . '_2'){
+
+                
+                if($donnees_recues[__xva]['chx_dossier_id_basedd'] >= 2){
+
                     /*
                       si on est sur rev 1/2, une base  autre que 1 ne doit pas être dans le même répertoire que celui des bases systèmes
                     */
-
-
-                   $tt26bis=/*sql_inclure_deb*/
-                       /* sql_26()
-                       SELECT 
-
-                       `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
-
-                       `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
-
-                       `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
-                        FROM b1.tbl_bdds T0
-
-                        LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-                       
-
-                        LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
-                       
-                       WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
-
-                          AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
-                       ;
-                       */
-                       /*sql_inclure_fin*/
-                       $this->sql0->sql_iii(
-                        /*sql_26()*/ 26,
-                       array( 'T0_chi_id_basedd' => 1, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
-                       $donnees_retournees
-                   );
-                   
-                   if($tt26bis[__xst] === __xsu){
-//                       echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = '.'<pre>' . var_export( $donnees_recues[__xva]['chx_dossier_id_basedd'] , true ) . '</pre>' ; exit(0);
-                    
-                       if((int)$tt26bis[__xva][0]['T0.chx_dossier_id_basedd'] === (int)$donnees_recues[__xva]['chx_dossier_id_basedd'] ){
+                    $tt26bis=/*sql_inclure_deb*/
+                        /* sql_26()
+                        SELECT 
+                        `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
+                        `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
+                        `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+                         FROM b1.tbl_bdds T0
+                         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
+                        
+                         LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
                         
-                           $donnees_retournees[__x_signaux][__xer][]='vous devez spécifier un autre dossier [' . __LINE__ . ']';
-                           return;
-                           
-                       }
-                   }
+                        WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+                           AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
+                        ;
+                        */
+                        /*sql_inclure_fin*/
+                        $this->sql0->sql_iii(
+                         /*sql_26()*/ 26,
+                        array( 'T0_chi_id_basedd' => 1, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
+                        $donnees_retournees
+                    );
+                    
+                    if($tt26bis[__xst] === __xsu){
+
+                        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = '.'<pre>' . var_export( $donnees_recues[__xva]['chx_dossier_id_basedd'] , true ) . '</pre>' ; exit(0);*/
+                        
+                        if(((int)($tt26bis[__xva][0]['T0.chx_dossier_id_basedd'])) === ((int)($donnees_recues[__xva]['chx_dossier_id_basedd']))){
+
+                            $donnees_retournees[__x_signaux][__xer][]='vous devez spécifier un autre dossier [' . __LINE__ . ']';
+                            return;
+
+                        }
+
+
+                    }
+
+
                 }
+
+
             }
 
             $tt=/*sql_inclure_deb*/
@@ -2411,7 +2412,6 @@ class c_bases1{
             $lsttbl .= '</tr>';
         }
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
-
         $donnees_retournees[__x_page] .= $o1;
         $donnees_retournees[__x_action]='c_bases1.page_liste_des_bases1()';
         $donnees_retournees[__xst]=__xsu;
@@ -2435,9 +2435,8 @@ class c_bases1{
                         if($mat[$j][1] === 'chi_id_basedd' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
 
                             $id_de_la_base=(int)($mat[$j + 1][1]);
-                            
-                            $chemin_bdd=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$id_de_la_base.'.sqlite';
-                            $chemin_dump=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$id_de_la_base.'.sqlite' . '.sql';
+                            $chemin_bdd=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite';
+                            $chemin_dump=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite' . '.sql';
                             
                             if(!file_exists($chemin_bdd)){
 
@@ -2450,7 +2449,7 @@ class c_bases1{
                               https://stackoverflow.com/questions/6221816/how-do-i-perform-a-dump-on-sqlite-database-through-php
                             */
                             /*
-                            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_bdd , true ) . '</pre>' ; exit(0);
+                              echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_bdd , true ) . '</pre>' ; exit(0);
                             */
                             $db=new SQLite3($chemin_bdd);
                             $db->busyTimeout(5000);
@@ -2514,17 +2513,14 @@ class c_bases1{
                                 $sql_insertion_des_index .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
                             }
                             file_put_contents($chemin_dump,$sql);
-                            $chemin_dump_creation=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$id_de_la_base.'.sqlite' . '._structure.sql';
-                            $chemin_dump_insertion=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$id_de_la_base.'.sqlite' . '._donnees.sql';
-                            $chemin_dump_index=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$id_de_la_base.'.sqlite' . '._index.sql';
+                            $chemin_dump_creation=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite' . '._structure.sql';
+                            $chemin_dump_insertion=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite' . '._donnees.sql';
+                            $chemin_dump_index=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite' . '._index.sql';
                             file_put_contents($chemin_dump_creation,$sql_structure);
                             file_put_contents($chemin_dump_insertion,$sql_insertion_des_valeurs);
                             file_put_contents($chemin_dump_index,$sql_insertion_des_index);
                             $donnees_retournees[__x_signaux][__xsu][]=' le dump de la base "' . $id_de_la_base . '" a été réalisé [' . __LINE__ . ']';
                             $donnees_retournees[__xst]=__xsu;
-
-                            
-
 
                         }
 

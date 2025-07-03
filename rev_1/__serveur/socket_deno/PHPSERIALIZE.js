@@ -3,7 +3,7 @@
 */
 const PHPSERIALIZE={
     "stdClass" : function(){
-    /* vide */
+        /* vide */
     } ,
      stringify( val ){
         const hash=new Map( [[Infinity,"d:INF;"],[-Infinity,"d:-INF;"],[NaN,"d:NAN;"],[null,"N;"],[undefined,"N;"]] );
@@ -92,7 +92,7 @@ const PHPSERIALIZE={
                         Object.create( allowedClasses[className].prototype )
                       ) : ( 
                         new {[className] : function(){
-                            /* vide */
+                                /* vide */
                             }}[className]
                       )
                   ));

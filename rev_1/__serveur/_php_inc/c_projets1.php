@@ -130,7 +130,7 @@ class c_projets1{
         unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_requetes_projet']);
         unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']);
         $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(0)))';
-        
+        $donnees_retournees[__xva]['php_des_sql']=array();
         $donnees_retournees[__xbo]=obtenir_les_menus();
         $donnees_retournees[__xst]=__xsu;
         $this->page_projets_liste1(
@@ -139,19 +139,27 @@ class c_projets1{
             $donnees_recues
         );
     }
-    
     /*
       =============================================================================================================
     */
-    function chemin_requetes($chi_id_dossier, $db){
-     
-        if($db===null){
+    function chemin_requetes($chi_id_dossier,$db){
+        
+        if($db === null){
+
+
         }
-        $tt=$this->sql0->sql_iii(
-            66,
-            array( 'T0_chi_id_dossier' => $chi_id_dossier, 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
-            $donnees_retournees,$db
-        );
+
+        $tt=/*sql_inclure_deb*/
+            /* sql_66()
+            SELECT 
+            `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier`
+             FROM tbl_dossiers T0
+            WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
+               AND `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier)
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(66,array( 'T0_chi_id_dossier' => $chi_id_dossier, 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),$donnees_retournees,$db);
         
         if($tt[__xst] === __xsu){
 
@@ -168,7 +176,7 @@ class c_projets1{
             
             if($tt[__xst] === __xsu){
 
-                /* 1 T0.chx_parent_dossier */
+                
                 if($tt[__xva][0][1] === null){
 
                     $continuer=0;
@@ -176,9 +184,18 @@ class c_projets1{
 
                 }else{
 
-                    /* 0 T0.chp_nom_dossier */
                     $chemin=DIRECTORY_SEPARATOR . $tt[__xva][0][0] . $chemin;
-                    $tt=$this->sql0->sql_iii(66,array( 'T0_chi_id_dossier' => $tt[__xva][0]['T0.chx_parent_dossier'], 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),$donnees_retournees, $db);
+                    $tt=/*sql_inclure_deb*/
+                        /* sql_66()
+                        SELECT 
+                        `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier`
+                         FROM tbl_dossiers T0
+                        WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
+                           AND `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier)
+                        ;
+                        */
+                        /*sql_inclure_fin*/
+                        $this->sql0->sql_iii(66,array( 'T0_chi_id_dossier' => $tt[__xva][0]['T0.chx_parent_dossier'], 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),$donnees_retournees,$db);
                 }
 
 
@@ -204,8 +221,6 @@ class c_projets1{
         $chemin_absolu=REPERTOIRE_RACINE_DES_PROJET . DIRECTORY_SEPARATOR . $chemin;
         return array( '__xst' => __xsu, '__xva' => array( 'chemin_absolu' => $chemin_absolu, 'chemin_relatif' => $chemin));
     }
-    
-    
     /*
       =============================================================================================================
     */
@@ -254,15 +269,18 @@ class c_projets1{
         unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_requetes_projet']);
         unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']);
         $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']=$chi_id_projet;
-        
         /*
           il faut mettre à jour le dossier des requetes ($_SESSION[__X_CLE_APPLICATION]['chx_dossier_requetes_projet']) et charger la liste des requetes
-        
+          
         */
-        if($chi_id_projet===1){
-            
-            $_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']=REPERTOIRE_RACINE_DES_SQL; //.DIRECTORY_SEPARATOR.'_sqls';
+        
+        if($chi_id_projet === 1){
+
+            $_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']=REPERTOIRE_RACINE_DES_SQL;
+            /* .DIRECTORY_SEPARATOR.'_sqls';*/
+
         }else{
+
             $GLOBALS[__BDD][$chi_id_projet]=array(
                 'id' => $chi_id_projet,
                 'nom_bdd' => 'bdd_' . $chi_id_projet . '.sqlite',
@@ -271,44 +289,78 @@ class c_projets1{
                 'initialisation_bdd' => array( 'PRAGMA encoding = "UTF-8";', 'PRAGMA journal_mode=WAL;', 'PRAGMA foreign_keys=ON;'),
                 LIEN_BDD => null
             );
-            $chemin_bdd=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_'.$chi_id_projet.'.sqlite';
+            $chemin_bdd=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $chi_id_projet . '.sqlite';
             $db=new SQLite3($chemin_bdd);
             $GLOBALS[__BDD][$chi_id_projet][LIEN_BDD]=$db;
+            $tt60=/*sql_inclure_deb*/
+                /* sql_60()
+                SELECT 
+                `T0`.`chx_dossier_requetes_projet`
+                 FROM tbl_projets T0
+                WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(60,array( 'T0_chi_id_projet' => $chi_id_projet),$donnees_retournees,$db);
             
-            $tt60=$this->sql0->sql_iii(60,array('T0_chi_id_projet' => $chi_id_projet),$donnees_retournees,$db);
-            if($tt60[__xst]===__xsu && count($tt60[__xva])===1){
-                if($tt60[__xva][0][0]===NULL){
+            if($tt60[__xst] === __xsu && count($tt60[__xva]) === 1){
+
+                
+                if($tt60[__xva][0][0] === null){
+
+
                 }else{
-                   /*
-                     $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($tt60[__xva][0][0],true);
-                     return;
-                   */
-                   
-                   $chemin=$this->chemin_requetes($tt60[__xva][0][0], $db);
-                   /*
-                     $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($chemin,true);
-                     return;
-                   */
-                   
-                   if($chemin[__xst]===__xsu){
-                       $_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']=$chemin[__xva]['chemin_absolu'];
-                   }
-                   /*
-                   $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($chemin,true);
-                   */
-                   
+
+                    /*
+                      $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($tt60[__xva][0][0],true);
+                      return;
+                    */
+                    $chemin=$this->chemin_requetes($tt60[__xva][0][0],$db);
+                    /*
+                      $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($chemin,true);
+                      return;
+                    */
+                    
+                    if($chemin[__xst] === __xsu){
+
+                        $_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']=$chemin[__xva]['chemin_absolu'];
+
+                    }
+
+                    /*
+                      $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($chemin,true);
+                    */
                 }
+
+
             }
-//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt60 , true ) . '</pre>' ; exit(0);
+
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt60 , true ) . '</pre>' ; exit(0);*/
         }
+
+        
         if(isset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'])){
+
             $chemin_fichier_php_des_sql=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . 'rev_php_des_sql.php';
+            
             if(is_file($chemin_fichier_php_des_sql)){
+
                 include($chemin_fichier_php_des_sql);
-                $donnees_retournees[__xva]['php_des_sql']=$php_des_sql;//$tableau_contenu_js;
+                $donnees_retournees[__xva]['php_des_sql']=$php_des_sql;
+                /* $tableau_contenu_js;*/
+
+            }else{
+
+                $donnees_retournees[__xva]['php_des_sql']=array();
             }
+
+
+        }else{
+
+            $donnees_retournees[__xva]['php_des_sql']=array();
         }
-        $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML('.$chi_id_projet.')))';
+
+        $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(' . $chi_id_projet . ')))';
         $donnees_retournees[__xbo]=obtenir_les_menus();
         $donnees_retournees[__xst]=__xsu;
         $this->page_projets_liste1(
@@ -790,7 +842,7 @@ EOT;
 
             $donnees_retournees[__xst]=__xsu;
             
-            if($page_projets_liste1 === true || $nouvel_id > 2 ){
+            if($page_projets_liste1 === true || $nouvel_id > 2){
 
                 $this->page_projets_liste1($donnees_retournees,$mat,$donnees_recues);
 
@@ -869,7 +921,8 @@ EOT;
           select count[*] from tbl_bdds where chx_projet_id_basedd = $donnees_recues[__xva]['chi_id_projet']
         */
         $dependances=$this->sql0->sql_dependances(
-             /**/ array(/**/
+             /**/ array(
+                /**/
                 'table_parente' => 'tbl_projets',
                 'id_enregistrement' => $donnees_recues[__xva]['chi_id_projet'],
                 'champ_parent' => 'chi_id_projet',
@@ -1500,11 +1553,13 @@ EOT;
                 $donnees_retournees[__xst]=__xsu;
 
             }else{
-                $donnees_retournees[__x_signaux][__xer][]=' <pre>'.var_export($tt,true).'</pre> [' . __LINE__ . ']';
+
+                $donnees_retournees[__x_signaux][__xer][]=' <pre>' . var_export($tt,true) . '</pre> [' . __LINE__ . ']';
             }
 
 
         }else{
+
             $donnees_retournees[__x_signaux][__xer][]=' [' . __LINE__ . ']';
         }
 
@@ -2451,9 +2506,9 @@ EOT;
 
                         $lsttbl .= '<div class="hug_bouton_inactif">x</div>';
                         $lsttbl .= '<div class="hug_bouton_inactif">x</div>';
-/*
-                        $lsttbl .= '<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_projets1.creer_les_repertoires(chi_id_projet(' . $v0['T0.chi_id_projet'] . '))" title="creer les répertoires">initialiser</div>';
-*/
+                        /*
+                          $lsttbl .= '<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_projets1.creer_les_repertoires(chi_id_projet(' . $v0['T0.chi_id_projet'] . '))" title="creer les répertoires">initialiser</div>';
+                        */
 
                     }else{
 
@@ -2464,15 +2519,16 @@ EOT;
                         ){
 
                             $lsttbl .= '<div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_projets1.formulaire1(action1(page_projets_supprimer1),chi_id_projet(' . $v0['T0.chi_id_projet'] . '))">🗑</div>';
-/*
-                            $lsttbl .= '<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_projets1.creer_les_repertoires(chi_id_projet(' . $v0['T0.chi_id_projet'] . '))" title="creer les répertoires">initialiser</div>';
-*/
+                            /*
+                              $lsttbl .= '<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_projets1.creer_les_repertoires(chi_id_projet(' . $v0['T0.chi_id_projet'] . '))" title="creer les répertoires">initialiser</div>';
+                            */
+
                         }else{
 
                             $lsttbl .= '<div class="hug_bouton_inactif">x</div>';
-/*                            
-                            $lsttbl .= '<div class="hug_bouton_inactif">initialiser</div>';
-*/                            
+                            /*
+                              $lsttbl .= '<div class="hug_bouton_inactif">initialiser</div>';
+                            */
                         }
 
                     }
@@ -2514,9 +2570,13 @@ EOT;
 
             }
 
-            if( __X_CLE_APPLICATION === 'rev_1' && $v0['T0.chi_id_projet'] > 2 ){
+            
+            if(__X_CLE_APPLICATION === 'rev_1' && $v0['T0.chi_id_projet'] > 2){
+
                 $lsttbl .= '<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_bases1.dump_de_la_base(chi_id_basedd(' . $v0['T0.chi_id_projet'] . '))" title="sauvegarder la base du projet">💾</div>';
+
             }
+
             $lsttbl .= '</div>';
             $lsttbl .= '</td>';
             $lsttbl .= '<td style="text-align:center;">';

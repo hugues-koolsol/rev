@@ -77,7 +77,6 @@ class c_sources1{
                 }else{
 
                     $donnees_retournees[__x_signaux][__xal][]='traitement à réaliser pour $donnees_recues ' . var_export($donnees_recues,true) . ' [' . __LINE__ . ']';
-                    
                 }
 
                 break;
@@ -2399,7 +2398,6 @@ class c_sources1{
             $lsttbl .= '</tr>';
         }
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
-
         $donnees_retournees[__x_page] .= $o1;
         $donnees_retournees[__x_action]='c_sources1.page_liste_des_sources1()';
         $donnees_retournees[__xst]=__xsu;

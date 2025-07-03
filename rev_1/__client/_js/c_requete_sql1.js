@@ -1,7 +1,7 @@
 /*
-
-#transformer_requete_en_fonction_php
-
+  
+  #transformer_requete_en_fonction_php
+  
 */
 const __xer=0;
 const __xsu=1;
@@ -3223,7 +3223,6 @@ class c_requete_sql1{
                 t+='    /* ATTENTION : pas de condition dans cette liste */' + CRLF;
                 t+='    $where0=\' WHERE 1 \';' + CRLF;
             }else{
-
                 /*
                   les conditions dans un select list sont soit une seule conditions, soit une liste contenue dans un et[] 
                   Il n'y a alors qu'une seule formule

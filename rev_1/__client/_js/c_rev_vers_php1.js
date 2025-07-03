@@ -10,10 +10,7 @@ const MON_CR='¶' + 'CR' + '¶';
 const MON_CRLF='¶' + 'CR¶' + '¶' + 'LF¶';
 const REGEX_LF=new RegExp( MON_LF , 'g' );
 const REGEX_CR=new RegExp( MON_CR , 'g' );
-
 import {c_rev_vers_sql1} from './c_rev_vers_sql1.js';
-
-
 /*
   =====================================================================================================================
   conversion de rev en php
@@ -27,7 +24,6 @@ class c_rev_vers_php1{
     #tb=[];
     #l02=0;
     #objet_conversion_rev_vers_sql=null;
-    
     /*
       =============================================================================================================
     */
@@ -1462,9 +1458,8 @@ class c_rev_vers_php1{
                 break;
                 
             case 'sql' :
-//                obj=__m_rev_vers_sql1.c_tab_vers_js( this.#tb , {"indice_de_debut" : ind} );
-                debugger
-
+                /* obj=__m_rev_vers_sql1.c_tab_vers_js( this.#tb , {"indice_de_debut" : ind} ); */
+                debugger;
                 let objsql1=this.#objet_conversion_rev_vers_sql( this.#tb , {"indice_de_debut" : ind} );
                 if(obj.__xst === __xsu){
                     t='sql_dans_php(\'' + obj.__xva.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
@@ -1849,7 +1844,6 @@ class c_rev_vers_php1{
                     return(this.#rev_php_le( {"__xst" : __xer ,"id" : ind ,"__xme" : this.__m_rev1.nl2() + this.#tb[ind][1]} ));
                 }
                 break;
-                
                 
             default:
                 obj=this.#php_traiteOperation( ind , niveau , false );

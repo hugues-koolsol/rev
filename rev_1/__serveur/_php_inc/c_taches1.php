@@ -116,7 +116,6 @@ class c_taches1{
                 }else{
 
                     $donnees_retournees[__x_signaux][__xal][]='traitement à réaliser pour $donnees_recues ' . var_export($donnees_recues,true) . ' [' . __LINE__ . ']';
-
                 }
 
                 break;
@@ -178,7 +177,7 @@ class c_taches1{
             
             if($page_liste_des_taches1 === true){
 
-                $this->page_liste_des_taches1($donnees_retournees,$mat,$donnees_recues);
+                $this->réordonner1($donnees_retournees,$mat,$donnees_recues);
 
             }else{
 
@@ -1061,7 +1060,7 @@ class c_taches1{
              FROM b1.tbl_taches T0
             WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
                AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-               AND `T0`.`chp_texte_tache` = :T0_chp_texte_tache
+               AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
                AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
                AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2) 
             ORDER BY `T0`.`chp_priorite_tache` ASC  

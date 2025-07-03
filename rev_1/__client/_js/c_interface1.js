@@ -199,7 +199,7 @@ class _c_interface1{
                 }
             }
         }
-        this.#ajouter_les_boutons_menu( 'nouvelle_page' , reponse.__xbo );
+        this.#ajouter_les_boutons_menu( 'nouvelle_page' , reponse );
         if(reponse.hasOwnProperty( '__xva' )){
             if(reponse.__xva.hasOwnProperty( 'maj' )){
                 if(this.le_niveau_de_deverminage >= 2){
@@ -318,13 +318,13 @@ class _c_interface1{
     /*
       =============================================================================================================
     */
-    #ajouter_les_boutons_menu( contexte , __xbo ){
-        if(__xbo && __xbo !== ''){
+    #ajouter_les_boutons_menu( contexte , reponse ){
+        if(reponse.__xbo && reponse.__xbo !== ''){
             if(contexte === 'nouvelle_page' || contexte === 'recuperation_de_la_premiere_page()'){
                 /* console.log( contexte , menus ); */
                 let tt='';
-                for(let i in __xbo){
-                    tt+=__xbo[i];
+                for(let i in reponse.__xbo){
+                    tt+=reponse.__xbo[i];
                 }
                 if(contexte === 'recuperation_de_la_premiere_page()'){
                     try{
@@ -348,6 +348,22 @@ class _c_interface1{
         }
         let menus=document.getElementById( 'vv_nav' );
         if(menus !== null){
+            /* lors du premier chargement on doit allumer le bouton */
+            if(reponse.__xva.hasOwnProperty( 'maj' ) && reponse.__xva.maj.indexOf( 'allumer_menu' ) >= 0){
+                let mat_maj=this.__m_rev1.rev_tcm( decodeURIComponent( reponse.__xva.maj ) );
+                if(mat_maj.__xst === __xsu){
+                    for( let i=0 ; i < mat_maj.__xva.length ; i++ ){
+                        if(mat_maj.__xva[i][1] === 'allumer_menu'
+                               && mat_maj.__xva[i][2] === 'f'
+                               && mat_maj.__xva[i][8] === 1
+                               && mat_maj.__xva[i + 1][2] === 'c'
+                        ){
+                            this.#id_menu='' + mat_maj.__xva[i + 1][1];
+                            break;
+                        }
+                    }
+                }
+            }
             /*
               dans le cas d'une sous fenetre, la navigation n'existe
             */
@@ -839,7 +855,7 @@ class _c_interface1{
             */
             exception_premiere_page=true;
             this.#le_body_builder.innerHTML=reponse.__x_page;
-            this.#ajouter_les_boutons_menu( 'recuperation_de_la_premiere_page()' , reponse.__xbo );
+            this.#ajouter_les_boutons_menu( 'recuperation_de_la_premiere_page()' , reponse );
             this.ajoute_les_evenements_aux_boutons( reponse.__xva.redirection , null );
             /* la page est chargée ici conc on met son contenu à vide */
             reponse.__x_page='';
@@ -1074,8 +1090,8 @@ class _c_interface1{
         /* debugger */
         let decallage_y=0;
         if(rectangles.length >= numero_bloc){
-//            console.log( rectangles[numero_bloc].y );
-//            console.log( rectangles[0].y );
+            /* console.log( rectangles[numero_bloc].y ); */
+            /* console.log( rectangles[0].y ); */
             /* decallage_y=parseInt(rectangles[numero_bloc].y-rectangles[0].y-rectangles[0].height,10); */
             /*
               à la fin de la formule çi dessous il y a un "-numero_bloc' comme si yl y avait in pixem en trop par ligne
@@ -1092,7 +1108,7 @@ class _c_interface1{
             decallage_y=decallage_y - le_height / 2;
         }
         /* la_textarea.scrollTo(0,0); */
-//        console.log( 'decallage_y=' , decallage_y );
+        /* console.log( 'decallage_y=' , decallage_y ); */
         function decal( par ){
             /* console.log(par) */
             par.la_textarea.scrollTo( 0 , par.decallage_y );
@@ -1332,12 +1348,10 @@ class _c_interface1{
                     }
                 }
             }
-
             la_pile_des_messages={"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []};
         }
         this.les_messages={"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []};
         this.__m_rev1.globale_messages={"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []};
-        
         this.zone_d_edition_en_cours='';
         if(liste_des_messages !== ''){
             if(document.getElementById( 'vv_les_messages' ) === null){

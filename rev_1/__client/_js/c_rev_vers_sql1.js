@@ -200,7 +200,7 @@ class c_rev_vers_sql1{
                                 if(operateur_rev === '' && tab[tab[id][7]][1] === 'dans' || operateur_rev === 'dans'){
                                     t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
                                 }else{
-                                    if(operateur_rev==='comme'){
+                                    if(operateur_rev === 'comme'){
                                         t+='\'.sq2($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
                                     }else{
                                         t+='\'.sq1($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';

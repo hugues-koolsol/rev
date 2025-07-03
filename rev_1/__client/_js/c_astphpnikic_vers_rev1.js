@@ -6,9 +6,7 @@ const __xal=2;
 const __xif=3;
 const __xdv=4;
 const NBESPACESREV=3;
-
 import {c_astsql_parseur_cst_vers_rev1} from './c_astsql_parseur_cst_vers_rev1.js';
-
 /*
   =====================================================================================================================
   conversion d'un AST produit par https://github.com/nikic/PHP-Parser en rev
@@ -56,34 +54,34 @@ class c_astphpnikic_vers_rev1{
       =============================================================================================================
     */
     /*
-    #recupNomOperateur( s ){
-        switch (s){
-            case 'typeof' : return 'Typeof';
-            case 'instanceof' : return 'Instanceof';
-            case '++' : return 'incr1';
-            case '--' : return 'decr1';
-            case '+' : return 'plus';
-            case '-' : return 'moins';
-            case '*' : return 'mult';
-            case '/' : return 'divi';
-            case '==' : return 'egal';
-            case '===' : return 'egalstricte';
-            case '!=' : return 'diff';
-            case '!==' : return 'diffstricte';
-            case '>' : return 'sup';
-            case '<' : return 'inf';
-            case '>=' : return 'supeg';
-            case '<=' : return 'infeg';
-            case '!' : return 'non';
-            case '&&' : return 'et';
-            case '||' : return 'ou';
-            case '&' : return 'et_binaire';
-            case '|' : return 'ou_binaire';
-            default:
-                return(this.#astphp_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + '"' + s + '" ' ,"element" : element} ));
-                
-        }
-    }
+      #recupNomOperateur( s ){
+      switch (s){
+      case 'typeof' : return 'Typeof';
+      case 'instanceof' : return 'Instanceof';
+      case '++' : return 'incr1';
+      case '--' : return 'decr1';
+      case '+' : return 'plus';
+      case '-' : return 'moins';
+      case '*' : return 'mult';
+      case '/' : return 'divi';
+      case '==' : return 'egal';
+      case '===' : return 'egalstricte';
+      case '!=' : return 'diff';
+      case '!==' : return 'diffstricte';
+      case '>' : return 'sup';
+      case '<' : return 'inf';
+      case '>=' : return 'supeg';
+      case '<=' : return 'infeg';
+      case '!' : return 'non';
+      case '&&' : return 'et';
+      case '||' : return 'ou';
+      case '&' : return 'et_binaire';
+      case '|' : return 'ou_binaire';
+      default:
+      return(this.#astphp_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + '"' + s + '" ' ,"element" : element} ));
+      
+      }
+      }
     */
     /*
       =============================================================================================================
@@ -406,7 +404,6 @@ class c_astphpnikic_vers_rev1{
             }
             var source=lesArgumentsCourts.substr( 1 , lesArgumentsCourts.length - 2 );
             var source=source.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' );
-
             let options_pour_le_parseur={
                 "dialect" : "sqlite" ,
                  /* These are optional: */
@@ -418,17 +415,12 @@ class c_astphpnikic_vers_rev1{
                  /* Adds comments */
                 "includeRange" : true ,
                  /* Adds source code location data */
-            };
-            
-            
+                };
             source=source.replace( /\:/g , '___deux___points___' );
-            
             var ast_de_sql=window.sql_parser_cst2.parse( source , options_pour_le_parseur );
-            
-            
             let obj1=this.objet_conversion_ast_sql_parseur_cst_vers_rev1.traite_ast_de_sql_parseur_cst( ast_de_sql , {} );
             if(obj1.__xst === __xsu){
-                t+='sql(' + obj1.__xva.replace(/___deux___points___/g,':') + ')';
+                t+='sql(' + obj1.__xva.replace( /___deux___points___/g , ':' ) + ')';
             }else{
                 return(this.#astphp_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() ,"element" : element} ));
             }

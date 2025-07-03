@@ -148,7 +148,8 @@ class c_sql0{
             array( 'T0_chi_id_basedd' => $par['id_bdd'], 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
-//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt11 , true ) . '</pre>' ; exit(0);
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt11 , true ) . '</pre>' ; exit(0);*/
+        
         if($tt11[__xst] === __xsu && count($tt11[__xva]) === 1){
 
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
@@ -174,7 +175,7 @@ class c_sql0{
             /*
               echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_de_la_bdd , true ) . '</pre>' ; exit(0);
             */
-            $nom_fichier_dependances=$chemin_de_la_bdd . DIRECTORY_SEPARATOR . 'fichier_des_dependances_bdd_'.$par['id_bdd'].'.php';
+            $nom_fichier_dependances=$chemin_de_la_bdd . DIRECTORY_SEPARATOR . 'fichier_des_dependances_bdd_' . $par['id_bdd'] . '.php';
             /*
               Attention, c'est un require SANS once ici car la variable $tableau_des_dependances DOIT être rechargée
             */

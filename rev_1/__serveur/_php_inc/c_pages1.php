@@ -58,27 +58,24 @@ class c_pages1{
         }
 
         $mdp=password_hash($donnees_recues[__xva]['vv_chp_mot_de_passe_utilisateur'],PASSWORD_BCRYPT,array( 'cost' => 10));
-        
         $tt=/*sql_inclure_deb*/
             /* sql_67()
-
-              UPDATE b1.tbl_utilisateurs SET 
-                 `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
-                 `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
-              WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
+            / ***meta(sur_base_de_reference(1))*** /
+            
+            UPDATE b1.tbl_utilisateurs SET 
+               `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
+               `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
+            WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
              /*sql_67()*/ 67,
-            array( 
-              'n_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur'],
-              'n_chp_mot_de_passe_utilisateur' => $mdp ,
-              'c_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']
-            ),
+            array( 'n_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur'], 'n_chp_mot_de_passe_utilisateur' => $mdp, 'c_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']),
             $donnees_retournees
         );
         
         if($tt[__xst] === __xer){
+
             $donnees_retournees[__x_signaux][__xer][]='Erreur';
             $this->recupere_la_page_des_coordonnees($donnees_retournees,$mat,$donnees_recues,$donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur']);
 
@@ -155,21 +152,16 @@ class c_pages1{
             $donnees_retournees[__xbo]=obtenir_les_menus();
             $donnees_retournees[__xst]=__xsu;
             $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
-            
             $tt=/*sql_inclure_deb*/
-                /*#
-                  sql_72()
-
-                  UPDATE b1.tbl_utilisateurs SET 
-                     `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
-                  WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
+                /* sql_72()
+                UPDATE b1.tbl_utilisateurs SET 
+                   `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
+                WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
                  /*sql_72()*/ 72,
-                array( 
-                  'c_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']
-                ),
+                array( 'c_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']),
                 $donnees_retournees
             );
 
@@ -310,37 +302,36 @@ class c_pages1{
     */
     function recupere_la_page_des_coordonnees(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues,$chp_nom_de_connexion_utilisateur='webmaster@example.com'){
         $txt='';
-        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);*/
         
         if(!isset($donnees_retournees[__x_authentifie]) || $donnees_retournees[__x_authentifie] === __xer){
 
             $txt .= $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
 
         }else{
-         
-         
+
             $tt=/*sql_inclure_deb*/
                 /* sql_47()
-                  SELECT 
-                  `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-                  `T0`.`chi_compteur_socket1_utilisateur`
-                   FROM b1.tbl_utilisateurs T0
-                  WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-                  ;
+                SELECT 
+                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+                `T0`.`chi_compteur_socket1_utilisateur`
+                 FROM b1.tbl_utilisateurs T0
+                WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+                ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
                  /*sql_47()*/ 47,
-                array( 
-                  'T0_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
-                ),
+                array( 'T0_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']),
                 $donnees_retournees
             );
             
             if($tt[__xst] === __xer){
+
                 $donnees_retournees[__x_signaux][__xer][]='Utilisateur non trouvé en base !!!! [' . __LINE__ . ']';
-             
+
             }else{
+
                 $txt .= '<h1>mes coordonnées</h1>';
                 $txt .= '<div id="vv_formulaire_de_changement_de_nom_et_de_mot_de_passe">';
                 $txt .= '  <span>nouveau nom</span>';
@@ -351,9 +342,10 @@ class c_pages1{
                 $txt .= '  <div class="hug_bouton" data-hug_click="c_pages1.formulaire1(conteneur1(vv_formulaire_de_changement_de_nom_et_de_mot_de_passe))" title="Cliquez ici pour vous connecter">changer mes coordonnées</div>';
                 $txt .= '</div>';
                 $txt .= '<div>';
-                $txt .= 'Vous vous êtes connecté ' . $tt[__xva][0]['T0.chi_compteur1_utilisateur'] .' fois ;-)';
+                $txt .= 'Vous vous êtes connecté ' . $tt[__xva][0]['T0.chi_compteur1_utilisateur'] . ' fois ;-)';
                 $txt .= '</div>';
             }
+
         }
 
         $txt .= $this->recupere_blocs_bidons('coordonnees');
@@ -629,7 +621,7 @@ EOT;
                 <!-- page_initiale -->
                 <div id="vv_nav">
                     <div id="vv_nav_gauche">
-                        <div data-id_menu="1" class="hug_bouton hug_bouton_carre hug_bouton_actif" style="display:inline-block;" data-hug_click="c_pages1.recupere_la_page_d_accueil()" >
+                        <div data-id_menu="1" class="hug_bouton hug_bouton_carre hug_bouton_actif" style="display:inline-block;" data-hug_click="c_pages1.recupere_la_page_d_accueil(),indice_menu(1)" >
                             <svg viewBox="6 8  49 59" style="transform:scale(0.95, 0.95) translate(0px, 0px);"><path d=" M 8 29 L 31 6 L 54 29 V 33 H 51 V 58  H 11 V 33 H 8 V 29" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:0.01;"></path><path d="M 17 57 H 11 c 0 -2 1 -4 2 -2 " stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:lawngreen;fill:transparent;stroke-width:4;"></path><rect x="20" y="27" width="7" height="7" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:0.1;"></rect><rect x="34" y="27" width="7" height="7" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:0.1;"></rect><rect x="34" y="41" width="7" height="7" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:0.1;"></rect><rect x="20" y="41" width="7" height="16" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:red;stroke-width:0.1;"></rect><path d=" M 11 30 l 20 -20 l 20 20 " stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:5;"></path><path d="M 30 57 H 50 c 0 -2 -1 -4 -2 -2 " stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:lawngreen;fill:transparent;stroke-width:4;"></path></svg>
                         </div>            
                         <div id="vv_bouton_messages" class="hug_bouton hug_bouton_carre" data-hug_click="interface1.affiche_ou_masque_les_messages()" title="affiche ou masque les messages">
@@ -644,7 +636,7 @@ EOT;
                         <div id="vv_haut_de_page2" class="hug_bouton hug_bouton_carre" data-hug_click="interface1.haut_de_page()" title="haut de page" style="visibility:visible;" >
                           <svg style="transform:scale(0.8 , 0.8) translate(0 , -7px)" xmlns="http://www.w3.org/2000/svg" viewBox="-7 -2  15 25"><path d="M -4 0   H 4   " stroke="rgb(0, 0, 0)" stroke-width="2" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d="M -2 15   L -2 3   L -5 6   L 0 1   L 5 6   L 2 3   L 2 15   " stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:2;"></path></svg>
                         </div>
-                        <div data-id_menu="2" class="hug_bouton hug_bouton_carre" id="vv_bouton_connexion" data-hug_click="c_pages1.recupere_la_page_de_connexion()" title="connexion ou déconnexion">
+                        <div data-id_menu="2" class="hug_bouton hug_bouton_carre" id="vv_bouton_connexion" data-hug_click="c_pages1.recupere_la_page_de_connexion(),indice_menu(2)" title="connexion ou déconnexion">
                            <svg viewBox="19 4  130 142"><path d=" M 73 80 A 34 35 48 1 1 92 60 l 46 46 l 0 21 l -22 0 l 0 -12 l -11 0 l 0 -11 l -11 0 l 0 -11 l -8 0 l -13 -13 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:gold;stroke-width:4;"></path><circle cx="51" cy="38" r="8" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" transform="" style="stroke:red;fill:black;stroke-width:4;"></circle></svg>
                         </div>
                     </div>
@@ -693,13 +685,17 @@ EOT;
         $donnees_retournees[__x_page] .= '</main>';
         
         if($sans_menus1 === false){
+
             $chi_id_projet=0;
-            if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
-             $chi_id_projet=$_SESSION[__X_CLE_APPLICATION]['chi_id_projet'];
-            }
             
+            if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
+
+                $chi_id_projet=$_SESSION[__X_CLE_APPLICATION]['chi_id_projet'];
+
+            }
+
             $donnees_retournees[__x_page] .= '<nav id="vv_bas_de_page">';
-            $donnees_retournees[__x_page] .='<div id="vv_projet_en_cours" style="border-width:0;">'.$chi_id_projet.'</div>';
+            $donnees_retournees[__x_page] .= '<div id="vv_projet_en_cours" style="border-width:0;">' . $chi_id_projet . '</div>';
             $donnees_retournees[__x_page] .= <<<EOT
                     <div class="hug_bouton" data-hug_click="c_pages1.recupere_la_page_d_accueil()" title="affiche la page d'accueil">Accueil</div>
                     <div class="hug_bouton" data-hug_click="c_pages1.recupere_la_page_de_connexion()">connexion</div>
@@ -711,8 +707,6 @@ EOT;
                 <dialog id="vv_sous_fenetre1"></dialog>
         
 EOT;
-
-            
 
         }
 

@@ -1847,7 +1847,6 @@ EOT;
             $lsttbl .= '</tr>';
         }
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
-
         $donnees_retournees[__x_page] .= $o1;
         $donnees_retournees[__x_action]='c_requetes1.page_liste_des_requetes1()';
         $donnees_retournees[__xst]=__xsu;

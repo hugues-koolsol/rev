@@ -1164,7 +1164,6 @@ class c_astjs_vers_rev1{
             }
         }else{
             if(type_parent === 'CallExpression'){
-
                 t='tableau( nomt(' + objet + '),p(' + propriete + '))';
                 return({"__xst" : __xsu ,"__xva" : t});
             }else{
