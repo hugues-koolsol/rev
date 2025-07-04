@@ -349,7 +349,7 @@ class _c_interface1{
         let menus=document.getElementById( 'vv_nav' );
         if(menus !== null){
             /* lors du premier chargement on doit allumer le bouton */
-            if(reponse.__xva.hasOwnProperty( 'maj' ) && reponse.__xva.maj.indexOf( 'allumer_menu' ) >= 0){
+            if(reponse.hasOwnProperty('__xva') && reponse.__xva.hasOwnProperty( 'maj' ) && reponse.__xva.maj.indexOf( 'allumer_menu' ) >= 0){
                 let mat_maj=this.__m_rev1.rev_tcm( decodeURIComponent( reponse.__xva.maj ) );
                 if(mat_maj.__xst === __xsu){
                     for( let i=0 ; i < mat_maj.__xva.length ; i++ ){

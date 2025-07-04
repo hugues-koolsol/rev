@@ -222,7 +222,7 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
                 /*
                   on n'a pas trouvé un menu , à priori on met la page d'accueil ...
                 */
-                $donnees_retournees[__xva]['maj']='allumer_menu(1)';
+                $donnees_retournees[__xva]['maj'].='allumer_menu(1)';
                 /*
                   ... mais c'est peut être une sous page.
                 */
@@ -247,7 +247,7 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
                                     if(is_numeric($tt3)){
 
                                         $tt3=(int)($tt3);
-                                        $donnees_retournees[__xva]['maj']='allumer_menu(' . $tt3 . ')';
+                                        $donnees_retournees[__xva]['maj'].='allumer_menu(' . $tt3 . ')';
                                         /* this.#id_menu*/
 
                                     }

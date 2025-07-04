@@ -51,15 +51,15 @@ $tableau_des_dependances=array (
       ),
     ),
   ),
-  'tbl_y_chi_id_y' => 
+  'tbl_test_chi_id_y' => 
   array (
-    'table_parente' => 'tbl_y',
+    'table_parente' => 'tbl_test',
     'champ_parent' => 'chi_id_y',
     'dependances' => 
     array (
       0 => 
       array (
-        'table_dependante' => 'tbl_y',
+        'table_dependante' => 'tbl_test',
         'champ_dependant' => 'chx_parent_y',
         'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
