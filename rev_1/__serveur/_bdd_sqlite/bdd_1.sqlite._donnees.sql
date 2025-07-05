@@ -6,7 +6,7 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','438','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00');
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','448','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00');
 
 
 /*
@@ -41,10 +41,10 @@ INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_p
 ('23','1','dump de la base en local','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('26','1','travaux en batch','7','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('26','1','travaux en batch','8','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('28','1','profils de css','50','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('29','1','astuces','8','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('29','1','astuces','9','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -110,9 +110,9 @@ et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00','2000-01-
 ('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('78','1','ne pas mettre plus de 1000 éléments dans un dossier','10','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('78','1','ne pas mettre plus de 1000 éléments dans un dossier','11','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('80','1','table des bugs','12','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('80','1','table des bugs','13','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('82','1','supprimer une projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('83','1','ajouter les champs 
@@ -125,7 +125,7 @@ dtc date technique de création','99','0','2000-01-01 00:00:00','2000-01-01 00:0
 ('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('88','1','sortable pour svg','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('90','1','dupliquer une table','13','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('90','1','dupliquer une table','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('92','1','quand on modifie le nom d''une table
 alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -141,7 +141,7 @@ dans le champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('99','1','corriger le bug : après tri des champs, on pert l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('100','1','ne pas masquer un champ si c''est une référence, une clé, un auto_increment
 ou si le champ appartient à un index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('101','1','ajouter des tests de validité sur le svg base','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('101','1','ajouter des tests de validité sur le svg base','15','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('102','1','sauvegarder une table sans champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('103','1','requetes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('104','1','mettre le dump de la base dans la liste des bases','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -221,7 +221,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chp__dtm_tache`)
 flag champ_date_modification','99','4','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','11','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','12','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -261,19 +261,23 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','9','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','5','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
-('170','1','initialiser ecran standard d''une table','6','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
-('171','1','gérer les menus','3','0','2025-06-26 17:24:34.522','2025-06-26 17:24:34.522'),
-('172','1','gérer les utilisateurs et les groupes et les métiers','4','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
-('173','1','gérer les paramètres ( liste des constantes )','1','2','2025-07-02 11:21:34.145','2025-06-27 10:13:20.409'),
+comme3(xxx)','10','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
+('169','1','initialiser projet standard','6','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
+('170','1','initialiser ecran standard d''une table','7','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
+('171','1','gérer les menus','4','0','2025-06-26 17:24:34.522','2025-06-26 17:24:34.522'),
+('172','1','gérer les utilisateurs et les groupes et les métiers','5','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
+('173','1','gérer les paramètres ( liste des constantes )
+type de champbdd','2','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
 ('174','1','mettre en github
 ','99','0','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817'),
 ('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038'),
 ('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
 ('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962'),
-('178','1','ajouter un dictionnaire de données','2','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
-('179','1','corriger fichier_des_dependances','0','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399');
+('178','1','ajouter un dictionnaire de données','3','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
+('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399'),
+('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718'),
+('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668'),
+('182','1','svg lien','1','0','2025-07-04 08:22:18.236','2025-07-04 08:22:18.236');
 
 
 /*
@@ -1901,7 +1905,7 @@ INSERT INTO tbl_bdds (chi_id_basedd,chx_projet_id_basedd,chp_rev_basedd,chp_comm
    genre_meta(base_de_données),
    default_charset( ''utf8mb4''),
    collate( ''utf8mb4_unicode_ci''),
-   transform_base_sur_svg( translate( 3.5 , 8.5 ))
+   transform_base_sur_svg( translate( 4.5 , 6.5 ))
 ),
 créer_table(
    nom_de_la_table( ''tbl_utilisateurs''),
@@ -1912,7 +1916,7 @@ créer_table(
       nom_long_de_la_table( ''liste des utilisateurs''),
       nom_court_de_la_table( ''un utilisateur''),
       nom_bref_de_la_table( ''utilisateurs''),
-      transform_table_sur_svg( translate( 9.5 , 500.5 ))
+      transform_table_sur_svg( translate( 8.5 , 285.5 ))
    ),
    champs(
       champ(
@@ -2088,7 +2092,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 301.5 , 574.5 ))
+      transform_table_sur_svg( translate( 47.5 , 477.5 ))
    ),
    champs(
       champ(
@@ -2119,7 +2123,8 @@ créer_table(
             nom_court_du_champ( ''à faire chx_utilisateur_tache''),
             nom_bref_du_champ( ''à faire chx_utilisateur_tache''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            refe_enfant_droite(1)
          )
       ),
       champ(
@@ -2228,7 +2233,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 2.5 , 22.5 ))
+      transform_table_sur_svg( translate( 272.5 , 10.5 ))
    ),
    champs(
       champ(
@@ -2347,7 +2352,8 @@ créer_table(
             nom_court_du_champ( ''AFR ...''),
             nom_bref_du_champ( ''AFR ...''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            refe_parent_gauche(1)
          )
       )
    )
@@ -2362,17 +2368,17 @@ ajouter_index(
    unique()
 ),
 créer_table(
-   nom_de_la_table( ''tbl_y''),
+   nom_de_la_table( ''tbl_test''),
    meta(
-      nom_de_la_table( ''tbl_y''),
-      table( ''tbl_y''),
+      nom_de_la_table( ''tbl_test''),
+      table( ''tbl_test''),
       genre_meta(table_de_base),
       default_charset( ''utf8mb4''),
       collate( ''utf8mb4_unicode_ci''),
       nom_long_de_la_table( ''à faire tbl_xxxx_y''),
       nom_court_de_la_table( ''à faire tbl_xxxx_y''),
       nom_bref_de_la_table( ''à faire tbl_xxxx_y''),
-      transform_table_sur_svg( translate( 561.5 , 4.5 ))
+      transform_table_sur_svg( translate( 545.5 , 409.5 ))
    ),
    champs(
       champ(
@@ -2395,7 +2401,7 @@ créer_table(
       champ(
          nom_du_champ( ''chx_parent_y''),
          type( ''INTEGER''),
-         references( tbl_y , chi_id_y),
+         references( tbl_test , chi_id_y),
          meta(
             genre_meta(champ),
             nom_du_champ( ''chx_parent_y''),
@@ -2475,7 +2481,7 @@ créer_table(
 #(=================================================================),
 ajouter_index(
    #(),
-   nom_de_la_table_pour_l_index( ''tbl_y''),
+   nom_de_la_table_pour_l_index( ''tbl_test''),
    nom_de_l_index( ''idx_titre''),
    meta( nom_de_l_index(idx_titre) , genre_meta(index_de_table) , message( ''bla'' )),
    champs( ''chx_parent_y'' , ''chp_titre_y''),
@@ -2490,7 +2496,7 @@ créer_table(
       nom_long_de_la_table( ''AFR tbl_requetes''),
       nom_court_de_la_table( ''AFR tbl_requetes''),
       nom_bref_de_la_table( ''AFR tbl_requetes''),
-      transform_table_sur_svg( translate( 67.5 , 230.5 ))
+      transform_table_sur_svg( translate( 9.5 , 56.5 ))
    ),
    champs(
       champ(
@@ -2522,7 +2528,9 @@ créer_table(
             nom_court_du_champ( ''AFR ...''),
             nom_bref_du_champ( ''AFR ...''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            refe_enfant_droite(1),
+            refe_parent_gauche(1)
          )
       ),
       champ(
@@ -2681,7 +2689,7 @@ créer_table(
       nom_long_de_la_table( ''à faire tbl_revs''),
       nom_court_de_la_table( ''à faire tbl_revs''),
       nom_bref_de_la_table( ''à faire tbl_revs''),
-      transform_table_sur_svg( translate( 283.5 , 179.5 ))
+      transform_table_sur_svg( translate( 274.5 , 267.5 ))
    ),
    champs(
       champ(
@@ -2712,7 +2720,8 @@ créer_table(
             nom_court_du_champ( ''à faire chx_cible_rev''),
             nom_bref_du_champ( ''à faire chx_cible_rev''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            refe_parent_gauche(1)
          )
       ),
       champ(
@@ -2960,7 +2969,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 563.5 , 170.5 ))
+      transform_table_sur_svg( translate( 540.5 , 17.5 ))
    ),
    champs(
       champ(
@@ -3163,7 +3172,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 301.5 , 9.5 ))
+      transform_table_sur_svg( translate( 276.5 , 117.5 ))
    ),
    champs(
       champ(
@@ -3194,7 +3203,8 @@ créer_table(
             nom_court_du_champ( ''à faire chx_projet_dossier''),
             nom_bref_du_champ( ''à faire chx_projet_dossier''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            refe_enfant_droite(1)
          )
       ),
       champ(
@@ -3321,7 +3331,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 570.5 , 370.5 ))
+      transform_table_sur_svg( translate( 541.5 , 206.5 ))
    ),
    champs(
       champ(
@@ -3519,7 +3529,7 @@ créer_table(
       nom_long_de_la_table( ''AFR tbl_xxxx''),
       nom_court_de_la_table( ''AFR tbl_xxxx''),
       nom_bref_de_la_table( ''AFR tbl_xxxx''),
-      transform_table_sur_svg( translate( 38.5 , 24.5 ))
+      transform_table_sur_svg( translate( 259.5 , 6.5 ))
    ),
    champs(
       champ(
@@ -3537,8 +3547,46 @@ créer_table(
             typologie(chi),
             afficher_champ_dans_svg(1)
          )
+      ),
+      champ(
+         nom_du_champ( ''chp_nom_yyy''),
+         type( ''VARCHAR(64)''),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chp_nom_yyy''),
+            champ( ''chp_nom_yyy''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chp),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chx_moi_zzz''),
+         type( ''INTEGER''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_moi_zzz''),
+            champ( ''chx_moi_zzz''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1)
+         )
       )
    )
+),
+#(=================================================================),
+ajouter_index(
+   #(),
+   nom_de_la_table_pour_l_index( ''tbl_zzzs''),
+   nom_de_l_index( ''idx_0''),
+   meta( nom_de_l_index(idx_3) , genre_meta(index_de_table) , message( '''' )),
+   champs( ''chi_id_zzz''),
+   unique()
 ),
 créer_table(
    nom_de_la_table( ''tbl_yyys''),
@@ -3549,7 +3597,7 @@ créer_table(
       nom_long_de_la_table( ''AFR tbl_yyys''),
       nom_court_de_la_table( ''AFR tbl_yyys''),
       nom_bref_de_la_table( ''AFR tbl_yyys''),
-      transform_table_sur_svg( translate( 163.5 , 93.5 ))
+      transform_table_sur_svg( translate( 22.5 , 168.5 ))
    ),
    champs(
       champ(
@@ -3579,6 +3627,24 @@ créer_table(
             nom_bref_du_champ( ''AFR ...''),
             typologie(chi),
             afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chx_id_zzz_yyy''),
+         type( ''INTEGER''),
+         non_nulle(1),
+         references( tbl_zzzs , chi_id_zzz),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_id_zzz_yyy''),
+            champ( ''chx_id_zzz_yyy''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1),
+            refe_enfant_droite(1),
+            refe_parent_gauche(1)
          )
       )
    )

@@ -222,7 +222,11 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
                 /*
                   on n'a pas trouvé un menu , à priori on met la page d'accueil ...
                 */
-                $donnees_retournees[__xva]['maj'].='allumer_menu(1)';
+                if(!isset($donnees_retournees[__xva]['maj'])){
+                    $donnees_retournees[__xva]['maj']='allumer_menu(1)';
+                }else{
+                    $donnees_retournees[__xva]['maj'].='allumer_menu(1)';
+                }
                 /*
                   ... mais c'est peut être une sous page.
                 */

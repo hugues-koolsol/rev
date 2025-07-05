@@ -10,7 +10,7 @@ CREATE UNIQUE INDEX idx_nom_unique_projets ON `tbl_projets`
         /* meta( nom_de_l_index(idx_nom_unique_projets) , genre_meta(index_de_table) , message( 'ce projet existe déjà' )) */
          ( `chp_nom_projet` ) ;
 
-CREATE UNIQUE INDEX idx_titre ON `tbl_y` 
+CREATE UNIQUE INDEX idx_titre ON `tbl_test` 
         /* meta( nom_de_l_index(idx_titre) , genre_meta(index_de_table) , message( 'bla' )) */
          ( `chx_parent_y` , `chp_titre_y` ) ;
 

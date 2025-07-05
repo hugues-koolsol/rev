@@ -220,9 +220,9 @@ CREATE TABLE tbl_projets(
              chx_dossier_requetes_projet INTEGER REFERENCES tbl_dossiers(chi_id_dossier)  DEFAULT  NULL 
     );
 
-CREATE TABLE tbl_y(
+CREATE TABLE tbl_test(
 /*
- meta(nom_de_la_table( 'tbl_y'),table( 'tbl_y'),genre_meta(table_de_base),default_charset( 'utf8mb4'),collate( 'utf8mb4_unicode_ci'),nom_long_de_la_table( 'à faire tbl_xxxx_y'),nom_court_de_la_table( 'à faire tbl_xxxx_y'),nom_bref_de_la_table( 'à faire tbl_xxxx_y'),transform_table_sur_svg( translate( 561.5 , 4.5 ))) 
+ meta(nom_de_la_table( 'tbl_test'),table( 'tbl_test'),genre_meta(table_de_base),default_charset( 'utf8mb4'),collate( 'utf8mb4_unicode_ci'),nom_long_de_la_table( 'à faire tbl_xxxx_y'),nom_court_de_la_table( 'à faire tbl_xxxx_y'),nom_bref_de_la_table( 'à faire tbl_xxxx_y'),transform_table_sur_svg( translate( 666.5 , 629.5 ))) 
 */
     
             /*
@@ -240,7 +240,7 @@ CREATE TABLE tbl_y(
             typologie(chi),afficher_champ_dans_svg(1)
             )
             */
-             chx_parent_y INTEGER REFERENCES tbl_y(chi_id_y) 
+             chx_parent_y INTEGER REFERENCES tbl_test(chi_id_y) 
     ,
     
             /*

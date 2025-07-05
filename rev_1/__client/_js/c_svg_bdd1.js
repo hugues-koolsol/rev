@@ -176,173 +176,7 @@ class c_svg_bdd1{
         }
         document.getElementById( '__message_modale' ).innerHTML=t;
     }
-    /*
-      =============================================================================================================
-      function svg_ajuster_la_largeur_des_boites_de_la_table
-    */
-    #svg_ajuster_la_largeur_des_boites_de_la_table( tableau ){
-        var id_svg_conteneur_table=tableau[0];
-        var id_bdd=tableau[1];
-        try{
-            var id_svg_de_la_base_en_cours=this.#svg_dessin.getElementById( id_svg_conteneur_table ).getAttribute( 'id_svg_de_la_base_en_cours' );
-        }catch(e){
-            debugger;
-        }
-        var liste_des_paths=this.#svg_dessin.getElementById( id_svg_de_la_base_en_cours ).getElementsByTagName( 'path' );
-        var hauteur_de_la_table=0;
-        var largeur_max=0;
-        var groupe_table=this.#svg_dessin.getElementById( id_svg_conteneur_table );
-        try{
-            var lst=groupe_table.getElementsByTagName( 'text' );
-        }catch(e){
-            debugger;
-        }
-        var i=0;
-        for( i=0 ; i < lst.length ; i++ ){
-            var bb=lst[i].getBBox();
-            if(largeur_max < bb.width){
-                largeur_max=Math.ceil( bb.width );
-            }
-            hauteur_de_la_table+=this.#hauteur_de_boite_affichage;
-        }
-        largeur_max+=2 * this.#taille_bordure;
-        if(largeur_max < 40){
-            largeur_max=40;
-        }
-        var position_haut=this.#taille_bordure;
-        var lst=this.#svg_dessin.getElementById( id_svg_conteneur_table ).getElementsByTagName( '*' );
-        /* nom de la table */
-        var i=0;
-        for( i=0 ; i < lst.length ; i++ ){
-            if(lst[i].getAttribute( 'type_element' )){
-                if(lst[i].getAttribute( 'type_element' ) === 'conteneur_de_nom_de_table'){
-                    lst[i].decallage_x=this.#taille_bordure;
-                    lst[i].decallage_y=position_haut;
-                    lst[i].setAttribute( 'transform' , 'translate(' + this.#taille_bordure + ',' + position_haut + ')' );
-                    position_haut+=this.#hauteur_de_boite_affichage;
-                }else if(lst[i].getAttribute( 'type_element' ) === 'rectangle_de_nom_de_table'){
-                    lst[i].setAttribute( 'width' , largeur_max );
-                }
-            }
-        }
-        /* champs */
-        var i=0;
-        for( i=0 ; i < lst.length ; i++ ){
-            if(lst[i].getAttribute( 'type_element' )){
-                if(lst[i].getAttribute( 'type_element' ) === 'conteneur_de_champ'){
-                    var nom_du_champ=lst[i].getAttribute( 'nom_du_champ' );
-                    lst[i].setAttribute( 'decallage_x' , this.#taille_bordure );
-                    lst[i].setAttribute( 'decallage_y' , position_haut );
-                    lst[i].setAttribute( 'transform' , 'translate(' + this.#taille_bordure + ',' + position_haut + ')' );
-                    var j=0;
-                    for( j=0 ; j < liste_des_paths.length ; j++ ){
-                        if(liste_des_paths[j].getAttribute( 'type_element' )
-                               && liste_des_paths[j].getAttribute( 'type_element' ) === 'reference_croisée'
-                        ){
-                            /*
-                              
-                              
-                            */
-                            if(parseInt( liste_des_paths[j].getAttribute( 'id_svg_parent_table' ) , 10 ) === id_svg_conteneur_table
-                                   && liste_des_paths[j].getAttribute( 'id_svg_parent_champ' ) === lst[i].getAttribute( 'id' )
-                            ){
-                                /*
-                                  
-                                  si ce champ a des enfants, il faut mettre à jour les liens qui pointent sur ce champ
-                                */
-                                var ancien_chemin=liste_des_paths[j].getAttribute( 'd' );
-                                var tab_chemin=ancien_chemin.split( ' ' );
-                                tab_chemin[6]=parseInt( parseInt( groupe_table.getAttribute( 'decallage_x' ) , 10 ) + this.#taille_bordure + largeur_max + 30 , 10 );
-                                tab_chemin[7]=parseInt( parseInt( groupe_table.getAttribute( 'decallage_y' ) , 10 ) + position_haut + this.#hauteur_de_boite_affichage / 2 , 10 );
-                                tab_chemin[8]=parseInt( parseInt( groupe_table.getAttribute( 'decallage_x' ) , 10 ) + this.#taille_bordure + largeur_max , 10 );
-                                tab_chemin[9]=parseInt( parseInt( groupe_table.getAttribute( 'decallage_y' ) , 10 ) + position_haut + this.#hauteur_de_boite_affichage / 2 , 10 );
-                                var nouveau_chemin=tab_chemin.join( ' ' );
-                                liste_des_paths[j].setAttribute( 'd' , nouveau_chemin );
-                                this.#arbre[id_bdd].arbre_svg[liste_des_paths[j].id].proprietes.d=nouveau_chemin;
-                                var k={};
-                                for(k in this.#svg_tableaux_des_references_amont_aval[id_bdd]){
-                                    if(this.#svg_tableaux_des_references_amont_aval[id_bdd][k]
-                                           && this.#svg_tableaux_des_references_amont_aval[id_bdd][k].id_svg_parent_table === id_svg_conteneur_table
-                                           && parseInt( lst[i].getAttribute( 'id' ) , 10 ) === this.#svg_tableaux_des_references_amont_aval[id_bdd][k].id_svg_parent_champ
-                                    ){
-                                        /*
-                                          
-                                          mise à jour de p222222
-                                        */
-                                        this.#svg_tableaux_des_references_amont_aval[id_bdd][k].p2[0]=parseInt( tab_chemin[8] , 10 );
-                                        this.#svg_tableaux_des_references_amont_aval[id_bdd][k].p2[1]=parseInt( tab_chemin[9] , 10 );
-                                    }
-                                }
-                            }else if(parseInt( liste_des_paths[j].getAttribute( 'id_svg_enfant_table' ) , 10 ) === id_svg_conteneur_table
-                                   && liste_des_paths[j].getAttribute( 'id_svg_enfant_champ' ) === lst[i].getAttribute( 'id' )
-                            ){
-                                /*
-                                  
-                                  ce champ a un parent, il faut mettre à jour le lien
-                                */
-                                var ancien_chemin=liste_des_paths[j].getAttribute( 'd' );
-                                var tab_chemin=ancien_chemin.split( ' ' );
-                                tab_chemin[1]=parseInt( groupe_table.getAttribute( 'decallage_x' ) , 10 );
-                                tab_chemin[2]=parseInt( parseInt( groupe_table.getAttribute( 'decallage_y' ) , 10 ) + position_haut + this.#hauteur_de_boite_affichage / 2 , 10 );
-                                tab_chemin[4]=parseInt( groupe_table.getAttribute( 'decallage_x' ) , 10 ) - 30;
-                                tab_chemin[5]=parseInt( parseInt( groupe_table.getAttribute( 'decallage_y' ) , 10 ) + position_haut + this.#hauteur_de_boite_affichage / 2 , 10 );
-                                var nouveau_chemin=tab_chemin.join( ' ' );
-                                liste_des_paths[j].setAttribute( 'd' , nouveau_chemin );
-                                this.#arbre[id_bdd].arbre_svg[liste_des_paths[j].id].proprietes.d=nouveau_chemin;
-                                var k={};
-                                for(k in this.#svg_tableaux_des_references_amont_aval[id_bdd]){
-                                    if(k === 2){
-                                        console.log( this.#svg_tableaux_des_references_amont_aval[id_bdd][k] );
-                                    }
-                                    if(this.#svg_tableaux_des_references_amont_aval[id_bdd][k]
-                                           && this.#svg_tableaux_des_references_amont_aval[id_bdd][k].id_svg_enfant_table === id_svg_conteneur_table
-                                           && this.#svg_tableaux_des_references_amont_aval[id_bdd][k].id_svg_enfant_champ === parseInt( lst[i].getAttribute( 'id' ) , 10 )
-                                    ){
-                                        /*
-                                          
-                                          mise à jour de p1111
-                                        */
-                                        this.#svg_tableaux_des_references_amont_aval[id_bdd][k].p1[0]=parseInt( tab_chemin[1] , 10 );
-                                        this.#svg_tableaux_des_references_amont_aval[id_bdd][k].p1[1]=parseInt( tab_chemin[2] , 10 );
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if(lst[i].style.display === 'inline'){
-                        position_haut+=this.#hauteur_de_boite_affichage;
-                    }else{
-                    }
-                }else if(lst[i].getAttribute( 'type_element' ) === 'rectangle_de_champ'){
-                    lst[i].setAttribute( 'width' , largeur_max );
-                }
-            }
-        }
-        /* indexes */
-        var i=0;
-        for( i=0 ; i < lst.length ; i++ ){
-            if(lst[i].getAttribute( 'type_element' )){
-                if(lst[i].getAttribute( 'type_element' ) === 'conteneur_d_index'){
-                    lst[i].setAttribute( 'decallage_x' , this.#taille_bordure );
-                    lst[i].setAttribute( 'decallage_y' , position_haut );
-                    lst[i].setAttribute( 'transform' , 'translate(' + this.#taille_bordure + ',' + position_haut + ')' );
-                    position_haut+=this.#hauteur_de_boite_affichage;
-                }else if(lst[i].getAttribute( 'type_element' ) === 'rectangle_d_index'){
-                    lst[i].setAttribute( 'width' , largeur_max );
-                }
-            }
-        }
-        /* rectangle de table */
-        var i=0;
-        for( i=0 ; i < lst.length ; i++ ){
-            if(lst[i].getAttribute( 'type_element' )){
-                if(lst[i].getAttribute( 'type_element' ) === 'rectangle_de_table'){
-                    lst[i].setAttribute( 'width' , largeur_max + 2 * this.#taille_bordure );
-                    lst[i].setAttribute( 'height' , position_haut );
-                }
-            }
-        }
-    }
+
     /*
       =============================================================================================================
     */
@@ -742,6 +576,8 @@ class c_svg_bdd1{
         var champ_date_modification=document.getElementById( 'champ_date_modification' ).checked ? ( 1 ) : ( 0 );
         var champ_date_creation=document.getElementById( 'champ_date_creation' ).checked ? ( 1 ) : ( 0 );
         var champ_numero_de_revision=document.getElementById( 'champ_numero_de_revision' ).checked ? ( 1 ) : ( 0 );
+        var refe_enfant_droite=document.getElementById( 'refe_enfant_droite' ).checked ? ( 1 ) : ( 0 );
+        var refe_parent_gauche=document.getElementById( 'refe_parent_gauche' ).checked ? ( 1 ) : ( 0 );
         var j=0;
         var i=0;
         let trouve=false;
@@ -803,6 +639,10 @@ class c_svg_bdd1{
         rev+='    champ_date_modification(' + champ_date_modification + ')';
         rev+='    champ_date_creation(' + champ_date_creation + ')';
         rev+='    champ_numero_de_revision(' + champ_numero_de_revision + ')';
+        rev+='    refe_enfant_droite(' + refe_enfant_droite + ')';
+        rev+='    refe_parent_gauche(' + refe_parent_gauche + ')';
+        
+        
         rev+=')';
         /*
           a_une_valeur_par_defaut,
@@ -1441,6 +1281,10 @@ class c_svg_bdd1{
         }
         id_svg_rectangle_du_champ=parseInt( id_svg_rectangle_du_champ , 10 );
         let a=this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ];
+        a.proprietes.refe_enfant_droite=document.getElementById( 'refe_enfant_droite' ).checked ?  1 :  0 ;
+        a.proprietes.refe_parent_gauche=document.getElementById( 'refe_parent_gauche' ).checked ?  1 :  0 ;
+        
+        
         let table_mere=document.getElementById( 'table_mère' ).value.trim();
         let champ_pere=document.getElementById( 'champ_père' ).value.trim();
         let reference_amont_ou_aval=false;
@@ -1500,41 +1344,106 @@ class c_svg_bdd1{
                         }
                     }
                 }
-                max_id_svg++;
-                if(id_svg_parent_champ === 0 || id_svg_parent_table === 0 || id_svg_enfant_table === 0){
-                    alert( 'Veuillez vérifier les champs table mère / champ père' );
-                    return;
-                }
-                debugger;
                 let nn=document.getElementById( 'non_nulle' ).checked ? ( '1' ) : ( '0' );
                 let couleur='stroke:coral;stroke-opacity:0.6';
-                if(nn === true){
+                if(nn === '1'){
                     couleur='stroke:brown;stroke-opacity:0.6';
                 }
-                if(reference_amont_aval === -1){
+                /*hugues*/
+                if(reference_amont_aval===-1){
+                    /* 
+                      hugues
+                      si le champ n'était pas lié il faut ajouter un nouveau lien
+                    */
+                    max_id_svg++;
+
+                    
+                    this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[max_id_svg]={
+                        "type" : 'g' ,
+                        "id" : max_id_svg ,
+                        "id_parent" : this.#id_svg_de_la_base_en_cours ,
+                        "proprietes" : {
+                            "id" : max_id_svg ,
+                            "type_element" : 'conteneur_reference_croisée' ,
+                            "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                            "id_svg_parent_table" : id_svg_parent_table ,
+                            "id_svg_parent_champ" : id_svg_parent_champ ,
+                            "id_svg_enfant_table" : id_svg_enfant_table ,
+                            "id_svg_enfant_champ" : id_svg_rectangle_du_champ-1 ,
+                            "nom_parent_table" : table_mere ,
+                            "nom_parent_champ" : champ_pere ,
+                        }
+                    };
+                    var d='M 0 0 C 10 0 10 20 20 20';
+
+                    max_id_svg++;
+                    this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[max_id_svg]={
+                        "type" : 'path' ,
+                        "id" : max_id_svg ,
+                        "id_parent" : max_id_svg-1 ,
+                        "proprietes" : {
+                            "id" : max_id_svg ,
+                            "d" : d ,
+                            "type_element" : 'reference_croisée' ,
+                            "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                            "id_svg_parent_table" : id_svg_parent_table ,
+                            "id_svg_parent_champ" : id_svg_parent_champ ,
+                            "id_svg_enfant_table" : id_svg_enfant_table ,
+                            "id_svg_enfant_champ" : id_svg_rectangle_du_champ-1 ,
+                            "nom_parent_table" : table_mere ,
+                            "nom_parent_champ" : champ_pere ,
+                            "style" : '' + couleur + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
+                        }
+                    };
                     a.proprietes.references=table_mere + ',' + champ_pere;
-                    max_id_svg=id_du_path;
+                    
+                    
+                    this.#svg_tableaux_des_references_amont_aval[this.#id_bdd_de_la_base_en_cours].push( {
+                            "id_bdd_de_la_base_en_cours" : this.#id_bdd_de_la_base_en_cours ,
+                            "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                            "id_svg_parent_table" : id_svg_parent_table ,
+                            "id_svg_parent_champ" : id_svg_parent_champ ,
+                            "id_svg_enfant_table" : id_svg_enfant_table ,
+                            "id_svg_enfant_champ" : id_svg_rectangle_du_champ-1 ,
+                            "nom_enfant_table" : nom_de_la_table ,
+                            "nom_enfant_champ" : nom_du_champ ,
+                            "nom_parent_table" : table_mere ,
+                            "nom_parent_champ" : champ_pere ,
+                            "id_du_path" : max_id_svg-1 ,
+                            "p1" : [0,0] ,
+                            "p2" : [50,50],
+                            "refe_enfant_droite" : a.proprietes.refe_enfant_droite,
+                            "refe_parent_gauche" : a.proprietes.refe_parent_gauche,
+                        } );
+
+                    
+                    
                 }else{
+                    /* si le champ était déjà lié, il faut modifier le lien existant*/
+
                     this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path].proprietes['id_svg_parent_champ']=id_svg_parent_champ;
                     this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path].proprietes['id_svg_parent_table']=id_svg_parent_table;
+                    this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path].proprietes['references']=table_mere + ',' + champ_pere;
                     a.proprietes.references=table_mere + ',' + champ_pere;
-                }
-                this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[max_id_svg]={
-                    "type" : 'path' ,
-                    "id" : max_id_svg ,
-                    "id_parent" : this.#id_svg_de_la_base_en_cours ,
-                    "proprietes" : {
-                        "id" : max_id_svg ,
-                        "d" : 'M 0 0 C 10 10 20 20 30 30' ,
-                        "type_element" : 'reference_croisée' ,
-                        "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
-                        "id_svg_parent_table" : id_svg_parent_table ,
-                        "id_svg_parent_champ" : id_svg_parent_champ ,
-                        "id_svg_enfant_table" : id_svg_enfant_table ,
-                        "id_svg_enfant_champ" : id_svg_rectangle_du_champ - 1 ,
-                        "style" : '' + couleur + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-linejoin:round;stroke-linecap:round;'
+                    this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path+1].proprietes['id_svg_parent_champ']=id_svg_parent_champ;
+                    this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path+1].proprietes['id_svg_parent_table']=id_svg_parent_table;
+                    this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path+1].proprietes['references']=table_mere + ',' + champ_pere;
+                    this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path+1].proprietes['style']=couleur + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;';
+                    for( let l in this.#svg_tableaux_des_references_amont_aval[this.#id_bdd_de_la_base_en_cours]){
+                        let elem=this.#svg_tableaux_des_references_amont_aval[this.#id_bdd_de_la_base_en_cours][l];
+                        if(elem.id_svg_enfant_champ===id_svg_rectangle_du_champ-1
+                          && elem.id_svg_enfant_table === id_svg_enfant_table
+                          && elem.id_svg_parent_champ === id_svg_parent_champ
+                          && elem.id_svg_parent_table === id_svg_parent_table
+                        ){
+                          this.#svg_tableaux_des_references_amont_aval[this.#id_bdd_de_la_base_en_cours][l].refe_enfant_droite=a.proprietes.refe_enfant_droite;
+                          this.#svg_tableaux_des_references_amont_aval[this.#id_bdd_de_la_base_en_cours][l].refe_parent_gauche=a.proprietes.refe_parent_gauche;
+                          
+
+                        }
                     }
-                };
+                 
+                }
             }
         }else{
             /* on a peut être supprimé un lien */
@@ -1545,9 +1454,9 @@ class c_svg_bdd1{
                 ){
                     var id_du_path=this.#svg_tableaux_des_references_amont_aval[this.#id_bdd_de_la_base_en_cours][j].id_du_path;
                     this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path]=null;
+                    this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path+1]=null;
                     this.#svg_tableaux_des_references_amont_aval[this.#id_bdd_de_la_base_en_cours][j]=null;
                     a.proprietes.references='';
-                    debugger;
                     break;
                 }
             }
@@ -1562,6 +1471,7 @@ class c_svg_bdd1{
         a.proprietes.champ_date_modification=document.getElementById( 'champ_date_modification' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.champ_date_creation=document.getElementById( 'champ_date_creation' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.champ_numero_de_revision=document.getElementById( 'champ_numero_de_revision' ).checked ? ( '1' ) : ( '0' );
+        
         var afficher_champ_dans_svg=document.getElementById( 'afficher_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
         if(afficher_champ_dans_svg === '0'){
             if(a.proprietes.primary_key === '1' || a.proprietes.auto_increment === '1' || reference_amont_ou_aval === true){
@@ -1573,6 +1483,8 @@ class c_svg_bdd1{
             "champ_date_modification" : a.proprietes.champ_date_modification ,
             "champ_date_creation" : a.proprietes.champ_date_creation ,
             "champ_numero_de_revision" : a.proprietes.champ_numero_de_revision ,
+            "refe_enfant_droite" : a.proprietes.refe_enfant_droite ,
+            "refe_parent_gauche" : a.proprietes.refe_parent_gauche ,            
             "nom_bref_du_champ" : document.getElementById( 'meta_modifier__nom_bref_du_champ' ).value ,
             "nom_court_du_champ" : document.getElementById( 'meta_modifier__nom_court_du_champ' ).value ,
             "nom_long_du_champ" : document.getElementById( 'meta_modifier__nom_long_du_champ' ).value ,
@@ -1910,6 +1822,9 @@ class c_svg_bdd1{
         let champ_date_modification=obj_donnees_rev_du_champ.champ_date_modification;
         let champ_date_creation=obj_donnees_rev_du_champ.champ_date_creation;
         let champ_numero_de_revision=obj_donnees_rev_du_champ.champ_numero_de_revision;
+        let refe_enfant_droite=obj_donnees_rev_du_champ.refe_enfant_droite;
+        let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
+        
         t+='<h2>changer les éléments du champ</h2>';
         t+='<br />type  : <input id="type_du_champ" type="text" value="' + type_du_champ + '" autocapitalize="off" />';
         t+='<br />table mère : <input id="table_mère" type="text" value="' + table_mere + '" autocapitalize="off" />';
@@ -1952,6 +1867,11 @@ class c_svg_bdd1{
         t+='<input type="checkbox" id="champ_date_creation" ' + (champ_date_creation === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />champ numero de revision : ';
         t+='<input type="checkbox" id="champ_numero_de_revision" ' + (champ_numero_de_revision === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />refe_enfant_droite : ';
+        t+='<input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />refe_parent_gauche : ';
+        t+='<input type="checkbox" id="refe_parent_gauche" ' + (refe_parent_gauche === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        
         t+='<br />';
         var cmd='';
         cmd+='interface1.module1(';
@@ -2783,25 +2703,6 @@ class c_svg_bdd1{
                 var nom_de_la_table_extraction=lst[i].getAttribute( 'nom_de_la_table' );
                 if(nom_de_la_table_extraction === nom_de_la_table){
                     t0=this.#creer_definition_table_en_rev( lst[i] , nom_table_temporaire );
-                    debugger;
-                    /*
-                      id_svg_conteneur_table=parseInt[ lst[i].getAttribute[ 'id_svg_conteneur_table' ] , 10 ];
-                      //hugues
-                      
-                      
-                      t0='\ncréer_table[';
-                      t0+='\n nom_de_la_table[\'' + nom_table_temporaire + '\'],';
-                      t0+='\nmeta[' + lst[i].getAttribute[ 'meta_rev_de_la_table' ] + '\n],';
-                      t0+='\n champs[';
-                      var lst2=lst[i].parentNode.getElementsByTagName[ 'rect' ];
-                      var j=0;
-                      for[ j=0 ; j < lst2.length ; j++ ]{
-                      if[lst2[j].getAttribute[ 'type_element' ] && lst2[j].getAttribute[ 'type_element' ] == 'rectangle_de_champ']{
-                      var nom_du_champ=lst2[j].getAttribute[ 'nom_du_champ' ];
-                      tab_des_champs.push[ [nom_du_champ,'champ[' + lst2[j].getAttribute[ 'donnees_rev_du_champ' ] + ']'] ];
-                      }
-                      }
-                    */
                 }
             }else if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) == 'rectangle_d_index'){
                 if(lst[i].getAttribute( 'nom_de_la_table_pour_l_index' )
@@ -3511,6 +3412,10 @@ class c_svg_bdd1{
         t+='<br />champ_date_modification : <input id="champ_date_modification" type="checkbox" />';
         t+='<br />champ_date_creation : <input id="champ_date_creation" type="checkbox" />';
         t+='<br />champ_numero_de_revision : <input id="champ_numero_de_revision" type="checkbox" />';
+        t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
+        t+='<br />refe_parent_gauche : <input id="refe_parent_gauche" type="checkbox" />';
+        
+        
         t+='<br />';
         t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + 'interface1.module1(' + ' chemin_module1(\'' + this.#chemin_module1 + '\'),' + ' methode3(ajouter_un_champ_de_modale),' + ' parametre3(' + '  id_svg_conteneur_table(' + id_svg_conteneur_table + '),' + '  nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')' + ' )' + ')" >ajouter</div>';
         t+='<hr />';
@@ -3619,6 +3524,10 @@ class c_svg_bdd1{
         let il_existe_un_champ_date_creation=-1;
         let il_existe_un_champ_date_modification=-1;
         let il_existe_un_champ_numero_de_revision=-1;
+        let il_existe_un_refe_enfant_droite=-1;
+        let il_existe_un_refe_parent_gauche=-1;
+        
+        
         for( i=0 ; i < liste_des_champs.length ; i++ ){
             let tt=document.getElementById( liste_des_champs[i].id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' );
             if(tt.indexOf( 'champ_date_creation(1)' ) >= 0){
@@ -3630,6 +3539,14 @@ class c_svg_bdd1{
             if(tt.indexOf( 'champ_numero_de_revision(1)' ) >= 0){
                 il_existe_un_champ_numero_de_revision=i;
             }
+            if(tt.indexOf( 'refe_enfant_droite(1)' ) >= 0){
+                il_existe_un_refe_enfant_droite=i;
+            }
+            if(tt.indexOf( 'refe_parent_gauche(1)' ) >= 0){
+                il_existe_un_refe_parent_gauche=i;
+            }
+            
+            
         }
         t+='</tr>';
         /* nom_du_champ : lst[i].childNodes[j].data , id_rectangle_de_champ : */
@@ -4348,32 +4265,53 @@ class c_svg_bdd1{
                 for( i=0 ; i < this.#svg_tableaux_des_references_amont_aval[this.#souris_init_objet.id_bdd_de_la_base_en_cours].length ; i++ ){
                     var elem=this.#svg_tableaux_des_references_amont_aval[this.#souris_init_objet.id_bdd_de_la_base_en_cours][i];
                     if(elem){
+                        var ref_elem=document.getElementById( elem.id_du_path+1 );
                         if(elem.id_svg_enfant_table === this.#souris_init_objet.id_svg_conteneur_table
                                && elem.id_svg_parent_table === this.#souris_init_objet.id_svg_conteneur_table
                         ){
                             /*
                               lien sur moi même
                             */
-                            var ref_elem=document.getElementById( elem.id_du_path );
                             var nouveau_chemin='M ' + (elem.p1[0] + this.#svg_souris_delta_x) + ' ' + (elem.p1[1] + this.#svg_souris_delta_y);
-                            nouveau_chemin+=' C ' + ((elem.p1[0] + this.#svg_souris_delta_x) - 30) + ' ' + (elem.p1[1] + this.#svg_souris_delta_y);
-                            nouveau_chemin+=' ' + (elem.p2[0] + this.#svg_souris_delta_x + 30) + ' ' + (elem.p2[1] + this.#svg_souris_delta_y);
+                            if(elem.refe_enfant_droite===1){
+                                nouveau_chemin+=' C ' + ((elem.p1[0] + this.#svg_souris_delta_x) + 30) + ' ' + (elem.p1[1] + this.#svg_souris_delta_y);
+                            }else{
+                                nouveau_chemin+=' C ' + ((elem.p1[0] + this.#svg_souris_delta_x) - 30) + ' ' + (elem.p1[1] + this.#svg_souris_delta_y);
+                            }
+                            if(elem.refe_parent_gauche===1){
+                                nouveau_chemin+=' ' + (elem.p2[0] + this.#svg_souris_delta_x - 30) + ' ' + (elem.p2[1] + this.#svg_souris_delta_y);
+                            }else{
+                                nouveau_chemin+=' ' + (elem.p2[0] + this.#svg_souris_delta_x + 30) + ' ' + (elem.p2[1] + this.#svg_souris_delta_y);
+                            }
                             nouveau_chemin+=' ' + (elem.p2[0] + this.#svg_souris_delta_x) + ' ' + (elem.p2[1] + this.#svg_souris_delta_y);
                             ref_elem.setAttribute( 'd' , nouveau_chemin );
                         }else{
                             if(elem.id_svg_enfant_table === this.#souris_init_objet.id_svg_conteneur_table){
-                                var ref_elem=document.getElementById( elem.id_du_path );
-                                var nouveau_chemin='M ' + (elem.p1[0] + this.#svg_souris_delta_x) + ' ' + (elem.p1[1] + this.#svg_souris_delta_y);
-                                nouveau_chemin+=' C ' + ((elem.p1[0] + this.#svg_souris_delta_x) - 30) + ' ' + (elem.p1[1] + this.#svg_souris_delta_y);
-                                nouveau_chemin+=' ' + (elem.p2[0] + 30) + ' ' + elem.p2[1];
+                                 var nouveau_chemin='M ' + (elem.p1[0] + this.#svg_souris_delta_x) + ' ' + (elem.p1[1] + this.#svg_souris_delta_y);
+                                if(elem.refe_enfant_droite===1){
+                                    nouveau_chemin+=' C ' + ((elem.p1[0] + this.#svg_souris_delta_x) + 30) + ' ' + (elem.p1[1] + this.#svg_souris_delta_y);
+                                }else{
+                                    nouveau_chemin+=' C ' + ((elem.p1[0] + this.#svg_souris_delta_x) - 30) + ' ' + (elem.p1[1] + this.#svg_souris_delta_y);
+                                }
+                                if(elem.refe_parent_gauche===1){
+                                    nouveau_chemin+=' ' + (elem.p2[0] - 30) + ' ' + elem.p2[1];
+                                }else{
+                                    nouveau_chemin+=' ' + (elem.p2[0] + 30) + ' ' + elem.p2[1];
+                                }
                                 nouveau_chemin+=' ' + elem.p2[0] + ' ' + elem.p2[1];
                                 ref_elem.setAttribute( 'd' , nouveau_chemin );
-                            }
-                            if(elem.id_svg_parent_table === this.#souris_init_objet.id_svg_conteneur_table){
-                                var ref_elem=document.getElementById( elem.id_du_path );
+                            }else if(elem.id_svg_parent_table === this.#souris_init_objet.id_svg_conteneur_table){
                                 var nouveau_chemin='M ' + elem.p1[0] + ' ' + elem.p1[1];
-                                nouveau_chemin+=' C ' + (elem.p1[0] - 30) + ' ' + elem.p1[1];
-                                nouveau_chemin+=' ' + (elem.p2[0] + this.#svg_souris_delta_x + 30) + ' ' + (elem.p2[1] + this.#svg_souris_delta_y);
+                                if(elem.refe_enfant_droite===1){
+                                   nouveau_chemin+=' C ' + (elem.p1[0] + 30) + ' ' + elem.p1[1];
+                                }else{
+                                   nouveau_chemin+=' C ' + (elem.p1[0] - 30) + ' ' + elem.p1[1];
+                                }
+                                if(elem.refe_parent_gauche===1){
+                                    nouveau_chemin+=' ' + (elem.p2[0] + this.#svg_souris_delta_x - 30) + ' ' + (elem.p2[1] + this.#svg_souris_delta_y);
+                                }else{
+                                    nouveau_chemin+=' ' + (elem.p2[0] + this.#svg_souris_delta_x + 30) + ' ' + (elem.p2[1] + this.#svg_souris_delta_y);
+                                }
                                 nouveau_chemin+=' ' + (elem.p2[0] + this.#svg_souris_delta_x) + ' ' + (elem.p2[1] + this.#svg_souris_delta_y);
                                 ref_elem.setAttribute( 'd' , nouveau_chemin );
                             }
@@ -4475,13 +4413,12 @@ class c_svg_bdd1{
                 for( i=0 ; i < this.#svg_tableaux_des_references_amont_aval[this.#souris_init_objet.id_bdd_de_la_base_en_cours].length ; i++ ){
                     var elem=this.#svg_tableaux_des_references_amont_aval[this.#souris_init_objet.id_bdd_de_la_base_en_cours][i];
                     if(elem){
+                        var ref_elem=document.getElementById( elem.id_du_path+1 );
                         if(elem.id_svg_enfant_table === this.#souris_init_objet.id_svg_conteneur_table){
-                            var ref_elem=document.getElementById( elem.id_du_path );
                             var tab=ref_elem.getAttribute( 'd' ).split( ' ' );
                             this.#svg_tableaux_des_references_amont_aval[this.#souris_init_objet.id_bdd_de_la_base_en_cours][i].p1=[parseInt( tab[1] , 10 ),parseInt( tab[2] , 10 )];
                         }
                         if(elem.id_svg_parent_table === this.#souris_init_objet.id_svg_conteneur_table){
-                            var ref_elem=document.getElementById( elem.id_du_path );
                             var tab=ref_elem.getAttribute( 'd' ).split( ' ' );
                             this.#svg_tableaux_des_references_amont_aval[this.#souris_init_objet.id_bdd_de_la_base_en_cours][i].p2=[parseInt( tab[8] , 10 ),parseInt( tab[9] , 10 )];
                         }
@@ -4730,6 +4667,204 @@ class c_svg_bdd1{
         return str;
     }
     /*
+      =============================================================================================================
+    */
+    #svg_ajuster_la_position_des_liens(id_bdd){
+     var lst1=document.getElementById('refZnDessin').querySelectorAll('[type_element="rectangle_de_base"]');
+     for(let i=0;i<lst1.length;i++){
+        if(lst1[i].getAttribute('id_bdd_de_la_base_en_cours')==id_bdd){
+         
+            
+            var liste_des_paths=this.#svg_dessin.getElementById( lst1[i].getAttribute('id_svg_de_la_base_en_cours') ).getElementsByTagName( 'path' );            
+            for( let j=0 ; j < liste_des_paths.length ; j++ ){
+                if(liste_des_paths[j].getAttribute( 'type_element' )
+                       && liste_des_paths[j].getAttribute( 'type_element' ) === 'reference_croisée'
+                ){
+                   /*
+                   
+                    <path id="36" d="M 50 50 C 20 50 30 0 0 0" 
+                     type_element="reference_croisée" id_svg_de_la_base_en_cours="0" 
+                     id_svg_parent_table="4" id_svg_parent_champ="9" id_svg_enfant_table="21" 
+                     id_svg_enfant_champ="32" nom_parent_table="tbl_zzzs" 
+                     nom_parent_champ="chi_id_zzz" style="stroke:brown;stroke-width:3;fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;"></path>
+                   */
+                   let id_svg_parent_table=parseInt(liste_des_paths[j].getAttribute('id_svg_parent_table'),10);
+                   let id_svg_parent_champ=parseInt(liste_des_paths[j].getAttribute('id_svg_parent_champ'),10);
+                   let id_svg_enfant_table=parseInt(liste_des_paths[j].getAttribute('id_svg_enfant_table'),10);
+                   let id_svg_enfant_champ=parseInt(liste_des_paths[j].getAttribute('id_svg_enfant_champ'),10);
+                   
+                   var parent_x=parseFloat(document.getElementById('refZnDessin').getElementById(id_svg_parent_table).getAttribute('decallage_x'));
+                   
+                   let refe_parent_gauche=false;
+                   if(document.getElementById('refZnDessin').getElementById(id_svg_enfant_champ+1).getAttribute('donnees_rev_du_champ').indexOf('refe_parent_gauche(1)')>=0){
+                       refe_parent_gauche=true;
+                   }else{
+                       var largeur_parent=parseFloat(document.getElementById('refZnDessin').getElementById(id_svg_parent_table+1).getAttribute('width'))
+                       
+                       parent_x+=largeur_parent;
+                   }
+                   
+                   
+                   var parent_y=parseFloat(document.getElementById('refZnDessin').getElementById(id_svg_parent_table).getAttribute('decallage_y'));
+                   parent_y+=parseFloat(document.getElementById('refZnDessin').getElementById(id_svg_parent_champ).getAttribute('decallage_y'));
+
+                   var enfant_x=parseFloat(document.getElementById('refZnDessin').getElementById(id_svg_enfant_table).getAttribute('decallage_x'));
+                   enfant_x+=this.#taille_bordure;
+                   
+                   var enfant_y=parseFloat(document.getElementById('refZnDessin').getElementById(id_svg_enfant_table).getAttribute('decallage_y'));
+                   enfant_y+=parseFloat(document.getElementById('refZnDessin').getElementById(id_svg_enfant_champ).getAttribute('decallage_y'));
+                   
+                   let refe_enfant_droite=false;
+                   if(document.getElementById('refZnDessin').getElementById(id_svg_enfant_champ+1).getAttribute('donnees_rev_du_champ').indexOf('refe_enfant_droite(1)')>=0){
+                      refe_enfant_droite=true;
+                      var largeur_enfant=parseFloat(document.getElementById('refZnDessin').getElementById(id_svg_enfant_table+1).getAttribute('width'))
+                      enfant_x+=largeur_enfant-this.#taille_bordure;
+                   }
+                   
+
+
+                   
+                   var ancien_chemin=liste_des_paths[j].getAttribute( 'd' );
+                   var tab_chemin=[];
+                   /* le chemin part de l'enfant */
+                   /* */
+                   tab_chemin[0]='M';
+                   tab_chemin[1]=enfant_x;
+                   tab_chemin[2]=enfant_y+this.#hauteur_de_boite_affichage / 2;
+                   tab_chemin[3]='C';
+                   if(refe_enfant_droite===true){
+                       tab_chemin[4]=enfant_x+30;
+                   }else{
+                       tab_chemin[4]=enfant_x-30;
+                   }
+                   tab_chemin[5]=enfant_y+this.#hauteur_de_boite_affichage / 2;
+                   if(refe_parent_gauche===true){
+                     tab_chemin[6]=parent_x-30;
+                   }else{
+                     tab_chemin[6]=parent_x+30;
+                   }
+                   tab_chemin[7]=parent_y+this.#hauteur_de_boite_affichage / 2;;
+                   tab_chemin[8]=parent_x;
+                   tab_chemin[9]=parent_y+this.#hauteur_de_boite_affichage / 2;;
+                   var nouveau_chemin=tab_chemin.join( ' ' );
+                   liste_des_paths[j].setAttribute( 'd' , nouveau_chemin );
+                   
+                   for(let k in this.#svg_tableaux_des_references_amont_aval[id_bdd]){
+                       if(this.#svg_tableaux_des_references_amont_aval[id_bdd][k]
+                              && this.#svg_tableaux_des_references_amont_aval[id_bdd][k].id_svg_enfant_table === id_svg_enfant_table
+                              && this.#svg_tableaux_des_references_amont_aval[id_bdd][k].id_svg_enfant_champ === id_svg_enfant_champ
+                       ){
+                           /*
+                             
+                             mise à jour de p222222
+                           */
+                           this.#svg_tableaux_des_references_amont_aval[id_bdd][k].p2[0]=parseInt( tab_chemin[8] , 10 );
+                           this.#svg_tableaux_des_references_amont_aval[id_bdd][k].p2[1]=parseInt( tab_chemin[9] , 10 );
+                           this.#svg_tableaux_des_references_amont_aval[id_bdd][k].p1[0]=parseInt( tab_chemin[1] , 10 );
+                           this.#svg_tableaux_des_references_amont_aval[id_bdd][k].p1[1]=parseInt( tab_chemin[2] , 10 );
+                           break;
+                           
+                       }
+                   }
+                }
+            }
+        }
+     }
+    }
+    
+    /*
+      =============================================================================================================
+    */
+    #svg_ajuster_la_largeur_des_boites_de_la_table( tableau ){
+        var id_svg_conteneur_table=tableau[0];
+        var id_bdd=tableau[1];
+        try{
+            var id_svg_de_la_base_en_cours=this.#svg_dessin.getElementById( id_svg_conteneur_table ).getAttribute( 'id_svg_de_la_base_en_cours' );
+        }catch(e){
+            debugger;
+        }
+        var hauteur_de_la_table=0;
+        var largeur_max=0;
+        var groupe_table=this.#svg_dessin.getElementById( id_svg_conteneur_table );
+        try{
+            var lst=groupe_table.getElementsByTagName( 'text' );
+        }catch(e){
+            debugger;
+        }
+        var i=0;
+        for( i=0 ; i < lst.length ; i++ ){
+            var bb=lst[i].getBBox();
+            if(largeur_max < bb.width){
+                largeur_max=Math.ceil( bb.width );
+            }
+            hauteur_de_la_table+=this.#hauteur_de_boite_affichage;
+        }
+        largeur_max+=2 * this.#taille_bordure;
+        if(largeur_max < 40){
+            largeur_max=40;
+        }
+        var position_haut=this.#taille_bordure;
+        var lst=this.#svg_dessin.getElementById( id_svg_conteneur_table ).getElementsByTagName( '*' );
+        /* nom de la table */
+        var i=0;
+        for( i=0 ; i < lst.length ; i++ ){
+            if(lst[i].getAttribute( 'type_element' )){
+                if(lst[i].getAttribute( 'type_element' ) === 'conteneur_de_nom_de_table'){
+                    lst[i].decallage_x=this.#taille_bordure;
+                    lst[i].decallage_y=position_haut;
+                    lst[i].setAttribute( 'transform' , 'translate(' + this.#taille_bordure + ',' + position_haut + ')' );
+                    position_haut+=this.#hauteur_de_boite_affichage;
+                }else if(lst[i].getAttribute( 'type_element' ) === 'rectangle_de_nom_de_table'){
+                    lst[i].setAttribute( 'width' , largeur_max );
+                }
+            }
+        }
+        /* champs */
+        var i=0;
+        for( i=0 ; i < lst.length ; i++ ){
+            if(lst[i].getAttribute( 'type_element' )){
+                if(lst[i].getAttribute( 'type_element' ) === 'conteneur_de_champ'){
+                    var nom_du_champ=lst[i].getAttribute( 'nom_du_champ' );
+                    lst[i].setAttribute( 'decallage_x' , this.#taille_bordure );
+                    lst[i].setAttribute( 'decallage_y' , position_haut );
+                    lst[i].setAttribute( 'transform' , 'translate(' + this.#taille_bordure + ',' + position_haut + ')' );
+                    var j=0;
+
+                    if(lst[i].style.display === 'inline'){
+                        position_haut+=this.#hauteur_de_boite_affichage;
+                    }else{
+                    }
+                }else if(lst[i].getAttribute( 'type_element' ) === 'rectangle_de_champ'){
+                    lst[i].setAttribute( 'width' , largeur_max );
+                }
+            }
+        }
+        /* indexes */
+        var i=0;
+        for( i=0 ; i < lst.length ; i++ ){
+            if(lst[i].getAttribute( 'type_element' )){
+                if(lst[i].getAttribute( 'type_element' ) === 'conteneur_d_index'){
+                    lst[i].setAttribute( 'decallage_x' , this.#taille_bordure );
+                    lst[i].setAttribute( 'decallage_y' , position_haut );
+                    lst[i].setAttribute( 'transform' , 'translate(' + this.#taille_bordure + ',' + position_haut + ')' );
+                    position_haut+=this.#hauteur_de_boite_affichage;
+                }else if(lst[i].getAttribute( 'type_element' ) === 'rectangle_d_index'){
+                    lst[i].setAttribute( 'width' , largeur_max );
+                }
+            }
+        }
+        /* rectangle de table */
+        var i=0;
+        for( i=0 ; i < lst.length ; i++ ){
+            if(lst[i].getAttribute( 'type_element' )){
+                if(lst[i].getAttribute( 'type_element' ) === 'rectangle_de_table'){
+                    lst[i].setAttribute( 'width' , largeur_max + 2 * this.#taille_bordure );
+                    lst[i].setAttribute( 'height' , position_haut );
+                }
+            }
+        }
+    }    
+    /*
       
       =============================================================================================================
       function dessiner_le_svg
@@ -4810,6 +4945,7 @@ class c_svg_bdd1{
                     }
                 }
             }
+            this.#svg_ajuster_la_position_des_liens( i );
         }
         var i={};
         for(i in tableau_svg){
@@ -4865,6 +5001,9 @@ class c_svg_bdd1{
         let champ_date_modification=0;
         let champ_date_creation=0;
         let champ_numero_de_revision=0;
+        let refe_enfant_droite=0;
+        let refe_parent_gauche=0;
+        
         let obj1=__gi1.__m_rev1.rev_tm( texte_meta_rev );
         if(obj1.__xst === __xsu){
             let mat2=obj1.__xva;
@@ -4935,6 +5074,16 @@ class c_svg_bdd1{
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.champ_numero_de_revision , 10 );
                             }
                             champ_numero_de_revision=parseInt( mat2[k + 1][1] , 10 );
+                        }else if(mat2[k][1] === 'refe_enfant_droite' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'refe_enfant_droite' )){
+                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.refe_enfant_droite , 10 );
+                            }
+                            refe_enfant_droite=parseInt( mat2[k + 1][1] , 10 );
+                        }else if(mat2[k][1] === 'refe_parent_gauche' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'refe_parent_gauche' )){
+                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.refe_parent_gauche , 10 );
+                            }
+                            refe_parent_gauche=parseInt( mat2[k + 1][1] , 10 );
                         }else if(mat2[k][1] === 'typologie' && mat2[k][2] === 'f'){
                             if(mat2[k][8] === 0){
                                 typologie='';
@@ -5001,6 +5150,20 @@ class c_svg_bdd1{
         ){
             champ_numero_de_revision=1;
         }
+        if(nouvelles_valeurs.hasOwnProperty( 'refe_enfant_droite' )
+               && (nouvelles_valeurs.refe_enfant_droite === '1'
+                   || nouvelles_valeurs.refe_enfant_droite=== 1)
+        ){
+            refe_enfant_droite=1;
+        }
+        if(nouvelles_valeurs.hasOwnProperty( 'refe_parent_gauche' )
+               && (nouvelles_valeurs.refe_parent_gauche === '1'
+                   || nouvelles_valeurs.refe_parent_gauche=== 1)
+        ){
+            refe_parent_gauche=1;
+        }
+        
+        
         o1+='meta(';
         o1+='    genre_meta(champ),';
         o1+='    nom_du_champ(\'' + nom_du_champ + '\'),';
@@ -5019,6 +5182,14 @@ class c_svg_bdd1{
         if(champ_numero_de_revision === 1){
             o1+='    champ_numero_de_revision(' + champ_numero_de_revision + '),';
         }
+        if(refe_enfant_droite === 1){
+            o1+='    refe_enfant_droite(' + refe_enfant_droite + '),';
+        }
+        if(refe_parent_gauche === 1){
+            o1+='    refe_parent_gauche(' + refe_parent_gauche + '),';
+        }
+        
+        
         o1+=')';
         let obj2=__gi1.__m_rev1.rev_tm( o1 );
         if(obj2.__xst === __xsu){
@@ -5045,7 +5216,9 @@ class c_svg_bdd1{
                 "afficher_champ_dans_svg" : afficher_champ_dans_svg ,
                 "champ_date_modification" : champ_date_modification ,
                 "champ_date_creation" : champ_date_creation ,
-                "champ_numero_de_revision" : champ_numero_de_revision
+                "champ_numero_de_revision" : champ_numero_de_revision,
+                "refe_enfant_droite" : refe_enfant_droite ,
+                "refe_parent_gauche" : refe_parent_gauche ,
             });
     }
     /*
@@ -5848,6 +6021,8 @@ class c_svg_bdd1{
         contenu+='<tspan ';
         contenu+=' style="cursor:pointer;" ';
         contenu+=' data-hug_click="' + f + '">🟨</tspan>' + nom_du_champ;
+        
+        
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'text' ,
             "id" : indice_courant ,
@@ -5890,6 +6065,10 @@ class c_svg_bdd1{
             }
             var p1=[50,50];
             var p2=[0,0];
+            /*hugues*/
+            let refe_enfant_droite=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant-2].proprietes.donnees_rev_du_champ.indexOf('refe_enfant_droite(1)')>=0?1:0;
+            let refe_parent_gauche=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant-2].proprietes.donnees_rev_du_champ.indexOf('refe_parent_gauche(1)')>=0?1:0;
+            
             this.#svg_tableaux_des_references_amont_aval[id_bdd_de_la_base].push( {
                     "id_bdd_de_la_base_en_cours" : this.#id_bdd_de_la_base_en_cours ,
                     "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
@@ -5903,7 +6082,9 @@ class c_svg_bdd1{
                     "nom_parent_champ" : nom_parent_champ ,
                     "id_du_path" : indice_courant ,
                     "p1" : p1 ,
-                    "p2" : p2
+                    "p2" : p2 ,
+                    "refe_enfant_droite" : refe_enfant_droite,
+                    "refe_parent_gauche" : refe_parent_gauche
                 } );
             /*
               
@@ -5918,9 +6099,27 @@ class c_svg_bdd1{
               le parent d'un lien appartient à la base et non pas à id_svg_champ_en_cours
             */
             this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
-                "type" : 'path' ,
+                "type" : 'g' ,
                 "id" : indice_courant ,
                 "id_parent" : this.#id_svg_de_la_base_en_cours ,
+                "proprietes" : {
+                    "id" : indice_courant ,
+                    "type_element" : 'conteneur_reference_croisée' ,
+                    "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                    "id_svg_parent_table" : id_svg_parent_table ,
+                    "id_svg_parent_champ" : id_svg_parent_champ ,
+                    "id_svg_enfant_table" : id_svg_conteneur_table ,
+                    "id_svg_enfant_champ" : id_svg_champ_en_cours ,
+                    "nom_parent_table" : nom_parent_table ,
+                    "nom_parent_champ" : nom_parent_champ ,
+                    "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
+                }
+            };
+            indice_courant++;
+            this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
+                "type" : 'path' ,
+                "id" : indice_courant ,
+                "id_parent" : indice_courant-1 ,
                 "proprietes" : {
                     "id" : indice_courant ,
                     "d" : d ,
@@ -5932,54 +6131,10 @@ class c_svg_bdd1{
                     "id_svg_enfant_champ" : id_svg_champ_en_cours ,
                     "nom_parent_table" : nom_parent_table ,
                     "nom_parent_champ" : nom_parent_champ ,
-                     /*
-                      
-                      nom_enfant_table           : nom_de_la_table         ,
-                      nom_enfant_champ           : nom_du_champ            ,
-                      nom_parent_table           : nom_parent_table        ,
-                      nom_parent_champ           : nom_parent_champ        ,
-                     */
                     "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
                 }
             };
             indice_courant++;
-        }
-        /*
-          if(donnees_rev_du_champ !== ''){
-          var o=1;
-          for( o=1 ; o < tabrev.length ; o++ ){
-          if(tabrev[o][7] === 0){
-          if('references' === tabrev[o][1] && tabrev[o][8] === 2){
-          a_des_references=true;
-          var i={};
-          for(i in this.#arbre[id_bdd_de_la_base].arbre_svg){
-          var elem=this.#arbre[id_bdd_de_la_base].arbre_svg[i];
-          if(elem === null){
-          continue;
-          }
-          if(elem.proprietes
-          && elem.proprietes.type_element
-          && elem.proprietes.type_element === 'conteneur_de_table'
-          && elem.proprietes.nom_de_la_table === tabrev[o + 1][1]
-          ){
-          id_svg_parent_table=parseInt( elem.proprietes.id , 10 );
-          }
-          if(elem.proprietes.type_element === 'conteneur_de_champ'
-          && elem.proprietes.id_svg_conteneur_table === id_svg_parent_table
-          && elem.proprietes.nom_du_champ === tabrev[o + 2][1]
-          ){
-          id_svg_parent_champ=parseInt( elem.proprietes.id , 10 );
-          }
-          if(id_svg_parent_champ >= 0 && id_svg_parent_table >= 0){
-          break;
-          }
-          }
-          }
-          }
-          }
-          }
-        */
-        if(a_des_references === true){
         }
         return({"indice_du_champ" : indice_du_champ ,"id_svg_champ_en_cours" : id_svg_champ_en_cours ,"indice_courant" : indice_courant});
     }
