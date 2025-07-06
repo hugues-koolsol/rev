@@ -1,7 +1,7 @@
 <?php
 function sql_1($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur`
+      `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_groupe_utilisateur`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -26,6 +26,7 @@ function sql_1($par,&$donnees_retournees,$that){
             $donnees0[]=array(
                 'T0.chp_mot_de_passe_utilisateur' => $tab0[0],
                 'T0.chi_id_utilisateur' => $tab0[1],
+                'T0.chx_groupe_utilisateur' => $tab0[2],
             );
         }
         return array(

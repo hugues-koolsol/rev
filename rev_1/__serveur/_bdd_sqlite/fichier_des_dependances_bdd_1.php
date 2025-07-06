@@ -1,5 +1,20 @@
 <?php
 $tableau_des_dependances=array (
+  'tbl_groupes_chi_id_groupe' => 
+  array (
+    'table_parente' => 'tbl_groupes',
+    'champ_parent' => 'chi_id_groupe',
+    'dependances' => 
+    array (
+      0 => 
+      array (
+        'table_dependante' => 'tbl_utilisateurs',
+        'champ_dependant' => 'chx_groupe_utilisateur',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+    ),
+  ),
   'tbl_utilisateurs_chi_id_utilisateur' => 
   array (
     'table_parente' => 'tbl_utilisateurs',
@@ -46,21 +61,6 @@ $tableau_des_dependances=array (
       array (
         'table_dependante' => 'tbl_bdds',
         'champ_dependant' => 'chx_dossier_id_basedd',
-        'non_nulle' => '0',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-    ),
-  ),
-  'tbl_test_chi_id_y' => 
-  array (
-    'table_parente' => 'tbl_test',
-    'champ_parent' => 'chi_id_y',
-    'dependances' => 
-    array (
-      0 => 
-      array (
-        'table_dependante' => 'tbl_test',
-        'champ_dependant' => 'chx_parent_y',
         'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),

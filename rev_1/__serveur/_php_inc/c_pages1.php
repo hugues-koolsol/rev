@@ -146,6 +146,9 @@ class c_pages1{
             */
             $_SESSION[__X_CLE_APPLICATION]['bidon']='bidon|bidon "et" encore bidon';
             $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']=$tt[__xva][0]['T0.chi_id_utilisateur'];
+            $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']=$tt[__xva][0]['T0.chi_id_utilisateur'];
+            $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant']=$tt[__xva][0]['T0.chx_groupe_utilisateur'];
+            $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_initial']=$tt[__xva][0]['T0.chx_groupe_utilisateur'];
             $_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1']=0;
             $donnees_retournees[__x_ligne]=__LINE__;
             $donnees_retournees[__x_authentifie]=__xsu;

@@ -3,7 +3,7 @@ $php_des_sql=array (
   1 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur`
+`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_groupe_utilisateur`
  FROM b1.tbl_utilisateurs T0
 WHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur  
 LIMIT 1 OFFSET 0 
@@ -795,5 +795,101 @@ WHERE (`T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
    `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
     'cht_commentaire_requete' => NULL,
+  ),
+  73 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe`
+ FROM b1.tbl_groupes T0
+WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
+   AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe) 
+ORDER BY `T0`.`chi_id_groupe` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',
+    'cht_commentaire_requete' => 'liste des groupes',
+  ),
+  74 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_groupes`(
+    `chp_nom_groupe`
+) VALUES (
+    :chp_nom_groupe
+);',
+    'cht_commentaire_requete' => 'groupes',
+  ),
+  75 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe`
+ FROM b1.tbl_groupes T0
+WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
+;',
+    'cht_commentaire_requete' => 'groupes',
+  ),
+  76 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_groupes SET 
+   `chp_nom_groupe` = :n_chp_nom_groupe
+WHERE `chi_id_groupe` = :c_chi_id_groupe ;',
+    'cht_commentaire_requete' => 'groupes',
+  ),
+  77 => 
+  array (
+    'cht_sql_requete' => 'DELETE FROM b1.tbl_groupes
+WHERE `chi_id_groupe` = :chi_id_groupe ;',
+    'cht_commentaire_requete' => 'groupes',
+  ),
+  78 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
+`T0`.`chx_groupe_utilisateur` , `T1`.`chp_nom_groupe`
+ FROM b1.tbl_utilisateurs T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
+
+WHERE ( /* */ `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+   AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
+ORDER BY `T0`.`chi_id_utilisateur` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',
+    'cht_commentaire_requete' => 'utilisateurs',
+  ),
+  79 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_utilisateurs`(
+    `chp_nom_de_connexion_utilisateur` , 
+    `chx_groupe_utilisateur`
+) VALUES (
+    :chp_nom_de_connexion_utilisateur , 
+    :chx_groupe_utilisateur
+);',
+    'cht_commentaire_requete' => 'utilisateurs',
+  ),
+  80 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+`T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_groupe_utilisateur` , 
+`T1`.`chp_nom_groupe`
+ FROM b1.tbl_utilisateurs T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
+
+WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+;',
+    'cht_commentaire_requete' => 'utilisateur',
+  ),
+  81 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_utilisateurs SET 
+   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
+   `chx_groupe_utilisateur` = :n_chx_groupe_utilisateur
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
+    'cht_commentaire_requete' => 'utilisateur',
+  ),
+  82 => 
+  array (
+    'cht_sql_requete' => 'DELETE FROM b1.tbl_utilisateurs
+WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',
+    'cht_commentaire_requete' => 'utilisateur',
   ),
 );

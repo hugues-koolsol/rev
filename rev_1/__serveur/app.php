@@ -59,6 +59,8 @@ function obtenir_les_menus(){
             $t[]='<div data-id_menu="58" class="hug_bouton" data-hug_click="c_bases1.page_liste_des_bases1(indice_menu(58))" title="bases de données">bases</div>' . PHP_EOL;
             $t[]='<div data-id_menu="59" class="hug_bouton" data-hug_click="c_requetes1.page_liste_des_requetes1(indice_menu(59))" title="requêtes">requêtes</div>' . PHP_EOL;
             $t[]='<div data-id_menu="62" class="hug_bouton" data-hug_click="c_revs1.page_liste_des_revs1(indice_menu(62))" title="sources">revs</div>' . PHP_EOL;
+            $t[]='<div data-id_menu="63" class="hug_bouton" data-hug_click="c_groupes1.page_liste_des_groupes1(indice_menu(63))" title="sources">groupes</div>' . PHP_EOL;
+            $t[]='<div data-id_menu="64" class="hug_bouton" data-hug_click="c_utilisateurs1.page_liste_des_utilisateurs1(indice_menu(64))" title="sources">utilisateurs</div>' . PHP_EOL;
 
         }
 

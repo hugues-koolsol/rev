@@ -912,6 +912,7 @@ class c_requetes1{
     <b>php : </b>
     <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(txtar3)))" title="agrandir la zone">🖐</div>
     <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(txtar3)))" title="retrecir la zone">👊</div>
+    <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(txtar3)))" title="aller à la ligne">ligne</div>
 </div>
 <div class="yy_conteneur_txtara">
     <textarea class="txtar1" id="txtar3" rows="10" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
