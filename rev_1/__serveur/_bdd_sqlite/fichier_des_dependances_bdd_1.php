@@ -13,6 +13,49 @@ $tableau_des_dependances=array (
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
+      1 => 
+      array (
+        'table_dependante' => 'tbl_groupes',
+        'champ_dependant' => 'chx_parent_groupe',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+      2 => 
+      array (
+        'table_dependante' => 'tbl_pages',
+        'champ_dependant' => 'chx_groupe_page',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+    ),
+  ),
+  'tbl_metiers_chi_id_metier' => 
+  array (
+    'table_parente' => 'tbl_metiers',
+    'champ_parent' => 'chi_id_metier',
+    'dependances' => 
+    array (
+      0 => 
+      array (
+        'table_dependante' => 'tbl_utilisateurs',
+        'champ_dependant' => 'chx_metier_utilisateur',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+      1 => 
+      array (
+        'table_dependante' => 'tbl_metiers',
+        'champ_dependant' => 'chx_parent_metier',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+      2 => 
+      array (
+        'table_dependante' => 'tbl_pages',
+        'champ_dependant' => 'chx_metier_page',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
     ),
   ),
   'tbl_utilisateurs_chi_id_utilisateur' => 

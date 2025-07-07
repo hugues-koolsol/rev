@@ -349,7 +349,10 @@ class _c_interface1{
         let menus=document.getElementById( 'vv_nav' );
         if(menus !== null){
             /* lors du premier chargement on doit allumer le bouton */
-            if(reponse.hasOwnProperty('__xva') && reponse.__xva.hasOwnProperty( 'maj' ) && reponse.__xva.maj.indexOf( 'allumer_menu' ) >= 0){
+            if(reponse.hasOwnProperty( '__xva' )
+                   && reponse.__xva.hasOwnProperty( 'maj' )
+                   && reponse.__xva.maj.indexOf( 'allumer_menu' ) >= 0
+            ){
                 let mat_maj=this.__m_rev1.rev_tcm( decodeURIComponent( reponse.__xva.maj ) );
                 if(mat_maj.__xst === __xsu){
                     for( let i=0 ; i < mat_maj.__xva.length ; i++ ){
@@ -1421,7 +1424,11 @@ class _c_interface1{
                                && liste_des_messages_anciens[0].id === 'yy_supprimer_les_lessages'
                         ){
                             liste_des_messages_anciens[0].parentNode.removeChild( liste_des_messages_anciens[0] );
-                            document.getElementById( 'vv_bouton_messages' ).classList.remove( 'hug_bouton_actif' );
+                            try{
+                                document.getElementById( 'vv_bouton_messages' ).classList.remove( 'hug_bouton_actif' );
+                            }catch{
+                                /* dans le cas d'ine sous fenetre */
+                            }
                         }
                         if(la_zone_messages.innerHTML === ''){
                             try{

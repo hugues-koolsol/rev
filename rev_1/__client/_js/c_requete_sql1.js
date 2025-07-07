@@ -228,7 +228,7 @@ class c_requete_sql1{
                         break;
                     }else if(tab[j][2] === 'f' && tab[j][1] === '#'){
                     }else{
-                        debugger;
+                        console.log( 'afr' );
                     }
                 }
             }

@@ -112,7 +112,7 @@ class c_pages1{
         $tt=/*sql_inclure_deb*/
             /* sql_1()
             SELECT 
-            `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur`
+            `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_groupe_utilisateur`
              FROM b1.tbl_utilisateurs T0
             WHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur  
             LIMIT 1 OFFSET 0 
@@ -149,6 +149,8 @@ class c_pages1{
             $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']=$tt[__xva][0]['T0.chi_id_utilisateur'];
             $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant']=$tt[__xva][0]['T0.chx_groupe_utilisateur'];
             $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_initial']=$tt[__xva][0]['T0.chx_groupe_utilisateur'];
+            $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant']=$tt[__xva][0]['T0.chx_metier_utilisateur'];
+            $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_initial']=$tt[__xva][0]['T0.chx_metier_utilisateur'];
             $_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1']=0;
             $donnees_retournees[__x_ligne]=__LINE__;
             $donnees_retournees[__x_authentifie]=__xsu;
@@ -315,8 +317,8 @@ class c_pages1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_47()
-                SELECT 
-                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+                SELECT 
+                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
                 `T0`.`chi_compteur_socket1_utilisateur`
                  FROM b1.tbl_utilisateurs T0
                 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
@@ -650,7 +652,7 @@ EOT;
         }
 
         $donnees_retournees[__x_page] .= '<div id="vv_les_messages"></div>';
-        $donnees_retournees[__x_page] .= '<div class="hug_bouton yy__x_signaux_1" id="vv_supprimer_les_messages_3" data-hug_click="interface1.supprimer_les_messages()" style="position: fixed;left:calc( 50vw - 80px);top: var(--h_barre);z-index:100;visibility:hidden;">supprimer les messages 3</div>';
+        $donnees_retournees[__x_page] .= '<div class="hug_bouton yy__x_signaux_1" id="vv_supprimer_les_messages_3" data-hug_click="interface1.supprimer_les_messages()" style="position: fixed;left:calc( 50vw - 80px);top: var(--h_barre);z-index:100;visibility:hidden;">supprimer les messages</div>';
         $donnees_retournees[__x_page] .= '<main id="vv_main">';
         $donnees_recues[__x_action]=$donnees_recues['fonction_a_appeler'];
         

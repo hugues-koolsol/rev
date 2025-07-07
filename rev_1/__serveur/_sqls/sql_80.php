@@ -3,12 +3,14 @@ function sql_80($par,&$donnees_retournees,$that){
     $champs0='
       `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
       `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_groupe_utilisateur` , 
-      `T1`.`chp_nom_groupe`
+      `T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
       FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_utilisateurs T0
        LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
+
+       LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
     ';
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
@@ -34,6 +36,8 @@ function sql_80($par,&$donnees_retournees,$that){
                 'T0.chp__dtc_utilisateur' => $tab0[8],
                 'T0.chx_groupe_utilisateur' => $tab0[9],
                 'T1.chp_nom_groupe' => $tab0[10],
+                'T0.chx_metier_utilisateur' => $tab0[11],
+                'T2.chp_nom_metier' => $tab0[12],
             );
         }
         return array(

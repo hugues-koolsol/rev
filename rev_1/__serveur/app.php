@@ -60,6 +60,7 @@ function obtenir_les_menus(){
             $t[]='<div data-id_menu="59" class="hug_bouton" data-hug_click="c_requetes1.page_liste_des_requetes1(indice_menu(59))" title="requêtes">requêtes</div>' . PHP_EOL;
             $t[]='<div data-id_menu="62" class="hug_bouton" data-hug_click="c_revs1.page_liste_des_revs1(indice_menu(62))" title="sources">revs</div>' . PHP_EOL;
             $t[]='<div data-id_menu="63" class="hug_bouton" data-hug_click="c_groupes1.page_liste_des_groupes1(indice_menu(63))" title="sources">groupes</div>' . PHP_EOL;
+            $t[]='<div data-id_menu="65" class="hug_bouton" data-hug_click="c_metiers1.page_liste_des_metiers1(indice_menu(65))" title="metiers">metiers</div>' . PHP_EOL;
             $t[]='<div data-id_menu="64" class="hug_bouton" data-hug_click="c_utilisateurs1.page_liste_des_utilisateurs1(indice_menu(64))" title="sources">utilisateurs</div>' . PHP_EOL;
 
         }
@@ -224,11 +225,16 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
                 /*
                   on n'a pas trouvé un menu , à priori on met la page d'accueil ...
                 */
+                
                 if(!isset($donnees_retournees[__xva]['maj'])){
+
                     $donnees_retournees[__xva]['maj']='allumer_menu(1)';
+
                 }else{
-                    $donnees_retournees[__xva]['maj'].='allumer_menu(1)';
+
+                    $donnees_retournees[__xva]['maj'] .= 'allumer_menu(1)';
                 }
+
                 /*
                   ... mais c'est peut être une sous page.
                 */
@@ -253,7 +259,7 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
                                     if(is_numeric($tt3)){
 
                                         $tt3=(int)($tt3);
-                                        $donnees_retournees[__xva]['maj'].='allumer_menu(' . $tt3 . ')';
+                                        $donnees_retournees[__xva]['maj'] .= 'allumer_menu(' . $tt3 . ')';
                                         /* this.#id_menu*/
 
                                     }

@@ -151,10 +151,10 @@ class c_projets1{
 
         $tt=/*sql_inclure_deb*/
             /* sql_66()
-            SELECT 
+            SELECT 
             `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier`
              FROM tbl_dossiers T0
-            WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
+            WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
                AND `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier)
             ;
             */
@@ -187,10 +187,10 @@ class c_projets1{
                     $chemin=DIRECTORY_SEPARATOR . $tt[__xva][0][0] . $chemin;
                     $tt=/*sql_inclure_deb*/
                         /* sql_66()
-                        SELECT 
+                        SELECT 
                         `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier`
                          FROM tbl_dossiers T0
-                        WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
+                        WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
                            AND `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier)
                         ;
                         */
@@ -294,7 +294,7 @@ class c_projets1{
             $GLOBALS[__BDD][$chi_id_projet][LIEN_BDD]=$db;
             $tt60=/*sql_inclure_deb*/
                 /* sql_60()
-                SELECT 
+                SELECT 
                 `T0`.`chx_dossier_requetes_projet`
                  FROM tbl_projets T0
                 WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet)

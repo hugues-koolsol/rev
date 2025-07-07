@@ -1,11 +1,13 @@
 <?php
 function sql_75($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe`
+      `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
-      FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_groupes T0    ';
+      FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_groupes T0
+       LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
+    ';
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_groupe`',$par['T0_chi_id_groupe']);
@@ -21,6 +23,8 @@ function sql_75($par,&$donnees_retournees,$that){
             $donnees0[]=array(
                 'T0.chi_id_groupe' => $tab0[0],
                 'T0.chp_nom_groupe' => $tab0[1],
+                'T0.chx_parent_groupe' => $tab0[2],
+                'T1.chp_nom_groupe' => $tab0[3],
             );
         }
         return array(

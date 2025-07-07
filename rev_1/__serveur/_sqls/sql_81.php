@@ -17,6 +17,13 @@ function sql_81($par,&$donnees_retournees,$that){
             $tableau_champs[]='`chx_groupe_utilisateur` = '.sq0($par['n_chx_groupe_utilisateur']).'';
         }
     }
+    if(isset($par['n_chx_metier_utilisateur'])){
+        if($par['n_chx_metier_utilisateur']==='' || $par['n_chx_metier_utilisateur']===NULL ){
+            $tableau_champs[]='`chx_metier_utilisateur` = NULL';
+        }else{
+            $tableau_champs[]='`chx_metier_utilisateur` = '.sq0($par['n_chx_metier_utilisateur']).'';
+        }
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/

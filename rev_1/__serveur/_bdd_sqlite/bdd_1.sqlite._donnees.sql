@@ -5,9 +5,9 @@
   ===============================
 */
 
-INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_groupe_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','450','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','2'),
-('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
+INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_groupe_utilisateur,chx_metier_utilisateur) VALUES
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','454','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1','1'),
+('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2','2');
 
 
 /*
@@ -265,16 +265,16 @@ comme2(xxx%)
 comme3(xxx)','10','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
 ('169','1','initialiser projet standard','6','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
 ('170','1','initialiser ecran standard d''une table','7','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
-('171','1','gérer les menus','4','0','2025-06-26 17:24:34.522','2025-06-26 17:24:34.522'),
-('172','1','gérer les utilisateurs et les groupes et les métiers','5','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
+('171','1','gérer les menus','5','0','2025-06-26 17:24:34.522','2025-06-26 17:24:34.522'),
+('172','1','gérer les utilisateurs et les groupes et les métiers','2','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
 ('173','1','gérer les paramètres ( liste des constantes )
-type de champbdd','2','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
+type de champbdd','3','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
 ('174','1','mettre en github
 ','99','0','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817'),
 ('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038'),
 ('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
 ('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962'),
-('178','1','ajouter un dictionnaire de données','3','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
+('178','1','ajouter un dictionnaire de données','4','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
 ('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399'),
 ('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718'),
 ('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668'),
@@ -286,7 +286,8 @@ insérer
 sélectionner 
 altérer/amender 
 détruire','80','1','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485'),
-('184','1','métiers','1','1','2025-07-06 14:31:40.411','2025-07-06 14:12:57.610');
+('184','1','bug quand on crée un nouvelle requête, le php c''est pas créé sur disque','99','0','2025-07-07 10:35:44.602','2025-07-07 10:35:44.602'),
+('185','1','gérer les pages','1','0','2025-07-07 12:54:11.814','2025-07-07 12:54:11.814');
 
 
 /*
@@ -318,7 +319,7 @@ Ce projet est utilisé pour la mise à jour du projet principal','0','2000-01-01
 INSERT INTO tbl_requetes (chi_id_requete,chx_projet_requete,chp_type_requete,cht_rev_requete,cht_sql_requete,cht_php_requete,cht_commentaire_requete,cht_matrice_requete,che__nur_requete,chp__dtm_requete,chp__dtc_requete) VALUES
 ('1','1','select','sélectionner(
    base_de_reference(1),
-   valeurs( champ( `T0` , `chp_mot_de_passe_utilisateur` ) , champ( `T0` , `chi_id_utilisateur` ) , champ( `T0` , `chx_groupe_utilisateur` )),
+   valeurs( champ( `T0` , `chp_mot_de_passe_utilisateur` ) , champ( `T0` , `chi_id_utilisateur` ) , champ( `T0` , `chx_groupe_utilisateur` ) , champ( `T0` , `chx_metier_utilisateur` )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_utilisateurs , alias(T0) , base(b1) ))
@@ -327,7 +328,7 @@ INSERT INTO tbl_requetes (chi_id_requete,chx_projet_requete,chp_type_requete,cht
    conditions( egal( champ( `T0` , `chp_nom_de_connexion_utilisateur` ) , :T0_chp_nom_de_connexion_utilisateur )),
    complements( limité_à( quantité(1) , début(0) ))
 )  ','SELECT 
-`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_groupe_utilisateur`
+`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_groupe_utilisateur` , `T0`.`chx_metier_utilisateur`
  FROM b1.tbl_utilisateurs T0
 WHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur  
 LIMIT 1 OFFSET 0 
@@ -1884,34 +1885,42 @@ LIMIT :quantitee OFFSET :debut
 ;',NULL,'liste des groupes',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('74','1','insert','insérer(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_nom_groupe` ) , :chp_nom_groupe )),
+   valeurs( affecte( champ( `chp_nom_groupe` ) , :chp_nom_groupe ) , affecte( champ( `chx_parent_groupe` ) , :chx_parent_groupe )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_groupes , base(b1) ))
       )
    )
 )  ','INSERT INTO b1.`tbl_groupes`(
-    `chp_nom_groupe`
+    `chp_nom_groupe` , 
+    `chx_parent_groupe`
 ) VALUES (
-    :chp_nom_groupe
+    :chp_nom_groupe , 
+    :chx_parent_groupe
 );',NULL,'groupes',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('75','1','select','sélectionner(
    base_de_reference(1),
-   valeurs( champ( `T0` , `chi_id_groupe` ) , champ( `T0` , `chp_nom_groupe` )),
+   valeurs( champ( `T0` , `chi_id_groupe` ) , champ( `T0` , `chp_nom_groupe` ) , champ( `T0` , `chx_parent_groupe` ) , champ( `T1` , `chp_nom_groupe` )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_groupes , alias(T0) , base(b1) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_groupes , alias(T1) , base(b1) )),
+         contrainte( egal( champ( T1 , chi_id_groupe ) , champ( T0 , chx_parent_groupe ) ))
       )
    ),
    conditions( egal( champ( `T0` , `chi_id_groupe` ) , :T0_chi_id_groupe ))
 )  ','SELECT 
-`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe`
+`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
  FROM b1.tbl_groupes T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
+
 WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
 ;',NULL,'groupes',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('76','1','update','modifier(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_nom_groupe` ) , :n_chp_nom_groupe )),
+   valeurs( affecte( champ( `chp_nom_groupe` ) , :n_chp_nom_groupe ) , affecte( champ( `chx_parent_groupe` ) , :n_chx_parent_groupe )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_groupes , base(b1) ))
@@ -1919,7 +1928,8 @@ WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
    ),
    conditions( egal( champ( `chi_id_groupe` ) , :c_chi_id_groupe ))
 )  ','UPDATE b1.tbl_groupes SET 
-   `chp_nom_groupe` = :n_chp_nom_groupe
+   `chp_nom_groupe` = :n_chp_nom_groupe , 
+   `chx_parent_groupe` = :n_chx_parent_groupe
 WHERE `chi_id_groupe` = :c_chi_id_groupe ;',NULL,'groupes',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('77','1','delete','supprimer(
    base_de_reference(1),
@@ -1940,7 +1950,10 @@ WHERE `chi_id_groupe` = :chi_id_groupe ;',NULL,'groupes',NULL,'0','2000-01-01 00
       champ( `T0` , `chi_compteur1_utilisateur`),
       champ( `T0` , `chi_compteur_socket1_utilisateur`),
       champ( `T0` , `chx_groupe_utilisateur`),
-      champ( `T1` , `chp_nom_groupe`)
+      champ( `T1` , `chp_nom_groupe`),
+      champ( `T0` , `chx_metier_utilisateur`),
+      champ( `T2` , `chp_nom_metier`),
+      champ( `T0` , `chi_compteur1_utilisateur`)
    ),
    provenance(
       table_reference(
@@ -1949,6 +1962,10 @@ WHERE `chi_id_groupe` = :chi_id_groupe ;',NULL,'groupes',NULL,'0','2000-01-01 00
       jointure_gauche(
          source( nom_de_la_table( tbl_groupes , alias(T1) , base(b1) )),
          contrainte( egal( champ( T1 , chi_id_groupe ) , champ( T0 , chx_groupe_utilisateur ) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_metiers , alias(T2) , base(b1) )),
+         contrainte( egal( champ( T2 , chi_id_metier ) , champ( T0 , chx_metier_utilisateur ) ))
       )
    ),
    conditions(
@@ -1964,9 +1981,11 @@ WHERE `chi_id_groupe` = :chi_id_groupe ;',NULL,'groupes',NULL,'0','2000-01-01 00
    )
 )  ','SELECT 
 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
-`T0`.`chx_groupe_utilisateur` , `T1`.`chp_nom_groupe`
+`T0`.`chx_groupe_utilisateur` , `T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier` , `T0`.`chi_compteur1_utilisateur`
  FROM b1.tbl_utilisateurs T0
  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
+
+ LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
 
 WHERE ( /* */ `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
    AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
@@ -1975,7 +1994,7 @@ LIMIT :quantitee OFFSET :debut
 ;',NULL,'utilisateurs',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('79','1','insert','insérer(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_nom_de_connexion_utilisateur` ) , :chp_nom_de_connexion_utilisateur ) , affecte( champ( `chx_groupe_utilisateur` ) , :chx_groupe_utilisateur )),
+   valeurs( affecte( champ( `chp_nom_de_connexion_utilisateur` ) , :chp_nom_de_connexion_utilisateur ) , affecte( champ( `chx_groupe_utilisateur` ) , :chx_groupe_utilisateur ) , affecte( champ( `chx_metier_utilisateur` ) , :chx_metier_utilisateur )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_utilisateurs , base(b1) ))
@@ -1984,10 +2003,12 @@ LIMIT :quantitee OFFSET :debut
    conditions( egal( champ( `T0` , `chi_id_groupe` ) , :T0_chi_id_groupe ))
 )  ','INSERT INTO b1.`tbl_utilisateurs`(
     `chp_nom_de_connexion_utilisateur` , 
-    `chx_groupe_utilisateur`
+    `chx_groupe_utilisateur` , 
+    `chx_metier_utilisateur`
 ) VALUES (
     :chp_nom_de_connexion_utilisateur , 
-    :chx_groupe_utilisateur
+    :chx_groupe_utilisateur , 
+    :chx_metier_utilisateur
 );',NULL,'utilisateurs',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('80','1','select','sélectionner(
    base_de_reference(1),
@@ -2002,7 +2023,9 @@ LIMIT :quantitee OFFSET :debut
       champ( `T0` , `chp__dtm_utilisateur`),
       champ( `T0` , `chp__dtc_utilisateur`),
       champ( `T0` , `chx_groupe_utilisateur`),
-      champ( `T1` , `chp_nom_groupe`)
+      champ( `T1` , `chp_nom_groupe`),
+      champ( `T0` , `chx_metier_utilisateur`),
+      champ( `T2` , `chp_nom_metier`)
    ),
    provenance(
       table_reference(
@@ -2011,21 +2034,27 @@ LIMIT :quantitee OFFSET :debut
       jointure_gauche(
          source( nom_de_la_table( tbl_groupes , alias(T1) , base(b1) )),
          contrainte( egal( champ( T1 , chi_id_groupe ) , champ( T0 , chx_groupe_utilisateur ) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_metiers , alias(T2) , base(b1) )),
+         contrainte( egal( champ( T2 , chi_id_metier ) , champ( T0 , chx_metier_utilisateur ) ))
       )
    ),
    conditions( egal( champ( `T0` , `chi_id_utilisateur` ) , :T0_chi_id_utilisateur ))
 )  ','SELECT 
 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
 `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_groupe_utilisateur` , 
-`T1`.`chp_nom_groupe`
+`T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier`
  FROM b1.tbl_utilisateurs T0
  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
+
+ LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
 
 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',NULL,'utilisateur',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('81','1','update','modifier(
-   base_de_reference(),
-   valeurs( affecte( champ( `chp_nom_de_connexion_utilisateur` ) , :n_chp_nom_de_connexion_utilisateur ) , affecte( champ( `chx_groupe_utilisateur` ) , :n_chx_groupe_utilisateur )),
+   base_de_reference(1),
+   valeurs( affecte( champ( `chp_nom_de_connexion_utilisateur` ) , :n_chp_nom_de_connexion_utilisateur ) , affecte( champ( `chx_groupe_utilisateur` ) , :n_chx_groupe_utilisateur ) , affecte( champ( `chx_metier_utilisateur` ) , :n_chx_metier_utilisateur )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_utilisateurs , base(b1) ))
@@ -2034,7 +2063,8 @@ WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
    conditions( egal( champ( `chi_id_utilisateur` ) , :c_chi_id_utilisateur ))
 )  ','UPDATE b1.tbl_utilisateurs SET 
    `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
-   `chx_groupe_utilisateur` = :n_chx_groupe_utilisateur
+   `chx_groupe_utilisateur` = :n_chx_groupe_utilisateur , 
+   `chx_metier_utilisateur` = :n_chx_metier_utilisateur
 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'utilisateur',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('82','1','delete','supprimer(
    base_de_reference(),
@@ -2045,7 +2075,97 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'utilisateur',NULL,'0
    ),
    conditions( egal( champ( `chi_id_utilisateur` ) , :chi_id_utilisateur ))
 )  ','DELETE FROM b1.tbl_utilisateurs
-WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',NULL,'utilisateur',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',NULL,'utilisateur',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('83','1','liste_ecran','sélectionner(
+   base_de_reference(1),
+   valeurs( champ( `T0` , `chi_id_metier` ) , champ( `T0` , `chp_nom_metier` ) , champ( `T1` , `chp_nom_metier` ) , champ( `T0` , `chx_parent_metier` )),
+   provenance(
+      table_reference(
+         source( nom_de_la_table( tbl_metiers , alias(T0) , base(b1) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_metiers , alias(T1) , base(b1) )),
+         contrainte( egal( champ( T1 , chi_id_metier ) , champ( T0 , chx_parent_metier ) ))
+      )
+   ),
+   conditions(
+      et( egal( champ( `T0` , `chi_id_metier` ) , :T0_chi_id_metier ) , comme( champ( `T0` , `chp_nom_metier` ) , :T0_chp_nom_metier ))
+   ),
+   complements(
+      trier_par( ( champ( `T0` , `chi_id_metier` ) , décroissant() )),
+      limité_à( quantité(:quantitee) , début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
+ FROM b1.tbl_metiers T0
+ LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
+
+WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
+   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+ORDER BY `T0`.`chi_id_metier` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'métier',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('84','1','insert','insérer(
+   base_de_reference(1),
+   valeurs( affecte( champ( `chp_nom_metier` ) , :chp_nom_metier ) , affecte( champ( `chx_parent_metier` ) , :chx_parent_metier )),
+   provenance(
+      table_reference(
+         source( nom_de_la_table( tbl_metiers , base(b1) ))
+      )
+   ),
+   conditions(
+      et( egal( champ( `T0` , `chi_id_metier` ) , :T0_chi_id_metier ) , comme( champ( `T0` , `chp_nom_metier` ) , :T0_chp_nom_metier ))
+   )
+)  ','INSERT INTO b1.`tbl_metiers`(
+    `chp_nom_metier` , 
+    `chx_parent_metier`
+) VALUES (
+    :chp_nom_metier , 
+    :chx_parent_metier
+);',NULL,'métier',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('85','1','select','sélectionner(
+   base_de_reference(1),
+   valeurs( champ( `T0` , `chi_id_metier` ) , champ( `T0` , `chp_nom_metier` ) , champ( `T1` , `chp_nom_metier` ) , champ( `T0` , `chx_parent_metier` )),
+   provenance(
+      table_reference(
+         source( nom_de_la_table( tbl_metiers , alias(T0) , base(b1) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_metiers , alias(T1) , base(b1) )),
+         contrainte( egal( champ( T1 , chi_id_metier ) , champ( T0 , chx_parent_metier ) ))
+      )
+   ),
+   conditions( egal( champ( `T0` , `chi_id_metier` ) , :T0_chi_id_metier ))
+)  ','SELECT 
+`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
+ FROM b1.tbl_metiers T0
+ LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
+
+WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
+;',NULL,'métier',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('86','1','update','modifier(
+   base_de_reference(1),
+   valeurs( affecte( champ( `chp_nom_metier` ) , :n_chp_nom_metier ) , affecte( champ( `chx_parent_metier` ) , :n_chx_parent_metier )),
+   provenance(
+      table_reference(
+         source( nom_de_la_table( tbl_metiers , base(b1) ))
+      )
+   ),
+   conditions( egal( champ( `chi_id_metier` ) , :c_chi_id_metier ))
+)  ','UPDATE b1.tbl_metiers SET 
+   `chp_nom_metier` = :n_chp_nom_metier , 
+   `chx_parent_metier` = :n_chx_parent_metier
+WHERE `chi_id_metier` = :c_chi_id_metier ;',NULL,'métier',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('87','1','delete','supprimer(
+   base_de_reference(1),
+   provenance(
+      table_reference(
+         source( nom_de_la_table( tbl_metiers , base(b1) ))
+      )
+   ),
+   conditions( egal( champ( `chi_id_metier` ) , :chi_id_metier ))
+)  ','DELETE FROM b1.tbl_metiers
+WHERE `chi_id_metier` = :chi_id_metier ;',NULL,'métier',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 
 /*
@@ -2112,7 +2232,7 @@ créer_table(
       nom_long_de_la_table( ''liste des utilisateurs''),
       nom_court_de_la_table( ''un utilisateur''),
       nom_bref_de_la_table( ''utilisateurs''),
-      transform_table_sur_svg( translate( 241.5 , 376.5 ))
+      transform_table_sur_svg( translate( 368.5 , 373.5 ))
    ),
    champs(
       champ(
@@ -2285,6 +2405,22 @@ créer_table(
             typologie(chx),
             afficher_champ_dans_svg(1)
          )
+      ),
+      champ(
+         nom_du_champ( ''chx_metier_utilisateur''),
+         type( ''INTEGER''),
+         non_nulle(1),
+         references( tbl_metiers , chi_id_metier),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_metier_utilisateur''),
+            champ( ''chx_metier_utilisateur''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1)
+         )
       )
    )
 ),
@@ -2306,7 +2442,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 318.5 , 583.5 ))
+      transform_table_sur_svg( translate( 430.5 , 608.5 ))
    ),
    champs(
       champ(
@@ -2783,7 +2919,7 @@ créer_table(
       nom_long_de_la_table( ''à faire tbl_revs''),
       nom_court_de_la_table( ''à faire tbl_revs''),
       nom_bref_de_la_table( ''à faire tbl_revs''),
-      transform_table_sur_svg( translate( 505.5 , 407.5 ))
+      transform_table_sur_svg( translate( 679.5 , 411.5 ))
    ),
    champs(
       champ(
@@ -3062,7 +3198,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 540.5 , 17.5 ))
+      transform_table_sur_svg( translate( 687.5 , 39.5 ))
    ),
    champs(
       champ(
@@ -3265,7 +3401,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 276.5 , 117.5 ))
+      transform_table_sur_svg( translate( 276.5 , 138.5 ))
    ),
    champs(
       champ(
@@ -3424,7 +3560,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 541.5 , 206.5 ))
+      transform_table_sur_svg( translate( 688.5 , 226.5 ))
    ),
    champs(
       champ(
@@ -3615,7 +3751,7 @@ créer_table(
       nom_long_de_la_table( ''A faire  tbl_groupes''),
       nom_court_de_la_table( ''A faire tbl_groupes''),
       nom_bref_de_la_table( ''A faire tbl_groupes''),
-      transform_table_sur_svg( translate( 32.5 , 288.5 ))
+      transform_table_sur_svg( translate( 189.5 , 293.5 ))
    ),
    champs(
       champ(
@@ -3648,6 +3784,25 @@ créer_table(
             typologie(chp),
             afficher_champ_dans_svg(1)
          )
+      ),
+      champ(
+         nom_du_champ( ''chx_parent_groupe''),
+         type( ''INTEGER''),
+         non_nulle(1),
+         references( tbl_groupes , chi_id_groupe),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_parent_groupe''),
+            champ( ''chx_parent_groupe''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1)
+         )
       )
    )
 ),
@@ -3659,6 +3814,163 @@ ajouter_index(
    meta( nom_de_l_index(idx_nom_groupe) , genre_meta(index_de_table) , message( ''ce nom de groupe existe'' )),
    champs( ''chp_nom_groupe''),
    unique()
+),
+créer_table(
+   nom_de_la_table( ''tbl_metiers''),
+   meta(
+      nom_de_la_table( ''tbl_metiers''),
+      table( ''tbl_metiers''),
+      genre_meta(table_de_base),
+      nom_long_de_la_table( ''A faire  tbl_metiers''),
+      nom_court_de_la_table( ''A faire tbl_metiers''),
+      nom_bref_de_la_table( ''A faire tbl_metiers''),
+      transform_table_sur_svg( translate( 190.5 , 412.5 ))
+   ),
+   champs(
+      champ(
+         nom_du_champ( ''chi_id_metier''),
+         type( ''INTEGER''),
+         primary_key(1),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chi_id_metier''),
+            champ( ''chi_id_metier''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chi),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chp_nom_metier''),
+         type( ''VARCHAR(64)''),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chp_nom_metier''),
+            champ( ''chp_nom_metier''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chp),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chx_parent_metier''),
+         type( ''INTEGER''),
+         non_nulle(1),
+         references( tbl_metiers , chi_id_metier),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_parent_metier''),
+            champ( ''chx_parent_metier''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1)
+         )
+      )
+   )
+),
+créer_table(
+   nom_de_la_table( ''tbl_pages''),
+   meta(
+      nom_de_la_table( ''tbl_pages''),
+      table( ''tbl_pages''),
+      genre_meta(table_de_base),
+      nom_long_de_la_table( ''A faire  tbl_pages''),
+      nom_court_de_la_table( ''A faire tbl_pages''),
+      nom_bref_de_la_table( ''A faire tbl_pages''),
+      transform_table_sur_svg( translate( 15.5 , 393.5 ))
+   ),
+   champs(
+      champ(
+         nom_du_champ( ''chi_id_page''),
+         type( ''INTEGER''),
+         primary_key(1),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chi_id_page''),
+            champ( ''chi_id_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chi),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chp_nom_page''),
+         type( ''VARCHAR(64)''),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chp_nom_page''),
+            champ( ''chp_nom_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chp),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chp_lien_rev_page''),
+         type( ''VARCHAR(256)''),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chp_lien_rev_page''),
+            champ( ''chp_lien_rev_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chp),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chx_groupe_page''),
+         type( ''INTEGER''),
+         non_nulle(1),
+         references( tbl_groupes , chi_id_groupe),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_groupe_page''),
+            champ( ''chx_groupe_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1),
+            refe_enfant_droite(1),
+            refe_parent_gauche(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chx_metier_page''),
+         type( ''INTEGER''),
+         non_nulle(1),
+         references( tbl_metiers , chi_id_metier),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_metier_page''),
+            champ( ''chx_metier_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1),
+            refe_enfant_droite(1),
+            refe_parent_gauche(1)
+         )
+      )
+   )
 )','sqlite','3','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('2','1',NULL,NULL,NULL,'meta(
    #(),
@@ -3821,7 +4133,18 @@ ajouter_index(
   ===============================
 */
 
-INSERT INTO tbl_groupes (chi_id_groupe,chp_nom_groupe) VALUES
-('1','racine'),
-('2','anonymes');
+INSERT INTO tbl_groupes (chi_id_groupe,chp_nom_groupe,chx_parent_groupe) VALUES
+('1','racine','1'),
+('2','anonymes','2');
+
+
+/*
+  ===============================
+  DONNEES A INSERER POUR : tbl_metiers
+  ===============================
+*/
+
+INSERT INTO tbl_metiers (chi_id_metier,chp_nom_metier,chx_parent_metier) VALUES
+('1','développeur','1'),
+('2','non défini','2');
 

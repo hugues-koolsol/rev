@@ -3,7 +3,7 @@ $php_des_sql=array (
   1 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_groupe_utilisateur`
+`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_groupe_utilisateur` , `T0`.`chx_metier_utilisateur`
  FROM b1.tbl_utilisateurs T0
 WHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur  
 LIMIT 1 OFFSET 0 
@@ -811,17 +811,21 @@ LIMIT :quantitee OFFSET :debut
   74 => 
   array (
     'cht_sql_requete' => 'INSERT INTO b1.`tbl_groupes`(
-    `chp_nom_groupe`
+    `chp_nom_groupe` , 
+    `chx_parent_groupe`
 ) VALUES (
-    :chp_nom_groupe
+    :chp_nom_groupe , 
+    :chx_parent_groupe
 );',
     'cht_commentaire_requete' => 'groupes',
   ),
   75 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe`
+`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
  FROM b1.tbl_groupes T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
+
 WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
 ;',
     'cht_commentaire_requete' => 'groupes',
@@ -829,7 +833,8 @@ WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
   76 => 
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_groupes SET 
-   `chp_nom_groupe` = :n_chp_nom_groupe
+   `chp_nom_groupe` = :n_chp_nom_groupe , 
+   `chx_parent_groupe` = :n_chx_parent_groupe
 WHERE `chi_id_groupe` = :c_chi_id_groupe ;',
     'cht_commentaire_requete' => 'groupes',
   ),
@@ -843,9 +848,11 @@ WHERE `chi_id_groupe` = :chi_id_groupe ;',
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
-`T0`.`chx_groupe_utilisateur` , `T1`.`chp_nom_groupe`
+`T0`.`chx_groupe_utilisateur` , `T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier` , `T0`.`chi_compteur1_utilisateur`
  FROM b1.tbl_utilisateurs T0
  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
+
+ LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
 
 WHERE ( /* */ `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
    AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
@@ -858,10 +865,12 @@ LIMIT :quantitee OFFSET :debut
   array (
     'cht_sql_requete' => 'INSERT INTO b1.`tbl_utilisateurs`(
     `chp_nom_de_connexion_utilisateur` , 
-    `chx_groupe_utilisateur`
+    `chx_groupe_utilisateur` , 
+    `chx_metier_utilisateur`
 ) VALUES (
     :chp_nom_de_connexion_utilisateur , 
-    :chx_groupe_utilisateur
+    :chx_groupe_utilisateur , 
+    :chx_metier_utilisateur
 );',
     'cht_commentaire_requete' => 'utilisateurs',
   ),
@@ -870,9 +879,11 @@ LIMIT :quantitee OFFSET :debut
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
 `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_groupe_utilisateur` , 
-`T1`.`chp_nom_groupe`
+`T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier`
  FROM b1.tbl_utilisateurs T0
  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
+
+ LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
 
 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',
@@ -882,7 +893,8 @@ WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_utilisateurs SET 
    `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
-   `chx_groupe_utilisateur` = :n_chx_groupe_utilisateur
+   `chx_groupe_utilisateur` = :n_chx_groupe_utilisateur , 
+   `chx_metier_utilisateur` = :n_chx_metier_utilisateur
 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
     'cht_commentaire_requete' => 'utilisateur',
   ),
@@ -891,5 +903,55 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
     'cht_sql_requete' => 'DELETE FROM b1.tbl_utilisateurs
 WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',
     'cht_commentaire_requete' => 'utilisateur',
+  ),
+  83 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
+ FROM b1.tbl_metiers T0
+ LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
+
+WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
+   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+ORDER BY `T0`.`chi_id_metier` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',
+    'cht_commentaire_requete' => 'métier',
+  ),
+  84 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_metiers`(
+    `chp_nom_metier` , 
+    `chx_parent_metier`
+) VALUES (
+    :chp_nom_metier , 
+    :chx_parent_metier
+);',
+    'cht_commentaire_requete' => 'métier',
+  ),
+  85 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
+ FROM b1.tbl_metiers T0
+ LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
+
+WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
+;',
+    'cht_commentaire_requete' => 'métier',
+  ),
+  86 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_metiers SET 
+   `chp_nom_metier` = :n_chp_nom_metier , 
+   `chx_parent_metier` = :n_chx_parent_metier
+WHERE `chi_id_metier` = :c_chi_id_metier ;',
+    'cht_commentaire_requete' => 'métier',
+  ),
+  87 => 
+  array (
+    'cht_sql_requete' => 'DELETE FROM b1.tbl_metiers
+WHERE `chi_id_metier` = :chi_id_metier ;',
+    'cht_commentaire_requete' => 'métier',
   ),
 );

@@ -1,9 +1,9 @@
 <?php
-function sql_74($par,&$donnees_retournees,$that){
+function sql_84($par,&$donnees_retournees,$that){
     $sql0='
-      INSERT  INTO `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_groupes`(
-         `chp_nom_groupe` , 
-         `chx_parent_groupe`
+      INSERT  INTO `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_metiers`(
+         `chp_nom_metier` , 
+         `chx_parent_metier`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -12,8 +12,8 @@ function sql_74($par,&$donnees_retournees,$that){
             $liste_des_valeurs.=',';
         }
         $liste_des_valeurs.='(';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_groupe']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_parent_groupe']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_metier']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_parent_metier']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;
@@ -29,7 +29,7 @@ function sql_74($par,&$donnees_retournees,$that){
         return array(/**/
             __xst => __xer , 
             'source_requete' => $sql0 , 
-            'texte_requete' => 'l\'insertion dans la table des groupes' ,
+            'texte_requete' => 'l\'insertion dans la table des metiers' ,
             'exception' => $e , 
             'id_bdd' => BDD_NUMERO_1
         );

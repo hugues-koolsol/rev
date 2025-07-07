@@ -3,7 +3,8 @@ function sql_79($par,&$donnees_retournees,$that){
     $sql0='
       INSERT  INTO `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_utilisateurs`(
          `chp_nom_de_connexion_utilisateur` , 
-         `chx_groupe_utilisateur`
+         `chx_groupe_utilisateur` , 
+         `chx_metier_utilisateur`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -13,7 +14,8 @@ function sql_79($par,&$donnees_retournees,$that){
         }
         $liste_des_valeurs.='(';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_de_connexion_utilisateur']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_groupe_utilisateur']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_groupe_utilisateur']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_metier_utilisateur']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

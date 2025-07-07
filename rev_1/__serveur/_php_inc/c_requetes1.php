@@ -442,18 +442,17 @@ class c_requetes1{
             
             if($tt35[__xst] === __xsu){
 
-                $donnees_retournees[__xst]=__xsu;
-                $donnees_retournees[__x_signaux][__xsu][]='Requête sauvegardée [' . __LINE__ . ']';
-                $obj=$this->ecrire_le_php_de_la_requete_sur_disque($donnees_recues[__xva]['chi_id_requete'],$donnees_recues[__xva]['php'],$donnees_retournees);
+                $obj_ecrire=$this->ecrire_le_php_de_la_requete_sur_disque($tt7['nouvel_id'],$nouveau_php,$donnees_retournees);
                 
-                if($obj[__xst] === __xsu){
+                if($tt35[__xst] === __xsu){
 
                     $donnees_retournees[__xst]=__xsu;
+                    $donnees_retournees[__x_signaux][__xsu][]='Requête sauvegardée [' . __LINE__ . ']';
+                    $donnees_recues[__xva]['chi_id_requete']=$tt7['nouvel_id'];
+                    $this->sauvegarder_une_matrice_de_requete($donnees_retournees,$mat,$donnees_recues);
 
                 }
 
-                $donnees_recues[__xva]['chi_id_requete']=$tt7['nouvel_id'];
-                $this->sauvegarder_une_matrice_de_requete($donnees_retournees,$mat,$donnees_recues);
 
             }else{
 
@@ -808,6 +807,7 @@ class c_requetes1{
         
         if($tt[__xst] === __xsu){
 
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt[__xva] , true ) . '</pre>' ; exit(0);*/
             $tt=/*sql_inclure_deb*/
                 /* sql_4()
                 / ***meta(tester_les_dependances_dans_le_php(1))*** /
@@ -843,7 +843,7 @@ class c_requetes1{
 
                     $chemin_fichier=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . 'sql_' . $donnees_recues[__xva]['chi_id_requete'] . '.php';
                     $this->supprimer_php_du_sql_du_disque($donnees_retournees,$chemin_fichier,true);
-                    $donnees_retournees[__x_signaux][__xal][]=' la requête ' . $chi_id_requete_ancienne . ' a été supprimée du disque [' . __LINE__ . ']';
+                    $donnees_retournees[__x_signaux][__xal][]=' la requête ' . $donnees_recues[__xva]['chi_id_requete'] . ' a été supprimée du disque [' . __LINE__ . ']';
                     /* $donnees_retournees[__x_signaux][__xsu][]=__LINE__ . ' la suppression a été effectuée en bdd';*/
                     $this->page_liste_des_requetes1($donnees_retournees,$mat,$donnees_recues);
 

@@ -20,7 +20,6 @@ class c_texte_vers_rev1{
         this.#nom_de_la_variable=nom_de_la_variable;
         this.__m_rev1=module_rev;
     }
-    
     /* function texte1_vers_rev */
     texte1_vers_rev( le_texte , options ){
         var t='texte(`' + le_texte.replace( /`/g , '\\`' ) + '`)';
