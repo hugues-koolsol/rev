@@ -356,6 +356,7 @@ function traite_autre_fonction(&$donnees_recues,&$donnees_retournees){
                     $nom_de_la_classe=str_replace('.php','',$nom_de_fichier_a_inclure);
                     /* $donnees_retournees[__x_signaux][__xdv][]=__LINE__ . '"' . $nom_de_la_classe . '" "' . $nom_de_la_fonction_a_appeler . '" "<pre>'.var_export( $obj_matrice , true ).'</pre>"';*/
                     
+                    $autorise=false;
                     if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
 
                         /*
@@ -369,35 +370,44 @@ function traite_autre_fonction(&$donnees_recues,&$donnees_retournees){
                     }else{
 
                         
-                        if("c_pages1" === $nom_de_la_classe
-                               && "recupere_la_page_d_accueil" === $nom_de_la_fonction_a_appeler
-                           || "c_pages1" === $nom_de_la_classe
-                               && "recupere_la_page_d_aide" === $nom_de_la_fonction_a_appeler
-                           || "c_pages1" === $nom_de_la_classe
-                               && "recupere_la_page_de_connexion" === $nom_de_la_fonction_a_appeler
-                           || "c_pages1" === $nom_de_la_classe
-                               && "se_deconnecter" === $nom_de_la_fonction_a_appeler
-                           || "c_cookies1" === $nom_de_la_classe
+                        if("c_aides1" === $nom_de_la_classe && "recupere_la_page_d_aide" === $nom_de_la_fonction_a_appeler){
+                            $autorise=true;
+                        }
+                        if("c_accueil1" === $nom_de_la_classe && "recupere_la_page_d_accueil" === $nom_de_la_fonction_a_appeler){
+                            $autorise=true;
+                        }
+                        if("c_connexion1" === $nom_de_la_classe ){
+                            if("recupere_la_page_de_connexion" === $nom_de_la_fonction_a_appeler){
+                                $autorise=true;
+                            }
+                            if("se_deconnecter" === $nom_de_la_fonction_a_appeler){
+                                $autorise=true;
+                            }
+                            if("formulaire1" === $nom_de_la_fonction_a_appeler
+                               && 'conteneur1' === $obj_matrice[__xva][2][1]
+                               && 'vv_formulaire_de_connexion' === $obj_matrice[__xva][3][1]
+                            ){
+                                $autorise=true;
+                            }
+                        }
+                        if("c_cookies1" === $nom_de_la_classe
                                && "enregistrer" === $nom_de_la_fonction_a_appeler
                            || "c_divers1" === $nom_de_la_classe
                                && "creer_un_message_exemple" === $nom_de_la_fonction_a_appeler
-                           || "c_pages1" === $nom_de_la_classe
-                               && "formulaire1" === $nom_de_la_fonction_a_appeler
-                               && 'conteneur1' === $obj_matrice[__xva][2][1]
-                               && 'vv_formulaire_de_connexion' === $obj_matrice[__xva][3][1]
                         ){
 
                             /* pour ces pages, on ne vérifie pas les autotisations */
                             $autorise=true;
 
-                        }else{
+                        }
+                        if($autorise!==true){
 
                             /*
                               afr travailler la redirection si on n'est pas authentifié 
                               $donnees_retournees[__x_signaux][__xdv][]=__LINE__ . '"' . $nom_de_la_classe . '" "' . $nom_de_la_fonction_a_appeler . '" "<pre>'.var_export( $obj_matrice , true ).'</pre>"';
                             */
-                            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_pages1.php');
-                            $nom_de_la_classe='c_pages1';
+                            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_connexion1.php');
+                            $nom_de_la_classe='c_connexion1';
                             $nom_de_la_fonction_a_appeler='recupere_la_page_de_connexion';
                             $donnees_retournees[__x_signaux][__xal][]='vous devez être connecté pour utiliser cette fonction [' . __LINE__ . ']';
                         }
@@ -446,15 +456,9 @@ function traite_autre_fonction(&$donnees_recues,&$donnees_retournees){
 
 
             }else{
-
-                $donnees_retournees[__x_ligne][]=__LINE__;
-                
-                if($GLOBALS[DEVER_SRV] >= 2){
-
-                    $donnees_retournees[__x_signaux][__xer][]=__LINE__ . ' Le fichier, "' . $nom_de_fichier_a_inclure . '" n\'existe pas';
-
-                }
-
+                $fichier_non_trouve=str_replace('.php' , '' , $nom_de_fichier_a_inclure);
+                $fichier_non_trouve=str_replace( 'c_','' , $fichier_non_trouve);
+                $donnees_retournees[__x_signaux][__xer][]='Erreur technique, le traitement "' . $fichier_non_trouve . '" n\'existe pas [' . __LINE__ . ']';
             }
 
 

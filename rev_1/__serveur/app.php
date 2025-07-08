@@ -62,19 +62,16 @@ function obtenir_les_menus(){
             $t[]='<div data-id_menu="63" class="hug_bouton" data-hug_click="c_groupes1.page_liste_des_groupes1(indice_menu(63))" title="sources">groupes</div>' . PHP_EOL;
             $t[]='<div data-id_menu="65" class="hug_bouton" data-hug_click="c_metiers1.page_liste_des_metiers1(indice_menu(65))" title="metiers">metiers</div>' . PHP_EOL;
             $t[]='<div data-id_menu="64" class="hug_bouton" data-hug_click="c_utilisateurs1.page_liste_des_utilisateurs1(indice_menu(64))" title="sources">utilisateurs</div>' . PHP_EOL;
+            $t[]='<div data-id_menu="66" class="hug_bouton" data-hug_click="c_acces1.page_liste_des_acces1(indice_menu(66))" title="acces">acces</div>' . PHP_EOL;
+            $t[]='<div data-id_menu="67" class="hug_bouton" data-hug_click="c_pages1.page_liste_des_pages1(indice_menu(67))" title="pages">pages</div>' . PHP_EOL;
 
         }
 
-        $t[]='<div data-id_menu="11" class="hug_bouton" data-hug_click="c_pages1.recupere_la_page_des_coordonnees(),indice_menu(11)" title="mes coordonnées"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -7  20 21"><g style="stroke:rgb(0, 0, 255);fill:transparent;stroke-width:1;"><circle cx="0" cy="0" r="6"></circle><path d=" M -8 11 C -6 6 6 6 8 11 "></path><circle cx="-2" cy="-1" r="1"></circle><circle cx="2" cy="-1" r="1"></circle><path d="M -2 2 C -3 4 3 4 2 2 "></path><path d="M 0 0 V 2 "></path><path d="M -3 -1   H -6    "></path><path d="M 3 -1   H 6    "></path><path d="M -1 -1 c 0 -1 2 -1 2 0 "></path></g></svg></div>';
+        $t[]='<div data-id_menu="11" class="hug_bouton" style="min-width:2em;" data-hug_click="c_profile1.recupere_la_page_des_coordonnees(),indice_menu(11)" title="mes coordonnées"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -7  20 21"><g style="stroke:rgb(0, 0, 255);fill:transparent;stroke-width:1;"><circle cx="0" cy="0" r="6"></circle><path d=" M -8 11 C -6 6 6 6 8 11 "></path><circle cx="-2" cy="-1" r="1"></circle><circle cx="2" cy="-1" r="1"></circle><path d="M -2 2 C -3 4 3 4 2 2 "></path><path d="M 0 0 V 2 "></path><path d="M -3 -1   H -6    "></path><path d="M 3 -1   H 6    "></path><path d="M -1 -1 c 0 -1 2 -1 2 0 "></path></g></svg></div>';
 
     }else{
 
     }
-
-    $t[]='<div data-id_menu="3" class="hug_bouton" id="vv_bouton_aide" data-hug_click="c_pages1.recupere_la_page_d_aide()" title="aide et paramètres">
-                       <svg viewBox="-106 -100  213 200" style="transform:scale(1,1) translate(0px, 0px)"><path d=" M 100 0 C 100 0 79.7763 5.9784 79.7763 5.9784 C 79.7763 5.9784 77.9942 17.8017 77.9942 17.8017 C 77.9942 17.8017 95.5573 29.4755 95.5573 29.4755 C 95.5573 29.4755 90.0969 43.3884 90.0969 43.3884 C 90.0969 43.3884 69.282 40 69.282 40 C 69.282 40 62.5465 49.8792 62.5465 49.8792 C 62.5465 49.8792 73.3052 68.0173 73.3052 68.0173 C 73.3052 68.0173 62.349 78.1831 62.349 78.1831 C 62.349 78.1831 45.0656 66.0991 45.0656 66.0991 C 45.0656 66.0991 34.7107 72.0775 34.7107 72.0775 L 32.8729 50.3378  A 60.1854 60.4115 0 1 0 -25.1945 54.3907 L -23.5792 76.4455 C -26.0652 75.4525 -34.7107 72.0775 -34.7107 72.0775 C -34.7107 72.0775 -50 86.6025 -50 86.6025 C -50 86.6025 -62.349 78.1831 -62.349 78.1831 C -62.349 78.1831 -54.4138 58.6441 -54.4138 58.6441 C -54.4138 58.6441 -62.5465 49.8792 -62.5465 49.8792 C -62.5465 49.8792 -82.6239 56.332 -82.6239 56.332 C -82.6239 56.332 -90.0969 43.3884 -90.0969 43.3884 C -90.0969 43.3884 -74.4699 29.2273 -74.4699 29.2273 C -74.4699 29.2273 -77.9942 17.8017 -77.9942 17.8017 C -77.9942 17.8017 -98.8831 14.9042 -98.8831 14.9042 C -98.8831 14.9042 -100 0 -100 0 C -100 0 -79.7763 -5.9784 -79.7763 -5.9784 C -79.7763 -5.9784 -77.9942 -17.8017 -77.9942 -17.8017 C -77.9942 -17.8017 -95.5573 -29.4755 -95.5573 -29.4755 C -95.5573 -29.4755 -90.0969 -43.3884 -90.0969 -43.3884 C -90.0969 -43.3884 -69.282 -40 -69.282 -40 C -69.282 -40 -62.5465 -49.8792 -62.5465 -49.8792 C -62.5465 -49.8792 -73.3052 -68.0173 -73.3052 -68.0173 C -73.3052 -68.0173 -62.349 -78.1831 -62.349 -78.1831 C -62.349 -78.1831 -45.0656 -66.0991 -45.0656 -66.0991 C -45.0656 -66.0991 -34.7107 -72.0775 -34.7107 -72.0775 C -34.7107 -72.0775 -36.5341 -93.0874 -36.5341 -93.0874 C -36.5341 -93.0874 -22.2521 -97.4928 -22.2521 -97.4928 C -22.2521 -97.4928 -11.9234 -79.1065 -11.9234 -79.1065 C -11.9234 -79.1065 0 -80 0 -80 C 0 -80 7.473 -99.7204 7.473 -99.7204 C 7.473 -99.7204 22.2521 -97.4928 22.2521 -97.4928 C 22.2521 -97.4928 23.5804 -76.4458 23.5804 -76.4458 C 23.5804 -76.4458 34.7107 -72.0775 34.7107 -72.0775 C 34.7107 -72.0775 50 -86.6025 50 -86.6025 C 50 -86.6025 62.349 -78.1831 62.349 -78.1831 C 62.349 -78.1831 54.4138 -58.6441 54.4138 -58.6441 C 54.4138 -58.6441 62.5465 -49.8792 62.5465 -49.8792 C 62.5465 -49.8792 82.6239 -56.332 82.6239 -56.332 C 82.6239 -56.332 90.0969 -43.3884 90.0969 -43.3884 C 90.0969 -43.3884 74.4699 -29.2273 74.4699 -29.2273 C 74.4699 -29.2273 77.9942 -17.8017 77.9942 -17.8017 C 77.9942 -17.8017 98.8831 -14.9042 98.8831 -14.9042 C 98.8831 -14.9042 100 0 100 0 C 100 0 100 0 100 0" style="stroke-width:1;stroke:blue;fill:blue;" transform="rotate(4.3643 0 0 )"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -19.9035 0.0665 H -47.5914 C -47.5803 -34.716 -29.2323 -48.6369 0.1918 -48.597 C 36.6062 -48.6442 45.8185 -25.4943 45.5704 -0.0489 C 45.13423 14.3612 35.214 28.2112 19.5487 43.9057 C 10.4376 51.5727 10.8315 58.2471 10.8315 61.997  H -12.0032 C -12.1844 60.6516 -11.786 47.7718 -8.6172 42.8653 C -1.4916 31.7469 17.8786 11.5852 17.915 -0.0303 C 18.6014 -16.3637 12.0753 -24.5501 -0.7396 -23.9992 C -13.9158 -23.9741 -20.6076 -15.9549 -20.0506 -0.1851 M -12.881 74.4678 H 11.4458 L 7.5960 93.5628 H -7.4803 Z" style="stroke:forestgreen;fill:forestgreen;stroke-width:1;"></path></svg>
-                    </div>' . PHP_EOL;
-    
     if(isset($_COOKIE[__X_CLE_APPLICATION])){
 
         $tcok=json_decode($_COOKIE[__X_CLE_APPLICATION],true);
@@ -125,12 +122,12 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
 
             $mat=array();
             /* la première page [F5 ou CTRL-F5] ou l'arrivée sur le site est une exception */
-            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_pages1.php');
-            $obj_pages=new c_pages1($donnees_retournees,$mat,$donnees_recues);
+            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_accueil1.php');
+            $obj_accueil=new c_accueil1($donnees_retournees,$mat,$donnees_recues);
             /* =============== */
             /* à priori */
             /* =============== */
-            $fonction_a_appeler='c_pages1.recupere_la_page_d_accueil()';
+            $fonction_a_appeler='c_accueil1.recupere_la_page_d_accueil()';
             
             if(isset($donnees_recues['__xva'])){
 
@@ -151,7 +148,7 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
                     $href=$donnees_recues['__xva'];
                 }
 
-                
+                /*#
                 if($href !== ''){
 
                     $pos=strpos($href,'#');
@@ -160,21 +157,15 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
 
                         $nom_de_fonction=substr($href,$pos + 1);
                         
-                        if(substr($nom_de_fonction,0,9) === 'c_pages1.'){
-
-                            $nom_de_fonction=substr($nom_de_fonction,9);
-
-                        }
-
-                        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nom_de_fonction , true ) . '</pre>' ; exit(0);*/
+                        // echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nom_de_fonction , true ) . '</pre>' ; exit(0);
                         $nom_de_fonction_sans_parentheses=substr($nom_de_fonction,0,strpos($nom_de_fonction,'('));
                         
-                        if(method_exists($obj_pages,$nom_de_fonction_sans_parentheses)){
+                        if(method_exists($obj_accueil,$nom_de_fonction_sans_parentheses)){
 
-                            /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nom_de_fonction , true ) . '</pre>' ; exit(0);*/
-                            $donnees_retournees['fonction_a_appeler']='c_pages1.' . $nom_de_fonction;
+                            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nom_de_fonction , true ) . '</pre>' ; exit(0);
+                            $donnees_retournees['fonction_a_appeler']='c_pagesxxxxxx1.' . $nom_de_fonction;
                             $fonction_a_appeler='c_pages1.' . $nom_de_fonction;
-                            /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $fonction_a_appeler , true ) . '</pre>' ; exit(0);*/
+                            // echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $fonction_a_appeler , true ) . '</pre>' ; exit(0);
 
                         }
 
@@ -183,6 +174,7 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
 
 
                 }
+                */
 
 
             }
@@ -193,7 +185,7 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
               on récupère les menus du haut et bas et un contenu qui est à priori ( voir plus haut ) recupere_la_page_d_accueil, 
               et éventuellement la page d'accueil
             */
-            $donnees_retournees[__xva][__xme]=$obj_pages->recupere_de_la_page_initiale($donnees_retournees,$mat,$donnees_recues);
+            $donnees_retournees[__xva][__xme]=$obj_accueil->recupere_de_la_page_initiale($donnees_retournees,$mat,$donnees_recues);
             $donnees_retournees[__xst]=__xsu;
             
             if(!isset($donnees_retournees[__xva]['redirection'])){

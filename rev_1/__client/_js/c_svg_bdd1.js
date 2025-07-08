@@ -3248,7 +3248,7 @@ class c_svg_bdd1{
         }
         if(nom_zone!=='' && nom_zone_du_champ!==''){
             let nom_de_la_table=document.getElementById(nom_zone_de_la_table).value;
-            debugger
+
             if(nom_de_la_table.substr(0,4)==='tbl_'){
              nom_de_la_table=nom_de_la_table.substr(4);
              if(nom_de_la_table.substr(nom_de_la_table.length-1,1)==='s'){

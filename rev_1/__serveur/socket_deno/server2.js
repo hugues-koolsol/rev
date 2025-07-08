@@ -237,7 +237,7 @@ class c_gestion_des_connexions{
                         }
                         return;
                         
-                    case 'c_pages1.se_deconnecter' :
+                    case 'c_connexion1.se_deconnecter' :
                         /*  */
                         this._liste_des_clients[client].compteur_socket1=0;
                         this._liste_des_clients[client].session_php='';

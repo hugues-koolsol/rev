@@ -22,8 +22,8 @@ $tableau_des_dependances=array (
       ),
       2 => 
       array (
-        'table_dependante' => 'tbl_pages',
-        'champ_dependant' => 'chx_groupe_page',
+        'table_dependante' => 'tbl_acces',
+        'champ_dependant' => 'chx_groupe_acces',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
@@ -51,8 +51,8 @@ $tableau_des_dependances=array (
       ),
       2 => 
       array (
-        'table_dependante' => 'tbl_pages',
-        'champ_dependant' => 'chx_metier_page',
+        'table_dependante' => 'tbl_acces',
+        'champ_dependant' => 'chx_metier_acces',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
@@ -148,6 +148,21 @@ $tableau_des_dependances=array (
         'table_dependante' => 'tbl_bdds',
         'champ_dependant' => 'chx_projet_id_basedd',
         'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+    ),
+  ),
+  'tbl_pages_chi_id_page' => 
+  array (
+    'table_parente' => 'tbl_pages',
+    'champ_parent' => 'chi_id_page',
+    'dependances' => 
+    array (
+      0 => 
+      array (
+        'table_dependante' => 'tbl_pages',
+        'champ_dependant' => 'chx_parent_page',
+        'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),
     ),

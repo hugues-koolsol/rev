@@ -954,4 +954,110 @@ WHERE `chi_id_metier` = :c_chi_id_metier ;',
 WHERE `chi_id_metier` = :chi_id_metier ;',
     'cht_commentaire_requete' => 'métier',
   ),
+  88 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chp_lien_rev_page` , `T1`.`chp_nom_page`
+ FROM b1.tbl_pages T0
+ LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+
+WHERE (`T0`.`chi_id_page` = :T0_chi_id_page
+   AND `T0`.`chp_nom_page` LIKE :T0_chp_nom_page) 
+ORDER BY `T0`.`chi_id_page` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',
+    'cht_commentaire_requete' => 'pages',
+  ),
+  89 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_pages`(
+    `chp_nom_page` , 
+    `chp_lien_rev_page` , 
+    `chx_parent_page`
+) VALUES (
+    :chp_nom_page , 
+    :chp_lien_rev_page , 
+    :chx_parent_page
+);',
+    'cht_commentaire_requete' => 'pages',
+  ),
+  90 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chp_lien_rev_page` , `T0`.`chx_parent_page` , `T1`.`chp_nom_page`
+ FROM b1.tbl_pages T0
+ LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+
+WHERE `T0`.`chi_id_page` = :T0_chi_id_page
+;',
+    'cht_commentaire_requete' => 'pages',
+  ),
+  91 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_pages SET 
+   `chp_nom_page` = :n_chp_nom_page , 
+   `chp_lien_rev_page` = :n_chp_lien_rev_page , 
+   `chx_parent_page` = :n_chx_parent_page
+WHERE `chi_id_page` = :c_chi_id_page ;',
+    'cht_commentaire_requete' => 'pages',
+  ),
+  92 => 
+  array (
+    'cht_sql_requete' => 'DELETE FROM b1.tbl_pages
+WHERE `chi_id_page` = :chi_id_page ;',
+    'cht_commentaire_requete' => 'pages',
+  ),
+  93 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+`T2`.`chp_nom_metier`
+ FROM b1.tbl_acces T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+
+ LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+
+WHERE ( /* */ `T0`.`chi_id_acces` = :T0_chi_id_acces
+   AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
+ORDER BY `T0`.`chi_id_acces` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',
+    'cht_commentaire_requete' => 'acces',
+  ),
+  94 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_acces`(
+    `chp_nom_acces` , 
+    `chx_groupe_acces` , 
+    `chx_metier_acces`
+) VALUES (
+    :chp_nom_acces , 
+    :chx_groupe_acces , 
+    :chx_metier_acces
+);',
+    'cht_commentaire_requete' => 'accès',
+  ),
+  95 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+`T2`.`chp_nom_metier`
+ FROM b1.tbl_acces T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+
+ LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+
+WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
+;',
+    'cht_commentaire_requete' => 'accès',
+  ),
+  96 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_acces SET 
+   `chp_nom_acces` = :n_chp_nom_acces , 
+   `chx_groupe_acces` = :n_chx_groupe_acces , 
+   `chx_metier_acces` = :n_chx_metier_acces
+WHERE `chi_id_acces` = :c_chi_id_acces ;',
+    'cht_commentaire_requete' => 'accès',
+  ),
 );

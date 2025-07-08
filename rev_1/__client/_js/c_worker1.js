@@ -289,7 +289,7 @@ class c_worker{
         }
         postMessage( le_message );
         if(le_message.hasOwnProperty( '__x_action' )
-               && le_message.__x_action.indexOf( 'c_pages1.formulaire1(conteneur1(vv_formulaire_de_connexion))' ) >= 0
+               && le_message.__x_action.indexOf( 'c_connexion1.formulaire1(conteneur1(vv_formulaire_de_connexion))' ) >= 0
                && le_message.__x_authentifie === __xsu
         ){
             let le_message_cookie={"__xst" : 1 ,"__x_action" : "obtenir_le_cookie_de_session_php()"};
@@ -300,7 +300,7 @@ class c_worker{
       =============================================================================================================
     */
     #traite_reponse_http( reponse ){
-        if(reponse.__x_action === "c_pages1.se_deconnecter()" && this.#le_ws_est_actif === __xsu && reponse.__xst === __xsu){
+        if(reponse.__x_action === "c_connexion1.se_deconnecter()" && this.#le_ws_est_actif === __xsu && reponse.__xst === __xsu){
             this.#envoyer_message_a_la_chausette( {"__x_action" : reponse.__x_action} );
         }
         this.#envoyer_un_message_au_js_principal( reponse );

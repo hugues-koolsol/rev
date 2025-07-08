@@ -872,7 +872,7 @@ class _c_interface1{
                 this.#page_en_cours=mat.__xva[1][1] + '()';
                 if(mat.__xva[1][8] >= 1){
                     for( let j=2 ; j < mat.__xva.length ; j++ ){
-                        /* #c_pages1.recupere_la_page_d_accueil(aller_a_la_position_interne(#vv_body)) */
+                        /* #c_accueil1.recupere_la_page_d_accueil(aller_a_la_position_interne(#vv_body)) */
                         if(mat.__xva[j][1] === 'aller_a_la_position_interne'
                                && mat.__xva[j][2] === 'f'
                                && mat.__xva[j][8] === 1
@@ -955,14 +955,14 @@ class _c_interface1{
                         document.getElementById( 'vv_bouton_connexion' ).title='quitter ( se déconnecter )';
                         document.getElementById( 'vv_bouton_connexion' ).classList.remove( 'yy__x_signaux_1' );
                         document.getElementById( 'vv_bouton_connexion' ).classList.add( 'yy__x_signaux_0' );
-                        document.getElementById( 'vv_bouton_connexion' ).setAttribute( "data-hug_click" , 'c_pages1.se_deconnecter()' );
+                        document.getElementById( 'vv_bouton_connexion' ).setAttribute( "data-hug_click" , 'c_connexion1.se_deconnecter()' );
                         break;
                         
                     default:
                         document.getElementById( 'vv_bouton_connexion' ).title='vers la page de connexion';
                         document.getElementById( 'vv_bouton_connexion' ).classList.add( 'yy__x_signaux_1' );
                         document.getElementById( 'vv_bouton_connexion' ).classList.remove( 'yy__x_signaux_0' );
-                        document.getElementById( 'vv_bouton_connexion' ).setAttribute( "data-hug_click" , 'c_pages1.recupere_la_page_de_connexion()' );
+                        document.getElementById( 'vv_bouton_connexion' ).setAttribute( "data-hug_click" , 'c_connexion1.recupere_la_page_de_connexion()' );
                         
                 }
             }
@@ -977,6 +977,8 @@ class _c_interface1{
             this.#masquer_ou_afficher_les_div_websocket();
         }
         if(obj && obj.__xva.recharger_la_page === true){
+            debugger
+            /*afr dans quel cas utilise-t-on ceci ?*/
             let url=window.document.location.href;
             if(url.indexOf( '#' ) > 0){
                 url=url.substr( url.indexOf( '#' ) + 1 );

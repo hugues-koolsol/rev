@@ -5,10 +5,25 @@ class c_cookies1{
     */
     public function obtenir_contraintes_interface(){
         $tp=array( 16, 18, 20);
-        $arr=array( 'valeurs' => array( 'données_bidon' => array( 0, 1), 'déverminage' => array( 0, 1, 2), 'utiliser_les_sockets' => array( 0, 1)), 'defaut' => array( 'données_bidon' => 1, 'déverminage' => 0, 'utiliser_les_sockets' => 0), 'donnees_pour_l_interface' => array( 'données_bidon' => array(/*tbel*/ 'type_html' => 'input_range1', 'class' => 'yy_ouinon', 'label' => 'afficher des données bidon', 'min' => 0, 'max' => 1, 'step' => 1, 'libelle' => 'nouveau', 'courant' => 'actuel', 'dimension' => '', 'fonction' => ',recharger_la_page()'
-                        ), 'déverminage' => array(/*tbel*/ 'type_html' => 'input_range1', 'label' => 'niveau de déverminage', 'min' => 0, 'max' => 2, 'step' => 1, 'libelle' => 'nouveau', 'courant' => 'actuel', 'dimension' => '', 'fonction' => ',recharger_la_page()'), 'utiliser_les_sockets' => array(/*tbel*/ 'type_html' => 'input_range1', 'class' => 'yy_ouinon', 'label' => 'utiliser les socket', 'min' => 0, 'max' => 1, 'step' => 1, 'libelle' => 'nouveau', 'courant' => 'actuel', 'dimension' => '', 'fonction' => ',recharger_la_page()'
-                        )));
-        return $arr;
+        $arr=array(/**/
+            'valeurs' => array(/**/
+                    'données_bidon' => array( 0, 1),
+                    'déverminage' => array( 0, 1, 2),
+                    'utiliser_les_sockets' => array( 0, 1)
+                ),
+            'defaut' => array(/**/
+                    'données_bidon' => 1,
+                    'déverminage' => 0,
+                    'utiliser_les_sockets' => 0
+                ),
+            'donnees_pour_l_interface' => array(/**/
+                    'données_bidon' => array(/*tbel*/ 'type_html' => 'input_range1', 'class' => 'yy_ouinon', 'label' => 'afficher des données bidon', 'min' => 0, 'max' => 1, 'step' => 1, 'libelle' => 'nouveau', 'courant' => 'actuel', 'dimension' => '', 'fonction' => ',recharger_la_page()'
+                        ),
+                    'déverminage' => array(/*tbel*/ 'type_html' => 'input_range1', 'label' => 'niveau de déverminage', 'min' => 0, 'max' => 2, 'step' => 1, 'libelle' => 'nouveau', 'courant' => 'actuel', 'dimension' => '', 'fonction' => ',recharger_la_page()'),
+                    'utiliser_les_sockets' => array(/*tbel*/ 'type_html' => 'input_range1', 'class' => 'yy_ouinon', 'label' => 'utiliser les socket', 'min' => 0, 'max' => 1, 'step' => 1, 'libelle' => 'nouveau', 'courant' => 'actuel', 'dimension' => '', 'fonction' => ',recharger_la_page()'
+                        )
+                )
+        );        return $arr;
     }
     /*
       =============================================================================================================
