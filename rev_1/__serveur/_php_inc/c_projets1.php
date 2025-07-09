@@ -808,7 +808,7 @@ EOT;
                             $donnees_sql=array( array(/**/
                                         'chx_projet_dossier' => $nouvel_id,
                                         'chp_nom_dossier' => $v1,
-                                        'chx_parent_dossier' => $id_dossier_racine
+                                        'chx_parent_dossier' => $id_dossier_racine === '' ? NULL : $id_dossier_racine,
                                     ));
                             /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
                             $creation_dossier=/*sql_inclure_deb*/
@@ -2004,8 +2004,23 @@ EOT;
 
         }
 
-        /* on supprime les sources du projet 1 */
+
+        /* on supprime les pages du projet 1 */
         $tt1=/*sql_inclure_deb*/
+            /* sql_97()
+            DELETE FROM b1.tbl_pages
+            WHERE (`chx_projet_page` = :chx_projet_page) ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
+             /*sql_97()*/ 97,
+            array( 'chx_projet_page' => 1),
+            $donnees_retournees
+        );
+        
+
+        /* on supprime les sources du projet 1 */
+        $tt8=/*sql_inclure_deb*/
             /* sql_8()
             DELETE FROM b1.tbl_sources
             WHERE (`chx_projet_id_source` = :chx_projet_id_source) ;
@@ -2017,7 +2032,7 @@ EOT;
             $donnees_retournees
         );
         
-        if($tt1[__xst] !== __xsu){
+        if($tt8[__xst] !== __xsu){
 
             $donnees_retournees[__x_signaux][__xer][]='erreur lors de la suppression des sources [' . __LINE__ . ']';
             return;
@@ -2128,7 +2143,14 @@ EOT;
                             );
                             */
                             /*sql_inclure_fin*/
-                            $this->sql0->sql_iii(37,array( array( 'chp_nom_dossier' => $nom_du_dossier, 'chi_id_dossier' => 1, 'chx_projet_dossier' => 1, 'chx_parent_dossier' => $chx_parent_dossier)),$donnees_retournees);
+                            $this->sql0->sql_iii(
+                             /**/37,
+                             array( array( 
+                                 'chp_nom_dossier' => $nom_du_dossier, 
+                                 'chi_id_dossier' => 1, 
+                                 'chx_projet_dossier' => 1, 
+                                 'chx_parent_dossier' => $chx_parent_dossier === '' ? NULL : $chx_parent_dossier,
+                              )),$donnees_retournees);
                         
                         if($tt37[__xst] !== __xsu){
 
@@ -2182,7 +2204,12 @@ EOT;
         */
         $tableau_des_inserts=array();
         foreach($liste_des_sources as $k1 => $v1){
-            $tableau_des_inserts[]=array( 'chx_dossier_id_source' => $v1['chx_dossier_id_source'], 'chp_nom_source' => $v1['chp_nom_source'], 'chx_projet_id_source' => 1, 'che_binaire_source' => $v1['che_binaire_source']);
+            $tableau_des_inserts[]=array(/**/
+                'chx_dossier_id_source' => $v1['chx_dossier_id_source'] === '' ? NULL : $v1['chx_dossier_id_source'],
+                'chp_nom_source' => $v1['chp_nom_source'], 
+                'chx_projet_id_source' => 1, 
+                'che_binaire_source' => $v1['che_binaire_source']
+            );
         }
         $tt23=/*sql_inclure_deb*/
             /* sql_38()

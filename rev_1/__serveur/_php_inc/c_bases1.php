@@ -1357,11 +1357,9 @@ class c_bases1{
         $donnees_sql=array( array(
                     /**/
                     'chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
-                    'chx_dossier_id_basedd' => $donnees_recues[__xva]['chx_dossier_id_basedd'],
+                    'chx_dossier_id_basedd' => $donnees_recues[__xva]['chx_dossier_id_basedd'] === '' ? NULL : $donnees_recues[__xva]['chx_dossier_id_basedd'],
                     'chp_commentaire_basedd' => '',
-                    /* $donnees_recues[__xva]['chp_commentaire_basedd'],*/
                     'chp_fournisseur_basedd' => 'sqlite'
-                    /* $donnees_recues[__xva]['chp_fournisseur_basedd'],*/
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/

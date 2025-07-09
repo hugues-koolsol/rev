@@ -5,9 +5,9 @@
   ===============================
 */
 
-INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_groupe_utilisateur,chx_metier_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','466','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1','1'),
-('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2','2');
+INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','472','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','2'),
+('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
 /*
@@ -42,10 +42,10 @@ INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_p
 ('23','1','dump de la base en local','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('26','1','travaux en batch','9','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('26','1','travaux en batch','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('28','1','profils de css','50','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('29','1','astuces','10','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('29','1','astuces','15','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -111,9 +111,9 @@ et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00','2000-01-
 ('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('78','1','ne pas mettre plus de 1000 éléments dans un dossier','12','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('78','1','ne pas mettre plus de 1000 éléments dans un dossier','17','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('80','1','table des bugs','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('80','1','table des bugs','19','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('82','1','supprimer une projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('83','1','ajouter les champs 
@@ -126,7 +126,7 @@ dtc date technique de création','99','0','2000-01-01 00:00:00','2000-01-01 00:0
 ('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('88','1','sortable pour svg','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('90','1','dupliquer une table','15','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('90','1','dupliquer une table','20','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('92','1','quand on modifie le nom d''une table
 alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -142,7 +142,7 @@ dans le champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('99','1','corriger le bug : après tri des champs, on pert l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('100','1','ne pas masquer un champ si c''est une référence, une clé, un auto_increment
 ou si le champ appartient à un index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('101','1','ajouter des tests de validité sur le svg base','16','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('101','1','ajouter des tests de validité sur le svg base','21','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('102','1','sauvegarder une table sans champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('103','1','requetes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('104','1','mettre le dump de la base dans la liste des bases','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -222,7 +222,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chp__dtm_tache`)
 flag champ_date_modification','99','4','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','13','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','18','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -262,19 +262,19 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','11','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','7','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
-('170','1','initialiser ecran standard d''une table','8','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
-('171','1','gérer les menus','6','0','2025-06-26 17:24:34.522','2025-06-26 17:24:34.522'),
-('172','1','gérer les utilisateurs et les groupes et les métiers','3','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
+comme3(xxx)','16','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
+('169','1','initialiser projet standard','12','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
+('170','1','initialiser ecran standard d''une table','13','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
+('171','1','gérer les menus','11','0','2025-06-26 17:24:34.522','2025-06-26 17:24:34.522'),
+('172','1','gérer les utilisateurs et les groupes et les métiers','8','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
 ('173','1','gérer les paramètres ( liste des constantes )
-type de champbdd','4','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
+type de champbdd','9','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
 ('174','1','mettre en github
 ','99','0','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817'),
 ('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038'),
 ('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
 ('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962'),
-('178','1','ajouter un dictionnaire de données','5','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
+('178','1','ajouter un dictionnaire de données','10','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
 ('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399'),
 ('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718'),
 ('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668'),
@@ -287,8 +287,17 @@ sélectionner
 altérer/amender 
 détruire','80','1','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485'),
 ('184','1','bug quand on crée un nouvelle requête, le php c''est pas créé sur disque','99','0','2025-07-07 10:35:44.602','2025-07-07 10:35:44.602'),
-('185','1','gérer les pages','2','0','2025-07-07 12:54:11.814','2025-07-07 12:54:11.814'),
-('186','1','gérer les accès des utilisateurs','1','1','2025-07-08 15:13:34.065','2025-07-08 15:12:51.611');
+('185','1','gérer les pages','7','0','2025-07-07 12:54:11.814','2025-07-07 12:54:11.814'),
+('186','1','gérer les accès des utilisateurs','6','1','2025-07-08 15:13:34.065','2025-07-08 15:12:51.611'),
+('187','1','supprimer chx_groupe_utilisateur chx_metier_utilisateur','99','0','2025-07-09 09:41:52.450','2025-07-09 09:41:52.450'),
+('188','1','ajouter NULL si chx = '''' sur les insert et delete','99','1','2025-07-09 13:55:32.628','2025-07-09 13:54:53.645'),
+('189','1','Lors de l''insertion dans la table des pages, vérifier l''existance de méthode du source','99','1','2025-07-09 15:40:56.820','2025-07-09 14:58:59.943'),
+('190','1','supprimer chp_lien_rev_page','99','0','2025-07-09 15:22:03.310','2025-07-09 15:22:03.310'),
+('191','1','rechercher sql_24','5','0','2025-07-09 15:50:13.424','2025-07-09 15:50:13.424'),
+('192','1','bouton pop up pour voir le contenu d''une requête à partir de la liste des requêtes ','4','1','2025-07-09 17:42:12.440','2025-07-09 15:50:33.376'),
+('193','1','menu outils qui contient les convertisseurs','3','0','2025-07-09 16:26:01.691','2025-07-09 16:26:01.691'),
+('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','2','0','2025-07-09 16:31:23.198','2025-07-09 16:31:23.198'),
+('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','1','0','2025-07-09 17:43:23.330','2025-07-09 17:43:23.330');
 
 
 /*
@@ -320,17 +329,23 @@ Ce projet est utilisé pour la mise à jour du projet principal','0','2000-01-01
 INSERT INTO tbl_requetes (chi_id_requete,chx_projet_requete,chp_type_requete,cht_rev_requete,cht_sql_requete,cht_php_requete,cht_commentaire_requete,cht_matrice_requete,che__nur_requete,chp__dtm_requete,chp__dtc_requete) VALUES
 ('1','1','select','sélectionner(
    base_de_reference(1),
-   valeurs( champ( `T0` , `chp_mot_de_passe_utilisateur` ) , champ( `T0` , `chi_id_utilisateur` ) , champ( `T0` , `chx_groupe_utilisateur` ) , champ( `T0` , `chx_metier_utilisateur` )),
+   valeurs( champ( `T0` , `chp_mot_de_passe_utilisateur` ) , champ( `T0` , `chi_id_utilisateur` ) , champ( `T1` , `chx_groupe_acces` ) , champ( `T1` , `chx_metier_acces` )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_utilisateurs , alias(T0) , base(b1) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_acces , alias(T1) , base(b1) )),
+         contrainte( egal( champ( T1 , chi_id_acces ) , champ( T0 , chx_acces_utilisateur ) ))
       )
    ),
    conditions( egal( champ( `T0` , `chp_nom_de_connexion_utilisateur` ) , :T0_chp_nom_de_connexion_utilisateur )),
    complements( limité_à( quantité(1) , début(0) ))
 )  ','SELECT 
-`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_groupe_utilisateur` , `T0`.`chx_metier_utilisateur`
+`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces`
  FROM b1.tbl_utilisateurs T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+
 WHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur  
 LIMIT 1 OFFSET 0 
 ;',NULL,'utilisateur par nom_de_connexion',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -887,11 +902,11 @@ WHERE `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
       )
    ),
    conditions( egal( champ( `T0` , `chx_projet_id_source` ) , :T0_chx_projet_id_source ))
-)','SELECT 
+)  ','SELECT 
 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source`
  FROM b1.tbl_sources T0
 WHERE `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
-;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+;',NULL,'sources par projet',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('25','1','delete','supprimer(
    base_de_reference(1),
    provenance(
@@ -1950,23 +1965,17 @@ WHERE `chi_id_groupe` = :chi_id_groupe ;',NULL,'groupes',NULL,'0','2000-01-01 00
       champ( `T0` , `chp_mot_de_passe_utilisateur`),
       champ( `T0` , `chi_compteur1_utilisateur`),
       champ( `T0` , `chi_compteur_socket1_utilisateur`),
-      champ( `T0` , `chx_groupe_utilisateur`),
-      champ( `T1` , `chp_nom_groupe`),
-      champ( `T0` , `chx_metier_utilisateur`),
-      champ( `T2` , `chp_nom_metier`),
-      champ( `T0` , `chi_compteur1_utilisateur`)
+      champ( `T0` , `chi_compteur1_utilisateur`),
+      champ( `T0` , `chx_acces_utilisateur`),
+      champ( `T1` , `chp_nom_acces`)
    ),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_utilisateurs , alias(T0) , base(b1) ))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_groupes , alias(T1) , base(b1) )),
-         contrainte( egal( champ( T1 , chi_id_groupe ) , champ( T0 , chx_groupe_utilisateur ) ))
-      ),
-      jointure_gauche(
-         source( nom_de_la_table( tbl_metiers , alias(T2) , base(b1) )),
-         contrainte( egal( champ( T2 , chi_id_metier ) , champ( T0 , chx_metier_utilisateur ) ))
+         source( nom_de_la_table( tbl_acces , alias(T1) , base(b1) )),
+         contrainte( egal( champ( T1 , chi_id_acces ) , champ( T0 , chx_acces_utilisateur ) ))
       )
    ),
    conditions(
@@ -1982,11 +1991,9 @@ WHERE `chi_id_groupe` = :chi_id_groupe ;',NULL,'groupes',NULL,'0','2000-01-01 00
    )
 )  ','SELECT 
 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
-`T0`.`chx_groupe_utilisateur` , `T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier` , `T0`.`chi_compteur1_utilisateur`
+`T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
  FROM b1.tbl_utilisateurs T0
- LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
-
- LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
 
 WHERE ( /* */ `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
    AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
@@ -1995,7 +2002,7 @@ LIMIT :quantitee OFFSET :debut
 ;',NULL,'utilisateurs',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('79','1','insert','insérer(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_nom_de_connexion_utilisateur` ) , :chp_nom_de_connexion_utilisateur ) , affecte( champ( `chx_groupe_utilisateur` ) , :chx_groupe_utilisateur ) , affecte( champ( `chx_metier_utilisateur` ) , :chx_metier_utilisateur )),
+   valeurs( affecte( champ( `chp_nom_de_connexion_utilisateur` ) , :chp_nom_de_connexion_utilisateur ) , affecte( champ( `chx_acces_utilisateur` ) , :chx_acces_utilisateur )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_utilisateurs , base(b1) ))
@@ -2004,12 +2011,10 @@ LIMIT :quantitee OFFSET :debut
    conditions( egal( champ( `T0` , `chi_id_groupe` ) , :T0_chi_id_groupe ))
 )  ','INSERT INTO b1.`tbl_utilisateurs`(
     `chp_nom_de_connexion_utilisateur` , 
-    `chx_groupe_utilisateur` , 
-    `chx_metier_utilisateur`
+    `chx_acces_utilisateur`
 ) VALUES (
     :chp_nom_de_connexion_utilisateur , 
-    :chx_groupe_utilisateur , 
-    :chx_metier_utilisateur
+    :chx_acces_utilisateur
 );',NULL,'utilisateurs',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('80','1','select','sélectionner(
    base_de_reference(1),
@@ -2023,39 +2028,31 @@ LIMIT :quantitee OFFSET :debut
       champ( `T0` , `che__nur_utilisateur`),
       champ( `T0` , `chp__dtm_utilisateur`),
       champ( `T0` , `chp__dtc_utilisateur`),
-      champ( `T0` , `chx_groupe_utilisateur`),
-      champ( `T1` , `chp_nom_groupe`),
-      champ( `T0` , `chx_metier_utilisateur`),
-      champ( `T2` , `chp_nom_metier`)
+      champ( `T0` , `chx_acces_utilisateur`),
+      champ( `T1` , `chp_nom_acces`)
    ),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_utilisateurs , alias(T0) , base(b1) ))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_groupes , alias(T1) , base(b1) )),
-         contrainte( egal( champ( T1 , chi_id_groupe ) , champ( T0 , chx_groupe_utilisateur ) ))
-      ),
-      jointure_gauche(
-         source( nom_de_la_table( tbl_metiers , alias(T2) , base(b1) )),
-         contrainte( egal( champ( T2 , chi_id_metier ) , champ( T0 , chx_metier_utilisateur ) ))
+         source( nom_de_la_table( tbl_acces , alias(T1) , base(b1) )),
+         contrainte( egal( champ( T1 , chi_id_acces ) , champ( T0 , chx_acces_utilisateur ) ))
       )
    ),
    conditions( egal( champ( `T0` , `chi_id_utilisateur` ) , :T0_chi_id_utilisateur ))
 )  ','SELECT 
 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-`T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_groupe_utilisateur` , 
-`T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier`
+`T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+`T1`.`chp_nom_acces`
  FROM b1.tbl_utilisateurs T0
- LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
-
- LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
 
 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',NULL,'utilisateur',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('81','1','update','modifier(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_nom_de_connexion_utilisateur` ) , :n_chp_nom_de_connexion_utilisateur ) , affecte( champ( `chx_groupe_utilisateur` ) , :n_chx_groupe_utilisateur ) , affecte( champ( `chx_metier_utilisateur` ) , :n_chx_metier_utilisateur )),
+   valeurs( affecte( champ( `chp_nom_de_connexion_utilisateur` ) , :n_chp_nom_de_connexion_utilisateur ) , affecte( champ( `chx_acces_utilisateur` ) , :n_chx_acces_utilisateur )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_utilisateurs , base(b1) ))
@@ -2064,8 +2061,7 @@ WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
    conditions( egal( champ( `chi_id_utilisateur` ) , :c_chi_id_utilisateur ))
 )  ','UPDATE b1.tbl_utilisateurs SET 
    `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
-   `chx_groupe_utilisateur` = :n_chx_groupe_utilisateur , 
-   `chx_metier_utilisateur` = :n_chx_metier_utilisateur
+   `chx_acces_utilisateur` = :n_chx_acces_utilisateur
 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'utilisateur',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('82','1','delete','supprimer(
    base_de_reference(),
@@ -2169,7 +2165,16 @@ WHERE `chi_id_metier` = :c_chi_id_metier ;',NULL,'métier',NULL,'0','2000-01-01 
 WHERE `chi_id_metier` = :chi_id_metier ;',NULL,'métier',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('88','1','liste_ecran','sélectionner(
    base_de_reference(1),
-   valeurs( champ( `T0` , `chi_id_page` ) , champ( `T0` , `chp_nom_page` ) , champ( `T0` , `chp_lien_rev_page` ) , champ( `T1` , `chp_nom_page` )),
+   valeurs(
+      champ( `T0` , `chi_id_page`),
+      champ( `T0` , `chp_nom_page`),
+      champ( `T0` , `chx_parent_page`),
+      champ( `T0` , `chx_source_page`),
+      champ( `T0` , `chp_methode_page`),
+      champ( `T1` , `chp_nom_page`),
+      champ( `T2` , `chp_nom_acces`),
+      champ( `T3` , `chp_nom_source`)
+   ),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_pages , alias(T0) , base(b1) ))
@@ -2177,6 +2182,14 @@ WHERE `chi_id_metier` = :chi_id_metier ;',NULL,'métier',NULL,'0','2000-01-01 00
       jointure_gauche(
          source( nom_de_la_table( tbl_pages , alias(T1) , base(b1) )),
          contrainte( egal( champ( T1 , chi_id_page ) , champ( T0 , chx_parent_page ) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_acces , alias(T2) , base(b1) )),
+         contrainte( egal( champ( T2 , chi_id_acces ) , champ( T0 , chx_acces_page ) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_sources , alias(T3) , base(b1) )),
+         contrainte( egal( champ( T3 , chi_id_source ) , champ( T0 , chx_source_page ) ))
       )
    ),
    conditions(
@@ -2187,9 +2200,14 @@ WHERE `chi_id_metier` = :chi_id_metier ;',NULL,'métier',NULL,'0','2000-01-01 00
       limité_à( quantité(:quantitee) , début(:debut))
    )
 )  ','SELECT 
-`T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chp_lien_rev_page` , `T1`.`chp_nom_page`
+`T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_source_page` , `T0`.`chp_methode_page` , 
+`T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
  FROM b1.tbl_pages T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
+
+ LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
 
 WHERE (`T0`.`chi_id_page` = :T0_chi_id_page
    AND `T0`.`chp_nom_page` LIKE :T0_chp_nom_page) 
@@ -2198,7 +2216,14 @@ LIMIT :quantitee OFFSET :debut
 ;',NULL,'pages',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('89','1','insert','insérer(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_nom_page` ) , :chp_nom_page ) , affecte( champ( `chp_lien_rev_page` ) , :chp_lien_rev_page ) , affecte( champ( `chx_parent_page` ) , :chx_parent_page )),
+   valeurs(
+      affecte( champ( `chp_nom_page` ) , :chp_nom_page),
+      affecte( champ( `chx_parent_page` ) , :chx_parent_page),
+      affecte( champ( `chx_acces_page` ) , :chx_acces_page),
+      affecte( champ( `chx_source_page` ) , :chx_source_page),
+      affecte( champ( `chp_methode_page` ) , :chp_methode_page),
+      affecte( champ( `chx_projet_page` ) , :chx_projet_page)
+   ),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_pages , base(b1) ))
@@ -2206,21 +2231,31 @@ LIMIT :quantitee OFFSET :debut
    )
 )  ','INSERT INTO b1.`tbl_pages`(
     `chp_nom_page` , 
-    `chp_lien_rev_page` , 
-    `chx_parent_page`
+    `chx_parent_page` , 
+    `chx_acces_page` , 
+    `chx_source_page` , 
+    `chp_methode_page` , 
+    `chx_projet_page`
 ) VALUES (
     :chp_nom_page , 
-    :chp_lien_rev_page , 
-    :chx_parent_page
+    :chx_parent_page , 
+    :chx_acces_page , 
+    :chx_source_page , 
+    :chp_methode_page , 
+    :chx_projet_page
 );',NULL,'pages',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('90','1','select','sélectionner(
    base_de_reference(1),
    valeurs(
       champ( `T0` , `chi_id_page`),
       champ( `T0` , `chp_nom_page`),
-      champ( `T0` , `chp_lien_rev_page`),
       champ( `T0` , `chx_parent_page`),
-      champ( `T1` , `chp_nom_page`)
+      champ( `T0` , `chx_acces_page`),
+      champ( `T0` , `chx_source_page`),
+      champ( `T0` , `chp_methode_page`),
+      champ( `T1` , `chp_nom_page`),
+      champ( `T2` , `chp_nom_acces`),
+      champ( `T3` , `chp_nom_source`)
    ),
    provenance(
       table_reference(
@@ -2229,19 +2264,39 @@ LIMIT :quantitee OFFSET :debut
       jointure_gauche(
          source( nom_de_la_table( tbl_pages , alias(T1) , base(b1) )),
          contrainte( egal( champ( T1 , chi_id_page ) , champ( T0 , chx_parent_page ) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_acces , alias(T2) , base(b1) )),
+         contrainte( egal( champ( T2 , chi_id_acces ) , champ( T0 , chx_acces_page ) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_sources , alias(T3) , base(b1) )),
+         contrainte( egal( champ( T3 , chi_id_source ) , champ( T0 , chx_source_page ) ))
       )
    ),
    conditions( egal( champ( `T0` , `chi_id_page` ) , :T0_chi_id_page ))
 )  ','SELECT 
-`T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chp_lien_rev_page` , `T0`.`chx_parent_page` , `T1`.`chp_nom_page`
+`T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
+`T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
  FROM b1.tbl_pages T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
+
+ LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
 
 WHERE `T0`.`chi_id_page` = :T0_chi_id_page
 ;',NULL,'pages',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('91','1','update','modifier(
-   base_de_reference(),
-   valeurs( affecte( champ( `chp_nom_page` ) , :n_chp_nom_page ) , affecte( champ( `chp_lien_rev_page` ) , :n_chp_lien_rev_page ) , affecte( champ( `chx_parent_page` ) , :n_chx_parent_page )),
+   base_de_reference(1),
+   valeurs(
+      affecte( champ( `chp_nom_page` ) , :n_chp_nom_page),
+      affecte( champ( `chx_parent_page` ) , :n_chx_parent_page),
+      affecte( champ( `chx_acces_page` ) , :n_chx_acces_page),
+      affecte( champ( `chx_source_page` ) , :n_chx_source_page),
+      affecte( champ( `chp_methode_page` ) , :n_chp_methode_page),
+      affecte( champ( `chx_projet_page` ) , :n_chx_projet_page)
+   ),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_pages , base(b1) ))
@@ -2250,63 +2305,12 @@ WHERE `T0`.`chi_id_page` = :T0_chi_id_page
    conditions( egal( champ( `chi_id_page` ) , :c_chi_id_page ))
 )  ','UPDATE b1.tbl_pages SET 
    `chp_nom_page` = :n_chp_nom_page , 
-   `chp_lien_rev_page` = :n_chp_lien_rev_page , 
-   `chx_parent_page` = :n_chx_parent_page
-WHERE `chi_id_page` = :c_chi_id_page ;','function sql_91($par,&$donnees_retournees,$that){
-    $sql0=''UPDATE `''.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].''`.`tbl_pages` SET ''.PHP_EOL;
-    $tableau_champs=array();
-
-    if(isset($par[''n_chp_nom_page''])){
-        if($par[''n_chp_nom_page'']==='''' || $par[''n_chp_nom_page'']===NULL ){
-            $tableau_champs[]=''`chp_nom_page` = NULL'';
-        }else{
-            $tableau_champs[]=''`chp_nom_page` = \''''.sq0($par[''n_chp_nom_page'']).''\'''';
-        }
-    }
-    if(isset($par[''n_chp_lien_rev_page''])){
-        if($par[''n_chp_lien_rev_page'']==='''' || $par[''n_chp_lien_rev_page'']===NULL ){
-            $tableau_champs[]=''`chp_lien_rev_page` = NULL'';
-        }else{
-            $tableau_champs[]=''`chp_lien_rev_page` = \''''.sq0($par[''n_chp_lien_rev_page'']).''\'''';
-        }
-    }
-    if(isset($par[''n_chx_parent_page''])){
-        if($par[''n_chx_parent_page'']==='''' || $par[''n_chx_parent_page'']===NULL ){
-            $tableau_champs[]=''`chx_parent_page` = NULL'';
-        }else{
-            $tableau_champs[]=''`chx_parent_page` = ''.sq0($par[''n_chx_parent_page'']).'''';
-        }
-    }
-
-    if(count($tableau_champs)===0){
-        return array(/**/
-            __xst => __xer ,
-            __xme => ''aucun champ à mettre à jour'' ,
-            ''id_bdd'' => BDD_NUMERO_1 ,
-            ''source_requete'' => '''' , 
-            ''texte_requete'' => ''la modification dans la table des pages'' ,
-            ''exception'' => null , 
-        );
-    }
-    $sql0.=implode('',''.PHP_EOL.''    '',$tableau_champs).PHP_EOL;
-    $where0='' WHERE 1=1 ''.PHP_EOL;
-    $where0.='' AND `chi_id_page` = ''.sq1($par[''c_chi_id_page'']).''''.PHP_EOL;
-    $sql0.=$where0;
-    // echo __FILE__ . '' '' . __LINE__ . '' $sql0= <pre>'' . $sql0 . ''</pre>'' ; exit(0);
-    try{
-        $ret=$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->exec($sql0);
-        return(array( __xst => __xsu, ''changements'' => $GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->changes()));
-    }catch(Exception $e){
-        return array(/**/
-            __xst => __xer , 
-            ''source_requete'' => $sql0 , 
-            ''texte_requete'' => ''la modification dans la table des pages'' ,
-            ''exception'' => $e , 
-            ''id_bdd'' => BDD_NUMERO_1
-        );
-    }
-}
-','pages',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+   `chx_parent_page` = :n_chx_parent_page , 
+   `chx_acces_page` = :n_chx_acces_page , 
+   `chx_source_page` = :n_chx_source_page , 
+   `chp_methode_page` = :n_chp_methode_page , 
+   `chx_projet_page` = :n_chx_projet_page
+WHERE `chi_id_page` = :c_chi_id_page ;',NULL,'pages',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('92','1','delete','supprimer(
    base_de_reference(),
    provenance(
@@ -2544,7 +2548,17 @@ WHERE `chi_id_acces` = :c_chi_id_acces ;','function sql_96($par,&$donnees_retour
         );
     }
 }
-','accès',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+','accès',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('97','1','delete','supprimer(
+   base_de_reference(1),
+   provenance(
+      table_reference(
+         source( nom_de_la_table( tbl_pages , base(b1) ))
+      )
+   ),
+   conditions( egal( champ( `chx_projet_page` ) , :chx_projet_page ))
+)  ','DELETE FROM b1.tbl_pages
+WHERE `chx_projet_page` = :chx_projet_page ;',NULL,'pages par projet',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 
 /*
@@ -2569,7 +2583,36 @@ INSERT INTO tbl_sources (chi_id_source,chx_projet_id_source,chp_nom_source,cht_c
 ('14','1','index.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
 ('15','1','favicon.ico',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
 ('16','1','rvjb.png',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
-('17','1','favicon.ico',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','7');
+('17','1','favicon.ico',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','7'),
+('18','1','c_accueil1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('19','1','c_aides1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('20','1','c_connexion1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('21','1','c_acces1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('22','1','c_bases1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('23','1','c_cookies1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('24','1','c_divers1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('25','1','c_dossiers1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('26','1','c_groupes1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('27','1','c_metiers1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('28','1','c_pages1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('29','1','c_profile1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('30','1','c_projets1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('31','1','c_requetes1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('32','1','c_rev_css1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('33','1','c_rev_html1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('34','1','c_rev_js1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('35','1','c_rev_mat1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('36','1','c_rev_php1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('37','1','c_rev_sql1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('38','1','c_rev_texte1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('39','1','c_rev_vers_matrice1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('40','1','c_revs1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('41','1','c_sources1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('42','1','c_sql0.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('43','1','c_svg1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('44','1','c_taches1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('45','1','c_utilisateurs1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('46','1','test_hdf.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9');
 
 
 /*
@@ -2585,7 +2628,8 @@ INSERT INTO tbl_dossiers (chi_id_dossier,chx_projet_dossier,chp_nom_dossier,chx_
 ('4','2',NULL,NULL,'0','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('6','1','_sqls','2','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
 ('7','1','__client','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('8','1','test','3','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+('8','1','test','3','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('9','1','_php_inc','2','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 
 /*
@@ -2611,7 +2655,7 @@ créer_table(
       nom_long_de_la_table( ''liste des utilisateurs''),
       nom_court_de_la_table( ''un utilisateur''),
       nom_bref_de_la_table( ''utilisateurs''),
-      transform_table_sur_svg( translate( 368.5 , 373.5 ))
+      transform_table_sur_svg( translate( 336.5 , 326.5 ))
    ),
    champs(
       champ(
@@ -2767,33 +2811,17 @@ créer_table(
          )
       ),
       champ(
-         nom_du_champ( ''chx_groupe_utilisateur''),
+         nom_du_champ( ''chx_acces_utilisateur''),
          type( ''INTEGER''),
          non_nulle(1),
-         references( tbl_groupes , chi_id_groupe),
+         references( tbl_acces , chi_id_acces),
          a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(false),
+         la_valeur_par_defaut_est_caractere(0),
          valeur_par_defaut(2),
          meta(
             genre_meta(champ),
-            nom_du_champ( ''chx_groupe_utilisateur''),
-            champ( ''chx_groupe_utilisateur''),
-            nom_long_du_champ( ''A faire ...''),
-            nom_court_du_champ( ''A faire ...''),
-            nom_bref_du_champ( ''A faire ...''),
-            typologie(chx),
-            afficher_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ( ''chx_metier_utilisateur''),
-         type( ''INTEGER''),
-         non_nulle(1),
-         references( tbl_metiers , chi_id_metier),
-         meta(
-            genre_meta(champ),
-            nom_du_champ( ''chx_metier_utilisateur''),
-            champ( ''chx_metier_utilisateur''),
+            nom_du_champ( ''chx_acces_utilisateur''),
+            champ( ''chx_acces_utilisateur''),
             nom_long_du_champ( ''A faire ...''),
             nom_court_du_champ( ''A faire ...''),
             nom_bref_du_champ( ''A faire ...''),
@@ -2821,7 +2849,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 430.5 , 608.5 ))
+      transform_table_sur_svg( translate( 380.5 , 515.5 ))
    ),
    champs(
       champ(
@@ -3298,7 +3326,7 @@ créer_table(
       nom_long_de_la_table( ''à faire tbl_revs''),
       nom_court_de_la_table( ''à faire tbl_revs''),
       nom_bref_de_la_table( ''à faire tbl_revs''),
-      transform_table_sur_svg( translate( 679.5 , 411.5 ))
+      transform_table_sur_svg( translate( 618.5 , 376.5 ))
    ),
    champs(
       champ(
@@ -3577,7 +3605,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 687.5 , 39.5 ))
+      transform_table_sur_svg( translate( 606.5 , 15.5 ))
    ),
    champs(
       champ(
@@ -3939,7 +3967,7 @@ créer_table(
       nom_long_de_la_table( ''''),
       nom_court_de_la_table( ''''),
       nom_bref_de_la_table( ''''),
-      transform_table_sur_svg( translate( 688.5 , 226.5 ))
+      transform_table_sur_svg( translate( 609.5 , 194.5 ))
    ),
    champs(
       champ(
@@ -4130,7 +4158,7 @@ créer_table(
       nom_long_de_la_table( ''A faire  tbl_groupes''),
       nom_court_de_la_table( ''A faire tbl_groupes''),
       nom_bref_de_la_table( ''A faire tbl_groupes''),
-      transform_table_sur_svg( translate( 189.5 , 293.5 ))
+      transform_table_sur_svg( translate( 10.5 , 205.5 ))
    ),
    champs(
       champ(
@@ -4203,7 +4231,7 @@ créer_table(
       nom_long_de_la_table( ''A faire  tbl_metiers''),
       nom_court_de_la_table( ''A faire tbl_metiers''),
       nom_bref_de_la_table( ''A faire tbl_metiers''),
-      transform_table_sur_svg( translate( 190.5 , 412.5 ))
+      transform_table_sur_svg( translate( 10.5 , 313.5 ))
    ),
    champs(
       champ(
@@ -4264,7 +4292,7 @@ créer_table(
       nom_long_de_la_table( ''A faire  tbl_pages''),
       nom_court_de_la_table( ''A faire tbl_pages''),
       nom_bref_de_la_table( ''A faire tbl_pages''),
-      transform_table_sur_svg( translate( 15.5 , 393.5 ))
+      transform_table_sur_svg( translate( 160.5 , 480.5 ))
    ),
    champs(
       champ(
@@ -4299,21 +4327,6 @@ créer_table(
          )
       ),
       champ(
-         nom_du_champ( ''chp_lien_rev_page''),
-         type( ''VARCHAR(256)''),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ( ''chp_lien_rev_page''),
-            champ( ''chp_lien_rev_page''),
-            nom_long_du_champ( ''A faire ...''),
-            nom_court_du_champ( ''A faire ...''),
-            nom_bref_du_champ( ''A faire ...''),
-            typologie(chp),
-            afficher_champ_dans_svg(1)
-         )
-      ),
-      champ(
          nom_du_champ( ''chx_parent_page''),
          type( ''INTEGER''),
          references( tbl_pages , chi_id_page),
@@ -4328,6 +4341,67 @@ créer_table(
             afficher_champ_dans_svg(1),
             refe_parent_gauche(1)
          )
+      ),
+      champ(
+         nom_du_champ( ''chx_acces_page''),
+         type( ''INTEGER''),
+         references( tbl_acces , chi_id_acces),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_acces_page''),
+            champ( ''chx_acces_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1),
+            refe_enfant_droite(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chx_source_page''),
+         type( ''INTEGER''),
+         references( tbl_sources , chi_id_source),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_source_page''),
+            champ( ''chx_source_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chp_methode_page''),
+         type( ''VARCHAR(64)''),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chp_methode_page''),
+            champ( ''chp_methode_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chp),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chx_projet_page''),
+         type( ''INTEGER''),
+         references( tbl_projets , chi_id_projet),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_projet_page''),
+            champ( ''chx_projet_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1)
+         )
       )
    )
 ),
@@ -4340,7 +4414,7 @@ créer_table(
       nom_long_de_la_table( ''A faire  tbl_acces''),
       nom_court_de_la_table( ''A faire tbl_acces''),
       nom_bref_de_la_table( ''A faire tbl_acces''),
-      transform_table_sur_svg( translate( 367.5 , 247.5 ))
+      transform_table_sur_svg( translate( 177.5 , 291.5 ))
    ),
    champs(
       champ(
@@ -4587,11 +4661,23 @@ INSERT INTO tbl_metiers (chi_id_metier,chp_nom_metier,chx_parent_metier) VALUES
 
 /*
   ===============================
+  DONNEES A INSERER POUR : tbl_pages
+  ===============================
+*/
+
+INSERT INTO tbl_pages (chi_id_page,chp_nom_page,chx_parent_page,chx_acces_page,chx_source_page,chp_methode_page,chx_projet_page) VALUES
+('1','accueil',NULL,'2','18','recupere_la_page_d_accueil','1'),
+('2','aide et paramètres',NULL,'2','19','recupere_la_page_d_aide','1'),
+('3','connexion',NULL,'2','20','recupere_la_page_de_connexion','1');
+
+
+/*
+  ===============================
   DONNEES A INSERER POUR : tbl_acces
   ===============================
 */
 
 INSERT INTO tbl_acces (chi_id_acces,chp_nom_acces,chx_groupe_acces,chx_metier_acces) VALUES
-('1','anonyme','2','2'),
-('2','tous','1','1');
+('1','tout','1','1'),
+('2','[*** non connecté ***]','2','2');
 

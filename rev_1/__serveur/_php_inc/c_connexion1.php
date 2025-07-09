@@ -35,17 +35,7 @@ class c_connexion1{
 
         }
 
-        $tt=/*sql_inclure_deb*/
-            /* sql_1()
-            SELECT 
-            `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_groupe_utilisateur`
-             FROM b1.tbl_utilisateurs T0
-            WHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur  
-            LIMIT 1 OFFSET 0 
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
+        $tt=$this->sql0->sql_iii(
              /*sql_1()*/ 1,
             array( 'T0_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur']),
             $donnees_retournees
@@ -73,10 +63,10 @@ class c_connexion1{
             $_SESSION[__X_CLE_APPLICATION]['bidon']='bidon|bidon "et" encore bidon';
             $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']=$tt[__xva][0]['T0.chi_id_utilisateur'];
             $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']=$tt[__xva][0]['T0.chi_id_utilisateur'];
-            $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant']=$tt[__xva][0]['T0.chx_groupe_utilisateur'];
-            $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_initial']=$tt[__xva][0]['T0.chx_groupe_utilisateur'];
-            $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant']=$tt[__xva][0]['T0.chx_metier_utilisateur'];
-            $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_initial']=$tt[__xva][0]['T0.chx_metier_utilisateur'];
+            $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant']=$tt[__xva][0]['T1.chx_groupe_acces'];
+            $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_initial']=$tt[__xva][0]['T1.chx_groupe_acces'];
+            $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant']=$tt[__xva][0]['T1.chx_metier_acces'];
+            $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_initial']=$tt[__xva][0]['T1.chx_metier_acces'];
             $_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1']=0;
             $donnees_retournees[__x_ligne]=__LINE__;
             $donnees_retournees[__x_authentifie]=__xsu;

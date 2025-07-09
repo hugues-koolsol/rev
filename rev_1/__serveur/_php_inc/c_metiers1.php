@@ -109,7 +109,7 @@ class c_metiers1{
         }
         $donnees_sql=array( array(/**/
                     'chp_nom_metier' => $donnees_recues[__xva]['chp_nom_metier'],
-                    'chx_parent_metier' => $donnees_recues[__xva]['chx_parent_metier']
+                    'chx_parent_metier' => $donnees_recues[__xva]['chx_parent_metier']===''?NULL:$donnees_recues[__xva]['chx_parent_metier'],
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/

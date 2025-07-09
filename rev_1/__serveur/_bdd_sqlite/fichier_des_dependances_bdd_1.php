@@ -1,59 +1,23 @@
 <?php
 $tableau_des_dependances=array (
-  'tbl_groupes_chi_id_groupe' => 
+  'tbl_acces_chi_id_acces' => 
   array (
-    'table_parente' => 'tbl_groupes',
-    'champ_parent' => 'chi_id_groupe',
+    'table_parente' => 'tbl_acces',
+    'champ_parent' => 'chi_id_acces',
     'dependances' => 
     array (
       0 => 
       array (
         'table_dependante' => 'tbl_utilisateurs',
-        'champ_dependant' => 'chx_groupe_utilisateur',
+        'champ_dependant' => 'chx_acces_utilisateur',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
       1 => 
       array (
-        'table_dependante' => 'tbl_groupes',
-        'champ_dependant' => 'chx_parent_groupe',
-        'non_nulle' => '1',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-      2 => 
-      array (
-        'table_dependante' => 'tbl_acces',
-        'champ_dependant' => 'chx_groupe_acces',
-        'non_nulle' => '1',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-    ),
-  ),
-  'tbl_metiers_chi_id_metier' => 
-  array (
-    'table_parente' => 'tbl_metiers',
-    'champ_parent' => 'chi_id_metier',
-    'dependances' => 
-    array (
-      0 => 
-      array (
-        'table_dependante' => 'tbl_utilisateurs',
-        'champ_dependant' => 'chx_metier_utilisateur',
-        'non_nulle' => '1',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-      1 => 
-      array (
-        'table_dependante' => 'tbl_metiers',
-        'champ_dependant' => 'chx_parent_metier',
-        'non_nulle' => '1',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-      2 => 
-      array (
-        'table_dependante' => 'tbl_acces',
-        'champ_dependant' => 'chx_metier_acces',
-        'non_nulle' => '1',
+        'table_dependante' => 'tbl_pages',
+        'champ_dependant' => 'chx_acces_page',
+        'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),
     ),
@@ -150,6 +114,57 @@ $tableau_des_dependances=array (
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
+      5 => 
+      array (
+        'table_dependante' => 'tbl_pages',
+        'champ_dependant' => 'chx_projet_page',
+        'non_nulle' => '0',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+    ),
+  ),
+  'tbl_groupes_chi_id_groupe' => 
+  array (
+    'table_parente' => 'tbl_groupes',
+    'champ_parent' => 'chi_id_groupe',
+    'dependances' => 
+    array (
+      0 => 
+      array (
+        'table_dependante' => 'tbl_groupes',
+        'champ_dependant' => 'chx_parent_groupe',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+      1 => 
+      array (
+        'table_dependante' => 'tbl_acces',
+        'champ_dependant' => 'chx_groupe_acces',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+    ),
+  ),
+  'tbl_metiers_chi_id_metier' => 
+  array (
+    'table_parente' => 'tbl_metiers',
+    'champ_parent' => 'chi_id_metier',
+    'dependances' => 
+    array (
+      0 => 
+      array (
+        'table_dependante' => 'tbl_metiers',
+        'champ_dependant' => 'chx_parent_metier',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+      1 => 
+      array (
+        'table_dependante' => 'tbl_acces',
+        'champ_dependant' => 'chx_metier_acces',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
     ),
   ),
   'tbl_pages_chi_id_page' => 
@@ -162,6 +177,21 @@ $tableau_des_dependances=array (
       array (
         'table_dependante' => 'tbl_pages',
         'champ_dependant' => 'chx_parent_page',
+        'non_nulle' => '0',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+    ),
+  ),
+  'tbl_sources_chi_id_source' => 
+  array (
+    'table_parente' => 'tbl_sources',
+    'champ_parent' => 'chi_id_source',
+    'dependances' => 
+    array (
+      0 => 
+      array (
+        'table_dependante' => 'tbl_pages',
+        'champ_dependant' => 'chx_source_page',
         'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),

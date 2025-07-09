@@ -1,10 +1,13 @@
 <?php
 function sql_89($par,&$donnees_retournees,$that){
     $sql0='
-      INSERT  INTO `tbl_pages`(
+      INSERT  INTO `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_pages`(
          `chp_nom_page` , 
-         `chp_lien_rev_page` , 
-         `chx_parent_page`
+         `chx_parent_page` , 
+         `chx_acces_page` , 
+         `chx_source_page` , 
+         `chp_methode_page` , 
+         `chx_projet_page`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -14,8 +17,11 @@ function sql_89($par,&$donnees_retournees,$that){
         }
         $liste_des_valeurs.='(';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_page']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_lien_rev_page']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_parent_page']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_parent_page']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_acces_page']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_source_page']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_methode_page']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_projet_page']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

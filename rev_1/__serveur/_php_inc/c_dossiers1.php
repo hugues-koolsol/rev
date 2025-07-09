@@ -259,7 +259,7 @@ class c_dossiers1{
         $donnees_sql=array( array(/**/
                     'chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     'chp_nom_dossier' => $donnees_recues[__xva]['chp_nom_dossier'],
-                    'chx_parent_dossier' => $donnees_recues[__xva]['chx_parent_dossier']
+                    'chx_parent_dossier' => $donnees_recues[__xva]['chx_parent_dossier'] === '' ? NULL : $donnees_recues[__xva]['chx_parent_dossier'],
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
@@ -1728,9 +1728,14 @@ class c_dossiers1{
                             $o1 .= '    supprimer du disque';
                             $o1 .= '  </div>';
                             $o1 .= ' <div class="hug_bouton yy__x_signaux_1" ';
+                            $o1 .= '   data-hug_click="c_dossiers1.integrer_ce_fichier_dans_les_sources(chi_id_dossier(' . $chi_id_dossiers . '),nom_du_fichier(\'' . $v1 . '\'),che_binaire_source(),revenir_a_la_liste())" ';
+                            $o1 .= '   title="" >';
+                            $o1 .= '   intégrer ce fichier binaire';
+                            $o1 .= ' </div>';
+                            $o1 .= ' <div class="hug_bouton yy__x_signaux_1" ';
                             $o1 .= '   data-hug_click="c_dossiers1.integrer_ce_fichier_dans_les_sources(chi_id_dossier(' . $chi_id_dossiers . '),nom_du_fichier(\'' . $v1 . '\'),revenir_a_la_liste())" ';
                             $o1 .= '   title="" >';
-                            $o1 .= '   intégrer ce fichier dans les sources';
+                            $o1 .= '   intégrer ce fichier';
                             $o1 .= ' </div>';
                             /**/
                             $o1 .= '</div>' . PHP_EOL;
@@ -2000,6 +2005,7 @@ class c_dossiers1{
         */
         $chi_id_dossier=0;
         $nom_du_fichier='';
+        $che_binaire_source=0;
         $l01=count($mat);
         /* $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
@@ -2010,7 +2016,9 @@ class c_dossiers1{
                 for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
                     
                     
-                    if($mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
+                    if($mat[$j][2] === 'f' && $mat[$j][8] === 0 && $mat[$j][1] === 'che_binaire_source'){
+                        $che_binaire_source=1;
+                    }else if($mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
 
                         
                         if($mat[$j][1] === 'chi_id_dossier'){
@@ -2043,15 +2051,20 @@ class c_dossiers1{
             }
 
             $chemin_fichier=$dossier_absolu=$obj['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $nom_du_fichier;
-            $contenu_fichier=file_get_contents($chemin_fichier);
+            if( $che_binaire_source===1 || $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']==='rev'.'_1' ){
+                $contenu_fichier='';
+            }else{
+                $contenu_fichier=file_get_contents($chemin_fichier);
+            }
             $donnees_sql=array( array(
                         /**/
                         'chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                         'chp_nom_source' => $nom_du_fichier,
-                        'chx_dossier_id_source' => $chi_id_dossier,
+                        'chx_dossier_id_source' => $chi_id_dossier===''?NULL:$chi_id_dossier,
                         'cht_commentaire_source' => null,
                         'cht_rev_source' => null,
-                        'cht_genere_source' => $contenu_fichier
+                        'cht_genere_source' => $contenu_fichier,
+                        'che_binaire_source' => $che_binaire_source,
                     ));
             /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
             $tt=/*sql_inclure_deb*/
@@ -2413,9 +2426,15 @@ class c_dossiers1{
                         $liste_des_dossiers_a_la_racine .= '   supprimer du disque';
                         $liste_des_dossiers_a_la_racine .= ' </div>';
                         $liste_des_dossiers_a_la_racine .= ' <div class="hug_bouton yy__x_signaux_1" ';
+                        $liste_des_dossiers_a_la_racine .= '   data-hug_click="c_dossiers1.integrer_ce_fichier_dans_les_sources(chi_id_dossier(' . $id_dossier_racine . '),nom_du_fichier(\'' . $v1 . '\'),che_binaire_source(),revenir_a_la_liste())" ';
+                        $liste_des_dossiers_a_la_racine .= '   title="" >';
+                        $liste_des_dossiers_a_la_racine .= '   intégrer ce fichier binaire';
+                        $liste_des_dossiers_a_la_racine .= ' </div>';
+
+                        $liste_des_dossiers_a_la_racine .= ' <div class="hug_bouton yy__x_signaux_1" ';
                         $liste_des_dossiers_a_la_racine .= '   data-hug_click="c_dossiers1.integrer_ce_fichier_dans_les_sources(chi_id_dossier(' . $id_dossier_racine . '),nom_du_fichier(\'' . $v1 . '\'),revenir_a_la_liste())" ';
                         $liste_des_dossiers_a_la_racine .= '   title="" >';
-                        $liste_des_dossiers_a_la_racine .= '   intégrer ce fichier dans les sources';
+                        $liste_des_dossiers_a_la_racine .= '   intégrer ce fichier ';
                         $liste_des_dossiers_a_la_racine .= ' </div>';
 
                     }

@@ -108,7 +108,8 @@ class c_groupes1{
 
         }
         $donnees_sql=array( array(/**/
-                    'chp_nom_groupe' => $donnees_recues[__xva]['chp_nom_groupe']
+                    'chp_nom_groupe' => $donnees_recues[__xva]['chp_nom_groupe'],
+                    'chx_parent_groupe' => $donnees_recues[__xva]['chx_parent_groupe']===''?NULL:$donnees_recues[__xva]['chx_parent_groupe'],
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/

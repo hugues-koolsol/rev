@@ -10,18 +10,11 @@ function sql_81($par,&$donnees_retournees,$that){
             $tableau_champs[]='`chp_nom_de_connexion_utilisateur` = \''.sq0($par['n_chp_nom_de_connexion_utilisateur']).'\'';
         }
     }
-    if(isset($par['n_chx_groupe_utilisateur'])){
-        if($par['n_chx_groupe_utilisateur']==='' || $par['n_chx_groupe_utilisateur']===NULL ){
-            $tableau_champs[]='`chx_groupe_utilisateur` = NULL';
+    if(isset($par['n_chx_acces_utilisateur'])){
+        if($par['n_chx_acces_utilisateur']==='' || $par['n_chx_acces_utilisateur']===NULL ){
+            $tableau_champs[]='`chx_acces_utilisateur` = NULL';
         }else{
-            $tableau_champs[]='`chx_groupe_utilisateur` = '.sq0($par['n_chx_groupe_utilisateur']).'';
-        }
-    }
-    if(isset($par['n_chx_metier_utilisateur'])){
-        if($par['n_chx_metier_utilisateur']==='' || $par['n_chx_metier_utilisateur']===NULL ){
-            $tableau_champs[]='`chx_metier_utilisateur` = NULL';
-        }else{
-            $tableau_champs[]='`chx_metier_utilisateur` = '.sq0($par['n_chx_metier_utilisateur']).'';
+            $tableau_champs[]='`chx_acces_utilisateur` = '.sq0($par['n_chx_acces_utilisateur']).'';
         }
     }
 

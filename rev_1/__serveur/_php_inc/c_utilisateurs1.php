@@ -106,25 +106,18 @@ class c_utilisateurs1{
             }
 
         }
+        if($donnees_recues[__xva]['chx_acces_utilisateur']===1){
+
+            $donnees_retournees[__x_signaux][__xar][]=' cet acces n\'es pas permis';
+         
+        }
+        
         $donnees_sql=array( array(/**/
                     'chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['chp_nom_de_connexion_utilisateur'],
-                    'chx_groupe_utilisateur' => $donnees_recues[__xva]['chx_groupe_utilisateur']
+                    'chx_acces_utilisateur' => $donnees_recues[__xva]['chx_acces_utilisateur']===''?NULL:$donnees_recues[__xva]['chx_acces_utilisateur'],
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-        $tt=/*sql_inclure_deb*/
-            /* sql_79()
-            INSERT INTO b1.`tbl_utilisateurs`(
-                `chp_nom_de_connexion_utilisateur` , 
-                `chx_groupe_utilisateur` , 
-                `chx_metier_utilisateur`
-            ) VALUES (
-                :chp_nom_de_connexion_utilisateur , 
-                :chx_groupe_utilisateur , 
-                :chx_metier_utilisateur
-            );
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
+        $tt=$this->sql0->sql_iii(
              /*sql_79()*/ 79,
             $donnees_sql,
             $donnees_retournees
@@ -205,22 +198,7 @@ class c_utilisateurs1{
       =============================================================================================================
     */
     function vv_utilisateurs_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $tt=/*sql_inclure_deb*/
-            /* sql_80()
-            SELECT 
-            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-            `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_groupe_utilisateur` , 
-            `T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier`
-             FROM b1.tbl_utilisateurs T0
-             LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
-            
-             LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
-            
-            WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
+        $tt=$this->sql0->sql_iii(
              /*sql_80()*/ 80,
             array(/**/
                 'T0_chi_id_utilisateur' => $donnees_recues[__xva]['chi_id_utilisateur']
@@ -282,22 +260,7 @@ class c_utilisateurs1{
             }
 
         }
-        $tt=/*sql_inclure_deb*/
-            /* sql_80()
-            SELECT 
-            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-            `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_groupe_utilisateur` , 
-            `T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier`
-             FROM b1.tbl_utilisateurs T0
-             LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
-            
-             LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
-            
-            WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
+        $tt=$this->sql0->sql_iii(
              /*sql_80()*/ 80,
             array(/**/
                 'T0_chi_id_utilisateur' => $donnees_recues[__xva]['chi_id_utilisateur']
@@ -310,12 +273,11 @@ class c_utilisateurs1{
             /* afr metier*/
             
             if($tt[__xva][0]['T0.chi_id_utilisateur'] === 1
-                   && ((int)($donnees_recues[__xva]['chx_groupe_utilisateur'])) !== 1
+                   && ((int)($donnees_recues[__xva]['chx_acces_utilisateur'])) !== 1
                || $tt[__xva][0]['T0.chi_id_utilisateur'] === 2
-                   && ((int)($donnees_recues[__xva]['chx_groupe_utilisateur'])) !== 2
+                   && ((int)($donnees_recues[__xva]['chx_acces_utilisateur'])) !== 2
                || $tt[__xva][0]['T0.chi_id_utilisateur'] > 2
-                   && (((int)($donnees_recues[__xva]['chx_groupe_utilisateur'])) === 1
-                       || ((int)($donnees_recues[__xva]['chx_groupe_utilisateur'])) === 2)
+                   && ((int)($donnees_recues[__xva]['chx_acces_utilisateur'])) === 1
             ){
 
                 $donnees_retournees[__x_signaux][__xer][]='cette combinaison d\'utilisateur et de groupe n\'est pas possible [' . __LINE__ . ']';
@@ -323,23 +285,13 @@ class c_utilisateurs1{
 
             }
 
-            $tt=/*sql_inclure_deb*/
-                /* sql_81()
-                UPDATE b1.tbl_utilisateurs SET 
-                   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
-                   `chx_groupe_utilisateur` = :n_chx_groupe_utilisateur , 
-                   `chx_metier_utilisateur` = :n_chx_metier_utilisateur
-                WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
+            $tt=$this->sql0->sql_iii(
                  /*sql_81()*/ 81,
                 array(
                     /**/
                     'c_chi_id_utilisateur' => $tt[__xva][0]['T0.chi_id_utilisateur'],
                     'n_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['chp_nom_de_connexion_utilisateur'],
-                    'n_chx_groupe_utilisateur' => $donnees_recues[__xva]['chx_groupe_utilisateur'],
-                    'n_chx_metier_utilisateur' => $donnees_recues[__xva]['chx_metier_utilisateur']
+                    'n_chx_acces_utilisateur' => $donnees_recues[__xva]['chx_acces_utilisateur'],
                 ),
                 $donnees_retournees
             );
@@ -396,36 +348,15 @@ class c_utilisateurs1{
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>groupe</span>' . PHP_EOL;
+        $o1 .= '      <span>acces</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '        <input type="hidden" value=""  id="chx_groupe_utilisateur" />' . PHP_EOL;
-        $o1 .= '        <span id="chx_groupe_utilisateur_libelle">*indéfini</span>' . PHP_EOL;
-        $parametre_sous_fenetre='c_groupes1.page_groupes_sous_liste1(';
+        $o1 .= '        <input type="hidden" value=""  id="chx_acces_utilisateur" />' . PHP_EOL;
+        $o1 .= '        <span id="chx_acces_utilisateur_libelle">*indéfini</span>' . PHP_EOL;
+        $parametre_sous_fenetre='c_acces1.page_acces_sous_liste1(';
         $parametre_sous_fenetre .= ' sans_menus1()';
-        $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_groupe_utilisateur)';
-        $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_groupe_utilisateur_libelle)';
-        $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
-        $parametre_sous_fenetre .= ')';
-        $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
-        $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
-        $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
-        $o1 .= '    </div>' . PHP_EOL;
-        $o1 .= '  </div>' . PHP_EOL;
-        /*
-          =====================================================================================================
-        */
-        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
-        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>metier</span>' . PHP_EOL;
-        $o1 .= '    </div>' . PHP_EOL;
-        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '        <input type="hidden" value=""  id="chx_metier_utilisateur" />' . PHP_EOL;
-        $o1 .= '        <span id="chx_metier_utilisateur_libelle">*indéfini</span>' . PHP_EOL;
-        $parametre_sous_fenetre='c_metiers1.page_metiers_sous_liste1(';
-        $parametre_sous_fenetre .= ' sans_menus1()';
-        $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_metier_utilisateur)';
-        $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_metier_utilisateur_libelle)';
+        $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_acces_utilisateur)';
+        $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_acces_utilisateur_libelle)';
         $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
         $parametre_sous_fenetre .= ')';
         $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
@@ -468,22 +399,7 @@ class c_utilisateurs1{
         
         if(is_numeric($chi_id_utilisateurs) && $chi_id_utilisateurs > 2){
 
-            $tt=/*sql_inclure_deb*/
-                /* sql_80()
-                SELECT 
-                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-                `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_groupe_utilisateur` , 
-                `T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier`
-                 FROM b1.tbl_utilisateurs T0
-                 LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
-                
-                 LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
-                
-                WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-                ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
+            $tt=$this->sql0->sql_iii(
                  /*sql_80()*/ 80,
                 array(/**/
                     'T0_chi_id_utilisateur' => $chi_id_utilisateurs
@@ -547,22 +463,7 @@ class c_utilisateurs1{
         
         if(is_numeric($chi_id_utilisateurs) && $chi_id_utilisateurs > 0){
 
-            $tt=/*sql_inclure_deb*/
-                /* sql_80()
-                SELECT 
-                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-                `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_groupe_utilisateur` , 
-                `T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier`
-                 FROM b1.tbl_utilisateurs T0
-                 LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
-                
-                 LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
-                
-                WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-                ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
+            $tt=$this->sql0->sql_iii(
                  /*sql_80()*/ 80,
                 array(/**/
                     'T0_chi_id_utilisateur' => $chi_id_utilisateurs
@@ -591,61 +492,27 @@ class c_utilisateurs1{
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>groupe</span>' . PHP_EOL;
+                $o1 .= '      <span>acces</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_groupe_utilisateur']) . '"  id="chx_groupe_utilisateur" />' . PHP_EOL;
-                $o1 .= '        <span id="chx_groupe_utilisateur_libelle">' . PHP_EOL;
+                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_acces_utilisateur']) . '"  id="chx_acces_utilisateur" />' . PHP_EOL;
+                $o1 .= '        <span id="chx_acces_utilisateur_libelle">' . PHP_EOL;
                 
-                if($tt[__xva][0]['T0.chx_groupe_utilisateur'] === null){
+                if($tt[__xva][0]['T0.chx_acces_utilisateur'] === null){
 
                     $o1 .= '*indéfini' . PHP_EOL;
 
                 }else{
 
-                    $o1 .= '(' . $tt[__xva][0]['T0.chx_groupe_utilisateur'] . ') ' . htmlentities($tt[__xva][0]['T1.chp_nom_groupe']) . PHP_EOL;
+                    $o1 .= '(' . $tt[__xva][0]['T0.chx_acces_utilisateur'] . ') ' . htmlentities($tt[__xva][0]['T3.chp_nom_acces']) . PHP_EOL;
                 }
 
                 $o1 .= '</span>' . PHP_EOL;
-                $parametre_sous_fenetre='c_groupes1.page_groupes_sous_liste1(';
+                $parametre_sous_fenetre='c_acces1.page_acces_sous_liste1(';
                 $parametre_sous_fenetre .= ' sans_menus1()';
-                $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_groupe_utilisateur)';
-                $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_groupe_utilisateur_libelle)';
-                $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
-                $parametre_sous_fenetre .= ')';
-                $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
-                $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
-                $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
-                $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '  </div>' . PHP_EOL;
-                /*
-                  =====================================================================================
-                */
-                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
-                /**/
-                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>metier</span>' . PHP_EOL;
-                $o1 .= '    </div>' . PHP_EOL;
-                /**/
-                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_metier_utilisateur']) . '"  id="chx_metier_utilisateur" />' . PHP_EOL;
-                $o1 .= '        <span id="chx_metier_utilisateur_libelle">' . PHP_EOL;
-                
-                if($tt[__xva][0]['T0.chx_metier_utilisateur'] === null){
-
-                    $o1 .= '*indéfini' . PHP_EOL;
-
-                }else{
-
-                    $o1 .= '(' . $tt[__xva][0]['T0.chx_metier_utilisateur'] . ') ' . htmlentities($tt[__xva][0]['T2.chp_nom_metier']) . PHP_EOL;
-                }
-
-                $o1 .= '</span>' . PHP_EOL;
-                $parametre_sous_fenetre='c_metiers1.page_metiers_sous_liste1(';
-                $parametre_sous_fenetre .= ' sans_menus1()';
-                $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_metier_utilisateur)';
-                $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_metier_utilisateur_libelle)';
+                $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_acces_utilisateur)';
+                $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_acces_utilisateur_libelle)';
                 $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
                 $parametre_sous_fenetre .= ')';
                 $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
@@ -911,7 +778,7 @@ class c_utilisateurs1{
         $par=array();
         $par['T0_chi_id_utilisateur']='';
         $par['T0_chp_nom_de_connexion_utilisateur']='';
-        $par['T0_chx_groupe_utilisateur']='';
+        $par['T0_chx_acces_utilisateur']='';
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
@@ -986,7 +853,7 @@ class c_utilisateurs1{
 
         $par['T0_chi_id_utilisateur']=$par['T0_chi_id_utilisateur']??'';
         $par['T0_chp_nom_de_connexion_utilisateur']=$par['T0_chp_nom_de_connexion_utilisateur']??'';
-        $par['T0_chx_groupe_utilisateur']=$par['T0_chx_groupe_utilisateur']??'';
+        $par['T0_chx_acces_utilisateur']=$par['T0_chx_acces_utilisateur']??'';
         $fonction1='c_utilisateurs1.page_liste_des_utilisateurs1';
         $nom_filtre='vv_utilisateurs_filtre1';
         $o1='<h1>Liste des utilisateurs</h1>';
@@ -1017,24 +884,7 @@ class c_utilisateurs1{
         $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
-        $tt=/*sql_inclure_deb*/
-            /* sql_78()
-            SELECT 
-            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
-            `T0`.`chx_groupe_utilisateur` , `T1`.`chp_nom_groupe` , `T0`.`chx_metier_utilisateur` , `T2`.`chp_nom_metier`
-             FROM b1.tbl_utilisateurs T0
-             LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_utilisateur
-            
-             LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_utilisateur
-            
-            WHERE ( / *** *** / `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
-            ORDER BY `T0`.`chi_id_utilisateur` DESC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
+        $tt=$this->sql0->sql_iii(
              /*sql_78()*/ 78,
             array(
                 /**/
@@ -1083,8 +933,7 @@ class c_utilisateurs1{
         $lsttbl .= '<th>action</th>';
         $lsttbl .= '<th>id</th>';
         $lsttbl .= '<th>nom</th>';
-        $lsttbl .= '<th>groupe</th>';
-        $lsttbl .= '<th>métier</th>';
+        $lsttbl .= '<th>acces</th>';
         $lsttbl .= '<th>nb</th>';
         $lsttbl .= '</tr></thead><tbody>';
         foreach($tt[__xva] as $k0 => $v0){
@@ -1115,11 +964,7 @@ class c_utilisateurs1{
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';
-            $lsttbl .= '' . $v0['T0.chx_groupe_utilisateur'] . '';
-            $lsttbl .= '</td>';
-            /**/
-            $lsttbl .= '<td style="text-align:center;">';
-            $lsttbl .= '' . $v0['T0.chx_metier_utilisateur'] . '';
+            $lsttbl .= '' . $v0['T0.chx_acces_utilisateur'] . '';
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';

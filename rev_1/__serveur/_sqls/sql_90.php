@@ -1,12 +1,17 @@
 <?php
 function sql_90($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chp_lien_rev_page` , `T0`.`chx_parent_page` , `T1`.`chp_nom_page`
+      `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
+      `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
       FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_pages T0
        LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+
+       LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
+
+       LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
     ';
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
@@ -23,9 +28,13 @@ function sql_90($par,&$donnees_retournees,$that){
             $donnees0[]=array(
                 'T0.chi_id_page' => $tab0[0],
                 'T0.chp_nom_page' => $tab0[1],
-                'T0.chp_lien_rev_page' => $tab0[2],
-                'T0.chx_parent_page' => $tab0[3],
-                'T1.chp_nom_page' => $tab0[4],
+                'T0.chx_parent_page' => $tab0[2],
+                'T0.chx_acces_page' => $tab0[3],
+                'T0.chx_source_page' => $tab0[4],
+                'T0.chp_methode_page' => $tab0[5],
+                'T1.chp_nom_page' => $tab0[6],
+                'T2.chp_nom_acces' => $tab0[7],
+                'T3.chp_nom_source' => $tab0[8],
             );
         }
         return array(

@@ -106,7 +106,7 @@ class c_sources1{
                     /**/
                     'chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     'chp_nom_source' => $donnees_recues[__xva]['chp_nom_source'],
-                    'chx_dossier_id_source' => $donnees_recues[__xva]['chx_dossier_id_source'] === '' ? null : $donnees_recues[__xva]['chx_dossier_id_source'],
+                    'chx_dossier_id_source' => $donnees_recues[__xva]['chx_dossier_id_source'] === '' ? NULL : $donnees_recues[__xva]['chx_dossier_id_source'],
                     'che_binaire_source' => $donnees_recues[__xva]['che_binaire_source'],
                     'cht_commentaire_source' => null,
                     'cht_rev_source' => null,
@@ -2133,6 +2133,235 @@ class c_sources1{
 
         $donnees_retournees[__xst]=__xsu;
     }
+    
+    /*
+      =============================================================================================================
+      Pour les iframes sur les sources
+      =============================================================================================================
+    */
+    function vv_sources_filtre_choix_1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $txtPar='__num_page(0)';
+        $nouvelles_valeurs=array( '__num_page' => 0);
+        foreach($donnees_recues[__xva] as $k0 => $v0){
+            
+            if($k0 !== '__num_page'){
+
+                $nouvelles_valeurs[$k0]=$v0;
+                
+                if(is_numeric($v0)){
+
+                    $txtPar .= ',' . $k0 . '(' . $v0 . ')';
+
+                }else{
+
+                    $txtPar .= ',' . $k0 . '(\'' . str_replace('\'','\\\'',$v0) . '\')';
+                }
+
+
+            }
+
+        }
+        $_SESSION[__X_CLE_APPLICATION]['c_sources1.page_sources_sous_liste1']=$nouvelles_valeurs;
+        $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice('c_sources1.page_sources_sous_liste1(' . $txtPar . ')');
+        
+        if($obj_matrice[__xst] === __xsu){
+
+            $this->page_sources_sous_liste1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xer][]=__LINE__ . ' erreur de convertion de ' . $txtPar . '';
+        }
+
+    }
+    /*
+      =============================================================================================================
+    */
+    function page_sources_sous_liste1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $fonction1='c_sources1.page_sources_sous_liste1';
+        /* déverminage */
+        $__nbMax=10;
+        /*
+          $donnees_retournees[__x_signaux][__xif][]=__LINE__ . 'TODO $par '.var_export($par,true);
+        */
+        $par=array();
+        $par['T0_chi_id_source']='';
+        $par['T0_chp_nom_source']='';
+        $par['T0_chx_dossier_id_source']='';
+        $par['__num_page']=0;
+        $numpage=-1;
+        $par_mat=array();
+        $l01=count($mat);
+        $provenance_menu=false;
+        /* $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
+        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
+            
+            
+            if($fonction1 === $mat[$i][1]){
+
+                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
+                    
+                    
+                    if($mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
+
+                        /* $donnees_retournees[__x_signaux][__xdv][]='$mat[$j][1] ='.json_encode( $mat[$j][1] . ' ' . $mat[$j+1][1]  , JSON_FORCE_OBJECT );*/
+                        
+                        if($mat[$j][1] === '__num_page'){
+
+                            $numpage=$mat[$j + 1][1];
+                            $par_mat['__num_page']=$mat[$j + 1][1];
+                            $par['__num_page']=$mat[$j + 1][1];
+
+                        }else if($mat[$j][1] === 'indice_menu'){
+
+                            $numpage=0;
+                            $par_mat['__num_page']=0;
+                            $provenance_menu=true;
+                            $par['__num_page']=0;
+
+                        }else if($mat[$j + 1][1] !== ''){
+
+                            $par_mat[$mat[$j][1]]=$mat[$j + 1][1];
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+        }
+        
+        if(false === isset($_SESSION[__X_CLE_APPLICATION][$fonction1])){
+
+            $par=array_merge($par,$par_mat);
+            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;
+
+        }else{
+
+            $par=$_SESSION[__X_CLE_APPLICATION][$fonction1];
+            
+            if($provenance_menu === true){
+
+                $par['__num_page']=0;
+
+            }else{
+
+                
+                if($numpage === -1){
+
+
+                }else{
+
+                    $par['__num_page']=$numpage;
+                }
+
+            }
+
+            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;
+        }
+
+        $par['T0_chi_id_source']=$par['T0_chi_id_source']??'';
+        $par['T0_chp_nom_source']=$par['T0_chp_nom_source']??'';
+        $par['T0_chx_dossier_id_source']=$par['T0_chx_dossier_id_source']??'';
+        
+        $nom_filtre='vv_sources_filtre_choix_1';
+        $o1='<h1>choisir un source parent</h1>';
+        $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
+        $__debut=$__num_page * $__nbMax;
+        $o1 .= '<div class="yy_filtre_liste1" id="' . $nom_filtre . '">' . PHP_EOL;
+        /**/
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '      <div><span>nom</span></div>' . PHP_EOL;
+        $o1 .= '      <div><input type="text" id="T0_chp_nom_source" value="' . $par['T0_chp_nom_source'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
+        
+        if($par['T0_chp_nom_source'] !== ''){
+
+            $o1 .= '         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id(T0_chp_nom_source),value(\'\'))),c_sources1.formulaire1(conteneur1(' . $nom_filtre . '))" >x</span>';
+
+        }
+
+        $o1 .= '      </div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        /**/
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '    <div><span>id</span></div>' . PHP_EOL;
+        $o1 .= '    <div><input type="text" id="T0_chi_id_source" value="' . $par['T0_chi_id_source'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        /**/
+        $o1 .= '   <div>    ' . PHP_EOL;
+        $o1 .= '     <div><span>&nbsp;</span></div>' . PHP_EOL;
+        $o1 .= '     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_sources1.formulaire1(conteneur1(' . $nom_filtre . '))" >🔎</div></div>' . PHP_EOL;
+        $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
+        $o1 .= '   </div> ' . PHP_EOL;
+        /**/
+        $o1 .= '</div>';
+        $tt=$this->sql0->sql_iii(
+             /*sql_61()*/ 61,
+             array(/**/ 
+                      'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+                      'T0_chi_id_source' => $par['T0_chi_id_source'] === '' ? '' : $par['T0_chi_id_source'],
+                      'T0_chx_dossier_id_source' => $par['T0_chx_dossier_id_source'] === '' ? '' : $par['T0_chx_dossier_id_source'],
+                      'T0_chp_nom_source' => $par['T0_chp_nom_source'] === '' ? '' : '' . $par['T0_chp_nom_source'] . '',
+                      'quantitee' => $__nbMax,
+                      'debut' => $__debut
+                      
+                  ),
+            $donnees_retournees
+        );
+        
+        if($tt[__xst] === __xer){
+
+            $donnees_retournees[__x_signaux][__xer][]='Erreur dans la liste des sources [' . __LINE__ . ']';
+            return;
+
+        }
+
+        /*
+          $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $tt '.var_export($tt,true);
+        */
+        $bouton_avant='';
+        $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt['nombre'],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));
+        $lsttbl='';
+        $lsttbl .= '<thead><tr>';
+        $lsttbl .= '<th></th>';
+        $lsttbl .= '<th>id</th>';
+        $lsttbl .= '<th>source</th>';
+        $lsttbl .= '</tr></thead><tbody>';
+        foreach($tt[__xva] as $k0 => $v0){
+            $lsttbl .= '<tr>';
+            /**/
+            $parametres='';
+            $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
+            $parametres .= '    id1(' . $v0['T0.chi_id_source'] . ')';
+            $parametres .= '    libelle1("(' . $v0['T0.chi_id_source'] . ') ' . $v0['T0.chp_nom_source'] . '" )';
+            $parametres .= ')';
+            $lsttbl .= '<td style="max-width:calc(1*var(t_1boutons_carres))">';
+            $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="' . htmlentities($parametres) . '">=&gt;</div>';
+            $lsttbl .= '</td>';
+            /**/
+            $lsttbl .= '<td style="text-align:center;">';
+            $lsttbl .= '' . $v0['T0.chi_id_source'] . '';
+            $lsttbl .= '</td>';
+            /**/
+            $lsttbl .= '<td style="text-align:left;">';
+            
+            if($v0['T0.chp_nom_source'] !== null){
+
+                $lsttbl .= '' . enti1($v0['T0.chp_nom_source']) . '';
+
+            }
+
+            $lsttbl .= '</td>';
+            /**/
+            /**/
+            $lsttbl .= '</tr>';
+        }
+        $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
+        $donnees_retournees[__x_page] .= $o1;
+        $donnees_retournees[__xst]=__xsu;
+    }    
     /*
       =============================================================================================================
     */
@@ -2335,10 +2564,13 @@ class c_sources1{
 
             }else{
 
-                $lsttbl .= '  <div id="vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '" class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.compiler_source1(chi_id_source(' . $v0['T0.chi_id_source'] . '),bouton_compiler(vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '),pas_de_message_de_succes(1))" >compiler</div>';
-                /*
-                  $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.lancer_notepad(chi_id_source('.$v0['T0.chi_id_source'].'))" >notepad</div>';
-                */
+
+                if(__X_CLE_APPLICATION === 'rev_1' && $v0['T0.chx_dossier_id_source']>=9 ){
+                    $lsttbl .= '  <div class="hug_bouton_inactif" >compiler</div>';
+                }else{
+                    $lsttbl .= '  <div id="vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '" class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.compiler_source1(chi_id_source(' . $v0['T0.chi_id_source'] . '),bouton_compiler(vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '),pas_de_message_de_succes(1))" >compiler</div>';
+
+                }
             }
 
             

@@ -107,26 +107,70 @@ class c_pages1{
             }
 
         }
+        
+    
+        $tt62=$this->sql0->sql_iii(
+             /*sql_62()*/ 62,
+            array(/**/
+                'T0_chi_id_source' => $donnees_recues[__xva]['chx_source_page'],
+                'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+            ),
+            $donnees_retournees
+        );
+        if($tt62[__xst] === __xer){
+
+            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+            return;
+        }
+        
+        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
+        $obj_doss=new c_dossiers1(
+            $donnees_retournees,
+             /*matrice*/ $mat,
+            $donnees_recues
+        );
+        $dossier=$obj_doss->construire_chemin($tt62[__xva][0]['T0.chx_dossier_id_source']);
+        
+        if($dossier['__xst'] !== __xsu){
+            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+            return;
+        }
+        
+//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt62[__xva][0] , true ) . '</pre>' ; exit(0);
+        
+        if(!is_file($dossier['__xva']['chemin_absolu'].DIRECTORY_SEPARATOR.$tt62[__xva][0]['T0.chp_nom_source'])){
+            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+            return;
+        }
+        require_once($dossier['__xva']['chemin_absolu'].DIRECTORY_SEPARATOR.$tt62[__xva][0]['T0.chp_nom_source']);
+        
+        
+        $class_methods = get_class_methods(str_replace('.php','',$tt62[__xva][0]['T0.chp_nom_source']));
+        $trouve=false;
+        foreach( $class_methods as $k1 => $v1){
+            if($v1===$donnees_recues[__xva]['chp_methode_page']){
+                $trouve=true;
+                break;
+            }
+        }
+        if($trouve===false){
+            $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . var_export($class_methods , true ) . ' [' . __LINE__ . ']';
+            return;
+        }
+        
+        
         $donnees_sql=array( array(/**/
                     'chp_nom_page' => $donnees_recues[__xva]['chp_nom_page'],
-                    'chp_lien_rev_page' => $donnees_recues[__xva]['chp_lien_rev_page'],
+                    'chx_parent_page' => $donnees_recues[__xva]['chx_parent_page']===''?NULL:$donnees_recues[__xva]['chx_parent_page'],
+                    'chx_acces_page' => $donnees_recues[__xva]['chx_acces_page']===''?NULL:$donnees_recues[__xva]['chx_acces_page'],
+                    'chx_source_page' => $donnees_recues[__xva]['chx_source_page']===''?NULL:$donnees_recues[__xva]['chx_source_page'],
+                    'chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
+                    'chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     
-                    'chx_parent_page' => $donnees_recues[__xva]['chx_parent_page'],
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-        $tt=/*sql_inclure_deb*/
-            /* sql_84()
-            INSERT INTO b1.`tbl_pages`(
-                `chp_nom_page` , 
-                `chx_parent_page`
-            ) VALUES (
-                :chp_nom_page , 
-                :chx_parent_page
-            );
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
-             /*sql_84()*/ 84,
+        $tt=$this->sql0->sql_iii(
+             /*sql_89()*/ 89,
             $donnees_sql,
             $donnees_retournees
         );
@@ -279,19 +323,8 @@ class c_pages1{
             }
 
         }
-        $tt=/*sql_inclure_deb*/
-            /* sql_85()
-            SELECT 
-            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T1`.`chp_nom_page` , `T0`.`chx_parent_page`
-             FROM b1.tbl_pages T0
-             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-            
-            WHERE `T0`.`chi_id_page` = :T0_chi_id_page
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
-             /*sql_85()*/ 85,
+        $tt=$this->sql0->sql_iii(
+             /*sql_90()*/ 90,
             array(/**/
                 'T0_chi_id_page' => $donnees_recues[__xva]['chi_id_page']
             ),
@@ -299,27 +332,72 @@ class c_pages1{
         );
         
         if($tt[__xst] === __xsu){
+         
+
+            $tt62=$this->sql0->sql_iii(
+                 /*sql_62()*/ 62,
+                array(/**/
+                    'T0_chi_id_source' => $donnees_recues[__xva]['chx_source_page'],
+                    'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+                ),
+                $donnees_retournees
+            );
+            if($tt62[__xst] === __xer){
+
+                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
+            }
+            
+            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
+            $obj_doss=new c_dossiers1(
+                $donnees_retournees,
+                 /*matrice*/ $mat,
+                $donnees_recues
+            );
+            $dossier=$obj_doss->construire_chemin($tt62[__xva][0]['T0.chx_dossier_id_source']);
+            
+            if($dossier['__xst'] !== __xsu){
+                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
+            }
+            
+//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt62[__xva][0] , true ) . '</pre>' ; exit(0);
+            
+            if(!is_file($dossier['__xva']['chemin_absolu'].DIRECTORY_SEPARATOR.$tt62[__xva][0]['T0.chp_nom_source'])){
+                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
+            }
+            require_once($dossier['__xva']['chemin_absolu'].DIRECTORY_SEPARATOR.$tt62[__xva][0]['T0.chp_nom_source']);
+            
+            
+            $class_methods = get_class_methods(str_replace('.php','',$tt62[__xva][0]['T0.chp_nom_source']));
+            $trouve=false;
+            foreach( $class_methods as $k1 => $v1){
+                if($v1===$donnees_recues[__xva]['chp_methode_page']){
+                    $trouve=true;
+                    break;
+                }
+            }
+            if($trouve===false){
+                $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . var_export($class_methods , true ) . ' [' . __LINE__ . ']';
+                return;
+            }
+            
 
             /*
               afr 
-              le parent de racine doit être racine
+              pour la page accueil
             */
-            $tt=/*sql_inclure_deb*/
-                /* sql_86()
-                UPDATE b1.tbl_pages SET 
-                   `chp_nom_page` = :n_chp_nom_page , 
-                   `chx_parent_page` = :n_chx_parent_page
-                WHERE `chi_id_page` = :c_chi_id_page ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
-                 /*sql_86()*/ 86,
+            $tt=$this->sql0->sql_iii(
+                 /*sql_91()*/ 91,
                 array(/**/
                     'c_chi_id_page' => $tt[__xva][0]['T0.chi_id_page'],
                     'n_chp_nom_page' => $donnees_recues[__xva]['chp_nom_page'],
-                    'n_chp_lien_rev_page' => $donnees_recues[__xva]['chp_lien_rev_page'],
-                    
-                    'n_chx_parent_page' => $donnees_recues[__xva]['chx_parent_page']
+                    'n_chx_parent_page' => $donnees_recues[__xva]['chx_parent_page'],
+                    'n_chx_acces_page' => $donnees_recues[__xva]['chx_acces_page'],
+                    'n_chx_source_page' => $donnees_recues[__xva]['chx_source_page'],
+                    'n_chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
+                    'n_chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 ),
                 $donnees_retournees
             );
@@ -373,24 +451,13 @@ class c_pages1{
         $o1 .= '      <input type="text" maxlength="64" id="chp_nom_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        /*
-          =====================================================================================================
-        */
-        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
-        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>lien</span>' . PHP_EOL;
-        $o1 .= '    </div>' . PHP_EOL;
-        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" maxlength="64" id="chp_lien_rev_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
-        $o1 .= '    </div>' . PHP_EOL;
-        $o1 .= '  </div>' . PHP_EOL;
         
         /*
           =====================================================================================================
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>métier parent</span>' . PHP_EOL;
+        $o1 .= '      <span>page parente</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         /**/
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
@@ -411,7 +478,63 @@ class c_pages1{
         /**/
         $o1 .= '  </div>' . PHP_EOL;
         /**/
-        /* */
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>acces</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '        <input type="hidden" value=""  id="chx_acces_page" />' . PHP_EOL;
+        $o1 .= '        <span id="chx_acces_page_libelle">*indéfini</span>' . PHP_EOL;
+        $parametre_sous_fenetre='c_acces1.page_acces_sous_liste1(';
+        $parametre_sous_fenetre .= ' sans_menus1()';
+        $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_acces_page)';
+        $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_acces_page_libelle)';
+        $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
+        $parametre_sous_fenetre .= ')';
+        $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
+        $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
+        $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>source</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '        <input type="hidden" value=""  id="chx_source_page" />' . PHP_EOL;
+        $o1 .= '        <span id="chx_source_page_libelle">*indéfini</span>' . PHP_EOL;
+        $parametre_sous_fenetre='c_sources1.page_sources_sous_liste1(';
+        $parametre_sous_fenetre .= ' sans_menus1()';
+        $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_source_page)';
+        $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_source_page_libelle)';
+        $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
+        $parametre_sous_fenetre .= ')';
+        $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
+        $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
+        $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>méthode</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <input type="text" maxlength="64" id="chp_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        
+        /*
+          =====================================================================================================
+        */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '    <div class="hug_bouton" data-hug_click="c_pages1.formulaire1(conteneur1(vv_pages_creer1),page_liste_des_pages1())" title="" >ajouter et revenir à la liste</div>';
@@ -480,17 +603,6 @@ class c_pages1{
                 $o1 .= '      <input type="text" id="chp_nom_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_nom_page']) . '" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
-                /*
-                  
-                */
-                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
-                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>lien</span>' . PHP_EOL;
-                $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_lien_rev_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_lien_rev_page']) . '" />' . PHP_EOL;
-                $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '  </div>' . PHP_EOL;
                 
                 /*
                   
@@ -532,19 +644,8 @@ class c_pages1{
         
         if(is_numeric($chi_id_pages) && $chi_id_pages > 0){
 
-            $tt=/*sql_inclure_deb*/
-                /* sql_85()
-                SELECT 
-                `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T1`.`chp_nom_page` , `T0`.`chx_parent_page`
-                 FROM b1.tbl_pages T0
-                 LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-                
-                WHERE `T0`.`chi_id_page` = :T0_chi_id_page
-                ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
-                 /*sql_85()*/ 85,
+            $tt=$this->sql0->sql_iii(
+                 /*sql_90()*/ 90,
                 array(/**/
                     'T0_chi_id_page' => $chi_id_pages
                 ),
@@ -568,18 +669,6 @@ class c_pages1{
                 $o1 .= '      <input type="text" id="chp_nom_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_nom_page']) . '" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
-                /*
-                  =====================================================================================
-                */
-                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
-                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>lien</span>' . PHP_EOL;
-                $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_lien_rev_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_lien_rev_page']) . '" />' . PHP_EOL;
-                $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '  </div>' . PHP_EOL;
-                
                 /*
                   =====================================================================================
                 */
@@ -614,7 +703,88 @@ class c_pages1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>acces</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
                 /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_acces_page']) . '"  id="chx_acces_page" />' . PHP_EOL;
+                $o1 .= '        <span id="chx_acces_page_libelle">' . PHP_EOL;
+                
+                if($tt[__xva][0]['T0.chx_acces_page'] === null){
+
+                    $o1 .= '*indéfini' . PHP_EOL;
+
+                }else{
+
+                    $o1 .= '(' . $tt[__xva][0]['T0.chx_acces_page'] . ') ' . htmlentities($tt[__xva][0]['T2.chp_nom_acces']) . PHP_EOL;
+                }
+
+                $o1 .= '</span>' . PHP_EOL;
+                $parametre_sous_fenetre='c_acces1.page_acces_sous_liste1(';
+                $parametre_sous_fenetre .= ' sans_menus1()';
+                $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_acces_page)';
+                $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_acces_page_libelle)';
+                $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
+                $parametre_sous_fenetre .= ')';
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
+                $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>source</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_source_page']) . '"  id="chx_source_page" />' . PHP_EOL;
+                $o1 .= '        <span id="chx_source_page_libelle">' . PHP_EOL;
+                
+                if($tt[__xva][0]['T0.chx_source_page'] === null){
+
+                    $o1 .= '*indéfini' . PHP_EOL;
+
+                }else{
+
+                    $o1 .= '(' . $tt[__xva][0]['T0.chx_source_page'] . ') ' . htmlentities($tt[__xva][0]['T3.chp_nom_source']) . PHP_EOL;
+                }
+
+                $o1 .= '</span>' . PHP_EOL;
+                $parametre_sous_fenetre='c_sources1.page_sources_sous_liste1(';
+                $parametre_sous_fenetre .= ' sans_menus1()';
+                $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_source_page)';
+                $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_source_page_libelle)';
+                $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
+                $parametre_sous_fenetre .= ')';
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
+                $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>méthode</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_methode_page']) . '" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '    <div class="hug_bouton" data-hug_click="c_pages1.formulaire1(conteneur1(vv_pages_modifier1),chi_id_page(' . $chi_id_pages . '),page_liste_des_pages1())" title="" >enregistrer et revenir à la liste</div>';
@@ -1009,7 +1179,7 @@ class c_pages1{
             
             if($GLOBALS[DEVER_SRV] >= 2){
 
-                $o1 .= '  <pre>' . $tt['sql0'] . '</per>';
+                $o1 .= '  <pre>' . var_export($tt,true) . '</per>';
 
             }
 
@@ -1032,6 +1202,8 @@ class c_pages1{
         $lsttbl .= '<th>id</th>';
         $lsttbl .= '<th>nom</th>';
         $lsttbl .= '<th>parent</th>';
+        $lsttbl .= '<th>acces</th>';
+        $lsttbl .= '<th>page</th>';
         $lsttbl .= '</tr></thead><tbody>';
         foreach($tt[__xva] as $k0 => $v0){
             $lsttbl .= '<tr>';
@@ -1062,6 +1234,14 @@ class c_pages1{
             /**/
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T0.chx_parent_page'] . '';
+            $lsttbl .= '</td>';
+            /**/
+            $lsttbl .= '<td style="text-align:center;">';
+            $lsttbl .= '' . $v0['T2.chp_nom_acces'] . '';
+            $lsttbl .= '</td>';
+            /**/
+            $lsttbl .= '<td style="text-align:center;">';
+            $lsttbl .= '' . $v0['T3.chp_nom_source'] . '';
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '</tr>';
