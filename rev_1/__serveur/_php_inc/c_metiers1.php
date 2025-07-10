@@ -830,6 +830,7 @@ class c_metiers1{
       =============================================================================================================
     */
     function page_liste_des_metiers1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $fonction1='c_metiers1.page_liste_des_metiers1';
         $__nbMax=10;
         $par=array();
         $par['T0_chi_id_metier']='';
@@ -842,7 +843,7 @@ class c_metiers1{
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
             
-            if('c_metiers1.page_liste_des_metiers1' === $mat[$i][1]){
+            if($fonction1 === $mat[$i][1]){
 
                 for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
                     
@@ -877,14 +878,14 @@ class c_metiers1{
 
         }
         
-        if(false === isset($_SESSION[__X_CLE_APPLICATION]['c_metiers1.page_liste_des_metiers1'])){
+        if(false === isset($_SESSION[__X_CLE_APPLICATION][$fonction1])){
 
             $par=array_merge($par,$par_mat);
-            $_SESSION[__X_CLE_APPLICATION]['c_metiers1.page_liste_des_metiers1']=$par;
+            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;
 
         }else{
 
-            $par=$_SESSION[__X_CLE_APPLICATION]['c_metiers1.page_liste_des_metiers1'];
+            $par=$_SESSION[__X_CLE_APPLICATION][$fonction1];
             
             if($provenance_menu === true){
 
@@ -903,12 +904,11 @@ class c_metiers1{
 
             }
 
-            $_SESSION[__X_CLE_APPLICATION]['c_metiers1.page_liste_des_metiers1']=$par;
+            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;
         }
 
         $par['T0_chi_id_metier']=$par['T0_chi_id_metier']??'';
         $par['T0_chp_nom_metier']=$par['T0_chp_nom_metier']??'';
-        $fonction1='c_metiers1.page_liste_des_metiers1';
         $nom_filtre='vv_metiers_filtre1';
         $o1='<h1>Liste des metiers</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);

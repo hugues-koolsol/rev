@@ -66,6 +66,7 @@ class c_sources1{
                    || $conteneur1 === 'vv_sources_supprimer1'
                    || $conteneur1 === 'vv_sources_filtre1'
                    || $conteneur1 === 'vv_sources_dupliquer1'
+                   || $conteneur1 === 'vv_sources_filtre_choix_1'
                 ){
 
                     $this->$conteneur1(
@@ -2290,6 +2291,11 @@ class c_sources1{
         $o1 .= '    <div><input type="text" id="T0_chi_id_source" value="' . $par['T0_chi_id_source'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /**/
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '    <div><span>id dossier</span></div>' . PHP_EOL;
+        $o1 .= '    <div><input type="text" id="T0_chx_dossier_id_source" value="' . $par['T0_chx_dossier_id_source'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        /**/
         $o1 .= '   <div>    ' . PHP_EOL;
         $o1 .= '     <div><span>&nbsp;</span></div>' . PHP_EOL;
         $o1 .= '     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_sources1.formulaire1(conteneur1(' . $nom_filtre . '))" >🔎</div></div>' . PHP_EOL;
@@ -2328,6 +2334,7 @@ class c_sources1{
         $lsttbl .= '<th></th>';
         $lsttbl .= '<th>id</th>';
         $lsttbl .= '<th>source</th>';
+        $lsttbl .= '<th>dossier</th>';
         $lsttbl .= '</tr></thead><tbody>';
         foreach($tt[__xva] as $k0 => $v0){
             $lsttbl .= '<tr>';
@@ -2354,7 +2361,10 @@ class c_sources1{
             }
 
             $lsttbl .= '</td>';
-            /**/
+            $lsttbl .= '<td style="text-align:left;">';
+            $lsttbl .= '(' . enti1($v0['T0.chx_dossier_id_source']) . ') ' . enti1($v0['T1.chp_nom_dossier']) . '';
+            $lsttbl .= '</td>';
+
             /**/
             $lsttbl .= '</tr>';
         }

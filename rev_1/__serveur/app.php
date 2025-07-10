@@ -38,11 +38,7 @@ function obtenir_les_menus(){
     $t=array();
     
     if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
-
-        /* 10 3 11*/
-        /* 10 '<div class="hug_bouton" data-hug_click="c_divers1.ajoute_a_valeur_session(variable(compteur_session_php1),valeur(-1))" title="">👎-1</div>',*/
-        /* 11 '<div class="hug_bouton" data-hug_click="c_divers1.ajoute_a_valeur_session(variable(compteur_session_php1),valeur(1))" title="">+1👍</div>',*/
-        $t[]='<div data-id_menu="10" class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99),indice_menu(10))" title="tâches">tâches</div>' . PHP_EOL;
+        $t[]='<div data-id_menu="4" class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99)),indice_menu(4)" title="tâches">tâches</div>' . PHP_EOL;
         $t[]='<div data-id_menu="50" class="hug_bouton" data-hug_click="c_rev_mat1.page1(),indice_menu(50),maj_interface2(modifier( id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_rev1\'))))" title="convertir un source rev en matrice">mat</div>';
         $t[]='<div data-id_menu="51" class="hug_bouton" data-hug_click="c_rev_js1.page1(),indice_menu(51),maj_interface2(modifier( id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_js_rev1\'))))" title="js &lt;-&gt; rev">js</div>';
         $t[]='<div data-id_menu="52" class="hug_bouton" data-hug_click="c_rev_html1.page1(),indice_menu(52),maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_html_rev1\'))))" title="html &lt;-&gt; rev">html</div>';
@@ -64,6 +60,7 @@ function obtenir_les_menus(){
             $t[]='<div data-id_menu="64" class="hug_bouton" data-hug_click="c_utilisateurs1.page_liste_des_utilisateurs1(indice_menu(64))" title="sources">utilisateurs</div>' . PHP_EOL;
             $t[]='<div data-id_menu="66" class="hug_bouton" data-hug_click="c_acces1.page_liste_des_acces1(indice_menu(66))" title="acces">acces</div>' . PHP_EOL;
             $t[]='<div data-id_menu="67" class="hug_bouton" data-hug_click="c_pages1.page_liste_des_pages1(indice_menu(67))" title="pages">pages</div>' . PHP_EOL;
+            $t[]='<div data-id_menu="68" class="hug_bouton" data-hug_click="c_menus1.page_liste_des_menus1(indice_menu(68))" title="menus">menu</div>' . PHP_EOL;
 
         }
 

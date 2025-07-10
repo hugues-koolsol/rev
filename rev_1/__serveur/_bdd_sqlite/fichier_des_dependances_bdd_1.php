@@ -180,6 +180,13 @@ $tableau_des_dependances=array (
         'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),
+      1 => 
+      array (
+        'table_dependante' => 'tbl_menus',
+        'champ_dependant' => 'chx_page_menu',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
     ),
   ),
   'tbl_sources_chi_id_source' => 

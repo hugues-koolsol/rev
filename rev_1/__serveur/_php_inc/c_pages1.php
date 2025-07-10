@@ -250,19 +250,8 @@ class c_pages1{
       =============================================================================================================
     */
     function vv_pages_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $tt=/*sql_inclure_deb*/
-            /* sql_85()
-            SELECT 
-            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T1`.`chp_nom_page` , `T0`.`chx_parent_page`
-             FROM b1.tbl_pages T0
-             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-            
-            WHERE `T0`.`chi_id_page` = :T0_chi_id_page
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
-             /*sql_85()*/ 85,
+        $tt=$this->sql0->sql_iii(
+             /*sql_90()*/ 90,
             array(/**/
                 'T0_chi_id_page' => $donnees_recues[__xva]['chi_id_page']
             ),
@@ -271,14 +260,8 @@ class c_pages1{
         
         if($tt[__xst] === __xsu && $donnees_recues[__xva]['chi_id_page'] > 1){
 
-            $tt=/*sql_inclure_deb*/
-                /* sql_87()
-                DELETE FROM b1.tbl_pages
-                WHERE `chi_id_page` = :chi_id_page ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
-                 /*sql_87()*/ 87,
+            $tt=$this->sql0->sql_iii(
+                 /*sql_92()*/ 92,
                 array(/**/
                     'chi_id_page' => $tt[__xva][0]['T0.chi_id_page']
                 ),
@@ -568,19 +551,8 @@ class c_pages1{
         if(is_numeric($chi_id_pages) && $chi_id_pages > 0){
 
             /*afr 1 */
-            $tt=/*sql_inclure_deb*/
-                /* sql_85()
-                SELECT 
-                `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T1`.`chp_nom_page` , `T0`.`chx_parent_page`
-                 FROM b1.tbl_pages T0
-                 LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-                
-                WHERE `T0`.`chi_id_page` = :T0_chi_id_page
-                ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
-                 /*sql_85()*/ 85,
+            $tt=$this->sql0->sql_iii(
+                 /*sql_90()*/ 90,
                 array(/**/
                     'T0_chi_id_page' => $chi_id_pages
                 ),
@@ -604,6 +576,99 @@ class c_pages1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 
+                
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>page parent</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_parent_page']) . '"  id="chx_parent_page" />' . PHP_EOL;
+                $o1 .= '        <span id="chx_parent_page_libelle">' . PHP_EOL;
+                
+                if($tt[__xva][0]['T0.chx_parent_page'] === null){
+
+                    $o1 .= '*indéfini' . PHP_EOL;
+
+                }else{
+
+                    $o1 .= '(' . $tt[__xva][0]['T0.chx_parent_page'] . ') ' . htmlentities($tt[__xva][0]['T1.chp_nom_page']) . PHP_EOL;
+                }
+
+                $o1 .= '</span>' . PHP_EOL;
+                $o1 .= '      ' . PHP_EOL;
+                $o1 .= '      ' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>acces</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_acces_page']) . '"  id="chx_acces_page" />' . PHP_EOL;
+                $o1 .= '        <span id="chx_acces_page_libelle">' . PHP_EOL;
+                
+                if($tt[__xva][0]['T0.chx_acces_page'] === null){
+
+                    $o1 .= '*indéfini' . PHP_EOL;
+
+                }else{
+
+                    $o1 .= '(' . $tt[__xva][0]['T0.chx_acces_page'] . ') ' . htmlentities($tt[__xva][0]['T2.chp_nom_acces']) . PHP_EOL;
+                }
+
+                $o1 .= '</span>' . PHP_EOL;
+                $o1 .= '      ' . PHP_EOL;
+                $o1 .= '      ' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>source</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_source_page']) . '"  id="chx_source_page" />' . PHP_EOL;
+                $o1 .= '        <span id="chx_source_page_libelle">' . PHP_EOL;
+                
+                if($tt[__xva][0]['T0.chx_source_page'] === null){
+
+                    $o1 .= '*indéfini' . PHP_EOL;
+
+                }else{
+
+                    $o1 .= '(' . $tt[__xva][0]['T0.chx_source_page'] . ') ' . htmlentities($tt[__xva][0]['T3.chp_nom_source']) . PHP_EOL;
+                }
+
+                $o1 .= '</span>' . PHP_EOL;
+                $o1 .= '      ' . PHP_EOL;
+                $o1 .= '      ' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>méthode</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_methode_page']) . '" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;                
                 /*
                   
                 */
@@ -969,23 +1034,14 @@ class c_pages1{
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
-        $tt=/*sql_inclure_deb*/
-            /* sql_83()
-            SELECT 
-            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T1`.`chp_nom_page` , `T0`.`chx_parent_page`
-             FROM b1.tbl_pages T0
-             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-            
-            WHERE (`T0`.`chi_id_page` = :T0_chi_id_page
-               AND `T0`.`chp_nom_page` LIKE :T0_chp_nom_page) 
-            ORDER BY `T0`.`chi_id_page` DESC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
-             /*sql_83()*/ 83,
-             /**/ array( 'T0_chi_id_page' => $par['T0_chi_id_page'] === '' ? '' : $par['T0_chi_id_page'], 'T0_chp_nom_page' => $par['T0_chp_nom_page'] === '' ? '' : '' . $par['T0_chp_nom_page'] . '', 'quantitee' => $__nbMax, 'debut' => $__debut),
+        $tt=$this->sql0->sql_iii(
+            /*sql_88()*/ 88,
+            array( /**/
+                'T0_chi_id_page' => $par['T0_chi_id_page'] === '' ? '' : $par['T0_chi_id_page'], 
+                'T0_chp_nom_page' => $par['T0_chp_nom_page'] === '' ? '' : '' . $par['T0_chp_nom_page'] . '', 
+                'quantitee' => $__nbMax, 
+                'debut' => $__debut
+            ),
             $donnees_retournees
         );
         
@@ -1204,6 +1260,7 @@ class c_pages1{
         $lsttbl .= '<th>parent</th>';
         $lsttbl .= '<th>acces</th>';
         $lsttbl .= '<th>page</th>';
+        $lsttbl .= '<th>méthode</th>';
         $lsttbl .= '</tr></thead><tbody>';
         foreach($tt[__xva] as $k0 => $v0){
             $lsttbl .= '<tr>';
@@ -1242,6 +1299,10 @@ class c_pages1{
             /**/
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T3.chp_nom_source'] . '';
+            $lsttbl .= '</td>';
+            /**/
+            $lsttbl .= '<td style="text-align:center;">';
+            $lsttbl .= '' . $v0['T0.chp_methode_page'] . '';
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '</tr>';

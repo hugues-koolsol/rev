@@ -910,8 +910,8 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),champ( 'chx_projet_page'),nom_du_champ( 'chx_projet_page'),
-            typologie(chx),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),afficher_champ_dans_svg(1),champ_date_modification(0),champ_date_creation(0),champ_numero_de_revision(0),refe_enfant_droite(0),refe_parent_gauche(0)
+            genre_meta(champ),nom_du_champ( 'chx_projet_page'),champ( 'chx_projet_page'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1)
             )
             */
              chx_projet_page INTEGER REFERENCES tbl_projets(chi_id_projet) 
@@ -957,4 +957,18 @@ CREATE TABLE tbl_acces(
             */
              chx_metier_acces INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier) 
     );
+
+CREATE TABLE tbl_menus(
+/*
+ meta(nom_de_la_table( 'tbl_menus'),table( 'tbl_menus'),genre_meta(table_de_base),nom_long_de_la_table( 'A faire  tbl_menus'),nom_court_de_la_table( 'A faire tbl_menus'),nom_bref_de_la_table( 'A faire tbl_menus'),transform_table_sur_svg( translate( 20.5 , 20.5 ))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),champ( 'chi_id_menu'),nom_du_champ( 'chi_id_menu'),
+            typologie(chi),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),afficher_champ_dans_svg(1),champ_date_modification(0),champ_date_creation(0),champ_numero_de_revision(0),refe_enfant_droite(0),refe_parent_gauche(0)
+            )
+            */
+             chi_id_menu INTEGER PRIMARY KEY  NOT NULL
+    , chx_page_menu INTEGER NOT NULL REFERENCES tbl_pages(chi_id_page), che_ordre_menu INTEGER NOT NULL DEFAULT  0);
 

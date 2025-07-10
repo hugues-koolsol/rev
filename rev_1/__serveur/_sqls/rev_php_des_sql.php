@@ -1080,4 +1080,82 @@ WHERE `chi_id_acces` = :c_chi_id_acces ;',
 WHERE `chx_projet_page` = :chx_projet_page ;',
     'cht_commentaire_requete' => 'pages par projet',
   ),
+  98 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , 
+`T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+
+ LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
+
+ LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+
+WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
+   AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
+ORDER BY `T0`.`chi_id_menu` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',
+    'cht_commentaire_requete' => 'menu',
+  ),
+  99 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_menus`(
+    `chx_page_menu` , 
+    `che_ordre_menu`
+) VALUES (
+    :chx_page_menu , 
+    :che_ordre_menu
+);',
+    'cht_commentaire_requete' => 'menu',
+  ),
+  200 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , 
+`T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+
+ LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
+
+ LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+
+WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
+;',
+    'cht_commentaire_requete' => 'menu',
+  ),
+  201 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_menus SET 
+   `chx_page_menu` = :n_chx_page_menu , 
+   `che_ordre_menu` = :n_che_ordre_menu
+WHERE `chi_id_menu` = :c_chi_id_menu ;',
+    'cht_commentaire_requete' => 'menu',
+  ),
+  202 => 
+  array (
+    'cht_sql_requete' => 'DELETE FROM b1.tbl_menus
+WHERE `chi_id_menu` = :chi_id_menu ;',
+    'cht_commentaire_requete' => '',
+  ),
+  203 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_menu` , `T1`.`chp_nom_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+
+WHERE `T0`.`chi_id_menu` > :T0_chi_id_menu 
+ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ordre_menu` ASC
+;',
+    'cht_commentaire_requete' => NULL,
+  ),
 );
