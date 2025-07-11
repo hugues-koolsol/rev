@@ -24,6 +24,13 @@ function sql_48($par,&$donnees_retournees,$that){
             $tableau_champs[]='`chx_dossier_requetes_projet` = '.sq0($par['n_chx_dossier_requetes_projet']).'';
         }
     }
+    if(isset($par['n_chx_dossier_menus_projet'])){
+        if($par['n_chx_dossier_menus_projet']==='' || $par['n_chx_dossier_menus_projet']===NULL ){
+            $tableau_champs[]='`chx_dossier_menus_projet` = NULL';
+        }else{
+            $tableau_champs[]='`chx_dossier_menus_projet` = '.sq0($par['n_chx_dossier_menus_projet']).'';
+        }
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/

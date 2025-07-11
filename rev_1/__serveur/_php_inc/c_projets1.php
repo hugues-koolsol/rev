@@ -119,7 +119,9 @@ class c_projets1{
 
             unset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet']);
             unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_requetes_projet']);
+            unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_menus_projet']);
             unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']);
+            unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus']);
             $donnees_retournees[__x_signaux][__xer][]=__LINE__ . ' erreur,  projet = ' . $chi_id_projet;
             $donnees_retournees[__xbo]=obtenir_les_menus();
             return;
@@ -128,7 +130,9 @@ class c_projets1{
 
         unset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet']);
         unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_requetes_projet']);
+        unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_menus_projet']);
         unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']);
+        unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus']);
         $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(0)))';
         $donnees_retournees[__xva]['php_des_sql']=array();
         $donnees_retournees[__xbo]=obtenir_les_menus();
@@ -142,7 +146,7 @@ class c_projets1{
     /*
       =============================================================================================================
     */
-    function chemin_requetes($chi_id_dossier,$db){
+    function chemin_de_id_dossier($chi_id_dossier,$db){
         
         if($db === null){
 
@@ -259,7 +263,9 @@ class c_projets1{
 
             unset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet']);
             unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_requetes_projet']);
+            unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_menus_projet']);
             unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']);
+            unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus']);
             $donnees_retournees[__x_signaux][__xer][]=' erreur [' . __LINE__ . '] ';
             $donnees_retournees[__xbo]=obtenir_les_menus();
             return;
@@ -268,6 +274,8 @@ class c_projets1{
 
         unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_requetes_projet']);
         unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']);
+        unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_menus_projet']);
+        unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus']);
         $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']=$chi_id_projet;
         /*
           il faut mettre à jour le dossier des requetes ($_SESSION[__X_CLE_APPLICATION]['chx_dossier_requetes_projet']) et charger la liste des requetes
@@ -277,6 +285,7 @@ class c_projets1{
         if($chi_id_projet === 1){
 
             $_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']=REPERTOIRE_RACINE_DES_SQL;
+            $_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus']=REPERTOIRE_DU_PROJET;
             /* .DIRECTORY_SEPARATOR.'_sqls';*/
 
         }else{
@@ -290,6 +299,7 @@ class c_projets1{
                 LIEN_BDD => null
             );
             $chemin_bdd=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $chi_id_projet . '.sqlite';
+            
             $db=new SQLite3($chemin_bdd);
             $GLOBALS[__BDD][$chi_id_projet][LIEN_BDD]=$db;
             $tt60=/*sql_inclure_deb*/
@@ -315,7 +325,7 @@ class c_projets1{
                       $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($tt60[__xva][0][0],true);
                       return;
                     */
-                    $chemin=$this->chemin_requetes($tt60[__xva][0][0],$db);
+                    $chemin=$this->chemin_de_id_dossier($tt60[__xva][0][0],$db);
                     /*
                       $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($chemin,true);
                       return;
@@ -326,18 +336,31 @@ class c_projets1{
                         $_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']=$chemin[__xva]['chemin_absolu'];
 
                     }
-
-                    /*
-                      $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($chemin,true);
-                    */
                 }
 
+                if($tt60[__xva][0][1] === null){
 
+
+                }else{
+
+                    /*
+                      $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($tt60[__xva][0][0],true);
+                      return;
+                    */
+                    $chemin=$this->chemin_de_id_dossier($tt60[__xva][0][1],$db);
+                    /*
+                      $donnees_retournees[__x_signaux][__xal][]=__LINE__.' '.var_export($chemin,true);
+                      return;
+                    */
+                    
+                    if($chemin[__xst] === __xsu){
+
+                        $_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus']=$chemin[__xva]['chemin_absolu'];
+
+                    }
+                }
             }
-
-            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt60 , true ) . '</pre>' ; exit(0);*/
         }
-
         
         if(isset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'])){
 
@@ -1228,7 +1251,8 @@ EOT;
                     'c_chi_id_projet' => $tt[__xva][0]['T0.chi_id_projet'],
                     'n_chp_nom_projet' => $donnees_recues[__xva]['chp_nom_projet'],
                     'n_chp_commentaire_projet' => $donnees_recues[__xva]['chp_commentaire_projet'],
-                    'n_chx_dossier_requetes_projet' => $donnees_recues[__xva]['chx_dossier_requetes_projet']
+                    'n_chx_dossier_requetes_projet' => $donnees_recues[__xva]['chx_dossier_requetes_projet'],
+                    'n_chx_dossier_menus_projet' => $donnees_recues[__xva]['chx_dossier_menus_projet']
                 ),
                 $donnees_retournees
             );
@@ -1488,7 +1512,9 @@ EOT;
                 $o1 .= '      <div><input type="text" id="chp_nom_projet" value="' . enti1($tt[__xva][0]['T0.chp_nom_projet']) . '" size="32" maxlength="64" autocapitalize="off" /></div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
-                /* */
+                /*
+                  ===========================================================================================================
+                */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -1530,7 +1556,53 @@ EOT;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
-                /* */
+                /*
+                  ===========================================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>dossier des menus</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_dossier_menus_projet']) . '"  id="chx_dossier_menus_projet" />' . PHP_EOL;
+                $o1 .= '        <span id="chx_parent_dossier_menu_libelle">' . PHP_EOL;
+                
+                if($tt[__xva][0]['T0.chx_dossier_menus_projet'] === null){
+
+                    $o1 .= '*indéfini' . PHP_EOL;
+
+                }else{
+
+                    
+                    if($tt[__xva][0]['T2.chp_nom_dossier'] === null){
+
+                        $o1 .= '(' . $tt[__xva][0]['T0.chx_dossier_menus_projet'] . ') rev_' . $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] . PHP_EOL;
+
+                    }else{
+
+                        $o1 .= '(' . $tt[__xva][0]['T0.chx_dossier_menus_projet'] . ') ' . htmlentities($tt[__xva][0]['T2.chp_nom_dossier']) . PHP_EOL;
+                    }
+
+                }
+
+                $o1 .= '</span>' . PHP_EOL;
+                $parametre_sous_fenetre='c_dossiers1.page_dossiers_sous_liste1(';
+                $parametre_sous_fenetre .= ' sans_menus1()';
+                $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_dossier_menus_projet)';
+                $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_parent_dossier_menu_libelle)';
+                $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
+                $parametre_sous_fenetre .= ')';
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
+                $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  ===========================================================================================================
+                */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
                 $o1 .= '      <span>commentaire</span>' . PHP_EOL;

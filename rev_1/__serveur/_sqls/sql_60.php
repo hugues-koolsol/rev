@@ -2,7 +2,7 @@
 function sql_60($par,&$donnees_retournees,$that,$db){
     $sql0='
       SELECT 
-            `T0`.`chx_dossier_requetes_projet`
+            `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet`
                   FROM tbl_projets T0
             WHERE (`T0`.`chi_id_projet` = '.sq1($par['T0_chi_id_projet']).')
             ;

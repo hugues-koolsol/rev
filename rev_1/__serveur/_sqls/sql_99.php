@@ -3,7 +3,8 @@ function sql_99($par,&$donnees_retournees,$that){
     $sql0='
       INSERT  INTO `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_menus`(
          `chx_page_menu` , 
-         `che_ordre_menu`
+         `che_ordre_menu` , 
+         `chp_prerequis_menu`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -13,7 +14,8 @@ function sql_99($par,&$donnees_retournees,$that){
         }
         $liste_des_valeurs.='(';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_page_menu']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_ordre_menu']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_ordre_menu']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_prerequis_menu']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

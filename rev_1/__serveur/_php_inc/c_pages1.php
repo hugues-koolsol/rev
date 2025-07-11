@@ -165,6 +165,8 @@ class c_pages1{
                     'chx_acces_page' => $donnees_recues[__xva]['chx_acces_page']===''?NULL:$donnees_recues[__xva]['chx_acces_page'],
                     'chx_source_page' => $donnees_recues[__xva]['chx_source_page']===''?NULL:$donnees_recues[__xva]['chx_source_page'],
                     'chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
+                    'chp_contenu_methode_page' => $donnees_recues[__xva]['chp_contenu_methode_page'],
+                    'chp_complement_page' => $donnees_recues[__xva]['chp_complement_page'],
                     'chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     
                 ));
@@ -380,6 +382,8 @@ class c_pages1{
                     'n_chx_acces_page' => $donnees_recues[__xva]['chx_acces_page'],
                     'n_chx_source_page' => $donnees_recues[__xva]['chx_source_page'],
                     'n_chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
+                    'n_chp_contenu_methode_page' => $donnees_recues[__xva]['chp_contenu_methode_page'],
+                    'n_chp_complement_page' => $donnees_recues[__xva]['chp_complement_page'],
                     'n_chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 ),
                 $donnees_retournees
@@ -514,7 +518,28 @@ class c_pages1{
         $o1 .= '      <input type="text" maxlength="64" id="chp_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>contenu de la methode</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <input type="text" maxlength="64" id="chp_contenu_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>complement</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <input type="text" maxlength="64" id="chp_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
         /*
           =====================================================================================================
         */
@@ -670,7 +695,29 @@ class c_pages1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;                
                 /*
-                  
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>contenu méthode</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_contenu_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_contenu_methode_page']) . '" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;                
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>complément</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_complement_page']) . '" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;                
+                /*
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
@@ -845,6 +892,28 @@ class c_pages1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <input type="text" id="chp_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_methode_page']) . '" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>contenu méthode</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_contenu_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_contenu_methode_page']) . '" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>complément</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_complement_page']) . '" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*

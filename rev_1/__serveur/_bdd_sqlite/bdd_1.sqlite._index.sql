@@ -27,6 +27,6 @@ CREATE UNIQUE INDEX idx_nom_groupe ON `tbl_groupes`
          ( `chp_nom_groupe` ) ;
 
 CREATE UNIQUE INDEX idx_principal_pages ON `tbl_pages` 
-        /* meta( #() , genre_meta(index_de_table) , message( '' )) */
+        /* meta( nom_de_l_index(idx_principal_pages) , genre_meta(index_de_table) , message( '' )) */
          ( `chx_parent_page` , `chx_acces_page` , `chx_source_page` , `chp_methode_page` ) ;
 

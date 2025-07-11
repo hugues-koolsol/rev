@@ -45,6 +45,20 @@ function sql_91($par,&$donnees_retournees,$that){
             $tableau_champs[]='`chx_projet_page` = '.sq0($par['n_chx_projet_page']).'';
         }
     }
+    if(isset($par['n_chp_complement_page'])){
+        if($par['n_chp_complement_page']==='' || $par['n_chp_complement_page']===NULL ){
+            $tableau_champs[]='`chp_complement_page` = NULL';
+        }else{
+            $tableau_champs[]='`chp_complement_page` = \''.sq0($par['n_chp_complement_page']).'\'';
+        }
+    }
+    if(isset($par['n_chp_contenu_methode_page'])){
+        if($par['n_chp_contenu_methode_page']==='' || $par['n_chp_contenu_methode_page']===NULL ){
+            $tableau_champs[]='`chp_contenu_methode_page` = NULL';
+        }else{
+            $tableau_champs[]='`chp_contenu_methode_page` = \''.sq0($par['n_chp_contenu_methode_page']).'\'';
+        }
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/
@@ -60,7 +74,7 @@ function sql_91($par,&$donnees_retournees,$that){
     $where0=' WHERE 1=1 '.PHP_EOL;
     $where0.=' AND `chi_id_page` = '.sq1($par['c_chi_id_page']).''.PHP_EOL;
     $sql0.=$where0;
-    //echo __FILE__ . ' ' . __LINE__ . ' $sql0= <pre>' . $sql0 . '</pre>' ; exit(0);
+    // echo __FILE__ . ' ' . __LINE__ . ' $sql0= <pre>' . $sql0 . '</pre>' ; exit(0);
     try{
         $ret=$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->exec($sql0);
         return(array( __xst => __xsu, 'changements' => $GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->changes()));

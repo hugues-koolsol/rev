@@ -1,8 +1,9 @@
 <?php
 function sql_200($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , 
-      `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces`
+      `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`chp_prerequis_menu` , `T1`.`chp_nom_page` , 
+      `T1`.`chp_complement_page` , `T1`.`chp_contenu_methode_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+      `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -31,13 +32,16 @@ function sql_200($par,&$donnees_retournees,$that){
                 'T0.chi_id_menu' => $tab0[0],
                 'T0.chx_page_menu' => $tab0[1],
                 'T0.che_ordre_menu' => $tab0[2],
-                'T1.chp_nom_page' => $tab0[3],
-                'T2.chp_nom_acces' => $tab0[4],
-                'T3.chp_nom_groupe' => $tab0[5],
-                'T2.chx_groupe_acces' => $tab0[6],
-                'T2.chi_id_acces' => $tab0[7],
-                'T4.chp_nom_metier' => $tab0[8],
-                'T2.chx_metier_acces' => $tab0[9],
+                'T0.chp_prerequis_menu' => $tab0[3],
+                'T1.chp_nom_page' => $tab0[4],
+                'T1.chp_complement_page' => $tab0[5],
+                'T1.chp_contenu_methode_page' => $tab0[6],
+                'T2.chp_nom_acces' => $tab0[7],
+                'T3.chp_nom_groupe' => $tab0[8],
+                'T2.chx_groupe_acces' => $tab0[9],
+                'T2.chi_id_acces' => $tab0[10],
+                'T4.chp_nom_metier' => $tab0[11],
+                'T2.chx_metier_acces' => $tab0[12],
             );
         }
         return array(

@@ -2,7 +2,8 @@
 function sql_90($par,&$donnees_retournees,$that){
     $champs0='
       `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
-      `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+      `T0`.`chp_methode_page` , `T0`.`chp_complement_page` , `T0`.`chp_contenu_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , 
+      `T3`.`chp_nom_source`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -32,9 +33,11 @@ function sql_90($par,&$donnees_retournees,$that){
                 'T0.chx_acces_page' => $tab0[3],
                 'T0.chx_source_page' => $tab0[4],
                 'T0.chp_methode_page' => $tab0[5],
-                'T1.chp_nom_page' => $tab0[6],
-                'T2.chp_nom_acces' => $tab0[7],
-                'T3.chp_nom_source' => $tab0[8],
+                'T0.chp_complement_page' => $tab0[6],
+                'T0.chp_contenu_methode_page' => $tab0[7],
+                'T1.chp_nom_page' => $tab0[8],
+                'T2.chp_nom_acces' => $tab0[9],
+                'T3.chp_nom_source' => $tab0[10],
             );
         }
         return array(

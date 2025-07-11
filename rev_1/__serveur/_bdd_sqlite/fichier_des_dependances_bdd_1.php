@@ -52,19 +52,26 @@ $tableau_des_dependances=array (
       ),
       1 => 
       array (
+        'table_dependante' => 'tbl_projets',
+        'champ_dependant' => 'chx_dossier_menus_projet',
+        'non_nulle' => '0',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+      2 => 
+      array (
         'table_dependante' => 'tbl_sources',
         'champ_dependant' => 'chx_dossier_id_source',
         'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),
-      2 => 
+      3 => 
       array (
         'table_dependante' => 'tbl_dossiers',
         'champ_dependant' => 'chx_parent_dossier',
         'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),
-      3 => 
+      4 => 
       array (
         'table_dependante' => 'tbl_bdds',
         'champ_dependant' => 'chx_dossier_id_basedd',

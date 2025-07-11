@@ -236,6 +236,15 @@ CREATE TABLE tbl_projets(
             )
             */
              chx_dossier_requetes_projet INTEGER REFERENCES tbl_dossiers(chi_id_dossier)  DEFAULT  NULL 
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ( 'chx_dossier_menus_projet'),champ( 'chx_dossier_menus_projet'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1)
+            )
+            */
+             chx_dossier_menus_projet INTEGER REFERENCES tbl_dossiers(chi_id_dossier) 
     );
 
 CREATE TABLE tbl_requetes(
@@ -902,7 +911,7 @@ CREATE TABLE tbl_pages(
             /*
             meta(
             genre_meta(champ),nom_du_champ( 'chx_source_page'),champ( 'chx_source_page'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            typologie(chx),afficher_champ_dans_svg(1),refe_enfant_droite(1),refe_parent_gauche(1)
             )
             */
              chx_source_page INTEGER REFERENCES tbl_sources(chi_id_source) 
@@ -924,6 +933,24 @@ CREATE TABLE tbl_pages(
             )
             */
              chx_projet_page INTEGER REFERENCES tbl_projets(chi_id_projet) 
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ( 'chp_complement_page'),champ( 'chp_complement_page'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1)
+            )
+            */
+             chp_complement_page VARCHAR(128)
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ( 'chp_contenu_methode_page'),champ( 'chp_contenu_methode_page'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1)
+            )
+            */
+             chp_contenu_methode_page VARCHAR(128)
     );
 
 CREATE TABLE tbl_acces(
@@ -969,17 +996,44 @@ CREATE TABLE tbl_acces(
 
 CREATE TABLE tbl_menus(
 /*
- meta(nom_de_la_table( 'tbl_menus'),table( 'tbl_menus'),genre_meta(table_de_base),nom_long_de_la_table( 'A faire  tbl_menus'),nom_court_de_la_table( 'A faire tbl_menus'),nom_bref_de_la_table( 'A faire tbl_menus'),transform_table_sur_svg( translate( 20.5 , 20.5 ))) 
+ meta(nom_de_la_table( 'tbl_menus'),table( 'tbl_menus'),genre_meta(table_de_base),nom_long_de_la_table( 'A faire  tbl_menus'),nom_court_de_la_table( 'A faire tbl_menus'),nom_bref_de_la_table( 'A faire tbl_menus'),transform_table_sur_svg( translate( 374.5 , 666.5 ))) 
 */
     
             /*
             meta(
-            genre_meta(champ),champ( 'chi_id_menu'),nom_du_champ( 'chi_id_menu'),
-            typologie(chi),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),afficher_champ_dans_svg(1),champ_date_modification(0),champ_date_creation(0),champ_numero_de_revision(0),refe_enfant_droite(0),refe_parent_gauche(0)
+            genre_meta(champ),nom_du_champ( 'chi_id_menu'),champ( 'chi_id_menu'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            typologie(chi),afficher_champ_dans_svg(1)
             )
             */
              chi_id_menu INTEGER PRIMARY KEY  NOT NULL
-    , chx_page_menu INTEGER NOT NULL REFERENCES tbl_pages(chi_id_page), che_ordre_menu INTEGER NOT NULL DEFAULT  0);
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ( 'chx_page_menu'),champ( 'chx_page_menu'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1)
+            )
+            */
+             chx_page_menu INTEGER NOT NULL REFERENCES tbl_pages(chi_id_page) 
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ( 'che_ordre_menu'),champ( 'che_ordre_menu'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            typologie(che),afficher_champ_dans_svg(1)
+            )
+            */
+             che_ordre_menu INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),champ( 'chp_prerequis_menu'),nom_du_champ( 'chp_prerequis_menu'),
+            typologie(chp),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),afficher_champ_dans_svg(1),champ_date_modification(0),champ_date_creation(0),champ_numero_de_revision(0),refe_enfant_droite(0),refe_parent_gauche(0)
+            )
+            */
+             chp_prerequis_menu TEXT
+    );
 
 /*
   ============================
@@ -995,7 +1049,7 @@ CREATE TABLE tbl_menus(
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','477','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','2'),
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','480','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','2'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -1299,9 +1353,9 @@ détruire','80','1','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485'),
   ===============================
 */
 
-INSERT INTO tbl_projets (chi_id_projet,chp_nom_projet,chp_commentaire_projet,che__nur_projet,chp__dtm_projet,chp__dtc_projet,chx_dossier_requetes_projet) VALUES
+INSERT INTO tbl_projets (chi_id_projet,chp_nom_projet,chp_commentaire_projet,che__nur_projet,chp__dtm_projet,chp__dtc_projet,chx_dossier_requetes_projet,chx_dossier_menus_projet) VALUES
 ('1','environnement principal 1','C''est ce projet !
-Normalement, on n''a plus à y toucher.','0','2000-01-01 00:00:00','2000-01-01 00:00:00','6'),
+Normalement, on n''a plus à y toucher.','0','2000-01-01 00:00:00','2000-01-01 00:00:00','6','2'),
 ('2','Projet virtuel qui doit exister mais rester vide','Projet virtuel qui doit exister mais rester vide.
 
 On fabrique un clone de du projet 1
@@ -1309,8 +1363,7 @@ dans le répertoire rev_2 et on travaillera sur l''url frev/rev_2.
 
 Dans le projet 2, le fichier __serveur/__definitions.php sera le seul fichier différent
 
-Ce projet est utilisé pour la mise à jour du projet principal','0','2000-01-01 00:00:00','2000-01-01 00:00:00',NULL),
-('3','afr','','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000',NULL);
+Ce projet est utilisé pour la mise à jour du projet principal','0','2000-01-01 00:00:00','2000-01-01 00:00:00',NULL,NULL);
 
 
 /*
@@ -2156,7 +2209,9 @@ LIMIT :quantitee OFFSET :debut
       champ( `T0` , `chp_nom_projet`),
       champ( `T0` , `chp_commentaire_projet`),
       champ( `T0` , `chx_dossier_requetes_projet`),
-      champ( `T1` , `chp_nom_dossier`)
+      champ( `T0` , `chx_dossier_menus_projet`),
+      champ( `T1` , `chp_nom_dossier`),
+      champ( `T2` , `chp_nom_dossier`)
    ),
    provenance(
       table_reference(
@@ -2165,13 +2220,20 @@ LIMIT :quantitee OFFSET :debut
       jointure_gauche(
          source( nom_de_la_table( tbl_dossiers , alias(T1) , base(b1) )),
          contrainte( egal( champ( T1 , chi_id_dossier ) , champ( T0 , chx_dossier_requetes_projet ) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_dossiers , alias(T2) , base(b1) )),
+         contrainte( egal( champ( T2 , chi_id_dossier ) , champ( T0 , chx_dossier_menus_projet ) ))
       )
    ),
    conditions( egal( champ( `T0` , `chi_id_projet` ) , :T0_chi_id_projet ))
 )  ','SELECT 
-`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T1`.`chp_nom_dossier`
+`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+`T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
  FROM b1.tbl_projets T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
+
+ LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_menus_projet
 
 WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -2349,7 +2411,7 @@ WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('48','1','update','modifier(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_nom_projet` ) , :n_chp_nom_projet ) , affecte( champ( `chp_commentaire_projet` ) , :n_chp_commentaire_projet ) , affecte( champ( `chx_dossier_requetes_projet` ) , :n_chx_dossier_requetes_projet )),
+   valeurs( affecte( champ( `chp_nom_projet` ) , :n_chp_nom_projet ) , affecte( champ( `chp_commentaire_projet` ) , :n_chp_commentaire_projet ) , affecte( champ( `chx_dossier_requetes_projet` ) , :n_chx_dossier_requetes_projet ) , affecte( champ( `chx_dossier_menus_projet` ) , :n_chx_dossier_menus_projet )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_projets , base(b1) ))
@@ -2359,7 +2421,8 @@ WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 )  ','UPDATE b1.tbl_projets SET 
    `chp_nom_projet` = :n_chp_nom_projet , 
    `chp_commentaire_projet` = :n_chp_commentaire_projet , 
-   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet
+   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
+   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
 WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('49','1','select','sélectionner(
    base_de_reference(1),
@@ -2579,7 +2642,7 @@ WHERE (`chi_id_dossier` = :chi_id_dossier
 );',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('60','1','requete_manuelle','sélectionner(
 
-   valeurs( champ( `T0` , `chx_dossier_requetes_projet` )),
+   valeurs( champ( `T0` , `chx_dossier_requetes_projet` ) champ( `T0` , `chx_dossier_menus_projet` )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_projets , alias(T0)  ))
@@ -2588,8 +2651,8 @@ WHERE (`chi_id_dossier` = :chi_id_dossier
    conditions(
       et( egal( champ( `T0` , `chi_id_projet` ) , :T0_chi_id_projet ))
    )
-)    ','SELECT 
-`T0`.`chx_dossier_requetes_projet`
+)              ','SELECT 
+`T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet`
  FROM tbl_projets T0
 WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet)
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -3164,6 +3227,8 @@ WHERE `chi_id_metier` = :chi_id_metier ;',NULL,'métier',NULL,'0','2000-01-01 00
       champ( `T0` , `chx_parent_page`),
       champ( `T0` , `chx_source_page`),
       champ( `T0` , `chp_methode_page`),
+      champ( `T0` , `chp_complement_page`),
+      champ( `T0` , `chp_contenu_methode_page`),
       champ( `T1` , `chp_nom_page`),
       champ( `T2` , `chp_nom_acces`),
       champ( `T3` , `chp_nom_source`)
@@ -3194,7 +3259,7 @@ WHERE `chi_id_metier` = :chi_id_metier ;',NULL,'métier',NULL,'0','2000-01-01 00
    )
 )  ','SELECT 
 `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_source_page` , `T0`.`chp_methode_page` , 
-`T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+`T0`.`chp_complement_page` , `T0`.`chp_contenu_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
  FROM b1.tbl_pages T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
 
@@ -3215,7 +3280,9 @@ LIMIT :quantitee OFFSET :debut
       affecte( champ( `chx_acces_page` ) , :chx_acces_page),
       affecte( champ( `chx_source_page` ) , :chx_source_page),
       affecte( champ( `chp_methode_page` ) , :chp_methode_page),
-      affecte( champ( `chx_projet_page` ) , :chx_projet_page)
+      affecte( champ( `chx_projet_page` ) , :chx_projet_page),
+      affecte( champ( `chp_complement_page` ) , :chp_complement_page),
+      affecte( champ( `chp_contenu_methode_page` ) , :chp_contenu_methode_page)
    ),
    provenance(
       table_reference(
@@ -3228,14 +3295,18 @@ LIMIT :quantitee OFFSET :debut
     `chx_acces_page` , 
     `chx_source_page` , 
     `chp_methode_page` , 
-    `chx_projet_page`
+    `chx_projet_page` , 
+    `chp_complement_page` , 
+    `chp_contenu_methode_page`
 ) VALUES (
     :chp_nom_page , 
     :chx_parent_page , 
     :chx_acces_page , 
     :chx_source_page , 
     :chp_methode_page , 
-    :chx_projet_page
+    :chx_projet_page , 
+    :chp_complement_page , 
+    :chp_contenu_methode_page
 );',NULL,'pages',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('90','1','select','sélectionner(
    base_de_reference(1),
@@ -3246,6 +3317,8 @@ LIMIT :quantitee OFFSET :debut
       champ( `T0` , `chx_acces_page`),
       champ( `T0` , `chx_source_page`),
       champ( `T0` , `chp_methode_page`),
+      champ( `T0` , `chp_complement_page`),
+      champ( `T0` , `chp_contenu_methode_page`),
       champ( `T1` , `chp_nom_page`),
       champ( `T2` , `chp_nom_acces`),
       champ( `T3` , `chp_nom_source`)
@@ -3270,7 +3343,8 @@ LIMIT :quantitee OFFSET :debut
    conditions( egal( champ( `T0` , `chi_id_page` ) , :T0_chi_id_page ))
 )  ','SELECT 
 `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
-`T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+`T0`.`chp_methode_page` , `T0`.`chp_complement_page` , `T0`.`chp_contenu_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , 
+`T3`.`chp_nom_source`
  FROM b1.tbl_pages T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
 
@@ -3288,7 +3362,9 @@ WHERE `T0`.`chi_id_page` = :T0_chi_id_page
       affecte( champ( `chx_acces_page` ) , :n_chx_acces_page),
       affecte( champ( `chx_source_page` ) , :n_chx_source_page),
       affecte( champ( `chp_methode_page` ) , :n_chp_methode_page),
-      affecte( champ( `chx_projet_page` ) , :n_chx_projet_page)
+      affecte( champ( `chx_projet_page` ) , :n_chx_projet_page),
+      affecte( champ( `chp_complement_page` ) , :n_chp_complement_page),
+      affecte( champ( `chp_contenu_methode_page` ) , :n_chp_contenu_methode_page)
    ),
    provenance(
       table_reference(
@@ -3302,7 +3378,9 @@ WHERE `T0`.`chi_id_page` = :T0_chi_id_page
    `chx_acces_page` = :n_chx_acces_page , 
    `chx_source_page` = :n_chx_source_page , 
    `chp_methode_page` = :n_chp_methode_page , 
-   `chx_projet_page` = :n_chx_projet_page
+   `chx_projet_page` = :n_chx_projet_page , 
+   `chp_complement_page` = :n_chp_complement_page , 
+   `chp_contenu_methode_page` = :n_chp_contenu_methode_page
 WHERE `chi_id_page` = :c_chi_id_page ;',NULL,'pages',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('92','1','delete','supprimer(
    base_de_reference(),
@@ -3558,13 +3636,16 @@ WHERE `chx_projet_page` = :chx_projet_page ;',NULL,'pages par projet',NULL,'0','
       champ( `T0` , `chi_id_menu`),
       champ( `T0` , `chx_page_menu`),
       champ( `T0` , `che_ordre_menu`),
+      champ( `T0` , `chp_prerequis_menu`),
       champ( `T1` , `chp_nom_page`),
       champ( `T2` , `chp_nom_acces`),
       champ( `T3` , `chp_nom_groupe`),
       champ( `T2` , `chx_groupe_acces`),
       champ( `T2` , `chi_id_acces`),
       champ( `T4` , `chp_nom_metier`),
-      champ( `T2` , `chx_metier_acces`)
+      champ( `T2` , `chx_metier_acces`),
+      champ( `T1` , `chp_complement_page`),
+      champ( `T1` , `chp_contenu_methode_page`)
    ),
    provenance(
       table_reference(
@@ -3595,8 +3676,9 @@ WHERE `chx_projet_page` = :chx_projet_page ;',NULL,'pages par projet',NULL,'0','
       limité_à( quantité(:quantitee) , début(:debut))
    )
 )  ','SELECT 
-`T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , 
-`T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces`
+`T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`chp_prerequis_menu` , `T1`.`chp_nom_page` , 
+`T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , 
+`T2`.`chx_metier_acces` , `T1`.`chp_complement_page` , `T1`.`chp_contenu_methode_page`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
 
@@ -3613,7 +3695,7 @@ LIMIT :quantitee OFFSET :debut
 ;',NULL,'menu',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('99','1','insert','insérer(
    base_de_reference(1),
-   valeurs( affecte( champ( `chx_page_menu` ) , :chx_page_menu ) , affecte( champ( `che_ordre_menu` ) , :che_ordre_menu )),
+   valeurs( affecte( champ( `chx_page_menu` ) , :chx_page_menu ) , affecte( champ( `che_ordre_menu` ) , :che_ordre_menu ) , affecte( champ( `chp_prerequis_menu` ) , :chp_prerequis_menu )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_menus , base(b1) ))
@@ -3621,18 +3703,23 @@ LIMIT :quantitee OFFSET :debut
    )
 )  ','INSERT INTO b1.`tbl_menus`(
     `chx_page_menu` , 
-    `che_ordre_menu`
+    `che_ordre_menu` , 
+    `chp_prerequis_menu`
 ) VALUES (
     :chx_page_menu , 
-    :che_ordre_menu
+    :che_ordre_menu , 
+    :chp_prerequis_menu
 );',NULL,'menu',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('200','1','select','sélectionner(
-   base_de_reference(),
+   base_de_reference(1),
    valeurs(
       champ( `T0` , `chi_id_menu`),
       champ( `T0` , `chx_page_menu`),
       champ( `T0` , `che_ordre_menu`),
+      champ( `T0` , `chp_prerequis_menu`),
       champ( `T1` , `chp_nom_page`),
+      champ( `T1` , `chp_complement_page`),
+      champ( `T1` , `chp_contenu_methode_page`),
       champ( `T2` , `chp_nom_acces`),
       champ( `T3` , `chp_nom_groupe`),
       champ( `T2` , `chx_groupe_acces`),
@@ -3663,8 +3750,9 @@ LIMIT :quantitee OFFSET :debut
    ),
    conditions( egal( champ( `T0` , `chi_id_menu` ) , :T0_chi_id_menu ))
 )  ','SELECT 
-`T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , 
-`T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces`
+`T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`chp_prerequis_menu` , `T1`.`chp_nom_page` , 
+`T1`.`chp_complement_page` , `T1`.`chp_contenu_methode_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+`T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
 
@@ -3677,8 +3765,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
 ;',NULL,'menu',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('201','1','update','modifier(
-   base_de_reference(),
-   valeurs( affecte( champ( `chx_page_menu` ) , :n_chx_page_menu ) , affecte( champ( `che_ordre_menu` ) , :n_che_ordre_menu )),
+   base_de_reference(1),
+   valeurs( affecte( champ( `chx_page_menu` ) , :n_chx_page_menu ) , affecte( champ( `che_ordre_menu` ) , :n_che_ordre_menu ) , affecte( champ( `chp_prerequis_menu` ) , :n_chp_prerequis_menu )),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_menus , base(b1) ))
@@ -3687,55 +3775,9 @@ WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
    conditions( egal( champ( `chi_id_menu` ) , :c_chi_id_menu ))
 )  ','UPDATE b1.tbl_menus SET 
    `chx_page_menu` = :n_chx_page_menu , 
-   `che_ordre_menu` = :n_che_ordre_menu
-WHERE `chi_id_menu` = :c_chi_id_menu ;','function sql_201($par,&$donnees_retournees,$that){
-    $sql0=''UPDATE `''.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].''`.`tbl_menus` SET ''.PHP_EOL;
-    $tableau_champs=array();
-
-    if(isset($par[''n_chx_page_menu''])){
-        if($par[''n_chx_page_menu'']==='''' || $par[''n_chx_page_menu'']===NULL ){
-            $tableau_champs[]=''`chx_page_menu` = NULL'';
-        }else{
-            $tableau_champs[]=''`chx_page_menu` = ''.sq0($par[''n_chx_page_menu'']).'''';
-        }
-    }
-    if(isset($par[''n_che_ordre_menu''])){
-        if($par[''n_che_ordre_menu'']==='''' || $par[''n_che_ordre_menu'']===NULL ){
-            $tableau_champs[]=''`che_ordre_menu` = NULL'';
-        }else{
-            $tableau_champs[]=''`che_ordre_menu` = ''.sq0($par[''n_che_ordre_menu'']).'''';
-        }
-    }
-
-    if(count($tableau_champs)===0){
-        return array(/**/
-            __xst => __xer ,
-            __xme => ''aucun champ à mettre à jour'' ,
-            ''id_bdd'' => BDD_NUMERO_1 ,
-            ''source_requete'' => '''' , 
-            ''texte_requete'' => ''la modification dans la table des menus'' ,
-            ''exception'' => null , 
-        );
-    }
-    $sql0.=implode('',''.PHP_EOL.''    '',$tableau_champs).PHP_EOL;
-    $where0='' WHERE 1=1 ''.PHP_EOL;
-    $where0.='' AND `chi_id_menu` = ''.sq1($par[''c_chi_id_menu'']).''''.PHP_EOL;
-    $sql0.=$where0;
-    // echo __FILE__ . '' '' . __LINE__ . '' $sql0= <pre>'' . $sql0 . ''</pre>'' ; exit(0);
-    try{
-        $ret=$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->exec($sql0);
-        return(array( __xst => __xsu, ''changements'' => $GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->changes()));
-    }catch(Exception $e){
-        return array(/**/
-            __xst => __xer , 
-            ''source_requete'' => $sql0 , 
-            ''texte_requete'' => ''la modification dans la table des menus'' ,
-            ''exception'' => $e , 
-            ''id_bdd'' => BDD_NUMERO_1
-        );
-    }
-}
-','menu',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+   `che_ordre_menu` = :n_che_ordre_menu , 
+   `chp_prerequis_menu` = :n_chp_prerequis_menu
+WHERE `chi_id_menu` = :c_chi_id_menu ;',NULL,'menu',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('202','1','delete','supprimer(
    base_de_reference(),
    provenance(
@@ -3767,7 +3809,17 @@ WHERE `chi_id_menu` = :chi_id_menu ;','function sql_202($par,&$donnees_retournee
 ','',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('203','1','select','sélectionner(
    base_de_reference(1),
-   valeurs( champ( `T0` , `chi_id_menu` ) , champ( `T1` , `chp_nom_page` ) , champ( `T2` , `chx_groupe_acces` ) , champ( `T2` , `chx_metier_acces` )),
+   valeurs(
+      champ( `T0` , `chi_id_menu`),
+      champ( `T1` , `chp_nom_page`),
+      champ( `T0` , `chp_prerequis_menu`),
+      champ( `T1` , `chp_methode_page`),
+      champ( `T1` , `chp_complement_page`),
+      champ( `T1` , `chp_contenu_methode_page`),
+      champ( `T2` , `chx_groupe_acces`),
+      champ( `T2` , `chx_metier_acces`),
+      champ( `T3` , `chp_nom_source`)
+   ),
    provenance(
       table_reference(
          source( nom_de_la_table( tbl_menus , alias(T0) , base(b1) ))
@@ -3779,22 +3831,25 @@ WHERE `chi_id_menu` = :chi_id_menu ;','function sql_202($par,&$donnees_retournee
       jointure_gauche(
          source( nom_de_la_table( tbl_acces , alias(T2) , base(b1) )),
          contrainte( egal( champ( T2 , chi_id_acces ) , champ( T1 , chx_acces_page ) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_sources , alias(T3) , base(b1) )),
+         contrainte( egal( champ( T3 , chi_id_source ) , champ( T1 , chx_source_page ) ))
       )
    ),
    conditions( sup( champ( `T0` , `chi_id_menu` ) , :T0_chi_id_menu )),
    complements(
-      trier_par(
-         ( champ( `T2` , `chx_groupe_acces` ) , croissant()),
-         ( champ( `T2` , `chx_metier_acces` ) , croissant()),
-         ( champ( `T0` , `che_ordre_menu` ) , croissant())
-      )
+      trier_par( ( champ( `T2` , `chx_groupe_acces` ) , croissant() ) , ( champ( `T2` , `chx_metier_acces` ) , croissant() ) , ( champ( `T0` , `che_ordre_menu` ) , croissant() ))
    )
 )  ','SELECT 
-`T0`.`chi_id_menu` , `T1`.`chp_nom_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces`
+`T0`.`chi_id_menu` , `T1`.`chp_nom_page` , `T0`.`chp_prerequis_menu` , `T1`.`chp_methode_page` , `T1`.`chp_complement_page` , 
+`T1`.`chp_contenu_methode_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
 
  LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+
+ LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_page
 
 WHERE `T0`.`chi_id_menu` > :T0_chi_id_menu 
 ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ordre_menu` ASC
@@ -4357,6 +4412,21 @@ créer_table(
             typologie(chx),
             afficher_champ_dans_svg(1),
             refe_parent_gauche(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chx_dossier_menus_projet''),
+         type( ''INTEGER''),
+         references( tbl_dossiers , chi_id_dossier),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chx_dossier_menus_projet''),
+            champ( ''chx_dossier_menus_projet''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1)
          )
       )
    )
@@ -5650,6 +5720,34 @@ créer_table(
             typologie(chx),
             afficher_champ_dans_svg(1)
          )
+      ),
+      champ(
+         nom_du_champ( ''chp_complement_page''),
+         type( ''VARCHAR(128)''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chp_complement_page''),
+            champ( ''chp_complement_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chp),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chp_contenu_methode_page''),
+         type( ''VARCHAR(128)''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ( ''chp_contenu_methode_page''),
+            champ( ''chp_contenu_methode_page''),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            typologie(chp),
+            afficher_champ_dans_svg(1)
+         )
       )
    )
 ),
@@ -5799,6 +5897,25 @@ créer_table(
             nom_bref_du_champ( ''A faire ...''),
             typologie(che),
             afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ( ''chp_prerequis_menu''),
+         type( ''TEXT''),
+         meta(
+            genre_meta(champ),
+            champ( ''chp_prerequis_menu''),
+            nom_du_champ( ''chp_prerequis_menu''),
+            typologie(chp),
+            nom_long_du_champ( ''A faire ...''),
+            nom_court_du_champ( ''A faire ...''),
+            nom_bref_du_champ( ''A faire ...''),
+            afficher_champ_dans_svg(1),
+            champ_date_modification(0),
+            champ_date_creation(0),
+            champ_numero_de_revision(0),
+            refe_enfant_droite(0),
+            refe_parent_gauche(0)
          )
       )
    )
@@ -5986,12 +6103,13 @@ INSERT INTO tbl_metiers (chi_id_metier,chp_nom_metier,chx_parent_metier) VALUES
   ===============================
 */
 
-INSERT INTO tbl_pages (chi_id_page,chp_nom_page,chx_parent_page,chx_acces_page,chx_source_page,chp_methode_page,chx_projet_page) VALUES
-('1','accueil',NULL,'2','18','recupere_la_page_d_accueil','1'),
-('2','aide et paramètres',NULL,'2','19','recupere_la_page_d_aide','1'),
-('3','connexion',NULL,'2','20','recupere_la_page_de_connexion','1'),
-('4','tâches',NULL,'1','44','page_liste_des_taches1','1'),
-('5','matrice',NULL,'1','35','charger_rev_test1','1');
+INSERT INTO tbl_pages (chi_id_page,chp_nom_page,chx_parent_page,chx_acces_page,chx_source_page,chp_methode_page,chx_projet_page,chp_complement_page,chp_contenu_methode_page) VALUES
+('1','accueil',NULL,'2','18','recupere_la_page_d_accueil','1',NULL,NULL),
+('2','aide et paramètres',NULL,'2','19','recupere_la_page_d_aide','1',NULL,NULL),
+('3','connexion',NULL,'2','20','recupere_la_page_de_connexion','1',NULL,NULL),
+('4','tâches',NULL,'1','44','page_liste_des_taches1','1',NULL,'T0_chp_priorite_tache2(99)'),
+('5','matrice',NULL,'1','35','charger_rev_test1','1',NULL,NULL),
+('6','js',NULL,'1','34','charger_js_test1','1',NULL,NULL);
 
 
 /*
@@ -6011,12 +6129,16 @@ INSERT INTO tbl_acces (chi_id_acces,chp_nom_acces,chx_groupe_acces,chx_metier_ac
   ===============================
 */
 
-INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu) VALUES
-('1','1','0'),
-('2','2','1'),
-('3','3','0'),
-('4','4','1'),
-('5','5','5');
+INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,chp_prerequis_menu) VALUES
+('1','1','0',NULL),
+('2','2','1',NULL),
+('3','3','0',NULL),
+('4','4','1',NULL),
+('5','5','5',NULL),
+('6','6','3','appelf(
+               nomf(isset),
+               p( tableau( nomt($_SESSION[__X_CLE_APPLICATION]) , p( ''chi_id_projet'' ) ))
+            )');
 
 /*
   ============================
@@ -6053,6 +6175,6 @@ CREATE UNIQUE INDEX idx_nom_groupe ON `tbl_groupes`
          ( `chp_nom_groupe` ) ;
 
 CREATE UNIQUE INDEX idx_principal_pages ON `tbl_pages` 
-        /* meta( #() , genre_meta(index_de_table) , message( '' )) */
+        /* meta( nom_de_l_index(idx_principal_pages) , genre_meta(index_de_table) , message( '' )) */
          ( `chx_parent_page` , `chx_acces_page` , `chx_source_page` , `chp_methode_page` ) ;
 
