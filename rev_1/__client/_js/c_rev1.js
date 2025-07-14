@@ -596,14 +596,17 @@ class c_rev1{
             if(tab[i][7] === parentId){
                 if(t !== ''){
                     if(retourLigne === false){
-                        t+=' , ';
+                        t+=',';
                     }else{
                         t+=',';
                     }
                 }else{
                     if(retourLigne === false){
                         if(parentId > 0){
-                            t+=' ';
+                            /*
+                              nouveau traitement des retours de lignes
+                            */
+                            t+='';
                         }
                     }
                 }
@@ -773,7 +776,10 @@ class c_rev1{
                             }
                         }
                         if(retourLigne === false){
-                            t+=' ';
+                            /*
+                              nouveau traitement des retours de lignes
+                            */
+                            t+='';
                         }
                         t+=')';
                     }else{

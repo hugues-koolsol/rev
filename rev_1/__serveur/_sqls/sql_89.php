@@ -8,8 +8,8 @@ function sql_89($par,&$donnees_retournees,$that){
          `chx_source_page` , 
          `chp_methode_page` , 
          `chx_projet_page` , 
-         `chp_complement_page` , 
-         `chp_contenu_methode_page`
+         `cht_complement_page` , 
+         `cht_contenu_methode_page`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -24,8 +24,8 @@ function sql_89($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_source_page']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_methode_page']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_projet_page']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_complement_page']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_contenu_methode_page']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_complement_page']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_contenu_methode_page']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

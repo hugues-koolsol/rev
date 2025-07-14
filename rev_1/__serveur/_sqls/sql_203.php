@@ -1,8 +1,8 @@
 <?php
 function sql_203($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_menu` , `T1`.`chp_nom_page` , `T0`.`chp_prerequis_menu` , `T1`.`chp_methode_page` , `T1`.`chp_complement_page` , 
-      `T1`.`chp_contenu_methode_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source`
+      `T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T1`.`chp_nom_page` , `T1`.`chp_methode_page` , 
+      `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -33,14 +33,15 @@ function sql_203($par,&$donnees_retournees,$that){
         while(($tab0=$res0->fetchArray(SQLITE3_NUM))){
             $donnees0[]=array(
                 'T0.chi_id_menu' => $tab0[0],
-                'T1.chp_nom_page' => $tab0[1],
-                'T0.chp_prerequis_menu' => $tab0[2],
-                'T1.chp_methode_page' => $tab0[3],
-                'T1.chp_complement_page' => $tab0[4],
-                'T1.chp_contenu_methode_page' => $tab0[5],
-                'T2.chx_groupe_acces' => $tab0[6],
-                'T2.chx_metier_acces' => $tab0[7],
-                'T3.chp_nom_source' => $tab0[8],
+                'T0.cht_prerequis_rev_menu' => $tab0[1],
+                'T0.cht_prerequis_php_menu' => $tab0[2],
+                'T1.chp_nom_page' => $tab0[3],
+                'T1.chp_methode_page' => $tab0[4],
+                'T2.chx_groupe_acces' => $tab0[5],
+                'T2.chx_metier_acces' => $tab0[6],
+                'T3.chp_nom_source' => $tab0[7],
+                'T1.cht_complement_page' => $tab0[8],
+                'T1.cht_contenu_methode_page' => $tab0[9],
             );
         }
         return array(

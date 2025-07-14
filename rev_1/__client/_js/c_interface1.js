@@ -1578,7 +1578,8 @@ class _c_interface1{
             this.#debut_timer1=performance.now();
             if(this.le_niveau_de_deverminage >= 1){
                 console.log( '%c #envoie_requete_au_serveur postMessage' , 'background:red;color:yellow;' , obj );
-            }
+            } 
+            
             this.__m_worker.postMessage( obj );
         }else{
             this.les_messages.__xer.push( this.__m_rev1.nl2() + ' problème de worker' );

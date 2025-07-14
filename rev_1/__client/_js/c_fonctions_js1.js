@@ -145,6 +145,51 @@ class c_fonctions_js1{
     /*
       =============================================================================================================
     */
+    compiler_zone_rev_vers_zone_php(mat , début){
+     
+        let l01=mat.length;
+        for( let i=début;i<l01;i=mat[i][12]){
+         
+            switch(mat[i][1]){
+                case 'compiler_zone_rev_vers_zone_php':
+                    let zone_source='';
+                    let zone_resultat='';
+                    for( let j=i+1;j<l01;j=mat[j][12]){
+                        if(mat[j][1]==='zone_source' && mat[j][2]==='f'  && mat[j][8]===1  && mat[j+1][2]==='c' ){
+                            zone_source=mat[j+1][1];
+                        }
+                        if(mat[j][1]==='zone_resultat' && mat[j][2]==='f'  && mat[j][8]===1  && mat[j+1][2]==='c' ){
+                            zone_resultat=mat[j+1][1];
+                        }
+                    }
+                    if(zone_resultat!=='' && zone_source!==''){
+                        try{
+                            let contenu_source=document.getElementById(zone_source).value;
+                            var obj1=this.#objet_conversion_rev_vers_php.c_rev_vers_php( contenu_source , {} );
+                            if(obj1.__xst === __xsu){
+                                if(obj1.__xva.endsWith(";")){
+                                    obj1.__xva=obj1.__xva.substr(0,obj1.__xva.length-1);
+                                }
+                                document.getElementById(zone_resultat).value=obj1.__xva;
+
+                            }else{
+                                return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+                            }
+                        }catch(e1){
+                            return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2(e1)} ));
+                        }
+                    }
+                break;
+                default :
+                    return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+            }
+        }
+        
+        return({"__xst":__xsu})
+    }
+    /*
+      =============================================================================================================
+    */
     compiler_requete1( reponse ){
         if(reponse.__xva.contenu_bdd_requete['T0.cht_rev_requete'] === null
                || reponse.__xva.contenu_bdd_requete['T0.cht_rev_requete'] === ''
@@ -226,7 +271,7 @@ class c_fonctions_js1{
                 }else if(reponse.__xva.contenu_bdd['T0.chp_nom_source'].substr( reponse.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.php'
                 ){
                     /*
-                      on transforme le rev en html 
+                      on transforme le rev en php 
                     */
                     var obj1=this.#objet_conversion_rev_vers_php.c_rev_vers_php( reponse.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
                     if(obj1.__xst === __xsu){
@@ -247,6 +292,9 @@ class c_fonctions_js1{
                     }
                 }else if(reponse.__xva.contenu_bdd['T0.chp_nom_source'].substr( reponse.__xva.contenu_bdd['T0.chp_nom_source'].length - 3 , 3 ) === '.js'
                 ){
+                    /*
+                      on transforme le rev en js
+                    */
                     var obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( reponse.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
                     if(obj1.__xst === __xsu){
                         let obj={
@@ -266,6 +314,9 @@ class c_fonctions_js1{
                     }
                 }else if(reponse.__xva.contenu_bdd['T0.chp_nom_source'].substr( reponse.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.sql'
                 ){
+                    /*
+                      on transforme le rev en sql
+                    */
                     let tableau1=this.#interface1.__m_rev1.txt_en_tableau( reponse.__xva.contenu_bdd['T0.cht_rev_source'] );
                     let obj1=this.#interface1.__m_rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
                     if(obj1.__xst === __xsu){
@@ -309,6 +360,9 @@ class c_fonctions_js1{
                     }
                 }else if(reponse.__xva.contenu_bdd['T0.chp_nom_source'].substr( reponse.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.rev'
                 ){
+                    /*
+                      on transforme le rev en rev
+                    */
                     let tableau1=this.#interface1.__m_rev1.txt_en_tableau( reponse.__xva.contenu_bdd['T0.cht_rev_source'] );
                     let obj1=this.#interface1.__m_rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
                     if(obj1.__xst === __xsu){
@@ -333,7 +387,7 @@ class c_fonctions_js1{
                     }
                 }else{
                     /*
-                      les textes
+                      on transforme le rev en texte
                     */
                     let tableau1=this.#interface1.__m_rev1.txt_en_tableau( reponse.__xva.contenu_bdd['T0.cht_rev_source'] );
                     let obj1=this.#interface1.__m_rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
@@ -2131,7 +2185,84 @@ echo 'hella';`;
                 try{
                     document.getElementById( mat[i + 1][1] ).style.visibility='hidden';
                 } catch {}
+            }else if(mat[i][1].indexOf( 'formulaire1' ) > 0){
+
+                let a_envoyer={"__xva":{},"__x_action":""};
+                
+                let oba=this.#interface1.__m_rev1.matrice_vers_source_rev1(mat,i,false,i+1);
+                if(oba.__xst!==__xsu){
+                    this.#afficher_un_message( __xer , this.#interface1.__m_rev1.nl2(  )  );
+                 
+                }
+                a_envoyer.__x_action=mat[i][1]+'('+oba.__xva+')';
+                
+                
+                let conteneur1='';
+                for( let j=i + 1 ; j < l01 ; j=mat[i][12] ){
+                    if(mat[j][8] === 1 && mat[j][2] === 'f' && mat[j][1] === 'conteneur1'){
+                        if(mat[j + 1][2] === 'c'){
+                            conteneur1=mat[j + 1][1];
+                        }
+                    }
+                }
+                if(conteneur1 !== ''){
+                    try{
+                        let conteneur=document.getElementById( conteneur1 );
+                        let elts=conteneur.getElementsByTagName( '*' );
+                        for( let j=0 ; j < elts.length ; j++ ){
+                            if(elts[j].value !== null && elts[j].id){
+                                a_envoyer.__xva[elts[j].id]=elts[j].value;
+                            }
+                        }
+                    }catch(e){
+                        this.les_messages.__xer.push( this.__m_rev1.nl2( e ) + ' l\'id du conteneur"' + mat[i + 1][1] + '" n\' pas été trouvé' );
+                        this.remplis_les_messages_et_affiche( null );
+                        return;
+                    }
+                    /*
+                        {
+                            "__x_action":"
+                            c_menus1.formulaire1(
+                                conteneur1(vv_menus_modifier1),
+                                chi_id_menu(6)
+                            )",
+                            "__xva":{
+                                 "chi_id_menu":"6",
+                                 "che_ordre_menu":"3",
+                                 "chx_page_menu":"6",
+                                 "cht_prerequis_rev_menu":"
+                                  appelf(
+                                      nomf(isset),
+                                      p( 
+                                          tableau( 
+                                              nomt($_SESSION[__X_CLE_APPLICATION]) , 
+                                              p( 'chi_id_projet' ) 
+                                          )
+                                      )
+                                  )","cht_prerequis_php_menu":""
+                            }
+                        }
+                    */
+                    
+                    this.#interface1.__m_worker.postMessage( a_envoyer );
+
+                }else{
+                    debugger;
+                    /*
+                      Ok, pas de conteneur, les données sont dans la requete
+                      exemple : "c_taches1.formulaire1( action1(modifier_en_bdd1) , chi_id_tache(2) )"
+                    */
+                    /*
+                      this.les_messages.__xer.push( this.__m_rev1.nl2() + 'conteneur1 n\a pas été trouvé !' );
+                      this.remplis_les_messages_et_affiche( null );
+                      return;
+                    */
+                }
+             
+             
+             
             }else{
+             
                 debugger;
             }
         }
@@ -2435,6 +2566,36 @@ function tagada() {
             let obj=this.formater_le_rev1( mat , ind );
             if(obj.__xst === __xsu){
                 return({"__xst" : __xsu});
+            }
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+      formater_le_rev1(zone_source(vv_txtarea_rev1))
+    */
+    formater_le_rev_sans_saut1( mat , ind ){
+        let l01=mat.length;
+        let zone_source='';
+        for( let i=ind + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && mat[i][1] === 'zone_source'){
+                if(mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    zone_source=mat[i + 1][1];
+                }
+            }
+        }
+        if(zone_source !== ''){
+            this.#interface1.zone_d_edition_en_cours=zone_source;
+            let t=document.getElementById( zone_source );
+            if(t){
+                let tt=this.#interface1.__m_rev1.rev_tcm( t.value );
+                if(tt.__xst === __xsu){
+                    let ttt=this.#interface1.__m_rev1.matrice_vers_source_rev1( tt.__xva , 0 , false , 1 );
+                    if(ttt.__xst === __xsu){
+                        t.value=ttt.__xva;
+                        return({"__xst" : __xsu});
+                    }
+                }
             }
         }
         return({"__xst" : __xer});

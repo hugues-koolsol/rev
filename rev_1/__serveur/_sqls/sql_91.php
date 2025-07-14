@@ -45,18 +45,18 @@ function sql_91($par,&$donnees_retournees,$that){
             $tableau_champs[]='`chx_projet_page` = '.sq0($par['n_chx_projet_page']).'';
         }
     }
-    if(isset($par['n_chp_complement_page'])){
-        if($par['n_chp_complement_page']==='' || $par['n_chp_complement_page']===NULL ){
-            $tableau_champs[]='`chp_complement_page` = NULL';
+    if(isset($par['n_cht_complement_page'])){
+        if($par['n_cht_complement_page']==='' || $par['n_cht_complement_page']===NULL ){
+            $tableau_champs[]='`cht_complement_page` = NULL';
         }else{
-            $tableau_champs[]='`chp_complement_page` = \''.sq0($par['n_chp_complement_page']).'\'';
+            $tableau_champs[]='`cht_complement_page` = \''.sq0($par['n_cht_complement_page']).'\'';
         }
     }
-    if(isset($par['n_chp_contenu_methode_page'])){
-        if($par['n_chp_contenu_methode_page']==='' || $par['n_chp_contenu_methode_page']===NULL ){
-            $tableau_champs[]='`chp_contenu_methode_page` = NULL';
+    if(isset($par['n_cht_contenu_methode_page'])){
+        if($par['n_cht_contenu_methode_page']==='' || $par['n_cht_contenu_methode_page']===NULL ){
+            $tableau_champs[]='`cht_contenu_methode_page` = NULL';
         }else{
-            $tableau_champs[]='`chp_contenu_methode_page` = \''.sq0($par['n_chp_contenu_methode_page']).'\'';
+            $tableau_champs[]='`cht_contenu_methode_page` = \''.sq0($par['n_cht_contenu_methode_page']).'\'';
         }
     }
 

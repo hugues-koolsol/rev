@@ -165,8 +165,8 @@ class c_pages1{
                     'chx_acces_page' => $donnees_recues[__xva]['chx_acces_page']===''?NULL:$donnees_recues[__xva]['chx_acces_page'],
                     'chx_source_page' => $donnees_recues[__xva]['chx_source_page']===''?NULL:$donnees_recues[__xva]['chx_source_page'],
                     'chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
-                    'chp_contenu_methode_page' => $donnees_recues[__xva]['chp_contenu_methode_page'],
-                    'chp_complement_page' => $donnees_recues[__xva]['chp_complement_page'],
+                    'cht_contenu_methode_page' => $donnees_recues[__xva]['cht_contenu_methode_page'],
+                    'cht_complement_page' => $donnees_recues[__xva]['cht_complement_page'],
                     'chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     
                 ));
@@ -382,8 +382,8 @@ class c_pages1{
                     'n_chx_acces_page' => $donnees_recues[__xva]['chx_acces_page'],
                     'n_chx_source_page' => $donnees_recues[__xva]['chx_source_page'],
                     'n_chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
-                    'n_chp_contenu_methode_page' => $donnees_recues[__xva]['chp_contenu_methode_page'],
-                    'n_chp_complement_page' => $donnees_recues[__xva]['chp_complement_page'],
+                    'n_cht_contenu_methode_page' => $donnees_recues[__xva]['cht_contenu_methode_page'],
+                    'n_cht_complement_page' => $donnees_recues[__xva]['cht_complement_page'],
                     'n_chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 ),
                 $donnees_retournees
@@ -526,7 +526,7 @@ class c_pages1{
         $o1 .= '      <span>contenu de la methode</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" maxlength="64" id="chp_contenu_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
+        $o1 .= '      <textarea maxlength="64" id="cht_contenu_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ></textarea>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -537,7 +537,7 @@ class c_pages1{
         $o1 .= '      <span>complement</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" maxlength="64" id="chp_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
+        $o1 .= '      <textarea type="text" maxlength="64" id="cht_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ><textarea>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -702,7 +702,7 @@ class c_pages1{
                 $o1 .= '      <span>contenu méthode</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_contenu_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_contenu_methode_page']) . '" />' . PHP_EOL;
+                $o1 .= '      <input id="cht_contenu_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >' . enti1($tt[__xva][0]['T0.cht_contenu_methode_page']) . '</textarea>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;                
                 /*
@@ -713,7 +713,7 @@ class c_pages1{
                 $o1 .= '      <span>complément</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_complement_page']) . '" />' . PHP_EOL;
+                $o1 .= '      <textarea id="cht_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_complement_page']) . '</textarea>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;                
                 /*
@@ -902,7 +902,8 @@ class c_pages1{
                 $o1 .= '      <span>contenu méthode</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_contenu_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_contenu_methode_page']) . '" />' . PHP_EOL;
+                $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_contenu_methode_page)))" title="formater le source rev">(😊)</div>' . PHP_EOL;
+                $o1 .= '      <textarea id="cht_contenu_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >' . enti1($tt[__xva][0]['T0.cht_contenu_methode_page']) . '</textarea>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
@@ -913,7 +914,9 @@ class c_pages1{
                 $o1 .= '      <span>complément</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_complement_page']) . '" />' . PHP_EOL;
+                $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_complement_page)))" title="formater le source rev">(😊)</div>' . PHP_EOL;
+                $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev_sans_saut1(zone_source(cht_complement_page)))" title="formater le source rev">-😊-</div>' . PHP_EOL;
+                $o1 .= '      <textarea id="cht_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >' . enti1($tt[__xva][0]['T0.cht_complement_page']) . '</textarea>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*

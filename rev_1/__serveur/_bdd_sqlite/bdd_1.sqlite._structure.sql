@@ -928,20 +928,20 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ( 'chp_complement_page'),champ( 'chp_complement_page'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            genre_meta(champ),nom_du_champ( 'cht_complement_page'),champ( 'cht_complement_page'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
             typologie(chp),afficher_champ_dans_svg(1)
             )
             */
-             chp_complement_page VARCHAR(128)
+             cht_complement_page TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ( 'chp_contenu_methode_page'),champ( 'chp_contenu_methode_page'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            genre_meta(champ),nom_du_champ( 'cht_contenu_methode_page'),champ( 'cht_contenu_methode_page'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
             typologie(chp),afficher_champ_dans_svg(1)
             )
             */
-             chp_contenu_methode_page VARCHAR(128)
+             cht_contenu_methode_page VARCHAR(128)
     );
 
 CREATE TABLE tbl_acces(
@@ -1019,10 +1019,19 @@ CREATE TABLE tbl_menus(
     
             /*
             meta(
-            genre_meta(champ),champ( 'chp_prerequis_menu'),nom_du_champ( 'chp_prerequis_menu'),
-            typologie(chp),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),afficher_champ_dans_svg(1),champ_date_modification(0),champ_date_creation(0),champ_numero_de_revision(0),refe_enfant_droite(0),refe_parent_gauche(0)
+            genre_meta(champ),nom_du_champ( 'cht_prerequis_rev_menu'),champ( 'cht_prerequis_rev_menu'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1)
             )
             */
-             chp_prerequis_menu TEXT
+             cht_prerequis_rev_menu TEXT
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ( 'cht_prerequis_php_menu'),champ( 'cht_prerequis_php_menu'),nom_long_du_champ( 'A faire ...'),nom_court_du_champ( 'A faire ...'),nom_bref_du_champ( 'A faire ...'),
+            typologie(cht),afficher_champ_dans_svg(1)
+            )
+            */
+             cht_prerequis_php_menu TEXT
     );
 

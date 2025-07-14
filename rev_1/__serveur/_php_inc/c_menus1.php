@@ -110,7 +110,8 @@ class c_menus1{
         $donnees_sql=array( array(/**/
                     'chx_page_menu' => $donnees_recues[__xva]['chx_page_menu']===''?NULL:$donnees_recues[__xva]['chx_page_menu'],
                     'che_ordre_menu' => $donnees_recues[__xva]['che_ordre_menu'],
-                    'chp_prerequis_menu' => $donnees_recues[__xva]['chp_prerequis_menu'],
+                    'cht_prerequis_rev_menu' => $donnees_recues[__xva]['cht_prerequis_rev_menu'],
+                    'cht_prerequis_php_menu' => $donnees_recues[__xva]['cht_prerequis_php_menu'],
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=$this->sql0->sql_iii(
@@ -243,6 +244,7 @@ class c_menus1{
             return array( __xst => __xer);
         }
         
+//        echo __FILE__ . ' ' . __LINE__ . ' $contenu_fichier = <pre>' . enti1(var_export( $cumul_menus , true )) . '</pre>' ; exit(0);
         foreach($cumul_menus as $k1=>$v1){
          
             $contenu_fichier='';
@@ -253,26 +255,32 @@ class c_menus1{
              
    //            $t[]='<div data-id_menu="4" class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99)),indice_menu(4)" title="tâches">tâches</div>' . PHP_EOL;
                 $hug_click=str_replace('.php','',$v2['chp_nom_source']).'.'.$v2['chp_methode_page'].'(';
-                if($v2['chp_contenu_methode_page']!==NULL){
-                    $hug_click.=$v2['chp_contenu_methode_page'];
+                if($v2['cht_contenu_methode_page']!==NULL){
+                    $hug_click.=$v2['cht_contenu_methode_page'];
                 }
                 $hug_click.=')';
-                if($v2['chp_complement_page']!==NULL){
-                    $hug_click.=','.$v2['chp_complement_page'];
+                if($v2['cht_complement_page']!==NULL){
+                    $hug_click.=','.$v2['cht_complement_page'];
                 }
                 $hug_click.=',indice_menu('.$v2['chi_id_menu'].')';
-                $contenu_fichier.='<div data-id_menu="' . $v2['chi_id_menu'] .'" class="hug_bouton" data-hug_click="' . $hug_click . '" title="">'. $v2['chp_nom_page'] .'</div>'.PHP_EOL;
+                $contenu_lien='<div data-id_menu="' . $v2['chi_id_menu'] .'" class="hug_bouton" data-hug_click="' . $hug_click . '" title="">'. $v2['chp_nom_page'] .'</div>';
+                if($v2['cht_prerequis_php_menu']!==null){
+                    $contenu_fichier.='if(' . $v2['cht_prerequis_php_menu'] . '){'.PHP_EOL.'    ';
+                }
+                $contenu_fichier.='$t[]=\''.str_replace('\'','\\\'',str_replace('\\','\\\\',$contenu_lien)).'\';'.PHP_EOL;
+                if($v2['cht_prerequis_php_menu']!==null){
+                    $contenu_fichier.='}'.PHP_EOL;
+                }
             }
          
-//         echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $k1 , true ) . '</pre> <pre>' . var_export( $v1 , true ) . '</pre>' ; exit(0);
+            //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $k1 , true ) . '</pre> <pre>' . var_export( $v1 , true ) . '</pre>' ; exit(0);
         }
-        
-        echo __FILE__ . ' ' . __LINE__ . ' $contenu_fichier = <pre>' . enti1(var_export( $contenu_fichier , true )) . '</pre>' ; exit(0);
-        
-     
-        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = '.$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus'].'<pre>' . var_export( $cumul_menus , true ) . '</pre>' ; exit(0);
-     
+        if(file_put_contents($nom_fichier , '<?php'.PHP_EOL.$contenu_fichier)===false){
+            $donnees_retournees[__x_signaux][__xer][]='erreur ecriture fichier ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+            return array( __xst => __xer);
+        }
         return array( __xst => __xsu);
+     
      
     }
     /*
@@ -294,16 +302,17 @@ class c_menus1{
           array (
                 'T0.chi_id_menu' => 4,
                 'T1.chp_nom_page' => 'tâches',
+                'T0.cht_prerequis_rev_menu' => NULL,
                 'T1.chp_methode_page' => 'page_liste_des_taches1',
-                'T1.chp_complement_page' => NULL,
-                'T1.chp_contenu_methode_page' => NULL,
+                'T1.cht_complement_page' => NULL,
+                'T1.cht_contenu_methode_page' => 'T0_chp_priorite_tache2(99)',
                 'T2.chx_groupe_acces' => 1,
                 'T2.chx_metier_acces' => 1,
                 'T3.chp_nom_source' => 'c_taches1.php',
           ),
         */                
 
-        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt203 , true ) . '</pre>' ; exit(0);
+//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt203 , true ) . '</pre>' ; exit(0);
 
         if($tt203[__xst] === __xer){
             $donnees_retournees[__x_signaux][__xer][]='erreur construire_menus ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
@@ -323,9 +332,11 @@ class c_menus1{
                         'chi_id_menu' => $v1['T0.chi_id_menu'],
                         'chp_nom_page' => $v1['T1.chp_nom_page'],
                         'chp_methode_page' => $v1['T1.chp_methode_page'],
-                        'chp_contenu_methode_page' => $v1['T1.chp_contenu_methode_page'],
-                        'chp_complement_page' => $v1['T1.chp_complement_page'],
+                        'cht_contenu_methode_page' => $v1['T1.cht_contenu_methode_page'],
+                        'cht_complement_page' => $v1['T1.cht_complement_page'],
                         'chp_nom_source' => $v1['T3.chp_nom_source'],
+                        'cht_prerequis_rev_menu' => $v1['T0.cht_prerequis_rev_menu'],
+                        'cht_prerequis_php_menu' => $v1['T0.cht_prerequis_php_menu'],
                     ));
                     $cle_precedente='g_'.$v1['T2.chx_groupe_acces'].'_m_'.$v1['T2.chx_metier_acces'];
                     continue;
@@ -341,9 +352,12 @@ class c_menus1{
                         'chi_id_menu' => $v1['T0.chi_id_menu'],
                         'chp_nom_page' => $v1['T1.chp_nom_page'],
                         'chp_methode_page' => $v1['T1.chp_methode_page'],
-                        'chp_contenu_methode_page' => $v1['T1.chp_contenu_methode_page'],
-                        'chp_complement_page' => $v1['T1.chp_complement_page'],
+                        'cht_contenu_methode_page' => $v1['T1.cht_contenu_methode_page'],
+                        'cht_complement_page' => $v1['T1.cht_complement_page'],
                         'chp_nom_source' => $v1['T3.chp_nom_source'],
+                        'cht_prerequis_rev_menu' => $v1['T0.cht_prerequis_rev_menu'],
+                        'cht_prerequis_php_menu' => $v1['T0.cht_prerequis_php_menu'],
+                        
                     );
                 }
             }else{
@@ -351,9 +365,11 @@ class c_menus1{
                   'chi_id_menu' => $v1['T0.chi_id_menu'],
                   'chp_nom_page' => $v1['T1.chp_nom_page'],
                   'chp_methode_page' => $v1['T1.chp_methode_page'],
-                  'chp_contenu_methode_page' => $v1['T1.chp_contenu_methode_page'],
-                  'chp_complement_page' => $v1['T1.chp_complement_page'],
+                  'cht_contenu_methode_page' => $v1['T1.cht_contenu_methode_page'],
+                  'cht_complement_page' => $v1['T1.cht_complement_page'],
                   'chp_nom_source' => $v1['T3.chp_nom_source'],
+                  'cht_prerequis_rev_menu' => $v1['T0.cht_prerequis_rev_menu'],
+                  'cht_prerequis_php_menu' => $v1['T0.cht_prerequis_php_menu'],
               );
             }
         }
@@ -403,7 +419,9 @@ class c_menus1{
                     'c_chi_id_menu' => $tt[__xva][0]['T0.chi_id_menu'],
                     'n_chx_page_menu' => $donnees_recues[__xva]['chx_page_menu'],
                     'n_che_ordre_menu' => $donnees_recues[__xva]['che_ordre_menu'],
-                    'n_chp_prerequis_menu' => $donnees_recues[__xva]['chp_prerequis_menu'],
+                    'n_cht_prerequis_rev_menu' => $donnees_recues[__xva]['cht_prerequis_rev_menu'],
+                    'n_cht_prerequis_php_menu' => $donnees_recues[__xva]['cht_prerequis_php_menu'],
+                    
                     
                 ),
                 $donnees_retournees
@@ -495,10 +513,21 @@ class c_menus1{
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>prérequis</span>' . PHP_EOL;
+        $o1 .= '      <span>prérequis rev</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <textarea id="chp_prerequis_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ></textarea>' . PHP_EOL;
+        $o1 .= '      <textarea id="cht_prerequis_rev_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ></textarea>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>prérequis php</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <textarea id="cht_prerequis_php_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ></textarea>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -605,7 +634,18 @@ class c_menus1{
                 $o1 .= '      <span>préquis</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <textarea id="chp_prerequis_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.chp_prerequis_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '      <textarea id="cht_prerequis_rev_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_prerequis_rev_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>préquis php</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <textarea id="cht_prerequis_php_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_prerequis_php_menu']) . '</textarea>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
@@ -712,10 +752,21 @@ class c_menus1{
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>prérequis</span>' . PHP_EOL;
+                $o1 .= '      <span>prérequis rev</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <textarea id="chp_prerequis_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.chp_prerequis_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '      <textarea id="cht_prerequis_rev_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_prerequis_rev_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>prérequis php</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <textarea id="cht_prerequis_php_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_prerequis_php_menu']) . '</textarea>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
@@ -725,7 +776,7 @@ class c_menus1{
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>';
-                $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '))" title="" >enregistrer</div>';
+                $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '))" title="" >enregistrer</div>';
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /**/

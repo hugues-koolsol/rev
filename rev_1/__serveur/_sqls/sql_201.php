@@ -17,11 +17,18 @@ function sql_201($par,&$donnees_retournees,$that){
             $tableau_champs[]='`che_ordre_menu` = '.sq0($par['n_che_ordre_menu']).'';
         }
     }
-    if(isset($par['n_chp_prerequis_menu'])){
-        if($par['n_chp_prerequis_menu']==='' || $par['n_chp_prerequis_menu']===NULL ){
-            $tableau_champs[]='`chp_prerequis_menu` = NULL';
+    if(isset($par['n_cht_prerequis_rev_menu'])){
+        if($par['n_cht_prerequis_rev_menu']==='' || $par['n_cht_prerequis_rev_menu']===NULL ){
+            $tableau_champs[]='`cht_prerequis_rev_menu` = NULL';
         }else{
-            $tableau_champs[]='`chp_prerequis_menu` = \''.sq0($par['n_chp_prerequis_menu']).'\'';
+            $tableau_champs[]='`cht_prerequis_rev_menu` = \''.sq0($par['n_cht_prerequis_rev_menu']).'\'';
+        }
+    }
+    if(isset($par['n_cht_prerequis_php_menu'])){
+        if($par['n_cht_prerequis_php_menu']==='' || $par['n_cht_prerequis_php_menu']===NULL ){
+            $tableau_champs[]='`cht_prerequis_php_menu` = NULL';
+        }else{
+            $tableau_champs[]='`cht_prerequis_php_menu` = \''.sq0($par['n_cht_prerequis_php_menu']).'\'';
         }
     }
 
