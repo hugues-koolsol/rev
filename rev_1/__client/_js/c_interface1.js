@@ -2155,6 +2155,21 @@ class _c_interface1{
                 }
             }
         }
+        if(nom_champ_dans_parent1 === null){
+            let l01=mat.length;
+            for( let i=1 ; i < l01 ; i=mat[i][12] ){
+                if(mat[i][1] !== '' && mat[i][2] === 'f'){
+                    for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                        if(mat[j][1] === 'nom_champ_dans_parent1' && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
+                            nom_champ_dans_parent1=mat[j + 1][1];
+                        }
+                        if(mat[j][1] === 'nom_libelle_dans_parent1' && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
+                            nom_libelle_dans_parent1=mat[j + 1][1];
+                        }
+                    }
+                }
+            }
+        }
         if(nom_champ_dans_parent1 !== null){
             let id1=null;
             let libelle1='';

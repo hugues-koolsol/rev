@@ -395,6 +395,20 @@ class c_pages1{
 
             }else if($tt['changements'] === 1){
 
+
+                require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_menus1.php');
+                $obj_menu=new c_menus1(
+                    $donnees_retournees,
+                    $mat,
+                    $donnees_recues
+                );
+                $ocm=$obj_menu->construire_menus($donnees_retournees,$mat,$donnees_recues);
+                if($ocm[__xst]!==__xsu){
+                  $donnees_retournees[__x_signaux][__xer][]='erreur lors de la construction des menus [' . __LINE__ . ']';
+                  return;
+                }
+                
+                
                 
                 if($page_liste_des_pages1 === true){
 
@@ -537,7 +551,7 @@ class c_pages1{
         $o1 .= '      <span>complement</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <textarea type="text" maxlength="64" id="cht_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ><textarea>' . PHP_EOL;
+        $o1 .= '      <textarea type="text" maxlength="64" id="cht_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ></textarea>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -999,6 +1013,8 @@ class c_pages1{
         $par=array();
         $par['T0_chi_id_page']='';
         $par['T0_chp_nom_page']='';
+        $par['nom_champ_dans_parent1']='';
+        $par['nom_libelle_dans_parent1']='';
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
@@ -1075,6 +1091,8 @@ class c_pages1{
 
         $par['T0_chi_id_page']=$par['T0_chi_id_page']??'';
         $par['T0_chp_nom_page']=$par['T0_chp_nom_page']??'';
+        $par['nom_champ_dans_parent1']=$par_mat['nom_champ_dans_parent1']??'';
+        $par['nom_libelle_dans_parent1']=$par_mat['nom_libelle_dans_parent1']??'';
         $nom_filtre='vv_pages_filtre_choix_1';
         $o1='<h1>choisir un page parent</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
@@ -1103,6 +1121,8 @@ class c_pages1{
         $o1 .= '     <div><span>&nbsp;</span></div>' . PHP_EOL;
         $o1 .= '     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_pages1.formulaire1(conteneur1(' . $nom_filtre . '))" >🔎</div></div>' . PHP_EOL;
         $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
+        $o1 .= '     <input type="hidden" id="nom_champ_dans_parent1" value="' . $par['nom_champ_dans_parent1'] . '"  />' . PHP_EOL;
+        $o1 .= '     <input type="hidden" id="nom_libelle_dans_parent1" value="' . $par['nom_libelle_dans_parent1'] . '"  />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
@@ -1140,6 +1160,8 @@ class c_pages1{
             /**/
             $parametres='';
             $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
+            $parametres .= '    nom_champ_dans_parent1('.$par['nom_champ_dans_parent1'].')';
+            $parametres .= '    nom_libelle_dans_parent1('.$par['nom_libelle_dans_parent1'].')';
             $parametres .= '    id1(' . $v0['T0.chi_id_page'] . ')';
             $parametres .= '    libelle1("(' . $v0['T0.chi_id_page'] . ') ' . $v0['T0.chp_nom_page'] . '" )';
             $parametres .= ')';

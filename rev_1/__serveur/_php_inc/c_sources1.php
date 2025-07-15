@@ -2178,14 +2178,16 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function page_sources_sous_liste1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_sources_sous_liste1(&$donnees_retournees,&$mat,&$donnees_recues){
         $fonction1='c_sources1.page_sources_sous_liste1';
         /* déverminage */
         $__nbMax=10;
-        /*
-          $donnees_retournees[__x_signaux][__xif][]=__LINE__ . 'TODO $par '.var_export($par,true);
-        */
+        
+//        $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $mat '.var_export($mat,true);
+        
         $par=array();
+        $par['nom_champ_dans_parent1']='';
+        $par['nom_libelle_dans_parent1']='';
         $par['T0_chi_id_source']='';
         $par['T0_chp_nom_source']='';
         $par['T0_chx_dossier_id_source']='';
@@ -2194,7 +2196,7 @@ class c_sources1{
         $par_mat=array();
         $l01=count($mat);
         $provenance_menu=false;
-        /* $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
+//        $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
             
@@ -2234,6 +2236,8 @@ class c_sources1{
 
         }
         
+//        $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $par_mat '.var_export($par_mat,true);
+
         if(false === isset($_SESSION[__X_CLE_APPLICATION][$fonction1])){
 
             $par=array_merge($par,$par_mat);
@@ -2266,6 +2270,9 @@ class c_sources1{
         $par['T0_chi_id_source']=$par['T0_chi_id_source']??'';
         $par['T0_chp_nom_source']=$par['T0_chp_nom_source']??'';
         $par['T0_chx_dossier_id_source']=$par['T0_chx_dossier_id_source']??'';
+        $par['nom_champ_dans_parent1']=$par_mat['nom_champ_dans_parent1']??'';
+        $par['nom_libelle_dans_parent1']=$par_mat['nom_libelle_dans_parent1']??'';
+        
         
         $nom_filtre='vv_sources_filtre_choix_1';
         $o1='<h1>choisir un source parent</h1>';
@@ -2300,6 +2307,8 @@ class c_sources1{
         $o1 .= '     <div><span>&nbsp;</span></div>' . PHP_EOL;
         $o1 .= '     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_sources1.formulaire1(conteneur1(' . $nom_filtre . '))" >🔎</div></div>' . PHP_EOL;
         $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
+        $o1 .= '     <input type="hidden" id="nom_champ_dans_parent1" value="' . $par['nom_champ_dans_parent1'] . '"  />' . PHP_EOL;
+        $o1 .= '     <input type="hidden" id="nom_libelle_dans_parent1" value="' . $par['nom_libelle_dans_parent1'] . '"  />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
@@ -2341,6 +2350,8 @@ class c_sources1{
             /**/
             $parametres='';
             $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
+            $parametres .= '    nom_champ_dans_parent1('.$par['nom_champ_dans_parent1'].')';
+            $parametres .= '    nom_libelle_dans_parent1('.$par['nom_libelle_dans_parent1'].')';
             $parametres .= '    id1(' . $v0['T0.chi_id_source'] . ')';
             $parametres .= '    libelle1("(' . $v0['T0.chi_id_source'] . ') ' . $v0['T0.chp_nom_source'] . '" )';
             $parametres .= ')';

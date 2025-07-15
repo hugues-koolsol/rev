@@ -70,7 +70,7 @@ class c_connexion1{
             $_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1']=0;
             $donnees_retournees[__x_ligne]=__LINE__;
             $donnees_retournees[__x_authentifie]=__xsu;
-            $donnees_retournees[__xbo]=obtenir_les_menus();
+            $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
             $donnees_retournees[__xst]=__xsu;
             $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
             $tt=/*sql_inclure_deb*/
@@ -211,7 +211,7 @@ class c_connexion1{
 
         }
 
-        $donnees_retournees[__xbo]=obtenir_les_menus();
+        $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
         $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
     }
 

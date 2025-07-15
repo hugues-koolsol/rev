@@ -123,7 +123,7 @@ class c_projets1{
             unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']);
             unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus']);
             $donnees_retournees[__x_signaux][__xer][]=__LINE__ . ' erreur,  projet = ' . $chi_id_projet;
-            $donnees_retournees[__xbo]=obtenir_les_menus();
+            $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
             return;
 
         }
@@ -135,7 +135,7 @@ class c_projets1{
         unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus']);
         $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(0)))';
         $donnees_retournees[__xva]['php_des_sql']=array();
-        $donnees_retournees[__xbo]=obtenir_les_menus();
+        $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
         $donnees_retournees[__xst]=__xsu;
         $this->page_projets_liste1(
             $donnees_retournees,
@@ -267,7 +267,7 @@ class c_projets1{
             unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']);
             unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus']);
             $donnees_retournees[__x_signaux][__xer][]=' erreur [' . __LINE__ . '] ';
-            $donnees_retournees[__xbo]=obtenir_les_menus();
+            $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
             return;
 
         }
@@ -384,7 +384,7 @@ class c_projets1{
         }
 
         $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(' . $chi_id_projet . ')))';
-        $donnees_retournees[__xbo]=obtenir_les_menus();
+        $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
         $donnees_retournees[__xst]=__xsu;
         $this->page_projets_liste1(
             $donnees_retournees,
@@ -2331,7 +2331,7 @@ EOT;
         }
 
         unset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet']);
-        $donnees_retournees[__xbo]=obtenir_les_menus();
+        $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
         $this->page_projets_liste1(
             $donnees_retournees,
              /*matrice*/ $mat,

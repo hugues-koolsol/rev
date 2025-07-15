@@ -262,7 +262,7 @@ class c_menus1{
                 if($v2['cht_complement_page']!==NULL){
                     $hug_click.=','.$v2['cht_complement_page'];
                 }
-                $hug_click.=',indice_menu('.$v2['chi_id_menu'].')';
+                $hug_click.='indice_menu('.$v2['chi_id_menu'].')';
                 $contenu_lien='<div data-id_menu="' . $v2['chi_id_menu'] .'" class="hug_bouton" data-hug_click="' . $hug_click . '" title="">'. $v2['chp_nom_page'] .'</div>';
                 if($v2['cht_prerequis_php_menu']!==null){
                     $contenu_fichier.='if(' . $v2['cht_prerequis_php_menu'] . '){'.PHP_EOL.'    ';
@@ -535,8 +535,8 @@ class c_menus1{
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_creer1),page_liste_des_menus1())" title="" >ajouter et revenir à la liste</div>';
-        $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_creer1))" title="" >ajouter</div>';
+        $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_creer1),page_liste_des_menus1())" title="" >ajouter et revenir à la liste</div>';
+        $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_creer1))" title="" >ajouter</div>';
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /* */
@@ -755,6 +755,8 @@ class c_menus1{
                 $o1 .= '      <span>prérequis rev</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_prerequis_rev_menu)))" title="formater le source rev">(😊)</div>' . PHP_EOL;
+                $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev_sans_saut1(zone_source(cht_prerequis_rev_menu)))" title="formater le source rev">-😊-</div>' . PHP_EOL;
                 $o1 .= '      <textarea id="cht_prerequis_rev_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_prerequis_rev_menu']) . '</textarea>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
@@ -775,7 +777,7 @@ class c_menus1{
                 
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>';
+                $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>';
                 $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '))" title="" >enregistrer</div>';
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1174,6 +1176,7 @@ class c_menus1{
         $lsttbl .= '<thead><tr>';
         $lsttbl .= '<th>action</th>';
         $lsttbl .= '<th>id</th>';
+        $lsttbl .= '<th>ordre</th>';
         $lsttbl .= '<th>page</th>';
         $lsttbl .= '<th>acces</th>';
         $lsttbl .= '<th>groupe</th>';
@@ -1200,6 +1203,10 @@ class c_menus1{
             /**/
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T0.chi_id_menu'] . '';
+            $lsttbl .= '</td>';
+            /**/
+            $lsttbl .= '<td style="text-align:center;">';
+            $lsttbl .= '' . $v0['T0.che_ordre_menu'] . '';
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:left;">';

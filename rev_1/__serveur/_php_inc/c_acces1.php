@@ -679,6 +679,8 @@ class c_acces1{
           $donnees_retournees[__x_signaux][__xif][]=__LINE__ . 'TODO $par '.var_export($par,true);
         */
         $par=array();
+        $par['nom_champ_dans_parent1']='';
+        $par['nom_libelle_dans_parent1']='';
         $par['T0_chi_id_acces']='';
         $par['T0_chp_nom_acces']='';
         $par['__num_page']=0;
@@ -757,6 +759,8 @@ class c_acces1{
 
         $par['T0_chi_id_acces']=$par['T0_chi_id_acces']??'';
         $par['T0_chp_nom_acces']=$par['T0_chp_nom_acces']??'';
+        $par['nom_champ_dans_parent1']=$par_mat['nom_champ_dans_parent1']??'';
+        $par['nom_libelle_dans_parent1']=$par_mat['nom_libelle_dans_parent1']??'';
         $nom_filtre='vv_acces_filtre_choix_1';
         $o1='<h1>choisir un acces parent</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
@@ -785,6 +789,8 @@ class c_acces1{
         $o1 .= '     <div><span>&nbsp;</span></div>' . PHP_EOL;
         $o1 .= '     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_acces1.formulaire1(conteneur1(' . $nom_filtre . '))" >🔎</div></div>' . PHP_EOL;
         $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
+        $o1 .= '     <input type="hidden" id="nom_champ_dans_parent1" value="' . $par['nom_champ_dans_parent1'] . '"  />' . PHP_EOL;
+        $o1 .= '     <input type="hidden" id="nom_libelle_dans_parent1" value="' . $par['nom_libelle_dans_parent1'] . '"  />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
@@ -817,6 +823,8 @@ class c_acces1{
             /**/
             $parametres='';
             $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
+            $parametres .= '    nom_champ_dans_parent1('.$par['nom_champ_dans_parent1'].')';
+            $parametres .= '    nom_libelle_dans_parent1('.$par['nom_libelle_dans_parent1'].')';
             $parametres .= '    id1(' . $v0['T0.chi_id_acces'] . ')';
             $parametres .= '    libelle1("(' . $v0['T0.chi_id_acces'] . ') ' . $v0['T0.chp_nom_acces'] . '" )';
             $parametres .= ')';
