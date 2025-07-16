@@ -977,8 +977,8 @@ class _c_interface1{
             this.#masquer_ou_afficher_les_div_websocket();
         }
         if(obj && obj.__xva.recharger_la_page === true){
-            debugger
-            /*afr dans quel cas utilise-t-on ceci ?*/
+            debugger;
+            /* afr dans quel cas utilise-t-on ceci ? */
             let url=window.document.location.href;
             if(url.indexOf( '#' ) > 0){
                 url=url.substr( url.indexOf( '#' ) + 1 );
@@ -1578,8 +1578,7 @@ class _c_interface1{
             this.#debut_timer1=performance.now();
             if(this.le_niveau_de_deverminage >= 1){
                 console.log( '%c #envoie_requete_au_serveur postMessage' , 'background:red;color:yellow;' , obj );
-            } 
-            
+            }
             this.__m_worker.postMessage( obj );
         }else{
             this.les_messages.__xer.push( this.__m_rev1.nl2() + ' problème de worker' );

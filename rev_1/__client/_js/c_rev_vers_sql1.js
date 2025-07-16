@@ -128,15 +128,15 @@ class c_rev_vers_sql1{
                         if(options.tableau_des_tables_utilisees[i].nom_de_l_alias === tab[id + 1][1]){
                             for( var j=0 ; j < options.tableau_des_tables_utilisees[i].champs.length ; j++ ){
                                 try{
-                                    if(  options.tableau_des_tables_utilisees[i].champs[j].hasOwnProperty('nom_du_champ') 
-                                       && options.tableau_des_tables_utilisees[i].champs[j].nom_du_champ === tab[id + 2][1]
+                                    if(options.tableau_des_tables_utilisees[i].champs[j].hasOwnProperty( 'nom_du_champ' )
+                                           && options.tableau_des_tables_utilisees[i].champs[j].nom_du_champ === tab[id + 2][1]
                                     ){
                                         options.type_de_champ_pour_where=options.tableau_des_tables_utilisees[i].champs[j].type;
                                         options.nom_du_champ_pour_where=this.__m_rev1.ma_constante( tab[id + 1] ) + '.' + this.__m_rev1.ma_constante( tab[id + 2] );
                                         break;
                                     }
                                 }catch(e){
-                                    debugger
+                                    debugger;
                                 }
                             }
                         }

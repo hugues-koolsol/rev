@@ -1095,8 +1095,8 @@ WHERE `chx_projet_page` = :chx_projet_page ;',
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-`T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , `T2`.`chi_id_acces` , 
-`T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+`T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+`T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
 
@@ -1119,12 +1119,14 @@ LIMIT :quantitee OFFSET :debut
     `chx_page_menu` , 
     `che_ordre_menu` , 
     `cht_prerequis_rev_menu` , 
-    `cht_prerequis_php_menu`
+    `cht_prerequis_php_menu` , 
+    `cht_libelle_menu`
 ) VALUES (
     :chx_page_menu , 
     :che_ordre_menu , 
     :cht_prerequis_rev_menu , 
-    :cht_prerequis_php_menu
+    :cht_prerequis_php_menu , 
+    :cht_libelle_menu
 );',
     'cht_commentaire_requete' => 'menu',
   ),
@@ -1132,8 +1134,8 @@ LIMIT :quantitee OFFSET :debut
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-`T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , `T2`.`chi_id_acces` , 
-`T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+`T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+`T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
 
@@ -1153,7 +1155,8 @@ WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
    `chx_page_menu` = :n_chx_page_menu , 
    `che_ordre_menu` = :n_che_ordre_menu , 
    `cht_prerequis_rev_menu` = :n_cht_prerequis_rev_menu , 
-   `cht_prerequis_php_menu` = :n_cht_prerequis_php_menu
+   `cht_prerequis_php_menu` = :n_cht_prerequis_php_menu , 
+   `cht_libelle_menu` = :n_cht_libelle_menu
 WHERE `chi_id_menu` = :c_chi_id_menu ;',
     'cht_commentaire_requete' => 'menu',
   ),
@@ -1166,8 +1169,9 @@ WHERE `chi_id_menu` = :chi_id_menu ;',
   203 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T1`.`chp_nom_page` , `T1`.`chp_methode_page` , 
-`T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+`T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , 
+`T1`.`chp_methode_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , 
+`T1`.`cht_contenu_methode_page`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
 

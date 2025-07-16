@@ -2146,7 +2146,7 @@ class c_rev_vers_php1{
         var sauts=false;
         let un_espace_p0='';
         if(!this.#tableau_precedences_php.hasOwnProperty( this.#tb[id][1] )){
-            return(this.#rev_php_le( {"__xst" : __xer ,"id" : i ,"__xme" : 'Le mot clé est inconnu "' + this.#tb[id][1] + '" '+ this.__m_rev1.nl2() + ' '} ));
+            return(this.#rev_php_le( {"__xst" : __xer ,"id" : i ,"__xme" : 'Le mot clé est inconnu "' + this.#tb[id][1] + '" ' + this.__m_rev1.nl2() + ' '} ));
         }
         var operateur_courant=this.#tableau_precedences_php[this.#tb[id][1]];
         var operandes=[];

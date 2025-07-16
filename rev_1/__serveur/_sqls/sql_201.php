@@ -31,6 +31,13 @@ function sql_201($par,&$donnees_retournees,$that){
             $tableau_champs[]='`cht_prerequis_php_menu` = \''.sq0($par['n_cht_prerequis_php_menu']).'\'';
         }
     }
+    if(isset($par['n_cht_libelle_menu'])){
+        if($par['n_cht_libelle_menu']==='' || $par['n_cht_libelle_menu']===NULL ){
+            $tableau_champs[]='`cht_libelle_menu` = NULL';
+        }else{
+            $tableau_champs[]='`cht_libelle_menu` = \''.sq0($par['n_cht_libelle_menu']).'\'';
+        }
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/

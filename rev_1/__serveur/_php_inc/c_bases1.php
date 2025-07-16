@@ -1357,7 +1357,7 @@ class c_bases1{
         $donnees_sql=array( array(
                     /**/
                     'chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
-                    'chx_dossier_id_basedd' => $donnees_recues[__xva]['chx_dossier_id_basedd'] === '' ? NULL : $donnees_recues[__xva]['chx_dossier_id_basedd'],
+                    'chx_dossier_id_basedd' => $donnees_recues[__xva]['chx_dossier_id_basedd'] === '' ? null : $donnees_recues[__xva]['chx_dossier_id_basedd'],
                     'chp_commentaire_basedd' => '',
                     'chp_fournisseur_basedd' => 'sqlite'
                 ));
@@ -1613,8 +1613,12 @@ class c_bases1{
             if(__X_CLE_APPLICATION === 'rev' . '_1' || __X_CLE_APPLICATION === 'rev' . '_2'){
 
                 
-                if($donnees_recues[__xva]['chx_dossier_id_basedd'] >= 2){
+                if($donnees_recues[__xva]['chi_id_basedd'] >= 2){
 
+                    /*
+                      afr est-ce vraiment nécessaire
+                      
+                    */
                     /*
                       si on est sur rev 1/2, une base  autre que 1 ne doit pas être dans le même répertoire que celui des bases systèmes
                     */
@@ -1642,7 +1646,7 @@ class c_bases1{
                     
                     if($tt26bis[__xst] === __xsu){
 
-                        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = '.'<pre>' . var_export( $donnees_recues[__xva]['chx_dossier_id_basedd'] , true ) . '</pre>' ; exit(0);*/
+                        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = '.'<pre>' . var_export( $donnees_recues[__xva]['chx_dossier_id_basedd'] , true ) . '</pre>' ; exit(0); */
                         
                         if(((int)($tt26bis[__xva][0]['T0.chx_dossier_id_basedd'])) === ((int)($donnees_recues[__xva]['chx_dossier_id_basedd']))){
 

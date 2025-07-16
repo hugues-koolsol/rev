@@ -24,7 +24,7 @@ if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
     $t[]='<div data-id_menu="11" class="hug_bouton" data-hug_click="c_rev_texte1.page1(),maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_texte_rev1\'))))indice_menu(11)" title="">txt</div>';
 }
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
-    $t[]='<div data-id_menu="12" class="hug_bouton" data-hug_click="c_projets1.page_projets_liste1()indice_menu(12)" title="">projets</div>';
+    $t[]='<div data-id_menu="12" class="hug_bouton" data-hug_click="c_projets1.page_projets_liste1()indice_menu(12)" title=""><span style="color:red;background:yellow;">projets</span></div>';
 }
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
     $t[]='<div data-id_menu="13" class="hug_bouton" data-hug_click="c_dossiers1.page_dossiers_liste1()indice_menu(13)" title="">fido</div>';
@@ -39,7 +39,7 @@ if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset(
     $t[]='<div data-id_menu="16" class="hug_bouton" data-hug_click="c_requetes1.page_liste_des_requetes1()indice_menu(16)" title="">requêtes</div>';
 }
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
-    $t[]='<div data-id_menu="17" class="hug_bouton" data-hug_click="c_revs1.page_liste_des_revs1()indice_menu(17)" title="">revs</div>';
+    $t[]='<div data-id_menu="17" class="hug_bouton" data-hug_click="c_revs1.page_liste_des_revs1()indice_menu(17)" title="">(😊)</div>';
 }
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
     $t[]='<div data-id_menu="18" class="hug_bouton" data-hug_click="c_groupes1.page_liste_des_groupes1(),indice_menu(18)" title="">groupes</div>';
@@ -60,5 +60,18 @@ if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset(
     $t[]='<div data-id_menu="23" class="hug_bouton" data-hug_click="c_menus1.page_liste_des_menus1()indice_menu(23)" title="">menus</div>';
 }
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
-    $t[]='<div data-id_menu="24" class="hug_bouton" data-hug_click="c_profile1.recupere_la_page_des_coordonnees()indice_menu(24)" title="">profile</div>';
+    $t[]='<div data-id_menu="24" class="hug_bouton" data-hug_click="c_profile1.recupere_la_page_des_coordonnees()indice_menu(24)" title=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -7  20 21">
+             <g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;">
+              <circle cx="0" cy="0" r="6"></circle>
+              <path d=" M -8 11 C -6 6 6 6 8 11 "></path>
+              <circle cx="-2" cy="-1" r="1"></circle>
+              <circle cx="2" cy="-1" r="1"></circle>
+              <path d="M -2 2 C -3 4 3 4 2 2 "></path>
+              <path d="M 0 0 V 2 "></path>
+              <path d="M -3 -1   H -6    "></path>
+              <path d="M 3 -1   H 6    "></path>
+              <path d="M -1 -1 c 0 -1 2 -1 2 0 "></path>
+             </g>
+            </svg>
+</div>';
 }

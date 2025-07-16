@@ -106,18 +106,30 @@ class c_utilisateurs1{
             }
 
         }
-        if($donnees_recues[__xva]['chx_acces_utilisateur']===1){
+        
+        if($donnees_recues[__xva]['chx_acces_utilisateur'] === 1){
 
             $donnees_retournees[__x_signaux][__xar][]=' cet acces n\'es pas permis';
-         
+
         }
-        
+
         $donnees_sql=array( array(/**/
                     'chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['chp_nom_de_connexion_utilisateur'],
-                    'chx_acces_utilisateur' => $donnees_recues[__xva]['chx_acces_utilisateur']===''?NULL:$donnees_recues[__xva]['chx_acces_utilisateur'],
+                    'chx_acces_utilisateur' => $donnees_recues[__xva]['chx_acces_utilisateur'] === '' ? null : $donnees_recues[__xva]['chx_acces_utilisateur']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_79()
+            INSERT INTO b1.`tbl_utilisateurs`(
+                `chp_nom_de_connexion_utilisateur` , 
+                `chx_acces_utilisateur`
+            ) VALUES (
+                :chp_nom_de_connexion_utilisateur , 
+                :chx_acces_utilisateur
+            );
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_79()*/ 79,
             $donnees_sql,
             $donnees_retournees
@@ -198,7 +210,20 @@ class c_utilisateurs1{
       =============================================================================================================
     */
     function vv_utilisateurs_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_80()
+            SELECT 
+            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+            `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+            `T1`.`chp_nom_acces` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T1`.`chp_nom_acces`
+             FROM b1.tbl_utilisateurs T0
+             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+            
+            WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_80()*/ 80,
             array(/**/
                 'T0_chi_id_utilisateur' => $donnees_recues[__xva]['chi_id_utilisateur']
@@ -260,7 +285,20 @@ class c_utilisateurs1{
             }
 
         }
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_80()
+            SELECT 
+            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+            `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+            `T1`.`chp_nom_acces` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T1`.`chp_nom_acces`
+             FROM b1.tbl_utilisateurs T0
+             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+            
+            WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_80()*/ 80,
             array(/**/
                 'T0_chi_id_utilisateur' => $donnees_recues[__xva]['chi_id_utilisateur']
@@ -285,13 +323,20 @@ class c_utilisateurs1{
 
             }
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_81()
+                UPDATE b1.tbl_utilisateurs SET 
+                   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
+                   `chx_acces_utilisateur` = :n_chx_acces_utilisateur
+                WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_81()*/ 81,
-                array(
-                    /**/
+                array(/**/
                     'c_chi_id_utilisateur' => $tt[__xva][0]['T0.chi_id_utilisateur'],
                     'n_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['chp_nom_de_connexion_utilisateur'],
-                    'n_chx_acces_utilisateur' => $donnees_recues[__xva]['chx_acces_utilisateur'],
+                    'n_chx_acces_utilisateur' => $donnees_recues[__xva]['chx_acces_utilisateur']
                 ),
                 $donnees_retournees
             );
@@ -399,7 +444,20 @@ class c_utilisateurs1{
         
         if(is_numeric($chi_id_utilisateurs) && $chi_id_utilisateurs > 2){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_80()
+                SELECT 
+                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+                `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+                `T1`.`chp_nom_acces` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T1`.`chp_nom_acces`
+                 FROM b1.tbl_utilisateurs T0
+                 LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+                
+                WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_80()*/ 80,
                 array(/**/
                     'T0_chi_id_utilisateur' => $chi_id_utilisateurs
@@ -463,7 +521,20 @@ class c_utilisateurs1{
         
         if(is_numeric($chi_id_utilisateurs) && $chi_id_utilisateurs > 0){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_80()
+                SELECT 
+                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+                `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+                `T1`.`chp_nom_acces` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T1`.`chp_nom_acces`
+                 FROM b1.tbl_utilisateurs T0
+                 LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+                
+                WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_80()*/ 80,
                 array(/**/
                     'T0_chi_id_utilisateur' => $chi_id_utilisateurs
@@ -713,13 +784,30 @@ class c_utilisateurs1{
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
-        $tt=
+        $tt=/*sql_inclure_deb*/
+            /* sql_78()
+            SELECT 
+            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
+            `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
+             FROM b1.tbl_utilisateurs T0
+             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+            
+            WHERE ( / *** *** / `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
+            ORDER BY `T0`.`chi_id_utilisateur` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
             $this->sql0->sql_iii(
              /*sql_78()*/ 78,
-             /**/ array( /**/
-                 'T0_chi_id_utilisateur' => $par['T0_chi_id_utilisateur'] === '' ? '' : $par['T0_chi_id_utilisateur'], 
-                 'T0_chp_nom_de_connexion_utilisateur' => $par['T0_chp_nom_de_connexion_utilisateur'] === '' ? '' : '' . $par['T0_chp_nom_de_connexion_utilisateur'] . '', 
-                 'quantitee' => $__nbMax, 'debut' => $__debut),
+             /**/ array(
+                /**/
+                'T0_chi_id_utilisateur' => $par['T0_chi_id_utilisateur'] === '' ? '' : $par['T0_chi_id_utilisateur'],
+                'T0_chp_nom_de_connexion_utilisateur' => $par['T0_chp_nom_de_connexion_utilisateur'] === '' ? '' : '' . $par['T0_chp_nom_de_connexion_utilisateur'] . '',
+                'quantitee' => $__nbMax,
+                'debut' => $__debut
+            ),
             $donnees_retournees
         );
         
@@ -746,8 +834,8 @@ class c_utilisateurs1{
             /**/
             $parametres='';
             $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
-            $parametres .= '    nom_champ_dans_parent1('.$par['nom_champ_dans_parent1'].')';
-            $parametres .= '    nom_libelle_dans_parent1('.$par['nom_libelle_dans_parent1'].')';
+            $parametres .= '    nom_champ_dans_parent1(' . $par['nom_champ_dans_parent1'] . ')';
+            $parametres .= '    nom_libelle_dans_parent1(' . $par['nom_libelle_dans_parent1'] . ')';
             $parametres .= '    id1(' . $v0['T0.chi_id_utilisateur'] . ')';
             $parametres .= '    libelle1("(' . $v0['T0.chi_id_utilisateur'] . ') ' . $v0['T0.chp_nom_de_connexion_utilisateur'] . '" )';
             $parametres .= ')';
@@ -774,9 +862,7 @@ class c_utilisateurs1{
         }
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
         $donnees_retournees[__x_page] .= $o1;
-        $donnees_retournees[__xst]=__xsu;     
-     
-     
+        $donnees_retournees[__xst]=__xsu;
     }
     /*
       =============================================================================================================
@@ -892,7 +978,22 @@ class c_utilisateurs1{
         $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_78()
+            SELECT 
+            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
+            `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
+             FROM b1.tbl_utilisateurs T0
+             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+            
+            WHERE ( / *** *** / `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
+            ORDER BY `T0`.`chi_id_utilisateur` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_78()*/ 78,
             array(
                 /**/

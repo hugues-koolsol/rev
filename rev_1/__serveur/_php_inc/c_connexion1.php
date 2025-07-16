@@ -12,7 +12,6 @@ class c_connexion1{
             $donnees_recues
         );
     }
-
     /*
       =============================================================================================================
     */
@@ -35,7 +34,19 @@ class c_connexion1{
 
         }
 
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_1()
+            SELECT 
+            `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces`
+             FROM b1.tbl_utilisateurs T0
+             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+            
+            WHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur  
+            LIMIT 1 OFFSET 0 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_1()*/ 1,
             array( 'T0_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur']),
             $donnees_retournees
@@ -127,7 +138,6 @@ class c_connexion1{
                         /* echo __FILE__ . ' ' . __LINE__ . ' <pre>' . htmlentities( var_export($donnees_retournees , true )) .  '</pre>' ; exit(0); //*/
                         break;
                         
-                        
                 }
 
             }
@@ -214,7 +224,6 @@ class c_connexion1{
         $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
         $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
     }
-
 }
 /*
   =====================================================================================================================

@@ -23,7 +23,8 @@ class c_cookies1{
                     'utiliser_les_sockets' => array(/*tbel*/ 'type_html' => 'input_range1', 'class' => 'yy_ouinon', 'label' => 'utiliser les socket', 'min' => 0, 'max' => 1, 'step' => 1, 'libelle' => 'nouveau', 'courant' => 'actuel', 'dimension' => '', 'fonction' => ',recharger_la_page()'
                         )
                 )
-        );        return $arr;
+        );
+        return $arr;
     }
     /*
       =============================================================================================================

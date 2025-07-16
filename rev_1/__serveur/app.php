@@ -37,45 +37,22 @@ function obtenir_les_menus(&$donnees_retournees){
 
     $t=array();
     
-    if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
-//        $t[]='<div data-id_menu="4" class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99)),indice_menu(4)" title="tâches">tâches</div>' . PHP_EOL;
-//        $t[]='<div data-id_menu="50" class="hug_bouton" data-hug_click="c_rev_mat1.page1(),indice_menu(50),maj_interface2(modifier( id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_rev1\'))))" title="convertir un source rev en matrice">mat</div>';
-//        $t[]='<div data-id_menu="51" class="hug_bouton" data-hug_click="c_rev_js1.page1(),indice_menu(51),maj_interface2(modifier( id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_js_rev1\'))))" title="js &lt;-&gt; rev">js</div>';
-//        $t[]='<div data-id_menu="52" class="hug_bouton" data-hug_click="c_rev_html1.page1(),indice_menu(52),maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_html_rev1\'))))" title="html &lt;-&gt; rev">html</div>';
-//        $t[]='<div data-id_menu="53" class="hug_bouton" data-hug_click="c_rev_php1.page1(),indice_menu(53),maj_interface2(modifier( id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_php_rev1\'))))" title="php &lt;-&gt; rev">php</div>';
-//        $t[]='<div data-id_menu="54" class="hug_bouton" data-hug_click="c_rev_sql1.page1(),indice_menu(54),maj_interface2(modifier( id(vv_txtarea_sql_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_sql_rev1\'))))" title="sql &lt;-&gt; rev">sql</div>';
-//        $t[]='<div data-id_menu="55" class="hug_bouton" data-hug_click="c_rev_css1.page1(),indice_menu(55),maj_interface2(modifier( id(vv_txtarea_css_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_css_rev1\'))))" title="css &lt;-&gt; rev">css</div>';
-//        $t[]='<div data-id_menu="61" class="hug_bouton" data-hug_click="c_rev_texte1.page1(),indice_menu(61),maj_interface2(modifier( id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_texte_rev1\'))))" title="texte &lt;-&gt; rev">txt</div>';
-//        $t[]='<div data-id_menu="56" class="hug_bouton" data-hug_click="c_projets1.page_projets_liste1(indice_menu(56))" title="projets">projets</div>' . PHP_EOL;
-/*        $t[]='<div data-id_menu="11" class="hug_bouton" style="min-width:2em;" data-hug_click="c_profile1.recupere_la_page_des_coordonnees(),indice_menu(11)" title="mes coordonnées">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -7  20 21">
-             <g style="stroke:rgb(0, 0, 255);fill:transparent;stroke-width:1;">
-              <circle cx="0" cy="0" r="6"></circle>
-              <path d=" M -8 11 C -6 6 6 6 8 11 "></path>
-              <circle cx="-2" cy="-1" r="1"></circle>
-              <circle cx="2" cy="-1" r="1"></circle>
-              <path d="M -2 2 C -3 4 3 4 2 2 "></path>
-              <path d="M 0 0 V 2 "></path>
-              <path d="M -3 -1   H -6    "></path>
-              <path d="M 3 -1   H 6    "></path>
-              <path d="M -1 -1 c 0 -1 2 -1 2 0 "></path>
-             </g>
-            </svg>
-          </div>';
-*/
-    }else{
-
-    }
-    if(isset($_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant']) 
+    if(isset($_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant'])
        && isset($_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant'])
     ){
 
-        $nom_fichier=REPERTOIRE_DU_PROJET.DIRECTORY_SEPARATOR.'g_'.$_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant'].'_m_'.$_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant'].'.php';
+        $nom_fichier=REPERTOIRE_DU_PROJET . DIRECTORY_SEPARATOR . 'g_' . $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant'] . '_m_' . $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant'] . '.php';
+        
         if(is_file($nom_fichier)){
-            include_once $nom_fichier;
+
+            include_once($nom_fichier);
+
         }
-     
+
+
     }
+
+    
     if(isset($_COOKIE[__X_CLE_APPLICATION])){
 
         $tcok=json_decode($_COOKIE[__X_CLE_APPLICATION],true);
@@ -93,8 +70,6 @@ function obtenir_les_menus(&$donnees_retournees){
 
 
     }
-    
-    
 
     return $t;
 
@@ -153,36 +128,7 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
 
                     $href=$donnees_recues['__xva'];
                 }
-
-                /*#
-                if($href !== ''){
-
-                    $pos=strpos($href,'#');
-                    
-                    if($pos !== false){
-
-                        $nom_de_fonction=substr($href,$pos + 1);
-                        
-                        // echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nom_de_fonction , true ) . '</pre>' ; exit(0);
-                        $nom_de_fonction_sans_parentheses=substr($nom_de_fonction,0,strpos($nom_de_fonction,'('));
-                        
-                        if(method_exists($obj_accueil,$nom_de_fonction_sans_parentheses)){
-
-                            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nom_de_fonction , true ) . '</pre>' ; exit(0);
-                            $donnees_retournees['fonction_a_appeler']='c_pagesxxxxxx1.' . $nom_de_fonction;
-                            $fonction_a_appeler='c_pages1.' . $nom_de_fonction;
-                            // echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $fonction_a_appeler , true ) . '</pre>' ; exit(0);
-
-                        }
-
-
-                    }
-
-
-                }
-                */
-
-
+                
             }
 
             /* $donnees_retournees[__x_signaux][__xdv][]=__LINE__ . '<pre>' . var_export($donnees_recues , true) . '</pre>';*/

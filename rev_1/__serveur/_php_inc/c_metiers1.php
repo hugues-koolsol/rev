@@ -109,7 +109,7 @@ class c_metiers1{
         }
         $donnees_sql=array( array(/**/
                     'chp_nom_metier' => $donnees_recues[__xva]['chp_nom_metier'],
-                    'chx_parent_metier' => $donnees_recues[__xva]['chx_parent_metier']===''?NULL:$donnees_recues[__xva]['chx_parent_metier'],
+                    'chx_parent_metier' => $donnees_recues[__xva]['chx_parent_metier'] === '' ? null : $donnees_recues[__xva]['chx_parent_metier']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
@@ -763,14 +763,14 @@ class c_metiers1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_83()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-             FROM b1.tbl_metiers T0
+             FROM b1.tbl_metiers T0
              LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
             
-            WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
-               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
-            ORDER BY `T0`.`chi_id_metier` DESC  
+            WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
+               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+            ORDER BY `T0`.`chi_id_metier` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
@@ -804,8 +804,8 @@ class c_metiers1{
             /**/
             $parametres='';
             $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
-            $parametres .= '    nom_champ_dans_parent1('.$par['nom_champ_dans_parent1'].')';
-            $parametres .= '    nom_libelle_dans_parent1('.$par['nom_libelle_dans_parent1'].')';
+            $parametres .= '    nom_champ_dans_parent1(' . $par['nom_champ_dans_parent1'] . ')';
+            $parametres .= '    nom_libelle_dans_parent1(' . $par['nom_libelle_dans_parent1'] . ')';
             $parametres .= '    id1(' . $v0['T0.chi_id_metier'] . ')';
             $parametres .= '    libelle1("(' . $v0['T0.chi_id_metier'] . ') ' . $v0['T0.chp_nom_metier'] . '" )';
             $parametres .= ')';
@@ -948,14 +948,14 @@ class c_metiers1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_83()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-             FROM b1.tbl_metiers T0
+             FROM b1.tbl_metiers T0
              LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
             
-            WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
-               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
-            ORDER BY `T0`.`chi_id_metier` DESC  
+            WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
+               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+            ORDER BY `T0`.`chi_id_metier` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */

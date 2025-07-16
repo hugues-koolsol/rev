@@ -1686,7 +1686,6 @@ class c_svg_bdd1{
         __gi1.envoyer_un_message_au_worker( obj );
         return;
     }
-    
     /*
       =============================================================================================================
     */
@@ -1818,7 +1817,6 @@ class c_svg_bdd1{
         t+=' , valeur : <input id="valeur_par_defaut" type="text" value="' + valeur_par_defaut.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '" autocapitalize="off" /> ';
         t+='"CURRENT_TIMESTAMP","CURRENT_TIME","CURRENT_DATE"';
         t+='<br /><b>meta</b>';
-        
         t+='<br />typologie : ';
         t+='<select id="meta_modifier__typologie" >';
         t+='<option value="chi" ' + (typologie === 'chi' ? ( ' selected' ) : ( '' )) + '>index entier (chi) integer[n]</option>';
@@ -1937,7 +1935,6 @@ class c_svg_bdd1{
         /* __contenu_modale => vv_sous_fenetre1 */
         vv_sous_fenetre1.showModal();
         __gi1.ajoute_les_evenements_aux_boutons( null );
-        
     }
     /*
       =============================================================================================================
@@ -3228,12 +3225,11 @@ class c_svg_bdd1{
             document.getElementById( id_du_champ ).value=valeur;
         } catch {}
     }
-    
     /*
       =============================================================================================================
     */
-    maj_typologie(mat){
-        console.log(mat);
+    maj_typologie( mat ){
+        console.log( mat );
         let nom_zone='';
         let nom_zone_du_champ='';
         let nom_zone_de_la_table='';
@@ -3246,56 +3242,55 @@ class c_svg_bdd1{
                 nom_zone_de_la_table=mat[i + 1][1];
             }
         }
-        if(nom_zone!=='' && nom_zone_du_champ!==''){
-            let nom_de_la_table=document.getElementById(nom_zone_de_la_table).value;
-
-            if(nom_de_la_table.substr(0,4)==='tbl_'){
-             nom_de_la_table=nom_de_la_table.substr(4);
-             if(nom_de_la_table.substr(nom_de_la_table.length-1,1)==='s'){
-                 nom_de_la_table=nom_de_la_table.substr(0,nom_de_la_table.length-1);
-             }else{
-                 nom_de_la_table='zzz';
-             }
+        if(nom_zone !== '' && nom_zone_du_champ !== ''){
+            let nom_de_la_table=document.getElementById( nom_zone_de_la_table ).value;
+            if(nom_de_la_table.substr( 0 , 4 ) === 'tbl_'){
+                nom_de_la_table=nom_de_la_table.substr( 4 );
+                if(nom_de_la_table.substr( nom_de_la_table.length - 1 , 1 ) === 's'){
+                    nom_de_la_table=nom_de_la_table.substr( 0 , nom_de_la_table.length - 1 );
+                }else{
+                    nom_de_la_table='zzz';
+                }
             }else{
                 nom_de_la_table='zzz';
             }
-            
-            
-            let nom_du_champ_actuel=document.getElementById(nom_zone_du_champ).value;
-            if(nom_du_champ_actuel==='chi_'){
-                let typologie=document.getElementById(nom_zone).value;
-                let a=document.getElementById(nom_zone_du_champ);
-                switch(typologie){
-                    case 'chi':
-                        a.value='chi_id_'+nom_de_la_table;
+            let nom_du_champ_actuel=document.getElementById( nom_zone_du_champ ).value;
+            if(nom_du_champ_actuel === 'chi_'){
+                let typologie=document.getElementById( nom_zone ).value;
+                let a=document.getElementById( nom_zone_du_champ );
+                switch (typologie){
+                    case 'chi' :
+                        a.value='chi_id_' + nom_de_la_table;
                         a.focus();
-                        a.selectionStart=4;;
-                        a.selectionEnd=6;;
+                        a.selectionStart=4;
+                        a.selectionEnd=6;
                         break;
-                    case 'chp':
-                        a.value='chp_nom_'+nom_de_la_table;
+                        
+                    case 'chp' :
+                        a.value='chp_nom_' + nom_de_la_table;
                         a.focus();
                         a.selectionStart=4;
                         a.selectionEnd=7;
                         break;
-                    case 'chx':
-                        a.value='chx_parent_'+nom_de_la_table;
+                        
+                    case 'chx' :
+                        a.value='chx_parent_' + nom_de_la_table;
                         a.focus();
                         a.selectionStart=4;
                         a.selectionEnd=10;
                         break;
-                    default :
-                        a.value='chx_yyy_'+nom_de_la_table;
+                        
+                    default:
+                        a.value='chx_yyy_' + nom_de_la_table;
                         a.focus();
                         a.selectionStart=4;
                         a.selectionEnd=7;
                         break;
+                        
                 }
             }
         }
     }
-    
-    
     /*
       =============================================================================================================
       matricée
@@ -3412,7 +3407,6 @@ class c_svg_bdd1{
         t+='<hr />';
         t+='<h3>ajouter un champ</h3>';
         t+='<div class="yy__x_signaux_0" id="zone_message_ajouter_un_champ"></div>';
-
         var cmd='';
         cmd+='interface1.module1(';
         cmd+=' chemin_module1(\'_js/c_svg_bdd1.js\'),';
@@ -3423,10 +3417,8 @@ class c_svg_bdd1{
         cmd+='  nom_zone_de_la_table(nouveau_nom),';
         cmd+=' )';
         cmd+=')';
-        
-
         t+='typologie : ';
-        t+='<select id="typologie" data-hug_change="'+cmd+'">';
+        t+='<select id="typologie" data-hug_change="' + cmd + '">';
         t+='<option value="">choisissez une typologie</option>';
         t+='<option value="chi">index entier (chi) integer[n]</option>';
         t+='<option value="chp">phrase (chp) varchar(n)</option>';

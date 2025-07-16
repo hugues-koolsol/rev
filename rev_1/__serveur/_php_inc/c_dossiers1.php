@@ -259,7 +259,7 @@ class c_dossiers1{
         $donnees_sql=array( array(/**/
                     'chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     'chp_nom_dossier' => $donnees_recues[__xva]['chp_nom_dossier'],
-                    'chx_parent_dossier' => $donnees_recues[__xva]['chx_parent_dossier'] === '' ? NULL : $donnees_recues[__xva]['chx_parent_dossier'],
+                    'chx_parent_dossier' => $donnees_recues[__xva]['chx_parent_dossier'] === '' ? null : $donnees_recues[__xva]['chx_parent_dossier']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
@@ -1947,8 +1947,8 @@ class c_dossiers1{
             /**/
             $parametres='';
             $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
-            $parametres .= '    nom_champ_dans_parent1('.$par['nom_champ_dans_parent1'].')';
-            $parametres .= '    nom_libelle_dans_parent1('.$par['nom_libelle_dans_parent1'].')';
+            $parametres .= '    nom_champ_dans_parent1(' . $par['nom_champ_dans_parent1'] . ')';
+            $parametres .= '    nom_libelle_dans_parent1(' . $par['nom_libelle_dans_parent1'] . ')';
             $parametres .= '    id1(' . $v0['T0.chi_id_dossier'] . ')';
             
             if($v0['T0.chx_parent_dossier'] === null){
@@ -2025,7 +2025,9 @@ class c_dossiers1{
                     
                     
                     if($mat[$j][2] === 'f' && $mat[$j][8] === 0 && $mat[$j][1] === 'che_binaire_source'){
+
                         $che_binaire_source=1;
+
                     }else if($mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
 
                         
@@ -2037,7 +2039,6 @@ class c_dossiers1{
 
                             $nom_du_fichier=$mat[$j + 1][1];
                         }
-
 
                     }
 
@@ -2059,20 +2060,25 @@ class c_dossiers1{
             }
 
             $chemin_fichier=$dossier_absolu=$obj['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $nom_du_fichier;
-            if( $che_binaire_source===1 || $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']==='rev'.'_1' ){
+            
+            if($che_binaire_source === 1 || $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 'rev' . '_1'){
+
                 $contenu_fichier='';
+
             }else{
+
                 $contenu_fichier=file_get_contents($chemin_fichier);
             }
+
             $donnees_sql=array( array(
                         /**/
                         'chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                         'chp_nom_source' => $nom_du_fichier,
-                        'chx_dossier_id_source' => $chi_id_dossier===''?NULL:$chi_id_dossier,
+                        'chx_dossier_id_source' => $chi_id_dossier === '' ? null : $chi_id_dossier,
                         'cht_commentaire_source' => null,
                         'cht_rev_source' => null,
                         'cht_genere_source' => $contenu_fichier,
-                        'che_binaire_source' => $che_binaire_source,
+                        'che_binaire_source' => $che_binaire_source
                     ));
             /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
             $tt=/*sql_inclure_deb*/
@@ -2438,7 +2444,6 @@ class c_dossiers1{
                         $liste_des_dossiers_a_la_racine .= '   title="" >';
                         $liste_des_dossiers_a_la_racine .= '   intégrer ce fichier binaire';
                         $liste_des_dossiers_a_la_racine .= ' </div>';
-
                         $liste_des_dossiers_a_la_racine .= ' <div class="hug_bouton yy__x_signaux_1" ';
                         $liste_des_dossiers_a_la_racine .= '   data-hug_click="c_dossiers1.integrer_ce_fichier_dans_les_sources(chi_id_dossier(' . $id_dossier_racine . '),nom_du_fichier(\'' . $v1 . '\'),revenir_a_la_liste())" ';
                         $liste_des_dossiers_a_la_racine .= '   title="" >';

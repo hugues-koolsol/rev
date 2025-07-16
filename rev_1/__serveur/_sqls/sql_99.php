@@ -5,7 +5,8 @@ function sql_99($par,&$donnees_retournees,$that){
          `chx_page_menu` , 
          `che_ordre_menu` , 
          `cht_prerequis_rev_menu` , 
-         `cht_prerequis_php_menu`
+         `cht_prerequis_php_menu` , 
+         `cht_libelle_menu`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -17,7 +18,8 @@ function sql_99($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_page_menu']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_ordre_menu']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_prerequis_rev_menu']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_prerequis_php_menu']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_prerequis_php_menu']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_libelle_menu']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

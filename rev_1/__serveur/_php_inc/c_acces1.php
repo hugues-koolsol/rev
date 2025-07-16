@@ -109,11 +109,24 @@ class c_acces1{
         }
         $donnees_sql=array( array(/**/
                     'chp_nom_acces' => $donnees_recues[__xva]['chp_nom_acces'],
-                    'chx_metier_acces' => $donnees_recues[__xva]['chx_metier_acces']===''?NULL:$donnees_recues[__xva]['chx_metier_acces'],
-                    'chx_groupe_acces' => $donnees_recues[__xva]['chx_groupe_acces']===''?NULL:$donnees_recues[__xva]['chx_groupe_acces'],
+                    'chx_metier_acces' => $donnees_recues[__xva]['chx_metier_acces'] === '' ? null : $donnees_recues[__xva]['chx_metier_acces'],
+                    'chx_groupe_acces' => $donnees_recues[__xva]['chx_groupe_acces'] === '' ? null : $donnees_recues[__xva]['chx_groupe_acces']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_94()
+            INSERT INTO b1.`tbl_acces`(
+                `chp_nom_acces` , 
+                `chx_groupe_acces` , 
+                `chx_metier_acces`
+            ) VALUES (
+                :chp_nom_acces , 
+                :chx_groupe_acces , 
+                :chx_metier_acces
+            );
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_94()*/ 94,
             $donnees_sql,
             $donnees_retournees
@@ -197,11 +210,11 @@ class c_acces1{
         $tt=/*sql_inclure_deb*/
             /* sql_85()
             SELECT 
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T1`.`chp_nom_acces` , `T0`.`chx_metier_acces`
-             FROM b1.tbl_acces T0
-             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_metier_acces
+            `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
+             FROM b1.tbl_metiers T0
+             LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
             
-            WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
+            WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
             ;
             */
             /*sql_inclure_fin*/
@@ -217,8 +230,8 @@ class c_acces1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_87()
-                DELETE FROM b1.tbl_acces
-                WHERE `chi_id_acces` = :chi_id_acces ;
+                DELETE FROM b1.tbl_metiers
+                WHERE `chi_id_metier` = :chi_id_metier ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
@@ -267,7 +280,21 @@ class c_acces1{
             }
 
         }
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_95()
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+            `T2`.`chp_nom_metier`
+             FROM b1.tbl_acces T0
+             LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+            
+             LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+            
+            WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_95()*/ 95,
             array(/**/
                 'T0_chi_id_acces' => $donnees_recues[__xva]['chi_id_acces']
@@ -281,9 +308,19 @@ class c_acces1{
               afr 
               exceptions acces 1 et 2
             */
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_96()
+                UPDATE b1.tbl_acces SET 
+                   `chp_nom_acces` = :n_chp_nom_acces , 
+                   `chx_groupe_acces` = :n_chx_groupe_acces , 
+                   `chx_metier_acces` = :n_chx_metier_acces
+                WHERE `chi_id_acces` = :c_chi_id_acces ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_86()*/ 96,
-                array(/**/
+                array(
+                    /**/
                     'c_chi_id_acces' => $tt[__xva][0]['T0.chi_id_acces'],
                     'n_chp_nom_acces' => $donnees_recues[__xva]['chp_nom_acces'],
                     'n_chx_metier_acces' => $donnees_recues[__xva]['chx_metier_acces'],
@@ -424,11 +461,11 @@ class c_acces1{
             $tt=/*sql_inclure_deb*/
                 /* sql_85()
                 SELECT 
-                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T1`.`chp_nom_acces` , `T0`.`chx_metier_acces`
-                 FROM b1.tbl_acces T0
-                 LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_metier_acces
+                `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
+                 FROM b1.tbl_metiers T0
+                 LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
                 
-                WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
+                WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
                 ;
                 */
                 /*sql_inclure_fin*/
@@ -467,7 +504,6 @@ class c_acces1{
                 $o1 .= '      <input type="text" id="chp_lien_rev_acces" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_lien_rev_acces']) . '" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
-                
                 /*
                   
                 */
@@ -508,7 +544,21 @@ class c_acces1{
         
         if(is_numeric($chi_id_acces) && $chi_id_acces > 0){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_95()
+                SELECT 
+                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+                `T2`.`chp_nom_metier`
+                 FROM b1.tbl_acces T0
+                 LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+                
+                 LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+                
+                WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_95()*/ 95,
                 array(/**/
                     'T0_chi_id_acces' => $chi_id_acces
@@ -794,7 +844,24 @@ class c_acces1{
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_93()
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+            `T2`.`chp_nom_metier`
+             FROM b1.tbl_acces T0
+             LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+            
+             LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+            
+            WHERE ( / *** *** / `T0`.`chi_id_acces` = :T0_chi_id_acces
+               AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
+            ORDER BY `T0`.`chi_id_acces` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_93()*/ 93,
              /**/ array( 'T0_chi_id_acces' => $par['T0_chi_id_acces'] === '' ? '' : $par['T0_chi_id_acces'], 'T0_chp_nom_acces' => $par['T0_chp_nom_acces'] === '' ? '' : '' . $par['T0_chp_nom_acces'] . '', 'quantitee' => $__nbMax, 'debut' => $__debut),
             $donnees_retournees
@@ -823,8 +890,8 @@ class c_acces1{
             /**/
             $parametres='';
             $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
-            $parametres .= '    nom_champ_dans_parent1('.$par['nom_champ_dans_parent1'].')';
-            $parametres .= '    nom_libelle_dans_parent1('.$par['nom_libelle_dans_parent1'].')';
+            $parametres .= '    nom_champ_dans_parent1(' . $par['nom_champ_dans_parent1'] . ')';
+            $parametres .= '    nom_libelle_dans_parent1(' . $par['nom_libelle_dans_parent1'] . ')';
             $parametres .= '    id1(' . $v0['T0.chi_id_acces'] . ')';
             $parametres .= '    libelle1("(' . $v0['T0.chi_id_acces'] . ') ' . $v0['T0.chp_nom_acces'] . '" )';
             $parametres .= ')';
@@ -852,8 +919,7 @@ class c_acces1{
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
         $donnees_retournees[__x_page] .= $o1;
         $donnees_retournees[__xst]=__xsu;
-    }    
-
+    }
     /*
       =============================================================================================================
     */
@@ -966,7 +1032,24 @@ class c_acces1{
         $o1 .= '     <input type="hidden" id="__num_acces" value="' . $__debut . '" />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_93()
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+            `T2`.`chp_nom_metier`
+             FROM b1.tbl_acces T0
+             LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+            
+             LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+            
+            WHERE ( / *** *** / `T0`.`chi_id_acces` = :T0_chi_id_acces
+               AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
+            ORDER BY `T0`.`chi_id_acces` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_93()*/ 93,
             array(
                 /**/

@@ -1580,10 +1580,13 @@ EOT;
     function le_repertoire_des_requetes_est_il_defini(){
         $tt34=/*sql_inclure_deb*/
             /* sql_34()
-            SELECT 
-            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T1`.`chp_nom_dossier`
-             FROM b1.tbl_projets T0
+            SELECT 
+            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+            `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
+             FROM b1.tbl_projets T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
+            
+             LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_menus_projet
             
             WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
             ;

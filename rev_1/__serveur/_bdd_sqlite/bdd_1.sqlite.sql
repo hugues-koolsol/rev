@@ -104,7 +104,7 @@ CREATE TABLE tbl_utilisateurs(
 
 CREATE TABLE tbl_taches(
 /*
- meta(nom_de_la_table('tbl_taches'),table('tbl_taches'),genre_meta(table_de_base),nom_long_de_la_table(''),nom_court_de_la_table(''),nom_bref_de_la_table(''),transform_table_sur_svg(translate(380.5,515.5))) 
+ meta(nom_de_la_table('tbl_taches'),table('tbl_taches'),genre_meta(table_de_base),nom_long_de_la_table(''),nom_court_de_la_table(''),nom_bref_de_la_table(''),transform_table_sur_svg(translate(425.5,542.5))) 
 */
     
             /*
@@ -869,7 +869,7 @@ CREATE TABLE tbl_metiers(
 
 CREATE TABLE tbl_pages(
 /*
- meta(nom_de_la_table('tbl_pages'),table('tbl_pages'),genre_meta(table_de_base),nom_long_de_la_table('A faire  tbl_pages'),nom_court_de_la_table('A faire tbl_pages'),nom_bref_de_la_table('A faire tbl_pages'),transform_table_sur_svg(translate(160.5,480.5))) 
+ meta(nom_de_la_table('tbl_pages'),table('tbl_pages'),genre_meta(table_de_base),nom_long_de_la_table('A faire  tbl_pages'),nom_court_de_la_table('A faire tbl_pages'),nom_bref_de_la_table('A faire tbl_pages'),transform_table_sur_svg(translate(66.5,396.5))) 
 */
     
             /*
@@ -910,6 +910,15 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
+            genre_meta(champ),nom_du_champ('chx_projet_page'),champ('chx_projet_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),refe_enfant_droite(1)
+            )
+            */
+             chx_projet_page INTEGER REFERENCES tbl_projets(chi_id_projet) 
+    ,
+    
+            /*
+            meta(
             genre_meta(champ),nom_du_champ('chx_source_page'),champ('chx_source_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
             typologie(chx),afficher_champ_dans_svg(1),refe_enfant_droite(1),refe_parent_gauche(1)
             )
@@ -924,15 +933,6 @@ CREATE TABLE tbl_pages(
             )
             */
              chp_methode_page VARCHAR(64) NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),nom_du_champ('chx_projet_page'),champ('chx_projet_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1)
-            )
-            */
-             chx_projet_page INTEGER REFERENCES tbl_projets(chi_id_projet) 
     ,
     
             /*
@@ -996,7 +996,7 @@ CREATE TABLE tbl_acces(
 
 CREATE TABLE tbl_menus(
 /*
- meta(nom_de_la_table('tbl_menus'),table('tbl_menus'),genre_meta(table_de_base),nom_long_de_la_table('A faire  tbl_menus'),nom_court_de_la_table('A faire tbl_menus'),nom_bref_de_la_table('A faire tbl_menus'),transform_table_sur_svg(translate(374.5,666.5))) 
+ meta(nom_de_la_table('tbl_menus'),table('tbl_menus'),genre_meta(table_de_base),nom_long_de_la_table('A faire  tbl_menus'),nom_court_de_la_table('A faire tbl_menus'),nom_bref_de_la_table('A faire tbl_menus'),transform_table_sur_svg(translate(35.5,629.5))) 
 */
     
             /*
@@ -1011,7 +1011,7 @@ CREATE TABLE tbl_menus(
             /*
             meta(
             genre_meta(champ),nom_du_champ('chx_page_menu'),champ('chx_page_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            typologie(chx),afficher_champ_dans_svg(1),refe_parent_gauche(1)
             )
             */
              chx_page_menu INTEGER NOT NULL REFERENCES tbl_pages(chi_id_page) 
@@ -1042,7 +1042,7 @@ CREATE TABLE tbl_menus(
             )
             */
              cht_prerequis_php_menu TEXT
-    );
+    , cht_libelle_menu TEXT);
 
 /*
   ============================
@@ -1058,7 +1058,7 @@ CREATE TABLE tbl_menus(
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','488','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','489','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -1094,10 +1094,10 @@ INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_p
 ('23','1','dump de la base en local','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('26','1','travaux en batch','18','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('26','1','travaux en batch','19','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('28','1','profils de css','50','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('29','1','astuces','19','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('29','1','astuces','20','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -1163,9 +1163,9 @@ et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00','2000-01-
 ('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('78','1','ne pas mettre plus de 1000 éléments dans un dossier','21','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('78','1','ne pas mettre plus de 1000 éléments dans un dossier','22','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('80','1','table des bugs','23','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('80','1','table des bugs','24','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('82','1','supprimer une projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('83','1','ajouter les champs 
@@ -1178,7 +1178,7 @@ dtc date technique de création','99','0','2000-01-01 00:00:00','2000-01-01 00:0
 ('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('88','1','sortable pour svg','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('90','1','dupliquer une table','24','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('90','1','dupliquer une table','25','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('92','1','quand on modifie le nom d''une table
 alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -1194,7 +1194,7 @@ dans le champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('99','1','corriger le bug : après tri des champs, on pert l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('100','1','ne pas masquer un champ si c''est une référence, une clé, un auto_increment
 ou si le champ appartient à un index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('101','1','ajouter des tests de validité sur le svg base','25','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('101','1','ajouter des tests de validité sur le svg base','26','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('102','1','sauvegarder une table sans champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('103','1','requetes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('104','1','mettre le dump de la base dans la liste des bases','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -1274,7 +1274,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chp__dtm_tache`)
 flag champ_date_modification','99','4','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','22','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','23','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -1314,19 +1314,19 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','20','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','16','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
-('170','1','initialiser ecran standard d''une table','17','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
-('171','1','gérer les menus','2','1','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522'),
-('172','1','gérer les utilisateurs et les groupes et les métiers','13','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
+comme3(xxx)','21','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
+('169','1','initialiser projet standard','17','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
+('170','1','initialiser ecran standard d''une table','18','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
+('171','1','gérer les menus','99','1','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522'),
+('172','1','gérer les utilisateurs et les groupes et les métiers','14','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
 ('173','1','gérer les paramètres ( liste des constantes )
-type de champbdd','14','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
+type de champbdd','15','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
 ('174','1','mettre en github
 ','99','0','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817'),
 ('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038'),
 ('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
 ('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962'),
-('178','1','ajouter un dictionnaire de données','15','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
+('178','1','ajouter un dictionnaire de données','16','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
 ('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399'),
 ('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718'),
 ('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668'),
@@ -1339,8 +1339,8 @@ sélectionner
 altérer/amender 
 détruire','80','1','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485'),
 ('184','1','bug quand on crée un nouvelle requête, le php c''est pas créé sur disque','99','0','2025-07-07 10:35:44.602','2025-07-07 10:35:44.602'),
-('185','1','gérer les pages','12','0','2025-07-07 12:54:11.814','2025-07-07 12:54:11.814'),
-('186','1','gérer les accès des utilisateurs','11','1','2025-07-08 15:13:34.065','2025-07-08 15:12:51.611'),
+('185','1','gérer les pages','13','0','2025-07-07 12:54:11.814','2025-07-07 12:54:11.814'),
+('186','1','gérer les accès des utilisateurs','12','1','2025-07-08 15:13:34.065','2025-07-08 15:12:51.611'),
 ('187','1','supprimer chx_groupe_utilisateur chx_metier_utilisateur','99','0','2025-07-09 09:41:52.450','2025-07-09 09:41:52.450'),
 ('188','1','ajouter NULL si chx = '''' sur les insert et delete','99','1','2025-07-09 13:55:32.628','2025-07-09 13:54:53.645'),
 ('189','1','Lors de l''insertion dans la table des pages, vérifier l''existance de méthode du source','99','1','2025-07-09 15:40:56.820','2025-07-09 14:58:59.943'),
@@ -1355,11 +1355,12 @@ détruire','80','1','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485'),
 ⬛🔲🗨◻⏹','9','1','2025-07-10 10:06:06.304','2025-07-10 09:58:19.160'),
 ('198','1','dans les pages, proposer une liste de méthodes quand on choisir un source','3','0','2025-07-10 10:17:39.087','2025-07-10 10:17:39.087'),
 ('199','1','compiler le prérequis du menu','99','1','2025-07-14 08:40:32.303','2025-07-12 08:22:58.170'),
-('200','1','quand on modifie une page, il faut recompiler les menus','1','0','2025-07-15 13:49:22.638','2025-07-15 13:49:22.638'),
+('200','1','quand on modifie une page, il faut recompiler les menus','99','0','2025-07-15 13:49:22.638','2025-07-15 13:49:22.638'),
 ('201','1','ajouter les traitements de 
 nom_champ_dans_parent1
 nom_libelle_dans_parent1
-dans les sous listes comme dans c_sources1.php','0','1','2025-07-15 17:21:51.755','2025-07-15 16:12:27.924');
+dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.755','2025-07-15 16:12:27.924'),
+('202','1','bibliothèque de svg','11','1','2025-07-16 10:48:01.891','2025-07-16 10:47:25.371');
 
 
 /*
@@ -3656,6 +3657,7 @@ WHERE `chx_projet_page` = :chx_projet_page ;',NULL,'pages par projet',NULL,'0','
       champ(`T0`,`che_ordre_menu`),
       champ(`T0`,`cht_prerequis_rev_menu`),
       champ(`T0`,`cht_prerequis_php_menu`),
+      champ(`T0`,`cht_libelle_menu`),
       champ(`T1`,`chp_nom_page`),
       champ(`T2`,`chp_nom_acces`),
       champ(`T3`,`chp_nom_groupe`),
@@ -3696,8 +3698,8 @@ WHERE `chx_projet_page` = :chx_projet_page ;',NULL,'pages par projet',NULL,'0','
    )
 )  ','SELECT 
 `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-`T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , `T2`.`chi_id_acces` , 
-`T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+`T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+`T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
 
@@ -3714,67 +3716,76 @@ LIMIT :quantitee OFFSET :debut
 ;',NULL,'menu',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('99','1','insert','insérer(
    base_de_reference(1),
-   valeurs( affecte( champ( `chx_page_menu` ) , :chx_page_menu ) , affecte( champ( `che_ordre_menu` ) , :che_ordre_menu ) , affecte( champ( `cht_prerequis_rev_menu` ) , :cht_prerequis_rev_menu ) , affecte( champ( `cht_prerequis_php_menu` ) , :cht_prerequis_php_menu )),
+   valeurs(
+      affecte(champ(`chx_page_menu`),:chx_page_menu),
+      affecte(champ(`che_ordre_menu`),:che_ordre_menu),
+      affecte(champ(`cht_prerequis_rev_menu`),:cht_prerequis_rev_menu),
+      affecte(champ(`cht_prerequis_php_menu`),:cht_prerequis_php_menu),
+      affecte(champ(`cht_libelle_menu`),:cht_libelle_menu)
+   ),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_menus , base(b1) ))
+         source(nom_de_la_table(tbl_menus,base(b1)))
       )
    )
 )  ','INSERT INTO b1.`tbl_menus`(
     `chx_page_menu` , 
     `che_ordre_menu` , 
     `cht_prerequis_rev_menu` , 
-    `cht_prerequis_php_menu`
+    `cht_prerequis_php_menu` , 
+    `cht_libelle_menu`
 ) VALUES (
     :chx_page_menu , 
     :che_ordre_menu , 
     :cht_prerequis_rev_menu , 
-    :cht_prerequis_php_menu
+    :cht_prerequis_php_menu , 
+    :cht_libelle_menu
 );',NULL,'menu',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('200','1','select','sélectionner(
    base_de_reference(1),
    valeurs(
-      champ( `T0` , `chi_id_menu`),
-      champ( `T0` , `chx_page_menu`),
-      champ( `T0` , `che_ordre_menu`),
-      champ( `T0` , `cht_prerequis_rev_menu`),
-      champ( `T0` , `cht_prerequis_php_menu`),
-      champ( `T1` , `chp_nom_page`),
-      champ( `T2` , `chp_nom_acces`),
-      champ( `T3` , `chp_nom_groupe`),
-      champ( `T2` , `chx_groupe_acces`),
-      champ( `T2` , `chi_id_acces`),
-      champ( `T4` , `chp_nom_metier`),
-      champ( `T2` , `chx_metier_acces`),
-      champ( `T1` , `cht_complement_page`),
-      champ( `T1` , `cht_contenu_methode_page`)
+      champ(`T0`,`chi_id_menu`),
+      champ(`T0`,`chx_page_menu`),
+      champ(`T0`,`che_ordre_menu`),
+      champ(`T0`,`cht_prerequis_rev_menu`),
+      champ(`T0`,`cht_prerequis_php_menu`),
+      champ(`T0`,`cht_libelle_menu`),
+      champ(`T1`,`chp_nom_page`),
+      champ(`T2`,`chp_nom_acces`),
+      champ(`T3`,`chp_nom_groupe`),
+      champ(`T2`,`chx_groupe_acces`),
+      champ(`T2`,`chi_id_acces`),
+      champ(`T4`,`chp_nom_metier`),
+      champ(`T2`,`chx_metier_acces`),
+      champ(`T1`,`cht_complement_page`),
+      champ(`T1`,`cht_contenu_methode_page`)
    ),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_menus , alias(T0) , base(b1) ))
+         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_pages , alias(T1) , base(b1) )),
-         contrainte( egal( champ( T1 , chi_id_page ) , champ( T0 , chx_page_menu ) ))
+         source(nom_de_la_table(tbl_pages,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_page),champ(T0,chx_page_menu)))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_acces , alias(T2) , base(b1) )),
-         contrainte( egal( champ( T2 , chi_id_acces ) , champ( T1 , chx_acces_page ) ))
+         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_page)))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_groupes , alias(T3) , base(b1) )),
-         contrainte( egal( champ( T3 , chi_id_groupe ) , champ( T2 , chx_groupe_acces ) ))
+         source(nom_de_la_table(tbl_groupes,alias(T3),base(b1))),
+         contrainte(egal(champ(T3,chi_id_groupe),champ(T2,chx_groupe_acces)))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_metiers , alias(T4) , base(b1) )),
-         contrainte( egal( champ( T4 , chi_id_metier ) , champ( T2 , chx_metier_acces ) ))
+         source(nom_de_la_table(tbl_metiers,alias(T4),base(b1))),
+         contrainte(egal(champ(T4,chi_id_metier),champ(T2,chx_metier_acces)))
       )
    ),
-   conditions( egal( champ( `T0` , `chi_id_menu` ) , :T0_chi_id_menu ))
+   conditions(egal(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu))
 )  ','SELECT 
 `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-`T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , `T2`.`chi_id_acces` , 
-`T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+`T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+`T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
 
@@ -3788,18 +3799,25 @@ WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
 ;',NULL,'menu',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('201','1','update','modifier(
    base_de_reference(1),
-   valeurs( affecte( champ( `chx_page_menu` ) , :n_chx_page_menu ) , affecte( champ( `che_ordre_menu` ) , :n_che_ordre_menu ) , affecte( champ( `cht_prerequis_rev_menu` ) , :n_cht_prerequis_rev_menu ) , affecte( champ( `cht_prerequis_php_menu` ) , :n_cht_prerequis_php_menu )),
+   valeurs(
+      affecte(champ(`chx_page_menu`),:n_chx_page_menu),
+      affecte(champ(`che_ordre_menu`),:n_che_ordre_menu),
+      affecte(champ(`cht_prerequis_rev_menu`),:n_cht_prerequis_rev_menu),
+      affecte(champ(`cht_prerequis_php_menu`),:n_cht_prerequis_php_menu),
+      affecte(champ(`cht_libelle_menu`),:n_cht_libelle_menu)
+   ),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_menus , base(b1) ))
+         source(nom_de_la_table(tbl_menus,base(b1)))
       )
    ),
-   conditions( egal( champ( `chi_id_menu` ) , :c_chi_id_menu ))
+   conditions(egal(champ(`chi_id_menu`),:c_chi_id_menu))
 )  ','UPDATE b1.tbl_menus SET 
    `chx_page_menu` = :n_chx_page_menu , 
    `che_ordre_menu` = :n_che_ordre_menu , 
    `cht_prerequis_rev_menu` = :n_cht_prerequis_rev_menu , 
-   `cht_prerequis_php_menu` = :n_cht_prerequis_php_menu
+   `cht_prerequis_php_menu` = :n_cht_prerequis_php_menu , 
+   `cht_libelle_menu` = :n_cht_libelle_menu
 WHERE `chi_id_menu` = :c_chi_id_menu ;',NULL,'menu',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('202','1','delete','supprimer(
    base_de_reference(),
@@ -3833,41 +3851,43 @@ WHERE `chi_id_menu` = :chi_id_menu ;','function sql_202($par,&$donnees_retournee
 ('203','1','select','sélectionner(
    base_de_reference(1),
    valeurs(
-      champ( `T0` , `chi_id_menu`),
-      champ( `T0` , `cht_prerequis_rev_menu`),
-      champ( `T0` , `cht_prerequis_php_menu`),
-      champ( `T1` , `chp_nom_page`),
-      champ( `T1` , `chp_methode_page`),
-      champ( `T2` , `chx_groupe_acces`),
-      champ( `T2` , `chx_metier_acces`),
-      champ( `T3` , `chp_nom_source`),
-      champ( `T1` , `cht_complement_page`),
-      champ( `T1` , `cht_contenu_methode_page`)
+      champ(`T0`,`chi_id_menu`),
+      champ(`T0`,`cht_prerequis_rev_menu`),
+      champ(`T0`,`cht_prerequis_php_menu`),
+      champ(`T0`,`cht_libelle_menu`),
+      champ(`T1`,`chp_nom_page`),
+      champ(`T1`,`chp_methode_page`),
+      champ(`T2`,`chx_groupe_acces`),
+      champ(`T2`,`chx_metier_acces`),
+      champ(`T3`,`chp_nom_source`),
+      champ(`T1`,`cht_complement_page`),
+      champ(`T1`,`cht_contenu_methode_page`)
    ),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_menus , alias(T0) , base(b1) ))
+         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_pages , alias(T1) , base(b1) )),
-         contrainte( egal( champ( T1 , chi_id_page ) , champ( T0 , chx_page_menu ) ))
+         source(nom_de_la_table(tbl_pages,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_page),champ(T0,chx_page_menu)))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_acces , alias(T2) , base(b1) )),
-         contrainte( egal( champ( T2 , chi_id_acces ) , champ( T1 , chx_acces_page ) ))
+         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_page)))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_sources , alias(T3) , base(b1) )),
-         contrainte( egal( champ( T3 , chi_id_source ) , champ( T1 , chx_source_page ) ))
+         source(nom_de_la_table(tbl_sources,alias(T3),base(b1))),
+         contrainte(egal(champ(T3,chi_id_source),champ(T1,chx_source_page)))
       )
    ),
-   conditions( sup( champ( `T0` , `chi_id_menu` ) , :T0_chi_id_menu )),
+   conditions(sup(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu)),
    complements(
-      trier_par( ( champ( `T2` , `chx_groupe_acces` ) , croissant() ) , ( champ( `T2` , `chx_metier_acces` ) , croissant() ) , ( champ( `T0` , `che_ordre_menu` ) , croissant() ))
+      trier_par((champ(`T2`,`chx_groupe_acces`),croissant()),(champ(`T2`,`chx_metier_acces`),croissant()),(champ(`T0`,`che_ordre_menu`),croissant()))
    )
 )  ','SELECT 
-`T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T1`.`chp_nom_page` , `T1`.`chp_methode_page` , 
-`T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+`T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , 
+`T1`.`chp_methode_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , 
+`T1`.`cht_contenu_methode_page`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
 
@@ -3938,1244 +3958,33 @@ INSERT INTO tbl_sources (chi_id_source,chx_projet_id_source,chp_nom_source,cht_c
 ('44','1','c_taches1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('45','1','c_utilisateurs1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('46','1','test_hdf.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('47','1','c_menus1.php',NULL,NULL,'<?php
-class c_menus1{
-    private $sql0=null;
-    /*
-      erreur lors de l''"action" pour 
-      Attention : du le cheval / de cheval vs de la menu / du la menu
-    */
-    private const LE_LA_ELEMENT_GERE = ''le menu'';
-    private const UN_UNE_ELEMENT_GERE = ''un menu'';
-    /*
-      =============================================================================================================
-    */
-    public function __construct(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . ''c_sql0.php'');
-        $this->sql0=new c_sql0(
-            $donnees_retournees,
-             /*matrice*/ $mat,
-            $donnees_recues
-        );
-    }
-    /*
-      =============================================================================================================
-      traitement des formulaires des menus
-    */
-    public function formulaire1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $l01=count($mat);
-        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
-            
-            
-            if($mat[$i][1] === ''c_menus1.formulaire1'' && $mat[$i][2] === ''f'' && $mat[$i][8] >= 1){
-
-                $conteneur1='''';
-                $action1='''';
-                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
-                    
-                    
-                    if($mat[$j][1] === ''conteneur1'' && $mat[$j + 1][2] === ''c''){
-
-                        $conteneur1=$mat[$j + 1][1];
-
-                    }else if($mat[$j][1] === ''action1'' && $mat[$j + 1][2] === ''c''){
-
-                        $action1=$mat[$j + 1][1];
-                    }
-
-                }
-                
-                if($action1 !== ''''){
-
-                    
-                    if($action1 === ''page_menus_creer1''
-                       || $action1 === ''page_menus_modifier1''
-                       || $action1 === ''page_menus_supprimer1''
-                       || $action1 === ''page_liste_des_menus1''
-                    ){
-
-                        $this->$action1(
-                            $donnees_retournees,
-                             /*matrice*/ $mat,
-                            $donnees_recues
-                        );
-
-                    }else{
-
-                        $donnees_retournees[__x_signaux][__xal][]=''action non traitée "'' . $action1 . ''" ['' . __LINE__ . '']'';
-                    }
-
-
-                }else if($conteneur1 === ''vv_menus_modifier1''
-                   || $conteneur1 === ''vv_menus_creer1''
-                   || $conteneur1 === ''vv_menus_supprimer1''
-                   || $conteneur1 === ''vv_menus_filtre1''
-                   || $conteneur1 === ''vv_menus_filtre_choix_1''
-                ){
-
-                    $this->$conteneur1(
-                        $donnees_retournees,
-                         /*matrice*/ $mat,
-                        $donnees_recues
-                    );
-
-                }else{
-
-                    $donnees_retournees[__x_signaux][__xal][]=''traitement à réaliser pour $donnees_recues '' . var_export($donnees_recues,true) . '' ['' . __LINE__ . '']'';
-                }
-
-                break;
-
-            }
-
-        }
-    }
-    /*
-      =============================================================================================================
-    */
-    function vv_menus_creer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $page_liste_des_menus1=false;
-        $l01=count($mat);
-        for( $i=1 ; $i < $l01 ; $i++ ){
-            
-            
-            if($mat[$i][1] === ''page_liste_des_menus1'' && $mat[$i][2] === ''f'' && $mat[$i][8] === 0){
-
-                $page_liste_des_menus1=true;
-                break;
-
-            }
-
-        }
-        $donnees_sql=array( array(/**/
-                    ''chx_page_menu'' => $donnees_recues[__xva][''chx_page_menu'']===''''?NULL:$donnees_recues[__xva][''chx_page_menu''],
-                    ''che_ordre_menu'' => $donnees_recues[__xva][''che_ordre_menu''],
-                    ''cht_prerequis_rev_menu'' => $donnees_recues[__xva][''cht_prerequis_rev_menu''],
-                    ''cht_prerequis_php_menu'' => $donnees_recues[__xva][''cht_prerequis_php_menu''],
-                ));
-        /* echo __FILE__ . '' '' . __LINE__ . '' $donnees_sql = <pre>'' . var_export( $donnees_sql , true ) . ''</pre>'' ; exit(0);*/
-        $tt=$this->sql0->sql_iii(
-             /*sql_99()*/ 99,
-            $donnees_sql,
-            $donnees_retournees
-        );
-        
-        if($tt[__xst] !== __xsu){
-
-            $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . '' ['' . __LINE__ . '']'';
-            return;
-
-        }else if($tt[''changements''] === 1){
-
-            $donnees_retournees[__xst]=__xsu;
-            
-            if($page_liste_des_menus1 === true){
-
-                $this->page_liste_des_menus1($donnees_retournees,$mat,$donnees_recues);
-
-            }else{
-
-                $action=''chi_id_menu('' . $tt[''nouvel_id''] . '')'';
-                $obj_matrice=$GLOBALS[''obj_rev1'']->rev_vers_matrice($action);
-                $this->page_menus_modifier1(
-                    $donnees_retournees,
-                     /*matrice*/ $obj_matrice[__xva],
-                    $donnees_recues
-                );
-                $donnees_retournees[__x_action]=''c_menus1.formulaire1(action1(page_menus_modifier1),chi_id_menu('' . $tt[''nouvel_id''] . ''))'';
-            }
-
-
-        }else{
-
-            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . '' aucune modification efféctuée'';
-        }
-
-        $o1='''';
-    }
-    /*
-      =============================================================================================================
-    */
-    function vv_menus_filtre1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $txtPar=''__num_page(0)'';
-        $nouvelles_valeurs=array( ''__num_page'' => 0);
-        foreach($donnees_recues[__xva] as $k0 => $v0){
-            
-            if($k0 !== ''__num_page''){
-
-                $nouvelles_valeurs[$k0]=$v0;
-                
-                if(is_numeric($v0)){
-
-                    $txtPar .= '','' . $k0 . ''('' . $v0 . '')'';
-
-                }else{
-
-                    $txtPar .= '','' . $k0 . ''(\'''' . str_replace(''\'''',''\\\'''',$v0) . ''\'')'';
-                }
-
-
-            }
-
-        }
-        $_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1'']=$nouvelles_valeurs;
-        $obj_matrice=$GLOBALS[''obj_rev1'']->rev_vers_matrice(''c_menus1.page_liste_des_menus1('' . $txtPar . '')'');
-        
-        if($obj_matrice[__xst] === __xsu){
-
-            $this->page_liste_des_menus1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);
-
-        }else{
-
-            $donnees_retournees[__x_signaux][__xer][]=__LINE__ . '' erreur de convertion de '' . $txtPar . '''';
-        }
-
-    }
-    /*
-      =============================================================================================================
-    */
-    function vv_menus_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $tt=$this->sql0->sql_iii(
-             /*sql_200()*/ 200,
-            array(/**/
-                ''T0_chi_id_menu'' => $donnees_recues[__xva][''chi_id_menu'']
-            ),
-            $donnees_retournees
-        );
-        
-        if($tt[__xst] === __xsu && $donnees_recues[__xva][''chi_id_menu''] > 1){
-
-            $tt=$this->sql0->sql_iii(
-                 /*sql_87()*/ 202,
-                array(/**/
-                    ''chi_id_menu'' => $tt[__xva][0][''T0.chi_id_menu'']
-                ),
-                $donnees_retournees
-            );
-            
-            if($tt[__xst] === __xer){
-
-                $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la suppression pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '') ['' . __LINE__ . '']'';
-
-            }else if($tt[''changements''] === 1){
-
-                $donnees_retournees[__x_signaux][__xsu][]=''👍 suppression effectuée avec succès pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '')'';
-                $this->page_liste_des_menus1($donnees_retournees,$mat,$donnees_recues);
-
-            }else{
-
-                $donnees_retournees[__x_signaux][__xer][]=''aucune suppression effectuée pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '') ['' . __LINE__ . '']'';
-            }
-
-
-        }else{
-
-            $donnees_retournees[__x_signaux][__xer][]=''aucune suppression effectuée pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '') ['' . __LINE__ . '']'';
-        }
-
-        $o1='''';
-    }
-    /*
-      =============================================================================================================
-    */
-    function ecrire_les_fichiers_menus($cumul_menus){
-     
-        if(!isset($_SESSION[__X_CLE_APPLICATION][''chp_nom_dossier_menus''])){
-            return array( __xst => __xer);
-        }
-        
-//        echo __FILE__ . '' '' . __LINE__ . '' $contenu_fichier = <pre>'' . enti1(var_export( $cumul_menus , true )) . ''</pre>'' ; exit(0);
-        foreach($cumul_menus as $k1=>$v1){
-         
-            $contenu_fichier='''';
-            
-            $nom_fichier=$_SESSION[__X_CLE_APPLICATION][''chp_nom_dossier_menus''].DIRECTORY_SEPARATOR.$k1.''.php'';
-            
-            foreach($v1 as $k2 => $v2){
-             
-   //            $t[]=''<div data-id_menu="4" class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99)),indice_menu(4)" title="tâches">tâches</div>'' . PHP_EOL;
-                $hug_click=str_replace(''.php'','''',$v2[''chp_nom_source'']).''.''.$v2[''chp_methode_page''].''('';
-                if($v2[''cht_contenu_methode_page'']!==NULL){
-                    $hug_click.=$v2[''cht_contenu_methode_page''];
-                }
-                $hug_click.='')'';
-                if($v2[''cht_complement_page'']!==NULL){
-                    $hug_click.='',''.$v2[''cht_complement_page''];
-                }
-                $hug_click.=''indice_menu(''.$v2[''chi_id_menu''].'')'';
-                $contenu_lien=''<div data-id_menu="'' . $v2[''chi_id_menu''] .''" class="hug_bouton" data-hug_click="'' . $hug_click . ''" title="">''. $v2[''chp_nom_page''] .''</div>'';
-                if($v2[''cht_prerequis_php_menu'']!==null){
-                    $contenu_fichier.=''if('' . $v2[''cht_prerequis_php_menu''] . ''){''.PHP_EOL.''    '';
-                }
-                $contenu_fichier.=''$t[]=\''''.str_replace(''\'''',''\\\'''',str_replace(''\\'',''\\\\'',$contenu_lien)).''\'';''.PHP_EOL;
-                if($v2[''cht_prerequis_php_menu'']!==null){
-                    $contenu_fichier.=''}''.PHP_EOL;
-                }
-            }
-         
-            //echo __FILE__ . '' '' . __LINE__ . '' __LINE__ = <pre>'' . var_export( $k1 , true ) . ''</pre> <pre>'' . var_export( $v1 , true ) . ''</pre>'' ; exit(0);
-        }
-        if(file_put_contents($nom_fichier , ''<?php''.PHP_EOL.$contenu_fichier)===false){
-            $donnees_retournees[__x_signaux][__xer][]=''erreur ecriture fichier '' . self::LE_LA_ELEMENT_GERE . '' ['' . __LINE__ . '']'';
-            return array( __xst => __xer);
-        }
-        return array( __xst => __xsu);
-     
-     
-    }
-    /*
-      =============================================================================================================
-    */
-    function construire_menus(&$donnees_retournees,&$mat,&$donnees_recues){
-     
-     
-     
-        $tt203=$this->sql0->sql_iii(
-             /*sql_203()*/ 203,
-            array(/**/
-                ''T0_chi_id_menu'' => 3,
-            ),
-            $donnees_retournees
-        );
-
-        /*#
-          array (
-                ''T0.chi_id_menu'' => 4,
-                ''T1.chp_nom_page'' => ''tâches'',
-                ''T0.cht_prerequis_rev_menu'' => NULL,
-                ''T1.chp_methode_page'' => ''page_liste_des_taches1'',
-                ''T1.cht_complement_page'' => NULL,
-                ''T1.cht_contenu_methode_page'' => ''T0_chp_priorite_tache2(99)'',
-                ''T2.chx_groupe_acces'' => 1,
-                ''T2.chx_metier_acces'' => 1,
-                ''T3.chp_nom_source'' => ''c_taches1.php'',
-          ),
-        */                
-
-//        echo __FILE__ . '' '' . __LINE__ . '' __LINE__ = <pre>'' . var_export( $tt203 , true ) . ''</pre>'' ; exit(0);
-
-        if($tt203[__xst] === __xer){
-            $donnees_retournees[__x_signaux][__xer][]=''erreur construire_menus '' . self::LE_LA_ELEMENT_GERE . '' ['' . __LINE__ . '']'';
-            return array( __xst => __xer);
-        }
-        $chx_groupe_acces=0;
-        $chx_metier_acces=0;
-        $cumul_menus=array();
-        $cle_precedente='''';
-        $cle_courante='''';
-        foreach($tt203[__xva] as $k1 => $v1){
-            $cle_courante=''g_''.$v1[''T2.chx_groupe_acces''].''_m_''.$v1[''T2.chx_metier_acces''];
-            
-            if($cle_courante!==$cle_precedente){
-                if($cle_precedente===''''){
-                    $cumul_menus[$cle_courante]=array(array(
-                        ''chi_id_menu'' => $v1[''T0.chi_id_menu''],
-                        ''chp_nom_page'' => $v1[''T1.chp_nom_page''],
-                        ''chp_methode_page'' => $v1[''T1.chp_methode_page''],
-                        ''cht_contenu_methode_page'' => $v1[''T1.cht_contenu_methode_page''],
-                        ''cht_complement_page'' => $v1[''T1.cht_complement_page''],
-                        ''chp_nom_source'' => $v1[''T3.chp_nom_source''],
-                        ''cht_prerequis_rev_menu'' => $v1[''T0.cht_prerequis_rev_menu''],
-                        ''cht_prerequis_php_menu'' => $v1[''T0.cht_prerequis_php_menu''],
-                    ));
-                    $cle_precedente=''g_''.$v1[''T2.chx_groupe_acces''].''_m_''.$v1[''T2.chx_metier_acces''];
-                    continue;
-                }else{
-                    $fm=$this->ecrire_les_fichiers_menus($cumul_menus);
-                    if($fm[__xst]!==__xsu){
-                         $donnees_retournees[__x_signaux][__xer][]=''erreur ecrire_les_fichiers_menus '' . self::LE_LA_ELEMENT_GERE . '' ['' . __LINE__ . '']'';
-                         return array( __xst => __xer);
-                    }
-                    $cle_courante=''g_''.$v1[''T2.chx_groupe_acces''].''_m_''.$v1[''T2.chx_metier_acces''];
-                    $cle_precedente=$cle_courante;
-                    $cumul_menus[$cle_courante]=array(
-                        ''chi_id_menu'' => $v1[''T0.chi_id_menu''],
-                        ''chp_nom_page'' => $v1[''T1.chp_nom_page''],
-                        ''chp_methode_page'' => $v1[''T1.chp_methode_page''],
-                        ''cht_contenu_methode_page'' => $v1[''T1.cht_contenu_methode_page''],
-                        ''cht_complement_page'' => $v1[''T1.cht_complement_page''],
-                        ''chp_nom_source'' => $v1[''T3.chp_nom_source''],
-                        ''cht_prerequis_rev_menu'' => $v1[''T0.cht_prerequis_rev_menu''],
-                        ''cht_prerequis_php_menu'' => $v1[''T0.cht_prerequis_php_menu''],
-                        
-                    );
-                }
-            }else{
-              $cumul_menus[$cle_courante][]=array(
-                  ''chi_id_menu'' => $v1[''T0.chi_id_menu''],
-                  ''chp_nom_page'' => $v1[''T1.chp_nom_page''],
-                  ''chp_methode_page'' => $v1[''T1.chp_methode_page''],
-                  ''cht_contenu_methode_page'' => $v1[''T1.cht_contenu_methode_page''],
-                  ''cht_complement_page'' => $v1[''T1.cht_complement_page''],
-                  ''chp_nom_source'' => $v1[''T3.chp_nom_source''],
-                  ''cht_prerequis_rev_menu'' => $v1[''T0.cht_prerequis_rev_menu''],
-                  ''cht_prerequis_php_menu'' => $v1[''T0.cht_prerequis_php_menu''],
-              );
-            }
-        }
-        if(count($cumul_menus)>0){
-            $fm=$this->ecrire_les_fichiers_menus($cumul_menus);
-            if($fm[__xst]!==__xsu){
-                 $donnees_retournees[__x_signaux][__xer][]=''erreur ecrire_les_fichiers_menus '' . self::LE_LA_ELEMENT_GERE . '' ['' . __LINE__ . '']'';
-                 return array( __xst => __xer);
-            }
-        }
-     
-        return array( __xst => __xsu);
-    }
-    /*
-      =============================================================================================================
-    */
-    function vv_menus_modifier1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $page_liste_des_menus1=false;
-        $l01=count($mat);
-        for( $i=1 ; $i < $l01 ; $i++ ){
-            
-            
-            if($mat[$i][1] === ''page_liste_des_menus1'' && $mat[$i][2] === ''f'' && $mat[$i][8] === 0){
-
-                $page_liste_des_menus1=true;
-
-            }
-
-        }
-        $tt=$this->sql0->sql_iii(
-             /*sql_200()*/ 200,
-            array(/**/
-                ''T0_chi_id_menu'' => $donnees_recues[__xva][''chi_id_menu'']
-            ),
-            $donnees_retournees
-        );
-        
-        if($tt[__xst] === __xsu){
-
-            /*
-              afr 
-              le parent de racine doit être racine
-            */
-            $tt=$this->sql0->sql_iii(
-                 /*sql_201()*/ 201,
-                array(/**/
-                    ''c_chi_id_menu'' => $tt[__xva][0][''T0.chi_id_menu''],
-                    ''n_chx_page_menu'' => $donnees_recues[__xva][''chx_page_menu''],
-                    ''n_che_ordre_menu'' => $donnees_recues[__xva][''che_ordre_menu''],
-                    ''n_cht_prerequis_rev_menu'' => $donnees_recues[__xva][''cht_prerequis_rev_menu''],
-                    ''n_cht_prerequis_php_menu'' => $donnees_recues[__xva][''cht_prerequis_php_menu''],
-                    
-                    
-                ),
-                $donnees_retournees
-            );
-            
-            if($tt[__xst] === __xer){
-
-                $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la modification pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '') ['' . __LINE__ . '']'';
-
-            }else if($tt[''changements''] === 1){
-
-
-
-                $ocm=$this->construire_menus($donnees_retournees,$mat,$donnees_recues);
-                if($ocm[__xst]!==__xsu){
-                  $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la construction des menus ['' . __LINE__ . '']'';
-                  return;
-                }
-                
-                if($page_liste_des_menus1 === true){
-
-                    $this->page_liste_des_menus1($donnees_retournees,$mat,$donnees_recues);
-
-                }else{
-
-                    $donnees_retournees[__xst]=__xsu;
-                }
-
-                $donnees_retournees[__x_signaux][__xsu][]=''👍 modification effectuée avec succès pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '') ['' . __LINE__ . '']'';
-
-            }else{
-
-                $donnees_retournees[__x_signaux][__xal][]=__LINE__ . '' aucune modification efféctuée'';
-            }
-
-
-        }else{
-
-            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . '' aucune modification efféctuée'';
-        }
-
-        $o1='''';
-    }
-    /*
-      =============================================================================================================
-    */
-    function page_menus_creer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $o1='''';
-        $o1 .= ''<h1>ajouter '' . self::UN_UNE_ELEMENT_GERE . '' <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_menus1.formulaire1(action1(page_liste_des_menus1))" title="revenir à la liste" >⬱</div></h1>'' . PHP_EOL;
-        $o1 .= ''<div id="vv_menus_creer1">'' . PHP_EOL;
-        /*
-          =====================================================================================================
-        */
-        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-        $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-        $o1 .= ''      <span>ordre</span>'' . PHP_EOL;
-        $o1 .= ''    </div>'' . PHP_EOL;
-        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-        $o1 .= ''      <input type="text" maxlength="64" id="che_ordre_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />'' . PHP_EOL;
-        $o1 .= ''    </div>'' . PHP_EOL;
-        $o1 .= ''  </div>'' . PHP_EOL;
-        /*
-          =====================================================================================================
-        */
-        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-        $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-        $o1 .= ''      <span>page</span>'' . PHP_EOL;
-        $o1 .= ''    </div>'' . PHP_EOL;
-        /**/
-        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-        $o1 .= ''        <input type="hidden" value=""  id="chx_page_menu" />'' . PHP_EOL;
-        $o1 .= ''        <span id="chx_page_menu_libelle">'' . PHP_EOL;
-        $o1 .= ''*indéfini'' . PHP_EOL;
-        $o1 .= ''</span>'' . PHP_EOL;
-        $parametre_sous_fenetre=''c_pages1.page_pages_sous_liste1('';
-        $parametre_sous_fenetre .= '' sans_menus1()'';
-        $parametre_sous_fenetre .= '' nom_champ_dans_parent1(chx_page_menu)'';
-        $parametre_sous_fenetre .= '' nom_libelle_dans_parent1(chx_page_menu_libelle)'';
-        $parametre_sous_fenetre .= '' libelle_si_vide1("*indéfini")'';
-        $parametre_sous_fenetre .= '')'';
-        $o1 .= ''      <div class="hug_bouton yy__x_signaux_1" '' . PHP_EOL;
-        $o1 .= ''data-hug_click="interface1.affiche_sous_fenetre1('' . htmlentities($parametre_sous_fenetre) . '')"  title="selectionner">📁</div>'' . PHP_EOL;
-        $o1 .= ''      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1('' . htmlentities($parametre_sous_fenetre) . '')"  title="annuler">🚫</div>'' . PHP_EOL;
-        $o1 .= ''    </div>'' . PHP_EOL;
-        /**/
-        $o1 .= ''  </div>'' . PHP_EOL;
-        /*
-          =====================================================================================================
-        */
-        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-        $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-        $o1 .= ''      <span>prérequis rev</span>'' . PHP_EOL;
-        $o1 .= ''    </div>'' . PHP_EOL;
-        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-        $o1 .= ''      <textarea id="cht_prerequis_rev_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ></textarea>'' . PHP_EOL;
-        $o1 .= ''    </div>'' . PHP_EOL;
-        $o1 .= ''  </div>'' . PHP_EOL;
-        /*
-          =====================================================================================================
-        */
-        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-        $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-        $o1 .= ''      <span>prérequis php</span>'' . PHP_EOL;
-        $o1 .= ''    </div>'' . PHP_EOL;
-        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-        $o1 .= ''      <textarea id="cht_prerequis_php_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ></textarea>'' . PHP_EOL;
-        $o1 .= ''    </div>'' . PHP_EOL;
-        $o1 .= ''  </div>'' . PHP_EOL;
-        /*
-          =====================================================================================================
-        */
-        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-        $o1 .= ''    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_creer1),page_liste_des_menus1())" title="" >ajouter et revenir à la liste</div>'';
-        $o1 .= ''    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_creer1))" title="" >ajouter</div>'';
-        $o1 .= ''    </div>'' . PHP_EOL;
-        $o1 .= ''  </div>'' . PHP_EOL;
-        /* */
-        $o1 .= ''</div>'' . PHP_EOL;
-        $donnees_retournees[__x_page] .= $o1;
-        $donnees_retournees[__xst]=__xsu;
-    }
-    /*
-      =============================================================================================================
-    */
-    function page_menus_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $o1='''';
-        $chi_id_menus='''';
-        $l01=count($mat);
-        for( $i=1 ; $i < $l01 ; $i++ ){
-            
-            
-            if($mat[$i][1] === ''chi_id_menu'' && $mat[$i + 1][2] === ''c'' && $mat[$i][2] === ''f''){
-
-                $chi_id_menus=$mat[$i + 1][1];
-                break;
-
-            }
-
-        }
-        
-        if(is_numeric($chi_id_menus) && $chi_id_menus > 3){
-
-            /*afr 1 */
-            $tt=$this->sql0->sql_iii(
-                 /*sql_200()*/ 200,
-                array(/**/
-                    ''T0_chi_id_menu'' => $chi_id_menus
-                ),
-                $donnees_retournees
-            );
-            
-            if($tt[__xst] === __xsu){
-
-                $o1 .= ''<h1>supprimer '' . self::UN_UNE_ELEMENT_GERE . ''<div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_menus1.formulaire1(action1(page_liste_des_menus1))" title="revenir à la liste" >⬱</div></h1>'' . PHP_EOL;
-                $o1 .= ''<div id="vv_menus_supprimer1">'' . PHP_EOL;
-                $o1 .= ''  <h3>confirmez voous la suppression de '' . self::LE_LA_ELEMENT_GERE . ''(<b>'' . $tt[__xva][0][''T0.chi_id_menu''] . ''</b>) ?</h3>'';
-                /*
-                  =====================================================================================================
-                */
-                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-                $o1 .= ''      <span>ordre</span>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-                $o1 .= ''      <input type="text" id="che_ordre_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="'' . enti1($tt[__xva][0][''T0.che_ordre_menu'']) . ''" />'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''  </div>'' . PHP_EOL;
-
-
-                /*
-                  =====================================================================================================
-                */
-                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-                $o1 .= ''      <span>page</span>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                /**/
-                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-                $o1 .= ''        <input type="hidden" value="'' . enti1($tt[__xva][0][''T0.chx_page_menu'']) . ''"  id="chx_page_menu" />'' . PHP_EOL;
-                $o1 .= ''        <span id="chx_page_menu_libelle">'' . PHP_EOL;
-                
-                
-                if($tt[__xva][0][''T0.chx_page_menu''] === null){
-
-                    $o1 .= ''*indéfini'' . PHP_EOL;
-
-                }else{
-
-                    $o1 .= ''('' . $tt[__xva][0][''T0.chx_page_menu''] . '') '' . htmlentities($tt[__xva][0][''T1.chp_nom_page'']) . PHP_EOL;
-                }
-                
-                $o1 .= ''</span>'' . PHP_EOL;
-                $parametre_sous_fenetre=''c_pages1.page_pages_sous_liste1('';
-                $parametre_sous_fenetre .= '' sans_menus1()'';
-                $parametre_sous_fenetre .= '' nom_champ_dans_parent1(chx_page_menu)'';
-                $parametre_sous_fenetre .= '' nom_libelle_dans_parent1(chx_page_menu_libelle)'';
-                $parametre_sous_fenetre .= '' libelle_si_vide1("*indéfini")'';
-                $parametre_sous_fenetre .= '')'';
-                $o1 .= ''      <div class="hug_bouton yy__x_signaux_1" '' . PHP_EOL;
-                $o1 .= ''data-hug_click="interface1.affiche_sous_fenetre1('' . htmlentities($parametre_sous_fenetre) . '')"  title="selectionner">📁</div>'' . PHP_EOL;
-                $o1 .= ''      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1('' . htmlentities($parametre_sous_fenetre) . '')"  title="annuler">🚫</div>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''  </div>'' . PHP_EOL;
-                /*
-                  =====================================================================================================
-                */
-                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-                $o1 .= ''      <span>préquis</span>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-                $o1 .= ''      <textarea id="cht_prerequis_rev_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">'' . enti1($tt[__xva][0][''T0.cht_prerequis_rev_menu'']) . ''</textarea>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''  </div>'' . PHP_EOL;
-                /*
-                  =====================================================================================================
-                */
-                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-                $o1 .= ''      <span>préquis php</span>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-                $o1 .= ''      <textarea id="cht_prerequis_php_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">'' . enti1($tt[__xva][0][''T0.cht_prerequis_php_menu'']) . ''</textarea>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''  </div>'' . PHP_EOL;
-                /*
-                  =====================================================================================================
-                */
-                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-                $o1 .= ''    <input type="hidden" value="'' . $tt[__xva][0][''T0.chi_id_menu''] . ''" id="chi_id_menu" />'' . PHP_EOL;
-                $o1 .= ''    <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_supprimer1),page_liste_des_menus1())" title="" >Je confirme la suppression</div>'';
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''  </div>'' . PHP_EOL;
-                $o1 .= ''</div>'' . PHP_EOL;
-                $donnees_retournees[__x_page] .= $o1;
-                $donnees_retournees[__xst]=__xsu;
-
-            }
-
-
-        }
-
-    }
-    /*
-      =============================================================================================================
-    */
-    function page_menus_modifier1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $o1='''';
-        $chi_id_menus='''';
-        $l01=count($mat);
-        for( $i=1 ; $i < $l01 ; $i++ ){
-            
-            
-            if($mat[$i][1] === ''chi_id_menu'' && $mat[$i + 1][2] === ''c'' && $mat[$i][2] === ''f''){
-
-                $chi_id_menus=$mat[$i + 1][1];
-                break;
-
-            }
-
-        }
-        
-        if(is_numeric($chi_id_menus) && $chi_id_menus > 0){
-
-            $tt=$this->sql0->sql_iii(
-                 /*sql_200()*/ 200,
-                array(/**/
-                    ''T0_chi_id_menu'' => $chi_id_menus
-                ),
-                $donnees_retournees
-            );
-            
-            if($tt[__xst] === __xsu){
-
-                $o1 .= ''<h1>modifier '' . self::LE_LA_ELEMENT_GERE . ''('' . $tt[__xva][0][''T0.chi_id_menu''] . '') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_menus1.formulaire1(action1(page_liste_des_menus1))" title="revenir à la liste" >⬱</div></h1>'' . PHP_EOL;
-                $o1 .= ''<div id="vv_menus_modifier1">'' . PHP_EOL;
-                /**/
-                $o1 .= ''  <input type="hidden" value="'' . $tt[__xva][0][''T0.chi_id_menu''] . ''" id="chi_id_menu" />'' . PHP_EOL;
-                /*
-                  =====================================================================================================
-                */
-                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-                $o1 .= ''      <span>ordre</span>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-                $o1 .= ''      <input type="text" id="che_ordre_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="'' . enti1($tt[__xva][0][''T0.che_ordre_menu'']) . ''" />'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''  </div>'' . PHP_EOL;
-                /*
-                  =====================================================================================================
-                */
-                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-                $o1 .= ''      <span>page</span>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                /**/
-                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-                $o1 .= ''        <input type="hidden" value="'' . enti1($tt[__xva][0][''T0.chx_page_menu'']) . ''"  id="chx_page_menu" />'' . PHP_EOL;
-                $o1 .= ''        <span id="chx_page_menu_libelle">'' . PHP_EOL;
-                
-                
-                if($tt[__xva][0][''T0.chx_page_menu''] === null){
-
-                    $o1 .= ''*indéfini'' . PHP_EOL;
-
-                }else{
-
-                    $o1 .= ''('' . $tt[__xva][0][''T0.chx_page_menu''] . '') '' . htmlentities($tt[__xva][0][''T1.chp_nom_page'']) . PHP_EOL;
-                }
-                
-                $o1 .= ''</span>'' . PHP_EOL;
-                $parametre_sous_fenetre=''c_pages1.page_pages_sous_liste1('';
-                $parametre_sous_fenetre .= '' sans_menus1()'';
-                $parametre_sous_fenetre .= '' nom_champ_dans_parent1(chx_page_menu)'';
-                $parametre_sous_fenetre .= '' nom_libelle_dans_parent1(chx_page_menu_libelle)'';
-                $parametre_sous_fenetre .= '' libelle_si_vide1("*indéfini")'';
-                $parametre_sous_fenetre .= '')'';
-                $o1 .= ''      <div class="hug_bouton yy__x_signaux_1" '' . PHP_EOL;
-                $o1 .= ''data-hug_click="interface1.affiche_sous_fenetre1('' . htmlentities($parametre_sous_fenetre) . '')"  title="selectionner">📁</div>'' . PHP_EOL;
-                $o1 .= ''      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1('' . htmlentities($parametre_sous_fenetre) . '')"  title="annuler">🚫</div>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''  </div>'' . PHP_EOL;
-                /*
-                  =====================================================================================================
-                */
-                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-                $o1 .= ''      <span>prérequis rev</span>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-                $o1 .= ''      <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_prerequis_rev_menu)))" title="formater le source rev">(😊)</div>'' . PHP_EOL;
-                $o1 .= ''      <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev_sans_saut1(zone_source(cht_prerequis_rev_menu)))" title="formater le source rev">-😊-</div>'' . PHP_EOL;
-                $o1 .= ''      <textarea id="cht_prerequis_rev_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">'' . enti1($tt[__xva][0][''T0.cht_prerequis_rev_menu'']) . ''</textarea>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''  </div>'' . PHP_EOL;
-                /*
-                  =====================================================================================================
-                */
-                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
-                $o1 .= ''      <span>prérequis php</span>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-                $o1 .= ''      <textarea id="cht_prerequis_php_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">'' . enti1($tt[__xva][0][''T0.cht_prerequis_php_menu'']) . ''</textarea>'' . PHP_EOL;
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''  </div>'' . PHP_EOL;
-                /*
-                  =====================================================================================================
-                */
-                
-                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
-                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
-                $o1 .= ''    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu('' . $chi_id_menus . ''),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>'';
-                $o1 .= ''    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu('' . $chi_id_menus . ''))" title="" >enregistrer</div>'';
-                $o1 .= ''    </div>'' . PHP_EOL;
-                $o1 .= ''  </div>'' . PHP_EOL;
-                /**/
-                $o1 .= ''</div>'' . PHP_EOL;
-                $donnees_retournees[__x_page] .= $o1;
-                $donnees_retournees[__xst]=__xsu;
-
-            }
-
-
-        }else{
-
-            $this->page_liste_des_menus1(
-                $donnees_retournees,
-                 /*matrice*/ $mat,
-                $donnees_recues
-            );
-        }
-
-    }
-    /*
-      =============================================================================================================
-      Pour les iframes sur les menus
-      =============================================================================================================
-    */
-    function vv_menus_filtre_choix_1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $txtPar=''__num_page(0)'';
-        $nouvelles_valeurs=array( ''__num_page'' => 0);
-        foreach($donnees_recues[__xva] as $k0 => $v0){
-            
-            if($k0 !== ''__num_page''){
-
-                $nouvelles_valeurs[$k0]=$v0;
-                
-                if(is_numeric($v0)){
-
-                    $txtPar .= '','' . $k0 . ''('' . $v0 . '')'';
-
-                }else{
-
-                    $txtPar .= '','' . $k0 . ''(\'''' . str_replace(''\'''',''\\\'''',$v0) . ''\'')'';
-                }
-
-
-            }
-
-        }
-        $_SESSION[__X_CLE_APPLICATION][''c_menus1.page_menus_sous_liste1'']=$nouvelles_valeurs;
-        $obj_matrice=$GLOBALS[''obj_rev1'']->rev_vers_matrice(''c_menus1.page_menus_sous_liste1('' . $txtPar . '')'');
-        
-        if($obj_matrice[__xst] === __xsu){
-
-            $this->page_menus_sous_liste1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);
-
-        }else{
-
-            $donnees_retournees[__x_signaux][__xer][]=__LINE__ . '' erreur de convertion de '' . $txtPar . '''';
-        }
-
-    }
-    /*
-      =============================================================================================================
-    */
-    function page_menus_sous_liste1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $fonction1=''c_menus1.page_menus_sous_liste1'';
-        /* déverminage */
-        $__nbMax=10;
-        /*
-          $donnees_retournees[__x_signaux][__xif][]=__LINE__ . ''TODO $par ''.var_export($par,true);
-        */
-        $par=array();
-        $par[''T0_chi_id_menu'']='''';
-        $par[''T0_chx_page_menu'']='''';
-        $par[''__num_page'']=0;
-        $numpage=-1;
-        $par_mat=array();
-        $l01=count($mat);
-        $provenance_menu=false;
-        /* $donnees_retournees[__x_signaux][__xdv][]=''$mat =''.json_encode( $mat  , JSON_FORCE_OBJECT );*/
-        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
-            
-            
-            if($fonction1 === $mat[$i][1]){
-
-                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
-                    
-                    
-                    if($mat[$j][2] === ''f'' && $mat[$j][8] === 1 && $mat[$j + 1][2] === ''c''){
-
-                        /* $donnees_retournees[__x_signaux][__xdv][]=''$mat[$j][1] =''.json_encode( $mat[$j][1] . '' '' . $mat[$j+1][1]  , JSON_FORCE_OBJECT );*/
-                        
-                        if($mat[$j][1] === ''__num_page''){
-
-                            $numpage=$mat[$j + 1][1];
-                            $par_mat[''__num_page'']=$mat[$j + 1][1];
-                            $par[''__num_page'']=$mat[$j + 1][1];
-
-                        }else if($mat[$j][1] === ''indice_menu''){
-
-                            $numpage=0;
-                            $par_mat[''__num_page'']=0;
-                            $provenance_menu=true;
-                            $par[''__num_page'']=0;
-
-                        }else if($mat[$j + 1][1] !== ''''){
-
-                            $par_mat[$mat[$j][1]]=$mat[$j + 1][1];
-                        }
-
-
-                    }
-
-                }
-
-            }
-
-        }
-        
-        if(false === isset($_SESSION[__X_CLE_APPLICATION][$fonction1])){
-
-            $par=array_merge($par,$par_mat);
-            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;
-
-        }else{
-
-            $par=$_SESSION[__X_CLE_APPLICATION][$fonction1];
-            
-            if($provenance_menu === true){
-
-                $par[''__num_page'']=0;
-
-            }else{
-
-                
-                if($numpage === -1){
-
-
-                }else{
-
-                    $par[''__num_page'']=$numpage;
-                }
-
-            }
-
-            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;
-        }
-
-        $par[''T0_chi_id_menu'']=$par[''T0_chi_id_menu'']??'''';
-        $par[''T0_chx_page_menu'']=$par[''T0_chx_page_menu'']??'''';
-        $nom_filtre=''vv_menus_filtre_choix_1'';
-        $o1=''<h1>choisir un menu parent</h1>'';
-        $__num_page=!isset($par[''__num_page'']) ? 0 : (int)($par[''__num_page'']);
-        $__debut=$__num_page * $__nbMax;
-        $o1 .= ''<div class="yy_filtre_liste1" id="'' . $nom_filtre . ''">'' . PHP_EOL;
-        /**/
-        $o1 .= ''   <div>'' . PHP_EOL;
-        $o1 .= ''      <div><span>nom</span></div>'' . PHP_EOL;
-        $o1 .= ''      <div><input type="text" id="T0_chx_page_menu" value="'' . $par[''T0_chx_page_menu''] . ''" size="8" maxlength="64" autocapitalize="off" />'' . PHP_EOL;
-        
-        if($par[''T0_chx_page_menu''] !== ''''){
-
-            $o1 .= ''         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id(T0_chx_page_menu),value(\''\''))),c_menus1.formulaire1(conteneur1('' . $nom_filtre . ''))" >x</span>'';
-
-        }
-
-        $o1 .= ''      </div>'' . PHP_EOL;
-        $o1 .= ''   </div>'' . PHP_EOL;
-        /**/
-        $o1 .= ''   <div>'' . PHP_EOL;
-        $o1 .= ''    <div><span>id</span></div>'' . PHP_EOL;
-        $o1 .= ''    <div><input type="text" id="T0_chi_id_menu" value="'' . $par[''T0_chi_id_menu''] . ''" size="8" maxlength="32" autocapitalize="off" /></div>'' . PHP_EOL;
-        $o1 .= ''   </div>'' . PHP_EOL;
-        /**/
-        $o1 .= ''   <div>    '' . PHP_EOL;
-        $o1 .= ''     <div><span>&nbsp;</span></div>'' . PHP_EOL;
-        $o1 .= ''     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_menus1.formulaire1(conteneur1('' . $nom_filtre . ''))" >🔎</div></div>'' . PHP_EOL;
-        $o1 .= ''     <input type="hidden" id="__num_page" value="'' . $__debut . ''" />'' . PHP_EOL;
-        $o1 .= ''   </div> '' . PHP_EOL;
-        /**/
-        $o1 .= ''</div>'';
-        $tt=$this->sql0->sql_iii(
-             /*sql_98()*/ 98,
-             /**/ array( ''T0_chi_id_menu'' => $par[''T0_chi_id_menu''] === '''' ? '''' : $par[''T0_chi_id_menu''], ''T0_chx_page_menu'' => $par[''T0_chx_page_menu''] === '''' ? '''' : '''' . $par[''T0_chx_page_menu''] . '''', ''quantitee'' => $__nbMax, ''debut'' => $__debut),
-            $donnees_retournees
-        );
-        
-        if($tt[__xst] === __xer){
-
-            $donnees_retournees[__x_signaux][__xer][]=''Erreur dans la liste des menus ['' . __LINE__ . '']'';
-            return;
-
-        }
-
-        /*
-          $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ''TODO $tt ''.var_export($tt,true);
-        */
-        $bouton_avant='''';
-        $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt[''nombre''],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));
-        $lsttbl='''';
-        $lsttbl .= ''<thead><tr>'';
-        $lsttbl .= ''<th></th>'';
-        $lsttbl .= ''<th>id</th>'';
-        $lsttbl .= ''<th>menu</th>'';
-        $lsttbl .= ''</tr></thead><tbody>'';
-        foreach($tt[__xva] as $k0 => $v0){
-            $lsttbl .= ''<tr>'';
-            /**/
-            $parametres='''';
-            $parametres .= ''interface1.choisir_dans_sous_fenetre1('';
-            $parametres .= ''    id1('' . $v0[''T0.chi_id_menu''] . '')'';
-            $parametres .= ''    libelle1("('' . $v0[''T0.chi_id_menu''] . '') '' . $v0[''T0.chx_page_menu''] . ''" )'';
-            $parametres .= '')'';
-            $lsttbl .= ''<td style="max-width:calc(1*var(t_1boutons_carres))">'';
-            $lsttbl .= ''  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="'' . htmlentities($parametres) . ''">=&gt;</div>'';
-            $lsttbl .= ''</td>'';
-            /**/
-            $lsttbl .= ''<td style="text-align:center;">'';
-            $lsttbl .= '''' . $v0[''T0.chi_id_menu''] . '''';
-            $lsttbl .= ''</td>'';
-            /**/
-            $lsttbl .= ''<td style="text-align:left;">'';
-            
-            if($v0[''T0.chx_page_menu''] !== null){
-
-                $lsttbl .= '''' . enti1($v0[''T0.chx_page_menu'']) . '''';
-
-            }
-
-            $lsttbl .= ''</td>'';
-            /**/
-            /**/
-            $lsttbl .= ''</tr>'';
-        }
-        $o1 .= ''<div class="yy_div_contenant_table"><table class="yy_table_liste1">'' . PHP_EOL . $lsttbl . ''</tbody></table></div>'' . PHP_EOL;
-        $donnees_retournees[__x_page] .= $o1;
-        $donnees_retournees[__xst]=__xsu;
-    }
-    /*
-      =============================================================================================================
-    */
-    function page_liste_des_menus1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $__nbMax=10;
-        $par=array();
-        $par[''T0_chi_id_menu'']='''';
-        $par[''T0_chx_page_menu'']='''';
-        $par[''__num_page'']=0;
-        $numpage=-1;
-        $par_mat=array();
-        $l01=count($mat);
-        $provenance_menu=false;
-        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
-            
-            
-            if(''c_menus1.page_liste_des_menus1'' === $mat[$i][1]){
-
-                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
-                    
-                    
-                    if($mat[$j][2] === ''f'' && $mat[$j][8] === 1 && $mat[$j + 1][2] === ''c''){
-
-                        
-                        if($mat[$j][1] === ''__num_page''){
-
-                            $numpage=$mat[$j + 1][1];
-                            $par_mat[''__num_page'']=$mat[$j + 1][1];
-                            $par[''__num_page'']=$mat[$j + 1][1];
-
-                        }else if($mat[$j][1] === ''indice_menu''){
-
-                            $numpage=0;
-                            $par_mat[''__num_page'']=0;
-                            $provenance_menu=true;
-                            $par[''__num_page'']=0;
-
-                        }else if($mat[$j + 1][1] !== ''''){
-
-                            $par_mat[$mat[$j][1]]=$mat[$j + 1][1];
-                        }
-
-
-                    }
-
-                }
-
-            }
-
-        }
-        
-        if(false === isset($_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1''])){
-
-            $par=array_merge($par,$par_mat);
-            $_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1'']=$par;
-
-        }else{
-
-            $par=$_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1''];
-            
-            if($provenance_menu === true){
-
-                $par[''__num_page'']=0;
-
-            }else{
-
-                
-                if($numpage === -1){
-
-
-                }else{
-
-                    $par[''__num_page'']=$numpage;
-                }
-
-            }
-
-            $_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1'']=$par;
-        }
-
-        $par[''T0_chi_id_menu'']=$par[''T0_chi_id_menu'']??'''';
-        $par[''T0_chx_page_menu'']=$par[''T0_chx_page_menu'']??'''';
-        $fonction1=''c_menus1.page_liste_des_menus1'';
-        $nom_filtre=''vv_menus_filtre1'';
-        $o1=''<h1>Liste des menus</h1>'';
-        $__num_page=!isset($par[''__num_page'']) ? 0 : (int)($par[''__num_page'']);
-        $__debut=$__num_page * $__nbMax;
-        $o1 .= ''<div class="yy_filtre_liste1" id="'' . $nom_filtre . ''">'' . PHP_EOL;
-        /*
-          
-        */
-        $o1 .= ''   <div>'' . PHP_EOL;
-        $o1 .= ''      <div><span>page</span></div>'' . PHP_EOL;
-        $o1 .= ''      <div><input type="text" id="T0_chx_page_menu" value="'' . $par[''T0_chx_page_menu''] . ''" size="8" maxlength="64" autocapitalize="off" />'' . PHP_EOL;
-        $o1 .= ''      </div>'' . PHP_EOL;
-        $o1 .= ''   </div>'' . PHP_EOL;
-        /*
-          
-        */
-        $o1 .= ''   <div>'' . PHP_EOL;
-        $o1 .= ''    <div><span>id</span></div>'' . PHP_EOL;
-        $o1 .= ''    <div><input type="text" id="T0_chi_id_menu" value="'' . $par[''T0_chi_id_menu''] . ''" size="8" maxlength="32" autocapitalize="off" /></div>'' . PHP_EOL;
-        $o1 .= ''   </div>'' . PHP_EOL;
-        /*
-          
-        */
-        $o1 .= ''   <div>    '' . PHP_EOL;
-        $o1 .= ''     <div><span>&nbsp;</span></div>'' . PHP_EOL;
-        $o1 .= ''     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_menus1.formulaire1(conteneur1('' . $nom_filtre . ''))" >🔎</div></div>'' . PHP_EOL;
-        $o1 .= ''     <input type="hidden" id="__num_page" value="'' . $__debut . ''" />'' . PHP_EOL;
-        $o1 .= ''   </div> '' . PHP_EOL;
-        $o1 .= ''</div>'';
-        $tt=$this->sql0->sql_iii(
-             /*sql_98()*/ 98,
-            array(
-                /**/
-                ''T0_chi_id_menu'' => $par[''T0_chi_id_menu''] === '''' ? '''' : $par[''T0_chi_id_menu''],
-                ''T0_chx_page_menu'' => $par[''T0_chx_page_menu''] === '''' ? '''' : '''' . $par[''T0_chx_page_menu''] . '''',
-                ''quantitee'' => $__nbMax,
-                ''debut'' => $__debut
-            ),
-            $donnees_retournees
-        );
-        
-        if($tt[__xst] === __xer){
-
-            $o1='''';
-            $o1 .= ''<div>'';
-            $o1 .= ''  <h3 class="yy__x_signaux_0">Erreur technique ['' . __METHOD__ . '' '' . __LINE__ . '']</h1>'';
-            $o1 .= ''  <div style="text-align:center">'';
-            $o1 .= ''    <div class="hug_bouton" data-hug_click="c_menus1.page_liste_des_menus1(T0_chp_priorite_menu2(99),indice_menu(10))" title="menus" >'';
-            $o1 .= ''      Réessayer'';
-            $o1 .= ''    </div>'';
-            $o1 .= ''    <br /><br />Si le problème persiste, veuillez contacter la maintenance de l\''application'';
-            $o1 .= ''  </div>'';
-            unset($_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1'']);
-            
-            if($GLOBALS[DEVER_SRV] >= 2){
-
-                $o1 .= ''  <pre>'' . $tt[''sql0''] . ''</per>'';
-
-            }
-
-            $o1 .= ''</div>'';
-            /* en fonction du déverminage */
-            $donnees_retournees[__x_page] .= $o1;
-            $donnees_retournees[__xst]=__xsu;
-            return;
-
-        }
-
-        /*
-          $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ''TODO $tt ''.var_export($tt,true);
-        */
-        $bouton_avant=''<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_menus1.formulaire1(action1(page_menus_creer1))" title="nouveau menu" >+*</div>'';
-        $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt[''nombre''],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));
-        $lsttbl='''';
-        $lsttbl .= ''<thead><tr>'';
-        $lsttbl .= ''<th>action</th>'';
-        $lsttbl .= ''<th>id</th>'';
-        $lsttbl .= ''<th>ordre</th>'';
-        $lsttbl .= ''<th>page</th>'';
-        $lsttbl .= ''<th>acces</th>'';
-        $lsttbl .= ''<th>groupe</th>'';
-        $lsttbl .= ''<th>métier</th>'';
-        $lsttbl .= ''</tr></thead><tbody>'';
-        foreach($tt[__xva] as $k0 => $v0){
-            $lsttbl .= ''<tr>'';
-            /**/
-            $lsttbl .= ''<td data-label="" style="text-align:left!important;">'';
-            $lsttbl .= '' <div style="display:flex;min-width:calc(3*var(t_1boutons_carres))">'';
-            $lsttbl .= ''  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_menus1.formulaire1(action1(page_menus_modifier1),chi_id_menu('' . $v0[''T0.chi_id_menu''] . ''))">✎</div>'';
-            
-            if($v0[''T0.chi_id_menu''] <= 3){
-
-                $lsttbl .= ''  <div class="hug_bouton_inactif">🗑</div>'';
-
-            }else{
-
-                $lsttbl .= ''  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_menus1.formulaire1(action1(page_menus_supprimer1),chi_id_menu('' . $v0[''T0.chi_id_menu''] . ''))">🗑</div>'';
-            }
-
-            $lsttbl .= '' </div>'';
-            $lsttbl .= ''</td>'';
-            /**/
-            $lsttbl .= ''<td style="text-align:center;">'';
-            $lsttbl .= '''' . $v0[''T0.chi_id_menu''] . '''';
-            $lsttbl .= ''</td>'';
-            /**/
-            $lsttbl .= ''<td style="text-align:center;">'';
-            $lsttbl .= '''' . $v0[''T0.che_ordre_menu''] . '''';
-            $lsttbl .= ''</td>'';
-            /**/
-            $lsttbl .= ''<td style="text-align:left;">'';
-            $lsttbl .= ''('' . $v0[''T0.chx_page_menu''] . '') '' . enti1($v0[''T1.chp_nom_page'']) . '''';
-            $lsttbl .= ''</td>'';
-            /**/
-            $lsttbl .= ''<td style="text-align:center;">'';
-            $lsttbl .= '''' . enti1($v0[''T2.chp_nom_acces'']) . '''';
-            $lsttbl .= ''</td>'';
-            /**/
-            $lsttbl .= ''<td style="text-align:center;">'';
-            $lsttbl .= ''('' . $v0[''T2.chx_groupe_acces''] . '') '' . enti1($v0[''T3.chp_nom_groupe'']) . '''';
-            $lsttbl .= ''</td>'';
-            /**/
-            $lsttbl .= ''<td style="text-align:center;">'';
-            $lsttbl .= ''('' . $v0[''T2.chx_metier_acces''] . '') '' . enti1($v0[''T4.chp_nom_metier'']) . '''';
-            $lsttbl .= ''</td>'';
-            /**/
-            $lsttbl .= ''</tr>'';
-        }
-        $o1 .= ''<div class="yy_div_contenant_table"><table class="yy_table_liste1">'' . PHP_EOL . $lsttbl . ''</tbody></table></div>'' . PHP_EOL;
-        $donnees_retournees[__x_page] .= $o1;
-        $donnees_retournees[__x_action]=''c_menus1.page_liste_des_menus1()'';
-        $donnees_retournees[__xst]=__xsu;
-    }
-}
-/*
-  =====================================================================================================================
-*/','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9');
+('47','1','c_menus1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('48','1','c_astjs_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('49','1','c_astphpnikic_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('50','1','c_astphpparseur_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('51','1','c_astpostcss_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('52','1','c_astsql_parseur_cst_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('53','1','c_astsqliteparseur_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('54','1','c_fonctions_js1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('55','1','c_html_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('56','1','c_interface1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('57','1','c_requete_sql1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('58','1','c_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('59','1','c_rev_vers_css1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('60','1','c_rev_vers_html1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('61','1','c_rev_vers_js1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('62','1','c_rev_vers_php1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('63','1','c_rev_vers_sql1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('64','1','c_rev_vers_texte1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('65','1','c_svg_bdd1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('66','1','c_texte_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('67','1','c_worker1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('68','1','Sortable.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('69','1','acorn.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('70','1','php_parser.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('71','1','postcss0.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('72','1','sql_parser_cst.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('73','1','sqlite_parser.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11');
 
 
 /*
@@ -5192,7 +4001,9 @@ INSERT INTO tbl_dossiers (chi_id_dossier,chx_projet_dossier,chp_nom_dossier,chx_
 ('6','1','_sqls','2','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
 ('7','1','__client','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('8','1','test','3','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('9','1','_php_inc','2','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+('9','1','_php_inc','2','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('10','1','_js','7','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('11','1','bibliotheques_externes','10','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 
 /*
@@ -6872,7 +5683,7 @@ créer_table(
       nom_long_de_la_table(''A faire  tbl_pages''),
       nom_court_de_la_table(''A faire tbl_pages''),
       nom_bref_de_la_table(''A faire tbl_pages''),
-      transform_table_sur_svg(translate(207.5,509.5))
+      transform_table_sur_svg(translate(66.5,396.5))
    ),
    champs(
       champ(
@@ -6939,6 +5750,22 @@ créer_table(
          )
       ),
       champ(
+         nom_du_champ(''chx_projet_page''),
+         type(''INTEGER''),
+         references(tbl_projets,chi_id_projet),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chx_projet_page''),
+            champ(''chx_projet_page''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chx),
+            afficher_champ_dans_svg(1),
+            refe_enfant_droite(1)
+         )
+      ),
+      champ(
          nom_du_champ(''chx_source_page''),
          type(''INTEGER''),
          references(tbl_sources,chi_id_source),
@@ -6968,22 +5795,6 @@ créer_table(
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
             afficher_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chx_projet_page''),
-         type(''INTEGER''),
-         references(tbl_projets,chi_id_projet),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chx_projet_page''),
-            champ(''chx_projet_page''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chx),
-            afficher_champ_dans_svg(1),
-            refe_enfant_droite(1)
          )
       ),
       champ(
@@ -7111,7 +5922,7 @@ créer_table(
       nom_long_de_la_table(''A faire  tbl_menus''),
       nom_court_de_la_table(''A faire tbl_menus''),
       nom_bref_de_la_table(''A faire tbl_menus''),
-      transform_table_sur_svg(translate(374.5,666.5))
+      transform_table_sur_svg(translate(35.5,629.5))
    ),
    champs(
       champ(
@@ -7144,7 +5955,6 @@ créer_table(
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
             afficher_champ_dans_svg(1),
-            refe_enfant_droite(1),
             refe_parent_gauche(1)
          )
       ),
@@ -7187,6 +5997,20 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''cht_prerequis_php_menu''),
             champ(''cht_prerequis_php_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(cht),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_libelle_menu''),
+         type(''TEXT''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_libelle_menu''),
+            champ(''cht_libelle_menu''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
@@ -7379,31 +6203,31 @@ INSERT INTO tbl_metiers (chi_id_metier,chp_nom_metier,chx_parent_metier) VALUES
   ===============================
 */
 
-INSERT INTO tbl_pages (chi_id_page,chp_nom_page,chx_parent_page,chx_acces_page,chx_source_page,chp_methode_page,chx_projet_page,cht_complement_page,cht_contenu_methode_page) VALUES
-('1','accueil',NULL,'2','18','recupere_la_page_d_accueil','1',NULL,NULL),
-('2','aide et paramètres',NULL,'2','19','recupere_la_page_d_aide','1',NULL,NULL),
-('3','connexion',NULL,'2','20','recupere_la_page_de_connexion','1',NULL,NULL),
-('4','tâches',NULL,'1','44','page_liste_des_taches1','1',NULL,'T0_chp_priorite_tache2(99)'),
-('5','matrice',NULL,'1','35','page1','1','maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_rev1''))))',NULL),
-('6','js',NULL,'1','34','page1','1','maj_interface2(modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_js_rev1''))))',NULL),
-('7','html',NULL,'1','33','page1','1','maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_html_rev1''))))',NULL),
-('8','php',NULL,'1','36','page1','1','maj_interface2(modifier( id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_php_rev1''))))',NULL),
-('9','sql',NULL,'1','37','page1','1','maj_interface2(modifier( id(vv_txtarea_sql_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_sql_rev1''))))',NULL),
-('10','css',NULL,'1','32','page1','1','maj_interface2(modifier(id(vv_txtarea_css_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_css_rev1''))))',NULL),
-('11','txt',NULL,'1','38','page1','1','maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_texte_rev1''))))',NULL),
-('12','projets',NULL,'1','30','page_projets_liste1','1',NULL,NULL),
-('13','fido',NULL,'1','25','page_dossiers_liste1','1',NULL,NULL),
-('14','sources',NULL,'1','41','page_liste_des_sources1','1',NULL,NULL),
-('15','bases',NULL,'1','22','page_liste_des_bases1','1','',''),
-('16','requêtes',NULL,'1','31','page_liste_des_requetes1','1',NULL,NULL),
-('17','revs',NULL,'1','40','page_liste_des_revs1','1',NULL,NULL),
-('18','groupes',NULL,'1','26','page_liste_des_groupes1','1','',''),
-('19','métiers',NULL,'1','27','page_liste_des_metiers1','1',NULL,NULL),
-('20','utilisateurs',NULL,'1','45','page_liste_des_utilisateurs1','1',NULL,NULL),
-('21','accès',NULL,'1','21','page_liste_des_acces1','1',NULL,NULL),
-('22','pages',NULL,'1','28','page_liste_des_pages1','1',NULL,NULL),
-('23','menus',NULL,'1','47','page_liste_des_menus1','1',NULL,NULL),
-('24','profile',NULL,'1','29','recupere_la_page_des_coordonnees','1',NULL,NULL);
+INSERT INTO tbl_pages (chi_id_page,chp_nom_page,chx_parent_page,chx_acces_page,chx_projet_page,chx_source_page,chp_methode_page,cht_complement_page,cht_contenu_methode_page) VALUES
+('1','accueil',NULL,'2','1','18','recupere_la_page_d_accueil',NULL,NULL),
+('2','aide et paramètres',NULL,'2','1','19','recupere_la_page_d_aide',NULL,NULL),
+('3','connexion',NULL,'2','1','20','recupere_la_page_de_connexion',NULL,NULL),
+('4','tâches',NULL,'1','1','44','page_liste_des_taches1',NULL,'T0_chp_priorite_tache2(99)'),
+('5','matrice',NULL,'1','1','35','page1','maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_rev1''))))',NULL),
+('6','js',NULL,'1','1','34','page1','maj_interface2(modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_js_rev1''))))',NULL),
+('7','html',NULL,'1','1','33','page1','maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_html_rev1''))))',NULL),
+('8','php',NULL,'1','1','36','page1','maj_interface2(modifier( id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_php_rev1''))))',NULL),
+('9','sql',NULL,'1','1','37','page1','maj_interface2(modifier( id(vv_txtarea_sql_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_sql_rev1''))))',NULL),
+('10','css',NULL,'1','1','32','page1','maj_interface2(modifier(id(vv_txtarea_css_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_css_rev1''))))',NULL),
+('11','txt',NULL,'1','1','38','page1','maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_texte_rev1''))))',NULL),
+('12','projets',NULL,'1','1','30','page_projets_liste1',NULL,NULL),
+('13','fido',NULL,'1','1','25','page_dossiers_liste1',NULL,NULL),
+('14','sources',NULL,'1','1','41','page_liste_des_sources1',NULL,NULL),
+('15','bases',NULL,'1','1','22','page_liste_des_bases1','',''),
+('16','requêtes',NULL,'1','1','31','page_liste_des_requetes1',NULL,NULL),
+('17','revs',NULL,'1','1','40','page_liste_des_revs1',NULL,NULL),
+('18','groupes',NULL,'1','1','26','page_liste_des_groupes1','',''),
+('19','métiers',NULL,'1','1','27','page_liste_des_metiers1',NULL,NULL),
+('20','utilisateurs',NULL,'1','1','45','page_liste_des_utilisateurs1',NULL,NULL),
+('21','accès',NULL,'1','1','21','page_liste_des_acces1',NULL,NULL),
+('22','pages',NULL,'1','1','28','page_liste_des_pages1',NULL,NULL),
+('23','menus',NULL,'1','1','47','page_liste_des_menus1',NULL,NULL),
+('24','profile',NULL,'1','1','29','recupere_la_page_des_coordonnees',NULL,NULL);
 
 
 /*
@@ -7423,43 +6247,43 @@ INSERT INTO tbl_acces (chi_id_acces,chp_nom_acces,chx_groupe_acces,chx_metier_ac
   ===============================
 */
 
-INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_rev_menu,cht_prerequis_php_menu) VALUES
-('1','1','0',NULL,NULL),
-('2','2','1',NULL,NULL),
-('3','3','0',NULL,NULL),
+INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_rev_menu,cht_prerequis_php_menu,cht_libelle_menu) VALUES
+('1','1','0',NULL,NULL,'<svg viewBox="6 8  49 59" style="transform:scale(0.95, 0.95) translate(0px, 0px);"><path d=" M 8 29 L 31 6 L 54 29 V 33 H 51 V 58  H 11 V 33 H 8 V 29" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:0.01;"></path><path d="M 17 57 H 11 c 0 -2 1 -4 2 -2 " stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:lawngreen;fill:transparent;stroke-width:4;"></path><rect x="20" y="27" width="7" height="7" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:0.1;"></rect><rect x="34" y="27" width="7" height="7" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:0.1;"></rect><rect x="34" y="41" width="7" height="7" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:0.1;"></rect><rect x="20" y="41" width="7" height="16" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:red;stroke-width:0.1;"></rect><path d=" M 11 30 l 20 -20 l 20 20 " stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:5;"></path><path d="M 30 57 H 50 c 0 -2 -1 -4 -2 -2 " stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:lawngreen;fill:transparent;stroke-width:4;"></path></svg>'),
+('2','2','1',NULL,NULL,'<svg viewBox="-106 -100  213 200" style="transform:scale(1,1) translate(0px, 0px)"><path d=" M 100 0 C 100 0 79.7763 5.9784 79.7763 5.9784 C 79.7763 5.9784 77.9942 17.8017 77.9942 17.8017 C 77.9942 17.8017 95.5573 29.4755 95.5573 29.4755 C 95.5573 29.4755 90.0969 43.3884 90.0969 43.3884 C 90.0969 43.3884 69.282 40 69.282 40 C 69.282 40 62.5465 49.8792 62.5465 49.8792 C 62.5465 49.8792 73.3052 68.0173 73.3052 68.0173 C 73.3052 68.0173 62.349 78.1831 62.349 78.1831 C 62.349 78.1831 45.0656 66.0991 45.0656 66.0991 C 45.0656 66.0991 34.7107 72.0775 34.7107 72.0775 L 32.8729 50.3378  A 60.1854 60.4115 0 1 0 -25.1945 54.3907 L -23.5792 76.4455 C -26.0652 75.4525 -34.7107 72.0775 -34.7107 72.0775 C -34.7107 72.0775 -50 86.6025 -50 86.6025 C -50 86.6025 -62.349 78.1831 -62.349 78.1831 C -62.349 78.1831 -54.4138 58.6441 -54.4138 58.6441 C -54.4138 58.6441 -62.5465 49.8792 -62.5465 49.8792 C -62.5465 49.8792 -82.6239 56.332 -82.6239 56.332 C -82.6239 56.332 -90.0969 43.3884 -90.0969 43.3884 C -90.0969 43.3884 -74.4699 29.2273 -74.4699 29.2273 C -74.4699 29.2273 -77.9942 17.8017 -77.9942 17.8017 C -77.9942 17.8017 -98.8831 14.9042 -98.8831 14.9042 C -98.8831 14.9042 -100 0 -100 0 C -100 0 -79.7763 -5.9784 -79.7763 -5.9784 C -79.7763 -5.9784 -77.9942 -17.8017 -77.9942 -17.8017 C -77.9942 -17.8017 -95.5573 -29.4755 -95.5573 -29.4755 C -95.5573 -29.4755 -90.0969 -43.3884 -90.0969 -43.3884 C -90.0969 -43.3884 -69.282 -40 -69.282 -40 C -69.282 -40 -62.5465 -49.8792 -62.5465 -49.8792 C -62.5465 -49.8792 -73.3052 -68.0173 -73.3052 -68.0173 C -73.3052 -68.0173 -62.349 -78.1831 -62.349 -78.1831 C -62.349 -78.1831 -45.0656 -66.0991 -45.0656 -66.0991 C -45.0656 -66.0991 -34.7107 -72.0775 -34.7107 -72.0775 C -34.7107 -72.0775 -36.5341 -93.0874 -36.5341 -93.0874 C -36.5341 -93.0874 -22.2521 -97.4928 -22.2521 -97.4928 C -22.2521 -97.4928 -11.9234 -79.1065 -11.9234 -79.1065 C -11.9234 -79.1065 0 -80 0 -80 C 0 -80 7.473 -99.7204 7.473 -99.7204 C 7.473 -99.7204 22.2521 -97.4928 22.2521 -97.4928 C 22.2521 -97.4928 23.5804 -76.4458 23.5804 -76.4458 C 23.5804 -76.4458 34.7107 -72.0775 34.7107 -72.0775 C 34.7107 -72.0775 50 -86.6025 50 -86.6025 C 50 -86.6025 62.349 -78.1831 62.349 -78.1831 C 62.349 -78.1831 54.4138 -58.6441 54.4138 -58.6441 C 54.4138 -58.6441 62.5465 -49.8792 62.5465 -49.8792 C 62.5465 -49.8792 82.6239 -56.332 82.6239 -56.332 C 82.6239 -56.332 90.0969 -43.3884 90.0969 -43.3884 C 90.0969 -43.3884 74.4699 -29.2273 74.4699 -29.2273 C 74.4699 -29.2273 77.9942 -17.8017 77.9942 -17.8017 C 77.9942 -17.8017 98.8831 -14.9042 98.8831 -14.9042 C 98.8831 -14.9042 100 0 100 0 C 100 0 100 0 100 0" style="stroke-width:1;stroke:blue;fill:blue;" transform="rotate(4.3643 0 0 )"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -19.9035 0.0665 H -47.5914 C -47.5803 -34.716 -29.2323 -48.6369 0.1918 -48.597 C 36.6062 -48.6442 45.8185 -25.4943 45.5704 -0.0489 C 45.13423 14.3612 35.214 28.2112 19.5487 43.9057 C 10.4376 51.5727 10.8315 58.2471 10.8315 61.997  H -12.0032 C -12.1844 60.6516 -11.786 47.7718 -8.6172 42.8653 C -1.4916 31.7469 17.8786 11.5852 17.915 -0.0303 C 18.6014 -16.3637 12.0753 -24.5501 -0.7396 -23.9992 C -13.9158 -23.9741 -20.6076 -15.9549 -20.0506 -0.1851 M -12.881 74.4678 H 11.4458 L 7.5960 93.5628 H -7.4803 Z" style="stroke:forestgreen;fill:forestgreen;stroke-width:1;"></path></svg>'),
+('3','3','0',NULL,NULL,'<svg viewBox="19 4  130 142"><path d=" M 73 80 A 34 35 48 1 1 92 60 l 46 46 l 0 21 l -22 0 l 0 -12 l -11 0 l 0 -11 l -11 0 l 0 -11 l -8 0 l -13 -13 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:gold;stroke-width:4;"></path><circle cx="51" cy="38" r="8" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" transform="" style="stroke:red;fill:black;stroke-width:4;"></circle></svg>'),
 ('4','4','1','appelf(
    nomf(isset),
    p( tableau( nomt($_SESSION[__X_CLE_APPLICATION]) , p( ''chi_id_utilisateur_courant'' ) ))
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])'),
-('5','5','2','appelf(nomf(isset),p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_utilisateur_courant''))))','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])','tâches'),
+('5','5','2','appelf(nomf(isset),p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_utilisateur_courant''))))','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])','matrice'),
 ('6','6','3','appelf(
    nomf(isset),
    p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_utilisateur_courant'')))
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])','js'),
 ('7','7','4','appelf(
    nomf(isset),
    p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_utilisateur_courant'')))
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])','html'),
 ('8','8','5','appelf(
    nomf(isset),
    p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_utilisateur_courant'')))
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])','php'),
 ('9','9','6','appelf(
    nomf(isset),
    p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_utilisateur_courant'')))
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])','sql'),
 ('10','10','7','appelf(
    nomf(isset),
    p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_utilisateur_courant'')))
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])','css'),
 ('11','11','8','appelf(
    nomf(isset),
    p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_utilisateur_courant'')))
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])','txt'),
 ('12','12','9','appelf(
    nomf(isset),
    p( tableau( nomt($_SESSION[__X_CLE_APPLICATION]) , p( ''chi_id_utilisateur_courant'' ) ))
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])','<span style="color:red;background:yellow;">projets</span>'),
 ('13','13','10','et(
    appelf(
       nomf(isset),
@@ -7469,7 +6293,7 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','fido'),
 ('14','14','11','et(
    appelf(
       nomf(isset),
@@ -7479,7 +6303,7 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','sources'),
 ('15','15','12','et(
    appelf(
       nomf(isset),
@@ -7489,7 +6313,7 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','bases'),
 ('16','16','13','et(
    appelf(
       nomf(isset),
@@ -7499,7 +6323,7 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','requêtes'),
 ('17','17','14','et(
    appelf(
       nomf(isset),
@@ -7509,7 +6333,7 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','(😊)'),
 ('18','18','15','et(
    appelf(
       nomf(isset),
@@ -7519,7 +6343,7 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','groupes'),
 ('19','19','16','et(
    appelf(
       nomf(isset),
@@ -7529,7 +6353,7 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','métiers'),
 ('20','20','17','et(
    appelf(
       nomf(isset),
@@ -7539,7 +6363,7 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','utilisateurs'),
 ('21','21','18','et(
    appelf(
       nomf(isset),
@@ -7549,7 +6373,7 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','accès'),
 ('22','22','19','et(
    appelf(
       nomf(isset),
@@ -7559,7 +6383,7 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','pages'),
 ('23','23','20','et(
    appelf(
       nomf(isset),
@@ -7569,12 +6393,25 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
       nomf(isset),
       p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
    )
-)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])'),
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant'']) && isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])','menus'),
 ('24','24','21','appelf(
    nomf(isset),
    p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_utilisateur_courant'')))
 ),
-','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])');
+','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_utilisateur_courant''])','<svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -7  20 21">
+             <g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;">
+              <circle cx="0" cy="0" r="6"></circle>
+              <path d=" M -8 11 C -6 6 6 6 8 11 "></path>
+              <circle cx="-2" cy="-1" r="1"></circle>
+              <circle cx="2" cy="-1" r="1"></circle>
+              <path d="M -2 2 C -3 4 3 4 2 2 "></path>
+              <path d="M 0 0 V 2 "></path>
+              <path d="M -3 -1   H -6    "></path>
+              <path d="M 3 -1   H 6    "></path>
+              <path d="M -1 -1 c 0 -1 2 -1 2 0 "></path>
+             </g>
+            </svg>
+');
 
 /*
   ============================

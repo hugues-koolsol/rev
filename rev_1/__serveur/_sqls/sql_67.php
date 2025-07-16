@@ -3,7 +3,20 @@ function sql_67($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BASE_REFERENCE][PREFIXE_BDD].'`.`tbl_utilisateurs` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    $tableau_champs[]='`chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)';
+    if(isset($par['n_chp_nom_de_connexion_utilisateur'])){
+        if($par['n_chp_nom_de_connexion_utilisateur']==='' || $par['n_chp_nom_de_connexion_utilisateur']===NULL ){
+            $tableau_champs[]='`chp_nom_de_connexion_utilisateur` = NULL';
+        }else{
+            $tableau_champs[]='`chp_nom_de_connexion_utilisateur` = \''.sq0($par['n_chp_nom_de_connexion_utilisateur']).'\'';
+        }
+    }
+    if(isset($par['n_chp_mot_de_passe_utilisateur'])){
+        if($par['n_chp_mot_de_passe_utilisateur']==='' || $par['n_chp_mot_de_passe_utilisateur']===NULL ){
+            $tableau_champs[]='`chp_mot_de_passe_utilisateur` = NULL';
+        }else{
+            $tableau_champs[]='`chp_mot_de_passe_utilisateur` = \''.sq0($par['n_chp_mot_de_passe_utilisateur']).'\'';
+        }
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/

@@ -107,7 +107,7 @@ class c_sources1{
                     /**/
                     'chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     'chp_nom_source' => $donnees_recues[__xva]['chp_nom_source'],
-                    'chx_dossier_id_source' => $donnees_recues[__xva]['chx_dossier_id_source'] === '' ? NULL : $donnees_recues[__xva]['chx_dossier_id_source'],
+                    'chx_dossier_id_source' => $donnees_recues[__xva]['chx_dossier_id_source'] === '' ? null : $donnees_recues[__xva]['chx_dossier_id_source'],
                     'che_binaire_source' => $donnees_recues[__xva]['che_binaire_source'],
                     'cht_commentaire_source' => null,
                     'cht_rev_source' => null,
@@ -604,7 +604,7 @@ class c_sources1{
                     $donnees_retournees[__xst]=__xsu;
                 }
 
-                $donnees_retournees[__x_signaux][__xsu][]=__LINE__ . ' la modification a été effectuée en bdd';
+                $donnees_retournees[__x_signaux][__xsu][]=__LINE__ . ' la modification de (' . $donnees_recues[__xva]['chi_id_source'] . ') a été effectuée en bdd';
 
             }else{
 
@@ -2134,7 +2134,6 @@ class c_sources1{
 
         $donnees_retournees[__xst]=__xsu;
     }
-    
     /*
       =============================================================================================================
       Pour les iframes sur les sources
@@ -2182,9 +2181,7 @@ class c_sources1{
         $fonction1='c_sources1.page_sources_sous_liste1';
         /* déverminage */
         $__nbMax=10;
-        
-//        $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $mat '.var_export($mat,true);
-        
+        /* $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $mat '.var_export($mat,true);*/
         $par=array();
         $par['nom_champ_dans_parent1']='';
         $par['nom_libelle_dans_parent1']='';
@@ -2196,7 +2193,7 @@ class c_sources1{
         $par_mat=array();
         $l01=count($mat);
         $provenance_menu=false;
-//        $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );
+        /* $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
             
@@ -2235,9 +2232,8 @@ class c_sources1{
             }
 
         }
+        /* $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $par_mat '.var_export($par_mat,true);*/
         
-//        $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $par_mat '.var_export($par_mat,true);
-
         if(false === isset($_SESSION[__X_CLE_APPLICATION][$fonction1])){
 
             $par=array_merge($par,$par_mat);
@@ -2272,8 +2268,6 @@ class c_sources1{
         $par['T0_chx_dossier_id_source']=$par['T0_chx_dossier_id_source']??'';
         $par['nom_champ_dans_parent1']=$par_mat['nom_champ_dans_parent1']??'';
         $par['nom_libelle_dans_parent1']=$par_mat['nom_libelle_dans_parent1']??'';
-        
-        
         $nom_filtre='vv_sources_filtre_choix_1';
         $o1='<h1>choisir un source parent</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
@@ -2312,17 +2306,34 @@ class c_sources1{
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_61()
+            SELECT 
+            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
+            `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source`
+             FROM b1.tbl_sources T0
+             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+            
+            WHERE (`T0`.`chi_id_source` = :T0_chi_id_source
+               AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
+               AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
+               AND `T0`.`chp_nom_source` LIKE :T0_chp_nom_source) 
+            ORDER BY `T0`.`chi_id_source` ASC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_61()*/ 61,
-             array(/**/ 
-                      'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
-                      'T0_chi_id_source' => $par['T0_chi_id_source'] === '' ? '' : $par['T0_chi_id_source'],
-                      'T0_chx_dossier_id_source' => $par['T0_chx_dossier_id_source'] === '' ? '' : $par['T0_chx_dossier_id_source'],
-                      'T0_chp_nom_source' => $par['T0_chp_nom_source'] === '' ? '' : '' . $par['T0_chp_nom_source'] . '',
-                      'quantitee' => $__nbMax,
-                      'debut' => $__debut
-                      
-                  ),
+            array(
+                /**/
+                'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+                'T0_chi_id_source' => $par['T0_chi_id_source'] === '' ? '' : $par['T0_chi_id_source'],
+                'T0_chx_dossier_id_source' => $par['T0_chx_dossier_id_source'] === '' ? '' : $par['T0_chx_dossier_id_source'],
+                'T0_chp_nom_source' => $par['T0_chp_nom_source'] === '' ? '' : '' . $par['T0_chp_nom_source'] . '',
+                'quantitee' => $__nbMax,
+                'debut' => $__debut
+            ),
             $donnees_retournees
         );
         
@@ -2350,8 +2361,8 @@ class c_sources1{
             /**/
             $parametres='';
             $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
-            $parametres .= '    nom_champ_dans_parent1('.$par['nom_champ_dans_parent1'].')';
-            $parametres .= '    nom_libelle_dans_parent1('.$par['nom_libelle_dans_parent1'].')';
+            $parametres .= '    nom_champ_dans_parent1(' . $par['nom_champ_dans_parent1'] . ')';
+            $parametres .= '    nom_libelle_dans_parent1(' . $par['nom_libelle_dans_parent1'] . ')';
             $parametres .= '    id1(' . $v0['T0.chi_id_source'] . ')';
             $parametres .= '    libelle1("(' . $v0['T0.chi_id_source'] . ') ' . $v0['T0.chp_nom_source'] . '" )';
             $parametres .= ')';
@@ -2375,14 +2386,13 @@ class c_sources1{
             $lsttbl .= '<td style="text-align:left;">';
             $lsttbl .= '(' . enti1($v0['T0.chx_dossier_id_source']) . ') ' . enti1($v0['T1.chp_nom_dossier']) . '';
             $lsttbl .= '</td>';
-
             /**/
             $lsttbl .= '</tr>';
         }
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
         $donnees_retournees[__x_page] .= $o1;
         $donnees_retournees[__xst]=__xsu;
-    }    
+    }
     /*
       =============================================================================================================
     */
@@ -2585,13 +2595,25 @@ class c_sources1{
 
             }else{
 
+                
+                if(__X_CLE_APPLICATION === 'rev_1'){
 
-                if(__X_CLE_APPLICATION === 'rev_1' && $v0['T0.chx_dossier_id_source']>=9 ){
-                    $lsttbl .= '  <div class="hug_bouton_inactif" >compiler</div>';
+                    
+                    if($v0['T0.chx_dossier_id_source'] === 1 || $v0['T0.chx_dossier_id_source'] === 7){
+
+                        $lsttbl .= '  <div id="vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '" class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.compiler_source1(chi_id_source(' . $v0['T0.chi_id_source'] . '),bouton_compiler(vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '),pas_de_message_de_succes(1))" >compiler</div>';
+
+                    }else{
+
+                        $lsttbl .= '  <div class="hug_bouton_inactif" >compiler</div>';
+                    }
+
+
                 }else{
-                    $lsttbl .= '  <div id="vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '" class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.compiler_source1(chi_id_source(' . $v0['T0.chi_id_source'] . '),bouton_compiler(vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '),pas_de_message_de_succes(1))" >compiler</div>';
 
+                    $lsttbl .= '  <div id="vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '" class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.compiler_source1(chi_id_source(' . $v0['T0.chi_id_source'] . '),bouton_compiler(vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '),pas_de_message_de_succes(1))" >compiler</div>';
                 }
+
             }
 
             
@@ -2633,7 +2655,16 @@ class c_sources1{
                 
                 if($v0['T1.chp_nom_dossier'] === ''){
 
-                    $lsttbl .= '(' . $v0['T0.chx_dossier_id_source'] . ') <b>[rev_' . $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] . ']</b>';
+                    
+                    if(__X_CLE_APPLICATION === 'rev_2'){
+
+                        $lsttbl .= '(' . $v0['T0.chx_dossier_id_source'] . ') <b>[rev_2]</b>';
+
+                    }else{
+
+                        $lsttbl .= '(' . $v0['T0.chx_dossier_id_source'] . ') <b>[rev_' . $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] . ']</b>';
+                    }
+
 
                 }else{
 

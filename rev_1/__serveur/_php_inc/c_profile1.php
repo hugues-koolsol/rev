@@ -39,7 +39,7 @@ class c_profile1{
                     }
 
                 }
-                //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $conteneur1 , true ) . '</pre>' ; exit(0);
+                /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $conteneur1 , true ) . '</pre>' ; exit(0);*/
                 switch ($conteneur1){
                     case 'vv_formulaire_de_changement_de_nom_et_de_mot_de_passe':
                     $donnees_retournees[__x_ligne][]=__LINE__;
@@ -47,13 +47,12 @@ class c_profile1{
                         /* echo __FILE__ . ' ' . __LINE__ . ' <pre>' . htmlentities( var_export($donnees_retournees , true )) .  '</pre>' ; exit(0); //*/
                         break;
                         
-                        
                 }
 
             }
 
         }
-    }    
+    }
     /*
       =============================================================================================================
     */
@@ -129,7 +128,6 @@ class c_profile1{
         }
 
     }
-
     /*
       =============================================================================================================
     */
@@ -137,8 +135,8 @@ class c_profile1{
         $txt='';
         $tt=/*sql_inclure_deb*/
             /* sql_47()
-            SELECT 
-            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+            SELECT 
+            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
             `T0`.`chi_compteur_socket1_utilisateur`
              FROM b1.tbl_utilisateurs T0
             WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
@@ -171,11 +169,9 @@ class c_profile1{
             $txt .= '</div>';
         }
 
-
         $donnees_retournees[__x_page] .= $txt;
         $donnees_retournees[__xst]=__xsu;
     }
-
 }
 /*
   =====================================================================================================================

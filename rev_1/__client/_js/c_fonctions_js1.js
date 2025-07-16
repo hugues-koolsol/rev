@@ -145,47 +145,45 @@ class c_fonctions_js1{
     /*
       =============================================================================================================
     */
-    compiler_zone_rev_vers_zone_php(mat , début){
-     
+    compiler_zone_rev_vers_zone_php( mat , début ){
         let l01=mat.length;
-        for( let i=début;i<l01;i=mat[i][12]){
-         
-            switch(mat[i][1]){
-                case 'compiler_zone_rev_vers_zone_php':
+        for( let i=début ; i < l01 ; i=mat[i][12] ){
+            switch (mat[i][1]){
+                case 'compiler_zone_rev_vers_zone_php' :
                     let zone_source='';
                     let zone_resultat='';
-                    for( let j=i+1;j<l01;j=mat[j][12]){
-                        if(mat[j][1]==='zone_source' && mat[j][2]==='f'  && mat[j][8]===1  && mat[j+1][2]==='c' ){
-                            zone_source=mat[j+1][1];
+                    for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                        if(mat[j][1] === 'zone_source' && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
+                            zone_source=mat[j + 1][1];
                         }
-                        if(mat[j][1]==='zone_resultat' && mat[j][2]==='f'  && mat[j][8]===1  && mat[j+1][2]==='c' ){
-                            zone_resultat=mat[j+1][1];
+                        if(mat[j][1] === 'zone_resultat' && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
+                            zone_resultat=mat[j + 1][1];
                         }
                     }
-                    if(zone_resultat!=='' && zone_source!==''){
+                    if(zone_resultat !== '' && zone_source !== ''){
                         try{
-                            let contenu_source=document.getElementById(zone_source).value;
+                            let contenu_source=document.getElementById( zone_source ).value;
                             var obj1=this.#objet_conversion_rev_vers_php.c_rev_vers_php( contenu_source , {} );
                             if(obj1.__xst === __xsu){
-                                if(obj1.__xva.endsWith(";")){
-                                    obj1.__xva=obj1.__xva.substr(0,obj1.__xva.length-1);
+                                if(obj1.__xva.endsWith( ";" )){
+                                    obj1.__xva=obj1.__xva.substr( 0 , obj1.__xva.length - 1 );
                                 }
-                                document.getElementById(zone_resultat).value=obj1.__xva;
-
+                                document.getElementById( zone_resultat ).value=obj1.__xva;
                             }else{
                                 return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
                             }
                         }catch(e1){
-                            return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2(e1)} ));
+                            return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2( e1 )} ));
                         }
                     }
-                break;
-                default :
+                    break;
+                    
+                default:
                     return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+                    
             }
         }
-        
-        return({"__xst":__xsu})
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -526,7 +524,7 @@ class c_fonctions_js1{
                 /*
                   on récupère les commentaires pour les meta 
                 */
-                debugger;
+
                 var tableau_des_commentaires=[];
                 const matches=reponse.__xva['contenu_disque'].match( /\/\*([\s\S]*?)\*\//g );
                 if(matches !== null){
@@ -2186,17 +2184,12 @@ echo 'hella';`;
                     document.getElementById( mat[i + 1][1] ).style.visibility='hidden';
                 } catch {}
             }else if(mat[i][1].indexOf( 'formulaire1' ) > 0){
-
-                let a_envoyer={"__xva":{},"__x_action":""};
-                
-                let oba=this.#interface1.__m_rev1.matrice_vers_source_rev1(mat,i,false,i+1);
-                if(oba.__xst!==__xsu){
-                    this.#afficher_un_message( __xer , this.#interface1.__m_rev1.nl2(  )  );
-                 
+                let a_envoyer={"__xva" : {} ,"__x_action" : ""};
+                let oba=this.#interface1.__m_rev1.matrice_vers_source_rev1( mat , i , false , i + 1 );
+                if(oba.__xst !== __xsu){
+                    this.#afficher_un_message( __xer , this.#interface1.__m_rev1.nl2() );
                 }
-                a_envoyer.__x_action=mat[i][1]+'('+oba.__xva+')';
-                
-                
+                a_envoyer.__x_action=mat[i][1] + '(' + oba.__xva + ')';
                 let conteneur1='';
                 for( let j=i + 1 ; j < l01 ; j=mat[i][12] ){
                     if(mat[j][8] === 1 && mat[j][2] === 'f' && mat[j][1] === 'conteneur1'){
@@ -2220,32 +2213,30 @@ echo 'hella';`;
                         return;
                     }
                     /*
-                        {
-                            "__x_action":"
-                            c_menus1.formulaire1(
-                                conteneur1(vv_menus_modifier1),
-                                chi_id_menu(6)
-                            )",
-                            "__xva":{
-                                 "chi_id_menu":"6",
-                                 "che_ordre_menu":"3",
-                                 "chx_page_menu":"6",
-                                 "cht_prerequis_rev_menu":"
-                                  appelf(
-                                      nomf(isset),
-                                      p( 
-                                          tableau( 
-                                              nomt($_SESSION[__X_CLE_APPLICATION]) , 
-                                              p( 'chi_id_projet' ) 
-                                          )
-                                      )
-                                  )","cht_prerequis_php_menu":""
-                            }
-                        }
+                      {
+                      "__x_action":"
+                      c_menus1.formulaire1(
+                      conteneur1(vv_menus_modifier1),
+                      chi_id_menu(6)
+                      )",
+                      "__xva":{
+                      "chi_id_menu":"6",
+                      "che_ordre_menu":"3",
+                      "chx_page_menu":"6",
+                      "cht_prerequis_rev_menu":"
+                      appelf(
+                      nomf(isset),
+                      p( 
+                      tableau( 
+                      nomt($_SESSION[__X_CLE_APPLICATION]) , 
+                      p( 'chi_id_projet' ) 
+                      )
+                      )
+                      )","cht_prerequis_php_menu":""
+                      }
+                      }
                     */
-                    
                     this.#interface1.__m_worker.postMessage( a_envoyer );
-
                 }else{
                     debugger;
                     /*
@@ -2258,11 +2249,7 @@ echo 'hella';`;
                       return;
                     */
                 }
-             
-             
-             
             }else{
-             
                 debugger;
             }
         }

@@ -3171,10 +3171,8 @@ class c_requete_sql1{
             t+='    }catch(Exception $e){' + CRLF;
             if(obj3.hasOwnProperty( 'tableau_des_tables_utilisees' ) && obj3.tableau_des_tables_utilisees.hasOwnProperty( '0' )){
                 t+='        return array(__xst => __xer , \'source_requete\' => $sql0 , \'texte_requete\' => \'la selection sur les ' + obj3.tableau_des_tables_utilisees[0].table.replace( /tbl_/ , '' ) + '\' , \'exception\' => $e , \'id_bdd\' => ' + obj3.id_base_principale + ' );' + CRLF;
-                /* t+='        return $this->traite_erreur_sql(1,$GLOBALS[__BDD][1],$donnees_retournees, $sql0,__LINE__,);' + CRLF; */
             }else{
                 t+='        return array(__xst => __xer , \'source_requete\' => $sql0 , \'texte_requete\' => \'la selection sur la requête ' + id_requete_en_base + '\' , \'exception\' => $e , \'id_bdd\' => ' + obj3.id_base_principale + ' );' + CRLF;
-                /* t+='        return $this->traite_erreur_sql(1,$GLOBALS[__BDD][1],$donnees_retournees, $sql0,__LINE__,\'la selection sur la requête '+id_requete_en_base+'\');' + CRLF; */
             }
             t+='    }' + CRLF;
             /*
@@ -3393,10 +3391,8 @@ class c_requete_sql1{
             t+='    }catch(Exception $e){' + CRLF;
             if(obj3.hasOwnProperty( 'tableau_des_tables_utilisees' ) && obj3.tableau_des_tables_utilisees.hasOwnProperty( '0' )){
                 t+='        return array(__xst => __xer , \'source_requete\' => $sql0 , \'texte_requete\' => \'la liste sur les ' + obj3.tableau_des_tables_utilisees[0].table.replace( /tbl_/ , '' ) + '\' , \'exception\' => $e , \'id_bdd\' => ' + obj3.id_base_principale + ' );' + CRLF;
-                /* t+='        return $this->traite_erreur_sql(1,$GLOBALS[__BDD][1],$donnees_retournees, $sql0,__LINE__,);' + CRLF; */
             }else{
                 t+='        return array(__xst => __xer , \'source_requete\' => $sql0 , \'texte_requete\' => \'la liste sur la requête ' + id_requete_en_base + '\' , \'exception\' => $e , \'id_bdd\' => ' + obj3.id_base_principale + ' );' + CRLF;
-                /* t+='        return $this->traite_erreur_sql(1,$GLOBALS[__BDD][1],$donnees_retournees, $sql0,__LINE__,\'la selection sur la requête '+id_requete_en_base+'\');' + CRLF; */
             }
             t+='    }' + CRLF;
         }

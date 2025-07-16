@@ -4,6 +4,42 @@ class c_sql0{
     }
     /*
       =============================================================================================================
+      return $this->traite_erreur_sql(65,$GLOBALS[__BDD][1],$donnees_retournees, $texte_sql_65,__LINE__,'la selection sur les priorites');
+      la selection, la modification, la supression, l'insertion
+    */
+    function traite_erreur_sql($numero_sql,$bdd,&$donnees_retournees,$texte_sql,$numero_de_ligne,$libelle_clud=''){
+        
+        if($GLOBALS[DEVER_SRV] >= 2){
+
+            $message_normal='Erreur lors de ' . $libelle_clud;
+            $message_normal .= ' sql_' . $numero_sql . '()[' . $numero_de_ligne . ']';
+            $donnees_retournees[__x_signaux][__xdv][]=$message_normal;
+
+        }
+
+        $message_dv=$numero_de_ligne . ' sql_' . $numero_sql . '() ersql=' . $bdd[LIEN_BDD]->lastErrorCode();
+        
+        if($GLOBALS[DEVER_SRV] >= 2){
+
+            
+            if($bdd[LIEN_BDD]->lastErrorCode() === 19){
+
+                $message_dv .= ' enregistrement dupliqué <br />' . $bdd[LIEN_BDD]->lastErrorMsg() . '<br /> dans <pre style="font-size:0.8rem;">' . $texte_sql . '</pre>';
+
+            }
+
+            $message_dv .= '<br />' . $bdd[LIEN_BDD]->lastErrorMsg() . '<br /> dans <pre style="font-size:0.8rem;">' . $texte_sql . '</pre>';
+            $donnees_retournees[__x_signaux][__xdv][]=$message_dv;
+
+        }else if($GLOBALS[DEVER_SRV] === 1){
+
+            $donnees_retournees[__x_signaux][__xdv][]=$message_dv;
+        }
+
+        return array( __xst => __xer, 'code_erreur' => $bdd[LIEN_BDD]->lastErrorCode(), __xme => 'erreur sql_' . $numero_sql . '()');
+    }
+    /*
+      =============================================================================================================
     */
     function sql_iii($numero_de_sql,$par,&$donnees_retournees,$db=null){
         $nom_fichier=REPERTOIRE_RACINE_DES_SQL . DIRECTORY_SEPARATOR . 'sql_' . $numero_de_sql . '.php';
@@ -22,6 +58,33 @@ class c_sql0{
         
         if($tt[__xst] !== __xsu){
 
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt , true ) . '</pre>' ; exit(0);*/
+            $l_erreur=array( __xst => $tt[__xst]);
+            
+            if(isset($tt['source_requete'])){
+
+                $l_erreur['source_requete']=$tt['source_requete'];
+
+            }
+
+            
+            if(isset($tt['texte_requete'])){
+
+                $l_erreur['texte_requete']=$tt['texte_requete'];
+
+            }
+
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt['exception'] , true ) . '</pre>' ; exit(0);*/
+            
+            if(isset($tt['exception'])){
+
+                $l_erreur['getMessage']=$tt['exception']->getMessage();
+
+            }
+
+            return $l_erreur;
+            echo __FILE__ . ' ' . __LINE__ . ' $l_erreur = <pre>' . var_export($l_erreur,true) . '</pre>' ;
+            exit(0);
             return $this->traite_erreur_sql($numero_de_sql,$GLOBALS[__BDD][$tt['id_bdd']],$donnees_retournees,$tt['source_requete'],$tt['texte_requete'],$tt['exception']);
 
         }else{
@@ -71,42 +134,6 @@ class c_sql0{
         }
 
         return $champ_where;
-    }
-    /*
-      =============================================================================================================
-      return $this->traite_erreur_sql(65,$GLOBALS[__BDD][1],$donnees_retournees, $texte_sql_65,__LINE__,'la selection sur les priorites');
-      la selection, la modification, la supression, l'insertion
-    */
-    function traite_erreur_sql($numero_sql,$bdd,&$donnees_retournees,$texte_sql,$numero_de_ligne,$libelle_clud=''){
-        
-        if($GLOBALS[DEVER_SRV] >= 2){
-
-            $message_normal='Erreur lors de ' . $libelle_clud;
-            $message_normal .= ' sql_' . $numero_sql . '()[' . $numero_de_ligne . ']';
-            $donnees_retournees[__x_signaux][__xdv][]=$message_normal;
-
-        }
-
-        $message_dv=$numero_de_ligne . ' sql_' . $numero_sql . '() ersql=' . $bdd[LIEN_BDD]->lastErrorCode();
-        
-        if($GLOBALS[DEVER_SRV] >= 2){
-
-            
-            if($bdd[LIEN_BDD]->lastErrorCode() === 19){
-
-                $message_dv .= ' enregistrement dupliqué <br />' . $bdd[LIEN_BDD]->lastErrorMsg() . '<br /> dans <pre style="font-size:0.8rem;">' . $texte_sql . '</pre>';
-
-            }
-
-            $message_dv .= '<br />' . $bdd[LIEN_BDD]->lastErrorMsg() . '<br /> dans <pre style="font-size:0.8rem;">' . $texte_sql . '</pre>';
-            $donnees_retournees[__x_signaux][__xdv][]=$message_dv;
-
-        }else if($GLOBALS[DEVER_SRV] === 1){
-
-            $donnees_retournees[__x_signaux][__xdv][]=$message_dv;
-        }
-
-        return array( __xst => __xer, 'code_erreur' => $bdd[LIEN_BDD]->lastErrorCode(), __xme => 'erreur sql_' . $numero_sql . '()');
     }
     /*
       =============================================================================================================

@@ -2754,6 +2754,9 @@ class c_astphpparseur_vers_rev1{
                         t+='#( ' + valeur.replace( /\(/g , '[' ).replace( /\)/g , ']' ).trim().substr( 2 ).trim().replace( /\/\*/ , '/_*' ).replace( /\*\// , '*_/' ) + ')';
                     }
                 }else{
+                    if(((valeur.match( /\(/g ) || []).length) !== ((valeur.match( /\)/g ) || []).length)){
+                        valeur=valeur.replace( /\(/g , '[' ).replace( /\)/g , ']' );
+                    }
                     if(valeur.substr( 0 , 3 ) === '/**'){
                         valeur='/*#' + valeur.substr( 3 );
                     }

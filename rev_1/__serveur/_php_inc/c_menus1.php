@@ -107,14 +107,33 @@ class c_menus1{
             }
 
         }
-        $donnees_sql=array( array(/**/
-                    'chx_page_menu' => $donnees_recues[__xva]['chx_page_menu']===''?NULL:$donnees_recues[__xva]['chx_page_menu'],
+        $donnees_sql=array( array(
+                    /**/
+                    'chx_page_menu' => $donnees_recues[__xva]['chx_page_menu'] === '' ? null : $donnees_recues[__xva]['chx_page_menu'],
                     'che_ordre_menu' => $donnees_recues[__xva]['che_ordre_menu'],
                     'cht_prerequis_rev_menu' => $donnees_recues[__xva]['cht_prerequis_rev_menu'],
                     'cht_prerequis_php_menu' => $donnees_recues[__xva]['cht_prerequis_php_menu'],
+                    'cht_libelle_menu' => $donnees_recues[__xva]['cht_libelle_menu']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_99()
+            INSERT INTO b1.`tbl_menus`(
+                `chx_page_menu` , 
+                `che_ordre_menu` , 
+                `cht_prerequis_rev_menu` , 
+                `cht_prerequis_php_menu` , 
+                `cht_libelle_menu`
+            ) VALUES (
+                :chx_page_menu , 
+                :che_ordre_menu , 
+                :cht_prerequis_rev_menu , 
+                :cht_prerequis_php_menu , 
+                :cht_libelle_menu
+            );
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_99()*/ 99,
             $donnees_sql,
             $donnees_retournees
@@ -195,7 +214,26 @@ class c_menus1{
       =============================================================================================================
     */
     function vv_menus_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_200()
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+            `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+             FROM b1.tbl_menus T0
+             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+            
+             LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
+            
+             LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+            
+            WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_200()*/ 200,
             array(/**/
                 'T0_chi_id_menu' => $donnees_recues[__xva]['chi_id_menu']
@@ -205,7 +243,13 @@ class c_menus1{
         
         if($tt[__xst] === __xsu && $donnees_recues[__xva]['chi_id_menu'] > 1){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_202()
+                DELETE FROM b1.tbl_menus
+                WHERE `chi_id_menu` = :chi_id_menu ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_87()*/ 202,
                 array(/**/
                     'chi_id_menu' => $tt[__xva][0]['T0.chi_id_menu']
@@ -239,65 +283,94 @@ class c_menus1{
       =============================================================================================================
     */
     function ecrire_les_fichiers_menus($cumul_menus){
-     
+        
         if(!isset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus'])){
+
             return array( __xst => __xer);
+
+        }
+
+        /* echo __FILE__ . ' ' . __LINE__ . ' $contenu_fichier = <pre>' . enti1(var_export( $cumul_menus , true )) . '</pre>' ; exit(0);*/
+        foreach($cumul_menus as $k1 => $v1){
+            $contenu_fichier='';
+            $nom_fichier=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus'] . DIRECTORY_SEPARATOR . $k1 . '.php';
+            foreach($v1 as $k2 => $v2){
+                /* $t[]='<div data-id_menu="4" class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99)),indice_menu(4)" title="tâches">tâches</div>' . PHP_EOL;*/
+                $hug_click=str_replace('.php','',$v2['chp_nom_source']) . '.' . $v2['chp_methode_page'] . '(';
+                
+                if($v2['cht_contenu_methode_page'] !== null){
+
+                    $hug_click .= $v2['cht_contenu_methode_page'];
+
+                }
+
+                $hug_click .= ')';
+                
+                if($v2['cht_complement_page'] !== null){
+
+                    $hug_click .= ',' . $v2['cht_complement_page'];
+
+                }
+
+                $hug_click .= 'indice_menu(' . $v2['chi_id_menu'] . ')';
+                $contenu_lien='<div data-id_menu="' . $v2['chi_id_menu'] . '" class="hug_bouton" data-hug_click="' . $hug_click . '" title="">' . $v2['cht_libelle_menu'] . '</div>';
+                
+                if($v2['cht_prerequis_php_menu'] !== null){
+
+                    $contenu_fichier .= 'if(' . $v2['cht_prerequis_php_menu'] . '){' . PHP_EOL . '    ';
+
+                }
+
+                $contenu_fichier .= '$t[]=\'' . str_replace('\'','\\\'',str_replace('\\','\\\\',$contenu_lien)) . '\';' . PHP_EOL;
+                
+                if($v2['cht_prerequis_php_menu'] !== null){
+
+                    $contenu_fichier .= '}' . PHP_EOL;
+
+                }
+
+            }
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $k1 , true ) . '</pre> <pre>' . var_export( $v1 , true ) . '</pre>' ; exit(0);*/
         }
         
-//        echo __FILE__ . ' ' . __LINE__ . ' $contenu_fichier = <pre>' . enti1(var_export( $cumul_menus , true )) . '</pre>' ; exit(0);
-        foreach($cumul_menus as $k1=>$v1){
-         
-            $contenu_fichier='';
-            
-            $nom_fichier=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus'].DIRECTORY_SEPARATOR.$k1.'.php';
-            
-            foreach($v1 as $k2 => $v2){
-             
-   //            $t[]='<div data-id_menu="4" class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99)),indice_menu(4)" title="tâches">tâches</div>' . PHP_EOL;
-                $hug_click=str_replace('.php','',$v2['chp_nom_source']).'.'.$v2['chp_methode_page'].'(';
-                if($v2['cht_contenu_methode_page']!==NULL){
-                    $hug_click.=$v2['cht_contenu_methode_page'];
-                }
-                $hug_click.=')';
-                if($v2['cht_complement_page']!==NULL){
-                    $hug_click.=','.$v2['cht_complement_page'];
-                }
-                $hug_click.='indice_menu('.$v2['chi_id_menu'].')';
-                $contenu_lien='<div data-id_menu="' . $v2['chi_id_menu'] .'" class="hug_bouton" data-hug_click="' . $hug_click . '" title="">'. $v2['chp_nom_page'] .'</div>';
-                if($v2['cht_prerequis_php_menu']!==null){
-                    $contenu_fichier.='if(' . $v2['cht_prerequis_php_menu'] . '){'.PHP_EOL.'    ';
-                }
-                $contenu_fichier.='$t[]=\''.str_replace('\'','\\\'',str_replace('\\','\\\\',$contenu_lien)).'\';'.PHP_EOL;
-                if($v2['cht_prerequis_php_menu']!==null){
-                    $contenu_fichier.='}'.PHP_EOL;
-                }
-            }
-         
-            //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $k1 , true ) . '</pre> <pre>' . var_export( $v1 , true ) . '</pre>' ; exit(0);
-        }
-        if(file_put_contents($nom_fichier , '<?php'.PHP_EOL.$contenu_fichier)===false){
+        if(file_put_contents($nom_fichier,'<?php' . PHP_EOL . $contenu_fichier) === false){
+
             $donnees_retournees[__x_signaux][__xer][]='erreur ecriture fichier ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
             return array( __xst => __xer);
+
         }
+
         return array( __xst => __xsu);
-     
-     
     }
     /*
       =============================================================================================================
     */
     function construire_menus(&$donnees_retournees,&$mat,&$donnees_recues){
-     
-     
-     
-        $tt203=$this->sql0->sql_iii(
+        $tt203=/*sql_inclure_deb*/
+            /* sql_203()
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , 
+            `T1`.`chp_methode_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , 
+            `T1`.`cht_contenu_methode_page`
+             FROM b1.tbl_menus T0
+             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+            
+             LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_page
+            
+            WHERE `T0`.`chi_id_menu` > :T0_chi_id_menu 
+            ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ordre_menu` ASC
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_203()*/ 203,
             array(/**/
-                'T0_chi_id_menu' => 3,
+                'T0_chi_id_menu' => 3
             ),
             $donnees_retournees
         );
-
         /*#
           array (
                 'T0.chi_id_menu' => 4,
@@ -309,44 +382,57 @@ class c_menus1{
                 'T2.chx_groupe_acces' => 1,
                 'T2.chx_metier_acces' => 1,
                 'T3.chp_nom_source' => 'c_taches1.php',
+                
           ),
-        */                
-
-//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt203 , true ) . '</pre>' ; exit(0);
-
+        */
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt203 , true ) . '</pre>' ; exit(0);*/
+        
         if($tt203[__xst] === __xer){
+
             $donnees_retournees[__x_signaux][__xer][]='erreur construire_menus ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
             return array( __xst => __xer);
+
         }
+
         $chx_groupe_acces=0;
         $chx_metier_acces=0;
         $cumul_menus=array();
         $cle_precedente='';
         $cle_courante='';
         foreach($tt203[__xva] as $k1 => $v1){
-            $cle_courante='g_'.$v1['T2.chx_groupe_acces'].'_m_'.$v1['T2.chx_metier_acces'];
+            $cle_courante='g_' . $v1['T2.chx_groupe_acces'] . '_m_' . $v1['T2.chx_metier_acces'];
             
-            if($cle_courante!==$cle_precedente){
-                if($cle_precedente===''){
-                    $cumul_menus[$cle_courante]=array(array(
-                        'chi_id_menu' => $v1['T0.chi_id_menu'],
-                        'chp_nom_page' => $v1['T1.chp_nom_page'],
-                        'chp_methode_page' => $v1['T1.chp_methode_page'],
-                        'cht_contenu_methode_page' => $v1['T1.cht_contenu_methode_page'],
-                        'cht_complement_page' => $v1['T1.cht_complement_page'],
-                        'chp_nom_source' => $v1['T3.chp_nom_source'],
-                        'cht_prerequis_rev_menu' => $v1['T0.cht_prerequis_rev_menu'],
-                        'cht_prerequis_php_menu' => $v1['T0.cht_prerequis_php_menu'],
-                    ));
-                    $cle_precedente='g_'.$v1['T2.chx_groupe_acces'].'_m_'.$v1['T2.chx_metier_acces'];
+            if($cle_courante !== $cle_precedente){
+
+                
+                if($cle_precedente === ''){
+
+                    $cumul_menus[$cle_courante]=array( array(
+                                'chi_id_menu' => $v1['T0.chi_id_menu'],
+                                'chp_nom_page' => $v1['T1.chp_nom_page'],
+                                'chp_methode_page' => $v1['T1.chp_methode_page'],
+                                'cht_contenu_methode_page' => $v1['T1.cht_contenu_methode_page'],
+                                'cht_complement_page' => $v1['T1.cht_complement_page'],
+                                'chp_nom_source' => $v1['T3.chp_nom_source'],
+                                'cht_prerequis_rev_menu' => $v1['T0.cht_prerequis_rev_menu'],
+                                'cht_prerequis_php_menu' => $v1['T0.cht_prerequis_php_menu'],
+                                'cht_libelle_menu' => $v1['T0.cht_libelle_menu']
+                            ));
+                    $cle_precedente='g_' . $v1['T2.chx_groupe_acces'] . '_m_' . $v1['T2.chx_metier_acces'];
                     continue;
+
                 }else{
+
                     $fm=$this->ecrire_les_fichiers_menus($cumul_menus);
-                    if($fm[__xst]!==__xsu){
-                         $donnees_retournees[__x_signaux][__xer][]='erreur ecrire_les_fichiers_menus ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-                         return array( __xst => __xer);
+                    
+                    if($fm[__xst] !== __xsu){
+
+                        $donnees_retournees[__x_signaux][__xer][]='erreur ecrire_les_fichiers_menus ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                        return array( __xst => __xer);
+
                     }
-                    $cle_courante='g_'.$v1['T2.chx_groupe_acces'].'_m_'.$v1['T2.chx_metier_acces'];
+
+                    $cle_courante='g_' . $v1['T2.chx_groupe_acces'] . '_m_' . $v1['T2.chx_metier_acces'];
                     $cle_precedente=$cle_courante;
                     $cumul_menus[$cle_courante]=array(
                         'chi_id_menu' => $v1['T0.chi_id_menu'],
@@ -357,30 +443,42 @@ class c_menus1{
                         'chp_nom_source' => $v1['T3.chp_nom_source'],
                         'cht_prerequis_rev_menu' => $v1['T0.cht_prerequis_rev_menu'],
                         'cht_prerequis_php_menu' => $v1['T0.cht_prerequis_php_menu'],
-                        
+                        'cht_libelle_menu' => $v1['T0.cht_libelle_menu']
                     );
                 }
+
+
             }else{
-              $cumul_menus[$cle_courante][]=array(
-                  'chi_id_menu' => $v1['T0.chi_id_menu'],
-                  'chp_nom_page' => $v1['T1.chp_nom_page'],
-                  'chp_methode_page' => $v1['T1.chp_methode_page'],
-                  'cht_contenu_methode_page' => $v1['T1.cht_contenu_methode_page'],
-                  'cht_complement_page' => $v1['T1.cht_complement_page'],
-                  'chp_nom_source' => $v1['T3.chp_nom_source'],
-                  'cht_prerequis_rev_menu' => $v1['T0.cht_prerequis_rev_menu'],
-                  'cht_prerequis_php_menu' => $v1['T0.cht_prerequis_php_menu'],
-              );
+
+                $cumul_menus[$cle_courante][]=array(
+                    'chi_id_menu' => $v1['T0.chi_id_menu'],
+                    'chp_nom_page' => $v1['T1.chp_nom_page'],
+                    'chp_methode_page' => $v1['T1.chp_methode_page'],
+                    'cht_contenu_methode_page' => $v1['T1.cht_contenu_methode_page'],
+                    'cht_complement_page' => $v1['T1.cht_complement_page'],
+                    'chp_nom_source' => $v1['T3.chp_nom_source'],
+                    'cht_prerequis_rev_menu' => $v1['T0.cht_prerequis_rev_menu'],
+                    'cht_prerequis_php_menu' => $v1['T0.cht_prerequis_php_menu'],
+                    'cht_libelle_menu' => $v1['T0.cht_libelle_menu']
+                );
             }
+
         }
-        if(count($cumul_menus)>0){
+        
+        if(count($cumul_menus) > 0){
+
             $fm=$this->ecrire_les_fichiers_menus($cumul_menus);
-            if($fm[__xst]!==__xsu){
-                 $donnees_retournees[__x_signaux][__xer][]='erreur ecrire_les_fichiers_menus ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-                 return array( __xst => __xer);
+            
+            if($fm[__xst] !== __xsu){
+
+                $donnees_retournees[__x_signaux][__xer][]='erreur ecrire_les_fichiers_menus ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return array( __xst => __xer);
+
             }
+
+
         }
-     
+
         return array( __xst => __xsu);
     }
     /*
@@ -399,7 +497,26 @@ class c_menus1{
             }
 
         }
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_200()
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+            `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+             FROM b1.tbl_menus T0
+             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+            
+             LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
+            
+             LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+            
+            WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_200()*/ 200,
             array(/**/
                 'T0_chi_id_menu' => $donnees_recues[__xva]['chi_id_menu']
@@ -413,16 +530,27 @@ class c_menus1{
               afr 
               le parent de racine doit être racine
             */
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_201()
+                UPDATE b1.tbl_menus SET 
+                   `chx_page_menu` = :n_chx_page_menu , 
+                   `che_ordre_menu` = :n_che_ordre_menu , 
+                   `cht_prerequis_rev_menu` = :n_cht_prerequis_rev_menu , 
+                   `cht_prerequis_php_menu` = :n_cht_prerequis_php_menu , 
+                   `cht_libelle_menu` = :n_cht_libelle_menu
+                WHERE `chi_id_menu` = :c_chi_id_menu ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_201()*/ 201,
-                array(/**/
+                array(
+                    /**/
                     'c_chi_id_menu' => $tt[__xva][0]['T0.chi_id_menu'],
                     'n_chx_page_menu' => $donnees_recues[__xva]['chx_page_menu'],
                     'n_che_ordre_menu' => $donnees_recues[__xva]['che_ordre_menu'],
                     'n_cht_prerequis_rev_menu' => $donnees_recues[__xva]['cht_prerequis_rev_menu'],
                     'n_cht_prerequis_php_menu' => $donnees_recues[__xva]['cht_prerequis_php_menu'],
-                    
-                    
+                    'n_cht_libelle_menu' => $donnees_recues[__xva]['cht_libelle_menu']
                 ),
                 $donnees_retournees
             );
@@ -433,13 +561,15 @@ class c_menus1{
 
             }else if($tt['changements'] === 1){
 
-
-
                 $ocm=$this->construire_menus($donnees_retournees,$mat,$donnees_recues);
-                if($ocm[__xst]!==__xsu){
-                  $donnees_retournees[__x_signaux][__xer][]='erreur lors de la construction des menus [' . __LINE__ . ']';
-                  return;
+                
+                if($ocm[__xst] !== __xsu){
+
+                    $donnees_retournees[__x_signaux][__xer][]='erreur lors de la construction des menus [' . __LINE__ . ']';
+                    return;
+
                 }
+
                 
                 if($page_liste_des_menus1 === true){
 
@@ -534,6 +664,17 @@ class c_menus1{
           =====================================================================================================
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>libellé</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <textarea id="cht_libelle_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ></textarea>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_creer1),page_liste_des_menus1())" title="" >ajouter et revenir à la liste</div>';
         $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_creer1))" title="" >ajouter</div>';
@@ -566,7 +707,26 @@ class c_menus1{
         if(is_numeric($chi_id_menus) && $chi_id_menus > 3){
 
             /*afr 1 */
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_200()
+                SELECT 
+                `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+                `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+                `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+                 FROM b1.tbl_menus T0
+                 LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+                
+                 LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+                
+                 LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
+                
+                 LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+                
+                WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_200()*/ 200,
                 array(/**/
                     'T0_chi_id_menu' => $chi_id_menus
@@ -580,7 +740,7 @@ class c_menus1{
                 $o1 .= '<div id="vv_menus_supprimer1">' . PHP_EOL;
                 $o1 .= '  <h3>confirmez voous la suppression de ' . self::LE_LA_ELEMENT_GERE . '(<b>' . $tt[__xva][0]['T0.chi_id_menu'] . '</b>) ?</h3>';
                 /*
-                  =====================================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -590,10 +750,8 @@ class c_menus1{
                 $o1 .= '      <input type="text" id="che_ordre_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.che_ordre_menu']) . '" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
-
-
                 /*
-                  =====================================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -604,7 +762,6 @@ class c_menus1{
                 $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_page_menu']) . '"  id="chx_page_menu" />' . PHP_EOL;
                 $o1 .= '        <span id="chx_page_menu_libelle">' . PHP_EOL;
                 
-                
                 if($tt[__xva][0]['T0.chx_page_menu'] === null){
 
                     $o1 .= '*indéfini' . PHP_EOL;
@@ -613,7 +770,7 @@ class c_menus1{
 
                     $o1 .= '(' . $tt[__xva][0]['T0.chx_page_menu'] . ') ' . htmlentities($tt[__xva][0]['T1.chp_nom_page']) . PHP_EOL;
                 }
-                
+
                 $o1 .= '</span>' . PHP_EOL;
                 $parametre_sous_fenetre='c_pages1.page_pages_sous_liste1(';
                 $parametre_sous_fenetre .= ' sans_menus1()';
@@ -627,7 +784,7 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =====================================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -638,7 +795,7 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =====================================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -649,7 +806,18 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =====================================================================================================
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>libellé</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <textarea id="cht_libelle_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_libelle_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
@@ -688,7 +856,26 @@ class c_menus1{
         
         if(is_numeric($chi_id_menus) && $chi_id_menus > 0){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_200()
+                SELECT 
+                `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+                `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+                `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+                 FROM b1.tbl_menus T0
+                 LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+                
+                 LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+                
+                 LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
+                
+                 LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+                
+                WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_200()*/ 200,
                 array(/**/
                     'T0_chi_id_menu' => $chi_id_menus
@@ -703,7 +890,7 @@ class c_menus1{
                 /**/
                 $o1 .= '  <input type="hidden" value="' . $tt[__xva][0]['T0.chi_id_menu'] . '" id="chi_id_menu" />' . PHP_EOL;
                 /*
-                  =====================================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -714,7 +901,7 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =====================================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -725,7 +912,6 @@ class c_menus1{
                 $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_page_menu']) . '"  id="chx_page_menu" />' . PHP_EOL;
                 $o1 .= '        <span id="chx_page_menu_libelle">' . PHP_EOL;
                 
-                
                 if($tt[__xva][0]['T0.chx_page_menu'] === null){
 
                     $o1 .= '*indéfini' . PHP_EOL;
@@ -734,7 +920,7 @@ class c_menus1{
 
                     $o1 .= '(' . $tt[__xva][0]['T0.chx_page_menu'] . ') ' . htmlentities($tt[__xva][0]['T1.chp_nom_page']) . PHP_EOL;
                 }
-                
+
                 $o1 .= '</span>' . PHP_EOL;
                 $parametre_sous_fenetre='c_pages1.page_pages_sous_liste1(';
                 $parametre_sous_fenetre .= ' sans_menus1()';
@@ -748,7 +934,7 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =====================================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -761,7 +947,7 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =====================================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -772,9 +958,19 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =====================================================================================================
+                  =====================================================================================
                 */
-                
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>libellé</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <textarea id="cht_libelle_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_libelle_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(compiler_zone_rev_vers_zone_php(zone_source(cht_prerequis_rev_menu),zone_resultat(cht_prerequis_php_menu))),c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>';
@@ -852,6 +1048,8 @@ class c_menus1{
         $par=array();
         $par['T0_chi_id_menu']='';
         $par['T0_chx_page_menu']='';
+        $par['nom_champ_dans_parent1']='';
+        $par['nom_libelle_dans_parent1']='';
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
@@ -928,6 +1126,8 @@ class c_menus1{
 
         $par['T0_chi_id_menu']=$par['T0_chi_id_menu']??'';
         $par['T0_chx_page_menu']=$par['T0_chx_page_menu']??'';
+        $par['nom_champ_dans_parent1']=$par_mat['nom_champ_dans_parent1']??'';
+        $par['nom_libelle_dans_parent1']=$par_mat['nom_libelle_dans_parent1']??'';
         $nom_filtre='vv_menus_filtre_choix_1';
         $o1='<h1>choisir un menu parent</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
@@ -956,10 +1156,34 @@ class c_menus1{
         $o1 .= '     <div><span>&nbsp;</span></div>' . PHP_EOL;
         $o1 .= '     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_menus1.formulaire1(conteneur1(' . $nom_filtre . '))" >🔎</div></div>' . PHP_EOL;
         $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
+        $o1 .= '     <input type="hidden" id="nom_champ_dans_parent1" value="' . $par['nom_champ_dans_parent1'] . '"  />' . PHP_EOL;
+        $o1 .= '     <input type="hidden" id="nom_libelle_dans_parent1" value="' . $par['nom_libelle_dans_parent1'] . '"  />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_98()
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+            `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+             FROM b1.tbl_menus T0
+             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+            
+             LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
+            
+             LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+            
+            WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
+               AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
+            ORDER BY `T0`.`chi_id_menu` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_98()*/ 98,
              /**/ array( 'T0_chi_id_menu' => $par['T0_chi_id_menu'] === '' ? '' : $par['T0_chi_id_menu'], 'T0_chx_page_menu' => $par['T0_chx_page_menu'] === '' ? '' : '' . $par['T0_chx_page_menu'] . '', 'quantitee' => $__nbMax, 'debut' => $__debut),
             $donnees_retournees
@@ -988,6 +1212,8 @@ class c_menus1{
             /**/
             $parametres='';
             $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
+            $parametres .= '    nom_champ_dans_parent1(' . $par['nom_champ_dans_parent1'] . ')';
+            $parametres .= '    nom_libelle_dans_parent1(' . $par['nom_libelle_dans_parent1'] . ')';
             $parametres .= '    id1(' . $v0['T0.chi_id_menu'] . ')';
             $parametres .= '    libelle1("(' . $v0['T0.chi_id_menu'] . ') ' . $v0['T0.chx_page_menu'] . '" )';
             $parametres .= ')';
@@ -1128,7 +1354,29 @@ class c_menus1{
         $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_98()
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+            `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
+             FROM b1.tbl_menus T0
+             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+            
+             LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
+            
+             LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+            
+            WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
+               AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
+            ORDER BY `T0`.`chi_id_menu` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_98()*/ 98,
             array(
                 /**/
@@ -1177,6 +1425,7 @@ class c_menus1{
         $lsttbl .= '<th>action</th>';
         $lsttbl .= '<th>id</th>';
         $lsttbl .= '<th>ordre</th>';
+        $lsttbl .= '<th style="width:40px;">libellé</th>';
         $lsttbl .= '<th>page</th>';
         $lsttbl .= '<th>acces</th>';
         $lsttbl .= '<th>groupe</th>';
@@ -1207,6 +1456,10 @@ class c_menus1{
             /**/
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T0.che_ordre_menu'] . '';
+            $lsttbl .= '</td>';
+            /**/
+            $lsttbl .= '<td style="text-align:center;" style="width:40px;">';
+            $lsttbl .= '' . $v0['T0.cht_libelle_menu'] . '';
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:left;">';

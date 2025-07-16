@@ -99,7 +99,7 @@ class c_accueil1{
         $txt .= $txt1;
         $txt .= '' . PHP_EOL;
         return $txt;
-    }    
+    }
     /*
       =============================================================================================================
     */
@@ -173,7 +173,6 @@ EOT;
         $donnees_retournees[__xst]=__xsu;
         $donnees_retournees[__x_page] .= $txt;
     }
-
     /*
       =============================================================================================================
       la page initiale est le conteneur principal plus du contenu
@@ -251,7 +250,6 @@ EOT;
         $donnees_retournees[__x_page] .= '<div class="hug_bouton yy__x_signaux_1" id="vv_supprimer_les_messages_3" data-hug_click="interface1.supprimer_les_messages()" style="position: fixed;left:calc( 50vw - 80px);top: var(--h_barre);z-index:100;visibility:hidden;">supprimer les messages</div>';
         $donnees_retournees[__x_page] .= '<main id="vv_main">';
         $donnees_recues[__x_action]=$donnees_recues['fonction_a_appeler'];
-        
         
         if(isset($donnees_recues['__xva']['href'])){
 

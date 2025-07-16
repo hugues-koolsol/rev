@@ -107,22 +107,37 @@ class c_pages1{
             }
 
         }
-        
-    
-        $tt62=$this->sql0->sql_iii(
+        $tt62=/*sql_inclure_deb*/
+            /* sql_62()
+            SELECT 
+            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
+            `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
+             FROM b1.tbl_sources T0
+             LEFT JOIN b1.tbl_projets T1 ON T1.chi_id_projet = T0.chx_projet_id_source
+            
+             LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_id_source
+            
+            WHERE ( / *** *** / `T0`.`chi_id_source` = :T0_chi_id_source
+               AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source)
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_62()*/ 62,
             array(/**/
                 'T0_chi_id_source' => $donnees_recues[__xva]['chx_source_page'],
-                'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+                'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
             ),
             $donnees_retournees
         );
+        
         if($tt62[__xst] === __xer){
 
             $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
             return;
+
         }
-        
+
         require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
         $obj_doss=new c_dossiers1(
             $donnees_retournees,
@@ -132,46 +147,78 @@ class c_pages1{
         $dossier=$obj_doss->construire_chemin($tt62[__xva][0]['T0.chx_dossier_id_source']);
         
         if($dossier['__xst'] !== __xsu){
+
             $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
             return;
+
         }
+
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt62[__xva][0] , true ) . '</pre>' ; exit(0);*/
         
-//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt62[__xva][0] , true ) . '</pre>' ; exit(0);
-        
-        if(!is_file($dossier['__xva']['chemin_absolu'].DIRECTORY_SEPARATOR.$tt62[__xva][0]['T0.chp_nom_source'])){
+        if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source'])){
+
             $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
             return;
+
         }
-        require_once($dossier['__xva']['chemin_absolu'].DIRECTORY_SEPARATOR.$tt62[__xva][0]['T0.chp_nom_source']);
-        
-        
-        $class_methods = get_class_methods(str_replace('.php','',$tt62[__xva][0]['T0.chp_nom_source']));
+
+        require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source']);
+        $class_methods=get_class_methods(str_replace('.php','',$tt62[__xva][0]['T0.chp_nom_source']));
         $trouve=false;
-        foreach( $class_methods as $k1 => $v1){
-            if($v1===$donnees_recues[__xva]['chp_methode_page']){
+        foreach($class_methods as $k1 => $v1){
+            
+            if($v1 === $donnees_recues[__xva]['chp_methode_page']){
+
                 $trouve=true;
                 break;
+
             }
+
         }
-        if($trouve===false){
-            $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . var_export($class_methods , true ) . ' [' . __LINE__ . ']';
+        
+        if($trouve === false){
+
+            $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . var_export($class_methods,true) . ' [' . __LINE__ . ']';
             return;
+
         }
-        
-        
-        $donnees_sql=array( array(/**/
+
+        $donnees_sql=array( array(
+                    /**/
                     'chp_nom_page' => $donnees_recues[__xva]['chp_nom_page'],
-                    'chx_parent_page' => $donnees_recues[__xva]['chx_parent_page']===''?NULL:$donnees_recues[__xva]['chx_parent_page'],
-                    'chx_acces_page' => $donnees_recues[__xva]['chx_acces_page']===''?NULL:$donnees_recues[__xva]['chx_acces_page'],
-                    'chx_source_page' => $donnees_recues[__xva]['chx_source_page']===''?NULL:$donnees_recues[__xva]['chx_source_page'],
+                    'chx_parent_page' => $donnees_recues[__xva]['chx_parent_page'] === '' ? null : $donnees_recues[__xva]['chx_parent_page'],
+                    'chx_acces_page' => $donnees_recues[__xva]['chx_acces_page'] === '' ? null : $donnees_recues[__xva]['chx_acces_page'],
+                    'chx_source_page' => $donnees_recues[__xva]['chx_source_page'] === '' ? null : $donnees_recues[__xva]['chx_source_page'],
                     'chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
                     'cht_contenu_methode_page' => $donnees_recues[__xva]['cht_contenu_methode_page'],
                     'cht_complement_page' => $donnees_recues[__xva]['cht_complement_page'],
-                    'chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
-                    
+                    'chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_89()
+            INSERT INTO b1.`tbl_pages`(
+                `chp_nom_page` , 
+                `chx_parent_page` , 
+                `chx_acces_page` , 
+                `chx_source_page` , 
+                `chp_methode_page` , 
+                `chx_projet_page` , 
+                `cht_complement_page` , 
+                `cht_contenu_methode_page`
+            ) VALUES (
+                :chp_nom_page , 
+                :chx_parent_page , 
+                :chx_acces_page , 
+                :chx_source_page , 
+                :chp_methode_page , 
+                :chx_projet_page , 
+                :cht_complement_page , 
+                :cht_contenu_methode_page
+            );
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_89()*/ 89,
             $donnees_sql,
             $donnees_retournees
@@ -252,7 +299,24 @@ class c_pages1{
       =============================================================================================================
     */
     function vv_pages_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_90()
+            SELECT 
+            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
+            `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
+            `T0`.`cht_contenu_methode_page`
+             FROM b1.tbl_pages T0
+             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
+            
+             LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
+            
+            WHERE `T0`.`chi_id_page` = :T0_chi_id_page
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_90()*/ 90,
             array(/**/
                 'T0_chi_id_page' => $donnees_recues[__xva]['chi_id_page']
@@ -262,7 +326,13 @@ class c_pages1{
         
         if($tt[__xst] === __xsu && $donnees_recues[__xva]['chi_id_page'] > 1){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_92()
+                DELETE FROM b1.tbl_pages
+                WHERE `chi_id_page` = :chi_id_page ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_92()*/ 92,
                 array(/**/
                     'chi_id_page' => $tt[__xva][0]['T0.chi_id_page']
@@ -308,7 +378,24 @@ class c_pages1{
             }
 
         }
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_90()
+            SELECT 
+            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
+            `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
+            `T0`.`cht_contenu_methode_page`
+             FROM b1.tbl_pages T0
+             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
+            
+             LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
+            
+            WHERE `T0`.`chi_id_page` = :T0_chi_id_page
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_90()*/ 90,
             array(/**/
                 'T0_chi_id_page' => $donnees_recues[__xva]['chi_id_page']
@@ -317,22 +404,38 @@ class c_pages1{
         );
         
         if($tt[__xst] === __xsu){
-         
 
-            $tt62=$this->sql0->sql_iii(
+            $tt62=/*sql_inclure_deb*/
+                /* sql_62()
+                SELECT 
+                `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
+                `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
+                 FROM b1.tbl_sources T0
+                 LEFT JOIN b1.tbl_projets T1 ON T1.chi_id_projet = T0.chx_projet_id_source
+                
+                 LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_id_source
+                
+                WHERE ( / *** *** / `T0`.`chi_id_source` = :T0_chi_id_source
+                   AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_62()*/ 62,
                 array(/**/
                     'T0_chi_id_source' => $donnees_recues[__xva]['chx_source_page'],
-                    'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+                    'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
             );
+            
             if($tt62[__xst] === __xer){
 
                 $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
                 return;
+
             }
-            
+
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
             $obj_doss=new c_dossiers1(
                 $donnees_retournees,
@@ -342,40 +445,64 @@ class c_pages1{
             $dossier=$obj_doss->construire_chemin($tt62[__xva][0]['T0.chx_dossier_id_source']);
             
             if($dossier['__xst'] !== __xsu){
+
                 $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
                 return;
+
             }
+
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt62[__xva][0] , true ) . '</pre>' ; exit(0);*/
             
-//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt62[__xva][0] , true ) . '</pre>' ; exit(0);
-            
-            if(!is_file($dossier['__xva']['chemin_absolu'].DIRECTORY_SEPARATOR.$tt62[__xva][0]['T0.chp_nom_source'])){
+            if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source'])){
+
                 $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
                 return;
+
             }
-            require_once($dossier['__xva']['chemin_absolu'].DIRECTORY_SEPARATOR.$tt62[__xva][0]['T0.chp_nom_source']);
-            
-            
-            $class_methods = get_class_methods(str_replace('.php','',$tt62[__xva][0]['T0.chp_nom_source']));
+
+            require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source']);
+            $class_methods=get_class_methods(str_replace('.php','',$tt62[__xva][0]['T0.chp_nom_source']));
             $trouve=false;
-            foreach( $class_methods as $k1 => $v1){
-                if($v1===$donnees_recues[__xva]['chp_methode_page']){
+            foreach($class_methods as $k1 => $v1){
+                
+                if($v1 === $donnees_recues[__xva]['chp_methode_page']){
+
                     $trouve=true;
                     break;
+
                 }
-            }
-            if($trouve===false){
-                $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . var_export($class_methods , true ) . ' [' . __LINE__ . ']';
-                return;
+
             }
             
+            if($trouve === false){
+
+                $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . var_export($class_methods,true) . ' [' . __LINE__ . ']';
+                return;
+
+            }
 
             /*
               afr 
               pour la page accueil
             */
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_91()
+                UPDATE b1.tbl_pages SET 
+                   `chp_nom_page` = :n_chp_nom_page , 
+                   `chx_parent_page` = :n_chx_parent_page , 
+                   `chx_acces_page` = :n_chx_acces_page , 
+                   `chx_source_page` = :n_chx_source_page , 
+                   `chp_methode_page` = :n_chp_methode_page , 
+                   `chx_projet_page` = :n_chx_projet_page , 
+                   `cht_complement_page` = :n_cht_complement_page , 
+                   `cht_contenu_methode_page` = :n_cht_contenu_methode_page
+                WHERE `chi_id_page` = :c_chi_id_page ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_91()*/ 91,
-                array(/**/
+                array(
+                    /**/
                     'c_chi_id_page' => $tt[__xva][0]['T0.chi_id_page'],
                     'n_chp_nom_page' => $donnees_recues[__xva]['chp_nom_page'],
                     'n_chx_parent_page' => $donnees_recues[__xva]['chx_parent_page'],
@@ -384,7 +511,7 @@ class c_pages1{
                     'n_chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
                     'n_cht_contenu_methode_page' => $donnees_recues[__xva]['cht_contenu_methode_page'],
                     'n_cht_complement_page' => $donnees_recues[__xva]['cht_complement_page'],
-                    'n_chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+                    'n_chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
             );
@@ -395,20 +522,17 @@ class c_pages1{
 
             }else if($tt['changements'] === 1){
 
-
                 require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_menus1.php');
-                $obj_menu=new c_menus1(
-                    $donnees_retournees,
-                    $mat,
-                    $donnees_recues
-                );
+                $obj_menu=new c_menus1($donnees_retournees,$mat,$donnees_recues);
                 $ocm=$obj_menu->construire_menus($donnees_retournees,$mat,$donnees_recues);
-                if($ocm[__xst]!==__xsu){
-                  $donnees_retournees[__x_signaux][__xer][]='erreur lors de la construction des menus [' . __LINE__ . ']';
-                  return;
+                
+                if($ocm[__xst] !== __xsu){
+
+                    $donnees_retournees[__x_signaux][__xer][]='erreur lors de la construction des menus [' . __LINE__ . ']';
+                    return;
+
                 }
-                
-                
+
                 
                 if($page_liste_des_pages1 === true){
 
@@ -452,7 +576,6 @@ class c_pages1{
         $o1 .= '      <input type="text" maxlength="64" id="chp_nom_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        
         /*
           =====================================================================================================
         */
@@ -590,7 +713,24 @@ class c_pages1{
         if(is_numeric($chi_id_pages) && $chi_id_pages > 0){
 
             /*afr 1 */
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_90()
+                SELECT 
+                `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
+                `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
+                `T0`.`cht_contenu_methode_page`
+                 FROM b1.tbl_pages T0
+                 LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+                
+                 LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
+                
+                 LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
+                
+                WHERE `T0`.`chi_id_page` = :T0_chi_id_page
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_90()*/ 90,
                 array(/**/
                     'T0_chi_id_page' => $chi_id_pages
@@ -614,8 +754,6 @@ class c_pages1{
                 $o1 .= '      <input type="text" id="chp_nom_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_nom_page']) . '" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
-                
-                
                 /*
                   =====================================================================================
                 */
@@ -707,7 +845,7 @@ class c_pages1{
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <input type="text" id="chp_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_methode_page']) . '" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '  </div>' . PHP_EOL;                
+                $o1 .= '  </div>' . PHP_EOL;
                 /*
                   =====================================================================================
                 */
@@ -718,7 +856,7 @@ class c_pages1{
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <input id="cht_contenu_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >' . enti1($tt[__xva][0]['T0.cht_contenu_methode_page']) . '</textarea>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '  </div>' . PHP_EOL;                
+                $o1 .= '  </div>' . PHP_EOL;
                 /*
                   =====================================================================================
                 */
@@ -729,7 +867,7 @@ class c_pages1{
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <textarea id="cht_complement_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_complement_page']) . '</textarea>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '  </div>' . PHP_EOL;                
+                $o1 .= '  </div>' . PHP_EOL;
                 /*
                   =====================================================================================
                 */
@@ -770,7 +908,24 @@ class c_pages1{
         
         if(is_numeric($chi_id_pages) && $chi_id_pages > 0){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_90()
+                SELECT 
+                `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
+                `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
+                `T0`.`cht_contenu_methode_page`
+                 FROM b1.tbl_pages T0
+                 LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+                
+                 LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
+                
+                 LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
+                
+                WHERE `T0`.`chi_id_page` = :T0_chi_id_page
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_90()*/ 90,
                 array(/**/
                     'T0_chi_id_page' => $chi_id_pages
@@ -1126,12 +1281,32 @@ class c_pages1{
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
-        $tt=$this->sql0->sql_iii(
-            /*sql_88()*/ 88,
-            array( /**/
-                'T0_chi_id_page' => $par['T0_chi_id_page'] === '' ? '' : $par['T0_chi_id_page'], 
-                'T0_chp_nom_page' => $par['T0_chp_nom_page'] === '' ? '' : '' . $par['T0_chp_nom_page'] . '', 
-                'quantitee' => $__nbMax, 
+        $tt=/*sql_inclure_deb*/
+            /* sql_88()
+            SELECT 
+            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_source_page` , `T0`.`chp_methode_page` , 
+            `T0`.`cht_complement_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T1`.`cht_contenu_methode_page`
+             FROM b1.tbl_pages T0
+             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
+            
+             LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
+            
+            WHERE (`T0`.`chi_id_page` = :T0_chi_id_page
+               AND `T0`.`chp_nom_page` LIKE :T0_chp_nom_page) 
+            ORDER BY `T0`.`chi_id_page` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
+             /*sql_88()*/ 88,
+            array(
+                /**/
+                'T0_chi_id_page' => $par['T0_chi_id_page'] === '' ? '' : $par['T0_chi_id_page'],
+                'T0_chp_nom_page' => $par['T0_chp_nom_page'] === '' ? '' : '' . $par['T0_chp_nom_page'] . '',
+                'quantitee' => $__nbMax,
                 'debut' => $__debut
             ),
             $donnees_retournees
@@ -1160,8 +1335,8 @@ class c_pages1{
             /**/
             $parametres='';
             $parametres .= 'interface1.choisir_dans_sous_fenetre1(';
-            $parametres .= '    nom_champ_dans_parent1('.$par['nom_champ_dans_parent1'].')';
-            $parametres .= '    nom_libelle_dans_parent1('.$par['nom_libelle_dans_parent1'].')';
+            $parametres .= '    nom_champ_dans_parent1(' . $par['nom_champ_dans_parent1'] . ')';
+            $parametres .= '    nom_libelle_dans_parent1(' . $par['nom_libelle_dans_parent1'] . ')';
             $parametres .= '    id1(' . $v0['T0.chi_id_page'] . ')';
             $parametres .= '    libelle1("(' . $v0['T0.chi_id_page'] . ') ' . $v0['T0.chp_nom_page'] . '" )';
             $parametres .= ')';
@@ -1302,7 +1477,26 @@ class c_pages1{
         $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_88()
+            SELECT 
+            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_source_page` , `T0`.`chp_methode_page` , 
+            `T0`.`cht_complement_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T1`.`cht_contenu_methode_page`
+             FROM b1.tbl_pages T0
+             LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
+            
+             LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
+            
+            WHERE (`T0`.`chi_id_page` = :T0_chi_id_page
+               AND `T0`.`chp_nom_page` LIKE :T0_chp_nom_page) 
+            ORDER BY `T0`.`chi_id_page` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_88()*/ 88,
             array(
                 /**/
