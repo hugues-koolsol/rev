@@ -88,8 +88,8 @@ class c_bases1{
     */
     function creer_la_base_sur_disque_a_partir_du_shema(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         /* $donnees_retournees[__x_signaux][__xer][]=' <pre>' . var_export( $donnees_recues , true ) . '</pre>[' . __LINE__ . '] ';*/
-        $tt26=/*sql_inclure_deb*/
-            /* sql_26()
+        $tt126=/*sql_inclure_deb*/
+            /* sql_126()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
             `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -105,12 +105,12 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_26()*/ 26,
+             /*sql_126()*/ 126,
             array( 'T0_chi_id_basedd' => $donnees_recues[__xva]['id_bdd_de_la_base'], 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
         
-        if($tt26[__xst] === __xer || count($tt26[__xva]) !== 1){
+        if($tt126[__xst] === __xer || count($tt126[__xva]) !== 1){
 
             $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
             return;
@@ -118,7 +118,7 @@ class c_bases1{
         }
 
         /*
-          $donnees_retournees[__x_signaux][__xer][]=' <pre>' . var_export( $tt26[__xva][0] , true ) . '</pre>[' . __LINE__ . '] ';
+          $donnees_retournees[__x_signaux][__xer][]=' <pre>' . var_export( $tt126[__xva][0] , true ) . '</pre>[' . __LINE__ . '] ';
         */
         require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
         $obj_doss=new c_dossiers1(
@@ -126,7 +126,7 @@ class c_bases1{
              /*matrice*/ $mat,
             $donnees_recues
         );
-        $chemin=$obj_doss->construire_chemin($tt26[__xva][0]['T0.chx_dossier_id_basedd']);
+        $chemin=$obj_doss->construire_chemin($tt126[__xva][0]['T0.chx_dossier_id_basedd']);
         
         if($chemin[__xst] === __xsu){
 
@@ -150,19 +150,19 @@ class c_bases1{
         }
 
         $db1temp=new SQLite3($chemin_bdd);
-        $tt51=/*sql_inclure_deb*/
-            /* sql_51()
+        $tt151=/*sql_inclure_deb*/
+            /* sql_151()
             BEGIN TRANSACTION;
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_51()*/ 51,
+             /*sql_151()*/ 151,
             array(),
             $donnees_retournees,
             $db1temp
         );
         
-        if($tt51[__xst] !== __xsu){
+        if($tt151[__xst] !== __xsu){
 
             $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
             return;
@@ -184,19 +184,19 @@ class c_bases1{
 
             $donnees_retournees[__x_signaux][__xer][]='operation_table_dans_base(' . $donnees_recues[__xva]['operation_table'] . ') impossible [' . __METHOD__ . ':' . __LINE__ . '] ';
         }
-        $tt52=/*sql_inclure_deb*/
-            /* sql_52()
+        $tt152=/*sql_inclure_deb*/
+            /* sql_152()
             COMMIT;
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_52()*/ 52,
+             /*sql_152()*/ 152,
             array(),
             $donnees_retournees,
             $db1temp
         );
         
-        if($tt52[__xst] !== __xsu){
+        if($tt152[__xst] !== __xsu){
 
             $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
             return;
@@ -214,13 +214,13 @@ class c_bases1{
           $donnees_retournees[__x_signaux][__xer][]='<pre>' . var_export( $donnees_recues , true ) . '</pre>[' . __LINE__ . '] ';
           return;
         */
-        $tt42=/*sql_inclure_deb*/
-            /* sql_44()
+        $tt144=/*sql_inclure_deb*/
+            /* sql_144()
             ALTER TABLE :nom_de_la_table DROP COLUMN :nom_du_champ
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_44()*/ 44,
+             /*sql_144()*/ 144,
             array(/**/
                 'nom_de_la_table' => $donnees_recues[__xva]['nom_de_la_table'],
                 'nom_du_champ' => $donnees_recues[__xva]['nom_du_champ']
@@ -228,7 +228,7 @@ class c_bases1{
             $donnees_retournees
         );
         
-        if($tt42[__xst] !== __xsu){
+        if($tt144[__xst] !== __xsu){
 
             $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
             return;
@@ -246,8 +246,8 @@ class c_bases1{
           $donnees_retournees[__x_signaux][__xer][]='<pre>' . var_export( $donnees_recues , true ) . '</pre>[' . __LINE__ . '] ';
           return;
         */
-        $tt26=/*sql_inclure_deb*/
-            /* sql_26()
+        $tt126=/*sql_inclure_deb*/
+            /* sql_126()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
             `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -263,12 +263,12 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_26()*/ 26,
+             /*sql_126()*/ 126,
             array( 'T0_chi_id_basedd' => $donnees_recues[__xva]['id_bdd_de_la_base'], 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
         
-        if($tt26[__xst] === __xer || count($tt26[__xva]) !== 1){
+        if($tt126[__xst] === __xer || count($tt126[__xva]) !== 1){
 
             $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
             return;
@@ -276,11 +276,11 @@ class c_bases1{
         }
 
         /*
-          $donnees_retournees[__x_signaux][__xer][]='<pre>' . var_export( $tt26[__xva][0]['T0.chp_rev_travail_basedd'] , true ) . '</pre>[' . __LINE__ . '] ';
+          $donnees_retournees[__x_signaux][__xer][]='<pre>' . var_export( $tt126[__xva][0]['T0.chp_rev_travail_basedd'] , true ) . '</pre>[' . __LINE__ . '] ';
           return;
         */
-        $tt40=/*sql_inclure_deb*/
-            /* sql_40()
+        $tt140=/*sql_inclure_deb*/
+            /* sql_140()
             UPDATE b1.tbl_bdds SET 
                `chp_rev_basedd` = :n_chp_rev_basedd
             WHERE (`chi_id_basedd` = :c_chi_id_basedd
@@ -288,16 +288,16 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_40()*/ 40,
+             /*sql_140()*/ 140,
             array(/**/
-                'n_chp_rev_basedd' => $tt26[__xva][0]['T0.chp_rev_travail_basedd'],
+                'n_chp_rev_basedd' => $tt126[__xva][0]['T0.chp_rev_travail_basedd'],
                 'c_chi_id_basedd' => $donnees_recues[__xva]['id_bdd_de_la_base'],
                 'c_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
             ),
             $donnees_retournees
         );
         
-        if($tt40[__xst] !== __xsu){
+        if($tt140[__xst] !== __xsu){
 
             $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
             return;
@@ -312,7 +312,7 @@ class c_bases1{
     */
     function reecrire_la_base_a_partir_du_shema_sur_disque(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
-            /* sql_26()
+            /* sql_126()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
             `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -328,7 +328,7 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_26()*/ 26,
+             /*sql_126()*/ 126,
             array( 'T0_chi_id_basedd' => $donnees_recues[__xva]['id_bdd_de_la_base'], 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -472,8 +472,8 @@ class c_bases1{
           $donnees_retournees[__x_signaux][__xdv][]=' <pre>' . var_export( $GLOBALS[__BDD],true) . '</pre> [' . __LINE__ . '] ';
           return;
         */
-        $tt26=/*sql_inclure_deb*/
-            /* sql_26()
+        $tt126=/*sql_inclure_deb*/
+            /* sql_126()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
             `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -489,12 +489,12 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_26()*/ 26,
+             /*sql_126()*/ 126,
             array( 'T0_chi_id_basedd' => $id_bdd_de_la_base, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
         
-        if($tt26[__xst] === __xer || count($tt26[__xva]) !== 1){
+        if($tt126[__xst] === __xer || count($tt126[__xva]) !== 1){
 
             $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
             return;
@@ -507,7 +507,7 @@ class c_bases1{
              /*matrice*/ $mat,
             $donnees_recues
         );
-        $chemin=$obj_doss->construire_chemin($tt26[__xva][0]['T0.chx_dossier_id_basedd']);
+        $chemin=$obj_doss->construire_chemin($tt126[__xva][0]['T0.chx_dossier_id_basedd']);
         
         if($chemin[__xst] === __xsu){
 
@@ -914,7 +914,7 @@ class c_bases1{
     private function comparer_une_base_physique_et_une_base_virtuelle(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues,$id_bdd_de_la_base,$source_base_virtuelle){
         $tableaux_retournes=array( 'tableau1' => array(), 'tableau2' => array());
         $tt=/*sql_inclure_deb*/
-            /* sql_26()
+            /* sql_126()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
             `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -930,7 +930,7 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_26()*/ 26,
+             /*sql_126()*/ 126,
             array( 'T0_chi_id_basedd' => $id_bdd_de_la_base, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -1070,7 +1070,7 @@ class c_bases1{
         }
         $donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
         $tt=/*sql_inclure_deb*/
-            /* sql_26()
+            /* sql_126()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
             `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -1086,7 +1086,7 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_26()*/ 26,
+             /*sql_126()*/ 126,
             array( 'T0_chi_id_basedd' => $id_bdd_de_la_base, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -1157,7 +1157,7 @@ class c_bases1{
             'c_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
         );
         $tt=/*sql_inclure_deb*/
-            /* sql_10()
+            /* sql_110()
             UPDATE b1.tbl_bdds SET 
                `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd
             WHERE (`chi_id_basedd` = :c_chi_id_basedd
@@ -1165,15 +1165,15 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_10()*/ 10,
+             /*sql_110()*/ 110,
             $a_modifier,
             $donnees_retournees
         );
         
         if($tt[__xst] === __xsu && $tt['changements'] === 1){
 
-            $tt11=/*sql_inclure_deb*/
-                /* sql_11()
+            $tt111=/*sql_inclure_deb*/
+                /* sql_111()
                 SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
                  FROM b1.tbl_bdds T0
@@ -1183,12 +1183,12 @@ class c_bases1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_11()*/ 11,
+                 /*sql_111()*/ 111,
                 array( 'T0_chi_id_basedd' => $donnees_recues[__xva]['id_bdd_de_la_base'], 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
             
-            if($tt11[__xst] === __xsu){
+            if($tt111[__xst] === __xsu){
 
                 require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
                 $obj_doss=new c_dossiers1(
@@ -1197,7 +1197,7 @@ class c_bases1{
                     $donnees_recues
                 );
                 $chemin_de_la_bdd='';
-                $chemin_racine2=$obj_doss->construire_chemin($tt11[__xva][0]['T0.chx_dossier_id_basedd']);
+                $chemin_racine2=$obj_doss->construire_chemin($tt111[__xva][0]['T0.chx_dossier_id_basedd']);
                 
                 if($chemin_racine2[__xst] === __xsu){
 
@@ -1273,7 +1273,7 @@ class c_bases1{
               $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($les_id_des_bases , true ) . '</pre> [' . __LINE__ . '] ';
             */
             $tt=/*sql_inclure_deb*/
-                /* sql_11()
+                /* sql_111()
                 SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
                  FROM b1.tbl_bdds T0
@@ -1283,7 +1283,7 @@ class c_bases1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_11()*/ 11,
+                 /*sql_111()*/ 111,
                 array(/**/
                     'T0_chi_id_basedd' => $les_id_des_bases,
                     'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
@@ -1363,7 +1363,7 @@ class c_bases1{
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
-            /* sql_17()
+            /* sql_117()
             INSERT INTO b1.`tbl_bdds`(
                 `chx_dossier_id_basedd` , 
                 `chx_projet_id_basedd` , 
@@ -1378,7 +1378,7 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_17()*/ 17,
+             /*sql_117()*/ 117,
             $donnees_sql,
             $donnees_retournees
         );
@@ -1478,7 +1478,7 @@ class c_bases1{
         }
 
         $tt=/*sql_inclure_deb*/
-            /* sql_26()
+            /* sql_126()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
             `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -1494,7 +1494,7 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_26()*/ 26,
+             /*sql_126()*/ 126,
             array( 'T0_chi_id_basedd' => $donnees_recues[__xva]['chi_id_basedd'], 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -1502,7 +1502,7 @@ class c_bases1{
         if($tt[__xst] === __xsu){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_18()
+                /* sql_118()
                 / ***meta(tester_les_dependances_dans_le_php(1))*** /
                 
                 DELETE FROM b1.tbl_bdds
@@ -1511,7 +1511,7 @@ class c_bases1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_18()*/ 18,
+                 /*sql_118()*/ 118,
                 array( 'chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'], 'chi_id_basedd' => $tt[__xva][0]['T0.chi_id_basedd']),
                 $donnees_retournees
             );
@@ -1586,7 +1586,7 @@ class c_bases1{
 
         /*si l'utilisateur bidouille l'id dans l'interface*/
         $tt=/*sql_inclure_deb*/
-            /* sql_26()
+            /* sql_126()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
             `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -1602,7 +1602,7 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_26()*/ 26,
+             /*sql_126()*/ 126,
             array( 'T0_chi_id_basedd' => $donnees_recues[__xva]['chi_id_basedd'], 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -1622,8 +1622,8 @@ class c_bases1{
                     /*
                       si on est sur rev 1/2, une base  autre que 1 ne doit pas être dans le même répertoire que celui des bases systèmes
                     */
-                    $tt26bis=/*sql_inclure_deb*/
-                        /* sql_26()
+                    $tt126bis=/*sql_inclure_deb*/
+                        /* sql_126()
                         SELECT 
                         `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
                         `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -1639,16 +1639,16 @@ class c_bases1{
                         */
                         /*sql_inclure_fin*/
                         $this->sql0->sql_iii(
-                         /*sql_26()*/ 26,
+                         /*sql_126()*/ 126,
                         array( 'T0_chi_id_basedd' => 1, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                         $donnees_retournees
                     );
                     
-                    if($tt26bis[__xst] === __xsu){
+                    if($tt126bis[__xst] === __xsu){
 
                         /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = '.'<pre>' . var_export( $donnees_recues[__xva]['chx_dossier_id_basedd'] , true ) . '</pre>' ; exit(0); */
                         
-                        if(((int)($tt26bis[__xva][0]['T0.chx_dossier_id_basedd'])) === ((int)($donnees_recues[__xva]['chx_dossier_id_basedd']))){
+                        if(((int)($tt126bis[__xva][0]['T0.chx_dossier_id_basedd'])) === ((int)($donnees_recues[__xva]['chx_dossier_id_basedd']))){
 
                             $donnees_retournees[__x_signaux][__xer][]='vous devez spécifier un autre dossier [' . __LINE__ . ']';
                             return;
@@ -1665,7 +1665,7 @@ class c_bases1{
             }
 
             $tt=/*sql_inclure_deb*/
-                /* sql_16()
+                /* sql_116()
                 UPDATE b1.tbl_bdds SET 
                    `chx_dossier_id_basedd` = :n_chx_dossier_id_basedd , 
                    `chp_rev_basedd` = :n_chp_rev_basedd , 
@@ -1678,7 +1678,7 @@ class c_bases1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_16()*/ 16,
+                 /*sql_116()*/ 116,
                 array(
                     /**/
                     'c_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
@@ -1799,7 +1799,7 @@ class c_bases1{
         if(is_numeric($chi_id_basedd) && $chi_id_basedd > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_26()
+                /* sql_126()
                 SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
                 `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -1815,7 +1815,7 @@ class c_bases1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_26()*/ 26,
+                 /*sql_126()*/ 126,
                 array( 'T0_chi_id_basedd' => $chi_id_basedd, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -1863,8 +1863,8 @@ class c_bases1{
         
         if(is_numeric($chi_id_basedd) && $chi_id_basedd > 0){
 
-            $tt11=/*sql_inclure_deb*/
-                /* sql_11()
+            $tt111=/*sql_inclure_deb*/
+                /* sql_111()
                 SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
                  FROM b1.tbl_bdds T0
@@ -1874,16 +1874,16 @@ class c_bases1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_11()*/ 11,
+                 /*sql_111()*/ 111,
                 array( 'T0_chi_id_basedd' => $chi_id_basedd, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
             
-            if($tt11[__xst] === __xsu){
+            if($tt111[__xst] === __xsu){
 
                 /* suppression des anciennes données de la table rev */
                 $tt=/*sql_inclure_deb*/
-                    /* sql_5()
+                    /* sql_105()
                     DELETE FROM b1.tbl_revs
                     WHERE (`chx_projet_rev` = :chx_projet_rev
                        AND `chp_provenance_rev` = :chp_provenance_rev
@@ -1891,7 +1891,7 @@ class c_bases1{
                     */
                     /*sql_inclure_fin*/
                     $this->sql0->sql_iii(
-                     /*sql_5()*/ 5,
+                     /*sql_105()*/ 105,
                     array(/**/
                         'chx_projet_rev' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                         'chp_provenance_rev' => 'base',
@@ -1907,7 +1907,7 @@ class c_bases1{
 
                 }
 
-                $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($tt11[__xva][0]['T0.chp_rev_travail_basedd']);
+                $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($tt111[__xva][0]['T0.chp_rev_travail_basedd']);
                 
                 if($obj_matrice[__xst] === __xsu){
 
@@ -1937,7 +1937,7 @@ class c_bases1{
                         );
                     }
                     $tt=/*sql_inclure_deb*/
-                        /* sql_12()
+                        /* sql_112()
                         INSERT INTO b1.`tbl_revs`(
                             `chx_projet_rev` , 
                             `chp_provenance_rev` , 
@@ -1978,7 +1978,7 @@ class c_bases1{
                         */
                         /*sql_inclure_fin*/
                         $this->sql0->sql_iii(
-                         /*sql_12()*/ 12,
+                         /*sql_112()*/ 112,
                         $a_sauvegarder,
                         $donnees_retournees
                     );
@@ -2025,7 +2025,7 @@ class c_bases1{
         if(is_numeric($chi_id_basedd) && $chi_id_basedd > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_26()
+                /* sql_126()
                 SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
                 `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -2041,7 +2041,7 @@ class c_bases1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_26()*/ 26,
+                 /*sql_126()*/ 126,
                 array( 'T0_chi_id_basedd' => $chi_id_basedd, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -2315,7 +2315,7 @@ class c_bases1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_15()
+            /* sql_115()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chx_dossier_id_basedd` , `T1`.`chp_nom_dossier`
              FROM b1.tbl_bdds T0
@@ -2329,7 +2329,7 @@ class c_bases1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_15()*/ 15,
+             /*sql_115()*/ 115,
             array(
                 /**/
                 'T0_chi_id_basedd' => $par['T0_chi_id_basedd'] === '' ? '' : $par['T0_chi_id_basedd'],

@@ -95,8 +95,8 @@ class c_requetes1{
 
         }
 
-        $tt49=/*sql_inclure_deb*/
-            /* sql_49()
+        $tt149=/*sql_inclure_deb*/
+            /* sql_149()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete`
              FROM b1.tbl_requetes T0
@@ -108,7 +108,7 @@ class c_requetes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_49()*/ 49,
+             /*sql_149()*/ 149,
             array(/**/
                 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 'nb_max' => 99999
@@ -116,7 +116,7 @@ class c_requetes1{
             $donnees_retournees
         );
         
-        if($tt49[__xst] !== __xsu){
+        if($tt149[__xst] !== __xsu){
 
             $donnees_retournees[__x_signaux][__xer][]='Erreur de sélection de la requête [' . __LINE__ . ']';
             return;
@@ -124,7 +124,7 @@ class c_requetes1{
         }
 
         $tableau_contenu_js=[];
-        foreach($tt49[__xva] as $k1 => $v1){
+        foreach($tt149[__xva] as $k1 => $v1){
             $tableau_contenu_js[$v1['T0.chi_id_requete']]=array(/**/
                 'cht_sql_requete' => $v1['T0.cht_sql_requete'],
                 'cht_commentaire_requete' => $v1['T0.cht_commentaire_requete']
@@ -242,7 +242,7 @@ class c_requetes1{
         if($chi_id_requete > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_32()
+                /* sql_132()
                 SELECT 
                 `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
                 `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
@@ -253,7 +253,7 @@ class c_requetes1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_32()*/ 32,
+                 /*sql_132()*/ 132,
                 array( 'T0_chi_id_requete' => $chi_id_requete, 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -329,7 +329,7 @@ class c_requetes1{
             'n_cht_commentaire_requete' => $donnees_recues[__xva]['cht_commentaire_requete']
         );
         $tt=/*sql_inclure_deb*/
-            /* sql_9()
+            /* sql_109()
             UPDATE b1.tbl_requetes SET 
                `chp_type_requete` = :n_chp_type_requete , 
                `cht_rev_requete` = :n_cht_rev_requete , 
@@ -342,7 +342,7 @@ class c_requetes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_9()*/ 9,
+             /*sql_109()*/ 109,
             $a_modifier,
             $donnees_retournees
         );
@@ -390,8 +390,8 @@ class c_requetes1{
                     'cht_php_requete' => $donnees_recues[__xva]['php'],
                     'cht_commentaire_requete' => $donnees_recues[__xva]['cht_commentaire_requete']
                 ));
-        $tt7=/*sql_inclure_deb*/
-            /* sql_7()
+        $tt107=/*sql_inclure_deb*/
+            /* sql_107()
             INSERT INTO b1.`tbl_requetes`(
                 `chx_projet_requete` , 
                 `chp_type_requete` , 
@@ -410,20 +410,20 @@ class c_requetes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_7()*/ 7,
+             /*sql_107()*/ 107,
             $a_inserer,
             $donnees_retournees
         );
         
-        if($tt7[__xst] === __xsu){
+        if($tt107[__xst] === __xsu){
 
-            /* $tt7['nouvel_id'];*/
+            /* $tt107['nouvel_id'];*/
             /*
               lors de la création dans l'interface, l'id est égal à 0 ou bien nnn si on part d'une requête existante
             */
-            $nouveau_php=str_replace('function sql_' . $donnees_recues[__xva]['chi_id_requete'] . '(','function sql_' . $tt7['nouvel_id'] . '(',$donnees_recues[__xva]['php']);
-            $tt35=/*sql_inclure_deb*/
-                /* sql_35()
+            $nouveau_php=str_replace('function sql_' . $donnees_recues[__xva]['chi_id_requete'] . '(','function sql_' . $tt107['nouvel_id'] . '(',$donnees_recues[__xva]['php']);
+            $tt135=/*sql_inclure_deb*/
+                /* sql_135()
                 UPDATE b1.tbl_requetes SET 
                    `cht_php_requete` = :n_cht_php_requete
                 WHERE (`chi_id_requete` = :c_chi_id_requete
@@ -431,24 +431,24 @@ class c_requetes1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_35()*/ 35,
+                 /*sql_135()*/ 135,
                 array(/**/
                     'c_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
-                    'c_chi_id_requete' => $tt7['nouvel_id'],
+                    'c_chi_id_requete' => $tt107['nouvel_id'],
                     'n_cht_php_requete' => $nouveau_php
                 ),
                 $donnees_retournees
             );
             
-            if($tt35[__xst] === __xsu){
+            if($tt135[__xst] === __xsu){
 
-                $obj_ecrire=$this->ecrire_le_php_de_la_requete_sur_disque($tt7['nouvel_id'],$nouveau_php,$donnees_retournees);
+                $obj_ecrire=$this->ecrire_le_php_de_la_requete_sur_disque($tt107['nouvel_id'],$nouveau_php,$donnees_retournees);
                 
-                if($tt35[__xst] === __xsu){
+                if($tt135[__xst] === __xsu){
 
                     $donnees_retournees[__xst]=__xsu;
                     $donnees_retournees[__x_signaux][__xsu][]='Requête sauvegardée [' . __LINE__ . ']';
-                    $donnees_recues[__xva]['chi_id_requete']=$tt7['nouvel_id'];
+                    $donnees_recues[__xva]['chi_id_requete']=$tt107['nouvel_id'];
                     $this->sauvegarder_une_matrice_de_requete($donnees_retournees,$mat,$donnees_recues);
 
                 }
@@ -472,7 +472,7 @@ class c_requetes1{
     public function sauvegarder_une_matrice_de_requete(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         /* suppression des anciennes données de la table rev */
         $tt=/*sql_inclure_deb*/
-            /* sql_5()
+            /* sql_105()
             DELETE FROM b1.tbl_revs
             WHERE (`chx_projet_rev` = :chx_projet_rev
                AND `chp_provenance_rev` = :chp_provenance_rev
@@ -480,7 +480,7 @@ class c_requetes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_5()*/ 5,
+             /*sql_105()*/ 105,
             array(/**/
                 'chx_projet_rev' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 'chp_provenance_rev' => 'sql',
@@ -522,7 +522,7 @@ class c_requetes1{
             );
         }
         $tt=/*sql_inclure_deb*/
-            /* sql_12()
+            /* sql_112()
             INSERT INTO b1.`tbl_revs`(
                 `chx_projet_rev` , 
                 `chp_provenance_rev` , 
@@ -563,7 +563,7 @@ class c_requetes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_12()*/ 12,
+             /*sql_112()*/ 112,
             $a_sauvegarder,
             $donnees_retournees
         );
@@ -573,7 +573,7 @@ class c_requetes1{
     */
     public function recuperer_les_bases_du_projet_en_cours(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
-            /* sql_27()
+            /* sql_127()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
             `T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
@@ -588,7 +588,7 @@ class c_requetes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_27()*/ 27,
+             /*sql_127()*/ 127,
             array(/**/
                 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
             ),
@@ -614,8 +614,8 @@ class c_requetes1{
         
         if($donnees_recues[__xva]['id_requete'] > 0){
 
-            $tt32=/*sql_inclure_deb*/
-                /* sql_6()
+            $tt106=/*sql_inclure_deb*/
+                /* sql_106()
                 SELECT 
                 `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
                 `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
@@ -626,7 +626,7 @@ class c_requetes1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_6()*/ 6,
+                 /*sql_106()*/ 106,
                 array(/**/
                     'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     'T0_chi_id_requete' => $donnees_recues[__xva]['id_requete']
@@ -634,12 +634,12 @@ class c_requetes1{
                 $donnees_retournees
             );
             
-            if($tt32[__xst] === __xsu){
+            if($tt106[__xst] === __xsu){
 
                 $donnees_retournees[__xva]['chi_id_requete_initiale']=$donnees_recues[__xva]['id_requete'];
-                $donnees_retournees[__xva]['cht_rev_requete_initiale']=$tt32[__xva][0]['T0.cht_rev_requete'];
-                $donnees_retournees[__xva]['chp_type_requete_initiale']=$tt32[__xva][0]['T0.chp_type_requete'];
-                $donnees_retournees[__xva]['cht_commentaire_requete_initiale']=$tt32[__xva][0]['T0.cht_commentaire_requete'];
+                $donnees_retournees[__xva]['cht_rev_requete_initiale']=$tt106[__xva][0]['T0.cht_rev_requete'];
+                $donnees_retournees[__xva]['chp_type_requete_initiale']=$tt106[__xva][0]['T0.chp_type_requete'];
+                $donnees_retournees[__xva]['cht_commentaire_requete_initiale']=$tt106[__xva][0]['T0.cht_commentaire_requete'];
 
             }else{
 
@@ -789,7 +789,7 @@ class c_requetes1{
         }
 
         $tt=/*sql_inclure_deb*/
-            /* sql_6()
+            /* sql_106()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
             `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
@@ -800,7 +800,7 @@ class c_requetes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_6()*/ 6,
+             /*sql_106()*/ 106,
             array( 'T0_chi_id_requete' => $donnees_recues[__xva]['chi_id_requete'], 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -809,7 +809,7 @@ class c_requetes1{
 
             /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt[__xva] , true ) . '</pre>' ; exit(0);*/
             $tt=/*sql_inclure_deb*/
-                /* sql_4()
+                /* sql_104()
                 / ***meta(tester_les_dependances_dans_le_php(1))*** /
                 
                 DELETE FROM b1.tbl_requetes
@@ -818,7 +818,7 @@ class c_requetes1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_4()*/ 4,
+                 /*sql_104()*/ 104,
                 array( 'chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'], 'chi_id_requete' => $tt[__xva][0]['T0.chi_id_requete']),
                 $donnees_retournees
             );
@@ -958,7 +958,7 @@ EOT;
         if(is_numeric($chi_id_requete) && $chi_id_requete > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_6()
+                /* sql_106()
                 SELECT 
                 `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
                 `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
@@ -969,7 +969,7 @@ EOT;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_6()*/ 6,
+                 /*sql_106()*/ 106,
                 array( 'T0_chi_id_requete' => $chi_id_requete, 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -1033,7 +1033,7 @@ EOT;
         if(is_numeric($chi_id_requete) && $chi_id_requete > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_32()
+                /* sql_132()
                 SELECT 
                 `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
                 `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
@@ -1044,7 +1044,7 @@ EOT;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_32()*/ 32,
+                 /*sql_132()*/ 132,
                 array( 'T0_chi_id_requete' => $chi_id_requete, 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -1189,7 +1189,7 @@ EOT;
         }
 
         $tt1=/*sql_inclure_deb*/
-            /* sql_32()
+            /* sql_132()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
             `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
@@ -1200,7 +1200,7 @@ EOT;
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_32()*/ 32,
+             /*sql_132()*/ 132,
             array( 'T0_chi_id_requete' => $chi_id_requete_ancienne, 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -1213,7 +1213,7 @@ EOT;
         }
 
         $tt2=/*sql_inclure_deb*/
-            /* sql_32()
+            /* sql_132()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
             `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
@@ -1224,7 +1224,7 @@ EOT;
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_32()*/ 32,
+             /*sql_132()*/ 132,
             array( 'T0_chi_id_requete' => $chi_id_requete_nouvelle, 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -1277,7 +1277,7 @@ EOT;
           return;
         */
         $tt3=/*sql_inclure_deb*/
-            /* sql_3()
+            /* sql_103()
             UPDATE b1.tbl_requetes SET 
                `chi_id_requete` = :n_chi_id_requete , 
                `cht_php_requete` = :n_cht_php_requete
@@ -1286,7 +1286,7 @@ EOT;
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_3()*/ 3,
+             /*sql_103()*/ 103,
             array(
                 /**/
                 'n_cht_php_requete' => $nouveau_php,
@@ -1358,7 +1358,8 @@ EOT;
         $o1 .= '<br />';
         $o1 .= '<div id="vv_requetes_nouveau_numero1">';
         $o1 .= '    <input type="hidden" id="vv_ancien_numero_de_requete" value="' . $chi_id_requete . '" />';
-        $o1 .= '    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_requete" />';
+        $o1 .= '    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_requete" value="' . $chi_id_requete . '" />';
+        $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(vv_nouveau_numero_de_requete,valeur),plus( zone(vv_nouveau_numero_de_requete,valeur) , 100 )))">+100</div>';
         $o1 .= '    <br />';
         $o1 .= '    <div class="hug_bouton" data-hug_click="c_requetes1.formulaire1(conteneur1(vv_requetes_nouveau_numero1))">attribuer ce nouveau numéro</div>';
         $o1 .= '</div>';
@@ -1376,7 +1377,7 @@ EOT;
         if(__X_CLE_APPLICATION === 'rev' . '_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_9()
+                /* sql_109()
                 UPDATE b1.tbl_requetes SET 
                    `chp_type_requete` = :n_chp_type_requete , 
                    `cht_rev_requete` = :n_cht_rev_requete , 
@@ -1389,7 +1390,7 @@ EOT;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_9()*/ 9,
+                 /*sql_109()*/ 109,
                 array(
                     /**/
                     'c_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
@@ -1404,7 +1405,7 @@ EOT;
         }else{
 
             $tt=/*sql_inclure_deb*/
-                /* sql_9()
+                /* sql_109()
                 UPDATE b1.tbl_requetes SET 
                    `chp_type_requete` = :n_chp_type_requete , 
                    `cht_rev_requete` = :n_cht_rev_requete , 
@@ -1417,7 +1418,7 @@ EOT;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_9()*/ 9,
+                 /*sql_109()*/ 109,
                 array(
                     /**/
                     'c_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
@@ -1518,7 +1519,7 @@ EOT;
         if($chi_id_requete > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_32()
+                /* sql_132()
                 SELECT 
                 `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
                 `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
@@ -1529,12 +1530,12 @@ EOT;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_32()*/ 32,
+                 /*sql_132()*/ 132,
                 array( 'T0_chi_id_requete' => $chi_id_requete, 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
             $tt2=/*sql_inclure_deb*/
-                /* sql_71()
+                /* sql_171()
                 SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_rev_travail_basedd`
                  FROM b1.tbl_bdds T0
@@ -1543,7 +1544,7 @@ EOT;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_71()*/ 71,
+                 /*sql_171()*/ 171,
                 array( 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -1564,7 +1565,7 @@ EOT;
 
             }else{
 
-                $donnees_retournees[__x_signaux][__xer][]='erreur sql 32 pour $chi_id_requete=' . $chi_id_requete . ' [' . __LINE__ . ']';
+                $donnees_retournees[__x_signaux][__xer][]='erreur sql 171 pour $chi_id_requete=' . $chi_id_requete . ' [' . __LINE__ . ']';
             }
 
 
@@ -1578,8 +1579,8 @@ EOT;
       =============================================================================================================
     */
     function le_repertoire_des_requetes_est_il_defini(){
-        $tt34=/*sql_inclure_deb*/
-            /* sql_34()
+        $tt134=/*sql_inclure_deb*/
+            /* sql_134()
             SELECT 
             `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
             `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
@@ -1593,15 +1594,15 @@ EOT;
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_34()*/ 34,
+             /*sql_134()*/ 134,
             array( 'T0_chi_id_projet' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
         
-        if($tt34[__xst] === __xsu){
+        if($tt134[__xst] === __xsu){
 
             
-            if($tt34[__xva][0]['T0.chx_dossier_requetes_projet'] !== null){
+            if($tt134[__xva][0]['T0.chx_dossier_requetes_projet'] !== null){
 
                 
                 if(!isset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'])){
@@ -1612,7 +1613,7 @@ EOT;
                          /*matrice*/ $mat,
                         $donnees_recues
                     );
-                    $chemin_racine2=$obj_doss->construire_chemin($tt34[__xva][0]['T0.chx_dossier_requetes_projet']);
+                    $chemin_racine2=$obj_doss->construire_chemin($tt134[__xva][0]['T0.chx_dossier_requetes_projet']);
                     
                     if($chemin_racine2[__xst] === __xsu){
 
@@ -1654,9 +1655,10 @@ EOT;
 
         }
 
-        $__nbMax=10;
+        $__nbMax=20;
         $par=array();
         $par['T0_chi_id_requete']='';
+        $par['T0_chi_id_requete2']='';
         $par['T0_chp_type_requete']='';
         $par['T0_cht_rev_requete']='';
         $par['__num_page']=0;
@@ -1737,6 +1739,7 @@ EOT;
         }
 
         $par['T0_chi_id_requete']=$par['T0_chi_id_requete']??'';
+        $par['T0_chi_id_requete2']=$par['T0_chi_id_requete2']??'';
         $fonction1='c_requetes1.page_liste_des_requetes1';
         $nom_filtre='vv_requetes_filtre1';
         $o1='<h1>Liste des requetes</h1>';
@@ -1747,6 +1750,11 @@ EOT;
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '    <div><span>id</span></div>' . PHP_EOL;
         $o1 .= '    <div><input type="text" id="T0_chi_id_requete" value="' . $par['T0_chi_id_requete'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        /**/
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '    <div><span>id &lt;=</span></div>' . PHP_EOL;
+        $o1 .= '    <div><input type="text" id="T0_chi_id_requete2" value="' . $par['T0_chi_id_requete2'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /**/
         $o1 .= '   <div>' . PHP_EOL;
@@ -1767,7 +1775,7 @@ EOT;
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_2()
+            /* sql_102()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
             `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
@@ -1782,9 +1790,10 @@ EOT;
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_2()*/ 2,
+             /*sql_102()*/ 102,
             array(
                 'T0_chi_id_requete' => $par['T0_chi_id_requete'] === '' ? '' : $par['T0_chi_id_requete'],
+                'T0_chi_id_requete2' => $par['T0_chi_id_requete2'] === '' ? '' : $par['T0_chi_id_requete2'],
                 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 'T0_chp_type_requete' => $par['T0_chp_type_requete'] === '' ? '' : '' . $par['T0_chp_type_requete'] . '',
                 'T0_cht_rev_requete' => $par['T0_cht_rev_requete'] === '' ? '' : '' . $par['T0_cht_rev_requete'] . '',

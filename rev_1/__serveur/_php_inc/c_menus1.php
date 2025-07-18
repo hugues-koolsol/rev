@@ -117,7 +117,7 @@ class c_menus1{
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
-            /* sql_99()
+            /* sql_199()
             INSERT INTO b1.`tbl_menus`(
                 `chx_page_menu` , 
                 `che_ordre_menu` , 
@@ -134,7 +134,7 @@ class c_menus1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_99()*/ 99,
+             /*sql_199()*/ 199,
             $donnees_sql,
             $donnees_retournees
         );
@@ -215,7 +215,7 @@ class c_menus1{
     */
     function vv_menus_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
-            /* sql_200()
+            /* sql_300()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
             `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
@@ -234,7 +234,7 @@ class c_menus1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_200()*/ 200,
+             /*sql_300()*/ 300,
             array(/**/
                 'T0_chi_id_menu' => $donnees_recues[__xva]['chi_id_menu']
             ),
@@ -244,13 +244,13 @@ class c_menus1{
         if($tt[__xst] === __xsu && $donnees_recues[__xva]['chi_id_menu'] > 1){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_202()
+                /* sql_302()
                 DELETE FROM b1.tbl_menus
                 WHERE `chi_id_menu` = :chi_id_menu ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_87()*/ 202,
+                 /*sql_302()*/ 302,
                 array(/**/
                     'chi_id_menu' => $tt[__xva][0]['T0.chi_id_menu']
                 ),
@@ -295,7 +295,7 @@ class c_menus1{
             $contenu_fichier='';
             $nom_fichier=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus'] . DIRECTORY_SEPARATOR . $k1 . '.php';
             foreach($v1 as $k2 => $v2){
-                /* $t[]='<div data-id_menu="4" class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99)),indice_menu(4)" title="tâches">tâches</div>' . PHP_EOL;*/
+                
                 $hug_click=str_replace('.php','',$v2['chp_nom_source']) . '.' . $v2['chp_methode_page'] . '(';
                 
                 if($v2['cht_contenu_methode_page'] !== null){
@@ -347,7 +347,7 @@ class c_menus1{
     */
     function construire_menus(&$donnees_retournees,&$mat,&$donnees_recues){
         $tt203=/*sql_inclure_deb*/
-            /* sql_203()
+            /* sql_303()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , 
             `T1`.`chp_methode_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , 
@@ -365,27 +365,12 @@ class c_menus1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_203()*/ 203,
+             /*sql_303()*/ 303,
             array(/**/
                 'T0_chi_id_menu' => 3
             ),
             $donnees_retournees
         );
-        /*#
-          array (
-                'T0.chi_id_menu' => 4,
-                'T1.chp_nom_page' => 'tâches',
-                'T0.cht_prerequis_rev_menu' => NULL,
-                'T1.chp_methode_page' => 'page_liste_des_taches1',
-                'T1.cht_complement_page' => NULL,
-                'T1.cht_contenu_methode_page' => 'T0_chp_priorite_tache2(99)',
-                'T2.chx_groupe_acces' => 1,
-                'T2.chx_metier_acces' => 1,
-                'T3.chp_nom_source' => 'c_taches1.php',
-                
-          ),
-        */
-        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt203 , true ) . '</pre>' ; exit(0);*/
         
         if($tt203[__xst] === __xer){
 
@@ -498,7 +483,7 @@ class c_menus1{
 
         }
         $tt=/*sql_inclure_deb*/
-            /* sql_200()
+            /* sql_300()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
             `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
@@ -517,7 +502,7 @@ class c_menus1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_200()*/ 200,
+             /*sql_300()*/ 300,
             array(/**/
                 'T0_chi_id_menu' => $donnees_recues[__xva]['chi_id_menu']
             ),
@@ -531,7 +516,7 @@ class c_menus1{
               le parent de racine doit être racine
             */
             $tt=/*sql_inclure_deb*/
-                /* sql_201()
+                /* sql_301()
                 UPDATE b1.tbl_menus SET 
                    `chx_page_menu` = :n_chx_page_menu , 
                    `che_ordre_menu` = :n_che_ordre_menu , 
@@ -542,7 +527,7 @@ class c_menus1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_201()*/ 201,
+                 /*sql_301()*/ 301,
                 array(
                     /**/
                     'c_chi_id_menu' => $tt[__xva][0]['T0.chi_id_menu'],
@@ -708,7 +693,7 @@ class c_menus1{
 
             /*afr 1 */
             $tt=/*sql_inclure_deb*/
-                /* sql_200()
+                /* sql_300()
                 SELECT 
                 `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
                 `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
@@ -727,7 +712,7 @@ class c_menus1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_200()*/ 200,
+                 /*sql_300()*/ 300,
                 array(/**/
                     'T0_chi_id_menu' => $chi_id_menus
                 ),
@@ -857,7 +842,7 @@ class c_menus1{
         if(is_numeric($chi_id_menus) && $chi_id_menus > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_200()
+                /* sql_300()
                 SELECT 
                 `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
                 `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
@@ -876,7 +861,7 @@ class c_menus1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_200()*/ 200,
+                 /*sql_300()*/ 300,
                 array(/**/
                     'T0_chi_id_menu' => $chi_id_menus
                 ),
@@ -1162,7 +1147,7 @@ class c_menus1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_98()
+            /* sql_198()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
             `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
@@ -1184,7 +1169,7 @@ class c_menus1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_98()*/ 98,
+             /*sql_198()*/ 198,
              /**/ array( 'T0_chi_id_menu' => $par['T0_chi_id_menu'] === '' ? '' : $par['T0_chi_id_menu'], 'T0_chx_page_menu' => $par['T0_chx_page_menu'] === '' ? '' : '' . $par['T0_chx_page_menu'] . '', 'quantitee' => $__nbMax, 'debut' => $__debut),
             $donnees_retournees
         );
@@ -1355,7 +1340,7 @@ class c_menus1{
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_98()
+            /* sql_198()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
             `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
@@ -1377,7 +1362,7 @@ class c_menus1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_98()*/ 98,
+             /*sql_198()*/ 198,
             array(
                 /**/
                 'T0_chi_id_menu' => $par['T0_chi_id_menu'] === '' ? '' : $par['T0_chi_id_menu'],

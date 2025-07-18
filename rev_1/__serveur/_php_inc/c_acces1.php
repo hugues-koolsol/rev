@@ -114,7 +114,7 @@ class c_acces1{
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
-            /* sql_94()
+            /* sql_194()
             INSERT INTO b1.`tbl_acces`(
                 `chp_nom_acces` , 
                 `chx_groupe_acces` , 
@@ -127,7 +127,7 @@ class c_acces1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_94()*/ 94,
+             /*sql_194()*/ 194,
             $donnees_sql,
             $donnees_retournees
         );
@@ -208,7 +208,7 @@ class c_acces1{
     */
     function vv_acces_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
-            /* sql_85()
+            /* sql_195()
             SELECT 
             `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
              FROM b1.tbl_metiers T0
@@ -219,7 +219,7 @@ class c_acces1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_85()*/ 85,
+             /*sql_195()*/ 195,
             array(/**/
                 'T0_chi_id_acces' => $donnees_recues[__xva]['chi_id_acces']
             ),
@@ -229,13 +229,13 @@ class c_acces1{
         if($tt[__xst] === __xsu && $donnees_recues[__xva]['chi_id_acces'] > 1){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_87()
+                /* sql_197()
                 DELETE FROM b1.tbl_metiers
                 WHERE `chi_id_metier` = :chi_id_metier ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_87()*/ 87,
+                 /*sql_197()*/ 197,
                 array(/**/
                     'chi_id_acces' => $tt[__xva][0]['T0.chi_id_acces']
                 ),
@@ -281,7 +281,7 @@ class c_acces1{
 
         }
         $tt=/*sql_inclure_deb*/
-            /* sql_95()
+            /* sql_195()
             SELECT 
             `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
             `T2`.`chp_nom_metier`
@@ -295,7 +295,7 @@ class c_acces1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_95()*/ 95,
+             /*sql_195()*/ 195,
             array(/**/
                 'T0_chi_id_acces' => $donnees_recues[__xva]['chi_id_acces']
             ),
@@ -309,7 +309,7 @@ class c_acces1{
               exceptions acces 1 et 2
             */
             $tt=/*sql_inclure_deb*/
-                /* sql_96()
+                /* sql_196()
                 UPDATE b1.tbl_acces SET 
                    `chp_nom_acces` = :n_chp_nom_acces , 
                    `chx_groupe_acces` = :n_chx_groupe_acces , 
@@ -318,7 +318,7 @@ class c_acces1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_86()*/ 96,
+                 /*sql_196()*/ 196,
                 array(
                     /**/
                     'c_chi_id_acces' => $tt[__xva][0]['T0.chi_id_acces'],
@@ -458,19 +458,8 @@ class c_acces1{
         if(is_numeric($chi_id_acces) && $chi_id_acces > 0){
 
             /*afr 1 */
-            $tt=/*sql_inclure_deb*/
-                /* sql_85()
-                SELECT 
-                `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-                 FROM b1.tbl_metiers T0
-                 LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-                
-                WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-                ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
-                 /*sql_85()*/ 85,
+            $tt=$this->sql0->sql_iii(
+                 /*sql_195()*/ 195,
                 array(/**/
                     'T0_chi_id_acces' => $chi_id_acces
                 ),
@@ -491,17 +480,6 @@ class c_acces1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <input type="text" id="chp_nom_acces" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_nom_acces']) . '" />' . PHP_EOL;
-                $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '  </div>' . PHP_EOL;
-                /*
-                  
-                */
-                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
-                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>lien</span>' . PHP_EOL;
-                $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_lien_rev_acces" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_lien_rev_acces']) . '" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
@@ -545,7 +523,7 @@ class c_acces1{
         if(is_numeric($chi_id_acces) && $chi_id_acces > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_95()
+                /* sql_195()
                 SELECT 
                 `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
                 `T2`.`chp_nom_metier`
@@ -559,7 +537,7 @@ class c_acces1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_95()*/ 95,
+                 /*sql_195()*/ 195,
                 array(/**/
                     'T0_chi_id_acces' => $chi_id_acces
                 ),
@@ -845,7 +823,7 @@ class c_acces1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_93()
+            /* sql_193()
             SELECT 
             `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
             `T2`.`chp_nom_metier`
@@ -862,7 +840,7 @@ class c_acces1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_93()*/ 93,
+             /*sql_193()*/ 193,
              /**/ array( 'T0_chi_id_acces' => $par['T0_chi_id_acces'] === '' ? '' : $par['T0_chi_id_acces'], 'T0_chp_nom_acces' => $par['T0_chp_nom_acces'] === '' ? '' : '' . $par['T0_chp_nom_acces'] . '', 'quantitee' => $__nbMax, 'debut' => $__debut),
             $donnees_retournees
         );
@@ -1033,7 +1011,7 @@ class c_acces1{
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_93()
+            /* sql_193()
             SELECT 
             `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
             `T2`.`chp_nom_metier`
@@ -1050,7 +1028,7 @@ class c_acces1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_93()*/ 93,
+             /*sql_193()*/ 193,
             array(
                 /**/
                 'T0_chi_id_acces' => $par['T0_chi_id_acces'] === '' ? '' : $par['T0_chi_id_acces'],

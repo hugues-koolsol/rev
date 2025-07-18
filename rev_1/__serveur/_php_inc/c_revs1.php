@@ -80,13 +80,13 @@ class c_revs1{
     */
     function tout_supprimer(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
-            /* sql_14()
+            /* sql_114()
             DELETE FROM b1.tbl_revs
             WHERE (`chx_projet_rev` = :chx_projet_rev) ;
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_14()*/ 14,
+             /*sql_114()*/ 114,
             array( 'chx_projet_rev' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -287,7 +287,7 @@ class c_revs1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_13()
+            /* sql_113()
             SELECT 
             `T0`.`chi_id_rev` , `T0`.`chx_projet_rev` , `T0`.`chp_provenance_rev` , `T0`.`chx_source_rev` , `T0`.`chp_id_rev` , 
             `T0`.`chp_valeur_rev` , `T0`.`chp_type_rev` , `T0`.`chp_niveau_rev` , `T0`.`chp_quotee_rev` , `T0`.`chp_pos_premier_rev` , 
@@ -308,7 +308,7 @@ class c_revs1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_13()*/ 13,
+             /*sql_113()*/ 113,
             array(
                 'T0_chi_id_rev' => $par['T0_chi_id_rev'] === '' ? '' : $par['T0_chi_id_rev'],
                 'T0_chx_projet_rev' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],

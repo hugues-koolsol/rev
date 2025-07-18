@@ -100,7 +100,7 @@ class c_profile1{
 
         $mdp=password_hash($donnees_recues[__xva]['vv_chp_mot_de_passe_utilisateur'],PASSWORD_BCRYPT,array( 'cost' => 10));
         $tt=/*sql_inclure_deb*/
-            /* sql_67()
+            /* sql_167()
             / ***meta(sur_base_de_reference(1))*** /
             
             UPDATE b1.tbl_utilisateurs SET 
@@ -110,7 +110,7 @@ class c_profile1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_67()*/ 67,
+             /*sql_167()*/ 167,
             array( 'n_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur'], 'n_chp_mot_de_passe_utilisateur' => $mdp, 'c_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']),
             $donnees_retournees
         );
@@ -134,7 +134,7 @@ class c_profile1{
     function recupere_la_page_des_coordonnees(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues,$chp_nom_de_connexion_utilisateur='webmaster@example.com'){
         $txt='';
         $tt=/*sql_inclure_deb*/
-            /* sql_47()
+            /* sql_147()
             SELECT 
             `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
             `T0`.`chi_compteur_socket1_utilisateur`
@@ -144,7 +144,7 @@ class c_profile1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_47()*/ 47,
+             /*sql_147()*/ 147,
             array( 'T0_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']),
             $donnees_retournees
         );

@@ -89,7 +89,103 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function vv_sources_creer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function obtenir_les_methodes(&$donnees_retournees,&$mat,&$donnees_recues){
+
+        $donnees_retournees[__x_signaux][__xdv][]=var_export( $mat , true) . ' [' . __LINE__ . ']';
+
+        $chi_id_source=0;
+        $nom_zone='';
+        $l01=count($mat);
+        for( $i=1 ; $i < $l01 ; $i++ ){
+            
+            if($mat[$i][1] === 'c_sources1.obtenir_les_methodes' && $mat[$i][2] === 'f' ){
+
+                for( $j=$i+1 ; $j < $l01 ; $j++ ){
+                 
+                    if($mat[$j][1]==='chi_id_source' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j+1][2] === 'c' && is_numeric($mat[$j+1][1])){
+                        $chi_id_source=(int)$mat[$j+1][1];
+                    }else if($mat[$j][1]==='nom_zone' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j+1][2] === 'c' ){
+                        $nom_zone=$mat[$j+1][1];
+                    }
+                    
+                }
+
+            }
+
+        }
+        if($chi_id_source>0){
+            $tt162=/*sql_inclure_deb*/
+                /* sql_162()
+                SELECT 
+
+                `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
+
+                `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
+                 FROM b1.tbl_sources T0
+
+                 LEFT JOIN b1.tbl_projets T1 ON T1.chi_id_projet = T0.chx_projet_id_source
+                
+
+                 LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_id_source
+                
+                WHERE ( / *** *** / `T0`.`chi_id_source` = :T0_chi_id_source
+
+                   AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
+                 /*sql_162()*/ 162,
+                array(/**/
+                    'T0_chi_id_source' => $chi_id_source,
+                    'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
+                ),
+                $donnees_retournees
+            );
+            
+            if($tt162[__xst] === __xer){
+
+                $donnees_retournees[__x_signaux][__xer][]='erreur dans obtenir_les_methodes  [' . __LINE__ . ']';
+                return;
+
+            }
+
+            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
+            $obj_doss=new c_dossiers1(
+                $donnees_retournees,
+                 /*matrice*/ $mat,
+                $donnees_recues
+            );
+            $dossier=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
+            
+            if($dossier['__xst'] !== __xsu){
+
+                $donnees_retournees[__x_signaux][__xer][]='erreur dans obtenir_les_methodes ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
+
+            }
+
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt162[__xva][0] , true ) . '</pre>' ; exit(0);*/
+            
+            if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'])){
+
+                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
+
+            }
+
+            require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source']);
+            $class_methods=get_class_methods(str_replace('.php','',$tt162[__xva][0]['T0.chp_nom_source']));
+            $donnees_retournees[__x_signaux][__xdv][]=var_export( $class_methods , true) . ' [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xsu;
+        }
+        
+        
+    }
+    /*
+      =============================================================================================================
+    */
+    function vv_sources_creer1(&$donnees_retournees,&$mat,&$donnees_recues){
         $page_sources_liste1=false;
         $l01=count($mat);
         for( $i=1 ; $i < $l01 ; $i++ ){
@@ -115,7 +211,7 @@ class c_sources1{
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
-            /* sql_54()
+            /* sql_154()
             INSERT INTO b1.`tbl_sources`(
                 `chx_dossier_id_source` , 
                 `chx_projet_id_source` , 
@@ -136,7 +232,7 @@ class c_sources1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_54()*/ 54,
+             /*sql_154()*/ 154,
             $donnees_sql,
             $donnees_retournees
         );
@@ -234,8 +330,8 @@ class c_sources1{
 
         }
 
-        $tt62=/*sql_inclure_deb*/
-            /* sql_62()
+        $tt162=/*sql_inclure_deb*/
+            /* sql_162()
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
             `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -250,15 +346,15 @@ class c_sources1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_62()*/ 62,
+             /*sql_162()*/ 162,
             array( 'T0_chi_id_source' => $donnees_recues[__xva]['chi_id_source'], 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
         
-        if($tt62[__xst] === __xsu){
+        if($tt162[__xst] === __xsu){
 
-            $tt39=/*sql_inclure_deb*/
-                /* sql_39()
+            $tt139=/*sql_inclure_deb*/
+                /* sql_139()
                 / ***meta(tester_les_dependances_dans_le_php(1))*** /
                 
                 DELETE FROM b1.tbl_sources
@@ -267,15 +363,15 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_39()*/ 39,
-                array( 'chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'], 'chi_id_source' => $tt62[__xva][0]['T0.chi_id_source']),
+                 /*sql_139()*/ 139,
+                array( 'chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'], 'chi_id_source' => $tt162[__xva][0]['T0.chi_id_source']),
                 $donnees_retournees
             );
             
-            if($tt39[__xst] !== __xsu){
+            if($tt139[__xst] !== __xsu){
 
                 
-                if($tt39['code_erreur'] === 19){
+                if($tt139['code_erreur'] === 19){
 
                     $donnees_retournees[__x_signaux][__xst][]=__LINE__ . ' vous ne pouvez pas supprimer cette source car un élément en dépend';
 
@@ -288,7 +384,7 @@ class c_sources1{
             }else{
 
                 
-                if($tt39['changements'] === 1){
+                if($tt139['changements'] === 1){
 
                     require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
                     $obj_dossier_source=new c_dossiers1(
@@ -296,15 +392,15 @@ class c_sources1{
                          /*matrice*/ $mat,
                         $donnees_recues
                     );
-                    $chemin_dossier_source=$obj_dossier_source->construire_chemin($tt62[__xva][0]['T0.chx_dossier_id_source']);
+                    $chemin_dossier_source=$obj_dossier_source->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
                     
                     if($chemin_dossier_source[__xst] === __xsu){
 
-                        $chemin_fichier_source=$chemin_dossier_source[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source'];
+                        $chemin_fichier_source=$chemin_dossier_source[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'];
 
                     }else{
 
-                        $donnees_retournees[__x_signaux][__xer][]='erreur sur la construction du chemin pour le source ' . $tt62[__xva][0]['T0.chx_dossier_id_source'] . ' [' . __LINE__ . ']';
+                        $donnees_retournees[__x_signaux][__xer][]='erreur sur la construction du chemin pour le source ' . $tt162[__xva][0]['T0.chx_dossier_id_source'] . ' [' . __LINE__ . ']';
                         return;
                     }
 
@@ -348,8 +444,8 @@ class c_sources1{
 
         }
         /*si l'utilisateur bidouille l'id dans l'interface*/
-        $tt62=/*sql_inclure_deb*/
-            /* sql_62()
+        $tt162=/*sql_inclure_deb*/
+            /* sql_162()
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
             `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -364,7 +460,7 @@ class c_sources1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_62()*/ 62,
+             /*sql_162()*/ 162,
             array(/**/
                 'T0_chi_id_source' => $donnees_recues[__xva]['chi_id_source'],
                 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
@@ -372,20 +468,20 @@ class c_sources1{
             $donnees_retournees
         );
         
-        if($tt62[__xst] === __xsu){
+        if($tt162[__xst] === __xsu){
 
             $a_insérer=array( array(
                         'chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                         'chx_dossier_id_source' => $donnees_recues[__xva]['chx_dossier_id_source'],
-                        'cht_rev_source' => $tt62[__xva][0]['T0.cht_rev_source'],
-                        'cht_genere_source' => $tt62[__xva][0]['T0.cht_genere_source'],
-                        'chp_nom_source' => $tt62[__xva][0]['T0.chp_nom_source'],
-                        'cht_commentaire_source' => $tt62[__xva][0]['T0.cht_commentaire_source'],
-                        'che_binaire_source' => $tt62[__xva][0]['T0.che_binaire_source']
+                        'cht_rev_source' => $tt162[__xva][0]['T0.cht_rev_source'],
+                        'cht_genere_source' => $tt162[__xva][0]['T0.cht_genere_source'],
+                        'chp_nom_source' => $tt162[__xva][0]['T0.chp_nom_source'],
+                        'cht_commentaire_source' => $tt162[__xva][0]['T0.cht_commentaire_source'],
+                        'che_binaire_source' => $tt162[__xva][0]['T0.che_binaire_source']
                     ));
             /* echo __FILE__ . ' ' . __LINE__ . ' $a_insérer = <pre>' . var_export( $a_insérer , true ) . '</pre>' ; exit(0);*/
-            $tt54=/*sql_inclure_deb*/
-                /* sql_54()
+            $tt154=/*sql_inclure_deb*/
+                /* sql_154()
                 INSERT INTO b1.`tbl_sources`(
                     `chx_dossier_id_source` , 
                     `chx_projet_id_source` , 
@@ -406,14 +502,14 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_54()*/ 54,
+                 /*sql_154()*/ 154,
                 $a_insérer,
                 $donnees_retournees
             );
             
-            if($tt54[__xst] === __xer){
+            if($tt154[__xst] === __xer){
 
-                $code_erreur=$tt54['code_erreur']??0;
+                $code_erreur=$tt154['code_erreur']??0;
                 
                 if($code_erreur === 19){
 
@@ -426,10 +522,10 @@ class c_sources1{
 
                 return;
 
-            }else if($tt54['changements'] === 1){
+            }else if($tt154['changements'] === 1){
 
                 
-                if($tt62[__xva][0]['T0.chx_dossier_id_source'] !== null){
+                if($tt162[__xva][0]['T0.chx_dossier_id_source'] !== null){
 
                     require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
                     $obj_dossier_source=new c_dossiers1(
@@ -437,15 +533,15 @@ class c_sources1{
                          /*matrice*/ $mat,
                         $donnees_recues
                     );
-                    $chemin_dossier_source=$obj_dossier_source->construire_chemin($tt62[__xva][0]['T0.chx_dossier_id_source']);
+                    $chemin_dossier_source=$obj_dossier_source->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
                     
                     if($chemin_dossier_source[__xst] === __xsu){
 
-                        $chemin_fichier_source=$chemin_dossier_source[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source'];
+                        $chemin_fichier_source=$chemin_dossier_source[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'];
 
                     }else{
 
-                        $donnees_retournees[__x_signaux][__xer][]='erreur sur la construction du chemin pour le source ' . $tt62[__xva][0]['T0.chx_dossier_id_source'] . ' [' . __LINE__ . ']';
+                        $donnees_retournees[__x_signaux][__xer][]='erreur sur la construction du chemin pour le source ' . $tt162[__xva][0]['T0.chx_dossier_id_source'] . ' [' . __LINE__ . ']';
                         return;
                     }
 
@@ -453,7 +549,7 @@ class c_sources1{
                     
                     if($chemin_dossier_cible[__xst] === __xsu){
 
-                        $chemin_fichier_cible=$chemin_dossier_cible[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source'];
+                        $chemin_fichier_cible=$chemin_dossier_cible[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'];
 
                     }else{
 
@@ -521,7 +617,7 @@ class c_sources1{
         }
         /*si l'utilisateur bidouille l'id dans l'interface*/
         $tt=/*sql_inclure_deb*/
-            /* sql_62()
+            /* sql_162()
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
             `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -536,7 +632,7 @@ class c_sources1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_62()*/ 62,
+             /*sql_162()*/ 162,
             array(/**/
                 'T0_chi_id_source' => $donnees_recues[__xva]['chi_id_source'],
                 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
@@ -548,7 +644,7 @@ class c_sources1{
 
             /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt[__xva][0] , true ) . '</pre>' ; exit(0);*/
             $tt=/*sql_inclure_deb*/
-                /* sql_63()
+                /* sql_163()
                 UPDATE b1.tbl_sources SET 
                    `chx_dossier_id_source` = :n_chx_dossier_id_source , 
                    `chx_projet_id_source` = :n_chx_projet_id_source , 
@@ -562,7 +658,7 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_63()*/ 63,
+                 /*sql_163()*/ 163,
                 array(
                     /**/
                     'c_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
@@ -702,7 +798,7 @@ class c_sources1{
         if(is_numeric($chi_id_source) && $chi_id_source > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_62()
+                /* sql_162()
                 SELECT 
                 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
                 `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -717,7 +813,7 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_62()*/ 62,
+                 /*sql_162()*/ 162,
                 array( 'T0_chi_id_source' => $chi_id_source, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -777,7 +873,7 @@ class c_sources1{
         if($chi_id_source > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_62()
+                /* sql_162()
                 SELECT 
                 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
                 `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -792,7 +888,7 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_62()*/ 62,
+                 /*sql_162()*/ 162,
                 array( 'T0_chi_id_source' => $chi_id_source, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -883,7 +979,7 @@ class c_sources1{
         if($chi_id_source > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_62()
+                /* sql_162()
                 SELECT 
                 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
                 `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -898,7 +994,7 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_62()*/ 62,
+                 /*sql_162()*/ 162,
                 array( 'T0_chi_id_source' => $chi_id_source, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -982,7 +1078,7 @@ class c_sources1{
         if($chi_id_source > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_62()
+                /* sql_162()
                 SELECT 
                 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
                 `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -997,7 +1093,7 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_62()*/ 62,
+                 /*sql_162()*/ 162,
                 array( 'T0_chi_id_source' => $chi_id_source, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -1093,7 +1189,7 @@ class c_sources1{
         if(is_numeric($chi_id_source) && $chi_id_source > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_62()
+                /* sql_162()
                 SELECT 
                 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
                 `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -1108,7 +1204,7 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_62()*/ 62,
+                 /*sql_162()*/ 162,
                 array( 'T0_chi_id_source' => $chi_id_source, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -1214,7 +1310,7 @@ class c_sources1{
         if(is_numeric($chi_id_source) && $chi_id_source > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_62()
+                /* sql_162()
                 SELECT 
                 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
                 `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -1229,7 +1325,7 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_62()*/ 62,
+                 /*sql_162()*/ 162,
                 array( 'T0_chi_id_source' => $chi_id_source, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -1478,7 +1574,7 @@ class c_sources1{
 
             /*on a compilé le rev uniquement on enregistre le source */
             $tt=/*sql_inclure_deb*/
-                /* sql_63()
+                /* sql_163()
                 UPDATE b1.tbl_sources SET 
                    `chx_dossier_id_source` = :n_chx_dossier_id_source , 
                    `chx_projet_id_source` = :n_chx_projet_id_source , 
@@ -1492,7 +1588,7 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_63()*/ 63,
+                 /*sql_163()*/ 163,
                 array(/**/
                     'c_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     'c_chi_id_source' => $donnees_recues[__xva]['contenu_bdd']['T0.chi_id_source'],
@@ -1505,7 +1601,7 @@ class c_sources1{
 
             /*on a compilé le source sur disque on enregistre aussi le rev */
             $tt=/*sql_inclure_deb*/
-                /* sql_63()
+                /* sql_163()
                 UPDATE b1.tbl_sources SET 
                    `chx_dossier_id_source` = :n_chx_dossier_id_source , 
                    `chx_projet_id_source` = :n_chx_projet_id_source , 
@@ -1519,7 +1615,7 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_63()*/ 63,
+                 /*sql_163()*/ 163,
                 array(
                     /**/
                     'c_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
@@ -1688,7 +1784,7 @@ class c_sources1{
             );
         }
         $tt=/*sql_inclure_deb*/
-            /* sql_12()
+            /* sql_112()
             INSERT INTO b1.`tbl_revs`(
                 `chx_projet_rev` , 
                 `chp_provenance_rev` , 
@@ -1729,7 +1825,7 @@ class c_sources1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_12()*/ 12,
+             /*sql_112()*/ 112,
             $a_sauvegarder,
             $donnees_retournees
         );
@@ -1832,7 +1928,7 @@ class c_sources1{
         if($chi_id_source > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_62()
+                /* sql_162()
                 SELECT 
                 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
                 `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -1847,7 +1943,7 @@ class c_sources1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_62()*/ 62,
+                 /*sql_162()*/ 162,
                 array( 'T0_chi_id_source' => $chi_id_source, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -1890,7 +1986,7 @@ class c_sources1{
 
             }else{
 
-                $donnees_retournees[__x_signaux][__xer][]='erreur sql 62 pour $chi_id_source=' . $chi_id_source . ' [' . __LINE__ . ']';
+                $donnees_retournees[__x_signaux][__xer][]='erreur sql 162 pour $chi_id_source=' . $chi_id_source . ' [' . __LINE__ . ']';
             }
 
 
@@ -1942,8 +2038,8 @@ class c_sources1{
         }
 
         $chemin_fichier_source='';
-        $tt62=/*sql_inclure_deb*/
-            /* sql_62()
+        $tt162=/*sql_inclure_deb*/
+            /* sql_162()
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
             `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -1958,16 +2054,16 @@ class c_sources1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_62()*/ 62,
+             /*sql_162()*/ 162,
             array( 'T0_chi_id_source' => $chi_id_source, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
         
-        if($tt62[__xst] === __xsu){
+        if($tt162[__xst] === __xsu){
 
             $contenu_disque='';
             
-            if($tt62[__xva][0]['T0.chx_dossier_id_source'] !== null){
+            if($tt162[__xva][0]['T0.chx_dossier_id_source'] !== null){
 
                 require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
                 $obj_doss=new c_dossiers1(
@@ -1975,11 +2071,11 @@ class c_sources1{
                      /*matrice*/ $mat,
                     $donnees_recues
                 );
-                $chemin=$obj_doss->construire_chemin($tt62[__xva][0]['T0.chx_dossier_id_source']);
+                $chemin=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
                 
                 if($chemin[__xst] === __xsu){
 
-                    $chemin_fichier_source=$chemin[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source'];
+                    $chemin_fichier_source=$chemin[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'];
 
                 }else{
 
@@ -2059,8 +2155,8 @@ class c_sources1{
         }
 
         $chemin_fichier_destin='';
-        $tt62=/*sql_inclure_deb*/
-            /* sql_62()
+        $tt162=/*sql_inclure_deb*/
+            /* sql_162()
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
             `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -2075,16 +2171,16 @@ class c_sources1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_62()*/ 62,
+             /*sql_162()*/ 162,
             array( 'T0_chi_id_source' => $chi_id_source, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
         
-        if($tt62[__xst] === __xsu){
+        if($tt162[__xst] === __xsu){
 
             $contenu_disque='';
             
-            if($tt62[__xva][0]['T0.chx_dossier_id_source'] !== null){
+            if($tt162[__xva][0]['T0.chx_dossier_id_source'] !== null){
 
                 require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
                 $obj_doss=new c_dossiers1(
@@ -2092,11 +2188,11 @@ class c_sources1{
                      /*matrice*/ $mat,
                     $donnees_recues
                 );
-                $chemin=$obj_doss->construire_chemin($tt62[__xva][0]['T0.chx_dossier_id_source']);
+                $chemin=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
                 
                 if($chemin[__xst] === __xsu){
 
-                    $chemin_fichier_destin=$chemin[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source'];
+                    $chemin_fichier_destin=$chemin[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'];
 
                 }else{
 
@@ -2188,12 +2284,13 @@ class c_sources1{
         $par['T0_chi_id_source']='';
         $par['T0_chp_nom_source']='';
         $par['T0_chx_dossier_id_source']='';
+        $par['après_faire']='';
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
         $l01=count($mat);
         $provenance_menu=false;
-        /* $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
+        /*$donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
             
@@ -2225,6 +2322,15 @@ class c_sources1{
                         }
 
 
+                    }else if($mat[$j][2] === 'f' && $mat[$j][1] === 'sans_menus1' ){
+                    }else if($mat[$j][2] === 'f' && $mat[$j][1] === 'après_faire' ){
+                        /*$donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat[$j]  , JSON_FORCE_OBJECT );*/
+                        $obj_texte_rev=$GLOBALS['obj_rev1']->matrice_vers_source_rev1($mat,$j,false,$j+1);
+                        if($obj_texte_rev['__xst']===__xsu){
+                            $par_mat['après_faire']=$obj_texte_rev['__xva'];
+                        }
+                    }else{
+                        $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $obj_texte_rev  , JSON_FORCE_OBJECT );
                     }
 
                 }
@@ -2268,6 +2374,7 @@ class c_sources1{
         $par['T0_chx_dossier_id_source']=$par['T0_chx_dossier_id_source']??'';
         $par['nom_champ_dans_parent1']=$par_mat['nom_champ_dans_parent1']??'';
         $par['nom_libelle_dans_parent1']=$par_mat['nom_libelle_dans_parent1']??'';
+        $par['après_faire']=$par_mat['après_faire']??'';
         $nom_filtre='vv_sources_filtre_choix_1';
         $o1='<h1>choisir un source parent</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
@@ -2307,7 +2414,7 @@ class c_sources1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_61()
+            /* sql_161()
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
             `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -2324,7 +2431,7 @@ class c_sources1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_61()*/ 61,
+             /*sql_161()*/ 161,
             array(
                 /**/
                 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
@@ -2365,6 +2472,7 @@ class c_sources1{
             $parametres .= '    nom_libelle_dans_parent1(' . $par['nom_libelle_dans_parent1'] . ')';
             $parametres .= '    id1(' . $v0['T0.chi_id_source'] . ')';
             $parametres .= '    libelle1("(' . $v0['T0.chi_id_source'] . ') ' . $v0['T0.chp_nom_source'] . '" )';
+            $parametres .= '    après_faire(' . $par['après_faire'] . ')';
             $parametres .= ')';
             $lsttbl .= '<td style="max-width:calc(1*var(t_1boutons_carres))">';
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="' . htmlentities($parametres) . '">=&gt;</div>';
@@ -2531,7 +2639,7 @@ class c_sources1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_61()
+            /* sql_161()
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
             `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -2548,7 +2656,7 @@ class c_sources1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_61()*/ 61,
+             /*sql_161()*/ 161,
             array(
                 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 'T0_chi_id_source' => $par['T0_chi_id_source'] === '' ? '' : $par['T0_chi_id_source'],

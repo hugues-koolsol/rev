@@ -113,7 +113,7 @@ class c_groupes1{
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
-            /* sql_74()
+            /* sql_174()
             INSERT INTO b1.`tbl_groupes`(
                 `chp_nom_groupe` , 
                 `chx_parent_groupe`
@@ -124,7 +124,7 @@ class c_groupes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_74()*/ 74,
+             /*sql_174()*/ 174,
             $donnees_sql,
             $donnees_retournees
         );
@@ -205,7 +205,7 @@ class c_groupes1{
     */
     function vv_groupes_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
-            /* sql_75()
+            /* sql_175()
             SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
              FROM b1.tbl_groupes T0
@@ -216,7 +216,7 @@ class c_groupes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_75()*/ 75,
+             /*sql_175()*/ 175,
             array(/**/
                 'T0_chi_id_groupe' => $donnees_recues[__xva]['chi_id_groupe']
             ),
@@ -226,13 +226,13 @@ class c_groupes1{
         if($tt[__xst] === __xsu && $donnees_recues[__xva]['chi_id_groupe'] > 2){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_77()
+                /* sql_177()
                 DELETE FROM b1.tbl_groupes
                 WHERE `chi_id_groupe` = :chi_id_groupe ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_77()*/ 77,
+                 /*sql_177()*/ 177,
                 array(/**/
                     'chi_id_groupe' => $tt[__xva][0]['T0.chi_id_groupe']
                 ),
@@ -278,7 +278,7 @@ class c_groupes1{
 
         }
         $tt=/*sql_inclure_deb*/
-            /* sql_75()
+            /* sql_175()
             SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
              FROM b1.tbl_groupes T0
@@ -289,7 +289,7 @@ class c_groupes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_75()*/ 75,
+             /*sql_175()*/ 175,
             array(/**/
                 'T0_chi_id_groupe' => $donnees_recues[__xva]['chi_id_groupe']
             ),
@@ -305,7 +305,7 @@ class c_groupes1{
               le parent d'autre ne peut être anonyme
             */
             $tt=/*sql_inclure_deb*/
-                /* sql_76()
+                /* sql_176()
                 UPDATE b1.tbl_groupes SET 
                    `chp_nom_groupe` = :n_chp_nom_groupe , 
                    `chx_parent_groupe` = :n_chx_parent_groupe
@@ -313,7 +313,7 @@ class c_groupes1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_76()*/ 76,
+                 /*sql_176()*/ 176,
                 array(/**/
                     'c_chi_id_groupe' => $tt[__xva][0]['T0.chi_id_groupe'],
                     'n_chp_nom_groupe' => $donnees_recues[__xva]['chp_nom_groupe'],
@@ -429,7 +429,7 @@ class c_groupes1{
         if(is_numeric($chi_id_groupes) && $chi_id_groupes > 2){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_75()
+                /* sql_175()
                 SELECT 
                 `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
                  FROM b1.tbl_groupes T0
@@ -440,7 +440,7 @@ class c_groupes1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_75()*/ 75,
+                 /*sql_175()*/ 175,
                 array(/**/
                     'T0_chi_id_groupe' => $chi_id_groupes
                 ),
@@ -504,7 +504,7 @@ class c_groupes1{
         if(is_numeric($chi_id_groupes) && $chi_id_groupes > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_75()
+                /* sql_175()
                 SELECT 
                 `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
                  FROM b1.tbl_groupes T0
@@ -515,7 +515,7 @@ class c_groupes1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_75()*/ 75,
+                 /*sql_175()*/ 175,
                 array(/**/
                     'T0_chi_id_groupe' => $chi_id_groupes
                 ),
@@ -766,7 +766,7 @@ class c_groupes1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_73()
+            /* sql_173()
             SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe`
              FROM b1.tbl_groupes T0
@@ -778,7 +778,7 @@ class c_groupes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_73()*/ 73,
+             /*sql_173()*/ 173,
              /**/ array( 'T0_chi_id_groupe' => $par['T0_chi_id_groupe'] === '' ? '' : $par['T0_chi_id_groupe'], 'T0_chp_nom_groupe' => $par['T0_chp_nom_groupe'] === '' ? '' : '' . $par['T0_chp_nom_groupe'] . '', 'quantitee' => $__nbMax, 'debut' => $__debut),
             $donnees_retournees
         );
@@ -949,7 +949,7 @@ class c_groupes1{
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_73()
+            /* sql_173()
             SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe`
              FROM b1.tbl_groupes T0
@@ -961,7 +961,7 @@ class c_groupes1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_73()*/ 73,
+             /*sql_173()*/ 173,
             array(
                 /**/
                 'T0_chi_id_groupe' => $par['T0_chi_id_groupe'] === '' ? '' : $par['T0_chi_id_groupe'],

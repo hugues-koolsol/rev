@@ -145,7 +145,7 @@ class c_dossiers1{
               on s'arrête quand chx_parent_dossier = null
             */
             $tt=/*sql_inclure_deb*/
-                /* sql_50()
+                /* sql_150()
                 SELECT 
                 `T0`.`chi_id_dossier` , `T0`.`chx_projet_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier` , 
                 `T0`.`che_contient_genere_dossier`
@@ -158,7 +158,7 @@ class c_dossiers1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_50()*/ 50,
+                 /*sql_150()*/ 150,
                 array(/**/
                     'T0_chi_id_dossier' => $chx_parent_dossier,
                     'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
@@ -188,7 +188,7 @@ class c_dossiers1{
                         }else{
 
                             $tt=/*sql_inclure_deb*/
-                                /* sql_50()
+                                /* sql_150()
                                 SELECT 
                                 `T0`.`chi_id_dossier` , `T0`.`chx_projet_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier` , 
                                 `T0`.`che_contient_genere_dossier`
@@ -200,7 +200,7 @@ class c_dossiers1{
                                 ;
                                 */
                                 /*sql_inclure_fin*/
-                                $this->sql0->sql_iii(50,array( 'T0_chi_id_dossier' => $tt[__xva][0]['T0.chx_parent_dossier'], 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),$donnees_retournees);
+                                $this->sql0->sql_iii(150,array( 'T0_chi_id_dossier' => $tt[__xva][0]['T0.chx_parent_dossier'], 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),$donnees_retournees);
                         }
 
                     }
@@ -263,7 +263,7 @@ class c_dossiers1{
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
-            /* sql_37()
+            /* sql_137()
             INSERT INTO b1.`tbl_dossiers`(
                 `chx_projet_dossier` , 
                 `chp_nom_dossier` , 
@@ -276,7 +276,7 @@ class c_dossiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_37()*/ 37,
+             /*sql_137()*/ 137,
             $donnees_sql,
             $donnees_retournees
         );
@@ -438,7 +438,7 @@ class c_dossiers1{
     */
     function construire_chemin($chi_id_dossier){
         $tt=/*sql_inclure_deb*/
-            /* sql_50()
+            /* sql_150()
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chx_projet_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier` , 
             `T0`.`che_contient_genere_dossier`
@@ -451,7 +451,7 @@ class c_dossiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_50()*/ 50,
+             /*sql_150()*/ 150,
             array( 'T0_chi_id_dossier' => $chi_id_dossier, 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -481,7 +481,7 @@ class c_dossiers1{
 
                     $chemin=DIRECTORY_SEPARATOR . $tt[__xva][0]['T0.chp_nom_dossier'] . $chemin;
                     $tt=/*sql_inclure_deb*/
-                        /* sql_50()
+                        /* sql_150()
                         SELECT 
                         `T0`.`chi_id_dossier` , `T0`.`chx_projet_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier` , 
                         `T0`.`che_contient_genere_dossier`
@@ -493,7 +493,7 @@ class c_dossiers1{
                         ;
                         */
                         /*sql_inclure_fin*/
-                        $this->sql0->sql_iii(50,array( 'T0_chi_id_dossier' => $tt[__xva][0]['T0.chx_parent_dossier'], 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),$donnees_retournees);
+                        $this->sql0->sql_iii(150,array( 'T0_chi_id_dossier' => $tt[__xva][0]['T0.chx_parent_dossier'], 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),$donnees_retournees);
                 }
 
 
@@ -541,7 +541,7 @@ class c_dossiers1{
         /* $donnees_retournees[__x_signaux][__xal][]=__LINE__.' TODO $donnees_recues '.var_export($donnees_recues[__xva],true);*/
         /*si l'utilisateur bidouille l'id dans l'interface*/
         $tt=/*sql_inclure_deb*/
-            /* sql_50()
+            /* sql_150()
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chx_projet_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier` , 
             `T0`.`che_contient_genere_dossier`
@@ -554,7 +554,7 @@ class c_dossiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_50()*/ 50,
+             /*sql_150()*/ 150,
             array( 'T0_chi_id_dossier' => $donnees_recues[__xva]['chi_id_dossier'], 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -599,7 +599,7 @@ class c_dossiers1{
         if($tt[__xst] === __xsu){
 
             $tt2=/*sql_inclure_deb*/
-                /* sql_68()
+                /* sql_168()
                 SELECT 
                 COUNT( * )
                  FROM b1.tbl_dossiers T0
@@ -609,7 +609,7 @@ class c_dossiers1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_68()*/ 68,
+                 /*sql_168()*/ 168,
                 array(/**/
                     'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     'T0_chx_parent_dossier' => $tt[__xva][0]['T0.chi_id_dossier']
@@ -682,7 +682,7 @@ class c_dossiers1{
             }
 
             $tt=/*sql_inclure_deb*/
-                /* sql_58()
+                /* sql_158()
                 / ***meta(tester_les_dependances_dans_le_php(1))*** /
                 
                 DELETE FROM b1.tbl_dossiers
@@ -691,7 +691,7 @@ class c_dossiers1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_58()*/ 58,
+                 /*sql_158()*/ 158,
                 array( 'chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'], 'chi_id_dossier' => $tt[__xva][0]['T0.chi_id_dossier']),
                 $donnees_retournees
             );
@@ -782,7 +782,7 @@ class c_dossiers1{
         */
         /*si l'utilisateur bidouille l'id dans l'interface*/
         $tt0=/*sql_inclure_deb*/
-            /* sql_50()
+            /* sql_150()
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chx_projet_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier` , 
             `T0`.`che_contient_genere_dossier`
@@ -795,7 +795,7 @@ class c_dossiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_50()*/ 50,
+             /*sql_150()*/ 150,
             array( 'T0_chi_id_dossier' => $donnees_recues[__xva]['chi_id_dossier'], 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
@@ -869,7 +869,7 @@ class c_dossiers1{
         }
 
         $tt1=/*sql_inclure_deb*/
-            /* sql_55()
+            /* sql_155()
             UPDATE b1.tbl_dossiers SET 
                `chp_nom_dossier` = :n_chp_nom_dossier , 
                `chx_parent_dossier` = :n_chx_parent_dossier , 
@@ -879,7 +879,7 @@ class c_dossiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_55()*/ 55,
+             /*sql_155()*/ 155,
             array(
                 'c_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 'c_chi_id_dossier' => $tt0[__xva][0]['T0.chi_id_dossier'],
@@ -971,7 +971,7 @@ class c_dossiers1{
         */
         $chx_parent_dossier=null;
         $tt2=/*sql_inclure_deb*/
-            /* sql_69()
+            /* sql_169()
             SELECT 
             `T0`.`chi_id_dossier`
              FROM b1.tbl_dossiers T0
@@ -981,7 +981,7 @@ class c_dossiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_69()*/ 69,
+             /*sql_169()*/ 169,
             array(/**/
                 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 'T0_chx_parent_dossier' => null
@@ -1061,7 +1061,7 @@ class c_dossiers1{
         if(is_numeric($chi_id_dossiers) && $chi_id_dossiers > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_50()
+                /* sql_150()
                 SELECT 
                 `T0`.`chi_id_dossier` , `T0`.`chx_projet_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier` , 
                 `T0`.`che_contient_genere_dossier`
@@ -1074,7 +1074,7 @@ class c_dossiers1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_50()*/ 50,
+                 /*sql_150()*/ 150,
                 array( 'T0_chi_id_dossier' => $chi_id_dossiers, 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -1551,7 +1551,7 @@ class c_dossiers1{
         if(is_numeric($chi_id_dossiers) && $chi_id_dossiers > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_50()
+                /* sql_150()
                 SELECT 
                 `T0`.`chi_id_dossier` , `T0`.`chx_projet_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier` , 
                 `T0`.`che_contient_genere_dossier`
@@ -1564,7 +1564,7 @@ class c_dossiers1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_50()*/ 50,
+                 /*sql_150()*/ 150,
                 array( 'T0_chi_id_dossier' => $chi_id_dossiers, 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
@@ -1894,7 +1894,7 @@ class c_dossiers1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_53()
+            /* sql_153()
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chx_projet_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier` , 
             `T0`.`che_contient_genere_dossier`
@@ -1911,7 +1911,7 @@ class c_dossiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_53()*/ 53,
+             /*sql_153()*/ 153,
              /**/ array(
                 'T0_chi_id_dossier' => $par['T0_chi_id_dossier'] === '' ? '' : $par['T0_chi_id_dossier'],
                 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
@@ -2082,7 +2082,7 @@ class c_dossiers1{
                     ));
             /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
             $tt=/*sql_inclure_deb*/
-                /* sql_54()
+                /* sql_154()
                 INSERT INTO b1.`tbl_sources`(
                     `chx_dossier_id_source` , 
                     `chx_projet_id_source` , 
@@ -2103,7 +2103,7 @@ class c_dossiers1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_54()*/ 54,
+                 /*sql_154()*/ 154,
                 $donnees_sql,
                 $donnees_retournees
             );
@@ -2252,7 +2252,7 @@ class c_dossiers1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_53()
+            /* sql_153()
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chx_projet_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier` , 
             `T0`.`che_contient_genere_dossier`
@@ -2269,7 +2269,7 @@ class c_dossiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_53()*/ 53,
+             /*sql_153()*/ 153,
              /**/ array(
                 /**/
                 'T0_chi_id_dossier' => $par['T0_chi_id_dossier'] === '' ? '' : $par['T0_chi_id_dossier'],

@@ -148,7 +148,7 @@ class c_taches1{
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
-            /* sql_30()
+            /* sql_130()
             INSERT INTO b1.`tbl_taches`(
                 `chx_utilisateur_tache` , 
                 `chp_texte_tache` , 
@@ -161,7 +161,7 @@ class c_taches1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_30()*/ 30,
+             /*sql_130()*/ 130,
             $donnees_sql,
             $donnees_retournees
         );
@@ -242,7 +242,7 @@ class c_taches1{
     */
     function vv_taches_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
-            /* sql_28()
+            /* sql_128()
             SELECT 
             `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
              FROM b1.tbl_taches T0
@@ -252,7 +252,7 @@ class c_taches1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_28()*/ 28,
+             /*sql_128()*/ 128,
             array(/**/
                 'T0_chi_id_tache' => $donnees_recues[__xva]['chi_id_tache'],
                 'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']
@@ -263,7 +263,7 @@ class c_taches1{
         if($tt[__xst] === __xsu){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_31()
+                /* sql_131()
                 / ***meta(tester_les_dependances_dans_le_php(1))*** /
                 
                 DELETE FROM b1.tbl_taches
@@ -272,7 +272,7 @@ class c_taches1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_31()*/ 31,
+                 /*sql_131()*/ 131,
                 array(/**/
                     'chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
                     'chi_id_tache' => $tt[__xva][0]['T0.chi_id_tache']
@@ -319,7 +319,7 @@ class c_taches1{
 
         }
         $tt=/*sql_inclure_deb*/
-            /* sql_28()
+            /* sql_128()
             SELECT 
             `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
              FROM b1.tbl_taches T0
@@ -329,7 +329,7 @@ class c_taches1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_28()*/ 28,
+             /*sql_128()*/ 128,
             array(/**/
                 'T0_chi_id_tache' => $donnees_recues[__xva]['chi_id_tache'],
                 'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']
@@ -340,7 +340,7 @@ class c_taches1{
         if($tt[__xst] === __xsu){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_29()
+                /* sql_129()
                 UPDATE b1.tbl_taches SET 
                    `chp_texte_tache` = :n_chp_texte_tache , 
                    `chp_priorite_tache` = :n_chp_priorite_tache
@@ -349,7 +349,7 @@ class c_taches1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_29()*/ 29,
+                 /*sql_129()*/ 129,
                 array(
                     /**/
                     'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
@@ -397,7 +397,7 @@ class c_taches1{
     function réordonner1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $o1='';
         $tt=/*sql_inclure_deb*/
-            /* sql_64()
+            /* sql_164()
             SELECT 
             `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
              FROM b1.tbl_taches T0
@@ -408,7 +408,7 @@ class c_taches1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_64()*/ 64,
+             /*sql_164()*/ 164,
             array(/**/
                 'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
                 'T0_chp_priorite_tache' => 50
@@ -429,7 +429,7 @@ class c_taches1{
             if($nouvelle_priorite < 50){
 
                 $tt2=/*sql_inclure_deb*/
-                    /* sql_65()
+                    /* sql_165()
                     UPDATE b1.tbl_taches SET 
                        `chp_priorite_tache` = :n_chp_priorite_tache
                     WHERE ( / *** *** / `chi_id_tache` = :c_chi_id_tache
@@ -437,7 +437,7 @@ class c_taches1{
                     */
                     /*sql_inclure_fin*/
                     $this->sql0->sql_iii(
-                     /*sql_65()*/ 65,
+                     /*sql_165()*/ 165,
                     array(/**/
                         'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
                         'c_chi_id_tache' => $v1['T0.chi_id_tache'],
@@ -486,7 +486,7 @@ class c_taches1{
         if(is_numeric($chi_id_taches) && $chi_id_taches > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_28()
+                /* sql_128()
                 SELECT 
                 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
                  FROM b1.tbl_taches T0
@@ -496,7 +496,7 @@ class c_taches1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_28()*/ 28,
+                 /*sql_128()*/ 128,
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
                     'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']
@@ -512,7 +512,7 @@ class c_taches1{
             }
 
             $tt=/*sql_inclure_deb*/
-                /* sql_20()
+                /* sql_120()
                 UPDATE b1.tbl_taches SET 
                    `chp_priorite_tache` = (chp_priorite_tache-1)
                 WHERE (`chi_id_tache` = :c_chi_id_tache
@@ -521,7 +521,7 @@ class c_taches1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_20()*/ 20,
+                 /*sql_120()*/ 120,
                 array(/**/
                     'c_chi_id_tache' => $chi_id_taches,
                     'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']
@@ -569,7 +569,7 @@ class c_taches1{
         if(is_numeric($chi_id_taches) && $chi_id_taches > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_28()
+                /* sql_128()
                 SELECT 
                 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
                  FROM b1.tbl_taches T0
@@ -579,7 +579,7 @@ class c_taches1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_28()*/ 28,
+                 /*sql_128()*/ 128,
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
                     'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']
@@ -595,7 +595,7 @@ class c_taches1{
             }
 
             $tt=/*sql_inclure_deb*/
-                /* sql_21()
+                /* sql_121()
                 UPDATE b1.tbl_taches SET 
                    `chp_priorite_tache` = (chp_priorite_tache+1)
                 WHERE ( / *** *** / `chi_id_tache` = :c_chi_id_tache
@@ -604,7 +604,7 @@ class c_taches1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_21()*/ 21,
+                 /*sql_121()*/ 121,
                 array(/**/
                     'c_chi_id_tache' => $chi_id_taches,
                     'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']
@@ -652,7 +652,7 @@ class c_taches1{
         if(is_numeric($chi_id_taches) && $chi_id_taches > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_28()
+                /* sql_128()
                 SELECT 
                 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
                  FROM b1.tbl_taches T0
@@ -662,7 +662,7 @@ class c_taches1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_28()*/ 28,
+                 /*sql_128()*/ 128,
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
                     'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']
@@ -673,7 +673,7 @@ class c_taches1{
             if($tt[__xst] === __xsu){
 
                 $tt=/*sql_inclure_deb*/
-                    /* sql_22()
+                    /* sql_122()
                     UPDATE b1.tbl_taches SET 
                        `chp_priorite_tache` = :n_chp_priorite_tache
                     WHERE (`chi_id_tache` = :c_chi_id_tache
@@ -681,7 +681,7 @@ class c_taches1{
                     */
                     /*sql_inclure_fin*/
                     $this->sql0->sql_iii(
-                     /*sql_22()*/ 22,
+                     /*sql_122()*/ 122,
                     array(/**/
                         'c_chi_id_tache' => $chi_id_taches,
                         'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
@@ -775,7 +775,7 @@ class c_taches1{
         if(is_numeric($chi_id_taches) && $chi_id_taches > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_28()
+                /* sql_128()
                 SELECT 
                 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
                  FROM b1.tbl_taches T0
@@ -785,7 +785,7 @@ class c_taches1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_28()*/ 28,
+                 /*sql_128()*/ 128,
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
                     'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']
@@ -855,7 +855,7 @@ class c_taches1{
         if(is_numeric($chi_id_taches) && $chi_id_taches > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_28()
+                /* sql_128()
                 SELECT 
                 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
                  FROM b1.tbl_taches T0
@@ -865,7 +865,7 @@ class c_taches1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_28()*/ 28,
+                 /*sql_128()*/ 128,
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
                     'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']
@@ -895,6 +895,8 @@ class c_taches1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <input  type="text" value="' . enti1($tt[__xva][0]['T0.chp_priorite_tache']) . '" id="chp_priorite_tache" maxlength="4" style="width:100%;max-width:4em;" autocapitalize="off" />' . PHP_EOL;
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(affecte(zone(chp_priorite_tache,valeur),0))">0</div>';
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(affecte(zone(chp_priorite_tache,valeur),99))">99</div>';
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /**/
@@ -1054,7 +1056,7 @@ class c_taches1{
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_19()
+            /* sql_119()
             SELECT 
             `T0`.`chi_id_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
              FROM b1.tbl_taches T0
@@ -1069,7 +1071,7 @@ class c_taches1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_19()*/ 19,
+             /*sql_119()*/ 119,
             array(
                 /**/
                 'T0_chi_id_tache' => $par['T0_chi_id_tache'] === '' ? '' : $par['T0_chi_id_tache'],
@@ -1089,7 +1091,7 @@ class c_taches1{
             $o1 .= '<div>';
             $o1 .= '  <h3 class="yy__x_signaux_0">Erreur technique [' . __METHOD__ . ' ' . __LINE__ . ']</h1>';
             $o1 .= '  <div style="text-align:center">';
-            $o1 .= '    <div class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99),indice_menu(10))" title="tâches" >';
+            $o1 .= '    <div class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1()" title="tâches" >';
             $o1 .= '      Réessayer';
             $o1 .= '    </div>';
             $o1 .= '    <br /><br />Si le problème persiste, veuillez contacter la maintenance de l\'application';

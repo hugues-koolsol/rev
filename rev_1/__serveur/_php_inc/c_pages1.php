@@ -107,8 +107,8 @@ class c_pages1{
             }
 
         }
-        $tt62=/*sql_inclure_deb*/
-            /* sql_62()
+        $tt162=/*sql_inclure_deb*/
+            /* sql_162()
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
             `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -123,7 +123,7 @@ class c_pages1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_62()*/ 62,
+             /*sql_162()*/ 162,
             array(/**/
                 'T0_chi_id_source' => $donnees_recues[__xva]['chx_source_page'],
                 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
@@ -131,7 +131,7 @@ class c_pages1{
             $donnees_retournees
         );
         
-        if($tt62[__xst] === __xer){
+        if($tt162[__xst] === __xer){
 
             $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
             return;
@@ -144,7 +144,7 @@ class c_pages1{
              /*matrice*/ $mat,
             $donnees_recues
         );
-        $dossier=$obj_doss->construire_chemin($tt62[__xva][0]['T0.chx_dossier_id_source']);
+        $dossier=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
         
         if($dossier['__xst'] !== __xsu){
 
@@ -153,17 +153,17 @@ class c_pages1{
 
         }
 
-        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt62[__xva][0] , true ) . '</pre>' ; exit(0);*/
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt162[__xva][0] , true ) . '</pre>' ; exit(0);*/
         
-        if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source'])){
+        if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'])){
 
             $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
             return;
 
         }
 
-        require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source']);
-        $class_methods=get_class_methods(str_replace('.php','',$tt62[__xva][0]['T0.chp_nom_source']));
+        require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source']);
+        $class_methods=get_class_methods(str_replace('.php','',$tt162[__xva][0]['T0.chp_nom_source']));
         $trouve=false;
         foreach($class_methods as $k1 => $v1){
             
@@ -196,7 +196,7 @@ class c_pages1{
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
-            /* sql_89()
+            /* sql_189()
             INSERT INTO b1.`tbl_pages`(
                 `chp_nom_page` , 
                 `chx_parent_page` , 
@@ -219,7 +219,7 @@ class c_pages1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_89()*/ 89,
+             /*sql_189()*/ 189,
             $donnees_sql,
             $donnees_retournees
         );
@@ -300,7 +300,7 @@ class c_pages1{
     */
     function vv_pages_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
-            /* sql_90()
+            /* sql_190()
             SELECT 
             `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
             `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
@@ -317,7 +317,7 @@ class c_pages1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_90()*/ 90,
+             /*sql_190()*/ 190,
             array(/**/
                 'T0_chi_id_page' => $donnees_recues[__xva]['chi_id_page']
             ),
@@ -327,13 +327,13 @@ class c_pages1{
         if($tt[__xst] === __xsu && $donnees_recues[__xva]['chi_id_page'] > 1){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_92()
+                /* sql_192()
                 DELETE FROM b1.tbl_pages
                 WHERE `chi_id_page` = :chi_id_page ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_92()*/ 92,
+                 /*sql_192()*/ 192,
                 array(/**/
                     'chi_id_page' => $tt[__xva][0]['T0.chi_id_page']
                 ),
@@ -379,7 +379,7 @@ class c_pages1{
 
         }
         $tt=/*sql_inclure_deb*/
-            /* sql_90()
+            /* sql_190()
             SELECT 
             `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
             `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
@@ -396,7 +396,7 @@ class c_pages1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_90()*/ 90,
+             /*sql_190()*/ 190,
             array(/**/
                 'T0_chi_id_page' => $donnees_recues[__xva]['chi_id_page']
             ),
@@ -405,8 +405,8 @@ class c_pages1{
         
         if($tt[__xst] === __xsu){
 
-            $tt62=/*sql_inclure_deb*/
-                /* sql_62()
+            $tt162=/*sql_inclure_deb*/
+                /* sql_162()
                 SELECT 
                 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
                 `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
@@ -421,7 +421,7 @@ class c_pages1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_62()*/ 62,
+                 /*sql_162()*/ 162,
                 array(/**/
                     'T0_chi_id_source' => $donnees_recues[__xva]['chx_source_page'],
                     'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
@@ -429,7 +429,7 @@ class c_pages1{
                 $donnees_retournees
             );
             
-            if($tt62[__xst] === __xer){
+            if($tt162[__xst] === __xer){
 
                 $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
                 return;
@@ -442,7 +442,7 @@ class c_pages1{
                  /*matrice*/ $mat,
                 $donnees_recues
             );
-            $dossier=$obj_doss->construire_chemin($tt62[__xva][0]['T0.chx_dossier_id_source']);
+            $dossier=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
             
             if($dossier['__xst'] !== __xsu){
 
@@ -451,17 +451,17 @@ class c_pages1{
 
             }
 
-            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt62[__xva][0] , true ) . '</pre>' ; exit(0);*/
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt162[__xva][0] , true ) . '</pre>' ; exit(0);*/
             
-            if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source'])){
+            if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'])){
 
                 $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
                 return;
 
             }
 
-            require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt62[__xva][0]['T0.chp_nom_source']);
-            $class_methods=get_class_methods(str_replace('.php','',$tt62[__xva][0]['T0.chp_nom_source']));
+            require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source']);
+            $class_methods=get_class_methods(str_replace('.php','',$tt162[__xva][0]['T0.chp_nom_source']));
             $trouve=false;
             foreach($class_methods as $k1 => $v1){
                 
@@ -486,7 +486,7 @@ class c_pages1{
               pour la page accueil
             */
             $tt=/*sql_inclure_deb*/
-                /* sql_91()
+                /* sql_191()
                 UPDATE b1.tbl_pages SET 
                    `chp_nom_page` = :n_chp_nom_page , 
                    `chx_parent_page` = :n_chx_parent_page , 
@@ -500,7 +500,7 @@ class c_pages1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_91()*/ 91,
+                 /*sql_191()*/ 191,
                 array(
                     /**/
                     'c_chi_id_page' => $tt[__xva][0]['T0.chi_id_page'],
@@ -714,7 +714,7 @@ class c_pages1{
 
             /*afr 1 */
             $tt=/*sql_inclure_deb*/
-                /* sql_90()
+                /* sql_190()
                 SELECT 
                 `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
                 `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
@@ -731,7 +731,7 @@ class c_pages1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_90()*/ 90,
+                 /*sql_190()*/ 190,
                 array(/**/
                     'T0_chi_id_page' => $chi_id_pages
                 ),
@@ -909,7 +909,7 @@ class c_pages1{
         if(is_numeric($chi_id_pages) && $chi_id_pages > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_90()
+                /* sql_190()
                 SELECT 
                 `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
                 `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
@@ -926,7 +926,7 @@ class c_pages1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_90()*/ 90,
+                 /*sql_190()*/ 190,
                 array(/**/
                     'T0_chi_id_page' => $chi_id_pages
                 ),
@@ -1045,6 +1045,7 @@ class c_pages1{
                 $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_source_page)';
                 $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_source_page_libelle)';
                 $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
+                $parametre_sous_fenetre .= ' après_faire(c_sources1.obtenir_les_methodes(chi_id_source(id1),nom_zone(vv_liste_des_methodes1)))';
                 $parametre_sous_fenetre .= ')';
                 $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
                 $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
@@ -1061,6 +1062,7 @@ class c_pages1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <input type="text" id="chp_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="' . enti1($tt[__xva][0]['T0.chp_methode_page']) . '" />' . PHP_EOL;
+                $o1 .= '      <span id="vv_liste_des_methodes1"></span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
@@ -1161,7 +1163,7 @@ class c_pages1{
     function page_pages_sous_liste1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $fonction1='c_pages1.page_pages_sous_liste1';
         /* déverminage */
-        $__nbMax=10;
+        $__nbMax=20;
         /*
           $donnees_retournees[__x_signaux][__xif][]=__LINE__ . 'TODO $par '.var_export($par,true);
         */
@@ -1282,7 +1284,7 @@ class c_pages1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_88()
+            /* sql_188()
             SELECT 
             `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_source_page` , `T0`.`chp_methode_page` , 
             `T0`.`cht_complement_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T1`.`cht_contenu_methode_page`
@@ -1301,7 +1303,7 @@ class c_pages1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_88()*/ 88,
+             /*sql_188()*/ 188,
             array(
                 /**/
                 'T0_chi_id_page' => $par['T0_chi_id_page'] === '' ? '' : $par['T0_chi_id_page'],
@@ -1369,7 +1371,7 @@ class c_pages1{
       =============================================================================================================
     */
     function page_liste_des_pages1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $__nbMax=10;
+        $__nbMax=20;
         $par=array();
         $par['T0_chi_id_page']='';
         $par['T0_chp_nom_page']='';
@@ -1478,7 +1480,7 @@ class c_pages1{
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_88()
+            /* sql_188()
             SELECT 
             `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_source_page` , `T0`.`chp_methode_page` , 
             `T0`.`cht_complement_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T1`.`cht_contenu_methode_page`
@@ -1497,7 +1499,7 @@ class c_pages1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_88()*/ 88,
+             /*sql_188()*/ 188,
             array(
                 /**/
                 'T0_chi_id_page' => $par['T0_chi_id_page'] === '' ? '' : $par['T0_chi_id_page'],

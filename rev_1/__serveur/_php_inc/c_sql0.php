@@ -160,8 +160,8 @@ class c_sql0{
     function sql_dependances($par,&$donnees_retournees){
         $liste_des_dependances=array();
         $nombre_total_des_dependances=0;
-        $tt11=/*sql_inclure_deb*/
-            /* sql_11()
+        $tt111=/*sql_inclure_deb*/
+            /* sql_111()
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
              FROM b1.tbl_bdds T0
@@ -171,13 +171,13 @@ class c_sql0{
             */
             /*sql_inclure_fin*/
             $this->sql_iii(
-             /*sql_11()*/ 11,
+             /*sql_111()*/ 111,
             array( 'T0_chi_id_basedd' => $par['id_bdd'], 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
             $donnees_retournees
         );
-        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt11 , true ) . '</pre>' ; exit(0);*/
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt111 , true ) . '</pre>' ; exit(0);*/
         
-        if($tt11[__xst] === __xsu && count($tt11[__xva]) === 1){
+        if($tt111[__xst] === __xsu && count($tt111[__xva]) === 1){
 
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
             $obj_doss=new c_dossiers1(
@@ -186,7 +186,7 @@ class c_sql0{
                 $donnees_recues
             );
             $chemin_de_la_bdd='';
-            $chemin_racine2=$obj_doss->construire_chemin($tt11[__xva][0]['T0.chx_dossier_id_basedd']);
+            $chemin_racine2=$obj_doss->construire_chemin($tt111[__xva][0]['T0.chx_dossier_id_basedd']);
             
             if($chemin_racine2[__xst] === __xsu){
 

@@ -1,5 +1,8 @@
 <?php
 class c_rev_vers_matrice1{
+    /*
+     matrice_vers_source_rev1
+    */
     /*erreur*/
     private const __xer = 0;
     /*succes*/
@@ -2608,7 +2611,7 @@ class c_rev_vers_matrice1{
           =====================================================================================================
           numéro d'enfant + bidouille performances car on boucle souvent sur les enfants
           numenfant = $k
-          en position 12, on met l'$indice de l'enfant suivant ou $l01 
+          en position 12 on met l'$indice de l'enfant suivant ou $l01 
           =====================================================================================================
         */
         $indice_enfant_precedent=0;

@@ -144,6 +144,64 @@ class c_fonctions_js1{
     }
     /*
       =============================================================================================================
+      c_fonctions_js1(affecte(zone(vv_nouveau_numero_de_requete,valeur),plus( zone(vv_nouveau_numero_de_requete,valeur) , 100 )))
+    */
+    affecte( mat , debut  ){
+        let l01=mat.length;
+        if(mat[debut][8]===2){
+            let zone_cible=null;
+            let zone_source=null;
+            let constante=null;
+            for( let i=debut+1 ; i < l01 ; i=mat[i][12] ){
+                if('zone'===mat[i][1] && mat[i][9]===1  && mat[i][8]===2){
+                    for( let j=i+1 ; j < l01 ; j=mat[j][12] ){
+                        if(mat[j][2]==='c' && mat[j][9]===1 ){
+                        }else if(mat[j][2]==='c' && mat[j][9]===2 && mat[j][1]==='valeur' ){
+                          zone_cible=document.getElementById(mat[j-1][1]);
+                         
+                        }else{
+                           return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+                        }
+                    }
+                }else if('plus'===mat[i][1] && mat[i][9]===2){
+                    for( let j=i+1 ; j < l01 ; j=mat[j][12] ){
+                        if('zone'===mat[j][1] && mat[j][9]===1  && mat[j][8]===2){
+                            for( let k=j+1 ; k < l01 ; k=mat[k][12] ){
+                                if(mat[k][2]==='c' && mat[k][9]===1 ){
+                                }else if(mat[k][2]==='c' && mat[k][9]===2 && mat[k][1]==='valeur' ){
+                                  zone_source=document.getElementById(mat[k-1][1]);
+                                 
+                                }else{
+                                   return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+                                }
+                            }
+                        }else if('c'===mat[j][2] && mat[j][9]===2){
+                         constante=parseFloat(mat[j][1]);
+                        }
+                    }
+                    if(zone_source!==null && zone_cible!==null && constante!== null && 'plus'===mat[i][1]){
+                        zone_cible.value=parseFloat(zone_source.value)+constante;
+                    }else{
+                        return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+                    }
+                }else if('c'===mat[i][2] && mat[i][9]===2){
+                    constante=parseFloat(mat[i][1]);
+                    if(zone_cible!==null){
+                        zone_cible.value=constante;
+                    }else{
+                        return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+                    }
+                }else{
+                    return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+                }
+            }
+        }else{
+            return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
     */
     compiler_zone_rev_vers_zone_php( mat , début ){
         let l01=mat.length;

@@ -119,7 +119,7 @@ class c_utilisateurs1{
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
-            /* sql_79()
+            /* sql_179()
             INSERT INTO b1.`tbl_utilisateurs`(
                 `chp_nom_de_connexion_utilisateur` , 
                 `chx_acces_utilisateur`
@@ -130,7 +130,7 @@ class c_utilisateurs1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_79()*/ 79,
+             /*sql_179()*/ 179,
             $donnees_sql,
             $donnees_retournees
         );
@@ -211,7 +211,7 @@ class c_utilisateurs1{
     */
     function vv_utilisateurs_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
-            /* sql_80()
+            /* sql_180()
             SELECT 
             `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
             `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
@@ -224,7 +224,7 @@ class c_utilisateurs1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_80()*/ 80,
+             /*sql_180()*/ 180,
             array(/**/
                 'T0_chi_id_utilisateur' => $donnees_recues[__xva]['chi_id_utilisateur']
             ),
@@ -234,13 +234,13 @@ class c_utilisateurs1{
         if($tt[__xst] === __xsu && $donnees_recues[__xva]['chi_id_utilisateur'] > 2){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_82()
+                /* sql_182()
                 DELETE FROM b1.tbl_utilisateurs
                 WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_82()*/ 82,
+                 /*sql_182()*/ 182,
                 array(/**/
                     'chi_id_utilisateur' => $tt[__xva][0]['T0.chi_id_utilisateur']
                 ),
@@ -286,7 +286,7 @@ class c_utilisateurs1{
 
         }
         $tt=/*sql_inclure_deb*/
-            /* sql_80()
+            /* sql_180()
             SELECT 
             `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
             `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
@@ -299,7 +299,7 @@ class c_utilisateurs1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_80()*/ 80,
+             /*sql_180()*/ 180,
             array(/**/
                 'T0_chi_id_utilisateur' => $donnees_recues[__xva]['chi_id_utilisateur']
             ),
@@ -324,7 +324,7 @@ class c_utilisateurs1{
             }
 
             $tt=/*sql_inclure_deb*/
-                /* sql_81()
+                /* sql_181()
                 UPDATE b1.tbl_utilisateurs SET 
                    `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
                    `chx_acces_utilisateur` = :n_chx_acces_utilisateur
@@ -332,7 +332,7 @@ class c_utilisateurs1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_81()*/ 81,
+                 /*sql_181()*/ 181,
                 array(/**/
                     'c_chi_id_utilisateur' => $tt[__xva][0]['T0.chi_id_utilisateur'],
                     'n_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['chp_nom_de_connexion_utilisateur'],
@@ -445,7 +445,7 @@ class c_utilisateurs1{
         if(is_numeric($chi_id_utilisateurs) && $chi_id_utilisateurs > 2){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_80()
+                /* sql_180()
                 SELECT 
                 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
                 `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
@@ -458,7 +458,7 @@ class c_utilisateurs1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_80()*/ 80,
+                 /*sql_180()*/ 180,
                 array(/**/
                     'T0_chi_id_utilisateur' => $chi_id_utilisateurs
                 ),
@@ -522,7 +522,7 @@ class c_utilisateurs1{
         if(is_numeric($chi_id_utilisateurs) && $chi_id_utilisateurs > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_80()
+                /* sql_180()
                 SELECT 
                 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
                 `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
@@ -535,7 +535,7 @@ class c_utilisateurs1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_80()*/ 80,
+                 /*sql_180()*/ 180,
                 array(/**/
                     'T0_chi_id_utilisateur' => $chi_id_utilisateurs
                 ),
@@ -785,7 +785,7 @@ class c_utilisateurs1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_78()
+            /* sql_178()
             SELECT 
             `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
             `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
@@ -800,7 +800,7 @@ class c_utilisateurs1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_78()*/ 78,
+             /*sql_178()*/ 178,
              /**/ array(
                 /**/
                 'T0_chi_id_utilisateur' => $par['T0_chi_id_utilisateur'] === '' ? '' : $par['T0_chi_id_utilisateur'],
@@ -979,7 +979,7 @@ class c_utilisateurs1{
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_78()
+            /* sql_178()
             SELECT 
             `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
             `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
@@ -994,7 +994,7 @@ class c_utilisateurs1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_78()*/ 78,
+             /*sql_178()*/ 178,
             array(
                 /**/
                 'T0_chi_id_utilisateur' => $par['T0_chi_id_utilisateur'] === '' ? '' : $par['T0_chi_id_utilisateur'],

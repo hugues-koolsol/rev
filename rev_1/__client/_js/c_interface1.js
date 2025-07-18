@@ -2134,6 +2134,7 @@ class _c_interface1{
     choisir_dans_sous_fenetre1( mat ){
         let nom_champ_dans_parent1=null;
         let nom_libelle_dans_parent1=null;
+        let après_faire=null;
         let mat1=null;
         let hash_courante=decodeURIComponent( document.location.hash.substr( 1 ) );
         let obj=this.__m_rev1.rev_tcm( hash_courante );
@@ -2146,9 +2147,15 @@ class _c_interface1{
                     for( let j=i + 1 ; j < l01 ; j=mat1[j][12] ){
                         if(mat1[j][1] === 'nom_champ_dans_parent1' && mat1[j][2] === 'f' && mat1[j][8] === 1 && mat1[j + 1][2] === 'c'){
                             nom_champ_dans_parent1=mat1[j + 1][1];
-                        }
-                        if(mat1[j][1] === 'nom_libelle_dans_parent1' && mat1[j][2] === 'f' && mat1[j][8] === 1 && mat1[j + 1][2] === 'c'){
+                        }else if(mat1[j][1] === 'nom_libelle_dans_parent1' && mat1[j][2] === 'f' && mat1[j][8] === 1 && mat1[j + 1][2] === 'c'){
                             nom_libelle_dans_parent1=mat1[j + 1][1];
+                        }else if(mat1[j][1] === 'après_faire' && mat1[j][2] === 'f'){
+                            let obj=this.__m_rev1.matrice_vers_source_rev1( mat1 , j , false , j + 1 );
+                            if(obj.__xst === __xsu){
+                                après_faire=obj.__xva.trim();
+                            }else{
+                                debugger
+                            }
                         }
                     }
                 }
@@ -2169,8 +2176,8 @@ class _c_interface1{
                 }
             }
         }
+       let id1=null;
         if(nom_champ_dans_parent1 !== null){
-            let id1=null;
             let libelle1='';
             for( let i=1 ; i < mat.length ; i=mat[i][12] ){
                 if(mat[i][1] === 'interface1.choisir_dans_sous_fenetre1' && mat[i][2] === 'f'){
@@ -2190,6 +2197,9 @@ class _c_interface1{
             if(nom_libelle_dans_parent1 !== null){
                 window.parent.document.getElementById( nom_libelle_dans_parent1 ).innerHTML=libelle1;
             }
+        }
+        if(après_faire!==null){
+            window.parent.__gi1.envoyer_un_message_au_worker({"__x_action" : après_faire.replace(/id1/,id1)})
         }
         let vv_sous_fenetre1=window.parent.document.getElementById( 'vv_sous_fenetre1' );
         vv_sous_fenetre1.innerHTML='';

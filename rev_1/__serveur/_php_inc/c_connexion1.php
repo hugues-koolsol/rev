@@ -35,7 +35,7 @@ class c_connexion1{
         }
 
         $tt=/*sql_inclure_deb*/
-            /* sql_1()
+            /* sql_101()
             SELECT 
             `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces`
              FROM b1.tbl_utilisateurs T0
@@ -47,7 +47,7 @@ class c_connexion1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_1()*/ 1,
+             /*sql_101()*/ 101,
             array( 'T0_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur']),
             $donnees_retournees
         );
@@ -85,14 +85,14 @@ class c_connexion1{
             $donnees_retournees[__xst]=__xsu;
             $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
             $tt=/*sql_inclure_deb*/
-                /* sql_72()
+                /* sql_172()
                 UPDATE b1.tbl_utilisateurs SET 
                    `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
                 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_72()*/ 72,
+                 /*sql_172()*/ 172,
                 array( 'c_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']),
                 $donnees_retournees
             );

@@ -3256,6 +3256,7 @@ class c_requete_sql1{
                                                    || tab[j][1] === 'comme'
                                                    || tab[j][1] === 'sup'
                                                    || tab[j][1] === 'inf'
+                                                   || tab[j][1] === 'infegal'
                                                    || tab[j][1] === 'dans'
                                                    || tab[j][1] === 'pas_comme')
                                         ){

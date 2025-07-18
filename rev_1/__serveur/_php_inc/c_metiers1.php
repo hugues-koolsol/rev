@@ -113,7 +113,7 @@ class c_metiers1{
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
-            /* sql_84()
+            /* sql_184()
             INSERT INTO b1.`tbl_metiers`(
                 `chp_nom_metier` , 
                 `chx_parent_metier`
@@ -124,7 +124,7 @@ class c_metiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_84()*/ 84,
+             /*sql_184()*/ 184,
             $donnees_sql,
             $donnees_retournees
         );
@@ -205,7 +205,7 @@ class c_metiers1{
     */
     function vv_metiers_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
-            /* sql_85()
+            /* sql_185()
             SELECT 
             `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
              FROM b1.tbl_metiers T0
@@ -216,7 +216,7 @@ class c_metiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_85()*/ 85,
+             /*sql_185()*/ 185,
             array(/**/
                 'T0_chi_id_metier' => $donnees_recues[__xva]['chi_id_metier']
             ),
@@ -226,13 +226,13 @@ class c_metiers1{
         if($tt[__xst] === __xsu && $donnees_recues[__xva]['chi_id_metier'] > 1){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_87()
+                /* sql_187()
                 DELETE FROM b1.tbl_metiers
                 WHERE `chi_id_metier` = :chi_id_metier ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_87()*/ 87,
+                 /*sql_187()*/ 187,
                 array(/**/
                     'chi_id_metier' => $tt[__xva][0]['T0.chi_id_metier']
                 ),
@@ -278,7 +278,7 @@ class c_metiers1{
 
         }
         $tt=/*sql_inclure_deb*/
-            /* sql_85()
+            /* sql_185()
             SELECT 
             `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
              FROM b1.tbl_metiers T0
@@ -289,7 +289,7 @@ class c_metiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_85()*/ 85,
+             /*sql_185()*/ 185,
             array(/**/
                 'T0_chi_id_metier' => $donnees_recues[__xva]['chi_id_metier']
             ),
@@ -303,7 +303,7 @@ class c_metiers1{
               le parent de racine doit être racine
             */
             $tt=/*sql_inclure_deb*/
-                /* sql_86()
+                /* sql_186()
                 UPDATE b1.tbl_metiers SET 
                    `chp_nom_metier` = :n_chp_nom_metier , 
                    `chx_parent_metier` = :n_chx_parent_metier
@@ -311,7 +311,7 @@ class c_metiers1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_86()*/ 86,
+                 /*sql_186()*/ 186,
                 array(/**/
                     'c_chi_id_metier' => $tt[__xva][0]['T0.chi_id_metier'],
                     'n_chp_nom_metier' => $donnees_recues[__xva]['chp_nom_metier'],
@@ -428,7 +428,7 @@ class c_metiers1{
 
             /*afr 1 */
             $tt=/*sql_inclure_deb*/
-                /* sql_85()
+                /* sql_185()
                 SELECT 
                 `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
                  FROM b1.tbl_metiers T0
@@ -439,7 +439,7 @@ class c_metiers1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_85()*/ 85,
+                 /*sql_185()*/ 185,
                 array(/**/
                     'T0_chi_id_metier' => $chi_id_metiers
                 ),
@@ -503,7 +503,7 @@ class c_metiers1{
         if(is_numeric($chi_id_metiers) && $chi_id_metiers > 0){
 
             $tt=/*sql_inclure_deb*/
-                /* sql_85()
+                /* sql_185()
                 SELECT 
                 `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
                  FROM b1.tbl_metiers T0
@@ -514,7 +514,7 @@ class c_metiers1{
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
-                 /*sql_85()*/ 85,
+                 /*sql_185()*/ 185,
                 array(/**/
                     'T0_chi_id_metier' => $chi_id_metiers
                 ),
@@ -762,7 +762,7 @@ class c_metiers1{
         /**/
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_83()
+            /* sql_183()
             SELECT 
             `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
              FROM b1.tbl_metiers T0
@@ -776,7 +776,7 @@ class c_metiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_83()*/ 83,
+             /*sql_183()*/ 183,
              /**/ array( 'T0_chi_id_metier' => $par['T0_chi_id_metier'] === '' ? '' : $par['T0_chi_id_metier'], 'T0_chp_nom_metier' => $par['T0_chp_nom_metier'] === '' ? '' : '' . $par['T0_chp_nom_metier'] . '', 'quantitee' => $__nbMax, 'debut' => $__debut),
             $donnees_retournees
         );
@@ -947,7 +947,7 @@ class c_metiers1{
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
-            /* sql_83()
+            /* sql_183()
             SELECT 
             `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
              FROM b1.tbl_metiers T0
@@ -961,7 +961,7 @@ class c_metiers1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_83()*/ 83,
+             /*sql_183()*/ 183,
             array(
                 /**/
                 'T0_chi_id_metier' => $par['T0_chi_id_metier'] === '' ? '' : $par['T0_chi_id_metier'],
