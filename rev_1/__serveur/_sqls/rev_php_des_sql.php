@@ -1183,4 +1183,22 @@ ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ord
 ;',
     'cht_commentaire_requete' => 'menus',
   ),
+  405 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , 
+`T1`.`chp_methode_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , 
+`T1`.`cht_contenu_methode_page`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
+
+ LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_page
+
+WHERE `T0`.`chi_id_menu` > :T0_chi_id_menu 
+ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ordre_menu` ASC
+;',
+    'cht_commentaire_requete' => 'menus',
+  ),
 );

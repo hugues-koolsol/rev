@@ -638,6 +638,7 @@ class c_pages1{
         $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_source_page)';
         $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_source_page_libelle)';
         $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
+        $parametre_sous_fenetre .= ' après_faire(c_sources1.obtenir_les_methodes(chi_id_source(id1),nom_zone(vv_liste_des_methodes1),zone_cible(chp_methode_page)))';
         $parametre_sous_fenetre .= ')';
         $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
         $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
@@ -653,6 +654,7 @@ class c_pages1{
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '      <input type="text" maxlength="64" id="chp_methode_page" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
+        $o1 .= '      <span id="vv_liste_des_methodes1"></span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -1045,7 +1047,7 @@ class c_pages1{
                 $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_source_page)';
                 $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_source_page_libelle)';
                 $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
-                $parametre_sous_fenetre .= ' après_faire(c_sources1.obtenir_les_methodes(chi_id_source(id1),nom_zone(vv_liste_des_methodes1)))';
+                $parametre_sous_fenetre .= ' après_faire(c_sources1.obtenir_les_methodes(chi_id_source(id1),nom_zone(vv_liste_des_methodes1),zone_cible(chp_methode_page)))';
                 $parametre_sous_fenetre .= ')';
                 $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
                 $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;

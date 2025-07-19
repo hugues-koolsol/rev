@@ -185,7 +185,11 @@ class c_fonctions_js1{
                         return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
                     }
                 }else if('c'===mat[i][2] && mat[i][9]===2){
-                    constante=parseFloat(mat[i][1]);
+                    if(this.#interface1.__m_rev1.est_num( mat[i][1] )){
+                        constante=parseFloat(mat[i][1]);
+                    }else{
+                        constante=mat[i][1];
+                    }
                     if(zone_cible!==null){
                         zone_cible.value=constante;
                     }else{

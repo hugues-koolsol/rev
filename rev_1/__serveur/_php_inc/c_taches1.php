@@ -897,6 +897,7 @@ class c_taches1{
                 $o1 .= '      <input  type="text" value="' . enti1($tt[__xva][0]['T0.chp_priorite_tache']) . '" id="chp_priorite_tache" maxlength="4" style="width:100%;max-width:4em;" autocapitalize="off" />' . PHP_EOL;
                 $o1 .= '      <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(affecte(zone(chp_priorite_tache,valeur),0))">0</div>';
                 $o1 .= '      <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(affecte(zone(chp_priorite_tache,valeur),99))">99</div>';
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(affecte(zone(chp_priorite_tache,valeur),plus(zone(chp_priorite_tache,valeur) , 10 )))">+10</div>';
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /**/

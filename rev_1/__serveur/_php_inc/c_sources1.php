@@ -4,11 +4,11 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    public function __construct(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    public function __construct(&$donnees_retournees,&$mat,&$donnees_recues){
         require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_sql0.php');
         $this->sql0=new c_sql0(
             $donnees_retournees,
-             /*matrice*/ $mat,
+              $mat,
             $donnees_recues
         );
     }
@@ -16,7 +16,7 @@ class c_sources1{
       =============================================================================================================
       traitement des formulaires des sources
     */
-    public function formulaire1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    public function formulaire1(&$donnees_retournees,&$mat,&$donnees_recues){
         $l01=count($mat);
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
@@ -51,7 +51,7 @@ class c_sources1{
 
                         $this->$action1(
                             $donnees_retournees,
-                             /*matrice*/ $mat,
+                              $mat,
                             $donnees_recues
                         );
 
@@ -71,7 +71,7 @@ class c_sources1{
 
                     $this->$conteneur1(
                         $donnees_retournees,
-                         /*matrice*/ $mat,
+                          $mat,
                         $donnees_recues
                     );
 
@@ -91,10 +91,11 @@ class c_sources1{
     */
     function obtenir_les_methodes(&$donnees_retournees,&$mat,&$donnees_recues){
 
-        $donnees_retournees[__x_signaux][__xdv][]=var_export( $mat , true) . ' [' . __LINE__ . ']';
+        /*$donnees_retournees[__x_signaux][__xdv][]=var_export( $mat , true) . ' [' . __LINE__ . ']';*/
 
         $chi_id_source=0;
         $nom_zone='';
+        $zone_cible='';
         $l01=count($mat);
         for( $i=1 ; $i < $l01 ; $i++ ){
             
@@ -106,6 +107,8 @@ class c_sources1{
                         $chi_id_source=(int)$mat[$j+1][1];
                     }else if($mat[$j][1]==='nom_zone' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j+1][2] === 'c' ){
                         $nom_zone=$mat[$j+1][1];
+                    }else if($mat[$j][1]==='zone_cible' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j+1][2] === 'c' ){
+                        $zone_cible=$mat[$j+1][1];
                     }
                     
                 }
@@ -151,16 +154,12 @@ class c_sources1{
             }
 
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-            $obj_doss=new c_dossiers1(
-                $donnees_retournees,
-                 /*matrice*/ $mat,
-                $donnees_recues
-            );
+            $obj_doss=new c_dossiers1( $donnees_retournees,  $mat,          $donnees_recues  );
             $dossier=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
             
             if($dossier['__xst'] !== __xsu){
 
-                $donnees_retournees[__x_signaux][__xer][]='erreur dans obtenir_les_methodes ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                $donnees_retournees[__x_signaux][__xer][]='erreur dans obtenir_les_methodes [' . __LINE__ . ']';
                 return;
 
             }
@@ -169,14 +168,29 @@ class c_sources1{
             
             if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'])){
 
-                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                $donnees_retournees[__x_signaux][__xer][]='erreur dans obtenir_les_methodes [' . __LINE__ . ']';
                 return;
 
             }
 
             require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source']);
             $class_methods=get_class_methods(str_replace('.php','',$tt162[__xva][0]['T0.chp_nom_source']));
-            $donnees_retournees[__x_signaux][__xdv][]=var_export( $class_methods , true) . ' [' . __LINE__ . ']';
+            $tt='';
+            foreach($class_methods as $k1 => $v1){
+                if($v1!=='__construct'){
+
+                    $tt='<div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone('.$zone_cible.',valeur),'.$v1.'))" >'.$v1.'</div>'. ' , ' . $tt;
+                    
+                }
+                
+            }
+            
+            
+            $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id('.$nom_zone.'),innerHTML(\''.str_replace('\'','\\\'',str_replace('\\','\\\\',$tt)).'\')))';
+            
+            
+            
+            /*$donnees_retournees[__x_signaux][__xdv][]=var_export( $class_methods , true) . ' [' . __LINE__ . ']';*/
             $donnees_retournees[__xst]=__xsu;
         }
         
@@ -265,7 +279,7 @@ class c_sources1{
                 $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($action);
                 $this->page_sources_modifier1(
                     $donnees_retournees,
-                     /*matrice*/ $obj_matrice[__xva],
+                      $obj_matrice[__xva],
                     $donnees_recues
                 );
                 $donnees_retournees[__x_action]='c_sources1.formulaire1(action1(page_sources_modifier1),chi_id_source(' . $tt['nouvel_id'] . '))';
@@ -281,7 +295,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function vv_sources_filtre1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function vv_sources_filtre1(&$donnees_retournees,&$mat,&$donnees_recues){
         $txtPar='__num_page(0)';
         $nouvelles_valeurs=array( '__num_page' => 0);
         foreach($donnees_recues[__xva] as $k0 => $v0){
@@ -319,7 +333,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function vv_sources_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function vv_sources_supprimer1(&$donnees_retournees,&$mat,&$donnees_recues){
         /* exemple de déverminage*/
         /* $donnees_retournees[__x_signaux][__xal][]=__LINE__.' TODO $donnees_recues '.var_export($donnees_recues[__xva],true);*/
         /*si l'utilisateur bidouille l'id dans l'interface*/
@@ -389,7 +403,7 @@ class c_sources1{
                     require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
                     $obj_dossier_source=new c_dossiers1(
                         $donnees_retournees,
-                         /*matrice*/ $mat,
+                          $mat,
                         $donnees_recues
                     );
                     $chemin_dossier_source=$obj_dossier_source->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
@@ -426,7 +440,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function vv_sources_dupliquer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function vv_sources_dupliquer1(&$donnees_retournees,&$mat,&$donnees_recues){
         /* exemple de déverminage*/
         /*
           $donnees_retournees[__x_signaux][__xal][]=__LINE__.' TODO $donnees_recues '.var_export($donnees_recues,true);
@@ -530,7 +544,7 @@ class c_sources1{
                     require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
                     $obj_dossier_source=new c_dossiers1(
                         $donnees_retournees,
-                         /*matrice*/ $mat,
+                          $mat,
                         $donnees_recues
                     );
                     $chemin_dossier_source=$obj_dossier_source->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
@@ -598,7 +612,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function vv_sources_modifier1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function vv_sources_modifier1(&$donnees_retournees,&$mat,&$donnees_recues){
         /* exemple de déverminage*/
         /*
           $donnees_retournees[__x_signaux][__xal][]=__LINE__.' TODO $donnees_recues '.var_export($donnees_recues,true);
@@ -718,7 +732,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function page_sources_creer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_sources_creer1(&$donnees_retournees,&$mat,&$donnees_recues){
         $o1='';
         $o1 .= '<h1>ajouter un source <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_sources1.formulaire1(action1(page_liste_des_sources1))" title="revenir à la liste" >⬱</div></h1>' . PHP_EOL;
         $o1 .= '<div id="vv_sources_creer1">' . PHP_EOL;
@@ -775,7 +789,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function page_sources_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_sources_supprimer1(&$donnees_retournees,&$mat,&$donnees_recues){
         /*
           $donnees_retournees[__x_signaux][__xif][]=__LINE__ . ' TODO $chi_id_source '.var_export($chi_id_source,true);
           return;
@@ -844,7 +858,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function lire_ce_source_du_disque1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function lire_ce_source_du_disque1(&$donnees_retournees,&$mat,&$donnees_recues){
         /*
           $donnees_retournees[__x_signaux][__xdv][]='$mat =<pre>' . var_export( $mat  , true ) . '</pre>'; 
         */
@@ -911,7 +925,7 @@ class c_sources1{
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
             $obj_doss=new c_dossiers1(
                 $donnees_retournees,
-                 /*matrice*/ $mat,
+                  $mat,
                 $donnees_recues
             );
             $chemin=$obj_doss->construire_chemin($tt[__xva][0]['T0.chx_dossier_id_source']);
@@ -950,7 +964,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function supprimer_ce_source_du_disque1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function supprimer_ce_source_du_disque1(&$donnees_retournees,&$mat,&$donnees_recues){
         $chi_id_source=0;
         $l01=count($mat);
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
@@ -1017,7 +1031,7 @@ class c_sources1{
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
             $obj_doss=new c_dossiers1(
                 $donnees_retournees,
-                 /*matrice*/ $mat,
+                  $mat,
                 $donnees_recues
             );
             $chemin=$obj_doss->construire_chemin($tt[__xva][0]['T0.chx_dossier_id_source']);
@@ -1046,7 +1060,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function ecrire_ce_source_sur_disque1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function ecrire_ce_source_sur_disque1(&$donnees_retournees,&$mat,&$donnees_recues){
         /*
           $donnees_retournees[__x_signaux][__xdv][]='$mat =<pre>' . var_export( $mat  , true ) . '</pre>'; 
         */
@@ -1116,7 +1130,7 @@ class c_sources1{
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
             $obj_doss=new c_dossiers1(
                 $donnees_retournees,
-                 /*matrice*/ $mat,
+                  $mat,
                 $donnees_recues
             );
             $chemin=$obj_doss->construire_chemin($tt[__xva][0]['T0.chx_dossier_id_source']);
@@ -1165,7 +1179,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function page_sources_dupliquer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_sources_dupliquer1(&$donnees_retournees,&$mat,&$donnees_recues){
         /* déverminage*/
         /*
           $donnees_retournees[__x_signaux][__xif][]='TODO $donnees_recues '.var_export($donnees_recues,true);
@@ -1286,7 +1300,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function page_sources_modifier1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_sources_modifier1(&$donnees_retournees,&$mat,&$donnees_recues){
         /* déverminage*/
         /*
           $donnees_retournees[__x_signaux][__xif][]='TODO $donnees_recues '.var_export($donnees_recues,true);
@@ -1551,7 +1565,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function enregistrer_un_source_compile1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function enregistrer_un_source_compile1(&$donnees_retournees,&$mat,&$donnees_recues){
         /* $donnees_retournees[__x_signaux][__xdv][]='<pre>'.var_export( $donnees_recues , true ).'</pre> [' . __LINE__ . ']';*/
         $pas_de_message_de_succes=$donnees_recues['pas_de_message_de_succes']??0;
         
@@ -1647,7 +1661,7 @@ class c_sources1{
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
             $obj_doss=new c_dossiers1(
                 $donnees_retournees,
-                 /*matrice*/ $mat,
+                  $mat,
                 $donnees_recues
             );
             $chemin=$obj_doss->construire_chemin($donnees_recues[__xva]['contenu_bdd']['T0.chx_dossier_id_source']);
@@ -1707,7 +1721,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    public function sauvegarder_une_matrice_de_source(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    public function sauvegarder_une_matrice_de_source(&$donnees_retournees,&$mat,&$donnees_recues){
         /* suppression des anciennes données de la table rev */
         $tt=/*sql_inclure_deb*/
             /* sql_5()
@@ -1834,7 +1848,7 @@ class c_sources1{
       =============================================================================================================
       ne fonctionne pas, à voir
     */
-    function lancer_notepad(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function lancer_notepad(&$donnees_retournees,&$mat,&$donnees_recues){
         /*
           // ceci lance notepad en arrière plan
           $pp=popen("start /max notepad.exe", "r");
@@ -1885,7 +1899,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function compiler_source1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function compiler_source1(&$donnees_retournees,&$mat,&$donnees_recues){
         $chi_id_source=0;
         $bouton_compiler='';
         $pas_de_message_de_succes=0;
@@ -1957,7 +1971,7 @@ class c_sources1{
                     require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
                     $obj_doss=new c_dossiers1(
                         $donnees_retournees,
-                         /*matrice*/ $mat,
+                          $mat,
                         $donnees_recues
                     );
                     $chemin=$obj_doss->construire_chemin($tt[__xva][0]['T0.chx_dossier_id_source']);
@@ -1999,7 +2013,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function exporter_dans_rev_un(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function exporter_dans_rev_un(&$donnees_retournees,&$mat,&$donnees_recues){
         $l01=count($mat);
         $chi_id_source=0;
         /* $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
@@ -2068,7 +2082,7 @@ class c_sources1{
                 require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
                 $obj_doss=new c_dossiers1(
                     $donnees_retournees,
-                     /*matrice*/ $mat,
+                      $mat,
                     $donnees_recues
                 );
                 $chemin=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
@@ -2116,7 +2130,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function importer_de_rev_un(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function importer_de_rev_un(&$donnees_retournees,&$mat,&$donnees_recues){
         $l01=count($mat);
         $chi_id_source=0;
         /* $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
@@ -2185,7 +2199,7 @@ class c_sources1{
                 require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
                 $obj_doss=new c_dossiers1(
                     $donnees_retournees,
-                     /*matrice*/ $mat,
+                      $mat,
                     $donnees_recues
                 );
                 $chemin=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
@@ -2235,7 +2249,7 @@ class c_sources1{
       Pour les iframes sur les sources
       =============================================================================================================
     */
-    function vv_sources_filtre_choix_1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function vv_sources_filtre_choix_1(&$donnees_retournees,&$mat,&$donnees_recues){
         $txtPar='__num_page(0)';
         $nouvelles_valeurs=array( '__num_page' => 0);
         foreach($donnees_recues[__xva] as $k0 => $v0){
@@ -2504,7 +2518,7 @@ class c_sources1{
     /*
       =============================================================================================================
     */
-    function page_liste_des_sources1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_liste_des_sources1(&$donnees_retournees,&$mat,&$donnees_recues){
         $__nbMax=20;
         $par=array();
         $par['T0_chi_id_source']='';

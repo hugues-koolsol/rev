@@ -195,9 +195,13 @@ class c_requetes1{
             $donnees_retournees[__x_signaux][__xdv][]='ecrire_php_sur_disque [' . __LINE__ . ']';
 
         }
+        
+        if(substr($contenu,0,5)!=='<?php'){
+            $contenu='<?php' . PHP_EOL . $contenu;
+        }
 
         
-        if((@file_put_contents($chemin_fichier,'<?php' . PHP_EOL . $contenu))){
+        if((@file_put_contents($chemin_fichier,$contenu))){
 
             $this->construire_le_js_des_requetes($donnees_retournees);
             return true;

@@ -6,10 +6,10 @@ if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
     $t[]='<div data-id_menu="5" class="hug_bouton" data-hug_click="c_rev_mat1.page1(),maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_rev1\'))))indice_menu(5)" title="">matrice</div>';
 }
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
-    $t[]='<div data-id_menu="6" class="hug_bouton" data-hug_click="c_rev_js1.page1(),maj_interface2(modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_js_rev1\'))))indice_menu(6)" title="">js</div>';
+    $t[]='<div data-id_menu="7" class="hug_bouton" data-hug_click="c_rev_html1.page1(),maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_html_rev1\'))))indice_menu(7)" title="">html</div>';
 }
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
-    $t[]='<div data-id_menu="7" class="hug_bouton" data-hug_click="c_rev_html1.page1(),maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_html_rev1\'))))indice_menu(7)" title="">html</div>';
+    $t[]='<div data-id_menu="6" class="hug_bouton" data-hug_click="c_rev_js1.page1(),maj_interface2(modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_js_rev1\'))))indice_menu(6)" title="">js</div>';
 }
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
     $t[]='<div data-id_menu="8" class="hug_bouton" data-hug_click="c_rev_php1.page1(),maj_interface2(modifier( id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(\'zones_sauvegardées\',\'ls_php_rev1\'))))indice_menu(8)" title="">php</div>';
