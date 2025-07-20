@@ -1689,64 +1689,63 @@ class c_svg_bdd1{
     /*
       =============================================================================================================
     */
-    selectionner_le_champ_parent_du_champ(mat){
+    selectionner_le_champ_parent_du_champ( mat ){
         let zone_select='';
         let zone_cible='';
         let l01=mat.length;
-        for(let i=1;i<l01;i=mat[i][12]){
-            if(mat[i][1]==='zone_select' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
-                zone_select=mat[i+1][1];
-            }else if(mat[i][1]==='zone_cible' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
-                zone_cible=mat[i+1][1];
+        for( let i=1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'zone_select' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                zone_select=mat[i + 1][1];
+            }else if(mat[i][1] === 'zone_cible' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                zone_cible=mat[i + 1][1];
             }
         }
-        if(zone_cible!=='' && zone_select!==''){
-            document.getElementById(zone_cible).value=document.getElementById(zone_select).value;
+        if(zone_cible !== '' && zone_select !== ''){
+            document.getElementById( zone_cible ).value=document.getElementById( zone_select ).value;
         }
     }
     /*
       =============================================================================================================
     */
-    lister_les_champs_de_la_table(mat){
+    lister_les_champs_de_la_table( mat ){
         let zone_select='';
         let zone_cible='';
         let zone_liste_des_champs='';
         let zone_champ_parent='';
         let l01=mat.length;
-        for(let i=1;i<l01;i=mat[i][12]){
-            if(mat[i][1]==='zone_select' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
-                zone_select=mat[i+1][1];
-            }else if(mat[i][1]==='zone_cible' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
-                zone_cible=mat[i+1][1];
-            }else if(mat[i][1]==='zone_liste_des_champs' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
-                zone_liste_des_champs=mat[i+1][1];
-            }else if(mat[i][1]==='zone_champ_parent' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
-                zone_champ_parent=mat[i+1][1];
+        for( let i=1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'zone_select' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                zone_select=mat[i + 1][1];
+            }else if(mat[i][1] === 'zone_cible' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                zone_cible=mat[i + 1][1];
+            }else if(mat[i][1] === 'zone_liste_des_champs' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                zone_liste_des_champs=mat[i + 1][1];
+            }else if(mat[i][1] === 'zone_champ_parent' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                zone_champ_parent=mat[i + 1][1];
             }
         }
-        let valeur_champ_parent=document.getElementById(zone_champ_parent).value;
-        if(zone_liste_des_champs!=='' && zone_cible!=='' && zone_select!==''){
-            document.getElementById(zone_cible).value=document.getElementById(zone_select).value;
-            document.getElementById(zone_liste_des_champs).innerHTML='';
-            document.getElementById(zone_champ_parent).value='';
-            if(document.getElementById(zone_select).value!==''){
-             
-                let chi_id_base=document.getElementById(zone_select).options[document.getElementById(zone_select).selectedIndex].getAttribute('data-chi_id_base');
+        let valeur_champ_parent=document.getElementById( zone_champ_parent ).value;
+        if(zone_liste_des_champs !== '' && zone_cible !== '' && zone_select !== ''){
+            document.getElementById( zone_cible ).value=document.getElementById( zone_select ).value;
+            document.getElementById( zone_liste_des_champs ).innerHTML='';
+            document.getElementById( zone_champ_parent ).value='';
+            if(document.getElementById( zone_select ).value !== ''){
+                let chi_id_base=document.getElementById( zone_select ).options[document.getElementById( zone_select ).selectedIndex].getAttribute( 'data-chi_id_base' );
                 let mat1=this.#arbre[chi_id_base].matrice;
                 let sel01='';
                 let l01=mat1.length;
-                for( let i=1;i<l01;i=mat1[i][12]){
-                    if(mat1[i][1]==='créer_table'){
-                        for( let j=i+1;j<l01;j=mat1[j][12]){
-                            if(mat1[j][1]==='nom_de_la_table' && mat1[j][2]==='f' && mat1[j][8]===1 && mat1[j+1][2]==='c'){
-                                if(mat1[j+1][1]===document.getElementById(zone_cible).value){
-                                    for( let k=j;k<l01;k=mat1[k][12]){
-                                        if(mat1[k][1]==='champs' && mat1[k][2]==='f' ){
-                                            for( let l=k+1;l<l01;l=mat1[l][12]){
-                                                if(mat1[l][1]==='champ' && mat1[l][2]==='f' ){
-                                                    for( let m=l+1;m<l01;m=mat1[m][12]){
-                                                        if(mat1[m][1]==='nom_du_champ' && mat1[m][2]==='f' && mat1[m][8]===1 && mat1[m+1][2]==='c' ){
-                                                            sel01+='<option value="'+mat1[m+1][1]+'" '+(valeur_champ_parent===mat1[m+1][1]?' selected="true" ':'')+'>'+mat1[m+1][1]+'</option>'
+                for( let i=1 ; i < l01 ; i=mat1[i][12] ){
+                    if(mat1[i][1] === 'créer_table'){
+                        for( let j=i + 1 ; j < l01 ; j=mat1[j][12] ){
+                            if(mat1[j][1] === 'nom_de_la_table' && mat1[j][2] === 'f' && mat1[j][8] === 1 && mat1[j + 1][2] === 'c'){
+                                if(mat1[j + 1][1] === document.getElementById( zone_cible ).value){
+                                    for( let k=j ; k < l01 ; k=mat1[k][12] ){
+                                        if(mat1[k][1] === 'champs' && mat1[k][2] === 'f'){
+                                            for( let l=k + 1 ; l < l01 ; l=mat1[l][12] ){
+                                                if(mat1[l][1] === 'champ' && mat1[l][2] === 'f'){
+                                                    for( let m=l + 1 ; m < l01 ; m=mat1[m][12] ){
+                                                        if(mat1[m][1] === 'nom_du_champ' && mat1[m][2] === 'f' && mat1[m][8] === 1 && mat1[m + 1][2] === 'c'){
+                                                            sel01+='<option value="' + mat1[m + 1][1] + '" ' + (valeur_champ_parent === mat1[m + 1][1] ? ( ' selected="true" ' ) : ( '' )) + '>' + mat1[m + 1][1] + '</option>';
                                                         }
                                                     }
                                                 }
@@ -1759,21 +1758,18 @@ class c_svg_bdd1{
                         }
                     }
                 }
-
-                if(sel01!==''){
+                if(sel01 !== ''){
                     var cmd='';
                     cmd+='interface1.module1(';
                     cmd+='  chemin_module1(\'' + this.#chemin_module1 + '\'),';
                     cmd+='  methode3(selectionner_le_champ_parent_du_champ),';
                     cmd+='  parametre3(';
                     cmd+='     zone_select(vv_champ_parent),';
-                    cmd+='     zone_cible('+zone_champ_parent+'),';
+                    cmd+='     zone_cible(' + zone_champ_parent + '),';
                     cmd+='  )';
                     cmd+=')';
-                    document.getElementById(zone_liste_des_champs).innerHTML='<select id="vv_champ_parent" data-hug_change="' + cmd + '"><option value=""></option>'+sel01+'</select>';
-                    
+                    document.getElementById( zone_liste_des_champs ).innerHTML='<select id="vv_champ_parent" data-hug_change="' + cmd + '"><option value=""></option>' + sel01 + '</select>';
                     __gi1.ajoute_les_evenements_aux_boutons( null );
-                    
                 }
             }
         }
@@ -1900,22 +1896,21 @@ class c_svg_bdd1{
         t+='<h2>changer les éléments du champ</h2>';
         t+='<br />type  : <input id="type_du_champ" type="text" value="' + type_du_champ + '" autocapitalize="off" />';
         t+='<br />table mère : <input id="table_mère" type="text" value="' + table_mere + '" autocapitalize="off" />';
-        
         let sel='';
         for(let cc in this.#arbre){
             let mat1=this.#arbre[cc].matrice;
             let l01=mat1.length;
-            for( let i=1;i<l01;i=mat1[i][12]){
-                if(mat1[i][1]==='créer_table'){
-                    for( let j=i+1;j<l01;j=mat1[j][12]){
-                        if(mat1[j][1]==='nom_de_la_table' && mat1[j][2]==='f' && mat1[j][8]===1 && mat1[j+1][2]==='c'){
-                            sel+='<option data-chi_id_base="'+cc+'" value="'+mat1[j+1][1]+'"'+(table_mere===mat1[j+1][1]?' selected="true" ':'')+'>('+cc+')'+mat1[j+1][1]+'</option>'
+            for( let i=1 ; i < l01 ; i=mat1[i][12] ){
+                if(mat1[i][1] === 'créer_table'){
+                    for( let j=i + 1 ; j < l01 ; j=mat1[j][12] ){
+                        if(mat1[j][1] === 'nom_de_la_table' && mat1[j][2] === 'f' && mat1[j][8] === 1 && mat1[j + 1][2] === 'c'){
+                            sel+='<option data-chi_id_base="' + cc + '" value="' + mat1[j + 1][1] + '"' + (table_mere === mat1[j + 1][1] ? ( ' selected="true" ' ) : ( '' )) + '>(' + cc + ')' + mat1[j + 1][1] + '</option>';
                         }
                     }
                 }
             }
         }
-        if(sel!==''){
+        if(sel !== ''){
             var cmd='';
             cmd+='interface1.module1(';
             cmd+='  chemin_module1(\'' + this.#chemin_module1 + '\'),';
@@ -1927,9 +1922,8 @@ class c_svg_bdd1{
             cmd+='     zone_champ_parent(champ_père),';
             cmd+='  )';
             cmd+=')';
-            t+='<select id="vv_table_parente" data-hug_change="' + cmd + '"><option value=""></option>'+sel+'</select>';
+            t+='<select id="vv_table_parente" data-hug_change="' + cmd + '"><option value=""></option>' + sel + '</select>';
         }
-        
         t+='<br />champ père : <input id="champ_père" type="text" value="' + champ_pere + '" autocapitalize="off" />';
         t+='<span id="vv_liste_des_champs_pere"></span>';
         t+='<br />clé primary_key  : <input type="checkbox" id="primary_key" ' + (primary_key === true ? ( 'checked' ) : ( '' )) + ' />';
@@ -3576,22 +3570,21 @@ class c_svg_bdd1{
             t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '" >' + t1[ind] + '</div>';
         }
         t+='<br />table mère pour chx  : <input id="table_mère" type="text" value="" autocapitalize="off" />';
-        
         let sel='';
         for(let cc in this.#arbre){
             let mat1=this.#arbre[cc].matrice;
             let l01=mat1.length;
-            for( let i=1;i<l01;i=mat1[i][12]){
-                if(mat1[i][1]==='créer_table'){
-                    for( let j=i+1;j<l01;j=mat1[j][12]){
-                        if(mat1[j][1]==='nom_de_la_table' && mat1[j][2]==='f' && mat1[j][8]===1 && mat1[j+1][2]==='c'){
-                            sel+='<option data-chi_id_base="'+cc+'" value="'+mat1[j+1][1]+'">('+cc+')'+mat1[j+1][1]+'</option>'
+            for( let i=1 ; i < l01 ; i=mat1[i][12] ){
+                if(mat1[i][1] === 'créer_table'){
+                    for( let j=i + 1 ; j < l01 ; j=mat1[j][12] ){
+                        if(mat1[j][1] === 'nom_de_la_table' && mat1[j][2] === 'f' && mat1[j][8] === 1 && mat1[j + 1][2] === 'c'){
+                            sel+='<option data-chi_id_base="' + cc + '" value="' + mat1[j + 1][1] + '">(' + cc + ')' + mat1[j + 1][1] + '</option>';
                         }
                     }
                 }
             }
         }
-        if(sel!==''){
+        if(sel !== ''){
             var cmd='';
             cmd+='interface1.module1(';
             cmd+='  chemin_module1(\'' + this.#chemin_module1 + '\'),';
@@ -3603,7 +3596,7 @@ class c_svg_bdd1{
             cmd+='     zone_champ_parent(champ_père),';
             cmd+='  )';
             cmd+=')';
-            t+='<select id="vv_table_parente" data-hug_change="' + cmd + '"><option value=""></option>'+sel+'</select>';
+            t+='<select id="vv_table_parente" data-hug_change="' + cmd + '"><option value=""></option>' + sel + '</select>';
         }
         t+='<br />champ père pour chx  : <input id="champ_père" type="text" value="" autocapitalize="off" /><span id="vv_liste_des_champs_pere"></span>';
         t+='<br />index primary_key <input id="primary_key" type="checkbox" /> ';

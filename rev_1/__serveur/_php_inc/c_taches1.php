@@ -264,10 +264,8 @@ class c_taches1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_131()
-                / ***meta(tester_les_dependances_dans_le_php(1))*** /
-                
                 DELETE FROM b1.tbl_taches
-                WHERE (`chi_id_tache` = :chi_id_tache
+                WHERE (`chi_id_tache` = :chi_id_tache
                    AND `chx_utilisateur_tache` = :chx_utilisateur_tache) ;
                 */
                 /*sql_inclure_fin*/

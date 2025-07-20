@@ -135,8 +135,8 @@ class c_profile1{
         $txt='';
         $tt=/*sql_inclure_deb*/
             /* sql_147()
-            SELECT 
-            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+            SELECT 
+            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
             `T0`.`chi_compteur_socket1_utilisateur`
              FROM b1.tbl_utilisateurs T0
             WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur

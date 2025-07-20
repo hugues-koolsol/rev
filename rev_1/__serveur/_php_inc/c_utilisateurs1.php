@@ -120,12 +120,12 @@ class c_utilisateurs1{
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
             /* sql_179()
-            INSERT INTO b1.`tbl_utilisateurs`(
-                `chp_nom_de_connexion_utilisateur` , 
-                `chx_acces_utilisateur`
-            ) VALUES (
-                :chp_nom_de_connexion_utilisateur , 
-                :chx_acces_utilisateur
+            INSERT INTO b1.`tbl_utilisateurs`(
+                `chp_nom_de_connexion_utilisateur` , 
+                `chx_acces_utilisateur`
+            ) VALUES (
+                :chp_nom_de_connexion_utilisateur , 
+                :chx_acces_utilisateur
             );
             */
             /*sql_inclure_fin*/
@@ -212,11 +212,11 @@ class c_utilisateurs1{
     function vv_utilisateurs_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
             /* sql_180()
-            SELECT 
-            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-            `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+            SELECT 
+            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+            `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
             `T1`.`chp_nom_acces` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T1`.`chp_nom_acces`
-             FROM b1.tbl_utilisateurs T0
+             FROM b1.tbl_utilisateurs T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
             
             WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
@@ -287,11 +287,11 @@ class c_utilisateurs1{
         }
         $tt=/*sql_inclure_deb*/
             /* sql_180()
-            SELECT 
-            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-            `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+            SELECT 
+            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+            `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
             `T1`.`chp_nom_acces` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T1`.`chp_nom_acces`
-             FROM b1.tbl_utilisateurs T0
+             FROM b1.tbl_utilisateurs T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
             
             WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
@@ -325,8 +325,8 @@ class c_utilisateurs1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_181()
-                UPDATE b1.tbl_utilisateurs SET 
-                   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
+                UPDATE b1.tbl_utilisateurs SET 
+                   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
                    `chx_acces_utilisateur` = :n_chx_acces_utilisateur
                 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
                 */
@@ -446,11 +446,11 @@ class c_utilisateurs1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_180()
-                SELECT 
-                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-                `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+                SELECT 
+                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+                `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
                 `T1`.`chp_nom_acces` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T1`.`chp_nom_acces`
-                 FROM b1.tbl_utilisateurs T0
+                 FROM b1.tbl_utilisateurs T0
                  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
                 
                 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
@@ -523,11 +523,11 @@ class c_utilisateurs1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_180()
-                SELECT 
-                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-                `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+                SELECT 
+                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+                `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
                 `T1`.`chp_nom_acces` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T1`.`chp_nom_acces`
-                 FROM b1.tbl_utilisateurs T0
+                 FROM b1.tbl_utilisateurs T0
                  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
                 
                 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
@@ -786,15 +786,15 @@ class c_utilisateurs1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_178()
-            SELECT 
-            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
+            SELECT 
+            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
             `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
-             FROM b1.tbl_utilisateurs T0
+             FROM b1.tbl_utilisateurs T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
             
-            WHERE ( / *** *** / `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
-            ORDER BY `T0`.`chi_id_utilisateur` DESC  
+            WHERE ( / *** *** / `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
+            ORDER BY `T0`.`chi_id_utilisateur` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
@@ -980,15 +980,15 @@ class c_utilisateurs1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_178()
-            SELECT 
-            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
+            SELECT 
+            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur_socket1_utilisateur` , 
             `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
-             FROM b1.tbl_utilisateurs T0
+             FROM b1.tbl_utilisateurs T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
             
-            WHERE ( / *** *** / `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
-            ORDER BY `T0`.`chi_id_utilisateur` DESC  
+            WHERE ( / *** *** / `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
+            ORDER BY `T0`.`chi_id_utilisateur` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */

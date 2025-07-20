@@ -114,12 +114,12 @@ class c_groupes1{
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
             /* sql_174()
-            INSERT INTO b1.`tbl_groupes`(
-                `chp_nom_groupe` , 
-                `chx_parent_groupe`
-            ) VALUES (
-                :chp_nom_groupe , 
-                :chx_parent_groupe
+            INSERT INTO b1.`tbl_groupes`(
+                `chp_nom_groupe` , 
+                `chx_parent_groupe`
+            ) VALUES (
+                :chp_nom_groupe , 
+                :chx_parent_groupe
             );
             */
             /*sql_inclure_fin*/
@@ -206,9 +206,9 @@ class c_groupes1{
     function vv_groupes_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
             /* sql_175()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
-             FROM b1.tbl_groupes T0
+             FROM b1.tbl_groupes T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
             
             WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
@@ -279,9 +279,9 @@ class c_groupes1{
         }
         $tt=/*sql_inclure_deb*/
             /* sql_175()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
-             FROM b1.tbl_groupes T0
+             FROM b1.tbl_groupes T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
             
             WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
@@ -306,8 +306,8 @@ class c_groupes1{
             */
             $tt=/*sql_inclure_deb*/
                 /* sql_176()
-                UPDATE b1.tbl_groupes SET 
-                   `chp_nom_groupe` = :n_chp_nom_groupe , 
+                UPDATE b1.tbl_groupes SET 
+                   `chp_nom_groupe` = :n_chp_nom_groupe , 
                    `chx_parent_groupe` = :n_chx_parent_groupe
                 WHERE `chi_id_groupe` = :c_chi_id_groupe ;
                 */
@@ -430,9 +430,9 @@ class c_groupes1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_175()
-                SELECT 
+                SELECT 
                 `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
-                 FROM b1.tbl_groupes T0
+                 FROM b1.tbl_groupes T0
                  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
                 
                 WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
@@ -505,9 +505,9 @@ class c_groupes1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_175()
-                SELECT 
+                SELECT 
                 `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
-                 FROM b1.tbl_groupes T0
+                 FROM b1.tbl_groupes T0
                  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
                 
                 WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
@@ -767,12 +767,12 @@ class c_groupes1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_173()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe`
              FROM b1.tbl_groupes T0
-            WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
-               AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe) 
-            ORDER BY `T0`.`chi_id_groupe` DESC  
+            WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
+               AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe) 
+            ORDER BY `T0`.`chi_id_groupe` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
@@ -950,12 +950,12 @@ class c_groupes1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_173()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe`
              FROM b1.tbl_groupes T0
-            WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
-               AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe) 
-            ORDER BY `T0`.`chi_id_groupe` DESC  
+            WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
+               AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe) 
+            ORDER BY `T0`.`chi_id_groupe` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */

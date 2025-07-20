@@ -115,14 +115,14 @@ class c_acces1{
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
             /* sql_194()
-            INSERT INTO b1.`tbl_acces`(
-                `chp_nom_acces` , 
-                `chx_groupe_acces` , 
-                `chx_metier_acces`
-            ) VALUES (
-                :chp_nom_acces , 
-                :chx_groupe_acces , 
-                :chx_metier_acces
+            INSERT INTO b1.`tbl_acces`(
+                `chp_nom_acces` , 
+                `chx_groupe_acces` , 
+                `chx_metier_acces`
+            ) VALUES (
+                :chp_nom_acces , 
+                :chx_groupe_acces , 
+                :chx_metier_acces
             );
             */
             /*sql_inclure_fin*/
@@ -210,11 +210,14 @@ class c_acces1{
         $tt=/*sql_inclure_deb*/
             /* sql_195()
             SELECT 
-            `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-             FROM b1.tbl_metiers T0
-             LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+            `T2`.`chp_nom_metier`
+             FROM b1.tbl_acces T0
+             LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+            
+             LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
             
-            WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
+            WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
             ;
             */
             /*sql_inclure_fin*/
@@ -230,8 +233,8 @@ class c_acces1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_197()
-                DELETE FROM b1.tbl_metiers
-                WHERE `chi_id_metier` = :chi_id_metier ;
+                DELETE FROM b1.tbl_acces
+                WHERE `chi_id_acces` = :chi_id_acces ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
@@ -282,12 +285,12 @@ class c_acces1{
         }
         $tt=/*sql_inclure_deb*/
             /* sql_195()
-            SELECT 
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
             `T2`.`chp_nom_metier`
-             FROM b1.tbl_acces T0
+             FROM b1.tbl_acces T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
             
             WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
@@ -310,9 +313,9 @@ class c_acces1{
             */
             $tt=/*sql_inclure_deb*/
                 /* sql_196()
-                UPDATE b1.tbl_acces SET 
-                   `chp_nom_acces` = :n_chp_nom_acces , 
-                   `chx_groupe_acces` = :n_chx_groupe_acces , 
+                UPDATE b1.tbl_acces SET 
+                   `chp_nom_acces` = :n_chp_nom_acces , 
+                   `chx_groupe_acces` = :n_chx_groupe_acces , 
                    `chx_metier_acces` = :n_chx_metier_acces
                 WHERE `chi_id_acces` = :c_chi_id_acces ;
                 */
@@ -458,7 +461,21 @@ class c_acces1{
         if(is_numeric($chi_id_acces) && $chi_id_acces > 0){
 
             /*afr 1 */
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_195()
+                SELECT 
+                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+                `T2`.`chp_nom_metier`
+                 FROM b1.tbl_acces T0
+                 LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+                
+                 LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+                
+                WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_195()*/ 195,
                 array(/**/
                     'T0_chi_id_acces' => $chi_id_acces
@@ -524,12 +541,12 @@ class c_acces1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_195()
-                SELECT 
-                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+                SELECT 
+                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
                 `T2`.`chp_nom_metier`
-                 FROM b1.tbl_acces T0
+                 FROM b1.tbl_acces T0
                  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-                
+                
                  LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
                 
                 WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
@@ -824,17 +841,17 @@ class c_acces1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_193()
-            SELECT 
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
             `T2`.`chp_nom_metier`
-             FROM b1.tbl_acces T0
+             FROM b1.tbl_acces T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
             
-            WHERE ( / *** *** / `T0`.`chi_id_acces` = :T0_chi_id_acces
-               AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
-            ORDER BY `T0`.`chi_id_acces` DESC  
+            WHERE ( / *** *** / `T0`.`chi_id_acces` = :T0_chi_id_acces
+               AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
+            ORDER BY `T0`.`chi_id_acces` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
@@ -1012,17 +1029,17 @@ class c_acces1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_193()
-            SELECT 
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
             `T2`.`chp_nom_metier`
-             FROM b1.tbl_acces T0
+             FROM b1.tbl_acces T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
             
-            WHERE ( / *** *** / `T0`.`chi_id_acces` = :T0_chi_id_acces
-               AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
-            ORDER BY `T0`.`chi_id_acces` DESC  
+            WHERE ( / *** *** / `T0`.`chi_id_acces` = :T0_chi_id_acces
+               AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
+            ORDER BY `T0`.`chi_id_acces` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */

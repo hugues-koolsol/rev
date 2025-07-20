@@ -118,18 +118,18 @@ class c_menus1{
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
             /* sql_199()
-            INSERT INTO b1.`tbl_menus`(
-                `chx_page_menu` , 
-                `che_ordre_menu` , 
-                `cht_prerequis_rev_menu` , 
-                `cht_prerequis_php_menu` , 
-                `cht_libelle_menu`
-            ) VALUES (
-                :chx_page_menu , 
-                :che_ordre_menu , 
-                :cht_prerequis_rev_menu , 
-                :cht_prerequis_php_menu , 
-                :cht_libelle_menu
+            INSERT INTO b1.`tbl_menus`(
+                `chx_page_menu` , 
+                `che_ordre_menu` , 
+                `cht_prerequis_rev_menu` , 
+                `cht_prerequis_php_menu` , 
+                `cht_libelle_menu`
+            ) VALUES (
+                :chx_page_menu , 
+                :che_ordre_menu , 
+                :cht_prerequis_rev_menu , 
+                :cht_prerequis_php_menu , 
+                :cht_libelle_menu
             );
             */
             /*sql_inclure_fin*/
@@ -216,17 +216,17 @@ class c_menus1{
     function vv_menus_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
             /* sql_300()
-            SELECT 
-            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
             `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
-             FROM b1.tbl_menus T0
+             FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-            
+            
              LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
-            
+            
              LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
             
             WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
@@ -295,7 +295,6 @@ class c_menus1{
             $contenu_fichier='';
             $nom_fichier=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus'] . DIRECTORY_SEPARATOR . $k1 . '.php';
             foreach($v1 as $k2 => $v2){
-                
                 $hug_click=str_replace('.php','',$v2['chp_nom_source']) . '.' . $v2['chp_methode_page'] . '(';
                 
                 if($v2['cht_contenu_methode_page'] !== null){
@@ -484,17 +483,17 @@ class c_menus1{
         }
         $tt=/*sql_inclure_deb*/
             /* sql_300()
-            SELECT 
-            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
             `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
-             FROM b1.tbl_menus T0
+             FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-            
+            
              LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
-            
+            
              LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
             
             WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
@@ -517,11 +516,11 @@ class c_menus1{
             */
             $tt=/*sql_inclure_deb*/
                 /* sql_301()
-                UPDATE b1.tbl_menus SET 
-                   `chx_page_menu` = :n_chx_page_menu , 
-                   `che_ordre_menu` = :n_che_ordre_menu , 
-                   `cht_prerequis_rev_menu` = :n_cht_prerequis_rev_menu , 
-                   `cht_prerequis_php_menu` = :n_cht_prerequis_php_menu , 
+                UPDATE b1.tbl_menus SET 
+                   `chx_page_menu` = :n_chx_page_menu , 
+                   `che_ordre_menu` = :n_che_ordre_menu , 
+                   `cht_prerequis_rev_menu` = :n_cht_prerequis_rev_menu , 
+                   `cht_prerequis_php_menu` = :n_cht_prerequis_php_menu , 
                    `cht_libelle_menu` = :n_cht_libelle_menu
                 WHERE `chi_id_menu` = :c_chi_id_menu ;
                 */
@@ -694,17 +693,17 @@ class c_menus1{
             /*afr 1 */
             $tt=/*sql_inclure_deb*/
                 /* sql_300()
-                SELECT 
-                `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-                `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+                SELECT 
+                `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+                `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
                 `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
-                 FROM b1.tbl_menus T0
+                 FROM b1.tbl_menus T0
                  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-                
+                
                  LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
-                
+                
                  LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-                
+                
                  LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
                 
                 WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
@@ -843,17 +842,17 @@ class c_menus1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_300()
-                SELECT 
-                `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-                `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+                SELECT 
+                `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+                `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
                 `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
-                 FROM b1.tbl_menus T0
+                 FROM b1.tbl_menus T0
                  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-                
+                
                  LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
-                
+                
                  LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-                
+                
                  LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
                 
                 WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
@@ -1148,22 +1147,22 @@ class c_menus1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_198()
-            SELECT 
-            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
             `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
-             FROM b1.tbl_menus T0
+             FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-            
+            
              LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
-            
+            
              LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
             
-            WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
-               AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
-            ORDER BY `T0`.`chi_id_menu` DESC  
+            WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
+               AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
+            ORDER BY `T0`.`chi_id_menu` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
@@ -1341,22 +1340,22 @@ class c_menus1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_198()
-            SELECT 
-            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
+            `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
             `T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
-             FROM b1.tbl_menus T0
+             FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-            
+            
              LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
-            
+            
              LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
             
-            WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
-               AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
-            ORDER BY `T0`.`chi_id_menu` DESC  
+            WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
+               AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
+            ORDER BY `T0`.`chi_id_menu` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */

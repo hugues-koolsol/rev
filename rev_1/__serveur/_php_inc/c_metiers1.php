@@ -763,14 +763,14 @@ class c_metiers1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_183()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-             FROM b1.tbl_metiers T0
+             FROM b1.tbl_metiers T0
              LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
             
-            WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
-               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
-            ORDER BY `T0`.`chi_id_metier` DESC  
+            WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
+               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+            ORDER BY `T0`.`chi_id_metier` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
@@ -948,14 +948,14 @@ class c_metiers1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_183()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-             FROM b1.tbl_metiers T0
+             FROM b1.tbl_metiers T0
              LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
             
-            WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
-               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
-            ORDER BY `T0`.`chi_id_metier` DESC  
+            WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
+               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+            ORDER BY `T0`.`chi_id_metier` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */

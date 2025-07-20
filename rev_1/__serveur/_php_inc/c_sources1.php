@@ -6,11 +6,7 @@ class c_sources1{
     */
     public function __construct(&$donnees_retournees,&$mat,&$donnees_recues){
         require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_sql0.php');
-        $this->sql0=new c_sql0(
-            $donnees_retournees,
-              $mat,
-            $donnees_recues
-        );
+        $this->sql0=new c_sql0($donnees_retournees,$mat,$donnees_recues);
     }
     /*
       =============================================================================================================
@@ -49,11 +45,7 @@ class c_sources1{
                        || $action1 === 'page_sources_dupliquer1'
                     ){
 
-                        $this->$action1(
-                            $donnees_retournees,
-                              $mat,
-                            $donnees_recues
-                        );
+                        $this->$action1($donnees_retournees,$mat,$donnees_recues);
 
                     }else{
 
@@ -69,11 +61,7 @@ class c_sources1{
                    || $conteneur1 === 'vv_sources_filtre_choix_1'
                 ){
 
-                    $this->$conteneur1(
-                        $donnees_retournees,
-                          $mat,
-                        $donnees_recues
-                    );
+                    $this->$conteneur1($donnees_retournees,$mat,$donnees_recues);
 
                 }else{
 
@@ -90,49 +78,56 @@ class c_sources1{
       =============================================================================================================
     */
     function obtenir_les_methodes(&$donnees_retournees,&$mat,&$donnees_recues){
-
         /*$donnees_retournees[__x_signaux][__xdv][]=var_export( $mat , true) . ' [' . __LINE__ . ']';*/
-
         $chi_id_source=0;
         $nom_zone='';
         $zone_cible='';
         $l01=count($mat);
         for( $i=1 ; $i < $l01 ; $i++ ){
             
-            if($mat[$i][1] === 'c_sources1.obtenir_les_methodes' && $mat[$i][2] === 'f' ){
+            
+            if($mat[$i][1] === 'c_sources1.obtenir_les_methodes' && $mat[$i][2] === 'f'){
 
-                for( $j=$i+1 ; $j < $l01 ; $j++ ){
-                 
-                    if($mat[$j][1]==='chi_id_source' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j+1][2] === 'c' && is_numeric($mat[$j+1][1])){
-                        $chi_id_source=(int)$mat[$j+1][1];
-                    }else if($mat[$j][1]==='nom_zone' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j+1][2] === 'c' ){
-                        $nom_zone=$mat[$j+1][1];
-                    }else if($mat[$j][1]==='zone_cible' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j+1][2] === 'c' ){
-                        $zone_cible=$mat[$j+1][1];
-                    }
+                for( $j=$i + 1 ; $j < $l01 ; $j++ ){
                     
+                    
+                    if($mat[$j][1] === 'chi_id_source'
+                       && $mat[$j][2] === 'f'
+                       && $mat[$j][8] === 1
+                       && $mat[$j + 1][2] === 'c'
+                       && is_numeric($mat[$j + 1][1])
+                    ){
+
+                        $chi_id_source=(int)($mat[$j + 1][1]);
+
+                    }else if($mat[$j][1] === 'nom_zone' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
+
+                        $nom_zone=$mat[$j + 1][1];
+
+                    }else if($mat[$j][1] === 'zone_cible' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
+
+                        $zone_cible=$mat[$j + 1][1];
+                    }
+
                 }
 
             }
 
         }
-        if($chi_id_source>0){
+        
+        if($chi_id_source > 0){
+
             $tt162=/*sql_inclure_deb*/
                 /* sql_162()
-                SELECT 
-
-                `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
-
+                SELECT 
+                `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
                 `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
-                 FROM b1.tbl_sources T0
-
+                 FROM b1.tbl_sources T0
                  LEFT JOIN b1.tbl_projets T1 ON T1.chi_id_projet = T0.chx_projet_id_source
-                
-
+                
                  LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_id_source
                 
-                WHERE ( / *** *** / `T0`.`chi_id_source` = :T0_chi_id_source
-
+                WHERE ( / *** *** / `T0`.`chi_id_source` = :T0_chi_id_source
                    AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source)
                 ;
                 */
@@ -154,7 +149,7 @@ class c_sources1{
             }
 
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-            $obj_doss=new c_dossiers1( $donnees_retournees,  $mat,          $donnees_recues  );
+            $obj_doss=new c_dossiers1($donnees_retournees,$mat,$donnees_recues);
             $dossier=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
             
             if($dossier['__xst'] !== __xsu){
@@ -177,24 +172,20 @@ class c_sources1{
             $class_methods=get_class_methods(str_replace('.php','',$tt162[__xva][0]['T0.chp_nom_source']));
             $tt='';
             foreach($class_methods as $k1 => $v1){
-                if($v1!=='__construct'){
-
-                    $tt='<div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone('.$zone_cible.',valeur),'.$v1.'))" >'.$v1.'</div>'. ' , ' . $tt;
-                    
-                }
                 
+                if($v1 !== '__construct'){
+
+                    $tt='<div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(' . $zone_cible . ',valeur),' . $v1 . '))" >' . $v1 . '</div>' . ' , ' . $tt;
+
+                }
+
             }
-            
-            
-            $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id('.$nom_zone.'),innerHTML(\''.str_replace('\'','\\\'',str_replace('\\','\\\\',$tt)).'\')))';
-            
-            
-            
+            $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(' . $nom_zone . '),innerHTML(\'' . str_replace('\'','\\\'',str_replace('\\','\\\\',$tt)) . '\')))';
             /*$donnees_retournees[__x_signaux][__xdv][]=var_export( $class_methods , true) . ' [' . __LINE__ . ']';*/
             $donnees_retournees[__xst]=__xsu;
+
         }
-        
-        
+
     }
     /*
       =============================================================================================================
@@ -277,11 +268,7 @@ class c_sources1{
 
                 $action='chi_id_source(' . $tt['nouvel_id'] . ')';
                 $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($action);
-                $this->page_sources_modifier1(
-                    $donnees_retournees,
-                      $obj_matrice[__xva],
-                    $donnees_recues
-                );
+                $this->page_sources_modifier1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);
                 $donnees_retournees[__x_action]='c_sources1.formulaire1(action1(page_sources_modifier1),chi_id_source(' . $tt['nouvel_id'] . '))';
             }
 
@@ -401,11 +388,7 @@ class c_sources1{
                 if($tt139['changements'] === 1){
 
                     require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-                    $obj_dossier_source=new c_dossiers1(
-                        $donnees_retournees,
-                          $mat,
-                        $donnees_recues
-                    );
+                    $obj_dossier_source=new c_dossiers1($donnees_retournees,$mat,$donnees_recues);
                     $chemin_dossier_source=$obj_dossier_source->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
                     
                     if($chemin_dossier_source[__xst] === __xsu){
@@ -542,11 +525,7 @@ class c_sources1{
                 if($tt162[__xva][0]['T0.chx_dossier_id_source'] !== null){
 
                     require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-                    $obj_dossier_source=new c_dossiers1(
-                        $donnees_retournees,
-                          $mat,
-                        $donnees_recues
-                    );
+                    $obj_dossier_source=new c_dossiers1($donnees_retournees,$mat,$donnees_recues);
                     $chemin_dossier_source=$obj_dossier_source->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
                     
                     if($chemin_dossier_source[__xst] === __xsu){
@@ -923,11 +902,7 @@ class c_sources1{
             }
 
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-            $obj_doss=new c_dossiers1(
-                $donnees_retournees,
-                  $mat,
-                $donnees_recues
-            );
+            $obj_doss=new c_dossiers1($donnees_retournees,$mat,$donnees_recues);
             $chemin=$obj_doss->construire_chemin($tt[__xva][0]['T0.chx_dossier_id_source']);
             
             if($chemin[__xst] === __xsu){
@@ -1029,11 +1004,7 @@ class c_sources1{
             }
 
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-            $obj_doss=new c_dossiers1(
-                $donnees_retournees,
-                  $mat,
-                $donnees_recues
-            );
+            $obj_doss=new c_dossiers1($donnees_retournees,$mat,$donnees_recues);
             $chemin=$obj_doss->construire_chemin($tt[__xva][0]['T0.chx_dossier_id_source']);
             
             if($chemin[__xst] === __xsu){
@@ -1128,11 +1099,7 @@ class c_sources1{
             }
 
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-            $obj_doss=new c_dossiers1(
-                $donnees_retournees,
-                  $mat,
-                $donnees_recues
-            );
+            $obj_doss=new c_dossiers1($donnees_retournees,$mat,$donnees_recues);
             $chemin=$obj_doss->construire_chemin($tt[__xva][0]['T0.chx_dossier_id_source']);
             
             if($chemin[__xst] === __xsu){
@@ -1576,6 +1543,7 @@ class c_sources1{
             */
             $source_compile='';
             $rev_du_disque='';
+            $donnees_recues[__xva]['enregistrer_la_matrice']=__xer;
 
         }else{
 
@@ -1659,11 +1627,7 @@ class c_sources1{
         }else{
 
             require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-            $obj_doss=new c_dossiers1(
-                $donnees_retournees,
-                  $mat,
-                $donnees_recues
-            );
+            $obj_doss=new c_dossiers1($donnees_retournees,$mat,$donnees_recues);
             $chemin=$obj_doss->construire_chemin($donnees_recues[__xva]['contenu_bdd']['T0.chx_dossier_id_source']);
             
             if($chemin[__xst] === __xsu){
@@ -1709,9 +1673,7 @@ class c_sources1{
         }
 
         
-        if(!(isset($donnees_recues[__xva]['ne_pas_enregistrer_la_matrice'])
-               && $donnees_recues[__xva]['ne_pas_enregistrer_la_matrice'] === __xsu)
-        ){
+        if($donnees_recues[__xva]['enregistrer_la_matrice'] === __xsu){
 
             $this->sauvegarder_une_matrice_de_source($donnees_retournees,$mat,$donnees_recues);
 
@@ -1724,7 +1686,7 @@ class c_sources1{
     public function sauvegarder_une_matrice_de_source(&$donnees_retournees,&$mat,&$donnees_recues){
         /* suppression des anciennes données de la table rev */
         $tt=/*sql_inclure_deb*/
-            /* sql_5()
+            /* sql_105()
             DELETE FROM b1.tbl_revs
             WHERE (`chx_projet_rev` = :chx_projet_rev
                AND `chp_provenance_rev` = :chp_provenance_rev
@@ -1732,7 +1694,7 @@ class c_sources1{
             */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
-             /*sql_5()*/ 5,
+             /*sql_105()*/ 105,
             array(/**/
                 'chx_projet_rev' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 'chp_provenance_rev' => 'source',
@@ -1772,7 +1734,7 @@ class c_sources1{
             $matrice=$donnees_recues[__xva]['matrice_source'];
         }
 
-        /* echo __FILE__ . ' ' . __LINE__ . ' $id_requete =  ' . $id_requete . '<pre> ' . var_export(  $matrice , true ) . '</pre>' ; exit(0);*/
+        /* echo __FILE__ . ' ' . __LINE__ . ' $matrice=<pre> ' . var_export(  $matrice , true ) . '</pre>' ; exit(0); */
         $a_sauvegarder=array();
         for( $i=0 ; $i < count($matrice) ; $i++ ){
             
@@ -1969,11 +1931,7 @@ class c_sources1{
                 if($tt[__xva][0]['T0.chx_dossier_id_source'] !== null){
 
                     require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-                    $obj_doss=new c_dossiers1(
-                        $donnees_retournees,
-                          $mat,
-                        $donnees_recues
-                    );
+                    $obj_doss=new c_dossiers1($donnees_retournees,$mat,$donnees_recues);
                     $chemin=$obj_doss->construire_chemin($tt[__xva][0]['T0.chx_dossier_id_source']);
                     
                     if($chemin[__xst] === __xsu){
@@ -2080,11 +2038,7 @@ class c_sources1{
             if($tt162[__xva][0]['T0.chx_dossier_id_source'] !== null){
 
                 require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-                $obj_doss=new c_dossiers1(
-                    $donnees_retournees,
-                      $mat,
-                    $donnees_recues
-                );
+                $obj_doss=new c_dossiers1($donnees_retournees,$mat,$donnees_recues);
                 $chemin=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
                 
                 if($chemin[__xst] === __xsu){
@@ -2197,11 +2151,7 @@ class c_sources1{
             if($tt162[__xva][0]['T0.chx_dossier_id_source'] !== null){
 
                 require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-                $obj_doss=new c_dossiers1(
-                    $donnees_retournees,
-                      $mat,
-                    $donnees_recues
-                );
+                $obj_doss=new c_dossiers1($donnees_retournees,$mat,$donnees_recues);
                 $chemin=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
                 
                 if($chemin[__xst] === __xsu){
@@ -2336,15 +2286,24 @@ class c_sources1{
                         }
 
 
-                    }else if($mat[$j][2] === 'f' && $mat[$j][1] === 'sans_menus1' ){
-                    }else if($mat[$j][2] === 'f' && $mat[$j][1] === 'après_faire' ){
+                    }else if($mat[$j][2] === 'f' && $mat[$j][1] === 'sans_menus1'){
+
+
+                    }else if($mat[$j][2] === 'f' && $mat[$j][1] === 'après_faire'){
+
                         /*$donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat[$j]  , JSON_FORCE_OBJECT );*/
-                        $obj_texte_rev=$GLOBALS['obj_rev1']->matrice_vers_source_rev1($mat,$j,false,$j+1);
-                        if($obj_texte_rev['__xst']===__xsu){
+                        $obj_texte_rev=$GLOBALS['obj_rev1']->matrice_vers_source_rev1($mat,$j,false,$j + 1);
+                        
+                        if($obj_texte_rev['__xst'] === __xsu){
+
                             $par_mat['après_faire']=$obj_texte_rev['__xva'];
+
                         }
+
+
                     }else{
-                        $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $obj_texte_rev  , JSON_FORCE_OBJECT );
+
+                        $donnees_retournees[__x_signaux][__xdv][]='$mat =' . json_encode($obj_texte_rev,JSON_FORCE_OBJECT);
                     }
 
                 }

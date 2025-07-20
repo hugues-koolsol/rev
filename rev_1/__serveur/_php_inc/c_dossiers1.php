@@ -264,6 +264,8 @@ class c_dossiers1{
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
             /* sql_137()
+            / ***meta(sur_base_de_reference(1))*** /
+            
             INSERT INTO b1.`tbl_dossiers`(
                 `chx_projet_dossier` , 
                 `chp_nom_dossier` , 

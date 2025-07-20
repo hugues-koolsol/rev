@@ -146,51 +146,49 @@ class c_fonctions_js1{
       =============================================================================================================
       c_fonctions_js1(affecte(zone(vv_nouveau_numero_de_requete,valeur),plus( zone(vv_nouveau_numero_de_requete,valeur) , 100 )))
     */
-    affecte( mat , debut  ){
+    affecte( mat , debut ){
         let l01=mat.length;
-        if(mat[debut][8]===2){
+        if(mat[debut][8] === 2){
             let zone_cible=null;
             let zone_source=null;
             let constante=null;
-            for( let i=debut+1 ; i < l01 ; i=mat[i][12] ){
-                if('zone'===mat[i][1] && mat[i][9]===1  && mat[i][8]===2){
-                    for( let j=i+1 ; j < l01 ; j=mat[j][12] ){
-                        if(mat[j][2]==='c' && mat[j][9]===1 ){
-                        }else if(mat[j][2]==='c' && mat[j][9]===2 && mat[j][1]==='valeur' ){
-                          zone_cible=document.getElementById(mat[j-1][1]);
-                         
+            for( let i=debut + 1 ; i < l01 ; i=mat[i][12] ){
+                if('zone' === mat[i][1] && mat[i][9] === 1 && mat[i][8] === 2){
+                    for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                        if(mat[j][2] === 'c' && mat[j][9] === 1){
+                        }else if(mat[j][2] === 'c' && mat[j][9] === 2 && mat[j][1] === 'valeur'){
+                            zone_cible=document.getElementById( mat[j - 1][1] );
                         }else{
-                           return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+                            return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
                         }
                     }
-                }else if('plus'===mat[i][1] && mat[i][9]===2){
-                    for( let j=i+1 ; j < l01 ; j=mat[j][12] ){
-                        if('zone'===mat[j][1] && mat[j][9]===1  && mat[j][8]===2){
-                            for( let k=j+1 ; k < l01 ; k=mat[k][12] ){
-                                if(mat[k][2]==='c' && mat[k][9]===1 ){
-                                }else if(mat[k][2]==='c' && mat[k][9]===2 && mat[k][1]==='valeur' ){
-                                  zone_source=document.getElementById(mat[k-1][1]);
-                                 
+                }else if('plus' === mat[i][1] && mat[i][9] === 2){
+                    for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                        if('zone' === mat[j][1] && mat[j][9] === 1 && mat[j][8] === 2){
+                            for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                                if(mat[k][2] === 'c' && mat[k][9] === 1){
+                                }else if(mat[k][2] === 'c' && mat[k][9] === 2 && mat[k][1] === 'valeur'){
+                                    zone_source=document.getElementById( mat[k - 1][1] );
                                 }else{
-                                   return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
+                                    return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
                                 }
                             }
-                        }else if('c'===mat[j][2] && mat[j][9]===2){
-                         constante=parseFloat(mat[j][1]);
+                        }else if('c' === mat[j][2] && mat[j][9] === 2){
+                            constante=parseFloat( mat[j][1] );
                         }
                     }
-                    if(zone_source!==null && zone_cible!==null && constante!== null && 'plus'===mat[i][1]){
-                        zone_cible.value=parseFloat(zone_source.value)+constante;
+                    if(zone_source !== null && zone_cible !== null && constante !== null && 'plus' === mat[i][1]){
+                        zone_cible.value=parseFloat( zone_source.value ) + constante;
                     }else{
                         return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
                     }
-                }else if('c'===mat[i][2] && mat[i][9]===2){
+                }else if('c' === mat[i][2] && mat[i][9] === 2){
                     if(this.#interface1.__m_rev1.est_num( mat[i][1] )){
-                        constante=parseFloat(mat[i][1]);
+                        constante=parseFloat( mat[i][1] );
                     }else{
                         constante=mat[i][1];
                     }
-                    if(zone_cible!==null){
+                    if(zone_cible !== null){
                         zone_cible.value=constante;
                     }else{
                         return(this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.#interface1.__m_rev1.nl2()} ));
@@ -320,7 +318,7 @@ class c_fonctions_js1{
                                 "source_compile" : obj1.__xva ,
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
-                                "ne_pas_enregistrer_la_matrice" : __xsu
+                                "enregistrer_la_matrice" : __xsu
                             }
                         };
                         this.#interface1.envoyer_un_message_au_worker( obj );
@@ -342,7 +340,7 @@ class c_fonctions_js1{
                                 "source_compile" : obj1.__xva ,
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
-                                "ne_pas_enregistrer_la_matrice" : __xsu
+                                "enregistrer_la_matrice" : __xsu
                             }
                         };
                         this.#interface1.envoyer_un_message_au_worker( obj );
@@ -364,7 +362,7 @@ class c_fonctions_js1{
                                 "source_compile" : obj1.__xva ,
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
-                                "ne_pas_enregistrer_la_matrice" : __xsu
+                                "enregistrer_la_matrice" : __xsu
                             }
                         };
                         this.#interface1.envoyer_un_message_au_worker( obj );
@@ -390,7 +388,7 @@ class c_fonctions_js1{
                                     "source_compile" : obj2.__xva ,
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
-                                    "ne_pas_enregistrer_la_matrice" : __xsu
+                                    "enregistrer_la_matrice" : __xsu
                                 }
                             };
                             this.#interface1.envoyer_un_message_au_worker( obj );
@@ -411,7 +409,7 @@ class c_fonctions_js1{
                                 "source_compile" : obj1.__xva ,
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
-                                "ne_pas_enregistrer_la_matrice" : __xsu
+                                "enregistrer_la_matrice" : __xsu
                             }
                         };
                         this.#interface1.envoyer_un_message_au_worker( obj );
@@ -435,7 +433,7 @@ class c_fonctions_js1{
                                     "source_compile" : obj2.__xva ,
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
-                                    "ne_pas_enregistrer_la_matrice" : __xsu
+                                    "enregistrer_la_matrice" : __xsu
                                 }
                             };
                             this.#interface1.envoyer_un_message_au_worker( obj );
@@ -461,7 +459,7 @@ class c_fonctions_js1{
                                     "source_compile" : obj2.__xva ,
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
-                                    "ne_pas_enregistrer_la_matrice" : __xsu
+                                    "enregistrer_la_matrice" : __xsu
                                 }
                             };
                             this.#interface1.envoyer_un_message_au_worker( obj );
@@ -485,8 +483,11 @@ class c_fonctions_js1{
                     var obj2=this.#objet_conversion_rev_vers_html.c_rev_vers_html( obj1.__xva , {} );
                     if(obj2.__xst === __xsu){
                         let matrice_source=null;
+                        let enregistrer_la_matrice=__xsu;
                         if(obj2.matriceFonction.length <= nombre_max_de_lignes_dans_la_matrice){
                             matrice_source=obj2.matriceFonction;
+                        }else{
+                            enregistrer_la_matrice=__xer;
                         }
                         let obj={
                             "__x_action" : "c_sources1.enregistrer_un_source_compile1()" ,
@@ -497,7 +498,8 @@ class c_fonctions_js1{
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                 "matrice_source" : matrice_source ,
-                                "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source']
+                                "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                "enregistrer_la_matrice" : enregistrer_la_matrice
                             }
                         };
                         this.#interface1.envoyer_un_message_au_worker( obj );
@@ -540,8 +542,11 @@ class c_fonctions_js1{
                         var obj2=this.#objet_conversion_rev_vers_php.c_rev_vers_php( obj1.__xva , {} );
                         if(obj2.__xst === __xsu){
                             let matrice_source=null;
+                            let enregistrer_la_matrice=__xsu;
                             if(obj2.matriceFonction.length <= nombre_max_de_lignes_dans_la_matrice){
                                 matrice_source=obj2.matriceFonction;
+                            }else{
+                                enregistrer_la_matrice=__xer;
                             }
                             let obj={
                                 "__x_action" : "c_sources1.enregistrer_un_source_compile1()" ,
@@ -552,7 +557,8 @@ class c_fonctions_js1{
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                     "matrice_source" : matrice_source ,
-                                    "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source']
+                                    "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                    "enregistrer_la_matrice" : enregistrer_la_matrice
                                 }
                             };
                             this.#interface1.envoyer_un_message_au_worker( obj );
@@ -586,7 +592,6 @@ class c_fonctions_js1{
                 /*
                   on récupère les commentaires pour les meta 
                 */
-
                 var tableau_des_commentaires=[];
                 const matches=reponse.__xva['contenu_disque'].match( /\/\*([\s\S]*?)\*\//g );
                 if(matches !== null){
@@ -632,8 +637,11 @@ class c_fonctions_js1{
                             let obj3=this.#objet_conversion_rev_vers_sql.c_tab_vers_sql( obj2.__xva , {} );
                             if(obj3.__xst === __xsu){
                                 let matrice_source=null;
+                                let enregistrer_la_matrice=__xsu;
                                 if(obj2.__xva.length <= nombre_max_de_lignes_dans_la_matrice){
                                     matrice_source=obj2.__xva;
+                                }else{
+                                    enregistrer_la_matrice=__xer;
                                 }
                                 let obj={
                                     "__x_action" : "c_sources1.enregistrer_un_source_compile1()" ,
@@ -644,7 +652,8 @@ class c_fonctions_js1{
                                         "bouton_compiler" : bouton_compiler ,
                                         "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                         "matrice_source" : matrice_source ,
-                                        "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source']
+                                        "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                        "enregistrer_la_matrice" : enregistrer_la_matrice
                                     }
                                 };
                                 this.#interface1.envoyer_un_message_au_worker( obj );
@@ -707,8 +716,11 @@ class c_fonctions_js1{
                         let obj2=this.#objet_conversion_rev_vers_js.c_rev_vers_js( obj1.__xva , {} );
                         if(obj2.__xst === __xsu){
                             let matrice_source=null;
+                            let enregistrer_la_matrice=__xsu;
                             if(obj2.matriceFonction.length <= nombre_max_de_lignes_dans_la_matrice){
                                 matrice_source=obj2.matriceFonction;
+                            }else{
+                                enregistrer_la_matrice=__xer;
                             }
                             let obj={
                                 "__x_action" : "c_sources1.enregistrer_un_source_compile1()" ,
@@ -719,7 +731,8 @@ class c_fonctions_js1{
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                     "matrice_source" : matrice_source ,
-                                    "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source']
+                                    "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                    "enregistrer_la_matrice" : enregistrer_la_matrice
                                 }
                             };
                             this.#interface1.envoyer_un_message_au_worker( obj );
@@ -751,8 +764,11 @@ class c_fonctions_js1{
                                 let obj2=this.#objet_conversion_rev_vers_css.c_rev_vers_css( obj1.__xva , {} );
                                 if(obj2.__xst === __xsu){
                                     let matrice_source=null;
+                                    let enregistrer_la_matrice=__xsu;
                                     if(obj2.matriceFonction.length <= nombre_max_de_lignes_dans_la_matrice){
                                         matrice_source=obj2.matriceFonction;
+                                    }else{
+                                        enregistrer_la_matrice=__xer;
                                     }
                                     let obj={
                                         "__x_action" : "c_sources1.enregistrer_un_source_compile1()" ,
@@ -763,7 +779,8 @@ class c_fonctions_js1{
                                             "bouton_compiler" : bouton_compiler ,
                                             "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                             "matrice_source" : matrice_source ,
-                                            "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source']
+                                            "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                            "enregistrer_la_matrice" : enregistrer_la_matrice
                                         }
                                     };
                                     this.#interface1.envoyer_un_message_au_worker( obj );
@@ -790,8 +807,11 @@ class c_fonctions_js1{
                     let obj2=this.#interface1.__m_rev1.matrice_vers_source_rev1( obj1.__xva , 0 , true , 1 );
                     if(obj2.__xst === __xsu){
                         let matrice_source=null;
+                        let enregistrer_la_matrice=__xsu;
                         if(obj1.__xva.length <= nombre_max_de_lignes_dans_la_matrice){
                             matrice_source=obj1.__xva;
+                        }else{
+                            enregistrer_la_matrice=__xer;
                         }
                         let obj={
                             "__x_action" : "c_sources1.enregistrer_un_source_compile1()" ,
@@ -802,7 +822,8 @@ class c_fonctions_js1{
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                 "matrice_source" : matrice_source ,
-                                "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source']
+                                "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                "enregistrer_la_matrice" : enregistrer_la_matrice
                             }
                         };
                         this.#interface1.envoyer_un_message_au_worker( obj );
@@ -821,6 +842,8 @@ class c_fonctions_js1{
                         /* on transforme le rev en texte */
                         let obj3=this.#objet_conversion_rev_vers_texte.c_rev_vers_texte( obj2.__xva , 0 , 0 );
                         if(obj3.__xst === __xsu){
+                            let matrice_source=null;
+                            let enregistrer_la_matrice=__xer;
                             let obj={
                                 "__x_action" : "c_sources1.enregistrer_un_source_compile1()" ,
                                 "__xva" : {
@@ -829,8 +852,9 @@ class c_fonctions_js1{
                                     "rev_du_disque" : obj1.__xva ,
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
+                                    "matrice_source" : matrice_source ,
                                     "chi_id_source" : reponse.__xva.contenu_bdd['T0.chi_id_source'] ,
-                                    "ne_pas_enregistrer_la_matrice" : __xsu
+                                    "enregistrer_la_matrice" : enregistrer_la_matrice
                                 }
                             };
                             this.#interface1.envoyer_un_message_au_worker( obj );
@@ -2225,6 +2249,30 @@ echo 'hella';`;
     /*
       =============================================================================================================
     */
+    affiche_requete_de_liste1( mat , debut ){
+        let l01=mat.length;
+        let id_zone='';
+        for( let i=debut ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'affiche_requete_de_liste1' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_zone=mat[i + 1][1];
+            }
+        }
+        if(id_zone === ''){
+            return({"__xst" : __xsu});
+        }
+        let a=document.getElementById( id_zone );
+        let lst=a.getElementsByTagName( 'pre' );
+        if(lst.length === 0){
+            /* il n'y a pas de pre, on l'ajoute */
+            var child=document.createElement( 'pre' );
+            child.innerHTML=a.title;
+            a.appendChild( child );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     traiter_fonction_js1( mat ){
         let l01=mat.length;
         for( let i=1 ; i < l01 ; i=mat[i][12] ){
@@ -2237,7 +2285,7 @@ echo 'hella';`;
                                 this.#afficher_un_message( o.__xst , this.#interface1.__m_rev1.nl2() + '<br />la fonction ' + mat[j][1] + ' a retourné une erreur ' );
                             }
                         }catch(e){
-                            this.#afficher_un_message( __xer , this.#interface1.__m_rev1.nl2( e ) + '<br />la fonction "' + mat[j][1] + '" n\'a pas pu être appelée !' );
+                            this.#afficher_un_message( __xer , this.#interface1.__m_rev1.nl2( e ) + '<br />la fonction <b>"' + mat[j][1] + '"</b> n\'a pas pu être appelée !' );
                         }
                     }
                 }

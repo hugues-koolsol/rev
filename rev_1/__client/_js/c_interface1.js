@@ -2154,7 +2154,7 @@ class _c_interface1{
                             if(obj.__xst === __xsu){
                                 après_faire=obj.__xva.trim();
                             }else{
-                                debugger
+                                debugger;
                             }
                         }
                     }
@@ -2176,7 +2176,7 @@ class _c_interface1{
                 }
             }
         }
-       let id1=null;
+        let id1=null;
         if(nom_champ_dans_parent1 !== null){
             let libelle1='';
             for( let i=1 ; i < mat.length ; i=mat[i][12] ){
@@ -2198,8 +2198,8 @@ class _c_interface1{
                 window.parent.document.getElementById( nom_libelle_dans_parent1 ).innerHTML=libelle1;
             }
         }
-        if(après_faire!==null){
-            window.parent.__gi1.envoyer_un_message_au_worker({"__x_action" : après_faire.replace(/id1/,id1)})
+        if(après_faire !== null){
+            window.parent.__gi1.envoyer_un_message_au_worker( {"__x_action" : après_faire.replace( /id1/ , id1 )} );
         }
         let vv_sous_fenetre1=window.parent.document.getElementById( 'vv_sous_fenetre1' );
         vv_sous_fenetre1.innerHTML='';

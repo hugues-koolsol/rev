@@ -36,12 +36,12 @@ class c_connexion1{
 
         $tt=/*sql_inclure_deb*/
             /* sql_101()
-            SELECT 
+            SELECT 
             `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces`
-             FROM b1.tbl_utilisateurs T0
+             FROM b1.tbl_utilisateurs T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
             
-            WHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur  
+            WHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur  
             LIMIT 1 OFFSET 0 
             ;
             */

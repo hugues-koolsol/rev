@@ -301,15 +301,15 @@ class c_pages1{
     function vv_pages_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
             /* sql_190()
-            SELECT 
-            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
-            `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
+            SELECT 
+            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
+            `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
             `T0`.`cht_contenu_methode_page`
-             FROM b1.tbl_pages T0
+             FROM b1.tbl_pages T0
              LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-            
+            
              LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
-            
+            
              LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
             
             WHERE `T0`.`chi_id_page` = :T0_chi_id_page
@@ -380,15 +380,15 @@ class c_pages1{
         }
         $tt=/*sql_inclure_deb*/
             /* sql_190()
-            SELECT 
-            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
-            `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
+            SELECT 
+            `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
+            `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
             `T0`.`cht_contenu_methode_page`
-             FROM b1.tbl_pages T0
+             FROM b1.tbl_pages T0
              LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-            
+            
              LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
-            
+            
              LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
             
             WHERE `T0`.`chi_id_page` = :T0_chi_id_page
@@ -717,15 +717,15 @@ class c_pages1{
             /*afr 1 */
             $tt=/*sql_inclure_deb*/
                 /* sql_190()
-                SELECT 
-                `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
-                `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
+                SELECT 
+                `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
+                `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
                 `T0`.`cht_contenu_methode_page`
-                 FROM b1.tbl_pages T0
+                 FROM b1.tbl_pages T0
                  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-                
+                
                  LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
-                
+                
                  LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
                 
                 WHERE `T0`.`chi_id_page` = :T0_chi_id_page
@@ -912,15 +912,15 @@ class c_pages1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_190()
-                SELECT 
-                `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
-                `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
+                SELECT 
+                `T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
+                `T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
                 `T0`.`cht_contenu_methode_page`
-                 FROM b1.tbl_pages T0
+                 FROM b1.tbl_pages T0
                  LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-                
+                
                  LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
-                
+                
                  LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
                 
                 WHERE `T0`.`chi_id_page` = :T0_chi_id_page
