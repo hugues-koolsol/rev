@@ -684,7 +684,7 @@ WHERE (`T0`.`chi_id_source` = :T0_chi_id_source
    AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
    AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
    AND `T0`.`chp_nom_source` LIKE :T0_chp_nom_source) 
-ORDER BY `T0`.`chi_id_source` ASC  
+ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'sources',

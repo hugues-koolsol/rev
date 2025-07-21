@@ -2240,8 +2240,8 @@ class c_sources1{
     function page_sources_sous_liste1(&$donnees_retournees,&$mat,&$donnees_recues){
         $fonction1='c_sources1.page_sources_sous_liste1';
         /* déverminage */
-        $__nbMax=10;
-        /* $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $mat '.var_export($mat,true);*/
+        $__nbMax=20;
+        //$donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $mat '.var_export($mat,true); **/
         $par=array();
         $par['nom_champ_dans_parent1']='';
         $par['nom_libelle_dans_parent1']='';
@@ -2311,7 +2311,7 @@ class c_sources1{
             }
 
         }
-        /* $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $par_mat '.var_export($par_mat,true);*/
+        /* $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $par_mat '.var_export($par_mat,true); */
         
         if(false === isset($_SESSION[__X_CLE_APPLICATION][$fonction1])){
 

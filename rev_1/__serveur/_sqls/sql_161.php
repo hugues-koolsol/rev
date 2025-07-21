@@ -28,7 +28,7 @@ function sql_161($par,&$donnees_retournees,$that){
     }
     $sql0.=$where0;
     $order0='
-       ORDER BY  `T0`.`chi_id_source` ASC';
+       ORDER BY  `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC';
     $sql0.=$order0;
     $plage0='
         LIMIT '.sq1($par['quantitee']).' OFFSET '.sq1($par['debut']).' ';

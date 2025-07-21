@@ -9,7 +9,7 @@ $tableau_des_dependances=array (
       0 => 
       array (
         'table_dependante' => 'tbl_yyys',
-        'champ_dependant' => 'chx_id_zzz_yyy',
+        'champ_dependant' => 'chx_id_zzz_yyyyyyyyy',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 2,
       ),

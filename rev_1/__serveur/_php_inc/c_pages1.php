@@ -634,6 +634,7 @@ class c_pages1{
         $o1 .= '        <input type="hidden" value=""  id="chx_source_page" />' . PHP_EOL;
         $o1 .= '        <span id="chx_source_page_libelle">*indéfini</span>' . PHP_EOL;
         $parametre_sous_fenetre='c_sources1.page_sources_sous_liste1(';
+        $parametre_sous_fenetre .= ' T0_chx_dossier_id_source(9)';
         $parametre_sous_fenetre .= ' sans_menus1()';
         $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_source_page)';
         $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_source_page_libelle)';
@@ -1044,6 +1045,7 @@ class c_pages1{
                 $o1 .= '</span>' . PHP_EOL;
                 $parametre_sous_fenetre='c_sources1.page_sources_sous_liste1(';
                 $parametre_sous_fenetre .= ' sans_menus1()';
+                $parametre_sous_fenetre .= ' T0_chx_dossier_id_source(9)';
                 $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_source_page)';
                 $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_source_page_libelle)';
                 $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';

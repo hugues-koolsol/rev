@@ -379,6 +379,26 @@ class _c_interface1{
                 }
             }
         }
+        /*
+          On recherche la première zone <input> non vide
+        */
+        let focus_trouve=false;
+        if(document.querySelectorAll( ".yy_filtre_liste1" )){
+            let lst1=document.querySelectorAll( ".yy_filtre_liste1" );
+            for(let i=0;i<lst1.length;i++){
+                let lst2=lst1[i].getElementsByTagName('input');
+                for(let j=0;j<lst2.length;j++){
+
+                    if(lst2[j].value!==''){
+                       focus_trouve=true;
+                       lst2[j].focus();
+                       lst2[j].select();
+                       i=lst1.length;
+                       break;
+                    }
+                }
+            }
+        }
     }
     /*
       =============================================================================================================

@@ -704,8 +704,7 @@ class c_svg_bdd1{
                           carré vert 
                         */
                         let t='';
-                        t+='<tspan ';
-                        t+=' style="cursor:pointer;" ';
+                        /*
                         let f='';
                         f+='interface1.module1(';
                         f+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
@@ -716,7 +715,14 @@ class c_svg_bdd1{
                         f+='  id_svg_conteneur_d_index(' + id_svg_conteneur_d_index + ')';
                         f+=' )';
                         f+=')';
+                        */
+                        /*
+                        t+='<tspan ';
+                        t+=' style="cursor:pointer;" ';
                         t+=' data-hug_click="' + f + '" >🟩</tspan>' + nouveau_nom;
+                        */
+                        t+='' + nouveau_nom;
+                        
                         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_zone_element_svg].contenu=t;
                         break;
                     }
@@ -883,22 +889,7 @@ class c_svg_bdd1{
             if(element_svg.childNodes[j].nodeName.toLowerCase() === '#text'){
                 element_svg.childNodes[j].data=nouveau_nom;
                 /* mise à jour de l'arbre */
-                let f='';
-                f+='interface1.module1(';
-                f+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                f+=' methode3(modale_modifier_le_champ),';
-                f+=' parametre3(';
-                f+='  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
-                f+='  id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
-                /* conteneur_de_champ */
-                f+='  nom_du_champ(\'' + nouveau_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-                f+=' )';
-                f+=')';
-                let contenu='';
-                contenu+='<tspan ';
-                contenu+=' style="cursor:pointer;" ';
-                contenu+=' data-hug_click="' + f + '">🟨</tspan>' + nouveau_nom;
-                this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_zone_element_svg].contenu=contenu;
+                this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_zone_element_svg].contenu=nouveau_nom;
                 break;
             }
         }
@@ -4962,9 +4953,23 @@ class c_svg_bdd1{
         }catch(e){
             debugger;
         }
-        var hauteur_de_la_table=0;
         var largeur_max=0;
         var groupe_table=this.#svg_dessin.getElementById( id_svg_conteneur_table );
+        
+        
+        try{
+            var lst=groupe_table.getElementsByTagName( 'g' );
+        }catch(e){
+            debugger;
+        }
+        for( i=0 ; i < lst.length ; i++ ){
+            var bb=lst[i].getBBox();
+            if(largeur_max < bb.width){
+                largeur_max=Math.ceil( bb.width );
+            }
+        }
+        
+/*        
         try{
             var lst=groupe_table.getElementsByTagName( 'text' );
         }catch(e){
@@ -4976,8 +4981,10 @@ class c_svg_bdd1{
             if(largeur_max < bb.width){
                 largeur_max=Math.ceil( bb.width );
             }
-            hauteur_de_la_table+=this.#hauteur_de_boite_affichage;
         }
+        
+*/
+        
         largeur_max+=2 * this.#taille_bordure;
         if(largeur_max < 40){
             largeur_max=40;
@@ -6040,7 +6047,7 @@ class c_svg_bdd1{
                 "nom_de_la_table" : nom_de_la_table ,
                 "decallage_x" : this.#taille_bordure ,
                 "decallage_y" : this.#taille_bordure ,
-                "transform" : 'translate(' + this.#taille_bordure + ',' + this.#taille_bordure + ')'
+                "transform" : 'translate(' + this.#taille_bordure + ',' + this.#taille_bordure + ')',
             }
         };
         indice_courant++;
@@ -6053,7 +6060,7 @@ class c_svg_bdd1{
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[indice_courant]={
             "type" : 'rect' ,
             "id" : indice_courant ,
-            "id_parent" : indice_courant - 1 ,
+            "id_parent" : id_svg_champ_en_cours ,
             "proprietes" : {
                 "id" : indice_courant ,
                 "type_element" : 'rectangle_de_nom_de_table' ,
@@ -6071,13 +6078,28 @@ class c_svg_bdd1{
         };
         indice_courant++;
         /*
-          texte du nom de la table
+          texte du nom de la table  // ⇱🔎🎯 🟥
         */
+        let contenu='';
+        contenu+='<tspan ';
+        contenu+=' data-utilite="deplacer_la_table"';
+        contenu+=' style="cursor:move;" ';
+        contenu+=' id_svg_conteneur_table="' + id_svg_conteneur_table + '" ';
+        contenu+=' id_bdd_de_la_base_en_cours="' + this.#id_bdd_de_la_base_en_cours + '" ';
+        contenu+=' id_svg_de_la_base_en_cours="' + this.#id_svg_de_la_base_en_cours + '">';
+        contenu+='🟥';
+        contenu+='</tspan>';
+        contenu+='<tspan';
+        contenu+=' style="cursor:pointer;font-size:' + __gi1.css_dimensions.t_police + 'px;"';
+        contenu+=' data-hug_click="interface1.module1(chemin_module1(\'' + this.#chemin_module1 + '\'),methode3(modale_gerer_la_table),parametre3(id_svg_conteneur_table(' + id_svg_conteneur_table + ')))" >';
+        contenu+='🟦';
+        contenu+='</tspan>' + nom_de_la_table;        
+        
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[indice_courant]={
             "type" : 'text' ,
             "id" : indice_courant ,
-            "id_parent" : indice_courant - 2 ,
-            "contenu" : '<tspan data-utilite="deplacer_la_table" style="cursor:move;" id_svg_conteneur_table="' + id_svg_conteneur_table + '" id_bdd_de_la_base_en_cours="' + this.#id_bdd_de_la_base_en_cours + '" id_svg_de_la_base_en_cours="' + this.#id_svg_de_la_base_en_cours + '">🟥</tspan>' + '<tspan  style="cursor:pointer;font-size:' + __gi1.css_dimensions.t_police + 'px;" data-hug_click="interface1.module1(chemin_module1(\'' + this.#chemin_module1 + '\'),methode3(modale_gerer_la_table),parametre3(id_svg_conteneur_table(' + id_svg_conteneur_table + ')))" >🟦</tspan>' + nom_de_la_table ,
+            "id_parent" : id_svg_champ_en_cours ,
+            "contenu" : contenu ,
             "proprietes" : {
                 "id" : indice_courant ,
                 "type_element" : 'texte_de_nom_de_table' ,
@@ -6144,7 +6166,7 @@ class c_svg_bdd1{
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'rect' ,
             "id" : indice_courant ,
-            "id_parent" : indice_courant - 1 ,
+            "id_parent" : id_svg_champ_en_cours ,
             "proprietes" : {
                 "id" : indice_courant ,
                 "type_element" : 'rectangle_de_champ' ,
@@ -6170,7 +6192,43 @@ class c_svg_bdd1{
             }
         };
         indice_courant++;
-        var indice_du_champ=indice_courant - 1;
+
+        let cmd='';
+        cmd+='interface1.module1(';
+        cmd+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+        cmd+=' methode3(modale_modifier_le_champ),';
+        cmd+=' parametre3(';
+        cmd+='  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+        cmd+='  id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+        cmd+='  nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        cmd+=' )';
+        cmd+=')';
+
+        
+        this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
+            "type" : 'rect' ,
+            "id" : indice_courant ,
+            "id_parent" : id_svg_champ_en_cours ,
+            "proprietes" : {
+                "id" : indice_courant ,
+                "type_element" : 'selection_du_champ' ,
+                "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                "id_svg_conteneur_table" : id_svg_conteneur_table ,
+                "nom_du_champ" : nom_du_champ ,
+                "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
+                "nom_de_la_table" : nom_de_la_table ,
+                "x" : 2*this.#taille_bordure ,
+                "y" : 2*this.#taille_bordure ,
+                "width" : this.#hauteur_de_boite - 4*this.#taille_bordure ,
+                "height" : this.#hauteur_de_boite - 4*this.#taille_bordure,
+                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:yellow;fill-opacity:0.2;cursor:pointer;",
+                "data-hug_click" : cmd
+            }
+        };
+
+
+        indice_courant++;
+        var indice_du_champ=indice_courant - 2;
         var objrev=null;
         var tabrev=[];
         var couleur_nom_de_champ='navy';
@@ -6179,7 +6237,9 @@ class c_svg_bdd1{
         }
         /*
           texte du nom du champ
+          carré jaune
         */
+/*        
         let f='';
         f+='interface1.module1(';
         f+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
@@ -6194,10 +6254,13 @@ class c_svg_bdd1{
         contenu+='<tspan ';
         contenu+=' style="cursor:pointer;" ';
         contenu+=' data-hug_click="' + f + '">🟨</tspan>' + nom_du_champ;
+*/        
+        let contenu='';
+        contenu+='' + nom_du_champ;
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'text' ,
             "id" : indice_courant ,
-            "id_parent" : indice_courant - 2 ,
+            "id_parent" : id_svg_champ_en_cours ,
              /* carré jaune */
             "contenu" : contenu ,
             "proprietes" : {
@@ -6208,7 +6271,7 @@ class c_svg_bdd1{
                 "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
                 "nom_de_la_table" : nom_de_la_table ,
                 "nom_du_champ" : nom_du_champ ,
-                "x" : this.#taille_bordure ,
+                "x" : this.#hauteur_de_boite + 2*this.#taille_bordure ,
                 "y" : this.#hauteur_de_boite - 0.3 * __gi1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:" + couleur_nom_de_champ + ";"
             }
@@ -6237,8 +6300,8 @@ class c_svg_bdd1{
             var p1=[50,50];
             var p2=[0,0];
             /* hugues */
-            let refe_enfant_droite=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant - 2].proprietes.donnees_rev_du_champ.indexOf( 'refe_enfant_droite(1)' ) >= 0 ? ( 1 ) : ( 0 );
-            let refe_parent_gauche=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant - 2].proprietes.donnees_rev_du_champ.indexOf( 'refe_parent_gauche(1)' ) >= 0 ? ( 1 ) : ( 0 );
+            let refe_enfant_droite=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant - 3].proprietes.donnees_rev_du_champ.indexOf( 'refe_enfant_droite(1)' ) >= 0 ? ( 1 ) : ( 0 );
+            let refe_parent_gauche=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant - 3].proprietes.donnees_rev_du_champ.indexOf( 'refe_parent_gauche(1)' ) >= 0 ? ( 1 ) : ( 0 );
             this.#svg_tableaux_des_references_amont_aval[id_bdd_de_la_base].push( {
                     "id_bdd_de_la_base_en_cours" : this.#id_bdd_de_la_base_en_cours ,
                     "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
@@ -6313,9 +6376,11 @@ class c_svg_bdd1{
       function ajouter_index_a_table
     */
     #ajouter_index_a_table( id_bdd_de_la_base , indice_courant , nom_de_l_index , id_svg_conteneur_table , nom_de_la_table , donnees_rev_de_l_index , champs , unique ){
+     
+        let id_svg_de_l_index=indice_courant;
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'g' ,
-            "id" : indice_courant ,
+            "id" : id_svg_de_l_index ,
             "id_parent" : id_svg_conteneur_table ,
             "proprietes" : {
                 "id" : indice_courant ,
@@ -6328,12 +6393,11 @@ class c_svg_bdd1{
                 "transform" : 'translate(0,0)'
             }
         };
-        let id_svg_conteneur_d_index=indice_courant;
         indice_courant++;
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'rect' ,
             "id" : indice_courant ,
-            "id_parent" : indice_courant - 1 ,
+            "id_parent" : id_svg_de_l_index ,
             "proprietes" : {
                 "id" : indice_courant ,
                 "type_element" : 'rectangle_d_index' ,
@@ -6352,22 +6416,76 @@ class c_svg_bdd1{
             }
         };
         indice_courant++;
+        let cmd='';
+        cmd += 'interface1.module1(';
+        cmd += ' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+        cmd += ' methode3(modale_modifier_l_index),';
+        cmd += ' parametre3(';
+        cmd += '  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+        cmd += '  nom_de_l_index(\'' + nom_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        cmd += '  id_svg_conteneur_d_index(' + id_svg_de_l_index + ')';
+        cmd += ' )';
+        cmd += ')"';
+        
+        this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
+            "type" : 'rect' ,
+            "id" : indice_courant ,
+            "id_parent" : id_svg_de_l_index ,
+            "proprietes" : {
+                "id" : indice_courant ,
+                "type_element" : 'selection_d_index' ,
+                "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                "id_svg_conteneur_table" : id_svg_conteneur_table ,
+                "nom_de_la_table_pour_l_index" : nom_de_la_table ,
+                "nom_de_l_index" : nom_de_l_index ,
+                "donnees_rev_de_l_index" : donnees_rev_de_l_index ,
+                "champs" : champs ,
+                "unique" : unique ,
+                "x" : 2*this.#taille_bordure ,
+                "y" : 2*this.#taille_bordure ,
+                "width" : this.#hauteur_de_boite - 4*this.#taille_bordure ,
+                "height" : this.#hauteur_de_boite - 4*this.#taille_bordure,
+                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:green;fill-opacity:0.2;cursor:pointer;",
+                "data-hug_click" : cmd
+            }
+        };
+        
+        indice_courant++;
+        /*
+          "contenu" : 'hello'+nom_de_l_index ,
+        */
+        /* carré vert */
+        /*#
+          let contenu = '';
+          contenu += '<tspan';
+          contenu += ' style="cursor:pointer;" ';
+          contenu += ' data-hug_click="' + '';
+          contenu += 'interface1.module1(';
+          contenu += ' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+          contenu += ' methode3(modale_modifier_l_index),';
+          contenu += ' parametre3(';
+          contenu += '  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+          contenu += '  nom_de_l_index(\'' + nom_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+          contenu += '  id_svg_conteneur_d_index(' + id_svg_de_l_index + ')';
+          contenu += ' )';
+          contenu += ')"';
+          contenu += '>';
+          contenu += '🟩';
+          contenu += ' </tspan>' + nom_de_l_index;
+        */        
+        let contenu = nom_de_l_index;
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'text' ,
             "id" : indice_courant ,
-            "id_parent" : indice_courant - 2 ,
-             /*
-              "contenu" : 'hello'+nom_de_l_index ,
-             */
-             /* carré vert */
-            "contenu" : '' + '<tspan  style="cursor:pointer;" ' + ' data-hug_click="' + 'interface1.module1(' + ' chemin_module1(\'' + this.#chemin_module1 + '\'),' + ' methode3(modale_modifier_l_index),' + ' parametre3(' + '  id_svg_conteneur_table(' + id_svg_conteneur_table + ')' + '  nom_de_l_index(\'' + nom_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')' + '  id_svg_conteneur_d_index(' + id_svg_conteneur_d_index + ')' + ' )' + ')" >🟩</tspan>' + nom_de_l_index ,
+            "id_parent" : id_svg_de_l_index ,
+            "contenu" : contenu ,
             "proprietes" : {
                 "id" : indice_courant ,
                 "type_element" : 'texte_d_index' ,
                 "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
                 "id_svg_conteneur_table" : id_svg_conteneur_table ,
                 "nom_de_la_table_pour_l_index" : nom_de_la_table ,
-                "x" : this.#taille_bordure ,
+                "x" : this.#taille_bordure + this.#hauteur_de_boite + 2*this.#taille_bordure,
                 "y" : this.#hauteur_de_boite - 0.3 * __gi1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:green;"
             }
