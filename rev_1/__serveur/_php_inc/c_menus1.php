@@ -320,7 +320,7 @@ class c_menus1{
 
                 }
 
-                $contenu_fichier .= '$t[]=\'' . str_replace('\'','\\\'',str_replace('\\','\\\\',$contenu_lien)) . '\';' . PHP_EOL;
+                $contenu_fichier .= '$t[' . $v2['chi_id_menu'] . ']=\'' . str_replace('\'','\\\'',str_replace('\\','\\\\',$contenu_lien)) . '\';' . PHP_EOL;
                 
                 if($v2['cht_prerequis_php_menu'] !== null){
 
@@ -1230,10 +1230,11 @@ class c_menus1{
       =============================================================================================================
     */
     function page_liste_des_menus1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $__nbMax=10;
+        $__nbMax=30;
         $par=array();
         $par['T0_chi_id_menu']='';
         $par['T0_chx_page_menu']='';
+        $par['T2_chi_id_acces']='';
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
@@ -1308,6 +1309,8 @@ class c_menus1{
 
         $par['T0_chi_id_menu']=$par['T0_chi_id_menu']??'';
         $par['T0_chx_page_menu']=$par['T0_chx_page_menu']??'';
+        $par['T2_chi_id_acces']=$par['T2_chi_id_acces']??'';
+        
         $fonction1='c_menus1.page_liste_des_menus1';
         $nom_filtre='vv_menus_filtre1';
         $o1='<h1>Liste des menus</h1>';
@@ -1328,6 +1331,13 @@ class c_menus1{
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '    <div><span>id</span></div>' . PHP_EOL;
         $o1 .= '    <div><input type="text" id="T0_chi_id_menu" value="' . $par['T0_chi_id_menu'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        /*
+          
+        */
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '    <div><span>id acces</span></div>' . PHP_EOL;
+        $o1 .= '    <div><input type="text" id="T2_chi_id_acces" value="' . $par['T2_chi_id_acces'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /*
           
@@ -1366,6 +1376,7 @@ class c_menus1{
                 /**/
                 'T0_chi_id_menu' => $par['T0_chi_id_menu'] === '' ? '' : $par['T0_chi_id_menu'],
                 'T0_chx_page_menu' => $par['T0_chx_page_menu'] === '' ? '' : '' . $par['T0_chx_page_menu'] . '',
+                'T2_chi_id_acces' => $par['T2_chi_id_acces'] === '' ? '' : $par['T2_chi_id_acces'],
                 'quantitee' => $__nbMax,
                 'debut' => $__debut
             ),
@@ -1451,7 +1462,7 @@ class c_menus1{
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';
-            $lsttbl .= '' . enti1($v0['T2.chp_nom_acces']) . '';
+            $lsttbl .= '(' . enti1($v0['T2.chi_id_acces']) . ')' . enti1($v0['T2.chp_nom_acces']) . '';
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';

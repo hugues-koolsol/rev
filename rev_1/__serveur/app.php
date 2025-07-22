@@ -40,6 +40,8 @@ function obtenir_les_menus(&$donnees_retournees){
     if(isset($_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant'])
        && isset($_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant'])
     ){
+     
+        $t[]='<select><option>outils</option><option>matrice</option><option>html</option><option>js</option><option>php</option><option>sql</option><option>css</option><option>texte</option></select>';
 
         $nom_fichier=REPERTOIRE_DU_PROJET . DIRECTORY_SEPARATOR . 'g_' . $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant'] . '_m_' . $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant'] . '.php';
         

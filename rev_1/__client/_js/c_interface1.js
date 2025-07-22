@@ -113,6 +113,11 @@ class _c_interface1{
         if(this.#ecran_tactile === true && this.#genre_safari === true && this.#genre_crios === false){
             this.#supprimer_le_zoom_sur_safari();
         }
+        let sortable=document.createElement( 'script' );
+        sortable.setAttribute( 'type' , "text/javascript" );
+        sortable.setAttribute( 'src' , "_js/bibliotheques_externes/Sortable.js" );
+        document.getElementsByTagName( 'head' )[0].appendChild( sortable );
+        
     }
     /*
       =============================================================================================================
@@ -351,7 +356,10 @@ class _c_interface1{
             /* lors du premier chargement on doit allumer le bouton */
             if(reponse.hasOwnProperty( '__xva' )
                    && reponse.__xva.hasOwnProperty( 'maj' )
-                   && reponse.__xva.maj.indexOf( 'allumer_menu' ) >= 0
+                   && (
+                       reponse.__xva.maj.indexOf( 'allumer_menu' ) >= 0
+                       || reponse.__xva.maj.indexOf( 'faire_une_liste_triable' ) >= 0
+                   )
             ){
                 let mat_maj=this.__m_rev1.rev_tcm( decodeURIComponent( reponse.__xva.maj ) );
                 if(mat_maj.__xst === __xsu){
@@ -362,7 +370,16 @@ class _c_interface1{
                                && mat_maj.__xva[i + 1][2] === 'c'
                         ){
                             this.#id_menu='' + mat_maj.__xva[i + 1][1];
-                            break;
+                        }else if(mat_maj.__xva[i][1] === 'faire_une_liste_triable'
+                               && mat_maj.__xva[i][2] === 'f'
+                               && mat_maj.__xva[i][8] === 1
+                               && mat_maj.__xva[i + 1][2] === 'c'
+                        ){
+                            /*
+                             exemple : ordre_de_mes_menus
+                            */
+                            let el=document.getElementById(mat_maj.__xva[i + 1][1]);
+                            new Sortable(  el , {"animation" : 50 , "ghostClass" : 'blue-background-class'} ); // "animation" : 150 ,
                         }
                     }
                 }
@@ -2809,31 +2826,31 @@ class _c_interface1{
         t+='*,*::before,*::after{box-sizing:border-box;}';
         t+='html{background:linear-gradient(to bottom, #ECEFF1 0%, #DBDEE0 100%);min-height:100%;}';
         t+='body{';
-        t+='--t_police:' + this.#stockage_local.modif_util['--t_police']['val'] + this.#stockage_local.modif_util['--t_police']['dim'] + ';';
-        t+='--t_fenetre:' + this.#stockage_local.modif_util['--t_fenetre']['val'] + this.#stockage_local.modif_util['--t_fenetre']['dim'] + ';';
-        t+='--t_padding:' + this.#stockage_local.modif_util['--t_padding']['val'] + this.#stockage_local.modif_util['--t_padding']['dim'] + ';';
-        t+='--t_border:' + this.#stockage_local.modif_util['--t_border']['val'] + this.#stockage_local.modif_util['--t_border']['dim'] + ';';
-        t+='--t_marge_gd_plus:' + this.#stockage_local.modif_util['--t_marge_gd']['val'] + this.#stockage_local.modif_util['--t_marge_gd']['dim'] + ';';
-        t+='--t_marge_gd_moins:-' + this.#stockage_local.modif_util['--t_marge_gd']['val'] + this.#stockage_local.modif_util['--t_marge_gd']['dim'] + ';';
-        t+='--t_marge_hb_plus:' + this.#stockage_local.modif_util['--t_marge_hb']['val'] + this.#stockage_local.modif_util['--t_marge_hb']['dim'] + ';';
-        t+='--t_marge_hb_moins:-' + this.#stockage_local.modif_util['--t_marge_hb']['val'] + this.#stockage_local.modif_util['--t_marge_hb']['dim'] + ';';
-        t+='--t_padding_de_input:' + val_padding_de_input + 'px;';
+        t+=' --t_police:' + this.#stockage_local.modif_util['--t_police']['val'] + this.#stockage_local.modif_util['--t_police']['dim'] + ';';
+        t+=' --t_fenetre:' + this.#stockage_local.modif_util['--t_fenetre']['val'] + this.#stockage_local.modif_util['--t_fenetre']['dim'] + ';';
+        t+=' --t_padding:' + this.#stockage_local.modif_util['--t_padding']['val'] + this.#stockage_local.modif_util['--t_padding']['dim'] + ';';
+        t+=' --t_border:' + this.#stockage_local.modif_util['--t_border']['val'] + this.#stockage_local.modif_util['--t_border']['dim'] + ';';
+        t+=' --t_marge_gd_plus:' + this.#stockage_local.modif_util['--t_marge_gd']['val'] + this.#stockage_local.modif_util['--t_marge_gd']['dim'] + ';';
+        t+=' --t_marge_gd_moins:-' + this.#stockage_local.modif_util['--t_marge_gd']['val'] + this.#stockage_local.modif_util['--t_marge_gd']['dim'] + ';';
+        t+=' --t_marge_hb_plus:' + this.#stockage_local.modif_util['--t_marge_hb']['val'] + this.#stockage_local.modif_util['--t_marge_hb']['dim'] + ';';
+        t+=' --t_marge_hb_moins:-' + this.#stockage_local.modif_util['--t_marge_hb']['val'] + this.#stockage_local.modif_util['--t_marge_hb']['dim'] + ';';
+        t+=' --t_padding_de_input:' + val_padding_de_input + 'px;';
         let hauteur_ligne=val_police + val_padding;
-        t+='--h_ligne_bouton:' + hauteur_ligne + 'px;';
-        t+='--h_ligne_bouton_moins:-' + hauteur_ligne + 'px;';
+        t+=' --h_ligne_bouton:' + hauteur_ligne + 'px;';
+        t+=' --h_ligne_bouton_moins:-' + hauteur_ligne + 'px;';
         let hauteur_ligne_paragraphe=hauteur_ligne + 3 * val_padding;
-        t+='--h_ligne_paragraphe:' + hauteur_ligne_paragraphe + 'px;';
+        t+=' --h_ligne_paragraphe:' + hauteur_ligne_paragraphe + 'px;';
         let hauteur_mini_bouton=hauteur_ligne + 2 * val_padding + 2 * val_border;
-        t+='--h_mini_but:' + hauteur_mini_bouton + 'px;';
+        t+=' --h_mini_but:' + hauteur_mini_bouton + 'px;';
         let h_barre=parseInt( hauteur_mini_bouton + 2 * val_marge_hb + 11 , 10 );
-        t+='--h_barre:' + h_barre + 'px;';
-        t+='--h_bloupe:' + ((h_barre + hauteur_ligne) - 2 * val_marge_hb - 2 * val_border - 2 * val_padding_de_input - 1) + 'px;';
+        t+=' --h_barre:' + h_barre + 'px;';
+        t+=' --h_bloupe:' + ((h_barre + hauteur_ligne) - 2 * val_marge_hb - 2 * val_border - 2 * val_padding_de_input - 1) + 'px;';
         let taille_bouton_carre=h_barre - 2 * val_marge_hb;
-        t+='--t_boutons_carres:' + taille_bouton_carre + 'px;';
+        t+=' --t_boutons_carres:' + taille_bouton_carre + 'px;';
         let espace_1_boutons_carres=1 * (taille_bouton_carre + 2 * val_marge_gd);
-        t+='--t_1boutons_carres:' + espace_1_boutons_carres + 'px;';
+        t+=' --t_1boutons_carres:' + espace_1_boutons_carres + 'px;';
         let espace_2_boutons_carres=2 * (taille_bouton_carre + 2 * val_marge_gd);
-        t+='--t_2boutons_carres:' + espace_2_boutons_carres + 'px;';
+        t+=' --t_2boutons_carres:' + espace_2_boutons_carres + 'px;';
         let hauteur_max_textarea='80vh';
         this.css_dimensions={
              /*  */
@@ -2845,22 +2862,31 @@ class _c_interface1{
             "t_boutons_carres" : taille_bouton_carre ,
             "t_padding_de_input" : val_padding_de_input
         };
-        t+='font-size:var(--t_police);';
-        t+='max-width:var(--t_fenetre);';
-        t+='border:0;';
-        t+='color:#263238;';
-        t+='font-family:verdana;';
-        t+='font-size:var(--t_police);';
-        t+='margin:0 auto;';
-        t+='max-width:var(--t_fenetre);';
-        t+='overflow-y:scroll;';
-        t+='/*espace pour bas de page*/';
-        t+='padding-bottom:var(--h_barre);';
-        t+='padding-left:0;';
-        t+='padding-right:0;';
-        t+='padding-top:var(--h_barre);';
+        t+=' font-size:var(--t_police);';
+        t+=' max-width:var(--t_fenetre);';
+        t+=' border:0;';
+        t+=' color:#263238;';
+        t+=' font-family:verdana;';
+        t+=' font-size:var(--t_police);';
+        t+=' margin:0 auto;';
+        t+=' max-width:var(--t_fenetre);';
+        t+=' overflow-y:scroll;';
+        t+=' /*espace pour bas de page*/';
+        t+=' padding-bottom:var(--h_barre);';
+        t+=' padding-left:0;';
+        t+=' padding-right:0;';
+        t+=' padding-top:var(--h_barre);';
         t+='}';
-        t+='';
+        t+='select{';
+        t+='  background: linear-gradient(to bottom, #B0BEC5, #607D8B);';
+        t+='  color: #fff;';
+        //t+='  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);';
+        t+='}';        
+        t+='option{';
+        t+='  background: #B0BEC5;';
+        t+='  color: #fff;';
+        t+='  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);';
+        t+='}';        
         t+='h1{text-shadow:#ccc 1px 1px 1px;text-align:center;color:red;}';
         t+='';
         t+='input[type="password"],input[type="text"]{';

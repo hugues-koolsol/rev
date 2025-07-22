@@ -1058,7 +1058,7 @@ CREATE TABLE tbl_menus(
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','507','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','511','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -1347,13 +1347,23 @@ détruire','80','1','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485'),
 ('190','1','supprimer chp_lien_rev_page','99','0','2025-07-09 15:22:03.310','2025-07-09 15:22:03.310'),
 ('191','1','rechercher sql_24','99','0','2025-07-09 15:50:13.424','2025-07-09 15:50:13.424'),
 ('192','1','bouton pop up pour voir le contenu d''une requête à partir de la liste des requêtes ','99','1','2025-07-09 17:42:12.440','2025-07-09 15:50:33.376'),
-('193','1','menu outils qui contient les convertisseurs','2','0','2025-07-09 16:26:01.691','2025-07-09 16:26:01.691'),
+('193','1','menu outils qui contient les convertisseurs
+<select>
+    <option>outils</option>
+    <option>matrice</option>
+    <option>html</option>
+    <option>js</option>
+    <option>php</option>
+    <option>sql</option>
+    <option>css</option>
+    <option>texte</option>
+</select>','2','2','2025-07-22 14:39:11.892','2025-07-09 16:26:01.691'),
 ('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','0','2025-07-09 16:31:23.198','2025-07-09 16:31:23.198'),
 ('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','0','2025-07-09 17:43:23.330','2025-07-09 17:43:23.330'),
 ('196','1','initialiser les champs filtres d''une sous page','99','1','2025-07-19 11:11:25.033','2025-07-10 09:52:20.444'),
 ('197','1','le caractère 🟥 ne passe pas sur ma tablette
 faire un carré svg
-⬛🔲🗨◻⏹','1','4','2025-07-21 17:02:50.100','2025-07-10 09:58:19.160'),
+⬛🔲🗨◻⏹','99','4','2025-07-21 17:02:50.100','2025-07-10 09:58:19.160'),
 ('198','1','dans les pages, proposer une liste de méthodes quand on choisir un source','99','0','2025-07-10 10:17:39.087','2025-07-10 10:17:39.087'),
 ('199','1','compiler le prérequis du menu','99','1','2025-07-14 08:40:32.303','2025-07-12 08:22:58.170'),
 ('200','1','quand on modifie une page, il faut recompiler les menus','99','0','2025-07-15 13:49:22.638','2025-07-15 13:49:22.638'),
@@ -2411,23 +2421,31 @@ WHERE (`T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
 ('147','1','select','sélectionner(
    base_de_reference(1),
    valeurs(
-      champ( `T0` , `chi_id_utilisateur`),
-      champ( `T0` , `chp_nom_de_connexion_utilisateur`),
-      champ( `T0` , `chp_mot_de_passe_utilisateur`),
-      champ( `T0` , `chp_parametres_utilisateur`),
-      champ( `T0` , `chi_compteur1_utilisateur`),
-      champ( `T0` , `chi_compteur_socket1_utilisateur`)
+      champ(`T0`,`chi_id_utilisateur`),
+      champ(`T0`,`chp_nom_de_connexion_utilisateur`),
+      champ(`T0`,`chp_mot_de_passe_utilisateur`),
+      champ(`T0`,`chp_parametres_utilisateur`),
+      champ(`T0`,`chi_compteur1_utilisateur`),
+      champ(`T0`,`chi_compteur_socket1_utilisateur`),
+      champ(`T0`,`chx_acces_utilisateur`),
+      champ(`T1`,`chp_nom_acces`)
    ),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_utilisateurs , alias(T0) , base(b1) ))
+         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
       )
    ),
-   conditions( egal( champ( `T0` , `chi_id_utilisateur` ) , (:T0_chi_id_utilisateur) ))
+   conditions(egal(champ(`T0`,`chi_id_utilisateur`),(:T0_chi_id_utilisateur)))
 )  ','SELECT 
 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-`T0`.`chi_compteur_socket1_utilisateur`
+`T0`.`chi_compteur_socket1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
  FROM b1.tbl_utilisateurs T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+
 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('148','1','update','modifier(
@@ -3579,7 +3597,7 @@ WHERE `chi_id_acces` = :chi_id_acces ;',NULL,'acces',NULL,'0','2000-01-01 00:00:
       )
    ),
    conditions(
-      et(egal(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu),egal(champ(`T0`,`chx_page_menu`),:T0_chx_page_menu))
+      et(egal(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu),egal(champ(`T0`,`chx_page_menu`),:T0_chx_page_menu),egal(champ(`T2`,`chi_id_acces`),:T2_chi_id_acces))
    ),
    complements(
       trier_par((champ(`T0`,`chi_id_menu`),décroissant())),
@@ -3599,7 +3617,8 @@ WHERE `chi_id_acces` = :chi_id_acces ;',NULL,'acces',NULL,'0','2000-01-01 00:00:
  LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
 
 WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
-   AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
+   AND `T0`.`chx_page_menu` = :T0_chx_page_menu
+   AND `T2`.`chi_id_acces` = :T2_chi_id_acces) 
 ORDER BY `T0`.`chi_id_menu` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'menu',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -3770,22 +3789,28 @@ ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ord
 ;',NULL,'menus',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('304','1','select','sélectionner(
    base_de_reference(1),
-   valeurs(champ(`T0`,`chi_id_dossier`)),
+   valeurs(champ(`T1`,`chp_nom_page`),champ(`T0`,`chi_id_menu`)),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
+         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_pages,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_page),champ(T0,chx_page_menu)))
       )
    ),
-   conditions(
-      et(egal(champ(`T0`,`chx_projet_dossier`),:T0_chx_projet_dossier),egal(champ(`T0`,`chp_nom_dossier`),:T0_chp_nom_dossier),egal(champ(`T0`,`chx_parent_dossier`),:T0_chx_parent_dossier))
+   conditions(egal(champ(`T1`,`chx_acces_page`),:T1_chx_acces_page)),
+   complements(
+      trier_par((champ(`T0`,`che_ordre_menu`),croissant()))
    )
 )  ','SELECT 
-`T0`.`chi_id_dossier`
- FROM b1.tbl_dossiers T0
-WHERE (`T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
-   AND `T0`.`chp_nom_dossier` = :T0_chp_nom_dossier
-   AND `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier)
-;',NULL,'dossier par nom et parent',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+`T1`.`chp_nom_page` , `T0`.`chi_id_menu`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+
+WHERE `T1`.`chx_acces_page` = :T1_chx_acces_page 
+ORDER BY `T0`.`che_ordre_menu` ASC
+;',NULL,'menus par accès',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 /*
   ===============================
@@ -5923,7 +5948,7 @@ créer_table(
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(11.5,13.5))
+   transform_base_sur_svg(translate(14.5,25.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_zzzs''),
@@ -5934,7 +5959,7 @@ créer_table(
       nom_long_de_la_table(''AFR tbl_xxxx''),
       nom_court_de_la_table(''AFR tbl_xxxx''),
       nom_bref_de_la_table(''AFR tbl_xxxx''),
-      transform_table_sur_svg(translate(302.5,23.5))
+      transform_table_sur_svg(translate(64.5,47.5))
    ),
    champs(
       champ(
@@ -6002,7 +6027,7 @@ créer_table(
       nom_long_de_la_table(''AFR tbl_yyys''),
       nom_court_de_la_table(''AFR tbl_yyys''),
       nom_bref_de_la_table(''AFR tbl_yyys''),
-      transform_table_sur_svg(translate(19.5,70.5))
+      transform_table_sur_svg(translate(300.5,101.5))
    ),
    champs(
       champ(
@@ -6047,9 +6072,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
-            afficher_champ_dans_svg(1),
-            refe_enfant_droite(1),
-            refe_parent_gauche(1)
+            afficher_champ_dans_svg(1)
          )
       )
    )

@@ -27,6 +27,9 @@ function sql_198($par,&$donnees_retournees,$that){
     if(($par['T0_chx_page_menu'] !== '')){
         $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_page_menu`',$par['T0_chx_page_menu']);
     }
+    if(($par['T2_chi_id_acces'] !== '')){
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T2`.`chi_id_acces`',$par['T2_chi_id_acces']);
+    }
     $sql0.=$where0;
     $order0='
        ORDER BY  `T0`.`chi_id_menu` DESC';

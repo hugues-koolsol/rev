@@ -521,8 +521,10 @@ WHERE (`T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-`T0`.`chi_compteur_socket1_utilisateur`
+`T0`.`chi_compteur_socket1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
  FROM b1.tbl_utilisateurs T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+
 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',
     'cht_commentaire_requete' => NULL,
@@ -1104,7 +1106,8 @@ WHERE `chi_id_acces` = :chi_id_acces ;',
  LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
 
 WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
-   AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
+   AND `T0`.`chx_page_menu` = :T0_chx_page_menu
+   AND `T2`.`chi_id_acces` = :T2_chi_id_acces) 
 ORDER BY `T0`.`chi_id_menu` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',
@@ -1184,12 +1187,13 @@ ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ord
   304 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_dossier`
- FROM b1.tbl_dossiers T0
-WHERE (`T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
-   AND `T0`.`chp_nom_dossier` = :T0_chp_nom_dossier
-   AND `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier)
+`T1`.`chp_nom_page` , `T0`.`chi_id_menu`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
+
+WHERE `T1`.`chx_acces_page` = :T1_chx_acces_page 
+ORDER BY `T0`.`che_ordre_menu` ASC
 ;',
-    'cht_commentaire_requete' => 'dossier par nom et parent',
+    'cht_commentaire_requete' => 'menus par accès',
   ),
 );

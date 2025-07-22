@@ -2,11 +2,13 @@
 function sql_147($par,&$donnees_retournees,$that){
     $champs0='
       `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-      `T0`.`chi_compteur_socket1_utilisateur`
+      `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
-      FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_utilisateurs T0    ';
+      FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_utilisateurs T0
+       LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+    ';
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_utilisateur`',$par['T0_chi_id_utilisateur']);
@@ -26,6 +28,8 @@ function sql_147($par,&$donnees_retournees,$that){
                 'T0.chp_parametres_utilisateur' => $tab0[3],
                 'T0.chi_compteur1_utilisateur' => $tab0[4],
                 'T0.chi_compteur_socket1_utilisateur' => $tab0[5],
+                'T0.chx_acces_utilisateur' => $tab0[6],
+                'T1.chp_nom_acces' => $tab0[7],
             );
         }
         return array(

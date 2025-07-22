@@ -133,7 +133,7 @@ class c_profile1{
     */
     function recupere_la_page_des_coordonnees(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues,$chp_nom_de_connexion_utilisateur='webmaster@example.com'){
         $txt='';
-        $tt=/*sql_inclure_deb*/
+        $tt147=/*sql_inclure_deb*/
             /* sql_147()
             SELECT 
             `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -149,24 +149,65 @@ class c_profile1{
             $donnees_retournees
         );
         
-        if($tt[__xst] === __xer){
+        if($tt147[__xst] === __xer){
 
             $donnees_retournees[__x_signaux][__xer][]='Utilisateur non trouvé en base !!!! [' . __LINE__ . ']';
 
         }else{
 
-            $txt .= '<h1>mes coordonnées</h1>';
+            $txt .= '<h1>mon profile</h1>';
             $txt .= '<div id="vv_formulaire_de_changement_de_nom_et_de_mot_de_passe">';
             $txt .= '  <span>nouveau nom</span>';
-            $txt .= '  <input type="text" id="vv_chp_nom_de_connexion_utilisateur" value="' . $tt[__xva][0]['T0.chp_nom_de_connexion_utilisateur'] . '" autocapitalize="off" />';
+            $txt .= '  <input type="text" id="vv_chp_nom_de_connexion_utilisateur" value="' . $tt147[__xva][0]['T0.chp_nom_de_connexion_utilisateur'] . '" autocapitalize="off" />';
             $txt .= '  <br />';
             $txt .= '  <span>nouveau mot de passe</span>';
             $txt .= '  <input type="password" id="vv_chp_mot_de_passe_utilisateur" value="" autocomplete="off" />';
             $txt .= '  <div class="hug_bouton" data-hug_click="c_profile1.formulaire1(conteneur1(vv_formulaire_de_changement_de_nom_et_de_mot_de_passe))" title="Cliquez ici pour vous connecter">changer mes coordonnées</div>';
             $txt .= '</div>';
-            $txt .= '<div>';
-            $txt .= 'Vous vous êtes connecté ' . $tt[__xva][0]['T0.chi_compteur1_utilisateur'] . ' fois ;-)';
-            $txt .= '</div>';
+            $txt .= '<p>';
+            $txt .= 'Vous vous êtes connecté <b>' . $tt147[__xva][0]['T0.chi_compteur1_utilisateur'] . '</b> fois ;-)';
+            $txt .= '<p>';
+            $txt .= '<p>';
+            $txt .= 'type d\'accès : <b>' . $tt147[__xva][0]['T1.chp_nom_acces'] . '</b> ';
+            $txt .= '</p>';
+            
+            
+            $tt304=$this->sql0->sql_iii(
+                 /*sql_304()*/ 304,
+                array( 'T1_chx_acces_page' => $tt147[__xva][0]['T0.chx_acces_utilisateur']),
+                $donnees_retournees
+            );
+            
+            if($tt304[__xst] === __xer){
+
+                $donnees_retournees[__x_signaux][__xer][]=' [' . __LINE__ . ']';
+            }else{
+                if(count($tt304[__xva])>0){
+                    $txt .= '<p>';
+                    $txt .= 'liste des menus <b>triables</b>';
+                    $txt .= '<div id="ordre_de_mes_menus" style="border:1px blue solid;max-width:30em;cursor:n-resize;">';
+                    foreach($tt304[__xva] as $k1 => $v1){
+                        $txt .= '<div id="'.$v1['T0.chi_id_menu'].'"  style="border:1px red solid;">'.$v1['T1.chp_nom_page'].'</div>';
+                    }
+                    // echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt304[__xva] , true ) . '</pre>' ; exit(0);
+                    $txt .= '</div>';
+                    $txt .= '</p>';
+                    if(isset($donnees_retournees[__xva]['maj'])){
+                        $donnees_retournees[__xva]['maj']+=',faire_une_liste_triable(ordre_de_mes_menus)';
+                    }else{
+                        $donnees_retournees[__xva]['maj']='faire_une_liste_triable(ordre_de_mes_menus)';
+                    }
+
+                }
+/*
+                var tt=new Sortable( ordre_de_mes_menus , {"animation" : 150 ,"ghostClass" : 'blue-background-class'} );
+*/                
+
+             
+             
+            }
+            
+            
         }
 
         $donnees_retournees[__x_page] .= $txt;
