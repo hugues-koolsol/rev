@@ -187,9 +187,7 @@ LIMIT :quantitee OFFSET :debut
   ),
   114 => 
   array (
-    'cht_sql_requete' => '/*meta(tester_les_dependances_dans_le_php(1))*/
-
-DELETE FROM b1.tbl_revs
+    'cht_sql_requete' => 'DELETE FROM b1.tbl_revs
 WHERE (`chx_projet_rev` = :chx_projet_rev) ;',
     'cht_commentaire_requete' => 'revs par projet',
   ),
@@ -411,8 +409,7 @@ LIMIT :quantitee OFFSET :debut
   ),
   134 => 
   array (
-    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
-SELECT 
+    'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
 `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
  FROM b1.tbl_projets T0
@@ -449,9 +446,7 @@ INSERT INTO b1.`tbl_projets`(
   ),
   137 => 
   array (
-    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
-
-INSERT INTO b1.`tbl_dossiers`(
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_dossiers`(
     `chx_projet_dossier` , 
     `chp_nom_dossier` , 
     `chx_parent_dossier`
@@ -1195,5 +1190,64 @@ WHERE `T1`.`chx_acces_page` = :T1_chx_acces_page
 ORDER BY `T0`.`che_ordre_menu` ASC
 ;',
     'cht_commentaire_requete' => 'menus par accès',
+  ),
+  305 => 
+  array (
+    'cht_sql_requete' => 'UPDATE tbl_projets SET 
+   `chp_nom_projet` = :n_chp_nom_projet , 
+   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
+   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
+WHERE `chi_id_projet` = :c_chi_id_projet ;',
+    'cht_commentaire_requete' => 'projets',
+  ),
+  306 => 
+  array (
+    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T0`.`che_contient_genere_dossier`
+ FROM b1.tbl_dossiers T0
+WHERE (`T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
+   AND `T0`.`chi_id_dossier` <> 1)
+;',
+    'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
+  ),
+  307 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_dossiers`(
+    `chi_id_dossier` , 
+    `chx_projet_dossier` , 
+    `chp_nom_dossier` , 
+    `chx_parent_dossier` , 
+    `che_contient_genere_dossier` , 
+    `chp__dtm_dossier` , 
+    `chp__dtc_dossier`
+) VALUES (
+    :chi_id_dossier , 
+    :chx_projet_dossier , 
+    :chp_nom_dossier , 
+    :chx_parent_dossier , 
+    :che_contient_genere_dossier , 
+    :chp__dtm_dossier , 
+    :chp__dtc_dossier
+);',
+    'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
+  ),
+  308 => 
+  array (
+    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet`
+ FROM b1.tbl_projets T0
+WHERE (`T0`.`chi_id_projet` = 1)
+;',
+    'cht_commentaire_requete' => 'dossiers du projet à copier dans un autre environnement',
+  ),
+  309 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_projets SET 
+   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
+   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
+WHERE (`chi_id_projet` = :c_chi_id_projet) ;',
+    'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
   ),
 );

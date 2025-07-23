@@ -1058,7 +1058,7 @@ CREATE TABLE tbl_menus(
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','511','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','513','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -1315,7 +1315,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 comme1(%xxx)
 comme2(xxx%)
 comme3(xxx)','10','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','6','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
+('169','1','initialiser projet standard','0','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
 ('170','1','initialiser ecran standard d''une table','7','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
 ('171','1','gérer les menus','99','1','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
@@ -1393,7 +1393,8 @@ dans le répertoire rev_2 et on travaillera sur l''url frev/rev_2.
 
 Dans le projet 2, le fichier __serveur/__definitions.php sera le seul fichier différent
 
-Ce projet est utilisé pour la mise à jour du projet principal','0','2000-01-01 00:00:00','2000-01-01 00:00:00',NULL,NULL);
+Ce projet est utilisé pour la mise à jour du projet principal','0','2000-01-01 00:00:00','2000-01-01 00:00:00',NULL,NULL),
+('3','le bô projet','','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','6','2');
 
 
 /*
@@ -1772,8 +1773,7 @@ WHERE ( /* */ `T0`.`chi_id_rev` = :T0_chi_id_rev
 ORDER BY `T0`.`chi_id_rev` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'revs',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('114','1','delete','#(meta(tester_les_dependances_dans_le_php(1))),
-supprimer(
+('114','1','delete','supprimer(
    base_de_reference(1),
    provenance(
       table_reference(
@@ -1783,9 +1783,7 @@ supprimer(
    conditions(
       et(egal(champ(`chx_projet_rev`),:chx_projet_rev))
    )
-)  ','/*meta(tester_les_dependances_dans_le_php(1))*/
-
-DELETE FROM b1.tbl_revs
+)  ','DELETE FROM b1.tbl_revs
 WHERE (`chx_projet_rev` = :chx_projet_rev) ;',NULL,'revs par projet',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('115','1','liste_ecran','sélectionner(
    base_de_reference(1),
@@ -2244,8 +2242,7 @@ WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet
 ORDER BY `T0`.`chi_id_projet` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'projets',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('134','1','select','#(meta(sur_base_de_reference(1))),
-sélectionner(
+('134','1','select','sélectionner(
    base_de_reference(1),
    valeurs(
       champ(`T0`,`chi_id_projet`),
@@ -2270,8 +2267,7 @@ sélectionner(
       )
    ),
    conditions(egal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet))
-)  ','/*meta(sur_base_de_reference(1))*/
-SELECT 
+)  ','SELECT 
 `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
 `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
  FROM b1.tbl_projets T0
@@ -2317,8 +2313,7 @@ INSERT INTO b1.`tbl_projets`(
     :chp_nom_projet , 
     :chp_commentaire_projet
 );',NULL,'projets',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('137','1','insert','#(meta(sur_base_de_reference(1))),
-insérer(
+('137','1','insert','insérer(
    base_de_reference(1),
    valeurs(affecte(champ(`chx_projet_dossier`),:chx_projet_dossier),affecte(champ(`chp_nom_dossier`),:chp_nom_dossier),affecte(champ(`chx_parent_dossier`),:chx_parent_dossier)),
    provenance(
@@ -2326,9 +2321,7 @@ insérer(
          source(nom_de_la_table(tbl_dossiers,base(b1)))
       )
    )
-)  ','/*meta(sur_base_de_reference(1))*/
-
-INSERT INTO b1.`tbl_dossiers`(
+)  ','INSERT INTO b1.`tbl_dossiers`(
     `chx_projet_dossier` , 
     `chp_nom_dossier` , 
     `chx_parent_dossier`
@@ -3810,7 +3803,156 @@ ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ord
 
 WHERE `T1`.`chx_acces_page` = :T1_chx_acces_page 
 ORDER BY `T0`.`che_ordre_menu` ASC
-;',NULL,'menus par accès',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+;',NULL,'menus par accès',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('305','1','requete_manuelle','modifier(
+   valeurs(
+      affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),
+      affecte(champ(`chx_dossier_requetes_projet`),:n_chx_dossier_requetes_projet),
+      affecte(champ(`chx_dossier_menus_projet`),:n_chx_dossier_menus_projet),
+      
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets))
+      )
+   ),
+   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
+)    ','UPDATE tbl_projets SET 
+   `chp_nom_projet` = :n_chp_nom_projet , 
+   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
+   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
+WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'projets',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('306','1','select','#(meta(sur_base_de_reference(1))),
+sélectionner(
+   base_de_reference(1),
+   valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`),champ(`T0`,`chx_parent_dossier`),champ(`T0`,`che_contient_genere_dossier`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(pas_comme(champ(`T0`,`chp_nom_dossier`),:T0_chp_nom_dossier),diff(champ(`T0`,`chi_id_dossier`),1))
+   )
+)  ','/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T0`.`che_contient_genere_dossier`
+ FROM b1.tbl_dossiers T0
+WHERE (`T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
+   AND `T0`.`chi_id_dossier` <> 1)
+;',NULL,'dossiers à copier dans un autre environnement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('307','1','insert','insérer(
+   base_de_reference(1),
+   valeurs(
+      affecte(champ(`chi_id_dossier`),:chi_id_dossier),
+      affecte(champ(`chx_projet_dossier`),:chx_projet_dossier),
+      affecte(champ(`chp_nom_dossier`),:chp_nom_dossier),
+      affecte(champ(`chx_parent_dossier`),:chx_parent_dossier),
+      affecte(champ(`che_contient_genere_dossier`),:che_contient_genere_dossier),
+      affecte(champ(`chp__dtm_dossier`),:chp__dtm_dossier),
+      affecte(champ(`chp__dtc_dossier`),:chp__dtc_dossier)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_dossiers,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_dossiers`(
+    `chi_id_dossier` , 
+    `chx_projet_dossier` , 
+    `chp_nom_dossier` , 
+    `chx_parent_dossier` , 
+    `che_contient_genere_dossier` , 
+    `chp__dtm_dossier` , 
+    `chp__dtc_dossier`
+) VALUES (
+    :chi_id_dossier , 
+    :chx_projet_dossier , 
+    :chp_nom_dossier , 
+    :chx_parent_dossier , 
+    :che_contient_genere_dossier , 
+    :chp__dtm_dossier , 
+    :chp__dtc_dossier
+);','function sql_307($par,&$donnees_retournees,$that){
+    $sql0=''
+      INSERT  INTO `''.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].''`.`tbl_dossiers`(
+         `chi_id_dossier` , 
+         `chx_projet_dossier` , 
+         `chp_nom_dossier` , 
+         `chx_parent_dossier` , 
+         `che_contient_genere_dossier` , 
+         `chp__dtm_dossier` , 
+         `chp__dtc_dossier`
+      ) VALUES 
+    '';
+    $liste_des_valeurs='''';
+    for($i=0;($i < count($par));$i++){
+        if($liste_des_valeurs != ''''){
+            $liste_des_valeurs.='','';
+        }
+        $liste_des_valeurs.=''('';
+        $liste_des_valeurs.=PHP_EOL.''      ''.sq1($par[$i][''chi_id_dossier'']).''''.'','';
+        $liste_des_valeurs.=PHP_EOL.''      ''.sq1($par[$i][''chx_projet_dossier'']).''''.'','';
+        $liste_des_valeurs.=PHP_EOL.''      ''.sq1($par[$i][''chp_nom_dossier'']).''''.'','';
+        $liste_des_valeurs.=PHP_EOL.''      ''.sq1($par[$i][''chx_parent_dossier'']).''''.'','';
+        $liste_des_valeurs.=PHP_EOL.''      ''.sq1($par[$i][''che_contient_genere_dossier'']).''''.'','';
+        $liste_des_valeurs.=PHP_EOL.''      ''.sq1($par[$i][''chp__dtm_dossier'']).''''.'','';
+        $liste_des_valeurs.=PHP_EOL.''      ''.sq1($par[$i][''chp__dtc_dossier'']).'''';
+        $liste_des_valeurs.='')'';
+    }
+    $sql0.=$liste_des_valeurs;
+    // echo __FILE__ . '' '' . __LINE__ . '' $sql0 = <pre>'' . $sql0 . ''</pre>'' ; exit(0);
+    try{
+        $ret=$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->exec($sql0);
+        return(array( 
+            __xst      => __xsu,
+            ''changements'' => $GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->changes(),
+            ''nouvel_id''   => $GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->lastInsertRowID(),
+        ));
+    }catch(Exception $e){
+        return array(/**/
+            __xst => __xer , 
+            ''source_requete'' => $sql0 , 
+            ''texte_requete'' => ''l\''insertion dans la table des dossiers'' ,
+            ''exception'' => $e , 
+            ''id_bdd'' => BDD_NUMERO_1
+        );
+    }
+}
+','dossiers à copier dans un autre environnement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('308','1','select','#(meta(sur_base_de_reference(1))),
+sélectionner(
+   base_de_reference(1),
+   valeurs(champ(`T0`,`chx_dossier_requetes_projet`),champ(`T0`,`chx_dossier_menus_projet`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chi_id_projet`),1))
+   )
+)  ','/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet`
+ FROM b1.tbl_projets T0
+WHERE (`T0`.`chi_id_projet` = 1)
+;',NULL,'dossiers du projet à copier dans un autre environnement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('309','1','update','modifier(
+   base_de_reference(1),
+   valeurs(affecte(champ(`chx_dossier_requetes_projet`),:n_chx_dossier_requetes_projet),affecte(champ(`chx_dossier_menus_projet`),:n_chx_dossier_menus_projet)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`chi_id_projet`),:c_chi_id_projet))
+   )
+)  ','UPDATE b1.tbl_projets SET 
+   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
+   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
+WHERE (`chi_id_projet` = :c_chi_id_projet) ;',NULL,'dossiers à copier dans un autre environnement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 /*
   ===============================

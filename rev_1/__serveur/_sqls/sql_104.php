@@ -23,7 +23,8 @@ function sql_104($par,&$donnees_retournees,$that){
             'source_requete' => $sql0,
             'texte_requete' => 'la suppression dans la table des requetes',
             'exception' => null,
-            'id_bdd' => BDD_NUMERO_1
+            'id_bdd' => BDD_NUMERO_1,
+            'code_erreur' => 19
         );
     }
     try{

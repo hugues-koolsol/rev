@@ -635,235 +635,226 @@ EOT;
             $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ' aucune modification efféctuée';
             return;
         }
+        if($nouvel_id <= 2){
+            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ' aucune modification efféctuée';
+            $donnees_retournees[__xst]=__xer;
+            return;
+        }
 
         /*
+          =========================================================
           on peut créer la nouvelle base de description du projet
-          
+          =========================================================
         */
-        /*
-          echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nouvel_id , true ) . '</pre>' ; exit(0);
-        */
+
+        $chemin_base=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $nouvel_id . '.sqlite';
         
-        if($nouvel_id > 2){
-
-            $chemin_base=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $nouvel_id . '.sqlite';
-            
-            if(is_file($chemin_base)){
-
-                /*
-                  pourquoi ce fichier existe ?
-                */
-                $tt145=/*sql_inclure_deb*/
-                    /* sql_145()
-                    / ***meta(tester_les_dependances_dans_le_php(1))*** /
-                    
-                    DELETE FROM b1.tbl_projets
-                    WHERE (`chi_id_projet` = :chi_id_projet) ;
-                    */
-                    /*sql_inclure_fin*/
-                    $this->sql0->sql_iii(
-                     /*sql_145()*/ 145,
-                    array( 'chi_id_projet' => $nouvel_id),
-                    $donnees_retournees
-                );
-                $donnees_retournees[__x_signaux][__xer][]='le fichier la base de donnée du projet existe déjà [' . __LINE__ . ']';
-                return;
-
-            }
+        if(is_file($chemin_base)){
 
             /*
-              on crée un clone de la base système du projet 1 qui contiendra tout le projet nnn
+              pourquoi ce fichier existe ?
             */
-            $chemin_base=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $nouvel_id . '.sqlite';
+            $donnees_retournees[__x_signaux][__xer][]='le fichier la base de donnée du projet existe déjà [' . __LINE__ . ']';
+            return;
+
+        }
+
+        /*
+          on crée un clone de la base système du projet 1 qui contiendra tout le projet nnn
+        */
+        try{
+            $db1temp=new SQLite3($chemin_base);
+        }catch(Exception $e){
+            $donnees_retournees[__x_signaux][__xer][]=$e->getMessage() . ' [' . __METHOD__ . ':' . __LINE__ . '] ';
+            return;
+        }
+        /*
+          echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_base , true ) . '</pre>' ; exit(0);
+        */
+        /*
+          on reprend la même structure que le projet 1
+        */
+        $chemim_structure=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_1.sqlite._structure.sql';
+        $source_sql=@file_get_contents($chemim_structure);
+        
+        if($source_sql !== false){
+
             try{
-                $db1temp=new SQLite3($chemin_base);
+                $ret1=$db1temp->exec($source_sql);
             }catch(Exception $e){
                 $donnees_retournees[__x_signaux][__xer][]=$e->getMessage() . ' [' . __METHOD__ . ':' . __LINE__ . '] ';
                 return;
             }
-            $chemim_structure=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_1.sqlite._structure.sql';
-            $source_sql=@file_get_contents($chemim_structure);
-            
-            if($source_sql !== false){
 
-                try{
-                    $ret1=$db1temp->exec($source_sql);
-                }catch(Exception $e){
-                    $donnees_retournees[__x_signaux][__xer][]=$e->getMessage() . ' [' . __METHOD__ . ':' . __LINE__ . '] ';
-                    return;
-                }
+        }else{
 
-            }else{
+            $donnees_retournees[__x_signaux][__xer][]=$e->getMessage() . ' [' . __METHOD__ . ':' . __LINE__ . '] ';
+            return;
+        }
 
+        $chemim_index=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_1.sqlite._index.sql';
+        $source_sql=@file_get_contents($chemim_index);
+        
+        if($source_sql !== false){
+
+            try{
+                $ret1=$db1temp->exec($source_sql);
+            }catch(Exception $e){
                 $donnees_retournees[__x_signaux][__xer][]=$e->getMessage() . ' [' . __METHOD__ . ':' . __LINE__ . '] ';
                 return;
             }
 
-            $chemim_index=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_1.sqlite._index.sql';
-            $source_sql=@file_get_contents($chemim_index);
-            
-            if($source_sql !== false){
+        }else{
 
-                try{
-                    $ret1=$db1temp->exec($source_sql);
-                }catch(Exception $e){
-                    $donnees_retournees[__x_signaux][__xer][]=$e->getMessage() . ' [' . __METHOD__ . ':' . __LINE__ . '] ';
-                    return;
-                }
+            $donnees_retournees[__x_signaux][__xer][]=$e->getMessage() . ' [' . __METHOD__ . ':' . __LINE__ . '] ';
+            return;
+        }
 
-            }else{
-
-                $donnees_retournees[__x_signaux][__xer][]=$e->getMessage() . ' [' . __METHOD__ . ':' . __LINE__ . '] ';
-                return;
-            }
-
-            $tt56=/*sql_inclure_deb*/
-                /* sql_156()
-                INSERT INTO `tbl_projets`(
-                    `chi_id_projet` , 
-                    `chp_nom_projet`
-                ) VALUES (
-                    :chi_id_projet , 
-                    :chi_id_projet
-                );
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
-                 /*sql_156()*/ 156,
-                array( 'chi_id_projet' => $nouvel_id),
-                $donnees_retournees,
-                $db1temp
+        $tt56=/*sql_inclure_deb*/
+            /* sql_156()
+            INSERT INTO `tbl_projets`(
+                `chi_id_projet` , 
+                `chp_nom_projet`
+            ) VALUES (
+                :chi_id_projet , 
+                :chi_id_projet
             );
-            /*
-              on tente de créer le répertoire racine
             */
-            $reprendre_les_fido=false;
-            $une_erreur=false;
-            $chemin=REPERTOIRE_RACINE_DES_PROJET . DIRECTORY_SEPARATOR . 'rev_' . $nouvel_id;
-            
-            if(is_dir($chemin)){
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
+             /*sql_156()*/ 156,
+            array( 'chi_id_projet' => $nouvel_id),
+            $donnees_retournees,
+            $db1temp
+        );
+        /*
+          on tente de créer le répertoire racine
+        */
+        $reprendre_les_fido=false;
+        $une_erreur=false;
+        $chemin=REPERTOIRE_RACINE_DES_PROJET . DIRECTORY_SEPARATOR . 'rev_' . $nouvel_id;
+        
+        if(is_dir($chemin)){
 
-                $donnees_retournees[__x_signaux][__xal][]='le dossier racine existe déjà, il faudra éventuellement reprendre ses fidos [' . __LINE__ . ']';
-                $reprendre_les_fido=true;
+            $donnees_retournees[__x_signaux][__xal][]='le dossier racine existe déjà, il faudra éventuellement reprendre ses fidos [' . __LINE__ . ']';
+            $reprendre_les_fido=true;
+
+        }else{
+
+            
+            if((@mkdir(REPERTOIRE_RACINE_DES_PROJET . DIRECTORY_SEPARATOR . 'rev_' . $nouvel_id))){
+
 
             }else{
 
+                $une_erreur=true;
+            }
+
+        }
+
+        
+        if($une_erreur === true){
+
+            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la création du dossier racine [' . __LINE__ . ']';
+            return;
+
+        }
+
+        /*
+          =============================================================================================
+          on insère le nouveau dossier racine en base
+          =============================================================================================
+        */
+        $donnees_sql=array(
+            /**/
+            'chi_id_dossier' => 1,
+            'chx_projet_dossier' => $nouvel_id,
+            'chp_nom_dossier' => null,
+            'chx_parent_dossier' => null
+        );
+        /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
+        $tt2=/*sql_inclure_deb*/
+            /* sql_159()
+            INSERT INTO `tbl_dossiers`(
+                `chi_id_dossier` , 
+                `chx_projet_dossier` , 
+                `chp_nom_dossier` , 
+                `chx_parent_dossier`
+            ) VALUES (
+                :chi_id_dossier , 
+                :chx_projet_dossier , 
+                :chp_nom_dossier , 
+                :chx_parent_dossier
+            );
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
+             /*sql_159()*/ 159,
+            $donnees_sql,
+            $donnees_retournees,
+            $db1temp
+        );
+        
+        if($tt2[__xst] !== __xsu){
+
+            $donnees_retournees[__x_signaux][__xal][]='Attention, Erreur lors de l\'insertion du dossier racine en base [' . __LINE__ . ']';
+            $une_erreur=true;
+
+        }else{
+
+            $id_dossier_racine=1;
+        }
+
+        /* $donnees_retournees[__x_signaux][__xdv][]=var_export( $une_erreur , true) . '['.__LINE__.']'; */
+        
+        if($une_erreur === true){
+
+            $donnees_retournees[__x_signaux][__xer][]=__LINE__ . ' erreur lors de la suppression';
+
+        }
+
+        
+        if(false && $reprendre_les_fido){
+
+            $liste_des_fido=scandir($chemin);
+            foreach($liste_des_fido as $k1 => $v1){
                 
-                if((@mkdir(REPERTOIRE_RACINE_DES_PROJET . DIRECTORY_SEPARATOR . 'rev_' . $nouvel_id))){
+                if($v1 === '.' || $v1 === '..'){
 
 
                 }else{
 
-                    $une_erreur=true;
-                }
-
-            }
-
-            
-            if($une_erreur === true){
-
-                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la création du dossier racine [' . __LINE__ . ']';
-                return;
-
-            }
-
-            /*
-              =============================================================================================
-              on insère le nouveau dossier racine en base
-              =============================================================================================
-            */
-            $donnees_sql=array(
-                /**/
-                'chi_id_dossier' => 1,
-                'chx_projet_dossier' => $nouvel_id,
-                'chp_nom_dossier' => null,
-                'chx_parent_dossier' => null
-            );
-            /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-            $tt2=/*sql_inclure_deb*/
-                /* sql_159()
-                INSERT INTO `tbl_dossiers`(
-                    `chi_id_dossier` , 
-                    `chx_projet_dossier` , 
-                    `chp_nom_dossier` , 
-                    `chx_parent_dossier`
-                ) VALUES (
-                    :chi_id_dossier , 
-                    :chx_projet_dossier , 
-                    :chp_nom_dossier , 
-                    :chx_parent_dossier
-                );
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
-                 /*sql_159()*/ 159,
-                $donnees_sql,
-                $donnees_retournees,
-                $db1temp
-            );
-            
-            if($tt2[__xst] !== __xsu){
-
-                $donnees_retournees[__x_signaux][__xal][]='Attention, Erreur lors de l\'insertion du dossier racine en base [' . __LINE__ . ']';
-                $une_erreur=true;
-
-            }else{
-
-                $id_dossier_racine=1;
-            }
-
-            /* $donnees_retournees[__x_signaux][__xdv][]=var_export( $une_erreur , true) . '['.__LINE__.']'; */
-            
-            if($une_erreur === true){
-
-                $donnees_retournees[__x_signaux][__xer][]=__LINE__ . ' erreur lors de la suppression';
-
-            }
-
-            
-            if(false && $reprendre_les_fido){
-
-                $liste_des_fido=scandir($chemin);
-                foreach($liste_des_fido as $k1 => $v1){
                     
-                    if($v1 === '.' || $v1 === '..'){
+                    if(is_dir($chemin . DIRECTORY_SEPARATOR . $v1)){
 
+                        $donnees_sql=array( array(/**/
+                                    'chx_projet_dossier' => $nouvel_id,
+                                    'chp_nom_dossier' => $v1,
+                                    'chx_parent_dossier' => $id_dossier_racine === '' ? null : $id_dossier_racine
+                                ));
+                        /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
+                        $creation_dossier=/*sql_inclure_deb*/
+                            /* sql_137()
+                            / ***meta(sur_base_de_reference(1))*** /
+                            
+                            INSERT INTO b1.`tbl_dossiers`(
+                                `chx_projet_dossier` , 
+                                `chp_nom_dossier` , 
+                                `chx_parent_dossier`
+                            ) VALUES (
+                                :chx_projet_dossier , 
+                                :chp_nom_dossier , 
+                                :chx_parent_dossier
+                            );
+                            */
+                            /*sql_inclure_fin*/
+                            $this->sql0->sql_iii(
+                             /*sql_137()*/ 137,
+                            $donnees_sql,
+                            $donnees_retournees
+                        );
 
                     }else{
-
-                        
-                        if(is_dir($chemin . DIRECTORY_SEPARATOR . $v1)){
-
-                            $donnees_sql=array( array(/**/
-                                        'chx_projet_dossier' => $nouvel_id,
-                                        'chp_nom_dossier' => $v1,
-                                        'chx_parent_dossier' => $id_dossier_racine === '' ? null : $id_dossier_racine
-                                    ));
-                            /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-                            $creation_dossier=/*sql_inclure_deb*/
-                                /* sql_137()
-                                / ***meta(sur_base_de_reference(1))*** /
-                                
-                                INSERT INTO b1.`tbl_dossiers`(
-                                    `chx_projet_dossier` , 
-                                    `chp_nom_dossier` , 
-                                    `chx_parent_dossier`
-                                ) VALUES (
-                                    :chx_projet_dossier , 
-                                    :chp_nom_dossier , 
-                                    :chx_parent_dossier
-                                );
-                                */
-                                /*sql_inclure_fin*/
-                                $this->sql0->sql_iii(
-                                 /*sql_137()*/ 137,
-                                $donnees_sql,
-                                $donnees_retournees
-                            );
-
-                        }else{
-
-                        }
 
                     }
 
@@ -871,23 +862,10 @@ EOT;
 
             }
 
-            $donnees_retournees[__xst]=__xsu;
-            
-            if($page_projets_liste1 === true || $nouvel_id > 2){
-
-                $this->page_projets_liste1($donnees_retournees,$mat,$donnees_recues);
-
-            }else{
-
-                $action='chi_id_projet(' . $tt136['nouvel_id'] . ')';
-                $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($action);
-                $this->page_projets_editer1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);
-                $donnees_retournees[__x_action]='c_projets1.formulaire1(action1(page_projets_editer1),chi_id_projet(' . $tt136['nouvel_id'] . '))';
-            }
-
-
         }
 
+        $donnees_retournees[__xst]=__xsu;
+        $this->page_projets_liste1($donnees_retournees,$mat,$donnees_recues);
         $o1='';
     }
     /*
@@ -1305,6 +1283,24 @@ EOT;
                     }
 
                 }
+                
+                if($donnees_recues[__xva]['chi_id_projet']>2){
+                    $chemin_bdd=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_1.sqlite';
+                    $db_1=new SQLite3($chemin_bdd);
+                    $tt305=$this->sql0->sql_iii(/**/
+                        305,
+                        array(/**/
+                            'n_chp_nom_projet' => $donnees_recues[__xva]['chp_nom_projet'], 
+                            'n_chx_dossier_requetes_projet' => $donnees_recues[__xva]['chx_dossier_requetes_projet'], 
+                            'n_chx_dossier_menus_projet' => $donnees_recues[__xva]['chx_dossier_menus_projet'], 
+                            'c_chi_id_projet' => $donnees_recues[__xva]['chi_id_projet']
+                        ),
+                        $donnees_retournees,
+                        $db_1
+                    );
+                }
+                
+                
 
                 
                 if($page_projets_liste1 === true){
@@ -1556,8 +1552,7 @@ EOT;
 
                 }else{
 
-                    
-                    if($tt[__xva][0]['T1.chp_nom_dossier'] === null){
+                    if($tt[__xva][0]['T1.chp_nom_dossier'] === null || $tt[__xva][0]['T1.chp_nom_dossier'] === ''){
 
                         $o1 .= '(' . $tt[__xva][0]['T0.chx_dossier_requetes_projet'] . ') rev_' . $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] . PHP_EOL;
 
@@ -1601,7 +1596,7 @@ EOT;
                 }else{
 
                     
-                    if($tt[__xva][0]['T2.chp_nom_dossier'] === null){
+                    if($tt[__xva][0]['T2.chp_nom_dossier'] === null || $tt[__xva][0]['T2.chp_nom_dossier'] === ''){
 
                         $o1 .= '(' . $tt[__xva][0]['T0.chx_dossier_menus_projet'] . ') rev_' . $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] . PHP_EOL;
 
@@ -2317,6 +2312,120 @@ EOT;
     /*
       =============================================================================================================
     */
+    function initialiser_un_projet(&$donnees_retournees,&$mat,&$donnees_recues){
+
+        $chi_id_projet=0;
+        $l01=count($mat);
+        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
+            
+            
+            if('c_projets1.initialiser_un_projet' === $mat[$i][1]){
+
+                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
+                    if($mat[$j][1] === 'chi_id_projet' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
+                        $chi_id_projet=(int)$mat[$j+1][1];
+                    }
+                }
+            }
+        }
+        if($chi_id_projet<3){
+            $donnees_retournees[__x_signaux][__xer][]='on ne peut pas initialiser ce projet (' . $chi_id_projet . ') [' . __LINE__ . ']';
+            return;
+        }
+        /*
+         on insère les dossiers sauf le 1 qui est déjà créé et sauf ceux qui contiennent '%test%'
+        */
+        $tt306=$this->sql0->sql_iii(
+             /*sql_306*/ 306,
+            array(
+                'T0_chp_nom_dossier' => '%test%',
+            ),
+            $donnees_retournees
+        );
+        if($tt306[__xst] !== __xsu){
+            $donnees_retournees[__x_signaux][__xer][]='erreur sur la sélection des dossiers  [' . __LINE__ . ']';
+            return;
+        }
+        /*
+        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt306[__xva] , true ) . '</pre>' ; exit(0);
+        array (
+          'T0.chi_id_dossier' => 12,
+          'T0.chp_nom_dossier' => 'socket_deno',
+          'T0.chx_parent_dossier' => 2,
+          'T0.che_contient_genere_dossier' => 0,
+        ),
+        307
+        INSERT INTO b1.`tbl_dossiers`(
+            `chi_id_dossier` , 
+            `chx_projet_dossier` , 
+            `chp_nom_dossier` , 
+            `chx_parent_dossier` , 
+            `che_contient_genere_dossier` , 
+            `chp__dtm_dossier` , 
+            `chp__dtc_dossier`        
+        
+        */
+        $a_inserer=array();
+        
+        foreach($tt306[__xva] as $k1 => $v1){
+            $a_inserer[]=array(
+                'chi_id_dossier' => $v1['T0.chi_id_dossier'],
+                'chx_projet_dossier' => $chi_id_projet,
+                'chp_nom_dossier' => $v1['T0.chp_nom_dossier'],
+                'chx_parent_dossier' => $v1['T0.chx_parent_dossier'],
+                'che_contient_genere_dossier' => $v1['T0.che_contient_genere_dossier'],
+                'chp__dtm_dossier' => $GLOBALS[__date_ms],
+                'chp__dtc_dossier' => $GLOBALS[__date_ms],
+            );
+        }
+        /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $a_inserer , true ) . '</pre>' ; exit(0);*/
+        
+        $tt307=$this->sql0->sql_iii(
+             /*sql_307*/ 307,
+            $a_inserer,
+            $donnees_retournees
+        );
+        if($tt307[__xst] !== __xsu){
+            $donnees_retournees[__x_signaux][__xer][]='erreur sur l\'insertion des dossiers  [' . __LINE__ . ']';
+            return;
+        }
+        
+        $tt308=$this->sql0->sql_iii(
+             /*sql_308*/ 308,
+            array(),
+            $donnees_retournees
+        );
+        if($tt308[__xst] !== __xsu){
+            $donnees_retournees[__x_signaux][__xer][]='erreur sur la sélection des dossiers  [' . __LINE__ . ']';
+            return;
+        }
+        /*
+        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt308[__xva] , true ) . '</pre>' ; exit(0);
+        */
+        $tt309=$this->sql0->sql_iii(
+             /*sql_309*/ 309,
+            array(
+             'n_chx_dossier_requetes_projet' => $tt308[__xva][0]['T0.chx_dossier_requetes_projet'],
+             'n_chx_dossier_menus_projet' => $tt308[__xva][0]['T0.chx_dossier_menus_projet'],
+             'c_chi_id_projet' => $chi_id_projet,
+            ),
+            $donnees_retournees
+        );
+        if($tt309[__xst] !== __xsu){
+            $donnees_retournees[__x_signaux][__xer][]='erreur sur la maj du projet  [' . __LINE__ . ']';
+            return;
+        }
+        
+        
+        
+        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( __LINE__ , true ) . '</pre>' ; exit(0);
+        $donnees_retournees[__xst]=__xsu;
+                    
+    }
+    
+    /*
+      =============================================================================================================
+    */
     function page_projets_liste1(&$donnees_retournees,&$mat,&$donnees_recues){
         /* déverminage */
         $__nbMax=10;
@@ -2577,11 +2686,7 @@ EOT;
                        && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === $v0['T0.chi_id_projet']
                     ){
 
-                        $lsttbl .= '<div class="hug_bouton_inactif">x</div>';
-                        $lsttbl .= '<div class="hug_bouton_inactif">x</div>';
-                        /*
-                          $lsttbl .= '<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_projets1.creer_les_repertoires(chi_id_projet(' . $v0['T0.chi_id_projet'] . '))" title="creer les répertoires">initialiser</div>';
-                        */
+                        $lsttbl .= '<div class="hug_bouton_inactif">🗑</div>';
 
                     }else{
 
@@ -2592,16 +2697,10 @@ EOT;
                         ){
 
                             $lsttbl .= '<div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_projets1.formulaire1(action1(page_projets_supprimer1),chi_id_projet(' . $v0['T0.chi_id_projet'] . '))">🗑</div>';
-                            /*
-                              $lsttbl .= '<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_projets1.creer_les_repertoires(chi_id_projet(' . $v0['T0.chi_id_projet'] . '))" title="creer les répertoires">initialiser</div>';
-                            */
 
                         }else{
 
-                            $lsttbl .= '<div class="hug_bouton_inactif">x</div>';
-                            /*
-                              $lsttbl .= '<div class="hug_bouton_inactif">initialiser</div>';
-                            */
+                            $lsttbl .= '<div class="hug_bouton_inactif">🗑</div>';
                         }
 
                     }
@@ -2647,6 +2746,7 @@ EOT;
             if(__X_CLE_APPLICATION === 'rev_1' && $v0['T0.chi_id_projet'] > 2){
 
                 $lsttbl .= '<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_bases1.dump_de_la_base(chi_id_basedd(' . $v0['T0.chi_id_projet'] . '))" title="sauvegarder la base du projet">💾</div>';
+                $lsttbl .= '<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_projets1.initialiser_un_projet(chi_id_projet(' . $v0['T0.chi_id_projet'] . '))" title="sauvegarder la base du projet">initialiser</div>';
 
             }
 

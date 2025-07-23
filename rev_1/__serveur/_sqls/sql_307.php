@@ -1,10 +1,14 @@
 <?php
-function sql_137($par,&$donnees_retournees,$that){
+function sql_307($par,&$donnees_retournees,$that){
     $sql0='
       INSERT  INTO `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_dossiers`(
+         `chi_id_dossier` , 
          `chx_projet_dossier` , 
          `chp_nom_dossier` , 
-         `chx_parent_dossier`
+         `chx_parent_dossier` , 
+         `che_contient_genere_dossier` , 
+         `chp__dtm_dossier` , 
+         `chp__dtc_dossier`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -13,9 +17,13 @@ function sql_137($par,&$donnees_retournees,$that){
             $liste_des_valeurs.=',';
         }
         $liste_des_valeurs.='(';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chi_id_dossier']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_projet_dossier']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_dossier']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_parent_dossier']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_parent_dossier']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_contient_genere_dossier']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp__dtm_dossier']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp__dtc_dossier']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

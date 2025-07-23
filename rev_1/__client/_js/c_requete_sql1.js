@@ -2472,6 +2472,7 @@ class c_requete_sql1{
                                            || tab[j][1] === 'egal'
                                            || tab[j][1] === 'diff'
                                            || tab[j][1] === 'comme'
+                                           || tab[j][1] === 'pas_comme'
                                            || tab[j][1] === 'sup'
                                            || tab[j][1] === 'supegal'
                                            || tab[j][1] === 'inf'
@@ -2718,7 +2719,8 @@ class c_requete_sql1{
                     t+='            \'source_requete\' => $sql0,' + CRLF;
                     t+='            \'texte_requete\' => \'la suppression dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\',' + CRLF;
                     t+='            \'exception\' => null,' + CRLF;
-                    t+='            \'id_bdd\' => ' + obj3.id_base_principale + '' + CRLF;
+                    t+='            \'id_bdd\' => ' + obj3.id_base_principale + ',' + CRLF;
+                    t+='            \'code_erreur\' => 19' + CRLF;
                     t+='        );' + CRLF;
                     t+='    }' + CRLF;
                 }

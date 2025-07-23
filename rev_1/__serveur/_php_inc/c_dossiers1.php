@@ -635,7 +635,7 @@ class c_dossiers1{
 
                 }else{
 
-                    $donnees_retournees[__x_signaux][__xer][]='Ce dossier contient des sous dossiers et ne peut pas être supprimé [' . __LINE__ . ']';
+                    $donnees_retournees[__x_signaux][__xer][]='Ce dossier contient des sous dossiers EN BASE et ne peut pas être supprimé DE LA BASE [' . __LINE__ . ']';
                     return;
                 }
 
@@ -699,11 +699,10 @@ class c_dossiers1{
             );
             
             if($tt[__xst] !== __xsu){
-
                 
                 if($tt['code_erreur'] === 19){
 
-                    $donnees_retournees[__x_signaux][$tt[__xst]][]=__LINE__ . ' vous ne pouvez pas supprimer ce dossier car un autre dossier a comme parent celui çi';
+                    $donnees_retournees[__x_signaux][$tt[__xst]][]=__LINE__ . ' vous ne pouvez pas supprimer ce dossier car un autre élément l\'utilise';
 
                 }else{
 
@@ -2389,8 +2388,14 @@ class c_dossiers1{
             $lsttbl .= '<td style="text-align:left;">';
             
             if($v0['T0.chx_parent_dossier'] !== null){
+             
+                if($v0['T1.chp_nom_dossier']===null || $v0['T1.chp_nom_dossier']===''){
 
-                $lsttbl .= '(' . enti1($v0['T0.chx_parent_dossier']) . ') ' . enti1($v0['T1.chp_nom_dossier']) . '';
+                    $lsttbl .= '(' . enti1($v0['T0.chx_parent_dossier']) . ') [rev_' . $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] . ']';
+                }else{
+
+                    $lsttbl .= '(' . enti1($v0['T0.chx_parent_dossier']) . ') ' . enti1($v0['T1.chp_nom_dossier']) . '';
+                }
 
             }
 
