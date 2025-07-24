@@ -59,6 +59,8 @@ class c_sources1{
                    || $conteneur1 === 'vv_sources_filtre1'
                    || $conteneur1 === 'vv_sources_dupliquer1'
                    || $conteneur1 === 'vv_sources_filtre_choix_1'
+                   || $conteneur1 === 'vv_sources_nouveau_numero2'
+                   
                 ){
 
                     $this->$conteneur1($donnees_retournees,$mat,$donnees_recues);
@@ -2477,6 +2479,151 @@ class c_sources1{
     /*
       =============================================================================================================
     */
+    function vv_sources_nouveau_numero2(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $chi_id_source_ancienne=0;
+        $chi_id_source_nouvelle=0;
+        
+        if(isset($donnees_recues[__xva]['vv_nouveau_numero_de_source'])
+           && is_numeric($donnees_recues[__xva]['vv_nouveau_numero_de_source'])
+        ){
+
+            $chi_id_source_nouvelle=(int)($donnees_recues[__xva]['vv_nouveau_numero_de_source']);
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xer][]='le nouveau numéro doit être numérique [' . __LINE__ . ']';
+            return;
+        }
+
+        
+        if(isset($donnees_recues[__xva]['vv_ancien_numero_de_source'])
+           && is_numeric($donnees_recues[__xva]['vv_ancien_numero_de_source'])
+        ){
+
+            $chi_id_source_ancienne=(int)($donnees_recues[__xva]['vv_ancien_numero_de_source']);
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xer][]='l\'ancien numéro doit être numérique [' . __LINE__ . ']';
+            return;
+        }
+
+        $tt1=$this->sql0->sql_iii(
+             /*sql_162()*/ 162,
+            array( 'T0_chi_id_source' => $chi_id_source_ancienne, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
+            $donnees_retournees
+        );
+        
+        if($tt1[__xst] !== __xsu){
+
+            $donnees_retournees[__x_signaux][__xer][]='Erreur de sélection de la requête[' . __LINE__ . ']';
+            return;
+
+        }
+
+        $tt2=$this->sql0->sql_iii(
+             /*sql_162()*/ 162,
+            array( 'T0_chi_id_source' => $chi_id_source_nouvelle, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
+            $donnees_retournees
+        );
+        
+        if($tt2[__xst] !== __xsu){
+
+            $donnees_retournees[__x_signaux][__xer][]='Erreur de sélection de la requête[' . __LINE__ . ']';
+            return;
+
+        }
+
+        
+        if(count($tt2[__xva]) >= 1){
+
+            $donnees_retournees[__x_signaux][__xer][]='le source portant le numéro ' . $chi_id_source_nouvelle . ' existe déjà [' . __LINE__ . ']';
+            return;
+
+        }
+        $tt3=$this->sql0->sql_iii(
+             /*sql_310()*/ 310,
+            array(
+                /**/
+                'n_chi_id_source' => $chi_id_source_nouvelle,
+                'c_chi_id_source' => $chi_id_source_ancienne,
+                'c_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt3[__xst] !== __xsu){
+
+            $donnees_retournees[__x_signaux][__xer][]='Erreur de rumérotation de la requête[' . __LINE__ . ']';
+            return;
+
+        }
+
+        /*
+          
+          echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre><pre>' . var_export( $mat , true ) . '</pre>' ; exit(0);
+        */
+        $donnees_retournees[__xst]=__xsu;
+        $donnees_retournees['__x_action']='maj_interface2(fermer_sous_fenetre1(c_sources1.page_liste_des_sources1()))';
+        /* c_sources1.formulaire1(action1(page_sources_modifier1),chi_id_source(' . $tt['nouvel_id'] . '))';*/
+        /* $donnees_retournees[__x_page] .= $o1;*/
+    }
+    /*
+      =============================================================================================================
+    */
+    function page_nouveau_numero2(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $o1='';
+        $o1 .= '<h1>Attribuer un nouveau numéro</h1>';
+        $chi_id_source=0;
+        $l01=count($mat);
+        /* $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
+        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
+            
+            
+            if('c_sources1.page_nouveau_numero2' === $mat[$i][1]){
+
+                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
+                    
+                    
+                    if($mat[$j][1] === 'chi_id_source' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
+
+                        $chi_id_source=(int)($mat[$j + 1][1]);
+
+                    }
+
+                }
+
+            }
+
+        }
+        
+        if($chi_id_source === 0){
+
+            $o1 .= 'le numéro actuel est <b>' . $chi_id_source . '</b>';
+            $donnees_retournees[__x_page] .= $o1;
+            $donnees_retournees[__xst]=__xsu;
+            return;
+
+        }
+
+        $o1 .= 'le numéro actuel est <b>' . $chi_id_source . '</b>';
+        $o1 .= '<br />';
+        $o1 .= '<div id="vv_sources_nouveau_numero2">';
+        $o1 .= '    <input type="hidden" id="vv_ancien_numero_de_source" value="' . $chi_id_source . '" />';
+        $o1 .= '    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_source" value="' . $chi_id_source . '" />';
+        $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(vv_nouveau_numero_de_source,valeur),plus( zone(vv_nouveau_numero_de_source,valeur) , 100 )))">+100</div>';
+        $o1 .= '    <br />';
+        $o1 .= '    <div class="hug_bouton" data-hug_click="c_sources1.formulaire1(conteneur1(vv_sources_nouveau_numero2))">attribuer ce nouveau numéro</div>';
+        $o1 .= '</div>';
+        /*
+          $o1.='<pre>'.var_export($mat,true).'</pre>';
+        */
+        $donnees_retournees[__x_page] .= $o1;
+        $donnees_retournees[__xst]=__xsu;
+    }    
+    /*
+      =============================================================================================================
+    */
     function page_liste_des_sources1(&$donnees_retournees,&$mat,&$donnees_recues){
         $__nbMax=20;
         $par=array();
@@ -2713,6 +2860,9 @@ class c_sources1{
 
 
             }
+            
+            $lsttbl .= '  <div class="hug_bouton yy__x_signaux_1" data-hug_click="interface1.affiche_sous_fenetre1(c_sources1.page_nouveau_numero2( sans_menus1() chi_id_source(' . $v0['T0.chi_id_source'] . ')))" title="attribuer un autre numéro" >#°</div>';
+            
 
             $lsttbl .= ' </div>';
             $lsttbl .= '</td>';

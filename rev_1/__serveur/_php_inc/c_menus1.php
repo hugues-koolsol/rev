@@ -295,37 +295,39 @@ class c_menus1{
             $contenu_fichier='';
             $nom_fichier=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus'] . DIRECTORY_SEPARATOR . $k1 . '.php';
             foreach($v1 as $k2 => $v2){
-                $hug_click=str_replace('.php','',$v2['chp_nom_source']) . '.' . $v2['chp_methode_page'] . '(';
-                
-                if($v2['cht_contenu_methode_page'] !== null){
+                if($v2['chp_nom_source']!==null){
+                    $hug_click=str_replace('.php','',$v2['chp_nom_source']) . '.' . $v2['chp_methode_page'] . '(';
+                    
+                    if($v2['cht_contenu_methode_page'] !== null){
 
-                    $hug_click .= $v2['cht_contenu_methode_page'];
+                        $hug_click .= $v2['cht_contenu_methode_page'];
 
-                }
+                    }
 
-                $hug_click .= ')';
-                
-                if($v2['cht_complement_page'] !== null){
+                    $hug_click .= ')';
+                    
+                    if($v2['cht_complement_page'] !== null){
 
-                    $hug_click .= ',' . $v2['cht_complement_page'];
+                        $hug_click .= ',' . $v2['cht_complement_page'];
 
-                }
+                    }
 
-                $hug_click .= 'indice_menu(' . $v2['chi_id_menu'] . ')';
-                $contenu_lien='<div data-id_menu="' . $v2['chi_id_menu'] . '" class="hug_bouton" data-hug_click="' . $hug_click . '" title="">' . $v2['cht_libelle_menu'] . '</div>';
-                
-                if($v2['cht_prerequis_php_menu'] !== null){
+                    $hug_click .= 'indice_menu(' . $v2['chi_id_menu'] . ')';
+                    $contenu_lien='<div data-id_menu="' . $v2['chi_id_menu'] . '" class="hug_bouton" data-hug_click="' . $hug_click . '" title="">' . $v2['cht_libelle_menu'] . '</div>';
+                    
+                    if($v2['cht_prerequis_php_menu'] !== null){
 
-                    $contenu_fichier .= 'if(' . $v2['cht_prerequis_php_menu'] . '){' . PHP_EOL . '    ';
+                        $contenu_fichier .= 'if(' . $v2['cht_prerequis_php_menu'] . '){' . PHP_EOL . '    ';
 
-                }
+                    }
 
-                $contenu_fichier .= '$t[' . $v2['chi_id_menu'] . ']=\'' . str_replace('\'','\\\'',str_replace('\\','\\\\',$contenu_lien)) . '\';' . PHP_EOL;
-                
-                if($v2['cht_prerequis_php_menu'] !== null){
+                    $contenu_fichier .= '$t[' . $v2['chi_id_menu'] . ']=\'' . str_replace('\'','\\\'',str_replace('\\','\\\\',$contenu_lien)) . '\';' . PHP_EOL;
+                    
+                    if($v2['cht_prerequis_php_menu'] !== null){
 
-                    $contenu_fichier .= '}' . PHP_EOL;
+                        $contenu_fichier .= '}' . PHP_EOL;
 
+                    }
                 }
 
             }

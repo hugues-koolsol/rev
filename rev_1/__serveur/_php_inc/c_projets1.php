@@ -166,7 +166,7 @@ class c_projets1{
             $this->sql0->sql_iii(166,array( 'T0_chi_id_dossier' => $chi_id_dossier, 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),$donnees_retournees,$db);
         
         if($tt[__xst] === __xsu){
-
+            $chi_id_dossier=$tt[__xva][0][1];
 
         }else{
 
@@ -189,6 +189,8 @@ class c_projets1{
                 }else{
 
                     $chemin=DIRECTORY_SEPARATOR . $tt[__xva][0][0] . $chemin;
+                    
+                    
                     $tt=/*sql_inclure_deb*/
                         /* sql_166()
                         SELECT 
@@ -199,7 +201,9 @@ class c_projets1{
                         ;
                         */
                         /*sql_inclure_fin*/
-                        $this->sql0->sql_iii(166,array( 'T0_chi_id_dossier' => $tt[__xva][0]['T0.chx_parent_dossier'], 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),$donnees_retournees,$db);
+                        $this->sql0->sql_iii(166,array( 'T0_chi_id_dossier' => $chi_id_dossier, 'T0_chx_projet_dossier' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),$donnees_retournees,$db);
+                        $chi_id_dossier=$tt[__xva][0][1];
+
                 }
 
 

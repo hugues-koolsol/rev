@@ -17,6 +17,7 @@ function sql_303($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     $where0.=' AND `T0`.`chi_id_menu` > '.sq1($par['T0_chi_id_menu']).''.PHP_EOL;
+    $where0.=' AND `T1`.`chi_id_page` IS NOT NULL'.PHP_EOL;
     $sql0.=$where0;
     $order0='
        ORDER BY  `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ordre_menu` ASC';

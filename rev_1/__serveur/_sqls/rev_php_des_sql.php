@@ -1174,7 +1174,8 @@ WHERE `chi_id_menu` = :chi_id_menu ;',
 
  LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_page
 
-WHERE `T0`.`chi_id_menu` > :T0_chi_id_menu 
+WHERE (`T0`.`chi_id_menu` > :T0_chi_id_menu
+   AND `T1`.`chi_id_page` IS NOT NULL) 
 ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ordre_menu` ASC
 ;',
     'cht_commentaire_requete' => 'menus',
@@ -1249,5 +1250,13 @@ WHERE (`T0`.`chi_id_projet` = 1)
    `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
 WHERE (`chi_id_projet` = :c_chi_id_projet) ;',
     'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
+  ),
+  310 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_sources SET 
+   `chi_id_source` = :n_chi_id_source
+WHERE (`chi_id_source` = :c_chi_id_source
+   AND `chx_projet_id_source` = :c_chx_projet_id_source) ;',
+    'cht_commentaire_requete' => 'sources',
   ),
 );

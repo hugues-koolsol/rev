@@ -6,7 +6,7 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','513','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','515','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -42,10 +42,10 @@ INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_p
 ('23','1','dump de la base en local','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('26','1','travaux en batch','8','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('26','1','travaux en batch','9','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('28','1','profils de css','50','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('29','1','astuces','9','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('29','1','astuces','10','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -111,9 +111,9 @@ et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00','2000-01-
 ('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('78','1','ne pas mettre plus de 1000 éléments dans un dossier','11','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('78','1','ne pas mettre plus de 1000 éléments dans un dossier','12','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('80','1','table des bugs','13','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('80','1','table des bugs','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('82','1','supprimer une projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('83','1','ajouter les champs 
@@ -126,7 +126,7 @@ dtc date technique de création','99','0','2000-01-01 00:00:00','2000-01-01 00:0
 ('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('88','1','sortable pour svg','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('90','1','dupliquer une table','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('90','1','dupliquer une table','15','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('92','1','quand on modifie le nom d''une table
 alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -142,7 +142,7 @@ dans le champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('99','1','corriger le bug : après tri des champs, on pert l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('100','1','ne pas masquer un champ si c''est une référence, une clé, un auto_increment
 ou si le champ appartient à un index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('101','1','ajouter des tests de validité sur le svg base','15','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('101','1','ajouter des tests de validité sur le svg base','16','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('102','1','sauvegarder une table sans champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('103','1','requetes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('104','1','mettre le dump de la base dans la liste des bases','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -222,7 +222,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chp__dtm_tache`)
 flag champ_date_modification','99','4','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','12','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','13','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -262,19 +262,19 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','10','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','0','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
-('170','1','initialiser ecran standard d''une table','7','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
+comme3(xxx)','11','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
+('169','1','initialiser projet standard','3','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
+('170','1','initialiser ecran standard d''une table','8','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
 ('171','1','gérer les menus','99','1','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
 ('173','1','gérer les paramètres ( liste des constantes )
-type de champbdd','4','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
+type de champbdd','6','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
 ('174','1','mettre en github
 ','99','0','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817'),
 ('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038'),
 ('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
 ('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962'),
-('178','1','ajouter un dictionnaire de données','5','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
+('178','1','ajouter un dictionnaire de données','7','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
 ('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399'),
 ('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718'),
 ('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668'),
@@ -305,7 +305,7 @@ détruire','80','1','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485'),
     <option>sql</option>
     <option>css</option>
     <option>texte</option>
-</select>','2','2','2025-07-22 14:39:11.892','2025-07-09 16:26:01.691'),
+</select>','4','2','2025-07-22 14:39:11.892','2025-07-09 16:26:01.691'),
 ('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','0','2025-07-09 16:31:23.198','2025-07-09 16:31:23.198'),
 ('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','0','2025-07-09 17:43:23.330','2025-07-09 17:43:23.330'),
 ('196','1','initialiser les champs filtres d''une sous page','99','1','2025-07-19 11:11:25.033','2025-07-10 09:52:20.444'),
@@ -319,10 +319,11 @@ faire un carré svg
 nom_champ_dans_parent1
 nom_libelle_dans_parent1
 dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.755','2025-07-15 16:12:27.924'),
-('202','1','bibliothèque de svg','3','1','2025-07-16 10:48:01.891','2025-07-16 10:47:25.371'),
+('202','1','bibliothèque de svg','5','1','2025-07-16 10:48:01.891','2025-07-16 10:47:25.371'),
 ('203','1','renuméroter les requetes à partir de 101','99','2','2025-07-17 15:09:37.352','2025-07-17 10:11:14.041'),
 ('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','1','2025-07-17 12:14:57.332','2025-07-17 12:07:20.343'),
-('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','0','2025-07-18 10:50:06.307','2025-07-18 10:50:06.307');
+('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','0','2025-07-18 10:50:06.307','2025-07-18 10:50:06.307'),
+('206','1','renuméroter un source','2','0','2025-07-24 12:50:11.622','2025-07-24 12:50:11.622');
 
 
 /*
@@ -342,7 +343,7 @@ dans le répertoire rev_2 et on travaillera sur l''url frev/rev_2.
 Dans le projet 2, le fichier __serveur/__definitions.php sera le seul fichier différent
 
 Ce projet est utilisé pour la mise à jour du projet principal','0','2000-01-01 00:00:00','2000-01-01 00:00:00',NULL,NULL),
-('3','le bô projet','','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','6','2');
+('3','le bô projet','','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','','');
 
 
 /*
@@ -2710,7 +2711,9 @@ WHERE `chi_id_menu` = :chi_id_menu ;',NULL,'menus',NULL,'0','2000-01-01 00:00:00
          contrainte(egal(champ(T3,chi_id_source),champ(T1,chx_source_page)))
       )
    ),
-   conditions(sup(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu)),
+   conditions(
+      et(sup(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu),n_est_pas(champ(`T1`,`chi_id_page`),NULL))
+   ),
    complements(
       trier_par((champ(`T2`,`chx_groupe_acces`),croissant()),(champ(`T2`,`chx_metier_acces`),croissant()),(champ(`T0`,`che_ordre_menu`),croissant()))
    )
@@ -2725,7 +2728,8 @@ WHERE `chi_id_menu` = :chi_id_menu ;',NULL,'menus',NULL,'0','2000-01-01 00:00:00
 
  LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_page
 
-WHERE `T0`.`chi_id_menu` > :T0_chi_id_menu 
+WHERE (`T0`.`chi_id_menu` > :T0_chi_id_menu
+   AND `T1`.`chi_id_page` IS NOT NULL) 
 ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ordre_menu` ASC
 ;',NULL,'menus',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('304','1','select','sélectionner(
@@ -2900,7 +2904,63 @@ WHERE (`T0`.`chi_id_projet` = 1)
 )  ','UPDATE b1.tbl_projets SET 
    `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
    `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
-WHERE (`chi_id_projet` = :c_chi_id_projet) ;',NULL,'dossiers à copier dans un autre environnement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+WHERE (`chi_id_projet` = :c_chi_id_projet) ;',NULL,'dossiers à copier dans un autre environnement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('310','1','update','modifier(
+   base_de_reference(),
+   valeurs(affecte(champ(`chi_id_source`),:n_chi_id_source)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`chi_id_source`),:c_chi_id_source),egal(champ(`chx_projet_id_source`),:c_chx_projet_id_source))
+   )
+)  ','UPDATE b1.tbl_sources SET 
+   `chi_id_source` = :n_chi_id_source
+WHERE (`chi_id_source` = :c_chi_id_source
+   AND `chx_projet_id_source` = :c_chx_projet_id_source) ;','function sql_310($par,&$donnees_retournees,$that){
+    $sql0=''UPDATE `''.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].''`.`tbl_sources` SET ''.PHP_EOL;
+    $tableau_champs=array();
+
+    if(isset($par[''n_chi_id_source''])){
+        if($par[''n_chi_id_source'']==='''' || $par[''n_chi_id_source'']===NULL ){
+            $tableau_champs[]=''`chi_id_source` = NULL'';
+        }else{
+            $tableau_champs[]=''`chi_id_source` = ''.sq0($par[''n_chi_id_source'']).'''';
+        }
+    }
+
+    if(count($tableau_champs)===0){
+        return array(/**/
+            __xst => __xer ,
+            __xme => ''aucun champ à mettre à jour'' ,
+            ''id_bdd'' => BDD_NUMERO_1 ,
+            ''source_requete'' => '''' , 
+            ''texte_requete'' => ''la modification dans la table des sources'' ,
+            ''exception'' => null , 
+        );
+    }
+    $sql0.=implode('',''.PHP_EOL.''    '',$tableau_champs).PHP_EOL;
+    $where0='' WHERE 1=1 ''.PHP_EOL;
+    $where0.='' AND `chi_id_source` = ''.sq1($par[''c_chi_id_source'']).''''.PHP_EOL;
+    $where0.='' AND `chx_projet_id_source` = ''.sq1($par[''c_chx_projet_id_source'']).''''.PHP_EOL;
+    $sql0.=$where0;
+    // echo __FILE__ . '' '' . __LINE__ . '' $sql0= <pre>'' . $sql0 . ''</pre>'' ; exit(0);
+    try{
+        $ret=$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->exec($sql0);
+        return(array( __xst => __xsu, ''changements'' => $GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->changes()));
+    }catch(Exception $e){
+        return array(/**/
+            __xst => __xer , 
+            ''source_requete'' => $sql0 , 
+            ''texte_requete'' => ''la modification dans la table des sources'' ,
+            ''exception'' => $e , 
+            ''id_bdd'' => BDD_NUMERO_1
+        );
+    }
+}
+','sources',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 
 /*
@@ -2911,20 +2971,17 @@ WHERE (`chi_id_projet` = :c_chi_id_projet) ;',NULL,'dossiers à copier dans un a
 
 INSERT INTO tbl_sources (chi_id_source,chx_projet_id_source,chp_nom_source,cht_commentaire_source,cht_rev_source,cht_genere_source,che_binaire_source,che__nur_source,chp__dtm_source,chp__dtc_source,chx_dossier_id_source) VALUES
 ('1','1','.htaccess',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
-('2','1','index.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
-('3','1','page404.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
-('4','1','.htaccess',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('5','1','__app.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('2','1','favicon.ico',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
+('3','1','index.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('4','1','page404.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('5','1','rvjb.png',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
 ('7','1','page404.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
 ('8','1','test_hdf.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
 ('9','1','bidon.js',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('10','1','exemple.sql',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('11','1','test.css',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('12','1','tictactoe.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('13','1','tictactoe.html.rev',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('14','1','index.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('15','1','favicon.ico',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
-('16','1','rvjb.png',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
+('11','1','.htaccess',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
+('12','1','__definitions.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
+('13','1','__version.txt',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
+('14','1','app.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
 ('17','1','favicon.ico',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','7'),
 ('18','1','c_accueil1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('19','1','c_aides1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
@@ -2982,15 +3039,18 @@ INSERT INTO tbl_sources (chi_id_source,chx_projet_id_source,chp_nom_source,cht_c
 ('71','1','postcss0.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
 ('72','1','sql_parser_cst.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
 ('73','1','sqlite_parser.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
-('74','1','app.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
-('75','1','__definitions.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
-('76','1','__version.txt',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
-('77','1','.htaccess',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
 ('78','1','PHPSERIALIZE.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('79','1','bat_pour_lire_fichier_session.bat',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('80','1','lire_fichier_session.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('81','1','server2.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
-('82','1','test001.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12');
+('82','1','test001.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
+('104','1','.htaccess',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('105','1','__app.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('110','1','exemple.sql',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('111','1','test.css',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('112','1','tictactoe.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('113','1','tictactoe.html.rev',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('114','1','index.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7');
 
 
 /*

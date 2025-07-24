@@ -404,81 +404,87 @@ class c_pages1{
         );
         
         if($tt[__xst] === __xsu){
+         
+         
+            /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues[__xva]['chx_source_page'] , true ) . '</pre>' ; exit(0);*/
+         
+            if($donnees_recues[__xva]['chx_source_page']!==null && $donnees_recues[__xva]['chx_source_page']!==''){
 
-            $tt162=/*sql_inclure_deb*/
-                /* sql_162()
-                SELECT 
-                `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
-                `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
-                 FROM b1.tbl_sources T0
-                 LEFT JOIN b1.tbl_projets T1 ON T1.chi_id_projet = T0.chx_projet_id_source
-                
-                 LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_id_source
+                $tt162=/*sql_inclure_deb*/
+                    /* sql_162()
+                    SELECT 
+                    `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
+                    `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
+                     FROM b1.tbl_sources T0
+                     LEFT JOIN b1.tbl_projets T1 ON T1.chi_id_projet = T0.chx_projet_id_source
+                    
+                     LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_id_source
+                    
+                    WHERE ( / *** *** / `T0`.`chi_id_source` = :T0_chi_id_source
+                       AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source)
+                    ;
+                    */
+                    /*sql_inclure_fin*/
+                    $this->sql0->sql_iii(
+                     /*sql_162()*/ 162,
+                    array(/**/
+                        'T0_chi_id_source' => $donnees_recues[__xva]['chx_source_page'],
+                        'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
+                    ),
+                    $donnees_retournees
+                );
                 
-                WHERE ( / *** *** / `T0`.`chi_id_source` = :T0_chi_id_source
-                   AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source)
-                ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
-                 /*sql_162()*/ 162,
-                array(/**/
-                    'T0_chi_id_source' => $donnees_recues[__xva]['chx_source_page'],
-                    'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
-                ),
-                $donnees_retournees
-            );
-            
-            if($tt162[__xst] === __xer){
+                if($tt162[__xst] === __xer){
 
-                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-                return;
-
-            }
-
-            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-            $obj_doss=new c_dossiers1(
-                $donnees_retournees,
-                 /*matrice*/ $mat,
-                $donnees_recues
-            );
-            $dossier=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
-            
-            if($dossier['__xst'] !== __xsu){
-
-                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-                return;
-
-            }
-
-            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt162[__xva][0] , true ) . '</pre>' ; exit(0);*/
-            
-            if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'])){
-
-                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-                return;
-
-            }
-
-            require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source']);
-            $class_methods=get_class_methods(str_replace('.php','',$tt162[__xva][0]['T0.chp_nom_source']));
-            $trouve=false;
-            foreach($class_methods as $k1 => $v1){
-                
-                if($v1 === $donnees_recues[__xva]['chp_methode_page']){
-
-                    $trouve=true;
-                    break;
+                    $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                    return;
 
                 }
 
-            }
-            
-            if($trouve === false){
+                require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
+                $obj_doss=new c_dossiers1(
+                    $donnees_retournees,
+                     /*matrice*/ $mat,
+                    $donnees_recues
+                );
+                $dossier=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
+                
+                if($dossier['__xst'] !== __xsu){
 
-                $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . var_export($class_methods,true) . ' [' . __LINE__ . ']';
-                return;
+                    $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                    return;
 
+                }
+
+                /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt162[__xva][0] , true ) . '</pre>' ; exit(0);*/
+                
+                if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source'])){
+
+                    $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                    return;
+
+                }
+
+                require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt162[__xva][0]['T0.chp_nom_source']);
+                $class_methods=get_class_methods(str_replace('.php','',$tt162[__xva][0]['T0.chp_nom_source']));
+                $trouve=false;
+                foreach($class_methods as $k1 => $v1){
+                    
+                    if($v1 === $donnees_recues[__xva]['chp_methode_page']){
+
+                        $trouve=true;
+                        break;
+
+                    }
+
+                }
+                
+                if($trouve === false){
+
+                    $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . var_export($class_methods,true) . ' [' . __LINE__ . ']';
+                    return;
+
+                }
             }
 
             /*

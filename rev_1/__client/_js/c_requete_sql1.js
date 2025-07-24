@@ -1431,6 +1431,7 @@ class c_requete_sql1{
         t+='<div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(zone_formule)))" title="formater le source rev" >(😊)</div>';
         t+='<div class="hug_bouton" data-hug_click="c_fonctions_js1(insérer_un_commentaire1(zone_source(zone_formule)))" title="insérer un commentaire" >#(😎)</div>';
         /* t+='<a href="javascript:__gi1.ajouter_un_commentaire_vide_et_reformater(&quot;zone_formule&quot;);" title="ajouter un commentaire et formatter">#()(😊)</a>'; */
+        t+='<div>egal,diff,comme,sup,supegal,inf,infegal,dans,est,n_est_pas,pas_comme</div>'        
         t+='<div class="yy_conteneur_txtara"><textarea id="zone_formule" data-editeur1="rev" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if((this.#obj_webs.type_de_requete === 'select'
                    || this.#obj_webs.type_de_requete === 'liste_ecran'
@@ -2476,8 +2477,9 @@ class c_requete_sql1{
                                            || tab[j][1] === 'sup'
                                            || tab[j][1] === 'supegal'
                                            || tab[j][1] === 'inf'
-                                           || tab[j][1] === 'est'
                                            || tab[j][1] === 'infegal'
+                                           || tab[j][1] === 'est'
+                                           || tab[j][1] === 'n_est_pas'
                                            || tab[j][1] === 'dans')
                                 ){
                                     var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
@@ -2517,6 +2519,8 @@ class c_requete_sql1{
                                || tab[i][1] === 'supegal'
                                || tab[i][1] === 'inf'
                                || tab[i][1] === 'infegal'
+                               || tab[i][1] === 'est'
+                               || tab[i][1] === 'n_est_pas'
                                || tab[i][1] === 'dans')
                     ){
                         var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , i , 0 , options );
@@ -3257,9 +3261,12 @@ class c_requete_sql1{
                                                    || tab[j][1] === 'diff'
                                                    || tab[j][1] === 'comme'
                                                    || tab[j][1] === 'sup'
+                                                   || tab[j][1] === 'supegal'
                                                    || tab[j][1] === 'inf'
                                                    || tab[j][1] === 'infegal'
                                                    || tab[j][1] === 'dans'
+                                                   || tab[j][1] === 'est'
+                                                   || tab[j][1] === 'n_est_pas'
                                                    || tab[j][1] === 'pas_comme')
                                         ){
                                             var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
@@ -3296,8 +3303,12 @@ class c_requete_sql1{
                                        || tab[i][1] === 'diff'
                                        || tab[i][1] === 'comme'
                                        || tab[i][1] === 'sup'
+                                       || tab[i][1] === 'supegal'
                                        || tab[i][1] === 'inf'
+                                       || tab[i][1] === 'infegal'
                                        || tab[i][1] === 'dans'
+                                       || tab[i][1] === 'est'
+                                       || tab[i][1] === 'n_est_pas'
                                        || tab[i][1] === 'pas_comme')
                             ){
                                 var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , i , 0 , options );
