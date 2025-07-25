@@ -1058,7 +1058,7 @@ CREATE TABLE tbl_menus(
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','515','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','516','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -2712,7 +2712,15 @@ WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet)
       )
    ),
    conditions(
-      et(egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source),egal(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source),egal(champ(`T0`,`chx_projet_id_source`),:T0_chx_projet_id_source),comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source))
+      et(
+         #(),
+         egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source),
+         sup(champ(`T0`,`chi_id_source`),:T0_chi_id_source2),
+         infegal(champ(`T0`,`chi_id_source`),:T0_chi_id_source3),
+         egal(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source),
+         egal(champ(`T0`,`chx_projet_id_source`),:T0_chx_projet_id_source),
+         comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source)
+      )
    ),
    complements(
       trier_par((champ(`T0`,`chx_dossier_id_source`),croissant()),(champ(`T0`,`chp_nom_source`),croissant()),(champ(`T0`,`chi_id_source`),croissant())),
@@ -2724,7 +2732,9 @@ WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet)
  FROM b1.tbl_sources T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
 
-WHERE (`T0`.`chi_id_source` = :T0_chi_id_source
+WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source
+   AND `T0`.`chi_id_source` > :T0_chi_id_source2
+   AND `T0`.`chi_id_source` <= :T0_chi_id_source3
    AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
    AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
    AND `T0`.`chp_nom_source` LIKE :T0_chp_nom_source) 
@@ -4012,7 +4022,33 @@ WHERE (`chi_id_source` = :c_chi_id_source
         );
     }
 }
-','sources',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+','sources',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('311','1','select','sélectionner(
+   base_de_reference(1),
+   valeurs(champ(`T0`,`chi_id_page`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_pages,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chx_source_page`),:T0_chx_source_page))
+)  ','SELECT 
+`T0`.`chi_id_page`
+ FROM b1.tbl_pages T0
+WHERE `T0`.`chx_source_page` = :T0_chx_source_page
+;',NULL,'pages par id_source',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('312','1','update','modifier(
+   base_de_reference(1),
+   valeurs(affecte(champ(`chx_source_page`),:n_chx_source_page)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_pages,base(b1)))
+      )
+   ),
+   conditions(dans(champ(`chi_id_page`),(:c_chi_id_page)))
+)  ','UPDATE b1.tbl_pages SET 
+   `chx_source_page` = :n_chx_source_page
+WHERE `chi_id_page` IN (:c_chi_id_page) ;',NULL,'page/id_source par id_source',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 /*
   ===============================
@@ -4033,67 +4069,28 @@ INSERT INTO tbl_sources (chi_id_source,chx_projet_id_source,chp_nom_source,cht_c
 ('3','1','index.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
 ('4','1','page404.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
 ('5','1','rvjb.png',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
-('7','1','page404.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('8','1','test_hdf.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('9','1','bidon.js',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
 ('11','1','.htaccess',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
 ('12','1','__definitions.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
 ('13','1','__version.txt',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
 ('14','1','app.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2'),
-('17','1','favicon.ico',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','7'),
-('18','1','c_accueil1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('19','1','c_aides1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('20','1','c_connexion1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('21','1','c_acces1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('22','1','c_bases1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('23','1','c_cookies1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('24','1','c_divers1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('25','1','c_dossiers1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('26','1','c_groupes1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('27','1','c_metiers1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('28','1','c_pages1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('29','1','c_profile1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('30','1','c_projets1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('31','1','c_requetes1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('32','1','c_rev_css1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('33','1','c_rev_html1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('34','1','c_rev_js1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('35','1','c_rev_mat1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('36','1','c_rev_php1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('37','1','c_rev_sql1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('38','1','c_rev_texte1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('39','1','c_rev_vers_matrice1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('40','1','c_revs1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('41','1','c_sources1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('42','1','c_sql0.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('43','1','c_svg1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('44','1','c_taches1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('45','1','c_utilisateurs1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('46','1','test_hdf.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('47','1','c_menus1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('48','1','c_astjs_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('49','1','c_astphpnikic_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('50','1','c_astphpparseur_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('51','1','c_astpostcss_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('52','1','c_astsql_parseur_cst_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('53','1','c_astsqliteparseur_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('54','1','c_fonctions_js1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('55','1','c_html_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('56','1','c_interface1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('57','1','c_requete_sql1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('58','1','c_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('59','1','c_rev_vers_css1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('60','1','c_rev_vers_html1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('61','1','c_rev_vers_js1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('62','1','c_rev_vers_php1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('63','1','c_rev_vers_sql1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('64','1','c_rev_vers_texte1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('65','1','c_svg_bdd1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('66','1','c_texte_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('67','1','c_worker1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('68','1','Sortable.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
-('69','1','acorn.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
-('70','1','php_parser.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('21','1','.htaccess',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('22','1','__app.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('23','1','favicon.ico',NULL,NULL,NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','7'),
+('24','1','index.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('25','1','page404.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('50','1','c_acces1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('51','1','c_accueil1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('52','1','c_aides1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('53','1','c_connexion1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('54','1','c_cookies1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('55','1','c_divers1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('56','1','c_groupes1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('57','1','c_menus1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('58','1','c_metiers1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('59','1','c_profile1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('60','1','c_rev_vers_matrice1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('61','1','c_taches1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('62','1','c_utilisateurs1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('71','1','postcss0.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
 ('72','1','sql_parser_cst.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
 ('73','1','sqlite_parser.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
@@ -4102,13 +4099,52 @@ INSERT INTO tbl_sources (chi_id_source,chx_projet_id_source,chp_nom_source,cht_c
 ('80','1','lire_fichier_session.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('81','1','server2.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('82','1','test001.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
-('104','1','.htaccess',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('105','1','__app.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('110','1','exemple.sql',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('111','1','test.css',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('112','1','tictactoe.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('113','1','tictactoe.html.rev',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('114','1','index.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7');
+('154','1','c_fonctions_js1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('155','1','c_html_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('156','1','c_interface1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('158','1','c_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('159','1','c_rev_vers_css1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('160','1','c_rev_vers_html1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('161','1','c_rev_vers_js1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('162','1','c_rev_vers_php1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('163','1','c_rev_vers_sql1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('164','1','c_rev_vers_texte1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('165','1','c_svg_bdd1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('166','1','c_texte_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('167','1','c_worker1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('168','1','Sortable.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('169','1','acorn.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('170','1','php_parser.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('201','1','c_astjs_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('202','1','c_astphpnikic_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('203','1','c_astphpparseur_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('204','1','c_astpostcss_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('205','1','c_astsql_parseur_cst_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('223','1','bidon.js',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('224','1','exemple.sql',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('225','1','c_dossiers1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('228','1','c_pages1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('229','1','test_hdf.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('230','1','c_projets1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('231','1','c_requetes1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('232','1','c_rev_css1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('233','1','c_rev_html1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('234','1','c_rev_js1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('235','1','c_rev_mat1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('236','1','c_rev_php1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('237','1','c_rev_sql1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('238','1','c_rev_texte1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('240','1','c_revs1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('241','1','c_sources1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('242','1','c_sql0.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('243','1','c_svg1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('246','1','test_hdf.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('253','1','c_astsqliteparseur_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('257','1','c_requete_sql1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('328','1','test.css',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('330','1','tictactoe.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('331','1','tictactoe.html.rev',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('353','1','c_bases1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9');
 
 
 /*
@@ -6327,30 +6363,30 @@ INSERT INTO tbl_metiers (chi_id_metier,chp_nom_metier,chx_parent_metier) VALUES
 */
 
 INSERT INTO tbl_pages (chi_id_page,chp_nom_page,chx_parent_page,chx_acces_page,chx_projet_page,chx_source_page,chp_methode_page,cht_complement_page,cht_contenu_methode_page) VALUES
-('1','accueil',NULL,'2','1','18','recupere_la_page_d_accueil',NULL,NULL),
-('2','aide et paramètres',NULL,'2','1','19','recupere_la_page_d_aide',NULL,NULL),
-('3','connexion',NULL,'2','1','20','recupere_la_page_de_connexion',NULL,NULL),
-('4','tâches',NULL,'1','1','44','page_liste_des_taches1',NULL,'T0_chp_priorite_tache2(99)'),
-('5','matrice',NULL,'1','1','35','page1','maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_rev1''))))',NULL),
-('6','js',NULL,'1','1','34','page1','maj_interface2(modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_js_rev1''))))',NULL),
-('7','html',NULL,'1','1','33','page1','maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_html_rev1''))))',NULL),
-('8','php',NULL,'1','1','36','page1','maj_interface2(modifier( id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_php_rev1''))))',NULL),
-('9','sql',NULL,'1','1','37','page1','maj_interface2(modifier( id(vv_txtarea_sql_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_sql_rev1''))))',NULL),
-('10','css',NULL,'1','1','32','page1','maj_interface2(modifier(id(vv_txtarea_css_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_css_rev1''))))',NULL),
-('11','txt',NULL,'1','1','38','page1','maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_texte_rev1''))))',NULL),
-('12','projets',NULL,'1','1','30','page_projets_liste1',NULL,NULL),
-('13','fido',NULL,'1','1','25','page_dossiers_liste1',NULL,NULL),
-('14','sources',NULL,'1','1','41','page_liste_des_sources1',NULL,NULL),
-('15','bases',NULL,'1','1','22','page_liste_des_bases1','',''),
-('16','requêtes',NULL,'1','1','31','page_liste_des_requetes1',NULL,NULL),
-('17','revs',NULL,'1','1','40','page_liste_des_revs1',NULL,NULL),
-('18','groupes',NULL,'1','1','26','page_liste_des_groupes1','',''),
-('19','métiers',NULL,'1','1','27','page_liste_des_metiers1',NULL,NULL),
-('20','utilisateurs',NULL,'1','1','45','page_liste_des_utilisateurs1',NULL,NULL),
-('21','accès',NULL,'1','1','21','page_liste_des_acces1',NULL,NULL),
-('22','pages',NULL,'1','1','28','page_liste_des_pages1',NULL,NULL),
-('23','menus',NULL,'1','1','47','page_liste_des_menus1',NULL,NULL),
-('24','profile',NULL,'1','1','29','recupere_la_page_des_coordonnees',NULL,NULL);
+('1','accueil',NULL,'2','1','51','recupere_la_page_d_accueil',NULL,NULL),
+('2','aide et paramètres',NULL,'2','1','52','recupere_la_page_d_aide',NULL,NULL),
+('3','connexion',NULL,'2','1','53','recupere_la_page_de_connexion',NULL,NULL),
+('4','tâches',NULL,'1','1','61','page_liste_des_taches1',NULL,'T0_chp_priorite_tache2(99)'),
+('5','matrice',NULL,'1','1','235','page1','maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_rev1''))))',NULL),
+('6','js',NULL,'1','1','234','page1','maj_interface2(modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_js_rev1''))))',NULL),
+('7','html',NULL,'1','1','233','page1','maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_html_rev1''))))',NULL),
+('8','php',NULL,'1','1','236','page1','maj_interface2(modifier( id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_php_rev1''))))',NULL),
+('9','sql',NULL,'1','1','237','page1','maj_interface2(modifier( id(vv_txtarea_sql_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_sql_rev1''))))',NULL),
+('10','css',NULL,'1','1','232','page1','maj_interface2(modifier(id(vv_txtarea_css_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_css_rev1''))))',NULL),
+('11','txt',NULL,'1','1','238','page1','maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_texte_rev1''))))',NULL),
+('12','projets',NULL,'1','1','230','page_projets_liste1',NULL,NULL),
+('13','fido',NULL,'1','1','225','page_dossiers_liste1',NULL,NULL),
+('14','sources',NULL,'1','1','241','page_liste_des_sources1',NULL,NULL),
+('15','bases',NULL,'1','1','353','page_liste_des_bases1','',''),
+('16','requêtes',NULL,'1','1','231','page_liste_des_requetes1',NULL,NULL),
+('17','revs',NULL,'1','1','240','page_liste_des_revs1',NULL,NULL),
+('18','groupes',NULL,'1','1','56','page_liste_des_groupes1','',''),
+('19','métiers',NULL,'1','1','58','page_liste_des_metiers1',NULL,NULL),
+('20','utilisateurs',NULL,'1','1','62','page_liste_des_utilisateurs1',NULL,NULL),
+('21','accès',NULL,'1','1','50','page_liste_des_acces1',NULL,NULL),
+('22','pages',NULL,'1','1','228','page_liste_des_pages1',NULL,NULL),
+('23','menus',NULL,'1','1','57','page_liste_des_menus1',NULL,NULL),
+('24','profile',NULL,'1','1','59','recupere_la_page_des_coordonnees',NULL,NULL);
 
 
 /*

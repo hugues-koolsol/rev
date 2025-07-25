@@ -677,7 +677,9 @@ WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet)
  FROM b1.tbl_sources T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
 
-WHERE (`T0`.`chi_id_source` = :T0_chi_id_source
+WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source
+   AND `T0`.`chi_id_source` > :T0_chi_id_source2
+   AND `T0`.`chi_id_source` <= :T0_chi_id_source3
    AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
    AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
    AND `T0`.`chp_nom_source` LIKE :T0_chp_nom_source) 
@@ -1258,5 +1260,21 @@ WHERE (`chi_id_projet` = :c_chi_id_projet) ;',
 WHERE (`chi_id_source` = :c_chi_id_source
    AND `chx_projet_id_source` = :c_chx_projet_id_source) ;',
     'cht_commentaire_requete' => 'sources',
+  ),
+  311 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_page`
+ FROM b1.tbl_pages T0
+WHERE `T0`.`chx_source_page` = :T0_chx_source_page
+;',
+    'cht_commentaire_requete' => 'pages par id_source',
+  ),
+  312 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_pages SET 
+   `chx_source_page` = :n_chx_source_page
+WHERE `chi_id_page` IN (:c_chi_id_page) ;',
+    'cht_commentaire_requete' => 'page/id_source par id_source',
   ),
 );

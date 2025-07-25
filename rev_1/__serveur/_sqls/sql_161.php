@@ -17,6 +17,12 @@ function sql_161($par,&$donnees_retournees,$that){
     if(($par['T0_chi_id_source'] !== '')){
         $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_source`',$par['T0_chi_id_source']);
     }
+    if(($par['T0_chi_id_source2'] !== '')){
+        $where0.=' AND `T0`.`chi_id_source` > '.sq1($par['T0_chi_id_source2']).''.PHP_EOL;
+    }
+    if(($par['T0_chi_id_source3'] !== '')){
+        $where0.=' AND `T0`.`chi_id_source` <= '.sq1($par['T0_chi_id_source3']).''.PHP_EOL;
+    }
     if(($par['T0_chx_dossier_id_source'] !== '')){
         $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_dossier_id_source`',$par['T0_chx_dossier_id_source']);
     }
