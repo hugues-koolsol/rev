@@ -977,7 +977,12 @@ class c_rev1{
       =============================================================================================================
     */
     txt_en_tableau( str ){
-        const l01=str.length;
+        let l01=0;
+        try{
+            l01=str.length;
+        }catch(e){
+         debugger;
+        }
         const tab=[];
         let i=0;
         let codeCaractere=0;

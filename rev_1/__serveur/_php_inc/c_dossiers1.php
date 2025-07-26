@@ -1097,7 +1097,7 @@ class c_dossiers1{
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '    <input type="hidden" value="' . $tt[__xva][0]['T0.chi_id_dossier'] . '" id="chi_id_dossier" />' . PHP_EOL;
-                $o1 .= '    <div class="hug_bouton" data-hug_click="c_dossiers1.formulaire1(conteneur1(vv_dossiers_supprimer1),page_dossiers_liste1())" title="" >Je confirme la suppression</div>';
+                $o1 .= '    <div class="hug_bouton yy__x_signaux_0" data-hug_click="c_dossiers1.formulaire1(conteneur1(vv_dossiers_supprimer1),page_dossiers_liste1())" title="" >Je confirme la suppression</div>';
                 $o1 .= '    <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_dossiers1.formulaire1(action1(page_dossiers_modifier1),chi_id_dossier(' . $tt[__xva][0]['T0.chi_id_dossier'] . '))" title="" >modifier ce dossier</div>';
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;

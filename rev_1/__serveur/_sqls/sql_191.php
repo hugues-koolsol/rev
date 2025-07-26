@@ -38,13 +38,6 @@ function sql_191($par,&$donnees_retournees,$that){
             $tableau_champs[]='`chp_methode_page` = \''.sq0($par['n_chp_methode_page']).'\'';
         }
     }
-    if(isset($par['n_chx_projet_page'])){
-        if($par['n_chx_projet_page']==='' || $par['n_chx_projet_page']===NULL ){
-            $tableau_champs[]='`chx_projet_page` = NULL';
-        }else{
-            $tableau_champs[]='`chx_projet_page` = '.sq0($par['n_chx_projet_page']).'';
-        }
-    }
     if(isset($par['n_cht_complement_page'])){
         if($par['n_cht_complement_page']==='' || $par['n_cht_complement_page']===NULL ){
             $tableau_champs[]='`cht_complement_page` = NULL';

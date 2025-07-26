@@ -406,12 +406,26 @@ class _c_interface1{
                 let lst2=lst1[i].getElementsByTagName('input');
                 for(let j=0;j<lst2.length;j++){
 
-                    if(lst2[j].value!==''){
+                    if(lst2[j].value!=='' ){
                        focus_trouve=true;
                        lst2[j].focus();
                        lst2[j].select();
                        i=lst1.length;
                        break;
+                    }
+                }
+            }
+        }
+        if(focus_trouve===false){
+            let lst1=document.getElementsByTagName( "*" );
+            for(let i=0;i<lst1.length && focus_trouve===false;i++){
+                if(lst1[i].tagName.toLowerCase()==='input' || lst1[i].tagName.toLowerCase()==='textarea'){
+                    if(lst1[i].disabled===false && !(lst1[i].type==='hidden')){
+                        focus_trouve=true;
+                        lst1[i].focus();
+                        lst1[i].select();
+                        i=lst1.length;
+                        break;
                     }
                 }
             }

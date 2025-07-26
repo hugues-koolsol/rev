@@ -643,7 +643,6 @@ class c_sources1{
       =============================================================================================================
     */
     function vv_sources_modifier1(&$donnees_retournees,&$mat,&$donnees_recues){
-        /* exemple de déverminage*/
         /*
           $donnees_retournees[__x_signaux][__xal][]=__LINE__.' TODO $donnees_recues '.var_export($donnees_recues,true);
         */
@@ -660,7 +659,7 @@ class c_sources1{
 
         }
         /*si l'utilisateur bidouille l'id dans l'interface*/
-        $tt=/*sql_inclure_deb*/
+        $tt162=/*sql_inclure_deb*/
             /* sql_162()
             SELECT 
 
@@ -689,10 +688,10 @@ class c_sources1{
             $donnees_retournees
         );
         
-        if($tt[__xst] === __xsu){
+        if($tt162[__xst] === __xsu){
 
-            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt[__xva][0] , true ) . '</pre>' ; exit(0);*/
-            $tt=/*sql_inclure_deb*/
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt162[__xva][0] , true ) . '</pre>' ; exit(0);*/
+            $tt163=/*sql_inclure_deb*/
                 /* sql_163()
                 UPDATE b1.tbl_sources SET 
 
@@ -719,7 +718,7 @@ class c_sources1{
                 array(
                     /**/
                     'c_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
-                    'c_chi_id_source' => $tt[__xva][0]['T0.chi_id_source'],
+                    'c_chi_id_source' => $tt162[__xva][0]['T0.chi_id_source'],
                     'n_cht_rev_source' => $donnees_recues[__xva]['cht_rev_source'],
                     'n_cht_genere_source' => $donnees_recues[__xva]['cht_genere_source'],
                     'n_chp_nom_source' => $donnees_recues[__xva]['chp_nom_source'],
@@ -730,9 +729,9 @@ class c_sources1{
                 $donnees_retournees
             );
             
-            if($tt[__xst] === __xer){
+            if($tt163[__xst] === __xer){
 
-                $code_erreur=$tt['code_erreur']??0;
+                $code_erreur=$tt163['code_erreur']??0;
                 
                 if($code_erreur === 19){
 
@@ -745,7 +744,53 @@ class c_sources1{
 
                 return;
 
-            }else if($tt['changements'] === 1){
+            }else if($tt163['changements'] === 1){
+             
+             
+                require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
+                $obj_doss=new c_dossiers1(
+                    $donnees_retournees,
+                     /*matrice*/ $mat,
+                    $donnees_recues
+                );
+                $dossier_ancien=$obj_doss->construire_chemin($tt162[__xva][0]['T0.chx_dossier_id_source']);
+                if($dossier_ancien[__xst]===__xsu){
+                    if(!is_dir($dossier_ancien[__xva]['chemin_absolu'])){
+                      /*
+                        le dossier de ce source n'existe pas encore donc on ne fait rien
+                      */
+                    }else{
+                        $ancien_chemin=$dossier_ancien[__xva]['chemin_absolu'].DIRECTORY_SEPARATOR. $tt162[__xva][0]['T0.chp_nom_source'];
+                        if(!is_file( $ancien_chemin )){
+                            /*
+                              le fichier source n'existe pas encore donc on ne fait rien
+                            */
+                        }else{
+                            
+                            if((int)$donnees_recues[__xva]['chx_dossier_id_source']===$tt162[__xva][0]['T0.chx_dossier_id_source']){
+                                /*
+                                  si on ne fait que renommer le fichier dans le même dossier
+                                */
+                                if($donnees_recues[__xva]['chp_nom_source'] !== $tt162[__xva][0]['T0.chp_nom_source']){
+                                    if(!rename($ancien_chemin , $dossier_ancien[__xva]['chemin_absolu'].DIRECTORY_SEPARATOR. $donnees_recues[__xva]['chp_nom_source'])){
+                                        $donnees_retournees[__x_signaux][__xdv][]=' attention, le fichier physique n\'a pas pu être ronommé [' . __LINE__ . ']';
+                                    }
+                                }
+                            }else{
+                                $dossier_nouveau=$obj_doss->construire_chemin($donnees_recues[__xva]['chx_dossier_id_source']);
+                                if($dossier_nouveau[__xst]===__xsu){
+                                    if(is_dir($dossier_nouveau[__xva]['chemin_absolu'])){
+                                        $nouveau_chemin=$dossier_nouveau[__xva]['chemin_absolu'].DIRECTORY_SEPARATOR. $donnees_recues[__xva]['chp_nom_source'];
+                                        if(!rename($ancien_chemin , $nouveau_chemin)){
+                                            $donnees_retournees[__x_signaux][__xdv][]=' attention, le fichier physique n\'a pas pu être ronommé [' . __LINE__ . ']';
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
 
                 
                 if($page_liste_des_sources1 === true){
@@ -2920,6 +2965,45 @@ class c_sources1{
 
         }
 
+
+        $tt162=/*sql_inclure_deb*/
+            /* sql_162()
+            SELECT 
+
+            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
+
+            `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T2`.`chp_nom_dossier` , `T0`.`che_binaire_source`
+             FROM b1.tbl_sources T0
+
+             LEFT JOIN b1.tbl_projets T1 ON T1.chi_id_projet = T0.chx_projet_id_source
+            
+
+             LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_id_source
+            
+            WHERE ( / *** *** / `T0`.`chi_id_source` = :T0_chi_id_source
+
+               AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source)
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
+             /*sql_162()*/ 162,
+            array( 'T0_chi_id_source' => $chi_id_source, 'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
+            $donnees_retournees
+        );
+        if($tt162[__xst] === __xer){
+
+            $donnees_retournees[__x_signaux][__xer][]='erreur dans obtenir_les_methodes  [' . __LINE__ . ']';
+            return;
+
+        }
+        
+        
+        
+
+        $o1 .= 'pour le source <br />';
+        $o1 .= '<input type="text" disabled="true" size="64" id="vv_nom_source" value="' . $tt162[__xva][0]['T0.chp_nom_source'] . '" />';
+        $o1 .= '<br />';
         $o1 .= 'le numéro actuel est <b>' . $chi_id_source . '</b>';
         $o1 .= '<br />';
         $o1 .= '<div id="vv_sources_nouveau_numero2">';

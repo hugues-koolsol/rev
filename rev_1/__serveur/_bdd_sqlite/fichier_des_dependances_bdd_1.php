@@ -121,13 +121,6 @@ $tableau_des_dependances=array (
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
-      5 => 
-      array (
-        'table_dependante' => 'tbl_pages',
-        'champ_dependant' => 'chx_projet_page',
-        'non_nulle' => '0',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
     ),
   ),
   'tbl_groupes_chi_id_groupe' => 

@@ -724,15 +724,6 @@ CREATE TABLE tbl_bdds(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_rev_basedd'),champ('chp_rev_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
-            )
-            */
-             chp_rev_basedd text
-    ,
-    
-            /*
-            meta(
             genre_meta(champ),nom_du_champ('chp_commentaire_basedd'),champ('chp_commentaire_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
             typologie(),afficher_champ_dans_svg(1)
             )
@@ -910,15 +901,6 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_projet_page'),champ('chx_projet_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1),refe_enfant_droite(1)
-            )
-            */
-             chx_projet_page INTEGER REFERENCES tbl_projets(chi_id_projet) 
-    ,
-    
-            /*
-            meta(
             genre_meta(champ),nom_du_champ('chx_source_page'),champ('chx_source_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
             typologie(chx),afficher_champ_dans_svg(1),refe_enfant_droite(1),refe_parent_gauche(1)
             )
@@ -1042,7 +1024,16 @@ CREATE TABLE tbl_menus(
             )
             */
              cht_prerequis_php_menu TEXT
-    , cht_libelle_menu TEXT);
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('cht_libelle_menu'),champ('cht_libelle_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(cht),afficher_champ_dans_svg(1)
+            )
+            */
+             cht_libelle_menu TEXT
+    );
 
 /*
   ============================
@@ -1058,7 +1049,7 @@ CREATE TABLE tbl_menus(
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','516','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','517','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -1395,7 +1386,7 @@ dans le répertoire rev_2 et on travaillera sur l''url frev/rev_2.
 Dans le projet 2, le fichier __serveur/__definitions.php sera le seul fichier différent
 
 Ce projet est utilisé pour la mise à jour du projet principal','0','2000-01-01 00:00:00','2000-01-01 00:00:00',NULL,NULL),
-('3','le bô projet','','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','','');
+('3','3','','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','','');
 
 
 /*
@@ -1815,11 +1806,11 @@ WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
 ORDER BY `T0`.`chi_id_basedd` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('116','1','update','modifier(
+('116','1','update','#(meta(sur_base_de_reference(1))),
+modifier(
    base_de_reference(1),
    valeurs(
       affecte(champ(`chx_dossier_id_basedd`),:n_chx_dossier_id_basedd),
-      affecte(champ(`chp_rev_basedd`),:n_chp_rev_basedd),
       affecte(champ(`chp_commentaire_basedd`),:n_chp_commentaire_basedd),
       affecte(champ(`chp_genere_basedd`),:n_chp_genere_basedd),
       affecte(champ(`chp_rev_travail_basedd`),:n_chp_rev_travail_basedd),
@@ -1833,9 +1824,10 @@ LIMIT :quantitee OFFSET :debut
    conditions(
       et(egal(champ(`chi_id_basedd`),:c_chi_id_basedd),egal(champ(`chx_projet_id_basedd`),:c_chx_projet_id_basedd))
    )
-)  ','UPDATE b1.tbl_bdds SET 
+)  ','/*meta(sur_base_de_reference(1))*/
+
+UPDATE b1.tbl_bdds SET 
    `chx_dossier_id_basedd` = :n_chx_dossier_id_basedd , 
-   `chp_rev_basedd` = :n_chp_rev_basedd , 
    `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
    `chp_genere_basedd` = :n_chp_genere_basedd , 
    `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd , 
@@ -2006,43 +1998,44 @@ supprimer(
 DELETE FROM b1.tbl_dossiers
 WHERE (`chi_id_dossier` IN (:liste_des_ids_a_supprimer)
    AND `chx_projet_dossier` = :chx_projet_dossier) ;',NULL,'***dispo***',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('126','1','select','sélectionner(
+('126','1','select','#(meta(sur_base_de_reference(1))),
+sélectionner(
    base_de_reference(1),
    valeurs(
-      champ( `T0` , `chi_id_basedd`),
-      champ( `T0` , `chx_dossier_id_basedd`),
-      champ( `T0` , `chx_projet_id_basedd`),
-      champ( `T0` , `chp_rev_basedd`),
-      champ( `T0` , `chp_commentaire_basedd`),
-      champ( `T0` , `chp_genere_basedd`),
-      champ( `T0` , `chp_rev_travail_basedd`),
-      champ( `T0` , `chp_fournisseur_basedd`),
-      champ( `T1` , `chi_id_dossier`),
-      champ( `T1` , `chx_projet_dossier`),
-      champ( `T1` , `chp_nom_dossier`),
-      champ( `T2` , `chi_id_projet`),
-      champ( `T2` , `chp_nom_projet`)
+      champ(`T0`,`chi_id_basedd`),
+      champ(`T0`,`chx_dossier_id_basedd`),
+      champ(`T0`,`chx_projet_id_basedd`),
+      champ(`T0`,`chp_commentaire_basedd`),
+      champ(`T0`,`chp_genere_basedd`),
+      champ(`T0`,`chp_rev_travail_basedd`),
+      champ(`T0`,`chp_fournisseur_basedd`),
+      champ(`T1`,`chi_id_dossier`),
+      champ(`T1`,`chx_projet_dossier`),
+      champ(`T1`,`chp_nom_dossier`),
+      champ(`T2`,`chi_id_projet`),
+      champ(`T2`,`chp_nom_projet`)
    ),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_bdds , alias(T0) , base(b1) ))
+         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_dossiers , alias(T1) , base(b1) )),
-         contrainte( egal( champ( T1 , chi_id_dossier ) , champ( T0 , chx_dossier_id_basedd ) ))
+         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_dossier_id_basedd)))
       ),
       jointure_gauche(
-         source( nom_de_la_table( tbl_projets , alias(T2) , base(b1) )),
-         contrainte( egal( champ( T2 , chi_id_projet ) , champ( T0 , chx_projet_id_basedd ) ))
+         source(nom_de_la_table(tbl_projets,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_projet),champ(T0,chx_projet_id_basedd)))
       )
    ),
    conditions(
-      et( egal( champ( `T0` , `chi_id_basedd` ) , :T0_chi_id_basedd ) , egal( champ( `T0` , `chx_projet_id_basedd` ) , :T0_chx_projet_id_basedd ))
+      et(egal(champ(`T0`,`chi_id_basedd`),:T0_chi_id_basedd),egal(champ(`T0`,`chx_projet_id_basedd`),:T0_chx_projet_id_basedd))
    )
-)','SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
-`T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
-`T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+)  ','/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
+`T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
+`T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
  FROM b1.tbl_bdds T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
 
@@ -2058,10 +2051,9 @@ sélectionner(
       champ(`T0`,`chi_id_basedd`),
       champ(`T0`,`chx_dossier_id_basedd`),
       champ(`T0`,`chx_projet_id_basedd`),
-      champ(`T0`,`chp_rev_basedd`),
+      champ(`T0`,`chp_rev_travail_basedd`),
       champ(`T0`,`chp_commentaire_basedd`),
       champ(`T0`,`chp_genere_basedd`),
-      champ(`T0`,`chp_rev_travail_basedd`),
       champ(`T0`,`chp_fournisseur_basedd`),
       champ(`T1`,`chi_id_dossier`),
       champ(`T1`,`chx_projet_dossier`),
@@ -2087,9 +2079,9 @@ sélectionner(
    conditions(egal(champ(`T0`,`chx_projet_id_basedd`),:T0_chx_projet_id_basedd))
 )  ','/*meta(sur_base_de_reference(1))*/
 SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
-`T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
-`T1`.`chp_nom_dossier` , `T1`.`chx_parent_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`chp_commentaire_projet`
+`T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , 
+`T0`.`chp_genere_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
+`T1`.`chx_parent_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`chp_commentaire_projet`
  FROM b1.tbl_bdds T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
 
@@ -2347,21 +2339,18 @@ supprimer(
 DELETE FROM b1.tbl_sources
 WHERE (`chi_id_source` = :chi_id_source
    AND `chx_projet_id_source` = :chx_projet_id_source) ;',NULL,'sources',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('140','1','update','modifier(
+('140','1','select','sélectionner(
    base_de_reference(1),
-   valeurs(affecte(champ(`chp_rev_basedd`),:n_chp_rev_basedd)),
+   valeurs(champ(`T0`,`chi_id_basedd`)),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_bdds,base(b1)))
+         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
       )
-   ),
-   conditions(
-      et(egal(champ(`chi_id_basedd`),:c_chi_id_basedd),egal(champ(`chx_projet_id_basedd`),:c_chx_projet_id_basedd))
    )
-)  ','UPDATE b1.tbl_bdds SET 
-   `chp_rev_basedd` = :n_chp_rev_basedd
-WHERE (`chi_id_basedd` = :c_chi_id_basedd
-   AND `chx_projet_id_basedd` = :c_chx_projet_id_basedd) ;',NULL,'bdds',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+)  ','SELECT 
+`T0`.`chi_id_basedd`
+ FROM b1.tbl_bdds T0
+;',NULL,'bdds',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('141','1','requete_manuelle','base_de_reference(1),
 transaction()  ','BEGIN TRANSACTION;',NULL,'sur base 1',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('142','1','requete_manuelle','base_de_reference(1),
@@ -2949,7 +2938,7 @@ WHERE ( /* */ `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
 WHERE `chx_projet_dossier` = :chx_projet_dossier ;',NULL,'dossier racine d''un projet',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('171','1','select','sélectionner(
    base_de_reference(1),
-   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),
+   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
@@ -2959,7 +2948,7 @@ WHERE `chx_projet_dossier` = :chx_projet_dossier ;',NULL,'dossier racine d''un p
       et(egal(champ(`T0`,`chx_projet_id_basedd`),:T0_chx_projet_id_basedd))
    )
 )  ','SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_rev_travail_basedd`
+`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
  FROM b1.tbl_bdds T0
 WHERE (`T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
 ;',NULL,'bases d''un projet',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -3321,18 +3310,17 @@ LIMIT :quantitee OFFSET :debut
 ('189','1','insert','insérer(
    base_de_reference(1),
    valeurs(
-      affecte( champ( `chp_nom_page` ) , :chp_nom_page),
-      affecte( champ( `chx_parent_page` ) , :chx_parent_page),
-      affecte( champ( `chx_acces_page` ) , :chx_acces_page),
-      affecte( champ( `chx_source_page` ) , :chx_source_page),
-      affecte( champ( `chp_methode_page` ) , :chp_methode_page),
-      affecte( champ( `chx_projet_page` ) , :chx_projet_page),
-      affecte( champ( `cht_complement_page` ) , :cht_complement_page),
-      affecte( champ( `cht_contenu_methode_page` ) , :cht_contenu_methode_page)
+      affecte(champ(`chp_nom_page`),:chp_nom_page),
+      affecte(champ(`chx_parent_page`),:chx_parent_page),
+      affecte(champ(`chx_acces_page`),:chx_acces_page),
+      affecte(champ(`chx_source_page`),:chx_source_page),
+      affecte(champ(`chp_methode_page`),:chp_methode_page),
+      affecte(champ(`cht_complement_page`),:cht_complement_page),
+      affecte(champ(`cht_contenu_methode_page`),:cht_contenu_methode_page)
    ),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_pages , base(b1) ))
+         source(nom_de_la_table(tbl_pages,base(b1)))
       )
    )
 )  ','INSERT INTO b1.`tbl_pages`(
@@ -3341,7 +3329,6 @@ LIMIT :quantitee OFFSET :debut
     `chx_acces_page` , 
     `chx_source_page` , 
     `chp_methode_page` , 
-    `chx_projet_page` , 
     `cht_complement_page` , 
     `cht_contenu_methode_page`
 ) VALUES (
@@ -3350,7 +3337,6 @@ LIMIT :quantitee OFFSET :debut
     :chx_acces_page , 
     :chx_source_page , 
     :chp_methode_page , 
-    :chx_projet_page , 
     :cht_complement_page , 
     :cht_contenu_methode_page
 );',NULL,'pages',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -3403,28 +3389,26 @@ WHERE `T0`.`chi_id_page` = :T0_chi_id_page
 ('191','1','update','modifier(
    base_de_reference(1),
    valeurs(
-      affecte( champ( `chp_nom_page` ) , :n_chp_nom_page),
-      affecte( champ( `chx_parent_page` ) , :n_chx_parent_page),
-      affecte( champ( `chx_acces_page` ) , :n_chx_acces_page),
-      affecte( champ( `chx_source_page` ) , :n_chx_source_page),
-      affecte( champ( `chp_methode_page` ) , :n_chp_methode_page),
-      affecte( champ( `chx_projet_page` ) , :n_chx_projet_page),
-      affecte( champ( `cht_complement_page` ) , :n_cht_complement_page),
-      affecte( champ( `cht_contenu_methode_page` ) , :n_cht_contenu_methode_page)
+      affecte(champ(`chp_nom_page`),:n_chp_nom_page),
+      affecte(champ(`chx_parent_page`),:n_chx_parent_page),
+      affecte(champ(`chx_acces_page`),:n_chx_acces_page),
+      affecte(champ(`chx_source_page`),:n_chx_source_page),
+      affecte(champ(`chp_methode_page`),:n_chp_methode_page),
+      affecte(champ(`cht_complement_page`),:n_cht_complement_page),
+      affecte(champ(`cht_contenu_methode_page`),:n_cht_contenu_methode_page)
    ),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_pages , base(b1) ))
+         source(nom_de_la_table(tbl_pages,base(b1)))
       )
    ),
-   conditions( egal( champ( `chi_id_page` ) , :c_chi_id_page ))
+   conditions(egal(champ(`chi_id_page`),:c_chi_id_page))
 )  ','UPDATE b1.tbl_pages SET 
    `chp_nom_page` = :n_chp_nom_page , 
    `chx_parent_page` = :n_chx_parent_page , 
    `chx_acces_page` = :n_chx_acces_page , 
    `chx_source_page` = :n_chx_source_page , 
    `chp_methode_page` = :n_chp_methode_page , 
-   `chx_projet_page` = :n_chx_projet_page , 
    `cht_complement_page` = :n_cht_complement_page , 
    `cht_contenu_methode_page` = :n_cht_contenu_methode_page
 WHERE `chi_id_page` = :c_chi_id_page ;',NULL,'pages',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -4048,7 +4032,72 @@ WHERE `T0`.`chx_source_page` = :T0_chx_source_page
    conditions(dans(champ(`chi_id_page`),(:c_chi_id_page)))
 )  ','UPDATE b1.tbl_pages SET 
    `chx_source_page` = :n_chx_source_page
-WHERE `chi_id_page` IN (:c_chi_id_page) ;',NULL,'page/id_source par id_source',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+WHERE `chi_id_page` IN (:c_chi_id_page) ;',NULL,'page/id_source par id_source',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('313','1','select','#(meta(sur_base_de_reference(1))),
+sélectionner(
+   base_de_reference(1),
+   valeurs(
+      champ(`T0`,`chi_id_source`),
+      champ(`T0`,`chx_projet_id_source`),
+      champ(`T0`,`chp_nom_source`),
+      champ(`T0`,`cht_commentaire_source`),
+      champ(`T0`,`cht_rev_source`),
+      champ(`T0`,`cht_genere_source`),
+      champ(`T0`,`che_binaire_source`),
+      champ(`T0`,`chx_dossier_id_source`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(inf(champ(`T0`,`chi_id_source`),:T0_chi_id_source),pas_comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source))
+   )
+)  ','/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chi_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+`T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`chx_dossier_id_source`
+ FROM b1.tbl_sources T0
+WHERE (`T0`.`chi_id_source` < :T0_chi_id_source
+   AND `T0`.`chp_nom_source` NOT LIKE :T0_chp_nom_source)
+;',NULL,'sources à copier dans un autre environnement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('314','1','insert','insérer(
+   base_de_reference(),
+   valeurs(
+      affecte(champ(`chi_id_source`),:chi_id_source),
+      affecte(champ(`chx_projet_id_source`),:chx_projet_id_source),
+      affecte(champ(`chp_nom_source`),:chp_nom_source),
+      affecte(champ(`cht_commentaire_source`),:cht_commentaire_source),
+      affecte(champ(`che_binaire_source`),:che_binaire_source),
+      affecte(champ(`chp__dtm_source`),:chp__dtm_source),
+      affecte(champ(`chp__dtc_source`),:chp__dtc_source),
+      affecte(champ(`chx_dossier_id_source`),:chx_dossier_id_source)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_sources`(
+    `chi_id_source` , 
+    `chx_projet_id_source` , 
+    `chp_nom_source` , 
+    `cht_commentaire_source` , 
+    `che_binaire_source` , 
+    `chp__dtm_source` , 
+    `chp__dtc_source` , 
+    `chx_dossier_id_source`
+) VALUES (
+    :chi_id_source , 
+    :chx_projet_id_source , 
+    :chp_nom_source , 
+    :cht_commentaire_source , 
+    :che_binaire_source , 
+    :chp__dtm_source , 
+    :chp__dtc_source , 
+    :chx_dossier_id_source
+);',NULL,'dossiers à copier dans un autre environnement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 /*
   ===============================
@@ -4091,40 +4140,25 @@ INSERT INTO tbl_sources (chi_id_source,chx_projet_id_source,chp_nom_source,cht_c
 ('60','1','c_rev_vers_matrice1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('61','1','c_taches1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('62','1','c_utilisateurs1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('71','1','postcss0.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
-('72','1','sql_parser_cst.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
-('73','1','sqlite_parser.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
-('78','1','PHPSERIALIZE.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('79','1','bat_pour_lire_fichier_session.bat',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('80','1','lire_fichier_session.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('81','1','server2.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('82','1','test001.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('154','1','c_fonctions_js1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('155','1','c_html_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
 ('156','1','c_interface1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
 ('158','1','c_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('159','1','c_rev_vers_css1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('160','1','c_rev_vers_html1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('161','1','c_rev_vers_js1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('162','1','c_rev_vers_php1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('163','1','c_rev_vers_sql1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('164','1','c_rev_vers_texte1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('165','1','c_svg_bdd1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('166','1','c_texte_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
 ('167','1','c_worker1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
 ('168','1','Sortable.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
-('169','1','acorn.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
-('170','1','php_parser.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
 ('201','1','c_astjs_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
 ('202','1','c_astphpnikic_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
 ('203','1','c_astphpparseur_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
 ('204','1','c_astpostcss_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
 ('205','1','c_astsql_parseur_cst_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
-('223','1','bidon.js',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('224','1','exemple.sql',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('223','1','test.js',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('224','1','test.sql',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
 ('225','1','c_dossiers1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('228','1','c_pages1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('229','1','test_hdf.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('229','1','test.php',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
 ('230','1','c_projets1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('231','1','c_requetes1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('232','1','c_rev_css1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
@@ -4140,10 +4174,25 @@ INSERT INTO tbl_sources (chi_id_source,chx_projet_id_source,chp_nom_source,cht_c
 ('243','1','c_svg1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('246','1','test_hdf.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
 ('253','1','c_astsqliteparseur_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('255','1','c_html_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
 ('257','1','c_requete_sql1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('259','1','c_rev_vers_css1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('260','1','c_rev_vers_html1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('261','1','c_rev_vers_js1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('262','1','c_rev_vers_php1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('263','1','c_rev_vers_sql1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('264','1','c_rev_vers_texte1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('265','1','c_svg_bdd1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('266','1','c_texte_vers_rev1.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','10'),
+('269','1','acorn.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('270','1','php_parser.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('271','1','postcss0.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('272','1','sql_parser_cst.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('273','1','sqlite_parser.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('278','1','PHPSERIALIZE.js',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','12'),
 ('328','1','test.css',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
 ('330','1','tictactoe.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('331','1','tictactoe.html.rev',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
+('331','1','test_tictactoe.html.rev',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
 ('353','1','c_bases1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9');
 
 
@@ -4173,8 +4222,8 @@ INSERT INTO tbl_dossiers (chi_id_dossier,chx_projet_dossier,chp_nom_dossier,chx_
   ===============================
 */
 
-INSERT INTO tbl_bdds (chi_id_basedd,chx_projet_id_basedd,chp_rev_basedd,chp_commentaire_basedd,chp_genere_basedd,chp_rev_travail_basedd,chp_fournisseur_basedd,chx_dossier_id_basedd,che__nur_basedd,chp__dtm_basedd,chp__dtc_basedd) VALUES
-('1','1',NULL,NULL,NULL,'meta(
+INSERT INTO tbl_bdds (chi_id_basedd,chx_projet_id_basedd,chp_commentaire_basedd,chp_genere_basedd,chp_rev_travail_basedd,chp_fournisseur_basedd,chx_dossier_id_basedd,che__nur_basedd,chp__dtm_basedd,chp__dtc_basedd) VALUES
+('1','1',NULL,NULL,'meta(
    #(),
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
@@ -5555,20 +5604,6 @@ créer_table(
          )
       ),
       champ(
-         nom_du_champ(''chp_rev_basedd''),
-         type(''text''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_rev_basedd''),
-            champ(''chp_rev_basedd''),
-            nom_long_du_champ(''''),
-            nom_court_du_champ(''''),
-            nom_bref_du_champ(''''),
-            typologie(),
-            afficher_champ_dans_svg(1)
-         )
-      ),
-      champ(
          nom_du_champ(''chp_commentaire_basedd''),
          type(''text''),
          meta(
@@ -5911,22 +5946,6 @@ créer_table(
          )
       ),
       champ(
-         nom_du_champ(''chx_projet_page''),
-         type(''INTEGER''),
-         references(tbl_projets,chi_id_projet),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chx_projet_page''),
-            champ(''chx_projet_page''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chx),
-            afficher_champ_dans_svg(1),
-            refe_enfant_droite(1)
-         )
-      ),
-      champ(
          nom_du_champ(''chx_source_page''),
          type(''INTEGER''),
          references(tbl_sources,chi_id_source),
@@ -6181,7 +6200,7 @@ créer_table(
       )
    )
 )','sqlite','3','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('2','1',NULL,NULL,NULL,'meta(
+('2','1',NULL,NULL,'meta(
    #(),
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
@@ -6362,31 +6381,31 @@ INSERT INTO tbl_metiers (chi_id_metier,chp_nom_metier,chx_parent_metier) VALUES
   ===============================
 */
 
-INSERT INTO tbl_pages (chi_id_page,chp_nom_page,chx_parent_page,chx_acces_page,chx_projet_page,chx_source_page,chp_methode_page,cht_complement_page,cht_contenu_methode_page) VALUES
-('1','accueil',NULL,'2','1','51','recupere_la_page_d_accueil',NULL,NULL),
-('2','aide et paramètres',NULL,'2','1','52','recupere_la_page_d_aide',NULL,NULL),
-('3','connexion',NULL,'2','1','53','recupere_la_page_de_connexion',NULL,NULL),
-('4','tâches',NULL,'1','1','61','page_liste_des_taches1',NULL,'T0_chp_priorite_tache2(99)'),
-('5','matrice',NULL,'1','1','235','page1','maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_rev1''))))',NULL),
-('6','js',NULL,'1','1','234','page1','maj_interface2(modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_js_rev1''))))',NULL),
-('7','html',NULL,'1','1','233','page1','maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_html_rev1''))))',NULL),
-('8','php',NULL,'1','1','236','page1','maj_interface2(modifier( id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_php_rev1''))))',NULL),
-('9','sql',NULL,'1','1','237','page1','maj_interface2(modifier( id(vv_txtarea_sql_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_sql_rev1''))))',NULL),
-('10','css',NULL,'1','1','232','page1','maj_interface2(modifier(id(vv_txtarea_css_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_css_rev1''))))',NULL),
-('11','txt',NULL,'1','1','238','page1','maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_texte_rev1''))))',NULL),
-('12','projets',NULL,'1','1','230','page_projets_liste1',NULL,NULL),
-('13','fido',NULL,'1','1','225','page_dossiers_liste1',NULL,NULL),
-('14','sources',NULL,'1','1','241','page_liste_des_sources1',NULL,NULL),
-('15','bases',NULL,'1','1','353','page_liste_des_bases1','',''),
-('16','requêtes',NULL,'1','1','231','page_liste_des_requetes1',NULL,NULL),
-('17','revs',NULL,'1','1','240','page_liste_des_revs1',NULL,NULL),
-('18','groupes',NULL,'1','1','56','page_liste_des_groupes1','',''),
-('19','métiers',NULL,'1','1','58','page_liste_des_metiers1',NULL,NULL),
-('20','utilisateurs',NULL,'1','1','62','page_liste_des_utilisateurs1',NULL,NULL),
-('21','accès',NULL,'1','1','50','page_liste_des_acces1',NULL,NULL),
-('22','pages',NULL,'1','1','228','page_liste_des_pages1',NULL,NULL),
-('23','menus',NULL,'1','1','57','page_liste_des_menus1',NULL,NULL),
-('24','profile',NULL,'1','1','59','recupere_la_page_des_coordonnees',NULL,NULL);
+INSERT INTO tbl_pages (chi_id_page,chp_nom_page,chx_parent_page,chx_acces_page,chx_source_page,chp_methode_page,cht_complement_page,cht_contenu_methode_page) VALUES
+('1','accueil',NULL,'2','51','recupere_la_page_d_accueil',NULL,NULL),
+('2','aide et paramètres',NULL,'2','52','recupere_la_page_d_aide',NULL,NULL),
+('3','connexion',NULL,'2','53','recupere_la_page_de_connexion',NULL,NULL),
+('4','tâches',NULL,'1','61','page_liste_des_taches1',NULL,'T0_chp_priorite_tache2(99)'),
+('5','matrice',NULL,'1','235','page1','maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_rev1''))))',NULL),
+('6','js',NULL,'1','234','page1','maj_interface2(modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_js_rev1''))))',NULL),
+('7','html',NULL,'1','233','page1','maj_interface2(modifier( id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_html_rev1''))))',NULL),
+('8','php',NULL,'1','236','page1','maj_interface2(modifier( id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_php_rev1''))))',NULL),
+('9','sql',NULL,'1','237','page1','maj_interface2(modifier( id(vv_txtarea_sql_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_sql_rev1''))))',NULL),
+('10','css',NULL,'1','232','page1','maj_interface2(modifier(id(vv_txtarea_css_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_css_rev1''))))',NULL),
+('11','txt',NULL,'1','238','page1','maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegardées'',''ls_texte_rev1''))))',NULL),
+('12','projets',NULL,'1','230','page_projets_liste1',NULL,NULL),
+('13','fido',NULL,'1','225','page_dossiers_liste1',NULL,NULL),
+('14','sources',NULL,'1','241','page_liste_des_sources1',NULL,NULL),
+('15','bases',NULL,'1','353','page_liste_des_bases1','',''),
+('16','requêtes',NULL,'1','231','page_liste_des_requetes1',NULL,NULL),
+('17','revs',NULL,'1','240','page_liste_des_revs1',NULL,NULL),
+('18','groupes',NULL,'1','56','page_liste_des_groupes1','',''),
+('19','métiers',NULL,'1','58','page_liste_des_metiers1',NULL,NULL),
+('20','utilisateurs',NULL,'1','62','page_liste_des_utilisateurs1',NULL,NULL),
+('21','accès',NULL,'1','50','page_liste_des_acces1',NULL,NULL),
+('22','pages',NULL,'1','228','page_liste_des_pages1',NULL,NULL),
+('23','menus',NULL,'1','57','page_liste_des_menus1',NULL,NULL),
+('24','profile',NULL,'1','59','recupere_la_page_des_coordonnees',NULL,NULL);
 
 
 /*

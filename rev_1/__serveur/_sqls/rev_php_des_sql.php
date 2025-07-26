@@ -207,9 +207,10 @@ LIMIT :quantitee OFFSET :debut
   ),
   116 => 
   array (
-    'cht_sql_requete' => 'UPDATE b1.tbl_bdds SET 
+    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
+
+UPDATE b1.tbl_bdds SET 
    `chx_dossier_id_basedd` = :n_chx_dossier_id_basedd , 
-   `chp_rev_basedd` = :n_chp_rev_basedd , 
    `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
    `chp_genere_basedd` = :n_chp_genere_basedd , 
    `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd , 
@@ -312,10 +313,11 @@ WHERE (`chi_id_dossier` IN (:liste_des_ids_a_supprimer)
   ),
   126 => 
   array (
-    'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
-`T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
-`T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
+`T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
+`T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
  FROM b1.tbl_bdds T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
 
@@ -330,9 +332,9 @@ WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
   array (
     'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
 SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_commentaire_basedd` , 
-`T0`.`chp_genere_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , 
-`T1`.`chp_nom_dossier` , `T1`.`chx_parent_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`chp_commentaire_projet`
+`T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , 
+`T0`.`chp_genere_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
+`T1`.`chx_parent_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`chp_commentaire_projet`
  FROM b1.tbl_bdds T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
 
@@ -468,10 +470,10 @@ WHERE (`chi_id_source` = :chi_id_source
   ),
   140 => 
   array (
-    'cht_sql_requete' => 'UPDATE b1.tbl_bdds SET 
-   `chp_rev_basedd` = :n_chp_rev_basedd
-WHERE (`chi_id_basedd` = :c_chi_id_basedd
-   AND `chx_projet_id_basedd` = :c_chx_projet_id_basedd) ;',
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_basedd`
+ FROM b1.tbl_bdds T0
+;',
     'cht_commentaire_requete' => 'bdds',
   ),
   141 => 
@@ -785,7 +787,7 @@ WHERE `chx_projet_dossier` = :chx_projet_dossier ;',
   171 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_rev_travail_basedd`
+`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
  FROM b1.tbl_bdds T0
 WHERE (`T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
 ;',
@@ -976,7 +978,6 @@ LIMIT :quantitee OFFSET :debut
     `chx_acces_page` , 
     `chx_source_page` , 
     `chp_methode_page` , 
-    `chx_projet_page` , 
     `cht_complement_page` , 
     `cht_contenu_methode_page`
 ) VALUES (
@@ -985,7 +986,6 @@ LIMIT :quantitee OFFSET :debut
     :chx_acces_page , 
     :chx_source_page , 
     :chp_methode_page , 
-    :chx_projet_page , 
     :cht_complement_page , 
     :cht_contenu_methode_page
 );',
@@ -1016,7 +1016,6 @@ WHERE `T0`.`chi_id_page` = :T0_chi_id_page
    `chx_acces_page` = :n_chx_acces_page , 
    `chx_source_page` = :n_chx_source_page , 
    `chp_methode_page` = :n_chp_methode_page , 
-   `chx_projet_page` = :n_chx_projet_page , 
    `cht_complement_page` = :n_cht_complement_page , 
    `cht_contenu_methode_page` = :n_cht_contenu_methode_page
 WHERE `chi_id_page` = :c_chi_id_page ;',
@@ -1276,5 +1275,40 @@ WHERE `T0`.`chx_source_page` = :T0_chx_source_page
    `chx_source_page` = :n_chx_source_page
 WHERE `chi_id_page` IN (:c_chi_id_page) ;',
     'cht_commentaire_requete' => 'page/id_source par id_source',
+  ),
+  313 => 
+  array (
+    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chi_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+`T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`chx_dossier_id_source`
+ FROM b1.tbl_sources T0
+WHERE (`T0`.`chi_id_source` < :T0_chi_id_source
+   AND `T0`.`chp_nom_source` NOT LIKE :T0_chp_nom_source)
+;',
+    'cht_commentaire_requete' => 'sources à copier dans un autre environnement',
+  ),
+  314 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_sources`(
+    `chi_id_source` , 
+    `chx_projet_id_source` , 
+    `chp_nom_source` , 
+    `cht_commentaire_source` , 
+    `che_binaire_source` , 
+    `chp__dtm_source` , 
+    `chp__dtc_source` , 
+    `chx_dossier_id_source`
+) VALUES (
+    :chi_id_source , 
+    :chx_projet_id_source , 
+    :chp_nom_source , 
+    :cht_commentaire_source , 
+    :che_binaire_source , 
+    :chp__dtm_source , 
+    :chp__dtc_source , 
+    :chx_dossier_id_source
+);',
+    'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
   ),
 );

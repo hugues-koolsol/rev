@@ -192,7 +192,6 @@ class c_pages1{
                     'chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
                     'cht_contenu_methode_page' => $donnees_recues[__xva]['cht_contenu_methode_page'],
                     'cht_complement_page' => $donnees_recues[__xva]['cht_complement_page'],
-                    'chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
@@ -203,7 +202,6 @@ class c_pages1{
                 `chx_acces_page` , 
                 `chx_source_page` , 
                 `chp_methode_page` , 
-                `chx_projet_page` , 
                 `cht_complement_page` , 
                 `cht_contenu_methode_page`
             ) VALUES (
@@ -212,7 +210,6 @@ class c_pages1{
                 :chx_acces_page , 
                 :chx_source_page , 
                 :chp_methode_page , 
-                :chx_projet_page , 
                 :cht_complement_page , 
                 :cht_contenu_methode_page
             );
@@ -499,7 +496,6 @@ class c_pages1{
                    `chx_acces_page` = :n_chx_acces_page , 
                    `chx_source_page` = :n_chx_source_page , 
                    `chp_methode_page` = :n_chp_methode_page , 
-                   `chx_projet_page` = :n_chx_projet_page , 
                    `cht_complement_page` = :n_cht_complement_page , 
                    `cht_contenu_methode_page` = :n_cht_contenu_methode_page
                 WHERE `chi_id_page` = :c_chi_id_page ;
@@ -517,7 +513,6 @@ class c_pages1{
                     'n_chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
                     'n_cht_contenu_methode_page' => $donnees_recues[__xva]['cht_contenu_methode_page'],
                     'n_cht_complement_page' => $donnees_recues[__xva]['cht_complement_page'],
-                    'n_chx_projet_page' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
             );

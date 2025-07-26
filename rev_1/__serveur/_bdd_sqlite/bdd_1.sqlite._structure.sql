@@ -715,15 +715,6 @@ CREATE TABLE tbl_bdds(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_rev_basedd'),champ('chp_rev_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
-            )
-            */
-             chp_rev_basedd text
-    ,
-    
-            /*
-            meta(
             genre_meta(champ),nom_du_champ('chp_commentaire_basedd'),champ('chp_commentaire_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
             typologie(),afficher_champ_dans_svg(1)
             )
@@ -901,15 +892,6 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_projet_page'),champ('chx_projet_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1),refe_enfant_droite(1)
-            )
-            */
-             chx_projet_page INTEGER REFERENCES tbl_projets(chi_id_projet) 
-    ,
-    
-            /*
-            meta(
             genre_meta(champ),nom_du_champ('chx_source_page'),champ('chx_source_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
             typologie(chx),afficher_champ_dans_svg(1),refe_enfant_droite(1),refe_parent_gauche(1)
             )
@@ -1033,5 +1015,14 @@ CREATE TABLE tbl_menus(
             )
             */
              cht_prerequis_php_menu TEXT
-    , cht_libelle_menu TEXT);
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('cht_libelle_menu'),champ('cht_libelle_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(cht),afficher_champ_dans_svg(1)
+            )
+            */
+             cht_libelle_menu TEXT
+    );
 

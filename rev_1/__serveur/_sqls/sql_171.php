@@ -1,7 +1,7 @@
 <?php
 function sql_171($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_basedd` , `T0`.`chp_rev_basedd` , `T0`.`chp_rev_travail_basedd`
+      `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -20,8 +20,7 @@ function sql_171($par,&$donnees_retournees,$that){
         while(($tab0=$res0->fetchArray(SQLITE3_NUM))){
             $donnees0[]=array(
                 'T0.chi_id_basedd' => $tab0[0],
-                'T0.chp_rev_basedd' => $tab0[1],
-                'T0.chp_rev_travail_basedd' => $tab0[2],
+                'T0.chp_rev_travail_basedd' => $tab0[1],
             );
         }
         return array(

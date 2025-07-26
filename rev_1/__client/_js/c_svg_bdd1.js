@@ -2541,6 +2541,7 @@ class c_svg_bdd1{
       =============================================================================================================
       matricée
     */
+    /*
     copier_le_rev_de_travail_dans_le_rev( mat ){
         let id_bdd_de_la_base_en_cours=0;
         for( let i=0 ; i < mat.length ; i++ ){
@@ -2550,10 +2551,9 @@ class c_svg_bdd1{
         }
         if(id_bdd_de_la_base_en_cours > 0){
             let obj1={
-                 /*  */
                 "__x_action" : 'c_bases1.copier_le_rev_de_travail_dans_le_rev()' ,
                 "__xva" : {
-                     /*  */
+
                     "id_bdd_de_la_base" : id_bdd_de_la_base_en_cours
                 }
             };
@@ -2561,6 +2561,7 @@ class c_svg_bdd1{
         }
         return;
     }
+    */
     /*
       =============================================================================================================
       matricée
@@ -2726,6 +2727,7 @@ class c_svg_bdd1{
         /*
           =====================================================================================================
         */
+        /*
         t+='<hr /><h3>copier le rev de travail dans le rev</h3>';
         t+='<p>il faut que la comparaison soit sans erreur et il faut sauvegarder la base virtuelle</p>';
         rev='';
@@ -2737,6 +2739,7 @@ class c_svg_bdd1{
         rev+=' )';
         rev+=')';
         t+='<div class="hug_bouton yy__x_signaux_1" data-hug_click="' + rev + '">copier</div>';
+        */
         /*
           =====================================================================================================
         */

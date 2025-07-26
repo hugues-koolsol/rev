@@ -151,6 +151,15 @@ class c_sql0{
         */
         
         if($ret[__xst] === __xsu){
+         
+            if($ret[__xva]['nombre_total_des_dependances']>0){
+             
+                foreach($ret[__xva]['liste_des_dependances'] as $k1 => $v1){
+                    $donnees_retournees[__x_signaux][__xdv][]='table ' . $v1['table_dependante'] . ' [' . __LINE__ . ']';
+                }
+             
+            }
+            
 
             return $ret[__xva]['nombre_total_des_dependances'];
 
