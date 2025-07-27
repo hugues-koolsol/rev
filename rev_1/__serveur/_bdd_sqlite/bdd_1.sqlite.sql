@@ -1049,7 +1049,7 @@ CREATE TABLE tbl_menus(
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','517','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','521','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -1366,7 +1366,8 @@ dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.75
 ('203','1','renuméroter les requetes à partir de 101','99','2','2025-07-17 15:09:37.352','2025-07-17 10:11:14.041'),
 ('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','1','2025-07-17 12:14:57.332','2025-07-17 12:07:20.343'),
 ('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','0','2025-07-18 10:50:06.307','2025-07-18 10:50:06.307'),
-('206','1','renuméroter un source','2','0','2025-07-24 12:50:11.622','2025-07-24 12:50:11.622');
+('206','1','renuméroter un source','99','0','2025-07-24 12:50:11.622','2025-07-24 12:50:11.622'),
+('207','1','remplacer php par deno','50','1','2025-07-27 09:47:30.190','2025-07-27 09:47:14.801');
 
 
 /*
@@ -3829,15 +3830,12 @@ sélectionner(
          source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
       )
    ),
-   conditions(
-      et(pas_comme(champ(`T0`,`chp_nom_dossier`),:T0_chp_nom_dossier),diff(champ(`T0`,`chi_id_dossier`),1))
-   )
+   conditions(pas_equivalent(champ(`T0`,`chp_nom_dossier`),:T0_chp_nom_dossier))
 )  ','/*meta(sur_base_de_reference(1))*/
 SELECT 
 `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T0`.`che_contient_genere_dossier`
  FROM b1.tbl_dossiers T0
-WHERE (`T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
-   AND `T0`.`chi_id_dossier` <> 1)
+WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
 ;',NULL,'dossiers à copier dans un autre environnement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('307','1','insert','insérer(
    base_de_reference(1),
@@ -4052,15 +4050,18 @@ sélectionner(
       )
    ),
    conditions(
-      et(inf(champ(`T0`,`chi_id_source`),:T0_chi_id_source),pas_comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source))
+      ou(
+         et(inf(champ(`T0`,`chi_id_source`),:T0_chi_id_source),pas_comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source)),
+         dans(champ(`T0`,`chi_id_source`),(:T0_chi_id_source2))
+      )
    )
 )  ','/*meta(sur_base_de_reference(1))*/
 SELECT 
 `T0`.`chi_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
 `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`chx_dossier_id_source`
  FROM b1.tbl_sources T0
-WHERE (`T0`.`chi_id_source` < :T0_chi_id_source
-   AND `T0`.`chp_nom_source` NOT LIKE :T0_chp_nom_source)
+WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
+   AND `T0`.`chp_nom_source` NOT LIKE :T0_chp_nom_source) OR `T0`.`chi_id_source` IN (:T0_chi_id_source2))
 ;',NULL,'sources à copier dans un autre environnement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('314','1','insert','insérer(
    base_de_reference(),
@@ -4433,7 +4434,7 @@ créer_table(
       nom_long_de_la_table(''''),
       nom_court_de_la_table(''''),
       nom_bref_de_la_table(''''),
-      transform_table_sur_svg(translate(425.5,542.5))
+      transform_table_sur_svg(translate(402.5,544.5))
    ),
    champs(
       champ(
@@ -4926,7 +4927,7 @@ créer_table(
       nom_long_de_la_table(''à faire tbl_revs''),
       nom_court_de_la_table(''à faire tbl_revs''),
       nom_bref_de_la_table(''à faire tbl_revs''),
-      transform_table_sur_svg(translate(618.5,376.5))
+      transform_table_sur_svg(translate(632.5,372.5))
    ),
    champs(
       champ(

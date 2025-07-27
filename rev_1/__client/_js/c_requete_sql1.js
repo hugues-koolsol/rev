@@ -1431,7 +1431,7 @@ class c_requete_sql1{
         t+='<div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(zone_formule)))" title="formater le source rev" >(😊)</div>';
         t+='<div class="hug_bouton" data-hug_click="c_fonctions_js1(insérer_un_commentaire1(zone_source(zone_formule)))" title="insérer un commentaire" >#(😎)</div>';
         /* t+='<a href="javascript:__gi1.ajouter_un_commentaire_vide_et_reformater(&quot;zone_formule&quot;);" title="ajouter un commentaire et formatter">#()(😊)</a>'; */
-        t+='<div>egal,diff,comme,sup,supegal,inf,infegal,dans,est,n_est_pas,pas_comme</div>'        
+        t+='<div>egal,diff,comme,sup,supegal,inf,infegal,dans,est,n_est_pas,pas_comme,equivalent,pas_equivalent</div>'        
         t+='<div class="yy_conteneur_txtara"><textarea id="zone_formule" data-editeur1="rev" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if((this.#obj_webs.type_de_requete === 'select'
                    || this.#obj_webs.type_de_requete === 'liste_ecran'
@@ -2464,57 +2464,62 @@ class c_requete_sql1{
             if(tab[i][7] === 0){
                 if(tab[i][1] === '#' && tab[i][2] === 'f'){
                 }else{
-                    if(tab[i][1] === 'et' && tab[i][2] === 'f'){
-                        var j=i + 1;
-                        for( j=i + 1 ; j < l01 && tab[j][3] > tab[i][3] ; j++ ){
-                            if(tab[j][7] === i){
-                                if(tab[j][2] === 'f'
-                                       && (tab[j][1] === 'ou'
-                                           || tab[j][1] === 'egal'
-                                           || tab[j][1] === 'diff'
-                                           || tab[j][1] === 'comme'
-                                           || tab[j][1] === 'pas_comme'
-                                           || tab[j][1] === 'sup'
-                                           || tab[j][1] === 'supegal'
-                                           || tab[j][1] === 'inf'
-                                           || tab[j][1] === 'infegal'
-                                           || tab[j][1] === 'est'
-                                           || tab[j][1] === 'n_est_pas'
-                                           || tab[j][1] === 'dans')
-                                ){
-                                    var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
-                                    if(obj.__xst === __xsu){
-                                        var parametre=obj.__xva.match( /\$par\[(.*)\]/ );
-                                        if(parametre === null){
-                                            tableau_des_conditions.push( {
-                                                    "type_condition" : 'constante' ,
-                                                    "valeur" : obj.__xva ,
-                                                    "type" : options.type_de_champ_pour_where ,
-                                                    "nom_du_champ_pour_where" : options.nom_du_champ_pour_where
-                                                } );
-                                        }else{
-                                            tableau_des_conditions.push( {
-                                                    "type_condition" : 'variable' ,
-                                                    "valeur" : obj.__xva ,
-                                                    "condition" : parametre[0] ,
-                                                    "operation" : tab[j][1] ,
-                                                    "type" : options.type_de_champ_pour_where ,
-                                                    "nom_du_champ_pour_where" : options.nom_du_champ_pour_where
-                                                } );
-                                        }
+                    if((tab[i][1] === 'et' || tab[i][1] === 'ou') && tab[i][2] === 'f'){
+                        for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
+
+                            if(tab[j][2] === 'f'
+                                   && (tab[j][1] === 'ou'
+                                       || tab[j][1] === 'et'
+                                       || tab[j][1] === 'egal'
+                                       || tab[j][1] === 'diff'
+                                       || tab[j][1] === 'comme'
+                                       || tab[j][1] === 'pas_comme'
+                                       || tab[j][1] === 'equivalent'
+                                       || tab[j][1] === 'pas_equivalent'
+                                       || tab[j][1] === 'sup'
+                                       || tab[j][1] === 'supegal'
+                                       || tab[j][1] === 'inf'
+                                       || tab[j][1] === 'infegal'
+                                       || tab[j][1] === 'est'
+                                       || tab[j][1] === 'n_est_pas'
+                                       || tab[j][1] === 'dans')
+                            ){
+                                var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
+                                if(obj.__xst === __xsu){
+                                    var parametre=obj.__xva.match( /\$par\[(.*)\]/ );
+                                    if(parametre === null){
+                                        tableau_des_conditions.push( {
+                                                "type_condition" : 'constante' ,
+                                                "valeur" : obj.__xva ,
+                                                "type" : options.type_de_champ_pour_where ,
+                                                "nom_du_champ_pour_where" : options.nom_du_champ_pour_where
+                                            } );
                                     }else{
-                                        debugger;
+                                        tableau_des_conditions.push( {
+                                                "type_condition" : 'variable' ,
+                                                "valeur" : obj.__xva ,
+                                                "condition" : parametre[0] ,
+                                                "operation" : tab[j][1] ,
+                                                "type" : options.type_de_champ_pour_where ,
+                                                "nom_du_champ_pour_where" : options.nom_du_champ_pour_where
+                                            } );
                                     }
-                                }else if(tab[j][2] === 'f' && tab[j][1] === '#'){
                                 }else{
                                     debugger;
                                 }
+                            }else if(tab[j][2] === 'f' && tab[j][1] === '#'){
+                            }else{
+                                debugger;
                             }
+
                         }
                     }else if(tab[i][2] === 'f'
                            && (tab[i][1] === 'egal'
                                || tab[i][1] === 'diff'
                                || tab[i][1] === 'comme'
+                               || tab[i][1] === 'pas_comme'
+                               || tab[i][1] === 'equivalent'
+                               || tab[i][1] === 'pas_equivalent'
                                || tab[i][1] === 'sup'
                                || tab[i][1] === 'supegal'
                                || tab[i][1] === 'inf'
@@ -3111,12 +3116,23 @@ class c_requete_sql1{
                   les conditions dans un select list sont soit une seule conditions, soit une liste contenue dans un et[] 
                   Il n'y a alors qu'une seule formule
                 */
-                t+='    $where0=\' WHERE 1=1 \'.PHP_EOL;' + CRLF;
-                var formule=this.#obj_webs.conditions[0].formule;
-                tableau_des_conditions=this.#obtenir_le_tableau_des_conditions( this.#obj_webs.conditions[0].formule , obj3 );
+                var formule='conditions('+this.#obj_webs.conditions[0].formule+')';
+
+                var tableau2=__gi1.__m_rev1.txt_en_tableau(formule);
+                var matriceFonction=__gi1.__m_rev1.tb_vers_matrice(tableau2.__xva,true,false,'');
+                
+                var les_conditions=this.__m_rev_vers_sql1.c_tab_vers_sql(matriceFonction.__xva,{au_format_php:true})
+                if(les_conditions.__xst===__xsu){
+                    t+='    $where0=\' WHERE '+les_conditions.__xva+'\'.PHP_EOL;' + CRLF;
+                }else{
+                    return(__gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : __gi1.__m_rev1.nl2() + ' conversion en php '} ));
+                }
+                //tableau_des_conditions=this.#obtenir_le_tableau_des_conditions( this.#obj_webs.conditions[0].formule , obj3 );
+
             }
-            var i=0;
-            for( i=0 ; i < tableau_des_conditions.length ; i++ ){
+            /*
+            for( var i=0 ; i < tableau_des_conditions.length ; i++ ){
+                debugger
                 var elem=tableau_des_conditions[i];
                 if(elem.type_condition === 'constante'){
                     t+='    $where0.=\' AND ' + elem.valeur + '\'.PHP_EOL;' + CRLF;
@@ -3132,6 +3148,7 @@ class c_requete_sql1{
                     }
                 }
             }
+            */
             t+='    $sql0.=$where0;' + CRLF;
             if(this.#obj_webs.complements.length === 0){
             }else{
@@ -3247,8 +3264,9 @@ class c_requete_sql1{
                     "type_de_champ_pour_where" : '' ,
                     "nom_du_champ_pour_where" : ''
                 };
-                var i=1;
-                for( i=1 ; i < l01 ; i++ ){
+                
+                
+                for(var i=1 ; i < l01 ; i++ ){
                     if(tab[i][7] === 0){
                         if(tab[i][1] === '#' && tab[i][2] === 'f'){
                         }else{
@@ -3260,14 +3278,16 @@ class c_requete_sql1{
                                                && (tab[j][1] === 'egal'
                                                    || tab[j][1] === 'diff'
                                                    || tab[j][1] === 'comme'
+                                                   || tab[j][1] === 'pas_comme'
+                                                   || tab[j][1] === 'equivalent'
+                                                   || tab[j][1] === 'pas_equivalent'
                                                    || tab[j][1] === 'sup'
                                                    || tab[j][1] === 'supegal'
                                                    || tab[j][1] === 'inf'
                                                    || tab[j][1] === 'infegal'
                                                    || tab[j][1] === 'dans'
                                                    || tab[j][1] === 'est'
-                                                   || tab[j][1] === 'n_est_pas'
-                                                   || tab[j][1] === 'pas_comme')
+                                                   || tab[j][1] === 'n_est_pas')
                                         ){
                                             var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
                                             if(obj.__xst === __xsu){
@@ -3302,14 +3322,16 @@ class c_requete_sql1{
                                    && (tab[i][1] === 'egal'
                                        || tab[i][1] === 'diff'
                                        || tab[i][1] === 'comme'
+                                       || tab[i][1] === 'pas_comme'
+                                       || tab[i][1] === 'equivalent'
+                                       || tab[i][1] === 'pas_equivalent'
                                        || tab[i][1] === 'sup'
                                        || tab[i][1] === 'supegal'
                                        || tab[i][1] === 'inf'
                                        || tab[i][1] === 'infegal'
                                        || tab[i][1] === 'dans'
                                        || tab[i][1] === 'est'
-                                       || tab[i][1] === 'n_est_pas'
-                                       || tab[i][1] === 'pas_comme')
+                                       || tab[i][1] === 'n_est_pas')
                             ){
                                 var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , i , 0 , options );
                                 if(obj.__xst === __xsu){

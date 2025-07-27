@@ -2405,8 +2405,7 @@ EOT;
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T0`.`che_contient_genere_dossier`
              FROM b1.tbl_dossiers T0
-            WHERE (`T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
-               AND `T0`.`chi_id_dossier` <> 1)
+            WHERE (`T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier)
             ;
             */
             /*sql_inclure_fin*/
@@ -2422,6 +2421,7 @@ EOT;
             return;
 
         }
+        $tableau_des_dossiers=array();
 
         /*
           echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export[ $tt306[__xva] , true ] . '</pre>' ; exit[0];
@@ -2444,17 +2444,22 @@ EOT;
         */
         $a_inserer=array();
         foreach($tt306[__xva] as $k1 => $v1){
-            $a_inserer[]=array(
-                'chi_id_dossier' => $v1['T0.chi_id_dossier'],
-                'chx_projet_dossier' => $chi_id_projet,
-                'chp_nom_dossier' => $v1['T0.chp_nom_dossier'],
-                'chx_parent_dossier' => $v1['T0.chx_parent_dossier'],
-                'che_contient_genere_dossier' => $v1['T0.che_contient_genere_dossier'],
-                'chp__dtm_dossier' => $GLOBALS[__date_ms],
-                'chp__dtc_dossier' => $GLOBALS[__date_ms]
+            if($v1['T0.chi_id_dossier']!==1){
+                $a_inserer[]=array(
+                    'chi_id_dossier' => $v1['T0.chi_id_dossier'],
+                    'chx_projet_dossier' => $chi_id_projet,
+                    'chp_nom_dossier' => $v1['T0.chp_nom_dossier'],
+                    'chx_parent_dossier' => $v1['T0.chx_parent_dossier'],
+                    'che_contient_genere_dossier' => $v1['T0.che_contient_genere_dossier'],
+                    'chp__dtm_dossier' => $GLOBALS[__date_ms],
+                    'chp__dtc_dossier' => $GLOBALS[__date_ms]
+                );
+            }
+            $tableau_des_dossiers[$v1['T0.chi_id_dossier']]=array(
+                'chp_nom_dossier' => $v1['T0.chp_nom_dossier']
             );
         }
-        /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $a_inserer , true ) . '</pre>' ; exit(0);*/
+//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $a_inserer , true ) . '</pre>' ; exit(0);
         $tt307=/*sql_inclure_deb*/
             /* sql_307()
             INSERT INTO b1.`tbl_dossiers`(
@@ -2556,12 +2561,16 @@ EOT;
         foreach($tt306[__xva] as $k1 => $v1){
             $chemin=$obj_doss->construire_chemin($v1['T0.chi_id_dossier']);
             if($chemin[__xst]===__xsu){
-                if(!is_dir($chemin[__xva]['chemin_absolu'])){
-                    if(!mkdir($chemin[__xva]['chemin_absolu'] , 0777 , true )){
-                        $donnees_retournees[__x_signaux][__xer][]='erreur sur la création du dossier sur disque  [' . __LINE__ . ']';
-                        return;
+                if($v1['T0.chi_id_dossier']!==1){
+                    if(!is_dir($chemin[__xva]['chemin_absolu'])){
+                        if(!mkdir($chemin[__xva]['chemin_absolu'] , 0777 , true )){
+                            $donnees_retournees[__x_signaux][__xer][]='erreur sur la création du dossier sur disque  [' . __LINE__ . ']';
+                            return;
+                        }
                     }
                 }
+                $tableau_des_dossiers[$v1['T0.chi_id_dossier']]['chemin_absolu']=$chemin[__xva]['chemin_absolu'];
+                
             }else{
                 $donnees_retournees[__x_signaux][__xer][]='erreur sur la création du dossier sur disque  [' . __LINE__ . ']';
                 return;
@@ -2571,15 +2580,11 @@ EOT;
             */
         }
         
-        
-        $donnees_retournees[__xst]=__xsu;
-        return;
-        
         /*
           =====================================================================================================
           B° on insère les sources sauf ceux qui contiennent '%test%'
           =====================================================================================================
-          1° sélection des sources sauf ceux %test%
+          1° sélection des sources sauf ceux %test% et ceux dont l'id est <50
         */
         $tt313=/*sql_inclure_deb*/
             /* sql_313()
@@ -2594,7 +2599,7 @@ EOT;
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
              /*sql_313*/ 313,
-            array( 'T0_chp_nom_source' => '%test%' ,  'T0_chi_id_source' => 200),
+            array( 'T0_chp_nom_source' => '%test%' ,  'T0_chi_id_source' => 50 ,   'T0_chi_id_source2' => '156,158,168,167,154,60'),
             $donnees_retournees
         );
         
@@ -2631,10 +2636,39 @@ EOT;
             return;
 
         }
+        /*
+          2° on importe les sources
+        */
+        /*
+          echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tableau_des_dossiers , true ) . '</pre>' ; exit(0);
+        */
+        foreach($tt313[__xva] as $k1 => $v1){
+            $fichier_de_revn=$tableau_des_dossiers[$v1['T0.chx_dossier_id_source']]['chemin_absolu'].DIRECTORY_SEPARATOR.$v1['T0.chp_nom_source'];
+            $fichier_de_rev1=str_replace(DIRECTORY_SEPARATOR.'rev_'.$chi_id_projet.DIRECTORY_SEPARATOR,DIRECTORY_SEPARATOR.'rev_'.'1'.DIRECTORY_SEPARATOR,$fichier_de_revn);
+            $contenu=file_get_contents($fichier_de_rev1);
 
+            if($contenu!==false){
 
+               $contenu=str_replace('rev_1','rev_'.$chi_id_projet,$contenu);
+               $retour=file_put_contents( $fichier_de_revn , $contenu );
+               
+               if($retour===false){
+
+                   $donnees_retournees[__x_signaux][__xer][]='erreur sur la copie de sources de rev_1 vers destination  [' . __LINE__ . ']';
+                   return;
+
+               }
+            }else{
+
+                   $donnees_retournees[__x_signaux][__xer][]='erreur sur la copie de sources de rev_1 vers destination  [' . __LINE__ . ']';
+                   return;
+
+            }
+               
+        }
         
         
+        $donnees_retournees[__x_signaux][__xsu][]='le projet a été initialisé  [' . __LINE__ . ']';
         $donnees_retournees[__xst]=__xsu;
     }
     /*
@@ -2969,7 +3003,7 @@ EOT;
 
             }
 
-            if(__X_CLE_APPLICATION === 'rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] > 2 && $v0['T0.chi_id_projet'] > 2){
+            if(__X_CLE_APPLICATION === 'rev_1' && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet']) && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] > 2 && $v0['T0.chi_id_projet'] > 2){
 
                 $lsttbl .= '<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_projets1.initialiser_un_projet(chi_id_projet(' . $v0['T0.chi_id_projet'] . '))" title="sauvegarder la base du projet">initialiser</div>';
 

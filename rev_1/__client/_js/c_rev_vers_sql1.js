@@ -68,6 +68,10 @@ class c_rev_vers_sql1{
             t=' LIKE ';
         }else if(op === 'pas_comme'){
             t=' NOT LIKE ';
+        }else if(op === 'pas_equivalent'){
+            t=' NOT LIKE ';
+        }else if(op === 'equivalent'){
+            t=' LIKE ';
         }else if(op === 'et'){
             t=' AND ';
         }else if(op === 'ou'){
@@ -111,6 +115,7 @@ class c_rev_vers_sql1{
       =============================================================================================================
     */
     traite_sqlite_fonction_de_champ( tab , id , niveau , options ){
+
         var t='';
         if(tab[id][1] === 'champ' && tab[id][2] === 'f'){
             if(tab[id][8] === 1 && tab[id + 1][2] === 'c'){
@@ -206,7 +211,9 @@ class c_rev_vers_sql1{
                                 if(operateur_rev === '' && tab[tab[id][7]][1] === 'dans' || operateur_rev === 'dans'){
                                     t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
                                 }else{
-                                    if(operateur_rev === 'comme'){
+                                    if(operateur_rev === 'equivalent' || operateur_rev === 'pas_equivalent'){
+                                        t+='\'.sq3($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
+                                    }else if(operateur_rev === 'comme' || operateur_rev === 'pas_comme'){
                                         t+='\'.sq2($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
                                     }else{
                                         t+='\'.sq1($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
@@ -700,6 +707,18 @@ class c_rev_vers_sql1{
                         }
                         break;
                         
+
+                        /*hugues*/
+                    case 'conditions' : 
+                        options.tableau_des_alias=tableau_des_alias;
+                        obj=this.traite_sqlite_fonction_de_champ( this.#tb , i , niveau , options );
+                        if(obj.__xst === __xsu){
+                            t+=obj.__xva;
+                        }else{
+                            return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'conditions dans select '} ));
+                        }
+                        break;
+
                     case 'modifier' : 
                     case 'insérer' : 
                     case 'supprimer' :

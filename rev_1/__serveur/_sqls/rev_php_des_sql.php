@@ -1208,8 +1208,7 @@ WHERE `chi_id_projet` = :c_chi_id_projet ;',
 SELECT 
 `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T0`.`che_contient_genere_dossier`
  FROM b1.tbl_dossiers T0
-WHERE (`T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
-   AND `T0`.`chi_id_dossier` <> 1)
+WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
 ;',
     'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
   ),
@@ -1283,8 +1282,8 @@ SELECT
 `T0`.`chi_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
 `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`chx_dossier_id_source`
  FROM b1.tbl_sources T0
-WHERE (`T0`.`chi_id_source` < :T0_chi_id_source
-   AND `T0`.`chp_nom_source` NOT LIKE :T0_chp_nom_source)
+WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
+   AND `T0`.`chp_nom_source` NOT LIKE :T0_chp_nom_source) OR `T0`.`chi_id_source` IN (:T0_chi_id_source2))
 ;',
     'cht_commentaire_requete' => 'sources à copier dans un autre environnement',
   ),

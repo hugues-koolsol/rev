@@ -1623,11 +1623,13 @@ class c_sources1{
                 
                 if($tt[__xva][0]['T0.chp_nom_source'] !== '__definitions.php'){
 
-                    $o1 .= '        <div class="hug_bouton yy__x_signaux___xdv" style="float:right;"  data-hug_click="c_sources1.importer_de_rev_un(chi_id_source(' . $chi_id_source . '))" >importer de 1</div>';
+                    $o1 .= '        <div class="hug_bouton yy__x_signaux___xdv" style="float:right;"  data-hug_click="c_sources1.importer_de_rev_un(chi_id_source(' . $chi_id_source . '),chi_id_projet('.$_SESSION[__X_CLE_APPLICATION]['chi_id_projet'].'))" >importer de 1</div>';
 
                 }
 
 
+            }else if(__X_CLE_APPLICATION === 'rev_2' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']>2){
+                    $o1 .= '        <div class="hug_bouton yy__x_signaux___xdv" style="float:right;"  data-hug_click="c_sources1.importer_de_rev_un(chi_id_source(' . $chi_id_source . '),chi_id_projet('.$_SESSION[__X_CLE_APPLICATION]['chi_id_projet'].'))" >importer de 1</div>';
             }
 
             $o1 .= '    </div>' . PHP_EOL;
@@ -2290,6 +2292,7 @@ class c_sources1{
     function importer_de_rev_un(&$donnees_retournees,&$mat,&$donnees_recues){
         $l01=count($mat);
         $chi_id_source=0;
+        $chi_id_projet=0;
         /* $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
@@ -2305,7 +2308,11 @@ class c_sources1{
                         
                         if($mat[$j][1] === 'chi_id_source'){
 
-                            $chi_id_source=$mat[$j + 1][1];
+                            $chi_id_source=(int)$mat[$j + 1][1];
+
+                        }else if($mat[$j][1] === 'chi_id_projet'){
+
+                            $chi_id_projet=(int)$mat[$j + 1][1];
 
                         }
 
@@ -2318,7 +2325,7 @@ class c_sources1{
 
         }
         
-        if($chi_id_source === 0){
+        if($chi_id_source === 0 || $chi_id_projet===0){
 
             $donnees_retournees[__x_signaux][__xer][]=' [' . __METHOD__ . '] [' . __LINE__ . ']';
             return;
@@ -2385,7 +2392,7 @@ class c_sources1{
         /*
           $donnees_retournees[__x_signaux][__xal][]=' ' . $chemin_fichier_destin . ' [' . __LINE__ . ']';
         */
-        $rep_destin=REPERTOIRE_RACINE_DES_PROJET . DIRECTORY_SEPARATOR . 'rev_' . '2';
+        $rep_destin=REPERTOIRE_RACINE_DES_PROJET . DIRECTORY_SEPARATOR . 'rev_' . $chi_id_projet;
         $rep_source=REPERTOIRE_RACINE_DES_PROJET . DIRECTORY_SEPARATOR . 'rev_' . '1';
         $chemin_fichier_source=str_replace($rep_destin,$rep_source,$chemin_fichier_destin);
         /*
@@ -3254,20 +3261,28 @@ class c_sources1{
                 
                 if(__X_CLE_APPLICATION === 'rev_1'){
 
-                    
-                    if($v0['T0.chx_dossier_id_source'] === 1 || $v0['T0.chx_dossier_id_source'] === 7){
+                    if($_SESSION[__X_CLE_APPLICATION]['chi_id_projet']===1 || $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']===2){
+                     
+                        if($v0['T0.chx_dossier_id_source'] === 1 || $v0['T0.chx_dossier_id_source'] === 7){
 
-                        $lsttbl .= '  <div id="vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '" class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.compiler_source1(chi_id_source(' . $v0['T0.chi_id_source'] . '),bouton_compiler(vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '),pas_de_message_de_succes(1))" >compiler</div>';
+                            $lsttbl .= '  <div id="vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '" class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.compiler_source1(chi_id_source(' . $v0['T0.chi_id_source'] . '),bouton_compiler(vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '),pas_de_message_de_succes(1))" >compiler</div>';
+
+                        }else{
+
+                            $lsttbl .= '  <div class="hug_bouton_inactif" >compiler1</div>';
+                        }
 
                     }else{
 
-                        $lsttbl .= '  <div class="hug_bouton_inactif" >compiler</div>';
+                            $lsttbl .= '  <div id="vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '" class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.compiler_source1(chi_id_source(' . $v0['T0.chi_id_source'] . '),bouton_compiler(vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '),pas_de_message_de_succes(1))" >compiler</div>';
+
                     }
 
 
                 }else{
 
                     $lsttbl .= '  <div id="vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '" class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.compiler_source1(chi_id_source(' . $v0['T0.chi_id_source'] . '),bouton_compiler(vv_bouton_compiler_' . $v0['T0.chi_id_source'] . '),pas_de_message_de_succes(1))" >compiler</div>';
+
                 }
 
             }
@@ -3282,11 +3297,13 @@ class c_sources1{
 
                 }else{
 
-                    $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.importer_de_rev_un(chi_id_source(' . $v0['T0.chi_id_source'] . '))" >importer de 1</div>';
+                    $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.importer_de_rev_un(chi_id_source(' . $v0['T0.chi_id_source'] . '),chi_id_projet('.$_SESSION[__X_CLE_APPLICATION]['chi_id_projet'].'))" >importer de 1</div>';
                     $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xer" data-hug_click="c_sources1.exporter_dans_rev_un(chi_id_source(' . $v0['T0.chi_id_source'] . '))" >exporter dans 1</div>';
                 }
 
 
+            }else if(__X_CLE_APPLICATION >= 'rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']>2){
+                    $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xdv" data-hug_click="c_sources1.importer_de_rev_un(chi_id_source(' . $v0['T0.chi_id_source'] . '),chi_id_projet('.$_SESSION[__X_CLE_APPLICATION]['chi_id_projet'].'))" >importer de 1</div>';
             }
 
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux_1" data-hug_click="interface1.affiche_sous_fenetre1(c_sources1.page_nouveau_numero2( sans_menus1() chi_id_source(' . $v0['T0.chi_id_source'] . ')))" title="attribuer un autre numéro" >#°</div>';

@@ -8,9 +8,7 @@ function sql_313($par,&$donnees_retournees,$that){
     $from0='
       FROM tbl_sources T0    ';
     $sql0.=$from0;
-    $where0=' WHERE 1=1 '.PHP_EOL;
-    $where0.=' AND `T0`.`chi_id_source` < '.sq1($par['T0_chi_id_source']).''.PHP_EOL;
-    $where0.=' AND `T0`.`chp_nom_source` NOT LIKE '.sq1($par['T0_chp_nom_source']).''.PHP_EOL;
+    $where0=' WHERE ((`T0`.`chi_id_source` < '.sq1($par['T0_chi_id_source']).' AND `T0`.`chp_nom_source` NOT LIKE '.sq2($par['T0_chp_nom_source']).') OR `T0`.`chi_id_source` IN ('.sq0($par['T0_chi_id_source2']).'))'.PHP_EOL;
     $sql0.=$where0;
     $donnees0=array();
     //echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' .  $sql0  . '</pre>' ; exit(0);

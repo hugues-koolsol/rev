@@ -577,7 +577,7 @@ function sq1($s){
 }
 /*
   =====================================================================================================================
-  %toto%
+  %toto% => \%toto\%
 */
 function sq2($s){
 
@@ -618,6 +618,58 @@ function sq2($s){
     if(strpos($s,'_') !== false || strpos($s,'%') !== false){
 
         $t='\'%' . str_replace('_','\\_',str_replace('%','\\%',$s1)) . '%\' ESCAPE \'\\\'';
+        return $t;
+
+    }else{
+
+        return '\'%' . $s1 . '%\'';
+    }
+
+
+}
+/*
+  =====================================================================================================================
+  %toto% => %toto%
+*/
+function sq3($s){
+
+    
+    if(is_numeric($s)){
+
+        return $s;
+
+    }else if($s === null){
+
+        return 'NULL';
+    }
+
+    /*cette fonction remplace les apostrophes par des doubles apostrophes */
+    $s1=SQLite3::escapeString($s);
+    $ua=array(
+        'à' => 'à',
+        'â' => 'â',
+        'ã' => 'ã',
+        'á' => 'á',
+        'é' => 'é',
+        'è' => 'è',
+        'ê' => 'ê',
+        'É' => 'É',
+        'ï' => 'ï',
+        'î' => 'î',
+        'ñ' => 'ñ',
+        'Ñ' => 'Ñ',
+        'ó' => 'ó',
+        'ô' => 'ô',
+        'ö' => 'ö',
+        'ü' => 'ü',
+        'Ü' => 'Ü'
+    );
+    $s1=strtr($s1,$ua);
+    /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $s1 , true ) . '</pre>' ; exit(0);*/
+    
+    if(strpos($s,'_') !== false || strpos($s,'%') !== false){
+
+        $t='\'' . $s1 . '\' ';
         return $t;
 
     }else{

@@ -472,9 +472,10 @@ class c_dossiers1{
             $continuer--;
             
             if($tt[__xst] === __xsu){
+             
 
                 
-                if($tt[__xva][0]['T0.chx_parent_dossier'] === null){
+                if(is_null($tt[__xva][0]['T0.chx_parent_dossier'])){
 
                     $continuer=0;
                     break;
@@ -2130,7 +2131,7 @@ class c_dossiers1{
     */
     function page_dossiers_liste1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         /* déverminage */
-        $__nbMax=10;
+        $__nbMax=20;
         /*
           $donnees_retournees[__x_signaux][__xif][]=__LINE__ . 'TODO $par '.var_export($par,true);
         */
