@@ -1589,6 +1589,7 @@ class c_requete_sql1{
         var la_class_de_la_base='';
         var la_classe_de_la_table='';
         var ind={};
+
         for(ind in this.#obj_webs['bases']){
             t+='<tr>';
             t+='<td>';

@@ -518,6 +518,7 @@ class c_dossiers1{
 
             $chemin='rev_' . $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] . $chemin;
         }
+        
 
         $chemin_absolu=REPERTOIRE_RACINE_DES_PROJET . DIRECTORY_SEPARATOR . $chemin;
         return array( '__xst' => __xsu, '__xva' => array( 'chemin_absolu' => $chemin_absolu, 'chemin_relatif' => $chemin));

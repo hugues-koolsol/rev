@@ -95,7 +95,7 @@ CREATE TABLE tbl_utilisateurs(
 
 CREATE TABLE tbl_taches(
 /*
- meta(nom_de_la_table('tbl_taches'),table('tbl_taches'),genre_meta(table_de_base),nom_long_de_la_table(''),nom_court_de_la_table(''),nom_bref_de_la_table(''),transform_table_sur_svg(translate(425.5,542.5))) 
+ meta(nom_de_la_table('tbl_taches'),table('tbl_taches'),genre_meta(table_de_base),nom_long_de_la_table(''),nom_court_de_la_table(''),nom_bref_de_la_table(''),transform_table_sur_svg(translate(402.5,544.5))) 
 */
     
             /*
@@ -344,7 +344,7 @@ CREATE TABLE tbl_requetes(
 
 CREATE TABLE tbl_revs(
 /*
- meta(nom_de_la_table('tbl_revs'),table('tbl_revs'),genre_meta(table_de_base),nom_long_de_la_table('à faire tbl_revs'),nom_court_de_la_table('à faire tbl_revs'),nom_bref_de_la_table('à faire tbl_revs'),transform_table_sur_svg(translate(618.5,376.5))) 
+ meta(nom_de_la_table('tbl_revs'),table('tbl_revs'),genre_meta(table_de_base),nom_long_de_la_table('à faire tbl_revs'),nom_court_de_la_table('à faire tbl_revs'),nom_bref_de_la_table('à faire tbl_revs'),transform_table_sur_svg(translate(632.5,337.5))) 
 */
     
             /*
@@ -701,7 +701,7 @@ CREATE TABLE tbl_bdds(
             typologie(),afficher_champ_dans_svg(1)
             )
             */
-             chi_id_basedd integer PRIMARY KEY  AUTOINCREMENT
+             chi_id_basedd integer PRIMARY KEY 
     ,
     
             /*
@@ -720,15 +720,6 @@ CREATE TABLE tbl_bdds(
             )
             */
              chp_commentaire_basedd text
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),nom_du_champ('chp_genere_basedd'),champ('chp_genere_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
-            )
-            */
-             chp_genere_basedd text
     ,
     
             /*

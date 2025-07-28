@@ -90,11 +90,10 @@ class c_bases1{
         /* $donnees_retournees[__x_signaux][__xer][]=' <pre>' . var_export( $donnees_recues , true ) . '</pre>[' . __LINE__ . '] ';*/
         $tt126=/*sql_inclure_deb*/
             /* sql_126()
-            / ***meta(sur_base_de_reference(1))*** /
             SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
-            `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-            `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            `T2`.`chp_nom_projet`
              FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
             
@@ -245,11 +244,10 @@ class c_bases1{
     function reecrire_la_base_a_partir_du_shema_sur_disque(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
             /* sql_126()
-            / ***meta(sur_base_de_reference(1))*** /
             SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
-            `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-            `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            `T2`.`chp_nom_projet`
              FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
             
@@ -407,11 +405,10 @@ class c_bases1{
         */
         $tt126=/*sql_inclure_deb*/
             /* sql_126()
-            / ***meta(sur_base_de_reference(1))*** /
             SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
-            `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-            `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            `T2`.`chp_nom_projet`
              FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
             
@@ -849,11 +846,10 @@ class c_bases1{
         $tableaux_retournes=array( 'tableau1' => array(), 'tableau2' => array());
         $tt=/*sql_inclure_deb*/
             /* sql_126()
-            / ***meta(sur_base_de_reference(1))*** /
             SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
-            `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-            `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            `T2`.`chp_nom_projet`
              FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
             
@@ -1006,11 +1002,10 @@ class c_bases1{
         $donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
         $tt=/*sql_inclure_deb*/
             /* sql_126()
-            / ***meta(sur_base_de_reference(1))*** /
             SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
-            `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-            `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            `T2`.`chp_nom_projet`
              FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
             
@@ -1431,11 +1426,10 @@ class c_bases1{
 
         $tt=/*sql_inclure_deb*/
             /* sql_126()
-            / ***meta(sur_base_de_reference(1))*** /
             SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
-            `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-            `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            `T2`.`chp_nom_projet`
              FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
             
@@ -1543,11 +1537,10 @@ class c_bases1{
         /*si l'utilisateur bidouille l'id dans l'interface*/
         $tt=/*sql_inclure_deb*/
             /* sql_126()
-            / ***meta(sur_base_de_reference(1))*** /
             SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
-            `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-            `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            `T2`.`chp_nom_projet`
              FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
             
@@ -1566,70 +1559,11 @@ class c_bases1{
         
         if($tt[__xst] === __xsu){
 
-            
-            if(__X_CLE_APPLICATION === 'rev' . '_1' || __X_CLE_APPLICATION === 'rev' . '_2'){
-
-                
-                if($donnees_recues[__xva]['chi_id_basedd'] >= 2){
-
-                    /*
-                      afr est-ce vraiment nécessaire
-                      
-                    */
-                    /*
-                      si on est sur rev 1/2, une base  autre que 1 ne doit pas être dans le même répertoire que celui des bases systèmes
-                    */
-                    $tt126bis=/*sql_inclure_deb*/
-                        /* sql_126()
-                        / ***meta(sur_base_de_reference(1))*** /
-                        SELECT 
-                        `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
-                        `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-                        `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
-                         FROM b1.tbl_bdds T0
-                         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-                        
-                         LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
-                        
-                        WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
-                           AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
-                        ;
-                        */
-                        /*sql_inclure_fin*/
-                        $this->sql0->sql_iii(
-                         /*sql_126()*/ 126,
-                        array( 'T0_chi_id_basedd' => 1, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
-                        $donnees_retournees
-                    );
-                    
-                    if($tt126bis[__xst] === __xsu){
-
-                        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = '.'<pre>' . var_export( $donnees_recues[__xva]['chx_dossier_id_basedd'] , true ) . '</pre>' ; exit(0); */
-                        
-                        if(((int)($tt126bis[__xva][0]['T0.chx_dossier_id_basedd'])) === ((int)($donnees_recues[__xva]['chx_dossier_id_basedd']))){
-
-                            $donnees_retournees[__x_signaux][__xer][]='vous devez spécifier un autre dossier [' . __LINE__ . ']';
-                            return;
-
-                        }
-
-
-                    }
-
-
-                }
-
-
-            }
-
             $tt=/*sql_inclure_deb*/
                 /* sql_116()
-                / ***meta(sur_base_de_reference(1))*** /
-                
                 UPDATE b1.tbl_bdds SET 
                    `chx_dossier_id_basedd` = :n_chx_dossier_id_basedd , 
                    `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
-                   `chp_genere_basedd` = :n_chp_genere_basedd , 
                    `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd , 
                    `chp_fournisseur_basedd` = :n_chp_fournisseur_basedd
                 WHERE (`chi_id_basedd` = :c_chi_id_basedd
@@ -1644,7 +1578,6 @@ class c_bases1{
                     'c_chi_id_basedd' => $tt[__xva][0]['T0.chi_id_basedd'],
                     'n_chx_dossier_id_basedd' => $donnees_recues[__xva]['chx_dossier_id_basedd'],
                     'n_chp_commentaire_basedd' => $donnees_recues[__xva]['chp_commentaire_basedd'],
-                    'n_chp_genere_basedd' => $donnees_recues[__xva]['chp_genere_basedd'],
                     'n_chp_rev_travail_basedd' => $donnees_recues[__xva]['chp_rev_travail_basedd'],
                     'n_chp_fournisseur_basedd' => $donnees_recues[__xva]['chp_fournisseur_basedd']
                 ),
@@ -1758,11 +1691,10 @@ class c_bases1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_126()
-                / ***meta(sur_base_de_reference(1))*** /
                 SELECT 
-                `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
-                `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-                `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+                `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+                `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+                `T2`.`chp_nom_projet`
                  FROM b1.tbl_bdds T0
                  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
                 
@@ -1781,6 +1713,7 @@ class c_bases1{
             
             if($tt[__xst] === __xsu){
 
+                /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt , true ) . '</pre>' ; exit(0);*/
                 $o1 .= '<h1>supprimer une base <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_bases1.formulaire1(action1(page_liste_des_bases1))" title="revenir à la liste" >⬱</div></h1>' . PHP_EOL;
                 $o1 .= '<div id="vv_bases_supprimer1">' . PHP_EOL;
                 $o1 .= '  confirmez voous la suppression de la base id=<b>' . $tt[__xva][0]['T0.chi_id_basedd'] . '</b> ';
@@ -2025,11 +1958,10 @@ class c_bases1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_126()
-                / ***meta(sur_base_de_reference(1))*** /
                 SELECT 
-                `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_genere_basedd` , 
-                `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-                `T2`.`chi_id_projet` , `T2`.`chp_nom_projet`
+                `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+                `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+                `T2`.`chp_nom_projet`
                  FROM b1.tbl_bdds T0
                  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
                 
@@ -2106,27 +2038,6 @@ class c_bases1{
             $o1 .= '    </div>' . PHP_EOL;
             $o1 .= '  </div>' . PHP_EOL;
             /**/
-            /**/
-            $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
-            $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-            $o1 .= '      <span>généré</span>' . PHP_EOL;
-            $o1 .= '    </div>' . PHP_EOL;
-            $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-            /**/
-            $o1 .= '    <div>' . PHP_EOL;
-            $o1 .= '        <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(chp_genere_basedd)))" title="agrandir la zone" >🖐</div>';
-            $o1 .= '        <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(chp_genere_basedd)))" title="retrecir la zone" >👊</div>';
-            $o1 .= '        <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(chp_genere_basedd)))" title="vider la zone" >🚫</div>';
-            $o1 .= '        <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(chp_genere_basedd)))" title="copier le contenu" >📋</div>';
-            $o1 .= '        <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(chp_genere_basedd)))" title="aller à la position" >position</div>';
-            $o1 .= '        <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(chp_genere_basedd)))" title="aller à la ligne" >ligne</div>';
-            $o1 .= '    </div>' . PHP_EOL;
-            /**/
-            $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
-            $o1 .= '        <textarea id="chp_genere_basedd" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.chp_genere_basedd']) . '</textarea>' . PHP_EOL;
-            $o1 .= '      </div>' . PHP_EOL;
-            $o1 .= '    </div>' . PHP_EOL;
-            $o1 .= '  </div>' . PHP_EOL;
             /**/
             $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
             $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -2401,11 +2312,15 @@ class c_bases1{
         $donnees_retournees[__x_action]='c_bases1.page_liste_des_bases1()';
         $donnees_retournees[__xst]=__xsu;
     }
+    
+    
     /*
       =============================================================================================================
     */
     public function dump_de_la_base(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         /* dump_de_la_base(idxxx)*/
+        $id_de_la_base=0;
+        $projet_rev=0;
         
         if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
 
@@ -2420,93 +2335,10 @@ class c_bases1{
                         if($mat[$j][1] === 'chi_id_basedd' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
 
                             $id_de_la_base=(int)($mat[$j + 1][1]);
-                            $chemin_bdd=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite';
-                            $chemin_dump=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite' . '.sql';
-                            
-                            if(!file_exists($chemin_bdd)){
 
-                                $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ' le fichier est absent';
-                                return;
+                        }else if($mat[$j][1] === 'projet_rev' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
 
-                            }
-
-                            /*
-                              https://stackoverflow.com/questions/6221816/how-do-i-perform-a-dump-on-sqlite-database-through-php
-                            */
-                            /*
-                              echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_bdd , true ) . '</pre>' ; exit(0);
-                            */
-                            $db=new SQLite3($chemin_bdd);
-                            $db->busyTimeout(5000);
-                            $sql_structure='';
-                            $sql='/*' . PHP_EOL . '  ============================' . PHP_EOL . '  Il y a 3 parties dans ce fichier' . PHP_EOL . '  1°) au début, les créations de tables' . PHP_EOL . '  2°) au milieu les insertions' . PHP_EOL . '  3°) à la fin les index' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                            $tables=$db->query("SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';");
-                            $les_tables=array();
-                            while($table=$tables->fetchArray(SQLITE3_NUM)){
-                                $definition_de_la_table=$db->querySingle("SELECT sql FROM sqlite_master WHERE name = '{$table[0]}'") . ";\n\n";
-                                $sql .= $definition_de_la_table;
-                                $sql_structure .= $definition_de_la_table;
-                                $les_tables[]=$table[0];
-                            }
-                            $sql .= '/*' . PHP_EOL . '  ============================' . PHP_EOL . '  2°) au milieu les insertions' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                            $sql_insertion_des_valeurs='';
-                            foreach($les_tables as $k1 => $v1){
-                                $rows=$db->query("SELECT * FROM " . $v1);
-                                $sql_insert="INSERT INTO " . $v1 . " (";
-                                $columns=$db->query("PRAGMA table_info(" . $v1 . ")");
-                                $liste_des_champs=array();
-                                while($column=$columns->fetchArray(SQLITE3_ASSOC)){
-                                    $liste_des_champs[]=$column["name"];
-                                }
-                                $sql_insert .= implode(",",$liste_des_champs) . ") VALUES";
-                                $nb_enreg=0;
-                                while($row=$rows->fetchArray(SQLITE3_ASSOC)){
-                                    $nb_enreg++;
-                                    foreach($row as $k => $v){
-                                        
-                                        if($v === null){
-
-                                            $row[$k]="NULL";
-
-                                        }else{
-
-                                            $row[$k]="'" . SQLite3::escapeString($v) . "'";
-                                        }
-
-                                    }
-                                    $sql_insert .= "\n(" . implode(",",$row) . "),";
-                                }
-                                
-                                if($nb_enreg > 0){
-
-                                    $sql .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                                    $sql .= rtrim($sql_insert,",") . ";\n\n";
-                                    $sql_insertion_des_valeurs .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                                    $sql_insertion_des_valeurs .= rtrim($sql_insert,",") . ";\n\n";
-
-                                }else{
-
-                                    $sql .= '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  PAS DE DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                                }
-
-                            }
-                            $sql .= '/*' . PHP_EOL . '  ============================' . PHP_EOL . '  3°) à la fin les index' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                            $sql_insertion_des_index='';
-                            $indexes=$db->query("SELECT name , tbl_name FROM sqlite_master WHERE type ='index' AND name NOT LIKE 'sqlite_%';");
-                            while($index=$indexes->fetchArray(SQLITE3_NUM)){
-                                $sql .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
-                                $sql_insertion_des_index .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
-                            }
-                            file_put_contents($chemin_dump,$sql);
-                            $chemin_dump_creation=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite' . '._structure.sql';
-                            $chemin_dump_insertion=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite' . '._donnees.sql';
-                            $chemin_dump_index=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite' . '._index.sql';
-                            file_put_contents($chemin_dump_creation,$sql_structure);
-                            file_put_contents($chemin_dump_insertion,$sql_insertion_des_valeurs);
-                            file_put_contents($chemin_dump_index,$sql_insertion_des_index);
-                            $donnees_retournees[__x_signaux][__xsu][]=' le dump de la base "' . $id_de_la_base . '" a été réalisé [' . __LINE__ . ']';
-                            $donnees_retournees[__xst]=__xsu;
-
+                            $projet_rev=(int)($mat[$j + 1][1]);
                         }
 
                     }
@@ -2517,5 +2349,156 @@ class c_bases1{
 
         }
 
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = "' . $id_de_la_base . '" <pre>' . var_export($projet_rev,true) . '</pre>' ; exit(0); */
+        
+        
+        if($id_de_la_base === 0){
+
+            $donnees_retournees[__x_signaux][__xal][]=' $id_de_la_base non trouvé [' . __LINE__ . ']';
+            return;
+
+        }
+
+        
+        if($projet_rev === 1){
+         
+         
+            $chemin_bdd=$chemin_des_bases_rev=REPERTOIRE_BDD_SQLITE3.DIRECTORY_SEPARATOR.'bdd_'.$id_de_la_base.'.sqlite';   
+            
+
+        }else{
+
+            $tt111=/*sql_inclure_deb*/
+                /* sql_111()
+                SELECT 
+
+                `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
+                 FROM b1.tbl_bdds T0
+                WHERE (`T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
+
+                   AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
+                 /*sql_111()*/ 111,
+                array( 'T0_chi_id_basedd' => $id_de_la_base, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
+                $donnees_retournees
+            );
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt111 , true ) . '</pre>' ; exit(0); */
+            
+            if($tt111[__xst] !== __xsu || count($tt111[__xva]) !== 1){
+
+                $donnees_retournees[__x_signaux][__xal][]=' enregistrement de la base non trouvé ' . var_export( $tt111[__xva] , true ) .' [' . __LINE__ . ']';
+                return;
+
+            }
+
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] , true ) . '</pre>' ; exit(0);*/
+            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
+            $obj_doss=new c_dossiers1(
+                $donnees_retournees,
+                 /*matrice*/ $mat,
+                $donnees_recues
+            );
+            $obj_chemin=$obj_doss->construire_chemin($tt111[__xva][0]['T0.chx_dossier_id_basedd']);
+            
+            if($obj_chemin[__xst] !== __xsu){
+
+                $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
+                return;
+
+            }
+
+            $chemin_bdd=$obj_chemin[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite';
+        }
+
+        /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export($chemin_bdd,true) . '</pre>' ;       exit(0);*/
+        /* $projet_rev*/
+        $chemin_dump=$chemin_bdd . '.sql';
+        
+        if(!file_exists($chemin_bdd)){
+
+            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ' le fichier est absent';
+            return;
+
+        }
+
+        /*
+          https://stackoverflow.com/questions/6221816/how-do-i-perform-a-dump-on-sqlite-database-through-php
+        */
+        /*
+          echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_bdd , true ) . '</pre>' ; exit(0);
+        */
+        $db=new SQLite3($chemin_bdd);
+        $db->busyTimeout(5000);
+        $sql_structure='';
+        $sql='/*' . PHP_EOL . '  ============================' . PHP_EOL . '  Il y a 3 parties dans ce fichier' . PHP_EOL . '  1°) au début, les créations de tables' . PHP_EOL . '  2°) au milieu les insertions' . PHP_EOL . '  3°) à la fin les index' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+        $tables=$db->query("SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';");
+        $les_tables=array();
+        while($table=$tables->fetchArray(SQLITE3_NUM)){
+            $definition_de_la_table=$db->querySingle("SELECT sql FROM sqlite_master WHERE name = '{$table[0]}'") . ";\n\n";
+            $sql .= $definition_de_la_table;
+            $sql_structure .= $definition_de_la_table;
+            $les_tables[]=$table[0];
+        }
+        $sql .= '/*' . PHP_EOL . '  ============================' . PHP_EOL . '  2°) au milieu les insertions' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+        $sql_insertion_des_valeurs='';
+        foreach($les_tables as $k1 => $v1){
+            $rows=$db->query("SELECT * FROM " . $v1);
+            $sql_insert="INSERT INTO " . $v1 . " (";
+            $columns=$db->query("PRAGMA table_info(" . $v1 . ")");
+            $liste_des_champs=array();
+            while($column=$columns->fetchArray(SQLITE3_ASSOC)){
+                $liste_des_champs[]=$column["name"];
+            }
+            $sql_insert .= implode(",",$liste_des_champs) . ") VALUES";
+            $nb_enreg=0;
+            while($row=$rows->fetchArray(SQLITE3_ASSOC)){
+                $nb_enreg++;
+                foreach($row as $k => $v){
+                    
+                    if($v === null){
+
+                        $row[$k]="NULL";
+
+                    }else{
+
+                        $row[$k]="'" . SQLite3::escapeString($v) . "'";
+                    }
+
+                }
+                $sql_insert .= "\n(" . implode(",",$row) . "),";
+            }
+            
+            if($nb_enreg > 0){
+
+                $sql .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+                $sql .= rtrim($sql_insert,",") . ";\n\n";
+                $sql_insertion_des_valeurs .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+                $sql_insertion_des_valeurs .= rtrim($sql_insert,",") . ";\n\n";
+
+            }else{
+
+                $sql .= '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  PAS DE DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+            }
+
+        }
+        $sql .= '/*' . PHP_EOL . '  ============================' . PHP_EOL . '  3°) à la fin les index' . PHP_EOL . '  ============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
+        $sql_insertion_des_index='';
+        $indexes=$db->query("SELECT name , tbl_name FROM sqlite_master WHERE type ='index' AND name NOT LIKE 'sqlite_%';");
+        while($index=$indexes->fetchArray(SQLITE3_NUM)){
+            $sql .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
+            $sql_insertion_des_index .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
+        }
+        file_put_contents($chemin_dump,$sql);
+        $chemin_dump_creation=$chemin_bdd . '._structure.sql';
+        $chemin_dump_insertion=$chemin_bdd . '._donnees.sql';
+        $chemin_dump_index=$chemin_bdd . '._index.sql';
+        file_put_contents($chemin_dump_creation,$sql_structure);
+        file_put_contents($chemin_dump_insertion,$sql_insertion_des_valeurs);
+        file_put_contents($chemin_dump_index,$sql_insertion_des_index);
+        $donnees_retournees[__x_signaux][__xsu][]=' le dump de la base "' . $id_de_la_base . '" a été réalisé [' . __LINE__ . ']';
+        $donnees_retournees[__xst]=__xsu;
     }
 }

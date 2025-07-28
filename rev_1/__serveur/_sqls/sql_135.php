@@ -1,6 +1,6 @@
 <?php
 function sql_135($par,&$donnees_retournees,$that){
-    $sql0='UPDATE `'.$GLOBALS[__BDD][BASE_REFERENCE][PREFIXE_BDD].'`.`tbl_requetes` SET '.PHP_EOL;
+    $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_requetes` SET '.PHP_EOL;
     $tableau_champs=array();
 
     if(isset($par['n_cht_php_requete'])){
@@ -15,7 +15,7 @@ function sql_135($par,&$donnees_retournees,$that){
         return array(/**/
             __xst => __xer ,
             __xme => 'aucun champ à mettre à jour' ,
-            'id_bdd' => BASE_REFERENCE ,
+            'id_bdd' => BDD_NUMERO_1 ,
             'source_requete' => '' , 
             'texte_requete' => 'la modification dans la table des requetes' ,
             'exception' => null , 
@@ -28,15 +28,15 @@ function sql_135($par,&$donnees_retournees,$that){
     $sql0.=$where0;
     // echo __FILE__ . ' ' . __LINE__ . ' $sql0= <pre>' . $sql0 . '</pre>' ; exit(0);
     try{
-        $ret=$GLOBALS[__BDD][BASE_REFERENCE][LIEN_BDD]->exec($sql0);
-        return(array( __xst => __xsu, 'changements' => $GLOBALS[__BDD][BASE_REFERENCE][LIEN_BDD]->changes()));
+        $ret=$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->exec($sql0);
+        return(array( __xst => __xsu, 'changements' => $GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->changes()));
     }catch(Exception $e){
         return array(/**/
             __xst => __xer , 
             'source_requete' => $sql0 , 
             'texte_requete' => 'la modification dans la table des requetes' ,
             'exception' => $e , 
-            'id_bdd' => BASE_REFERENCE
+            'id_bdd' => BDD_NUMERO_1
         );
     }
 }

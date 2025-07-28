@@ -658,7 +658,7 @@ class c_requetes1{
             / ***meta(sur_base_de_reference(1))*** /
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , 
-            `T0`.`chp_genere_basedd` , `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
+                                   `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
             `T1`.`chx_parent_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`chp_commentaire_projet`
              FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
@@ -1360,7 +1360,7 @@ EOT;
         $nom_fichier_ancien=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . 'sql_' . $chi_id_requete_ancienne . '.php';
         $contenu='';
         
-        if($tt1[__xva][0]['T0.cht_php_requete'] === null){
+        if(is_null($tt1[__xva][0]['T0.cht_php_requete'])){
 
             /*
               dans le projet rev1/1,

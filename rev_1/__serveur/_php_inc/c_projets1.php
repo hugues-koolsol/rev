@@ -2522,7 +2522,8 @@ EOT;
             return;
 
         }
-
+        
+        
         /*
           echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt308[__xva] , true ) . '</pre>' ; exit(0);
         */
@@ -2999,7 +3000,7 @@ EOT;
             
             if(__X_CLE_APPLICATION === 'rev_1' && $v0['T0.chi_id_projet'] > 2){
 
-                $lsttbl .= '<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_bases1.dump_de_la_base(chi_id_basedd(' . $v0['T0.chi_id_projet'] . '))" title="sauvegarder la base du projet">💾</div>';
+                $lsttbl .= '<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_bases1.dump_de_la_base(chi_id_basedd(' . $v0['T0.chi_id_projet'] . '),projet_rev(1))" title="sauvegarder la base du projet">💾</div>';
 
             }
 
