@@ -1617,6 +1617,8 @@ class c_sources1{
             $o1 .= '        <div class="hug_bouton yy__x_signaux_2" style="float:right;" data-hug_click="c_sources1.lire_ce_source_du_disque1(chi_id_source(' . $chi_id_source . '))" title="lire du disque" >lire du disque</div>';
             $o1 .= '        <div class="hug_bouton yy__x_signaux_2" style="float:right;" data-hug_click="c_sources1.ecrire_ce_source_sur_disque1(chi_id_source(' . $chi_id_source . '))" title="écrire sur disque" >écrire sur disque</div>';
             $o1 .= '        <div class="hug_bouton yy__x_signaux_0" style="float:right;" data-hug_click="c_sources1.supprimer_ce_source_du_disque1(chi_id_source(' . $chi_id_source . '))" title="supprimer du disque" >supprimer du disque</div>';
+            $o1 .= '        <div class="hug_bouton yy__x_signaux_3" style="float:right;" data-hug_click="c_sources1.formulaire1(conteneur1(vv_sources_modifier1),chi_id_source(' . $chi_id_source . '))" title="senregistrer en base" >enregistrer</div>';
+            $o1 .= '      <div class="hug_bouton" data-hug_click="" title="" >enregistrer</div>';
             
             if(__X_CLE_APPLICATION === 'rev_2'){
 

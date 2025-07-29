@@ -1,7 +1,7 @@
 <?php
 function sql_134($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+      `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
       `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
     ';
     $sql0='SELECT '.$champs0;
@@ -26,7 +26,7 @@ function sql_134($par,&$donnees_retournees,$that){
             $donnees0[]=array(
                 'T0.chi_id_projet' => $tab0[0],
                 'T0.chp_nom_projet' => $tab0[1],
-                'T0.chp_commentaire_projet' => $tab0[2],
+                'T0.cht_commentaire_projet' => $tab0[2],
                 'T0.chx_dossier_requetes_projet' => $tab0[3],
                 'T0.chx_dossier_menus_projet' => $tab0[4],
                 'T1.chp_nom_dossier' => $tab0[5],

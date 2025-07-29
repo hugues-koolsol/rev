@@ -1891,6 +1891,23 @@ class c_svg_bdd1{
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
         t+='<h2>changer les éléments du champ</h2>';
         t+='<br />type  : <input id="type_du_champ" type="text" value="' + type_du_champ + '" autocapitalize="off" />';
+        
+        let t1=['INTEGER','VARCHAR(64)','TEXT'];
+        for( let ind=0 ; ind < t1.length ; ind++ ){
+            var cmd='';
+            cmd+='interface1.module1(';
+            cmd+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+            cmd+=' methode3(remplir_champ_avec_valeur),';
+            cmd+=' parametre3(';
+            cmd+='  id_du_champ(type_du_champ),';
+            cmd+='  valeur(\'' + t1[ind] + '\')';
+            cmd+=' )';
+            cmd+=')';
+            t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '" >' + t1[ind] + '</div>';
+        }
+        
+        
+        
         t+='<br />table mère : <input id="table_mère" type="text" value="' + table_mere + '" autocapitalize="off" />';
         let sel='';
         for(let cc in this.#arbre){
@@ -4719,7 +4736,7 @@ class c_svg_bdd1{
 
                 */
                 if(tar.tagName.toLowerCase() === 'rect' && tar.getAttribute( 'id_svg_conteneur_table' ) && tar.getAttribute( 'data-utilite' )){
-                    debugger; /* afr on ne devrait plus passer par là */
+                    debugger; /* 2025-07-29 afr on ne devrait plus passer par là  */
                     var par=document.getElementById( tar.getAttribute( 'id_svg_conteneur_table' ) );
                     var valeur_translate=par.getAttribute( 'transform' ).replace( /translate\(/g , '' ).replace( /\)/g , '' ).split( ',' );
                     this.#souris_init_objet.id_svg_conteneur_table=parseInt( tar.getAttribute( 'id_svg_conteneur_table' ) , 10 );
@@ -6359,9 +6376,8 @@ class c_svg_bdd1{
             }
             var p1=[50,50];
             var p2=[0,0];
-            /* hugues afr remplacer le - 4 ci dessous */
-            let refe_enfant_droite=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant - 3].proprietes.donnees_rev_du_champ.indexOf( 'refe_enfant_droite(1)' ) >= 0 ? ( 1 ) : ( 0 );
-            let refe_parent_gauche=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant - 3].proprietes.donnees_rev_du_champ.indexOf( 'refe_parent_gauche(1)' ) >= 0 ? ( 1 ) : ( 0 );
+            let refe_enfant_droite=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_du_champ].proprietes.donnees_rev_du_champ.indexOf( 'refe_enfant_droite(1)' ) >= 0 ? ( 1 ) : ( 0 );
+            let refe_parent_gauche=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_du_champ].proprietes.donnees_rev_du_champ.indexOf( 'refe_parent_gauche(1)' ) >= 0 ? ( 1 ) : ( 0 );
             this.#svg_tableaux_des_references_amont_aval[id_bdd_de_la_base].push( {
                     "id_bdd_de_la_base_en_cours" : this.#id_bdd_de_la_base_en_cours ,
                     "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,

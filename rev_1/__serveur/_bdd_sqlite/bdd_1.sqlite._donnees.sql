@@ -6,7 +6,7 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$F4WqMvH6cWTFm9pUPGcS.ufYcxNhxkZ7.qlPmmTEYMtYPnIqETpPq','','527','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','533','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -222,7 +222,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chp__dtm_tache`)
 flag champ_date_modification','99','4','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','13','0','2025-06-13 06:54:29.864','2000-01-01 00:00:00.000'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','13','1','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -324,7 +324,9 @@ dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.75
 ('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','1','2025-07-17 12:14:57.332','2025-07-17 12:07:20.343'),
 ('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','0','2025-07-18 10:50:06.307','2025-07-18 10:50:06.307'),
 ('206','1','renuméroter un source','99','0','2025-07-24 12:50:11.622','2025-07-24 12:50:11.622'),
-('207','1','remplacer php par deno','50','1','2025-07-27 09:47:30.190','2025-07-27 09:47:14.801');
+('207','1','remplacer php par deno','50','1','2025-07-27 09:47:30.190','2025-07-27 09:47:14.801'),
+('208','1','chp_commentaire_projet => chTTTTT_commentaire_projet','99','0','2025-07-29 11:37:04.000','2025-07-29 11:37:04.000'),
+('209','1','ajouter un bouton enregistrer dans la modification d''un source','99','1','2025-07-29 16:48:06.039','2025-07-29 15:44:38.467');
 
 
 /*
@@ -333,7 +335,7 @@ dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.75
   ===============================
 */
 
-INSERT INTO tbl_projets (chi_id_projet,chp_nom_projet,chp_commentaire_projet,che__nur_projet,chp__dtm_projet,chp__dtc_projet,chx_dossier_requetes_projet,chx_dossier_menus_projet) VALUES
+INSERT INTO tbl_projets (chi_id_projet,chp_nom_projet,cht_commentaire_projet,che__nur_projet,chp__dtm_projet,chp__dtc_projet,chx_dossier_requetes_projet,chx_dossier_menus_projet) VALUES
 ('1','environnement principal 1','C''est ce projet !
 Normalement, on n''a plus à y toucher.','0','2000-01-01 00:00:00','2000-01-01 00:00:00','6','2'),
 ('2','Projet virtuel qui doit exister mais rester vide','Projet virtuel qui doit exister mais rester vide.
@@ -344,7 +346,9 @@ dans le répertoire rev_2 et on travaillera sur l''url frev/rev_2.
 Dans le projet 2, le fichier __serveur/__definitions.php sera le seul fichier différent
 
 Ce projet est utilisé pour la mise à jour du projet principal','0','2000-01-01 00:00:00','2000-01-01 00:00:00',NULL,NULL),
-('3','modèle simple','une base avec une table utilisateur','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000',NULL,NULL);
+('3','modèle simple avec une table utilisateur','Ce modèle est défini pour faire un projet qui contient des pages qui sont accessibles que pour un utilisateur.
+
+En conséquence, il n''y a pas de gestion de menu.','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','6','2');
 
 
 /*
@@ -579,8 +583,7 @@ WHERE (`chi_id_requete` = :c_chi_id_requete
    `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd
 WHERE (`chi_id_basedd` = :c_chi_id_basedd
    AND `chx_projet_id_basedd` = :c_chx_projet_id_basedd) ;',NULL,'bdds',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('111','1','select','#(meta(sur_base_de_reference(1))),
-sélectionner(
+('111','1','select','sélectionner(
    base_de_reference(1),
    valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`),champ(`T0`,`chx_dossier_id_basedd`)),
    provenance(
@@ -589,13 +592,16 @@ sélectionner(
       )
    ),
    conditions(
-      et(dans(champ(`T0`,`chi_id_basedd`),(:T0_chi_id_basedd)),egal(champ(`T0`,`chx_projet_id_basedd`),:T0_chx_projet_id_basedd))
+      et(
+         #(),
+         dans(champ(`T0`,`chi_id_basedd`),(:T0_chi_id_basedd)),
+         egal(champ(`T0`,`chx_projet_id_basedd`),:T0_chx_projet_id_basedd)
+      )
    )
-)  ','/*meta(sur_base_de_reference(1))*/
-SELECT 
+)  ','SELECT 
 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
  FROM b1.tbl_bdds T0
-WHERE (`T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
+WHERE ( /* */ `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
    AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
 ;',NULL,'bdds',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('112','1','insert','insérer(
@@ -1340,7 +1346,8 @@ WHERE (`chi_id_projet` = :chi_id_projet) ;',NULL,'projets',NULL,'0','2000-01-01 
 WHERE (`T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
    AND `T0`.`che_binaire_source` = :T0_che_binaire_source)
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('147','1','select','sélectionner(
+('147','1','select','#(meta(sur_base_de_reference(1))),
+sélectionner(
    base_de_reference(1),
    valeurs(
       champ(`T0`,`chi_id_utilisateur`),
@@ -1362,7 +1369,8 @@ WHERE (`T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
       )
    ),
    conditions(egal(champ(`T0`,`chi_id_utilisateur`),(:T0_chi_id_utilisateur)))
-)  ','SELECT 
+)  ','/*meta(sur_base_de_reference(1))*/
+SELECT 
 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
 `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
  FROM b1.tbl_utilisateurs T0
@@ -1811,22 +1819,18 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
 WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
    AND `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier)
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('167','1','update','#(meta(sur_base_de_reference(1))),
-modifier(
-   base_de_reference(1),
-   valeurs( affecte( champ( `chp_nom_de_connexion_utilisateur` ) , :n_chp_nom_de_connexion_utilisateur ) , affecte( champ( `chp_mot_de_passe_utilisateur` ) , :n_chp_mot_de_passe_utilisateur )),
+('167','1','requete_manuelle','modifier(
+   valeurs(affecte(champ(`chp_nom_de_connexion_utilisateur`),:n_chp_nom_de_connexion_utilisateur),affecte(champ(`chp_mot_de_passe_utilisateur`),:n_chp_mot_de_passe_utilisateur)),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_utilisateurs , base(b1) ))
+         source(nom_de_la_table(tbl_utilisateurs))
       )
    ),
-   conditions( egal( champ( `chi_id_utilisateur` ) , :c_chi_id_utilisateur ))
-)  ','/*meta(sur_base_de_reference(1))*/
-
-UPDATE b1.tbl_utilisateurs SET 
+   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
+)      ','UPDATE tbl_utilisateurs SET 
    `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
    `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
-WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'utilisateur sur page profile',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('168','1','select','sélectionner(
    base_de_reference(1),
    valeurs(compter(tous_les_champs())),
@@ -2746,6 +2750,7 @@ ORDER BY `T0`.`che_ordre_menu` ASC
       affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),
       affecte(champ(`chx_dossier_requetes_projet`),:n_chx_dossier_requetes_projet),
       affecte(champ(`chx_dossier_menus_projet`),:n_chx_dossier_menus_projet),
+      affecte(champ(`chp_commentaire_projet`),:n_chp_commentaire_projet),
       
    ),
    provenance(
@@ -2754,10 +2759,11 @@ ORDER BY `T0`.`che_ordre_menu` ASC
       )
    ),
    conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
-)    ','UPDATE tbl_projets SET 
+)      ','UPDATE tbl_projets SET 
    `chp_nom_projet` = :n_chp_nom_projet , 
    `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
-   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
+   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet , 
+   `chp_commentaire_projet` = :n_chp_commentaire_projet
 WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'projets',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('306','1','select','#(meta(sur_base_de_reference(1))),
 sélectionner(
@@ -3197,7 +3203,7 @@ INSERT INTO tbl_bdds (chi_id_basedd,chx_projet_id_basedd,chp_commentaire_basedd,
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(11.5,5.5))
+   transform_base_sur_svg(translate(5.5,3.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_utilisateurs''),
@@ -3543,7 +3549,7 @@ créer_table(
       nom_long_de_la_table(''''),
       nom_court_de_la_table(''''),
       nom_bref_de_la_table(''''),
-      transform_table_sur_svg(translate(272.5,10.5))
+      transform_table_sur_svg(translate(272.5,9.5))
    ),
    champs(
       champ(
@@ -3577,17 +3583,17 @@ créer_table(
          )
       ),
       champ(
-         nom_du_champ(''chp_commentaire_projet''),
+         nom_du_champ(''cht_commentaire_projet''),
          type(''text''),
          meta(
             genre_meta(champ),
-            nom_du_champ(''chp_commentaire_projet''),
-            champ(''chp_commentaire_projet''),
+            nom_du_champ(''cht_commentaire_projet''),
+            champ(''cht_commentaire_projet''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(0)
+            afficher_champ_dans_svg(1)
          )
       ),
       champ(
@@ -4377,7 +4383,7 @@ créer_table(
       nom_long_de_la_table(''''),
       nom_court_de_la_table(''''),
       nom_bref_de_la_table(''''),
-      transform_table_sur_svg(translate(276.5,138.5))
+      transform_table_sur_svg(translate(271.5,153.5))
    ),
    champs(
       champ(

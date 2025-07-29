@@ -2249,11 +2249,11 @@ echo 'hella';`;
     /*
       =============================================================================================================
     */
-    affiche_requete_de_liste1( mat , debut ){
+    ajoute_le_contenu_du_titre( mat , debut ){
         let l01=mat.length;
         let id_zone='';
         for( let i=debut ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][2] === 'f' && 'affiche_requete_de_liste1' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+            if(mat[i][2] === 'f' && 'ajoute_le_contenu_du_titre' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_zone=mat[i + 1][1];
             }
         }

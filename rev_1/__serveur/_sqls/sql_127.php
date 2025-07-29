@@ -3,7 +3,7 @@ function sql_127($par,&$donnees_retournees,$that){
     $champs0='
       `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , 
       `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T1`.`chx_parent_dossier` , 
-      `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`chp_commentaire_projet`
+      `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`cht_commentaire_projet`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -36,7 +36,7 @@ function sql_127($par,&$donnees_retournees,$that){
                 'T1.chx_parent_dossier' => $tab0[9],
                 'T2.chi_id_projet' => $tab0[10],
                 'T2.chp_nom_projet' => $tab0[11],
-                'T2.chp_commentaire_projet' => $tab0[12],
+                'T2.cht_commentaire_projet' => $tab0[12],
             );
         }
         return array(

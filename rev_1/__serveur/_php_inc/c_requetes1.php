@@ -659,7 +659,7 @@ class c_requetes1{
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , 
                                    `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-            `T1`.`chx_parent_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`chp_commentaire_projet`
+            `T1`.`chx_parent_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`cht_commentaire_projet`
              FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
             
@@ -1713,7 +1713,7 @@ EOT;
         $tt134=/*sql_inclure_deb*/
             /* sql_134()
             SELECT 
-            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
             `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
              FROM b1.tbl_projets T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
@@ -1990,7 +1990,7 @@ EOT;
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td id="req_' . $v0['T0.chi_id_requete'] . '" style="text-align:left;" title="' . enti1($v0['T0.cht_sql_requete']) . '">';
-            $cmd='c_fonctions_js1(affiche_requete_de_liste1(req_' . $v0['T0.chi_id_requete'] . '))';
+            $cmd='c_fonctions_js1(ajoute_le_contenu_du_titre(req_' . $v0['T0.chi_id_requete'] . '))';
             $lsttbl .= '<div  class="hug_bouton" data-hug_click="' . $cmd . '">O</div>' . enti1(mb_substr($v0['T0.cht_sql_requete'],0,30)) . '';
             $lsttbl .= '</td>';
             /**/

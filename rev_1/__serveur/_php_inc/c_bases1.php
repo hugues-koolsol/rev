@@ -1202,6 +1202,8 @@ class c_bases1{
 
         }
         
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] , true ) . '</pre>' ; exit(0);*/
+        
         if($les_id_des_bases !== ''){
 
             /*
@@ -1227,6 +1229,8 @@ class c_bases1{
                 ),
                 $donnees_retournees
             );
+//                array( 'T0_chi_id_basedd' => $chi_id_basedd, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
+            
             
             if($tt[__xst] !== __xsu){
 
@@ -1234,9 +1238,9 @@ class c_bases1{
 
             }else{
 
-                /*
-                  $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($tt , true ) . '</pre> [' . __LINE__ . '] ';
-                */
+                
+//                $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($tt , true ) . '</pre> [' . __LINE__ . '] ';
+                
                 $donnees_retournees[__xva]['liste_des_bases']=$tt[__xva];
                 $donnees_retournees[__xva]['maj']='methode_module_dynamique1(nom_du_module2("_js/c_svg_bdd1.js"),methode2(traiter_arbre1),valeurs2(liste_des_bases))';
                 $donnees_retournees[__xst]=__xsu;

@@ -4,7 +4,7 @@ function sql_133($par,&$donnees_retournees,$that){
         $donnees_retournees[__x_signaux][__xif][]='info <b>sql_133</b>';
     }
     $champs0='
-      `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet`
+      `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -17,8 +17,8 @@ function sql_133($par,&$donnees_retournees,$that){
     if(($par['T0_chp_nom_projet'] !== '')){
         $where0.=' AND `T0`.`chp_nom_projet` LIKE '.sq2($par['T0_chp_nom_projet']).''.PHP_EOL;
     }
-    if(($par['T0_chp_commentaire_projet'] !== '')){
-        $where0.=' AND `T0`.`chp_commentaire_projet` LIKE '.sq2($par['T0_chp_commentaire_projet']).''.PHP_EOL;
+    if(($par['T0_cht_commentaire_projet'] !== '')){
+        $where0.=' AND `T0`.`cht_commentaire_projet` LIKE '.sq2($par['T0_cht_commentaire_projet']).''.PHP_EOL;
     }
     $sql0.=$where0;
     $order0='
@@ -36,7 +36,7 @@ function sql_133($par,&$donnees_retournees,$that){
             $donnees0[]=array(
                 'T0.chi_id_projet' => $tab0[0],
                 'T0.chp_nom_projet' => $tab0[1],
-                'T0.chp_commentaire_projet' => $tab0[2],
+                'T0.cht_commentaire_projet' => $tab0[2],
             );
         }
         $stmt0->close();

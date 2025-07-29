@@ -186,11 +186,11 @@ CREATE TABLE tbl_projets(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_commentaire_projet'),champ('chp_commentaire_projet'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(0)
+            genre_meta(champ),nom_du_champ('cht_commentaire_projet'),champ('cht_commentaire_projet'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1)
             )
             */
-             chp_commentaire_projet text
+             cht_commentaire_projet text
     ,
     
             /*

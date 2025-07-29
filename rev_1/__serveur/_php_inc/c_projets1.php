@@ -604,7 +604,7 @@ EOT;
         $nouvel_id=0;
         $donnees_sql=array( array(/**/
                     'chp_nom_projet' => $donnees_recues[__xva]['chp_nom_projet'],
-                    'chp_commentaire_projet' => $donnees_recues[__xva]['chp_commentaire_projet']
+                    'cht_commentaire_projet' => $donnees_recues[__xva]['cht_commentaire_projet']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt136=/*sql_inclure_deb*/
@@ -617,13 +617,13 @@ EOT;
 
                 `chp_nom_projet` , 
 
-                `chp_commentaire_projet`
+                `cht_commentaire_projet`
 
             ) VALUES (
 
                 :chp_nom_projet , 
 
-                :chp_commentaire_projet
+                :cht_commentaire_projet
 
             );
             */
@@ -1112,7 +1112,7 @@ EOT;
         $tt=/*sql_inclure_deb*/
             /* sql_134()
             SELECT 
-            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
             `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
              FROM b1.tbl_projets T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
@@ -1240,7 +1240,7 @@ EOT;
         $tt=/*sql_inclure_deb*/
             /* sql_134()
             SELECT 
-            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
             `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
              FROM b1.tbl_projets T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
@@ -1269,7 +1269,7 @@ EOT;
 
                    `chp_nom_projet` = :n_chp_nom_projet , 
 
-                   `chp_commentaire_projet` = :n_chp_commentaire_projet , 
+                   `cht_commentaire_projet` = :n_cht_commentaire_projet , 
 
                    `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
 
@@ -1283,7 +1283,7 @@ EOT;
                     /**/
                     'c_chi_id_projet' => $tt[__xva][0]['T0.chi_id_projet'],
                     'n_chp_nom_projet' => $donnees_recues[__xva]['chp_nom_projet'],
-                    'n_chp_commentaire_projet' => $donnees_recues[__xva]['chp_commentaire_projet'],
+                    'n_cht_commentaire_projet' => $donnees_recues[__xva]['cht_commentaire_projet'],
                     'n_chx_dossier_requetes_projet' => $donnees_recues[__xva]['chx_dossier_requetes_projet'],
                     'n_chx_dossier_menus_projet' => $donnees_recues[__xva]['chx_dossier_menus_projet']
                 ),
@@ -1333,6 +1333,7 @@ EOT;
                            `chp_nom_projet` = :n_chp_nom_projet , 
                            `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
                            `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
+                           `cht_commentaire_projet` = :n_cht_commentaire_projet
                         WHERE `chi_id_projet` = :c_chi_id_projet ;
                         */
                         /*sql_inclure_fin*/
@@ -1343,6 +1344,7 @@ EOT;
                             'n_chp_nom_projet' => $donnees_recues[__xva]['chp_nom_projet'],
                             'n_chx_dossier_requetes_projet' => $donnees_recues[__xva]['chx_dossier_requetes_projet'],
                             'n_chx_dossier_menus_projet' => $donnees_recues[__xva]['chx_dossier_menus_projet'],
+                            'n_cht_commentaire_projet' => $donnees_recues[__xva]['cht_commentaire_projet'],
                             'c_chi_id_projet' => $donnees_recues[__xva]['chi_id_projet']
                         ),
                         $donnees_retournees,
@@ -1430,7 +1432,7 @@ EOT;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
-        $o1 .= '        <textarea rows="20"  cols="20" id="chp_commentaire_projet" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>' . PHP_EOL;
+        $o1 .= '        <textarea rows="20"  cols="20" id="cht_commentaire_projet" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>' . PHP_EOL;
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
@@ -1482,7 +1484,7 @@ EOT;
             $tt=/*sql_inclure_deb*/
                 /* sql_134()
                 SELECT 
-                `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+                `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
                 `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
                  FROM b1.tbl_projets T0
                  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
@@ -1549,7 +1551,7 @@ EOT;
             $tt=/*sql_inclure_deb*/
                 /* sql_134()
                 SELECT 
-                `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+                `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
                 `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
                  FROM b1.tbl_projets T0
                  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
@@ -1677,7 +1679,7 @@ EOT;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
-                $o1 .= '        <textarea rows="20"  cols="20" id="chp_commentaire_projet" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.chp_commentaire_projet']) . '</textarea>' . PHP_EOL;
+                $o1 .= '        <textarea rows="20"  cols="20" id="cht_commentaire_projet" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_commentaire_projet']) . '</textarea>' . PHP_EOL;
                 $o1 .= '      </div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
@@ -2787,13 +2789,13 @@ EOT;
 
             SELECT 
 
-            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chp_commentaire_projet`
+            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
              FROM b1.tbl_projets T0
             WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet
 
                AND `T0`.`chp_nom_projet` LIKE :T0_chp_nom_projet
 
-               AND `T0`.`chp_commentaire_projet` LIKE :T0_chp_commentaire_projet) 
+               AND `T0`.`cht_commentaire_projet` LIKE :T0_cht_commentaire_projet) 
 
             ORDER BY `T0`.`chi_id_projet` ASC  
 
@@ -2806,7 +2808,7 @@ EOT;
             array(
                 'T0_chi_id_projet' => $par['T0_chi_id_projet'] === '' ? '' : $par['T0_chi_id_projet'],
                 'T0_chp_nom_projet' => $par['T0_chp_nom_projet'] === '' ? '' : '' . $par['T0_chp_nom_projet'] . '',
-                'T0_chp_commentaire_projet' => '',
+                'T0_cht_commentaire_projet' => '',
                 'quantitee' => $__nbMax,
                 'debut' => $__debut,
                 'page_courante' => basename(__FILE__)
@@ -3017,21 +3019,23 @@ EOT;
             $lsttbl .= '' . $v0['T0.chi_id_projet'] . '';
             $lsttbl .= '</td>';
             
+            $couleur='';
             if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])
                && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === $v0['T0.chi_id_projet']
             ){
+                $couleur=' class="yy__x_signaux___xsu" ';
 
-                $lsttbl .= '<td class="yy__x_signaux___xsu" style="text-align:left;">';
-
-            }else{
-
-                $lsttbl .= '<td style="text-align:left;">';
             }
+            $lsttbl .= '<td id="req_' . $v0['T0.chi_id_projet'] . '"  '.$couleur.' style="text-align:left;" title="' . enti1($v0['T0.cht_commentaire_projet']) . '">';
 
-            
+
+
             if($v0['T0.chp_nom_projet'] !== null){
 
-                $lsttbl .= '' . enti1(mb_substr($v0['T0.chp_nom_projet'],0,100)) . '';
+                $cmd='c_fonctions_js1(ajoute_le_contenu_du_titre(req_' . $v0['T0.chi_id_projet'] . '))';
+                $lsttbl .= '<div  class="hug_bouton" data-hug_click="' . $cmd . '">O</div>' . enti1(mb_substr($v0['T0.chp_nom_projet'],0,100)) . '';
+
+//                $lsttbl .= '' . enti1(mb_substr($v0['T0.chp_nom_projet'],0,100)) . '';
 
             }
 

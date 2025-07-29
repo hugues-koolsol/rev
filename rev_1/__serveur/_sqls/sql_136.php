@@ -3,7 +3,7 @@ function sql_136($par,&$donnees_retournees,$that){
     $sql0='
       INSERT  INTO `tbl_projets`(
          `chp_nom_projet` , 
-         `chp_commentaire_projet`
+         `cht_commentaire_projet`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -13,7 +13,7 @@ function sql_136($par,&$donnees_retournees,$that){
         }
         $liste_des_valeurs.='(';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_projet']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_commentaire_projet']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_commentaire_projet']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

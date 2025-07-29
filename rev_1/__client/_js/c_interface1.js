@@ -895,7 +895,6 @@ class _c_interface1{
         }
         /*  */
         this.#le_body_builder.style.touchAction='manipulation';
-        let obj=null;
         let mat_action=this.__m_rev1.rev_tcm( decodeURIComponent( reponse.__x_action ) );
         if(mat_action.__xst === __xsu){
         }else{
@@ -1026,19 +1025,6 @@ class _c_interface1{
                 this.#le_web_socket_actif=__xer;
             }
             this.#masquer_ou_afficher_les_div_websocket();
-        }
-        if(obj && obj.__xva.recharger_la_page === true){
-            debugger;
-            /* afr dans quel cas utilise-t-on ceci ? */
-            let url=window.document.location.href;
-            if(url.indexOf( '#' ) > 0){
-                url=url.substr( url.indexOf( '#' ) + 1 );
-                if(url.substr( 0 , 9 ) === 'c_pages1.'){
-                    let recharger={"__x_action" : url};
-                    this.#envoie_requete_au_serveur( recharger );
-                    return;
-                }
-            }
         }
     }
     /*

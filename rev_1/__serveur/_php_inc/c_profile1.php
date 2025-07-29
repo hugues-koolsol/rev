@@ -17,10 +17,10 @@ class c_profile1{
     */
     public function formulaire1(&$donnees_retournees,&$mat,&$donnees_recues,$erreur_de_connexion=__xsu){
         $l01=count($mat);
-        for( $i=1 ; $i < $l01 ; $i++ ){
+        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
             
-            if(strpos($mat[$i][1],'formulaire1') !== false && $mat[$i][2] === 'f'){
+            if($mat[$i][1] === 'c_profile1.formulaire1' && $mat[$i][2] === 'f' && $mat[$i][8] >= 1){
 
                 $conteneur1='';
                 for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
@@ -99,6 +99,9 @@ class c_profile1{
         }
 
         $mdp=password_hash($donnees_recues[__xva]['vv_chp_mot_de_passe_utilisateur'],PASSWORD_BCRYPT,array( 'cost' => 10));
+        $chemin_bdd=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_1.sqlite';
+        $db_1=new SQLite3($chemin_bdd);
+        
         $tt=/*sql_inclure_deb*/
             /* sql_167()
             / ***meta(sur_base_de_reference(1))*** /
@@ -112,12 +115,13 @@ class c_profile1{
             $this->sql0->sql_iii(
              /*sql_167()*/ 167,
             array( 'n_chp_nom_de_connexion_utilisateur' => $donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur'], 'n_chp_mot_de_passe_utilisateur' => $mdp, 'c_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']),
-            $donnees_retournees
+            $donnees_retournees,
+            $db_1
         );
         
-        if($tt[__xst] === __xer){
+        if( $tt[__xst] !== __xsu ){
 
-            $donnees_retournees[__x_signaux][__xer][]='Erreur';
+            $donnees_retournees[__x_signaux][__xer][]='Erreur[' . __LINE__ . ']';
             $this->recupere_la_page_des_coordonnees($donnees_retournees,$mat,$donnees_recues,$donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur']);
 
         }else{

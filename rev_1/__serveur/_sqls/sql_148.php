@@ -10,11 +10,11 @@ function sql_148($par,&$donnees_retournees,$that){
             $tableau_champs[]='`chp_nom_projet` = \''.sq0($par['n_chp_nom_projet']).'\'';
         }
     }
-    if(isset($par['n_chp_commentaire_projet'])){
-        if($par['n_chp_commentaire_projet']==='' || $par['n_chp_commentaire_projet']===NULL ){
-            $tableau_champs[]='`chp_commentaire_projet` = NULL';
+    if(isset($par['n_cht_commentaire_projet'])){
+        if($par['n_cht_commentaire_projet']==='' || $par['n_cht_commentaire_projet']===NULL ){
+            $tableau_champs[]='`cht_commentaire_projet` = NULL';
         }else{
-            $tableau_champs[]='`chp_commentaire_projet` = \''.sq0($par['n_chp_commentaire_projet']).'\'';
+            $tableau_champs[]='`cht_commentaire_projet` = \''.sq0($par['n_cht_commentaire_projet']).'\'';
         }
     }
     if(isset($par['n_chx_dossier_requetes_projet'])){
