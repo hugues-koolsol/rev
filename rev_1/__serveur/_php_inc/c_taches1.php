@@ -927,7 +927,7 @@ class c_taches1{
       =============================================================================================================
     */
     function page_liste_des_taches1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $__nbMax=10;
+        $__nbMax=20;
         $par=array();
         $par['T0_chi_id_tache']='';
         $par['T0_chp_texte_tache']='';

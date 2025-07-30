@@ -73,6 +73,7 @@ class _c_interface1{
     liste_des_modules_dynamiques={};
     #la_sous_fenetre1=null;
     __js_des_sql={};
+    #date_derniere_navigation=performance.now();
     /*
       =============================================================================================================
     */
@@ -117,6 +118,30 @@ class _c_interface1{
         sortable.setAttribute( 'type' , "text/javascript" );
         sortable.setAttribute( 'src' , "_js/bibliotheques_externes/Sortable.js" );
         document.getElementsByTagName( 'head' )[0].appendChild( sortable );
+/*
+        window.navigation.addEventListener("navigate", (event) => {
+            console.log('location changed!',event);
+        });
+*/        
+/*
+        window.onhashchange = function(event) { 
+            console.log('onhashchange','\n',event.newURL,'\n',event.oldURL);
+             //code  
+        }
+*/        
+/*
+        window.onpopstate = function(e) { 
+            console.log('onpopstate',event);
+             //code  
+        }        
+*/        
+        window.addEventListener('hashchange' , (event) => { 
+            console.log('onhashchange','\n',event.newURL,'\n',event.oldURL,this);
+            console.log(performance.now()-this.#date_derniere_navigation);
+            
+             //code  
+        });
+        
         
     }
     /*
@@ -889,6 +914,7 @@ class _c_interface1{
       =============================================================================================================
     */
     #traite_reponse( reponse ){
+        this.#date_derniere_navigation=performance.now();
         let exception_premiere_page=false;
         if(this.le_niveau_de_deverminage >= 2){
             console.log( '%cdans #traite_reponse,' , 'background:#ff5252;' , ' reponse=' , reponse );
@@ -1635,7 +1661,9 @@ class _c_interface1{
       =============================================================================================================
     */
     #blur_sur_editeur1( e ){
-        this.#div_des_positions_du_curseur.innerHTML='';
+        try{
+            this.#div_des_positions_du_curseur.innerHTML='';
+        }catch{}
     }
     /*
       =============================================================================================================

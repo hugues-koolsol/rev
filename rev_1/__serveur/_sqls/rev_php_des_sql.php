@@ -395,7 +395,7 @@ WHERE ( /* */ `T0`.`chi_id_requete` = :T0_chi_id_requete
 SELECT 
 `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
  FROM b1.tbl_projets T0
-WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet
+WHERE ( /* */ `T0`.`chi_id_projet` = :T0_chi_id_projet
    AND `T0`.`chp_nom_projet` LIKE :T0_chp_nom_projet
    AND `T0`.`cht_commentaire_projet` LIKE :T0_cht_commentaire_projet) 
 ORDER BY `T0`.`chi_id_projet` ASC  
@@ -405,8 +405,9 @@ LIMIT :quantitee OFFSET :debut
   ),
   134 => 
   array (
-    'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , `T0`.`cht_commentaire_projet` , 
 `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
  FROM b1.tbl_projets T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
@@ -521,11 +522,13 @@ WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
   ),
   148 => 
   array (
-    'cht_sql_requete' => 'UPDATE b1.tbl_projets SET 
+    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
+
+UPDATE b1.tbl_projets SET 
    `chp_nom_projet` = :n_chp_nom_projet , 
-   `cht_commentaire_projet` = :n_cht_commentaire_projet , 
    `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
-   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
+   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet , 
+   `cht_commentaire_projet` = :n_cht_commentaire_projet
 WHERE `chi_id_projet` = :c_chi_id_projet ;',
     'cht_commentaire_requete' => NULL,
   ),

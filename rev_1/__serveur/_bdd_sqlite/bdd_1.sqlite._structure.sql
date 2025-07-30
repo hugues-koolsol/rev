@@ -163,7 +163,7 @@ CREATE TABLE tbl_taches(
 
 CREATE TABLE tbl_projets(
 /*
- meta(nom_de_la_table('tbl_projets'),table('tbl_projets'),genre_meta(table_de_base),nom_long_de_la_table(''),nom_court_de_la_table(''),nom_bref_de_la_table(''),transform_table_sur_svg(translate(272.5,10.5))) 
+ meta(nom_de_la_table('tbl_projets'),table('tbl_projets'),genre_meta(table_de_base),nom_long_de_la_table(''),nom_court_de_la_table(''),nom_bref_de_la_table(''),transform_table_sur_svg(translate(272.5,9.5))) 
 */
     
             /*
@@ -615,7 +615,7 @@ CREATE TABLE tbl_sources(
 
 CREATE TABLE tbl_dossiers(
 /*
- meta(nom_de_la_table('tbl_dossiers'),table('tbl_dossiers'),genre_meta(table_de_base),nom_long_de_la_table(''),nom_court_de_la_table(''),nom_bref_de_la_table(''),transform_table_sur_svg(translate(276.5,138.5))) 
+ meta(nom_de_la_table('tbl_dossiers'),table('tbl_dossiers'),genre_meta(table_de_base),nom_long_de_la_table(''),nom_court_de_la_table(''),nom_bref_de_la_table(''),transform_table_sur_svg(translate(271.5,153.5))) 
 */
     
             /*

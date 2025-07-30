@@ -327,7 +327,7 @@ function ma_trace($error){
 /*
   =====================================================================================================================
 */
-function traite_autre_fonction(&$donnees_recues,&$donnees_retournees){
+function traite_autre_fonction(&$donnees_recues,&$donnees_retournees,$drapeau=null){
 
     $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($donnees_recues[__x_action]);
     
@@ -336,6 +336,7 @@ function traite_autre_fonction(&$donnees_recues,&$donnees_retournees){
        && $obj_matrice[__xva][1][2] === 'f'
        && $obj_matrice[__xva][1][1] !== ''
     ){
+     
 
         $pos1=strpos($obj_matrice[__xva][1][1],'.');
         
@@ -344,7 +345,12 @@ function traite_autre_fonction(&$donnees_recues,&$donnees_retournees){
             $nom_de_fichier_a_inclure=substr($obj_matrice[__xva][1][1],0,$pos1) . '.php';
             $nom_de_la_fonction_a_appeler=substr($obj_matrice[__xva][1][1],$pos1 + 1);
             
+            
+            
             if(is_file(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . $nom_de_fichier_a_inclure)){
+             
+             
+             
 
                 require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . $nom_de_fichier_a_inclure);
                 /*
@@ -357,7 +363,11 @@ function traite_autre_fonction(&$donnees_recues,&$donnees_retournees){
                     /* $donnees_retournees[__x_signaux][__xdv][]=__LINE__ . '"' . $nom_de_la_classe . '" "' . $nom_de_la_fonction_a_appeler . '" "<pre>'.var_export( $obj_matrice , true ).'</pre>"';*/
                     $autorise=false;
                     
+
+
                     if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
+
+
 
                         /*
                           afr écrire une fonction qui vérifie l'autorisation avec les 3 paramètres
@@ -428,6 +438,9 @@ function traite_autre_fonction(&$donnees_recues,&$donnees_retournees){
                         
                         if($autorise !== true){
 
+
+
+
                             /*
                               afr travailler la redirection si on n'est pas authentifié 
                               $donnees_retournees[__x_signaux][__xdv][]=__LINE__ . '"' . $nom_de_la_classe . '" "' . $nom_de_la_fonction_a_appeler . '" "<pre>'.var_export( $obj_matrice , true ).'</pre>"';
@@ -448,13 +461,16 @@ function traite_autre_fonction(&$donnees_recues,&$donnees_retournees){
                     */
                     $obj=new $nom_de_la_classe($donnees_recues,$obj_matrice[__xva],$donnees_retournees);
                     
+                    
+                    
                     if(method_exists($obj,$nom_de_la_fonction_a_appeler)){
 
-                        $donnees_retournees[__x_ligne][]=__LINE__;
-                        $action_avant_appel=$donnees_retournees[__x_action];
-                        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>$nom_de_la_classe='.$nom_de_la_classe.' , $nom_de_la_fonction_a_appeler='.$nom_de_la_fonction_a_appeler . var_export( __LINE__ , true ) . '</pre>' ; exit(0);*/
+
                         $obj->$nom_de_la_fonction_a_appeler($donnees_retournees,$obj_matrice[__xva],$donnees_recues);
+                        
                         /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>$nom_de_la_classe='.$nom_de_la_classe.' , $nom_de_la_fonction_a_appeler='.$nom_de_la_fonction_a_appeler . var_export( __LINE__ , true ) . '</pre>' ; exit(0);*/
+
+
 
                     }else{
 
