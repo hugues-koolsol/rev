@@ -213,7 +213,7 @@ class c_connexion1{
             if(!($donnees_recues['__x_action']==='c_connexion1.recupere_la_page_de_connexion()' || $donnees_recues['__x_action']==='c_connexion1.se_deconnecter()')){
                 $redirection=$donnees_recues['__x_action'];
             }
-            $txt .= '  <input type="text" autocomplete="off" id="vv_redirection" value="'.enti1($redirection).'" />';
+            $txt .= '  <input type="hidden" autocomplete="off" id="vv_redirection" value="'.enti1($redirection).'" />';
             $txt .= '  <div class="hug_bouton" data-hug_click="c_connexion1.formulaire1(conteneur1(vv_formulaire_de_connexion))" title="Cliquez ici pour vous connecter">connexion</div>';
             
             $txt .= '</div>';

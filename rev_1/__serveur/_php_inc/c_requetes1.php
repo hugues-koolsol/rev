@@ -1816,13 +1816,6 @@ EOT;
                             $par_mat['__num_page']=$mat[$j + 1][1];
                             $par['__num_page']=$mat[$j + 1][1];
 
-                        }else if($mat[$j][1] === 'indice_menu'){
-
-                            $numpage=0;
-                            $par_mat['__num_page']=0;
-                            $provenance_menu=true;
-                            $par['__num_page']=0;
-
                         }else if($mat[$j + 1][1] !== ''){
 
                             $par_mat[$mat[$j][1]]=$mat[$j + 1][1];
@@ -1832,6 +1825,13 @@ EOT;
                     }
 
                 }
+
+             }else if($mat[$i][1] === 'indice_menu'){
+
+                 $numpage=0;
+                 $par_mat['__num_page']=0;
+                 $provenance_menu=true;
+                 $par['__num_page']=0;
 
             }
 
@@ -2001,6 +2001,20 @@ EOT;
             $lsttbl .= '</tr>';
         }
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
+
+        $maj_url='';
+        $maj_url.='maj_url(';
+        $maj_url.='c_requetes1.page_liste_des_requetes1(';
+        $maj_url.='__num_page('.($par['__num_page']).')';
+        if($par['T0_chi_id_requete']!==''){
+          $maj_url.='T0_chi_id_requete('.($par['T0_chi_id_requete']).')';
+        }
+        if($par['T0_chi_id_requete2']!==''){
+          $maj_url.='T0_chi_id_requete2('.($par['T0_chi_id_requete2']).')';
+        }
+        $maj_url.=')';
+        $maj_url.=')';
+        $donnees_retournees[__xva]['maj'] = $maj_url;
         $donnees_retournees[__x_page] .= $o1;
         $donnees_retournees[__x_action]='c_requetes1.page_liste_des_requetes1()';
         $donnees_retournees[__xst]=__xsu;

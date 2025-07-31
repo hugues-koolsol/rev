@@ -3357,6 +3357,28 @@ class c_sources1{
             /**/
             $lsttbl .= '</tr>';
         }
+        $maj_url='';
+        $maj_url.='maj_url(';
+        $maj_url.='c_sources1.page_liste_des_sources1(';
+        $maj_url.='__num_page('.($par['__num_page']).')';
+        if($par['T0_chi_id_source']!==''){
+          $maj_url.='T0_chi_id_source('.($par['T0_chi_id_source']).')';
+        }
+        if($par['T0_chi_id_source2']!==''){
+          $maj_url.='T0_chi_id_source2('.($par['T0_chi_id_source2']).')';
+        }
+        if($par['T0_chi_id_source3']!==''){
+          $maj_url.='T0_chi_id_source3('.($par['T0_chi_id_source3']).')';
+        }
+        if($par['T0_chp_nom_source']!==''){
+          $maj_url.='T0_chp_nom_source(\''.(texte_rev($par['T0_chp_nom_source'])).'\')';
+        }
+        if($par['T0_chx_dossier_id_source']!==''){
+          $maj_url.='T0_chx_dossier_id_source('.($par['T0_chx_dossier_id_source']).')';
+        }
+        $maj_url.=')';
+        $maj_url.=')';
+        $donnees_retournees[__xva]['maj'] = $maj_url;
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
         $donnees_retournees[__x_page] .= $o1;
         $donnees_retournees[__x_action]='c_sources1.page_liste_des_sources1()';

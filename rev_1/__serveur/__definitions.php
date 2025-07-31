@@ -516,7 +516,7 @@ function traite_autre_fonction(&$donnees_recues,&$donnees_retournees,$drapeau=nu
     }else{
 
         $donnees_retournees[__x_ligne][]=__LINE__;
-        $donnees_retournees[__x_signaux][__xer][]=__LINE__ . ' 🐛 cas non prévu<br />' . $donnees_recues[__x_action];
+        $donnees_retournees[__x_signaux][__xer][]='🐛 cas non prévu dans autre_fonction [' . __LINE__ . ']<br />' . $donnees_recues[__x_action];
     }
 
     /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( __LINE__ , true ) . '</pre>' ; exit(0);*/
@@ -799,6 +799,20 @@ function nfp1($n){
     $t=number_format($n,0,',',' ');
     return '<div style="display:inline-block;min-width:2em;text-align:right;margin-left:3px;">' . $t . '</div>';
 
+}
+/*
+  =====================================================================================================================
+*/
+function texte_rev($t){
+
+    if(is_null($t)){
+
+        return '';
+
+    }
+    
+    return(str_replace('\'','\\\'',str_replace('\\','\\\\',$t)));
+        
 }
 /*
   =====================================================================================================================
