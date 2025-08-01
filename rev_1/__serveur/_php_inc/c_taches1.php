@@ -961,7 +961,7 @@ class c_taches1{
                         }else if($mat[$j + 1][1] !== ''){
 
                             /* $donnees_retournees[__x_signaux][__xal][]='$mat[$j][1] ' . $mat[$j][1] . ' [' . __LINE__ . ']'; */
-                            $par_mat[$mat[$j][1]]=$mat[$j + 1][1];
+                            $par_mat[$mat[$j][1]]=urldecode($mat[$j + 1][1]);
                         }
 
                     }

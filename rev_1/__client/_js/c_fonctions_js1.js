@@ -2249,6 +2249,72 @@ echo 'hella';`;
     /*
       =============================================================================================================
     */
+    rechercher_dans_zone_source( mat , debut ){
+        //zone_quoi(vv_rechercher),zone_source(cht_genere_source)))
+        let l01=mat.length;
+        let zone_quoi='';
+        let zone_source='';
+        for( let i=debut ; i < l01 ; i=mat[i][12] ){
+            if('rechercher_dans_zone_source'  === mat[i][1] && mat[i][2] === 'f' ){
+                for( let j=i+1 ; j < l01 ; j=mat[j][12] ){
+                    if(mat[j][2] === 'f' && 'zone_quoi' === mat[j][1] && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
+                        zone_quoi=mat[j + 1][1];
+                    }else if(mat[j][2] === 'f' && 'zone_source' === mat[j][1] && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
+                        zone_source=mat[j + 1][1];
+                    }
+                }
+            }
+        }
+        //debugger
+        if(zone_source!=='' && zone_quoi!==''){
+         setTimeout(()=>{
+             let a=document.getElementById(zone_source);
+             let quoi=document.getElementById(zone_quoi).value;
+             if(quoi===''){
+               return({"__xst" : __xsu});
+             }
+             a.focus();
+             let position_actuelle=a.selectionStart;
+             console.log('position_actuelle='+position_actuelle);
+             
+             let position=a.value.substr(position_actuelle).indexOf(quoi);
+             console.log('quoi='+quoi , 'position_actuelle='+position_actuelle , 'position='+position);
+             if(position>=0){
+                let nouvelle_position=position_actuelle+position;
+                console.log('nouvelle_position='+nouvelle_position)
+                a.selectionStart=nouvelle_position;
+              
+              
+                function toto( par ){
+                    let aa=document.getElementById( par.zone_source );
+                    aa.focus();
+                    aa.scrollTo( 0 , 0 );
+                    aa.selectionStart=parseInt( par.position , 10 );
+                    aa.selectionEnd=parseInt( par.position , 10 ) + 1;
+                    let vrai_numero_de_ligne=0;
+                    try{
+                        let tt=aa.value.substr( 0 , par.position ).split( '\n' );
+                        vrai_numero_de_ligne=tt.length;
+                        console.log( 'vrai_numero_de_ligne=' , vrai_numero_de_ligne );
+                    }catch(e){
+                        debugger;
+                    }
+                    let toto=par.that.#interface1.getCaretPos( aa , vrai_numero_de_ligne );
+                }
+                setTimeout( toto , 20 , {"zone_source" : zone_source ,"position" : nouvelle_position ,"that" : this} );
+              
+              
+              
+             }
+             
+             
+         },100);
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     ajoute_le_contenu_du_titre( mat , debut ){
         let l01=mat.length;
         let id_zone='';
@@ -2285,7 +2351,7 @@ echo 'hella';`;
                                 this.#afficher_un_message( o.__xst , this.#interface1.__m_rev1.nl2() + '<br />la fonction ' + mat[j][1] + ' a retourné une erreur ' );
                             }
                         }catch(e){
-                            this.#afficher_un_message( __xer , this.#interface1.__m_rev1.nl2( e ) + '<br />la fonction <b>"' + mat[j][1] + '"</b> n\'a pas pu être appelée !' );
+                            this.#afficher_un_message( __xer , 'la fonction <b>"' + mat[j][1] + '"</b> n\'a pas pu être appelée !<br />'+this.#interface1.__m_rev1.nl2( e ) );
                         }
                     }
                 }

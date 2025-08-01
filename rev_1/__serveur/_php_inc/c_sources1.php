@@ -1614,11 +1614,13 @@ class c_sources1{
             $o1 .= '        <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_genere_source)))" title="copier le contenu" >📋</div>';
             $o1 .= '        <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_genere_source)))" title="aller à la position" >position</div>';
             $o1 .= '        <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_genere_source)))" title="aller à la ligne" >ligne</div>';
-            $o1 .= '        <div class="hug_bouton yy__x_signaux_2" style="float:right;" data-hug_click="c_sources1.lire_ce_source_du_disque1(chi_id_source(' . $chi_id_source . '))" title="lire du disque" >lire du disque</div>';
-            $o1 .= '        <div class="hug_bouton yy__x_signaux_2" style="float:right;" data-hug_click="c_sources1.ecrire_ce_source_sur_disque1(chi_id_source(' . $chi_id_source . '))" title="écrire sur disque" >écrire sur disque</div>';
-            $o1 .= '        <div class="hug_bouton yy__x_signaux_0" style="float:right;" data-hug_click="c_sources1.supprimer_ce_source_du_disque1(chi_id_source(' . $chi_id_source . '))" title="supprimer du disque" >supprimer du disque</div>';
-            $o1 .= '        <div class="hug_bouton yy__x_signaux_3" style="float:right;" data-hug_click="c_sources1.formulaire1(conteneur1(vv_sources_modifier1),chi_id_source(' . $chi_id_source . '))" title="senregistrer en base" >enregistrer</div>';
-            $o1 .= '      <div class="hug_bouton" data-hug_click="" title="" >enregistrer</div>';
+            $o1 .= '        <input id="vv_rechercher" placeholder="rechercher" size="5" value=""><div class="hug_bouton" data-hug_click="c_fonctions_js1(rechercher_dans_zone_source(zone_quoi(vv_rechercher),zone_source(cht_genere_source)))" title="rechercher" >R</div>';
+            /**/
+            $o1 .= '        <div class="hug_bouton yy__x_signaux_1" style="float:right;" data-hug_click="c_sources1.lire_ce_source_du_disque1(chi_id_source(' . $chi_id_source . '))" title="lire du disque" >📤 du 💽</div>';
+            $o1 .= '        <div class="hug_bouton yy__x_signaux_2" style="float:right;" data-hug_click="c_sources1.ecrire_ce_source_sur_disque1(chi_id_source(' . $chi_id_source . '))" title="écrire sur disque" >📥 sur 💽</div>';
+            $o1 .= '        <div class="hug_bouton yy__x_signaux_0" style="float:right;" data-hug_click="c_sources1.supprimer_ce_source_du_disque1(chi_id_source(' . $chi_id_source . '))" title="supprimer du disque" >🗑 du 💽</div>';
+            $o1 .= '        <div class="hug_bouton yy__x_signaux_3" style="float:right;" data-hug_click="c_sources1.formulaire1(conteneur1(vv_sources_modifier1),chi_id_source(' . $chi_id_source . '))" title="enregistrer en base" >enregistrer</div>';
+            
             
             if(__X_CLE_APPLICATION === 'rev_2'){
 

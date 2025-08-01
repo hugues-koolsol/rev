@@ -679,7 +679,7 @@ class c_requetes1{
         
         if($tt[__xst] !== __xsu){
 
-            $donnees_retournees[__x_signaux][__xal][]='[' . __LINE__ . ']';
+            $donnees_retournees[__x_signaux][__xal][]='recuperer_les_bases_du_projet_en_cours [' . __LINE__ . ']';
             return;
 
         }

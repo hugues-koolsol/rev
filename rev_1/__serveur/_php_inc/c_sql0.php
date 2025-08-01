@@ -85,8 +85,17 @@ class c_sql0{
             if(isset($tt['exception'])){
 
                 $l_erreur['getMessage']=$tt['exception']->getMessage();
+                if($GLOBALS[DEVER_SRV] >=1 ){
+                    $donnees_retournees[__x_signaux][__xal][]='' . $l_erreur['getMessage'] . ' [' . __LINE__ . ']';
+                }
+            
 
             }
+            
+            if($GLOBALS[DEVER_SRV] >=1 ){
+                $donnees_retournees[__x_signaux][__xal][]='' . var_export($l_erreur , true ) . ' [' . __LINE__ . ']';
+            }
+            
 
             return $l_erreur;
             echo __FILE__ . ' ' . __LINE__ . ' $l_erreur = <pre>' . var_export($l_erreur,true) . '</pre>' ;

@@ -74,6 +74,7 @@ class _c_interface1{
     #la_sous_fenetre1=null;
     __js_des_sql={};
     #date_derniere_navigation=performance.now();
+    zones_des_editeur=[];
     /*
       =============================================================================================================
     */
@@ -197,6 +198,7 @@ class _c_interface1{
             this.__js_des_sql=reponse.__xva.php_des_sql;
         }
         if(reponse.hasOwnProperty( '__x_page' ) && reponse.__x_page !== ''){
+            this.zones_des_editeur=[];
             this.masquer_les_messages();
             if(true || reponse.__x_action.indexOf( 'formulaire1(' ) < 0){
                 /* si on a chargé une page alors on met à jour l'url */
@@ -214,7 +216,10 @@ class _c_interface1{
             this.#page_en_cours=reponse.__x_action;
             document.getElementById( 'vv_main' ).innerHTML=reponse.__x_page;
             this.ajoute_les_evenements_aux_boutons( this.#page_en_cours );
+            /* à priori, on se met en haut de la page */
             window.scrollTo( 0 , 0 );
+            
+            
             /*
               dans le cas d'une page, on va essayer de trouver une zone input/textarea
               ou à défaut, un lien 
@@ -240,7 +245,35 @@ class _c_interface1{
                     this.les_messages.__xer.push( ' attention il y a eu une mise à jour <a class="hug_bouton yy__x_signaux_2" href="' + url + '">Rechargez la page</a>' );
                 }
             }
+            /* mais peut-être qu'il faut aller à une position interne*/
+            
+            let position_interne='';
+            for( let j=1 ; j < mat_action.length ; j=mat_action[j][12] ){
+                /* #c_accueil1.recupere_la_page_d_accueil(aller_a_la_position_interne(#vv_body)) */
+                if(mat_action[j][1] === 'aller_a_la_position_interne'
+                       && mat_action[j][2] === 'f'
+                       && mat_action[j][8] === 1
+                       && mat_action[j + 1][2] === 'c'
+                       && mat_action[j + 1][1].substr( 0 , 1 ) === '#'
+                ){
+                    position_interne=mat_action[j + 1][1];
+                    break;
+                }
+            }
+
+            if(position_interne !== ''){
+                /* console.log(position_interne); */
+                setTimeout( () => {
+                        this.#aller_a_la_position_interne( position_interne );} , 125 );
+            }
+            
+            
+            for(let i=1;i<mat_action.length;i++){
+             
+            }
+            
         }
+        
         this.#ajouter_les_boutons_menu( 'nouvelle_page' , reponse );
         if(reponse.hasOwnProperty( '__xva' )){
             if(reponse.__xva.hasOwnProperty( 'maj' )){
@@ -1686,7 +1719,20 @@ class _c_interface1{
       =============================================================================================================
     */
     #mouse_up_sur_editeur1( e ){
+        let trouve=false;
+        for(let i=0;i<this.zones_des_editeur.length;i++){
+         if(this.zones_des_editeur[i].id===e.target.id){
+          trouve=i;
+          break;
+         }
+        }
         var zoneSource=document.getElementById( e.target.id );
+        if(trouve===false){
+            this.zones_des_editeur.push({ id : e.target.id , position : zoneSource.selectionStart })
+        }else{
+            this.zones_des_editeur[trouve].position=zoneSource.selectionStart;
+        }
+            console.log(this.zones_des_editeur)
         this.#div_des_positions_du_curseur.innerHTML=zoneSource.selectionStart;
         this.derniere_zone_editee=zoneSource;
         this.position_dans_la_derniere_zone_editee=zoneSource.selectionStart;
@@ -1804,9 +1850,9 @@ class _c_interface1{
     #click_sur_lien_hash( e ){
      
 
-        let a=e.srcElement.getAttribute('data-lien_interne')
-        if(a && a.indexOf( '#' ) >= 0){
-            var le_rev=a.substr( a.indexOf( '#' ) + 1 );
+        let contenu_du_lien=e.srcElement.getAttribute('data-lien_interne');
+        if(contenu_du_lien && contenu_du_lien.indexOf( '#' ) >= 0){
+            var le_rev=contenu_du_lien.substr( contenu_du_lien.indexOf( '#' ) + 1 );
             let mat=this.__m_rev1.rev_tcm( le_rev );
             if(mat.__xst !== __xsu){
                 return;
@@ -1819,7 +1865,7 @@ class _c_interface1{
                        && mat.__xva[i + 1][1].substr( 0 , 1 ) === '#'
                 ){
                     let position_interne=mat.__xva[i + 1][1];
-                    this.#aller_a_la_position_interne( position_interne );
+                    this.#aller_a_la_position_interne( position_interne , contenu_du_lien );
                     break;
                 }
             }
@@ -1937,7 +1983,7 @@ class _c_interface1{
       =============================================================================================================
       on reçoit #toto
     */
-    #aller_a_la_position_interne( position_interne ){
+    #aller_a_la_position_interne( position_interne , contenu_du_lien = null ){
         var elt=document.getElementById( position_interne.substr( 1 ) );
         if(elt){
             var pos=elt.getBoundingClientRect();
@@ -1963,6 +2009,11 @@ class _c_interface1{
                   elt.classList.remove( 'bouge_element' )
                 }
                 setTimeout(remettre_la_couleur.bind(null,elt),300);
+            }
+            if(contenu_du_lien!==null){
+              this.#date_derniere_navigation=performance.now();
+              window.location.hash = contenu_du_lien;
+              
             }
             setTimeout(aller_a.bind(null,position,elt),20);
         }
