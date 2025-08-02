@@ -869,7 +869,7 @@ class c_svg_bdd1{
                 maj+=')';
                 let obj={
                      /*  */
-                    "__x_action" : 'c_bases1.executer_sql3(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + '))' ,
+                    "__x_action" : 'c_bases1.executer_sql3(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + '),contexte(renommer_en_bdd_un_champ))' ,
                     "__xva" : {
                          /*  */
                         "source_sql" : source_sql ,
@@ -1141,7 +1141,7 @@ class c_svg_bdd1{
                     let maj='maj_interface1(fermer_fenetre1())';
                     let obj={
                          /*  */
-                        "__x_action" : 'c_bases1.executer_sql3(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + '))' ,
+                        "__x_action" : 'c_bases1.executer_sql3(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + '),contexte(ajouter_en_bdd_le_champ))' ,
                         "__xva" : {
                              /*  */
                             "source_sql" : source_sql ,
@@ -1672,7 +1672,7 @@ class c_svg_bdd1{
         }
         let obj={
              /*  */
-            "__x_action" : 'c_bases1.supprimer_un_champ_de_la_table1(id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '))' ,
+            "__x_action" : 'c_bases1.supprimer_un_champ_de_la_table1(id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '),contexte(supprimer_en_bdd_le_champ))' ,
             "__xva" : {
                  /*  */
                 "nom_de_la_table" : nom_de_la_table ,
@@ -2318,17 +2318,23 @@ class c_svg_bdd1{
         t+='</tr>';
         t+='<tr>';
         t+='<tr>';
-        t+='<th>Base physique</th>';
-        t+='<th>Base du SVG</th>';
+        t+='<th style="border:1px red solid;">Base physique</th>';
+        t+='<th style="border:1px red solid;">Base du SVG</th>';
         t+='</tr>';
         t+='<tr>';
         var references=['tableau1','tableau2'];
+        let physique_ou_svg='';
         for(var ref in references){
+            physique_ou_svg='phy : '
+            if(ref==='1'){
+             physique_ou_svg='svg : ';
+            }
+            console.log('ref=',ref);
             t+='<td style="vertical-align: baseline;">';
             t+='<table>';
             for(var nom_de_la_table in par[references[ref]]){
                 t+='<tr>';
-                t+='<th>' + nom_de_la_table + '</th>';
+                t+='<th style="color:red;">'+physique_ou_svg+'' + nom_de_la_table + '</th>';
                 t+='<th style="text-align:left;">type</th>';
                 t+='<th style="text-align:left;">pk</th>';
                 t+='<th style="text-align:left;">nn</th>';
@@ -2396,7 +2402,7 @@ class c_svg_bdd1{
                                 if(tables_indexes[nom_de_la_table].indexes[nom_de_l_index].present_dans_tableau_1 === false){
                                     t+='<td><b class="yy__x_signaux_0">' + nom_de_l_index + ' absent</b></td>';
                                 }else{
-                                    t+='<td><b>' + nom_de_l_index + '</b></td>';
+                                    t+='<td><b style="color:green;">' + nom_de_l_index + '</b></td>';
                                     if(tables_indexes[nom_de_la_table].indexes[nom_de_l_index].present_dans_tableau_2 === true
                                            && tables_indexes[nom_de_la_table].indexes[nom_de_l_index][references[ref]].unique === tables_indexes[nom_de_la_table].indexes[nom_de_l_index]['tableau2'].unique
                                     ){

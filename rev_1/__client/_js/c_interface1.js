@@ -241,7 +241,9 @@ class _c_interface1{
                     if(pos2 > 0){
                         part1=part1.substr( 0 , pos2 );
                     }
-                    url=part1 + '?dt=' + reponse.__X_VERSION + '' + part2;
+//                    url=part1 + '?dt=' + reponse.__X_VERSION + '' + part2;
+                    url='./?dt=' + reponse.__X_VERSION + '' + part2;
+//                    debugger
                     this.les_messages.__xer.push( ' attention il y a eu une mise à jour <a class="hug_bouton yy__x_signaux_2" href="' + url + '">Rechargez la page</a>' );
                 }
             }
@@ -1914,11 +1916,15 @@ class _c_interface1{
                 /*
                   les liens lst[i].href.animVal dans les svg sont bizarres
                 */
+                /* debugger */
                 if(!lst[i].href.animVal
                        && (lst[i].href.indexOf( '/#' ) >= 0
                            || lst[i].href.indexOf( '/?dt=' ) >= 0
                                && lst[i].href.indexOf( '#' ) >= 0)
                 ){
+                    if(lst[i].href.indexOf( '/?dt=' )>0){
+                     continue;
+                    }
                     if(premier === true){
                         premier=false;
                     }

@@ -2682,6 +2682,7 @@ class c_requete_sql1{
                 t+='    }catch(Exception $e){' + CRLF;
                 t+='        return(array( ' + CRLF;
                 t+='            __xst => __xer, ' + CRLF;
+                t+='            \'exception\' => $e, ' + CRLF;
                 if(manuelle_sans_base_de_reference === true){
                     t+='            \'code_erreur\' => $db->lastErrorCode() ,' + CRLF;
                     t+='            __xme => \'erreur sql_' + id_requete_en_base + '()\'.\' \'.$db->lastErrorMsg())' + CRLF;

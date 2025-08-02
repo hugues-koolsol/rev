@@ -230,7 +230,7 @@ class c_bases1{
         
         if($tt144[__xst] !== __xsu){
 
-            $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
+            $donnees_retournees[__x_signaux][__xer][]='Erreur lors du la supression du champ (Est-ce le dernier champ de la table ?) [' . __LINE__ . '] ';
             return;
 
         }
@@ -238,57 +238,14 @@ class c_bases1{
         $donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
         $donnees_retournees[__xst]=__xsu;
     }
+    
     /*
       =============================================================================================================
     */
-    function reecrire_la_base_a_partir_du_shema_sur_disque(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $tt=/*sql_inclure_deb*/
-            /* sql_126()
-            SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
-            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
-            `T2`.`chp_nom_projet`
-             FROM b1.tbl_bdds T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-            
-             LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
-            
-            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
-               AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
-             /*sql_126()*/ 126,
-            array( 'T0_chi_id_basedd' => $donnees_recues[__xva]['id_bdd_de_la_base'], 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
-            $donnees_retournees
-        );
-        
-        if($tt[__xst] === __xer || count($tt[__xva]) !== 1){
-
-            $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
-            return;
-
-        }
-
-        $ret0=$tt[__xva][0];
-        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-        $obj_doss=new c_dossiers1(
-            $donnees_retournees,
-             /*matrice*/ $mat,
-            $donnees_recues
-        );
-        $chemin=$obj_doss->construire_chemin($tt[__xva][0]['T0.chx_dossier_id_basedd']);
-        
-        if($chemin[__xst] === __xsu){
-
-            $chemin_bdd=$chemin[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . 'bdd_' . $donnees_recues[__xva]['id_bdd_de_la_base'] . '.sqlite';
-
-        }else{
-
-            $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
-            return;
-        }
+    function reecrire_la_base(&$donnees_retournees,&$mat,&$donnees_recues,$id_bdd_de_la_base,$chemin_absolu,$source_sql_de_la_base,$liste_des_tables,$liste_des_tables_champs){
+     
+     
+        $chemin_bdd=$chemin_absolu . DIRECTORY_SEPARATOR . 'bdd_' . $id_bdd_de_la_base . '.sqlite';
 
         $repertoire=realpath(dirname($chemin_bdd));
         
@@ -298,6 +255,8 @@ class c_bases1{
             return;
 
         }
+        
+        
 
         $chemin_bdd_base_temporaire=$repertoire . DIRECTORY_SEPARATOR . 'temporaire_' . md5(date('Y-m-d-H-i-s')) . '.db_temporaire';
         $db1temp=new SQLite3($chemin_bdd_base_temporaire);
@@ -312,7 +271,7 @@ class c_bases1{
         }
 
         try{
-            $ret1=$db1temp->exec($donnees_recues[__xva]['source_sql_de_la_base']);
+            $ret1=$db1temp->exec($source_sql_de_la_base);
         }catch(Exception $e){
             $donnees_retournees[__x_signaux][__xer][]='reecrire_la_base_a_partir_du_shema_sur_disque création base temporaire impossible [' . __LINE__ . '] ';
             $db1temp->close();
@@ -329,8 +288,8 @@ class c_bases1{
             sauvegarder_et_supprimer_fichier($chemin_bdd_base_temporaire,true);
             return;
         }
-        foreach($donnees_recues[__xva]['liste_des_tables'] as $k1 => $v1){
-            $liste_des_champs=implode(',',$donnees_recues[__xva]['liste_des_tables_champs'][$v1]);
+        foreach($liste_des_tables as $k1 => $v1){
+            $liste_des_champs=implode(',',$liste_des_tables_champs[$v1]);
             /*
               $donnees_retournees[__x_signaux][__xer][]=$liste_des_champs.' [' . __LINE__ . '] ';
               return;
@@ -354,9 +313,9 @@ class c_bases1{
         */
         $db1temp->close();
         
-        if(isset($GLOBALS[__BDD][$donnees_recues[__xva]['id_bdd_de_la_base']])){
+        if(isset($GLOBALS[__BDD][$id_bdd_de_la_base])){
 
-            $GLOBALS[__BDD][$donnees_recues[__xva]['id_bdd_de_la_base']][LIEN_BDD]->close();
+            $GLOBALS[__BDD][$id_bdd_de_la_base][LIEN_BDD]->close();
 
         }
 
@@ -367,11 +326,106 @@ class c_bases1{
             if((@rename($chemin_bdd_base_temporaire,$chemin_bdd))){
 
                 $donnees_retournees[__xst]=__xsu;
+                $donnees_retournees[__x_signaux][__xsu][]='La base ('.$id_bdd_de_la_base.') a été réécrite  [' . __LINE__ . '] ';
+                $donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
 
             }
 
 
+        }     
+     
+    }
+    
+    /*
+      =============================================================================================================
+    */
+    function reecrire_la_base_a_partir_du_shema_sur_disque(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+     
+        $id_bdd_de_la_base=$donnees_recues[__xva]['id_bdd_de_la_base'];
+        $source_sql_de_la_base=$donnees_recues[__xva]['source_sql_de_la_base'];
+        $liste_des_tables=$donnees_recues[__xva]['liste_des_tables'];
+        $liste_des_tables_champs=$donnees_recues[__xva]['liste_des_tables_champs'];
+        
+        $tt=/*sql_inclure_deb*/
+            /* sql_126()
+            SELECT 
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            `T2`.`chp_nom_projet`
+             FROM b1.tbl_bdds T0
+             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
+            
+             LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
+            
+            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+               AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
+             /*sql_126()*/ 126,
+            array( 'T0_chi_id_basedd' => $id_bdd_de_la_base, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
+            $donnees_retournees
+        );
+        
+        if($tt[__xst] === __xer || count($tt[__xva]) !== 1){
+
+            $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
+            return;
+
         }
+
+        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
+        $obj_doss=new c_dossiers1(
+            $donnees_retournees,
+             /*matrice*/ $mat,
+            $donnees_recues
+        );
+        $chemin=$obj_doss->construire_chemin($tt[__xva][0]['T0.chx_dossier_id_basedd']);
+        
+        if($chemin[__xst] === __xsu){
+
+            $chemin_absolu=$chemin[__xva]['chemin_absolu'];
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
+            return;
+        }
+        
+        $liste_des_autres_projets=array();
+        
+        
+        if( __X_CLE_APPLICATION==='rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']===1){
+           /*on recherche tous les projets>2 */
+        
+            $tt316=$this->sql0->sql_iii(
+                 /*sql_316()*/ 316,
+                array( ),
+                $donnees_retournees
+            );
+            
+            if($tt316[__xst] === __xsu ){
+                foreach($tt316[__xva] as $k1=>$v1){
+                    $liste_des_autres_projets[]=$v1['T0.chi_id_projet'];
+                }
+            }
+        }
+        
+        
+
+        $this->reecrire_la_base($donnees_retournees,$mat,$donnees_recues,$id_bdd_de_la_base,$chemin_absolu,$source_sql_de_la_base,$liste_des_tables,$liste_des_tables_champs);
+        
+
+        foreach($liste_des_autres_projets as $k1 => $v1){
+            /* on traite les bases des autres projets */
+
+            $this->reecrire_la_base($donnees_retournees,$mat,$donnees_recues,$v1,$chemin_absolu,$source_sql_de_la_base,$liste_des_tables,$liste_des_tables_champs);
+
+        }
+        
+
+
 
     }
     /*
@@ -379,6 +433,7 @@ class c_bases1{
     */
     function executer_sql3(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $id_bdd_de_la_base='';
+        $contexte='';
         $l01=count($mat);
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
@@ -391,6 +446,10 @@ class c_bases1{
                     if($mat[$j][1] === 'id_bdd_de_la_base' && $mat[$j][2] === 'f' && $mat[$j + 1][2] === 'c'){
 
                         $id_bdd_de_la_base=$mat[$j + 1][1];
+                        
+                    }else if($mat[$j][1] === 'contexte' && $mat[$j][2] === 'f' && $mat[$j + 1][2] === 'c'){
+
+                        $contexte=$mat[$j + 1][1];
 
                     }
 
@@ -470,6 +529,35 @@ class c_bases1{
             $donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
             $donnees_retournees[__x_signaux][__xer][]='erreur sql ' . $e->getMessage() . ' <pre>' . $donnees_recues[__xva]['source_sql'] . '</pre> [' . __LINE__ . '] ';
             return array( __xst => __xer);
+        }
+        $db1temp->close();
+        if( __X_CLE_APPLICATION==='rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']===1){
+            if( $contexte==='ajouter_en_bdd_le_champ' || $contexte === 'supprimer_en_bdd_le_champ' || $contexte === 'renommer_en_bdd_un_champ' ){
+               /*on recherche tous les projets>2 et on ajoute ce champ*/
+            
+                $tt316=$this->sql0->sql_iii(
+                     /*sql_316()*/ 316,
+                    array( ),
+                    $donnees_retournees
+                );
+                
+                if($tt316[__xst] === __xsu ){
+                    foreach($tt316[__xva] as $k1=>$v1){
+                        $nom_de_fichier_bdd=$chemin[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . 'bdd_' . $v1['T0.chi_id_projet'] . '.sqlite';
+                        if(is_file($nom_de_fichier_bdd)){
+                            $db1temp=new SQLite3($nom_de_fichier_bdd);
+                            try{
+                                $ret=$db1temp->exec($donnees_recues[__xva]['source_sql']);
+                            }catch(Exception $e){
+                                $donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
+                                $donnees_retournees[__x_signaux][__xer][]='erreur sql ' . $e->getMessage() . ' <pre>' . $donnees_recues[__xva]['source_sql'] . '</pre> [' . __LINE__ . '] ';
+                                return array( __xst => __xer);
+                            }
+                            $db1temp->close();
+                        }
+                    }
+                }
+            }
         }
     }
     /*

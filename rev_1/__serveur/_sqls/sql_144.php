@@ -10,6 +10,7 @@ function sql_144($par,&$donnees_retournees,$that){
     }catch(Exception $e){
         return(array( 
             __xst => __xer, 
+            'exception' => $e,
             'code_erreur' => $GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->lastErrorCode() ,
             __xme => 'erreur sql_144()'.' '.$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->lastErrorMsg())
         );

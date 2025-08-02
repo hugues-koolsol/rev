@@ -22,21 +22,6 @@ $tableau_des_dependances=array (
       ),
     ),
   ),
-  'tbl_utilisateurs_chi_id_utilisateur' => 
-  array (
-    'table_parente' => 'tbl_utilisateurs',
-    'champ_parent' => 'chi_id_utilisateur',
-    'dependances' => 
-    array (
-      0 => 
-      array (
-        'table_dependante' => 'tbl_taches',
-        'champ_dependant' => 'chx_utilisateur_tache',
-        'non_nulle' => '1',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-    ),
-  ),
   'tbl_dossiers_chi_id_dossier' => 
   array (
     'table_parente' => 'tbl_dossiers',
@@ -200,6 +185,21 @@ $tableau_des_dependances=array (
         'table_dependante' => 'tbl_pages',
         'champ_dependant' => 'chx_source_page',
         'non_nulle' => '0',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+    ),
+  ),
+  'tbl_utilisateurs_chi_id_utilisateur' => 
+  array (
+    'table_parente' => 'tbl_utilisateurs',
+    'champ_parent' => 'chi_id_utilisateur',
+    'dependances' => 
+    array (
+      0 => 
+      array (
+        'table_dependante' => 'tbl_taches',
+        'champ_dependant' => 'chx_utilisateur_tache',
+        'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
     ),

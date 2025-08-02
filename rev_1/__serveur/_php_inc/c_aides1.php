@@ -56,12 +56,6 @@ class c_aides1{
         ){
 
             $txt .= '<h2 style="color:blue;">Vous êtes connecté</h2>';
-            $txt .= <<<EOT
-    <div style="border:1px red solid;margin:10px;padding:10px;">
-        <span class="hug_bouton" data-hug_click="c_divers1.generer_index_html()">generer la page d'accueil</span>
-    </div>
-    
-EOT;
 
         }
 

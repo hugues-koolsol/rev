@@ -1328,4 +1328,14 @@ WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
 );',
     'cht_commentaire_requete' => 'insérer la base principale',
   ),
+  316 => 
+  array (
+    'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chi_id_projet`
+ FROM b1.tbl_projets T0
+WHERE `T0`.`chi_id_projet` > 2
+;',
+    'cht_commentaire_requete' => 'projets >2 pour isa de champs ',
+  ),
 );

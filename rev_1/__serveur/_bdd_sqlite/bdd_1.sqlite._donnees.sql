@@ -6,334 +6,8 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','595','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','597','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
-
-
-/*
-  ===============================
-  DONNEES A INSERER POUR : tbl_taches
-  ===============================
-*/
-
-INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_priorite_tache,che__nur_tache,chp__dtm_tache,chp__dtc_tache) VALUES
-('1','1','capturer les erreurs php','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('2','1','traiter le cookie initial quand il est incomplet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('3','1','mettre un # dans l''url pour pouvoir charger la page initiale','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('4','1','cookies.php en objet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('5','1','données bidon en cookie','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('6','1','404','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('7','1','worker','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('8','1','timer / indicateur socket','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('9','1','id en vv','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('10','1','fichiers et classes en c_','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('11','1','socket','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('12','1','limiter le nombre de messages sur l''interface','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('13','1','ne pas afficher le premier message ws ko','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('14','1','maj champ deverminage nouveau','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('15','1','recharger la page paramètres','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('16','1','déverminage en cookie','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('17','1','ctrl F5 après avoir cliqué sur un #','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('18','1','désactiver les boutons quand click','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('19','1','changer mes coordonnées','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('20','1','renommer les variables __x_statut ....','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('21','1','bdd todo','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('22','1','mettre le niveau de déverminage dans le php','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('23','1','dump de la base en local','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('26','1','travaux en batch','9','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('28','1','profils de css','50','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('29','1','astuces','10','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('34','1','pas de webSocket sur ks.app','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('35','1','détecter mobile ( touch )','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('36','1','highlight des menus','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('37','1','lors de la première connexion, initialiser les tailles des css en fonction de la taille de l''écran','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('38','1','sur ipad, supprimer les double click pour agrandir
-
-if( ecran_tactile===true && genre_safari===true && genre_crios === false)','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('39','1','supprimer le double click sur ios
-
-//https://stackoverflow.com/a/42162450/3717718
-','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('40','1','marges gauches et droites','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('41','1','se reconnecter au webso','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('42','1','ajouter le niveau de deboggage dans le websocket','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('43','1','déverminage serveur wso','50','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('44','1','Prévenir le ws quand on se déconnecte','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('45','1','coccinelle déverminage
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="13 11  82 84"><path d="M 18 85 L 23 82 L 21 73 L 27 67 M 30 40 L 25 40 L 21 49 L 16 49 M 34 35 L 25 30 L 23 24 M 44 19 L 39 14 M 59 19 L 64 14 M 69 35 L 78 30 L 80 24 M 73 40 L 78 40 L 82 49 L 87 49 M 76 68 L 82 73 L 80 82 L 85 85 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path><path d=" M 36 34 C 35 12 68 12 67 34 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:slategray;stroke-width:1;fill-opacity:1;"></path><path d=" M 36 33 C 30 38 25 48 25 56  C 25 68 33 87 52 87 c 15 0 26 -17 26 -30 C 78 47 73 39 67 33 c 0 1 -13 1 -15 1 C 49 34 36 34 36 33" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:red;stroke-width:1;fill-opacity:1;"></path><ellipse cx="44" cy="25" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(30 44 25 )" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="57" cy="18" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(1 40) rotate(-32 0 0)  " style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="36" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="67" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="41" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></ellipse><ellipse cx="62" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="40" cy="74" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(-40 40 74 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="57" cy="89" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(6 -15 ) rotate(30 57 89 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><path d=" M 51 35 V 86 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path></svg>','51','2','2025-07-31 11:57:22.993','2000-01-01 00:00:00'),
-('46','1','http://localhost/frev/rev_1/__client/?a=1','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('47','1','page rev vers matrice','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('48','1','initialiser la zone rev avec le localstorage','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('49','1','mettre le rendu en js
-NON trop compliqué, le garder en php','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('50','1','conv js','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('51','1','rev vers js','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('52','1','zone d''édition textarea','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('53','1','cookie socket','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('54','1','optimiser les temps de chargement','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('55','1','traiter les messages d''erreur','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('56','1','placer le curseur dans une textarea','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('57','1','conv html','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('58','1','conv php','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('59','1','conv php nikic','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('60','1','traiter les messages d''erreur de php','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('61','1','sql','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('62','1','css','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('63','1','projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('64','1','bouton retour à la liste','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('65','1','bug lien interne après changement de version','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('66','1','scroll horizontal sur menu haut','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('67','1','bases','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('68','1','autorisations
-
-se connecter à 
-
-http://localhost/frev/rev_1/__client/#c_rev_vers_mat1.page1(),indice_menu(50),maj_interface2(modifier(%20id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegard%C3%A9es'',''ls_rev1''))))
-
-sans être connecté
-
-#c_pages1.recupere_la_page_d_accueil()
-#c_pages1.recupere_la_page_d_aide()
-#c_pages1.recupere_la_page_de_connexion()','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('69','1','dossiers','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('70','1','activer / désactiver le bouton du menu','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('71','1','id parent de dossier avec <dialog>','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('72','1','chemin complet d''un dossier','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('73','1','vérifier qu''un dossier n''a pas d''enfants avant de le supprimer','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('74','1','transmettre les donnes_retournees aux sql 
-et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('78','1','ne pas mettre plus de 1000 éléments dans un dossier','12','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('80','1','table des bugs','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('82','1','supprimer une projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('83','1','ajouter les champs 
-nut numero technique de modification
-dtm date technique de modification
-dtc date technique de création','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('84','1','renommer un dossier','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('85','1','quand on clique sur 🖐, mettre la zone en haut de l''écran','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('86','1','optimiser les tableaux des matrices et des caractères','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('88','1','sortable pour svg','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('90','1','dupliquer une table','15','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('92','1','quand on modifie le nom d''une table
-alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('93','1','corriger auto increment','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('94','1','ajouter le type du meta dans les sql','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('96','1','reprendre les commentaires meta dans sql','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('97','1','mettre les valeurs
-            a_une_valeur_par_defaut(0),
-            la_valeur_par_defaut_est_caractere(0),
-            valeur_par_defaut( ''''),
-dans le champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('98','1','afficher/masquer les champs dans le svg','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('99','1','corriger le bug : après tri des champs, on pert l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('100','1','ne pas masquer un champ si c''est une référence, une clé, un auto_increment
-ou si le champ appartient à un index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('101','1','ajouter des tests de validité sur le svg base','16','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('102','1','sauvegarder une table sans champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('103','1','requetes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('104','1','mettre le dump de la base dans la liste des bases','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('105','1','''prefixe_bdd'' PREFIXE_BDD','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('106','1','positionnement du bouton supprimer les messages','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('107','1','ajouter le bouton "ajouter un commentaire"','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('108','1','améliorer l''éditeur de requêtes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('109','1','renommer le champ dtm_tache de la table requetes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('110','1','changer le rev du champ quand on le renomme','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('111','1','remplacer les sql_nn par des sql_iii(nn,)','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('112','1','fonction pour gérer les dépendances
-sql_dependances()','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('113','1','renommer un champ d''index','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('114','1','dans le concepteur de requete, mettre les champs mis à jour pour un update sur plusieurs lignes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('115','1','mettre en place des dépendances de champ sur des bases externes','50','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('116','1','ajouter le test des dépendances dans les php delete','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('117','1','renommer une table dans le base','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('118','1','sources','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('119','1','modifier les updates','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('120','1','en mode déverminage, afficher le numero de reuqete liste','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('121','1','pourquoi certains fichiers sql sont supprimés','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('122','1','icone supprimer 🗑','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('123','1','rev de texte','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('124','1','recompiler les updates','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('125','1','intégrer la table rev dans la base physique','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('126','1','projet 2','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('127','1','reprendre les meta des sql','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('128','1','compiler les requêtes à partir de la liste','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('129','1','remplacer select_liste par liste_ecran','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('130','1','compiler les sources
-html
-js
-php
-sql
-css
-texte
-rev','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('132','1','virer chp_chemin_dossier','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('133','1','flag dossier binaire','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('134','1','begin transaction','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('135','1','ordonner un champ sur le schema uniquement','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('136','1','mettre le rev de travail de la base dans le rev','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('137','1','intégrer sql_parser_cst.js pour pouvoir faire passer :
-alter table t DROP column a;
-
-select * from toto;
-/*
-  alter table tata DROP column tot;
-*/','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('138','1','sql_parser_cst
-
-select
-create table
-create index
-insert
-update
-delete
-commit
-rollback
-begin transaction
-','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('139','1','ajouter un source binaire ( ico )','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('140','1','ajouter un source qui pointe sur un autre source ( favicon )','50','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('141','1','drapeau répertoire contient des sources générés','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('142','1','virer che_binaire_dossier','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('143','1','copier un source dans un autre répertoire','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('144','1','virer chp_type_source','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('145','1','supprimer les éléments inutils du dump de la base','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('146','1','sql_29, sql_30
-
-champ_numero_de_revision
-gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
-
-      gerer_champ_date_creation( champ( `chp__dtc_tache` ) , format(23)),
-      gerer_champ_date_modification( champ( `chp__dtm_tache` ) , format(23))
-
-
-champ_date_modification(`chp__dtm_tache`)
-flag champ_date_modification','99','4','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','13','1','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000'),
-('148','1','dans projet 2, enregistrer les matrices rev
-
-bases
-
-requetes
-
-sources html sur disque
-sources php sur disque
-sources js sur disque
-sources sql sur disque
-sources css sur disque
-sources rev sur disque
-sources txt sur disque NON','99','10','2025-06-15 09:10:42.213','2025-06-13 17:05:45.323'),
-('149','1','socket : .ts en .js','99','0','2025-06-16 09:01:24.706','2025-06-16 09:01:24.706'),
-('150','1','renommer les champs chi__num en che__nur','99','3','2025-06-17 11:45:14.619','2025-06-17 10:08:32.544'),
-('151','1','lors de la compilation d''un php, 
-mettre les sources au format SQL des requetes sql dans le source php','99','1','2025-06-17 14:11:31.120','2025-06-17 10:40:44.982'),
-('152','1','décomposer les fichiers session de php pour le wso','99','2','2025-06-19 18:22:27.003','2025-06-17 11:54:31.823'),
-('154','1','déterminer le répertoire des requêtes dans le projet','99','0','2025-06-19 18:21:27.820','2025-06-19 18:21:27.820'),
-('155','1','quand on crée un nouveau projet, 
-il faut créer un clone de la base système dans lequel travailler','99','0','2025-06-20 10:44:39.371','2025-06-20 10:44:39.371'),
-('156','1','quand on se déconnecte d''un projet, il faut supprimer les menus bases ...','99','0','2025-06-20 10:47:23.986','2025-06-20 10:47:23.986'),
-('157','1','ajouter répertoire des requetes au niveau du projet
-et utiliser cette donnée...','99','2','2025-06-21 16:57:19.818','2025-06-21 13:36:20.422'),
-('158','1','quand on ajoute un champ fils, dans le dessin svg, le lien ne n''affiche pas correctement','99','0','2025-06-23 12:39:41.331','2025-06-23 12:39:41.331'),
-('159','1','supprimer les projets >2 dans le projet 2','99','0','2025-06-23 16:18:28.927','2025-06-23 16:18:28.927'),
-('160','1','comparer les sources entre rev1 et 2 et faire un bouton copier','99','0','2025-06-23 16:41:49.995','2025-06-23 16:41:49.995'),
-('161','1','dans rev_2 importer un source de rev1','99','0','2025-06-24 09:36:54.845','2025-06-24 09:36:54.845'),
-('162','1','voir message conversion dans le php (322727) [1742]','99','0','2025-06-24 13:49:09.573','2025-06-24 13:49:09.573'),
-('163','1','moncrlf','99','0','2025-06-25 10:22:08.728','2025-06-25 10:22:08.728'),
-('164','1','quand on active un projet, il faut charger les sources sql','99','0','2025-06-25 11:05:15.874','2025-06-25 11:05:15.874'),
-('165','1','inporter/exporter les fichiers de rev 1 2','99','0','2025-06-25 12:06:19.837','2025-06-25 12:06:19.837'),
-('166','1','rechercher un source dont le nom contient __
-
-select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99','2','2025-06-25 14:42:17.528','2025-06-25 12:10:16.103'),
-('167','1','double \ dans le .bat','99','0','2025-06-25 14:14:55.962','2025-06-25 14:14:55.962'),
-('168','1','faire un 
-comme1(%xxx)
-comme2(xxx%)
-comme3(xxx)','11','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','3','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
-('170','1','initialiser ecran standard d''une table','8','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
-('171','1','gérer les menus','99','1','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522'),
-('172','1','gérer les utilisateurs et les groupes et les métiers','99','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
-('173','1','gérer les paramètres ( liste des constantes )
-type de champbdd','6','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
-('174','1','mettre en github
-','99','0','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817'),
-('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038'),
-('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
-('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962'),
-('178','1','ajouter un dictionnaire de données','7','1','2025-07-02 10:47:06.159','2025-07-02 10:46:53.367'),
-('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399'),
-('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718'),
-('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668'),
-('182','1','svg lien ajouter gauche droite','99','1','2025-07-06 09:27:00.963','2025-07-04 08:22:18.236'),
-('183','1','lisad :
-
-lister 
-insérer 
-sélectionner 
-altérer/amender 
-détruire','80','1','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485'),
-('184','1','bug quand on crée un nouvelle requête, le php c''est pas créé sur disque','99','0','2025-07-07 10:35:44.602','2025-07-07 10:35:44.602'),
-('185','1','gérer les pages','99','0','2025-07-07 12:54:11.814','2025-07-07 12:54:11.814'),
-('186','1','gérer les accès des utilisateurs','99','1','2025-07-08 15:13:34.065','2025-07-08 15:12:51.611'),
-('187','1','supprimer chx_groupe_utilisateur chx_metier_utilisateur','99','0','2025-07-09 09:41:52.450','2025-07-09 09:41:52.450'),
-('188','1','ajouter NULL si chx = '''' sur les insert et delete','99','1','2025-07-09 13:55:32.628','2025-07-09 13:54:53.645'),
-('189','1','Lors de l''insertion dans la table des pages, vérifier l''existance de méthode du source','99','1','2025-07-09 15:40:56.820','2025-07-09 14:58:59.943'),
-('190','1','supprimer chp_lien_rev_page','99','0','2025-07-09 15:22:03.310','2025-07-09 15:22:03.310'),
-('191','1','rechercher sql_24','99','0','2025-07-09 15:50:13.424','2025-07-09 15:50:13.424'),
-('192','1','bouton pop up pour voir le contenu d''une requête à partir de la liste des requêtes ','99','1','2025-07-09 17:42:12.440','2025-07-09 15:50:33.376'),
-('193','1','menu outils qui contient les convertisseurs
-<select>
-    <option>outils</option>
-    <option>matrice</option>
-    <option>html</option>
-    <option>js</option>
-    <option>php</option>
-    <option>sql</option>
-    <option>css</option>
-    <option>texte</option>
-</select>','4','2','2025-07-22 14:39:11.892','2025-07-09 16:26:01.691'),
-('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','0','2025-07-09 16:31:23.198','2025-07-09 16:31:23.198'),
-('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','0','2025-07-09 17:43:23.330','2025-07-09 17:43:23.330'),
-('196','1','initialiser les champs filtres d''une sous page','99','1','2025-07-19 11:11:25.033','2025-07-10 09:52:20.444'),
-('197','1','le caractère 🟥 ne passe pas sur ma tablette
-faire un carré svg
-⬛🔲🗨◻⏹','99','4','2025-07-21 17:02:50.100','2025-07-10 09:58:19.160'),
-('198','1','dans les pages, proposer une liste de méthodes quand on choisir un source','99','0','2025-07-10 10:17:39.087','2025-07-10 10:17:39.087'),
-('199','1','compiler le prérequis du menu','99','1','2025-07-14 08:40:32.303','2025-07-12 08:22:58.170'),
-('200','1','quand on modifie une page, il faut recompiler les menus','99','0','2025-07-15 13:49:22.638','2025-07-15 13:49:22.638'),
-('201','1','ajouter les traitements de 
-nom_champ_dans_parent1
-nom_libelle_dans_parent1
-dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.755','2025-07-15 16:12:27.924'),
-('202','1','bibliothèque de svg','5','1','2025-07-16 10:48:01.891','2025-07-16 10:47:25.371'),
-('203','1','renuméroter les requetes à partir de 101','99','2','2025-07-17 15:09:37.352','2025-07-17 10:11:14.041'),
-('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','1','2025-07-17 12:14:57.332','2025-07-17 12:07:20.343'),
-('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','0','2025-07-18 10:50:06.307','2025-07-18 10:50:06.307'),
-('206','1','renuméroter un source','99','0','2025-07-24 12:50:11.622','2025-07-24 12:50:11.622'),
-('207','1','remplacer php par deno','50','1','2025-07-27 09:47:30.190','2025-07-27 09:47:14.801'),
-('208','1','chp_commentaire_projet => chTTTTT_commentaire_projet','99','0','2025-07-29 11:37:04.000','2025-07-29 11:37:04.000'),
-('209','1','ajouter un bouton enregistrer dans la modification d''un source','99','1','2025-07-29 16:48:06.039','2025-07-29 15:44:38.467'),
-('210','1','travailler la redirection si on n''est pas authentifié','99','0','2025-07-29 17:52:34.498','2025-07-29 17:52:34.498'),
-('211','1','ajouter une référence à la pagination dans les listes','99','1','2025-07-31 11:56:33.898','2025-07-31 09:07:20.616'),
-('212','1','liens internes en #','99','0','2025-07-31 13:52:57.967','2025-07-31 13:52:57.967'),
-('213','1','Gérer les versions
-nouvelle version','2','0','2025-08-01 14:32:15.239','2025-08-01 14:32:15.239'),
-('214','1','quand on renomme un champ de la base 1 de rev_1 il faur renommer les champs de toutes les bases rev_n
-Exemple chp_commentaire_projet => cht_commentaire_projet','1','1','2025-08-01 15:09:53.643','2025-08-01 15:08:43.406');
 
 
 /*
@@ -1321,7 +995,7 @@ rollback()          ','ROLLBACK;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','
    base_de_reference(1),
    nom_de_la_table( '':nom_de_la_table''),
    actions( drop_column( '':nom_du_champ'' ))
-)        ','ALTER TABLE :nom_de_la_table DROP COLUMN :nom_du_champ',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+)          ','ALTER TABLE :nom_de_la_table DROP COLUMN :nom_du_champ',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('145','1','delete','#(meta(tester_les_dependances_dans_le_php(1))),
 supprimer(
    base_de_reference(1),
@@ -3095,7 +2769,23 @@ WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
     :chx_dossier_id_basedd , 
     :chp__dtm_basedd , 
     :chp__dtc_basedd
-);',NULL,'insérer la base principale',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+);',NULL,'insérer la base principale',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('316','1','select','#(meta(sur_base_de_reference(1))),
+sélectionner(
+   base_de_reference(1),
+   valeurs(champ(`T0`,`chi_id_projet`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
+      )
+   ),
+   conditions(sup(champ(`T0`,`chi_id_projet`),2))
+)  ','/*meta(sur_base_de_reference(1))*/
+SELECT 
+`T0`.`chi_id_projet`
+ FROM b1.tbl_projets T0
+WHERE `T0`.`chi_id_projet` > 2
+;',NULL,'projets >2 pour isa de champs ',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 
 /*
@@ -3231,7 +2921,7 @@ créer_table(
       nom_long_de_la_table(''liste des utilisateurs''),
       nom_court_de_la_table(''un utilisateur''),
       nom_bref_de_la_table(''utilisateurs''),
-      transform_table_sur_svg(translate(336.5,326.5))
+      transform_table_sur_svg(translate(397.5,412.5))
    ),
    champs(
       champ(
@@ -3414,147 +3104,6 @@ ajouter_index(
    nom_de_l_index(''idx_nom_unique_utilisateurs''),
    meta(nom_de_l_index(idx_nom_unique_utilisateurs),genre_meta(index_de_table),message(''Ce nom d\''utilisateur existe déjà'')),
    champs(''chp_nom_de_connexion_utilisateur''),
-   unique()
-),
-créer_table(
-   nom_de_la_table(''tbl_taches''),
-   meta(
-      nom_de_la_table(''tbl_taches''),
-      table(''tbl_taches''),
-      genre_meta(table_de_base),
-      nom_long_de_la_table(''''),
-      nom_court_de_la_table(''''),
-      nom_bref_de_la_table(''''),
-      transform_table_sur_svg(translate(402.5,544.5))
-   ),
-   champs(
-      champ(
-         nom_du_champ(''chi_id_tache''),
-         type(''integer''),
-         primary_key(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chi_id_tache''),
-            champ(''chi_id_tache''),
-            nom_long_du_champ(''''),
-            nom_court_du_champ(''''),
-            nom_bref_du_champ(''''),
-            typologie(),
-            afficher_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chx_utilisateur_tache''),
-         type(''integer''),
-         non_nulle(1),
-         references(tbl_utilisateurs,chi_id_utilisateur),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chx_utilisateur_tache''),
-            champ(''chx_utilisateur_tache''),
-            nom_long_du_champ(''à faire chx_utilisateur_tache''),
-            nom_court_du_champ(''à faire chx_utilisateur_tache''),
-            nom_bref_du_champ(''à faire chx_utilisateur_tache''),
-            typologie(chi),
-            afficher_champ_dans_svg(1),
-            refe_enfant_droite(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_texte_tache''),
-         type(''text''),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_texte_tache''),
-            champ(''chp_texte_tache''),
-            nom_long_du_champ(''''),
-            nom_court_du_champ(''''),
-            nom_bref_du_champ(''''),
-            typologie(),
-            afficher_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_priorite_tache''),
-         type(''integer''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_priorite_tache''),
-            champ(''chp_priorite_tache''),
-            nom_long_du_champ(''''),
-            nom_court_du_champ(''''),
-            nom_bref_du_champ(''''),
-            typologie(),
-            afficher_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''che__nur_tache''),
-         type(''integer''),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''che__nur_tache''),
-            champ(''che__nur_tache''),
-            nom_long_du_champ(''à faire chi__nut_tache''),
-            nom_court_du_champ(''à faire chi__nut_tache''),
-            nom_bref_du_champ(''à faire chi__nut_tache''),
-            typologie(chi),
-            afficher_champ_dans_svg(0),
-            champ_numero_de_revision(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp__dtm_tache''),
-         type(''VARCHAR(23)''),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(1),
-         valeur_par_defaut(''2000-01-01 00:00:00.000''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp__dtm_tache''),
-            champ(''chp__dtm_tache''),
-            nom_long_du_champ(''à faire chp__dtm_tache''),
-            nom_court_du_champ(''à faire chp__dtm_tache''),
-            nom_bref_du_champ(''à faire chp__dtm_tache''),
-            typologie(chi),
-            afficher_champ_dans_svg(0),
-            champ_date_modification(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp__dtc_tache''),
-         type(''VARCHAR(23)''),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(1),
-         valeur_par_defaut(''2000-01-01 00:00:00.000''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp__dtc_tache''),
-            champ(''chp__dtc_tache''),
-            nom_long_du_champ(''à faire chp__dtc_tache''),
-            nom_court_du_champ(''à faire chp__dtc_tache''),
-            nom_bref_du_champ(''à faire chp__dtc_tache''),
-            typologie(chi),
-            afficher_champ_dans_svg(0),
-            champ_date_creation(1)
-         )
-      )
-   )
-),
-#(=================================================================),
-ajouter_index(
-   #(),
-   nom_de_la_table_pour_l_index(''tbl_taches''),
-   nom_de_l_index(''idx_texte_unique_taches''),
-   meta(nom_de_l_index(idx_texte_unique_taches),genre_meta(index_de_table),message(''Cete tache existe déjà'')),
-   champs(''chp_texte_tache''),
    unique()
 ),
 créer_table(
@@ -3918,7 +3467,7 @@ créer_table(
       nom_long_de_la_table(''à faire tbl_revs''),
       nom_court_de_la_table(''à faire tbl_revs''),
       nom_bref_de_la_table(''à faire tbl_revs''),
-      transform_table_sur_svg(translate(632.5,337.5))
+      transform_table_sur_svg(translate(748.5,15.5))
    ),
    champs(
       champ(
@@ -4197,7 +3746,7 @@ créer_table(
       nom_long_de_la_table(''''),
       nom_court_de_la_table(''''),
       nom_bref_de_la_table(''''),
-      transform_table_sur_svg(translate(606.5,15.5))
+      transform_table_sur_svg(translate(531.5,80.5))
    ),
    champs(
       champ(
@@ -4560,7 +4109,7 @@ créer_table(
       nom_long_de_la_table(''''),
       nom_court_de_la_table(''''),
       nom_bref_de_la_table(''''),
-      transform_table_sur_svg(translate(609.5,194.5))
+      transform_table_sur_svg(translate(552.5,259.5))
    ),
    champs(
       champ(
@@ -4856,7 +4405,7 @@ créer_table(
       nom_long_de_la_table(''A faire  tbl_pages''),
       nom_court_de_la_table(''A faire tbl_pages''),
       nom_bref_de_la_table(''A faire tbl_pages''),
-      transform_table_sur_svg(translate(66.5,396.5))
+      transform_table_sur_svg(translate(104.5,409.5))
    ),
    champs(
       champ(
@@ -5002,7 +4551,7 @@ créer_table(
       nom_long_de_la_table(''A faire  tbl_acces''),
       nom_court_de_la_table(''A faire tbl_acces''),
       nom_bref_de_la_table(''A faire tbl_acces''),
-      transform_table_sur_svg(translate(177.5,291.5))
+      transform_table_sur_svg(translate(197.5,295.5))
    ),
    champs(
       champ(
@@ -5079,7 +4628,7 @@ créer_table(
       nom_long_de_la_table(''A faire  tbl_menus''),
       nom_court_de_la_table(''A faire tbl_menus''),
       nom_bref_de_la_table(''A faire tbl_menus''),
-      transform_table_sur_svg(translate(35.5,629.5))
+      transform_table_sur_svg(translate(85.5,622.5))
    ),
    champs(
       champ(
@@ -5176,6 +4725,160 @@ créer_table(
          )
       )
    )
+),
+créer_table(
+   nom_de_la_table(''tbl_taches''),
+   meta(
+      nom_de_la_table(''tbl_taches''),
+      table(''tbl_taches''),
+      genre_meta(table_de_base),
+      nom_long_de_la_table(''''),
+      nom_court_de_la_table(''''),
+      nom_bref_de_la_table(''''),
+      transform_table_sur_svg(translate(718.5,538.5))
+   ),
+   champs(
+      champ(
+         nom_du_champ(''chi_id_tache''),
+         type(''integer''),
+         primary_key(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chi_id_tache''),
+            champ(''chi_id_tache''),
+            nom_long_du_champ(''''),
+            nom_court_du_champ(''''),
+            nom_bref_du_champ(''''),
+            typologie(),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chx_utilisateur_tache''),
+         type(''integer''),
+         non_nulle(1),
+         references(tbl_utilisateurs,chi_id_utilisateur),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chx_utilisateur_tache''),
+            champ(''chx_utilisateur_tache''),
+            nom_long_du_champ(''à faire chx_utilisateur_tache''),
+            nom_court_du_champ(''à faire chx_utilisateur_tache''),
+            nom_bref_du_champ(''à faire chx_utilisateur_tache''),
+            typologie(chi),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_texte_tache''),
+         type(''text''),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_texte_tache''),
+            champ(''chp_texte_tache''),
+            nom_long_du_champ(''''),
+            nom_court_du_champ(''''),
+            nom_bref_du_champ(''''),
+            typologie(),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_priorite_tache''),
+         type(''integer''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_priorite_tache''),
+            champ(''chp_priorite_tache''),
+            nom_long_du_champ(''''),
+            nom_court_du_champ(''''),
+            nom_bref_du_champ(''''),
+            typologie(),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''che__nur_tache''),
+         type(''integer''),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che__nur_tache''),
+            champ(''che__nur_tache''),
+            nom_long_du_champ(''à faire chi__nut_tache''),
+            nom_court_du_champ(''à faire chi__nut_tache''),
+            nom_bref_du_champ(''à faire chi__nut_tache''),
+            typologie(chi),
+            afficher_champ_dans_svg(0),
+            champ_numero_de_revision(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp__dtm_tache''),
+         type(''VARCHAR(23)''),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(1),
+         valeur_par_defaut(''2000-01-01 00:00:00.000''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp__dtm_tache''),
+            champ(''chp__dtm_tache''),
+            nom_long_du_champ(''à faire chp__dtm_tache''),
+            nom_court_du_champ(''à faire chp__dtm_tache''),
+            nom_bref_du_champ(''à faire chp__dtm_tache''),
+            typologie(chi),
+            afficher_champ_dans_svg(0),
+            champ_date_modification(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_bidon2_tache''),
+         type(''VARCHAR(64)''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_bidon2_tache''),
+            champ(''chp_bidon2_tache''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chp),
+            afficher_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp__dtc_tache''),
+         type(''VARCHAR(23)''),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(1),
+         valeur_par_defaut(''2000-01-01 00:00:00.000''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp__dtc_tache''),
+            champ(''chp__dtc_tache''),
+            nom_long_du_champ(''à faire chp__dtc_tache''),
+            nom_court_du_champ(''à faire chp__dtc_tache''),
+            nom_bref_du_champ(''à faire chp__dtc_tache''),
+            typologie(chi),
+            afficher_champ_dans_svg(1),
+            champ_date_creation(1)
+         )
+      )
+   )
+),
+#(=================================================================),
+ajouter_index(
+   #(),
+   nom_de_la_table_pour_l_index(''tbl_taches''),
+   nom_de_l_index(''idx_texte_unique_taches''),
+   meta(nom_de_l_index(idx_texte_unique_taches),genre_meta(index_de_table),message(''Cete tache existe déjà'')),
+   champs(''chp_texte_tache''),
+   unique()
 )','sqlite','3','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('2','1',NULL,'meta(
    #(),
@@ -5567,4 +5270,335 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
              </g>
             </svg>
 ');
+
+
+/*
+  ===============================
+  DONNEES A INSERER POUR : tbl_taches
+  ===============================
+*/
+
+INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_priorite_tache,che__nur_tache,chp__dtm_tache,chp_bidon2_tache,chp__dtc_tache) VALUES
+('1','1','capturer les erreurs php','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('2','1','traiter le cookie initial quand il est incomplet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('3','1','mettre un # dans l''url pour pouvoir charger la page initiale','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('4','1','cookies.php en objet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('5','1','données bidon en cookie','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('6','1','404','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('7','1','worker','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('8','1','timer / indicateur socket','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('9','1','id en vv','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('10','1','fichiers et classes en c_','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('11','1','socket','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('12','1','limiter le nombre de messages sur l''interface','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('13','1','ne pas afficher le premier message ws ko','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('14','1','maj champ deverminage nouveau','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('15','1','recharger la page paramètres','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('16','1','déverminage en cookie','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('17','1','ctrl F5 après avoir cliqué sur un #','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('18','1','désactiver les boutons quand click','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('19','1','changer mes coordonnées','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('20','1','renommer les variables __x_statut ....','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('21','1','bdd todo','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('22','1','mettre le niveau de déverminage dans le php','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('23','1','dump de la base en local','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('26','1','travaux en batch','9','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('28','1','profils de css','50','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('29','1','astuces','10','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('34','1','pas de webSocket sur ks.app','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('35','1','détecter mobile ( touch )','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('36','1','highlight des menus','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('37','1','lors de la première connexion, initialiser les tailles des css en fonction de la taille de l''écran','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('38','1','sur ipad, supprimer les double click pour agrandir
+
+if( ecran_tactile===true && genre_safari===true && genre_crios === false)','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('39','1','supprimer le double click sur ios
+
+//https://stackoverflow.com/a/42162450/3717718
+','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('40','1','marges gauches et droites','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('41','1','se reconnecter au webso','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('42','1','ajouter le niveau de deboggage dans le websocket','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('43','1','déverminage serveur wso','50','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('44','1','Prévenir le ws quand on se déconnecte','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('45','1','coccinelle déverminage
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="13 11  82 84"><path d="M 18 85 L 23 82 L 21 73 L 27 67 M 30 40 L 25 40 L 21 49 L 16 49 M 34 35 L 25 30 L 23 24 M 44 19 L 39 14 M 59 19 L 64 14 M 69 35 L 78 30 L 80 24 M 73 40 L 78 40 L 82 49 L 87 49 M 76 68 L 82 73 L 80 82 L 85 85 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path><path d=" M 36 34 C 35 12 68 12 67 34 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:slategray;stroke-width:1;fill-opacity:1;"></path><path d=" M 36 33 C 30 38 25 48 25 56  C 25 68 33 87 52 87 c 15 0 26 -17 26 -30 C 78 47 73 39 67 33 c 0 1 -13 1 -15 1 C 49 34 36 34 36 33" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:red;stroke-width:1;fill-opacity:1;"></path><ellipse cx="44" cy="25" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(30 44 25 )" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="57" cy="18" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(1 40) rotate(-32 0 0)  " style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="36" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="67" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="41" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></ellipse><ellipse cx="62" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="40" cy="74" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(-40 40 74 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="57" cy="89" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(6 -15 ) rotate(30 57 89 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><path d=" M 51 35 V 86 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path></svg>','51','2','2025-07-31 11:57:22.993',NULL,'2000-01-01 00:00:00'),
+('46','1','http://localhost/frev/rev_1/__client/?a=1','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('47','1','page rev vers matrice','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('48','1','initialiser la zone rev avec le localstorage','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('49','1','mettre le rendu en js
+NON trop compliqué, le garder en php','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('50','1','conv js','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('51','1','rev vers js','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('52','1','zone d''édition textarea','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('53','1','cookie socket','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('54','1','optimiser les temps de chargement','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('55','1','traiter les messages d''erreur','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('56','1','placer le curseur dans une textarea','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('57','1','conv html','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('58','1','conv php','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('59','1','conv php nikic','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('60','1','traiter les messages d''erreur de php','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('61','1','sql','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('62','1','css','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('63','1','projet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('64','1','bouton retour à la liste','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('65','1','bug lien interne après changement de version','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('66','1','scroll horizontal sur menu haut','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('67','1','bases','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('68','1','autorisations
+
+se connecter à 
+
+http://localhost/frev/rev_1/__client/#c_rev_vers_mat1.page1(),indice_menu(50),maj_interface2(modifier(%20id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(''zones_sauvegard%C3%A9es'',''ls_rev1''))))
+
+sans être connecté
+
+#c_pages1.recupere_la_page_d_accueil()
+#c_pages1.recupere_la_page_d_aide()
+#c_pages1.recupere_la_page_de_connexion()','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('69','1','dossiers','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('70','1','activer / désactiver le bouton du menu','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('71','1','id parent de dossier avec <dialog>','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('72','1','chemin complet d''un dossier','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('73','1','vérifier qu''un dossier n''a pas d''enfants avant de le supprimer','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('74','1','transmettre les donnes_retournees aux sql 
+et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('78','1','ne pas mettre plus de 1000 éléments dans un dossier','12','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('80','1','table des bugs','14','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('82','1','supprimer une projet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('83','1','ajouter les champs 
+nut numero technique de modification
+dtm date technique de modification
+dtc date technique de création','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('84','1','renommer un dossier','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('85','1','quand on clique sur 🖐, mettre la zone en haut de l''écran','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('86','1','optimiser les tableaux des matrices et des caractères','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('88','1','sortable pour svg','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('90','1','dupliquer une table','15','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('92','1','quand on modifie le nom d''une table
+alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('93','1','corriger auto increment','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('94','1','ajouter le type du meta dans les sql','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('96','1','reprendre les commentaires meta dans sql','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('97','1','mettre les valeurs
+            a_une_valeur_par_defaut(0),
+            la_valeur_par_defaut_est_caractere(0),
+            valeur_par_defaut( ''''),
+dans le champ','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('98','1','afficher/masquer les champs dans le svg','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('99','1','corriger le bug : après tri des champs, on pert l''index','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('100','1','ne pas masquer un champ si c''est une référence, une clé, un auto_increment
+ou si le champ appartient à un index','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('101','1','ajouter des tests de validité sur le svg base','16','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('102','1','sauvegarder une table sans champ','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('103','1','requetes','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('104','1','mettre le dump de la base dans la liste des bases','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('105','1','''prefixe_bdd'' PREFIXE_BDD','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('106','1','positionnement du bouton supprimer les messages','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('107','1','ajouter le bouton "ajouter un commentaire"','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('108','1','améliorer l''éditeur de requêtes','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('109','1','renommer le champ dtm_tache de la table requetes','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('110','1','changer le rev du champ quand on le renomme','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('111','1','remplacer les sql_nn par des sql_iii(nn,)','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('112','1','fonction pour gérer les dépendances
+sql_dependances()','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('113','1','renommer un champ d''index','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('114','1','dans le concepteur de requete, mettre les champs mis à jour pour un update sur plusieurs lignes','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('115','1','mettre en place des dépendances de champ sur des bases externes','50','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('116','1','ajouter le test des dépendances dans les php delete','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('117','1','renommer une table dans le base','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('118','1','sources','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('119','1','modifier les updates','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('120','1','en mode déverminage, afficher le numero de reuqete liste','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('121','1','pourquoi certains fichiers sql sont supprimés','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('122','1','icone supprimer 🗑','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('123','1','rev de texte','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('124','1','recompiler les updates','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('125','1','intégrer la table rev dans la base physique','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('126','1','projet 2','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('127','1','reprendre les meta des sql','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('128','1','compiler les requêtes à partir de la liste','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('129','1','remplacer select_liste par liste_ecran','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('130','1','compiler les sources
+html
+js
+php
+sql
+css
+texte
+rev','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('132','1','virer chp_chemin_dossier','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('133','1','flag dossier binaire','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('134','1','begin transaction','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('135','1','ordonner un champ sur le schema uniquement','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('136','1','mettre le rev de travail de la base dans le rev','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('137','1','intégrer sql_parser_cst.js pour pouvoir faire passer :
+alter table t DROP column a;
+
+select * from toto;
+/*
+  alter table tata DROP column tot;
+*/','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('138','1','sql_parser_cst
+
+select
+create table
+create index
+insert
+update
+delete
+commit
+rollback
+begin transaction
+','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('139','1','ajouter un source binaire ( ico )','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('140','1','ajouter un source qui pointe sur un autre source ( favicon )','50','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('141','1','drapeau répertoire contient des sources générés','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('142','1','virer che_binaire_dossier','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('143','1','copier un source dans un autre répertoire','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('144','1','virer chp_type_source','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('145','1','supprimer les éléments inutils du dump de la base','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+('146','1','sql_29, sql_30
+
+champ_numero_de_revision
+gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
+
+      gerer_champ_date_creation( champ( `chp__dtc_tache` ) , format(23)),
+      gerer_champ_date_modification( champ( `chp__dtm_tache` ) , format(23))
+
+
+champ_date_modification(`chp__dtm_tache`)
+flag champ_date_modification','99','4','2025-06-13 17:04:41.468',NULL,'2000-01-01 00:00:00.000'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','13','1','2025-07-29 17:40:19.125',NULL,'2000-01-01 00:00:00.000'),
+('148','1','dans projet 2, enregistrer les matrices rev
+
+bases
+
+requetes
+
+sources html sur disque
+sources php sur disque
+sources js sur disque
+sources sql sur disque
+sources css sur disque
+sources rev sur disque
+sources txt sur disque NON','99','10','2025-06-15 09:10:42.213',NULL,'2025-06-13 17:05:45.323'),
+('149','1','socket : .ts en .js','99','0','2025-06-16 09:01:24.706',NULL,'2025-06-16 09:01:24.706'),
+('150','1','renommer les champs chi__num en che__nur','99','3','2025-06-17 11:45:14.619',NULL,'2025-06-17 10:08:32.544'),
+('151','1','lors de la compilation d''un php, 
+mettre les sources au format SQL des requetes sql dans le source php','99','1','2025-06-17 14:11:31.120',NULL,'2025-06-17 10:40:44.982'),
+('152','1','décomposer les fichiers session de php pour le wso','99','2','2025-06-19 18:22:27.003',NULL,'2025-06-17 11:54:31.823'),
+('154','1','déterminer le répertoire des requêtes dans le projet','99','0','2025-06-19 18:21:27.820',NULL,'2025-06-19 18:21:27.820'),
+('155','1','quand on crée un nouveau projet, 
+il faut créer un clone de la base système dans lequel travailler','99','0','2025-06-20 10:44:39.371',NULL,'2025-06-20 10:44:39.371'),
+('156','1','quand on se déconnecte d''un projet, il faut supprimer les menus bases ...','99','0','2025-06-20 10:47:23.986',NULL,'2025-06-20 10:47:23.986'),
+('157','1','ajouter répertoire des requetes au niveau du projet
+et utiliser cette donnée...','99','2','2025-06-21 16:57:19.818',NULL,'2025-06-21 13:36:20.422'),
+('158','1','quand on ajoute un champ fils, dans le dessin svg, le lien ne n''affiche pas correctement','99','0','2025-06-23 12:39:41.331',NULL,'2025-06-23 12:39:41.331'),
+('159','1','supprimer les projets >2 dans le projet 2','99','0','2025-06-23 16:18:28.927',NULL,'2025-06-23 16:18:28.927'),
+('160','1','comparer les sources entre rev1 et 2 et faire un bouton copier','99','0','2025-06-23 16:41:49.995',NULL,'2025-06-23 16:41:49.995'),
+('161','1','dans rev_2 importer un source de rev1','99','0','2025-06-24 09:36:54.845',NULL,'2025-06-24 09:36:54.845'),
+('162','1','voir message conversion dans le php (322727) [1742]','99','0','2025-06-24 13:49:09.573',NULL,'2025-06-24 13:49:09.573'),
+('163','1','moncrlf','99','0','2025-06-25 10:22:08.728',NULL,'2025-06-25 10:22:08.728'),
+('164','1','quand on active un projet, il faut charger les sources sql','99','0','2025-06-25 11:05:15.874',NULL,'2025-06-25 11:05:15.874'),
+('165','1','inporter/exporter les fichiers de rev 1 2','99','0','2025-06-25 12:06:19.837',NULL,'2025-06-25 12:06:19.837'),
+('166','1','rechercher un source dont le nom contient __
+
+select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99','2','2025-06-25 14:42:17.528',NULL,'2025-06-25 12:10:16.103'),
+('167','1','double \ dans le .bat','99','0','2025-06-25 14:14:55.962',NULL,'2025-06-25 14:14:55.962'),
+('168','1','faire un 
+comme1(%xxx)
+comme2(xxx%)
+comme3(xxx)','11','1','2025-06-26 11:55:00.122',NULL,'2025-06-26 11:34:12.549'),
+('169','1','initialiser projet standard','3','0','2025-06-26 15:39:59.054',NULL,'2025-06-26 15:39:59.054'),
+('170','1','initialiser ecran standard d''une table','8','0','2025-06-26 15:40:44.916',NULL,'2025-06-26 15:40:44.916'),
+('171','1','gérer les menus','99','1','2025-07-10 16:37:39.788',NULL,'2025-06-26 17:24:34.522'),
+('172','1','gérer les utilisateurs et les groupes et les métiers','99','1','2025-06-27 10:25:45.031',NULL,'2025-06-27 10:13:04.627'),
+('173','1','gérer les paramètres ( liste des constantes )
+type de champbdd','6','3','2025-07-04 08:19:23.308',NULL,'2025-06-27 10:13:20.409'),
+('174','1','mettre en github
+','99','0','2025-06-27 11:21:35.817',NULL,'2025-06-27 11:21:35.817'),
+('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455',NULL,'2025-06-28 12:40:58.038'),
+('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146',NULL,'2025-06-30 10:17:00.146'),
+('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962',NULL,'2025-07-01 09:20:32.962'),
+('178','1','ajouter un dictionnaire de données','7','1','2025-07-02 10:47:06.159',NULL,'2025-07-02 10:46:53.367'),
+('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399',NULL,'2025-07-02 11:46:09.399'),
+('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718',NULL,'2025-07-03 09:44:55.718'),
+('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668',NULL,'2025-07-03 09:46:02.668'),
+('182','1','svg lien ajouter gauche droite','99','1','2025-07-06 09:27:00.963',NULL,'2025-07-04 08:22:18.236'),
+('183','1','lisad :
+
+lister 
+insérer 
+sélectionner 
+altérer/amender 
+détruire','80','1','2025-07-06 13:23:50.990',NULL,'2025-07-06 13:23:42.485'),
+('184','1','bug quand on crée un nouvelle requête, le php c''est pas créé sur disque','99','0','2025-07-07 10:35:44.602',NULL,'2025-07-07 10:35:44.602'),
+('185','1','gérer les pages','99','0','2025-07-07 12:54:11.814',NULL,'2025-07-07 12:54:11.814'),
+('186','1','gérer les accès des utilisateurs','99','1','2025-07-08 15:13:34.065',NULL,'2025-07-08 15:12:51.611'),
+('187','1','supprimer chx_groupe_utilisateur chx_metier_utilisateur','99','0','2025-07-09 09:41:52.450',NULL,'2025-07-09 09:41:52.450'),
+('188','1','ajouter NULL si chx = '''' sur les insert et delete','99','1','2025-07-09 13:55:32.628',NULL,'2025-07-09 13:54:53.645'),
+('189','1','Lors de l''insertion dans la table des pages, vérifier l''existance de méthode du source','99','1','2025-07-09 15:40:56.820',NULL,'2025-07-09 14:58:59.943'),
+('190','1','supprimer chp_lien_rev_page','99','0','2025-07-09 15:22:03.310',NULL,'2025-07-09 15:22:03.310'),
+('191','1','rechercher sql_24','99','0','2025-07-09 15:50:13.424',NULL,'2025-07-09 15:50:13.424'),
+('192','1','bouton pop up pour voir le contenu d''une requête à partir de la liste des requêtes ','99','1','2025-07-09 17:42:12.440',NULL,'2025-07-09 15:50:33.376'),
+('193','1','menu outils qui contient les convertisseurs
+<select>
+    <option>outils</option>
+    <option>matrice</option>
+    <option>html</option>
+    <option>js</option>
+    <option>php</option>
+    <option>sql</option>
+    <option>css</option>
+    <option>texte</option>
+</select>','4','2','2025-07-22 14:39:11.892',NULL,'2025-07-09 16:26:01.691'),
+('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','0','2025-07-09 16:31:23.198',NULL,'2025-07-09 16:31:23.198'),
+('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','0','2025-07-09 17:43:23.330',NULL,'2025-07-09 17:43:23.330'),
+('196','1','initialiser les champs filtres d''une sous page','99','1','2025-07-19 11:11:25.033',NULL,'2025-07-10 09:52:20.444'),
+('197','1','le caractère 🟥 ne passe pas sur ma tablette
+faire un carré svg
+⬛🔲🗨◻⏹','99','4','2025-07-21 17:02:50.100',NULL,'2025-07-10 09:58:19.160'),
+('198','1','dans les pages, proposer une liste de méthodes quand on choisir un source','99','0','2025-07-10 10:17:39.087',NULL,'2025-07-10 10:17:39.087'),
+('199','1','compiler le prérequis du menu','99','1','2025-07-14 08:40:32.303',NULL,'2025-07-12 08:22:58.170'),
+('200','1','quand on modifie une page, il faut recompiler les menus','99','0','2025-07-15 13:49:22.638',NULL,'2025-07-15 13:49:22.638'),
+('201','1','ajouter les traitements de 
+nom_champ_dans_parent1
+nom_libelle_dans_parent1
+dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.755',NULL,'2025-07-15 16:12:27.924'),
+('202','1','bibliothèque de svg','5','1','2025-07-16 10:48:01.891',NULL,'2025-07-16 10:47:25.371'),
+('203','1','renuméroter les requetes à partir de 101','99','2','2025-07-17 15:09:37.352',NULL,'2025-07-17 10:11:14.041'),
+('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','1','2025-07-17 12:14:57.332',NULL,'2025-07-17 12:07:20.343'),
+('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','0','2025-07-18 10:50:06.307',NULL,'2025-07-18 10:50:06.307'),
+('206','1','renuméroter un source','99','0','2025-07-24 12:50:11.622',NULL,'2025-07-24 12:50:11.622'),
+('207','1','remplacer php par deno','50','1','2025-07-27 09:47:30.190',NULL,'2025-07-27 09:47:14.801'),
+('208','1','chp_commentaire_projet => chTTTTT_commentaire_projet','99','0','2025-07-29 11:37:04.000',NULL,'2025-07-29 11:37:04.000'),
+('209','1','ajouter un bouton enregistrer dans la modification d''un source','99','1','2025-07-29 16:48:06.039',NULL,'2025-07-29 15:44:38.467'),
+('210','1','travailler la redirection si on n''est pas authentifié','99','0','2025-07-29 17:52:34.498',NULL,'2025-07-29 17:52:34.498'),
+('211','1','ajouter une référence à la pagination dans les listes','99','1','2025-07-31 11:56:33.898',NULL,'2025-07-31 09:07:20.616'),
+('212','1','liens internes en #','99','0','2025-07-31 13:52:57.967',NULL,'2025-07-31 13:52:57.967'),
+('213','1','Gérer les versions
+nouvelle version','99','0','2025-08-01 14:32:15.239',NULL,'2025-08-01 14:32:15.239'),
+('214','1','renommer un champ
+
+supprimer un champ
+ajouter un champ
+
+quand on renomme un champ de la base 1 de rev_1 il faur renommer les champs de toutes les bases rev_n
+Exemple chp_commentaire_projet => cht_commentaire_projet','99','2','2025-08-02 14:19:05.165',NULL,'2025-08-01 15:08:43.406');
 

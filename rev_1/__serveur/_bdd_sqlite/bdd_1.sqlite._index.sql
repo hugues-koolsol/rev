@@ -2,10 +2,6 @@ CREATE UNIQUE INDEX idx_nom_unique_utilisateurs ON `tbl_utilisateurs`
         /* meta(nom_de_l_index(idx_nom_unique_utilisateurs),genre_meta(index_de_table),message('Ce nom d\'utilisateur existe déjà')) */
          ( `chp_nom_de_connexion_utilisateur` ) ;
 
-CREATE UNIQUE INDEX idx_texte_unique_taches ON `tbl_taches` 
-        /* meta(nom_de_l_index(idx_texte_unique_taches),genre_meta(index_de_table),message('Cete tache existe déjà')) */
-         ( `chp_texte_tache` ) ;
-
 CREATE UNIQUE INDEX idx_nom_unique_projets ON `tbl_projets` 
         /* meta(nom_de_l_index(idx_nom_unique_projets),genre_meta(index_de_table),message('ce projet existe déjà')) */
          ( `chp_nom_projet` ) ;
@@ -29,4 +25,8 @@ CREATE UNIQUE INDEX idx_nom_groupe ON `tbl_groupes`
 CREATE UNIQUE INDEX idx_principal_pages ON `tbl_pages` 
         /* meta(nom_de_l_index(idx_principal_pages),genre_meta(index_de_table),message('')) */
          ( `chx_parent_page` , `chx_acces_page` , `chx_source_page` , `chp_methode_page` ) ;
+
+CREATE UNIQUE INDEX idx_texte_unique_taches ON `tbl_taches` 
+        /* meta(nom_de_l_index(idx_texte_unique_taches),genre_meta(index_de_table),message('Cete tache existe déjà')) */
+         ( `chp_texte_tache` ) ;
 

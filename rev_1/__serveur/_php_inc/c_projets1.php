@@ -3011,9 +3011,15 @@ EOT;
                 $lsttbl .= '<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_projets1.initialiser_un_projet(chi_id_projet(' . $v0['T0.chi_id_projet'] . '))" title="sauvegarder la base du projet">initialiser</div>';
 
             }
-
-
+            if(__X_CLE_APPLICATION === 'rev_1' && $v0['T0.chi_id_projet'] === 1 && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet']) ){
+                $lsttbl.='<div class="hug_bouton" data-hug_click="c_divers1.generer_index_html()">modifier la version</div>';
+            }
             $lsttbl .= '</div>';
+            /*
+            
+            
+            
+            */
             $lsttbl .= '</td>';
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T0.chi_id_projet'] . '';
