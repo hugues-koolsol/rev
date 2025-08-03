@@ -146,6 +146,35 @@ class c_fonctions_js1{
       =============================================================================================================
       c_fonctions_js1(affecte(zone(vv_nouveau_numero_de_requete,valeur),plus( zone(vv_nouveau_numero_de_requete,valeur) , 100 )))
     */
+    trier_les_menus( mat , debut ){
+     
+        let chi_id_acces=0;
+        let l01=mat.length;
+        for( let i=debut + 1 ; i < l01 ; i=mat[i][12] ){
+            if('chi_id_acces' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1  && mat[i+1][2] === 'c'){
+                chi_id_acces=parseInt(mat[i+1][1],10);
+            }
+        }
+        if(chi_id_acces>0){
+         
+            var t='';
+            t+='<h1>trier les menus de '+chi_id_acces+'</h1>';
+
+            let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+            vv_sous_fenetre1.innerHTML=t;
+            vv_sous_fenetre1.showModal();
+            __gi1.ajoute_les_evenements_aux_boutons( null );
+         
+        }
+        
+        
+        return({"__xst" : __xsu});
+     
+    }
+    /*
+      =============================================================================================================
+      c_fonctions_js1(affecte(zone(vv_nouveau_numero_de_requete,valeur),plus( zone(vv_nouveau_numero_de_requete,valeur) , 100 )))
+    */
     affecte( mat , debut ){
         let l01=mat.length;
         if(mat[debut][8] === 2){

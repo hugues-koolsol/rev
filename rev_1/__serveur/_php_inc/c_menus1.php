@@ -1232,7 +1232,7 @@ class c_menus1{
       =============================================================================================================
     */
     function page_liste_des_menus1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $__nbMax=30;
+        $__nbMax=10;
         $par=array();
         $par['T0_chi_id_menu']='';
         $par['T0_chx_page_menu']='';
@@ -1317,6 +1317,15 @@ class c_menus1{
         $nom_filtre='vv_menus_filtre1';
         $o1='<h1>Liste des menus</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
+        
+        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( (int)$par['T2_chi_id_acces']==(float)$par['T2_chi_id_acces'] , true ) . '</pre>' ; exit(0);
+        $afficher_bouton_trier=false;
+        
+        if($par['T2_chi_id_acces']!=='' && (int)$par['T2_chi_id_acces']==(float)$par['T2_chi_id_acces']){
+            $afficher_bouton_trier=true;
+            $__nbMax=100;
+        }
+        
         $__debut=$__num_page * $__nbMax;
         $o1 .= '<div class="yy_filtre_liste1" id="' . $nom_filtre . '">' . PHP_EOL;
         /*
@@ -1416,6 +1425,13 @@ class c_menus1{
           $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $tt '.var_export($tt,true);
         */
         $bouton_avant='<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_menus1.formulaire1(action1(page_menus_creer1))" title="nouveau menu" >+*</div>';
+
+        if($afficher_bouton_trier===true){
+         
+            $bouton_avant.='<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_fonctions_js1(trier_les_menus(chi_id_acces('.$par['T2_chi_id_acces'].')))" title="trier les_menus" >...</div>';
+         
+        }
+
         $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt['nombre'],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));
         $lsttbl='';
         $lsttbl .= '<thead><tr>';

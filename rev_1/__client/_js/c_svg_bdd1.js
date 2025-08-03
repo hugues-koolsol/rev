@@ -2750,22 +2750,6 @@ class c_svg_bdd1{
         /*
           =====================================================================================================
         */
-        /*
-        t+='<hr /><h3>copier le rev de travail dans le rev</h3>';
-        t+='<p>il faut que la comparaison soit sans erreur et il faut sauvegarder la base virtuelle</p>';
-        rev='';
-        rev+='interface1.module1(';
-        rev+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-        rev+=' methode3(copier_le_rev_de_travail_dans_le_rev),';
-        rev+=' parametre3(';
-        rev+='  id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + ')';
-        rev+=' )';
-        rev+=')';
-        t+='<div class="hug_bouton yy__x_signaux_1" data-hug_click="' + rev + '">copier</div>';
-        */
-        /*
-          =====================================================================================================
-        */
         t+='<hr /><h3>créer la base physique à partir de ce schéma</h3>';
         /* t+='<a class="yyinfo" href="javascript:' + this.#nom_de_la_variable + '.creer_la_base_sur_disque_a_partir_du_shema(' + this.#id_bdd_de_la_base_en_cours + ')">créer</a>'; */
         rev='';
