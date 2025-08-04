@@ -6,7 +6,7 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','597','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','599','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -5404,7 +5404,7 @@ dans le champ','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('99','1','corriger le bug : après tri des champs, on pert l''index','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('100','1','ne pas masquer un champ si c''est une référence, une clé, un auto_increment
 ou si le champ appartient à un index','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('101','1','ajouter des tests de validité sur le svg base','16','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('101','1','ajouter des tests de validité sur le svg base','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('102','1','sauvegarder une table sans champ','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('103','1','requetes','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
 ('104','1','mettre le dump de la base dans la liste des bases','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
@@ -5525,7 +5525,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 comme1(%xxx)
 comme2(xxx%)
 comme3(xxx)','11','1','2025-06-26 11:55:00.122',NULL,'2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','3','0','2025-06-26 15:39:59.054',NULL,'2025-06-26 15:39:59.054'),
+('169','1','initialiser projet standard','4','0','2025-06-26 15:39:59.054',NULL,'2025-06-26 15:39:59.054'),
 ('170','1','initialiser ecran standard d''une table','8','0','2025-06-26 15:40:44.916',NULL,'2025-06-26 15:40:44.916'),
 ('171','1','gérer les menus','99','1','2025-07-10 16:37:39.788',NULL,'2025-06-26 17:24:34.522'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','1','2025-06-27 10:25:45.031',NULL,'2025-06-27 10:13:04.627'),
@@ -5567,7 +5567,7 @@ détruire','80','1','2025-07-06 13:23:50.990',NULL,'2025-07-06 13:23:42.485'),
     <option>sql</option>
     <option>css</option>
     <option>texte</option>
-</select>','4','2','2025-07-22 14:39:11.892',NULL,'2025-07-09 16:26:01.691'),
+</select>','2','2','2025-07-22 14:39:11.892',NULL,'2025-07-09 16:26:01.691'),
 ('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','0','2025-07-09 16:31:23.198',NULL,'2025-07-09 16:31:23.198'),
 ('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','0','2025-07-09 17:43:23.330',NULL,'2025-07-09 17:43:23.330'),
 ('196','1','initialiser les champs filtres d''une sous page','99','1','2025-07-19 11:11:25.033',NULL,'2025-07-10 09:52:20.444'),
@@ -5600,5 +5600,7 @@ supprimer un champ
 ajouter un champ
 
 quand on renomme un champ de la base 1 de rev_1 il faur renommer les champs de toutes les bases rev_n
-Exemple chp_commentaire_projet => cht_commentaire_projet','99','2','2025-08-02 14:19:05.165',NULL,'2025-08-01 15:08:43.406');
+Exemple chp_commentaire_projet => cht_commentaire_projet','99','2','2025-08-02 14:19:05.165',NULL,'2025-08-01 15:08:43.406'),
+('215','1','case à cocher "se souvenir de moi" sur la page de connexion','3','0','2025-08-03 09:25:28.660',NULL,'2025-08-03 09:25:28.660'),
+('216','1','intégrer mon tri','1','0','2025-08-03 10:03:21.913',NULL,'2025-08-03 10:03:21.913');
 

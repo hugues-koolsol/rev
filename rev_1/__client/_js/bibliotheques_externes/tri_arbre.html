@@ -6,24 +6,41 @@
   <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1,minimum-scale=1" />  
 
   <script type="text/javascript" src="tri_arbre1.js"></script>
+  <style>
+  .le_bo_bouton_deplacer{
+   border:1px green solid;
+   min-width:1em;
+   text-align:center;
+   cursor:ns-resize;
+   color:green;
+  }
+  </style>
  </head>
  <body>
   
-<h1>exemple</h1>
-<ul id="tri_arbre_racine" style="border:1px red solid;">
- <li id="123"><b style="color:red;">a</b>
+<h1>exemple</h1><a href="#fin">fin</a>
+<br /><br /><br /><br /><br />
+<ul id="tri_arbre_racine" style="border:0px red solid;">
+ <li id="123">
+   <b style="color:red;">a 1</b>
    <ul>
-    <li>aa</li>
     <li>
-    ab
-    <ul>
-     <li>aba</li>
-     <li>abb</li>
-    </ul>
+       aa 2
+       <ul>
+        <li>aaa 3</li>
+        <li>aaa 4</li>
+       </ul>
+    </li>
+    <li>
+       ab 5
+       <ul  data-replie>
+        <li>aba 6</li>
+        <li>abb 7</li>
+       </ul>
     </li>
    </ul>
  </li>
- <li>b</li>
+ <li>b 8</li>
  <li>c</li>
  <li>d</li>
  <li>e</li>
@@ -33,20 +50,35 @@
  <li>i</li>
  <li>j</li>
  <li>k</li>
- <li>l</li>
+ <li>m</li>
+ <li>n</li>
+ <li>o</li>
+ <li>p</li>
+ <li>q</li>
 </ul>
-
-<!-- 
- always put a max-width in % or px because you must still scroll the page on a small device 
--->
-
-
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<footer id="fin"></footer>
 <script type="text/javascript">
 
+function appelee_apres_action(arbre){
+    console.log(JSON.stringify(arbre));
+}
 
+let options={
+    hauteur_max_en_vh             : 60,// entre 20 et 80
+    largeur_max                   :'400px', //'calc(100% - 50px)',
+    afficher_le_bouton_supprimer  : false ,
+    fonction_appelee_apres_action : appelee_apres_action ,
+    arborescent                   : true ,
+    class_du_bouton_deplacer      : 'le_bo_bouton_deplacer' ,
+}
 
-
-var a=new tri_arbre1('tri_arbre_racine',{});
+var a=new tri_arbre1('tri_arbre_racine',options);
 
 //====================================================================================================
 //====================================================================================================
