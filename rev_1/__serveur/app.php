@@ -242,7 +242,11 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
                         if(is_numeric($tt3)){
 
                             $tt3=(int)($tt3);
-                            $donnees_retournees[__xva]['maj']='allumer_menu(' . $tt3 . ')';
+                            if(isset($donnees_retournees[__xva]['maj'])){
+                                $donnees_retournees[__xva]['maj'].='allumer_menu(' . $tt3 . ')';
+                            }else{
+                                $donnees_retournees[__xva]['maj']='allumer_menu(' . $tt3 . ')';
+                            }
                             /* this.#id_menu*/
 
                         }

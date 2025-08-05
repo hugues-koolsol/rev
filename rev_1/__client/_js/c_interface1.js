@@ -119,6 +119,15 @@ class _c_interface1{
         sortable.setAttribute( 'type' , "text/javascript" );
         sortable.setAttribute( 'src' , "_js/bibliotheques_externes/Sortable.js" );
         document.getElementsByTagName( 'head' )[0].appendChild( sortable );
+        
+        let tri_arbre1=document.createElement( 'script' );
+        tri_arbre1.setAttribute( 'type' , "text/javascript" );
+        tri_arbre1.setAttribute( 'src' , "_js/bibliotheques_externes/tri_arbre1.js" );
+        document.getElementsByTagName( 'head' )[0].appendChild( tri_arbre1 );
+        
+        
+        
+        
 /*
         window.navigation.addEventListener("navigate", (event) => {
             console.log('location changed!',event);
@@ -431,6 +440,7 @@ class _c_interface1{
                    && (
                        reponse.__xva.maj.indexOf( 'allumer_menu' ) >= 0
                        || reponse.__xva.maj.indexOf( 'faire_une_liste_triable' ) >= 0
+                       || reponse.__xva.maj.indexOf( 'faire_une_liste_triable2' ) >= 0
                    )
             ){
                 let mat_maj=this.__m_rev1.rev_tcm( decodeURIComponent( reponse.__xva.maj ) );
@@ -452,6 +462,26 @@ class _c_interface1{
                             */
                             let el=document.getElementById(mat_maj.__xva[i + 1][1]);
                             new Sortable(  el , {"animation" : 50 , "ghostClass" : 'blue-background-class'} ); // "animation" : 150 ,
+                        }else if(mat_maj.__xva[i][1] === 'faire_une_liste_triable2'
+                               && mat_maj.__xva[i][2] === 'f'
+                               && mat_maj.__xva[i][8] === 1
+                               && mat_maj.__xva[i + 1][2] === 'c'
+                        ){
+                            /*
+                             exemple : ordre_de_mes_menus
+                            */
+                            let el=document.getElementById(mat_maj.__xva[i + 1][1]);
+                            let options={
+                                hauteur_max_en_vh             : 80,// entre 20 et 80
+                                largeur_max                   :'400px', //'calc(100% - 50px)',
+                                afficher_le_bouton_supprimer  : false ,
+                                fonction_appelee_apres_action : this.action_sur_tri ,
+                                arborescent                   : false ,
+                                class_du_bouton_deplacer      : 'hug_bouton' ,
+                             
+                            }
+                            new tri_arbre1(mat_maj.__xva[i + 1][1],options);
+
                         }
                     }
                 }
@@ -502,6 +532,12 @@ class _c_interface1{
                 }
             }
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    action_sur_tri(par){
+     console.log('dans appelee_apres_action par=', par);
     }
     /*
       =============================================================================================================

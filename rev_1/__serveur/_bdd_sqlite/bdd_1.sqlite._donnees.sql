@@ -6,7 +6,7 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','599','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','604','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -5304,10 +5304,10 @@ INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_p
 ('23','1','dump de la base en local','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('26','1','travaux en batch','9','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('26','1','travaux en batch','10','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('28','1','profils de css','50','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('29','1','astuces','10','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('29','1','astuces','11','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
@@ -5373,9 +5373,9 @@ et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00',NULL,'200
 ('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('78','1','ne pas mettre plus de 1000 éléments dans un dossier','12','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('78','1','ne pas mettre plus de 1000 éléments dans un dossier','13','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('80','1','table des bugs','14','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('80','1','table des bugs','15','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('82','1','supprimer une projet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('83','1','ajouter les champs 
@@ -5388,7 +5388,7 @@ dtc date technique de création','99','0','2000-01-01 00:00:00',NULL,'2000-01-01
 ('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('88','1','sortable pour svg','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('90','1','dupliquer une table','15','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+('90','1','dupliquer une table','16','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
 ('92','1','quand on modifie le nom d''une table
 alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
@@ -5484,7 +5484,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chp__dtm_tache`)
 flag champ_date_modification','99','4','2025-06-13 17:04:41.468',NULL,'2000-01-01 00:00:00.000'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','13','1','2025-07-29 17:40:19.125',NULL,'2000-01-01 00:00:00.000'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','14','1','2025-07-29 17:40:19.125',NULL,'2000-01-01 00:00:00.000'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -5524,19 +5524,19 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','11','1','2025-06-26 11:55:00.122',NULL,'2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','4','0','2025-06-26 15:39:59.054',NULL,'2025-06-26 15:39:59.054'),
-('170','1','initialiser ecran standard d''une table','8','0','2025-06-26 15:40:44.916',NULL,'2025-06-26 15:40:44.916'),
+comme3(xxx)','12','1','2025-06-26 11:55:00.122',NULL,'2025-06-26 11:34:12.549'),
+('169','1','initialiser projet standard','5','0','2025-06-26 15:39:59.054',NULL,'2025-06-26 15:39:59.054'),
+('170','1','initialiser ecran standard d''une table','9','0','2025-06-26 15:40:44.916',NULL,'2025-06-26 15:40:44.916'),
 ('171','1','gérer les menus','99','1','2025-07-10 16:37:39.788',NULL,'2025-06-26 17:24:34.522'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','1','2025-06-27 10:25:45.031',NULL,'2025-06-27 10:13:04.627'),
 ('173','1','gérer les paramètres ( liste des constantes )
-type de champbdd','6','3','2025-07-04 08:19:23.308',NULL,'2025-06-27 10:13:20.409'),
+type de champbdd','7','3','2025-07-04 08:19:23.308',NULL,'2025-06-27 10:13:20.409'),
 ('174','1','mettre en github
 ','99','0','2025-06-27 11:21:35.817',NULL,'2025-06-27 11:21:35.817'),
 ('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455',NULL,'2025-06-28 12:40:58.038'),
 ('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146',NULL,'2025-06-30 10:17:00.146'),
 ('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962',NULL,'2025-07-01 09:20:32.962'),
-('178','1','ajouter un dictionnaire de données','7','1','2025-07-02 10:47:06.159',NULL,'2025-07-02 10:46:53.367'),
+('178','1','ajouter un dictionnaire de données','8','1','2025-07-02 10:47:06.159',NULL,'2025-07-02 10:46:53.367'),
 ('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399',NULL,'2025-07-02 11:46:09.399'),
 ('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718',NULL,'2025-07-03 09:44:55.718'),
 ('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668',NULL,'2025-07-03 09:46:02.668'),
@@ -5567,7 +5567,7 @@ détruire','80','1','2025-07-06 13:23:50.990',NULL,'2025-07-06 13:23:42.485'),
     <option>sql</option>
     <option>css</option>
     <option>texte</option>
-</select>','2','2','2025-07-22 14:39:11.892',NULL,'2025-07-09 16:26:01.691'),
+</select>','3','2','2025-07-22 14:39:11.892',NULL,'2025-07-09 16:26:01.691'),
 ('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','0','2025-07-09 16:31:23.198',NULL,'2025-07-09 16:31:23.198'),
 ('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','0','2025-07-09 17:43:23.330',NULL,'2025-07-09 17:43:23.330'),
 ('196','1','initialiser les champs filtres d''une sous page','99','1','2025-07-19 11:11:25.033',NULL,'2025-07-10 09:52:20.444'),
@@ -5581,7 +5581,7 @@ faire un carré svg
 nom_champ_dans_parent1
 nom_libelle_dans_parent1
 dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.755',NULL,'2025-07-15 16:12:27.924'),
-('202','1','bibliothèque de svg','5','1','2025-07-16 10:48:01.891',NULL,'2025-07-16 10:47:25.371'),
+('202','1','bibliothèque de svg','6','1','2025-07-16 10:48:01.891',NULL,'2025-07-16 10:47:25.371'),
 ('203','1','renuméroter les requetes à partir de 101','99','2','2025-07-17 15:09:37.352',NULL,'2025-07-17 10:11:14.041'),
 ('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','1','2025-07-17 12:14:57.332',NULL,'2025-07-17 12:07:20.343'),
 ('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','0','2025-07-18 10:50:06.307',NULL,'2025-07-18 10:50:06.307'),
@@ -5601,6 +5601,7 @@ ajouter un champ
 
 quand on renomme un champ de la base 1 de rev_1 il faur renommer les champs de toutes les bases rev_n
 Exemple chp_commentaire_projet => cht_commentaire_projet','99','2','2025-08-02 14:19:05.165',NULL,'2025-08-01 15:08:43.406'),
-('215','1','case à cocher "se souvenir de moi" sur la page de connexion','3','0','2025-08-03 09:25:28.660',NULL,'2025-08-03 09:25:28.660'),
-('216','1','intégrer mon tri','1','0','2025-08-03 10:03:21.913',NULL,'2025-08-03 10:03:21.913');
+('215','1','case à cocher "se souvenir de moi" sur la page de connexion','4','0','2025-08-03 09:25:28.660',NULL,'2025-08-03 09:25:28.660'),
+('216','1','intégrer mon tri','2','0','2025-08-03 10:03:21.913',NULL,'2025-08-03 10:03:21.913'),
+('217','1','bug réordonner champs sur projet 3','1','0','2025-08-05 14:13:00.676',NULL,'2025-08-05 14:13:00.676');
 
