@@ -464,23 +464,29 @@ class _c_interface1{
                             new Sortable(  el , {"animation" : 50 , "ghostClass" : 'blue-background-class'} ); // "animation" : 150 ,
                         }else if(mat_maj.__xva[i][1] === 'faire_une_liste_triable2'
                                && mat_maj.__xva[i][2] === 'f'
-                               && mat_maj.__xva[i][8] === 1
-                               && mat_maj.__xva[i + 1][2] === 'c'
                         ){
-                            /*
-                             exemple : ordre_de_mes_menus
-                            */
-                            let el=document.getElementById(mat_maj.__xva[i + 1][1]);
-                            let options={
-                                hauteur_max_en_vh             : 80,// entre 20 et 80
-                                largeur_max                   :'400px', //'calc(100% - 50px)',
-                                afficher_le_bouton_supprimer  : false ,
-                                fonction_appelee_apres_action : this.action_sur_tri ,
-                                arborescent                   : false ,
-                                class_du_bouton_deplacer      : 'hug_bouton' ,
-                             
+                            let id='';
+                            for( let j=i+1 ; j < mat_maj.__xva.length ; j=mat_maj.__xva[j][12] ){
+                                if(mat_maj.__xva[j][1] === 'id' && mat_maj.__xva[j][2] === 'f' && mat_maj.__xva[j][8] === 1  && mat_maj.__xva[j+1][2] === 'c' ){
+                                  id=mat_maj.__xva[j+1][1];
+                                }
                             }
-                            new tri_arbre1(mat_maj.__xva[i + 1][1],options);
+                            if(id!==''){
+                                /*
+                                 exemple : ordre_de_mes_menus
+                                */
+                                let el=document.getElementById(id);
+                                let options={
+                                    hauteur_max_en_vh             : 80,// entre 20 et 80
+                                    largeur_max                   :'400px', //'calc(100% - 50px)',
+                                    afficher_le_bouton_supprimer  : false ,
+                                    fonction_appelee_apres_action : this.action_sur_tri ,
+                                    arborescent                   : false ,
+                                    class_du_bouton_deplacer      : 'hug_bouton' ,
+                                 
+                                }
+                                new tri_arbre1(id,options);
+                            }
 
                         }
                     }

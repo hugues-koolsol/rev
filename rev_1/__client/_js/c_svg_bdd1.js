@@ -133,11 +133,7 @@ class c_svg_bdd1{
             this.#_dssvg.viewBoxInit=[0,0,this.#largeur_du_svg,this.#hauteur_du_svg];
             this.#div_svg.addEventListener( 'wheel' , this.zoom_avec_roulette.bind( this ) , false );
             window.addEventListener( 'mousedown' , this.#souris_bas.bind( this ) , false );
-            window.addEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
-            window.addEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
             this.#svg_dessin.addEventListener( 'touchstart' , this.#doigt_bas.bind( this ) , false );
-            window.addEventListener( 'touchend' , this.#doigt_haut.bind( this ) , false );
-            window.addEventListener( 'touchmove' , this.#doigt_bouge.bind( this ) , false );
         }
         this.#charger_les_bases_initiales_en_asynchrone();
     }
@@ -2927,7 +2923,7 @@ class c_svg_bdd1{
         }
 
         let nouveau_rev=this.#creer_definition_table_en_rev( document.getElementById( id_svg_rectangle_de_la_table ) , null , ids_ordre_modifie );
-        debugger
+
         this.#supprimer_recursivement_les_elements_de_l_arbre( this.#id_bdd_de_la_base_en_cours , id_svg_conteneur_table , 'tri_des_champs' );
         nouveau_rev+=chaine_des_index;
         var obj1=__gi1.__m_rev1.rev_tm( nouveau_rev );
@@ -3158,9 +3154,13 @@ class c_svg_bdd1{
                         }else if(mat[j][1] === 'nom_de_la_table' && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
                             nom_de_la_table=mat[j + 1][1];
                         }else if(mat[j][1] === 'chaine_des_index' && mat[j][2] === 'f'){
-                            let obj3=__gi1.__m_rev1.matrice_vers_source_rev1( mat , j , true , j + 1 );
-                            if(obj3.__xst === __xsu){
-                                chaine_des_index=obj3.__xva;
+                            if(mat[j][8]===0){
+                                debugger
+                            }else{
+                                let obj3=__gi1.__m_rev1.matrice_vers_source_rev1( mat , j , true , j + 1 );
+                                if(obj3.__xst === __xsu){
+                                    chaine_des_index=obj3.__xva;
+                                }
                             }
                         }else if(mat[j][1] === 'ids_ordre_modifie' && mat[j][2] === 'f'){
                             for( let k=j + 1 ; k < mat.length ; k=mat[k][12] ){
@@ -4498,29 +4498,25 @@ class c_svg_bdd1{
         this.#svg_ajuster_la_largeur_de_la_base( this.#id_svg_de_la_base_en_cours );
     }
     /*
-      
       =============================================================================================================
-      function doigt_bouge
     */
     #doigt_bouge( e ){
         this.#souris_bouge( e.touches[0] );
     }
     /*
-      
       =============================================================================================================
-      function doigt_haut
     */
     #doigt_haut( e ){
-        console.log( 'ici e=' , e.changedTouches );
+        /* console.log( 'ici e=' , e.changedTouches ); */
+        document.body.style.overflowY='scroll';
         this.#souris_haut( e.changedTouches[0] );
     }
     /*
-      
       =============================================================================================================
-      function doigt_bas
     */
     #doigt_bas( e ){
-        console.log( e );
+        /* console.log( e ); */
+        document.body.style.overflowY='hidden';
         this.#souris_bas( e.touches[0] );
     }
     /*
@@ -4697,6 +4693,17 @@ class c_svg_bdd1{
       function souris_haut
     */
     #souris_haut( e ){
+     
+        /* console.log(e.target); */
+        if(e.target.getAttribute('type_element')===null){
+         return;
+        }
+     
+        window.removeEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
+        window.removeEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
+        window.removeEventListener( 'touchend' , this.#doigt_haut.bind( this ) , false );
+        window.removeEventListener( 'touchmove' , this.#doigt_bouge.bind( this ) , false );
+     
         var ecart_de_temps=new Date( Date.now() ).getTime() - this.#debut_de_click;
         if(this.#souris_element_a_deplacer === 'base'){
             if(ecart_de_temps > 200){
@@ -4775,6 +4782,16 @@ class c_svg_bdd1{
       function souris_bas
     */
     #souris_bas( e ){
+
+        if(e.target.getAttribute('type_element')===null){
+         return;
+        }
+     
+        window.addEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
+        window.addEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
+        window.addEventListener( 'touchend' , this.#doigt_haut.bind( this ) , false );
+        window.addEventListener( 'touchmove' , this.#doigt_bouge.bind( this ) , false );
+     
         this.#souris_init_objet={
             "x" : e[this.#propriete_pour_deplacement_x] ,
             "y" : e[this.#propriete_pour_deplacement_y] ,
@@ -6460,12 +6477,12 @@ class c_svg_bdd1{
             nom_parent_table=tt[0];
             nom_parent_champ=tt[1];
             for(let i in this.#arbre[id_bdd_de_la_base].arbre_svg){
-                if(this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === 'conteneur_de_table'
+                if(this.#arbre[id_bdd_de_la_base].arbre_svg[i] && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === 'conteneur_de_table'
                        && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.nom_de_la_table === nom_parent_table
                 ){
                     id_svg_parent_table=parseInt( i , 0 );
                 }
-                if(this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === 'conteneur_de_champ'
+                if(this.#arbre[id_bdd_de_la_base].arbre_svg[i] && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === 'conteneur_de_champ'
                        && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.nom_du_champ === nom_parent_champ
                 ){
                     id_svg_parent_champ=parseInt( i , 10 );

@@ -7,6 +7,8 @@
 
   <script type="text/javascript" src="tri_arbre1.js"></script>
   <style>
+  *{box-sizing:border-box;}
+  body{margin:0;padding:0;}
   .le_bo_bouton_deplacer{
    border:1px green solid;
    min-width:1em;
@@ -14,10 +16,18 @@
    cursor:ns-resize;
    color:green;
   }
+  .le_bo_bouton_menu{
+      border:2px yellow outset;
+      min-width:1em;
+      text-align:center;
+      cursor:pointer;
+      color:blue;
+  }
   </style>
  </head>
  <body>
-  
+ <div style="border:1px red solid;height:50px;width:50px;display:inline-block;overflow:hidden;">50</div>
+ <a href="javascript:goto(50)">goto(50)</a>
 <h1>exemple</h1><a href="#fin">fin</a>
 <br /><br /><br /><br /><br />
 <table border="1">
@@ -26,7 +36,7 @@
         <ul id="tri_arbre_racine1" style="border:0px red solid;">
          <li id="123">
            <b style="color:red;">a 1</b>
-           <ul>
+           <ul  data-replie>
             <li>
                aa 2
                <ul>
@@ -44,20 +54,21 @@
            </ul>
          </li>
          <li>b 8</li>
-         <li>c</li>
-         <li>d</li>
-         <li>e</li>
-         <li>f</li>
-         <li>g</li>
-         <li>h</li>
-         <li>i</li>
-         <li>j</li>
-         <li>k</li>
-         <li>m</li>
-         <li>n</li>
-         <li>o</li>
-         <li>p</li>
-         <li>q</li>
+         <li>c c</li>
+         <li>d d</li>
+         <li>e e</li>
+         <li>f f</li>
+         <li>g g</li>
+         <li>h h</li>
+         <li>i i</li>
+         <li>j j j</li>
+         <li>k k k</li>
+         <li>l l l</li>
+         <li>m m m m</li>
+         <li>n n n n</li>
+         <li>o o o o</li>
+         <li>p p p p</li>
+         <li>q q q q</li>
         </ul>
     </td>
 
@@ -91,6 +102,17 @@
 </tr>
 </table>
 
+<select>
+    <option>matrice</option>
+    <option>html</option>
+    <option>js</option>
+    <option>php</option>
+    <option>sql</option>
+    <option>css</option>
+    <option>texte</option>
+</select>
+<br>b
+
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -100,10 +122,17 @@
 <footer id="fin"></footer>
 <script type="text/javascript">
 
+function goto(n){
+ document.documentElement.scrollTo(0,50);
+}
+
+
+/*=======================================================*/
 function appelee_apres_action1(arbre , id_zone_de_tri){
     console.log(JSON.stringify(arbre));
 }
 
+/*=======================================================*/
 let options1={
     hauteur_max_en_vh             : 40,// entre 20 et 80
     largeur_max                   :'400px', //'calc(100% - 50px)',
@@ -111,13 +140,43 @@ let options1={
     fonction_appelee_apres_action : appelee_apres_action1 ,
     arborescent                   : true ,
     class_du_bouton_deplacer      : 'le_bo_bouton_deplacer' ,
+    boutons_du_menu               : [{libelle:'+' ,fonction:ajouter_une_branche}],
+    class_du_bouton_menu          : 'le_bo_bouton_menu' ,
 }
 
+/*=======================================================*/
+/*=======================================================*/
+/*=======================================================*/
 var a=new tri_arbre1('tri_arbre_racine1',options1);
+/*=======================================================*/
+/*=======================================================*/
+/*=======================================================*/
 
+
+/*=======================================================*/
+/*=======================================================*/
+/*=======================================================*/
+
+/*=======================================================*/
 function appelee_apres_action2(arbre , id_zone_de_tri){
-    console.log(JSON.stringify(arbre));
+//    console.log(JSON.stringify(arbre));
 }
+/*=======================================================*/
+function ajouter_une_branche(e,reference_arbre){
+    console.log(e,reference_arbre);
+    let max=0;
+    for(let i=0;i<reference_arbre.arbre.length;i++){
+     if(reference_arbre.arbre[i].id_interne>max){
+      max=reference_arbre.arbre[i].id_interne;
+     }
+    }
+    max++;
+    let a={"id_interne":max,"id_interne_parent":0,"replie":0,"contient_des_enfants":0,"contenu":"nb "+max,"attributs":{}}
+    reference_arbre.arbre.splice( 0 , 0 , a );
+    
+    reference_arbre.action_externe_sur_arbre('ajoute_branche',reference_arbre.arbre);
+}
+/*=======================================================*/
 
 let options2={
     hauteur_max_en_vh             : 60,// entre 20 et 80
@@ -127,9 +186,18 @@ let options2={
     arborescent                   : true ,
     class_du_bouton_deplacer      : 'le_bo_bouton_deplacer' ,
     decallage_entre_niveaux_en_px : 20,
+    boutons_du_menu               : [{libelle:'+' ,fonction:ajouter_une_branche}],
+    class_du_bouton_menu          : 'le_bo_bouton_menu' ,
 }
+/*=======================================================*/
+/*=======================================================*/
+/*=======================================================*/
 
 var a=new tri_arbre1('tri_arbre_racine2',options2);
+
+/*=======================================================*/
+/*=======================================================*/
+/*=======================================================*/
 
 //====================================================================================================
 //====================================================================================================

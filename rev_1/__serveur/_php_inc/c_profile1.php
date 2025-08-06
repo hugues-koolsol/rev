@@ -190,37 +190,18 @@ class c_profile1{
                     $txt .= '<p>';
                     $txt .= 'liste des menus <b>triables</b>';
                     
-                    $txt .= '<ul id="ordre_de_mes_menus" style="border:1px blue solid;max-width:30em;">';
+                    $txt .= '<ul id="vv_ordre_de_mes_menus" style="border:1px blue solid;max-width:30em;">';
                     foreach($tt304[__xva] as $k1 => $v1){
                         $txt .= '<li id="'.$v1['T0.chi_id_menu'].'"  style="border:1px red solid;">'.$v1['T1.chp_nom_page'].'</li>';
                     }
                     $txt .= '</ul>';
                     $txt .= '</p>';
                     if(isset($donnees_retournees[__xva]['maj'])){
-                        $donnees_retournees[__xva]['maj']+=',faire_une_liste_triable2(ordre_de_mes_menus)';
+                        $donnees_retournees[__xva]['maj']+=',faire_une_liste_triable2(id(vv_ordre_de_mes_menus))';
                     }else{
-                        $donnees_retournees[__xva]['maj']='faire_une_liste_triable2(ordre_de_mes_menus)';
+                        $donnees_retournees[__xva]['maj']='faire_une_liste_triable2(id(vv_ordre_de_mes_menus))';
                     }
-                    
-/*
-                    $txt .= '<div id="ordre_de_mes_menus" style="border:1px blue solid;max-width:30em;cursor:n-resize;">';
-                    foreach($tt304[__xva] as $k1 => $v1){
-                        $txt .= '<div id="'.$v1['T0.chi_id_menu'].'"  style="border:1px red solid;">'.$v1['T1.chp_nom_page'].'</div>';
-                    }
-                    $txt .= '</div>';
-                    $txt .= '</p>';
-                    if(isset($donnees_retournees[__xva]['maj'])){
-                        $donnees_retournees[__xva]['maj']+=',faire_une_liste_triable(ordre_de_mes_menus)';
-                    }else{
-                        $donnees_retournees[__xva]['maj']='faire_une_liste_triable(ordre_de_mes_menus)';
-                    }
-*/
-
-
                 }
-/*
-                var tt=new Sortable( ordre_de_mes_menus , {"animation" : 150 ,"ghostClass" : 'blue-background-class'} );
-*/                
 
              
              

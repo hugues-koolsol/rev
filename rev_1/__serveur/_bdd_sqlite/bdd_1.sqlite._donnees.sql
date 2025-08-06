@@ -6,7 +6,7 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','604','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','605','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -5602,6 +5602,6 @@ ajouter un champ
 quand on renomme un champ de la base 1 de rev_1 il faur renommer les champs de toutes les bases rev_n
 Exemple chp_commentaire_projet => cht_commentaire_projet','99','2','2025-08-02 14:19:05.165',NULL,'2025-08-01 15:08:43.406'),
 ('215','1','case à cocher "se souvenir de moi" sur la page de connexion','4','0','2025-08-03 09:25:28.660',NULL,'2025-08-03 09:25:28.660'),
-('216','1','intégrer mon tri','2','0','2025-08-03 10:03:21.913',NULL,'2025-08-03 10:03:21.913'),
-('217','1','bug réordonner champs sur projet 3','1','0','2025-08-05 14:13:00.676',NULL,'2025-08-05 14:13:00.676');
+('216','1','intégrer mon tri','99','0','2025-08-03 10:03:21.913',NULL,'2025-08-03 10:03:21.913'),
+('217','1','bug réordonner champs sur projet 3','99','0','2025-08-05 14:13:00.676',NULL,'2025-08-05 14:13:00.676');
 
