@@ -28,7 +28,7 @@
  <body>
  <div style="border:1px red solid;height:50px;width:50px;display:inline-block;overflow:hidden;">50</div>
  <a href="javascript:goto(50)">goto(50)</a>
-<h1>exemple</h1><a href="#fin">fin</a>
+<h1>exemple</h1><a href="#fin">fin</a><span id="toto"></span>
 <br /><br /><br /><br /><br />
 <table border="1">
 <tr>
@@ -69,6 +69,9 @@
          <li>o o o o</li>
          <li>p p p p</li>
          <li>q q q q</li>
+         <li>r r</li>
+         <li>s s</li>
+         <li>t t</li>
         </ul>
     </td>
 
@@ -101,17 +104,10 @@
 </td>
 </tr>
 </table>
+haut_abs:227,bas_abs:739, 739-50=689, hzone interne=831 avec bouton, 809 sans bouton ( hbouton=22 ), 
+<br />
 
-<select>
-    <option>matrice</option>
-    <option>html</option>
-    <option>js</option>
-    <option>php</option>
-    <option>sql</option>
-    <option>css</option>
-    <option>texte</option>
-</select>
-<br>b
+<br>
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -129,7 +125,8 @@ function goto(n){
 
 /*=======================================================*/
 function appelee_apres_action1(arbre , id_zone_de_tri){
-    console.log(JSON.stringify(arbre));
+    console.log('appelee_apres_action1');
+    /* console.log(JSON.stringify(arbre)); */
 }
 
 /*=======================================================*/
@@ -147,7 +144,8 @@ let options1={
 /*=======================================================*/
 /*=======================================================*/
 /*=======================================================*/
-var a=new tri_arbre1('tri_arbre_racine1',options1);
+var nom_racine1='tri_arbre_racine1';
+var arbre1=new tri_arbre1(nom_racine1,options1);
 /*=======================================================*/
 /*=======================================================*/
 /*=======================================================*/
@@ -193,7 +191,21 @@ let options2={
 /*=======================================================*/
 /*=======================================================*/
 
-var a=new tri_arbre1('tri_arbre_racine2',options2);
+var arbre2=new tri_arbre1('tri_arbre_racine2',options2);
+
+
+setTimeout(
+ ()=>{
+  goto(50);
+  console.log(arbre1.cle_aleatoire , nom_racine1);
+  let id1=nom_racine1+'_'+arbre1.cle_aleatoire;
+  document.getElementById(id1).scrollTo(35,0);
+  arbre1.calcul_des_positions_relatives();
+ },50
+);
+
+
+
 
 /*=======================================================*/
 /*=======================================================*/
@@ -317,13 +329,8 @@ function addElement1(){
 
 </script>
 <!-- script type="text/javascript" defer="true" src="faa.js"></script -->
-<!-- script type="text/javascript">
-window.addEventListener('load',function(e){
- console.log('e=',e);
- console.log('faa=', faa);
- faa.addClass(document.getElementById('lien1'),'toto',2000);
-});
-</script-->
+<script type="text/javascript">
+</script>
 
  </body>
  

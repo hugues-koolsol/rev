@@ -8,21 +8,26 @@ class tri_arbre1{
     #position_scroll_dans_la_zone_de_tri=0;
     #tableau_des_positions_relatives=[];
     #id_cible_selectionne=0;
-    #position_absolue_de_la_zone_de_tri={"top" : 0 ,"bottom" : 0};
+    #position_absolue_de_la_zone_de_tri=0;
     #hauteur_de_la_zone_de_tri=0;
     #decallage_max_de_la_zone_de_tri=0;
     #position_max=0;
+    #position_min=0;
+    #position_min_init=0;
+    #delta=0;
     #decallage_vertical_page=0;
     #timeout_quand_trop_bas=null;
     #timeout_quand_trop_haut=null;
     #id_interne_du_bloc_a_deplacer='';
     #noeud_a_deplacer=null;
-    #cle_aleatoire='';
+    cle_aleatoire='';
     #top_declenchement=0;
     #bottom_declenchement=0;
     #bottom_dernier=0;
     #hauteur_zone_tri=0;
     #zone_reference_top=null;
+    #position_zone_reference_top=0;
+    #position_zone_reference_top_init=0;
     #souris_appuyee=false;
     #top_zone_dynamique=0;
     
@@ -120,8 +125,8 @@ class tri_arbre1{
         this.construire_arbre_a_partir_de_ul_li( this.#racine_html , id_interne_parent );
         /* console.log( JSON.stringify( this.arbre ).replace( /\},\{/g , '},\n{' ) ); */
         this.#racine_html.style.display='none';
-        this.#cle_aleatoire=this.makeid( 20 );
-        this.#id_div=par_id_de_l_element + '_' + this.#cle_aleatoire ;
+        this.cle_aleatoire=this.makeid( 20 );
+        this.#id_div=par_id_de_l_element + '_' + this.cle_aleatoire ;
         let t='';
         t+='<div ';
         t+=' id="' + this.#id_div + '"';
@@ -256,7 +261,7 @@ class tri_arbre1{
                     }
                 }
                 this.#element_bouge=null;
-                this.#position_absolue_de_la_zone_de_tri={"top" : 0 ,"bottom" : 0};
+                this.#position_absolue_de_la_zone_de_tri=0;
             }
         }else{
          /*
@@ -280,6 +285,13 @@ class tri_arbre1{
         /* scrollTo(0,a+20); */
         this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
         this.#top_zone_dynamique=document.getElementById( this.#id_div ).scrollTop;
+        let tt=this.#zone_reference_top.getBoundingClientRect();
+        this.#position_zone_reference_top=parseInt(tt.top,10)+document.documentElement.scrollTop;
+
+        tt=this.#zone_reference_top.getBoundingClientRect();
+        this.#position_min=parseInt(tt.top,10)+document.documentElement.scrollTop;
+        this.#delta=this.#position_min-this.#position_min_init;
+        
         /* console.log( this.#position_scroll_dans_la_zone_de_tri ); */
         this.#timeout_quand_trop_bas=setTimeout( () => {
             this.faire_defiler_quand_trop_bas();} , 50 );
@@ -298,6 +310,16 @@ class tri_arbre1{
         /* scrollTo(0,a+20); */
         this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
         this.#top_zone_dynamique=document.getElementById( this.#id_div ).scrollTop;
+        
+        let tt=this.#zone_reference_top.getBoundingClientRect();
+        this.#position_zone_reference_top=parseInt(tt.top,10)+document.documentElement.scrollTop;
+        
+        tt=this.#zone_reference_top.getBoundingClientRect();
+        this.#position_min=parseInt(tt.top,10)+document.documentElement.scrollTop;
+
+        this.#delta=this.#position_min-this.#position_min_init;
+        
+        
         this.#timeout_quand_trop_haut=setTimeout( () => {
             this.faire_defiler_quand_trop_haut();} , 50 );
     }
@@ -306,7 +328,7 @@ class tri_arbre1{
     */
     #souris_bouge( e ){
 //        console.log('aaaaaaaaaaae.pageY=',e.pageY,'document.documentElement.scrollTop',document.documentElement.scrollTop , this.#top_declenchement , this.#bottom_declenchement );
-        
+        document.getElementById('toto').innerHTML=e.pageY;
         if(this.#souris_appuyee===false){
           return;
         }
@@ -314,8 +336,8 @@ class tri_arbre1{
             let position_absolue_de_la_souris_en_y=e.pageY;
             //console.log('position_absolue_de_la_souris_en_y',position_absolue_de_la_souris_en_y);
             this.#id_cible_selectionne=0;
-            //console.log(position_absolue_de_la_souris_en_y , this.#position_absolue_de_la_zone_de_tri.top);
-            //if(position_absolue_de_la_souris_en_y - document.getElementById( this.#id_div ).scrollTop <= this.#position_absolue_de_la_zone_de_tri.top){
+            //console.log(position_absolue_de_la_souris_en_y , this.#position_absolue_de_la_zone_de_tri);
+            //if(position_absolue_de_la_souris_en_y - document.getElementById( this.#id_div ).scrollTop <= this.#position_absolue_de_la_zone_de_tri){
             if(position_absolue_de_la_souris_en_y < this.#top_declenchement){
                 //console.log('=========== trop haut ============='); 
                 if(this.#position_scroll_dans_la_zone_de_tri === 0){
@@ -343,21 +365,37 @@ class tri_arbre1{
                 } catch {}
             }
             /*max = 690*/
-            let position_relative_dans_zone=position_absolue_de_la_souris_en_y-this.#top_declenchement+this.#position_scroll_dans_la_zone_de_tri;
+            //let position_relative_dans_zone=position_absolue_de_la_souris_en_y-this.#top_declenchement+this.#position_scroll_dans_la_zone_de_tri;
+            console.log('this.#top_declenchement='+this.#top_declenchement);
+            let position_relative_dans_zone=position_absolue_de_la_souris_en_y-this.#position_absolue_de_la_zone_de_tri;
             
-            console.log('position_relative_dans_zone=',position_relative_dans_zone , this.#position_scroll_dans_la_zone_de_tri);
             
-//            console.log(this.#position_absolue_de_la_zone_de_tri.top);
+            let xxx='pos absolue='+position_absolue_de_la_souris_en_y;
+            xxx+='\n this.#delta='+this.#delta;
+            xxx+='\n this.#position_absolue_de_la_zone_de_tri='+this.#position_absolue_de_la_zone_de_tri;
+            xxx+='\n this.#position_scroll_dans_la_zone_de_tri='+this.#position_scroll_dans_la_zone_de_tri;
+            xxx+='\n this.#position_min='+this.#position_min;
+            xxx+='\n this.#position_min_init='+this.#position_min_init;
+            xxx+='\n this.#position_zone_reference_top='+this.#position_zone_reference_top;
+            xxx+='\n top_declen='+this.#top_declenchement;
+            xxx+='\n document.documentElement.scrollTop='+document.documentElement.scrollTop;
+            xxx+='\n this.#top_zone_dynamique='+this.#top_zone_dynamique;
+            xxx+='\n this.#id_div.scrollHeight='+document.getElementById(this.#id_div).scrollHeight;
+            xxx+='\n\n ====> prdz='+position_relative_dans_zone;
+            console.log(xxx);
+            
+//            console.log(this.#position_absolue_de_la_zone_de_tri);
 //            console.log(this.#tableau_des_positions_relatives);
-            for( let i=0 ; i < this.#tableau_des_positions_relatives.length ; i++ ){
+            for( let i=0 ; false && i < this.#tableau_des_positions_relatives.length ; i++ ){
                 /*
-                if(position_absolue_de_la_souris_en_y + this.#position_scroll_dans_la_zone_de_tri >= this.#position_absolue_de_la_zone_de_tri.top + this.#tableau_des_positions_relatives[i].top
-                       && position_absolue_de_la_souris_en_y + this.#position_scroll_dans_la_zone_de_tri < this.#position_absolue_de_la_zone_de_tri.top + this.#tableau_des_positions_relatives[i].bottom
+                if(position_absolue_de_la_souris_en_y + this.#position_scroll_dans_la_zone_de_tri >= this.#position_absolue_de_la_zone_de_tri + this.#tableau_des_positions_relatives[i].top
+                       && position_absolue_de_la_souris_en_y + this.#position_scroll_dans_la_zone_de_tri < this.#position_absolue_de_la_zone_de_tri + this.#tableau_des_positions_relatives[i].bottom
                 ){
                 */
                 if(position_relative_dans_zone  >=  this.#tableau_des_positions_relatives[i].top
                        && position_relative_dans_zone <=  this.#tableau_des_positions_relatives[i].bottom
                 ){
+                    console.log('dedans prdz='+position_relative_dans_zone)
                     this.#id_cible_selectionne=this.#tableau_des_positions_relatives[i].id;
                     /* console.log('dans ' + i + ' ' + this.#tableau_des_positions_relatives[i].id ); */
                     document.getElementById( this.#tableau_des_positions_relatives[i].id ).style.background='lightgrey';
@@ -377,17 +415,15 @@ class tri_arbre1{
         var tar=e.target;
         
         
+        let txt_log='';
+        let tt=document.getElementById( this.#id_div ).getBoundingClientRect()
+        this.#top_declenchement=document.documentElement.scrollTop+parseInt(tt.top,10);
+        //console.log('souris bas top_declenchement='+this.#top_declenchement)
         
-        let lst1=document.getElementById( this.#id_div ).querySelectorAll( '[data-position_pour_tri]' );
-        if(lst1.length > 0){
-            let tt=lst1[0].getBoundingClientRect();
-            this.#top_declenchement=document.documentElement.scrollTop+parseInt(tt.top,10);
-            
-            tt=document.getElementById( this.#id_div ).getBoundingClientRect()
-            
-            this.#bottom_declenchement=document.documentElement.scrollTop+parseInt(tt.bottom,10);
-            console.log('eeeeeeeeeee declenchement=' + this.#top_declenchement + ' ' + this.#bottom_declenchement )
-        }
+        this.#bottom_declenchement=document.documentElement.scrollTop+parseInt(tt.bottom,10);
+        
+        console.log('%c\n\nDans souris_bas declenchement=' + this.#top_declenchement + ' ' + this.#bottom_declenchement , 'background:yellow;' )
+        
         
         if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-poignee_pour_tri" )){
             window.addEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
@@ -395,6 +431,16 @@ class tri_arbre1{
          
             window.addEventListener( 'touchend' , this.#doigt_haut.bind( this ) , false );
             window.addEventListener( 'touchmove' , this.#doigt_bouge.bind( this ) , false );
+            
+            tt=this.#zone_reference_top.getBoundingClientRect();
+            this.#position_zone_reference_top=parseInt(tt.top,10)+document.documentElement.scrollTop;
+            console.log('#zone_reference_top.top='+(this.#position_zone_reference_top)+' sc='+document.documentElement.scrollTop);
+         
+            tt=this.#zone_reference_top.getBoundingClientRect();
+            this.#position_min=parseInt(tt.top,10)+document.documentElement.scrollTop;
+            this.#position_min_init=this.#position_min;
+            console.log('this.#position_min_init='+this.#position_min_init);
+            
          
             /*
               on déplace un bloc
@@ -404,14 +450,13 @@ class tri_arbre1{
             console.log( 'this.#position_scroll_dans_la_zone_de_tri='+this.#position_scroll_dans_la_zone_de_tri );
             this.#decallage_vertical_page=parseInt( document.documentElement.scrollTop , 10 );
             let pos=document.getElementById( this.#id_div ).getBoundingClientRect();
-            this.#position_absolue_de_la_zone_de_tri={
-                 /*  */
-                /* "top" : parseInt( pos.top + this.#decallage_vertical_page , 10 ) ,*/
-                "top" : this.#top_declenchement + this.#decallage_vertical_page ,
-                "bottom" : parseInt( pos.bottom + this.#decallage_vertical_page , 10 )
-            };
-            console.log(this.#top_declenchement , this.#position_absolue_de_la_zone_de_tri.top)
-            this.#hauteur_de_la_zone_de_tri=this.#position_absolue_de_la_zone_de_tri.bottom - this.#position_absolue_de_la_zone_de_tri.top;
+            
+            tt=this.#zone_reference_top.getBoundingClientRect();
+            
+            this.#position_absolue_de_la_zone_de_tri=tt.top+document.documentElement.scrollTop;
+            
+            console.log(this.#top_declenchement , this.#position_absolue_de_la_zone_de_tri)
+            this.#hauteur_de_la_zone_de_tri=pos.height;
             this.#decallage_max_de_la_zone_de_tri=this.#tableau_des_positions_relatives[this.#tableau_des_positions_relatives.length - 1].bottom - this.#hauteur_de_la_zone_de_tri;
             /* console.log( this.#hauteur_de_la_zone_de_tri , this.#tableau_des_positions_relatives[this.#tableau_des_positions_relatives.length - 1].bottom ); */
             /* console.log(this.#position_absolue_de_la_zone_de_tri); */
@@ -447,9 +492,9 @@ class tri_arbre1{
              }
             }
             
-            this.#calcul_des_positions_relatives();
+            this.calcul_des_positions_relatives();
         }else{
-            this.#calcul_des_positions_relatives();
+            this.calcul_des_positions_relatives();
         }
     }
     /*
@@ -492,23 +537,30 @@ class tri_arbre1{
     /*
       =============================================================================================================
     */
-    #calcul_des_positions_relatives(){
+    calcul_des_positions_relatives(){
         let lst1=document.getElementById( this.#id_div ).querySelectorAll( '[data-position_pour_tri]' );
         this.#tableau_des_positions_relatives=[];
         if(lst1.length > 0){
+            let txt_log='';
             this.#zone_reference_top=lst1[0];
-            let tt=lst1[0].getBoundingClientRect();
-            let min=parseInt(tt.top,10);
+            let tt=this.#zone_reference_top.getBoundingClientRect();
+            let min=parseInt(tt.top,10); // this.#position_min
+
             for( let i=0 ; i < lst1.length ; i++ ){
                 let pos=lst1[i].getBoundingClientRect();
-                /* console.log(pos); */
+//                console.log(pos.top); 
                 this.#tableau_des_positions_relatives.push( {"top" : parseInt( pos.top - min , 10 ) ,"bottom" : parseInt( pos.bottom - min , 10 ) ,"id" : lst1[i].id} );
                 this.#position_max=parseInt( pos.bottom - min , 10 );
+                txt_log+='  ,   '+i+':'+parseInt( pos.top - min , 10 )+' <-> ' + parseInt( pos.bottom - min , 10 )+'('+pos.top+')';
                 
             }
+            //this.#position_min=min;
+            //this.#position_min_init=this.#position_min;
+            console.log('txt_log='+txt_log)
+            
         }
         this.#element_bouge=null;
-        console.log( '\nthis.#position_max'+this.#position_max); 
+        console.log( '\ninit min max='+this.#position_min_init+' '+this.#position_min+' , 0->'+this.#position_max); 
     }
     /*
       =============================================================================================================
@@ -529,9 +581,9 @@ class tri_arbre1{
         for( let i=0 ; i < this.arbre.length ; i++ ){
             if(this.arbre[i].id_interne_parent === id_interne_parent){
                 if(this.#options.boutons_du_menu.length>0 && i===0){
-                        le_html+='<div id="menu_' + this.arbre[i].id_interne + '_'+ this.#cle_aleatoire + '">';
+                        le_html+='<div id="menu_' + this.arbre[i].id_interne + '_'+ this.cle_aleatoire + '">';
                         for(let i=0;i<this.#options.boutons_du_menu.length;i++){
-                         le_html+='<div id="menu_' + this.arbre[i].id_interne + '_'+ this.#cle_aleatoire + '_'+i+'"';
+                         le_html+='<div id="menu_' + this.arbre[i].id_interne + '_'+ this.cle_aleatoire + '_'+i+'"';
                          le_html+=' class="'+this.#options.class_du_bouton_menu+'"';
                          le_html+=' style="display:inline-block;"';
                          le_html+='>'+this.#options.boutons_du_menu[i].libelle+'</div>';
@@ -541,7 +593,7 @@ class tri_arbre1{
                 if(premier === true){
                     if(this.#options.arborescent===false && i!==0){
                     }else{
-                        le_html+='<div id="avant_' + this.arbre[i].id_interne + '_'+ this.#cle_aleatoire + '" data-position_pour_tri="avant" style="' + this.#style_des_separateurs + '"></div>';
+                        le_html+='<div id="avant_' + this.arbre[i].id_interne + '_'+ this.cle_aleatoire + '" data-position_pour_tri="avant" style="' + this.#style_des_separateurs + '"></div>';
                     }
                     premier=false;
                 }
@@ -554,7 +606,7 @@ class tri_arbre1{
                 */
                 t='';
                 t+='<div';
-                t+=' id="dedans_' + this.arbre[i].id_interne + '_'+ this.#cle_aleatoire + '"';
+                t+=' id="dedans_' + this.arbre[i].id_interne + '_'+ this.cle_aleatoire + '"';
                 t+=' data-position_pour_tri="dedans" ';
                 t+=' style="';
                 t+='   min-height:30px;';
@@ -617,12 +669,12 @@ class tri_arbre1{
                 le_html+=le_sous_html;
                 le_html+='</div>';
                 /*  */
-                le_html+='<div  id="apres_' + this.arbre[i].id_interne + '_'+ this.#cle_aleatoire + '" data-position_pour_tri="apres" style="' + this.#style_des_separateurs + '"></div>';
+                le_html+='<div  id="apres_' + this.arbre[i].id_interne + '_'+ this.cle_aleatoire + '" data-position_pour_tri="apres" style="' + this.#style_des_separateurs + '"></div>';
             }
         }
         if(id_interne_parent===0){
             document.getElementById( this.#id_div ).innerHTML=le_html;
-            this.#calcul_des_positions_relatives();
+            this.calcul_des_positions_relatives();
             
             let lst1=document.getElementById( this.#id_div ).querySelectorAll( '[data-poignee_pour_tri]' );
             for(let i=0;i<lst1.length;i++){
@@ -637,7 +689,7 @@ class tri_arbre1{
             
             if(this.#options.boutons_du_menu.length>0){
                 for(let i=0;i<this.#options.boutons_du_menu.length;i++){
-                    let id='menu_' + this.arbre[i].id_interne + '_'+ this.#cle_aleatoire + '_'+i;
+                    let id='menu_' + this.arbre[i].id_interne + '_'+ this.cle_aleatoire + '_'+i;
                     //document.getElementById(id).addEventListener( 'mousedown' , this.#options.boutons_du_menu[i].fonction.bind( this ) , false );
                     document.getElementById(id).addEventListener( 'mousedown' , (e)=>{
                      this.#options.boutons_du_menu[i].fonction(e,this);
