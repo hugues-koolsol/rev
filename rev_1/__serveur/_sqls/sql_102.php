@@ -27,6 +27,9 @@ function sql_102($par,&$donnees_retournees,$that){
     if(($par['T0_chi_id_requete2'] !== '')){
         $where0.=' AND `T0`.`chi_id_requete` <= '.sq1($par['T0_chi_id_requete2']).''.PHP_EOL;
     }
+    if(($par['T0_cht_commentaire_requete'] !== '')){
+        $where0.=' AND `T0`.`cht_commentaire_requete` LIKE '.sq2($par['T0_cht_commentaire_requete']).''.PHP_EOL;
+    }
     $sql0.=$where0;
     $order0='
        ORDER BY  `T0`.`chi_id_requete` DESC';
@@ -62,6 +65,12 @@ function sql_102($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la liste sur les requetes' , 'exception' => $e , 'id_bdd' => BDD_NUMERO_1 );
+        return array(
+                __xst => __xer , 
+                'sql0' => $sql0 ,
+                'sql0' => 'la liste sur les requetes' ,
+                'exception' => $e ,
+                'id_bdd' => BDD_NUMERO_1 
+            );
     }
 }

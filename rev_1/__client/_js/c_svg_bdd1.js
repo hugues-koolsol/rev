@@ -320,15 +320,15 @@ class c_svg_bdd1{
                     /* mise à jour de l'arbre */
                     let t='';
                     /*
-                    t+='<tspan ' + ' data-utilite="deplacer_la_table" style="cursor:move;" ';
-                    t+=' id_svg_conteneur_table="' + id_svg_conteneur_table + '" ';
-                    t+=' id_bdd_de_la_base_en_cours="' + this.#id_bdd_de_la_base_en_cours + '" ';
-                    t+=' id_svg_de_la_base_en_cours="' + this.#id_svg_de_la_base_en_cours + '">🟥</tspan>';
+                      t+='<tspan ' + ' data-utilite="deplacer_la_table" style="cursor:move;" ';
+                      t+=' id_svg_conteneur_table="' + id_svg_conteneur_table + '" ';
+                      t+=' id_bdd_de_la_base_en_cours="' + this.#id_bdd_de_la_base_en_cours + '" ';
+                      t+=' id_svg_de_la_base_en_cours="' + this.#id_svg_de_la_base_en_cours + '">🟥</tspan>';
                     */
                     /*
-                    t+='<tspan  style="cursor:pointer;"';
-                    t+=' data-hug_click="interface1.module1(methode3(modale_gerer_la_table),parametre3(id_svg_conteneur_table(' + id_svg_conteneur_table + ')),chemin_module1(\'' + this.#chemin_module1 + '\'))"';
-                    t+='>🟦</tspan>' ;
+                      t+='<tspan  style="cursor:pointer;"';
+                      t+=' data-hug_click="interface1.module1(methode3(modale_gerer_la_table),parametre3(id_svg_conteneur_table(' + id_svg_conteneur_table + ')),chemin_module1(\'' + this.#chemin_module1 + '\'))"';
+                      t+='>🟦</tspan>' ;
                     */
                     t+=nouveau_nom;
                     this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_du_texte].contenu=t;
@@ -706,24 +706,23 @@ class c_svg_bdd1{
                         */
                         let t='';
                         /*
-                        let f='';
-                        f+='interface1.module1(';
-                        f+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                        f+=' methode3(modale_modifier_l_index),';
-                        f+=' parametre3(';
-                        f+='  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
-                        f+='  nom_de_l_index(\'' + nouveau_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-                        f+='  id_svg_conteneur_d_index(' + id_svg_conteneur_d_index + ')';
-                        f+=' )';
-                        f+=')';
+                          let f='';
+                          f+='interface1.module1(';
+                          f+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+                          f+=' methode3(modale_modifier_l_index),';
+                          f+=' parametre3(';
+                          f+='  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+                          f+='  nom_de_l_index(\'' + nouveau_nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                          f+='  id_svg_conteneur_d_index(' + id_svg_conteneur_d_index + ')';
+                          f+=' )';
+                          f+=')';
                         */
                         /*
-                        t+='<tspan ';
-                        t+=' style="cursor:pointer;" ';
-                        t+=' data-hug_click="' + f + '" >🟩</tspan>' + nouveau_nom;
+                          t+='<tspan ';
+                          t+=' style="cursor:pointer;" ';
+                          t+=' data-hug_click="' + f + '" >🟩</tspan>' + nouveau_nom;
                         */
                         t+='' + nouveau_nom;
-                        
                         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_zone_element_svg].contenu=t;
                         break;
                     }
@@ -1175,15 +1174,6 @@ class c_svg_bdd1{
                 id_svg_rectangle_du_champ=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        /*
-          ' methode3(supprimer_le_champ_de_modale),'+
-          ' parametre3('+
-          '  id_element_texte_du_nom_de_champ_svg(' + id_element_texte_du_nom_de_champ_svg + '),'+
-          '  id_svg_conteneur_table(\''+id_svg_conteneur_table+'\')'+
-          '  nom_du_champ(\''+nom_du_champ.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'')+'\')'+
-          '  id_svg_rectangle_du_champ(' + id_svg_rectangle_du_champ + '),'+
-          ' )'+
-        */
         id_svg_rectangle_du_champ=parseInt( id_svg_rectangle_du_champ , 10 );
         var elt_parent=document.getElementById( id_svg_text ).parentNode;
         var id_parent=parseInt( elt_parent.id , 10 );
@@ -1357,11 +1347,11 @@ class c_svg_bdd1{
                             "id_svg_enfant_champ" : id_svg_rectangle_du_champ - 1 ,
                             "nom_parent_table" : table_mere ,
                             "nom_parent_champ" : champ_pere ,
-/*
-                            "nom_enfant_table" : table_fille ,
-                            "nom_enfant_champ" : champ_fils ,
-*/                            
-                        }
+                             /*
+                              "nom_enfant_table" : table_fille ,
+                              "nom_enfant_champ" : champ_fils ,
+                             */
+                            }
                     };
                     var d='M 0 0 C 10 0 10 20 20 20';
                     max_id_svg++;
@@ -1657,6 +1647,8 @@ class c_svg_bdd1{
         let id_svg_rectangle_du_champ=0;
         let nom_du_champ='';
         let nom_de_la_table='';
+        let id_bdd_de_la_base_en_cours=0;
+        let id_svg_champ_en_cours=0;
         for( let i=0 ; i < mat.length ; i++ ){
             if(mat[i][1] === 'id_element_texte_du_nom_de_champ_svg' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_element_texte_du_nom_de_champ_svg=parseInt( mat[i + 1][1] , 10 );
@@ -1664,23 +1656,67 @@ class c_svg_bdd1{
                 id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'id_svg_rectangle_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_svg_rectangle_du_champ=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_svg_champ_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_champ_en_cours=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'nom_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 nom_du_champ=mat[i + 1][1];
             }else if(mat[i][1] === 'nom_de_la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 nom_de_la_table=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
             }
         }
+        let source_sql='ALTER TABLE ' + nom_de_la_table + ' DROP COLUMN ' + nom_du_champ + '';
+        var maj='';
+        maj+='maj_interface1(fermer_fenetre1())';
+        /*
+          maj+='methode_module_dynamique1(';
+          maj+='  nom_du_module2("_js/c_svg_bdd1.js"),';
+          maj+='  methode2(apres_supprimer_un_champs1),';
+          maj+='  valeurs2(';
+          maj+='    id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')';
+          maj+='    id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+          maj+='    id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+          maj+='    nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+          maj+='    nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+          maj+='  )';
+          maj+=')';
+        */
+        debugger;
         let obj={
              /*  */
-            "__x_action" : 'c_bases1.supprimer_un_champ_de_la_table1(id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '),contexte(supprimer_en_bdd_le_champ))' ,
+            "__x_action" : 'c_bases1.executer_sql3(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + '),contexte(supprimer_en_bdd_le_champ))' ,
             "__xva" : {
                  /*  */
-                "nom_de_la_table" : nom_de_la_table ,
-                "nom_du_champ" : nom_du_champ
+                "source_sql" : source_sql ,
+                "operation_table" : 'supprimer_en_bdd_le_champ' ,
+                "maj" : maj
             }
         };
         __gi1.envoyer_un_message_au_worker( obj );
         return;
+        /*
+          
+          supprimer_le_champ_de_modale( mat ){
+          // id_svg_text , id_svg_conteneur_table , nom_du_champ , id_svg_rectangle_du_champ ]{ 
+          let id_svg_text=0;
+          let id_svg_conteneur_table=0;
+          let nom_du_champ='';
+          let id_svg_rectangle_du_champ=0;
+          for( let i=0 ; i < mat.length ; i++ ){
+          if(mat[i][1] === 'id_svg_text' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+          id_svg_text=parseInt( mat[i + 1][1] , 10 );
+          }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+          id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+          }else if(mat[i][1] === 'nom_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+          nom_du_champ=mat[i + 1][1];
+          }else if(mat[i][1] === 'id_svg_rectangle_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+          id_svg_rectangle_du_champ=parseInt( mat[i + 1][1] , 10 );
+          }
+          }
+          
+          
+        */
     }
     /*
       =============================================================================================================
@@ -1891,7 +1927,6 @@ class c_svg_bdd1{
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
         t+='<h2>changer les éléments du champ</h2>';
         t+='<br />type  : <input id="type_du_champ" type="text" value="' + type_du_champ + '" autocapitalize="off" />';
-        
         let t1=['INTEGER','VARCHAR(64)','TEXT'];
         for( let ind=0 ; ind < t1.length ; ind++ ){
             var cmd='';
@@ -1905,9 +1940,6 @@ class c_svg_bdd1{
             cmd+=')';
             t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '" >' + t1[ind] + '</div>';
         }
-        
-        
-        
         t+='<br />table mère : <input id="table_mère" type="text" value="' + table_mere + '" autocapitalize="off" />';
         let sel='';
         for(let cc in this.#arbre){
@@ -2052,9 +2084,11 @@ class c_svg_bdd1{
         cmd+='  nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+='  id_svg_rectangle_du_champ(' + id_svg_rectangle_du_champ + ')';
         cmd+='  nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        cmd+='  id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + ')';
+        cmd+='  id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
         cmd+=' )';
         cmd+=')';
-        t+='<div class="hug_bouton yy__x_signaux_1" data-hug_click="' + cmd + '" >supprimer le champ en bdd</div>';
+        t+='<div class="hug_bouton yy__x_signaux_0" data-hug_click="' + cmd + '" >supprimer le champ en bdd</div>';
         t+='<hr />';
         /*
           document.getElementById( '__contenu_modale' ).innerHTML=t;
@@ -2325,16 +2359,16 @@ class c_svg_bdd1{
         var references=['tableau1','tableau2'];
         let physique_ou_svg='';
         for(var ref in references){
-            physique_ou_svg='phy : '
-            if(ref==='1'){
-             physique_ou_svg='svg : ';
+            physique_ou_svg='phy : ';
+            if(ref === '1'){
+                physique_ou_svg='svg : ';
             }
-            console.log('ref=',ref);
+            console.log( 'ref=' , ref );
             t+='<td style="vertical-align: baseline;">';
             t+='<table>';
             for(var nom_de_la_table in par[references[ref]]){
                 t+='<tr>';
-                t+='<th style="color:red;">'+physique_ou_svg+'' + nom_de_la_table + '</th>';
+                t+='<th style="color:red;">' + physique_ou_svg + '' + nom_de_la_table + '</th>';
                 t+='<th style="text-align:left;">type</th>';
                 t+='<th style="text-align:left;">pk</th>';
                 t+='<th style="text-align:left;">nn</th>';
@@ -2565,25 +2599,25 @@ class c_svg_bdd1{
       matricée
     */
     /*
-    copier_le_rev_de_travail_dans_le_rev( mat ){
-        let id_bdd_de_la_base_en_cours=0;
-        for( let i=0 ; i < mat.length ; i++ ){
-            if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(id_bdd_de_la_base_en_cours > 0){
-            let obj1={
-                "__x_action" : 'c_bases1.copier_le_rev_de_travail_dans_le_rev()' ,
-                "__xva" : {
-
-                    "id_bdd_de_la_base" : id_bdd_de_la_base_en_cours
-                }
-            };
-            __gi1.envoyer_un_message_au_worker( obj1 );
-        }
-        return;
-    }
+      copier_le_rev_de_travail_dans_le_rev( mat ){
+      let id_bdd_de_la_base_en_cours=0;
+      for( let i=0 ; i < mat.length ; i++ ){
+      if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+      id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+      }
+      }
+      if(id_bdd_de_la_base_en_cours > 0){
+      let obj1={
+      "__x_action" : 'c_bases1.copier_le_rev_de_travail_dans_le_rev()' ,
+      "__xva" : {
+      
+      "id_bdd_de_la_base" : id_bdd_de_la_base_en_cours
+      }
+      };
+      __gi1.envoyer_un_message_au_worker( obj1 );
+      }
+      return;
+      }
     */
     /*
       =============================================================================================================
@@ -2892,28 +2926,24 @@ class c_svg_bdd1{
         }
         var ids_ordre_modifie=[];
         /*
-        var lst=document.getElementById( 'ordre_modifie' ).getElementsByTagName( 'div' );
-        for( let i=0 ; i < lst.length ; i++ ){
-            ids_ordre_modifie.push( lst[i].getAttribute( 'data-id_rectangle_champ' ) );
-        }
+          var lst=document.getElementById( 'ordre_modifie' ).getElementsByTagName( 'div' );
+          for( let i=0 ; i < lst.length ; i++ ){
+          ids_ordre_modifie.push( lst[i].getAttribute( 'data-id_rectangle_champ' ) );
+          }
         */
-        var lst1=document.querySelectorAll( '[data-id_original_pour_tri="ordre_modifie"]' ); // 
+        var lst1=document.querySelectorAll( '[data-id_original_pour_tri="ordre_modifie"]' );
         for( var i=0 ; i < lst1.length ; i++ ){
-            var sub_lst=lst1[i].querySelectorAll( '[data-attributs_originaux]' );
+            var sub_lst=lst1[i]['querySelectorAll']( '[data-attributs_originaux]' );
             for( var j=0 ; j < sub_lst.length ; j++ ){
-                let attributs_originaux=JSON.parse(sub_lst[j].getAttribute('data-attributs_originaux'));
-                ids_ordre_modifie.push(parseInt(attributs_originaux['data-id_rectangle_champ'],10));
+                let attributs_originaux=JSON.parse( sub_lst[j].getAttribute( 'data-attributs_originaux' ) );
+                ids_ordre_modifie.push( parseInt( attributs_originaux['data-id_rectangle_champ'] , 10 ) );
                 /*
                   let contenu_original=sub_lst[j].getAttribute('data-contenu_original');
                   liste_ordre_modifie.push( contenu_original );
                   txt_ordre_modifie+=','+contenu_original;
                 */
             }
-         
         }
-
-        
-        
         var chaine_des_index='';
         var lst=document.getElementById( id_svg_conteneur_table ).getElementsByTagName( 'rect' );
         for( let i=0 ; i < lst.length ; i++ ){
@@ -2921,9 +2951,7 @@ class c_svg_bdd1{
                 chaine_des_index+=this.#creer_definition_index_en_rev( lst[i] );
             }
         }
-
         let nouveau_rev=this.#creer_definition_table_en_rev( document.getElementById( id_svg_rectangle_de_la_table ) , null , ids_ordre_modifie );
-
         this.#supprimer_recursivement_les_elements_de_l_arbre( this.#id_bdd_de_la_base_en_cours , id_svg_conteneur_table , 'tri_des_champs' );
         nouveau_rev+=chaine_des_index;
         var obj1=__gi1.__m_rev1.rev_tm( nouveau_rev );
@@ -2964,50 +2992,43 @@ class c_svg_bdd1{
         var txt_ordre_modifie='';
         var ids_ordre_original=[];
         var ids_ordre_modifie=[];
-        
-        
         /*
-        var lst=document.getElementById( 'ordre_original' ).getElementsByTagName( 'div' );
-        var i=0;
-        for( i=0 ; i < lst.length ; i++ ){
-            txt_ordre_original+=',' + lst[i].innerHTML;
-            ids_ordre_original.push( lst[i].getAttribute( 'data-id_rectangle_champ' ) );
-        }
+          var lst=document.getElementById( 'ordre_original' ).getElementsByTagName( 'div' );
+          var i=0;
+          for( i=0 ; i < lst.length ; i++ ){
+          txt_ordre_original+=',' + lst[i].innerHTML;
+          ids_ordre_original.push( lst[i].getAttribute( 'data-id_rectangle_champ' ) );
+          }
         */
-
-        var lst1=document.querySelectorAll( '[data-id_original_pour_tri="ordre_original"]' ); // 
+        var lst1=document.querySelectorAll( '[data-id_original_pour_tri="ordre_original"]' );
         for( var i=0 ; i < lst1.length ; i++ ){
-            var sub_lst=lst1[i].querySelectorAll( '[data-attributs_originaux]' );
+            var sub_lst=lst1[i]['querySelectorAll']( '[data-attributs_originaux]' );
             for( var j=0 ; j < sub_lst.length ; j++ ){
-                let attributs_originaux=JSON.parse(sub_lst[j].getAttribute('data-attributs_originaux'));
-                let contenu_original=sub_lst[j].getAttribute('data-contenu_original');
-                txt_ordre_original+=','+contenu_original;
-                ids_ordre_original.push(parseInt(attributs_originaux['data-id_rectangle_champ'],10));
+                let attributs_originaux=JSON.parse( sub_lst[j].getAttribute( 'data-attributs_originaux' ) );
+                let contenu_original=sub_lst[j].getAttribute( 'data-contenu_original' );
+                txt_ordre_original+=',' + contenu_original;
+                ids_ordre_original.push( parseInt( attributs_originaux['data-id_rectangle_champ'] , 10 ) );
             }
-         
         }
         /*
-        var lst=document.getElementById( 'ordre_modifie' ).getElementsByTagName( 'div' );
-        for( i=0 ; i < lst.length ; i++ ){
-            txt_ordre_modifie+=',' + lst[i].innerHTML;
-            liste_ordre_modifie.push( lst[i].innerHTML );
-            ids_ordre_modifie.push( lst[i].getAttribute( 'data-id_rectangle_champ' ) );
-        }
+          var lst=document.getElementById( 'ordre_modifie' ).getElementsByTagName( 'div' );
+          for( i=0 ; i < lst.length ; i++ ){
+          txt_ordre_modifie+=',' + lst[i].innerHTML;
+          liste_ordre_modifie.push( lst[i].innerHTML );
+          ids_ordre_modifie.push( lst[i].getAttribute( 'data-id_rectangle_champ' ) );
+          }
         */
-        var lst1=document.querySelectorAll( '[data-id_original_pour_tri="ordre_modifie"]' ); // 
+        var lst1=document.querySelectorAll( '[data-id_original_pour_tri="ordre_modifie"]' );
         for( var i=0 ; i < lst1.length ; i++ ){
-            var sub_lst=lst1[i].querySelectorAll( '[data-attributs_originaux]' );
+            var sub_lst=lst1[i]['querySelectorAll']( '[data-attributs_originaux]' );
             for( var j=0 ; j < sub_lst.length ; j++ ){
-                let attributs_originaux=JSON.parse(sub_lst[j].getAttribute('data-attributs_originaux'));
-                let contenu_original=sub_lst[j].getAttribute('data-contenu_original');
+                let attributs_originaux=JSON.parse( sub_lst[j].getAttribute( 'data-attributs_originaux' ) );
+                let contenu_original=sub_lst[j].getAttribute( 'data-contenu_original' );
                 liste_ordre_modifie.push( contenu_original );
-                txt_ordre_modifie+=','+contenu_original;
-                ids_ordre_modifie.push(parseInt(attributs_originaux['data-id_rectangle_champ'],10));
+                txt_ordre_modifie+=',' + contenu_original;
+                ids_ordre_modifie.push( parseInt( attributs_originaux['data-id_rectangle_champ'] , 10 ) );
             }
-         
         }
-        
-
         if(txt_ordre_modifie === ''){
             return;
         }
@@ -3130,7 +3151,6 @@ class c_svg_bdd1{
       =============================================================================================================
     */
     apres_trier_les_champs1( par ){
-
         console.log( par );
         let rev0=par['maj'];
         var obj1=__gi1.__m_rev1.rev_tm( rev0 );
@@ -3154,8 +3174,8 @@ class c_svg_bdd1{
                         }else if(mat[j][1] === 'nom_de_la_table' && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
                             nom_de_la_table=mat[j + 1][1];
                         }else if(mat[j][1] === 'chaine_des_index' && mat[j][2] === 'f'){
-                            if(mat[j][8]===0){
-                                debugger
+                            if(mat[j][8] === 0){
+                                /* il n'y a pas d'index */
                             }else{
                                 let obj3=__gi1.__m_rev1.matrice_vers_source_rev1( mat , j , true , j + 1 );
                                 if(obj3.__xst === __xsu){
@@ -3176,7 +3196,7 @@ class c_svg_bdd1{
             debugger;
         }
         let nouveau_rev=this.#creer_definition_table_en_rev( document.getElementById( id_svg_rectangle_de_la_table ) , null , ids_ordre_modifie );
-        this.#supprimer_recursivement_les_elements_de_l_arbre( id_bdd_de_la_base , id_svg_conteneur_table , 'tri_des_champs');
+        this.#supprimer_recursivement_les_elements_de_l_arbre( id_bdd_de_la_base , id_svg_conteneur_table , 'tri_des_champs' );
         nouveau_rev+=chaine_des_index;
         var obj1=__gi1.__m_rev1.rev_tm( nouveau_rev );
         if(obj1.__xst === __xsu){
@@ -3750,16 +3770,16 @@ class c_svg_bdd1{
         }
         t+='</ul>';
         t+='</td><td style="text-align:center;">';
-/*
-        t+='<div id="ordre_modifie" style="cursor:n-resize;">';
-        for( i=0 ; i < liste_des_champs.length ; i++ ){
-            t+='<div ';
-            t+=' style="padding:' + __gi1.css_dimensions.t_padding + 'px;border:' + __gi1.css_dimensions.t_border + 'px red outset;"';
-            t+=' data-id_rectangle_champ="' + liste_des_champs[i].id_rectangle_de_champ + '"';
-            t+='>' + liste_des_champs[i].nom_du_champ + '</div>';
-        }
-        t+='</div>';
-*/        
+        /*
+          t+='<div id="ordre_modifie" style="cursor:n-resize;">';
+          for( i=0 ; i < liste_des_champs.length ; i++ ){
+          t+='<div ';
+          t+=' style="padding:' + __gi1.css_dimensions.t_padding + 'px;border:' + __gi1.css_dimensions.t_border + 'px red outset;"';
+          t+=' data-id_rectangle_champ="' + liste_des_champs[i].id_rectangle_de_champ + '"';
+          t+='>' + liste_des_champs[i].nom_du_champ + '</div>';
+          }
+          t+='</div>';
+        */
         t+='<ul id="ordre_modifie" >';
         for( i=0 ; i < liste_des_champs.length ; i++ ){
             t+='<li ';
@@ -3767,8 +3787,6 @@ class c_svg_bdd1{
             t+='>' + liste_des_champs[i].nom_du_champ + '</li>';
         }
         t+='</ul>';
-
-
         t+='</td><td>';
         var cmd='';
         cmd+='interface1.module1(';
@@ -3968,37 +3986,30 @@ class c_svg_bdd1{
         vv_sous_fenetre1.showModal();
         document.getElementById( 'vv_sous_fenetre1' ).scrollTop=scrollTop;
         __gi1.ajoute_les_evenements_aux_boutons( null );
-        //var tt=new Sortable( ordre_modifie , {"animation" : 150 ,"ghostClass" : 'blue-background-class'} );
-        
+        /* var tt=new Sortable( ordre_modifie , {"animation" : 150 ,"ghostClass" : 'blue-background-class'} ); */
         let options1={
-            hauteur_max_en_vh             : 80,// entre 20 et 80
-            largeur_max                   :'400px', //'calc(100% - 50px)',
-            afficher_le_bouton_supprimer  : false ,
-            fonction_appelee_apres_action : this.action_sur_tri ,
-            arborescent                   : false ,
-            class_du_bouton_deplacer      : 'hug_bouton' ,
-         
-        }
-        new tri_arbre1('ordre_modifie',options1);
-        
-        
+            "hauteur_max_en_vh" : 80 ,
+             /* entre 20 et 80 */
+            "largeur_max" : '400px' ,
+             /* 'calc(100% - 50px)', */
+            "afficher_le_bouton_supprimer" : false ,
+            "fonction_appelee_apres_action" : this.action_sur_tri ,
+            "arborescent" : false ,
+            "class_du_bouton_deplacer" : 'hug_bouton'
+        };
+        new tri_arbre1( 'ordre_modifie' , options1 );
         let options2={
-            triable                       : false,
-            hauteur_max_en_vh             : 80,// entre 20 et 80
-            largeur_max                   :'400px', //'calc(100% - 50px)',
-            afficher_le_bouton_supprimer  : false ,
-            fonction_appelee_apres_action : this.action_sur_tri ,
-            arborescent                   : false ,
-            class_du_bouton_deplacer      : 'hug_bouton' ,
-         
-        }
-        new tri_arbre1('ordre_original',options2);
-        
-        
-        
-
-        
-        
+            "triable" : false ,
+            "hauteur_max_en_vh" : 80 ,
+             /* entre 20 et 80 */
+            "largeur_max" : '400px' ,
+             /* 'calc(100% - 50px)', */
+            "afficher_le_bouton_supprimer" : false ,
+            "fonction_appelee_apres_action" : this.action_sur_tri ,
+            "arborescent" : false ,
+            "class_du_bouton_deplacer" : 'hug_bouton'
+        };
+        new tri_arbre1( 'ordre_original' , options2 );
     }
     /*
       
@@ -4160,7 +4171,7 @@ class c_svg_bdd1{
                        && id_svg_conteneur_table === this.#svg_tableaux_des_references_amont_aval[id_bdd][j].id_svg_parent_table
                        && id_svg_champ_en_cours === this.#svg_tableaux_des_references_amont_aval[id_bdd][j].id_svg_parent_champ
                 ){
-                    if(contexte==='tri_des_champs'){
+                    if(contexte === 'tri_des_champs'){
                     }else{
                         this.#supprimer_recursivement_les_elements_de_l_arbre( id_bdd , this.#svg_tableaux_des_references_amont_aval[id_bdd][j].id_svg_enfant_champ , contexte );
                     }
@@ -4693,17 +4704,14 @@ class c_svg_bdd1{
       function souris_haut
     */
     #souris_haut( e ){
-     
         /* console.log(e.target); */
-        if(e.target.getAttribute('type_element')===null){
-         return;
+        if(e.target.getAttribute( 'type_element' ) === null){
+            return;
         }
-     
         window.removeEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
         window.removeEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
         window.removeEventListener( 'touchend' , this.#doigt_haut.bind( this ) , false );
         window.removeEventListener( 'touchmove' , this.#doigt_bouge.bind( this ) , false );
-     
         var ecart_de_temps=new Date( Date.now() ).getTime() - this.#debut_de_click;
         if(this.#souris_element_a_deplacer === 'base'){
             if(ecart_de_temps > 200){
@@ -4782,16 +4790,13 @@ class c_svg_bdd1{
       function souris_bas
     */
     #souris_bas( e ){
-
-        if(e.target.getAttribute('type_element')===null){
-         return;
+        if(e.target.getAttribute( 'type_element' ) === null){
+            return;
         }
-     
         window.addEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
         window.addEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
         window.addEventListener( 'touchend' , this.#doigt_haut.bind( this ) , false );
         window.addEventListener( 'touchmove' , this.#doigt_bouge.bind( this ) , false );
-     
         this.#souris_init_objet={
             "x" : e[this.#propriete_pour_deplacement_x] ,
             "y" : e[this.#propriete_pour_deplacement_y] ,
@@ -4847,14 +4852,19 @@ class c_svg_bdd1{
                 }
                 return;
             }else{
-                /* hugues
-
-                "type_element" : 'deplacement_de_table' ,
-                "data-utilite" : 'deplacer_la_table',
-
+                /*
+                  hugues
+                  
+                  "type_element" : 'deplacement_de_table' ,
+                  "data-utilite" : 'deplacer_la_table',
+                  
                 */
-                if(tar.tagName.toLowerCase() === 'rect' && tar.getAttribute( 'id_svg_conteneur_table' ) && tar.getAttribute( 'data-utilite' )){
-                    debugger; /* 2025-07-29 afr on ne devrait plus passer par là  */
+                if(tar.tagName.toLowerCase() === 'rect'
+                       && tar.getAttribute( 'id_svg_conteneur_table' )
+                       && tar.getAttribute( 'data-utilite' )
+                ){
+                    debugger;
+                    /* 2025-07-29 afr on ne devrait plus passer par là */
                     var par=document.getElementById( tar.getAttribute( 'id_svg_conteneur_table' ) );
                     var valeur_translate=par.getAttribute( 'transform' ).replace( /translate\(/g , '' ).replace( /\)/g , '' ).split( ',' );
                     this.#souris_init_objet.id_svg_conteneur_table=parseInt( tar.getAttribute( 'id_svg_conteneur_table' ) , 10 );
@@ -5120,8 +5130,6 @@ class c_svg_bdd1{
         }
         var largeur_max=0;
         var groupe_table=this.#svg_dessin.getElementById( id_svg_conteneur_table );
-        
-        
         try{
             var lst=groupe_table.getElementsByTagName( 'g' );
         }catch(e){
@@ -5133,23 +5141,21 @@ class c_svg_bdd1{
                 largeur_max=Math.ceil( bb.width );
             }
         }
-        
-/*        
-        try{
-            var lst=groupe_table.getElementsByTagName( 'text' );
-        }catch(e){
-            debugger;
-        }
-        var i=0;
-        for( i=0 ; i < lst.length ; i++ ){
-            var bb=lst[i].getBBox();
-            if(largeur_max < bb.width){
-                largeur_max=Math.ceil( bb.width );
-            }
-        }
-        
-*/
-        
+        /*
+          try{
+          var lst=groupe_table.getElementsByTagName( 'text' );
+          }catch(e){
+          debugger;
+          }
+          var i=0;
+          for( i=0 ; i < lst.length ; i++ ){
+          var bb=lst[i].getBBox();
+          if(largeur_max < bb.width){
+          largeur_max=Math.ceil( bb.width );
+          }
+          }
+          
+        */
         largeur_max+=2 * this.#taille_bordure;
         if(largeur_max < 40){
             largeur_max=40;
@@ -6188,7 +6194,7 @@ class c_svg_bdd1{
         };
         let indice_svg_rectangle=indice_courant;
         indice_courant++;
-        return({"indice_svg_rectangle" : indice_svg_rectangle , "indice_courant" : indice_courant ,"id_svg_conteneur_table" : id_svg_conteneur_table});
+        return({"indice_svg_rectangle" : indice_svg_rectangle ,"indice_courant" : indice_courant ,"id_svg_conteneur_table" : id_svg_conteneur_table});
     }
     /*
       
@@ -6214,7 +6220,7 @@ class c_svg_bdd1{
                 "nom_de_la_table" : nom_de_la_table ,
                 "decallage_x" : this.#taille_bordure ,
                 "decallage_y" : this.#taille_bordure ,
-                "transform" : 'translate(' + this.#taille_bordure + ',' + this.#taille_bordure + ')',
+                "transform" : 'translate(' + this.#taille_bordure + ',' + this.#taille_bordure + ')'
             }
         };
         indice_courant++;
@@ -6252,22 +6258,21 @@ class c_svg_bdd1{
             "proprietes" : {
                 "id" : indice_courant ,
                 "type_element" : 'deplacement_de_table' ,
-                "data-utilite" : 'deplacer_la_table',
+                "data-utilite" : 'deplacer_la_table' ,
                 "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
                 "id_bdd_de_la_base_en_cours" : this.#id_bdd_de_la_base_en_cours ,
                 "id_svg_conteneur_table" : id_svg_conteneur_table ,
                 "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
                 "nom_de_la_table" : nom_de_la_table ,
-                "x" : 2*this.#taille_bordure ,
-                "y" : 2*this.#taille_bordure ,
-                "width" : this.#hauteur_de_boite - 4*this.#taille_bordure ,
-                "height" : this.#hauteur_de_boite - 4*this.#taille_bordure,
-                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:red;fill-opacity:0.2;cursor:move;",
-                
+                "x" : 2 * this.#taille_bordure ,
+                "y" : 2 * this.#taille_bordure ,
+                "width" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
+                "height" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
+                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:red;fill-opacity:0.2;cursor:move;"
             }
         };
         indice_courant++;
-        // hugues carré bleu 🟦
+        /* hugues carré bleu 🟦 */
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[indice_courant]={
             "type" : 'rect' ,
             "id" : indice_courant ,
@@ -6275,26 +6280,24 @@ class c_svg_bdd1{
             "proprietes" : {
                 "id" : indice_courant ,
                 "type_element" : 'edition_de_table' ,
-                "data-utilite" : 'editer_la_table',
+                "data-utilite" : 'editer_la_table' ,
                 "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
                 "id_bdd_de_la_base_en_cours" : this.#id_bdd_de_la_base_en_cours ,
                 "id_svg_conteneur_table" : id_svg_conteneur_table ,
                 "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
                 "nom_de_la_table" : nom_de_la_table ,
-                "x" : 2*this.#taille_bordure + this.#hauteur_de_boite ,
-                "y" : 2*this.#taille_bordure ,
-                "width" : this.#hauteur_de_boite - 4*this.#taille_bordure ,
-                "height" : this.#hauteur_de_boite - 4*this.#taille_bordure,
-                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:darkcyan;fill-opacity:1;cursor:pointer;",
-                "data-hug_click" : 'interface1.module1(chemin_module1(\'' + this.#chemin_module1 + '\'),methode3(modale_gerer_la_table),parametre3(id_svg_conteneur_table(' + id_svg_conteneur_table + ')))',
-                
+                "x" : 2 * this.#taille_bordure + this.#hauteur_de_boite ,
+                "y" : 2 * this.#taille_bordure ,
+                "width" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
+                "height" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
+                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:darkcyan;fill-opacity:1;cursor:pointer;" ,
+                "data-hug_click" : 'interface1.module1(chemin_module1(\'' + this.#chemin_module1 + '\'),methode3(modale_gerer_la_table),parametre3(id_svg_conteneur_table(' + id_svg_conteneur_table + ')))'
             }
         };
         indice_courant++;
         /*
           texte du nom de la table  // ⇱🔎🎯 🟥
         */
-        
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[indice_courant]={
             "type" : 'text' ,
             "id" : indice_courant ,
@@ -6308,14 +6311,18 @@ class c_svg_bdd1{
                 "id_svg_conteneur_table" : id_svg_conteneur_table ,
                 "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
                 "nom_de_la_table" : nom_de_la_table ,
-                "x" : (this.#hauteur_de_boite + 2*this.#taille_bordure)*2 ,
+                "x" : (this.#hauteur_de_boite + 2 * this.#taille_bordure) * 2 ,
                 "y" : this.#hauteur_de_boite - 0.3 * __gi1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:white;cursor:context-menu;"
             }
         };
         indice_courant++;
         largeur_de_la_boite=this.#ajuster_largeur_de_boite( largeur_de_la_boite , nom_de_la_table + '🟥' );
-        return({"largeur_de_la_boite" : largeur_de_la_boite ,"id_svg_rectangle_du_nom_de_la_table" : id_svg_rectangle_du_nom_de_la_table , "indice_courant":indice_courant});
+        return({
+                "largeur_de_la_boite" : largeur_de_la_boite ,
+                "id_svg_rectangle_du_nom_de_la_table" : id_svg_rectangle_du_nom_de_la_table ,
+                "indice_courant" : indice_courant
+            });
     }
     /*
       =============================================================================================================
@@ -6388,7 +6395,6 @@ class c_svg_bdd1{
             }
         };
         indice_courant++;
-
         let cmd='';
         cmd+='interface1.module1(';
         cmd+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
@@ -6399,8 +6405,6 @@ class c_svg_bdd1{
         cmd+='  nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+=' )';
         cmd+=')';
-
-        
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'rect' ,
             "id" : indice_courant ,
@@ -6413,16 +6417,14 @@ class c_svg_bdd1{
                 "nom_du_champ" : nom_du_champ ,
                 "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
                 "nom_de_la_table" : nom_de_la_table ,
-                "x" : 2*this.#taille_bordure ,
-                "y" : 2*this.#taille_bordure ,
-                "width" : this.#hauteur_de_boite - 4*this.#taille_bordure ,
-                "height" : this.#hauteur_de_boite - 4*this.#taille_bordure,
-                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:yellow;fill-opacity:0.2;cursor:pointer;",
+                "x" : 2 * this.#taille_bordure ,
+                "y" : 2 * this.#taille_bordure ,
+                "width" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
+                "height" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
+                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:yellow;fill-opacity:0.2;cursor:pointer;" ,
                 "data-hug_click" : cmd
             }
         };
-
-
         indice_courant++;
         var objrev=null;
         var tabrev=[];
@@ -6434,22 +6436,22 @@ class c_svg_bdd1{
           texte du nom du champ
           carré jaune
         */
-/*        
-        let f='';
-        f+='interface1.module1(';
-        f+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-        f+=' methode3(modale_modifier_le_champ),';
-        f+=' parametre3(';
-        f+='  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
-        f+='  id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
-        f+='  nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-        f+=' )';
-        f+=')';
-        let contenu='';
-        contenu+='<tspan ';
-        contenu+=' style="cursor:pointer;" ';
-        contenu+=' data-hug_click="' + f + '">🟨</tspan>' + nom_du_champ;
-*/        
+        /*
+          let f='';
+          f+='interface1.module1(';
+          f+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+          f+=' methode3(modale_modifier_le_champ),';
+          f+=' parametre3(';
+          f+='  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+          f+='  id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+          f+='  nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+          f+=' )';
+          f+=')';
+          let contenu='';
+          contenu+='<tspan ';
+          contenu+=' style="cursor:pointer;" ';
+          contenu+=' data-hug_click="' + f + '">🟨</tspan>' + nom_du_champ;
+        */
         let contenu='';
         contenu+='' + nom_du_champ;
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
@@ -6466,7 +6468,7 @@ class c_svg_bdd1{
                 "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
                 "nom_de_la_table" : nom_de_la_table ,
                 "nom_du_champ" : nom_du_champ ,
-                "x" : this.#hauteur_de_boite + 2*this.#taille_bordure ,
+                "x" : this.#hauteur_de_boite + 2 * this.#taille_bordure ,
                 "y" : this.#hauteur_de_boite - 0.3 * __gi1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:" + couleur_nom_de_champ + ";"
             }
@@ -6477,12 +6479,14 @@ class c_svg_bdd1{
             nom_parent_table=tt[0];
             nom_parent_champ=tt[1];
             for(let i in this.#arbre[id_bdd_de_la_base].arbre_svg){
-                if(this.#arbre[id_bdd_de_la_base].arbre_svg[i] && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === 'conteneur_de_table'
+                if(this.#arbre[id_bdd_de_la_base].arbre_svg[i]
+                       && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === 'conteneur_de_table'
                        && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.nom_de_la_table === nom_parent_table
                 ){
                     id_svg_parent_table=parseInt( i , 0 );
                 }
-                if(this.#arbre[id_bdd_de_la_base].arbre_svg[i] && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === 'conteneur_de_champ'
+                if(this.#arbre[id_bdd_de_la_base].arbre_svg[i]
+                       && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === 'conteneur_de_champ'
                        && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.nom_du_champ === nom_parent_champ
                 ){
                     id_svg_parent_champ=parseInt( i , 10 );
@@ -6492,8 +6496,8 @@ class c_svg_bdd1{
                     break;
                 }
             }
-//            debugger;
-            /* 
+            /* debugger; */
+            /*
               on ne fait plus ça ici mais dans #modifier_les_references_des_liens
             */
             if(false){
@@ -6576,7 +6580,6 @@ class c_svg_bdd1{
       function ajouter_index_a_table
     */
     #ajouter_index_a_table( id_bdd_de_la_base , indice_courant , nom_de_l_index , id_svg_conteneur_table , nom_de_la_table , donnees_rev_de_l_index , champs , unique ){
-     
         let id_svg_de_l_index=indice_courant;
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'g' ,
@@ -6617,16 +6620,15 @@ class c_svg_bdd1{
         };
         indice_courant++;
         let cmd='';
-        cmd += 'interface1.module1(';
-        cmd += ' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-        cmd += ' methode3(modale_modifier_l_index),';
-        cmd += ' parametre3(';
-        cmd += '  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
-        cmd += '  nom_de_l_index(\'' + nom_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-        cmd += '  id_svg_conteneur_d_index(' + id_svg_de_l_index + ')';
-        cmd += ' )';
-        cmd += ')"';
-        
+        cmd+='interface1.module1(';
+        cmd+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+        cmd+=' methode3(modale_modifier_l_index),';
+        cmd+=' parametre3(';
+        cmd+='  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+        cmd+='  nom_de_l_index(\'' + nom_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        cmd+='  id_svg_conteneur_d_index(' + id_svg_de_l_index + ')';
+        cmd+=' )';
+        cmd+=')"';
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'rect' ,
             "id" : indice_courant ,
@@ -6641,15 +6643,14 @@ class c_svg_bdd1{
                 "donnees_rev_de_l_index" : donnees_rev_de_l_index ,
                 "champs" : champs ,
                 "unique" : unique ,
-                "x" : 2*this.#taille_bordure ,
-                "y" : 2*this.#taille_bordure ,
-                "width" : this.#hauteur_de_boite - 4*this.#taille_bordure ,
-                "height" : this.#hauteur_de_boite - 4*this.#taille_bordure,
-                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:green;fill-opacity:0.2;cursor:pointer;",
+                "x" : 2 * this.#taille_bordure ,
+                "y" : 2 * this.#taille_bordure ,
+                "width" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
+                "height" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
+                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:green;fill-opacity:0.2;cursor:pointer;" ,
                 "data-hug_click" : cmd
             }
         };
-        
         indice_courant++;
         /*
           "contenu" : 'hello'+nom_de_l_index ,
@@ -6672,8 +6673,8 @@ class c_svg_bdd1{
           contenu += '>';
           contenu += '🟩';
           contenu += ' </tspan>' + nom_de_l_index;
-        */        
-        let contenu = nom_de_l_index;
+        */
+        let contenu=nom_de_l_index;
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'text' ,
             "id" : indice_courant ,
@@ -6685,7 +6686,7 @@ class c_svg_bdd1{
                 "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
                 "id_svg_conteneur_table" : id_svg_conteneur_table ,
                 "nom_de_la_table_pour_l_index" : nom_de_la_table ,
-                "x" : this.#taille_bordure + this.#hauteur_de_boite + 2*this.#taille_bordure,
+                "x" : this.#taille_bordure + this.#hauteur_de_boite + 2 * this.#taille_bordure ,
                 "y" : this.#hauteur_de_boite - 0.3 * __gi1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:green;"
             }
@@ -6922,7 +6923,7 @@ class c_svg_bdd1{
           
           il faut mettre à jour les liens ici           
           car une table mère peut être déclarée après une table fille
-
+          
           
           this.#svg_tableaux_des_references_amont_aval
           this.#arbre[id_bdd_de_la_base].arbre_svg[indice_svg_courant]={type:'path',
@@ -6932,138 +6933,125 @@ class c_svg_bdd1{
           
         */
         /*
-        rechercher rectangle_de_champ
+          rechercher rectangle_de_champ
         */
-        
         /*
-         raz des éléments existants
+          raz des éléments existants
         */
         this.#svg_tableaux_des_references_amont_aval[id_bdd_de_la_base]=[];
-        
         let indice_courant=0;
         for(var i in this.#arbre[id_bdd_de_la_base].arbre_svg){
             if(this.#arbre[id_bdd_de_la_base].arbre_svg[i]
-                   && (
-                     this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === "conteneur_reference_croisée"
-                     || this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === "reference_croisée"
-                   )
-            
-             ){
-                 this.#arbre[id_bdd_de_la_base].arbre_svg[i]=null;
-             }
-             indice_courant=i;
+                   && (this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === "conteneur_reference_croisée"
+                       || this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === "reference_croisée")
+            ){
+                this.#arbre[id_bdd_de_la_base].arbre_svg[i]=null;
+            }
+            indice_courant=i;
         }
         if(true){
-         
-            //var indice_courant=this.#recuperer_prochain_id_svg();
+            /* var indice_courant=this.#recuperer_prochain_id_svg(); */
             indice_courant++;
-            
             for(i in this.#arbre[id_bdd_de_la_base].arbre_svg){
-                if(this.#arbre[id_bdd_de_la_base].arbre_svg[i]&& this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === "rectangle_de_champ"){
-                 if(this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.references!==''){
+                if(this.#arbre[id_bdd_de_la_base].arbre_svg[i]
+                       && this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.type_element === "rectangle_de_champ"
+                ){
+                    if(this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.references !== ''){
                         /*
                           on a trouve un champ enfant qui a une référence
                         */
                         let indice_du_champ=i;
-                        var tt=this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.references.split(',');
+                        var tt=this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.references.split( ',' );
                         var nom_table_mere=tt[0];
                         var nom_champ_pere=tt[1];
                         let id_svg_enfant_table=this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.id_svg_conteneur_table;
                         let id_svg_enfant_champ=this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.id_svg_champ_en_cours;
                         let nom_enfant_table=this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.nom_de_la_table;
                         let nom_enfant_champ=this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.nom_du_champ;
-                        let non_nulle=parseInt(this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.non_nulle,10);
-
-                  
+                        let non_nulle=parseInt( this.#arbre[id_bdd_de_la_base].arbre_svg[i].proprietes.non_nulle , 10 );
                         for(j in this.#arbre[id_bdd_de_la_base].arbre_svg){
-                           if(this.#arbre[id_bdd_de_la_base].arbre_svg[j]&& this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.type_element === "rectangle_de_champ"){
-                              if(
-                                     this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.nom_de_la_table===nom_table_mere
-                                  && this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.nom_du_champ===nom_champ_pere
-                              ){
-                                  let id_svg_parent_table=this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.id_svg_conteneur_table;
-                                  let id_svg_parent_champ=this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.id_svg_champ_en_cours;
-                                  let nom_parent_table=this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.nom_de_la_table;
-                                  let nom_parent_champ=this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.nom_du_champ;
-                               
-                                  let refe_enfant_droite=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_du_champ].proprietes.donnees_rev_du_champ.indexOf( 'refe_enfant_droite(1)' ) >= 0 ? ( 1 ) : ( 0 );
-                                  let refe_parent_gauche=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_du_champ].proprietes.donnees_rev_du_champ.indexOf( 'refe_parent_gauche(1)' ) >= 0 ? ( 1 ) : ( 0 );
-                                  /* debugger */
-                                  this.#svg_tableaux_des_references_amont_aval[id_bdd_de_la_base].push( {
-                                          "id_bdd_de_la_base_en_cours" : id_bdd_de_la_base ,
-                                          "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
-                                          "id_svg_parent_table" : id_svg_parent_table ,
-                                          "id_svg_parent_champ" : id_svg_parent_champ ,
-                                          "id_svg_enfant_table" : id_svg_enfant_table ,
-                                          "id_svg_enfant_champ" : id_svg_enfant_champ ,
-                                          "nom_enfant_table" : nom_enfant_table ,
-                                          "nom_enfant_champ" : nom_enfant_champ ,
-                                          "nom_parent_table" : nom_parent_table ,
-                                          "nom_parent_champ" : nom_parent_champ ,
-                                          "id_du_path" : indice_courant ,
-                                          "p1" : [50,50] ,
-                                          "p2" : [0,0] ,
-                                          "refe_enfant_droite" : refe_enfant_droite ,
-                                          "refe_parent_gauche" : refe_parent_gauche
-                                      } 
-                                  );
-                                  
-                                  
-                                  var d='M 50 50 C 20 50 30 0 0 0';
-                                  var couleur_du_lien='brown';
-                                  if(non_nulle === 0){
-                                      couleur_du_lien='coral';
-                                  }
-                                  /*
-                                    le parent d'un lien appartient à la base et non pas à id_svg_champ_en_cours
-                                  */
-                                  this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
-                                      "type" : 'g' ,
-                                      "id" : indice_courant ,
-                                      "id_parent" : this.#id_svg_de_la_base_en_cours ,
-                                      "proprietes" : {
-                                          "id" : indice_courant ,
-                                          "type_element" : 'conteneur_reference_croisée' ,
-                                          "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
-                                          "id_svg_parent_table" : id_svg_parent_table ,
-                                          "id_svg_parent_champ" : id_svg_parent_champ ,
-                                          "id_svg_enfant_table" : id_svg_enfant_table ,
-                                          "id_svg_enfant_champ" : id_svg_enfant_champ ,
-                                          "nom_parent_table" : nom_parent_table ,
-                                          "nom_parent_champ" : nom_parent_champ ,
-                                          "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
-                                      }
-                                  };
-                                  indice_courant++;
-                                  this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
-                                      "type" : 'path' ,
-                                      "id" : indice_courant ,
-                                      "id_parent" : indice_courant - 1 ,
-                                      "proprietes" : {
-                                          "id" : indice_courant ,
-                                          "d" : d ,
-                                          "type_element" : 'reference_croisée' ,
-                                          "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
-                                          "id_svg_parent_table" : id_svg_parent_table ,
-                                          "id_svg_parent_champ" : id_svg_parent_champ ,
-                                          "id_svg_enfant_table" : id_svg_enfant_table ,
-                                          "id_svg_enfant_champ" : id_svg_enfant_champ ,
-                                          "nom_parent_table" : nom_parent_table ,
-                                          "nom_parent_champ" : nom_parent_champ ,
-                                          "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
-                                      }
-                                  };        
-                                  
-                               
-                                  break;
-                              }
-                           }
+                            if(this.#arbre[id_bdd_de_la_base].arbre_svg[j]
+                                   && this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.type_element === "rectangle_de_champ"
+                            ){
+                                if(this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.nom_de_la_table === nom_table_mere
+                                       && this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.nom_du_champ === nom_champ_pere
+                                ){
+                                    let id_svg_parent_table=this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.id_svg_conteneur_table;
+                                    let id_svg_parent_champ=this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.id_svg_champ_en_cours;
+                                    let nom_parent_table=this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.nom_de_la_table;
+                                    let nom_parent_champ=this.#arbre[id_bdd_de_la_base].arbre_svg[j].proprietes.nom_du_champ;
+                                    let refe_enfant_droite=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_du_champ].proprietes.donnees_rev_du_champ.indexOf( 'refe_enfant_droite(1)' ) >= 0 ? ( 1 ) : ( 0 );
+                                    let refe_parent_gauche=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_du_champ].proprietes.donnees_rev_du_champ.indexOf( 'refe_parent_gauche(1)' ) >= 0 ? ( 1 ) : ( 0 );
+                                    /* debugger */
+                                    this.#svg_tableaux_des_references_amont_aval[id_bdd_de_la_base].push( {
+                                            "id_bdd_de_la_base_en_cours" : id_bdd_de_la_base ,
+                                            "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                                            "id_svg_parent_table" : id_svg_parent_table ,
+                                            "id_svg_parent_champ" : id_svg_parent_champ ,
+                                            "id_svg_enfant_table" : id_svg_enfant_table ,
+                                            "id_svg_enfant_champ" : id_svg_enfant_champ ,
+                                            "nom_enfant_table" : nom_enfant_table ,
+                                            "nom_enfant_champ" : nom_enfant_champ ,
+                                            "nom_parent_table" : nom_parent_table ,
+                                            "nom_parent_champ" : nom_parent_champ ,
+                                            "id_du_path" : indice_courant ,
+                                            "p1" : [50,50] ,
+                                            "p2" : [0,0] ,
+                                            "refe_enfant_droite" : refe_enfant_droite ,
+                                            "refe_parent_gauche" : refe_parent_gauche
+                                        } );
+                                    var d='M 50 50 C 20 50 30 0 0 0';
+                                    var couleur_du_lien='brown';
+                                    if(non_nulle === 0){
+                                        couleur_du_lien='coral';
+                                    }
+                                    /*
+                                      le parent d'un lien appartient à la base et non pas à id_svg_champ_en_cours
+                                    */
+                                    this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
+                                        "type" : 'g' ,
+                                        "id" : indice_courant ,
+                                        "id_parent" : this.#id_svg_de_la_base_en_cours ,
+                                        "proprietes" : {
+                                            "id" : indice_courant ,
+                                            "type_element" : 'conteneur_reference_croisée' ,
+                                            "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                                            "id_svg_parent_table" : id_svg_parent_table ,
+                                            "id_svg_parent_champ" : id_svg_parent_champ ,
+                                            "id_svg_enfant_table" : id_svg_enfant_table ,
+                                            "id_svg_enfant_champ" : id_svg_enfant_champ ,
+                                            "nom_parent_table" : nom_parent_table ,
+                                            "nom_parent_champ" : nom_parent_champ ,
+                                            "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
+                                        }
+                                    };
+                                    indice_courant++;
+                                    this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
+                                        "type" : 'path' ,
+                                        "id" : indice_courant ,
+                                        "id_parent" : indice_courant - 1 ,
+                                        "proprietes" : {
+                                            "id" : indice_courant ,
+                                            "d" : d ,
+                                            "type_element" : 'reference_croisée' ,
+                                            "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                                            "id_svg_parent_table" : id_svg_parent_table ,
+                                            "id_svg_parent_champ" : id_svg_parent_champ ,
+                                            "id_svg_enfant_table" : id_svg_enfant_table ,
+                                            "id_svg_enfant_champ" : id_svg_enfant_champ ,
+                                            "nom_parent_table" : nom_parent_table ,
+                                            "nom_parent_champ" : nom_parent_champ ,
+                                            "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
+                                        }
+                                    };
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
             }
         }
-        
         if(false){
             for(var i in this.#arbre[id_bdd_de_la_base].arbre_svg){
                 if(this.#arbre[id_bdd_de_la_base].arbre_svg[i]
@@ -7100,79 +7088,77 @@ class c_svg_bdd1{
                 }
             }
         }
-        
-            if(false){
-                var p1=[50,50];
-                var p2=[0,0];
-                let refe_enfant_droite=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_du_champ].proprietes.donnees_rev_du_champ.indexOf( 'refe_enfant_droite(1)' ) >= 0 ? ( 1 ) : ( 0 );
-                let refe_parent_gauche=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_du_champ].proprietes.donnees_rev_du_champ.indexOf( 'refe_parent_gauche(1)' ) >= 0 ? ( 1 ) : ( 0 );
-                this.#svg_tableaux_des_references_amont_aval[id_bdd_de_la_base].push( {
-                        "id_bdd_de_la_base_en_cours" : this.#id_bdd_de_la_base_en_cours ,
-                        "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
-                        "id_svg_parent_table" : id_svg_parent_table ,
-                        "id_svg_parent_champ" : id_svg_parent_champ ,
-                        "id_svg_enfant_table" : id_svg_conteneur_table ,
-                        "id_svg_enfant_champ" : id_svg_champ_en_cours ,
-                        "nom_enfant_table" : nom_de_la_table ,
-                        "nom_enfant_champ" : nom_du_champ ,
-                        "nom_parent_table" : nom_parent_table ,
-                        "nom_parent_champ" : nom_parent_champ ,
-                        "id_du_path" : indice_courant ,
-                        "p1" : p1 ,
-                        "p2" : p2 ,
-                        "refe_enfant_droite" : refe_enfant_droite ,
-                        "refe_parent_gauche" : refe_parent_gauche
-                    } );
-                /*
-                  
-                  <path d=" M -63 -9 C 53 -6 132 71 176 31 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path>
-                */
-                var d='M ' + parseInt( p1[0] , 10 ) + ' ' + parseInt( p1[1] , 10 ) + ' C ' + parseInt( p1[0] - 30 , 10 ) + ' ' + parseInt( p1[1] , 10 ) + ' ' + parseInt( p2[0] + 30 , 10 ) + ' ' + parseInt( p2[1] , 10 ) + ' ' + parseInt( p2[0] , 10 ) + ' ' + parseInt( p2[1] , 10 );
-                var couleur_du_lien='brown';
-                if(non_nulle === 0){
-                    couleur_du_lien='coral';
-                }
-                /*
-                  le parent d'un lien appartient à la base et non pas à id_svg_champ_en_cours
-                */
-                this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
-                    "type" : 'g' ,
-                    "id" : indice_courant ,
-                    "id_parent" : this.#id_svg_de_la_base_en_cours ,
-                    "proprietes" : {
-                        "id" : indice_courant ,
-                        "type_element" : 'conteneur_reference_croisée' ,
-                        "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
-                        "id_svg_parent_table" : id_svg_parent_table ,
-                        "id_svg_parent_champ" : id_svg_parent_champ ,
-                        "id_svg_enfant_table" : id_svg_conteneur_table ,
-                        "id_svg_enfant_champ" : id_svg_champ_en_cours ,
-                        "nom_parent_table" : nom_parent_table ,
-                        "nom_parent_champ" : nom_parent_champ ,
-                        "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
-                    }
-                };
-                indice_courant++;
-                this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
-                    "type" : 'path' ,
-                    "id" : indice_courant ,
-                    "id_parent" : indice_courant - 1 ,
-                    "proprietes" : {
-                        "id" : indice_courant ,
-                        "d" : d ,
-                        "type_element" : 'reference_croisée' ,
-                        "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
-                        "id_svg_parent_table" : id_svg_parent_table ,
-                        "id_svg_parent_champ" : id_svg_parent_champ ,
-                        "id_svg_enfant_table" : id_svg_conteneur_table ,
-                        "id_svg_enfant_champ" : id_svg_champ_en_cours ,
-                        "nom_parent_table" : nom_parent_table ,
-                        "nom_parent_champ" : nom_parent_champ ,
-                        "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
-                    }
-                };        
+        if(false){
+            var p1=[50,50];
+            var p2=[0,0];
+            let refe_enfant_droite=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_du_champ].proprietes.donnees_rev_du_champ.indexOf( 'refe_enfant_droite(1)' ) >= 0 ? ( 1 ) : ( 0 );
+            let refe_parent_gauche=this.#arbre[id_bdd_de_la_base].arbre_svg[indice_du_champ].proprietes.donnees_rev_du_champ.indexOf( 'refe_parent_gauche(1)' ) >= 0 ? ( 1 ) : ( 0 );
+            this.#svg_tableaux_des_references_amont_aval[id_bdd_de_la_base].push( {
+                    "id_bdd_de_la_base_en_cours" : this.#id_bdd_de_la_base_en_cours ,
+                    "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                    "id_svg_parent_table" : id_svg_parent_table ,
+                    "id_svg_parent_champ" : id_svg_parent_champ ,
+                    "id_svg_enfant_table" : id_svg_conteneur_table ,
+                    "id_svg_enfant_champ" : id_svg_champ_en_cours ,
+                    "nom_enfant_table" : nom_de_la_table ,
+                    "nom_enfant_champ" : nom_du_champ ,
+                    "nom_parent_table" : nom_parent_table ,
+                    "nom_parent_champ" : nom_parent_champ ,
+                    "id_du_path" : indice_courant ,
+                    "p1" : p1 ,
+                    "p2" : p2 ,
+                    "refe_enfant_droite" : refe_enfant_droite ,
+                    "refe_parent_gauche" : refe_parent_gauche
+                } );
+            /*
+              
+              <path d=" M -63 -9 C 53 -6 132 71 176 31 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path>
+            */
+            var d='M ' + parseInt( p1[0] , 10 ) + ' ' + parseInt( p1[1] , 10 ) + ' C ' + parseInt( p1[0] - 30 , 10 ) + ' ' + parseInt( p1[1] , 10 ) + ' ' + parseInt( p2[0] + 30 , 10 ) + ' ' + parseInt( p2[1] , 10 ) + ' ' + parseInt( p2[0] , 10 ) + ' ' + parseInt( p2[1] , 10 );
+            var couleur_du_lien='brown';
+            if(non_nulle === 0){
+                couleur_du_lien='coral';
             }
-        
+            /*
+              le parent d'un lien appartient à la base et non pas à id_svg_champ_en_cours
+            */
+            this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
+                "type" : 'g' ,
+                "id" : indice_courant ,
+                "id_parent" : this.#id_svg_de_la_base_en_cours ,
+                "proprietes" : {
+                    "id" : indice_courant ,
+                    "type_element" : 'conteneur_reference_croisée' ,
+                    "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                    "id_svg_parent_table" : id_svg_parent_table ,
+                    "id_svg_parent_champ" : id_svg_parent_champ ,
+                    "id_svg_enfant_table" : id_svg_conteneur_table ,
+                    "id_svg_enfant_champ" : id_svg_champ_en_cours ,
+                    "nom_parent_table" : nom_parent_table ,
+                    "nom_parent_champ" : nom_parent_champ ,
+                    "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
+                }
+            };
+            indice_courant++;
+            this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
+                "type" : 'path' ,
+                "id" : indice_courant ,
+                "id_parent" : indice_courant - 1 ,
+                "proprietes" : {
+                    "id" : indice_courant ,
+                    "d" : d ,
+                    "type_element" : 'reference_croisée' ,
+                    "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                    "id_svg_parent_table" : id_svg_parent_table ,
+                    "id_svg_parent_champ" : id_svg_parent_champ ,
+                    "id_svg_enfant_table" : id_svg_conteneur_table ,
+                    "id_svg_enfant_champ" : id_svg_champ_en_cours ,
+                    "nom_parent_table" : nom_parent_table ,
+                    "nom_parent_champ" : nom_parent_champ ,
+                    "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
+                }
+            };
+        }
     }
     /*
       =============================================================================================================

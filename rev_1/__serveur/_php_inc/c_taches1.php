@@ -265,7 +265,7 @@ class c_taches1{
             $tt=/*sql_inclure_deb*/
                 /* sql_131()
                 DELETE FROM b1.tbl_taches
-                WHERE (`chi_id_tache` = :chi_id_tache
+                WHERE (`chi_id_tache` = :chi_id_tache
                    AND `chx_utilisateur_tache` = :chx_utilisateur_tache) ;
                 */
                 /*sql_inclure_fin*/
@@ -949,20 +949,21 @@ class c_taches1{
                     
                     if($mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
 
-                        
                         /* $donnees_retournees[__x_signaux][__xal][]='$mat[$j][1] ' . $mat[$j][1] . ' [' . __LINE__ . ']'; */
+                        
                         if($mat[$j][1] === '__num_page'){
 
                             /* $donnees_retournees[__x_signaux][__xal][]='$mat[$j][1] ' . $mat[$j][1] . ' [' . __LINE__ . ']'; */
                             $numpage=$mat[$j + 1][1];
                             $par_mat['__num_page']=$mat[$j + 1][1];
                             $par['__num_page']=$mat[$j + 1][1];
-                            
+
                         }else if($mat[$j + 1][1] !== ''){
 
                             /* $donnees_retournees[__x_signaux][__xal][]='$mat[$j][1] ' . $mat[$j][1] . ' [' . __LINE__ . ']'; */
                             $par_mat[$mat[$j][1]]=urldecode($mat[$j + 1][1]);
                         }
+
 
                     }
 
@@ -979,7 +980,6 @@ class c_taches1{
 
         }
         
-        
         if(false === isset($_SESSION[__X_CLE_APPLICATION]['c_taches1.page_liste_des_taches1'])){
 
             $par=array_merge($par,$par_mat);
@@ -990,7 +990,6 @@ class c_taches1{
             /* $donnees_retournees[__x_signaux][__xal][]='$par_mat=<pre>'.var_export($par_mat,true).'</pre>$par=<pre>'.var_export($par,true).'</pre> [' . __LINE__ . ']';*/
             $par=$_SESSION[__X_CLE_APPLICATION]['c_taches1.page_liste_des_taches1'];
             $par=array_merge($par,$par_mat);
-            
             
             if($provenance_menu === true){
 
@@ -1167,23 +1166,33 @@ class c_taches1{
         }
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
         $maj_url='';
-        $maj_url.='maj_url(';
-        $maj_url.='c_taches1.page_liste_des_taches1(';
-        $maj_url.='__num_page('.($par['__num_page']).')';
-        if($par['T0_chp_priorite_tache2']!==''){
-          $maj_url.=',T0_chp_priorite_tache2('.($par['T0_chp_priorite_tache2']).')';
-        }
-        if($par['T0_chp_priorite_tache']!==''){
-          $maj_url.=',T0_chp_priorite_tache('.($par['T0_chp_priorite_tache']).')';
-        }
-        if($par['T0_chp_texte_tache']!==''){
-          $maj_url.=',T0_chp_texte_tache(\''.texte_rev($par['T0_chp_texte_tache']).'\')';
-        }
+        $maj_url .= 'maj_url(';
+        $maj_url .= 'c_taches1.page_liste_des_taches1(';
+        $maj_url .= '__num_page(' . $par['__num_page'] . ')';
         
+        if($par['T0_chp_priorite_tache2'] !== ''){
+
+            $maj_url .= ',T0_chp_priorite_tache2(' . $par['T0_chp_priorite_tache2'] . ')';
+
+        }
+
         
-        $maj_url.=')';
-        $maj_url.=')';
-        $donnees_retournees[__xva]['maj'] = $maj_url;
+        if($par['T0_chp_priorite_tache'] !== ''){
+
+            $maj_url .= ',T0_chp_priorite_tache(' . $par['T0_chp_priorite_tache'] . ')';
+
+        }
+
+        
+        if($par['T0_chp_texte_tache'] !== ''){
+
+            $maj_url .= ',T0_chp_texte_tache(\'' . texte_rev($par['T0_chp_texte_tache']) . '\')';
+
+        }
+
+        $maj_url .= ')';
+        $maj_url .= ')';
+        $donnees_retournees[__xva]['maj']=$maj_url;
         $donnees_retournees[__x_page] .= $o1;
         $donnees_retournees[__x_action]='c_taches1.page_liste_des_taches1()';
         $donnees_retournees[__xst]=__xsu;

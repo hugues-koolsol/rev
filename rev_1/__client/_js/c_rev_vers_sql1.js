@@ -115,7 +115,6 @@ class c_rev_vers_sql1{
       =============================================================================================================
     */
     traite_sqlite_fonction_de_champ( tab , id , niveau , options ){
-
         var t='';
         if(tab[id][1] === 'champ' && tab[id][2] === 'f'){
             if(tab[id][8] === 1 && tab[id + 1][2] === 'c'){
@@ -707,9 +706,8 @@ class c_rev_vers_sql1{
                         }
                         break;
                         
-
-                        /*hugues*/
-                    case 'conditions' : 
+                    case 'conditions' :
+                        /* hugues */
                         options.tableau_des_alias=tableau_des_alias;
                         obj=this.traite_sqlite_fonction_de_champ( this.#tb , i , niveau , options );
                         if(obj.__xst === __xsu){
@@ -718,7 +716,7 @@ class c_rev_vers_sql1{
                             return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'conditions dans select '} ));
                         }
                         break;
-
+                        
                     case 'modifier' : 
                     case 'insérer' : 
                     case 'supprimer' :

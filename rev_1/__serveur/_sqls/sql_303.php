@@ -15,9 +15,7 @@ function sql_303($par,&$donnees_retournees,$that){
        LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_page
     ';
     $sql0.=$from0;
-    $where0=' WHERE 1=1 '.PHP_EOL;
-    $where0.=' AND `T0`.`chi_id_menu` > '.sq1($par['T0_chi_id_menu']).''.PHP_EOL;
-    $where0.=' AND `T1`.`chi_id_page` IS NOT NULL'.PHP_EOL;
+    $where0=' WHERE (`T0`.`chi_id_menu` > '.sq1($par['T0_chi_id_menu']).' AND `T1`.`chi_id_page` IS NOT NULL)'.PHP_EOL;
     $sql0.=$where0;
     $order0='
        ORDER BY  `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ordre_menu` ASC';
@@ -54,6 +52,12 @@ function sql_303($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la selection sur les menus' , 'exception' => $e , 'id_bdd' => BDD_NUMERO_1 );
+        return array(
+           __xst => __xer ,
+           'sql0' => $sql0 , 
+           'texte_requete' => 'la selection sur les menus' , 
+           'exception' => $e ,
+            'id_bdd' => BDD_NUMERO_1
+         );
     }
 }

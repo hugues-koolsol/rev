@@ -11,10 +11,11 @@ function sql_182($par,&$donnees_retournees,$that){
     }catch(Exception $e){
         return array(/**/
             __xst => __xer , 
-            'source_requete' => $sql0 , 
+            'sql0' => $sql0 , 
             'texte_requete' => 'la suppression dans la table des utilisateurs' ,
             'exception' => $e , 
-            'id_bdd' => BDD_NUMERO_1
+            'id_bdd' => BDD_NUMERO_1,
+            'bdd' => $GLOBALS[__BDD][BDD_NUMERO_1] ,
         );
     }
 }

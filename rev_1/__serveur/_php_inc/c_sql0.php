@@ -61,22 +61,30 @@ class c_sql0{
             /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt , true ) . '</pre>' ; exit(0);*/
             $l_erreur=array( __xst => $tt[__xst]);
             
-            if(isset($tt['source_requete'])){
-
-                $l_erreur['source_requete']=$tt['source_requete'];
-
-            }
-
-            
             if(isset($tt['texte_requete'])){
 
                 $l_erreur['texte_requete']=$tt['texte_requete'];
 
             }
 
+            
             if(isset($tt['code_erreur'])){
 
                 $l_erreur['code_erreur']=$tt['code_erreur'];
+
+            }
+
+            
+            if(isset($tt['bdd'])){
+
+                $l_erreur['bdd']=$tt['bdd'];
+
+            }
+
+            
+            if(isset($tt['sql0'])){
+
+                $l_erreur['sql0']=$tt['sql0'];
 
             }
 
@@ -85,22 +93,24 @@ class c_sql0{
             if(isset($tt['exception'])){
 
                 $l_erreur['getMessage']=$tt['exception']->getMessage();
-                if($GLOBALS[DEVER_SRV] >=1 ){
+                
+                if($GLOBALS[DEVER_SRV] >= 1){
+
                     $donnees_retournees[__x_signaux][__xal][]='' . $l_erreur['getMessage'] . ' [' . __LINE__ . ']';
+
                 }
-            
+
 
             }
+
             
-            if($GLOBALS[DEVER_SRV] >=1 ){
-                $donnees_retournees[__x_signaux][__xal][]='' . var_export($l_erreur , true ) . ' [' . __LINE__ . ']';
+            if($GLOBALS[DEVER_SRV] >= 1){
+
+                $donnees_retournees[__x_signaux][__xal][]='' . var_export($l_erreur,true) . ' [' . __LINE__ . ']';
+
             }
-            
 
             return $l_erreur;
-            echo __FILE__ . ' ' . __LINE__ . ' $l_erreur = <pre>' . var_export($l_erreur,true) . '</pre>' ;
-            exit(0);
-            return $this->traite_erreur_sql($numero_de_sql,$GLOBALS[__BDD][$tt['id_bdd']],$donnees_retournees,$tt['source_requete'],$tt['texte_requete'],$tt['exception']);
 
         }else{
 
@@ -155,20 +165,20 @@ class c_sql0{
     */
     function sql_dependances2($par,&$donnees_retournees){
         $ret=$this->sql_dependances($par,$donnees_retournees);
-        /* 
+        /*
           echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $ret , true ) . '</pre>' ; exit(0);
         */
         
         if($ret[__xst] === __xsu){
-         
-            if($ret[__xva]['nombre_total_des_dependances']>0){
-             
+
+            
+            if($ret[__xva]['nombre_total_des_dependances'] > 0){
+
                 foreach($ret[__xva]['liste_des_dependances'] as $k1 => $v1){
                     $donnees_retournees[__x_signaux][__xdv][]='table ' . $v1['table_dependante'] . ' [' . __LINE__ . ']';
                 }
-             
+
             }
-            
 
             return $ret[__xva]['nombre_total_des_dependances'];
 
@@ -184,22 +194,23 @@ class c_sql0{
       $tt=sql_dependances(array( 'nom_de_la_table' => 'tbl_projets', 'id_enregistrement' => 2 ));
     */
     function sql_dependances($par,&$donnees_retournees){
-     
         $liste_des_dependances=array();
         $nombre_total_des_dependances=0;
         /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( __X_CLE_APPLICATION , true ) . '</pre>' ; exit(0); */
-        if( __X_CLE_APPLICATION==='rev_1' ||  __X_CLE_APPLICATION==='rev_2' ){
-         
-             $nom_fichier_dependances=REPERTOIRE_BDD_SQLITE3.DIRECTORY_SEPARATOR.'fichier_des_dependances_bdd_1.php';
-             $par['id_bdd']=$_SESSION[__X_CLE_APPLICATION]['chi_id_projet'];
-         
+        
+        if(__X_CLE_APPLICATION === 'rev_1' || __X_CLE_APPLICATION === 'rev_2'){
+
+            $nom_fichier_dependances=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'fichier_des_dependances_bdd_1.php';
+            $par['id_bdd']=$_SESSION[__X_CLE_APPLICATION]['chi_id_projet'];
+
         }else{
+
             $tt111=/*sql_inclure_deb*/
                 /* sql_111()
                 SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
                  FROM b1.tbl_bdds T0
-                WHERE (`T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
+                WHERE ( / *** *** / `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
                    AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
                 ;
                 */
@@ -209,9 +220,8 @@ class c_sql0{
                 array( 'T0_chi_id_basedd' => $par['id_bdd'], 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
                 $donnees_retournees
             );
-            
-              echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt111 , true ) . '</pre>' ; exit(0);
-            
+            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export($tt111,true) . '</pre>' ;
+            exit(0);
             
             if($tt111[__xst] === __xsu && count($tt111[__xva]) === 1){
 
@@ -223,7 +233,6 @@ class c_sql0{
                 );
                 $chemin_de_la_bdd='';
                 $chemin_racine2=$obj_doss->construire_chemin($tt111[__xva][0]['T0.chx_dossier_id_basedd']);
-                
                 /*
                   echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_racine2 , true ) . '</pre>' ; exit(0);
                 */
@@ -243,14 +252,16 @@ class c_sql0{
                   echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_de_la_bdd , true ) . '</pre>' ; exit(0);
                 */
                 $nom_fichier_dependances=$chemin_de_la_bdd . DIRECTORY_SEPARATOR . 'fichier_des_dependances_bdd_' . $par['id_bdd'] . '.php';
-                
-                echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nom_fichier_dependances , true ) . '</pre>' ; exit(0);
-                
+                echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export($nom_fichier_dependances,true) . '</pre>' ;
+                exit(0);
                 /*
                   Attention, c'est un require SANS once ici car la variable $tableau_des_dependances DOIT être rechargée
                 */
+
             }
+
         }
+
         /*
           echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nom_fichier_dependances , true ) . '</pre>' ; exit(0);
         */
@@ -269,12 +280,10 @@ class c_sql0{
             }
 
         }
-        
         /*  $donnees_retournees[__x_signaux][__xdv][]='<pre>'.var_export($le_tableau , true).'</pre> [' . __LINE__ . ']'; */
-        
-//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $le_tableau , true ) . '</pre>' ; exit(0);
-//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $GLOBALS[__BDD] , true ) . '</pre>' ; exit(0);
-//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $par , true ) . '</pre>' ; exit(0);
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $le_tableau , true ) . '</pre>' ; exit(0);*/
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $GLOBALS[__BDD] , true ) . '</pre>' ; exit(0);*/
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $par , true ) . '</pre>' ; exit(0);*/
         
         if(count($le_tableau) > 0){
 
@@ -283,9 +292,11 @@ class c_sql0{
                 /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $sql0 , true ) . '</pre>' ; exit(0);*/
                 
                 if($GLOBALS[DEVER_SRV] >= 2){
-                     $donnees_retournees[__x_signaux][__xdv][]='<pre>'.$sql0.'</pre> [' . __LINE__ . ']';
+
+                    $donnees_retournees[__x_signaux][__xdv][]='<pre>' . $sql0 . '</pre> [' . __LINE__ . ']';
+
                 }
-                
+
                 try{
                     $stmt0=$GLOBALS[__BDD][$par['id_bdd']][LIEN_BDD]->prepare($sql0);
                     $res0=$stmt0->execute();
@@ -312,8 +323,6 @@ class c_sql0{
             }
 
         }
-
-
 
         /*
           $donnees_retournees[__x_signaux][__xdv][]='<pre>'.var_export($liste_des_dependances , true).'</pre> [' . __LINE__ . ']';

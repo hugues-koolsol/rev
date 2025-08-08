@@ -10,7 +10,7 @@ function sql_111($par,&$donnees_retournees,$that){
     $where0=' WHERE ( /* */ `T0`.`chi_id_basedd` IN ('.sq0($par['T0_chi_id_basedd']).') AND `T0`.`chx_projet_id_basedd` = '.sq1($par['T0_chx_projet_id_basedd']).')'.PHP_EOL;
     $sql0.=$where0;
     $donnees0=array();
-//    echo __FILE__ . ' ' . __LINE__ . ' BDD_NUMERO_1="'.var_export( $GLOBALS[__BDD][BDD_NUMERO_1] , true ).'" $sql0 = <pre>' .  $sql0  . '</pre>' ; exit(0);
+    //echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' .  $sql0  . '</pre>' ; exit(0);
 
 
     try{
@@ -23,7 +23,6 @@ function sql_111($par,&$donnees_retournees,$that){
                 'T0.chx_dossier_id_basedd' => $tab0[2],
             );
         }
-//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees0 , true ) . '</pre>' ; exit(0);
         return array(
            __xst  => __xsu  ,
            __xva  => $donnees0   ,
@@ -31,6 +30,12 @@ function sql_111($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la selection sur les bdds' , 'exception' => $e , 'id_bdd' => BDD_NUMERO_1 );
+        return array(
+           __xst => __xer ,
+           'sql0' => $sql0 , 
+           'texte_requete' => 'la selection sur les bdds' , 
+           'exception' => $e ,
+            'id_bdd' => BDD_NUMERO_1
+         );
     }
 }

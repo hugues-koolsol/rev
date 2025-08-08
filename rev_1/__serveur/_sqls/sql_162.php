@@ -12,9 +12,7 @@ function sql_162($par,&$donnees_retournees,$that){
        LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_id_source
     ';
     $sql0.=$from0;
-    $where0=' WHERE 1=1 '.PHP_EOL;
-    $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_source`',$par['T0_chi_id_source']);
-    $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_projet_id_source`',$par['T0_chx_projet_id_source']);
+    $where0=' WHERE ( /* */ `T0`.`chi_id_source` = '.sq1($par['T0_chi_id_source']).' AND `T0`.`chx_projet_id_source` = '.sq1($par['T0_chx_projet_id_source']).')'.PHP_EOL;
     $sql0.=$where0;
     $donnees0=array();
     //echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' .  $sql0  . '</pre>' ; exit(0);
@@ -43,6 +41,12 @@ function sql_162($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la selection sur les sources' , 'exception' => $e , 'id_bdd' => BDD_NUMERO_1 );
+        return array(
+           __xst => __xer ,
+           'sql0' => $sql0 , 
+           'texte_requete' => 'la selection sur les sources' , 
+           'exception' => $e ,
+            'id_bdd' => BDD_NUMERO_1
+         );
     }
 }

@@ -9,8 +9,7 @@ function sql_101($par,&$donnees_retournees,$that){
        LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
     ';
     $sql0.=$from0;
-    $where0=' WHERE 1=1 '.PHP_EOL;
-    $where0.=' AND `T0`.`chp_nom_de_connexion_utilisateur` = '.sq1($par['T0_chp_nom_de_connexion_utilisateur']).''.PHP_EOL;
+    $where0=' WHERE `T0`.`chp_nom_de_connexion_utilisateur` = '.sq1($par['T0_chp_nom_de_connexion_utilisateur']).''.PHP_EOL;
     $sql0.=$where0;
     $order0='';
     $sql0.=$order0;
@@ -39,6 +38,12 @@ function sql_101($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la selection sur les utilisateurs' , 'exception' => $e , 'id_bdd' => BDD_NUMERO_1 );
+        return array(
+           __xst => __xer ,
+           'sql0' => $sql0 , 
+           'texte_requete' => 'la selection sur les utilisateurs' , 
+           'exception' => $e ,
+            'id_bdd' => BDD_NUMERO_1
+         );
     }
 }

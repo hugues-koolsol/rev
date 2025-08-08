@@ -40,10 +40,10 @@ function obtenir_les_menus(&$donnees_retournees){
     if(isset($_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant'])
        && isset($_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant'])
     ){
-        /*
-        $t[]='<select><option>outils</option><option>matrice</option><option>html</option><option>js</option><option>php</option><option>sql</option><option>css</option><option>texte</option></select>';
-        */
 
+        /*
+          $t[]='<select><option>outils</option><option>matrice</option><option>html</option><option>js</option><option>php</option><option>sql</option><option>css</option><option>texte</option></select>';
+        */
         $nom_fichier=REPERTOIRE_DU_PROJET . DIRECTORY_SEPARATOR . 'g_' . $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant'] . '_m_' . $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant'] . '.php';
         
         if(is_file($nom_fichier)){
@@ -242,11 +242,16 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
                         if(is_numeric($tt3)){
 
                             $tt3=(int)($tt3);
+                            
                             if(isset($donnees_retournees[__xva]['maj'])){
-                                $donnees_retournees[__xva]['maj'].='allumer_menu(' . $tt3 . ')';
+
+                                $donnees_retournees[__xva]['maj'] .= 'allumer_menu(' . $tt3 . ')';
+
                             }else{
+
                                 $donnees_retournees[__xva]['maj']='allumer_menu(' . $tt3 . ')';
                             }
+
                             /* this.#id_menu*/
 
                         }

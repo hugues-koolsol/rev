@@ -90,16 +90,16 @@ class c_bases1{
         /* $donnees_retournees[__x_signaux][__xer][]=' <pre>' . var_export( $donnees_recues , true ) . '</pre>[' . __LINE__ . '] ';*/
         $tt126=/*sql_inclure_deb*/
             /* sql_126()
-            SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
-            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            SELECT 
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
             `T2`.`chp_nom_projet`
-             FROM b1.tbl_bdds T0
+             FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-            
+            
              LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
             
-            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
                AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
             ;
             */
@@ -209,44 +209,8 @@ class c_bases1{
     /*
       =============================================================================================================
     */
-    function supprimer_un_champ_de_la_table1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        /*
-          $donnees_retournees[__x_signaux][__xer][]='<pre>' . var_export( $donnees_recues , true ) . '</pre>[' . __LINE__ . '] ';
-          return;
-        */
-        $tt144=/*sql_inclure_deb*/
-            /* sql_144()
-            ALTER TABLE :nom_de_la_table DROP COLUMN :nom_du_champ
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
-             /*sql_144()*/ 144,
-            array(/**/
-                'nom_de_la_table' => $donnees_recues[__xva]['nom_de_la_table'],
-                'nom_du_champ' => $donnees_recues[__xva]['nom_du_champ']
-            ),
-            $donnees_retournees
-        );
-        
-        if($tt144[__xst] !== __xsu){
-
-            $donnees_retournees[__x_signaux][__xer][]='Erreur lors du la supression du champ (Est-ce le dernier champ de la table ?) [' . __LINE__ . '] ';
-            return;
-
-        }
-
-        $donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
-        $donnees_retournees[__xst]=__xsu;
-    }
-    
-    /*
-      =============================================================================================================
-    */
     function reecrire_la_base(&$donnees_retournees,&$mat,&$donnees_recues,$id_bdd_de_la_base,$chemin_absolu,$source_sql_de_la_base,$liste_des_tables,$liste_des_tables_champs){
-     
-     
         $chemin_bdd=$chemin_absolu . DIRECTORY_SEPARATOR . 'bdd_' . $id_bdd_de_la_base . '.sqlite';
-
         $repertoire=realpath(dirname($chemin_bdd));
         
         if(!is_file($chemin_bdd)){
@@ -255,8 +219,6 @@ class c_bases1{
             return;
 
         }
-        
-        
 
         $chemin_bdd_base_temporaire=$repertoire . DIRECTORY_SEPARATOR . 'temporaire_' . md5(date('Y-m-d-H-i-s')) . '.db_temporaire';
         $db1temp=new SQLite3($chemin_bdd_base_temporaire);
@@ -326,38 +288,35 @@ class c_bases1{
             if((@rename($chemin_bdd_base_temporaire,$chemin_bdd))){
 
                 $donnees_retournees[__xst]=__xsu;
-                $donnees_retournees[__x_signaux][__xsu][]='La base ('.$id_bdd_de_la_base.') a été réécrite  [' . __LINE__ . '] ';
+                $donnees_retournees[__x_signaux][__xsu][]='La base (' . $id_bdd_de_la_base . ') a été réécrite  [' . __LINE__ . '] ';
                 $donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
 
             }
 
 
-        }     
-     
+        }
+
     }
-    
     /*
       =============================================================================================================
     */
     function reecrire_la_base_a_partir_du_shema_sur_disque(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-     
         $id_bdd_de_la_base=$donnees_recues[__xva]['id_bdd_de_la_base'];
         $source_sql_de_la_base=$donnees_recues[__xva]['source_sql_de_la_base'];
         $liste_des_tables=$donnees_recues[__xva]['liste_des_tables'];
         $liste_des_tables_champs=$donnees_recues[__xva]['liste_des_tables_champs'];
-        
         $tt=/*sql_inclure_deb*/
             /* sql_126()
-            SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
-            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            SELECT 
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
             `T2`.`chp_nom_projet`
-             FROM b1.tbl_bdds T0
+             FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-            
+            
              LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
             
-            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
                AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
             ;
             */
@@ -392,41 +351,44 @@ class c_bases1{
             $donnees_retournees[__x_signaux][__xer][]='[' . __LINE__ . '] ';
             return;
         }
-        
+
         $liste_des_autres_projets=array();
         
-        
-        if( __X_CLE_APPLICATION==='rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']===1){
-           /*on recherche tous les projets>2 */
-        
-            $tt316=$this->sql0->sql_iii(
+        if(__X_CLE_APPLICATION === 'rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1){
+
+            /*on recherche tous les projets>2 */
+            $tt316=/*sql_inclure_deb*/
+                /* sql_316()
+                / ***meta(sur_base_de_reference(1))*** /
+                SELECT 
+                `T0`.`chi_id_projet`
+                 FROM b1.tbl_projets T0
+                WHERE `T0`.`chi_id_projet` > 2
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_316()*/ 316,
-                array( ),
+                array(),
                 $donnees_retournees
             );
             
-            if($tt316[__xst] === __xsu ){
-                foreach($tt316[__xva] as $k1=>$v1){
+            if($tt316[__xst] === __xsu){
+
+                foreach($tt316[__xva] as $k1 => $v1){
                     $liste_des_autres_projets[]=$v1['T0.chi_id_projet'];
                 }
+
             }
+
+
         }
-        
-        
 
         $this->reecrire_la_base($donnees_retournees,$mat,$donnees_recues,$id_bdd_de_la_base,$chemin_absolu,$source_sql_de_la_base,$liste_des_tables,$liste_des_tables_champs);
-        
-
         foreach($liste_des_autres_projets as $k1 => $v1){
             /* on traite les bases des autres projets */
-
             $this->reecrire_la_base($donnees_retournees,$mat,$donnees_recues,$v1,$chemin_absolu,$source_sql_de_la_base,$liste_des_tables,$liste_des_tables_champs);
-
         }
-        
-
-
-
     }
     /*
       =============================================================================================================
@@ -446,11 +408,10 @@ class c_bases1{
                     if($mat[$j][1] === 'id_bdd_de_la_base' && $mat[$j][2] === 'f' && $mat[$j + 1][2] === 'c'){
 
                         $id_bdd_de_la_base=$mat[$j + 1][1];
-                        
+
                     }else if($mat[$j][1] === 'contexte' && $mat[$j][2] === 'f' && $mat[$j + 1][2] === 'c'){
 
                         $contexte=$mat[$j + 1][1];
-
                     }
 
                 }
@@ -464,16 +425,16 @@ class c_bases1{
         */
         $tt126=/*sql_inclure_deb*/
             /* sql_126()
-            SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
-            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            SELECT 
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
             `T2`.`chp_nom_projet`
-             FROM b1.tbl_bdds T0
+             FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-            
+            
              LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
             
-            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
                AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
             ;
             */
@@ -531,20 +492,39 @@ class c_bases1{
             return array( __xst => __xer);
         }
         $db1temp->close();
-        if( __X_CLE_APPLICATION==='rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']===1){
-            if( $contexte==='ajouter_en_bdd_le_champ' || $contexte === 'supprimer_en_bdd_le_champ' || $contexte === 'renommer_en_bdd_un_champ' ){
-               /*on recherche tous les projets>2 et on ajoute ce champ*/
+        
+        if(__X_CLE_APPLICATION === 'rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1){
+
             
-                $tt316=$this->sql0->sql_iii(
+            if($contexte === 'ajouter_en_bdd_le_champ'
+               || $contexte === 'supprimer_en_bdd_le_champ'
+               || $contexte === 'renommer_en_bdd_un_champ'
+            ){
+
+                /*on recherche tous les projets>2 et on ajoute ce champ*/
+                $tt316=/*sql_inclure_deb*/
+                    /* sql_316()
+                    / ***meta(sur_base_de_reference(1))*** /
+                    SELECT 
+                    `T0`.`chi_id_projet`
+                     FROM b1.tbl_projets T0
+                    WHERE `T0`.`chi_id_projet` > 2
+                    ;
+                    */
+                    /*sql_inclure_fin*/
+                    $this->sql0->sql_iii(
                      /*sql_316()*/ 316,
-                    array( ),
+                    array(),
                     $donnees_retournees
                 );
                 
-                if($tt316[__xst] === __xsu ){
-                    foreach($tt316[__xva] as $k1=>$v1){
+                if($tt316[__xst] === __xsu){
+
+                    foreach($tt316[__xva] as $k1 => $v1){
                         $nom_de_fichier_bdd=$chemin[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . 'bdd_' . $v1['T0.chi_id_projet'] . '.sqlite';
+                        
                         if(is_file($nom_de_fichier_bdd)){
+
                             $db1temp=new SQLite3($nom_de_fichier_bdd);
                             try{
                                 $ret=$db1temp->exec($donnees_recues[__xva]['source_sql']);
@@ -554,11 +534,19 @@ class c_bases1{
                                 return array( __xst => __xer);
                             }
                             $db1temp->close();
+
                         }
+
                     }
+
                 }
+
+
             }
+
+
         }
+
     }
     /*
       =============================================================================================================
@@ -934,16 +922,16 @@ class c_bases1{
         $tableaux_retournes=array( 'tableau1' => array(), 'tableau2' => array());
         $tt=/*sql_inclure_deb*/
             /* sql_126()
-            SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
-            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            SELECT 
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
             `T2`.`chp_nom_projet`
-             FROM b1.tbl_bdds T0
+             FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-            
+            
              LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
             
-            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
                AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
             ;
             */
@@ -1090,16 +1078,16 @@ class c_bases1{
         $donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
         $tt=/*sql_inclure_deb*/
             /* sql_126()
-            SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
-            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            SELECT 
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
             `T2`.`chp_nom_projet`
-             FROM b1.tbl_bdds T0
+             FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-            
+            
              LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
             
-            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
                AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
             ;
             */
@@ -1177,11 +1165,9 @@ class c_bases1{
         );
         $tt=/*sql_inclure_deb*/
             /* sql_110()
-            UPDATE b1.tbl_bdds SET 
-
+            UPDATE b1.tbl_bdds SET 
                `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd
-            WHERE (`chi_id_basedd` = :c_chi_id_basedd
-
+            WHERE (`chi_id_basedd` = :c_chi_id_basedd
                AND `chx_projet_id_basedd` = :c_chx_projet_id_basedd) ;
             */
             /*sql_inclure_fin*/
@@ -1195,12 +1181,10 @@ class c_bases1{
 
             $tt111=/*sql_inclure_deb*/
                 /* sql_111()
-                SELECT 
-
+                SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
                  FROM b1.tbl_bdds T0
-                WHERE (`T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
-
+                WHERE ( / *** *** / `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
                    AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
                 ;
                 */
@@ -1289,7 +1273,6 @@ class c_bases1{
             }
 
         }
-        
         /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] , true ) . '</pre>' ; exit(0);*/
         
         if($les_id_des_bases !== ''){
@@ -1299,12 +1282,10 @@ class c_bases1{
             */
             $tt=/*sql_inclure_deb*/
                 /* sql_111()
-                SELECT 
-
+                SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
                  FROM b1.tbl_bdds T0
-                WHERE (`T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
-
+                WHERE ( / *** *** / `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
                    AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
                 ;
                 */
@@ -1317,8 +1298,7 @@ class c_bases1{
                 ),
                 $donnees_retournees
             );
-//                array( 'T0_chi_id_basedd' => $chi_id_basedd, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
-            
+            /* array( 'T0_chi_id_basedd' => $chi_id_basedd, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),*/
             
             if($tt[__xst] !== __xsu){
 
@@ -1326,9 +1306,7 @@ class c_bases1{
 
             }else{
 
-                
-//                $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($tt , true ) . '</pre> [' . __LINE__ . '] ';
-                
+                /* $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($tt , true ) . '</pre> [' . __LINE__ . '] ';*/
                 $donnees_retournees[__xva]['liste_des_bases']=$tt[__xva];
                 $donnees_retournees[__xva]['maj']='methode_module_dynamique1(nom_du_module2("_js/c_svg_bdd1.js"),methode2(traiter_arbre1),valeurs2(liste_des_bases))';
                 $donnees_retournees[__xst]=__xsu;
@@ -1393,26 +1371,16 @@ class c_bases1{
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
             /* sql_117()
-            INSERT INTO b1.`tbl_bdds`(
-
-                `chx_dossier_id_basedd` , 
-
-                `chx_projet_id_basedd` , 
-
-                `chp_commentaire_basedd` , 
-
-                `chp_fournisseur_basedd`
-
-            ) VALUES (
-
-                :chx_dossier_id_basedd , 
-
-                :chx_projet_id_basedd , 
-
-                :chp_commentaire_basedd , 
-
-                :chp_fournisseur_basedd
-
+            INSERT INTO b1.`tbl_bdds`(
+                `chx_dossier_id_basedd` , 
+                `chx_projet_id_basedd` , 
+                `chp_commentaire_basedd` , 
+                `chp_fournisseur_basedd`
+            ) VALUES (
+                :chx_dossier_id_basedd , 
+                :chx_projet_id_basedd , 
+                :chp_commentaire_basedd , 
+                :chp_fournisseur_basedd
             );
             */
             /*sql_inclure_fin*/
@@ -1518,16 +1486,16 @@ class c_bases1{
 
         $tt=/*sql_inclure_deb*/
             /* sql_126()
-            SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
-            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            SELECT 
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
             `T2`.`chp_nom_projet`
-             FROM b1.tbl_bdds T0
+             FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-            
+            
              LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
             
-            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
                AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
             ;
             */
@@ -1542,13 +1510,10 @@ class c_bases1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_118()
-                / ***meta(tester_les_dependances_dans_le_php(1))*** /
-
-                
-
+                / ***meta(tester_les_dependances_dans_le_php(1))*** /
+                
                 DELETE FROM b1.tbl_bdds
-                WHERE (`chi_id_basedd` = :chi_id_basedd
-
+                WHERE (`chi_id_basedd` = :chi_id_basedd
                    AND `chx_projet_id_basedd` = :chx_projet_id_basedd) ;
                 */
                 /*sql_inclure_fin*/
@@ -1629,16 +1594,16 @@ class c_bases1{
         /*si l'utilisateur bidouille l'id dans l'interface*/
         $tt=/*sql_inclure_deb*/
             /* sql_126()
-            SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
-            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+            SELECT 
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
             `T2`.`chp_nom_projet`
-             FROM b1.tbl_bdds T0
+             FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-            
+            
              LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
             
-            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
                AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
             ;
             */
@@ -1653,12 +1618,12 @@ class c_bases1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_116()
-                UPDATE b1.tbl_bdds SET 
-                   `chx_dossier_id_basedd` = :n_chx_dossier_id_basedd , 
-                   `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
-                   `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd , 
+                UPDATE b1.tbl_bdds SET 
+                   `chx_dossier_id_basedd` = :n_chx_dossier_id_basedd , 
+                   `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
+                   `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd , 
                    `chp_fournisseur_basedd` = :n_chp_fournisseur_basedd
-                WHERE (`chi_id_basedd` = :c_chi_id_basedd
+                WHERE (`chi_id_basedd` = :c_chi_id_basedd
                    AND `chx_projet_id_basedd` = :c_chx_projet_id_basedd) ;
                 */
                 /*sql_inclure_fin*/
@@ -1783,16 +1748,16 @@ class c_bases1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_126()
-                SELECT 
-                `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
-                `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+                SELECT 
+                `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+                `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
                 `T2`.`chp_nom_projet`
-                 FROM b1.tbl_bdds T0
+                 FROM b1.tbl_bdds T0
                  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-                
+                
                  LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
                 
-                WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+                WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
                    AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
                 ;
                 */
@@ -1849,12 +1814,10 @@ class c_bases1{
 
             $tt111=/*sql_inclure_deb*/
                 /* sql_111()
-                SELECT 
-
+                SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
                  FROM b1.tbl_bdds T0
-                WHERE (`T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
-
+                WHERE ( / *** *** / `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
                    AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
                 ;
                 */
@@ -1871,10 +1834,8 @@ class c_bases1{
                 $tt=/*sql_inclure_deb*/
                     /* sql_105()
                     DELETE FROM b1.tbl_revs
-                    WHERE (`chx_projet_rev` = :chx_projet_rev
-
-                       AND `chp_provenance_rev` = :chp_provenance_rev
-
+                    WHERE (`chx_projet_rev` = :chx_projet_rev
+                       AND `chp_provenance_rev` = :chp_provenance_rev
                        AND `chx_source_rev` = :chx_source_rev) ;
                     */
                     /*sql_inclure_fin*/
@@ -1926,78 +1887,42 @@ class c_bases1{
                     }
                     $tt=/*sql_inclure_deb*/
                         /* sql_112()
-                        INSERT INTO b1.`tbl_revs`(
-
-                            `chx_projet_rev` , 
-
-                            `chp_provenance_rev` , 
-
-                            `chx_source_rev` , 
-
-                            `chp_id_rev` , 
-
-                            `chp_valeur_rev` , 
-
-                            `chp_type_rev` , 
-
-                            `chp_niveau_rev` , 
-
-                            `chp_quotee_rev` , 
-
-                            `chp_pos_premier_rev` , 
-
-                            `chp_pos_dernier_rev` , 
-
-                            `chp_parent_rev` , 
-
-                            `chp_nbr_enfants_rev` , 
-
-                            `chp_num_enfant_rev` , 
-
-                            `chp_profondeur_rev` , 
-
-                            `chp_pos_ouver_parenthese_rev` , 
-
-                            `chp_enfant_suivant_rev` , 
-
-                            `chp_commentaire_rev`
-
-                        ) VALUES (
-
-                            :chx_projet_rev , 
-
-                            :chp_provenance_rev , 
-
-                            :chx_source_rev , 
-
-                            :chp_id_rev , 
-
-                            :chp_valeur_rev , 
-
-                            :chp_type_rev , 
-
-                            :chp_niveau_rev , 
-
-                            :chp_quotee_rev , 
-
-                            :chp_pos_premier_rev , 
-
-                            :chp_pos_dernier_rev , 
-
-                            :chp_parent_rev , 
-
-                            :chp_nbr_enfants_rev , 
-
-                            :chp_num_enfant_rev , 
-
-                            :chp_profondeur_rev , 
-
-                            :chp_pos_ouver_parenthese_rev , 
-
-                            :chp_enfant_suivant_rev , 
-
-                            :chp_commentaire_rev
-
+                        INSERT INTO b1.`tbl_revs`(
+                            `chx_projet_rev` , 
+                            `chp_provenance_rev` , 
+                            `chx_source_rev` , 
+                            `chp_id_rev` , 
+                            `chp_valeur_rev` , 
+                            `chp_type_rev` , 
+                            `chp_niveau_rev` , 
+                            `chp_quotee_rev` , 
+                            `chp_pos_premier_rev` , 
+                            `chp_pos_dernier_rev` , 
+                            `chp_parent_rev` , 
+                            `chp_nbr_enfants_rev` , 
+                            `chp_num_enfant_rev` , 
+                            `chp_profondeur_rev` , 
+                            `chp_pos_ouver_parenthese_rev` , 
+                            `chp_enfant_suivant_rev` , 
+                            `chp_commentaire_rev`
+                        ) VALUES (
+                            :chx_projet_rev , 
+                            :chp_provenance_rev , 
+                            :chx_source_rev , 
+                            :chp_id_rev , 
+                            :chp_valeur_rev , 
+                            :chp_type_rev , 
+                            :chp_niveau_rev , 
+                            :chp_quotee_rev , 
+                            :chp_pos_premier_rev , 
+                            :chp_pos_dernier_rev , 
+                            :chp_parent_rev , 
+                            :chp_nbr_enfants_rev , 
+                            :chp_num_enfant_rev , 
+                            :chp_profondeur_rev , 
+                            :chp_pos_ouver_parenthese_rev , 
+                            :chp_enfant_suivant_rev , 
+                            :chp_commentaire_rev
                         );
                         */
                         /*sql_inclure_fin*/
@@ -2050,16 +1975,16 @@ class c_bases1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_126()
-                SELECT 
-                `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
-                `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
+                SELECT 
+                `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , 
+                `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T2`.`chi_id_projet` , 
                 `T2`.`chp_nom_projet`
-                 FROM b1.tbl_bdds T0
+                 FROM b1.tbl_bdds T0
                  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-                
+                
                  LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
                 
-                WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+                WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
                    AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
                 ;
                 */
@@ -2191,14 +2116,15 @@ class c_bases1{
       =============================================================================================================
     */
     function page_liste_des_bases1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-     
-     
+        
         if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
+
             $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
             $donnees_retournees[__xst]=__xsu;
             return;
+
         }
-     
+
         $__nbMax=10;
         $par=array();
         $par['T0_chi_id_basedd']='';
@@ -2305,19 +2231,14 @@ class c_bases1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_115()
-            SELECT 
-
+            SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chx_dossier_id_basedd` , `T1`.`chp_nom_dossier`
-             FROM b1.tbl_bdds T0
-
+             FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
             
-            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
-
-               AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd) 
-
-            ORDER BY `T0`.`chi_id_basedd` ASC  
-
+            WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
+               AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd) 
+            ORDER BY `T0`.`chi_id_basedd` ASC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
@@ -2412,8 +2333,6 @@ class c_bases1{
         $donnees_retournees[__x_action]='c_bases1.page_liste_des_bases1()';
         $donnees_retournees[__xst]=__xsu;
     }
-    
-    
     /*
       =============================================================================================================
     */
@@ -2451,7 +2370,6 @@ class c_bases1{
 
         /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = "' . $id_de_la_base . '" <pre>' . var_export($projet_rev,true) . '</pre>' ; exit(0); */
         
-        
         if($id_de_la_base === 0){
 
             $donnees_retournees[__x_signaux][__xal][]=' $id_de_la_base non trouvé [' . __LINE__ . ']';
@@ -2461,21 +2379,17 @@ class c_bases1{
 
         
         if($projet_rev === 1){
-         
-         
-            $chemin_bdd=$chemin_des_bases_rev=REPERTOIRE_BDD_SQLITE3.DIRECTORY_SEPARATOR.'bdd_'.$id_de_la_base.'.sqlite';   
-            
+
+            $chemin_bdd=$chemin_des_bases_rev=REPERTOIRE_BDD_SQLITE3 . DIRECTORY_SEPARATOR . 'bdd_' . $id_de_la_base . '.sqlite';
 
         }else{
 
             $tt111=/*sql_inclure_deb*/
                 /* sql_111()
-                SELECT 
-
+                SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
                  FROM b1.tbl_bdds T0
-                WHERE (`T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
-
+                WHERE ( / *** *** / `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
                    AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
                 ;
                 */
@@ -2489,7 +2403,7 @@ class c_bases1{
             
             if($tt111[__xst] !== __xsu || count($tt111[__xva]) !== 1){
 
-                $donnees_retournees[__x_signaux][__xal][]=' enregistrement de la base non trouvé ' . var_export( $tt111[__xva] , true ) .' [' . __LINE__ . ']';
+                $donnees_retournees[__x_signaux][__xal][]=' enregistrement de la base non trouvé ' . var_export($tt111[__xva],true) . ' [' . __LINE__ . ']';
                 return;
 
             }

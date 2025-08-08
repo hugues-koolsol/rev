@@ -38,10 +38,11 @@ function sql_154($par,&$donnees_retournees,$that){
     }catch(Exception $e){
         return array(/**/
             __xst => __xer , 
-            'source_requete' => $sql0 , 
+            'sql0' => $sql0 , 
             'texte_requete' => 'l\'insertion dans la table des sources' ,
             'exception' => $e , 
-            'id_bdd' => BDD_NUMERO_1
+            'id_bdd' => BDD_NUMERO_1,
+            'bdd' => $GLOBALS[__BDD][BDD_NUMERO_1] ,
         );
     }
 }

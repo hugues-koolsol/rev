@@ -191,7 +191,7 @@ class c_pages1{
                     'chx_source_page' => $donnees_recues[__xva]['chx_source_page'] === '' ? null : $donnees_recues[__xva]['chx_source_page'],
                     'chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
                     'cht_contenu_methode_page' => $donnees_recues[__xva]['cht_contenu_methode_page'],
-                    'cht_complement_page' => $donnees_recues[__xva]['cht_complement_page'],
+                    'cht_complement_page' => $donnees_recues[__xva]['cht_complement_page']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
@@ -401,11 +401,10 @@ class c_pages1{
         );
         
         if($tt[__xst] === __xsu){
-         
-         
+
             /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues[__xva]['chx_source_page'] , true ) . '</pre>' ; exit(0);*/
-         
-            if($donnees_recues[__xva]['chx_source_page']!==null && $donnees_recues[__xva]['chx_source_page']!==''){
+            
+            if($donnees_recues[__xva]['chx_source_page'] !== null && $donnees_recues[__xva]['chx_source_page'] !== ''){
 
                 $tt162=/*sql_inclure_deb*/
                     /* sql_162()
@@ -482,6 +481,8 @@ class c_pages1{
                     return;
 
                 }
+
+
             }
 
             /*
@@ -512,7 +513,7 @@ class c_pages1{
                     'n_chx_source_page' => $donnees_recues[__xva]['chx_source_page'],
                     'n_chp_methode_page' => $donnees_recues[__xva]['chp_methode_page'],
                     'n_cht_contenu_methode_page' => $donnees_recues[__xva]['cht_contenu_methode_page'],
-                    'n_cht_complement_page' => $donnees_recues[__xva]['cht_complement_page'],
+                    'n_cht_complement_page' => $donnees_recues[__xva]['cht_complement_page']
                 ),
                 $donnees_retournees
             );

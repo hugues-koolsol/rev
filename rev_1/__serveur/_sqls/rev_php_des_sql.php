@@ -22,7 +22,8 @@ WHERE ( /* */ `T0`.`chi_id_requete` = :T0_chi_id_requete
    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete
    AND `T0`.`chp_type_requete` LIKE :T0_chp_type_requete
    AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete
-   AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2) 
+   AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2
+   AND `T0`.`cht_commentaire_requete` LIKE :T0_cht_commentaire_requete) 
 ORDER BY `T0`.`chi_id_requete` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',
@@ -90,7 +91,7 @@ WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
 
 DELETE FROM b1.tbl_sources
 WHERE (`chx_projet_id_source` = :chx_projet_id_source) ;',
-    'cht_commentaire_requete' => '**dispo*** sources par projet',
+    'cht_commentaire_requete' => '**dispo***',
   ),
   109 => 
   array (
@@ -487,7 +488,7 @@ WHERE (`chi_id_source` = :chi_id_source
   144 => 
   array (
     'cht_sql_requete' => 'ALTER TABLE :nom_de_la_table DROP COLUMN :nom_du_champ',
-    'cht_commentaire_requete' => NULL,
+    'cht_commentaire_requete' => '***dispo***',
   ),
   145 => 
   array (

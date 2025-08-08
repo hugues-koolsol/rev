@@ -155,12 +155,10 @@ class c_projets1{
 
         $tt=/*sql_inclure_deb*/
             /* sql_166()
-            SELECT 
-
+            SELECT 
             `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier`
              FROM tbl_dossiers T0
-            WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
-
+            WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
                AND `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier)
             ;
             */
@@ -194,12 +192,10 @@ class c_projets1{
                     $chemin=DIRECTORY_SEPARATOR . $tt[__xva][0][0] . $chemin;
                     $tt=/*sql_inclure_deb*/
                         /* sql_166()
-                        SELECT 
-
+                        SELECT 
                         `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier`
                          FROM tbl_dossiers T0
-                        WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
-
+                        WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
                            AND `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier)
                         ;
                         */
@@ -309,8 +305,7 @@ class c_projets1{
             $GLOBALS[__BDD][$chi_id_projet][LIEN_BDD]=$db;
             $tt160=/*sql_inclure_deb*/
                 /* sql_160()
-                SELECT 
-
+                SELECT 
                 `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet`
                  FROM tbl_projets T0
                 WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet)
@@ -609,22 +604,14 @@ EOT;
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt136=/*sql_inclure_deb*/
             /* sql_136()
-            / ***meta(sur_base_de_reference(1))*** /
-
-            
-
-            INSERT INTO b1.`tbl_projets`(
-
-                `chp_nom_projet` , 
-
-                `cht_commentaire_projet`
-
-            ) VALUES (
-
-                :chp_nom_projet , 
-
-                :cht_commentaire_projet
-
+            / ***meta(sur_base_de_reference(1))*** /
+            
+            INSERT INTO b1.`tbl_projets`(
+                `chp_nom_projet` , 
+                `cht_commentaire_projet`
+            ) VALUES (
+                :chp_nom_projet , 
+                :cht_commentaire_projet
             );
             */
             /*sql_inclure_fin*/
@@ -730,18 +717,12 @@ EOT;
 
         $tt56=/*sql_inclure_deb*/
             /* sql_156()
-            INSERT INTO `tbl_projets`(
-
-                `chi_id_projet` , 
-
-                `chp_nom_projet`
-
-            ) VALUES (
-
-                :chi_id_projet , 
-
-                :chi_id_projet
-
+            INSERT INTO `tbl_projets`(
+                `chi_id_projet` , 
+                `chp_nom_projet`
+            ) VALUES (
+                :chi_id_projet , 
+                :chi_id_projet
             );
             */
             /*sql_inclure_fin*/
@@ -799,26 +780,16 @@ EOT;
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt2=/*sql_inclure_deb*/
             /* sql_159()
-            INSERT INTO `tbl_dossiers`(
-
-                `chi_id_dossier` , 
-
-                `chx_projet_dossier` , 
-
-                `chp_nom_dossier` , 
-
-                `chx_parent_dossier`
-
-            ) VALUES (
-
-                :chi_id_dossier , 
-
-                :chx_projet_dossier , 
-
-                :chp_nom_dossier , 
-
-                :chx_parent_dossier
-
+            INSERT INTO `tbl_dossiers`(
+                `chi_id_dossier` , 
+                `chx_projet_dossier` , 
+                `chp_nom_dossier` , 
+                `chx_parent_dossier`
+            ) VALUES (
+                :chi_id_dossier , 
+                :chx_projet_dossier , 
+                :chp_nom_dossier , 
+                :chx_parent_dossier
             );
             */
             /*sql_inclure_fin*/
@@ -869,14 +840,14 @@ EOT;
                         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
                         $creation_dossier=/*sql_inclure_deb*/
                             /* sql_137()
-                            INSERT INTO b1.`tbl_dossiers`(
-                                `chx_projet_dossier` , 
-                                `chp_nom_dossier` , 
-                                `chx_parent_dossier`
-                            ) VALUES (
-                                :chx_projet_dossier , 
-                                :chp_nom_dossier , 
-                                :chx_parent_dossier
+                            INSERT INTO b1.`tbl_dossiers`(
+                                `chx_projet_dossier` , 
+                                `chp_nom_dossier` , 
+                                `chx_parent_dossier`
+                            ) VALUES (
+                                :chx_projet_dossier , 
+                                :chp_nom_dossier , 
+                                :chx_parent_dossier
                             );
                             */
                             /*sql_inclure_fin*/
@@ -993,12 +964,10 @@ EOT;
                 */
                 $tt2=/*sql_inclure_deb*/
                     /* sql_169()
-                    SELECT 
-
+                    SELECT 
                     `T0`.`chi_id_dossier`
                      FROM b1.tbl_dossiers T0
-                    WHERE ( / *** *** / `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
-
+                    WHERE ( / *** *** / `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
                        AND `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier)
                     ;
                     */
@@ -1111,12 +1080,13 @@ EOT;
         /*si l'utilisateur bidouille l'id dans l'interface*/
         $tt=/*sql_inclure_deb*/
             /* sql_134()
-            SELECT 
-            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+            / ***meta(sur_base_de_reference(1))*** /
+            SELECT 
+            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , `T0`.`cht_commentaire_projet` , 
             `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
-             FROM b1.tbl_projets T0
+             FROM b1.tbl_projets T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
-            
+            
              LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_menus_projet
             
             WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
@@ -1133,10 +1103,8 @@ EOT;
 
             $tt=/*sql_inclure_deb*/
                 /* sql_145()
-                / ***meta(tester_les_dependances_dans_le_php(1))*** /
-
-                
-
+                / ***meta(tester_les_dependances_dans_le_php(1))*** /
+                
                 DELETE FROM b1.tbl_projets
                 WHERE (`chi_id_projet` = :chi_id_projet) ;
                 */
@@ -1239,12 +1207,13 @@ EOT;
         /*si l'utilisateur bidouille l'id dans l'interface*/
         $tt=/*sql_inclure_deb*/
             /* sql_134()
-            SELECT 
-            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+            / ***meta(sur_base_de_reference(1))*** /
+            SELECT 
+            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , `T0`.`cht_commentaire_projet` , 
             `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
-             FROM b1.tbl_projets T0
+             FROM b1.tbl_projets T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
-            
+            
              LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_menus_projet
             
             WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
@@ -1265,15 +1234,13 @@ EOT;
             */
             $tt=/*sql_inclure_deb*/
                 /* sql_148()
-                UPDATE b1.tbl_projets SET 
-
-                   `chp_nom_projet` = :n_chp_nom_projet , 
-
-                   `cht_commentaire_projet` = :n_cht_commentaire_projet , 
-
-                   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
-
-                   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
+                / ***meta(sur_base_de_reference(1))*** /
+                
+                UPDATE b1.tbl_projets SET 
+                   `chp_nom_projet` = :n_chp_nom_projet , 
+                   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
+                   `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet , 
+                   `cht_commentaire_projet` = :n_cht_commentaire_projet
                 WHERE `chi_id_projet` = :c_chi_id_projet ;
                 */
                 /*sql_inclure_fin*/
@@ -1329,10 +1296,10 @@ EOT;
                     $db_1=new SQLite3($chemin_bdd);
                     $tt305=/*sql_inclure_deb*/
                         /* sql_305()
-                        UPDATE tbl_projets SET 
-                           `chp_nom_projet` = :n_chp_nom_projet , 
-                           `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
-                           `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
+                        UPDATE tbl_projets SET 
+                           `chp_nom_projet` = :n_chp_nom_projet , 
+                           `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
+                           `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet , 
                            `cht_commentaire_projet` = :n_cht_commentaire_projet
                         WHERE `chi_id_projet` = :c_chi_id_projet ;
                         */
@@ -1483,12 +1450,13 @@ EOT;
 
             $tt=/*sql_inclure_deb*/
                 /* sql_134()
-                SELECT 
-                `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+                / ***meta(sur_base_de_reference(1))*** /
+                SELECT 
+                `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , `T0`.`cht_commentaire_projet` , 
                 `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
-                 FROM b1.tbl_projets T0
+                 FROM b1.tbl_projets T0
                  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
-                
+                
                  LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_menus_projet
                 
                 WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
@@ -1550,12 +1518,13 @@ EOT;
 
             $tt=/*sql_inclure_deb*/
                 /* sql_134()
-                SELECT 
-                `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+                / ***meta(sur_base_de_reference(1))*** /
+                SELECT 
+                `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , `T0`.`cht_commentaire_projet` , 
                 `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
-                 FROM b1.tbl_projets T0
+                 FROM b1.tbl_projets T0
                  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
-                
+                
                  LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_menus_projet
                 
                 WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
@@ -2051,12 +2020,10 @@ EOT;
         $liste_des_sources_binaires=array();
         $tt146=/*sql_inclure_deb*/
             /* sql_146()
-            SELECT 
-
+            SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source`
              FROM b1.tbl_sources T0
-            WHERE (`T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
-
+            WHERE (`T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
                AND `T0`.`che_binaire_source` = :T0_che_binaire_source)
             ;
             */
@@ -2129,10 +2096,8 @@ EOT;
         /* on supprime les projets >=2 du projet 2 */
         $tt1=/*sql_inclure_deb*/
             /* sql_157()
-            / ***meta(tester_les_dependances_dans_le_php(1))*** /
-
-            
-
+            / ***meta(tester_les_dependances_dans_le_php(1))*** /
+            
             DELETE FROM b1.tbl_projets
             WHERE `chi_id_projet` >= :chi_id_projet ;
             */
@@ -2179,8 +2144,7 @@ EOT;
         );
         $tt123=/*sql_inclure_deb*/
             /* sql_123()
-            SELECT 
-
+            SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chx_parent_dossier` , `T0`.`che_contient_genere_dossier`
              FROM b1.tbl_dossiers T0
             WHERE `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
@@ -2260,14 +2224,14 @@ EOT;
                         $nom_du_dossier=substr($k1,strrpos($k1,'\\') + 1);
                         $tt137=/*sql_inclure_deb*/
                             /* sql_137()
-                            INSERT INTO b1.`tbl_dossiers`(
-                                `chx_projet_dossier` , 
-                                `chp_nom_dossier` , 
-                                `chx_parent_dossier`
-                            ) VALUES (
-                                :chx_projet_dossier , 
-                                :chp_nom_dossier , 
-                                :chx_parent_dossier
+                            INSERT INTO b1.`tbl_dossiers`(
+                                `chx_projet_dossier` , 
+                                `chp_nom_dossier` , 
+                                `chx_parent_dossier`
+                            ) VALUES (
+                                :chx_projet_dossier , 
+                                :chp_nom_dossier , 
+                                :chx_parent_dossier
                             );
                             */
                             /*sql_inclure_fin*/
@@ -2403,11 +2367,11 @@ EOT;
         */
         $tt306=/*sql_inclure_deb*/
             /* sql_306()
-            / ***meta(sur_base_de_reference(1))*** /
-            SELECT 
+            / ***meta(sur_base_de_reference(1))*** /
+            SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T0`.`che_contient_genere_dossier`
              FROM b1.tbl_dossiers T0
-            WHERE (`T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier)
+            WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
             ;
             */
             /*sql_inclure_fin*/
@@ -2423,8 +2387,8 @@ EOT;
             return;
 
         }
-        $tableau_des_dossiers=array();
 
+        $tableau_des_dossiers=array();
         /*
           echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export[ $tt306[__xva] , true ] . '</pre>' ; exit[0];
           array [
@@ -2446,7 +2410,9 @@ EOT;
         */
         $a_inserer=array();
         foreach($tt306[__xva] as $k1 => $v1){
-            if($v1['T0.chi_id_dossier']!==1){
+            
+            if($v1['T0.chi_id_dossier'] !== 1){
+
                 $a_inserer[]=array(
                     'chi_id_dossier' => $v1['T0.chi_id_dossier'],
                     'chx_projet_dossier' => $chi_id_projet,
@@ -2456,30 +2422,30 @@ EOT;
                     'chp__dtm_dossier' => $GLOBALS[__date_ms],
                     'chp__dtc_dossier' => $GLOBALS[__date_ms]
                 );
+
             }
-            $tableau_des_dossiers[$v1['T0.chi_id_dossier']]=array(
-                'chp_nom_dossier' => $v1['T0.chp_nom_dossier']
-            );
+
+            $tableau_des_dossiers[$v1['T0.chi_id_dossier']]=array( 'chp_nom_dossier' => $v1['T0.chp_nom_dossier']);
         }
-//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $a_inserer , true ) . '</pre>' ; exit(0);
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $a_inserer , true ) . '</pre>' ; exit(0);*/
         $tt307=/*sql_inclure_deb*/
             /* sql_307()
-            INSERT INTO b1.`tbl_dossiers`(
-                `chi_id_dossier` , 
-                `chx_projet_dossier` , 
-                `chp_nom_dossier` , 
-                `chx_parent_dossier` , 
-                `che_contient_genere_dossier` , 
-                `chp__dtm_dossier` , 
-                `chp__dtc_dossier`
-            ) VALUES (
-                :chi_id_dossier , 
-                :chx_projet_dossier , 
-                :chp_nom_dossier , 
-                :chx_parent_dossier , 
-                :che_contient_genere_dossier , 
-                :chp__dtm_dossier , 
-                :chp__dtc_dossier
+            INSERT INTO b1.`tbl_dossiers`(
+                `chi_id_dossier` , 
+                `chx_projet_dossier` , 
+                `chp_nom_dossier` , 
+                `chx_parent_dossier` , 
+                `che_contient_genere_dossier` , 
+                `chp__dtm_dossier` , 
+                `chp__dtc_dossier`
+            ) VALUES (
+                :chi_id_dossier , 
+                :chx_projet_dossier , 
+                :chp_nom_dossier , 
+                :chx_parent_dossier , 
+                :che_contient_genere_dossier , 
+                :chp__dtm_dossier , 
+                :chp__dtc_dossier
             );
             */
             /*sql_inclure_fin*/
@@ -2498,14 +2464,12 @@ EOT;
 
         /*
           2° quand le projet a été créé, il n'avait pas pas les dossiers des requetes et des menus initialisés.
-              on le fait ici
+          on le fait ici
         */
-
-
-         $tt308=/*sql_inclure_deb*/
+        $tt308=/*sql_inclure_deb*/
             /* sql_308()
-            / ***meta(sur_base_de_reference(1))*** /
-            SELECT 
+            / ***meta(sur_base_de_reference(1))*** /
+            SELECT 
             `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet`
              FROM b1.tbl_projets T0
             WHERE (`T0`.`chi_id_projet` = 1)
@@ -2524,15 +2488,14 @@ EOT;
             return;
 
         }
-        
-        
+
         /*
           echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt308[__xva] , true ) . '</pre>' ; exit(0);
         */
         $tt309=/*sql_inclure_deb*/
             /* sql_309()
-            UPDATE b1.tbl_projets SET 
-               `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
+            UPDATE b1.tbl_projets SET 
+               `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
                `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
             WHERE (`chi_id_projet` = :c_chi_id_projet) ;
             */
@@ -2549,40 +2512,53 @@ EOT;
             return;
 
         }
-        
+
         /*
           3° création effective des dossiers sur disque
         */
-        
         require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
         $obj_doss=new c_dossiers1(
             $donnees_retournees,
              /*matrice*/ $mat,
             $donnees_recues
         );
-        
         foreach($tt306[__xva] as $k1 => $v1){
             $chemin=$obj_doss->construire_chemin($v1['T0.chi_id_dossier']);
-            if($chemin[__xst]===__xsu){
-                if($v1['T0.chi_id_dossier']!==1){
+            
+            if($chemin[__xst] === __xsu){
+
+                
+                if($v1['T0.chi_id_dossier'] !== 1){
+
+                    
                     if(!is_dir($chemin[__xva]['chemin_absolu'])){
-                        if(!mkdir($chemin[__xva]['chemin_absolu'] , 0777 , true )){
+
+                        
+                        if(!mkdir($chemin[__xva]['chemin_absolu'],0777,true)){
+
                             $donnees_retournees[__x_signaux][__xer][]='erreur sur la création du dossier sur disque  [' . __LINE__ . ']';
                             return;
+
                         }
+
+
                     }
+
+
                 }
+
                 $tableau_des_dossiers[$v1['T0.chi_id_dossier']]['chemin_absolu']=$chemin[__xva]['chemin_absolu'];
-                
+
             }else{
+
                 $donnees_retournees[__x_signaux][__xer][]='erreur sur la création du dossier sur disque  [' . __LINE__ . ']';
                 return;
             }
+
             /*
               $donnees_retournees[__x_signaux][__xdv][]='$chemin=' . var_export( $chemin , true ) . ' [' . __LINE__ . ']';
             */
         }
-        
         /*
           =====================================================================================================
           B° on insère les sources sauf ceux qui contiennent '%test%'
@@ -2591,18 +2567,19 @@ EOT;
         */
         $tt313=/*sql_inclure_deb*/
             /* sql_313()
-            / ***meta(sur_base_de_reference(1))*** /
-            SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+            / ***meta(sur_base_de_reference(1))*** /
+            SELECT 
+            `T0`.`chi_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`chx_dossier_id_source`
              FROM b1.tbl_sources T0
-            WHERE (`T0`.`chi_id_source` < :T0_chi_id_source
-               AND `T0`.`chp_nom_source` NOT LIKE :T0_chp_nom_source)
-            ;            */
+            WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
+               AND `T0`.`chp_nom_source` NOT LIKE :T0_chp_nom_source) OR `T0`.`chi_id_source` IN (:T0_chi_id_source2))
+            ;
+            */
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
              /*sql_313*/ 313,
-            array( 'T0_chp_nom_source' => '%test%' ,  'T0_chi_id_source' => 50 ,   'T0_chi_id_source2' => '156,158,168,167,154,60'),
+            array( 'T0_chp_nom_source' => '%test%', 'T0_chi_id_source' => 50, 'T0_chi_id_source2' => '156,158,168,167,154,60'),
             $donnees_retournees
         );
         
@@ -2620,25 +2597,48 @@ EOT;
                 'chx_projet_id_source' => $chi_id_projet,
                 'chp_nom_source' => $v1['T0.chp_nom_source'],
                 'cht_commentaire_source' => $v1['T0.cht_commentaire_source'],
-                
                 'che_binaire_source' => $v1['T0.che_binaire_source'],
                 'chx_dossier_id_source' => $v1['T0.chx_dossier_id_source'],
                 'chp__dtm_source' => $GLOBALS[__date_ms],
                 'chp__dtc_source' => $GLOBALS[__date_ms]
             );
         }
-        $tt314=$this->sql0->sql_iii(
+        $tt314=/*sql_inclure_deb*/
+            /* sql_314()
+            INSERT INTO b1.`tbl_sources`(
+                `chi_id_source` , 
+                `chx_projet_id_source` , 
+                `chp_nom_source` , 
+                `cht_commentaire_source` , 
+                `che_binaire_source` , 
+                `chp__dtm_source` , 
+                `chp__dtc_source` , 
+                `chx_dossier_id_source`
+            ) VALUES (
+                :chi_id_source , 
+                :chx_projet_id_source , 
+                :chp_nom_source , 
+                :cht_commentaire_source , 
+                :che_binaire_source , 
+                :chp__dtm_source , 
+                :chp__dtc_source , 
+                :chx_dossier_id_source
+            );
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_314*/ 314,
             $a_inserer,
             $donnees_retournees
         );
-
+        
         if($tt314[__xst] !== __xsu){
 
             $donnees_retournees[__x_signaux][__xer][]='erreur sur l\'insertion des sources  [' . __LINE__ . ']';
             return;
 
         }
+
         /*
           2° on importe les sources
         */
@@ -2646,31 +2646,30 @@ EOT;
           echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tableau_des_dossiers , true ) . '</pre>' ; exit(0);
         */
         foreach($tt313[__xva] as $k1 => $v1){
-            $fichier_de_revn=$tableau_des_dossiers[$v1['T0.chx_dossier_id_source']]['chemin_absolu'].DIRECTORY_SEPARATOR.$v1['T0.chp_nom_source'];
-            $fichier_de_rev1=str_replace(DIRECTORY_SEPARATOR.'rev_'.$chi_id_projet.DIRECTORY_SEPARATOR,DIRECTORY_SEPARATOR.'rev_'.'1'.DIRECTORY_SEPARATOR,$fichier_de_revn);
+            $fichier_de_revn=$tableau_des_dossiers[$v1['T0.chx_dossier_id_source']]['chemin_absolu'] . DIRECTORY_SEPARATOR . $v1['T0.chp_nom_source'];
+            $fichier_de_rev1=str_replace(DIRECTORY_SEPARATOR . 'rev_' . $chi_id_projet . DIRECTORY_SEPARATOR,DIRECTORY_SEPARATOR . 'rev_' . '1' . DIRECTORY_SEPARATOR,$fichier_de_revn);
             $contenu=file_get_contents($fichier_de_rev1);
+            
+            if($contenu !== false){
 
-            if($contenu!==false){
+                $contenu=str_replace('rev_1','rev_' . $chi_id_projet,$contenu);
+                $retour=file_put_contents($fichier_de_revn,$contenu);
+                
+                if($retour === false){
 
-               $contenu=str_replace('rev_1','rev_'.$chi_id_projet,$contenu);
-               $retour=file_put_contents( $fichier_de_revn , $contenu );
-               
-               if($retour===false){
+                    $donnees_retournees[__x_signaux][__xer][]='erreur sur la copie de sources de rev_1 vers destination  [' . __LINE__ . ']';
+                    return;
 
-                   $donnees_retournees[__x_signaux][__xer][]='erreur sur la copie de sources de rev_1 vers destination  [' . __LINE__ . ']';
-                   return;
+                }
 
-               }
+
             }else{
 
-                   $donnees_retournees[__x_signaux][__xer][]='erreur sur la copie de sources de rev_1 vers destination  [' . __LINE__ . ']';
-                   return;
-
+                $donnees_retournees[__x_signaux][__xer][]='erreur sur la copie de sources de rev_1 vers destination  [' . __LINE__ . ']';
+                return;
             }
-               
+
         }
-        
-        
         $donnees_retournees[__x_signaux][__xsu][]='le projet a été initialisé  [' . __LINE__ . ']';
         $donnees_retournees[__xst]=__xsu;
     }
@@ -2785,20 +2784,14 @@ EOT;
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_133()
-            / ***meta(sur_base_de_reference(1))*** /
-
-            SELECT 
-
+            / ***meta(sur_base_de_reference(1))*** /
+            SELECT 
             `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
              FROM b1.tbl_projets T0
-            WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet
-
-               AND `T0`.`chp_nom_projet` LIKE :T0_chp_nom_projet
-
-               AND `T0`.`cht_commentaire_projet` LIKE :T0_cht_commentaire_projet) 
-
-            ORDER BY `T0`.`chi_id_projet` ASC  
-
+            WHERE ( / *** *** / `T0`.`chi_id_projet` = :T0_chi_id_projet
+               AND `T0`.`chp_nom_projet` LIKE :T0_chp_nom_projet
+               AND `T0`.`cht_commentaire_projet` LIKE :T0_cht_commentaire_projet) 
+            ORDER BY `T0`.`chi_id_projet` ASC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
@@ -3006,42 +2999,54 @@ EOT;
 
             }
 
-            if(__X_CLE_APPLICATION === 'rev_1' && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet']) && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] > 2 && $v0['T0.chi_id_projet'] > 2){
+            
+            if(__X_CLE_APPLICATION === 'rev_1'
+               && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])
+               && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] > 2
+               && $v0['T0.chi_id_projet'] > 2
+            ){
 
                 $lsttbl .= '<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_projets1.initialiser_un_projet(chi_id_projet(' . $v0['T0.chi_id_projet'] . '))" title="sauvegarder la base du projet">initialiser</div>';
 
             }
-            if(__X_CLE_APPLICATION === 'rev_1' && $v0['T0.chi_id_projet'] === 1 && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet']) ){
-                $lsttbl.='<div class="hug_bouton" data-hug_click="c_divers1.generer_index_html()">modifier la version</div>';
+
+            
+            if(__X_CLE_APPLICATION === 'rev_1'
+               && $v0['T0.chi_id_projet'] === 1
+               && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])
+            ){
+
+                $lsttbl .= '<div class="hug_bouton" data-hug_click="c_divers1.generer_index_html()">modifier la version</div>';
+
             }
+
             $lsttbl .= '</div>';
             /*
-            
-            
-            
+              
+              
+              
             */
             $lsttbl .= '</td>';
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T0.chi_id_projet'] . '';
             $lsttbl .= '</td>';
-            
             $couleur='';
+            
             if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])
                && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === $v0['T0.chi_id_projet']
             ){
+
                 $couleur=' class="yy__x_signaux___xsu" ';
 
             }
-            $lsttbl .= '<td id="req_' . $v0['T0.chi_id_projet'] . '"  '.$couleur.' style="text-align:left;" title="' . enti1($v0['T0.cht_commentaire_projet']) . '">';
 
-
-
+            $lsttbl .= '<td id="req_' . $v0['T0.chi_id_projet'] . '"  ' . $couleur . ' style="text-align:left;" title="' . enti1($v0['T0.cht_commentaire_projet']) . '">';
+            
             if($v0['T0.chp_nom_projet'] !== null){
 
                 $cmd='c_fonctions_js1(ajoute_le_contenu_du_titre(req_' . $v0['T0.chi_id_projet'] . '))';
                 $lsttbl .= '<div  class="hug_bouton" data-hug_click="' . $cmd . '">O</div>' . enti1(mb_substr($v0['T0.chp_nom_projet'],0,100)) . '';
-
-//                $lsttbl .= '' . enti1(mb_substr($v0['T0.chp_nom_projet'],0,100)) . '';
+                /* $lsttbl .= '' . enti1(mb_substr($v0['T0.chp_nom_projet'],0,100)) . '';*/
 
             }
 

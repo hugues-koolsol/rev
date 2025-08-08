@@ -56,6 +56,12 @@ function sql_119($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la liste sur les taches' , 'exception' => $e , 'id_bdd' => BDD_NUMERO_1 );
+        return array(
+                __xst => __xer , 
+                'sql0' => $sql0 ,
+                'sql0' => 'la liste sur les taches' ,
+                'exception' => $e ,
+                'id_bdd' => BDD_NUMERO_1 
+            );
     }
 }

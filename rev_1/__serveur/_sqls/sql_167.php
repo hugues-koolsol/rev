@@ -11,10 +11,14 @@ function sql_167($par,&$donnees_retournees,$that,$db){
         $ret=$db->exec($sql0);
         return(array( __xst => __xsu ));
     }catch(Exception $e){
-        return(array( 
-            __xst => __xer, 
-            'code_erreur' => $db->lastErrorCode() ,
-            __xme => 'erreur sql_167()'.' '.$db->lastErrorMsg())
+        return(
+            array( 
+                __xst => __xer, 
+                'exception' => $e , 
+                'sql0'    => $sql0 ,
+                'code_erreur' => $db->lastErrorCode() ,
+                __xme => 'erreur sql_167()'.' '.$db->lastErrorMsg(),
+            )
         );
     }
 }

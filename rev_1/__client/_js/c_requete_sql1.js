@@ -1431,7 +1431,7 @@ class c_requete_sql1{
         t+='<div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(zone_formule)))" title="formater le source rev" >(😊)</div>';
         t+='<div class="hug_bouton" data-hug_click="c_fonctions_js1(insérer_un_commentaire1(zone_source(zone_formule)))" title="insérer un commentaire" >#(😎)</div>';
         /* t+='<a href="javascript:__gi1.ajouter_un_commentaire_vide_et_reformater(&quot;zone_formule&quot;);" title="ajouter un commentaire et formatter">#()(😊)</a>'; */
-        t+='<div>egal,diff,comme,sup,supegal,inf,infegal,dans,est,n_est_pas,pas_comme,equivalent,pas_equivalent</div>'        
+        t+='<div>egal,diff,comme,sup,supegal,inf,infegal,dans,est,n_est_pas,pas_comme,equivalent,pas_equivalent</div>';
         t+='<div class="yy_conteneur_txtara"><textarea id="zone_formule" data-editeur1="rev" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if((this.#obj_webs.type_de_requete === 'select'
                    || this.#obj_webs.type_de_requete === 'liste_ecran'
@@ -1589,7 +1589,6 @@ class c_requete_sql1{
         var la_class_de_la_base='';
         var la_classe_de_la_table='';
         var ind={};
-
         for(ind in this.#obj_webs['bases']){
             t+='<tr>';
             t+='<td>';
@@ -2467,7 +2466,6 @@ class c_requete_sql1{
                 }else{
                     if((tab[i][1] === 'et' || tab[i][1] === 'ou') && tab[i][2] === 'f'){
                         for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
-
                             if(tab[j][2] === 'f'
                                    && (tab[j][1] === 'ou'
                                        || tab[j][1] === 'et'
@@ -2512,7 +2510,6 @@ class c_requete_sql1{
                             }else{
                                 debugger;
                             }
-
                         }
                     }else if(tab[i][2] === 'f'
                            && (tab[i][1] === 'egal'
@@ -2669,7 +2666,15 @@ class c_requete_sql1{
                 t+='           \'sql0\'    => $sql0          ,' + CRLF;
                 t+='        );' + CRLF;
                 t+='    }catch(Exception $e){' + CRLF;
-                t+='        return array(__xst => __xer , \'source_requete\' => $sql0 , \'texte_requete\' => \'la selection sur les éléments\' , \'exception\' => $e  );' + CRLF;
+                t+='        return array(' + CRLF;
+                t+='            __xst => __xer ,' + CRLF;
+                t+='            \'sql0\' => $sql0 ,' + CRLF;
+                t+='            \'texte_requete\' => \'la selection sur les éléments\' ,' + CRLF;
+                t+='            \'exception\' => $e,' + CRLF;
+                if(manuelle_sans_base_de_reference === false){
+                    t+='            \'bdd\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '] ,' + CRLF;
+                }
+                t+='        );' + CRLF;
                 t+='    }' + CRLF;
             }else{
                 t+='    try{' + CRLF;
@@ -2680,16 +2685,21 @@ class c_requete_sql1{
                 }
                 t+='        return(array( __xst => __xsu ));' + CRLF;
                 t+='    }catch(Exception $e){' + CRLF;
-                t+='        return(array( ' + CRLF;
-                t+='            __xst => __xer, ' + CRLF;
-                t+='            \'exception\' => $e, ' + CRLF;
+                t+='        return(' + CRLF;
+                t+='            array( ' + CRLF;
+                t+='                __xst => __xer, ' + CRLF;
+                t+='                \'exception\' => $e , ' + CRLF;
+                t+='                \'sql0\'    => $sql0 ,' + CRLF;
                 if(manuelle_sans_base_de_reference === true){
-                    t+='            \'code_erreur\' => $db->lastErrorCode() ,' + CRLF;
-                    t+='            __xme => \'erreur sql_' + id_requete_en_base + '()\'.\' \'.$db->lastErrorMsg())' + CRLF;
+                    t+='                \'code_erreur\' => $db->lastErrorCode() ,' + CRLF;
+                    t+='                __xme => \'erreur sql_' + id_requete_en_base + '()\'.\' \'.$db->lastErrorMsg(),' + CRLF;
+                    t+='            )' + CRLF;
                     t+='        );' + CRLF;
                 }else{
-                    t+='            \'code_erreur\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '][LIEN_BDD]->lastErrorCode() ,' + CRLF;
-                    t+='            __xme => \'erreur sql_' + id_requete_en_base + '()\'.\' \'.$GLOBALS[__BDD][' + obj3.id_base_principale + '][LIEN_BDD]->lastErrorMsg())' + CRLF;
+                    t+='                \'code_erreur\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '][LIEN_BDD]->lastErrorCode() ,' + CRLF;
+                    t+='                __xme => \'erreur sql_' + id_requete_en_base + '()\'.\' \'.$GLOBALS[__BDD][' + obj3.id_base_principale + '][LIEN_BDD]->lastErrorMsg(),' + CRLF;
+                    t+='                \'bdd\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '] ,' + CRLF;
+                    t+='            )' + CRLF;
                     t+='        );' + CRLF;
                 }
                 t+='    }' + CRLF;
@@ -2727,7 +2737,7 @@ class c_requete_sql1{
                     t+='        $donnees_retournees[__x_signaux][__xer][]=\' erreur lors de la suppression, il existe des dépendances sql_' + id_requete_en_base + '() [\' . __LINE__ . \']\';' + CRLF;
                     t+='        return array(' + CRLF;
                     t+='            __xst => __xer,' + CRLF;
-                    t+='            \'source_requete\' => $sql0,' + CRLF;
+                    t+='            \'sql0\' => $sql0,' + CRLF;
                     t+='            \'texte_requete\' => \'la suppression dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\',' + CRLF;
                     t+='            \'exception\' => null,' + CRLF;
                     t+='            \'id_bdd\' => ' + obj3.id_base_principale + ',' + CRLF;
@@ -2742,10 +2752,11 @@ class c_requete_sql1{
             t+='    }catch(Exception $e){' + CRLF;
             t+='        return array(/**/' + CRLF;
             t+='            __xst => __xer , ' + CRLF;
-            t+='            \'source_requete\' => $sql0 , ' + CRLF;
+            t+='            \'sql0\' => $sql0 , ' + CRLF;
             t+='            \'texte_requete\' => \'la suppression dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\' ,' + CRLF;
             t+='            \'exception\' => $e , ' + CRLF;
-            t+='            \'id_bdd\' => ' + obj3.id_base_principale + '' + CRLF;
+            t+='            \'id_bdd\' => ' + obj3.id_base_principale + ',' + CRLF;
+            t+='            \'bdd\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '] ,' + CRLF;
             t+='        );' + CRLF;
             t+='    }' + CRLF;
         }else if(type_de_requete === 'insert'){
@@ -2823,10 +2834,11 @@ class c_requete_sql1{
             t+='    }catch(Exception $e){' + CRLF;
             t+='        return array(/**/' + CRLF;
             t+='            __xst => __xer , ' + CRLF;
-            t+='            \'source_requete\' => $sql0 , ' + CRLF;
+            t+='            \'sql0\' => $sql0 , ' + CRLF;
             t+='            \'texte_requete\' => \'l\\\'insertion dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\' ,' + CRLF;
             t+='            \'exception\' => $e , ' + CRLF;
-            t+='            \'id_bdd\' => ' + obj3.id_base_principale + '' + CRLF;
+            t+='            \'id_bdd\' => ' + obj3.id_base_principale + ',' + CRLF;
+            t+='            \'bdd\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '] ,' + CRLF;
             t+='        );' + CRLF;
             t+='    }' + CRLF;
             /*
@@ -3021,7 +3033,7 @@ class c_requete_sql1{
             t+='            __xst => __xer ,' + CRLF;
             t+='            __xme => \'aucun champ à mettre à jour\' ,' + CRLF;
             t+='            \'id_bdd\' => ' + obj3.id_base_principale + ' ,' + CRLF;
-            t+='            \'source_requete\' => \'\' , ' + CRLF;
+            t+='            \'sql0\' => $sql0 , ' + CRLF;
             t+='            \'texte_requete\' => \'la modification dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\' ,' + CRLF;
             t+='            \'exception\' => null , ' + CRLF;
             t+='        );' + CRLF;
@@ -3066,10 +3078,11 @@ class c_requete_sql1{
             t+='    }catch(Exception $e){' + CRLF;
             t+='        return array(/**/' + CRLF;
             t+='            __xst => __xer , ' + CRLF;
-            t+='            \'source_requete\' => $sql0 , ' + CRLF;
+            t+='            \'sql0\' => $sql0 , ' + CRLF;
             t+='            \'texte_requete\' => \'la modification dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\' ,' + CRLF;
             t+='            \'exception\' => $e , ' + CRLF;
-            t+='            \'id_bdd\' => ' + obj3.id_base_principale + '' + CRLF;
+            t+='            \'id_bdd\' => ' + obj3.id_base_principale + ',' + CRLF;
+            t+='            \'bdd\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '] ,' + CRLF;
             t+='        );' + CRLF;
             t+='    }' + CRLF;
             /*
@@ -3118,38 +3131,35 @@ class c_requete_sql1{
                   les conditions dans un select list sont soit une seule conditions, soit une liste contenue dans un et[] 
                   Il n'y a alors qu'une seule formule
                 */
-                var formule='conditions('+this.#obj_webs.conditions[0].formule+')';
-
-                var tableau2=__gi1.__m_rev1.txt_en_tableau(formule);
-                var matriceFonction=__gi1.__m_rev1.tb_vers_matrice(tableau2.__xva,true,false,'');
-                
-                var les_conditions=this.__m_rev_vers_sql1.c_tab_vers_sql(matriceFonction.__xva,{au_format_php:true})
-                if(les_conditions.__xst===__xsu){
-                    t+='    $where0=\' WHERE '+les_conditions.__xva+'\'.PHP_EOL;' + CRLF;
+                var formule='conditions(' + this.#obj_webs.conditions[0].formule + ')';
+                var tableau2=__gi1.__m_rev1.txt_en_tableau( formule );
+                var matriceFonction=__gi1.__m_rev1.tb_vers_matrice( tableau2.__xva , true , false , '' );
+                var les_conditions=this.__m_rev_vers_sql1.c_tab_vers_sql( matriceFonction.__xva , {"au_format_php" : true} );
+                if(les_conditions.__xst === __xsu){
+                    t+='    $where0=\' WHERE ' + les_conditions.__xva + '\'.PHP_EOL;' + CRLF;
                 }else{
                     return(__gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : __gi1.__m_rev1.nl2() + ' conversion en php '} ));
                 }
-                //tableau_des_conditions=this.#obtenir_le_tableau_des_conditions( this.#obj_webs.conditions[0].formule , obj3 );
-
+                /* tableau_des_conditions=this.#obtenir_le_tableau_des_conditions( this.#obj_webs.conditions[0].formule , obj3 ); */
             }
             /*
-            for( var i=0 ; i < tableau_des_conditions.length ; i++ ){
-                debugger
-                var elem=tableau_des_conditions[i];
-                if(elem.type_condition === 'constante'){
-                    t+='    $where0.=\' AND ' + elem.valeur + '\'.PHP_EOL;' + CRLF;
-                }else if(elem.type_condition === 'variable'){
-                    if((elem.type.toLowerCase() === 'integer' || elem.type.toLowerCase() === 'int') && elem.operation === 'egal'){
-                        t+='    $where0.=PHP_EOL.construction_where_sql_sur_id1(\'' + elem.nom_du_champ_pour_where + '\',' + elem.condition + ');' + CRLF;
-                    }else{
-                        if(elem.operation === 'dans'){
-                            t+='    $where0.=\' AND ' + elem.valeur + '\'.PHP_EOL;' + CRLF;
-                        }else{
-                            t+='    $where0.=\' AND ' + elem.valeur + '\'.PHP_EOL;' + CRLF;
-                        }
-                    }
-                }
-            }
+              for( var i=0 ; i < tableau_des_conditions.length ; i++ ){
+              debugger
+              var elem=tableau_des_conditions[i];
+              if(elem.type_condition === 'constante'){
+              t+='    $where0.=\' AND ' + elem.valeur + '\'.PHP_EOL;' + CRLF;
+              }else if(elem.type_condition === 'variable'){
+              if((elem.type.toLowerCase() === 'integer' || elem.type.toLowerCase() === 'int') && elem.operation === 'egal'){
+              t+='    $where0.=PHP_EOL.construction_where_sql_sur_id1(\'' + elem.nom_du_champ_pour_where + '\',' + elem.condition + ');' + CRLF;
+              }else{
+              if(elem.operation === 'dans'){
+              t+='    $where0.=\' AND ' + elem.valeur + '\'.PHP_EOL;' + CRLF;
+              }else{
+              t+='    $where0.=\' AND ' + elem.valeur + '\'.PHP_EOL;' + CRLF;
+              }
+              }
+              }
+              }
             */
             t+='    $sql0.=$where0;' + CRLF;
             if(this.#obj_webs.complements.length === 0){
@@ -3195,9 +3205,21 @@ class c_requete_sql1{
             t+='        );' + CRLF;
             t+='    }catch(Exception $e){' + CRLF;
             if(obj3.hasOwnProperty( 'tableau_des_tables_utilisees' ) && obj3.tableau_des_tables_utilisees.hasOwnProperty( '0' )){
-                t+='        return array(__xst => __xer , \'source_requete\' => $sql0 , \'texte_requete\' => \'la selection sur les ' + obj3.tableau_des_tables_utilisees[0].table.replace( /tbl_/ , '' ) + '\' , \'exception\' => $e , \'id_bdd\' => ' + obj3.id_base_principale + ' );' + CRLF;
+                t+='        return array(' + CRLF;
+                t+='           __xst => __xer ,' + CRLF;
+                t+='           \'sql0\' => $sql0 , ' + CRLF;
+                t+='           \'texte_requete\' => \'la selection sur les ' + obj3.tableau_des_tables_utilisees[0].table.replace( /tbl_/ , '' ) + '\' , ' + CRLF;
+                t+='           \'exception\' => $e ,' + CRLF;
+                t+='            \'id_bdd\' => ' + obj3.id_base_principale + CRLF;
+                t+='         );' + CRLF;
             }else{
-                t+='        return array(__xst => __xer , \'source_requete\' => $sql0 , \'texte_requete\' => \'la selection sur la requête ' + id_requete_en_base + '\' , \'exception\' => $e , \'id_bdd\' => ' + obj3.id_base_principale + ' );' + CRLF;
+                t+='        return array(' + CRLF;
+                t+='           __xst => __xer ,' + CRLF;
+                t+='            \'sql0\' => $sql0 ,' + CRLF;
+                t+='            \'texte_requete\' => \'la selection sur la requête ' + id_requete_en_base + '\' ,' + CRLF;
+                t+='            \'exception\' => $e ,' + CRLF;
+                t+='            \'id_bdd\' => ' + obj3.id_base_principale + CRLF;
+                t+='        );' + CRLF;
             }
             t+='    }' + CRLF;
             /*
@@ -3266,9 +3288,7 @@ class c_requete_sql1{
                     "type_de_champ_pour_where" : '' ,
                     "nom_du_champ_pour_where" : ''
                 };
-                
-                
-                for(var i=1 ; i < l01 ; i++ ){
+                for( var i=1 ; i < l01 ; i++ ){
                     if(tab[i][7] === 0){
                         if(tab[i][1] === '#' && tab[i][2] === 'f'){
                         }else{
@@ -3428,9 +3448,21 @@ class c_requete_sql1{
             t+='        );' + CRLF;
             t+='    }catch(Exception $e){' + CRLF;
             if(obj3.hasOwnProperty( 'tableau_des_tables_utilisees' ) && obj3.tableau_des_tables_utilisees.hasOwnProperty( '0' )){
-                t+='        return array(__xst => __xer , \'source_requete\' => $sql0 , \'texte_requete\' => \'la liste sur les ' + obj3.tableau_des_tables_utilisees[0].table.replace( /tbl_/ , '' ) + '\' , \'exception\' => $e , \'id_bdd\' => ' + obj3.id_base_principale + ' );' + CRLF;
+                t+='        return array(' + CRLF;
+                t+='                __xst => __xer , ' + CRLF;
+                t+='                \'sql0\' => $sql0 ,' + CRLF;
+                t+='                \'sql0\' => \'la liste sur les ' + obj3.tableau_des_tables_utilisees[0].table.replace( /tbl_/ , '' ) + '\' ,' + CRLF;
+                t+='                \'exception\' => $e ,' + CRLF;
+                t+='                \'id_bdd\' => ' + obj3.id_base_principale + ' ' + CRLF;
+                t+='            );' + CRLF;
             }else{
-                t+='        return array(__xst => __xer , \'source_requete\' => $sql0 , \'texte_requete\' => \'la liste sur la requête ' + id_requete_en_base + '\' , \'exception\' => $e , \'id_bdd\' => ' + obj3.id_base_principale + ' );' + CRLF;
+                t+='        return array(' + CRLF;
+                t+='                __xst => __xer , ' + CRLF;
+                t+='                \'sql0\' => $sql0 , ' + CRLF;
+                t+='                \'texte_requete\' => \'la liste sur la requête ' + id_requete_en_base + '\' , ' + CRLF;
+                t+='                \'exception\' => $e , ' + CRLF;
+                t+='                \'id_bdd\' => ' + obj3.id_base_principale + ' ' + CRLF;
+                t+='            );' + CRLF;
             }
             t+='    }' + CRLF;
         }

@@ -1,338 +1,322 @@
 <!DOCTYPE html>
 <html lang="fr">
- <head>
-  <meta charset="utf-8" />
-  <title>A simple tree and/or sort javascript</title>
-  <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1,minimum-scale=1" />  
+    <head>
+        <meta charset="utf-8" />
+        <title>A simple tree and/or sort javascript</title>
+        <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+<script type="text/javascript" src="tri_arbre1.js"></script>
 
-  <script type="text/javascript" src="tri_arbre1.js"></script>
-  <style>
-  *{box-sizing:border-box;}
-  body{margin:0;padding:0;}
-  .le_bo_bouton_deplacer{
-   border:1px green solid;
-   min-width:1em;
-   text-align:center;
-   cursor:ns-resize;
-   color:green;
-  }
-  .le_bo_bouton_menu{
-      border:2px yellow outset;
-      min-width:1em;
-      text-align:center;
-      cursor:pointer;
-      color:blue;
-  }
-  </style>
- </head>
- <body>
- <div style="border:1px red solid;height:50px;width:50px;display:inline-block;overflow:hidden;">50</div>
- <a href="javascript:goto(50)">goto(50)</a>
-<h1>exemple</h1><a href="#fin">fin</a><span id="toto"></span>
-<br /><br /><br /><br /><br />
-<table border="1">
-<tr>
-    <td>
-        <ul id="tri_arbre_racine1" style="border:0px red solid;">
-         <li id="123">
-           <b style="color:red;">a 1</b>
-           <ul  data-replie>
-            <li>
-               aa 2
-               <ul>
-                <li>aaa 3</li>
-                <li>aaa 4</li>
-               </ul>
-            </li>
-            <li>
-               ab 5
-               <ul  data-replie>
-                <li>aba 6</li>
-                <li>abb 7</li>
-               </ul>
-            </li>
-           </ul>
-         </li>
-         <li>b 8</li>
-         <li>c c</li>
-         <li>d d</li>
-         <li>e e</li>
-         <li>f f</li>
-         <li>g g</li>
-         <li>h h</li>
-         <li>i i</li>
-         <li>j j j</li>
-         <li>k k k</li>
-         <li>l l l</li>
-         <li>m m m m</li>
-         <li>n n n n</li>
-         <li>o o o o</li>
-         <li>p p p p</li>
-         <li>q q q q</li>
-         <li>r r</li>
-         <li>s s</li>
-         <li>t t</li>
-        </ul>
-    </td>
-
-
-<td>
-
-<ul id="tri_arbre_racine2" style="border:0px red solid;">
- <li id="123">
-   <b style="color:red;">a 1</b>
-   <ul>
-    <li>
-       aa 2
-       <ul>
-        <li>aaa 3</li>
-        <li>aaa 4</li>
-       </ul>
-    </li>
-    <li>
-       ab 5
-       <ul  data-replie>
-        <li>aba 6</li>
-        <li>abb 7</li>
-       </ul>
-    </li>
-   </ul>
- </li>
-</ul>
-
-
-</td>
-</tr>
-</table>
-haut_abs:227,bas_abs:739, 739-50=689, hzone interne=831 avec bouton, 809 sans bouton ( hbouton=22 ), 
-<br />
-
-<br>
-
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<footer id="fin"></footer>
-<script type="text/javascript">
-
-function goto(n){
- document.documentElement.scrollTo(0,50);
+        <style>
+*{box-sizing:border-box;}
+body{margin:0;padding:0;}
+.le_bo_bouton_deplacer{
+ border:1px green solid;
+ min-width:1em;
+ text-align:center;
+ cursor:ns-resize;
+ color:green;
 }
-
-
-/*=======================================================*/
-function appelee_apres_action1(arbre , id_zone_de_tri){
-    console.log('appelee_apres_action1');
+.le_bo_bouton_menu{
+    border:2px yellow outset;
+    min-width:1em;
+    text-align:center;
+    cursor:pointer;
+    color:blue;
+}</style>
+    </head>
+    <body>
+        <div style="border:1px red solid;height:50px;width:50px;display:inline-block;overflow:hidden;">50</div>
+        <a href="javascript:goto(50)">goto(50)</a>
+        <h1>exemple</h1>
+        <a href="#fin">fin</a>
+        <span id="toto"></span>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td>
+                        <ul id="tri_arbre_racine1" style="border:0px red solid;">
+                            <li id="123">
+                                <b style="color:red;">a 1</b>
+                                <ul data-replie="">
+                                    <li>aa 2
+                                        <ul>
+                                            <li>aaa 3</li>
+                                            <li>aaa 4</li>
+                                        </ul>
+                                    </li>
+                                    <li>ab 5
+                                        <ul data-replie="">
+                                            <li>aba 6</li>
+                                            <li>abb 7</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>b 8</li>
+                            <li>c c 90</li>
+                            <li>d d 130</li>
+                            <li>e e 170</li>
+                            <li>f f 210</li>
+                            <li>g g 250</li>
+                            <li>h h 290</li>
+                            <li>i i 330</li>
+                            <li>j j j 370</li>
+                            <li>k k k 410</li>
+                            <li>l l l 450</li>
+                            <li>m m m m 490</li>
+                            <li>n n n n</li>
+                            <li>o o o o</li>
+                            <li>p p p p</li>
+                            <li>q q q q</li>
+                            <li>r r</li>
+                            <li>s s</li>
+                            <li>t t</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul id="tri_arbre_racine2" style="border:0px red solid;">
+                            <li id="123">
+                                <b style="color:red;">a 1</b>
+                                <ul>
+                                    <li>aa 2
+                                        <ul>
+                                            <li>aaa 3</li>
+                                            <li>aaa 4</li>
+                                        </ul>
+                                    </li>
+                                    <li>ab 5
+                                        <ul data-replie="">
+                                            <li>aba 6</li>
+                                            <li>abb 7</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>b 8</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>haut_abs:227,bas_abs:739, 739-50=689, hzone interne=831 avec bouton, 809 sans bouton ( hbouton=22 ),
+        <br />
+        <ul id="tri_arbre_racine3" style="border:0px red solid;">
+            <li id="456">
+                <b style="color:red;">a 1</b>
+                <ul>
+                    <li>aa 2
+                        <ul>
+                            <li>aaa 3</li>
+                            <li>aaa 4</li>
+                        </ul>
+                    </li>
+                    <li>ab 5
+                        <ul data-replie="">
+                            <li>aba 6</li>
+                            <li>abb 7</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <footer id="fin"></footer>
+<script type="text/javascript">
+//<![CDATA[
+//<source_javascript_rev>
+function goto( n ){
+    document.documentElement.scrollTo( 0 , 50 );
+}
+/* ======================================================= */
+function appelee_apres_action1( arbre , id_zone_de_tri ){
+    console.log( 'appelee_apres_action1' );
     /* console.log(JSON.stringify(arbre)); */
 }
-
-/*=======================================================*/
+/* ======================================================= */
 let options1={
-    hauteur_max_en_vh             : 40,// entre 20 et 80
-    largeur_max                   :'400px', //'calc(100% - 50px)',
-    afficher_le_bouton_supprimer  : false ,
-    fonction_appelee_apres_action : appelee_apres_action1 ,
-    arborescent                   : true ,
-    class_du_bouton_deplacer      : 'le_bo_bouton_deplacer' ,
-    boutons_du_menu               : [{libelle:'+' ,fonction:ajouter_une_branche}],
-    class_du_bouton_menu          : 'le_bo_bouton_menu' ,
-}
-
-/*=======================================================*/
-/*=======================================================*/
-/*=======================================================*/
+    "hauteur_max_en_vh" : 40 ,
+     /* entre 20 et 80 */
+    "largeur_max" : '400px' ,
+     /* 'calc(100% - 50px)', */
+    "afficher_le_bouton_supprimer" : false ,
+    "fonction_appelee_apres_action" : appelee_apres_action1 ,
+    "arborescent" : true ,
+    "class_du_bouton_deplacer" : 'le_bo_bouton_deplacer' ,
+    "boutons_du_menu" : [{"libelle" : '+' ,"fonction" : ajouter_une_branche}] ,
+    "class_du_bouton_menu" : 'le_bo_bouton_menu'
+};
 var nom_racine1='tri_arbre_racine1';
-var arbre1=new tri_arbre1(nom_racine1,options1);
-/*=======================================================*/
-/*=======================================================*/
-/*=======================================================*/
-
-
-/*=======================================================*/
-/*=======================================================*/
-/*=======================================================*/
-
-/*=======================================================*/
-function appelee_apres_action2(arbre , id_zone_de_tri){
-//    console.log(JSON.stringify(arbre));
+var arbre1=new tri_arbre1( nom_racine1 , options1 );
+/* ======================================================= */
+/* ======================================================= */
+/* ======================================================= */
+/* ======================================================= */
+function appelee_apres_action2( arbre , id_zone_de_tri ){
+    /* console.log(JSON.stringify(arbre)); */
 }
-/*=======================================================*/
-function ajouter_une_branche(e,reference_arbre){
-    console.log(e,reference_arbre);
+/* ======================================================= */
+function ajouter_une_branche( e , reference_arbre ){
+    console.log( e , reference_arbre );
     let max=0;
-    for(let i=0;i<reference_arbre.arbre.length;i++){
-     if(reference_arbre.arbre[i].id_interne>max){
-      max=reference_arbre.arbre[i].id_interne;
-     }
+    for( let i=0 ; i < reference_arbre.arbre.length ; i++ ){
+        if(reference_arbre.arbre[i].id_interne > max){
+            max=reference_arbre.arbre[i].id_interne;
+        }
     }
     max++;
-    let a={"id_interne":max,"id_interne_parent":0,"replie":0,"contient_des_enfants":0,"contenu":"nb "+max,"attributs":{}}
+    let a={
+        "id_interne" : max ,
+        "id_interne_parent" : 0 ,
+        "replie" : 0 ,
+        "contient_des_enfants" : 0 ,
+        "contenu" : "nb " + max ,
+        "attributs" : {}
+    };
     reference_arbre.arbre.splice( 0 , 0 , a );
-    
-    reference_arbre.action_externe_sur_arbre('ajoute_branche',reference_arbre.arbre);
+    reference_arbre.action_externe_sur_arbre( 'ajoute_branche' , reference_arbre.arbre );
 }
-/*=======================================================*/
-
+/* ======================================================= */
+/* ======================================================= */
+/* ======================================================= */
 let options2={
-    hauteur_max_en_vh             : 60,// entre 20 et 80
-    largeur_max                   :'400px', //'calc(100% - 50px)',
-    afficher_le_bouton_supprimer  : false ,
-    fonction_appelee_apres_action : appelee_apres_action2 ,
-    arborescent                   : true ,
-    class_du_bouton_deplacer      : 'le_bo_bouton_deplacer' ,
-    decallage_entre_niveaux_en_px : 20,
-    boutons_du_menu               : [{libelle:'+' ,fonction:ajouter_une_branche}],
-    class_du_bouton_menu          : 'le_bo_bouton_menu' ,
-}
-/*=======================================================*/
-/*=======================================================*/
-/*=======================================================*/
-
-var arbre2=new tri_arbre1('tri_arbre_racine2',options2);
-
-
-setTimeout(
- ()=>{
-  goto(50);
-  console.log(arbre1.cle_aleatoire , nom_racine1);
-  let id1=nom_racine1+'_'+arbre1.cle_aleatoire;
-  document.getElementById(id1).scrollTo(35,0);
-  arbre1.calcul_des_positions_relatives();
- },50
-);
-
-
-
-
-/*=======================================================*/
-/*=======================================================*/
-/*=======================================================*/
-
-//====================================================================================================
-//====================================================================================================
-// this is the tree as it should exist in database. you can put more elements in data
-// the order of elements in jsonTree1 is not important but parentId<-->id must be valid
-var jsonTree1=[
- {id :  2 , data:{label:'a'  } , parentId : 0 , isOpen : 1 },
- {id :  4 , data:{label:'aa' } , parentId : 2 , isOpen : 1 },
- {id :  6 , data:{label:'aaa'} , parentId : 4 , isOpen : 1 },
- {id :  8 , data:{label:'aab'} , parentId : 4 , isOpen : 1 },
- {id : 10 , data:{label:'ab' } , parentId : 2 , isOpen : 1 },
- {id : 12 , data:{label:'b'  } , parentId : 0 , isOpen : 1 },
- {id : 14 , data:{label:'c'  } , parentId : 0 , isOpen : 1 },
- {id : 16 , data:{label:'d'  } , parentId : 0 , isOpen : 1 },
- {id : 18 , data:{label:'e'  } , parentId : 0 , isOpen : 1 },
- {id : 20 , data:{label:'f'  } , parentId : 0 , isOpen : 1 },
- {id : 22 , data:{label:'g'  } , parentId : 0 , isOpen : 1 },
- {id : 24 , data:{label:'h'  } , parentId : 0 , isOpen : 1 },
- {id : 28 , data:{label:'i'  } , parentId : 0 , isOpen : 1 },
- {id : 30 , data:{label:'j'  } , parentId : 0 , isOpen : 1 },
- {id : 32 , data:{label:'k'  } , parentId : 0 , isOpen : 1 },
- {id : 34 , data:{label:'<span style="color:green;font-weight:bold;">l test de texte assez long pour dépasser la taille de la boite</span>'  } , parentId : 0 , isOpen : 1 },
-];
-// these are the parameters you can tweek. add some if you wish ...
-var param1={
- sortOnly            : false                       , // here it is a tree, if it was a list, it would be true
- deleteFunctionName  : String('deleteFunction1')   , // delete function name , see under , '' if no delete
- editFunctionName    : String('editFunction1')     , // edit function name , see under , '' if no edit
- editButton          : true                        , // edit button ? true / false
- design              : {
- 
-  buttonsBorderWidthInPx      : parseInt('1px',10),   // default : 1px
-  elementHeightInPx           : parseInt('35px',10),  // default and minimum advise : 35px
-  elementBorderHeightInPx     : parseInt('1px',10),   // default : 1px
- 
-  branchesLeftOffsetInPixels  : parseInt('12px',10),  // default : 12px
-  
-  intervalHeightInPixels      : parseInt('10px',10),  // default : 15px
-  intervalBorderNameStyle     : String('solid'),      // default : solid
-  intervalBorderHeight        : parseInt('1px',10),   // default : 1px // should be 0 or 1 px but you can put nnnpx if you want !
-  intervalBorderColor         : String('#eee'),       // default : #eee
-  thinBorderColor             : String('blue'),       // default : blue   or  globalCssSettings1.main.thinBorderColor.hexValue            if it exists
-  editBackground              : String('red'),        // default : red    or  globalCssSettings1.backgrounds.editBackground.hexValue      if it exists
-  successBackgroundColor      : String('green'),      // default : green  or  globalCssSettings1.backgrounds.successBackground.hexValue   if it exists
-  headerBackgroundColor       : String('yellow'),     // default : yellow or  globalCssSettings1.table.headerBackgroundColor.hexValue     if it exists
- }
-}
-// then call the building of the tree with 
-/*
-var oMyTree1=new cMyTree1(
- 'oMyTree1',  // this self object name
- 'myTreeId1', // the id of the html < div > you want to fill
- jsonTree1,   // the data
- param1,      // the parameters
- myCallBackAction1 // callback function name, MUST exist
-);
-*/
-//=========================================================
-// and here a callback function if you want to do something
-function myCallBackAction1(context,tree){
- console.log(context);
- switch(context){
- 
-  case 'afterReorganize' :
-   console.log(tree);
-  break;
-  
-  case 'afterFold' :
-   console.log(tree);
-  break;
-  
-  case 'init' :
-   console.log(tree);
-  break;
-  
-  default:
-   console.log('context='+context,'tree=',tree);
-  break;
- }
-}
-// if you want to delete a node
-function deleteFunction1(idToDelete){
- if(!confirm('delete, really ?')){
-  return
- }
- // Here, do (ajax) database stuffs with idToDelete 
- // ......
- // and if success ...
- oMyTree1.delete(idToDelete); // ... update the tree view
-}
-
-function editFunction1(idToDelete){
- var value='';
- for(var i=0;i<jsonTree1.length;i++){
-  if(jsonTree1[i].id==idToDelete){
-   value=jsonTree1[i].data.label;
-   break;
-  }
- }
- alert('edit node number '+idToDelete+'\nvalue="'+value+'"');
-}
-
-// if you want to get the current tree before recording all the tree in database
-function getMyTree1(){
- console.log(oMyTree1.getTree());
-}
-// if you want to add an element
-function addElement1(){
- var dt=new Date();
- // do ajax database stuffs to get a new id and label and if success ...
- oMyTree1.addElement({
-  newLabel : dt.getHours()+':'+dt.getMinutes()+':'+dt.getSeconds()+'.'+dt.getMilliseconds(),
-  newId    : dt.getTime() // ... put here the new id
- })
-}
-
-
-</script>
-<!-- script type="text/javascript" defer="true" src="faa.js"></script -->
-<script type="text/javascript">
+    "hauteur_max_en_vh" : 60 ,
+     /* entre 20 et 80 */
+    "largeur_max" : '400px' ,
+     /* 'calc(100% - 50px)', */
+    "afficher_le_bouton_supprimer" : false ,
+    "fonction_appelee_apres_action" : appelee_apres_action2 ,
+    "arborescent" : true ,
+    "class_du_bouton_deplacer" : 'le_bo_bouton_deplacer' ,
+    "decallage_entre_niveaux_en_px" : 20 ,
+    "boutons_du_menu" : [{"libelle" : '+' ,"fonction" : ajouter_une_branche}] ,
+    "class_du_bouton_menu" : 'le_bo_bouton_menu'
+};
+var arbre2=new tri_arbre1( 'tri_arbre_racine2' , options2 );
+/* ======================================================= */
+/* ======================================================= */
+/* ======================================================= */
+let options3={
+    "hauteur_max_en_vh" : 20 ,
+     /* entre 20 et 80 */
+    "largeur_max" : '400px' ,
+     /* 'calc(100% - 50px)', */
+    "afficher_le_bouton_supprimer" : false ,
+    "fonction_appelee_apres_action" : appelee_apres_action2 ,
+    "arborescent" : false ,
+    "class_du_bouton_deplacer" : 'le_bo_bouton_deplacer' ,
+    "decallage_entre_niveaux_en_px" : 20 ,
+    "boutons_du_menu" : [{"libelle" : '+' ,"fonction" : ajouter_une_branche}] ,
+    "class_du_bouton_menu" : 'le_bo_bouton_menu'
+};
+var arbre3=new tri_arbre1( 'tri_arbre_racine3' , options3 );
+/* ======================================================= */
+/* ======================================================= */
+/* ======================================================= */
+console.log( 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' );
+setTimeout( () => {
+        goto( 50 );
+        console.log( arbre1.cle_aleatoire , nom_racine1 );
+        let id1=nom_racine1 + '_' + arbre1.cle_aleatoire;
+        console.log( 'id1=' + id1 );
+        document.getElementById( id1 ).scrollTo( 0 , 0 );
+        arbre1.calcul_des_positions_relatives();} , 50 );
+//</source_javascript_rev>
+//]]>
 </script>
 
- </body>
- 
- 
+    </body>
 </html>

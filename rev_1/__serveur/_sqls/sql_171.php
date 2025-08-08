@@ -7,8 +7,7 @@ function sql_171($par,&$donnees_retournees,$that){
     $from0='
       FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_bdds T0    ';
     $sql0.=$from0;
-    $where0=' WHERE 1=1 '.PHP_EOL;
-    $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_projet_id_basedd`',$par['T0_chx_projet_id_basedd']);
+    $where0=' WHERE (`T0`.`chx_projet_id_basedd` = '.sq1($par['T0_chx_projet_id_basedd']).')'.PHP_EOL;
     $sql0.=$where0;
     $donnees0=array();
     //echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' .  $sql0  . '</pre>' ; exit(0);
@@ -30,6 +29,12 @@ function sql_171($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la selection sur les bdds' , 'exception' => $e , 'id_bdd' => BDD_NUMERO_1 );
+        return array(
+           __xst => __xer ,
+           'sql0' => $sql0 , 
+           'texte_requete' => 'la selection sur les bdds' , 
+           'exception' => $e ,
+            'id_bdd' => BDD_NUMERO_1
+         );
     }
 }

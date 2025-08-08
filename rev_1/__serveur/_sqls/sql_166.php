@@ -20,6 +20,11 @@ function sql_166($par,&$donnees_retournees,$that,$db){
            'sql0'    => $sql0          ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la selection sur les éléments' , 'exception' => $e  );
+        return array(
+            __xst => __xer ,
+            'sql0' => $sql0 ,
+            'texte_requete' => 'la selection sur les éléments' ,
+            'exception' => $e,
+        );
     }
 }

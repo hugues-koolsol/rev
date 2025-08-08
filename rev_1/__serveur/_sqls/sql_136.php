@@ -28,10 +28,11 @@ function sql_136($par,&$donnees_retournees,$that){
     }catch(Exception $e){
         return array(/**/
             __xst => __xer , 
-            'source_requete' => $sql0 , 
+            'sql0' => $sql0 , 
             'texte_requete' => 'l\'insertion dans la table des projets' ,
             'exception' => $e , 
-            'id_bdd' => BASE_REFERENCE
+            'id_bdd' => BASE_REFERENCE,
+            'bdd' => $GLOBALS[__BDD][BASE_REFERENCE] ,
         );
     }
 }

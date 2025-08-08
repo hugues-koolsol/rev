@@ -37,7 +37,7 @@ function sql_148($par,&$donnees_retournees,$that){
             __xst => __xer ,
             __xme => 'aucun champ à mettre à jour' ,
             'id_bdd' => BASE_REFERENCE ,
-            'source_requete' => '' , 
+            'sql0' => $sql0 , 
             'texte_requete' => 'la modification dans la table des projets' ,
             'exception' => null , 
         );
@@ -53,10 +53,11 @@ function sql_148($par,&$donnees_retournees,$that){
     }catch(Exception $e){
         return array(/**/
             __xst => __xer , 
-            'source_requete' => $sql0 , 
+            'sql0' => $sql0 , 
             'texte_requete' => 'la modification dans la table des projets' ,
             'exception' => $e , 
-            'id_bdd' => BASE_REFERENCE
+            'id_bdd' => BASE_REFERENCE,
+            'bdd' => $GLOBALS[__BDD][BASE_REFERENCE] ,
         );
     }
 }

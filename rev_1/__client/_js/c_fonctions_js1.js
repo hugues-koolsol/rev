@@ -147,29 +147,22 @@ class c_fonctions_js1{
       c_fonctions_js1(affecte(zone(vv_nouveau_numero_de_requete,valeur),plus( zone(vv_nouveau_numero_de_requete,valeur) , 100 )))
     */
     trier_les_menus( mat , debut ){
-     
         let chi_id_acces=0;
         let l01=mat.length;
         for( let i=debut + 1 ; i < l01 ; i=mat[i][12] ){
-            if('chi_id_acces' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1  && mat[i+1][2] === 'c'){
-                chi_id_acces=parseInt(mat[i+1][1],10);
+            if('chi_id_acces' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_acces=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        if(chi_id_acces>0){
-         
+        if(chi_id_acces > 0){
             var t='';
-            t+='<h1>trier les menus de '+chi_id_acces+'</h1>';
-
+            t+='<h1>trier les menus de ' + chi_id_acces + '</h1>';
             let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
             vv_sous_fenetre1.innerHTML=t;
             vv_sous_fenetre1.showModal();
             __gi1.ajoute_les_evenements_aux_boutons( null );
-         
         }
-        
-        
         return({"__xst" : __xsu});
-     
     }
     /*
       =============================================================================================================
@@ -1790,20 +1783,37 @@ echo 'hella';`;
                     obj=this.#parseur_javascript.parse( t1.value , {"ecmaVersion" : 'latest' ,"sourceType" : 'module' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
                 }catch(e){
                     if(e.message){
-                        let tt=e.message.substr( e.message.indexOf( 'Unexpected token ' ) + 17 );
-                        let lig_col=null;
-                        /* const text = "anything(aa:bb)otherthing"; */
-                        const regex=/(?<=\()(\w+):(\w+)(?=\))/;
-                        const match=tt.match( regex );
-                        if(match && this.#interface1.__m_rev1.est_num( match[1] ) && this.#interface1.__m_rev1.est_num( match[2] )){
-                            lig_col=[parseInt( match[1] , 10 ),parseInt( match[2] , 10 )];
+                        if(e.message.indexOf( 'Unexpected token ' ) >= 0){
+                            let tt=e.message.substr( e.message.indexOf( 'Unexpected token ' ) + 17 );
+                            let lig_col=null;
+                            /* const text = "anything(aa:bb)otherthing"; */
+                            const regex=/(?<=\()(\w+):(\w+)(?=\))/;
+                            const match=tt.match( regex );
+                            if(match && this.#interface1.__m_rev1.est_num( match[1] ) && this.#interface1.__m_rev1.est_num( match[2] )){
+                                lig_col=[parseInt( match[1] , 10 ),parseInt( match[2] , 10 )];
+                            }
+                            this.#interface1.__m_rev1.empiler_erreur( {
+                                    "__xst" : __xer ,
+                                    "__xme" : this.#interface1.__m_rev1.nl2( e ) + ' <br />erreur dans le javascript :' + e.message ,
+                                    "zone_edition" : this.#interface1.zone_d_edition_en_cours ,
+                                    "lig_col" : lig_col
+                                } );
+                        }else if(e.message.indexOf( 'Invalid number ' ) >= 0){
+                            let tt=e.message.substr( e.message.indexOf( 'Invalid number ' ) + 15 );
+                            let lig_col=null;
+                            /* const text = "anything(aa:bb)otherthing"; */
+                            const regex=/(?<=\()(\w+):(\w+)(?=\))/;
+                            const match=tt.match( regex );
+                            if(match && this.#interface1.__m_rev1.est_num( match[1] ) && this.#interface1.__m_rev1.est_num( match[2] )){
+                                lig_col=[parseInt( match[1] , 10 ),parseInt( match[2] , 10 )];
+                            }
+                            this.#interface1.__m_rev1.empiler_erreur( {
+                                    "__xst" : __xer ,
+                                    "__xme" : this.#interface1.__m_rev1.nl2( e ) + ' <br />erreur dans le javascript :' + e.message ,
+                                    "zone_edition" : this.#interface1.zone_d_edition_en_cours ,
+                                    "lig_col" : lig_col
+                                } );
                         }
-                        this.#interface1.__m_rev1.empiler_erreur( {
-                                "__xst" : __xer ,
-                                "__xme" : this.#interface1.__m_rev1.nl2() + ' <br />erreur dans le javascript :' + e.message ,
-                                "zone_edition" : this.#interface1.zone_d_edition_en_cours ,
-                                "lig_col" : lig_col
-                            } );
                     }
                     return({"__xst" : __xer});
                 }
@@ -2279,13 +2289,13 @@ echo 'hella';`;
       =============================================================================================================
     */
     rechercher_dans_zone_source( mat , debut ){
-        //zone_quoi(vv_rechercher),zone_source(cht_genere_source)))
+        /* zone_quoi[vv_rechercher],zone_source[cht_genere_source]]] */
         let l01=mat.length;
         let zone_quoi='';
         let zone_source='';
         for( let i=debut ; i < l01 ; i=mat[i][12] ){
-            if('rechercher_dans_zone_source'  === mat[i][1] && mat[i][2] === 'f' ){
-                for( let j=i+1 ; j < l01 ; j=mat[j][12] ){
+            if('rechercher_dans_zone_source' === mat[i][1] && mat[i][2] === 'f'){
+                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
                     if(mat[j][2] === 'f' && 'zone_quoi' === mat[j][1] && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
                         zone_quoi=mat[j + 1][1];
                     }else if(mat[j][2] === 'f' && 'zone_source' === mat[j][1] && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
@@ -2294,50 +2304,41 @@ echo 'hella';`;
                 }
             }
         }
-        //debugger
-        if(zone_source!=='' && zone_quoi!==''){
-         setTimeout(()=>{
-             let a=document.getElementById(zone_source);
-             let quoi=document.getElementById(zone_quoi).value;
-             if(quoi===''){
-               return({"__xst" : __xsu});
-             }
-             a.focus();
-             let position_actuelle=a.selectionStart;
-             console.log('position_actuelle='+position_actuelle);
-             
-             let position=a.value.substr(position_actuelle).indexOf(quoi);
-             console.log('quoi='+quoi , 'position_actuelle='+position_actuelle , 'position='+position);
-             if(position>=0){
-                let nouvelle_position=position_actuelle+position;
-                console.log('nouvelle_position='+nouvelle_position)
-                a.selectionStart=nouvelle_position;
-              
-              
-                function toto( par ){
-                    let aa=document.getElementById( par.zone_source );
-                    aa.focus();
-                    aa.scrollTo( 0 , 0 );
-                    aa.selectionStart=parseInt( par.position , 10 );
-                    aa.selectionEnd=parseInt( par.position , 10 ) + 1;
-                    let vrai_numero_de_ligne=0;
-                    try{
-                        let tt=aa.value.substr( 0 , par.position ).split( '\n' );
-                        vrai_numero_de_ligne=tt.length;
-                        console.log( 'vrai_numero_de_ligne=' , vrai_numero_de_ligne );
-                    }catch(e){
-                        debugger;
+        /* debugger */
+        if(zone_source !== '' && zone_quoi !== ''){
+            setTimeout( () => {
+                    let a=document.getElementById( zone_source );
+                    let quoi=document.getElementById( zone_quoi ).value;
+                    if(quoi === ''){
+                        return({"__xst" : __xsu});
                     }
-                    let toto=par.that.#interface1.getCaretPos( aa , vrai_numero_de_ligne );
-                }
-                setTimeout( toto , 20 , {"zone_source" : zone_source ,"position" : nouvelle_position ,"that" : this} );
-              
-              
-              
-             }
-             
-             
-         },100);
+                    a.focus();
+                    let position_actuelle=a.selectionStart;
+                    console.log( 'position_actuelle=' + position_actuelle );
+                    let position=a.value.substr( position_actuelle ).indexOf( quoi );
+                    console.log( 'quoi=' + quoi , 'position_actuelle=' + position_actuelle , 'position=' + position );
+                    if(position >= 0){
+                        let nouvelle_position=position_actuelle + position;
+                        console.log( 'nouvelle_position=' + nouvelle_position );
+                        a.selectionStart=nouvelle_position;
+                        function toto( par ){
+                            let aa=document.getElementById( par.zone_source );
+                            aa.focus();
+                            aa.scrollTo( 0 , 0 );
+                            aa.selectionStart=parseInt( par.position , 10 );
+                            aa.selectionEnd=parseInt( par.position , 10 ) + 1;
+                            let vrai_numero_de_ligne=0;
+                            try{
+                                let tt=aa.value.substr( 0 , par.position ).split( '\n' );
+                                vrai_numero_de_ligne=tt.length;
+                                console.log( 'vrai_numero_de_ligne=' , vrai_numero_de_ligne );
+                            }catch(e){
+                                debugger;
+                            }
+                            let toto=par.that.#interface1.getCaretPos( aa , vrai_numero_de_ligne );
+                        }
+                        setTimeout( toto , 20 , {"zone_source" : zone_source ,"position" : nouvelle_position ,"that" : this} );
+                    }} , 100 );
         }
         return({"__xst" : __xsu});
     }
@@ -2380,7 +2381,7 @@ echo 'hella';`;
                                 this.#afficher_un_message( o.__xst , this.#interface1.__m_rev1.nl2() + '<br />la fonction ' + mat[j][1] + ' a retourné une erreur ' );
                             }
                         }catch(e){
-                            this.#afficher_un_message( __xer , 'la fonction <b>"' + mat[j][1] + '"</b> n\'a pas pu être appelée !<br />'+this.#interface1.__m_rev1.nl2( e ) );
+                            this.#afficher_un_message( __xer , 'la fonction <b>"' + mat[j][1] + '"</b> n\'a pas pu être appelée !<br />' + this.#interface1.__m_rev1.nl2( e ) );
                         }
                     }
                 }

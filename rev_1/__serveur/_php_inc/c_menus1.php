@@ -295,7 +295,9 @@ class c_menus1{
             $contenu_fichier='';
             $nom_fichier=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus'] . DIRECTORY_SEPARATOR . $k1 . '.php';
             foreach($v1 as $k2 => $v2){
-                if($v2['chp_nom_source']!==null){
+                
+                if($v2['chp_nom_source'] !== null){
+
                     $hug_click=str_replace('.php','',$v2['chp_nom_source']) . '.' . $v2['chp_methode_page'] . '(';
                     
                     if($v2['cht_contenu_methode_page'] !== null){
@@ -328,6 +330,8 @@ class c_menus1{
                         $contenu_fichier .= '}' . PHP_EOL;
 
                     }
+
+
                 }
 
             }
@@ -349,18 +353,19 @@ class c_menus1{
     function construire_menus(&$donnees_retournees,&$mat,&$donnees_recues){
         $tt203=/*sql_inclure_deb*/
             /* sql_303()
-            SELECT 
-            `T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , 
-            `T1`.`chp_methode_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , 
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , 
+            `T1`.`chp_methode_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , 
             `T1`.`cht_contenu_methode_page`
-             FROM b1.tbl_menus T0
+             FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-            
+            
              LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
-            
+            
              LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_page
             
-            WHERE `T0`.`chi_id_menu` > :T0_chi_id_menu 
+            WHERE (`T0`.`chi_id_menu` > :T0_chi_id_menu
+               AND `T1`.`chi_id_page` IS NOT NULL) 
             ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ordre_menu` ASC
             ;
             */
@@ -1163,7 +1168,8 @@ class c_menus1{
              LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
             
             WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
-               AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
+               AND `T0`.`chx_page_menu` = :T0_chx_page_menu
+               AND `T2`.`chi_id_acces` = :T2_chi_id_acces) 
             ORDER BY `T0`.`chi_id_menu` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
@@ -1312,20 +1318,20 @@ class c_menus1{
         $par['T0_chi_id_menu']=$par['T0_chi_id_menu']??'';
         $par['T0_chx_page_menu']=$par['T0_chx_page_menu']??'';
         $par['T2_chi_id_acces']=$par['T2_chi_id_acces']??'';
-        
         $fonction1='c_menus1.page_liste_des_menus1';
         $nom_filtre='vv_menus_filtre1';
         $o1='<h1>Liste des menus</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
-        
-        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( (int)$par['T2_chi_id_acces']==(float)$par['T2_chi_id_acces'] , true ) . '</pre>' ; exit(0);
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( (int)$par['T2_chi_id_acces']==(float)$par['T2_chi_id_acces'] , true ) . '</pre>' ; exit(0);*/
         $afficher_bouton_trier=false;
         
-        if($par['T2_chi_id_acces']!=='' && (int)$par['T2_chi_id_acces']==(float)$par['T2_chi_id_acces']){
+        if($par['T2_chi_id_acces'] !== '' && ((int)($par['T2_chi_id_acces'])) == ((float)$par['T2_chi_id_acces'])){
+
             $afficher_bouton_trier=true;
             $__nbMax=100;
+
         }
-        
+
         $__debut=$__num_page * $__nbMax;
         $o1 .= '<div class="yy_filtre_liste1" id="' . $nom_filtre . '">' . PHP_EOL;
         /*
@@ -1375,7 +1381,8 @@ class c_menus1{
              LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
             
             WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
-               AND `T0`.`chx_page_menu` = :T0_chx_page_menu) 
+               AND `T0`.`chx_page_menu` = :T0_chx_page_menu
+               AND `T2`.`chi_id_acces` = :T2_chi_id_acces) 
             ORDER BY `T0`.`chi_id_menu` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
@@ -1425,11 +1432,11 @@ class c_menus1{
           $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $tt '.var_export($tt,true);
         */
         $bouton_avant='<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_menus1.formulaire1(action1(page_menus_creer1))" title="nouveau menu" >+*</div>';
+        
+        if($afficher_bouton_trier === true){
 
-        if($afficher_bouton_trier===true){
-         
-            $bouton_avant.='<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_fonctions_js1(trier_les_menus(chi_id_acces('.$par['T2_chi_id_acces'].')))" title="trier les_menus" >...</div>';
-         
+            $bouton_avant .= '<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_fonctions_js1(trier_les_menus(chi_id_acces(' . $par['T2_chi_id_acces'] . ')))" title="trier les_menus" >...</div>';
+
         }
 
         $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt['nombre'],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));

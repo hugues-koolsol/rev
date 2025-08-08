@@ -97,16 +97,12 @@ class c_requetes1{
 
         $tt149=/*sql_inclure_deb*/
             /* sql_149()
-            SELECT 
-
+            SELECT 
             `T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete`
              FROM b1.tbl_requetes T0
-            WHERE ( / *** *** / `T0`.`chx_projet_requete` = :T0_chx_projet_requete
-
-               AND `T0`.`chi_id_requete` < :nb_max
-
-               AND 1 = 1) 
-
+            WHERE ( / *** *** / `T0`.`chx_projet_requete` = :T0_chx_projet_requete
+               AND `T0`.`chi_id_requete` < :nb_max
+               AND 1 = 1) 
             ORDER BY `T0`.`chi_id_requete` ASC
             ;
             */
@@ -254,16 +250,11 @@ class c_requetes1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_132()
-                / ***meta(sur_base_de_reference(1))*** /
-
-                SELECT 
-
-                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-
+                SELECT 
+                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
                 `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
                  FROM b1.tbl_requetes T0
-                WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
-
+                WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
                    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
                 ;
                 */
@@ -346,21 +337,14 @@ class c_requetes1{
         );
         $tt=/*sql_inclure_deb*/
             /* sql_109()
-            UPDATE b1.tbl_requetes SET 
-
-               `chp_type_requete` = :n_chp_type_requete , 
-
-               `cht_rev_requete` = :n_cht_rev_requete , 
-
-               `cht_sql_requete` = :n_cht_sql_requete , 
-
-               `cht_php_requete` = :n_cht_php_requete , 
-
-               `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-
+            UPDATE b1.tbl_requetes SET 
+               `chp_type_requete` = :n_chp_type_requete , 
+               `cht_rev_requete` = :n_cht_rev_requete , 
+               `cht_sql_requete` = :n_cht_sql_requete , 
+               `cht_php_requete` = :n_cht_php_requete , 
+               `cht_commentaire_requete` = :n_cht_commentaire_requete , 
                `cht_matrice_requete` = :n_cht_matrice_requete
-            WHERE (`chi_id_requete` = :c_chi_id_requete
-
+            WHERE (`chi_id_requete` = :c_chi_id_requete
                AND `chx_projet_requete` = :c_chx_projet_requete) ;
             */
             /*sql_inclure_fin*/
@@ -415,34 +399,20 @@ class c_requetes1{
                 ));
         $tt107=/*sql_inclure_deb*/
             /* sql_107()
-            INSERT INTO b1.`tbl_requetes`(
-
-                `chx_projet_requete` , 
-
-                `chp_type_requete` , 
-
-                `cht_rev_requete` , 
-
-                `cht_sql_requete` , 
-
-                `cht_php_requete` , 
-
-                `cht_commentaire_requete`
-
-            ) VALUES (
-
-                :chx_projet_requete , 
-
-                :chp_type_requete , 
-
-                :cht_rev_requete , 
-
-                :cht_sql_requete , 
-
-                :cht_php_requete , 
-
-                :cht_commentaire_requete
-
+            INSERT INTO b1.`tbl_requetes`(
+                `chx_projet_requete` , 
+                `chp_type_requete` , 
+                `cht_rev_requete` , 
+                `cht_sql_requete` , 
+                `cht_php_requete` , 
+                `cht_commentaire_requete`
+            ) VALUES (
+                :chx_projet_requete , 
+                :chp_type_requete , 
+                :cht_rev_requete , 
+                :cht_sql_requete , 
+                :cht_php_requete , 
+                :cht_commentaire_requete
             );
             */
             /*sql_inclure_fin*/
@@ -461,15 +431,9 @@ class c_requetes1{
             $nouveau_php=str_replace('function sql_' . $donnees_recues[__xva]['chi_id_requete'] . '(','function sql_' . $tt107['nouvel_id'] . '(',$donnees_recues[__xva]['php']);
             $tt135=/*sql_inclure_deb*/
                 /* sql_135()
-                / ***meta(sur_base_de_reference(1))*** /
-
-                
-
-                UPDATE b1.tbl_requetes SET 
-
+                UPDATE b1.tbl_requetes SET 
                    `cht_php_requete` = :n_cht_php_requete
-                WHERE (`chi_id_requete` = :c_chi_id_requete
-
+                WHERE (`chi_id_requete` = :c_chi_id_requete
                    AND `chx_projet_requete` = :c_chx_projet_requete) ;
                 */
                 /*sql_inclure_fin*/
@@ -517,10 +481,8 @@ class c_requetes1{
         $tt=/*sql_inclure_deb*/
             /* sql_105()
             DELETE FROM b1.tbl_revs
-            WHERE (`chx_projet_rev` = :chx_projet_rev
-
-               AND `chp_provenance_rev` = :chp_provenance_rev
-
+            WHERE (`chx_projet_rev` = :chx_projet_rev
+               AND `chp_provenance_rev` = :chp_provenance_rev
                AND `chx_source_rev` = :chx_source_rev) ;
             */
             /*sql_inclure_fin*/
@@ -568,78 +530,42 @@ class c_requetes1{
         }
         $tt=/*sql_inclure_deb*/
             /* sql_112()
-            INSERT INTO b1.`tbl_revs`(
-
-                `chx_projet_rev` , 
-
-                `chp_provenance_rev` , 
-
-                `chx_source_rev` , 
-
-                `chp_id_rev` , 
-
-                `chp_valeur_rev` , 
-
-                `chp_type_rev` , 
-
-                `chp_niveau_rev` , 
-
-                `chp_quotee_rev` , 
-
-                `chp_pos_premier_rev` , 
-
-                `chp_pos_dernier_rev` , 
-
-                `chp_parent_rev` , 
-
-                `chp_nbr_enfants_rev` , 
-
-                `chp_num_enfant_rev` , 
-
-                `chp_profondeur_rev` , 
-
-                `chp_pos_ouver_parenthese_rev` , 
-
-                `chp_enfant_suivant_rev` , 
-
-                `chp_commentaire_rev`
-
-            ) VALUES (
-
-                :chx_projet_rev , 
-
-                :chp_provenance_rev , 
-
-                :chx_source_rev , 
-
-                :chp_id_rev , 
-
-                :chp_valeur_rev , 
-
-                :chp_type_rev , 
-
-                :chp_niveau_rev , 
-
-                :chp_quotee_rev , 
-
-                :chp_pos_premier_rev , 
-
-                :chp_pos_dernier_rev , 
-
-                :chp_parent_rev , 
-
-                :chp_nbr_enfants_rev , 
-
-                :chp_num_enfant_rev , 
-
-                :chp_profondeur_rev , 
-
-                :chp_pos_ouver_parenthese_rev , 
-
-                :chp_enfant_suivant_rev , 
-
-                :chp_commentaire_rev
-
+            INSERT INTO b1.`tbl_revs`(
+                `chx_projet_rev` , 
+                `chp_provenance_rev` , 
+                `chx_source_rev` , 
+                `chp_id_rev` , 
+                `chp_valeur_rev` , 
+                `chp_type_rev` , 
+                `chp_niveau_rev` , 
+                `chp_quotee_rev` , 
+                `chp_pos_premier_rev` , 
+                `chp_pos_dernier_rev` , 
+                `chp_parent_rev` , 
+                `chp_nbr_enfants_rev` , 
+                `chp_num_enfant_rev` , 
+                `chp_profondeur_rev` , 
+                `chp_pos_ouver_parenthese_rev` , 
+                `chp_enfant_suivant_rev` , 
+                `chp_commentaire_rev`
+            ) VALUES (
+                :chx_projet_rev , 
+                :chp_provenance_rev , 
+                :chx_source_rev , 
+                :chp_id_rev , 
+                :chp_valeur_rev , 
+                :chp_type_rev , 
+                :chp_niveau_rev , 
+                :chp_quotee_rev , 
+                :chp_pos_premier_rev , 
+                :chp_pos_dernier_rev , 
+                :chp_parent_rev , 
+                :chp_nbr_enfants_rev , 
+                :chp_num_enfant_rev , 
+                :chp_profondeur_rev , 
+                :chp_pos_ouver_parenthese_rev , 
+                :chp_enfant_suivant_rev , 
+                :chp_commentaire_rev
             );
             */
             /*sql_inclure_fin*/
@@ -655,14 +581,13 @@ class c_requetes1{
     public function recuperer_les_bases_du_projet_en_cours(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
             /* sql_127()
-            / ***meta(sur_base_de_reference(1))*** /
-            SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , 
-                                   `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , 
-            `T1`.`chx_parent_dossier` , `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`cht_commentaire_projet`
-             FROM b1.tbl_bdds T0
+            SELECT 
+            `T0`.`chi_id_basedd` , `T0`.`chx_dossier_id_basedd` , `T0`.`chx_projet_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , 
+            `T0`.`chp_fournisseur_basedd` , `T1`.`chi_id_dossier` , `T1`.`chx_projet_dossier` , `T1`.`chp_nom_dossier` , `T1`.`chx_parent_dossier` , 
+            `T2`.`chi_id_projet` , `T2`.`chp_nom_projet` , `T2`.`cht_commentaire_projet`
+             FROM b1.tbl_bdds T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_basedd
-            
+            
              LEFT JOIN b1.tbl_projets T2 ON T2.chi_id_projet = T0.chx_projet_id_basedd
             
             WHERE `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd
@@ -698,14 +623,11 @@ class c_requetes1{
 
             $tt106=/*sql_inclure_deb*/
                 /* sql_106()
-                SELECT 
-
-                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-
+                SELECT 
+                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
                 `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
                  FROM b1.tbl_requetes T0
-                WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
-
+                WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
                    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
                 ;
                 */
@@ -875,14 +797,11 @@ class c_requetes1{
 
         $tt=/*sql_inclure_deb*/
             /* sql_106()
-            SELECT 
-
-            `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-
+            SELECT 
+            `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
             `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
              FROM b1.tbl_requetes T0
-            WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
-
+            WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
                AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
             ;
             */
@@ -898,13 +817,10 @@ class c_requetes1{
             /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt[__xva] , true ) . '</pre>' ; exit(0);*/
             $tt=/*sql_inclure_deb*/
                 /* sql_104()
-                / ***meta(tester_les_dependances_dans_le_php(1))*** /
-
-                
-
+                / ***meta(tester_les_dependances_dans_le_php(1))*** /
+                
                 DELETE FROM b1.tbl_requetes
-                WHERE (`chi_id_requete` = :chi_id_requete
-
+                WHERE (`chi_id_requete` = :chi_id_requete
                    AND `chx_projet_requete` = :chx_projet_requete) ;
                 */
                 /*sql_inclure_fin*/
@@ -1050,14 +966,11 @@ EOT;
 
             $tt=/*sql_inclure_deb*/
                 /* sql_106()
-                SELECT 
-
-                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-
+                SELECT 
+                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
                 `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
                  FROM b1.tbl_requetes T0
-                WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
-
+                WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
                    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
                 ;
                 */
@@ -1128,16 +1041,11 @@ EOT;
 
             $tt=/*sql_inclure_deb*/
                 /* sql_132()
-                / ***meta(sur_base_de_reference(1))*** /
-
-                SELECT 
-
-                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-
+                SELECT 
+                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
                 `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
                  FROM b1.tbl_requetes T0
-                WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
-
+                WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
                    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
                 ;
                 */
@@ -1289,16 +1197,11 @@ EOT;
 
         $tt1=/*sql_inclure_deb*/
             /* sql_132()
-            / ***meta(sur_base_de_reference(1))*** /
-
-            SELECT 
-
-            `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-
+            SELECT 
+            `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
             `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
              FROM b1.tbl_requetes T0
-            WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
-
+            WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
                AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
             ;
             */
@@ -1318,16 +1221,11 @@ EOT;
 
         $tt2=/*sql_inclure_deb*/
             /* sql_132()
-            / ***meta(sur_base_de_reference(1))*** /
-
-            SELECT 
-
-            `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-
+            SELECT 
+            `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
             `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
              FROM b1.tbl_requetes T0
-            WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
-
+            WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
                AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
             ;
             */
@@ -1387,13 +1285,10 @@ EOT;
         */
         $tt3=/*sql_inclure_deb*/
             /* sql_103()
-            UPDATE b1.tbl_requetes SET 
-
-               `chi_id_requete` = :n_chi_id_requete , 
-
+            UPDATE b1.tbl_requetes SET 
+               `chi_id_requete` = :n_chi_id_requete , 
                `cht_php_requete` = :n_cht_php_requete
-            WHERE (`chi_id_requete` = :c_chi_id_requete
-
+            WHERE (`chi_id_requete` = :c_chi_id_requete
                AND `chx_projet_requete` = :c_chx_projet_requete) ;
             */
             /*sql_inclure_fin*/
@@ -1490,21 +1385,14 @@ EOT;
 
             $tt=/*sql_inclure_deb*/
                 /* sql_109()
-                UPDATE b1.tbl_requetes SET 
-
-                   `chp_type_requete` = :n_chp_type_requete , 
-
-                   `cht_rev_requete` = :n_cht_rev_requete , 
-
-                   `cht_sql_requete` = :n_cht_sql_requete , 
-
-                   `cht_php_requete` = :n_cht_php_requete , 
-
-                   `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-
+                UPDATE b1.tbl_requetes SET 
+                   `chp_type_requete` = :n_chp_type_requete , 
+                   `cht_rev_requete` = :n_cht_rev_requete , 
+                   `cht_sql_requete` = :n_cht_sql_requete , 
+                   `cht_php_requete` = :n_cht_php_requete , 
+                   `cht_commentaire_requete` = :n_cht_commentaire_requete , 
                    `cht_matrice_requete` = :n_cht_matrice_requete
-                WHERE (`chi_id_requete` = :c_chi_id_requete
-
+                WHERE (`chi_id_requete` = :c_chi_id_requete
                    AND `chx_projet_requete` = :c_chx_projet_requete) ;
                 */
                 /*sql_inclure_fin*/
@@ -1525,21 +1413,14 @@ EOT;
 
             $tt=/*sql_inclure_deb*/
                 /* sql_109()
-                UPDATE b1.tbl_requetes SET 
-
-                   `chp_type_requete` = :n_chp_type_requete , 
-
-                   `cht_rev_requete` = :n_cht_rev_requete , 
-
-                   `cht_sql_requete` = :n_cht_sql_requete , 
-
-                   `cht_php_requete` = :n_cht_php_requete , 
-
-                   `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-
+                UPDATE b1.tbl_requetes SET 
+                   `chp_type_requete` = :n_chp_type_requete , 
+                   `cht_rev_requete` = :n_cht_rev_requete , 
+                   `cht_sql_requete` = :n_cht_sql_requete , 
+                   `cht_php_requete` = :n_cht_php_requete , 
+                   `cht_commentaire_requete` = :n_cht_commentaire_requete , 
                    `cht_matrice_requete` = :n_cht_matrice_requete
-                WHERE (`chi_id_requete` = :c_chi_id_requete
-
+                WHERE (`chi_id_requete` = :c_chi_id_requete
                    AND `chx_projet_requete` = :c_chx_projet_requete) ;
                 */
                 /*sql_inclure_fin*/
@@ -1646,16 +1527,11 @@ EOT;
 
             $tt=/*sql_inclure_deb*/
                 /* sql_132()
-                / ***meta(sur_base_de_reference(1))*** /
-
-                SELECT 
-
-                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-
+                SELECT 
+                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
                 `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
                  FROM b1.tbl_requetes T0
-                WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
-
+                WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
                    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
                 ;
                 */
@@ -1667,7 +1543,7 @@ EOT;
             );
             $tt2=/*sql_inclure_deb*/
                 /* sql_171()
-                SELECT 
+                SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
                  FROM b1.tbl_bdds T0
                 WHERE (`T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
@@ -1712,12 +1588,13 @@ EOT;
     function le_repertoire_des_requetes_est_il_defini(){
         $tt134=/*sql_inclure_deb*/
             /* sql_134()
-            SELECT 
-            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , 
+            / ***meta(sur_base_de_reference(1))*** /
+            SELECT 
+            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_menus_projet` , `T0`.`cht_commentaire_projet` , 
             `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier`
-             FROM b1.tbl_projets T0
+             FROM b1.tbl_projets T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
-            
+            
              LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_menus_projet
             
             WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
@@ -1792,6 +1669,7 @@ EOT;
         $par['T0_chi_id_requete2']='';
         $par['T0_chp_type_requete']='';
         $par['T0_cht_rev_requete']='';
+        $par['T0_cht_commentaire_requete']='';
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
@@ -1826,13 +1704,12 @@ EOT;
 
                 }
 
-             }else if($mat[$i][1] === 'indice_menu'){
+            }else if($mat[$i][1] === 'indice_menu'){
 
-                 $numpage=0;
-                 $par_mat['__num_page']=0;
-                 $provenance_menu=true;
-                 $par['__num_page']=0;
-
+                $numpage=0;
+                $par_mat['__num_page']=0;
+                $provenance_menu=true;
+                $par['__num_page']=0;
             }
 
         }
@@ -1871,6 +1748,7 @@ EOT;
 
         $par['T0_chi_id_requete']=$par['T0_chi_id_requete']??'';
         $par['T0_chi_id_requete2']=$par['T0_chi_id_requete2']??'';
+        $par['T0_cht_commentaire_requete']=$par['T0_cht_commentaire_requete']??'';
         $fonction1='c_requetes1.page_liste_des_requetes1';
         $nom_filtre='vv_requetes_filtre1';
         $o1='<h1>Liste des requetes</h1>';
@@ -1898,6 +1776,11 @@ EOT;
         $o1 .= '    <div><input type="text" id="T0_chp_type_requete" value="' . $par['T0_chp_type_requete'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /**/
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '    <div><span>commentaire</span></div>' . PHP_EOL;
+        $o1 .= '    <div><input type="text" id="T0_cht_commentaire_requete" value="' . $par['T0_cht_commentaire_requete'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        /**/
         $o1 .= '   <div>    ' . PHP_EOL;
         $o1 .= '     <div><span>&nbsp;</span></div>' . PHP_EOL;
         $o1 .= '     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_requetes1.formulaire1(conteneur1(' . $nom_filtre . '))" >🔎</div></div>' . PHP_EOL;
@@ -1907,24 +1790,17 @@ EOT;
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_102()
-            SELECT 
-
-            `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-
+            SELECT 
+            `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
             `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
              FROM b1.tbl_requetes T0
-            WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
-
-               AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete
-
-               AND `T0`.`chp_type_requete` LIKE :T0_chp_type_requete
-
-               AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete
-
-               AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2) 
-
-            ORDER BY `T0`.`chi_id_requete` DESC  
-
+            WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
+               AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete
+               AND `T0`.`chp_type_requete` LIKE :T0_chp_type_requete
+               AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete
+               AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2
+               AND `T0`.`cht_commentaire_requete` LIKE :T0_cht_commentaire_requete) 
+            ORDER BY `T0`.`chi_id_requete` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
@@ -1937,6 +1813,7 @@ EOT;
                 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                 'T0_chp_type_requete' => $par['T0_chp_type_requete'] === '' ? '' : '' . $par['T0_chp_type_requete'] . '',
                 'T0_cht_rev_requete' => $par['T0_cht_rev_requete'] === '' ? '' : '' . $par['T0_cht_rev_requete'] . '',
+                'T0_cht_commentaire_requete' => $par['T0_cht_commentaire_requete'] === '' ? '' : '' . $par['T0_cht_commentaire_requete'] . '',
                 'quantitee' => $__nbMax,
                 'debut' => $__debut
             ),
@@ -2001,20 +1878,27 @@ EOT;
             $lsttbl .= '</tr>';
         }
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
-
         $maj_url='';
-        $maj_url.='maj_url(';
-        $maj_url.='c_requetes1.page_liste_des_requetes1(';
-        $maj_url.='__num_page('.($par['__num_page']).')';
-        if($par['T0_chi_id_requete']!==''){
-          $maj_url.='T0_chi_id_requete('.($par['T0_chi_id_requete']).')';
+        $maj_url .= 'maj_url(';
+        $maj_url .= 'c_requetes1.page_liste_des_requetes1(';
+        $maj_url .= '__num_page(' . $par['__num_page'] . ')';
+        
+        if($par['T0_chi_id_requete'] !== ''){
+
+            $maj_url .= 'T0_chi_id_requete(' . $par['T0_chi_id_requete'] . ')';
+
         }
-        if($par['T0_chi_id_requete2']!==''){
-          $maj_url.='T0_chi_id_requete2('.($par['T0_chi_id_requete2']).')';
+
+        
+        if($par['T0_chi_id_requete2'] !== ''){
+
+            $maj_url .= 'T0_chi_id_requete2(' . $par['T0_chi_id_requete2'] . ')';
+
         }
-        $maj_url.=')';
-        $maj_url.=')';
-        $donnees_retournees[__xva]['maj'] = $maj_url;
+
+        $maj_url .= ')';
+        $maj_url .= ')';
+        $donnees_retournees[__xva]['maj']=$maj_url;
         $donnees_retournees[__x_page] .= $o1;
         $donnees_retournees[__x_action]='c_requetes1.page_liste_des_requetes1()';
         $donnees_retournees[__xst]=__xsu;

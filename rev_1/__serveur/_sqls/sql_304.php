@@ -9,8 +9,7 @@ function sql_304($par,&$donnees_retournees,$that){
        LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
     ';
     $sql0.=$from0;
-    $where0=' WHERE 1=1 '.PHP_EOL;
-    $where0.=PHP_EOL.construction_where_sql_sur_id1('`T1`.`chx_acces_page`',$par['T1_chx_acces_page']);
+    $where0=' WHERE `T1`.`chx_acces_page` = '.sq1($par['T1_chx_acces_page']).''.PHP_EOL;
     $sql0.=$where0;
     $order0='
        ORDER BY  `T0`.`che_ordre_menu` ASC';
@@ -38,6 +37,12 @@ function sql_304($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la selection sur les menus' , 'exception' => $e , 'id_bdd' => BDD_NUMERO_1 );
+        return array(
+           __xst => __xer ,
+           'sql0' => $sql0 , 
+           'texte_requete' => 'la selection sur les menus' , 
+           'exception' => $e ,
+            'id_bdd' => BDD_NUMERO_1
+         );
     }
 }

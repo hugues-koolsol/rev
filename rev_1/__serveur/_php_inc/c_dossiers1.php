@@ -264,8 +264,6 @@ class c_dossiers1{
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
             /* sql_137()
-            / ***meta(sur_base_de_reference(1))*** /
-            
             INSERT INTO b1.`tbl_dossiers`(
                 `chx_projet_dossier` , 
                 `chp_nom_dossier` , 
@@ -435,8 +433,6 @@ class c_dossiers1{
         }
 
     }
-
-    
     /*
       =============================================================================================================
     */
@@ -474,7 +470,6 @@ class c_dossiers1{
             $continuer--;
             
             if($tt[__xst] === __xsu){
-             
 
                 
                 if(is_null($tt[__xva][0]['T0.chx_parent_dossier'])){
@@ -520,7 +515,6 @@ class c_dossiers1{
 
             $chemin='rev_' . $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] . $chemin;
         }
-        
 
         $chemin_absolu=REPERTOIRE_RACINE_DES_PROJET . DIRECTORY_SEPARATOR . $chemin;
         return array( '__xst' => __xsu, '__xva' => array( 'chemin_absolu' => $chemin_absolu, 'chemin_relatif' => $chemin));
@@ -703,6 +697,7 @@ class c_dossiers1{
             );
             
             if($tt[__xst] !== __xsu){
+
                 
                 if($tt['code_erreur'] === 19){
 
@@ -2392,14 +2387,17 @@ class c_dossiers1{
             $lsttbl .= '<td style="text-align:left;">';
             
             if($v0['T0.chx_parent_dossier'] !== null){
-             
-                if($v0['T1.chp_nom_dossier']===null || $v0['T1.chp_nom_dossier']===''){
+
+                
+                if($v0['T1.chp_nom_dossier'] === null || $v0['T1.chp_nom_dossier'] === ''){
 
                     $lsttbl .= '(' . enti1($v0['T0.chx_parent_dossier']) . ') [rev_' . $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] . ']';
+
                 }else{
 
                     $lsttbl .= '(' . enti1($v0['T0.chx_parent_dossier']) . ') ' . enti1($v0['T1.chp_nom_dossier']) . '';
                 }
+
 
             }
 

@@ -81,8 +81,6 @@ class c_revs1{
     function tout_supprimer(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
             /* sql_114()
-            / ***meta(tester_les_dependances_dans_le_php(1))*** /
-            
             DELETE FROM b1.tbl_revs
             WHERE (`chx_projet_rev` = :chx_projet_rev) ;
             */

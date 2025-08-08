@@ -38,6 +38,12 @@ function sql_147($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la selection sur les utilisateurs' , 'exception' => $e , 'id_bdd' => BASE_REFERENCE );
+        return array(
+           __xst => __xer ,
+           'sql0' => $sql0 , 
+           'texte_requete' => 'la selection sur les utilisateurs' , 
+           'exception' => $e ,
+            'id_bdd' => BASE_REFERENCE
+         );
     }
 }

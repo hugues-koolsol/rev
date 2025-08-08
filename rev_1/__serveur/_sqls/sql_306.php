@@ -7,8 +7,7 @@ function sql_306($par,&$donnees_retournees,$that){
     $from0='
       FROM tbl_dossiers T0    ';
     $sql0.=$from0;
-    $where0=' WHERE 1=1 '.PHP_EOL;
-    $where0.=' AND `T0`.`chp_nom_dossier` NOT LIKE '.sq3($par['T0_chp_nom_dossier']).''.PHP_EOL;
+    $where0=' WHERE `T0`.`chp_nom_dossier` NOT LIKE '.sq3($par['T0_chp_nom_dossier']).''.PHP_EOL;
     $sql0.=$where0;
     $donnees0=array();
     //echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' .  $sql0  . '</pre>' ; exit(0);
@@ -32,6 +31,12 @@ function sql_306($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la selection sur les dossiers' , 'exception' => $e , 'id_bdd' => BASE_REFERENCE );
+        return array(
+           __xst => __xer ,
+           'sql0' => $sql0 , 
+           'texte_requete' => 'la selection sur les dossiers' , 
+           'exception' => $e ,
+            'id_bdd' => BASE_REFERENCE
+         );
     }
 }

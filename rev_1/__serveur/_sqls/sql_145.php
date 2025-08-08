@@ -20,7 +20,7 @@ function sql_145($par,&$donnees_retournees,$that){
         $donnees_retournees[__x_signaux][__xer][]=' erreur lors de la suppression, il existe des dépendances sql_145() [' . __LINE__ . ']';
         return array(
             __xst => __xer,
-            'source_requete' => $sql0,
+            'sql0' => $sql0,
             'texte_requete' => 'la suppression dans la table des projets',
             'exception' => null,
             'id_bdd' => BDD_NUMERO_1,
@@ -33,10 +33,11 @@ function sql_145($par,&$donnees_retournees,$that){
     }catch(Exception $e){
         return array(/**/
             __xst => __xer , 
-            'source_requete' => $sql0 , 
+            'sql0' => $sql0 , 
             'texte_requete' => 'la suppression dans la table des projets' ,
             'exception' => $e , 
-            'id_bdd' => BDD_NUMERO_1
+            'id_bdd' => BDD_NUMERO_1,
+            'bdd' => $GLOBALS[__BDD][BDD_NUMERO_1] ,
         );
     }
 }

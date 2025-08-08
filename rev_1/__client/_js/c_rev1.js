@@ -83,6 +83,7 @@ class c_rev1{
             "__xva" : o.hasOwnProperty( '__xva' ) ? ( o.__xva ) : ( null ) ,
             "masquee" : o.hasOwnProperty( 'masquee' ) ? ( o.masquee ) : ( false ) ,
             "plage" : o.hasOwnProperty( 'plage' ) ? ( o.plage ) : ( null ) ,
+            "lig_col" : o.hasOwnProperty( 'lig_col' ) ? ( o.lig_col ) : ( null ) ,
             "ligne" : o.hasOwnProperty( 'ligne' ) ? ( o.ligne ) : ( null )
         };
         if(a_retourner.__xst === __xal){
@@ -981,7 +982,7 @@ class c_rev1{
         try{
             l01=str.length;
         }catch(e){
-         debugger;
+            debugger;
         }
         const tab=[];
         let i=0;

@@ -15,8 +15,8 @@ class c_divers1{
         if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])
            && $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'] === 1
         ){
-            $date_de_reference=date('Y_m_d_H_i_s');
 
+            $date_de_reference=date('Y_m_d_H_i_s');
             
             if($fd=fopen(REPERTOIRE_DU_SERVEUR . DIRECTORY_SEPARATOR . '__lock.txt','x')){
 

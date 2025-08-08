@@ -54,7 +54,7 @@ class c_accueil1{
         $txt1 .= '<a href="#vv_p5_' . $nom_page . '">p5 ' . $nom_page . '</a>' . PHP_EOL;
         $txt .= '<h2 id="vv_p1_' . $nom_page . '">p1</h2>' . PHP_EOL;
         $txt .= $txt1;
-        $txt.= '<a href="https://samegame.koolsol.app/">koolsol</a>';
+        $txt .= '<a href="https://samegame.koolsol.app/">koolsol</a>';
         for( $i=0 ; $i < $nombre_de_paragraphes_par_bloc ; $i++ ){
             
             $txt .= '<p>' . PHP_EOL;
@@ -65,8 +65,7 @@ class c_accueil1{
         }
         $txt .= '<h2 id="vv_p2_' . $nom_page . '">p2</h2>' . PHP_EOL;
         $txt .= $txt1;
-        
-        $txt.= '<a href="https://samegame.koolsol.app/">koolsol</a>';
+        $txt .= '<a href="https://samegame.koolsol.app/">koolsol</a>';
         for( $i=0 ; $i < $nombre_de_paragraphes_par_bloc ; $i++ ){
             
             $txt .= '<p>' . PHP_EOL;
@@ -77,7 +76,7 @@ class c_accueil1{
         }
         $txt .= '<h2 id="vv_p3_' . $nom_page . '">p3</h2>' . PHP_EOL;
         $txt .= $txt1;
-        $txt.= '<a href="https://samegame.koolsol.app/">koolsol</a>';
+        $txt .= '<a href="https://samegame.koolsol.app/">koolsol</a>';
         for( $i=0 ; $i < $nombre_de_paragraphes_par_bloc ; $i++ ){
             
             $txt .= '<p>' . PHP_EOL;
@@ -88,7 +87,7 @@ class c_accueil1{
         }
         $txt .= '<h2 id="vv_p4_' . $nom_page . '">p4</h2>' . PHP_EOL;
         $txt .= $txt1;
-        $txt.= '<a href="https://samegame.koolsol.app/">koolsol</a>';
+        $txt .= '<a href="https://samegame.koolsol.app/">koolsol</a>';
         $txt .= '<p>' . PHP_EOL;
         $txt .= '    <b>données bidon</b> Donec vulputate pharetra maximus. Nunc semper faucibus ultrices. Nunc nec lacinia ipsum. Curabitur tempor, metus ut finibus suscipit, sapien diam cursus erat, eu vestibulum ante felis eu sem. Nunc euismod, ante et maximus dapibus, est odio convallis urna, sed porttitor erat augue at ante. Nam placerat maximus dui quis fermentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus quis turpis quis nunc condimentum viverra. Aenean mauris sapien, congue ut sollicitudin vitae, blandit at turpis. Curabitur commodo risus quis iaculis ultrices. Donec a lorem quis nisi varius dapibus. Vivamus nec tempus dolor. Duis condimentum felis elementum velit bibendum aliquet. Nam malesuada, turpis id tempus faucibus, magna dolor elementum mauris, pellentesque suscipit arcu libero sed leo. In vulputate augue eu libero finibus aliquam. Vestibulum et scelerisque tortor, vel efficitur purus.' . PHP_EOL;
         $txt .= '    Donec vulputate pharetra maximus. Nunc semper faucibus ultrices. Nunc nec lacinia ipsum. Curabitur tempor, metus ut finibus suscipit, sapien diam cursus erat, eu vestibulum ante felis eu sem. Nunc euismod, ante et maximus dapibus, est odio convallis urna, sed porttitor erat augue at ante. Nam placerat maximus dui quis fermentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus quis turpis quis nunc condimentum viverra. Aenean mauris sapien, congue ut sollicitudin vitae, blandit at turpis. Curabitur commodo risus quis iaculis ultrices. Donec a lorem quis nisi varius dapibus. Vivamus nec tempus dolor. Duis condimentum felis elementum velit bibendum aliquet. Nam malesuada, turpis id tempus faucibus, magna dolor elementum mauris, pellentesque suscipit arcu libero sed leo. In vulputate augue eu libero finibus aliquam. Vestibulum et scelerisque tortor, vel efficitur purus.' . PHP_EOL;
@@ -96,7 +95,7 @@ class c_accueil1{
         $txt .= '</p>' . PHP_EOL;
         $txt .= '<h2 id="vv_p5_' . $nom_page . '">p5</h2>' . PHP_EOL;
         $txt .= $txt1;
-        $txt.= '<a href="https://samegame.koolsol.app/">koolsol</a>';
+        $txt .= '<a href="https://samegame.koolsol.app/">koolsol</a>';
         $txt .= '<p>' . PHP_EOL;
         $txt .= '    <b>données bidon</b> Nulla sit amet suscipit dolor, in congue lorem. Maecenas fringilla efficitur vestibulum. Aenean fringilla, tellus sed tincidunt bibendum, sem ante interdum nibh, nec sagittis elit purus porttitor ipsum. Ut lectus nisi, mollis ut mauris non, tincidunt dictum risus. Fusce in magna neque. Maecenas sapien enim, iaculis at semper vel, condimentum nec turpis. Integer vitae auctor eros.' . PHP_EOL;
         $txt .= '    Nulla sit amet suscipit dolor, in congue lorem. Maecenas fringilla efficitur vestibulum. Aenean fringilla, tellus sed tincidunt bibendum, sem ante interdum nibh, nec sagittis elit purus porttitor ipsum. Ut lectus nisi, mollis ut mauris non, tincidunt dictum risus. Fusce in magna neque. Maecenas sapien enim, iaculis at semper vel, condimentum nec turpis. Integer vitae auctor eros.' . PHP_EOL;
@@ -206,7 +205,7 @@ EOT;
         
         if($tab['nouveau_cookie'] === true){
 
-            $donnees_retournees[__x_signaux][__xif][]='😊 Bienvenue !';
+            $donnees_retournees[__x_signaux][__xif][]='<span style="font-size:3em;">😊 Bienvenue !</span>';
 
         }else{
 
@@ -214,7 +213,7 @@ EOT;
             if(time() - $tab['ancienne_date'] > 3600 * 24){
 
                 /* si on ne s'est pas connecté depuis plus de 24h */
-                $donnees_retournees[__x_signaux][__xif][]='😀 Content de vous revoir !';
+                $donnees_retournees[__x_signaux][__xif][]='<span style="font-size:4em;">😀 Content de vous revoir !</span>';
 
             }
 

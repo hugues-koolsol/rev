@@ -16,7 +16,7 @@ function sql_165($par,&$donnees_retournees,$that){
             __xst => __xer ,
             __xme => 'aucun champ à mettre à jour' ,
             'id_bdd' => BDD_NUMERO_1 ,
-            'source_requete' => '' , 
+            'sql0' => $sql0 , 
             'texte_requete' => 'la modification dans la table des taches' ,
             'exception' => null , 
         );
@@ -33,10 +33,11 @@ function sql_165($par,&$donnees_retournees,$that){
     }catch(Exception $e){
         return array(/**/
             __xst => __xer , 
-            'source_requete' => $sql0 , 
+            'sql0' => $sql0 , 
             'texte_requete' => 'la modification dans la table des taches' ,
             'exception' => $e , 
-            'id_bdd' => BDD_NUMERO_1
+            'id_bdd' => BDD_NUMERO_1,
+            'bdd' => $GLOBALS[__BDD][BDD_NUMERO_1] ,
         );
     }
 }

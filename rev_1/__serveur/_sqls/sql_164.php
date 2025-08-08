@@ -7,9 +7,7 @@ function sql_164($par,&$donnees_retournees,$that){
     $from0='
       FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_taches T0    ';
     $sql0.=$from0;
-    $where0=' WHERE 1=1 '.PHP_EOL;
-    $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_utilisateur_tache`',$par['T0_chx_utilisateur_tache']);
-    $where0.=' AND `T0`.`chp_priorite_tache` < '.sq1($par['T0_chp_priorite_tache']).''.PHP_EOL;
+    $where0=' WHERE ( /* */ `T0`.`chx_utilisateur_tache` = '.sq1($par['T0_chx_utilisateur_tache']).' AND `T0`.`chp_priorite_tache` < '.sq1($par['T0_chp_priorite_tache']).')'.PHP_EOL;
     $sql0.=$where0;
     $order0='
        ORDER BY  `T0`.`chp_priorite_tache` ASC';
@@ -39,6 +37,12 @@ function sql_164($par,&$donnees_retournees,$that){
            'where0'  => $where0     ,
         );
     }catch(Exception $e){
-        return array(__xst => __xer , 'source_requete' => $sql0 , 'texte_requete' => 'la selection sur les taches' , 'exception' => $e , 'id_bdd' => BDD_NUMERO_1 );
+        return array(
+           __xst => __xer ,
+           'sql0' => $sql0 , 
+           'texte_requete' => 'la selection sur les taches' , 
+           'exception' => $e ,
+            'id_bdd' => BDD_NUMERO_1
+         );
     }
 }
