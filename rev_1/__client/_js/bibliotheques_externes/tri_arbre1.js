@@ -32,13 +32,13 @@ class tri_arbre1{
         "fonction_appelee_apres_action" : null ,
         "arborescent" : true ,
         "class_du_bouton_deplacer" : '' ,
-        "decallage_entre_niveaux_en_px" : 30 ,
          /* entre 5 et 30 */
+        "decallage_entre_niveaux_en_px" : 30 ,
         "boutons_du_menu" : [] ,
         "class_du_bouton_menu" : '' ,
         "border_zone_principale" : '2px purple inset' ,
-        "hauteur_separateur_en_px" : 10 ,
          /* entre 10 et 30 */
+        "hauteur_separateur_en_px" : 10 ,
         "border_separateur" : '0px red solid' ,
         "border_bloc" : '1px blue solid' ,
         "box_shadow" : 'inset 0px 0px 16px #f00' ,

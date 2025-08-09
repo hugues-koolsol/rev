@@ -752,6 +752,7 @@ class c_astsqliteparseur_vers_rev1{
                 }
                 if(element.definition[i].datatype){
                     t+=' , type(' + element.definition[i].datatype.variant;
+                    let longueur_du_champ='';
                     if(element.definition[i].datatype.args){
                         t+=',';
                         for( var j=0 ; j < element.definition[i].datatype.args.expression.length ; j++ ){
@@ -760,6 +761,7 @@ class c_astsqliteparseur_vers_rev1{
                             }
                             if(element.definition[i].datatype.args.expression[j].type === 'literal'){
                                 t+=element.definition[i].datatype.args.expression[j].value;
+                                longueur_du_champ=element.definition[i].datatype.args.expression[j].value;
                             }else{
                                 return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'définition type'} ));
                             }
@@ -767,6 +769,10 @@ class c_astsqliteparseur_vers_rev1{
                         t+='';
                     }
                     t+=')';
+                    t+=' , espece_du_champ(' + element.definition[i].datatype.variant.toUpperCase()+')';
+                    if(longueur_du_champ!==''){
+                        t+=' , longueur_du_champ(' + longueur_du_champ+')';
+                    }
                 }else{
                     return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'définition type'} ));
                 }

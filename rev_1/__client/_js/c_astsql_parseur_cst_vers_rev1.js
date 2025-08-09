@@ -826,6 +826,8 @@ class c_astsql_parseur_cst_vers_rev1{
           {type: 'constraint_not_null', notNullKw: Array(2), clauses: Array(0), range: Array(2), leading: Array(1)}
         */
         let dataType='';
+        let espece_du_champ='';
+        let longueur_du_champ='';
         /*
           {type: 'named_data_type', name: {…}, range: Array(2), leading: Array(1)}
         */
@@ -837,12 +839,14 @@ class c_astsql_parseur_cst_vers_rev1{
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' '} ));
         }
         if(element.dataType){
+            espece_du_champ=element.dataType.name.name;
             if(element.dataType
                    && element.dataType.hasOwnProperty( 'params' )
                    && element.dataType.params.hasOwnProperty( 'expr' )
                    && element.dataType.params.expr.items[0].type === 'number_literal'
             ){
                 dataType=element.dataType.name.name + '(' + element.dataType.params.expr.items[0].value + ')';
+                longueur_du_champ=element.dataType.params.expr.items[0].value;
             }else{
                 dataType=element.dataType.name.name;
             }
@@ -916,7 +920,12 @@ class c_astsql_parseur_cst_vers_rev1{
         t+='champ(';
         t+=meta_champ;
         t+='nom_du_champ( `' + name + '`),';
+        t+='espece_du_champ('+espece_du_champ.toUpperCase()+'),'
+        if(longueur_du_champ!==''){
+            t+='longueur_du_champ('+longueur_du_champ+'),'
+        }
         t+='type(' + dataType + ')';
+        
         t+='' + constraints + '';
         t+=')';
         return({"__xst" : __xsu ,"__xva" : t});

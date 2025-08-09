@@ -873,7 +873,7 @@ class c_bases1{
             
             if(is_file($fichier_temporaire)){
 
-                /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . $source  . '</pre>' ; exit(0);*/
+                /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . $source  . '</pre>' ; exit(0); */
                 try{
                     $res0=$dbtemp->exec($source);
                     /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . $source  . '</pre>' ; exit(0);*/

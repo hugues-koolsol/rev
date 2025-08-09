@@ -1010,19 +1010,33 @@ CREATE TABLE tbl_taches(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_bidon2_tache'),champ('chp_bidon2_tache'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
-            )
-            */
-             chp_bidon2_tache VARCHAR(64)
-    ,
-    
-            /*
-            meta(
             genre_meta(champ),nom_du_champ('chp__dtc_tache'),champ('chp__dtc_tache'),nom_long_du_champ('à faire chp__dtc_tache'),nom_court_du_champ('à faire chp__dtc_tache'),nom_bref_du_champ('à faire chp__dtc_tache'),
             typologie(chi),afficher_champ_dans_svg(1),champ_date_creation(1)
             )
             */
              chp__dtc_tache VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    );
+
+CREATE TABLE tbl_genres(
+/*
+ meta(nom_de_la_table('tbl_genres'),table('tbl_genres'),genre_meta(table_de_base),nom_long_de_la_table('A faire  tbl_genres'),nom_court_de_la_table('A faire tbl_genres'),nom_bref_de_la_table('A faire tbl_genres'),transform_table_sur_svg(translate(386.5,640.5))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('chi_id_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
+            )
+            */
+             chi_id_genre INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('chp_nom_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
+            )
+            */
+             chp_nom_genre VARCHAR(64) NOT NULL
     );
 

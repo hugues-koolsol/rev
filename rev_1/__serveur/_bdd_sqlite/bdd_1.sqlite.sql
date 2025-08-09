@@ -1019,20 +1019,34 @@ CREATE TABLE tbl_taches(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_bidon2_tache'),champ('chp_bidon2_tache'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
-            )
-            */
-             chp_bidon2_tache VARCHAR(64)
-    ,
-    
-            /*
-            meta(
             genre_meta(champ),nom_du_champ('chp__dtc_tache'),champ('chp__dtc_tache'),nom_long_du_champ('à faire chp__dtc_tache'),nom_court_du_champ('à faire chp__dtc_tache'),nom_bref_du_champ('à faire chp__dtc_tache'),
             typologie(chi),afficher_champ_dans_svg(1),champ_date_creation(1)
             )
             */
              chp__dtc_tache VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    );
+
+CREATE TABLE tbl_genres(
+/*
+ meta(nom_de_la_table('tbl_genres'),table('tbl_genres'),genre_meta(table_de_base),nom_long_de_la_table('A faire  tbl_genres'),nom_court_de_la_table('A faire tbl_genres'),nom_bref_de_la_table('A faire tbl_genres'),transform_table_sur_svg(translate(386.5,640.5))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('chi_id_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
+            )
+            */
+             chi_id_genre INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('chp_nom_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
+            )
+            */
+             chp_nom_genre VARCHAR(64) NOT NULL
     );
 
 /*
@@ -1049,7 +1063,7 @@ CREATE TABLE tbl_taches(
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','607','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','609','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -2030,7 +2044,7 @@ WHERE (`chi_id_source` = :chi_id_source
  FROM b1.tbl_bdds T0
 ;',NULL,'bdds',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('141','1','requete_manuelle','base_de_reference(1),
-transaction()  ','BEGIN TRANSACTION;',NULL,'sur base 1',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+transaction()    ','BEGIN TRANSACTION;',NULL,'sur base 1',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('142','1','requete_manuelle','base_de_reference(1),
 commit()  ','COMMIT;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('143','1','requete_manuelle','base_de_reference(1),
@@ -3838,7 +3852,1056 @@ INSERT INTO tbl_sources (chi_id_source,chx_projet_id_source,chp_nom_source,cht_c
 ('328','1','test.css',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
 ('330','1','tictactoe.html',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
 ('331','1','test_tictactoe.html.rev',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','7'),
-('353','1','c_bases1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9');
+('353','1','c_bases1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('354','1','tri_arbre.html',NULL,NULL,'<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8" />
+  <title>A simple tree and/or sort javascript</title>
+  <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1,minimum-scale=1" />  
+
+  <script type="text/javascript" src="tri_arbre1.js"></script>
+  <style>
+  *{box-sizing:border-box;}
+  body{margin:0;padding:0;}
+  .le_bo_bouton_deplacer{
+   border:1px green solid;
+   min-width:1em;
+   text-align:center;
+   cursor:ns-resize;
+   color:green;
+  }
+  .le_bo_bouton_menu{
+      border:2px yellow outset;
+      min-width:1em;
+      text-align:center;
+      cursor:pointer;
+      color:blue;
+  }
+  </style>
+ </head>
+ <body>
+ <div style="border:1px red solid;height:50px;width:50px;display:inline-block;overflow:hidden;">50</div>
+ <a href="javascript:goto(50)">goto(50)</a>
+<h1>exemple</h1><a href="#fin">fin</a><span id="toto"></span>
+<br /><br /><br /><br /><br />
+<table border="1">
+<tr>
+    <td>
+        <ul id="tri_arbre_racine1" style="border:0px red solid;">
+         <li id="123">
+           <b style="color:red;">a 1</b>
+           <ul  data-replie>
+            <li>
+               aa 2
+               <ul>
+                <li>aaa 3</li>
+                <li>aaa 4</li>
+               </ul>
+            </li>
+            <li>
+               ab 5
+               <ul  data-replie>
+                <li>aba 6</li>
+                <li>abb 7</li>
+               </ul>
+            </li>
+           </ul>
+         </li>
+         <li>b 8</li>
+         <li>c c 90</li>
+         <li>d d 130</li>
+         <li>e e 170</li>
+         <li>f f 210</li>
+         <li>g g 250</li>
+         <li>h h 290</li>
+         <li>i i 330 </li>
+         <li>j j j 370</li>
+         <li>k k k 410</li>
+         <li>l l l 450 </li>
+         <li>m m m m 490</li>
+         <li>n n n n</li>
+         <li>o o o o</li>
+         <li>p p p p</li>
+         <li>q q q q</li>
+         <li>r r</li>
+         <li>s s</li>
+         <li>t t</li>
+        </ul>
+    </td>
+
+
+<td>
+
+    <ul id="tri_arbre_racine2" style="border:0px red solid;">
+     <li id="123">
+       <b style="color:red;">a 1</b>
+       <ul>
+        <li>
+           aa 2
+           <ul>
+            <li>aaa 3</li>
+            <li>aaa 4</li>
+           </ul>
+        </li>
+        <li>
+           ab 5
+           <ul  data-replie>
+            <li>aba 6</li>
+            <li>abb 7</li>
+           </ul>
+        </li>
+       </ul>
+     </li>
+     <li>b 8</li>
+    </ul>
+
+
+</td>
+</tr>
+</table>
+haut_abs:227,bas_abs:739, 739-50=689, hzone interne=831 avec bouton, 809 sans bouton ( hbouton=22 ), 
+<br />
+
+<ul id="tri_arbre_racine3" style="border:0px red solid;">
+ <li id="456">
+   <b style="color:red;">a 1</b>
+   <ul>
+    <li>
+       aa 2
+       <ul>
+        <li>aaa 3</li>
+        <li>aaa 4</li>
+       </ul>
+    </li>
+    <li>
+       ab 5
+       <ul  data-replie>
+        <li>aba 6</li>
+        <li>abb 7</li>
+       </ul>
+    </li>
+   </ul>
+ </li>
+</ul>
+
+
+<br>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<footer id="fin"></footer>
+<script type="text/javascript">
+
+function goto(n){
+ document.documentElement.scrollTo(0,50);
+}
+
+
+/*=======================================================*/
+function appelee_apres_action1(arbre , id_zone_de_tri){
+    console.log(''appelee_apres_action1'');
+    /* console.log(JSON.stringify(arbre)); */
+}
+
+/*=======================================================*/
+let options1={
+    hauteur_max_en_vh             : 40,// entre 20 et 80
+    largeur_max                   :''400px'', //''calc(100% - 50px)'',
+    afficher_le_bouton_supprimer  : false ,
+    fonction_appelee_apres_action : appelee_apres_action1 ,
+    arborescent                   : true ,
+    class_du_bouton_deplacer      : ''le_bo_bouton_deplacer'' ,
+    boutons_du_menu               : [{libelle:''+'' ,fonction:ajouter_une_branche}],
+    class_du_bouton_menu          : ''le_bo_bouton_menu'' ,
+}
+
+var nom_racine1=''tri_arbre_racine1'';
+var arbre1=new tri_arbre1(nom_racine1,options1);
+/*=======================================================*/
+/*=======================================================*/
+/*=======================================================*/
+
+
+/*=======================================================*/
+function appelee_apres_action2(arbre , id_zone_de_tri){
+//    console.log(JSON.stringify(arbre));
+}
+/*=======================================================*/
+function ajouter_une_branche(e,reference_arbre){
+    console.log(e,reference_arbre);
+    let max=0;
+    for(let i=0;i<reference_arbre.arbre.length;i++){
+     if(reference_arbre.arbre[i].id_interne>max){
+      max=reference_arbre.arbre[i].id_interne;
+     }
+    }
+    max++;
+    let a={"id_interne":max,"id_interne_parent":0,"replie":0,"contient_des_enfants":0,"contenu":"nb "+max,"attributs":{}}
+    reference_arbre.arbre.splice( 0 , 0 , a );
+    
+    reference_arbre.action_externe_sur_arbre(''ajoute_branche'',reference_arbre.arbre);
+}
+/*=======================================================*/
+/*=======================================================*/
+/*=======================================================*/
+
+let options2={
+    hauteur_max_en_vh             : 60,// entre 20 et 80
+    largeur_max                   :''400px'', //''calc(100% - 50px)'',
+    afficher_le_bouton_supprimer  : false ,
+    fonction_appelee_apres_action : appelee_apres_action2 ,
+    arborescent                   : true ,
+    class_du_bouton_deplacer      : ''le_bo_bouton_deplacer'' ,
+    decallage_entre_niveaux_en_px : 20,
+    boutons_du_menu               : [{libelle:''+'' ,fonction:ajouter_une_branche}],
+    class_du_bouton_menu          : ''le_bo_bouton_menu'' ,
+}
+var arbre2=new tri_arbre1(''tri_arbre_racine2'',options2);
+/*=======================================================*/
+/*=======================================================*/
+/*=======================================================*/
+
+let options3={
+    hauteur_max_en_vh             : 20,// entre 20 et 80
+    largeur_max                   :''400px'', //''calc(100% - 50px)'',
+    afficher_le_bouton_supprimer  : false ,
+    fonction_appelee_apres_action : appelee_apres_action2 ,
+    arborescent                   : false ,
+    class_du_bouton_deplacer      : ''le_bo_bouton_deplacer'' ,
+    decallage_entre_niveaux_en_px : 20,
+    boutons_du_menu               : [{libelle:''+'' ,fonction:ajouter_une_branche}],
+    class_du_bouton_menu          : ''le_bo_bouton_menu'' ,
+}
+var arbre3=new tri_arbre1(''tri_arbre_racine3'',options3);
+/*=======================================================*/
+/*=======================================================*/
+/*=======================================================*/
+
+
+console.log(''aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'');
+setTimeout(
+ ()=>{
+  goto(50);
+  console.log(arbre1.cle_aleatoire , nom_racine1);
+  let id1=nom_racine1+''_''+arbre1.cle_aleatoire;
+  console.log(''id1=''+id1);
+  document.getElementById(id1).scrollTo(0,000);
+  arbre1.calcul_des_positions_relatives();
+ },50
+);
+
+
+
+</script>
+
+ </body>
+ 
+ 
+</html>','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
+('355','1','tri_arbre1.js',NULL,NULL,'"use strict";
+class tri_arbre1{
+    #racine_html=null;
+    arbre=[];
+    #id_div='''';
+    #style_des_separateurs=''font-size:0.7em;'';
+    #element_bouge=null;
+    #position_scroll_dans_la_zone_de_tri=0;
+    #tableau_des_positions_relatives=[];
+    #id_cible_selectionne=0;
+    #position_absolue_de_la_zone_de_tri=0;
+    #hauteur_de_la_zone_de_tri=0;
+    #decallage_max_de_la_zone_de_tri=0;
+    #position_max=0;
+    #timeout_quand_trop_bas=null;
+    #timeout_quand_trop_haut=null;
+    #id_interne_du_bloc_a_deplacer='''';
+    #noeud_a_deplacer=null;
+    cle_aleatoire='''';
+    #top_declenchement=0;
+    #bottom_declenchement=0;
+    #bottom_dernier=0;
+    #hauteur_zone_tri=0;
+    #zone_reference_top=null;
+    #souris_appuyee=false;
+    
+    #options={
+        "triable" : true,
+        "hauteur_max_en_vh" : 80 ,
+        "largeur_max" : ''calc(100% - 50px)'' ,
+        "largeur_min" : ''150px'' ,
+        "afficher_le_bouton_supprimer" : false ,
+        "fonction_appelee_apres_action" : null ,
+        "arborescent" : true,
+        "class_du_bouton_deplacer" : '''',
+        "decallage_entre_niveaux_en_px" : 30, /*entre 5 et 30*/
+        "boutons_du_menu" : [],
+        "class_du_bouton_menu" : '''',
+        "border_zone_principale" : ''2px purple inset'',
+        "hauteur_separateur_en_px" : 10 , /*entre 10 et 30*/
+        "border_separateur" : ''0px red solid'',
+        "border_bloc" : ''1px blue solid'',
+        "box_shadow" : ''inset 0px 0px 16px #f00'',
+        "background_color" : ''grey'',
+    };
+    /*
+      =============================================================================================================
+    */
+    constructor( par_id_de_l_element , options ){
+        if(document.getElementById( par_id_de_l_element ) === null){
+            console.error( ''tri_arbre1 id="'' + par_id_de_l_element + ''" non trouvé :-/'' );
+            return;
+        }
+        let lst1=document.querySelectorAll( ''[data-id_original_pour_tri="'' + par_id_de_l_element + ''"]'' );
+        if(lst1.length>0){
+            console.error( ''tri_arbre1 id="'' + par_id_de_l_element + ''" déjà défini :-/'' );
+            return;
+        }
+
+        this.#racine_html=document.getElementById( par_id_de_l_element );
+        if(this.#racine_html.tagName.toUpperCase() !== ''UL''){
+            console.error( ''tri_arbre1 la racine doit être un <ul>'' );
+            return;
+        }
+        if( typeof options !== ''object''){
+            console.error( ''tri_arbre1 les options doivent être représentées sous forme d\''objet'' );
+            return;
+        }
+        
+        this.#traite_options(options);
+        /*
+        
+        */
+        
+        this.arbre=[];
+        let id_interne_parent=0;
+        this.construire_arbre_a_partir_de_ul_li( this.#racine_html , id_interne_parent );
+        /* console.log( JSON.stringify( this.arbre ).replace( /\},\{/g , ''},\n{'' ) ); */
+        this.#racine_html.style.display=''none'';
+        this.cle_aleatoire=this.makeid( 20 );
+        this.#id_div=par_id_de_l_element + ''_'' + this.cle_aleatoire ;
+        let t='''';
+        t+=''<div '';
+        t+='' id="'' + this.#id_div + ''"'';
+        t+='' data-id_original_pour_tri="''+par_id_de_l_element+''"'';
+        t+='' style="'';
+        t+=''  border:''+this.#options.border_zone_principale+'';'';
+        t+=''  user-select:none;'';
+        t+=''  max-height:'' + this.#options.hauteur_max_en_vh + ''vh;'';
+        t+=''  overflow-y:scroll;'';
+        t+=''  max-width:'' + this.#options.largeur_max + '';'';
+        t+=''  min-width:'' + this.#options.largeur_min + '';'';
+        t+=''  overscroll-behavior-y: none;'';
+        t+=''"'';
+        t+=''></div>'';
+        this.#racine_html.insertAdjacentHTML( ''afterend'' , t );
+        this.reference_zone_triable=document.getElementById(this.#id_div);
+        this.#dessine_l_arbre();
+    }
+    /*
+      =============================================================================================================
+    */
+    action_externe_sur_arbre(action,arbre){
+     switch(action){
+      case ''ajoute_branche'' :
+        console.log(action , JSON.stringify(arbre));
+        this.arbre=arbre;
+        this.#dessine_l_arbre();
+        break;
+     }
+    }
+    /*
+      =============================================================================================================
+      pour vérifier qu''on ne met pas une branche dans une sous branche
+    */
+    #verifie_id_cible_enfant_de( id_cible , id_a_deplacer ){
+        if(id_cible === id_a_deplacer){
+            return true;
+        }
+        let trouve=false;
+        for( let i=0 ; i < this.arbre.length && trouve === false ; i++ ){
+            if(this.arbre[i].id_interne === id_a_deplacer){
+                for( let j=0 ; j < this.arbre.length && trouve === false ; j++ ){
+                    if(this.arbre[j].id_interne_parent === id_a_deplacer){
+                        if(this.arbre[j].id_interne === id_cible){
+                            trouve=true;
+                        }else{
+                            trouve=this.#verifie_id_cible_enfant_de( id_cible , this.arbre[j].id_interne );
+                        }
+                    }
+                }
+            }
+        }
+        return trouve;
+    }
+    /*
+      =============================================================================================================
+    */
+    #souris_haut( e ){
+
+        this.#souris_appuyee=false;
+        window.removeEventListener( ''mouseup'' , this.#souris_haut.bind( this ) , false );
+        window.removeEventListener( ''mousemove'' , this.#souris_bouge.bind( this ) , false );
+        
+        window.removeEventListener( ''touchend'' , this.#doigt_haut.bind( this ) , false );
+        window.removeEventListener( ''touchmove'' , this.#doigt_bouge.bind( this ) , false );
+        
+        if(e.target.getAttribute(''data-poignee_pour_tri'') || e.target.getAttribute(''data-position_pour_tri'')){
+            try{
+                clearTimeout( this.#timeout_quand_trop_haut );
+            } catch {}
+            try{
+                clearTimeout( this.#timeout_quand_trop_bas );
+            } catch {}
+            if(this.#element_bouge !== null){
+                try{
+                    this.#noeud_a_deplacer.style.boxShadow='''';
+                } catch {}
+                let id_interne_du_bloc_a_deplacer=parseInt( this.#id_interne_du_bloc_a_deplacer , 10 );
+                this.#id_interne_du_bloc_a_deplacer='''';
+                this.#noeud_a_deplacer=null;
+                if(this.#id_cible_selectionne !== 0){
+                    let deplacement=this.#id_cible_selectionne.split( ''_'' );
+                    let id_cible=parseInt( deplacement[1] , 10 );
+                    let type_deplacement=deplacement[0];
+                    if(this.#options.arborescent===false && type_deplacement===''dedans''){
+                        type_deplacement=''avant'';
+                    }
+                    /*
+                      vérifie qu''on ne met pas une branche dans une sous branche
+                    */
+                    if(this.#verifie_id_cible_enfant_de( id_cible , id_interne_du_bloc_a_deplacer ) === true){
+                        /* si c''est le cas, on ne fait rien */
+                    }else{
+                        let tabi=null;
+
+                        for( let i=0 ; i < this.arbre.length ; i++ ){
+                            if(id_interne_du_bloc_a_deplacer === this.arbre[i].id_interne){
+                                tabi=this.arbre.splice( i , 1 );
+                                break;
+                            }
+                        }
+                        for( let i=0 ; i < this.arbre.length ; i++ ){
+                            if(id_cible === this.arbre[i].id_interne){
+                                if(type_deplacement === ''apres''){
+                                    tabi[0].id_interne_parent=this.arbre[i].id_interne_parent;
+                                    this.arbre.splice( i + 1 , 0 , tabi[0] );
+                                }else if(type_deplacement === ''avant''){
+                                    tabi[0].id_interne_parent=this.arbre[i].id_interne_parent;
+                                    this.arbre.splice( i , 0 , tabi[0] );
+                                }else if(type_deplacement === ''dedans''){
+                                    tabi[0].id_interne_parent=this.arbre[i].id_interne;
+                                    this.arbre.splice( i + 1 , 0 , tabi[0] );
+                                }
+                                break;
+                            }
+                        }
+                        this.#dessine_l_arbre();
+                        if(this.#options.fonction_appelee_apres_action !== null){
+                            this.#options.fonction_appelee_apres_action( this.arbre , this.#id_div );
+                        }
+                    }
+                }
+                this.#element_bouge=null;
+                this.#position_absolue_de_la_zone_de_tri=0;
+            }
+        }else{
+         /*
+           console.log(e.target);
+         */
+        }
+        
+    }
+    /*
+      =============================================================================================================
+    */
+    faire_defiler_quand_trop_bas(){
+        clearTimeout( this.#timeout_quand_trop_bas );
+        if(this.#souris_appuyee===false){
+          return;
+        }
+        let quantite_a_decaller=10;
+        if(this.#hauteur_de_la_zone_de_tri>500){
+            quantite_a_decaller=15;
+        }
+
+        let a=parseInt( document.getElementById( this.#id_div ).scrollTop , 10 );
+        document.getElementById( this.#id_div ).scrollTo( {"top" : a + quantite_a_decaller ,"left" : 0   } ); // ,"behavior" : "smooth"
+
+        this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
+        let tt=this.#zone_reference_top.getBoundingClientRect();
+        
+        this.#position_absolue_de_la_zone_de_tri=tt.top+document.documentElement.scrollTop;
+        
+        
+        /* console.log( this.#position_scroll_dans_la_zone_de_tri ); */
+        this.#timeout_quand_trop_bas=setTimeout( () => {
+            this.faire_defiler_quand_trop_bas();} , 50 );
+    }
+    /*
+      =============================================================================================================
+    */
+    faire_defiler_quand_trop_haut(){
+        clearTimeout( this.#timeout_quand_trop_haut );
+        if(this.#souris_appuyee===false){
+          return;
+        }
+        let quantite_a_decaller=10;
+        if(this.#hauteur_de_la_zone_de_tri>500){
+            quantite_a_decaller=15;
+        }
+
+        let a=parseInt( document.getElementById( this.#id_div ).scrollTop , 10 );
+        document.getElementById( this.#id_div ).scrollTo( {"top" : a - quantite_a_decaller ,"left" : 0 } ); // ,"behavior" : "smooth"
+
+        this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
+        
+        let tt=this.#zone_reference_top.getBoundingClientRect();
+        
+        this.#position_absolue_de_la_zone_de_tri=tt.top+document.documentElement.scrollTop;
+        
+        
+        
+        this.#timeout_quand_trop_haut=setTimeout( () => {
+            this.faire_defiler_quand_trop_haut();} , 50 );
+    }
+    /*
+      =============================================================================================================
+    */
+    #souris_bouge( e ){
+        if(this.#souris_appuyee===false){
+          return;
+        }
+        if(this.#element_bouge !== null){
+            let position_absolue_de_la_souris_en_y=e.pageY;
+            this.#id_cible_selectionne=0;
+            if(position_absolue_de_la_souris_en_y < this.#top_declenchement){
+                //console.log(''=========== trop haut =============''); 
+                if(this.#position_scroll_dans_la_zone_de_tri === 0){
+                }else{
+                    this.#timeout_quand_trop_haut=setTimeout( () => {
+                        this.faire_defiler_quand_trop_haut();} , 20 );
+                    return;
+                }
+            }else{
+                try{
+                    clearTimeout( this.#timeout_quand_trop_haut );
+                } catch {}
+            }
+            if(position_absolue_de_la_souris_en_y > this.#bottom_declenchement){
+                if(this.#position_scroll_dans_la_zone_de_tri > this.#decallage_max_de_la_zone_de_tri){
+                }else{
+                    this.#timeout_quand_trop_bas=setTimeout( () => {
+                        this.faire_defiler_quand_trop_bas();} , 20 );
+                    return;
+                }
+            }else{
+                try{
+                    clearTimeout( this.#timeout_quand_trop_bas );
+                } catch {}
+            }
+            let position_relative_dans_zone=position_absolue_de_la_souris_en_y-this.#position_absolue_de_la_zone_de_tri;
+            
+            
+            let xxx=''pos absolue=''+position_absolue_de_la_souris_en_y;
+            xxx+=''\n this.#position_absolue_de_la_zone_de_tri=''+this.#position_absolue_de_la_zone_de_tri;
+            xxx+=''\n this.#position_scroll_dans_la_zone_de_tri=''+this.#position_scroll_dans_la_zone_de_tri;
+            xxx+=''\n top_declen=''+this.#top_declenchement;
+            xxx+=''\n document.documentElement.scrollTop=''+document.documentElement.scrollTop;
+            xxx+=''\n this.#id_div.scrollHeight=''+document.getElementById(this.#id_div).scrollHeight;
+            xxx+=''\n\n ====> prdz=''+position_relative_dans_zone;
+            //console.log(xxx);
+            
+//            console.log(this.#position_absolue_de_la_zone_de_tri);
+//            console.log(this.#tableau_des_positions_relatives);
+            for( let i=0 ; i < this.#tableau_des_positions_relatives.length ; i++ ){
+                if(position_relative_dans_zone  >=  this.#tableau_des_positions_relatives[i].top
+                       && position_relative_dans_zone <  this.#tableau_des_positions_relatives[i].bottom
+                ){
+                    this.#id_cible_selectionne=this.#tableau_des_positions_relatives[i].id;
+                    document.getElementById( this.#tableau_des_positions_relatives[i].id ).style.backgroundColor=this.#options.background_color;
+                }else{
+                    document.getElementById( this.#tableau_des_positions_relatives[i].id ).style.backgroundColor='''';
+                    
+                }
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    #souris_bas( e ){
+        this.#souris_appuyee=true;
+        var tar=e.target;
+        this.#element_bouge=null;
+        
+        let txt_log='''';
+        let tt=document.getElementById( this.#id_div ).getBoundingClientRect()
+        this.#top_declenchement=document.documentElement.scrollTop+parseInt(tt.top,10);
+        //console.log(''souris bas top_declenchement=''+this.#top_declenchement)
+        
+        this.#bottom_declenchement=document.documentElement.scrollTop+parseInt(tt.bottom,10);
+        
+        
+        if(tar.tagName.toLowerCase() === ''div'' && tar.getAttribute( "data-poignee_pour_tri" )){
+            window.addEventListener( ''mouseup'' , this.#souris_haut.bind( this ) , false );
+            window.addEventListener( ''mousemove'' , this.#souris_bouge.bind( this ) , false );
+         
+            window.addEventListener( ''touchend'' , this.#doigt_haut.bind( this ) , false );
+            window.addEventListener( ''touchmove'' , this.#doigt_bouge.bind( this ) , false );
+            
+            /*
+              on déplace un bloc
+            */
+            this.#element_bouge=tar;
+            this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
+            let pos=document.getElementById( this.#id_div ).getBoundingClientRect();
+            
+            tt=this.#zone_reference_top.getBoundingClientRect();
+            
+            this.#position_absolue_de_la_zone_de_tri=tt.top+document.documentElement.scrollTop;
+            
+            this.#hauteur_de_la_zone_de_tri=pos.height;
+            this.#decallage_max_de_la_zone_de_tri=this.#tableau_des_positions_relatives[this.#tableau_des_positions_relatives.length - 1].bottom - this.#hauteur_de_la_zone_de_tri;
+            this.#id_interne_du_bloc_a_deplacer=tar.getAttribute( "data-poignee_pour_tri" );
+            
+            let lst1=document.getElementById( this.#id_div ).querySelectorAll( ''[data-id_interne="'' + this.#id_interne_du_bloc_a_deplacer + ''"]'' );
+            if(lst1.length>0){
+                this.#noeud_a_deplacer=lst1[0];
+                try{
+                    this.#noeud_a_deplacer.style.boxShadow=this.#options.box_shadow;
+                }catch(e){
+                 debugger
+                }
+            }
+        }else if(tar.tagName.toLowerCase() === ''div'' && tar.getAttribute( "data-replie" )){
+            let id_interne=parseInt(tar.getAttribute( "data-replie" ) , 10);
+            let lst1=document.getElementById( this.#id_div ).querySelectorAll( ''[data-enfants_de="'' + id_interne + ''"]'' );
+            if(lst1[0].style.display === ''none''){
+                lst1[0].style.display='''';
+                tar.innerHTML=''-'';
+            }else{
+                lst1[0].style.display=''none'';
+                tar.innerHTML=''+'';
+            }
+            for(let i=0;i<this.arbre.length;i++){
+             if(this.arbre[i].id_interne===id_interne){
+              if(tar.innerHTML===''+''){
+               this.arbre[i].replie=1;
+              }else{
+               this.arbre[i].replie=0;
+              }
+              break;
+             }
+            }
+            
+            this.calcul_des_positions_relatives();
+        }else{
+            this.calcul_des_positions_relatives();
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    #doigt_bas( e ){
+        document.body.style.overflowY=''hidden'';
+        let lst1=document.querySelectorAll( ''dialog'' );
+        for(let i=0;i<lst1.length;i++){
+            lst1[i].style.overflowY=''hidden'';
+        }
+        document.getElementById( this.#id_div ).style.overflowY=''hidden'';
+        e.stopPropagation();
+        this.#souris_bas( e.touches[0] );
+    }
+    /*
+      =============================================================================================================
+    */
+    #doigt_bouge( e ){
+        e.stopPropagation();
+        this.#souris_bouge( e.touches[0]  );
+    }
+    /*
+      =============================================================================================================
+    */
+    #doigt_haut( e ){
+        /* console.log(e.changedTouches[0]) */
+        document.body.style.overflowY=''scroll'';
+        let lst1=document.querySelectorAll( ''dialog'' );
+        for(let i=0;i<lst1.length;i++){
+            lst1[i].style.overflowY=''scroll'';
+        }
+        try{
+            document.getElementById( this.#id_div ).style.overflowY=''scroll'';
+        }catch{}
+        e.stopPropagation();
+        this.#souris_haut( e.changedTouches[0]  );
+    }    
+    /*
+      =============================================================================================================
+    */
+    calcul_des_positions_relatives(){
+        let lst1=document.getElementById( this.#id_div ).querySelectorAll( ''[data-position_pour_tri]'' );
+        this.#tableau_des_positions_relatives=[];
+        if(lst1.length > 0){
+            let txt_log='''';
+            this.#zone_reference_top=lst1[0];
+            let tt=this.#zone_reference_top.getBoundingClientRect();
+            let min=parseInt(tt.top,10);
+
+            for( let i=0 ; i < lst1.length ; i++ ){
+                let pos=lst1[i].getBoundingClientRect();
+//                console.log(pos.top); 
+                this.#tableau_des_positions_relatives.push( {"top" : parseInt( pos.top - min , 10 ) ,"bottom" : parseInt( pos.bottom - min , 10 ) ,"id" : lst1[i].id} );
+                this.#position_max=parseInt( pos.bottom - min , 10 );
+                txt_log+=''  ,   ''+i+'':[''+parseInt( pos.top - min , 10 )+'','' + parseInt( pos.bottom - min , 10 )+''](''+pos.top+'')'';
+                
+            }
+            /* 
+              console.log(''txt_log=''+txt_log) 
+            */
+            
+        }
+        this.#element_bouge=null;
+        /* 
+          console.log( ''\ninit max=''+this.#position_max); 
+        */
+    }
+    /*
+      =============================================================================================================
+    */
+    #dessine_l_arbre(){
+        let le_html='''';
+        this.#calcul_des_enfants( 0 );
+        let le_html_resultat=this.construit_html_de_arbre( 0 );
+    }
+    /*
+      =============================================================================================================
+    */
+    construit_html_de_arbre( id_interne_parent , niveau=0 ){
+        let le_html='''';
+        let le_sous_html='''';
+        let premier=true;
+        let t='''';
+        for( let i=0 ; i < this.arbre.length ; i++ ){
+            if(this.arbre[i].id_interne_parent === id_interne_parent){
+                if(premier === true){
+                    if(this.#options.arborescent===false && i!==0){
+                    }else{
+                        le_html+=''<div id="avant_'' + this.arbre[i].id_interne + ''_''+ this.cle_aleatoire + ''"''
+                        le_html+='' data-position_pour_tri="avant" ''
+                        le_html+='' style="''
+                        le_html+='' min-height:''+this.#options.hauteur_separateur_en_px+''px;max-height:''+this.#options.hauteur_separateur_en_px+''px;''
+                        le_html+='' border:''+this.#options.border_separateur+'';''
+                        le_html+='' '' + this.#style_des_separateurs + ''"></div>'';
+                    }
+                    premier=false;
+                }
+                let replie='''';
+                if(this.arbre[i].replie === 1 && this.arbre[i].contient_des_enfants > 1){
+                    replie=''display:none;'';
+                }
+                /*
+                  le bloc début
+                */
+                t='''';
+                t+=''<div'';
+                t+='' id="dedans_'' + this.arbre[i].id_interne + ''_''+ this.cle_aleatoire + ''"'';
+                t+='' data-position_pour_tri="dedans" '';
+                t+='' style="'';
+                t+=''   min-height:30px;'';
+                t+=''   border:''+this.#options.border_bloc+'';'';
+                t+=''   display:flex;'';
+                t+=''   flex-direction:row;'';
+                t+=''   justify-content:space-between;'';
+                t+='' "'';
+                t+='' data-attributs_originaux="''+JSON.stringify(this.arbre[i].attributs).replace(/&/g,''&amp;'').replace(/"/g,''&quot;'').replace(/</g,''&lt;'').replace(/>/g,''&gt;'')+''"'';
+                t+='' data-contenu_original="''+this.arbre[i].contenu.replace(/&/g,''&amp;'').replace(/"/g,''&quot;'').replace(/</g,''&lt;'').replace(/>/g,''&gt;'')+''"'';
+                t+=''>'';
+                t+=''  <div'';
+                t+=''    style="text-align:left;flex-grow:1;" '';
+                t+=''    data-id_interne="'' + this.arbre[i].id_interne + ''"'';
+                t+=''  >''
+                t+=this.arbre[i].contenu;
+                t+=''  </div>''
+                le_html+=t;
+                le_html+='''';
+                if(this.#options.afficher_le_bouton_supprimer === true){
+                    if(this.arbre[i].contient_des_enfants > 0){
+                        le_html+=''<div data-supprime="'' + this.arbre[i].id_interne + ''" style="float:right;border:1px white solid;min-width:1em;text-align:center;"></div>'';
+                    }else{
+                        le_html+=''<div data-supprime="'' + this.arbre[i].id_interne + ''" style="float:right;border:1px hotpink solid;min-width:1em;text-align:center;">X</div>'';
+                    }
+                }
+                if(this.#options.arborescent===false){
+                    /*
+                      pas de boutons +/- pour une liste simple
+                    */
+                }else{
+                    if(replie === ''''){
+                        if(this.arbre[i].contient_des_enfants === 0){
+                            le_html+=''<div data-replie="'' + this.arbre[i].id_interne + ''" style="float:right;border:1px white solid;min-width:1em;text-align:center;"></div>'';
+                        }else{
+                            le_html+=''<div data-replie="'' + this.arbre[i].id_interne + ''" style="float:right;border:1px hotpink solid;min-width:1em;text-align:center;">-</div>'';
+                        }
+                    }else{
+                        if(this.arbre[i].contient_des_enfants === 0){
+                            le_html+=''<div data-replie="'' + this.arbre[i].id_interne + ''" style="float:right;border:1px white solid;min-width:1em;text-align:center;"></div>'';
+                        }else{
+                            le_html+=''<div data-replie="'' + this.arbre[i].id_interne + ''" style="float:right;border:1px hotpink solid;min-width:1em;text-align:center;">+</div>'';
+                        }
+                    }
+                }
+                if(this.#options.triable===false){
+                    le_html+=''<div data-poignee_pour_tri="'' + this.arbre[i].id_interne + ''" style="float:right;visibility:hidden;" class="''+this.#options.class_du_bouton_deplacer+''">↕</div>'';
+                }else{
+                    le_html+=''<div data-poignee_pour_tri="'' + this.arbre[i].id_interne + ''" style="float:right;" class="''+this.#options.class_du_bouton_deplacer+''">↕</div>'';
+                }
+                le_html+=''</div>'';
+                /*
+                  le bloc fin çi-dessus
+                */
+                
+                /*  */
+                le_sous_html=this.construit_html_de_arbre( this.arbre[i].id_interne , niveau + 1 );
+                /*  */
+                le_html+=''<div data-enfants_de="'' + this.arbre[i].id_interne + ''" style="border:0px pink solid;margin-left:''+this.#options.decallage_entre_niveaux_en_px+''px;'' + replie + ''">'';
+                le_html+=le_sous_html;
+                le_html+=''</div>'';
+                /*  */
+                le_html+=''<div''
+                le_html+='' id="apres_'' + this.arbre[i].id_interne + ''_''+ this.cle_aleatoire + ''"''
+                le_html+='' data-position_pour_tri="apres"''
+                le_html+='' style="min-height:''+this.#options.hauteur_separateur_en_px+''px;''
+                le_html+='' max-height:''+this.#options.hauteur_separateur_en_px+''px;''
+                le_html+='' border:''+this.#options.border_separateur+'';''
+                le_html+='' '' + this.#style_des_separateurs + ''"></div>'';
+            }
+        }
+        if(id_interne_parent===0){
+         
+            let le_menu='''';         
+            if(this.#options.boutons_du_menu.length>0){
+                    le_menu+=''<div id="menu_'' + this.cle_aleatoire + ''">'';
+                    for(let i=0;i<this.#options.boutons_du_menu.length;i++){
+                     le_menu+=''<div id="menu_'' + this.cle_aleatoire + ''_''+i+''"'';
+                     le_menu+='' class="''+this.#options.class_du_bouton_menu+''"'';
+                     le_menu+='' style="display:inline-block;"'';
+                     le_menu+=''>''+this.#options.boutons_du_menu[i].libelle+''</div>'';
+                    }
+                    le_menu+=''</div>'';
+            }
+            le_html=le_menu+le_html;
+         
+         
+            document.getElementById( this.#id_div ).innerHTML=le_html;
+            this.calcul_des_positions_relatives();
+            
+            let lst1=document.getElementById( this.#id_div ).querySelectorAll( ''[data-poignee_pour_tri]'' );
+            for(let i=0;i<lst1.length;i++){
+             lst1[i].addEventListener( ''mousedown'' , this.#souris_bas.bind( this ) , false );
+             lst1[i].addEventListener( ''touchstart'' , this.#doigt_bas.bind( this ) , false );
+            }
+            
+            let lst2=document.getElementById( this.#id_div ).querySelectorAll( ''[data-replie]'' );
+            for(let i=0;i<lst2.length;i++){
+             lst2[i].addEventListener( ''mousedown'' , this.#souris_bas.bind( this ) , false );
+            }
+            
+            if(this.#options.boutons_du_menu.length>0){
+                for(let i=0;i<this.#options.boutons_du_menu.length;i++){
+                    let id=''menu_'' + this.cle_aleatoire + ''_''+i;
+                    //document.getElementById(id).addEventListener( ''mousedown'' , this.#options.boutons_du_menu[i].fonction.bind( this ) , false );
+                    try{
+                        document.getElementById(id).addEventListener( ''mousedown'' , (e)=>{
+                         this.#options.boutons_du_menu[i].fonction(e,this);
+                        }, false );
+                    }catch(em){
+                        debugger
+                    }
+                }
+            }
+            
+            
+        }else{
+            return le_html;
+        }
+
+    }
+    /*
+      =============================================================================================================
+    */
+    makeid( length ){
+        var result='''';
+        var characters=''ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'';
+        var charactersLength=characters.length;
+        for( var i=0 ; i < length ; i++ ){
+            result+=characters.charAt( Math.floor( Math.random() * charactersLength ) );
+        }
+        return result;
+    }
+    /*
+      =============================================================================================================
+    */
+    #calcul_des_enfants( id_parent ){
+        let nb=0;
+        if(id_parent === 0){
+            for( let i=0 ; i < this.arbre.length ; i++ ){
+                this.arbre[i].contient_des_enfants=0;
+            }
+        }
+        for( let i=0 ; i < this.arbre.length ; i++ ){
+            if(this.arbre[i].id_interne_parent === id_parent){
+                this.#calcul_des_enfants( this.arbre[i].id_interne );
+                nb++;
+            }
+        }
+        if(id_parent > 0 && nb > 0){
+            for( let i=0 ; i < this.arbre.length ; i++ ){
+                if(this.arbre[i].id_interne === id_parent){
+                    this.arbre[i].contient_des_enfants=nb;
+                    break;
+                }
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    construire_arbre_a_partir_de_ul_li( racine , id_interne_parent ){
+        let lst=racine.childNodes;
+        for( let i=0 ; i < lst.length ; i++ ){
+            let elem=lst[i];
+            if(elem.nodeName.toUpperCase() === ''LI'' || elem.nodeName.toUpperCase() === ''UL''){
+                if(elem.nodeName.toUpperCase() === ''LI''){
+                    let id_interne=this.arbre.length + 1;
+                    let les_attributs={};
+                    for(let a in elem.attributes){
+                        if( typeof elem.attributes[a] === ''object''){
+                            les_attributs[elem.attributes[a].name]=elem.attributes[a].value;
+                        }
+                    }
+                    if(this.#options.arborescent === false){
+                        id_interne_parent=0;
+                    }
+                    this.arbre.push( {
+                            "id_interne" : id_interne ,
+                            "id_interne_parent" : id_interne_parent ,
+                            "replie" : 0 ,
+                            "contient_des_enfants" : 0 ,
+                            /* "nodeName" : elem.nodeName , */
+                            "contenu" : '''' ,
+                            "attributs" : les_attributs
+                        } );
+                    this.construire_arbre_a_partir_de_ul_li( elem , id_interne );
+                }else if(elem.nodeName.toUpperCase() === ''UL''){
+                    let replie=0;
+                    for(let a in elem.attributes){
+                        if( typeof elem.attributes[a] === ''object''){
+                            if(elem.attributes[a].name === ''data-replie''){
+                                this.arbre[this.arbre.length - 1].replie=1;
+                                break;
+                            }
+                        }
+                    }
+                    this.construire_arbre_a_partir_de_ul_li( elem , id_interne_parent );
+                }
+            }else{
+                if(elem.data){
+                    let contenu=elem.data.trim();
+                    if(contenu !== ''''){
+                        /* console.log(''contenu=''+contenu); */
+                        this.arbre[this.arbre.length - 1].contenu=contenu;
+                    }
+                }else{
+                    let contenu=elem.outerHTML;
+                    /* console.log(''contenu=''+contenu); */
+                    this.arbre[this.arbre.length - 1].contenu=contenu;
+                }
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    #traite_options(options){
+        if(options.hasOwnProperty( ''hauteur_max_en_vh'' )){
+            if(options.hauteur_max_en_vh <= 80 && options.hauteur_max_en_vh >= 20){
+                this.#options.hauteur_max_en_vh=options.hauteur_max_en_vh;
+            }
+        }
+        if(options.hasOwnProperty( ''decallage_entre_niveaux_en_px'' )){
+            if(options.decallage_entre_niveaux_en_px <= 30 && options.decallage_entre_niveaux_en_px >= 5){
+                this.#options.decallage_entre_niveaux_en_px=options.decallage_entre_niveaux_en_px;
+            }
+        }
+
+        if(options.hasOwnProperty( ''largeur_max'' )){
+            this.#options.largeur_max=options.largeur_max;
+        }
+        
+        if(options.hasOwnProperty( ''largeur_min'' )){
+            this.#options.largeur_min=options.largeur_min;
+        }
+        
+        if(options.hasOwnProperty( ''afficher_le_bouton_supprimer'' )){
+            if(options.afficher_le_bouton_supprimer === true){
+                this.#options.afficher_le_bouton_supprimer=options.afficher_le_bouton_supprimer;
+            }
+        }
+        if(options.hasOwnProperty( ''boutons_du_menu'' )){
+            if(Array.isArray(options.boutons_du_menu) === true){
+                this.#options.boutons_du_menu=options.boutons_du_menu;
+            }
+        }
+        if(options.hasOwnProperty( ''triable'' )){
+            if(options.triable === false){
+                this.#options.triable=options.triable;
+            }
+        }
+        if(options.hasOwnProperty( ''fonction_appelee_apres_action'' ) && options.fonction_appelee_apres_action !== null){
+            if( typeof options.fonction_appelee_apres_action === ''function''){
+                this.#options.fonction_appelee_apres_action=options.fonction_appelee_apres_action;
+            }
+        }
+        if(options.hasOwnProperty( ''arborescent'' )){
+            if(options.arborescent === false){
+                this.#options.arborescent=options.arborescent;
+            }
+        }
+        if(options.hasOwnProperty( ''class_du_bouton_deplacer'' )){
+            this.#options.class_du_bouton_deplacer=options.class_du_bouton_deplacer;
+        }
+        if(options.hasOwnProperty( ''class_du_bouton_menu'' )){
+            this.#options.class_du_bouton_menu=options.class_du_bouton_menu;
+        }
+        
+        if(options.hasOwnProperty( ''border_zone_principale'' )){
+            this.#options.border_zone_principale=options.border_zone_principale;
+        }
+        if(options.hasOwnProperty( ''hauteur_separateur_en_px'' )){
+            if(options.hauteur_separateur_en_px <= 30 && options.hauteur_separateur_en_px >= 10){
+                this.#options.hauteur_separateur_en_px=options.hauteur_separateur_en_px;
+            }
+        }
+        if(options.hasOwnProperty( ''border_separateur'' )){
+            this.#options.border_separateur=options.border_separateur;
+        }
+        if(options.hasOwnProperty( ''border_bloc'' )){
+            this.#options.border_bloc=options.border_bloc;
+        }
+        if(options.hasOwnProperty( ''box_shadow'' )){
+            this.#options.box_shadow=options.box_shadow;
+        }
+        if(options.hasOwnProperty( ''background_color'' )){
+            this.#options.background_color=options.background_color;
+        }
+    }
+    
+}','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11');
 
 
 /*
@@ -3873,7 +4936,7 @@ INSERT INTO tbl_bdds (chi_id_basedd,chx_projet_id_basedd,chp_commentaire_basedd,
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(5.5,3.5))
+   transform_base_sur_svg(translate(11.5,12.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_utilisateurs''),
@@ -3889,66 +4952,75 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_utilisateur''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_utilisateur''),
-            champ(''chi_id_utilisateur''),
             nom_long_du_champ(''à faire chi_id_utilisateur''),
             nom_court_du_champ(''à faire chi_id_utilisateur''),
             nom_bref_du_champ(''à faire chi_id_utilisateur''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_nom_de_connexion_utilisateur''),
-         type(''VARCHAR(64)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_nom_de_connexion_utilisateur''),
-            champ(''chp_nom_de_connexion_utilisateur''),
             nom_long_du_champ(''à faire chp_nom_de_connexion_utilisateur''),
             nom_court_du_champ(''à faire chp_nom_de_connexion_utilisateur''),
             nom_bref_du_champ(''à faire chp_nom_de_connexion_utilisateur''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
          )
       ),
       champ(
          nom_du_champ(''chp_mot_de_passe_utilisateur''),
-         type(''VARCHAR(256)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(256),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_mot_de_passe_utilisateur''),
-            champ(''chp_mot_de_passe_utilisateur''),
             nom_long_du_champ(''à faire chp_mot_de_passe_utilisateur''),
             nom_court_du_champ(''à faire chp_mot_de_passe_utilisateur''),
             nom_bref_du_champ(''à faire chp_mot_de_passe_utilisateur''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(256)
          )
       ),
       champ(
          nom_du_champ(''chp_parametres_utilisateur''),
-         type(''TEXT''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_parametres_utilisateur''),
-            champ(''chp_parametres_utilisateur''),
             nom_long_du_champ(''à faire chp_parametres_utilisateur''),
             nom_court_du_champ(''à faire chp_parametres_utilisateur''),
             nom_bref_du_champ(''à faire chp_parametres_utilisateur''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''chi_compteur1_utilisateur''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -3956,17 +5028,18 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_compteur1_utilisateur''),
-            champ(''chi_compteur1_utilisateur''),
             nom_long_du_champ(''à faire chi_compteur1_utilisateur''),
             nom_court_du_champ(''à faire chi_compteur1_utilisateur''),
             nom_bref_du_champ(''à faire chi_compteur1_utilisateur''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chi_compteur_socket1_utilisateur''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -3974,17 +5047,18 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_compteur_socket1_utilisateur''),
-            champ(''chi_compteur_socket1_utilisateur''),
             nom_long_du_champ(''à faire chi_compteur_socket1_utilisateur''),
             nom_court_du_champ(''à faire chi_compteur_socket1_utilisateur''),
             nom_bref_du_champ(''à faire chi_compteur_socket1_utilisateur''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''che__nur_utilisateur''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -3992,18 +5066,20 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che__nur_utilisateur''),
-            champ(''che__nur_utilisateur''),
             nom_long_du_champ(''à faire chi__nut_utilisateur''),
             nom_court_du_champ(''à faire chi__nut_utilisateur''),
             nom_bref_du_champ(''à faire chi__nut_utilisateur''),
             typologie(chi),
             afficher_champ_dans_svg(0),
+            espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
          )
       ),
       champ(
          nom_du_champ(''chp__dtm_utilisateur''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -4011,18 +5087,21 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtm_utilisateur''),
-            champ(''chp__dtm_utilisateur''),
             nom_long_du_champ(''à faire chp__dtm_utilisateur''),
             nom_court_du_champ(''à faire chp__dtm_utilisateur''),
             nom_bref_du_champ(''à faire chp__dtm_utilisateur''),
             typologie(chi),
             afficher_champ_dans_svg(0),
-            champ_date_modification(1)
+            espece_du_champ(VARCHAR),
+            champ_date_modification(1),
+            longueur_du_champ(23)
          )
       ),
       champ(
          nom_du_champ(''chp__dtc_utilisateur''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -4030,18 +5109,20 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtc_utilisateur''),
-            champ(''chp__dtc_utilisateur''),
             nom_long_du_champ(''à faire chp__dtc_utilisateur''),
             nom_court_du_champ(''à faire chp__dtc_utilisateur''),
             nom_bref_du_champ(''à faire chp__dtc_utilisateur''),
             typologie(chi),
             afficher_champ_dans_svg(0),
-            champ_date_creation(1)
+            espece_du_champ(VARCHAR),
+            champ_date_creation(1),
+            longueur_du_champ(23)
          )
       ),
       champ(
          nom_du_champ(''chx_acces_utilisateur''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_acces,chi_id_acces),
          a_une_valeur_par_defaut(1),
@@ -4050,12 +5131,12 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_acces_utilisateur''),
-            champ(''chx_acces_utilisateur''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       )
    )
@@ -4083,51 +5164,55 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_projet''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_projet''),
-            champ(''chi_id_projet''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_nom_projet''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_nom_projet''),
-            champ(''chp_nom_projet''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_commentaire_projet''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_commentaire_projet''),
-            champ(''cht_commentaire_projet''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''che__nur_projet''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -4135,18 +5220,20 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che__nur_projet''),
-            champ(''che__nur_projet''),
             nom_long_du_champ(''à faire chi__nut_projet''),
             nom_court_du_champ(''à faire chi__nut_projet''),
             nom_bref_du_champ(''à faire chi__nut_projet''),
             typologie(chi),
             afficher_champ_dans_svg(0),
+            espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
          )
       ),
       champ(
          nom_du_champ(''chp__dtm_projet''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -4154,18 +5241,21 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtm_projet''),
-            champ(''chp__dtm_projet''),
             nom_long_du_champ(''à faire chp__dtm_projet''),
             nom_court_du_champ(''à faire chp__dtm_projet''),
             nom_bref_du_champ(''à faire chp__dtm_projet''),
             typologie(chi),
             afficher_champ_dans_svg(0),
-            champ_date_modification(1)
+            espece_du_champ(VARCHAR),
+            champ_date_modification(1),
+            longueur_du_champ(23)
          )
       ),
       champ(
          nom_du_champ(''chp__dtc_projet''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -4173,18 +5263,20 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtc_projet''),
-            champ(''chp__dtc_projet''),
             nom_long_du_champ(''à faire chp__dtc_projet''),
             nom_court_du_champ(''à faire chp__dtc_projet''),
             nom_bref_du_champ(''à faire chp__dtc_projet''),
             typologie(chi),
             afficher_champ_dans_svg(0),
-            champ_date_creation(1)
+            espece_du_champ(VARCHAR),
+            champ_date_creation(1),
+            longueur_du_champ(23)
          )
       ),
       champ(
          nom_du_champ(''chx_dossier_requetes_projet''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          references(tbl_dossiers,chi_id_dossier),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -4192,28 +5284,29 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_dossier_requetes_projet''),
-            champ(''chx_dossier_requetes_projet''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chx),
             afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER),
             refe_parent_gauche(1)
          )
       ),
       champ(
          nom_du_champ(''chx_dossier_menus_projet''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          references(tbl_dossiers,chi_id_dossier),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_dossier_menus_projet''),
-            champ(''chx_dossier_menus_projet''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
             afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER),
             refe_parent_gauche(1)
          )
       )
@@ -4242,41 +5335,45 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_requete''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_requete''),
-            champ(''chi_id_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chx_projet_requete''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_projet_requete''),
-            champ(''chx_projet_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chx),
             afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER),
             refe_enfant_droite(1),
             refe_parent_gauche(1)
          )
       ),
       champ(
          nom_du_champ(''chp_type_requete''),
-         type(''VARCHAR(64)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -4284,87 +5381,94 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_type_requete''),
-            champ(''chp_type_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chp),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
          )
       ),
       champ(
          nom_du_champ(''cht_rev_requete''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_rev_requete''),
-            champ(''cht_rev_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_sql_requete''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_sql_requete''),
-            champ(''cht_sql_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_php_requete''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_php_requete''),
-            champ(''cht_php_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_commentaire_requete''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_commentaire_requete''),
-            champ(''cht_commentaire_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(cht),
-            afficher_champ_dans_svg(0)
+            afficher_champ_dans_svg(0),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_matrice_requete''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_matrice_requete''),
-            champ(''cht_matrice_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''che__nur_requete''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -4372,18 +5476,20 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che__nur_requete''),
-            champ(''che__nur_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chi),
             afficher_champ_dans_svg(0),
+            espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
          )
       ),
       champ(
          nom_du_champ(''chp__dtm_requete''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -4391,18 +5497,21 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtm_requete''),
-            champ(''chp__dtm_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chd),
             afficher_champ_dans_svg(0),
-            champ_date_modification(1)
+            espece_du_champ(VARCHAR),
+            champ_date_modification(1),
+            longueur_du_champ(23)
          )
       ),
       champ(
          nom_du_champ(''chp__dtc_requete''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -4410,13 +5519,14 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtc_requete''),
-            champ(''chp__dtc_requete''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chd),
             afficher_champ_dans_svg(0),
-            champ_date_creation(1)
+            espece_du_champ(VARCHAR),
+            champ_date_creation(1),
+            longueur_du_champ(23)
          )
       )
    )
@@ -4435,258 +5545,280 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_rev''),
-            champ(''chi_id_rev''),
             nom_long_du_champ(''à faire chi_id_rev''),
             nom_court_du_champ(''à faire chi_id_rev''),
             nom_bref_du_champ(''à faire chi_id_rev''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chx_projet_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_projet_rev''),
-            champ(''chx_projet_rev''),
             nom_long_du_champ(''à faire chx_cible_rev''),
             nom_court_du_champ(''à faire chx_cible_rev''),
             nom_bref_du_champ(''à faire chx_cible_rev''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_provenance_rev''),
-         type(''VARCHAR(64)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_provenance_rev''),
-            champ(''chp_provenance_rev''),
             nom_long_du_champ(''à faire chp_provenance_rev''),
             nom_court_du_champ(''à faire chp_provenance_rev''),
             nom_bref_du_champ(''à faire chp_provenance_rev''),
             typologie(cho),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
          )
       ),
       champ(
          nom_du_champ(''chx_source_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_source_rev''),
-            champ(''chx_source_rev''),
             nom_long_du_champ(''à faire chx_source_rev''),
             nom_court_du_champ(''à faire chx_source_rev''),
             nom_bref_du_champ(''à faire chx_source_rev''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_id_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_id_rev''),
-            champ(''chp_id_rev''),
             nom_long_du_champ(''à faire chp_id_rev''),
             nom_court_du_champ(''à faire chp_id_rev''),
             nom_bref_du_champ(''à faire chp_id_rev''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_valeur_rev''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_valeur_rev''),
-            champ(''chp_valeur_rev''),
             nom_long_du_champ(''à faire chp_valeur_rev''),
             nom_court_du_champ(''à faire chp_valeur_rev''),
             nom_bref_du_champ(''à faire chp_valeur_rev''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''chp_type_rev''),
-         type(''VARCHAR(3)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(3),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_type_rev''),
-            champ(''chp_type_rev''),
             nom_long_du_champ(''à faire chp_type_rev''),
             nom_court_du_champ(''à faire chp_type_rev''),
             nom_bref_du_champ(''à faire chp_type_rev''),
             typologie(cho),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(3)
          )
       ),
       champ(
          nom_du_champ(''chp_niveau_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_niveau_rev''),
-            champ(''chp_niveau_rev''),
             nom_long_du_champ(''à faire chp_niveau_rev''),
             nom_court_du_champ(''à faire chp_niveau_rev''),
             nom_bref_du_champ(''à faire chp_niveau_rev''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_quotee_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_quotee_rev''),
-            champ(''chp_quotee_rev''),
             nom_long_du_champ(''à faire chp_quotee_rev''),
             nom_court_du_champ(''à faire chp_quotee_rev''),
             nom_bref_du_champ(''à faire chp_quotee_rev''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_pos_premier_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_pos_premier_rev''),
-            champ(''chp_pos_premier_rev''),
             nom_long_du_champ(''à faire chp_pos_premier_rev''),
             nom_court_du_champ(''à faire chp_pos_premier_rev''),
             nom_bref_du_champ(''à faire chp_pos_premier_rev''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_pos_dernier_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_pos_dernier_rev''),
-            champ(''chp_pos_dernier_rev''),
             nom_long_du_champ(''à faire chp_pos_dernier_rev''),
             nom_court_du_champ(''à faire chp_pos_dernier_rev''),
             nom_bref_du_champ(''à faire chp_pos_dernier_rev''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_parent_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_parent_rev''),
-            champ(''chp_parent_rev''),
             nom_long_du_champ(''à faire chp_parent_rev''),
             nom_court_du_champ(''à faire chp_parent_rev''),
             nom_bref_du_champ(''à faire chp_parent_rev''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_nbr_enfants_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_nbr_enfants_rev''),
-            champ(''chp_nbr_enfants_rev''),
             nom_long_du_champ(''à faire chp_nbr_enfants_rev''),
             nom_court_du_champ(''à faire chp_nbr_enfants_rev''),
             nom_bref_du_champ(''à faire chp_nbr_enfants_rev''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_num_enfant_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_num_enfant_rev''),
-            champ(''chp_num_enfant_rev''),
             nom_long_du_champ(''à faire chp_num_enfant_rev''),
             nom_court_du_champ(''à faire chp_num_enfant_rev''),
             nom_bref_du_champ(''à faire chp_num_enfant_rev''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_profondeur_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_profondeur_rev''),
-            champ(''chp_profondeur_rev''),
             nom_long_du_champ(''à faire chp_profondeur_rev''),
             nom_court_du_champ(''à faire chp_profondeur_rev''),
             nom_bref_du_champ(''à faire chp_profondeur_rev''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_pos_ouver_parenthese_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_pos_ouver_parenthese_rev''),
-            champ(''chp_pos_ouver_parenthese_rev''),
             nom_long_du_champ(''à faire chp_pos_ouver_parenthese_rev''),
             nom_court_du_champ(''à faire chp_pos_ouver_parenthese_rev''),
             nom_bref_du_champ(''à faire chp_pos_ouver_parenthese_rev''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_enfant_suivant_rev''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_enfant_suivant_rev''),
-            champ(''chp_enfant_suivant_rev''),
             nom_long_du_champ(''AFR''),
             nom_court_du_champ(''AFR''),
             nom_bref_du_champ(''AFR''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_commentaire_rev''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_commentaire_rev''),
-            champ(''chp_commentaire_rev''),
             nom_long_du_champ(''à faire chp_commentaire_rev''),
             nom_court_du_champ(''à faire chp_commentaire_rev''),
             nom_bref_du_champ(''à faire chp_commentaire_rev''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       )
    )
@@ -4714,97 +5846,104 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_source''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_source''),
-            champ(''chi_id_source''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chx_projet_id_source''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_projet_id_source''),
-            champ(''chx_projet_id_source''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_nom_source''),
-         type(''TEXT''),
+         type(''null''),
+         espece_du_champ(TEXT),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_nom_source''),
-            champ(''chp_nom_source''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_commentaire_source''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_commentaire_source''),
-            champ(''cht_commentaire_source''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(0)
+            afficher_champ_dans_svg(0),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_rev_source''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_rev_source''),
-            champ(''cht_rev_source''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_genere_source''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_genere_source''),
-            champ(''cht_genere_source''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''che_binaire_source''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(false),
@@ -4812,17 +5951,18 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che_binaire_source''),
-            champ(''che_binaire_source''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''che__nur_source''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -4830,18 +5970,20 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che__nur_source''),
-            champ(''che__nur_source''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chi),
             afficher_champ_dans_svg(0),
+            espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
          )
       ),
       champ(
          nom_du_champ(''chp__dtm_source''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -4849,18 +5991,21 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtm_source''),
-            champ(''chp__dtm_source''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chd),
             afficher_champ_dans_svg(0),
-            champ_date_modification(1)
+            espece_du_champ(VARCHAR),
+            champ_date_modification(1),
+            longueur_du_champ(23)
          )
       ),
       champ(
          nom_du_champ(''chp__dtc_source''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -4868,28 +6013,30 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtc_source''),
-            champ(''chp__dtc_source''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chd),
             afficher_champ_dans_svg(0),
-            champ_date_creation(1)
+            espece_du_champ(VARCHAR),
+            champ_date_creation(1),
+            longueur_du_champ(23)
          )
       ),
       champ(
          nom_du_champ(''chx_dossier_id_source''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          references(tbl_dossiers,chi_id_dossier),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_dossier_id_source''),
-            champ(''chx_dossier_id_source''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       )
    )
@@ -4917,69 +6064,76 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_dossier''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_dossier''),
-            champ(''chi_id_dossier''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chx_projet_dossier''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_projet_dossier''),
-            champ(''chx_projet_dossier''),
             nom_long_du_champ(''à faire chx_projet_dossier''),
             nom_court_du_champ(''à faire chx_projet_dossier''),
             nom_bref_du_champ(''à faire chx_projet_dossier''),
             typologie(chi),
             afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER),
             refe_enfant_droite(1)
          )
       ),
       champ(
          nom_du_champ(''chp_nom_dossier''),
-         type(''CHARACTER(64)''),
+         type(''null''),
+         espece_du_champ(CHARACTER),
+         longueur_du_champ(64),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_nom_dossier''),
-            champ(''chp_nom_dossier''),
             nom_long_du_champ(''à faire chp_nom_dossier''),
             nom_court_du_champ(''à faire chp_nom_dossier''),
             nom_bref_du_champ(''à faire chp_nom_dossier''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(CHARACTER),
+            longueur_du_champ(64)
          )
       ),
       champ(
          nom_du_champ(''chx_parent_dossier''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          references(tbl_dossiers,chi_id_dossier),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_parent_dossier''),
-            champ(''chx_parent_dossier''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
             afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER),
             refe_parent_gauche(1)
          )
       ),
       champ(
          nom_du_champ(''che_contient_genere_dossier''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(false),
@@ -4987,17 +6141,18 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che_contient_genere_dossier''),
-            champ(''che_contient_genere_dossier''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''che__nur_dossier''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -5005,18 +6160,20 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che__nur_dossier''),
-            champ(''che__nur_dossier''),
             nom_long_du_champ(''à faire chi__nut_dossier''),
             nom_court_du_champ(''à faire chi__nut_dossier''),
             nom_bref_du_champ(''à faire chi__nut_dossier''),
             typologie(chi),
             afficher_champ_dans_svg(0),
+            espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
          )
       ),
       champ(
          nom_du_champ(''chp__dtm_dossier''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -5024,18 +6181,21 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtm_dossier''),
-            champ(''chp__dtm_dossier''),
             nom_long_du_champ(''à faire chp__dtm_dossier''),
             nom_court_du_champ(''à faire chp__dtm_dossier''),
             nom_bref_du_champ(''à faire chp__dtm_dossier''),
             typologie(chi),
             afficher_champ_dans_svg(0),
-            champ_date_modification(1)
+            espece_du_champ(VARCHAR),
+            champ_date_modification(1),
+            longueur_du_champ(23)
          )
       ),
       champ(
          nom_du_champ(''chp__dtc_dossier''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -5043,13 +6203,14 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtc_dossier''),
-            champ(''chp__dtc_dossier''),
             nom_long_du_champ(''à faire chp__dtc_dossier''),
             nom_court_du_champ(''à faire chp__dtc_dossier''),
             nom_bref_du_champ(''à faire chp__dtc_dossier''),
             typologie(chi),
             afficher_champ_dans_svg(0),
-            champ_date_creation(1)
+            espece_du_champ(VARCHAR),
+            champ_date_creation(1),
+            longueur_du_champ(23)
          )
       )
    )
@@ -5077,98 +6238,105 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_basedd''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_basedd''),
-            champ(''chi_id_basedd''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chx_projet_id_basedd''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_projet_id_basedd''),
-            champ(''chx_projet_id_basedd''),
             nom_long_du_champ(''à faire chx_projet_id_basedd''),
             nom_court_du_champ(''à faire chx_projet_id_basedd''),
             nom_bref_du_champ(''à faire chx_projet_id_basedd''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_commentaire_basedd''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_commentaire_basedd''),
-            champ(''chp_commentaire_basedd''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''chp_rev_travail_basedd''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_rev_travail_basedd''),
-            champ(''chp_rev_travail_basedd''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''chp_fournisseur_basedd''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
          valeur_par_defaut(''sqlite''),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_fournisseur_basedd''),
-            champ(''chp_fournisseur_basedd''),
             nom_long_du_champ(''à faire chp_fournisseur_basedd''),
             nom_court_du_champ(''à faire chp_fournisseur_basedd''),
             nom_bref_du_champ(''à faire chp_fournisseur_basedd''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''chx_dossier_id_basedd''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          references(tbl_dossiers,chi_id_dossier),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_dossier_id_basedd''),
-            champ(''chx_dossier_id_basedd''),
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''che__nur_basedd''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -5176,18 +6344,20 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che__nur_basedd''),
-            champ(''che__nur_basedd''),
             nom_long_du_champ(''à faire chi__nut_basedd''),
             nom_court_du_champ(''à faire chi__nut_basedd''),
             nom_bref_du_champ(''à faire chi__nut_basedd''),
             typologie(chi),
             afficher_champ_dans_svg(0),
+            espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
          )
       ),
       champ(
          nom_du_champ(''chp__dtm_basedd''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -5195,18 +6365,21 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtm_basedd''),
-            champ(''chp__dtm_basedd''),
             nom_long_du_champ(''à faire chp__dtm_basedd''),
             nom_court_du_champ(''à faire chp__dtm_basedd''),
             nom_bref_du_champ(''à faire chp__dtm_basedd''),
             typologie(chi),
             afficher_champ_dans_svg(0),
-            champ_date_modification(1)
+            espece_du_champ(VARCHAR),
+            champ_date_modification(1),
+            longueur_du_champ(23)
          )
       ),
       champ(
          nom_du_champ(''chp__dtc_basedd''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -5214,13 +6387,14 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtc_basedd''),
-            champ(''chp__dtc_basedd''),
             nom_long_du_champ(''à faire chp__dtc_basedd''),
             nom_court_du_champ(''à faire chp__dtc_basedd''),
             nom_bref_du_champ(''à faire chp__dtc_basedd''),
             typologie(chi),
             afficher_champ_dans_svg(0),
-            champ_date_creation(1)
+            espece_du_champ(VARCHAR),
+            champ_date_creation(1),
+            longueur_du_champ(23)
          )
       )
    )
@@ -5239,38 +6413,43 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_groupe''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_groupe''),
-            champ(''chi_id_groupe''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_nom_groupe''),
-         type(''VARCHAR(64)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_nom_groupe''),
-            champ(''chp_nom_groupe''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
          )
       ),
       champ(
          nom_du_champ(''chx_parent_groupe''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_groupes,chi_id_groupe),
          a_une_valeur_par_defaut(1),
@@ -5279,12 +6458,12 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_parent_groupe''),
-            champ(''chx_parent_groupe''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       )
    )
@@ -5312,49 +6491,54 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_metier''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_metier''),
-            champ(''chi_id_metier''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_nom_metier''),
-         type(''VARCHAR(64)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_nom_metier''),
-            champ(''chp_nom_metier''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
          )
       ),
       champ(
          nom_du_champ(''chx_parent_metier''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_metiers,chi_id_metier),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_parent_metier''),
-            champ(''chx_parent_metier''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       )
    )
@@ -5373,125 +6557,139 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_page''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_page''),
-            champ(''chi_id_page''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_nom_page''),
-         type(''VARCHAR(64)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_nom_page''),
-            champ(''chp_nom_page''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
          )
       ),
       champ(
          nom_du_champ(''chx_parent_page''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          references(tbl_pages,chi_id_page),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_parent_page''),
-            champ(''chx_parent_page''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
             afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER),
             refe_parent_gauche(1)
          )
       ),
       champ(
          nom_du_champ(''chx_acces_page''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          references(tbl_acces,chi_id_acces),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_acces_page''),
-            champ(''chx_acces_page''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
             afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER),
             refe_enfant_droite(1)
          )
       ),
       champ(
          nom_du_champ(''chx_source_page''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          references(tbl_sources,chi_id_source),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_source_page''),
-            champ(''chx_source_page''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
             afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER),
             refe_enfant_droite(1),
             refe_parent_gauche(1)
          )
       ),
       champ(
          nom_du_champ(''chp_methode_page''),
-         type(''VARCHAR(64)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_methode_page''),
-            champ(''chp_methode_page''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
          )
       ),
       champ(
          nom_du_champ(''cht_complement_page''),
-         type(''TEXT''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_complement_page''),
-            champ(''cht_complement_page''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_contenu_methode_page''),
-         type(''VARCHAR(128)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(128),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_contenu_methode_page''),
-            champ(''cht_contenu_methode_page''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(128)
          )
       )
    )
@@ -5519,65 +6717,71 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_acces''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_acces''),
-            champ(''chi_id_acces''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_nom_acces''),
-         type(''VARCHAR(64)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_nom_acces''),
-            champ(''chp_nom_acces''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
          )
       ),
       champ(
          nom_du_champ(''chx_groupe_acces''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_groupes,chi_id_groupe),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_groupe_acces''),
-            champ(''chx_groupe_acces''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chx_metier_acces''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_metiers,chi_id_metier),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_metier_acces''),
-            champ(''chx_metier_acces''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       )
    )
@@ -5596,40 +6800,43 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_menu''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_menu''),
-            champ(''chi_id_menu''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chx_page_menu''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_pages,chi_id_page),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_page_menu''),
-            champ(''chx_page_menu''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
             afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER),
             refe_parent_gauche(1)
          )
       ),
       champ(
          nom_du_champ(''che_ordre_menu''),
-         type(''INTEGER''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(false),
@@ -5637,54 +6844,57 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che_ordre_menu''),
-            champ(''che_ordre_menu''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(che),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''cht_prerequis_rev_menu''),
-         type(''TEXT''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_prerequis_rev_menu''),
-            champ(''cht_prerequis_rev_menu''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_prerequis_php_menu''),
-         type(''TEXT''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_prerequis_php_menu''),
-            champ(''cht_prerequis_php_menu''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''cht_libelle_menu''),
-         type(''TEXT''),
+         type(''null''),
+         espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_libelle_menu''),
-            champ(''cht_libelle_menu''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(cht),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       )
    )
@@ -5703,67 +6913,72 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_tache''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          primary_key(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_tache''),
-            champ(''chi_id_tache''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chx_utilisateur_tache''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_utilisateurs,chi_id_utilisateur),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_utilisateur_tache''),
-            champ(''chx_utilisateur_tache''),
             nom_long_du_champ(''à faire chx_utilisateur_tache''),
             nom_court_du_champ(''à faire chx_utilisateur_tache''),
             nom_bref_du_champ(''à faire chx_utilisateur_tache''),
             typologie(chi),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''chp_texte_tache''),
-         type(''text''),
+         type(''null''),
+         espece_du_champ(TEXT),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_texte_tache''),
-            champ(''chp_texte_tache''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
          )
       ),
       champ(
          nom_du_champ(''chp_priorite_tache''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_priorite_tache''),
-            champ(''chp_priorite_tache''),
             nom_long_du_champ(''''),
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            afficher_champ_dans_svg(1)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
          nom_du_champ(''che__nur_tache''),
-         type(''integer''),
+         type(''null''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -5771,18 +6986,20 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che__nur_tache''),
-            champ(''che__nur_tache''),
             nom_long_du_champ(''à faire chi__nut_tache''),
             nom_court_du_champ(''à faire chi__nut_tache''),
             nom_bref_du_champ(''à faire chi__nut_tache''),
             typologie(chi),
             afficher_champ_dans_svg(0),
+            espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
          )
       ),
       champ(
          nom_du_champ(''chp__dtm_tache''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -5790,32 +7007,21 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtm_tache''),
-            champ(''chp__dtm_tache''),
             nom_long_du_champ(''à faire chp__dtm_tache''),
             nom_court_du_champ(''à faire chp__dtm_tache''),
             nom_bref_du_champ(''à faire chp__dtm_tache''),
             typologie(chi),
             afficher_champ_dans_svg(0),
-            champ_date_modification(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_bidon2_tache''),
-         type(''VARCHAR(64)''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_bidon2_tache''),
-            champ(''chp_bidon2_tache''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chp),
-            afficher_champ_dans_svg(1)
+            espece_du_champ(VARCHAR),
+            champ_date_modification(1),
+            longueur_du_champ(23)
          )
       ),
       champ(
          nom_du_champ(''chp__dtc_tache''),
-         type(''VARCHAR(23)''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -5823,13 +7029,14 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chp__dtc_tache''),
-            champ(''chp__dtc_tache''),
             nom_long_du_champ(''à faire chp__dtc_tache''),
             nom_court_du_champ(''à faire chp__dtc_tache''),
             nom_bref_du_champ(''à faire chp__dtc_tache''),
             typologie(chi),
             afficher_champ_dans_svg(1),
-            champ_date_creation(1)
+            espece_du_champ(VARCHAR),
+            champ_date_creation(1),
+            longueur_du_champ(23)
          )
       )
    )
@@ -5842,6 +7049,55 @@ ajouter_index(
    meta(nom_de_l_index(idx_texte_unique_taches),genre_meta(index_de_table),message(''Cete tache existe déjà'')),
    champs(''chp_texte_tache''),
    unique()
+),
+créer_table(
+   nom_de_la_table(''tbl_genres''),
+   meta(
+      nom_de_la_table(''tbl_genres''),
+      table(''tbl_genres''),
+      genre_meta(table_de_base),
+      nom_long_de_la_table(''A faire  tbl_genres''),
+      nom_court_de_la_table(''A faire tbl_genres''),
+      nom_bref_de_la_table(''A faire tbl_genres''),
+      transform_table_sur_svg(translate(386.5,640.5))
+   ),
+   champs(
+      champ(
+         nom_du_champ(''chi_id_genre''),
+         type(''null''),
+         espece_du_champ(INTEGER),
+         primary_key(1),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chi_id_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chi),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_nom_genre''),
+         type(''null''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_nom_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chp),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
+         )
+      )
+   )
 )','sqlite','3','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('2','1',NULL,'meta(
    #(),
@@ -6241,80 +7497,80 @@ INSERT INTO tbl_menus (chi_id_menu,chx_page_menu,che_ordre_menu,cht_prerequis_re
   ===============================
 */
 
-INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_priorite_tache,che__nur_tache,chp__dtm_tache,chp_bidon2_tache,chp__dtc_tache) VALUES
-('1','1','capturer les erreurs php','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('2','1','traiter le cookie initial quand il est incomplet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('3','1','mettre un # dans l''url pour pouvoir charger la page initiale','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('4','1','cookies.php en objet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('5','1','données bidon en cookie','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('6','1','404','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('7','1','worker','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('8','1','timer / indicateur socket','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('9','1','id en vv','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('10','1','fichiers et classes en c_','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('11','1','socket','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('12','1','limiter le nombre de messages sur l''interface','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('13','1','ne pas afficher le premier message ws ko','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('14','1','maj champ deverminage nouveau','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('15','1','recharger la page paramètres','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('16','1','déverminage en cookie','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('17','1','ctrl F5 après avoir cliqué sur un #','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('18','1','désactiver les boutons quand click','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('19','1','changer mes coordonnées','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('20','1','renommer les variables __x_statut ....','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('21','1','bdd todo','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('22','1','mettre le niveau de déverminage dans le php','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('23','1','dump de la base en local','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('26','1','travaux en batch','11','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('28','1','profils de css','50','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('29','1','astuces','12','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('34','1','pas de webSocket sur ks.app','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('35','1','détecter mobile ( touch )','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('36','1','highlight des menus','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('37','1','lors de la première connexion, initialiser les tailles des css en fonction de la taille de l''écran','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_priorite_tache,che__nur_tache,chp__dtm_tache,chp__dtc_tache) VALUES
+('1','1','capturer les erreurs php','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('2','1','traiter le cookie initial quand il est incomplet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('3','1','mettre un # dans l''url pour pouvoir charger la page initiale','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('4','1','cookies.php en objet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('5','1','données bidon en cookie','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('6','1','404','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('7','1','worker','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('8','1','timer / indicateur socket','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('9','1','id en vv','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('10','1','fichiers et classes en c_','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('11','1','socket','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('12','1','limiter le nombre de messages sur l''interface','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('13','1','ne pas afficher le premier message ws ko','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('14','1','maj champ deverminage nouveau','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('15','1','recharger la page paramètres','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('16','1','déverminage en cookie','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('17','1','ctrl F5 après avoir cliqué sur un #','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('18','1','désactiver les boutons quand click','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('19','1','changer mes coordonnées','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('20','1','renommer les variables __x_statut ....','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('21','1','bdd todo','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('22','1','mettre le niveau de déverminage dans le php','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('23','1','dump de la base en local','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('26','1','travaux en batch','9','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('28','1','profils de css','50','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('29','1','astuces','10','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('34','1','pas de webSocket sur ks.app','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('35','1','détecter mobile ( touch )','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('36','1','highlight des menus','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('37','1','lors de la première connexion, initialiser les tailles des css en fonction de la taille de l''écran','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('38','1','sur ipad, supprimer les double click pour agrandir
 
-if( ecran_tactile===true && genre_safari===true && genre_crios === false)','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+if( ecran_tactile===true && genre_safari===true && genre_crios === false)','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('39','1','supprimer le double click sur ios
 
 //https://stackoverflow.com/a/42162450/3717718
-','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('40','1','marges gauches et droites','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('41','1','se reconnecter au webso','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('42','1','ajouter le niveau de deboggage dans le websocket','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('43','1','déverminage serveur wso','50','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('44','1','Prévenir le ws quand on se déconnecte','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('40','1','marges gauches et droites','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('41','1','se reconnecter au webso','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('42','1','ajouter le niveau de deboggage dans le websocket','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('43','1','déverminage serveur wso','50','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('44','1','Prévenir le ws quand on se déconnecte','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('45','1','coccinelle déverminage
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="13 11  82 84"><path d="M 18 85 L 23 82 L 21 73 L 27 67 M 30 40 L 25 40 L 21 49 L 16 49 M 34 35 L 25 30 L 23 24 M 44 19 L 39 14 M 59 19 L 64 14 M 69 35 L 78 30 L 80 24 M 73 40 L 78 40 L 82 49 L 87 49 M 76 68 L 82 73 L 80 82 L 85 85 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path><path d=" M 36 34 C 35 12 68 12 67 34 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:slategray;stroke-width:1;fill-opacity:1;"></path><path d=" M 36 33 C 30 38 25 48 25 56  C 25 68 33 87 52 87 c 15 0 26 -17 26 -30 C 78 47 73 39 67 33 c 0 1 -13 1 -15 1 C 49 34 36 34 36 33" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:red;stroke-width:1;fill-opacity:1;"></path><ellipse cx="44" cy="25" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(30 44 25 )" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="57" cy="18" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(1 40) rotate(-32 0 0)  " style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="36" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="67" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="41" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></ellipse><ellipse cx="62" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="40" cy="74" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(-40 40 74 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="57" cy="89" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(6 -15 ) rotate(30 57 89 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><path d=" M 51 35 V 86 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path></svg>','51','2','2025-07-31 11:57:22.993',NULL,'2000-01-01 00:00:00'),
-('46','1','http://localhost/frev/rev_1/__client/?a=1','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('47','1','page rev vers matrice','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('48','1','initialiser la zone rev avec le localstorage','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="13 11  82 84"><path d="M 18 85 L 23 82 L 21 73 L 27 67 M 30 40 L 25 40 L 21 49 L 16 49 M 34 35 L 25 30 L 23 24 M 44 19 L 39 14 M 59 19 L 64 14 M 69 35 L 78 30 L 80 24 M 73 40 L 78 40 L 82 49 L 87 49 M 76 68 L 82 73 L 80 82 L 85 85 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path><path d=" M 36 34 C 35 12 68 12 67 34 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:slategray;stroke-width:1;fill-opacity:1;"></path><path d=" M 36 33 C 30 38 25 48 25 56  C 25 68 33 87 52 87 c 15 0 26 -17 26 -30 C 78 47 73 39 67 33 c 0 1 -13 1 -15 1 C 49 34 36 34 36 33" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:red;stroke-width:1;fill-opacity:1;"></path><ellipse cx="44" cy="25" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(30 44 25 )" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="57" cy="18" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(1 40) rotate(-32 0 0)  " style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="36" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="67" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="41" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></ellipse><ellipse cx="62" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="40" cy="74" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(-40 40 74 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="57" cy="89" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(6 -15 ) rotate(30 57 89 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><path d=" M 51 35 V 86 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path></svg>','51','2','2025-07-31 11:57:22.993','2000-01-01 00:00:00'),
+('46','1','http://localhost/frev/rev_1/__client/?a=1','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('47','1','page rev vers matrice','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('48','1','initialiser la zone rev avec le localstorage','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('49','1','mettre le rendu en js
-NON trop compliqué, le garder en php','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('50','1','conv js','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('51','1','rev vers js','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('52','1','zone d''édition textarea','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('53','1','cookie socket','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('54','1','optimiser les temps de chargement','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('55','1','traiter les messages d''erreur','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('56','1','placer le curseur dans une textarea','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('57','1','conv html','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('58','1','conv php','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('59','1','conv php nikic','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('60','1','traiter les messages d''erreur de php','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('61','1','sql','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('62','1','css','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('63','1','projet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('64','1','bouton retour à la liste','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('65','1','bug lien interne après changement de version','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('66','1','scroll horizontal sur menu haut','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('67','1','bases','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+NON trop compliqué, le garder en php','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('50','1','conv js','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('51','1','rev vers js','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('52','1','zone d''édition textarea','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('53','1','cookie socket','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('54','1','optimiser les temps de chargement','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('55','1','traiter les messages d''erreur','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('56','1','placer le curseur dans une textarea','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('57','1','conv html','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('58','1','conv php','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('59','1','conv php nikic','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('60','1','traiter les messages d''erreur de php','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('61','1','sql','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('62','1','css','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('63','1','projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('64','1','bouton retour à la liste','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('65','1','bug lien interne après changement de version','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('66','1','scroll horizontal sur menu haut','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('67','1','bases','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('68','1','autorisations
 
 se connecter à 
@@ -6325,78 +7581,78 @@ sans être connecté
 
 #c_pages1.recupere_la_page_d_accueil()
 #c_pages1.recupere_la_page_d_aide()
-#c_pages1.recupere_la_page_de_connexion()','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('69','1','dossiers','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('70','1','activer / désactiver le bouton du menu','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('71','1','id parent de dossier avec <dialog>','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('72','1','chemin complet d''un dossier','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('73','1','vérifier qu''un dossier n''a pas d''enfants avant de le supprimer','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+#c_pages1.recupere_la_page_de_connexion()','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('69','1','dossiers','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('70','1','activer / désactiver le bouton du menu','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('71','1','id parent de dossier avec <dialog>','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('72','1','chemin complet d''un dossier','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('73','1','vérifier qu''un dossier n''a pas d''enfants avant de le supprimer','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('74','1','transmettre les donnes_retournees aux sql 
-et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('78','1','ne pas mettre plus de 1000 éléments dans un dossier','14','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('80','1','table des bugs','16','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('82','1','supprimer une projet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('78','1','ne pas mettre plus de 1000 éléments dans un dossier','12','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('80','1','table des bugs','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('82','1','supprimer une projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('83','1','ajouter les champs 
 nut numero technique de modification
 dtm date technique de modification
-dtc date technique de création','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('84','1','renommer un dossier','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('85','1','quand on clique sur 🖐, mettre la zone en haut de l''écran','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('86','1','optimiser les tableaux des matrices et des caractères','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('88','1','sortable pour svg','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('90','1','dupliquer une table','17','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+dtc date technique de création','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('84','1','renommer un dossier','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('85','1','quand on clique sur 🖐, mettre la zone en haut de l''écran','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('86','1','optimiser les tableaux des matrices et des caractères','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('88','1','sortable pour svg','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('90','1','dupliquer une table','15','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('92','1','quand on modifie le nom d''une table
-alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('93','1','corriger auto increment','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('94','1','ajouter le type du meta dans les sql','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('96','1','reprendre les commentaires meta dans sql','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('93','1','corriger auto increment','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('94','1','ajouter le type du meta dans les sql','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('96','1','reprendre les commentaires meta dans sql','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('97','1','mettre les valeurs
             a_une_valeur_par_defaut(0),
             la_valeur_par_defaut_est_caractere(0),
             valeur_par_defaut( ''''),
-dans le champ','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('98','1','afficher/masquer les champs dans le svg','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('99','1','corriger le bug : après tri des champs, on pert l''index','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
+dans le champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('98','1','afficher/masquer les champs dans le svg','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('99','1','corriger le bug : après tri des champs, on pert l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('100','1','ne pas masquer un champ si c''est une référence, une clé, un auto_increment
-ou si le champ appartient à un index','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('101','1','ajouter des tests de validité sur le svg base','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('102','1','sauvegarder une table sans champ','99','0','2000-01-01 00:00:00',NULL,'2000-01-01 00:00:00'),
-('103','1','requetes','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('104','1','mettre le dump de la base dans la liste des bases','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('105','1','''prefixe_bdd'' PREFIXE_BDD','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('106','1','positionnement du bouton supprimer les messages','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('107','1','ajouter le bouton "ajouter un commentaire"','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('108','1','améliorer l''éditeur de requêtes','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('109','1','renommer le champ dtm_tache de la table requetes','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('110','1','changer le rev du champ quand on le renomme','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('111','1','remplacer les sql_nn par des sql_iii(nn,)','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+ou si le champ appartient à un index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('101','1','ajouter des tests de validité sur le svg base','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('102','1','sauvegarder une table sans champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('103','1','requetes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('104','1','mettre le dump de la base dans la liste des bases','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('105','1','''prefixe_bdd'' PREFIXE_BDD','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('106','1','positionnement du bouton supprimer les messages','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('107','1','ajouter le bouton "ajouter un commentaire"','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('108','1','améliorer l''éditeur de requêtes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('109','1','renommer le champ dtm_tache de la table requetes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('110','1','changer le rev du champ quand on le renomme','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('111','1','remplacer les sql_nn par des sql_iii(nn,)','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('112','1','fonction pour gérer les dépendances
-sql_dependances()','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('113','1','renommer un champ d''index','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('114','1','dans le concepteur de requete, mettre les champs mis à jour pour un update sur plusieurs lignes','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('115','1','mettre en place des dépendances de champ sur des bases externes','50','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('116','1','ajouter le test des dépendances dans les php delete','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('117','1','renommer une table dans le base','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('118','1','sources','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('119','1','modifier les updates','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('120','1','en mode déverminage, afficher le numero de reuqete liste','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('121','1','pourquoi certains fichiers sql sont supprimés','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('122','1','icone supprimer 🗑','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('123','1','rev de texte','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('124','1','recompiler les updates','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('125','1','intégrer la table rev dans la base physique','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('126','1','projet 2','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('127','1','reprendre les meta des sql','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('128','1','compiler les requêtes à partir de la liste','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('129','1','remplacer select_liste par liste_ecran','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+sql_dependances()','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('113','1','renommer un champ d''index','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('114','1','dans le concepteur de requete, mettre les champs mis à jour pour un update sur plusieurs lignes','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('115','1','mettre en place des dépendances de champ sur des bases externes','50','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('116','1','ajouter le test des dépendances dans les php delete','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('117','1','renommer une table dans le base','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('118','1','sources','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('119','1','modifier les updates','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('120','1','en mode déverminage, afficher le numero de reuqete liste','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('121','1','pourquoi certains fichiers sql sont supprimés','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('122','1','icone supprimer 🗑','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('123','1','rev de texte','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('124','1','recompiler les updates','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('125','1','intégrer la table rev dans la base physique','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('126','1','projet 2','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('127','1','reprendre les meta des sql','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('128','1','compiler les requêtes à partir de la liste','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('129','1','remplacer select_liste par liste_ecran','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('130','1','compiler les sources
 html
 js
@@ -6404,19 +7660,19 @@ php
 sql
 css
 texte
-rev','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('132','1','virer chp_chemin_dossier','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('133','1','flag dossier binaire','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('134','1','begin transaction','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('135','1','ordonner un champ sur le schema uniquement','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('136','1','mettre le rev de travail de la base dans le rev','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+rev','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('132','1','virer chp_chemin_dossier','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('133','1','flag dossier binaire','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('134','1','begin transaction','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('135','1','ordonner un champ sur le schema uniquement','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('136','1','mettre le rev de travail de la base dans le rev','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('137','1','intégrer sql_parser_cst.js pour pouvoir faire passer :
 alter table t DROP column a;
 
 select * from toto;
 /*
   alter table tata DROP column tot;
-*/','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+*/','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('138','1','sql_parser_cst
 
 select
@@ -6428,14 +7684,14 @@ delete
 commit
 rollback
 begin transaction
-','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('139','1','ajouter un source binaire ( ico )','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('140','1','ajouter un source qui pointe sur un autre source ( favicon )','50','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('141','1','drapeau répertoire contient des sources générés','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('142','1','virer che_binaire_dossier','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('143','1','copier un source dans un autre répertoire','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('144','1','virer chp_type_source','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
-('145','1','supprimer les éléments inutils du dump de la base','99','0','2000-01-01 00:00:00.000',NULL,'2000-01-01 00:00:00.000'),
+','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('139','1','ajouter un source binaire ( ico )','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('140','1','ajouter un source qui pointe sur un autre source ( favicon )','50','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('141','1','drapeau répertoire contient des sources générés','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('142','1','virer che_binaire_dossier','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('143','1','copier un source dans un autre répertoire','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('144','1','virer chp_type_source','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('145','1','supprimer les éléments inutils du dump de la base','99','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('146','1','sql_29, sql_30
 
 champ_numero_de_revision
@@ -6446,8 +7702,8 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 
 champ_date_modification(`chp__dtm_tache`)
-flag champ_date_modification','99','4','2025-06-13 17:04:41.468',NULL,'2000-01-01 00:00:00.000'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','15','1','2025-07-29 17:40:19.125',NULL,'2000-01-01 00:00:00.000'),
+flag champ_date_modification','99','4','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','13','1','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -6460,66 +7716,67 @@ sources js sur disque
 sources sql sur disque
 sources css sur disque
 sources rev sur disque
-sources txt sur disque NON','99','10','2025-06-15 09:10:42.213',NULL,'2025-06-13 17:05:45.323'),
-('149','1','socket : .ts en .js','99','0','2025-06-16 09:01:24.706',NULL,'2025-06-16 09:01:24.706'),
-('150','1','renommer les champs chi__num en che__nur','99','3','2025-06-17 11:45:14.619',NULL,'2025-06-17 10:08:32.544'),
+sources txt sur disque NON','99','10','2025-06-15 09:10:42.213','2025-06-13 17:05:45.323'),
+('149','1','socket : .ts en .js','99','0','2025-06-16 09:01:24.706','2025-06-16 09:01:24.706'),
+('150','1','renommer les champs chi__num en che__nur','99','3','2025-06-17 11:45:14.619','2025-06-17 10:08:32.544'),
 ('151','1','lors de la compilation d''un php, 
-mettre les sources au format SQL des requetes sql dans le source php','99','1','2025-06-17 14:11:31.120',NULL,'2025-06-17 10:40:44.982'),
-('152','1','décomposer les fichiers session de php pour le wso','99','2','2025-06-19 18:22:27.003',NULL,'2025-06-17 11:54:31.823'),
-('154','1','déterminer le répertoire des requêtes dans le projet','99','0','2025-06-19 18:21:27.820',NULL,'2025-06-19 18:21:27.820'),
+mettre les sources au format SQL des requetes sql dans le source php','99','1','2025-06-17 14:11:31.120','2025-06-17 10:40:44.982'),
+('152','1','décomposer les fichiers session de php pour le wso','99','2','2025-06-19 18:22:27.003','2025-06-17 11:54:31.823'),
+('154','1','déterminer le répertoire des requêtes dans le projet','99','0','2025-06-19 18:21:27.820','2025-06-19 18:21:27.820'),
 ('155','1','quand on crée un nouveau projet, 
-il faut créer un clone de la base système dans lequel travailler','99','0','2025-06-20 10:44:39.371',NULL,'2025-06-20 10:44:39.371'),
-('156','1','quand on se déconnecte d''un projet, il faut supprimer les menus bases ...','99','0','2025-06-20 10:47:23.986',NULL,'2025-06-20 10:47:23.986'),
+il faut créer un clone de la base système dans lequel travailler','99','0','2025-06-20 10:44:39.371','2025-06-20 10:44:39.371'),
+('156','1','quand on se déconnecte d''un projet, il faut supprimer les menus bases ...','99','0','2025-06-20 10:47:23.986','2025-06-20 10:47:23.986'),
 ('157','1','ajouter répertoire des requetes au niveau du projet
-et utiliser cette donnée...','99','2','2025-06-21 16:57:19.818',NULL,'2025-06-21 13:36:20.422'),
-('158','1','quand on ajoute un champ fils, dans le dessin svg, le lien ne n''affiche pas correctement','99','0','2025-06-23 12:39:41.331',NULL,'2025-06-23 12:39:41.331'),
-('159','1','supprimer les projets >2 dans le projet 2','99','0','2025-06-23 16:18:28.927',NULL,'2025-06-23 16:18:28.927'),
-('160','1','comparer les sources entre rev1 et 2 et faire un bouton copier','99','0','2025-06-23 16:41:49.995',NULL,'2025-06-23 16:41:49.995'),
-('161','1','dans rev_2 importer un source de rev1','99','0','2025-06-24 09:36:54.845',NULL,'2025-06-24 09:36:54.845'),
-('162','1','voir message conversion dans le php (322727) [1742]','99','0','2025-06-24 13:49:09.573',NULL,'2025-06-24 13:49:09.573'),
-('163','1','moncrlf','99','0','2025-06-25 10:22:08.728',NULL,'2025-06-25 10:22:08.728'),
-('164','1','quand on active un projet, il faut charger les sources sql','99','0','2025-06-25 11:05:15.874',NULL,'2025-06-25 11:05:15.874'),
-('165','1','inporter/exporter les fichiers de rev 1 2','99','0','2025-06-25 12:06:19.837',NULL,'2025-06-25 12:06:19.837'),
+et utiliser cette donnée...','99','2','2025-06-21 16:57:19.818','2025-06-21 13:36:20.422'),
+('158','1','quand on ajoute un champ fils, dans le dessin svg, le lien ne n''affiche pas correctement','99','0','2025-06-23 12:39:41.331','2025-06-23 12:39:41.331'),
+('159','1','supprimer les projets >2 dans le projet 2','99','0','2025-06-23 16:18:28.927','2025-06-23 16:18:28.927'),
+('160','1','comparer les sources entre rev1 et 2 et faire un bouton copier','99','0','2025-06-23 16:41:49.995','2025-06-23 16:41:49.995'),
+('161','1','dans rev_2 importer un source de rev1','99','0','2025-06-24 09:36:54.845','2025-06-24 09:36:54.845'),
+('162','1','voir message conversion dans le php (322727) [1742]','99','0','2025-06-24 13:49:09.573','2025-06-24 13:49:09.573'),
+('163','1','moncrlf','99','0','2025-06-25 10:22:08.728','2025-06-25 10:22:08.728'),
+('164','1','quand on active un projet, il faut charger les sources sql','99','0','2025-06-25 11:05:15.874','2025-06-25 11:05:15.874'),
+('165','1','inporter/exporter les fichiers de rev 1 2','99','0','2025-06-25 12:06:19.837','2025-06-25 12:06:19.837'),
 ('166','1','rechercher un source dont le nom contient __
 
-select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99','2','2025-06-25 14:42:17.528',NULL,'2025-06-25 12:10:16.103'),
-('167','1','double \ dans le .bat','99','0','2025-06-25 14:14:55.962',NULL,'2025-06-25 14:14:55.962'),
+select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99','2','2025-06-25 14:42:17.528','2025-06-25 12:10:16.103'),
+('167','1','double \ dans le .bat','99','0','2025-06-25 14:14:55.962','2025-06-25 14:14:55.962'),
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','13','1','2025-06-26 11:55:00.122',NULL,'2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','6','0','2025-06-26 15:39:59.054',NULL,'2025-06-26 15:39:59.054'),
-('170','1','initialiser ecran standard d''une table','10','0','2025-06-26 15:40:44.916',NULL,'2025-06-26 15:40:44.916'),
-('171','1','gérer les menus','99','1','2025-07-10 16:37:39.788',NULL,'2025-06-26 17:24:34.522'),
-('172','1','gérer les utilisateurs et les groupes et les métiers','99','1','2025-06-27 10:25:45.031',NULL,'2025-06-27 10:13:04.627'),
+comme3(xxx)','11','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
+('169','1','initialiser projet standard','5','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
+('170','1','initialiser ecran standard d''une table','8','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
+('171','1','gérer les menus','99','1','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522'),
+('172','1','gérer les utilisateurs et les groupes et les métiers','99','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
 ('173','1','gérer les paramètres ( liste des constantes )
-type de champbdd','8','3','2025-07-04 08:19:23.308',NULL,'2025-06-27 10:13:20.409'),
+type de champbdd','7','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
 ('174','1','mettre en github
-','99','0','2025-06-27 11:21:35.817',NULL,'2025-06-27 11:21:35.817'),
-('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455',NULL,'2025-06-28 12:40:58.038'),
-('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146',NULL,'2025-06-30 10:17:00.146'),
-('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962',NULL,'2025-07-01 09:20:32.962'),
-('178','1','ajouter un dictionnaire de données','9','1','2025-07-02 10:47:06.159',NULL,'2025-07-02 10:46:53.367'),
-('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399',NULL,'2025-07-02 11:46:09.399'),
-('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718',NULL,'2025-07-03 09:44:55.718'),
-('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668',NULL,'2025-07-03 09:46:02.668'),
-('182','1','svg lien ajouter gauche droite','99','1','2025-07-06 09:27:00.963',NULL,'2025-07-04 08:22:18.236'),
+','99','0','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817'),
+('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038'),
+('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
+('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962'),
+('178','1','ajouter un dictionnaire de données
+genre','2','2','2025-08-09 11:56:36.382','2025-07-02 10:46:53.367'),
+('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399'),
+('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718'),
+('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668'),
+('182','1','svg lien ajouter gauche droite','99','1','2025-07-06 09:27:00.963','2025-07-04 08:22:18.236'),
 ('183','1','lisad :
 
 lister 
 insérer 
 sélectionner 
 altérer/amender 
-détruire','80','1','2025-07-06 13:23:50.990',NULL,'2025-07-06 13:23:42.485'),
-('184','1','bug quand on crée un nouvelle requête, le php c''est pas créé sur disque','99','0','2025-07-07 10:35:44.602',NULL,'2025-07-07 10:35:44.602'),
-('185','1','gérer les pages','99','0','2025-07-07 12:54:11.814',NULL,'2025-07-07 12:54:11.814'),
-('186','1','gérer les accès des utilisateurs','99','1','2025-07-08 15:13:34.065',NULL,'2025-07-08 15:12:51.611'),
-('187','1','supprimer chx_groupe_utilisateur chx_metier_utilisateur','99','0','2025-07-09 09:41:52.450',NULL,'2025-07-09 09:41:52.450'),
-('188','1','ajouter NULL si chx = '''' sur les insert et delete','99','1','2025-07-09 13:55:32.628',NULL,'2025-07-09 13:54:53.645'),
-('189','1','Lors de l''insertion dans la table des pages, vérifier l''existance de méthode du source','99','1','2025-07-09 15:40:56.820',NULL,'2025-07-09 14:58:59.943'),
-('190','1','supprimer chp_lien_rev_page','99','0','2025-07-09 15:22:03.310',NULL,'2025-07-09 15:22:03.310'),
-('191','1','rechercher sql_24','99','0','2025-07-09 15:50:13.424',NULL,'2025-07-09 15:50:13.424'),
-('192','1','bouton pop up pour voir le contenu d''une requête à partir de la liste des requêtes ','99','1','2025-07-09 17:42:12.440',NULL,'2025-07-09 15:50:33.376'),
+détruire','80','1','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485'),
+('184','1','bug quand on crée un nouvelle requête, le php c''est pas créé sur disque','99','0','2025-07-07 10:35:44.602','2025-07-07 10:35:44.602'),
+('185','1','gérer les pages','99','0','2025-07-07 12:54:11.814','2025-07-07 12:54:11.814'),
+('186','1','gérer les accès des utilisateurs','99','1','2025-07-08 15:13:34.065','2025-07-08 15:12:51.611'),
+('187','1','supprimer chx_groupe_utilisateur chx_metier_utilisateur','99','0','2025-07-09 09:41:52.450','2025-07-09 09:41:52.450'),
+('188','1','ajouter NULL si chx = '''' sur les insert et delete','99','1','2025-07-09 13:55:32.628','2025-07-09 13:54:53.645'),
+('189','1','Lors de l''insertion dans la table des pages, vérifier l''existance de méthode du source','99','1','2025-07-09 15:40:56.820','2025-07-09 14:58:59.943'),
+('190','1','supprimer chp_lien_rev_page','99','0','2025-07-09 15:22:03.310','2025-07-09 15:22:03.310'),
+('191','1','rechercher sql_24','99','0','2025-07-09 15:50:13.424','2025-07-09 15:50:13.424'),
+('192','1','bouton pop up pour voir le contenu d''une requête à partir de la liste des requêtes ','99','1','2025-07-09 17:42:12.440','2025-07-09 15:50:33.376'),
 ('193','1','menu outils qui contient les convertisseurs
 <select>
     <option>outils</option>
@@ -6530,50 +7787,56 @@ détruire','80','1','2025-07-06 13:23:50.990',NULL,'2025-07-06 13:23:42.485'),
     <option>sql</option>
     <option>css</option>
     <option>texte</option>
-</select>','4','2','2025-07-22 14:39:11.892',NULL,'2025-07-09 16:26:01.691'),
-('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','0','2025-07-09 16:31:23.198',NULL,'2025-07-09 16:31:23.198'),
-('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','0','2025-07-09 17:43:23.330',NULL,'2025-07-09 17:43:23.330'),
-('196','1','initialiser les champs filtres d''une sous page','99','1','2025-07-19 11:11:25.033',NULL,'2025-07-10 09:52:20.444'),
+</select>','3','2','2025-07-22 14:39:11.892','2025-07-09 16:26:01.691'),
+('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','0','2025-07-09 16:31:23.198','2025-07-09 16:31:23.198'),
+('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','0','2025-07-09 17:43:23.330','2025-07-09 17:43:23.330'),
+('196','1','initialiser les champs filtres d''une sous page','99','1','2025-07-19 11:11:25.033','2025-07-10 09:52:20.444'),
 ('197','1','le caractère 🟥 ne passe pas sur ma tablette
 faire un carré svg
-⬛🔲🗨◻⏹','99','4','2025-07-21 17:02:50.100',NULL,'2025-07-10 09:58:19.160'),
-('198','1','dans les pages, proposer une liste de méthodes quand on choisir un source','99','0','2025-07-10 10:17:39.087',NULL,'2025-07-10 10:17:39.087'),
-('199','1','compiler le prérequis du menu','99','1','2025-07-14 08:40:32.303',NULL,'2025-07-12 08:22:58.170'),
-('200','1','quand on modifie une page, il faut recompiler les menus','99','0','2025-07-15 13:49:22.638',NULL,'2025-07-15 13:49:22.638'),
+⬛🔲🗨◻⏹','99','4','2025-07-21 17:02:50.100','2025-07-10 09:58:19.160'),
+('198','1','dans les pages, proposer une liste de méthodes quand on choisir un source','99','0','2025-07-10 10:17:39.087','2025-07-10 10:17:39.087'),
+('199','1','compiler le prérequis du menu','99','1','2025-07-14 08:40:32.303','2025-07-12 08:22:58.170'),
+('200','1','quand on modifie une page, il faut recompiler les menus','99','0','2025-07-15 13:49:22.638','2025-07-15 13:49:22.638'),
 ('201','1','ajouter les traitements de 
 nom_champ_dans_parent1
 nom_libelle_dans_parent1
-dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.755',NULL,'2025-07-15 16:12:27.924'),
-('202','1','bibliothèque de svg','7','1','2025-07-16 10:48:01.891',NULL,'2025-07-16 10:47:25.371'),
-('203','1','renuméroter les requetes à partir de 101','99','2','2025-07-17 15:09:37.352',NULL,'2025-07-17 10:11:14.041'),
-('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','1','2025-07-17 12:14:57.332',NULL,'2025-07-17 12:07:20.343'),
-('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','0','2025-07-18 10:50:06.307',NULL,'2025-07-18 10:50:06.307'),
-('206','1','renuméroter un source','99','0','2025-07-24 12:50:11.622',NULL,'2025-07-24 12:50:11.622'),
-('207','1','remplacer php par deno','50','1','2025-07-27 09:47:30.190',NULL,'2025-07-27 09:47:14.801'),
-('208','1','chp_commentaire_projet => chTTTTT_commentaire_projet','99','0','2025-07-29 11:37:04.000',NULL,'2025-07-29 11:37:04.000'),
-('209','1','ajouter un bouton enregistrer dans la modification d''un source','99','1','2025-07-29 16:48:06.039',NULL,'2025-07-29 15:44:38.467'),
-('210','1','travailler la redirection si on n''est pas authentifié','99','0','2025-07-29 17:52:34.498',NULL,'2025-07-29 17:52:34.498'),
-('211','1','ajouter une référence à la pagination dans les listes','99','1','2025-07-31 11:56:33.898',NULL,'2025-07-31 09:07:20.616'),
-('212','1','liens internes en #','99','0','2025-07-31 13:52:57.967',NULL,'2025-07-31 13:52:57.967'),
+dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.755','2025-07-15 16:12:27.924'),
+('202','1','bibliothèque de svg','6','1','2025-07-16 10:48:01.891','2025-07-16 10:47:25.371'),
+('203','1','renuméroter les requetes à partir de 101','99','2','2025-07-17 15:09:37.352','2025-07-17 10:11:14.041'),
+('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','1','2025-07-17 12:14:57.332','2025-07-17 12:07:20.343'),
+('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','0','2025-07-18 10:50:06.307','2025-07-18 10:50:06.307'),
+('206','1','renuméroter un source','99','0','2025-07-24 12:50:11.622','2025-07-24 12:50:11.622'),
+('207','1','remplacer php par deno','50','1','2025-07-27 09:47:30.190','2025-07-27 09:47:14.801'),
+('208','1','chp_commentaire_projet => chTTTTT_commentaire_projet','99','0','2025-07-29 11:37:04.000','2025-07-29 11:37:04.000'),
+('209','1','ajouter un bouton enregistrer dans la modification d''un source','99','1','2025-07-29 16:48:06.039','2025-07-29 15:44:38.467'),
+('210','1','travailler la redirection si on n''est pas authentifié','99','0','2025-07-29 17:52:34.498','2025-07-29 17:52:34.498'),
+('211','1','ajouter une référence à la pagination dans les listes','99','1','2025-07-31 11:56:33.898','2025-07-31 09:07:20.616'),
+('212','1','liens internes en #','99','0','2025-07-31 13:52:57.967','2025-07-31 13:52:57.967'),
 ('213','1','Gérer les versions
-nouvelle version','99','0','2025-08-01 14:32:15.239',NULL,'2025-08-01 14:32:15.239'),
+nouvelle version','99','0','2025-08-01 14:32:15.239','2025-08-01 14:32:15.239'),
 ('214','1','renommer un champ
 
 supprimer un champ
 ajouter un champ
 
 quand on renomme un champ de la base 1 de rev_1 il faur renommer les champs de toutes les bases rev_n
-Exemple chp_commentaire_projet => cht_commentaire_projet','99','2','2025-08-02 14:19:05.165',NULL,'2025-08-01 15:08:43.406'),
-('215','1','case à cocher "se souvenir de moi" sur la page de connexion','5','0','2025-08-03 09:25:28.660',NULL,'2025-08-03 09:25:28.660'),
-('216','1','intégrer mon tri','99','0','2025-08-03 10:03:21.913',NULL,'2025-08-03 10:03:21.913'),
-('217','1','bug réordonner champs sur projet 3','99','0','2025-08-05 14:13:00.676',NULL,'2025-08-05 14:13:00.676'),
-('218','1','tri_arbre','3','0','2025-08-08 11:02:44.128',NULL,'2025-08-08 11:02:44.128'),
+Exemple chp_commentaire_projet => cht_commentaire_projet','99','2','2025-08-02 14:19:05.165','2025-08-01 15:08:43.406'),
+('215','1','case à cocher "se souvenir de moi" sur la page de connexion','4','0','2025-08-03 09:25:28.660','2025-08-03 09:25:28.660'),
+('216','1','intégrer mon tri','99','0','2025-08-03 10:03:21.913','2025-08-03 10:03:21.913'),
+('217','1','bug réordonner champs sur projet 3','99','0','2025-08-05 14:13:00.676','2025-08-05 14:13:00.676'),
+('218','1','tri_arbre','99','0','2025-08-08 11:02:44.128','2025-08-08 11:02:44.128'),
 ('219','1','source_requete
 
             ''sql0'' => $sql0 ,
             ''bdd'' => $GLOBALS[__BDD][BDD_NUMERO_1],
-','2','3','2025-08-08 15:09:52.677',NULL,'2025-08-08 12:41:17.737'),
-('220','1','aaaaaaaaa','1','0','2025-08-08 15:13:37.595',NULL,'2025-08-08 15:13:37.595');
+','99','3','2025-08-08 15:09:52.677','2025-08-08 12:41:17.737'),
+('220','1','ajouter un champ espece base et taille_espece','1','2','2025-08-09 12:38:17.257','2025-08-09 12:33:15.508');
+
+/*
+  ===============================
+  PAS DE DONNEES A INSERER POUR : tbl_genres
+  ===============================
+*/
 
 /*
   ============================
