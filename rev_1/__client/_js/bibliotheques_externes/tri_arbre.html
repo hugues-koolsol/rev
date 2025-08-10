@@ -22,7 +22,23 @@ body{margin:0;padding:0;}
     text-align:center;
     cursor:pointer;
     color:blue;
-}</style>
+}
+.le_bo_bouton_supprimer{
+    border:1px red outset;
+    min-width:1em;
+    text-align:center;
+    cursor:pointer;
+    color:yellow;
+    background:red;
+}
+.le_bo_bouton_editer{
+    border:1px blue outset;
+    min-width:1em;
+    text-align:center;
+    cursor:pointer;
+    color:blue;
+}
+</style>
     </head>
     <body>
         <div style="border:1px red solid;height:50px;width:50px;display:inline-block;overflow:hidden;">50</div>
@@ -50,7 +66,7 @@ body{margin:0;padding:0;}
                                         </ul>
                                     </li>
                                     <li>ab 5
-                                        <ul data-replie="">
+                                        <ul data-replie=""  style="color:green;">
                                             <li>aba 6</li>
                                             <li>abb 7</li>
                                         </ul>
@@ -78,8 +94,7 @@ body{margin:0;padding:0;}
                             <li>t t</li>
                         </ul>
                     </td>
-                    <td>
-                        <ul id="tri_arbre_racine2" style="border:0px red solid;">
+<!--                    
                             <li id="123">
                                 <b style="color:red;">a 1</b>
                                 <ul>
@@ -97,7 +112,49 @@ body{margin:0;padding:0;}
                                     </li>
                                 </ul>
                             </li>
-                            <li>b 8</li>
+                            <li style="color:blue;"><b>b 8</b></li>
+                            
+                            
+                        <ul id="tri_arbre_racine2" style="border:0px red solid;">
+                        
+                         <li id="4" style="border:1px red solid;">tâches</li>
+                         <li data-sous_menu="1">outils</li>
+                         <ul>
+                             <li id="5" style="border:1px red solid;">matrice</li>
+                             <li id="7" style="border:1px red solid;">html</li>
+                             <li id="6" style="border:1px red solid;">js</li>
+                             <li id="8" style="border:1px red solid;">php</li>
+                             <li id="9" style="border:1px red solid;">sql</li>
+                             <li id="10" style="border:1px red solid;">css</li>
+                             <li id="11" style="border:1px red solid;">txt</li>
+                         </ul>
+                         <li id="12" style="border:1px red solid;">projets</li>
+                         <li id="13" style="border:1px red solid;">fido</li>
+                         <li id="14" style="border:1px red solid;">sources</li>
+                         <li id="15" style="border:1px red solid;">bases</li>
+                         <li id="16" style="border:1px red solid;">requêtes</li>
+                         <li id="17" style="border:1px red solid;">revs</li>
+                         <li id="18" style="border:1px red solid;">groupes</li>
+                         <li id="19" style="border:1px red solid;">métiers</li>
+                         <li id="20" style="border:1px red solid;">utilisateurs</li>
+                         <li id="21" style="border:1px red solid;">accès</li>
+                         <li id="22" style="border:1px red solid;">pages</li>
+                         <li id="23" style="border:1px red solid;">menus</li>
+                         <li id="24" style="border:1px red solid;">profile</li></ul>                        
+                        </ul>
+                            
+-->                    
+                    <td>
+                        <ul id="tri_arbre_racine2" style="border:0px red solid;">
+                        
+                           <li>tâches</li>
+                           <li>outils
+                              <ul>
+                                  <li>matrice</li>
+                                  <li>html</li>
+                              </ul>
+                           </li>
+                           <li>projets</li>
                         </ul>
                     </td>
                 </tr>
@@ -122,98 +179,16 @@ body{margin:0;padding:0;}
                     </li>
                 </ul>
             </li>
+            <li>b 8</li>
+            <li>c c 90</li>
+            <li>d d 130</li>
+            <li>e e 170</li>
+            <li>f f 210</li>
+            <li>g g 250</li>
+            <li>h h 290</li>
         </ul>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <div style="min-height:800px;" />
+
         <footer id="fin"></footer>
 <script type="text/javascript">
 //<![CDATA[
@@ -222,9 +197,20 @@ function goto( n ){
     document.documentElement.scrollTo( 0 , 50 );
 }
 /* ======================================================= */
-function appelee_apres_action1( arbre , id_zone_de_tri ){
-    console.log( 'appelee_apres_action1' );
-    /* console.log(JSON.stringify(arbre)); */
+function appelee_apres_action1( reference_arbre , obj ){
+    switch (obj.type_deplacement){
+        case 'editer' : break;
+        case 'supprimer' : break;
+        case 'avant' : 
+        case 'dedans' : 
+        case 'apres' :
+            console.log( 'appelee_apres_action1' , obj );
+            /* console.log(JSON.stringify(arbre)); */
+            reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+            break;
+            
+        default: break;
+    }
 }
 /* ======================================================= */
 let options1={
@@ -232,21 +218,57 @@ let options1={
      /* entre 20 et 80 */
     "largeur_max" : '400px' ,
      /* 'calc(100% - 50px)', */
-    "afficher_le_bouton_supprimer" : false ,
+    "afficher_le_bouton_supprimer" : 0 ,
     "fonction_appelee_apres_action" : appelee_apres_action1 ,
-    "arborescent" : true ,
+    "arborescent" : 1 ,
     "class_du_bouton_deplacer" : 'le_bo_bouton_deplacer' ,
     "boutons_du_menu" : [{"libelle" : '+' ,"fonction" : ajouter_une_branche}] ,
     "class_du_bouton_menu" : 'le_bo_bouton_menu'
 };
 var nom_racine1='tri_arbre_racine1';
 var arbre1=new tri_arbre1( nom_racine1 , options1 );
-/* ======================================================= */
-/* ======================================================= */
-/* ======================================================= */
-/* ======================================================= */
-function appelee_apres_action2( arbre , id_zone_de_tri ){
-    /* console.log(JSON.stringify(arbre)); */
+/*
+  =====================================================================================================================
+  =====================================================================================================================
+  =====================================================================================================================
+  =====================================================================================================================
+*/
+function appelee_apres_action2( reference_arbre , obj ){
+    switch (obj.type_deplacement){
+        case 'editer' :
+            for( let i=0 ; i < obj.arbre.length ; i++ ){
+                if(obj.id_cible === obj.arbre[i].id_interne){
+                    let nouveau_nom=window.prompt( "nouveau nom ?" , obj.arbre[i].contenu );
+                    if(nouveau_nom){
+                        obj.arbre[i].contenu=nouveau_nom;
+                        reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+                    }
+                    break;
+                }
+            }
+            break;
+            
+        case 'supprimer' :
+            for( let i=0 ; i < obj.arbre.length ; i++ ){
+                if(obj.id_cible === obj.arbre[i].id_interne){
+                    obj.arbre.splice( i , 1 );
+                    break;
+                }
+            }
+            reference_arbre.action_externe_sur_arbre( 'supprimer_un_element' , obj.arbre );
+            break;
+            
+        case 'avant' : 
+        case 'dedans' : 
+        case 'apres' :
+            console.log( 'appelee_apres_action1' , obj );
+            /* console.log(JSON.stringify(arbre)); */
+            reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+            break;
+            
+        default: break;
+    }
+    /* console.log(JSON.stringify(obj)); */
 }
 /* ======================================================= */
 function ajouter_une_branche( e , reference_arbre ){
@@ -277,13 +299,17 @@ let options2={
      /* entre 20 et 80 */
     "largeur_max" : '400px' ,
      /* 'calc(100% - 50px)', */
-    "afficher_le_bouton_supprimer" : false ,
+    "afficher_le_bouton_supprimer" : 1 ,
     "fonction_appelee_apres_action" : appelee_apres_action2 ,
-    "arborescent" : true ,
+    "arborescent" : 1 ,
     "class_du_bouton_deplacer" : 'le_bo_bouton_deplacer' ,
     "decallage_entre_niveaux_en_px" : 20 ,
     "boutons_du_menu" : [{"libelle" : '+' ,"fonction" : ajouter_une_branche}] ,
-    "class_du_bouton_menu" : 'le_bo_bouton_menu'
+    "class_du_bouton_menu" : 'le_bo_bouton_menu',
+    "class_du_bouton_supprimer" : 'le_bo_bouton_supprimer',
+    "hauteur_separateur_en_px" : 15,
+    "afficher_le_bouton_editer" : 1 ,
+    "class_du_bouton_editer" : 'le_bo_bouton_editer'
 };
 var arbre2=new tri_arbre1( 'tri_arbre_racine2' , options2 );
 /* ======================================================= */
@@ -294,9 +320,9 @@ let options3={
      /* entre 20 et 80 */
     "largeur_max" : '400px' ,
      /* 'calc(100% - 50px)', */
-    "afficher_le_bouton_supprimer" : false ,
+    "afficher_le_bouton_supprimer" : 0 ,
     "fonction_appelee_apres_action" : appelee_apres_action2 ,
-    "arborescent" : false ,
+    "arborescent" : 0 ,
     "class_du_bouton_deplacer" : 'le_bo_bouton_deplacer' ,
     "decallage_entre_niveaux_en_px" : 20 ,
     "boutons_du_menu" : [{"libelle" : '+' ,"fonction" : ajouter_une_branche}] ,

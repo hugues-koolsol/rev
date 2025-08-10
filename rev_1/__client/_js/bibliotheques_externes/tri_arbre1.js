@@ -3,6 +3,7 @@ class tri_arbre1{
     #racine_html=null;
     arbre=[];
     #id_div='';
+    #id_original='';
     #style_des_separateurs='font-size:0.7em;';
     #element_bouge=null;
     #position_scroll_dans_la_zone_de_tri=0;
@@ -28,9 +29,9 @@ class tri_arbre1{
         "hauteur_max_en_vh" : 80 ,
         "largeur_max" : 'calc(100% - 50px)' ,
         "largeur_min" : '150px' ,
-        "afficher_le_bouton_supprimer" : false ,
+        "afficher_le_bouton_supprimer" : 0 ,
         "fonction_appelee_apres_action" : null ,
-        "arborescent" : true ,
+        "arborescent" : 0 ,
         "class_du_bouton_deplacer" : '' ,
          /* entre 5 et 30 */
         "decallage_entre_niveaux_en_px" : 30 ,
@@ -42,7 +43,10 @@ class tri_arbre1{
         "border_separateur" : '0px red solid' ,
         "border_bloc" : '1px blue solid' ,
         "box_shadow" : 'inset 0px 0px 16px #f00' ,
-        "background_color" : 'grey'
+        "background_color" : 'grey' ,
+        "class_du_bouton_supprimer" : '' ,
+        "afficher_le_bouton_editer" : '' ,
+        "class_du_bouton_editer" : '' ,
     };
     /*
       =============================================================================================================
@@ -70,11 +74,18 @@ class tri_arbre1{
         /*
           
         */
+        this.#id_original=par_id_de_l_element;
         this.arbre=[];
-        let id_interne_parent=0;
-        this.construire_arbre_a_partir_de_ul_li( this.#racine_html , id_interne_parent );
+        
+        this.construire_arbre_a_partir_de_ul_li( this.#racine_html , 0 );
         /* console.log( JSON.stringify( this.arbre ).replace( /\},\{/g , '},\n{' ) ); */
+        /*
+          on cache l'arbre original
+        */
         this.#racine_html.style.display='none';
+        /*
+          et on construit un nouvel élément racine ( nextElementSibling )
+        */
         this.cle_aleatoire=this.makeid( 20 );
         this.#id_div=par_id_de_l_element + '_' + this.cle_aleatoire;
         let t='';
@@ -91,9 +102,12 @@ class tri_arbre1{
         t+='  overscroll-behavior-y: none;';
         t+='"';
         t+='></div>';
+        /*
+          et on insert ce nouvel élément
+        */
         this.#racine_html.insertAdjacentHTML( 'afterend' , t );
         this.reference_zone_triable=document.getElementById( this.#id_div );
-        this.#dessine_l_arbre();
+        this.#dessine_l_arbre(true);
     }
     /*
       =============================================================================================================
@@ -106,6 +120,13 @@ class tri_arbre1{
                 this.#dessine_l_arbre();
                 break;
                 
+            case 'mise_a_jour_arbre' : this.arbre=arbre;
+                this.#dessine_l_arbre();
+                break;
+                
+            case 'supprimer_un_element' : this.arbre=arbre;
+                this.#dessine_l_arbre();
+                break;
         }
     }
     /*
@@ -136,6 +157,7 @@ class tri_arbre1{
       =============================================================================================================
     */
     #souris_haut( e ){
+        document.body.style.overflowY='scroll';
         this.#souris_appuyee=false;
         window.removeEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
         window.removeEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
@@ -159,9 +181,10 @@ class tri_arbre1{
                     let deplacement=this.#id_cible_selectionne.split( '_' );
                     let id_cible=parseInt( deplacement[1] , 10 );
                     let type_deplacement=deplacement[0];
-                    if(this.#options.arborescent === false && type_deplacement === 'dedans'){
+                    if(this.#options.arborescent === 0 && type_deplacement === 'dedans'){
                         type_deplacement='avant';
                     }
+                    let arbre_avant=JSON.parse( JSON.stringify( this.arbre ) );
                     /*
                       vérifie qu'on ne met pas une branche dans une sous branche
                     */
@@ -190,9 +213,19 @@ class tri_arbre1{
                                 break;
                             }
                         }
-                        this.#dessine_l_arbre();
                         if(this.#options.fonction_appelee_apres_action !== null){
-                            this.#options.fonction_appelee_apres_action( this.arbre , this.#id_div );
+                            this.#options.fonction_appelee_apres_action( this , {
+                                     /*  */
+                                    "arbre" : this.arbre ,
+                                    "id_div" : this.#id_div ,
+                                    "arbre_avant" : arbre_avant ,
+                                    "id_cible" : id_cible ,
+                                    "id_source" : id_interne_du_bloc_a_deplacer ,
+                                    "type_deplacement" : type_deplacement ,
+                                    "id_original" : this.#id_original
+                                } );
+                        }else{
+                            this.#dessine_l_arbre();
                         }
                     }
                 }
@@ -323,6 +356,7 @@ class tri_arbre1{
             window.addEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
             window.addEventListener( 'touchend' , this.#doigt_haut.bind( this ) , false );
             window.addEventListener( 'touchmove' , this.#doigt_bouge.bind( this ) , false );
+            document.body.style.overflowY='hidden';
             /*
               on déplace un bloc
             */
@@ -364,6 +398,49 @@ class tri_arbre1{
                 }
             }
             this.calcul_des_positions_relatives();
+        }else if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-supprime" )){
+         
+            let id_cible=parseInt(tar.getAttribute( "data-supprime" ),10);
+            if(this.#options.fonction_appelee_apres_action !== null){
+                this.#options.fonction_appelee_apres_action( this , {
+                         /*  */
+                        "arbre" : this.arbre ,
+                        "id_div" : this.#id_div ,
+                        "arbre_avant" : JSON.parse( JSON.stringify( this.arbre ) ) ,
+                        "id_cible" : id_cible ,
+                        "id_source" : null ,
+                        "type_deplacement" : 'supprimer' ,
+                        "id_original" : this.#id_original
+                    } );
+            }else{
+             
+             
+                for( let i=0 ; i < this.arbre.length ; i++ ){
+                    if(id_cible === this.arbre[i].id_interne){
+                        this.arbre.splice( i  , 1  );
+                        break;
+                    }
+                }
+             
+                this.#dessine_l_arbre();
+            }
+        }else if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-editer" )){
+            let id_cible=parseInt(tar.getAttribute("data-editer" ),10);
+            if(this.#options.fonction_appelee_apres_action !== null){
+                this.#options.fonction_appelee_apres_action( this , {
+                         /*  */
+                        "arbre" : this.arbre ,
+                        "id_div" : this.#id_div ,
+                        "arbre_avant" : JSON.parse( JSON.stringify( this.arbre ) ) ,
+                        "id_cible" : id_cible ,
+                        "id_source" : null ,
+                        "type_deplacement" : 'editer' ,
+                        "id_original" : this.#id_original
+                    } );
+            }else{
+                console.error('Le bouton editer nécessite une fonction')
+            }
+
         }else{
             this.calcul_des_positions_relatives();
         }
@@ -372,7 +449,6 @@ class tri_arbre1{
       =============================================================================================================
     */
     #doigt_bas( e ){
-        document.body.style.overflowY='hidden';
         let lst1=document.querySelectorAll( 'dialog' );
         for( let i=0 ; i < lst1.length ; i++ ){
             lst1[i].style.overflowY='hidden';
@@ -393,7 +469,6 @@ class tri_arbre1{
     */
     #doigt_haut( e ){
         /* console.log(e.changedTouches[0]) */
-        document.body.style.overflowY='scroll';
         let lst1=document.querySelectorAll( 'dialog' );
         for( let i=0 ; i < lst1.length ; i++ ){
             lst1[i].style.overflowY='scroll';
@@ -434,15 +509,53 @@ class tri_arbre1{
     /*
       =============================================================================================================
     */
-    #dessine_l_arbre(){
+    #reconstruit_ul_li(id_parent){
+     let t='';
+     for(let i=0;i<this.arbre.length;i++){
+      
+         if(this.arbre[i].id_interne_parent===id_parent){
+          
+             let attributs='';
+             for(let j in this.arbre[i].attributs){
+              attributs+=j+'="'+this.arbre[i].attributs[j]+'"'
+             }
+             
+             t+='<li'+(attributs!==''?' '+attributs:'')+'>'+this.arbre[i].contenu;
+             if(this.arbre[i].contient_des_enfants>0){
+                 t+='<ul>';
+                 t+=this.#reconstruit_ul_li(this.arbre[i].id_interne);
+                 t+='</ul>';
+             }
+             t+='</li>'
+         }
+      
+     }
+     if(id_parent===0){
+      
+         document.getElementById(this.#id_original).innerHTML=t;
+      
+      
+     }else{
+      return t;
+     }
+    }
+    /*
+      =============================================================================================================
+    */
+    #dessine_l_arbre(init=false){
         let le_html='';
         this.#calcul_des_enfants( 0 );
         let le_html_resultat=this.construit_html_de_arbre( 0 );
+        if(init===false){
+            this.#reconstruit_ul_li(0);
+
+        }
     }
     /*
       =============================================================================================================
     */
     construit_html_de_arbre( id_interne_parent , niveau=0 ){
+
         let le_html='';
         let le_sous_html='';
         let premier=true;
@@ -450,7 +563,7 @@ class tri_arbre1{
         for( let i=0 ; i < this.arbre.length ; i++ ){
             if(this.arbre[i].id_interne_parent === id_interne_parent){
                 if(premier === true){
-                    if(this.#options.arborescent === false && i !== 0){
+                    if(this.#options.arborescent === 0 && i !== 0){
                     }else{
                         le_html+='<div id="avant_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
                         le_html+=' data-position_pour_tri="avant" ';
@@ -490,14 +603,18 @@ class tri_arbre1{
                 t+='  </div>';
                 le_html+=t;
                 le_html+='';
-                if(this.#options.afficher_le_bouton_supprimer === true){
+                
+                if(this.#options.afficher_le_bouton_editer === 1){
+                    le_html+='<div data-editer="' + this.arbre[i].id_interne + '" style="float:right;" class="' + this.#options.class_du_bouton_editer + '">✎</div>';
+                }
+                if(this.#options.afficher_le_bouton_supprimer === 1){
                     if(this.arbre[i].contient_des_enfants > 0){
-                        le_html+='<div data-supprime="' + this.arbre[i].id_interne + '" style="float:right;border:1px white solid;min-width:1em;text-align:center;"></div>';
+                        le_html+='<div data-supprime="' + this.arbre[i].id_interne + '" style="float:right;visibility:hidden;" class="' + this.#options.class_du_bouton_supprimer + '"></div>';
                     }else{
-                        le_html+='<div data-supprime="' + this.arbre[i].id_interne + '" style="float:right;border:1px hotpink solid;min-width:1em;text-align:center;">X</div>';
+                        le_html+='<div data-supprime="' + this.arbre[i].id_interne + '" style="float:right;" class="' + this.#options.class_du_bouton_supprimer + '">X</div>';
                     }
                 }
-                if(this.#options.arborescent === false){
+                if(this.#options.arborescent === 0){
                     /*
                       pas de boutons +/- pour une liste simple
                     */
@@ -554,17 +671,36 @@ class tri_arbre1{
                 le_menu+='</div>';
             }
             le_html=le_menu + le_html;
+            /*
+              =============================================================================================
+              màj du HTML
+              =============================================================================================
+            */
             document.getElementById( this.#id_div ).innerHTML=le_html;
+            /*
+              =============================================================================================
+              ajout des évènements sur les boutons
+              1°] les poignées de tri
+              =============================================================================================
+            */
             this.calcul_des_positions_relatives();
             let lst1=document.getElementById( this.#id_div ).querySelectorAll( '[data-poignee_pour_tri]' );
             for( let i=0 ; i < lst1.length ; i++ ){
                 lst1[i].addEventListener( 'mousedown' , this.#souris_bas.bind( this ) , false );
                 lst1[i].addEventListener( 'touchstart' , this.#doigt_bas.bind( this ) , false );
             }
-            let lst2=document.getElementById( this.#id_div ).querySelectorAll( '[data-replie]' );
-            for( let i=0 ; i < lst2.length ; i++ ){
-                lst2[i].addEventListener( 'mousedown' , this.#souris_bas.bind( this ) , false );
+            /*
+              2°] les boutons pour plier et déplier
+            */
+            if(this.#options.arborescent === 1){
+                let lst2=document.getElementById( this.#id_div ).querySelectorAll( '[data-replie]' );
+                for( let i=0 ; i < lst2.length ; i++ ){
+                    lst2[i].addEventListener( 'mousedown' , this.#souris_bas.bind( this ) , false );
+                }
             }
+            /*
+              3°] les menus
+            */
             if(this.#options.boutons_du_menu.length > 0){
                 for( let i=0 ; i < this.#options.boutons_du_menu.length ; i++ ){
                     let id='menu_' + this.cle_aleatoire + '_' + i;
@@ -577,6 +713,26 @@ class tri_arbre1{
                     }
                 }
             }
+            /*
+              3°] les boutons supprimer
+            */
+            if(this.#options.afficher_le_bouton_supprimer === 1){
+                let lst2=document.getElementById( this.#id_div ).querySelectorAll( '[data-supprime]' );
+                for( let i=0 ; i < lst2.length ; i++ ){
+                    lst2[i].addEventListener( 'mousedown' , this.#souris_bas.bind( this ) , false );
+                }
+            }
+            /*
+              4°] les boutons editer
+            */
+            if(this.#options.afficher_le_bouton_editer === 1){
+                let lst2=document.getElementById( this.#id_div ).querySelectorAll( '[data-editer]' );
+                for( let i=0 ; i < lst2.length ; i++ ){
+                    lst2[i].addEventListener( 'mousedown' , this.#souris_bas.bind( this ) , false );
+                }
+            }
+            
+            
         }else{
             return le_html;
         }
@@ -634,7 +790,7 @@ class tri_arbre1{
                             les_attributs[elem.attributes[a].name]=elem.attributes[a].value;
                         }
                     }
-                    if(this.#options.arborescent === false){
+                    if(this.#options.arborescent === 0){
                         id_interne_parent=0;
                     }
                     this.arbre.push( {
@@ -695,10 +851,24 @@ class tri_arbre1{
             this.#options.largeur_min=options.largeur_min;
         }
         if(options.hasOwnProperty( 'afficher_le_bouton_supprimer' )){
-            if(options.afficher_le_bouton_supprimer === true){
+            if(options.afficher_le_bouton_supprimer === 1){
                 this.#options.afficher_le_bouton_supprimer=options.afficher_le_bouton_supprimer;
             }
         }
+        if(options.hasOwnProperty( 'afficher_le_bouton_editer' )){
+            if(options.fonction_appelee_apres_action===null){
+                /*
+                  =============================================================================================
+                */
+                console.error('Le bouton editer nécessite une fonction ')
+            
+            }else{
+                if(options.afficher_le_bouton_editer === 1){
+                    this.#options.afficher_le_bouton_editer=options.afficher_le_bouton_editer;
+                }
+            }
+        }
+        
         if(options.hasOwnProperty( 'boutons_du_menu' )){
             if(Array.isArray( options.boutons_du_menu ) === true){
                 this.#options.boutons_du_menu=options.boutons_du_menu;
@@ -715,7 +885,7 @@ class tri_arbre1{
             }
         }
         if(options.hasOwnProperty( 'arborescent' )){
-            if(options.arborescent === false){
+            if(options.arborescent === 1){
                 this.#options.arborescent=options.arborescent;
             }
         }
@@ -745,5 +915,13 @@ class tri_arbre1{
         if(options.hasOwnProperty( 'background_color' )){
             this.#options.background_color=options.background_color;
         }
+        if(options.hasOwnProperty( 'class_du_bouton_supprimer' )){
+            this.#options.class_du_bouton_supprimer=options.class_du_bouton_supprimer;
+        }
+        if(options.hasOwnProperty( 'class_du_bouton_editer' )){
+            this.#options.class_du_bouton_editer=options.class_du_bouton_editer;
+        }
+
+        
     }
 }

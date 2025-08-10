@@ -2120,13 +2120,13 @@ class c_svg_bdd1{
                 tables[a2].presente_dans_tableau_2=true;
             }else{
                 tables[a2]={"presente_dans_tableau_1" : false ,"presente_dans_tableau_2" : true};
-                __gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : ' la table ' + a2 + ' est absente du tableau1 '} );
+                __gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : ' la table ' + a2 + ' est absente de la base physique[tableau1] '} );
                 differences_entre_les_tables=true;
             }
         }
         for(var a0 in tables){
             if(tables[a0].presente_dans_tableau_2 === false){
-                __gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : ' la table ' + a0 + ' est absente du tableau2'} );
+                __gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : ' la table ' + a0 + ' est absente du schema svg[tableau2]'} );
                 differences_entre_les_tables=true;
             }
         }
@@ -3531,7 +3531,7 @@ class c_svg_bdd1{
                         break;
                         
                     default:
-                        a.value='chx_yyy_' + nom_de_la_table;
+                        a.value=typologie+'_yyy_' + nom_de_la_table;
                         a.focus();
                         a.selectionStart=4;
                         a.selectionEnd=7;
@@ -4338,7 +4338,6 @@ class c_svg_bdd1{
         let elem=document.getElementById( id_svg_rectangle_de_champ );
         tt+='champ(';
         tt+='    nom_du_champ(\'' + elem.getAttribute( 'nom_du_champ' ) + '\'),';
-        tt+='    type(\'' + elem.getAttribute( 'type' ) + '\'),';
         tt+='    espece_du_champ(' + elem.getAttribute( 'espece_du_champ' ).toUpperCase() + '),';
         if(elem.getAttribute( 'longueur_du_champ' )!==''){
             tt+='    longueur_du_champ(' + elem.getAttribute( 'longueur_du_champ' ) + '),';

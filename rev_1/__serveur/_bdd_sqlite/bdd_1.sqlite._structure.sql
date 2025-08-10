@@ -5,17 +5,17 @@ CREATE TABLE tbl_utilisateurs(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_utilisateur'),champ('chi_id_utilisateur'),nom_long_du_champ('à faire chi_id_utilisateur'),nom_court_du_champ('à faire chi_id_utilisateur'),nom_bref_du_champ('à faire chi_id_utilisateur'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_utilisateur'),nom_long_du_champ('à faire chi_id_utilisateur'),nom_court_du_champ('à faire chi_id_utilisateur'),nom_bref_du_champ('à faire chi_id_utilisateur'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_utilisateur INTEGER PRIMARY KEY  NOT NULL
+             chi_id_utilisateur INTEGER PRIMARY KEY NOT NULL
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_nom_de_connexion_utilisateur'),champ('chp_nom_de_connexion_utilisateur'),nom_long_du_champ('à faire chp_nom_de_connexion_utilisateur'),nom_court_du_champ('à faire chp_nom_de_connexion_utilisateur'),nom_bref_du_champ('à faire chp_nom_de_connexion_utilisateur'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_nom_de_connexion_utilisateur'),nom_long_du_champ('à faire chp_nom_de_connexion_utilisateur'),nom_court_du_champ('à faire chp_nom_de_connexion_utilisateur'),nom_bref_du_champ('à faire chp_nom_de_connexion_utilisateur'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
              chp_nom_de_connexion_utilisateur VARCHAR(64) NOT NULL
@@ -23,8 +23,8 @@ CREATE TABLE tbl_utilisateurs(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_mot_de_passe_utilisateur'),champ('chp_mot_de_passe_utilisateur'),nom_long_du_champ('à faire chp_mot_de_passe_utilisateur'),nom_court_du_champ('à faire chp_mot_de_passe_utilisateur'),nom_bref_du_champ('à faire chp_mot_de_passe_utilisateur'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_mot_de_passe_utilisateur'),nom_long_du_champ('à faire chp_mot_de_passe_utilisateur'),nom_court_du_champ('à faire chp_mot_de_passe_utilisateur'),nom_bref_du_champ('à faire chp_mot_de_passe_utilisateur'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(256)
             )
             */
              chp_mot_de_passe_utilisateur VARCHAR(256)
@@ -32,8 +32,8 @@ CREATE TABLE tbl_utilisateurs(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_parametres_utilisateur'),champ('chp_parametres_utilisateur'),nom_long_du_champ('à faire chp_parametres_utilisateur'),nom_court_du_champ('à faire chp_parametres_utilisateur'),nom_bref_du_champ('à faire chp_parametres_utilisateur'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_parametres_utilisateur'),nom_long_du_champ('à faire chp_parametres_utilisateur'),nom_court_du_champ('à faire chp_parametres_utilisateur'),nom_bref_du_champ('à faire chp_parametres_utilisateur'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
              chp_parametres_utilisateur TEXT
@@ -41,35 +41,35 @@ CREATE TABLE tbl_utilisateurs(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_compteur1_utilisateur'),champ('chi_compteur1_utilisateur'),nom_long_du_champ('à faire chi_compteur1_utilisateur'),nom_court_du_champ('à faire chi_compteur1_utilisateur'),nom_bref_du_champ('à faire chi_compteur1_utilisateur'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_compteur1_utilisateur'),nom_long_du_champ('à faire chi_compteur1_utilisateur'),nom_court_du_champ('à faire chi_compteur1_utilisateur'),nom_bref_du_champ('à faire chi_compteur1_utilisateur'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_compteur1_utilisateur integer NOT NULL DEFAULT  0
+             chi_compteur1_utilisateur INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_compteur_socket1_utilisateur'),champ('chi_compteur_socket1_utilisateur'),nom_long_du_champ('à faire chi_compteur_socket1_utilisateur'),nom_court_du_champ('à faire chi_compteur_socket1_utilisateur'),nom_bref_du_champ('à faire chi_compteur_socket1_utilisateur'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_compteur_socket1_utilisateur'),nom_long_du_champ('à faire chi_compteur_socket1_utilisateur'),nom_court_du_champ('à faire chi_compteur_socket1_utilisateur'),nom_bref_du_champ('à faire chi_compteur_socket1_utilisateur'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_compteur_socket1_utilisateur integer NOT NULL DEFAULT  0
+             chi_compteur_socket1_utilisateur INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che__nur_utilisateur'),champ('che__nur_utilisateur'),nom_long_du_champ('à faire chi__nut_utilisateur'),nom_court_du_champ('à faire chi__nut_utilisateur'),nom_bref_du_champ('à faire chi__nut_utilisateur'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_numero_de_revision(1)
+            genre_meta(champ),nom_du_champ('che__nur_utilisateur'),nom_long_du_champ('à faire chi__nut_utilisateur'),nom_court_du_champ('à faire chi__nut_utilisateur'),nom_bref_du_champ('à faire chi__nut_utilisateur'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(INTEGER),champ_numero_de_revision(1)
             )
             */
-             che__nur_utilisateur integer NOT NULL DEFAULT  0
+             che__nur_utilisateur INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtm_utilisateur'),champ('chp__dtm_utilisateur'),nom_long_du_champ('à faire chp__dtm_utilisateur'),nom_court_du_champ('à faire chp__dtm_utilisateur'),nom_bref_du_champ('à faire chp__dtm_utilisateur'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_date_modification(1)
+            genre_meta(champ),nom_du_champ('chp__dtm_utilisateur'),nom_long_du_champ('à faire chp__dtm_utilisateur'),nom_court_du_champ('à faire chp__dtm_utilisateur'),nom_bref_du_champ('à faire chp__dtm_utilisateur'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
             )
             */
              chp__dtm_utilisateur VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -77,8 +77,8 @@ CREATE TABLE tbl_utilisateurs(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtc_utilisateur'),champ('chp__dtc_utilisateur'),nom_long_du_champ('à faire chp__dtc_utilisateur'),nom_court_du_champ('à faire chp__dtc_utilisateur'),nom_bref_du_champ('à faire chp__dtc_utilisateur'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_date_creation(1)
+            genre_meta(champ),nom_du_champ('chp__dtc_utilisateur'),nom_long_du_champ('à faire chp__dtc_utilisateur'),nom_court_du_champ('à faire chp__dtc_utilisateur'),nom_bref_du_champ('à faire chp__dtc_utilisateur'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
             )
             */
              chp__dtc_utilisateur VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -86,8 +86,8 @@ CREATE TABLE tbl_utilisateurs(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_acces_utilisateur'),champ('chx_acces_utilisateur'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_acces_utilisateur'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
              chx_acces_utilisateur INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces)  DEFAULT  2
@@ -100,44 +100,44 @@ CREATE TABLE tbl_projets(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_projet'),champ('chi_id_projet'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_projet'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_projet integer PRIMARY KEY 
+             chi_id_projet INTEGER PRIMARY KEY
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_nom_projet'),champ('chp_nom_projet'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_nom_projet'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             chp_nom_projet text NOT NULL
+             chp_nom_projet TEXT NOT NULL
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_commentaire_projet'),champ('cht_commentaire_projet'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_commentaire_projet'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             cht_commentaire_projet text
+             cht_commentaire_projet TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che__nur_projet'),champ('che__nur_projet'),nom_long_du_champ('à faire chi__nut_projet'),nom_court_du_champ('à faire chi__nut_projet'),nom_bref_du_champ('à faire chi__nut_projet'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_numero_de_revision(1)
+            genre_meta(champ),nom_du_champ('che__nur_projet'),nom_long_du_champ('à faire chi__nut_projet'),nom_court_du_champ('à faire chi__nut_projet'),nom_bref_du_champ('à faire chi__nut_projet'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(INTEGER),champ_numero_de_revision(1)
             )
             */
-             che__nur_projet integer NOT NULL DEFAULT  0
+             che__nur_projet INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtm_projet'),champ('chp__dtm_projet'),nom_long_du_champ('à faire chp__dtm_projet'),nom_court_du_champ('à faire chp__dtm_projet'),nom_bref_du_champ('à faire chp__dtm_projet'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_date_modification(1)
+            genre_meta(champ),nom_du_champ('chp__dtm_projet'),nom_long_du_champ('à faire chp__dtm_projet'),nom_court_du_champ('à faire chp__dtm_projet'),nom_bref_du_champ('à faire chp__dtm_projet'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
             )
             */
              chp__dtm_projet VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -145,8 +145,8 @@ CREATE TABLE tbl_projets(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtc_projet'),champ('chp__dtc_projet'),nom_long_du_champ('à faire chp__dtc_projet'),nom_court_du_champ('à faire chp__dtc_projet'),nom_bref_du_champ('à faire chp__dtc_projet'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_date_creation(1)
+            genre_meta(champ),nom_du_champ('chp__dtc_projet'),nom_long_du_champ('à faire chp__dtc_projet'),nom_court_du_champ('à faire chp__dtc_projet'),nom_bref_du_champ('à faire chp__dtc_projet'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
             )
             */
              chp__dtc_projet VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -154,17 +154,17 @@ CREATE TABLE tbl_projets(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_dossier_requetes_projet'),champ('chx_dossier_requetes_projet'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chx),afficher_champ_dans_svg(1),refe_parent_gauche(1)
+            genre_meta(champ),nom_du_champ('chx_dossier_requetes_projet'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER),refe_parent_gauche(1)
             )
             */
-             chx_dossier_requetes_projet INTEGER REFERENCES tbl_dossiers(chi_id_dossier)  DEFAULT  NULL 
+             chx_dossier_requetes_projet INTEGER REFERENCES tbl_dossiers(chi_id_dossier)  DEFAULT  NULL
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_dossier_menus_projet'),champ('chx_dossier_menus_projet'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1),refe_parent_gauche(1)
+            genre_meta(champ),nom_du_champ('chx_dossier_menus_projet'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER),refe_parent_gauche(1)
             )
             */
              chx_dossier_menus_projet INTEGER REFERENCES tbl_dossiers(chi_id_dossier) 
@@ -177,26 +177,26 @@ CREATE TABLE tbl_requetes(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_requete'),champ('chi_id_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_requete integer PRIMARY KEY  NOT NULL
+             chi_id_requete INTEGER PRIMARY KEY NOT NULL
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_projet_requete'),champ('chx_projet_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chx),afficher_champ_dans_svg(1),refe_enfant_droite(1),refe_parent_gauche(1)
+            genre_meta(champ),nom_du_champ('chx_projet_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER),refe_enfant_droite(1),refe_parent_gauche(1)
             )
             */
-             chx_projet_requete integer NOT NULL REFERENCES tbl_projets(chi_id_projet) 
+             chx_projet_requete INTEGER NOT NULL REFERENCES tbl_projets(chi_id_projet) 
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_type_requete'),champ('chp_type_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_type_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
              chp_type_requete VARCHAR(64) NOT NULL DEFAULT  'select'
@@ -204,62 +204,62 @@ CREATE TABLE tbl_requetes(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_rev_requete'),champ('cht_rev_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_rev_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             cht_rev_requete text
+             cht_rev_requete TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_sql_requete'),champ('cht_sql_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_sql_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             cht_sql_requete text
+             cht_sql_requete TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_php_requete'),champ('cht_php_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_php_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             cht_php_requete text
+             cht_php_requete TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_commentaire_requete'),champ('cht_commentaire_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(cht),afficher_champ_dans_svg(0)
+            genre_meta(champ),nom_du_champ('cht_commentaire_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(cht),afficher_champ_dans_svg(0),espece_du_champ(TEXT)
             )
             */
-             cht_commentaire_requete text
+             cht_commentaire_requete TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_matrice_requete'),champ('cht_matrice_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_matrice_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             cht_matrice_requete text
+             cht_matrice_requete TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che__nur_requete'),champ('che__nur_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_numero_de_revision(1)
+            genre_meta(champ),nom_du_champ('che__nur_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(INTEGER),champ_numero_de_revision(1)
             )
             */
-             che__nur_requete integer NOT NULL DEFAULT  0
+             che__nur_requete INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtm_requete'),champ('chp__dtm_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chd),afficher_champ_dans_svg(0),champ_date_modification(1)
+            genre_meta(champ),nom_du_champ('chp__dtm_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chd),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
             )
             */
              chp__dtm_requete VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -267,8 +267,8 @@ CREATE TABLE tbl_requetes(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtc_requete'),champ('chp__dtc_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chd),afficher_champ_dans_svg(0),champ_date_creation(1)
+            genre_meta(champ),nom_du_champ('chp__dtc_requete'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chd),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
             )
             */
              chp__dtc_requete VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -281,26 +281,26 @@ CREATE TABLE tbl_revs(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_rev'),champ('chi_id_rev'),nom_long_du_champ('à faire chi_id_rev'),nom_court_du_champ('à faire chi_id_rev'),nom_bref_du_champ('à faire chi_id_rev'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_rev'),nom_long_du_champ('à faire chi_id_rev'),nom_court_du_champ('à faire chi_id_rev'),nom_bref_du_champ('à faire chi_id_rev'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_rev integer PRIMARY KEY 
+             chi_id_rev INTEGER PRIMARY KEY
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_projet_rev'),champ('chx_projet_rev'),nom_long_du_champ('à faire chx_cible_rev'),nom_court_du_champ('à faire chx_cible_rev'),nom_bref_du_champ('à faire chx_cible_rev'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_projet_rev'),nom_long_du_champ('à faire chx_cible_rev'),nom_court_du_champ('à faire chx_cible_rev'),nom_bref_du_champ('à faire chx_cible_rev'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chx_projet_rev integer NOT NULL REFERENCES tbl_projets(chi_id_projet) 
+             chx_projet_rev INTEGER NOT NULL REFERENCES tbl_projets(chi_id_projet) 
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_provenance_rev'),champ('chp_provenance_rev'),nom_long_du_champ('à faire chp_provenance_rev'),nom_court_du_champ('à faire chp_provenance_rev'),nom_bref_du_champ('à faire chp_provenance_rev'),
-            typologie(cho),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_provenance_rev'),nom_long_du_champ('à faire chp_provenance_rev'),nom_court_du_champ('à faire chp_provenance_rev'),nom_bref_du_champ('à faire chp_provenance_rev'),
+            typologie(cho),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
              chp_provenance_rev VARCHAR(64)
@@ -308,35 +308,35 @@ CREATE TABLE tbl_revs(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_source_rev'),champ('chx_source_rev'),nom_long_du_champ('à faire chx_source_rev'),nom_court_du_champ('à faire chx_source_rev'),nom_bref_du_champ('à faire chx_source_rev'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_source_rev'),nom_long_du_champ('à faire chx_source_rev'),nom_court_du_champ('à faire chx_source_rev'),nom_bref_du_champ('à faire chx_source_rev'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chx_source_rev integer
+             chx_source_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_id_rev'),champ('chp_id_rev'),nom_long_du_champ('à faire chp_id_rev'),nom_court_du_champ('à faire chp_id_rev'),nom_bref_du_champ('à faire chp_id_rev'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_id_rev'),nom_long_du_champ('à faire chp_id_rev'),nom_court_du_champ('à faire chp_id_rev'),nom_bref_du_champ('à faire chp_id_rev'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_id_rev integer
+             chp_id_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_valeur_rev'),champ('chp_valeur_rev'),nom_long_du_champ('à faire chp_valeur_rev'),nom_court_du_champ('à faire chp_valeur_rev'),nom_bref_du_champ('à faire chp_valeur_rev'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_valeur_rev'),nom_long_du_champ('à faire chp_valeur_rev'),nom_court_du_champ('à faire chp_valeur_rev'),nom_bref_du_champ('à faire chp_valeur_rev'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             chp_valeur_rev text
+             chp_valeur_rev TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_type_rev'),champ('chp_type_rev'),nom_long_du_champ('à faire chp_type_rev'),nom_court_du_champ('à faire chp_type_rev'),nom_bref_du_champ('à faire chp_type_rev'),
-            typologie(cho),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_type_rev'),nom_long_du_champ('à faire chp_type_rev'),nom_court_du_champ('à faire chp_type_rev'),nom_bref_du_champ('à faire chp_type_rev'),
+            typologie(cho),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(3)
             )
             */
              chp_type_rev VARCHAR(3) NOT NULL
@@ -344,101 +344,101 @@ CREATE TABLE tbl_revs(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_niveau_rev'),champ('chp_niveau_rev'),nom_long_du_champ('à faire chp_niveau_rev'),nom_court_du_champ('à faire chp_niveau_rev'),nom_bref_du_champ('à faire chp_niveau_rev'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_niveau_rev'),nom_long_du_champ('à faire chp_niveau_rev'),nom_court_du_champ('à faire chp_niveau_rev'),nom_bref_du_champ('à faire chp_niveau_rev'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_niveau_rev integer
+             chp_niveau_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_quotee_rev'),champ('chp_quotee_rev'),nom_long_du_champ('à faire chp_quotee_rev'),nom_court_du_champ('à faire chp_quotee_rev'),nom_bref_du_champ('à faire chp_quotee_rev'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_quotee_rev'),nom_long_du_champ('à faire chp_quotee_rev'),nom_court_du_champ('à faire chp_quotee_rev'),nom_bref_du_champ('à faire chp_quotee_rev'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_quotee_rev integer
+             chp_quotee_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_pos_premier_rev'),champ('chp_pos_premier_rev'),nom_long_du_champ('à faire chp_pos_premier_rev'),nom_court_du_champ('à faire chp_pos_premier_rev'),nom_bref_du_champ('à faire chp_pos_premier_rev'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_pos_premier_rev'),nom_long_du_champ('à faire chp_pos_premier_rev'),nom_court_du_champ('à faire chp_pos_premier_rev'),nom_bref_du_champ('à faire chp_pos_premier_rev'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_pos_premier_rev integer
+             chp_pos_premier_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_pos_dernier_rev'),champ('chp_pos_dernier_rev'),nom_long_du_champ('à faire chp_pos_dernier_rev'),nom_court_du_champ('à faire chp_pos_dernier_rev'),nom_bref_du_champ('à faire chp_pos_dernier_rev'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_pos_dernier_rev'),nom_long_du_champ('à faire chp_pos_dernier_rev'),nom_court_du_champ('à faire chp_pos_dernier_rev'),nom_bref_du_champ('à faire chp_pos_dernier_rev'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_pos_dernier_rev integer
+             chp_pos_dernier_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_parent_rev'),champ('chp_parent_rev'),nom_long_du_champ('à faire chp_parent_rev'),nom_court_du_champ('à faire chp_parent_rev'),nom_bref_du_champ('à faire chp_parent_rev'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_parent_rev'),nom_long_du_champ('à faire chp_parent_rev'),nom_court_du_champ('à faire chp_parent_rev'),nom_bref_du_champ('à faire chp_parent_rev'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_parent_rev integer
+             chp_parent_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_nbr_enfants_rev'),champ('chp_nbr_enfants_rev'),nom_long_du_champ('à faire chp_nbr_enfants_rev'),nom_court_du_champ('à faire chp_nbr_enfants_rev'),nom_bref_du_champ('à faire chp_nbr_enfants_rev'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_nbr_enfants_rev'),nom_long_du_champ('à faire chp_nbr_enfants_rev'),nom_court_du_champ('à faire chp_nbr_enfants_rev'),nom_bref_du_champ('à faire chp_nbr_enfants_rev'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_nbr_enfants_rev integer
+             chp_nbr_enfants_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_num_enfant_rev'),champ('chp_num_enfant_rev'),nom_long_du_champ('à faire chp_num_enfant_rev'),nom_court_du_champ('à faire chp_num_enfant_rev'),nom_bref_du_champ('à faire chp_num_enfant_rev'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_num_enfant_rev'),nom_long_du_champ('à faire chp_num_enfant_rev'),nom_court_du_champ('à faire chp_num_enfant_rev'),nom_bref_du_champ('à faire chp_num_enfant_rev'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_num_enfant_rev integer
+             chp_num_enfant_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_profondeur_rev'),champ('chp_profondeur_rev'),nom_long_du_champ('à faire chp_profondeur_rev'),nom_court_du_champ('à faire chp_profondeur_rev'),nom_bref_du_champ('à faire chp_profondeur_rev'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_profondeur_rev'),nom_long_du_champ('à faire chp_profondeur_rev'),nom_court_du_champ('à faire chp_profondeur_rev'),nom_bref_du_champ('à faire chp_profondeur_rev'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_profondeur_rev integer
+             chp_profondeur_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_pos_ouver_parenthese_rev'),champ('chp_pos_ouver_parenthese_rev'),nom_long_du_champ('à faire chp_pos_ouver_parenthese_rev'),nom_court_du_champ('à faire chp_pos_ouver_parenthese_rev'),nom_bref_du_champ('à faire chp_pos_ouver_parenthese_rev'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_pos_ouver_parenthese_rev'),nom_long_du_champ('à faire chp_pos_ouver_parenthese_rev'),nom_court_du_champ('à faire chp_pos_ouver_parenthese_rev'),nom_bref_du_champ('à faire chp_pos_ouver_parenthese_rev'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_pos_ouver_parenthese_rev integer
+             chp_pos_ouver_parenthese_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_enfant_suivant_rev'),champ('chp_enfant_suivant_rev'),nom_long_du_champ('AFR'),nom_court_du_champ('AFR'),nom_bref_du_champ('AFR'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_enfant_suivant_rev'),nom_long_du_champ('AFR'),nom_court_du_champ('AFR'),nom_bref_du_champ('AFR'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_enfant_suivant_rev integer
+             chp_enfant_suivant_rev INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_commentaire_rev'),champ('chp_commentaire_rev'),nom_long_du_champ('à faire chp_commentaire_rev'),nom_court_du_champ('à faire chp_commentaire_rev'),nom_bref_du_champ('à faire chp_commentaire_rev'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_commentaire_rev'),nom_long_du_champ('à faire chp_commentaire_rev'),nom_court_du_champ('à faire chp_commentaire_rev'),nom_bref_du_champ('à faire chp_commentaire_rev'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             chp_commentaire_rev text
+             chp_commentaire_rev TEXT
     );
 
 CREATE TABLE tbl_sources(
@@ -448,26 +448,26 @@ CREATE TABLE tbl_sources(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_source'),champ('chi_id_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_source integer PRIMARY KEY 
+             chi_id_source INTEGER PRIMARY KEY
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_projet_id_source'),champ('chx_projet_id_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_projet_id_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chx_projet_id_source integer NOT NULL REFERENCES tbl_projets(chi_id_projet) 
+             chx_projet_id_source INTEGER NOT NULL REFERENCES tbl_projets(chi_id_projet) 
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_nom_source'),champ('chp_nom_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_nom_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
              chp_nom_source TEXT NOT NULL DEFAULT  ''
@@ -475,53 +475,53 @@ CREATE TABLE tbl_sources(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_commentaire_source'),champ('cht_commentaire_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(0)
+            genre_meta(champ),nom_du_champ('cht_commentaire_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(0),espece_du_champ(TEXT)
             )
             */
-             cht_commentaire_source text
+             cht_commentaire_source TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_rev_source'),champ('cht_rev_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_rev_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             cht_rev_source text
+             cht_rev_source TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_genere_source'),champ('cht_genere_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_genere_source'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             cht_genere_source text
+             cht_genere_source TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che_binaire_source'),champ('che_binaire_source'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('che_binaire_source'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             che_binaire_source integer NOT NULL DEFAULT  0
+             che_binaire_source INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che__nur_source'),champ('che__nur_source'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_numero_de_revision(1)
+            genre_meta(champ),nom_du_champ('che__nur_source'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(INTEGER),champ_numero_de_revision(1)
             )
             */
-             che__nur_source integer NOT NULL DEFAULT  0
+             che__nur_source INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtm_source'),champ('chp__dtm_source'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chd),afficher_champ_dans_svg(0),champ_date_modification(1)
+            genre_meta(champ),nom_du_champ('chp__dtm_source'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chd),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
             )
             */
              chp__dtm_source VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -529,8 +529,8 @@ CREATE TABLE tbl_sources(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtc_source'),champ('chp__dtc_source'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chd),afficher_champ_dans_svg(0),champ_date_creation(1)
+            genre_meta(champ),nom_du_champ('chp__dtc_source'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chd),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
             )
             */
              chp__dtc_source VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -538,11 +538,11 @@ CREATE TABLE tbl_sources(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_dossier_id_source'),champ('chx_dossier_id_source'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_dossier_id_source'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chx_dossier_id_source integer REFERENCES tbl_dossiers(chi_id_dossier) 
+             chx_dossier_id_source INTEGER REFERENCES tbl_dossiers(chi_id_dossier) 
     );
 
 CREATE TABLE tbl_dossiers(
@@ -552,26 +552,26 @@ CREATE TABLE tbl_dossiers(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_dossier'),champ('chi_id_dossier'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_dossier'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_dossier integer PRIMARY KEY 
+             chi_id_dossier INTEGER PRIMARY KEY
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_projet_dossier'),champ('chx_projet_dossier'),nom_long_du_champ('à faire chx_projet_dossier'),nom_court_du_champ('à faire chx_projet_dossier'),nom_bref_du_champ('à faire chx_projet_dossier'),
-            typologie(chi),afficher_champ_dans_svg(1),refe_enfant_droite(1)
+            genre_meta(champ),nom_du_champ('chx_projet_dossier'),nom_long_du_champ('à faire chx_projet_dossier'),nom_court_du_champ('à faire chx_projet_dossier'),nom_bref_du_champ('à faire chx_projet_dossier'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER),refe_enfant_droite(1)
             )
             */
-             chx_projet_dossier integer NOT NULL REFERENCES tbl_projets(chi_id_projet) 
+             chx_projet_dossier INTEGER NOT NULL REFERENCES tbl_projets(chi_id_projet) 
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_nom_dossier'),champ('chp_nom_dossier'),nom_long_du_champ('à faire chp_nom_dossier'),nom_court_du_champ('à faire chp_nom_dossier'),nom_bref_du_champ('à faire chp_nom_dossier'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_nom_dossier'),nom_long_du_champ('à faire chp_nom_dossier'),nom_court_du_champ('à faire chp_nom_dossier'),nom_bref_du_champ('à faire chp_nom_dossier'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(CHARACTER),longueur_du_champ(64)
             )
             */
              chp_nom_dossier CHARACTER(64)
@@ -579,35 +579,35 @@ CREATE TABLE tbl_dossiers(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_parent_dossier'),champ('chx_parent_dossier'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1),refe_parent_gauche(1)
+            genre_meta(champ),nom_du_champ('chx_parent_dossier'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(INTEGER),refe_parent_gauche(1)
             )
             */
-             chx_parent_dossier integer REFERENCES tbl_dossiers(chi_id_dossier) 
+             chx_parent_dossier INTEGER REFERENCES tbl_dossiers(chi_id_dossier) 
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che_contient_genere_dossier'),champ('che_contient_genere_dossier'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('che_contient_genere_dossier'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             che_contient_genere_dossier integer NOT NULL DEFAULT  0
+             che_contient_genere_dossier INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che__nur_dossier'),champ('che__nur_dossier'),nom_long_du_champ('à faire chi__nut_dossier'),nom_court_du_champ('à faire chi__nut_dossier'),nom_bref_du_champ('à faire chi__nut_dossier'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_numero_de_revision(1)
+            genre_meta(champ),nom_du_champ('che__nur_dossier'),nom_long_du_champ('à faire chi__nut_dossier'),nom_court_du_champ('à faire chi__nut_dossier'),nom_bref_du_champ('à faire chi__nut_dossier'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(INTEGER),champ_numero_de_revision(1)
             )
             */
-             che__nur_dossier integer NOT NULL DEFAULT  0
+             che__nur_dossier INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtm_dossier'),champ('chp__dtm_dossier'),nom_long_du_champ('à faire chp__dtm_dossier'),nom_court_du_champ('à faire chp__dtm_dossier'),nom_bref_du_champ('à faire chp__dtm_dossier'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_date_modification(1)
+            genre_meta(champ),nom_du_champ('chp__dtm_dossier'),nom_long_du_champ('à faire chp__dtm_dossier'),nom_court_du_champ('à faire chp__dtm_dossier'),nom_bref_du_champ('à faire chp__dtm_dossier'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
             )
             */
              chp__dtm_dossier VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -615,8 +615,8 @@ CREATE TABLE tbl_dossiers(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtc_dossier'),champ('chp__dtc_dossier'),nom_long_du_champ('à faire chp__dtc_dossier'),nom_court_du_champ('à faire chp__dtc_dossier'),nom_bref_du_champ('à faire chp__dtc_dossier'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_date_creation(1)
+            genre_meta(champ),nom_du_champ('chp__dtc_dossier'),nom_long_du_champ('à faire chp__dtc_dossier'),nom_court_du_champ('à faire chp__dtc_dossier'),nom_bref_du_champ('à faire chp__dtc_dossier'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
             )
             */
              chp__dtc_dossier VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -629,71 +629,71 @@ CREATE TABLE tbl_bdds(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_basedd'),champ('chi_id_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_basedd integer PRIMARY KEY 
+             chi_id_basedd INTEGER PRIMARY KEY
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_projet_id_basedd'),champ('chx_projet_id_basedd'),nom_long_du_champ('à faire chx_projet_id_basedd'),nom_court_du_champ('à faire chx_projet_id_basedd'),nom_bref_du_champ('à faire chx_projet_id_basedd'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_projet_id_basedd'),nom_long_du_champ('à faire chx_projet_id_basedd'),nom_court_du_champ('à faire chx_projet_id_basedd'),nom_bref_du_champ('à faire chx_projet_id_basedd'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chx_projet_id_basedd integer NOT NULL REFERENCES tbl_projets(chi_id_projet) 
+             chx_projet_id_basedd INTEGER NOT NULL REFERENCES tbl_projets(chi_id_projet) 
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_commentaire_basedd'),champ('chp_commentaire_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_commentaire_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             chp_commentaire_basedd text
+             chp_commentaire_basedd TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_rev_travail_basedd'),champ('chp_rev_travail_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_rev_travail_basedd'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             chp_rev_travail_basedd text
+             chp_rev_travail_basedd TEXT
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_fournisseur_basedd'),champ('chp_fournisseur_basedd'),nom_long_du_champ('à faire chp_fournisseur_basedd'),nom_court_du_champ('à faire chp_fournisseur_basedd'),nom_bref_du_champ('à faire chp_fournisseur_basedd'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_fournisseur_basedd'),nom_long_du_champ('à faire chp_fournisseur_basedd'),nom_court_du_champ('à faire chp_fournisseur_basedd'),nom_bref_du_champ('à faire chp_fournisseur_basedd'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             chp_fournisseur_basedd text DEFAULT  'sqlite'
+             chp_fournisseur_basedd TEXT DEFAULT  'sqlite'
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_dossier_id_basedd'),champ('chx_dossier_id_basedd'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_dossier_id_basedd'),nom_long_du_champ('AFR ...'),nom_court_du_champ('AFR ...'),nom_bref_du_champ('AFR ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chx_dossier_id_basedd integer REFERENCES tbl_dossiers(chi_id_dossier) 
+             chx_dossier_id_basedd INTEGER REFERENCES tbl_dossiers(chi_id_dossier) 
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che__nur_basedd'),champ('che__nur_basedd'),nom_long_du_champ('à faire chi__nut_basedd'),nom_court_du_champ('à faire chi__nut_basedd'),nom_bref_du_champ('à faire chi__nut_basedd'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_numero_de_revision(1)
+            genre_meta(champ),nom_du_champ('che__nur_basedd'),nom_long_du_champ('à faire chi__nut_basedd'),nom_court_du_champ('à faire chi__nut_basedd'),nom_bref_du_champ('à faire chi__nut_basedd'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(INTEGER),champ_numero_de_revision(1)
             )
             */
-             che__nur_basedd integer NOT NULL DEFAULT  0
+             che__nur_basedd INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtm_basedd'),champ('chp__dtm_basedd'),nom_long_du_champ('à faire chp__dtm_basedd'),nom_court_du_champ('à faire chp__dtm_basedd'),nom_bref_du_champ('à faire chp__dtm_basedd'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_date_modification(1)
+            genre_meta(champ),nom_du_champ('chp__dtm_basedd'),nom_long_du_champ('à faire chp__dtm_basedd'),nom_court_du_champ('à faire chp__dtm_basedd'),nom_bref_du_champ('à faire chp__dtm_basedd'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
             )
             */
              chp__dtm_basedd VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -701,8 +701,8 @@ CREATE TABLE tbl_bdds(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtc_basedd'),champ('chp__dtc_basedd'),nom_long_du_champ('à faire chp__dtc_basedd'),nom_court_du_champ('à faire chp__dtc_basedd'),nom_bref_du_champ('à faire chp__dtc_basedd'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_date_creation(1)
+            genre_meta(champ),nom_du_champ('chp__dtc_basedd'),nom_long_du_champ('à faire chp__dtc_basedd'),nom_court_du_champ('à faire chp__dtc_basedd'),nom_bref_du_champ('à faire chp__dtc_basedd'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
             )
             */
              chp__dtc_basedd VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -715,17 +715,17 @@ CREATE TABLE tbl_groupes(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_groupe'),champ('chi_id_groupe'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_groupe'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_groupe INTEGER PRIMARY KEY  NOT NULL
+             chi_id_groupe INTEGER PRIMARY KEY NOT NULL
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_nom_groupe'),champ('chp_nom_groupe'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_nom_groupe'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
              chp_nom_groupe VARCHAR(64) NOT NULL
@@ -733,8 +733,8 @@ CREATE TABLE tbl_groupes(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_parent_groupe'),champ('chx_parent_groupe'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_parent_groupe'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
              chx_parent_groupe INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe)  DEFAULT  1
@@ -747,17 +747,17 @@ CREATE TABLE tbl_metiers(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_metier'),champ('chi_id_metier'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_metier'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_metier INTEGER PRIMARY KEY  NOT NULL
+             chi_id_metier INTEGER PRIMARY KEY NOT NULL
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_nom_metier'),champ('chp_nom_metier'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_nom_metier'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
              chp_nom_metier VARCHAR(64) NOT NULL
@@ -765,8 +765,8 @@ CREATE TABLE tbl_metiers(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_parent_metier'),champ('chx_parent_metier'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_parent_metier'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
              chx_parent_metier INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier) 
@@ -779,17 +779,17 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_page'),champ('chi_id_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_page INTEGER PRIMARY KEY  NOT NULL
+             chi_id_page INTEGER PRIMARY KEY NOT NULL
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_nom_page'),champ('chp_nom_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_nom_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
              chp_nom_page VARCHAR(64) NOT NULL
@@ -797,8 +797,8 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_parent_page'),champ('chx_parent_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1),refe_parent_gauche(1)
+            genre_meta(champ),nom_du_champ('chx_parent_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER),refe_parent_gauche(1)
             )
             */
              chx_parent_page INTEGER REFERENCES tbl_pages(chi_id_page) 
@@ -806,8 +806,8 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_acces_page'),champ('chx_acces_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1),refe_enfant_droite(1)
+            genre_meta(champ),nom_du_champ('chx_acces_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER),refe_enfant_droite(1)
             )
             */
              chx_acces_page INTEGER REFERENCES tbl_acces(chi_id_acces) 
@@ -815,8 +815,8 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_source_page'),champ('chx_source_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1),refe_enfant_droite(1),refe_parent_gauche(1)
+            genre_meta(champ),nom_du_champ('chx_source_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER),refe_enfant_droite(1),refe_parent_gauche(1)
             )
             */
              chx_source_page INTEGER REFERENCES tbl_sources(chi_id_source) 
@@ -824,8 +824,8 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_methode_page'),champ('chp_methode_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_methode_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
              chp_methode_page VARCHAR(64) NOT NULL
@@ -833,8 +833,8 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_complement_page'),champ('cht_complement_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_complement_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
              cht_complement_page TEXT
@@ -842,8 +842,8 @@ CREATE TABLE tbl_pages(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_contenu_methode_page'),champ('cht_contenu_methode_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_contenu_methode_page'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(128)
             )
             */
              cht_contenu_methode_page VARCHAR(128)
@@ -856,17 +856,17 @@ CREATE TABLE tbl_acces(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_acces'),champ('chi_id_acces'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_acces'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_acces INTEGER PRIMARY KEY  NOT NULL
+             chi_id_acces INTEGER PRIMARY KEY NOT NULL
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_nom_acces'),champ('chp_nom_acces'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_nom_acces'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
              chp_nom_acces VARCHAR(64) NOT NULL
@@ -874,8 +874,8 @@ CREATE TABLE tbl_acces(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_groupe_acces'),champ('chx_groupe_acces'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_groupe_acces'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
              chx_groupe_acces INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe) 
@@ -883,8 +883,8 @@ CREATE TABLE tbl_acces(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_metier_acces'),champ('chx_metier_acces'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_metier_acces'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
              chx_metier_acces INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier) 
@@ -897,17 +897,17 @@ CREATE TABLE tbl_menus(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_menu'),champ('chi_id_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_menu INTEGER PRIMARY KEY  NOT NULL
+             chi_id_menu INTEGER PRIMARY KEY NOT NULL
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_page_menu'),champ('chx_page_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chx),afficher_champ_dans_svg(1),refe_parent_gauche(1)
+            genre_meta(champ),nom_du_champ('chx_page_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chx),afficher_champ_dans_svg(1),espece_du_champ(INTEGER),refe_parent_gauche(1)
             )
             */
              chx_page_menu INTEGER NOT NULL REFERENCES tbl_pages(chi_id_page) 
@@ -915,8 +915,8 @@ CREATE TABLE tbl_menus(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che_ordre_menu'),champ('che_ordre_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(che),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('che_ordre_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
              che_ordre_menu INTEGER NOT NULL DEFAULT  0
@@ -924,8 +924,8 @@ CREATE TABLE tbl_menus(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_prerequis_rev_menu'),champ('cht_prerequis_rev_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(chp),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_prerequis_rev_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
              cht_prerequis_rev_menu TEXT
@@ -933,8 +933,8 @@ CREATE TABLE tbl_menus(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_prerequis_php_menu'),champ('cht_prerequis_php_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_prerequis_php_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
              cht_prerequis_php_menu TEXT
@@ -942,8 +942,8 @@ CREATE TABLE tbl_menus(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('cht_libelle_menu'),champ('cht_libelle_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
-            typologie(cht),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('cht_libelle_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
              cht_libelle_menu TEXT
@@ -956,53 +956,53 @@ CREATE TABLE tbl_taches(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chi_id_tache'),champ('chi_id_tache'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chi_id_tache'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chi_id_tache integer PRIMARY KEY 
+             chi_id_tache INTEGER PRIMARY KEY
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chx_utilisateur_tache'),champ('chx_utilisateur_tache'),nom_long_du_champ('à faire chx_utilisateur_tache'),nom_court_du_champ('à faire chx_utilisateur_tache'),nom_bref_du_champ('à faire chx_utilisateur_tache'),
-            typologie(chi),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chx_utilisateur_tache'),nom_long_du_champ('à faire chx_utilisateur_tache'),nom_court_du_champ('à faire chx_utilisateur_tache'),nom_bref_du_champ('à faire chx_utilisateur_tache'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chx_utilisateur_tache integer NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) 
+             chx_utilisateur_tache INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) 
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_texte_tache'),champ('chp_texte_tache'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_texte_tache'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
             )
             */
-             chp_texte_tache text NOT NULL
+             chp_texte_tache TEXT NOT NULL
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_priorite_tache'),champ('chp_priorite_tache'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
-            typologie(),afficher_champ_dans_svg(1)
+            genre_meta(champ),nom_du_champ('chp_priorite_tache'),nom_long_du_champ(''),nom_court_du_champ(''),nom_bref_du_champ(''),
+            typologie(),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             chp_priorite_tache integer
+             chp_priorite_tache INTEGER
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che__nur_tache'),champ('che__nur_tache'),nom_long_du_champ('à faire chi__nut_tache'),nom_court_du_champ('à faire chi__nut_tache'),nom_bref_du_champ('à faire chi__nut_tache'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_numero_de_revision(1)
+            genre_meta(champ),nom_du_champ('che__nur_tache'),nom_long_du_champ('à faire chi__nut_tache'),nom_court_du_champ('à faire chi__nut_tache'),nom_bref_du_champ('à faire chi__nut_tache'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(INTEGER),champ_numero_de_revision(1)
             )
             */
-             che__nur_tache integer NOT NULL DEFAULT  0
+             che__nur_tache INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtm_tache'),champ('chp__dtm_tache'),nom_long_du_champ('à faire chp__dtm_tache'),nom_court_du_champ('à faire chp__dtm_tache'),nom_bref_du_champ('à faire chp__dtm_tache'),
-            typologie(chi),afficher_champ_dans_svg(0),champ_date_modification(1)
+            genre_meta(champ),nom_du_champ('chp__dtm_tache'),nom_long_du_champ('à faire chp__dtm_tache'),nom_court_du_champ('à faire chp__dtm_tache'),nom_bref_du_champ('à faire chp__dtm_tache'),
+            typologie(chi),afficher_champ_dans_svg(0),espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
             )
             */
              chp__dtm_tache VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1010,8 +1010,8 @@ CREATE TABLE tbl_taches(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp__dtc_tache'),champ('chp__dtc_tache'),nom_long_du_champ('à faire chp__dtc_tache'),nom_court_du_champ('à faire chp__dtc_tache'),nom_bref_du_champ('à faire chp__dtc_tache'),
-            typologie(chi),afficher_champ_dans_svg(1),champ_date_creation(1)
+            genre_meta(champ),nom_du_champ('chp__dtc_tache'),nom_long_du_champ('à faire chp__dtc_tache'),nom_court_du_champ('à faire chp__dtc_tache'),nom_bref_du_champ('à faire chp__dtc_tache'),
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
             )
             */
              chp__dtc_tache VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1038,5 +1038,50 @@ CREATE TABLE tbl_genres(
             )
             */
              chp_nom_genre VARCHAR(64) NOT NULL
-    );
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('chp_espece_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(32)
+            )
+            */
+             chp_espece_genre VARCHAR(32) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('che_longueur_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
+            )
+            */
+             che_longueur_genre INTEGER
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('che_primaire_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
+            )
+            */
+             che_primaire_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('che_progressif_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
+            )
+            */
+             che_progressif_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('che_obligatoire_genre'),espece_du_champ(INTEGER),
+            typologie(che),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),afficher_champ_dans_svg(1),champ_date_modification(0),champ_date_creation(0),champ_numero_de_revision(0),refe_enfant_droite(0),refe_parent_gauche(0)
+            )
+            */
+             che_obligatoire_genre INTEGER NOT NULL DEFAULT  0
+    , che_liminaire_genre INTEGER NOT NULL DEFAULT  0, che_mot_genre INTEGER NOT NULL DEFAULT  0);
 

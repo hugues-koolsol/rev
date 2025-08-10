@@ -146,6 +146,32 @@ class c_fonctions_js1{
       =============================================================================================================
       c_fonctions_js1(affecte(zone(vv_nouveau_numero_de_requete,valeur),plus( zone(vv_nouveau_numero_de_requete,valeur) , 100 )))
     */
+    enregistrer_le_tri_des_menus_de_l_utilisateur( mat , debut ){
+        let id='';
+        let l01=mat.length;
+        for( let i=debut + 1 ; i < l01 ; i=mat[i][12] ){
+            if('id' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id=mat[i + 1][1];
+            }
+        }
+        if(id!==''){
+            let le_html=document.getElementById(id).innerHTML.replace(/></g,'>\r\n<');
+            /* console.log(le_html); */
+            let obj={
+                "__x_action" : "c_profile1.enregistrer_le_tri_des_menus_de_l_utilisateur()" ,
+                "__xva" : {
+                    "le_html" : le_html ,
+                }
+            };
+            this.#interface1.envoyer_un_message_au_worker( obj );
+            
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+      c_fonctions_js1(affecte(zone(vv_nouveau_numero_de_requete,valeur),plus( zone(vv_nouveau_numero_de_requete,valeur) , 100 )))
+    */
     trier_les_menus( mat , debut ){
         let chi_id_acces=0;
         let l01=mat.length;

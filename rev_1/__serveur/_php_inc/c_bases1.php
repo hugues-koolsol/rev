@@ -1134,6 +1134,68 @@ class c_bases1{
                     $ret1=$db1->exec($donnees_recues[__xva]['source_sql']);
                     $donnees_retournees[__x_signaux][__xsu][]=$donnees_recues[__xva]['operation_table'] . ' réussie [' . __LINE__ . '] ';
                     $donnees_retournees[__xst]=__xsu;
+                    /*
+                    */
+                    
+                    
+                    if(__X_CLE_APPLICATION === 'rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1){
+                     
+                     
+                        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);
+                        if($donnees_recues[__xva]['operation_table'] === 'creer_une_table'
+                           || $donnees_recues[__xva]['operation_table'] === 'supprimer_une_table'
+                           || $donnees_recues[__xva]['operation_table'] === 'supprimer_l_index'
+                           || $donnees_recues[__xva]['operation_table'] === 'ajouter_l_index'
+                        ){
+
+                            /*on recherche tous les projets>2 et on ajoute réalise l'opération*/
+                            $tt316=/*sql_inclure_deb*/
+                                /* sql_316()
+                                / ***meta(sur_base_de_reference(1))*** /
+
+                                SELECT 
+
+                                `T0`.`chi_id_projet`
+                                 FROM b1.tbl_projets T0
+                                WHERE `T0`.`chi_id_projet` > 2
+                                ;
+                                */
+                                /*sql_inclure_fin*/
+                                $this->sql0->sql_iii(
+                                 /*sql_316()*/ 316,
+                                array(),
+                                $donnees_retournees
+                            );
+                            
+                            if($tt316[__xst] === __xsu){
+
+                                foreach($tt316[__xva] as $k1 => $v1){
+                                    $nom_de_fichier_bdd=$chemin[__xva]['chemin_absolu'] . DIRECTORY_SEPARATOR . 'bdd_' . $v1['T0.chi_id_projet'] . '.sqlite';
+                                    
+                                    if(is_file($nom_de_fichier_bdd)){
+
+                                        $db1temp=new SQLite3($nom_de_fichier_bdd);
+                                        try{
+                                            $ret=$db1temp->exec($donnees_recues[__xva]['source_sql']);
+                                        }catch(Exception $e){
+                                            $donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
+                                            $donnees_retournees[__x_signaux][__xer][]='erreur sql ' . $e->getMessage() . ' <pre>' . $donnees_recues[__xva]['source_sql'] . '</pre> [' . __LINE__ . '] ';
+                                            return array( __xst => __xer);
+                                        }
+                                        $db1temp->close();
+
+                                    }
+
+                                }
+
+                            }
+
+
+                        }
+                     
+                    }
+                    
+                    
                 }catch(Exception $e){
                     
                     if($GLOBALS[DEVER_SRV] >= 1){

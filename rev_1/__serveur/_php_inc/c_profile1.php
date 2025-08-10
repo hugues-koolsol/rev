@@ -132,6 +132,76 @@ class c_profile1{
     /*
       =============================================================================================================
     */
+    function enregistrer_le_tri_des_menus_de_l_utilisateur(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);
+        if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
+         
+            $tt147=/*sql_inclure_deb*/
+                /* sql_147()
+                / ***meta(sur_base_de_reference(1))*** /
+
+                SELECT 
+
+                `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+
+                `T0`.`chi_compteur_socket1_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
+                 FROM b1.tbl_utilisateurs T0
+
+                 LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+                
+                WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
+                 /*sql_147()*/ 147,
+                array( 'T0_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']),
+                $donnees_retournees
+            );
+            
+            if($tt147[__xst] === __xer){
+
+                $donnees_retournees[__x_signaux][__xer][]='Utilisateur non trouvé en base !!!! [' . __LINE__ . ']';
+
+            }else{
+             
+                $anciens_parametres=$tt147[__xva][0]['T0.chp_parametres_utilisateur'];
+                if($anciens_parametres==='' || is_null($anciens_parametres)){
+                    $tab['menus_de_l_utilisateur'] =$donnees_recues[__xva]['le_html'];
+                    
+                }else{
+                    $tab=json_decode($anciens_parametres,true);
+                    $tab['menus_de_l_utilisateur']=$donnees_recues[__xva]['le_html'];
+                    
+                }
+                $nouveau_parametres=json_encode($tab,JSON_FORCE_OBJECT);
+                
+                
+                $tt108=$this->sql0->sql_iii(
+                     /*sql_108()*/ 108,
+                    array( /**/
+                        'n_chp_parametres_utilisateur' => $nouveau_parametres, 
+                        'c_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']),
+                    $donnees_retournees,
+                );
+                
+                if($tt108[__xst] !== __xsu){
+                    $donnees_retournees[__x_signaux][__xer][]='Utilisateur non trouvé en base !!!! [' . __LINE__ . ']';
+                    $donnees_retournees[__xst]=__xer;
+                    return;
+
+                }
+                $donnees_retournees[__x_signaux][__xsu][]='menu enregistré [' . __LINE__ . ']';
+                
+            }
+         
+        }
+        $donnees_retournees[__xst]=__xsu;
+        
+    }
+    /*
+      =============================================================================================================
+    */
     function recupere_la_page_des_coordonnees(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues,$chp_nom_de_connexion_utilisateur='webmaster@example.com'){
         $txt='';
         $tt147=/*sql_inclure_deb*/
@@ -197,33 +267,57 @@ class c_profile1{
                 $donnees_retournees[__x_signaux][__xer][]=' [' . __LINE__ . ']';
 
             }else{
+                $menus_de_l_utilisateur='';
 
+                if(!is_null($tt147[__xva][0]['T0.chp_parametres_utilisateur'])){
+                        $json=json_decode($tt147[__xva][0]['T0.chp_parametres_utilisateur'],true);
+                        if(isset($json['menus_de_l_utilisateur'])){
+                           //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . htmlentities(var_export( $json['menus_de_l_utilisateur'] , true )) . '</pre>' ; exit(0);
+                           $menus_de_l_utilisateur=$json['menus_de_l_utilisateur'];
+                           //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . htmlentities(var_export( $menus_de_l_utilisateur , true )) . '</pre>' ; exit(0);
+                        }
+                }
+                $txt .= '<p>';
+                $txt .= 'liste des menus <b>triables</b>';
+                $txt .= '<table border="1" style="width:90vw;">';
+                $txt .= '<tr>';
+                $txt .= '<td style="width:70vw;">';
+                $txt .= '<ul id="vv_ordre_de_mes_menus" style="border:1px blue solid;max-width:90vw;">';
+                if( $menus_de_l_utilisateur!==''){
+                 
+                        
+                        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . htmlentities(var_export( $menus_de_l_utilisateur , true )) . '</pre>' ; exit(0);
+                        $txt .= $menus_de_l_utilisateur;
+                 
+                }else{
+                    if(count($tt304[__xva]) > 0){
+
+                        
+                        foreach($tt304[__xva] as $k1 => $v1){
+                            $txt .= '<li id="' . $v1['T0.chi_id_menu'] . '"  style="border:1px red solid;" >' . $v1['T1.chp_nom_page'] . '</li>';
+                        }
+
+                    }
+                }
+                $txt .= '</ul>';
+                $txt .= '</td>';
+                $txt .= '<td style="width:20vw;">';
+                $txt .= '  <div class="hug_bouton" data-hug_click="c_fonctions_js1(enregistrer_le_tri_des_menus_de_l_utilisateur(id(vv_ordre_de_mes_menus)))" title="enregistrer">enregistrer</div>';
+                $txt .= '</td>';
+                $txt .= '</tr>';
+                $txt .= '</table>';
+                $txt .= '</p>';
                 
-                if(count($tt304[__xva]) > 0){
+                if(isset($donnees_retournees[__xva]['maj'])){
 
-                    $txt .= '<p>';
-                    $txt .= 'liste des menus <b>triables</b>';
-                    $txt .= '<ul id="vv_ordre_de_mes_menus" style="border:1px blue solid;max-width:30em;">';
-                    foreach($tt304[__xva] as $k1 => $v1){
-                        $txt .= '<li id="' . $v1['T0.chi_id_menu'] . '"  style="border:1px red solid;">' . $v1['T1.chp_nom_page'] . '</li>';
-                    }
-                    $txt .= '</ul>';
-                    $txt .= '</p>';
-                    
-                    if(isset($donnees_retournees[__xva]['maj'])){
+                    $donnees_retournees[__xva]['maj'] += ',faire_une_liste_triable2(id(vv_ordre_de_mes_menus),bouton_ajouter("+"),arborescent(1),bouton_editer(1))';
 
-                        $donnees_retournees[__xva]['maj'] += ',faire_une_liste_triable2(id(vv_ordre_de_mes_menus))';
+                }else{
 
-                    }else{
-
-                        $donnees_retournees[__xva]['maj']='faire_une_liste_triable2(id(vv_ordre_de_mes_menus))';
-                    }
-
-
+                    $donnees_retournees[__xva]['maj']='faire_une_liste_triable2(id(vv_ordre_de_mes_menus),bouton_ajouter("+"),arborescent(1),bouton_editer(1))';
                 }
 
             }
-
         }
 
         $donnees_retournees[__x_page] .= $txt;

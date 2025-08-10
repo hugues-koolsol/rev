@@ -87,11 +87,10 @@ WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
   ),
   108 => 
   array (
-    'cht_sql_requete' => '/*meta(tester_les_dependances_dans_le_php(1))*/
-
-DELETE FROM b1.tbl_sources
-WHERE (`chx_projet_id_source` = :chx_projet_id_source) ;',
-    'cht_commentaire_requete' => '**dispo***',
+    'cht_sql_requete' => 'UPDATE b1.tbl_utilisateurs SET 
+   `chp_parametres_utilisateur` = :n_chp_parametres_utilisateur
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
+    'cht_commentaire_requete' => NULL,
   ),
   109 => 
   array (

@@ -3054,6 +3054,7 @@ class c_rev_vers_js1{
                         'replaceChildren',
                         'reset',
                         'search',
+                        'select',
                         'send',
                         'setAttribute',
                         'slice',

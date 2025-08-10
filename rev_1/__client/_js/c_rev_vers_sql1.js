@@ -1308,6 +1308,7 @@ class c_rev_vers_sql1{
                                 variables_pour_tableau_tables.longueur_du_champ=this.#tb[j + 1][1];
                             
                             }else if(this.#tb[j][1] === '#'){
+                                debugger
                                 if(this.#tb[j][13] === ''){
                                 }else{
                                     console.log('%cafr','background:yellow;color:red;');
@@ -1390,6 +1391,7 @@ class c_rev_vers_sql1{
                                 variables_pour_tableau_tables.reference.champ=this.__m_rev1.ma_constante( this.#tb[j + 2] );
 
                             }else if(this.#tb[j][1] === 'type' && (this.#tb[j][8] === 1 || this.#tb[j][8] === 2)){
+                                debugger
 
                                 if(this.#tb[j][8] === 1){
                                     if(this.#tb[j + 1][2] === 'c'){
@@ -1463,11 +1465,12 @@ class c_rev_vers_sql1{
                             }
                         }
                         
-                        
+/*                        
                         if(definition_sql_du_champ!==definition_sql_du_champ2){
                             console.log('\n\n'+definition_sql_du_champ+'\n'+definition_sql_du_champ2);
                             console.log('%cdifférents','background:red;color:yellow;');
                         }
+*/                        
                         
 //                        debugger
 

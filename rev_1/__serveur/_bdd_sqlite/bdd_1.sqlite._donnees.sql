@@ -6,7 +6,7 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','','609','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu','{"menus_de_l_utilisateur":"<li id=\"4\" style=\"border:1px red solid;\">t\u00e2ches<\/li>\r\n<li data-sous_menu=\"1\">outils<ul>\r\n<li id=\"5\" style=\"border:1px red solid;\">matrice<\/li>\r\n<li id=\"7\" style=\"border:1px red solid;\">html<\/li>\r\n<li id=\"6\" style=\"border:1px red solid;\">js<\/li>\r\n<li id=\"8\" style=\"border:1px red solid;\">php<\/li>\r\n<li id=\"9\" style=\"border:1px red solid;\">sql<\/li>\r\n<li id=\"10\" style=\"border:1px red solid;\">css<\/li>\r\n<li id=\"11\" style=\"border:1px red solid;\">txt<\/li>\r\n<\/ul>\r\n<\/li>\r\n<li id=\"12\" style=\"border:1px red solid;\">projets<\/li>\r\n<li id=\"13\" style=\"border:1px red solid;\">fido<\/li>\r\n<li id=\"14\" style=\"border:1px red solid;\">sources<\/li>\r\n<li id=\"15\" style=\"border:1px red solid;\">bases<\/li>\r\n<li id=\"16\" style=\"border:1px red solid;\">requ\u00eates<\/li>\r\n<li id=\"17\" style=\"border:1px red solid;\">revs<\/li>\r\n<li id=\"18\" style=\"border:1px red solid;\">groupes<\/li>\r\n<li id=\"19\" style=\"border:1px red solid;\">m\u00e9tiers<\/li>\r\n<li id=\"20\" style=\"border:1px red solid;\">utilisateurs<\/li>\r\n<li id=\"21\" style=\"border:1px red solid;\">acc\u00e8s<\/li>\r\n<li id=\"22\" style=\"border:1px red solid;\">pages<\/li>\r\n<li id=\"23\" style=\"border:1px red solid;\">menus<\/li>\r\n<li id=\"24\" style=\"border:1px red solid;\">profile<\/li>"}','611','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -209,21 +209,18 @@ WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
     :cht_php_requete , 
     :cht_commentaire_requete
 );',NULL,'requêtes',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('108','1','delete','#(meta(tester_les_dependances_dans_le_php(1))),
-supprimer(
+('108','1','update','modifier(
    base_de_reference(1),
+   valeurs(affecte(champ(`chp_parametres_utilisateur`),:n_chp_parametres_utilisateur)),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_sources,base(b1)))
+         source(nom_de_la_table(tbl_utilisateurs,base(b1)))
       )
    ),
-   conditions(
-      et(egal(champ(`chx_projet_id_source`),:chx_projet_id_source))
-   )
-)  ','/*meta(tester_les_dependances_dans_le_php(1))*/
-
-DELETE FROM b1.tbl_sources
-WHERE (`chx_projet_id_source` = :chx_projet_id_source) ;',NULL,'**dispo***',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
+)  ','UPDATE b1.tbl_utilisateurs SET 
+   `chp_parametres_utilisateur` = :n_chp_parametres_utilisateur
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('109','1','update','modifier(
    base_de_reference(1),
    valeurs(
@@ -3889,7 +3886,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_utilisateur''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
@@ -3906,7 +3902,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_nom_de_connexion_utilisateur''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(64),
          non_nulle(1),
@@ -3924,7 +3919,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_mot_de_passe_utilisateur''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(256),
          meta(
@@ -3941,7 +3935,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_parametres_utilisateur''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -3956,7 +3949,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chi_compteur1_utilisateur''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -3975,7 +3967,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chi_compteur_socket1_utilisateur''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -3994,7 +3985,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che__nur_utilisateur''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -4014,7 +4004,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtm_utilisateur''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -4036,7 +4025,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtc_utilisateur''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -4058,7 +4046,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_acces_utilisateur''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_acces,chi_id_acces),
@@ -4101,7 +4088,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_projet''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          meta(
@@ -4117,7 +4103,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_nom_projet''),
-         type(''null''),
          espece_du_champ(TEXT),
          non_nulle(1),
          meta(
@@ -4133,7 +4118,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_commentaire_projet''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4148,7 +4132,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che__nur_projet''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -4168,7 +4151,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtm_projet''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -4190,7 +4172,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtc_projet''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -4212,7 +4193,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_dossier_requetes_projet''),
-         type(''null''),
          espece_du_champ(INTEGER),
          references(tbl_dossiers,chi_id_dossier),
          a_une_valeur_par_defaut(1),
@@ -4232,7 +4212,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_dossier_menus_projet''),
-         type(''null''),
          espece_du_champ(INTEGER),
          references(tbl_dossiers,chi_id_dossier),
          meta(
@@ -4272,7 +4251,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_requete''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
@@ -4289,7 +4267,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_projet_requete''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
@@ -4308,7 +4285,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_type_requete''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(64),
          non_nulle(1),
@@ -4329,7 +4305,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_rev_requete''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4344,7 +4319,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_sql_requete''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4359,7 +4333,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_php_requete''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4374,7 +4347,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_commentaire_requete''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4389,7 +4361,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_matrice_requete''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4404,7 +4375,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che__nur_requete''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -4424,7 +4394,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtm_requete''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -4446,7 +4415,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtc_requete''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -4482,7 +4450,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          meta(
@@ -4498,7 +4465,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_projet_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
@@ -4515,7 +4481,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_provenance_rev''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(64),
          meta(
@@ -4532,7 +4497,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_source_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4547,7 +4511,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_id_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4562,7 +4525,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_valeur_rev''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4577,7 +4539,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_type_rev''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(3),
          non_nulle(1),
@@ -4595,7 +4556,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_niveau_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4610,7 +4570,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_quotee_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4625,7 +4584,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_pos_premier_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4640,7 +4598,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_pos_dernier_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4655,7 +4612,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_parent_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4670,7 +4626,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_nbr_enfants_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4685,7 +4640,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_num_enfant_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4700,7 +4654,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_profondeur_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4715,7 +4668,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_pos_ouver_parenthese_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4730,7 +4682,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_enfant_suivant_rev''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -4745,7 +4696,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_commentaire_rev''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4783,7 +4733,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_source''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          meta(
@@ -4799,7 +4748,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_projet_id_source''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
@@ -4816,7 +4764,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_nom_source''),
-         type(''null''),
          espece_du_champ(TEXT),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -4834,7 +4781,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_commentaire_source''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4849,7 +4795,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_rev_source''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4864,7 +4809,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_genere_source''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -4879,7 +4823,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che_binaire_source''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -4898,7 +4841,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che__nur_source''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -4918,7 +4860,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtm_source''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -4940,7 +4881,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtc_source''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -4962,7 +4902,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_dossier_id_source''),
-         type(''null''),
          espece_du_champ(INTEGER),
          references(tbl_dossiers,chi_id_dossier),
          meta(
@@ -5001,7 +4940,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_dossier''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          meta(
@@ -5017,7 +4955,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_projet_dossier''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
@@ -5035,7 +4972,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_nom_dossier''),
-         type(''null''),
          espece_du_champ(CHARACTER),
          longueur_du_champ(64),
          meta(
@@ -5052,7 +4988,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_parent_dossier''),
-         type(''null''),
          espece_du_champ(INTEGER),
          references(tbl_dossiers,chi_id_dossier),
          meta(
@@ -5069,7 +5004,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che_contient_genere_dossier''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5088,7 +5022,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che__nur_dossier''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5108,7 +5041,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtm_dossier''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -5130,7 +5062,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtc_dossier''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -5175,7 +5106,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_basedd''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          meta(
@@ -5191,7 +5121,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_projet_id_basedd''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
@@ -5208,7 +5137,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_commentaire_basedd''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -5223,7 +5151,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_rev_travail_basedd''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -5238,7 +5165,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_fournisseur_basedd''),
-         type(''null''),
          espece_du_champ(TEXT),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -5256,7 +5182,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_dossier_id_basedd''),
-         type(''null''),
          espece_du_champ(INTEGER),
          references(tbl_dossiers,chi_id_dossier),
          meta(
@@ -5272,7 +5197,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che__nur_basedd''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5292,7 +5216,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtm_basedd''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -5314,7 +5237,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtc_basedd''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -5350,7 +5272,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_groupe''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
@@ -5367,7 +5288,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_nom_groupe''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(64),
          non_nulle(1),
@@ -5385,7 +5305,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_parent_groupe''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_groupes,chi_id_groupe),
@@ -5428,7 +5347,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_metier''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
@@ -5445,7 +5363,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_nom_metier''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(64),
          non_nulle(1),
@@ -5463,7 +5380,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_parent_metier''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_metiers,chi_id_metier),
@@ -5494,7 +5410,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_page''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
@@ -5511,7 +5426,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_nom_page''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(64),
          non_nulle(1),
@@ -5529,7 +5443,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_parent_page''),
-         type(''null''),
          espece_du_champ(INTEGER),
          references(tbl_pages,chi_id_page),
          meta(
@@ -5546,7 +5459,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_acces_page''),
-         type(''null''),
          espece_du_champ(INTEGER),
          references(tbl_acces,chi_id_acces),
          meta(
@@ -5563,7 +5475,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_source_page''),
-         type(''null''),
          espece_du_champ(INTEGER),
          references(tbl_sources,chi_id_source),
          meta(
@@ -5581,7 +5492,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_methode_page''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(64),
          non_nulle(1),
@@ -5599,7 +5509,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_complement_page''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -5614,7 +5523,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_contenu_methode_page''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(128),
          meta(
@@ -5654,7 +5562,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_acces''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
@@ -5671,7 +5578,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_nom_acces''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(64),
          non_nulle(1),
@@ -5689,7 +5595,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_groupe_acces''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_groupes,chi_id_groupe),
@@ -5706,7 +5611,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_metier_acces''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_metiers,chi_id_metier),
@@ -5737,7 +5641,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_menu''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
@@ -5754,7 +5657,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_page_menu''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_pages,chi_id_page),
@@ -5772,7 +5674,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che_ordre_menu''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5791,7 +5692,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_prerequis_rev_menu''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -5806,7 +5706,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_prerequis_php_menu''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -5821,7 +5720,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_libelle_menu''),
-         type(''null''),
          espece_du_champ(TEXT),
          meta(
             genre_meta(champ),
@@ -5850,7 +5748,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_tache''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          meta(
@@ -5866,7 +5763,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chx_utilisateur_tache''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_utilisateurs,chi_id_utilisateur),
@@ -5883,7 +5779,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_texte_tache''),
-         type(''null''),
          espece_du_champ(TEXT),
          non_nulle(1),
          meta(
@@ -5899,7 +5794,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_priorite_tache''),
-         type(''null''),
          espece_du_champ(INTEGER),
          meta(
             genre_meta(champ),
@@ -5914,7 +5808,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che__nur_tache''),
-         type(''null''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5934,7 +5827,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtm_tache''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -5956,7 +5848,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp__dtc_tache''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(23),
          non_nulle(1),
@@ -6001,7 +5892,6 @@ créer_table(
    champs(
       champ(
          nom_du_champ(''chi_id_genre''),
-         type(''null''),
          espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
@@ -6018,7 +5908,6 @@ créer_table(
       ),
       champ(
          nom_du_champ(''chp_nom_genre''),
-         type(''null''),
          espece_du_champ(VARCHAR),
          longueur_du_champ(64),
          non_nulle(1),
@@ -6032,6 +5921,114 @@ créer_table(
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_espece_genre''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(32),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_espece_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chp),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(32)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_longueur_genre''),
+         espece_du_champ(INTEGER),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_longueur_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_primaire_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(false),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_primaire_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_progressif_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_progressif_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_obligatoire_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(false),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_obligatoire_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_liminaire_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(false),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_liminaire_genre''),
+            espece_du_champ(INTEGER),
+            typologie(che),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            afficher_champ_dans_svg(1),
+            champ_date_modification(0),
+            champ_date_creation(0),
+            champ_numero_de_revision(0),
+            refe_enfant_droite(0),
+            refe_parent_gauche(0)
          )
       )
    )
@@ -6692,8 +6689,8 @@ type de champbdd','7','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
 ('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038'),
 ('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
 ('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962'),
-('178','1','ajouter un dictionnaire de données
-genre','2','2','2025-08-09 11:56:36.382','2025-07-02 10:46:53.367'),
+('178','1','ajouter un dictionnaire de données(genre)
+permet de spécifier les champs date, date_heure, lien vers parent, id','2','4','2025-08-10 10:41:29.780','2025-07-02 10:46:53.367'),
 ('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399'),
 ('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718'),
 ('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668'),
@@ -6767,5 +6764,6 @@ Exemple chp_commentaire_projet => cht_commentaire_projet','99','2','2025-08-02 1
             ''sql0'' => $sql0 ,
             ''bdd'' => $GLOBALS[__BDD][BDD_NUMERO_1],
 ','99','3','2025-08-08 15:09:52.677','2025-08-08 12:41:17.737'),
-('220','1','ajouter un champ espece base et taille_espece','1','2','2025-08-09 12:38:17.257','2025-08-09 12:33:15.508');
+('220','1','ajouter un champ espece base et taille_espece','1','2','2025-08-09 12:38:17.257','2025-08-09 12:33:15.508'),
+('221','1','taxon, espèce, famille, classification, qualité, groupe, collection, genre','80','1','2025-08-10 10:36:21.692','2025-08-10 09:27:19.788');
 

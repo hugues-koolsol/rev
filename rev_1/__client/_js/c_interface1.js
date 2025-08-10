@@ -445,6 +445,9 @@ class _c_interface1{
                             /* "animation" : 150 , */
                         }else if(mat_maj.__xva[i][1] === 'faire_une_liste_triable2' && mat_maj.__xva[i][2] === 'f'){
                             let id='';
+                            let bouton_ajouter='';
+                            let bouton_editer='';
+                            let arborescent=0;
                             for( let j=i + 1 ; j < mat_maj.__xva.length ; j=mat_maj.__xva[j][12] ){
                                 if(mat_maj.__xva[j][1] === 'id'
                                        && mat_maj.__xva[j][2] === 'f'
@@ -452,6 +455,26 @@ class _c_interface1{
                                        && mat_maj.__xva[j + 1][2] === 'c'
                                 ){
                                     id=mat_maj.__xva[j + 1][1];
+                                }else if(mat_maj.__xva[j][1] === 'bouton_ajouter'
+                                       && mat_maj.__xva[j][2] === 'f'
+                                       && mat_maj.__xva[j][8] === 1
+                                       && mat_maj.__xva[j + 1][2] === 'c'
+                                ){
+                                    bouton_ajouter=mat_maj.__xva[j + 1][1];
+                                }else if(mat_maj.__xva[j][1] === 'bouton_editer'
+                                       && mat_maj.__xva[j][2] === 'f'
+                                       && mat_maj.__xva[j][8] === 1
+                                       && mat_maj.__xva[j + 1][2] === 'c'
+                                ){
+                                    bouton_editer=parseInt(mat_maj.__xva[j + 1][1],10);
+                                    
+                                }else if(mat_maj.__xva[j][1] === 'arborescent'
+                                       && mat_maj.__xva[j][2] === 'f'
+                                       && mat_maj.__xva[j][8] === 1
+                                       && mat_maj.__xva[j + 1][2] === 'c'
+                                ){
+                                    arborescent=parseInt(mat_maj.__xva[j + 1][1],10);
+                                    
                                 }
                             }
                             if(id !== ''){
@@ -466,9 +489,19 @@ class _c_interface1{
                                      /* 'calc(100% - 50px)', */
                                     "afficher_le_bouton_supprimer" : false ,
                                     "fonction_appelee_apres_action" : this.action_sur_tri ,
-                                    "arborescent" : false ,
-                                    "class_du_bouton_deplacer" : 'hug_bouton'
+                                    "arborescent" : arborescent ,
+                                    "class_du_bouton_deplacer" : 'hug_bouton',
+                                    "boutons_du_menu" : [] ,
+                                    "class_du_bouton_menu" : 'hug_bouton',
                                 };
+                                if(bouton_ajouter!==''){
+                                    //"boutons_du_menu" : [{"libelle" : '+' ,"fonction" : ajouter_une_branche}] ,
+                                    options.boutons_du_menu.push({"libelle" : bouton_ajouter ,"fonction" : this.ajouter_une_branche})
+                                }
+                                if(bouton_editer===1){
+                                    options['afficher_le_bouton_editer']=1;
+                                    options['class_du_bouton_editer']='hug_bouton yy__x_signaux___xif';
+                                }
                                 new tri_arbre1( id , options );
                             }
                         }
@@ -499,7 +532,7 @@ class _c_interface1{
                     if(lst2[j].value !== ''){
                         focus_trouve=true;
                         lst2[j].focus();
-                        lst2[j]['select']();
+                        lst2[j].select();
                         i=lst1.length;
                         break;
                     }
@@ -512,8 +545,12 @@ class _c_interface1{
                 if(lst1[i].tagName.toLowerCase() === 'input' || lst1[i].tagName.toLowerCase() === 'textarea'){
                     if(lst1[i].disabled === false && !(lst1[i].type === 'hidden')){
                         focus_trouve=true;
-                        lst1[i].focus();
-                        lst1[i]['select']();
+                        if(lst1[i].tagName.toLowerCase() === 'textarea'){
+                            lst1[i].focus();
+                        }else{
+                            lst1[i].focus();
+                            lst1[i].select();
+                        }
                         i=lst1.length;
                         break;
                     }
@@ -524,8 +561,85 @@ class _c_interface1{
     /*
       =============================================================================================================
     */
-    action_sur_tri( par ){
-        console.log( 'dans appelee_apres_action par=' , par );
+    ajouter_une_branche( evenement , reference_arbre ){
+     
+    //        console.log( 'dans ajouter_une_branche' );
+    //        console.log( 'evenement =' , evenement );
+    //        console.log( 'reference =' , reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri')  );
+    //        console.log( 'arbre =' ,  reference_arbre );
+       let id_original=reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri');
+       if(id_original==='vv_ordre_de_mes_menus'){
+            let max=0;
+            for( let i=0 ; i < reference_arbre.arbre.length ; i++ ){
+                if(reference_arbre.arbre[i].id_interne > max){
+                    max=reference_arbre.arbre[i].id_interne;
+                }
+            }
+            max++;
+            let a={
+                "id_interne" : max ,
+                "id_interne_parent" : 0 ,
+                "replie" : 0 ,
+                "contient_des_enfants" : 0 ,
+                "contenu" : "nouvelle branche " + max ,
+                "attributs" : {}
+            };
+            if(id_original==='vv_ordre_de_mes_menus'){
+                a["attributs"] = {"data-sous_menu":1};
+            }
+            reference_arbre.arbre.splice( 0 , 0 , a );
+            reference_arbre.action_externe_sur_arbre( 'ajoute_branche' , reference_arbre.arbre );
+       }
+    }
+    /*
+      =============================================================================================================
+    */
+    action_sur_tri( reference_arbre , obj ){
+        console.log( 'dans appelee_apres_action par=' , reference_arbre ,  obj );
+        
+
+        switch (obj.type_deplacement){
+            case 'editer' :
+                if(obj.id_original==='vv_ordre_de_mes_menus'){
+                    for( let i=0 ; i < obj.arbre.length ; i++ ){
+                        if(obj.id_cible === obj.arbre[i].id_interne){
+                            if(obj.arbre[i].attributs.hasOwnProperty('data-sous_menu') && obj.arbre[i].attributs['data-sous_menu']===1){
+                                let nouveau_nom=window.prompt( "nouveau nom ?" , obj.arbre[i].contenu );
+                                if(nouveau_nom){
+                                    obj.arbre[i].contenu=nouveau_nom;
+                                    reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+                break;
+
+            case 'supprimer' :
+                /*
+                for( let i=0 ; i < obj.arbre.length ; i++ ){
+                    if(obj.id_cible === obj.arbre[i].id_interne){
+                        obj.arbre.splice( i , 1 );
+                        break;
+                    }
+                }
+                reference_arbre.action_externe_sur_arbre( 'supprimer_un_element' , obj.arbre );
+                break;
+                */
+                
+            case 'avant' : 
+            case 'dedans' : 
+            case 'apres' :
+                console.log( 'appelee_apres_action1' , obj );
+                /* console.log(JSON.stringify(arbre)); */
+                reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+                break;
+                
+            default: break;
+        }
+        
+        
     }
     /*
       =============================================================================================================
@@ -897,7 +1011,7 @@ class _c_interface1{
             if(lst[i].getAttribute( 'autofocus' )){
                 if(!this.#ecran_tactile){
                     lst[i].focus();
-                    lst[i]['select']();
+                    lst[i].select();
                 }
                 auto_focus_trouve=true;
                 break;
@@ -909,7 +1023,7 @@ class _c_interface1{
                     if(!(lst[i].type && lst[i].type.toLowerCase() === 'hidden')){
                         if(!this.#ecran_tactile){
                             lst[i].focus();
-                            lst[i]['select']();
+                            lst[i].select();
                         }
                         break;
                     }

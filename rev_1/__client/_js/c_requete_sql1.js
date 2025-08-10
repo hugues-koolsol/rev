@@ -139,6 +139,7 @@ class c_requete_sql1{
     */
     #enrichir_tableau_des_bases_tables_champs( init ){
         /* that */
+        
         this.#obj_webs.tableau_des_bases_tables_champs={};
         let nom_de_la_table='';
         var indice_de_la_base={};
@@ -178,6 +179,10 @@ class c_requete_sql1{
                                                 }
                                                 if(tab2[n][1] === 'non_nulle'){
                                                     this.#obj_webs.tableau_des_bases_tables_champs[indice_de_la_base][nom_de_la_table]['champs'][nom_du_champ]['non_nulle']=true;
+                                                }
+                                                if(tab2[n][1] === 'espece_du_champ'){
+                                                    this.#obj_webs.tableau_des_bases_tables_champs[indice_de_la_base][nom_de_la_table]['champs'][nom_du_champ]['espece_du_champ']=tab2[n + 1][1];;
+                                                    this.#obj_webs.tableau_des_bases_tables_champs[indice_de_la_base][nom_de_la_table]['champs'][nom_du_champ]['type_du_champ']=tab2[n + 1][1];
                                                 }
                                             }
                                         }
@@ -670,6 +675,7 @@ class c_requete_sql1{
               ne rien faire
             */
         }else if( typeof globale_requete_en_cours === 'object'){
+
             if(init.cht_rev_requete_initiale !== ''){
                 this.#globale_id_requete=init.chi_id_requete_initiale;
                 this.#globale_rev_requete=init.cht_rev_requete_initiale;
@@ -682,6 +688,8 @@ class c_requete_sql1{
                     this.#mettre_en_stokage_local_et_afficher();
                 }
             }else{
+                debugger;
+                this.#enrichir_tableau_des_bases_tables_champs( init );
                 var sauvegarde=localStorage.getItem( __X_CLE_APPLICATION + '_derniere_requete' );
                 if(sauvegarde !== null){
                     sauvegarde=JSON.parse( sauvegarde );
@@ -2953,11 +2961,16 @@ class c_requete_sql1{
                     var lng=lng_max - nom_du_champ.length;
                     var rpt=' '.repeat( lng );
                     var encadrement_variable='\\\'';
-                    if(champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'int' ) >= 0
-                           || champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'float' ) >= 0
-                           || champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'decimal' ) >= 0
-                    ){
-                        encadrement_variable='';
+                    try{
+                        if(champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'int' ) >= 0
+                               || champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'float' ) >= 0
+                               || champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'decimal' ) >= 0
+                        ){
+                            encadrement_variable='';
+                        }
+                    }catch(e){
+                     /*afr pourquoi ???? */
+                     debugger
                     }
                     tableau_des_champs_en_sortie.push( {
                             "non_du_champ_en_bdd" : nom_du_champ ,
@@ -2978,7 +2991,7 @@ class c_requete_sql1{
                     liste_des_champs_pour_update3+='    $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\';' + CRLF;
                 }else{
                     liste_des_champs_pour_update3+='    if(isset($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'])){' + CRLF;
-                    liste_des_champs_pour_update3+='        if($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']===\'\' || $par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']===NULL ){' + CRLF;
+                    liste_des_champs_pour_update3+='        if($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']===\'\' || is_null($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']) ){' + CRLF;
                     liste_des_champs_pour_update3+='            $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = NULL\';' + CRLF;
                     liste_des_champs_pour_update3+='        }else{' + CRLF;
                     liste_des_champs_pour_update3+='            $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\';' + CRLF;
