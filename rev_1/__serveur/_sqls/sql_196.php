@@ -3,26 +3,20 @@ function sql_196($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_acces` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_nom_acces'])){
-        if($par['n_chp_nom_acces']==='' || $par['n_chp_nom_acces']===NULL ){
-            $tableau_champs[]='`chp_nom_acces` = NULL';
-        }else{
-            $tableau_champs[]='`chp_nom_acces` = \''.sq0($par['n_chp_nom_acces']).'\'';
-        }
+    if($par['n_chp_nom_acces']==='' || is_null($par['n_chp_nom_acces']) ){
+        $tableau_champs[]='`chp_nom_acces` = NULL';
+    }else{
+        $tableau_champs[]='`chp_nom_acces` = \''.sq0($par['n_chp_nom_acces']).'\'';
     }
-    if(isset($par['n_chx_groupe_acces'])){
-        if($par['n_chx_groupe_acces']==='' || $par['n_chx_groupe_acces']===NULL ){
-            $tableau_champs[]='`chx_groupe_acces` = NULL';
-        }else{
-            $tableau_champs[]='`chx_groupe_acces` = '.sq0($par['n_chx_groupe_acces']).'';
-        }
+    if($par['n_chx_groupe_acces']==='' || is_null($par['n_chx_groupe_acces']) ){
+        $tableau_champs[]='`chx_groupe_acces` = NULL';
+    }else{
+        $tableau_champs[]='`chx_groupe_acces` = '.sq0($par['n_chx_groupe_acces']).'';
     }
-    if(isset($par['n_chx_metier_acces'])){
-        if($par['n_chx_metier_acces']==='' || $par['n_chx_metier_acces']===NULL ){
-            $tableau_champs[]='`chx_metier_acces` = NULL';
-        }else{
-            $tableau_champs[]='`chx_metier_acces` = '.sq0($par['n_chx_metier_acces']).'';
-        }
+    if($par['n_chx_metier_acces']==='' || is_null($par['n_chx_metier_acces']) ){
+        $tableau_champs[]='`chx_metier_acces` = NULL';
+    }else{
+        $tableau_champs[]='`chx_metier_acces` = '.sq0($par['n_chx_metier_acces']).'';
     }
 
     if(count($tableau_champs)===0){

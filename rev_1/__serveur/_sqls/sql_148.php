@@ -3,33 +3,25 @@ function sql_148($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BASE_REFERENCE][PREFIXE_BDD].'`.`tbl_projets` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_nom_projet'])){
-        if($par['n_chp_nom_projet']==='' || $par['n_chp_nom_projet']===NULL ){
-            $tableau_champs[]='`chp_nom_projet` = NULL';
-        }else{
-            $tableau_champs[]='`chp_nom_projet` = \''.sq0($par['n_chp_nom_projet']).'\'';
-        }
+    if($par['n_chp_nom_projet']==='' || is_null($par['n_chp_nom_projet']) ){
+        $tableau_champs[]='`chp_nom_projet` = NULL';
+    }else{
+        $tableau_champs[]='`chp_nom_projet` = \''.sq0($par['n_chp_nom_projet']).'\'';
     }
-    if(isset($par['n_chx_dossier_requetes_projet'])){
-        if($par['n_chx_dossier_requetes_projet']==='' || $par['n_chx_dossier_requetes_projet']===NULL ){
-            $tableau_champs[]='`chx_dossier_requetes_projet` = NULL';
-        }else{
-            $tableau_champs[]='`chx_dossier_requetes_projet` = '.sq0($par['n_chx_dossier_requetes_projet']).'';
-        }
+    if($par['n_chx_dossier_requetes_projet']==='' || is_null($par['n_chx_dossier_requetes_projet']) ){
+        $tableau_champs[]='`chx_dossier_requetes_projet` = NULL';
+    }else{
+        $tableau_champs[]='`chx_dossier_requetes_projet` = '.sq0($par['n_chx_dossier_requetes_projet']).'';
     }
-    if(isset($par['n_chx_dossier_menus_projet'])){
-        if($par['n_chx_dossier_menus_projet']==='' || $par['n_chx_dossier_menus_projet']===NULL ){
-            $tableau_champs[]='`chx_dossier_menus_projet` = NULL';
-        }else{
-            $tableau_champs[]='`chx_dossier_menus_projet` = '.sq0($par['n_chx_dossier_menus_projet']).'';
-        }
+    if($par['n_chx_dossier_menus_projet']==='' || is_null($par['n_chx_dossier_menus_projet']) ){
+        $tableau_champs[]='`chx_dossier_menus_projet` = NULL';
+    }else{
+        $tableau_champs[]='`chx_dossier_menus_projet` = '.sq0($par['n_chx_dossier_menus_projet']).'';
     }
-    if(isset($par['n_cht_commentaire_projet'])){
-        if($par['n_cht_commentaire_projet']==='' || $par['n_cht_commentaire_projet']===NULL ){
-            $tableau_champs[]='`cht_commentaire_projet` = NULL';
-        }else{
-            $tableau_champs[]='`cht_commentaire_projet` = \''.sq0($par['n_cht_commentaire_projet']).'\'';
-        }
+    if($par['n_cht_commentaire_projet']==='' || is_null($par['n_cht_commentaire_projet']) ){
+        $tableau_champs[]='`cht_commentaire_projet` = NULL';
+    }else{
+        $tableau_champs[]='`cht_commentaire_projet` = \''.sq0($par['n_cht_commentaire_projet']).'\'';
     }
 
     if(count($tableau_champs)===0){

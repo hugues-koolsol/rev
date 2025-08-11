@@ -888,7 +888,7 @@ CREATE TABLE tbl_acces(
             )
             */
              chx_metier_acces INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier) 
-    );
+    , cht_parametres_acces TEXT);
 
 CREATE TABLE tbl_menus(
 /*

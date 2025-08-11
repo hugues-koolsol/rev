@@ -3,26 +3,20 @@ function sql_155($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_dossiers` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_nom_dossier'])){
-        if($par['n_chp_nom_dossier']==='' || $par['n_chp_nom_dossier']===NULL ){
-            $tableau_champs[]='`chp_nom_dossier` = NULL';
-        }else{
-            $tableau_champs[]='`chp_nom_dossier` = \''.sq0($par['n_chp_nom_dossier']).'\'';
-        }
+    if($par['n_chp_nom_dossier']==='' || is_null($par['n_chp_nom_dossier']) ){
+        $tableau_champs[]='`chp_nom_dossier` = NULL';
+    }else{
+        $tableau_champs[]='`chp_nom_dossier` = \''.sq0($par['n_chp_nom_dossier']).'\'';
     }
-    if(isset($par['n_chx_parent_dossier'])){
-        if($par['n_chx_parent_dossier']==='' || $par['n_chx_parent_dossier']===NULL ){
-            $tableau_champs[]='`chx_parent_dossier` = NULL';
-        }else{
-            $tableau_champs[]='`chx_parent_dossier` = '.sq0($par['n_chx_parent_dossier']).'';
-        }
+    if($par['n_chx_parent_dossier']==='' || is_null($par['n_chx_parent_dossier']) ){
+        $tableau_champs[]='`chx_parent_dossier` = NULL';
+    }else{
+        $tableau_champs[]='`chx_parent_dossier` = '.sq0($par['n_chx_parent_dossier']).'';
     }
-    if(isset($par['n_che_contient_genere_dossier'])){
-        if($par['n_che_contient_genere_dossier']==='' || $par['n_che_contient_genere_dossier']===NULL ){
-            $tableau_champs[]='`che_contient_genere_dossier` = NULL';
-        }else{
-            $tableau_champs[]='`che_contient_genere_dossier` = '.sq0($par['n_che_contient_genere_dossier']).'';
-        }
+    if($par['n_che_contient_genere_dossier']==='' || is_null($par['n_che_contient_genere_dossier']) ){
+        $tableau_champs[]='`che_contient_genere_dossier` = NULL';
+    }else{
+        $tableau_champs[]='`che_contient_genere_dossier` = '.sq0($par['n_che_contient_genere_dossier']).'';
     }
 
     if(count($tableau_champs)===0){

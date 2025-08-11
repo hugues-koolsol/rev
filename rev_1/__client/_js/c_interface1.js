@@ -568,7 +568,7 @@ class _c_interface1{
     //        console.log( 'reference =' , reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri')  );
     //        console.log( 'arbre =' ,  reference_arbre );
        let id_original=reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri');
-       if(id_original==='vv_ordre_de_mes_menus'){
+       if(id_original==='afr_quand_ce_sera_utilisé'){
             let max=0;
             for( let i=0 ; i < reference_arbre.arbre.length ; i++ ){
                 if(reference_arbre.arbre[i].id_interne > max){
@@ -584,8 +584,8 @@ class _c_interface1{
                 "contenu" : "nouvelle branche " + max ,
                 "attributs" : {}
             };
-            if(id_original==='vv_ordre_de_mes_menus'){
-                a["attributs"] = {"data-sous_menu":1};
+            if(id_original==='afr_quand_ce_sera_utilisé'){
+                a["attributs"] = {"data-afr_quand_ce_sera_utilisé":1};
             }
             reference_arbre.arbre.splice( 0 , 0 , a );
             reference_arbre.action_externe_sur_arbre( 'ajoute_branche' , reference_arbre.arbre );
@@ -600,10 +600,10 @@ class _c_interface1{
 
         switch (obj.type_deplacement){
             case 'editer' :
-                if(obj.id_original==='vv_ordre_de_mes_menus'){
+                if(obj.id_original==='afr_quand_ce_sera_utilisé'){
                     for( let i=0 ; i < obj.arbre.length ; i++ ){
                         if(obj.id_cible === obj.arbre[i].id_interne){
-                            if(obj.arbre[i].attributs.hasOwnProperty('data-sous_menu') && obj.arbre[i].attributs['data-sous_menu']===1){
+                            if(obj.arbre[i].attributs.hasOwnProperty('data-afr_quand_ce_sera_utilisé') && obj.arbre[i].attributs['data-afr_quand_ce_sera_utilisé']===1){
                                 let nouveau_nom=window.prompt( "nouveau nom ?" , obj.arbre[i].contenu );
                                 if(nouveau_nom){
                                     obj.arbre[i].contenu=nouveau_nom;

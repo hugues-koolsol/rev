@@ -13,8 +13,7 @@ class tri_arbre1{
     #hauteur_de_la_zone_de_tri=0;
     #decallage_max_de_la_zone_de_tri=0;
     #position_max=0;
-    #timeout_quand_trop_bas=null;
-    #timeout_quand_trop_haut=null;
+    #timeout_quand_trop_haut_ou_trop_bas=null;
     #id_interne_du_bloc_a_deplacer='';
     #noeud_a_deplacer=null;
     cle_aleatoire='';
@@ -47,6 +46,7 @@ class tri_arbre1{
         "class_du_bouton_supprimer" : '' ,
         "afficher_le_bouton_editer" : '' ,
         "class_du_bouton_editer" : '' ,
+        "class_du_bouton_replier" : '' ,
     };
     /*
       =============================================================================================================
@@ -158,6 +158,16 @@ class tri_arbre1{
     */
     #souris_haut( e ){
         document.body.style.overflowY='scroll';
+        /* 
+          spécifique pour rev
+        */
+
+        try{document.getElementById('vv_nav').style.paddingRight='';}catch{};
+        try{document.getElementById('vv_main').style.paddingRight='';}catch{};
+        try{document.getElementById('vv_sous_fenetre1').style.transform='';}catch{};
+        try{document.getElementById('vv_body').style.paddingRight='';}catch{};
+        
+        
         this.#souris_appuyee=false;
         window.removeEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
         window.removeEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
@@ -165,10 +175,7 @@ class tri_arbre1{
         window.removeEventListener( 'touchmove' , this.#doigt_bouge.bind( this ) , false );
         if(e.target.getAttribute( 'data-poignee_pour_tri' ) || e.target.getAttribute( 'data-position_pour_tri' )){
             try{
-                clearTimeout( this.#timeout_quand_trop_haut );
-            } catch {}
-            try{
-                clearTimeout( this.#timeout_quand_trop_bas );
+                clearTimeout( this.#timeout_quand_trop_haut_ou_trop_bas );
             } catch {}
             if(this.#element_bouge !== null){
                 try{
@@ -241,8 +248,8 @@ class tri_arbre1{
     /*
       =============================================================================================================
     */
-    faire_defiler_quand_trop_bas(){
-        clearTimeout( this.#timeout_quand_trop_bas );
+    faire_defiler_quand_trop_haut(){
+        clearTimeout( this.#timeout_quand_trop_haut_ou_trop_bas );
         if(this.#souris_appuyee === false){
             return;
         }
@@ -251,36 +258,45 @@ class tri_arbre1{
             quantite_a_decaller=15;
         }
         let a=parseInt( document.getElementById( this.#id_div ).scrollTop , 10 );
-        document.getElementById( this.#id_div ).scrollTo( {"top" : a + quantite_a_decaller ,"left" : 0} );
+        document.getElementById( this.#id_div ).scrollTo( {"top" : (a - quantite_a_decaller) ,"left" : 0} );
+        /* ,"behavior" : "smooth" */
+        this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
+        let tt=this.#zone_reference_top.getBoundingClientRect();
+        this.#position_absolue_de_la_zone_de_tri=tt.top + document.documentElement.scrollTop;
+        if(this.#position_scroll_dans_la_zone_de_tri <= 0){
+        }else{
+            this.#timeout_quand_trop_haut_ou_trop_bas=setTimeout( () => {
+                this.faire_defiler_quand_trop_haut();} , 50 );
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    faire_defiler_quand_trop_bas(){
+        /* console.log('faire_defiler_quand_trop_bas'+performance.now()) */
+        clearTimeout( this.#timeout_quand_trop_haut_ou_trop_bas );
+        if(this.#souris_appuyee === false){
+            return;
+        }
+        let quantite_a_decaller=10;
+        if(this.#hauteur_de_la_zone_de_tri > 500){
+            quantite_a_decaller=15;
+        }
+        let a=parseInt( document.getElementById( this.#id_div ).scrollTop , 10 );
+        document.getElementById( this.#id_div ).scrollTo( {"top" : (a + quantite_a_decaller) ,"left" : 0} );
         /* ,"behavior" : "smooth" */
         this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
         let tt=this.#zone_reference_top.getBoundingClientRect();
         this.#position_absolue_de_la_zone_de_tri=tt.top + document.documentElement.scrollTop;
         /* console.log( this.#position_scroll_dans_la_zone_de_tri ); */
-        this.#timeout_quand_trop_bas=setTimeout( () => {
-            this.faire_defiler_quand_trop_bas();} , 50 );
-    }
-    /*
-      =============================================================================================================
-    */
-    faire_defiler_quand_trop_haut(){
-        clearTimeout( this.#timeout_quand_trop_haut );
-        if(this.#souris_appuyee === false){
-            return;
+        if(this.#position_scroll_dans_la_zone_de_tri > this.#decallage_max_de_la_zone_de_tri){
+        }else{
+            this.#timeout_quand_trop_haut_ou_trop_bas=setTimeout( () => {
+                /* console.log('declenche bas 2') */
+                this.faire_defiler_quand_trop_bas();} , 50 );
         }
-        let quantite_a_decaller=10;
-        if(this.#hauteur_de_la_zone_de_tri > 500){
-            quantite_a_decaller=15;
-        }
-        let a=parseInt( document.getElementById( this.#id_div ).scrollTop , 10 );
-        document.getElementById( this.#id_div ).scrollTo( {"top" : a - quantite_a_decaller ,"left" : 0} );
-        /* ,"behavior" : "smooth" */
-        this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
-        let tt=this.#zone_reference_top.getBoundingClientRect();
-        this.#position_absolue_de_la_zone_de_tri=tt.top + document.documentElement.scrollTop;
-        this.#timeout_quand_trop_haut=setTimeout( () => {
-            this.faire_defiler_quand_trop_haut();} , 50 );
     }
+    #dans_zone_de_scroll=false;
     /*
       =============================================================================================================
     */
@@ -291,42 +307,65 @@ class tri_arbre1{
         if(this.#element_bouge !== null){
             let position_absolue_de_la_souris_en_y=e.pageY;
             this.#id_cible_selectionne=0;
-            if(position_absolue_de_la_souris_en_y < this.#top_declenchement){
-                /* console.log('=========== trop haut ============='); */
-                if(this.#position_scroll_dans_la_zone_de_tri === 0){
-                }else{
-                    this.#timeout_quand_trop_haut=setTimeout( () => {
-                        this.faire_defiler_quand_trop_haut();} , 20 );
-                    return;
-                }
-            }else{
+            /* console.log('abs='+this.#top_declenchement +' '+ position_absolue_de_la_souris_en_y +' '+ this.#bottom_declenchement ) */
+            if(position_absolue_de_la_souris_en_y <= this.#bottom_declenchement
+              && position_absolue_de_la_souris_en_y >= this.#top_declenchement
+            ){
+                /*
+                 si on est dans la zone de trie
+                */
+                this.#dans_zone_de_scroll=false;
                 try{
-                    clearTimeout( this.#timeout_quand_trop_haut );
+                    clearTimeout( this.#timeout_quand_trop_haut_ou_trop_bas );
                 } catch {}
-            }
-            if(position_absolue_de_la_souris_en_y > this.#bottom_declenchement){
-                if(this.#position_scroll_dans_la_zone_de_tri > this.#decallage_max_de_la_zone_de_tri){
-                }else{
-                    this.#timeout_quand_trop_bas=setTimeout( () => {
-                        this.faire_defiler_quand_trop_bas();} , 20 );
-                    return;
-                }
+                /* console.log('%cfin du scroll','color:red;background:yellow;') */
             }else{
-                try{
-                    clearTimeout( this.#timeout_quand_trop_bas );
-                } catch {}
+                if(position_absolue_de_la_souris_en_y > this.#bottom_declenchement){
+                    /*
+                      si on est sous la zone de tri
+                    */
+                    if(this.#position_scroll_dans_la_zone_de_tri > this.#decallage_max_de_la_zone_de_tri){
+                        try{
+                            clearTimeout( this.#timeout_quand_trop_haut_ou_trop_bas );
+                        } catch {}
+    //                    console.log( this.#position_scroll_dans_la_zone_de_tri , this.#decallage_max_de_la_zone_de_tri );
+                    }else{
+                        if(this.#dans_zone_de_scroll===false){
+                            this.#timeout_quand_trop_haut_ou_trop_bas=setTimeout( () => {
+                                this.faire_defiler_quand_trop_bas();} , 20 );
+                        }
+                        this.#dans_zone_de_scroll=true;
+                        return;
+                    }
+                    this.#dans_zone_de_scroll=true;
+                }else if(position_absolue_de_la_souris_en_y < this.#top_declenchement){
+                    /*
+                      si on est au dessus de la zone de tri
+                    */
+                    /* console.log('=========== trop haut ============='); */
+                    if(this.#position_scroll_dans_la_zone_de_tri === 0){
+                    }else{
+                        if(this.#dans_zone_de_scroll===false){
+                            this.#timeout_quand_trop_haut_ou_trop_bas=setTimeout( () => {
+                                this.faire_defiler_quand_trop_haut();} , 20 );
+                        }
+                        this.#dans_zone_de_scroll=true;
+                        return;
+                    }
+                    this.#dans_zone_de_scroll=true;
+                }
             }
             let position_relative_dans_zone=position_absolue_de_la_souris_en_y - this.#position_absolue_de_la_zone_de_tri;
-            let xxx='pos absolue=' + position_absolue_de_la_souris_en_y;
-            xxx+='\n this.#position_absolue_de_la_zone_de_tri=' + this.#position_absolue_de_la_zone_de_tri;
-            xxx+='\n this.#position_scroll_dans_la_zone_de_tri=' + this.#position_scroll_dans_la_zone_de_tri;
-            xxx+='\n top_declen=' + this.#top_declenchement;
-            xxx+='\n document.documentElement.scrollTop=' + document.documentElement.scrollTop;
-            xxx+='\n this.#id_div.scrollHeight=' + document.getElementById( this.#id_div ).scrollHeight;
-            xxx+='\n\n ====> prdz=' + position_relative_dans_zone;
-            /* console.log(xxx); */
-            /* console.log(this.#position_absolue_de_la_zone_de_tri); */
-            /* console.log(this.#tableau_des_positions_relatives); */
+            /*
+              let xxx='pos absolue=' + position_absolue_de_la_souris_en_y;
+              xxx+='\n this.#position_absolue_de_la_zone_de_tri=' + this.#position_absolue_de_la_zone_de_tri;
+              xxx+='\n this.#position_scroll_dans_la_zone_de_tri=' + this.#position_scroll_dans_la_zone_de_tri;
+              xxx+='\n top_declen=' + this.#top_declenchement;
+              xxx+='\n document.documentElement.scrollTop=' + document.documentElement.scrollTop;
+              xxx+='\n this.#id_div.scrollHeight=' + document.getElementById( this.#id_div ).scrollHeight;
+              xxx+='\n\n ====> prdz=' + position_relative_dans_zone;
+              console.log(xxx);
+            */
             for( let i=0 ; i < this.#tableau_des_positions_relatives.length ; i++ ){
                 if(position_relative_dans_zone >= this.#tableau_des_positions_relatives[i].top
                        && position_relative_dans_zone < this.#tableau_des_positions_relatives[i].bottom
@@ -357,6 +396,15 @@ class tri_arbre1{
             window.addEventListener( 'touchend' , this.#doigt_haut.bind( this ) , false );
             window.addEventListener( 'touchmove' , this.#doigt_bouge.bind( this ) , false );
             document.body.style.overflowY='hidden';
+            /* 
+             spécifique pour rev
+            */
+            try{document.getElementById('vv_nav').style.paddingRight='10px';}catch{};
+            try{document.getElementById('vv_main').style.paddingRight='10px';}catch{};
+            try{document.getElementById('vv_sous_fenetre1').style.transform='translate(-5px, 0)';}catch{};
+            try{document.getElementById('vv_body').style.paddingRight='10px';}catch{};
+            
+            
             /*
               on déplace un bloc
             */
@@ -366,7 +414,11 @@ class tri_arbre1{
             tt=this.#zone_reference_top.getBoundingClientRect();
             this.#position_absolue_de_la_zone_de_tri=tt.top + document.documentElement.scrollTop;
             this.#hauteur_de_la_zone_de_tri=pos.height;
-            this.#decallage_max_de_la_zone_de_tri=this.#tableau_des_positions_relatives[this.#tableau_des_positions_relatives.length - 1].bottom - this.#hauteur_de_la_zone_de_tri;
+
+            tt=document.getElementById('menu_' + this.cle_aleatoire).getBoundingClientRect();
+            let hauteur_menu=tt.height;
+
+            this.#decallage_max_de_la_zone_de_tri=hauteur_menu+this.#tableau_des_positions_relatives[this.#tableau_des_positions_relatives.length - 1].bottom - this.#hauteur_de_la_zone_de_tri;
             this.#id_interne_du_bloc_a_deplacer=tar.getAttribute( "data-poignee_pour_tri" );
             let lst1=document.getElementById( this.#id_div ).querySelectorAll( '[data-id_interne="' + this.#id_interne_du_bloc_a_deplacer + '"]' );
             if(lst1.length > 0){
@@ -574,10 +626,6 @@ class tri_arbre1{
                     }
                     premier=false;
                 }
-                let replie='';
-                if(this.arbre[i].replie === 1 && this.arbre[i].contient_des_enfants > 1){
-                    replie='display:none;';
-                }
                 /*
                   le bloc début
                 */
@@ -614,14 +662,32 @@ class tri_arbre1{
                         le_html+='<div data-supprime="' + this.arbre[i].id_interne + '" style="float:right;" class="' + this.#options.class_du_bouton_supprimer + '">X</div>';
                     }
                 }
+                let style_bloc_replie='display:none;'
                 if(this.#options.arborescent === 0){
                     /*
                       pas de boutons +/- pour une liste simple
                     */
                 }else{
-                    if(replie === ''){
+                 
+                    let libelle_replie='-'; 
+                    
+                    if(this.arbre[i].replie === 1 && this.arbre[i].contient_des_enfants > 1){
+                        libelle_replie='+';
+                    }else{
+                        style_bloc_replie='';
+                    }
+                    let style_replie='';
+                    if(this.arbre[i].contient_des_enfants === 0){
+                        style_replie='visibility:hidden;';
+                    }
+                    le_html += '<div data-replie="' + this.arbre[i].id_interne + '"';
+                    le_html += ' class="' +this.#options.class_du_bouton_replier + '"';
+                    le_html += ' style="float:right;'+style_replie+'min-width:1em;text-align:center;">';
+                    le_html += libelle_replie;
+                    le_html += '</div>';
+/*                 
+                    if(style_replie === ''){
                         if(this.arbre[i].contient_des_enfants === 0){
-                            le_html+='<div data-replie="' + this.arbre[i].id_interne + '" style="float:right;border:1px white solid;min-width:1em;text-align:center;"></div>';
                         }else{
                             le_html+='<div data-replie="' + this.arbre[i].id_interne + '" style="float:right;border:1px hotpink solid;min-width:1em;text-align:center;">-</div>';
                         }
@@ -632,6 +698,7 @@ class tri_arbre1{
                             le_html+='<div data-replie="' + this.arbre[i].id_interne + '" style="float:right;border:1px hotpink solid;min-width:1em;text-align:center;">+</div>';
                         }
                     }
+*/                    
                 }
                 if(this.#options.triable === false){
                     le_html+='<div data-poignee_pour_tri="' + this.arbre[i].id_interne + '" style="float:right;visibility:hidden;" class="' + this.#options.class_du_bouton_deplacer + '">↕</div>';
@@ -645,7 +712,7 @@ class tri_arbre1{
                 /*  */
                 le_sous_html=this.construit_html_de_arbre( this.arbre[i].id_interne , niveau + 1 );
                 /*  */
-                le_html+='<div data-enfants_de="' + this.arbre[i].id_interne + '" style="border:0px pink solid;margin-left:' + this.#options.decallage_entre_niveaux_en_px + 'px;' + replie + '">';
+                le_html+='<div data-enfants_de="' + this.arbre[i].id_interne + '" style="border:0px pink solid;margin-left:' + this.#options.decallage_entre_niveaux_en_px + 'px;' + style_bloc_replie + '">';
                 le_html+=le_sous_html;
                 le_html+='</div>';
                 /*  */
@@ -660,16 +727,16 @@ class tri_arbre1{
         }
         if(id_interne_parent === 0){
             let le_menu='';
+            le_menu+='<div id="menu_' + this.cle_aleatoire + '">';
             if(this.#options.boutons_du_menu.length > 0){
-                le_menu+='<div id="menu_' + this.cle_aleatoire + '">';
                 for( let i=0 ; i < this.#options.boutons_du_menu.length ; i++ ){
                     le_menu+='<div id="menu_' + this.cle_aleatoire + '_' + i + '"';
                     le_menu+=' class="' + this.#options.class_du_bouton_menu + '"';
                     le_menu+=' style="display:inline-block;"';
                     le_menu+='>' + this.#options.boutons_du_menu[i].libelle + '</div>';
                 }
-                le_menu+='</div>';
             }
+            le_menu+='</div>';
             le_html=le_menu + le_html;
             /*
               =============================================================================================
@@ -690,6 +757,7 @@ class tri_arbre1{
                 lst1[i].addEventListener( 'touchstart' , this.#doigt_bas.bind( this ) , false );
             }
             /*
+              =============================================================================================
               2°] les boutons pour plier et déplier
             */
             if(this.#options.arborescent === 1){
@@ -699,6 +767,7 @@ class tri_arbre1{
                 }
             }
             /*
+              =============================================================================================
               3°] les menus
             */
             if(this.#options.boutons_du_menu.length > 0){
@@ -714,7 +783,8 @@ class tri_arbre1{
                 }
             }
             /*
-              3°] les boutons supprimer
+              =============================================================================================
+              4°] les boutons supprimer
             */
             if(this.#options.afficher_le_bouton_supprimer === 1){
                 let lst2=document.getElementById( this.#id_div ).querySelectorAll( '[data-supprime]' );
@@ -723,7 +793,7 @@ class tri_arbre1{
                 }
             }
             /*
-              4°] les boutons editer
+              5°] les boutons editer
             */
             if(this.#options.afficher_le_bouton_editer === 1){
                 let lst2=document.getElementById( this.#id_div ).querySelectorAll( '[data-editer]' );
@@ -921,6 +991,10 @@ class tri_arbre1{
         if(options.hasOwnProperty( 'class_du_bouton_editer' )){
             this.#options.class_du_bouton_editer=options.class_du_bouton_editer;
         }
+        if(options.hasOwnProperty( 'class_du_bouton_replier' )){
+            this.#options.class_du_bouton_replier=options.class_du_bouton_replier;
+        }
+        
 
         
     }

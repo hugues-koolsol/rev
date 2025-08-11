@@ -3,19 +3,15 @@ function sql_186($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_metiers` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_nom_metier'])){
-        if($par['n_chp_nom_metier']==='' || $par['n_chp_nom_metier']===NULL ){
-            $tableau_champs[]='`chp_nom_metier` = NULL';
-        }else{
-            $tableau_champs[]='`chp_nom_metier` = \''.sq0($par['n_chp_nom_metier']).'\'';
-        }
+    if($par['n_chp_nom_metier']==='' || is_null($par['n_chp_nom_metier']) ){
+        $tableau_champs[]='`chp_nom_metier` = NULL';
+    }else{
+        $tableau_champs[]='`chp_nom_metier` = \''.sq0($par['n_chp_nom_metier']).'\'';
     }
-    if(isset($par['n_chx_parent_metier'])){
-        if($par['n_chx_parent_metier']==='' || $par['n_chx_parent_metier']===NULL ){
-            $tableau_champs[]='`chx_parent_metier` = NULL';
-        }else{
-            $tableau_champs[]='`chx_parent_metier` = '.sq0($par['n_chx_parent_metier']).'';
-        }
+    if($par['n_chx_parent_metier']==='' || is_null($par['n_chx_parent_metier']) ){
+        $tableau_champs[]='`chx_parent_metier` = NULL';
+    }else{
+        $tableau_champs[]='`chx_parent_metier` = '.sq0($par['n_chx_parent_metier']).'';
     }
 
     if(count($tableau_champs)===0){

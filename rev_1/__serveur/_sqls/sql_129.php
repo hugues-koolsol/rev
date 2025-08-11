@@ -3,19 +3,15 @@ function sql_129($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_taches` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_texte_tache'])){
-        if($par['n_chp_texte_tache']==='' || $par['n_chp_texte_tache']===NULL ){
-            $tableau_champs[]='`chp_texte_tache` = NULL';
-        }else{
-            $tableau_champs[]='`chp_texte_tache` = \''.sq0($par['n_chp_texte_tache']).'\'';
-        }
+    if($par['n_chp_texte_tache']==='' || is_null($par['n_chp_texte_tache']) ){
+        $tableau_champs[]='`chp_texte_tache` = NULL';
+    }else{
+        $tableau_champs[]='`chp_texte_tache` = \''.sq0($par['n_chp_texte_tache']).'\'';
     }
-    if(isset($par['n_chp_priorite_tache'])){
-        if($par['n_chp_priorite_tache']==='' || $par['n_chp_priorite_tache']===NULL ){
-            $tableau_champs[]='`chp_priorite_tache` = NULL';
-        }else{
-            $tableau_champs[]='`chp_priorite_tache` = '.sq0($par['n_chp_priorite_tache']).'';
-        }
+    if($par['n_chp_priorite_tache']==='' || is_null($par['n_chp_priorite_tache']) ){
+        $tableau_champs[]='`chp_priorite_tache` = NULL';
+    }else{
+        $tableau_champs[]='`chp_priorite_tache` = '.sq0($par['n_chp_priorite_tache']).'';
     }
 
     $tableau_champs[]='`chp__dtm_tache` = \''.$GLOBALS[__date_ms].'\'';

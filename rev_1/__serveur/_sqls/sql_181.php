@@ -3,19 +3,15 @@ function sql_181($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_utilisateurs` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_nom_de_connexion_utilisateur'])){
-        if($par['n_chp_nom_de_connexion_utilisateur']==='' || $par['n_chp_nom_de_connexion_utilisateur']===NULL ){
-            $tableau_champs[]='`chp_nom_de_connexion_utilisateur` = NULL';
-        }else{
-            $tableau_champs[]='`chp_nom_de_connexion_utilisateur` = \''.sq0($par['n_chp_nom_de_connexion_utilisateur']).'\'';
-        }
+    if($par['n_chp_nom_de_connexion_utilisateur']==='' || is_null($par['n_chp_nom_de_connexion_utilisateur']) ){
+        $tableau_champs[]='`chp_nom_de_connexion_utilisateur` = NULL';
+    }else{
+        $tableau_champs[]='`chp_nom_de_connexion_utilisateur` = \''.sq0($par['n_chp_nom_de_connexion_utilisateur']).'\'';
     }
-    if(isset($par['n_chx_acces_utilisateur'])){
-        if($par['n_chx_acces_utilisateur']==='' || $par['n_chx_acces_utilisateur']===NULL ){
-            $tableau_champs[]='`chx_acces_utilisateur` = NULL';
-        }else{
-            $tableau_champs[]='`chx_acces_utilisateur` = '.sq0($par['n_chx_acces_utilisateur']).'';
-        }
+    if($par['n_chx_acces_utilisateur']==='' || is_null($par['n_chx_acces_utilisateur']) ){
+        $tableau_champs[]='`chx_acces_utilisateur` = NULL';
+    }else{
+        $tableau_champs[]='`chx_acces_utilisateur` = '.sq0($par['n_chx_acces_utilisateur']).'';
     }
 
     if(count($tableau_champs)===0){

@@ -3,12 +3,10 @@ function sql_108($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_utilisateurs` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_parametres_utilisateur'])){
-        if($par['n_chp_parametres_utilisateur']==='' || $par['n_chp_parametres_utilisateur']===NULL ){
-            $tableau_champs[]='`chp_parametres_utilisateur` = NULL';
-        }else{
-            $tableau_champs[]='`chp_parametres_utilisateur` = \''.sq0($par['n_chp_parametres_utilisateur']).'\'';
-        }
+    if($par['n_chp_parametres_utilisateur']==='' || is_null($par['n_chp_parametres_utilisateur']) ){
+        $tableau_champs[]='`chp_parametres_utilisateur` = NULL';
+    }else{
+        $tableau_champs[]='`chp_parametres_utilisateur` = \''.sq0($par['n_chp_parametres_utilisateur']).'\'';
     }
 
     if(count($tableau_champs)===0){

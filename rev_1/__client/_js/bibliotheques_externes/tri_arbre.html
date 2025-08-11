@@ -38,6 +38,13 @@ body{margin:0;padding:0;}
     cursor:pointer;
     color:blue;
 }
+.le_bo_bouton_replier{
+    border:1px pink outset;
+    min-width:1em;
+    text-align:center;
+    cursor:pointer;
+    color:blue;
+}
 </style>
     </head>
     <body>
@@ -144,17 +151,17 @@ body{margin:0;padding:0;}
                         </ul>
                             
 -->                    
-                    <td>
+                    <td style="vertical-align:top;">
                         <ul id="tri_arbre_racine2" style="border:0px red solid;">
                         
-                           <li>tâches</li>
-                           <li>outils
+                           <li id="4">tâches</li>
+                           <li >outils
                               <ul>
-                                  <li>matrice</li>
-                                  <li>html</li>
+                                  <li id="5">matrice</li>
+                                  <li id="7">html</li>
                               </ul>
                            </li>
-                           <li>projets</li>
+                           <li id="12">projets</li>
                         </ul>
                     </td>
                 </tr>
@@ -223,7 +230,8 @@ let options1={
     "arborescent" : 1 ,
     "class_du_bouton_deplacer" : 'le_bo_bouton_deplacer' ,
     "boutons_du_menu" : [{"libelle" : '+' ,"fonction" : ajouter_une_branche}] ,
-    "class_du_bouton_menu" : 'le_bo_bouton_menu'
+    "class_du_bouton_menu" : 'le_bo_bouton_menu',
+    "class_du_bouton_replier" : 'le_bo_bouton_replier',
 };
 var nom_racine1='tri_arbre_racine1';
 var arbre1=new tri_arbre1( nom_racine1 , options1 );
@@ -309,7 +317,9 @@ let options2={
     "class_du_bouton_supprimer" : 'le_bo_bouton_supprimer',
     "hauteur_separateur_en_px" : 15,
     "afficher_le_bouton_editer" : 1 ,
-    "class_du_bouton_editer" : 'le_bo_bouton_editer'
+    "class_du_bouton_editer" : 'le_bo_bouton_editer',
+    "class_du_bouton_replier" : 'le_bo_bouton_replier',
+    
 };
 var arbre2=new tri_arbre1( 'tri_arbre_racine2' , options2 );
 /* ======================================================= */

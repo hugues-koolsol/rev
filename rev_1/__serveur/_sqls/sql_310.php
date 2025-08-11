@@ -3,12 +3,10 @@ function sql_310($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_sources` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chi_id_source'])){
-        if($par['n_chi_id_source']==='' || $par['n_chi_id_source']===NULL ){
-            $tableau_champs[]='`chi_id_source` = NULL';
-        }else{
-            $tableau_champs[]='`chi_id_source` = '.sq0($par['n_chi_id_source']).'';
-        }
+    if($par['n_chi_id_source']==='' || is_null($par['n_chi_id_source']) ){
+        $tableau_champs[]='`chi_id_source` = NULL';
+    }else{
+        $tableau_champs[]='`chi_id_source` = '.sq0($par['n_chi_id_source']).'';
     }
 
     if(count($tableau_champs)===0){

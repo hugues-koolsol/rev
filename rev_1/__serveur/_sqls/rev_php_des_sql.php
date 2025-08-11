@@ -292,12 +292,10 @@ WHERE `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
   ),
   124 => 
   array (
-    'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source`
- FROM b1.tbl_sources T0
-WHERE `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
-;',
-    'cht_commentaire_requete' => '***dispo***',
+    'cht_sql_requete' => 'UPDATE b1.tbl_acces SET 
+   `cht_parametres_acces` = :n_cht_parametres_acces
+WHERE `chi_id_acces` = :c_chi_id_acces ;',
+    'cht_commentaire_requete' => 'accès paramètres par id',
   ),
   125 => 
   array (
@@ -1054,8 +1052,8 @@ LIMIT :quantitee OFFSET :debut
   195 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
-`T2`.`chp_nom_metier`
+`T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+`T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
  FROM b1.tbl_acces T0
  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
 

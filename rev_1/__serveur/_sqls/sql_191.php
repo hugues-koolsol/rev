@@ -3,54 +3,40 @@ function sql_191($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_pages` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_nom_page'])){
-        if($par['n_chp_nom_page']==='' || $par['n_chp_nom_page']===NULL ){
-            $tableau_champs[]='`chp_nom_page` = NULL';
-        }else{
-            $tableau_champs[]='`chp_nom_page` = \''.sq0($par['n_chp_nom_page']).'\'';
-        }
+    if($par['n_chp_nom_page']==='' || is_null($par['n_chp_nom_page']) ){
+        $tableau_champs[]='`chp_nom_page` = NULL';
+    }else{
+        $tableau_champs[]='`chp_nom_page` = \''.sq0($par['n_chp_nom_page']).'\'';
     }
-    if(isset($par['n_chx_parent_page'])){
-        if($par['n_chx_parent_page']==='' || $par['n_chx_parent_page']===NULL ){
-            $tableau_champs[]='`chx_parent_page` = NULL';
-        }else{
-            $tableau_champs[]='`chx_parent_page` = '.sq0($par['n_chx_parent_page']).'';
-        }
+    if($par['n_chx_parent_page']==='' || is_null($par['n_chx_parent_page']) ){
+        $tableau_champs[]='`chx_parent_page` = NULL';
+    }else{
+        $tableau_champs[]='`chx_parent_page` = '.sq0($par['n_chx_parent_page']).'';
     }
-    if(isset($par['n_chx_acces_page'])){
-        if($par['n_chx_acces_page']==='' || $par['n_chx_acces_page']===NULL ){
-            $tableau_champs[]='`chx_acces_page` = NULL';
-        }else{
-            $tableau_champs[]='`chx_acces_page` = '.sq0($par['n_chx_acces_page']).'';
-        }
+    if($par['n_chx_acces_page']==='' || is_null($par['n_chx_acces_page']) ){
+        $tableau_champs[]='`chx_acces_page` = NULL';
+    }else{
+        $tableau_champs[]='`chx_acces_page` = '.sq0($par['n_chx_acces_page']).'';
     }
-    if(isset($par['n_chx_source_page'])){
-        if($par['n_chx_source_page']==='' || $par['n_chx_source_page']===NULL ){
-            $tableau_champs[]='`chx_source_page` = NULL';
-        }else{
-            $tableau_champs[]='`chx_source_page` = '.sq0($par['n_chx_source_page']).'';
-        }
+    if($par['n_chx_source_page']==='' || is_null($par['n_chx_source_page']) ){
+        $tableau_champs[]='`chx_source_page` = NULL';
+    }else{
+        $tableau_champs[]='`chx_source_page` = '.sq0($par['n_chx_source_page']).'';
     }
-    if(isset($par['n_chp_methode_page'])){
-        if($par['n_chp_methode_page']==='' || $par['n_chp_methode_page']===NULL ){
-            $tableau_champs[]='`chp_methode_page` = NULL';
-        }else{
-            $tableau_champs[]='`chp_methode_page` = \''.sq0($par['n_chp_methode_page']).'\'';
-        }
+    if($par['n_chp_methode_page']==='' || is_null($par['n_chp_methode_page']) ){
+        $tableau_champs[]='`chp_methode_page` = NULL';
+    }else{
+        $tableau_champs[]='`chp_methode_page` = \''.sq0($par['n_chp_methode_page']).'\'';
     }
-    if(isset($par['n_cht_complement_page'])){
-        if($par['n_cht_complement_page']==='' || $par['n_cht_complement_page']===NULL ){
-            $tableau_champs[]='`cht_complement_page` = NULL';
-        }else{
-            $tableau_champs[]='`cht_complement_page` = \''.sq0($par['n_cht_complement_page']).'\'';
-        }
+    if($par['n_cht_complement_page']==='' || is_null($par['n_cht_complement_page']) ){
+        $tableau_champs[]='`cht_complement_page` = NULL';
+    }else{
+        $tableau_champs[]='`cht_complement_page` = \''.sq0($par['n_cht_complement_page']).'\'';
     }
-    if(isset($par['n_cht_contenu_methode_page'])){
-        if($par['n_cht_contenu_methode_page']==='' || $par['n_cht_contenu_methode_page']===NULL ){
-            $tableau_champs[]='`cht_contenu_methode_page` = NULL';
-        }else{
-            $tableau_champs[]='`cht_contenu_methode_page` = \''.sq0($par['n_cht_contenu_methode_page']).'\'';
-        }
+    if($par['n_cht_contenu_methode_page']==='' || is_null($par['n_cht_contenu_methode_page']) ){
+        $tableau_champs[]='`cht_contenu_methode_page` = NULL';
+    }else{
+        $tableau_champs[]='`cht_contenu_methode_page` = \''.sq0($par['n_cht_contenu_methode_page']).'\'';
     }
 
     if(count($tableau_champs)===0){

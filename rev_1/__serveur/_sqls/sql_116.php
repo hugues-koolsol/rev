@@ -3,33 +3,25 @@ function sql_116($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_bdds` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chx_dossier_id_basedd'])){
-        if($par['n_chx_dossier_id_basedd']==='' || $par['n_chx_dossier_id_basedd']===NULL ){
-            $tableau_champs[]='`chx_dossier_id_basedd` = NULL';
-        }else{
-            $tableau_champs[]='`chx_dossier_id_basedd` = '.sq0($par['n_chx_dossier_id_basedd']).'';
-        }
+    if($par['n_chx_dossier_id_basedd']==='' || is_null($par['n_chx_dossier_id_basedd']) ){
+        $tableau_champs[]='`chx_dossier_id_basedd` = NULL';
+    }else{
+        $tableau_champs[]='`chx_dossier_id_basedd` = '.sq0($par['n_chx_dossier_id_basedd']).'';
     }
-    if(isset($par['n_chp_commentaire_basedd'])){
-        if($par['n_chp_commentaire_basedd']==='' || $par['n_chp_commentaire_basedd']===NULL ){
-            $tableau_champs[]='`chp_commentaire_basedd` = NULL';
-        }else{
-            $tableau_champs[]='`chp_commentaire_basedd` = \''.sq0($par['n_chp_commentaire_basedd']).'\'';
-        }
+    if($par['n_chp_commentaire_basedd']==='' || is_null($par['n_chp_commentaire_basedd']) ){
+        $tableau_champs[]='`chp_commentaire_basedd` = NULL';
+    }else{
+        $tableau_champs[]='`chp_commentaire_basedd` = \''.sq0($par['n_chp_commentaire_basedd']).'\'';
     }
-    if(isset($par['n_chp_rev_travail_basedd'])){
-        if($par['n_chp_rev_travail_basedd']==='' || $par['n_chp_rev_travail_basedd']===NULL ){
-            $tableau_champs[]='`chp_rev_travail_basedd` = NULL';
-        }else{
-            $tableau_champs[]='`chp_rev_travail_basedd` = \''.sq0($par['n_chp_rev_travail_basedd']).'\'';
-        }
+    if($par['n_chp_rev_travail_basedd']==='' || is_null($par['n_chp_rev_travail_basedd']) ){
+        $tableau_champs[]='`chp_rev_travail_basedd` = NULL';
+    }else{
+        $tableau_champs[]='`chp_rev_travail_basedd` = \''.sq0($par['n_chp_rev_travail_basedd']).'\'';
     }
-    if(isset($par['n_chp_fournisseur_basedd'])){
-        if($par['n_chp_fournisseur_basedd']==='' || $par['n_chp_fournisseur_basedd']===NULL ){
-            $tableau_champs[]='`chp_fournisseur_basedd` = NULL';
-        }else{
-            $tableau_champs[]='`chp_fournisseur_basedd` = \''.sq0($par['n_chp_fournisseur_basedd']).'\'';
-        }
+    if($par['n_chp_fournisseur_basedd']==='' || is_null($par['n_chp_fournisseur_basedd']) ){
+        $tableau_champs[]='`chp_fournisseur_basedd` = NULL';
+    }else{
+        $tableau_champs[]='`chp_fournisseur_basedd` = \''.sq0($par['n_chp_fournisseur_basedd']).'\'';
     }
 
     if(count($tableau_champs)===0){

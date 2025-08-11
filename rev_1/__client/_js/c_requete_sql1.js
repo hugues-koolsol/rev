@@ -2567,8 +2567,6 @@ class c_requete_sql1{
     }
     /*
       =============================================================================================================
-      =============================================================================================================
-      function #transformer_requete_en_fonction_php
     */
     #transformer_requete_en_fonction_php( type_de_requete , obj3 , id_requete_en_base , matrice_requete ){
         if(__gi1.le_niveau_de_deverminage > 0){
@@ -2990,12 +2988,10 @@ class c_requete_sql1{
                 if(la_sortie.type_de_champ === 'constante'){
                     liste_des_champs_pour_update3+='    $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\';' + CRLF;
                 }else{
-                    liste_des_champs_pour_update3+='    if(isset($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'])){' + CRLF;
-                    liste_des_champs_pour_update3+='        if($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']===\'\' || is_null($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']) ){' + CRLF;
-                    liste_des_champs_pour_update3+='            $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = NULL\';' + CRLF;
-                    liste_des_champs_pour_update3+='        }else{' + CRLF;
-                    liste_des_champs_pour_update3+='            $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\';' + CRLF;
-                    liste_des_champs_pour_update3+='        }' + CRLF;
+                    liste_des_champs_pour_update3+='    if($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']===\'\' || is_null($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']) ){' + CRLF;
+                    liste_des_champs_pour_update3+='        $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = NULL\';' + CRLF;
+                    liste_des_champs_pour_update3+='    }else{' + CRLF;
+                    liste_des_champs_pour_update3+='        $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\';' + CRLF;
                     liste_des_champs_pour_update3+='    }' + CRLF;
                 }
             }

@@ -3,19 +3,15 @@ function sql_176($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_groupes` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_nom_groupe'])){
-        if($par['n_chp_nom_groupe']==='' || $par['n_chp_nom_groupe']===NULL ){
-            $tableau_champs[]='`chp_nom_groupe` = NULL';
-        }else{
-            $tableau_champs[]='`chp_nom_groupe` = \''.sq0($par['n_chp_nom_groupe']).'\'';
-        }
+    if($par['n_chp_nom_groupe']==='' || is_null($par['n_chp_nom_groupe']) ){
+        $tableau_champs[]='`chp_nom_groupe` = NULL';
+    }else{
+        $tableau_champs[]='`chp_nom_groupe` = \''.sq0($par['n_chp_nom_groupe']).'\'';
     }
-    if(isset($par['n_chx_parent_groupe'])){
-        if($par['n_chx_parent_groupe']==='' || $par['n_chx_parent_groupe']===NULL ){
-            $tableau_champs[]='`chx_parent_groupe` = NULL';
-        }else{
-            $tableau_champs[]='`chx_parent_groupe` = '.sq0($par['n_chx_parent_groupe']).'';
-        }
+    if($par['n_chx_parent_groupe']==='' || is_null($par['n_chx_parent_groupe']) ){
+        $tableau_champs[]='`chx_parent_groupe` = NULL';
+    }else{
+        $tableau_champs[]='`chx_parent_groupe` = '.sq0($par['n_chx_parent_groupe']).'';
     }
 
     if(count($tableau_champs)===0){

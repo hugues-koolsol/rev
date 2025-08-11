@@ -3,47 +3,35 @@ function sql_109($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_requetes` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_type_requete'])){
-        if($par['n_chp_type_requete']==='' || $par['n_chp_type_requete']===NULL ){
-            $tableau_champs[]='`chp_type_requete` = NULL';
-        }else{
-            $tableau_champs[]='`chp_type_requete` = \''.sq0($par['n_chp_type_requete']).'\'';
-        }
+    if($par['n_chp_type_requete']==='' || is_null($par['n_chp_type_requete']) ){
+        $tableau_champs[]='`chp_type_requete` = NULL';
+    }else{
+        $tableau_champs[]='`chp_type_requete` = \''.sq0($par['n_chp_type_requete']).'\'';
     }
-    if(isset($par['n_cht_rev_requete'])){
-        if($par['n_cht_rev_requete']==='' || $par['n_cht_rev_requete']===NULL ){
-            $tableau_champs[]='`cht_rev_requete` = NULL';
-        }else{
-            $tableau_champs[]='`cht_rev_requete` = \''.sq0($par['n_cht_rev_requete']).'\'';
-        }
+    if($par['n_cht_rev_requete']==='' || is_null($par['n_cht_rev_requete']) ){
+        $tableau_champs[]='`cht_rev_requete` = NULL';
+    }else{
+        $tableau_champs[]='`cht_rev_requete` = \''.sq0($par['n_cht_rev_requete']).'\'';
     }
-    if(isset($par['n_cht_sql_requete'])){
-        if($par['n_cht_sql_requete']==='' || $par['n_cht_sql_requete']===NULL ){
-            $tableau_champs[]='`cht_sql_requete` = NULL';
-        }else{
-            $tableau_champs[]='`cht_sql_requete` = \''.sq0($par['n_cht_sql_requete']).'\'';
-        }
+    if($par['n_cht_sql_requete']==='' || is_null($par['n_cht_sql_requete']) ){
+        $tableau_champs[]='`cht_sql_requete` = NULL';
+    }else{
+        $tableau_champs[]='`cht_sql_requete` = \''.sq0($par['n_cht_sql_requete']).'\'';
     }
-    if(isset($par['n_cht_php_requete'])){
-        if($par['n_cht_php_requete']==='' || $par['n_cht_php_requete']===NULL ){
-            $tableau_champs[]='`cht_php_requete` = NULL';
-        }else{
-            $tableau_champs[]='`cht_php_requete` = \''.sq0($par['n_cht_php_requete']).'\'';
-        }
+    if($par['n_cht_php_requete']==='' || is_null($par['n_cht_php_requete']) ){
+        $tableau_champs[]='`cht_php_requete` = NULL';
+    }else{
+        $tableau_champs[]='`cht_php_requete` = \''.sq0($par['n_cht_php_requete']).'\'';
     }
-    if(isset($par['n_cht_commentaire_requete'])){
-        if($par['n_cht_commentaire_requete']==='' || $par['n_cht_commentaire_requete']===NULL ){
-            $tableau_champs[]='`cht_commentaire_requete` = NULL';
-        }else{
-            $tableau_champs[]='`cht_commentaire_requete` = \''.sq0($par['n_cht_commentaire_requete']).'\'';
-        }
+    if($par['n_cht_commentaire_requete']==='' || is_null($par['n_cht_commentaire_requete']) ){
+        $tableau_champs[]='`cht_commentaire_requete` = NULL';
+    }else{
+        $tableau_champs[]='`cht_commentaire_requete` = \''.sq0($par['n_cht_commentaire_requete']).'\'';
     }
-    if(isset($par['n_cht_matrice_requete'])){
-        if($par['n_cht_matrice_requete']==='' || $par['n_cht_matrice_requete']===NULL ){
-            $tableau_champs[]='`cht_matrice_requete` = NULL';
-        }else{
-            $tableau_champs[]='`cht_matrice_requete` = \''.sq0($par['n_cht_matrice_requete']).'\'';
-        }
+    if($par['n_cht_matrice_requete']==='' || is_null($par['n_cht_matrice_requete']) ){
+        $tableau_champs[]='`cht_matrice_requete` = NULL';
+    }else{
+        $tableau_champs[]='`cht_matrice_requete` = \''.sq0($par['n_cht_matrice_requete']).'\'';
     }
 
     if(count($tableau_champs)===0){

@@ -1,8 +1,8 @@
 <?php
 function sql_195($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
-      `T2`.`chp_nom_metier`
+      `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+      `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -27,8 +27,9 @@ function sql_195($par,&$donnees_retournees,$that){
                 'T0.chp_nom_acces' => $tab0[1],
                 'T0.chx_groupe_acces' => $tab0[2],
                 'T0.chx_metier_acces' => $tab0[3],
-                'T1.chp_nom_groupe' => $tab0[4],
-                'T2.chp_nom_metier' => $tab0[5],
+                'T0.cht_parametres_acces' => $tab0[4],
+                'T1.chp_nom_groupe' => $tab0[5],
+                'T2.chp_nom_metier' => $tab0[6],
             );
         }
         return array(

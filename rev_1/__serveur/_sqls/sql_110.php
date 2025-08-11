@@ -3,12 +3,10 @@ function sql_110($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_bdds` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if(isset($par['n_chp_rev_travail_basedd'])){
-        if($par['n_chp_rev_travail_basedd']==='' || $par['n_chp_rev_travail_basedd']===NULL ){
-            $tableau_champs[]='`chp_rev_travail_basedd` = NULL';
-        }else{
-            $tableau_champs[]='`chp_rev_travail_basedd` = \''.sq0($par['n_chp_rev_travail_basedd']).'\'';
-        }
+    if($par['n_chp_rev_travail_basedd']==='' || is_null($par['n_chp_rev_travail_basedd']) ){
+        $tableau_champs[]='`chp_rev_travail_basedd` = NULL';
+    }else{
+        $tableau_champs[]='`chp_rev_travail_basedd` = \''.sq0($par['n_chp_rev_travail_basedd']).'\'';
     }
 
     if(count($tableau_champs)===0){
