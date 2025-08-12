@@ -650,6 +650,17 @@ class c_acces1{
                   =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>paramètre<br><span style="color:red;">(non enregistré)</span></span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <textarea class="txtar1"  id="cht_parametres_acces" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_parametres_acces']) . '</textarea>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '    <div class="hug_bouton" data-hug_click="c_acces1.formulaire1(conteneur1(vv_acces_modifier1),chi_id_acces(' . $chi_id_acces . '),page_liste_des_acces1())" title="" >enregistrer et revenir à la liste</div>';
                 $o1 .= '    <div class="hug_bouton" data-hug_click="c_acces1.formulaire1(conteneur1(vv_acces_modifier1),chi_id_acces(' . $chi_id_acces . '))" title="" >enregistrer</div>';
@@ -657,8 +668,11 @@ class c_acces1{
                 $o1 .= '  </div>' . PHP_EOL;
                 /**/
                 $o1 .= '</div>' . PHP_EOL;
+
+
                 $donnees_retournees[__x_page] .= $o1;
                 $donnees_retournees[__xst]=__xsu;
+
 
             }
 

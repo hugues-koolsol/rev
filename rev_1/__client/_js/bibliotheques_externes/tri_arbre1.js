@@ -634,7 +634,7 @@ class tri_arbre1{
                 t+=' id="dedans_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
                 t+=' data-position_pour_tri="dedans" ';
                 t+=' style="';
-                t+='   min-height:30px;';
+                t+='   min-height:var(--h_mini_but);';
                 t+='   border:' + this.#options.border_bloc + ';';
                 t+='   display:flex;';
                 t+='   flex-direction:row;';
@@ -682,23 +682,9 @@ class tri_arbre1{
                     }
                     le_html += '<div data-replie="' + this.arbre[i].id_interne + '"';
                     le_html += ' class="' +this.#options.class_du_bouton_replier + '"';
-                    le_html += ' style="float:right;'+style_replie+'min-width:1em;text-align:center;">';
+                    le_html += ' style="float:right;'+style_replie+'min-width:2em;text-align:center;">';
                     le_html += libelle_replie;
                     le_html += '</div>';
-/*                 
-                    if(style_replie === ''){
-                        if(this.arbre[i].contient_des_enfants === 0){
-                        }else{
-                            le_html+='<div data-replie="' + this.arbre[i].id_interne + '" style="float:right;border:1px hotpink solid;min-width:1em;text-align:center;">-</div>';
-                        }
-                    }else{
-                        if(this.arbre[i].contient_des_enfants === 0){
-                            le_html+='<div data-replie="' + this.arbre[i].id_interne + '" style="float:right;border:1px white solid;min-width:1em;text-align:center;"></div>';
-                        }else{
-                            le_html+='<div data-replie="' + this.arbre[i].id_interne + '" style="float:right;border:1px hotpink solid;min-width:1em;text-align:center;">+</div>';
-                        }
-                    }
-*/                    
                 }
                 if(this.#options.triable === false){
                     le_html+='<div data-poignee_pour_tri="' + this.arbre[i].id_interne + '" style="float:right;visibility:hidden;" class="' + this.#options.class_du_bouton_deplacer + '">↕</div>';

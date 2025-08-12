@@ -3,7 +3,7 @@ $php_des_sql=array (
   101 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces`
+`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T0`.`chx_acces_utilisateur`
  FROM b1.tbl_utilisateurs T0
  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
 
@@ -943,82 +943,6 @@ WHERE `chi_id_metier` = :c_chi_id_metier ;',
 WHERE `chi_id_metier` = :chi_id_metier ;',
     'cht_commentaire_requete' => 'métier',
   ),
-  188 => 
-  array (
-    'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_source_page` , `T0`.`chp_methode_page` , 
-`T0`.`cht_complement_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T1`.`cht_contenu_methode_page`
- FROM b1.tbl_pages T0
- LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-
- LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
-
- LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
-
-WHERE (`T0`.`chi_id_page` = :T0_chi_id_page
-   AND `T0`.`chp_nom_page` LIKE :T0_chp_nom_page) 
-ORDER BY `T0`.`chi_id_page` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',
-    'cht_commentaire_requete' => 'pages',
-  ),
-  189 => 
-  array (
-    'cht_sql_requete' => 'INSERT INTO b1.`tbl_pages`(
-    `chp_nom_page` , 
-    `chx_parent_page` , 
-    `chx_acces_page` , 
-    `chx_source_page` , 
-    `chp_methode_page` , 
-    `cht_complement_page` , 
-    `cht_contenu_methode_page`
-) VALUES (
-    :chp_nom_page , 
-    :chx_parent_page , 
-    :chx_acces_page , 
-    :chx_source_page , 
-    :chp_methode_page , 
-    :cht_complement_page , 
-    :cht_contenu_methode_page
-);',
-    'cht_commentaire_requete' => 'pages',
-  ),
-  190 => 
-  array (
-    'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_page` , `T0`.`chp_nom_page` , `T0`.`chx_parent_page` , `T0`.`chx_acces_page` , `T0`.`chx_source_page` , 
-`T0`.`chp_methode_page` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_complement_page` , 
-`T0`.`cht_contenu_methode_page`
- FROM b1.tbl_pages T0
- LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_parent_page
-
- LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T0.chx_acces_page
-
- LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T0.chx_source_page
-
-WHERE `T0`.`chi_id_page` = :T0_chi_id_page
-;',
-    'cht_commentaire_requete' => 'pages',
-  ),
-  191 => 
-  array (
-    'cht_sql_requete' => 'UPDATE b1.tbl_pages SET 
-   `chp_nom_page` = :n_chp_nom_page , 
-   `chx_parent_page` = :n_chx_parent_page , 
-   `chx_acces_page` = :n_chx_acces_page , 
-   `chx_source_page` = :n_chx_source_page , 
-   `chp_methode_page` = :n_chp_methode_page , 
-   `cht_complement_page` = :n_cht_complement_page , 
-   `cht_contenu_methode_page` = :n_cht_contenu_methode_page
-WHERE `chi_id_page` = :c_chi_id_page ;',
-    'cht_commentaire_requete' => 'pages',
-  ),
-  192 => 
-  array (
-    'cht_sql_requete' => 'DELETE FROM b1.tbl_pages
-WHERE `chi_id_page` = :chi_id_page ;',
-    'cht_commentaire_requete' => 'pages',
-  ),
   193 => 
   array (
     'cht_sql_requete' => 'SELECT 
@@ -1077,113 +1001,6 @@ WHERE `chi_id_acces` = :c_chi_id_acces ;',
     'cht_sql_requete' => 'DELETE FROM b1.tbl_acces
 WHERE `chi_id_acces` = :chi_id_acces ;',
     'cht_commentaire_requete' => 'acces',
-  ),
-  198 => 
-  array (
-    'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-`T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
-`T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
- FROM b1.tbl_menus T0
- LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-
- LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
-
- LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-
- LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-
-WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
-   AND `T0`.`chx_page_menu` = :T0_chx_page_menu
-   AND `T2`.`chi_id_acces` = :T2_chi_id_acces) 
-ORDER BY `T0`.`chi_id_menu` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',
-    'cht_commentaire_requete' => 'menu',
-  ),
-  199 => 
-  array (
-    'cht_sql_requete' => 'INSERT INTO b1.`tbl_menus`(
-    `chx_page_menu` , 
-    `che_ordre_menu` , 
-    `cht_prerequis_rev_menu` , 
-    `cht_prerequis_php_menu` , 
-    `cht_libelle_menu`
-) VALUES (
-    :chx_page_menu , 
-    :che_ordre_menu , 
-    :cht_prerequis_rev_menu , 
-    :cht_prerequis_php_menu , 
-    :cht_libelle_menu
-);',
-    'cht_commentaire_requete' => 'menu',
-  ),
-  300 => 
-  array (
-    'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_menu` , `T0`.`chx_page_menu` , `T0`.`che_ordre_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , 
-`T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_groupe` , `T2`.`chx_groupe_acces` , 
-`T2`.`chi_id_acces` , `T4`.`chp_nom_metier` , `T2`.`chx_metier_acces` , `T1`.`cht_complement_page` , `T1`.`cht_contenu_methode_page`
- FROM b1.tbl_menus T0
- LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-
- LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
-
- LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-
- LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-
-WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
-;',
-    'cht_commentaire_requete' => 'menu',
-  ),
-  301 => 
-  array (
-    'cht_sql_requete' => 'UPDATE b1.tbl_menus SET 
-   `chx_page_menu` = :n_chx_page_menu , 
-   `che_ordre_menu` = :n_che_ordre_menu , 
-   `cht_prerequis_rev_menu` = :n_cht_prerequis_rev_menu , 
-   `cht_prerequis_php_menu` = :n_cht_prerequis_php_menu , 
-   `cht_libelle_menu` = :n_cht_libelle_menu
-WHERE `chi_id_menu` = :c_chi_id_menu ;',
-    'cht_commentaire_requete' => 'menu',
-  ),
-  302 => 
-  array (
-    'cht_sql_requete' => 'DELETE FROM b1.tbl_menus
-WHERE `chi_id_menu` = :chi_id_menu ;',
-    'cht_commentaire_requete' => 'menus',
-  ),
-  303 => 
-  array (
-    'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_menu` , `T0`.`cht_prerequis_rev_menu` , `T0`.`cht_prerequis_php_menu` , `T0`.`cht_libelle_menu` , `T1`.`chp_nom_page` , 
-`T1`.`chp_methode_page` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_source` , `T1`.`cht_complement_page` , 
-`T1`.`cht_contenu_methode_page`
- FROM b1.tbl_menus T0
- LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-
- LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_page
-
- LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_page
-
-WHERE (`T0`.`chi_id_menu` > :T0_chi_id_menu
-   AND `T1`.`chi_id_page` IS NOT NULL) 
-ORDER BY `T2`.`chx_groupe_acces` ASC, `T2`.`chx_metier_acces` ASC, `T0`.`che_ordre_menu` ASC
-;',
-    'cht_commentaire_requete' => 'menus',
-  ),
-  304 => 
-  array (
-    'cht_sql_requete' => 'SELECT 
-`T1`.`chp_nom_page` , `T0`.`chi_id_menu`
- FROM b1.tbl_menus T0
- LEFT JOIN b1.tbl_pages T1 ON T1.chi_id_page = T0.chx_page_menu
-
-WHERE `T1`.`chx_acces_page` = :T1_chx_acces_page 
-ORDER BY `T0`.`che_ordre_menu` ASC
-;',
-    'cht_commentaire_requete' => 'menus par accès',
   ),
   305 => 
   array (
@@ -1252,22 +1069,6 @@ WHERE (`chi_id_source` = :c_chi_id_source
    AND `chx_projet_id_source` = :c_chx_projet_id_source) ;',
     'cht_commentaire_requete' => 'sources',
   ),
-  311 => 
-  array (
-    'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_page`
- FROM b1.tbl_pages T0
-WHERE `T0`.`chx_source_page` = :T0_chx_source_page
-;',
-    'cht_commentaire_requete' => 'pages par id_source',
-  ),
-  312 => 
-  array (
-    'cht_sql_requete' => 'UPDATE b1.tbl_pages SET 
-   `chx_source_page` = :n_chx_source_page
-WHERE `chi_id_page` IN (:c_chi_id_page) ;',
-    'cht_commentaire_requete' => 'page/id_source par id_source',
-  ),
   313 => 
   array (
     'cht_sql_requete' => '/*meta(sur_base_de_reference(1))*/
@@ -1335,5 +1136,62 @@ SELECT
 WHERE `T0`.`chi_id_projet` > 2
 ;',
     'cht_commentaire_requete' => 'projets >2 pour isa de champs ',
+  ),
+  317 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+ FROM b1.tbl_autorisations T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+
+WHERE ( /* */ `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
+   AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+   AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
+   AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
+   AND `T2`.`chp_nom_source` LIKE :T2_chp_nom_source) 
+ORDER BY `T0`.`chi_id_autorisation` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',
+    'cht_commentaire_requete' => 'autorisations',
+  ),
+  318 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_autorisations`(
+    `chx_acces_autorisation` , 
+    `chx_source_autorisation`
+) VALUES (
+    :chx_acces_autorisation , 
+    :chx_source_autorisation
+);',
+    'cht_commentaire_requete' => 'autorisations',
+  ),
+  319 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+ FROM b1.tbl_autorisations T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+
+WHERE (`T0`.`chi_id_autorisation` = :T0_chi_id_autorisation)
+;',
+    'cht_commentaire_requete' => 'autorisations',
+  ),
+  320 => 
+  array (
+    'cht_sql_requete' => 'DELETE FROM b1.tbl_autorisations
+WHERE `chi_id_autorisation` = :chi_id_autorisation ;',
+    'cht_commentaire_requete' => 'autorisations',
+  ),
+  321 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_autorisations SET 
+   `chx_acces_autorisation` = :n_chx_acces_autorisation , 
+   `chx_source_autorisation` = :n_chx_source_autorisation
+WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',
+    'cht_commentaire_requete' => 'autorisations',
   ),
 );

@@ -299,6 +299,7 @@ class c_fonctions_js1{
             "class_du_bouton_deplacer" : 'hug_bouton',
             "boutons_du_menu" : [] ,
             "class_du_bouton_menu" : 'hug_bouton',
+            "class_du_bouton_replier" : 'hug_bouton yy__x_signaux_2'
         };
         options.boutons_du_menu.push({"libelle" : '+' ,"fonction" : this.ajouter_une_branche_au_menu1})
 

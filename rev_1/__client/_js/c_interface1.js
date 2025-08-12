@@ -1639,7 +1639,9 @@ class _c_interface1{
                 document.getElementById( 'vv_les_messages' ).style.visibility='visible';
                 document.getElementById( 'vv_les_messages' ).scrollTo( {"top" : 0 ,"left" : 0 ,"behavior" : "smooth"} );
             }
-            document.getElementById( 'vv_supprimer_les_messages_3' ).style.visibility='visible';
+            try{
+                document.getElementById( 'vv_supprimer_les_messages_3' ).style.visibility='visible';
+            }catch{}
         }
         if(classe_du_message_d_erreur !== ''){
             try{

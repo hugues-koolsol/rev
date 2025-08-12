@@ -3460,7 +3460,7 @@ class c_requete_sql1{
                 t+='        return array(' + CRLF;
                 t+='                __xst => __xer , ' + CRLF;
                 t+='                \'sql0\' => $sql0 ,' + CRLF;
-                t+='                \'sql0\' => \'la liste sur les ' + obj3.tableau_des_tables_utilisees[0].table.replace( /tbl_/ , '' ) + '\' ,' + CRLF;
+                t+='                \'texte_requete\' => \'la liste sur les ' + obj3.tableau_des_tables_utilisees[0].table.replace( /tbl_/ , '' ) + '\' ,' + CRLF;
                 t+='                \'exception\' => $e ,' + CRLF;
                 t+='                \'id_bdd\' => ' + obj3.id_base_principale + ' ' + CRLF;
                 t+='            );' + CRLF;

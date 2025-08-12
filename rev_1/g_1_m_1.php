@@ -48,17 +48,22 @@ if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset(
     $t[19]='<div data-id_menu="19" class="hug_bouton" data-hug_click="c_metiers1.page_liste_des_metiers1()indice_menu(19)" title="">métiers</div>';
 }
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
-    $t[20]='<div data-id_menu="20" class="hug_bouton" data-hug_click="c_utilisateurs1.page_liste_des_utilisateurs1()indice_menu(20)" title="">utilisateurs</div>';
-}
-if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
     $t[21]='<div data-id_menu="21" class="hug_bouton" data-hug_click="c_acces1.page_liste_des_acces1()indice_menu(21)" title="">accès</div>';
 }
+if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
+    $t[22]='<div data-id_menu="22" class="hug_bouton" data-hug_click="c_utilisateurs1.page_liste_des_utilisateurs1()indice_menu(22)" title="">utilisateurs</div>';
+}
+if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
+    $t[22]='<div data-id_menu="23" class="hug_bouton" data-hug_click="c_autorisations1.page_liste_des_autorisations1()indice_menu(23)" title="">autorisations</div>';
+}
+/*
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
     $t[22]='<div data-id_menu="22" class="hug_bouton" data-hug_click="c_pages1.page_liste_des_pages1()indice_menu(22)" title="">pages</div>';
 }
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) && isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
     $t[23]='<div data-id_menu="23" class="hug_bouton" data-hug_click="c_menus1.page_liste_des_menus1()indice_menu(23)" title="">menus</div>';
 }
+*/
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
     $t[24]='<div data-id_menu="24" class="hug_bouton" data-hug_click="c_profile1.recupere_la_page_des_coordonnees()indice_menu(24)" title=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -7  20 21">
              <g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;">

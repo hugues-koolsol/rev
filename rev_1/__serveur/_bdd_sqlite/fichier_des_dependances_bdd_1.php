@@ -15,9 +15,9 @@ $tableau_des_dependances=array (
       ),
       1 => 
       array (
-        'table_dependante' => 'tbl_pages',
-        'champ_dependant' => 'chx_acces_page',
-        'non_nulle' => '0',
+        'table_dependante' => 'tbl_autorisations',
+        'champ_dependant' => 'chx_acces_autorisation',
+        'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
     ),
@@ -152,23 +152,16 @@ $tableau_des_dependances=array (
       ),
     ),
   ),
-  'tbl_pages_chi_id_page' => 
+  'tbl_utilisateurs_chi_id_utilisateur' => 
   array (
-    'table_parente' => 'tbl_pages',
-    'champ_parent' => 'chi_id_page',
+    'table_parente' => 'tbl_utilisateurs',
+    'champ_parent' => 'chi_id_utilisateur',
     'dependances' => 
     array (
       0 => 
       array (
-        'table_dependante' => 'tbl_pages',
-        'champ_dependant' => 'chx_parent_page',
-        'non_nulle' => '0',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-      1 => 
-      array (
-        'table_dependante' => 'tbl_menus',
-        'champ_dependant' => 'chx_page_menu',
+        'table_dependante' => 'tbl_taches',
+        'champ_dependant' => 'chx_utilisateur_tache',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
@@ -182,23 +175,8 @@ $tableau_des_dependances=array (
     array (
       0 => 
       array (
-        'table_dependante' => 'tbl_pages',
-        'champ_dependant' => 'chx_source_page',
-        'non_nulle' => '0',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-    ),
-  ),
-  'tbl_utilisateurs_chi_id_utilisateur' => 
-  array (
-    'table_parente' => 'tbl_utilisateurs',
-    'champ_parent' => 'chi_id_utilisateur',
-    'dependances' => 
-    array (
-      0 => 
-      array (
-        'table_dependante' => 'tbl_taches',
-        'champ_dependant' => 'chx_utilisateur_tache',
+        'table_dependante' => 'tbl_autorisations',
+        'champ_dependant' => 'chx_source_autorisation',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),

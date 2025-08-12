@@ -22,11 +22,11 @@ CREATE UNIQUE INDEX idx_nom_groupe ON `tbl_groupes`
         /* meta(nom_de_l_index(idx_nom_groupe),genre_meta(index_de_table),message('ce nom de groupe existe')) */
          ( `chp_nom_groupe` ) ;
 
-CREATE UNIQUE INDEX idx_principal_pages ON `tbl_pages` 
-        /* meta(nom_de_l_index(idx_principal_pages),genre_meta(index_de_table),message('')) */
-         ( `chx_parent_page` , `chx_acces_page` , `chx_source_page` , `chp_methode_page` ) ;
-
 CREATE UNIQUE INDEX idx_texte_unique_taches ON `tbl_taches` 
         /* meta(nom_de_l_index(idx_texte_unique_taches),genre_meta(index_de_table),message('Cete tache existe déjà')) */
          ( `chp_texte_tache` ) ;
+
+CREATE UNIQUE INDEX idx_unique1 ON `tbl_autorisations` 
+        /* meta(#(),genre_meta(index_de_table),message('')) */
+         ( `chx_acces_autorisation` , `chx_source_autorisation` ) ;
 

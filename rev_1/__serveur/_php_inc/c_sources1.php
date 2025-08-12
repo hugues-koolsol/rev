@@ -2333,7 +2333,8 @@ class c_sources1{
         $fonction1='c_sources1.page_sources_sous_liste1';
         /* déverminage */
         $__nbMax=20;
-        /* $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $mat '.var_export($mat,true); **_/*/
+        
+        
         $par=array();
         $par['nom_champ_dans_parent1']='';
         $par['nom_libelle_dans_parent1']='';
@@ -2478,26 +2479,9 @@ class c_sources1{
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
-        $tt=/*sql_inclure_deb*/
-            /* sql_161()
-            SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chx_projet_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , 
-            `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source`
-             FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE ( / *** *** / `T0`.`chi_id_source` = :T0_chi_id_source
-               AND `T0`.`chi_id_source` > :T0_chi_id_source2
-               AND `T0`.`chi_id_source` <= :T0_chi_id_source3
-               AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
-               AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
-               AND `T0`.`chp_nom_source` LIKE :T0_chp_nom_source) 
-            ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
+        
+        
+        $tt=$this->sql0->sql_iii(
              /*sql_161()*/ 161,
             array(
                 /**/
@@ -2505,6 +2489,8 @@ class c_sources1{
                 'T0_chi_id_source' => $par['T0_chi_id_source'] === '' ? '' : $par['T0_chi_id_source'],
                 'T0_chx_dossier_id_source' => $par['T0_chx_dossier_id_source'] === '' ? '' : $par['T0_chx_dossier_id_source'],
                 'T0_chp_nom_source' => $par['T0_chp_nom_source'] === '' ? '' : '' . $par['T0_chp_nom_source'] . '',
+                'T0_chi_id_source2' => '' ,
+                'T0_chi_id_source3' => '' ,
                 'quantitee' => $__nbMax,
                 'debut' => $__debut
             ),
@@ -2517,6 +2503,7 @@ class c_sources1{
             return;
 
         }
+        
 
         /*
           $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $tt '.var_export($tt,true);
@@ -2684,66 +2671,6 @@ class c_sources1{
 
         }
 
-        $tt311=/*sql_inclure_deb*/
-            /* sql_311()
-            SELECT 
-            `T0`.`chi_id_page`
-             FROM b1.tbl_pages T0
-            WHERE `T0`.`chx_source_page` = :T0_chx_source_page
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
-             /*sql_311()*/ 311,
-            array(/**/
-                'T0_chx_source_page' => $chi_id_source_ancienne
-            ),
-            $donnees_retournees
-        );
-        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt311 , true ) . '</pre>' ; exit(0); */
-        
-        if($tt311[__xst] !== __xsu){
-
-            $donnees_retournees[__x_signaux][__xer][]='erreur sur la sélection des pages qui pointent sur ce source [' . __LINE__ . ']';
-            return;
-
-        }
-
-        
-        if(count($tt311[__xva]) > 0){
-
-            $liste_des_id_pages='';
-            foreach($tt311[__xva] as $k1 => $v1){
-                $liste_des_id_pages .= ',' . $v1['T0.chi_id_page'];
-            }
-            $liste_des_id_pages=substr($liste_des_id_pages,1);
-            /*echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $liste_des_id_pages , true ) . '</pre>' ; exit(0);*/
-            $tt312=/*sql_inclure_deb*/
-                /* sql_312()
-                UPDATE b1.tbl_pages SET 
-                   `chx_source_page` = :n_chx_source_page
-                WHERE `chi_id_page` IN (:c_chi_id_page) ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
-                 /*sql_312()*/ 312,
-                array(/**/
-                    'n_chx_source_page' => '',
-                    'c_chi_id_page' => $liste_des_id_pages
-                ),
-                $donnees_retournees
-            );
-            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt312 , true ) . '</pre>' ; exit(0); */
-            
-            if($tt312[__xst] !== __xsu){
-
-                $donnees_retournees[__x_signaux][__xer][]='erreur la maj des pages à source NULL [' . __LINE__ . ']';
-                return;
-
-            }
-
-
-        }
 
         $tt3=/*sql_inclure_deb*/
             /* sql_310()
@@ -2771,38 +2698,6 @@ class c_sources1{
         }
 
         
-        if(count($tt311[__xva]) > 0){
-
-            $liste_des_id_pages='';
-            foreach($tt311[__xva] as $k1 => $v1){
-                $liste_des_id_pages .= ',' . $v1['T0.chi_id_page'];
-            }
-            $liste_des_id_pages=substr($liste_des_id_pages,1);
-            $tt312=/*sql_inclure_deb*/
-                /* sql_312()
-                UPDATE b1.tbl_pages SET 
-                   `chx_source_page` = :n_chx_source_page
-                WHERE `chi_id_page` IN (:c_chi_id_page) ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
-                 /*sql_312()*/ 312,
-                array(/**/
-                    'n_chx_source_page' => $chi_id_source_nouvelle,
-                    'c_chi_id_page' => $liste_des_id_pages
-                ),
-                $donnees_retournees
-            );
-            
-            if($tt311[__xst] !== __xsu){
-
-                $donnees_retournees[__x_signaux][__xer][]='erreur la maj des pages à source (' . $chi_id_source_nouvelle . ') [' . __LINE__ . ']';
-                return;
-
-            }
-
-
-        }
 
         $tt152=/*sql_inclure_deb*/
             /* sql_152()

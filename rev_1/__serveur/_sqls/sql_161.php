@@ -15,7 +15,7 @@ function sql_161($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_source'] !== '')){
-        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_source`',$par['T0_chi_id_source']);
+        $where0.=' AND `T0`.`chi_id_source` = '.sq1($par['T0_chi_id_source']).''.PHP_EOL;
     }
     if(($par['T0_chi_id_source2'] !== '')){
         $where0.=' AND `T0`.`chi_id_source` > '.sq1($par['T0_chi_id_source2']).''.PHP_EOL;
@@ -24,10 +24,10 @@ function sql_161($par,&$donnees_retournees,$that){
         $where0.=' AND `T0`.`chi_id_source` <= '.sq1($par['T0_chi_id_source3']).''.PHP_EOL;
     }
     if(($par['T0_chx_dossier_id_source'] !== '')){
-        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_dossier_id_source`',$par['T0_chx_dossier_id_source']);
+        $where0.=' AND `T0`.`chx_dossier_id_source` = '.sq1($par['T0_chx_dossier_id_source']).''.PHP_EOL;
     }
     if(($par['T0_chx_projet_id_source'] !== '')){
-        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_projet_id_source`',$par['T0_chx_projet_id_source']);
+        $where0.=' AND `T0`.`chx_projet_id_source` = '.sq1($par['T0_chx_projet_id_source']).''.PHP_EOL;
     }
     if(($par['T0_chp_nom_source'] !== '')){
         $where0.=' AND `T0`.`chp_nom_source` LIKE '.sq2($par['T0_chp_nom_source']).''.PHP_EOL;
@@ -71,7 +71,7 @@ function sql_161($par,&$donnees_retournees,$that){
         return array(
                 __xst => __xer , 
                 'sql0' => $sql0 ,
-                'sql0' => 'la liste sur les sources' ,
+                'texte_requete' => 'la liste sur les sources' ,
                 'exception' => $e ,
                 'id_bdd' => BDD_NUMERO_1 
             );

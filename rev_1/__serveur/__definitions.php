@@ -68,11 +68,7 @@ $GLOBALS[__date]=date('Y-m-d H:i:s');
 $decimalPart=(int)(fmod(microtime(true),1) * 1000);
 $decimalPart=$decimalPart < 10 ? '00' . $decimalPart : ($decimalPart < 100 ? '0' . $decimalPart : '' . $decimalPart);
 $GLOBALS[__date_ms]=$GLOBALS[__date] . '.' . $decimalPart;
-/*
-  l'environnement doit être dans une arborescence 
-  rev/rev_x/__serveur 
-  rev/rev_x/__client 
-*/
+$GLOBALS['chx_acces_utilisateur']=2;
 /*
   rev
 */

@@ -1,7 +1,7 @@
 <?php
 function sql_101($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces`
+      `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T0`.`chx_acces_utilisateur`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -29,6 +29,7 @@ function sql_101($par,&$donnees_retournees,$that){
                 'T0.chi_id_utilisateur' => $tab0[1],
                 'T1.chx_groupe_acces' => $tab0[2],
                 'T1.chx_metier_acces' => $tab0[3],
+                'T0.chx_acces_utilisateur' => $tab0[4],
             );
         }
         return array(
