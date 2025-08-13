@@ -71,6 +71,8 @@ class c_autorisations1{
                    || $conteneur1 === 'vv_autorisations_creer1'
                    || $conteneur1 === 'vv_autorisations_supprimer1'
                    || $conteneur1 === 'vv_autorisations_filtre1'
+                   || $conteneur1 === 'vv_autorisations_filtre_choix_1'
+                   
                 ){
 
                     $this->$conteneur1(
@@ -657,15 +659,17 @@ class c_autorisations1{
     function page_autorisations_sous_liste1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $fonction1='c_autorisations1.page_autorisations_sous_liste1';
         /* déverminage */
-        $__nbMax=10;
+        $__nbMax=30;
         /*
           $donnees_retournees[__x_signaux][__xif][]=__LINE__ . 'TODO $par '.var_export($par,true);
         */
         $par=array();
         $par['T0_chi_id_autorisation']='';
+        $par['T0_chx_acces_autorisation']='';
         $par['T0_chx_source_autorisation']='';
-        $par['nom_champ_dans_parent1']='';
-        $par['nom_libelle_dans_parent1']='';
+        $par['T1_chp_nom_acces']='';
+        $par['T2_chp_nom_source']='';
+        
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
@@ -741,17 +745,71 @@ class c_autorisations1{
         }
 
         $par['T0_chi_id_autorisation']=$par['T0_chi_id_autorisation']??'';
-        $par['T0_chx_source_autorisation']=$par['T0_chx_source_autorisation']??'';
-        $par['nom_champ_dans_parent1']=$par_mat['nom_champ_dans_parent1']??'';
-        $par['nom_libelle_dans_parent1']=$par_mat['nom_libelle_dans_parent1']??'';
+        $par['T0_chx_acces_autorisation']=$par['T0_chx_acces_autorisation']??'';
+        $par['T0_chx_source_autorisation']=$par_mat['T0_chx_source_autorisation']??'';
+        $par['T1_chp_nom_acces']=$par_mat['T1_chp_nom_acces']??'';
+        $par['T2_chp_nom_source']=$par_mat['T2_chp_nom_source']??'';
+        
+        
         $nom_filtre='vv_autorisations_filtre_choix_1';
-        $o1='<h1>choisir un autorisation</h1>';
+        $o1='<h1>choisir ' . self::UN_UNE_ELEMENT_GERE . '</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
         $__debut=$__num_page * $__nbMax;
         $o1 .= '<div class="yy_filtre_liste1" id="' . $nom_filtre . '">' . PHP_EOL;
-        /**/
+        /*
+        
+        */
         $o1 .= '   <div>' . PHP_EOL;
-        $o1 .= '      <div><span>nom</span></div>' . PHP_EOL;
+        $o1 .= '      <div><span>nom source</span></div>' . PHP_EOL;
+        $o1 .= '      <div><input type="text" id="T2_chp_nom_source" value="' . $par['T2_chp_nom_source'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
+        
+        if($par['T2_chp_nom_source'] !== ''){
+
+            $o1 .= '         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id(T2_chp_nom_source),value(\'\'))),c_autorisations1.formulaire1(conteneur1(' . $nom_filtre . '))" >x</span>';
+
+        }
+        $o1 .= '      </div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        /*
+        
+        */
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '      <div><span>nom acces</span></div>' . PHP_EOL;
+        $o1 .= '      <div><input type="text" id="T1_chp_nom_acces" value="' . $par['T1_chp_nom_acces'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
+        
+        if($par['T1_chp_nom_acces'] !== ''){
+
+            $o1 .= '         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id(T1_chp_nom_acces),value(\'\'))),c_autorisations1.formulaire1(conteneur1(' . $nom_filtre . '))" >x</span>';
+
+        }
+        $o1 .= '      </div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        /*
+        
+        */
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '    <div><span>id</span></div>' . PHP_EOL;
+        $o1 .= '    <div><input type="text" id="T0_chi_id_autorisation" value="' . $par['T0_chi_id_autorisation'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        /*
+        
+        */
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '      <div><span>id acces</span></div>' . PHP_EOL;
+        $o1 .= '      <div><input type="text" id="T0_chx_acces_autorisation" value="' . $par['T0_chx_acces_autorisation'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
+        
+        if($par['T0_chx_acces_autorisation'] !== ''){
+
+            $o1 .= '         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id(T0_chx_acces_autorisation),value(\'\'))),c_autorisations1.formulaire1(conteneur1(' . $nom_filtre . '))" >x</span>';
+
+        }
+        $o1 .= '      </div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        /*
+        
+        */
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '      <div><span>id source</span></div>' . PHP_EOL;
         $o1 .= '      <div><input type="text" id="T0_chx_source_autorisation" value="' . $par['T0_chx_source_autorisation'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
         
         if($par['T0_chx_source_autorisation'] !== ''){
@@ -759,15 +817,11 @@ class c_autorisations1{
             $o1 .= '         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id(T0_chx_source_autorisation),value(\'\'))),c_autorisations1.formulaire1(conteneur1(' . $nom_filtre . '))" >x</span>';
 
         }
-
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
-        /**/
-        $o1 .= '   <div>' . PHP_EOL;
-        $o1 .= '    <div><span>id</span></div>' . PHP_EOL;
-        $o1 .= '    <div><input type="text" id="T0_chi_id_autorisation" value="' . $par['T0_chi_id_autorisation'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
-        $o1 .= '   </div>' . PHP_EOL;
-        /**/
+        /*
+        
+        */
         $o1 .= '   <div>    ' . PHP_EOL;
         $o1 .= '     <div><span>&nbsp;</span></div>' . PHP_EOL;
         $o1 .= '     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_autorisations1.formulaire1(conteneur1(' . $nom_filtre . '))" >🔎</div></div>' . PHP_EOL;
@@ -777,27 +831,16 @@ class c_autorisations1{
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
-        $tt=/*sql_inclure_deb*/
-            /* sql_178()
-            SELECT 
-            `T0`.`chi_id_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`chp_mot_de_passe_autorisation` , `T0`.`chi_compteur1_autorisation` , `T0`.`chi_compteur_socket1_autorisation` , 
-            `T0`.`chi_compteur1_autorisation` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces`
-             FROM b1.tbl_autorisations T0
-             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
-            
-            WHERE ( / *** *** / `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
-               AND `T0`.`chx_source_autorisation` LIKE :T0_chx_source_autorisation) 
-            ORDER BY `T0`.`chi_id_autorisation` DESC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
-             /*sql_178()*/ 178,
-             /**/ array(
+        $tt=$this->sql0->sql_iii(
+             317,
+             array(
                 /**/
+                
                 'T0_chi_id_autorisation' => $par['T0_chi_id_autorisation'] === '' ? '' : $par['T0_chi_id_autorisation'],
                 'T0_chx_source_autorisation' => $par['T0_chx_source_autorisation'] === '' ? '' : '' . $par['T0_chx_source_autorisation'] . '',
+                'T0_chx_acces_autorisation' => $par['T0_chx_acces_autorisation'] === '' ? '' : '' . $par['T0_chx_acces_autorisation'] . '',
+                'T1_chp_nom_acces' => $par['T1_chp_nom_acces'] === '' ? '' : '' . $par['T1_chp_nom_acces'] . '',
+                'T2_chp_nom_source' => $par['T2_chp_nom_source'] === '' ? '' : '' . $par['T2_chp_nom_source'] . '',
                 'quantitee' => $__nbMax,
                 'debut' => $__debut
             ),
@@ -820,7 +863,9 @@ class c_autorisations1{
         $lsttbl .= '<thead><tr>';
         $lsttbl .= '<th></th>';
         $lsttbl .= '<th>id</th>';
-        $lsttbl .= '<th>autorisation</th>';
+        $lsttbl .= '<th>id autorisation</th>';
+        $lsttbl .= '<th>nom source</th>';
+        $lsttbl .= '<th>nom acces</th>';
         $lsttbl .= '</tr></thead><tbody>';
         foreach($tt[__xva] as $k0 => $v0){
             $lsttbl .= '<tr>';
@@ -830,12 +875,14 @@ class c_autorisations1{
             $parametres .= '    nom_champ_dans_parent1(' . $par['nom_champ_dans_parent1'] . ')';
             $parametres .= '    nom_libelle_dans_parent1(' . $par['nom_libelle_dans_parent1'] . ')';
             $parametres .= '    id1(' . $v0['T0.chi_id_autorisation'] . ')';
-            $parametres .= '    libelle1("(' . $v0['T0.chi_id_autorisation'] . ') ' . $v0['T0.chx_source_autorisation'] . '" )';
+            $parametres .= '    libelle1("(' . $v0['T0.chi_id_autorisation'] . ') ' . $v0['T1.chp_nom_acces'] . " " . $v0['T2.chp_nom_source'] . '" )';
             $parametres .= ')';
             $lsttbl .= '<td style="max-width:calc(1*var(t_1boutons_carres))">';
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="' . htmlentities($parametres) . '">=&gt;</div>';
             $lsttbl .= '</td>';
-            /**/
+            /*
+            
+            */
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T0.chi_id_autorisation'] . '';
             $lsttbl .= '</td>';
@@ -849,8 +896,21 @@ class c_autorisations1{
             }
 
             $lsttbl .= '</td>';
-            /**/
-            /**/
+            /*
+            
+            */
+            $lsttbl .= '<td style="text-align:center;">';
+            $lsttbl .= '' . $v0['T2.chp_nom_source'] . '';
+            $lsttbl .= '</td>';
+            /*
+            
+            */
+            $lsttbl .= '<td style="text-align:center;">';
+            $lsttbl .= '' . $v0['T1.chp_nom_acces'] . '';
+            $lsttbl .= '</td>';
+            /*
+            
+            */
             $lsttbl .= '</tr>';
         }
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;

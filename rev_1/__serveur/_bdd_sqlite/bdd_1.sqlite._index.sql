@@ -27,6 +27,6 @@ CREATE UNIQUE INDEX idx_texte_unique_taches ON `tbl_taches`
          ( `chp_texte_tache` ) ;
 
 CREATE UNIQUE INDEX idx_unique1 ON `tbl_autorisations` 
-        /* meta(#(),genre_meta(index_de_table),message('')) */
+        /* meta(nom_de_l_index(idx_unique1),genre_meta(index_de_table),message('')) */
          ( `chx_acces_autorisation` , `chx_source_autorisation` ) ;
 

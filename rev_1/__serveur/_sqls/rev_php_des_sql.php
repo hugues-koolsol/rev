@@ -1151,7 +1151,7 @@ WHERE ( /* */ `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
    AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
    AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
    AND `T2`.`chp_nom_source` LIKE :T2_chp_nom_source) 
-ORDER BY `T0`.`chi_id_autorisation` DESC  
+ORDER BY `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'autorisations',
@@ -1193,5 +1193,95 @@ WHERE `chi_id_autorisation` = :chi_id_autorisation ;',
    `chx_source_autorisation` = :n_chx_source_autorisation
 WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',
     'cht_commentaire_requete' => 'autorisations',
+  ),
+  322 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_menu` , `T0`.`chp_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , 
+`T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+
+WHERE (`T0`.`chi_id_menu` LIKE :T0_chi_id_menu
+   AND `T0`.`chp_libelle_menu` LIKE :T0_chp_libelle_menu
+   AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
+   AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
+   AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
+   AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation) 
+ORDER BY `T0`.`chi_id_menu` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',
+    'cht_commentaire_requete' => 'menus',
+  ),
+  323 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_menus`(
+    `chp_libelle_menu` , 
+    `chp_titre_menu` , 
+    `chx_autorisation_menu` , 
+    `chp_methode_menu`
+) VALUES (
+    :chp_libelle_menu , 
+    :chp_titre_menu , 
+    :chx_autorisation_menu , 
+    :chp_methode_menu
+);',
+    'cht_commentaire_requete' => 'menus',
+  ),
+  324 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_menu` , `T0`.`chp_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , 
+`T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+
+WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
+;',
+    'cht_commentaire_requete' => 'menus',
+  ),
+  325 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_menus SET 
+   `chp_libelle_menu` = :n_chp_libelle_menu , 
+   `chp_titre_menu` = :n_chp_titre_menu , 
+   `chx_autorisation_menu` = :n_chx_autorisation_menu , 
+   `chp_methode_menu` = :n_chp_methode_menu
+WHERE `chi_id_menu` = :c_chi_id_menu ;',
+    'cht_commentaire_requete' => 'menus',
+  ),
+  326 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T1`.`chx_dossier_id_source` , `T1`.`chp_nom_source`
+ FROM b1.tbl_autorisations T0
+ LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
+
+WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
+;',
+    'cht_commentaire_requete' => 'menus',
+  ),
+  327 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T1`.`chx_source_autorisation` , `T0`.`chp_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+
+WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
+;',
+    'cht_commentaire_requete' => 'menus par acces',
   ),
 );

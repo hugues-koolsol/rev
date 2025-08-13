@@ -182,4 +182,19 @@ $tableau_des_dependances=array (
       ),
     ),
   ),
+  'tbl_autorisations_chi_id_autorisation' => 
+  array (
+    'table_parente' => 'tbl_autorisations',
+    'champ_parent' => 'chi_id_autorisation',
+    'dependances' => 
+    array (
+      0 => 
+      array (
+        'table_dependante' => 'tbl_menus',
+        'champ_dependant' => 'chx_autorisation_menu',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+    ),
+  ),
 );

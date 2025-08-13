@@ -688,7 +688,7 @@ class c_requete_sql1{
                     this.#mettre_en_stokage_local_et_afficher();
                 }
             }else{
-                debugger;
+
                 this.#enrichir_tableau_des_bases_tables_champs( init );
                 var sauvegarde=localStorage.getItem( __X_CLE_APPLICATION + '_derniere_requete' );
                 if(sauvegarde !== null){

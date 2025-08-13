@@ -32,7 +32,7 @@ function sql_317($par,&$donnees_retournees,$that){
     }
     $sql0.=$where0;
     $order0='
-       ORDER BY  `T0`.`chi_id_autorisation` DESC';
+       ORDER BY  `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC';
     $sql0.=$order0;
     $plage0='
         LIMIT '.sq1($par['quantitee']).' OFFSET '.sq1($par['debut']).' ';

@@ -165,6 +165,137 @@ class c_acces1{
 
         $o1='';
     }
+    
+    
+    /*
+      =============================================================================================================
+    */
+    function obtenir_les_menus_d_un_acces(&$donnees_retournees,&$mat,&$donnees_recues){
+        /* 
+          echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);
+        */
+        $tt327=$this->sql0->sql_iii(
+            327,
+            array( 'T2_chi_id_acces' => $donnees_recues[__xva]['chi_id_acces']),
+            $donnees_retournees
+        );
+        
+        if($tt327[__xst] === __xer){
+
+            $donnees_retournees[__x_signaux][__xer][]=' [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xer;
+
+        }else{
+            $liste_des_menus=array();
+            foreach( $tt327[__xva] as $k1 => $v1){
+                $liste_des_menus[]=array(
+                 'chi_id_source' => $v1['T1.chx_source_autorisation'],
+                 'chp_libelle_menu' => $v1['T0.chp_libelle_menu'],
+                 'chp_titre_menu' => $v1['T0.chp_titre_menu'],
+                 'chp_methode_menu' => $v1['T0.chp_methode_menu'],
+                 'chp_nom_source' => $v1['T3.chp_nom_source'],
+                );
+            }
+            /*
+              echo __FILE__ . ' ' . __LINE__ . ' $liste_des_menus = <pre>' . var_export( $liste_des_menus , true ) . '</pre>' ; exit(0);
+            */
+            
+            $tt195=$this->sql0->sql_iii(
+                 /*sql_195()*/ 195,
+                array(/**/
+                    'T0_chi_id_acces' => $donnees_recues[__xva]['chi_id_acces']
+                ),
+                $donnees_retournees
+            );
+            
+            if($tt195[__xst] !== __xsu ){
+                $donnees_retournees[__x_signaux][__xer][]=' [' . __LINE__ . ']';
+                $donnees_retournees[__xst]=__xer;
+                return;
+            }
+            
+             
+            if(is_null($tt195[__xva][0]['T0.cht_parametres_acces'])){
+             
+                $cht_parametres_acces=array();
+                
+            }else{
+             
+                $nouveau=json_decode( $tt195[__xva][0]['T0.cht_parametres_acces'],true);
+                if(isset($nouveau['le_html_ul_li_du_menu'])){
+                    $cht_parametres_acces=$nouveau['le_html_ul_li_du_menu'];
+                }else{
+                    $cht_parametres_acces=array();
+                }
+             
+            }
+            
+            
+            $donnees_retournees[__x_action]='c_fonctions_js1(afficher_la_liste_des_menus())';
+            $donnees_retournees[__xva]['liste_des_menus']=$liste_des_menus;
+            $donnees_retournees[__xva]['chi_id_acces']=$donnees_recues[__xva]['chi_id_acces'];
+            $donnees_retournees[__xva]['cht_parametres_acces']=$cht_parametres_acces;
+            $donnees_retournees[__xst]=__xsu;
+
+        }
+     
+    }
+    /*
+      =============================================================================================================
+    */
+    function enregister_le_menu_de_l_acces(&$donnees_retournees,&$mat,&$donnees_recues){
+        $chi_id_acces=$donnees_recues[__xva]['chi_id_acces'];
+        $le_html=$donnees_recues[__xva]['le_html'];
+        
+        
+        $tt195=$this->sql0->sql_iii(
+             /*sql_195()*/ 195,
+            array(/**/
+                'T0_chi_id_acces' => $donnees_recues[__xva]['chi_id_acces']
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt195[__xst] !== __xsu ){
+            $donnees_retournees[__x_signaux][__xer][]=' [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xer;
+            return;
+        }
+        
+         
+        if(is_null($tt195[__xva][0]['T0.cht_parametres_acces'])){
+         
+            $nouveau=array('le_html_ul_li_du_menu' => $le_html);
+            
+        }else{
+         
+            $nouveau=json_decode( $tt195[__xva][0]['T0.cht_parametres_acces'],true);
+            $nouveau['le_html_ul_li_du_menu'] = $le_html;
+         
+        }
+        
+        $tt124=$this->sql0->sql_iii(
+             /*sql_224()*/ 124,
+            array(
+                /**/
+                'c_chi_id_acces' => $donnees_recues[__xva]['chi_id_acces'],
+                'n_cht_parametres_acces' => json_encode($nouveau,JSON_FORCE_OBJECT)
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt124[__xst] !== __xsu){
+            $donnees_retournees[__x_signaux][__xer][]=' [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xer;
+            return;
+         
+        }
+        $donnees_retournees['__x_action']='maj_interface2(fermer_sous_fenetre1(c_acces1.page_liste_des_acces1()))';
+        $donnees_retournees[__xst]=__xsu;
+        
+
+            
+    }    
     /*
       =============================================================================================================
     */
@@ -1125,6 +1256,7 @@ class c_acces1{
 
                 $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_acces1.formulaire1(action1(page_acces_supprimer1),chi_id_acces(' . $v0['T0.chi_id_acces'] . '))">🗑</div>';
             }
+            $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_fonctions_js1(trier_les_menus(chi_id_acces(' . $v0['T0.chi_id_acces'] . ')))">trier</div>';
 
             $lsttbl .= ' </div>';
             $lsttbl .= '</td>';

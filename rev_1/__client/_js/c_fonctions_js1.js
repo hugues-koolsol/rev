@@ -245,7 +245,7 @@ class c_fonctions_js1{
         if(id_zone!=='' && chi_id_acces>0){
             let le_html=document.getElementById(id_zone).innerHTML;
             let obj={
-                "__x_action" : "c_menus1.enregister_le_menu_de_l_acces()" ,
+                "__x_action" : "c_acces1.enregister_le_menu_de_l_acces()" ,
                 "__xva" : {
                     "chi_id_acces" : chi_id_acces ,
                     "le_html"      : le_html
@@ -272,7 +272,7 @@ class c_fonctions_js1{
             t+=reponse.__xva['cht_parametres_acces'];
         }else{
             for(let i in reponse.__xva['liste_des_menus']){
-                t+='<li id="'+reponse.__xva['liste_des_menus'][i]['chi_id_menu']+'">'+reponse.__xva['liste_des_menus'][i]['chp_nom_page']+'</li>'
+                t+='<li id="'+reponse.__xva['liste_des_menus'][i]['chi_id_source']+'">'+reponse.__xva['liste_des_menus'][i]['chp_libelle_menu']+'</li>'
             }
         }
         t+='</ul>'
@@ -330,7 +330,7 @@ class c_fonctions_js1{
          
          
             let obj={
-                "__x_action" : "c_menus1.obtenir_les_menus_d_un_acces()" ,
+                "__x_action" : "c_acces1.obtenir_les_menus_d_un_acces()" ,
                 "__xva" : {
                     "chi_id_acces" : chi_id_acces ,
                 }
