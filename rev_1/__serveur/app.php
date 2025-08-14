@@ -55,6 +55,20 @@ function obtenir_les_menus(&$donnees_retournees){
 
     }
 
+    if(isset($_SESSION[__X_CLE_APPLICATION]['chx_acces_utilisateur'])){
+     
+        $nom_fichier=REPERTOIRE_DU_SERVEUR.DIRECTORY_SEPARATOR.'menu_acces_'.$_SESSION[__X_CLE_APPLICATION]['chx_acces_utilisateur'].'.php';
+
+        if(is_file($nom_fichier)){
+
+            include_once($nom_fichier);
+            $donnees_retournees[__xmenu]=$le_menu;
+
+        }
+
+     
+    }
+
     
     if(isset($_COOKIE[__X_CLE_APPLICATION])){
 

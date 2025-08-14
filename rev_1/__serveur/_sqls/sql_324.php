@@ -1,8 +1,9 @@
 <?php
 function sql_324($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_menu` , `T0`.`chp_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , 
-      `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+      `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
+      `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , `T0`.`cht_initialisation_menu` , 
+      `T0`.`cht_complements_menu`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -26,14 +27,16 @@ function sql_324($par,&$donnees_retournees,$that){
         while(($tab0=$res0->fetchArray(SQLITE3_NUM))){
             $donnees0[]=array(
                 'T0.chi_id_menu' => $tab0[0],
-                'T0.chp_libelle_menu' => $tab0[1],
-                'T0.chp_titre_menu' => $tab0[2],
-                'T0.chx_autorisation_menu' => $tab0[3],
-                'T0.chp_methode_menu' => $tab0[4],
-                'T1.chx_acces_autorisation' => $tab0[5],
-                'T1.chx_source_autorisation' => $tab0[6],
-                'T2.chp_nom_acces' => $tab0[7],
-                'T3.chp_nom_source' => $tab0[8],
+                'T0.chp_titre_menu' => $tab0[1],
+                'T0.chx_autorisation_menu' => $tab0[2],
+                'T0.chp_methode_menu' => $tab0[3],
+                'T1.chx_acces_autorisation' => $tab0[4],
+                'T1.chx_source_autorisation' => $tab0[5],
+                'T2.chp_nom_acces' => $tab0[6],
+                'T3.chp_nom_source' => $tab0[7],
+                'T0.cht_libelle_menu' => $tab0[8],
+                'T0.cht_initialisation_menu' => $tab0[9],
+                'T0.cht_complements_menu' => $tab0[10],
             );
         }
         return array(

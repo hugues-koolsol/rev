@@ -388,6 +388,10 @@ class _c_interface1{
     */
     #ajouter_les_boutons_menu( contexte , reponse ){
         if(reponse.__xbo && reponse.__xbo !== ''){
+            let xmenu='';
+            if(reponse.__xmenu && reponse.__xmenu !== ''){
+                xmenu=reponse.__xmenu;
+            }
             if(contexte === 'nouvelle_page' || contexte === 'recuperation_de_la_premiere_page()'){
                 /* console.log( contexte , menus ); */
                 let tt='';
@@ -396,7 +400,7 @@ class _c_interface1{
                 }
                 if(contexte === 'recuperation_de_la_premiere_page()'){
                     try{
-                        document.getElementById( 'vv_nav_centre_defilement' ).innerHTML=tt;
+                        document.getElementById( 'vv_nav_centre_defilement' ).innerHTML=tt+xmenu;
                     }catch{
                         /*
                           dans le cas d'une sous fenetre, la navigation n'existe
@@ -407,7 +411,7 @@ class _c_interface1{
                         /* on se déconnecte */
                         document.getElementById( 'vv_nav_centre_defilement' ).innerHTML='';
                     }else{
-                        this.#maj_innerHTML( 'vv_nav_centre_defilement' , tt );
+                        this.#maj_innerHTML( 'vv_nav_centre_defilement' , tt+xmenu );
                     }
                 }
             }else{
@@ -3015,6 +3019,16 @@ class _c_interface1{
             localStorage.setItem( __X_CLE_APPLICATION + '_sl0' , JSON.stringify( this.#stockage_local ) );
         }
     }
+    /*
+      =============================================================================================================
+    */
+    enti1(string) {
+      return String(string)
+          .replace(/&/g, '&amp;')
+          .replace(/>/g, '&gt;')
+          .replace(/</g, '&lt;')
+          .replace(/"/g, '&quot;');
+    }    
     /*
       =============================================================================================================
     */

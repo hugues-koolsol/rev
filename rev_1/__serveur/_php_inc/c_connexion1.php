@@ -118,7 +118,7 @@ class c_connexion1{
             $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_initial']=$tt[__xva][0]['T1.chx_groupe_acces'];
             $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant']=$tt[__xva][0]['T1.chx_metier_acces'];
             $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_initial']=$tt[__xva][0]['T1.chx_metier_acces'];
-            $GLOBALS['chx_acces_utilisateur']=$tt[__xva][0]['T0.chx_acces_utilisateur'];
+            $_SESSION[__X_CLE_APPLICATION]['chx_acces_utilisateur']=$tt[__xva][0]['T0.chx_acces_utilisateur'];
             $_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1']=0;
             $donnees_retournees[__x_ligne]=__LINE__;
             $donnees_retournees[__x_authentifie]=__xsu;

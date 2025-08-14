@@ -1197,8 +1197,8 @@ WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',
   322 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_menu` , `T0`.`chp_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , 
-`T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
+`T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
@@ -1207,7 +1207,7 @@ WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',
  LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
 
 WHERE (`T0`.`chi_id_menu` LIKE :T0_chi_id_menu
-   AND `T0`.`chp_libelle_menu` LIKE :T0_chp_libelle_menu
+   AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
    AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
    AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
    AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
@@ -1220,23 +1220,28 @@ LIMIT :quantitee OFFSET :debut
   323 => 
   array (
     'cht_sql_requete' => 'INSERT INTO b1.`tbl_menus`(
-    `chp_libelle_menu` , 
     `chp_titre_menu` , 
     `chx_autorisation_menu` , 
-    `chp_methode_menu`
+    `chp_methode_menu` , 
+    `cht_libelle_menu` , 
+    `cht_initialisation_menu` , 
+    `cht_complements_menu`
 ) VALUES (
-    :chp_libelle_menu , 
     :chp_titre_menu , 
     :chx_autorisation_menu , 
-    :chp_methode_menu
+    :chp_methode_menu , 
+    :cht_libelle_menu , 
+    :cht_initialisation_menu , 
+    :cht_complements_menu
 );',
     'cht_commentaire_requete' => 'menus',
   ),
   324 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_menu` , `T0`.`chp_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , 
-`T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
+`T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , `T0`.`cht_initialisation_menu` , 
+`T0`.`cht_complements_menu`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
@@ -1251,10 +1256,12 @@ WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
   325 => 
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_menus SET 
-   `chp_libelle_menu` = :n_chp_libelle_menu , 
+   `cht_libelle_menu` = :n_cht_libelle_menu , 
    `chp_titre_menu` = :n_chp_titre_menu , 
    `chx_autorisation_menu` = :n_chx_autorisation_menu , 
-   `chp_methode_menu` = :n_chp_methode_menu
+   `chp_methode_menu` = :n_chp_methode_menu , 
+   `cht_initialisation_menu` = :n_cht_initialisation_menu , 
+   `cht_complements_menu` = :n_cht_complements_menu
 WHERE `chi_id_menu` = :c_chi_id_menu ;',
     'cht_commentaire_requete' => 'menus',
   ),
@@ -1272,7 +1279,8 @@ WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
   327 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T1`.`chx_source_autorisation` , `T0`.`chp_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source`
+`T1`.`chx_source_autorisation` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
+`T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`chi_id_menu`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 

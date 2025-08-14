@@ -172,7 +172,7 @@ Les commentaires sont inclus dans la fonction spéciale "#"
 ```
 
 
-A partir du format tabulaire ( c'est en réalité un "arbre syntaxique" ), on peut reconstituer le source et réciproquement.
+A partir du format tabulaire ( c'est un "arbre syntaxique" ), on peut reconstituer le source et réciproquement.
 
 Ainsi, les programmes sources deviennent des données qu'on peut traiter informatiquement en ajoutant, supprimant ou modifiant des éléments.
 
@@ -201,10 +201,9 @@ et on obtiendra le tableau suivant
 5   a      c   0     4    27   31    0    0    5    0    0     6     gi
 ```
 
-Cela dit, on évitera d'écrire des constantes à la racine car ça ne sert généralement pas à grand chose et ce n'est pas autorisé par défaut.   
-Le programme qui traite ces sources rev peut accepter des constantes à la racine quand on veut 
-par exemple vérifier une suite d'arguments d'une fonction mais cela doit être indiqué en paramètre.
-
+Le programme qui lit un texte au format rev n'accepte pas, par défaut, que le texte contienne des constantes à la racine.  
+Mais on peut outrepasser cette règle, par exemple, quand on veut vérifier et valider une suite d'arguments d'une fonction.   
+Dans ce dernier cas, les arguments peuvent être plusieurs constantes qui se suivent.
 
 Pour les cas spéciaux des les langages : 
 

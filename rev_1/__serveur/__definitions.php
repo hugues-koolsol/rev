@@ -39,6 +39,8 @@ define('__x_ligne','__x_ligne');
 define('__x_authentifie','__x_authentifie');
 /*boutons pour l'utilisateur*/
 define('__xbo','__xbo');
+/*boutons pour l'utilisateur*/
+define('__xmenu','__xmenu');
 /*numero de message*/
 define('__xnu','__xnu');
 /*erreur*/
@@ -68,7 +70,6 @@ $GLOBALS[__date]=date('Y-m-d H:i:s');
 $decimalPart=(int)(fmod(microtime(true),1) * 1000);
 $decimalPart=$decimalPart < 10 ? '00' . $decimalPart : ($decimalPart < 100 ? '0' . $decimalPart : '' . $decimalPart);
 $GLOBALS[__date_ms]=$GLOBALS[__date] . '.' . $decimalPart;
-$GLOBALS['chx_acces_utilisateur']=2;
 /*
   rev
 */

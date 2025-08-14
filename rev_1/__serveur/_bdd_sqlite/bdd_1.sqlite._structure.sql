@@ -1024,11 +1024,11 @@ CREATE TABLE tbl_menus(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('chp_libelle_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            genre_meta(champ),nom_du_champ('cht_libelle_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
             typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
-             chp_libelle_menu VARCHAR(64) NOT NULL
+             cht_libelle_menu VARCHAR(64) NOT NULL
     ,
     
             /*
@@ -1056,5 +1056,5 @@ CREATE TABLE tbl_menus(
             )
             */
              chp_methode_menu VARCHAR(64) NOT NULL
-    );
+    , cht_initialisation_menu TEXT, cht_complements_menu TEXT);
 

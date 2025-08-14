@@ -182,9 +182,11 @@ class c_menus1{
 
         $donnees_sql=array( array(/**/
                     'chx_autorisation_menu' => $donnees_recues[__xva]['chx_autorisation_menu'] === '' ? null : $donnees_recues[__xva]['chx_autorisation_menu'],
-                    'chp_libelle_menu' => $donnees_recues[__xva]['chp_libelle_menu'] === '' ? null : $donnees_recues[__xva]['chp_libelle_menu'],
+                    'cht_libelle_menu' => $donnees_recues[__xva]['cht_libelle_menu'] === '' ? null : $donnees_recues[__xva]['cht_libelle_menu'],
                     'chp_titre_menu' => $donnees_recues[__xva]['chp_titre_menu'] === '' ? null : $donnees_recues[__xva]['chp_titre_menu'],
                     'chp_methode_menu' => $donnees_recues[__xva]['chp_methode_menu'] === '' ? null : $donnees_recues[__xva]['chp_methode_menu'],
+                    'cht_initialisation_menu' => $donnees_recues[__xva]['cht_initialisation_menu'] === '' ? null : $donnees_recues[__xva]['cht_initialisation_menu'],
+                    'cht_complements_menu' => $donnees_recues[__xva]['cht_complements_menu'] === '' ? null : $donnees_recues[__xva]['cht_complements_menu'],
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=$this->sql0->sql_iii(
@@ -410,10 +412,12 @@ class c_menus1{
              /*sql_321()*/ 325,
             array(/**/
                 'c_chi_id_menu' => $donnees_recues[__xva]['chi_id_menu'],
-                'n_chp_libelle_menu' => $donnees_recues[__xva]['chp_libelle_menu'],
+                'n_cht_libelle_menu' => $donnees_recues[__xva]['cht_libelle_menu'],
                 'n_chp_titre_menu' => $donnees_recues[__xva]['chp_titre_menu'],
                 'n_chx_autorisation_menu' => $donnees_recues[__xva]['chx_autorisation_menu'],
                 'n_chp_methode_menu' => $donnees_recues[__xva]['chp_methode_menu'],
+                'n_cht_initialisation_menu' => $donnees_recues[__xva]['cht_initialisation_menu'],
+                'n_cht_complements_menu' => $donnees_recues[__xva]['cht_complements_menu'],
             ),
             $donnees_retournees
         );
@@ -499,12 +503,14 @@ class c_menus1{
         $o1 .= '      <span>libelle</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="libelle visible" autocapitalize="off" id="chp_libelle_menu" value="';
-        if(isset($donnees_recues['dupliquer']['T0.chp_libelle_menu'])){
-            $o1.=enti1($donnees_recues['dupliquer']['T0.chp_libelle_menu']);
+        $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+        $o1 .= '         <textarea placeholder="libelle visible" autocorrect="off" autocapitalize="off" spellcheck="false"  id="cht_libelle_menu" >';
+        if(isset($donnees_recues['dupliquer']['T0.cht_libelle_menu'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.cht_libelle_menu']);
         }
         
-        $o1 .= '" maxlength="64" style="width:80%;" autocapitalize="off" />' . PHP_EOL;
+        $o1 .= '</textarea>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -515,12 +521,12 @@ class c_menus1{
         $o1 .= '      <span>titre</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="titre" autocapitalize="off" id="chp_titre_menu" value="';
+        $o1 .= '      <input type="text" placeholder="titre" autocorrect="off" autocapitalize="off" spellcheck="false"  id="chp_titre_menu" value="';
         if(isset($donnees_recues['dupliquer']['T0.chp_titre_menu'])){
             $o1.=enti1($donnees_recues['dupliquer']['T0.chp_titre_menu']);
         }
         
-        $o1 .= '" maxlength="64" style="width:80%;" autocapitalize="off" />' . PHP_EOL;
+        $o1 .= '" maxlength="64" style="width:80%;" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -559,7 +565,62 @@ class c_menus1{
         $o1 .= '      <span>méthode</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="méthode" autocapitalize="off" id="chp_methode_menu" value="" maxlength="64" style="width:80%;" autocapitalize="off" />' . PHP_EOL;
+        $o1 .= '      <input type="text" placeholder="méthode" id="chp_methode_menu" value="" maxlength="64" style="width:80%;" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>initialisation de la méthode</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+        
+        $o1 .= '        <div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_initialisation_menu)))" title="formater le source rev">(😊)</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_initialisation_menu)))" title="agrandir la zone">🖐</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_initialisation_menu)))" title="retrecir la zone">👊</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_initialisation_menu)))" title="vider la zone">🚫</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_initialisation_menu)))" title="copier le contenu">📋</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_initialisation_menu)))" title="aller à la position">position</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_initialisation_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
+        $o1 .= '        </div>';
+        $o1 .= '        <textarea placeholder="rev d\'initialisation contenu dans l\'appel de la méthode" autocorrect="off" autocapitalize="off" spellcheck="false"  id="cht_initialisation_menu" >';
+        if(isset($donnees_recues['dupliquer']['T0.cht_initialisation_menu'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.cht_initialisation_menu']);
+        }
+        $o1 .= '</textarea>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>compléments</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+        $o1 .= '        <div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_complements_menu)))" title="formater le source rev">(😊)</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_complements_menu)))" title="agrandir la zone">🖐</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_complements_menu)))" title="retrecir la zone">👊</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_complements_menu)))" title="vider la zone">🚫</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_complements_menu)))" title="copier le contenu">📋</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_complements_menu)))" title="aller à la position">position</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_complements_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
+        $o1 .= '        </div>';
+        $o1 .= '         <textarea placeholder="rev complément" autocorrect="off" autocapitalize="off" spellcheck="false" id="cht_complements_menu" >';
+        if(isset($donnees_recues['dupliquer']['T0.cht_complements_menu'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.cht_complements_menu']);
+        }
+        
+        $o1 .= '</textarea>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         
@@ -676,7 +737,9 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_libelle_menu" value="' . enti1($tt[__xva][0]['T0.chp_libelle_menu']) . '" autocapitalize="off" size="64" max-length="64" style="max-width:80%;" />' . PHP_EOL;
+                $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+                $o1 .= '        <textarea id="cht_libelle_menu" autocorrect="off" autocapitalize="off" spellcheck="false" >' . enti1($tt[__xva][0]['T0.cht_libelle_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '      </div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -690,7 +753,7 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_titre_menu" value="' . enti1($tt[__xva][0]['T0.chp_titre_menu']) . '" autocapitalize="off" size="64" max-length="64" style="max-width:80%;"/>' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_titre_menu" value="' . enti1($tt[__xva][0]['T0.chp_titre_menu']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" max-length="64" style="max-width:80%;"/>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -737,7 +800,57 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_methode_menu" value="' . enti1($tt[__xva][0]['T0.chp_methode_menu']) . '" autocapitalize="off" size="64" max-length="64" style="max-width:80%;" />' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_methode_menu" value="' . enti1($tt[__xva][0]['T0.chp_methode_menu']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" max-length="64" style="max-width:80%;" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =============================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>initialisation</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+                $o1 .= '        <div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_initialisation_menu)))" title="formater le source rev">(😊)</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_initialisation_menu)))" title="agrandir la zone">🖐</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_initialisation_menu)))" title="retrecir la zone">👊</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_initialisation_menu)))" title="vider la zone">🚫</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_initialisation_menu)))" title="copier le contenu">📋</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_initialisation_menu)))" title="aller à la position">position</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_initialisation_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
+                $o1 .= '        </div>';
+                $o1 .= '        <textarea id="cht_initialisation_menu" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_initialisation_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '      </div>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =============================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>compléments</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+                $o1 .= '        <div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_complements_menu)))" title="formater le source rev">(😊)</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_complements_menu)))" title="agrandir la zone">🖐</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_complements_menu)))" title="retrecir la zone">👊</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_complements_menu)))" title="vider la zone">🚫</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_complements_menu)))" title="copier le contenu">📋</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_complements_menu)))" title="aller à la position">position</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_complements_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
+                $o1 .= '        </div>';
+                $o1 .= '        <textarea id="cht_complements_menu" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_complements_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '      </div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -956,7 +1069,7 @@ class c_menus1{
             $parametres .= '    nom_champ_dans_parent1(' . $par['nom_champ_dans_parent1'] . ')';
             $parametres .= '    nom_libelle_dans_parent1(' . $par['nom_libelle_dans_parent1'] . ')';
             $parametres .= '    id1(' . $v0['T0.chi_id_menu'] . ')';
-            $parametres .= '    libelle1("(' . $v0['T0.chi_id_menu'] . ') ' . $v0['T0.chp_libelle_menu'] . '" )';
+            $parametres .= '    libelle1("(' . $v0['T0.chi_id_menu'] . ') ' . $v0['T0.cht_libelle_menu'] . '" )';
             $parametres .= ')';
             $lsttbl .= '<td style="max-width:calc(1*var(t_1boutons_carres))">';
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="' . htmlentities($parametres) . '">=&gt;</div>';
@@ -968,9 +1081,9 @@ class c_menus1{
             /**/
             $lsttbl .= '<td style="text-align:left;">';
             
-            if($v0['T0.chp_libelle_menu'] !== null){
+            if($v0['T0.cht_libelle_menu'] !== null){
 
-                $lsttbl .= '' . enti1($v0['T0.chp_libelle_menu']) . '';
+                $lsttbl .= '' . enti1($v0['T0.cht_libelle_menu']) . '';
 
             }
 
@@ -990,7 +1103,7 @@ class c_menus1{
         $__nbMax=30;
         $par=array();
         $par['T0_chi_id_menu']='';
-        $par['T0_chp_libelle_menu']='';
+        $par['T0_cht_libelle_menu']='';
         $par['T0_chp_titre_menu']='';
         $par['T0_chx_autorisation_menu']='';
         $par['T0_chp_methode_menu']='';
@@ -1068,7 +1181,7 @@ class c_menus1{
         }
 
         $par['T0_chi_id_menu']=$par['T0_chi_id_menu']??'';
-        $par['T0_chp_libelle_menu']=$par['T0_chp_libelle_menu']??'';
+        $par['T0_cht_libelle_menu']=$par['T0_cht_libelle_menu']??'';
         $par['T0_chp_titre_menu']=$par['T0_chp_titre_menu']??'';
         $par['T0_chx_autorisation_menu']=$par['T0_chx_autorisation_menu']??'';
         $par['T0_chp_methode_menu']=$par['T0_chp_methode_menu']??'';
@@ -1092,7 +1205,7 @@ class c_menus1{
         */
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '      <div><span>libelle</span></div>' . PHP_EOL;
-        $o1 .= '      <div><input type="text" id="T0_chp_libelle_menu" value="' . $par['T0_chp_libelle_menu'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
+        $o1 .= '      <div><input type="text" id="T0_cht_libelle_menu" value="' . $par['T0_cht_libelle_menu'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /*
@@ -1145,7 +1258,7 @@ class c_menus1{
                 /**/
                 'T0_chi_id_menu' => $par['T0_chi_id_menu'],
                 'T0_chx_autorisation_menu' => $par['T0_chx_autorisation_menu'],
-                'T0_chp_libelle_menu' => $par['T0_chp_libelle_menu'] ,
+                'T0_cht_libelle_menu' => $par['T0_cht_libelle_menu'] ,
                 'T0_chp_titre_menu' => $par['T0_chp_titre_menu'],
                 'T0_chp_methode_menu' => $par['T0_chp_methode_menu'],
                 'T1_chx_acces_autorisation' => $par['T1_chx_acces_autorisation'],
@@ -1215,7 +1328,7 @@ class c_menus1{
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';
-            $lsttbl .= enti1($v0['T0.chp_libelle_menu']) ;
+            $lsttbl .= $v0['T0.cht_libelle_menu'] ;
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';

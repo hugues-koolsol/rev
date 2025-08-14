@@ -145,13 +145,36 @@ class c_fonctions_js1{
     /*
       =============================================================================================================
     */
-    ajouter_une_branche_au_menu1( evenement , reference_arbre ){
-        console.log(reference_arbre)
+    enregistrer_le_menu2(evenement , reference_arbre ){
+     
+        let id_original=reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri');
+        let chi_id_acces=parseInt(document.getElementById(id_original).getAttribute('data-chi_id_acces'),10);
+        let le_json=JSON.stringify(reference_arbre.arbre);
+        let le_html=document.getElementById(id_original).innerHTML;
+
+        let obj={
+            "__x_action" : "c_acces1.enregister_le_menu_de_l_acces2()" ,
+            "__xva" : {
+                "chi_id_acces" : chi_id_acces ,
+                "le_json"      : le_json,
+                "le_html"      : le_html
+            }
+        };
+        __gi1.envoyer_un_message_au_worker( obj );
+//        return({"__xst" : __xsu});
         
-    //        console.log( 'dans ajouter_une_branche' );
-    //        console.log( 'evenement =' , evenement );
-    //        console.log( 'reference =' , reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri')  );
-    //        console.log( 'arbre =' ,  reference_arbre );
+        
+        
+    }
+    /*
+      =============================================================================================================
+    */
+    ajouter_une_branche_au_menu1( evenement , reference_arbre ){
+        // console.log(reference_arbre)
+        // console.log( 'dans ajouter_une_branche' );
+        // console.log( 'evenement =' , evenement );
+        // console.log( 'reference =' , reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri')  );
+        // console.log( 'arbre =' ,  reference_arbre );
        let id_original=reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri');
        if(id_original==='liste_des_menus'){
             let max=0;
@@ -231,55 +254,35 @@ class c_fonctions_js1{
     /*
       =============================================================================================================
     */
-    enregister_le_menu_de_l_acces( mat , debut){
-        let chi_id_acces=0;
-        let id_zone='';
-        let l01=mat.length;
-        for( let i=debut + 1 ; i < l01 ; i=mat[i][12] ){
-            if('chi_id_acces' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                chi_id_acces=parseInt( mat[i + 1][1] , 10 );
-            }else if('id_zone' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_zone=mat[i + 1][1];
-            }
-        }
-        if(id_zone!=='' && chi_id_acces>0){
-            let le_html=document.getElementById(id_zone).innerHTML;
-            let obj={
-                "__x_action" : "c_acces1.enregister_le_menu_de_l_acces()" ,
-                "__xva" : {
-                    "chi_id_acces" : chi_id_acces ,
-                    "le_html"      : le_html
-                }
-            };
-            this.#interface1.envoyer_un_message_au_worker( obj );
-            return({"__xst" : __xsu});
-         
-        }
-    }
-    /*
-      =============================================================================================================
-    */
     afficher_la_liste_des_menus( reponse ){
         var t='';
         t+='<h1>trier les menus de '+reponse.__xva['chi_id_acces']+'</h1>';
         
         
         t+='<div style="display:flex;flex-direction:row;justify-content: space-evenly;">'
-        t+='<div style="">'
-        t+='<ul id="liste_des_menus">';
-        
+        t+=' <div style="">'
+        t+='  <ul id="liste_des_menus_ancien"  data-chi_id_acces="'+reponse.__xva['chi_id_acces']+'">';
         if(reponse.__xva['cht_parametres_acces']!==''){
             t+=reponse.__xva['cht_parametres_acces'];
-        }else{
-            for(let i in reponse.__xva['liste_des_menus']){
-                t+='<li id="'+reponse.__xva['liste_des_menus'][i]['chi_id_source']+'">'+reponse.__xva['liste_des_menus'][i]['chp_libelle_menu']+'</li>'
-            }
         }
-        t+='</ul>'
-        t+='</div>'
-        t+='<div style="min-width:11em;">'
-        t+='<div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(enregister_le_menu_de_l_acces(chi_id_acces('+reponse.__xva['chi_id_acces']+'),id_zone(liste_des_menus)))">enregistrer</div>'
-        t+='</div>'
+        t+='  </ul>'
+        t+=' </div>'
+        t+=' <div style="">'
+        t+='  <ul id="liste_des_menus" data-chi_id_acces="'+reponse.__xva['chi_id_acces']+'">';
+        
+        for(let i in reponse.__xva['liste_des_menus']){
+            t+='<li ';
+            t+=' data-chi_id_source="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chi_id_source'])+'"';
+            t+=' data-chp_nom_source="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chp_nom_source'])+'"';
+            t+=' data-chp_methode_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chp_methode_menu'])+'"';
+            t+=' data-chi_id_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chi_id_menu'])+'"';
+            t+=' data-chp_titre_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chp_titre_menu'])+'"';
+            t+=' data-cht_initialisation_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['cht_initialisation_menu'])+'"';
+            t+=' data-cht_complements_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['cht_complements_menu'])+'"';
+            t+='>'+reponse.__xva['liste_des_menus'][i]['cht_libelle_menu']+'</li>'
+        }
+        t+='  </ul>'
+        t+=' </div>'
         t+='</div>'
         
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
@@ -302,6 +305,7 @@ class c_fonctions_js1{
             "class_du_bouton_replier" : 'hug_bouton yy__x_signaux_2'
         };
         options.boutons_du_menu.push({"libelle" : '+' ,"fonction" : this.ajouter_une_branche_au_menu1})
+        options.boutons_du_menu.push({"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2})
 
         options['afficher_le_bouton_editer']=1;
         options['class_du_bouton_editer']='hug_bouton yy__x_signaux___xif';

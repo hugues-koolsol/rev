@@ -661,7 +661,9 @@ class c_sources1{
                     'n_chp_nom_source' => $donnees_recues[__xva]['chp_nom_source'],
                     'n_cht_commentaire_source' => $donnees_recues[__xva]['cht_commentaire_source'],
                     'n_chx_dossier_id_source' => $donnees_recues[__xva]['chx_dossier_id_source'],
-                    'n_che_binaire_source' => $donnees_recues[__xva]['che_binaire_source']
+                    'n_che_binaire_source' => $donnees_recues[__xva]['che_binaire_source'],
+                    'n_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+                    
                 ),
                 $donnees_retournees
             );
