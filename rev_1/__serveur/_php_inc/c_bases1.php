@@ -5,6 +5,8 @@ class c_bases1{
       =============================================================================================================
     */
     public function __construct(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+     
+     
         require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_sql0.php');
         $this->sql0=new c_sql0(
             $donnees_retournees,

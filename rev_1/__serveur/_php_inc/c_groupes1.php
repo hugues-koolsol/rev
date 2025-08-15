@@ -840,6 +840,14 @@ class c_groupes1{
       =============================================================================================================
     */
     function page_liste_des_groupes1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+
+        if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
+
+            $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xsu;
+            return;
+
+        }
         $__nbMax=10;
         $par=array();
         $par['T0_chi_id_groupe']='';

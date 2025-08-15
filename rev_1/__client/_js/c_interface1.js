@@ -1,5 +1,13 @@
 "use strict";
-/* var __gi1=null; */
+
+/* var __gi1=null; 
+
+ajoute_les_evenements_aux_boutons
+#traite_message_recupere_du_worker
+#traite_action_retour_generale
+
+
+*/
 /* les constantes erreur et succes */
 const __xer=0;
 const __xsu=1;
@@ -154,8 +162,23 @@ class _c_interface1{
                       console.log(performance.now()-this.#date_derniere_navigation);
                     */
                 }
+//        document.addEventListener( 'mouseup' , this.#mouseup_sur_zone_select.bind( this ) , true );
+                
                 /* code */} );
     }
+    
+    /*
+      =============================================================================================================
+    */
+/*
+    #mouseup_sur_zone_select(e){
+        if(e.target.tagName.toLowerCase()==='select'){
+            console.log('%cici','color:red;background:yellow;','e=',e.target.tagName,e);
+            debugger
+        }
+    }
+*/    
+    
     /*
       =============================================================================================================
     */
@@ -293,6 +316,11 @@ class _c_interface1{
                 }catch(e){}
                 break;
                 
+            case 'c_connexion1.se_deconnecter':
+            
+                document.getElementById( 'vv_nav_centre_defilement' ).innerHTML='';
+                break;
+                
             case 'obtenir_le_cookie_de_session_php' :
                 try{
                     let les_cookies=document.cookie.split( ';' );
@@ -382,42 +410,75 @@ class _c_interface1{
                 console.error( e );
             }
         }
+        let lst=document.querySelectorAll('select[data-select_dans_menu="1"]');
+        if(lst){
+            for(let i=0;i<lst.length;i++){
+               lst[i].selectedIndex=0;
+            }
+        }
     }
     /*
       =============================================================================================================
     */
     #ajouter_les_boutons_menu( contexte , reponse ){
-        if(reponse.__xbo && reponse.__xbo !== ''){
-            let xmenu='';
-            if(reponse.__xmenu && reponse.__xmenu !== ''){
-                xmenu=reponse.__xmenu;
-            }
+
+
+        if(reponse.__xmenu && reponse.__xmenu !== ''){
+
             if(contexte === 'nouvelle_page' || contexte === 'recuperation_de_la_premiere_page()'){
-                /* console.log( contexte , menus ); */
-                let tt='';
-                for(let i in reponse.__xbo){
-                    tt+=reponse.__xbo[i];
-                }
                 if(contexte === 'recuperation_de_la_premiere_page()'){
                     try{
-                        document.getElementById( 'vv_nav_centre_defilement' ).innerHTML=tt+xmenu;
+                        document.getElementById( 'vv_nav_centre_defilement' ).innerHTML=reponse.__xmenu;
                     }catch{
-                        /*
-                          dans le cas d'une sous fenetre, la navigation n'existe
-                        */
+                        
+                          //dans le cas d'une sous fenetre, la navigation n'existe
+                        
                     }
                 }else{
-                    if(tt === '' && document.getElementById( 'vv_nav_centre_defilement' ).innerHTML !== ''){
-                        /* on se déconnecte */
+                    if(reponse.__xmenu === '' && document.getElementById( 'vv_nav_centre_defilement' ).innerHTML !== ''){
+                        // on se déconnecte 
                         document.getElementById( 'vv_nav_centre_defilement' ).innerHTML='';
                     }else{
-                        this.#maj_innerHTML( 'vv_nav_centre_defilement' , tt+xmenu );
+                        this.#maj_innerHTML( 'vv_nav_centre_defilement' , reponse.__xmenu );
                     }
                 }
             }else{
                 this.#maj_innerHTML( 'vv_nav_centre_defilement' , '' );
             }
         }
+
+/*
+        if(reponse.__xbo && reponse.__xbo !== ''){
+            let xmenu='';
+            if(reponse.__xmenu && reponse.__xmenu !== ''){
+                xmenu=reponse.__xmenu;
+            }
+            if(contexte === 'nouvelle_page' || contexte === 'recuperation_de_la_premiere_page()'){
+                let tt='';
+                for(let i in reponse.__xbo){
+                    tt+=reponse.__xbo[i];
+                }
+                if(contexte === 'recuperation_de_la_premiere_page()'){
+                    try{
+                        document.getElementById( 'vv_nav_centre_defilement' ).innerHTML=xmenu+tt;
+                    }catch{
+                        
+                          //dans le cas d'une sous fenetre, la navigation n'existe
+                        
+                    }
+                }else{
+                    if(tt === '' && document.getElementById( 'vv_nav_centre_defilement' ).innerHTML !== ''){
+                        // on se déconnecte 
+                        document.getElementById( 'vv_nav_centre_defilement' ).innerHTML='';
+                    }else{
+                        this.#maj_innerHTML( 'vv_nav_centre_defilement' , xmenu+tt );
+                    }
+                }
+            }else{
+                this.#maj_innerHTML( 'vv_nav_centre_defilement' , '' );
+            }
+        }
+*/
         let menus=document.getElementById( 'vv_nav' );
         if(menus !== null){
             /* lors du premier chargement on doit allumer le bouton */
@@ -2106,6 +2167,7 @@ class _c_interface1{
         for( let i=0 ; i < lst.length ; i++ ){
             if(!lst[i].getAttribute( 'data-rev_event' )){
                 /* lst[i].addEventListener( 'keydown' , this.#keydown_sur_editeur1.bind( this ) ); */
+                /* blur=lost focus*/
                 lst[i].addEventListener( 'blur' , this.#blur_sur_editeur1.bind( this ) );
                 lst[i].addEventListener( 'mouseup' , this.#mouse_up_sur_editeur1.bind( this ) );
                 lst[i].addEventListener( 'keyup' , this.#analyse_key_up_editeur1.bind( this ) );
@@ -2121,7 +2183,9 @@ class _c_interface1{
                 elems[i].setAttribute( "tabindex" , 0 );
             }
         }
+        
     }
+    
     /*
       =============================================================================================================
       on reçoit #toto
@@ -2207,7 +2271,7 @@ class _c_interface1{
         */
         let mat=null;
         mat=this.__m_rev1.rev_tcm( action );
-        if(e.type === 'click' || e.type === 'touchend' || e.type === 'keyup' && e.keyCode == 13){
+        if(e.type === 'click' || e.type === 'change' || e.type === 'touchend' || e.type === 'keyup' && e.keyCode == 13){
             if(mat.__xst !== __xsu){
                 return;
             }
@@ -2259,6 +2323,19 @@ class _c_interface1{
         }
         document.getElementById( nom_dans_attribut_id ).innerHTML=valeur;
         this.ajoute_les_evenements_aux_boutons( this.#page_en_cours );
+    }
+    /*
+      =============================================================================================================
+    */
+    change_option_de_select(e){
+        /* le contenu de <option>*/
+        let valeur=e.target.value;
+        let element_selectionne=e.target.options[e.target.selectedIndex];
+        if(element_selectionne.getAttribute('data-action_option') && element_selectionne.getAttribute('data-action_option')!==''){
+             this.#action_change_ou_entree( e , element_selectionne.getAttribute('data-action_option') );
+        }else{
+             this.retablir_les_elements_masques(null);
+        }
     }
     /*
       =============================================================================================================
@@ -2664,7 +2741,11 @@ class _c_interface1{
             if(action.substr( 0 , 11 ) === 'interface1.'){
                 elt.classList.add( 'yy_invisible' );
                 this.#element_appel_reseau.push( elt );
-                this.#action_interface1( mat.__xva );
+                if(mat.__xva.length===2 && 'interface1.change_option_de_select'===mat.__xva[1][1]){
+                    this.change_option_de_select(e);
+                }else{
+                    this.#action_interface1( mat.__xva );
+                }
                 return false;
             }
             /* console.log('action=' , action ); */

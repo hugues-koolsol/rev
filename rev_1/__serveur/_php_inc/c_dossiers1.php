@@ -2128,7 +2128,14 @@ class c_dossiers1{
       =============================================================================================================
     */
     function page_dossiers_liste1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        /* déverminage */
+        if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
+
+            $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xsu;
+            return;
+
+        }
+
         $__nbMax=20;
         /*
           $donnees_retournees[__x_signaux][__xif][]=__LINE__ . 'TODO $par '.var_export($par,true);

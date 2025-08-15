@@ -1645,6 +1645,13 @@ EOT;
       =============================================================================================================
     */
     function page_liste_des_requetes1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
+
+            $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xsu;
+            return;
+
+        }
         /*
           le répertoire de requetes est-il défini ?
         */

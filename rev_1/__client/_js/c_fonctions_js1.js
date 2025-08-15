@@ -269,7 +269,10 @@ class c_fonctions_js1{
         t+=' </div>'
         t+=' <div style="">'
         t+='  <ul id="liste_des_menus" data-chi_id_acces="'+reponse.__xva['chi_id_acces']+'">';
+        t+=reponse.__xva.le_nouveau_html
+
         
+/*        
         for(let i in reponse.__xva['liste_des_menus']){
             t+='<li ';
             t+=' data-chi_id_source="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chi_id_source'])+'"';
@@ -281,6 +284,7 @@ class c_fonctions_js1{
             t+=' data-cht_complements_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['cht_complements_menu'])+'"';
             t+='>'+reponse.__xva['liste_des_menus'][i]['cht_libelle_menu']+'</li>'
         }
+*/        
         t+='  </ul>'
         t+=' </div>'
         t+='</div>'
