@@ -227,23 +227,86 @@ class c_fonctions_js1{
                 break;
 
             case 'supprimer' :
+                
                 /*
+                  on ne peut supprimer que les branches qui ont été créées data-liste_des_menus
+                */
                 for( let i=0 ; i < obj.arbre.length ; i++ ){
                     if(obj.id_cible === obj.arbre[i].id_interne){
-                        obj.arbre.splice( i , 1 );
+                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus']==='1'){
+                            obj.arbre.splice( i , 1 );
+                        }
                         break;
                     }
                 }
                 reference_arbre.action_externe_sur_arbre( 'supprimer_un_element' , obj.arbre );
                 break;
-                */
+
+            case 'dedans' : 
+                
+                /* l'id_cible doit être une branche créée */
+                for( let i=0 ; i < obj.arbre.length ; i++ ){
+                    if(obj.id_cible === obj.arbre[i].id_interne){
+                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus']==='1'){
+                         
+                            /*
+                            
+                              l'id_source doit être une feuille
+                            
+                            */
+                            
+                            for( let j=0 ; j < obj.arbre.length ; j++ ){
+                                if(obj.id_source === obj.arbre[j].id_interne){
+                                    if(!(obj.arbre[j].attributs && obj.arbre[j].attributs['data-liste_des_menus']==='1')){
+                                        reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+                                    }else{
+                                        reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre_avant );
+                                    }
+                                    break;
+                                }
+                            }
+                           
+                        }else{
+                         
+                            reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre_avant );
+                            
+                        }
+                        break;
+                    }
+                }
+                break;
+                
                 
             case 'avant' : 
-            case 'dedans' : 
             case 'apres' :
-                console.log( 'appelee_apres_action1' , obj );
-                /* console.log(JSON.stringify(arbre)); */
-                reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+                /* console.log( 'appelee_apres_action1' , obj ); */
+                /*
+                   si l'id_source est une branche alors l'id_interne_parent de l'id_cible doit être 0
+                
+                */
+                let id_source_est_branche=false;
+                for( let i=0 ; i < obj.arbre.length ; i++ ){
+                    if(obj.id_source === obj.arbre[i].id_interne){
+                        if((obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus']==='1')){
+                            id_source_est_branche=true;
+                        }
+                        break;
+                    }
+                }
+                if(id_source_est_branche===true){
+                    for( let i=0 ; i < obj.arbre.length ; i++ ){
+                        if(obj.id_cible === obj.arbre[i].id_interne){
+                            if(obj.arbre[i].id_interne_parent===0){
+                                reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+                            }else{
+                                reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre_avant );
+                            }
+                            break;
+                        }
+                    }
+                }else{
+                    reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+                }
                 break;
                 
             default: break;
@@ -300,13 +363,15 @@ class c_fonctions_js1{
              /* entre 20 et 80 */
             "largeur_max" : '400px' ,
              /* 'calc(100% - 50px)', */
-            "afficher_le_bouton_supprimer" : false ,
+            "afficher_le_bouton_supprimer" : 1 ,
+            "class_du_bouton_supprimer" : 'hug_bouton yy__x_signaux_0' ,
+            
             "fonction_appelee_apres_action" : this.action_sur_tri_menu1 ,
             "arborescent" : 1 ,
             "class_du_bouton_deplacer" : 'hug_bouton',
             "boutons_du_menu" : [] ,
             "class_du_bouton_menu" : 'hug_bouton',
-            "class_du_bouton_replier" : 'hug_bouton yy__x_signaux_2'
+            "class_du_bouton_replier" : 'hug_bouton yy__x_signaux_2',
         };
         options.boutons_du_menu.push({"libelle" : '+' ,"fonction" : this.ajouter_une_branche_au_menu1})
         options.boutons_du_menu.push({"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2})

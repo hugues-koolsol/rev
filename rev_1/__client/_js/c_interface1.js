@@ -1706,6 +1706,7 @@ class _c_interface1{
             }
             try{
                 document.getElementById( 'vv_supprimer_les_messages_3' ).style.visibility='visible';
+                document.getElementById( 'vv_agrandir_les_messages_3' ).style.visibility='visible';
             }catch{}
         }
         if(classe_du_message_d_erreur !== ''){
@@ -1753,10 +1754,22 @@ class _c_interface1{
                         if(la_zone_messages.innerHTML === ''){
                             try{
                                 document.getElementById( 'vv_supprimer_les_messages_3' ).style.visibility='hidden';
+                                document.getElementById( 'vv_agrandir_les_messages_3' ).style.visibility='hidden';
                             } catch {}
                         }
                     } , 1500 );
             }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    agrandir_les_messages( par ){
+        let a=document.getElementById('vv_les_messages');
+        if(a.style.maxHeight===''){
+            a.style.maxHeight='80vh';
+        }else{
+            a.style.maxHeight='';
         }
     }
     /*
@@ -1768,6 +1781,7 @@ class _c_interface1{
         this.les_messages={"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []};
         this.__m_rev1.globale_messages={"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []};
         document.getElementById( 'vv_supprimer_les_messages_3' ).style.visibility='hidden';
+        document.getElementById( 'vv_agrandir_les_messages_3' ).style.visibility='hidden';
         try{
             document.getElementById( 'vv_bouton_messages' ).classList.remove( 'hug_bouton_actif' );
         } catch {}
@@ -1937,7 +1951,7 @@ class _c_interface1{
         }else{
             this.zones_des_editeur[trouve].position=zoneSource.selectionStart;
         }
-        console.log( this.zones_des_editeur );
+        /* console.log( this.zones_des_editeur ); */
         this.#div_des_positions_du_curseur.innerHTML=zoneSource.selectionStart;
         this.derniere_zone_editee=zoneSource;
         this.position_dans_la_derniere_zone_editee=zoneSource.selectionStart;
@@ -2370,6 +2384,7 @@ class _c_interface1{
     masquer_les_messages(){
         document.getElementById( 'vv_les_messages' ).style.visibility='hidden';
         document.getElementById( 'vv_supprimer_les_messages_3' ).style.visibility='hidden';
+        document.getElementById( 'vv_agrandir_les_messages_3' ).style.visibility='hidden';
     }
     /*
       =============================================================================================================
@@ -2382,10 +2397,13 @@ class _c_interface1{
             document.getElementById( 'vv_les_messages' ).style.visibility='visible';
             document.getElementById( 'vv_bouton_messages' ).classList.add( 'hug_bouton_actif' );
             document.getElementById( 'vv_supprimer_les_messages_3' ).style.visibility='visible';
+            document.getElementById( 'vv_agrandir_les_messages_3' ).style.visibility='visible';
+            
         }else{
             document.getElementById( 'vv_les_messages' ).style.visibility='hidden';
             document.getElementById( 'vv_bouton_messages' ).classList.remove( 'hug_bouton_actif' );
             document.getElementById( 'vv_supprimer_les_messages_3' ).style.visibility='hidden';
+            document.getElementById( 'vv_agrandir_les_messages_3' ).style.visibility='hidden';
         }
     }
     /*

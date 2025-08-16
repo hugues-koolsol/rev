@@ -15,7 +15,7 @@ function sql_178($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_utilisateur'] !== '')){
-        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_utilisateur`',$par['T0_chi_id_utilisateur']);
+        $where0.=' AND `T0`.`chi_id_utilisateur` = '.sq1($par['T0_chi_id_utilisateur']).''.PHP_EOL;
     }
     if(($par['T0_chp_nom_de_connexion_utilisateur'] !== '')){
         $where0.=' AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE '.sq2($par['T0_chp_nom_de_connexion_utilisateur']).''.PHP_EOL;
@@ -58,7 +58,7 @@ function sql_178($par,&$donnees_retournees,$that){
         return array(
                 __xst => __xer , 
                 'sql0' => $sql0 ,
-                'sql0' => 'la liste sur les utilisateurs' ,
+                'texte_requete' => 'la liste sur les utilisateurs' ,
                 'exception' => $e ,
                 'id_bdd' => BDD_NUMERO_1 
             );

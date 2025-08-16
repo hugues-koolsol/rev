@@ -17,7 +17,7 @@ function sql_318($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;
-    //echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' . $sql0 . '</pre>' ; exit(0);
+    // echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' . $sql0 . '</pre>' ; exit(0);
     try{
         $ret=$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->exec($sql0);
         return(array( 

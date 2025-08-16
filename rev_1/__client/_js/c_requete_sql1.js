@@ -1,7 +1,6 @@
 /*
-  
   #transformer_requete_en_fonction_php
-  
+  traiter_donnees_bases_rev
 */
 const __xer=0;
 const __xsu=1;
@@ -233,7 +232,7 @@ class c_requete_sql1{
                         break;
                     }else if(tab[j][2] === 'f' && tab[j][1] === '#'){
                     }else{
-                        console.log( 'afr' );
+                        /* console.log( 'afr' ); */
                     }
                 }
             }
@@ -1241,14 +1240,11 @@ class c_requete_sql1{
                     cmd+=' )';
                     cmd+=')';
                     t+='<div class="hug_bouton" data-hug_click="' + cmd + '">+T' + this.#obj_webs['ordre_des_tables'][i].indice_table + '.' + this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ + '</div>';
-                    var nom_du_champ=this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ;
-                    var type_du_champ=this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].type;
-                    var non_nulle=this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].non_nulle;
                     tabchamps.push( {
                             "indice_table" : this.#obj_webs['ordre_des_tables'][i].indice_table ,
-                            "nom_du_champ" : nom_du_champ ,
-                            "type_du_champ" : type_du_champ ,
-                            "non_nulle" : non_nulle
+                            "nom_du_champ" : this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ ,
+                            "non_nulle" : this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].non_nulle,
+                            "espece_du_champ" : this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].espece_du_champ,
                         } );
                 }
             }
@@ -1288,11 +1284,12 @@ class c_requete_sql1{
         ){
             if("conditions" === destination){
                 var i={};
-                for(i in tabchamps){
-                    if(tabchamps[i].type_du_champ.substr( 0 , 3 ).toLowerCase() === 'int'
-                           || tabchamps[i].type_du_champ.substr( 0 , 5 ).toLowerCase() === 'float'
-                           || tabchamps[i].type_du_champ.substr( 0 , 6 ).toLowerCase() === 'double'
-                           || tabchamps[i].type_du_champ.substr( 0 , 7 ).toLowerCase() === 'decimal'
+                debugger
+                for(i in tabchamps){ // type_du_champ
+                    if(tabchamps[i].espece_du_champ.substr( 0 , 3 ).toLowerCase() === 'int'
+                           || tabchamps[i].espece_du_champ.substr( 0 , 5 ).toLowerCase() === 'float'
+                           || tabchamps[i].espece_du_champ.substr( 0 , 6 ).toLowerCase() === 'double'
+                           || tabchamps[i].espece_du_champ.substr( 0 , 7 ).toLowerCase() === 'decimal'
                     ){
                         contenu+=CRLF + ' egal(champ(`T' + tabchamps[i].indice_table + '` , `' + tabchamps[i].nom_du_champ + '`), :T' + tabchamps[i].indice_table + '_' + tabchamps[i].nom_du_champ + '),';
                     }else{
@@ -2938,12 +2935,13 @@ class c_requete_sql1{
                             var rpt=' ';
                             /* .repeat( lng ); */
                             var encadrement_variable='\\\'';
-                            if(champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'int' ) >= 0
-                                   || champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'float' ) >= 0
-                                   || champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'decimal' ) >= 0
+                            if(champ_de_la_base.espece_du_champ.toLowerCase().indexOf( 'int' ) >= 0
+                                   || champ_de_la_base.espece_du_champ.toLowerCase().indexOf( 'float' ) >= 0
+                                   || champ_de_la_base.espece_du_champ.toLowerCase().indexOf( 'decimal' ) >= 0
                             ){
                                 encadrement_variable='';
                             }
+                            // type_du_champ // espece_du_champ
                             tableau_des_champs_en_sortie.push( {
                                     "non_du_champ_en_bdd" : nom_du_champ ,
                                     "valeur_du_champ" : valeur_du_champ ,
@@ -2960,9 +2958,9 @@ class c_requete_sql1{
                     var rpt=' '.repeat( lng );
                     var encadrement_variable='\\\'';
                     try{
-                        if(champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'int' ) >= 0
-                               || champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'float' ) >= 0
-                               || champ_de_la_base.type_du_champ.toLowerCase().indexOf( 'decimal' ) >= 0
+                        if(champ_de_la_base.espece_du_champ.toLowerCase().indexOf( 'int' ) >= 0
+                               || champ_de_la_base.espece_du_champ.toLowerCase().indexOf( 'float' ) >= 0
+                               || champ_de_la_base.espece_du_champ.toLowerCase().indexOf( 'decimal' ) >= 0
                         ){
                             encadrement_variable='';
                         }
@@ -3583,7 +3581,7 @@ class c_requete_sql1{
     /*
       =============================================================================================================
     */
-    traiter_donnees_bases_rev( par , bases_du_projet=null ){
+    traiter_donnees_bases_rev( par , bases_du_projet=null ){ 
         this.#obj_init['chi_id_requete_initiale']=par['chi_id_requete_initiale'];
         this.#obj_init['cht_rev_requete_initiale']=par['cht_rev_requete_initiale'];
         this.#obj_init['chp_type_requete_initiale']=par['chp_type_requete_initiale'];
@@ -3641,8 +3639,20 @@ class c_requete_sql1{
                         if("champs" === tab[j][1] && tab[j][2] === 'f'){
                             for( let k=j + 1 ; k < l01 ; k=tab[k][12] ){
                                 if(tab[k][1] === 'champ' && tab[k][2] === 'f'){
-                                    var le_champ={"nom_du_champ" : '' ,"non_nulle" : 0 ,"type" : '' ,"actif" : false ,"primary_key" : 0};
-                                    for( let l=k + 1 ; l < l01 && tab[l][3] > tab[k][3] ; l++ ){
+                                    var le_champ={
+                                        "nom_du_champ" : '' ,
+                                        "non_nulle" : 0 ,
+                                        "type" : '' ,
+                                        "actif" : false ,
+                                        "primary_key" : 0,
+                                        "espece_du_champ" : '' ,
+                                        "a_une_valeur_par_defaut" : 0 ,
+                                        "la_valeur_par_defaut_est_caractere" : 0,
+                                        "valeur_par_defaut" : '',
+                                        "typologie" : '' ,
+                                        
+                                    };
+                                    for( let l=k + 1 ; l < l01 ; l=tab[l][12] ){
                                         if(tab[l][1] === 'nom_du_champ' && tab[l][2] === 'f'){
                                             le_champ.nom_du_champ=tab[l + 1][1];
                                         }else if(tab[l][1] === 'type' && tab[l][2] === 'f'){
@@ -3651,6 +3661,23 @@ class c_requete_sql1{
                                             le_champ.non_nulle=parseInt( tab[l + 1][1] , 10 );
                                         }else if(tab[l][1] === 'primary_key' && tab[l][2] === 'f'){
                                             le_champ.primary_key=parseInt( tab[l + 1][1] , 10 );
+                                        }else if(tab[l][1] === 'espece_du_champ' && tab[l][2] === 'f'){
+                                            le_champ.espece_du_champ=tab[l + 1][1];
+                                        }else if(tab[l][1] === 'a_une_valeur_par_defaut' && tab[l][2] === 'f'){
+                                            le_champ.a_une_valeur_par_defaut=parseInt(tab[l + 1][1],10);
+                                        }else if(tab[l][1] === 'la_valeur_par_defaut_est_caractere' && tab[l][2] === 'f'){
+                                            le_champ.la_valeur_par_defaut_est_caractere=parseInt(tab[l + 1][1],10);
+                                        }else if(tab[l][1] === 'valeur_par_defaut' && tab[l][2] === 'f'){
+                                            le_champ.valeur_par_defaut=tab[l + 1][1];
+                                        }else if(tab[l][1] === 'valeur_par_defaut' && tab[l][2] === 'f'){
+                                            le_champ.valeur_par_defaut=tab[l + 1][1];
+                                        }else if(tab[l][1] === 'meta' && tab[l][2] === 'f'){
+                                            for( let m=l + 1 ; m < l01 ; m=tab[m][12] ){
+                                                if(tab[m][1] === 'typologie' && tab[m][2] === 'f'){
+                                                    le_champ.typologie=tab[m + 1][1];
+                                                }
+                                            }
+                                         
                                         }
                                     }
                                     this.#obj_init['bases'][ind]['tables'][nom_de_la_table]['champs'].push( le_champ );

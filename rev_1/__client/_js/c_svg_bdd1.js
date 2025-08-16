@@ -562,6 +562,7 @@ class c_svg_bdd1{
         }
         var nom_du_champ=document.getElementById( 'nom_du_champ' ).value;
         var typologie=document.getElementById( 'typologie' ).value;
+        var genre=document.getElementById( 'genre' ).value;
         var espece_du_champ=document.getElementById( 'espece_du_champ' ).value.toUpperCase();
         var longueur_du_champ=document.getElementById( 'longueur_du_champ' ).value;
         var primary_key=document.getElementById( 'primary_key' ).checked ? ( 1 ) : ( 0 );
@@ -598,7 +599,7 @@ class c_svg_bdd1{
             return;
         }
         document.getElementById( 'zone_message_ajouter_un_champ' ).innerHTML='';
-        if( typologie === '' || nom_du_champ === '' || espece_du_champ==''){
+        if( typologie === '' || nom_du_champ === '' || espece_du_champ==='' || genre===''){
             document.getElementById( 'zone_message_ajouter_un_champ' ).innerHTML='Vous devez choisir un type de champ et une typologie et renseigner le nom du champ';
             return;
         }
@@ -640,6 +641,7 @@ class c_svg_bdd1{
             rev+='    longueur_du_champ(' + longueur_du_champ + ')';
         }
         rev+='    typologie(' + typologie + ')';
+        rev+='    genre(' + genre + ')';
         rev+='    nom_long_du_champ(\'' + document.getElementById( 'meta_ajouter__nom_long_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    nom_court_du_champ(\'' + document.getElementById( 'meta_ajouter__nom_court_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    nom_bref_du_champ(\'' + document.getElementById( 'meta_ajouter__nom_bref_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
@@ -1455,7 +1457,8 @@ class c_svg_bdd1{
             "nom_bref_du_champ" : document.getElementById( 'meta_modifier__nom_bref_du_champ' ).value ,
             "nom_court_du_champ" : document.getElementById( 'meta_modifier__nom_court_du_champ' ).value ,
             "nom_long_du_champ" : document.getElementById( 'meta_modifier__nom_long_du_champ' ).value ,
-            "typologie" : document.getElementById( 'meta_modifier__typologie' ).value
+            "typologie" : document.getElementById( 'meta_modifier__typologie' ).value,
+            "genre" : document.getElementById( 'meta_modifier__genre' ).value,
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ  );
         if(afficher_champ_dans_svg === 1){
@@ -1916,6 +1919,8 @@ class c_svg_bdd1{
         var donnees_rev_du_champ=document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' );
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( donnees_rev_du_champ , {} , nom_du_champ );
         let typologie=obj_donnees_rev_du_champ.typologie;
+        let genre=obj_donnees_rev_du_champ.genre;
+        
         let nom_bref_du_champ=obj_donnees_rev_du_champ.nom_bref_du_champ;
         let nom_court_du_champ=obj_donnees_rev_du_champ.nom_court_du_champ;
         let nom_long_du_champ=obj_donnees_rev_du_champ.nom_long_du_champ;
@@ -1996,6 +2001,9 @@ class c_svg_bdd1{
         t+='<option value="chh" ' + (typologie === 'chh' ? ( ' selected' ) : ( '' )) + '>heure character(8)</option>';
         t+='<option value="chb" ' + (typologie === 'chb' ? ( ' selected' ) : ( '' )) + '>blob (chb) blob</option>';
         t+='</select>';
+        
+        t+='<br />genre : ';
+        t+='<input type="text" id="meta_modifier__genre" value="' + genre + '" autocapitalize="off" />';
         t+='<br />nom_bref_du_champ : ';
         t+='<input type="text" id="meta_modifier__nom_bref_du_champ" value="' + nom_bref_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
         t+='<br />nom_court_du_champ : ';
@@ -3701,6 +3709,8 @@ class c_svg_bdd1{
             cmd+=')';
             t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '" >' + this.#especes_de_reference[ind] + '</div>';
         }
+        
+        t+='<br />genre  : <input id="genre" type="text" value="0" autocapitalize="off" />';
         t+='<br />longueur  : <input id="longueur_du_champ" type="text" value="" autocapitalize="off" />';
         
         
@@ -5415,6 +5425,7 @@ class c_svg_bdd1{
         let nom_court_du_champ='';
         let nom_bref_du_champ='';
         let typologie='';
+        let genre='1';
         let afficher_champ_dans_svg=1;
         let champ_date_modification=0;
         let champ_date_creation=0;
@@ -5522,6 +5533,13 @@ class c_svg_bdd1{
                                 }
                                 typologie=mat2[k + 1][1];
                             }
+                        }else if(mat2[k][1] === 'genre' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'genre' )){
+                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.genre , 10 );
+                            }
+                            genre=parseInt( mat2[k + 1][1] , 10 );
+                            
+                            
                         }else if(mat2[k][1] === '' && mat2[k][2] === 'f' && mat2[k][8] === 2){
                             if(mat2[k + 1][1] === 'champ' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 champ=mat2[k + 2][1];
@@ -5552,6 +5570,8 @@ class c_svg_bdd1{
                                 champ_numero_de_revision=parseInt( mat2[k + 2][1] , 10 );
                             }else if(mat2[k + 1][1] === 'typologie' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 typologie=mat2[k + 2][1];
+                            }else if(mat2[k + 1][1] === 'genre' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
+                                genre=mat2[k + 2][1];
                             }
                         }else if(mat2[k][1] === 'longueur_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 0){
                         }else{
@@ -5597,6 +5617,15 @@ class c_svg_bdd1{
         ){
             refe_parent_gauche=1;
         }
+        if(nouvelles_valeurs.hasOwnProperty( 'genre' )
+               && (nouvelles_valeurs.genre === '0'
+                   || nouvelles_valeurs.genre === 0
+                   || nouvelles_valeurs.genre === '1'
+                   || nouvelles_valeurs.genre === 1
+                   )
+        ){
+            genre=parseInt(nouvelles_valeurs.genre,10);
+        }
         o1+='meta(';
         o1+='    genre_meta(champ),';
         o1+='    nom_du_champ(\'' + nom_du_champ + '\'),';
@@ -5605,6 +5634,7 @@ class c_svg_bdd1{
         o1+='    nom_court_du_champ(\'' + nom_court_du_champ + '\'),';
         o1+='    nom_bref_du_champ(\'' + nom_bref_du_champ + '\'),';
         o1+='    typologie(' + typologie + '),';
+        o1+='    genre(' + genre + '),';
         o1+='    afficher_champ_dans_svg(' + afficher_champ_dans_svg + '),';
         o1+='    espece_du_champ(' + espece_du_champ + '),';
         
@@ -5660,7 +5690,9 @@ class c_svg_bdd1{
                 "refe_enfant_droite" : refe_enfant_droite ,
                 "refe_parent_gauche" : refe_parent_gauche ,
                 "espece_du_champ" : espece_du_champ ,
-                "longueur_du_champ" : longueur_du_champ
+                "longueur_du_champ" : longueur_du_champ,
+                "genre" : genre,
+                
             });
     }
     /*

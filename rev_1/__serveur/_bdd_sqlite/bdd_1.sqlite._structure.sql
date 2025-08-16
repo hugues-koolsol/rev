@@ -824,7 +824,7 @@ CREATE TABLE tbl_acces(
 
 CREATE TABLE tbl_taches(
 /*
- meta(nom_de_la_table('tbl_taches'),table('tbl_taches'),genre_meta(table_de_base),nom_long_de_la_table(''),nom_court_de_la_table(''),nom_bref_de_la_table(''),transform_table_sur_svg(translate(252.5,599.5))) 
+ meta(nom_de_la_table('tbl_taches'),table('tbl_taches'),genre_meta(table_de_base),nom_long_de_la_table(''),nom_court_de_la_table(''),nom_bref_de_la_table(''),transform_table_sur_svg(translate(804.5,599.5))) 
 */
     
             /*
@@ -839,7 +839,7 @@ CREATE TABLE tbl_taches(
             /*
             meta(
             genre_meta(champ),nom_du_champ('chx_utilisateur_tache'),nom_long_du_champ('à faire chx_utilisateur_tache'),nom_court_du_champ('à faire chx_utilisateur_tache'),nom_bref_du_champ('à faire chx_utilisateur_tache'),
-            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER),refe_enfant_droite(1),refe_parent_gauche(1)
+            typologie(chi),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
              chx_utilisateur_tache INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) 
@@ -892,7 +892,7 @@ CREATE TABLE tbl_taches(
 
 CREATE TABLE tbl_genres(
 /*
- meta(nom_de_la_table('tbl_genres'),table('tbl_genres'),genre_meta(table_de_base),nom_long_de_la_table('A faire  tbl_genres'),nom_court_de_la_table('A faire tbl_genres'),nom_bref_de_la_table('A faire tbl_genres'),transform_table_sur_svg(translate(829.5,485.5))) 
+ meta(nom_de_la_table('tbl_genres'),table('tbl_genres'),genre_meta(table_de_base),nom_long_de_la_table('A faire  tbl_genres'),nom_court_de_la_table('A faire tbl_genres'),nom_bref_de_la_table('A faire tbl_genres'),transform_table_sur_svg(translate(68.5,456.5))) 
 */
     
             /*
@@ -919,7 +919,7 @@ CREATE TABLE tbl_genres(
             typologie(chp),afficher_champ_dans_svg(1),espece_du_champ(VARCHAR),longueur_du_champ(32)
             )
             */
-             chp_espece_genre VARCHAR(32) NOT NULL
+             chp_espece_genre VARCHAR(32) NOT NULL DEFAULT  'TEXT'
     ,
     
             /*
@@ -933,48 +933,57 @@ CREATE TABLE tbl_genres(
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che_primaire_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            genre_meta(champ),nom_du_champ('che_est_primaire_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
             typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             che_primaire_genre INTEGER NOT NULL DEFAULT  0
+             che_est_primaire_genre INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che_progressif_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            genre_meta(champ),nom_du_champ('che_est_incrément_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
             typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             che_progressif_genre INTEGER NOT NULL DEFAULT  0
+             che_est_incrément_genre INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che_obligatoire_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            genre_meta(champ),nom_du_champ('che_est_obligatoire_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
             typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             che_obligatoire_genre INTEGER NOT NULL DEFAULT  0
+             che_est_obligatoire_genre INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che_liminaire_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            genre_meta(champ),nom_du_champ('che_a_init_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
             typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             che_liminaire_genre INTEGER NOT NULL DEFAULT  0
+             che_a_init_genre INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
             meta(
-            genre_meta(champ),nom_du_champ('che_mot_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            genre_meta(champ),nom_du_champ('che_init_est_mot_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
             typologie(che),afficher_champ_dans_svg(1),espece_du_champ(INTEGER)
             )
             */
-             che_mot_genre INTEGER NOT NULL DEFAULT  0
-    );
+             che_init_est_mot_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('cht_valeur_init_genre'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
+            )
+            */
+             cht_valeur_init_genre TEXT
+    , chp_prefixe_genre VARCHAR(3) NOT NULL DEFAULT  'cht');
 
 CREATE TABLE tbl_autorisations(
 /*
@@ -1056,5 +1065,23 @@ CREATE TABLE tbl_menus(
             )
             */
              chp_methode_menu VARCHAR(64) NOT NULL
-    , cht_initialisation_menu TEXT, cht_complements_menu TEXT);
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('cht_initialisation_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
+            )
+            */
+             cht_initialisation_menu TEXT
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),nom_du_champ('cht_complements_menu'),nom_long_du_champ('A faire ...'),nom_court_du_champ('A faire ...'),nom_bref_du_champ('A faire ...'),
+            typologie(cht),afficher_champ_dans_svg(1),espece_du_champ(TEXT)
+            )
+            */
+             cht_complements_menu TEXT
+    );
 

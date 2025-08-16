@@ -14,7 +14,7 @@ function sql_183($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_metier'] !== '')){
-        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_metier`',$par['T0_chi_id_metier']);
+        $where0.=' AND `T0`.`chi_id_metier` = '.sq1($par['T0_chi_id_metier']).''.PHP_EOL;
     }
     if(($par['T0_chp_nom_metier'] !== '')){
         $where0.=' AND `T0`.`chp_nom_metier` LIKE '.sq2($par['T0_chp_nom_metier']).''.PHP_EOL;
@@ -53,7 +53,7 @@ function sql_183($par,&$donnees_retournees,$that){
         return array(
                 __xst => __xer , 
                 'sql0' => $sql0 ,
-                'sql0' => 'la liste sur les metiers' ,
+                'texte_requete' => 'la liste sur les metiers' ,
                 'exception' => $e ,
                 'id_bdd' => BDD_NUMERO_1 
             );

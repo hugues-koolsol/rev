@@ -1292,4 +1292,90 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
 ;',
     'cht_commentaire_requete' => 'menus par acces',
   ),
+  328 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
+`T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
+`T0`.`chp_prefixe_genre`
+ FROM b1.tbl_genres T0
+WHERE (`T0`.`chi_id_genre` = :T0_chi_id_genre
+   AND `T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre
+   AND `T0`.`chp_espece_genre` LIKE :T0_chp_espece_genre
+   AND `T0`.`cht_valeur_init_genre` LIKE :T0_cht_valeur_init_genre
+   AND `T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre) 
+ORDER BY `T0`.`chi_id_genre` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',
+    'cht_commentaire_requete' => 'genres',
+  ),
+  329 => 
+  array (
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_genres`(
+    `chp_nom_genre` , 
+    `chp_espece_genre` , 
+    `che_longueur_genre` , 
+    `che_est_primaire_genre` , 
+    `che_est_incrément_genre` , 
+    `che_est_obligatoire_genre` , 
+    `che_a_init_genre` , 
+    `che_init_est_mot_genre` , 
+    `cht_valeur_init_genre` , 
+    `chp_prefixe_genre`
+) VALUES (
+    :chp_nom_genre , 
+    :chp_espece_genre , 
+    :che_longueur_genre , 
+    :che_est_primaire_genre , 
+    :che_est_incrément_genre , 
+    :che_est_obligatoire_genre , 
+    :che_a_init_genre , 
+    :che_init_est_mot_genre , 
+    :cht_valeur_init_genre , 
+    :chp_prefixe_genre
+);',
+    'cht_commentaire_requete' => 'genres',
+  ),
+  330 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
+`T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
+`T0`.`chp_prefixe_genre`
+ FROM b1.tbl_genres T0
+WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
+;',
+    'cht_commentaire_requete' => 'genres',
+  ),
+  331 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_genres SET 
+   `chp_nom_genre` = :n_chp_nom_genre , 
+   `chp_espece_genre` = :n_chp_espece_genre , 
+   `che_longueur_genre` = :n_che_longueur_genre , 
+   `che_est_primaire_genre` = :n_che_est_primaire_genre , 
+   `che_est_incrément_genre` = :n_che_est_incrément_genre , 
+   `che_est_obligatoire_genre` = :n_che_est_obligatoire_genre , 
+   `che_a_init_genre` = :n_che_a_init_genre , 
+   `che_init_est_mot_genre` = :n_che_init_est_mot_genre , 
+   `cht_valeur_init_genre` = :n_cht_valeur_init_genre , 
+   `chp_prefixe_genre` = :n_chp_prefixe_genre
+WHERE `chi_id_genre` = :c_chi_id_genre ;',
+    'cht_commentaire_requete' => 'genres',
+  ),
+  332 => 
+  array (
+    'cht_sql_requete' => 'DELETE FROM b1.tbl_genres
+WHERE `chi_id_genre` = :chi_id_genre ;',
+    'cht_commentaire_requete' => 'genres',
+  ),
+  333 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
+`T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre`
+ FROM b1.tbl_genres T0 ORDER BY  `T0`.`chi_id_genre` ASC
+;',
+    'cht_commentaire_requete' => 'tous les genres',
+  ),
 );

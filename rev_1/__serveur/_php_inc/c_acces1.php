@@ -181,7 +181,7 @@ class c_acces1{
                     
                     if($parent_est_select === true){
 
-                        $t .= PHP_EOL . '  <option  data-action_option="';
+                        $t .= PHP_EOL . '  <option id="menu_'.$v1['id_interne'].'" data-action_option="';
                         $t .= str_replace('.php','',$v1['attributs']['data-chp_nom_source']);
                         $t .= '.' . $v1['attributs']['data-chp_methode_menu'];
                         
@@ -206,48 +206,62 @@ class c_acces1{
                         }
 
                         $t .= 'indice_menu(' . $v1['attributs']['data-chi_id_menu'] . ')';
+                        $t .= 'id_interne(' . $v1['id_interne'] . ')';
+                        $t .= 'id_interne_parent(' . $v1['id_interne_parent'] . ')';
                         $t .= '"';
                         $t .= '">' . $v1['contenu'] . '</option>';
 
                     }else{
-
-                        $t .= '<div';
-                        $t .= ' data-id_menu="' . $v1['attributs']['data-chi_id_menu'] . '"';
-                        $t .= ' class="hug_bouton"';
-                        $t .= ' data-hug_click="';
-                        $t .= str_replace('.php','',$v1['attributs']['data-chp_nom_source']);
-                        $t .= '.' . $v1['attributs']['data-chp_methode_menu'];
-                        
-                        if($v1['attributs']['data-cht_initialisation_menu'] === 'null'){
-
-                            $t .= '()';
-
+                        if(isset($v1['attributs']['data-liste_des_menus']) && $v1['attributs']['data-liste_des_menus']==='1'){
+                            /*
+                              c'est une branche qui n'a pas d'enfants
+                            */
+                            $t .= '<select id="menu_'.$v1['id_interne'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
+                            $t .= '  <option>' . $v1['contenu'] . '</option>' . PHP_EOL;
+                            $t .= '</select>' . PHP_EOL;
+                            
                         }else{
 
-                            $t .= '(';
-                            $t .= $v1['attributs']['data-cht_initialisation_menu'];
-                            $t .= ')';
+                            $t .= '<div id="menu_'.$v1['id_interne'].'"';
+                            $t .= ' data-id_menu="' . $v1['attributs']['data-chi_id_menu'] . '"';
+                            $t .= ' class="hug_bouton"';
+                            $t .= ' data-hug_click="';
+                            $t .= str_replace('.php','',$v1['attributs']['data-chp_nom_source']);
+                            $t .= '.' . $v1['attributs']['data-chp_methode_menu'];
+                            
+                            if($v1['attributs']['data-cht_initialisation_menu'] === 'null'){
+
+                                $t .= '()';
+
+                            }else{
+
+                                $t .= '(';
+                                $t .= $v1['attributs']['data-cht_initialisation_menu'];
+                                $t .= ')';
+                            }
+
+                            
+                            if($v1['attributs']['data-cht_complements_menu'] === 'null'){
+
+
+                            }else{
+
+                                $t .= $v1['attributs']['data-cht_complements_menu'];
+                            }
+
+                            $t .= 'indice_menu(' . $v1['attributs']['data-chi_id_menu'] . ')';
+                            $t .= 'id_interne(' . $v1['id_interne'] . ')';
+                            $t .= '"';
+                            $t .= ' title="' . $v1['attributs']['data-chp_titre_menu'] . '"';
+                            $t .= '>' . $v1['contenu'] . '</div>' . PHP_EOL;
                         }
-
-                        
-                        if($v1['attributs']['data-cht_complements_menu'] === 'null'){
-
-
-                        }else{
-
-                            $t .= $v1['attributs']['data-cht_complements_menu'];
-                        }
-
-                        $t .= 'indice_menu(' . $v1['attributs']['data-chi_id_menu'] . ')';
-                        $t .= '"';
-                        $t .= ' title="' . $v1['attributs']['data-chp_titre_menu'] . '"';
-                        $t .= '>' . $v1['contenu'] . '</div>' . PHP_EOL;
                     }
 
 
                 }else{
 
-                    $t .= '<select data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
+
+                    $t .= '<select id="menu_'.$v1['id_interne'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
                     $t .= '  <option>' . $v1['contenu'] . '</option>' . PHP_EOL;
                     $t .= $this->construit_menu($v1['id_interne'],$le_tableau_du_menu,true);
                     $t .= '</select>' . PHP_EOL;
@@ -591,6 +605,145 @@ class c_acces1{
                 }
              
             }
+            /*#
+              ajouter les éléments manquants
+              $liste_des_menus
+              array (
+                0 => 
+                array (
+                  'chi_id_source' => 61,
+                  'cht_libelle_menu' => 'tâches',
+                  'chp_titre_menu' => 'Liste des tâches',
+                  'chp_methode_menu' => 'page_liste_des_taches1',
+                  'chp_nom_source' => 'c_taches1.php',
+                  'chi_id_menu' => 1,
+                  'cht_initialisation_menu' => 'T0_chp_priorite_tache2(99)',
+                  'cht_complements_menu' => NULL,
+                ),
+                1 => 
+                array (
+                  'chi_id_source' => 235,
+                  'cht_libelle_menu' => 'matrice',
+                  'chp_titre_menu' => 'convertion de rev vers matrice',
+                  'chp_methode_menu' => 'page1',
+                  'chp_nom_source' => 'c_rev_mat1.php',
+                  'chi_id_menu' => 2,
+                  'cht_initialisation_menu' => NULL,
+                  'cht_complements_menu' => 'maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_rev1))))',
+                ),            
+                
+                
+                $les_elements_du_menu_actuel
+                 array (
+                   0 => 
+                   array (
+                     'id_interne' => 1,
+                     'id_interne_parent' => 0,
+                     'replie' => 0,
+                     'contient_des_enfants' => 7,
+                     'contenu' => 'outils',
+                     'attributs' => 
+                     array (
+                       'data-liste_des_menus' => '1',
+                     ),
+                   ),
+                   1 => 
+                   array (
+                     'id_interne' => 2,
+                     'id_interne_parent' => 1,
+                     'replie' => 0,
+                     'contient_des_enfants' => 0,
+                     'contenu' => 'matrice',
+                     'attributs' => 
+                     array (
+                       'data-chi_id_source' => 235,
+                       'data-chp_nom_source' => 'c_rev_mat1.php',
+                       'data-chp_methode_menu' => 'page1',
+                       'data-chi_id_menu' => '2',
+                       'data-cht_initialisation_menu' => NULL,
+                       'data-cht_complements_menu' => 'maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_rev1))))',
+                       'data-chp_titre_menu' => 'convertion de rev vers matrice',
+                       'data-cht_libelle_menu' => 'matrice',
+                     ),
+                   ),
+                   2 => 
+                   array (
+                     'id_interne' => 3,
+                     'id_interne_parent' => 1,
+                     'replie' => 0,
+                     'contient_des_enfants' => 0,
+                     'contenu' => 'js',
+                     'attributs' => 
+                     array (
+                       'data-chi_id_source' => 234,
+                       'data-chp_nom_source' => 'c_rev_js1.php',
+                       'data-chp_methode_menu' => 'page1',
+                       'data-chi_id_menu' => '3',
+                       'data-cht_initialisation_menu' => NULL,
+                       'data-cht_complements_menu' => 'maj_interface2(modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_js_rev1))))',
+                       'data-chp_titre_menu' => 'convertion de javascript ',
+                       'data-cht_libelle_menu' => 'js',
+                     ),
+                   ),                
+                
+                
+            */
+            
+//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $les_elements_du_menu_actuel , true ) . '</pre>' ; exit(0);
+//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $liste_des_menus , true ) . '</pre>' ; exit(0);
+            foreach($liste_des_menus as $k1 => $v1){
+             
+                $trouve=false;
+                
+                foreach($les_elements_du_menu_actuel as $k2 => $v2){
+                    if(isset($v2['attributs']['data-chi_id_menu']) && $v2['attributs']['data-chi_id_menu'] == $v1['chi_id_menu']){
+                        $trouve=true;
+                        break;
+                    }
+                 
+                }
+                if( $trouve === false ){
+                    /*
+                      il faut ajouter cet élément
+                      
+                      array (
+                        'chi_id_source' => 61,
+                        'cht_libelle_menu' => 'tâches',
+                        'chp_titre_menu' => 'Liste des tâches',
+                        'chp_methode_menu' => 'page_liste_des_taches1',
+                        'chp_nom_source' => 'c_taches1.php',
+                        'chi_id_menu' => 1,
+                        'cht_initialisation_menu' => 'T0_chp_priorite_tache2(99)',
+                        'cht_complements_menu' => NULL,
+                      ),
+                      
+                    */
+                    $id_interne=count($les_elements_du_menu_actuel);
+                    $les_elements_du_menu_actuel[]=array(
+                     'id_interne' => $id_interne,
+                     'id_interne_parent' => 0,
+                     'replie' => 0,
+                     'contient_des_enfants' => 0,
+                     'contenu' => $v1['cht_libelle_menu'],
+                     'attributs' => 
+                     array (
+                       'data-chi_id_source' => $v1['chi_id_source'],
+                       'data-chp_nom_source' => $v1['chp_nom_source'],
+                       'data-chp_methode_menu' => $v1['chp_methode_menu'],
+                       'data-chi_id_menu' => $v1['chi_id_menu'],
+                       'data-cht_initialisation_menu' => $v1['cht_initialisation_menu'],
+                       'data-cht_complements_menu' => $v1['cht_complements_menu'],
+                       'data-chp_titre_menu' => $v1['chp_titre_menu'],
+                       'data-cht_libelle_menu' => $v1['cht_libelle_menu'],
+                     ),
+                    
+                    );
+                 
+                 
+                }
+
+            }
+            
 
             //echo __FILE__ . ' ' . __LINE__ . ' $les_elements_du_menu_actuel = <pre>' . var_export( $les_elements_du_menu_actuel , true ) . '</pre>' ; exit(0);
             

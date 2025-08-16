@@ -6,7 +6,7 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'635','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'636','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -2349,53 +2349,7 @@ LIMIT :quantitee OFFSET :debut
  LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
 
 WHERE (`T0`.`chi_id_autorisation` = :T0_chi_id_autorisation)
-;','function sql_319($par,&$donnees_retournees,$that){
-    $champs0=''
-      `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
-    '';
-    $sql0=''SELECT ''.$champs0;
-    $from0=''
-      FROM `''.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].''`.tbl_autorisations T0
-       LEFT JOIN `''.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].''`.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
-
-       LEFT JOIN `''.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].''`.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
-    '';
-    $sql0.=$from0;
-    $where0='' WHERE (`T0`.`chi_id_autorisation` = ''.sq1($par[''T0_chi_id_autorisation'']).'')''.PHP_EOL;
-    $sql0.=$where0;
-    $donnees0=array();
-    //echo __FILE__ . '' '' . __LINE__ . '' $sql0 = <pre>'' .  $sql0  . ''</pre>'' ; exit(0);
-
-
-    try{
-        $stmt0=$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->prepare($sql0);
-        $res0=$stmt0->execute();
-        while(($tab0=$res0->fetchArray(SQLITE3_NUM))){
-            $donnees0[]=array(
-                ''T0.chi_id_autorisation'' => $tab0[0],
-                ''T0.chx_acces_autorisation'' => $tab0[1],
-                ''T0.chx_source_autorisation'' => $tab0[2],
-                ''T1.chp_nom_acces'' => $tab0[3],
-                ''T2.chp_nom_source'' => $tab0[4],
-            );
-        }
-        return array(
-           __xst  => __xsu  ,
-           __xva  => $donnees0   ,
-           ''sql0''    => $sql0          ,
-           ''where0''  => $where0     ,
-        );
-    }catch(Exception $e){
-        return array(
-           __xst => __xer ,
-           ''sql0'' => $sql0 , 
-           ''texte_requete'' => ''la selection sur les autorisations'' , 
-           ''exception'' => $e ,
-            ''id_bdd'' => BDD_NUMERO_1
-         );
-    }
-}
-','autorisations',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+;',NULL,'autorisations',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('320','1','delete','supprimer(
    base_de_reference(),
    provenance(
@@ -2405,27 +2359,7 @@ WHERE (`T0`.`chi_id_autorisation` = :T0_chi_id_autorisation)
    ),
    conditions(egal(champ(`chi_id_autorisation`),:chi_id_autorisation))
 )  ','DELETE FROM b1.tbl_autorisations
-WHERE `chi_id_autorisation` = :chi_id_autorisation ;','function sql_320($par,&$donnees_retournees,$that){
-    $sql0=''
-      DELETE FROM `''.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].''`.tbl_autorisations
-          WHERE `chi_id_autorisation` = ''.sq1($par[''chi_id_autorisation'']).'' ;
-    '';
-    // echo __FILE__ . '' '' . __LINE__ . '' $sql0=<pre>'' . $sql0 . ''</pre>'' ; exit(0);
-    try{
-        $ret=$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->exec($sql0);
-        return(array( __xst => __xsu, ''changements'' => $GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->changes()));
-    }catch(Exception $e){
-        return array(/**/
-            __xst => __xer , 
-            ''sql0'' => $sql0 , 
-            ''texte_requete'' => ''la suppression dans la table des autorisations'' ,
-            ''exception'' => $e , 
-            ''id_bdd'' => BDD_NUMERO_1,
-            ''bdd'' => $GLOBALS[__BDD][BDD_NUMERO_1] ,
-        );
-    }
-}
-','autorisations',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+WHERE `chi_id_autorisation` = :chi_id_autorisation ;',NULL,'autorisations',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('321','1','update','modifier(
    base_de_reference(),
    valeurs(affecte(champ(`chx_acces_autorisation`),:n_chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:n_chx_source_autorisation)),
@@ -2438,51 +2372,7 @@ WHERE `chi_id_autorisation` = :chi_id_autorisation ;','function sql_320($par,&$d
 )  ','UPDATE b1.tbl_autorisations SET 
    `chx_acces_autorisation` = :n_chx_acces_autorisation , 
    `chx_source_autorisation` = :n_chx_source_autorisation
-WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;','function sql_321($par,&$donnees_retournees,$that){
-    $sql0=''UPDATE `''.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].''`.`tbl_autorisations` SET ''.PHP_EOL;
-    $tableau_champs=array();
-
-    if($par[''n_chx_acces_autorisation'']==='''' || is_null($par[''n_chx_acces_autorisation'']) ){
-        $tableau_champs[]=''`chx_acces_autorisation` = NULL'';
-    }else{
-        $tableau_champs[]=''`chx_acces_autorisation` = ''.sq0($par[''n_chx_acces_autorisation'']).'''';
-    }
-    if($par[''n_chx_source_autorisation'']==='''' || is_null($par[''n_chx_source_autorisation'']) ){
-        $tableau_champs[]=''`chx_source_autorisation` = NULL'';
-    }else{
-        $tableau_champs[]=''`chx_source_autorisation` = ''.sq0($par[''n_chx_source_autorisation'']).'''';
-    }
-
-    if(count($tableau_champs)===0){
-        return array(/**/
-            __xst => __xer ,
-            __xme => ''aucun champ à mettre à jour'' ,
-            ''id_bdd'' => BDD_NUMERO_1 ,
-            ''sql0'' => $sql0 , 
-            ''texte_requete'' => ''la modification dans la table des autorisations'' ,
-            ''exception'' => null , 
-        );
-    }
-    $sql0.=implode('',''.PHP_EOL.''    '',$tableau_champs).PHP_EOL;
-    $where0='' WHERE 1=1 ''.PHP_EOL;
-    $where0.='' AND `chi_id_autorisation` = ''.sq1($par[''c_chi_id_autorisation'']).''''.PHP_EOL;
-    $sql0.=$where0;
-    // echo __FILE__ . '' '' . __LINE__ . '' $sql0= <pre>'' . $sql0 . ''</pre>'' ; exit(0);
-    try{
-        $ret=$GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->exec($sql0);
-        return(array( __xst => __xsu, ''changements'' => $GLOBALS[__BDD][BDD_NUMERO_1][LIEN_BDD]->changes()));
-    }catch(Exception $e){
-        return array(/**/
-            __xst => __xer , 
-            ''sql0'' => $sql0 , 
-            ''texte_requete'' => ''la modification dans la table des autorisations'' ,
-            ''exception'' => $e , 
-            ''id_bdd'' => BDD_NUMERO_1,
-            ''bdd'' => $GLOBALS[__BDD][BDD_NUMERO_1] ,
-        );
-    }
-}
-','autorisations',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',NULL,'autorisations',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('322','1','liste_ecran','sélectionner(
    base_de_reference(1),
    valeurs(
@@ -2710,7 +2600,193 @@ WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
  LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
 
 WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
-;',NULL,'menus par acces',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+;',NULL,'menus par acces',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('328','1','liste_ecran','sélectionner(
+   base_de_reference(1),
+   valeurs(
+      champ(`T0`,`chi_id_genre`),
+      champ(`T0`,`chp_nom_genre`),
+      champ(`T0`,`chp_espece_genre`),
+      champ(`T0`,`che_longueur_genre`),
+      champ(`T0`,`che_est_primaire_genre`),
+      champ(`T0`,`che_est_incrément_genre`),
+      champ(`T0`,`che_est_obligatoire_genre`),
+      champ(`T0`,`che_a_init_genre`),
+      champ(`T0`,`che_init_est_mot_genre`),
+      champ(`T0`,`cht_valeur_init_genre`),
+      champ(`T0`,`chp_prefixe_genre`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         egal(champ(`T0`,`chi_id_genre`),:T0_chi_id_genre),
+         comme(champ(`T0`,`chp_nom_genre`),:T0_chp_nom_genre),
+         comme(champ(`T0`,`chp_espece_genre`),:T0_chp_espece_genre),
+         comme(champ(`T0`,`cht_valeur_init_genre`),:T0_cht_valeur_init_genre),
+         comme(champ(`T0`,`chp_prefixe_genre`),:T0_chp_prefixe_genre)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_genre`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
+`T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
+`T0`.`chp_prefixe_genre`
+ FROM b1.tbl_genres T0
+WHERE (`T0`.`chi_id_genre` = :T0_chi_id_genre
+   AND `T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre
+   AND `T0`.`chp_espece_genre` LIKE :T0_chp_espece_genre
+   AND `T0`.`cht_valeur_init_genre` LIKE :T0_cht_valeur_init_genre
+   AND `T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre) 
+ORDER BY `T0`.`chi_id_genre` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('329','1','insert','insérer(
+   base_de_reference(1),
+   valeurs(
+      affecte(champ(`chp_nom_genre`),:chp_nom_genre),
+      affecte(champ(`chp_espece_genre`),:chp_espece_genre),
+      affecte(champ(`che_longueur_genre`),:che_longueur_genre),
+      affecte(champ(`che_est_primaire_genre`),:che_est_primaire_genre),
+      affecte(champ(`che_est_incrément_genre`),:che_est_incrément_genre),
+      affecte(champ(`che_est_obligatoire_genre`),:che_est_obligatoire_genre),
+      affecte(champ(`che_a_init_genre`),:che_a_init_genre),
+      affecte(champ(`che_init_est_mot_genre`),:che_init_est_mot_genre),
+      affecte(champ(`cht_valeur_init_genre`),:cht_valeur_init_genre),
+      affecte(champ(`chp_prefixe_genre`),:chp_prefixe_genre)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_genres`(
+    `chp_nom_genre` , 
+    `chp_espece_genre` , 
+    `che_longueur_genre` , 
+    `che_est_primaire_genre` , 
+    `che_est_incrément_genre` , 
+    `che_est_obligatoire_genre` , 
+    `che_a_init_genre` , 
+    `che_init_est_mot_genre` , 
+    `cht_valeur_init_genre` , 
+    `chp_prefixe_genre`
+) VALUES (
+    :chp_nom_genre , 
+    :chp_espece_genre , 
+    :che_longueur_genre , 
+    :che_est_primaire_genre , 
+    :che_est_incrément_genre , 
+    :che_est_obligatoire_genre , 
+    :che_a_init_genre , 
+    :che_init_est_mot_genre , 
+    :cht_valeur_init_genre , 
+    :chp_prefixe_genre
+);',NULL,'genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('330','1','select','sélectionner(
+   base_de_reference(1),
+   valeurs(
+      champ(`T0`,`chi_id_genre`),
+      champ(`T0`,`chp_nom_genre`),
+      champ(`T0`,`chp_espece_genre`),
+      champ(`T0`,`che_longueur_genre`),
+      champ(`T0`,`che_est_primaire_genre`),
+      champ(`T0`,`che_est_incrément_genre`),
+      champ(`T0`,`che_est_obligatoire_genre`),
+      champ(`T0`,`che_a_init_genre`),
+      champ(`T0`,`che_init_est_mot_genre`),
+      champ(`T0`,`cht_valeur_init_genre`),
+      champ(`T0`,`chp_prefixe_genre`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_genre`),:T0_chi_id_genre))
+)  ','SELECT 
+`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
+`T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
+`T0`.`chp_prefixe_genre`
+ FROM b1.tbl_genres T0
+WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
+;',NULL,'genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('331','1','update','modifier(
+   base_de_reference(1),
+   valeurs(
+      affecte(champ(`chp_nom_genre`),:n_chp_nom_genre),
+      affecte(champ(`chp_espece_genre`),:n_chp_espece_genre),
+      affecte(champ(`che_longueur_genre`),:n_che_longueur_genre),
+      affecte(champ(`che_est_primaire_genre`),:n_che_est_primaire_genre),
+      affecte(champ(`che_est_incrément_genre`),:n_che_est_incrément_genre),
+      affecte(champ(`che_est_obligatoire_genre`),:n_che_est_obligatoire_genre),
+      affecte(champ(`che_a_init_genre`),:n_che_a_init_genre),
+      affecte(champ(`che_init_est_mot_genre`),:n_che_init_est_mot_genre),
+      affecte(champ(`cht_valeur_init_genre`),:n_cht_valeur_init_genre),
+      affecte(champ(`chp_prefixe_genre`),:n_chp_prefixe_genre)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
+)  ','UPDATE b1.tbl_genres SET 
+   `chp_nom_genre` = :n_chp_nom_genre , 
+   `chp_espece_genre` = :n_chp_espece_genre , 
+   `che_longueur_genre` = :n_che_longueur_genre , 
+   `che_est_primaire_genre` = :n_che_est_primaire_genre , 
+   `che_est_incrément_genre` = :n_che_est_incrément_genre , 
+   `che_est_obligatoire_genre` = :n_che_est_obligatoire_genre , 
+   `che_a_init_genre` = :n_che_a_init_genre , 
+   `che_init_est_mot_genre` = :n_che_init_est_mot_genre , 
+   `cht_valeur_init_genre` = :n_cht_valeur_init_genre , 
+   `chp_prefixe_genre` = :n_chp_prefixe_genre
+WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,'genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('332','1','delete','supprimer(
+   base_de_reference(1),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_genre`),:chi_id_genre))
+)  ','DELETE FROM b1.tbl_genres
+WHERE `chi_id_genre` = :chi_id_genre ;',NULL,'genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('333','1','select','sélectionner(
+   base_de_reference(1),
+   valeurs(
+      champ(`T0`,`chi_id_genre`),
+      champ(`T0`,`chp_nom_genre`),
+      champ(`T0`,`chp_espece_genre`),
+      champ(`T0`,`che_longueur_genre`),
+      champ(`T0`,`che_est_primaire_genre`),
+      champ(`T0`,`che_est_incrément_genre`),
+      champ(`T0`,`che_est_obligatoire_genre`),
+      champ(`T0`,`che_a_init_genre`),
+      champ(`T0`,`che_init_est_mot_genre`),
+      champ(`T0`,`cht_valeur_init_genre`),
+      champ(`T0`,`chp_prefixe_genre`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_genre`),croissant()))
+   )
+)  ','SELECT 
+`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
+`T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre`
+ FROM b1.tbl_genres T0 ORDER BY  `T0`.`chi_id_genre` ASC
+;',NULL,'tous les genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
 
 /*
@@ -3849,7 +3925,1382 @@ class tri_arbre1{
     
 }','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','11'),
 ('356','1','c_autorisations1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
-('357','1','c_menus1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9');
+('357','1','c_menus1.php',NULL,NULL,NULL,'0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9'),
+('358','1','c_genres1.php',NULL,NULL,'<?php
+class c_menus1{
+    private $sql0=null;
+    /*
+      erreur lors de l''"action" pour 
+      Attention : du le cheval / de cheval vs de la menu / du la menu
+    */
+    private const LE_LA_ELEMENT_GERE = ''le menu'';
+    private const UN_UNE_ELEMENT_GERE = ''un menu'';
+    /*
+      =============================================================================================================
+    */
+    public function __construct(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . ''c_sql0.php'');
+        $this->sql0=new c_sql0(
+            $donnees_retournees,
+             /*matrice*/ $mat,
+            $donnees_recues
+        );
+    }
+    /*
+      =============================================================================================================
+      traitement des formulaires des menus
+    */
+    public function formulaire1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $l01=count($mat);
+        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
+            
+            
+            if($mat[$i][1] === ''c_menus1.formulaire1'' && $mat[$i][2] === ''f'' && $mat[$i][8] >= 1){
+
+                $conteneur1='''';
+                $action1='''';
+                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
+                    
+                    
+                    if($mat[$j][1] === ''conteneur1'' && $mat[$j + 1][2] === ''c''){
+
+                        $conteneur1=$mat[$j + 1][1];
+
+                    }else if($mat[$j][1] === ''action1'' && $mat[$j + 1][2] === ''c''){
+
+                        $action1=$mat[$j + 1][1];
+                    }
+
+                }
+                
+                if($action1 !== ''''){
+
+                    
+                    if($action1 === ''page_menus_creer1''
+                       || $action1 === ''page_menus_modifier1''
+                       || $action1 === ''page_menus_supprimer1''
+                       || $action1 === ''page_liste_des_menus1''
+                       || $action1 === ''page_menus_dupliquer1''
+                    ){
+
+                        $this->$action1(
+                            $donnees_retournees,
+                             /*matrice*/ $mat,
+                            $donnees_recues
+                        );
+
+                    }else{
+
+                        $donnees_retournees[__x_signaux][__xal][]=''action non traitée "'' . $action1 . ''" ['' . __LINE__ . '']'';
+                    }
+
+
+                }else if($conteneur1 === ''vv_menus_modifier1''
+                   || $conteneur1 === ''vv_menus_creer1''
+                   || $conteneur1 === ''vv_menus_supprimer1''
+                   || $conteneur1 === ''vv_menus_filtre1''
+                ){
+
+                    $this->$conteneur1(
+                        $donnees_retournees,
+                         /*matrice*/ $mat,
+                        $donnees_recues
+                    );
+
+                }else{
+
+                    $donnees_retournees[__x_signaux][__xal][]=''traitement à réaliser pour $donnees_recues '' . var_export($donnees_recues,true) . '' ['' . __LINE__ . '']'';
+                }
+
+                break;
+
+            }
+
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    function vv_menus_creer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $page_liste_des_menus1=false;
+        $l01=count($mat);
+        for( $i=1 ; $i < $l01 ; $i++ ){
+            
+            
+            if($mat[$i][1] === ''page_liste_des_menus1'' && $mat[$i][2] === ''f'' && $mat[$i][8] === 0){
+
+                $page_liste_des_menus1=true;
+                break;
+
+            }
+
+        }
+        
+        
+        
+         
+         
+        $tt326=$this->sql0->sql_iii(
+             /*sql_326()*/ 326,
+            array(/**/
+                ''T0_chi_id_autorisation'' => $donnees_recues[__xva][''chx_autorisation_menu''],
+                ''T0_chx_projet_id_source'' => $_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt326[__xst] === __xer){
+
+            $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la modification pour '' . self::LE_LA_ELEMENT_GERE . '' ['' . __LINE__ . '']'';
+            return;
+
+        }
+
+        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . ''c_dossiers1.php'');
+        $obj_doss=new c_dossiers1(
+            $donnees_retournees,
+             /*matrice*/ $mat,
+            $donnees_recues
+        );
+        $dossier=$obj_doss->construire_chemin($tt326[__xva][0][''T1.chx_dossier_id_source'']);
+        
+        if($dossier[''__xst''] !== __xsu){
+
+            $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la modification pour '' . self::LE_LA_ELEMENT_GERE . '' ['' . __LINE__ . '']'';
+            return;
+
+        }
+
+        /* echo __FILE__ . '' '' . __LINE__ . '' __LINE__ = <pre>'' . var_export( $tt326[__xva][0] , true ) . ''</pre>'' ; exit(0);*/
+        
+        if(!is_file($dossier[''__xva''][''chemin_absolu''] . DIRECTORY_SEPARATOR . $tt326[__xva][0][''T1.chp_nom_source''])){
+
+            $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la modification pour '' . self::LE_LA_ELEMENT_GERE . '' ['' . __LINE__ . '']'';
+            return;
+
+        }
+
+        require_once($dossier[''__xva''][''chemin_absolu''] . DIRECTORY_SEPARATOR . $tt326[__xva][0][''T1.chp_nom_source'']);
+        $class_methods=get_class_methods(str_replace(''.php'','''',$tt326[__xva][0][''T1.chp_nom_source'']));
+        $trouve=false;
+        $non_trouve='''';
+        foreach($class_methods as $k1 => $v1){
+            
+            if($v1 === $donnees_recues[__xva][''chp_methode_menu'']){
+
+                $trouve=true;
+                break;
+
+            }
+            if($v1!==''__constructor''){
+                $non_trouve=''<br />"''.$v1.''"''.$non_trouve;
+            }
+
+        }
+        
+        if($trouve === false){
+
+            $donnees_retournees[__x_signaux][__xer][]=''méthode non trouvée parmis  '' . $non_trouve . '' ['' . __LINE__ . '']'';
+            return;
+
+        }
+        
+        
+
+
+        $donnees_sql=array( array(/**/
+                    ''chx_autorisation_menu'' => $donnees_recues[__xva][''chx_autorisation_menu''] === '''' ? null : $donnees_recues[__xva][''chx_autorisation_menu''],
+                    ''cht_libelle_menu'' => $donnees_recues[__xva][''cht_libelle_menu''] === '''' ? null : $donnees_recues[__xva][''cht_libelle_menu''],
+                    ''chp_titre_menu'' => $donnees_recues[__xva][''chp_titre_menu''] === '''' ? null : $donnees_recues[__xva][''chp_titre_menu''],
+                    ''chp_methode_menu'' => $donnees_recues[__xva][''chp_methode_menu''] === '''' ? null : $donnees_recues[__xva][''chp_methode_menu''],
+                    ''cht_initialisation_menu'' => $donnees_recues[__xva][''cht_initialisation_menu''] === '''' ? null : $donnees_recues[__xva][''cht_initialisation_menu''],
+                    ''cht_complements_menu'' => $donnees_recues[__xva][''cht_complements_menu''] === '''' ? null : $donnees_recues[__xva][''cht_complements_menu''],
+                ));
+        /* echo __FILE__ . '' '' . __LINE__ . '' $donnees_sql = <pre>'' . var_export( $donnees_sql , true ) . ''</pre>'' ; exit(0);*/
+        $tt=$this->sql0->sql_iii(
+             /*sql_323()*/ 323,
+            $donnees_sql,
+            $donnees_retournees
+        );
+        
+        if($tt[__xst] !== __xsu){
+
+            $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . '' ['' . __LINE__ . '']'';
+            return;
+
+        }else if($tt[''changements''] === 1){
+
+            $donnees_retournees[__xst]=__xsu;
+            
+            if($page_liste_des_menus1 === true){
+
+                $this->page_liste_des_menus1($donnees_retournees,$mat,$donnees_recues);
+
+            }else{
+
+                $action=''chi_id_menu('' . $tt[''nouvel_id''] . '')'';
+                $obj_matrice=$GLOBALS[''obj_rev1'']->rev_vers_matrice($action);
+                $this->page_menus_modifier1(
+                    $donnees_retournees,
+                     /*matrice*/ $obj_matrice[__xva],
+                    $donnees_recues
+                );
+                $donnees_retournees[__x_action]=''c_menus1.formulaire1(action1(page_menus_modifier1),chi_id_menu('' . $tt[''nouvel_id''] . ''))'';
+            }
+
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . '' aucune modification efféctuée'';
+        }
+
+        $o1='''';
+    }
+    /*
+      =============================================================================================================
+    */
+    function vv_menus_filtre1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $txtPar=''__num_page(0)'';
+        $nouvelles_valeurs=array( ''__num_page'' => 0);
+        foreach($donnees_recues[__xva] as $k0 => $v0){
+            
+            if($k0 !== ''__num_page''){
+
+                $nouvelles_valeurs[$k0]=$v0;
+                
+                if(is_numeric($v0)){
+
+                    $txtPar .= '','' . $k0 . ''('' . $v0 . '')'';
+
+                }else{
+
+                    $txtPar .= '','' . $k0 . ''(\'''' . str_replace(''\'''',''\\\'''',$v0) . ''\'')'';
+                }
+
+
+            }
+
+        }
+        $_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1'']=$nouvelles_valeurs;
+        $obj_matrice=$GLOBALS[''obj_rev1'']->rev_vers_matrice(''c_menus1.page_liste_des_menus1('' . $txtPar . '')'');
+        
+        if($obj_matrice[__xst] === __xsu){
+
+            $this->page_liste_des_menus1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xer][]=__LINE__ . '' erreur de convertion de '' . $txtPar . '''';
+        }
+
+    }
+    /*
+      =============================================================================================================
+    */
+    function vv_menus_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $tt=$this->sql0->sql_iii(
+             /*sql_319()*/ 319,
+            array(/**/
+                ''T0_chi_id_menu'' => $donnees_recues[__xva][''chi_id_menu'']
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt[__xst] === __xsu){
+
+            $tt=$this->sql0->sql_iii(
+                 /*sql_320()*/ 320,
+                array(/**/
+                    ''chi_id_menu'' => $tt[__xva][0][''T0.chi_id_menu'']
+                ),
+                $donnees_retournees
+            );
+            
+            if($tt[__xst] === __xer){
+
+                $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la suppression pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '') ['' . __LINE__ . '']'';
+
+            }else if($tt[''changements''] === 1){
+
+                $donnees_retournees[__x_signaux][__xsu][]=''👍 suppression effectuée avec succès pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '')'';
+                $this->page_liste_des_menus1($donnees_retournees,$mat,$donnees_recues);
+
+            }else{
+
+                $donnees_retournees[__x_signaux][__xer][]=''aucune suppression effectuée pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '') ['' . __LINE__ . '']'';
+            }
+
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xer][]=''aucune suppression effectuée pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '') ['' . __LINE__ . '']'';
+        }
+
+        $o1='''';
+    }
+    /*
+      =============================================================================================================
+    */
+    function vv_menus_modifier1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $page_liste_des_menus1=false;
+        $l01=count($mat);
+        for( $i=1 ; $i < $l01 ; $i++ ){
+            
+            
+            if($mat[$i][1] === ''page_liste_des_menus1'' && $mat[$i][2] === ''f'' && $mat[$i][8] === 0){
+
+                $page_liste_des_menus1=true;
+
+            }
+
+        }
+        $tt324=$this->sql0->sql_iii(
+             /*sql_324()*/ 324,
+            array(/**/
+                ''T0_chi_id_menu'' => $donnees_recues[__xva][''chi_id_menu'']
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt324[__xst] !== __xsu){
+         
+            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . '' aucune modification efféctuée'';
+            return;
+        }
+         
+         
+         
+         
+        $tt326=$this->sql0->sql_iii(
+             /*sql_326()*/ 326,
+            array(/**/
+                ''T0_chi_id_autorisation'' => $donnees_recues[__xva][''chx_autorisation_menu''],
+                ''T0_chx_projet_id_source'' => $_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt326[__xst] === __xer){
+
+            $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la modification pour '' . self::LE_LA_ELEMENT_GERE . '' ['' . __LINE__ . '']'';
+            return;
+
+        }
+
+        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . ''c_dossiers1.php'');
+        $obj_doss=new c_dossiers1(
+            $donnees_retournees,
+             /*matrice*/ $mat,
+            $donnees_recues
+        );
+        $dossier=$obj_doss->construire_chemin($tt326[__xva][0][''T1.chx_dossier_id_source'']);
+        
+        if($dossier[''__xst''] !== __xsu){
+
+            $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la modification pour '' . self::LE_LA_ELEMENT_GERE . '' ['' . __LINE__ . '']'';
+            return;
+
+        }
+
+        /* echo __FILE__ . '' '' . __LINE__ . '' __LINE__ = <pre>'' . var_export( $tt326[__xva][0] , true ) . ''</pre>'' ; exit(0);*/
+        
+        if(!is_file($dossier[''__xva''][''chemin_absolu''] . DIRECTORY_SEPARATOR . $tt326[__xva][0][''T1.chp_nom_source''])){
+
+            $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la modification pour '' . self::LE_LA_ELEMENT_GERE . '' ['' . __LINE__ . '']'';
+            return;
+
+        }
+
+        require_once($dossier[''__xva''][''chemin_absolu''] . DIRECTORY_SEPARATOR . $tt326[__xva][0][''T1.chp_nom_source'']);
+        $class_methods=get_class_methods(str_replace(''.php'','''',$tt326[__xva][0][''T1.chp_nom_source'']));
+        $trouve=false;
+        $non_trouve='''';
+        foreach($class_methods as $k1 => $v1){
+            
+            if($v1 === $donnees_recues[__xva][''chp_methode_menu'']){
+
+                $trouve=true;
+                break;
+
+            }
+            if($v1!==''__constructor''){
+                $non_trouve=''<br />"''.$v1.''"''.$non_trouve;
+            }
+
+        }
+        
+        if($trouve === false){
+
+            $donnees_retournees[__x_signaux][__xer][]=''méthode non trouvée parmis  '' . $non_trouve . '' ['' . __LINE__ . '']'';
+            return;
+
+        }
+
+        $tt=$this->sql0->sql_iii(
+             /*sql_321()*/ 325,
+            array(/**/
+                ''c_chi_id_menu'' => $donnees_recues[__xva][''chi_id_menu''],
+                ''n_cht_libelle_menu'' => $donnees_recues[__xva][''cht_libelle_menu''],
+                ''n_chp_titre_menu'' => $donnees_recues[__xva][''chp_titre_menu''],
+                ''n_chx_autorisation_menu'' => $donnees_recues[__xva][''chx_autorisation_menu''],
+                ''n_chp_methode_menu'' => $donnees_recues[__xva][''chp_methode_menu''],
+                ''n_cht_initialisation_menu'' => $donnees_recues[__xva][''cht_initialisation_menu''],
+                ''n_cht_complements_menu'' => $donnees_recues[__xva][''cht_complements_menu''],
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt[__xst] === __xer){
+
+            $donnees_retournees[__x_signaux][__xer][]=''erreur lors de la modification pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '') ['' . __LINE__ . '']'';
+
+        }else if($tt[''changements''] === 1){
+
+            
+            if($page_liste_des_menus1 === true){
+
+                $this->page_liste_des_menus1($donnees_retournees,$mat,$donnees_recues);
+
+            }else{
+
+                $donnees_retournees[__xst]=__xsu;
+            }
+
+            $donnees_retournees[__x_signaux][__xsu][]=''👍 modification effectuée avec succès pour '' . self::LE_LA_ELEMENT_GERE . ''('' . $donnees_recues[__xva][''chi_id_menu''] . '') ['' . __LINE__ . '']'';
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . '' aucune modification efféctuée'';
+        }
+
+
+    }
+    
+    
+    /*
+      =============================================================================================================
+    */
+    function page_menus_dupliquer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        /* echo __FILE__ . '' '' . __LINE__ . '' $donnees_recues = <pre>'' . var_export( $donnees_recues , true ) . ''</pre>'' ; exit(0);*/
+        
+        
+        $o1='''';
+        $chi_id_menus='''';
+        $l01=count($mat);
+        for( $i=1 ; $i < $l01 ; $i++ ){
+            
+            
+            if($mat[$i][1] === ''chi_id_menu'' && $mat[$i + 1][2] === ''c'' && $mat[$i][2] === ''f''){
+
+                $chi_id_menus=$mat[$i + 1][1];
+                break;
+
+            }
+
+        }
+        
+        if(is_numeric($chi_id_menus) && $chi_id_menus > 0){
+         
+            $tt=$this->sql0->sql_iii(
+                 /*sql_324()*/ 324,
+                array(/**/
+                    ''T0_chi_id_menu'' => $chi_id_menus
+                ),
+                $donnees_retournees
+            );
+            if($tt[__xst] === __xsu){
+               $donnees_recues[''dupliquer'']=$tt[__xva][0];
+               $this->page_menus_creer1($donnees_retournees,$mat,$donnees_recues);
+            }
+        }
+        
+    }
+    
+    /*
+      =============================================================================================================
+    */
+    function page_menus_creer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $o1='''';
+        $o1 .= ''<h1>ajouter '' . self::UN_UNE_ELEMENT_GERE . '' <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_menus1.formulaire1(action1(page_liste_des_menus1))" title="revenir à la liste" >⬱</div></h1>'' . PHP_EOL;
+        $o1 .= ''<div id="vv_menus_creer1">'' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+        $o1 .= ''      <span>libelle</span>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+        $o1 .= ''      <div class="yy_conteneur_txtara">'' . PHP_EOL;
+        $o1 .= ''         <textarea placeholder="libelle visible" autocorrect="off" autocapitalize="off" spellcheck="false"  id="cht_libelle_menu" >'';
+        if(isset($donnees_recues[''dupliquer''][''T0.cht_libelle_menu''])){
+            $o1.=enti1($donnees_recues[''dupliquer''][''T0.cht_libelle_menu'']);
+        }
+        
+        $o1 .= ''</textarea>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''  </div>'' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+        $o1 .= ''      <span>titre</span>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+        $o1 .= ''      <input type="text" placeholder="titre" autocorrect="off" autocapitalize="off" spellcheck="false"  id="chp_titre_menu" value="'';
+        if(isset($donnees_recues[''dupliquer''][''T0.chp_titre_menu''])){
+            $o1.=enti1($donnees_recues[''dupliquer''][''T0.chp_titre_menu'']);
+        }
+        
+        $o1 .= ''" maxlength="64" style="width:80%;" autocorrect="off" autocapitalize="off" spellcheck="false" />'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''  </div>'' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+        $o1 .= ''      <span>autorisation<br />(accès source)</span>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+        if(isset($donnees_recues[''dupliquer''][''T0.chx_autorisation_menu''])){
+            $o1 .= ''        <input type="hidden" value="''.$donnees_recues[''dupliquer''][''T0.chx_autorisation_menu''].''"  id="chx_autorisation_menu" />'' . PHP_EOL;
+            $o1 .= ''        <span id="chx_autorisation_menu_libelle">'';
+            $o1 .= ''('' . $donnees_recues[''dupliquer''][''T0.chx_autorisation_menu''] . '') '' . enti1($donnees_recues[''dupliquer''][''T2.chp_nom_acces'']) . '' '' . enti1($donnees_recues[''dupliquer''][''T3.chp_nom_source'']) ; // . htmlentities($donnees_recues[''dupliquer''][''T1.chp_nom_acces'']) . PHP_EOL;
+            $o1 .= ''</span>'' . PHP_EOL;
+        }else{
+            $o1 .= ''        <input type="hidden" value=""  id="chx_autorisation_menu" />'' . PHP_EOL;
+            $o1 .= ''        <span id="chx_autorisation_menu_libelle">*indéfini</span>'' . PHP_EOL;
+        }
+        $parametre_sous_fenetre=''c_autorisations1.page_autorisations_sous_liste1('';
+        $parametre_sous_fenetre .= '' sans_menus1()'';
+        $parametre_sous_fenetre .= '' nom_champ_dans_parent1(chx_autorisation_menu)'';
+        $parametre_sous_fenetre .= '' nom_libelle_dans_parent1(chx_autorisation_menu_libelle)'';
+        $parametre_sous_fenetre .= '' libelle_si_vide1("*indéfini")'';
+        $parametre_sous_fenetre .= '')'';
+        $o1 .= ''      <div class="hug_bouton yy__x_signaux_1" '' . PHP_EOL;
+        $o1 .= ''data-hug_click="interface1.affiche_sous_fenetre1('' . htmlentities($parametre_sous_fenetre) . '')"  title="selectionner">📁</div>'' . PHP_EOL;
+        $o1 .= ''      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1('' . htmlentities($parametre_sous_fenetre) . '')"  title="annuler">🚫</div>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''  </div>'' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+        $o1 .= ''      <span>méthode</span>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+        $o1 .= ''      <input type="text" placeholder="méthode" id="chp_methode_menu" value="" maxlength="64" style="width:80%;" autocorrect="off" autocapitalize="off" spellcheck="false"  />'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''  </div>'' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+        $o1 .= ''      <span>initialisation de la méthode</span>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+        $o1 .= ''      <div class="yy_conteneur_txtara">'' . PHP_EOL;
+        
+        $o1 .= ''        <div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_initialisation_menu)))" title="formater le source rev">(😊)</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_initialisation_menu)))" title="agrandir la zone">🖐</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_initialisation_menu)))" title="retrecir la zone">👊</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_initialisation_menu)))" title="vider la zone">🚫</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_initialisation_menu)))" title="copier le contenu">📋</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_initialisation_menu)))" title="aller à la position">position</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_initialisation_menu)))" title="aller à la ligne">ligne</div>'' . PHP_EOL;
+        $o1 .= ''        </div>'';
+        $o1 .= ''        <textarea placeholder="rev d\''initialisation contenu dans l\''appel de la méthode" autocorrect="off" autocapitalize="off" spellcheck="false"  id="cht_initialisation_menu" >'';
+        if(isset($donnees_recues[''dupliquer''][''T0.cht_initialisation_menu''])){
+            $o1.=enti1($donnees_recues[''dupliquer''][''T0.cht_initialisation_menu'']);
+        }
+        $o1 .= ''</textarea>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''  </div>'' . PHP_EOL;
+        
+        /*
+          =====================================================================================================
+        */
+        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+        $o1 .= ''      <span>compléments</span>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+        $o1 .= ''      <div class="yy_conteneur_txtara">'' . PHP_EOL;
+        $o1 .= ''        <div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_complements_menu)))" title="formater le source rev">(😊)</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_complements_menu)))" title="agrandir la zone">🖐</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_complements_menu)))" title="retrecir la zone">👊</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_complements_menu)))" title="vider la zone">🚫</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_complements_menu)))" title="copier le contenu">📋</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_complements_menu)))" title="aller à la position">position</div>'' . PHP_EOL;
+        $o1 .= ''          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_complements_menu)))" title="aller à la ligne">ligne</div>'' . PHP_EOL;
+        $o1 .= ''        </div>'';
+        $o1 .= ''         <textarea placeholder="rev complément" autocorrect="off" autocapitalize="off" spellcheck="false" id="cht_complements_menu" >'';
+        if(isset($donnees_recues[''dupliquer''][''T0.cht_complements_menu''])){
+            $o1.=enti1($donnees_recues[''dupliquer''][''T0.cht_complements_menu'']);
+        }
+        
+        $o1 .= ''</textarea>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''  </div>'' . PHP_EOL;
+        
+        /*
+          =====================================================================================================
+        */
+        $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+        $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+        $o1 .= ''    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_creer1),page_liste_des_menus1())" title="" >ajouter et revenir à la liste</div>'';
+        $o1 .= ''    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_creer1))" title="" >ajouter</div>'';
+        $o1 .= ''    </div>'' . PHP_EOL;
+        $o1 .= ''  </div>'' . PHP_EOL;
+        /* */
+        $o1 .= ''</div>'' . PHP_EOL;
+        $donnees_retournees[__x_page] .= $o1;
+        $donnees_retournees[__xst]=__xsu;
+    }
+    /*
+      =============================================================================================================
+    */
+    function page_menus_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $o1='''';
+        $chi_id_menus='''';
+        $l01=count($mat);
+        for( $i=1 ; $i < $l01 ; $i++ ){
+            
+            
+            if($mat[$i][1] === ''chi_id_menu'' && $mat[$i + 1][2] === ''c'' && $mat[$i][2] === ''f''){
+
+                $chi_id_menus=$mat[$i + 1][1];
+                break;
+
+            }
+
+        }
+        
+        if(is_numeric($chi_id_menus)){
+
+            $tt=$this->sql0->sql_iii(
+                 /*sql_319()*/ 319,
+                array(/**/
+                    ''T0_chi_id_menu'' => $chi_id_menus
+                ),
+                $donnees_retournees
+            );
+            
+            if($tt[__xst] === __xsu){
+
+                $o1 .= ''<h1>supprimer '' . self::UN_UNE_ELEMENT_GERE . ''<div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_menus1.formulaire1(action1(page_liste_des_menus1))" title="revenir à la liste" >⬱</div></h1>'' . PHP_EOL;
+                $o1 .= ''<div id="vv_menus_supprimer1">'' . PHP_EOL;
+                $o1 .= ''  <h3>confirmez vous la suppression de '' . self::LE_LA_ELEMENT_GERE . ''(<b>'' . $tt[__xva][0][''T0.chi_id_menu''] . ''</b>) ?</h3>'';
+                /*
+                  
+                */
+                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+                $o1 .= ''    <input type="hidden" value="'' . $tt[__xva][0][''T0.chi_id_menu''] . ''" id="chi_id_menu" />'' . PHP_EOL;
+                $o1 .= ''    <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_supprimer1),page_liste_des_menus1())" title="" >Je confirme la suppression</div>'';
+                $o1 .= ''    </div>'' . PHP_EOL;
+                $o1 .= ''  </div>'' . PHP_EOL;
+                $o1 .= ''</div>'' . PHP_EOL;
+                $donnees_retournees[__x_page] .= $o1;
+                $donnees_retournees[__xst]=__xsu;
+
+            }
+
+
+        }
+
+    }
+    /*
+      =============================================================================================================
+    */
+    function page_menus_modifier1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $o1='''';
+        $chi_id_menus='''';
+        $l01=count($mat);
+        for( $i=1 ; $i < $l01 ; $i++ ){
+            
+            
+            if($mat[$i][1] === ''chi_id_menu'' && $mat[$i + 1][2] === ''c'' && $mat[$i][2] === ''f''){
+
+                $chi_id_menus=$mat[$i + 1][1];
+                break;
+
+            }
+
+        }
+        
+        if(is_numeric($chi_id_menus) && $chi_id_menus > 0){
+
+            $tt=$this->sql0->sql_iii(
+                 /*sql_324()*/ 324,
+                array(/**/
+                    ''T0_chi_id_menu'' => $chi_id_menus
+                ),
+                $donnees_retournees
+            );
+            
+            if($tt[__xst] === __xsu){
+
+                $o1 .= ''<h1>modifier '' . self::LE_LA_ELEMENT_GERE . ''('' . $tt[__xva][0][''T0.chi_id_menu''] . '') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_menus1.formulaire1(action1(page_liste_des_menus1))" title="revenir à la liste" >⬱</div></h1>'' . PHP_EOL;
+                $o1 .= ''<div id="vv_menus_modifier1">'' . PHP_EOL;
+                /**/
+                $o1 .= ''  <input type="hidden" value="'' . $tt[__xva][0][''T0.chi_id_menu''] . ''" id="chi_id_menu" />'' . PHP_EOL;
+                /**/
+                /*
+                  =============================================================================================
+                */
+                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+                /**/
+                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+                $o1 .= ''      <span>libellé</span>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+                $o1 .= ''      <div class="yy_conteneur_txtara">'' . PHP_EOL;
+                $o1 .= ''        <textarea id="cht_libelle_menu" autocorrect="off" autocapitalize="off" spellcheck="false" >'' . enti1($tt[__xva][0][''T0.cht_libelle_menu'']) . ''</textarea>'' . PHP_EOL;
+                $o1 .= ''      </div>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''  </div>'' . PHP_EOL;
+                /*
+                  =============================================================================================
+                */
+                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+                /**/
+                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+                $o1 .= ''      <span>titre</span>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+                $o1 .= ''      <input type="text" id="chp_titre_menu" value="'' . enti1($tt[__xva][0][''T0.chp_titre_menu'']) . ''" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" max-length="64" style="max-width:80%;"/>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''  </div>'' . PHP_EOL;
+                /*
+                  =====================================================================================================
+                */
+                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+                $o1 .= ''      <span>autorisation<br />(accès source)</span>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+                $o1 .= ''        <input type="hidden" value="'' . enti1($tt[__xva][0][''T0.chx_autorisation_menu'']) . ''"  id="chx_autorisation_menu" />'' . PHP_EOL;
+                $o1 .= ''        <span id="chx_autorisation_menu_libelle">'' . PHP_EOL;
+                
+                if($tt[__xva][0][''T0.chx_autorisation_menu''] === null){
+
+                    $o1 .= ''*indéfini'' . PHP_EOL;
+
+                }else{
+
+                    $o1 .= ''('' . $tt[__xva][0][''T0.chx_autorisation_menu''] . '') '' . htmlentities($tt[__xva][0][''T2.chp_nom_acces'']) .''  '' . htmlentities($tt[__xva][0][''T3.chp_nom_source'']) .'' '' . PHP_EOL;
+                }
+                
+                $o1 .= ''</span>'' . PHP_EOL;
+
+                $parametre_sous_fenetre=''c_autorisations1.page_autorisations_sous_liste1('';
+                $parametre_sous_fenetre .= '' sans_menus1()'';
+                $parametre_sous_fenetre .= '' nom_champ_dans_parent1(chx_autorisation_menu)'';
+                $parametre_sous_fenetre .= '' nom_libelle_dans_parent1(chx_autorisation_menu_libelle)'';
+                $parametre_sous_fenetre .= '' libelle_si_vide1("*indéfini")'';
+                $parametre_sous_fenetre .= '')'';
+                $o1 .= ''      <div class="hug_bouton yy__x_signaux_1" '' . PHP_EOL;
+                $o1 .= ''data-hug_click="interface1.affiche_sous_fenetre1('' . htmlentities($parametre_sous_fenetre) . '')"  title="selectionner">📁</div>'' . PHP_EOL;
+                $o1 .= ''      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1('' . htmlentities($parametre_sous_fenetre) . '')"  title="annuler">🚫</div>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                $o1 .= ''  </div>'' . PHP_EOL;
+                /*
+                  =============================================================================================
+                */
+                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+                /**/
+                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+                $o1 .= ''      <span>méthode</span>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+                $o1 .= ''      <input type="text" id="chp_methode_menu" value="'' . enti1($tt[__xva][0][''T0.chp_methode_menu'']) . ''" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" max-length="64" style="max-width:80%;" />'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''  </div>'' . PHP_EOL;
+                /*
+                  =============================================================================================
+                */
+                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+                /**/
+                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+                $o1 .= ''      <span>initialisation</span>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+                $o1 .= ''      <div class="yy_conteneur_txtara">'' . PHP_EOL;
+                $o1 .= ''        <div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_initialisation_menu)))" title="formater le source rev">(😊)</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_initialisation_menu)))" title="agrandir la zone">🖐</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_initialisation_menu)))" title="retrecir la zone">👊</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_initialisation_menu)))" title="vider la zone">🚫</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_initialisation_menu)))" title="copier le contenu">📋</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_initialisation_menu)))" title="aller à la position">position</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_initialisation_menu)))" title="aller à la ligne">ligne</div>'' . PHP_EOL;
+                $o1 .= ''        </div>'';
+                $o1 .= ''        <textarea id="cht_initialisation_menu" autocorrect="off" autocapitalize="off" spellcheck="false">'' . enti1($tt[__xva][0][''T0.cht_initialisation_menu'']) . ''</textarea>'' . PHP_EOL;
+                $o1 .= ''      </div>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''  </div>'' . PHP_EOL;
+                /*
+                  =============================================================================================
+                */
+                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+                /**/
+                $o1 .= ''    <div class="yy_edition_libelle1">'' . PHP_EOL;
+                $o1 .= ''      <span>compléments</span>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+                $o1 .= ''      <div class="yy_conteneur_txtara">'' . PHP_EOL;
+                $o1 .= ''        <div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_complements_menu)))" title="formater le source rev">(😊)</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_complements_menu)))" title="agrandir la zone">🖐</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_complements_menu)))" title="retrecir la zone">👊</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_complements_menu)))" title="vider la zone">🚫</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_complements_menu)))" title="copier le contenu">📋</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_complements_menu)))" title="aller à la position">position</div>'' . PHP_EOL;
+                $o1 .= ''          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_complements_menu)))" title="aller à la ligne">ligne</div>'' . PHP_EOL;
+                $o1 .= ''        </div>'';
+                $o1 .= ''        <textarea id="cht_complements_menu" autocorrect="off" autocapitalize="off" spellcheck="false">'' . enti1($tt[__xva][0][''T0.cht_complements_menu'']) . ''</textarea>'' . PHP_EOL;
+                $o1 .= ''      </div>'' . PHP_EOL;
+                $o1 .= ''    </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''  </div>'' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= ''  <div class="yy_edition_champ1">'' . PHP_EOL;
+                $o1 .= ''    <div class="yy_edition_valeur1">'' . PHP_EOL;
+                $o1 .= ''    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu('' . $chi_id_menus . ''),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>'';
+                $o1 .= ''    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu('' . $chi_id_menus . ''))" title="" >enregistrer</div>'';
+                $o1 .= ''    </div>'' . PHP_EOL;
+                $o1 .= ''  </div>'' . PHP_EOL;
+                /**/
+                $o1 .= ''</div>'' . PHP_EOL;
+                $donnees_retournees[__x_page] .= $o1;
+                $donnees_retournees[__xst]=__xsu;
+
+            }
+
+
+        }else{
+
+            $this->page_liste_des_menus1(
+                $donnees_retournees,
+                 /*matrice*/ $mat,
+                $donnees_recues
+            );
+        }
+
+    }
+    /*
+      =============================================================================================================
+      Pour les iframes sur les menus
+      =============================================================================================================
+    */
+    function vv_menus_filtre_choix_1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $txtPar=''__num_page(0)'';
+        $nouvelles_valeurs=array( ''__num_page'' => 0);
+        foreach($donnees_recues[__xva] as $k0 => $v0){
+            
+            if($k0 !== ''__num_page''){
+
+                $nouvelles_valeurs[$k0]=$v0;
+                
+                if(is_numeric($v0)){
+
+                    $txtPar .= '','' . $k0 . ''('' . $v0 . '')'';
+
+                }else{
+
+                    $txtPar .= '','' . $k0 . ''(\'''' . str_replace(''\'''',''\\\'''',$v0) . ''\'')'';
+                }
+
+
+            }
+
+        }
+        $_SESSION[__X_CLE_APPLICATION][''c_menus1.page_menus_sous_liste1'']=$nouvelles_valeurs;
+        $obj_matrice=$GLOBALS[''obj_rev1'']->rev_vers_matrice(''c_menus1.page_menus_sous_liste1('' . $txtPar . '')'');
+        
+        if($obj_matrice[__xst] === __xsu){
+
+            $this->page_menus_sous_liste1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xer][]=__LINE__ . '' erreur de convertion de '' . $txtPar . '''';
+        }
+
+    }
+    /*
+      =============================================================================================================
+    */
+    function page_menus_sous_liste1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $fonction1=''c_menus1.page_menus_sous_liste1'';
+        /* déverminage */
+        $__nbMax=10;
+        /*
+          $donnees_retournees[__x_signaux][__xif][]=__LINE__ . ''TODO $par ''.var_export($par,true);
+        */
+        $par=array();
+        $par[''T0_chi_id_menu'']='''';
+        $par[''nom_champ_dans_parent1'']='''';
+        $par[''nom_libelle_dans_parent1'']='''';
+        $par[''__num_page'']=0;
+        $numpage=-1;
+        $par_mat=array();
+        $l01=count($mat);
+        $provenance_menu=false;
+        /* $donnees_retournees[__x_signaux][__xdv][]=''$mat =''.json_encode( $mat  , JSON_FORCE_OBJECT );*/
+        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
+            
+            
+            if($fonction1 === $mat[$i][1]){
+
+                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
+                    
+                    
+                    if($mat[$j][2] === ''f'' && $mat[$j][8] === 1 && $mat[$j + 1][2] === ''c''){
+
+                        /* $donnees_retournees[__x_signaux][__xdv][]=''$mat[$j][1] =''.json_encode( $mat[$j][1] . '' '' . $mat[$j+1][1]  , JSON_FORCE_OBJECT );*/
+                        
+                        if($mat[$j][1] === ''__num_page''){
+
+                            $numpage=$mat[$j + 1][1];
+                            $par_mat[''__num_page'']=$mat[$j + 1][1];
+                            $par[''__num_page'']=$mat[$j + 1][1];
+
+                        }else if($mat[$j][1] === ''indice_menu''){
+
+                            $numpage=0;
+                            $par_mat[''__num_page'']=0;
+                            $provenance_menu=true;
+                            $par[''__num_page'']=0;
+
+                        }else if($mat[$j + 1][1] !== ''''){
+
+                            $par_mat[$mat[$j][1]]=$mat[$j + 1][1];
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+        }
+        
+        if(false === isset($_SESSION[__X_CLE_APPLICATION][$fonction1])){
+
+            $par=array_merge($par,$par_mat);
+            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;
+
+        }else{
+
+            $par=$_SESSION[__X_CLE_APPLICATION][$fonction1];
+            
+            if($provenance_menu === true){
+
+                $par[''__num_page'']=0;
+
+            }else{
+
+                
+                if($numpage === -1){
+
+
+                }else{
+
+                    $par[''__num_page'']=$numpage;
+                }
+
+            }
+
+            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;
+        }
+
+        $par[''T0_chi_id_menu'']=$par[''T0_chi_id_menu'']??'''';
+        $par[''nom_champ_dans_parent1'']=$par_mat[''nom_champ_dans_parent1'']??'''';
+        $par[''nom_libelle_dans_parent1'']=$par_mat[''nom_libelle_dans_parent1'']??'''';
+        $nom_filtre=''vv_menus_filtre_choix_1'';
+        $o1=''<h1>choisir un menu</h1>'';
+        $__num_page=!isset($par[''__num_page'']) ? 0 : (int)($par[''__num_page'']);
+        $__debut=$__num_page * $__nbMax;
+        $o1 .= ''<div class="yy_filtre_liste1" id="'' . $nom_filtre . ''">'' . PHP_EOL;
+        /**/
+        $o1 .= ''   <div>'' . PHP_EOL;
+        $o1 .= ''    <div><span>id</span></div>'' . PHP_EOL;
+        $o1 .= ''    <div><input type="text" id="T0_chi_id_menu" value="'' . $par[''T0_chi_id_menu''] . ''" size="8" maxlength="32" autocapitalize="off" /></div>'' . PHP_EOL;
+        $o1 .= ''   </div>'' . PHP_EOL;
+        /**/
+        $o1 .= ''   <div>    '' . PHP_EOL;
+        $o1 .= ''     <div><span>&nbsp;</span></div>'' . PHP_EOL;
+        $o1 .= ''     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_menus1.formulaire1(conteneur1('' . $nom_filtre . ''))" >🔎</div></div>'' . PHP_EOL;
+        $o1 .= ''     <input type="hidden" id="__num_page" value="'' . $__debut . ''" />'' . PHP_EOL;
+        $o1 .= ''     <input type="hidden" id="nom_champ_dans_parent1" value="'' . $par[''nom_champ_dans_parent1''] . ''"  />'' . PHP_EOL;
+        $o1 .= ''     <input type="hidden" id="nom_libelle_dans_parent1" value="'' . $par[''nom_libelle_dans_parent1''] . ''"  />'' . PHP_EOL;
+        $o1 .= ''   </div> '' . PHP_EOL;
+        /**/
+        $o1 .= ''</div>'';
+        $tt=$this->sql0->sql_iii(
+             /*sql_178()*/ 178,
+             /**/ array(
+                /**/
+                ''T0_chi_id_menu'' => $par[''T0_chi_id_menu''] === '''' ? '''' : $par[''T0_chi_id_menu''],
+                ''quantitee'' => $__nbMax,
+                ''debut'' => $__debut
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt[__xst] === __xer){
+
+            $donnees_retournees[__x_signaux][__xer][]=''Erreur dans la liste des menus ['' . __LINE__ . '']'';
+            return;
+
+        }
+
+        /*
+          $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ''TODO $tt ''.var_export($tt,true);
+        */
+        $bouton_avant='''';
+        $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt[''nombre''],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));
+        $lsttbl='''';
+        $lsttbl .= ''<thead><tr>'';
+        $lsttbl .= ''<th></th>'';
+        $lsttbl .= ''<th>id</th>'';
+        $lsttbl .= ''<th>menu</th>'';
+        $lsttbl .= ''</tr></thead><tbody>'';
+        foreach($tt[__xva] as $k0 => $v0){
+            $lsttbl .= ''<tr>'';
+            /**/
+            $parametres='''';
+            $parametres .= ''interface1.choisir_dans_sous_fenetre1('';
+            $parametres .= ''    nom_champ_dans_parent1('' . $par[''nom_champ_dans_parent1''] . '')'';
+            $parametres .= ''    nom_libelle_dans_parent1('' . $par[''nom_libelle_dans_parent1''] . '')'';
+            $parametres .= ''    id1('' . $v0[''T0.chi_id_menu''] . '')'';
+            $parametres .= ''    libelle1("('' . $v0[''T0.chi_id_menu''] . '') '' . $v0[''T0.cht_libelle_menu''] . ''" )'';
+            $parametres .= '')'';
+            $lsttbl .= ''<td style="max-width:calc(1*var(t_1boutons_carres))">'';
+            $lsttbl .= ''  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="'' . htmlentities($parametres) . ''">=&gt;</div>'';
+            $lsttbl .= ''</td>'';
+            /**/
+            $lsttbl .= ''<td style="text-align:center;">'';
+            $lsttbl .= '''' . $v0[''T0.chi_id_menu''] . '''';
+            $lsttbl .= ''</td>'';
+            /**/
+            $lsttbl .= ''<td style="text-align:left;">'';
+            
+            if($v0[''T0.cht_libelle_menu''] !== null){
+
+                $lsttbl .= '''' . enti1($v0[''T0.cht_libelle_menu'']) . '''';
+
+            }
+
+            $lsttbl .= ''</td>'';
+            /**/
+            /**/
+            $lsttbl .= ''</tr>'';
+        }
+        $o1 .= ''<div class="yy_div_contenant_table"><table class="yy_table_liste1">'' . PHP_EOL . $lsttbl . ''</tbody></table></div>'' . PHP_EOL;
+        $donnees_retournees[__x_page] .= $o1;
+        $donnees_retournees[__xst]=__xsu;
+    }
+    /*
+      =============================================================================================================
+    */
+    function page_liste_des_menus1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+
+
+        if(!isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet''])){
+
+            $donnees_retournees[__x_signaux][__xal][]='' vous devez activer un projet ['' . __LINE__ . '']'';
+            $donnees_retournees[__xst]=__xsu;
+            return;
+
+        }
+
+        $__nbMax=30;
+        $par=array();
+        $par[''T0_chi_id_menu'']='''';
+        $par[''T0_cht_libelle_menu'']='''';
+        $par[''T0_chp_titre_menu'']='''';
+        $par[''T0_chx_autorisation_menu'']='''';
+        $par[''T0_chp_methode_menu'']='''';
+        $par[''T1_chx_acces_autorisation'']='''';
+        $par[''__num_page'']=0;
+        $numpage=-1;
+        $par_mat=array();
+        $l01=count($mat);
+        $provenance_menu=false;
+        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
+            
+            
+            if(''c_menus1.page_liste_des_menus1'' === $mat[$i][1]){
+
+                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
+                    
+                    
+                    if($mat[$j][2] === ''f'' && $mat[$j][8] === 1 && $mat[$j + 1][2] === ''c''){
+
+                        
+                        if($mat[$j][1] === ''__num_page''){
+
+                            $numpage=$mat[$j + 1][1];
+                            $par_mat[''__num_page'']=$mat[$j + 1][1];
+                            $par[''__num_page'']=$mat[$j + 1][1];
+
+                        }else if($mat[$j][1] === ''indice_menu''){
+
+                            $numpage=0;
+                            $par_mat[''__num_page'']=0;
+                            $provenance_menu=true;
+                            $par[''__num_page'']=0;
+
+                        }else if($mat[$j + 1][1] !== ''''){
+
+                            $par_mat[$mat[$j][1]]=$mat[$j + 1][1];
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+        }
+        
+        if(false === isset($_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1''])){
+
+            $par=array_merge($par,$par_mat);
+            $_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1'']=$par;
+
+        }else{
+
+            $par=$_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1''];
+            
+            if($provenance_menu === true){
+
+                $par[''__num_page'']=0;
+
+            }else{
+
+                
+                if($numpage === -1){
+
+
+                }else{
+
+                    $par[''__num_page'']=$numpage;
+                }
+
+            }
+
+            $_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1'']=$par;
+        }
+
+        $par[''T0_chi_id_menu'']=$par[''T0_chi_id_menu'']??'''';
+        $par[''T0_cht_libelle_menu'']=$par[''T0_cht_libelle_menu'']??'''';
+        $par[''T0_chp_titre_menu'']=$par[''T0_chp_titre_menu'']??'''';
+        $par[''T0_chx_autorisation_menu'']=$par[''T0_chx_autorisation_menu'']??'''';
+        $par[''T0_chp_methode_menu'']=$par[''T0_chp_methode_menu'']??'''';
+        $par[''T1_chx_acces_autorisation'']=$par[''T1_chx_acces_autorisation'']??'''';
+        
+        $fonction1=''c_menus1.page_liste_des_menus1'';
+        $nom_filtre=''vv_menus_filtre1'';
+        $o1=''<h1>Liste des menus</h1>'';
+        $__num_page=!isset($par[''__num_page'']) ? 0 : (int)($par[''__num_page'']);
+        $__debut=$__num_page * $__nbMax;
+        $o1 .= ''<div class="yy_filtre_liste1" id="'' . $nom_filtre . ''">'' . PHP_EOL;
+        /*
+
+        */
+        $o1 .= ''   <div>'' . PHP_EOL;
+        $o1 .= ''    <div><span>id</span></div>'' . PHP_EOL;
+        $o1 .= ''    <div><input type="text" id="T0_chi_id_menu" value="'' . $par[''T0_chi_id_menu''] . ''" size="8" maxlength="32" autocapitalize="off" /></div>'' . PHP_EOL;
+        $o1 .= ''   </div>'' . PHP_EOL;
+        /*
+
+        */
+        $o1 .= ''   <div>'' . PHP_EOL;
+        $o1 .= ''      <div><span>libelle</span></div>'' . PHP_EOL;
+        $o1 .= ''      <div><input type="text" id="T0_cht_libelle_menu" value="'' . $par[''T0_cht_libelle_menu''] . ''" size="8" maxlength="64" autocapitalize="off" />'' . PHP_EOL;
+        $o1 .= ''      </div>'' . PHP_EOL;
+        $o1 .= ''   </div>'' . PHP_EOL;
+        /*
+
+        */
+        $o1 .= ''   <div>'' . PHP_EOL;
+        $o1 .= ''      <div><span>titre</span></div>'' . PHP_EOL;
+        $o1 .= ''      <div><input type="text" id="T0_chp_titre_menu" value="'' . $par[''T0_chp_titre_menu''] . ''" size="8" maxlength="64" autocapitalize="off" />'' . PHP_EOL;
+        $o1 .= ''      </div>'' . PHP_EOL;
+        $o1 .= ''   </div>'' . PHP_EOL;
+        /*
+          
+        */
+        $o1 .= ''   <div>'' . PHP_EOL;
+        $o1 .= ''      <div><span>id autorisation</span></div>'' . PHP_EOL;
+        $o1 .= ''      <div><input type="text" id="T0_chx_autorisation_menu" value="'' . $par[''T0_chx_autorisation_menu''] . ''" size="8" maxlength="64" autocapitalize="off" />'' . PHP_EOL;
+        $o1 .= ''      </div>'' . PHP_EOL;
+        $o1 .= ''   </div>'' . PHP_EOL;
+        /*
+
+        */
+        $o1 .= ''   <div>'' . PHP_EOL;
+        $o1 .= ''      <div><span>méthode</span></div>'' . PHP_EOL;
+        $o1 .= ''      <div><input type="text" id="T0_chp_methode_menu" value="'' . $par[''T0_chp_methode_menu''] . ''" size="8" maxlength="64" autocapitalize="off" />'' . PHP_EOL;
+        $o1 .= ''      </div>'' . PHP_EOL;
+        $o1 .= ''   </div>'' . PHP_EOL;
+        
+        
+        $o1 .= ''   <div>'' . PHP_EOL;
+        $o1 .= ''      <div><span>id acces</span></div>'' . PHP_EOL;
+        $o1 .= ''      <div><input type="text" id="T1_chx_acces_autorisation" value="'' . $par[''T1_chx_acces_autorisation''] . ''" size="8" maxlength="64" autocapitalize="off" />'' . PHP_EOL;
+        $o1 .= ''      </div>'' . PHP_EOL;
+        $o1 .= ''   </div>'' . PHP_EOL;
+        
+        
+
+        /*
+          
+        */
+        $o1 .= ''   <div>    '' . PHP_EOL;
+        $o1 .= ''     <div><span>&nbsp;</span></div>'' . PHP_EOL;
+        $o1 .= ''     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="c_menus1.formulaire1(conteneur1('' . $nom_filtre . ''))" >🔎</div></div>'' . PHP_EOL;
+        $o1 .= ''     <input type="hidden" id="__num_page" value="'' . $__debut . ''" />'' . PHP_EOL;
+        $o1 .= ''   </div> '' . PHP_EOL;
+        $o1 .= ''</div>'';
+
+        $tt=$this->sql0->sql_iii(
+             /*sql_322()*/ 322,
+            array(
+                /**/
+                ''T0_chi_id_menu'' => $par[''T0_chi_id_menu''],
+                ''T0_chx_autorisation_menu'' => $par[''T0_chx_autorisation_menu''],
+                ''T0_cht_libelle_menu'' => $par[''T0_cht_libelle_menu''] ,
+                ''T0_chp_titre_menu'' => $par[''T0_chp_titre_menu''],
+                ''T0_chp_methode_menu'' => $par[''T0_chp_methode_menu''],
+                ''T1_chx_acces_autorisation'' => $par[''T1_chx_acces_autorisation''],
+                
+                ''quantitee'' => $__nbMax,
+                ''debut'' => $__debut
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt[__xst] === __xer){
+
+            $o1='''';
+            $o1 .= ''<div>'';
+            $o1 .= ''  <h3 class="yy__x_signaux_0">Erreur technique ['' . __METHOD__ . '' '' . __LINE__ . '']</h1>'';
+            $o1 .= ''  <div style="text-align:center">'';
+            $o1 .= ''    <div class="hug_bouton" data-hug_click="c_menus1.page_liste_des_menus1(indice_menu(10))" title="menus" >'';
+            $o1 .= ''      Réessayer'';
+            $o1 .= ''    </div>'';
+            $o1 .= ''    <br /><br />Si le problème persiste, veuillez contacter la maintenance de l\''application'';
+            $o1 .= ''  </div>'';
+            unset($_SESSION[__X_CLE_APPLICATION][''c_menus1.page_liste_des_menus1'']);
+            
+            if($GLOBALS[DEVER_SRV] >= 2){
+
+                $o1 .= ''  <pre>'' . $tt[''sql0''] . ''</per>'';
+
+            }
+
+            $o1 .= ''</div>'';
+            /* en fonction du déverminage */
+            $donnees_retournees[__x_page] .= $o1;
+            $donnees_retournees[__xst]=__xsu;
+            return;
+
+        }
+
+        /*
+          $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ''TODO $tt ''.var_export($tt,true);
+        */
+        $bouton_avant=''<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_menus1.formulaire1(action1(page_menus_creer1))" title="nouveau menu" >+*</div>'';
+        $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt[''nombre''],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));
+        $lsttbl='''';
+        $lsttbl .= ''<thead><tr>'';
+        $lsttbl .= ''<th>action</th>'';
+        $lsttbl .= ''<th>id</th>'';
+        $lsttbl .= ''<th>libelle</th>'';
+        $lsttbl .= ''<th>titre</th>'';
+        $lsttbl .= ''<th>autorisation</th>'';
+        $lsttbl .= ''<th>source</th>'';
+        $lsttbl .= ''<th>méthode</th>'';
+        $lsttbl .= ''<th>id accès</th>'';
+        $lsttbl .= ''</tr></thead><tbody>'';
+        foreach($tt[__xva] as $k0 => $v0){
+            $lsttbl .= ''<tr>'';
+            /**/
+            $lsttbl .= ''<td data-label="" style="text-align:left!important;">'';
+            $lsttbl .= '' <div style="display:flex;min-width:calc(3*var(t_1boutons_carres))">'';
+            $lsttbl .= ''  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_menus1.formulaire1(action1(page_menus_modifier1),chi_id_menu('' . $v0[''T0.chi_id_menu''] . ''))">✎</div>'';
+            $lsttbl .= ''  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_menus1.formulaire1(action1(page_menus_dupliquer1),chi_id_menu('' . $v0[''T0.chi_id_menu''] . ''))" title="dupliquer">⎘</div>'';
+            $lsttbl .= ''  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_menus1.formulaire1(action1(page_menus_supprimer1),chi_id_menu('' . $v0[''T0.chi_id_menu''] . ''))">🗑</div>'';
+            $lsttbl .= '' </div>'';
+            $lsttbl .= ''</td>'';
+            /**/
+            $lsttbl .= ''<td style="text-align:center;">'';
+            $lsttbl .= '''' . $v0[''T0.chi_id_menu''] . '''';
+            $lsttbl .= ''</td>'';
+            /**/
+            $lsttbl .= ''<td style="text-align:center;">'';
+            $lsttbl .= $v0[''T0.cht_libelle_menu''] ;
+            $lsttbl .= ''</td>'';
+            /**/
+            $lsttbl .= ''<td style="text-align:center;">'';
+            $lsttbl .= enti1($v0[''T0.chp_titre_menu'']) ;
+            $lsttbl .= ''</td>'';
+            /**/
+            $lsttbl .= ''<td style="text-align:center;">'';
+            $lsttbl .= ''('' . $v0[''T0.chx_autorisation_menu''] . '') '';
+            $lsttbl .= ''</td>'';
+            /**/
+            $lsttbl .= ''<td style="text-align:center;">'';
+            $lsttbl .= '''' . enti1($v0[''T3.chp_nom_source'']) . '' '';
+            $lsttbl .= ''</td>'';
+            /**/
+
+            $lsttbl .= ''<td style="text-align:center;">'';
+            $lsttbl .= enti1($v0[''T0.chp_methode_menu'']) ;
+            $lsttbl .= ''</td>'';
+            /**/
+            $lsttbl .= ''<td style="text-align:center;">'';
+            $lsttbl .= ''('' . $v0[''T1.chx_acces_autorisation''] . '') '';
+            $lsttbl .= ''</td>'';
+            /**/
+            $lsttbl .= ''</tr>'';
+        }
+        $o1 .= ''<div class="yy_div_contenant_table"><table class="yy_table_liste1">'' . PHP_EOL . $lsttbl . ''</tbody></table></div>'' . PHP_EOL;
+        $donnees_retournees[__x_page] .= $o1;
+        $donnees_retournees[__x_action]=''c_menus1.page_liste_des_menus1()'';
+        $donnees_retournees[__xst]=__xsu;
+    }
+}
+/*
+  =====================================================================================================================
+*/','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','9');
 
 
 /*
@@ -3910,6 +5361,7 @@ créer_table(
             nom_court_du_champ(''à faire chi_id_utilisateur''),
             nom_bref_du_champ(''à faire chi_id_utilisateur''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -3926,6 +5378,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_nom_de_connexion_utilisateur''),
             nom_bref_du_champ(''à faire chp_nom_de_connexion_utilisateur''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
@@ -3942,6 +5395,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_mot_de_passe_utilisateur''),
             nom_bref_du_champ(''à faire chp_mot_de_passe_utilisateur''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(256)
@@ -3957,6 +5411,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_parametres_utilisateur''),
             nom_bref_du_champ(''à faire chp_parametres_utilisateur''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -3975,6 +5430,7 @@ créer_table(
             nom_court_du_champ(''à faire chi_compteur1_utilisateur''),
             nom_bref_du_champ(''à faire chi_compteur1_utilisateur''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -3993,6 +5449,7 @@ créer_table(
             nom_court_du_champ(''à faire chi_compteur_socket1_utilisateur''),
             nom_bref_du_champ(''à faire chi_compteur_socket1_utilisateur''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4011,6 +5468,7 @@ créer_table(
             nom_court_du_champ(''à faire chi__nut_utilisateur''),
             nom_bref_du_champ(''à faire chi__nut_utilisateur''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
@@ -4031,6 +5489,7 @@ créer_table(
             nom_court_du_champ(''à faire chp__dtm_utilisateur''),
             nom_bref_du_champ(''à faire chp__dtm_utilisateur''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_modification(1),
@@ -4052,6 +5511,7 @@ créer_table(
             nom_court_du_champ(''à faire chp__dtc_utilisateur''),
             nom_bref_du_champ(''à faire chp__dtc_utilisateur''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_creation(1),
@@ -4073,6 +5533,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4111,6 +5572,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4126,6 +5588,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4140,6 +5603,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4158,6 +5622,7 @@ créer_table(
             nom_court_du_champ(''à faire chi__nut_projet''),
             nom_bref_du_champ(''à faire chi__nut_projet''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
@@ -4178,6 +5643,7 @@ créer_table(
             nom_court_du_champ(''à faire chp__dtm_projet''),
             nom_bref_du_champ(''à faire chp__dtm_projet''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_modification(1),
@@ -4199,6 +5665,7 @@ créer_table(
             nom_court_du_champ(''à faire chp__dtc_projet''),
             nom_bref_du_champ(''à faire chp__dtc_projet''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_creation(1),
@@ -4219,6 +5686,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),
             refe_parent_gauche(1)
@@ -4235,6 +5703,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),
             refe_parent_gauche(1)
@@ -4275,6 +5744,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4291,6 +5761,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),
             refe_enfant_droite(1),
@@ -4312,6 +5783,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chp),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
@@ -4327,6 +5799,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4341,6 +5814,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4355,6 +5829,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4369,6 +5844,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(TEXT)
          )
@@ -4383,6 +5859,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4401,6 +5878,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
@@ -4421,6 +5899,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chd),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_modification(1),
@@ -4442,6 +5921,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chd),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_creation(1),
@@ -4473,6 +5953,7 @@ créer_table(
             nom_court_du_champ(''à faire chi_id_rev''),
             nom_bref_du_champ(''à faire chi_id_rev''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4489,6 +5970,7 @@ créer_table(
             nom_court_du_champ(''à faire chx_cible_rev''),
             nom_bref_du_champ(''à faire chx_cible_rev''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4504,6 +5986,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_provenance_rev''),
             nom_bref_du_champ(''à faire chp_provenance_rev''),
             typologie(cho),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
@@ -4519,6 +6002,7 @@ créer_table(
             nom_court_du_champ(''à faire chx_source_rev''),
             nom_bref_du_champ(''à faire chx_source_rev''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4533,6 +6017,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_id_rev''),
             nom_bref_du_champ(''à faire chp_id_rev''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4547,6 +6032,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_valeur_rev''),
             nom_bref_du_champ(''à faire chp_valeur_rev''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4563,6 +6049,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_type_rev''),
             nom_bref_du_champ(''à faire chp_type_rev''),
             typologie(cho),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(3)
@@ -4578,6 +6065,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_niveau_rev''),
             nom_bref_du_champ(''à faire chp_niveau_rev''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4592,6 +6080,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_quotee_rev''),
             nom_bref_du_champ(''à faire chp_quotee_rev''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4606,6 +6095,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_pos_premier_rev''),
             nom_bref_du_champ(''à faire chp_pos_premier_rev''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4620,6 +6110,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_pos_dernier_rev''),
             nom_bref_du_champ(''à faire chp_pos_dernier_rev''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4634,6 +6125,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_parent_rev''),
             nom_bref_du_champ(''à faire chp_parent_rev''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4648,6 +6140,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_nbr_enfants_rev''),
             nom_bref_du_champ(''à faire chp_nbr_enfants_rev''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4662,6 +6155,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_num_enfant_rev''),
             nom_bref_du_champ(''à faire chp_num_enfant_rev''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4676,6 +6170,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_profondeur_rev''),
             nom_bref_du_champ(''à faire chp_profondeur_rev''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4690,6 +6185,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_pos_ouver_parenthese_rev''),
             nom_bref_du_champ(''à faire chp_pos_ouver_parenthese_rev''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4704,6 +6200,7 @@ créer_table(
             nom_court_du_champ(''AFR''),
             nom_bref_du_champ(''AFR''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4718,6 +6215,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_commentaire_rev''),
             nom_bref_du_champ(''à faire chp_commentaire_rev''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4756,6 +6254,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4772,6 +6271,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4789,6 +6289,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4803,6 +6304,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(TEXT)
          )
@@ -4817,6 +6319,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4831,6 +6334,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -4849,6 +6353,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4867,6 +6372,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
@@ -4887,6 +6393,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chd),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_modification(1),
@@ -4908,6 +6415,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chd),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_creation(1),
@@ -4925,6 +6433,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4963,6 +6472,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4979,6 +6489,7 @@ créer_table(
             nom_court_du_champ(''à faire chx_projet_dossier''),
             nom_bref_du_champ(''à faire chx_projet_dossier''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),
             refe_enfant_droite(1)
@@ -4995,6 +6506,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_nom_dossier''),
             nom_bref_du_champ(''à faire chp_nom_dossier''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(CHARACTER),
             longueur_du_champ(64)
@@ -5011,6 +6523,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),
             refe_parent_gauche(1)
@@ -5030,6 +6543,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5048,6 +6562,7 @@ créer_table(
             nom_court_du_champ(''à faire chi__nut_dossier''),
             nom_bref_du_champ(''à faire chi__nut_dossier''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
@@ -5068,6 +6583,7 @@ créer_table(
             nom_court_du_champ(''à faire chp__dtm_dossier''),
             nom_bref_du_champ(''à faire chp__dtm_dossier''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_modification(1),
@@ -5089,6 +6605,7 @@ créer_table(
             nom_court_du_champ(''à faire chp__dtc_dossier''),
             nom_bref_du_champ(''à faire chp__dtc_dossier''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_creation(1),
@@ -5129,6 +6646,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5145,6 +6663,7 @@ créer_table(
             nom_court_du_champ(''à faire chx_projet_id_basedd''),
             nom_bref_du_champ(''à faire chx_projet_id_basedd''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5159,6 +6678,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -5173,6 +6693,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -5190,6 +6711,7 @@ créer_table(
             nom_court_du_champ(''à faire chp_fournisseur_basedd''),
             nom_bref_du_champ(''à faire chp_fournisseur_basedd''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -5205,6 +6727,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5223,6 +6746,7 @@ créer_table(
             nom_court_du_champ(''à faire chi__nut_basedd''),
             nom_bref_du_champ(''à faire chi__nut_basedd''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
@@ -5243,6 +6767,7 @@ créer_table(
             nom_court_du_champ(''à faire chp__dtm_basedd''),
             nom_bref_du_champ(''à faire chp__dtm_basedd''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_modification(1),
@@ -5264,6 +6789,7 @@ créer_table(
             nom_court_du_champ(''à faire chp__dtc_basedd''),
             nom_bref_du_champ(''à faire chp__dtc_basedd''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_creation(1),
@@ -5296,6 +6822,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5312,6 +6839,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
@@ -5332,6 +6860,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5371,6 +6900,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5387,6 +6917,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
@@ -5404,6 +6935,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5434,6 +6966,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5450,6 +6983,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
@@ -5467,6 +7001,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5483,6 +7018,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5497,6 +7033,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -5526,6 +7063,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5542,6 +7080,7 @@ créer_table(
             nom_court_du_champ(''à faire chx_utilisateur_tache''),
             nom_bref_du_champ(''à faire chx_utilisateur_tache''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5557,6 +7096,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -5571,6 +7111,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5589,6 +7130,7 @@ créer_table(
             nom_court_du_champ(''à faire chi__nut_tache''),
             nom_bref_du_champ(''à faire chi__nut_tache''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
@@ -5609,6 +7151,7 @@ créer_table(
             nom_court_du_champ(''à faire chp__dtm_tache''),
             nom_bref_du_champ(''à faire chp__dtm_tache''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
             champ_date_modification(1),
@@ -5630,6 +7173,7 @@ créer_table(
             nom_court_du_champ(''à faire chp__dtc_tache''),
             nom_bref_du_champ(''à faire chp__dtc_tache''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             champ_date_creation(1),
@@ -5671,6 +7215,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5687,6 +7232,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
@@ -5697,6 +7243,9 @@ créer_table(
          espece_du_champ(VARCHAR),
          longueur_du_champ(32),
          non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(1),
+         valeur_par_defaut(''TEXT''),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_espece_genre''),
@@ -5704,6 +7253,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(32)
@@ -5719,12 +7269,13 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
       ),
       champ(
-         nom_du_champ(''che_primaire_genre''),
+         nom_du_champ(''che_est_primaire_genre''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5732,17 +7283,18 @@ créer_table(
          valeur_par_defaut(0),
          meta(
             genre_meta(champ),
-            nom_du_champ(''che_primaire_genre''),
+            nom_du_champ(''che_est_primaire_genre''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
       ),
       champ(
-         nom_du_champ(''che_progressif_genre''),
+         nom_du_champ(''che_est_incrément_genre''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5750,17 +7302,18 @@ créer_table(
          valeur_par_defaut(0),
          meta(
             genre_meta(champ),
-            nom_du_champ(''che_progressif_genre''),
+            nom_du_champ(''che_est_incrément_genre''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
       ),
       champ(
-         nom_du_champ(''che_obligatoire_genre''),
+         nom_du_champ(''che_est_obligatoire_genre''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5768,17 +7321,18 @@ créer_table(
          valeur_par_defaut(0),
          meta(
             genre_meta(champ),
-            nom_du_champ(''che_obligatoire_genre''),
+            nom_du_champ(''che_est_obligatoire_genre''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
       ),
       champ(
-         nom_du_champ(''che_liminaire_genre''),
+         nom_du_champ(''che_a_init_genre''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5786,17 +7340,18 @@ créer_table(
          valeur_par_defaut(0),
          meta(
             genre_meta(champ),
-            nom_du_champ(''che_liminaire_genre''),
+            nom_du_champ(''che_a_init_genre''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
       ),
       champ(
-         nom_du_champ(''che_mot_genre''),
+         nom_du_champ(''che_init_est_mot_genre''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5804,13 +7359,50 @@ créer_table(
          valeur_par_defaut(0),
          meta(
             genre_meta(champ),
-            nom_du_champ(''che_mot_genre''),
+            nom_du_champ(''che_init_est_mot_genre''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(che),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_valeur_init_genre''),
+         espece_du_champ(TEXT),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_valeur_init_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(cht),
+            genre(1),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_prefixe_genre''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(3),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(1),
+         valeur_par_defaut(''cht''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_prefixe_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chp),
+            genre(1),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(3)
          )
       )
    )
@@ -5839,6 +7431,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5855,6 +7448,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5871,6 +7465,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),
             refe_enfant_droite(1),
@@ -5912,6 +7507,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5928,6 +7524,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
@@ -5945,6 +7542,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
@@ -5962,6 +7560,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chx),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),
             refe_parent_gauche(1)
@@ -5979,6 +7578,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chp),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
             longueur_du_champ(64)
@@ -5994,6 +7594,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -6008,6 +7609,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(cht),
+            genre(1),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -6196,7 +7798,7 @@ INSERT INTO tbl_metiers (chi_id_metier,chp_nom_metier,chx_parent_metier) VALUES
 */
 
 INSERT INTO tbl_acces (chi_id_acces,chp_nom_acces,chx_groupe_acces,chx_metier_acces,cht_parametres_acces) VALUES
-('1','tout','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"61\" data-chp_nom_source=\"c_taches1.php\" data-chp_methode_menu=\"page_liste_des_taches1\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"T0_chp_priorite_tache2(99)\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"Liste des t\u00e2ches\">t\u00e2ches<\/li><li data-liste_des_menus=\"1\">outils<ul><li data-chi_id_source=\"235\" data-chp_nom_source=\"c_rev_mat1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\" data-chp_titre_menu=\"convertion de rev vers matrice\">matrice<\/li><li data-chi_id_source=\"234\" data-chp_nom_source=\"c_rev_js1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\n)\" data-chp_titre_menu=\"convertion de javascript \">js<\/li><li data-chi_id_source=\"233\" data-chp_nom_source=\"c_rev_html1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\n)\" data-chp_titre_menu=\"html\">html<\/li><li data-chi_id_source=\"236\" data-chp_nom_source=\"c_rev_php1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\n)\" data-chp_titre_menu=\"convertion de php\">php<\/li><li data-chi_id_source=\"237\" data-chp_nom_source=\"c_rev_sql1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_sql_rev1),\n      composante(value),\n      avec(\n        valeur_de_localstorage(\n          zones_sauvegard\u00e9es,\n          ls_sql_rev1\n        )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de sql\">sql<\/li><li data-chi_id_source=\"232\" data-chp_nom_source=\"c_rev_css1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_css_rev1),\n      composante(value),\n      avec(\n         valeur_de_localstorage(\n            zones_sauvegard\u00e9es,\n            ls_css_rev1\n         )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de css\">css<\/li><li data-chi_id_source=\"238\" data-chp_nom_source=\"c_rev_texte1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\" data-chp_titre_menu=\"convertion de textes\">txt<\/li><\/ul><\/li><li data-chi_id_source=\"230\" data-chp_nom_source=\"c_projets1.php\" data-chp_methode_menu=\"page_projets_liste1\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des projets\"><span style=\"background:red;color:yellow;\">projets<\/span><\/li><li data-chi_id_source=\"225\" data-chp_nom_source=\"c_dossiers1.php\" data-chp_methode_menu=\"page_dossiers_liste1\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des dossiers et des fichiers\">fido<\/li><li data-chi_id_source=\"241\" data-chp_nom_source=\"c_sources1.php\" data-chp_methode_menu=\"page_liste_des_sources1\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des sources des programmes\">sources<\/li><li data-chi_id_source=\"353\" data-chp_nom_source=\"c_bases1.php\" data-chp_methode_menu=\"page_liste_des_bases1\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des bases\">bases<\/li><li data-chi_id_source=\"231\" data-chp_nom_source=\"c_requetes1.php\" data-chp_methode_menu=\"page_liste_des_requetes1\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des requ\u00eates sur les bases\">requ\u00eates<\/li><li data-chi_id_source=\"240\" data-chp_nom_source=\"c_revs1.php\" data-chp_methode_menu=\"page_liste_des_revs1\" data-chi_id_menu=\"13\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des revs\">(\ud83d\ude0a)<\/li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"56\" data-chp_nom_source=\"c_groupes1.php\" data-chp_methode_menu=\"page_liste_des_groupes1\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des groupes\">groupes<\/li><li data-chi_id_source=\"58\" data-chp_nom_source=\"c_metiers1.php\" data-chp_methode_menu=\"page_liste_des_metiers1\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des m\u00e9tiers\">m\u00e9tiers<\/li><li data-chi_id_source=\"50\" data-chp_nom_source=\"c_acces1.php\" data-chp_methode_menu=\"page_liste_des_acces1\" data-chi_id_menu=\"16\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des acc\u00e8s\">acc\u00e8s<\/li><li data-chi_id_source=\"62\" data-chp_nom_source=\"c_utilisateurs1.php\" data-chp_methode_menu=\"page_liste_des_utilisateurs1\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des utilisateurs\">utilisateurs<\/li><li data-chi_id_source=\"356\" data-chp_nom_source=\"c_autorisations1.php\" data-chp_methode_menu=\"page_liste_des_autorisations1\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des autorisations\">autorisations<\/li><li data-chi_id_source=\"357\" data-chp_nom_source=\"c_menus1.php\" data-chp_methode_menu=\"page_liste_des_menus1\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des menus\">menus<\/li><\/ul><\/li><li data-chi_id_source=\"59\" data-chp_nom_source=\"c_profile1.php\" data-chp_methode_menu=\"recupere_la_page_des_coordonnees\" data-chi_id_menu=\"20\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"mon profile\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"-9 -7  20 21\">\n    <g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\">\n        <circle cx=\"0\" cy=\"0\" r=\"6\"><\/circle>\n        <path d=\" M -8 11 C -6 6 6 6 8 11 \"><\/path>\n        <circle cx=\"-2\" cy=\"-1\" r=\"1\"><\/circle>\n        <circle cx=\"2\" cy=\"-1\" r=\"1\"><\/circle>\n        <path d=\"M -2 2 C -3 4 3 4 2 2 \"><\/path>\n        <path d=\"M 0 0 V 2 \"><\/path>\n        <path d=\"M -3 -1   H -6    \"><\/path>\n        <path d=\"M 3 -1   H 6    \"><\/path>\n        <path d=\"M -1 -1 c 0 -1 2 -1 2 0 \"><\/path>\n    <\/g>\n<\/svg><\/li>  ","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"t\u00e2ches\",\"attributs\":{\"data-chi_id_source\":\"61\",\"data-chp_nom_source\":\"c_taches1.php\",\"data-chp_methode_menu\":\"page_liste_des_taches1\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"T0_chp_priorite_tache2(99)\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"Liste des t\u00e2ches\"}},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":7,\"contenu\":\"outils\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":3,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"235\",\"data-chp_nom_source\":\"c_rev_mat1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\"}},{\"id_interne\":4,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"234\",\"data-chp_nom_source\":\"c_rev_js1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de javascript \"}},{\"id_interne\":5,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"233\",\"data-chp_nom_source\":\"c_rev_html1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\\n)\",\"data-chp_titre_menu\":\"html\"}},{\"id_interne\":6,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"236\",\"data-chp_nom_source\":\"c_rev_php1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de php\"}},{\"id_interne\":7,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"237\",\"data-chp_nom_source\":\"c_rev_sql1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_sql_rev1),\\n      composante(value),\\n      avec(\\n        valeur_de_localstorage(\\n          zones_sauvegard\u00e9es,\\n          ls_sql_rev1\\n        )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de sql\"}},{\"id_interne\":8,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"232\",\"data-chp_nom_source\":\"c_rev_css1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_css_rev1),\\n      composante(value),\\n      avec(\\n         valeur_de_localstorage(\\n            zones_sauvegard\u00e9es,\\n            ls_css_rev1\\n         )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de css\"}},{\"id_interne\":9,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"238\",\"data-chp_nom_source\":\"c_rev_texte1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\",\"data-chp_titre_menu\":\"convertion de textes\"}},{\"id_interne\":10,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<span style=\\\"background:red;color:yellow;\\\">projets<\/span>\",\"attributs\":{\"data-chi_id_source\":\"230\",\"data-chp_nom_source\":\"c_projets1.php\",\"data-chp_methode_menu\":\"page_projets_liste1\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des projets\"}},{\"id_interne\":11,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"fido\",\"attributs\":{\"data-chi_id_source\":\"225\",\"data-chp_nom_source\":\"c_dossiers1.php\",\"data-chp_methode_menu\":\"page_dossiers_liste1\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\"}},{\"id_interne\":12,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"241\",\"data-chp_nom_source\":\"c_sources1.php\",\"data-chp_methode_menu\":\"page_liste_des_sources1\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des sources des programmes\"}},{\"id_interne\":13,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"353\",\"data-chp_nom_source\":\"c_bases1.php\",\"data-chp_methode_menu\":\"page_liste_des_bases1\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des bases\"}},{\"id_interne\":14,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requ\u00eates\",\"attributs\":{\"data-chi_id_source\":\"231\",\"data-chp_nom_source\":\"c_requetes1.php\",\"data-chp_methode_menu\":\"page_liste_des_requetes1\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des requ\u00eates sur les bases\"}},{\"id_interne\":15,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"(\ud83d\ude0a)\",\"attributs\":{\"data-chi_id_source\":\"240\",\"data-chp_nom_source\":\"c_revs1.php\",\"data-chp_methode_menu\":\"page_liste_des_revs1\",\"data-chi_id_menu\":\"13\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des revs\"}},{\"id_interne\":16,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":6,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":17,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"56\",\"data-chp_nom_source\":\"c_groupes1.php\",\"data-chp_methode_menu\":\"page_liste_des_groupes1\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des groupes\"}},{\"id_interne\":18,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"m\u00e9tiers\",\"attributs\":{\"data-chi_id_source\":\"58\",\"data-chp_nom_source\":\"c_metiers1.php\",\"data-chp_methode_menu\":\"page_liste_des_metiers1\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des m\u00e9tiers\"}},{\"id_interne\":19,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"acc\u00e8s\",\"attributs\":{\"data-chi_id_source\":\"50\",\"data-chp_nom_source\":\"c_acces1.php\",\"data-chp_methode_menu\":\"page_liste_des_acces1\",\"data-chi_id_menu\":\"16\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des acc\u00e8s\"}},{\"id_interne\":20,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"62\",\"data-chp_nom_source\":\"c_utilisateurs1.php\",\"data-chp_methode_menu\":\"page_liste_des_utilisateurs1\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des utilisateurs\"}},{\"id_interne\":21,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"356\",\"data-chp_nom_source\":\"c_autorisations1.php\",\"data-chp_methode_menu\":\"page_liste_des_autorisations1\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des autorisations\"}},{\"id_interne\":22,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"357\",\"data-chp_nom_source\":\"c_menus1.php\",\"data-chp_methode_menu\":\"page_liste_des_menus1\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des menus\"}},{\"id_interne\":23,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg xmlns=\\\"http:\/\/www.w3.org\/2000\/svg\\\" viewBox=\\\"-9 -7  20 21\\\">\\n    <g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\\\">\\n        <circle cx=\\\"0\\\" cy=\\\"0\\\" r=\\\"6\\\"><\/circle>\\n        <path d=\\\" M -8 11 C -6 6 6 6 8 11 \\\"><\/path>\\n        <circle cx=\\\"-2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <circle cx=\\\"2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <path d=\\\"M -2 2 C -3 4 3 4 2 2 \\\"><\/path>\\n        <path d=\\\"M 0 0 V 2 \\\"><\/path>\\n        <path d=\\\"M -3 -1   H -6    \\\"><\/path>\\n        <path d=\\\"M 3 -1   H 6    \\\"><\/path>\\n        <path d=\\\"M -1 -1 c 0 -1 2 -1 2 0 \\\"><\/path>\\n    <\/g>\\n<\/svg>\",\"attributs\":{\"data-chi_id_source\":\"59\",\"data-chp_nom_source\":\"c_profile1.php\",\"data-chp_methode_menu\":\"recupere_la_page_des_coordonnees\",\"data-chi_id_menu\":\"20\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"mon profile\"}}]"}'),
+('1','tout','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"61\" data-chp_nom_source=\"c_taches1.php\" data-chp_methode_menu=\"page_liste_des_taches1\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"T0_chp_priorite_tache2(99)\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"Liste des t\u00e2ches\">t\u00e2ches<\/li><li data-liste_des_menus=\"1\">outils<ul><li data-chi_id_source=\"235\" data-chp_nom_source=\"c_rev_mat1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\" data-chp_titre_menu=\"convertion de rev vers matrice\">matrice<\/li><li data-chi_id_source=\"234\" data-chp_nom_source=\"c_rev_js1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\n)\" data-chp_titre_menu=\"convertion de javascript \">js<\/li><li data-chi_id_source=\"233\" data-chp_nom_source=\"c_rev_html1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\n)\" data-chp_titre_menu=\"html\">html<\/li><li data-chi_id_source=\"236\" data-chp_nom_source=\"c_rev_php1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\n)\" data-chp_titre_menu=\"convertion de php\">php<\/li><li data-chi_id_source=\"237\" data-chp_nom_source=\"c_rev_sql1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_sql_rev1),\n      composante(value),\n      avec(\n        valeur_de_localstorage(\n          zones_sauvegard\u00e9es,\n          ls_sql_rev1\n        )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de sql\">sql<\/li><li data-chi_id_source=\"232\" data-chp_nom_source=\"c_rev_css1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_css_rev1),\n      composante(value),\n      avec(\n         valeur_de_localstorage(\n            zones_sauvegard\u00e9es,\n            ls_css_rev1\n         )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de css\">css<\/li><li data-chi_id_source=\"238\" data-chp_nom_source=\"c_rev_texte1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\" data-chp_titre_menu=\"convertion de textes\">txt<\/li><\/ul><\/li><li data-chi_id_source=\"230\" data-chp_nom_source=\"c_projets1.php\" data-chp_methode_menu=\"page_projets_liste1\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des projets\"><span style=\"background:red;color:yellow;\">projets<\/span><\/li><li data-chi_id_source=\"225\" data-chp_nom_source=\"c_dossiers1.php\" data-chp_methode_menu=\"page_dossiers_liste1\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des dossiers et des fichiers\">fido<\/li><li data-chi_id_source=\"241\" data-chp_nom_source=\"c_sources1.php\" data-chp_methode_menu=\"page_liste_des_sources1\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des sources des programmes\">sources<\/li><li data-chi_id_source=\"358\" data-chp_nom_source=\"c_genres1.php\" data-chp_methode_menu=\"page_liste_des_genres1\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des types de bonn\u00e9es dans la bdd\">genres<\/li><li data-chi_id_source=\"353\" data-chp_nom_source=\"c_bases1.php\" data-chp_methode_menu=\"page_liste_des_bases1\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des bases\">bases<\/li><li data-chi_id_source=\"231\" data-chp_nom_source=\"c_requetes1.php\" data-chp_methode_menu=\"page_liste_des_requetes1\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des requ\u00eates sur les bases\">requ\u00eates<\/li><li data-chi_id_source=\"240\" data-chp_nom_source=\"c_revs1.php\" data-chp_methode_menu=\"page_liste_des_revs1\" data-chi_id_menu=\"13\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des revs\">(\ud83d\ude0a)<\/li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"56\" data-chp_nom_source=\"c_groupes1.php\" data-chp_methode_menu=\"page_liste_des_groupes1\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des groupes\">groupes<\/li><li data-chi_id_source=\"58\" data-chp_nom_source=\"c_metiers1.php\" data-chp_methode_menu=\"page_liste_des_metiers1\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des m\u00e9tiers\">m\u00e9tiers<\/li><li data-chi_id_source=\"50\" data-chp_nom_source=\"c_acces1.php\" data-chp_methode_menu=\"page_liste_des_acces1\" data-chi_id_menu=\"16\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des acc\u00e8s\">acc\u00e8s<\/li><li data-chi_id_source=\"62\" data-chp_nom_source=\"c_utilisateurs1.php\" data-chp_methode_menu=\"page_liste_des_utilisateurs1\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des utilisateurs\">utilisateurs<\/li><li data-chi_id_source=\"356\" data-chp_nom_source=\"c_autorisations1.php\" data-chp_methode_menu=\"page_liste_des_autorisations1\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des autorisations\">autorisations<\/li><li data-chi_id_source=\"357\" data-chp_nom_source=\"c_menus1.php\" data-chp_methode_menu=\"page_liste_des_menus1\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des menus\">menus<\/li><\/ul><\/li><li data-chi_id_source=\"59\" data-chp_nom_source=\"c_profile1.php\" data-chp_methode_menu=\"recupere_la_page_des_coordonnees\" data-chi_id_menu=\"20\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"mon profile\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"-9 -7  20 21\">\n    <g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\">\n        <circle cx=\"0\" cy=\"0\" r=\"6\"><\/circle>\n        <path d=\" M -8 11 C -6 6 6 6 8 11 \"><\/path>\n        <circle cx=\"-2\" cy=\"-1\" r=\"1\"><\/circle>\n        <circle cx=\"2\" cy=\"-1\" r=\"1\"><\/circle>\n        <path d=\"M -2 2 C -3 4 3 4 2 2 \"><\/path>\n        <path d=\"M 0 0 V 2 \"><\/path>\n        <path d=\"M -3 -1   H -6    \"><\/path>\n        <path d=\"M 3 -1   H 6    \"><\/path>\n        <path d=\"M -1 -1 c 0 -1 2 -1 2 0 \"><\/path>\n    <\/g>\n<\/svg><\/li>","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"t\u00e2ches\",\"attributs\":{\"data-chi_id_source\":\"61\",\"data-chp_nom_source\":\"c_taches1.php\",\"data-chp_methode_menu\":\"page_liste_des_taches1\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"T0_chp_priorite_tache2(99)\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"Liste des t\u00e2ches\"}},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":7,\"contenu\":\"outils\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":3,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"235\",\"data-chp_nom_source\":\"c_rev_mat1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\"}},{\"id_interne\":4,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"234\",\"data-chp_nom_source\":\"c_rev_js1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de javascript \"}},{\"id_interne\":5,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"233\",\"data-chp_nom_source\":\"c_rev_html1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\\n)\",\"data-chp_titre_menu\":\"html\"}},{\"id_interne\":6,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"236\",\"data-chp_nom_source\":\"c_rev_php1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de php\"}},{\"id_interne\":7,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"237\",\"data-chp_nom_source\":\"c_rev_sql1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_sql_rev1),\\n      composante(value),\\n      avec(\\n        valeur_de_localstorage(\\n          zones_sauvegard\u00e9es,\\n          ls_sql_rev1\\n        )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de sql\"}},{\"id_interne\":8,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"232\",\"data-chp_nom_source\":\"c_rev_css1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_css_rev1),\\n      composante(value),\\n      avec(\\n         valeur_de_localstorage(\\n            zones_sauvegard\u00e9es,\\n            ls_css_rev1\\n         )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de css\"}},{\"id_interne\":9,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"238\",\"data-chp_nom_source\":\"c_rev_texte1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\",\"data-chp_titre_menu\":\"convertion de textes\"}},{\"id_interne\":10,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<span style=\\\"background:red;color:yellow;\\\">projets<\/span>\",\"attributs\":{\"data-chi_id_source\":\"230\",\"data-chp_nom_source\":\"c_projets1.php\",\"data-chp_methode_menu\":\"page_projets_liste1\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des projets\"}},{\"id_interne\":11,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"fido\",\"attributs\":{\"data-chi_id_source\":\"225\",\"data-chp_nom_source\":\"c_dossiers1.php\",\"data-chp_methode_menu\":\"page_dossiers_liste1\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\"}},{\"id_interne\":12,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"241\",\"data-chp_nom_source\":\"c_sources1.php\",\"data-chp_methode_menu\":\"page_liste_des_sources1\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des sources des programmes\"}},{\"id_interne\":24,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"358\",\"data-chp_nom_source\":\"c_genres1.php\",\"data-chp_methode_menu\":\"page_liste_des_genres1\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des types de bonn\u00e9es dans la bdd\"}},{\"id_interne\":13,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"353\",\"data-chp_nom_source\":\"c_bases1.php\",\"data-chp_methode_menu\":\"page_liste_des_bases1\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des bases\"}},{\"id_interne\":14,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requ\u00eates\",\"attributs\":{\"data-chi_id_source\":\"231\",\"data-chp_nom_source\":\"c_requetes1.php\",\"data-chp_methode_menu\":\"page_liste_des_requetes1\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des requ\u00eates sur les bases\"}},{\"id_interne\":15,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"(\ud83d\ude0a)\",\"attributs\":{\"data-chi_id_source\":\"240\",\"data-chp_nom_source\":\"c_revs1.php\",\"data-chp_methode_menu\":\"page_liste_des_revs1\",\"data-chi_id_menu\":\"13\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des revs\"}},{\"id_interne\":16,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":6,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":17,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"56\",\"data-chp_nom_source\":\"c_groupes1.php\",\"data-chp_methode_menu\":\"page_liste_des_groupes1\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des groupes\"}},{\"id_interne\":18,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"m\u00e9tiers\",\"attributs\":{\"data-chi_id_source\":\"58\",\"data-chp_nom_source\":\"c_metiers1.php\",\"data-chp_methode_menu\":\"page_liste_des_metiers1\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des m\u00e9tiers\"}},{\"id_interne\":19,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"acc\u00e8s\",\"attributs\":{\"data-chi_id_source\":\"50\",\"data-chp_nom_source\":\"c_acces1.php\",\"data-chp_methode_menu\":\"page_liste_des_acces1\",\"data-chi_id_menu\":\"16\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des acc\u00e8s\"}},{\"id_interne\":20,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"62\",\"data-chp_nom_source\":\"c_utilisateurs1.php\",\"data-chp_methode_menu\":\"page_liste_des_utilisateurs1\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des utilisateurs\"}},{\"id_interne\":21,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"356\",\"data-chp_nom_source\":\"c_autorisations1.php\",\"data-chp_methode_menu\":\"page_liste_des_autorisations1\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des autorisations\"}},{\"id_interne\":22,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"357\",\"data-chp_nom_source\":\"c_menus1.php\",\"data-chp_methode_menu\":\"page_liste_des_menus1\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des menus\"}},{\"id_interne\":23,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg xmlns=\\\"http:\/\/www.w3.org\/2000\/svg\\\" viewBox=\\\"-9 -7  20 21\\\">\\n    <g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\\\">\\n        <circle cx=\\\"0\\\" cy=\\\"0\\\" r=\\\"6\\\"><\/circle>\\n        <path d=\\\" M -8 11 C -6 6 6 6 8 11 \\\"><\/path>\\n        <circle cx=\\\"-2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <circle cx=\\\"2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <path d=\\\"M -2 2 C -3 4 3 4 2 2 \\\"><\/path>\\n        <path d=\\\"M 0 0 V 2 \\\"><\/path>\\n        <path d=\\\"M -3 -1   H -6    \\\"><\/path>\\n        <path d=\\\"M 3 -1   H 6    \\\"><\/path>\\n        <path d=\\\"M -1 -1 c 0 -1 2 -1 2 0 \\\"><\/path>\\n    <\/g>\\n<\/svg>\",\"attributs\":{\"data-chi_id_source\":\"59\",\"data-chp_nom_source\":\"c_profile1.php\",\"data-chp_methode_menu\":\"recupere_la_page_des_coordonnees\",\"data-chi_id_menu\":\"20\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"mon profile\"}}]"}'),
 ('2','[*** non connecté ***]','2','2',NULL);
 
 
@@ -6232,10 +7834,10 @@ INSERT INTO tbl_taches (chi_id_tache,chx_utilisateur_tache,chp_texte_tache,chp_p
 ('23','1','dump de la base en local','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('24','1','essayer de modifier dynamiquement le css','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('25','1','synchroniser session php / webSochet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('26','1','travaux en batch','11','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('26','1','travaux en batch','7','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('27','1','gérer les versions js css etc','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('28','1','profils de css','50','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('29','1','interface : astuces','12','1','2025-08-15 14:32:17.544','2000-01-01 00:00:00'),
+('29','1','interface : astuces','8','1','2025-08-15 14:32:17.544','2000-01-01 00:00:00'),
 ('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('31','1','sauvegarder la position dans la liste','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -6301,9 +7903,9 @@ et mettre un message d''erreur en pile','99','0','2000-01-01 00:00:00','2000-01-
 ('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('76','1','bib php dans un autre répertoire','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('77','1','autocapitalize="off" sur les champs input','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('78','1','ne pas mettre plus de 1000 éléments dans un dossier','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('78','1','ne pas mettre plus de 1000 éléments dans un dossier','12','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('80','1','table des bugs','16','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('80','1','table des bugs','14','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('82','1','supprimer une projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('83','1','ajouter les champs 
@@ -6316,7 +7918,7 @@ dtc date technique de création','99','0','2000-01-01 00:00:00','2000-01-01 00:0
 ('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('88','1','sortable pour svg','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('89','1','cliquer en dehors du "dialog" pour le fermer','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('90','1','dupliquer une table','17','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
+('90','1','dupliquer une table','15','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('91','1','remplacer cible par projet','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('92','1','quand on modifie le nom d''une table
 alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
@@ -6412,7 +8014,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chp__dtm_tache`)
 flag champ_date_modification','99','4','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','15','1','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','13','1','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -6452,20 +8054,20 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','13','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
-('169','1','initialiser projet standard','7','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
-('170','1','initialiser ecran standard d''une table','10','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
+comme3(xxx)','11','1','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549'),
+('169','1','initialiser projet standard','3','0','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054'),
+('170','1','initialiser ecran standard d''une table','6','0','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916'),
 ('171','1','gérer les menus','99','1','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','1','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627'),
 ('173','1','gérer les paramètres ( liste des constantes )
-type de champbdd','9','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
+type de champbdd','5','3','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409'),
 ('174','1','mettre en github
 ','99','0','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817'),
 ('175','1','faire un dump de la base du projet 3','99','1','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038'),
 ('176','1','supprimer les afr','99','0','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146'),
 ('177','1','créer la base appli dans un autre répertoire que les bases de données','99','0','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962'),
 ('178','1','ajouter un dictionnaire de données(genre)
-permet de spécifier les champs date, date_heure, lien vers parent, id','4','4','2025-08-10 10:41:29.780','2025-07-02 10:46:53.367'),
+permet de spécifier les champs date, date_heure, lien vers parent, id','2','4','2025-08-10 10:41:29.780','2025-07-02 10:46:53.367'),
 ('179','1','corriger fichier_des_dependances','99','0','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399'),
 ('180','1','corriger rev_php_des_sql','99','0','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718'),
 ('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','0','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668'),
@@ -6496,7 +8098,7 @@ détruire','80','1','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485'),
     <option>sql</option>
     <option>css</option>
     <option>texte</option>
-</select>','0','2','2025-07-22 14:39:11.892','2025-07-09 16:26:01.691'),
+</select>','99','2','2025-07-22 14:39:11.892','2025-07-09 16:26:01.691'),
 ('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','0','2025-07-09 16:31:23.198','2025-07-09 16:31:23.198'),
 ('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','0','2025-07-09 17:43:23.330','2025-07-09 17:43:23.330'),
 ('196','1','initialiser les champs filtres d''une sous page','99','1','2025-07-19 11:11:25.033','2025-07-10 09:52:20.444'),
@@ -6510,7 +8112,7 @@ faire un carré svg
 nom_champ_dans_parent1
 nom_libelle_dans_parent1
 dans les sous listes comme dans c_sources1.php','99','1','2025-07-15 17:21:51.755','2025-07-15 16:12:27.924'),
-('202','1','bibliothèque de svg','8','1','2025-07-16 10:48:01.891','2025-07-16 10:47:25.371'),
+('202','1','bibliothèque de svg','4','1','2025-07-16 10:48:01.891','2025-07-16 10:47:25.371'),
 ('203','1','renuméroter les requetes à partir de 101','99','2','2025-07-17 15:09:37.352','2025-07-17 10:11:14.041'),
 ('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','1','2025-07-17 12:14:57.332','2025-07-17 12:07:20.343'),
 ('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','0','2025-07-18 10:50:06.307','2025-07-18 10:50:06.307'),
@@ -6530,7 +8132,7 @@ ajouter un champ
 
 quand on renomme un champ de la base 1 de rev_1 il faur renommer les champs de toutes les bases rev_n
 Exemple chp_commentaire_projet => cht_commentaire_projet','99','2','2025-08-02 14:19:05.165','2025-08-01 15:08:43.406'),
-('215','1','case à cocher "se souvenir de moi" sur la page de connexion','6','0','2025-08-03 09:25:28.660','2025-08-03 09:25:28.660'),
+('215','1','interface : case à cocher "se souvenir de moi" sur la page de connexion','9','2','2025-08-16 13:27:11.830','2025-08-03 09:25:28.660'),
 ('216','1','intégrer mon tri','99','0','2025-08-03 10:03:21.913','2025-08-03 10:03:21.913'),
 ('217','1','bug réordonner champs sur projet 3','99','0','2025-08-05 14:13:00.676','2025-08-05 14:13:00.676'),
 ('218','1','tri_arbre','99','0','2025-08-08 11:02:44.128','2025-08-08 11:02:44.128'),
@@ -6553,7 +8155,23 @@ menu = autorisation methode du source
 
 afr : quand le source a appel le source b, 
 il faut une autorisation déléguée sur la méthode appelée','99','7','2025-08-12 14:42:35.283','2025-08-12 12:44:14.024'),
-('223','1','interface : pouvoir agrandit la zone de message ( vv_supprimer_les_messages_3 )','12','3','2025-08-15 14:32:33.953','2025-08-15 14:23:33.195');
+('223','1','interface : pouvoir agrandit la zone de message ( vv_supprimer_les_messages_3 )','10','3','2025-08-15 14:32:33.953','2025-08-15 14:23:33.195'),
+('224','1','dans ajouter un formule de requete 
+nouvelle requete liste
+clic sur condition
+il n''y a que de comme','1','0','2025-08-16 13:28:59.257','2025-08-16 13:28:59.257');
+
+
+/*
+  ===============================
+  DONNEES A INSERER POUR : tbl_genres
+  ===============================
+*/
+
+INSERT INTO tbl_genres (chi_id_genre,chp_nom_genre,chp_espece_genre,che_longueur_genre,che_est_primaire_genre,che_est_incrément_genre,che_est_obligatoire_genre,che_a_init_genre,che_init_est_mot_genre,cht_valeur_init_genre,chp_prefixe_genre) VALUES
+('1','indéfini','TEXT',NULL,'0','0','0','0','0',NULL,'cht'),
+('2','identifiant unique','INTEGER',NULL,'1','0','0','0','0',NULL,'chi'),
+('3','texte non null','TEXT',NULL,'0','0','1','0','0',NULL,'cht');
 
 
 /*
@@ -6583,7 +8201,8 @@ INSERT INTO tbl_autorisations (chi_id_autorisation,chx_acces_autorisation,chx_so
 ('18','1','356'),
 ('19','1','59'),
 ('20','1','62'),
-('21','1','357');
+('21','1','357'),
+('22','1','358');
 
 
 /*
@@ -6653,5 +8272,6 @@ INSERT INTO tbl_menus (chi_id_menu,cht_libelle_menu,chp_titre_menu,chx_autorisat
 </svg>','mon profile','19','recupere_la_page_des_coordonnees',NULL,NULL),
 ('21','html','html','4','page1',NULL,'maj_interface2(
    modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_html_rev1)))
-)');
+)'),
+('22','genres','liste des types de bonnées dans la bdd','22','page_liste_des_genres1',NULL,NULL);
 

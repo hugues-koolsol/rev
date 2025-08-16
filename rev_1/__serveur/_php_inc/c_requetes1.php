@@ -1383,6 +1383,10 @@ EOT;
         
         if(__X_CLE_APPLICATION === 'rev' . '_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1){
 
+
+//           echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues[__xva]['contenu_bdd_requete'] , true ) . '</pre>' ; exit(0);
+
+
             $tt=/*sql_inclure_deb*/
                 /* sql_109()
                 UPDATE b1.tbl_requetes SET 
@@ -1403,6 +1407,9 @@ EOT;
                     'c_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     'c_chi_id_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.chi_id_requete'],
                     'n_cht_sql_requete' => $donnees_recues[__xva]['cht_sql_requete'],
+                    'n_chp_type_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.chp_type_requete'],
+                    'n_cht_rev_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.cht_rev_requete'],
+                    'n_cht_commentaire_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.cht_commentaire_requete'],
                     'n_cht_php_requete' => '',
                     'n_cht_matrice_requete' => ''
                 ),
@@ -1431,6 +1438,9 @@ EOT;
                     'c_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
                     'c_chi_id_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.chi_id_requete'],
                     'n_cht_sql_requete' => $donnees_recues[__xva]['cht_sql_requete'],
+                    'n_chp_type_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.chp_type_requete'],
+                    'n_cht_rev_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.cht_rev_requete'],
+                    'n_cht_commentaire_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.cht_commentaire_requete'],
                     'n_cht_php_requete' => $donnees_recues[__xva]['cht_php_requete']
                 ),
                 $donnees_retournees
