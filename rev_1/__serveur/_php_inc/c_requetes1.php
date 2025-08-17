@@ -123,9 +123,9 @@ class c_requetes1{
 
         }
 
-        $tableau_contenu_js=[];
+        $__liste_des_sql=[];
         foreach($tt149[__xva] as $k1 => $v1){
-            $tableau_contenu_js[$v1['T0.chi_id_requete']]=array(/**/
+            $__liste_des_sql[$v1['T0.chi_id_requete']]=array(/**/
                 'cht_sql_requete' => $v1['T0.cht_sql_requete'],
                 'cht_commentaire_requete' => $v1['T0.cht_commentaire_requete']
             );
@@ -138,16 +138,16 @@ class c_requetes1{
           "4":"\/*meta(tester_les_dependances_dans_le_php(1))*\/\r\n\r\nDELETE FROM b1.tbl_requetes\nWHERE (`chi_id_requete` = :chi_id_requete\r\n   AND `chx_projet_requete` = :chx_projet_requete) ;"
           }
         */
-        $chemin_fichier_php_des_sql=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . 'rev_php_des_sql.php';
+        $chemin_fichier___liste_des_sql=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . '__liste_des_sql.php';
         
-        if((@file_put_contents($chemin_fichier_php_des_sql,'<?' . 'php' . PHP_EOL . '$php_des_sql=' . var_export($tableau_contenu_js,true) . ';')) === false
+        if((@file_put_contents($chemin_fichier___liste_des_sql,'<?' . 'php' . PHP_EOL . '$__liste_des_sql=' . var_export($__liste_des_sql,true) . ';')) === false
         ){
 
-            $donnees_retournees[__x_signaux][__xal][]=' erreur lors de l\'écriture de php_des_sql [' . __LINE__ . ']';
+            $donnees_retournees[__x_signaux][__xal][]=' erreur lors de l\'écriture de __liste_des_sql [' . __LINE__ . ']';
 
         }
 
-        $donnees_retournees[__xva]['php_des_sql']=$tableau_contenu_js;
+        $donnees_retournees[__xva]['__liste_des_sql']=$__liste_des_sql;
         /*
           $donnees_retournees[__x_signaux][__xer][]='<pre>' . $contenu_json . '</pre> [' . __LINE__ . ']';
           

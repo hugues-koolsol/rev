@@ -753,7 +753,7 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_titre_menu" value="' . enti1($tt[__xva][0]['T0.chp_titre_menu']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" max-length="64" style="max-width:80%;"/>' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_titre_menu" value="' . enti1($tt[__xva][0]['T0.chp_titre_menu']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" maxlength="64" style="max-width:80%;"/>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -800,7 +800,7 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_methode_menu" value="' . enti1($tt[__xva][0]['T0.chp_methode_menu']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" max-length="64" style="max-width:80%;" />' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_methode_menu" value="' . enti1($tt[__xva][0]['T0.chp_methode_menu']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" maxlength="64" style="max-width:80%;" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;

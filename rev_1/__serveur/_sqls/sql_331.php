@@ -53,6 +53,16 @@ function sql_331($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`chp_prefixe_genre` = \''.sq0($par['n_chp_prefixe_genre']).'\'';
     }
+    if($par['n_che_est_parmis_genre']==='' || is_null($par['n_che_est_parmis_genre']) ){
+        $tableau_champs[]='`che_est_parmis_genre` = NULL';
+    }else{
+        $tableau_champs[]='`che_est_parmis_genre` = '.sq0($par['n_che_est_parmis_genre']).'';
+    }
+    if($par['n_cht_parmis_genre']==='' || is_null($par['n_cht_parmis_genre']) ){
+        $tableau_champs[]='`cht_parmis_genre` = NULL';
+    }else{
+        $tableau_champs[]='`cht_parmis_genre` = \''.sq0($par['n_cht_parmis_genre']).'\'';
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/

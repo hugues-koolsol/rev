@@ -652,7 +652,7 @@ class c_svg_bdd1{
         rev+='    refe_enfant_droite(' + refe_enfant_droite + ')';
         rev+='    refe_parent_gauche(' + refe_parent_gauche + ')';
         rev+=')';
-        var a=this.#ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , this.#id_bdd_de_la_base_en_cours , rev , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere );
+        var a=this.#ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , this.#id_bdd_de_la_base_en_cours , rev , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere  );
         __gi1.fermer_fenetre1();
         this.#dessiner_le_svg();
     }
@@ -1430,6 +1430,7 @@ class c_svg_bdd1{
                 }
             }
         }
+        
         a.proprietes.espece_du_champ=document.getElementById( 'espece_du_champ' ).value.toUpperCase();
         a.proprietes.longueur_du_champ=document.getElementById( 'longueur_du_champ' ).value;
         a.proprietes.primary_key=document.getElementById( 'primary_key' ).checked ? ( '1' ) : ( '0' );
@@ -1461,6 +1462,7 @@ class c_svg_bdd1{
             "genre" : document.getElementById( 'meta_modifier__genre' ).value,
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ  );
+        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ +3].contenu=document.getElementById( 'meta_modifier__genre' ).value;
         if(afficher_champ_dans_svg === 1){
             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ - 1].proprietes.style='display:inline;';
         }else{
@@ -1811,6 +1813,34 @@ class c_svg_bdd1{
     /*
       =============================================================================================================
     */
+    selectionner_un_genre(mat){
+        let zone_select='';
+        for( let i=0 ; i < mat.length ; i++ ){
+            if(mat[i][1] === 'zone_select' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                zone_select=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_svg_champ_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_champ_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'nom_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }
+        }
+        if(zone_select!==''){
+            let ref_zone_select=document.getElementById(zone_select);
+            let ref_option_en_cours=ref_zone_select.options[ref_zone_select.selectedIndex];
+            let data_genre=JSON.parse(ref_option_en_cours.getAttribute('data-genre'));
+            document.getElementById('espece_du_champ').value=data_genre.chp_espece_genre
+            document.getElementById('longueur_du_champ').value=data_genre.che_longueur_genre===null?'':data_genre.che_longueur_genre;
+            document.getElementById('non_nulle').checked=data_genre.che_est_obligatoire_genre===1?true:false;
+            document.getElementById('primary_key').checked=data_genre.che_est_primaire_genre===1?true:false;
+            document.getElementById('auto_increment').checked=data_genre.che_est_incrément_genre===1?true:false;
+            document.getElementById('a_une_valeur_par_defaut').checked=data_genre.che_a_init_genre===1?true:false;
+            document.getElementById('la_valeur_par_defaut_est_caractere').checked=data_genre.che_init_est_mot_genre===1?true:false;
+            document.getElementById('valeur_par_defaut').value=data_genre.cht_valeur_init_genre===null?'':data_genre.cht_valeur_init_genre;
+        }
+    }
+    /*
+      =============================================================================================================
+    */
     modale_modifier_le_champ( mat ){
         /* conteneur_de_champ */
         let id_svg_conteneur_table=0;
@@ -1931,6 +1961,56 @@ class c_svg_bdd1{
         let refe_enfant_droite=obj_donnees_rev_du_champ.refe_enfant_droite;
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
         t+='<h2>changer les éléments du champ</h2>';
+        
+        /*
+        
+        */
+        t+='<br />genre : ';
+        let texte__liste_des_genres='';
+        let genre_courant='';
+        for(let i in __gi1.__liste_des_genres){
+            /* 
+              {
+                "chi_id_genre":1,
+                "chp_nom_genre":"indéfini",
+                "chp_espece_genre":"TEXT",
+                "che_longueur_genre":null,
+                "che_est_primaire_genre":0,
+                "che_est_incrément_genre":0,
+                "che_est_obligatoire_genre":0,
+                "che_a_init_genre":0,
+                "che_init_est_mot_genre":0,
+                "cht_valeur_init_genre":null
+              }
+            */
+            
+            texte__liste_des_genres+='<option';
+            if(genre==__gi1.__liste_des_genres[i].chi_id_genre){
+              texte__liste_des_genres+=' selected="true"'
+            }
+            texte__liste_des_genres+=' value="'+__gi1.__liste_des_genres[i].chi_id_genre+'"';
+            texte__liste_des_genres+=' data-genre="'+__gi1.enti1(JSON.stringify(__gi1.__liste_des_genres[i]))+'"';
+            texte__liste_des_genres+='>';
+            texte__liste_des_genres+=__gi1.__liste_des_genres[i].chp_nom_genre;
+            texte__liste_des_genres+='</option>'
+            
+        }
+        
+        var cmd='';
+        cmd+='interface1.module1(';
+        cmd+='  chemin_module1(\'' + this.#chemin_module1 + '\'),';
+        cmd+='  methode3(selectionner_un_genre),';
+        cmd+='  parametre3(';
+        cmd+='     zone_select(meta_modifier__genre),';
+        cmd+='  )';
+        cmd+=')';
+        t+='<select id="meta_modifier__genre" data-hug_change="' + cmd + '">'+texte__liste_des_genres+'</select>';
+        /*
+        
+        */
+        
+        
+        
         t+='<br />espece  : <input id="espece_du_champ" type="text" value="' + espece_du_champ.toUpperCase() + '" autocapitalize="off" />';
         for( let ind=0 ; ind < this.#especes_de_reference.length ; ind++ ){
             var cmd='';
@@ -2002,8 +2082,8 @@ class c_svg_bdd1{
         t+='<option value="chb" ' + (typologie === 'chb' ? ( ' selected' ) : ( '' )) + '>blob (chb) blob</option>';
         t+='</select>';
         
-        t+='<br />genre : ';
-        t+='<input type="text" id="meta_modifier__genre" value="' + genre + '" autocapitalize="off" />';
+        
+        
         t+='<br />nom_bref_du_champ : ';
         t+='<input type="text" id="meta_modifier__nom_bref_du_champ" value="' + nom_bref_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
         t+='<br />nom_court_du_champ : ';
@@ -2114,6 +2194,7 @@ class c_svg_bdd1{
       function afficher_resultat_comparaison_base_physique_et_base_virtuelle
     */
     afficher_resultat_comparaison_base_physique_et_base_virtuelle( par ){
+        
         __gi1.fermer_fenetre1();
         var differences_entre_les_tables=false;
         var differences_entre_les_champs=false;
@@ -2359,6 +2440,18 @@ class c_svg_bdd1{
             '<div class="yy__x_signaux_1">Pas de différence entre les indexes</div>'
           );
         t+='<div id="vv_meme_ordre"></div>';
+        if(differences_entre_les_tables===false && differences_entre_les_champs === false && differences_entre_les_indexe===false){
+            t+='<div class="hug_bouton yy__x_signaux_3"';
+            t+=' data-hug_click="'
+            t+='  interface1.module1(';
+            t+='   chemin_module1(\'_js/c_svg_bdd1.js\'),';
+            t+='   methode3(reecrire_la_base_a_partir_du_shema),';
+            t+='   parametre3(id_bdd('+par.id_bdd_de_la_base_en_cours+'))';
+            t+='  )">réécrire</div>';
+        }
+        
+
+        
         t+='</td>';
         t+='</tr>';
         t+='<tr>';
@@ -3710,7 +3803,52 @@ class c_svg_bdd1{
             t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '" >' + this.#especes_de_reference[ind] + '</div>';
         }
         
-        t+='<br />genre  : <input id="genre" type="text" value="0" autocapitalize="off" />';
+        
+        let texte__liste_des_genres='';
+        let genre_courant='';
+        let genre=1;
+//        debugger
+        for(let i in __gi1.__liste_des_genres){
+            /* 
+              {
+                "chi_id_genre":1,
+                "chp_nom_genre":"indéfini",
+                "chp_espece_genre":"TEXT",
+                "che_longueur_genre":null,
+                "che_est_primaire_genre":0,
+                "che_est_incrément_genre":0,
+                "che_est_obligatoire_genre":0,
+                "che_a_init_genre":0,
+                "che_init_est_mot_genre":0,
+                "cht_valeur_init_genre":null
+              }
+            */
+            texte__liste_des_genres+='<option';
+            if(genre==__gi1.__liste_des_genres[i].chi_id_genre){
+              texte__liste_des_genres+=' selected="true"'
+            }
+            texte__liste_des_genres+=' value="'+__gi1.__liste_des_genres[i].chi_id_genre+'"';
+            texte__liste_des_genres+=' data-genre="'+__gi1.enti1(JSON.stringify(__gi1.__liste_des_genres[i]))+'"';
+            texte__liste_des_genres+='>';
+            texte__liste_des_genres+=__gi1.__liste_des_genres[i].chp_nom_genre;
+            texte__liste_des_genres+='</option>'
+        }
+
+
+        var cmd='';
+        cmd+='interface1.module1(';
+        cmd+='  chemin_module1(\'' + this.#chemin_module1 + '\'),';
+        cmd+='  methode3(selectionner_un_genre),';
+        cmd+='  parametre3(';
+        cmd+='     zone_select(meta_modifier__genre),';
+        cmd+='  )';
+        cmd+=')';
+        
+        t+='<br />genre  : <select id="genre" data-hug_change="' + cmd + '">'+texte__liste_des_genres+'</select>';
+        
+        
+        
+        
         t+='<br />longueur  : <input id="longueur_du_champ" type="text" value="" autocapitalize="off" />';
         
         
@@ -5617,15 +5755,6 @@ class c_svg_bdd1{
         ){
             refe_parent_gauche=1;
         }
-        if(nouvelles_valeurs.hasOwnProperty( 'genre' )
-               && (nouvelles_valeurs.genre === '0'
-                   || nouvelles_valeurs.genre === 0
-                   || nouvelles_valeurs.genre === '1'
-                   || nouvelles_valeurs.genre === 1
-                   )
-        ){
-            genre=parseInt(nouvelles_valeurs.genre,10);
-        }
         o1+='meta(';
         o1+='    genre_meta(champ),';
         o1+='    nom_du_champ(\'' + nom_du_champ + '\'),';
@@ -6450,7 +6579,7 @@ class c_svg_bdd1{
     /*
       =============================================================================================================
     */
-    #ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ ,  primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere ){
+    #ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ ,  primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere  ){
         var id_svg_parent_table=-1;
         var id_svg_parent_champ=-1;
         var nom_parent_table='';
@@ -6462,6 +6591,26 @@ class c_svg_bdd1{
           création de la boite du champ
           conteneur du nom du champ svg_tableaux_des_references_amont_aval
         */
+        let genre_du_champ=1;
+        if(donnees_rev_du_champ.indexOf('genre(1)')<0){
+         
+            var obj1=__gi1.__m_rev1.rev_tm( donnees_rev_du_champ );
+            if(obj1.__xst === __xsu){
+                let mat=obj1.__xva;
+                for(let i=1;i<mat.length;i=mat[i][12]){
+                    if(mat[i][1]==='meta' && mat[i][2]==='f' ){
+                        for(let j=i+1;j<mat.length;j=mat[j][12]){
+                            if(mat[j][1]==='genre' && mat[j][2]==='f' && mat[j][8]===1 && mat[j+1][2]==='c'){
+                                genre_du_champ=mat[j+1][1];
+                            }
+                        }
+                    }
+                }
+            }
+         
+
+        }
+        
         if(donnees_rev_du_champ.indexOf( 'afficher_champ_dans_svg(0)' ) >= 0){
             masqué='display:none;';
         }
@@ -6593,6 +6742,7 @@ class c_svg_bdd1{
         */
         let contenu='';
         contenu+='' + nom_du_champ;
+        
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'text' ,
             "id" : indice_courant ,
@@ -6607,7 +6757,28 @@ class c_svg_bdd1{
                 "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
                 "nom_de_la_table" : nom_de_la_table ,
                 "nom_du_champ" : nom_du_champ ,
-                "x" : this.#hauteur_de_boite + 2 * this.#taille_bordure ,
+                "x" : this.#hauteur_de_boite + 2 * this.#taille_bordure + __gi1.css_dimensions.t_police*1.5 ,
+                "y" : this.#hauteur_de_boite - 0.3 * __gi1.css_dimensions.t_police - this.#taille_bordure ,
+                "style" : "fill:" + couleur_nom_de_champ + ";"
+            }
+        };
+
+        indice_courant++;
+        this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
+            "type" : 'text' ,
+            "id" : indice_courant ,
+            "id_parent" : id_svg_champ_en_cours ,
+             /* carré jaune */
+            "contenu" : genre_du_champ ,
+            "proprietes" : {
+                "id" : indice_courant ,
+                "type_element" : 'genre_de_champ' ,
+                "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
+                "id_svg_conteneur_table" : id_svg_conteneur_table ,
+                "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
+                "nom_de_la_table" : nom_de_la_table ,
+                "nom_du_champ" : nom_du_champ ,
+                "x" : this.#hauteur_de_boite + 2 * this.#taille_bordure  ,
                 "y" : this.#hauteur_de_boite - 0.3 * __gi1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:" + couleur_nom_de_champ + ";"
             }
@@ -6930,6 +7101,8 @@ class c_svg_bdd1{
                                 var valeur_par_defaut='';
                                 let valeurs_en_dehors_de_meta=false;
                                 let indice_meta=0;
+                                let genre_du_champ=1;
+
                                 for( let n=l + 1 ; n < l01 ; n=tab[n][12] ){
                                     if(tab[n][2] === 'f' && tab[n][1] === 'nom_du_champ' && tab[n][8] === 1){
                                         nom_du_champ=tab[n + 1][1];
@@ -7007,7 +7180,18 @@ class c_svg_bdd1{
                                   indice_courant , 
                                   id_svg_conteneur_table , 
                                   nom_de_la_table , 
-                                  id_bdd_de_la_base , donnees_rev_du_champ ,  primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere );
+                                  id_bdd_de_la_base , 
+                                  donnees_rev_du_champ ,  
+                                  primary_key , 
+                                  non_nulle , 
+                                  auto_increment , 
+                                  references , 
+                                  a_une_valeur_par_defaut , 
+                                  espece_du_champ , 
+                                  longueur_du_champ , 
+                                  valeur_par_defaut , 
+                                  la_valeur_par_defaut_est_caractere ,
+                                 );
                                 id_svg_champ_en_cours=a.id_svg_champ_en_cours;
                                 indice_du_champ=a.indice_du_champ;
                                 indice_courant=a.indice_courant;

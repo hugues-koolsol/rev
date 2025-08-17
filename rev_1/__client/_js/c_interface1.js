@@ -81,6 +81,7 @@ class _c_interface1{
     liste_des_modules_dynamiques={};
     #la_sous_fenetre1=null;
     __js_des_sql={};
+    __liste_des_genres={};
     #date_derniere_navigation=performance.now();
     zones_des_editeur=[];
     /*
@@ -216,9 +217,13 @@ class _c_interface1{
         if(this.le_niveau_de_deverminage >= 1){
             console.log( '%c #traite_action_retour_generale,' , 'background:#ff5252;color:yellow' , ' reponse=' , reponse );
         }
-        if(reponse.hasOwnProperty( '__xva' ) && reponse.__xva.hasOwnProperty( 'php_des_sql' )){
-            this.__js_des_sql=reponse.__xva.php_des_sql;
+        if(reponse.hasOwnProperty( '__xva' ) && reponse.__xva.hasOwnProperty( '__liste_des_sql' )){
+            this.__js_des_sql=reponse.__xva.__liste_des_sql;
         }
+        if(reponse.hasOwnProperty( '__xva' ) && reponse.__xva.hasOwnProperty( '__liste_des_genres' )){
+            this.__liste_des_genres=reponse.__xva.__liste_des_genres;
+        }
+        
         if(reponse.hasOwnProperty( '__x_page' ) && reponse.__x_page !== ''){
             this.zones_des_editeur=[];
             this.masquer_les_messages();
@@ -2814,7 +2819,7 @@ class _c_interface1{
                 this.remplis_les_messages_et_affiche( null );
                 return false;
             }
-            if(action.substr( 0 , 11 ) === 'interface1.'){
+            if(action.substr( 0 , 11 ) === 'interface1.' || mat.__xva.length>=2 && mat.__xva[1][1].substr( 0 , 11 ) === 'interface1.'){
                 elt.classList.add( 'yy_invisible' );
                 this.#element_appel_reseau.push( elt );
                 this.#action_interface1( mat.__xva );

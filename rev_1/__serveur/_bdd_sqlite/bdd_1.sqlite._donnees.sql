@@ -6,7 +6,7 @@
 */
 
 INSERT INTO tbl_utilisateurs (chi_id_utilisateur,chp_nom_de_connexion_utilisateur,chp_mot_de_passe_utilisateur,chp_parametres_utilisateur,chi_compteur1_utilisateur,chi_compteur_socket1_utilisateur,che__nur_utilisateur,chp__dtm_utilisateur,chp__dtc_utilisateur,chx_acces_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'636','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'638','1307','0','2000-01-01 00:00:00','2000-01-01 00:00:00','1'),
 ('2','anonyme',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','2');
 
 
@@ -2614,7 +2614,9 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
       champ(`T0`,`che_a_init_genre`),
       champ(`T0`,`che_init_est_mot_genre`),
       champ(`T0`,`cht_valeur_init_genre`),
-      champ(`T0`,`chp_prefixe_genre`)
+      champ(`T0`,`chp_prefixe_genre`),
+      champ(`T0`,`che_est_parmis_genre`),
+      champ(`T0`,`cht_parmis_genre`)
    ),
    provenance(
       table_reference(
@@ -2627,7 +2629,8 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
          comme(champ(`T0`,`chp_nom_genre`),:T0_chp_nom_genre),
          comme(champ(`T0`,`chp_espece_genre`),:T0_chp_espece_genre),
          comme(champ(`T0`,`cht_valeur_init_genre`),:T0_cht_valeur_init_genre),
-         comme(champ(`T0`,`chp_prefixe_genre`),:T0_chp_prefixe_genre)
+         comme(champ(`T0`,`chp_prefixe_genre`),:T0_chp_prefixe_genre),
+         comme(champ(`T0`,`cht_parmis_genre`),:T0_cht_parmis_genre)
       )
    ),
    complements(
@@ -2637,13 +2640,14 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
 )  ','SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre`
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre`
  FROM b1.tbl_genres T0
 WHERE (`T0`.`chi_id_genre` = :T0_chi_id_genre
    AND `T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre
    AND `T0`.`chp_espece_genre` LIKE :T0_chp_espece_genre
    AND `T0`.`cht_valeur_init_genre` LIKE :T0_cht_valeur_init_genre
-   AND `T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre) 
+   AND `T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre
+   AND `T0`.`cht_parmis_genre` LIKE :T0_cht_parmis_genre) 
 ORDER BY `T0`.`chi_id_genre` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -2659,7 +2663,9 @@ LIMIT :quantitee OFFSET :debut
       affecte(champ(`che_a_init_genre`),:che_a_init_genre),
       affecte(champ(`che_init_est_mot_genre`),:che_init_est_mot_genre),
       affecte(champ(`cht_valeur_init_genre`),:cht_valeur_init_genre),
-      affecte(champ(`chp_prefixe_genre`),:chp_prefixe_genre)
+      affecte(champ(`chp_prefixe_genre`),:chp_prefixe_genre),
+      affecte(champ(`che_est_parmis_genre`),:che_est_parmis_genre),
+      affecte(champ(`cht_parmis_genre`),:cht_parmis_genre)
    ),
    provenance(
       table_reference(
@@ -2676,7 +2682,9 @@ LIMIT :quantitee OFFSET :debut
     `che_a_init_genre` , 
     `che_init_est_mot_genre` , 
     `cht_valeur_init_genre` , 
-    `chp_prefixe_genre`
+    `chp_prefixe_genre` , 
+    `che_est_parmis_genre` , 
+    `cht_parmis_genre`
 ) VALUES (
     :chp_nom_genre , 
     :chp_espece_genre , 
@@ -2687,7 +2695,9 @@ LIMIT :quantitee OFFSET :debut
     :che_a_init_genre , 
     :che_init_est_mot_genre , 
     :cht_valeur_init_genre , 
-    :chp_prefixe_genre
+    :chp_prefixe_genre , 
+    :che_est_parmis_genre , 
+    :cht_parmis_genre
 );',NULL,'genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('330','1','select','sélectionner(
    base_de_reference(1),
@@ -2702,7 +2712,9 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`che_a_init_genre`),
       champ(`T0`,`che_init_est_mot_genre`),
       champ(`T0`,`cht_valeur_init_genre`),
-      champ(`T0`,`chp_prefixe_genre`)
+      champ(`T0`,`chp_prefixe_genre`),
+      champ(`T0`,`che_est_parmis_genre`),
+      champ(`T0`,`cht_parmis_genre`)
    ),
    provenance(
       table_reference(
@@ -2713,7 +2725,7 @@ LIMIT :quantitee OFFSET :debut
 )  ','SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre`
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre`
  FROM b1.tbl_genres T0
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
 ;',NULL,'genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -2729,7 +2741,9 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
       affecte(champ(`che_a_init_genre`),:n_che_a_init_genre),
       affecte(champ(`che_init_est_mot_genre`),:n_che_init_est_mot_genre),
       affecte(champ(`cht_valeur_init_genre`),:n_cht_valeur_init_genre),
-      affecte(champ(`chp_prefixe_genre`),:n_chp_prefixe_genre)
+      affecte(champ(`chp_prefixe_genre`),:n_chp_prefixe_genre),
+      affecte(champ(`che_est_parmis_genre`),:n_che_est_parmis_genre),
+      affecte(champ(`cht_parmis_genre`),:n_cht_parmis_genre)
    ),
    provenance(
       table_reference(
@@ -2747,7 +2761,9 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
    `che_a_init_genre` = :n_che_a_init_genre , 
    `che_init_est_mot_genre` = :n_che_init_est_mot_genre , 
    `cht_valeur_init_genre` = :n_cht_valeur_init_genre , 
-   `chp_prefixe_genre` = :n_chp_prefixe_genre
+   `chp_prefixe_genre` = :n_chp_prefixe_genre , 
+   `che_est_parmis_genre` = :n_che_est_parmis_genre , 
+   `cht_parmis_genre` = :n_cht_parmis_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,'genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('332','1','delete','supprimer(
    base_de_reference(1),
@@ -2772,7 +2788,9 @@ WHERE `chi_id_genre` = :chi_id_genre ;',NULL,'genres',NULL,'0','2000-01-01 00:00
       champ(`T0`,`che_a_init_genre`),
       champ(`T0`,`che_init_est_mot_genre`),
       champ(`T0`,`cht_valeur_init_genre`),
-      champ(`T0`,`chp_prefixe_genre`)
+      champ(`T0`,`chp_prefixe_genre`),
+      champ(`T0`,`che_est_parmis_genre`),
+      champ(`T0`,`cht_parmis_genre`)
    ),
    provenance(
       table_reference(
@@ -2784,7 +2802,8 @@ WHERE `chi_id_genre` = :chi_id_genre ;',NULL,'genres',NULL,'0','2000-01-01 00:00
    )
 )  ','SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
-`T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre`
+`T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre`
  FROM b1.tbl_genres T0 ORDER BY  `T0`.`chi_id_genre` ASC
 ;',NULL,'tous les genres',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
@@ -5335,7 +5354,7 @@ INSERT INTO tbl_bdds (chi_id_basedd,chx_projet_id_basedd,chp_commentaire_basedd,
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(3.5,10.5))
+   transform_base_sur_svg(translate(7.5,8.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_utilisateurs''),
@@ -5361,7 +5380,7 @@ créer_table(
             nom_court_du_champ(''à faire chi_id_utilisateur''),
             nom_bref_du_champ(''à faire chi_id_utilisateur''),
             typologie(chi),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5565,6 +5584,7 @@ créer_table(
          nom_du_champ(''chi_id_projet''),
          espece_du_champ(INTEGER),
          primary_key(1),
+         non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_projet''),
@@ -5572,7 +5592,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5744,7 +5764,7 @@ créer_table(
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
             typologie(chi),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -5946,6 +5966,7 @@ créer_table(
          nom_du_champ(''chi_id_rev''),
          espece_du_champ(INTEGER),
          primary_key(1),
+         non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_rev''),
@@ -5953,7 +5974,7 @@ créer_table(
             nom_court_du_champ(''à faire chi_id_rev''),
             nom_bref_du_champ(''à faire chi_id_rev''),
             typologie(chi),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -6247,6 +6268,7 @@ créer_table(
          nom_du_champ(''chi_id_source''),
          espece_du_champ(INTEGER),
          primary_key(1),
+         non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_source''),
@@ -6254,7 +6276,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -6465,6 +6487,7 @@ créer_table(
          nom_du_champ(''chi_id_dossier''),
          espece_du_champ(INTEGER),
          primary_key(1),
+         non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_dossier''),
@@ -6472,7 +6495,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -6639,6 +6662,7 @@ créer_table(
          nom_du_champ(''chi_id_basedd''),
          espece_du_champ(INTEGER),
          primary_key(1),
+         non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_basedd''),
@@ -6646,7 +6670,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -6822,7 +6846,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -6900,7 +6924,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -6966,7 +6990,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -7056,6 +7080,7 @@ créer_table(
          nom_du_champ(''chi_id_tache''),
          espece_du_champ(INTEGER),
          primary_key(1),
+         non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chi_id_tache''),
@@ -7063,7 +7088,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -7192,222 +7217,6 @@ ajouter_index(
    unique()
 ),
 créer_table(
-   nom_de_la_table(''tbl_genres''),
-   meta(
-      nom_de_la_table(''tbl_genres''),
-      table(''tbl_genres''),
-      genre_meta(table_de_base),
-      nom_long_de_la_table(''A faire  tbl_genres''),
-      nom_court_de_la_table(''A faire tbl_genres''),
-      nom_bref_de_la_table(''A faire tbl_genres''),
-      transform_table_sur_svg(translate(68.5,456.5))
-   ),
-   champs(
-      champ(
-         nom_du_champ(''chi_id_genre''),
-         espece_du_champ(INTEGER),
-         primary_key(1),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chi_id_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chi),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_nom_genre''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_nom_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chp),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_espece_genre''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(32),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(1),
-         valeur_par_defaut(''TEXT''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_espece_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chp),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(32)
-         )
-      ),
-      champ(
-         nom_du_champ(''che_longueur_genre''),
-         espece_du_champ(INTEGER),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''che_longueur_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(che),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''che_est_primaire_genre''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(false),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''che_est_primaire_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(che),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''che_est_incrément_genre''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''che_est_incrément_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(che),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''che_est_obligatoire_genre''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(false),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''che_est_obligatoire_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(che),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''che_a_init_genre''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(false),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''che_a_init_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(che),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''che_init_est_mot_genre''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''che_init_est_mot_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(che),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''cht_valeur_init_genre''),
-         espece_du_champ(TEXT),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''cht_valeur_init_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(cht),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(TEXT)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_prefixe_genre''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(3),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(1),
-         valeur_par_defaut(''cht''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_prefixe_genre''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chp),
-            genre(1),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(3)
-         )
-      )
-   )
-),
-créer_table(
    nom_de_la_table(''tbl_autorisations''),
    meta(
       nom_de_la_table(''tbl_autorisations''),
@@ -7431,7 +7240,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -7507,7 +7316,7 @@ créer_table(
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
             typologie(chi),
-            genre(1),
+            genre(2),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -7605,6 +7414,256 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_complements_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(cht),
+            genre(1),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
+         )
+      )
+   )
+),
+créer_table(
+   nom_de_la_table(''tbl_genres''),
+   meta(
+      nom_de_la_table(''tbl_genres''),
+      table(''tbl_genres''),
+      genre_meta(table_de_base),
+      nom_long_de_la_table(''A faire  tbl_genres''),
+      nom_court_de_la_table(''A faire tbl_genres''),
+      nom_bref_de_la_table(''A faire tbl_genres''),
+      transform_table_sur_svg(translate(68.5,456.5))
+   ),
+   champs(
+      champ(
+         nom_du_champ(''chi_id_genre''),
+         espece_du_champ(INTEGER),
+         primary_key(1),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chi_id_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chi),
+            genre(2),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_prefixe_genre''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(3),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(1),
+         valeur_par_defaut(''cht''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_prefixe_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chp),
+            genre(1),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(3)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_nom_genre''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_nom_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chp),
+            genre(3),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_espece_genre''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(32),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(1),
+         valeur_par_defaut(''TEXT''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_espece_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chp),
+            genre(4),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(32)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_longueur_genre''),
+         espece_du_champ(INTEGER),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_longueur_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            genre(1),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_est_primaire_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_est_primaire_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            genre(5),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_est_incrément_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_est_incrément_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            genre(5),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_est_obligatoire_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_est_obligatoire_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            genre(5),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_a_init_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_a_init_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            genre(5),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_init_est_mot_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_init_est_mot_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            genre(5),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_valeur_init_genre''),
+         espece_du_champ(TEXT),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_valeur_init_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(cht),
+            genre(1),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_est_parmis_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_est_parmis_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            genre(5),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_parmis_genre''),
+         espece_du_champ(TEXT),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_parmis_genre''),
             nom_long_du_champ(''A faire ...''),
             nom_court_du_champ(''A faire ...''),
             nom_bref_du_champ(''A faire ...''),
@@ -7798,7 +7857,7 @@ INSERT INTO tbl_metiers (chi_id_metier,chp_nom_metier,chx_parent_metier) VALUES
 */
 
 INSERT INTO tbl_acces (chi_id_acces,chp_nom_acces,chx_groupe_acces,chx_metier_acces,cht_parametres_acces) VALUES
-('1','tout','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"61\" data-chp_nom_source=\"c_taches1.php\" data-chp_methode_menu=\"page_liste_des_taches1\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"T0_chp_priorite_tache2(99)\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"Liste des t\u00e2ches\">t\u00e2ches<\/li><li data-liste_des_menus=\"1\">outils<ul><li data-chi_id_source=\"235\" data-chp_nom_source=\"c_rev_mat1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\" data-chp_titre_menu=\"convertion de rev vers matrice\">matrice<\/li><li data-chi_id_source=\"234\" data-chp_nom_source=\"c_rev_js1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\n)\" data-chp_titre_menu=\"convertion de javascript \">js<\/li><li data-chi_id_source=\"233\" data-chp_nom_source=\"c_rev_html1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\n)\" data-chp_titre_menu=\"html\">html<\/li><li data-chi_id_source=\"236\" data-chp_nom_source=\"c_rev_php1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\n)\" data-chp_titre_menu=\"convertion de php\">php<\/li><li data-chi_id_source=\"237\" data-chp_nom_source=\"c_rev_sql1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_sql_rev1),\n      composante(value),\n      avec(\n        valeur_de_localstorage(\n          zones_sauvegard\u00e9es,\n          ls_sql_rev1\n        )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de sql\">sql<\/li><li data-chi_id_source=\"232\" data-chp_nom_source=\"c_rev_css1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_css_rev1),\n      composante(value),\n      avec(\n         valeur_de_localstorage(\n            zones_sauvegard\u00e9es,\n            ls_css_rev1\n         )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de css\">css<\/li><li data-chi_id_source=\"238\" data-chp_nom_source=\"c_rev_texte1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\" data-chp_titre_menu=\"convertion de textes\">txt<\/li><\/ul><\/li><li data-chi_id_source=\"230\" data-chp_nom_source=\"c_projets1.php\" data-chp_methode_menu=\"page_projets_liste1\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des projets\"><span style=\"background:red;color:yellow;\">projets<\/span><\/li><li data-chi_id_source=\"225\" data-chp_nom_source=\"c_dossiers1.php\" data-chp_methode_menu=\"page_dossiers_liste1\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des dossiers et des fichiers\">fido<\/li><li data-chi_id_source=\"241\" data-chp_nom_source=\"c_sources1.php\" data-chp_methode_menu=\"page_liste_des_sources1\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des sources des programmes\">sources<\/li><li data-chi_id_source=\"358\" data-chp_nom_source=\"c_genres1.php\" data-chp_methode_menu=\"page_liste_des_genres1\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des types de bonn\u00e9es dans la bdd\">genres<\/li><li data-chi_id_source=\"353\" data-chp_nom_source=\"c_bases1.php\" data-chp_methode_menu=\"page_liste_des_bases1\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des bases\">bases<\/li><li data-chi_id_source=\"231\" data-chp_nom_source=\"c_requetes1.php\" data-chp_methode_menu=\"page_liste_des_requetes1\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des requ\u00eates sur les bases\">requ\u00eates<\/li><li data-chi_id_source=\"240\" data-chp_nom_source=\"c_revs1.php\" data-chp_methode_menu=\"page_liste_des_revs1\" data-chi_id_menu=\"13\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des revs\">(\ud83d\ude0a)<\/li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"56\" data-chp_nom_source=\"c_groupes1.php\" data-chp_methode_menu=\"page_liste_des_groupes1\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des groupes\">groupes<\/li><li data-chi_id_source=\"58\" data-chp_nom_source=\"c_metiers1.php\" data-chp_methode_menu=\"page_liste_des_metiers1\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des m\u00e9tiers\">m\u00e9tiers<\/li><li data-chi_id_source=\"50\" data-chp_nom_source=\"c_acces1.php\" data-chp_methode_menu=\"page_liste_des_acces1\" data-chi_id_menu=\"16\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des acc\u00e8s\">acc\u00e8s<\/li><li data-chi_id_source=\"62\" data-chp_nom_source=\"c_utilisateurs1.php\" data-chp_methode_menu=\"page_liste_des_utilisateurs1\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des utilisateurs\">utilisateurs<\/li><li data-chi_id_source=\"356\" data-chp_nom_source=\"c_autorisations1.php\" data-chp_methode_menu=\"page_liste_des_autorisations1\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des autorisations\">autorisations<\/li><li data-chi_id_source=\"357\" data-chp_nom_source=\"c_menus1.php\" data-chp_methode_menu=\"page_liste_des_menus1\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des menus\">menus<\/li><\/ul><\/li><li data-chi_id_source=\"59\" data-chp_nom_source=\"c_profile1.php\" data-chp_methode_menu=\"recupere_la_page_des_coordonnees\" data-chi_id_menu=\"20\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"mon profile\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"-9 -7  20 21\">\n    <g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\">\n        <circle cx=\"0\" cy=\"0\" r=\"6\"><\/circle>\n        <path d=\" M -8 11 C -6 6 6 6 8 11 \"><\/path>\n        <circle cx=\"-2\" cy=\"-1\" r=\"1\"><\/circle>\n        <circle cx=\"2\" cy=\"-1\" r=\"1\"><\/circle>\n        <path d=\"M -2 2 C -3 4 3 4 2 2 \"><\/path>\n        <path d=\"M 0 0 V 2 \"><\/path>\n        <path d=\"M -3 -1   H -6    \"><\/path>\n        <path d=\"M 3 -1   H 6    \"><\/path>\n        <path d=\"M -1 -1 c 0 -1 2 -1 2 0 \"><\/path>\n    <\/g>\n<\/svg><\/li>","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"t\u00e2ches\",\"attributs\":{\"data-chi_id_source\":\"61\",\"data-chp_nom_source\":\"c_taches1.php\",\"data-chp_methode_menu\":\"page_liste_des_taches1\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"T0_chp_priorite_tache2(99)\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"Liste des t\u00e2ches\"}},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":7,\"contenu\":\"outils\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":3,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"235\",\"data-chp_nom_source\":\"c_rev_mat1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\"}},{\"id_interne\":4,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"234\",\"data-chp_nom_source\":\"c_rev_js1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de javascript \"}},{\"id_interne\":5,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"233\",\"data-chp_nom_source\":\"c_rev_html1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\\n)\",\"data-chp_titre_menu\":\"html\"}},{\"id_interne\":6,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"236\",\"data-chp_nom_source\":\"c_rev_php1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de php\"}},{\"id_interne\":7,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"237\",\"data-chp_nom_source\":\"c_rev_sql1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_sql_rev1),\\n      composante(value),\\n      avec(\\n        valeur_de_localstorage(\\n          zones_sauvegard\u00e9es,\\n          ls_sql_rev1\\n        )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de sql\"}},{\"id_interne\":8,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"232\",\"data-chp_nom_source\":\"c_rev_css1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_css_rev1),\\n      composante(value),\\n      avec(\\n         valeur_de_localstorage(\\n            zones_sauvegard\u00e9es,\\n            ls_css_rev1\\n         )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de css\"}},{\"id_interne\":9,\"id_interne_parent\":2,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"238\",\"data-chp_nom_source\":\"c_rev_texte1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\",\"data-chp_titre_menu\":\"convertion de textes\"}},{\"id_interne\":10,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<span style=\\\"background:red;color:yellow;\\\">projets<\/span>\",\"attributs\":{\"data-chi_id_source\":\"230\",\"data-chp_nom_source\":\"c_projets1.php\",\"data-chp_methode_menu\":\"page_projets_liste1\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des projets\"}},{\"id_interne\":11,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"fido\",\"attributs\":{\"data-chi_id_source\":\"225\",\"data-chp_nom_source\":\"c_dossiers1.php\",\"data-chp_methode_menu\":\"page_dossiers_liste1\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\"}},{\"id_interne\":12,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"241\",\"data-chp_nom_source\":\"c_sources1.php\",\"data-chp_methode_menu\":\"page_liste_des_sources1\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des sources des programmes\"}},{\"id_interne\":24,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"358\",\"data-chp_nom_source\":\"c_genres1.php\",\"data-chp_methode_menu\":\"page_liste_des_genres1\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des types de bonn\u00e9es dans la bdd\"}},{\"id_interne\":13,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"353\",\"data-chp_nom_source\":\"c_bases1.php\",\"data-chp_methode_menu\":\"page_liste_des_bases1\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des bases\"}},{\"id_interne\":14,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requ\u00eates\",\"attributs\":{\"data-chi_id_source\":\"231\",\"data-chp_nom_source\":\"c_requetes1.php\",\"data-chp_methode_menu\":\"page_liste_des_requetes1\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des requ\u00eates sur les bases\"}},{\"id_interne\":15,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"(\ud83d\ude0a)\",\"attributs\":{\"data-chi_id_source\":\"240\",\"data-chp_nom_source\":\"c_revs1.php\",\"data-chp_methode_menu\":\"page_liste_des_revs1\",\"data-chi_id_menu\":\"13\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des revs\"}},{\"id_interne\":16,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":6,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":17,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"56\",\"data-chp_nom_source\":\"c_groupes1.php\",\"data-chp_methode_menu\":\"page_liste_des_groupes1\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des groupes\"}},{\"id_interne\":18,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"m\u00e9tiers\",\"attributs\":{\"data-chi_id_source\":\"58\",\"data-chp_nom_source\":\"c_metiers1.php\",\"data-chp_methode_menu\":\"page_liste_des_metiers1\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des m\u00e9tiers\"}},{\"id_interne\":19,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"acc\u00e8s\",\"attributs\":{\"data-chi_id_source\":\"50\",\"data-chp_nom_source\":\"c_acces1.php\",\"data-chp_methode_menu\":\"page_liste_des_acces1\",\"data-chi_id_menu\":\"16\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des acc\u00e8s\"}},{\"id_interne\":20,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"62\",\"data-chp_nom_source\":\"c_utilisateurs1.php\",\"data-chp_methode_menu\":\"page_liste_des_utilisateurs1\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des utilisateurs\"}},{\"id_interne\":21,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"356\",\"data-chp_nom_source\":\"c_autorisations1.php\",\"data-chp_methode_menu\":\"page_liste_des_autorisations1\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des autorisations\"}},{\"id_interne\":22,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"357\",\"data-chp_nom_source\":\"c_menus1.php\",\"data-chp_methode_menu\":\"page_liste_des_menus1\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des menus\"}},{\"id_interne\":23,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg xmlns=\\\"http:\/\/www.w3.org\/2000\/svg\\\" viewBox=\\\"-9 -7  20 21\\\">\\n    <g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\\\">\\n        <circle cx=\\\"0\\\" cy=\\\"0\\\" r=\\\"6\\\"><\/circle>\\n        <path d=\\\" M -8 11 C -6 6 6 6 8 11 \\\"><\/path>\\n        <circle cx=\\\"-2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <circle cx=\\\"2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <path d=\\\"M -2 2 C -3 4 3 4 2 2 \\\"><\/path>\\n        <path d=\\\"M 0 0 V 2 \\\"><\/path>\\n        <path d=\\\"M -3 -1   H -6    \\\"><\/path>\\n        <path d=\\\"M 3 -1   H 6    \\\"><\/path>\\n        <path d=\\\"M -1 -1 c 0 -1 2 -1 2 0 \\\"><\/path>\\n    <\/g>\\n<\/svg>\",\"attributs\":{\"data-chi_id_source\":\"59\",\"data-chp_nom_source\":\"c_profile1.php\",\"data-chp_methode_menu\":\"recupere_la_page_des_coordonnees\",\"data-chi_id_menu\":\"20\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"mon profile\"}}]"}'),
+('1','tout','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"61\" data-chp_nom_source=\"c_taches1.php\" data-chp_methode_menu=\"page_liste_des_taches1\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"T0_chp_priorite_tache2(99)\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"Liste des t\u00e2ches\">t\u00e2ches<\/li><li data-chi_id_source=\"230\" data-chp_nom_source=\"c_projets1.php\" data-chp_methode_menu=\"page_projets_liste1\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des projets\"><span style=\"background:red;color:yellow;\">projets<\/span><\/li><li data-chi_id_source=\"225\" data-chp_nom_source=\"c_dossiers1.php\" data-chp_methode_menu=\"page_dossiers_liste1\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des dossiers et des fichiers\">fido<\/li><li data-chi_id_source=\"241\" data-chp_nom_source=\"c_sources1.php\" data-chp_methode_menu=\"page_liste_des_sources1\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des sources des programmes\">sources<\/li><li data-chi_id_source=\"358\" data-chp_nom_source=\"c_genres1.php\" data-chp_methode_menu=\"page_liste_des_genres1\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des types de bonn\u00e9es dans la bdd\">genres<\/li><li data-chi_id_source=\"353\" data-chp_nom_source=\"c_bases1.php\" data-chp_methode_menu=\"page_liste_des_bases1\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des bases\">bases<\/li><li data-chi_id_source=\"231\" data-chp_nom_source=\"c_requetes1.php\" data-chp_methode_menu=\"page_liste_des_requetes1\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des requ\u00eates sur les bases\">requ\u00eates<\/li><li data-chi_id_source=\"240\" data-chp_nom_source=\"c_revs1.php\" data-chp_methode_menu=\"page_liste_des_revs1\" data-chi_id_menu=\"13\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des revs\">(\ud83d\ude0a)<\/li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"56\" data-chp_nom_source=\"c_groupes1.php\" data-chp_methode_menu=\"page_liste_des_groupes1\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des groupes\">groupes<\/li><li data-chi_id_source=\"58\" data-chp_nom_source=\"c_metiers1.php\" data-chp_methode_menu=\"page_liste_des_metiers1\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des m\u00e9tiers\">m\u00e9tiers<\/li><li data-chi_id_source=\"50\" data-chp_nom_source=\"c_acces1.php\" data-chp_methode_menu=\"page_liste_des_acces1\" data-chi_id_menu=\"16\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des acc\u00e8s\">acc\u00e8s<\/li><li data-chi_id_source=\"62\" data-chp_nom_source=\"c_utilisateurs1.php\" data-chp_methode_menu=\"page_liste_des_utilisateurs1\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des utilisateurs\">utilisateurs<\/li><li data-chi_id_source=\"356\" data-chp_nom_source=\"c_autorisations1.php\" data-chp_methode_menu=\"page_liste_des_autorisations1\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des autorisations\">autorisations<\/li><li data-chi_id_source=\"357\" data-chp_nom_source=\"c_menus1.php\" data-chp_methode_menu=\"page_liste_des_menus1\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des menus\">menus<\/li><\/ul><\/li><li data-liste_des_menus=\"1\">outils<ul><li data-chi_id_source=\"235\" data-chp_nom_source=\"c_rev_mat1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\" data-chp_titre_menu=\"convertion de rev vers matrice\">matrice<\/li><li data-chi_id_source=\"234\" data-chp_nom_source=\"c_rev_js1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\n)\" data-chp_titre_menu=\"convertion de javascript \">js<\/li><li data-chi_id_source=\"233\" data-chp_nom_source=\"c_rev_html1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\n)\" data-chp_titre_menu=\"html\">html<\/li><li data-chi_id_source=\"236\" data-chp_nom_source=\"c_rev_php1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\n)\" data-chp_titre_menu=\"convertion de php\">php<\/li><li data-chi_id_source=\"237\" data-chp_nom_source=\"c_rev_sql1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_sql_rev1),\n      composante(value),\n      avec(\n        valeur_de_localstorage(\n          zones_sauvegard\u00e9es,\n          ls_sql_rev1\n        )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de sql\">sql<\/li><li data-chi_id_source=\"232\" data-chp_nom_source=\"c_rev_css1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_css_rev1),\n      composante(value),\n      avec(\n         valeur_de_localstorage(\n            zones_sauvegard\u00e9es,\n            ls_css_rev1\n         )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de css\">css<\/li><li data-chi_id_source=\"238\" data-chp_nom_source=\"c_rev_texte1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\" data-chp_titre_menu=\"convertion de textes\">txt<\/li><\/ul><\/li><li data-chi_id_source=\"59\" data-chp_nom_source=\"c_profile1.php\" data-chp_methode_menu=\"recupere_la_page_des_coordonnees\" data-chi_id_menu=\"20\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"mon profile\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"-9 -7  20 21\">\n    <g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\">\n        <circle cx=\"0\" cy=\"0\" r=\"6\"><\/circle>\n        <path d=\" M -8 11 C -6 6 6 6 8 11 \"><\/path>\n        <circle cx=\"-2\" cy=\"-1\" r=\"1\"><\/circle>\n        <circle cx=\"2\" cy=\"-1\" r=\"1\"><\/circle>\n        <path d=\"M -2 2 C -3 4 3 4 2 2 \"><\/path>\n        <path d=\"M 0 0 V 2 \"><\/path>\n        <path d=\"M -3 -1   H -6    \"><\/path>\n        <path d=\"M 3 -1   H 6    \"><\/path>\n        <path d=\"M -1 -1 c 0 -1 2 -1 2 0 \"><\/path>\n    <\/g>\n<\/svg><\/li>","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"t\u00e2ches\",\"attributs\":{\"data-chi_id_source\":\"61\",\"data-chp_nom_source\":\"c_taches1.php\",\"data-chp_methode_menu\":\"page_liste_des_taches1\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"T0_chp_priorite_tache2(99)\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"Liste des t\u00e2ches\"}},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<span style=\\\"background:red;color:yellow;\\\">projets<\/span>\",\"attributs\":{\"data-chi_id_source\":\"230\",\"data-chp_nom_source\":\"c_projets1.php\",\"data-chp_methode_menu\":\"page_projets_liste1\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des projets\"}},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"fido\",\"attributs\":{\"data-chi_id_source\":\"225\",\"data-chp_nom_source\":\"c_dossiers1.php\",\"data-chp_methode_menu\":\"page_dossiers_liste1\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\"}},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"241\",\"data-chp_nom_source\":\"c_sources1.php\",\"data-chp_methode_menu\":\"page_liste_des_sources1\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des sources des programmes\"}},{\"id_interne\":5,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"358\",\"data-chp_nom_source\":\"c_genres1.php\",\"data-chp_methode_menu\":\"page_liste_des_genres1\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des types de bonn\u00e9es dans la bdd\"}},{\"id_interne\":6,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"353\",\"data-chp_nom_source\":\"c_bases1.php\",\"data-chp_methode_menu\":\"page_liste_des_bases1\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des bases\"}},{\"id_interne\":7,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requ\u00eates\",\"attributs\":{\"data-chi_id_source\":\"231\",\"data-chp_nom_source\":\"c_requetes1.php\",\"data-chp_methode_menu\":\"page_liste_des_requetes1\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des requ\u00eates sur les bases\"}},{\"id_interne\":8,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"(\ud83d\ude0a)\",\"attributs\":{\"data-chi_id_source\":\"240\",\"data-chp_nom_source\":\"c_revs1.php\",\"data-chp_methode_menu\":\"page_liste_des_revs1\",\"data-chi_id_menu\":\"13\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des revs\"}},{\"id_interne\":17,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":6,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":9,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":7,\"contenu\":\"outils\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":10,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"235\",\"data-chp_nom_source\":\"c_rev_mat1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\"}},{\"id_interne\":11,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"234\",\"data-chp_nom_source\":\"c_rev_js1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de javascript \"}},{\"id_interne\":12,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"233\",\"data-chp_nom_source\":\"c_rev_html1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\\n)\",\"data-chp_titre_menu\":\"html\"}},{\"id_interne\":13,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"236\",\"data-chp_nom_source\":\"c_rev_php1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de php\"}},{\"id_interne\":14,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"237\",\"data-chp_nom_source\":\"c_rev_sql1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_sql_rev1),\\n      composante(value),\\n      avec(\\n        valeur_de_localstorage(\\n          zones_sauvegard\u00e9es,\\n          ls_sql_rev1\\n        )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de sql\"}},{\"id_interne\":15,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"232\",\"data-chp_nom_source\":\"c_rev_css1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_css_rev1),\\n      composante(value),\\n      avec(\\n         valeur_de_localstorage(\\n            zones_sauvegard\u00e9es,\\n            ls_css_rev1\\n         )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de css\"}},{\"id_interne\":16,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"238\",\"data-chp_nom_source\":\"c_rev_texte1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\",\"data-chp_titre_menu\":\"convertion de textes\"}},{\"id_interne\":18,\"id_interne_parent\":17,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"56\",\"data-chp_nom_source\":\"c_groupes1.php\",\"data-chp_methode_menu\":\"page_liste_des_groupes1\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des groupes\"}},{\"id_interne\":19,\"id_interne_parent\":17,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"m\u00e9tiers\",\"attributs\":{\"data-chi_id_source\":\"58\",\"data-chp_nom_source\":\"c_metiers1.php\",\"data-chp_methode_menu\":\"page_liste_des_metiers1\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des m\u00e9tiers\"}},{\"id_interne\":20,\"id_interne_parent\":17,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"acc\u00e8s\",\"attributs\":{\"data-chi_id_source\":\"50\",\"data-chp_nom_source\":\"c_acces1.php\",\"data-chp_methode_menu\":\"page_liste_des_acces1\",\"data-chi_id_menu\":\"16\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des acc\u00e8s\"}},{\"id_interne\":21,\"id_interne_parent\":17,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"62\",\"data-chp_nom_source\":\"c_utilisateurs1.php\",\"data-chp_methode_menu\":\"page_liste_des_utilisateurs1\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des utilisateurs\"}},{\"id_interne\":22,\"id_interne_parent\":17,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"356\",\"data-chp_nom_source\":\"c_autorisations1.php\",\"data-chp_methode_menu\":\"page_liste_des_autorisations1\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des autorisations\"}},{\"id_interne\":23,\"id_interne_parent\":17,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"357\",\"data-chp_nom_source\":\"c_menus1.php\",\"data-chp_methode_menu\":\"page_liste_des_menus1\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des menus\"}},{\"id_interne\":24,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg xmlns=\\\"http:\/\/www.w3.org\/2000\/svg\\\" viewBox=\\\"-9 -7  20 21\\\">\\n    <g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\\\">\\n        <circle cx=\\\"0\\\" cy=\\\"0\\\" r=\\\"6\\\"><\/circle>\\n        <path d=\\\" M -8 11 C -6 6 6 6 8 11 \\\"><\/path>\\n        <circle cx=\\\"-2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <circle cx=\\\"2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <path d=\\\"M -2 2 C -3 4 3 4 2 2 \\\"><\/path>\\n        <path d=\\\"M 0 0 V 2 \\\"><\/path>\\n        <path d=\\\"M -3 -1   H -6    \\\"><\/path>\\n        <path d=\\\"M 3 -1   H 6    \\\"><\/path>\\n        <path d=\\\"M -1 -1 c 0 -1 2 -1 2 0 \\\"><\/path>\\n    <\/g>\\n<\/svg>\",\"attributs\":{\"data-chi_id_source\":\"59\",\"data-chp_nom_source\":\"c_profile1.php\",\"data-chp_methode_menu\":\"recupere_la_page_des_coordonnees\",\"data-chi_id_menu\":\"20\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"mon profile\"}}]"}'),
 ('2','[*** non connecté ***]','2','2',NULL);
 
 
@@ -8164,18 +8223,6 @@ il n''y a que de comme','1','0','2025-08-16 13:28:59.257','2025-08-16 13:28:59.2
 
 /*
   ===============================
-  DONNEES A INSERER POUR : tbl_genres
-  ===============================
-*/
-
-INSERT INTO tbl_genres (chi_id_genre,chp_nom_genre,chp_espece_genre,che_longueur_genre,che_est_primaire_genre,che_est_incrément_genre,che_est_obligatoire_genre,che_a_init_genre,che_init_est_mot_genre,cht_valeur_init_genre,chp_prefixe_genre) VALUES
-('1','indéfini','TEXT',NULL,'0','0','0','0','0',NULL,'cht'),
-('2','identifiant unique','INTEGER',NULL,'1','0','0','0','0',NULL,'chi'),
-('3','texte non null','TEXT',NULL,'0','0','1','0','0',NULL,'cht');
-
-
-/*
-  ===============================
   DONNEES A INSERER POUR : tbl_autorisations
   ===============================
 */
@@ -8274,4 +8321,18 @@ INSERT INTO tbl_menus (chi_id_menu,cht_libelle_menu,chp_titre_menu,chx_autorisat
    modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_html_rev1)))
 )'),
 ('22','genres','liste des types de bonnées dans la bdd','22','page_liste_des_genres1',NULL,NULL);
+
+
+/*
+  ===============================
+  DONNEES A INSERER POUR : tbl_genres
+  ===============================
+*/
+
+INSERT INTO tbl_genres (chi_id_genre,chp_prefixe_genre,chp_nom_genre,chp_espece_genre,che_longueur_genre,che_est_primaire_genre,che_est_incrément_genre,che_est_obligatoire_genre,che_a_init_genre,che_init_est_mot_genre,cht_valeur_init_genre,che_est_parmis_genre,cht_parmis_genre) VALUES
+('1','cht','indéfini','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL),
+('2','chi','id primaire non nulle','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL),
+('3','chp','varchar 64 non nulle','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL),
+('4','chp','espèce','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL'),
+('5','che','zero_un non nulle','INTEGER',NULL,'0','0','1','1','0','0','1','0,1');
 

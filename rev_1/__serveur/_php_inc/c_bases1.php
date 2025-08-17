@@ -1042,7 +1042,19 @@ class c_bases1{
         if($obj[__xst] === __xsu){
 
             $donnees_retournees[__xva]=$obj[__xva];
-            $donnees_retournees[__xva]['maj']='' . 'methode_module_dynamique1(' . ' nom_du_module2("_js/c_svg_bdd1.js"),' . ' methode2(afficher_resultat_comparaison_base_physique_et_base_virtuelle),' . ')';
+            $donnees_retournees[__xva]['id_bdd_de_la_base_en_cours']=$id_bdd_de_la_base_en_cours;
+            $maj='';
+            
+            $maj.='methode_module_dynamique1(';
+            $maj.=' nom_du_module2("_js/c_svg_bdd1.js"),';
+            $maj.=' methode2(afficher_resultat_comparaison_base_physique_et_base_virtuelle),';
+            $maj.=')';
+            if(isset($donnees_retournees[__xva]['maj'])){
+                $donnees_retournees[__xva]['maj'].=$maj;
+            }else{
+                $donnees_retournees[__xva]['maj']=$maj;
+            }
+            $donnees_retournees[__xva]['maj']=$maj;
             $donnees_retournees[__xst]=__xsu;
 
         }else{
