@@ -33,7 +33,7 @@ function sql_328($par,&$donnees_retournees,$that){
     }
     $sql0.=$where0;
     $order0='
-       ORDER BY  `T0`.`chi_id_genre` DESC';
+       ORDER BY  `T0`.`chp_nom_genre` ASC';
     $sql0.=$order0;
     $plage0='
         LIMIT '.sq1($par['quantitee']).' OFFSET '.sq1($par['debut']).' ';

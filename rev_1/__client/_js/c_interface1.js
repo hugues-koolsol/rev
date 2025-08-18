@@ -1698,7 +1698,10 @@ class _c_interface1{
                     elements_dans_les_messages[l01 - 1]['remove']();
                 }
                 let condenu_des_messages_anciens=les_messages_anciens.innerHTML;
-                let tt='<div id="yy_supprimer_les_lessages" class="yy__x_signaux_neutre yy_opaque_90"><span class="hug_bouton yy__x_signaux_1" style="visibility:hidden;" data-hug_click="interface1.supprimer_les_messages()">supprimer les messages</span></div>';
+                let tt='';
+                tt+='<div id="yy_supprimer_les_lessages" class="yy__x_signaux_neutre yy_opaque_90">'
+                tt+=' <span class="hug_bouton yy__x_signaux_1" style="visibility:hidden;" data-hug_click="interface1.supprimer_les_messages()">🗑 les messages</span>';
+                tt+='</div>';
                 if(condenu_des_messages_anciens.indexOf( 'id="yy_supprimer_les_lessages"' ) >= 0){
                     document.getElementById( "yy_supprimer_les_lessages" ).remove();
                     condenu_des_messages_anciens=les_messages_anciens.innerHTML;
@@ -3671,6 +3674,7 @@ class _c_interface1{
         t+='    box-shadow: #000 0px 0px 5px;';
         t+='    background: linear-gradient(to bottom, #ECEFF1 0%, #DBDEE0 100%);';
         t+='    opacity: 0.85;';
+        t+='    overscroll-behavior-y: none;';
         t+='}';
         t+='.vv_iframe_sous_fenetre1{';
         t+='    width: 100%;';

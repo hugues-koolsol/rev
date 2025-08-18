@@ -71,6 +71,7 @@ class c_genres1{
                    || $conteneur1 === 'vv_genres_creer1'
                    || $conteneur1 === 'vv_genres_supprimer1'
                    || $conteneur1 === 'vv_genres_filtre1'
+                   || $conteneur1 === 'vv_genres_nouveau_numero1'
                 ){
 
                     $this->$conteneur1(
@@ -90,6 +91,187 @@ class c_genres1{
 
         }
     }
+    /*
+      =============================================================================================================
+    */
+    function vv_genres_nouveau_numero1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $chi_id_genre_ancienne=0;
+        $chi_id_genre_nouvelle=0;
+        
+        if(isset($donnees_recues[__xva]['vv_nouveau_numero_de_genre'])
+           && is_numeric($donnees_recues[__xva]['vv_nouveau_numero_de_genre'])
+        ){
+
+            $chi_id_genre_nouvelle=(int)($donnees_recues[__xva]['vv_nouveau_numero_de_genre']);
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xer][]='le nouveau numéro doit être numérique [' . __LINE__ . ']';
+            return;
+        }
+
+        
+        if(isset($donnees_recues[__xva]['vv_ancien_numero_de_genre'])
+           && is_numeric($donnees_recues[__xva]['vv_ancien_numero_de_genre'])
+        ){
+
+            $chi_id_genre_ancienne=(int)($donnees_recues[__xva]['vv_ancien_numero_de_genre']);
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xer][]='l\'ancien numéro doit être numérique [' . __LINE__ . ']';
+            return;
+        }
+        
+        if($chi_id_genre_ancienne === $chi_id_genre_nouvelle ){
+            $donnees_retournees[__x_signaux][__xer][]='le nouveau numéro doit être différent de l\'ancien [' . __LINE__ . ']';
+            return;
+        }
+        
+        $tt=$this->sql0->sql_iii(
+             /*sql_330()*/ 330,
+            array(/**/
+                'T0_chi_id_genre' => $donnees_recues[__xva]['vv_ancien_numero_de_genre']
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt[__xst] !== __xsu){
+            $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+            return;
+        }
+        /*
+          il faut vérifier que ce genre n'est pas utilisé dans les bases
+        */
+        $tt171=/*sql_inclure_deb*/
+            /* sql_171()
+            SELECT 
+
+            `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+             FROM b1.tbl_bdds T0
+            WHERE (`T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
+             /*sql_171()*/ 171,
+            array( 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
+            $donnees_retournees
+        );
+        
+        if( $tt171[__xst] !== __xsu){
+         
+            $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+            return;
+            
+        }
+        
+        foreach($tt171[__xva] as $k1 => $v1){
+         
+            $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($v1['T0.chp_rev_travail_basedd']);
+            
+            if($obj_matrice[__xst] !== __xsu){
+             
+                $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+                return;
+                
+            }
+            
+            $mat=$obj_matrice[__xva];
+            $l01=count($mat);
+            
+            for( $i=1 ; $i < $l01 ; $i++){
+             
+//                echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $mat[$i][8] , true ) . '</pre>' ; exit(0);
+             
+                if($mat[$i][2]==='f' && $mat[$i][8]===1 && $mat[$i][1]==='genre'){
+                 
+                    if($mat[$i+1][1]===$donnees_recues[__xva]['vv_ancien_numero_de_genre']){
+                     
+                       $donnees_retournees[__x_signaux][__xer][]=' le numéro actuel est encore utilisé dans la base "' . $v1['T0.chi_id_basedd'] . '" [' . __LINE__ . ']';
+                       $donnees_retournees[__xst]=__xer;
+                       return;
+                        
+                    }
+                }
+            }
+        }
+        
+        $tt334=
+            $this->sql0->sql_iii(
+             /*sql_334()*/ 334,
+            array( 
+                'n_chi_id_genre' => $chi_id_genre_nouvelle ,
+                'c_chi_id_genre' => $chi_id_genre_ancienne
+            ),
+            $donnees_retournees
+        );
+        
+        if( $tt334[__xst] !== __xsu){
+         
+            $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xer;
+            return;
+        }else{
+            $this->mettre_a_jour_le_js_des_genres($donnees_retournees,$mat,$donnees_recues);
+            $donnees_retournees['__x_action']='maj_interface2(fermer_sous_fenetre1(c_genres1.page_liste_des_genres1()))';
+            $donnees_retournees[__xst]=__xsu;
+        }
+
+    }    
+    /*
+      =============================================================================================================
+    */
+    function page_nouveau_numero1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        $o1='';
+        $o1 .= '<h1>Attribuer un nouveau numéro</h1>';
+        $chi_id_genre=0;
+        $l01=count($mat);
+        /* $donnees_retournees[__x_signaux][__xdv][]='$mat ='.json_encode( $mat  , JSON_FORCE_OBJECT );*/
+        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
+            
+            
+            if('c_genres1.page_nouveau_numero1' === $mat[$i][1]){
+
+                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
+                    
+                    
+                    if($mat[$j][1] === 'chi_id_genre' && $mat[$j][2] === 'f' && $mat[$j][8] === 1 && $mat[$j + 1][2] === 'c'){
+
+                        $chi_id_genre=(int)($mat[$j + 1][1]);
+
+                    }
+
+                }
+
+            }
+
+        }
+        
+        if($chi_id_genre === 0 || $chi_id_genre === 1){
+
+            $o1 .= 'le numéro actuel est <b>' . $chi_id_genre . '</b>';
+            $donnees_retournees[__x_page] .= $o1;
+            $donnees_retournees[__xst]=__xsu;
+            return;
+
+        }
+
+        $o1 .= 'le numéro actuel est <b>' . $chi_id_genre . '</b>';
+        $o1 .= '<br />';
+        $o1 .= '<div id="vv_genres_nouveau_numero1">';
+        $o1 .= '    <input type="hidden" id="vv_ancien_numero_de_genre" value="' . $chi_id_genre . '" />';
+        $o1 .= '    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_genre" value="' . $chi_id_genre . '" />';
+        $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(vv_nouveau_numero_de_genre,valeur),plus( zone(vv_nouveau_numero_de_genre,valeur) , 100 )))">+100</div>';
+        $o1 .= '    <br />';
+        $o1 .= '    <div class="hug_bouton" data-hug_click="c_genres1.formulaire1(conteneur1(vv_genres_nouveau_numero1))">attribuer ce nouveau numéro</div>';
+        $o1 .= '</div>';
+        /*
+          $o1.='<pre>'.var_export($mat,true).'</pre>';
+        */
+        $donnees_retournees[__x_page] .= $o1;
+        $donnees_retournees[__xst]=__xsu;
+    }    
     /*
       =============================================================================================================
     */
@@ -129,16 +311,19 @@ class c_genres1{
         }
         
         
-        
-        $chemin_fichier__liste_des_genres=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . '__liste_des_genres.php';
-        $contenu_fichier__liste_des_genres='<?'.'php'.PHP_EOL.'$__liste_des_genres='.var_export( $__liste_des_genres , true ).';';
-        
-        if(@file_put_contents($chemin_fichier__liste_des_genres,$contenu_fichier__liste_des_genres) === false){
+        if(count($__liste_des_genres)>0){
+         
+            
+            $chemin_fichier__liste_des_genres=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . '__liste_des_genres.php';
+            $contenu_fichier__liste_des_genres='<?'.'php'.PHP_EOL.'$__liste_des_genres='.var_export( $__liste_des_genres , true ).';';
+            
+            if(@file_put_contents($chemin_fichier__liste_des_genres,$contenu_fichier__liste_des_genres) === false){
 
-            $donnees_retournees[__x_signaux][__xal][]=' erreur lors de l\'écriture de __liste_des_genres [' . __LINE__ . ']';
+                $donnees_retournees[__x_signaux][__xal][]=' erreur lors de l\'écriture de __liste_des_genres [' . __LINE__ . ']';
+
+            }
 
         }
-
         $donnees_retournees[__xva]['__liste_des_genres']=$__liste_des_genres;
         
 //        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( json_encode($__liste_des_genres,JSON_FORCE_OBJECT) , true ) . '</pre>' ; exit(0);
@@ -195,7 +380,10 @@ class c_genres1{
 
         }else if($tt['changements'] === 1){
 
+
+            $this->mettre_a_jour_le_js_des_genres($donnees_retournees,$mat,$donnees_recues);
             $donnees_retournees[__xst]=__xsu;
+            
             
             if($page_liste_des_genres1 === true){
 
@@ -263,6 +451,10 @@ class c_genres1{
       =============================================================================================================
     */
     function vv_genres_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+     
+
+        $donnees_retournees[__x_signaux][__xer][]='afr vérifier utilisation genre dans les bases ' . self::LE_LA_ELEMENT_GERE . '(' . $donnees_recues[__xva]['chi_id_genre'] . ') [' . __LINE__ . ']';
+        
         $tt=$this->sql0->sql_iii(
              /*sql_330()*/ 330,
             array(/**/
@@ -414,7 +606,7 @@ class c_genres1{
         if(is_numeric($chi_id_genres) && $chi_id_genres > 0){
          
             $tt=$this->sql0->sql_iii(
-                 /*sql_324()*/ 324,
+                 /*sql_330()*/ 330,
                 array(/**/
                     'T0_chi_id_genre' => $chi_id_genres
                 ),
@@ -461,7 +653,13 @@ class c_genres1{
         $o1 .= '      <span>préfixe</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="TEXT" id="chp_prefixe_genre" value="chi" maxlength="3" size="3" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '      <input type="text" id="chp_prefixe_genre" value="';
+        if(isset($donnees_recues['dupliquer']['T0.chp_nom_genre'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.chp_nom_genre']);
+        }else{
+            $o1 .= 'chi';
+        }
+        $o1 .= '" maxlength="3" size="3" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         
@@ -473,7 +671,13 @@ class c_genres1{
         $o1 .= '      <span>espèce</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="TEXT" id="chp_espece_genre" value="TEXT" maxlength="64" style="width:80%;" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '      <input type="text" placeholder="TEXT" id="chp_espece_genre" value="';
+        if(isset($donnees_recues['dupliquer']['T0.chp_espece_genre'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.chp_espece_genre']);
+        }else{
+            $o1 .= 'TEXT';
+        }
+        $o1 .= '" maxlength="64" style="width:80%;" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -484,7 +688,13 @@ class c_genres1{
         $o1 .= '      <span>longueur</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_longueur_genre" value="" maxlength="9" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '      <input type="text" placeholder="" id="che_longueur_genre" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_longueur_genre'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.che_longueur_genre']);
+        }else{
+            $o1 .= '';
+        }
+        $o1 .= '" maxlength="9" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         
@@ -496,7 +706,13 @@ class c_genres1{
         $o1 .= '      <span>primaire</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_primaire_genre" value="0" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '      <input type="text" placeholder="" id="che_est_primaire_genre" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_primaire_genre'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.che_est_primaire_genre']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         
@@ -509,7 +725,13 @@ class c_genres1{
         $o1 .= '      <span>est incrément</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_incrément_genre" value="0" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '      <input type="text" placeholder="" id="che_est_incrément_genre" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_incrément_genre'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.che_est_incrément_genre']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         
@@ -522,7 +744,13 @@ class c_genres1{
         $o1 .= '      <span>est obligatoire ( NOT NULL )</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_obligatoire_genre" value="0" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '      <input type="text" placeholder="" id="che_est_obligatoire_genre" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_obligatoire_genre'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.che_est_obligatoire_genre']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         
@@ -536,7 +764,13 @@ class c_genres1{
         $o1 .= '      <span>a une valeur initiale</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_a_init_genre" value="0" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '      <input type="text" placeholder="" id="che_a_init_genre" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_a_init_genre'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.che_a_init_genre']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -547,7 +781,13 @@ class c_genres1{
         $o1 .= '      <span>init est caractère</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_init_est_mot_genre" value="0" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '      <input type="text" placeholder="" id="che_init_est_mot_genre" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_init_est_mot_genre'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.che_init_est_mot_genre']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
 
@@ -580,7 +820,13 @@ class c_genres1{
         $o1 .= '      <span>est une valeur dans cette liste</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_parmis_genre" value="0" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '      <input type="text" placeholder="" id="che_est_parmis_genre" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_parmis_genre'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.che_est_parmis_genre']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         
@@ -1560,6 +1806,12 @@ class c_genres1{
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_genres1.formulaire1(action1(page_genres_modifier1),chi_id_genre(' . $v0['T0.chi_id_genre'] . '))">✎</div>';
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_genres1.formulaire1(action1(page_genres_dupliquer1),chi_id_genre(' . $v0['T0.chi_id_genre'] . '))" title="dupliquer">⎘</div>';
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_genres1.formulaire1(action1(page_genres_supprimer1),chi_id_genre(' . $v0['T0.chi_id_genre'] . '))">🗑</div>';
+            if($v0['T0.chi_id_genre']!==1){
+                $lsttbl .= '  <div class="hug_bouton yy__x_signaux_1" data-hug_click="interface1.affiche_sous_fenetre1(c_genres1.page_nouveau_numero1( sans_menus1() chi_id_genre(' . $v0['T0.chi_id_genre'] . ')))" title="attribuer un autre numéro" >#°</div>';
+            }else{
+                $lsttbl .= '  <div class="hug_bouton_inactif" " title="attribuer un autre numéro" >#°</div>';
+            }
+            
             $lsttbl .= ' </div>';
             $lsttbl .= '</td>';
             /*

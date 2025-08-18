@@ -13,7 +13,7 @@ function sql_333($par,&$donnees_retournees,$that){
     $where0=' WHERE 1 ';
     $sql0.=$where0;
     $order0='
-       ORDER BY  `T0`.`chi_id_genre` ASC';
+       ORDER BY  `T0`.`chp_nom_genre` ASC';
     $sql0.=$order0;
     /* ATTENTION : pas de limites */
     $plage0='';

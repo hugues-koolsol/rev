@@ -1965,10 +1965,14 @@ class c_svg_bdd1{
         /*
         
         */
+        
         t+='<br />genre : ';
+        let l_option='';
         let texte__liste_des_genres='';
         let genre_courant='';
+        let tableau_des_genres=[];
         for(let i in __gi1.__liste_des_genres){
+         
             /* 
               {
                 "chi_id_genre":1,
@@ -1983,16 +1987,27 @@ class c_svg_bdd1{
                 "cht_valeur_init_genre":null
               }
             */
-            
-            texte__liste_des_genres+='<option';
+            l_option='';
+            l_option+='<option';
             if(genre==__gi1.__liste_des_genres[i].chi_id_genre){
-              texte__liste_des_genres+=' selected="true"'
+              l_option+=' selected="true"'
             }
-            texte__liste_des_genres+=' value="'+__gi1.__liste_des_genres[i].chi_id_genre+'"';
-            texte__liste_des_genres+=' data-genre="'+__gi1.enti1(JSON.stringify(__gi1.__liste_des_genres[i]))+'"';
-            texte__liste_des_genres+='>';
-            texte__liste_des_genres+=__gi1.__liste_des_genres[i].chp_nom_genre;
-            texte__liste_des_genres+='</option>'
+            l_option+=' value="'+__gi1.__liste_des_genres[i].chi_id_genre+'"';
+            l_option+=' data-genre="'+__gi1.enti1(JSON.stringify(__gi1.__liste_des_genres[i]))+'"';
+            l_option+='>';
+            l_option+=__gi1.__liste_des_genres[i].chp_nom_genre;
+            l_option+='</option>'
+         
+            tableau_des_genres.push([__gi1.__liste_des_genres[i].chp_nom_genre,l_option]);
+        }
+        
+        tableau_des_genres.sort(function (a, b) {
+            return a[0].localeCompare(b[0]);
+        })
+        
+        for(let i=0;i<tableau_des_genres.length;i++){
+            
+            texte__liste_des_genres+=tableau_des_genres[i][1];
             
         }
         
@@ -3803,12 +3818,30 @@ class c_svg_bdd1{
             t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '" >' + this.#especes_de_reference[ind] + '</div>';
         }
         
-        
+/*        
         let texte__liste_des_genres='';
         let genre_courant='';
         let genre=1;
-//        debugger
+
         for(let i in __gi1.__liste_des_genres){
+            texte__liste_des_genres+='<option';
+            if(genre==__gi1.__liste_des_genres[i].chi_id_genre){
+              texte__liste_des_genres+=' selected="true"'
+            }
+            texte__liste_des_genres+=' value="'+__gi1.__liste_des_genres[i].chi_id_genre+'"';
+            texte__liste_des_genres+=' data-genre="'+__gi1.enti1(JSON.stringify(__gi1.__liste_des_genres[i]))+'"';
+            texte__liste_des_genres+='>';
+            texte__liste_des_genres+=__gi1.__liste_des_genres[i].chp_nom_genre;
+            texte__liste_des_genres+='</option>'
+        }
+*/        
+
+
+        let l_option='';
+        let texte__liste_des_genres='';
+        let tableau_des_genres=[];
+        for(let i in __gi1.__liste_des_genres){
+         
             /* 
               {
                 "chi_id_genre":1,
@@ -3823,16 +3856,30 @@ class c_svg_bdd1{
                 "cht_valeur_init_genre":null
               }
             */
-            texte__liste_des_genres+='<option';
-            if(genre==__gi1.__liste_des_genres[i].chi_id_genre){
-              texte__liste_des_genres+=' selected="true"'
+            l_option='';
+            l_option+='<option';
+            if(1==__gi1.__liste_des_genres[i].chi_id_genre){
+              l_option+=' selected="true"'
             }
-            texte__liste_des_genres+=' value="'+__gi1.__liste_des_genres[i].chi_id_genre+'"';
-            texte__liste_des_genres+=' data-genre="'+__gi1.enti1(JSON.stringify(__gi1.__liste_des_genres[i]))+'"';
-            texte__liste_des_genres+='>';
-            texte__liste_des_genres+=__gi1.__liste_des_genres[i].chp_nom_genre;
-            texte__liste_des_genres+='</option>'
+            l_option+=' value="'+__gi1.__liste_des_genres[i].chi_id_genre+'"';
+            l_option+=' data-genre="'+__gi1.enti1(JSON.stringify(__gi1.__liste_des_genres[i]))+'"';
+            l_option+='>';
+            l_option+=__gi1.__liste_des_genres[i].chp_nom_genre;
+            l_option+='</option>'
+         
+            tableau_des_genres.push([__gi1.__liste_des_genres[i].chp_nom_genre,l_option]);
         }
+        
+        tableau_des_genres.sort(function (a, b) {
+            return a[0].localeCompare(b[0]);
+        })
+        
+        for(let i=0;i<tableau_des_genres.length;i++){
+            
+            texte__liste_des_genres+=tableau_des_genres[i][1];
+            
+        }
+
 
 
         var cmd='';
@@ -3840,7 +3887,7 @@ class c_svg_bdd1{
         cmd+='  chemin_module1(\'' + this.#chemin_module1 + '\'),';
         cmd+='  methode3(selectionner_un_genre),';
         cmd+='  parametre3(';
-        cmd+='     zone_select(meta_modifier__genre),';
+        cmd+='     zone_select(genre),';
         cmd+='  )';
         cmd+=')';
         
@@ -6757,7 +6804,7 @@ class c_svg_bdd1{
                 "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
                 "nom_de_la_table" : nom_de_la_table ,
                 "nom_du_champ" : nom_du_champ ,
-                "x" : this.#hauteur_de_boite + 2 * this.#taille_bordure + __gi1.css_dimensions.t_police*1.5 ,
+                "x" : this.#hauteur_de_boite + 2 * this.#taille_bordure + __gi1.css_dimensions.t_police*1.8 ,
                 "y" : this.#hauteur_de_boite - 0.3 * __gi1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:" + couleur_nom_de_champ + ";"
             }
@@ -6780,7 +6827,7 @@ class c_svg_bdd1{
                 "nom_du_champ" : nom_du_champ ,
                 "x" : this.#hauteur_de_boite + 2 * this.#taille_bordure  ,
                 "y" : this.#hauteur_de_boite - 0.3 * __gi1.css_dimensions.t_police - this.#taille_bordure ,
-                "style" : "fill:" + couleur_nom_de_champ + ";"
+                "style" : "fill:" + couleur_nom_de_champ + ";font-size: smaller;"
             }
         };
         indice_courant++;

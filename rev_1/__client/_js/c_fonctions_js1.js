@@ -213,7 +213,7 @@ class c_fonctions_js1{
                 if(obj.id_original==='liste_des_menus'){
                     for( let i=0 ; i < obj.arbre.length ; i++ ){
                         if(obj.id_cible === obj.arbre[i].id_interne){
-                            if(obj.arbre[i].attributs.hasOwnProperty('data-liste_des_menus') && obj.arbre[i].attributs['data-liste_des_menus']===1){
+                            if(obj.arbre[i].attributs.hasOwnProperty('data-liste_des_menus') && obj.arbre[i].attributs['data-liste_des_menus']==1){
                                 let nouveau_nom=window.prompt( "nouveau nom ?" , obj.arbre[i].contenu );
                                 if(nouveau_nom){
                                     obj.arbre[i].contenu=nouveau_nom;
@@ -233,7 +233,7 @@ class c_fonctions_js1{
                 */
                 for( let i=0 ; i < obj.arbre.length ; i++ ){
                     if(obj.id_cible === obj.arbre[i].id_interne){
-                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus']==='1'){
+                        if(obj.arbre[i].attributs &&  obj.arbre[i].attributs['data-liste_des_menus']==1 ){
                             obj.arbre.splice( i , 1 );
                         }
                         break;
@@ -247,7 +247,7 @@ class c_fonctions_js1{
                 /* l'id_cible doit être une branche créée */
                 for( let i=0 ; i < obj.arbre.length ; i++ ){
                     if(obj.id_cible === obj.arbre[i].id_interne){
-                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus']==='1'){
+                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus']==1){
                          
                             /*
                             
@@ -257,7 +257,7 @@ class c_fonctions_js1{
                             
                             for( let j=0 ; j < obj.arbre.length ; j++ ){
                                 if(obj.id_source === obj.arbre[j].id_interne){
-                                    if(!(obj.arbre[j].attributs && obj.arbre[j].attributs['data-liste_des_menus']==='1')){
+                                    if(!(obj.arbre[j].attributs && obj.arbre[j].attributs['data-liste_des_menus']==1)){
                                         reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
                                     }else{
                                         reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre_avant );
@@ -287,7 +287,7 @@ class c_fonctions_js1{
                 let id_source_est_branche=false;
                 for( let i=0 ; i < obj.arbre.length ; i++ ){
                     if(obj.id_source === obj.arbre[i].id_interne){
-                        if((obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus']==='1')){
+                        if((obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus']==1)){
                             id_source_est_branche=true;
                         }
                         break;

@@ -118,7 +118,7 @@ $tableau_des_dependances=array (
       array (
         'table_dependante' => 'tbl_groupes',
         'champ_dependant' => 'chx_parent_groupe',
-        'non_nulle' => '1',
+        'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),
       1 => 
@@ -140,7 +140,7 @@ $tableau_des_dependances=array (
       array (
         'table_dependante' => 'tbl_metiers',
         'champ_dependant' => 'chx_parent_metier',
-        'non_nulle' => '1',
+        'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),
       1 => 
