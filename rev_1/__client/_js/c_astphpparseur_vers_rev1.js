@@ -247,7 +247,7 @@ class c_astphpparseur_vers_rev1{
     */
     #php_construit_cle( l ){
         let resultat='';
-        /* on retire I("I" de [i]ncrément ) O("o" de [o]bjet) l("l" de laitue)  0(zéro) 1(un) */
+        /* on retire I('I' de [i]ncrément ) O("o" de [o]bjet) l("l" de laitue)  0(zéro) 1(un) */
         const lettres='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
         const longueur=lettres.length;
         let c=0;

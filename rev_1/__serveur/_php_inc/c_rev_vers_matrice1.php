@@ -1015,10 +1015,10 @@ class c_rev_vers_matrice1{
           
           
           la première version avec push était :
-          T.push(Array(0,$texte,'__I',-1,$constante_quotee,$premier,$dernier,0,0,0,0,$pos_ouv_par,$pos_fer_par,''));
+          T.push(Array(0,$texte,"__I",-1,$constante_quotee,$premier,$dernier,0,0,0,0,$pos_ouv_par,$pos_fer_par,''));
         */
         $chaine_tableau .= '[0,"' . $texte . '","__I",-1,' . $constante_quotee . ',' . $premier . ',' . $dernier . ',0,0,0,0,' . $pos_ouv_par . ',0,""]';
-        $type_precedent='__I';
+        $type_precedent="__I";
         $niveauPrecedent=$niveau;
         $l01=count($tableauEntree);
         /*

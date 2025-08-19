@@ -55,7 +55,7 @@ class c_html_vers_rev1{
     */
     #construit_cle( length ){
         let resultat='';
-        /* on retire I("I" de [i]ncrément ) O("o" de [o]bjet) l("l" de laitue)  0(zéro) 1(un) car ces lettres peuvent être confondues entre elles */
+        /* on retire I('I' de [i]ncrément ) O("o" de [o]bjet) l("l" de laitue)  0(zéro) 1(un) car ces lettres peuvent être confondues entre elles */
         const lettres='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnopqrstuvwxyz23456789';
         const longueur=lettres.length;
         let counter=0;

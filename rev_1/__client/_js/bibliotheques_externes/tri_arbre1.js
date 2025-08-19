@@ -189,6 +189,11 @@ class tri_arbre1{
                     let id_cible=parseInt( deplacement[1] , 10 );
                     let type_deplacement=deplacement[0];
                     if(this.#options.arborescent === 0 && type_deplacement === 'dedans'){
+                        if(id_cible === id_interne_du_bloc_a_deplacer){
+                            this.#element_bouge=null;
+                            this.#position_absolue_de_la_zone_de_tri=0;
+                            return;
+                        }
                         type_deplacement='avant';
                     }
                     let arbre_avant=JSON.parse( JSON.stringify( this.arbre ) );
@@ -236,6 +241,7 @@ class tri_arbre1{
                         }
                     }
                 }
+                this.#id_cible_selectionne=0;
                 this.#element_bouge=null;
                 this.#position_absolue_de_la_zone_de_tri=0;
             }
@@ -391,6 +397,10 @@ class tri_arbre1{
         /* console.log('souris bas top_declenchement='+this.#top_declenchement) */
         this.#bottom_declenchement=document.documentElement.scrollTop + parseInt( tt.bottom , 10 );
         if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-poignee_pour_tri" )){
+            
+            this.#element_bouge=tar;
+            console.log('ici')
+            
             window.addEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
             window.addEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
             window.addEventListener( 'touchend' , this.#doigt_haut.bind( this ) , false );
@@ -408,7 +418,6 @@ class tri_arbre1{
             /*
               on déplace un bloc
             */
-            this.#element_bouge=tar;
             this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
             let pos=document.getElementById( this.#id_div ).getBoundingClientRect();
             tt=this.#zone_reference_top.getBoundingClientRect();
@@ -429,6 +438,7 @@ class tri_arbre1{
                     debugger;
                 }
             }
+            return;
         }else if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-replie" )){
             let id_interne=parseInt( tar.getAttribute( "data-replie" ) , 10 );
             let lst1=document.getElementById( this.#id_div ).querySelectorAll( '[data-enfants_de="' + id_interne + '"]' );

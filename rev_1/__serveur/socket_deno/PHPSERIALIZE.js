@@ -23,7 +23,7 @@ const PHPSERIALIZE={
                 return("s:" + serializeString( val ) + ";");
             }
             if( typeof val === "number"){
-                return("" + (Math.round( val ) === val ? ( "i" ) : ( "d" )) + ":" + ("" + val).toUpperCase().replace( /(-?\d)E/ , "$1.0E" ) + ";");
+                return("" + (Math.round( val ) === val ? ( 'i' ) : ( "d" )) + ":" + ("" + val).toUpperCase().replace( /(-?\d)E/ , "$1.0E" ) + ";");
             }
             if( typeof val === "boolean"){
                 return("b:" + (+val) + ";");
@@ -120,7 +120,7 @@ const PHPSERIALIZE={
                   ( 
                     readString( ";" )
                   ) : ( 
-                    typ === "i" ?
+                    typ === 'i' ?
                       ( 
                         readUInt( ";" )
                       ) : ( 
@@ -161,7 +161,7 @@ const PHPSERIALIZE={
                       ( 
                         readBoolean()
                       ) : ( 
-                        typ === "i" ?
+                        typ === 'i' ?
                           ( 
                             readInt()
                           ) : ( 

@@ -2319,9 +2319,6 @@ class c_requete_sql1{
             cmd+='   )';
             cmd+=')';
             t+='    <div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '">modifier en base(' + this.#globale_id_requete + ') et retour à la liste</div>';
-            /*
-              t+='<a class="yyalarme" href="zz_requetes_a1.php?__action=__modification&__id=' + (this.#globale_id_requete + 1) + '" title="modifier_en_base">vers(' + (this.#globale_id_requete + 1) + ')</a>';
-            */
             document.getElementById( 'init' ).value=this.#globale_rev_requete.replace( /</g , '&lt;' ).replace( />/g , '&gt;' );
         }
         t+='    <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(txtar2)))" title="agrandir la zone" >🖐</div>';

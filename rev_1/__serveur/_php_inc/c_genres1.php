@@ -10,7 +10,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    public function __construct(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    public function __construct(&$donnees_retournees,&$mat,&$donnees_recues){
         require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_sql0.php');
         $this->sql0=new c_sql0(
             $donnees_retournees,
@@ -22,7 +22,7 @@ class c_genres1{
       =============================================================================================================
       traitement des formulaires des genres
     */
-    public function formulaire1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    public function formulaire1(&$donnees_retournees,&$mat,&$donnees_recues){
         $l01=count($mat);
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
@@ -94,7 +94,84 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function vv_genres_nouveau_numero1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function enregister_l_ordre_des_genres(&$donnees_retournees,&$mat,&$donnees_recues){
+        
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0); */
+        
+        foreach( $donnees_recues[__xva]['tableau_des_ordre'] as $k1 => $v1){
+         
+            $tt=$this->sql0->sql_iii(
+                 /*sql_335()*/ 335,
+                array(/**/
+                    'c_chi_id_genre' => $v1[0],
+                    'n_che_ordre_genre' => $v1[1],
+                ),
+                $donnees_retournees
+            );
+            
+            if($tt[__xst] !== __xsu){
+
+                $donnees_retournees[__xst]=__xer;
+                $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+                return;
+
+            }
+        }
+        $this->mettre_a_jour_le_js_des_genres($donnees_retournees,$mat,$donnees_recues);
+        $donnees_retournees[__x_signaux][__xsu][]='enregistrement réussi [' . __LINE__ . ']';
+        $donnees_retournees[__xst]=__xsu;
+    }
+    /*
+      =============================================================================================================
+    */
+    function trier_les_genres(&$donnees_retournees,&$mat,&$donnees_recues){
+        $o1='<h1>Trier les genres</h1>';
+        
+        
+        $tt333=$this->sql0->sql_iii(
+             /*sql_333()*/ 333,
+            array(),
+            $donnees_retournees
+        );
+        
+        if($tt333[__xst] !== __xsu){
+         
+            $donnees_retournees[__x_signaux][__xal][]=__METHOD__ . ' [' . __LINE__ . ']';
+            return;
+            
+        }
+        $__liste_des_genres=array();
+        
+        $o1.='<ul id="tri_des_genres">';
+        foreach($tt333[__xva] as $k1 => $v1){
+            $o1.='<li id="' . enti1($v1['T0.chi_id_genre']) . '">'.enti1($v1['T0.chp_nom_genre']).'</li>';
+        }
+        $o1.='</ul>';
+        $maj='';
+        $maj.='maj_interface1(';
+        $maj.=' charger_module1(';
+        $maj.='  chemin_module1("_js/c_fonctions_js1.js"),';
+        $maj.='  initialisation1(';
+        $maj.='   (zone_ul_li,tri_des_genres),';
+        $maj.='   (module_js1,c_fonctions_js1.js),';
+        $maj.='   (nom_module1,c_fonctions_js1)';
+        $maj.='   (methode_initiale,trier_la_liste_des_genres)';
+        $maj.='  )';
+        $maj.=' )';
+        $maj.=')';
+        if(isset($donnees_retournees[__xva]['maj'])){
+            $donnees_retournees[__xva]['maj'].=$maj;
+        }else{
+            $donnees_retournees[__xva]['maj']=$maj;
+        }
+        
+        $donnees_retournees[__x_page] .= $o1;
+        $donnees_retournees[__xst]=__xsu;
+    }
+    /*
+      =============================================================================================================
+    */
+    function vv_genres_nouveau_numero1(&$donnees_retournees,&$mat,&$donnees_recues){
         $chi_id_genre_ancienne=0;
         $chi_id_genre_nouvelle=0;
         
@@ -222,7 +299,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function page_nouveau_numero1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_nouveau_numero1(&$donnees_retournees,&$mat,&$donnees_recues){
         $o1='';
         $o1 .= '<h1>Attribuer un nouveau numéro</h1>';
         $chi_id_genre=0;
@@ -275,7 +352,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function mettre_a_jour_le_js_des_genres(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function mettre_a_jour_le_js_des_genres(&$donnees_retournees,&$mat,&$donnees_recues){
      
      
         $tt333=$this->sql0->sql_iii(
@@ -306,6 +383,7 @@ class c_genres1{
                 'chp_prefixe_genre' => $v1['T0.chp_prefixe_genre'] ,
                 'che_est_parmis_genre' => $v1['T0.che_est_parmis_genre'] ,
                 'cht_parmis_genre' => $v1['T0.cht_parmis_genre'] ,
+                'che_ordre_genre' => $v1['T0.che_ordre_genre'] ,
                 
             );
         }
@@ -334,7 +412,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function vv_genres_creer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function vv_genres_creer1(&$donnees_retournees,&$mat,&$donnees_recues){
         $page_liste_des_genres1=false;
         $l01=count($mat);
         for( $i=1 ; $i < $l01 ; $i++ ){
@@ -412,7 +490,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function vv_genres_filtre1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function vv_genres_filtre1(&$donnees_retournees,&$mat,&$donnees_recues){
         $txtPar='__num_page(0)';
         $nouvelles_valeurs=array( '__num_page' => 0);
         foreach($donnees_recues[__xva] as $k0 => $v0){
@@ -450,7 +528,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function vv_genres_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function vv_genres_supprimer1(&$donnees_retournees,&$mat,&$donnees_recues){
      
 
         $donnees_retournees[__x_signaux][__xer][]='afr vérifier utilisation genre dans les bases ' . self::LE_LA_ELEMENT_GERE . '(' . $donnees_recues[__xva]['chi_id_genre'] . ') [' . __LINE__ . ']';
@@ -498,7 +576,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function vv_genres_modifier1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function vv_genres_modifier1(&$donnees_retournees,&$mat,&$donnees_recues){
         $page_liste_des_genres1=false;
         $l01=count($mat);
         for( $i=1 ; $i < $l01 ; $i++ ){
@@ -584,7 +662,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function page_genres_dupliquer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_genres_dupliquer1(&$donnees_retournees,&$mat,&$donnees_recues){
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_recues = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);*/
         
         
@@ -623,7 +701,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function page_genres_creer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_genres_creer1(&$donnees_retournees,&$mat,&$donnees_recues){
         $o1='';
         $o1 .= '<h1>ajouter ' . self::UN_UNE_ELEMENT_GERE . ' <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_genres1.formulaire1(action1(page_liste_des_genres1))" title="revenir à la liste" >⬱</div></h1>' . PHP_EOL;
         $o1 .= '<div id="vv_genres_creer1">' . PHP_EOL;
@@ -654,8 +732,8 @@ class c_genres1{
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '      <input type="text" id="chp_prefixe_genre" value="';
-        if(isset($donnees_recues['dupliquer']['T0.chp_nom_genre'])){
-            $o1.=enti1($donnees_recues['dupliquer']['T0.chp_nom_genre']);
+        if(isset($donnees_recues['dupliquer']['T0.chp_prefixe_genre'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.chp_prefixe_genre']);
         }else{
             $o1 .= 'chi';
         }
@@ -869,7 +947,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function page_genres_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_genres_supprimer1(&$donnees_retournees,&$mat,&$donnees_recues){
         $o1='';
         $chi_id_genres='';
         $l01=count($mat);
@@ -1109,7 +1187,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function page_genres_modifier1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_genres_modifier1(&$donnees_retournees,&$mat,&$donnees_recues){
         $o1='';
         $chi_id_genres='';
         $l01=count($mat);
@@ -1357,7 +1435,7 @@ class c_genres1{
       Pour les iframes sur les genres
       =============================================================================================================
     */
-    function vv_genres_filtre_choix_1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function vv_genres_filtre_choix_1(&$donnees_retournees,&$mat,&$donnees_recues){
         $txtPar='__num_page(0)';
         $nouvelles_valeurs=array( '__num_page' => 0);
         foreach($donnees_recues[__xva] as $k0 => $v0){
@@ -1395,7 +1473,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function page_genres_sous_liste1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_genres_sous_liste1(&$donnees_retournees,&$mat,&$donnees_recues){
         $fonction1='c_genres1.page_genres_sous_liste1';
         /* déverminage */
         $__nbMax=10;
@@ -1570,7 +1648,7 @@ class c_genres1{
     /*
       =============================================================================================================
     */
-    function page_liste_des_genres1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+    function page_liste_des_genres1(&$donnees_retournees,&$mat,&$donnees_recues){
 
 
         if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
@@ -1785,6 +1863,7 @@ class c_genres1{
           $donnees_retournees[__x_signaux][__xal][]=__LINE__ . 'TODO $tt '.var_export($tt,true);
         */
         $bouton_avant='<div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_genres1.formulaire1(action1(page_genres_creer1))" title="nouveau genre" >+*</div>';
+        $bouton_avant.='<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_genres1.trier_les_genres()" title="trier les_genres" >trier</div>';
         $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt['nombre'],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));
         $lsttbl='';
         $lsttbl .= '<thead><tr>';
@@ -1805,7 +1884,11 @@ class c_genres1{
             $lsttbl .= ' <div style="display:flex;min-width:calc(3*var(t_1boutons_carres))">';
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_genres1.formulaire1(action1(page_genres_modifier1),chi_id_genre(' . $v0['T0.chi_id_genre'] . '))">✎</div>';
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_genres1.formulaire1(action1(page_genres_dupliquer1),chi_id_genre(' . $v0['T0.chi_id_genre'] . '))" title="dupliquer">⎘</div>';
-            $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_genres1.formulaire1(action1(page_genres_supprimer1),chi_id_genre(' . $v0['T0.chi_id_genre'] . '))">🗑</div>';
+            if($v0['T0.chi_id_genre']===1){
+                $lsttbl .= '  <div class="hug_bouton_inactif" " title="supprimer" >🗑</div>';
+            }else{
+                $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_genres1.formulaire1(action1(page_genres_supprimer1),chi_id_genre(' . $v0['T0.chi_id_genre'] . '))">🗑</div>';
+            }
             if($v0['T0.chi_id_genre']!==1){
                 $lsttbl .= '  <div class="hug_bouton yy__x_signaux_1" data-hug_click="interface1.affiche_sous_fenetre1(c_genres1.page_nouveau_numero1( sans_menus1() chi_id_genre(' . $v0['T0.chi_id_genre'] . ')))" title="attribuer un autre numéro" >#°</div>';
             }else{

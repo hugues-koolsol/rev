@@ -1726,7 +1726,7 @@
             var curr=privateNameMap[name];
             var next="true";
             if(element.type === "MethodDefinition" && (element.kind === "get" || element.kind === "set")){
-                next=(element.static ? ( "s" ) : ( "i" )) + element.kind;
+                next=(element.static ? ( "s" ) : ( 'i' )) + element.kind;
             }
             /* `class { get #a(){}; static set #a(_){} }` is also conflict. */
             if(curr === "iget"

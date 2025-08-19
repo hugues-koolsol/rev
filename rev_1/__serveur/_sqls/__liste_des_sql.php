@@ -1305,7 +1305,7 @@ WHERE (`T0`.`chi_id_genre` = :T0_chi_id_genre
    AND `T0`.`cht_valeur_init_genre` LIKE :T0_cht_valeur_init_genre
    AND `T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre
    AND `T0`.`cht_parmis_genre` LIKE :T0_cht_parmis_genre) 
-ORDER BY `T0`.`chp_nom_genre` ASC  
+ORDER BY `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'genres',
@@ -1381,8 +1381,8 @@ WHERE `chi_id_genre` = :chi_id_genre ;',
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre`
- FROM b1.tbl_genres T0 ORDER BY  `T0`.`chp_nom_genre` ASC
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre`
+ FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
 ;',
     'cht_commentaire_requete' => 'tous les genres',
   ),
@@ -1392,5 +1392,12 @@ WHERE `chi_id_genre` = :chi_id_genre ;',
    `chi_id_genre` = :n_chi_id_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',
     'cht_commentaire_requete' => 'genres nouveau numéro',
+  ),
+  335 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_genres SET 
+   `che_ordre_genre` = :n_che_ordre_genre
+WHERE `chi_id_genre` = :c_chi_id_genre ;',
+    'cht_commentaire_requete' => 'genres maj ordre',
   ),
 );

@@ -145,6 +145,65 @@ class c_fonctions_js1{
     /*
       =============================================================================================================
     */
+    enregistrer_l_ordre_des_genres2(evenement , reference_arbre ){
+     
+        let tableau_des_ordre=[];
+        let ordre=1;
+        
+        for(let i in reference_arbre.arbre){
+         tableau_des_ordre.push([reference_arbre.arbre[i].attributs.id, ordre++]);
+        }
+        
+
+        let id_original=reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri');
+        let le_json=JSON.stringify(reference_arbre.arbre);
+        let le_html=document.getElementById(id_original).innerHTML;
+
+        let obj={
+            "__x_action" : "c_genres1.enregister_l_ordre_des_genres()" ,
+            "__xva" : {
+                "tableau_des_ordre"      : tableau_des_ordre,
+            }
+        };
+        __gi1.envoyer_un_message_au_worker( obj );
+     
+    }
+    
+    /*
+      =============================================================================================================
+    */
+    trier_la_liste_des_genres(reponse){
+     
+        let id=reponse.zone_ul_li;
+        
+        let el=document.getElementById( id );
+        let options={
+            "hauteur_max_en_vh" : 80 ,
+             /* entre 20 et 80 */
+            "largeur_max" : '400px' ,
+             /* 'calc(100% - 50px)', */
+            "afficher_le_bouton_supprimer" : 0 ,
+            "class_du_bouton_supprimer" : 'hug_bouton yy__x_signaux_0' ,
+            "arborescent" : 0 ,
+            "class_du_bouton_deplacer" : 'hug_bouton',
+            "boutons_du_menu" : [] ,
+            "class_du_bouton_menu" : 'hug_bouton',
+            "class_du_bouton_replier" : 'hug_bouton yy__x_signaux_2',
+        };
+        options.boutons_du_menu.push({"libelle" : '💾 enregistrer cet ordre' ,"fonction" : this.enregistrer_l_ordre_des_genres2})
+        options['afficher_le_bouton_editer']=0;
+        options['class_du_bouton_editer']='hug_bouton yy__x_signaux___xif';
+        new tri_arbre1( id , options );
+        
+        
+        
+        __gi1.ajoute_les_evenements_aux_boutons( null );
+     
+
+    }
+    /*
+      =============================================================================================================
+    */
     enregistrer_le_menu2(evenement , reference_arbre ){
      
         let id_original=reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri');
