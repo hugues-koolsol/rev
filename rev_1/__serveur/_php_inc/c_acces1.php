@@ -181,7 +181,7 @@ class c_acces1{
                     
                     if($parent_est_select === true){
 
-                        $t .= PHP_EOL . '  <option id="menu_'.$v1['id_interne'].'" data-action_option="';
+                        $t .= PHP_EOL . '  <option id="menu_'.$v1['attributs']['data-chi_id_menu'].'" data-action_option="';
                         $t .= str_replace('.php','',$v1['attributs']['data-chp_nom_source']);
                         $t .= '.' . $v1['attributs']['data-chp_methode_menu'];
                         
@@ -216,13 +216,13 @@ class c_acces1{
                             /*
                               c'est une branche qui n'a pas d'enfants
                             */
-                            $t .= '<select id="menu_'.$v1['id_interne'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
+                            $t .= '<select id="menu_'.$v1['attributs']['data-chi_id_menu'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
                             $t .= '  <option>' . $v1['contenu'] . '</option>' . PHP_EOL;
                             $t .= '</select>' . PHP_EOL;
                             
                         }else{
 
-                            $t .= '<div id="menu_'.$v1['id_interne'].'"';
+                            $t .= '<div id="menu_'.$v1['attributs']['data-chi_id_menu'].'"';
                             $t .= ' data-id_menu="' . $v1['attributs']['data-chi_id_menu'] . '"';
                             $t .= ' class="hug_bouton"';
                             $t .= ' data-hug_click="';

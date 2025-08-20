@@ -8,8 +8,8 @@ function sql_315($par,&$donnees_retournees,$that){
          `chp_rev_travail_basedd` , 
          `chp_fournisseur_basedd` , 
          `chx_dossier_id_basedd` , 
-         `chp__dtm_basedd` , 
-         `chp__dtc_basedd`
+         `chd__dtm_basedd` , 
+         `chd__dtc_basedd`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -24,8 +24,8 @@ function sql_315($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_rev_travail_basedd']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_fournisseur_basedd']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_dossier_id_basedd']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp__dtm_basedd']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp__dtc_basedd']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chd__dtm_basedd']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chd__dtc_basedd']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

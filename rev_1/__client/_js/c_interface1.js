@@ -163,22 +163,10 @@ class _c_interface1{
                       console.log(performance.now()-this.#date_derniere_navigation);
                     */
                 }
-//        document.addEventListener( 'mouseup' , this.#mouseup_sur_zone_select.bind( this ) , true );
                 
-                /* code */} );
+                } );
     }
     
-    /*
-      =============================================================================================================
-    */
-/*
-    #mouseup_sur_zone_select(e){
-        if(e.target.tagName.toLowerCase()==='select'){
-            console.log('%cici','color:red;background:yellow;','e=',e.target.tagName,e);
-            debugger
-        }
-    }
-*/    
     
     /*
       =============================================================================================================
@@ -272,7 +260,7 @@ class _c_interface1{
                     this.les_messages.__xer.push( ' attention il y a eu une mise à jour <a class="hug_bouton yy__x_signaux_2" href="' + url + '">Rechargez la page</a>' );
                 }
             }
-            /* mais peut-être qu'il faut aller à une position interne */
+            /* mais peut-être qu'il faut aller à une position interne #bidon_1 */
             let position_interne='';
             for( let j=1 ; j < mat_action.length ; j=mat_action[j][12] ){
                 /* #c_accueil1.recupere_la_page_d_accueil(aller_a_la_position_interne(#vv_body)) */
@@ -295,6 +283,7 @@ class _c_interface1{
                 
             }
         }
+        
         this.#ajouter_les_boutons_menu( 'nouvelle_page' , reponse );
         if(reponse.hasOwnProperty( '__xva' )){
             if(reponse.__xva.hasOwnProperty( 'maj' )){

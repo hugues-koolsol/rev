@@ -153,7 +153,7 @@ class c_profile1{
             $donnees_retournees
         );
         
-        if($tt147[__xst] !== __xer){
+        if($tt147[__xst] !== __xsu){
 
             $donnees_retournees[__x_signaux][__xer][]='Utilisateur non trouvé en base !!!! [' . __LINE__ . ']';
             $donnees_retournees[__xst]=__xer;

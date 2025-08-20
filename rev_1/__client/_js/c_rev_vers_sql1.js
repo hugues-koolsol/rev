@@ -1415,13 +1415,20 @@ class c_rev_vers_sql1{
                                 obj=this.__m_rev1.matrice_vers_source_rev1( this.#tb , j , true , j + 1 );
                                 if(obj.__xst === __xsu){
                                     meta_du_champ+=this.__m_rev1.resps( niveau + 2 );
-                                    meta_du_champ+='/*\n            meta(\n            ' + obj.__xva.replace( /\/\*/g , '' ).replace( /\*\//g , '' ).replace( /\),\(/g , '),\n            (' ) + '\n            )\n            */';
+                                    meta_du_champ+='/*\r\n            meta(\n            ' + obj.__xva.replace( /\/\*/g , '' ).replace( /\*\//g , '' ).replace( /\),\(/g , '),\n            (' ) + '\r\n            )\r\n            */';
                                     meta_du_champ=meta_du_champ.replace( /\),\(/g , '),\n            (' );
                                     /* typologie(chi),primary_key(),non_nulle(),auto_increment() */
-                                    meta_du_champ=meta_du_champ.replace( /,typologie\(/g , ',\n            typologie(' );
-                                    meta_du_champ=meta_du_champ.replace( /,primary_key\(/g , ',\n            primary_key(' );
-                                    meta_du_champ=meta_du_champ.replace( /,non_nulle\(/g , ',\n            non_nulle(' );
-                                    meta_du_champ=meta_du_champ.replace( /,auto_increment\(/g , ',\n            auto_increment(' );
+                                    meta_du_champ=meta_du_champ.replace( /,typologie\(/g , ',\r\n            typologie(' );
+                                    meta_du_champ=meta_du_champ.replace( /,primary_key\(/g , ',\r\n            primary_key(' );
+                                    meta_du_champ=meta_du_champ.replace( /,non_nulle\(/g , ',\r\n            non_nulle(' );
+                                    meta_du_champ=meta_du_champ.replace( /,auto_increment\(/g , ',\r\n            auto_increment(' );
+                                    meta_du_champ=meta_du_champ.replace( /,nom_du_champ\(/g , ',\r\n            nom_du_champ(' );
+                                    meta_du_champ=meta_du_champ.replace( /,nom_long_du_champ\(/g , ',\r\n            nom_long_du_champ(' );
+                                    meta_du_champ=meta_du_champ.replace( /,nom_court_du_champ\(/g , ',\r\n            nom_court_du_champ(' );
+                                    meta_du_champ=meta_du_champ.replace( /,nom_bref_du_champ\(/g , ',\r\n            nom_bref_du_champ(' );
+                                    meta_du_champ=meta_du_champ.replace( /,genre\(/g , ',\r\n            genre(' );
+                                    meta_du_champ=meta_du_champ.replace( /,espece_du_champ\(/g , ',\r\n            espece_du_champ(' );
+                                    meta_du_champ=meta_du_champ.replace( /,afficher_champ_dans_svg\(/g , ',\r\n            afficher_champ_dans_svg(' );
                                     variables_pour_tableau_tables.meta=obj.__xva;
                                     meta_du_champ+=this.__m_rev1.resps( niveau + 2 );
                                     for( k=j + 1 ; k < this.#l02 ; k=this.#tb[k][12] ){
@@ -1563,6 +1570,19 @@ class c_rev_vers_sql1{
                                             donnees_table.meta[this.#tb[k + 1][1]]=this.#tb[k + 2][1];
                                         }
                                     }
+                                    chaine_meta_table=chaine_meta_table.replace( /,genre_meta\(/g , ',\r\n   genre_meta(' );
+                                    chaine_meta_table=chaine_meta_table.replace( /,table\(/g , ',\r\n   table(' );
+                                    chaine_meta_table=chaine_meta_table.replace( /,nom_de_la_table\(/g , ',\r\n   nom_de_la_table(' );
+                                    chaine_meta_table=chaine_meta_table.replace( /,nom_long_de_la_table\(/g , ',\r\n   nom_long_de_la_table(' );
+                                    chaine_meta_table=chaine_meta_table.replace( /,nom_court_de_la_table\(/g , ',\r\n   nom_court_de_la_table(' );
+                                    chaine_meta_table=chaine_meta_table.replace( /,nom_bref_de_la_table\(/g , ',\r\n   nom_bref_de_la_table(' );
+                                    chaine_meta_table=chaine_meta_table.replace( /,transform_table_sur_svg\(/g , ',\r\n   transform_table_sur_svg(' );
+                                    chaine_meta_table=chaine_meta_table.replace( /,default_charset\(/g , ',\r\n   default_charset(' );
+                                    chaine_meta_table=chaine_meta_table.replace( /,collate\(/g , ',\r\n   collate(' );
+                                    
+                                    
+                                    
+                                    
                                 }else{
                                     return(this.#rev_sql_le( {"__xst" : __xer ,"__xva" : t ,"id" : i ,"__xme" : this.__m_rev1.nl2() + 'create_table meta'} ));
                                 }
@@ -1580,14 +1600,14 @@ class c_rev_vers_sql1{
                             donnees_table.chaine_meta=chaine_meta_table;
                         }
                         if(definitions_des_champs === ''){
-                            t+='/*\n';
-                            t+='-- ========== ATTENTION : TABLE SANS CHAMP ============================================================\n';
+                            t+='/*\r\n';
+                            t+='-- ========== ATTENTION : TABLE SANS CHAMP ============================================================\r\n';
                             t+='-- \n';
-                            t+='CREATE TABLE ' + if_exists + ' ' + nom_table_en_cours + '(\n';
-                            t+=')' + complementaires + ';\n';
-                            t+='*/\n';
+                            t+='CREATE TABLE ' + if_exists + ' ' + nom_table_en_cours + '(\r\n';
+                            t+=')' + complementaires + ';\r\n';
+                            t+='*/\r\n';
                             t+=chaine_meta_table;
-                            t+='\n-- ========== ATTENTION : TABLE SANS CHAMP ============================================================\n';
+                            t+='\r\n-- ========== ATTENTION : TABLE SANS CHAMP ============================================================\r\n';
                         }else{
                             t+='CREATE TABLE ' + if_exists + ' ' + nom_table_en_cours + '(';
                             t+=this.__m_rev1.resps( niveau );
@@ -1677,10 +1697,16 @@ class c_rev_vers_sql1{
                           }
                           break;
                         */
+
                         obj=this.__m_rev1.matrice_vers_source_rev1( this.#tb , i , false , i + 1 );
                         if(obj.__xst === __xsu){
                             t+=this.__m_rev1.resps( niveau );
-                            t+='/* meta(' + obj.__xva + ') */';
+                            let texte_meta_base=obj.__xva;
+                            texte_meta_base=texte_meta_base.replace( /,genre_meta\(/g , ',\r\n   genre_meta(' );
+                            texte_meta_base=texte_meta_base.replace( /,default_charset\(/g , ',\r\n   default_charset(' );
+                            texte_meta_base=texte_meta_base.replace( /,collate\(/g , ',\r\n   collate(' );
+                            texte_meta_base=texte_meta_base.replace( /,transform_base_sur_svg\(/g , ',\r\n   transform_base_sur_svg(' );
+                            t+='/* meta(' + texte_meta_base + ') */';
                             t+=this.__m_rev1.resps( niveau );
                         }else{
                             return(this.#rev_sql_le( {"__xst" : __xer ,"__xva" : t ,"id" : i ,"__xme" : this.__m_rev1.nl2() + 'meta'} ));

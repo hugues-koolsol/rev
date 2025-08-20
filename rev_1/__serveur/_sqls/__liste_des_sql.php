@@ -870,7 +870,7 @@ LIMIT :quantitee OFFSET :debut
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-`T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chp__dtm_utilisateur` , `T0`.`chp__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+`T0`.`chi_compteur_socket1_utilisateur` , `T0`.`che__nur_utilisateur` , `T0`.`chd__dtm_utilisateur` , `T0`.`chd__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , 
 `T1`.`chp_nom_acces` , `T1`.`chx_groupe_acces` , `T1`.`chx_metier_acces` , `T1`.`chp_nom_acces`
  FROM b1.tbl_utilisateurs T0
  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
@@ -1030,16 +1030,16 @@ WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
     `chp_nom_dossier` , 
     `chx_parent_dossier` , 
     `che_contient_genere_dossier` , 
-    `chp__dtm_dossier` , 
-    `chp__dtc_dossier`
+    `chd__dtm_dossier` , 
+    `chd__dtc_dossier`
 ) VALUES (
     :chi_id_dossier , 
     :chx_projet_dossier , 
     :chp_nom_dossier , 
     :chx_parent_dossier , 
     :che_contient_genere_dossier , 
-    :chp__dtm_dossier , 
-    :chp__dtc_dossier
+    :chd__dtm_dossier , 
+    :chd__dtc_dossier
 );',
     'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
   ),
@@ -1089,8 +1089,8 @@ WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
     `chp_nom_source` , 
     `cht_commentaire_source` , 
     `che_binaire_source` , 
-    `chp__dtm_source` , 
-    `chp__dtc_source` , 
+    `chd__dtm_source` , 
+    `chd__dtc_source` , 
     `chx_dossier_id_source`
 ) VALUES (
     :chi_id_source , 
@@ -1098,8 +1098,8 @@ WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
     :chp_nom_source , 
     :cht_commentaire_source , 
     :che_binaire_source , 
-    :chp__dtm_source , 
-    :chp__dtc_source , 
+    :chd__dtm_source , 
+    :chd__dtc_source , 
     :chx_dossier_id_source
 );',
     'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
@@ -1113,8 +1113,8 @@ WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
     `chp_rev_travail_basedd` , 
     `chp_fournisseur_basedd` , 
     `chx_dossier_id_basedd` , 
-    `chp__dtm_basedd` , 
-    `chp__dtc_basedd`
+    `chd__dtm_basedd` , 
+    `chd__dtc_basedd`
 ) VALUES (
     :chi_id_basedd , 
     :chx_projet_id_basedd , 
@@ -1122,8 +1122,8 @@ WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
     :chp_rev_travail_basedd , 
     :chp_fournisseur_basedd , 
     :chx_dossier_id_basedd , 
-    :chp__dtm_basedd , 
-    :chp__dtc_basedd
+    :chd__dtm_basedd , 
+    :chd__dtc_basedd
 );',
     'cht_commentaire_requete' => 'insérer la base principale',
   ),

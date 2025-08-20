@@ -1220,10 +1220,10 @@ class c_rev1{
           
           
           la première version avec push était :
-          T.push(Array(0,texte,"__I",-1,constanteQuotee,premier,dernier,0,0,0,0,pos_ouv_par,pos_fer_par,''));
+          T.push(Array(0,texte,"i",-1,constanteQuotee,premier,dernier,0,0,0,0,pos_ouv_par,pos_fer_par,''));
         */
-        chaine_tableau+='[0,"' + texte + '","__I",-1,' + constanteQuotee + ',' + premier + ',' + dernier + ',0,0,0,0,' + pos_ouv_par + ',0,""]';
-        type_precedent="__I";
+        chaine_tableau+='[0,"' + texte + '","i",-1,' + constanteQuotee + ',' + premier + ',' + dernier + ',0,0,0,0,' + pos_ouv_par + ',0,""]';
+        type_precedent="i";
         niveauPrecedent=niveau;
         var l01=tableauEntree.length;
         /*

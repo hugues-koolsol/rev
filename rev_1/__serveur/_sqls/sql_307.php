@@ -7,8 +7,8 @@ function sql_307($par,&$donnees_retournees,$that){
          `chp_nom_dossier` , 
          `chx_parent_dossier` , 
          `che_contient_genere_dossier` , 
-         `chp__dtm_dossier` , 
-         `chp__dtc_dossier`
+         `chd__dtm_dossier` , 
+         `chd__dtc_dossier`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -22,8 +22,8 @@ function sql_307($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_dossier']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_parent_dossier']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_contient_genere_dossier']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp__dtm_dossier']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp__dtc_dossier']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chd__dtm_dossier']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chd__dtc_dossier']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

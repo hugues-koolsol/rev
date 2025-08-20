@@ -7,8 +7,8 @@ function sql_314($par,&$donnees_retournees,$that){
          `chp_nom_source` , 
          `cht_commentaire_source` , 
          `che_binaire_source` , 
-         `chp__dtm_source` , 
-         `chp__dtc_source` , 
+         `chd__dtm_source` , 
+         `chd__dtc_source` , 
          `chx_dossier_id_source`
       ) VALUES 
     ';
@@ -23,8 +23,8 @@ function sql_314($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_source']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_commentaire_source']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_binaire_source']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp__dtm_source']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp__dtc_source']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chd__dtm_source']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chd__dtc_source']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_dossier_id_source']).'';
         $liste_des_valeurs.=')';
     }

@@ -999,29 +999,43 @@ class c_requete_sql1{
             }
         }
         var nom_zone_cible='champs_sortie';
-        if(this.#obj_webs.type_de_requete !== 'insert'){
-            if(this.#obj_webs.nom_zone_cible === "champs_jointure_gauche"){
-                if(this.#obj_webs.gauche_0_droite_1 === 0){
-                    this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_mere={"nom_du_champ" : nom_du_champ ,"nom_de_la_table" : nom_de_la_table ,"id_bdd" : id_bdd ,"indice_table" : indice_table};
-                }else{
-                    this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_fille={"nom_du_champ" : nom_du_champ ,"nom_de_la_table" : nom_de_la_table ,"id_bdd" : id_bdd ,"indice_table" : indice_table};
-                }
-                this.#mettre_en_stokage_local_et_afficher();
-                return;
+        if(this.#obj_webs.type_de_requete === 'update'){
+            if(this.#obj_webs[nom_zone_cible].length===0){
+             
+                this.#obj_webs[nom_zone_cible].push( {"type_d_element" : 'formule' , 'formule' : 'affecte(champ(`'+nom_du_champ+'`), :n_'+nom_du_champ+')'} );
             }else{
-                var lst=document.getElementsByName( 'champs_selectionnes' );
-                var i=0;
-                for( i=0 ; i < lst.length ; i++ ){
-                    if(lst[i].checked === true){
-                        nom_zone_cible=lst[i].value;
-                        break;
-                    }
+                if(this.#obj_webs[nom_zone_cible].length===1 && this.#obj_webs[nom_zone_cible][0].type_d_element==='formule' ){
+                 this.#obj_webs[nom_zone_cible][0].formule+='affecte(champ(`'+nom_du_champ+'`), :n_'+nom_du_champ+')';
+                }else{
+                 debugger
                 }
             }
-        }else{
-            nom_zone_cible='champs_sortie';
+        }else{    
+            if(this.#obj_webs.type_de_requete !== 'insert'){
+                /* select , delete , liste_ecran */
+                if(this.#obj_webs.nom_zone_cible === "champs_jointure_gauche"){
+                    if(this.#obj_webs.gauche_0_droite_1 === 0){
+                        this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_mere={"nom_du_champ" : nom_du_champ ,"nom_de_la_table" : nom_de_la_table ,"id_bdd" : id_bdd ,"indice_table" : indice_table};
+                    }else{
+                        this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_fille={"nom_du_champ" : nom_du_champ ,"nom_de_la_table" : nom_de_la_table ,"id_bdd" : id_bdd ,"indice_table" : indice_table};
+                    }
+                    this.#mettre_en_stokage_local_et_afficher();
+                    return;
+                }else{
+                    var lst=document.getElementsByName( 'champs_selectionnes' );
+                    var i=0;
+                    for( i=0 ; i < lst.length ; i++ ){
+                        if(lst[i].checked === true){
+                            nom_zone_cible=lst[i].value;
+                            break;
+                        }
+                    }
+                }
+            }else{
+                nom_zone_cible='champs_sortie';
+            }
+            this.#obj_webs[nom_zone_cible].push( {"id_bdd" : id_bdd ,"nom_de_la_table" : nom_de_la_table ,"nom_du_champ" : nom_du_champ ,"indice_table" : indice_table ,"type_d_element" : 'champ'} );
         }
-        this.#obj_webs[nom_zone_cible].push( {"id_bdd" : id_bdd ,"nom_de_la_table" : nom_de_la_table ,"nom_du_champ" : nom_du_champ ,"indice_table" : indice_table ,"type_d_element" : 'champ'} );
         this.#obj_webs.nom_zone_cible=nom_zone_cible;
         this.#mettre_en_stokage_local_et_afficher();
     }
@@ -1340,7 +1354,9 @@ class c_requete_sql1{
         /* t+='<a href="javascript:__gi1.formatter_le_source_rev(&quot;zone_formule&quot;);" title="formatter le source rev">(😊)</a>'; */
         t+='<div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(zone_formule)))" title="formater le source rev" >(😊)</div>';
         /* t+='<a href="javascript:__gi1.ajouter_un_commentaire_vide_et_reformater(&quot;zone_formule&quot;);" title="ajouter un commentaire et formatter">#()(😊)</a>'; */
-        t+='<div class="yy_conteneur_txtara"><textarea id="zone_formule" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">' + __gi1.__m_rev1.entitees_html( contenu ) + '</textarea></div>';
+        t+='<div class="yy_conteneur_txtara">';
+        t+='<textarea data-editeur1="rev" id="zone_formule" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">' + __gi1.__m_rev1.entitees_html( contenu ) + '</textarea>';
+        t+='</div>';
         /* t+='<br /><a class="yyinfo" href="javascript:' + this.#nom_de_la_variable + '.ajouter_la_formule(&quot;' + destination + '&quot;)">ajouter la formule</a>'; */
         var cmd='';
         cmd+='interface1.module1(';
@@ -1432,12 +1448,11 @@ class c_requete_sql1{
             cmd+=')';
             t+='<div class="hug_bouton" data-hug_click="' + cmd + '">' + tab_ex[i] + '</div>';
         }
-        /* t+='<a href="javascript:__gi1.formatter_le_source_rev(&quot;zone_formule&quot;);" title="formatter le source rev">(😊)</a>'; */
         t+='<div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(zone_formule)))" title="formater le source rev" >(😊)</div>';
         t+='<div class="hug_bouton" data-hug_click="c_fonctions_js1(insérer_un_commentaire1(zone_source(zone_formule)))" title="insérer un commentaire" >#(😎)</div>';
-        /* t+='<a href="javascript:__gi1.ajouter_un_commentaire_vide_et_reformater(&quot;zone_formule&quot;);" title="ajouter un commentaire et formatter">#()(😊)</a>'; */
         t+='<div>egal,diff,comme,sup,supegal,inf,infegal,dans,est,n_est_pas,pas_comme,equivalent,pas_equivalent</div>';
-        t+='<div class="yy_conteneur_txtara"><textarea id="zone_formule" data-editeur1="rev" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        t+='<div class="yy_conteneur_txtara">';
+        t+='<textarea id="zone_formule" data-editeur1="rev" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if((this.#obj_webs.type_de_requete === 'select'
                    || this.#obj_webs.type_de_requete === 'liste_ecran'
                    || this.#obj_webs.type_de_requete === 'update'
@@ -1836,10 +1851,11 @@ class c_requete_sql1{
         /*
           *
         */
-        t+='<div id="champs_en_sortie"  style="max-width:100%;">';
+        t+='<div id="champs_en_sortie"  style="max-width:90%;overflow-inline:auto;">';
         var contenu='';
         var i=0;
         for( i=0 ; i < this.#obj_webs.champs_sortie.length ; i++ ){
+            t+='<div class="hug_bouton" style="max-width:100%;text-align:left;" ';
             var cmd='';
             cmd+='interface1.module1(';
             cmd+=' chemin_module1(\'_js/c_requete_sql1.js\'),';
@@ -1848,7 +1864,6 @@ class c_requete_sql1{
             cmd+='  ind(' + i + '),';
             cmd+=' )';
             cmd+=')';
-            /* t+='<div class="hug_bouton" data-hug_click="'+cmd+'">T' + this.#obj_webs['ordre_des_tables'][i].indice_table + '.' + this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ+'</div>'; */
             if(this.#obj_webs.type_de_requete !== 'select' || this.#obj_webs.type_de_requete !== 'liste_ecran'){
                 /* cas insert update */
                 /* debugger; */
@@ -1860,21 +1875,22 @@ class c_requete_sql1{
                 }else if(this.#obj_webs.champs_sortie[i].type_d_element === 'formule'){
                     libelle+=this.#obj_webs.champs_sortie[i].formule;
                 }
-                t+='<div class="hug_bouton" data-hug_click="' + cmd + '">' + libelle + '</div>';
+                t+='data-hug_click="' + cmd + '">' + libelle;
             }else{
                 if(this.#obj_webs.champs_sortie[i].type_d_element === 'champ'){
                     if(this.#obj_webs.type_de_requete === 'update'){
                         /* contenu+='<a href="javascript:' + this.#nom_de_la_variable + '.retirer_ce_champ_de_sortie[' + i + ']">affecte[champ[`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :n_' + this.#obj_webs.champs_sortie[i].nom_du_champ + ']</a>'; */
-                        t+='<div class="hug_bouton" data-hug_click="' + cmd + '">affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :n_' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')</div>';
+                        t+='data-hug_click="' + cmd + '">affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :n_' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
                     }else{
                         /* contenu+='<a href="javascript:' + this.#nom_de_la_variable + '.retirer_ce_champ_de_sortie(' + i + ')">T' + this.#obj_webs.champs_sortie[i].indice_table + '.' + this.#obj_webs.champs_sortie[i].nom_du_champ + '</a>'; */
-                        t+='<div class="hug_bouton" data-hug_click="' + cmd + '">T' + this.#obj_webs.champs_sortie[i].indice_table + '.' + this.#obj_webs.champs_sortie[i].nom_du_champ + '</div>';
+                        t+='data-hug_click="' + cmd + '">T' + this.#obj_webs.champs_sortie[i].indice_table + '.' + this.#obj_webs.champs_sortie[i].nom_du_champ;
                     }
                 }else if(this.#obj_webs.champs_sortie[i].type_d_element === 'formule'){
                     /* contenu+='<a href="javascript:' + this.#nom_de_la_variable + '.retirer_ce_champ_de_sortie(' + i + ')">' + this.#obj_webs.champs_sortie[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ) + '</a>'; */
-                    t+='<div class="hug_bouton" data-hug_click="' + cmd + '">' + this.#obj_webs.champs_sortie[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ) + '</div>';
+                    t+='data-hug_click="' + cmd + '">' + this.#obj_webs.champs_sortie[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
                 }
             }
+            t+='</div>';
         }
         /*
           debugger

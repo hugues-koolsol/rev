@@ -2527,7 +2527,10 @@ class c_bases1{
         $tables=$db->query("SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';");
         $les_tables=array();
         while($table=$tables->fetchArray(SQLITE3_NUM)){
-            $definition_de_la_table=$db->querySingle("SELECT sql FROM sqlite_master WHERE name = '{$table[0]}'") . ";\n\n";
+            $definition_de_la_table=$db->querySingle("SELECT sql FROM sqlite_master WHERE name = '{$table[0]}'") . ";".PHP_EOL.PHP_EOL;
+            
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $definition_de_la_table , true ) . '</pre>' ; exit(0); */
+            
             $sql .= $definition_de_la_table;
             $sql_structure .= $definition_de_la_table;
             $les_tables[]=$table[0];
@@ -2542,7 +2545,7 @@ class c_bases1{
             while($column=$columns->fetchArray(SQLITE3_ASSOC)){
                 $liste_des_champs[]=$column["name"];
             }
-            $sql_insert .= implode(",",$liste_des_champs) . ") VALUES";
+            $sql_insert .= implode(",\r\n",$liste_des_champs) . ") VALUES";
             $nb_enreg=0;
             while($row=$rows->fetchArray(SQLITE3_ASSOC)){
                 $nb_enreg++;
@@ -2558,15 +2561,19 @@ class c_bases1{
                     }
 
                 }
-                $sql_insert .= "\n(" . implode(",",$row) . "),";
+                $sql_insert .= PHP_EOL."(" . implode(",",$row) . "),";
             }
             
             if($nb_enreg > 0){
 
-                $sql .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                $sql .= rtrim($sql_insert,",") . ";\n\n";
+                $sql .= PHP_EOL . '/*' . PHP_EOL ;
+                $sql .= '  ===============================' . PHP_EOL ;
+                $sql .= '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL ;
+                $sql .= '  ===============================' . PHP_EOL ;
+                $sql .= '*/' . PHP_EOL . PHP_EOL;
+                $sql .= rtrim($sql_insert,",") . ";".PHP_EOL.PHP_EOL;
                 $sql_insertion_des_valeurs .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                $sql_insertion_des_valeurs .= rtrim($sql_insert,",") . ";\n\n";
+                $sql_insertion_des_valeurs .= rtrim($sql_insert,",") . ";".PHP_EOL.PHP_EOL;
 
             }else{
 
@@ -2578,8 +2585,8 @@ class c_bases1{
         $sql_insertion_des_index='';
         $indexes=$db->query("SELECT name , tbl_name FROM sqlite_master WHERE type ='index' AND name NOT LIKE 'sqlite_%';");
         while($index=$indexes->fetchArray(SQLITE3_NUM)){
-            $sql .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
-            $sql_insertion_des_index .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";\n\n";
+            $sql .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";".PHP_EOL.PHP_EOL;
+            $sql_insertion_des_index .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";".PHP_EOL.PHP_EOL;
         }
         file_put_contents($chemin_dump,$sql);
         $chemin_dump_creation=$chemin_bdd . '._structure.sql';

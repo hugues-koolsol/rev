@@ -2426,8 +2426,8 @@ EOT;
           `chp_nom_dossier` , 
           `chx_parent_dossier` , 
           `che_contient_genere_dossier` , 
-          `chp__dtm_dossier` , 
-          `chp__dtc_dossier`        
+          `chd__dtm_dossier` , 
+          `chd__dtc_dossier`        
           
         */
         $a_inserer=array();
@@ -2441,8 +2441,8 @@ EOT;
                     'chp_nom_dossier' => $v1['T0.chp_nom_dossier'],
                     'chx_parent_dossier' => $v1['T0.chx_parent_dossier'],
                     'che_contient_genere_dossier' => $v1['T0.che_contient_genere_dossier'],
-                    'chp__dtm_dossier' => $GLOBALS[__date_ms],
-                    'chp__dtc_dossier' => $GLOBALS[__date_ms]
+                    'chd__dtm_dossier' => $GLOBALS[__date_ms],
+                    'chd__dtc_dossier' => $GLOBALS[__date_ms]
                 );
 
             }
@@ -2458,16 +2458,16 @@ EOT;
                 `chp_nom_dossier` , 
                 `chx_parent_dossier` , 
                 `che_contient_genere_dossier` , 
-                `chp__dtm_dossier` , 
-                `chp__dtc_dossier`
+                `chd__dtm_dossier` , 
+                `chd__dtc_dossier`
             ) VALUES (
                 :chi_id_dossier , 
                 :chx_projet_dossier , 
                 :chp_nom_dossier , 
                 :chx_parent_dossier , 
                 :che_contient_genere_dossier , 
-                :chp__dtm_dossier , 
-                :chp__dtc_dossier
+                :chd__dtm_dossier , 
+                :chd__dtc_dossier
             );
             */
             /*sql_inclure_fin*/
@@ -2621,8 +2621,8 @@ EOT;
                 'cht_commentaire_source' => $v1['T0.cht_commentaire_source'],
                 'che_binaire_source' => $v1['T0.che_binaire_source'],
                 'chx_dossier_id_source' => $v1['T0.chx_dossier_id_source'],
-                'chp__dtm_source' => $GLOBALS[__date_ms],
-                'chp__dtc_source' => $GLOBALS[__date_ms]
+                'chd__dtm_source' => $GLOBALS[__date_ms],
+                'chd__dtc_source' => $GLOBALS[__date_ms]
             );
         }
         $tt314=/*sql_inclure_deb*/
@@ -2633,8 +2633,8 @@ EOT;
                 `chp_nom_source` , 
                 `cht_commentaire_source` , 
                 `che_binaire_source` , 
-                `chp__dtm_source` , 
-                `chp__dtc_source` , 
+                `chd__dtm_source` , 
+                `chd__dtc_source` , 
                 `chx_dossier_id_source`
             ) VALUES (
                 :chi_id_source , 
@@ -2642,8 +2642,8 @@ EOT;
                 :chp_nom_source , 
                 :cht_commentaire_source , 
                 :che_binaire_source , 
-                :chp__dtm_source , 
-                :chp__dtc_source , 
+                :chd__dtm_source , 
+                :chd__dtc_source , 
                 :chx_dossier_id_source
             );
             */
