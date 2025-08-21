@@ -180,20 +180,21 @@ class c_acces1{
 
                     
                     if($parent_est_select === true){
+                        $aa='';
 
-                        $t .= PHP_EOL . '  <option id="menu_'.$v1['attributs']['data-chi_id_menu'].'" data-action_option="';
-                        $t .= str_replace('.php','',$v1['attributs']['data-chp_nom_source']);
-                        $t .= '.' . $v1['attributs']['data-chp_methode_menu'];
+                        $aa .= PHP_EOL . '  <option id="menu_'.$v1['attributs']['data-chi_id_menu'].'" data-action_option="';
+                        $aa .= str_replace('.php','',$v1['attributs']['data-chp_nom_source']);
+                        $aa .= '.' . $v1['attributs']['data-chp_methode_menu'];
                         
                         if($v1['attributs']['data-cht_initialisation_menu'] === 'null'){
 
-                            $t .= '()';
+                            $aa .= '()';
 
                         }else{
 
-                            $t .= '(';
-                            $t .= $v1['attributs']['data-cht_initialisation_menu'];
-                            $t .= ')';
+                            $aa .= '(';
+                            $aa .= $v1['attributs']['data-cht_initialisation_menu'];
+                            $aa .= ')';
                         }
 
                         
@@ -202,42 +203,50 @@ class c_acces1{
 
                         }else{
 
-                            $t .= $v1['attributs']['data-cht_complements_menu'];
+                            $aa .= $v1['attributs']['data-cht_complements_menu'];
                         }
 
-                        $t .= 'indice_menu(' . $v1['attributs']['data-chi_id_menu'] . ')';
-                        $t .= 'id_interne(' . $v1['id_interne'] . ')';
-                        $t .= 'id_interne_parent(' . $v1['id_interne_parent'] . ')';
-                        $t .= '"';
-                        $t .= '">' . $v1['contenu'] . '</option>';
+                        $aa .= 'indice_menu(' . $v1['attributs']['data-chi_id_menu'] . ')';
+                        $aa .= 'id_interne(' . $v1['id_interne'] . ')';
+                        $aa .= 'id_interne_parent(' . $v1['id_interne_parent'] . ')';
+                        $aa .= '"';
+                        $aa .= '">' . $v1['contenu'] . '</option>';
+                        
+                        $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
+                        
 
                     }else{
                         if(isset($v1['attributs']['data-liste_des_menus']) && $v1['attributs']['data-liste_des_menus']==='1'){
                             /*
                               c'est une branche qui n'a pas d'enfants
                             */
-                            $t .= '<select id="menu_'.$v1['attributs']['data-chi_id_menu'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
-                            $t .= '  <option>' . $v1['contenu'] . '</option>' . PHP_EOL;
-                            $t .= '</select>' . PHP_EOL;
+                            $aa='';
+                            $aa .= '<select id="menu_'.$v1['attributs']['data-chi_id_menu'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
+                            $aa .= '  <option>'.PHP_EOL;
+                            $aa .= $v1['contenu'];
+                            $aa .= '</option>' . PHP_EOL;
+                            $aa .= '</select>' . PHP_EOL;
+                            $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
                             
                         }else{
+                            $aa='';
 
-                            $t .= '<div id="menu_'.$v1['attributs']['data-chi_id_menu'].'"';
-                            $t .= ' data-id_menu="' . $v1['attributs']['data-chi_id_menu'] . '"';
-                            $t .= ' class="hug_bouton"';
-                            $t .= ' data-hug_click="';
-                            $t .= str_replace('.php','',$v1['attributs']['data-chp_nom_source']);
-                            $t .= '.' . $v1['attributs']['data-chp_methode_menu'];
+                            $aa .= '<div id="menu_'.$v1['attributs']['data-chi_id_menu'].'"';
+                            $aa .= ' data-id_menu="' . $v1['attributs']['data-chi_id_menu'] . '"';
+                            $aa .= ' class="hug_bouton"';
+                            $aa .= ' data-hug_click="';
+                            $aa .= str_replace('.php','',$v1['attributs']['data-chp_nom_source']);
+                            $aa .= '.' . $v1['attributs']['data-chp_methode_menu'];
                             
                             if($v1['attributs']['data-cht_initialisation_menu'] === 'null'){
 
-                                $t .= '()';
+                                $aa .= '()';
 
                             }else{
 
-                                $t .= '(';
-                                $t .= $v1['attributs']['data-cht_initialisation_menu'];
-                                $t .= ')';
+                                $aa .= '(';
+                                $aa .= $v1['attributs']['data-cht_initialisation_menu'];
+                                $aa .= ')';
                             }
 
                             
@@ -246,25 +255,37 @@ class c_acces1{
 
                             }else{
 
-                                $t .= $v1['attributs']['data-cht_complements_menu'];
+                                $aa .= $v1['attributs']['data-cht_complements_menu'];
                             }
 
-                            $t .= 'indice_menu(' . $v1['attributs']['data-chi_id_menu'] . ')';
-                            $t .= 'id_interne(' . $v1['id_interne'] . ')';
-                            $t .= '"';
-                            $t .= ' title="' . $v1['attributs']['data-chp_titre_menu'] . '"';
-                            $t .= '>' . $v1['contenu'] . '</div>' . PHP_EOL;
+                            $aa .= 'indice_menu(' . $v1['attributs']['data-chi_id_menu'] . ')';
+                            $aa .= 'id_interne(' . $v1['id_interne'] . ')';
+                            $aa .= '"';
+                            $aa .= ' title="' . $v1['attributs']['data-chp_titre_menu'] . '"';
+                            $aa .= '>' . $v1['contenu'] . '</div>' ;
+                            if($v1['attributs']['data-cht_condition_menu']===''){
+                                $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
+                            }else{
+                                $t.='if('.substr($v1['attributs']['data-cht_condition_php_menu'],0,-1).'){'.PHP_EOL;
+                                $t.='   $le_menu.='.var_export($aa,true).';'.PHP_EOL;
+                                $t.='}'.PHP_EOL;
+                                //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . enti1(var_export( $t , true )) . '</pre>' ; exit(0);
+                                
+                            }
                         }
                     }
 
 
                 }else{
 
-
-                    $t .= '<select id="menu_'.$v1['id_interne'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
-                    $t .= '  <option>' . $v1['contenu'] . '</option>' . PHP_EOL;
+                    $aa='';
+                    $aa .= '<select id="menu_'.$v1['id_interne'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
+                    $aa .= '  <option>' . $v1['contenu'] . '</option>' . PHP_EOL;
+                    $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
                     $t .= $this->construit_menu($v1['id_interne'],$le_tableau_du_menu,true);
-                    $t .= '</select>' . PHP_EOL;
+                    $aa='';
+                    $aa .= '</select>' . PHP_EOL;
+                    $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
                 }
 
 
@@ -332,9 +353,16 @@ class c_acces1{
         /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . enti1(var_export( $cht_parametres_acces , true )) . '</pre>' ; exit(0);*/
         /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . enti1(var_export( $le_tableau_du_menu , true )) . '</pre>' ; exit(0);*/
         $menus=$this->construit_menu(0,$le_tableau_du_menu);
-        $fichier=REPERTOIRE_DU_SERVEUR . DIRECTORY_SEPARATOR . 'menu_acces_' . $chi_id_acces . '.php';
         
-        if(file_put_contents($fichier,'<?' . 'php' . PHP_EOL . '$le_menu=' . var_export($menus,true) . ';') === false){
+//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . enti1(var_export( $menus , true )) . '</pre>' ; exit(0);
+        
+        $fichier=REPERTOIRE_DU_SERVEUR . DIRECTORY_SEPARATOR . 'temp_menu_acces_' . $chi_id_acces . '.php';
+        
+        $contenu_fichier = '';
+        $contenu_fichier .= '<?' . 'php' . PHP_EOL . '$le_menu=\'\';'.PHP_EOL;
+        $contenu_fichier .= $menus.PHP_EOL;
+        
+        if(file_put_contents($fichier,$contenu_fichier) === false){
 
             $donnees_retournees[__x_signaux][__xer][]=' [' . __LINE__ . ']';
             $donnees_retournees[__xst]=__xer;
@@ -444,6 +472,8 @@ class c_acces1{
                     $t.=' data-cht_initialisation_menu="' . $v1['attributs']['data-cht_initialisation_menu'] . '"';
                     $t.=' data-cht_complements_menu="' . $v1['attributs']['data-cht_complements_menu'] . '"';
                     $t.=' data-chp_titre_menu="' . $v1['attributs']['data-chp_titre_menu'] . '"';
+                    $t.=' data-cht_condition_php_menu="' . $v1['attributs']['data-cht_condition_php_menu'] . '"';
+                    $t.=' data-cht_condition_menu="' . $v1['attributs']['data-cht_condition_menu'] . '"';
                     $t.='>'.$v1['attributs']['data-cht_libelle_menu'];
                     $t.='</li>';
                 }else{
@@ -505,7 +535,9 @@ class c_acces1{
                     'chp_nom_source' => $v1['T3.chp_nom_source'],
                     'chi_id_menu' => $v1['T0.chi_id_menu'],
                     'cht_initialisation_menu' => $v1['T0.cht_initialisation_menu'],
-                    'cht_complements_menu' => $v1['T0.cht_complements_menu']
+                    'cht_complements_menu' => $v1['T0.cht_complements_menu'],
+                    'cht_condition_menu' => $v1['T0.cht_condition_menu'],
+                    'cht_condition_php_menu' => $v1['T0.cht_condition_php_menu'],
                 );
             }
             /*
@@ -580,11 +612,11 @@ class c_acces1{
                     $trouve=false;
                     foreach($liste_des_menus as $k2 => $v2){
                         if($v1['attributs']['data-chi_id_menu'] == $v2['chi_id_menu']){
-/*
-                           if(strpos($v2['cht_libelle_menu'],'projet')!==false){
-                            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v2['cht_libelle_menu'] , true ) . '</pre>' ; exit(0);
-                           }
-*/                           
+                           /*#
+                             if(strpos($v2['cht_libelle_menu'],'projet')!==false){
+                                echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v2['cht_libelle_menu'] , true ) . '</pre>' ; exit(0);
+                             }
+                           */
                            //echo __FILE__ . ' ' . __LINE__ . ' $v1 = <pre>' . var_export( $v1['attributs']['data-chi_id_menu'] , true ) . '</pre> <pre>' . var_export( $v2 , true ) . '</pre>' ; exit(0);
                            $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_libelle_menu']=$v2['cht_libelle_menu'];
                            $les_elements_du_menu_actuel[$k1]['attributs']['data-chp_titre_menu']=$v2['chp_titre_menu'];
@@ -593,6 +625,13 @@ class c_acces1{
                            $les_elements_du_menu_actuel[$k1]['attributs']['data-chp_methode_menu']=$v2['chp_methode_menu'];
                            $les_elements_du_menu_actuel[$k1]['attributs']['data-chp_nom_source']=$v2['chp_nom_source'];
                            $les_elements_du_menu_actuel[$k1]['attributs']['data-chi_id_source']=$v2['chi_id_source'];
+                           /*#
+                             if($v2['cht_libelle_menu']==='tâches'){
+                                 echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v2['cht_condition_menu'] , true ) . '</pre>' ; exit(0);
+                             }
+                           */
+                           $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_condition_php_menu']=$v2['cht_condition_php_menu'];
+                           $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_condition_menu']=$v2['cht_condition_menu'];
                            $trouve=true;
                            break;
                         }
@@ -735,6 +774,8 @@ class c_acces1{
                        'data-cht_complements_menu' => $v1['cht_complements_menu'],
                        'data-chp_titre_menu' => $v1['chp_titre_menu'],
                        'data-cht_libelle_menu' => $v1['cht_libelle_menu'],
+                       'data-cht_condition_menu' => $v1['cht_condition_menu'],
+                       'data-cht_condition_php_menu' => $v1['cht_condition_php_menu'],
                      ),
                     
                     );

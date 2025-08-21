@@ -33,6 +33,16 @@ function sql_325($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`cht_complements_menu` = \''.sq0($par['n_cht_complements_menu']).'\'';
     }
+    if($par['n_cht_condition_menu']==='' || is_null($par['n_cht_condition_menu']) ){
+        $tableau_champs[]='`cht_condition_menu` = NULL';
+    }else{
+        $tableau_champs[]='`cht_condition_menu` = \''.sq0($par['n_cht_condition_menu']).'\'';
+    }
+    if($par['n_cht_condition_php_menu']==='' || is_null($par['n_cht_condition_php_menu']) ){
+        $tableau_champs[]='`cht_condition_php_menu` = NULL';
+    }else{
+        $tableau_champs[]='`cht_condition_php_menu` = \''.sq0($par['n_cht_condition_php_menu']).'\'';
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/

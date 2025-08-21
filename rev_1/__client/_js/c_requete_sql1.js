@@ -1140,9 +1140,9 @@ class c_requete_sql1{
                     if(__gi1.derniere_zone_editee && __gi1.derniere_zone_editee.id === 'zone_formule'){
                         let avant=zone_formule.value.substr( 0 , __gi1.position_dans_la_derniere_zone_editee );
                         let apres=zone_formule.value.substr( __gi1.position_dans_la_derniere_zone_editee );
-                        zone_formule.value=avant + 'egal(champ(`' + nom_du_champ + '`) , :c_' + nom_du_champ + ')' + apres;
+                        zone_formule.value=avant + 'egal(champ(`' + nom_du_champ + '`) , :' + nom_du_champ + ')' + apres;
                     }else{
-                        zone_formule.value=zone_formule.value + 'egal(champ(`' + nom_du_champ + '`) , :n_' + nom_du_champ + '))';
+                        zone_formule.value=zone_formule.value + 'egal(champ(`' + nom_du_champ + '`) , :' + nom_du_champ + '))';
                     }
                 }
             }else if(this.#obj_webs.type_de_requete === 'update'){
@@ -1159,6 +1159,32 @@ class c_requete_sql1{
                 }
             }else if(this.#obj_webs.type_de_requete === 'insert'){
                 zone_formule.value=zone_formule.value + 'champ(`' + nom_du_champ + '`),';
+            }else if(this.#obj_webs.type_de_requete === 'liste_ecran'){
+             
+                if(destination === 'conditions'){
+                    if(__gi1.derniere_zone_editee && __gi1.derniere_zone_editee.id === 'zone_formule'){
+                        let avant=zone_formule.value.substr( 0 , __gi1.position_dans_la_derniere_zone_editee );
+                        let apres=zone_formule.value.substr( __gi1.position_dans_la_derniere_zone_editee );
+                        zone_formule.value=avant + 'egal(champ(`T' + indice_table + '` , `' + nom_du_champ + '`) , :T' + indice_table + '_' + nom_du_champ + ')' + apres;
+                    }else{
+                        zone_formule.value=zone_formule.value + 'egal(champ(`T' + indice_table + '` , `' + nom_du_champ + '`) , :T' + indice_table + '_' + nom_du_champ + ')';
+                    }
+                }else{
+                    zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`),';
+                }
+            }else if(this.#obj_webs.type_de_requete === 'select'){
+             
+                if(destination === 'conditions'){
+                    if(__gi1.derniere_zone_editee && __gi1.derniere_zone_editee.id === 'zone_formule'){
+                        let avant=zone_formule.value.substr( 0 , __gi1.position_dans_la_derniere_zone_editee );
+                        let apres=zone_formule.value.substr( __gi1.position_dans_la_derniere_zone_editee );
+                        zone_formule.value=avant + 'egal(champ(`T' + indice_table + '` , `' + nom_du_champ + '`) , :T' + indice_table + '_' + nom_du_champ + ')' + apres;
+                    }else{
+                        zone_formule.value=zone_formule.value + 'egal(champ(`T' + indice_table + '` , `' + nom_du_champ + '`) , :T' + indice_table + '_' + nom_du_champ + ')';
+                    }
+                }else{
+                    zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`),';
+                }
             }else{
                 zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`),';
             }

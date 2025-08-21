@@ -22,19 +22,26 @@ $tableau_des_dependances=array (
       ),
       2 => 
       array (
+        'table_dependante' => 'tbl_taches',
+        'champ_dependant' => 'chx_projet_tache',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+      3 => 
+      array (
         'table_dependante' => 'tbl_sources',
         'champ_dependant' => 'chx_projet_id_source',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
-      3 => 
+      4 => 
       array (
         'table_dependante' => 'tbl_bdds',
         'champ_dependant' => 'chx_projet_id_basedd',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
-      4 => 
+      5 => 
       array (
         'table_dependante' => 'tbl_requetes',
         'champ_dependant' => 'chx_projet_requete',
@@ -145,6 +152,13 @@ $tableau_des_dependances=array (
       ),
       1 => 
       array (
+        'table_dependante' => 'tbl_menus',
+        'champ_dependant' => 'chx_acces_menu',
+        'non_nulle' => '0',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+      2 => 
+      array (
         'table_dependante' => 'tbl_utilisateurs',
         'champ_dependant' => 'chx_acces_utilisateur',
         'non_nulle' => '1',
@@ -177,22 +191,22 @@ $tableau_des_dependances=array (
       array (
         'table_dependante' => 'tbl_menus',
         'champ_dependant' => 'chx_autorisation_menu',
-        'non_nulle' => '1',
+        'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),
     ),
   ),
-  'tbl_utilisateurs_chi_id_utilisateur' => 
+  'tbl_menus_chi_id_menu' => 
   array (
-    'table_parente' => 'tbl_utilisateurs',
-    'champ_parent' => 'chi_id_utilisateur',
+    'table_parente' => 'tbl_menus',
+    'champ_parent' => 'chi_id_menu',
     'dependances' => 
     array (
       0 => 
       array (
-        'table_dependante' => 'tbl_taches',
-        'champ_dependant' => 'chx_utilisateur_tache',
-        'non_nulle' => '1',
+        'table_dependante' => 'tbl_menus',
+        'champ_dependant' => 'chx_parent_menu',
+        'non_nulle' => '0',
         'id_bdd_de_la_base_dependante' => 1,
       ),
     ),

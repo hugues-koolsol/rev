@@ -7,7 +7,7 @@ function sql_164($par,&$donnees_retournees,$that){
     $from0='
       FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_taches T0    ';
     $sql0.=$from0;
-    $where0=' WHERE ( /* */ `T0`.`chx_utilisateur_tache` = '.sq1($par['T0_chx_utilisateur_tache']).' AND `T0`.`chp_priorite_tache` < '.sq1($par['T0_chp_priorite_tache']).')'.PHP_EOL;
+    $where0=' WHERE ( /* */ `T0`.`chx_utilisateur_tache` = '.sq1($par['T0_chx_utilisateur_tache']).' AND `T0`.`chp_priorite_tache` < '.sq1($par['T0_chp_priorite_tache']).' AND `T0`.`chx_projet_tache` = '.sq1($par['T0_chx_projet_tache']).')'.PHP_EOL;
     $sql0.=$where0;
     $order0='
        ORDER BY  `T0`.`chp_priorite_tache` ASC';

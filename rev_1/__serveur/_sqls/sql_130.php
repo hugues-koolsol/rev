@@ -4,7 +4,8 @@ function sql_130($par,&$donnees_retournees,$that){
       INSERT  INTO `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_taches`(
          `chx_utilisateur_tache` , 
          `chp_texte_tache` , 
-         `chp_priorite_tache`,
+         `chp_priorite_tache` , 
+         `chx_projet_tache`,
          `chd__dtm_tache`  ,
          `chd__dtc_tache`
       ) VALUES 
@@ -18,6 +19,7 @@ function sql_130($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_utilisateur_tache']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_texte_tache']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_priorite_tache']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_projet_tache']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($GLOBALS[__date_ms]).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($GLOBALS[__date_ms]).'';
         $liste_des_valeurs.=')';

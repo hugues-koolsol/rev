@@ -2,7 +2,7 @@
 function sql_327($par,&$donnees_retournees,$that){
     $champs0='
       `T1`.`chx_source_autorisation` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
-      `T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`chi_id_menu`
+      `T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`chi_id_menu` , `T0`.`cht_condition_php_menu` , `T0`.`cht_condition_menu`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -33,6 +33,8 @@ function sql_327($par,&$donnees_retournees,$that){
                 'T0.cht_initialisation_menu' => $tab0[5],
                 'T0.cht_complements_menu' => $tab0[6],
                 'T0.chi_id_menu' => $tab0[7],
+                'T0.cht_condition_php_menu' => $tab0[8],
+                'T0.cht_condition_menu' => $tab0[9],
             );
         }
         return array(

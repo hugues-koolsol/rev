@@ -1461,11 +1461,14 @@ class c_svg_bdd1{
             "nom_bref_du_champ" : document.getElementById( 'meta_modifier__nom_bref_du_champ' ).value ,
             "nom_court_du_champ" : document.getElementById( 'meta_modifier__nom_court_du_champ' ).value ,
             "nom_long_du_champ" : document.getElementById( 'meta_modifier__nom_long_du_champ' ).value ,
-            "typologie" : document.getElementById( 'meta_modifier__typologie' ).value,
-            "genre" : document.getElementById( 'meta_modifier__genre' ).value,
+            /* meta_modifier__typologie */
+            "typologie" : document.getElementById( 'typologie' ).value,
+            /*meta_modifier__genre*/
+            "genre" : document.getElementById( 'genre' ).value,
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ  );
-        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ +3].contenu=document.getElementById( 'meta_modifier__genre' ).value;
+        /*meta_modifier__genre*/
+        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ +3].contenu=document.getElementById( 'genre' ).value;
         if(afficher_champ_dans_svg === 1){
             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ - 1].proprietes.style='display:inline;';
         }else{
@@ -1839,6 +1842,8 @@ class c_svg_bdd1{
             document.getElementById('a_une_valeur_par_defaut').checked=data_genre.che_a_init_genre===1?true:false;
             document.getElementById('la_valeur_par_defaut_est_caractere').checked=data_genre.che_init_est_mot_genre===1?true:false;
             document.getElementById('valeur_par_defaut').value=data_genre.cht_valeur_init_genre===null?'':data_genre.cht_valeur_init_genre;
+
+            document.getElementById('typologie').value=data_genre.chp_prefixe_genre===null?'':data_genre.chp_prefixe_genre;
         }
     }
     /*
@@ -2015,16 +2020,18 @@ class c_svg_bdd1{
             texte__liste_des_genres+=tableau_des_genres[i][1];
             
         }
-        
+        /*
+        meta_modifier__genre
+        */
         var cmd='';
         cmd+='interface1.module1(';
         cmd+='  chemin_module1(\'' + this.#chemin_module1 + '\'),';
         cmd+='  methode3(selectionner_un_genre),';
         cmd+='  parametre3(';
-        cmd+='     zone_select(meta_modifier__genre),';
+        cmd+='     zone_select(genre),';
         cmd+='  )';
         cmd+=')';
-        t+='<select id="meta_modifier__genre" data-hug_change="' + cmd + '">'+texte__liste_des_genres+'</select>';
+        t+='<select id="genre" data-hug_change="' + cmd + '">'+texte__liste_des_genres+'</select>';
         /*
         
         */
@@ -2093,7 +2100,8 @@ class c_svg_bdd1{
 
         t+='<br /><b>meta</b>';
         t+='<br />typologie : ';
-        t+='<select id="meta_modifier__typologie" >';
+        /* meta_modifier__typologie */
+        t+='<select id="typologie" >';
         t+='<option value="chi" ' + (typologie === 'chi' ? ( ' selected' ) : ( '' )) + '>index entier (chi) integer[n]</option>';
         t+='<option value="chx" ' + (typologie === 'chx' ? ( ' selected' ) : ( '' )) + '>référence croisée (chx) integer[n]</option>';
         t+='<option value="che" ' + (typologie === 'che' ? ( ' selected' ) : ( '' )) + '>entier (che) integer[n]</option>';
@@ -3799,6 +3807,88 @@ class c_svg_bdd1{
         t+='<hr />';
         t+='<h3>ajouter un champ</h3>';
         t+='<div class="yy__x_signaux_0" id="zone_message_ajouter_un_champ"></div>';
+        /*
+          =====================================================================================================
+          =====================================================================================================
+        */
+        t+='<table><tr>';
+        t+='<td>';
+        /*
+          =====================================================================================================
+        */
+        
+        
+        let l_option='';
+        let texte__liste_des_genres='';
+        let tableau_des_genres=[];
+        for(let i in __gi1.__liste_des_genres){
+         
+            /* 
+              {
+                "chi_id_genre":1,
+                "chp_nom_genre":"indéfini",
+                "chp_espece_genre":"TEXT",
+                "che_longueur_genre":null,
+                "che_est_primaire_genre":0,
+                "che_est_incrément_genre":0,
+                "che_est_obligatoire_genre":0,
+                "che_a_init_genre":0,
+                "che_init_est_mot_genre":0,
+                "cht_valeur_init_genre":null
+              }
+            */
+            l_option='';
+            l_option+='<option';
+            if(1==__gi1.__liste_des_genres[i].chi_id_genre){
+              l_option+=' selected="true"'
+            }
+            l_option+=' value="'+__gi1.__liste_des_genres[i].chi_id_genre+'"';
+            l_option+=' data-genre="'+__gi1.enti1(JSON.stringify(__gi1.__liste_des_genres[i]))+'"';
+            l_option+='>';
+            l_option+=__gi1.__liste_des_genres[i].chp_nom_genre;
+            l_option+='</option>'
+         
+            tableau_des_genres.push([__gi1.__liste_des_genres[i].che_ordre_genre,l_option]);
+        }
+        
+        tableau_des_genres.sort(function (a, b) {
+            /* return a[0].localeCompare(b[0]); */
+            return a[0] - b[0] ;
+        })
+        
+        for(let i=0;i<tableau_des_genres.length;i++){
+            
+            texte__liste_des_genres+=tableau_des_genres[i][1];
+            
+        }
+
+
+
+        var cmd='';
+        cmd+='interface1.module1(';
+        cmd+='  chemin_module1(\'' + this.#chemin_module1 + '\'),';
+        cmd+='  methode3(selectionner_un_genre),';
+        cmd+='  parametre3(';
+        cmd+='     zone_select(genre),';
+        cmd+='  )';
+        cmd+=')';
+        
+        t+='<br />genre  : <select id="genre" data-hug_change="' + cmd + '">'+texte__liste_des_genres+'</select>';
+        
+        
+        
+        /*
+          =====================================================================================================
+        */
+        t+='</td>';
+        
+        
+        
+        t+='<td>';
+        /*
+          =====================================================================================================
+        */
+        
         var cmd='';
         cmd+='interface1.module1(';
         cmd+=' chemin_module1(\'_js/c_svg_bdd1.js\'),';
@@ -3843,88 +3933,11 @@ class c_svg_bdd1{
             cmd+=')';
             t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '" >' + this.#especes_de_reference[ind] + '</div>';
         }
-        
-/*        
-        let texte__liste_des_genres='';
-        let genre_courant='';
-        let genre=1;
-
-        for(let i in __gi1.__liste_des_genres){
-            texte__liste_des_genres+='<option';
-            if(genre==__gi1.__liste_des_genres[i].chi_id_genre){
-              texte__liste_des_genres+=' selected="true"'
-            }
-            texte__liste_des_genres+=' value="'+__gi1.__liste_des_genres[i].chi_id_genre+'"';
-            texte__liste_des_genres+=' data-genre="'+__gi1.enti1(JSON.stringify(__gi1.__liste_des_genres[i]))+'"';
-            texte__liste_des_genres+='>';
-            texte__liste_des_genres+=__gi1.__liste_des_genres[i].chp_nom_genre;
-            texte__liste_des_genres+='</option>'
-        }
-*/        
 
 
-        let l_option='';
-        let texte__liste_des_genres='';
-        let tableau_des_genres=[];
-        for(let i in __gi1.__liste_des_genres){
-         
-            /* 
-              {
-                "chi_id_genre":1,
-                "chp_nom_genre":"indéfini",
-                "chp_espece_genre":"TEXT",
-                "che_longueur_genre":null,
-                "che_est_primaire_genre":0,
-                "che_est_incrément_genre":0,
-                "che_est_obligatoire_genre":0,
-                "che_a_init_genre":0,
-                "che_init_est_mot_genre":0,
-                "cht_valeur_init_genre":null
-              }
-            */
-            l_option='';
-            l_option+='<option';
-            if(1==__gi1.__liste_des_genres[i].chi_id_genre){
-              l_option+=' selected="true"'
-            }
-            l_option+=' value="'+__gi1.__liste_des_genres[i].chi_id_genre+'"';
-            l_option+=' data-genre="'+__gi1.enti1(JSON.stringify(__gi1.__liste_des_genres[i]))+'"';
-            l_option+='>';
-            l_option+=__gi1.__liste_des_genres[i].chp_nom_genre;
-            l_option+='</option>'
-         
-            tableau_des_genres.push([__gi1.__liste_des_genres[i].che_ordre_genre,l_option]);
-        }
-        
-        let toto=tableau_des_genres.sort(function (a, b) {
-            /* return a[0].localeCompare(b[0]); */
-            return a[0] - b[0] ;
-        })
-        
-        for(let i=0;i<tableau_des_genres.length;i++){
-            
-            texte__liste_des_genres+=toto[i][1];
-            
-        }
-
-
-
-        var cmd='';
-        cmd+='interface1.module1(';
-        cmd+='  chemin_module1(\'' + this.#chemin_module1 + '\'),';
-        cmd+='  methode3(selectionner_un_genre),';
-        cmd+='  parametre3(';
-        cmd+='     zone_select(genre),';
-        cmd+='  )';
-        cmd+=')';
-        
-        t+='<br />genre  : <select id="genre" data-hug_change="' + cmd + '">'+texte__liste_des_genres+'</select>';
-        
-        
         
         
         t+='<br />longueur  : <input id="longueur_du_champ" type="text" value="" autocapitalize="off" />';
-        
         
         t+='<br />table mère pour chx  : <input id="table_mère" type="text" value="" autocapitalize="off" />';
         let sel='';
@@ -3962,6 +3975,22 @@ class c_svg_bdd1{
         t+='<br />a une valeur par défaut <input id="a_une_valeur_par_defaut" type="checkbox" />';
         t+=' , type caractère <input id="la_valeur_par_defaut_est_caractere" type="checkbox" />';
         t+=' , valeur : <input id="valeur_par_defaut" type="text" value="" autocapitalize="off"  /> ';
+        
+        
+        /*
+          =====================================================================================================
+        */
+        t+='</td>';
+        
+        
+        t+='</tr>';
+        t+='</table>';
+        /*
+          =====================================================================================================
+          =====================================================================================================
+        */
+        
+        
         t+='<br />nom long du champ : <input type="text" id="meta_ajouter__nom_long_du_champ" value="A faire ..." autocapitalize="off" />';
         t+='<br />nom court du champ : <input type="text" id="meta_ajouter__nom_court_du_champ" value="A faire ..." autocapitalize="off" />';
         t+='<br />nom bref du champ : <input type="text" id="meta_ajouter__nom_bref_du_champ" value="A faire ..." autocapitalize="off" />';

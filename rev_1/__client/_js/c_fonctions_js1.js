@@ -84,6 +84,9 @@ class c_fonctions_js1{
     #objet_conversion_rev_vers_html=null;
     #objet_conversion_rev_vers_texte=null;
     /*
+    */
+    #reference_arbre_du_menu=null;
+    /*
       =============================================================================================================
     */
     constructor( par_interface1 ){
@@ -259,6 +262,24 @@ class c_fonctions_js1{
        }
         
     }
+    /*
+      =============================================================================================================
+    */
+    enregistrer_les_particulatitees_du_menu(mat,debut){
+        let id_interne=0;
+        let l01=mat.length;
+        for( let i=debut + 1 ; i < l01 ; i=mat[i][12] ){
+            if('id_interne' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_interne=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(id_interne>0 && this.#reference_arbre_du_menu!==null){
+         console.log(id_interne , 'this.#reference_arbre_du_menu=',this.#reference_arbre_du_menu);
+         debugger;
+        }
+        debugger
+        return({__xst : __xsu});
+    }
 
     /*
       =============================================================================================================
@@ -272,13 +293,27 @@ class c_fonctions_js1{
                 if(obj.id_original==='liste_des_menus'){
                     for( let i=0 ; i < obj.arbre.length ; i++ ){
                         if(obj.id_cible === obj.arbre[i].id_interne){
+                            let contenu_du_html='';
                             if(obj.arbre[i].attributs.hasOwnProperty('data-liste_des_menus') && obj.arbre[i].attributs['data-liste_des_menus']==1){
+                                /*
                                 let nouveau_nom=window.prompt( "nouveau nom ?" , obj.arbre[i].contenu );
                                 if(nouveau_nom){
                                     obj.arbre[i].contenu=nouveau_nom;
                                     reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
                                 }
+                                */
+                                contenu_du_html+='libelle';
+                                contenu_du_html+='<input data_id_arbre="'+i+'" id="libelle_de_la_branche_du_menu" value="'+__gi1.enti1(obj.arbre[i].contenu)+'" />';
+                                contenu_du_html+='<br />';
                             }
+                            contenu_du_html+='conditions d\'accès rev';
+                            contenu_du_html+='<textarea data_id_arbre="'+i+'"  id="condition_d_acces_du_menu"></textarea>';
+                            contenu_du_html+='<br />';
+                            
+                            contenu_du_html+='<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_fonctions_js1(enregistrer_les_particulatitees_du_menu(id_interne('+obj.arbre[i].id_interne+')))" >enregistrer</div>';
+                            
+                            document.getElementById('edition_des_contitions_du_menu').innerHTML=contenu_du_html;
+                            __gi1.ajoute_les_evenements_aux_boutons( null );
                             break;
                         }
                     }
@@ -392,22 +427,9 @@ class c_fonctions_js1{
         t+=' <div style="">'
         t+='  <ul id="liste_des_menus" data-chi_id_acces="'+reponse.__xva['chi_id_acces']+'">';
         t+=reponse.__xva.le_nouveau_html
-
-        
-/*        
-        for(let i in reponse.__xva['liste_des_menus']){
-            t+='<li ';
-            t+=' data-chi_id_source="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chi_id_source'])+'"';
-            t+=' data-chp_nom_source="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chp_nom_source'])+'"';
-            t+=' data-chp_methode_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chp_methode_menu'])+'"';
-            t+=' data-chi_id_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chi_id_menu'])+'"';
-            t+=' data-chp_titre_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['chp_titre_menu'])+'"';
-            t+=' data-cht_initialisation_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['cht_initialisation_menu'])+'"';
-            t+=' data-cht_complements_menu="'+__gi1.enti1(reponse.__xva['liste_des_menus'][i]['cht_complements_menu'])+'"';
-            t+='>'+reponse.__xva['liste_des_menus'][i]['cht_libelle_menu']+'</li>'
-        }
-*/        
         t+='  </ul>'
+        t+=' </div>'
+        t+=' <div id="edition_des_contitions_du_menu">'
         t+=' </div>'
         t+='</div>'
         
@@ -437,7 +459,7 @@ class c_fonctions_js1{
 
         options['afficher_le_bouton_editer']=1;
         options['class_du_bouton_editer']='hug_bouton yy__x_signaux___xif';
-        new tri_arbre1( id , options );
+        this.#reference_arbre_du_menu=new tri_arbre1( id , options );
         
         
         

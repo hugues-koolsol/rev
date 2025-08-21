@@ -249,7 +249,8 @@ WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
    AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
    AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
    AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
-   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2) 
+   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
+   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache) 
 ORDER BY `T0`.`chp_priorite_tache` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',
@@ -259,9 +260,10 @@ LIMIT :quantitee OFFSET :debut
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_taches SET 
    `chp_priorite_tache` = (chp_priorite_tache-1)
-WHERE (`chi_id_tache` = :c_chi_id_tache
+WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-   AND `chp_priorite_tache` >= 1) ;',
+   AND `chp_priorite_tache` >= 1
+   AND `chx_projet_tache` = :c_chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches',
   ),
   121 => 
@@ -270,15 +272,17 @@ WHERE (`chi_id_tache` = :c_chi_id_tache
    `chp_priorite_tache` = (chp_priorite_tache+1)
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-   AND `chp_priorite_tache` < 99) ;',
+   AND `chp_priorite_tache` < 99
+   AND `chx_projet_tache` = :c_chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches',
   ),
   122 => 
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_taches SET 
    `chp_priorite_tache` = :n_chp_priorite_tache
-WHERE (`chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;',
+WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
+   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+   AND `chx_projet_tache` = :c_chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches',
   ),
   123 => 
@@ -343,7 +347,8 @@ WHERE `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd
 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
  FROM b1.tbl_taches T0
 WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
-   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache)
 ;',
     'cht_commentaire_requete' => 'tâches par id',
   ),
@@ -353,7 +358,8 @@ WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
    `chp_texte_tache` = :n_chp_texte_tache , 
    `chp_priorite_tache` = :n_chp_priorite_tache
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;',
+   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+   AND `chx_projet_tache` = :c_chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches texte et priorité par id',
   ),
   130 => 
@@ -361,19 +367,22 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
     'cht_sql_requete' => 'INSERT INTO b1.`tbl_taches`(
     `chx_utilisateur_tache` , 
     `chp_texte_tache` , 
-    `chp_priorite_tache`
+    `chp_priorite_tache` , 
+    `chx_projet_tache`
 ) VALUES (
     :chx_utilisateur_tache , 
     :chp_texte_tache , 
-    :chp_priorite_tache
+    :chp_priorite_tache , 
+    :chx_projet_tache
 );',
     'cht_commentaire_requete' => 'tâches',
   ),
   131 => 
   array (
     'cht_sql_requete' => 'DELETE FROM b1.tbl_taches
-WHERE (`chi_id_tache` = :chi_id_tache
-   AND `chx_utilisateur_tache` = :chx_utilisateur_tache) ;',
+WHERE ( /* */ `chi_id_tache` = :chi_id_tache
+   AND `chx_utilisateur_tache` = :chx_utilisateur_tache
+   AND `chx_projet_tache` = :chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches par id',
   ),
   132 => 
@@ -719,7 +728,8 @@ WHERE (`chi_id_source` = :c_chi_id_source
 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
  FROM b1.tbl_taches T0
 WHERE ( /* */ `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache) 
+   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache
+   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache) 
 ORDER BY `T0`.`chp_priorite_tache` ASC
 ;',
     'cht_commentaire_requete' => 'tâches par priorité < xxx',
@@ -729,7 +739,8 @@ ORDER BY `T0`.`chp_priorite_tache` ASC
     'cht_sql_requete' => 'UPDATE b1.tbl_taches SET 
    `chp_priorite_tache` = :n_chp_priorite_tache
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;',
+   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+   AND `chx_projet_tache` = :c_chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches priorité par id=',
   ),
   166 => 
@@ -1198,7 +1209,8 @@ WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
-`T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu`
+`T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
+`T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T0`.`chx_acces_menu`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
@@ -1225,14 +1237,20 @@ LIMIT :quantitee OFFSET :debut
     `chp_methode_menu` , 
     `cht_libelle_menu` , 
     `cht_initialisation_menu` , 
-    `cht_complements_menu`
+    `cht_complements_menu` , 
+    `cht_condition_menu` , 
+    `cht_condition_php_menu` , 
+    `chx_acces_menu`
 ) VALUES (
     :chp_titre_menu , 
     :chx_autorisation_menu , 
     :chp_methode_menu , 
     :cht_libelle_menu , 
     :cht_initialisation_menu , 
-    :cht_complements_menu
+    :cht_complements_menu , 
+    :cht_condition_menu , 
+    :cht_condition_php_menu , 
+    :chx_acces_menu
 );',
     'cht_commentaire_requete' => 'menus',
   ),
@@ -1241,13 +1259,15 @@ LIMIT :quantitee OFFSET :debut
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
 `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , `T0`.`cht_initialisation_menu` , 
-`T0`.`cht_complements_menu`
+`T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T0`.`chx_acces_menu` , `T4`.`chp_nom_acces`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
  LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
 
  LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+
+ LEFT JOIN b1.tbl_acces T4 ON T4.chi_id_acces = T0.chx_acces_menu
 
 WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
 ;',
@@ -1261,7 +1281,9 @@ WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
    `chx_autorisation_menu` = :n_chx_autorisation_menu , 
    `chp_methode_menu` = :n_chp_methode_menu , 
    `cht_initialisation_menu` = :n_cht_initialisation_menu , 
-   `cht_complements_menu` = :n_cht_complements_menu
+   `cht_complements_menu` = :n_cht_complements_menu , 
+   `cht_condition_menu` = :n_cht_condition_menu , 
+   `cht_condition_php_menu` = :n_cht_condition_php_menu
 WHERE `chi_id_menu` = :c_chi_id_menu ;',
     'cht_commentaire_requete' => 'menus',
   ),
@@ -1280,7 +1302,7 @@ WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
   array (
     'cht_sql_requete' => 'SELECT 
 `T1`.`chx_source_autorisation` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
-`T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`chi_id_menu`
+`T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`chi_id_menu` , `T0`.`cht_condition_php_menu` , `T0`.`cht_condition_menu`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
@@ -1399,5 +1421,25 @@ WHERE `chi_id_genre` = :c_chi_id_genre ;',
    `che_ordre_genre` = :n_che_ordre_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',
     'cht_commentaire_requete' => 'genres maj ordre',
+  ),
+  336 => 
+  array (
+    'cht_sql_requete' => 'DELETE FROM b1.tbl_menus
+WHERE `chi_id_menu` = :chi_id_menu ;',
+    'cht_commentaire_requete' => 'menus',
+  ),
+  337 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_menu` , `T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu`
+ FROM b1.tbl_menus T0
+WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
+   AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
+   AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
+   AND `T0`.`chx_acces_menu` IS NOT NULL) 
+ORDER BY `T0`.`chi_id_menu` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',
+    'cht_commentaire_requete' => 'menus',
   ),
 );

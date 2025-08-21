@@ -530,8 +530,73 @@ class c_genres1{
     */
     function vv_genres_supprimer1(&$donnees_retournees,&$mat,&$donnees_recues){
      
+        if($donnees_recues[__xva]['chi_id_genre']===1){
+          $donnees_retournees[__x_signaux][__xer][]='le genre 1 ne peut pas être supprimé [' . __LINE__ . ']';
+        }
+     
 
+/*
         $donnees_retournees[__x_signaux][__xer][]='afr vérifier utilisation genre dans les bases ' . self::LE_LA_ELEMENT_GERE . '(' . $donnees_recues[__xva]['chi_id_genre'] . ') [' . __LINE__ . ']';
+*/        
+        
+        
+        /*
+          il faut vérifier que ce genre n'est pas utilisé dans les bases
+        */
+        $tt171=/*sql_inclure_deb*/
+            /* sql_171()
+            SELECT 
+
+            `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+             FROM b1.tbl_bdds T0
+            WHERE (`T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
+             /*sql_171()*/ 171,
+            array( 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
+            $donnees_retournees
+        );
+        
+        if( $tt171[__xst] !== __xsu){
+         
+            $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+            return;
+            
+        }
+        
+        foreach($tt171[__xva] as $k1 => $v1){
+         
+            $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($v1['T0.chp_rev_travail_basedd']);
+            
+            if($obj_matrice[__xst] !== __xsu){
+             
+                $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+                return;
+                
+            }
+            
+            $mat=$obj_matrice[__xva];
+            $l01=count($mat);
+            
+            for( $i=1 ; $i < $l01 ; $i++){
+             
+//                echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $mat[$i][8] , true ) . '</pre>' ; exit(0);
+             
+                if($mat[$i][2]==='f' && $mat[$i][8]===1 && $mat[$i][1]==='genre'){
+                 
+                    if($mat[$i+1][1]===$donnees_recues[__xva]['chi_id_genre']){
+                     
+                       $donnees_retournees[__x_signaux][__xer][]=' le numéro actuel est encore utilisé dans la base "' . $v1['T0.chi_id_basedd'] . '" [' . __LINE__ . ']';
+                       $donnees_retournees[__xst]=__xer;
+                       return;
+                        
+                    }
+                }
+            }
+        }        
+        
         
         $tt=$this->sql0->sql_iii(
              /*sql_330()*/ 330,

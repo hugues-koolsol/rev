@@ -30,6 +30,7 @@ function sql_129($par,&$donnees_retournees,$that){
     $where0=' WHERE 1=1 '.PHP_EOL;
     $where0.=' AND `chi_id_tache` = '.sq1($par['c_chi_id_tache']).''.PHP_EOL;
     $where0.=' AND `chx_utilisateur_tache` = '.sq1($par['c_chx_utilisateur_tache']).''.PHP_EOL;
+    $where0.=' AND `chx_projet_tache` = '.sq1($par['c_chx_projet_tache']).''.PHP_EOL;
     $sql0.=$where0;
     // echo __FILE__ . ' ' . __LINE__ . ' $sql0= <pre>' . $sql0 . '</pre>' ; exit(0);
     try{

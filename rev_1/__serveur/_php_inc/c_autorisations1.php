@@ -515,9 +515,11 @@ class c_autorisations1{
 
                 $o1 .= '<h1>modifier ' . self::LE_LA_ELEMENT_GERE . '(' . $tt[__xva][0]['T0.chi_id_autorisation'] . ') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_autorisations1.formulaire1(action1(page_liste_des_autorisations1))" title="revenir à la liste" >⬱</div></h1>' . PHP_EOL;
                 $o1 .= '<div id="vv_autorisations_modifier1">' . PHP_EOL;
-                /**/
+                /*
+                  =====================================================================================
+                */
                 $o1 .= '  <input type="hidden" value="' . $tt[__xva][0]['T0.chi_id_autorisation'] . '" id="chi_id_autorisation" />' . PHP_EOL;
-                /**/
+
                 /*
                   =====================================================================================
                 */
@@ -921,6 +923,16 @@ class c_autorisations1{
       =============================================================================================================
     */
     function page_liste_des_autorisations1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+     
+     
+        if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
+
+            $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xsu;
+            return;
+
+        }
+     
         $__nbMax=30;
         $par=array();
         $par['T0_chi_id_autorisation']='';

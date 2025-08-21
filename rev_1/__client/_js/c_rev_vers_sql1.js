@@ -107,7 +107,7 @@ class c_rev_vers_sql1{
         }else if(op === 'n_est_pas'){
             t=' IS NOT ';
         }else{
-            return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' inconnu opérateur "' + op + '"'} ));
+            return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + ' inconnu opérateur "' + op + '" <br />n_est_pas , pas_comme, ?'} ));
         }
         return({"__xst" : __xsu ,"__xva" : t});
     }

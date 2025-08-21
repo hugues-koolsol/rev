@@ -1,8 +1,8 @@
 <?php
-function sql_131($par,&$donnees_retournees,$that){
+function sql_336($par,&$donnees_retournees,$that){
     $sql0='
-      DELETE FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_taches
-          WHERE ( /* */ `chi_id_tache` = '.sq1($par['chi_id_tache']).' AND `chx_utilisateur_tache` = '.sq1($par['chx_utilisateur_tache']).' AND `chx_projet_tache` = '.sq1($par['chx_projet_tache']).') ;
+      DELETE FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_menus
+          WHERE `chi_id_menu` = '.sq1($par['chi_id_menu']).' ;
     ';
     // echo __FILE__ . ' ' . __LINE__ . ' $sql0=<pre>' . $sql0 . '</pre>' ; exit(0);
     try{
@@ -12,7 +12,7 @@ function sql_131($par,&$donnees_retournees,$that){
         return array(/**/
             __xst => __xer , 
             'sql0' => $sql0 , 
-            'texte_requete' => 'la suppression dans la table des taches' ,
+            'texte_requete' => 'la suppression dans la table des menus' ,
             'exception' => $e , 
             'id_bdd' => BDD_NUMERO_1,
             'bdd' => $GLOBALS[__BDD][BDD_NUMERO_1] ,

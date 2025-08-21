@@ -1797,6 +1797,7 @@ class _c_interface1{
       l'envoie normal se fait via le worker
     */
     #envoie_requete_au_serveur( obj ){
+
         let mat=this.__m_rev1.rev_tcm( obj.__x_action );
         if(mat.__xst === __xer){
             this.les_messages.__xer.push( this.__m_rev1.nl2() + 'il y a une erreur' );

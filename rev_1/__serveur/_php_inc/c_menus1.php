@@ -108,73 +108,84 @@ class c_menus1{
 
         }
         
-        
-        
-         
-         
-        $tt326=$this->sql0->sql_iii(
-             /*sql_326()*/ 326,
-            array(/**/
-                'T0_chi_id_autorisation' => $donnees_recues[__xva]['chx_autorisation_menu'],
-                'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
-            ),
-            $donnees_retournees
-        );
-        
-        if($tt326[__xst] === __xer){
-
-            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-            return;
-
+        if(
+            $donnees_recues[__xva]['chx_autorisation_menu']==='' && $donnees_recues[__xva]['chx_acces_menu']!==''
+            || $donnees_recues[__xva]['chx_autorisation_menu']!=='' && $donnees_recues[__xva]['chx_acces_menu']===''
+        ){
+         // ok
+        }else{
+                $donnees_retournees[__x_signaux][__xer][]='vous devez indiquer soit une autorisation soit un accès [' . __LINE__ . ']';
+                return;
         }
-
-        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-        $obj_doss=new c_dossiers1(
-            $donnees_retournees,
-             /*matrice*/ $mat,
-            $donnees_recues
-        );
-        $dossier=$obj_doss->construire_chemin($tt326[__xva][0]['T1.chx_dossier_id_source']);
         
-        if($dossier['__xst'] !== __xsu){
-
-            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-            return;
-
-        }
-
-        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt326[__xva][0] , true ) . '</pre>' ; exit(0);*/
-        
-        if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt326[__xva][0]['T1.chp_nom_source'])){
-
-            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-            return;
-
-        }
-
-        require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt326[__xva][0]['T1.chp_nom_source']);
-        $class_methods=get_class_methods(str_replace('.php','',$tt326[__xva][0]['T1.chp_nom_source']));
-        $trouve=false;
-        $non_trouve='';
-        foreach($class_methods as $k1 => $v1){
+        if($donnees_recues[__xva]['chx_autorisation_menu']===''){
+        }else{
+            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues[__xva]['chx_autorisation_menu'] , true ) . '</pre>' ; exit(0);
+             
+            $tt326=$this->sql0->sql_iii(
+                 /*sql_326()*/ 326,
+                array(/**/
+                    'T0_chi_id_autorisation' => $donnees_recues[__xva]['chx_autorisation_menu'],
+                    'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
+                ),
+                $donnees_retournees
+            );
             
-            if($v1 === $donnees_recues[__xva]['chp_methode_menu']){
+            if($tt326[__xst] === __xer){
 
-                $trouve=true;
-                break;
+                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
 
             }
-            if($v1!=='__constructor'){
-                $non_trouve='<br />"'.$v1.'"'.$non_trouve;
+
+            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
+            $obj_doss=new c_dossiers1(
+                $donnees_retournees,
+                 /*matrice*/ $mat,
+                $donnees_recues
+            );
+            $dossier=$obj_doss->construire_chemin($tt326[__xva][0]['T1.chx_dossier_id_source']);
+            
+            if($dossier['__xst'] !== __xsu){
+
+                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
+
             }
 
-        }
-        
-        if($trouve === false){
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt326[__xva][0] , true ) . '</pre>' ; exit(0);*/
+            
+            if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt326[__xva][0]['T1.chp_nom_source'])){
 
-            $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . $non_trouve . ' [' . __LINE__ . ']';
-            return;
+                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
 
+            }
+
+            require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt326[__xva][0]['T1.chp_nom_source']);
+            $class_methods=get_class_methods(str_replace('.php','',$tt326[__xva][0]['T1.chp_nom_source']));
+            $trouve=false;
+            $non_trouve='';
+            foreach($class_methods as $k1 => $v1){
+                
+                if($v1 === $donnees_recues[__xva]['chp_methode_menu']){
+
+                    $trouve=true;
+                    break;
+
+                }
+                if($v1!=='__constructor'){
+                    $non_trouve='<br />"'.$v1.'"'.$non_trouve;
+                }
+
+            }
+            
+            if($trouve === false){
+
+                $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . $non_trouve . ' [' . __LINE__ . ']';
+                return;
+
+            }
         }
         
         
@@ -187,6 +198,10 @@ class c_menus1{
                     'chp_methode_menu' => $donnees_recues[__xva]['chp_methode_menu'] === '' ? null : $donnees_recues[__xva]['chp_methode_menu'],
                     'cht_initialisation_menu' => $donnees_recues[__xva]['cht_initialisation_menu'] === '' ? null : $donnees_recues[__xva]['cht_initialisation_menu'],
                     'cht_complements_menu' => $donnees_recues[__xva]['cht_complements_menu'] === '' ? null : $donnees_recues[__xva]['cht_complements_menu'],
+                    'cht_condition_menu' => $donnees_recues[__xva]['cht_condition_menu'] === '' ? null : $donnees_recues[__xva]['cht_condition_menu'],
+                    'cht_condition_php_menu' => $donnees_recues[__xva]['cht_condition_php_menu'] === '' ? null : $donnees_recues[__xva]['cht_condition_php_menu'],
+                    'chx_acces_menu' => $donnees_recues[__xva]['chx_acces_menu'] === '' ? null : $donnees_recues[__xva]['chx_acces_menu'],
+                    
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=$this->sql0->sql_iii(
@@ -271,7 +286,7 @@ class c_menus1{
     */
     function vv_menus_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=$this->sql0->sql_iii(
-             /*sql_319()*/ 319,
+             /*sql_324()*/ 324,
             array(/**/
                 'T0_chi_id_menu' => $donnees_recues[__xva]['chi_id_menu']
             ),
@@ -281,7 +296,7 @@ class c_menus1{
         if($tt[__xst] === __xsu){
 
             $tt=$this->sql0->sql_iii(
-                 /*sql_320()*/ 320,
+                 /*sql_336()*/ 336,
                 array(/**/
                     'chi_id_menu' => $tt[__xva][0]['T0.chi_id_menu']
                 ),
@@ -341,71 +356,86 @@ class c_menus1{
         }
          
          
+        if(
+            $donnees_recues[__xva]['chx_autorisation_menu']==='' && $donnees_recues[__xva]['chx_acces_menu']!==''
+            || $donnees_recues[__xva]['chx_autorisation_menu']!=='' && $donnees_recues[__xva]['chx_acces_menu']===''
+        ){
+         // ok
+        }else{
+                $donnees_retournees[__x_signaux][__xer][]='vous devez indiquer soit une autorisation soit un accès [' . __LINE__ . ']';
+                return;
+        }
          
-         
-        $tt326=$this->sql0->sql_iii(
-             /*sql_326()*/ 326,
-            array(/**/
-                'T0_chi_id_autorisation' => $donnees_recues[__xva]['chx_autorisation_menu'],
-                'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
-            ),
-            $donnees_retournees
-        );
-        
-        if($tt326[__xst] === __xer){
-
-            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-            return;
-
-        }
-
-        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
-        $obj_doss=new c_dossiers1(
-            $donnees_retournees,
-             /*matrice*/ $mat,
-            $donnees_recues
-        );
-        $dossier=$obj_doss->construire_chemin($tt326[__xva][0]['T1.chx_dossier_id_source']);
-        
-        if($dossier['__xst'] !== __xsu){
-
-            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-            return;
-
-        }
-
-        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt326[__xva][0] , true ) . '</pre>' ; exit(0);*/
-        
-        if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt326[__xva][0]['T1.chp_nom_source'])){
-
-            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
-            return;
-
-        }
-
-        require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt326[__xva][0]['T1.chp_nom_source']);
-        $class_methods=get_class_methods(str_replace('.php','',$tt326[__xva][0]['T1.chp_nom_source']));
-        $trouve=false;
-        $non_trouve='';
-        foreach($class_methods as $k1 => $v1){
+        if($donnees_recues[__xva]['chx_autorisation_menu']===''){
+        }else{
+             
+             
+             
+             
+            $tt326=$this->sql0->sql_iii(
+                 /*sql_326()*/ 326,
+                array(/**/
+                    'T0_chi_id_autorisation' => $donnees_recues[__xva]['chx_autorisation_menu'],
+                    'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
+                ),
+                $donnees_retournees
+            );
             
-            if($v1 === $donnees_recues[__xva]['chp_methode_menu']){
+            if($tt326[__xst] === __xer){
 
-                $trouve=true;
-                break;
+                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
 
             }
-            if($v1!=='__constructor'){
-                $non_trouve='<br />"'.$v1.'"'.$non_trouve;
+
+            require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_dossiers1.php');
+            $obj_doss=new c_dossiers1(
+                $donnees_retournees,
+                 /*matrice*/ $mat,
+                $donnees_recues
+            );
+            $dossier=$obj_doss->construire_chemin($tt326[__xva][0]['T1.chx_dossier_id_source']);
+            
+            if($dossier['__xst'] !== __xsu){
+
+                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
+
             }
 
-        }
-        
-        if($trouve === false){
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt326[__xva][0] , true ) . '</pre>' ; exit(0);*/
+            
+            if(!is_file($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt326[__xva][0]['T1.chp_nom_source'])){
 
-            $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . $non_trouve . ' [' . __LINE__ . ']';
-            return;
+                $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . ' [' . __LINE__ . ']';
+                return;
 
+            }
+
+            require_once($dossier['__xva']['chemin_absolu'] . DIRECTORY_SEPARATOR . $tt326[__xva][0]['T1.chp_nom_source']);
+            $class_methods=get_class_methods(str_replace('.php','',$tt326[__xva][0]['T1.chp_nom_source']));
+            $trouve=false;
+            $non_trouve='';
+            foreach($class_methods as $k1 => $v1){
+                
+                if($v1 === $donnees_recues[__xva]['chp_methode_menu']){
+
+                    $trouve=true;
+                    break;
+
+                }
+                if($v1!=='__constructor'){
+                    $non_trouve='<br />"'.$v1.'"'.$non_trouve;
+                }
+
+            }
+            
+            if($trouve === false){
+
+                $donnees_retournees[__x_signaux][__xer][]='méthode non trouvée parmis  ' . $non_trouve . ' [' . __LINE__ . ']';
+                return;
+
+            }
         }
 
         $tt=$this->sql0->sql_iii(
@@ -418,6 +448,9 @@ class c_menus1{
                 'n_chp_methode_menu' => $donnees_recues[__xva]['chp_methode_menu'],
                 'n_cht_initialisation_menu' => $donnees_recues[__xva]['cht_initialisation_menu'],
                 'n_cht_complements_menu' => $donnees_recues[__xva]['cht_complements_menu'],
+                'n_cht_condition_menu' => $donnees_recues[__xva]['cht_condition_menu'],
+                'n_cht_condition_php_menu' => $donnees_recues[__xva]['cht_condition_php_menu'],
+                
             ),
             $donnees_retournees
         );
@@ -557,6 +590,39 @@ class c_menus1{
         $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
+        
+        
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>acces si groupe de menu</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        if(isset($donnees_recues['dupliquer']['T0.chx_acces_menu'])){
+            $o1 .= '        <input type="hidden" value="'.$donnees_recues['dupliquer']['T0.chx_acces_menu'].'"  id="chx_acces_menu" />' . PHP_EOL;
+            $o1 .= '        <span id="chx_acces_menu_libelle">';
+            $o1 .= '(' . $donnees_recues['dupliquer']['T0.chx_acces_menu'] . ') ' . htmlentities($donnees_recues['dupliquer']['T1.chp_nom_acces']) . PHP_EOL;
+            $o1 .= '</span>' . PHP_EOL;
+        }else{
+            $o1 .= '        <input type="hidden" value=""  id="chx_acces_menu" />' . PHP_EOL;
+            $o1 .= '        <span id="chx_acces_menu_libelle">*indéfini</span>' . PHP_EOL;
+        }
+        $parametre_sous_fenetre='c_acces1.page_acces_sous_liste1(';
+        $parametre_sous_fenetre .= ' sans_menus1()';
+        $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_acces_menu)';
+        $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_acces_menu_libelle)';
+        $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
+        $parametre_sous_fenetre .= ')';
+        $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
+        $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
+        $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        
+        
+        
         /*
           =====================================================================================================
         */
@@ -628,6 +694,64 @@ class c_menus1{
           =====================================================================================================
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>conditions</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+        $o1 .= '        <div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_condition_menu)))" title="formater le source rev">(😊)</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_condition_menu)))" title="agrandir la zone">🖐</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_condition_menu)))" title="retrecir la zone">👊</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_condition_menu)))" title="vider la zone">🚫</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_condition_menu)))" title="copier le contenu">📋</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_condition_menu)))" title="aller à la position">position</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_condition_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
+        $o1 .= '        </div>';
+        $o1 .= '         <textarea placeholder="rev condition" autocorrect="off" autocapitalize="off" spellcheck="false" id="cht_condition_menu" >';
+        if(isset($donnees_recues['dupliquer']['T0.cht_condition_menu'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.cht_condition_menu']);
+        }
+        
+        $o1 .= '</textarea>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>conditions php</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+        $o1 .= '        <div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_condition_php_menu)))" title="agrandir la zone">🖐</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_condition_php_menu)))" title="retrecir la zone">👊</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_condition_php_menu)))" title="vider la zone">🚫</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_condition_php_menu)))" title="copier le contenu">📋</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_condition_php_menu)))" title="aller à la position">position</div>' . PHP_EOL;
+        $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_condition_php_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
+        $o1 .= '        </div>';
+        $o1 .= '         <textarea placeholder="php condition" autocorrect="off" autocapitalize="off" spellcheck="false" id="cht_condition_php_menu" >';
+        if(isset($donnees_recues['dupliquer']['T0.cht_condition_php_menu'])){
+            $o1.=enti1($donnees_recues['dupliquer']['T0.cht_condition_php_menu']);
+        }
+        
+        $o1 .= '</textarea>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        
+        
+        
+        
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_creer1),page_liste_des_menus1())" title="" >ajouter et revenir à la liste</div>';
         $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_creer1))" title="" >ajouter</div>';
@@ -660,7 +784,7 @@ class c_menus1{
         if(is_numeric($chi_id_menus)){
 
             $tt=$this->sql0->sql_iii(
-                 /*sql_319()*/ 319,
+                 /*sql_324()*/ 324,
                 array(/**/
                     'T0_chi_id_menu' => $chi_id_menus
                 ),
@@ -721,6 +845,10 @@ class c_menus1{
             );
             
             if($tt[__xst] === __xsu){
+             
+                /*
+                  echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt[__xva][0] , true ) . '</pre>' ; exit(0);
+                */
 
                 $o1 .= '<h1>modifier ' . self::LE_LA_ELEMENT_GERE . '(' . $tt[__xva][0]['T0.chi_id_menu'] . ') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_menus1.formulaire1(action1(page_liste_des_menus1))" title="revenir à la liste" >⬱</div></h1>' . PHP_EOL;
                 $o1 .= '<div id="vv_menus_modifier1">' . PHP_EOL;
@@ -790,6 +918,42 @@ class c_menus1{
                 $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
+                
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>acces</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_acces_menu']) . '"  id="chx_acces_menu" />' . PHP_EOL;
+                $o1 .= '        <span id="chx_acces_menu_libelle">' . PHP_EOL;
+                
+                if($tt[__xva][0]['T0.chx_acces_menu'] === null){
+
+                    $o1 .= '*indéfini' . PHP_EOL;
+
+                }else{
+
+                    $o1 .= '(' . $tt[__xva][0]['T0.chx_acces_menu'] . ') ' . htmlentities($tt[__xva][0]['T4.chp_nom_acces']) . PHP_EOL;
+                }
+
+                $o1 .= '</span>' . PHP_EOL;
+                $parametre_sous_fenetre='c_acces1.page_acces_sous_liste1(';
+                $parametre_sous_fenetre .= ' sans_menus1()';
+                $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_acces_menu)';
+                $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_acces_menu_libelle)';
+                $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
+                $parametre_sous_fenetre .= ')';
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
+                $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
+                $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;
+                
                 /*
                   =============================================================================================
                 */
@@ -855,12 +1019,74 @@ class c_menus1{
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
+                  =============================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>condition</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+                $o1 .= '        <div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_condition_menu)))" title="formater le source rev">(😊)</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_condition_menu)))" title="agrandir la zone">🖐</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_condition_menu)))" title="retrecir la zone">👊</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_condition_menu)))" title="vider la zone">🚫</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_condition_menu)))" title="copier le contenu">📋</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_condition_menu)))" title="aller à la position">position</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_condition_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
+                $o1 .= '        </div>';
+                $o1 .= '        <textarea id="cht_condition_menu" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_condition_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '      </div>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                
+                /*
+                  =============================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>condition php</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+                $o1 .= '        <div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_condition_php_menu)))" title="agrandir la zone">🖐</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(retrecir_la_zone(zone(cht_condition_php_menu)))" title="retrecir la zone">👊</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_2" data-hug_click="c_fonctions_js1(vider_la_zone(zone(cht_condition_php_menu)))" title="vider la zone">🚫</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(copier_le_contenu1(zone_source(cht_condition_php_menu)))" title="copier le contenu">📋</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_condition_php_menu)))" title="aller à la position">position</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_condition_php_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
+                $o1 .= '          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(rev_vers_php1(zone_source(cht_condition_menu),zone_resultat(cht_condition_php_menu)))" title="" >rev -&gt; php</div>';
+                
+                $o1 .= '        </div>';
+                $o1 .= '        <textarea id="cht_condition_php_menu" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_condition_php_menu']) . '</textarea>' . PHP_EOL;
+                $o1 .= '      </div>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                
+                
+                
+                /*
                   =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+/*
                 $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>';
                 $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '))" title="" >enregistrer</div>';
+                
+*/
+                $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(rev_vers_php1(zone_source(cht_condition_menu),zone_resultat(cht_condition_php_menu)))c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>';
+                $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(rev_vers_php1(zone_source(cht_condition_menu),zone_resultat(cht_condition_php_menu)))c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '))" title="" >enregistrer</div>';
+
+                
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /**/
@@ -935,6 +1161,9 @@ class c_menus1{
         $par['T0_chi_id_menu']='';
         $par['nom_champ_dans_parent1']='';
         $par['nom_libelle_dans_parent1']='';
+        $par['T0_cht_libelle_menu']='';
+        $par['T0_chp_titre_menu']='';
+        
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
@@ -1012,6 +1241,10 @@ class c_menus1{
         $par['T0_chi_id_menu']=$par['T0_chi_id_menu']??'';
         $par['nom_champ_dans_parent1']=$par_mat['nom_champ_dans_parent1']??'';
         $par['nom_libelle_dans_parent1']=$par_mat['nom_libelle_dans_parent1']??'';
+        $par['T0_cht_libelle_menu']=$par_mat['T0_cht_libelle_menu']??'';
+        $par['T0_chp_titre_menu']=$par_mat['T0_chp_titre_menu']??'';
+        
+        
         $nom_filtre='vv_menus_filtre_choix_1';
         $o1='<h1>choisir un menu</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
@@ -1033,7 +1266,7 @@ class c_menus1{
         /**/
         $o1 .= '</div>';
         $tt=$this->sql0->sql_iii(
-             /*sql_178()*/ 178,
+             /*sql_337()*/ 337,
              /**/ array(
                 /**/
                 'T0_chi_id_menu' => $par['T0_chi_id_menu'] === '' ? '' : $par['T0_chi_id_menu'],

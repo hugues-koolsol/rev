@@ -7,7 +7,7 @@ function sql_128($par,&$donnees_retournees,$that){
     $from0='
       FROM `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_taches T0    ';
     $sql0.=$from0;
-    $where0=' WHERE ( /* */ `T0`.`chi_id_tache` = '.sq1($par['T0_chi_id_tache']).' AND `T0`.`chx_utilisateur_tache` = '.sq1($par['T0_chx_utilisateur_tache']).')'.PHP_EOL;
+    $where0=' WHERE ( /* */ `T0`.`chi_id_tache` = '.sq1($par['T0_chi_id_tache']).' AND `T0`.`chx_utilisateur_tache` = '.sq1($par['T0_chx_utilisateur_tache']).' AND `T0`.`chx_projet_tache` = '.sq1($par['T0_chx_projet_tache']).')'.PHP_EOL;
     $sql0.=$where0;
     $donnees0=array();
     //echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' .  $sql0  . '</pre>' ; exit(0);
