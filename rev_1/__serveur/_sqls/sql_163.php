@@ -8,11 +8,6 @@ function sql_163($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`chx_dossier_id_source` = '.sq0($par['n_chx_dossier_id_source']).'';
     }
-    if($par['n_chx_projet_id_source']==='' || is_null($par['n_chx_projet_id_source']) ){
-        $tableau_champs[]='`chx_projet_id_source` = NULL';
-    }else{
-        $tableau_champs[]='`chx_projet_id_source` = '.sq0($par['n_chx_projet_id_source']).'';
-    }
     if($par['n_chp_nom_source']==='' || is_null($par['n_chp_nom_source']) ){
         $tableau_champs[]='`chp_nom_source` = NULL';
     }else{

@@ -5,8 +5,6 @@ class c_bases1{
       =============================================================================================================
     */
     public function __construct(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-     
-     
         require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_sql0.php');
         $this->sql0=new c_sql0(
             $donnees_retournees,
@@ -1044,16 +1042,20 @@ class c_bases1{
             $donnees_retournees[__xva]=$obj[__xva];
             $donnees_retournees[__xva]['id_bdd_de_la_base_en_cours']=$id_bdd_de_la_base_en_cours;
             $maj='';
+            $maj .= 'methode_module_dynamique1(';
+            $maj .= ' nom_du_module2("_js/c_svg_bdd1.js"),';
+            $maj .= ' methode2(afficher_resultat_comparaison_base_physique_et_base_virtuelle),';
+            $maj .= ')';
             
-            $maj.='methode_module_dynamique1(';
-            $maj.=' nom_du_module2("_js/c_svg_bdd1.js"),';
-            $maj.=' methode2(afficher_resultat_comparaison_base_physique_et_base_virtuelle),';
-            $maj.=')';
             if(isset($donnees_retournees[__xva]['maj'])){
-                $donnees_retournees[__xva]['maj'].=$maj;
+
+                $donnees_retournees[__xva]['maj'] .= $maj;
+
             }else{
+
                 $donnees_retournees[__xva]['maj']=$maj;
             }
+
             $donnees_retournees[__xva]['maj']=$maj;
             $donnees_retournees[__xst]=__xsu;
 
@@ -1151,11 +1153,10 @@ class c_bases1{
                     /*
                     */
                     
-                    
                     if(__X_CLE_APPLICATION === 'rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1){
-                     
-                     
-                        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);
+
+                        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);*/
+                        
                         if($donnees_recues[__xva]['operation_table'] === 'creer_une_table'
                            || $donnees_recues[__xva]['operation_table'] === 'supprimer_une_table'
                            || $donnees_recues[__xva]['operation_table'] === 'supprimer_l_index'
@@ -1165,10 +1166,8 @@ class c_bases1{
                             /*on recherche tous les projets>2 et on ajoute réalise l'opération*/
                             $tt316=/*sql_inclure_deb*/
                                 /* sql_316()
-                                / ***meta(sur_base_de_reference(1))*** /
-
-                                SELECT 
-
+                                / ***meta(sur_base_de_reference(1))*** /
+                                SELECT 
                                 `T0`.`chi_id_projet`
                                  FROM b1.tbl_projets T0
                                 WHERE `T0`.`chi_id_projet` > 2
@@ -1206,10 +1205,10 @@ class c_bases1{
 
 
                         }
-                     
+
+
                     }
-                    
-                    
+
                 }catch(Exception $e){
                     
                     if($GLOBALS[DEVER_SRV] >= 1){
@@ -2527,10 +2526,8 @@ class c_bases1{
         $tables=$db->query("SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';");
         $les_tables=array();
         while($table=$tables->fetchArray(SQLITE3_NUM)){
-            $definition_de_la_table=$db->querySingle("SELECT sql FROM sqlite_master WHERE name = '{$table[0]}'") . ";".PHP_EOL.PHP_EOL;
-            
+            $definition_de_la_table=$db->querySingle("SELECT sql FROM sqlite_master WHERE name = '{$table[0]}'") . ";" . PHP_EOL . PHP_EOL;
             /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $definition_de_la_table , true ) . '</pre>' ; exit(0); */
-            
             $sql .= $definition_de_la_table;
             $sql_structure .= $definition_de_la_table;
             $les_tables[]=$table[0];
@@ -2561,19 +2558,19 @@ class c_bases1{
                     }
 
                 }
-                $sql_insert .= PHP_EOL."(" . implode(",",$row) . "),";
+                $sql_insert .= PHP_EOL . "(" . implode(",",$row) . "),";
             }
             
             if($nb_enreg > 0){
 
-                $sql .= PHP_EOL . '/*' . PHP_EOL ;
-                $sql .= '  ===============================' . PHP_EOL ;
-                $sql .= '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL ;
-                $sql .= '  ===============================' . PHP_EOL ;
+                $sql .= PHP_EOL . '/*' . PHP_EOL;
+                $sql .= '  ===============================' . PHP_EOL;
+                $sql .= '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL;
+                $sql .= '  ===============================' . PHP_EOL;
                 $sql .= '*/' . PHP_EOL . PHP_EOL;
-                $sql .= rtrim($sql_insert,",") . ";".PHP_EOL.PHP_EOL;
+                $sql .= rtrim($sql_insert,",") . ";" . PHP_EOL . PHP_EOL;
                 $sql_insertion_des_valeurs .= PHP_EOL . '/*' . PHP_EOL . '  ===============================' . PHP_EOL . '  DONNEES A INSERER POUR : ' . $v1 . PHP_EOL . '  ===============================' . PHP_EOL . '*/' . PHP_EOL . PHP_EOL;
-                $sql_insertion_des_valeurs .= rtrim($sql_insert,",") . ";".PHP_EOL.PHP_EOL;
+                $sql_insertion_des_valeurs .= rtrim($sql_insert,",") . ";" . PHP_EOL . PHP_EOL;
 
             }else{
 
@@ -2585,8 +2582,8 @@ class c_bases1{
         $sql_insertion_des_index='';
         $indexes=$db->query("SELECT name , tbl_name FROM sqlite_master WHERE type ='index' AND name NOT LIKE 'sqlite_%';");
         while($index=$indexes->fetchArray(SQLITE3_NUM)){
-            $sql .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";".PHP_EOL.PHP_EOL;
-            $sql_insertion_des_index .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";".PHP_EOL.PHP_EOL;
+            $sql .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";" . PHP_EOL . PHP_EOL;
+            $sql_insertion_des_index .= $db->querySingle("SELECT sql FROM sqlite_master WHERE tbl_name='{$index[1]}' and name='{$index[0]}';") . ";" . PHP_EOL . PHP_EOL;
         }
         file_put_contents($chemin_dump,$sql);
         $chemin_dump_creation=$chemin_bdd . '._structure.sql';

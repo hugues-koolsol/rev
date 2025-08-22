@@ -148,37 +148,23 @@ class c_fonctions_js1{
     /*
       =============================================================================================================
     */
-    enregistrer_l_ordre_des_genres2(evenement , reference_arbre ){
-     
+    enregistrer_l_ordre_des_genres2( evenement , reference_arbre ){
         let tableau_des_ordre=[];
         let ordre=1;
-        
         for(let i in reference_arbre.arbre){
-         tableau_des_ordre.push([reference_arbre.arbre[i].attributs.id, ordre++]);
+            tableau_des_ordre.push( [reference_arbre.arbre[i].attributs.id,ordre++] );
         }
-        
-
-        let id_original=reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri');
-        let le_json=JSON.stringify(reference_arbre.arbre);
-        let le_html=document.getElementById(id_original).innerHTML;
-
-        let obj={
-            "__x_action" : "c_genres1.enregister_l_ordre_des_genres()" ,
-            "__xva" : {
-                "tableau_des_ordre"      : tableau_des_ordre,
-            }
-        };
+        let id_original=reference_arbre.reference_zone_triable.getAttribute( 'data-id_original_pour_tri' );
+        let le_json=JSON.stringify( reference_arbre.arbre );
+        let le_html=document.getElementById( id_original ).innerHTML;
+        let obj={"__x_action" : "c_genres1.enregister_l_ordre_des_genres()" ,"__xva" : {"tableau_des_ordre" : tableau_des_ordre}};
         __gi1.envoyer_un_message_au_worker( obj );
-     
     }
-    
     /*
       =============================================================================================================
     */
-    trier_la_liste_des_genres(reponse){
-     
+    trier_la_liste_des_genres( reponse ){
         let id=reponse.zone_ul_li;
-        
         let el=document.getElementById( id );
         let options={
             "hauteur_max_en_vh" : 80 ,
@@ -188,57 +174,43 @@ class c_fonctions_js1{
             "afficher_le_bouton_supprimer" : 0 ,
             "class_du_bouton_supprimer" : 'hug_bouton yy__x_signaux_0' ,
             "arborescent" : 0 ,
-            "class_du_bouton_deplacer" : 'hug_bouton',
+            "class_du_bouton_deplacer" : 'hug_bouton' ,
             "boutons_du_menu" : [] ,
-            "class_du_bouton_menu" : 'hug_bouton',
-            "class_du_bouton_replier" : 'hug_bouton yy__x_signaux_2',
+            "class_du_bouton_menu" : 'hug_bouton' ,
+            "class_du_bouton_replier" : 'hug_bouton yy__x_signaux_2'
         };
-        options.boutons_du_menu.push({"libelle" : '💾 enregistrer cet ordre' ,"fonction" : this.enregistrer_l_ordre_des_genres2})
+        options.boutons_du_menu.push( {"libelle" : '💾 enregistrer cet ordre' ,"fonction" : this.enregistrer_l_ordre_des_genres2} );
         options['afficher_le_bouton_editer']=0;
         options['class_du_bouton_editer']='hug_bouton yy__x_signaux___xif';
         new tri_arbre1( id , options );
-        
-        
-        
         __gi1.ajoute_les_evenements_aux_boutons( null );
-     
-
     }
     /*
       =============================================================================================================
     */
-    enregistrer_le_menu2(evenement , reference_arbre ){
-     
-        let id_original=reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri');
-        let chi_id_acces=parseInt(document.getElementById(id_original).getAttribute('data-chi_id_acces'),10);
-        let le_json=JSON.stringify(reference_arbre.arbre);
-        let le_html=document.getElementById(id_original).innerHTML;
-
+    enregistrer_le_menu2( evenement , reference_arbre ){
+        let id_original=reference_arbre.reference_zone_triable.getAttribute( 'data-id_original_pour_tri' );
+        let chi_id_acces=parseInt( document.getElementById( id_original ).getAttribute( 'data-chi_id_acces' ) , 10 );
+        let le_json=JSON.stringify( reference_arbre.arbre );
+        let le_html=document.getElementById( id_original ).innerHTML;
         let obj={
             "__x_action" : "c_acces1.enregister_le_menu_de_l_acces2()" ,
-            "__xva" : {
-                "chi_id_acces" : chi_id_acces ,
-                "le_json"      : le_json,
-                "le_html"      : le_html
-            }
+            "__xva" : {"chi_id_acces" : chi_id_acces ,"le_json" : le_json ,"le_html" : le_html}
         };
         __gi1.envoyer_un_message_au_worker( obj );
-//        return({"__xst" : __xsu});
-        
-        
-        
+        /* return({"__xst" : __xsu}); */
     }
     /*
       =============================================================================================================
     */
     ajouter_une_branche_au_menu1( evenement , reference_arbre ){
-        // console.log(reference_arbre)
-        // console.log( 'dans ajouter_une_branche' );
-        // console.log( 'evenement =' , evenement );
-        // console.log( 'reference =' , reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri')  );
-        // console.log( 'arbre =' ,  reference_arbre );
-       let id_original=reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri');
-       if(id_original==='liste_des_menus'){
+        /* console.log(reference_arbre) */
+        /* console.log( 'dans ajouter_une_branche' ); */
+        /* console.log( 'evenement =' , evenement ); */
+        /* console.log( 'reference =' , reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri')  ); */
+        /* console.log( 'arbre =' ,  reference_arbre ); */
+        let id_original=reference_arbre.reference_zone_triable.getAttribute( 'data-id_original_pour_tri' );
+        if(id_original === 'liste_des_menus'){
             let max=0;
             for( let i=0 ; i < reference_arbre.arbre.length ; i++ ){
                 if(reference_arbre.arbre[i].id_interne > max){
@@ -254,80 +226,44 @@ class c_fonctions_js1{
                 "contenu" : "nouvelle branche " + max ,
                 "attributs" : {}
             };
-            if(id_original==='liste_des_menus'){
-                a["attributs"] = {"data-liste_des_menus":1};
+            if(id_original === 'liste_des_menus'){
+                a["attributs"]={"data-liste_des_menus" : 1};
             }
             reference_arbre.arbre.splice( 0 , 0 , a );
             reference_arbre.action_externe_sur_arbre( 'ajoute_branche' , reference_arbre.arbre );
-       }
-        
+        }
     }
     /*
       =============================================================================================================
     */
-    enregistrer_les_particulatitees_du_menu(mat,debut){
-        let id_interne=0;
-        let l01=mat.length;
-        for( let i=debut + 1 ; i < l01 ; i=mat[i][12] ){
-            if('id_interne' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_interne=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(id_interne>0 && this.#reference_arbre_du_menu!==null){
-         console.log(id_interne , 'this.#reference_arbre_du_menu=',this.#reference_arbre_du_menu);
-         debugger;
-        }
-        debugger
-        return({__xst : __xsu});
-    }
-
-    /*
-      =============================================================================================================
-    */
-    action_sur_tri_menu1(reference_arbre , obj){
-        console.log( 'dans action_sur_tri_menu1 ' , reference_arbre ,  obj );
-        
-
+    action_sur_tri_menu1( reference_arbre , obj ){
+        console.log( 'dans action_sur_tri_menu1 ' , reference_arbre , obj );
         switch (obj.type_deplacement){
             case 'editer' :
-                if(obj.id_original==='liste_des_menus'){
+                if(obj.id_original === 'liste_des_menus'){
                     for( let i=0 ; i < obj.arbre.length ; i++ ){
                         if(obj.id_cible === obj.arbre[i].id_interne){
                             let contenu_du_html='';
-                            if(obj.arbre[i].attributs.hasOwnProperty('data-liste_des_menus') && obj.arbre[i].attributs['data-liste_des_menus']==1){
-                                /*
+                            if(obj.arbre[i].attributs.hasOwnProperty( 'data-liste_des_menus' ) && obj.arbre[i].attributs['data-liste_des_menus'] == 1){
                                 let nouveau_nom=window.prompt( "nouveau nom ?" , obj.arbre[i].contenu );
                                 if(nouveau_nom){
                                     obj.arbre[i].contenu=nouveau_nom;
                                     reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
                                 }
-                                */
-                                contenu_du_html+='libelle';
-                                contenu_du_html+='<input data_id_arbre="'+i+'" id="libelle_de_la_branche_du_menu" value="'+__gi1.enti1(obj.arbre[i].contenu)+'" />';
-                                contenu_du_html+='<br />';
                             }
-                            contenu_du_html+='conditions d\'accès rev';
-                            contenu_du_html+='<textarea data_id_arbre="'+i+'"  id="condition_d_acces_du_menu"></textarea>';
-                            contenu_du_html+='<br />';
-                            
-                            contenu_du_html+='<div class="hug_bouton yy__x_signaux___xsu" data-hug_click="c_fonctions_js1(enregistrer_les_particulatitees_du_menu(id_interne('+obj.arbre[i].id_interne+')))" >enregistrer</div>';
-                            
-                            document.getElementById('edition_des_contitions_du_menu').innerHTML=contenu_du_html;
-                            __gi1.ajoute_les_evenements_aux_boutons( null );
                             break;
                         }
                     }
                 }
                 break;
-
-            case 'supprimer' :
                 
+            case 'supprimer' :
                 /*
                   on ne peut supprimer que les branches qui ont été créées data-liste_des_menus
                 */
                 for( let i=0 ; i < obj.arbre.length ; i++ ){
                     if(obj.id_cible === obj.arbre[i].id_interne){
-                        if(obj.arbre[i].attributs &&  obj.arbre[i].attributs['data-liste_des_menus']==1 ){
+                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus'] == 1){
                             obj.arbre.splice( i , 1 );
                         }
                         break;
@@ -335,23 +271,20 @@ class c_fonctions_js1{
                 }
                 reference_arbre.action_externe_sur_arbre( 'supprimer_un_element' , obj.arbre );
                 break;
-
-            case 'dedans' : 
                 
+            case 'dedans' :
                 /* l'id_cible doit être une branche créée */
                 for( let i=0 ; i < obj.arbre.length ; i++ ){
                     if(obj.id_cible === obj.arbre[i].id_interne){
-                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus']==1){
-                         
+                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus'] == 1){
                             /*
-                            
+                              
                               l'id_source doit être une feuille
-                            
+                              
                             */
-                            
                             for( let j=0 ; j < obj.arbre.length ; j++ ){
                                 if(obj.id_source === obj.arbre[j].id_interne){
-                                    if(!(obj.arbre[j].attributs && obj.arbre[j].attributs['data-liste_des_menus']==1)){
+                                    if(!(obj.arbre[j].attributs && obj.arbre[j].attributs['data-liste_des_menus'] == 1)){
                                         reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
                                     }else{
                                         reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre_avant );
@@ -359,38 +292,34 @@ class c_fonctions_js1{
                                     break;
                                 }
                             }
-                           
                         }else{
-                         
                             reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre_avant );
-                            
                         }
                         break;
                     }
                 }
                 break;
                 
-                
             case 'avant' : 
             case 'apres' :
                 /* console.log( 'appelee_apres_action1' , obj ); */
                 /*
-                   si l'id_source est une branche alors l'id_interne_parent de l'id_cible doit être 0
-                
+                  si l'id_source est une branche alors l'id_interne_parent de l'id_cible doit être 0
+                  
                 */
                 let id_source_est_branche=false;
                 for( let i=0 ; i < obj.arbre.length ; i++ ){
                     if(obj.id_source === obj.arbre[i].id_interne){
-                        if((obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus']==1)){
+                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus'] == 1){
                             id_source_est_branche=true;
                         }
                         break;
                     }
                 }
-                if(id_source_est_branche===true){
+                if(id_source_est_branche === true){
                     for( let i=0 ; i < obj.arbre.length ; i++ ){
                         if(obj.id_cible === obj.arbre[i].id_interne){
-                            if(obj.arbre[i].id_interne_parent===0){
+                            if(obj.arbre[i].id_interne_parent === 0){
                                 reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
                             }else{
                                 reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre_avant );
@@ -405,38 +334,33 @@ class c_fonctions_js1{
                 
             default: break;
         }
-        console.log(reference_arbre,obj)
- 
+        console.log( reference_arbre , obj );
     }
     /*
       =============================================================================================================
     */
     afficher_la_liste_des_menus( reponse ){
         var t='';
-        t+='<h1>trier les menus de '+reponse.__xva['chi_id_acces']+'</h1>';
-        
-        
-        t+='<div style="display:flex;flex-direction:row;justify-content: space-evenly;">'
-        t+=' <div style="">'
-        t+='  <ul id="liste_des_menus_ancien"  data-chi_id_acces="'+reponse.__xva['chi_id_acces']+'">';
-        if(reponse.__xva['cht_parametres_acces']!==''){
+        t+='<h1>trier les menus de ' + reponse.__xva['chi_id_acces'] + '</h1>';
+        t+='<div style="display:flex;flex-direction:row;justify-content: space-evenly;">';
+        t+=' <div style="">';
+        t+='  <ul id="liste_des_menus_ancien"  data-chi_id_acces="' + reponse.__xva['chi_id_acces'] + '">';
+        if(reponse.__xva['cht_parametres_acces'] !== ''){
             t+=reponse.__xva['cht_parametres_acces'];
         }
-        t+='  </ul>'
-        t+=' </div>'
-        t+=' <div style="">'
-        t+='  <ul id="liste_des_menus" data-chi_id_acces="'+reponse.__xva['chi_id_acces']+'">';
-        t+=reponse.__xva.le_nouveau_html
-        t+='  </ul>'
-        t+=' </div>'
-        t+=' <div id="edition_des_contitions_du_menu">'
-        t+=' </div>'
-        t+='</div>'
-        
+        t+='  </ul>';
+        t+=' </div>';
+        t+=' <div style="">';
+        t+='  <ul id="liste_des_menus" data-chi_id_acces="' + reponse.__xva['chi_id_acces'] + '">';
+        t+=reponse.__xva.le_nouveau_html;
+        t+='  </ul>';
+        t+=' </div>';
+        t+=' <div id="edition_des_contitions_du_menu">';
+        t+=' </div>';
+        t+='</div>';
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         vv_sous_fenetre1.innerHTML=t;
         vv_sous_fenetre1.showModal();
-        
         let id='liste_des_menus';
         let el=document.getElementById( id );
         let options={
@@ -446,27 +370,19 @@ class c_fonctions_js1{
              /* 'calc(100% - 50px)', */
             "afficher_le_bouton_supprimer" : 1 ,
             "class_du_bouton_supprimer" : 'hug_bouton yy__x_signaux_0' ,
-            
             "fonction_appelee_apres_action" : this.action_sur_tri_menu1 ,
             "arborescent" : 1 ,
-            "class_du_bouton_deplacer" : 'hug_bouton',
+            "class_du_bouton_deplacer" : 'hug_bouton' ,
             "boutons_du_menu" : [] ,
-            "class_du_bouton_menu" : 'hug_bouton',
-            "class_du_bouton_replier" : 'hug_bouton yy__x_signaux_2',
+            "class_du_bouton_menu" : 'hug_bouton' ,
+            "class_du_bouton_replier" : 'hug_bouton yy__x_signaux_2'
         };
-        options.boutons_du_menu.push({"libelle" : '+' ,"fonction" : this.ajouter_une_branche_au_menu1})
-        options.boutons_du_menu.push({"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2})
-
+        options.boutons_du_menu.push( {"libelle" : '+' ,"fonction" : this.ajouter_une_branche_au_menu1} );
+        options.boutons_du_menu.push( {"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2} );
         options['afficher_le_bouton_editer']=1;
         options['class_du_bouton_editer']='hug_bouton yy__x_signaux___xif';
         this.#reference_arbre_du_menu=new tri_arbre1( id , options );
-        
-        
-        
         __gi1.ajoute_les_evenements_aux_boutons( null );
-        
-        
-        
     }
     /*
       =============================================================================================================
@@ -481,17 +397,9 @@ class c_fonctions_js1{
             }
         }
         if(chi_id_acces > 0){
-         
-         
-            let obj={
-                "__x_action" : "c_acces1.obtenir_les_menus_d_un_acces()" ,
-                "__xva" : {
-                    "chi_id_acces" : chi_id_acces ,
-                }
-            };
+            let obj={"__x_action" : "c_acces1.obtenir_les_menus_d_un_acces()" ,"__xva" : {"chi_id_acces" : chi_id_acces}};
             this.#interface1.envoyer_un_message_au_worker( obj );
             return({"__xst" : __xsu});
-         
         }
     }
     /*

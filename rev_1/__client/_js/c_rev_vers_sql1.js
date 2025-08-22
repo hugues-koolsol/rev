@@ -136,6 +136,7 @@ class c_rev_vers_sql1{
                                            && options.tableau_des_tables_utilisees[i].champs[j].nom_du_champ === tab[id + 2][1]
                                     ){
                                         options.type_de_champ_pour_where=options.tableau_des_tables_utilisees[i].champs[j].type;
+                                        options.espece_du_champ_pour_where=options.tableau_des_tables_utilisees[i].champs[j].espece_du_champ;
                                         options.nom_du_champ_pour_where=this.__m_rev1.ma_constante( tab[id + 1] ) + '.' + this.__m_rev1.ma_constante( tab[id + 2] );
                                         break;
                                     }
@@ -895,7 +896,7 @@ class c_rev_vers_sql1{
                                                 liste_des_valeurs_pour_insert+=' , ';
                                             }
                                             liste_des_valeurs_pour_insert+=CRLF + '    ' + valeur_du_champ;
-                                            options.tableau_des_valeurs_pour_insert.push( valeur_du_champ.replace( /\$par\[/g , '$par[$i][' ) );
+                                            options.tableau_des_valeurs_pour_insert.push([ valeur_du_champ.replace( /\$par\[/g , '$par[$i][' ) ,nom_du_champ ]);
                                         }else{
                                             if(this.#tb[i][1] === 'modifier'){
                                                 la_valeur+=CRLF + '   ';
@@ -1257,13 +1258,13 @@ class c_rev_vers_sql1{
                             "type" : {"nom" : false ,"longueur" : false} ,
                             "commentaire" : '' ,
                             "meta" : '' ,
-                            "tableau_meta" : {},
+                            "tableau_meta" : {} ,
                             "espece_du_champ" : '' ,
                             "longueur_du_champ" : '' ,
                             "non_signe" : false ,
                             "la_valeur_par_defaut_est_caractere" : false ,
                             "a_une_valeur_par_defaut" : false ,
-                            "valeur_par_defaut" : '' ,
+                            "valeur_par_defaut" : ''
                         };
                         var definition_sql_du_champ='';
                         var meta_du_champ='';
@@ -1295,24 +1296,17 @@ class c_rev_vers_sql1{
                                   
                                 */
                                 variables_pour_tableau_tables.nom_du_champ=this.#tb[j + 1][1];
-
-                                definition_sql_du_champ+=' ' + variables_pour_tableau_tables.nom_du_champ + ''; /**/
-
-                                
+                                definition_sql_du_champ+=' ' + variables_pour_tableau_tables.nom_du_champ + '';
+                                /*  */
                             }else if(this.#tb[j][1] === 'espece_du_champ' && this.#tb[j][8] === 1 && this.#tb[j + 1][2] === 'c'){
-
                                 variables_pour_tableau_tables.espece_du_champ=this.#tb[j + 1][1].toUpperCase();
-                            
                             }else if(this.#tb[j][1] === 'longueur_du_champ' && this.#tb[j][8] === 1 && this.#tb[j + 1][2] === 'c'){
-                                
                                 variables_pour_tableau_tables.longueur_du_champ=this.#tb[j + 1][1];
-                            
                             }else if(this.#tb[j][1] === '#'){
-                                debugger
+                                debugger;
                                 if(this.#tb[j][13] === ''){
                                 }else{
-                                    console.log('%cafr','background:yellow;color:red;');
-
+                                    console.log( '%cafr' , 'background:yellow;color:red;' );
                                     variables_pour_tableau_tables.commentaire=this.#tb[j][13];
                                     definition_sql_du_champ+='/* ' + variables_pour_tableau_tables.commentaire.replace( /\/\*/g , '/ *' ).replace( /\*\//g , '* /' ) + ' */';
                                 }
@@ -1325,7 +1319,7 @@ class c_rev_vers_sql1{
                                                || this.#tb[j + 1][1] === '1')
                                 ){
                                     variables_pour_tableau_tables.non_signe=true;
-                                    definition_sql_du_champ+=variables_pour_tableau_tables.non_signe?' UNSIGNED':'';
+                                    definition_sql_du_champ+=variables_pour_tableau_tables.non_signe ? ( ' UNSIGNED' ) : ( '' );
                                 }
                             }else if((this.#tb[j][1] === 'notnull' || this.#tb[j][1] === 'not_null') && this.#tb[j][2] === 'f'){
                                 return(this.#rev_sql_le( {"__xst" : __xer ,"__xva" : t ,"id" : i ,"__xme" : this.__m_rev1.nl2() + 'remplacer not_null et notnull '} ));
@@ -1337,14 +1331,13 @@ class c_rev_vers_sql1{
                                                || this.#tb[j + 1][1] === '1')
                                 ){
                                     variables_pour_tableau_tables.non_nulle=true;
-                                    definition_sql_du_champ+=variables_pour_tableau_tables.non_nulle?' NOT NULL':'';
+                                    definition_sql_du_champ+=variables_pour_tableau_tables.non_nulle ? ( ' NOT NULL' ) : ( '' );
                                 }
                             }else if(this.#tb[j][1] === 'la_valeur_par_defaut_est_caractere' && this.#tb[j][8] === 1){
                             }else if(this.#tb[j][1] === 'valeur_par_defaut' && this.#tb[j][8] === 1){
                             }else if(this.#tb[j][1] === 'a_une_valeur_par_defaut' && this.#tb[j][8] === 1){
                                 if(this.#tb[j + 1][1] === '1'){
                                     variables_pour_tableau_tables.a_une_valeur_par_defaut=true;
-                                    
                                     definition_sql_du_champ+=' DEFAULT ';
                                     let la_valeur_par_defaut_est_caractere=false;
                                     let valeur_par_defaut='';
@@ -1389,10 +1382,8 @@ class c_rev_vers_sql1{
                                 variables_pour_tableau_tables.reference.est_defini=true;
                                 variables_pour_tableau_tables.reference.table=this.__m_rev1.ma_constante( this.#tb[j + 1] );
                                 variables_pour_tableau_tables.reference.champ=this.__m_rev1.ma_constante( this.#tb[j + 2] );
-
                             }else if(this.#tb[j][1] === 'type' && (this.#tb[j][8] === 1 || this.#tb[j][8] === 2)){
-                                debugger
-
+                                debugger;
                                 if(this.#tb[j][8] === 1){
                                     if(this.#tb[j + 1][2] === 'c'){
                                         definition_sql_du_champ+=' ' + this.#tb[j + 1][1] + '';
@@ -1448,9 +1439,9 @@ class c_rev_vers_sql1{
                         */
                         let definition_sql_du_champ2='';
                         definition_sql_du_champ2+=' ' + variables_pour_tableau_tables.nom_du_champ + '';
-                        definition_sql_du_champ2+=' '+variables_pour_tableau_tables.espece_du_champ.toUpperCase();
-                        if(variables_pour_tableau_tables.longueur_du_champ!==''){
-                            definition_sql_du_champ2+='('+variables_pour_tableau_tables.longueur_du_champ+')';
+                        definition_sql_du_champ2+=' ' + variables_pour_tableau_tables.espece_du_champ.toUpperCase();
+                        if(variables_pour_tableau_tables.longueur_du_champ !== ''){
+                            definition_sql_du_champ2+='(' + variables_pour_tableau_tables.longueur_du_champ + ')';
                         }
                         if(variables_pour_tableau_tables.cle_primaire){
                             definition_sql_du_champ2+=' PRIMARY KEY';
@@ -1459,30 +1450,23 @@ class c_rev_vers_sql1{
                             definition_sql_du_champ2+=' NOT NULL';
                         }
                         if(variables_pour_tableau_tables.reference.est_defini){
-                         
                             definition_sql_du_champ2+=' REFERENCES ' + variables_pour_tableau_tables.reference.table + '(' + variables_pour_tableau_tables.reference.champ + ') ';
-                         
                         }
-                        if(variables_pour_tableau_tables.a_une_valeur_par_defaut===true){
+                        if(variables_pour_tableau_tables.a_une_valeur_par_defaut === true){
                             definition_sql_du_champ2+=' DEFAULT ';
-                            if(variables_pour_tableau_tables.la_valeur_par_defaut_est_caractere===true){
+                            if(variables_pour_tableau_tables.la_valeur_par_defaut_est_caractere === true){
                                 definition_sql_du_champ2+=' \'' + variables_pour_tableau_tables.valeur_par_defaut.replace( /\\\'/ , '\'\'' ) + '\'';
                             }else{
                                 definition_sql_du_champ2+=' ' + variables_pour_tableau_tables.valeur_par_defaut + '';
                             }
                         }
-                        
-/*                        
-                        if(definition_sql_du_champ!==definition_sql_du_champ2){
-                            console.log('\n\n'+definition_sql_du_champ+'\n'+definition_sql_du_champ2);
-                            console.log('%cdifférents','background:red;color:yellow;');
-                        }
-*/                        
-                        
-//                        debugger
-
-                        
-                        
+                        /*
+                          if(definition_sql_du_champ!==definition_sql_du_champ2){
+                          console.log('\n\n'+definition_sql_du_champ+'\n'+definition_sql_du_champ2);
+                          console.log('%cdifférents','background:red;color:yellow;');
+                          }
+                        */
+                        /* debugger */
                         if(options.dans_definition_de_table === true){
                             t+=',';
                             t+=this.__m_rev1.resps( niveau );
@@ -1579,10 +1563,6 @@ class c_rev_vers_sql1{
                                     chaine_meta_table=chaine_meta_table.replace( /,transform_table_sur_svg\(/g , ',\r\n   transform_table_sur_svg(' );
                                     chaine_meta_table=chaine_meta_table.replace( /,default_charset\(/g , ',\r\n   default_charset(' );
                                     chaine_meta_table=chaine_meta_table.replace( /,collate\(/g , ',\r\n   collate(' );
-                                    
-                                    
-                                    
-                                    
                                 }else{
                                     return(this.#rev_sql_le( {"__xst" : __xer ,"__xva" : t ,"id" : i ,"__xme" : this.__m_rev1.nl2() + 'create_table meta'} ));
                                 }
@@ -1697,7 +1677,6 @@ class c_rev_vers_sql1{
                           }
                           break;
                         */
-
                         obj=this.__m_rev1.matrice_vers_source_rev1( this.#tb , i , false , i + 1 );
                         if(obj.__xst === __xsu){
                             t+=this.__m_rev1.resps( niveau );

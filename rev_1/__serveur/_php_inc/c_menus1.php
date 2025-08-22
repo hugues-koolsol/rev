@@ -108,21 +108,25 @@ class c_menus1{
 
         }
         
-        if(
-            $donnees_recues[__xva]['chx_autorisation_menu']==='' && $donnees_recues[__xva]['chx_acces_menu']!==''
-            || $donnees_recues[__xva]['chx_autorisation_menu']!=='' && $donnees_recues[__xva]['chx_acces_menu']===''
-        ){
-         // ok
+        if($donnees_recues[__xva]['chx_autorisation_menu'] === ''){
+
+
         }else{
-                $donnees_retournees[__x_signaux][__xer][]='vous devez indiquer soit une autorisation soit un accès [' . __LINE__ . ']';
-                return;
-        }
-        
-        if($donnees_recues[__xva]['chx_autorisation_menu']===''){
-        }else{
-            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues[__xva]['chx_autorisation_menu'] , true ) . '</pre>' ; exit(0);
-             
-            $tt326=$this->sql0->sql_iii(
+
+            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export($donnees_recues[__xva]['chx_autorisation_menu'],true) . '</pre>' ;
+            exit(0);
+            $tt326=/*sql_inclure_deb*/
+                /* sql_326()
+                SELECT 
+                `T1`.`chx_dossier_id_source` , `T1`.`chp_nom_source`
+                 FROM b1.tbl_autorisations T0
+                 LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
+                
+                WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_326()*/ 326,
                 array(/**/
                     'T0_chi_id_autorisation' => $donnees_recues[__xva]['chx_autorisation_menu'],
@@ -174,8 +178,12 @@ class c_menus1{
                     break;
 
                 }
-                if($v1!=='__constructor'){
-                    $non_trouve='<br />"'.$v1.'"'.$non_trouve;
+
+                
+                if($v1 !== '__constructor'){
+
+                    $non_trouve='<br />"' . $v1 . '"' . $non_trouve;
+
                 }
 
             }
@@ -186,12 +194,11 @@ class c_menus1{
                 return;
 
             }
+
         }
-        
-        
 
-
-        $donnees_sql=array( array(/**/
+        $donnees_sql=array( array(
+                    /**/
                     'chx_autorisation_menu' => $donnees_recues[__xva]['chx_autorisation_menu'] === '' ? null : $donnees_recues[__xva]['chx_autorisation_menu'],
                     'cht_libelle_menu' => $donnees_recues[__xva]['cht_libelle_menu'] === '' ? null : $donnees_recues[__xva]['cht_libelle_menu'],
                     'chp_titre_menu' => $donnees_recues[__xva]['chp_titre_menu'] === '' ? null : $donnees_recues[__xva]['chp_titre_menu'],
@@ -199,12 +206,33 @@ class c_menus1{
                     'cht_initialisation_menu' => $donnees_recues[__xva]['cht_initialisation_menu'] === '' ? null : $donnees_recues[__xva]['cht_initialisation_menu'],
                     'cht_complements_menu' => $donnees_recues[__xva]['cht_complements_menu'] === '' ? null : $donnees_recues[__xva]['cht_complements_menu'],
                     'cht_condition_menu' => $donnees_recues[__xva]['cht_condition_menu'] === '' ? null : $donnees_recues[__xva]['cht_condition_menu'],
-                    'cht_condition_php_menu' => $donnees_recues[__xva]['cht_condition_php_menu'] === '' ? null : $donnees_recues[__xva]['cht_condition_php_menu'],
-                    'chx_acces_menu' => $donnees_recues[__xva]['chx_acces_menu'] === '' ? null : $donnees_recues[__xva]['chx_acces_menu'],
-                    
+                    'cht_condition_php_menu' => $donnees_recues[__xva]['cht_condition_php_menu'] === '' ? null : $donnees_recues[__xva]['cht_condition_php_menu']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_323()
+            INSERT INTO b1.`tbl_menus`(
+                `chp_titre_menu` , 
+                `chx_autorisation_menu` , 
+                `chp_methode_menu` , 
+                `cht_libelle_menu` , 
+                `cht_initialisation_menu` , 
+                `cht_complements_menu` , 
+                `cht_condition_menu` , 
+                `cht_condition_php_menu`
+            ) VALUES (
+                :chp_titre_menu , 
+                :chx_autorisation_menu , 
+                :chp_methode_menu , 
+                :cht_libelle_menu , 
+                :cht_initialisation_menu , 
+                :cht_complements_menu , 
+                :cht_condition_menu , 
+                :cht_condition_php_menu
+            );
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_323()*/ 323,
             $donnees_sql,
             $donnees_retournees
@@ -285,7 +313,24 @@ class c_menus1{
       =============================================================================================================
     */
     function vv_menus_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_324()
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+            `T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
+            `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+             FROM b1.tbl_menus T0
+             LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+            
+             LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+            
+            WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_324()*/ 324,
             array(/**/
                 'T0_chi_id_menu' => $donnees_recues[__xva]['chi_id_menu']
@@ -295,7 +340,13 @@ class c_menus1{
         
         if($tt[__xst] === __xsu){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_336()
+                DELETE FROM b1.tbl_menus
+                WHERE `chi_id_menu` = :chi_id_menu ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_336()*/ 336,
                 array(/**/
                     'chi_id_menu' => $tt[__xva][0]['T0.chi_id_menu']
@@ -341,7 +392,24 @@ class c_menus1{
             }
 
         }
-        $tt324=$this->sql0->sql_iii(
+        $tt324=/*sql_inclure_deb*/
+            /* sql_324()
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+            `T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
+            `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+             FROM b1.tbl_menus T0
+             LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+            
+             LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+            
+            WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_324()*/ 324,
             array(/**/
                 'T0_chi_id_menu' => $donnees_recues[__xva]['chi_id_menu']
@@ -350,29 +418,30 @@ class c_menus1{
         );
         
         if($tt324[__xst] !== __xsu){
-         
+
             $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ' aucune modification efféctuée';
             return;
+
         }
-         
-         
-        if(
-            $donnees_recues[__xva]['chx_autorisation_menu']==='' && $donnees_recues[__xva]['chx_acces_menu']!==''
-            || $donnees_recues[__xva]['chx_autorisation_menu']!=='' && $donnees_recues[__xva]['chx_acces_menu']===''
-        ){
-         // ok
+
+        
+        if($donnees_recues[__xva]['chx_autorisation_menu'] === ''){
+
+
         }else{
-                $donnees_retournees[__x_signaux][__xer][]='vous devez indiquer soit une autorisation soit un accès [' . __LINE__ . ']';
-                return;
-        }
-         
-        if($donnees_recues[__xva]['chx_autorisation_menu']===''){
-        }else{
-             
-             
-             
-             
-            $tt326=$this->sql0->sql_iii(
+
+            $tt326=/*sql_inclure_deb*/
+                /* sql_326()
+                SELECT 
+                `T1`.`chx_dossier_id_source` , `T1`.`chp_nom_source`
+                 FROM b1.tbl_autorisations T0
+                 LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
+                
+                WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_326()*/ 326,
                 array(/**/
                     'T0_chi_id_autorisation' => $donnees_recues[__xva]['chx_autorisation_menu'],
@@ -424,8 +493,12 @@ class c_menus1{
                     break;
 
                 }
-                if($v1!=='__constructor'){
-                    $non_trouve='<br />"'.$v1.'"'.$non_trouve;
+
+                
+                if($v1 !== '__constructor'){
+
+                    $non_trouve='<br />"' . $v1 . '"' . $non_trouve;
+
                 }
 
             }
@@ -436,11 +509,27 @@ class c_menus1{
                 return;
 
             }
+
         }
 
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_325()
+            UPDATE b1.tbl_menus SET 
+               `cht_libelle_menu` = :n_cht_libelle_menu , 
+               `chp_titre_menu` = :n_chp_titre_menu , 
+               `chx_autorisation_menu` = :n_chx_autorisation_menu , 
+               `chp_methode_menu` = :n_chp_methode_menu , 
+               `cht_initialisation_menu` = :n_cht_initialisation_menu , 
+               `cht_complements_menu` = :n_cht_complements_menu , 
+               `cht_condition_menu` = :n_cht_condition_menu , 
+               `cht_condition_php_menu` = :n_cht_condition_php_menu
+            WHERE `chi_id_menu` = :c_chi_id_menu ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_321()*/ 325,
-            array(/**/
+            array(
+                /**/
                 'c_chi_id_menu' => $donnees_recues[__xva]['chi_id_menu'],
                 'n_cht_libelle_menu' => $donnees_recues[__xva]['cht_libelle_menu'],
                 'n_chp_titre_menu' => $donnees_recues[__xva]['chp_titre_menu'],
@@ -449,8 +538,7 @@ class c_menus1{
                 'n_cht_initialisation_menu' => $donnees_recues[__xva]['cht_initialisation_menu'],
                 'n_cht_complements_menu' => $donnees_recues[__xva]['cht_complements_menu'],
                 'n_cht_condition_menu' => $donnees_recues[__xva]['cht_condition_menu'],
-                'n_cht_condition_php_menu' => $donnees_recues[__xva]['cht_condition_php_menu'],
-                
+                'n_cht_condition_php_menu' => $donnees_recues[__xva]['cht_condition_php_menu']
             ),
             $donnees_retournees
         );
@@ -478,17 +566,12 @@ class c_menus1{
             $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ' aucune modification efféctuée';
         }
 
-
     }
-    
-    
     /*
       =============================================================================================================
     */
     function page_menus_dupliquer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_recues = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);*/
-        
-        
         $o1='';
         $chi_id_menus='';
         $l01=count($mat);
@@ -505,22 +588,43 @@ class c_menus1{
         }
         
         if(is_numeric($chi_id_menus) && $chi_id_menus > 0){
-         
-            $tt=$this->sql0->sql_iii(
+
+            $tt=/*sql_inclure_deb*/
+                /* sql_324()
+                SELECT 
+                `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+                `T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
+                `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+                 FROM b1.tbl_menus T0
+                 LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+                
+                 LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+                
+                 LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+                
+                WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_324()*/ 324,
                 array(/**/
                     'T0_chi_id_menu' => $chi_id_menus
                 ),
                 $donnees_retournees
             );
+            
             if($tt[__xst] === __xsu){
-               $donnees_recues['dupliquer']=$tt[__xva][0];
-               $this->page_menus_creer1($donnees_retournees,$mat,$donnees_recues);
+
+                $donnees_recues['dupliquer']=$tt[__xva][0];
+                $this->page_menus_creer1($donnees_retournees,$mat,$donnees_recues);
+
             }
+
+
         }
-        
+
     }
-    
     /*
       =============================================================================================================
     */
@@ -538,10 +642,13 @@ class c_menus1{
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
         $o1 .= '         <textarea placeholder="libelle visible" autocorrect="off" autocapitalize="off" spellcheck="false"  id="cht_libelle_menu" >';
-        if(isset($donnees_recues['dupliquer']['T0.cht_libelle_menu'])){
-            $o1.=enti1($donnees_recues['dupliquer']['T0.cht_libelle_menu']);
-        }
         
+        if(isset($donnees_recues['dupliquer']['T0.cht_libelle_menu'])){
+
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.cht_libelle_menu']);
+
+        }
+
         $o1 .= '</textarea>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
@@ -555,10 +662,13 @@ class c_menus1{
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '      <input type="text" placeholder="titre" autocorrect="off" autocapitalize="off" spellcheck="false"  id="chp_titre_menu" value="';
-        if(isset($donnees_recues['dupliquer']['T0.chp_titre_menu'])){
-            $o1.=enti1($donnees_recues['dupliquer']['T0.chp_titre_menu']);
-        }
         
+        if(isset($donnees_recues['dupliquer']['T0.chp_titre_menu'])){
+
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.chp_titre_menu']);
+
+        }
+
         $o1 .= '" maxlength="64" style="width:80%;" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
@@ -570,15 +680,21 @@ class c_menus1{
         $o1 .= '      <span>autorisation<br />(accès source)</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        
         if(isset($donnees_recues['dupliquer']['T0.chx_autorisation_menu'])){
-            $o1 .= '        <input type="hidden" value="'.$donnees_recues['dupliquer']['T0.chx_autorisation_menu'].'"  id="chx_autorisation_menu" />' . PHP_EOL;
+
+            $o1 .= '        <input type="hidden" value="' . $donnees_recues['dupliquer']['T0.chx_autorisation_menu'] . '"  id="chx_autorisation_menu" />' . PHP_EOL;
             $o1 .= '        <span id="chx_autorisation_menu_libelle">';
-            $o1 .= '(' . $donnees_recues['dupliquer']['T0.chx_autorisation_menu'] . ') ' . enti1($donnees_recues['dupliquer']['T2.chp_nom_acces']) . ' ' . enti1($donnees_recues['dupliquer']['T3.chp_nom_source']) ; // . htmlentities($donnees_recues['dupliquer']['T1.chp_nom_acces']) . PHP_EOL;
+            $o1 .= '(' . $donnees_recues['dupliquer']['T0.chx_autorisation_menu'] . ') ' . enti1($donnees_recues['dupliquer']['T2.chp_nom_acces']) . ' ' . enti1($donnees_recues['dupliquer']['T3.chp_nom_source']);
+            /* . htmlentities($donnees_recues['dupliquer']['T1.chp_nom_acces']) . PHP_EOL;*/
             $o1 .= '</span>' . PHP_EOL;
+
         }else{
+
             $o1 .= '        <input type="hidden" value=""  id="chx_autorisation_menu" />' . PHP_EOL;
             $o1 .= '        <span id="chx_autorisation_menu_libelle">*indéfini</span>' . PHP_EOL;
         }
+
         $parametre_sous_fenetre='c_autorisations1.page_autorisations_sous_liste1(';
         $parametre_sous_fenetre .= ' sans_menus1()';
         $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_autorisation_menu)';
@@ -590,39 +706,6 @@ class c_menus1{
         $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        
-        
-        /*
-          =====================================================================================================
-        */
-        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
-        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>acces si groupe de menu</span>' . PHP_EOL;
-        $o1 .= '    </div>' . PHP_EOL;
-        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        if(isset($donnees_recues['dupliquer']['T0.chx_acces_menu'])){
-            $o1 .= '        <input type="hidden" value="'.$donnees_recues['dupliquer']['T0.chx_acces_menu'].'"  id="chx_acces_menu" />' . PHP_EOL;
-            $o1 .= '        <span id="chx_acces_menu_libelle">';
-            $o1 .= '(' . $donnees_recues['dupliquer']['T0.chx_acces_menu'] . ') ' . htmlentities($donnees_recues['dupliquer']['T1.chp_nom_acces']) . PHP_EOL;
-            $o1 .= '</span>' . PHP_EOL;
-        }else{
-            $o1 .= '        <input type="hidden" value=""  id="chx_acces_menu" />' . PHP_EOL;
-            $o1 .= '        <span id="chx_acces_menu_libelle">*indéfini</span>' . PHP_EOL;
-        }
-        $parametre_sous_fenetre='c_acces1.page_acces_sous_liste1(';
-        $parametre_sous_fenetre .= ' sans_menus1()';
-        $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_acces_menu)';
-        $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_acces_menu_libelle)';
-        $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
-        $parametre_sous_fenetre .= ')';
-        $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
-        $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
-        $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
-        $o1 .= '    </div>' . PHP_EOL;
-        $o1 .= '  </div>' . PHP_EOL;
-        
-        
-        
         /*
           =====================================================================================================
         */
@@ -643,7 +726,6 @@ class c_menus1{
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
-        
         $o1 .= '        <div>' . PHP_EOL;
         $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(formater_le_rev1(zone_source(cht_initialisation_menu)))" title="formater le source rev">(😊)</div>' . PHP_EOL;
         $o1 .= '          <div class="hug_bouton" data-hug_click="c_fonctions_js1(agrandir_la_zone(zone(cht_initialisation_menu)))" title="agrandir la zone">🖐</div>' . PHP_EOL;
@@ -654,14 +736,17 @@ class c_menus1{
         $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_initialisation_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
         $o1 .= '        </div>';
         $o1 .= '        <textarea placeholder="rev d\'initialisation contenu dans l\'appel de la méthode" autocorrect="off" autocapitalize="off" spellcheck="false"  id="cht_initialisation_menu" >';
+        
         if(isset($donnees_recues['dupliquer']['T0.cht_initialisation_menu'])){
-            $o1.=enti1($donnees_recues['dupliquer']['T0.cht_initialisation_menu']);
+
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.cht_initialisation_menu']);
+
         }
+
         $o1 .= '</textarea>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        
         /*
           =====================================================================================================
         */
@@ -681,15 +766,17 @@ class c_menus1{
         $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_complements_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
         $o1 .= '        </div>';
         $o1 .= '         <textarea placeholder="rev complément" autocorrect="off" autocapitalize="off" spellcheck="false" id="cht_complements_menu" >';
-        if(isset($donnees_recues['dupliquer']['T0.cht_complements_menu'])){
-            $o1.=enti1($donnees_recues['dupliquer']['T0.cht_complements_menu']);
-        }
         
+        if(isset($donnees_recues['dupliquer']['T0.cht_complements_menu'])){
+
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.cht_complements_menu']);
+
+        }
+
         $o1 .= '</textarea>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        
         /*
           =====================================================================================================
         */
@@ -709,15 +796,17 @@ class c_menus1{
         $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_condition_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
         $o1 .= '        </div>';
         $o1 .= '         <textarea placeholder="rev condition" autocorrect="off" autocapitalize="off" spellcheck="false" id="cht_condition_menu" >';
-        if(isset($donnees_recues['dupliquer']['T0.cht_condition_menu'])){
-            $o1.=enti1($donnees_recues['dupliquer']['T0.cht_condition_menu']);
-        }
         
+        if(isset($donnees_recues['dupliquer']['T0.cht_condition_menu'])){
+
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.cht_condition_menu']);
+
+        }
+
         $o1 .= '</textarea>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        
         /*
           =====================================================================================================
         */
@@ -736,18 +825,17 @@ class c_menus1{
         $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_condition_php_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
         $o1 .= '        </div>';
         $o1 .= '         <textarea placeholder="php condition" autocorrect="off" autocapitalize="off" spellcheck="false" id="cht_condition_php_menu" >';
-        if(isset($donnees_recues['dupliquer']['T0.cht_condition_php_menu'])){
-            $o1.=enti1($donnees_recues['dupliquer']['T0.cht_condition_php_menu']);
-        }
         
+        if(isset($donnees_recues['dupliquer']['T0.cht_condition_php_menu'])){
+
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.cht_condition_php_menu']);
+
+        }
+
         $o1 .= '</textarea>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        
-        
-        
-        
         /*
           =====================================================================================================
         */
@@ -783,7 +871,24 @@ class c_menus1{
         
         if(is_numeric($chi_id_menus)){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_324()
+                SELECT 
+                `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+                `T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
+                `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+                 FROM b1.tbl_menus T0
+                 LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+                
+                 LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+                
+                 LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+                
+                WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_324()*/ 324,
                 array(/**/
                     'T0_chi_id_menu' => $chi_id_menus
@@ -836,7 +941,24 @@ class c_menus1{
         
         if(is_numeric($chi_id_menus) && $chi_id_menus > 0){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_324()
+                SELECT 
+                `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+                `T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
+                `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+                 FROM b1.tbl_menus T0
+                 LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+                
+                 LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+                
+                 LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+                
+                WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_324()*/ 324,
                 array(/**/
                     'T0_chi_id_menu' => $chi_id_menus
@@ -845,18 +967,17 @@ class c_menus1{
             );
             
             if($tt[__xst] === __xsu){
-             
+
                 /*
                   echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt[__xva][0] , true ) . '</pre>' ; exit(0);
                 */
-
                 $o1 .= '<h1>modifier ' . self::LE_LA_ELEMENT_GERE . '(' . $tt[__xva][0]['T0.chi_id_menu'] . ') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_menus1.formulaire1(action1(page_liste_des_menus1))" title="revenir à la liste" >⬱</div></h1>' . PHP_EOL;
                 $o1 .= '<div id="vv_menus_modifier1">' . PHP_EOL;
                 /**/
                 $o1 .= '  <input type="hidden" value="' . $tt[__xva][0]['T0.chi_id_menu'] . '" id="chi_id_menu" />' . PHP_EOL;
                 /**/
                 /*
-                  =============================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
@@ -872,7 +993,7 @@ class c_menus1{
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =============================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
@@ -886,7 +1007,7 @@ class c_menus1{
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =====================================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -902,11 +1023,10 @@ class c_menus1{
 
                 }else{
 
-                    $o1 .= '(' . $tt[__xva][0]['T0.chx_autorisation_menu'] . ') ' . htmlentities($tt[__xva][0]['T2.chp_nom_acces']) .'  ' . htmlentities($tt[__xva][0]['T3.chp_nom_source']) .' ' . PHP_EOL;
+                    $o1 .= '(' . $tt[__xva][0]['T0.chx_autorisation_menu'] . ') ' . htmlentities($tt[__xva][0]['T2.chp_nom_acces']) . '  ' . htmlentities($tt[__xva][0]['T3.chp_nom_source']) . ' ' . PHP_EOL;
                 }
-                
-                $o1 .= '</span>' . PHP_EOL;
 
+                $o1 .= '</span>' . PHP_EOL;
                 $parametre_sous_fenetre='c_autorisations1.page_autorisations_sous_liste1(';
                 $parametre_sous_fenetre .= ' sans_menus1()';
                 $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_autorisation_menu)';
@@ -918,44 +1038,8 @@ class c_menus1{
                 $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
-                
                 /*
                   =====================================================================================
-                */
-                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
-                /**/
-                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>acces</span>' . PHP_EOL;
-                $o1 .= '    </div>' . PHP_EOL;
-                /**/
-                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="hidden" value="' . enti1($tt[__xva][0]['T0.chx_acces_menu']) . '"  id="chx_acces_menu" />' . PHP_EOL;
-                $o1 .= '        <span id="chx_acces_menu_libelle">' . PHP_EOL;
-                
-                if($tt[__xva][0]['T0.chx_acces_menu'] === null){
-
-                    $o1 .= '*indéfini' . PHP_EOL;
-
-                }else{
-
-                    $o1 .= '(' . $tt[__xva][0]['T0.chx_acces_menu'] . ') ' . htmlentities($tt[__xva][0]['T4.chp_nom_acces']) . PHP_EOL;
-                }
-
-                $o1 .= '</span>' . PHP_EOL;
-                $parametre_sous_fenetre='c_acces1.page_acces_sous_liste1(';
-                $parametre_sous_fenetre .= ' sans_menus1()';
-                $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_acces_menu)';
-                $parametre_sous_fenetre .= ' nom_libelle_dans_parent1(chx_acces_menu_libelle)';
-                $parametre_sous_fenetre .= ' libelle_si_vide1("*indéfini")';
-                $parametre_sous_fenetre .= ')';
-                $o1 .= '      <div class="hug_bouton yy__x_signaux_1" ' . PHP_EOL;
-                $o1 .= 'data-hug_click="interface1.affiche_sous_fenetre1(' . htmlentities($parametre_sous_fenetre) . ')"  title="selectionner">📁</div>' . PHP_EOL;
-                $o1 .= '      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(' . htmlentities($parametre_sous_fenetre) . ')"  title="annuler">🚫</div>' . PHP_EOL;
-                $o1 .= '    </div>' . PHP_EOL;
-                $o1 .= '  </div>' . PHP_EOL;
-                
-                /*
-                  =============================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
@@ -969,7 +1053,7 @@ class c_menus1{
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =============================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
@@ -994,7 +1078,7 @@ class c_menus1{
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =============================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
@@ -1019,7 +1103,7 @@ class c_menus1{
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
-                  =============================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
@@ -1043,9 +1127,8 @@ class c_menus1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
-                
                 /*
-                  =============================================================================================
+                  =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
@@ -1063,30 +1146,24 @@ class c_menus1{
                 $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(cht_condition_php_menu)))" title="aller à la position">position</div>' . PHP_EOL;
                 $o1 .= '          <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(cht_condition_php_menu)))" title="aller à la ligne">ligne</div>' . PHP_EOL;
                 $o1 .= '          <div class="hug_bouton yy__x_signaux_1" data-hug_click="c_fonctions_js1(rev_vers_php1(zone_source(cht_condition_menu),zone_resultat(cht_condition_php_menu)))" title="" >rev -&gt; php</div>';
-                
                 $o1 .= '        </div>';
                 $o1 .= '        <textarea id="cht_condition_php_menu" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_condition_php_menu']) . '</textarea>' . PHP_EOL;
                 $o1 .= '      </div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
-                
-                
-                
                 /*
                   =====================================================================================
                 */
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-/*
-                $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>';
-                $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '))" title="" >enregistrer</div>';
-                
-*/
+                /*
+                  $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>';
+                  $o1 .= '    <div class="hug_bouton" data-hug_click="c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '))" title="" >enregistrer</div>';
+                  
+                */
                 $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(rev_vers_php1(zone_source(cht_condition_menu),zone_resultat(cht_condition_php_menu)))c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '),page_liste_des_menus1())" title="" >enregistrer et revenir à la liste</div>';
                 $o1 .= '    <div class="hug_bouton" data-hug_click="c_fonctions_js1(rev_vers_php1(zone_source(cht_condition_menu),zone_resultat(cht_condition_php_menu)))c_menus1.formulaire1(conteneur1(vv_menus_modifier1),chi_id_menu(' . $chi_id_menus . '))" title="" >enregistrer</div>';
-
-                
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /**/
@@ -1163,7 +1240,6 @@ class c_menus1{
         $par['nom_libelle_dans_parent1']='';
         $par['T0_cht_libelle_menu']='';
         $par['T0_chp_titre_menu']='';
-        
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
@@ -1243,8 +1319,6 @@ class c_menus1{
         $par['nom_libelle_dans_parent1']=$par_mat['nom_libelle_dans_parent1']??'';
         $par['T0_cht_libelle_menu']=$par_mat['T0_cht_libelle_menu']??'';
         $par['T0_chp_titre_menu']=$par_mat['T0_chp_titre_menu']??'';
-        
-        
         $nom_filtre='vv_menus_filtre_choix_1';
         $o1='<h1>choisir un menu</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
@@ -1265,11 +1339,27 @@ class c_menus1{
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_337()
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu`
+             FROM b1.tbl_menus T0
+            WHERE ( / *** *** / `T0`.`chi_id_menu` = :T0_chi_id_menu
+               AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
+               AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
+               AND `T0`.`chx_autorisation_menu` IS NULL) 
+            ORDER BY `T0`.`chi_id_menu` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_337()*/ 337,
-             /**/ array(
+            array(
                 /**/
                 'T0_chi_id_menu' => $par['T0_chi_id_menu'] === '' ? '' : $par['T0_chi_id_menu'],
+                'T0_cht_libelle_menu' => $par['T0_cht_libelle_menu'] === '' ? '' : $par['T0_cht_libelle_menu'],
+                'T0_chp_titre_menu' => $par['T0_chp_titre_menu'] === '' ? '' : $par['T0_chp_titre_menu'],
                 'quantitee' => $__nbMax,
                 'debut' => $__debut
             ),
@@ -1333,8 +1423,7 @@ class c_menus1{
       =============================================================================================================
     */
     function page_liste_des_menus1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-
-
+        
         if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
 
             $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
@@ -1429,7 +1518,6 @@ class c_menus1{
         $par['T0_chx_autorisation_menu']=$par['T0_chx_autorisation_menu']??'';
         $par['T0_chp_methode_menu']=$par['T0_chp_methode_menu']??'';
         $par['T1_chx_acces_autorisation']=$par['T1_chx_acces_autorisation']??'';
-        
         $fonction1='c_menus1.page_liste_des_menus1';
         $nom_filtre='vv_menus_filtre1';
         $o1='<h1>Liste des menus</h1>';
@@ -1437,14 +1525,14 @@ class c_menus1{
         $__debut=$__num_page * $__nbMax;
         $o1 .= '<div class="yy_filtre_liste1" id="' . $nom_filtre . '">' . PHP_EOL;
         /*
-
+          
         */
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '    <div><span>id</span></div>' . PHP_EOL;
         $o1 .= '    <div><input type="text" id="T0_chi_id_menu" value="' . $par['T0_chi_id_menu'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /*
-
+          
         */
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '      <div><span>libelle</span></div>' . PHP_EOL;
@@ -1452,7 +1540,7 @@ class c_menus1{
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /*
-
+          
         */
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '      <div><span>titre</span></div>' . PHP_EOL;
@@ -1468,23 +1556,18 @@ class c_menus1{
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /*
-
+          
         */
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '      <div><span>méthode</span></div>' . PHP_EOL;
         $o1 .= '      <div><input type="text" id="T0_chp_methode_menu" value="' . $par['T0_chp_methode_menu'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
-        
-        
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '      <div><span>id acces</span></div>' . PHP_EOL;
         $o1 .= '      <div><input type="text" id="T1_chx_acces_autorisation" value="' . $par['T1_chx_acces_autorisation'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
-        
-        
-
         /*
           
         */
@@ -1494,18 +1577,40 @@ class c_menus1{
         $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
-
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_322()
+            SELECT 
+            `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+            `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , 
+            `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+             FROM b1.tbl_menus T0
+             LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+            
+             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+            
+             LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+            
+            WHERE (`T0`.`chi_id_menu` LIKE :T0_chi_id_menu
+               AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
+               AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
+               AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
+               AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
+               AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation) 
+            ORDER BY `T0`.`chi_id_menu` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_322()*/ 322,
             array(
                 /**/
                 'T0_chi_id_menu' => $par['T0_chi_id_menu'],
                 'T0_chx_autorisation_menu' => $par['T0_chx_autorisation_menu'],
-                'T0_cht_libelle_menu' => $par['T0_cht_libelle_menu'] ,
+                'T0_cht_libelle_menu' => $par['T0_cht_libelle_menu'],
                 'T0_chp_titre_menu' => $par['T0_chp_titre_menu'],
                 'T0_chp_methode_menu' => $par['T0_chp_methode_menu'],
                 'T1_chx_acces_autorisation' => $par['T1_chx_acces_autorisation'],
-                
                 'quantitee' => $__nbMax,
                 'debut' => $__debut
             ),
@@ -1571,11 +1676,11 @@ class c_menus1{
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';
-            $lsttbl .= $v0['T0.cht_libelle_menu'] ;
+            $lsttbl .= $v0['T0.cht_libelle_menu'];
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';
-            $lsttbl .= enti1($v0['T0.chp_titre_menu']) ;
+            $lsttbl .= enti1($v0['T0.chp_titre_menu']);
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';
@@ -1586,14 +1691,14 @@ class c_menus1{
             $lsttbl .= '' . enti1($v0['T3.chp_nom_source']) . ' ';
             $lsttbl .= '</td>';
             /**/
-
             $lsttbl .= '<td style="text-align:center;">';
-            $lsttbl .= enti1($v0['T0.chp_methode_menu']) ;
+            $lsttbl .= enti1($v0['T0.chp_methode_menu']);
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '(' . $v0['T1.chx_acces_autorisation'] . ') ';
             $lsttbl .= '</td>';
+            /**/
             /**/
             $lsttbl .= '</tr>';
         }

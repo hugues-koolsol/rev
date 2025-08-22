@@ -178,6 +178,7 @@ class c_profile1{
             $donnees_retournees[__x_page] .= $txt;
             $donnees_retournees[__xst]=__xsu;
         }
+
     }
 }
 /*

@@ -56,7 +56,7 @@ class c_sql0{
             
             if(isset($tt['exception'])){
 
-                $l_erreur['getMessage']='sql_'.$numero_de_sql.' : '.$tt['exception']->getMessage();
+                $l_erreur['getMessage']='sql_' . $numero_de_sql . ' : ' . $tt['exception']->getMessage();
                 
                 if($GLOBALS[DEVER_SRV] >= 1){
 

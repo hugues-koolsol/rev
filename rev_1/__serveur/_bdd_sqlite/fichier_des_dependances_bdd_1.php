@@ -152,13 +152,6 @@ $tableau_des_dependances=array (
       ),
       1 => 
       array (
-        'table_dependante' => 'tbl_menus',
-        'champ_dependant' => 'chx_acces_menu',
-        'non_nulle' => '0',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-      2 => 
-      array (
         'table_dependante' => 'tbl_utilisateurs',
         'champ_dependant' => 'chx_acces_utilisateur',
         'non_nulle' => '1',
@@ -191,22 +184,7 @@ $tableau_des_dependances=array (
       array (
         'table_dependante' => 'tbl_menus',
         'champ_dependant' => 'chx_autorisation_menu',
-        'non_nulle' => '0',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-    ),
-  ),
-  'tbl_menus_chi_id_menu' => 
-  array (
-    'table_parente' => 'tbl_menus',
-    'champ_parent' => 'chi_id_menu',
-    'dependances' => 
-    array (
-      0 => 
-      array (
-        'table_dependante' => 'tbl_menus',
-        'champ_dependant' => 'chx_parent_menu',
-        'non_nulle' => '0',
+        'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
     ),

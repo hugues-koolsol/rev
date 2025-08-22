@@ -838,6 +838,7 @@ class c_metiers1{
       =============================================================================================================
     */
     function page_liste_des_metiers1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        
         if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
 
             $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
@@ -845,7 +846,8 @@ class c_metiers1{
             return;
 
         }
-      $fonction1='c_metiers1.page_liste_des_metiers1';
+
+        $fonction1='c_metiers1.page_liste_des_metiers1';
         $__nbMax=10;
         $par=array();
         $par['T0_chi_id_metier']='';

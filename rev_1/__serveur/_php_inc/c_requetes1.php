@@ -130,14 +130,6 @@ class c_requetes1{
                 'cht_commentaire_requete' => $v1['T0.cht_commentaire_requete']
             );
         }
-        /*
-          {
-          "1":"SELECT \r\n`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur`\n FROM b1.tbl_utilisateurs T0\nWHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur  \r\nLIMIT 1 OFFSET 0 \n;",
-          "2":"SELECT \r\n`T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , \r\n`T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`\n FROM b1.tbl_requetes T0\nWHERE ( \/* *\/ `T0`.`chi_id_requete` = :T0_chi_id_requete\r\n   AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete\r\n   AND `T0`.`chp_type_requete` LIKE :T0_chp_type_requete\r\n   AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete) \r\nORDER BY `T0`.`chi_id_requete` DESC  \r\nLIMIT :quantitee OFFSET :debut \n;",
-          "3":"UPDATE b1.tbl_requetes SET \r\n   `chi_id_requete` = :n_chi_id_requete , \r\n   `cht_php_requete` = :n_cht_php_requete\nWHERE (`chi_id_requete` = :c_chi_id_requete\r\n   AND `chx_projet_requete` = :c_chx_projet_requete) ;",
-          "4":"\/*meta(tester_les_dependances_dans_le_php(1))*\/\r\n\r\nDELETE FROM b1.tbl_requetes\nWHERE (`chi_id_requete` = :chi_id_requete\r\n   AND `chx_projet_requete` = :chx_projet_requete) ;"
-          }
-        */
         $chemin_fichier___liste_des_sql=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . '__liste_des_sql.php';
         
         if((@file_put_contents($chemin_fichier___liste_des_sql,'<?' . 'php' . PHP_EOL . '$__liste_des_sql=' . var_export($__liste_des_sql,true) . ';')) === false
@@ -1383,10 +1375,7 @@ EOT;
         
         if(__X_CLE_APPLICATION === 'rev' . '_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1){
 
-
-//           echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues[__xva]['contenu_bdd_requete'] , true ) . '</pre>' ; exit(0);
-
-
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues[__xva]['contenu_bdd_requete'] , true ) . '</pre>' ; exit(0);*/
             $tt=/*sql_inclure_deb*/
                 /* sql_109()
                 UPDATE b1.tbl_requetes SET 
@@ -1441,7 +1430,8 @@ EOT;
                     'n_chp_type_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.chp_type_requete'],
                     'n_cht_rev_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.cht_rev_requete'],
                     'n_cht_commentaire_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.cht_commentaire_requete'],
-                    'n_cht_php_requete' => $donnees_recues[__xva]['cht_php_requete']
+                    'n_cht_php_requete' => $donnees_recues[__xva]['cht_php_requete'],
+                    'n_cht_matrice_requete' => json_encode($donnees_recues[__xva]['cht_matrice_requete'])
                 ),
                 $donnees_retournees
             );
@@ -1655,6 +1645,7 @@ EOT;
       =============================================================================================================
     */
     function page_liste_des_requetes1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        
         if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
 
             $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
@@ -1662,6 +1653,7 @@ EOT;
             return;
 
         }
+
         /*
           le répertoire de requetes est-il défini ?
         */

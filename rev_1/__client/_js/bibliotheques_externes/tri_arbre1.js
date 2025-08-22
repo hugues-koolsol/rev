@@ -46,7 +46,7 @@ class tri_arbre1{
         "background_color" : 'grey' ,
         "afficher_le_bouton_editer" : '' ,
         "class_du_bouton_editer" : '' ,
-        "class_du_bouton_replier" : '' ,
+        "class_du_bouton_replier" : ''
     };
     /*
       =============================================================================================================
@@ -76,7 +76,6 @@ class tri_arbre1{
         */
         this.#id_original=par_id_de_l_element;
         this.arbre=[];
-        
         this.construire_arbre_a_partir_de_ul_li( this.#racine_html , 0 );
         /* console.log( JSON.stringify( this.arbre ).replace( /\},\{/g , '},\n{' ) ); */
         /*
@@ -107,7 +106,7 @@ class tri_arbre1{
         */
         this.#racine_html.insertAdjacentHTML( 'afterend' , t );
         this.reference_zone_triable=document.getElementById( this.#id_div );
-        this.#dessine_l_arbre(true);
+        this.#dessine_l_arbre( true );
     }
     /*
       =============================================================================================================
@@ -123,7 +122,6 @@ class tri_arbre1{
             case 'mise_a_jour_arbre' : this.arbre=arbre;
                 this.#dessine_l_arbre();
                 break;
-                
             case 'supprimer_un_element' : this.arbre=arbre;
                 this.#dessine_l_arbre();
                 break;
@@ -158,16 +156,21 @@ class tri_arbre1{
     */
     #souris_haut( e ){
         document.body.style.overflowY='scroll';
-        /* 
+        /*
           spécifique pour rev
         */
-
-        try{document.getElementById('vv_nav').style.paddingRight='';}catch{};
-        try{document.getElementById('vv_main').style.paddingRight='';}catch{};
-        try{document.getElementById('vv_sous_fenetre1').style.transform='';}catch{};
-        try{document.getElementById('vv_body').style.paddingRight='';}catch{};
-        
-        
+        try{
+            document.getElementById( 'vv_nav' ).style.paddingRight='';
+        } catch {}
+        try{
+            document.getElementById( 'vv_main' ).style.paddingRight='';
+        } catch {}
+        try{
+            document.getElementById( 'vv_sous_fenetre1' ).style.transform='';
+        } catch {}
+        try{
+            document.getElementById( 'vv_body' ).style.paddingRight='';
+        } catch {}
         this.#souris_appuyee=false;
         window.removeEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
         window.removeEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
@@ -264,7 +267,7 @@ class tri_arbre1{
             quantite_a_decaller=15;
         }
         let a=parseInt( document.getElementById( this.#id_div ).scrollTop , 10 );
-        document.getElementById( this.#id_div ).scrollTo( {"top" : (a - quantite_a_decaller) ,"left" : 0} );
+        document.getElementById( this.#id_div ).scrollTo( {"top" : a - quantite_a_decaller ,"left" : 0} );
         /* ,"behavior" : "smooth" */
         this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
         let tt=this.#zone_reference_top.getBoundingClientRect();
@@ -289,7 +292,7 @@ class tri_arbre1{
             quantite_a_decaller=15;
         }
         let a=parseInt( document.getElementById( this.#id_div ).scrollTop , 10 );
-        document.getElementById( this.#id_div ).scrollTo( {"top" : (a + quantite_a_decaller) ,"left" : 0} );
+        document.getElementById( this.#id_div ).scrollTo( {"top" : a + quantite_a_decaller ,"left" : 0} );
         /* ,"behavior" : "smooth" */
         this.#position_scroll_dans_la_zone_de_tri=document.getElementById( this.#id_div ).scrollTop;
         let tt=this.#zone_reference_top.getBoundingClientRect();
@@ -315,10 +318,10 @@ class tri_arbre1{
             this.#id_cible_selectionne=0;
             /* console.log('abs='+this.#top_declenchement +' '+ position_absolue_de_la_souris_en_y +' '+ this.#bottom_declenchement ) */
             if(position_absolue_de_la_souris_en_y <= this.#bottom_declenchement
-              && position_absolue_de_la_souris_en_y >= this.#top_declenchement
+                   && position_absolue_de_la_souris_en_y >= this.#top_declenchement
             ){
                 /*
-                 si on est dans la zone de trie
+                  si on est dans la zone de trie
                 */
                 this.#dans_zone_de_scroll=false;
                 try{
@@ -334,9 +337,9 @@ class tri_arbre1{
                         try{
                             clearTimeout( this.#timeout_quand_trop_haut_ou_trop_bas );
                         } catch {}
-    //                    console.log( this.#position_scroll_dans_la_zone_de_tri , this.#decallage_max_de_la_zone_de_tri );
+                        /* console.log( this.#position_scroll_dans_la_zone_de_tri , this.#decallage_max_de_la_zone_de_tri ); */
                     }else{
-                        if(this.#dans_zone_de_scroll===false){
+                        if(this.#dans_zone_de_scroll === false){
                             this.#timeout_quand_trop_haut_ou_trop_bas=setTimeout( () => {
                                 this.faire_defiler_quand_trop_bas();} , 20 );
                         }
@@ -351,7 +354,7 @@ class tri_arbre1{
                     /* console.log('=========== trop haut ============='); */
                     if(this.#position_scroll_dans_la_zone_de_tri === 0){
                     }else{
-                        if(this.#dans_zone_de_scroll===false){
+                        if(this.#dans_zone_de_scroll === false){
                             this.#timeout_quand_trop_haut_ou_trop_bas=setTimeout( () => {
                                 this.faire_defiler_quand_trop_haut();} , 20 );
                         }
@@ -397,24 +400,28 @@ class tri_arbre1{
         /* console.log('souris bas top_declenchement='+this.#top_declenchement) */
         this.#bottom_declenchement=document.documentElement.scrollTop + parseInt( tt.bottom , 10 );
         if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-poignee_pour_tri" )){
-            
             this.#element_bouge=tar;
-            console.log('ici')
-            
+            console.log( 'ici' );
             window.addEventListener( 'mouseup' , this.#souris_haut.bind( this ) , false );
             window.addEventListener( 'mousemove' , this.#souris_bouge.bind( this ) , false );
             window.addEventListener( 'touchend' , this.#doigt_haut.bind( this ) , false );
             window.addEventListener( 'touchmove' , this.#doigt_bouge.bind( this ) , false );
             document.body.style.overflowY='hidden';
-            /* 
-             spécifique pour rev
+            /*
+              spécifique pour rev
             */
-            try{document.getElementById('vv_nav').style.paddingRight='10px';}catch{};
-            try{document.getElementById('vv_main').style.paddingRight='10px';}catch{};
-            try{document.getElementById('vv_sous_fenetre1').style.transform='translate(-5px, 0)';}catch{};
-            try{document.getElementById('vv_body').style.paddingRight='10px';}catch{};
-            
-            
+            try{
+                document.getElementById( 'vv_nav' ).style.paddingRight='10px';
+            } catch {}
+            try{
+                document.getElementById( 'vv_main' ).style.paddingRight='10px';
+            } catch {}
+            try{
+                document.getElementById( 'vv_sous_fenetre1' ).style.transform='translate(-5px, 0)';
+            } catch {}
+            try{
+                document.getElementById( 'vv_body' ).style.paddingRight='10px';
+            } catch {}
             /*
               on déplace un bloc
             */
@@ -423,11 +430,9 @@ class tri_arbre1{
             tt=this.#zone_reference_top.getBoundingClientRect();
             this.#position_absolue_de_la_zone_de_tri=tt.top + document.documentElement.scrollTop;
             this.#hauteur_de_la_zone_de_tri=pos.height;
-
-            tt=document.getElementById('menu_' + this.cle_aleatoire).getBoundingClientRect();
+            tt=document.getElementById( 'menu_' + this.cle_aleatoire ).getBoundingClientRect();
             let hauteur_menu=tt.height;
-
-            this.#decallage_max_de_la_zone_de_tri=hauteur_menu+this.#tableau_des_positions_relatives[this.#tableau_des_positions_relatives.length - 1].bottom - this.#hauteur_de_la_zone_de_tri;
+            this.#decallage_max_de_la_zone_de_tri=(hauteur_menu + this.#tableau_des_positions_relatives[this.#tableau_des_positions_relatives.length - 1].bottom) - this.#hauteur_de_la_zone_de_tri;
             this.#id_interne_du_bloc_a_deplacer=tar.getAttribute( "data-poignee_pour_tri" );
             let lst1=document.getElementById( this.#id_div ).querySelectorAll( '[data-id_interne="' + this.#id_interne_du_bloc_a_deplacer + '"]' );
             if(lst1.length > 0){
@@ -461,8 +466,7 @@ class tri_arbre1{
             }
             this.calcul_des_positions_relatives();
         }else if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-supprime" )){
-         
-            let id_cible=parseInt(tar.getAttribute( "data-supprime" ),10);
+            let id_cible=parseInt( tar.getAttribute( "data-supprime" ) , 10 );
             if(this.#options.fonction_appelee_apres_action !== null){
                 this.#options.fonction_appelee_apres_action( this , {
                          /*  */
@@ -475,19 +479,16 @@ class tri_arbre1{
                         "id_original" : this.#id_original
                     } );
             }else{
-             
-             
                 for( let i=0 ; i < this.arbre.length ; i++ ){
                     if(id_cible === this.arbre[i].id_interne){
-                        this.arbre.splice( i  , 1  );
+                        this.arbre.splice( i , 1 );
                         break;
                     }
                 }
-             
                 this.#dessine_l_arbre();
             }
         }else if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-editer" )){
-            let id_cible=parseInt(tar.getAttribute("data-editer" ),10);
+            let id_cible=parseInt( tar.getAttribute( "data-editer" ) , 10 );
             if(this.#options.fonction_appelee_apres_action !== null){
                 this.#options.fonction_appelee_apres_action( this , {
                          /*  */
@@ -500,9 +501,8 @@ class tri_arbre1{
                         "id_original" : this.#id_original
                     } );
             }else{
-                console.error('Le bouton editer nécessite une fonction')
+                console.error( 'Le bouton editer nécessite une fonction' );
             }
-
         }else{
             this.calcul_des_positions_relatives();
         }
@@ -571,53 +571,44 @@ class tri_arbre1{
     /*
       =============================================================================================================
     */
-    #reconstruit_ul_li(id_parent){
-     let t='';
-     for(let i=0;i<this.arbre.length;i++){
-      
-         if(this.arbre[i].id_interne_parent===id_parent){
-          
-             let attributs='';
-             for(let j in this.arbre[i].attributs){
-              attributs+=j+'="'+this.arbre[i].attributs[j]+'"'
-             }
-             
-             t+='<li'+(attributs!==''?' '+attributs:'')+'>'+this.arbre[i].contenu;
-             if(this.arbre[i].contient_des_enfants>0){
-                 t+='<ul>';
-                 t+=this.#reconstruit_ul_li(this.arbre[i].id_interne);
-                 t+='</ul>';
-             }
-             t+='</li>'
-         }
-      
-     }
-     if(id_parent===0){
-      
-         document.getElementById(this.#id_original).innerHTML=t;
-      
-      
-     }else{
-      return t;
-     }
+    #reconstruit_ul_li( id_parent ){
+        let t='';
+        for( let i=0 ; i < this.arbre.length ; i++ ){
+            if(this.arbre[i].id_interne_parent === id_parent){
+                let attributs='';
+                for(let j in this.arbre[i].attributs){
+                    attributs+=j + '="' + this.arbre[i].attributs[j] + '"';
+                }
+                t+='<li' + (attributs !== '' ? ( ' ' + attributs ) : ( '' )) + '>' + this.arbre[i].contenu;
+                if(this.arbre[i].contient_des_enfants > 0){
+                    t+='<ul>';
+                    t+=this.#reconstruit_ul_li( this.arbre[i].id_interne );
+                    t+='</ul>';
+                }
+                t+='</li>';
+            }
+        }
+        if(id_parent === 0){
+            document.getElementById( this.#id_original ).innerHTML=t;
+        }else{
+            return t;
+        }
     }
     /*
       =============================================================================================================
     */
-    #dessine_l_arbre(init=false){
+    #dessine_l_arbre( init=false ){
         let le_html='';
         this.#calcul_des_enfants( 0 );
         let le_html_resultat=this.construit_html_de_arbre( 0 );
-        if(init===false){
-            this.#reconstruit_ul_li(0);
-
+        if(init === false){
+            this.#reconstruit_ul_li( 0 );
         }
     }
     /*
       =============================================================================================================
     */
     construit_html_de_arbre( id_interne_parent , niveau=0 ){
-
         let le_html='';
         let le_sous_html='';
         let premier=true;
@@ -661,7 +652,6 @@ class tri_arbre1{
                 t+='  </div>';
                 le_html+=t;
                 le_html+='';
-                
                 if(this.#options.afficher_le_bouton_editer === 1){
                     le_html+='<div data-editer="' + this.arbre[i].id_interne + '" style="float:right;" class="' + this.#options.class_du_bouton_editer + '">✎</div>';
                 }
@@ -672,15 +662,13 @@ class tri_arbre1{
                         le_html+='<div data-supprime="' + this.arbre[i].id_interne + '" style="float:right;" class="' + this.#options.class_du_bouton_supprimer + '">X</div>';
                     }
                 }
-                let style_bloc_replie='display:none;'
+                let style_bloc_replie='display:none;';
                 if(this.#options.arborescent === 0){
                     /*
                       pas de boutons +/- pour une liste simple
                     */
                 }else{
-                 
-                    let libelle_replie='-'; 
-                    
+                    let libelle_replie='-';
                     if(this.arbre[i].replie === 1 && this.arbre[i].contient_des_enfants > 1){
                         libelle_replie='+';
                     }else{
@@ -690,11 +678,11 @@ class tri_arbre1{
                     if(this.arbre[i].contient_des_enfants === 0){
                         style_replie='visibility:hidden;';
                     }
-                    le_html += '<div data-replie="' + this.arbre[i].id_interne + '"';
-                    le_html += ' class="' +this.#options.class_du_bouton_replier + '"';
-                    le_html += ' style="float:right;'+style_replie+'min-width:2em;text-align:center;">';
-                    le_html += libelle_replie;
-                    le_html += '</div>';
+                    le_html+='<div data-replie="' + this.arbre[i].id_interne + '"';
+                    le_html+=' class="' + this.#options.class_du_bouton_replier + '"';
+                    le_html+=' style="float:right;' + style_replie + 'min-width:2em;text-align:center;">';
+                    le_html+=libelle_replie;
+                    le_html+='</div>';
                 }
                 if(this.#options.triable === false){
                     le_html+='<div data-poignee_pour_tri="' + this.arbre[i].id_interne + '" style="float:right;visibility:hidden;" class="' + this.#options.class_du_bouton_deplacer + '">↕</div>';
@@ -797,8 +785,6 @@ class tri_arbre1{
                     lst2[i].addEventListener( 'mousedown' , this.#souris_bas.bind( this ) , false );
                 }
             }
-            
-            
         }else{
             return le_html;
         }
@@ -922,19 +908,17 @@ class tri_arbre1{
             }
         }
         if(options.hasOwnProperty( 'afficher_le_bouton_editer' )){
-            if(options.fonction_appelee_apres_action===null){
+            if(options.fonction_appelee_apres_action === null){
                 /*
-                  =============================================================================================
+                  =====================================================================================
                 */
-                console.error('Le bouton editer nécessite une fonction ')
-            
+                console.error( 'Le bouton editer nécessite une fonction ' );
             }else{
                 if(options.afficher_le_bouton_editer === 1){
                     this.#options.afficher_le_bouton_editer=options.afficher_le_bouton_editer;
                 }
             }
         }
-        
         if(options.hasOwnProperty( 'boutons_du_menu' )){
             if(Array.isArray( options.boutons_du_menu ) === true){
                 this.#options.boutons_du_menu=options.boutons_du_menu;
@@ -990,8 +974,5 @@ class tri_arbre1{
         if(options.hasOwnProperty( 'class_du_bouton_replier' )){
             this.#options.class_du_bouton_replier=options.class_du_bouton_replier;
         }
-        
-
-        
     }
 }

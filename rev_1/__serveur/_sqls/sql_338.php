@@ -1,12 +1,17 @@
 <?php
-function sql_335($par,&$donnees_retournees,$that){
-    $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_genres` SET '.PHP_EOL;
+function sql_338($par,&$donnees_retournees,$that){
+    $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_sources` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if($par['n_che_ordre_genre']==='' || is_null($par['n_che_ordre_genre']) ){
-        $tableau_champs[]='`che_ordre_genre` = NULL';
+    if($par['n_cht_rev_source']==='' || is_null($par['n_cht_rev_source']) ){
+        $tableau_champs[]='`cht_rev_source` = NULL';
     }else{
-        $tableau_champs[]='`che_ordre_genre` = '.sq0($par['n_che_ordre_genre']).'';
+        $tableau_champs[]='`cht_rev_source` = \''.sq0($par['n_cht_rev_source']).'\'';
+    }
+    if($par['n_cht_genere_source']==='' || is_null($par['n_cht_genere_source']) ){
+        $tableau_champs[]='`cht_genere_source` = NULL';
+    }else{
+        $tableau_champs[]='`cht_genere_source` = \''.sq0($par['n_cht_genere_source']).'\'';
     }
 
     if(count($tableau_champs)===0){
@@ -15,13 +20,14 @@ function sql_335($par,&$donnees_retournees,$that){
             __xme => 'aucun champ à mettre à jour' ,
             'id_bdd' => BDD_NUMERO_1 ,
             'sql0' => $sql0 , 
-            'texte_requete' => 'la modification dans la table des genres' ,
+            'texte_requete' => 'la modification dans la table des sources' ,
             'exception' => null , 
         );
     }
     $sql0.=implode(','.PHP_EOL.'    ',$tableau_champs).PHP_EOL;
     $where0=' WHERE 1=1 '.PHP_EOL;
-    $where0.=' AND `chi_id_genre` = '.sq1($par['c_chi_id_genre']).''.PHP_EOL;
+    $where0.=' AND `chi_id_source` = '.sq1($par['c_chi_id_source']).''.PHP_EOL;
+    $where0.=' AND `chx_projet_id_source` = '.sq1($par['c_chx_projet_id_source']).''.PHP_EOL;
     $sql0.=$where0;
     // echo __FILE__ . ' ' . __LINE__ . ' $sql0= <pre>' . $sql0 . '</pre>' ; exit(0);
     try{
@@ -31,7 +37,7 @@ function sql_335($par,&$donnees_retournees,$that){
         return array(/**/
             __xst => __xer , 
             'sql0' => $sql0 , 
-            'texte_requete' => 'la modification dans la table des genres' ,
+            'texte_requete' => 'la modification dans la table des sources' ,
             'exception' => $e , 
             'id_bdd' => BDD_NUMERO_1,
             'bdd' => $GLOBALS[__BDD][BDD_NUMERO_1] ,

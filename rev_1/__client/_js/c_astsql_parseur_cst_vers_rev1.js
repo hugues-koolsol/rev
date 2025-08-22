@@ -920,12 +920,11 @@ class c_astsql_parseur_cst_vers_rev1{
         t+='champ(';
         t+=meta_champ;
         t+='nom_du_champ( `' + name + '`),';
-        t+='espece_du_champ('+espece_du_champ.toUpperCase()+'),'
-        if(longueur_du_champ!==''){
-            t+='longueur_du_champ('+longueur_du_champ+'),'
+        t+='espece_du_champ(' + espece_du_champ.toUpperCase() + '),';
+        if(longueur_du_champ !== ''){
+            t+='longueur_du_champ(' + longueur_du_champ + '),';
         }
         t+='type(' + dataType + ')';
-        
         t+='' + constraints + '';
         t+=')';
         return({"__xst" : __xsu ,"__xva" : t});

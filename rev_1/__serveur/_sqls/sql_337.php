@@ -12,7 +12,7 @@ function sql_337($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_menu'] !== '')){
-        $where0.=' AND `T0`.`chi_id_menu` = '.sq1($par['T0_chi_id_menu']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_menu`',$par['T0_chi_id_menu']);
     }
     if(($par['T0_cht_libelle_menu'] !== '')){
         $where0.=' AND `T0`.`cht_libelle_menu` LIKE '.sq2($par['T0_cht_libelle_menu']).''.PHP_EOL;
@@ -20,7 +20,7 @@ function sql_337($par,&$donnees_retournees,$that){
     if(($par['T0_chp_titre_menu'] !== '')){
         $where0.=' AND `T0`.`chp_titre_menu` LIKE '.sq2($par['T0_chp_titre_menu']).''.PHP_EOL;
     }
-    $where0.=' AND `T0`.`chx_acces_menu` IS NOT NULL'.PHP_EOL;
+    $where0.=' AND `T0`.`chx_autorisation_menu` IS NULL'.PHP_EOL;
     $sql0.=$where0;
     $order0='
        ORDER BY  `T0`.`chi_id_menu` DESC';

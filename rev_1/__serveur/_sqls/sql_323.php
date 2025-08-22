@@ -9,8 +9,7 @@ function sql_323($par,&$donnees_retournees,$that){
          `cht_initialisation_menu` , 
          `cht_complements_menu` , 
          `cht_condition_menu` , 
-         `cht_condition_php_menu` , 
-         `chx_acces_menu`
+         `cht_condition_php_menu`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -26,8 +25,7 @@ function sql_323($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_initialisation_menu']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_complements_menu']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_condition_menu']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_condition_php_menu']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_acces_menu']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_condition_php_menu']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

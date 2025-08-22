@@ -17,7 +17,7 @@ function sql_193($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_acces'] !== '')){
-        $where0.=' AND `T0`.`chi_id_acces` = '.sq1($par['T0_chi_id_acces']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_acces`',$par['T0_chi_id_acces']);
     }
     if(($par['T0_chp_nom_acces'] !== '')){
         $where0.=' AND `T0`.`chp_nom_acces` LIKE '.sq2($par['T0_chp_nom_acces']).''.PHP_EOL;

@@ -1,9 +1,9 @@
 <?php
 function sql_324($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
-      `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , `T0`.`cht_initialisation_menu` , 
-      `T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T0`.`chx_acces_menu` , `T4`.`chp_nom_acces`
+      `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+      `T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
+      `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -13,8 +13,6 @@ function sql_324($par,&$donnees_retournees,$that){
        LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
 
        LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
-
-       LEFT JOIN `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.tbl_acces T4 ON T4.chi_id_acces = T0.chx_acces_menu
     ';
     $sql0.=$from0;
     $where0=' WHERE (`T0`.`chi_id_menu` = '.sq1($par['T0_chi_id_menu']).')'.PHP_EOL;
@@ -32,17 +30,15 @@ function sql_324($par,&$donnees_retournees,$that){
                 'T0.chp_titre_menu' => $tab0[1],
                 'T0.chx_autorisation_menu' => $tab0[2],
                 'T0.chp_methode_menu' => $tab0[3],
-                'T1.chx_acces_autorisation' => $tab0[4],
-                'T1.chx_source_autorisation' => $tab0[5],
-                'T2.chp_nom_acces' => $tab0[6],
-                'T3.chp_nom_source' => $tab0[7],
-                'T0.cht_libelle_menu' => $tab0[8],
-                'T0.cht_initialisation_menu' => $tab0[9],
-                'T0.cht_complements_menu' => $tab0[10],
-                'T0.cht_condition_menu' => $tab0[11],
-                'T0.cht_condition_php_menu' => $tab0[12],
-                'T0.chx_acces_menu' => $tab0[13],
-                'T4.chp_nom_acces' => $tab0[14],
+                'T0.cht_libelle_menu' => $tab0[4],
+                'T0.cht_initialisation_menu' => $tab0[5],
+                'T0.cht_complements_menu' => $tab0[6],
+                'T0.cht_condition_menu' => $tab0[7],
+                'T0.cht_condition_php_menu' => $tab0[8],
+                'T1.chx_acces_autorisation' => $tab0[9],
+                'T1.chx_source_autorisation' => $tab0[10],
+                'T2.chp_nom_acces' => $tab0[11],
+                'T3.chp_nom_source' => $tab0[12],
             );
         }
         return array(

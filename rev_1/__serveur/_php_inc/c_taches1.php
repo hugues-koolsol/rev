@@ -141,24 +141,26 @@ class c_taches1{
             }
 
         }
-        $donnees_sql=array( array(/**/
+        $donnees_sql=array( array(
+                    /**/
                     'chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
                     'chp_texte_tache' => $donnees_recues[__xva]['chp_texte_tache'],
                     'chp_priorite_tache' => $donnees_recues[__xva]['chp_priorite_tache'],
                     'chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
-                    
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
             /* sql_130()
-            INSERT INTO b1.`tbl_taches`(
-                `chx_utilisateur_tache` , 
-                `chp_texte_tache` , 
-                `chp_priorite_tache`
-            ) VALUES (
-                :chx_utilisateur_tache , 
-                :chp_texte_tache , 
-                :chp_priorite_tache
+            INSERT INTO b1.`tbl_taches`(
+                `chx_utilisateur_tache` , 
+                `chp_texte_tache` , 
+                `chp_priorite_tache` , 
+                `chx_projet_tache`
+            ) VALUES (
+                :chx_utilisateur_tache , 
+                :chp_texte_tache , 
+                :chp_priorite_tache , 
+                :chx_projet_tache
             );
             */
             /*sql_inclure_fin*/
@@ -245,11 +247,12 @@ class c_taches1{
     function vv_taches_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
             /* sql_128()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
              FROM b1.tbl_taches T0
-            WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
-               AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+            WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
+               AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+               AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache)
             ;
             */
             /*sql_inclure_fin*/
@@ -268,8 +271,9 @@ class c_taches1{
             $tt=/*sql_inclure_deb*/
                 /* sql_131()
                 DELETE FROM b1.tbl_taches
-                WHERE (`chi_id_tache` = :chi_id_tache
-                   AND `chx_utilisateur_tache` = :chx_utilisateur_tache) ;
+                WHERE ( / *** *** / `chi_id_tache` = :chi_id_tache
+                   AND `chx_utilisateur_tache` = :chx_utilisateur_tache
+                   AND `chx_projet_tache` = :chx_projet_tache) ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
@@ -322,11 +326,12 @@ class c_taches1{
         }
         $tt=/*sql_inclure_deb*/
             /* sql_128()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
              FROM b1.tbl_taches T0
-            WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
-               AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+            WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
+               AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+               AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache)
             ;
             */
             /*sql_inclure_fin*/
@@ -335,7 +340,7 @@ class c_taches1{
             array(/**/
                 'T0_chi_id_tache' => $donnees_recues[__xva]['chi_id_tache'],
                 'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
-                'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']                
+                'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
             ),
             $donnees_retournees
         );
@@ -344,11 +349,12 @@ class c_taches1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_129()
-                UPDATE b1.tbl_taches SET 
-                   `chp_texte_tache` = :n_chp_texte_tache , 
+                UPDATE b1.tbl_taches SET 
+                   `chp_texte_tache` = :n_chp_texte_tache , 
                    `chp_priorite_tache` = :n_chp_priorite_tache
-                WHERE ( / *** *** / `chi_id_tache` = :c_chi_id_tache
-                   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
+                WHERE ( / *** *** / `chi_id_tache` = :c_chi_id_tache
+                   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+                   AND `chx_projet_tache` = :c_chx_projet_tache) ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
@@ -402,11 +408,12 @@ class c_taches1{
         $o1='';
         $tt=/*sql_inclure_deb*/
             /* sql_164()
-            SELECT 
+            SELECT 
             `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
              FROM b1.tbl_taches T0
-            WHERE ( / *** *** / `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-               AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache) 
+            WHERE ( / *** *** / `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+               AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache
+               AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache) 
             ORDER BY `T0`.`chp_priorite_tache` ASC
             ;
             */
@@ -416,7 +423,7 @@ class c_taches1{
             array(/**/
                 'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
                 'T0_chp_priorite_tache' => 50,
-                'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']                
+                'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
             ),
             $donnees_retournees
         );
@@ -435,15 +442,17 @@ class c_taches1{
 
                 $tt2=/*sql_inclure_deb*/
                     /* sql_165()
-                    UPDATE b1.tbl_taches SET 
+                    UPDATE b1.tbl_taches SET 
                        `chp_priorite_tache` = :n_chp_priorite_tache
-                    WHERE ( / *** *** / `chi_id_tache` = :c_chi_id_tache
-                       AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
+                    WHERE ( / *** *** / `chi_id_tache` = :c_chi_id_tache
+                       AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+                       AND `chx_projet_tache` = :c_chx_projet_tache) ;
                     */
                     /*sql_inclure_fin*/
                     $this->sql0->sql_iii(
                      /*sql_165()*/ 165,
-                    array(/**/
+                    array(
+                        /**/
                         'n_chp_priorite_tache' => $nouvelle_priorite,
                         'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
                         'c_chi_id_tache' => $v1['T0.chi_id_tache'],
@@ -493,11 +502,12 @@ class c_taches1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_128()
-                SELECT 
+                SELECT 
                 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
                  FROM b1.tbl_taches T0
-                WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
-                   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+                WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
+                   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+                   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache)
                 ;
                 */
                 /*sql_inclure_fin*/
@@ -506,7 +516,7 @@ class c_taches1{
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
                     'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
-                    'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']                    
+                    'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
             );
@@ -520,11 +530,12 @@ class c_taches1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_120()
-                UPDATE b1.tbl_taches SET 
+                UPDATE b1.tbl_taches SET 
                    `chp_priorite_tache` = (chp_priorite_tache-1)
-                WHERE (`chi_id_tache` = :c_chi_id_tache
-                   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-                   AND `chp_priorite_tache` >= 1) ;
+                WHERE ( / *** *** / `chi_id_tache` = :c_chi_id_tache
+                   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+                   AND `chp_priorite_tache` >= 1
+                   AND `chx_projet_tache` = :c_chx_projet_tache) ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
@@ -578,11 +589,12 @@ class c_taches1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_128()
-                SELECT 
+                SELECT 
                 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
                  FROM b1.tbl_taches T0
-                WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
-                   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+                WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
+                   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+                   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache)
                 ;
                 */
                 /*sql_inclure_fin*/
@@ -605,11 +617,12 @@ class c_taches1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_121()
-                UPDATE b1.tbl_taches SET 
+                UPDATE b1.tbl_taches SET 
                    `chp_priorite_tache` = (chp_priorite_tache+1)
-                WHERE ( / *** *** / `chi_id_tache` = :c_chi_id_tache
-                   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-                   AND `chp_priorite_tache` < 99) ;
+                WHERE ( / *** *** / `chi_id_tache` = :c_chi_id_tache
+                   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+                   AND `chp_priorite_tache` < 99
+                   AND `chx_projet_tache` = :c_chx_projet_tache) ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
@@ -663,11 +676,12 @@ class c_taches1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_128()
-                SELECT 
+                SELECT 
                 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
                  FROM b1.tbl_taches T0
-                WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
-                   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+                WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
+                   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+                   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache)
                 ;
                 */
                 /*sql_inclure_fin*/
@@ -685,18 +699,20 @@ class c_taches1{
 
                 $tt=/*sql_inclure_deb*/
                     /* sql_122()
-                    UPDATE b1.tbl_taches SET 
+                    UPDATE b1.tbl_taches SET 
                        `chp_priorite_tache` = :n_chp_priorite_tache
-                    WHERE (`chi_id_tache` = :c_chi_id_tache
-                       AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
+                    WHERE ( / *** *** / `chi_id_tache` = :c_chi_id_tache
+                       AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+                       AND `chx_projet_tache` = :c_chx_projet_tache) ;
                     */
                     /*sql_inclure_fin*/
                     $this->sql0->sql_iii(
                      /*sql_122()*/ 122,
-                    array(/**/
+                    array(
+                        /**/
                         'c_chi_id_tache' => $chi_id_taches,
                         'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
-                        'n_chp_priorite_tache' => $valeur ,
+                        'n_chp_priorite_tache' => $valeur,
                         'c_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                     ),
                     $donnees_retournees
@@ -788,11 +804,12 @@ class c_taches1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_128()
-                SELECT 
+                SELECT 
                 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
                  FROM b1.tbl_taches T0
-                WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
-                   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+                WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
+                   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+                   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache)
                 ;
                 */
                 /*sql_inclure_fin*/
@@ -869,11 +886,12 @@ class c_taches1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_128()
-                SELECT 
+                SELECT 
                 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
                  FROM b1.tbl_taches T0
-                WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
-                   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+                WHERE ( / *** *** / `T0`.`chi_id_tache` = :T0_chi_id_tache
+                   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+                   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache)
                 ;
                 */
                 /*sql_inclure_fin*/
@@ -943,8 +961,7 @@ class c_taches1{
       =============================================================================================================
     */
     function page_liste_des_taches1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-
-     
+        
         if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
 
             $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
@@ -952,6 +969,7 @@ class c_taches1{
             return;
 
         }
+
         $__nbMax=20;
         $par=array();
         $par['T0_chi_id_tache']='';
@@ -1094,7 +1112,8 @@ class c_taches1{
                AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
                AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
                AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
-               AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2) 
+               AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
+               AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache) 
             ORDER BY `T0`.`chp_priorite_tache` ASC  
             LIMIT :quantitee OFFSET :debut 
             ;

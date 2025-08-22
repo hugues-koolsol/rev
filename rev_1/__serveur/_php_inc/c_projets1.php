@@ -369,13 +369,12 @@ class c_projets1{
             }
 
         }
-        
+
         /*
-
+          
           quand on active un projet, on importe les sqls et les genres
-        
+          
         */
-
         
         if(isset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'])){
 
@@ -410,7 +409,6 @@ class c_projets1{
 
             $donnees_retournees[__xva]['__liste_des_sql']=array();
             $donnees_retournees[__xva]['__liste_des_genres']=array();
-            
         }
 
         $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(' . $chi_id_projet . ')))';

@@ -72,7 +72,6 @@ class c_autorisations1{
                    || $conteneur1 === 'vv_autorisations_supprimer1'
                    || $conteneur1 === 'vv_autorisations_filtre1'
                    || $conteneur1 === 'vv_autorisations_filtre_choix_1'
-                   
                 ){
 
                     $this->$conteneur1(
@@ -121,7 +120,18 @@ class c_autorisations1{
                     'chx_acces_autorisation' => $donnees_recues[__xva]['chx_acces_autorisation'] === '' ? null : $donnees_recues[__xva]['chx_acces_autorisation']
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_318()
+            INSERT INTO b1.`tbl_autorisations`(
+                `chx_acces_autorisation` , 
+                `chx_source_autorisation`
+            ) VALUES (
+                :chx_acces_autorisation , 
+                :chx_source_autorisation
+            );
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_318()*/ 318,
             $donnees_sql,
             $donnees_retournees
@@ -202,7 +212,20 @@ class c_autorisations1{
       =============================================================================================================
     */
     function vv_autorisations_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_319()
+            SELECT 
+            `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+             FROM b1.tbl_autorisations T0
+             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+            
+             LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+            
+            WHERE (`T0`.`chi_id_autorisation` = :T0_chi_id_autorisation)
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_319()*/ 319,
             array(/**/
                 'T0_chi_id_autorisation' => $donnees_recues[__xva]['chi_id_autorisation']
@@ -212,7 +235,13 @@ class c_autorisations1{
         
         if($tt[__xst] === __xsu){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_320()
+                DELETE FROM b1.tbl_autorisations
+                WHERE `chi_id_autorisation` = :chi_id_autorisation ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_320()*/ 320,
                 array(/**/
                     'chi_id_autorisation' => $tt[__xva][0]['T0.chi_id_autorisation']
@@ -258,7 +287,20 @@ class c_autorisations1{
             }
 
         }
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_319()
+            SELECT 
+            `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+             FROM b1.tbl_autorisations T0
+             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+            
+             LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+            
+            WHERE (`T0`.`chi_id_autorisation` = :T0_chi_id_autorisation)
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_319()*/ 319,
             array(/**/
                 'T0_chi_id_autorisation' => $donnees_recues[__xva]['chi_id_autorisation']
@@ -268,7 +310,15 @@ class c_autorisations1{
         
         if($tt[__xst] === __xsu){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_321()
+                UPDATE b1.tbl_autorisations SET 
+                   `chx_acces_autorisation` = :n_chx_acces_autorisation , 
+                   `chx_source_autorisation` = :n_chx_source_autorisation
+                WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_321()*/ 321,
                 array(/**/
                     'c_chi_id_autorisation' => $tt[__xva][0]['T0.chi_id_autorisation'],
@@ -309,15 +359,11 @@ class c_autorisations1{
 
         $o1='';
     }
-    
-    
     /*
       =============================================================================================================
     */
     function page_autorisations_dupliquer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_recues = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);*/
-        
-        
         $o1='';
         $chi_id_autorisations='';
         $l01=count($mat);
@@ -334,22 +380,39 @@ class c_autorisations1{
         }
         
         if(is_numeric($chi_id_autorisations) && $chi_id_autorisations > 0){
-         
-            $tt=$this->sql0->sql_iii(
+
+            $tt=/*sql_inclure_deb*/
+                /* sql_319()
+                SELECT 
+                `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+                 FROM b1.tbl_autorisations T0
+                 LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+                
+                 LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+                
+                WHERE (`T0`.`chi_id_autorisation` = :T0_chi_id_autorisation)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_319()*/ 319,
                 array(/**/
                     'T0_chi_id_autorisation' => $chi_id_autorisations
                 ),
                 $donnees_retournees
             );
+            
             if($tt[__xst] === __xsu){
-               $donnees_recues['dupliquer']=$tt[__xva][0];
-               $this->page_autorisations_creer1($donnees_retournees,$mat,$donnees_recues);
+
+                $donnees_recues['dupliquer']=$tt[__xva][0];
+                $this->page_autorisations_creer1($donnees_retournees,$mat,$donnees_recues);
+
             }
+
+
         }
-        
+
     }
-    
     /*
       =============================================================================================================
     */
@@ -365,15 +428,20 @@ class c_autorisations1{
         $o1 .= '      <span>acces</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        
         if(isset($donnees_recues['dupliquer']['T0.chx_acces_autorisation'])){
-            $o1 .= '        <input type="hidden" value="'.$donnees_recues['dupliquer']['T0.chx_acces_autorisation'].'"  id="chx_acces_autorisation" />' . PHP_EOL;
+
+            $o1 .= '        <input type="hidden" value="' . $donnees_recues['dupliquer']['T0.chx_acces_autorisation'] . '"  id="chx_acces_autorisation" />' . PHP_EOL;
             $o1 .= '        <span id="chx_acces_autorisation_libelle">';
             $o1 .= '(' . $donnees_recues['dupliquer']['T0.chx_acces_autorisation'] . ') ' . htmlentities($donnees_recues['dupliquer']['T1.chp_nom_acces']) . PHP_EOL;
             $o1 .= '</span>' . PHP_EOL;
+
         }else{
+
             $o1 .= '        <input type="hidden" value=""  id="chx_acces_autorisation" />' . PHP_EOL;
             $o1 .= '        <span id="chx_acces_autorisation_libelle">*indéfini</span>' . PHP_EOL;
         }
+
         $parametre_sous_fenetre='c_acces1.page_acces_sous_liste1(';
         $parametre_sous_fenetre .= ' sans_menus1()';
         $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_acces_autorisation)';
@@ -395,15 +463,18 @@ class c_autorisations1{
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         
         if(isset($donnees_recues['dupliquer']['T0.chx_source_autorisation'])){
-            $o1 .= '        <input type="hidden" value="'.$donnees_recues['dupliquer']['T0.chx_source_autorisation'].'"  id="chx_source_autorisation" />' . PHP_EOL;
+
+            $o1 .= '        <input type="hidden" value="' . $donnees_recues['dupliquer']['T0.chx_source_autorisation'] . '"  id="chx_source_autorisation" />' . PHP_EOL;
             $o1 .= '        <span id="chx_source_autorisation_libelle">';
             $o1 .= '(' . $donnees_recues['dupliquer']['T0.chx_source_autorisation'] . ') ' . htmlentities($donnees_recues['dupliquer']['T2.chp_nom_source']) . PHP_EOL;
             $o1 .= '</span>' . PHP_EOL;
+
         }else{
-        $o1 .= '        <input type="hidden" value=""  id="chx_source_autorisation" />' . PHP_EOL;
-        $o1 .= '        <span id="chx_source_autorisation_libelle">*indéfini</span>' . PHP_EOL;
+
+            $o1 .= '        <input type="hidden" value=""  id="chx_source_autorisation" />' . PHP_EOL;
+            $o1 .= '        <span id="chx_source_autorisation_libelle">*indéfini</span>' . PHP_EOL;
         }
-        
+
         $parametre_sous_fenetre='c_sources1.page_sources_sous_liste1(';
         $parametre_sous_fenetre .= ' sans_menus1()';
         $parametre_sous_fenetre .= ' nom_champ_dans_parent1(chx_source_autorisation)';
@@ -450,7 +521,20 @@ class c_autorisations1{
         
         if(is_numeric($chi_id_autorisations)){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_319()
+                SELECT 
+                `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+                 FROM b1.tbl_autorisations T0
+                 LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+                
+                 LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+                
+                WHERE (`T0`.`chi_id_autorisation` = :T0_chi_id_autorisation)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_319()*/ 319,
                 array(/**/
                     'T0_chi_id_autorisation' => $chi_id_autorisations
@@ -503,7 +587,20 @@ class c_autorisations1{
         
         if(is_numeric($chi_id_autorisations) && $chi_id_autorisations > 0){
 
-            $tt=$this->sql0->sql_iii(
+            $tt=/*sql_inclure_deb*/
+                /* sql_319()
+                SELECT 
+                `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+                 FROM b1.tbl_autorisations T0
+                 LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+                
+                 LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+                
+                WHERE (`T0`.`chi_id_autorisation` = :T0_chi_id_autorisation)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
                  /*sql_319()*/ 319,
                 array(/**/
                     'T0_chi_id_autorisation' => $chi_id_autorisations
@@ -519,7 +616,6 @@ class c_autorisations1{
                   =====================================================================================
                 */
                 $o1 .= '  <input type="hidden" value="' . $tt[__xva][0]['T0.chi_id_autorisation'] . '" id="chi_id_autorisation" />' . PHP_EOL;
-
                 /*
                   =====================================================================================
                 */
@@ -671,7 +767,6 @@ class c_autorisations1{
         $par['T0_chx_source_autorisation']='';
         $par['T1_chp_nom_acces']='';
         $par['T2_chp_nom_source']='';
-        
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
@@ -751,15 +846,13 @@ class c_autorisations1{
         $par['T0_chx_source_autorisation']=$par_mat['T0_chx_source_autorisation']??'';
         $par['T1_chp_nom_acces']=$par_mat['T1_chp_nom_acces']??'';
         $par['T2_chp_nom_source']=$par_mat['T2_chp_nom_source']??'';
-        
-        
         $nom_filtre='vv_autorisations_filtre_choix_1';
         $o1='<h1>choisir ' . self::UN_UNE_ELEMENT_GERE . '</h1>';
         $__num_page=!isset($par['__num_page']) ? 0 : (int)($par['__num_page']);
         $__debut=$__num_page * $__nbMax;
         $o1 .= '<div class="yy_filtre_liste1" id="' . $nom_filtre . '">' . PHP_EOL;
         /*
-        
+          
         */
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '      <div><span>nom source</span></div>' . PHP_EOL;
@@ -770,10 +863,11 @@ class c_autorisations1{
             $o1 .= '         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id(T2_chp_nom_source),value(\'\'))),c_autorisations1.formulaire1(conteneur1(' . $nom_filtre . '))" >x</span>';
 
         }
+
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /*
-        
+          
         */
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '      <div><span>nom acces</span></div>' . PHP_EOL;
@@ -784,17 +878,18 @@ class c_autorisations1{
             $o1 .= '         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id(T1_chp_nom_acces),value(\'\'))),c_autorisations1.formulaire1(conteneur1(' . $nom_filtre . '))" >x</span>';
 
         }
+
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /*
-        
+          
         */
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '    <div><span>id</span></div>' . PHP_EOL;
         $o1 .= '    <div><input type="text" id="T0_chi_id_autorisation" value="' . $par['T0_chi_id_autorisation'] . '" size="8" maxlength="32" autocapitalize="off" /></div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /*
-        
+          
         */
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '      <div><span>id acces</span></div>' . PHP_EOL;
@@ -805,10 +900,11 @@ class c_autorisations1{
             $o1 .= '         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id(T0_chx_acces_autorisation),value(\'\'))),c_autorisations1.formulaire1(conteneur1(' . $nom_filtre . '))" >x</span>';
 
         }
+
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /*
-        
+          
         */
         $o1 .= '   <div>' . PHP_EOL;
         $o1 .= '      <div><span>id source</span></div>' . PHP_EOL;
@@ -819,10 +915,11 @@ class c_autorisations1{
             $o1 .= '         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id(T0_chx_source_autorisation),value(\'\'))),c_autorisations1.formulaire1(conteneur1(' . $nom_filtre . '))" >x</span>';
 
         }
+
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
         /*
-        
+          
         */
         $o1 .= '   <div>    ' . PHP_EOL;
         $o1 .= '     <div><span>&nbsp;</span></div>' . PHP_EOL;
@@ -833,11 +930,27 @@ class c_autorisations1{
         $o1 .= '   </div> ' . PHP_EOL;
         /**/
         $o1 .= '</div>';
-        $tt=$this->sql0->sql_iii(
-             317,
-             array(
+        $tt=/*sql_inclure_deb*/
+            /* sql_317()
+            SELECT 
+            `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+             FROM b1.tbl_autorisations T0
+             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+            
+             LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+            
+            WHERE ( / *** *** / `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
+               AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+               AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
+               AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
+               AND `T2`.`chp_nom_source` LIKE :T2_chp_nom_source) 
+            ORDER BY `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(317,array(
                 /**/
-                
                 'T0_chi_id_autorisation' => $par['T0_chi_id_autorisation'] === '' ? '' : $par['T0_chi_id_autorisation'],
                 'T0_chx_source_autorisation' => $par['T0_chx_source_autorisation'] === '' ? '' : '' . $par['T0_chx_source_autorisation'] . '',
                 'T0_chx_acces_autorisation' => $par['T0_chx_acces_autorisation'] === '' ? '' : '' . $par['T0_chx_acces_autorisation'] . '',
@@ -845,9 +958,7 @@ class c_autorisations1{
                 'T2_chp_nom_source' => $par['T2_chp_nom_source'] === '' ? '' : '' . $par['T2_chp_nom_source'] . '',
                 'quantitee' => $__nbMax,
                 'debut' => $__debut
-            ),
-            $donnees_retournees
-        );
+            ),$donnees_retournees);
         
         if($tt[__xst] === __xer){
 
@@ -883,7 +994,7 @@ class c_autorisations1{
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="' . htmlentities($parametres) . '">=&gt;</div>';
             $lsttbl .= '</td>';
             /*
-            
+              
             */
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T0.chi_id_autorisation'] . '';
@@ -899,19 +1010,19 @@ class c_autorisations1{
 
             $lsttbl .= '</td>';
             /*
-            
+              
             */
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T2.chp_nom_source'] . '';
             $lsttbl .= '</td>';
             /*
-            
+              
             */
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T1.chp_nom_acces'] . '';
             $lsttbl .= '</td>';
             /*
-            
+              
             */
             $lsttbl .= '</tr>';
         }
@@ -923,8 +1034,7 @@ class c_autorisations1{
       =============================================================================================================
     */
     function page_liste_des_autorisations1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
-     
-     
+        
         if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
 
             $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
@@ -932,7 +1042,7 @@ class c_autorisations1{
             return;
 
         }
-     
+
         $__nbMax=30;
         $par=array();
         $par['T0_chi_id_autorisation']='';
@@ -1017,7 +1127,6 @@ class c_autorisations1{
         $par['T0_chx_acces_autorisation']=$par['T0_chx_acces_autorisation']??'';
         $par['T1_chp_nom_acces']=$par['T1_chp_nom_acces']??'';
         $par['T2_chp_nom_source']=$par['T2_chp_nom_source']??'';
-        
         $fonction1='c_autorisations1.page_liste_des_autorisations1';
         $nom_filtre='vv_autorisations_filtre1';
         $o1='<h1>Liste des autorisations</h1>';
@@ -1038,7 +1147,6 @@ class c_autorisations1{
         $o1 .= '      <div><input type="text" id="T0_chx_acces_autorisation" value="' . $par['T0_chx_acces_autorisation'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
-
         /*
           
         */
@@ -1047,7 +1155,6 @@ class c_autorisations1{
         $o1 .= '      <div><input type="text" id="T0_chx_source_autorisation" value="' . $par['T0_chx_source_autorisation'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
-          
         /*
         */
         $o1 .= '   <div>' . PHP_EOL;
@@ -1055,8 +1162,6 @@ class c_autorisations1{
         $o1 .= '      <div><input type="text" id="T1_chp_nom_acces" value="' . $par['T1_chp_nom_acces'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
-
-
         /*
         */
         $o1 .= '   <div>' . PHP_EOL;
@@ -1064,9 +1169,6 @@ class c_autorisations1{
         $o1 .= '      <div><input type="text" id="T2_chp_nom_source" value="' . $par['T2_chp_nom_source'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
-
-
-
         /*
           
         */
@@ -1076,8 +1178,26 @@ class c_autorisations1{
         $o1 .= '     <input type="hidden" id="__num_page" value="' . $__debut . '" />' . PHP_EOL;
         $o1 .= '   </div> ' . PHP_EOL;
         $o1 .= '</div>';
-        
-        $tt=$this->sql0->sql_iii(
+        $tt=/*sql_inclure_deb*/
+            /* sql_317()
+            SELECT 
+            `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+             FROM b1.tbl_autorisations T0
+             LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+            
+             LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+            
+            WHERE ( / *** *** / `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
+               AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+               AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
+               AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
+               AND `T2`.`chp_nom_source` LIKE :T2_chp_nom_source) 
+            ORDER BY `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
              /*sql_317()*/ 317,
             array(
                 /**/
@@ -1138,9 +1258,7 @@ class c_autorisations1{
             $lsttbl .= ' <div style="display:flex;min-width:calc(3*var(t_1boutons_carres))">';
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_autorisations1.formulaire1(action1(page_autorisations_modifier1),chi_id_autorisation(' . $v0['T0.chi_id_autorisation'] . '))">✎</div>';
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="c_autorisations1.formulaire1(action1(page_autorisations_dupliquer1),chi_id_autorisation(' . $v0['T0.chi_id_autorisation'] . '))" title="dupliquer">⎘</div>';
-            
             $lsttbl .= '  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="c_autorisations1.formulaire1(action1(page_autorisations_supprimer1),chi_id_autorisation(' . $v0['T0.chi_id_autorisation'] . '))">🗑</div>';
-
             $lsttbl .= ' </div>';
             $lsttbl .= '</td>';
             /**/
@@ -1149,11 +1267,11 @@ class c_autorisations1{
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';
-            $lsttbl .= '(' . $v0['T0.chx_acces_autorisation'] . ') '.enti1($v0['T1.chp_nom_acces'] );
+            $lsttbl .= '(' . $v0['T0.chx_acces_autorisation'] . ') ' . enti1($v0['T1.chp_nom_acces']);
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:center;">';
-            $lsttbl .= '(' . $v0['T0.chx_source_autorisation'] . ') '.enti1($v0['T2.chp_nom_source'] );
+            $lsttbl .= '(' . $v0['T0.chx_source_autorisation'] . ') ' . enti1($v0['T2.chp_nom_source']);
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '</tr>';

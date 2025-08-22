@@ -769,9 +769,9 @@ class c_astsqliteparseur_vers_rev1{
                         t+='';
                     }
                     t+=')';
-                    t+=' , espece_du_champ(' + element.definition[i].datatype.variant.toUpperCase()+')';
-                    if(longueur_du_champ!==''){
-                        t+=' , longueur_du_champ(' + longueur_du_champ+')';
+                    t+=' , espece_du_champ(' + element.definition[i].datatype.variant.toUpperCase() + ')';
+                    if(longueur_du_champ !== ''){
+                        t+=' , longueur_du_champ(' + longueur_du_champ + ')';
                     }
                 }else{
                     return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'définition type'} ));

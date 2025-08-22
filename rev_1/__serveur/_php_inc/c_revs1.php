@@ -134,6 +134,7 @@ class c_revs1{
       =============================================================================================================
     */
     function page_liste_des_revs1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        
         if(!isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
 
             $donnees_retournees[__x_signaux][__xal][]=' vous devez activer un projet [' . __LINE__ . ']';
@@ -141,6 +142,7 @@ class c_revs1{
             return;
 
         }
+
         $__nbMax=40;
         $par=array();
         $par['T0_chi_id_rev']='';

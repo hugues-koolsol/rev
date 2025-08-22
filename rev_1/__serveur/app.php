@@ -55,10 +55,11 @@ function obtenir_les_menus(&$donnees_retournees){
 
     }
 
+    
     if(isset($_SESSION[__X_CLE_APPLICATION]['chx_acces_utilisateur'])){
-     
-        $nom_fichier=REPERTOIRE_DU_SERVEUR.DIRECTORY_SEPARATOR.'menu_acces_'.$_SESSION[__X_CLE_APPLICATION]['chx_acces_utilisateur'].'.php';
 
+        $nom_fichier=REPERTOIRE_DU_SERVEUR . DIRECTORY_SEPARATOR . 'menu_acces_' . $_SESSION[__X_CLE_APPLICATION]['chx_acces_utilisateur'] . '.php';
+        
         if(is_file($nom_fichier)){
 
             include_once($nom_fichier);
@@ -66,7 +67,7 @@ function obtenir_les_menus(&$donnees_retournees){
 
         }
 
-     
+
     }
 
     
@@ -286,11 +287,12 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
               le __x_action a peut être été mis à jour , on force ici
             */
             $donnees_retournees[__x_action]='recuperation_de_la_premiere_page()';
-            
             /*
               récupération des données pour le développement
             */
+            
             if(isset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'])){
+
                 $chemin_fichier___liste_des_sql=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . '__liste_des_sql.php';
                 
                 if(is_file($chemin_fichier___liste_des_sql)){
@@ -316,8 +318,10 @@ if(isset($_POST) && count($_POST) > 0 && isset($_GET[__obj]) && isset($_POST[__o
 
                     $donnees_retournees[__xva]['__liste_des_genres']=array();
                 }
+
+
             }
-            
+
 
         }else{
 

@@ -68,7 +68,7 @@ function sql_102($par,&$donnees_retournees,$that){
         return array(
                 __xst => __xer , 
                 'sql0' => $sql0 ,
-                'sql0' => 'la liste sur les requetes' ,
+                'texte_requete' => 'la liste sur les requetes' ,
                 'exception' => $e ,
                 'id_bdd' => BDD_NUMERO_1 
             );

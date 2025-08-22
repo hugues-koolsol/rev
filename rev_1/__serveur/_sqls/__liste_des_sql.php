@@ -36,7 +36,7 @@ LIMIT :quantitee OFFSET :debut
    `cht_php_requete` = :n_cht_php_requete
 WHERE (`chi_id_requete` = :c_chi_id_requete
    AND `chx_projet_requete` = :c_chx_projet_requete) ;',
-    'cht_commentaire_requete' => '',
+    'cht_commentaire_requete' => NULL,
   ),
   104 => 
   array (
@@ -712,7 +712,6 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_sources SET 
    `chx_dossier_id_source` = :n_chx_dossier_id_source , 
-   `chx_projet_id_source` = :n_chx_projet_id_source , 
    `chp_nom_source` = :n_chp_nom_source , 
    `cht_commentaire_source` = :n_cht_commentaire_source , 
    `cht_rev_source` = :n_cht_rev_source , 
@@ -1208,9 +1207,9 @@ WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',
   322 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
-`T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
-`T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T0`.`chx_acces_menu`
+`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+`T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , 
+`T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
@@ -1239,8 +1238,7 @@ LIMIT :quantitee OFFSET :debut
     `cht_initialisation_menu` , 
     `cht_complements_menu` , 
     `cht_condition_menu` , 
-    `cht_condition_php_menu` , 
-    `chx_acces_menu`
+    `cht_condition_php_menu`
 ) VALUES (
     :chp_titre_menu , 
     :chx_autorisation_menu , 
@@ -1249,25 +1247,22 @@ LIMIT :quantitee OFFSET :debut
     :cht_initialisation_menu , 
     :cht_complements_menu , 
     :cht_condition_menu , 
-    :cht_condition_php_menu , 
-    :chx_acces_menu
+    :cht_condition_php_menu
 );',
     'cht_commentaire_requete' => 'menus',
   ),
   324 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
-`T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , `T0`.`cht_initialisation_menu` , 
-`T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T0`.`chx_acces_menu` , `T4`.`chp_nom_acces`
+`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+`T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
+`T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
  LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
 
  LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
-
- LEFT JOIN b1.tbl_acces T4 ON T4.chi_id_acces = T0.chx_acces_menu
 
 WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
 ;',
@@ -1319,7 +1314,7 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre`
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_ts_genre`
  FROM b1.tbl_genres T0
 WHERE (`T0`.`chi_id_genre` = :T0_chi_id_genre
    AND `T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre
@@ -1346,7 +1341,8 @@ LIMIT :quantitee OFFSET :debut
     `cht_valeur_init_genre` , 
     `chp_prefixe_genre` , 
     `che_est_parmis_genre` , 
-    `cht_parmis_genre`
+    `cht_parmis_genre` , 
+    `che_est_ts_genre`
 ) VALUES (
     :chp_nom_genre , 
     :chp_espece_genre , 
@@ -1359,7 +1355,8 @@ LIMIT :quantitee OFFSET :debut
     :cht_valeur_init_genre , 
     :chp_prefixe_genre , 
     :che_est_parmis_genre , 
-    :cht_parmis_genre
+    :cht_parmis_genre , 
+    :che_est_ts_genre
 );',
     'cht_commentaire_requete' => 'genres',
   ),
@@ -1368,7 +1365,7 @@ LIMIT :quantitee OFFSET :debut
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre`
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_ts_genre`
  FROM b1.tbl_genres T0
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
 ;',
@@ -1388,7 +1385,8 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
    `cht_valeur_init_genre` = :n_cht_valeur_init_genre , 
    `chp_prefixe_genre` = :n_chp_prefixe_genre , 
    `che_est_parmis_genre` = :n_che_est_parmis_genre , 
-   `cht_parmis_genre` = :n_cht_parmis_genre
+   `cht_parmis_genre` = :n_cht_parmis_genre , 
+   `che_est_ts_genre` = :n_che_est_ts_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',
     'cht_commentaire_requete' => 'genres',
   ),
@@ -1403,7 +1401,7 @@ WHERE `chi_id_genre` = :chi_id_genre ;',
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre`
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_ts_genre`
  FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
 ;',
     'cht_commentaire_requete' => 'tous les genres',
@@ -1433,13 +1431,22 @@ WHERE `chi_id_menu` = :chi_id_menu ;',
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_menu` , `T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu`
  FROM b1.tbl_menus T0
-WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu
+WHERE ( /* */ `T0`.`chi_id_menu` = :T0_chi_id_menu
    AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
    AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
-   AND `T0`.`chx_acces_menu` IS NOT NULL) 
+   AND `T0`.`chx_autorisation_menu` IS NULL) 
 ORDER BY `T0`.`chi_id_menu` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'menus',
+  ),
+  338 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_sources SET 
+   `cht_rev_source` = :n_cht_rev_source , 
+   `cht_genere_source` = :n_cht_genere_source
+WHERE (`chi_id_source` = :c_chi_id_source
+   AND `chx_projet_id_source` = :c_chx_projet_id_source) ;',
+    'cht_commentaire_requete' => 'sources',
   ),
 );

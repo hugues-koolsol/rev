@@ -180,9 +180,9 @@ class c_acces1{
 
                     
                     if($parent_est_select === true){
-                        $aa='';
 
-                        $aa .= PHP_EOL . '  <option id="menu_'.$v1['attributs']['data-chi_id_menu'].'" data-action_option="';
+                        $aa='';
+                        $aa .= PHP_EOL . '  <option id="menu_' . $v1['attributs']['data-chi_id_menu'] . '" data-action_option="';
                         $aa .= str_replace('.php','',$v1['attributs']['data-chp_nom_source']);
                         $aa .= '.' . $v1['attributs']['data-chp_methode_menu'];
                         
@@ -212,26 +212,40 @@ class c_acces1{
                         $aa .= '"';
                         $aa .= '">' . $v1['contenu'] . '</option>';
                         
-                        $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
-                        
+                        if($v1['attributs']['data-cht_condition_menu'] === ''){
+
+                            $t .= '$le_sous_menu.=' . var_export($aa,true) . ';' . PHP_EOL;
+
+                        }else{
+
+                            $t .= 'if(' . substr($v1['attributs']['data-cht_condition_php_menu'],0,-1) . '){' . PHP_EOL;
+                            $t .= '   $le_sous_menu.=' . var_export($aa,true) . ';' . PHP_EOL;
+                            $t .= '}' . PHP_EOL;
+                        }
+
 
                     }else{
-                        if(isset($v1['attributs']['data-liste_des_menus']) && $v1['attributs']['data-liste_des_menus']==='1'){
+
+                        
+                        if(isset($v1['attributs']['data-liste_des_menus']) && $v1['attributs']['data-liste_des_menus'] === '1'){
+
                             /*
                               c'est une branche qui n'a pas d'enfants
                             */
-                            $aa='';
-                            $aa .= '<select id="menu_'.$v1['attributs']['data-chi_id_menu'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
-                            $aa .= '  <option>'.PHP_EOL;
-                            $aa .= $v1['contenu'];
-                            $aa .= '</option>' . PHP_EOL;
-                            $aa .= '</select>' . PHP_EOL;
-                            $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
-                            
-                        }else{
-                            $aa='';
+                            /*
+                              $aa='';
+                              $aa .= '<select id="menu_'.$v1['attributs']['data-chi_id_menu'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
+                              $aa .= '  <option>'.PHP_EOL;
+                              $aa .= $v1['contenu'];
+                              $aa .= '</option>' . PHP_EOL;
+                              $aa .= '</select>' . PHP_EOL;
+                              $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
+                            */
 
-                            $aa .= '<div id="menu_'.$v1['attributs']['data-chi_id_menu'].'"';
+                        }else{
+
+                            $aa='';
+                            $aa .= '<div id="menu_' . $v1['attributs']['data-chi_id_menu'] . '"';
                             $aa .= ' data-id_menu="' . $v1['attributs']['data-chi_id_menu'] . '"';
                             $aa .= ' class="hug_bouton"';
                             $aa .= ' data-hug_click="';
@@ -262,30 +276,39 @@ class c_acces1{
                             $aa .= 'id_interne(' . $v1['id_interne'] . ')';
                             $aa .= '"';
                             $aa .= ' title="' . $v1['attributs']['data-chp_titre_menu'] . '"';
-                            $aa .= '>' . $v1['contenu'] . '</div>' ;
-                            if($v1['attributs']['data-cht_condition_menu']===''){
-                                $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
+                            $aa .= '>' . $v1['contenu'] . '</div>';
+                            
+                            if($v1['attributs']['data-cht_condition_menu'] === ''){
+
+                                $t .= '$le_menu.=' . var_export($aa,true) . ';' . PHP_EOL;
+
                             }else{
-                                $t.='if('.substr($v1['attributs']['data-cht_condition_php_menu'],0,-1).'){'.PHP_EOL;
-                                $t.='   $le_menu.='.var_export($aa,true).';'.PHP_EOL;
-                                $t.='}'.PHP_EOL;
-                                //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . enti1(var_export( $t , true )) . '</pre>' ; exit(0);
-                                
+
+                                $t .= 'if(' . substr($v1['attributs']['data-cht_condition_php_menu'],0,-1) . '){' . PHP_EOL;
+                                $t .= '   $le_menu.=' . var_export($aa,true) . ';' . PHP_EOL;
+                                $t .= '}' . PHP_EOL;
+                                /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . enti1(var_export( $t , true )) . '</pre>' ; exit(0);*/
                             }
+
                         }
+
                     }
 
 
                 }else{
 
                     $aa='';
-                    $aa .= '<select id="menu_'.$v1['id_interne'].'" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
-                    $aa .= '  <option>' . $v1['contenu'] . '</option>' . PHP_EOL;
-                    $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
+                    $t .= '$le_sous_menu=\'\';' . PHP_EOL;
                     $t .= $this->construit_menu($v1['id_interne'],$le_tableau_du_menu,true);
+                    $t .= 'if($le_sous_menu!==\'\'){' . PHP_EOL;
+                    $aa .= '<select id="menu_' . $v1['id_interne'] . '" data-select_dans_menu="1" data-hug_change="interface1.change_option_de_select()">' . PHP_EOL;
+                    $aa .= '  <option>' . $v1['contenu'] . '</option>' . PHP_EOL;
+                    $t .= '    $le_menu.=' . var_export($aa,true) . ';' . PHP_EOL;
+                    $t .= '    $le_menu.=$le_sous_menu;' . PHP_EOL;
                     $aa='';
-                    $aa .= '</select>' . PHP_EOL;
-                    $t.='$le_menu.='.var_export($aa,true).';'.PHP_EOL;
+                    $aa .= '</select>';
+                    $t .= '    $le_menu.=' . var_export($aa,true) . ';' . PHP_EOL;
+                    $t .= '}' . PHP_EOL;
                 }
 
 
@@ -301,12 +324,12 @@ class c_acces1{
         $chi_id_acces=$donnees_recues[__xva]['chi_id_acces'];
         $tt195=/*sql_inclure_deb*/
             /* sql_195()
-            SELECT 
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
             `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
-             FROM b1.tbl_acces T0
+             FROM b1.tbl_acces T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
             
             WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
@@ -353,14 +376,11 @@ class c_acces1{
         /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . enti1(var_export( $cht_parametres_acces , true )) . '</pre>' ; exit(0);*/
         /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . enti1(var_export( $le_tableau_du_menu , true )) . '</pre>' ; exit(0);*/
         $menus=$this->construit_menu(0,$le_tableau_du_menu);
-        
-//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . enti1(var_export( $menus , true )) . '</pre>' ; exit(0);
-        
-        $fichier=REPERTOIRE_DU_SERVEUR . DIRECTORY_SEPARATOR . 'temp_menu_acces_' . $chi_id_acces . '.php';
-        
-        $contenu_fichier = '';
-        $contenu_fichier .= '<?' . 'php' . PHP_EOL . '$le_menu=\'\';'.PHP_EOL;
-        $contenu_fichier .= $menus.PHP_EOL;
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . enti1(var_export( $menus , true )) . '</pre>' ; exit(0);*/
+        $fichier=REPERTOIRE_DU_SERVEUR . DIRECTORY_SEPARATOR . 'menu_acces_' . $chi_id_acces . '.php';
+        $contenu_fichier='';
+        $contenu_fichier .= '<?' . 'php' . PHP_EOL . '$le_menu=\'\';' . PHP_EOL;
+        $contenu_fichier .= $menus . PHP_EOL;
         
         if(file_put_contents($fichier,$contenu_fichier) === false){
 
@@ -379,12 +399,12 @@ class c_acces1{
         $le_html=$donnees_recues[__xva]['le_html'];
         $tt195=/*sql_inclure_deb*/
             /* sql_195()
-            SELECT 
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
             `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
-             FROM b1.tbl_acces T0
+             FROM b1.tbl_acces T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
             
             WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
@@ -450,47 +470,59 @@ class c_acces1{
         $donnees_retournees[__xst]=__xsu;
         $this->produire_le_menu($donnees_retournees,$mat,$donnees_recues);
     }
-    
     /*
       =============================================================================================================
     */
-    function construit_html_du_menu($les_elements_du_menu_actuel, $id_interne_parent){
+    function construit_html_du_menu($les_elements_du_menu_actuel,$id_interne_parent){
         $t='';
         foreach($les_elements_du_menu_actuel as $k1 => $v1){
-            if($v1['id_interne_parent']===$id_interne_parent){
+            
+            if($v1['id_interne_parent'] === $id_interne_parent){
+
+                
                 if(!isset($v1['attributs']['data-liste_des_menus'])){
+
                     /*
                       if(strpos($v1['contenu'],'projet')!==false){
-                          echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v1 , true ) . '</pre>' ; exit(0);
+                      echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v1 , true ) . '</pre>' ; exit(0);
                       }
                     */
-                    $t.='<li';
-                    $t.=' data-chi_id_source="' . $v1['attributs']['data-chi_id_source'] . '"';
-                    $t.=' data-chp_nom_source="' . $v1['attributs']['data-chp_nom_source'] . '"';
-                    $t.=' data-chp_methode_menu="' . $v1['attributs']['data-chp_methode_menu'] . '"';
-                    $t.=' data-chi_id_menu="' . $v1['attributs']['data-chi_id_menu'] . '"';
-                    $t.=' data-cht_initialisation_menu="' . $v1['attributs']['data-cht_initialisation_menu'] . '"';
-                    $t.=' data-cht_complements_menu="' . $v1['attributs']['data-cht_complements_menu'] . '"';
-                    $t.=' data-chp_titre_menu="' . $v1['attributs']['data-chp_titre_menu'] . '"';
-                    $t.=' data-cht_condition_php_menu="' . $v1['attributs']['data-cht_condition_php_menu'] . '"';
-                    $t.=' data-cht_condition_menu="' . $v1['attributs']['data-cht_condition_menu'] . '"';
-                    $t.='>'.$v1['attributs']['data-cht_libelle_menu'];
-                    $t.='</li>';
+                    $t .= '<li';
+                    $t .= ' data-chi_id_source="' . $v1['attributs']['data-chi_id_source'] . '"';
+                    $t .= ' data-chp_nom_source="' . $v1['attributs']['data-chp_nom_source'] . '"';
+                    $t .= ' data-chp_methode_menu="' . $v1['attributs']['data-chp_methode_menu'] . '"';
+                    $t .= ' data-chi_id_menu="' . $v1['attributs']['data-chi_id_menu'] . '"';
+                    $t .= ' data-cht_initialisation_menu="' . $v1['attributs']['data-cht_initialisation_menu'] . '"';
+                    $t .= ' data-cht_complements_menu="' . $v1['attributs']['data-cht_complements_menu'] . '"';
+                    $t .= ' data-chp_titre_menu="' . $v1['attributs']['data-chp_titre_menu'] . '"';
+                    $t .= ' data-cht_condition_php_menu="' . $v1['attributs']['data-cht_condition_php_menu'] . '"';
+                    $t .= ' data-cht_condition_menu="' . $v1['attributs']['data-cht_condition_menu'] . '"';
+                    $t .= '>' . $v1['attributs']['data-cht_libelle_menu'];
+                    $t .= '</li>';
+
                 }else{
-                    //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v1 , true ) . '</pre>' ; exit(0);
-                    $t.='<li';
-                    $t.=' data-liste_des_menus="1"';
-                    $t.='>'.$v1['contenu'];
-                    $t.='<ul>';
-                    $t.=$this->construit_html_du_menu($les_elements_du_menu_actuel , $v1['id_interne']);
-                    $t.='</ul>';
-                    $t.='</li>';
+
+                    /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v1 , true ) . '</pre>' ; exit(0);*/
+                    $t .= '<li';
+                    $t .= ' data-liste_des_menus="1"';
+                    $t .= '>' . $v1['contenu'];
+                    $t .= '<ul>';
+                    $t .= $this->construit_html_du_menu($les_elements_du_menu_actuel,$v1['id_interne']);
+                    $t .= '</ul>';
+                    $t .= '</li>';
                 }
+
+
             }
+
         }
-        if($id_interne_parent===0){
-//            echo __FILE__ . ' ' . __LINE__ . ' $t = <pre>' . var_export( $t , true ) . '</pre>' ; exit(0);
+        
+        if($id_interne_parent === 0){
+
+            /* echo __FILE__ . ' ' . __LINE__ . ' $t = <pre>' . var_export( $t , true ) . '</pre>' ; exit(0);*/
+
         }
+
         return $t;
     }
     /*
@@ -504,7 +536,7 @@ class c_acces1{
             /* sql_327()
             SELECT 
             `T1`.`chx_source_autorisation` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
-            `T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`chi_id_menu`
+            `T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`chi_id_menu` , `T0`.`cht_condition_php_menu` , `T0`.`cht_condition_menu`
              FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
             
@@ -537,7 +569,7 @@ class c_acces1{
                     'cht_initialisation_menu' => $v1['T0.cht_initialisation_menu'],
                     'cht_complements_menu' => $v1['T0.cht_complements_menu'],
                     'cht_condition_menu' => $v1['T0.cht_condition_menu'],
-                    'cht_condition_php_menu' => $v1['T0.cht_condition_php_menu'],
+                    'cht_condition_php_menu' => $v1['T0.cht_condition_php_menu']
                 );
             }
             /*
@@ -545,12 +577,12 @@ class c_acces1{
             */
             $tt195=/*sql_inclure_deb*/
                 /* sql_195()
-                SELECT 
-                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+                SELECT 
+                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
                 `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
-                 FROM b1.tbl_acces T0
+                 FROM b1.tbl_acces T0
                  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-                
+                
                  LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
                 
                 WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
@@ -574,15 +606,15 @@ class c_acces1{
             }
 
             $les_elements_du_menu_actuel=array();
+            
             if(is_null($tt195[__xva][0]['T0.cht_parametres_acces'])){
 
                 $cht_parametres_acces=array();
 
             }else{
-             
 
                 $nouveau=json_decode($tt195[__xva][0]['T0.cht_parametres_acces'],true);
-
+                
                 if(isset($nouveau['le_html_ul_li_du_menu'])){
 
                     $cht_parametres_acces=$nouveau['le_html_ul_li_du_menu'];
@@ -592,6 +624,7 @@ class c_acces1{
                     $cht_parametres_acces=array();
                 }
 
+                
                 if(isset($nouveau['le_json_du_menu'])){
 
                     $les_elements_du_menu_actuel=json_decode($nouveau['le_json_du_menu'],true);
@@ -599,68 +632,79 @@ class c_acces1{
                 }
 
             }
-//            echo __FILE__ . ' ' . __LINE__ . ' $liste_des_menus = <pre>' . var_export( $liste_des_menus , true ) . '</pre>' ; exit(0);
+
+            /* echo __FILE__ . ' ' . __LINE__ . ' $liste_des_menus = <pre>' . var_export( $liste_des_menus , true ) . '</pre>' ; exit(0);*/
             /*
               1°] on vérifie que $les_elements_du_menu_actuel ne contient que des éléments de $liste_des_menus
             */
-            
             foreach($les_elements_du_menu_actuel as $k1 => $v1){
+                
                 if(!isset($v1['attributs']['data-liste_des_menus'])){
+
                     /*
                       si ce n'est pas un dossier
                     */
                     $trouve=false;
                     foreach($liste_des_menus as $k2 => $v2){
+                        
                         if($v1['attributs']['data-chi_id_menu'] == $v2['chi_id_menu']){
-                           /*#
-                             if(strpos($v2['cht_libelle_menu'],'projet')!==false){
-                                echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v2['cht_libelle_menu'] , true ) . '</pre>' ; exit(0);
-                             }
-                           */
-                           //echo __FILE__ . ' ' . __LINE__ . ' $v1 = <pre>' . var_export( $v1['attributs']['data-chi_id_menu'] , true ) . '</pre> <pre>' . var_export( $v2 , true ) . '</pre>' ; exit(0);
-                           $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_libelle_menu']=$v2['cht_libelle_menu'];
-                           $les_elements_du_menu_actuel[$k1]['attributs']['data-chp_titre_menu']=$v2['chp_titre_menu'];
-                           $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_complements_menu']=$v2['cht_complements_menu'];
-                           $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_initialisation_menu']=$v2['cht_initialisation_menu'];
-                           $les_elements_du_menu_actuel[$k1]['attributs']['data-chp_methode_menu']=$v2['chp_methode_menu'];
-                           $les_elements_du_menu_actuel[$k1]['attributs']['data-chp_nom_source']=$v2['chp_nom_source'];
-                           $les_elements_du_menu_actuel[$k1]['attributs']['data-chi_id_source']=$v2['chi_id_source'];
-                           /*#
-                             if($v2['cht_libelle_menu']==='tâches'){
-                                 echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v2['cht_condition_menu'] , true ) . '</pre>' ; exit(0);
-                             }
-                           */
-                           $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_condition_php_menu']=$v2['cht_condition_php_menu'];
-                           $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_condition_menu']=$v2['cht_condition_menu'];
-                           $trouve=true;
-                           break;
+
+                            /*#
+                              if(strpos($v2['cht_libelle_menu'],'projet')!==false){
+                                 echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v2['cht_libelle_menu'] , true ) . '</pre>' ; exit(0);
+                              }
+                            */
+                            /* echo __FILE__ . ' ' . __LINE__ . ' $v1 = <pre>' . var_export( $v1['attributs']['data-chi_id_menu'] , true ) . '</pre> <pre>' . var_export( $v2 , true ) . '</pre>' ; exit(0);*/
+                            $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_libelle_menu']=$v2['cht_libelle_menu'];
+                            $les_elements_du_menu_actuel[$k1]['attributs']['data-chp_titre_menu']=$v2['chp_titre_menu'];
+                            $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_complements_menu']=$v2['cht_complements_menu'];
+                            $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_initialisation_menu']=$v2['cht_initialisation_menu'];
+                            $les_elements_du_menu_actuel[$k1]['attributs']['data-chp_methode_menu']=$v2['chp_methode_menu'];
+                            $les_elements_du_menu_actuel[$k1]['attributs']['data-chp_nom_source']=$v2['chp_nom_source'];
+                            $les_elements_du_menu_actuel[$k1]['attributs']['data-chi_id_source']=$v2['chi_id_source'];
+                            /*#
+                              if($v2['cht_libelle_menu']==='tâches'){
+                                  echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $v2['cht_condition_menu'] , true ) . '</pre>' ; exit(0);
+                              }
+                            */
+                            $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_condition_php_menu']=$v2['cht_condition_php_menu'];
+                            $les_elements_du_menu_actuel[$k1]['attributs']['data-cht_condition_menu']=$v2['cht_condition_menu'];
+                            $trouve=true;
+                            break;
+
                         }
+
                     }
-                    if($trouve===false){
+                    
+                    if($trouve === false){
+
                         /*afr*/
-                        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $trouve , true ) . '</pre>' ; exit(0);
+                        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export($trouve,true) . '</pre>' ;
+                        exit(0);
+
                     }
-                 
+
+
                 }
-             
+
             }
             /*#
               ajouter les éléments manquants
               $liste_des_menus
-              array (
+              array [
                 0 => 
-                array (
+                array [
                   'chi_id_source' => 61,
                   'cht_libelle_menu' => 'tâches',
                   'chp_titre_menu' => 'Liste des tâches',
                   'chp_methode_menu' => 'page_liste_des_taches1',
                   'chp_nom_source' => 'c_taches1.php',
                   'chi_id_menu' => 1,
-                  'cht_initialisation_menu' => 'T0_chp_priorite_tache2(99)',
+                  'cht_initialisation_menu' => 'T0_chp_priorite_tache2[99]',
                   'cht_complements_menu' => NULL,
-                ),
+                ],
                 1 => 
-                array (
+                array [
                   'chi_id_source' => 235,
                   'cht_libelle_menu' => 'matrice',
                   'chp_titre_menu' => 'convertion de rev vers matrice',
@@ -668,138 +712,126 @@ class c_acces1{
                   'chp_nom_source' => 'c_rev_mat1.php',
                   'chi_id_menu' => 2,
                   'cht_initialisation_menu' => NULL,
-                  'cht_complements_menu' => 'maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_rev1))))',
-                ),            
+                  'cht_complements_menu' => 'maj_interface2[modifier[id[vv_txtarea_rev1],composante[value],avec[valeur_de_localstorage[zones_sauvegardées,ls_rev1]]]]',
+                ],            
                 
                 
                 $les_elements_du_menu_actuel
-                 array (
+                 array [
                    0 => 
-                   array (
+                   array [
                      'id_interne' => 1,
                      'id_interne_parent' => 0,
                      'replie' => 0,
                      'contient_des_enfants' => 7,
                      'contenu' => 'outils',
                      'attributs' => 
-                     array (
+                     array [
                        'data-liste_des_menus' => '1',
-                     ),
-                   ),
+                     ],
+                   ],
                    1 => 
-                   array (
+                   array [
                      'id_interne' => 2,
                      'id_interne_parent' => 1,
                      'replie' => 0,
                      'contient_des_enfants' => 0,
                      'contenu' => 'matrice',
                      'attributs' => 
-                     array (
+                     array [
                        'data-chi_id_source' => 235,
                        'data-chp_nom_source' => 'c_rev_mat1.php',
                        'data-chp_methode_menu' => 'page1',
                        'data-chi_id_menu' => '2',
                        'data-cht_initialisation_menu' => NULL,
-                       'data-cht_complements_menu' => 'maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_rev1))))',
+                       'data-cht_complements_menu' => 'maj_interface2[modifier[id[vv_txtarea_rev1],composante[value],avec[valeur_de_localstorage[zones_sauvegardées,ls_rev1]]]]',
                        'data-chp_titre_menu' => 'convertion de rev vers matrice',
                        'data-cht_libelle_menu' => 'matrice',
-                     ),
-                   ),
+                     ],
+                   ],
                    2 => 
-                   array (
+                   array [
                      'id_interne' => 3,
                      'id_interne_parent' => 1,
                      'replie' => 0,
                      'contient_des_enfants' => 0,
                      'contenu' => 'js',
                      'attributs' => 
-                     array (
+                     array [
                        'data-chi_id_source' => 234,
                        'data-chp_nom_source' => 'c_rev_js1.php',
                        'data-chp_methode_menu' => 'page1',
                        'data-chi_id_menu' => '3',
                        'data-cht_initialisation_menu' => NULL,
-                       'data-cht_complements_menu' => 'maj_interface2(modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_js_rev1))))',
+                       'data-cht_complements_menu' => 'maj_interface2[modifier[id[vv_txtarea_js_rev1],composante[value],avec[valeur_de_localstorage[zones_sauvegardées,ls_js_rev1]]]]',
                        'data-chp_titre_menu' => 'convertion de javascript ',
                        'data-cht_libelle_menu' => 'js',
-                     ),
-                   ),                
-                
-                
+                     ],
+                   ],                
             */
-            
-//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $les_elements_du_menu_actuel , true ) . '</pre>' ; exit(0);
-//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $liste_des_menus , true ) . '</pre>' ; exit(0);
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $les_elements_du_menu_actuel , true ) . '</pre>' ; exit(0);*/
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $liste_des_menus , true ) . '</pre>' ; exit(0);*/
             foreach($liste_des_menus as $k1 => $v1){
-             
                 $trouve=false;
-                
                 foreach($les_elements_du_menu_actuel as $k2 => $v2){
+                    
                     if(isset($v2['attributs']['data-chi_id_menu']) && $v2['attributs']['data-chi_id_menu'] == $v1['chi_id_menu']){
+
                         $trouve=true;
                         break;
+
                     }
-                 
+
                 }
-                if( $trouve === false ){
+                
+                if($trouve === false){
+
                     /*
                       il faut ajouter cet élément
                       
                       array (
-                        'chi_id_source' => 61,
-                        'cht_libelle_menu' => 'tâches',
-                        'chp_titre_menu' => 'Liste des tâches',
-                        'chp_methode_menu' => 'page_liste_des_taches1',
-                        'chp_nom_source' => 'c_taches1.php',
-                        'chi_id_menu' => 1,
-                        'cht_initialisation_menu' => 'T0_chp_priorite_tache2(99)',
-                        'cht_complements_menu' => NULL,
+                      'chi_id_source' => 61,
+                      'cht_libelle_menu' => 'tâches',
+                      'chp_titre_menu' => 'Liste des tâches',
+                      'chp_methode_menu' => 'page_liste_des_taches1',
+                      'chp_nom_source' => 'c_taches1.php',
+                      'chi_id_menu' => 1,
+                      'cht_initialisation_menu' => 'T0_chp_priorite_tache2(99)',
+                      'cht_complements_menu' => NULL,
                       ),
                       
                     */
                     $id_interne=count($les_elements_du_menu_actuel);
                     $les_elements_du_menu_actuel[]=array(
-                     'id_interne' => $id_interne,
-                     'id_interne_parent' => 0,
-                     'replie' => 0,
-                     'contient_des_enfants' => 0,
-                     'contenu' => $v1['cht_libelle_menu'],
-                     'attributs' => 
-                     array (
-                       'data-chi_id_source' => $v1['chi_id_source'],
-                       'data-chp_nom_source' => $v1['chp_nom_source'],
-                       'data-chp_methode_menu' => $v1['chp_methode_menu'],
-                       'data-chi_id_menu' => $v1['chi_id_menu'],
-                       'data-cht_initialisation_menu' => $v1['cht_initialisation_menu'],
-                       'data-cht_complements_menu' => $v1['cht_complements_menu'],
-                       'data-chp_titre_menu' => $v1['chp_titre_menu'],
-                       'data-cht_libelle_menu' => $v1['cht_libelle_menu'],
-                       'data-cht_condition_menu' => $v1['cht_condition_menu'],
-                       'data-cht_condition_php_menu' => $v1['cht_condition_php_menu'],
-                     ),
-                    
+                        'id_interne' => $id_interne,
+                        'id_interne_parent' => 0,
+                        'replie' => 0,
+                        'contient_des_enfants' => 0,
+                        'contenu' => $v1['cht_libelle_menu'],
+                        'attributs' => array(
+                                'data-chi_id_source' => $v1['chi_id_source'],
+                                'data-chp_nom_source' => $v1['chp_nom_source'],
+                                'data-chp_methode_menu' => $v1['chp_methode_menu'],
+                                'data-chi_id_menu' => $v1['chi_id_menu'],
+                                'data-cht_initialisation_menu' => $v1['cht_initialisation_menu'],
+                                'data-cht_complements_menu' => $v1['cht_complements_menu'],
+                                'data-chp_titre_menu' => $v1['chp_titre_menu'],
+                                'data-cht_libelle_menu' => $v1['cht_libelle_menu'],
+                                'data-cht_condition_menu' => $v1['cht_condition_menu'],
+                                'data-cht_condition_php_menu' => $v1['cht_condition_php_menu']
+                            )
                     );
-                 
-                 
+
                 }
 
             }
-            
-
-            //echo __FILE__ . ' ' . __LINE__ . ' $les_elements_du_menu_actuel = <pre>' . var_export( $les_elements_du_menu_actuel , true ) . '</pre>' ; exit(0);
-            
-            $le_nouveau_html=$this->construit_html_du_menu($les_elements_du_menu_actuel, 0);
-            
-            
-            
-            
-
+            /* echo __FILE__ . ' ' . __LINE__ . ' $les_elements_du_menu_actuel = <pre>' . var_export( $les_elements_du_menu_actuel , true ) . '</pre>' ; exit(0);*/
+            $le_nouveau_html=$this->construit_html_du_menu($les_elements_du_menu_actuel,0);
             $donnees_retournees[__x_action]='c_fonctions_js1(afficher_la_liste_des_menus())';
             $donnees_retournees[__xva]['liste_des_menus']=$liste_des_menus;
             $donnees_retournees[__xva]['chi_id_acces']=$donnees_recues[__xva]['chi_id_acces'];
             $donnees_retournees[__xva]['cht_parametres_acces']=$cht_parametres_acces;
             $donnees_retournees[__xva]['le_nouveau_html']=$le_nouveau_html;
-            
             $donnees_retournees[__xst]=__xsu;
         }
 
@@ -829,22 +861,14 @@ class c_acces1{
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt=/*sql_inclure_deb*/
             /* sql_194()
-            INSERT INTO b1.`tbl_acces`(
-
-                `chp_nom_acces` , 
-
-                `chx_groupe_acces` , 
-
-                `chx_metier_acces`
-
-            ) VALUES (
-
-                :chp_nom_acces , 
-
-                :chx_groupe_acces , 
-
-                :chx_metier_acces
-
+            INSERT INTO b1.`tbl_acces`(
+                `chp_nom_acces` , 
+                `chx_groupe_acces` , 
+                `chx_metier_acces`
+            ) VALUES (
+                :chp_nom_acces , 
+                :chx_groupe_acces , 
+                :chx_metier_acces
             );
             */
             /*sql_inclure_fin*/
@@ -931,12 +955,12 @@ class c_acces1{
     function vv_acces_supprimer1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         $tt=/*sql_inclure_deb*/
             /* sql_195()
-            SELECT 
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
             `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
-             FROM b1.tbl_acces T0
+             FROM b1.tbl_acces T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
             
             WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
@@ -1007,12 +1031,12 @@ class c_acces1{
         }
         $tt=/*sql_inclure_deb*/
             /* sql_195()
-            SELECT 
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
             `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
-             FROM b1.tbl_acces T0
+             FROM b1.tbl_acces T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-            
+            
              LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
             
             WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
@@ -1035,12 +1059,9 @@ class c_acces1{
             */
             $tt=/*sql_inclure_deb*/
                 /* sql_196()
-                UPDATE b1.tbl_acces SET 
-
-                   `chp_nom_acces` = :n_chp_nom_acces , 
-
-                   `chx_groupe_acces` = :n_chx_groupe_acces , 
-
+                UPDATE b1.tbl_acces SET 
+                   `chp_nom_acces` = :n_chp_nom_acces , 
+                   `chx_groupe_acces` = :n_chx_groupe_acces , 
                    `chx_metier_acces` = :n_chx_metier_acces
                 WHERE `chi_id_acces` = :c_chi_id_acces ;
                 */
@@ -1188,12 +1209,12 @@ class c_acces1{
             /*afr 1 */
             $tt=/*sql_inclure_deb*/
                 /* sql_195()
-                SELECT 
-                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+                SELECT 
+                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
                 `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
-                 FROM b1.tbl_acces T0
+                 FROM b1.tbl_acces T0
                  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-                
+                
                  LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
                 
                 WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
@@ -1266,12 +1287,12 @@ class c_acces1{
 
             $tt=/*sql_inclure_deb*/
                 /* sql_195()
-                SELECT 
-                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+                SELECT 
+                `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
                 `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
-                 FROM b1.tbl_acces T0
+                 FROM b1.tbl_acces T0
                  LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-                
+                
                  LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
                 
                 WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
@@ -1577,24 +1598,17 @@ class c_acces1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_193()
-            SELECT 
-
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
-
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
             `T2`.`chp_nom_metier`
-             FROM b1.tbl_acces T0
-
+             FROM b1.tbl_acces T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-            
-
+            
              LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
             
-            WHERE ( / *** *** / `T0`.`chi_id_acces` = :T0_chi_id_acces
-
-               AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
-
-            ORDER BY `T0`.`chi_id_acces` DESC  
-
+            WHERE ( / *** *** / `T0`.`chi_id_acces` = :T0_chi_id_acces
+               AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
+            ORDER BY `T0`.`chi_id_acces` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
@@ -1781,24 +1795,17 @@ class c_acces1{
         $o1 .= '</div>';
         $tt=/*sql_inclure_deb*/
             /* sql_193()
-            SELECT 
-
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
-
+            SELECT 
+            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T1`.`chp_nom_groupe` , 
             `T2`.`chp_nom_metier`
-             FROM b1.tbl_acces T0
-
+             FROM b1.tbl_acces T0
              LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-            
-
+            
              LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
             
-            WHERE ( / *** *** / `T0`.`chi_id_acces` = :T0_chi_id_acces
-
-               AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
-
-            ORDER BY `T0`.`chi_id_acces` DESC  
-
+            WHERE ( / *** *** / `T0`.`chi_id_acces` = :T0_chi_id_acces
+               AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces) 
+            ORDER BY `T0`.`chi_id_acces` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */

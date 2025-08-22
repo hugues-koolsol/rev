@@ -1,12 +1,12 @@
 "use strict";
-
-/* var __gi1=null; 
-
-ajoute_les_evenements_aux_boutons
-#traite_message_recupere_du_worker
-#traite_action_retour_generale
-
-
+/*
+  var __gi1=null; 
+  
+  ajoute_les_evenements_aux_boutons
+  #traite_message_recupere_du_worker
+  #traite_action_retour_generale
+  
+  
 */
 /* les constantes erreur et succes */
 const __xer=0;
@@ -162,12 +162,8 @@ class _c_interface1{
                       console.log('onhashchange','\n',event.newURL,'\n',event.oldURL,this);
                       console.log(performance.now()-this.#date_derniere_navigation);
                     */
-                }
-                
-                } );
+                }} );
     }
-    
-    
     /*
       =============================================================================================================
     */
@@ -211,7 +207,6 @@ class _c_interface1{
         if(reponse.hasOwnProperty( '__xva' ) && reponse.__xva.hasOwnProperty( '__liste_des_genres' )){
             this.__liste_des_genres=reponse.__xva.__liste_des_genres;
         }
-        
         if(reponse.hasOwnProperty( '__x_page' ) && reponse.__x_page !== ''){
             this.zones_des_editeur=[];
             this.masquer_les_messages();
@@ -283,7 +278,6 @@ class _c_interface1{
                 
             }
         }
-        
         this.#ajouter_les_boutons_menu( 'nouvelle_page' , reponse );
         if(reponse.hasOwnProperty( '__xva' )){
             if(reponse.__xva.hasOwnProperty( 'maj' )){
@@ -310,11 +304,8 @@ class _c_interface1{
                 }catch(e){}
                 break;
                 
-            case 'c_connexion1.se_deconnecter':
-            
-                document.getElementById( 'vv_nav_centre_defilement' ).innerHTML='';
+            case 'c_connexion1.se_deconnecter' : document.getElementById( 'vv_nav_centre_defilement' ).innerHTML='';
                 break;
-                
             case 'obtenir_le_cookie_de_session_php' :
                 try{
                     let les_cookies=document.cookie.split( ';' );
@@ -404,10 +395,10 @@ class _c_interface1{
                 console.error( e );
             }
         }
-        let lst=document.querySelectorAll('select[data-select_dans_menu="1"]');
+        let lst=document.querySelectorAll( 'select[data-select_dans_menu="1"]' );
         if(lst){
-            for(let i=0;i<lst.length;i++){
-               lst[i].selectedIndex=0;
+            for( let i=0 ; i < lst.length ; i++ ){
+                lst[i].selectedIndex=0;
             }
         }
     }
@@ -415,22 +406,17 @@ class _c_interface1{
       =============================================================================================================
     */
     #ajouter_les_boutons_menu( contexte , reponse ){
-
-
         if(reponse.__xmenu && reponse.__xmenu !== ''){
-
             if(contexte === 'nouvelle_page' || contexte === 'recuperation_de_la_premiere_page()'){
                 if(contexte === 'recuperation_de_la_premiere_page()'){
                     try{
                         document.getElementById( 'vv_nav_centre_defilement' ).innerHTML=reponse.__xmenu;
                     }catch{
-                        
-                          //dans le cas d'une sous fenetre, la navigation n'existe
-                        
+                        /* dans le cas d'une sous fenetre, la navigation n'existe */
                     }
                 }else{
                     if(reponse.__xmenu === '' && document.getElementById( 'vv_nav_centre_defilement' ).innerHTML !== ''){
-                        // on se déconnecte 
+                        /* on se déconnecte */
                         document.getElementById( 'vv_nav_centre_defilement' ).innerHTML='';
                     }else{
                         this.#maj_innerHTML( 'vv_nav_centre_defilement' , reponse.__xmenu );
@@ -440,39 +426,38 @@ class _c_interface1{
                 this.#maj_innerHTML( 'vv_nav_centre_defilement' , '' );
             }
         }
-
-/*
-        if(reponse.__xbo && reponse.__xbo !== ''){
-            let xmenu='';
-            if(reponse.__xmenu && reponse.__xmenu !== ''){
-                xmenu=reponse.__xmenu;
-            }
-            if(contexte === 'nouvelle_page' || contexte === 'recuperation_de_la_premiere_page()'){
-                let tt='';
-                for(let i in reponse.__xbo){
-                    tt+=reponse.__xbo[i];
-                }
-                if(contexte === 'recuperation_de_la_premiere_page()'){
-                    try{
-                        document.getElementById( 'vv_nav_centre_defilement' ).innerHTML=xmenu+tt;
-                    }catch{
-                        
-                          //dans le cas d'une sous fenetre, la navigation n'existe
-                        
-                    }
-                }else{
-                    if(tt === '' && document.getElementById( 'vv_nav_centre_defilement' ).innerHTML !== ''){
-                        // on se déconnecte 
-                        document.getElementById( 'vv_nav_centre_defilement' ).innerHTML='';
-                    }else{
-                        this.#maj_innerHTML( 'vv_nav_centre_defilement' , xmenu+tt );
-                    }
-                }
-            }else{
-                this.#maj_innerHTML( 'vv_nav_centre_defilement' , '' );
-            }
-        }
-*/
+        /*
+          if(reponse.__xbo && reponse.__xbo !== ''){
+          let xmenu='';
+          if(reponse.__xmenu && reponse.__xmenu !== ''){
+          xmenu=reponse.__xmenu;
+          }
+          if(contexte === 'nouvelle_page' || contexte === 'recuperation_de_la_premiere_page()'){
+          let tt='';
+          for(let i in reponse.__xbo){
+          tt+=reponse.__xbo[i];
+          }
+          if(contexte === 'recuperation_de_la_premiere_page()'){
+          try{
+          document.getElementById( 'vv_nav_centre_defilement' ).innerHTML=xmenu+tt;
+          }catch{
+          
+          //dans le cas d'une sous fenetre, la navigation n'existe
+          
+          }
+          }else{
+          if(tt === '' && document.getElementById( 'vv_nav_centre_defilement' ).innerHTML !== ''){
+          // on se déconnecte 
+          document.getElementById( 'vv_nav_centre_defilement' ).innerHTML='';
+          }else{
+          this.#maj_innerHTML( 'vv_nav_centre_defilement' , xmenu+tt );
+          }
+          }
+          }else{
+          this.#maj_innerHTML( 'vv_nav_centre_defilement' , '' );
+          }
+          }
+        */
         let menus=document.getElementById( 'vv_nav' );
         if(menus !== null){
             /* lors du premier chargement on doit allumer le bouton */
@@ -525,15 +510,13 @@ class _c_interface1{
                                        && mat_maj.__xva[j][8] === 1
                                        && mat_maj.__xva[j + 1][2] === 'c'
                                 ){
-                                    bouton_editer=parseInt(mat_maj.__xva[j + 1][1],10);
-                                    
+                                    bouton_editer=parseInt( mat_maj.__xva[j + 1][1] , 10 );
                                 }else if(mat_maj.__xva[j][1] === 'arborescent'
                                        && mat_maj.__xva[j][2] === 'f'
                                        && mat_maj.__xva[j][8] === 1
                                        && mat_maj.__xva[j + 1][2] === 'c'
                                 ){
-                                    arborescent=parseInt(mat_maj.__xva[j + 1][1],10);
-                                    
+                                    arborescent=parseInt( mat_maj.__xva[j + 1][1] , 10 );
                                 }
                             }
                             if(id !== ''){
@@ -549,15 +532,15 @@ class _c_interface1{
                                     "afficher_le_bouton_supprimer" : false ,
                                     "fonction_appelee_apres_action" : this.action_sur_tri ,
                                     "arborescent" : arborescent ,
-                                    "class_du_bouton_deplacer" : 'hug_bouton',
+                                    "class_du_bouton_deplacer" : 'hug_bouton' ,
                                     "boutons_du_menu" : [] ,
-                                    "class_du_bouton_menu" : 'hug_bouton',
+                                    "class_du_bouton_menu" : 'hug_bouton'
                                 };
-                                if(bouton_ajouter!==''){
-                                    //"boutons_du_menu" : [{"libelle" : '+' ,"fonction" : ajouter_une_branche}] ,
-                                    options.boutons_du_menu.push({"libelle" : bouton_ajouter ,"fonction" : this.ajouter_une_branche})
+                                if(bouton_ajouter !== ''){
+                                    /* "boutons_du_menu" : [{"libelle" : '+' ,"fonction" : ajouter_une_branche}] , */
+                                    options.boutons_du_menu.push( {"libelle" : bouton_ajouter ,"fonction" : this.ajouter_une_branche} );
                                 }
-                                if(bouton_editer===1){
+                                if(bouton_editer === 1){
                                     options['afficher_le_bouton_editer']=1;
                                     options['class_du_bouton_editer']='hug_bouton yy__x_signaux___xif';
                                 }
@@ -621,13 +604,12 @@ class _c_interface1{
       =============================================================================================================
     */
     ajouter_une_branche( evenement , reference_arbre ){
-     
-    //        console.log( 'dans ajouter_une_branche' );
-    //        console.log( 'evenement =' , evenement );
-    //        console.log( 'reference =' , reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri')  );
-    //        console.log( 'arbre =' ,  reference_arbre );
-       let id_original=reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri');
-       if(id_original==='afr_quand_ce_sera_utilisé'){
+        /* console.log( 'dans ajouter_une_branche' ); */
+        /* console.log( 'evenement =' , evenement ); */
+        /* console.log( 'reference =' , reference_arbre.reference_zone_triable.getAttribute('data-id_original_pour_tri')  ); */
+        /* console.log( 'arbre =' ,  reference_arbre ); */
+        let id_original=reference_arbre.reference_zone_triable.getAttribute( 'data-id_original_pour_tri' );
+        if(id_original === 'afr_quand_ce_sera_utilisé'){
             let max=0;
             for( let i=0 ; i < reference_arbre.arbre.length ; i++ ){
                 if(reference_arbre.arbre[i].id_interne > max){
@@ -643,26 +625,26 @@ class _c_interface1{
                 "contenu" : "nouvelle branche " + max ,
                 "attributs" : {}
             };
-            if(id_original==='afr_quand_ce_sera_utilisé'){
-                a["attributs"] = {"data-afr_quand_ce_sera_utilisé":1};
+            if(id_original === 'afr_quand_ce_sera_utilisé'){
+                a["attributs"]={"data-afr_quand_ce_sera_utilisé" : 1};
             }
             reference_arbre.arbre.splice( 0 , 0 , a );
             reference_arbre.action_externe_sur_arbre( 'ajoute_branche' , reference_arbre.arbre );
-       }
+        }
     }
     /*
       =============================================================================================================
     */
     action_sur_tri( reference_arbre , obj ){
-        console.log( 'dans appelee_apres_action par=' , reference_arbre ,  obj );
-        
-
+        console.log( 'dans appelee_apres_action par=' , reference_arbre , obj );
         switch (obj.type_deplacement){
             case 'editer' :
-                if(obj.id_original==='afr_quand_ce_sera_utilisé'){
+                if(obj.id_original === 'afr_quand_ce_sera_utilisé'){
                     for( let i=0 ; i < obj.arbre.length ; i++ ){
                         if(obj.id_cible === obj.arbre[i].id_interne){
-                            if(obj.arbre[i].attributs.hasOwnProperty('data-afr_quand_ce_sera_utilisé') && obj.arbre[i].attributs['data-afr_quand_ce_sera_utilisé']===1){
+                            if(obj.arbre[i].attributs.hasOwnProperty( 'data-afr_quand_ce_sera_utilisé' )
+                                   && obj.arbre[i].attributs['data-afr_quand_ce_sera_utilisé'] === 1
+                            ){
                                 let nouveau_nom=window.prompt( "nouveau nom ?" , obj.arbre[i].contenu );
                                 if(nouveau_nom){
                                     obj.arbre[i].contenu=nouveau_nom;
@@ -674,22 +656,21 @@ class _c_interface1{
                     }
                 }
                 break;
-
-            case 'supprimer' :
-                /*
-                for( let i=0 ; i < obj.arbre.length ; i++ ){
-                    if(obj.id_cible === obj.arbre[i].id_interne){
-                        obj.arbre.splice( i , 1 );
-                        break;
-                    }
-                }
-                reference_arbre.action_externe_sur_arbre( 'supprimer_un_element' , obj.arbre );
-                break;
-                */
                 
+            case 'supprimer' : 
             case 'avant' : 
             case 'dedans' : 
             case 'apres' :
+                /*
+                  for( let i=0 ; i < obj.arbre.length ; i++ ){
+                  if(obj.id_cible === obj.arbre[i].id_interne){
+                  obj.arbre.splice( i , 1 );
+                  break;
+                  }
+                  }
+                  reference_arbre.action_externe_sur_arbre( 'supprimer_un_element' , obj.arbre );
+                  break;
+                */
                 console.log( 'appelee_apres_action1' , obj );
                 /* console.log(JSON.stringify(arbre)); */
                 reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
@@ -697,8 +678,6 @@ class _c_interface1{
                 
             default: break;
         }
-        
-        
     }
     /*
       =============================================================================================================
@@ -1688,8 +1667,8 @@ class _c_interface1{
                 }
                 let condenu_des_messages_anciens=les_messages_anciens.innerHTML;
                 let tt='';
-                tt+='<div id="yy_supprimer_les_lessages" class="yy__x_signaux_neutre yy_opaque_90">'
-                tt+=' <span class="hug_bouton yy__x_signaux_1" style="visibility:hidden;" data-hug_click="interface1.supprimer_les_messages()">🗑 les messages</span>';
+                tt+='<div id="yy_supprimer_les_lessages" class="yy__x_signaux_neutre yy_opaque_90">';
+                tt+=' <span class="hug_bouton yy__x_signaux_2" style="visibility:hidden;" data-hug_click="interface1.supprimer_les_messages()">🗑 les messages</span>';
                 tt+='</div>';
                 if(condenu_des_messages_anciens.indexOf( 'id="yy_supprimer_les_lessages"' ) >= 0){
                     document.getElementById( "yy_supprimer_les_lessages" ).remove();
@@ -1704,7 +1683,7 @@ class _c_interface1{
             try{
                 document.getElementById( 'vv_supprimer_les_messages_3' ).style.visibility='visible';
                 document.getElementById( 'vv_agrandir_les_messages_3' ).style.visibility='visible';
-            }catch{}
+            } catch {}
         }
         if(classe_du_message_d_erreur !== ''){
             try{
@@ -1762,8 +1741,8 @@ class _c_interface1{
       =============================================================================================================
     */
     agrandir_les_messages( par ){
-        let a=document.getElementById('vv_les_messages');
-        if(a.style.maxHeight===''){
+        let a=document.getElementById( 'vv_les_messages' );
+        if(a.style.maxHeight === ''){
             a.style.maxHeight='80vh';
         }else{
             a.style.maxHeight='';
@@ -1797,7 +1776,6 @@ class _c_interface1{
       l'envoie normal se fait via le worker
     */
     #envoie_requete_au_serveur( obj ){
-
         let mat=this.__m_rev1.rev_tcm( obj.__x_action );
         if(mat.__xst === __xer){
             this.les_messages.__xer.push( this.__m_rev1.nl2() + 'il y a une erreur' );
@@ -2179,7 +2157,7 @@ class _c_interface1{
         for( let i=0 ; i < lst.length ; i++ ){
             if(!lst[i].getAttribute( 'data-rev_event' )){
                 /* lst[i].addEventListener( 'keydown' , this.#keydown_sur_editeur1.bind( this ) ); */
-                /* blur=lost focus*/
+                /* blur=lost focus */
                 lst[i].addEventListener( 'blur' , this.#blur_sur_editeur1.bind( this ) );
                 lst[i].addEventListener( 'mouseup' , this.#mouse_up_sur_editeur1.bind( this ) );
                 lst[i].addEventListener( 'keyup' , this.#analyse_key_up_editeur1.bind( this ) );
@@ -2195,9 +2173,7 @@ class _c_interface1{
                 elems[i].setAttribute( "tabindex" , 0 );
             }
         }
-        
     }
-    
     /*
       =============================================================================================================
       on reçoit #toto
@@ -2339,14 +2315,16 @@ class _c_interface1{
     /*
       =============================================================================================================
     */
-    change_option_de_select(e){
-        /* le contenu de <option>*/
+    change_option_de_select( e ){
+        /* le contenu de <option> */
         let valeur=e.target.value;
         let element_selectionne=e.target.options[e.target.selectedIndex];
-        if(element_selectionne.getAttribute('data-action_option') && element_selectionne.getAttribute('data-action_option')!==''){
-             this.#action_change_ou_entree( e , element_selectionne.getAttribute('data-action_option') );
+        if(element_selectionne.getAttribute( 'data-action_option' )
+               && element_selectionne.getAttribute( 'data-action_option' ) !== ''
+        ){
+            this.#action_change_ou_entree( e , element_selectionne.getAttribute( 'data-action_option' ) );
         }else{
-             this.retablir_les_elements_masques(null);
+            this.retablir_les_elements_masques( null );
         }
     }
     /*
@@ -2396,7 +2374,6 @@ class _c_interface1{
             document.getElementById( 'vv_bouton_messages' ).classList.add( 'hug_bouton_actif' );
             document.getElementById( 'vv_supprimer_les_messages_3' ).style.visibility='visible';
             document.getElementById( 'vv_agrandir_les_messages_3' ).style.visibility='visible';
-            
         }else{
             document.getElementById( 'vv_les_messages' ).style.visibility='hidden';
             document.getElementById( 'vv_bouton_messages' ).classList.remove( 'hug_bouton_actif' );
@@ -2757,8 +2734,8 @@ class _c_interface1{
             if(action.substr( 0 , 11 ) === 'interface1.'){
                 elt.classList.add( 'yy_invisible' );
                 this.#element_appel_reseau.push( elt );
-                if(mat.__xva.length===2 && 'interface1.change_option_de_select'===mat.__xva[1][1]){
-                    this.change_option_de_select(e);
+                if(mat.__xva.length === 2 && 'interface1.change_option_de_select' === mat.__xva[1][1]){
+                    this.change_option_de_select( e );
                 }else{
                     this.#action_interface1( mat.__xva );
                 }
@@ -2812,7 +2789,7 @@ class _c_interface1{
                 this.remplis_les_messages_et_affiche( null );
                 return false;
             }
-            if(action.substr( 0 , 11 ) === 'interface1.' || mat.__xva.length>=2 && mat.__xva[1][1].substr( 0 , 11 ) === 'interface1.'){
+            if(action.substr( 0 , 11 ) === 'interface1.' || mat.__xva.length >= 2 && mat.__xva[1][1].substr( 0 , 11 ) === 'interface1.'){
                 elt.classList.add( 'yy_invisible' );
                 this.#element_appel_reseau.push( elt );
                 this.#action_interface1( mat.__xva );
@@ -3119,13 +3096,9 @@ class _c_interface1{
     /*
       =============================================================================================================
     */
-    enti1(string) {
-      return String(string)
-          .replace(/&/g, '&amp;')
-          .replace(/>/g, '&gt;')
-          .replace(/</g, '&lt;')
-          .replace(/"/g, '&quot;');
-    }    
+    enti1( string ){
+        return(String( string ).replace( /&/g , '&amp;' ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' ).replace( /"/g , '&quot;' ));
+    }
     /*
       =============================================================================================================
     */
@@ -3637,7 +3610,7 @@ class _c_interface1{
         t+='    border-radius: 5px;';
         t+='    border: 2px inset white;';
         t+='    background: red;';
-        t+='    transform: translate(0px, 6px);';
+        t+='    transform: translate(0px, 0px);';
         t+='}';
         if(navigator.userAgent.toLowerCase().indexOf( 'firefox' ) >= 0){
             t+='.yy_ouinon::-moz-range-thumb {';

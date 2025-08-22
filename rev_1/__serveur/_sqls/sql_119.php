@@ -12,22 +12,22 @@ function sql_119($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_tache'] !== '')){
-        $where0.=' AND `T0`.`chi_id_tache` = '.sq1($par['T0_chi_id_tache']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_tache`',$par['T0_chi_id_tache']);
     }
     if(($par['T0_chx_utilisateur_tache'] !== '')){
-        $where0.=' AND `T0`.`chx_utilisateur_tache` = '.sq1($par['T0_chx_utilisateur_tache']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_utilisateur_tache`',$par['T0_chx_utilisateur_tache']);
     }
     if(($par['T0_chp_texte_tache'] !== '')){
         $where0.=' AND `T0`.`chp_texte_tache` LIKE '.sq2($par['T0_chp_texte_tache']).''.PHP_EOL;
     }
     if(($par['T0_chp_priorite_tache'] !== '')){
-        $where0.=' AND `T0`.`chp_priorite_tache` = '.sq1($par['T0_chp_priorite_tache']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chp_priorite_tache`',$par['T0_chp_priorite_tache']);
     }
     if(($par['T0_chp_priorite_tache2'] !== '')){
         $where0.=' AND `T0`.`chp_priorite_tache` < '.sq1($par['T0_chp_priorite_tache2']).''.PHP_EOL;
     }
     if(($par['T0_chx_projet_tache'] !== '')){
-        $where0.=' AND `T0`.`chx_projet_tache` = '.sq1($par['T0_chx_projet_tache']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_projet_tache`',$par['T0_chx_projet_tache']);
     }
     $sql0.=$where0;
     $order0='

@@ -4,9 +4,9 @@ function sql_322($par,&$donnees_retournees,$that){
         $donnees_retournees[__x_signaux][__xif][]='info <b>sql_322</b>';
     }
     $champs0='
-      `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
-      `T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
-      `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T0`.`chx_acces_menu`
+      `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+      `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , 
+      `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -29,13 +29,13 @@ function sql_322($par,&$donnees_retournees,$that){
         $where0.=' AND `T0`.`chp_titre_menu` LIKE '.sq2($par['T0_chp_titre_menu']).''.PHP_EOL;
     }
     if(($par['T0_chx_autorisation_menu'] !== '')){
-        $where0.=' AND `T0`.`chx_autorisation_menu` = '.sq1($par['T0_chx_autorisation_menu']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_autorisation_menu`',$par['T0_chx_autorisation_menu']);
     }
     if(($par['T0_chp_methode_menu'] !== '')){
         $where0.=' AND `T0`.`chp_methode_menu` LIKE '.sq2($par['T0_chp_methode_menu']).''.PHP_EOL;
     }
     if(($par['T1_chx_acces_autorisation'] !== '')){
-        $where0.=' AND `T1`.`chx_acces_autorisation` = '.sq1($par['T1_chx_acces_autorisation']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T1`.`chx_acces_autorisation`',$par['T1_chx_acces_autorisation']);
     }
     $sql0.=$where0;
     $order0='
@@ -55,15 +55,14 @@ function sql_322($par,&$donnees_retournees,$that){
                 'T0.chp_titre_menu' => $tab0[1],
                 'T0.chx_autorisation_menu' => $tab0[2],
                 'T0.chp_methode_menu' => $tab0[3],
-                'T1.chx_acces_autorisation' => $tab0[4],
-                'T1.chx_source_autorisation' => $tab0[5],
-                'T2.chi_id_acces' => $tab0[6],
-                'T2.chp_nom_acces' => $tab0[7],
-                'T3.chp_nom_source' => $tab0[8],
-                'T0.cht_libelle_menu' => $tab0[9],
-                'T0.cht_condition_menu' => $tab0[10],
-                'T0.cht_condition_php_menu' => $tab0[11],
-                'T0.chx_acces_menu' => $tab0[12],
+                'T0.cht_libelle_menu' => $tab0[4],
+                'T0.cht_condition_menu' => $tab0[5],
+                'T0.cht_condition_php_menu' => $tab0[6],
+                'T1.chx_acces_autorisation' => $tab0[7],
+                'T1.chx_source_autorisation' => $tab0[8],
+                'T2.chi_id_acces' => $tab0[9],
+                'T2.chp_nom_acces' => $tab0[10],
+                'T3.chp_nom_source' => $tab0[11],
             );
         }
         $stmt0->close();

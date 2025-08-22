@@ -16,13 +16,13 @@ function sql_317($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_autorisation'] !== '')){
-        $where0.=' AND `T0`.`chi_id_autorisation` = '.sq1($par['T0_chi_id_autorisation']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_autorisation`',$par['T0_chi_id_autorisation']);
     }
     if(($par['T0_chx_acces_autorisation'] !== '')){
-        $where0.=' AND `T0`.`chx_acces_autorisation` = '.sq1($par['T0_chx_acces_autorisation']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_acces_autorisation`',$par['T0_chx_acces_autorisation']);
     }
     if(($par['T0_chx_source_autorisation'] !== '')){
-        $where0.=' AND `T0`.`chx_source_autorisation` = '.sq1($par['T0_chx_source_autorisation']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_source_autorisation`',$par['T0_chx_source_autorisation']);
     }
     if(($par['T1_chp_nom_acces'] !== '')){
         $where0.=' AND `T1`.`chp_nom_acces` LIKE '.sq2($par['T1_chp_nom_acces']).''.PHP_EOL;
