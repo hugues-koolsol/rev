@@ -634,6 +634,15 @@ class c_sources1{
         );
         
         if($tt162[__xst] === __xsu){
+         
+         
+            $test=$GLOBALS['obj_fonctions1']->test_du_nom_de_fichier1($donnees_recues[__xva]['chp_nom_source'],$donnees_retournees);
+            if($test[__xst]!==__xsu){
+
+                    $donnees_retournees[__x_signaux][__xer][]='ce nom de fichier n\'est pas admis [' . __LINE__ . ']';
+                    $donnees_retournees[__xst]=__xer;
+                    return;
+            }
 
             $tt163=/*sql_inclure_deb*/
                 /* sql_163()
@@ -996,18 +1005,25 @@ class c_sources1{
                 $donnees_retournees[__x_signaux][__xer][]='erreur sur la construction du chemin pour le source ' . $chi_id_source . ' [' . __LINE__ . ']';
                 return;
             }
-
-            $contenu=@file_get_contents($chemin_fichier);
             
-            if($contenu !== false){
+            
+            if(is_file($chemin_fichier)){
+                $contenu=file_get_contents($chemin_fichier);
+                
+                if($contenu !== false){
 
-                $donnees_retournees[__xva]['contenu_du_fichier']=$contenu;
-                $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(cht_genere_source),valeur_xva(contenu_du_fichier)))';
-                $donnees_retournees[__xst]=__xsu;
+                    $donnees_retournees[__xva]['contenu_du_fichier']=$contenu;
+                    $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(cht_genere_source),valeur_xva(contenu_du_fichier)))';
+                    $donnees_retournees[__xst]=__xsu;
 
+                }else{
+
+                    $donnees_retournees[__x_signaux][__xer][]='le source n\'a pu être lu du disque "' . $tt[__xva][0]['T0.chp_nom_source'] . '" [' . __LINE__ . ']';
+                    return;
+                }
             }else{
 
-                $donnees_retournees[__x_signaux][__xer][]='le source n\'a pu être lu du disque ' . $chi_id_source . ' [' . __LINE__ . ']';
+                $donnees_retournees[__x_signaux][__xer][]='le source n\'a pu être lu du disque "' . $tt[__xva][0]['T0.chp_nom_source'] . '" [' . __LINE__ . ']';
                 return;
             }
 

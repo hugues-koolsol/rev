@@ -964,3 +964,8 @@ $fichier=REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_rev_vers_matrice1
 /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( is_file($fichier) , true ) . '</pre>' ; exit(0);*/
 require_once($fichier);
 $GLOBALS['obj_rev1']=new c_rev_vers_matrice1();
+
+$fichier=REPERTOIRE_DU_SERVEUR . DIRECTORY_SEPARATOR . 'c_fonctions1.php';
+/* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( is_file($fichier) , true ) . '</pre>' ; exit(0);*/
+require_once($fichier);
+$GLOBALS['obj_fonctions1']=new c_fonctions1();

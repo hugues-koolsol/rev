@@ -432,7 +432,8 @@ class c_genres1{
                 'che_est_parmis_genre' => $v1['T0.che_est_parmis_genre'],
                 'cht_parmis_genre' => $v1['T0.cht_parmis_genre'],
                 'che_ordre_genre' => $v1['T0.che_ordre_genre'],
-                'che_est_ts_genre' => $v1['T0.che_est_ts_genre']
+                'che_est_ts_genre' => $v1['T0.che_est_ts_genre'],
+                'cht_fonctions_genre' => $v1['T0.cht_fonctions_genre'],
                 
             );
         }
@@ -487,6 +488,8 @@ class c_genres1{
                     'che_est_parmis_genre' => $donnees_recues[__xva]['che_est_parmis_genre'] === '' ? null : $donnees_recues[__xva]['che_est_parmis_genre'],
                     'cht_parmis_genre' => $donnees_recues[__xva]['cht_parmis_genre'] === '' ? null : $donnees_recues[__xva]['cht_parmis_genre'],
                     'che_est_ts_genre' => $donnees_recues[__xva]['che_est_ts_genre'] === '' ? null : $donnees_recues[__xva]['che_est_ts_genre'],
+                    'cht_fonctions_genre' => $donnees_recues[__xva]['cht_fonctions_genre'] === '' ? null : $donnees_recues[__xva]['cht_fonctions_genre'],
+                    
                     
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
@@ -768,6 +771,20 @@ class c_genres1{
             return;
 
         }
+        
+        
+        
+        
+        
+        $test=$GLOBALS['obj_fonctions1']->test_fonctions_de_c_fonctions1($donnees_recues[__xva]['cht_fonctions_genre'],$donnees_retournees);
+        if($test[__xst]!==__xsu){
+
+                $donnees_retournees[__x_signaux][__xer][]='une des fonctions renseignées ne fait pas partie des fonctions disponibles [' . __LINE__ . ']';
+                $donnees_retournees[__xst]=__xer;
+                return;
+        }
+        
+        
 
         $tt=/*sql_inclure_deb*/
             /* sql_331()
@@ -805,6 +822,8 @@ class c_genres1{
                 'n_che_est_parmis_genre' => $donnees_recues[__xva]['che_est_parmis_genre'],
                 'n_cht_parmis_genre' => $donnees_recues[__xva]['cht_parmis_genre'],
                 'n_che_est_ts_genre' => $donnees_recues[__xva]['che_est_ts_genre'],
+                'n_cht_fonctions_genre' => $donnees_recues[__xva]['cht_fonctions_genre'],
+                
                 
             ),
             $donnees_retournees
@@ -1179,6 +1198,28 @@ class c_genres1{
           =====================================================================================================
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>fonctions</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+        $o1 .= '         <textarea placeholder="valeur initiale" autocorrect="off" autocapitalize="off" spellcheck="false"  id="cht_fonctions_genre" >';
+        
+        if(isset($donnees_recues['dupliquer']['T0.cht_fonctions_genre'])){
+
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.cht_fonctions_genre']);
+
+        }
+
+        $o1 .= '</textarea>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '    <div class="hug_bouton" data-hug_click="c_genres1.formulaire1(conteneur1(vv_genres_creer1),page_liste_des_genres1())" title="" >ajouter et revenir à la liste</div>';
         $o1 .= '    <div class="hug_bouton" data-hug_click="c_genres1.formulaire1(conteneur1(vv_genres_creer1))" title="" >ajouter</div>';
@@ -1417,6 +1458,22 @@ class c_genres1{
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <input type="text" id="che_est_ts_genre" value="' . enti1($tt[__xva][0]['T0.che_est_ts_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="1" maxlength="1" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>fonctions</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+                $o1 .= '        <textarea id="cht_fonctions_genre" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_fonctions_genre']) . '</textarea>' . PHP_EOL;
+                $o1 .= '      </div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1671,6 +1728,22 @@ class c_genres1{
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
 //                $o1 .= '      <input type="text" id="che_est_ts_genre" value="' . enti1($tt[__xva][0]['T0.che_est_ts_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="1" maxlength="1" />' . PHP_EOL;
                 $o1 .= '<input type="range" id="che_est_ts_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_ts_genre']).'0" >';
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>fonctions</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+                $o1 .= '        <textarea id="cht_fonctions_genre" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_fonctions_genre']) . '</textarea>' . PHP_EOL;
+                $o1 .= '      </div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1953,6 +2026,8 @@ class c_genres1{
         $par['T0_chp_espece_genre']='';
         $par['T0_cht_valeur_init_genre']='';
         $par['T0_cht_parmis_genre']='';
+        $par['T0_cht_fonctions_genre']='';
+        
         $par['__num_page']=0;
         $numpage=-1;
         $par_mat=array();
@@ -2030,6 +2105,8 @@ class c_genres1{
         $par['T0_chp_espece_genre']=$par['T0_chp_espece_genre']??'';
         $par['T0_cht_valeur_init_genre']=$par['T0_cht_valeur_init_genre']??'';
         $par['T0_cht_parmis_genre']=$par['T0_cht_parmis_genre']??'';
+        $par['T0_cht_fonctions_genre']=$par['T0_cht_fonctions_genre']??'';
+        
         $par['T0_chp_prefixe_genre']=$par['T0_chp_prefixe_genre']??'';
         $fonction1='c_genres1.page_liste_des_genres1';
         $nom_filtre='vv_genres_filtre1';
@@ -2081,6 +2158,18 @@ class c_genres1{
         $o1 .= '      <div><input type="text" id="T0_cht_parmis_genre" value="' . $par['T0_cht_parmis_genre'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
         $o1 .= '      </div>' . PHP_EOL;
         $o1 .= '   </div>' . PHP_EOL;
+        
+        /*
+          
+        */
+        $o1 .= '   <div>' . PHP_EOL;
+        $o1 .= '      <div><span>fonctions</span></div>' . PHP_EOL;
+        $o1 .= '      <div><input type="text" id="T0_cht_fonctions_genre" value="' . $par['T0_cht_fonctions_genre'] . '" size="8" maxlength="64" autocapitalize="off" />' . PHP_EOL;
+        $o1 .= '      </div>' . PHP_EOL;
+        $o1 .= '   </div>' . PHP_EOL;
+        
+        
+        
         /*
           
         */
@@ -2118,6 +2207,7 @@ class c_genres1{
                 'T0_cht_valeur_init_genre' => $par['T0_cht_valeur_init_genre'],
                 'T0_chp_prefixe_genre' => $par['T0_chp_prefixe_genre'],
                 'T0_cht_parmis_genre' => $par['T0_cht_parmis_genre'],
+                'T0_cht_fonctions_genre' => $par['T0_cht_fonctions_genre'],
                 'quantitee' => $__nbMax,
                 'debut' => $__debut
             ),
@@ -2167,6 +2257,8 @@ class c_genres1{
         $lsttbl .= '<th>longueur</th>';
         $lsttbl .= '<th>valeur init</th>';
         $lsttbl .= '<th>liste</th>';
+        $lsttbl .= '<th>fonctions</th>';
+        
         $lsttbl .= '</tr></thead><tbody>';
         foreach($tt[__xva] as $k0 => $v0){
             $lsttbl .= '<tr>';
@@ -2233,6 +2325,12 @@ class c_genres1{
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= enti1($v0['T0.cht_parmis_genre']);
             $lsttbl .= '</td>';
+            /*
+            */
+            $lsttbl .= '<td style="text-align:center;">';
+            $lsttbl .= enti1($v0['T0.cht_fonctions_genre']);
+            $lsttbl .= '</td>';
+            
             /*
             */
             $lsttbl .= '</tr>';

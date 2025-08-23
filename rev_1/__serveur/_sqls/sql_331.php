@@ -68,6 +68,11 @@ function sql_331($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`che_est_ts_genre` = '.sq0($par['n_che_est_ts_genre']).'';
     }
+    if($par['n_cht_fonctions_genre']==='' || is_null($par['n_cht_fonctions_genre']) ){
+        $tableau_champs[]='`cht_fonctions_genre` = NULL';
+    }else{
+        $tableau_champs[]='`cht_fonctions_genre` = \''.sq0($par['n_cht_fonctions_genre']).'\'';
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/
