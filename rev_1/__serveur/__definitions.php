@@ -930,16 +930,6 @@ function demarre_services(&$donnees_retournees){
     if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial'])){
 
         $donnees_retournees[__x_authentifie]=__xsu;
-        
-        if(isset($_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1'])){
-
-            $donnees_retournees[__xva]['compteur_session_php1']=$_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1'];
-
-        }else{
-
-            $donnees_retournees[__xva]['compteur_session_php1']=0;
-        }
-
 
     }
 

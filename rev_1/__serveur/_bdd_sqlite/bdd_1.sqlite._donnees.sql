@@ -63,7 +63,7 @@ chp_nom_acces,
 chx_groupe_acces,
 chx_metier_acces,
 cht_parametres_acces) VALUES
-('1','tout','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"61\" data-chp_nom_source=\"c_taches1.php\" data-chp_methode_menu=\"page_liste_des_taches1\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"T0_chp_priorite_tache2(99)\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"Liste des t\u00e2ches\">t\u00e2ches<\/li><li data-chi_id_source=\"230\" data-chp_nom_source=\"c_projets1.php\" data-chp_methode_menu=\"page_projets_liste1\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des projets\"><span style=\"background:red;color:yellow;\">projets<\/span><\/li><li data-chi_id_source=\"225\" data-chp_nom_source=\"c_dossiers1.php\" data-chp_methode_menu=\"page_dossiers_liste1\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des dossiers et des fichiers\">fido<\/li><li data-chi_id_source=\"241\" data-chp_nom_source=\"c_sources1.php\" data-chp_methode_menu=\"page_liste_des_sources1\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des sources des programmes\">sources<\/li><li data-chi_id_source=\"358\" data-chp_nom_source=\"c_genres1.php\" data-chp_methode_menu=\"page_liste_des_genres1\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des types de bonn\u00e9es dans la bdd\">genres<\/li><li data-chi_id_source=\"353\" data-chp_nom_source=\"c_bases1.php\" data-chp_methode_menu=\"page_liste_des_bases1\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des bases\">bases<\/li><li data-chi_id_source=\"231\" data-chp_nom_source=\"c_requetes1.php\" data-chp_methode_menu=\"page_liste_des_requetes1\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des requ\u00eates sur les bases\">requ\u00eates<\/li><li data-chi_id_source=\"240\" data-chp_nom_source=\"c_revs1.php\" data-chp_methode_menu=\"page_liste_des_revs1\" data-chi_id_menu=\"13\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des revs\">(\ud83d\ude0a)<\/li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"56\" data-chp_nom_source=\"c_groupes1.php\" data-chp_methode_menu=\"page_liste_des_groupes1\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des groupes\">groupes<\/li><li data-chi_id_source=\"58\" data-chp_nom_source=\"c_metiers1.php\" data-chp_methode_menu=\"page_liste_des_metiers1\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des m\u00e9tiers\">m\u00e9tiers<\/li><li data-chi_id_source=\"50\" data-chp_nom_source=\"c_acces1.php\" data-chp_methode_menu=\"page_liste_des_acces1\" data-chi_id_menu=\"16\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des acc\u00e8s\">acc\u00e8s<\/li><li data-chi_id_source=\"62\" data-chp_nom_source=\"c_utilisateurs1.php\" data-chp_methode_menu=\"page_liste_des_utilisateurs1\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des utilisateurs\">utilisateurs<\/li><li data-chi_id_source=\"356\" data-chp_nom_source=\"c_autorisations1.php\" data-chp_methode_menu=\"page_liste_des_autorisations1\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des autorisations\">autorisations<\/li><li data-chi_id_source=\"357\" data-chp_nom_source=\"c_menus1.php\" data-chp_methode_menu=\"page_liste_des_menus1\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des menus\">menus<\/li><\/ul><\/li><li data-liste_des_menus=\"1\">outils<ul><li data-chi_id_source=\"235\" data-chp_nom_source=\"c_rev_mat1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\" data-chp_titre_menu=\"convertion de rev vers matrice\">matrice<\/li><li data-chi_id_source=\"234\" data-chp_nom_source=\"c_rev_js1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\n)\" data-chp_titre_menu=\"convertion de javascript \">js<\/li><li data-chi_id_source=\"233\" data-chp_nom_source=\"c_rev_html1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\n)\" data-chp_titre_menu=\"html\">html<\/li><li data-chi_id_source=\"236\" data-chp_nom_source=\"c_rev_php1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\n)\" data-chp_titre_menu=\"convertion de php\">php<\/li><li data-chi_id_source=\"237\" data-chp_nom_source=\"c_rev_sql1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_sql_rev1),\n      composante(value),\n      avec(\n        valeur_de_localstorage(\n          zones_sauvegard\u00e9es,\n          ls_sql_rev1\n        )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de sql\">sql<\/li><li data-chi_id_source=\"232\" data-chp_nom_source=\"c_rev_css1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_css_rev1),\n      composante(value),\n      avec(\n         valeur_de_localstorage(\n            zones_sauvegard\u00e9es,\n            ls_css_rev1\n         )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de css\">css<\/li><li data-chi_id_source=\"238\" data-chp_nom_source=\"c_rev_texte1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\" data-chp_titre_menu=\"convertion de textes\">txt<\/li><\/ul><\/li><li data-chi_id_source=\"59\" data-chp_nom_source=\"c_profile1.php\" data-chp_methode_menu=\"recupere_la_page_des_coordonnees\" data-chi_id_menu=\"20\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"mon profile\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"-9 -7  20 21\">\n    <g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\">\n        <circle cx=\"0\" cy=\"0\" r=\"6\"><\/circle>\n        <path d=\" M -8 11 C -6 6 6 6 8 11 \"><\/path>\n        <circle cx=\"-2\" cy=\"-1\" r=\"1\"><\/circle>\n        <circle cx=\"2\" cy=\"-1\" r=\"1\"><\/circle>\n        <path d=\"M -2 2 C -3 4 3 4 2 2 \"><\/path>\n        <path d=\"M 0 0 V 2 \"><\/path>\n        <path d=\"M -3 -1   H -6    \"><\/path>\n        <path d=\"M 3 -1   H 6    \"><\/path>\n        <path d=\"M -1 -1 c 0 -1 2 -1 2 0 \"><\/path>\n    <\/g>\n<\/svg><\/li>  ","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"t\u00e2ches\",\"attributs\":{\"data-chi_id_source\":\"61\",\"data-chp_nom_source\":\"c_taches1.php\",\"data-chp_methode_menu\":\"page_liste_des_taches1\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"T0_chp_priorite_tache2(99)\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"Liste des t\u00e2ches\"}},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<span style=\\\"background:red;color:yellow;\\\">projets<\/span>\",\"attributs\":{\"data-chi_id_source\":\"230\",\"data-chp_nom_source\":\"c_projets1.php\",\"data-chp_methode_menu\":\"page_projets_liste1\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des projets\"}},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"fido\",\"attributs\":{\"data-chi_id_source\":\"225\",\"data-chp_nom_source\":\"c_dossiers1.php\",\"data-chp_methode_menu\":\"page_dossiers_liste1\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\"}},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"241\",\"data-chp_nom_source\":\"c_sources1.php\",\"data-chp_methode_menu\":\"page_liste_des_sources1\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des sources des programmes\"}},{\"id_interne\":5,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"358\",\"data-chp_nom_source\":\"c_genres1.php\",\"data-chp_methode_menu\":\"page_liste_des_genres1\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des types de bonn\u00e9es dans la bdd\"}},{\"id_interne\":6,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"353\",\"data-chp_nom_source\":\"c_bases1.php\",\"data-chp_methode_menu\":\"page_liste_des_bases1\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des bases\"}},{\"id_interne\":7,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requ\u00eates\",\"attributs\":{\"data-chi_id_source\":\"231\",\"data-chp_nom_source\":\"c_requetes1.php\",\"data-chp_methode_menu\":\"page_liste_des_requetes1\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des requ\u00eates sur les bases\"}},{\"id_interne\":8,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"(\ud83d\ude0a)\",\"attributs\":{\"data-chi_id_source\":\"240\",\"data-chp_nom_source\":\"c_revs1.php\",\"data-chp_methode_menu\":\"page_liste_des_revs1\",\"data-chi_id_menu\":\"13\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des revs\"}},{\"id_interne\":9,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":6,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":10,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"56\",\"data-chp_nom_source\":\"c_groupes1.php\",\"data-chp_methode_menu\":\"page_liste_des_groupes1\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des groupes\"}},{\"id_interne\":11,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"m\u00e9tiers\",\"attributs\":{\"data-chi_id_source\":\"58\",\"data-chp_nom_source\":\"c_metiers1.php\",\"data-chp_methode_menu\":\"page_liste_des_metiers1\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des m\u00e9tiers\"}},{\"id_interne\":12,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"acc\u00e8s\",\"attributs\":{\"data-chi_id_source\":\"50\",\"data-chp_nom_source\":\"c_acces1.php\",\"data-chp_methode_menu\":\"page_liste_des_acces1\",\"data-chi_id_menu\":\"16\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des acc\u00e8s\"}},{\"id_interne\":13,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"62\",\"data-chp_nom_source\":\"c_utilisateurs1.php\",\"data-chp_methode_menu\":\"page_liste_des_utilisateurs1\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des utilisateurs\"}},{\"id_interne\":14,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"356\",\"data-chp_nom_source\":\"c_autorisations1.php\",\"data-chp_methode_menu\":\"page_liste_des_autorisations1\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des autorisations\"}},{\"id_interne\":15,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"357\",\"data-chp_nom_source\":\"c_menus1.php\",\"data-chp_methode_menu\":\"page_liste_des_menus1\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des menus\"}},{\"id_interne\":16,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":7,\"contenu\":\"outils\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":17,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"235\",\"data-chp_nom_source\":\"c_rev_mat1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\"}},{\"id_interne\":18,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"234\",\"data-chp_nom_source\":\"c_rev_js1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de javascript \"}},{\"id_interne\":19,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"233\",\"data-chp_nom_source\":\"c_rev_html1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\\n)\",\"data-chp_titre_menu\":\"html\"}},{\"id_interne\":20,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"236\",\"data-chp_nom_source\":\"c_rev_php1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de php\"}},{\"id_interne\":21,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"237\",\"data-chp_nom_source\":\"c_rev_sql1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_sql_rev1),\\n      composante(value),\\n      avec(\\n        valeur_de_localstorage(\\n          zones_sauvegard\u00e9es,\\n          ls_sql_rev1\\n        )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de sql\"}},{\"id_interne\":22,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"232\",\"data-chp_nom_source\":\"c_rev_css1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_css_rev1),\\n      composante(value),\\n      avec(\\n         valeur_de_localstorage(\\n            zones_sauvegard\u00e9es,\\n            ls_css_rev1\\n         )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de css\"}},{\"id_interne\":23,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"238\",\"data-chp_nom_source\":\"c_rev_texte1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\",\"data-chp_titre_menu\":\"convertion de textes\"}},{\"id_interne\":24,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg xmlns=\\\"http:\/\/www.w3.org\/2000\/svg\\\" viewBox=\\\"-9 -7  20 21\\\">\\n    <g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\\\">\\n        <circle cx=\\\"0\\\" cy=\\\"0\\\" r=\\\"6\\\"><\/circle>\\n        <path d=\\\" M -8 11 C -6 6 6 6 8 11 \\\"><\/path>\\n        <circle cx=\\\"-2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <circle cx=\\\"2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <path d=\\\"M -2 2 C -3 4 3 4 2 2 \\\"><\/path>\\n        <path d=\\\"M 0 0 V 2 \\\"><\/path>\\n        <path d=\\\"M -3 -1   H -6    \\\"><\/path>\\n        <path d=\\\"M 3 -1   H 6    \\\"><\/path>\\n        <path d=\\\"M -1 -1 c 0 -1 2 -1 2 0 \\\"><\/path>\\n    <\/g>\\n<\/svg>\",\"attributs\":{\"data-chi_id_source\":\"59\",\"data-chp_nom_source\":\"c_profile1.php\",\"data-chp_methode_menu\":\"recupere_la_page_des_coordonnees\",\"data-chi_id_menu\":\"20\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"mon profile\"}}]"}'),
+('1','tout','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"230\" data-chp_nom_source=\"c_projets1.php\" data-chp_methode_menu=\"page_projets_liste1\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\"><span style=\"background:red;color:yellow;\">projets<\/span><\/li><li data-chi_id_source=\"61\" data-chp_nom_source=\"c_taches1.php\" data-chp_methode_menu=\"page_liste_des_taches1\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"T0_chp_priorite_tache2(99)\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"Liste des t\u00e2ches\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">t\u00e2ches<\/li><li data-chi_id_source=\"225\" data-chp_nom_source=\"c_dossiers1.php\" data-chp_methode_menu=\"page_dossiers_liste1\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">fido<\/li><li data-chi_id_source=\"241\" data-chp_nom_source=\"c_sources1.php\" data-chp_methode_menu=\"page_liste_des_sources1\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">sources<\/li><li data-chi_id_source=\"358\" data-chp_nom_source=\"c_genres1.php\" data-chp_methode_menu=\"page_liste_des_genres1\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des types de bonn\u00e9es dans la bdd\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">genres<\/li><li data-chi_id_source=\"353\" data-chp_nom_source=\"c_bases1.php\" data-chp_methode_menu=\"page_liste_des_bases1\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">bases<\/li><li data-chi_id_source=\"231\" data-chp_nom_source=\"c_requetes1.php\" data-chp_methode_menu=\"page_liste_des_requetes1\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des requ\u00eates sur les bases\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">requ\u00eates<\/li><li data-chi_id_source=\"240\" data-chp_nom_source=\"c_revs1.php\" data-chp_methode_menu=\"page_liste_des_revs1\" data-chi_id_menu=\"13\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">(\ud83d\ude0a)<\/li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"56\" data-chp_nom_source=\"c_groupes1.php\" data-chp_methode_menu=\"page_liste_des_groupes1\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">groupes<\/li><li data-chi_id_source=\"58\" data-chp_nom_source=\"c_metiers1.php\" data-chp_methode_menu=\"page_liste_des_metiers1\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des m\u00e9tiers\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">m\u00e9tiers<\/li><li data-chi_id_source=\"50\" data-chp_nom_source=\"c_acces1.php\" data-chp_methode_menu=\"page_liste_des_acces1\" data-chi_id_menu=\"16\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des acc\u00e8s\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">acc\u00e8s<\/li><li data-chi_id_source=\"62\" data-chp_nom_source=\"c_utilisateurs1.php\" data-chp_methode_menu=\"page_liste_des_utilisateurs1\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">utilisateurs<\/li><li data-chi_id_source=\"356\" data-chp_nom_source=\"c_autorisations1.php\" data-chp_methode_menu=\"page_liste_des_autorisations1\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">autorisations<\/li><li data-chi_id_source=\"357\" data-chp_nom_source=\"c_menus1.php\" data-chp_methode_menu=\"page_liste_des_menus1\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">menus<\/li><\/ul><\/li><li data-liste_des_menus=\"1\">outils<ul><li data-chi_id_source=\"235\" data-chp_nom_source=\"c_rev_mat1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">matrice<\/li><li data-chi_id_source=\"234\" data-chp_nom_source=\"c_rev_js1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\n)\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">js<\/li><li data-chi_id_source=\"233\" data-chp_nom_source=\"c_rev_html1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\n)\" data-chp_titre_menu=\"html\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">html<\/li><li data-chi_id_source=\"236\" data-chp_nom_source=\"c_rev_php1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\n)\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">php<\/li><li data-chi_id_source=\"237\" data-chp_nom_source=\"c_rev_sql1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_sql_rev1),\n      composante(value),\n      avec(\n        valeur_de_localstorage(\n          zones_sauvegard\u00e9es,\n          ls_sql_rev1\n        )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">sql<\/li><li data-chi_id_source=\"232\" data-chp_nom_source=\"c_rev_css1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_css_rev1),\n      composante(value),\n      avec(\n         valeur_de_localstorage(\n            zones_sauvegard\u00e9es,\n            ls_css_rev1\n         )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">css<\/li><li data-chi_id_source=\"238\" data-chp_nom_source=\"c_rev_texte1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">txt<\/li><\/ul><\/li><li data-chi_id_source=\"59\" data-chp_nom_source=\"c_profile1.php\" data-chp_methode_menu=\"recupere_la_page_des_coordonnees\" data-chi_id_menu=\"20\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"mon profile\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"-9 -7  20 21\">\n    <g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\">\n        <circle cx=\"0\" cy=\"0\" r=\"6\"><\/circle>\n        <path d=\" M -8 11 C -6 6 6 6 8 11 \"><\/path>\n        <circle cx=\"-2\" cy=\"-1\" r=\"1\"><\/circle>\n        <circle cx=\"2\" cy=\"-1\" r=\"1\"><\/circle>\n        <path d=\"M -2 2 C -3 4 3 4 2 2 \"><\/path>\n        <path d=\"M 0 0 V 2 \"><\/path>\n        <path d=\"M -3 -1   H -6    \"><\/path>\n        <path d=\"M 3 -1   H 6    \"><\/path>\n        <path d=\"M -1 -1 c 0 -1 2 -1 2 0 \"><\/path>\n    <\/g>\n<\/svg><\/li>  ","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<span style=\\\"background:red;color:yellow;\\\">projets<\/span>\",\"attributs\":{\"data-chi_id_source\":\"230\",\"data-chp_nom_source\":\"c_projets1.php\",\"data-chp_methode_menu\":\"page_projets_liste1\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des projets\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"t\u00e2ches\",\"attributs\":{\"data-chi_id_source\":\"61\",\"data-chp_nom_source\":\"c_taches1.php\",\"data-chp_methode_menu\":\"page_liste_des_taches1\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"T0_chp_priorite_tache2(99)\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"Liste des t\u00e2ches\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"fido\",\"attributs\":{\"data-chi_id_source\":\"225\",\"data-chp_nom_source\":\"c_dossiers1.php\",\"data-chp_methode_menu\":\"page_dossiers_liste1\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"241\",\"data-chp_nom_source\":\"c_sources1.php\",\"data-chp_methode_menu\":\"page_liste_des_sources1\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des sources des programmes\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":5,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"358\",\"data-chp_nom_source\":\"c_genres1.php\",\"data-chp_methode_menu\":\"page_liste_des_genres1\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des types de bonn\u00e9es dans la bdd\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":6,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"353\",\"data-chp_nom_source\":\"c_bases1.php\",\"data-chp_methode_menu\":\"page_liste_des_bases1\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des bases\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":7,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requ\u00eates\",\"attributs\":{\"data-chi_id_source\":\"231\",\"data-chp_nom_source\":\"c_requetes1.php\",\"data-chp_methode_menu\":\"page_liste_des_requetes1\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des requ\u00eates sur les bases\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":8,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"(\ud83d\ude0a)\",\"attributs\":{\"data-chi_id_source\":\"240\",\"data-chp_nom_source\":\"c_revs1.php\",\"data-chp_methode_menu\":\"page_liste_des_revs1\",\"data-chi_id_menu\":\"13\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des revs\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":9,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":6,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":10,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"56\",\"data-chp_nom_source\":\"c_groupes1.php\",\"data-chp_methode_menu\":\"page_liste_des_groupes1\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des groupes\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":11,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"m\u00e9tiers\",\"attributs\":{\"data-chi_id_source\":\"58\",\"data-chp_nom_source\":\"c_metiers1.php\",\"data-chp_methode_menu\":\"page_liste_des_metiers1\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des m\u00e9tiers\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":12,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"acc\u00e8s\",\"attributs\":{\"data-chi_id_source\":\"50\",\"data-chp_nom_source\":\"c_acces1.php\",\"data-chp_methode_menu\":\"page_liste_des_acces1\",\"data-chi_id_menu\":\"16\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des acc\u00e8s\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":13,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"62\",\"data-chp_nom_source\":\"c_utilisateurs1.php\",\"data-chp_methode_menu\":\"page_liste_des_utilisateurs1\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des utilisateurs\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":14,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"356\",\"data-chp_nom_source\":\"c_autorisations1.php\",\"data-chp_methode_menu\":\"page_liste_des_autorisations1\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des autorisations\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":15,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"357\",\"data-chp_nom_source\":\"c_menus1.php\",\"data-chp_methode_menu\":\"page_liste_des_menus1\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des menus\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":16,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":7,\"contenu\":\"outils\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":17,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"235\",\"data-chp_nom_source\":\"c_rev_mat1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":18,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"234\",\"data-chp_nom_source\":\"c_rev_js1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":19,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"233\",\"data-chp_nom_source\":\"c_rev_html1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\\n)\",\"data-chp_titre_menu\":\"html\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":20,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"236\",\"data-chp_nom_source\":\"c_rev_php1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de php\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":21,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"237\",\"data-chp_nom_source\":\"c_rev_sql1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_sql_rev1),\\n      composante(value),\\n      avec(\\n        valeur_de_localstorage(\\n          zones_sauvegard\u00e9es,\\n          ls_sql_rev1\\n        )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de sql\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":22,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"232\",\"data-chp_nom_source\":\"c_rev_css1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_css_rev1),\\n      composante(value),\\n      avec(\\n         valeur_de_localstorage(\\n            zones_sauvegard\u00e9es,\\n            ls_css_rev1\\n         )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de css\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":23,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"238\",\"data-chp_nom_source\":\"c_rev_texte1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\",\"data-chp_titre_menu\":\"convertion de textes\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":24,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg xmlns=\\\"http:\/\/www.w3.org\/2000\/svg\\\" viewBox=\\\"-9 -7  20 21\\\">\\n    <g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\\\">\\n        <circle cx=\\\"0\\\" cy=\\\"0\\\" r=\\\"6\\\"><\/circle>\\n        <path d=\\\" M -8 11 C -6 6 6 6 8 11 \\\"><\/path>\\n        <circle cx=\\\"-2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <circle cx=\\\"2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <path d=\\\"M -2 2 C -3 4 3 4 2 2 \\\"><\/path>\\n        <path d=\\\"M 0 0 V 2 \\\"><\/path>\\n        <path d=\\\"M -3 -1   H -6    \\\"><\/path>\\n        <path d=\\\"M 3 -1   H 6    \\\"><\/path>\\n        <path d=\\\"M -1 -1 c 0 -1 2 -1 2 0 \\\"><\/path>\\n    <\/g>\\n<\/svg>\",\"attributs\":{\"data-chi_id_source\":\"59\",\"data-chp_nom_source\":\"c_profile1.php\",\"data-chp_methode_menu\":\"recupere_la_page_des_coordonnees\",\"data-chi_id_menu\":\"20\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"mon profile\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}}]"}'),
 ('2','[*** non connecté ***]','2','2',NULL);
 
 
@@ -102,83 +102,6 @@ chx_source_autorisation) VALUES
 
 /*
   ===============================
-  DONNEES A INSERER POUR : tbl_menus
-  ===============================
-*/
-
-INSERT INTO tbl_menus (chi_id_menu,
-cht_libelle_menu,
-chp_titre_menu,
-chx_autorisation_menu,
-chp_methode_menu,
-cht_initialisation_menu,
-cht_complements_menu) VALUES
-('1','tâches','Liste des tâches','1','page_liste_des_taches1','T0_chp_priorite_tache2(99)',NULL),
-('2','matrice','convertion de rev vers matrice','2','page1',NULL,'maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_rev1))))'),
-('3','js','convertion de javascript ','3','page1',NULL,'maj_interface2(
-   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_js_rev1)))
-)'),
-('4','php','convertion de php','5','page1',NULL,'maj_interface2(
-   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_php_rev1)))
-)'),
-('5','sql','convertion de sql','6','page1',NULL,'maj_interface2(
-   modifier(
-      id(vv_txtarea_sql_rev1),
-      composante(value),
-      avec(
-        valeur_de_localstorage(
-          zones_sauvegardées,
-          ls_sql_rev1
-        )
-      )
-   )
-)'),
-('6','css','convertion de css','7','page1',NULL,'maj_interface2(
-   modifier(
-      id(vv_txtarea_css_rev1),
-      composante(value),
-      avec(
-         valeur_de_localstorage(
-            zones_sauvegardées,
-            ls_css_rev1
-         )
-      )
-   )
-)'),
-('7','txt','convertion de textes','8','page1',NULL,'maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_texte_rev1))))'),
-('8','<span style="background:red;color:yellow;">projets</span>','liste des projets','9','page_projets_liste1',NULL,NULL),
-('9','fido','liste des dossiers et des fichiers','10','page_dossiers_liste1',NULL,NULL),
-('10','sources','liste des sources des programmes','11','page_liste_des_sources1',NULL,NULL),
-('11','bases','liste des bases','12','page_liste_des_bases1',NULL,NULL),
-('12','requêtes','liste des requêtes sur les bases','13','page_liste_des_requetes1',NULL,NULL),
-('13','(😊)','liste des revs','14','page_liste_des_revs1',NULL,NULL),
-('14','groupes','liste des groupes','15','page_liste_des_groupes1',NULL,NULL),
-('15','métiers','liste des métiers','16','page_liste_des_metiers1',NULL,NULL),
-('16','accès','liste des accès','17','page_liste_des_acces1',NULL,NULL),
-('17','utilisateurs','liste des utilisateurs','20','page_liste_des_utilisateurs1',NULL,NULL),
-('18','autorisations','liste des autorisations','18','page_liste_des_autorisations1',NULL,NULL),
-('19','menus','liste des menus','21','page_liste_des_menus1',NULL,NULL),
-('20','<svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -7  20 21">
-    <g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;">
-        <circle cx="0" cy="0" r="6"></circle>
-        <path d=" M -8 11 C -6 6 6 6 8 11 "></path>
-        <circle cx="-2" cy="-1" r="1"></circle>
-        <circle cx="2" cy="-1" r="1"></circle>
-        <path d="M -2 2 C -3 4 3 4 2 2 "></path>
-        <path d="M 0 0 V 2 "></path>
-        <path d="M -3 -1   H -6    "></path>
-        <path d="M 3 -1   H 6    "></path>
-        <path d="M -1 -1 c 0 -1 2 -1 2 0 "></path>
-    </g>
-</svg>','mon profile','19','recupere_la_page_des_coordonnees',NULL,NULL),
-('21','html','html','4','page1',NULL,'maj_interface2(
-   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_html_rev1)))
-)'),
-('22','genres','liste des types de bonnées dans la bdd','22','page_liste_des_genres1',NULL,NULL);
-
-
-/*
-  ===============================
   DONNEES A INSERER POUR : tbl_genres
   ===============================
 */
@@ -196,26 +119,31 @@ che_init_est_mot_genre,
 cht_valeur_init_genre,
 che_est_parmis_genre,
 cht_parmis_genre,
-che_ordre_genre) VALUES
-('1','cht','***indéfini***','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,'19'),
-('2','chi','id primaire non nulle','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,'1'),
-('3','chp','varchar 64 NON NULLE','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'2'),
-('4','chx','lien NON NULL','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,'4'),
-('5','che','zero_un non nulle','INTEGER',NULL,'0','0','1','1','0','0','1','0,1','11'),
-('6','cht','texte NULL','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'10'),
-('7','che','entier NULL','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,'8'),
-('8','chx','lien NULL','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,'5'),
-('9','che','entier NON NULL','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,'6'),
-('10','che','entier NON NULL à zéro','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,'7'),
-('11','cht','texte NON NULL','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,'9'),
-('12','chp','varchar 64 NULL','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'3'),
-('13','chp','mot de passe','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,'13'),
-('14','chd','dt23','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,'12'),
-('101','chp','espèce','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL','15'),
-('102','chp','préfixe','VARCHAR','3','0','0','1','1','1','cht','1','cht,chi,che,chx','14'),
-('103','chp','type_requete','VARCHAR','64','0','0','1','1','1','liste_ecran','1','liste_ecran,insert,select,update,delete,requete_manuelle','16'),
-('104','chp','fournisseur bdd','VARCHAR','64','0','0','1','1','1','sqlite','1','sqlite,mysql','17'),
-('105','chp','type_rev','VARCHAR','1','0','0','1','0','0','i','1','i,c,f','18');
+che_ordre_genre,
+che_est_ts_genre,
+cht_fonctions_genre) VALUES
+('1','cht','***indéfini***','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,'22','0',NULL),
+('2','chi','id primaire non nulle','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,'1','0',NULL),
+('3','chp','varchar 64 NON NULLE','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'2','0',NULL),
+('4','chx','lien NON NULL','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,'4','0',NULL),
+('5','che','zero_un non nulle','INTEGER',NULL,'0','0','1','1','0','0','1','0,1','11','0',NULL),
+('6','cht','texte NULL','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'10','0',NULL),
+('7','che','entier NULL','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,'8','0',NULL),
+('8','chx','lien NULL','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,'5','0',NULL),
+('9','che','entier NON NULL','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,'6','0',NULL),
+('10','che','entier NON NULL à zéro','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,'7','0',NULL),
+('11','cht','texte NON NULL','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,'9','0',NULL),
+('12','chp','varchar 64 NULL','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'3','0',NULL),
+('13','chp','mot de passe','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,'13','0',NULL),
+('14','chd','dt23','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,'12','1',NULL),
+('101','chp','espèce','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL','15','0',NULL),
+('102','chp','préfixe','VARCHAR','3','0','0','1','1','1','cht','1','cht,chi,che,chx','14','0',NULL),
+('103','chp','type_requete','VARCHAR','64','0','0','1','1','1','liste_ecran','1','liste_ecran,insert,select,update,delete,requete_manuelle','16','0',NULL),
+('104','chp','fournisseur bdd','VARCHAR','64','0','0','1','1','1','sqlite','1','sqlite,mysql','17','0',NULL),
+('105','chp','type_rev','VARCHAR','1','0','0','1','0','0','i','1','i,c,f','18','0',NULL),
+('106','chp','nom de fichier','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'20','0','test_du_nom_de_fichier1'),
+('107','cht','fonctions de champ','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'21','0','test_fonctions_de_c_fonctions1'),
+('108','chp','nom de dossier','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'19','0','test_du_nom_de_fichier1');
 
 
 /*
@@ -242,7 +170,7 @@ dans le répertoire rev_2 et on travaillera sur l''url frev/rev_2.
 Dans le projet 2, le fichier __serveur/__definitions.php sera le seul fichier différent
 
 Ce projet est utilisé pour la mise à jour du projet principal',NULL,NULL,'0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
-('3','modèle simple avec une table utilisateur','Ce modèle est défini pour faire un projet qui contient des pages qui sont accessibles que pour un utilisateur.
+('3','modèle simple avec une table utilisateurs et une table taches','Ce modèle est défini pour faire un projet qui contient des pages qui sont accessibles que pour un utilisateur.
 
 En conséquence, il n''y a pas de gestion de menu.','6','2','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 
@@ -259,80 +187,81 @@ chp_texte_tache,
 chp_priorite_tache,
 chd__dtm_tache,
 chd__dtc_tache,
-che__nur_tache) VALUES
-('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('3','1','mettre un # dans l''url pour pouvoir charger la page initiale','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('4','1','cookies.php en objet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('5','1','données bidon en cookie','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('6','1','404','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('7','1','worker','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('8','1','timer / indicateur socket','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('9','1','id en vv','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('10','1','fichiers et classes en c_','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('11','1','socket','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('12','1','limiter le nombre de messages sur l''interface','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('13','1','ne pas afficher le premier message ws ko','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('14','1','maj champ deverminage nouveau','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('15','1','recharger la page paramètres','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('16','1','déverminage en cookie','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('17','1','ctrl F5 après avoir cliqué sur un #','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('18','1','désactiver les boutons quand click','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('19','1','changer mes coordonnées','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('20','1','renommer les variables __x_statut ....','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('21','1','bdd todo','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('22','1','mettre le niveau de déverminage dans le php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('23','1','dump de la base en local','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('24','1','essayer de modifier dynamiquement le css','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('25','1','synchroniser session php / webSochet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('26','1','travaux en batch','6','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('27','1','gérer les versions js css etc','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('28','1','profils de css','50','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('29','1','interface : astuces','7','2025-08-15 14:32:17.544','2000-01-01 00:00:00','1'),
-('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('31','1','sauvegarder la position dans la liste','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('34','1','pas de webSocket sur ks.app','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('35','1','détecter mobile ( touch )','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('36','1','highlight des menus','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('37','1','lors de la première connexion, initialiser les tailles des css en fonction de la taille de l''écran','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+che__nur_tache,
+chx_projet_tache) VALUES
+('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('3','1','mettre un # dans l''url pour pouvoir charger la page initiale','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('4','1','cookies.php en objet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('5','1','données bidon en cookie','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('6','1','404','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('7','1','worker','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('8','1','timer / indicateur socket','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('9','1','id en vv','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('10','1','fichiers et classes en c_','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('11','1','socket','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('12','1','limiter le nombre de messages sur l''interface','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('13','1','ne pas afficher le premier message ws ko','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('14','1','maj champ deverminage nouveau','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('15','1','recharger la page paramètres','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('16','1','déverminage en cookie','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('17','1','ctrl F5 après avoir cliqué sur un #','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('18','1','désactiver les boutons quand click','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('19','1','changer mes coordonnées','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('20','1','renommer les variables __x_statut ....','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('21','1','bdd todo','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('22','1','mettre le niveau de déverminage dans le php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('23','1','dump de la base en local','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('24','1','essayer de modifier dynamiquement le css','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('25','1','synchroniser session php / webSochet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('26','1','travaux en batch','7','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('27','1','gérer les versions js css etc','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('28','1','profils de css','50','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('29','1','interface : astuces','8','2025-08-15 14:32:17.544','2000-01-01 00:00:00','1','1'),
+('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('31','1','sauvegarder la position dans la liste','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('34','1','pas de webSocket sur ks.app','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('35','1','détecter mobile ( touch )','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('36','1','highlight des menus','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('37','1','lors de la première connexion, initialiser les tailles des css en fonction de la taille de l''écran','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('38','1','sur ipad, supprimer les double click pour agrandir
 
-if( ecran_tactile===true && genre_safari===true && genre_crios === false)','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+if( ecran_tactile===true && genre_safari===true && genre_crios === false)','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('39','1','supprimer le double click sur ios
 
 //https://stackoverflow.com/a/42162450/3717718
-','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('40','1','marges gauches et droites','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('41','1','se reconnecter au webso','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('42','1','ajouter le niveau de deboggage dans le websocket','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('43','1','déverminage serveur wso','50','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('44','1','Prévenir le ws quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('40','1','marges gauches et droites','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('41','1','se reconnecter au webso','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('42','1','ajouter le niveau de deboggage dans le websocket','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('43','1','déverminage serveur wso','50','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('44','1','Prévenir le ws quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('45','1','coccinelle déverminage
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="13 11  82 84"><path d="M 18 85 L 23 82 L 21 73 L 27 67 M 30 40 L 25 40 L 21 49 L 16 49 M 34 35 L 25 30 L 23 24 M 44 19 L 39 14 M 59 19 L 64 14 M 69 35 L 78 30 L 80 24 M 73 40 L 78 40 L 82 49 L 87 49 M 76 68 L 82 73 L 80 82 L 85 85 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path><path d=" M 36 34 C 35 12 68 12 67 34 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:slategray;stroke-width:1;fill-opacity:1;"></path><path d=" M 36 33 C 30 38 25 48 25 56  C 25 68 33 87 52 87 c 15 0 26 -17 26 -30 C 78 47 73 39 67 33 c 0 1 -13 1 -15 1 C 49 34 36 34 36 33" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:red;stroke-width:1;fill-opacity:1;"></path><ellipse cx="44" cy="25" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(30 44 25 )" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="57" cy="18" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(1 40) rotate(-32 0 0)  " style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="36" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="67" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="41" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></ellipse><ellipse cx="62" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="40" cy="74" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(-40 40 74 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="57" cy="89" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(6 -15 ) rotate(30 57 89 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><path d=" M 51 35 V 86 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path></svg>','51','2025-07-31 11:57:22.993','2000-01-01 00:00:00','2'),
-('46','1','http://localhost/frev/rev_1/__client/?a=1','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('47','1','page rev vers matrice','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('48','1','initialiser la zone rev avec le localstorage','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="13 11  82 84"><path d="M 18 85 L 23 82 L 21 73 L 27 67 M 30 40 L 25 40 L 21 49 L 16 49 M 34 35 L 25 30 L 23 24 M 44 19 L 39 14 M 59 19 L 64 14 M 69 35 L 78 30 L 80 24 M 73 40 L 78 40 L 82 49 L 87 49 M 76 68 L 82 73 L 80 82 L 85 85 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path><path d=" M 36 34 C 35 12 68 12 67 34 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:slategray;stroke-width:1;fill-opacity:1;"></path><path d=" M 36 33 C 30 38 25 48 25 56  C 25 68 33 87 52 87 c 15 0 26 -17 26 -30 C 78 47 73 39 67 33 c 0 1 -13 1 -15 1 C 49 34 36 34 36 33" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:red;stroke-width:1;fill-opacity:1;"></path><ellipse cx="44" cy="25" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(30 44 25 )" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="57" cy="18" rx="2.5" ry="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(1 40) rotate(-32 0 0)  " style="stroke:rgb(0, 0, 0);fill:white;stroke-width:1;"></ellipse><ellipse cx="36" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="67" cy="58" rx="5" ry="6.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="41" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></ellipse><ellipse cx="62" cy="42" rx="2.5" ry="2.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="40" cy="74" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(-40 40 74 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><ellipse cx="57" cy="89" rx="3" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="translate(6 -15 ) rotate(30 57 89 )" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;stroke-opacity:1;fill-opacity:1;opacity:1;"></ellipse><path d=" M 51 35 V 86 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:4;"></path></svg>','51','2025-07-31 11:57:22.993','2000-01-01 00:00:00','2','1'),
+('46','1','http://localhost/frev/rev_1/__client/?a=1','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('47','1','page rev vers matrice','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('48','1','initialiser la zone rev avec le localstorage','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('49','1','mettre le rendu en js
-NON trop compliqué, le garder en php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('50','1','conv js','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('51','1','rev vers js','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('52','1','zone d''édition textarea','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('53','1','cookie socket','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('54','1','optimiser les temps de chargement','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('55','1','traiter les messages d''erreur','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('56','1','placer le curseur dans une textarea','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('57','1','conv html','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('58','1','conv php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('59','1','conv php nikic','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('60','1','traiter les messages d''erreur de php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('61','1','sql','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('62','1','css','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('63','1','projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('64','1','bouton retour à la liste','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('65','1','bug lien interne après changement de version','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('66','1','scroll horizontal sur menu haut','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('67','1','bases','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+NON trop compliqué, le garder en php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('50','1','conv js','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('51','1','rev vers js','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('52','1','zone d''édition textarea','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('53','1','cookie socket','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('54','1','optimiser les temps de chargement','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('55','1','traiter les messages d''erreur','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('56','1','placer le curseur dans une textarea','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('57','1','conv html','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('58','1','conv php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('59','1','conv php nikic','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('60','1','traiter les messages d''erreur de php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('61','1','sql','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('62','1','css','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('63','1','projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('64','1','bouton retour à la liste','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('65','1','bug lien interne après changement de version','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('66','1','scroll horizontal sur menu haut','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('67','1','bases','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('68','1','autorisations
 
 se connecter à 
@@ -343,78 +272,78 @@ sans être connecté
 
 #c_pages1.recupere_la_page_d_accueil()
 #c_pages1.recupere_la_page_d_aide()
-#c_pages1.recupere_la_page_de_connexion()','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('69','1','dossiers','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('70','1','activer / désactiver le bouton du menu','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('71','1','id parent de dossier avec <dialog>','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('72','1','chemin complet d''un dossier','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('73','1','vérifier qu''un dossier n''a pas d''enfants avant de le supprimer','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+#c_pages1.recupere_la_page_de_connexion()','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('69','1','dossiers','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('70','1','activer / désactiver le bouton du menu','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('71','1','id parent de dossier avec <dialog>','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('72','1','chemin complet d''un dossier','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('73','1','vérifier qu''un dossier n''a pas d''enfants avant de le supprimer','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('74','1','transmettre les donnes_retournees aux sql 
-et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('78','1','ne pas mettre plus de 1000 éléments dans un dossier','11','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('80','1','table des bugs','13','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('75','1','ne pas enregistrer un dossier sur lui même ou au dessus de lui même','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('78','1','ne pas mettre plus de 1000 éléments dans un dossier','12','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('80','1','table des bugs','14','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('83','1','ajouter les champs 
 nut numero technique de modification
 dtm date technique de modification
-dtc date technique de création','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('84','1','renommer un dossier','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('85','1','quand on clique sur 🖐, mettre la zone en haut de l''écran','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('86','1','optimiser les tableaux des matrices et des caractères','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('88','1','sortable pour svg','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('89','1','cliquer en dehors du "dialog" pour le fermer','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('90','1','dupliquer une table','14','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('91','1','remplacer cible par projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+dtc date technique de création','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('84','1','renommer un dossier','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('85','1','quand on clique sur 🖐, mettre la zone en haut de l''écran','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('86','1','optimiser les tableaux des matrices et des caractères','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('88','1','sortable pour svg','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('89','1','cliquer en dehors du "dialog" pour le fermer','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('90','1','dupliquer une table','15','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('91','1','remplacer cible par projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('92','1','quand on modifie le nom d''une table
-alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('93','1','corriger auto increment','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('94','1','ajouter le type du meta dans les sql','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('96','1','reprendre les commentaires meta dans sql','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('93','1','corriger auto increment','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('94','1','ajouter le type du meta dans les sql','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('96','1','reprendre les commentaires meta dans sql','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('97','1','mettre les valeurs
             a_une_valeur_par_defaut(0),
             la_valeur_par_defaut_est_caractere(0),
             valeur_par_defaut( ''''),
-dans le champ','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('98','1','afficher/masquer les champs dans le svg','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('99','1','corriger le bug : après tri des champs, on pert l''index','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+dans le champ','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('98','1','afficher/masquer les champs dans le svg','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('99','1','corriger le bug : après tri des champs, on pert l''index','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('100','1','ne pas masquer un champ si c''est une référence, une clé, un auto_increment
-ou si le champ appartient à un index','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('101','1','ajouter des tests de validité sur le svg base','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('102','1','sauvegarder une table sans champ','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('103','1','requetes','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('104','1','mettre le dump de la base dans la liste des bases','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('105','1','''prefixe_bdd'' PREFIXE_BDD','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('106','1','positionnement du bouton supprimer les messages','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('107','1','ajouter le bouton "ajouter un commentaire"','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('108','1','améliorer l''éditeur de requêtes','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('109','1','renommer le champ dtm_tache de la table requetes','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('110','1','changer le rev du champ quand on le renomme','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('111','1','remplacer les sql_nn par des sql_iii(nn,)','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+ou si le champ appartient à un index','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('101','1','ajouter des tests de validité sur le svg base','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('102','1','sauvegarder une table sans champ','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('103','1','requetes','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('104','1','mettre le dump de la base dans la liste des bases','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('105','1','''prefixe_bdd'' PREFIXE_BDD','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('106','1','positionnement du bouton supprimer les messages','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('107','1','ajouter le bouton "ajouter un commentaire"','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('108','1','améliorer l''éditeur de requêtes','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('109','1','renommer le champ dtm_tache de la table requetes','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('110','1','changer le rev du champ quand on le renomme','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('111','1','remplacer les sql_nn par des sql_iii(nn,)','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
 ('112','1','fonction pour gérer les dépendances
-sql_dependances()','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('113','1','renommer un champ d''index','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('114','1','dans le concepteur de requete, mettre les champs mis à jour pour un update sur plusieurs lignes','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('115','1','mettre en place des dépendances de champ sur des bases externes','50','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('116','1','ajouter le test des dépendances dans les php delete','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('117','1','renommer une table dans le base','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('118','1','sources','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('119','1','modifier les updates','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('120','1','en mode déverminage, afficher le numero de reuqete liste','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('121','1','pourquoi certains fichiers sql sont supprimés','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('122','1','icone supprimer 🗑','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('123','1','rev de texte','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('124','1','recompiler les updates','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('125','1','intégrer la table rev dans la base physique','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('126','1','projet 2','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('127','1','reprendre les meta des sql','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('128','1','compiler les requêtes à partir de la liste','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('129','1','remplacer select_liste par liste_ecran','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sql_dependances()','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('113','1','renommer un champ d''index','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('114','1','dans le concepteur de requete, mettre les champs mis à jour pour un update sur plusieurs lignes','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('115','1','mettre en place des dépendances de champ sur des bases externes','50','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('116','1','ajouter le test des dépendances dans les php delete','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('117','1','renommer une table dans le base','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('118','1','sources','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('119','1','modifier les updates','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('120','1','en mode déverminage, afficher le numero de reuqete liste','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('121','1','pourquoi certains fichiers sql sont supprimés','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('122','1','icone supprimer 🗑','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('123','1','rev de texte','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('124','1','recompiler les updates','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('125','1','intégrer la table rev dans la base physique','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('126','1','projet 2','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('127','1','reprendre les meta des sql','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('128','1','compiler les requêtes à partir de la liste','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('129','1','remplacer select_liste par liste_ecran','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
 ('130','1','compiler les sources
 html
 js
@@ -422,19 +351,19 @@ php
 sql
 css
 texte
-rev','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('132','1','virer chp_chemin_dossier','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('133','1','flag dossier binaire','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('134','1','begin transaction','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('135','1','ordonner un champ sur le schema uniquement','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('136','1','mettre le rev de travail de la base dans le rev','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+rev','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('132','1','virer chp_chemin_dossier','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('133','1','flag dossier binaire','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('134','1','begin transaction','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('135','1','ordonner un champ sur le schema uniquement','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('136','1','mettre le rev de travail de la base dans le rev','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
 ('137','1','intégrer sql_parser_cst.js pour pouvoir faire passer :
 alter table t DROP column a;
 
 select * from toto;
 /*
   alter table tata DROP column tot;
-*/','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+*/','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
 ('138','1','sql_parser_cst
 
 select
@@ -446,14 +375,14 @@ delete
 commit
 rollback
 begin transaction
-','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('139','1','ajouter un source binaire ( ico )','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('140','1','ajouter un source qui pointe sur un autre source ( favicon )','50','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('141','1','drapeau répertoire contient des sources générés','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('142','1','virer che_binaire_dossier','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('143','1','copier un source dans un autre répertoire','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('144','1','virer chp_type_source','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('145','1','supprimer les éléments inutils du dump de la base','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('139','1','ajouter un source binaire ( ico )','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('140','1','ajouter un source qui pointe sur un autre source ( favicon )','50','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('141','1','drapeau répertoire contient des sources générés','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('142','1','virer che_binaire_dossier','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('143','1','copier un source dans un autre répertoire','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('144','1','virer chp_type_source','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('145','1','supprimer les éléments inutils du dump de la base','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
 ('146','1','sql_29, sql_30
 
 champ_numero_de_revision
@@ -464,8 +393,8 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 
 champ_date_modification(`chd__dtm_tache`)
-flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','12','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
+flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4','1'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','13','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1','1'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -478,67 +407,67 @@ sources js sur disque
 sources sql sur disque
 sources css sur disque
 sources rev sur disque
-sources txt sur disque NON','99','2025-06-15 09:10:42.213','2025-06-13 17:05:45.323','10'),
-('149','1','socket : .ts en .js','99','2025-06-16 09:01:24.706','2025-06-16 09:01:24.706','0'),
-('150','1','renommer les champs chi__num en che__nur','99','2025-06-17 11:45:14.619','2025-06-17 10:08:32.544','3'),
+sources txt sur disque NON','99','2025-06-15 09:10:42.213','2025-06-13 17:05:45.323','10','1'),
+('149','1','socket : .ts en .js','99','2025-06-16 09:01:24.706','2025-06-16 09:01:24.706','0','1'),
+('150','1','renommer les champs chi__num en che__nur','99','2025-06-17 11:45:14.619','2025-06-17 10:08:32.544','3','1'),
 ('151','1','lors de la compilation d''un php, 
-mettre les sources au format SQL des requetes sql dans le source php','99','2025-06-17 14:11:31.120','2025-06-17 10:40:44.982','1'),
-('152','1','décomposer les fichiers session de php pour le wso','99','2025-06-19 18:22:27.003','2025-06-17 11:54:31.823','2'),
-('154','1','déterminer le répertoire des requêtes dans le projet','99','2025-06-19 18:21:27.820','2025-06-19 18:21:27.820','0'),
+mettre les sources au format SQL des requetes sql dans le source php','99','2025-06-17 14:11:31.120','2025-06-17 10:40:44.982','1','1'),
+('152','1','décomposer les fichiers session de php pour le wso','99','2025-06-19 18:22:27.003','2025-06-17 11:54:31.823','2','1'),
+('154','1','déterminer le répertoire des requêtes dans le projet','99','2025-06-19 18:21:27.820','2025-06-19 18:21:27.820','0','1'),
 ('155','1','quand on crée un nouveau projet, 
-il faut créer un clone de la base système dans lequel travailler','99','2025-06-20 10:44:39.371','2025-06-20 10:44:39.371','0'),
-('156','1','quand on se déconnecte d''un projet, il faut supprimer les menus bases ...','99','2025-06-20 10:47:23.986','2025-06-20 10:47:23.986','0'),
+il faut créer un clone de la base système dans lequel travailler','99','2025-06-20 10:44:39.371','2025-06-20 10:44:39.371','0','1'),
+('156','1','quand on se déconnecte d''un projet, il faut supprimer les menus bases ...','99','2025-06-20 10:47:23.986','2025-06-20 10:47:23.986','0','1'),
 ('157','1','ajouter répertoire des requetes au niveau du projet
-et utiliser cette donnée...','99','2025-06-21 16:57:19.818','2025-06-21 13:36:20.422','2'),
-('158','1','quand on ajoute un champ fils, dans le dessin svg, le lien ne n''affiche pas correctement','99','2025-06-23 12:39:41.331','2025-06-23 12:39:41.331','0'),
-('159','1','supprimer les projets >2 dans le projet 2','99','2025-06-23 16:18:28.927','2025-06-23 16:18:28.927','0'),
-('160','1','comparer les sources entre rev1 et 2 et faire un bouton copier','99','2025-06-23 16:41:49.995','2025-06-23 16:41:49.995','0'),
-('161','1','dans rev_2 importer un source de rev1','99','2025-06-24 09:36:54.845','2025-06-24 09:36:54.845','0'),
-('162','1','voir message conversion dans le php (322727) [1742]','99','2025-06-24 13:49:09.573','2025-06-24 13:49:09.573','0'),
-('163','1','moncrlf','99','2025-06-25 10:22:08.728','2025-06-25 10:22:08.728','0'),
-('164','1','quand on active un projet, il faut charger les sources sql','99','2025-06-25 11:05:15.874','2025-06-25 11:05:15.874','0'),
-('165','1','inporter/exporter les fichiers de rev 1 2','99','2025-06-25 12:06:19.837','2025-06-25 12:06:19.837','0'),
+et utiliser cette donnée...','99','2025-06-21 16:57:19.818','2025-06-21 13:36:20.422','2','1'),
+('158','1','quand on ajoute un champ fils, dans le dessin svg, le lien ne n''affiche pas correctement','99','2025-06-23 12:39:41.331','2025-06-23 12:39:41.331','0','1'),
+('159','1','supprimer les projets >2 dans le projet 2','99','2025-06-23 16:18:28.927','2025-06-23 16:18:28.927','0','1'),
+('160','1','comparer les sources entre rev1 et 2 et faire un bouton copier','99','2025-06-23 16:41:49.995','2025-06-23 16:41:49.995','0','1'),
+('161','1','dans rev_2 importer un source de rev1','99','2025-06-24 09:36:54.845','2025-06-24 09:36:54.845','0','1'),
+('162','1','voir message conversion dans le php (322727) [1742]','99','2025-06-24 13:49:09.573','2025-06-24 13:49:09.573','0','1'),
+('163','1','moncrlf','99','2025-06-25 10:22:08.728','2025-06-25 10:22:08.728','0','1'),
+('164','1','quand on active un projet, il faut charger les sources sql','99','2025-06-25 11:05:15.874','2025-06-25 11:05:15.874','0','1'),
+('165','1','inporter/exporter les fichiers de rev 1 2','99','2025-06-25 12:06:19.837','2025-06-25 12:06:19.837','0','1'),
 ('166','1','rechercher un source dont le nom contient __
 
-select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99','2025-06-25 14:42:17.528','2025-06-25 12:10:16.103','2'),
-('167','1','double \ dans le .bat','99','2025-06-25 14:14:55.962','2025-06-25 14:14:55.962','0'),
+select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99','2025-06-25 14:42:17.528','2025-06-25 12:10:16.103','2','1'),
+('167','1','double \ dans le .bat','99','2025-06-25 14:14:55.962','2025-06-25 14:14:55.962','0','1'),
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','10','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
-('169','1','initialiser projet standard','2','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054','0'),
-('170','1','initialiser ecran standard d''une table','5','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916','0'),
-('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1'),
-('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1'),
+comme3(xxx)','11','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1','1'),
+('169','1','initialiser projet standard','3','2025-06-26 15:39:59.054','2025-06-26 15:39:59.054','0','1'),
+('170','1','initialiser ecran standard d''une table','6','2025-06-26 15:40:44.916','2025-06-26 15:40:44.916','0','1'),
+('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1','1'),
+('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1','1'),
 ('173','1','gérer les paramètres ( liste des constantes )
-type de champbdd','4','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409','3'),
+type de champbdd','5','2025-07-04 08:19:23.308','2025-06-27 10:13:20.409','3','1'),
 ('174','1','mettre en github
-','99','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817','0'),
-('175','1','faire un dump de la base du projet 3','99','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038','1'),
-('176','1','supprimer les afr','99','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146','0'),
-('177','1','créer la base appli dans un autre répertoire que les bases de données','99','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962','0'),
+','99','2025-06-27 11:21:35.817','2025-06-27 11:21:35.817','0','1'),
+('175','1','faire un dump de la base du projet 3','99','2025-06-28 12:41:16.455','2025-06-28 12:40:58.038','1','1'),
+('176','1','supprimer les afr','99','2025-06-30 10:17:00.146','2025-06-30 10:17:00.146','0','1'),
+('177','1','créer la base appli dans un autre répertoire que les bases de données','99','2025-07-01 09:20:32.962','2025-07-01 09:20:32.962','0','1'),
 ('178','1','ajouter un dictionnaire de données(genre)
-permet de spécifier les champs date, date_heure, lien vers parent, id','99','2025-08-10 10:41:29.780','2025-07-02 10:46:53.367','4'),
-('179','1','corriger fichier_des_dependances','99','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399','0'),
-('180','1','corriger rev_php_des_sql','99','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718','0'),
-('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668','0'),
-('182','1','svg lien ajouter gauche droite','99','2025-07-06 09:27:00.963','2025-07-04 08:22:18.236','1'),
+permet de spécifier les champs date, date_heure, lien vers parent, id','99','2025-08-10 10:41:29.780','2025-07-02 10:46:53.367','4','1'),
+('179','1','corriger fichier_des_dependances','99','2025-07-02 11:46:09.399','2025-07-02 11:46:09.399','0','1'),
+('180','1','corriger rev_php_des_sql','99','2025-07-03 09:44:55.718','2025-07-03 09:44:55.718','0','1'),
+('181','1','quand on ajoute une tâche et on revient à la liste, réordonner les tâches','99','2025-07-03 09:46:02.668','2025-07-03 09:46:02.668','0','1'),
+('182','1','svg lien ajouter gauche droite','99','2025-07-06 09:27:00.963','2025-07-04 08:22:18.236','1','1'),
 ('183','1','lisad :
 
 lister 
 insérer 
 sélectionner 
 altérer/amender 
-détruire','80','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485','1'),
-('184','1','bug quand on crée un nouvelle requête, le php c''est pas créé sur disque','99','2025-07-07 10:35:44.602','2025-07-07 10:35:44.602','0'),
-('185','1','gérer les pages','99','2025-07-07 12:54:11.814','2025-07-07 12:54:11.814','0'),
-('186','1','gérer les accès des utilisateurs','99','2025-07-08 15:13:34.065','2025-07-08 15:12:51.611','1'),
-('187','1','supprimer chx_groupe_utilisateur chx_metier_utilisateur','99','2025-07-09 09:41:52.450','2025-07-09 09:41:52.450','0'),
-('188','1','ajouter NULL si chx = '''' sur les insert et delete','99','2025-07-09 13:55:32.628','2025-07-09 13:54:53.645','1'),
-('189','1','Lors de l''insertion dans la table des pages, vérifier l''existance de méthode du source','99','2025-07-09 15:40:56.820','2025-07-09 14:58:59.943','1'),
-('190','1','supprimer chp_lien_rev_page','99','2025-07-09 15:22:03.310','2025-07-09 15:22:03.310','0'),
-('191','1','rechercher sql_24','99','2025-07-09 15:50:13.424','2025-07-09 15:50:13.424','0'),
-('192','1','bouton pop up pour voir le contenu d''une requête à partir de la liste des requêtes ','99','2025-07-09 17:42:12.440','2025-07-09 15:50:33.376','1'),
+détruire','80','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485','1','1'),
+('184','1','bug quand on crée un nouvelle requête, le php c''est pas créé sur disque','99','2025-07-07 10:35:44.602','2025-07-07 10:35:44.602','0','1'),
+('185','1','gérer les pages','99','2025-07-07 12:54:11.814','2025-07-07 12:54:11.814','0','1'),
+('186','1','gérer les accès des utilisateurs','99','2025-07-08 15:13:34.065','2025-07-08 15:12:51.611','1','1'),
+('187','1','supprimer chx_groupe_utilisateur chx_metier_utilisateur','99','2025-07-09 09:41:52.450','2025-07-09 09:41:52.450','0','1'),
+('188','1','ajouter NULL si chx = '''' sur les insert et delete','99','2025-07-09 13:55:32.628','2025-07-09 13:54:53.645','1','1'),
+('189','1','Lors de l''insertion dans la table des pages, vérifier l''existance de méthode du source','99','2025-07-09 15:40:56.820','2025-07-09 14:58:59.943','1','1'),
+('190','1','supprimer chp_lien_rev_page','99','2025-07-09 15:22:03.310','2025-07-09 15:22:03.310','0','1'),
+('191','1','rechercher sql_24','99','2025-07-09 15:50:13.424','2025-07-09 15:50:13.424','0','1'),
+('192','1','bouton pop up pour voir le contenu d''une requête à partir de la liste des requêtes ','99','2025-07-09 17:42:12.440','2025-07-09 15:50:33.376','1','1'),
 ('193','1','menu outils qui contient les convertisseurs
 <select>
     <option>outils</option>
@@ -549,51 +478,51 @@ détruire','80','2025-07-06 13:23:50.990','2025-07-06 13:23:42.485','1'),
     <option>sql</option>
     <option>css</option>
     <option>texte</option>
-</select>','99','2025-07-22 14:39:11.892','2025-07-09 16:26:01.691','2'),
-('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','2025-07-09 16:31:23.198','2025-07-09 16:31:23.198','0'),
-('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','2025-07-09 17:43:23.330','2025-07-09 17:43:23.330','0'),
-('196','1','initialiser les champs filtres d''une sous page','99','2025-07-19 11:11:25.033','2025-07-10 09:52:20.444','1'),
+</select>','99','2025-07-22 14:39:11.892','2025-07-09 16:26:01.691','2','1'),
+('194','1','optimiser le transfert pour la matrice de sql_parser_cst.js	','99','2025-07-09 16:31:23.198','2025-07-09 16:31:23.198','0','1'),
+('195','1','dans svg, ajouter un les boutons pour les bases/tables/champs des tables liées','99','2025-07-09 17:43:23.330','2025-07-09 17:43:23.330','0','1'),
+('196','1','initialiser les champs filtres d''une sous page','99','2025-07-19 11:11:25.033','2025-07-10 09:52:20.444','1','1'),
 ('197','1','le caractère 🟥 ne passe pas sur ma tablette
 faire un carré svg
-⬛🔲🗨◻⏹','99','2025-07-21 17:02:50.100','2025-07-10 09:58:19.160','4'),
-('198','1','dans les pages, proposer une liste de méthodes quand on choisir un source','99','2025-07-10 10:17:39.087','2025-07-10 10:17:39.087','0'),
-('199','1','compiler le prérequis du menu','99','2025-07-14 08:40:32.303','2025-07-12 08:22:58.170','1'),
-('200','1','quand on modifie une page, il faut recompiler les menus','99','2025-07-15 13:49:22.638','2025-07-15 13:49:22.638','0'),
+⬛🔲🗨◻⏹','99','2025-07-21 17:02:50.100','2025-07-10 09:58:19.160','4','1'),
+('198','1','dans les pages, proposer une liste de méthodes quand on choisir un source','99','2025-07-10 10:17:39.087','2025-07-10 10:17:39.087','0','1'),
+('199','1','compiler le prérequis du menu','99','2025-07-14 08:40:32.303','2025-07-12 08:22:58.170','1','1'),
+('200','1','quand on modifie une page, il faut recompiler les menus','99','2025-07-15 13:49:22.638','2025-07-15 13:49:22.638','0','1'),
 ('201','1','ajouter les traitements de 
 nom_champ_dans_parent1
 nom_libelle_dans_parent1
-dans les sous listes comme dans c_sources1.php','99','2025-07-15 17:21:51.755','2025-07-15 16:12:27.924','1'),
-('202','1','bibliothèque de svg','3','2025-07-16 10:48:01.891','2025-07-16 10:47:25.371','1'),
-('203','1','renuméroter les requetes à partir de 101','99','2025-07-17 15:09:37.352','2025-07-17 10:11:14.041','2'),
-('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','2025-07-17 12:14:57.332','2025-07-17 12:07:20.343','1'),
-('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','2025-07-18 10:50:06.307','2025-07-18 10:50:06.307','0'),
-('206','1','renuméroter un source','99','2025-07-24 12:50:11.622','2025-07-24 12:50:11.622','0'),
-('207','1','remplacer php par deno','50','2025-07-27 09:47:30.190','2025-07-27 09:47:14.801','1'),
-('208','1','chp_commentaire_projet => chTTTTT_commentaire_projet','99','2025-07-29 11:37:04.000','2025-07-29 11:37:04.000','0'),
-('209','1','ajouter un bouton enregistrer dans la modification d''un source','99','2025-07-29 16:48:06.039','2025-07-29 15:44:38.467','1'),
-('210','1','travailler la redirection si on n''est pas authentifié','99','2025-07-29 17:52:34.498','2025-07-29 17:52:34.498','0'),
-('211','1','ajouter une référence à la pagination dans les listes','99','2025-07-31 11:56:33.898','2025-07-31 09:07:20.616','1'),
-('212','1','liens internes en #','99','2025-07-31 13:52:57.967','2025-07-31 13:52:57.967','0'),
+dans les sous listes comme dans c_sources1.php','99','2025-07-15 17:21:51.755','2025-07-15 16:12:27.924','1','1'),
+('202','1','bibliothèque de svg','4','2025-07-16 10:48:01.891','2025-07-16 10:47:25.371','1','1'),
+('203','1','renuméroter les requetes à partir de 101','99','2025-07-17 15:09:37.352','2025-07-17 10:11:14.041','2','1'),
+('204','1','sql_5, suppression de rev, ne dépend de pernonne','99','2025-07-17 12:14:57.332','2025-07-17 12:07:20.343','1','1'),
+('205','1','bug quand on renumérote une requete il y a 2 fois <?php','99','2025-07-18 10:50:06.307','2025-07-18 10:50:06.307','0','1'),
+('206','1','renuméroter un source','99','2025-07-24 12:50:11.622','2025-07-24 12:50:11.622','0','1'),
+('207','1','remplacer php par deno','50','2025-07-27 09:47:30.190','2025-07-27 09:47:14.801','1','1'),
+('208','1','chp_commentaire_projet => chTTTTT_commentaire_projet','99','2025-07-29 11:37:04.000','2025-07-29 11:37:04.000','0','1'),
+('209','1','ajouter un bouton enregistrer dans la modification d''un source','99','2025-07-29 16:48:06.039','2025-07-29 15:44:38.467','1','1'),
+('210','1','travailler la redirection si on n''est pas authentifié','99','2025-07-29 17:52:34.498','2025-07-29 17:52:34.498','0','1'),
+('211','1','ajouter une référence à la pagination dans les listes','99','2025-07-31 11:56:33.898','2025-07-31 09:07:20.616','1','1'),
+('212','1','liens internes en #','99','2025-07-31 13:52:57.967','2025-07-31 13:52:57.967','0','1'),
 ('213','1','Gérer les versions
-nouvelle version','99','2025-08-01 14:32:15.239','2025-08-01 14:32:15.239','0'),
+nouvelle version','99','2025-08-01 14:32:15.239','2025-08-01 14:32:15.239','0','1'),
 ('214','1','renommer un champ
 
 supprimer un champ
 ajouter un champ
 
 quand on renomme un champ de la base 1 de rev_1 il faur renommer les champs de toutes les bases rev_n
-Exemple chp_commentaire_projet => cht_commentaire_projet','99','2025-08-02 14:19:05.165','2025-08-01 15:08:43.406','2'),
-('215','1','interface : case à cocher "se souvenir de moi" sur la page de connexion','8','2025-08-16 13:27:11.830','2025-08-03 09:25:28.660','2'),
-('216','1','intégrer mon tri','99','2025-08-03 10:03:21.913','2025-08-03 10:03:21.913','0'),
-('217','1','bug réordonner champs sur projet 3','99','2025-08-05 14:13:00.676','2025-08-05 14:13:00.676','0'),
-('218','1','tri_arbre','99','2025-08-08 11:02:44.128','2025-08-08 11:02:44.128','0'),
+Exemple chp_commentaire_projet => cht_commentaire_projet','99','2025-08-02 14:19:05.165','2025-08-01 15:08:43.406','2','1'),
+('215','1','interface : case à cocher "se souvenir de moi" sur la page de connexion','9','2025-08-16 13:27:11.830','2025-08-03 09:25:28.660','2','1'),
+('216','1','intégrer mon tri','99','2025-08-03 10:03:21.913','2025-08-03 10:03:21.913','0','1'),
+('217','1','bug réordonner champs sur projet 3','99','2025-08-05 14:13:00.676','2025-08-05 14:13:00.676','0','1'),
+('218','1','tri_arbre','99','2025-08-08 11:02:44.128','2025-08-08 11:02:44.128','0','1'),
 ('219','1','source_requete
 
             ''sql0'' => $sql0 ,
             ''bdd'' => $GLOBALS[__BDD][BDD_NUMERO_1],
-','99','2025-08-08 15:09:52.677','2025-08-08 12:41:17.737','3'),
-('220','1','ajouter un champ espece base et taille_espece','99','2025-08-09 12:38:17.257','2025-08-09 12:33:15.508','2'),
-('221','1','taxon, espèce, famille, classification, qualité, groupe, collection, genre','80','2025-08-10 10:36:21.692','2025-08-10 09:27:19.788','1'),
+','99','2025-08-08 15:09:52.677','2025-08-08 12:41:17.737','3','1'),
+('220','1','ajouter un champ espece base et taille_espece','99','2025-08-09 12:38:17.257','2025-08-09 12:33:15.508','2','1'),
+('221','1','taxon, espèce, famille, classification, qualité, groupe, collection, genre','80','2025-08-10 10:36:21.692','2025-08-10 09:27:19.788','1','1'),
 ('222','1','tbl_pages
 tbl_menus
 chx_acces_page sql 188 189 190 191 198 300 303 304
@@ -605,19 +534,29 @@ autorisation = acces source
 menu = autorisation methode du source
 
 afr : quand le source a appel le source b, 
-il faut une autorisation déléguée sur la méthode appelée','99','2025-08-12 14:42:35.283','2025-08-12 12:44:14.024','7'),
-('223','1','interface : pouvoir agrandit la zone de message ( vv_supprimer_les_messages_3 )','9','2025-08-15 14:32:33.953','2025-08-15 14:23:33.195','3'),
+il faut une autorisation déléguée sur la méthode appelée','99','2025-08-12 14:42:35.283','2025-08-12 12:44:14.024','7','1'),
+('223','1','interface : pouvoir agrandit la zone de message ( vv_supprimer_les_messages_3 )','10','2025-08-15 14:32:33.953','2025-08-15 14:23:33.195','3','1'),
 ('224','1','dans ajouter un formule de requete 
 nouvelle requete liste
 clic sur condition
-il n''y a que de comme','99','2025-08-16 13:28:59.257','2025-08-16 13:28:59.257','0'),
+il n''y a que de comme','99','2025-08-16 13:28:59.257','2025-08-16 13:28:59.257','0','1'),
 ('225','1','dans requete update
 sur formule critere
-mettre le curseur au bon endroit et écrire le champ correctement','99','2025-08-17 16:44:59.342','2025-08-17 16:44:59.342','0'),
-('226','1','dans svg, corriger le déplacement d''une table ','99','2025-08-18 08:00:20.749','2025-08-18 08:00:20.749','0'),
-('227','1','renuméroter un genre','99','2025-08-18 11:17:14.312','2025-08-18 11:17:14.312','0'),
-('228','1','trier les genres','99','2025-08-18 16:43:49.623','2025-08-18 16:43:49.623','0'),
-('229','1','corriger le bouton du menu','99','2025-08-20 15:27:36.476','2025-08-20 15:27:36.476','0');
+mettre le curseur au bon endroit et écrire le champ correctement','99','2025-08-17 16:44:59.342','2025-08-17 16:44:59.342','0','1'),
+('226','1','dans svg, corriger le déplacement d''une table ','99','2025-08-18 08:00:20.749','2025-08-18 08:00:20.749','0','1'),
+('227','1','renuméroter un genre','99','2025-08-18 11:17:14.312','2025-08-18 11:17:14.312','0','1'),
+('228','1','trier les genres','99','2025-08-18 16:43:49.623','2025-08-18 16:43:49.623','0','1'),
+('229','1','corriger le bouton du menu','99','2025-08-20 15:27:36.476','2025-08-20 15:27:36.476','0','1'),
+('230','1','lien virtuel sur la table tache','99','2025-08-21 09:44:34.241','2025-08-21 09:44:34.241','0','1'),
+('231','1','masquer le menu organisation quand on est sur un projet autre que 1','99','2025-08-22 08:41:02.119','2025-08-21 13:34:35.910','1','1'),
+('233','1','bug liste des taches avec plusieurs id','99','2025-08-22 08:40:37.293','2025-08-22 08:40:37.293','0','1'),
+('234','1','supprimer chx_acces_menu chx_parent_menu','99','2025-08-22 09:28:50.759','2025-08-22 09:28:50.759','0','1'),
+('235','1','popover
+https://mdn.github.io/dom-examples/popover-api/
+https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/popover','50','2025-08-23 12:35:47.880','2025-08-23 12:35:31.595','1','1'),
+('236','1','un nom de source ou un nom de dossier ne doit contenir que les caractères a-z,0-9,._','2','2025-08-23 15:09:07.105','2025-08-23 15:09:07.105','0','1'),
+('237','1','virer les compteur de sessions compteur_session_php1','99','2025-08-24 09:10:19.979','2025-08-24 09:07:32.258','1','1'),
+('238','1','virer sortable','1','2025-08-24 09:44:25.590','2025-08-24 09:44:25.590','0','1');
 
 
 /*
@@ -636,7 +575,7 @@ chx_acces_utilisateur,
 chd__dtm_utilisateur,
 chd__dtc_utilisateur,
 che__nur_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'642','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'653','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','anonyme',NULL,NULL,'0','0','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
@@ -692,7 +631,6 @@ che__nur_source) VALUES
 ('156','1','c_interface1.js',NULL,NULL,'0','10',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('158','1','c_rev1.js',NULL,NULL,'0','10',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('167','1','c_worker1.js',NULL,NULL,'0','10',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('168','1','Sortable.js',NULL,NULL,'0','11',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('201','1','c_astjs_vers_rev1.js',NULL,NULL,'0','10',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('202','1','c_astphpnikic_vers_rev1.js',NULL,NULL,'0','10',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('203','1','c_astphpparseur_vers_rev1.js',NULL,NULL,'0','10',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -3161,7 +3099,132 @@ class c_menus1{
 }
 /*
   =====================================================================================================================
-*/','0','9',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
+*/','0','9',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('359','1','c_fonctions1.php','php(#(
+  Fonctions générales utilisées dans les sources
+)
+definition_de_classe( nom_classe(c_fonctions1) , contenu( #(
+      =============================================================================================================
+      un nom de fichier ne doit contenir que des chiffres ou des lettres minuscules ou "_" ou "."
+      =============================================================================================================
+    )
+   méthode(definition( nomm(test_du_nom_de_fichier1) argument($par),adresseArgument($donnees_retournees)),contenu(
+      choix(  si(    condition(egalstricte($par,''''))    alors(
+         retourner(defTab((__xst,__xer))))  ))
+      boucle(initialisation(affecte($i,0)),condition(inf($i,appelf(nomf(strlen),p($par)))),increment($i++),faire(
+         affecte($c,appelf(nomf(substr),p($par),p($i),p(1)))
+         choix(  si(    condition(non(ou(
+   et(supeg($c,''a''),infeg($c,''z'')),
+   et(supeg($c,''0''),infeg($c,''9'')),
+   egalstricte($c,''_''),
+   egalstricte($c,''.'')
+)))    alors(
+            affecte(tableau(nomt($donnees_retournees[__x_signaux][__xer])p()),concat(''le caractère "'',$c,''" n\''est pas admis''))
+            retourner(defTab((__xst,__xer))))  ))))
+      retourner(defTab((__xst,__xsu)))))#(
+      =============================================================================================================
+      une fonction qui permet de tester un champ doit être parmis les fonctions de ce fichier
+      =============================================================================================================
+    )
+   méthode(definition( nomm(test_fonctions_de_c_fonctions1) argument($par),adresseArgument($donnees_retournees)),contenu(
+      choix(  si(    condition(ou(egalstricte($par,''''),egalstricte($par,null)))    alors(
+         retourner(defTab((__xst,__xsu))))  ))
+      affecte($tt,appelf(nomf(explode),p('',''),p($par)))
+      affecte($class_methods,appelf(nomf(get_class_methods),p($this)))
+      affecte($liste_des_méthodes,'''')
+      boucleSurTableau(pourChaque( dans( $k1 , $v1, $class_methods )),faire(
+         affecteop( ''.='' , $liste_des_méthodes , concat($v1,'',''))))#( echo __FILE__ . '' '' . __LINE__ . '' __LINE__ = <pre>'' . var_export( $liste_des_méthodes , true ) . ''</pre>'' ; exit(0);)
+      boucleSurTableau(pourChaque( dans( $k1 , $v1, $tt )),faire(
+         affecte($trouve,faux)
+         boucleSurTableau(pourChaque( dans( $method_name , $class_methods )),faire(
+            choix(  si(    condition(egalstricte($method_name,$v1))    alors(
+               affecte($trouve,vrai)
+               break())  ))))
+         choix(  si(    condition(egalstricte($trouve,faux))    alors(
+            affecte(tableau(nomt($donnees_retournees[__x_signaux][__xer])p()),concat(
+   ''la méthode "'',
+   $v1,
+   ''" n\'' aps été trouvée parmis la liste "'',
+   $liste_des_méthodes,
+   ''"''
+))
+            retourner(defTab((__xst,__xer))))  ))))
+      retourner(defTab((__xst,__xsu))))) )))','<?php
+/*
+  Fonctions générales utilisées dans les sources
+*/
+class c_fonctions1{
+    /*
+      =============================================================================================================
+      un nom de fichier ne doit contenir que des chiffres ou des lettres minuscules ou "_" ou "."
+      =============================================================================================================
+    */
+    function test_du_nom_de_fichier1($par,&$donnees_retournees){
+        
+        if($par === ''''){
+
+            return array( __xst => __xer);
+
+        }
+
+        for( $i=0 ; $i < strlen($par) ; $i++ ){
+            
+            $c=substr($par,$i,1);
+            
+            if(!($c >= ''a'' && $c <= ''z'' || $c >= ''0'' && $c <= ''9'' || $c === ''_'' || $c === ''.'')){
+
+                $donnees_retournees[__x_signaux][__xer][]=''le caractère "'' . $c . ''" n\''est pas admis'';
+                return array( __xst => __xer);
+
+            }
+
+        }
+        return array( __xst => __xsu);
+    }
+    /*
+      =============================================================================================================
+      une fonction qui permet de tester un champ doit être parmis les fonctions de ce fichier
+      =============================================================================================================
+    */
+    function test_fonctions_de_c_fonctions1($par,&$donnees_retournees){
+        
+        if($par === '''' || $par === null){
+
+            return array( __xst => __xsu);
+
+        }
+
+        $tt=explode('','',$par);
+        $class_methods=get_class_methods($this);
+        $liste_des_méthodes='''';
+        foreach($class_methods as $k1 => $v1){
+            $liste_des_méthodes .= $v1 . '','';
+        }
+        /* echo __FILE__ . '' '' . __LINE__ . '' __LINE__ = <pre>'' . var_export( $liste_des_méthodes , true ) . ''</pre>'' ; exit(0);*/
+        foreach($tt as $k1 => $v1){
+            $trouve=false;
+            foreach($class_methods as $method_name){
+                
+                if($method_name === $v1){
+
+                    $trouve=true;
+                    break;
+
+                }
+
+            }
+            
+            if($trouve === false){
+
+                $donnees_retournees[__x_signaux][__xer][]=''la méthode "'' . $v1 . ''" n\'' aps été trouvée parmis la liste "'' . $liste_des_méthodes . ''"'';
+                return array( __xst => __xer);
+
+            }
+
+        }
+        return array( __xst => __xsu);
+    }
+}','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
 /*
@@ -3571,8 +3634,8 @@ créer_table(
             nom_long_du_champ(''à faire chp_nom_dossier''),
             nom_court_du_champ(''à faire chp_nom_dossier''),
             nom_bref_du_champ(''à faire chp_nom_dossier''),
-            typologie(chi),
-            genre(12),
+            typologie(chp),
+            genre(108),
             afficher_champ_dans_svg(1),
             espece_du_champ(CHARACTER),
             longueur_du_champ(64)
@@ -4024,145 +4087,6 @@ ajouter_index(
    unique()
 ),
 créer_table(
-   nom_de_la_table(''tbl_menus''),
-   meta(
-      nom_de_la_table(''tbl_menus''),
-      table(''tbl_menus''),
-      genre_meta(table_de_base),
-      nom_long_de_la_table(''A faire  tbl_menus''),
-      nom_court_de_la_table(''A faire tbl_menus''),
-      nom_bref_de_la_table(''A faire tbl_menus''),
-      transform_table_sur_svg(translate(372.5,464.5))
-   ),
-   champs(
-      champ(
-         nom_du_champ(''chi_id_menu''),
-         espece_du_champ(INTEGER),
-         primary_key(1),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chi_id_menu''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chi),
-            genre(2),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''cht_libelle_menu''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''cht_libelle_menu''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chp),
-            genre(3),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_titre_menu''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_titre_menu''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chp),
-            genre(3),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''chx_autorisation_menu''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         references(tbl_autorisations,chi_id_autorisation),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chx_autorisation_menu''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chx),
-            genre(4),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER),
-            refe_parent_gauche(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_methode_menu''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_methode_menu''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(chp),
-            genre(3),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''cht_initialisation_menu''),
-         espece_du_champ(TEXT),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''cht_initialisation_menu''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(cht),
-            genre(6),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(TEXT)
-         )
-      ),
-      champ(
-         nom_du_champ(''cht_complements_menu''),
-         espece_du_champ(TEXT),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''cht_complements_menu''),
-            nom_long_du_champ(''A faire ...''),
-            nom_court_du_champ(''A faire ...''),
-            nom_bref_du_champ(''A faire ...''),
-            typologie(cht),
-            genre(6),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(TEXT)
-         )
-      )
-   )
-),
-créer_table(
    nom_de_la_table(''tbl_genres''),
    meta(
       nom_de_la_table(''tbl_genres''),
@@ -4428,6 +4352,43 @@ créer_table(
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
+      ),
+      champ(
+         nom_du_champ(''che_est_ts_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(false),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_est_ts_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            genre(10),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_fonctions_genre''),
+         espece_du_champ(TEXT),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_fonctions_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(cht),
+            genre(107),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
+         )
       )
    )
 ),
@@ -4609,7 +4570,7 @@ créer_table(
       nom_long_de_la_table(''''),
       nom_court_de_la_table(''''),
       nom_bref_de_la_table(''''),
-      transform_table_sur_svg(translate(851.5,557.5))
+      transform_table_sur_svg(translate(881.5,536.5))
    ),
    champs(
       champ(
@@ -4633,15 +4594,14 @@ créer_table(
          nom_du_champ(''chx_utilisateur_tache''),
          espece_du_champ(INTEGER),
          non_nulle(1),
-         references(tbl_utilisateurs,chi_id_utilisateur),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_utilisateur_tache''),
             nom_long_du_champ(''à faire chx_utilisateur_tache''),
             nom_court_du_champ(''à faire chx_utilisateur_tache''),
             nom_bref_du_champ(''à faire chx_utilisateur_tache''),
-            typologie(chi),
-            genre(4),
+            typologie(che),
+            genre(9),
             afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
          )
@@ -4744,6 +4704,26 @@ créer_table(
             espece_du_champ(INTEGER),
             champ_numero_de_revision(1)
          )
+      ),
+      champ(
+         nom_du_champ(''chx_projet_tache''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         references(tbl_projets,chi_id_projet),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chx_projet_tache''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chx),
+            genre(4),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
       )
    )
 ),
@@ -4765,7 +4745,7 @@ créer_table(
       nom_long_de_la_table(''liste des utilisateurs''),
       nom_court_de_la_table(''un utilisateur''),
       nom_bref_de_la_table(''utilisateurs''),
-      transform_table_sur_svg(translate(578.5,448.5))
+      transform_table_sur_svg(translate(603.5,464.5))
    ),
    champs(
       champ(
@@ -5029,7 +5009,7 @@ créer_table(
             nom_court_du_champ(''''),
             nom_bref_du_champ(''''),
             typologie(),
-            genre(3),
+            genre(106),
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
@@ -5594,6 +5574,183 @@ créer_table(
          )
       )
    )
+),
+créer_table(
+   nom_de_la_table(''tbl_menus''),
+   meta(
+      nom_de_la_table(''tbl_menus''),
+      table(''tbl_menus''),
+      genre_meta(table_de_base),
+      nom_long_de_la_table(''A faire  tbl_menus''),
+      nom_court_de_la_table(''A faire tbl_menus''),
+      nom_bref_de_la_table(''A faire tbl_menus''),
+      transform_table_sur_svg(translate(362.5,474.5))
+   ),
+   champs(
+      champ(
+         nom_du_champ(''chi_id_menu''),
+         espece_du_champ(INTEGER),
+         primary_key(1),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chi_id_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chi),
+            genre(2),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_libelle_menu''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_libelle_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chp),
+            genre(3),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_titre_menu''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_titre_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chp),
+            genre(3),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
+         )
+      ),
+      champ(
+         nom_du_champ(''chx_autorisation_menu''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         references(tbl_autorisations,chi_id_autorisation),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chx_autorisation_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chx),
+            genre(4),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER),
+            refe_parent_gauche(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_methode_menu''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_methode_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(chp),
+            genre(12),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_initialisation_menu''),
+         espece_du_champ(TEXT),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_initialisation_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(cht),
+            genre(6),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_complements_menu''),
+         espece_du_champ(TEXT),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_complements_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(cht),
+            genre(6),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_condition_menu''),
+         espece_du_champ(TEXT),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(false),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_condition_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(cht),
+            genre(6),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_condition_php_menu''),
+         espece_du_champ(TEXT),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(false),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_condition_php_menu''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(cht),
+            genre(6),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(TEXT)
+         )
+      )
+   )
 )','sqlite','3',NULL,'2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','meta(
    #(),
@@ -5869,7 +6026,7 @@ LIMIT :quantitee OFFSET :debut
    `chi_id_requete` = :n_chi_id_requete , 
    `cht_php_requete` = :n_cht_php_requete
 WHERE (`chi_id_requete` = :c_chi_id_requete
-   AND `chx_projet_requete` = :c_chx_projet_requete) ;',NULL,NULL,'','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+   AND `chx_projet_requete` = :c_chx_projet_requete) ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('104','1','delete','#(meta(tester_les_dependances_dans_le_php(1))),
 supprimer(
    base_de_reference(1),
@@ -6255,25 +6412,26 @@ WHERE (`chi_id_basedd` = :chi_id_basedd
    AND `chx_projet_id_basedd` = :chx_projet_id_basedd) ;',NULL,NULL,'base par id','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('119','1','liste_ecran','sélectionner(
    base_de_reference(1),
-   valeurs( champ( `T0` , `chi_id_tache` ) , champ( `T0` , `chp_texte_tache` ) , champ( `T0` , `chp_priorite_tache` )),
+   valeurs(champ(`T0`,`chi_id_tache`),champ(`T0`,`chp_texte_tache`),champ(`T0`,`chp_priorite_tache`)),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_taches , alias(T0) , base(b1) ))
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
       )
    ),
    conditions(
       et(
          #(),
-         egal( champ( `T0` , `chi_id_tache` ) , :T0_chi_id_tache),
-         egal( champ( `T0` , `chx_utilisateur_tache` ) , :T0_chx_utilisateur_tache),
-         comme( champ( `T0` , `chp_texte_tache` ) , :T0_chp_texte_tache),
-         egal( champ( `T0` , `chp_priorite_tache` ) , :T0_chp_priorite_tache),
-         inf( champ( `T0` , `chp_priorite_tache` ) , :T0_chp_priorite_tache2)
+         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
+         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
+         comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
+         egal(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
+         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2),
+         egal(champ(`T0`,`chx_projet_tache`),:T0_chx_projet_tache)
       )
    ),
    complements(
-      trier_par( ( champ( `T0` , `chp_priorite_tache` ) , croissant() )),
-      limité_à( quantité(:quantitee) , début(:debut))
+      trier_par((champ(`T0`,`chp_priorite_tache`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
    )
 )  ','SELECT 
 `T0`.`chi_id_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
@@ -6282,62 +6440,78 @@ WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
    AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
    AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
    AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
-   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2) 
+   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
+   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache) 
 ORDER BY `T0`.`chp_priorite_tache` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,NULL,'tâches','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('120','1','update','modifier(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_priorite_tache` ) , moins( chp_priorite_tache , 1 ) )),
+   valeurs(affecte(champ(`chp_priorite_tache`),moins(chp_priorite_tache,1))),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_taches , base(b1) ))
-      )
-   ),
-   conditions(
-      et( egal( champ( `chi_id_tache` ) , :c_chi_id_tache ) , egal( champ( `chx_utilisateur_tache` ) , :c_chx_utilisateur_tache ) , supegal( champ( `chp_priorite_tache` ) , 1 ))
-   )
-)','UPDATE b1.tbl_taches SET 
-   `chp_priorite_tache` = (chp_priorite_tache-1)
-WHERE (`chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-   AND `chp_priorite_tache` >= 1) ;',NULL,NULL,'tâches','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('121','1','update','modifier(
-   base_de_reference(1),
-   valeurs( affecte( champ( `chp_priorite_tache` ) , plus( chp_priorite_tache , 1 ) )),
-   provenance(
-      table_reference(
-         source( nom_de_la_table( tbl_taches , base(b1) ))
+         source(nom_de_la_table(tbl_taches,base(b1)))
       )
    ),
    conditions(
       et(
          #(),
-         egal( champ( `chi_id_tache` ) , :c_chi_id_tache),
-         egal( champ( `chx_utilisateur_tache` ) , :c_chx_utilisateur_tache),
-         inf( champ( `chp_priorite_tache` ) , 99)
+         egal(champ(`chi_id_tache`),:c_chi_id_tache),
+         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),
+         supegal(champ(`chp_priorite_tache`),1),
+         egal(champ(`chx_projet_tache`),:c_chx_projet_tache)
       )
    )
-)','UPDATE b1.tbl_taches SET 
-   `chp_priorite_tache` = (chp_priorite_tache+1)
+)  ','UPDATE b1.tbl_taches SET 
+   `chp_priorite_tache` = (chp_priorite_tache-1)
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-   AND `chp_priorite_tache` < 99) ;',NULL,NULL,'tâches','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('122','1','update','modifier(
+   AND `chp_priorite_tache` >= 1
+   AND `chx_projet_tache` = :c_chx_projet_tache) ;',NULL,NULL,'tâches priorité - 1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('121','1','update','modifier(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_priorite_tache` ) , :n_chp_priorite_tache )),
+   valeurs(affecte(champ(`chp_priorite_tache`),plus(chp_priorite_tache,1))),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_taches , base(b1) ))
+         source(nom_de_la_table(tbl_taches,base(b1)))
       )
    ),
    conditions(
-      et( egal( champ( `chi_id_tache` ) , :c_chi_id_tache ) , egal( champ( `chx_utilisateur_tache` ) , :c_chx_utilisateur_tache ))
+      et(
+         #(),
+         egal(champ(`chi_id_tache`),:c_chi_id_tache),
+         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),
+         inf(champ(`chp_priorite_tache`),99),
+         egal(champ(`chx_projet_tache`),:c_chx_projet_tache)
+      )
    )
-)','UPDATE b1.tbl_taches SET 
+)  ','UPDATE b1.tbl_taches SET 
+   `chp_priorite_tache` = (chp_priorite_tache+1)
+WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
+   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+   AND `chp_priorite_tache` < 99
+   AND `chx_projet_tache` = :c_chx_projet_tache) ;',NULL,NULL,'tâches','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('122','1','update','modifier(
+   base_de_reference(1),
+   valeurs(affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`chi_id_tache`),:c_chi_id_tache),
+         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),
+         egal(champ(`chx_projet_tache`),:c_chx_projet_tache)
+      )
+   )
+)  ','UPDATE b1.tbl_taches SET 
    `chp_priorite_tache` = :n_chp_priorite_tache
-WHERE (`chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;',NULL,NULL,'tâches','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
+   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+   AND `chx_projet_tache` = :c_chx_projet_tache) ;',NULL,NULL,'tâches','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('123','1','select','sélectionner(
    base_de_reference(1),
    valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chx_parent_dossier`),champ(`T0`,`che_contient_genere_dossier`)),
@@ -6469,75 +6643,81 @@ WHERE `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd
    base_de_reference(1),
    valeurs(
       #(),
-      champ( `T0` , `chi_id_tache`),
-      champ( `T0` , `chx_utilisateur_tache`),
-      champ( `T0` , `chp_texte_tache`),
-      champ( `T0` , `chp_priorite_tache`)
+      champ(`T0`,`chi_id_tache`),
+      champ(`T0`,`chx_utilisateur_tache`),
+      champ(`T0`,`chp_texte_tache`),
+      champ(`T0`,`chp_priorite_tache`)
    ),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_taches , alias(T0) , base(b1) ))
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
       )
    ),
    conditions(
       et(
          #(),
-         egal( champ( `T0` , `chi_id_tache` ) , :T0_chi_id_tache),
-         egal( champ( `T0` , `chx_utilisateur_tache` ) , :T0_chx_utilisateur_tache)
+         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
+         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
+         egal(champ(`T0`,`chx_projet_tache`),:T0_chx_projet_tache)
       )
    )
-)','SELECT 
+)  ','SELECT 
 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
  FROM b1.tbl_taches T0
 WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
-   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache)
 ;',NULL,NULL,'tâches par id','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('129','1','update','modifier(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_texte_tache` ) , :n_chp_texte_tache ) , affecte( champ( `chp_priorite_tache` ) , :n_chp_priorite_tache )),
+   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache)),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_taches , base(b1) ))
+         source(nom_de_la_table(tbl_taches,base(b1)))
       )
    ),
    conditions(
       et(
          #(),
-         egal( champ( `chi_id_tache` ) , :c_chi_id_tache),
-         egal( champ( `chx_utilisateur_tache` ) , :c_chx_utilisateur_tache)
+         egal(champ(`chi_id_tache`),:c_chi_id_tache),
+         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),
+         egal(champ(`chx_projet_tache`),:c_chx_projet_tache)
       )
    ),
    complements(
       #(),
-      gerer_champ_date_modification( champ( `chd__dtm_tache` ) , format(23)),
-      gerer_champ_numero_de_revision( champ(che__nur_tache))
+      gerer_champ_date_modification(champ(`chd__dtm_tache`),format(23)),
+      gerer_champ_numero_de_revision(champ(che__nur_tache))
    )
 )  ','UPDATE b1.tbl_taches SET 
    `chp_texte_tache` = :n_chp_texte_tache , 
    `chp_priorite_tache` = :n_chp_priorite_tache
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;',NULL,NULL,'tâches texte et priorité par id','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+   AND `chx_projet_tache` = :c_chx_projet_tache) ;',NULL,NULL,'tâches texte et priorité par id','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('130','1','insert','insérer(
    base_de_reference(1),
-   valeurs( affecte( champ( `chx_utilisateur_tache` ) , :chx_utilisateur_tache ) , affecte( champ( `chp_texte_tache` ) , :chp_texte_tache ) , affecte( champ( `chp_priorite_tache` ) , :chp_priorite_tache )),
+   valeurs(affecte(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),affecte(champ(`chp_texte_tache`),:chp_texte_tache),affecte(champ(`chp_priorite_tache`),:chp_priorite_tache),affecte(champ(`chx_projet_tache`),:chx_projet_tache)),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_taches , base(b1) ))
+         source(nom_de_la_table(tbl_taches,base(b1)))
       )
    ),
    complements(
       #(),
-      gerer_champ_date_creation( champ( `chd__dtc_tache` ) , format(23)),
-      gerer_champ_date_modification( champ( `chd__dtm_tache` ) , format(23))
+      gerer_champ_date_creation(champ(`chd__dtc_tache`),format(23)),
+      gerer_champ_date_modification(champ(`chd__dtm_tache`),format(23))
    )
 )  ','INSERT INTO b1.`tbl_taches`(
     `chx_utilisateur_tache` , 
     `chp_texte_tache` , 
-    `chp_priorite_tache`
+    `chp_priorite_tache` , 
+    `chx_projet_tache`
 ) VALUES (
     :chx_utilisateur_tache , 
     :chp_texte_tache , 
-    :chp_priorite_tache
+    :chp_priorite_tache , 
+    :chx_projet_tache
 );',NULL,NULL,'tâches','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('131','1','delete','supprimer(
    base_de_reference(1),
@@ -6547,11 +6727,17 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
       )
    ),
    conditions(
-      et(egal(champ(`chi_id_tache`),:chi_id_tache),egal(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache))
+      et(
+         #(),
+         egal(champ(`chi_id_tache`),:chi_id_tache),
+         egal(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),
+         egal(champ(`chx_projet_tache`),:chx_projet_tache)
+      )
    )
 )  ','DELETE FROM b1.tbl_taches
-WHERE (`chi_id_tache` = :chi_id_tache
-   AND `chx_utilisateur_tache` = :chx_utilisateur_tache) ;',NULL,NULL,'tâches par id','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+WHERE ( /* */ `chi_id_tache` = :chi_id_tache
+   AND `chx_utilisateur_tache` = :chx_utilisateur_tache
+   AND `chx_projet_tache` = :chx_projet_tache) ;',NULL,NULL,'tâches par id','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('132','1','select','sélectionner(
    base_de_reference(1),
    valeurs(
@@ -6810,8 +6996,7 @@ SELECT
 
 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('148','1','update','#(meta(sur_base_de_reference(1))),
-modifier(
+('148','1','update','modifier(
    base_de_reference(1),
    valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`chx_dossier_requetes_projet`),:n_chx_dossier_requetes_projet),affecte(champ(`chx_dossier_menus_projet`),:n_chx_dossier_menus_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),
    provenance(
@@ -6820,9 +7005,7 @@ modifier(
       )
    ),
    conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
-)  ','/*meta(sur_base_de_reference(1))*/
-
-UPDATE b1.tbl_projets SET 
+)  ','UPDATE b1.tbl_projets SET 
    `chp_nom_projet` = :n_chp_nom_projet , 
    `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
    `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet , 
@@ -7160,7 +7343,6 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source
    base_de_reference(1),
    valeurs(
       affecte(champ(`chx_dossier_id_source`),:n_chx_dossier_id_source),
-      affecte(champ(`chx_projet_id_source`),:n_chx_projet_id_source),
       affecte(champ(`chp_nom_source`),:n_chp_nom_source),
       affecte(champ(`cht_commentaire_source`),:n_cht_commentaire_source),
       affecte(champ(`cht_rev_source`),:n_cht_rev_source),
@@ -7177,7 +7359,6 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source
    )
 )  ','UPDATE b1.tbl_sources SET 
    `chx_dossier_id_source` = :n_chx_dossier_id_source , 
-   `chx_projet_id_source` = :n_chx_projet_id_source , 
    `chp_nom_source` = :n_chp_nom_source , 
    `cht_commentaire_source` = :n_cht_commentaire_source , 
    `cht_rev_source` = :n_cht_rev_source , 
@@ -7189,52 +7370,56 @@ WHERE (`chi_id_source` = :c_chi_id_source
    base_de_reference(1),
    valeurs(
       #(),
-      champ( `T0` , `chi_id_tache`),
-      champ( `T0` , `chx_utilisateur_tache`),
-      champ( `T0` , `chp_texte_tache`),
-      champ( `T0` , `chp_priorite_tache`)
+      champ(`T0`,`chi_id_tache`),
+      champ(`T0`,`chx_utilisateur_tache`),
+      champ(`T0`,`chp_texte_tache`),
+      champ(`T0`,`chp_priorite_tache`)
    ),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_taches , alias(T0) , base(b1) ))
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
       )
    ),
    conditions(
       et(
          #(),
-         egal( champ( `T0` , `chx_utilisateur_tache` ) , :T0_chx_utilisateur_tache),
-         inf( champ( `T0` , `chp_priorite_tache` ) , :T0_chp_priorite_tache)
+         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
+         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
+         egal(champ(`T0`,`chx_projet_tache`),:T0_chx_projet_tache)
       )
    ),
    complements(
-      trier_par( ( champ( `T0` , `chp_priorite_tache` ) , croissant() ))
+      trier_par((champ(`T0`,`chp_priorite_tache`),croissant()))
    )
-)','SELECT 
+)  ','SELECT 
 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
  FROM b1.tbl_taches T0
 WHERE ( /* */ `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache) 
+   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache
+   AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache) 
 ORDER BY `T0`.`chp_priorite_tache` ASC
 ;',NULL,NULL,'tâches par priorité < xxx','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('165','1','update','modifier(
    base_de_reference(1),
-   valeurs( affecte( champ( `chp_priorite_tache` ) , :n_chp_priorite_tache )),
+   valeurs(affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache)),
    provenance(
       table_reference(
-         source( nom_de_la_table( tbl_taches , base(b1) ))
+         source(nom_de_la_table(tbl_taches,base(b1)))
       )
    ),
    conditions(
       et(
          #(),
-         egal( champ( `chi_id_tache` ) , :c_chi_id_tache),
-         egal( champ( `chx_utilisateur_tache` ) , :c_chx_utilisateur_tache)
+         egal(champ(`chi_id_tache`),:c_chi_id_tache),
+         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),
+         egal(champ(`chx_projet_tache`),:c_chx_projet_tache)
       )
    )
-)','UPDATE b1.tbl_taches SET 
+)  ','UPDATE b1.tbl_taches SET 
    `chp_priorite_tache` = :n_chp_priorite_tache
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;',NULL,NULL,'tâches priorité par id=','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+   AND `chx_projet_tache` = :c_chx_projet_tache) ;',NULL,NULL,'tâches priorité par id=','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('166','1','requete_manuelle','sélectionner(
    valeurs( champ( `T0` , `chp_nom_dossier` ) , champ( `T0` , `chx_parent_dossier` )),
    provenance(
@@ -8122,12 +8307,14 @@ WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',NULL,NULL,'autorisations
       champ(`T0`,`chp_titre_menu`),
       champ(`T0`,`chx_autorisation_menu`),
       champ(`T0`,`chp_methode_menu`),
+      champ(`T0`,`cht_libelle_menu`),
+      champ(`T0`,`cht_condition_menu`),
+      champ(`T0`,`cht_condition_php_menu`),
       champ(`T1`,`chx_acces_autorisation`),
       champ(`T1`,`chx_source_autorisation`),
       champ(`T2`,`chi_id_acces`),
       champ(`T2`,`chp_nom_acces`),
-      champ(`T3`,`chp_nom_source`),
-      champ(`T0`,`cht_libelle_menu`)
+      champ(`T3`,`chp_nom_source`)
    ),
    provenance(
       table_reference(
@@ -8161,8 +8348,9 @@ WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',NULL,NULL,'autorisations
       limité_à(quantité(:quantitee),début(:debut))
    )
 )  ','SELECT 
-`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
-`T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu`
+`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+`T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , 
+`T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
@@ -8187,7 +8375,9 @@ LIMIT :quantitee OFFSET :debut
       affecte(champ(`chp_methode_menu`),:chp_methode_menu),
       affecte(champ(`cht_libelle_menu`),:cht_libelle_menu),
       affecte(champ(`cht_initialisation_menu`),:cht_initialisation_menu),
-      affecte(champ(`cht_complements_menu`),:cht_complements_menu)
+      affecte(champ(`cht_complements_menu`),:cht_complements_menu),
+      affecte(champ(`cht_condition_menu`),:cht_condition_menu),
+      affecte(champ(`cht_condition_php_menu`),:cht_condition_php_menu)
    ),
    provenance(
       table_reference(
@@ -8200,14 +8390,18 @@ LIMIT :quantitee OFFSET :debut
     `chp_methode_menu` , 
     `cht_libelle_menu` , 
     `cht_initialisation_menu` , 
-    `cht_complements_menu`
+    `cht_complements_menu` , 
+    `cht_condition_menu` , 
+    `cht_condition_php_menu`
 ) VALUES (
     :chp_titre_menu , 
     :chx_autorisation_menu , 
     :chp_methode_menu , 
     :cht_libelle_menu , 
     :cht_initialisation_menu , 
-    :cht_complements_menu
+    :cht_complements_menu , 
+    :cht_condition_menu , 
+    :cht_condition_php_menu
 );',NULL,NULL,'menus','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('324','1','select','sélectionner(
    base_de_reference(1),
@@ -8216,13 +8410,15 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`chp_titre_menu`),
       champ(`T0`,`chx_autorisation_menu`),
       champ(`T0`,`chp_methode_menu`),
+      champ(`T0`,`cht_libelle_menu`),
+      champ(`T0`,`cht_initialisation_menu`),
+      champ(`T0`,`cht_complements_menu`),
+      champ(`T0`,`cht_condition_menu`),
+      champ(`T0`,`cht_condition_php_menu`),
       champ(`T1`,`chx_acces_autorisation`),
       champ(`T1`,`chx_source_autorisation`),
       champ(`T2`,`chp_nom_acces`),
-      champ(`T3`,`chp_nom_source`),
-      champ(`T0`,`cht_libelle_menu`),
-      champ(`T0`,`cht_initialisation_menu`),
-      champ(`T0`,`cht_complements_menu`)
+      champ(`T3`,`chp_nom_source`)
    ),
    provenance(
       table_reference(
@@ -8245,9 +8441,9 @@ LIMIT :quantitee OFFSET :debut
       et(egal(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu))
    )
 )  ','SELECT 
-`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T1`.`chx_acces_autorisation` , 
-`T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , `T0`.`cht_initialisation_menu` , 
-`T0`.`cht_complements_menu`
+`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+`T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
+`T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
@@ -8265,7 +8461,9 @@ WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
       affecte(champ(`chx_autorisation_menu`),:n_chx_autorisation_menu),
       affecte(champ(`chp_methode_menu`),:n_chp_methode_menu),
       affecte(champ(`cht_initialisation_menu`),:n_cht_initialisation_menu),
-      affecte(champ(`cht_complements_menu`),:n_cht_complements_menu)
+      affecte(champ(`cht_complements_menu`),:n_cht_complements_menu),
+      affecte(champ(`cht_condition_menu`),:n_cht_condition_menu),
+      affecte(champ(`cht_condition_php_menu`),:n_cht_condition_php_menu)
    ),
    provenance(
       table_reference(
@@ -8279,7 +8477,9 @@ WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
    `chx_autorisation_menu` = :n_chx_autorisation_menu , 
    `chp_methode_menu` = :n_chp_methode_menu , 
    `cht_initialisation_menu` = :n_cht_initialisation_menu , 
-   `cht_complements_menu` = :n_cht_complements_menu
+   `cht_complements_menu` = :n_cht_complements_menu , 
+   `cht_condition_menu` = :n_cht_condition_menu , 
+   `cht_condition_php_menu` = :n_cht_condition_php_menu
 WHERE `chi_id_menu` = :c_chi_id_menu ;',NULL,NULL,'menus','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('326','1','select','sélectionner(
    base_de_reference(1),
@@ -8311,7 +8511,9 @@ WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
       champ(`T0`,`cht_libelle_menu`),
       champ(`T0`,`cht_initialisation_menu`),
       champ(`T0`,`cht_complements_menu`),
-      champ(`T0`,`chi_id_menu`)
+      champ(`T0`,`chi_id_menu`),
+      champ(`T0`,`cht_condition_php_menu`),
+      champ(`T0`,`cht_condition_menu`)
    ),
    provenance(
       table_reference(
@@ -8333,7 +8535,7 @@ WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
    conditions(egal(champ(`T2`,`chi_id_acces`),:T2_chi_id_acces))
 )  ','SELECT 
 `T1`.`chx_source_autorisation` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
-`T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`chi_id_menu`
+`T0`.`cht_initialisation_menu` , `T0`.`cht_complements_menu` , `T0`.`chi_id_menu` , `T0`.`cht_condition_php_menu` , `T0`.`cht_condition_menu`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
@@ -8358,7 +8560,9 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
       champ(`T0`,`cht_valeur_init_genre`),
       champ(`T0`,`chp_prefixe_genre`),
       champ(`T0`,`che_est_parmis_genre`),
-      champ(`T0`,`cht_parmis_genre`)
+      champ(`T0`,`cht_parmis_genre`),
+      champ(`T0`,`che_est_ts_genre`),
+      champ(`T0`,`cht_fonctions_genre`)
    ),
    provenance(
       table_reference(
@@ -8382,7 +8586,7 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
 )  ','SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre`
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_ts_genre` , `T0`.`cht_fonctions_genre`
  FROM b1.tbl_genres T0
 WHERE (`T0`.`chi_id_genre` = :T0_chi_id_genre
    AND `T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre
@@ -8407,7 +8611,9 @@ LIMIT :quantitee OFFSET :debut
       affecte(champ(`cht_valeur_init_genre`),:cht_valeur_init_genre),
       affecte(champ(`chp_prefixe_genre`),:chp_prefixe_genre),
       affecte(champ(`che_est_parmis_genre`),:che_est_parmis_genre),
-      affecte(champ(`cht_parmis_genre`),:cht_parmis_genre)
+      affecte(champ(`cht_parmis_genre`),:cht_parmis_genre),
+      affecte(champ(`che_est_ts_genre`),:che_est_ts_genre),
+      affecte(champ(`cht_fonctions_genre`),:cht_fonctions_genre)
    ),
    provenance(
       table_reference(
@@ -8426,7 +8632,9 @@ LIMIT :quantitee OFFSET :debut
     `cht_valeur_init_genre` , 
     `chp_prefixe_genre` , 
     `che_est_parmis_genre` , 
-    `cht_parmis_genre`
+    `cht_parmis_genre` , 
+    `che_est_ts_genre` , 
+    `cht_fonctions_genre`
 ) VALUES (
     :chp_nom_genre , 
     :chp_espece_genre , 
@@ -8439,7 +8647,9 @@ LIMIT :quantitee OFFSET :debut
     :cht_valeur_init_genre , 
     :chp_prefixe_genre , 
     :che_est_parmis_genre , 
-    :cht_parmis_genre
+    :cht_parmis_genre , 
+    :che_est_ts_genre , 
+    :cht_fonctions_genre
 );',NULL,NULL,'genres','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('330','1','select','sélectionner(
    base_de_reference(1),
@@ -8456,7 +8666,9 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`cht_valeur_init_genre`),
       champ(`T0`,`chp_prefixe_genre`),
       champ(`T0`,`che_est_parmis_genre`),
-      champ(`T0`,`cht_parmis_genre`)
+      champ(`T0`,`cht_parmis_genre`),
+      champ(`T0`,`che_est_ts_genre`),
+      champ(`T0`,`cht_fonctions_genre`)
    ),
    provenance(
       table_reference(
@@ -8467,7 +8679,7 @@ LIMIT :quantitee OFFSET :debut
 )  ','SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre`
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_ts_genre` , `T0`.`cht_fonctions_genre`
  FROM b1.tbl_genres T0
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
 ;',NULL,NULL,'genres','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -8485,7 +8697,9 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
       affecte(champ(`cht_valeur_init_genre`),:n_cht_valeur_init_genre),
       affecte(champ(`chp_prefixe_genre`),:n_chp_prefixe_genre),
       affecte(champ(`che_est_parmis_genre`),:n_che_est_parmis_genre),
-      affecte(champ(`cht_parmis_genre`),:n_cht_parmis_genre)
+      affecte(champ(`cht_parmis_genre`),:n_cht_parmis_genre),
+      affecte(champ(`che_est_ts_genre`),:n_che_est_ts_genre),
+      affecte(champ(`cht_fonctions_genre`),:n_cht_fonctions_genre)
    ),
    provenance(
       table_reference(
@@ -8505,7 +8719,9 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
    `cht_valeur_init_genre` = :n_cht_valeur_init_genre , 
    `chp_prefixe_genre` = :n_chp_prefixe_genre , 
    `che_est_parmis_genre` = :n_che_est_parmis_genre , 
-   `cht_parmis_genre` = :n_cht_parmis_genre
+   `cht_parmis_genre` = :n_cht_parmis_genre , 
+   `che_est_ts_genre` = :n_che_est_ts_genre , 
+   `cht_fonctions_genre` = :n_cht_fonctions_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,NULL,'genres','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('332','1','delete','supprimer(
    base_de_reference(1),
@@ -8533,7 +8749,9 @@ WHERE `chi_id_genre` = :chi_id_genre ;',NULL,NULL,'genres','0','2000-01-01 00:00
       champ(`T0`,`chp_prefixe_genre`),
       champ(`T0`,`che_est_parmis_genre`),
       champ(`T0`,`cht_parmis_genre`),
-      champ(`T0`,`che_ordre_genre`)
+      champ(`T0`,`che_ordre_genre`),
+      champ(`T0`,`che_est_ts_genre`),
+      champ(`T0`,`cht_fonctions_genre`)
    ),
    provenance(
       table_reference(
@@ -8546,7 +8764,8 @@ WHERE `chi_id_genre` = :chi_id_genre ;',NULL,NULL,'genres','0','2000-01-01 00:00
 )  ','SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre`
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_ts_genre` , 
+`T0`.`cht_fonctions_genre`
  FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
 ;',NULL,NULL,'tous les genres','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('334','1','update','modifier(
@@ -8572,5 +8791,198 @@ WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,NULL,'genres nouveau numéro','0'
    conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
 )  ','UPDATE b1.tbl_genres SET 
    `che_ordre_genre` = :n_che_ordre_genre
-WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,NULL,'genres maj ordre','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,NULL,'genres maj ordre','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('336','1','delete','supprimer(
+   base_de_reference(1),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_menus,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_menu`),:chi_id_menu))
+)  ','DELETE FROM b1.tbl_menus
+WHERE `chi_id_menu` = :chi_id_menu ;',NULL,NULL,'menus','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('337','1','liste_ecran','sélectionner(
+   base_de_reference(1),
+   valeurs(champ(`T0`,`chi_id_menu`),champ(`T0`,`cht_libelle_menu`),champ(`T0`,`chp_titre_menu`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu),
+         comme(champ(`T0`,`cht_libelle_menu`),:T0_cht_libelle_menu),
+         comme(champ(`T0`,`chp_titre_menu`),:T0_chp_titre_menu),
+         est(champ(`T0`,`chx_autorisation_menu`),NULL)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_menu`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_menu` , `T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu`
+ FROM b1.tbl_menus T0
+WHERE ( /* */ `T0`.`chi_id_menu` = :T0_chi_id_menu
+   AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
+   AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
+   AND `T0`.`chx_autorisation_menu` IS NULL) 
+ORDER BY `T0`.`chi_id_menu` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,NULL,'menus','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('338','1','update','modifier(
+   base_de_reference(1),
+   valeurs(affecte(champ(`cht_rev_source`),:n_cht_rev_source),affecte(champ(`cht_genere_source`),:n_cht_genere_source)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`chi_id_source`),:c_chi_id_source),egal(champ(`chx_projet_id_source`),:c_chx_projet_id_source))
+   )
+)  ','UPDATE b1.tbl_sources SET 
+   `cht_rev_source` = :n_cht_rev_source , 
+   `cht_genere_source` = :n_cht_genere_source
+WHERE (`chi_id_source` = :c_chi_id_source
+   AND `chx_projet_id_source` = :c_chx_projet_id_source) ;',NULL,NULL,'sources','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+
+
+/*
+  ===============================
+  DONNEES A INSERER POUR : tbl_menus
+  ===============================
+*/
+
+INSERT INTO tbl_menus (chi_id_menu,
+cht_libelle_menu,
+chp_titre_menu,
+chx_autorisation_menu,
+chp_methode_menu,
+cht_initialisation_menu,
+cht_complements_menu,
+cht_condition_menu,
+cht_condition_php_menu) VALUES
+('1','tâches','Liste des tâches','1','page_liste_des_taches1','T0_chp_priorite_tache2(99)',NULL,'appelf(
+   nomf(isset),
+   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);'),
+('2','matrice','convertion de rev vers matrice','2','page1',NULL,'maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_rev1))))',NULL,NULL),
+('3','js','convertion de javascript ','3','page1',NULL,'maj_interface2(
+   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_js_rev1)))
+)',NULL,NULL),
+('4','php','convertion de php','5','page1',NULL,'maj_interface2(
+   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_php_rev1)))
+)',NULL,NULL),
+('5','sql','convertion de sql','6','page1',NULL,'maj_interface2(
+   modifier(
+      id(vv_txtarea_sql_rev1),
+      composante(value),
+      avec(
+        valeur_de_localstorage(
+          zones_sauvegardées,
+          ls_sql_rev1
+        )
+      )
+   )
+)',NULL,NULL),
+('6','css','convertion de css','7','page1',NULL,'maj_interface2(
+   modifier(
+      id(vv_txtarea_css_rev1),
+      composante(value),
+      avec(
+         valeur_de_localstorage(
+            zones_sauvegardées,
+            ls_css_rev1
+         )
+      )
+   )
+)',NULL,NULL),
+('7','txt','convertion de textes','8','page1',NULL,'maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_texte_rev1))))',NULL,NULL),
+('8','<span style="background:red;color:yellow;">projets</span>','liste des projets','9','page_projets_liste1',NULL,NULL,NULL,NULL),
+('9','fido','liste des dossiers et des fichiers','10','page_dossiers_liste1',NULL,NULL,'appelf(
+   nomf(isset),
+   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);'),
+('10','sources','liste des sources des programmes','11','page_liste_des_sources1',NULL,NULL,'appelf(
+   nomf(isset),
+   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);'),
+('11','bases','liste des bases','12','page_liste_des_bases1',NULL,NULL,'appelf(
+   nomf(isset),
+   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);'),
+('12','requêtes','liste des requêtes sur les bases','13','page_liste_des_requetes1',NULL,NULL,'appelf(
+   nomf(isset),
+   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);'),
+('13','(😊)','liste des revs','14','page_liste_des_revs1',NULL,NULL,'appelf(
+   nomf(isset),
+   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);'),
+('14','groupes','liste des groupes','15','page_liste_des_groupes1',NULL,NULL,'et(
+   appelf(
+      nomf(isset),
+      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+   ),
+   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;'),
+('15','métiers','liste des métiers','16','page_liste_des_metiers1',NULL,NULL,'et(
+   appelf(
+      nomf(isset),
+      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+   ),
+   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;'),
+('16','accès','liste des accès','17','page_liste_des_acces1',NULL,NULL,'et(
+   appelf(
+      nomf(isset),
+      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+   ),
+   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;'),
+('17','utilisateurs','liste des utilisateurs','20','page_liste_des_utilisateurs1',NULL,NULL,'et(
+   appelf(
+      nomf(isset),
+      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+   ),
+   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;'),
+('18','autorisations','liste des autorisations','18','page_liste_des_autorisations1',NULL,NULL,'et(
+   appelf(
+      nomf(isset),
+      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+   ),
+   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;'),
+('19','menus','liste des menus','21','page_liste_des_menus1',NULL,NULL,'et(
+   appelf(
+      nomf(isset),
+      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+   ),
+   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;'),
+('20','<svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -7  20 21">
+    <g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;">
+        <circle cx="0" cy="0" r="6"></circle>
+        <path d=" M -8 11 C -6 6 6 6 8 11 "></path>
+        <circle cx="-2" cy="-1" r="1"></circle>
+        <circle cx="2" cy="-1" r="1"></circle>
+        <path d="M -2 2 C -3 4 3 4 2 2 "></path>
+        <path d="M 0 0 V 2 "></path>
+        <path d="M -3 -1   H -6    "></path>
+        <path d="M 3 -1   H 6    "></path>
+        <path d="M -1 -1 c 0 -1 2 -1 2 0 "></path>
+    </g>
+</svg>','mon profile','19','recupere_la_page_des_coordonnees',NULL,NULL,NULL,NULL),
+('21','html','html','4','page1',NULL,'maj_interface2(
+   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_html_rev1)))
+)',NULL,NULL),
+('22','genres','liste des types de bonnées dans la bdd','22','page_liste_des_genres1',NULL,NULL,'appelf(
+   nomf(isset),
+   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))
+)','isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);');
 

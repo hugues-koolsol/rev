@@ -143,29 +143,6 @@ EOT;
         $txt .= '    <span class="hug_bouton yy__x_signaux_4" data-hug_click="' . $this->creer_un_message_client(__xdv,"🐛 c'est un message de déverminage envoyé par le client") . '"> 🐛 debug </span>';
         $txt .= '</div>';
         
-        if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial'])){
-
-            $txt .= '<div style="border:1px red solid;text-align:center;margin-top:2em;padding:5px;">';
-            $txt .= ' <h2>Un compteur session php</h2>';
-            $txt .= ' <p style="text-align:center;">il est remis à zéro à chaque déconnexion</p>';
-            $txt .= ' <p style="text-align:center;">';
-            
-            if(isset($_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1'])){
-
-                $txt .= ' <span id="vv_compteur_session_php1" style="display:inline-block;min-width:2em;text-align:center;">' . $_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1'] . '</span>';
-
-            }else{
-
-                $txt .= ' <span id="vv_compteur_session_php1" style="display:inline-block;min-width:2em;text-align:center;">0</span>';
-            }
-
-            $txt .= ' </p>';
-            $txt .= ' <span class="hug_bouton" data-hug_click="c_divers1.ajoute_a_valeur_session(variable(compteur_session_php1),valeur(-1))">👎-1</span>';
-            $txt .= ' <span class="hug_bouton" data-hug_click="c_divers1.ajoute_a_valeur_session(variable(compteur_session_php1),valeur(1))">+1👍</span>';
-            $txt .= '</div>';
-
-        }
-
         $txt .= '<div class="affichage_display_none_conditionne_par_socket" style="border:1px red solid;text-align:center;margin-top:2em;padding:5px;display:none;">';
         /* */
         $txt .= '    <h2>Un compteur socket</h2>';

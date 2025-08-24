@@ -5,6 +5,7 @@
   ajoute_les_evenements_aux_boutons
   #traite_message_recupere_du_worker
   #traite_action_retour_generale
+  #css1
   
   
 */
@@ -124,10 +125,6 @@ class _c_interface1{
         if(this.#ecran_tactile === true && this.#genre_safari === true && this.#genre_crios === false){
             this.#supprimer_le_zoom_sur_safari();
         }
-        let sortable=document.createElement( 'script' );
-        sortable.setAttribute( 'type' , "text/javascript" );
-        sortable.setAttribute( 'src' , "_js/bibliotheques_externes/Sortable.js" );
-        document.getElementsByTagName( 'head' )[0].appendChild( sortable );
         let tri_arbre1=document.createElement( 'script' );
         tri_arbre1.setAttribute( 'type' , "text/javascript" );
         tri_arbre1.setAttribute( 'src' , "_js/bibliotheques_externes/tri_arbre1.js" );
@@ -464,7 +461,6 @@ class _c_interface1{
             if(reponse.hasOwnProperty( '__xva' )
                    && reponse.__xva.hasOwnProperty( 'maj' )
                    && (reponse.__xva.maj.indexOf( 'allumer_menu' ) >= 0
-                       || reponse.__xva.maj.indexOf( 'faire_une_liste_triable' ) >= 0
                        || reponse.__xva.maj.indexOf( 'faire_une_liste_triable2' ) >= 0)
             ){
                 let mat_maj=this.__m_rev1.rev_tcm( decodeURIComponent( reponse.__xva.maj ) );
@@ -476,17 +472,6 @@ class _c_interface1{
                                && mat_maj.__xva[i + 1][2] === 'c'
                         ){
                             this.#id_menu='' + mat_maj.__xva[i + 1][1];
-                        }else if(mat_maj.__xva[i][1] === 'faire_une_liste_triable'
-                               && mat_maj.__xva[i][2] === 'f'
-                               && mat_maj.__xva[i][8] === 1
-                               && mat_maj.__xva[i + 1][2] === 'c'
-                        ){
-                            /*
-                              exemple : ordre_de_mes_menus
-                            */
-                            let el=document.getElementById( mat_maj.__xva[i + 1][1] );
-                            new Sortable( el , {"animation" : 50 ,"ghostClass" : 'blue-background-class'} );
-                            /* "animation" : 150 , */
                         }else if(mat_maj.__xva[i][1] === 'faire_une_liste_triable2' && mat_maj.__xva[i][2] === 'f'){
                             let id='';
                             let bouton_ajouter='';
@@ -3011,6 +2996,15 @@ class _c_interface1{
           =====================================================================================================
         */
     }
+    /*
+      =============================================================================================================
+    */
+    enti1( string ){
+        return(String( string ).replace( /&/g , '&amp;' ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' ).replace( /"/g , '&quot;' ));
+    }
+    /*
+      =============================================================================================================
+    */
     #initialise_stockage_local(){
         this.#reference_stockage_local={
              /* les valeurs des paramètres modifiables par les utilisateurs #init_css  #stockage_local.modif_util */
@@ -3092,12 +3086,6 @@ class _c_interface1{
             this.#initialiser_stockage_local();
             localStorage.setItem( __X_CLE_APPLICATION + '_sl0' , JSON.stringify( this.#stockage_local ) );
         }
-    }
-    /*
-      =============================================================================================================
-    */
-    enti1( string ){
-        return(String( string ).replace( /&/g , '&amp;' ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' ).replace( /"/g , '&quot;' ));
     }
     /*
       =============================================================================================================

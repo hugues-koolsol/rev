@@ -34,76 +34,7 @@ class c_divers1{
         }
 
     }
-    /*
-      =============================================================================================================
-    */
-    function ajoute_a_valeur_session(&$donnees_retournees,/*matrice*/&$mat){
-        
-        if($donnees_retournees[__x_authentifie] === __xsu){
 
-            
-            if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
-
-                /*variable(compteur_session_php1),valeur(-1)*/
-                $variable='';
-                $valeur='';
-                $l01=count($mat);
-                for( $i=2 ; $i < $l01 ; $i=$mat[$i][12] ){
-                    
-                    
-                    if($mat[$i][1] === 'valeur'){
-
-                        for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
-                            
-                            
-                            if($mat[$j][2] === 'c'){
-
-                                $valeur=(int)($mat[$j][1]);
-
-                            }
-
-                        }
-
-                    }else if($mat[$i][1] === 'variable'){
-
-                        for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
-                            
-                            
-                            if($mat[$j][2] === 'c'){
-
-                                $variable=$mat[$j][1];
-
-                            }
-
-                        }
-                    }
-
-                }
-                
-                if($variable === 'compteur_session_php1' && ($valeur === 1 || $valeur === -1)){
-
-                    /*
-                      // pour les tests
-                      if($valeur===1){
-                      usleep(100000);
-                      }else{
-                      usleep(200000);
-                      }
-                    */
-                    $_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1'] += $valeur;
-                    $donnees_retournees[__xva]['compteur_session_php1']=$_SESSION[__X_CLE_APPLICATION][__xva]['compteur_session_php1'];
-                    $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_compteur_session_php1),innerHTML(' . $donnees_retournees[__xva]['compteur_session_php1'] . ')))';
-                    $donnees_retournees[__xst]=__xsu;
-
-                }
-
-
-            }
-
-
-        }
-
-    }
     /*
       =============================================================================================================
     */

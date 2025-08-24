@@ -73,10 +73,6 @@ class c_svg_bdd1{
     constructor( obj_init ){
         this.#chemin_module1=obj_init.chemin_module1;
         /* console.log( 'ici' ); */
-        let sortable=document.createElement( 'script' );
-        sortable.setAttribute( 'type' , "text/javascript" );
-        sortable.setAttribute( 'src' , "_js/bibliotheques_externes/Sortable.js" );
-        document.getElementsByTagName( 'head' )[0].appendChild( sortable );
     }
     /*
       =============================================================================================================
@@ -4234,7 +4230,6 @@ class c_svg_bdd1{
         vv_sous_fenetre1.showModal();
         document.getElementById( 'vv_sous_fenetre1' ).scrollTop=scrollTop;
         __gi1.ajoute_les_evenements_aux_boutons( null );
-        /* var tt=new Sortable( ordre_modifie , {"animation" : 150 ,"ghostClass" : 'blue-background-class'} ); */
         let options1={
             "hauteur_max_en_vh" : 80 ,
              /* entre 20 et 80 */
