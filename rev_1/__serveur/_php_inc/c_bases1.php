@@ -480,6 +480,7 @@ class c_bases1{
             return;
 
         }
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . $donnees_recues[__xva]['source_sql'] . '</pre>' ; exit(0); */
 
         $db1temp=new SQLite3($chemin_bdd);
         try{

@@ -133,9 +133,10 @@ class c_projets1{
         unset($_SESSION[__X_CLE_APPLICATION]['chx_dossier_menus_projet']);
         unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes']);
         unset($_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_menus']);
-        $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(0)))';
+        $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(0))),maj_etat1(modifier(id(chi_id_projet),valeur(0)))';
         $donnees_retournees[__xva]['__liste_des_sql']=array();
         $donnees_retournees[__xva]['__liste_des_genres']=array();
+        $donnees_retournees[__xva]['chi_id_projet']=0;
         $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
         $donnees_retournees[__xst]=__xsu;
         $this->page_projets_liste1(
@@ -411,7 +412,7 @@ class c_projets1{
             $donnees_retournees[__xva]['__liste_des_genres']=array();
         }
 
-        $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(' . $chi_id_projet . ')))';
+        $donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(vv_projet_en_cours),innerHTML(' . $chi_id_projet . '))),maj_etat1(modifier(id(chi_id_projet),valeur(' . $chi_id_projet . ')))';
         $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
         $donnees_retournees[__xst]=__xsu;
         $this->page_projets_liste1(

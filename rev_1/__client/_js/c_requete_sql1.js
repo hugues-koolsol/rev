@@ -28,7 +28,8 @@ class c_requete_sql1{
         "complements" : [] ,
         "tableau_des_bases_tables_champs" : {} ,
         "tester_les_dependances_dans_le_php" : 0 ,
-        "sur_base_de_reference" : 0
+        "sur_base_de_reference" : 0,
+        "ne_pas_traiter_la_maj_ts_modification" : 0,
     };
     #div_de_travail=null;
     #deb_selection_dans_formule=0;
@@ -118,6 +119,7 @@ class c_requete_sql1{
         this.traiter_donnees_bases_rev( obj , par.bases_du_projet );
         init.bases=JSON.parse( JSON.stringify( this.#obj_init.bases ) );
         this.#obj_webs.tester_les_dependances_dans_le_php=0;
+        this.#obj_webs.ne_pas_traiter_la_maj_ts_modification=0;
         this.#obj_webs.sur_base_de_reference=0;
         this.apres_chargement_des_bases( init );
         var obj1=this.transform_source_rev_vers_sql( par.contenu_bdd_requete['T0.cht_rev_requete'] , parseInt( par.contenu_bdd_requete['T0.chi_id_requete'] , 10 ) );
@@ -290,6 +292,16 @@ class c_requete_sql1{
                                 if(obj2.__xva[k + 1][1] === '1'){
                                     this.#obj_webs.sur_base_de_reference=1;
                                 }
+                            }else if(obj2.__xva[k][1] === 'ne_pas_traiter_la_maj_ts_modification'
+                                   && obj2.__xva[k][2] === 'f'
+                                   && obj2.__xva[k + 1][2] === 'c'
+                                   && obj2.__xva[k][8] === 1
+                            ){
+                                if(obj2.__xva[k + 1][1] === '1'){
+                                    this.#obj_webs.ne_pas_traiter_la_maj_ts_modification=1;
+                                }
+                                
+                                
                             }
                         }
                     }
@@ -970,6 +982,15 @@ class c_requete_sql1{
         this.#obj_webs.sur_base_de_reference=document.getElementById( 'vv_sur_base_de_reference' ).checked ? ( 1 ) : ( 0 );
         this.#mettre_en_stokage_local_et_afficher();
     }
+    
+    
+    /*
+      =============================================================================================================
+    */
+    maj_ne_pas_traiter_la_maj_ts_modification( mat ){
+        this.#obj_webs.ne_pas_traiter_la_maj_ts_modification=document.getElementById( 'vv_ne_pas_traiter_la_maj_ts_modification' ).checked ? ( 1 ) : ( 0 );
+        this.#mettre_en_stokage_local_et_afficher();
+    }
     /*
       =============================================================================================================
     */
@@ -1607,7 +1628,7 @@ class c_requete_sql1{
         cmd+=' )';
         cmd+=')';
         t+='<select id="type_de_requete" data-hug_change="' + cmd + '">';
-        /* onchange="' + this.#nom_de_la_variable + '.maj_type_de_requete()">'; */
+
         t+='<option value="liste_ecran"     ' + (this.#obj_webs.type_de_requete === 'liste_ecran' ? ( ' selected="true"' ) : ( '' )) + '>liste_ecran</option>';
         t+='<option value="select"           ' + (this.#obj_webs.type_de_requete === 'select' ? ( ' selected="true"' ) : ( '' )) + '>select</option>';
         t+='<option value="update"           ' + (this.#obj_webs.type_de_requete === 'update' ? ( ' selected="true"' ) : ( '' )) + '>update</option>';
@@ -1616,18 +1637,36 @@ class c_requete_sql1{
         t+='<option value="requete_manuelle" ' + (this.#obj_webs.type_de_requete === 'requete_manuelle' ? ( ' selected="true"' ) : ( '' )) + '>requete_manuelle</option>';
         t+='</select>';
         t+='<br />';
-        t+='meta : ';
-        t+='<br />';
-        var cmd='';
-        cmd+='interface1.module1(';
-        cmd+='  chemin_module1(\'_js/c_requete_sql1.js\'),';
-        cmd+='  methode3(maj_tester_les_dependances_dans_le_php),';
-        cmd+='  parametre3(';
-        cmd+='    nom_zone(vv_tester_les_dependances),';
-        cmd+='  )';
-        cmd+=')';
-        t+=' tester_les_dependances pour la suppression dans le php';
-        t+='<input  id="vv_tester_les_dependances" type="checkbox" data-hug_click="' + cmd + '" ' + (this.#obj_webs.tester_les_dependances_dans_le_php === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
+        if(this.#obj_webs.type_de_requete==='delete'){
+            var cmd='';
+            cmd+='interface1.module1(';
+            cmd+='  chemin_module1(\'_js/c_requete_sql1.js\'),';
+            cmd+='  methode3(maj_tester_les_dependances_dans_le_php),';
+            cmd+='  parametre3(';
+            cmd+='    nom_zone(vv_tester_les_dependances),';
+            cmd+='  )';
+            cmd+=')';
+            t+=' tester_les_dependances pour la suppression dans le php';
+            t+='<input  id="vv_tester_les_dependances" type="checkbox" data-hug_click="' + cmd + '" ' + (this.#obj_webs.tester_les_dependances_dans_le_php === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
+        }else{
+            t+='<input style="display:none;" id="vv_tester_les_dependances" type="checkbox" checked="false" />';
+        }
+        
+        if(this.#obj_webs.type_de_requete==='update'){
+            var cmd='';
+            cmd+='interface1.module1(';
+            cmd+='  chemin_module1(\'_js/c_requete_sql1.js\'),';
+            cmd+='  methode3(maj_ne_pas_traiter_la_maj_ts_modification),';
+            cmd+='  parametre3(';
+            cmd+='    nom_zone(vv_ne_pas_traiter_la_maj_ts_modification),';
+            cmd+='  )';
+            cmd+=')';
+            t+=' ne_pas_traiter_la_maj_ts_modification';
+            t+='<input  id="vv_ne_pas_traiter_la_maj_ts_modification" type="checkbox" data-hug_click="' + cmd + '" ' + (this.#obj_webs.ne_pas_traiter_la_maj_ts_modification === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
+        }else{
+            t+='<input style="display:none;" id="vv_ne_pas_traiter_la_maj_ts_modification" type="checkbox" checked="false" />';
+        }
+        
         var cmd='';
         cmd+='interface1.module1(';
         cmd+='  chemin_module1(\'_js/c_requete_sql1.js\'),';
@@ -1636,8 +1675,13 @@ class c_requete_sql1{
         cmd+='    nom_zone(vv_sur_base_de_reference),';
         cmd+='  )';
         cmd+=')';
-        t+=' sur_base_de_reference';
-        t+='<input  id="vv_sur_base_de_reference" type="checkbox" data-hug_click="' + cmd + '" ' + (this.#obj_webs.sur_base_de_reference === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
+        if(__gi1.chi_id_projet==='1'){
+            
+            t+=' sur_base_de_reference';
+            t+='<input  id="vv_sur_base_de_reference" type="checkbox" data-hug_click="' + cmd + '" ' + (this.#obj_webs.sur_base_de_reference === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
+        }else{
+            t+='<input style="display:none;" id="vv_sur_base_de_reference" type="checkbox" checked="false" />';
+        }
         t+='</div>';
         t+='<table>';
         var la_class_de_la_base='';
@@ -2298,11 +2342,19 @@ class c_requete_sql1{
                 rev_texte=rev_texte.replace( 'requete_manuelle(' , 'requete_manuelle(base_de_reference()' );
             }
         }
+        let liste_des_meta='';
         if(this.#obj_webs.type_de_requete === 'delete' && this.#obj_webs.tester_les_dependances_dans_le_php === 1){
-            rev_texte='#(meta(tester_les_dependances_dans_le_php(1))),\n' + rev_texte;
+            liste_des_meta+='tester_les_dependances_dans_le_php(1)';
         }
+        if(this.#obj_webs.type_de_requete === 'update' && this.#obj_webs.ne_pas_traiter_la_maj_ts_modification === 1){
+            liste_des_meta+='ne_pas_traiter_la_maj_ts_modification(1)';
+        }
+        
         if(this.#obj_webs.sur_base_de_reference === 1){
-            rev_texte='#(meta(sur_base_de_reference(1))),\n' + rev_texte;
+            liste_des_meta+='sur_base_de_reference(1)';
+        }
+        if(liste_des_meta!==''){
+            rev_texte='#(meta('+liste_des_meta+')),\n' + rev_texte;
         }
         t+='<div style="margin-top:10px;">';
         t+='  <b>rev : </b>';
@@ -2761,6 +2813,11 @@ class c_requete_sql1{
             var nom_de_la_table=obj3.liste_des_tables_pour_select_php;
             /* this.#obj_webs['ordre_des_tables'][0]['nom_de_la_table']; // */
             nouvelle_chaine=this.#traiter_chaine_sql_pour_php( obj3.__xva );
+            if(obj3.id_base_principale==='BASE_REFERENCE'){
+                let a_remplacer='[BDD_NUMERO_'+id_numerique_base_principale+']';
+                nouvelle_chaine=nouvelle_chaine.replace(a_remplacer,'[BASE_REFERENCE]');
+                
+            }
             t+='    $sql0=\'' + CRLF;
             t+='      ' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '      ' ) + CRLF;
             t+='    \';' + CRLF;
@@ -2964,7 +3021,8 @@ class c_requete_sql1{
                                     "valeur_du_champ" : valeur_du_champ ,
                                     "encadrement_variable" : encadrement_variable ,
                                     "non_null" : champ_de_la_base.hasOwnProperty( 'non_nulle' ) && champ_de_la_base.non_nulle === true ? ( true ) : ( false ) ,
-                                    "type_de_champ" : type_de_champ
+                                    "type_de_champ" : type_de_champ,
+                                    "champ_en_bdd"  : this.#obj_init['bases'][id_numerique_base_principale].tables[nom_de_la_table].champs[nom_du_champ]
                                 } );
                         }
                     }
@@ -2990,17 +3048,23 @@ class c_requete_sql1{
                             "valeur_du_champ" : '\'.sq0($par[\'n_' + nom_du_champ + '\']).\'' ,
                             "encadrement_variable" : encadrement_variable ,
                             "non_null" : champ_de_la_base.hasOwnProperty( 'non_nulle' ) && champ_de_la_base.non_nulle === true ? ( true ) : ( false ) ,
-                            "type_de_champ" : 'variable'
+                            "type_de_champ" : 'variable',
+                            "champ_en_bdd"  : this.#obj_init['bases'][id_numerique_base_principale].tables[nom_de_la_table].champs[nom_du_champ]
                         } );
                 }
             }
             if(tableau_des_champs_en_sortie.length === 0){
                 return(__gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : __gi1.__m_rev1.nl2() + ' il manque les champs en sortie '} ));
             }
+
             var liste_des_champs_pour_update3='';
             for( var i=0 ; i < tableau_des_champs_en_sortie.length ; i++ ){
                 var la_sortie=tableau_des_champs_en_sortie[i];
-                if(la_sortie.type_de_champ === 'constante'){
+                if(tableau_des_champs_en_sortie[i].champ_en_bdd.champ_date_modification===1 && this.#obj_webs.ne_pas_traiter_la_maj_ts_modification===0){
+                    debugger
+                    liste_des_champs_pour_update3+='    $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = \\\'\'.$GLOBALS[__date_ms].\'\\\' \';' + CRLF;
+                     
+                }else if(la_sortie.type_de_champ === 'constante'){
                     liste_des_champs_pour_update3+='    $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\';' + CRLF;
                 }else{
                     liste_des_champs_pour_update3+='    if($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']===\'\' || is_null($par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']) ){' + CRLF;
@@ -3016,6 +3080,7 @@ class c_requete_sql1{
                         if(obj3.matriceFonction[j][1] === 'complements' && obj3.matriceFonction[j][2] === 'f'){
                             for( let k=j + 1 ; k < obj3.matriceFonction.length ; k=obj3.matriceFonction[k][12] ){
                                 if(obj3.matriceFonction[k][1] === 'gerer_champ_date_modification' && obj3.matriceFonction[k][2] === 'f'){
+                                    /*
                                     let champ='';
                                     let format='';
                                     for( let l=k + 1 ; l < obj3.matriceFonction.length ; l=obj3.matriceFonction[l][12] ){
@@ -3030,6 +3095,7 @@ class c_requete_sql1{
                                     }else{
                                         return(__gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : __gi1.__m_rev1.nl2() + ' erreur complements gerer_champ_date_modification '} ));
                                     }
+                                    */
                                 }else if(obj3.matriceFonction[k][1] === 'gerer_champ_numero_de_revision' && obj3.matriceFonction[k][2] === 'f'){
                                     let champ='';
                                     let format='';
@@ -3674,7 +3740,11 @@ class c_requete_sql1{
                                         "a_une_valeur_par_defaut" : 0 ,
                                         "la_valeur_par_defaut_est_caractere" : 0 ,
                                         "valeur_par_defaut" : '' ,
-                                        "typologie" : ''
+                                        "typologie" : '' ,
+                                        "champ_date_modification" : 0,
+                                        "champ_date_creation" : 0 ,
+                                        "champ_numero_de_revision" : 0 ,
+                                        
                                     };
                                     for( let l=k + 1 ; l < l01 ; l=tab[l][12] ){
                                         if(tab[l][1] === 'nom_du_champ' && tab[l][2] === 'f'){
@@ -3699,11 +3769,17 @@ class c_requete_sql1{
                                             for( let m=l + 1 ; m < l01 ; m=tab[m][12] ){
                                                 if(tab[m][1] === 'typologie' && tab[m][2] === 'f'){
                                                     le_champ.typologie=tab[m + 1][1];
+                                                }else if(tab[m][1] === 'champ_date_modification' && tab[m][2] === 'f' && tab[m][8] === 1 && tab[m+1][2] === 'c'){
+                                                    le_champ.champ_date_modification=parseInt(tab[m + 1][1],10);
+                                                }else if(tab[m][1] === 'champ_date_creation' && tab[m][2] === 'f' && tab[m][8] === 1 && tab[m+1][2] === 'c'){
+                                                    le_champ.champ_date_creation=parseInt(tab[m + 1][1],10);
+                                                }else if(tab[m][1] === 'champ_numero_de_revision' && tab[m][2] === 'f' && tab[m][8] === 1 && tab[m+1][2] === 'c'){
+                                                    le_champ.champ_numero_de_revision=parseInt(tab[m + 1][1],10);
                                                 }
                                             }
                                         }
                                     }
-                                    this.#obj_init['bases'][ind]['tables'][nom_de_la_table]['champs'].push( le_champ );
+                                    this.#obj_init['bases'][ind]['tables'][nom_de_la_table]['champs'][le_champ.nom_du_champ]=le_champ;
                                 }
                             }
                         }

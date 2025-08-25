@@ -267,8 +267,17 @@ EOT;
             if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
 
                 $chi_id_projet=$_SESSION[__X_CLE_APPLICATION]['chi_id_projet'];
+                
+                
 
             }
+            if(isset($donnees_retournees[__xva]['maj'])){
+                $donnees_retournees[__xva]['maj'].='maj_etat1(modifier(id(chi_id_projet),valeur(' . $chi_id_projet . ')))';
+            }else{
+                $donnees_retournees[__xva]['maj']='maj_etat1(modifier(id(chi_id_projet),valeur(' . $chi_id_projet . ')))';
+            }
+
+
 
             $donnees_retournees[__x_page] .= '<nav id="vv_bas_de_page">';
             $donnees_retournees[__x_page] .= '<div id="vv_projet_en_cours" style="border-width:0;">' . $chi_id_projet . '</div>';

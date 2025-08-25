@@ -2683,7 +2683,7 @@ https://mdn.github.io/dom-examples/popover-api/
 https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/popover','50','2025-08-23 12:35:47.880','2025-08-23 12:35:31.595','1','1'),
 ('236','1','un nom de source ou un nom de dossier ne doit contenir que les caractères a-z,0-9,._','2','2025-08-23 15:09:07.105','2025-08-23 15:09:07.105','0','1'),
 ('237','1','virer les compteur de sessions compteur_session_php1','99','2025-08-24 09:10:19.979','2025-08-24 09:07:32.258','1','1'),
-('238','1','virer sortable','1','2025-08-24 09:44:25.590','2025-08-24 09:44:25.590','0','1');
+('238','1','virer sortable','99','2025-08-24 09:44:25.590','2025-08-24 09:44:25.590','0','1');
 
 
 /*
@@ -2702,7 +2702,7 @@ chx_acces_utilisateur,
 chd__dtm_utilisateur,
 chd__dtc_utilisateur,
 che__nur_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'653','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'656','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','anonyme',NULL,NULL,'0','0','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 

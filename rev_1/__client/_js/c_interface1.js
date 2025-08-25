@@ -85,6 +85,7 @@ class _c_interface1{
     __liste_des_genres={};
     #date_derniere_navigation=performance.now();
     zones_des_editeur=[];
+    chi_id_projet='0';
     /*
       =============================================================================================================
     */
@@ -100,6 +101,10 @@ class _c_interface1{
         this.#genre_crios=navigator && navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && this.#ecran_tactile && this.#le_userAgent( /crios/i );
         /* this.__m_worker=new c_rev1( '__m_worker1' ); */
         this.__m_worker=new Worker( "./_js/c_worker1.js" , {"type" : 'module'} );
+        this.__m_worker.onerror = function (e) {
+            console.error('Erreur dans le worker, vérifiez son source')
+        }
+
         this.__m_worker.onmessage=function( le_message_recu_du_worker ){
             var endMicro=performance.now();
             var temps=parseInt( (endMicro - this.#debut_timer1) * 1000 , 10 ) / 1000;
@@ -958,6 +963,29 @@ class _c_interface1{
                 if(obj.__xst === __xsu){
                     window.location.hash='#' + obj.__xva;
                 }
+            }else if(mat[i][1] === 'maj_etat1'){
+                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                    /*
+                      modification
+                    */
+                    if(mat[j][1] === 'modifier'){
+                        let id=null;
+                        let valeur=null;
+                        
+                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                            if(mat[k][1] === 'id' && mat[k][2] === 'f' && mat[k][8] === 1 && mat[k + 1][2] === 'c'){
+                                id=mat[k + 1][1];
+                            }else if(mat[k][1] === 'valeur' && mat[k][2] === 'f' && mat[k][8] === 1 && mat[k + 1][2] === 'c'){
+                                valeur=mat[k + 1][1];
+                            }
+                        }
+                        if(id!==null && valeur!==null){
+                         this[id]=valeur
+                        }
+                        
+                    }
+                }
+
             }
         }
         return({"__xst" : __xsu ,"__xva" : {"recharger_la_page" : recharger_la_page}});
