@@ -15,7 +15,8 @@ function sql_329($par,&$donnees_retournees,$that){
          `che_est_parmis_genre` , 
          `cht_parmis_genre` , 
          `che_est_ts_genre` , 
-         `cht_fonctions_genre`
+         `cht_fonctions_genre` , 
+         `che_est_nur_genre`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -37,7 +38,8 @@ function sql_329($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_parmis_genre']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_parmis_genre']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_ts_genre']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_fonctions_genre']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_fonctions_genre']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_nur_genre']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

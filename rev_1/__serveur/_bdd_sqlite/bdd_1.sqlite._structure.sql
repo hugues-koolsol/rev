@@ -398,7 +398,7 @@ CREATE TABLE tbl_dossiers(
             typologie(chi),
             genre(10),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
             )
             */
              che__nur_dossier INTEGER NOT NULL DEFAULT  0
@@ -414,7 +414,7 @@ CREATE TABLE tbl_dossiers(
             typologie(chi),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtm_dossier VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -430,7 +430,7 @@ CREATE TABLE tbl_dossiers(
             typologie(chi),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtc_dossier VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -969,6 +969,22 @@ CREATE TABLE tbl_genres(
             )
             */
              cht_fonctions_genre TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_nur_genre'),
+            nom_long_du_champ('A faire ...'),
+            nom_court_du_champ('A faire ...'),
+            nom_bref_du_champ('A faire ...'),
+            typologie(che),
+            genre(10),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+            )
+            */
+             che_est_nur_genre INTEGER NOT NULL DEFAULT  0
     );
 
 CREATE TABLE tbl_projets(
@@ -1072,7 +1088,7 @@ CREATE TABLE tbl_projets(
             typologie(chi),
             genre(10),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
             )
             */
              che__nur_projet INTEGER NOT NULL DEFAULT  0
@@ -1088,7 +1104,7 @@ CREATE TABLE tbl_projets(
             typologie(chi),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtm_projet VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1104,7 +1120,7 @@ CREATE TABLE tbl_projets(
             typologie(chi),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtc_projet VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1194,8 +1210,8 @@ CREATE TABLE tbl_taches(
             nom_bref_du_champ('à faire chd__dtm_tache'),
             typologie(chi),
             genre(14),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtm_tache VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1210,8 +1226,8 @@ CREATE TABLE tbl_taches(
             nom_bref_du_champ('à faire chd__dtc_tache'),
             typologie(chi),
             genre(14),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
+            afficher_champ_dans_svg(1),
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtc_tache VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1224,10 +1240,10 @@ CREATE TABLE tbl_taches(
             nom_long_du_champ('à faire chi__nut_tache'),
             nom_court_du_champ('à faire chi__nut_tache'),
             nom_bref_du_champ('à faire chi__nut_tache'),
-            typologie(chi),
-            genre(10),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),champ_numero_de_revision(1)
+            typologie(che),
+            genre(15),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
             )
             */
              che__nur_tache INTEGER NOT NULL DEFAULT  0
@@ -1382,7 +1398,7 @@ CREATE TABLE tbl_utilisateurs(
             typologie(chi),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtm_utilisateur VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1398,7 +1414,7 @@ CREATE TABLE tbl_utilisateurs(
             typologie(chi),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtc_utilisateur VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1414,7 +1430,7 @@ CREATE TABLE tbl_utilisateurs(
             typologie(chi),
             genre(10),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
             )
             */
              che__nur_utilisateur INTEGER NOT NULL DEFAULT  0
@@ -1569,7 +1585,7 @@ CREATE TABLE tbl_sources(
             typologie(chd),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtm_source VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1585,7 +1601,7 @@ CREATE TABLE tbl_sources(
             typologie(chd),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtc_source VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1601,7 +1617,7 @@ CREATE TABLE tbl_sources(
             typologie(chi),
             genre(10),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
             )
             */
              che__nur_source INTEGER NOT NULL DEFAULT  0
@@ -1724,7 +1740,7 @@ CREATE TABLE tbl_bdds(
             typologie(chi),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtm_basedd VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1740,7 +1756,7 @@ CREATE TABLE tbl_bdds(
             typologie(chi),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtc_basedd VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1756,7 +1772,7 @@ CREATE TABLE tbl_bdds(
             typologie(chi),
             genre(10),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
             )
             */
              che__nur_basedd INTEGER NOT NULL DEFAULT  0
@@ -1908,10 +1924,10 @@ CREATE TABLE tbl_requetes(
             nom_long_du_champ('AFR ...'),
             nom_court_du_champ('AFR ...'),
             nom_bref_du_champ('AFR ...'),
-            typologie(chi),
-            genre(10),
+            typologie(che),
+            genre(15),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
             )
             */
              che__nur_requete INTEGER NOT NULL DEFAULT  0
@@ -1927,7 +1943,7 @@ CREATE TABLE tbl_requetes(
             typologie(chd),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_modification(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtm_requete VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1943,7 +1959,7 @@ CREATE TABLE tbl_requetes(
             typologie(chd),
             genre(14),
             afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),champ_date_creation(1),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
             )
             */
              chd__dtc_requete VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'

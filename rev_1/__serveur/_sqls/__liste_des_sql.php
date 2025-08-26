@@ -279,7 +279,8 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
   122 => 
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_taches SET 
-   `chp_priorite_tache` = :n_chp_priorite_tache
+   `chp_priorite_tache` = :n_chp_priorite_tache , 
+   `chd__dtm_tache` = :n_chd__dtm_tache
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',
@@ -356,7 +357,8 @@ WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_taches SET 
    `chp_texte_tache` = :n_chp_texte_tache , 
-   `chp_priorite_tache` = :n_chp_priorite_tache
+   `chp_priorite_tache` = :n_chp_priorite_tache , 
+   `chd__dtm_tache` = :n_chd__dtm_tache
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',
@@ -368,12 +370,16 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
     `chx_utilisateur_tache` , 
     `chp_texte_tache` , 
     `chp_priorite_tache` , 
-    `chx_projet_tache`
+    `chx_projet_tache` , 
+    `chd__dtm_tache` , 
+    `chd__dtc_tache`
 ) VALUES (
     :chx_utilisateur_tache , 
     :chp_texte_tache , 
     :chp_priorite_tache , 
-    :chx_projet_tache
+    :chx_projet_tache , 
+    :chd__dtm_tache , 
+    :chd__dtc_tache
 );',
     'cht_commentaire_requete' => 'tâches',
   ),
@@ -1341,7 +1347,8 @@ LIMIT :quantitee OFFSET :debut
     `che_est_parmis_genre` , 
     `cht_parmis_genre` , 
     `che_est_ts_genre` , 
-    `cht_fonctions_genre`
+    `cht_fonctions_genre` , 
+    `che_est_nur_genre`
 ) VALUES (
     :chp_nom_genre , 
     :chp_espece_genre , 
@@ -1356,7 +1363,8 @@ LIMIT :quantitee OFFSET :debut
     :che_est_parmis_genre , 
     :cht_parmis_genre , 
     :che_est_ts_genre , 
-    :cht_fonctions_genre
+    :cht_fonctions_genre , 
+    :che_est_nur_genre
 );',
     'cht_commentaire_requete' => 'genres',
   ),
@@ -1365,7 +1373,8 @@ LIMIT :quantitee OFFSET :debut
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_ts_genre` , `T0`.`cht_fonctions_genre`
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_ts_genre` , `T0`.`cht_fonctions_genre` , 
+`T0`.`che_est_nur_genre`
  FROM b1.tbl_genres T0
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
 ;',
@@ -1387,7 +1396,8 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
    `che_est_parmis_genre` = :n_che_est_parmis_genre , 
    `cht_parmis_genre` = :n_cht_parmis_genre , 
    `che_est_ts_genre` = :n_che_est_ts_genre , 
-   `cht_fonctions_genre` = :n_cht_fonctions_genre
+   `cht_fonctions_genre` = :n_cht_fonctions_genre , 
+   `che_est_nur_genre` = :n_che_est_nur_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',
     'cht_commentaire_requete' => 'genres',
   ),
@@ -1403,7 +1413,7 @@ WHERE `chi_id_genre` = :chi_id_genre ;',
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
 `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_ts_genre` , 
-`T0`.`cht_fonctions_genre`
+`T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre`
  FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
 ;',
     'cht_commentaire_requete' => 'tous les genres',

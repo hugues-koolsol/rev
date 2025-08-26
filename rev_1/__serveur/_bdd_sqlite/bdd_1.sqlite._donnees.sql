@@ -121,29 +121,31 @@ che_est_parmis_genre,
 cht_parmis_genre,
 che_ordre_genre,
 che_est_ts_genre,
-cht_fonctions_genre) VALUES
-('1','cht','***indéfini***','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,'22','0',NULL),
-('2','chi','id primaire non nulle','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,'1','0',NULL),
-('3','chp','varchar 64 NON NULLE','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'2','0',NULL),
-('4','chx','lien NON NULL','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,'4','0',NULL),
-('5','che','zero_un non nulle','INTEGER',NULL,'0','0','1','1','0','0','1','0,1','11','0',NULL),
-('6','cht','texte NULL','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'10','0',NULL),
-('7','che','entier NULL','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,'8','0',NULL),
-('8','chx','lien NULL','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,'5','0',NULL),
-('9','che','entier NON NULL','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,'6','0',NULL),
-('10','che','entier NON NULL à zéro','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,'7','0',NULL),
-('11','cht','texte NON NULL','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,'9','0',NULL),
-('12','chp','varchar 64 NULL','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'3','0',NULL),
-('13','chp','mot de passe','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,'13','0',NULL),
-('14','chd','dt23','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,'12','1',NULL),
-('101','chp','espèce','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL','15','0',NULL),
-('102','chp','préfixe','VARCHAR','3','0','0','1','1','1','cht','1','cht,chi,che,chx','14','0',NULL),
-('103','chp','type_requete','VARCHAR','64','0','0','1','1','1','liste_ecran','1','liste_ecran,insert,select,update,delete,requete_manuelle','16','0',NULL),
-('104','chp','fournisseur bdd','VARCHAR','64','0','0','1','1','1','sqlite','1','sqlite,mysql','17','0',NULL),
-('105','chp','type_rev','VARCHAR','1','0','0','1','0','0','i','1','i,c,f','18','0',NULL),
-('106','chp','nom de fichier','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'20','0','test_du_nom_de_fichier1'),
-('107','cht','fonctions de champ','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'21','0','test_fonctions_de_c_fonctions1'),
-('108','chp','nom de dossier','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'19','0','test_du_nom_de_fichier1');
+cht_fonctions_genre,
+che_est_nur_genre) VALUES
+('1','cht','***indéfini***','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,'23','0',NULL,'0'),
+('2','chi','id primaire non nulle','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,'1','0',NULL,'0'),
+('3','chp','varchar 64 NON NULLE','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'2','0',NULL,'0'),
+('4','chx','lien NON NULL','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,'4','0',NULL,'0'),
+('5','che','zero_un non nulle','INTEGER',NULL,'0','0','1','1','0','0','1','0,1','11','0',NULL,'0'),
+('6','cht','texte NULL','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'10','0',NULL,'0'),
+('7','che','entier NULL','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,'8','0',NULL,'0'),
+('8','chx','lien NULL','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,'5','0',NULL,'0'),
+('9','che','entier NON NULL','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,'6','0',NULL,'0'),
+('10','che','entier NON NULL à zéro','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,'7','0',NULL,'0'),
+('11','cht','texte NON NULL','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,'9','0',NULL,'0'),
+('12','chp','varchar 64 NULL','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'3','0',NULL,'0'),
+('13','chp','mot de passe','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,'13','0',NULL,'0'),
+('14','chd','dt23','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,'12','1',NULL,'0'),
+('15','che','nur','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,'14','0',NULL,'1'),
+('101','chp','espèce','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL','16','0',NULL,'0'),
+('102','chp','préfixe','VARCHAR','3','0','0','1','1','1','cht','1','cht,chi,che,chx,chp,chd','15','0',NULL,'0'),
+('103','chp','type_requete','VARCHAR','64','0','0','1','1','1','liste_ecran','1','liste_ecran,insert,select,update,delete,requete_manuelle','17','0',NULL,'0'),
+('104','chp','fournisseur bdd','VARCHAR','64','0','0','1','1','1','sqlite','1','sqlite,mysql','18','0',NULL,'0'),
+('105','chp','type_rev','VARCHAR','1','0','0','1','0','0','i','1','i,c,f','19','0',NULL,'0'),
+('106','chp','nom de fichier','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'21','0','test_du_nom_de_fichier1','0'),
+('107','cht','fonctions de champ','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'22','0','test_fonctions_de_c_fonctions1','0'),
+('108','chp','nom de dossier','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'20','0','test_du_nom_de_fichier1','0');
 
 
 /*
@@ -554,9 +556,17 @@ mettre le curseur au bon endroit et écrire le champ correctement','99','2025-08
 ('235','1','popover
 https://mdn.github.io/dom-examples/popover-api/
 https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/popover','50','2025-08-23 12:35:47.880','2025-08-23 12:35:31.595','1','1'),
-('236','1','un nom de source ou un nom de dossier ne doit contenir que les caractères a-z,0-9,._','2','2025-08-23 15:09:07.105','2025-08-23 15:09:07.105','0','1'),
+('236','1','un nom de source ou un nom de dossier ne doit contenir que les caractères a-z,0-9,._','99','2025-08-26 17:01:30.665','2025-08-23 15:09:07.105','0','1'),
 ('237','1','virer les compteur de sessions compteur_session_php1','99','2025-08-24 09:10:19.979','2025-08-24 09:07:32.258','1','1'),
-('238','1','virer sortable','99','2025-08-24 09:44:25.590','2025-08-24 09:44:25.590','0','1');
+('238','1','virer sortable','99','2025-08-24 09:44:25.590','2025-08-24 09:44:25.590','0','1'),
+('239','1','virer champ_date_creation , champ_date_modification , champ_numero_de_revision , 
+
+virer
+      gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
+      gerer_champ_date_creation( champ( `chd__dtc_tache` ) , format(23)),
+      gerer_champ_date_modification( champ( `chd__dtm_tache` ) , format(23))
+
+','99','2025-08-26 16:16:12.402','2025-08-26 15:17:41.241','0','1');
 
 
 /*
@@ -575,7 +585,7 @@ chx_acces_utilisateur,
 chd__dtm_utilisateur,
 chd__dtc_utilisateur,
 che__nur_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'656','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'658','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','anonyme',NULL,NULL,'0','0','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
@@ -3247,7 +3257,7 @@ che__nur_basedd) VALUES
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(3.5,8.5))
+   transform_base_sur_svg(translate(6.5,5.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_revs''),
@@ -3693,8 +3703,7 @@ créer_table(
             typologie(chi),
             genre(10),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),
-            champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
@@ -3715,7 +3724,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_modification(1),
             longueur_du_champ(23)
          )
       ),
@@ -3737,7 +3745,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_creation(1),
             longueur_du_champ(23)
          )
       )
@@ -4389,6 +4396,25 @@ créer_table(
             afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
          )
+      ),
+      champ(
+         nom_du_champ(''che_est_nur_genre''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(false),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_est_nur_genre''),
+            nom_long_du_champ(''A faire ...''),
+            nom_court_du_champ(''A faire ...''),
+            nom_bref_du_champ(''A faire ...''),
+            typologie(che),
+            genre(10),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
+         )
       )
    )
 ),
@@ -4502,8 +4528,7 @@ créer_table(
             typologie(chi),
             genre(10),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),
-            champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
@@ -4524,7 +4549,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_modification(1),
             longueur_du_champ(23)
          )
       ),
@@ -4546,7 +4570,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_creation(1),
             longueur_du_champ(23)
          )
       )
@@ -4657,9 +4680,8 @@ créer_table(
             nom_bref_du_champ(''à faire chd__dtm_tache''),
             typologie(chi),
             genre(14),
-            afficher_champ_dans_svg(0),
+            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
-            champ_date_modification(1),
             longueur_du_champ(23)
          )
       ),
@@ -4679,9 +4701,8 @@ créer_table(
             nom_bref_du_champ(''à faire chd__dtc_tache''),
             typologie(chi),
             genre(14),
-            afficher_champ_dans_svg(0),
+            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),
-            champ_date_creation(1),
             longueur_du_champ(23)
          )
       ),
@@ -4698,11 +4719,10 @@ créer_table(
             nom_long_du_champ(''à faire chi__nut_tache''),
             nom_court_du_champ(''à faire chi__nut_tache''),
             nom_bref_du_champ(''à faire chi__nut_tache''),
-            typologie(chi),
-            genre(10),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),
-            champ_numero_de_revision(1)
+            typologie(che),
+            genre(15),
+            afficher_champ_dans_svg(1),
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
@@ -4894,7 +4914,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_modification(1),
             longueur_du_champ(23)
          )
       ),
@@ -4916,7 +4935,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_creation(1),
             longueur_du_champ(23)
          )
       ),
@@ -4936,8 +4954,7 @@ créer_table(
             typologie(chi),
             genre(10),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),
-            champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
          )
       )
    )
@@ -5121,7 +5138,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_modification(1),
             longueur_du_champ(23)
          )
       ),
@@ -5143,7 +5159,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_creation(1),
             longueur_du_champ(23)
          )
       ),
@@ -5163,8 +5178,7 @@ créer_table(
             typologie(chi),
             genre(10),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),
-            champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
          )
       )
    )
@@ -5314,7 +5328,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_modification(1),
             longueur_du_champ(23)
          )
       ),
@@ -5336,7 +5349,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_creation(1),
             longueur_du_champ(23)
          )
       ),
@@ -5356,8 +5368,7 @@ créer_table(
             typologie(chi),
             genre(10),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),
-            champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
          )
       )
    )
@@ -5522,11 +5533,10 @@ créer_table(
             nom_long_du_champ(''AFR ...''),
             nom_court_du_champ(''AFR ...''),
             nom_bref_du_champ(''AFR ...''),
-            typologie(chi),
-            genre(10),
+            typologie(che),
+            genre(15),
             afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER),
-            champ_numero_de_revision(1)
+            espece_du_champ(INTEGER)
          )
       ),
       champ(
@@ -5547,7 +5557,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_modification(1),
             longueur_du_champ(23)
          )
       ),
@@ -5569,7 +5578,6 @@ créer_table(
             genre(14),
             afficher_champ_dans_svg(0),
             espece_du_champ(VARCHAR),
-            champ_date_creation(1),
             longueur_du_champ(23)
          )
       )
@@ -6493,7 +6501,7 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',NULL,NULL,'tâches','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('122','1','update','modifier(
    base_de_reference(1),
-   valeurs(affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache)),
+   valeurs(affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_taches,base(b1)))
@@ -6508,7 +6516,8 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
       )
    )
 )  ','UPDATE b1.tbl_taches SET 
-   `chp_priorite_tache` = :n_chp_priorite_tache
+   `chp_priorite_tache` = :n_chp_priorite_tache , 
+   `chd__dtm_tache` = :n_chd__dtm_tache
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',NULL,NULL,'tâches','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -6670,7 +6679,7 @@ WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
 ;',NULL,NULL,'tâches par id','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('129','1','update','modifier(
    base_de_reference(1),
-   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache)),
+   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_taches,base(b1)))
@@ -6683,41 +6692,43 @@ WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
          egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),
          egal(champ(`chx_projet_tache`),:c_chx_projet_tache)
       )
-   ),
-   complements(
-      #(),
-      gerer_champ_date_modification(champ(`chd__dtm_tache`),format(23)),
-      gerer_champ_numero_de_revision(champ(che__nur_tache))
    )
 )  ','UPDATE b1.tbl_taches SET 
    `chp_texte_tache` = :n_chp_texte_tache , 
-   `chp_priorite_tache` = :n_chp_priorite_tache
+   `chp_priorite_tache` = :n_chp_priorite_tache , 
+   `chd__dtm_tache` = :n_chd__dtm_tache
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',NULL,NULL,'tâches texte et priorité par id','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('130','1','insert','insérer(
    base_de_reference(1),
-   valeurs(affecte(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),affecte(champ(`chp_texte_tache`),:chp_texte_tache),affecte(champ(`chp_priorite_tache`),:chp_priorite_tache),affecte(champ(`chx_projet_tache`),:chx_projet_tache)),
+   valeurs(
+      affecte(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),
+      affecte(champ(`chp_texte_tache`),:chp_texte_tache),
+      affecte(champ(`chp_priorite_tache`),:chp_priorite_tache),
+      affecte(champ(`chx_projet_tache`),:chx_projet_tache),
+      affecte(champ(`chd__dtm_tache`),:chd__dtm_tache),
+      affecte(champ(`chd__dtc_tache`),:chd__dtc_tache)
+   ),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_taches,base(b1)))
       )
-   ),
-   complements(
-      #(),
-      gerer_champ_date_creation(champ(`chd__dtc_tache`),format(23)),
-      gerer_champ_date_modification(champ(`chd__dtm_tache`),format(23))
    )
 )  ','INSERT INTO b1.`tbl_taches`(
     `chx_utilisateur_tache` , 
     `chp_texte_tache` , 
     `chp_priorite_tache` , 
-    `chx_projet_tache`
+    `chx_projet_tache` , 
+    `chd__dtm_tache` , 
+    `chd__dtc_tache`
 ) VALUES (
     :chx_utilisateur_tache , 
     :chp_texte_tache , 
     :chp_priorite_tache , 
-    :chx_projet_tache
+    :chx_projet_tache , 
+    :chd__dtm_tache , 
+    :chd__dtc_tache
 );',NULL,NULL,'tâches','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('131','1','delete','supprimer(
    base_de_reference(1),
@@ -8562,7 +8573,8 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
       champ(`T0`,`che_est_parmis_genre`),
       champ(`T0`,`cht_parmis_genre`),
       champ(`T0`,`che_est_ts_genre`),
-      champ(`T0`,`cht_fonctions_genre`)
+      champ(`T0`,`cht_fonctions_genre`),
+      champ(`T0`,`che_est_nur_genre`)
    ),
    provenance(
       table_reference(
@@ -8613,7 +8625,8 @@ LIMIT :quantitee OFFSET :debut
       affecte(champ(`che_est_parmis_genre`),:che_est_parmis_genre),
       affecte(champ(`cht_parmis_genre`),:cht_parmis_genre),
       affecte(champ(`che_est_ts_genre`),:che_est_ts_genre),
-      affecte(champ(`cht_fonctions_genre`),:cht_fonctions_genre)
+      affecte(champ(`cht_fonctions_genre`),:cht_fonctions_genre),
+      affecte(champ(`che_est_nur_genre`),:che_est_nur_genre)
    ),
    provenance(
       table_reference(
@@ -8634,7 +8647,8 @@ LIMIT :quantitee OFFSET :debut
     `che_est_parmis_genre` , 
     `cht_parmis_genre` , 
     `che_est_ts_genre` , 
-    `cht_fonctions_genre`
+    `cht_fonctions_genre` , 
+    `che_est_nur_genre`
 ) VALUES (
     :chp_nom_genre , 
     :chp_espece_genre , 
@@ -8649,7 +8663,8 @@ LIMIT :quantitee OFFSET :debut
     :che_est_parmis_genre , 
     :cht_parmis_genre , 
     :che_est_ts_genre , 
-    :cht_fonctions_genre
+    :cht_fonctions_genre , 
+    :che_est_nur_genre
 );',NULL,NULL,'genres','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('330','1','select','sélectionner(
    base_de_reference(1),
@@ -8668,7 +8683,8 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`che_est_parmis_genre`),
       champ(`T0`,`cht_parmis_genre`),
       champ(`T0`,`che_est_ts_genre`),
-      champ(`T0`,`cht_fonctions_genre`)
+      champ(`T0`,`cht_fonctions_genre`),
+      champ(`T0`,`che_est_nur_genre`)
    ),
    provenance(
       table_reference(
@@ -8679,7 +8695,8 @@ LIMIT :quantitee OFFSET :debut
 )  ','SELECT 
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_ts_genre` , `T0`.`cht_fonctions_genre`
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_ts_genre` , `T0`.`cht_fonctions_genre` , 
+`T0`.`che_est_nur_genre`
  FROM b1.tbl_genres T0
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
 ;',NULL,NULL,'genres','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -8699,7 +8716,8 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
       affecte(champ(`che_est_parmis_genre`),:n_che_est_parmis_genre),
       affecte(champ(`cht_parmis_genre`),:n_cht_parmis_genre),
       affecte(champ(`che_est_ts_genre`),:n_che_est_ts_genre),
-      affecte(champ(`cht_fonctions_genre`),:n_cht_fonctions_genre)
+      affecte(champ(`cht_fonctions_genre`),:n_cht_fonctions_genre),
+      affecte(champ(`che_est_nur_genre`),:n_che_est_nur_genre)
    ),
    provenance(
       table_reference(
@@ -8721,7 +8739,8 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
    `che_est_parmis_genre` = :n_che_est_parmis_genre , 
    `cht_parmis_genre` = :n_cht_parmis_genre , 
    `che_est_ts_genre` = :n_che_est_ts_genre , 
-   `cht_fonctions_genre` = :n_cht_fonctions_genre
+   `cht_fonctions_genre` = :n_cht_fonctions_genre , 
+   `che_est_nur_genre` = :n_che_est_nur_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,NULL,'genres','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('332','1','delete','supprimer(
    base_de_reference(1),
@@ -8751,7 +8770,8 @@ WHERE `chi_id_genre` = :chi_id_genre ;',NULL,NULL,'genres','0','2000-01-01 00:00
       champ(`T0`,`cht_parmis_genre`),
       champ(`T0`,`che_ordre_genre`),
       champ(`T0`,`che_est_ts_genre`),
-      champ(`T0`,`cht_fonctions_genre`)
+      champ(`T0`,`cht_fonctions_genre`),
+      champ(`T0`,`che_est_nur_genre`)
    ),
    provenance(
       table_reference(
@@ -8765,7 +8785,7 @@ WHERE `chi_id_genre` = :chi_id_genre ;',NULL,NULL,'genres','0','2000-01-01 00:00
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
 `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_ts_genre` , 
-`T0`.`cht_fonctions_genre`
+`T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre`
  FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
 ;',NULL,NULL,'tous les genres','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('334','1','update','modifier(

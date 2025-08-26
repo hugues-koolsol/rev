@@ -5,8 +5,8 @@ function sql_130($par,&$donnees_retournees,$that){
          `chx_utilisateur_tache` , 
          `chp_texte_tache` , 
          `chp_priorite_tache` , 
-         `chx_projet_tache`,
-         `chd__dtm_tache`  ,
+         `chx_projet_tache` , 
+         `chd__dtm_tache` , 
          `chd__dtc_tache`
       ) VALUES 
     ';

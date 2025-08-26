@@ -576,9 +576,6 @@ class c_svg_bdd1{
             references=document.getElementById( 'table_mère' ).value + ',' + document.getElementById( 'champ_père' ).value;
         }
         var afficher_champ_dans_svg=document.getElementById( 'afficher_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
-        var champ_date_modification=document.getElementById( 'champ_date_modification' ).checked ? ( 1 ) : ( 0 );
-        var champ_date_creation=document.getElementById( 'champ_date_creation' ).checked ? ( 1 ) : ( 0 );
-        var champ_numero_de_revision=document.getElementById( 'champ_numero_de_revision' ).checked ? ( 1 ) : ( 0 );
         var refe_enfant_droite=document.getElementById( 'refe_enfant_droite' ).checked ? ( 1 ) : ( 0 );
         var refe_parent_gauche=document.getElementById( 'refe_parent_gauche' ).checked ? ( 1 ) : ( 0 );
         var j=0;
@@ -644,9 +641,6 @@ class c_svg_bdd1{
         rev+='    nom_court_du_champ(\'' + document.getElementById( 'meta_ajouter__nom_court_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    nom_bref_du_champ(\'' + document.getElementById( 'meta_ajouter__nom_bref_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    afficher_champ_dans_svg(' + afficher_champ_dans_svg + ')';
-        rev+='    champ_date_modification(' + champ_date_modification + ')';
-        rev+='    champ_date_creation(' + champ_date_creation + ')';
-        rev+='    champ_numero_de_revision(' + champ_numero_de_revision + ')';
         rev+='    refe_enfant_droite(' + refe_enfant_droite + ')';
         rev+='    refe_parent_gauche(' + refe_parent_gauche + ')';
         rev+=')';
@@ -1436,9 +1430,6 @@ class c_svg_bdd1{
         a.proprietes.a_une_valeur_par_defaut=document.getElementById( 'a_une_valeur_par_defaut' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.la_valeur_par_defaut_est_caractere=document.getElementById( 'la_valeur_par_defaut_est_caractere' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.valeur_par_defaut=document.getElementById( 'valeur_par_defaut' ).value;
-        a.proprietes.champ_date_modification=document.getElementById( 'champ_date_modification' ).checked ? ( '1' ) : ( '0' );
-        a.proprietes.champ_date_creation=document.getElementById( 'champ_date_creation' ).checked ? ( '1' ) : ( '0' );
-        a.proprietes.champ_numero_de_revision=document.getElementById( 'champ_numero_de_revision' ).checked ? ( '1' ) : ( '0' );
         var afficher_champ_dans_svg=document.getElementById( 'afficher_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
         if(afficher_champ_dans_svg === '0'){
             if(a.proprietes.primary_key === '1' || a.proprietes.auto_increment === '1' || reference_amont_ou_aval === true){
@@ -1447,9 +1438,6 @@ class c_svg_bdd1{
         }
         let obj={
             "afficher_champ_dans_svg" : afficher_champ_dans_svg ,
-            "champ_date_modification" : a.proprietes.champ_date_modification ,
-            "champ_date_creation" : a.proprietes.champ_date_creation ,
-            "champ_numero_de_revision" : a.proprietes.champ_numero_de_revision ,
             "refe_enfant_droite" : a.proprietes.refe_enfant_droite ,
             "refe_parent_gauche" : a.proprietes.refe_parent_gauche ,
             "nom_bref_du_champ" : document.getElementById( 'meta_modifier__nom_bref_du_champ' ).value ,
@@ -1955,9 +1943,6 @@ class c_svg_bdd1{
         let nom_court_du_champ=obj_donnees_rev_du_champ.nom_court_du_champ;
         let nom_long_du_champ=obj_donnees_rev_du_champ.nom_long_du_champ;
         let afficher_champ_dans_svg=obj_donnees_rev_du_champ.afficher_champ_dans_svg;
-        let champ_date_modification=obj_donnees_rev_du_champ.champ_date_modification;
-        let champ_date_creation=obj_donnees_rev_du_champ.champ_date_creation;
-        let champ_numero_de_revision=obj_donnees_rev_du_champ.champ_numero_de_revision;
         let refe_enfant_droite=obj_donnees_rev_du_champ.refe_enfant_droite;
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
         t+='<h2>changer les éléments du champ</h2>';
@@ -2103,12 +2088,6 @@ class c_svg_bdd1{
         t+='<input type="text" id="meta_modifier__nom_long_du_champ" value="' + nom_long_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
         t+='<br />afficher_champ_dans_svg : ';
         t+='<input type="checkbox" id="afficher_champ_dans_svg" ' + (afficher_champ_dans_svg === '1' ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />champ date modification : ';
-        t+='<input type="checkbox" id="champ_date_modification" ' + (champ_date_modification === 1 ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />champ date création : ';
-        t+='<input type="checkbox" id="champ_date_creation" ' + (champ_date_creation === 1 ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />champ numero de revision : ';
-        t+='<input type="checkbox" id="champ_numero_de_revision" ' + (champ_numero_de_revision === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />refe_enfant_droite : ';
         t+='<input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />refe_parent_gauche : ';
@@ -3467,87 +3446,6 @@ class c_svg_bdd1{
     /*
       =============================================================================================================
     */
-    marquer_ou_demarquer_comme_dt_modification( mat ){
-        let id_rectangle_de_champ=0;
-        let id_svg_conteneur_table=0;
-        let champ_date_modification=0;
-        for( let i=1 ; i < mat.length ; i++ ){
-            if(mat[i][1] === 'id_rectangle_de_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_rectangle_de_champ=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === 'champ_date_modification' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                champ_date_modification=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        let obj=this.#corrige_meta_champ( document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , {"champ_date_modification" : champ_date_modification} , null );
-        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
-        let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
-        __gi1.fermer_fenetre1();
-        this.#dessiner_le_svg();
-        /* id_svg_conteneur_table */
-        var obj1=__gi1.__m_rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
-        if(obj1.__xst === __xsu){
-            this.modale_gerer_la_table( obj1.__xva );
-        }
-    }
-    /*
-      =============================================================================================================
-    */
-    marquer_ou_demarquer_comme_revision( mat ){
-        let id_rectangle_de_champ=0;
-        let id_svg_conteneur_table=0;
-        let champ_numero_de_revision=0;
-        for( let i=1 ; i < mat.length ; i++ ){
-            if(mat[i][1] === 'id_rectangle_de_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_rectangle_de_champ=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === 'champ_numero_de_revision' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                champ_numero_de_revision=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        let obj=this.#corrige_meta_champ( document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , {"champ_numero_de_revision" : champ_numero_de_revision} , null );
-        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
-        let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
-        __gi1.fermer_fenetre1();
-        this.#dessiner_le_svg();
-        /* id_svg_conteneur_table */
-        var obj1=__gi1.__m_rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
-        if(obj1.__xst === __xsu){
-            this.modale_gerer_la_table( obj1.__xva );
-        }
-    }
-    /*
-      =============================================================================================================
-    */
-    marquer_ou_demarquer_comme_dt_creation( mat ){
-        let id_rectangle_de_champ=0;
-        let id_svg_conteneur_table=0;
-        let champ_date_creation=0;
-        for( let i=1 ; i < mat.length ; i++ ){
-            if(mat[i][1] === 'id_rectangle_de_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_rectangle_de_champ=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === 'champ_date_creation' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                champ_date_creation=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        let obj=this.#corrige_meta_champ( document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , {"champ_date_creation" : champ_date_creation} , null );
-        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
-        let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
-        __gi1.fermer_fenetre1();
-        this.#dessiner_le_svg();
-        /* id_svg_conteneur_table */
-        var obj1=__gi1.__m_rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
-        if(obj1.__xst === __xsu){
-            this.modale_gerer_la_table( obj1.__xva );
-        }
-    }
-    /*
-      =============================================================================================================
-    */
     masquer_ou_afficher_le_champ( mat ){
         let id_rectangle_de_champ=0;
         let id_svg_conteneur_table=0;
@@ -3936,9 +3834,6 @@ class c_svg_bdd1{
         t+='<br />nom court du champ : <input type="text" id="meta_ajouter__nom_court_du_champ" value="A faire ..." autocapitalize="off" />';
         t+='<br />nom bref du champ : <input type="text" id="meta_ajouter__nom_bref_du_champ" value="A faire ..." autocapitalize="off" />';
         t+='<br />afficher_champ_dans_svg : <input id="afficher_champ_dans_svg" type="checkbox" checked />';
-        t+='<br />champ_date_modification : <input id="champ_date_modification" type="checkbox" />';
-        t+='<br />champ_date_creation : <input id="champ_date_creation" type="checkbox" />';
-        t+='<br />champ_numero_de_revision : <input id="champ_numero_de_revision" type="checkbox" />';
         t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
         t+='<br />refe_parent_gauche : <input id="refe_parent_gauche" type="checkbox" />';
         t+='<br />';
@@ -4063,26 +3958,12 @@ class c_svg_bdd1{
         t+='<table><tr>';
         t+='<th>champs</th>';
         t+='<th>action</th>';
-        t+='<th>dt crea</th>';
-        t+='<th>dt mod</th>';
         t+='<th  title="numéro de révision">nu rev</th>';
         t+='<th>rev</th>';
-        let il_existe_un_champ_date_creation=-1;
-        let il_existe_un_champ_date_modification=-1;
-        let il_existe_un_champ_numero_de_revision=-1;
         let il_existe_un_refe_enfant_droite=-1;
         let il_existe_un_refe_parent_gauche=-1;
         for( i=0 ; i < liste_des_champs.length ; i++ ){
             let tt=document.getElementById( liste_des_champs[i].id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' );
-            if(tt.indexOf( 'champ_date_creation(1)' ) >= 0){
-                il_existe_un_champ_date_creation=i;
-            }
-            if(tt.indexOf( 'champ_date_modification(1)' ) >= 0){
-                il_existe_un_champ_date_modification=i;
-            }
-            if(tt.indexOf( 'champ_numero_de_revision(1)' ) >= 0){
-                il_existe_un_champ_numero_de_revision=i;
-            }
             if(tt.indexOf( 'refe_enfant_droite(1)' ) >= 0){
                 il_existe_un_refe_enfant_droite=i;
             }
@@ -4125,95 +4006,6 @@ class c_svg_bdd1{
               
               
             */
-            t+='<td>';
-            if(il_existe_un_champ_date_creation === i){
-                t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="';
-                t+='interface1.module1(';
-                t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                t+=' methode3(marquer_ou_demarquer_comme_dt_creation),';
-                t+=' parametre3(';
-                t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
-                t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
-                t+='  champ_date_creation(0),';
-                t+=' )';
-                t+=')" >retirer dt crea</div>';
-            }else{
-                if(il_existe_un_champ_date_creation === -1){
-                    t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="';
-                    t+='interface1.module1(';
-                    t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                    t+=' methode3(marquer_ou_demarquer_comme_dt_creation),';
-                    t+=' parametre3(';
-                    t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
-                    t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
-                    t+='  champ_date_creation(1),';
-                    t+=' )';
-                    t+=')" >ajouter dt crea</div>';
-                }
-            }
-            t+='</td>';
-            /*
-              
-              
-            */
-            t+='<td>';
-            if(il_existe_un_champ_date_modification === i){
-                t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="';
-                t+='interface1.module1(';
-                t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                t+=' methode3(marquer_ou_demarquer_comme_dt_modification),';
-                t+=' parametre3(';
-                t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
-                t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
-                t+='  champ_date_modification(0),';
-                t+=' )';
-                t+=')" >retirer dt mod</div>';
-            }else{
-                if(il_existe_un_champ_date_modification === -1){
-                    t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="';
-                    t+='interface1.module1(';
-                    t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                    t+=' methode3(marquer_ou_demarquer_comme_dt_modification),';
-                    t+=' parametre3(';
-                    t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
-                    t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
-                    t+='  champ_date_modification(1),';
-                    t+=' )';
-                    t+=')" >ajouter dt mod</div>';
-                }
-            }
-            t+='</td>';
-            /*
-              
-              
-            */
-            t+='<td>';
-            if(il_existe_un_champ_numero_de_revision === i){
-                t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="';
-                t+='interface1.module1(';
-                t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                t+=' methode3(marquer_ou_demarquer_comme_revision),';
-                t+=' parametre3(';
-                t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
-                t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
-                t+='  champ_numero_de_revision(0),';
-                t+=' )';
-                t+=')" title="numéro de révision" >retirer nur rev</div>';
-            }else{
-                if(il_existe_un_champ_numero_de_revision === -1){
-                    t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="';
-                    t+='interface1.module1(';
-                    t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                    t+=' methode3(marquer_ou_demarquer_comme_revision),';
-                    t+=' parametre3(';
-                    t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
-                    t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
-                    t+='  champ_numero_de_revision(1),';
-                    t+=' )';
-                    t+=')" title="numéro de révision" >ajouter nur rev</div>';
-                }
-            }
-            t+='</td>';
             t+='<td>';
             t+='';
             /* document.getElementById( liste_des_champs[i].id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ); */
@@ -5609,9 +5401,6 @@ class c_svg_bdd1{
         let typologie='';
         let genre='1';
         let afficher_champ_dans_svg=1;
-        let champ_date_modification=0;
-        let champ_date_creation=0;
-        let champ_numero_de_revision=0;
         let refe_enfant_droite=0;
         let refe_parent_gauche=0;
         let obj1=__gi1.__m_rev1.rev_tm( texte_meta_rev );
@@ -5679,21 +5468,6 @@ class c_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.afficher_champ_dans_svg;
                             }
                             afficher_champ_dans_svg=mat2[k + 1][1];
-                        }else if(mat2[k][1] === 'champ_date_modification' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                            if(nouvelles_valeurs.hasOwnProperty( 'champ_date_modification' )){
-                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.champ_date_modification , 10 );
-                            }
-                            champ_date_modification=parseInt( mat2[k + 1][1] , 10 );
-                        }else if(mat2[k][1] === 'champ_date_creation' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                            if(nouvelles_valeurs.hasOwnProperty( 'champ_date_creation' )){
-                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.champ_date_creation , 10 );
-                            }
-                            champ_date_creation=parseInt( mat2[k + 1][1] , 10 );
-                        }else if(mat2[k][1] === 'champ_numero_de_revision' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                            if(nouvelles_valeurs.hasOwnProperty( 'champ_numero_de_revision' )){
-                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.champ_numero_de_revision , 10 );
-                            }
-                            champ_numero_de_revision=parseInt( mat2[k + 1][1] , 10 );
                         }else if(mat2[k][1] === 'refe_enfant_droite' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'refe_enfant_droite' )){
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.refe_enfant_droite , 10 );
@@ -5739,12 +5513,6 @@ class c_svg_bdd1{
                                 nom_bref_du_champ=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'afficher_champ_dans_svg' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 afficher_champ_dans_svg=mat2[k + 2][1];
-                            }else if(mat2[k + 1][1] === 'champ_date_modification' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
-                                champ_date_modification=parseInt( mat2[k + 2][1] , 10 );
-                            }else if(mat2[k + 1][1] === 'champ_date_creation' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
-                                champ_date_creation=parseInt( mat2[k + 2][1] , 10 );
-                            }else if(mat2[k + 1][1] === 'champ_numero_de_revision' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
-                                champ_numero_de_revision=parseInt( mat2[k + 2][1] , 10 );
                             }else if(mat2[k + 1][1] === 'typologie' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 typologie=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'genre' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
@@ -5763,24 +5531,6 @@ class c_svg_bdd1{
         let o1='';
         if(nom_du_champ === '' && champ !== ''){
             nom_du_champ=champ;
-        }
-        if(nouvelles_valeurs.hasOwnProperty( 'champ_date_modification' )
-               && (nouvelles_valeurs.champ_date_modification === '1'
-                   || nouvelles_valeurs.champ_date_modification === 1)
-        ){
-            champ_date_modification=1;
-        }
-        if(nouvelles_valeurs.hasOwnProperty( 'champ_date_creation' )
-               && (nouvelles_valeurs.champ_date_creation === '1'
-                   || nouvelles_valeurs.champ_date_creation === 1)
-        ){
-            champ_date_creation=1;
-        }
-        if(nouvelles_valeurs.hasOwnProperty( 'champ_numero_de_revision' )
-               && (nouvelles_valeurs.champ_numero_de_revision === '1'
-                   || nouvelles_valeurs.champ_numero_de_revision === 1)
-        ){
-            champ_numero_de_revision=1;
         }
         if(nouvelles_valeurs.hasOwnProperty( 'refe_enfant_droite' )
                && (nouvelles_valeurs.refe_enfant_droite === '1'
@@ -5816,15 +5566,6 @@ class c_svg_bdd1{
         o1+='    genre(' + genre + '),';
         o1+='    afficher_champ_dans_svg(' + afficher_champ_dans_svg + '),';
         o1+='    espece_du_champ(' + espece_du_champ + '),';
-        if(champ_date_modification === 1){
-            o1+='    champ_date_modification(' + champ_date_modification + '),';
-        }
-        if(champ_date_creation === 1){
-            o1+='    champ_date_creation(' + champ_date_creation + '),';
-        }
-        if(champ_numero_de_revision === 1){
-            o1+='    champ_numero_de_revision(' + champ_numero_de_revision + '),';
-        }
         if(refe_enfant_droite === 1){
             o1+='    refe_enfant_droite(' + refe_enfant_droite + '),';
         }
@@ -5859,9 +5600,6 @@ class c_svg_bdd1{
                 "nom_bref_du_champ" : nom_bref_du_champ ,
                 "typologie" : typologie ,
                 "afficher_champ_dans_svg" : afficher_champ_dans_svg ,
-                "champ_date_modification" : champ_date_modification ,
-                "champ_date_creation" : champ_date_creation ,
-                "champ_numero_de_revision" : champ_numero_de_revision ,
                 "refe_enfant_droite" : refe_enfant_droite ,
                 "refe_parent_gauche" : refe_parent_gauche ,
                 "espece_du_champ" : espece_du_champ ,

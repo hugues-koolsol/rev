@@ -18,6 +18,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 1,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   3 => 
   array (
@@ -37,6 +38,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 2,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   12 => 
   array (
@@ -56,6 +58,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 3,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   4 => 
   array (
@@ -75,6 +78,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 4,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   8 => 
   array (
@@ -94,6 +98,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 5,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   9 => 
   array (
@@ -113,6 +118,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 6,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   10 => 
   array (
@@ -132,6 +138,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 7,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   7 => 
   array (
@@ -151,6 +158,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 8,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   11 => 
   array (
@@ -170,6 +178,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 9,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   6 => 
   array (
@@ -189,6 +198,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 10,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   5 => 
   array (
@@ -208,6 +218,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 11,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   14 => 
   array (
@@ -227,6 +238,7 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 12,
     'che_est_ts_genre' => 1,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   13 => 
   array (
@@ -246,6 +258,27 @@ $__liste_des_genres=array (
     'che_ordre_genre' => 13,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
+  ),
+  15 => 
+  array (
+    'chi_id_genre' => 15,
+    'chp_nom_genre' => 'nur',
+    'chp_espece_genre' => 'INTEGER',
+    'che_longueur_genre' => NULL,
+    'che_est_primaire_genre' => 0,
+    'che_est_incrément_genre' => 0,
+    'che_est_obligatoire_genre' => 1,
+    'che_a_init_genre' => 1,
+    'che_init_est_mot_genre' => 0,
+    'cht_valeur_init_genre' => '0',
+    'chp_prefixe_genre' => 'che',
+    'che_est_parmis_genre' => 0,
+    'cht_parmis_genre' => NULL,
+    'che_ordre_genre' => 14,
+    'che_est_ts_genre' => 0,
+    'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 1,
   ),
   102 => 
   array (
@@ -261,10 +294,11 @@ $__liste_des_genres=array (
     'cht_valeur_init_genre' => 'cht',
     'chp_prefixe_genre' => 'chp',
     'che_est_parmis_genre' => 1,
-    'cht_parmis_genre' => 'cht,chi,che,chx',
-    'che_ordre_genre' => 14,
+    'cht_parmis_genre' => 'cht,chi,che,chx,chp,chd',
+    'che_ordre_genre' => 15,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   101 => 
   array (
@@ -281,9 +315,10 @@ $__liste_des_genres=array (
     'chp_prefixe_genre' => 'chp',
     'che_est_parmis_genre' => 1,
     'cht_parmis_genre' => 'TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL',
-    'che_ordre_genre' => 15,
+    'che_ordre_genre' => 16,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   103 => 
   array (
@@ -300,9 +335,10 @@ $__liste_des_genres=array (
     'chp_prefixe_genre' => 'chp',
     'che_est_parmis_genre' => 1,
     'cht_parmis_genre' => 'liste_ecran,insert,select,update,delete,requete_manuelle',
-    'che_ordre_genre' => 16,
+    'che_ordre_genre' => 17,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   104 => 
   array (
@@ -319,9 +355,10 @@ $__liste_des_genres=array (
     'chp_prefixe_genre' => 'chp',
     'che_est_parmis_genre' => 1,
     'cht_parmis_genre' => 'sqlite,mysql',
-    'che_ordre_genre' => 17,
+    'che_ordre_genre' => 18,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   105 => 
   array (
@@ -338,9 +375,10 @@ $__liste_des_genres=array (
     'chp_prefixe_genre' => 'chp',
     'che_est_parmis_genre' => 1,
     'cht_parmis_genre' => 'i,c,f',
-    'che_ordre_genre' => 18,
+    'che_ordre_genre' => 19,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
   108 => 
   array (
@@ -357,9 +395,10 @@ $__liste_des_genres=array (
     'chp_prefixe_genre' => 'chp',
     'che_est_parmis_genre' => 0,
     'cht_parmis_genre' => NULL,
-    'che_ordre_genre' => 19,
+    'che_ordre_genre' => 20,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => 'test_du_nom_de_fichier1',
+    'che_est_nur_genre' => 0,
   ),
   106 => 
   array (
@@ -376,9 +415,10 @@ $__liste_des_genres=array (
     'chp_prefixe_genre' => 'chp',
     'che_est_parmis_genre' => 0,
     'cht_parmis_genre' => NULL,
-    'che_ordre_genre' => 20,
+    'che_ordre_genre' => 21,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => 'test_du_nom_de_fichier1',
+    'che_est_nur_genre' => 0,
   ),
   107 => 
   array (
@@ -395,9 +435,10 @@ $__liste_des_genres=array (
     'chp_prefixe_genre' => 'cht',
     'che_est_parmis_genre' => 0,
     'cht_parmis_genre' => NULL,
-    'che_ordre_genre' => 21,
+    'che_ordre_genre' => 22,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => 'test_fonctions_de_c_fonctions1',
+    'che_est_nur_genre' => 0,
   ),
   1 => 
   array (
@@ -414,8 +455,9 @@ $__liste_des_genres=array (
     'chp_prefixe_genre' => 'cht',
     'che_est_parmis_genre' => 0,
     'cht_parmis_genre' => NULL,
-    'che_ordre_genre' => 22,
+    'che_ordre_genre' => 23,
     'che_est_ts_genre' => 0,
     'cht_fonctions_genre' => NULL,
+    'che_est_nur_genre' => 0,
   ),
 );

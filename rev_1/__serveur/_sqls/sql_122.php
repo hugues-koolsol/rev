@@ -8,6 +8,7 @@ function sql_122($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`chp_priorite_tache` = '.sq0($par['n_chp_priorite_tache']).'';
     }
+    $tableau_champs[]='`chd__dtm_tache` = \''.$GLOBALS[__date_ms].'\' ';
 
     if(count($tableau_champs)===0){
         return array(/**/

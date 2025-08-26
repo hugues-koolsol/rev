@@ -23,7 +23,7 @@ class c_fonctions1{
       un nom de fichier ne doit contenir que des chiffres ou des lettres minuscules ou "_" ou "."
       =============================================================================================================
     */
-    function test_du_nom_de_fichier1($par,&$donnees_retournees=NULL){
+    function test_du_nom_de_fichier1($genre,$par,&$donnees_retournees=NULL){
         
         if($par === ''){
 

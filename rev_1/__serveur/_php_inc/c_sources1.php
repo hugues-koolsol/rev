@@ -636,7 +636,7 @@ class c_sources1{
         if($tt162[__xst] === __xsu){
          
          
-            $test=$GLOBALS['obj_fonctions1']->test_du_nom_de_fichier1($donnees_recues[__xva]['chp_nom_source'],$donnees_retournees);
+            $test=$GLOBALS['obj_fonctions1']->test_du_nom_de_fichier1(106,$donnees_recues[__xva]['chp_nom_source'],$donnees_retournees);
             if($test[__xst]!==__xsu){
 
                     $donnees_retournees[__x_signaux][__xer][]='ce nom de fichier n\'est pas admis [' . __LINE__ . ']';
