@@ -990,6 +990,54 @@ class _c_interface1{
         }
         return({"__xst" : __xsu ,"__xva" : {"recharger_la_page" : recharger_la_page}});
     }
+    
+    /*
+      =============================================================================================================
+    */
+    charger_module1( mat  ){
+     
+     
+        let chemin_module1='';
+        let initialisation1={};
+        let l01=mat.length;
+        
+        for( let i=1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'interface1.charger_module1'){
+                for( let k=i+1 ; k < l01 ; k=mat[k][12] ){
+                    if(mat[k][1] === 'chemin_module1' && mat[k][2] === 'f' && mat[k][8] === 1 && mat[k + 1][2] === 'c'){
+                        chemin_module1=mat[k + 1][1];
+                        initialisation1['chemin_module1']=mat[k + 1][1];
+                    }else if(mat[k][1] === 'initialisation1' && mat[k][2] === 'f'){
+                        for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                            if(mat[l][1] === '' && mat[l][2] === 'f' && mat[l][8] === 2){
+                                initialisation1[mat[l + 1][1]]=mat[l + 2][1];
+                            }
+                        }
+                    }
+                }
+                if(chemin_module1 !== ''){
+                    if(!this.liste_des_modules_dynamiques.hasOwnProperty( chemin_module1 )){
+                        this.liste_des_modules_dynamiques[chemin_module1]={"objet1" : null};
+                        let tt1=document.createElement( 'script' );
+                        tt1.setAttribute( 'type' , "module" );
+                        tt1.setAttribute( 'src' , chemin_module1 );
+                        tt1.setAttribute( 'data-initialisation1' , JSON.stringify( initialisation1 ) );
+                        /* tt1.setAttribute( 'data-chemin_module1' , JSON.stringify(chemin_module1)); */
+                        tt1.setAttribute( 'onload' , "__gi1.apres_module_charge1(this)" );
+                        document.getElementsByTagName( 'head' )[0].appendChild( tt1 );
+                    }else{
+                        /* déjà chargé */
+                        /* debugger */
+                        __gi1.liste_des_modules_dynamiques[chemin_module1].objet1[initialisation1.methode_initiale]( initialisation1 );
+                    }
+                }else{
+                    console.error( 'chemin_module1 non trouvé' );
+                }
+            }
+        }
+     
+    }
+    
     /*
       =============================================================================================================
     */
@@ -1002,6 +1050,11 @@ class _c_interface1{
         */
         let that=this;
         let module=await import( './' + obj_init.module_js1 );
+        /*
+            if(obj_init.chemin_module1==="_js/c_php_bdd1.js"){
+                debugger;
+            }
+        */        
         __gi1.liste_des_modules_dynamiques[obj_init.chemin_module1].objet1=new module[obj_init.nom_module1]( obj_init );
         __gi1.liste_des_modules_dynamiques[obj_init.chemin_module1].objet1[obj_init.methode_initiale]( obj_init );
     }
@@ -1838,7 +1891,11 @@ class _c_interface1{
                         let elts=conteneur.getElementsByTagName( '*' );
                         for( let j=0 ; j < elts.length ; j++ ){
                             if(elts[j].value !== null && elts[j].id){
-                                obj[__xva][elts[j].id]=elts[j].value;
+                                if(elts[j].type && elts[j].type.toLowerCase()==='checkbox'){
+                                    obj[__xva][elts[j].id]=elts[j].checked;
+                                }else{
+                                    obj[__xva][elts[j].id]=elts[j].value;
+                                }
                             }
                         }
                     }catch(e){
@@ -1910,6 +1967,7 @@ class _c_interface1{
       =============================================================================================================
     */
     envoyer_un_message_au_worker( obj ){
+     
         if(this.le_niveau_de_deverminage >= 1){
             console.log( '%c envoyer_un_message_au_worker' , 'background:red;color:yellow;' , obj );
         }
@@ -3189,7 +3247,7 @@ class _c_interface1{
         */
         /* t+=':root{}' */
         t+='*,*::before,*::after{box-sizing:border-box;}';
-        t+='html{background:linear-gradient(to bottom, #ECEFF1 0%, #DBDEE0 100%);min-height:100%;}';
+        t+='html{background:linear-gradient(to bottom, #ECEFF1 0%, #DBDEE0 100%);min-height:100%;overscroll-behavior: none;}';
         t+='body{';
         t+=' --t_police:' + this.#stockage_local.modif_util['--t_police']['val'] + this.#stockage_local.modif_util['--t_police']['dim'] + ';';
         t+=' --t_fenetre:' + this.#stockage_local.modif_util['--t_fenetre']['val'] + this.#stockage_local.modif_util['--t_fenetre']['dim'] + ';';

@@ -76,17 +76,25 @@ class c_cookies1{
             'chaine_de_test' => '+;="\'_-:[]{}\\' . "\n" . PHP_EOL,
             'date_de_maj' => time()
         );
-        
-        if($donnees_recues !== null && isset($donnees_recues[__x_action])){
+
+
+//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);
+        if(!is_null($donnees_recues) && isset($donnees_recues[__x_action])){
 
             $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($donnees_recues[__x_action]);
             
             if(count($obj_matrice[__xva]) > 1 && $obj_matrice[__xva][1][2] === 'f'){
 
                 $mat=$obj_matrice[__xva];
+                //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $mat , true ) . '</pre>' ; exit(0);
                 /*cookies.enregistrer( champ( id( 'taille_de_la_police' ) , valeur(20) ) )*/
                 $l01=count($mat);
+                /*
+                 le i=1 correspond à c_cookies1.enregistrer()
+                */
                 for( $i=2 ; $i < $l01 ; $i=$mat[$i][12] ){
+                 
+                 
                     
                     
                     if($mat[$i][1] === 'champ'){
@@ -130,6 +138,8 @@ class c_cookies1{
                         }
 
 
+                    }else if('enregistre_moi'===$mat[$i][1] && $mat[$i][2]==='f' && $mat[$i][8] === 1 && $mat[$i+1][2] === 'c' ){
+                         $valeur_cookie['enregistre_moi']=$mat[$i+1][1];
                     }
 
                 }
@@ -138,6 +148,10 @@ class c_cookies1{
 
 
         }
+        
+//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);
+//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $valeur_cookie , true ) . '</pre>' ; exit(0);
+        
 
         $arr_cookie_options=array(
             'expires' => time() + ((60 * 60) * 24) * 30,

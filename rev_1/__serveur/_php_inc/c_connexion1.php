@@ -56,20 +56,37 @@ class c_connexion1{
       =============================================================================================================
     */
     function traite_vv_formulaire_de_connexion(&$donnees_retournees,&$mat,&$donnees_recues,$erreur_de_connexion){
+     
+
+
+     
+       if($donnees_recues[__xva]['vv_se_souvenir_de_moi']===true && isset($donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur'])){
+        
+           require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . 'c_cookies1.php');
+           $cook=new c_cookies1();
+           $t1=array();
+           $t2=null;
+           $t3=array('__x_action'=>'c_cookies1.enregistrer(enregistre_moi(\''.str_replace('\'','\\\'',str_replace('\\','\\\\',$donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur'])).'\'))');
+           $cook->enregistrer($t1,$t2,$t3);
+        
+       }
+
         
         if(!isset($donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur'])){
 
-            $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues,__xer,'');
+            $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
             return;
 
         }
+        
+        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);
 
         
         if(!(isset($donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur'])
                && isset($donnees_recues[__xva]['vv_chp_mot_de_passe_utilisateur']))
         ){
 
-            $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues,__xer,$donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur']);
+            $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
             return;
 
         }
@@ -94,14 +111,16 @@ class c_connexion1{
         
         if($tt[__xst] === __xer){
 
-            $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues,__xer,$donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur']);
+            $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
             $donnees_retournees[__x_signaux][__xer][]='erreur sql [' . __LINE__ . ']';
             return;
 
         }
+        
+//        echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( count($tt[__xva])===1 && password_verify($donnees_recues[__xva]['vv_chp_mot_de_passe_utilisateur'],$tt[__xva][0]['T0.chp_mot_de_passe_utilisateur']) , true ) . '</pre>' ; exit(0);
 
         
-        if(password_verify($donnees_recues[__xva]['vv_chp_mot_de_passe_utilisateur'],$tt[__xva][0]['T0.chp_mot_de_passe_utilisateur'])
+        if(count($tt[__xva])===1 && password_verify($donnees_recues[__xva]['vv_chp_mot_de_passe_utilisateur'],$tt[__xva][0]['T0.chp_mot_de_passe_utilisateur'])
         ){
 
             /*
@@ -119,6 +138,7 @@ class c_connexion1{
             $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_courant']=$tt[__xva][0]['T1.chx_metier_acces'];
             $_SESSION[__X_CLE_APPLICATION]['chx_metier_utilisateur_initial']=$tt[__xva][0]['T1.chx_metier_acces'];
             $_SESSION[__X_CLE_APPLICATION]['chx_acces_utilisateur']=$tt[__xva][0]['T0.chx_acces_utilisateur'];
+            
             $donnees_retournees[__x_ligne]=__LINE__;
             $donnees_retournees[__x_authentifie]=__xsu;
             $donnees_retournees[__xbo]=obtenir_les_menus($donnees_retournees);
@@ -135,11 +155,12 @@ class c_connexion1{
                 $donnees_retournees
             );
             
-            if(isset($donnees_recues[__xva]['vv_redirection']) && $donnees_recues[__xva]['vv_redirection'] !== ''){
+            if(isset($donnees_recues[__xva]['vv_redirection']) && $donnees_recues[__xva]['vv_redirection'] !== '' && 'c_connexion1.formulaire1(conteneur1(vv_formulaire_de_connexion))' !== $donnees_recues[__xva]['vv_redirection']){
 
                 $donnees_recues[__x_action]=$donnees_recues[__xva]['vv_redirection'];
                 $donnees_recues[__xva]=array();
                 traite_autre_fonction($donnees_recues,$donnees_retournees);
+                $donnees_retournees[__xst]=__xsu;
 
             }else{
 
@@ -150,7 +171,8 @@ class c_connexion1{
 
         }else{
 
-            $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues,__xer,$donnees_recues[__xva]['vv_chp_nom_de_connexion_utilisateur']);
+            $donnees_retournees[__x_signaux][__xer][]='⚠ Il y a eu une erreur de connexion avec ce nom, réessayez [' . __LINE__ . ']';
+            $this->recupere_la_page_de_connexion($donnees_retournees,$mat,$donnees_recues);
             return;
         }
 
@@ -158,7 +180,8 @@ class c_connexion1{
     /*
       =============================================================================================================
     */
-    public function recupere_la_page_de_connexion(&$donnees_retournees,&$mat,&$donnees_recues,$erreur_de_connexion=__xsu,$nom_de_connexion='webmaster@example.com'){
+    public function recupere_la_page_de_connexion(&$donnees_retournees,&$mat,&$donnees_recues){
+        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( __LINE__ , true ) . '</pre>' ; exit(0);
         $connecte=false;
         $txt='<h1 style="color:red;">connexion</h1>';
         
@@ -184,7 +207,7 @@ class c_connexion1{
 
         }
 
-        
+        $nom_de_connexion='';
         if($connecte === true){
 
             $txt .= '<div class="hug_bouton" data-hug_click="c_connexion1.se_deconnecter()" title="déconnexion">déconnexion</div>';
@@ -193,20 +216,27 @@ class c_connexion1{
         }else{
 
             
-            if($erreur_de_connexion === __xer){
+            if(isset($_COOKIE[__X_CLE_APPLICATION])){
 
-                $txt .= '<div>';
-                $txt .= '<div class="yy__x_signaux_2"> ⚠ Il y a eu une erreur de connexion avec ce nom, réessayez</div>';
-                $txt .= '</div>';
-
+                $tcok=json_decode($_COOKIE[__X_CLE_APPLICATION],true);
+                if(isset($tcok['enregistre_moi'])){
+                    $nom_de_connexion=$tcok['enregistre_moi'];
+                }
             }
+            
 
-            $txt .= '<div id="vv_formulaire_de_connexion">';
-            $txt .= '  <span>nom</span>';
-            $txt .= '  <input type="text" id="vv_chp_nom_de_connexion_utilisateur" autocomplete="off" name="nom" value="' . $nom_de_connexion . '" autocapitalize="off" />';
-            $txt .= '  <br />';
-            $txt .= '  <span>mot de passe</span>';
-            $txt .= '  <input type="password" autocomplete="off" id="vv_chp_mot_de_passe_utilisateur" value="" />';
+            $txt .= '<table border="1" id="vv_formulaire_de_connexion" style="width:300px;">';
+            $txt .= ' <tr>';
+            $txt .= '  <td style="text-align:right;">nom&nbsp;</td>';
+            $txt .= '  <td><input type="text" id="vv_chp_nom_de_connexion_utilisateur" name="nom" value="' . $nom_de_connexion . '" autocapitalize="off" /></td>';
+            $txt .= ' </tr>';
+            $txt .= ' <tr>';
+            $txt .= '  <td style="text-align:right;">mot de passe&nbsp;</td>';
+            $txt .= '  <td><input type="password" autocomplete="off" id="vv_chp_mot_de_passe_utilisateur" value="" /></td>';
+            $txt .= ' </tr>';
+            $txt .= ' <tr>';
+            $txt .= '  <td>se souvenir &nbsp;<br />de mon nom&nbsp;</td>';
+            $txt .= '  <td style="text-align:center;"><input type="checkbox" id="vv_se_souvenir_de_moi"  /></td>';
             $redirection='';
             
             if(!($donnees_recues['__x_action'] === 'c_connexion1.recupere_la_page_de_connexion()'
@@ -217,11 +247,18 @@ class c_connexion1{
 
             }
 
-            $txt .= '  <input type="hidden" autocomplete="off" id="vv_redirection" value="' . enti1($redirection) . '" />';
-            $txt .= '  <div class="hug_bouton" data-hug_click="c_connexion1.formulaire1(conteneur1(vv_formulaire_de_connexion))" title="Cliquez ici pour vous connecter">connexion</div>';
-            $txt .= '</div>';
+            $txt .= ' </tr>';
+            $txt .= ' <tr>';
+            $txt .= '  <td colspan="2" style="text-align:center;">';
+            $txt .= '   <input type="hidden" autocomplete="off" id="vv_redirection" value="' . enti1($redirection) . '" />';
+            $txt .= '   <div class="hug_bouton" data-hug_click="c_connexion1.formulaire1(conteneur1(vv_formulaire_de_connexion))" title="Cliquez ici pour vous connecter">connexion</div>';
+            $txt .= '  </td>';
+            $txt .= ' </tr>';
+            $txt .= '</table>';
+            $txt .= '<div style="text-align:center;margin-top:20px;">';
             $txt .= 'ou bien aller ici: <div class="hug_bouton" data-hug_click="c_accueil1.recupere_la_page_d_accueil()" title="affiche la page d\'accueil">Accueil</div>';
-            /* $txt .= '<div>'.var_export($donnees_recues,true).'</div>'; */
+            $txt .= '</div>';
+//            $txt .= '<div>'.var_export($nom_de_connexion,true).'</div>'; 
         }
 
         $donnees_retournees[__x_page] .= $txt;
