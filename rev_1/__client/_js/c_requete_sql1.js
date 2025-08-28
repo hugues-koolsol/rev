@@ -19,7 +19,7 @@ class c_requete_sql1{
     */
     #obj_webs={
         "type_de_requete" : 'select' ,
-        "bases" : [] ,
+        "bases" : {} ,
         "ordre_des_tables" : [] ,
         "nom_zone_cible" : 'champs_sortie' ,
         "indice_table_pour_jointure_gauche" : 0 ,
@@ -151,6 +151,12 @@ class c_requete_sql1{
         let nom_de_la_table='';
         var indice_de_la_base={};
         for(indice_de_la_base in init.bases){
+            
+            this.#obj_webs['bases'][indice_de_la_base]={
+                selectionne:false, 
+                chi_id_basedd:parseInt(indice_de_la_base,10) ,
+                tables : {}
+            };
             this.#obj_webs.tableau_des_bases_tables_champs[indice_de_la_base]={};
             var tab2=init.bases[indice_de_la_base].matrice;
             var l02=tab2.length;
@@ -164,6 +170,7 @@ class c_requete_sql1{
                         }
                     }
                     if(nom_de_la_table !== ''){
+                        this.#obj_webs['bases'][indice_de_la_base]['tables'][nom_de_la_table]={champs:[]}
                         this.#obj_webs.tableau_des_bases_tables_champs[indice_de_la_base][nom_de_la_table]={"champs" : {}};
                         for( let l=j + 1 ; l < l02 ; l=tab2[l][12] ){
                             if(tab2[l][1] === 'fields' || tab2[l][1] === 'champs'){
@@ -173,7 +180,7 @@ class c_requete_sql1{
                                         for( let n=m + 1 ; n < l02 ; n=tab2[n][12] ){
                                             if(tab2[n][1] === 'nom_du_champ'){
                                                 nom_du_champ=tab2[n + 1][1];
-                                                this.#obj_webs.tableau_des_bases_tables_champs[indice_de_la_base][nom_de_la_table]['champs'][nom_du_champ]={};
+                                                this.#obj_webs.tableau_des_bases_tables_champs[indice_de_la_base][nom_de_la_table]['champs'][nom_du_champ]={"nom_du_champ" : nom_du_champ};
                                             }
                                         }
                                         if(nom_du_champ !== ''){
@@ -205,6 +212,12 @@ class c_requete_sql1{
 //                                                 console.log('tab2[n][1]='+tab2[n][1]);
                                                 }
                                             }
+                                        }
+                                        if(nom_du_champ!==''){
+
+                                            this.#obj_webs['bases'][indice_de_la_base]['tables'][nom_de_la_table]['champs'].push(
+                                             this.#obj_webs.tableau_des_bases_tables_champs[indice_de_la_base][nom_de_la_table]['champs'][nom_du_champ]
+                                            );
                                         }
                                     }
                                 }
@@ -737,6 +750,7 @@ class c_requete_sql1{
             }else{
                 this.#enrichir_tableau_des_bases_tables_champs( init );
                 var sauvegarde=localStorage.getItem( __X_CLE_APPLICATION + '_derniere_requete' );
+                let avant=JSON.stringify( this.#obj_webs.bases );
                 if(sauvegarde !== null){
                     sauvegarde=JSON.parse( sauvegarde );
                     /*
@@ -779,14 +793,28 @@ class c_requete_sql1{
                           this.#obj_init['bases']
                           init.bases[i].tables
                         */
-                        let avant=JSON.stringify( this.#obj_init['bases'] );
+                        /* let avant=JSON.stringify( this.#obj_init['bases'] ); */
+                        let tt=JSON.parse( JSON.stringify( sauvegarde ) );
                         this.#obj_webs=JSON.parse( JSON.stringify( sauvegarde ) );
                         this.#obj_webs.bases=JSON.parse( avant );
+                        for(let i in tt['bases']){
+                            this.#obj_webs.bases[i].selectionne=tt.bases[i].selectionne;
+                        }
+                         
                     }else{
                         this.#obj_webs=JSON.parse( JSON.stringify( init ) );
+                        this.#obj_webs.bases=JSON.parse( avant );
+                        if(sauvegarde.bases){
+                            for(let i in sauvegarde.bases){
+                                if(sauvegarde.bases[i].hasOwnProperty('selectionne') && sauvegarde.bases[i].selectionne===true && this.#obj_webs.bases[i]){
+                                    this.#obj_webs.bases[i].selectionne=sauvegarde.bases[i].selectionne;
+                                }
+                            }
+                        }
                     }
                 }else{
                     this.#obj_webs=JSON.parse( JSON.stringify( init ) );
+                    this.#obj_webs.bases=JSON.parse( avant );
                 }
                 this.#mettre_en_stokage_local_et_afficher();
             }
@@ -938,7 +966,7 @@ class c_requete_sql1{
                 }
             }
         }
-        this.#enrichir_tableau_des_bases_tables_champs( this.#obj_webs );
+//        this.#enrichir_tableau_des_bases_tables_champs( this.#obj_webs );
         this.#mettre_en_stokage_local_et_afficher();
     }
     /*
@@ -1381,6 +1409,7 @@ class c_requete_sql1{
             t+='<div class="hug_bouton" data-hug_click="' + cmd + '">' + tab_ex[i] + '</div>';
         }
         var contenu='';
+        debugger
         if("requete_manuelle" === this.#obj_webs.type_de_requete){
         }else if(("liste_ecran" === this.#obj_webs.type_de_requete
                    || "select" === this.#obj_webs.type_de_requete)
@@ -1808,6 +1837,7 @@ class c_requete_sql1{
             }
         }
         t+='<hr />';
+
         if(this.#obj_webs['ordre_des_tables'].length > 0){
             t+='<table id="ordre_des_tables" style="max-width:100%;">';
             var i=0;
@@ -1853,7 +1883,11 @@ class c_requete_sql1{
                 }
                 t+='<td>';
                 var id_du_champ={};
+
                 for(id_du_champ in this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs']){
+                 
+                 
+//                 for(id_du_champ in  this.#obj_webs.tableau_des_bases_tables_champs[elem.id_bdd][elem.nom_de_la_table]['champs']){
                     var cmd='';
                     cmd+='interface1.module1(';
                     cmd+=' chemin_module1(\'_js/c_requete_sql1.js\'),';

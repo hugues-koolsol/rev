@@ -1495,9 +1495,8 @@ class c_rev_vers_sql1{
                                     chaine_meta_table=chaine_meta_table.replace( /,genre_meta\(/g , ',\r\n   genre_meta(' );
                                     chaine_meta_table=chaine_meta_table.replace( /,table\(/g , ',\r\n   table(' );
                                     chaine_meta_table=chaine_meta_table.replace( /,nom_de_la_table\(/g , ',\r\n   nom_de_la_table(' );
-                                    chaine_meta_table=chaine_meta_table.replace( /,nom_long_de_la_table\(/g , ',\r\n   nom_long_de_la_table(' );
-                                    chaine_meta_table=chaine_meta_table.replace( /,nom_court_de_la_table\(/g , ',\r\n   nom_court_de_la_table(' );
-                                    chaine_meta_table=chaine_meta_table.replace( /,nom_bref_de_la_table\(/g , ',\r\n   nom_bref_de_la_table(' );
+                                    chaine_meta_table=chaine_meta_table.replace( /,distinction_pour_liste\(/g , ',\r\n   distinction_pour_liste(' );
+                                    chaine_meta_table=chaine_meta_table.replace( /,distinction_pour_isad\(/g , ',\r\n   distinction_pour_isad(' );
                                     chaine_meta_table=chaine_meta_table.replace( /,transform_table_sur_svg\(/g , ',\r\n   transform_table_sur_svg(' );
                                     chaine_meta_table=chaine_meta_table.replace( /,default_charset\(/g , ',\r\n   default_charset(' );
                                     chaine_meta_table=chaine_meta_table.replace( /,collate\(/g , ',\r\n   collate(' );
@@ -1511,9 +1510,8 @@ class c_rev_vers_sql1{
                         if(chaine_meta_table === ''){
                             chaine_meta_table='/* meta(';
                             chaine_meta_table+='(table , \'' + nom_table_en_cours + '\'),';
-                            chaine_meta_table+='(nom_long_de_la_table  , \'à faire ' + nom_table_en_cours + '\'),';
-                            chaine_meta_table+='(nom_court_de_la_table , \'à faire ' + nom_table_en_cours + '\'),';
-                            chaine_meta_table+='(nom_bref_de_la_table  , \'à faire ' + nom_table_en_cours + '\'),';
+                            chaine_meta_table+='(distinction_pour_liste  , \'à faire ' + nom_table_en_cours + '\'),';
+                            chaine_meta_table+='(distinction_pour_isad , \'à faire ' + nom_table_en_cours + '\'),';
                             chaine_meta_table+=') */';
                             donnees_table.chaine_meta=chaine_meta_table;
                         }
@@ -1837,9 +1835,8 @@ class c_rev_vers_sql1{
             */
             var liste_meta_table={
                 "table" : nom_de_la_table ,
-                "nom_long_de_la_table" : 'à faire ' + nom_de_la_table + '' ,
-                "nom_court_de_la_table" : 'à faire ' + nom_de_la_table + '' ,
-                "nom_bref_de_la_table" : 'à faire ' + nom_de_la_table + '' ,
+                "distinction_pour_liste" : 'liste des ' + nom_de_la_table + '' ,
+                "distinction_pour_isad" : 'de ' + distinction_pour_isad + '' ,
                 "transform_table_sur_svg" : '' ,
                 "engine" : '' ,
                 "default_charset" : '' ,

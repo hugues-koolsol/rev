@@ -12,9 +12,8 @@ CREATE TABLE tbl_revs(
  meta(nom_de_la_table('tbl_revs'),
    table('tbl_revs'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('à faire tbl_revs'),
-   nom_court_de_la_table('à faire tbl_revs'),
-   nom_bref_de_la_table('à faire tbl_revs'),
+   distinction_pour_liste('liste des revs'),
+   distinction_pour_isad('d\'un rev'),
    transform_table_sur_svg(translate(813.5,17.5))) 
 */
     
@@ -311,9 +310,8 @@ CREATE TABLE tbl_dossiers(
  meta(nom_de_la_table('tbl_dossiers'),
    table('tbl_dossiers'),
    genre_meta(table_de_base),
-   nom_long_de_la_table(''),
-   nom_court_de_la_table(''),
-   nom_bref_de_la_table(''),
+   distinction_pour_liste('liste des dossiers'),
+   distinction_pour_isad('d\'un dossier'),
    transform_table_sur_svg(translate(271.5,153.5))) 
 */
     
@@ -450,9 +448,8 @@ CREATE TABLE tbl_groupes(
  meta(nom_de_la_table('tbl_groupes'),
    table('tbl_groupes'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_groupes'),
-   nom_court_de_la_table('A faire tbl_groupes'),
-   nom_bref_de_la_table('A faire tbl_groupes'),
+   distinction_pour_liste('liste des groupes'),
+   distinction_pour_isad('d\'un groupe'),
    transform_table_sur_svg(translate(17.5,213.5))) 
 */
     
@@ -509,9 +506,8 @@ CREATE TABLE tbl_metiers(
  meta(nom_de_la_table('tbl_metiers'),
    table('tbl_metiers'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_metiers'),
-   nom_court_de_la_table('A faire tbl_metiers'),
-   nom_bref_de_la_table('A faire tbl_metiers'),
+   distinction_pour_liste('liste des metiers'),
+   distinction_pour_isad('d\'un metier'),
    transform_table_sur_svg(translate(10.5,313.5))) 
 */
     
@@ -568,9 +564,8 @@ CREATE TABLE tbl_acces(
  meta(nom_de_la_table('tbl_acces'),
    table('tbl_acces'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_acces'),
-   nom_court_de_la_table('A faire tbl_acces'),
-   nom_bref_de_la_table('A faire tbl_acces'),
+   distinction_pour_liste('liste des acces'),
+   distinction_pour_isad('d\'un acces'),
    transform_table_sur_svg(translate(188.5,310.5))) 
 */
     
@@ -659,10 +654,9 @@ CREATE TABLE tbl_autorisations(
  meta(nom_de_la_table('tbl_autorisations'),
    table('tbl_autorisations'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_autorisations'),
-   nom_court_de_la_table('A faire tbl_autorisations'),
-   nom_bref_de_la_table('A faire tbl_autorisations'),
-   transform_table_sur_svg(translate(392.5,301.5))) 
+   distinction_pour_liste('liste des autorisations'),
+   distinction_pour_isad('d\'une autorisation'),
+   transform_table_sur_svg(translate(390.5,353.5))) 
 */
     
             /*
@@ -718,9 +712,8 @@ CREATE TABLE tbl_genres(
  meta(nom_de_la_table('tbl_genres'),
    table('tbl_genres'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_genres'),
-   nom_court_de_la_table('A faire tbl_genres'),
-   nom_bref_de_la_table('A faire tbl_genres'),
+   distinction_pour_liste('liste des genres'),
+   distinction_pour_isad('d\'un genre'),
    transform_table_sur_svg(translate(68.5,456.5))) 
 */
     
@@ -1001,9 +994,8 @@ CREATE TABLE tbl_projets(
  meta(nom_de_la_table('tbl_projets'),
    table('tbl_projets'),
    genre_meta(table_de_base),
-   nom_long_de_la_table(''),
-   nom_court_de_la_table(''),
-   nom_bref_de_la_table(''),
+   distinction_pour_liste('liste des projets'),
+   distinction_pour_isad('d\'un projet'),
    transform_table_sur_svg(translate(272.5,9.5))) 
 */
     
@@ -1140,9 +1132,8 @@ CREATE TABLE tbl_taches(
  meta(nom_de_la_table('tbl_taches'),
    table('tbl_taches'),
    genre_meta(table_de_base),
-   nom_long_de_la_table(''),
-   nom_court_de_la_table(''),
-   nom_bref_de_la_table(''),
+   distinction_pour_liste('liste des taches'),
+   distinction_pour_isad('d\'une tache'),
    transform_table_sur_svg(translate(881.5,536.5))) 
 */
     
@@ -1279,9 +1270,8 @@ CREATE TABLE tbl_utilisateurs(
  meta(nom_de_la_table('tbl_utilisateurs'),
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('liste des utilisateurs'),
-   nom_court_de_la_table('un utilisateur'),
-   nom_bref_de_la_table('utilisateurs'),
+   distinction_pour_liste('liste des utilisateurs'),
+   distinction_pour_isad('d\'un utilisateur'),
    transform_table_sur_svg(translate(603.5,464.5))) 
 */
     
@@ -1450,9 +1440,8 @@ CREATE TABLE tbl_sources(
  meta(nom_de_la_table('tbl_sources'),
    table('tbl_sources'),
    genre_meta(table_de_base),
-   nom_long_de_la_table(''),
-   nom_court_de_la_table(''),
-   nom_bref_de_la_table(''),
+   distinction_pour_liste('liste des sources'),
+   distinction_pour_isad('d\'un source'),
    transform_table_sur_svg(translate(593.5,58.5))) 
 */
     
@@ -1637,9 +1626,8 @@ CREATE TABLE tbl_bdds(
  meta(nom_de_la_table('tbl_bdds'),
    table('tbl_bdds'),
    genre_meta(table_de_base),
-   nom_long_de_la_table(''),
-   nom_court_de_la_table(''),
-   nom_bref_de_la_table(''),
+   distinction_pour_liste('liste des bases de données'),
+   distinction_pour_isad('d\'une base de donnée'),
    transform_table_sur_svg(translate(604.5,268.5))) 
 */
     
@@ -1792,9 +1780,8 @@ CREATE TABLE tbl_requetes(
  meta(nom_de_la_table('tbl_requetes'),
    table('tbl_requetes'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('AFR tbl_requetes'),
-   nom_court_de_la_table('AFR tbl_requetes'),
-   nom_bref_de_la_table('AFR tbl_requetes'),
+   distinction_pour_liste('liste des requetes'),
+   distinction_pour_isad('d\'une requete'),
    transform_table_sur_svg(translate(8.5,27.5))) 
 */
     
@@ -1979,9 +1966,8 @@ CREATE TABLE tbl_menus(
  meta(nom_de_la_table('tbl_menus'),
    table('tbl_menus'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_menus'),
-   nom_court_de_la_table('A faire tbl_menus'),
-   nom_bref_de_la_table('A faire tbl_menus'),
+   distinction_pour_liste('liste des menus'),
+   distinction_pour_isad('d\'un menu'),
    transform_table_sur_svg(translate(362.5,474.5))) 
 */
     
@@ -2206,7 +2192,7 @@ chp_nom_acces,
 chx_groupe_acces,
 chx_metier_acces,
 cht_parametres_acces) VALUES
-('1','tout','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"230\" data-chp_nom_source=\"c_projets1.php\" data-chp_methode_menu=\"page_projets_liste1\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\"><span style=\"background:red;color:yellow;\">projets<\/span><\/li><li data-chi_id_source=\"61\" data-chp_nom_source=\"c_taches1.php\" data-chp_methode_menu=\"page_liste_des_taches1\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"T0_chp_priorite_tache2(99)\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"Liste des t\u00e2ches\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">t\u00e2ches<\/li><li data-chi_id_source=\"225\" data-chp_nom_source=\"c_dossiers1.php\" data-chp_methode_menu=\"page_dossiers_liste1\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">fido<\/li><li data-chi_id_source=\"241\" data-chp_nom_source=\"c_sources1.php\" data-chp_methode_menu=\"page_liste_des_sources1\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">sources<\/li><li data-chi_id_source=\"358\" data-chp_nom_source=\"c_genres1.php\" data-chp_methode_menu=\"page_liste_des_genres1\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des types de bonn\u00e9es dans la bdd\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">genres<\/li><li data-chi_id_source=\"353\" data-chp_nom_source=\"c_bases1.php\" data-chp_methode_menu=\"page_liste_des_bases1\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">bases<\/li><li data-chi_id_source=\"231\" data-chp_nom_source=\"c_requetes1.php\" data-chp_methode_menu=\"page_liste_des_requetes1\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des requ\u00eates sur les bases\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">requ\u00eates<\/li><li data-chi_id_source=\"240\" data-chp_nom_source=\"c_revs1.php\" data-chp_methode_menu=\"page_liste_des_revs1\" data-chi_id_menu=\"13\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">(\ud83d\ude0a)<\/li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"56\" data-chp_nom_source=\"c_groupes1.php\" data-chp_methode_menu=\"page_liste_des_groupes1\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">groupes<\/li><li data-chi_id_source=\"58\" data-chp_nom_source=\"c_metiers1.php\" data-chp_methode_menu=\"page_liste_des_metiers1\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des m\u00e9tiers\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">m\u00e9tiers<\/li><li data-chi_id_source=\"50\" data-chp_nom_source=\"c_acces1.php\" data-chp_methode_menu=\"page_liste_des_acces1\" data-chi_id_menu=\"16\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des acc\u00e8s\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">acc\u00e8s<\/li><li data-chi_id_source=\"62\" data-chp_nom_source=\"c_utilisateurs1.php\" data-chp_methode_menu=\"page_liste_des_utilisateurs1\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">utilisateurs<\/li><li data-chi_id_source=\"356\" data-chp_nom_source=\"c_autorisations1.php\" data-chp_methode_menu=\"page_liste_des_autorisations1\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">autorisations<\/li><li data-chi_id_source=\"357\" data-chp_nom_source=\"c_menus1.php\" data-chp_methode_menu=\"page_liste_des_menus1\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">menus<\/li><\/ul><\/li><li data-liste_des_menus=\"1\">outils<ul><li data-chi_id_source=\"235\" data-chp_nom_source=\"c_rev_mat1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">matrice<\/li><li data-chi_id_source=\"234\" data-chp_nom_source=\"c_rev_js1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\n)\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">js<\/li><li data-chi_id_source=\"233\" data-chp_nom_source=\"c_rev_html1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\n)\" data-chp_titre_menu=\"html\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">html<\/li><li data-chi_id_source=\"236\" data-chp_nom_source=\"c_rev_php1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\n)\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">php<\/li><li data-chi_id_source=\"237\" data-chp_nom_source=\"c_rev_sql1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_sql_rev1),\n      composante(value),\n      avec(\n        valeur_de_localstorage(\n          zones_sauvegard\u00e9es,\n          ls_sql_rev1\n        )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">sql<\/li><li data-chi_id_source=\"232\" data-chp_nom_source=\"c_rev_css1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_css_rev1),\n      composante(value),\n      avec(\n         valeur_de_localstorage(\n            zones_sauvegard\u00e9es,\n            ls_css_rev1\n         )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">css<\/li><li data-chi_id_source=\"238\" data-chp_nom_source=\"c_rev_texte1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">txt<\/li><\/ul><\/li><li data-chi_id_source=\"59\" data-chp_nom_source=\"c_profile1.php\" data-chp_methode_menu=\"recupere_la_page_des_coordonnees\" data-chi_id_menu=\"20\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"mon profile\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"-9 -7  20 21\">\n    <g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\">\n        <circle cx=\"0\" cy=\"0\" r=\"6\"><\/circle>\n        <path d=\" M -8 11 C -6 6 6 6 8 11 \"><\/path>\n        <circle cx=\"-2\" cy=\"-1\" r=\"1\"><\/circle>\n        <circle cx=\"2\" cy=\"-1\" r=\"1\"><\/circle>\n        <path d=\"M -2 2 C -3 4 3 4 2 2 \"><\/path>\n        <path d=\"M 0 0 V 2 \"><\/path>\n        <path d=\"M -3 -1   H -6    \"><\/path>\n        <path d=\"M 3 -1   H 6    \"><\/path>\n        <path d=\"M -1 -1 c 0 -1 2 -1 2 0 \"><\/path>\n    <\/g>\n<\/svg><\/li>  ","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<span style=\\\"background:red;color:yellow;\\\">projets<\/span>\",\"attributs\":{\"data-chi_id_source\":\"230\",\"data-chp_nom_source\":\"c_projets1.php\",\"data-chp_methode_menu\":\"page_projets_liste1\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des projets\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"t\u00e2ches\",\"attributs\":{\"data-chi_id_source\":\"61\",\"data-chp_nom_source\":\"c_taches1.php\",\"data-chp_methode_menu\":\"page_liste_des_taches1\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"T0_chp_priorite_tache2(99)\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"Liste des t\u00e2ches\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"fido\",\"attributs\":{\"data-chi_id_source\":\"225\",\"data-chp_nom_source\":\"c_dossiers1.php\",\"data-chp_methode_menu\":\"page_dossiers_liste1\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"241\",\"data-chp_nom_source\":\"c_sources1.php\",\"data-chp_methode_menu\":\"page_liste_des_sources1\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des sources des programmes\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":5,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"358\",\"data-chp_nom_source\":\"c_genres1.php\",\"data-chp_methode_menu\":\"page_liste_des_genres1\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des types de bonn\u00e9es dans la bdd\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":6,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"353\",\"data-chp_nom_source\":\"c_bases1.php\",\"data-chp_methode_menu\":\"page_liste_des_bases1\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des bases\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":7,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requ\u00eates\",\"attributs\":{\"data-chi_id_source\":\"231\",\"data-chp_nom_source\":\"c_requetes1.php\",\"data-chp_methode_menu\":\"page_liste_des_requetes1\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des requ\u00eates sur les bases\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":8,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"(\ud83d\ude0a)\",\"attributs\":{\"data-chi_id_source\":\"240\",\"data-chp_nom_source\":\"c_revs1.php\",\"data-chp_methode_menu\":\"page_liste_des_revs1\",\"data-chi_id_menu\":\"13\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des revs\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":9,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":6,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":10,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"56\",\"data-chp_nom_source\":\"c_groupes1.php\",\"data-chp_methode_menu\":\"page_liste_des_groupes1\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des groupes\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":11,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"m\u00e9tiers\",\"attributs\":{\"data-chi_id_source\":\"58\",\"data-chp_nom_source\":\"c_metiers1.php\",\"data-chp_methode_menu\":\"page_liste_des_metiers1\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des m\u00e9tiers\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":12,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"acc\u00e8s\",\"attributs\":{\"data-chi_id_source\":\"50\",\"data-chp_nom_source\":\"c_acces1.php\",\"data-chp_methode_menu\":\"page_liste_des_acces1\",\"data-chi_id_menu\":\"16\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des acc\u00e8s\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":13,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"62\",\"data-chp_nom_source\":\"c_utilisateurs1.php\",\"data-chp_methode_menu\":\"page_liste_des_utilisateurs1\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des utilisateurs\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":14,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"356\",\"data-chp_nom_source\":\"c_autorisations1.php\",\"data-chp_methode_menu\":\"page_liste_des_autorisations1\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des autorisations\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":15,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"357\",\"data-chp_nom_source\":\"c_menus1.php\",\"data-chp_methode_menu\":\"page_liste_des_menus1\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des menus\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":16,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":7,\"contenu\":\"outils\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":17,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"235\",\"data-chp_nom_source\":\"c_rev_mat1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":18,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"234\",\"data-chp_nom_source\":\"c_rev_js1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":19,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"233\",\"data-chp_nom_source\":\"c_rev_html1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\\n)\",\"data-chp_titre_menu\":\"html\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":20,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"236\",\"data-chp_nom_source\":\"c_rev_php1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de php\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":21,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"237\",\"data-chp_nom_source\":\"c_rev_sql1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_sql_rev1),\\n      composante(value),\\n      avec(\\n        valeur_de_localstorage(\\n          zones_sauvegard\u00e9es,\\n          ls_sql_rev1\\n        )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de sql\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":22,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"232\",\"data-chp_nom_source\":\"c_rev_css1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_css_rev1),\\n      composante(value),\\n      avec(\\n         valeur_de_localstorage(\\n            zones_sauvegard\u00e9es,\\n            ls_css_rev1\\n         )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de css\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":23,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"238\",\"data-chp_nom_source\":\"c_rev_texte1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\",\"data-chp_titre_menu\":\"convertion de textes\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":24,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg xmlns=\\\"http:\/\/www.w3.org\/2000\/svg\\\" viewBox=\\\"-9 -7  20 21\\\">\\n    <g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\\\">\\n        <circle cx=\\\"0\\\" cy=\\\"0\\\" r=\\\"6\\\"><\/circle>\\n        <path d=\\\" M -8 11 C -6 6 6 6 8 11 \\\"><\/path>\\n        <circle cx=\\\"-2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <circle cx=\\\"2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <path d=\\\"M -2 2 C -3 4 3 4 2 2 \\\"><\/path>\\n        <path d=\\\"M 0 0 V 2 \\\"><\/path>\\n        <path d=\\\"M -3 -1   H -6    \\\"><\/path>\\n        <path d=\\\"M 3 -1   H 6    \\\"><\/path>\\n        <path d=\\\"M -1 -1 c 0 -1 2 -1 2 0 \\\"><\/path>\\n    <\/g>\\n<\/svg>\",\"attributs\":{\"data-chi_id_source\":\"59\",\"data-chp_nom_source\":\"c_profile1.php\",\"data-chp_methode_menu\":\"recupere_la_page_des_coordonnees\",\"data-chi_id_menu\":\"20\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"mon profile\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}}]"}'),
+('1','tout','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"230\" data-chp_nom_source=\"c_projets1.php\" data-chp_methode_menu=\"page_projets_liste1\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">projets<\/li><li data-chi_id_source=\"61\" data-chp_nom_source=\"c_taches1.php\" data-chp_methode_menu=\"page_liste_des_taches1\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"T0_chp_priorite_tache2(99)\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"Liste des t\u00e2ches\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">t\u00e2ches<\/li><li data-chi_id_source=\"225\" data-chp_nom_source=\"c_dossiers1.php\" data-chp_methode_menu=\"page_dossiers_liste1\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">fido<\/li><li data-chi_id_source=\"241\" data-chp_nom_source=\"c_sources1.php\" data-chp_methode_menu=\"page_liste_des_sources1\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">sources<\/li><li data-chi_id_source=\"358\" data-chp_nom_source=\"c_genres1.php\" data-chp_methode_menu=\"page_liste_des_genres1\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des types de bonn\u00e9es dans la bdd\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">genres<\/li><li data-chi_id_source=\"353\" data-chp_nom_source=\"c_bases1.php\" data-chp_methode_menu=\"page_liste_des_bases1\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">bases<\/li><li data-chi_id_source=\"231\" data-chp_nom_source=\"c_requetes1.php\" data-chp_methode_menu=\"page_liste_des_requetes1\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des requ\u00eates sur les bases\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">requ\u00eates<\/li><li data-chi_id_source=\"240\" data-chp_nom_source=\"c_revs1.php\" data-chp_methode_menu=\"page_liste_des_revs1\" data-chi_id_menu=\"13\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\" data-cht_condition_menu=\"appelf(\n   nomf(isset),\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n)\">(\ud83d\ude0a)<\/li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"56\" data-chp_nom_source=\"c_groupes1.php\" data-chp_methode_menu=\"page_liste_des_groupes1\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">groupes<\/li><li data-chi_id_source=\"58\" data-chp_nom_source=\"c_metiers1.php\" data-chp_methode_menu=\"page_liste_des_metiers1\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des m\u00e9tiers\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">m\u00e9tiers<\/li><li data-chi_id_source=\"50\" data-chp_nom_source=\"c_acces1.php\" data-chp_methode_menu=\"page_liste_des_acces1\" data-chi_id_menu=\"16\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des acc\u00e8s\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">acc\u00e8s<\/li><li data-chi_id_source=\"62\" data-chp_nom_source=\"c_utilisateurs1.php\" data-chp_methode_menu=\"page_liste_des_utilisateurs1\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">utilisateurs<\/li><li data-chi_id_source=\"356\" data-chp_nom_source=\"c_autorisations1.php\" data-chp_methode_menu=\"page_liste_des_autorisations1\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">autorisations<\/li><li data-chi_id_source=\"357\" data-chp_nom_source=\"c_menus1.php\" data-chp_methode_menu=\"page_liste_des_menus1\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_php_menu=\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) &amp;&amp; $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\" data-cht_condition_menu=\"et(\n   appelf(\n      nomf(isset),\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\n   ),\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\n)\">menus<\/li><\/ul><\/li><li data-liste_des_menus=\"1\">outils<ul><li data-chi_id_source=\"235\" data-chp_nom_source=\"c_rev_mat1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">matrice<\/li><li data-chi_id_source=\"234\" data-chp_nom_source=\"c_rev_js1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\n)\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">js<\/li><li data-chi_id_source=\"233\" data-chp_nom_source=\"c_rev_html1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\n)\" data-chp_titre_menu=\"html\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">html<\/li><li data-chi_id_source=\"236\" data-chp_nom_source=\"c_rev_php1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\n)\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">php<\/li><li data-chi_id_source=\"237\" data-chp_nom_source=\"c_rev_sql1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_sql_rev1),\n      composante(value),\n      avec(\n        valeur_de_localstorage(\n          zones_sauvegard\u00e9es,\n          ls_sql_rev1\n        )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">sql<\/li><li data-chi_id_source=\"232\" data-chp_nom_source=\"c_rev_css1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(\n   modifier(\n      id(vv_txtarea_css_rev1),\n      composante(value),\n      avec(\n         valeur_de_localstorage(\n            zones_sauvegard\u00e9es,\n            ls_css_rev1\n         )\n      )\n   )\n)\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">css<\/li><li data-chi_id_source=\"238\" data-chp_nom_source=\"c_rev_texte1.php\" data-chp_methode_menu=\"page1\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\">txt<\/li><\/ul><\/li><li data-chi_id_source=\"59\" data-chp_nom_source=\"c_profile1.php\" data-chp_methode_menu=\"recupere_la_page_des_coordonnees\" data-chi_id_menu=\"20\" data-cht_initialisation_menu=\"\" data-cht_complements_menu=\"\" data-chp_titre_menu=\"mon profile\" data-cht_condition_php_menu=\"\" data-cht_condition_menu=\"\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"-9 -7  20 21\">\n    <g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\">\n        <circle cx=\"0\" cy=\"0\" r=\"6\"><\/circle>\n        <path d=\" M -8 11 C -6 6 6 6 8 11 \"><\/path>\n        <circle cx=\"-2\" cy=\"-1\" r=\"1\"><\/circle>\n        <circle cx=\"2\" cy=\"-1\" r=\"1\"><\/circle>\n        <path d=\"M -2 2 C -3 4 3 4 2 2 \"><\/path>\n        <path d=\"M 0 0 V 2 \"><\/path>\n        <path d=\"M -3 -1   H -6    \"><\/path>\n        <path d=\"M 3 -1   H 6    \"><\/path>\n        <path d=\"M -1 -1 c 0 -1 2 -1 2 0 \"><\/path>\n    <\/g>\n<\/svg><\/li>  ","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"projets\",\"attributs\":{\"data-chi_id_source\":\"230\",\"data-chp_nom_source\":\"c_projets1.php\",\"data-chp_methode_menu\":\"page_projets_liste1\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des projets\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"t\u00e2ches\",\"attributs\":{\"data-chi_id_source\":\"61\",\"data-chp_nom_source\":\"c_taches1.php\",\"data-chp_methode_menu\":\"page_liste_des_taches1\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"T0_chp_priorite_tache2(99)\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"Liste des t\u00e2ches\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"fido\",\"attributs\":{\"data-chi_id_source\":\"225\",\"data-chp_nom_source\":\"c_dossiers1.php\",\"data-chp_methode_menu\":\"page_dossiers_liste1\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"241\",\"data-chp_nom_source\":\"c_sources1.php\",\"data-chp_methode_menu\":\"page_liste_des_sources1\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des sources des programmes\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":5,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"358\",\"data-chp_nom_source\":\"c_genres1.php\",\"data-chp_methode_menu\":\"page_liste_des_genres1\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des types de bonn\u00e9es dans la bdd\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":6,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"353\",\"data-chp_nom_source\":\"c_bases1.php\",\"data-chp_methode_menu\":\"page_liste_des_bases1\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des bases\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":7,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requ\u00eates\",\"attributs\":{\"data-chi_id_source\":\"231\",\"data-chp_nom_source\":\"c_requetes1.php\",\"data-chp_methode_menu\":\"page_liste_des_requetes1\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des requ\u00eates sur les bases\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":8,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"(\ud83d\ude0a)\",\"attributs\":{\"data-chi_id_source\":\"240\",\"data-chp_nom_source\":\"c_revs1.php\",\"data-chp_methode_menu\":\"page_liste_des_revs1\",\"data-chi_id_menu\":\"13\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des revs\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']);\",\"data-cht_condition_menu\":\"appelf(\\n   nomf(isset),\\n   p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n)\"}},{\"id_interne\":9,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":6,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":10,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"56\",\"data-chp_nom_source\":\"c_groupes1.php\",\"data-chp_methode_menu\":\"page_liste_des_groupes1\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des groupes\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":11,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"m\u00e9tiers\",\"attributs\":{\"data-chi_id_source\":\"58\",\"data-chp_nom_source\":\"c_metiers1.php\",\"data-chp_methode_menu\":\"page_liste_des_metiers1\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des m\u00e9tiers\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":12,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"acc\u00e8s\",\"attributs\":{\"data-chi_id_source\":\"50\",\"data-chp_nom_source\":\"c_acces1.php\",\"data-chp_methode_menu\":\"page_liste_des_acces1\",\"data-chi_id_menu\":\"16\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des acc\u00e8s\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":13,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"62\",\"data-chp_nom_source\":\"c_utilisateurs1.php\",\"data-chp_methode_menu\":\"page_liste_des_utilisateurs1\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des utilisateurs\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":14,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"356\",\"data-chp_nom_source\":\"c_autorisations1.php\",\"data-chp_methode_menu\":\"page_liste_des_autorisations1\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des autorisations\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":15,\"id_interne_parent\":9,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"357\",\"data-chp_nom_source\":\"c_menus1.php\",\"data-chp_methode_menu\":\"page_liste_des_menus1\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"liste des menus\",\"data-cht_condition_php_menu\":\"isset($_SESSION[__X_CLE_APPLICATION][''chi_id_projet'']) && $_SESSION[__X_CLE_APPLICATION][''chi_id_projet''] === 1;\",\"data-cht_condition_menu\":\"et(\\n   appelf(\\n      nomf(isset),\\n      p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))\\n   ),\\n   egalstricte(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')),1)\\n)\"}},{\"id_interne\":16,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":7,\"contenu\":\"outils\",\"attributs\":{\"data-liste_des_menus\":\"1\"}},{\"id_interne\":17,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"235\",\"data-chp_nom_source\":\"c_rev_mat1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_rev1))))\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":18,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"234\",\"data-chp_nom_source\":\"c_rev_js1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_js_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_js_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":19,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"233\",\"data-chp_nom_source\":\"c_rev_html1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_html_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_html_rev1)))\\n)\",\"data-chp_titre_menu\":\"html\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":20,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"236\",\"data-chp_nom_source\":\"c_rev_php1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(id(vv_txtarea_php_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_php_rev1)))\\n)\",\"data-chp_titre_menu\":\"convertion de php\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":21,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"237\",\"data-chp_nom_source\":\"c_rev_sql1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_sql_rev1),\\n      composante(value),\\n      avec(\\n        valeur_de_localstorage(\\n          zones_sauvegard\u00e9es,\\n          ls_sql_rev1\\n        )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de sql\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":22,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"232\",\"data-chp_nom_source\":\"c_rev_css1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(\\n   modifier(\\n      id(vv_txtarea_css_rev1),\\n      composante(value),\\n      avec(\\n         valeur_de_localstorage(\\n            zones_sauvegard\u00e9es,\\n            ls_css_rev1\\n         )\\n      )\\n   )\\n)\",\"data-chp_titre_menu\":\"convertion de css\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":23,\"id_interne_parent\":16,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"238\",\"data-chp_nom_source\":\"c_rev_texte1.php\",\"data-chp_methode_menu\":\"page1\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegard\u00e9es,ls_texte_rev1))))\",\"data-chp_titre_menu\":\"convertion de textes\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}},{\"id_interne\":24,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg xmlns=\\\"http:\/\/www.w3.org\/2000\/svg\\\" viewBox=\\\"-9 -7  20 21\\\">\\n    <g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:1;\\\">\\n        <circle cx=\\\"0\\\" cy=\\\"0\\\" r=\\\"6\\\"><\/circle>\\n        <path d=\\\" M -8 11 C -6 6 6 6 8 11 \\\"><\/path>\\n        <circle cx=\\\"-2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <circle cx=\\\"2\\\" cy=\\\"-1\\\" r=\\\"1\\\"><\/circle>\\n        <path d=\\\"M -2 2 C -3 4 3 4 2 2 \\\"><\/path>\\n        <path d=\\\"M 0 0 V 2 \\\"><\/path>\\n        <path d=\\\"M -3 -1   H -6    \\\"><\/path>\\n        <path d=\\\"M 3 -1   H 6    \\\"><\/path>\\n        <path d=\\\"M -1 -1 c 0 -1 2 -1 2 0 \\\"><\/path>\\n    <\/g>\\n<\/svg>\",\"attributs\":{\"data-chi_id_source\":\"59\",\"data-chp_nom_source\":\"c_profile1.php\",\"data-chp_methode_menu\":\"recupere_la_page_des_coordonnees\",\"data-chi_id_menu\":\"20\",\"data-cht_initialisation_menu\":\"\",\"data-cht_complements_menu\":\"\",\"data-chp_titre_menu\":\"mon profile\",\"data-cht_condition_php_menu\":\"\",\"data-cht_condition_menu\":\"\"}}]"}'),
 ('2','[*** non connecté ***]','2','2',NULL);
 
 
@@ -2680,7 +2666,7 @@ menu = autorisation methode du source
 
 afr : quand le source a appel le source b, 
 il faut une autorisation déléguée sur la méthode appelée','99','2025-08-12 14:42:35.283','2025-08-12 12:44:14.024','7','1'),
-('223','1','interface : pouvoir agrandit la zone de message ( vv_supprimer_les_messages_3 )','10','2025-08-15 14:32:33.953','2025-08-15 14:23:33.195','3','1'),
+('223','1','interface : pouvoir agrandit la zone de message ( vv_supprimer_les_messages_3 )','99','2025-08-27 08:02:50.904','2025-08-15 14:23:33.195','3','1'),
 ('224','1','dans ajouter un formule de requete 
 nouvelle requete liste
 clic sur condition
@@ -2709,7 +2695,37 @@ virer
       gerer_champ_date_creation( champ( `chd__dtc_tache` ) , format(23)),
       gerer_champ_date_modification( champ( `chd__dtm_tache` ) , format(23))
 
-','99','2025-08-26 16:16:12.402','2025-08-26 15:17:41.241','0','1');
+','99','2025-08-26 16:16:12.402','2025-08-26 15:17:41.241','0','1'),
+('240','1','lisad
+
+insertion / ajout
+suppression / delete
+modification / alteration
+
+distinction_pour_isad
+ d''un utilisateur / d''un accès / d''un projet / d''une tâche / d''un cheval
+
+distinction_pour_liste
+
+liste des utilisateurs
+liste des chevaux
+liste des tâches
+liste des projets
+
+
+
+suppression 
+modification 
+
+de l''utilisateur / de l''accès / du projet / de la tâche / du cheval
+
+
+
+suppression/modification de la tâche
+suppression du cheval
+suppression du projet
+
+','0','2025-08-28 13:51:13.041','2025-08-28 13:30:48.719','0','1');
 
 
 /*
@@ -2728,7 +2744,7 @@ chx_acces_utilisateur,
 chd__dtm_utilisateur,
 chd__dtc_utilisateur,
 che__nur_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'658','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'718','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','anonyme',NULL,NULL,'0','0','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
@@ -5400,7 +5416,7 @@ che__nur_basedd) VALUES
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(6.5,5.5))
+   transform_base_sur_svg(translate(4.5,5.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_revs''),
@@ -5408,9 +5424,8 @@ créer_table(
       nom_de_la_table(''tbl_revs''),
       table(''tbl_revs''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''à faire tbl_revs''),
-      nom_court_de_la_table(''à faire tbl_revs''),
-      nom_bref_de_la_table(''à faire tbl_revs''),
+      distinction_pour_liste(''liste des revs''),
+      distinction_pour_isad(''d\''un rev''),
       transform_table_sur_svg(translate(813.5,17.5))
    ),
    champs(
@@ -5733,9 +5748,8 @@ créer_table(
       nom_de_la_table(''tbl_dossiers''),
       table(''tbl_dossiers''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''''),
-      nom_court_de_la_table(''''),
-      nom_bref_de_la_table(''''),
+      distinction_pour_liste(''liste des dossiers''),
+      distinction_pour_isad(''d\''un dossier''),
       transform_table_sur_svg(translate(271.5,153.5))
    ),
    champs(
@@ -5908,9 +5922,8 @@ créer_table(
       nom_de_la_table(''tbl_groupes''),
       table(''tbl_groupes''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''A faire  tbl_groupes''),
-      nom_court_de_la_table(''A faire tbl_groupes''),
-      nom_bref_de_la_table(''A faire tbl_groupes''),
+      distinction_pour_liste(''liste des groupes''),
+      distinction_pour_isad(''d\''un groupe''),
       transform_table_sur_svg(translate(17.5,213.5))
    ),
    champs(
@@ -5982,9 +5995,8 @@ créer_table(
       nom_de_la_table(''tbl_metiers''),
       table(''tbl_metiers''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''A faire  tbl_metiers''),
-      nom_court_de_la_table(''A faire tbl_metiers''),
-      nom_bref_de_la_table(''A faire tbl_metiers''),
+      distinction_pour_liste(''liste des metiers''),
+      distinction_pour_isad(''d\''un metier''),
       transform_table_sur_svg(translate(10.5,313.5))
    ),
    champs(
@@ -6056,9 +6068,8 @@ créer_table(
       nom_de_la_table(''tbl_acces''),
       table(''tbl_acces''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''A faire  tbl_acces''),
-      nom_court_de_la_table(''A faire tbl_acces''),
-      nom_bref_de_la_table(''A faire tbl_acces''),
+      distinction_pour_liste(''liste des acces''),
+      distinction_pour_isad(''d\''un acces''),
       transform_table_sur_svg(translate(188.5,310.5))
    ),
    champs(
@@ -6166,10 +6177,9 @@ créer_table(
       nom_de_la_table(''tbl_autorisations''),
       table(''tbl_autorisations''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''A faire  tbl_autorisations''),
-      nom_court_de_la_table(''A faire tbl_autorisations''),
-      nom_bref_de_la_table(''A faire tbl_autorisations''),
-      transform_table_sur_svg(translate(392.5,301.5))
+      distinction_pour_liste(''liste des autorisations''),
+      distinction_pour_isad(''d\''une autorisation''),
+      transform_table_sur_svg(translate(390.5,353.5))
    ),
    champs(
       champ(
@@ -6242,9 +6252,8 @@ créer_table(
       nom_de_la_table(''tbl_genres''),
       table(''tbl_genres''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''A faire  tbl_genres''),
-      nom_court_de_la_table(''A faire tbl_genres''),
-      nom_bref_de_la_table(''A faire tbl_genres''),
+      distinction_pour_liste(''liste des genres''),
+      distinction_pour_isad(''d\''un genre''),
       transform_table_sur_svg(translate(68.5,456.5))
    ),
    champs(
@@ -6567,9 +6576,8 @@ créer_table(
       nom_de_la_table(''tbl_projets''),
       table(''tbl_projets''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''''),
-      nom_court_de_la_table(''''),
-      nom_bref_de_la_table(''''),
+      distinction_pour_liste(''liste des projets''),
+      distinction_pour_isad(''d\''un projet''),
       transform_table_sur_svg(translate(272.5,9.5))
    ),
    champs(
@@ -6733,9 +6741,8 @@ créer_table(
       nom_de_la_table(''tbl_taches''),
       table(''tbl_taches''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''''),
-      nom_court_de_la_table(''''),
-      nom_bref_de_la_table(''''),
+      distinction_pour_liste(''liste des taches''),
+      distinction_pour_isad(''d\''une tache''),
       transform_table_sur_svg(translate(881.5,536.5))
    ),
    champs(
@@ -6905,9 +6912,8 @@ créer_table(
       nom_de_la_table(''tbl_utilisateurs''),
       table(''tbl_utilisateurs''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''liste des utilisateurs''),
-      nom_court_de_la_table(''un utilisateur''),
-      nom_bref_de_la_table(''utilisateurs''),
+      distinction_pour_liste(''liste des utilisateurs''),
+      distinction_pour_isad(''d\''un utilisateur''),
       transform_table_sur_svg(translate(603.5,464.5))
    ),
    champs(
@@ -7117,9 +7123,8 @@ créer_table(
       nom_de_la_table(''tbl_sources''),
       table(''tbl_sources''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''''),
-      nom_court_de_la_table(''''),
-      nom_bref_de_la_table(''''),
+      distinction_pour_liste(''liste des sources''),
+      distinction_pour_isad(''d\''un source''),
       transform_table_sur_svg(translate(593.5,58.5))
    ),
    champs(
@@ -7341,9 +7346,8 @@ créer_table(
       nom_de_la_table(''tbl_bdds''),
       table(''tbl_bdds''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''''),
-      nom_court_de_la_table(''''),
-      nom_bref_de_la_table(''''),
+      distinction_pour_liste(''liste des bases de données''),
+      distinction_pour_isad(''d\''une base de donnée''),
       transform_table_sur_svg(translate(604.5,268.5))
    ),
    champs(
@@ -7522,9 +7526,8 @@ créer_table(
       nom_de_la_table(''tbl_requetes''),
       table(''tbl_requetes''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''AFR tbl_requetes''),
-      nom_court_de_la_table(''AFR tbl_requetes''),
-      nom_bref_de_la_table(''AFR tbl_requetes''),
+      distinction_pour_liste(''liste des requetes''),
+      distinction_pour_isad(''d\''une requete''),
       transform_table_sur_svg(translate(8.5,27.5))
    ),
    champs(
@@ -7732,9 +7735,8 @@ créer_table(
       nom_de_la_table(''tbl_menus''),
       table(''tbl_menus''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''A faire  tbl_menus''),
-      nom_court_de_la_table(''A faire tbl_menus''),
-      nom_bref_de_la_table(''A faire tbl_menus''),
+      distinction_pour_liste(''liste des menus''),
+      distinction_pour_isad(''d\''un menu''),
       transform_table_sur_svg(translate(362.5,474.5))
    ),
    champs(
@@ -7916,9 +7918,8 @@ créer_table(
       nom_de_la_table(''tbl_zzzs''),
       table(''tbl_zzzs''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''AFR tbl_xxxx''),
-      nom_court_de_la_table(''AFR tbl_xxxx''),
-      nom_bref_de_la_table(''AFR tbl_xxxx''),
+      distinction_pour_liste(''''),
+      distinction_pour_isad(''''),
       transform_table_sur_svg(translate(64.5,47.5))
    ),
    champs(
@@ -7993,9 +7994,8 @@ créer_table(
       nom_de_la_table(''tbl_yyys''),
       table(''tbl_yyys''),
       genre_meta(table_de_base),
-      nom_long_de_la_table(''AFR tbl_yyys''),
-      nom_court_de_la_table(''AFR tbl_yyys''),
-      nom_bref_de_la_table(''AFR tbl_yyys''),
+      distinction_pour_liste(''''),
+      distinction_pour_isad(''''),
       transform_table_sur_svg(translate(300.5,101.5))
    ),
    champs(
@@ -11065,7 +11065,7 @@ cht_condition_php_menu) VALUES
    )
 )',NULL,NULL),
 ('7','txt','convertion de textes','8','page1',NULL,'maj_interface2(modifier(id(vv_txtarea_texte_rev1),composante(value),avec(valeur_de_localstorage(zones_sauvegardées,ls_texte_rev1))))',NULL,NULL),
-('8','<span style="background:red;color:yellow;">projets</span>','liste des projets','9','page_projets_liste1',NULL,NULL,NULL,NULL),
+('8','projets','liste des projets','9','page_projets_liste1',NULL,NULL,NULL,NULL),
 ('9','fido','liste des dossiers et des fichiers','10','page_dossiers_liste1',NULL,NULL,'appelf(
    nomf(isset),
    p(tableau(nomt($_SESSION[__X_CLE_APPLICATION]),p(''chi_id_projet'')))

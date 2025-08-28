@@ -3,9 +3,8 @@ CREATE TABLE tbl_revs(
  meta(nom_de_la_table('tbl_revs'),
    table('tbl_revs'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('à faire tbl_revs'),
-   nom_court_de_la_table('à faire tbl_revs'),
-   nom_bref_de_la_table('à faire tbl_revs'),
+   distinction_pour_liste('liste des revs'),
+   distinction_pour_isad('d\'un rev'),
    transform_table_sur_svg(translate(813.5,17.5))) 
 */
     
@@ -302,9 +301,8 @@ CREATE TABLE tbl_dossiers(
  meta(nom_de_la_table('tbl_dossiers'),
    table('tbl_dossiers'),
    genre_meta(table_de_base),
-   nom_long_de_la_table(''),
-   nom_court_de_la_table(''),
-   nom_bref_de_la_table(''),
+   distinction_pour_liste('liste des dossiers'),
+   distinction_pour_isad('d\'un dossier'),
    transform_table_sur_svg(translate(271.5,153.5))) 
 */
     
@@ -441,9 +439,8 @@ CREATE TABLE tbl_groupes(
  meta(nom_de_la_table('tbl_groupes'),
    table('tbl_groupes'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_groupes'),
-   nom_court_de_la_table('A faire tbl_groupes'),
-   nom_bref_de_la_table('A faire tbl_groupes'),
+   distinction_pour_liste('liste des groupes'),
+   distinction_pour_isad('d\'un groupe'),
    transform_table_sur_svg(translate(17.5,213.5))) 
 */
     
@@ -500,9 +497,8 @@ CREATE TABLE tbl_metiers(
  meta(nom_de_la_table('tbl_metiers'),
    table('tbl_metiers'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_metiers'),
-   nom_court_de_la_table('A faire tbl_metiers'),
-   nom_bref_de_la_table('A faire tbl_metiers'),
+   distinction_pour_liste('liste des metiers'),
+   distinction_pour_isad('d\'un metier'),
    transform_table_sur_svg(translate(10.5,313.5))) 
 */
     
@@ -559,9 +555,8 @@ CREATE TABLE tbl_acces(
  meta(nom_de_la_table('tbl_acces'),
    table('tbl_acces'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_acces'),
-   nom_court_de_la_table('A faire tbl_acces'),
-   nom_bref_de_la_table('A faire tbl_acces'),
+   distinction_pour_liste('liste des acces'),
+   distinction_pour_isad('d\'un acces'),
    transform_table_sur_svg(translate(188.5,310.5))) 
 */
     
@@ -650,10 +645,9 @@ CREATE TABLE tbl_autorisations(
  meta(nom_de_la_table('tbl_autorisations'),
    table('tbl_autorisations'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_autorisations'),
-   nom_court_de_la_table('A faire tbl_autorisations'),
-   nom_bref_de_la_table('A faire tbl_autorisations'),
-   transform_table_sur_svg(translate(392.5,301.5))) 
+   distinction_pour_liste('liste des autorisations'),
+   distinction_pour_isad('d\'une autorisation'),
+   transform_table_sur_svg(translate(390.5,353.5))) 
 */
     
             /*
@@ -709,9 +703,8 @@ CREATE TABLE tbl_genres(
  meta(nom_de_la_table('tbl_genres'),
    table('tbl_genres'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_genres'),
-   nom_court_de_la_table('A faire tbl_genres'),
-   nom_bref_de_la_table('A faire tbl_genres'),
+   distinction_pour_liste('liste des genres'),
+   distinction_pour_isad('d\'un genre'),
    transform_table_sur_svg(translate(68.5,456.5))) 
 */
     
@@ -992,9 +985,8 @@ CREATE TABLE tbl_projets(
  meta(nom_de_la_table('tbl_projets'),
    table('tbl_projets'),
    genre_meta(table_de_base),
-   nom_long_de_la_table(''),
-   nom_court_de_la_table(''),
-   nom_bref_de_la_table(''),
+   distinction_pour_liste('liste des projets'),
+   distinction_pour_isad('d\'un projet'),
    transform_table_sur_svg(translate(272.5,9.5))) 
 */
     
@@ -1131,9 +1123,8 @@ CREATE TABLE tbl_taches(
  meta(nom_de_la_table('tbl_taches'),
    table('tbl_taches'),
    genre_meta(table_de_base),
-   nom_long_de_la_table(''),
-   nom_court_de_la_table(''),
-   nom_bref_de_la_table(''),
+   distinction_pour_liste('liste des taches'),
+   distinction_pour_isad('d\'une tache'),
    transform_table_sur_svg(translate(881.5,536.5))) 
 */
     
@@ -1270,9 +1261,8 @@ CREATE TABLE tbl_utilisateurs(
  meta(nom_de_la_table('tbl_utilisateurs'),
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('liste des utilisateurs'),
-   nom_court_de_la_table('un utilisateur'),
-   nom_bref_de_la_table('utilisateurs'),
+   distinction_pour_liste('liste des utilisateurs'),
+   distinction_pour_isad('d\'un utilisateur'),
    transform_table_sur_svg(translate(603.5,464.5))) 
 */
     
@@ -1441,9 +1431,8 @@ CREATE TABLE tbl_sources(
  meta(nom_de_la_table('tbl_sources'),
    table('tbl_sources'),
    genre_meta(table_de_base),
-   nom_long_de_la_table(''),
-   nom_court_de_la_table(''),
-   nom_bref_de_la_table(''),
+   distinction_pour_liste('liste des sources'),
+   distinction_pour_isad('d\'un source'),
    transform_table_sur_svg(translate(593.5,58.5))) 
 */
     
@@ -1628,9 +1617,8 @@ CREATE TABLE tbl_bdds(
  meta(nom_de_la_table('tbl_bdds'),
    table('tbl_bdds'),
    genre_meta(table_de_base),
-   nom_long_de_la_table(''),
-   nom_court_de_la_table(''),
-   nom_bref_de_la_table(''),
+   distinction_pour_liste('liste des bases de données'),
+   distinction_pour_isad('d\'une base de donnée'),
    transform_table_sur_svg(translate(604.5,268.5))) 
 */
     
@@ -1783,9 +1771,8 @@ CREATE TABLE tbl_requetes(
  meta(nom_de_la_table('tbl_requetes'),
    table('tbl_requetes'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('AFR tbl_requetes'),
-   nom_court_de_la_table('AFR tbl_requetes'),
-   nom_bref_de_la_table('AFR tbl_requetes'),
+   distinction_pour_liste('liste des requetes'),
+   distinction_pour_isad('d\'une requete'),
    transform_table_sur_svg(translate(8.5,27.5))) 
 */
     
@@ -1970,9 +1957,8 @@ CREATE TABLE tbl_menus(
  meta(nom_de_la_table('tbl_menus'),
    table('tbl_menus'),
    genre_meta(table_de_base),
-   nom_long_de_la_table('A faire  tbl_menus'),
-   nom_court_de_la_table('A faire tbl_menus'),
-   nom_bref_de_la_table('A faire tbl_menus'),
+   distinction_pour_liste('liste des menus'),
+   distinction_pour_isad('d\'un menu'),
    transform_table_sur_svg(translate(362.5,474.5))) 
 */
     

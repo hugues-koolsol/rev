@@ -45,7 +45,7 @@ Un exemple de fichier produisant du php contenant du html et du javascript à pa
 
 
 
-**Brève description** : un source est écrit sous ce format "rev" ( comme réversible ;-)
+**Brève description** : un source est écrit sous ce format "rev" ( comme "réversible", "reverse engineering"  ou bien "rêve" ;-)
 ```
 #(😊ceci est un arbre),
 a(b((c , '/') , d(e , f))),

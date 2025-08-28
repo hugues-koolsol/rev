@@ -1,6 +1,6 @@
 <?php
 $le_menu='';
-$le_menu.='<div id="menu_8" data-id_menu="8" class="hug_bouton" data-hug_click="c_projets1.page_projets_liste1()indice_menu(8)id_interne(1)" title="liste des projets"><span style="background:red;color:yellow;">projets</span></div>';
+$le_menu.='<div id="menu_8" data-id_menu="8" class="hug_bouton" data-hug_click="c_projets1.page_projets_liste1()indice_menu(8)id_interne(1)" title="liste des projets">projets</div>';
 if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_projet'])){
    $le_menu.='<div id="menu_1" data-id_menu="1" class="hug_bouton" data-hug_click="c_taches1.page_liste_des_taches1(T0_chp_priorite_tache2(99))indice_menu(1)id_interne(2)" title="Liste des tâches">tâches</div>';
 }

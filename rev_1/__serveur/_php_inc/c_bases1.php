@@ -1324,6 +1324,88 @@ class c_bases1{
     /*
       =============================================================================================================
     */
+    public function recuperer_zone_travail_pour_les_bases2(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+        /*
+          $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($mat , true ) . '</pre> [' . __LINE__ . '] ';
+        */
+        $les_id_des_bases='';
+        $nom_de_la_table='';
+        $l01=count($mat);
+        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
+            
+            
+            if($mat[$i][1] === 'c_bases1.recuperer_zone_travail_pour_les_bases2' && $mat[$i][2] === 'f' && $mat[$i][8] >= 1){
+
+                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){
+                    
+                    
+                    if($mat[$j][1] === 'les_id_des_bases' && $mat[$j][2] === 'f' && $mat[$j + 1][2] === 'c'){
+
+                        $les_id_des_bases=$mat[$j + 1][1];
+
+                    }else if($mat[$j][1] === 'nom_de_la_table' && $mat[$j][2] === 'f' && $mat[$j + 1][2] === 'c'){
+
+                        $nom_de_la_table=$mat[$j + 1][1];
+
+                    }
+
+                }
+
+            }
+
+        }
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] , true ) . '</pre>' ; exit(0);*/
+        
+        if($les_id_des_bases !== ''){
+
+            /*
+              $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($les_id_des_bases , true ) . '</pre> [' . __LINE__ . '] ';
+            */
+            $tt=/*sql_inclure_deb*/
+                /* sql_111()
+                SELECT 
+
+                `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
+                 FROM b1.tbl_bdds T0
+                WHERE ( / *** *** / `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
+
+                   AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
+                ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(
+                 /*sql_111()*/ 111,
+                array(/**/
+                    'T0_chi_id_basedd' => $les_id_des_bases,
+                    'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
+                ),
+                $donnees_retournees
+            );
+            /* array( 'T0_chi_id_basedd' => $chi_id_basedd, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),*/
+            
+            if($tt[__xst] !== __xsu){
+
+                $donnees_retournees[__x_signaux][__xer][]='erreur de récupération de(s) base(s) ' . $les_id_des_bases . '  [' . __LINE__ . '] ';
+
+            }else{
+
+                /* $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($tt , true ) . '</pre> [' . __LINE__ . '] ';*/
+                $donnees_retournees[__xva]['generer_le_php']=array( ' donnees_bdd' => $tt[__xva][0] , 'nom_de_la_table' => $nom_de_la_table );
+                $donnees_retournees[__xva]['maj']='methode_module_dynamique1(nom_du_module2("_js/c_php_bdd1.js"),methode2(charger_base1),valeurs2(generer_le_php))';
+                $donnees_retournees[__xst]=__xsu;
+                /* $donnees_retournees[__x_action]='c_bases1.page_liste_des_bases1()';*/
+            }
+
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xer][]='erreur de récupération de l\'id de la base [' . __LINE__ . '] ';
+        }
+
+    }     
+    /*
+      =============================================================================================================
+    */
     public function recuperer_zone_travail_pour_les_bases(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
         /*
           $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($mat , true ) . '</pre> [' . __LINE__ . '] ';

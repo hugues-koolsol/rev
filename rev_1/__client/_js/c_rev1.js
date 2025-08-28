@@ -123,6 +123,45 @@ class c_rev1{
       =============================================================================================================
       __m_rev1.ma_constante
     */
+    ma_constante_inverse( eltTab ){
+        var t='';
+        switch (eltTab[4]){
+            case 1 : /* entre simples apostrophes */
+                t=eltTab[1].replace(/\\\'/,'\'').replace(/\\\\/,'\\') ;
+                break;
+            case 2 :
+                debugger
+                /* apostrophes inversées / accent grave */
+                t='`' + eltTab[1] + '`';
+                t=t.replace( REGEX_LF , '\n' ).replace( REGEX_CR , '\r' );
+                break;
+                
+            case 3 : /* guillemets */
+                debugger
+                t='"' + eltTab[1] + '"';
+                break;
+            case 4 : /* regex */
+                debugger
+                t='/' + eltTab[1] + '/' + eltTab[13];
+                break;
+            default:
+                debugger
+                /* constante non quotée, généralement une variable ou une valeur numérique ou une constante */
+                if(eltTab[1] === 'true'){
+                    t='vrai';
+                }else if(eltTab[1] === 'false'){
+                    t='faux';
+                }else{
+                    t=eltTab[1];
+                }
+                
+        }
+        return t;
+    }
+    /*
+      =============================================================================================================
+      __m_rev1.ma_constante
+    */
     ma_constante( eltTab ){
         var t='';
         switch (eltTab[4]){
