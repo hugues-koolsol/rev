@@ -1,6 +1,8 @@
 <?php
 class c_requetes1{
     private $sql0=null;
+    private const LE_LA_ELEMENT_GERE = 'la requete';
+    private const UN_UNE_ELEMENT_GERE = 'une requete';
     /*
       =============================================================================================================
     */
@@ -64,6 +66,8 @@ class c_requetes1{
                    || $conteneur1 === 'vv_requetes_supprimer1'
                    || $conteneur1 === 'vv_requetes_filtre1'
                    || $conteneur1 === 'vv_requetes_nouveau_numero1'
+                   || $conteneur1 === 'vv_requetes_modifier1'
+                   
                 ){
 
                     $this->$conteneur1(
@@ -80,8 +84,181 @@ class c_requetes1{
                 break;
 
             }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    function charger_la_requete(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){
+ 
+        $tt106=$this->sql0->sql_iii(
+             /*sql_106()*/ 106,
+            array(/**/
+                'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+                'T0_chi_id_requete' => $donnees_recues[__xva]['chi_id_requete']
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt106[__xst] === __xsu){
+         
+            
+
+            $donnees_retournees[__xva]['requete']=$tt106[__xva][0];
+            $rev_requete=$tt106[__xva][0]['T0.cht_rev_requete'];
+            
+            
+            /*#
+            sélectionner(
+               base_de_reference(1),
+               valeurs(
+                  champ(`T0`,`chi_id_tache`),
+                  champ(`T0`,`chx_utilisateur_tache`),
+                  champ(`T0`,`chp_texte_tache`),
+                  champ(`T0`,`chp_priorite_tache`),
+                  champ(`T0`,`chd__dtm_tache`),
+                  champ(`T0`,`chd__dtc_tache`),
+                  champ(`T0`,`che__nur_tache`),
+                  champ(`T0`,`chx_projet_tache`),
+                  champ(`T1`,`chp_nom_de_connexion_utilisateur`)
+               ),
+               provenance(
+                  table_reference(
+                     source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+                  ),
+                  jointure_gauche(
+                     source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
+                     contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
+                  )
+               ),
+               conditions(...),
+               complements(...)
+            )  
+            */            
+            
+            /* construction des tableaux de la requete */
+            $tableau_des_bases_et_tables=array();
+            $tableau_des_bases=array();
+            $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($rev_requete);
+            if($obj_matrice[__xst]===__xsu){
+                $mat=$obj_matrice[__xva];
+                $l01=count($mat);
+                for($i=1;$i<$l01;$i=$mat[$i][12]){
+                    if('sélectionner' === $mat[$i][1] && 'f' === $mat[$i][2] && ( $tt106[__xva][0]['T0.chp_type_requete']==='liste_ecran' || $tt106[__xva][0]['T0.chp_type_requete']==='select') ){
+                     
+                        for($j=$i+1;$j<$l01;$j=$mat[$j][12]){
+                            if('provenance' === $mat[$j][1] && 'f' === $mat[$j][2] ){
+                             
+                                 for($k=$j+1;$k<$l01;$k=$mat[$k][12]){
+                                     /*#                                     
+                                           table_reference(
+                                              source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+                                           )
+                                     */                                      
+                                     if(( 'table_reference' === $mat[$k][1] || 'jointure_croisée' === $mat[$k][1] || 'jointure_gauche' === $mat[$k][1]  )  && 'f' === $mat[$k][2] ){
+                                         for($l=$k+1;$l<$l01;$l=$mat[$l][12]){
+                                             if('source' === $mat[$l][1] && 'f' === $mat[$l][2] ){
+                                                 for($m=$l+1;$m<$l01;$m=$mat[$m][12]){
+                                                     if('nom_de_la_table' === $mat[$m][1] && 'f' === $mat[$m][2] ){
+                                                         $alias='';
+                                                         $base='';
+                                                         $nom_de_la_table='';
+                                                         for($n=$m+1;$n<$l01;$n=$mat[$n][12]){
+                                                             if('alias' === $mat[$n][1] && 'f' === $mat[$n][2] && 1 === $mat[$n][8]  && $mat[$n+1][2] === 'c' ){
+                                                                 $alias=$mat[$n+1][1];
+                                                             }else if('base' === $mat[$n][1] && 'f' === $mat[$n][2] && 1 === $mat[$n][8]  && $mat[$n+1][2] === 'c' ){
+                                                                 $base=(int)str_replace('b','',$mat[$n+1][1]);
+                                                             }else if('c' === $mat[$n][2]  ){
+                                                                 $nom_de_la_table=$mat[$n][1];
+                                                             }
+                                                         }
+                                                         $tableau_des_bases_et_tables[]=array(
+                                                             'alias' => $alias ,
+                                                             'base' => $base ,
+                                                             'nom_de_la_table' => $nom_de_la_table ,
+                                                             'jointure' => $mat[$k][1]
+                                                         );
+                                                         if(!isset($tableau_des_bases[$base])){
+                                                          $tableau_des_bases[$base]=$base;
+                                                         }
+                                                         
+//                                                         echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tableau_des_bases_et_tables , true ) . '</pre>' ; exit(0);
+                                                     }
+                                                 }
+                                             }
+                                         }
+                                     }
+                                 }
+                            }
+                        }
+                    }
+                }
+            }
+            if(count($tableau_des_bases)>=1){
+                $liste_des_bases=array();
+             
+                $liste_des_id_des_bases=implode(',',$tableau_des_bases);
+                $tt111=/*sql_inclure_deb*/
+                    /* sql_111()
+                    SELECT 
+
+                    `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chx_dossier_id_basedd`
+                     FROM b1.tbl_bdds T0
+                    WHERE ( / *** *** / `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
+
+                       AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
+                    ;
+                    */
+                    /*sql_inclure_fin*/
+                    $this->sql0->sql_iii(
+                     /*sql_111()*/ 111,
+                    array( 'T0_chi_id_basedd' => $liste_des_id_des_bases, 'T0_chx_projet_id_basedd' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']),
+                    $donnees_retournees
+                );
+                
+                if($tt111[__xst] === __xsu && count($tt111[__xva])>=1){
+                    for($i=0;$i<count($tt111[__xva]);$i++){
+                        $liste_des_bases[$tt111[__xva][$i]['T0.chi_id_basedd']]=$tt111[__xva][$i];
+                    }
+//                    echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $liste_des_bases , true ) . '</pre>' ; exit(0);
+
+//                    echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tableau_des_bases_et_tables , true ) . '</pre>' ; exit(0);
+                    //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt106[__xva][0]['T0.cht_rev_requete'] , true ) . '</pre>' ; exit(0);
+                    
+                    $maj='';
+                    $maj.='maj_interface1(';
+                    $maj.=' charger_module1(';
+                    $maj.='  chemin_module1("_js/c_fonctions_js1.js"),';
+                    $maj.='  initialisation1(';
+                    $maj.='   (module_js1,c_fonctions_js1.js),';
+                    $maj.='   (nom_module1,c_fonctions_js1)';
+                    $maj.='   (chi_id_requete,' . $donnees_recues[__xva]['chi_id_requete'] . ')';
+                    $maj.='   (chp_type_requete,' . json_encode( $tt106[__xva][0]['T0.chp_type_requete'] , JSON_FORCE_OBJECT|JSON_UNESCAPED_UNICODE ) . ')';
+//                    $maj.='   (requete,\'' . str_replace('\'','\\\'',str_replace('\\','\\\\',json_encode($tt106[__xva][0],JSON_FORCE_OBJECT|JSON_UNESCAPED_UNICODE))) . '\')';
+                    $maj.='   (requete,' . json_encode( $tt106[__xva][0]['T0.cht_rev_requete'] , JSON_FORCE_OBJECT|JSON_UNESCAPED_UNICODE ) . ')';
+                    $maj.='   (liste_des_bases,\'' . str_replace('\'','\\\'', str_replace('\\','\\\\',json_encode($liste_des_bases,JSON_FORCE_OBJECT|JSON_UNESCAPED_UNICODE))) .'\')';
+                    $maj.='   (tableau_des_bases_et_tables,\'' . str_replace('\'','\\\'',str_replace('\\','\\\\',json_encode($tableau_des_bases_et_tables,JSON_FORCE_OBJECT|JSON_UNESCAPED_UNICODE))) . '\')';
+                    $maj.='   (methode_initiale,basculer_l_indicateur_souche2)';
+                    $maj.='  )';
+                    $maj.=' )';
+                    $maj.=')';
+                    //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $maj , true ) . '</pre>' ; exit(0);
+                    if(isset($donnees_retournees[__xva]['maj'])){
+                        $donnees_retournees[__xva]['maj'].=$maj;
+                    }else{
+                        $donnees_retournees[__xva]['maj']=$maj;
+                    }
+                    $donnees_retournees[__xst]=__xsu;
+
+                }
+             
+             
+            }
+//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( implode(',' , $tableau_des_bases) , true ) . '</pre>' ; exit(0);
+            
 
         }
+     
     }
     /*
       =============================================================================================================
@@ -95,19 +272,7 @@ class c_requetes1{
 
         }
 
-        $tt149=/*sql_inclure_deb*/
-            /* sql_149()
-            SELECT 
-            `T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete`
-             FROM b1.tbl_requetes T0
-            WHERE ( / *** *** / `T0`.`chx_projet_requete` = :T0_chx_projet_requete
-               AND `T0`.`chi_id_requete` < :nb_max
-               AND 1 = 1) 
-            ORDER BY `T0`.`chi_id_requete` ASC
-            ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
+        $tt149=$this->sql0->sql_iii(
              /*sql_149()*/ 149,
             array(/**/
                 'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
@@ -325,22 +490,10 @@ class c_requetes1{
             'n_cht_sql_requete' => $donnees_recues[__xva]['sql'],
             'n_cht_php_requete' => $php,
             'n_cht_matrice_requete' => $matrice,
-            'n_cht_commentaire_requete' => $donnees_recues[__xva]['cht_commentaire_requete']
+            'n_cht_commentaire_requete' => $donnees_recues[__xva]['cht_commentaire_requete'],
+            'n_che_est_souche_requete' => $donnees_recues[__xva]['che_est_souche_requete'],
         );
-        $tt=/*sql_inclure_deb*/
-            /* sql_109()
-            UPDATE b1.tbl_requetes SET 
-               `chp_type_requete` = :n_chp_type_requete , 
-               `cht_rev_requete` = :n_cht_rev_requete , 
-               `cht_sql_requete` = :n_cht_sql_requete , 
-               `cht_php_requete` = :n_cht_php_requete , 
-               `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-               `cht_matrice_requete` = :n_cht_matrice_requete
-            WHERE (`chi_id_requete` = :c_chi_id_requete
-               AND `chx_projet_requete` = :c_chx_projet_requete) ;
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
+        $tt=$this->sql0->sql_iii(
              /*sql_109()*/ 109,
             $a_modifier,
             $donnees_retournees
@@ -609,22 +762,11 @@ class c_requetes1{
         $donnees_retournees[__xva]['chi_id_requete_initiale']='';
         $donnees_retournees[__xva]['cht_rev_requete_initiale']='';
         $donnees_retournees[__xva]['chp_type_requete_initiale']='';
-        $donnees_retournees[__xva]['cht_commentaire_requete_initiale']='';
+        $donnees_retournees[__xva]['che_est_souche_requete']='0';
         
         if($donnees_recues[__xva]['id_requete'] > 0){
 
-            $tt106=/*sql_inclure_deb*/
-                /* sql_106()
-                SELECT 
-                `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-                `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
-                 FROM b1.tbl_requetes T0
-                WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
-                   AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
-                ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
+            $tt106=$this->sql0->sql_iii(
                  /*sql_106()*/ 106,
                 array(/**/
                     'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
@@ -634,11 +776,14 @@ class c_requetes1{
             );
             
             if($tt106[__xst] === __xsu){
+             
+//                echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt106[__xva][0] , true ) . '</pre>' ; exit(0);
 
                 $donnees_retournees[__xva]['chi_id_requete_initiale']=$donnees_recues[__xva]['id_requete'];
                 $donnees_retournees[__xva]['cht_rev_requete_initiale']=$tt106[__xva][0]['T0.cht_rev_requete'];
                 $donnees_retournees[__xva]['chp_type_requete_initiale']=$tt106[__xva][0]['T0.chp_type_requete'];
                 $donnees_retournees[__xva]['cht_commentaire_requete_initiale']=$tt106[__xva][0]['T0.cht_commentaire_requete'];
+                $donnees_retournees[__xva]['che_est_souche_requete']=$tt106[__xva][0]['T0.che_est_souche_requete'];
 
             }else{
 
@@ -653,6 +798,89 @@ class c_requetes1{
         $donnees_retournees[__xva]['fonction_appelee_apres_chargement']=$donnees_recues[__xva]['fonction_appelee_apres_chargement'];
         $donnees_retournees[__xst]=__xsu;
     }
+    /*
+      =============================================================================================================
+    */
+    function vv_requetes_modifier1(&$donnees_retournees,&$mat,&$donnees_recues){
+        $page_liste_des_requetes1=false;
+        $l01=count($mat);
+        for( $i=1 ; $i < $l01 ; $i++ ){
+            
+            
+            if($mat[$i][1] === 'page_liste_des_requetes1' && $mat[$i][2] === 'f' && $mat[$i][8] === 0){
+
+                $page_liste_des_requetes1=true;
+
+            }
+
+        }
+        $tt106=$this->sql0->sql_iii(
+             /*sql_106()*/ 106,
+            array(/**/
+                'T0_chi_id_requete' => $donnees_recues[__xva]['chi_id_requete'],
+                'T0_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+                
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt106[__xst] !== __xsu){
+
+            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ' aucune modification efféctuée';
+            return;
+
+        }
+        
+        
+        
+        
+        
+        
+
+        $tt109=$this->sql0->sql_iii(
+             /*sql_109()*/ 109,
+            array(
+                /**/
+                'c_chi_id_requete' => $donnees_recues[__xva]['chi_id_requete'],
+                'c_chx_projet_requete' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'],
+                'n_chp_type_requete' => $donnees_recues[__xva]['chp_type_requete'],
+                'n_cht_rev_requete' => $donnees_recues[__xva]['cht_rev_requete'],
+                'n_cht_sql_requete' => $donnees_recues[__xva]['cht_sql_requete'],
+                'n_cht_php_requete' => $donnees_recues[__xva]['cht_php_requete'],
+                'n_cht_commentaire_requete' => $donnees_recues[__xva]['cht_commentaire_requete'],
+                'n_cht_matrice_requete' => $donnees_recues[__xva]['cht_matrice_requete'],
+                'n_che_est_souche_requete' => $donnees_recues[__xva]['che_est_souche_requete'],
+                
+                
+                
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt109[__xst] === __xer){
+
+            $donnees_retournees[__x_signaux][__xer][]='erreur lors de la modification pour ' . self::LE_LA_ELEMENT_GERE . '(' . $donnees_recues[__xva]['chi_id_requete'] . ') [' . __LINE__ . ']';
+
+        }else if($tt109['changements'] === 1){
+
+            $donnees_retournees[__x_signaux][__xsu][]='👍 modification effectuée avec succès pour ' . self::LE_LA_ELEMENT_GERE . '(' . $donnees_recues[__xva]['chi_id_requete'] . ') [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xsu;
+            $this->construire_le_js_des_requetes($donnees_retournees);
+            
+            if($page_liste_des_requetes1 === true){
+
+                $this->page_liste_des_requetes1($donnees_retournees,$mat,$donnees_recues);
+                return;
+
+            }
+
+
+        }else{
+
+            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . ' aucune modification efféctuée';
+        }
+
+    }    
     /*
       =============================================================================================================
     */
@@ -927,7 +1155,24 @@ class c_requetes1{
 EOT;
         $donnees_retournees[__x_page] .= $o1;
         $donnees_retournees[__xst]=__xsu;
-        $donnees_retournees[__xva]['maj']='' . 'maj_interface1(' . 'charger_module1(' . 'chemin_module1("_js/c_requete_sql1.js"),' . 'initialisation1(' . '(module_js1,c_requete_sql1.js),' . '(nom_module1,c_requete_sql1)' . '(div_de_travail,div_de_travail)' . '(chi_id_requete,' . $chi_id_requete . ')' . '(methode_initiale,init0)' . ')' . ')' . ')';
+        $maj='';
+        $maj.='maj_interface1(';
+        $maj.=' charger_module1(';
+        $maj.='  chemin_module1("_js/c_requete_sql1.js"),';
+        $maj.='  initialisation1(';
+        $maj.='   (module_js1,c_requete_sql1.js),';
+        $maj.='   (nom_module1,c_requete_sql1)';
+        $maj.='   (div_de_travail,div_de_travail)';
+        $maj.='   (chi_id_requete,' . $chi_id_requete . ')';
+        $maj.='   (methode_initiale,init0)';
+        $maj.='  )';
+        $maj.=' )';
+        $maj.=')';
+        if(isset($donnees_retournees[__xva]['maj'])){
+            $donnees_retournees[__xva]['maj'].=$maj;
+        }else{
+            $donnees_retournees[__xva]['maj']=$maj;
+        }
         $donnees_retournees[__x_action]='c_requetes1.formulaire1(action1(page_requetes_creer1),chi_id_requete(' . $chi_id_requete . '))';
         $donnees_retournees[__xst]=__xsu;
     }
@@ -1070,6 +1315,34 @@ EOT;
             $o1 .= '      <b>' . $chi_id_requete . '</b>  ' . PHP_EOL;
             $o1 .= '    </div>' . PHP_EOL;
             $o1 .= '  </div>' . PHP_EOL;
+            /*
+              =====================================================================================
+            */
+            $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+            /**/
+            $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+            $o1 .= '      <span>est souche</span>' . PHP_EOL;
+            $o1 .= '    </div>' . PHP_EOL;
+            /**/
+            $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+            $o1 .= '        <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_souche_requete']).'0" >';
+            $o1 .= '    </div>' . PHP_EOL;
+            /**/
+            $o1 .= '  </div>' . PHP_EOL;
+            /*
+              =====================================================================================
+            */
+            $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+            /**/
+            $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+            $o1 .= '      <span>type</span>' . PHP_EOL;
+            $o1 .= '    </div>' . PHP_EOL;
+            /**/
+            $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+            $o1 .= '      <input type="text" id="chp_type_requete" value="' . enti1($tt[__xva][0]['T0.chp_type_requete']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" maxlength="64" style="max-width:80%;" />' . PHP_EOL;
+            $o1 .= '    </div>' . PHP_EOL;
+            /**/
+            $o1 .= '  </div>' . PHP_EOL;
             /**/
             $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
             $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -1093,7 +1366,9 @@ EOT;
             $o1 .= '      </div>' . PHP_EOL;
             $o1 .= '    </div>' . PHP_EOL;
             $o1 .= '  </div>' . PHP_EOL;
-            /**/
+            /*
+              =====================================================================================
+            */
             $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
             $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
             $o1 .= '      <span>sql</span>' . PHP_EOL;
@@ -1114,7 +1389,9 @@ EOT;
             $o1 .= '      </div>' . PHP_EOL;
             $o1 .= '    </div>' . PHP_EOL;
             $o1 .= '  </div>' . PHP_EOL;
-            /**/
+            /*
+              =====================================================================================
+            */
             $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
             $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
             $o1 .= '      <span>php</span>' . PHP_EOL;
@@ -1136,7 +1413,9 @@ EOT;
             $o1 .= '      </div>' . PHP_EOL;
             $o1 .= '    </div>' . PHP_EOL;
             $o1 .= '  </div>' . PHP_EOL;
-            /**/
+            /*
+              =====================================================================================
+            */
             $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
             $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
             $o1 .= '      <span>commentaire</span>' . PHP_EOL;
@@ -1145,6 +1424,28 @@ EOT;
             $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
             $o1 .= '        <textarea id="cht_commentaire_requete" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_commentaire_requete']) . '</textarea>' . PHP_EOL;
             $o1 .= '      </div>' . PHP_EOL;
+            $o1 .= '    </div>' . PHP_EOL;
+            $o1 .= '  </div>' . PHP_EOL;
+            /*
+              =====================================================================================
+            */
+            $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+            $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+            $o1 .= '      <span>matrice</span>' . PHP_EOL;
+            $o1 .= '    </div>' . PHP_EOL;
+            $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+            $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
+            $o1 .= '        <textarea id="cht_matrice_requete" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_matrice_requete']) . '</textarea>' . PHP_EOL;
+            $o1 .= '      </div>' . PHP_EOL;
+            $o1 .= '    </div>' . PHP_EOL;
+            $o1 .= '  </div>' . PHP_EOL;
+            /*
+              =====================================================================================
+            */
+            $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+            $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+            $o1 .= '    <div class="hug_bouton" data-hug_click="c_requetes1.formulaire1(conteneur1(vv_requetes_modifier1),chi_id_requete(' . $chi_id_requete . '),page_liste_des_requetes1())" title="" >enregistrer et revenir à la liste</div>';
+            $o1 .= '    <div class="hug_bouton" data-hug_click="c_requetes1.formulaire1(conteneur1(vv_requetes_modifier1),chi_id_requete(' . $chi_id_requete . '))" title="" >enregistrer</div>';
             $o1 .= '    </div>' . PHP_EOL;
             $o1 .= '  </div>' . PHP_EOL;
             /**/
@@ -1376,20 +1677,7 @@ EOT;
         if(__X_CLE_APPLICATION === 'rev' . '_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1){
 
             /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues[__xva]['contenu_bdd_requete'] , true ) . '</pre>' ; exit(0);*/
-            $tt=/*sql_inclure_deb*/
-                /* sql_109()
-                UPDATE b1.tbl_requetes SET 
-                   `chp_type_requete` = :n_chp_type_requete , 
-                   `cht_rev_requete` = :n_cht_rev_requete , 
-                   `cht_sql_requete` = :n_cht_sql_requete , 
-                   `cht_php_requete` = :n_cht_php_requete , 
-                   `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-                   `cht_matrice_requete` = :n_cht_matrice_requete
-                WHERE (`chi_id_requete` = :c_chi_id_requete
-                   AND `chx_projet_requete` = :c_chx_projet_requete) ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
+            $tt=$this->sql0->sql_iii(
                  /*sql_109()*/ 109,
                 array(
                     /**/
@@ -1400,27 +1688,15 @@ EOT;
                     'n_cht_rev_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.cht_rev_requete'],
                     'n_cht_commentaire_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.cht_commentaire_requete'],
                     'n_cht_php_requete' => '',
-                    'n_cht_matrice_requete' => ''
+                    'n_cht_matrice_requete' => '',
+                    'n_che_est_souche_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.che_est_souche_requete']
                 ),
                 $donnees_retournees
             );
 
         }else{
 
-            $tt=/*sql_inclure_deb*/
-                /* sql_109()
-                UPDATE b1.tbl_requetes SET 
-                   `chp_type_requete` = :n_chp_type_requete , 
-                   `cht_rev_requete` = :n_cht_rev_requete , 
-                   `cht_sql_requete` = :n_cht_sql_requete , 
-                   `cht_php_requete` = :n_cht_php_requete , 
-                   `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-                   `cht_matrice_requete` = :n_cht_matrice_requete
-                WHERE (`chi_id_requete` = :c_chi_id_requete
-                   AND `chx_projet_requete` = :c_chx_projet_requete) ;
-                */
-                /*sql_inclure_fin*/
-                $this->sql0->sql_iii(
+            $tt=$this->sql0->sql_iii(
                  /*sql_109()*/ 109,
                 array(
                     /**/
@@ -1431,6 +1707,7 @@ EOT;
                     'n_cht_rev_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.cht_rev_requete'],
                     'n_cht_commentaire_requete' => $donnees_recues[__xva]['contenu_bdd_requete']['T0.cht_commentaire_requete'],
                     'n_cht_php_requete' => $donnees_recues[__xva]['cht_php_requete'],
+                    'n_che_est_souche_requete' => $donnees_recues[__xva]['che_est_souche_requete'],
                     'n_cht_matrice_requete' => json_encode($donnees_recues[__xva]['cht_matrice_requete'])
                 ),
                 $donnees_retournees
@@ -1845,6 +2122,7 @@ EOT;
         $lsttbl .= '<thead><tr>';
         $lsttbl .= '<th>action</th>';
         $lsttbl .= '<th>id</th>';
+        $lsttbl .= '<th>souche</th>';
         $lsttbl .= '<th>type</th>';
         $lsttbl .= '<th>commentaire</th>';
         $lsttbl .= '<th>sql</th>';
@@ -1865,6 +2143,19 @@ EOT;
             /**/
             $lsttbl .= '<td style="text-align:center;">';
             $lsttbl .= '' . $v0['T0.chi_id_requete'] . '';
+            $lsttbl .= '</td>';
+            /**/
+            $lsttbl .= '<td style="text-align:center;">';
+            $lsttbl .= '' . $v0['T0.che_est_souche_requete'] . '';
+            if(strpos($v0['T0.cht_rev_requete'],'sur_base_de_reference') === false && $v0['T0.chp_type_requete'] !== 'manuelle' ){
+                if($v0['T0.che_est_souche_requete']===1 ){
+                    $cmd='c_fonctions_js1(ajouter_ou_retirer_les_champs_souche(chi_id_requete(' . $v0['T0.chi_id_requete'] . ')))';
+                    $lsttbl .= '<div  class="hug_bouton" data-hug_click="' . $cmd . '">+</div>';
+                }else{
+                    $cmd='c_fonctions_js1(basculer_l_indicateur_souche1(chi_id_requete(' . $v0['T0.chi_id_requete'] . ')))';
+                    $lsttbl .= '<div  class="hug_bouton" data-hug_click="' . $cmd . '">O/1</div>';
+                }
+            }
             $lsttbl .= '</td>';
             /**/
             $lsttbl .= '<td style="text-align:left;">';

@@ -1950,6 +1950,22 @@ CREATE TABLE tbl_requetes(
             )
             */
              chd__dtc_requete VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_souche_requete'),
+            espece_du_champ(INTEGER),
+            typologie(che),
+            genre(5),
+            nom_long_du_champ('A faire ...'),
+            nom_court_du_champ('A faire ...'),
+            nom_bref_du_champ('A faire ...'),
+            afficher_champ_dans_svg(1),refe_enfant_droite(0),refe_parent_gauche(0)
+            )
+            */
+             che_est_souche_requete INTEGER NOT NULL DEFAULT  0
     );
 
 CREATE TABLE tbl_menus(

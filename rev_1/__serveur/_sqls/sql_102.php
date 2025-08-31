@@ -5,7 +5,7 @@ function sql_102($par,&$donnees_retournees,$that){
     }
     $champs0='
       `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-      `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
+      `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -13,10 +13,10 @@ function sql_102($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_requete'] !== '')){
-        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_requete`',$par['T0_chi_id_requete']);
+        $where0.=' AND `T0`.`chi_id_requete` = '.sq1($par['T0_chi_id_requete']).''.PHP_EOL;
     }
     if(($par['T0_chx_projet_requete'] !== '')){
-        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_projet_requete`',$par['T0_chx_projet_requete']);
+        $where0.=' AND `T0`.`chx_projet_requete` = '.sq1($par['T0_chx_projet_requete']).''.PHP_EOL;
     }
     if(($par['T0_chp_type_requete'] !== '')){
         $where0.=' AND `T0`.`chp_type_requete` LIKE '.sq2($par['T0_chp_type_requete']).''.PHP_EOL;
@@ -52,6 +52,7 @@ function sql_102($par,&$donnees_retournees,$that){
                 'T0.cht_php_requete' => $tab0[5],
                 'T0.cht_commentaire_requete' => $tab0[6],
                 'T0.cht_matrice_requete' => $tab0[7],
+                'T0.che_est_souche_requete' => $tab0[8],
             );
         }
         $stmt0->close();

@@ -148,6 +148,79 @@ class c_fonctions_js1{
     /*
       =============================================================================================================
     */
+    basculer_l_indicateur_souche2( par ){
+         
+        //let requete=JSON.parse(par.requete);
+        let texte_rev=par.requete.replace(/\\n/g,'\n').replace(/\\r/g,'\r');
+        let chp_type_requete=par.chp_type_requete;
+        let tableau1=__gi1.__m_rev1.txt_en_tableau( texte_rev );
+        let obj1=__gi1.__m_rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
+        
+        let liste_des_bases=JSON.parse(par.liste_des_bases.replace(/\\\\r/g,'').replace(/\\\\n/g,'').replace(/\\'/g,'\''))
+        let tableau_des_bases_et_tables=JSON.parse(par.tableau_des_bases_et_tables.replace(/\\\\r/g,'').replace(/\\\\n/g,'').replace(/\\'/g,'\''));
+//        debugger
+        for(let i in liste_des_bases){
+            let texte_rev_base=liste_des_bases[i]['T0.chp_rev_travail_basedd'].replace(/\\\\\'/g,'\\\'');
+            let tableau2=__gi1.__m_rev1.txt_en_tableau( texte_rev_base );
+            let obj2=__gi1.__m_rev1.tb_vers_matrice( tableau2.__xva , false , true , '' );
+            if(obj2.__xst === __xsu){
+                liste_des_bases[i]['mat']=obj2.__xva;
+            }
+         
+        }
+        
+        for(let i in tableau_des_bases_et_tables){
+         
+        }
+        
+        console.log('%c AFR, TODO','background:yellow;color:red;')
+        //let texte_rev=requete['T0.cht_rev_requete'].replace(/\\n/g,'\n').replace(/\\r/g,'\r');
+        
+
+//        console.log('texte_rev=',texte_rev);
+//        debugger
+/*
+        if(obj1.__xst === __xsu){
+            let mat=obj1.__xva;
+            let l01=mat.length;
+            let liste_des_bases='';
+            let liste_des_bases_et_tables=[];
+            for(let i=1;i<l01;i=mat[i][12]){
+                if('sélectionner' === mat[i][1] && 'f' === mat[i][2] && ( chp_type_requete==='liste_ecran' || chp_type_requete==='select') ){
+                    for(let j=i+1;j<l01;j=mat[j][12]){
+                        if('provenance' === mat[j][1]  && 'f' === mat[j][2] ){
+                         debugger
+                        }
+                    }
+                }
+            }
+            console.log(mat);
+        }
+*/
+        
+        
+         
+    }
+    /*
+      =============================================================================================================
+    */
+    basculer_l_indicateur_souche1( mat , debut ){
+        let chi_id_requete=0;
+        let l01=mat.length;
+        for( let i=debut + 1 ; i < l01 ; i=mat[i][12] ){
+            if('chi_id_requete' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_requete > 0){
+            let obj={"__x_action" : "c_requetes1.charger_la_requete()" ,"__xva" : {"chi_id_requete" : chi_id_requete}};
+            this.#interface1.envoyer_un_message_au_worker( obj );
+            return({"__xst" : __xsu});
+        }
+    }
+    /*
+      =============================================================================================================
+    */
     enregistrer_l_ordre_des_genres2( evenement , reference_arbre ){
         let tableau_des_ordre=[];
         let ordre=1;

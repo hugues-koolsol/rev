@@ -203,7 +203,7 @@ $__liste_des_genres=array (
   5 => 
   array (
     'chi_id_genre' => 5,
-    'chp_nom_genre' => 'zero_un non nulle',
+    'chp_nom_genre' => 'zero_un non nulle à 0',
     'chp_espece_genre' => 'INTEGER',
     'che_longueur_genre' => NULL,
     'che_est_primaire_genre' => 0,

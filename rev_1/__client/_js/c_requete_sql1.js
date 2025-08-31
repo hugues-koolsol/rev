@@ -40,6 +40,7 @@ class c_requete_sql1{
     #globale_rev_requete='';
     #globale_type_requete='';
     #globale_commentaire_requete='';
+    #che_est_souche_requete='0';
     #globale_debut_url='za_ajax.php';
     __m_rev_vers_sql1=null;
     /*
@@ -731,6 +732,7 @@ class c_requete_sql1{
       =============================================================================================================
     */
     apres_chargement_des_bases( init ){
+
         if( typeof globale_requete_en_cours === 'undefined'){
             /*
               ne rien faire
@@ -741,6 +743,8 @@ class c_requete_sql1{
                 this.#globale_rev_requete=init.cht_rev_requete_initiale;
                 this.#globale_type_requete=init.chp_type_requete_initiale;
                 this.#globale_commentaire_requete=init.cht_commentaire_requete_initiale === null ? ( '' ) : ( init.cht_commentaire_requete_initiale );
+                this.#che_est_souche_requete=init.che_est_souche_requete =init.che_est_souche_requete ;
+                
                 this.#enrichir_tableau_des_bases_tables_champs( init );
                 this.convertir_rev_pour_construction( init );
                 if(init.hasOwnProperty( 'ne_pas_mettre_en_stockage_local' ) && init.ne_pas_mettre_en_stockage_local === __xsu){
@@ -2489,10 +2493,9 @@ class c_requete_sql1{
             t+='' + rev_texte.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '';
         }
         t+='  </textarea></div>';
-        t+='<div>';
-        t+='    <label style="width:90%;display:inline-block" for="cht_commentaire_requete">commentaire : ';
-        t+='        <input style="width:50%" type="text" id="cht_commentaire_requete" value="' + this.#globale_commentaire_requete.replace( /&/g , '&amp;' ).replace( '<' , '&lt;' ).replace( '>' , '&gt;' ).replace( '"' , '&quot;' ) + '"/>';
-        t+='    </label>';
+        t+='<div> commentaire : ';
+        t+='    <input style="width:50%" type="text" id="cht_commentaire_requete" value="' + this.#globale_commentaire_requete.replace( /&/g , '&amp;' ).replace( '<' , '&lt;' ).replace( '>' , '&gt;' ).replace( '"' , '&quot;' ) + '"/>';
+        t+='    , souche : <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="'+this.#che_est_souche_requete+'" >';
         t+='</div>';
         t+='<div style="margin-top:10px;">';
         t+='    <b>SQL : </b>';
@@ -2576,6 +2579,7 @@ class c_requete_sql1{
                         "type" : this.#obj_webs.type_de_requete ,
                         "cht_matrice_requete" : obj1.__xva ,
                         "cht_commentaire_requete" : document.getElementById( 'cht_commentaire_requete' ).value ,
+                        "che_est_souche_requete" : document.getElementById( 'che_est_souche_requete' ).value ,
                         "chi_id_requete" : id_requete ,
                         "retour_a_la_liste" : retour_a_la_liste
                     }
@@ -3770,6 +3774,7 @@ class c_requete_sql1{
         this.#obj_init['cht_rev_requete_initiale']=par['cht_rev_requete_initiale'];
         this.#obj_init['chp_type_requete_initiale']=par['chp_type_requete_initiale'];
         this.#obj_init['cht_commentaire_requete_initiale']=par['cht_commentaire_requete_initiale'];
+        this.#obj_init['che_est_souche_requete']=par['che_est_souche_requete'];
         this.#obj_init['bases']={};
         var i={};
         for(i in par['donnees_des_bases_du_projet']){

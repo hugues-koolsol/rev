@@ -33,6 +33,11 @@ function sql_109($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`cht_matrice_requete` = \''.sq0($par['n_cht_matrice_requete']).'\'';
     }
+    if($par['n_che_est_souche_requete']==='' || is_null($par['n_che_est_souche_requete']) ){
+        $tableau_champs[]='`che_est_souche_requete` = NULL';
+    }else{
+        $tableau_champs[]='`che_est_souche_requete` = '.sq0($par['n_che_est_souche_requete']).'';
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/

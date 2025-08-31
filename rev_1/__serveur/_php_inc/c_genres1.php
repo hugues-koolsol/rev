@@ -1671,7 +1671,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_primaire_genre']).'0" >';
+                $o1 .= '        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_primaire_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1685,7 +1685,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_incrément_genre']).'0" >';
+                $o1 .= '        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_incrément_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1699,7 +1699,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_obligatoire_genre']).'0" >';
+                $o1 .= '        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_obligatoire_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1713,7 +1713,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_a_init_genre']).'0" >';
+                $o1 .= '        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_a_init_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1727,7 +1727,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_init_est_mot_genre']).'0" >';
+                $o1 .= '        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_init_est_mot_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1757,7 +1757,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_parmis_genre']).'0" >';
+                $o1 .= '        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_parmis_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1787,7 +1787,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '<input type="range" id="che_est_ts_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_ts_genre']).'0" >';
+                $o1 .= '<input type="range" id="che_est_ts_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_ts_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1802,7 +1802,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '<input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_nur_genre']).'0" >';
+                $o1 .= '<input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_nur_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;

@@ -16,7 +16,7 @@ LIMIT 1 OFFSET 0
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-`T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
+`T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
  FROM b1.tbl_requetes T0
 WHERE ( /* */ `T0`.`chi_id_requete` = :T0_chi_id_requete
    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete
@@ -59,7 +59,7 @@ WHERE (`chx_projet_rev` = :chx_projet_rev
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-`T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
+`T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
  FROM b1.tbl_requetes T0
 WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
@@ -100,7 +100,8 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
    `cht_sql_requete` = :n_cht_sql_requete , 
    `cht_php_requete` = :n_cht_php_requete , 
    `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-   `cht_matrice_requete` = :n_cht_matrice_requete
+   `cht_matrice_requete` = :n_cht_matrice_requete , 
+   `che_est_souche_requete` = :n_che_est_souche_requete
 WHERE (`chi_id_requete` = :c_chi_id_requete
    AND `chx_projet_requete` = :c_chx_projet_requete) ;',
     'cht_commentaire_requete' => 'requêtes',
@@ -243,8 +244,11 @@ WHERE (`chi_id_basedd` = :chi_id_basedd
   119 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache`
+`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
+`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T0`.`chx_projet_tache`
  FROM b1.tbl_taches T0
+ LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
+
 WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
    AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
    AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
@@ -274,7 +278,7 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
    AND `chp_priorite_tache` < 99
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',
-    'cht_commentaire_requete' => 'tâches',
+    'cht_commentaire_requete' => 'tâches priorité + 1',
   ),
   122 => 
   array (
@@ -395,7 +399,7 @@ WHERE ( /* */ `chi_id_tache` = :chi_id_tache
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_requete` , `T0`.`chx_projet_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-`T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
+`T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
  FROM b1.tbl_requetes T0
 WHERE ( /* */ `T0`.`chi_id_requete` = :T0_chi_id_requete
    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
@@ -531,7 +535,7 @@ SELECT
 
 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',
-    'cht_commentaire_requete' => NULL,
+    'cht_commentaire_requete' => 'utilisateurs',
   ),
   148 => 
   array (

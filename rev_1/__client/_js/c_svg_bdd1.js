@@ -1800,6 +1800,8 @@ class c_svg_bdd1{
     */
     selectionner_un_genre( mat ){
         let zone_select='';
+        let contexte_action_champ_modifier=0;
+        let nom_de_la_table='';
         for( let i=0 ; i < mat.length ; i++ ){
             if(mat[i][1] === 'zone_select' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 zone_select=mat[i + 1][1];
@@ -1807,6 +1809,11 @@ class c_svg_bdd1{
                 id_svg_champ_en_cours=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'nom_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_de_la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_table=mat[i + 1][1];
+            }else if(mat[i][1] === 'contexte_action_champ_modifier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                contexte_action_champ_modifier=parseInt(mat[i + 1][1],10);
+                
             }
         }
         if(zone_select !== ''){
@@ -1822,6 +1829,25 @@ class c_svg_bdd1{
             document.getElementById( 'la_valeur_par_defaut_est_caractere' ).checked=data_genre.che_init_est_mot_genre === 1 ? ( true ) : ( false );
             document.getElementById( 'valeur_par_defaut' ).value=data_genre.cht_valeur_init_genre === null ? ( '' ) : ( data_genre.cht_valeur_init_genre );
             document.getElementById( 'typologie' ).value=data_genre.chp_prefixe_genre === null ? ( '' ) : ( data_genre.chp_prefixe_genre );
+            if(contexte_action_champ_modifier===0){
+                /* création du champ */
+                let valeur_du_champ=document.getElementById('nom_du_champ').value;
+                debugger
+                if(valeur_du_champ.length>=3){
+                    if(valeur_du_champ.substr(0,3)===data_genre.chp_prefixe_genre){
+                    }else{
+                        valeur_du_champ=data_genre.chp_prefixe_genre+'_'+valeur_du_champ.substr(4);
+                    }
+                }else{
+                }
+                if(valeur_du_champ.length===4){
+                 if(nom_de_la_table.substr(0,4)==='tbl_'){
+                  valeur_du_champ=valeur_du_champ+'xxxx_'+nom_de_la_table.substr(4,nom_de_la_table.length-5);
+                 }
+                }
+                document.getElementById('nom_du_champ').value=valeur_du_champ;
+            }
+            
         }
     }
     /*
@@ -1996,6 +2022,7 @@ class c_svg_bdd1{
         cmd+='  methode3(selectionner_un_genre),';
         cmd+='  parametre3(';
         cmd+='     zone_select(genre),';
+        cmd+='     contexte_action_champ_modifier(1),';
         cmd+='  )';
         cmd+=')';
         t+='<select id="genre" data-hug_change="' + cmd + '">' + texte__liste_des_genres + '</select>';
@@ -3817,6 +3844,7 @@ class c_svg_bdd1{
         cmd+='  methode3(selectionner_un_genre),';
         cmd+='  parametre3(';
         cmd+='     zone_select(genre),';
+        cmd+='     nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
         cmd+='  )';
         cmd+=')';
         t+='<br />genre  : <select id="genre" data-hug_change="' + cmd + '">' + texte__liste_des_genres + '</select>';
