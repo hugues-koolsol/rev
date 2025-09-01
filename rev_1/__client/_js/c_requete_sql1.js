@@ -2130,7 +2130,7 @@ class c_requete_sql1{
                     cmd+='  destination(conditions),';
                     cmd+=' )';
                     cmd+=')';
-                    t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '">✎</div>';
+                    t+='<div  class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '">✎</div>';
                     for( i=0 ; i < this.#obj_webs.conditions.length ; i++ ){
                         var cmd='';
                         cmd+='interface1.module1(';
@@ -2140,7 +2140,7 @@ class c_requete_sql1{
                         cmd+='  destination(conditions),';
                         cmd+=' )';
                         cmd+=')';
-                        t+='<div class="hug_bouton" data-hug_click="' + cmd + '">' + this.#obj_webs.conditions[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ) + '</div>';
+                        t+='<div class="hug_bouton" id="retirer_ce_champ_de_where" style="max-width:90%;overflow-wrap:anywhere;"  data-hug_click="' + cmd + '">' + this.#obj_webs.conditions[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ) + '</div>';
                     }
                 }
             }else{
@@ -3010,7 +3010,10 @@ class c_requete_sql1{
                 }
                 /* console.log(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert[i][1]]); */
                 if(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert[i][1]].genre_objet_du_champ
-                 && this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert[i][1]].genre_objet_du_champ.che_est_ts_genre===1
+                 && ( 
+                        this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert[i][1]].genre_objet_du_champ.che_est_tsc_genre===1
+                     || this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert[i][1]].genre_objet_du_champ.che_est_tsm_genre===1
+                 )
                  && this.#obj_webs.ne_pas_traiter_la_maj_ts_creation === 0
                 ){
                     tableau_des_insert.push( '        $liste_des_valeurs.=PHP_EOL.\'      \'.sq1($GLOBALS[__date_ms]).\'\'' );
@@ -3195,7 +3198,10 @@ class c_requete_sql1{
                 ){
                     liste_des_champs_pour_update3+='    $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.non_du_champ_en_bdd + ' + 1 \';' + CRLF;
                 }else if(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert[i][1]].genre_objet_du_champ
-                 && this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert[i][1]].genre_objet_du_champ.che_est_ts_genre===1
+                 && (
+                        this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert[i][1]].genre_objet_du_champ.che_est_tsc_genre===1
+                      || this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert[i][1]].genre_objet_du_champ.che_est_tsm_genre===1
+                    )
                  && this.#obj_webs.ne_pas_traiter_la_maj_ts_modification===0
                 ){
                     liste_des_champs_pour_update3+='    $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = \\\'\'.$GLOBALS[__date_ms].\'\\\' \';' + CRLF;

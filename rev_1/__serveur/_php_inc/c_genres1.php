@@ -432,7 +432,8 @@ class c_genres1{
                 'che_est_parmis_genre' => $v1['T0.che_est_parmis_genre'],
                 'cht_parmis_genre' => $v1['T0.cht_parmis_genre'],
                 'che_ordre_genre' => $v1['T0.che_ordre_genre'],
-                'che_est_ts_genre' => $v1['T0.che_est_ts_genre'],
+                'che_est_tsc_genre' => $v1['T0.che_est_tsc_genre'],
+                'che_est_tsm_genre' => $v1['T0.che_est_tsm_genre'],
                 'cht_fonctions_genre' => $v1['T0.cht_fonctions_genre'],
                 'che_est_nur_genre' => $v1['T0.che_est_nur_genre'],
                 
@@ -488,7 +489,8 @@ class c_genres1{
                     'chp_prefixe_genre' => $donnees_recues[__xva]['chp_prefixe_genre'] === '' ? null : $donnees_recues[__xva]['chp_prefixe_genre'],
                     'che_est_parmis_genre' => $donnees_recues[__xva]['che_est_parmis_genre'] === '' ? null : $donnees_recues[__xva]['che_est_parmis_genre'],
                     'cht_parmis_genre' => $donnees_recues[__xva]['cht_parmis_genre'] === '' ? null : $donnees_recues[__xva]['cht_parmis_genre'],
-                    'che_est_ts_genre' => $donnees_recues[__xva]['che_est_ts_genre'] === '' ? null : $donnees_recues[__xva]['che_est_ts_genre'],
+                    'che_est_tsc_genre' => $donnees_recues[__xva]['che_est_tsc_genre'] === '' ? null : $donnees_recues[__xva]['che_est_tsc_genre'],
+                    'che_est_tsm_genre' => $donnees_recues[__xva]['che_est_tsm_genre'] === '' ? null : $donnees_recues[__xva]['che_est_tsm_genre'],
                     'cht_fonctions_genre' => $donnees_recues[__xva]['cht_fonctions_genre'] === '' ? null : $donnees_recues[__xva]['cht_fonctions_genre'],
                     'che_est_nur_genre' => $donnees_recues[__xva]['che_est_nur_genre'] === '' ? null : $donnees_recues[__xva]['che_est_nur_genre'],
                     
@@ -824,7 +826,8 @@ class c_genres1{
                 'n_chp_prefixe_genre' => $donnees_recues[__xva]['chp_prefixe_genre'],
                 'n_che_est_parmis_genre' => $donnees_recues[__xva]['che_est_parmis_genre'],
                 'n_cht_parmis_genre' => $donnees_recues[__xva]['cht_parmis_genre'],
-                'n_che_est_ts_genre' => $donnees_recues[__xva]['che_est_ts_genre'],
+                'n_che_est_tsc_genre' => $donnees_recues[__xva]['che_est_tsc_genre'],
+                'n_che_est_tsm_genre' => $donnees_recues[__xva]['che_est_tsm_genre'],
                 'n_cht_fonctions_genre' => $donnees_recues[__xva]['cht_fonctions_genre'],
                 'n_che_est_nur_genre' => $donnees_recues[__xva]['che_est_nur_genre'],
                 
@@ -1182,14 +1185,37 @@ class c_genres1{
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>est un timestamp</span>' . PHP_EOL;
+        $o1 .= '      <span>est un ts création</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_ts_genre" value="';
+        $o1 .= '      <input type="text" placeholder="" id="che_est_tsc_genre" value="';
         
-        if(isset($donnees_recues['dupliquer']['T0.che_est_ts_genre'])){
+        if(isset($donnees_recues['dupliquer']['T0.che_est_tsc_genre'])){
 
-            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_ts_genre']);
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_tsc_genre']);
+
+        }else{
+
+            $o1 .= '0';
+        }
+
+        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>est un ts modification</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <input type="text" placeholder="" id="che_est_tsm_genre" value="';
+        
+        if(isset($donnees_recues['dupliquer']['T0.che_est_tsm_genre'])){
+
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_tsm_genre']);
 
         }else{
 
@@ -1485,11 +1511,25 @@ class c_genres1{
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>est un timestamp</span>' . PHP_EOL;
+                $o1 .= '      <span>est un ts création</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="che_est_ts_genre" value="' . enti1($tt[__xva][0]['T0.che_est_ts_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="1" maxlength="1" />' . PHP_EOL;
+                $o1 .= '      <input type="text" id="che_est_tsc_genre" value="' . enti1($tt[__xva][0]['T0.che_est_tsc_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="1" maxlength="1" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>est un ts modification</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="che_est_tsm_genre" value="' . enti1($tt[__xva][0]['T0.che_est_tsm_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="1" maxlength="1" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1783,11 +1823,25 @@ class c_genres1{
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>est un timestamp</span>' . PHP_EOL;
+                $o1 .= '      <span>est un ts création</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '<input type="range" id="che_est_ts_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_ts_genre']).'" >';
+                $o1 .= '<input type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_tsc_genre']).'" >';
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>est un ts modification</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '<input type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_tsm_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;

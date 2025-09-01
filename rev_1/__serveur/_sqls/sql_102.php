@@ -30,6 +30,9 @@ function sql_102($par,&$donnees_retournees,$that){
     if(($par['T0_cht_commentaire_requete'] !== '')){
         $where0.=' AND `T0`.`cht_commentaire_requete` LIKE '.sq2($par['T0_cht_commentaire_requete']).''.PHP_EOL;
     }
+    if(($par['T0_che_est_souche_requete'] !== '')){
+        $where0.=' AND `T0`.`che_est_souche_requete` = '.sq1($par['T0_che_est_souche_requete']).''.PHP_EOL;
+    }
     $sql0.=$where0;
     $order0='
        ORDER BY  `T0`.`chi_id_requete` DESC';

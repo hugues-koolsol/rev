@@ -22,29 +22,29 @@ $tableau_des_dependances=array (
       ),
       2 => 
       array (
-        'table_dependante' => 'tbl_taches',
-        'champ_dependant' => 'chx_projet_tache',
-        'non_nulle' => '1',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-      3 => 
-      array (
         'table_dependante' => 'tbl_sources',
         'champ_dependant' => 'chx_projet_id_source',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
-      4 => 
+      3 => 
       array (
         'table_dependante' => 'tbl_bdds',
         'champ_dependant' => 'chx_projet_id_basedd',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
-      5 => 
+      4 => 
       array (
         'table_dependante' => 'tbl_requetes',
         'champ_dependant' => 'chx_projet_requete',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+      5 => 
+      array (
+        'table_dependante' => 'tbl_taches',
+        'champ_dependant' => 'chx_projet_tache',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),

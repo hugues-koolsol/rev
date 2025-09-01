@@ -148,9 +148,390 @@ class c_fonctions_js1{
     /*
       =============================================================================================================
     */
+    traite_select(reference_table , /*matrice de la base */mat ){
+     
+     
+        let l01=mat.length;
+        let cht_rev_requete='';
+        let champs_rev='';
+        let condition_rev='';
+        let jointures='';
+        let liste_des_references=[];
+        let numero_reference=1;
+        
+        for(let i=1;i<l01;i=mat[i][12]){
+            let indice=0;
+            if(mat[i][1]==='créer_table' && mat[i][2] === 'f' ){
+                for(let j=i+1;j<l01;j=mat[j][12]){
+                    if(mat[j][1]==='nom_de_la_table' && mat[j][2] === 'f'  && mat[j][8] === 1 ){
+                        if(mat[j+1][1]===reference_table.nom_de_la_table){
+                         
+                            indice=i;
+                            break
+                        }
+                    }
+                }
+            }
+            if(indice>0){
+                for(let j=indice+1;j<l01;j=mat[j][12]){
+                    if(mat[j][1]==='champs' && mat[j][2] === 'f' ){
+                        for(let k=j+1;k<l01;k=mat[k][12]){
+                            if(mat[k][1]==='champ' && mat[j][2] === 'f' ){
+                                let nom_du_champ='';
+                                let genre=0;
+                                let genre_du_champ=null;
+                                for(let l=k+1;l<l01;l=mat[l][12]){
+                                    if(mat[l][1]==='nom_du_champ' && mat[l][2] === 'f'  && mat[l][8] === 1  && mat[l+1][2] === 'c' ){
+                                        nom_du_champ=mat[l+1][1];
+                                    }else if(mat[l][1]==='meta' && mat[l][2] === 'f' ){
+                                        for(let m=l+1;m<l01;m=mat[m][12]){
+                                            if(mat[m][1]==='genre' && mat[m][2] === 'f'  && mat[m][8] === 1  && mat[m+1][2] === 'c' ){
+                                                genre=parseInt(mat[m+1][1],10);
+                                                genre_du_champ=__gi1.__liste_des_genres[genre];
+                                            }
+                                        }
+                                    }
+                                }
+                                for(let l=k+1;l<l01;l=mat[l][12]){
+                                    if(mat[l][1]==='references' && mat[l][2] === 'f' ){
+                                        if(mat[l][8]===2){
+                                         liste_des_references.push({
+                                              numero_reference:numero_reference,
+                                              table_mere : mat[l+1][1],
+                                              champ_pere : mat[l+2][1],
+                                              table_fille : reference_table.nom_de_la_table ,
+                                              champ_fils : nom_du_champ ,
+                                         })
+                                         numero_reference++;
+                                        }else{
+                                            return({__xst:__xer });
+                                            debugger;
+                                        }
+                                    }
+                                }
+                                champs_rev+='\n      champ(`T0`,`'+nom_du_champ+'`)';
+                                if(nom_du_champ !== '' && genre_du_champ && (genre_du_champ.che_est_incrément_genre===1 || genre_du_champ.che_est_primaire_genre === 1)){
+                                    condition_rev+='\n      egal(champ(`T0`,`'+nom_du_champ+'`),:T0_'+nom_du_champ+')';
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if(liste_des_references.length>0){
+            for( let ind_joint in liste_des_references){
+                jointures+='      jointure_gauche(\n'
+                jointures+='         source(nom_de_la_table('+liste_des_references[ind_joint].table_mere+',alias(T'+liste_des_references[ind_joint].numero_reference+'),base(b'+reference_table.base+'))),\n';
+                jointures+='         contrainte(egal(champ(T'+liste_des_references[ind_joint].numero_reference+','+liste_des_references[ind_joint].champ_pere+'),champ(T0,'+liste_des_references[ind_joint].champ_fils+')))\n';
+                jointures+='      )\n';
+                
+                
+                
+                
+                
+                for(let i=1;i<l01;i=mat[i][12]){
+                    let indice=0;
+                    if(mat[i][1]==='créer_table' && mat[i][2] === 'f' ){
+                        for(let j=i+1;j<l01;j=mat[j][12]){
+                            if(mat[j][1]==='nom_de_la_table' && mat[j][2] === 'f'  && mat[j][8] === 1 ){
+                                if(mat[j+1][1]===liste_des_references[ind_joint].table_mere){
+                                 
+                                    indice=i;
+                                    break
+                                }
+                            }
+                        }
+                    }
+                    if(indice>0){
+                        let continuer=true;
+                        for(let j=indice+1;j<l01 && continuer===true ;j=mat[j][12]){
+                            if(mat[j][1]==='champs' && mat[j][2] === 'f' ){
+                                for(let k=j+1;k<l01 && continuer===true ;k=mat[k][12]){
+                                    if(mat[k][1]==='champ' && mat[j][2] === 'f' ){
+                                        let nom_du_champ='';
+                                        let espece_du_champ='';
+                                        let genre_du_champ=null;
+                                        for(let l=k+1;l<l01;l=mat[l][12]){
+                                            if(mat[l][1]==='nom_du_champ' && mat[l][2] === 'f'  && mat[l][8] === 1  && mat[l+1][2] === 'c' ){
+                                                nom_du_champ=mat[l+1][1];
+                                            }else if(mat[l][1]==='espece_du_champ' && mat[l][2] === 'f'  && mat[l][8] === 1  && mat[l+1][2] === 'c' ){
+                                                espece_du_champ=mat[l+1][1];
+                                            }
+                                        }
+                                        if((espece_du_champ==='VARCHAR' || espece_du_champ==='TEXT' ) && nom_du_champ!==''){
+                                            champs_rev+='\n      champ(`T'+liste_des_references[ind_joint].numero_reference+'`,`'+nom_du_champ+'`)';
+                                            continuer=false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }                
+                
+                
+            }
+            /*#
+              sélectionner(
+                 base_de_reference(1),
+                 valeurs(
+                    champ(`T0`,`chi_id_tache`),
+                    champ(`T0`,`chp_texte_tache`),
+                    champ(`T0`,`chx_utilisateur_tache`),
+                    champ(`T0`,`che_priorite_tache`),
+                    champ(`T1`,`chp_nom_de_connexion_utilisateur`),
+                    champ(`T0`,`chd__dtm_tache`),
+                    champ(`T0`,`chd__dtc_tache`),
+                    champ(`T0`,`che__nur_tache`)
+                 ),
+                 provenance(
+                    table_reference(
+                       source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+                    ),
+                    jointure_gauche(
+                       source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
+                       contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
+                    )
+                 ),
+                 conditions(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache))
+              )  
+            */                 
+            
+        }
+
+
+        if(champs_rev!=='' && condition_rev!=='' ){
+            cht_rev_requete+='sélectionner(\n';
+            cht_rev_requete+='   base_de_reference('+reference_table.base+'),\n';
+            cht_rev_requete+='   valeurs(';
+            cht_rev_requete+=champs_rev;
+            cht_rev_requete+='\n   )\n';
+            cht_rev_requete+='   provenance(\n';
+            cht_rev_requete+='      table_reference(\n';
+            cht_rev_requete+='         source(nom_de_la_table('+reference_table.nom_de_la_table+',base(b'+reference_table.base+'),alias(T0)))\n';
+            cht_rev_requete+='      )\n';
+            cht_rev_requete+=jointures
+            
+            cht_rev_requete+='   ),\n';
+            cht_rev_requete+='   conditions(\n';
+            cht_rev_requete+=condition_rev;
+            cht_rev_requete+='   )\n';
+            cht_rev_requete+=')';
+        }else{
+           __gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : __gi1.__m_rev1.nl2()} );
+           __gi1.remplis_les_messages_et_affiche(null);
+           return({__xst:__xer });
+        }
+/*
+        debugger
+        return({__xst:__xer });
+*/        
+        return({__xst:__xsu , cht_rev_requete : cht_rev_requete });
+     
+    }
+    /*
+      =============================================================================================================
+    */
+    traite_update(reference_table , /*matrice de la base */mat ){
+     
+     
+        let l01=mat.length;
+        let cht_rev_requete='';
+        let champs_rev='';
+        let condition_rev='';
+        for(let i=1;i<l01;i=mat[i][12]){
+            let indice=0;
+            if(mat[i][1]==='créer_table' && mat[i][2] === 'f' ){
+                for(let j=i+1;j<l01;j=mat[j][12]){
+                    if(mat[j][1]==='nom_de_la_table' && mat[j][2] === 'f'  && mat[j][8] === 1 ){
+                        if(mat[j+1][1]===reference_table.nom_de_la_table){
+                         
+                            indice=i;
+                            break
+                        }
+                    }
+                }
+            }
+            if(indice>0){
+                for(let j=indice+1;j<l01;j=mat[j][12]){
+                    if(mat[j][1]==='champs' && mat[j][2] === 'f' ){
+                        for(let k=j+1;k<l01;k=mat[k][12]){
+                            if(mat[k][1]==='champ' && mat[j][2] === 'f' ){
+                                let nom_du_champ='';
+                                let genre=0;
+                                let genre_du_champ=null;
+                                for(let l=k+1;l<l01;l=mat[l][12]){
+                                    if(mat[l][1]==='nom_du_champ' && mat[l][2] === 'f'  && mat[l][8] === 1  && mat[l+1][2] === 'c' ){
+                                        nom_du_champ=mat[l+1][1];
+                                    }else if(mat[l][1]==='meta' && mat[l][2] === 'f' ){
+                                        for(let m=l+1;m<l01;m=mat[m][12]){
+                                            if(mat[m][1]==='genre' && mat[m][2] === 'f'  && mat[m][8] === 1  && mat[m+1][2] === 'c' ){
+                                                genre=parseInt(mat[m+1][1],10);
+                                                genre_du_champ=__gi1.__liste_des_genres[genre];
+                                            }
+                                        }
+                                    }
+                                }
+                                if(nom_du_champ !== '' && genre_du_champ && !(genre_du_champ.che_est_incrément_genre===1 || genre_du_champ.che_est_primaire_genre === 1 || genre_du_champ.che_est_tsc_genre === 1 )){
+                                    champs_rev+='\n      affecte(champ(`'+nom_du_champ+'`),:n_'+nom_du_champ+')';
+                                }else if(nom_du_champ !== '' && genre_du_champ && (genre_du_champ.che_est_incrément_genre===1 || genre_du_champ.che_est_primaire_genre === 1)){
+                                    condition_rev+='\n      egal(champ(`'+nom_du_champ+'`),:c_'+nom_du_champ+')';
+                                }
+                            }
+                        }
+                    }
+                }
+                break
+            }
+        }
+        if(champs_rev!=='' && condition_rev!=='' ){
+            cht_rev_requete+='modifier(\n';
+            cht_rev_requete+='   base_de_reference('+reference_table.base+'),\n';
+            cht_rev_requete+='   valeurs(';
+            cht_rev_requete+=champs_rev;
+            cht_rev_requete+='\n   )\n';
+            cht_rev_requete+='   provenance(\n';
+            cht_rev_requete+='      table_reference(\n';
+            cht_rev_requete+='         source(nom_de_la_table('+reference_table.nom_de_la_table+',base(b'+reference_table.base+')))\n';
+            cht_rev_requete+='      )\n';
+            cht_rev_requete+='   ),\n';
+            cht_rev_requete+='   conditions(\n';
+            cht_rev_requete+=condition_rev;
+            cht_rev_requete+='   )\n';
+            cht_rev_requete+=')';
+        }else{
+           __gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : __gi1.__m_rev1.nl2()} );
+           __gi1.remplis_les_messages_et_affiche(null);
+           return({__xst:__xer });
+        }
+        return({__xst:__xsu , cht_rev_requete : cht_rev_requete });
+     
+    }
+    /*
+      =============================================================================================================
+    */
+    traite_insert(reference_table , /*matrice de la base */mat ){
+        /*#
+          {
+            "alias"           : "" ,
+            "base"            : 1 ,
+            "nom_de_la_table" : "tbl_genres" ,
+            "jointure"        : "table_reference"
+          }
+          champ(
+             nom_du_champ('chx_utilisateur_tache'),
+             espece_du_champ(INTEGER),
+             non_nulle(1),
+             meta(
+                genre_meta(champ),
+                nom_du_champ('chx_utilisateur_tache'),
+                nom_long_du_champ('à faire chx_utilisateur_tache'),
+                nom_court_du_champ('à faire chx_utilisateur_tache'),
+                nom_bref_du_champ('à faire chx_utilisateur_tache'),
+                typologie(che),
+                genre(9),
+                afficher_champ_dans_svg(1),
+                espece_du_champ(INTEGER)
+             )
+          ),
+          
+          insérer(
+             base_de_reference(1),
+             valeurs(
+                affecte(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),
+                affecte(champ(`chp_texte_tache`),:chp_texte_tache),
+                affecte(champ(`chp_priorite_tache`),:chp_priorite_tache),
+                affecte(champ(`chx_projet_tache`),:chx_projet_tache),
+                affecte(champ(`chd__dtm_tache`),:chd__dtm_tache),
+                affecte(champ(`chd__dtc_tache`),:chd__dtc_tache)
+             ),
+             provenance(
+                table_reference(
+                   source(nom_de_la_table(tbl_taches,base(b1)))
+                )
+             )
+          )            
+
+        */     
+        let l01=mat.length;
+        let cht_rev_requete='';
+        let champs_rev='';
+        for(let i=1;i<l01;i=mat[i][12]){
+            let indice=0;
+            if(mat[i][1]==='créer_table' && mat[i][2] === 'f' ){
+                for(let j=i+1;j<l01;j=mat[j][12]){
+                    if(mat[j][1]==='nom_de_la_table' && mat[j][2] === 'f'  && mat[j][8] === 1 ){
+                        if(mat[j+1][1]===reference_table.nom_de_la_table){
+                         
+                            indice=i;
+                            break
+                        }
+                    }
+                }
+            }
+            if(indice>0){
+                for(let j=indice+1;j<l01;j=mat[j][12]){
+                    if(mat[j][1]==='champs' && mat[j][2] === 'f' ){
+                        for(let k=j+1;k<l01;k=mat[k][12]){
+                            if(mat[k][1]==='champ' && mat[j][2] === 'f' ){
+                                let nom_du_champ='';
+                                let genre=0;
+                                let genre_du_champ=null;
+                                for(let l=k+1;l<l01;l=mat[l][12]){
+                                    if(mat[l][1]==='nom_du_champ' && mat[l][2] === 'f'  && mat[l][8] === 1  && mat[l+1][2] === 'c' ){
+                                        nom_du_champ=mat[l+1][1];
+                                    }else if(mat[l][1]==='meta' && mat[l][2] === 'f' ){
+                                        for(let m=l+1;m<l01;m=mat[m][12]){
+                                            if(mat[m][1]==='genre' && mat[m][2] === 'f'  && mat[m][8] === 1  && mat[m+1][2] === 'c' ){
+                                                genre=parseInt(mat[m+1][1],10);
+                                                genre_du_champ=__gi1.__liste_des_genres[genre];
+                                            }
+                                        }
+                                    }
+                                }
+                                if(nom_du_champ !== '' && genre_du_champ && !(genre_du_champ.che_est_incrément_genre===1 || genre_du_champ.che_est_primaire_genre === 1 || genre_du_champ.che_est_nur_genre===1)){
+                                    champs_rev+='\n      affecte(champ(`'+nom_du_champ+'`),:'+nom_du_champ+')';
+                                }
+                            }
+                        }
+                    }
+                }
+                break
+            }
+        }
+        if(champs_rev!==''){
+            cht_rev_requete+='insérer(\n';
+            cht_rev_requete+='   base_de_reference('+reference_table.base+'),\n';
+            cht_rev_requete+='   valeurs(';
+            cht_rev_requete+=champs_rev;
+            cht_rev_requete+='\n   )\n';
+            cht_rev_requete+='   provenance(\n';
+            cht_rev_requete+='      table_reference(\n';
+            cht_rev_requete+='         source(nom_de_la_table('+reference_table.nom_de_la_table+',base(b'+reference_table.base+')))\n';
+            cht_rev_requete+='      )\n';
+            cht_rev_requete+='   )\n';
+            cht_rev_requete+=')';
+        }else{
+           __gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : __gi1.__m_rev1.nl2()} );
+           __gi1.remplis_les_messages_et_affiche(null);
+           return({__xst:__xer });
+        }
+        return({__xst:__xsu , cht_rev_requete : cht_rev_requete });
+
+    }
+    /*
+      =============================================================================================================
+    */
     basculer_l_indicateur_souche2( par ){
          
         //let requete=JSON.parse(par.requete);
+        let forcer_a_1=0;
+        if(par.hasOwnProperty('forcer_a_un')){
+            forcer_a_1=parseInt(par.forcer_a_un,10);
+        }
+        
         let texte_rev=par.requete.replace(/\\n/g,'\n').replace(/\\r/g,'\r');
         let chp_type_requete=par.chp_type_requete;
         let tableau1=__gi1.__m_rev1.txt_en_tableau( texte_rev );
@@ -168,35 +549,55 @@ class c_fonctions_js1{
             }
          
         }
-        
+        let cht_rev_requete='';
         for(let i in tableau_des_bases_et_tables){
+            switch(par.chp_type_requete){
+                case 'select':
+                     let objs=this.traite_select(tableau_des_bases_et_tables[i] , liste_des_bases[tableau_des_bases_et_tables[i].base].mat);
+                     if(objs.__xst===__xsu){
+                         cht_rev_requete=objs.cht_rev_requete;
+                     }else{
+                     }
+                     break;
+                     
+                case 'update':
+                     let obju=this.traite_update(tableau_des_bases_et_tables[i] , liste_des_bases[tableau_des_bases_et_tables[i].base].mat);
+                     if(obju.__xst===__xsu){
+                         cht_rev_requete=obju.cht_rev_requete;
+                     }else{
+                     }
+                     break;
+                     
+                case 'insert':
+                     let obji=this.traite_insert(tableau_des_bases_et_tables[i] , liste_des_bases[tableau_des_bases_et_tables[i].base].mat);
+                     if(obji.__xst===__xsu){
+                         cht_rev_requete=obji.cht_rev_requete;
+                     }else{
+                     }
+                     break;
+                default:
+                     console.log('%c AFR, TODO','background:yellow;color:red;' , par.chp_type_requete )
+                     __gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : __gi1.__m_rev1.nl2()} );
+                     __gi1.remplis_les_messages_et_affiche(null);
+                     return({__xst:__xer });
+                     
+            }
          
         }
-        
-        console.log('%c AFR, TODO','background:yellow;color:red;')
-        //let texte_rev=requete['T0.cht_rev_requete'].replace(/\\n/g,'\n').replace(/\\r/g,'\r');
-        
-
-//        console.log('texte_rev=',texte_rev);
-//        debugger
-/*
-        if(obj1.__xst === __xsu){
-            let mat=obj1.__xva;
-            let l01=mat.length;
-            let liste_des_bases='';
-            let liste_des_bases_et_tables=[];
-            for(let i=1;i<l01;i=mat[i][12]){
-                if('sélectionner' === mat[i][1] && 'f' === mat[i][2] && ( chp_type_requete==='liste_ecran' || chp_type_requete==='select') ){
-                    for(let j=i+1;j<l01;j=mat[j][12]){
-                        if('provenance' === mat[j][1]  && 'f' === mat[j][2] ){
-                         debugger
-                        }
-                    }
-                }
-            }
-            console.log(mat);
+        if( cht_rev_requete !== '' ){
+            
+            
+            let obj={"__x_action" : "c_requetes1.basculer_l_indicateur_souche3()" ,"__xva" : {"chi_id_requete" : par.chi_id_requete , cht_rev_requete : cht_rev_requete , forcer_a_1:forcer_a_1}};
+            __gi1.envoyer_un_message_au_worker( obj );
+            return({"__xst" : __xsu});
+            
+            
+        }else{
+            __gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : __gi1.__m_rev1.nl2()} );
+            __gi1.remplis_les_messages_et_affiche(null);
+            return({__xst:__xer });
         }
-*/
+        
         
         
          
@@ -206,14 +607,17 @@ class c_fonctions_js1{
     */
     basculer_l_indicateur_souche1( mat , debut ){
         let chi_id_requete=0;
+        let forcer_a_un=0;
         let l01=mat.length;
         for( let i=debut + 1 ; i < l01 ; i=mat[i][12] ){
             if('chi_id_requete' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+            }else if('forcer_a_un' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                forcer_a_un=parseInt( mat[i + 1][1] , 10 );
             }
         }
         if(chi_id_requete > 0){
-            let obj={"__x_action" : "c_requetes1.charger_la_requete()" ,"__xva" : {"chi_id_requete" : chi_id_requete}};
+            let obj={"__x_action" : "c_requetes1.charger_la_requete()" ,"__xva" : {"chi_id_requete" : chi_id_requete,forcer_a_un:forcer_a_un}};
             this.#interface1.envoyer_un_message_au_worker( obj );
             return({"__xst" : __xsu});
         }
@@ -587,6 +991,7 @@ class c_fonctions_js1{
         ){
             this.#interface1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : 'le contenu rev est vide ' + this.#interface1.__m_rev1.nl2()} );
         }else{
+
             let obj1=this.#objet_conversion_requete1.init1( {"contenu_bdd_requete" : reponse.__xva.contenu_bdd_requete ,"bases_du_projet" : reponse.__xva.bases_du_projet} );
             if(obj1.__xst === __xsu){
                 let obj={
@@ -597,7 +1002,8 @@ class c_fonctions_js1{
                         "cht_php_requete" : obj1.__xva.cht_php_requete ,
                         "cht_matrice_requete" : obj1.__xva.cht_matrice_requete ,
                         "chi_id_requete" : reponse.__xva.contenu_bdd_requete['T0.chi_id_requete'] ,
-                        "bouton_compiler" : reponse.__xva.bouton_compiler
+                        "bouton_compiler" : reponse.__xva.bouton_compiler,
+                        "rafraichir_liste" : reponse.__xva.rafraichir_liste
                     }
                 };
                 this.#interface1.envoyer_un_message_au_worker( obj );

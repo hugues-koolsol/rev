@@ -3688,7 +3688,8 @@ class c_svg_bdd1{
                     if(lst[i].childNodes[j].nodeName.toLowerCase() === '#text'){
                         liste_des_champs.push( {
                                 "nom_du_champ" : lst[i].childNodes[j].data ,
-                                "id_rectangle_de_champ" : parseInt( lst[i].childNodes[j].parentNode.parentNode.id , 10 ) + 1
+                                "id_rectangle_de_champ" : parseInt( lst[i].childNodes[j].parentNode.parentNode.id , 10 ) + 1 ,
+                                "id_svg_champ_en_cours" : parseInt( lst[i].childNodes[j].parentNode.parentNode.id , 10 ) 
                             } );
                     }
                 }
@@ -4155,6 +4156,20 @@ class c_svg_bdd1{
               
             */
             t+='<td>';
+            
+            var cmd='';
+            
+            cmd+='interface1.module1(';
+            cmd+='  chemin_module1(\'_js/c_svg_bdd1.js\'), ';
+            cmd+='  methode3(modale_modifier_le_champ), ';
+            cmd+='  parametre3(  ';
+            cmd+='   id_svg_conteneur_table(' + id_svg_conteneur_table + ')  ';
+            cmd+='   id_svg_champ_en_cours(' + liste_des_champs[i].id_svg_champ_en_cours + ')  ';
+            cmd+='   nom_du_champ(\''+liste_des_champs[i].nom_du_champ+'\') ';
+            cmd+='  )';
+            cmd+=')';
+            t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="'+cmd+'" >éditer</div>';;
+            
             t+='';
             /* document.getElementById( liste_des_champs[i].id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ); */
             t+='</td>';

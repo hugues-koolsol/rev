@@ -2,6 +2,7 @@
 function sql_329($par,&$donnees_retournees,$that){
     $sql0='
       INSERT  INTO `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_genres`(
+         `chp_prefixe_genre` , 
          `chp_nom_genre` , 
          `chp_espece_genre` , 
          `che_longueur_genre` , 
@@ -11,12 +12,12 @@ function sql_329($par,&$donnees_retournees,$that){
          `che_a_init_genre` , 
          `che_init_est_mot_genre` , 
          `cht_valeur_init_genre` , 
-         `chp_prefixe_genre` , 
          `che_est_parmis_genre` , 
          `cht_parmis_genre` , 
-         `che_est_ts_genre` , 
+         `che_est_tsc_genre` , 
          `cht_fonctions_genre` , 
-         `che_est_nur_genre`
+         `che_est_nur_genre` , 
+         `che_est_tsm_genre`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -25,6 +26,7 @@ function sql_329($par,&$donnees_retournees,$that){
             $liste_des_valeurs.=',';
         }
         $liste_des_valeurs.='(';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_prefixe_genre']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_genre']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_espece_genre']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_longueur_genre']).''.',';
@@ -34,12 +36,12 @@ function sql_329($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_a_init_genre']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_init_est_mot_genre']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_valeur_init_genre']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_prefixe_genre']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_parmis_genre']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_parmis_genre']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_ts_genre']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_tsc_genre']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_fonctions_genre']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_nur_genre']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_nur_genre']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_tsm_genre']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

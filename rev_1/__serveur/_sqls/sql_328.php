@@ -6,7 +6,8 @@ function sql_328($par,&$donnees_retournees,$that){
     $champs0='
       `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
       `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-      `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_ts_genre` , `T0`.`cht_fonctions_genre`
+      `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_tsc_genre` , `T0`.`cht_fonctions_genre` , 
+      `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -58,8 +59,10 @@ function sql_328($par,&$donnees_retournees,$that){
                 'T0.chp_prefixe_genre' => $tab0[10],
                 'T0.che_est_parmis_genre' => $tab0[11],
                 'T0.cht_parmis_genre' => $tab0[12],
-                'T0.che_est_ts_genre' => $tab0[13],
+                'T0.che_est_tsc_genre' => $tab0[13],
                 'T0.cht_fonctions_genre' => $tab0[14],
+                'T0.che_est_nur_genre' => $tab0[15],
+                'T0.che_est_tsm_genre' => $tab0[16],
             );
         }
         $stmt0->close();
