@@ -2306,7 +2306,7 @@ chx_acces_utilisateur,
 chd__dtm_utilisateur,
 chd__dtc_utilisateur,
 che__nur_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'722','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'725','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','anonyme',NULL,NULL,'0','0','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
@@ -8791,7 +8791,13 @@ WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('149','1','select','sélectionner(
    base_de_reference(1),
-   valeurs(champ(`T0`,`chi_id_requete`),champ(`T0`,`cht_sql_requete`),champ(`T0`,`cht_commentaire_requete`)),
+   valeurs(
+      champ(`T0`,`chi_id_requete`),
+      champ(`T0`,`cht_sql_requete`),
+      champ(`T0`,`cht_commentaire_requete`),
+      champ(`T0`,`chp_type_requete`),
+      champ(`T0`,`che_est_souche_requete`)
+   ),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
@@ -8809,7 +8815,7 @@ WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,NULL,NULL,'0','2000-01-01 00:00
       trier_par((champ(`T0`,`chi_id_requete`),croissant()))
    )
 )  ','SELECT 
-`T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete`
+`T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`che_est_souche_requete`
  FROM b1.tbl_requetes T0
 WHERE ( /* */ `T0`.`chx_projet_requete` = :T0_chx_projet_requete
    AND `T0`.`chi_id_requete` < :nb_max

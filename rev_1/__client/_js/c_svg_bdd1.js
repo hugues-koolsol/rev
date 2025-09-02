@@ -1858,6 +1858,8 @@ class c_svg_bdd1{
         let id_svg_conteneur_table=0;
         let id_svg_champ_en_cours=0;
         let nom_du_champ='';
+        let nom_de_la_table='';
+
         for( let i=0 ; i < mat.length ; i++ ){
             if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
@@ -1865,11 +1867,14 @@ class c_svg_bdd1{
                 id_svg_champ_en_cours=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'nom_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_de_la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_table=mat[i + 1][1];
+                
             }
         }
         let conteneur_de_champ=document.getElementById( id_svg_champ_en_cours );
         var id_element_texte_du_nom_de_champ_svg=0;
-        var nom_de_la_table='';
+        //var nom_de_la_table='';
         var i=0;
         var j=0;
         var k=0;
@@ -1894,10 +1899,22 @@ class c_svg_bdd1{
         }
         var t='';
         t+='<div class="hug_bouton yy__x_signaux_0" data-hug_click="interface1.fermer_sous_fenetre1()" >X</div>';
-        t+='<h1>modification du champ</h1>';
+        t+='<h1>modification d\'un champ de la table '+nom_de_la_table+'</h1>';
+        t+='<div ';
+        t+=' class="hug_bouton yy__x_signaux_1" ';
+        t+=' data-hug_click="';
+        t+='interface1.module1(';
+        t+=' chemin_module1(\'_js/c_svg_bdd1.js\'),';
+        t+=' methode3(modale_gerer_la_table),';
+        t+=' parametre3(';
+        t+='  id_svg_conteneur_table('+id_svg_conteneur_table+')';
+        t+='  id_bdd_de_la_base_en_cours('+this.#id_bdd_de_la_base_en_cours+')';
+        t+=' )';
+        t+=')">éditer la table</div>';
         t+='<div class="" id="zone_message_modifier_un_champ"></div>';
         t+='<hr />';
-        t+='<h2>dans ce dessin</h2>';
+        t+='<h2>dans ce schema</h2>';
+        
         t+='<hr />';
         /*
           =====================================================================================================
@@ -3701,8 +3718,20 @@ class c_svg_bdd1{
         var t='';
         t+='<div class="hug_bouton yy__x_signaux_0" data-hug_click="interface1.fermer_sous_fenetre1()" >X</div>';
         t+='<h1>gestion de la table</h1>';
+        var cmd='';
+        cmd += ' interface1.charger_module1(';
+        cmd += '  chemin_module1(\'_js/c_php_bdd1.js\'),';
+        cmd += '  initialisation1(';
+        cmd += '   (nom_de_la_table,\''+nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' )+'\'),';
+        cmd += '   (id_bdd_de_la_base_en_cours,'+id_bdd_de_la_base_en_cours+'),';
+        cmd += '   (module_js1,c_php_bdd1.js),';
+        cmd += '   (nom_module1,c_php_bdd1)';
+        cmd += '   (methode_initiale,generer_le_php1)';
+        cmd += '  )';
+        cmd += ' )';
+        t+='<div class="hug_bouton yy__x_signaux_1" data-hug_click="' +cmd+ '" >générer le php</div>';
         t+='<hr />';
-        t+='<h2>dans ce dessin</h2>';
+        t+='<h2>dans ce schema</h2>';
         t+='<h3>changer le nom de la table</h3>';
         t+='<input id="nouveau_nom" type="text" value="' + nom_de_la_table + '" autocapitalize="off" />';
         t+='<input id="ancien_nom" type="hidden" value="' + nom_de_la_table + '" autocapitalize="off" />';
@@ -3981,23 +4010,20 @@ class c_svg_bdd1{
         t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + 'interface1.module1(' + ' chemin_module1(\'' + this.#chemin_module1 + '\'),' + ' methode3(ajouter_l_index_dans_modale),' + ' parametre3(' + '  nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),' + '  id_svg_conteneur_table(' + id_svg_conteneur_table + '),' + ' )' + ')" >ajouter cet index</div>';
         /*  */
         t+='<hr />';
-        t+='<h3>générer le php </h3>';
         
-        var cmd='';
-        cmd += ' interface1.charger_module1(';
-        cmd += '  chemin_module1(\'_js/c_php_bdd1.js\'),';
-        cmd += '  initialisation1(';
-        cmd += '   (nom_de_la_table,\''+nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' )+'\'),';
-        cmd += '   (id_bdd_de_la_base_en_cours,'+id_bdd_de_la_base_en_cours+'),';
-        cmd += '   (module_js1,c_php_bdd1.js),';
-        cmd += '   (nom_module1,c_php_bdd1)';
-        cmd += '   (methode_initiale,generer_le_php1)';
-        cmd += '  )';
-        cmd += ' )';
-        t+='<div class="hug_bouton yy__x_signaux_1" data-hug_click="' +cmd+ '" >générer</div>';
         t+='<hr />';
         t+='<h3>Supprimer la table de ce schema </h3>';
-        t+='<div class="hug_bouton yy__x_signaux_0" data-hug_click="' + 'interface1.module1(' + ' chemin_module1(\'' + this.#chemin_module1 + '\'),' + ' methode3(supprimer_la_table_de_modale),' + ' parametre3(' + '  id_svg_conteneur_table(' + id_svg_conteneur_table + '),' + '  nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')' + ' )' + ')" >supprimer</div>';
+        t+='<div ';
+        t+=' class="hug_bouton yy__x_signaux_0" ';
+        t+=' data-hug_click="';
+        t+='interface1.module1(';
+        t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+        t+=' methode3(supprimer_la_table_de_modale),';
+        t+=' parametre3(';
+        t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
+        t+='  nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')'
+        t+=' )';
+        t+=')" >supprimer</div>';
         t+='<hr />';
         /*
         
@@ -4166,6 +4192,7 @@ class c_svg_bdd1{
             cmd+='   id_svg_conteneur_table(' + id_svg_conteneur_table + ')  ';
             cmd+='   id_svg_champ_en_cours(' + liste_des_champs[i].id_svg_champ_en_cours + ')  ';
             cmd+='   nom_du_champ(\''+liste_des_champs[i].nom_du_champ+'\') ';
+            cmd+='   nom_de_la_table(\''+nom_de_la_table+'\') ';
             cmd+='  )';
             cmd+=')';
             t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="'+cmd+'" >éditer</div>';;
@@ -6293,7 +6320,6 @@ class c_svg_bdd1{
             }
         }
         return({"__xst" : __xsu ,"__xva" : objet_dependances});
-        debugger;
     }
     /*
       =============================================================================================================
@@ -6654,6 +6680,7 @@ class c_svg_bdd1{
         cmd+='  id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
         cmd+='  id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
         cmd+='  nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        cmd+='  nom_de_la_table(\''+nom_de_la_table+'\') ';
         cmd+=' )';
         cmd+=')';
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={

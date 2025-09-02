@@ -11,6 +11,8 @@ WHERE `T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisa
 LIMIT 1 OFFSET 0 
 ;',
     'cht_commentaire_requete' => 'utilisateur par nom_de_connexion',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   102 => 
   array (
@@ -29,6 +31,8 @@ ORDER BY `T0`.`chi_id_requete` DESC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'liste des requêtes',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   103 => 
   array (
@@ -38,6 +42,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE (`chi_id_requete` = :c_chi_id_requete
    AND `chx_projet_requete` = :c_chx_projet_requete) ;',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   104 => 
   array (
@@ -47,6 +53,8 @@ DELETE FROM b1.tbl_requetes
 WHERE (`chi_id_requete` = :chi_id_requete
    AND `chx_projet_requete` = :chx_projet_requete) ;',
     'cht_commentaire_requete' => 'requête par id',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   105 => 
   array (
@@ -55,6 +63,8 @@ WHERE (`chx_projet_rev` = :chx_projet_rev
    AND `chp_provenance_rev` = :chp_provenance_rev
    AND `chx_source_rev` = :chx_source_rev) ;',
     'cht_commentaire_requete' => 'revs par provenance, source et projet',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   106 => 
   array (
@@ -66,6 +76,8 @@ WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
 ;',
     'cht_commentaire_requete' => 'requêtes',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   107 => 
   array (
@@ -85,6 +97,8 @@ WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
     :cht_commentaire_requete
 );',
     'cht_commentaire_requete' => 'requêtes',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   108 => 
   array (
@@ -92,6 +106,8 @@ WHERE (`T0`.`chi_id_requete` = :T0_chi_id_requete
    `chp_parametres_utilisateur` = :n_chp_parametres_utilisateur
 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   109 => 
   array (
@@ -106,6 +122,8 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
 WHERE (`chi_id_requete` = :c_chi_id_requete
    AND `chx_projet_requete` = :c_chx_projet_requete) ;',
     'cht_commentaire_requete' => 'requêtes',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   110 => 
   array (
@@ -114,6 +132,8 @@ WHERE (`chi_id_requete` = :c_chi_id_requete
 WHERE (`chi_id_basedd` = :c_chi_id_basedd
    AND `chx_projet_id_basedd` = :c_chx_projet_id_basedd) ;',
     'cht_commentaire_requete' => 'bdds',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   111 => 
   array (
@@ -124,6 +144,8 @@ WHERE ( /* */ `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
    AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
 ;',
     'cht_commentaire_requete' => 'bdds',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   112 => 
   array (
@@ -165,6 +187,8 @@ WHERE ( /* */ `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
     :chp_commentaire_rev
 );',
     'cht_commentaire_requete' => 'revs',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   113 => 
   array (
@@ -186,12 +210,16 @@ ORDER BY `T0`.`chi_id_rev` ASC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'revs',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   114 => 
   array (
     'cht_sql_requete' => 'DELETE FROM b1.tbl_revs
 WHERE (`chx_projet_rev` = :chx_projet_rev) ;',
     'cht_commentaire_requete' => 'revs par projet',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   115 => 
   array (
@@ -206,6 +234,8 @@ ORDER BY `T0`.`chi_id_basedd` ASC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   116 => 
   array (
@@ -217,6 +247,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE (`chi_id_basedd` = :c_chi_id_basedd
    AND `chx_projet_id_basedd` = :c_chx_projet_id_basedd) ;',
     'cht_commentaire_requete' => 'bdds',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   117 => 
   array (
@@ -232,6 +264,8 @@ WHERE (`chi_id_basedd` = :c_chi_id_basedd
     :chp_fournisseur_basedd
 );',
     'cht_commentaire_requete' => 'bdds',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   118 => 
   array (
@@ -241,6 +275,8 @@ DELETE FROM b1.tbl_bdds
 WHERE (`chi_id_basedd` = :chi_id_basedd
    AND `chx_projet_id_basedd` = :chx_projet_id_basedd) ;',
     'cht_commentaire_requete' => 'base par id',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   119 => 
   array (
@@ -260,6 +296,8 @@ ORDER BY `T0`.`chp_priorite_tache` ASC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'tâches',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   120 => 
   array (
@@ -270,6 +308,8 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chp_priorite_tache` >= 1
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches priorité - 1',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   121 => 
   array (
@@ -280,6 +320,8 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chp_priorite_tache` < 99
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches priorité + 1',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   122 => 
   array (
@@ -290,6 +332,8 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   123 => 
   array (
@@ -299,6 +343,8 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
 WHERE `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
 ;',
     'cht_commentaire_requete' => 'dossiers',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   124 => 
   array (
@@ -306,6 +352,8 @@ WHERE `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
    `cht_parametres_acces` = :n_cht_parametres_acces
 WHERE `chi_id_acces` = :c_chi_id_acces ;',
     'cht_commentaire_requete' => 'accès paramètres par id',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   125 => 
   array (
@@ -315,6 +363,8 @@ DELETE FROM b1.tbl_dossiers
 WHERE (`chi_id_dossier` IN (:liste_des_ids_a_supprimer)
    AND `chx_projet_dossier` = :chx_projet_dossier) ;',
     'cht_commentaire_requete' => '***dispo***',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   126 => 
   array (
@@ -331,6 +381,8 @@ WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
    AND `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
 ;',
     'cht_commentaire_requete' => 'base par id',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   127 => 
   array (
@@ -346,6 +398,8 @@ WHERE (`T0`.`chi_id_basedd` = :T0_chi_id_basedd
 WHERE `T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd
 ;',
     'cht_commentaire_requete' => 'bdds',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   128 => 
   array (
@@ -357,6 +411,8 @@ WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
    AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache)
 ;',
     'cht_commentaire_requete' => 'tâches par id',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   129 => 
   array (
@@ -368,6 +424,8 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches texte et priorité par id',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   130 => 
   array (
@@ -387,6 +445,8 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
     :chd__dtc_tache
 );',
     'cht_commentaire_requete' => 'tâches',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 1,
   ),
   131 => 
   array (
@@ -395,6 +455,8 @@ WHERE ( /* */ `chi_id_tache` = :chi_id_tache
    AND `chx_utilisateur_tache` = :chx_utilisateur_tache
    AND `chx_projet_tache` = :chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches par id',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   132 => 
   array (
@@ -406,6 +468,8 @@ WHERE ( /* */ `T0`.`chi_id_requete` = :T0_chi_id_requete
    AND `T0`.`chx_projet_requete` = :T0_chx_projet_requete)
 ;',
     'cht_commentaire_requete' => 'requetes',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   133 => 
   array (
@@ -420,6 +484,8 @@ ORDER BY `T0`.`chi_id_projet` ASC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'projets',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   134 => 
   array (
@@ -435,6 +501,8 @@ SELECT
 WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
 ;',
     'cht_commentaire_requete' => 'projets',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   135 => 
   array (
@@ -443,6 +511,8 @@ WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
 WHERE (`chi_id_requete` = :c_chi_id_requete
    AND `chx_projet_requete` = :c_chx_projet_requete) ;',
     'cht_commentaire_requete' => 'requêtes',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   136 => 
   array (
@@ -456,6 +526,8 @@ INSERT INTO b1.`tbl_projets`(
     :cht_commentaire_projet
 );',
     'cht_commentaire_requete' => 'projets',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   137 => 
   array (
@@ -469,6 +541,8 @@ INSERT INTO b1.`tbl_projets`(
     :chx_parent_dossier
 );',
     'cht_commentaire_requete' => 'dossiers',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   139 => 
   array (
@@ -478,6 +552,8 @@ DELETE FROM b1.tbl_sources
 WHERE (`chi_id_source` = :chi_id_source
    AND `chx_projet_id_source` = :chx_projet_id_source) ;',
     'cht_commentaire_requete' => 'sources',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   140 => 
   array (
@@ -486,26 +562,36 @@ WHERE (`chi_id_source` = :chi_id_source
  FROM b1.tbl_bdds T0
 ;',
     'cht_commentaire_requete' => 'bdds',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   141 => 
   array (
     'cht_sql_requete' => 'BEGIN TRANSACTION;',
     'cht_commentaire_requete' => 'sur base 1',
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   142 => 
   array (
     'cht_sql_requete' => 'COMMIT;',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   143 => 
   array (
     'cht_sql_requete' => 'ROLLBACK;',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   144 => 
   array (
     'cht_sql_requete' => 'ALTER TABLE :nom_de_la_table DROP COLUMN :nom_du_champ',
     'cht_commentaire_requete' => '***dispo***',
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   145 => 
   array (
@@ -514,6 +600,8 @@ WHERE (`chi_id_source` = :chi_id_source
 DELETE FROM b1.tbl_projets
 WHERE (`chi_id_projet` = :chi_id_projet) ;',
     'cht_commentaire_requete' => 'projets',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   146 => 
   array (
@@ -524,6 +612,8 @@ WHERE (`T0`.`chx_projet_id_source` = :T0_chx_projet_id_source
    AND `T0`.`che_binaire_source` = :T0_che_binaire_source)
 ;',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   147 => 
   array (
@@ -537,6 +627,8 @@ SELECT
 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',
     'cht_commentaire_requete' => 'utilisateurs',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   148 => 
   array (
@@ -547,11 +639,13 @@ WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
    `cht_commentaire_projet` = :n_cht_commentaire_projet
 WHERE `chi_id_projet` = :c_chi_id_projet ;',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   149 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete`
+`T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`che_est_souche_requete`
  FROM b1.tbl_requetes T0
 WHERE ( /* */ `T0`.`chx_projet_requete` = :T0_chx_projet_requete
    AND `T0`.`chi_id_requete` < :nb_max
@@ -559,6 +653,8 @@ WHERE ( /* */ `T0`.`chx_projet_requete` = :T0_chx_projet_requete
 ORDER BY `T0`.`chi_id_requete` ASC
 ;',
     'cht_commentaire_requete' => 'requetes',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   150 => 
   array (
@@ -572,16 +668,22 @@ WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
    AND `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier)
 ;',
     'cht_commentaire_requete' => 'dossiers',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   151 => 
   array (
     'cht_sql_requete' => 'BEGIN TRANSACTION;',
     'cht_commentaire_requete' => 'sur base 1',
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   152 => 
   array (
     'cht_sql_requete' => 'COMMIT;',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   153 => 
   array (
@@ -599,6 +701,8 @@ ORDER BY `T0`.`chx_parent_dossier` ASC, `T0`.`chp_nom_dossier` ASC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'liste des dossiers',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   154 => 
   array (
@@ -620,6 +724,8 @@ LIMIT :quantitee OFFSET :debut
     :che_binaire_source
 );',
     'cht_commentaire_requete' => 'sources',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   155 => 
   array (
@@ -630,6 +736,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE (`chi_id_dossier` = :c_chi_id_dossier
    AND `chx_projet_dossier` = :c_chx_projet_dossier) ;',
     'cht_commentaire_requete' => 'dossiers',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   156 => 
   array (
@@ -641,6 +749,8 @@ WHERE (`chi_id_dossier` = :c_chi_id_dossier
     :chi_id_projet
 );',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   157 => 
   array (
@@ -649,6 +759,8 @@ WHERE (`chi_id_dossier` = :c_chi_id_dossier
 DELETE FROM b1.tbl_projets
 WHERE `chi_id_projet` >= :chi_id_projet ;',
     'cht_commentaire_requete' => 'projets >= id',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   158 => 
   array (
@@ -658,6 +770,8 @@ DELETE FROM b1.tbl_dossiers
 WHERE (`chi_id_dossier` = :chi_id_dossier
    AND `chx_projet_dossier` = :chx_projet_dossier) ;',
     'cht_commentaire_requete' => 'dossiers',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   159 => 
   array (
@@ -673,6 +787,8 @@ WHERE (`chi_id_dossier` = :chi_id_dossier
     :chx_parent_dossier
 );',
     'cht_commentaire_requete' => 'dossiers',
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   160 => 
   array (
@@ -682,6 +798,8 @@ WHERE (`chi_id_dossier` = :chi_id_dossier
 WHERE (`T0`.`chi_id_projet` = :T0_chi_id_projet)
 ;',
     'cht_commentaire_requete' => 'projets',
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   161 => 
   array (
@@ -701,6 +819,8 @@ ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'sources',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   162 => 
   array (
@@ -716,6 +836,8 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source
    AND `T0`.`chx_projet_id_source` = :T0_chx_projet_id_source)
 ;',
     'cht_commentaire_requete' => 'sources',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   163 => 
   array (
@@ -729,6 +851,8 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source
 WHERE (`chi_id_source` = :c_chi_id_source
    AND `chx_projet_id_source` = :c_chx_projet_id_source) ;',
     'cht_commentaire_requete' => 'sources',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   164 => 
   array (
@@ -741,6 +865,8 @@ WHERE ( /* */ `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
 ORDER BY `T0`.`chp_priorite_tache` ASC
 ;',
     'cht_commentaire_requete' => 'tâches par priorité < xxx',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   165 => 
   array (
@@ -750,6 +876,8 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
    AND `chx_projet_tache` = :c_chx_projet_tache) ;',
     'cht_commentaire_requete' => 'tâches priorité par id=',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   166 => 
   array (
@@ -760,6 +888,8 @@ WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
    AND `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier)
 ;',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   167 => 
   array (
@@ -768,6 +898,8 @@ WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
    `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
     'cht_commentaire_requete' => 'utilisateur sur page profile',
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   168 => 
   array (
@@ -778,6 +910,8 @@ WHERE (`T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
    AND `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier)
 ;',
     'cht_commentaire_requete' => 'dossier compte sous dossiers',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   169 => 
   array (
@@ -788,12 +922,16 @@ WHERE ( /* */ `T0`.`chx_projet_dossier` = :T0_chx_projet_dossier
    AND `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier)
 ;',
     'cht_commentaire_requete' => 'dossiers par parents',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   170 => 
   array (
     'cht_sql_requete' => 'DELETE FROM b1.tbl_dossiers
 WHERE `chx_projet_dossier` = :chx_projet_dossier ;',
     'cht_commentaire_requete' => 'dossier racine d\'un projet',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   171 => 
   array (
@@ -803,6 +941,8 @@ WHERE `chx_projet_dossier` = :chx_projet_dossier ;',
 WHERE (`T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
 ;',
     'cht_commentaire_requete' => 'bases d\'un projet',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   172 => 
   array (
@@ -810,6 +950,8 @@ WHERE (`T0`.`chx_projet_id_basedd` = :T0_chx_projet_id_basedd)
    `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
     'cht_commentaire_requete' => 'utilisateurs',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   173 => 
   array (
@@ -822,6 +964,8 @@ ORDER BY `T0`.`chi_id_groupe` DESC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'liste des groupes',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   174 => 
   array (
@@ -833,6 +977,8 @@ LIMIT :quantitee OFFSET :debut
     :chx_parent_groupe
 );',
     'cht_commentaire_requete' => 'groupes',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   175 => 
   array (
@@ -844,6 +990,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
 ;',
     'cht_commentaire_requete' => 'groupes',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   176 => 
   array (
@@ -852,12 +1000,16 @@ WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
    `chx_parent_groupe` = :n_chx_parent_groupe
 WHERE `chi_id_groupe` = :c_chi_id_groupe ;',
     'cht_commentaire_requete' => 'groupes',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   177 => 
   array (
     'cht_sql_requete' => 'DELETE FROM b1.tbl_groupes
 WHERE `chi_id_groupe` = :chi_id_groupe ;',
     'cht_commentaire_requete' => 'groupes',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   178 => 
   array (
@@ -873,6 +1025,8 @@ ORDER BY `T0`.`chi_id_utilisateur` DESC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'utilisateurs',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   179 => 
   array (
@@ -884,6 +1038,8 @@ LIMIT :quantitee OFFSET :debut
     :chx_acces_utilisateur
 );',
     'cht_commentaire_requete' => 'utilisateurs',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   180 => 
   array (
@@ -897,6 +1053,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',
     'cht_commentaire_requete' => 'utilisateur',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   181 => 
   array (
@@ -905,12 +1063,16 @@ WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
    `chx_acces_utilisateur` = :n_chx_acces_utilisateur
 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',
     'cht_commentaire_requete' => 'utilisateur',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   182 => 
   array (
     'cht_sql_requete' => 'DELETE FROM b1.tbl_utilisateurs
 WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',
     'cht_commentaire_requete' => 'utilisateur',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   183 => 
   array (
@@ -925,6 +1087,8 @@ ORDER BY `T0`.`chi_id_metier` DESC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'métier',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   184 => 
   array (
@@ -936,6 +1100,8 @@ LIMIT :quantitee OFFSET :debut
     :chx_parent_metier
 );',
     'cht_commentaire_requete' => 'métier',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   185 => 
   array (
@@ -947,6 +1113,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
 ;',
     'cht_commentaire_requete' => 'métier',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   186 => 
   array (
@@ -955,12 +1123,16 @@ WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
    `chx_parent_metier` = :n_chx_parent_metier
 WHERE `chi_id_metier` = :c_chi_id_metier ;',
     'cht_commentaire_requete' => 'métier',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   187 => 
   array (
     'cht_sql_requete' => 'DELETE FROM b1.tbl_metiers
 WHERE `chi_id_metier` = :chi_id_metier ;',
     'cht_commentaire_requete' => 'métier',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   193 => 
   array (
@@ -978,6 +1150,8 @@ ORDER BY `T0`.`chi_id_acces` DESC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'acces',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   194 => 
   array (
@@ -991,6 +1165,8 @@ LIMIT :quantitee OFFSET :debut
     :chx_metier_acces
 );',
     'cht_commentaire_requete' => 'accès',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   195 => 
   array (
@@ -1005,6 +1181,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
 ;',
     'cht_commentaire_requete' => 'accès',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   196 => 
   array (
@@ -1014,12 +1192,16 @@ WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
    `chx_metier_acces` = :n_chx_metier_acces
 WHERE `chi_id_acces` = :c_chi_id_acces ;',
     'cht_commentaire_requete' => 'accès',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   197 => 
   array (
     'cht_sql_requete' => 'DELETE FROM b1.tbl_acces
 WHERE `chi_id_acces` = :chi_id_acces ;',
     'cht_commentaire_requete' => 'acces',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   305 => 
   array (
@@ -1030,6 +1212,8 @@ WHERE `chi_id_acces` = :chi_id_acces ;',
    `cht_commentaire_projet` = :n_cht_commentaire_projet
 WHERE `chi_id_projet` = :c_chi_id_projet ;',
     'cht_commentaire_requete' => 'projets',
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
   ),
   306 => 
   array (
@@ -1040,6 +1224,8 @@ SELECT
 WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
 ;',
     'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   307 => 
   array (
@@ -1061,6 +1247,8 @@ WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
     :chd__dtc_dossier
 );',
     'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   308 => 
   array (
@@ -1071,6 +1259,8 @@ SELECT
 WHERE (`T0`.`chi_id_projet` = 1)
 ;',
     'cht_commentaire_requete' => 'dossiers du projet à copier dans un autre environnement',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   309 => 
   array (
@@ -1079,6 +1269,8 @@ WHERE (`T0`.`chi_id_projet` = 1)
    `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet
 WHERE (`chi_id_projet` = :c_chi_id_projet) ;',
     'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   310 => 
   array (
@@ -1087,6 +1279,8 @@ WHERE (`chi_id_projet` = :c_chi_id_projet) ;',
 WHERE (`chi_id_source` = :c_chi_id_source
    AND `chx_projet_id_source` = :c_chx_projet_id_source) ;',
     'cht_commentaire_requete' => 'sources',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   313 => 
   array (
@@ -1099,6 +1293,8 @@ WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
    AND `T0`.`chp_nom_source` NOT LIKE :T0_chp_nom_source) OR `T0`.`chi_id_source` IN (:T0_chi_id_source2))
 ;',
     'cht_commentaire_requete' => 'sources à copier dans un autre environnement',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   314 => 
   array (
@@ -1122,6 +1318,8 @@ WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
     :chx_dossier_id_source
 );',
     'cht_commentaire_requete' => 'dossiers à copier dans un autre environnement',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   315 => 
   array (
@@ -1145,6 +1343,8 @@ WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
     :chd__dtc_basedd
 );',
     'cht_commentaire_requete' => 'insérer la base principale',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   316 => 
   array (
@@ -1155,6 +1355,8 @@ SELECT
 WHERE `T0`.`chi_id_projet` > 2
 ;',
     'cht_commentaire_requete' => 'projets >2 pour isa de champs ',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   317 => 
   array (
@@ -1174,6 +1376,8 @@ ORDER BY `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'autorisations',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   318 => 
   array (
@@ -1185,6 +1389,8 @@ LIMIT :quantitee OFFSET :debut
     :chx_source_autorisation
 );',
     'cht_commentaire_requete' => 'autorisations',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   319 => 
   array (
@@ -1198,12 +1404,16 @@ LIMIT :quantitee OFFSET :debut
 WHERE (`T0`.`chi_id_autorisation` = :T0_chi_id_autorisation)
 ;',
     'cht_commentaire_requete' => 'autorisations',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   320 => 
   array (
     'cht_sql_requete' => 'DELETE FROM b1.tbl_autorisations
 WHERE `chi_id_autorisation` = :chi_id_autorisation ;',
     'cht_commentaire_requete' => 'autorisations',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   321 => 
   array (
@@ -1212,6 +1422,8 @@ WHERE `chi_id_autorisation` = :chi_id_autorisation ;',
    `chx_source_autorisation` = :n_chx_source_autorisation
 WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',
     'cht_commentaire_requete' => 'autorisations',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   322 => 
   array (
@@ -1236,6 +1448,8 @@ ORDER BY `T0`.`chi_id_menu` DESC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'menus',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   323 => 
   array (
@@ -1259,6 +1473,8 @@ LIMIT :quantitee OFFSET :debut
     :cht_condition_php_menu
 );',
     'cht_commentaire_requete' => 'menus',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   324 => 
   array (
@@ -1276,6 +1492,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
 ;',
     'cht_commentaire_requete' => 'menus',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   325 => 
   array (
@@ -1290,6 +1508,8 @@ WHERE (`T0`.`chi_id_menu` = :T0_chi_id_menu)
    `cht_condition_php_menu` = :n_cht_condition_php_menu
 WHERE `chi_id_menu` = :c_chi_id_menu ;',
     'cht_commentaire_requete' => 'menus',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   326 => 
   array (
@@ -1301,6 +1521,8 @@ WHERE `chi_id_menu` = :c_chi_id_menu ;',
 WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
 ;',
     'cht_commentaire_requete' => 'menus',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   327 => 
   array (
@@ -1317,6 +1539,8 @@ WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
 WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
 ;',
     'cht_commentaire_requete' => 'menus par acces',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   328 => 
   array (
@@ -1336,6 +1560,8 @@ ORDER BY `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'genres',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   329 => 
   array (
@@ -1375,6 +1601,8 @@ LIMIT :quantitee OFFSET :debut
     :che_est_tsm_genre
 );',
     'cht_commentaire_requete' => 'genres',
+    'chp_type_requete' => 'insert',
+    'che_est_souche_requete' => 0,
   ),
   330 => 
   array (
@@ -1387,6 +1615,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
 ;',
     'cht_commentaire_requete' => 'genres',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   331 => 
   array (
@@ -1409,12 +1639,16 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
    `che_est_tsm_genre` = :n_che_est_tsm_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',
     'cht_commentaire_requete' => 'genres',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   332 => 
   array (
     'cht_sql_requete' => 'DELETE FROM b1.tbl_genres
 WHERE `chi_id_genre` = :chi_id_genre ;',
     'cht_commentaire_requete' => 'genres',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   333 => 
   array (
@@ -1426,6 +1660,8 @@ WHERE `chi_id_genre` = :chi_id_genre ;',
  FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
 ;',
     'cht_commentaire_requete' => 'tous les genres',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
   ),
   334 => 
   array (
@@ -1433,6 +1669,8 @@ WHERE `chi_id_genre` = :chi_id_genre ;',
    `chi_id_genre` = :n_chi_id_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',
     'cht_commentaire_requete' => 'genres nouveau numéro',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   335 => 
   array (
@@ -1440,12 +1678,16 @@ WHERE `chi_id_genre` = :c_chi_id_genre ;',
    `che_ordre_genre` = :n_che_ordre_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',
     'cht_commentaire_requete' => 'genres maj ordre',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   336 => 
   array (
     'cht_sql_requete' => 'DELETE FROM b1.tbl_menus
 WHERE `chi_id_menu` = :chi_id_menu ;',
     'cht_commentaire_requete' => 'menus',
+    'chp_type_requete' => 'delete',
+    'che_est_souche_requete' => 0,
   ),
   337 => 
   array (
@@ -1460,6 +1702,8 @@ ORDER BY `T0`.`chi_id_menu` DESC
 LIMIT :quantitee OFFSET :debut 
 ;',
     'cht_commentaire_requete' => 'menus',
+    'chp_type_requete' => 'liste_ecran',
+    'che_est_souche_requete' => 0,
   ),
   338 => 
   array (
@@ -1469,6 +1713,8 @@ LIMIT :quantitee OFFSET :debut
 WHERE (`chi_id_source` = :c_chi_id_source
    AND `chx_projet_id_source` = :c_chx_projet_id_source) ;',
     'cht_commentaire_requete' => 'sources',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   339 => 
   array (
@@ -1480,6 +1726,8 @@ WHERE (`chi_id_source` = :c_chi_id_source
 WHERE (`chi_id_requete` = :c_chi_id_requete
    AND `chx_projet_requete` = :c_chx_projet_requete) ;',
     'cht_commentaire_requete' => '',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
   340 => 
   array (
@@ -1490,5 +1738,7 @@ WHERE (`chi_id_requete` = :c_chi_id_requete
 WHERE (`chi_id_requete` = :c_chi_id_requete
    AND `chx_projet_requete` = :c_chx_projet_requete) ;',
     'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
   ),
 );

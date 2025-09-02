@@ -211,6 +211,7 @@ class c_requetes1{
                               'sélectionner' === $mat[$i][1] 
                           || 'insérer' === $mat[$i][1] 
                           || 'modifier' === $mat[$i][1] 
+                          || 'supprimer' === $mat[$i][1] 
                        ) 
                        && 'f' === $mat[$i][2] 
                     ){
@@ -363,7 +364,9 @@ class c_requetes1{
         foreach($tt149[__xva] as $k1 => $v1){
             $__liste_des_sql[$v1['T0.chi_id_requete']]=array(/**/
                 'cht_sql_requete' => $v1['T0.cht_sql_requete'],
-                'cht_commentaire_requete' => $v1['T0.cht_commentaire_requete']
+                'cht_commentaire_requete' => $v1['T0.cht_commentaire_requete'],
+                'chp_type_requete' => $v1['T0.chp_type_requete'],
+                'che_est_souche_requete' => $v1['T0.che_est_souche_requete'],
             );
         }
         $chemin_fichier___liste_des_sql=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . '__liste_des_sql.php';
