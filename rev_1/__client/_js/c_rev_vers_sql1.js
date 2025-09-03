@@ -1352,8 +1352,6 @@ class c_rev_vers_sql1{
                                     meta_du_champ=meta_du_champ.replace( /,non_nulle\(/g , ',\r\n            non_nulle(' );
                                     meta_du_champ=meta_du_champ.replace( /,auto_increment\(/g , ',\r\n            auto_increment(' );
                                     meta_du_champ=meta_du_champ.replace( /,nom_du_champ\(/g , ',\r\n            nom_du_champ(' );
-                                    meta_du_champ=meta_du_champ.replace( /,nom_long_du_champ\(/g , ',\r\n            nom_long_du_champ(' );
-                                    meta_du_champ=meta_du_champ.replace( /,nom_court_du_champ\(/g , ',\r\n            nom_court_du_champ(' );
                                     meta_du_champ=meta_du_champ.replace( /,nom_bref_du_champ\(/g , ',\r\n            nom_bref_du_champ(' );
                                     meta_du_champ=meta_du_champ.replace( /,genre\(/g , ',\r\n            genre(' );
                                     meta_du_champ=meta_du_champ.replace( /,espece_du_champ\(/g , ',\r\n            espece_du_champ(' );
@@ -1979,8 +1977,6 @@ class c_rev_vers_sql1{
                 var liste_meta_champ={
                      /*  */
                     "champ" : nom_champ ,
-                    "nom_long_du_champ" : 'à faire ' + nom_champ + '' ,
-                    "nom_court_du_champ" : 'à faire ' + nom_champ + '' ,
                     "nom_bref_du_champ" : 'à faire ' + nom_champ + '' ,
                     "typologie" : typologie ,
                     "default_charset" : '' ,

@@ -3327,9 +3327,7 @@ class _c_interface1{
         t+='    padding:var(--t_padding_de_input);';
         t+='    font-size:var(--t_police);';
         t+='    line-height: var(--h_ligne_bouton);';
-        /*
-          t+='    max-width:20em;';
-        */
+        t+='    max-width:80vw;';
         t+='}';
         t+='h3{text-align:center;}';
         t+='input[type="password"]:focus,input[type="text"]:focus,textarea:focus{';

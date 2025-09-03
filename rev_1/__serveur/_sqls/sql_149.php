@@ -1,7 +1,8 @@
 <?php
 function sql_149($par,&$donnees_retournees,$that){
     $champs0='
-      `T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`che_est_souche_requete`
+      `T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`che_est_souche_requete` , 
+      `T0`.`cht_rev_requete`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -29,6 +30,7 @@ function sql_149($par,&$donnees_retournees,$that){
                 'T0.cht_commentaire_requete' => $tab0[2],
                 'T0.chp_type_requete' => $tab0[3],
                 'T0.che_est_souche_requete' => $tab0[4],
+                'T0.cht_rev_requete' => $tab0[5],
             );
         }
         return array(

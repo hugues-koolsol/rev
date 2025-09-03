@@ -67,7 +67,7 @@ class c_rev_php1{
         $txt .= '    <div class="hug_bouton" style="float:right;" data-hug_click="c_rev_php1.charger_php_test1()" title="charger les données de test" >test1</div>';
         $txt .= '    <div class="hug_bouton" style="float:right;" data-hug_click="c_fonctions_js1(importer_un_php_de_test2(zone_source(vv_txtarea_php_rev1)))" title="charger les données de test2" >test2</div>';
         $txt .= '  </div>';
-        $txt .= '  <textarea  id="vv_txtarea_php_rev1" data-editeur1="source_editeur1"  rows="10" , cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
+        $txt .= '  <textarea  id="vv_txtarea_php_rev1" data-editeur1="source_editeur1"  rows="10"  cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
         $txt .= '</div>';
         $txt .= '<div class="yy_conteneur_txtara">';
         $txt .= '  <div>';
@@ -83,7 +83,7 @@ class c_rev_php1{
         $txt .= '    <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(vv_txtarea_php_rev2)))" title="aller à la position" >position</div>';
         $txt .= '    <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(vv_txtarea_php_rev2)))" title="aller à la ligne" >ligne</div>';
         $txt .= '  </div>';
-        $txt .= '  <textarea  id="vv_txtarea_php_rev2" data-editeur1="rev" rows="10" , cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
+        $txt .= '  <textarea  id="vv_txtarea_php_rev2" data-editeur1="rev" rows="10"  cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
         $txt .= '</div>';
         $txt .= '<div class="yy_conteneur_txtara">';
         $txt .= '  <div>';
@@ -95,7 +95,7 @@ class c_rev_php1{
         $txt .= '    <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_position1(zone_source(vv_txtarea_php_rev3)))" title="aller à la position" >position</div>';
         $txt .= '    <div class="hug_bouton yy__x_signaux_3" data-hug_click="c_fonctions_js1(aller_a_la_ligne1(zone_source(vv_txtarea_php_rev3)))" title="aller à la ligne" >ligne</div>';
         $txt .= '  </div>';
-        $txt .= '  <textarea  id="vv_txtarea_php_rev3" data-editeur1="source_editeur1"  rows="10" , cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
+        $txt .= '  <textarea  id="vv_txtarea_php_rev3" data-editeur1="source_editeur1"  rows="10"  cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
         $txt .= '</div>';
         $donnees_retournees[__xst]=__xsu;
         $donnees_retournees[__x_page] .= $txt;

@@ -367,6 +367,7 @@ class c_requetes1{
                 'cht_commentaire_requete' => $v1['T0.cht_commentaire_requete'],
                 'chp_type_requete' => $v1['T0.chp_type_requete'],
                 'che_est_souche_requete' => $v1['T0.che_est_souche_requete'],
+                'cht_rev_requete' => $v1['T0.cht_rev_requete'],
             );
         }
         $chemin_fichier___liste_des_sql=$_SESSION[__X_CLE_APPLICATION]['chp_nom_dossier_requetes'] . DIRECTORY_SEPARATOR . '__liste_des_sql.php';

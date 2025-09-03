@@ -1390,7 +1390,7 @@ class c_bases1{
             }else{
 
                 /* $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($tt , true ) . '</pre> [' . __LINE__ . '] ';*/
-                $donnees_retournees[__xva]['generer_le_php']=array( ' donnees_bdd' => $tt[__xva][0] , 'nom_de_la_table' => $nom_de_la_table );
+                $donnees_retournees[__xva]['generer_le_php']=array( 'donnees_bdd' => $tt[__xva][0] , 'nom_de_la_table' => $nom_de_la_table );
                 $donnees_retournees[__xva]['maj']='methode_module_dynamique1(nom_du_module2("_js/c_php_bdd1.js"),methode2(charger_base1),valeurs2(generer_le_php))';
                 $donnees_retournees[__xst]=__xsu;
                 /* $donnees_retournees[__x_action]='c_bases1.page_liste_des_bases1()';*/

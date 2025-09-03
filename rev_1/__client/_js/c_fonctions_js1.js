@@ -710,9 +710,7 @@ class c_fonctions_js1{
              meta(
                 genre_meta(champ),
                 nom_du_champ('chx_utilisateur_tache'),
-                nom_long_du_champ('à faire chx_utilisateur_tache'),
-                nom_court_du_champ('à faire chx_utilisateur_tache'),
-                nom_bref_du_champ('à faire chx_utilisateur_tache'),
+                nom_bref_du_champ('utilisateur'),
                 typologie(che),
                 genre(9),
                 afficher_champ_dans_svg(1),
