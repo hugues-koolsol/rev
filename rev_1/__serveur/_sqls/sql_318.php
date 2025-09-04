@@ -3,7 +3,8 @@ function sql_318($par,&$donnees_retournees,$that){
     $sql0='
       INSERT  INTO `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_autorisations`(
          `chx_acces_autorisation` , 
-         `chx_source_autorisation`
+         `chx_source_autorisation` , 
+         `chp_nom_autorisation`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -13,7 +14,8 @@ function sql_318($par,&$donnees_retournees,$that){
         }
         $liste_des_valeurs.='(';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_acces_autorisation']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_source_autorisation']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chx_source_autorisation']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_autorisation']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

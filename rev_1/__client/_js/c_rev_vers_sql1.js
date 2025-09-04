@@ -136,7 +136,7 @@ class c_rev_vers_sql1{
                 ){
                     for( var i=0 ; i < options.tableau_des_tables_utilisees.length ; i++ ){
                         if(options.tableau_des_tables_utilisees[i].nom_de_l_alias === tab[id + 1][1]){
-                            for( var j=0 ; j < options.tableau_des_tables_utilisees[i].champs.length ; j++ ){
+                            for( var j in options.tableau_des_tables_utilisees[i].champs ){
                                 try{
                                     if(options.tableau_des_tables_utilisees[i].champs[j].hasOwnProperty( 'nom_du_champ' )
                                            && options.tableau_des_tables_utilisees[i].champs[j].nom_du_champ === tab[id + 2][1]

@@ -3583,8 +3583,9 @@ class c_requete_sql1{
                     }
                 }
             }
-            var i=0;
-            for( i=0 ; i < tableau_des_conditions.length ; i++ ){
+
+            for( var i=0 ; i < tableau_des_conditions.length ; i++ ){
+                
                 var elem=tableau_des_conditions[i];
                 if(elem.type_condition === 'constante'){
                     t+='    $where0.=\' AND ' + elem.valeur + '\'.PHP_EOL;' + CRLF;

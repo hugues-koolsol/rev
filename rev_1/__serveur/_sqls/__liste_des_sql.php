@@ -2983,7 +2983,8 @@ sélectionner(
   317 => 
   array (
     'cht_sql_requete' => 'SELECT 
-`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`chp_nom_autorisation` , `T1`.`chp_nom_acces` , 
+`T2`.`chp_nom_source`
  FROM b1.tbl_autorisations T0
  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
 
@@ -3006,6 +3007,7 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`chi_id_autorisation`),
       champ(`T0`,`chx_acces_autorisation`),
       champ(`T0`,`chx_source_autorisation`),
+      champ(`T0`,`chp_nom_autorisation`),
       champ(`T1`,`chp_nom_acces`),
       champ(`T2`,`chp_nom_source`)
    ),
@@ -3042,17 +3044,19 @@ LIMIT :quantitee OFFSET :debut
   array (
     'cht_sql_requete' => 'INSERT INTO b1.`tbl_autorisations`(
     `chx_acces_autorisation` , 
-    `chx_source_autorisation`
+    `chx_source_autorisation` , 
+    `chp_nom_autorisation`
 ) VALUES (
     :chx_acces_autorisation , 
-    :chx_source_autorisation
+    :chx_source_autorisation , 
+    :chp_nom_autorisation
 );',
     'cht_commentaire_requete' => 'autorisations',
     'chp_type_requete' => 'insert',
     'che_est_souche_requete' => 0,
     'cht_rev_requete' => 'insérer(
    base_de_reference(1),
-   valeurs(affecte(champ(`chx_acces_autorisation`),:chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:chx_source_autorisation)),
+   valeurs(affecte(champ(`chx_acces_autorisation`),:chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:chx_source_autorisation),affecte(champ(`chp_nom_autorisation`),:chp_nom_autorisation)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_autorisations,base(b1)))
@@ -3122,14 +3126,15 @@ WHERE `chi_id_autorisation` = :chi_id_autorisation ;',
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_autorisations SET 
    `chx_acces_autorisation` = :n_chx_acces_autorisation , 
-   `chx_source_autorisation` = :n_chx_source_autorisation
+   `chx_source_autorisation` = :n_chx_source_autorisation , 
+   `chp_nom_autorisation` = :n_chp_nom_autorisation
 WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',
     'cht_commentaire_requete' => 'autorisations',
     'chp_type_requete' => 'update',
     'che_est_souche_requete' => 0,
     'cht_rev_requete' => 'modifier(
-   base_de_reference(),
-   valeurs(affecte(champ(`chx_acces_autorisation`),:n_chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:n_chx_source_autorisation)),
+   base_de_reference(1),
+   valeurs(affecte(champ(`chx_acces_autorisation`),:n_chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:n_chx_source_autorisation),affecte(champ(`chp_nom_autorisation`),:n_chp_nom_autorisation)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_autorisations,base(b1)))

@@ -13,6 +13,11 @@ function sql_321($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`chx_source_autorisation` = '.sq0($par['n_chx_source_autorisation']).'';
     }
+    if($par['n_chp_nom_autorisation']==='' || is_null($par['n_chp_nom_autorisation']) ){
+        $tableau_champs[]='`chp_nom_autorisation` = NULL';
+    }else{
+        $tableau_champs[]='`chp_nom_autorisation` = \''.sq0($par['n_chp_nom_autorisation']).'\'';
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/

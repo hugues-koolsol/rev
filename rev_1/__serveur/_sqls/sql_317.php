@@ -4,7 +4,8 @@ function sql_317($par,&$donnees_retournees,$that){
         $donnees_retournees[__x_signaux][__xif][]='info <b>sql_317</b>';
     }
     $champs0='
-      `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source`
+      `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`chp_nom_autorisation` , `T1`.`chp_nom_acces` , 
+      `T2`.`chp_nom_source`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -16,13 +17,13 @@ function sql_317($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_autorisation'] !== '')){
-        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_autorisation`',$par['T0_chi_id_autorisation']);
+        $where0.=' AND `T0`.`chi_id_autorisation` = '.sq1($par['T0_chi_id_autorisation']).''.PHP_EOL;
     }
     if(($par['T0_chx_acces_autorisation'] !== '')){
-        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_acces_autorisation`',$par['T0_chx_acces_autorisation']);
+        $where0.=' AND `T0`.`chx_acces_autorisation` = '.sq1($par['T0_chx_acces_autorisation']).''.PHP_EOL;
     }
     if(($par['T0_chx_source_autorisation'] !== '')){
-        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_source_autorisation`',$par['T0_chx_source_autorisation']);
+        $where0.=' AND `T0`.`chx_source_autorisation` = '.sq1($par['T0_chx_source_autorisation']).''.PHP_EOL;
     }
     if(($par['T1_chp_nom_acces'] !== '')){
         $where0.=' AND `T1`.`chp_nom_acces` LIKE '.sq2($par['T1_chp_nom_acces']).''.PHP_EOL;
@@ -47,8 +48,9 @@ function sql_317($par,&$donnees_retournees,$that){
                 'T0.chi_id_autorisation' => $tab0[0],
                 'T0.chx_acces_autorisation' => $tab0[1],
                 'T0.chx_source_autorisation' => $tab0[2],
-                'T1.chp_nom_acces' => $tab0[3],
-                'T2.chp_nom_source' => $tab0[4],
+                'T0.chp_nom_autorisation' => $tab0[3],
+                'T1.chp_nom_acces' => $tab0[4],
+                'T2.chp_nom_source' => $tab0[5],
             );
         }
         $stmt0->close();

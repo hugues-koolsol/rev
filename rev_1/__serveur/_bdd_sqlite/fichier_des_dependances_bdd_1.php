@@ -36,15 +36,15 @@ $tableau_des_dependances=array (
       ),
       4 => 
       array (
-        'table_dependante' => 'tbl_requetes',
-        'champ_dependant' => 'chx_projet_requete',
+        'table_dependante' => 'tbl_taches',
+        'champ_dependant' => 'chx_projet_tache',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
       5 => 
       array (
-        'table_dependante' => 'tbl_taches',
-        'champ_dependant' => 'chx_projet_tache',
+        'table_dependante' => 'tbl_requetes',
+        'champ_dependant' => 'chx_projet_requete',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
@@ -145,30 +145,15 @@ $tableau_des_dependances=array (
     array (
       0 => 
       array (
-        'table_dependante' => 'tbl_autorisations',
-        'champ_dependant' => 'chx_acces_autorisation',
-        'non_nulle' => '1',
-        'id_bdd_de_la_base_dependante' => 1,
-      ),
-      1 => 
-      array (
         'table_dependante' => 'tbl_utilisateurs',
         'champ_dependant' => 'chx_acces_utilisateur',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
-    ),
-  ),
-  'tbl_sources_chi_id_source' => 
-  array (
-    'table_parente' => 'tbl_sources',
-    'champ_parent' => 'chi_id_source',
-    'dependances' => 
-    array (
-      0 => 
+      1 => 
       array (
         'table_dependante' => 'tbl_autorisations',
-        'champ_dependant' => 'chx_source_autorisation',
+        'champ_dependant' => 'chx_acces_autorisation',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),
@@ -184,6 +169,21 @@ $tableau_des_dependances=array (
       array (
         'table_dependante' => 'tbl_menus',
         'champ_dependant' => 'chx_autorisation_menu',
+        'non_nulle' => '1',
+        'id_bdd_de_la_base_dependante' => 1,
+      ),
+    ),
+  ),
+  'tbl_sources_chi_id_source' => 
+  array (
+    'table_parente' => 'tbl_sources',
+    'champ_parent' => 'chi_id_source',
+    'dependances' => 
+    array (
+      0 => 
+      array (
+        'table_dependante' => 'tbl_autorisations',
+        'champ_dependant' => 'chx_source_autorisation',
         'non_nulle' => '1',
         'id_bdd_de_la_base_dependante' => 1,
       ),

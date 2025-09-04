@@ -114,13 +114,50 @@ class c_autorisations1{
             $donnees_retournees[__x_signaux][__xar][]=' cet acces n\'es pas permis';
 
         }
+        
+        
+
+        $tt195=$this->sql0->sql_iii(
+             /*sql_195()*/ 195,
+            array( 'T0_chi_id_acces' => $donnees_recues[__xva]['chx_acces_autorisation']),
+            $donnees_retournees
+        );
+        
+        if($tt195[__xst] !== __xsu){
+            $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+            return;
+        }
+        
+
+        $tt162=$this->sql0->sql_iii(
+             /*sql_162()*/ 162,
+            array( 
+                'T0_chi_id_source' => $donnees_recues[__xva]['chx_source_autorisation'],
+                'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
+            ),
+            $donnees_retournees
+        );
+        
+        if($tt162[__xst] !== __xsu){
+            $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+            return;
+        }
+        
+        
+        
+        $chp_nom_autorisation=$tt195[__xva][0]['T0.chp_nom_acces'].'___'.$tt162[__xva][0]['T0.chp_nom_source'];
+        
+
+        //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chp_nom_autorisation , true ) . '</pre>' ; exit(0);
+        
 
         $donnees_sql=array( array(/**/
                     'chx_source_autorisation' => $donnees_recues[__xva]['chx_source_autorisation'],
-                    'chx_acces_autorisation' => $donnees_recues[__xva]['chx_acces_autorisation'] === '' ? null : $donnees_recues[__xva]['chx_acces_autorisation']
+                    'chx_acces_autorisation' => $donnees_recues[__xva]['chx_acces_autorisation'] === '' ? null : $donnees_recues[__xva]['chx_acces_autorisation'],
+                    'chp_nom_autorisation' => $chp_nom_autorisation,
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-        $tt=/*sql_inclure_deb*/
+        $tt318=/*sql_inclure_deb*/
             /* sql_318()
             INSERT INTO b1.`tbl_autorisations`(
                 `chx_acces_autorisation` , 
@@ -137,12 +174,12 @@ class c_autorisations1{
             $donnees_retournees
         );
         
-        if($tt[__xst] !== __xsu){
+        if($tt318[__xst] !== __xsu){
 
             $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
             return;
 
-        }else if($tt['changements'] === 1){
+        }else if($tt318['changements'] === 1){
 
             $donnees_retournees[__xst]=__xsu;
             
@@ -152,14 +189,14 @@ class c_autorisations1{
 
             }else{
 
-                $action='chi_id_autorisation(' . $tt['nouvel_id'] . ')';
+                $action='chi_id_autorisation(' . $tt318['nouvel_id'] . ')';
                 $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($action);
                 $this->page_autorisations_modifier1(
                     $donnees_retournees,
                      /*matrice*/ $obj_matrice[__xva],
                     $donnees_recues
                 );
-                $donnees_retournees[__x_action]='c_autorisations1.formulaire1(action1(page_autorisations_modifier1),chi_id_autorisation(' . $tt['nouvel_id'] . '))';
+                $donnees_retournees[__x_action]='c_autorisations1.formulaire1(action1(page_autorisations_modifier1),chi_id_autorisation(' . $tt318['nouvel_id'] . '))';
             }
 
 
@@ -309,6 +346,42 @@ class c_autorisations1{
         );
         
         if($tt[__xst] === __xsu){
+         
+         
+         
+            $tt195=$this->sql0->sql_iii(
+                 /*sql_195()*/ 195,
+                array( 'T0_chi_id_acces' => $donnees_recues[__xva]['chx_acces_autorisation']),
+                $donnees_retournees
+            );
+            
+            if($tt195[__xst] !== __xsu){
+                $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+                return;
+            }
+            
+
+            $tt162=$this->sql0->sql_iii(
+                 /*sql_162()*/ 162,
+                array( 
+                    'T0_chi_id_source' => $donnees_recues[__xva]['chx_source_autorisation'],
+                    'T0_chx_projet_id_source' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
+                ),
+                $donnees_retournees
+            );
+            
+            if($tt162[__xst] !== __xsu){
+                $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+                return;
+            }
+            
+            
+            
+            $chp_nom_autorisation=$tt195[__xva][0]['T0.chp_nom_acces'].'___'.$tt162[__xva][0]['T0.chp_nom_source'];
+            
+            
+            //echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chp_nom_autorisation , true ) . '</pre>' ; exit(0);
+         
 
             $tt=/*sql_inclure_deb*/
                 /* sql_321()
@@ -323,7 +396,8 @@ class c_autorisations1{
                 array(/**/
                     'c_chi_id_autorisation' => $tt[__xva][0]['T0.chi_id_autorisation'],
                     'n_chx_source_autorisation' => $donnees_recues[__xva]['chx_source_autorisation'],
-                    'n_chx_acces_autorisation' => $donnees_recues[__xva]['chx_acces_autorisation']
+                    'n_chx_acces_autorisation' => $donnees_recues[__xva]['chx_acces_autorisation'],
+                    'n_chp_nom_autorisation' => $chp_nom_autorisation,
                 ),
                 $donnees_retournees
             );
@@ -1250,6 +1324,7 @@ class c_autorisations1{
         $lsttbl .= '<th>id</th>';
         $lsttbl .= '<th>acces</th>';
         $lsttbl .= '<th>source</th>';
+        $lsttbl .= '<th>nom</th>';
         $lsttbl .= '</tr></thead><tbody>';
         foreach($tt[__xva] as $k0 => $v0){
             $lsttbl .= '<tr>';
@@ -1274,6 +1349,12 @@ class c_autorisations1{
             $lsttbl .= '(' . $v0['T0.chx_source_autorisation'] . ') ' . enti1($v0['T2.chp_nom_source']);
             $lsttbl .= '</td>';
             /**/
+            $lsttbl .= '<td style="text-align:center;">';
+            $lsttbl .= enti1($v0['T0.chp_nom_autorisation']);
+            $lsttbl .= '</td>';
+            /**/
+            
+
             $lsttbl .= '</tr>';
         }
         $o1 .= '<div class="yy_div_contenant_table"><table class="yy_table_liste1">' . PHP_EOL . $lsttbl . '</tbody></table></div>' . PHP_EOL;
