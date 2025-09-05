@@ -546,17 +546,67 @@ class c_php_bdd1{
                 o1+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
                 o1+='        $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
                 
+                if('cht_valeur_init_genre' === obj_champ.nom_du_champ){
+                    debugger
+                }
+                
                 if(obj_champ.genre_objet_du_champ.chp_espece_genre==='VARCHAR'){
                     let size='';
                     if(obj_champ.genre_objet_du_champ.che_longueur_genre<=64){
                      size=' size="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" ';
                     }
-                    o1+='        $o1 .= \'      <input value="" type="text" '+size+' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
+                    o1+='        $o1 .= \'      <input type="text" '+size+' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="\';\n';
+                    o1+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
+                    o1+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
+                    o1+='        }else{\n';
+                    o1+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                    o1+='        }\n';
+                    o1+='        $o1 .= \'" />\' . PHP_EOL;\n';
+                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre!==null){
+                        let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split(',');
+                        o1+='        $o1 .= \'      <br />\';\n';
+                        for(let opt in tab){
+                            o1+='        $o1 .= \'      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone('+obj_champ.nom_du_champ+',valeur),'+tab[opt]+'))">'+tab[opt]+'</div>\';\n';
+                        }
+                    }
                 }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='TEXT'){
                     o1+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
-                    o1+='        $o1 .= \'            <textarea id="'+obj_champ.nom_du_champ+'" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>\' . PHP_EOL;\n';
+                    o1+='        $o1 .= \'            <textarea id="'+obj_champ.nom_du_champ+'" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\';\n';
+                    o1+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
+                    o1+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
+                    o1+='        }else{\n';
+                    o1+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                    o1+='        }\n';
+                    o1+='        $o1 .= \'</textarea>\' . PHP_EOL;\n';
                     o1+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
+                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre!==null){
+                         debugger
+                    }
                  
+                }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
+                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
+                        /*champ entier standard*/
+                        o1+='        $o1 .= \'      <input type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="\';\n';
+                        o1+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
+                        o1+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
+                        o1+='        }else{\n';
+                        o1+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                        o1+='        }\n';
+                        o1+='        $o1 .= \'"/>\' . PHP_EOL;\n';
+                    }else{
+                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre==='0,1'){
+                            o1+='        $o1 .= \'        <input type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\';\n';
+                            o1+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
+                            o1+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
+                            o1+='        }else{\n';
+                            o1+='            $o1 .= \'0\';\n';
+                            o1+='        }\n';
+                            o1+='        $o1 .= \'" >\' . PHP_EOL;\n';
+                        }else{
+                            debugger
+                        }
+                    }
+
                 }else{
                     /*
                       afr
@@ -648,6 +698,17 @@ class c_php_bdd1{
                     o1+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
                     o1+='        $o1 .= \'            <textarea disabled id="'+obj_champ.nom_du_champ+'" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'</textarea>\' . PHP_EOL;\n';
                     o1+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
+                }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
+                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
+                        /*champ entier standard*/
+                        o1+='        $o1 .= \'      <input value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" disabled type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
+                    }else{
+                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre==='0,1'){
+                            o1+='        $o1 .= \'        <input disabled type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" >\'; . PHP_EOL;\n';
+                        }else{
+                            debugger
+                        }
+                    }
                 }else{
                     /*
                       afr
@@ -740,6 +801,17 @@ class c_php_bdd1{
                     o1+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
                     o1+='        $o1 .= \'            <textarea id="'+obj_champ.nom_du_champ+'" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\']) . \'</textarea>\' . PHP_EOL;\n';
                     o1+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
+                }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
+                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
+                        /*champ entier standard*/
+                        o1+='        $o1 .= \'      <input value="" type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
+                    }else{
+                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre==='0,1'){
+                            o1+='        $o1 .= \'        <input type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" >\'; . PHP_EOL;\n';
+                        }else{
+                            debugger
+                        }
+                    }
                 }else{
                      /*
                          AFR

@@ -256,6 +256,7 @@ class c_fonctions_js1{
                 }
             }
             if(indice>0){
+                let tableau_des_tri_par=[];
                 for(let j=indice+1;j<l01;j=mat[j][12]){
                     if(mat[j][1]==='champs' && mat[j][2] === 'f' ){
                         for(let k=j+1;k<l01;k=mat[k][12]){
@@ -263,6 +264,9 @@ class c_fonctions_js1{
                                 let nom_du_champ='';
                                 let genre=0;
                                 let genre_du_champ=null;
+                                let est_critere_recherche_liste_ecran=0;
+                                let ordre_tri_liste_ecran=0;
+                                let sens_tri_liste_ecran_decroissant=0;
                                 for(let l=k+1;l<l01;l=mat[l][12]){
                                     if(mat[l][1]==='nom_du_champ' && mat[l][2] === 'f'  && mat[l][8] === 1  && mat[l+1][2] === 'c' ){
                                         nom_du_champ=mat[l+1][1];
@@ -271,9 +275,24 @@ class c_fonctions_js1{
                                             if(mat[m][1]==='genre' && mat[m][2] === 'f'  && mat[m][8] === 1  && mat[m+1][2] === 'c' ){
                                                 genre=parseInt(mat[m+1][1],10);
                                                 genre_du_champ=__gi1.__liste_des_genres[genre];
+                                            }else if(mat[m][1]==='est_critere_recherche_liste_ecran' && mat[m][2] === 'f'  && mat[m][8] === 1  && mat[m+1][2] === 'c' ){
+                                                est_critere_recherche_liste_ecran=parseInt(mat[m+1][1],10);
+                                            }else if(mat[m][1]==='ordre_tri_liste_ecran' && mat[m][2] === 'f'  && mat[m][8] === 1  && mat[m+1][2] === 'c' ){
+                                                ordre_tri_liste_ecran=parseInt(mat[m+1][1],10);
+                                            }else if(mat[m][1]==='sens_tri_liste_ecran_decroissant' && mat[m][2] === 'f'  && mat[m][8] === 1  && mat[m+1][2] === 'c' ){
+                                                sens_tri_liste_ecran_decroissant=parseInt(mat[m+1][1],10);
+                                                
                                             }
                                         }
                                     }
+                                }
+                                if(ordre_tri_liste_ecran>0){
+                                    tableau_des_tri_par.push({
+                                     nom_du_champ : nom_du_champ ,
+                                     ordre_tri_liste_ecran : ordre_tri_liste_ecran ,
+                                     sens_tri_liste_ecran_decroissant : sens_tri_liste_ecran_decroissant ,
+                                    });
+
                                 }
                                 for(let l=k+1;l<l01;l=mat[l][12]){
                                     if(mat[l][1]==='references' && mat[l][2] === 'f' ){
@@ -292,12 +311,13 @@ class c_fonctions_js1{
                                     }
                                 }
                                 champs_rev+='\n      champ(`T0`,`'+nom_du_champ+'`)';
-                                
-                                if(!(genre_du_champ.che_est_tsm_genre===1 || genre_du_champ.che_est_tsc_genre===1 || genre_du_champ.che_est_nur_genre===1)){
-                                    if(genre_du_champ.chp_espece_genre==='INTEGER' || genre_du_champ.chp_espece_genre==='FLOAT'){
-                                        condition_rev+='\n      egal(champ(`T0`,`'+nom_du_champ+'`),:T0_'+nom_du_champ+')';
-                                    }else{
-                                        condition_rev+='\n      comme(champ(`T0`,`'+nom_du_champ+'`),:T0_'+nom_du_champ+')';
+                                if(est_critere_recherche_liste_ecran===1){
+                                    if(!(genre_du_champ.che_est_tsm_genre===1 || genre_du_champ.che_est_tsc_genre===1 || genre_du_champ.che_est_nur_genre===1)){
+                                        if(genre_du_champ.chp_espece_genre==='INTEGER' || genre_du_champ.chp_espece_genre==='FLOAT'){
+                                            condition_rev+='\n      egal(champ(`T0`,`'+nom_du_champ+'`),:T0_'+nom_du_champ+')';
+                                        }else{
+                                            condition_rev+='\n      comme(champ(`T0`,`'+nom_du_champ+'`),:T0_'+nom_du_champ+')';
+                                        }
                                     }
                                 }
                                 if(nom_du_champ !== '' && genre_du_champ && (genre_du_champ.che_est_incrément_genre===1 || genre_du_champ.che_est_primaire_genre === 1)){
@@ -308,8 +328,19 @@ class c_fonctions_js1{
                         }
                     }
                 }
+                if(tableau_des_tri_par.length>0){
+                  complements='trier_par(';
+                  tableau_des_tri_par.sort(function (a, b) {
+                    return a['ordre_tri_liste_ecran'] - b['ordre_tri_liste_ecran'];
+                  });
+                  for(let i=0;i<tableau_des_tri_par.length;i++){
+                      complements+='(champ(`T0`,`'+tableau_des_tri_par[i].nom_du_champ+'`),'+(tableau_des_tri_par[i].sens_tri_liste_ecran_decroissant===1?'décroissant()':'croissant()')+')';
+                  }
+                  complements+=')';
+                }
             }
         }
+        
 
         if(liste_des_references.length>0){
             for( let ind_joint in liste_des_references){
@@ -713,7 +744,6 @@ class c_fonctions_js1{
                 nom_bref_du_champ('utilisateur'),
                 typologie(che),
                 genre(9),
-                afficher_champ_dans_svg(1),
                 espece_du_champ(INTEGER)
              )
           ),

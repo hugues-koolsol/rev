@@ -3316,7 +3316,7 @@ class _c_interface1{
         t+='}';
         t+='h1{text-shadow:#ccc 1px 1px 1px;text-align:center;color:red;}';
         t+='';
-        t+='input[type="password"],input[type="text"]{';
+        t+='input[type="password"],input[type="text"],input[type="number"]{';
         t+='    min-width: var(--t_boutons_carres);';
         t+='    display:inline-block;';
         t+='    border-radius: 5px;';

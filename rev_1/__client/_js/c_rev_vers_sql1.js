@@ -1356,6 +1356,7 @@ class c_rev_vers_sql1{
                                     meta_du_champ=meta_du_champ.replace( /,genre\(/g , ',\r\n            genre(' );
                                     meta_du_champ=meta_du_champ.replace( /,espece_du_champ\(/g , ',\r\n            espece_du_champ(' );
                                     meta_du_champ=meta_du_champ.replace( /,afficher_champ_dans_svg\(/g , ',\r\n            afficher_champ_dans_svg(' );
+                                    meta_du_champ=meta_du_champ.replace( /,masquer_champ_dans_svg\(/g , ',\r\n            masquer_champ_dans_svg(' );
                                     variables_pour_tableau_tables.meta=obj.__xva;
                                     meta_du_champ+=this.__m_rev1.resps( niveau + 2 );
                                     for( k=j + 1 ; k < this.#l02 ; k=this.#tb[k][12] ){

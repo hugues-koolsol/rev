@@ -4,10 +4,10 @@ function sql_328($par,&$donnees_retournees,$that){
         $donnees_retournees[__x_signaux][__xif][]='info <b>sql_328</b>';
     }
     $champs0='
-      `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
-      `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-      `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_est_tsc_genre` , `T0`.`cht_fonctions_genre` , 
-      `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre`
+      `T0`.`chi_id_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , 
+      `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
+      `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
+      `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -16,6 +16,9 @@ function sql_328($par,&$donnees_retournees,$that){
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_genre'] !== '')){
         $where0.=' AND `T0`.`chi_id_genre` = '.sq1($par['T0_chi_id_genre']).''.PHP_EOL;
+    }
+    if(($par['T0_chp_prefixe_genre'] !== '')){
+        $where0.=' AND `T0`.`chp_prefixe_genre` LIKE '.sq2($par['T0_chp_prefixe_genre']).''.PHP_EOL;
     }
     if(($par['T0_chp_nom_genre'] !== '')){
         $where0.=' AND `T0`.`chp_nom_genre` LIKE '.sq2($par['T0_chp_nom_genre']).''.PHP_EOL;
@@ -26,15 +29,12 @@ function sql_328($par,&$donnees_retournees,$that){
     if(($par['T0_cht_valeur_init_genre'] !== '')){
         $where0.=' AND `T0`.`cht_valeur_init_genre` LIKE '.sq2($par['T0_cht_valeur_init_genre']).''.PHP_EOL;
     }
-    if(($par['T0_chp_prefixe_genre'] !== '')){
-        $where0.=' AND `T0`.`chp_prefixe_genre` LIKE '.sq2($par['T0_chp_prefixe_genre']).''.PHP_EOL;
-    }
     if(($par['T0_cht_parmis_genre'] !== '')){
         $where0.=' AND `T0`.`cht_parmis_genre` LIKE '.sq2($par['T0_cht_parmis_genre']).''.PHP_EOL;
     }
     $sql0.=$where0;
     $order0='
-       ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC';
+       ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chi_id_genre` DESC';
     $sql0.=$order0;
     $plage0='
         LIMIT '.sq1($par['quantitee']).' OFFSET '.sq1($par['debut']).' ';
@@ -47,22 +47,23 @@ function sql_328($par,&$donnees_retournees,$that){
         while(($tab0=$res0->fetchArray(SQLITE3_NUM))){
             $donnees0[]=array(
                 'T0.chi_id_genre' => $tab0[0],
-                'T0.chp_nom_genre' => $tab0[1],
-                'T0.chp_espece_genre' => $tab0[2],
-                'T0.che_longueur_genre' => $tab0[3],
-                'T0.che_est_primaire_genre' => $tab0[4],
-                'T0.che_est_incrément_genre' => $tab0[5],
-                'T0.che_est_obligatoire_genre' => $tab0[6],
-                'T0.che_a_init_genre' => $tab0[7],
-                'T0.che_init_est_mot_genre' => $tab0[8],
-                'T0.cht_valeur_init_genre' => $tab0[9],
-                'T0.chp_prefixe_genre' => $tab0[10],
-                'T0.che_est_parmis_genre' => $tab0[11],
-                'T0.cht_parmis_genre' => $tab0[12],
-                'T0.che_est_tsc_genre' => $tab0[13],
+                'T0.che_ordre_genre' => $tab0[1],
+                'T0.chp_prefixe_genre' => $tab0[2],
+                'T0.chp_nom_genre' => $tab0[3],
+                'T0.chp_espece_genre' => $tab0[4],
+                'T0.che_longueur_genre' => $tab0[5],
+                'T0.che_est_primaire_genre' => $tab0[6],
+                'T0.che_est_incrément_genre' => $tab0[7],
+                'T0.che_est_obligatoire_genre' => $tab0[8],
+                'T0.che_a_init_genre' => $tab0[9],
+                'T0.che_init_est_mot_genre' => $tab0[10],
+                'T0.cht_valeur_init_genre' => $tab0[11],
+                'T0.che_est_parmis_genre' => $tab0[12],
+                'T0.cht_parmis_genre' => $tab0[13],
                 'T0.cht_fonctions_genre' => $tab0[14],
                 'T0.che_est_nur_genre' => $tab0[15],
                 'T0.che_est_tsm_genre' => $tab0[16],
+                'T0.che_est_tsc_genre' => $tab0[17],
             );
         }
         $stmt0->close();

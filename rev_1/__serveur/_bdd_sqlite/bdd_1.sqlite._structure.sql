@@ -15,7 +15,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('id'),
             typologie(chi),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -29,7 +28,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('projet'),
             typologie(chx),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -43,7 +41,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('provenance'),
             typologie(cho),
             genre(12),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
@@ -57,7 +54,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('source'),
             typologie(chx),
             genre(7),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -71,7 +67,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('id'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -85,7 +80,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('valeur'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -99,7 +93,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('type'),
             typologie(cho),
             genre(105),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),longueur_du_champ(3)
             )
             */
@@ -113,7 +106,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('niveau'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -127,7 +119,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('quotee'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -141,7 +132,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('pos premier'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -155,7 +145,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('pos dernier'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -169,7 +158,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('parent'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -183,7 +171,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('nbr enfants'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -197,7 +184,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('num enfant'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -211,7 +197,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('profondeur'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -225,7 +210,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('pos ouver parenthese'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -239,7 +223,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('enfant suivant'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -253,7 +236,6 @@ CREATE TABLE tbl_revs(
             nom_bref_du_champ('commentaire'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -277,7 +259,6 @@ CREATE TABLE tbl_dossiers(
             nom_bref_du_champ('id'),
             typologie(),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -291,7 +272,6 @@ CREATE TABLE tbl_dossiers(
             nom_bref_du_champ('projet'),
             typologie(chi),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),refe_enfant_droite(1)
             )
             */
@@ -305,7 +285,6 @@ CREATE TABLE tbl_dossiers(
             nom_bref_du_champ('nom'),
             typologie(chp),
             genre(108),
-            afficher_champ_dans_svg(1),
             espece_du_champ(CHARACTER),est_libelle_lien(1),longueur_du_champ(64)
             )
             */
@@ -319,7 +298,6 @@ CREATE TABLE tbl_dossiers(
             nom_bref_du_champ('parent'),
             typologie(),
             genre(8),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),refe_parent_gauche(1)
             )
             */
@@ -333,7 +311,6 @@ CREATE TABLE tbl_dossiers(
             nom_bref_du_champ('contient genere'),
             typologie(che),
             genre(5),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -347,8 +324,8 @@ CREATE TABLE tbl_dossiers(
             nom_bref_du_champ(' nur'),
             typologie(chi),
             genre(10),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER)
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
             )
             */
              che__nur_dossier INTEGER NOT NULL DEFAULT  0
@@ -361,8 +338,8 @@ CREATE TABLE tbl_dossiers(
             nom_bref_du_champ(' dtm'),
             typologie(chd),
             genre(16),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtm_dossier VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -375,8 +352,8 @@ CREATE TABLE tbl_dossiers(
             nom_bref_du_champ(' dtc'),
             typologie(chi),
             genre(14),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtc_dossier VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -399,7 +376,6 @@ CREATE TABLE tbl_groupes(
             nom_bref_du_champ('id'),
             typologie(chi),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -413,7 +389,6 @@ CREATE TABLE tbl_groupes(
             nom_bref_du_champ('nom'),
             typologie(chp),
             genre(3),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),est_libelle_lien(1),longueur_du_champ(64)
             )
             */
@@ -427,7 +402,6 @@ CREATE TABLE tbl_groupes(
             nom_bref_du_champ('parent'),
             typologie(chx),
             genre(8),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -451,7 +425,6 @@ CREATE TABLE tbl_metiers(
             nom_bref_du_champ('id'),
             typologie(chi),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -465,7 +438,6 @@ CREATE TABLE tbl_metiers(
             nom_bref_du_champ('nom'),
             typologie(chp),
             genre(3),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),est_libelle_lien(1),longueur_du_champ(64)
             )
             */
@@ -479,7 +451,6 @@ CREATE TABLE tbl_metiers(
             nom_bref_du_champ('parent'),
             typologie(chx),
             genre(8),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -503,7 +474,6 @@ CREATE TABLE tbl_acces(
             nom_bref_du_champ('id'),
             typologie(chi),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -517,7 +487,6 @@ CREATE TABLE tbl_acces(
             nom_bref_du_champ('nom'),
             typologie(chp),
             genre(3),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),est_libelle_lien(1),longueur_du_champ(64)
             )
             */
@@ -531,7 +500,6 @@ CREATE TABLE tbl_acces(
             nom_bref_du_champ('groupe'),
             typologie(chx),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -545,7 +513,6 @@ CREATE TABLE tbl_acces(
             nom_bref_du_champ('metier'),
             typologie(chx),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -559,7 +526,6 @@ CREATE TABLE tbl_acces(
             nom_bref_du_champ('parametres'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -583,7 +549,6 @@ CREATE TABLE tbl_projets(
             nom_bref_du_champ('id'),
             typologie(),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -597,7 +562,6 @@ CREATE TABLE tbl_projets(
             nom_bref_du_champ('nom'),
             typologie(),
             genre(11),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT),est_libelle_lien(1)
             )
             */
@@ -611,7 +575,6 @@ CREATE TABLE tbl_projets(
             nom_bref_du_champ('commentaire'),
             typologie(),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -625,7 +588,6 @@ CREATE TABLE tbl_projets(
             nom_bref_du_champ('dossier requetes'),
             typologie(chx),
             genre(8),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),refe_parent_gauche(1)
             )
             */
@@ -639,7 +601,6 @@ CREATE TABLE tbl_projets(
             nom_bref_du_champ('dossier menus'),
             typologie(chx),
             genre(8),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),refe_parent_gauche(1)
             )
             */
@@ -653,8 +614,8 @@ CREATE TABLE tbl_projets(
             nom_bref_du_champ(' nur'),
             typologie(chi),
             genre(10),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER)
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
             )
             */
              che__nur_projet INTEGER NOT NULL DEFAULT  0
@@ -667,8 +628,8 @@ CREATE TABLE tbl_projets(
             nom_bref_du_champ(' dtm'),
             typologie(chd),
             genre(16),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtm_projet VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -681,8 +642,8 @@ CREATE TABLE tbl_projets(
             nom_bref_du_champ(' dtc'),
             typologie(chi),
             genre(14),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtc_projet VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -705,7 +666,6 @@ CREATE TABLE tbl_utilisateurs(
             nom_bref_du_champ('id'),
             typologie(chi),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -719,8 +679,7 @@ CREATE TABLE tbl_utilisateurs(
             nom_bref_du_champ('nom de connexion'),
             typologie(cht),
             genre(3),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(VARCHAR),est_libelle_lien(1),longueur_du_champ(64)
+            espece_du_champ(VARCHAR),est_libelle_lien(1),est_critere_recherche_liste_ecran(1),longueur_du_champ(64)
             )
             */
              chp_nom_de_connexion_utilisateur VARCHAR(64) NOT NULL
@@ -733,7 +692,6 @@ CREATE TABLE tbl_utilisateurs(
             nom_bref_du_champ('mot de passe'),
             typologie(cht),
             genre(13),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),longueur_du_champ(256)
             )
             */
@@ -747,7 +705,6 @@ CREATE TABLE tbl_utilisateurs(
             nom_bref_du_champ('parametres'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -761,7 +718,6 @@ CREATE TABLE tbl_utilisateurs(
             nom_bref_du_champ('compteur1'),
             typologie(chi),
             genre(10),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -775,7 +731,6 @@ CREATE TABLE tbl_utilisateurs(
             nom_bref_du_champ('compteur socket1'),
             typologie(chi),
             genre(10),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -789,7 +744,6 @@ CREATE TABLE tbl_utilisateurs(
             nom_bref_du_champ('acces'),
             typologie(chx),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -803,8 +757,8 @@ CREATE TABLE tbl_utilisateurs(
             nom_bref_du_champ(' dtm'),
             typologie(chd),
             genre(16),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtm_utilisateur VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -817,8 +771,8 @@ CREATE TABLE tbl_utilisateurs(
             nom_bref_du_champ(' dtc'),
             typologie(chi),
             genre(14),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtc_utilisateur VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -831,8 +785,8 @@ CREATE TABLE tbl_utilisateurs(
             nom_bref_du_champ(' nur'),
             typologie(chi),
             genre(10),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER)
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
             )
             */
              che__nur_utilisateur INTEGER NOT NULL DEFAULT  0
@@ -855,7 +809,6 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ('id'),
             typologie(),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -869,7 +822,6 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ('projet id'),
             typologie(),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -883,7 +835,6 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ('nom'),
             typologie(),
             genre(106),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT),est_libelle_lien(1)
             )
             */
@@ -897,7 +848,6 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ('rev'),
             typologie(),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -911,7 +861,6 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ('genere'),
             typologie(),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -925,7 +874,6 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ('binaire'),
             typologie(che),
             genre(5),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -939,7 +887,6 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ('dossier id'),
             typologie(chx),
             genre(8),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -953,7 +900,6 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ('commentaire'),
             typologie(),
             genre(6),
-            afficher_champ_dans_svg(0),
             espece_du_champ(TEXT)
             )
             */
@@ -967,8 +913,8 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ(' dtm'),
             typologie(chd),
             genre(16),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtm_source VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -981,8 +927,8 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ(' dtc'),
             typologie(chd),
             genre(14),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtc_source VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -995,8 +941,8 @@ CREATE TABLE tbl_sources(
             nom_bref_du_champ(' nur'),
             typologie(chi),
             genre(10),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER)
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
             )
             */
              che__nur_source INTEGER NOT NULL DEFAULT  0
@@ -1019,7 +965,6 @@ CREATE TABLE tbl_bdds(
             nom_bref_du_champ('id'),
             typologie(),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1033,7 +978,6 @@ CREATE TABLE tbl_bdds(
             nom_bref_du_champ('projet id'),
             typologie(chi),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1047,7 +991,6 @@ CREATE TABLE tbl_bdds(
             nom_bref_du_champ('rev travail'),
             typologie(),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -1061,7 +1004,6 @@ CREATE TABLE tbl_bdds(
             nom_bref_du_champ('fournisseur'),
             typologie(chi),
             genre(104),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -1075,7 +1017,6 @@ CREATE TABLE tbl_bdds(
             nom_bref_du_champ('dossier id'),
             typologie(chx),
             genre(8),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1089,7 +1030,6 @@ CREATE TABLE tbl_bdds(
             nom_bref_du_champ('commentaire'),
             typologie(),
             genre(6),
-            afficher_champ_dans_svg(0),
             espece_du_champ(TEXT)
             )
             */
@@ -1103,8 +1043,8 @@ CREATE TABLE tbl_bdds(
             nom_bref_du_champ(' dtm'),
             typologie(chd),
             genre(16),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtm_basedd VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1117,8 +1057,8 @@ CREATE TABLE tbl_bdds(
             nom_bref_du_champ(' dtc'),
             typologie(chi),
             genre(14),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtc_basedd VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1131,8 +1071,8 @@ CREATE TABLE tbl_bdds(
             nom_bref_du_champ(' nur'),
             typologie(chi),
             genre(10),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER)
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
             )
             */
              che__nur_basedd INTEGER NOT NULL DEFAULT  0
@@ -1155,7 +1095,6 @@ CREATE TABLE tbl_menus(
             nom_bref_du_champ('id'),
             typologie(chi),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1169,7 +1108,6 @@ CREATE TABLE tbl_menus(
             nom_bref_du_champ('libelle'),
             typologie(chp),
             genre(3),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
@@ -1183,7 +1121,6 @@ CREATE TABLE tbl_menus(
             nom_bref_du_champ('titre'),
             typologie(chp),
             genre(3),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),est_libelle_lien(1),longueur_du_champ(64)
             )
             */
@@ -1197,7 +1134,6 @@ CREATE TABLE tbl_menus(
             nom_bref_du_champ('autorisation'),
             typologie(chx),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),refe_parent_gauche(1)
             )
             */
@@ -1211,7 +1147,6 @@ CREATE TABLE tbl_menus(
             nom_bref_du_champ('methode'),
             typologie(chp),
             genre(12),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
@@ -1225,7 +1160,6 @@ CREATE TABLE tbl_menus(
             nom_bref_du_champ('initialisation'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -1239,7 +1173,6 @@ CREATE TABLE tbl_menus(
             nom_bref_du_champ('complements'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -1253,7 +1186,6 @@ CREATE TABLE tbl_menus(
             nom_bref_du_champ('condition'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -1267,7 +1199,6 @@ CREATE TABLE tbl_menus(
             nom_bref_du_champ('condition php'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -1281,7 +1212,7 @@ CREATE TABLE tbl_taches(
    genre_meta(table_de_base),
    distinction_pour_liste('liste des taches'),
    distinction_pour_isad('d\'une tache'),
-   transform_table_sur_svg(translate(881.5,536.5))) 
+   transform_table_sur_svg(translate(601.5,659.5))) 
 */
     
             /*
@@ -1291,7 +1222,6 @@ CREATE TABLE tbl_taches(
             nom_bref_du_champ('id'),
             typologie(),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1305,7 +1235,6 @@ CREATE TABLE tbl_taches(
             nom_bref_du_champ('utilisateur'),
             typologie(che),
             genre(9),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1319,7 +1248,6 @@ CREATE TABLE tbl_taches(
             nom_bref_du_champ('texte'),
             typologie(),
             genre(11),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT),est_libelle_lien(1)
             )
             */
@@ -1333,7 +1261,6 @@ CREATE TABLE tbl_taches(
             nom_bref_du_champ('priorite'),
             typologie(),
             genre(10),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1347,7 +1274,6 @@ CREATE TABLE tbl_taches(
             nom_bref_du_champ('projet'),
             typologie(chx),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1361,8 +1287,8 @@ CREATE TABLE tbl_taches(
             nom_bref_du_champ(' dtm'),
             typologie(chd),
             genre(16),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtm_tache VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1375,8 +1301,8 @@ CREATE TABLE tbl_taches(
             nom_bref_du_champ(' dtc'),
             typologie(chi),
             genre(14),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtc_tache VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1389,273 +1315,11 @@ CREATE TABLE tbl_taches(
             nom_bref_du_champ(' nur'),
             typologie(che),
             genre(15),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER)
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
             )
             */
              che__nur_tache INTEGER NOT NULL DEFAULT  0
-    );
-
-CREATE TABLE tbl_genres(
-/*
- meta(nom_de_la_table('tbl_genres'),
-   table('tbl_genres'),
-   genre_meta(table_de_base),
-   distinction_pour_liste('liste des genres'),
-   distinction_pour_isad('d\'un genre'),
-   transform_table_sur_svg(translate(68.5,456.5))) 
-*/
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chi_id_genre'),
-            nom_bref_du_champ('id'),
-            typologie(chi),
-            genre(2),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             chi_id_genre INTEGER PRIMARY KEY NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_prefixe_genre'),
-            nom_bref_du_champ('prefixe'),
-            typologie(chp),
-            genre(102),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(VARCHAR),longueur_du_champ(3)
-            )
-            */
-             chp_prefixe_genre VARCHAR(3) NOT NULL DEFAULT  'cht'
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_nom_genre'),
-            nom_bref_du_champ('nom'),
-            typologie(chp),
-            genre(3),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(VARCHAR),est_libelle_lien(1),longueur_du_champ(64)
-            )
-            */
-             chp_nom_genre VARCHAR(64) NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_espece_genre'),
-            nom_bref_du_champ('espece'),
-            typologie(chp),
-            genre(101),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(VARCHAR),longueur_du_champ(32)
-            )
-            */
-             chp_espece_genre VARCHAR(64) NOT NULL DEFAULT  'TEXT'
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_longueur_genre'),
-            nom_bref_du_champ('longueur'),
-            typologie(che),
-            genre(7),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_longueur_genre INTEGER
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_est_primaire_genre'),
-            nom_bref_du_champ('est primaire'),
-            typologie(che),
-            genre(5),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_est_primaire_genre INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_est_incrément_genre'),
-            nom_bref_du_champ('est incrément'),
-            typologie(che),
-            genre(5),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_est_incrément_genre INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_est_obligatoire_genre'),
-            nom_bref_du_champ('est obligatoire'),
-            typologie(che),
-            genre(5),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_est_obligatoire_genre INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_a_init_genre'),
-            nom_bref_du_champ('a init'),
-            typologie(che),
-            genre(5),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_a_init_genre INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_init_est_mot_genre'),
-            nom_bref_du_champ('init est mot'),
-            typologie(che),
-            genre(5),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_init_est_mot_genre INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_valeur_init_genre'),
-            nom_bref_du_champ('valeur init'),
-            typologie(cht),
-            genre(6),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(TEXT)
-            )
-            */
-             cht_valeur_init_genre TEXT
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_est_parmis_genre'),
-            nom_bref_du_champ('est parmis'),
-            typologie(che),
-            genre(5),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_est_parmis_genre INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_parmis_genre'),
-            nom_bref_du_champ('parmis'),
-            typologie(cht),
-            genre(6),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(TEXT)
-            )
-            */
-             cht_parmis_genre TEXT
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_ordre_genre'),
-            nom_bref_du_champ('ordre'),
-            typologie(che),
-            genre(10),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_ordre_genre INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_fonctions_genre'),
-            nom_bref_du_champ('fonctions'),
-            typologie(cht),
-            genre(107),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(TEXT)
-            )
-            */
-             cht_fonctions_genre TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_est_nur_genre'),
-            nom_bref_du_champ('est nur'),
-            typologie(che),
-            genre(5),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_est_nur_genre INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_est_tsm_genre'),
-            nom_bref_du_champ('est tsm'),
-            typologie(che),
-            genre(5),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_est_tsm_genre INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_est_tsc_genre'),
-            nom_bref_du_champ('est tsc'),
-            typologie(che),
-            genre(5),
-            afficher_champ_dans_svg(1),
-            espece_du_champ(INTEGER)
-            )
-            */
-             che_est_tsc_genre INTEGER NOT NULL DEFAULT  0
     );
 
 CREATE TABLE tbl_autorisations(
@@ -1675,7 +1339,6 @@ CREATE TABLE tbl_autorisations(
             nom_bref_du_champ('id'),
             typologie(chi),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1689,7 +1352,6 @@ CREATE TABLE tbl_autorisations(
             nom_bref_du_champ('nom'),
             typologie(chp),
             genre(17),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),est_libelle_lien(1),longueur_du_champ(64)
             )
             */
@@ -1703,7 +1365,6 @@ CREATE TABLE tbl_autorisations(
             nom_bref_du_champ('acces'),
             typologie(chx),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1717,7 +1378,6 @@ CREATE TABLE tbl_autorisations(
             nom_bref_du_champ('source'),
             typologie(chx),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),refe_enfant_droite(1),refe_parent_gauche(1)
             )
             */
@@ -1741,7 +1401,6 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ('id'),
             typologie(chi),
             genre(2),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
@@ -1755,7 +1414,6 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ('commentaire'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT),est_libelle_lien(1)
             )
             */
@@ -1769,7 +1427,6 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ('projet'),
             typologie(chx),
             genre(4),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER),refe_enfant_droite(1),refe_parent_gauche(1)
             )
             */
@@ -1783,7 +1440,6 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ('type'),
             typologie(chp),
             genre(103),
-            afficher_champ_dans_svg(1),
             espece_du_champ(VARCHAR),longueur_du_champ(64)
             )
             */
@@ -1797,7 +1453,6 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ('rev'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -1811,7 +1466,6 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ('sql'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -1825,7 +1479,6 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ('php'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -1839,7 +1492,6 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ('matrice'),
             typologie(cht),
             genre(6),
-            afficher_champ_dans_svg(1),
             espece_du_champ(TEXT)
             )
             */
@@ -1853,8 +1505,8 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ(' nur'),
             typologie(che),
             genre(15),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(INTEGER)
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
             )
             */
              che__nur_requete INTEGER NOT NULL DEFAULT  0
@@ -1867,8 +1519,8 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ(' dtm'),
             typologie(chd),
             genre(16),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtm_requete VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1881,8 +1533,8 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ(' dtc'),
             typologie(chd),
             genre(14),
-            afficher_champ_dans_svg(0),
-            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            espece_du_champ(VARCHAR),longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
             )
             */
              chd__dtc_requete VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -1895,10 +1547,256 @@ CREATE TABLE tbl_requetes(
             nom_bref_du_champ('est souche'),
             typologie(che),
             genre(5),
-            afficher_champ_dans_svg(1),
             espece_du_champ(INTEGER)
             )
             */
              che_est_souche_requete INTEGER NOT NULL DEFAULT  0
+    );
+
+CREATE TABLE tbl_genres(
+/*
+ meta(nom_de_la_table('tbl_genres'),
+   table('tbl_genres'),
+   genre_meta(table_de_base),
+   distinction_pour_liste('liste des genres'),
+   distinction_pour_isad('d\'un genre'),
+   transform_table_sur_svg(translate(68.5,456.5))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_genre'),
+            nom_bref_du_champ('id'),
+            typologie(chi),
+            genre(2),
+            espece_du_champ(INTEGER),est_critere_recherche_liste_ecran(1),ordre_tri_liste_ecran(2),sens_tri_liste_ecran_decroissant(1)
+            )
+            */
+             chi_id_genre INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_nom_genre'),
+            nom_bref_du_champ('nom'),
+            typologie(chp),
+            genre(3),
+            espece_du_champ(VARCHAR),est_libelle_lien(1),est_critere_recherche_liste_ecran(1),longueur_du_champ(64)
+            )
+            */
+             chp_nom_genre VARCHAR(64) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_ordre_genre'),
+            nom_bref_du_champ('ordre'),
+            typologie(che),
+            genre(10),
+            espece_du_champ(INTEGER),ordre_tri_liste_ecran(1)
+            )
+            */
+             che_ordre_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_prefixe_genre'),
+            nom_bref_du_champ('préfixe'),
+            typologie(chp),
+            genre(102),
+            espece_du_champ(VARCHAR),est_critere_recherche_liste_ecran(1),longueur_du_champ(3)
+            )
+            */
+             chp_prefixe_genre VARCHAR(3) NOT NULL DEFAULT  'cht'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_espece_genre'),
+            nom_bref_du_champ('espèce'),
+            typologie(chp),
+            genre(101),
+            espece_du_champ(VARCHAR),est_critere_recherche_liste_ecran(1),longueur_du_champ(32)
+            )
+            */
+             chp_espece_genre VARCHAR(64) NOT NULL DEFAULT  'TEXT'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_longueur_genre'),
+            nom_bref_du_champ('longueur'),
+            typologie(che),
+            genre(7),
+            espece_du_champ(INTEGER)
+            )
+            */
+             che_longueur_genre INTEGER
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_primaire_genre'),
+            nom_bref_du_champ('est primaire'),
+            typologie(che),
+            genre(5),
+            espece_du_champ(INTEGER)
+            )
+            */
+             che_est_primaire_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_incrément_genre'),
+            nom_bref_du_champ('est incrément'),
+            typologie(che),
+            genre(5),
+            espece_du_champ(INTEGER)
+            )
+            */
+             che_est_incrément_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_obligatoire_genre'),
+            nom_bref_du_champ('est obligatoire'),
+            typologie(che),
+            genre(5),
+            espece_du_champ(INTEGER)
+            )
+            */
+             che_est_obligatoire_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_a_init_genre'),
+            nom_bref_du_champ('a init'),
+            typologie(che),
+            genre(5),
+            espece_du_champ(INTEGER)
+            )
+            */
+             che_a_init_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_init_est_mot_genre'),
+            nom_bref_du_champ('init est mot'),
+            typologie(che),
+            genre(5),
+            espece_du_champ(INTEGER)
+            )
+            */
+             che_init_est_mot_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_valeur_init_genre'),
+            nom_bref_du_champ('valeur init'),
+            typologie(cht),
+            genre(6),
+            espece_du_champ(TEXT),est_critere_recherche_liste_ecran(1)
+            )
+            */
+             cht_valeur_init_genre TEXT
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_parmis_genre'),
+            nom_bref_du_champ('est parmis'),
+            typologie(che),
+            genre(5),
+            espece_du_champ(INTEGER)
+            )
+            */
+             che_est_parmis_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_parmis_genre'),
+            nom_bref_du_champ('parmis'),
+            typologie(cht),
+            genre(6),
+            espece_du_champ(TEXT),est_critere_recherche_liste_ecran(1)
+            )
+            */
+             cht_parmis_genre TEXT
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_fonctions_genre'),
+            nom_bref_du_champ('fonctions'),
+            typologie(cht),
+            genre(107),
+            espece_du_champ(TEXT)
+            )
+            */
+             cht_fonctions_genre TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_nur_genre'),
+            nom_bref_du_champ('est nur'),
+            typologie(che),
+            genre(5),
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             che_est_nur_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_tsm_genre'),
+            nom_bref_du_champ('est tsm'),
+            typologie(che),
+            genre(5),
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             che_est_tsm_genre INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_tsc_genre'),
+            nom_bref_du_champ('est tsc'),
+            typologie(che),
+            genre(5),
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             che_est_tsc_genre INTEGER NOT NULL DEFAULT  0
     );
 

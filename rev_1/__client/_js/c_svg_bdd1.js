@@ -572,10 +572,14 @@ class c_svg_bdd1{
         ){
             references=document.getElementById( 'table_mère' ).value + ',' + document.getElementById( 'champ_père' ).value;
         }
-        var afficher_champ_dans_svg=document.getElementById( 'afficher_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
+        var masquer_champ_dans_svg=document.getElementById( 'masquer_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
         var refe_enfant_droite=document.getElementById( 'refe_enfant_droite' ).checked ? ( 1 ) : ( 0 );
         var refe_parent_gauche=document.getElementById( 'refe_parent_gauche' ).checked ? ( 1 ) : ( 0 );
         var est_libelle_lien=document.getElementById( 'est_libelle_lien' ).checked ? ( 1 ) : ( 0 );
+        var est_critere_recherche_liste_ecran=document.getElementById( 'est_critere_recherche_liste_ecran' ).checked ? ( 1 ) : ( 0 );
+        var ordre_tri_liste_ecran=document.getElementById( 'ordre_tri_liste_ecran' ).value;
+        var sens_tri_liste_ecran_decroissant=document.getElementById( 'sens_tri_liste_ecran_decroissant' ).value;
+        
         
         var j=0;
         var i=0;
@@ -637,10 +641,13 @@ class c_svg_bdd1{
         rev+='    typologie(' + typologie + ')';
         rev+='    genre(' + genre + ')';
         rev+='    nom_bref_du_champ(\'' + document.getElementById( 'meta_ajouter__nom_bref_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-        rev+='    afficher_champ_dans_svg(' + afficher_champ_dans_svg + ')';
+        rev+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + ')';
         rev+='    refe_enfant_droite(' + refe_enfant_droite + ')';
         rev+='    refe_parent_gauche(' + refe_parent_gauche + ')';
         rev+='    est_libelle_lien(' + est_libelle_lien + ')';
+        rev+='    est_critere_recherche_liste_ecran(' + est_critere_recherche_liste_ecran + ')';
+        rev+='    ordre_tri_liste_ecran(' + ordre_tri_liste_ecran + ')';
+        rev+='    sens_tri_liste_ecran_decroissant(' + sens_tri_liste_ecran_decroissant + ')';
         
         rev+=')';
         var a=this.#ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , this.#id_bdd_de_la_base_en_cours , rev , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere );
@@ -1254,6 +1261,13 @@ class c_svg_bdd1{
         a.proprietes.refe_enfant_droite=document.getElementById( 'refe_enfant_droite' ).checked ? ( 1 ) : ( 0 );
         a.proprietes.refe_parent_gauche=document.getElementById( 'refe_parent_gauche' ).checked ? ( 1 ) : ( 0 );
         a.proprietes.est_libelle_lien=document.getElementById( 'est_libelle_lien' ).checked ? ( 1 ) : ( 0 );
+        a.proprietes.est_critere_recherche_liste_ecran=document.getElementById( 'est_critere_recherche_liste_ecran' ).checked ? ( 1 ) : ( 0 );
+        a.proprietes.ordre_tri_liste_ecran=document.getElementById( 'ordre_tri_liste_ecran' ).value;
+        a.proprietes.sens_tri_liste_ecran_decroissant=document.getElementById( 'sens_tri_liste_ecran_decroissant' ).checked ? ( 1 ) : ( 0 );
+        
+        
+        
+        
         
         let table_mere=document.getElementById( 'table_mère' ).value.trim();
         let champ_pere=document.getElementById( 'champ_père' ).value.trim();
@@ -1384,6 +1398,9 @@ class c_svg_bdd1{
                             "refe_enfant_droite" : a.proprietes.refe_enfant_droite ,
                             "refe_parent_gauche" : a.proprietes.refe_parent_gauche,
                             "est_libelle_lien"       : a.proprietes.est_libelle_lien,
+                            "est_critere_recherche_liste_ecran" : a.proprietes.est_critere_recherche_liste_ecran,
+                            "ordre_tri_liste_ecran" : a.proprietes.ordre_tri_liste_ecran,
+                            "sens_tri_liste_ecran_decroissant" : a.proprietes.sens_tri_liste_ecran_decroissant ,
                         } );
                 }else{
                     /* si le champ était déjà lié, il faut modifier le lien existant */
@@ -1432,32 +1449,40 @@ class c_svg_bdd1{
         a.proprietes.a_une_valeur_par_defaut=document.getElementById( 'a_une_valeur_par_defaut' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.la_valeur_par_defaut_est_caractere=document.getElementById( 'la_valeur_par_defaut_est_caractere' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.valeur_par_defaut=document.getElementById( 'valeur_par_defaut' ).value;
-        var afficher_champ_dans_svg=document.getElementById( 'afficher_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
-        if(afficher_champ_dans_svg === '0'){
+        var masquer_champ_dans_svg=document.getElementById( 'masquer_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
+        
+        if(masquer_champ_dans_svg === '1'){
             if(a.proprietes.primary_key === '1' || a.proprietes.auto_increment === '1' || reference_amont_ou_aval === true){
-                afficher_champ_dans_svg=1;
+                masquer_champ_dans_svg=0;
             }
         }
+        
         let obj={
-            "afficher_champ_dans_svg" : afficher_champ_dans_svg ,
+            "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
+            
             "refe_enfant_droite" : a.proprietes.refe_enfant_droite ,
             "refe_parent_gauche" : a.proprietes.refe_parent_gauche ,
             "est_libelle_lien" : a.proprietes.est_libelle_lien ,
-            
+            "est_critere_recherche_liste_ecran" : a.proprietes.est_critere_recherche_liste_ecran ,
+            "ordre_tri_liste_ecran" : a.proprietes.ordre_tri_liste_ecran ,
+            "sens_tri_liste_ecran_decroissant" : a.proprietes.sens_tri_liste_ecran_decroissant ,
             "nom_bref_du_champ" : document.getElementById( 'meta_modifier__nom_bref_du_champ' ).value ,
              /* meta_modifier__typologie */
             "typologie" : document.getElementById( 'typologie' ).value ,
              /* meta_modifier__genre */
             "genre" : document.getElementById( 'genre' ).value
         };
+        debugger
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ );
         /* meta_modifier__genre */
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ + 3].contenu=document.getElementById( 'genre' ).value;
-        if(afficher_champ_dans_svg === 1){
-            this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ - 1].proprietes.style='display:inline;';
-        }else{
+        if(masquer_champ_dans_svg === 1){
             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ - 1].proprietes.style='display:none;';
+        }else{
+            this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ - 1].proprietes.style='display:inline;';
         }
+        
+        
         a.proprietes.donnees_rev_du_champ=obj_donnees_rev_du_champ.texte;
         __gi1.fermer_fenetre1();
         this.#dessiner_le_svg();
@@ -2060,10 +2085,18 @@ class c_svg_bdd1{
         let typologie=obj_donnees_rev_du_champ.typologie;
         let genre=obj_donnees_rev_du_champ.genre;
         let nom_bref_du_champ=obj_donnees_rev_du_champ.nom_bref_du_champ;
-        let afficher_champ_dans_svg=obj_donnees_rev_du_champ.afficher_champ_dans_svg;
+
+        let masquer_champ_dans_svg=obj_donnees_rev_du_champ.masquer_champ_dans_svg;
+        
         let refe_enfant_droite=obj_donnees_rev_du_champ.refe_enfant_droite;
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
         let est_libelle_lien=obj_donnees_rev_du_champ.est_libelle_lien;
+        let est_critere_recherche_liste_ecran=obj_donnees_rev_du_champ.est_critere_recherche_liste_ecran;
+        let ordre_tri_liste_ecran=obj_donnees_rev_du_champ.ordre_tri_liste_ecran;
+        let sens_tri_liste_ecran_decroissant=obj_donnees_rev_du_champ.sens_tri_liste_ecran_decroissant;
+        
+        
+        
         
         t+='<h2>changer les éléments du champ</h2>';
         /*
@@ -2217,14 +2250,19 @@ class c_svg_bdd1{
         t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '" >modifier</div>';
         
         
-        t+='<br />afficher_champ_dans_svg : ';
-        t+='<input type="checkbox" id="afficher_champ_dans_svg" ' + (afficher_champ_dans_svg === '1' ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />refe_enfant_droite : ';
-        t+='<input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />refe_parent_gauche : ';
-        t+='<input type="checkbox" id="refe_parent_gauche" ' + (refe_parent_gauche === 1 ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />est_libelle_lien : ';
-        t+='<input type="checkbox" id="est_libelle_lien" ' + (est_libelle_lien === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />masquer_champ_dans_svg : ';
+        t+='<input type="checkbox" id="masquer_champ_dans_svg" ' + (masquer_champ_dans_svg === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        
+        
+        t+='<br />refe_enfant_droite : <input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />refe_parent_gauche : <input type="checkbox" id="refe_parent_gauche" ' + (refe_parent_gauche === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />est_libelle_lien : <input type="checkbox" id="est_libelle_lien" ' + (est_libelle_lien === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />est_critere_recherche_liste_ecran : <input type="checkbox" id="est_critere_recherche_liste_ecran" ' + (est_critere_recherche_liste_ecran === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />ordre_tri_liste_ecran : <input type="number" id="ordre_tri_liste_ecran" value="' + ordre_tri_liste_ecran + '" />';
+        t+='<br />sens_tri_liste_ecran_decroissant : <input type="checkbox" id="sens_tri_liste_ecran_decroissant" ' + (sens_tri_liste_ecran_decroissant === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        
+
+
 
         t+='<br />';
         var cmd='';
@@ -3638,31 +3676,201 @@ class c_svg_bdd1{
     /*
       =============================================================================================================
     */
-    masquer_ou_afficher_le_champ( mat ){
+    modifier_ordre_tri_liste_ecran( mat ){
+
         let id_rectangle_de_champ=0;
         let id_svg_conteneur_table=0;
-        let afficher_champ_dans_svg=0;
+        let masquer_champ_dans_svg=0;
+        let plus1=0;
+        let moins1=0;
+        let ordre_tri=0;
         for( let i=1 ; i < mat.length ; i++ ){
             if(mat[i][1] === 'id_rectangle_de_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_rectangle_de_champ=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === 'afficher_champ_dans_svg' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                afficher_champ_dans_svg=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'plus1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                plus1=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'moins1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                moins1=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'ordre_tri' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                ordre_tri=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        /* donnees_rev_du_champ */
-        let obj=this.#corrige_meta_champ( document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , {"afficher_champ_dans_svg" : afficher_champ_dans_svg} , null );
+        let etat_futur_ordre_tri_liste_ecran=0;
+        if(moins1===1){
+            if(ordre_tri>1){
+                etat_futur_ordre_tri_liste_ecran=ordre_tri-1;
+            }
+        }else if(plus1===1){
+            etat_futur_ordre_tri_liste_ecran=ordre_tri+1;
+        }
+        
+        
+        
+        let obj=this.#corrige_meta_champ( /**/
+            document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , 
+            {"ordre_tri_liste_ecran" : etat_futur_ordre_tri_liste_ecran} , 
+            null 
+        );
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
-        if(afficher_champ_dans_svg == 1){
-            this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ - 1].proprietes.style='display:inline;';
-        }else{
+        let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
+        __gi1.fermer_fenetre1();
+        this.#dessiner_le_svg();
+        /* id_svg_conteneur_table */
+
+        var obj1=__gi1.__m_rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
+        if(obj1.__xst === __xsu){
+            this.modale_gerer_la_table( obj1.__xva );
+        }
+    }
+    
+    /*
+      =============================================================================================================
+    */
+    basculer_sens_tri_liste_ecran_decroissant( mat ){
+
+        let id_rectangle_de_champ=0;
+        let id_svg_conteneur_table=0;
+        let masquer_champ_dans_svg=0;
+        for( let i=1 ; i < mat.length ; i++ ){
+            if(mat[i][1] === 'id_rectangle_de_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_rectangle_de_champ=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        
+        let etat_futur_sens_tri_liste_ecran_decroissant=document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ).indexOf( 'sens_tri_liste_ecran_decroissant(1)' ) >= 0?0:1;
+        
+        
+        
+        let obj=this.#corrige_meta_champ( /**/
+          document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , 
+          {"sens_tri_liste_ecran_decroissant" : etat_futur_sens_tri_liste_ecran_decroissant} , 
+          null 
+        );
+        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
+        let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
+        __gi1.fermer_fenetre1();
+        this.#dessiner_le_svg();
+        /* id_svg_conteneur_table */
+
+        var obj1=__gi1.__m_rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
+        if(obj1.__xst === __xsu){
+            this.modale_gerer_la_table( obj1.__xva );
+        }
+    }    
+    /*
+      =============================================================================================================
+    */
+    basculer_est_critere_recherche_liste_ecran( mat ){
+
+        let id_rectangle_de_champ=0;
+        let id_svg_conteneur_table=0;
+        let masquer_champ_dans_svg=0;
+        for( let i=1 ; i < mat.length ; i++ ){
+            if(mat[i][1] === 'id_rectangle_de_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_rectangle_de_champ=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        
+        let etat_futur_est_critere_recherche_liste_ecran=document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ).indexOf( 'est_critere_recherche_liste_ecran(1)' ) >= 0?0:1;
+        
+        
+        
+        let obj=this.#corrige_meta_champ( /**/
+          document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , 
+          {"est_critere_recherche_liste_ecran" : etat_futur_est_critere_recherche_liste_ecran} , 
+          null 
+        );
+        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
+        let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
+        __gi1.fermer_fenetre1();
+        this.#dessiner_le_svg();
+        /* id_svg_conteneur_table */
+
+        var obj1=__gi1.__m_rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
+        if(obj1.__xst === __xsu){
+            this.modale_gerer_la_table( obj1.__xva );
+        }
+    }
+    
+    /*
+      =============================================================================================================
+    */
+    basculer_est_libelle_lien( mat ){
+
+        let id_rectangle_de_champ=0;
+        let id_svg_conteneur_table=0;
+        let masquer_champ_dans_svg=0;
+        for( let i=1 ; i < mat.length ; i++ ){
+            if(mat[i][1] === 'id_rectangle_de_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_rectangle_de_champ=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        
+        let etat_futur_est_libelle_lien=document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ).indexOf( 'est_libelle_lien(1)' ) >= 0?0:1;
+        
+        
+        
+        let obj=this.#corrige_meta_champ( /**/
+          document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , 
+          {"est_libelle_lien" : etat_futur_est_libelle_lien} , 
+          null 
+        );
+        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
+        let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
+        __gi1.fermer_fenetre1();
+        this.#dessiner_le_svg();
+        /* id_svg_conteneur_table */
+
+        var obj1=__gi1.__m_rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
+        if(obj1.__xst === __xsu){
+            this.modale_gerer_la_table( obj1.__xva );
+        }
+    }
+    
+    /*
+      =============================================================================================================
+    */
+    masquer_ou_afficher_le_champ( mat ){
+
+        let id_rectangle_de_champ=0;
+        let id_svg_conteneur_table=0;
+        let masquer_champ_dans_svg=0;
+        for( let i=1 ; i < mat.length ; i++ ){
+            if(mat[i][1] === 'id_rectangle_de_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_rectangle_de_champ=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        
+        let etat_futur_champ_masque=document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ).indexOf( 'masquer_champ_dans_svg(1)' ) >= 0?0:1;
+        
+        
+        
+        let obj=this.#corrige_meta_champ( /**/
+          document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , 
+          {"masquer_champ_dans_svg" : etat_futur_champ_masque} , 
+          null 
+        );
+        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
+        if(etat_futur_champ_masque === 1){
             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ - 1].proprietes.style='display:none;';
+        }else{
+            this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ - 1].proprietes.style='display:inline;';
         }
         let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
         __gi1.fermer_fenetre1();
         this.#dessiner_le_svg();
         /* id_svg_conteneur_table */
+
         var obj1=__gi1.__m_rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
         if(obj1.__xst === __xsu){
             this.modale_gerer_la_table( obj1.__xva );
@@ -4079,10 +4287,17 @@ class c_svg_bdd1{
         cmd+=')';
         t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '" >modifier</div>';
         
-        t+='<br />afficher_champ_dans_svg : <input id="afficher_champ_dans_svg" type="checkbox" checked />';
+        t+='<br />masquer_champ_dans_svg : <input id="masquer_champ_dans_svg" type="checkbox" checked />';
+        
         t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
         t+='<br />refe_parent_gauche : <input id="refe_parent_gauche" type="checkbox" />';
         t+='<br />est_libelle_lien : <input id="est_libelle_lien" type="checkbox" />';
+        t+='<br />est_critere_recherche_liste_ecran : <input id="est_critere_recherche_liste_ecran" type="checkbox" />';
+        t+='<br />ordre_tri_liste_ecran : <input id="ordre_tri_liste_ecran" type="number" value="0" />';
+        t+='<br />sens_tri_liste_ecran_decroissant : <input id="sens_tri_liste_ecran_decroissant" type="checkbox" />';
+        
+        
+        
         
         t+='<br />';
         t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + 'interface1.module1(' + ' chemin_module1(\'' + this.#chemin_module1 + '\'),' + ' methode3(ajouter_un_champ_de_modale),' + ' parametre3(' + '  id_svg_conteneur_table(' + id_svg_conteneur_table + '),' + '  nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')' + ' )' + ')" >ajouter</div>';
@@ -4232,55 +4447,20 @@ class c_svg_bdd1{
         t+='<table><tr>';
         t+='<th>champs</th>';
         t+='<th>action</th>';
-        t+='<th  title="numéro de révision">nu rev</th>';
-        t+='<th>rev</th>';
-        let il_existe_un_refe_enfant_droite=-1;
-        let il_existe_un_refe_parent_gauche=-1;
-        for( i=0 ; i < liste_des_champs.length ; i++ ){
-            let tt=document.getElementById( liste_des_champs[i].id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' );
-            if(tt.indexOf( 'refe_enfant_droite(1)' ) >= 0){
-                il_existe_un_refe_enfant_droite=i;
-            }
-            if(tt.indexOf( 'refe_parent_gauche(1)' ) >= 0){
-                il_existe_un_refe_parent_gauche=i;
-            }
-        }
+        t+='<th>aff/masq</th>';
+        t+='<th title="est libelle lien">lib lien</th>';
+        t+='<th title="est critere recherche liste_ecran">crit rech</th>';
+        t+='<th title="ordre tri liste ecran">ordre tri</th>';
+        
+        
         t+='</tr>';
         /* nom_du_champ : lst[i].childNodes[j].data , id_rectangle_de_champ : */
         for( i=0 ; i < liste_des_champs.length ; i++ ){
-            t+='<tr><td>';
+            t+='<tr>';
+            t+='<td>';
             t+=liste_des_champs[i].nom_du_champ;
-            t+='</td><td>';
-            if(document.getElementById( liste_des_champs[i].id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ).indexOf( 'afficher_champ_dans_svg(0)' ) >= 0
-            ){
-                t+='<div class="hug_bouton yy__x_signaux_1" data-hug_click="';
-                t+='interface1.module1(';
-                t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                t+=' methode3(masquer_ou_afficher_le_champ),';
-                t+=' parametre3(';
-                t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
-                t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
-                t+='  afficher_champ_dans_svg(1),';
-                t+='  id_bdd_de_la_base_en_cours('+id_bdd_de_la_base_en_cours+'),';
-                t+=' )';
-                t+=')" >afficher</div>';
-            }else{
-                t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="';
-                t+='interface1.module1(';
-                t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
-                t+=' methode3(masquer_ou_afficher_le_champ),';
-                t+=' parametre3(';
-                t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
-                t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
-                t+='  afficher_champ_dans_svg(0),';
-                t+='  id_bdd_de_la_base_en_cours('+id_bdd_de_la_base_en_cours+'),';
-                t+=' )';
-                t+=')" >masquer</div>';
-            }
             t+='</td>';
             /*
-              
-              
             */
             t+='<td>';
             
@@ -4297,10 +4477,153 @@ class c_svg_bdd1{
             cmd+='  )';
             cmd+=')';
             t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="'+cmd+'" >éditer</div>';;
-            
-            t+='';
-            /* document.getElementById( liste_des_champs[i].id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ); */
             t+='</td>';
+            /*
+            */
+            let attr=document.getElementById( liste_des_champs[i].id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' );
+            /*
+              masquer_champ_dans_svg
+            */
+            t+='<td  style="text-align:center;">';
+            var txtl1='masquer';
+            var clsl1='yy__x_signaux_3';
+            if(attr.indexOf( 'masquer_champ_dans_svg(1)' ) >= 0
+            ){
+                txtl1='afficher';
+                clsl1='yy__x_signaux_1';
+            }
+            t+='<div class="hug_bouton '+clsl1+'" data-hug_click="';
+            t+='interface1.module1(';
+            t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+            t+=' methode3(masquer_ou_afficher_le_champ),';
+            t+=' parametre3(';
+            t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
+            t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
+            t+='  id_bdd_de_la_base_en_cours('+id_bdd_de_la_base_en_cours+'),';
+            t+=' )';
+            t+=')" >'+txtl1+'</div>';
+            t+='</td>';
+            /*
+              est_libelle_lien
+            */
+            t+='<td style="text-align:center;" title="est libelle lien">';
+
+            var txtl1='non';
+            var clsl1='yy__x_signaux_3';
+            if(attr.indexOf( 'est_libelle_lien(1)' ) >= 0
+            ){
+                txtl1='oui';
+                clsl1='yy__x_signaux_1';
+            }
+            t+='<div class="hug_bouton '+clsl1+'" data-hug_click="';
+            t+='interface1.module1(';
+            t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+            t+=' methode3(basculer_est_libelle_lien),';
+            t+=' parametre3(';
+            t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
+            t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
+            t+='  id_bdd_de_la_base_en_cours('+id_bdd_de_la_base_en_cours+'),';
+            t+=' )';
+            t+=')" >'+txtl1+'</div>';
+
+            
+            t+='</td>';
+            /*
+              est_critere_recherche_liste_ecran
+            */
+            t+='<td style="text-align:center;" title="est critere recherche liste ecran">';
+
+            var txtl1='non';
+            var clsl1='yy__x_signaux_3';
+            if(attr.indexOf( 'est_critere_recherche_liste_ecran(1)' ) >= 0
+            ){
+                txtl1='oui';
+                clsl1='yy__x_signaux_1';
+            }
+            t+='<div class="hug_bouton '+clsl1+'" data-hug_click="';
+            t+='interface1.module1(';
+            t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+            t+=' methode3(basculer_est_critere_recherche_liste_ecran),';
+            t+=' parametre3(';
+            t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
+            t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
+            t+='  id_bdd_de_la_base_en_cours('+id_bdd_de_la_base_en_cours+'),';
+            t+=' )';
+            t+=')" >'+txtl1+'</div>';
+
+            
+            t+='</td>';
+            /*
+              ordre_tri_liste_ecran
+            */
+            t+='<td style="text-align:center;" title="ordre tri liste ecran">';
+            let ordre_tri=0;
+            
+            if(attr.indexOf( 'ordre_tri_liste_ecran(' ) < 0){
+             
+            }else{
+                if(attr.indexOf( 'ordre_tri_liste_ecran(0)' ) >= 0){
+                }else{
+                    let t1=attr.substr(attr.indexOf('ordre_tri_liste_ecran('));
+                    t1=t1.replace('ordre_tri_liste_ecran(','');
+                    t1=t1.substr(0,t1.indexOf(')'));
+                    ordre_tri=parseInt(t1,10);
+                 
+                }
+            }
+            t+=ordre_tri;
+            t+='<div class="hug_bouton" data-hug_click="';
+            t+='interface1.module1(';
+            t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+            t+=' methode3(modifier_ordre_tri_liste_ecran),';
+            t+=' parametre3(';
+            t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
+            t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
+            t+='  id_bdd_de_la_base_en_cours('+id_bdd_de_la_base_en_cours+'),';
+            t+='  ordre_tri('+ordre_tri+'),';
+            t+='  plus1(1),';
+            t+=' )';
+            t+=')" >+</div>';
+             
+            t+='<div class="hug_bouton" data-hug_click="';
+            t+='interface1.module1(';
+            t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+            t+=' methode3(modifier_ordre_tri_liste_ecran),';
+            t+=' parametre3(';
+            t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
+            t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
+            t+='  id_bdd_de_la_base_en_cours('+id_bdd_de_la_base_en_cours+'),';
+            t+='  ordre_tri('+ordre_tri+'),';
+            t+='  moins1(1),';
+            t+=' )';
+            t+=')" >-</div>';
+            if(ordre_tri>0){
+                
+                var txtl1='croissant';
+                var clsl1='yy__x_signaux_3';
+                if(attr.indexOf( 'sens_tri_liste_ecran_decroissant(1)' ) >= 0
+                ){
+                    txtl1='décroissant';
+                }
+              
+                t+='<div class="hug_bouton" data-hug_click="';
+                t+='interface1.module1(';
+                t+=' chemin_module1(\'' + this.#chemin_module1 + '\'),';
+                t+=' methode3(basculer_sens_tri_liste_ecran_decroissant),';
+                t+=' parametre3(';
+                t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
+                t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
+                t+='  id_bdd_de_la_base_en_cours('+id_bdd_de_la_base_en_cours+'),';
+                t+=' )';
+                t+=')" >'+txtl1+'</div>';
+              
+            }
+             
+            
+            
+            
+            t+='</td>';
+            
             t+='</tr>';
         }
         /*
@@ -4311,7 +4634,6 @@ class c_svg_bdd1{
         vv_sous_fenetre1.innerHTML=t;
         /* __contenu_modale => vv_sous_fenetre1 */
         vv_sous_fenetre1.showModal();
-        document.getElementById( 'vv_sous_fenetre1' ).scrollTop=scrollTop;
         __gi1.ajoute_les_evenements_aux_boutons( null );
         let options1={
             "hauteur_max_en_vh" : 80 ,
@@ -4336,6 +4658,11 @@ class c_svg_bdd1{
             "class_du_bouton_deplacer" : 'hug_bouton'
         };
         new tri_arbre1( 'ordre_original' , options2 );
+        if( scrollTop > 0 ){
+            setTimeout( ()=>{
+                document.getElementById( 'vv_sous_fenetre1' ).scrollTop=scrollTop;
+            } , 5 );
+        }
     }
     /*
       
@@ -5668,7 +5995,6 @@ class c_svg_bdd1{
           ( valeur_par_defaut , '2000-01-01 00:00:00'),
           ( nom_bref_du_champ , 'à faire chd__dtc_utilisateur'),
           ( typologie , 'chi')
-          ( afficher_champ_dans_svg , 1 )
           ( espece_du_champ , 'VARCHAR' )
           ( longueur_du_champ , '' )
           
@@ -5683,10 +6009,13 @@ class c_svg_bdd1{
         let nom_bref_du_champ='';
         let typologie='';
         let genre='1';
-        let afficher_champ_dans_svg=1;
+        let masquer_champ_dans_svg=0;
         let refe_enfant_droite=0;
         let refe_parent_gauche=0;
         let est_libelle_lien=0;
+        let est_critere_recherche_liste_ecran=0;
+        let ordre_tri_liste_ecran=0;
+        let sens_tri_liste_ecran_decroissant=0;
         let obj1=__gi1.__m_rev1.rev_tm( texte_meta_rev );
         if(obj1.__xst === __xsu){
             let mat2=obj1.__xva;
@@ -5737,11 +6066,13 @@ class c_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.nom_bref_du_champ;
                             }
                             nom_bref_du_champ=mat2[k + 1][1];
-                        }else if(mat2[k][1] === 'afficher_champ_dans_svg' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                            if(nouvelles_valeurs.hasOwnProperty( 'afficher_champ_dans_svg' )){
-                                mat2[k + 1][1]=nouvelles_valeurs.afficher_champ_dans_svg;
+                        }else if(mat2[k][1] === 'masquer_champ_dans_svg' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'masquer_champ_dans_svg' )){
+                                mat2[k + 1][1]=parseInt(nouvelles_valeurs.masquer_champ_dans_svg,10);
                             }
-                            afficher_champ_dans_svg=mat2[k + 1][1];
+                            masquer_champ_dans_svg=parseInt(mat2[k + 1][1],10);
+                            
+                            
                         }else if(mat2[k][1] === 'refe_enfant_droite' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'refe_enfant_droite' )){
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.refe_enfant_droite , 10 );
@@ -5757,6 +6088,22 @@ class c_svg_bdd1{
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.est_libelle_lien , 10 );
                             }
                             est_libelle_lien=parseInt( mat2[k + 1][1] , 10 );
+                        }else if(mat2[k][1] === 'est_critere_recherche_liste_ecran' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'est_critere_recherche_liste_ecran' )){
+                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.est_critere_recherche_liste_ecran , 10 );
+                            }
+                            est_critere_recherche_liste_ecran=parseInt( mat2[k + 1][1] , 10 );
+                        }else if(mat2[k][1] === 'ordre_tri_liste_ecran' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'ordre_tri_liste_ecran' )){
+                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.ordre_tri_liste_ecran , 10 );
+                            }
+                            ordre_tri_liste_ecran=parseInt( mat2[k + 1][1] , 10 );
+                        }else if(mat2[k][1] === 'sens_tri_liste_ecran_decroissant' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'sens_tri_liste_ecran_decroissant' )){
+                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.sens_tri_liste_ecran_decroissant , 10 );
+                            }
+                            sens_tri_liste_ecran_decroissant=parseInt( mat2[k + 1][1] , 10 );
+                            
                             
                         }else if(mat2[k][1] === 'typologie' && mat2[k][2] === 'f'){
                             if(mat2[k][8] === 0){
@@ -5787,8 +6134,9 @@ class c_svg_bdd1{
                                 valeur_par_defaut=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'nom_bref_du_champ' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 nom_bref_du_champ=mat2[k + 2][1];
-                            }else if(mat2[k + 1][1] === 'afficher_champ_dans_svg' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
-                                afficher_champ_dans_svg=mat2[k + 2][1];
+                            }else if(mat2[k + 1][1] === 'masquer_champ_dans_svg' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
+                                masquer_champ_dans_svg=mat2[k + 2][1];
+                                
                             }else if(mat2[k + 1][1] === 'typologie' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 typologie=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'genre' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
@@ -5827,6 +6175,34 @@ class c_svg_bdd1{
             est_libelle_lien=1;
         }
         
+        if(nouvelles_valeurs.hasOwnProperty( 'est_critere_recherche_liste_ecran' )
+               && (nouvelles_valeurs.est_critere_recherche_liste_ecran === '1'
+                   || nouvelles_valeurs.est_critere_recherche_liste_ecran === 1)
+        ){
+            est_critere_recherche_liste_ecran=1;
+        }
+        
+        if(nouvelles_valeurs.hasOwnProperty( 'ordre_tri_liste_ecran' )){
+            ordre_tri_liste_ecran=nouvelles_valeurs.ordre_tri_liste_ecran;
+        }
+        if(nouvelles_valeurs.hasOwnProperty( 'sens_tri_liste_ecran_decroissant' )
+               && (nouvelles_valeurs.sens_tri_liste_ecran_decroissant === '1'
+                   || nouvelles_valeurs.sens_tri_liste_ecran_decroissant === 1)
+        ){
+            sens_tri_liste_ecran_decroissant=1;
+        }
+        
+        
+        
+        
+        
+        if(nouvelles_valeurs.hasOwnProperty( 'masquer_champ_dans_svg' )
+               && (nouvelles_valeurs.masquer_champ_dans_svg === '1'
+                   || nouvelles_valeurs.masquer_champ_dans_svg === 1)
+        ){
+            masquer_champ_dans_svg=1;
+        }
+        
         
         if(espece_du_champ === '' && genre !== ''){
             for(let i in __gi1.__liste_des_genres){
@@ -5860,7 +6236,6 @@ class c_svg_bdd1{
         o1+='    nom_bref_du_champ(\'' + nom_bref_du_champ + '\'),';
         o1+='    typologie(' + typologie + '),';
         o1+='    genre(' + genre + '),';
-        o1+='    afficher_champ_dans_svg(' + afficher_champ_dans_svg + '),';
         o1+='    espece_du_champ(' + espece_du_champ + '),';
         if(refe_enfant_droite === 1){
             o1+='    refe_enfant_droite(' + refe_enfant_droite + '),';
@@ -5871,10 +6246,25 @@ class c_svg_bdd1{
         if(est_libelle_lien === 1){
             o1+='    est_libelle_lien(' + est_libelle_lien + '),';
         }
+        if(est_critere_recherche_liste_ecran === 1){
+            o1+='    est_critere_recherche_liste_ecran(' + est_critere_recherche_liste_ecran + '),';
+        }
+
+        if(ordre_tri_liste_ecran>0){
+            o1+='    ordre_tri_liste_ecran(' + ordre_tri_liste_ecran + '),';
+            if(sens_tri_liste_ecran_decroissant===1){
+                o1+='    sens_tri_liste_ecran_decroissant(' + sens_tri_liste_ecran_decroissant + '),';
+            }
+        }
         
         if(longueur_du_champ !== ''){
             o1+='    longueur_du_champ(' + longueur_du_champ + '),';
         }
+
+        if(masquer_champ_dans_svg===1){
+            o1+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + '),';
+        }
+        
         o1+=')';
         let obj2=__gi1.__m_rev1.rev_tm( o1 );
         if(obj2.__xst === __xsu){
@@ -5897,13 +6287,16 @@ class c_svg_bdd1{
                 "valeur_par_defaut" : valeur_par_defaut ,
                 "nom_bref_du_champ" : nom_bref_du_champ ,
                 "typologie" : typologie ,
-                "afficher_champ_dans_svg" : afficher_champ_dans_svg ,
+                "masquer_champ_dans_svg"  : masquer_champ_dans_svg ,
                 "refe_enfant_droite" : refe_enfant_droite ,
                 "refe_parent_gauche" : refe_parent_gauche ,
                 "espece_du_champ" : espece_du_champ ,
                 "longueur_du_champ" : longueur_du_champ ,
-                "genre" : genre,
-                "est_libelle_lien" : est_libelle_lien
+                "genre" : genre ,
+                "est_libelle_lien" : est_libelle_lien ,
+                "est_critere_recherche_liste_ecran" : est_critere_recherche_liste_ecran ,
+                "sens_tri_liste_ecran_decroissant" : sens_tri_liste_ecran_decroissant ,
+                "ordre_tri_liste_ecran" : ordre_tri_liste_ecran ,
             });
     }
     /*
@@ -6707,9 +7100,10 @@ class c_svg_bdd1{
                 }
             }
         }
-        if(donnees_rev_du_champ.indexOf( 'afficher_champ_dans_svg(0)' ) >= 0){
+        if(donnees_rev_du_champ.indexOf( 'masquer_champ_dans_svg(1)' ) >= 0){
             masqué='display:none;';
         }
+        
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
             "type" : 'g' ,
             "id" : indice_courant ,

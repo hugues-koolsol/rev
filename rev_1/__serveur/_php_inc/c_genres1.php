@@ -929,59 +929,61 @@ class c_genres1{
         $o1 .= '      <span>nom</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="nom" autocorrect="off" autocapitalize="off" spellcheck="false"  id="chp_nom_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.chp_nom_genre'])){
-
+        $o1 .= '      <input type="text"  size="64"  maxlength="64" id="chp_nom_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="';
+        if(isset($donnees_recues['dupliquer']['T0.chp_nom_genre'])){;
             $o1 .= enti1($donnees_recues['dupliquer']['T0.chp_nom_genre']);
-
+        }else{
+            $o1 .= '';
         }
-
-        $o1 .= '" maxlength="64" style="width:80%;" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
+        $o1 .= '" />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        /*
-          =====================================================================================================
-        */
+
+
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>préfixe</span>' . PHP_EOL;
+        $o1 .= '      <span>prefixe</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" id="chp_prefixe_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.chp_prefixe_genre'])){
-
+        $o1 .= '      <input type="text"  size="3"  maxlength="3" id="chp_prefixe_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="';
+        if(isset($donnees_recues['dupliquer']['T0.chp_prefixe_genre'])){;
             $o1 .= enti1($donnees_recues['dupliquer']['T0.chp_prefixe_genre']);
-
         }else{
-
-            $o1 .= 'chi';
+            $o1 .= 'cht';
         }
-
-        $o1 .= '" maxlength="3" size="3" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '" />' . PHP_EOL;
+        $o1 .= '      <br />';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),cht))">cht</div>';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chi))">chi</div>';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),che))">che</div>';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chx))">chx</div>';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chp))">chp</div>';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chd))">chd</div>';
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
+
+        
         /*
           =====================================================================================================
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>espèce</span>' . PHP_EOL;
+        $o1 .= '      <span>espece</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="TEXT" id="chp_espece_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.chp_espece_genre'])){
-
+        $o1 .= '      <input type="text"  size="64"  maxlength="64" id="chp_espece_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="';
+        if(isset($donnees_recues['dupliquer']['T0.chp_espece_genre'])){;
             $o1 .= enti1($donnees_recues['dupliquer']['T0.chp_espece_genre']);
-
         }else{
-
             $o1 .= 'TEXT';
         }
-
-        $o1 .= '" maxlength="64" style="width:80%;" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '" />' . PHP_EOL;
+        $o1 .= '      <br />';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_espece_genre,valeur),TEXT))">TEXT</div>';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_espece_genre,valeur),VARCHAR))">VARCHAR</div>';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_espece_genre,valeur),INTEGER))">INTEGER</div>';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_espece_genre,valeur),FLOAT))">FLOAT</div>';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_espece_genre,valeur),DECIMAL))">DECIMAL</div>';
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -1006,28 +1008,25 @@ class c_genres1{
         $o1 .= '" maxlength="9" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
+
         /*
           =====================================================================================================
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>primaire</span>' . PHP_EOL;
+        $o1 .= '      <span>est primaire</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_primaire_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.che_est_primaire_genre'])){
-
+        $o1 .= '        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_primaire_genre'])){;
             $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_primaire_genre']);
-
         }else{
-
             $o1 .= '0';
         }
-
-        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '" >' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
+
         /*
           =====================================================================================================
         */
@@ -1036,18 +1035,13 @@ class c_genres1{
         $o1 .= '      <span>est incrément</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_incrément_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.che_est_incrément_genre'])){
-
+        $o1 .= '        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_incrément_genre'])){;
             $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_incrément_genre']);
-
         }else{
-
             $o1 .= '0';
         }
-
-        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '" >' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -1055,21 +1049,16 @@ class c_genres1{
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>est obligatoire ( NOT NULL )</span>' . PHP_EOL;
+        $o1 .= '      <span>est obligatoire</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_obligatoire_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.che_est_obligatoire_genre'])){
-
+        $o1 .= '        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_obligatoire_genre'])){;
             $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_obligatoire_genre']);
-
         }else{
-
             $o1 .= '0';
         }
-
-        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '" >' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -1077,21 +1066,16 @@ class c_genres1{
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>a une valeur initiale</span>' . PHP_EOL;
+        $o1 .= '      <span>a init</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_a_init_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.che_a_init_genre'])){
-
+        $o1 .= '        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_a_init_genre'])){;
             $o1 .= enti1($donnees_recues['dupliquer']['T0.che_a_init_genre']);
-
         }else{
-
             $o1 .= '0';
         }
-
-        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '" >' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*
@@ -1099,21 +1083,16 @@ class c_genres1{
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>init est caractère</span>' . PHP_EOL;
+        $o1 .= '      <span>init est mot</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_init_est_mot_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.che_init_est_mot_genre'])){
-
+        $o1 .= '        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_init_est_mot_genre'])){;
             $o1 .= enti1($donnees_recues['dupliquer']['T0.che_init_est_mot_genre']);
-
         }else{
-
             $o1 .= '0';
         }
-
-        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '" >' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         /*

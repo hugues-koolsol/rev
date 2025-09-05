@@ -3,6 +3,16 @@ function sql_331($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_genres` SET '.PHP_EOL;
     $tableau_champs=array();
 
+    if($par['n_che_ordre_genre']==='' || is_null($par['n_che_ordre_genre']) ){
+        $tableau_champs[]='`che_ordre_genre` = NULL';
+    }else{
+        $tableau_champs[]='`che_ordre_genre` = '.sq0($par['n_che_ordre_genre']).'';
+    }
+    if($par['n_chp_prefixe_genre']==='' || is_null($par['n_chp_prefixe_genre']) ){
+        $tableau_champs[]='`chp_prefixe_genre` = NULL';
+    }else{
+        $tableau_champs[]='`chp_prefixe_genre` = \''.sq0($par['n_chp_prefixe_genre']).'\'';
+    }
     if($par['n_chp_nom_genre']==='' || is_null($par['n_chp_nom_genre']) ){
         $tableau_champs[]='`chp_nom_genre` = NULL';
     }else{
@@ -48,11 +58,6 @@ function sql_331($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`cht_valeur_init_genre` = \''.sq0($par['n_cht_valeur_init_genre']).'\'';
     }
-    if($par['n_chp_prefixe_genre']==='' || is_null($par['n_chp_prefixe_genre']) ){
-        $tableau_champs[]='`chp_prefixe_genre` = NULL';
-    }else{
-        $tableau_champs[]='`chp_prefixe_genre` = \''.sq0($par['n_chp_prefixe_genre']).'\'';
-    }
     if($par['n_che_est_parmis_genre']==='' || is_null($par['n_che_est_parmis_genre']) ){
         $tableau_champs[]='`che_est_parmis_genre` = NULL';
     }else{
@@ -62,11 +67,6 @@ function sql_331($par,&$donnees_retournees,$that){
         $tableau_champs[]='`cht_parmis_genre` = NULL';
     }else{
         $tableau_champs[]='`cht_parmis_genre` = \''.sq0($par['n_cht_parmis_genre']).'\'';
-    }
-    if($par['n_che_est_tsc_genre']==='' || is_null($par['n_che_est_tsc_genre']) ){
-        $tableau_champs[]='`che_est_tsc_genre` = NULL';
-    }else{
-        $tableau_champs[]='`che_est_tsc_genre` = '.sq0($par['n_che_est_tsc_genre']).'';
     }
     if($par['n_cht_fonctions_genre']==='' || is_null($par['n_cht_fonctions_genre']) ){
         $tableau_champs[]='`cht_fonctions_genre` = NULL';
@@ -82,6 +82,11 @@ function sql_331($par,&$donnees_retournees,$that){
         $tableau_champs[]='`che_est_tsm_genre` = NULL';
     }else{
         $tableau_champs[]='`che_est_tsm_genre` = '.sq0($par['n_che_est_tsm_genre']).'';
+    }
+    if($par['n_che_est_tsc_genre']==='' || is_null($par['n_che_est_tsc_genre']) ){
+        $tableau_champs[]='`che_est_tsc_genre` = NULL';
+    }else{
+        $tableau_champs[]='`che_est_tsc_genre` = '.sq0($par['n_che_est_tsc_genre']).'';
     }
 
     if(count($tableau_champs)===0){
