@@ -1260,11 +1260,11 @@ CREATE TABLE tbl_taches(
             nom_du_champ('chp_priorite_tache'),
             nom_bref_du_champ('priorite'),
             typologie(),
-            genre(10),
+            genre(99),
             espece_du_champ(INTEGER)
             )
             */
-             chp_priorite_tache INTEGER NOT NULL DEFAULT  0
+             chp_priorite_tache INTEGER(2) NOT NULL DEFAULT  0
     ,
     
             /*
@@ -1765,8 +1765,7 @@ CREATE TABLE tbl_genres(
             nom_bref_du_champ('est nur'),
             typologie(che),
             genre(5),
-            espece_du_champ(INTEGER),
-            masquer_champ_dans_svg(1)
+            espece_du_champ(INTEGER)
             )
             */
              che_est_nur_genre INTEGER NOT NULL DEFAULT  0
@@ -1779,8 +1778,7 @@ CREATE TABLE tbl_genres(
             nom_bref_du_champ('est tsm'),
             typologie(che),
             genre(5),
-            espece_du_champ(INTEGER),
-            masquer_champ_dans_svg(1)
+            espece_du_champ(INTEGER)
             )
             */
              che_est_tsm_genre INTEGER NOT NULL DEFAULT  0
@@ -1793,10 +1791,48 @@ CREATE TABLE tbl_genres(
             nom_bref_du_champ('est tsc'),
             typologie(che),
             genre(5),
-            espece_du_champ(INTEGER),
-            masquer_champ_dans_svg(1)
+            espece_du_champ(INTEGER)
             )
             */
              che_est_tsc_genre INTEGER NOT NULL DEFAULT  0
-    );
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtc_genre'),
+            nom_bref_du_champ('dtc'),
+            typologie(chd),
+            genre(14),
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            )
+            */
+             chd__dtc_genre VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtm_genre'),
+            nom_bref_du_champ(' dtm'),
+            typologie(chd),
+            genre(16),
+            espece_du_champ(VARCHAR),longueur_du_champ(23)
+            )
+            */
+             chd__dtm_genre VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che__nur_genre'),
+            nom_bref_du_champ('nur'),
+            typologie(che),
+            genre(15),
+            espece_du_champ(INTEGER)
+            )
+            */
+             che__nur_genre INTEGER NOT NULL DEFAULT  0
+    , che_est_utilisateur_genre INTEGER NOT NULL DEFAULT  0);
 

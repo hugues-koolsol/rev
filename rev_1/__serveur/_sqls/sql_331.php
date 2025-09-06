@@ -3,6 +3,11 @@ function sql_331($par,&$donnees_retournees,$that){
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_genres` SET '.PHP_EOL;
     $tableau_champs=array();
 
+    if($par['n_chp_nom_genre']==='' || is_null($par['n_chp_nom_genre']) ){
+        $tableau_champs[]='`chp_nom_genre` = NULL';
+    }else{
+        $tableau_champs[]='`chp_nom_genre` = \''.sq0($par['n_chp_nom_genre']).'\'';
+    }
     if($par['n_che_ordre_genre']==='' || is_null($par['n_che_ordre_genre']) ){
         $tableau_champs[]='`che_ordre_genre` = NULL';
     }else{
@@ -12,11 +17,6 @@ function sql_331($par,&$donnees_retournees,$that){
         $tableau_champs[]='`chp_prefixe_genre` = NULL';
     }else{
         $tableau_champs[]='`chp_prefixe_genre` = \''.sq0($par['n_chp_prefixe_genre']).'\'';
-    }
-    if($par['n_chp_nom_genre']==='' || is_null($par['n_chp_nom_genre']) ){
-        $tableau_champs[]='`chp_nom_genre` = NULL';
-    }else{
-        $tableau_champs[]='`chp_nom_genre` = \''.sq0($par['n_chp_nom_genre']).'\'';
     }
     if($par['n_chp_espece_genre']==='' || is_null($par['n_chp_espece_genre']) ){
         $tableau_champs[]='`chp_espece_genre` = NULL';
@@ -87,6 +87,13 @@ function sql_331($par,&$donnees_retournees,$that){
         $tableau_champs[]='`che_est_tsc_genre` = NULL';
     }else{
         $tableau_champs[]='`che_est_tsc_genre` = '.sq0($par['n_che_est_tsc_genre']).'';
+    }
+    $tableau_champs[]='`chd__dtm_genre` = \''.$GLOBALS[__date_ms].'\' ';
+    $tableau_champs[]='`che__nur_genre` = che__nur_genre + 1 ';
+    if($par['n_che_est_utilisateur_genre']==='' || is_null($par['n_che_est_utilisateur_genre']) ){
+        $tableau_champs[]='`che_est_utilisateur_genre` = NULL';
+    }else{
+        $tableau_champs[]='`che_est_utilisateur_genre` = '.sq0($par['n_che_est_utilisateur_genre']).'';
     }
 
     if(count($tableau_champs)===0){

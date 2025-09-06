@@ -1,4 +1,8 @@
 <?php
+/*
+$a= '-9223372036854775807' < '-9223372036854775808';
+echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $a , true ) . '</pre>' ; exit(0);
+*/
 /* ==== ATTENTION, CE FICHIER EST GENERE ==== */
 
 if(!ob_start("ob_gzhandler")){

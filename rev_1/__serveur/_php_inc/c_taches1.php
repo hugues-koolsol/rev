@@ -141,6 +141,23 @@ class c_taches1{
             }
 
         }
+        
+        if(is_null($donnees_recues[__xva]['chp_texte_tache']) || $donnees_recues[__xva]['chp_texte_tache']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "texte" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['chp_priorite_tache']) || $donnees_recues[__xva]['chp_priorite_tache']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "priorite" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+
+        $__test=$GLOBALS['obj_fonctions1']->entier_compris_entre(0,99,$donnees_recues[__xva]['chp_priorite_tache'],$donnees_retournees);
+        if($__test[__xst]!==__xsu){
+            $donnees_retournees[__x_signaux][__xer][]='erreur sur le champ "priorite" [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xer;
+            return;
+        }
+        
         $donnees_sql=array( array(
                     /**/
                     'chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
@@ -324,6 +341,23 @@ class c_taches1{
             }
 
         }
+        
+        if(is_null($donnees_recues[__xva]['chp_texte_tache']) || $donnees_recues[__xva]['chp_texte_tache']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "texte" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['chp_priorite_tache']) || $donnees_recues[__xva]['chp_priorite_tache']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "priorite" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+
+        $__test=$GLOBALS['obj_fonctions1']->entier_compris_entre(0,99,$donnees_recues[__xva]['chp_priorite_tache'],$donnees_retournees);
+        if($__test[__xst]!==__xsu){
+            $donnees_retournees[__x_signaux][__xer][]='erreur sur le champ "priorite" [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xer;
+            return;
+        }
+        
         $tt=/*sql_inclure_deb*/
             /* sql_128()
             SELECT 

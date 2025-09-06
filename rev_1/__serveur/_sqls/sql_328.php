@@ -4,10 +4,11 @@ function sql_328($par,&$donnees_retournees,$that){
         $donnees_retournees[__x_signaux][__xif][]='info <b>sql_328</b>';
     }
     $champs0='
-      `T0`.`chi_id_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , 
+      `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
       `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
       `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
-      `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre`
+      `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
+      `T0`.`che__nur_genre` , `T0`.`che_est_utilisateur_genre`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -17,11 +18,11 @@ function sql_328($par,&$donnees_retournees,$that){
     if(($par['T0_chi_id_genre'] !== '')){
         $where0.=' AND `T0`.`chi_id_genre` = '.sq1($par['T0_chi_id_genre']).''.PHP_EOL;
     }
-    if(($par['T0_chp_prefixe_genre'] !== '')){
-        $where0.=' AND `T0`.`chp_prefixe_genre` LIKE '.sq2($par['T0_chp_prefixe_genre']).''.PHP_EOL;
-    }
     if(($par['T0_chp_nom_genre'] !== '')){
         $where0.=' AND `T0`.`chp_nom_genre` LIKE '.sq2($par['T0_chp_nom_genre']).''.PHP_EOL;
+    }
+    if(($par['T0_chp_prefixe_genre'] !== '')){
+        $where0.=' AND `T0`.`chp_prefixe_genre` LIKE '.sq2($par['T0_chp_prefixe_genre']).''.PHP_EOL;
     }
     if(($par['T0_chp_espece_genre'] !== '')){
         $where0.=' AND `T0`.`chp_espece_genre` LIKE '.sq2($par['T0_chp_espece_genre']).''.PHP_EOL;
@@ -47,9 +48,9 @@ function sql_328($par,&$donnees_retournees,$that){
         while(($tab0=$res0->fetchArray(SQLITE3_NUM))){
             $donnees0[]=array(
                 'T0.chi_id_genre' => $tab0[0],
-                'T0.che_ordre_genre' => $tab0[1],
-                'T0.chp_prefixe_genre' => $tab0[2],
-                'T0.chp_nom_genre' => $tab0[3],
+                'T0.chp_nom_genre' => $tab0[1],
+                'T0.che_ordre_genre' => $tab0[2],
+                'T0.chp_prefixe_genre' => $tab0[3],
                 'T0.chp_espece_genre' => $tab0[4],
                 'T0.che_longueur_genre' => $tab0[5],
                 'T0.che_est_primaire_genre' => $tab0[6],
@@ -64,6 +65,10 @@ function sql_328($par,&$donnees_retournees,$that){
                 'T0.che_est_nur_genre' => $tab0[15],
                 'T0.che_est_tsm_genre' => $tab0[16],
                 'T0.che_est_tsc_genre' => $tab0[17],
+                'T0.chd__dtc_genre' => $tab0[18],
+                'T0.chd__dtm_genre' => $tab0[19],
+                'T0.che__nur_genre' => $tab0[20],
+                'T0.che_est_utilisateur_genre' => $tab0[21],
             );
         }
         $stmt0->close();

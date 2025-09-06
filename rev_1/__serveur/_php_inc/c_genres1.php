@@ -157,7 +157,7 @@ class c_genres1{
         $__liste_des_genres=array();
         $o1 .= '<ul id="tri_des_genres">';
         foreach($tt333[__xva] as $k1 => $v1){
-            $o1 .= '<li id="' . enti1($v1['T0.chi_id_genre']) . '">' . enti1($v1['T0.chp_nom_genre']) . '</li>';
+            $o1 .= '<li id="' . enti1($v1['T0.chi_id_genre']) . '">' . enti1($v1['T0.chp_nom_genre']) . '(' . enti1($v1['T0.chi_id_genre']).')</li>';
         }
         $o1 .= '</ul>';
         $maj='';
@@ -308,6 +308,16 @@ class c_genres1{
 
             }
         }
+        
+        if(!($chi_id_genre_nouvelle<100 && __X_CLE_APPLICATION === 'rev_1' &&  $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1 && $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'] === 1) ){
+         
+            $donnees_retournees[__x_signaux][__xer][]=' seul l\'utilisateur principale peut renuméroter un genre à moins de 100 [' . __LINE__ . ']';
+            return;
+         
+        }
+        
+        
+        
         $tt334=/*sql_inclure_deb*/
             /* sql_334()
             UPDATE b1.tbl_genres SET 
@@ -328,6 +338,27 @@ class c_genres1{
             return;
 
         }else{
+         
+            if($chi_id_genre_nouvelle<100 && __X_CLE_APPLICATION === 'rev_1' && $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1){
+                /*#
+                  afr il faut aller créer ce genre dans les autres projets 
+                  $liste_des_autres_projets=array();
+                  
+                  // on recherche tous les projets>2 
+                  $tt316=$this->sql0->sql_iii(316,array(),$donnees_retournees);
+                  
+                  if($tt316[__xst] === __xsu){
+
+                      foreach($tt316[__xva] as $k1 => $v1){
+                          $liste_des_autres_projets[]=$v1['T0.chi_id_projet'];
+                      }
+
+                  }
+                  foreach($liste_des_autres_projets as $k1 => $v1){
+                      // afr on traite les bases des autres projets 
+                  }
+                */
+            }
 
             $this->mettre_a_jour_le_js_des_genres($donnees_retournees,$mat,$donnees_recues);
             $donnees_retournees['__x_action']='maj_interface2(fermer_sous_fenetre1(c_genres1.page_liste_des_genres1()))';
@@ -436,6 +467,8 @@ class c_genres1{
                 'che_est_tsm_genre' => $v1['T0.che_est_tsm_genre'],
                 'cht_fonctions_genre' => $v1['T0.cht_fonctions_genre'],
                 'che_est_nur_genre' => $v1['T0.che_est_nur_genre'],
+                'che_est_utilisateur_genre' => $v1['T0.che_est_utilisateur_genre'],
+                
                 
             );
         }
@@ -475,72 +508,115 @@ class c_genres1{
             }
 
         }
-        $donnees_sql=array( array(
-                    /**/
-                    'chp_nom_genre' => $donnees_recues[__xva]['chp_nom_genre'] === '' ? null : $donnees_recues[__xva]['chp_nom_genre'],
-                    'chp_espece_genre' => $donnees_recues[__xva]['chp_espece_genre'] === '' ? null : $donnees_recues[__xva]['chp_espece_genre'],
-                    'che_longueur_genre' => $donnees_recues[__xva]['che_longueur_genre'] === '' ? null : $donnees_recues[__xva]['che_longueur_genre'],
-                    'che_est_primaire_genre' => $donnees_recues[__xva]['che_est_primaire_genre'] === '' ? null : $donnees_recues[__xva]['che_est_primaire_genre'],
-                    'che_est_incrément_genre' => $donnees_recues[__xva]['che_est_incrément_genre'] === '' ? null : $donnees_recues[__xva]['che_est_incrément_genre'],
-                    'che_est_obligatoire_genre' => $donnees_recues[__xva]['che_est_obligatoire_genre'] === '' ? null : $donnees_recues[__xva]['che_est_obligatoire_genre'],
-                    'che_a_init_genre' => $donnees_recues[__xva]['che_a_init_genre'] === '' ? null : $donnees_recues[__xva]['che_a_init_genre'],
-                    'che_init_est_mot_genre' => $donnees_recues[__xva]['che_init_est_mot_genre'] === '' ? null : $donnees_recues[__xva]['che_init_est_mot_genre'],
-                    'cht_valeur_init_genre' => $donnees_recues[__xva]['cht_valeur_init_genre'] === '' ? null : $donnees_recues[__xva]['cht_valeur_init_genre'],
-                    'chp_prefixe_genre' => $donnees_recues[__xva]['chp_prefixe_genre'] === '' ? null : $donnees_recues[__xva]['chp_prefixe_genre'],
-                    'che_est_parmis_genre' => $donnees_recues[__xva]['che_est_parmis_genre'] === '' ? null : $donnees_recues[__xva]['che_est_parmis_genre'],
-                    'cht_parmis_genre' => $donnees_recues[__xva]['cht_parmis_genre'] === '' ? null : $donnees_recues[__xva]['cht_parmis_genre'],
-                    'che_est_tsc_genre' => $donnees_recues[__xva]['che_est_tsc_genre'] === '' ? null : $donnees_recues[__xva]['che_est_tsc_genre'],
-                    'che_est_tsm_genre' => $donnees_recues[__xva]['che_est_tsm_genre'] === '' ? null : $donnees_recues[__xva]['che_est_tsm_genre'],
-                    'cht_fonctions_genre' => $donnees_recues[__xva]['cht_fonctions_genre'] === '' ? null : $donnees_recues[__xva]['cht_fonctions_genre'],
-                    'che_est_nur_genre' => $donnees_recues[__xva]['che_est_nur_genre'] === '' ? null : $donnees_recues[__xva]['che_est_nur_genre'],
-                    
-                    
+        
+        if(is_null($donnees_recues[__xva]['chp_nom_genre']) || $donnees_recues[__xva]['chp_nom_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "nom" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        
+        
+        if(is_null($donnees_recues[__xva]['che_ordre_genre']) || $donnees_recues[__xva]['che_ordre_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "ordre" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['chp_prefixe_genre']) || $donnees_recues[__xva]['chp_prefixe_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "préfixe" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        
+        $__test=$GLOBALS['obj_fonctions1']->doit_contenir_n_caracteres(3,$donnees_recues[__xva]['chp_prefixe_genre'],$donnees_retournees);
+        if($__test[__xst]!==__xsu){
+            $donnees_retournees[__x_signaux][__xer][]='erreur sur le champ "préfixe" [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xer;
+            return;
+        }
+        
+        if(is_null($donnees_recues[__xva]['chp_espece_genre']) || $donnees_recues[__xva]['chp_espece_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "espèce" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_primaire_genre']) || $donnees_recues[__xva]['che_est_primaire_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est primaire" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        
+        if(is_null($donnees_recues[__xva]['che_est_incrément_genre']) || $donnees_recues[__xva]['che_est_incrément_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est incrément" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_obligatoire_genre']) || $donnees_recues[__xva]['che_est_obligatoire_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est obligatoire" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_a_init_genre']) || $donnees_recues[__xva]['che_a_init_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "a init" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_init_est_mot_genre']) || $donnees_recues[__xva]['che_init_est_mot_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "init est mot" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_parmis_genre']) || $donnees_recues[__xva]['che_est_parmis_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est parmis" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+
+        if(is_null($donnees_recues[__xva]['che_est_utilisateur_genre']) || $donnees_recues[__xva]['che_est_utilisateur_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est utilisateur" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+
+        $__test=$GLOBALS['obj_fonctions1']->test_fonctions_de_c_fonctions1($donnees_recues[__xva]['cht_fonctions_genre'],$donnees_retournees);
+        if($__test[__xst]!==__xsu){
+            $donnees_retournees[__xst]=__xer;
+            return;
+        }
+
+        if(is_null($donnees_recues[__xva]['che_est_nur_genre']) || $donnees_recues[__xva]['che_est_nur_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est nur" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_tsm_genre']) || $donnees_recues[__xva]['che_est_tsm_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est tsm" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_tsc_genre']) || $donnees_recues[__xva]['che_est_tsc_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est tsc" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+
+
+
+        $donnees_sql=array( array(/**/
+                    'chp_nom_genre' => $donnees_recues[__xva]['chp_nom_genre'],
+                    'che_ordre_genre' => $donnees_recues[__xva]['che_ordre_genre'],
+                    'chp_prefixe_genre' => $donnees_recues[__xva]['chp_prefixe_genre'],
+                    'chp_espece_genre' => $donnees_recues[__xva]['chp_espece_genre'],
+                    'che_longueur_genre' => $donnees_recues[__xva]['che_longueur_genre'],
+                    'che_est_primaire_genre' => $donnees_recues[__xva]['che_est_primaire_genre'],
+                    'che_est_incrément_genre' => $donnees_recues[__xva]['che_est_incrément_genre'],
+                    'che_est_obligatoire_genre' => $donnees_recues[__xva]['che_est_obligatoire_genre'],
+                    'che_a_init_genre' => $donnees_recues[__xva]['che_a_init_genre'],
+                    'che_init_est_mot_genre' => $donnees_recues[__xva]['che_init_est_mot_genre'],
+                    'cht_valeur_init_genre' => $donnees_recues[__xva]['cht_valeur_init_genre'],
+                    'che_est_parmis_genre' => $donnees_recues[__xva]['che_est_parmis_genre'],
+                    'cht_parmis_genre' => $donnees_recues[__xva]['cht_parmis_genre'],
+                    'cht_fonctions_genre' => $donnees_recues[__xva]['cht_fonctions_genre'],
+                    'che_est_nur_genre' => $donnees_recues[__xva]['che_est_nur_genre'],
+                    'che_est_tsm_genre' => $donnees_recues[__xva]['che_est_tsm_genre'],
+                    'che_est_tsc_genre' => $donnees_recues[__xva]['che_est_tsc_genre'],
+                    'che_est_utilisateur_genre' => $donnees_recues[__xva]['che_est_utilisateur_genre'],
                     
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
-        $tt=/*sql_inclure_deb*/
-            /* sql_329()
-            INSERT INTO b1.`tbl_genres`(
-                `chp_nom_genre` , 
-                `chp_espece_genre` , 
-                `che_longueur_genre` , 
-                `che_est_primaire_genre` , 
-                `che_est_incrément_genre` , 
-                `che_est_obligatoire_genre` , 
-                `che_a_init_genre` , 
-                `che_init_est_mot_genre` , 
-                `cht_valeur_init_genre` , 
-                `chp_prefixe_genre` , 
-                `che_est_parmis_genre` , 
-                `cht_parmis_genre`
-            ) VALUES (
-                :chp_nom_genre , 
-                :chp_espece_genre , 
-                :che_longueur_genre , 
-                :che_est_primaire_genre , 
-                :che_est_incrément_genre , 
-                :che_est_obligatoire_genre , 
-                :che_a_init_genre , 
-                :che_init_est_mot_genre , 
-                :cht_valeur_init_genre , 
-                :chp_prefixe_genre , 
-                :che_est_parmis_genre , 
-                :cht_parmis_genre
-            );
-            */
-            /*sql_inclure_fin*/
-            $this->sql0->sql_iii(
-             /*sql_329()*/ 329,
-            $donnees_sql,
-            $donnees_retournees
-        );
+        $tt329=$this->sql0->sql_iii(329,$donnees_sql,$donnees_retournees);
         
-        if($tt[__xst] !== __xsu){
+        if($tt329[__xst] !== __xsu){
 
             $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
             return;
 
-        }else if($tt['changements'] === 1){
+        }else if($tt329['changements'] === 1){
 
             $this->mettre_a_jour_le_js_des_genres($donnees_retournees,$mat,$donnees_recues);
             $donnees_retournees[__xst]=__xsu;
@@ -551,14 +627,14 @@ class c_genres1{
 
             }else{
 
-                $action='chi_id_genre(' . $tt['nouvel_id'] . ')';
+                $action='chi_id_genre(' . $tt329['nouvel_id'] . ')';
                 $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($action);
                 $this->page_genres_modifier1(
                     $donnees_retournees,
                      /*matrice*/ $obj_matrice[__xva],
                     $donnees_recues
                 );
-                $donnees_retournees[__x_action]='c_genres1.formulaire1(action1(page_genres_modifier1),chi_id_genre(' . $tt['nouvel_id'] . '))';
+                $donnees_retournees[__x_action]='c_genres1.formulaire1(action1(page_genres_modifier1),chi_id_genre(' . $tt329['nouvel_id'] . '))';
             }
 
 
@@ -777,18 +853,82 @@ class c_genres1{
 
         }
         
-        
-        
-        
-        
-        $test=$GLOBALS['obj_fonctions1']->test_fonctions_de_c_fonctions1($donnees_recues[__xva]['cht_fonctions_genre'],$donnees_retournees);
-        if($test[__xst]!==__xsu){
+        if(is_null($donnees_recues[__xva]['che_ordre_genre']) || $donnees_recues[__xva]['che_ordre_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "ordre" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['chp_prefixe_genre']) || $donnees_recues[__xva]['chp_prefixe_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "préfixe" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
 
-                $donnees_retournees[__x_signaux][__xer][]='une des fonctions renseignées ne fait pas partie des fonctions disponibles [' . __LINE__ . ']';
-                $donnees_retournees[__xst]=__xer;
-                return;
+        $__test=$GLOBALS['obj_fonctions1']->doit_contenir_n_caracteres(3,$donnees_recues[__xva]['chp_prefixe_genre'],$donnees_retournees);
+        if($__test[__xst]!==__xsu){
+            $donnees_retournees[__x_signaux][__xer][]='erreur sur le champ "préfixe" [' . __LINE__ . ']';
+            $donnees_retournees[__xst]=__xer;
+            return;
+        }
+
+        if(is_null($donnees_recues[__xva]['chp_nom_genre']) || $donnees_recues[__xva]['chp_nom_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "nom" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['chp_espece_genre']) || $donnees_recues[__xva]['chp_espece_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "espèce" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_primaire_genre']) || $donnees_recues[__xva]['che_est_primaire_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est primaire" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_incrément_genre']) || $donnees_recues[__xva]['che_est_incrément_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est incrément" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_obligatoire_genre']) || $donnees_recues[__xva]['che_est_obligatoire_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est obligatoire" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_a_init_genre']) || $donnees_recues[__xva]['che_a_init_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "a init" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_init_est_mot_genre']) || $donnees_recues[__xva]['che_init_est_mot_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "init est mot" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_parmis_genre']) || $donnees_recues[__xva]['che_est_parmis_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est parmis" doit être renseigné [' . __LINE__ . ']';
+            return;
         }
         
+        if(is_null($donnees_recues[__xva]['che_est_utilisateur_genre']) || $donnees_recues[__xva]['che_est_utilisateur_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est parmis" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        
+        
+
+        $__test=$GLOBALS['obj_fonctions1']->test_fonctions_de_c_fonctions1($donnees_recues[__xva]['cht_fonctions_genre'],$donnees_retournees);
+        if($__test[__xst]!==__xsu){
+            $donnees_retournees[__xst]=__xer;
+            return;
+        }
+
+        if(is_null($donnees_recues[__xva]['che_est_nur_genre']) || $donnees_recues[__xva]['che_est_nur_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est nur" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_tsm_genre']) || $donnees_recues[__xva]['che_est_tsm_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est tsm" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        if(is_null($donnees_recues[__xva]['che_est_tsc_genre']) || $donnees_recues[__xva]['che_est_tsc_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est tsc" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        
+
         
 
         $tt=/*sql_inclure_deb*/
@@ -815,6 +955,7 @@ class c_genres1{
                 /**/
                 'c_chi_id_genre' => $donnees_recues[__xva]['chi_id_genre'],
                 'n_chp_nom_genre' => $donnees_recues[__xva]['chp_nom_genre'],
+                'n_che_ordre_genre' => $donnees_recues[__xva]['che_ordre_genre'],
                 'n_chp_espece_genre' => $donnees_recues[__xva]['chp_espece_genre'],
                 'n_che_longueur_genre' => $donnees_recues[__xva]['che_longueur_genre'],
                 'n_che_est_primaire_genre' => $donnees_recues[__xva]['che_est_primaire_genre'],
@@ -830,6 +971,7 @@ class c_genres1{
                 'n_che_est_tsm_genre' => $donnees_recues[__xva]['che_est_tsm_genre'],
                 'n_cht_fonctions_genre' => $donnees_recues[__xva]['cht_fonctions_genre'],
                 'n_che_est_nur_genre' => $donnees_recues[__xva]['che_est_nur_genre'],
+                'n_che_est_utilisateur_genre' => $donnees_recues[__xva]['che_est_utilisateur_genre'],
                 
                 
                 
@@ -938,7 +1080,27 @@ class c_genres1{
         $o1 .= '" />' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>ordre</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <input type="number" size="32" maxlength="32" id="che_ordre_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_ordre_genre'])){;
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_ordre_genre']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '"/>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
 
+        /*
+          =====================================================================================================
+        */
 
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
@@ -959,6 +1121,7 @@ class c_genres1{
         $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chx))">chx</div>';
         $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chp))">chp</div>';
         $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chd))">chd</div>';
+        $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chu))">chu</div>';
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
 
@@ -1121,23 +1284,19 @@ class c_genres1{
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>est une valeur dans cette liste</span>' . PHP_EOL;
+        $o1 .= '      <span>est parmis</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_parmis_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.che_est_parmis_genre'])){
-
+        $o1 .= '        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_parmis_genre'])){;
             $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_parmis_genre']);
-
         }else{
-
             $o1 .= '0';
         }
-
-        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '" >' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
+        
         /*
           =====================================================================================================
         */
@@ -1159,49 +1318,22 @@ class c_genres1{
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
+
         /*
           =====================================================================================================
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>est un ts création</span>' . PHP_EOL;
+        $o1 .= '      <span>est utilisateur</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_tsc_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.che_est_tsc_genre'])){
-
-            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_tsc_genre']);
-
+        $o1 .= '        <input type="range" id="che_est_utilisateur_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_utilisateur_genre'])){;
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_utilisateur_genre']);
         }else{
-
             $o1 .= '0';
         }
-
-        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
-        $o1 .= '    </div>' . PHP_EOL;
-        $o1 .= '  </div>' . PHP_EOL;
-        
-        /*
-          =====================================================================================================
-        */
-        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
-        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>est un ts modification</span>' . PHP_EOL;
-        $o1 .= '    </div>' . PHP_EOL;
-        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_tsm_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.che_est_tsm_genre'])){
-
-            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_tsm_genre']);
-
-        }else{
-
-            $o1 .= '0';
-        }
-
-        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '" >' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         
@@ -1211,26 +1343,56 @@ class c_genres1{
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>est un numéro de révision</span>' . PHP_EOL;
+        $o1 .= '      <span>est nur</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input type="text" placeholder="" id="che_est_nur_genre" value="';
-        
-        if(isset($donnees_recues['dupliquer']['T0.che_est_nur_genre'])){
-
+        $o1 .= '        <input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_nur_genre'])){;
             $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_nur_genre']);
-
         }else{
-
             $o1 .= '0';
         }
-
-        $o1 .= '" maxlength="1" autocorrect="off" autocapitalize="off" spellcheck="false"  />' . PHP_EOL;
+        $o1 .= '" >' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        
-        
-        
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>est tsm</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '        <input type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_tsm_genre'])){;
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_tsm_genre']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '" >' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>est tsc</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '        <input type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_tsc_genre'])){;
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_tsc_genre']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '" >' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '      <input type="hidden" id="che_est_nur_genre" value="0" />' . PHP_EOL;
         /*
           =====================================================================================================
         */
@@ -1468,6 +1630,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
+                
                 /*
                   =====================================================================================
                 */
@@ -1484,6 +1647,23 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
+
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>est utilisateur</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="che_est_utilisateur_genre" value="' . enti1($tt[__xva][0]['T0.che_est_utilisateur_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="1" maxlength="1" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                
+                
                 /*
                   =====================================================================================
                 */
@@ -1586,7 +1766,7 @@ class c_genres1{
         
         if(is_numeric($chi_id_genres) && $chi_id_genres > 0){
 
-            $tt=/*sql_inclure_deb*/
+            $tt330=/*sql_inclure_deb*/
                 /* sql_330()
                 SELECT 
                 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
@@ -1605,12 +1785,12 @@ class c_genres1{
                 $donnees_retournees
             );
             
-            if($tt[__xst] === __xsu){
+            if($tt330[__xst] === __xsu){
 
-                $o1 .= '<h1>modifier ' . self::LE_LA_ELEMENT_GERE . '(' . $tt[__xva][0]['T0.chi_id_genre'] . ') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_genres1.formulaire1(action1(page_liste_des_genres1))" title="revenir à la liste" >⬱</div></h1>' . PHP_EOL;
+                $o1 .= '<h1>modifier ' . self::LE_LA_ELEMENT_GERE . '(' . $tt330[__xva][0]['T0.chi_id_genre'] . ') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_genres1.formulaire1(action1(page_liste_des_genres1))" title="revenir à la liste" >⬱</div></h1>' . PHP_EOL;
                 $o1 .= '<div id="vv_genres_modifier1">' . PHP_EOL;
                 /**/
-                $o1 .= '  <input type="hidden" value="' . $tt[__xva][0]['T0.chi_id_genre'] . '" id="chi_id_genre" />' . PHP_EOL;
+                $o1 .= '  <input type="hidden" value="' . $tt330[__xva][0]['T0.chi_id_genre'] . '" id="chi_id_genre" />' . PHP_EOL;
                 /**/
                 /*
                   =====================================================================================
@@ -1622,9 +1802,20 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="chp_nom_genre" value="' . enti1($tt[__xva][0]['T0.chp_nom_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" maxlength="64" style="max-width:80%;"/>' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_nom_genre" value="' . enti1($tt330[__xva][0]['T0.chp_nom_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" maxlength="64" style="max-width:80%;"/>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>ordre</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input value="' . enti1($tt330[__xva][0]['T0.che_ordre_genre']) . '" type="number" size="32" maxlength="32" id="che_ordre_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 /*
                   =====================================================================================
@@ -1636,13 +1827,14 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input disabled type="text" id="chp_prefixe_genre" value="' . enti1($tt[__xva][0]['T0.chp_prefixe_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="3" maxlength="3" style="max-width:80%;" />' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_prefixe_genre" value="' . enti1($tt330[__xva][0]['T0.chp_prefixe_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="3" maxlength="3" style="max-width:80%;" />' . PHP_EOL;
                 $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),cht))">cht</div>';
                 $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chi))">chi</div>';
                 $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),che))">che</div>';
                 $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chx))">chx</div>';
                 $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chp))">chp</div>';
                 $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chd))">chd</div>';
+                $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_prefixe_genre,valeur),chd))">chu</div>';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1656,7 +1848,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" disabled id="chp_espece_genre" value="' . enti1($tt[__xva][0]['T0.chp_espece_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" maxlength="64" style="max-width:80%;" />' . PHP_EOL;
+                $o1 .= '      <input type="text" disabled id="chp_espece_genre" value="' . enti1($tt330[__xva][0]['T0.chp_espece_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" maxlength="64" style="max-width:80%;" />' . PHP_EOL;
                 $o1 .= '      <br />';
                 $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_espece_genre,valeur),TEXT))">TEXT</div>';
                 $o1 .= '      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone(chp_espece_genre,valeur),VARCHAR))">VARCHAR</div>';
@@ -1676,7 +1868,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="che_longueur_genre" value="' . enti1($tt[__xva][0]['T0.che_longueur_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" maxlength="64" style="max-width:80%;" />' . PHP_EOL;
+                $o1 .= '      <input type="text" id="che_longueur_genre" value="' . enti1($tt330[__xva][0]['T0.che_longueur_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="64" maxlength="64" style="max-width:80%;" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1690,7 +1882,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_primaire_genre']).'" >';
+                $o1 .= '        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_primaire_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1704,7 +1896,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_incrément_genre']).'" >';
+                $o1 .= '        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_incrément_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1718,7 +1910,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_obligatoire_genre']).'" >';
+                $o1 .= '        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_obligatoire_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1732,7 +1924,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_a_init_genre']).'" >';
+                $o1 .= '        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_a_init_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1746,7 +1938,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_init_est_mot_genre']).'" >';
+                $o1 .= '        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_init_est_mot_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1761,7 +1953,7 @@ class c_genres1{
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
-                $o1 .= '        <textarea id="cht_valeur_init_genre" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_valeur_init_genre']) . '</textarea>' . PHP_EOL;
+                $o1 .= '        <textarea id="cht_valeur_init_genre" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt330[__xva][0]['T0.cht_valeur_init_genre']) . '</textarea>' . PHP_EOL;
                 $o1 .= '      </div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
@@ -1776,10 +1968,12 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_parmis_genre']).'" >';
+                $o1 .= '        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_parmis_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
+                
+
                 /*
                   =====================================================================================
                 */
@@ -1791,11 +1985,28 @@ class c_genres1{
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
-                $o1 .= '        <textarea id="cht_parmis_genre" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_parmis_genre']) . '</textarea>' . PHP_EOL;
+                $o1 .= '        <textarea id="cht_parmis_genre" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt330[__xva][0]['T0.cht_parmis_genre']) . '</textarea>' . PHP_EOL;
                 $o1 .= '      </div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
+
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>est utilisateur</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '        <input type="range" id="che_est_utilisateur_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_utilisateur_genre']).'" >';
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                
+
                 /*
                   =====================================================================================
                 */
@@ -1806,7 +2017,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '<input type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_tsc_genre']).'" >';
+                $o1 .= '<input type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_tsc_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1820,7 +2031,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '<input type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_tsm_genre']).'" >';
+                $o1 .= '<input type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_tsm_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1835,7 +2046,7 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '<input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt[__xva][0]['T0.che_est_nur_genre']).'" >';
+                $o1 .= '<input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_nur_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
@@ -1852,7 +2063,7 @@ class c_genres1{
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
                 $o1 .= '      <div class="yy_conteneur_txtara">' . PHP_EOL;
-                $o1 .= '        <textarea id="cht_fonctions_genre" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt[__xva][0]['T0.cht_fonctions_genre']) . '</textarea>' . PHP_EOL;
+                $o1 .= '        <textarea id="cht_fonctions_genre" autocorrect="off" autocapitalize="off" spellcheck="false">' . enti1($tt330[__xva][0]['T0.cht_fonctions_genre']) . '</textarea>' . PHP_EOL;
                 $o1 .= '      </div>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/

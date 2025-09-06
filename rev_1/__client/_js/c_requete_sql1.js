@@ -3005,6 +3005,11 @@ class c_requete_sql1{
             let tableau_des_insert=[];
 
             for( i=0 ; i < obj3.tableau_des_valeurs_pour_insert.length ; i++ ){
+             
+                if(obj3.tableau_des_valeurs_pour_insert[i][0].indexOf('che_est_nur_genre') >=0){
+                    debugger
+                }
+             
                 if(!this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'].hasOwnProperty(obj3.tableau_des_valeurs_pour_insert[i][1])){
                     return(__gi1.__m_rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : 'Le champ "' + obj3.tableau_des_valeurs_pour_insert[i][1] + '" n\'existe pas dans la base ' + __gi1.__m_rev1.nl2()} ));
                 }
@@ -3016,7 +3021,13 @@ class c_requete_sql1{
                  )
                  && this.#obj_webs.ne_pas_traiter_la_maj_ts_creation === 0
                 ){
+                 
+                 
                     tableau_des_insert.push( '        $liste_des_valeurs.=PHP_EOL.\'      \'.sq1($GLOBALS[__date_ms]).\'\'' );
+                }else if(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert[i][1]].genre_objet_du_champ.che_est_nur_genre===1){
+
+                    tableau_des_insert.push( '        $liste_des_valeurs.=PHP_EOL.\'      \'.sq1(\'0\').\'\'' );
+                 
                 }else{
                     tableau_des_insert.push( '        $liste_des_valeurs.=PHP_EOL.\'      ' + obj3.tableau_des_valeurs_pour_insert[i][0] + '\'' );
                 }

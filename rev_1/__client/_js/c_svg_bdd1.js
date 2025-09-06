@@ -1898,7 +1898,7 @@ class c_svg_bdd1{
       
     */
     modifier_nom_xxx_du_champ( mat ){
-     debugger
+
         let nom_de_la_zone='';
         let nom_du_champ='';
         let meta_champ='';
@@ -4287,7 +4287,7 @@ class c_svg_bdd1{
         cmd+=')';
         t+='<div class="hug_bouton yy__x_signaux_3" data-hug_click="' + cmd + '" >modifier</div>';
         
-        t+='<br />masquer_champ_dans_svg : <input id="masquer_champ_dans_svg" type="checkbox" checked />';
+        t+='<br />masquer_champ_dans_svg : <input id="masquer_champ_dans_svg" type="checkbox" />';
         
         t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
         t+='<br />refe_parent_gauche : <input id="refe_parent_gauche" type="checkbox" />';
@@ -4959,6 +4959,7 @@ class c_svg_bdd1{
             if(elem.getAttribute( 'a_une_valeur_par_defaut' ) === '1'){
                 tt+='    a_une_valeur_par_defaut(' + elem.getAttribute( 'a_une_valeur_par_defaut' ) + '),';
                 if(elem.getAttribute( 'la_valeur_par_defaut_est_caractere' ) !== ''){
+                 
                     tt+='    la_valeur_par_defaut_est_caractere(' + elem.getAttribute( 'la_valeur_par_defaut_est_caractere' ) + '),';
                 }
                 if(elem.getAttribute( 'valeur_par_defaut' ) !== ''){
@@ -6055,7 +6056,7 @@ class c_svg_bdd1{
                             if(nouvelles_valeurs.hasOwnProperty( 'la_valeur_par_defaut_est_caractere' )){
                                 mat2[k + 1][1]=nouvelles_valeurs.la_valeur_par_defaut_est_caractere;
                             }
-                            la_valeur_par_defaut_est_caractere=mat2[k + 1][1];
+                            la_valeur_par_defaut_est_caractere=parseInt(mat2[k + 1][1],10);
                         }else if(mat2[k][1] === 'valeur_par_defaut' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'valeur_par_defaut' )){
                                 mat2[k + 1][1]=nouvelles_valeurs.valeur_par_defaut;
@@ -6129,7 +6130,7 @@ class c_svg_bdd1{
                             }else if(mat2[k + 1][1] === 'longueur_du_champ' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 longueur_du_champ=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'la_valeur_par_defaut_est_caractere' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
-                                la_valeur_par_defaut_est_caractere=mat2[k + 2][1];
+                                la_valeur_par_defaut_est_caractere=parseInt(mat2[k + 2][1],10);
                             }else if(mat2[k + 1][1] === 'valeur_par_defaut' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 valeur_par_defaut=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'nom_bref_du_champ' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){

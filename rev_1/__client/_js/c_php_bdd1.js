@@ -42,48 +42,22 @@ class c_php_bdd1{
             this.#nom_de_la_classe_générée='c_'+this.#nom_ref+incice_de_la_classe;
         }
         
-        let o1='<?php\n';
+        let o2='<?php\n';
      
 
-        o1+='class '+this.#nom_de_la_classe_générée+'{\n';
-        o1+='    private $sql0=null;\n';
-        o1+='    private const DUN_DUNE_ELEMENT_GERE = \''+def_table.meta.distinction_pour_isad+'\';\n';
-        o1+='    private const LISTE_DES_ELEMENTS_GERES = \''+def_table.meta.distinction_pour_liste+'\';\n';
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    public function __construct(&$donnees_retournees,&$mat,&$donnees_recues){\n';
-        o1+='        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . \'c_sql0.php\');\n';
-        o1+='        $this->sql0=new c_sql0($donnees_retournees,$mat,$donnees_recues);\n';
-        o1+='    }\n';
+        o2+='class '+this.#nom_de_la_classe_générée+'{\n';
+        o2+='    private $sql0=null;\n';
+        o2+='    private const DUN_DUNE_ELEMENT_GERE = \''+def_table.meta.distinction_pour_isad+'\';\n';
+        o2+='    private const LISTE_DES_ELEMENTS_GERES = \''+def_table.meta.distinction_pour_liste+'\';\n';
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    public function __construct(&$donnees_retournees,&$mat,&$donnees_recues){\n';
+        o2+='        require_once(REPERTOIRE_DES_CLASSES_PHP . DIRECTORY_SEPARATOR . \'c_sql0.php\');\n';
+        o2+='        $this->sql0=new c_sql0($donnees_retournees,$mat,$donnees_recues);\n';
+        o2+='    }\n';
         
         
-        let ref_insert=document.getElementById('reference_requete_insert').value;
-        let objet_requete_insert=__gi1.__js_des_sql[ref_insert];
-        let matrice_insert=__gi1.__m_rev1.rev_tm( objet_requete_insert.cht_rev_requete );
-        if( matrice_insert.__xst !== __xsu ){
-            debugger;
-            return{__xst:__xer};
-        }
-        let mati=matrice_insert.__xva;
-        let liste_des_champs_insert=[];
-        for(let i=1;i<mati.length;i=mati[i][12]){
-            if(mati[i][1]==='insérer' && mati[i][2]==='f'){
-                for(let j=i+1;j<mati.length;j=mati[j][12]){
-                    if(mati[j][1]==='valeurs' && mati[j][2]==='f'){
-                        for(let k=j+1;k<mati.length;k=mati[k][12]){
-                            if(mati[k][1]==='affecte' && mati[k][2]==='f'){
-                                for(let l=k+1;l<mati.length;l=mati[l][12]){
-                                    if(mati[l][1]==='champ' && mati[l][2]==='f' && mati[l][8]===1 && mati[l+1][2]==='c'){
-                                        liste_des_champs_insert.push({nom_du_champ:mati[l+1][1]});
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
         let champ_primaire='';
         for(let i in this.#obj_table.champs){
             if(this.#obj_table.champs[i].genre_objet_du_champ.che_est_incrément_genre===1 || this.#obj_table.champs[i].genre_objet_du_champ.che_est_primaire_genre===1){
@@ -95,46 +69,92 @@ class c_php_bdd1{
             debugger;
             return{__xst:__xer};
         }
+        let champ_est_libelle_lien=null;
+        
+        let ref_insert=document.getElementById('reference_requete_insert').value;
+        let liste_des_champs_insert=[];
+        if(ref_insert!==''){
+            let objet_requete_insert=__gi1.__js_des_sql[ref_insert];
+            let matrice_insert=__gi1.__m_rev1.rev_tm( objet_requete_insert.cht_rev_requete );
+            if( matrice_insert.__xst !== __xsu ){
+                debugger;
+                return{__xst:__xer};
+            }
+            let mati=matrice_insert.__xva;
+            for(let i=1;i<mati.length;i=mati[i][12]){
+                if(mati[i][1]==='insérer' && mati[i][2]==='f'){
+                    for(let j=i+1;j<mati.length;j=mati[j][12]){
+                        if(mati[j][1]==='valeurs' && mati[j][2]==='f'){
+                            for(let k=j+1;k<mati.length;k=mati[k][12]){
+                                if(mati[k][1]==='affecte' && mati[k][2]==='f'){
+                                    for(let l=k+1;l<mati.length;l=mati[l][12]){
+                                        if(mati[l][1]==='champ' && mati[l][2]==='f' && mati[l][8]===1 && mati[l+1][2]==='c'){
+                                            liste_des_champs_insert.push({nom_du_champ:mati[l+1][1]});
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            for( let i in liste_des_champs_insert){
+               let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_insert[i].nom_du_champ];
+               liste_des_champs_insert[i].champ_dans_la_base=champ_dans_la_base;
+               if(champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien')){
+                   champ_est_libelle_lien=liste_des_champs_insert[i];
+               }
+            }
+            
+        }
         
         let ref_select=document.getElementById('reference_requete_select').value;
-        let objet_requete_select=__gi1.__js_des_sql[ref_select];
-        let matrice_select=__gi1.__m_rev1.rev_tm( objet_requete_select.cht_rev_requete );
-        if( matrice_select.__xst !== __xsu ){
-            debugger;
-            return{__xst:__xer};
+        if(ref_select!==''){
+            let objet_requete_select=__gi1.__js_des_sql[ref_select];
+            let matrice_select=__gi1.__m_rev1.rev_tm( objet_requete_select.cht_rev_requete );
+            if( matrice_select.__xst !== __xsu ){
+                debugger;
+                return{__xst:__xer};
+            }
+            let mats=matrice_select.__xva;
         }
-        let mats=matrice_select.__xva;
+        
         
         let ref_delete=document.getElementById('reference_requete_delete').value;
-        let objet_requete_delete=__gi1.__js_des_sql[ref_delete];
-        let matrice_delete=__gi1.__m_rev1.rev_tm( objet_requete_delete.cht_rev_requete );
-        if( matrice_delete.__xst !== __xsu ){
-            debugger;
-            return{__xst:__xer};
-        }
-        let matd=matrice_delete.__xva;
-        
-        
-        
-        let ref_update=document.getElementById('reference_requete_update').value;
-        let objet_requete_update=__gi1.__js_des_sql[ref_update];
-        let matrice_update=__gi1.__m_rev1.rev_tm( objet_requete_update.cht_rev_requete );
-        if( matrice_update.__xst !== __xsu ){
-            debugger;
-            return{__xst:__xer};
+        if(ref_delete!==''){
+            let objet_requete_delete=__gi1.__js_des_sql[ref_delete];
+            let matrice_delete=__gi1.__m_rev1.rev_tm( objet_requete_delete.cht_rev_requete );
+            if( matrice_delete.__xst !== __xsu ){
+                debugger;
+                return{__xst:__xer};
+            }
+            let matd=matrice_delete.__xva;
         }
         
-        let matu=matrice_update.__xva;
+        
+        
         let liste_des_champs_update=[];
-        for(let i=1;i<matu.length;i=matu[i][12]){
-            if(matu[i][1]==='modifier' && matu[i][2]==='f'){
-                for(let j=i+1;j<matu.length;j=matu[j][12]){
-                    if(matu[j][1]==='valeurs' && matu[j][2]==='f'){
-                        for(let k=j+1;k<matu.length;k=matu[k][12]){
-                            if(matu[k][1]==='affecte' && matu[k][2]==='f'){
-                                for(let l=k+1;l<matu.length;l=matu[l][12]){
-                                    if(matu[l][1]==='champ' && matu[l][2]==='f' && matu[l][8]===1 && matu[l+1][2]==='c'){
-                                        liste_des_champs_update.push({nom_du_champ:matu[l+1][1]});
+        let ref_update=document.getElementById('reference_requete_update').value;
+        if(ref_update!==''){
+            let objet_requete_update=__gi1.__js_des_sql[ref_update];
+            let matrice_update=__gi1.__m_rev1.rev_tm( objet_requete_update.cht_rev_requete );
+            if( matrice_update.__xst !== __xsu ){
+                debugger;
+                return{__xst:__xer};
+            }
+            
+            let matu=matrice_update.__xva;
+            for(let i=1;i<matu.length;i=matu[i][12]){
+                if(matu[i][1]==='modifier' && matu[i][2]==='f'){
+                    for(let j=i+1;j<matu.length;j=matu[j][12]){
+                        if(matu[j][1]==='valeurs' && matu[j][2]==='f'){
+                            for(let k=j+1;k<matu.length;k=matu[k][12]){
+                                if(matu[k][1]==='affecte' && matu[k][2]==='f'){
+                                    for(let l=k+1;l<matu.length;l=matu[l][12]){
+                                        if(matu[l][1]==='champ' && matu[l][2]==='f' && matu[l][8]===1 && matu[l+1][2]==='c'){
+                                            liste_des_champs_update.push({nom_du_champ:matu[l+1][1]});
+                                        }
                                     }
                                 }
                             }
@@ -144,47 +164,45 @@ class c_php_bdd1{
             }
         }
         
-        let ref_liste_ecran=document.getElementById('reference_requete_liste_ecran').value;
-        let objet_requete_liste_ecran=__gi1.__js_des_sql[ref_liste_ecran];
-        let matrice_liste_ecran=__gi1.__m_rev1.rev_tm( objet_requete_liste_ecran.cht_rev_requete );
-        if( matrice_liste_ecran.__xst !== __xsu ){
-            debugger;
-            return{__xst:__xer};
-        }
-        /*
-          recherche du champ est_libelle_lien
-        */
-        let champ_est_libelle_lien=null;
-        let matle=matrice_liste_ecran.__xva;
         let liste_des_champs_liste_ecran=[];
-        for(let i=1;i<matle.length;i=matle[i][12]){
-            if(matle[i][1]==='sélectionner' && matle[i][2]==='f'){
-                for(let j=i+1;j<matle.length;j=matle[j][12]){
-                    if(matle[j][1]==='valeurs' && matle[j][2]==='f'){
-                        for(let k=j+1;k<matle.length;k=matle[k][12]){
-                            if(matle[k][1]==='champ' && matle[k][2]==='f' && matle[k][8] === 2){
-                                liste_des_champs_liste_ecran.push({
-                                    nom_du_champ : matle[k+2][1] , 
-                                    préfixe_du_champ : matle[k+1][1] , 
-                                    champ_dans_la_base : null,
-                                });
+        let ref_liste_ecran=document.getElementById('reference_requete_liste_ecran').value;
+        if(ref_liste_ecran!==''){
+            let objet_requete_liste_ecran=__gi1.__js_des_sql[ref_liste_ecran];
+            let matrice_liste_ecran=__gi1.__m_rev1.rev_tm( objet_requete_liste_ecran.cht_rev_requete );
+            if( matrice_liste_ecran.__xst !== __xsu ){
+                debugger;
+                return{__xst:__xer};
+            }
+            /*
+              recherche du champ est_libelle_lien
+            */
+            let matle=matrice_liste_ecran.__xva;
+            for(let i=1;i<matle.length;i=matle[i][12]){
+                if(matle[i][1]==='sélectionner' && matle[i][2]==='f'){
+                    for(let j=i+1;j<matle.length;j=matle[j][12]){
+                        if(matle[j][1]==='valeurs' && matle[j][2]==='f'){
+                            for(let k=j+1;k<matle.length;k=matle[k][12]){
+                                if(matle[k][1]==='champ' && matle[k][2]==='f' && matle[k][8] === 2){
+                                    liste_des_champs_liste_ecran.push({
+                                        nom_du_champ : matle[k+2][1] , 
+                                        préfixe_du_champ : matle[k+1][1] , 
+                                        champ_dans_la_base : null,
+                                    });
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        
-        for( let i in liste_des_champs_liste_ecran){
-           let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_liste_ecran[i].nom_du_champ];
-           liste_des_champs_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
-           if(champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien')){
-               champ_est_libelle_lien=liste_des_champs_liste_ecran[i];
-           }
-        }
-        if(champ_est_libelle_lien===null){
-            debugger;
-            return{__xst:__xer};
+            if(champ_est_libelle_lien===null){
+                for( let i in liste_des_champs_liste_ecran){
+                   let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_liste_ecran[i].nom_du_champ];
+                   liste_des_champs_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
+                   if(champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien')){
+                       champ_est_libelle_lien=liste_des_champs_liste_ecran[i];
+                   }
+                }
+            }
         }
 
         
@@ -193,1155 +211,1297 @@ class c_php_bdd1{
         
         
         //if(false){
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    public function formulaire1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='        $l01=count($mat);\n';
-        o1+='        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){\n';
-        o1+='            \n';
-        o1+='            \n';
-        o1+='            if($mat[$i][1] === \''+this.#nom_de_la_classe_générée+'.formulaire1\' && $mat[$i][2] === \'f\' && $mat[$i][8] >= 1){\n';
-        o1+='\n';
-        o1+='                $conteneur1=\'\';\n';
-        o1+='                $action1=\'\';\n';
-        o1+='                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){\n';
-        o1+='                    \n';
-        o1+='                    \n';
-        o1+='                    if($mat[$j][1] === \'conteneur1\' && $mat[$j + 1][2] === \'c\'){\n';
-        o1+='\n';
-        o1+='                        $conteneur1=$mat[$j + 1][1];\n';
-        o1+='\n';
-        o1+='                    }else if($mat[$j][1] === \'action1\' && $mat[$j + 1][2] === \'c\'){\n';
-        o1+='\n';
-        o1+='                        $action1=$mat[$j + 1][1];\n';
-        o1+='                    }\n';
-        o1+='\n';
-        o1+='                }\n';
-        o1+='                \n';
-        o1+='                if($action1 !== \'\'){\n';
-        o1+='\n';
-        o1+='                    \n';
-        o1+='                    if($action1 === \'page_'+this.#nom_ref+'_creer1\'\n';
-        o1+='                       || $action1 === \'page_'+this.#nom_ref+'_modifier1\'\n';
-        o1+='                       || $action1 === \'page_'+this.#nom_ref+'_supprimer1\'\n';
-        o1+='                       || $action1 === \'page_liste_des_'+this.#nom_ref+'1\'\n';
-        o1+='                    ){\n';
-        o1+='\n';
-        o1+='                        $this->$action1($donnees_retournees,$mat,$donnees_recues);\n';
-        o1+='\n';
-        o1+='                    }else{\n';
-        o1+='\n';
-        o1+='                        $donnees_retournees[__x_signaux][__xal][]=\'action non traitée "\' . $action1 . \'" [\' . __LINE__ . \']\';\n';
-        o1+='                    }\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='                }else if($conteneur1 === \'vv_'+this.#nom_ref+'_modifier1\'\n';
-        o1+='                   || $conteneur1 === \'vv_'+this.#nom_ref+'_creer1\'\n';
-        o1+='                   || $conteneur1 === \'vv_'+this.#nom_ref+'_supprimer1\'\n';
-        o1+='                   || $conteneur1 === \'vv_'+this.#nom_ref+'_filtre1\'\n';
-        o1+='                ){\n';
-        o1+='\n';
-        o1+='                    $this->$conteneur1($donnees_retournees,$mat,$donnees_recues);\n';
-        o1+='\n';
-        o1+='                }else{\n';
-        o1+='\n';
-        o1+='                    $donnees_retournees[__x_signaux][__xal][]=\'traitement à réaliser pour $donnees_recues \' . var_export($donnees_recues,true) . \' [\' . __LINE__ . \']\';\n';
-        o1+='                }\n';
-        o1+='\n';
-        o1+='                break;\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='    }\n';
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    public function formulaire1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
+        o2+='\n';
+        o2+='\n';
+        o2+='        $l01=count($mat);\n';
+        o2+='        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){\n';
+        o2+='            \n';
+        o2+='            \n';
+        o2+='            if($mat[$i][1] === \''+this.#nom_de_la_classe_générée+'.formulaire1\' && $mat[$i][2] === \'f\' && $mat[$i][8] >= 1){\n';
+        o2+='\n';
+        o2+='                $conteneur1=\'\';\n';
+        o2+='                $action1=\'\';\n';
+        o2+='                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){\n';
+        o2+='                    \n';
+        o2+='                    \n';
+        o2+='                    if($mat[$j][1] === \'conteneur1\' && $mat[$j + 1][2] === \'c\'){\n';
+        o2+='\n';
+        o2+='                        $conteneur1=$mat[$j + 1][1];\n';
+        o2+='\n';
+        o2+='                    }else if($mat[$j][1] === \'action1\' && $mat[$j + 1][2] === \'c\'){\n';
+        o2+='\n';
+        o2+='                        $action1=$mat[$j + 1][1];\n';
+        o2+='                    }\n';
+        o2+='\n';
+        o2+='                }\n';
+        o2+='                \n';
+        o2+='                if($action1 !== \'\'){\n';
+        o2+='\n';
+        o2+='                    \n';
+        o2+='                    if($action1 === \'page_'+this.#nom_ref+'_creer1\'\n';
+        o2+='                       || $action1 === \'page_'+this.#nom_ref+'_modifier1\'\n';
+        o2+='                       || $action1 === \'page_'+this.#nom_ref+'_supprimer1\'\n';
+        o2+='                       || $action1 === \'page_liste_des_'+this.#nom_ref+'1\'\n';
+        o2+='                    ){\n';
+        o2+='\n';
+        o2+='                        $this->$action1($donnees_retournees,$mat,$donnees_recues);\n';
+        o2+='\n';
+        o2+='                    }else{\n';
+        o2+='\n';
+        o2+='                        $donnees_retournees[__x_signaux][__xal][]=\'action non traitée "\' . $action1 . \'" [\' . __LINE__ . \']\';\n';
+        o2+='                    }\n';
+        o2+='\n';
+        o2+='\n';
+        o2+='                }else if($conteneur1 === \'vv_'+this.#nom_ref+'_modifier1\'\n';
+        o2+='                   || $conteneur1 === \'vv_'+this.#nom_ref+'_creer1\'\n';
+        o2+='                   || $conteneur1 === \'vv_'+this.#nom_ref+'_supprimer1\'\n';
+        o2+='                   || $conteneur1 === \'vv_'+this.#nom_ref+'_filtre1\'\n';
+        o2+='                ){\n';
+        o2+='\n';
+        o2+='                    $this->$conteneur1($donnees_retournees,$mat,$donnees_recues);\n';
+        o2+='\n';
+        o2+='                }else{\n';
+        o2+='\n';
+        o2+='                    $donnees_retournees[__x_signaux][__xal][]=\'traitement à réaliser pour $donnees_recues \' . var_export($donnees_recues,true) . \' [\' . __LINE__ . \']\';\n';
+        o2+='                }\n';
+        o2+='\n';
+        o2+='                break;\n';
+        o2+='\n';
+        o2+='            }\n';
+        o2+='\n';
+        o2+='        }\n';
+        o2+='    }\n';
         
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    function vv_'+this.#nom_ref+'_creer1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
-        o1+='        $page_liste_des_'+this.#nom_ref+'1=false;\n';
-        o1+='        $l01=count($mat);\n';
-        o1+='        for( $i=1 ; $i < $l01 ; $i++ ){\n';
-        o1+='            \n';
-        o1+='            \n';
-        o1+='            if($mat[$i][1] === \'page_liste_des_'+this.#nom_ref+'1\' && $mat[$i][2] === \'f\' && $mat[$i][8] === 0){\n';
-        o1+='\n';
-        o1+='                $page_liste_des_'+this.#nom_ref+'1=true;\n';
-        o1+='                break;\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='        \n';
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    function vv_'+this.#nom_ref+'_creer1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
+        o2+='        $page_liste_des_'+this.#nom_ref+'1=false;\n';
+        o2+='        $l01=count($mat);\n';
+        o2+='        for( $i=1 ; $i < $l01 ; $i++ ){\n';
+        o2+='            \n';
+        o2+='            \n';
+        o2+='            if($mat[$i][1] === \'page_liste_des_'+this.#nom_ref+'1\' && $mat[$i][2] === \'f\' && $mat[$i][8] === 0){\n';
+        o2+='\n';
+        o2+='                $page_liste_des_'+this.#nom_ref+'1=true;\n';
+        o2+='                break;\n';
+        o2+='\n';
+        o2+='            }\n';
+        o2+='\n';
+        o2+='        }\n';
+        o2+='        \n';
 /*
-        o1+='        $mdp=password_hash($donnees_recues[__xva][\'chp_mot_de_passe_utilisateur\'],PASSWORD_BCRYPT,array( \'cost\' => 10));\n';
+        o2+='        $mdp=password_hash($donnees_recues[__xva][\'chp_mot_de_passe_utilisateur\'],PASSWORD_BCRYPT,array( \'cost\' => 10));\n';
 */        
-        o1+='        \n';
+        o2+='        \n';
         
-        for(let i=0;i<liste_des_champs_insert.length;i++){
-            let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
-            let obj_champ=this.#obj_table.champs[nom_du_champ];
-            if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
-            }else{
-                if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre===1){
-                    o1+='        if(is_null($donnees_recues[__xva][\''+nom_du_champ+'\']) || $donnees_recues[__xva][\''+nom_du_champ+'\']===\'\'){\n';
-                    o1+='            $donnees_retournees[__x_signaux][__xer][]=\'la valeur "'+obj_champ.meta.nom_bref_du_champ+'" doit être renseigné [\' . __LINE__ . \']\';\n';
-                    o1+='            return;\n';
-                    o1+='        }\n';
+        
+        if(ref_insert!==''){
+            for(let i=0;i<liste_des_champs_insert.length;i++){
+                let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
+                let obj_champ=this.#obj_table.champs[nom_du_champ];
+                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
+                }else{
+                    if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre===1){
+                        o2+='        if(is_null($donnees_recues[__xva][\''+nom_du_champ+'\']) || $donnees_recues[__xva][\''+nom_du_champ+'\']===\'\'){\n';
+                        o2+='            $donnees_retournees[__x_signaux][__xer][]=\'la valeur "'+obj_champ.meta.nom_bref_du_champ+'" doit être renseigné [\' . __LINE__ . \']\';\n';
+                        o2+='            return;\n';
+                        o2+='        }\n';
+                    }
+
+
+
+                    if(obj_champ.genre_objet_du_champ.cht_fonctions_genre!==null){
+                     
+                        var obj1=__gi1.__m_rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
+                        if(obj1.__xst !== __xsu){
+                            return({__xst : __xer});
+                        }
+                        /*
+                          $test=$GLOBALS['obj_fonctions1']->test_fonctions_de_c_fonctions1($donnees_recues[__xva]['cht_fonctions_genre'],$donnees_retournees);
+                          if($test[__xst]!==__xsu){
+
+                                  $donnees_retournees[__x_signaux][__xer][]='une des fonctions renseignées ne fait pas partie des fonctions disponibles [' . __LINE__ . ']';
+                                  $donnees_retournees[__xst]=__xer;
+                                  return;
+                          }
+                        */
+                          
+                        let mat1=obj1.__xva;
+                        let l01=mat1.length;
+                        for(let j=1;j<l01;j=mat1[j][12]){
+                            if(mat1[j][2]==='f'){
+                                o2+='\n';
+                                o2+='        $__test=$GLOBALS[\'obj_fonctions1\']->'+mat1[j][1]+'(';
+                                if(mat1[j][8]===0){
+                                }else{
+                                    for(let k=j+1;k<l01;k=mat1[k][12]){
+                                        if(mat1[k][2]==='c'){
+                                            if(mat1[k][4]===0){
+                                                o2+=mat1[k][1]+',';
+                                            }else{
+                                              /*afr*/
+                                              debugger
+                                              return({__xst : __xer});
+                                            }
+                                        }else{
+                                            return({__xst : __xer});
+                                        }
+                                    }
+                                }
+                                o2+='$donnees_recues[__xva][\''+nom_du_champ+'\'],$donnees_retournees);\n';
+                                o2+='        if($__test[__xst]!==__xsu){\n';
+                                o2+='            $donnees_retournees[__x_signaux][__xer][]=\'erreur sur le champ "'+obj_champ.meta.nom_bref_du_champ+'" [\' . __LINE__ . \']\';\n';
+                                o2+='            $donnees_retournees[__xst]=__xer;\n';
+                                o2+='            return;\n';
+                                o2+='        }\n\n';
+                            }else{
+                                return({__xst : __xer});
+                            }
+                        }
+                    }
+
+
+
                 }
             }
-        }
-        
-        
-        o1+='        $donnees_sql=array( array(/**/\n';
-        for(let i=0;i<liste_des_champs_insert.length;i++){
-            let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
-            let obj_champ=this.#obj_table.champs[nom_du_champ];
-            if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
-            }else{
-                o1+='                    \''+nom_du_champ+'\' => $donnees_recues[__xva][\''+nom_du_champ+'\'],\n';
+            
+            
+            o2+='        $donnees_sql=array( array(/**/\n';
+            for(let i=0;i<liste_des_champs_insert.length;i++){
+                let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
+                let obj_champ=this.#obj_table.champs[nom_du_champ];
+                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
+                }else{
+                    o2+='                    \''+nom_du_champ+'\' => $donnees_recues[__xva][\''+nom_du_champ+'\'],\n';
+                }
+                
+                
+                
             }
+            o2+='                ));\n';
+            o2+='        /* echo __FILE__ . \' \' . __LINE__ . \' $donnees_sql = <pre>\' . var_export( $donnees_sql , true ) . \'</pre>\' ; exit(0);*/\n';
+            o2+='        $tt'+ref_insert+'=$this->sql0->sql_iii('+ref_insert+',$donnees_sql,$donnees_retournees);\n';
+            o2+='        \n';
+            o2+='        if($tt'+ref_insert+'[__xst] !== __xsu){\n';
+            o2+='\n';
+            o2+='            $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . \' [\' . __LINE__ . \']\';\n';
+            o2+='            return;\n';
+            o2+='\n';
+            o2+='        }else if($tt'+ref_insert+'[\'changements\'] === 1){\n';
+            o2+='\n';
+            o2+='            $donnees_retournees[__xst]=__xsu;\n';
+            o2+='            \n';
+            o2+='            if($page_liste_des_'+this.#nom_ref+'1 === true){\n';
+            o2+='\n';
+            o2+='                $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$mat,$donnees_recues);\n';
+            o2+='\n';
+            o2+='            }else{\n';
+            o2+='\n';
+            o2+='                $action=\''+champ_primaire+'(\' . $tt'+ref_insert+'[\'nouvel_id\'] . \')\';\n';
+            o2+='                $obj_matrice=$GLOBALS[\'obj_rev1\']->rev_vers_matrice($action);\n';
+            o2+='                $this->page_'+this.#nom_ref+'_modifier1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);\n';
+            o2+='                $donnees_retournees[__x_action]=\''+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $tt'+ref_insert+'[\'nouvel_id\'] . \'))\';\n';
+            o2+='            }\n';
+            o2+='\n';
+            o2+='\n';
+            o2+='        }else{\n';
+            o2+='\n';
+            o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification efféctuée\';\n';
+            o2+='        }\n';
         }
-        o1+='                ));\n';
-        o1+='        /* echo __FILE__ . \' \' . __LINE__ . \' $donnees_sql = <pre>\' . var_export( $donnees_sql , true ) . \'</pre>\' ; exit(0);*/\n';
-        o1+='        $tt'+ref_insert+'=$this->sql0->sql_iii('+ref_insert+',$donnees_sql,$donnees_retournees);\n';
-        o1+='        \n';
-        o1+='        if($tt'+ref_insert+'[__xst] !== __xsu){\n';
-        o1+='\n';
-        o1+='            $donnees_retournees[__x_signaux][__xer][]=__METHOD__ . \' [\' . __LINE__ . \']\';\n';
-        o1+='            return;\n';
-        o1+='\n';
-        o1+='        }else if($tt'+ref_insert+'[\'changements\'] === 1){\n';
-        o1+='\n';
-        o1+='            $donnees_retournees[__xst]=__xsu;\n';
-        o1+='            \n';
-        o1+='            if($page_liste_des_'+this.#nom_ref+'1 === true){\n';
-        o1+='\n';
-        o1+='                $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$mat,$donnees_recues);\n';
-        o1+='\n';
-        o1+='            }else{\n';
-        o1+='\n';
-        o1+='                $action=\''+champ_primaire+'(\' . $tt'+ref_insert+'[\'nouvel_id\'] . \')\';\n';
-        o1+='                $obj_matrice=$GLOBALS[\'obj_rev1\']->rev_vers_matrice($action);\n';
-        o1+='                $this->page_'+this.#nom_ref+'_modifier1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);\n';
-        o1+='                $donnees_retournees[__x_action]=\''+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $tt'+ref_insert+'[\'nouvel_id\'] . \'))\';\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='        }else{\n';
-        o1+='\n';
-        o1+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification efféctuée\';\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='        $o1=\'\';\n';
-        o1+='    }\n';            
+        
+        o2+='\n';
+        o2+='        $o1=\'\';\n';
+        o2+='    }\n';            
         
         
-        o1+='\n';
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    function vv_'+this.#nom_ref+'_filtre1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
-        o1+='        $txtPar=\'__num_page(0)\';\n';
-        o1+='        $nouvelles_valeurs=array( \'__num_page\' => 0);\n';
-        o1+='        foreach($donnees_recues[__xva] as $k0 => $v0){\n';
-        o1+='            \n';
-        o1+='            if($k0 !== \'__num_page\'){\n';
-        o1+='\n';
-        o1+='                $nouvelles_valeurs[$k0]=$v0;\n';
-        o1+='                \n';
-        o1+='                if(is_numeric($v0)){\n';
-        o1+='\n';
-        o1+='                    $txtPar .= \',\' . $k0 . \'(\' . $v0 . \')\';\n';
-        o1+='\n';
-        o1+='                }else{\n';
-        o1+='\n';
-        o1+='                    $txtPar .= \',\' . $k0 . \'(\\\'\' . str_replace(\'\\\'\',\'\\\\\\\'\',$v0) . \'\\\')\';\n';
-        o1+='                }\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='        $_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\']=$nouvelles_valeurs;\n';
-        o1+='        $obj_matrice=$GLOBALS[\'obj_rev1\']->rev_vers_matrice(\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1(\' . $txtPar . \')\');\n';
-        o1+='        \n';
-        o1+='        if($obj_matrice[__xst] === __xsu){\n';
-        o1+='\n';
-        o1+='            $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);\n';
-        o1+='\n';
-        o1+='        }else{\n';
-        o1+='\n';
-        o1+='            $donnees_retournees[__x_signaux][__xer][]=__LINE__ . \' erreur de convertion de \' . $txtPar . \'\';\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='    }\n';
-        o1+='\n';        
+        o2+='\n';
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    function vv_'+this.#nom_ref+'_filtre1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
+        o2+='        $txtPar=\'__num_page(0)\';\n';
+        o2+='        $nouvelles_valeurs=array( \'__num_page\' => 0);\n';
+        o2+='        foreach($donnees_recues[__xva] as $k0 => $v0){\n';
+        o2+='            \n';
+        o2+='            if($k0 !== \'__num_page\'){\n';
+        o2+='\n';
+        o2+='                $nouvelles_valeurs[$k0]=$v0;\n';
+        o2+='                \n';
+        o2+='                if(is_numeric($v0)){\n';
+        o2+='\n';
+        o2+='                    $txtPar .= \',\' . $k0 . \'(\' . $v0 . \')\';\n';
+        o2+='\n';
+        o2+='                }else{\n';
+        o2+='\n';
+        o2+='                    $txtPar .= \',\' . $k0 . \'(\\\'\' . str_replace(\'\\\'\',\'\\\\\\\'\',$v0) . \'\\\')\';\n';
+        o2+='                }\n';
+        o2+='\n';
+        o2+='\n';
+        o2+='            }\n';
+        o2+='\n';
+        o2+='        }\n';
+        o2+='        $_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\']=$nouvelles_valeurs;\n';
+        o2+='        $obj_matrice=$GLOBALS[\'obj_rev1\']->rev_vers_matrice(\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1(\' . $txtPar . \')\');\n';
+        o2+='        \n';
+        o2+='        if($obj_matrice[__xst] === __xsu){\n';
+        o2+='\n';
+        o2+='            $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);\n';
+        o2+='\n';
+        o2+='        }else{\n';
+        o2+='\n';
+        o2+='            $donnees_retournees[__x_signaux][__xer][]=__LINE__ . \' erreur de convertion de \' . $txtPar . \'\';\n';
+        o2+='        }\n';
+        o2+='\n';
+        o2+='    }\n';
+        o2+='\n';        
         
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    function vv_'+this.#nom_ref+'_supprimer1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
-        o1+='        $tt'+ref_select+'=$this->sql0->sql_iii(\n';
-        o1+='             /*sql_'+ref_select+'()*/ '+ref_select+',\n';
-        o1+='            array(/**/\n';
-        o1+='                \'T0_'+champ_primaire+'\' => $donnees_recues[__xva][\''+champ_primaire+'\']\n';
-        o1+='            ),\n';
-        o1+='            $donnees_retournees\n';
-        o1+='        );\n';
-        o1+='        \n';
-        o1+='        if($tt'+ref_select+'[__xst] === __xsu && is_numeric($donnees_recues[__xva][\''+champ_primaire+'\'])){\n';
-        o1+='\n';
-        o1+='            $tt'+ref_delete+'=$this->sql0->sql_iii(\n';
-        o1+='                 /*sql_'+ref_delete+'()*/ '+ref_delete+',\n';
-        o1+='                array(/**/\n';
-        o1+='                    \''+champ_primaire+'\' => $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\']\n';
-        o1+='                ),\n';
-        o1+='                $donnees_retournees\n';
-        o1+='            );\n';
-        o1+='            \n';
-        o1+='            if($tt'+ref_delete+'[__xst] === __xer){\n';
-        o1+='\n';
-        o1+='                $donnees_retournees[__x_signaux][__xer][]=\'erreur lors de la suppression  \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
-        o1+='\n';
-        o1+='            }else if($tt'+ref_delete+'[\'changements\'] === 1){\n';
-        o1+='\n';
-        o1+='                $donnees_retournees[__x_signaux][__xsu][]=\'👍 suppression \' . self::DUN_DUNE_ELEMENT_GERE . \' effectuée avec succès (\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \')\';\n';
-        o1+='                $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$mat,$donnees_recues);\n';
-        o1+='\n';
-        o1+='            }else{\n';
-        o1+='\n';
-        o1+='                $donnees_retournees[__x_signaux][__xer][]=\'erreur lors de la suppression  \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='        }else{\n';
-        o1+='\n';
-        o1+='            $donnees_retournees[__x_signaux][__xer][]=\'erreur lors de la suppression  \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='        $o1=\'\';\n';
-        o1+='    }\n';        
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    function vv_'+this.#nom_ref+'_supprimer1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
+        if(ref_select!=='' && ref_delete!==''){
+            o2+='        $tt'+ref_select+'=$this->sql0->sql_iii(\n';
+            o2+='             /*sql_'+ref_select+'()*/ '+ref_select+',\n';
+            o2+='            array(/**/\n';
+            o2+='                \'T0_'+champ_primaire+'\' => $donnees_recues[__xva][\''+champ_primaire+'\']\n';
+            o2+='            ),\n';
+            o2+='            $donnees_retournees\n';
+            o2+='        );\n';
+            o2+='        \n';
+            o2+='        if($tt'+ref_select+'[__xst] === __xsu && is_numeric($donnees_recues[__xva][\''+champ_primaire+'\'])){\n';
+            o2+='\n';
+            o2+='            $tt'+ref_delete+'=$this->sql0->sql_iii(\n';
+            o2+='                 /*sql_'+ref_delete+'()*/ '+ref_delete+',\n';
+            o2+='                array(/**/\n';
+            o2+='                    \''+champ_primaire+'\' => $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\']\n';
+            o2+='                ),\n';
+            o2+='                $donnees_retournees\n';
+            o2+='            );\n';
+            o2+='            \n';
+            o2+='            if($tt'+ref_delete+'[__xst] === __xer){\n';
+            o2+='\n';
+            o2+='                $donnees_retournees[__x_signaux][__xer][]=\'erreur lors de la suppression  \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
+            o2+='\n';
+            o2+='            }else if($tt'+ref_delete+'[\'changements\'] === 1){\n';
+            o2+='\n';
+            o2+='                $donnees_retournees[__x_signaux][__xsu][]=\'👍 suppression \' . self::DUN_DUNE_ELEMENT_GERE . \' effectuée avec succès (\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \')\';\n';
+            o2+='                $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$mat,$donnees_recues);\n';
+            o2+='\n';
+            o2+='            }else{\n';
+            o2+='\n';
+            o2+='                $donnees_retournees[__x_signaux][__xer][]=\'erreur lors de la suppression  \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
+            o2+='            }\n';
+            o2+='\n';
+            o2+='\n';
+            o2+='        }else{\n';
+            o2+='\n';
+            o2+='            $donnees_retournees[__x_signaux][__xer][]=\'erreur lors de la suppression  \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
+            o2+='        }\n';
+        }
+        o2+='\n';
+        o2+='        $o1=\'\';\n';
+        o2+='    }\n';        
         
             
-        o1+='\n';
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    function vv_'+this.#nom_ref+'_modifier1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
-        o1+='        $page_liste_des_'+this.#nom_ref+'1=false;\n';
-        o1+='        $l01=count($mat);\n';
-        o1+='        for( $i=1 ; $i < $l01 ; $i++ ){\n';
-        o1+='            \n';
-        o1+='            \n';
-        o1+='            if($mat[$i][1] === \'page_liste_des_'+this.#nom_ref+'1\' && $mat[$i][2] === \'f\' && $mat[$i][8] === 0){\n';
-        o1+='\n';
-        o1+='                $page_liste_des_'+this.#nom_ref+'1=true;\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='        $tt'+ref_select+'=$this->sql0->sql_iii(\n';
-        o1+='             /*sql_'+ref_select+'()*/ '+ref_select+',\n';
-        o1+='            array(/**/\n';
-        o1+='                \'T0_'+champ_primaire+'\' => $donnees_recues[__xva][\''+champ_primaire+'\']\n';
-        o1+='            ),\n';
-        o1+='            $donnees_retournees\n';
-        o1+='        );\n';
-        o1+='        \n';
-        o1+='        if($tt'+ref_select+'[__xst] === __xsu){\n';
-        o1+='\n';
-        o1+='\n';
-        /*
-        o1+='                $mot_de_passe_crypte=password_hash($donnees_recues[__xva][\'chp_mot_de_passe_utilisateur\'],PASSWORD_BCRYPT,array( \'cost\' => 10));\n';
-        */
-        for(let i=0;i<liste_des_champs_update.length;i++){
-            let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
-            let obj_champ=this.#obj_table.champs[nom_du_champ];
-            if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
-            }else{
-                if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre===1){
-                    o1+='            if(is_null($donnees_recues[__xva][\''+nom_du_champ+'\']) || $donnees_recues[__xva][\''+nom_du_champ+'\']===\'\'){\n';
-                    o1+='                $donnees_retournees[__x_signaux][__xer][]=\'la valeur "'+obj_champ.meta.nom_bref_du_champ+'" doit être renseigné [\' . __LINE__ . \']\';\n';
-                    o1+='                return;\n';
-                    o1+='            }\n';
-                }
-            }
-        }
-        o1+='\n';
-        o1+='            $tt'+ref_update+'=$this->sql0->sql_iii(\n';
-        o1+='                 /*sql_'+ref_update+'()*/ '+ref_update+',\n';
-        o1+='                array(/**/\n';
-        o1+='                    \'c_'+champ_primaire+'\' => $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'],\n';
-        for(let i=0;i<liste_des_champs_update.length;i++){
-            let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
-            let obj_champ=this.#obj_table.champs[nom_du_champ];
-            if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
-            }else{
-                o1+='                    \'n_'+nom_du_champ+'\' => $donnees_recues[__xva][\''+nom_du_champ+'\'],\n';
-            }
-        }
-        
-        o1+='                ),\n';
-        o1+='                $donnees_retournees\n';
-        o1+='            );\n';
-        o1+='\n';
-        o1+='            if($tt'+ref_update+'[__xst] === __xer){\n';
-        o1+='\n';
-        o1+='                $donnees_retournees[__x_signaux][__xer][]=\'erreur lors de la modification \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
-        o1+='\n';
-        o1+='            }else if($tt'+ref_update+'[\'changements\'] === 1){\n';
-        o1+='\n';
-        o1+='                \n';
-        o1+='                if($page_liste_des_'+this.#nom_ref+'1 === true){\n';
-        o1+='\n';
-        o1+='                    $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$mat,$donnees_recues);\n';
-        o1+='\n';
-        o1+='                }else{\n';
-        o1+='\n';
-        o1+='                    $donnees_retournees[__xst]=__xsu;\n';
-        o1+='                }\n';
-        o1+='\n';
-        o1+='                $donnees_retournees[__x_signaux][__xsu][]=\'👍 modification effectuée avec succès \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
-        o1+='\n';
-        o1+='            }else{\n';
-        o1+='\n';
-        o1+='                $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification efféctuée\';\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='        }else{\n';
-        o1+='\n';
-        o1+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification efféctuée\';\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='        $o1=\'\';\n';
-        o1+='    }\n';
-        
-        
-        o1+='\n';
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    function page_'+this.#nom_ref+'_creer1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
-        o1+='        $o1=\'\';\n';
-        o1+='        $o1 .= \'<h1>ajout \' . self::DUN_DUNE_ELEMENT_GERE . \' <div class="hug_bouton" style="font-weight:normal;" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_liste_des_'+this.#nom_ref+'1))" title="revenir à la liste" >⬱</div></h1>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'<div id="vv_'+this.#nom_ref+'_creer1">\' . PHP_EOL;\n';
-        
-        
-        for(let i=0;i<liste_des_champs_insert.length;i++){
-            let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
-            let obj_champ=this.#obj_table.champs[nom_du_champ];
-            if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
-            }else{
-                o1+='        /*\n';
-                o1+='          =====================================================================================================\n';
-                o1+='        */\n';
-                o1+='        $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
-                o1+='        $o1 .= \'    <div class="yy_edition_libelle1">\' . PHP_EOL;\n';
-                o1+='        $o1 .= \'      <span>'+obj_champ.meta.nom_bref_du_champ+'</span>\' . PHP_EOL;\n';
-                o1+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
-                o1+='        $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+        o2+='\n';
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    function vv_'+this.#nom_ref+'_modifier1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
+        o2+='        $page_liste_des_'+this.#nom_ref+'1=false;\n';
+        o2+='        $l01=count($mat);\n';
+        o2+='        for( $i=1 ; $i < $l01 ; $i++ ){\n';
+        o2+='            \n';
+        o2+='            \n';
+        o2+='            if($mat[$i][1] === \'page_liste_des_'+this.#nom_ref+'1\' && $mat[$i][2] === \'f\' && $mat[$i][8] === 0){\n';
+        o2+='\n';
+        o2+='                $page_liste_des_'+this.#nom_ref+'1=true;\n';
+        o2+='\n';
+        o2+='            }\n';
+        o2+='\n';
+        o2+='        }\n';
+        if(ref_select!=='' && ref_update!==''){
+            o2+='        $tt'+ref_select+'=$this->sql0->sql_iii(\n';
+            o2+='             /*sql_'+ref_select+'()*/ '+ref_select+',\n';
+            o2+='            array(/**/\n';
+            o2+='                \'T0_'+champ_primaire+'\' => $donnees_recues[__xva][\''+champ_primaire+'\']\n';
+            o2+='            ),\n';
+            o2+='            $donnees_retournees\n';
+            o2+='        );\n';
+            o2+='        \n';
+            o2+='        if($tt'+ref_select+'[__xst] === __xsu){\n';
+            o2+='\n';
+            o2+='\n';
+            o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification efféctuée\';\n';
+            o2+='            return;\n';
+            o2+='        }\n';
+                        
+
+            o2+='\n';
+            /*
+            o2+='                $mot_de_passe_crypte=password_hash($donnees_recues[__xva][\'chp_mot_de_passe_utilisateur\'],PASSWORD_BCRYPT,array( \'cost\' => 10));\n';
+            */
+            for(let i=0;i<liste_des_champs_update.length;i++){
+                let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
+                let obj_champ=this.#obj_table.champs[nom_du_champ];
                 
-                if('cht_valeur_init_genre' === obj_champ.nom_du_champ){
-                    debugger
+                if('cht_fonctions_genre'===nom_du_champ){
+                    //debugger;
                 }
                 
-                if(obj_champ.genre_objet_du_champ.chp_espece_genre==='VARCHAR'){
-                    let size='';
-                    if(obj_champ.genre_objet_du_champ.che_longueur_genre<=64){
-                     size=' size="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" ';
+                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
+                }else{
+                    if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre===1){
+                        o2+='        if(is_null($donnees_recues[__xva][\''+nom_du_champ+'\']) || $donnees_recues[__xva][\''+nom_du_champ+'\']===\'\'){\n';
+                        o2+='            $donnees_retournees[__x_signaux][__xer][]=\'la valeur "'+obj_champ.meta.nom_bref_du_champ+'" doit être renseigné [\' . __LINE__ . \']\';\n';
+                        o2+='            return;\n';
+                        o2+='        }\n';
                     }
-                    o1+='        $o1 .= \'      <input type="text" '+size+' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="\';\n';
-                    o1+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
-                    o1+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
-                    o1+='        }else{\n';
-                    o1+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
-                    o1+='        }\n';
-                    o1+='        $o1 .= \'" />\' . PHP_EOL;\n';
-                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre!==null){
-                        let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split(',');
-                        o1+='        $o1 .= \'      <br />\';\n';
-                        for(let opt in tab){
-                            o1+='        $o1 .= \'      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone('+obj_champ.nom_du_champ+',valeur),'+tab[opt]+'))">'+tab[opt]+'</div>\';\n';
+                    if(obj_champ.genre_objet_du_champ.cht_fonctions_genre!==null){
+                     
+                        var obj1=__gi1.__m_rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
+                        if(obj1.__xst !== __xsu){
+                            return({__xst : __xer});
+                        }
+                          
+                        let mat1=obj1.__xva;
+                        let l01=mat1.length;
+                        for(let j=1;j<l01;j=mat1[j][12]){
+                            if(mat1[j][2]==='f'){
+                                o2+='\n';
+                                o2+='        $__test=$GLOBALS[\'obj_fonctions1\']->'+mat1[j][1]+'(';
+                                if(mat1[j][8]===0){
+                                }else{
+                                    for(let k=j+1;k<l01;k=mat1[k][12]){
+                                        if(mat1[k][2]==='c'){
+                                            if(mat1[k][4]===0){
+                                                o2+=mat1[k][1]+',';
+                                            }else{
+                                              /*afr*/
+                                              debugger
+                                              return({__xst : __xer});
+                                            }
+                                        }else{
+                                            return({__xst : __xer});
+                                        }
+                                    }
+                                }
+                                o2+='$donnees_recues[__xva][\''+nom_du_champ+'\'],$donnees_retournees);\n';
+                                
+                                o2+='        if($__test[__xst]!==__xsu){\n';
+                                o2+='            $donnees_retournees[__x_signaux][__xer][]=\'erreur sur le champ "'+obj_champ.meta.nom_bref_du_champ+'" [\' . __LINE__ . \']\';\n';
+                                o2+='            $donnees_retournees[__xst]=__xer;\n';
+                                o2+='            return;\n';
+                                o2+='        }\n\n';
+                            }else{
+                                return({__xst : __xer});
+                            }
                         }
                     }
-                }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='TEXT'){
-                    o1+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
-                    o1+='        $o1 .= \'            <textarea id="'+obj_champ.nom_du_champ+'" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\';\n';
-                    o1+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
-                    o1+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
-                    o1+='        }else{\n';
-                    o1+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
-                    o1+='        }\n';
-                    o1+='        $o1 .= \'</textarea>\' . PHP_EOL;\n';
-                    o1+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
-                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre!==null){
+                }
+            }
+            o2+='\n';
+            o2+='        $tt'+ref_update+'=$this->sql0->sql_iii(\n';
+            o2+='             /*sql_'+ref_update+'()*/ '+ref_update+',\n';
+            o2+='            array(/**/\n';
+            o2+='                    \'c_'+champ_primaire+'\' => $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'],\n';
+            for(let i=0;i<liste_des_champs_update.length;i++){
+                let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
+                let obj_champ=this.#obj_table.champs[nom_du_champ];
+                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
+                }else{
+                    o2+='                \'n_'+nom_du_champ+'\' => $donnees_recues[__xva][\''+nom_du_champ+'\'],\n';
+                }
+            }
+            
+            o2+='            ),\n';
+            o2+='            $donnees_retournees\n';
+            o2+='        );\n';
+            o2+='\n';
+            o2+='        if($tt'+ref_update+'[__xst] === __xer){\n';
+            o2+='\n';
+            o2+='            $donnees_retournees[__x_signaux][__xer][]=\'erreur lors de la modification \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
+            o2+='\n';
+            o2+='        }else if($tt'+ref_update+'[\'changements\'] === 1){\n';
+            o2+='\n';
+            o2+='\n';
+            o2+='            if($page_liste_des_'+this.#nom_ref+'1 === true){\n';
+            o2+='\n';
+            o2+='                $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$mat,$donnees_recues);\n';
+            o2+='\n';
+            o2+='            }else{\n';
+            o2+='\n';
+            o2+='                $donnees_retournees[__xst]=__xsu;\n';
+            o2+='            }\n';
+            o2+='\n';
+            o2+='            $donnees_retournees[__x_signaux][__xsu][]=\'👍 modification effectuée avec succès \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
+            o2+='\n';
+            o2+='        }else{\n';
+            o2+='\n';
+            o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification efféctuée\';\n';
+            o2+='        }\n';
+            o2+='\n';
+        }
+        o2+='\n';
+        o2+='        $o1=\'\';\n';
+        o2+='    }\n';
+        
+        
+        o2+='\n';
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    function page_'+this.#nom_ref+'_creer1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
+        o2+='        $o1=\'\';\n';
+        o2+='        $o1 .= \'<h1>ajout \' . self::DUN_DUNE_ELEMENT_GERE . \' <div class="hug_bouton" style="font-weight:normal;" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_liste_des_'+this.#nom_ref+'1))" title="revenir à la liste" >⬱</div></h1>\' . PHP_EOL;\n';
+        o2+='        $o1 .= \'<div id="vv_'+this.#nom_ref+'_creer1">\' . PHP_EOL;\n';
+        
+        if(ref_select!=='' && ref_insert!==''){
+        
+            for(let i=0;i<liste_des_champs_insert.length;i++){
+                let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
+                let obj_champ=this.#obj_table.champs[nom_du_champ];
+                if('che_ordre_genre' === obj_champ.nom_du_champ){
+    //                debugger
+                }
+                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 ){
+                }else if( obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
+                    o2+='        /*\n';
+                    o2+='          =====================================================================================================\n';
+                    o2+='        */\n';
+                    o2+='        $o1 .= \'      <input type="hidden" id="'+obj_champ.nom_du_champ+'" value="0" />\' . PHP_EOL;\n';
+                 
+                }else{
+                    o2+='        /*\n';
+                    o2+='          =====================================================================================================\n';
+                    o2+='        */\n';
+                    o2+='        $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    <div class="yy_edition_libelle1">\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'      <span>'+obj_champ.meta.nom_bref_du_champ+'</span>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+                    
+                    
+                    if(obj_champ.genre_objet_du_champ.chp_espece_genre==='VARCHAR'){
+                        let size='';
+                        if(obj_champ.genre_objet_du_champ.che_longueur_genre<=64){
+                         size=' size="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" ';
+                        }
+                        o2+='        $o1 .= \'      <input ';
+                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre!==null){
+                         o2+=' disabled ';
+                        }
+                        o2+=' type="text" '+size+' ';
+                        o2+=' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" ';
+                        o2+=' id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ';
+                        o2+=' value="\';\n';
+                        o2+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
+                        o2+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
+                        o2+='        }else{\n';
+                        o2+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                        o2+='        }\n';
+                        o2+='        $o1 .= \'" />\' . PHP_EOL;\n';
+                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre!==null){
+                            let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split(',');
+                            o2+='        $o1 .= \'      <br />\';\n';
+                            for(let opt in tab){
+                                o2+='        $o1 .= \'      <div class="hug_bouton" data-hug_click="c_fonctions_js1(affecte(zone('+obj_champ.nom_du_champ+',valeur),'+tab[opt]+'))">'+tab[opt]+'</div>\';\n';
+                            }
+                        }
+                    }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='TEXT'){
+                        o2+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
+                        o2+='        $o1 .= \'            <textarea id="'+obj_champ.nom_du_champ+'" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\';\n';
+                        o2+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
+                        o2+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
+                        o2+='        }else{\n';
+                        o2+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                        o2+='        }\n';
+                        o2+='        $o1 .= \'</textarea>\' . PHP_EOL;\n';
+                        o2+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
+                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre!==null){
+                             debugger
+                        }
+                     
+                    }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
+                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
+                            /*champ entier standard*/
+                            o2+='        $o1 .= \'      <input type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="\';\n';
+                            o2+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
+                            o2+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
+                            o2+='        }else{\n';
+                            o2+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                            o2+='        }\n';
+                            o2+='        $o1 .= \'"/>\' . PHP_EOL;\n';
+                            if(obj_champ.genre_objet_du_champ.cht_parmis_genre!==null){
+                                 debugger
+                            }
+                        }else{
+                            if(obj_champ.genre_objet_du_champ.cht_parmis_genre==='0,1'){
+                                o2+='        $o1 .= \'        <input type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\';\n';
+                                o2+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
+                                o2+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
+                                o2+='        }else{\n';
+                                o2+='            $o1 .= \'0\';\n';
+                                o2+='        }\n';
+                                o2+='        $o1 .= \'" >\' . PHP_EOL;\n';
+                            }else{
+                                debugger
+                            }
+                        }
+
+                    }else{
+                        /*
+                          afr
+                        */
+                        debugger
+                        
+                        
+                    }
+                    
+                    o2+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'  </div>\' . PHP_EOL;\n';
+                }
+            }
+        }
+        o2+='        /*\n';
+        o2+='          =====================================================================================================\n';
+        o2+='        */\n';
+        o2+='        $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
+        o2+='        $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+        o2+='        $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_creer1),page_liste_des_'+this.#nom_ref+'1())" title="" >ajouter et revenir à la liste</div>\';\n';
+        o2+='        $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_creer1))" title="" >ajouter</div>\';\n';
+        o2+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
+        o2+='        $o1 .= \'  </div>\' . PHP_EOL;\n';
+        o2+='        /* */\n';
+        o2+='        $o1 .= \'</div>\' . PHP_EOL;\n';
+        o2+='        $donnees_retournees[__x_page] .= $o1;\n';
+        o2+='        $donnees_retournees[__xst]=__xsu;\n';
+        o2+='    }\n'; 
+
+
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    function page_'+this.#nom_ref+'_supprimer1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
+        o2+='        $o1=\'\';\n';
+        o2+='        $'+champ_primaire+'=\'\';\n';
+        o2+='        $l01=count($mat);\n';
+        o2+='        for( $i=1 ; $i < $l01 ; $i++ ){\n';
+        o2+='            \n';
+        o2+='            \n';
+        o2+='            if($mat[$i][1] === \''+champ_primaire+'\' && $mat[$i + 1][2] === \'c\' && $mat[$i][2] === \'f\'){\n';
+        o2+='\n';
+        o2+='                $'+champ_primaire+'=$mat[$i + 1][1];\n';
+        o2+='                break;\n';
+        o2+='\n';
+        o2+='            }\n';
+        o2+='\n';
+        o2+='        }\n';
+        o2+='        \n';
+        o2+='        if(is_numeric($'+champ_primaire+') ){\n';
+        if(ref_select!=='' && ref_delete!==''){
+            o2+='\n';
+            o2+='            $tt'+ref_select+'=$this->sql0->sql_iii(\n';
+            o2+='                 /*sql_'+ref_select+'()*/ '+ref_select+',\n';
+            o2+='                array(/**/\n';
+            o2+='                    \'T0_'+champ_primaire+'\' => $'+champ_primaire+'\n';
+            o2+='                ),\n';
+            o2+='                $donnees_retournees\n';
+            o2+='            );\n';
+            o2+='            \n';
+            o2+='            if($tt'+ref_select+'[__xst] === __xsu){\n';
+            o2+='\n';
+            o2+='                $o1 .= \'<h1>suppression \' . self::DUN_DUNE_ELEMENT_GERE . \'<div class="hug_bouton" style="font-weight:normal;" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_liste_des_'+this.#nom_ref+'1))" title="revenir à la liste" >⬱</div></h1>\' . PHP_EOL;\n';
+            o2+='                $o1 .= \'<div id="vv_'+this.#nom_ref+'_supprimer1">\' . PHP_EOL;\n';
+            o2+='                $o1 .= \'  <h3>confirmez vous la suppression \' . self::DUN_DUNE_ELEMENT_GERE . \'(<b>\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \'</b>) ?</h3>\';\n';
+
+
+
+            for(let i=0;i<liste_des_champs_insert.length;i++){
+                let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
+                let obj_champ=this.#obj_table.champs[nom_du_champ];
+                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
+                }else{
+                    o2+='                /*\n';
+                    o2+='                  =====================================================================================================\n';
+                    o2+='                */\n';
+                    o2+='                $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
+                    o2+='                $o1 .= \'    <div class="yy_edition_libelle1">\' . PHP_EOL;\n';
+                    o2+='                $o1 .= \'      <span>'+obj_champ.meta.nom_bref_du_champ+'</span>\' . PHP_EOL;\n';
+                    o2+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='                $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+                    
+                    if(obj_champ.genre_objet_du_champ.chp_espece_genre==='VARCHAR'){
+                        let size='';
+                        if(obj_champ.genre_objet_du_champ.che_longueur_genre<=64){
+                         size=' size="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" ';
+                        }
+                        o2+='                $o1 .= \'      <input disabled value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" type="text" '+size+' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
+                    }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='TEXT'){
+                        o2+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
+                        o2+='        $o1 .= \'            <textarea disabled id="'+obj_champ.nom_du_champ+'" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'</textarea>\' . PHP_EOL;\n';
+                        o2+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
+                    }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
+                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
+                            /*champ entier standard*/
+                            o2+='                $o1 .= \'      <input value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" disabled type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
+                        }else{
+                            if(obj_champ.genre_objet_du_champ.cht_parmis_genre==='0,1'){
+                                o2+='                $o1 .= \'        <input disabled type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" >\'; . PHP_EOL;\n';
+                            }else{
+                                debugger
+                            }
+                        }
+                    }else{
+                        /*
+                          afr
+                        */
+                        debugger
+                    }
+                    
+                    o2+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='                $o1 .= \'  </div>\' . PHP_EOL;\n';
+                }
+            }
+
+            o2+='                /*\n';
+            o2+='\n';
+            o2+='                */\n';
+            o2+='                $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
+            o2+='                $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+            o2+='                $o1 .= \'    <input type="hidden" value="\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \'" id="'+champ_primaire+'" />\' . PHP_EOL;\n';
+            o2+='                $o1 .= \'    <div class="hug_bouton yy__x_signaux_2" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_supprimer1),page_liste_des_'+this.#nom_ref+'1())" title="" >Je confirme la suppression</div>\';\n';
+            o2+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
+            o2+='                $o1 .= \'  </div>\' . PHP_EOL;\n';
+            o2+='                $o1 .= \'</div>\' . PHP_EOL;\n';
+            o2+='                $donnees_retournees[__x_page] .= $o1;\n';
+            o2+='                $donnees_retournees[__xst]=__xsu;\n';
+            o2+='\n';
+            o2+='            }\n';
+            o2+='\n';
+            o2+='        }\n';
+        }
+        o2+='\n';
+        o2+='    }\n';
+
+
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    function page_'+this.#nom_ref+'_modifier1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
+        o2+='        $o1=\'\';\n';
+        o2+='        $'+champ_primaire+'=\'\';\n';
+        o2+='        $l01=count($mat);\n';
+        o2+='        for( $i=1 ; $i < $l01 ; $i++ ){\n';
+        o2+='            \n';
+        o2+='            \n';
+        o2+='            if($mat[$i][1] === \''+champ_primaire+'\' && $mat[$i + 1][2] === \'c\' && $mat[$i][2] === \'f\'){\n';
+        o2+='\n';
+        o2+='                $'+champ_primaire+'=$mat[$i + 1][1];\n';
+        o2+='                break;\n';
+        o2+='\n';
+        o2+='            }\n';
+        o2+='\n';
+        o2+='        }\n';
+        o2+='        \n';
+        o2+='        if(is_numeric($'+champ_primaire+') && $'+champ_primaire+' > 0){\n';
+        o2+='\n';
+        if(ref_select!=='' && ref_update!==''){
+        
+            o2+='            $tt'+ref_select+'=$this->sql0->sql_iii(\n';
+            o2+='                 /*sql_'+ref_select+'()*/ '+ref_select+',\n';
+            o2+='                array(/**/\n';
+            o2+='                    \'T0_'+champ_primaire+'\' => $'+champ_primaire+'\n';
+            o2+='                ),\n';
+            o2+='                $donnees_retournees\n';
+            o2+='            );\n';
+            o2+='            \n';
+            o2+='            if($tt'+ref_select+'[__xst] === __xsu){\n';
+            o2+='\n';
+            o2+='                $o1 .= \'<h1>modification \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_liste_des_'+this.#nom_ref+'1))" title="revenir à la liste" >⬱</div></h1>\' . PHP_EOL;\n';
+            o2+='                $o1 .= \'<div id="vv_'+this.#nom_ref+'_modifier1">\' . PHP_EOL;\n';
+            o2+='                /**/\n';
+            o2+='                $o1 .= \'  <input type="hidden" value="\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \'" id="'+champ_primaire+'" />\' . PHP_EOL;\n';
+            o2+='                /*\n';
+            
+            for(let i=0;i<liste_des_champs_update.length;i++){
+                let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
+                let obj_champ=this.#obj_table.champs[nom_du_champ];
+                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
+                }else{
+                    o2+='                /*\n';
+                    o2+='                  =====================================================================================\n';
+                    o2+='                */\n';
+                    o2+='                $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
+                    o2+='                $o1 .= \'    <div class="yy_edition_libelle1">\' . PHP_EOL;\n';
+                    o2+='                $o1 .= \'      <span>'+obj_champ.meta.nom_bref_du_champ+'</span>\' . PHP_EOL;\n';
+                    o2+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='                $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+                    if(obj_champ.genre_objet_du_champ.chp_espece_genre==='VARCHAR'){
+                        let size='';
+                        if(obj_champ.genre_objet_du_champ.che_longueur_genre<=64){
+                         size=' size="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" ';
+                        }
+                        o2+='                $o1 .= \'      <input type="text" id="'+obj_champ.nom_du_champ+'" '+size+' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\']) . \'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
+                    }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='TEXT'){
+                        o2+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
+                        o2+='        $o1 .= \'            <textarea id="'+obj_champ.nom_du_champ+'" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\']) . \'</textarea>\' . PHP_EOL;\n';
+                        o2+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
+                    }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
+                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
+                            /*champ entier standard*/
+                            o2+='        $o1 .= \'      <input value="" type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
+                        }else{
+                            if(obj_champ.genre_objet_du_champ.cht_parmis_genre==='0,1'){
+                                o2+='        $o1 .= \'        <input type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" >\'; . PHP_EOL;\n';
+                            }else{
+                                debugger
+                            }
+                        }
+                    }else{
+                         /*
+                             AFR
+                         */
                          debugger
                     }
-                 
-                }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
-                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
-                        /*champ entier standard*/
-                        o1+='        $o1 .= \'      <input type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="\';\n';
-                        o1+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
-                        o1+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
-                        o1+='        }else{\n';
-                        o1+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
-                        o1+='        }\n';
-                        o1+='        $o1 .= \'"/>\' . PHP_EOL;\n';
-                    }else{
-                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre==='0,1'){
-                            o1+='        $o1 .= \'        <input type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\';\n';
-                            o1+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
-                            o1+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
-                            o1+='        }else{\n';
-                            o1+='            $o1 .= \'0\';\n';
-                            o1+='        }\n';
-                            o1+='        $o1 .= \'" >\' . PHP_EOL;\n';
-                        }else{
-                            debugger
-                        }
-                    }
-
-                }else{
-                    /*
-                      afr
-                    */
-                    debugger
-                    
-                    
+                    o2+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='                $o1 .= \'  </div>\' . PHP_EOL;\n';
                 }
-                
-                o1+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
-                o1+='        $o1 .= \'  </div>\' . PHP_EOL;\n';
             }
-        }
         
-        o1+='        /*\n';
-        o1+='          =====================================================================================================\n';
-        o1+='        */\n';
-        o1+='        $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_creer1),page_liste_des_'+this.#nom_ref+'1())" title="" >ajouter et revenir à la liste</div>\';\n';
-        o1+='        $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_creer1))" title="" >ajouter</div>\';\n';
-        o1+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'  </div>\' . PHP_EOL;\n';
-        o1+='        /* */\n';
-        o1+='        $o1 .= \'</div>\' . PHP_EOL;\n';
-        o1+='        $donnees_retournees[__x_page] .= $o1;\n';
-        o1+='        $donnees_retournees[__xst]=__xsu;\n';
-        o1+='    }\n'; 
-
-
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    function page_'+this.#nom_ref+'_supprimer1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
-        o1+='        $o1=\'\';\n';
-        o1+='        $'+champ_primaire+'=\'\';\n';
-        o1+='        $l01=count($mat);\n';
-        o1+='        for( $i=1 ; $i < $l01 ; $i++ ){\n';
-        o1+='            \n';
-        o1+='            \n';
-        o1+='            if($mat[$i][1] === \''+champ_primaire+'\' && $mat[$i + 1][2] === \'c\' && $mat[$i][2] === \'f\'){\n';
-        o1+='\n';
-        o1+='                $'+champ_primaire+'=$mat[$i + 1][1];\n';
-        o1+='                break;\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='        \n';
-        o1+='        if(is_numeric($'+champ_primaire+') ){\n';
-        o1+='\n';
-        o1+='            $tt'+ref_select+'=$this->sql0->sql_iii(\n';
-        o1+='                 /*sql_'+ref_select+'()*/ '+ref_select+',\n';
-        o1+='                array(/**/\n';
-        o1+='                    \'T0_'+champ_primaire+'\' => $'+champ_primaire+'\n';
-        o1+='                ),\n';
-        o1+='                $donnees_retournees\n';
-        o1+='            );\n';
-        o1+='            \n';
-        o1+='            if($tt'+ref_select+'[__xst] === __xsu){\n';
-        o1+='\n';
-        o1+='                $o1 .= \'<h1>suppression \' . self::DUN_DUNE_ELEMENT_GERE . \'<div class="hug_bouton" style="font-weight:normal;" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_liste_des_'+this.#nom_ref+'1))" title="revenir à la liste" >⬱</div></h1>\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'<div id="vv_'+this.#nom_ref+'_supprimer1">\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'  <h3>confirmez vous la suppression \' . self::DUN_DUNE_ELEMENT_GERE . \'(<b>\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \'</b>) ?</h3>\';\n';
+        }
+        o2+='                /*\n';
+        o2+='                  =====================================================================================\n';
+        o2+='                */\n';
+        o2+='                $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
+        o2+='                $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+        o2+='                $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $'+champ_primaire+' . \'),page_liste_des_'+this.#nom_ref+'1())" title="" >enregistrer et revenir à la liste</div>\';\n';
+        o2+='                $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $'+champ_primaire+' . \'))" title="" >enregistrer</div>\';\n';
+        o2+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
+        o2+='                $o1 .= \'  </div>\' . PHP_EOL;\n';
+        o2+='                /**/\n';
+        o2+='                $o1 .= \'</div>\' . PHP_EOL;\n';
+        o2+='                $donnees_retournees[__x_page] .= $o1;\n';
+        o2+='                $donnees_retournees[__xst]=__xsu;\n';
+        o2+='\n';
+        o2+='            }\n';
+        o2+='\n';
+        o2+='\n';
+        o2+='        }else{\n';
+        o2+='\n';
+        o2+='            $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$mat,$donnees_recues);\n';
+        o2+='\n';
+        o2+='        }\n';
+        o2+='\n';
+        o2+='    }\n';   
 
 
 
-        for(let i=0;i<liste_des_champs_insert.length;i++){
-            let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
-            let obj_champ=this.#obj_table.champs[nom_du_champ];
-            if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
-            }else{
-                o1+='                /*\n';
-                o1+='                  =====================================================================================================\n';
-                o1+='                */\n';
-                o1+='                $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
-                o1+='                $o1 .= \'    <div class="yy_edition_libelle1">\' . PHP_EOL;\n';
-                o1+='                $o1 .= \'      <span>'+obj_champ.meta.nom_bref_du_champ+'</span>\' . PHP_EOL;\n';
-                o1+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
-                o1+='                $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
-                
-                if(obj_champ.genre_objet_du_champ.chp_espece_genre==='VARCHAR'){
-                    let size='';
-                    if(obj_champ.genre_objet_du_champ.che_longueur_genre<=64){
-                     size=' size="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" ';
-                    }
-                    o1+='                $o1 .= \'      <input disabled value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" type="text" '+size+' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
-                }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='TEXT'){
-                    o1+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
-                    o1+='        $o1 .= \'            <textarea disabled id="'+obj_champ.nom_du_champ+'" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'</textarea>\' . PHP_EOL;\n';
-                    o1+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
-                }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
-                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
-                        /*champ entier standard*/
-                        o1+='        $o1 .= \'      <input value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" disabled type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
-                    }else{
-                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre==='0,1'){
-                            o1+='        $o1 .= \'        <input disabled type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" >\'; . PHP_EOL;\n';
-                        }else{
-                            debugger
-                        }
-                    }
+        o2+='\n';
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='      Pour les iframes sur les '+this.#nom_ref+'\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    function vv_'+this.#nom_ref+'_filtre_choix_1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){\n';
+        o2+='        $txtPar=\'__num_page(0)\';\n';
+        o2+='        $nouvelles_valeurs=array( \'__num_page\' => 0);\n';
+        o2+='        foreach($donnees_recues[__xva] as $k0 => $v0){\n';
+        o2+='            \n';
+        o2+='            if($k0 !== \'__num_page\'){\n';
+        o2+='\n';
+        o2+='                $nouvelles_valeurs[$k0]=$v0;\n';
+        o2+='                \n';
+        o2+='                if(is_numeric($v0)){\n';
+        o2+='\n';
+        o2+='                    $txtPar .= \',\' . $k0 . \'(\' . $v0 . \')\';\n';
+        o2+='\n';
+        o2+='                }else{\n';
+        o2+='\n';
+        o2+='                    $txtPar .= \',\' . $k0 . \'(\\\'\' . str_replace(\'\\\'\',\'\\\\\\\'\',$v0) . \'\\\')\';\n';
+        o2+='                }\n';
+        o2+='\n';
+        o2+='\n';
+        o2+='            }\n';
+        o2+='\n';
+        o2+='        }\n';
+        o2+='        $_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_'+this.#nom_ref+'_sous_liste1\']=$nouvelles_valeurs;\n';
+        o2+='        $obj_matrice=$GLOBALS[\'obj_rev1\']->rev_vers_matrice(\''+this.#nom_de_la_classe_générée+'.page_'+this.#nom_ref+'_sous_liste1(\' . $txtPar . \')\');\n';
+        o2+='        \n';
+        o2+='        if($obj_matrice[__xst] === __xsu){\n';
+        o2+='\n';
+        o2+='            $this->page_'+this.#nom_ref+'_sous_liste1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);\n';
+        o2+='\n';
+        o2+='        }else{\n';
+        o2+='\n';
+        o2+='            $donnees_retournees[__x_signaux][__xer][]=__LINE__ . \' erreur de convertion de \' . $txtPar . \'\';\n';
+        o2+='        }\n';
+        o2+='\n';
+        o2+='    }\n';
+        o2+='\n';
+        
+        
+
+
+
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    function page_'+this.#nom_ref+'_sous_liste1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
+        o2+='        $fonction1=\''+this.#nom_de_la_classe_générée+'.page_'+this.#nom_ref+'_sous_liste1\';\n';
+        o2+='        $o1 = \'\';\n';
+        o2+='        /* déverminage */\n';
+        o2+='        $__nbMax=10;\n';
+        o2+='        /*\n';
+        o2+='          $donnees_retournees[__x_signaux][__xif][]=__LINE__ . \'TODO $par \'.var_export($par,true);\n';
+        o2+='        */\n';
+        o2+='        $par=array();\n';
+        o2+='        $par[\'T0_'+champ_primaire+'\']=\'\';\n';
+        if(champ_est_libelle_lien!==null){
+           o2+='        $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\']=\'\';\n';
+           o2+='        $par[\'nom_champ_dans_parent1\']=\'\';\n';
+           o2+='        $par[\'nom_libelle_dans_parent1\']=\'\';\n';
+           o2+='        $par[\'__num_page\']=0;\n';
+           o2+='        $numpage=-1;\n';
+           o2+='        $par_mat=array();\n';
+           o2+='        $l01=count($mat);\n';
+           o2+='        $provenance_menu=false;\n';
+           o2+='        /* $donnees_retournees[__x_signaux][__xdv][]=\'$mat =\'.json_encode( $mat  , JSON_FORCE_OBJECT );*/\n';
+           o2+='        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){\n';
+           o2+='            \n';
+           o2+='            \n';
+           o2+='            if($fonction1 === $mat[$i][1]){\n';
+           o2+='\n';
+           o2+='                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){\n';
+           o2+='                    \n';
+           o2+='                    \n';
+           o2+='                    if($mat[$j][2] === \'f\' && $mat[$j][8] === 1 && $mat[$j + 1][2] === \'c\'){\n';
+           o2+='\n';
+           o2+='                        /* $donnees_retournees[__x_signaux][__xdv][]=\'$mat[$j][1] =\'.json_encode( $mat[$j][1] . \' \' . $mat[$j+1][1]  , JSON_FORCE_OBJECT );*/\n';
+           o2+='                        \n';
+           o2+='                        if($mat[$j][1] === \'__num_page\'){\n';
+           o2+='\n';
+           o2+='                            $numpage=$mat[$j + 1][1];\n';
+           o2+='                            $par_mat[\'__num_page\']=$mat[$j + 1][1];\n';
+           o2+='                            $par[\'__num_page\']=$mat[$j + 1][1];\n';
+           o2+='\n';
+           o2+='                        }else if($mat[$j][1] === \'indice_menu\'){\n';
+           o2+='\n';
+           o2+='                            $numpage=0;\n';
+           o2+='                            $par_mat[\'__num_page\']=0;\n';
+           o2+='                            $provenance_menu=true;\n';
+           o2+='                            $par[\'__num_page\']=0;\n';
+           o2+='\n';
+           o2+='                        }else if($mat[$j + 1][1] !== \'\'){\n';
+           o2+='\n';
+           o2+='                            $par_mat[$mat[$j][1]]=$mat[$j + 1][1];\n';
+           o2+='                        }\n';
+           o2+='\n';
+           o2+='\n';
+           o2+='                    }\n';
+           o2+='\n';
+           o2+='                }\n';
+           o2+='\n';
+           o2+='            }\n';
+           o2+='\n';
+           o2+='        }\n';
+           o2+='        \n';
+           o2+='        if(false === isset($_SESSION[__X_CLE_APPLICATION][$fonction1])){\n';
+           o2+='\n';
+           o2+='            $par=array_merge($par,$par_mat);\n';
+           o2+='            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;\n';
+           o2+='\n';
+           o2+='        }else{\n';
+           o2+='\n';
+           o2+='            $par=$_SESSION[__X_CLE_APPLICATION][$fonction1];\n';
+           o2+='            \n';
+           o2+='            if($provenance_menu === true){\n';
+           o2+='\n';
+           o2+='                $par[\'__num_page\']=0;\n';
+           o2+='\n';
+           o2+='            }else{\n';
+           o2+='\n';
+           o2+='                \n';
+           o2+='                if($numpage === -1){\n';
+           o2+='\n';
+           o2+='\n';
+           o2+='                }else{\n';
+           o2+='\n';
+           o2+='                    $par[\'__num_page\']=$numpage;\n';
+           o2+='                }\n';
+           o2+='\n';
+           o2+='            }\n';
+           o2+='\n';
+           o2+='            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;\n';
+           o2+='        }\n';
+           o2+='\n';
+           o2+='        $par[\'T0_'+champ_primaire+'\']=$par[\'T0_'+champ_primaire+'\']??\'\';\n';
+           o2+='        $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\']=$par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\']??\'\';\n';
+           o2+='        $par[\'nom_champ_dans_parent1\']=$par_mat[\'nom_champ_dans_parent1\']??\'\';\n';
+           o2+='        $par[\'nom_libelle_dans_parent1\']=$par_mat[\'nom_libelle_dans_parent1\']??\'\';\n';
+           o2+='        $nom_filtre=\'vv_'+this.#nom_ref+'_filtre_choix_1\';\n';
+           o2+='        $o1 .= \'<h1>\' . SELF::LISTE_DES_ELEMENTS_GERES . \'</h1>\';\n';
+           o2+='        $__num_page=!isset($par[\'__num_page\']) ? 0 : (int)($par[\'__num_page\']);\n';
+           o2+='        $__debut=$__num_page * $__nbMax;\n';
+           o2+='        $o1 .= \'<div class="yy_filtre_liste1" id="\' . $nom_filtre . \'">\' . PHP_EOL;\n';
+           o2+='        /**/\n';
+           o2+='        $o1 .= \'   <div>\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'      <div><span>'+champ_est_libelle_lien.champ_dans_la_base.meta.nom_bref_du_champ+'</span></div>\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'      <div><input type="text" id="'+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'" value="\' . $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\'] . \'" size="8" maxlength="64" autocapitalize="off" />\' . PHP_EOL;\n';
+           o2+='        \n';
+           o2+='        if($par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\'] !== \'\'){\n';
+           o2+='\n';
+           o2+='            $o1 .= \'         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id('+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'),value(\\\'\\\'))),'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(\' . $nom_filtre . \'))" >x</span>\';\n';
+           o2+='\n';
+           o2+='        }\n';
+           o2+='\n';
+           o2+='        $o1 .= \'      </div>\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'   </div>\' . PHP_EOL;\n';
+           o2+='        /**/\n';
+           o2+='        $o1 .= \'   <div>\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'    <div><span>id</span></div>\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'    <div><input type="text" id="T0_'+champ_primaire+'" value="\' . $par[\'T0_'+champ_primaire+'\'] . \'" size="8" maxlength="32" autocapitalize="off" /></div>\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'   </div>\' . PHP_EOL;\n';
+           o2+='        /**/\n';
+           o2+='        $o1 .= \'   <div>    \' . PHP_EOL;\n';
+           o2+='        $o1 .= \'     <div><span>&nbsp;</span></div>\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(\' . $nom_filtre . \'))" >🔎</div></div>\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'     <input type="hidden" id="__num_page" value="\' . $__debut . \'" />\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'     <input type="hidden" id="nom_champ_dans_parent1" value="\' . $par[\'nom_champ_dans_parent1\'] . \'"  />\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'     <input type="hidden" id="nom_libelle_dans_parent1" value="\' . $par[\'nom_libelle_dans_parent1\'] . \'"  />\' . PHP_EOL;\n';
+           o2+='        $o1 .= \'   </div> \' . PHP_EOL;\n';
+           o2+='        /**/\n';
+           o2+='        $o1 .= \'</div>\';\n';
+           if(ref_liste_ecran!=='' && ref_liste_ecran!==''){
+           
+               o2+='        $tt=$this->sql0->sql_iii(\n';
+               o2+='             '+ref_liste_ecran+',\n';
+               o2+='             /**/ array(\n';
+               o2+='                /**/\n';
+               o2+='                \'T0_'+champ_primaire+'\' => $par[\'T0_'+champ_primaire+'\'] === \'\' ? \'\' : $par[\'T0_'+champ_primaire+'\'],\n';
+               o2+='                \''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\' => $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\'] === \'\' ? \'\' : \'\' . $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\'] . \'\',\n';
+               for( let i in liste_des_champs_liste_ecran){
+                if(
+                      liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_incrément_genre===1 
+                   || liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_primaire_genre===1 
+                   || liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien')){
                 }else{
-                    /*
-                      afr
-                    */
-                    debugger
+                   o2+='                \''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\' => \'\',\n';
                 }
-                
-                o1+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
-                o1+='                $o1 .= \'  </div>\' . PHP_EOL;\n';
-            }
+               }
+               
+               o2+='                \'quantitee\' => $__nbMax,\n';
+               o2+='                \'debut\' => $__debut\n';
+               o2+='            ),\n';
+               o2+='            $donnees_retournees\n';
+               o2+='        );\n';
+               o2+='        \n';
+               o2+='        if($tt[__xst] === __xer){\n';
+               o2+='\n';
+               o2+='            $donnees_retournees[__x_signaux][__xer][]=\'Erreur dans la \' . SELF::LISTE_DES_ELEMENTS_GERES . \' [\' . __LINE__ . \']\';\n';
+               o2+='            return;\n';
+               o2+='\n';
+               o2+='        }\n';
+               o2+='\n';
+               o2+='        /*\n';
+               o2+='          $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \'TODO $tt \'.var_export($tt,true);\n';
+               o2+='        */\n';
+               o2+='        $bouton_avant=\'\';\n';
+               o2+='        $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt[\'nombre\'],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));\n';
+               o2+='        $lsttbl=\'\';\n';
+               o2+='        $lsttbl .= \'<thead><tr>\';\n';
+               o2+='        $lsttbl .= \'<th></th>\';\n';
+               o2+='        $lsttbl .= \'<th>id</th>\';\n';
+               o2+='        $lsttbl .= \'<th>'+champ_est_libelle_lien.champ_dans_la_base.meta.nom_bref_du_champ+'</th>\';\n';
+               o2+='        $lsttbl .= \'</tr></thead><tbody>\';\n';
+               o2+='        foreach($tt[__xva] as $k0 => $v0){\n';
+               o2+='            $lsttbl .= \'<tr>\';\n';
+               o2+='            /**/\n';
+               o2+='            $parametres=\'\';\n';
+               o2+='            $parametres .= \'interface1.choisir_dans_sous_fenetre1(\';\n';
+               o2+='            $parametres .= \'    nom_champ_dans_parent1(\' . $par[\'nom_champ_dans_parent1\'] . \')\';\n';
+               o2+='            $parametres .= \'    nom_libelle_dans_parent1(\' . $par[\'nom_libelle_dans_parent1\'] . \')\';\n';
+               o2+='            $parametres .= \'    id1(\' . $v0[\'T0.'+champ_primaire+'\'] . \')\';\n';
+               o2+='            $parametres .= \'    libelle1("(\' . $v0[\'T0.'+champ_primaire+'\'] . \') \' . $v0[\''+champ_est_libelle_lien.préfixe_du_champ+'.'+champ_est_libelle_lien.nom_du_champ+'\'] . \'" )\';\n';
+               o2+='            $parametres .= \')\';\n';
+               o2+='            $lsttbl .= \'<td style="max-width:calc(1*var(t_1boutons_carres))">\';\n';
+               o2+='            $lsttbl .= \'  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="\' . htmlentities($parametres) . \'">=&gt;</div>\';\n';
+               o2+='            $lsttbl .= \'</td>\';\n';
+               o2+='            /**/\n';
+               o2+='            $lsttbl .= \'<td style="text-align:center;">\';\n';
+               o2+='            $lsttbl .= \'\' . $v0[\'T0.'+champ_primaire+'\'] . \'\';\n';
+               o2+='            $lsttbl .= \'</td>\';\n';
+               o2+='            /**/\n';
+               o2+='            $lsttbl .= \'<td style="text-align:left;">\';\n';
+               o2+='            \n';
+               o2+='            if($v0[\''+champ_est_libelle_lien.préfixe_du_champ+'.'+champ_est_libelle_lien.nom_du_champ+'\'] !== null){\n';
+               o2+='\n';
+               o2+='                $lsttbl .= \'\' . enti1($v0[\''+champ_est_libelle_lien.préfixe_du_champ+'.'+champ_est_libelle_lien.nom_du_champ+'\']) . \'\';\n';
+               o2+='\n';
+               o2+='            }\n';
+               o2+='\n';
+               o2+='            $lsttbl .= \'</td>\';\n';
+               o2+='            /**/\n';
+               o2+='            /**/\n';
+               o2+='            $lsttbl .= \'</tr>\';\n';
+               o2+='        }\n';
+               o2+='        $o1 .= \'<div class="yy_div_contenant_table"><table class="yy_table_liste1">\' . PHP_EOL . $lsttbl . \'</tbody></table></div>\' . PHP_EOL;\n';
+           }
         }
-
-        o1+='                /*\n';
-        o1+='\n';
-        o1+='                */\n';
-        o1+='                $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'    <input type="hidden" value="\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \'" id="'+champ_primaire+'" />\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'    <div class="hug_bouton yy__x_signaux_2" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_supprimer1),page_liste_des_'+this.#nom_ref+'1())" title="" >Je confirme la suppression</div>\';\n';
-        o1+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'  </div>\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'</div>\' . PHP_EOL;\n';
-        o1+='                $donnees_retournees[__x_page] .= $o1;\n';
-        o1+='                $donnees_retournees[__xst]=__xsu;\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='    }\n';
-
-
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    function page_'+this.#nom_ref+'_modifier1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
-        o1+='        $o1=\'\';\n';
-        o1+='        $'+champ_primaire+'=\'\';\n';
-        o1+='        $l01=count($mat);\n';
-        o1+='        for( $i=1 ; $i < $l01 ; $i++ ){\n';
-        o1+='            \n';
-        o1+='            \n';
-        o1+='            if($mat[$i][1] === \''+champ_primaire+'\' && $mat[$i + 1][2] === \'c\' && $mat[$i][2] === \'f\'){\n';
-        o1+='\n';
-        o1+='                $'+champ_primaire+'=$mat[$i + 1][1];\n';
-        o1+='                break;\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='        \n';
-        o1+='        if(is_numeric($'+champ_primaire+') && $'+champ_primaire+' > 0){\n';
-        o1+='\n';
-        o1+='            $tt'+ref_select+'=$this->sql0->sql_iii(\n';
-        o1+='                 /*sql_'+ref_select+'()*/ '+ref_select+',\n';
-        o1+='                array(/**/\n';
-        o1+='                    \'T0_'+champ_primaire+'\' => $'+champ_primaire+'\n';
-        o1+='                ),\n';
-        o1+='                $donnees_retournees\n';
-        o1+='            );\n';
-        o1+='            \n';
-        o1+='            if($tt'+ref_select+'[__xst] === __xsu){\n';
-        o1+='\n';
-        o1+='                $o1 .= \'<h1>modification \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_liste_des_'+this.#nom_ref+'1))" title="revenir à la liste" >⬱</div></h1>\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'<div id="vv_'+this.#nom_ref+'_modifier1">\' . PHP_EOL;\n';
-        o1+='                /**/\n';
-        o1+='                $o1 .= \'  <input type="hidden" value="\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \'" id="'+champ_primaire+'" />\' . PHP_EOL;\n';
-        o1+='                /*\n';
-        
-        for(let i=0;i<liste_des_champs_update.length;i++){
-            let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
-            let obj_champ=this.#obj_table.champs[nom_du_champ];
-            if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
-            }else{
-                o1+='                /*\n';
-                o1+='                  =====================================================================================\n';
-                o1+='                */\n';
-                o1+='                $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
-                o1+='                $o1 .= \'    <div class="yy_edition_libelle1">\' . PHP_EOL;\n';
-                o1+='                $o1 .= \'      <span>'+obj_champ.meta.nom_bref_du_champ+'</span>\' . PHP_EOL;\n';
-                o1+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
-                o1+='                $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
-                if(obj_champ.genre_objet_du_champ.chp_espece_genre==='VARCHAR'){
-                    let size='';
-                    if(obj_champ.genre_objet_du_champ.che_longueur_genre<=64){
-                     size=' size="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" ';
-                    }
-                    o1+='                $o1 .= \'      <input type="text" id="'+obj_champ.nom_du_champ+'" '+size+' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\']) . \'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
-                }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='TEXT'){
-                    o1+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
-                    o1+='        $o1 .= \'            <textarea id="'+obj_champ.nom_du_champ+'" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\']) . \'</textarea>\' . PHP_EOL;\n';
-                    o1+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
-                }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
-                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
-                        /*champ entier standard*/
-                        o1+='        $o1 .= \'      <input value="" type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
-                    }else{
-                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre==='0,1'){
-                            o1+='        $o1 .= \'        <input type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" >\'; . PHP_EOL;\n';
-                        }else{
-                            debugger
-                        }
-                    }
-                }else{
-                     /*
-                         AFR
-                     */
-                     debugger
-                }
-                o1+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
-                o1+='                $o1 .= \'  </div>\' . PHP_EOL;\n';
-            }
-        }
-        
-        
-        o1+='                /*\n';
-        o1+='                  =====================================================================================\n';
-        o1+='                */\n';
-        o1+='                $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $'+champ_primaire+' . \'),page_liste_des_'+this.#nom_ref+'1())" title="" >enregistrer et revenir à la liste</div>\';\n';
-        o1+='                $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $'+champ_primaire+' . \'))" title="" >enregistrer</div>\';\n';
-        o1+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
-        o1+='                $o1 .= \'  </div>\' . PHP_EOL;\n';
-        o1+='                /**/\n';
-        o1+='                $o1 .= \'</div>\' . PHP_EOL;\n';
-        o1+='                $donnees_retournees[__x_page] .= $o1;\n';
-        o1+='                $donnees_retournees[__xst]=__xsu;\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='        }else{\n';
-        o1+='\n';
-        o1+='            $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$mat,$donnees_recues);\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='    }\n';   
-
-
-
-        o1+='\n';
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='      Pour les iframes sur les '+this.#nom_ref+'\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    function vv_'+this.#nom_ref+'_filtre_choix_1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){\n';
-        o1+='        $txtPar=\'__num_page(0)\';\n';
-        o1+='        $nouvelles_valeurs=array( \'__num_page\' => 0);\n';
-        o1+='        foreach($donnees_recues[__xva] as $k0 => $v0){\n';
-        o1+='            \n';
-        o1+='            if($k0 !== \'__num_page\'){\n';
-        o1+='\n';
-        o1+='                $nouvelles_valeurs[$k0]=$v0;\n';
-        o1+='                \n';
-        o1+='                if(is_numeric($v0)){\n';
-        o1+='\n';
-        o1+='                    $txtPar .= \',\' . $k0 . \'(\' . $v0 . \')\';\n';
-        o1+='\n';
-        o1+='                }else{\n';
-        o1+='\n';
-        o1+='                    $txtPar .= \',\' . $k0 . \'(\\\'\' . str_replace(\'\\\'\',\'\\\\\\\'\',$v0) . \'\\\')\';\n';
-        o1+='                }\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='        $_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_'+this.#nom_ref+'_sous_liste1\']=$nouvelles_valeurs;\n';
-        o1+='        $obj_matrice=$GLOBALS[\'obj_rev1\']->rev_vers_matrice(\''+this.#nom_de_la_classe_générée+'.page_'+this.#nom_ref+'_sous_liste1(\' . $txtPar . \')\');\n';
-        o1+='        \n';
-        o1+='        if($obj_matrice[__xst] === __xsu){\n';
-        o1+='\n';
-        o1+='            $this->page_'+this.#nom_ref+'_sous_liste1($donnees_retournees,$obj_matrice[__xva],$donnees_recues);\n';
-        o1+='\n';
-        o1+='        }else{\n';
-        o1+='\n';
-        o1+='            $donnees_retournees[__x_signaux][__xer][]=__LINE__ . \' erreur de convertion de \' . $txtPar . \'\';\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='    }\n';
-        o1+='\n';
-        
-        
-
-
-
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    function page_'+this.#nom_ref+'_sous_liste1(&$donnees_retournees,&$mat,&$donnees_recues){\n';
-        o1+='        $fonction1=\''+this.#nom_de_la_classe_générée+'.page_'+this.#nom_ref+'_sous_liste1\';\n';
-        o1+='        /* déverminage */\n';
-        o1+='        $__nbMax=10;\n';
-        o1+='        /*\n';
-        o1+='          $donnees_retournees[__x_signaux][__xif][]=__LINE__ . \'TODO $par \'.var_export($par,true);\n';
-        o1+='        */\n';
-        o1+='        $par=array();\n';
-        o1+='        $par[\'T0_'+champ_primaire+'\']=\'\';\n';
-        o1+='        $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\']=\'\';\n';
-        o1+='        $par[\'nom_champ_dans_parent1\']=\'\';\n';
-        o1+='        $par[\'nom_libelle_dans_parent1\']=\'\';\n';
-        o1+='        $par[\'__num_page\']=0;\n';
-        o1+='        $numpage=-1;\n';
-        o1+='        $par_mat=array();\n';
-        o1+='        $l01=count($mat);\n';
-        o1+='        $provenance_menu=false;\n';
-        o1+='        /* $donnees_retournees[__x_signaux][__xdv][]=\'$mat =\'.json_encode( $mat  , JSON_FORCE_OBJECT );*/\n';
-        o1+='        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){\n';
-        o1+='            \n';
-        o1+='            \n';
-        o1+='            if($fonction1 === $mat[$i][1]){\n';
-        o1+='\n';
-        o1+='                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){\n';
-        o1+='                    \n';
-        o1+='                    \n';
-        o1+='                    if($mat[$j][2] === \'f\' && $mat[$j][8] === 1 && $mat[$j + 1][2] === \'c\'){\n';
-        o1+='\n';
-        o1+='                        /* $donnees_retournees[__x_signaux][__xdv][]=\'$mat[$j][1] =\'.json_encode( $mat[$j][1] . \' \' . $mat[$j+1][1]  , JSON_FORCE_OBJECT );*/\n';
-        o1+='                        \n';
-        o1+='                        if($mat[$j][1] === \'__num_page\'){\n';
-        o1+='\n';
-        o1+='                            $numpage=$mat[$j + 1][1];\n';
-        o1+='                            $par_mat[\'__num_page\']=$mat[$j + 1][1];\n';
-        o1+='                            $par[\'__num_page\']=$mat[$j + 1][1];\n';
-        o1+='\n';
-        o1+='                        }else if($mat[$j][1] === \'indice_menu\'){\n';
-        o1+='\n';
-        o1+='                            $numpage=0;\n';
-        o1+='                            $par_mat[\'__num_page\']=0;\n';
-        o1+='                            $provenance_menu=true;\n';
-        o1+='                            $par[\'__num_page\']=0;\n';
-        o1+='\n';
-        o1+='                        }else if($mat[$j + 1][1] !== \'\'){\n';
-        o1+='\n';
-        o1+='                            $par_mat[$mat[$j][1]]=$mat[$j + 1][1];\n';
-        o1+='                        }\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='                    }\n';
-        o1+='\n';
-        o1+='                }\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='        \n';
-        o1+='        if(false === isset($_SESSION[__X_CLE_APPLICATION][$fonction1])){\n';
-        o1+='\n';
-        o1+='            $par=array_merge($par,$par_mat);\n';
-        o1+='            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;\n';
-        o1+='\n';
-        o1+='        }else{\n';
-        o1+='\n';
-        o1+='            $par=$_SESSION[__X_CLE_APPLICATION][$fonction1];\n';
-        o1+='            \n';
-        o1+='            if($provenance_menu === true){\n';
-        o1+='\n';
-        o1+='                $par[\'__num_page\']=0;\n';
-        o1+='\n';
-        o1+='            }else{\n';
-        o1+='\n';
-        o1+='                \n';
-        o1+='                if($numpage === -1){\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='                }else{\n';
-        o1+='\n';
-        o1+='                    $par[\'__num_page\']=$numpage;\n';
-        o1+='                }\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='            $_SESSION[__X_CLE_APPLICATION][$fonction1]=$par;\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='        $par[\'T0_'+champ_primaire+'\']=$par[\'T0_'+champ_primaire+'\']??\'\';\n';
-        o1+='        $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\']=$par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\']??\'\';\n';
-        o1+='        $par[\'nom_champ_dans_parent1\']=$par_mat[\'nom_champ_dans_parent1\']??\'\';\n';
-        o1+='        $par[\'nom_libelle_dans_parent1\']=$par_mat[\'nom_libelle_dans_parent1\']??\'\';\n';
-        o1+='        $nom_filtre=\'vv_'+this.#nom_ref+'_filtre_choix_1\';\n';
-        o1+='        $o1=\'<h1>\' . SELF::LISTE_DES_ELEMENTS_GERES . \'</h1>\';\n';
-        o1+='        $__num_page=!isset($par[\'__num_page\']) ? 0 : (int)($par[\'__num_page\']);\n';
-        o1+='        $__debut=$__num_page * $__nbMax;\n';
-        o1+='        $o1 .= \'<div class="yy_filtre_liste1" id="\' . $nom_filtre . \'">\' . PHP_EOL;\n';
-        o1+='        /**/\n';
-        o1+='        $o1 .= \'   <div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'      <div><span>'+champ_est_libelle_lien.champ_dans_la_base.meta.nom_bref_du_champ+'</span></div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'      <div><input type="text" id="'+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'" value="\' . $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\'] . \'" size="8" maxlength="64" autocapitalize="off" />\' . PHP_EOL;\n';
-        o1+='        \n';
-        o1+='        if($par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\'] !== \'\'){\n';
-        o1+='\n';
-        o1+='            $o1 .= \'         <span class="hug_bouton yy__x_signaux___xif" data-hug_click="maj_interface1(modifier(id('+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'),value(\\\'\\\'))),'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(\' . $nom_filtre . \'))" >x</span>\';\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='        $o1 .= \'      </div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'   </div>\' . PHP_EOL;\n';
-        o1+='        /**/\n';
-        o1+='        $o1 .= \'   <div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'    <div><span>id</span></div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'    <div><input type="text" id="T0_'+champ_primaire+'" value="\' . $par[\'T0_'+champ_primaire+'\'] . \'" size="8" maxlength="32" autocapitalize="off" /></div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'   </div>\' . PHP_EOL;\n';
-        o1+='        /**/\n';
-        o1+='        $o1 .= \'   <div>    \' . PHP_EOL;\n';
-        o1+='        $o1 .= \'     <div><span>&nbsp;</span></div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(\' . $nom_filtre . \'))" >🔎</div></div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'     <input type="hidden" id="__num_page" value="\' . $__debut . \'" />\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'     <input type="hidden" id="nom_champ_dans_parent1" value="\' . $par[\'nom_champ_dans_parent1\'] . \'"  />\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'     <input type="hidden" id="nom_libelle_dans_parent1" value="\' . $par[\'nom_libelle_dans_parent1\'] . \'"  />\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'   </div> \' . PHP_EOL;\n';
-        o1+='        /**/\n';
-        o1+='        $o1 .= \'</div>\';\n';
-        o1+='        $tt=$this->sql0->sql_iii(\n';
-        o1+='             '+ref_liste_ecran+',\n';
-        o1+='             /**/ array(\n';
-        o1+='                /**/\n';
-        o1+='                \'T0_'+champ_primaire+'\' => $par[\'T0_'+champ_primaire+'\'] === \'\' ? \'\' : $par[\'T0_'+champ_primaire+'\'],\n';
-        o1+='                \''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\' => $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\'] === \'\' ? \'\' : \'\' . $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\'] . \'\',\n';
-        for( let i in liste_des_champs_liste_ecran){
-         if(
-               liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_incrément_genre===1 
-            || liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_primaire_genre===1 
-            || liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien')){
-         }else{
-            o1+='                \''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\' => \'\',\n';
-         }
-        }
-        
-        o1+='                \'quantitee\' => $__nbMax,\n';
-        o1+='                \'debut\' => $__debut\n';
-        o1+='            ),\n';
-        o1+='            $donnees_retournees\n';
-        o1+='        );\n';
-        o1+='        \n';
-        o1+='        if($tt[__xst] === __xer){\n';
-        o1+='\n';
-        o1+='            $donnees_retournees[__x_signaux][__xer][]=\'Erreur dans la \' . SELF::LISTE_DES_ELEMENTS_GERES . \' [\' . __LINE__ . \']\';\n';
-        o1+='            return;\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='        /*\n';
-        o1+='          $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \'TODO $tt \'.var_export($tt,true);\n';
-        o1+='        */\n';
-        o1+='        $bouton_avant=\'\';\n';
-        o1+='        $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt[\'nombre\'],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));\n';
-        o1+='        $lsttbl=\'\';\n';
-        o1+='        $lsttbl .= \'<thead><tr>\';\n';
-        o1+='        $lsttbl .= \'<th></th>\';\n';
-        o1+='        $lsttbl .= \'<th>id</th>\';\n';
-        o1+='        $lsttbl .= \'<th>'+champ_est_libelle_lien.champ_dans_la_base.meta.nom_bref_du_champ+'</th>\';\n';
-        o1+='        $lsttbl .= \'</tr></thead><tbody>\';\n';
-        o1+='        foreach($tt[__xva] as $k0 => $v0){\n';
-        o1+='            $lsttbl .= \'<tr>\';\n';
-        o1+='            /**/\n';
-        o1+='            $parametres=\'\';\n';
-        o1+='            $parametres .= \'interface1.choisir_dans_sous_fenetre1(\';\n';
-        o1+='            $parametres .= \'    nom_champ_dans_parent1(\' . $par[\'nom_champ_dans_parent1\'] . \')\';\n';
-        o1+='            $parametres .= \'    nom_libelle_dans_parent1(\' . $par[\'nom_libelle_dans_parent1\'] . \')\';\n';
-        o1+='            $parametres .= \'    id1(\' . $v0[\'T0.'+champ_primaire+'\'] . \')\';\n';
-        o1+='            $parametres .= \'    libelle1("(\' . $v0[\'T0.'+champ_primaire+'\'] . \') \' . $v0[\''+champ_est_libelle_lien.préfixe_du_champ+'.'+champ_est_libelle_lien.nom_du_champ+'\'] . \'" )\';\n';
-        o1+='            $parametres .= \')\';\n';
-        o1+='            $lsttbl .= \'<td style="max-width:calc(1*var(t_1boutons_carres))">\';\n';
-        o1+='            $lsttbl .= \'  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="\' . htmlentities($parametres) . \'">=&gt;</div>\';\n';
-        o1+='            $lsttbl .= \'</td>\';\n';
-        o1+='            /**/\n';
-        o1+='            $lsttbl .= \'<td style="text-align:center;">\';\n';
-        o1+='            $lsttbl .= \'\' . $v0[\'T0.'+champ_primaire+'\'] . \'\';\n';
-        o1+='            $lsttbl .= \'</td>\';\n';
-        o1+='            /**/\n';
-        o1+='            $lsttbl .= \'<td style="text-align:left;">\';\n';
-        o1+='            \n';
-        o1+='            if($v0[\''+champ_est_libelle_lien.préfixe_du_champ+'.'+champ_est_libelle_lien.nom_du_champ+'\'] !== null){\n';
-        o1+='\n';
-        o1+='                $lsttbl .= \'\' . enti1($v0[\''+champ_est_libelle_lien.préfixe_du_champ+'.'+champ_est_libelle_lien.nom_du_champ+'\']) . \'\';\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='            $lsttbl .= \'</td>\';\n';
-        o1+='            /**/\n';
-        o1+='            /**/\n';
-        o1+='            $lsttbl .= \'</tr>\';\n';
-        o1+='        }\n';
-        o1+='        $o1 .= \'<div class="yy_div_contenant_table"><table class="yy_table_liste1">\' . PHP_EOL . $lsttbl . \'</tbody></table></div>\' . PHP_EOL;\n';
-        o1+='        $donnees_retournees[__x_page] .= $o1;\n';
-        o1+='        $donnees_retournees[__xst]=__xsu;\n';
-        o1+='    }\n';
+        o2+='        $donnees_retournees[__x_page] .= $o1;\n';
+        o2+='        $donnees_retournees[__xst]=__xsu;\n';
+        o2+='    }\n';
 
 
          // fin de if false
 
 
 
-        o1+='\n';
-        o1+='    /*\n';
-        o1+='      =============================================================================================================\n';
-        o1+='    */\n';
-        o1+='    function page_liste_des_'+this.#nom_ref+'1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){\n';
-        o1+='        $__nbMax=10;\n';
-        o1+='        $par=array();\n';
-        for( let i in liste_des_champs_liste_ecran){
-            if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
-            ){
-            }else{
-                o1+='        $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\']=\'\';\n';
+        o2+='\n';
+        o2+='    /*\n';
+        o2+='      =============================================================================================================\n';
+        o2+='    */\n';
+        o2+='    function page_liste_des_'+this.#nom_ref+'1(&$donnees_retournees,/*matrice*/&$mat,&$donnees_recues){\n';
+        o2+='        $__nbMax=10;\n';
+        o2+='        $par=array();\n';
+        if(ref_liste_ecran!=='' && ref_liste_ecran!==''){
+            for( let i in liste_des_champs_liste_ecran){
+                if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
+                ){
+                }else{
+                    o2+='        $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\']=\'\';\n';
+                }
             }
-        }
-        o1+='        $par[\'__num_page\']=0;\n';
-        o1+='        $numpage=-1;\n';
-        o1+='        $par_mat=array();\n';
-        o1+='        $l01=count($mat);\n';
-        o1+='        $provenance_menu=false;\n';
-        o1+='        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){\n';
-        o1+='            \n';
-        o1+='            \n';
-        o1+='            if(\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\' === $mat[$i][1]){\n';
-        o1+='\n';
-        o1+='                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){\n';
-        o1+='                    \n';
-        o1+='                    \n';
-        o1+='                    if($mat[$j][2] === \'f\' && $mat[$j][8] === 1 && $mat[$j + 1][2] === \'c\'){\n';
-        o1+='\n';
-        o1+='                        \n';
-        o1+='                        if($mat[$j][1] === \'__num_page\'){\n';
-        o1+='\n';
-        o1+='                            $numpage=$mat[$j + 1][1];\n';
-        o1+='                            $par_mat[\'__num_page\']=$mat[$j + 1][1];\n';
-        o1+='                            $par[\'__num_page\']=$mat[$j + 1][1];\n';
-        o1+='\n';
-        o1+='                        }else if($mat[$j][1] === \'indice_menu\'){\n';
-        o1+='\n';
-        o1+='                            $numpage=0;\n';
-        o1+='                            $par_mat[\'__num_page\']=0;\n';
-        o1+='                            $provenance_menu=true;\n';
-        o1+='                            $par[\'__num_page\']=0;\n';
-        o1+='\n';
-        o1+='                        }else if($mat[$j + 1][1] !== \'\'){\n';
-        o1+='\n';
-        o1+='                            $par_mat[$mat[$j][1]]=$mat[$j + 1][1];\n';
-        o1+='                        }\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='                    }\n';
-        o1+='\n';
-        o1+='                }\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='        \n';
-        o1+='        if(false === isset($_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\'])){\n';
-        o1+='\n';
-        o1+='            $par=array_merge($par,$par_mat);\n';
-        o1+='            $_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\']=$par;\n';
-        o1+='\n';
-        o1+='        }else{\n';
-        o1+='\n';
-        o1+='            $par=$_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\'];\n';
-        o1+='            \n';
-        o1+='            if($provenance_menu === true){\n';
-        o1+='\n';
-        o1+='                $par[\'__num_page\']=0;\n';
-        o1+='\n';
-        o1+='            }else{\n';
-        o1+='\n';
-        o1+='                \n';
-        o1+='                if($numpage === -1){\n';
-        o1+='\n';
-        o1+='\n';
-        o1+='                }else{\n';
-        o1+='\n';
-        o1+='                    $par[\'__num_page\']=$numpage;\n';
-        o1+='                }\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='            $_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\']=$par;\n';
-        o1+='        }\n';
-        o1+='\n';
-        for( let i in liste_des_champs_liste_ecran){
-            if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
-            ){
-            }else{
-                o1+='        $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\']=$par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\']??\'\';\n';
+            o2+='        $par[\'__num_page\']=0;\n';
+            o2+='        $numpage=-1;\n';
+            o2+='        $par_mat=array();\n';
+            o2+='        $l01=count($mat);\n';
+            o2+='        $provenance_menu=false;\n';
+            o2+='        for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){\n';
+            o2+='            \n';
+            o2+='            \n';
+            o2+='            if(\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\' === $mat[$i][1]){\n';
+            o2+='\n';
+            o2+='                for( $j=$i + 1 ; $j < $l01 ; $j=$mat[$j][12] ){\n';
+            o2+='                    \n';
+            o2+='                    \n';
+            o2+='                    if($mat[$j][2] === \'f\' && $mat[$j][8] === 1 && $mat[$j + 1][2] === \'c\'){\n';
+            o2+='\n';
+            o2+='                        \n';
+            o2+='                        if($mat[$j][1] === \'__num_page\'){\n';
+            o2+='\n';
+            o2+='                            $numpage=$mat[$j + 1][1];\n';
+            o2+='                            $par_mat[\'__num_page\']=$mat[$j + 1][1];\n';
+            o2+='                            $par[\'__num_page\']=$mat[$j + 1][1];\n';
+            o2+='\n';
+            o2+='                        }else if($mat[$j][1] === \'indice_menu\'){\n';
+            o2+='\n';
+            o2+='                            $numpage=0;\n';
+            o2+='                            $par_mat[\'__num_page\']=0;\n';
+            o2+='                            $provenance_menu=true;\n';
+            o2+='                            $par[\'__num_page\']=0;\n';
+            o2+='\n';
+            o2+='                        }else if($mat[$j + 1][1] !== \'\'){\n';
+            o2+='\n';
+            o2+='                            $par_mat[$mat[$j][1]]=$mat[$j + 1][1];\n';
+            o2+='                        }\n';
+            o2+='\n';
+            o2+='\n';
+            o2+='                    }\n';
+            o2+='\n';
+            o2+='                }\n';
+            o2+='\n';
+            o2+='            }\n';
+            o2+='\n';
+            o2+='        }\n';
+            o2+='        \n';
+            o2+='        if(false === isset($_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\'])){\n';
+            o2+='\n';
+            o2+='            $par=array_merge($par,$par_mat);\n';
+            o2+='            $_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\']=$par;\n';
+            o2+='\n';
+            o2+='        }else{\n';
+            o2+='\n';
+            o2+='            $par=$_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\'];\n';
+            o2+='            \n';
+            o2+='            if($provenance_menu === true){\n';
+            o2+='\n';
+            o2+='                $par[\'__num_page\']=0;\n';
+            o2+='\n';
+            o2+='            }else{\n';
+            o2+='\n';
+            o2+='                \n';
+            o2+='                if($numpage === -1){\n';
+            o2+='\n';
+            o2+='\n';
+            o2+='                }else{\n';
+            o2+='\n';
+            o2+='                    $par[\'__num_page\']=$numpage;\n';
+            o2+='                }\n';
+            o2+='\n';
+            o2+='            }\n';
+            o2+='\n';
+            o2+='            $_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\']=$par;\n';
+            o2+='        }\n';
+            o2+='\n';
+            for( let i in liste_des_champs_liste_ecran){
+                if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
+                ){
+                }else{
+                    o2+='        $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\']=$par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\']??\'\';\n';
+                }
             }
-        }
-        
-        o1+='        $fonction1=\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\';\n';
-        o1+='        $nom_filtre=\'vv_'+this.#nom_ref+'_filtre1\';\n';
-        o1+='        $o1=\'<h1>\' . SELF::LISTE_DES_ELEMENTS_GERES . \'</h1>\';\n';
-        o1+='        $__num_page=!isset($par[\'__num_page\']) ? 0 : (int)($par[\'__num_page\']);\n';
-        o1+='        $__debut=$__num_page * $__nbMax;\n';
-        o1+='        $o1 .= \'<div class="yy_filtre_liste1" id="\' . $nom_filtre . \'">\' . PHP_EOL;\n';
+            
+            o2+='        $fonction1=\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\';\n';
+            o2+='        $nom_filtre=\'vv_'+this.#nom_ref+'_filtre1\';\n';
+            o2+='        $o1=\'<h1>\' . SELF::LISTE_DES_ELEMENTS_GERES . \'</h1>\';\n';
+            o2+='        $__num_page=!isset($par[\'__num_page\']) ? 0 : (int)($par[\'__num_page\']);\n';
+            o2+='        $__debut=$__num_page * $__nbMax;\n';
+            o2+='        $o1 .= \'<div class="yy_filtre_liste1" id="\' . $nom_filtre . \'">\' . PHP_EOL;\n';
 
-        for( let i in liste_des_champs_liste_ecran){
-            if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
-            ){
-            }else{
-                o1+='        /*\n';
-                o1+='          \n';
-                o1+='        */\n';
-                o1+='        $o1 .= \'   <div>\' . PHP_EOL;\n';
-                o1+='        $o1 .= \'      <div><span>'+liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.nom_bref_du_champ+'</span></div>\' . PHP_EOL;\n';
-                o1+='        $o1 .= \'      <div><input type="text" id="'+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'" value="\' . $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'] . \'" size="8" maxlength="64" autocapitalize="off" />\' . PHP_EOL;\n';
-                o1+='        $o1 .= \'      </div>\' . PHP_EOL;\n';
-                o1+='        $o1 .= \'   </div>\' . PHP_EOL;\n';
+            for( let i in liste_des_champs_liste_ecran){
+                if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
+                ){
+                }else{
+                    o2+='        /*\n';
+                    o2+='          \n';
+                    o2+='        */\n';
+                    o2+='        $o1 .= \'   <div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'      <div><span>'+liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.nom_bref_du_champ+'</span></div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'      <div><input type="text" id="'+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'" value="\' . $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'] . \'" size="8" maxlength="64" autocapitalize="off" />\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'      </div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'   </div>\' . PHP_EOL;\n';
+                }
             }
-        }
-        
-        o1+='        /*\n';
-        o1+='          \n';
-        o1+='        */\n';
-        o1+='        $o1 .= \'   <div>    \' . PHP_EOL;\n';
-        o1+='        $o1 .= \'     <div><span>&nbsp;</span></div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(\' . $nom_filtre . \'))" >🔎</div></div>\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'     <input type="hidden" id="__num_page" value="\' . $__debut . \'" />\' . PHP_EOL;\n';
-        o1+='        $o1 .= \'   </div> \' . PHP_EOL;\n';
-        o1+='        $o1 .= \'</div>\';\n';
-        o1+='        $tt=$this->sql0->sql_iii(\n';
-        o1+='            '+ref_liste_ecran+',\n';
-        o1+='            array(\n';
-        o1+='                /**/\n';
-        for( let i in liste_des_champs_liste_ecran){
-            if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
-            ){
-            }else{
-                o1+='                \''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\' => $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'] === \'\' ? \'\' : $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'],\n';
+            
+            o2+='        /*\n';
+            o2+='          \n';
+            o2+='        */\n';
+            o2+='        $o1 .= \'   <div>    \' . PHP_EOL;\n';
+            o2+='        $o1 .= \'     <div><span>&nbsp;</span></div>\' . PHP_EOL;\n';
+            o2+='        $o1 .= \'     <div><div class="hug_bouton yy_bouton_loupe" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(\' . $nom_filtre . \'))" >🔎</div></div>\' . PHP_EOL;\n';
+            o2+='        $o1 .= \'     <input type="hidden" id="__num_page" value="\' . $__debut . \'" />\' . PHP_EOL;\n';
+            o2+='        $o1 .= \'   </div> \' . PHP_EOL;\n';
+            o2+='        $o1 .= \'</div>\';\n';
+            o2+='        $tt=$this->sql0->sql_iii(\n';
+            o2+='            '+ref_liste_ecran+',\n';
+            o2+='            array(\n';
+            o2+='                /**/\n';
+            for( let i in liste_des_champs_liste_ecran){
+                if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
+                ){
+                }else{
+                    o2+='                \''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\' => $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'] === \'\' ? \'\' : $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'],\n';
+                }
             }
-        }
-        o1+='                \'quantitee\' => $__nbMax,\n';
-        o1+='                \'debut\' => $__debut\n';
-        o1+='            ),\n';
-        o1+='            $donnees_retournees\n';
-        o1+='        );\n';
-        o1+='        \n';
-        o1+='        if($tt[__xst] === __xer){\n';
-        o1+='\n';
-        o1+='            $o1=\'\';\n';
-        o1+='            $o1 .= \'<div>\';\n';
-        o1+='            $o1 .= \'  <h3 class="yy__x_signaux_0">Erreur technique [\' . __METHOD__ . \' \' . __LINE__ . \']</h1>\';\n';
-        o1+='            $o1 .= \'  <div style="text-align:center">\';\n';
-        o1+='            $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1()" title="" >\';\n';
-        o1+='            $o1 .= \'      Réessayer\';\n';
-        o1+='            $o1 .= \'    </div>\';\n';
-        o1+='            $o1 .= \'    <br /><br />Si le problème persiste, veuillez contacter la maintenance de l\\\'application\';\n';
-        o1+='            $o1 .= \'  </div>\';\n';
-        o1+='            unset($_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\']);\n';
-        o1+='            \n';
-        o1+='            if($GLOBALS[DEVER_SRV] >= 2){\n';
-        o1+='\n';
-        o1+='                $o1 .= \'  <pre>\' . $tt[\'sql0\'] . \'</per>\';\n';
-        o1+='\n';
-        o1+='            }\n';
-        o1+='\n';
-        o1+='            $o1 .= \'</div>\';\n';
-        o1+='            /* en fonction du déverminage */\n';
-        o1+='            $donnees_retournees[__x_page] .= $o1;\n';
-        o1+='            $donnees_retournees[__xst]=__xsu;\n';
-        o1+='            return;\n';
-        o1+='\n';
-        o1+='        }\n';
-        o1+='\n';
-        o1+='        /*\n';
-        o1+='          $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \'TODO $tt \'.var_export($tt,true);\n';
-        o1+='        */\n';
-        o1+='        $bouton_avant=\'<div class="hug_bouton yy__x_signaux___xif" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_'+this.#nom_ref+'_creer1))" title="création \' . self::DUN_DUNE_ELEMENT_GERE . \'" >+*</div>\';\n';
-        o1+='        $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt[\'nombre\'],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));\n';
-        o1+='        $lsttbl=\'\';\n';
-        o1+='        $lsttbl .= \'<thead><tr>\';\n';
-        o1+='        $lsttbl .= \'<th>action</th>\';\n';
-        
-        for( let i in liste_des_champs_liste_ecran){
-            if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
-            ){
-            }else{
-                o1+='        $lsttbl .= \'<th>'+liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.nom_bref_du_champ+'</th>\';\n';
+            o2+='                \'quantitee\' => $__nbMax,\n';
+            o2+='                \'debut\' => $__debut\n';
+            o2+='            ),\n';
+            o2+='            $donnees_retournees\n';
+            o2+='        );\n';
+            o2+='        \n';
+            o2+='        if($tt[__xst] === __xer){\n';
+            o2+='\n';
+            o2+='            $o1=\'\';\n';
+            o2+='            $o1 .= \'<div>\';\n';
+            o2+='            $o1 .= \'  <h3 class="yy__x_signaux_0">Erreur technique [\' . __METHOD__ . \' \' . __LINE__ . \']</h1>\';\n';
+            o2+='            $o1 .= \'  <div style="text-align:center">\';\n';
+            o2+='            $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1()" title="" >\';\n';
+            o2+='            $o1 .= \'      Réessayer\';\n';
+            o2+='            $o1 .= \'    </div>\';\n';
+            o2+='            $o1 .= \'    <br /><br />Si le problème persiste, veuillez contacter la maintenance de l\\\'application\';\n';
+            o2+='            $o1 .= \'  </div>\';\n';
+            o2+='            unset($_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\']);\n';
+            o2+='            \n';
+            o2+='            if($GLOBALS[DEVER_SRV] >= 2){\n';
+            o2+='\n';
+            o2+='                $o1 .= \'  <pre>\' . $tt[\'sql0\'] . \'</per>\';\n';
+            o2+='\n';
+            o2+='            }\n';
+            o2+='\n';
+            o2+='            $o1 .= \'</div>\';\n';
+            o2+='            /* en fonction du déverminage */\n';
+            o2+='            $donnees_retournees[__x_page] .= $o1;\n';
+            o2+='            $donnees_retournees[__xst]=__xsu;\n';
+            o2+='            return;\n';
+            o2+='\n';
+            o2+='        }\n';
+            o2+='\n';
+            o2+='        /*\n';
+            o2+='          $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \'TODO $tt \'.var_export($tt,true);\n';
+            o2+='        */\n';
+            o2+='        $bouton_avant=\'<div class="hug_bouton yy__x_signaux___xif" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_'+this.#nom_ref+'_creer1))" title="création \' . self::DUN_DUNE_ELEMENT_GERE . \'" >+*</div>\';\n';
+            o2+='        $o1 .= construire_navigation_pour_liste($__debut,$__nbMax,$tt[\'nombre\'],$__num_page,$bouton_avant,$fonction1,$par,count($tt[__xva]));\n';
+            o2+='        $lsttbl=\'\';\n';
+            o2+='        $lsttbl .= \'<thead><tr>\';\n';
+            o2+='        $lsttbl .= \'<th>action</th>\';\n';
+            
+            for( let i in liste_des_champs_liste_ecran){
+                if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
+                ){
+                }else{
+                    o2+='        $lsttbl .= \'<th>'+liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.nom_bref_du_champ+'</th>\';\n';
+                }
             }
-        }
-        
-        o1+='        $lsttbl .= \'</tr></thead><tbody>\';\n';
-        o1+='        foreach($tt[__xva] as $k0 => $v0){\n';
-        o1+='            $lsttbl .= \'<tr>\';\n';
-        o1+='            /**/\n';
-        o1+='            $lsttbl .= \'<td data-label="" style="text-align:left!important;">\';\n';
-        o1+='            $lsttbl .= \' <div style="display:flex;min-width:calc(3*var(t_1boutons_carres))">\';\n';
-        o1+='            $lsttbl .= \'  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $v0[\'T0.'+champ_primaire+'\'] . \'))">✎</div>\';\n';
-        o1+='            $lsttbl .= \'  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_'+this.#nom_ref+'_supprimer1),'+champ_primaire+'(\' . $v0[\'T0.'+champ_primaire+'\'] . \'))">🗑</div>\';\n';
-        o1+='            $lsttbl .= \' </div>\';\n';
-        o1+='            $lsttbl .= \'</td>\';\n';
-        
-        for( let i in liste_des_champs_liste_ecran){
-            if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
-            ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
-            ){
-            }else{
-                o1+='            /*\n';
-                o1+='            */\n';
-                o1+='            $lsttbl .= \'<td style="text-align:center;">\';\n';
-                o1+='            $lsttbl .= \'\' . $v0[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'.'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'] . \'\';\n';
-                o1+='            $lsttbl .= \'</td>\';\n';
+            
+            o2+='        $lsttbl .= \'</tr></thead><tbody>\';\n';
+            o2+='        foreach($tt[__xva] as $k0 => $v0){\n';
+            o2+='            $lsttbl .= \'<tr>\';\n';
+            o2+='            /**/\n';
+            o2+='            $lsttbl .= \'<td data-label="" style="text-align:left!important;">\';\n';
+            o2+='            $lsttbl .= \' <div style="display:flex;min-width:calc(3*var(t_1boutons_carres))">\';\n';
+            o2+='            $lsttbl .= \'  <div class="hug_bouton yy__x_signaux___xif" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $v0[\'T0.'+champ_primaire+'\'] . \'))">✎</div>\';\n';
+            o2+='            $lsttbl .= \'  <div class="hug_bouton yy__x_signaux___xal" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_'+this.#nom_ref+'_supprimer1),'+champ_primaire+'(\' . $v0[\'T0.'+champ_primaire+'\'] . \'))">🗑</div>\';\n';
+            o2+='            $lsttbl .= \' </div>\';\n';
+            o2+='            $lsttbl .= \'</td>\';\n';
+            
+            for( let i in liste_des_champs_liste_ecran){
+                if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
+                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
+                ){
+                }else{
+                    o2+='            /*\n';
+                    o2+='            */\n';
+                    o2+='            $lsttbl .= \'<td style="text-align:center;">\';\n';
+                    o2+='            $lsttbl .= \'\' . $v0[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'.'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'] . \'\';\n';
+                    o2+='            $lsttbl .= \'</td>\';\n';
+                }
             }
+            
+            o2+='            /**/\n';
+            o2+='            $lsttbl .= \'</tr>\';\n';
+            o2+='        }\n';
         }
-        
-        o1+='            /**/\n';
-        o1+='            $lsttbl .= \'</tr>\';\n';
-        o1+='        }\n';
-        o1+='        $o1 .= \'<div class="yy_div_contenant_table"><table class="yy_table_liste1">\' . PHP_EOL . $lsttbl . \'</tbody></table></div>\' . PHP_EOL;\n';
-        o1+='        $donnees_retournees[__x_page] .= $o1;\n';
-        o1+='        $donnees_retournees[__x_action]=\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1()\';\n';
-        o1+='        $donnees_retournees[__xst]=__xsu;\n';
-        o1+='    }\n';
+        o2+='        $o1 .= \'<div class="yy_div_contenant_table"><table class="yy_table_liste1">\' . PHP_EOL . $lsttbl . \'</tbody></table></div>\' . PHP_EOL;\n';
+        o2+='        $donnees_retournees[__x_page] .= $o1;\n';
+        o2+='        $donnees_retournees[__x_action]=\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1()\';\n';
+        o2+='        $donnees_retournees[__xst]=__xsu;\n';
+        o2+='    }\n';
 
 
         /*
           =====================================================================================================
         */
         
-        o1+='}';
-        document.getElementById('php_bdd1').value=o1;
+        o2+='}';
+        document.getElementById('php_bdd1').value=o2;
         return({__xst:__xsu});
     }
     /*
@@ -1359,7 +1519,7 @@ class c_php_bdd1{
                 tous_remplis=false;
             }
         }
-        if(tous_remplis === true){
+        if(true || tous_remplis === true){
             document.getElementById( 'gererer_le_php_bdd1' ).style.visibility='visible';
             let obj=this.générer_le_php(null);
             if(obj.__xst===__xsu){
@@ -1526,7 +1686,7 @@ class c_php_bdd1{
             cmd+=')';
             o1+=this.#liste_des_types_de_requetes[type_requete] + ' : ';
             o1+='<select id="reference_requete_' + this.#liste_des_types_de_requetes[type_requete] + '" data-hug_change="' + cmd + '">';
-            o1+='<option value="">choisissez une requête</option>';
+            o1+='<option value="">indéfini</option>';
             for(let i in __gi1.__js_des_sql){
                 if(this.#liste_des_types_de_requetes[type_requete] === 'select' || this.#liste_des_types_de_requetes[type_requete] === 'liste_ecran'){
                     if(__gi1.__js_des_sql[i].cht_sql_requete.indexOf( par.nom_de_la_table + ' T0' ) >= 0

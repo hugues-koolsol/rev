@@ -3,6 +3,43 @@
   Fonctions générales utilisées dans les sources
 */
 class c_fonctions1{
+ 
+ 
+ 
+    /*
+      =============================================================================================================
+    */
+    function doit_contenir_n_caracteres($n,$par,&$donnees_retournees){
+        if(strlen($par)!==$n){
+            $donnees_retournees[__x_signaux][__xer][]='le champ doit contenir "' . $n . '" caractères';
+            return array( __xst => __xer);
+        }
+        return array( __xst => __xsu);
+    }
+    /*
+      =============================================================================================================
+    */
+    function entier_compris_entre($inf,$sup,$par,&$donnees_retournees){
+        if($par === '' || is_null($par) ){
+
+            $donnees_retournees[__x_signaux][__xer][]='la valeur doit être comprise entre '.$inf.' et '.$sup.' inclus.';
+            return array( __xst => __xer);
+
+        }
+        if( !is_numeric($par) ){
+
+            $donnees_retournees[__x_signaux][__xer][]='la valeur doit être comprise entre '.$inf.' et '.$sup.' inclus.';
+            return array( __xst => __xer);
+            
+
+        }
+        if(!($par>=$inf && $par<=$sup)){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur doit être comprise entre '.$inf.' et '.$sup.' inclus.';
+            return array( __xst => __xer);
+        }
+        return array( __xst => __xsu);
+    }
+ 
     /*
       =============================================================================================================
       un nom de fichier ne doit contenir que des chiffres ou des lettres minuscules ou "_" ou "."
@@ -23,7 +60,7 @@ class c_fonctions1{
       un nom de fichier ne doit contenir que des chiffres ou des lettres minuscules ou "_" ou "."
       =============================================================================================================
     */
-    function test_du_nom_de_fichier1($genre,$par,&$donnees_retournees=NULL){
+    function test_du_nom_de_fichier1($par,&$donnees_retournees=NULL){
         
         if($par === ''){
 
@@ -37,9 +74,7 @@ class c_fonctions1{
             
             if(!($c >= 'a' && $c <= 'z' || $c >= '0' && $c <= '9' || $c === '_' || $c === '.')){
 
-                if(!is_null($donnees_retournees) ){
-                    $donnees_retournees[__x_signaux][__xer][]='le caractère "' . $c . '" n\'est pas admis';
-                }
+                $donnees_retournees[__x_signaux][__xer][]='le caractère "' . $c . '" n\'est pas admis';
                 return array( __xst => __xer);
 
             }
@@ -53,15 +88,41 @@ class c_fonctions1{
       ne contient que des fonctions contenues dans ce fichier
       =============================================================================================================
     */
-    function test_fonctions_de_c_fonctions1($par,&$donnees_retournees=NULL){
+    function test_fonctions_de_c_fonctions1($par,&$donnees_retournees){
         
         if($par === '' || $par === null){
+            /*
+              si la fonction de test est vide, tout va bien
+            */
 
             return array( __xst => __xsu);
 
         }
+        
+        
+        $obj_matrice=$GLOBALS['obj_rev1']->rev_vers_matrice($par);
+        
+        if($obj_matrice[__xst] !== __xsu){
+             $donnees_retournees[__x_signaux][__xer][]='le champ fonctions doit contenir des fonctions()';
+             return array( __xst => __xer);
+         
+        }
+        $tt=array();
+        for($i=1;$i<count($obj_matrice[__xva]);$i=$obj_matrice[__xva][$i][12]){
+            if($obj_matrice[__xva][$i][2]==='f'){
+                if( $obj_matrice[__xva][$i][1]!==''){
+                    $tt[]=$obj_matrice[__xva][$i][1];
+                }else{
+                    $donnees_retournees[__x_signaux][__xer][]='le champ fonctions doit contenir des fonctions';
+                    return array( __xst => __xer);
+                }
+            }else{
+                $donnees_retournees[__x_signaux][__xer][]='le champ fonctions doit contenir des fonctions';
+                return array( __xst => __xer);
+            }
+        }
+        
 
-        $tt=explode(',',$par);
         $class_methods=get_class_methods($this);
         $liste_des_méthodes='';
         foreach($class_methods as $k1 => $v1){
@@ -83,9 +144,7 @@ class c_fonctions1{
             
             if($trouve === false){
 
-                if(!is_null($donnees_retournees) ){
-                    $donnees_retournees[__x_signaux][__xer][]='la méthode "' . $v1 . '" n\' aps été trouvée parmis la liste "' . $liste_des_méthodes . '"';
-                }
+                $donnees_retournees[__x_signaux][__xer][]='la méthode "' . $v1 . '" n\' aps été trouvée parmis la liste "' . $liste_des_méthodes . '"';
                 return array( __xst => __xer);
 
             }
