@@ -354,11 +354,11 @@ function traite_autre_fonction(&$donnees_recues,&$donnees_retournees,$drapeau=nu
                     /* $donnees_retournees[__x_signaux][__xdv][]=__LINE__ . '"' . $nom_de_la_classe . '" "' . $nom_de_la_fonction_a_appeler . '" "<pre>'.var_export( $obj_matrice , true ).'</pre>"';*/
                     $autorise=false;
                     
-                    if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
+                    if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'])){
 
                         /*
                           afr écrire une fonction qui vérifie l'autorisation avec les 3 paramètres
-                          $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']
+                          $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur']
                           $nom_de_la_classe
                           $nom_de_la_fonction_a_appeler
                         */

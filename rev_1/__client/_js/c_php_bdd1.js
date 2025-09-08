@@ -102,13 +102,19 @@ class c_php_bdd1{
             for( let i in liste_des_champs_insert){
                let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_insert[i].nom_du_champ];
                liste_des_champs_insert[i].champ_dans_la_base=champ_dans_la_base;
-               if(champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien')){
-                   champ_est_libelle_lien=liste_des_champs_insert[i];
+               if(champ_dans_la_base.nom_du_champ === 'chp_nom_genre'){
+//                debugger
+               }
+               if(champ_est_libelle_lien===null){
+                   if(champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien') && champ_dans_la_base.meta.est_libelle_lien === '1' ){
+                       champ_est_libelle_lien=liste_des_champs_insert[i];
+                   }
                }
             }
             
         }
         
+        let mats=null;
         let ref_select=document.getElementById('reference_requete_select').value;
         if(ref_select!==''){
             let objet_requete_select=__gi1.__js_des_sql[ref_select];
@@ -117,7 +123,7 @@ class c_php_bdd1{
                 debugger;
                 return{__xst:__xer};
             }
-            let mats=matrice_select.__xva;
+            mats=matrice_select.__xva;
         }
         
         
@@ -153,7 +159,7 @@ class c_php_bdd1{
                                 if(matu[k][1]==='affecte' && matu[k][2]==='f'){
                                     for(let l=k+1;l<matu.length;l=matu[l][12]){
                                         if(matu[l][1]==='champ' && matu[l][2]==='f' && matu[l][8]===1 && matu[l+1][2]==='c'){
-                                            liste_des_champs_update.push({nom_du_champ:matu[l+1][1]});
+                                            liste_des_champs_update.push({nom_du_champ:matu[l+1][1], alias_table_mere:''});
                                         }
                                     }
                                 }
@@ -163,8 +169,43 @@ class c_php_bdd1{
                 }
             }
         }
-        
+        for(let i in liste_des_champs_update){
+          let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
+          /*ce champ fait-il référence à un champ amont qui est dans le ref_select */
+             
+          if(this.#obj_table.champs[nom_du_champ].hasOwnProperty('table_mere')){
+              let table_mere=this.#obj_table.champs[nom_du_champ].table_mere;
+              /*
+                on va chercher l'alias de la table mere dans la requere select
+              */
+              let l01s=mats.length;
+              for( let j=1 ; j < l01s ; j++ ){
+                  if(mats[j][1]==='provenance' && mats[j][2]==='f'){
+                      for( let k=j+1 ; k < l01s ; k++ ){
+                          if('nom_de_la_table' === mats[k][1] && mats[k][2] === 'f'){
+                              for( let l=k+1;l<l01s;l=mats[l][12]){
+                                  if(mats[l][1]===table_mere){
+                                      for( let m=k+1;m<l01s;m=mats[m][12]){
+                                          if(mats[m][1]==='alias' && mats[m][2] === 'f' && mats[m][8] === 1  && mats[m+1][2] === 'c'  ){
+                                              this.#obj_table.champs[nom_du_champ]['alias']=mats[m+1][1];
+                                              break;
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+
+          }
+               
+          
+        }
+
+        let liste_de_tables_liste_ecran={};
         let liste_des_champs_liste_ecran=[];
+        let liste_des_champs_condition_liste_ecran={};
         let ref_liste_ecran=document.getElementById('reference_requete_liste_ecran').value;
         if(ref_liste_ecran!==''){
             let objet_requete_liste_ecran=__gi1.__js_des_sql[ref_liste_ecran];
@@ -173,15 +214,44 @@ class c_php_bdd1{
                 debugger;
                 return{__xst:__xer};
             }
-            /*
-              recherche du champ est_libelle_lien
-            */
             let matle=matrice_liste_ecran.__xva;
-            for(let i=1;i<matle.length;i=matle[i][12]){
+            let le01=matle.length;
+            for(let i=1;i<le01;i=matle[i][12]){
                 if(matle[i][1]==='sélectionner' && matle[i][2]==='f'){
-                    for(let j=i+1;j<matle.length;j=matle[j][12]){
+                    for(let j=i+1;j<le01;j=matle[j][12]){
+                        if(matle[j][1]==='provenance' && matle[j][2]==='f'){
+                            for(let k=j+1;k<le01;k++){
+                                if(matle[k][1]==='nom_de_la_table' && matle[k][2]==='f' ){
+                                    let nom_de_la_table='';
+                                    let base='';
+                                    let alias='';
+                                    for(let l=k+1;l<le01;l=matle[l][12]){
+                                        if(matle[l][2]==='f' && matle[l][8]===1){
+                                            if(matle[l][1]==='alias' ){
+                                                alias=matle[l+1][1];
+                                            }else if(matle[l][1]==='base'){
+                                                base=matle[l+1][1];
+                                            }
+                                        }else{
+                                            nom_de_la_table=matle[l][1];
+                                        }
+                                    }
+                                    liste_de_tables_liste_ecran[alias]={
+                                        alias : alias,
+                                        base : base,
+                                        nom_de_la_table : nom_de_la_table,
+                                    };
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            for(let i=1;i<le01;i=matle[i][12]){
+                if(matle[i][1]==='sélectionner' && matle[i][2]==='f'){
+                    for(let j=i+1;j<le01;j=matle[j][12]){
                         if(matle[j][1]==='valeurs' && matle[j][2]==='f'){
-                            for(let k=j+1;k<matle.length;k=matle[k][12]){
+                            for(let k=j+1;k<le01;k=matle[k][12]){
                                 if(matle[k][1]==='champ' && matle[k][2]==='f' && matle[k][8] === 2){
                                     liste_des_champs_liste_ecran.push({
                                         nom_du_champ : matle[k+2][1] , 
@@ -194,14 +264,61 @@ class c_php_bdd1{
                     }
                 }
             }
-            if(champ_est_libelle_lien===null){
-                for( let i in liste_des_champs_liste_ecran){
+            for(let i=1;i<le01;i=matle[i][12]){
+                if(matle[i][1]==='sélectionner' && matle[i][2]==='f'){
+                    for(let j=i+1;j<le01;j=matle[j][12]){
+                        if(matle[j][1]==='conditions' && matle[j][2]==='f'){
+                            for(let k=j+1;k<le01;k++){
+                                if(matle[k][1]==='champ' && matle[k][2]==='f' && matle[k][8] === 2){
+                                    let cle=matle[k+1][1]+'_'+matle[k+2][1];
+                                    liste_des_champs_condition_liste_ecran[cle]={
+                                        nom_du_champ : matle[k+2][1] , 
+                                        préfixe_du_champ : matle[k+1][1] , 
+                                        champ_dans_la_base : null,
+                                    };
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            for( let i in liste_des_champs_condition_liste_ecran){ // hugues
+               if(liste_des_champs_condition_liste_ecran[i].préfixe_du_champ === 'T0'){
+                   let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_condition_liste_ecran[i].nom_du_champ];
+                   liste_des_champs_condition_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
+               }else{
+
+                   let nt=liste_de_tables_liste_ecran[liste_des_champs_condition_liste_ecran[i].préfixe_du_champ].nom_de_la_table;
+                   let aa=this.#obj_bdd[nt];
+                   let champ_dans_la_base=aa['champs'][liste_des_champs_condition_liste_ecran[i].nom_du_champ];
+                   liste_des_champs_condition_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
+               }
+            }
+            
+
+            
+            /*
+              recherche du champ est_libelle_lien
+            */
+            
+            for( let i in liste_des_champs_liste_ecran){
+               if(liste_des_champs_liste_ecran[i].préfixe_du_champ==='T0'){
+                   /* champ T0*/
                    let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_liste_ecran[i].nom_du_champ];
                    liste_des_champs_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
-                   if(champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien')){
-                       champ_est_libelle_lien=liste_des_champs_liste_ecran[i];
-                   }
-                }
+                   if(champ_est_libelle_lien===null){
+                       if(champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien') && champ_dans_la_base.meta.est_libelle_lien === '1'){
+                           champ_est_libelle_lien=liste_des_champs_liste_ecran[i];
+                       }
+                    }
+               }else{
+                   /* champ Tn*/
+                   let nt=liste_de_tables_liste_ecran[liste_des_champs_liste_ecran[i].préfixe_du_champ].nom_de_la_table;
+                   let aa=this.#obj_bdd[nt];
+                   let champ_dans_la_base=aa['champs'][liste_des_champs_liste_ecran[i].nom_du_champ];
+                   liste_des_champs_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
+                  
+               }
             }
         }
 
@@ -302,71 +419,88 @@ class c_php_bdd1{
         
         if(ref_insert!==''){
             for(let i=0;i<liste_des_champs_insert.length;i++){
+             
+             
                 let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
+                
+                if('chx_utilisateur_tache'===nom_du_champ){
+//                    debugger
+                }
+                
+                
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
-                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
+                if(
+                     obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 
+                  || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 
+                  || obj_champ.genre_objet_du_champ.che_est_nur_genre===1
+                  || ( obj_champ.genre_objet_du_champ.che_est_session_genre===1 && obj_champ.genre_objet_du_champ.chp_nom_en_session_genre !== null)
+                ){
                 }else{
-                    if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre===1){
-                        o2+='        if(is_null($donnees_recues[__xva][\''+nom_du_champ+'\']) || $donnees_recues[__xva][\''+nom_du_champ+'\']===\'\'){\n';
-                        o2+='            $donnees_retournees[__x_signaux][__xer][]=\'la valeur "'+obj_champ.meta.nom_bref_du_champ+'" doit être renseigné [\' . __LINE__ . \']\';\n';
-                        o2+='            return;\n';
-                        o2+='        }\n';
+
+                    if(obj_champ.genre_objet_du_champ.che_est_session_genre===1){
+                    }else{
+                        if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre===1){
+                            o2+='        if(is_null($donnees_recues[__xva][\''+nom_du_champ+'\']) || $donnees_recues[__xva][\''+nom_du_champ+'\']===\'\'){\n';
+                            o2+='            $donnees_retournees[__x_signaux][__xer][]=\'la valeur "'+obj_champ.meta.nom_bref_du_champ+'" doit être renseigné [\' . __LINE__ . \']\';\n';
+                            o2+='            return;\n';
+                            o2+='        }\n';
+                        }
                     }
 
 
 
-                    if(obj_champ.genre_objet_du_champ.cht_fonctions_genre!==null){
-                     
-                        var obj1=__gi1.__m_rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
-                        if(obj1.__xst !== __xsu){
-                            return({__xst : __xer});
-                        }
-                        /*
-                          $test=$GLOBALS['obj_fonctions1']->test_fonctions_de_c_fonctions1($donnees_recues[__xva]['cht_fonctions_genre'],$donnees_retournees);
-                          if($test[__xst]!==__xsu){
+                    if(obj_champ.genre_objet_du_champ.che_est_session_genre===1){
+                    }else{
+                        if(obj_champ.genre_objet_du_champ.cht_fonctions_genre!==null){
+                         
+                            var obj1=__gi1.__m_rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
+                            if(obj1.__xst !== __xsu){
+                                return({__xst : __xer});
+                            }
+                            /*
+                              $test=$GLOBALS['obj_fonctions1']->test_fonctions_de_c_fonctions1($donnees_recues[__xva]['cht_fonctions_genre'],$donnees_retournees);
+                              if($test[__xst]!==__xsu){
 
-                                  $donnees_retournees[__x_signaux][__xer][]='une des fonctions renseignées ne fait pas partie des fonctions disponibles [' . __LINE__ . ']';
-                                  $donnees_retournees[__xst]=__xer;
-                                  return;
-                          }
-                        */
-                          
-                        let mat1=obj1.__xva;
-                        let l01=mat1.length;
-                        for(let j=1;j<l01;j=mat1[j][12]){
-                            if(mat1[j][2]==='f'){
-                                o2+='\n';
-                                o2+='        $__test=$GLOBALS[\'obj_fonctions1\']->'+mat1[j][1]+'(';
-                                if(mat1[j][8]===0){
-                                }else{
-                                    for(let k=j+1;k<l01;k=mat1[k][12]){
-                                        if(mat1[k][2]==='c'){
-                                            if(mat1[k][4]===0){
-                                                o2+=mat1[k][1]+',';
+                                      $donnees_retournees[__x_signaux][__xer][]='une des fonctions renseignées ne fait pas partie des fonctions disponibles [' . __LINE__ . ']';
+                                      $donnees_retournees[__xst]=__xer;
+                                      return;
+                              }
+                            */
+                              
+                            let mat1=obj1.__xva;
+                            let l01=mat1.length;
+                            for(let j=1;j<l01;j=mat1[j][12]){
+                                if(mat1[j][2]==='f'){
+                                    o2+='\n';
+                                    o2+='        $__test=$GLOBALS[\'obj_fonctions1\']->'+mat1[j][1]+'(';
+                                    if(mat1[j][8]===0){
+                                    }else{
+                                        for(let k=j+1;k<l01;k=mat1[k][12]){
+                                            if(mat1[k][2]==='c'){
+                                                if(mat1[k][4]===0){
+                                                    o2+=mat1[k][1]+',';
+                                                }else{
+                                                  /*afr*/
+                                                  debugger
+                                                  return({__xst : __xer});
+                                                }
                                             }else{
-                                              /*afr*/
-                                              debugger
-                                              return({__xst : __xer});
+                                                return({__xst : __xer});
                                             }
-                                        }else{
-                                            return({__xst : __xer});
                                         }
                                     }
+                                    o2+='$donnees_recues[__xva][\''+nom_du_champ+'\'],$donnees_retournees);\n';
+                                    o2+='        if($__test[__xst]!==__xsu){\n';
+                                    o2+='            $donnees_retournees[__x_signaux][__xer][]=\'erreur sur le champ "'+obj_champ.meta.nom_bref_du_champ+'" [\' . __LINE__ . \']\';\n';
+                                    o2+='            $donnees_retournees[__xst]=__xer;\n';
+                                    o2+='            return;\n';
+                                    o2+='        }\n\n';
+                                }else{
+                                    return({__xst : __xer});
                                 }
-                                o2+='$donnees_recues[__xva][\''+nom_du_champ+'\'],$donnees_retournees);\n';
-                                o2+='        if($__test[__xst]!==__xsu){\n';
-                                o2+='            $donnees_retournees[__x_signaux][__xer][]=\'erreur sur le champ "'+obj_champ.meta.nom_bref_du_champ+'" [\' . __LINE__ . \']\';\n';
-                                o2+='            $donnees_retournees[__xst]=__xer;\n';
-                                o2+='            return;\n';
-                                o2+='        }\n\n';
-                            }else{
-                                return({__xst : __xer});
                             }
                         }
                     }
-
-
-
                 }
             }
             
@@ -376,6 +510,8 @@ class c_php_bdd1{
                 let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
                 if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
+                }else if(obj_champ.genre_objet_du_champ.che_est_session_genre===1 && obj_champ.genre_objet_du_champ.chp_nom_en_session_genre!==null){
+                    o2+='                    \''+nom_du_champ+'\' => $_SESSION[__X_CLE_APPLICATION][\''+obj_champ.genre_objet_du_champ.chp_nom_en_session_genre+'\'],\n';
                 }else{
                     o2+='                    \''+nom_du_champ+'\' => $donnees_recues[__xva][\''+nom_du_champ+'\'],\n';
                 }
@@ -411,7 +547,7 @@ class c_php_bdd1{
             o2+='\n';
             o2+='        }else{\n';
             o2+='\n';
-            o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification efféctuée\';\n';
+            o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification effectuée\';\n';
             o2+='        }\n';
         }
         
@@ -538,7 +674,7 @@ class c_php_bdd1{
             o2+='        if($tt'+ref_select+'[__xst] === __xsu){\n';
             o2+='\n';
             o2+='\n';
-            o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification efféctuée\';\n';
+            o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification effectuée\';\n';
             o2+='            return;\n';
             o2+='        }\n';
                         
@@ -644,7 +780,7 @@ class c_php_bdd1{
             o2+='\n';
             o2+='        }else{\n';
             o2+='\n';
-            o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification efféctuée\';\n';
+            o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification effectuée\';\n';
             o2+='        }\n';
             o2+='\n';
         }
@@ -662,20 +798,46 @@ class c_php_bdd1{
         o2+='        $o1 .= \'<h1>ajout \' . self::DUN_DUNE_ELEMENT_GERE . \' <div class="hug_bouton" style="font-weight:normal;" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_liste_des_'+this.#nom_ref+'1))" title="revenir à la liste" >⬱</div></h1>\' . PHP_EOL;\n';
         o2+='        $o1 .= \'<div id="vv_'+this.#nom_ref+'_creer1">\' . PHP_EOL;\n';
         
-        if(ref_select!=='' && ref_insert!==''){
+        if(ref_insert!==''){
         
             for(let i=0;i<liste_des_champs_insert.length;i++){
                 let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
-                if('che_ordre_genre' === obj_champ.nom_du_champ){
-    //                debugger
+                if('chx_utilisateur_tache' === obj_champ.nom_du_champ){
+/*
+
+*/
                 }
-                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 ){
+                if(obj_champ.hasOwnProperty('table_mere') && obj_champ.hasOwnProperty('champ_pere') && obj_champ.table_mere !== ''  && obj_champ.champ_pere !== '' ){
+
+                    o2+='        $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    <div class="yy_edition_libelle1">\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'      <span>'+obj_champ.meta.nom_bref_du_champ+'</span>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'        <input type="hidden" value=""  id="'+obj_champ.nom_du_champ+'" />\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'        <span id="'+obj_champ.nom_du_champ+'_libelle">*indéfini</span>\' . PHP_EOL;\n';
+                    let nom_de_la_classe=obj_champ.table_mere.replace('tbl_','');
+                    o2+='        $parametre_sous_fenetre=\'c_'+nom_de_la_classe+'1.page_'+nom_de_la_classe+'_sous_liste1(\';\n';
+                    o2+='        $parametre_sous_fenetre .= \' sans_menus1()\';\n';
+                    o2+='        $parametre_sous_fenetre .= \' nom_champ_dans_parent1('+obj_champ.nom_du_champ+')\';\n';
+                    o2+='        $parametre_sous_fenetre .= \' nom_libelle_dans_parent1('+obj_champ.nom_du_champ+'_libelle)\';\n';
+                    o2+='        $parametre_sous_fenetre .= \' libelle_si_vide1("*indéfini")\';\n';
+                    o2+='        $parametre_sous_fenetre .= \')\';\n';
+                    o2+='        $o1 .= \'      <div class="hug_bouton yy__x_signaux_1" \' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'data-hug_click="interface1.affiche_sous_fenetre1(\' . htmlentities($parametre_sous_fenetre) . \')"  title="selectionner">📁</div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(\' . htmlentities($parametre_sous_fenetre) . \')"  title="annuler">🚫</div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'  </div>\' . PHP_EOL;\n';
+
+                
+                }else if(  obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 
+                  || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 
+                  || obj_champ.genre_objet_du_champ.che_est_nur_genre===1 
+                  || ( obj_champ.genre_objet_du_champ.che_est_session_genre===1 && obj_champ.genre_objet_du_champ.chp_nom_en_session_genre !== null)
+                
+                ){
                 }else if( obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
-                    o2+='        /*\n';
-                    o2+='          =====================================================================================================\n';
-                    o2+='        */\n';
-                    o2+='        $o1 .= \'      <input type="hidden" id="'+obj_champ.nom_du_champ+'" value="0" />\' . PHP_EOL;\n';
                  
                 }else{
                     o2+='        /*\n';
@@ -687,6 +849,9 @@ class c_php_bdd1{
                     o2+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
                     o2+='        $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
                     
+                    if('chp_nom_en_session_genre'===obj_champ.nom_du_champ){
+                        //debugger;
+                    }
                     
                     if(obj_champ.genre_objet_du_champ.chp_espece_genre==='VARCHAR'){
                         let size='';
@@ -704,7 +869,11 @@ class c_php_bdd1{
                         o2+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
                         o2+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
                         o2+='        }else{\n';
-                        o2+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                        if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre===0){
+                            o2+='            $o1 .= \'\';\n';
+                        }else{
+                            o2+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                        }
                         o2+='        }\n';
                         o2+='        $o1 .= \'" />\' . PHP_EOL;\n';
                         if(obj_champ.genre_objet_du_champ.cht_parmis_genre!==null){
@@ -720,7 +889,11 @@ class c_php_bdd1{
                         o2+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
                         o2+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
                         o2+='        }else{\n';
-                        o2+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                        if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre===0){
+                            o2+='            $o1 .= \'\';\n';
+                        }else{
+                            o2+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                        }
                         o2+='        }\n';
                         o2+='        $o1 .= \'</textarea>\' . PHP_EOL;\n';
                         o2+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
@@ -730,12 +903,25 @@ class c_php_bdd1{
                      
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
                         if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
+
+                            
+                            o2+='        $o1 .= \'      <input type="number" ';
+                            if(obj_champ.hasOwnProperty('longueur_du_champ') && obj_champ.longueur_du_champ>0 && obj_champ.longueur_du_champ <= 18){
+                                /*18 caractères max*/
+                                o2+=' size="' + obj_champ.longueur_du_champ + '" maxlength="' + obj_champ.longueur_du_champ +'" max="'+('9'.repeat(obj_champ.longueur_du_champ))+'" style="width:'+(obj_champ.longueur_du_champ+2)+'em;"';
+                            }else{
+                                o2+=' size="18" maxlength="18" max="999999999999999999"  min="-999999999999999999" ';
+                            }
+                            o2+=' id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="\';\n';
                             /*champ entier standard*/
-                            o2+='        $o1 .= \'      <input type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="\';\n';
                             o2+='        if(isset($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\'])){;\n';
                             o2+='            $o1 .= enti1($donnees_recues[\'dupliquer\'][\'T0.'+obj_champ.nom_du_champ+'\']);\n';
                             o2+='        }else{\n';
-                            o2+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                            if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre===0){
+                                o2+='            $o1 .= \'\';\n';
+                            }else{
+                                o2+='            $o1 .= \''+(obj_champ.genre_objet_du_champ.cht_valeur_init_genre===null?'':obj_champ.genre_objet_du_champ.cht_valeur_init_genre)+'\';\n';
+                            }
                             o2+='        }\n';
                             o2+='        $o1 .= \'"/>\' . PHP_EOL;\n';
                             if(obj_champ.genre_objet_du_champ.cht_parmis_genre!==null){
@@ -844,9 +1030,9 @@ class c_php_bdd1{
                         }
                         o2+='                $o1 .= \'      <input disabled value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" type="text" '+size+' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='TEXT'){
-                        o2+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
-                        o2+='        $o1 .= \'            <textarea disabled id="'+obj_champ.nom_du_champ+'" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'</textarea>\' . PHP_EOL;\n';
-                        o2+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
+                        o2+='                $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
+                        o2+='                $o1 .= \'            <textarea disabled id="'+obj_champ.nom_du_champ+'" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'</textarea>\' . PHP_EOL;\n';
+                        o2+='                $o1 .= \'        </div>\' . PHP_EOL;\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
                         if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
                             /*champ entier standard*/
@@ -922,44 +1108,84 @@ class c_php_bdd1{
             o2+='                $donnees_retournees\n';
             o2+='            );\n';
             o2+='            \n';
-            o2+='            if($tt'+ref_select+'[__xst] === __xsu){\n';
+            o2+='            if($tt'+ref_select+'[__xst] !== __xsu){\n';
             o2+='\n';
-            o2+='                $o1 .= \'<h1>modification \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_liste_des_'+this.#nom_ref+'1))" title="revenir à la liste" >⬱</div></h1>\' . PHP_EOL;\n';
-            o2+='                $o1 .= \'<div id="vv_'+this.#nom_ref+'_modifier1">\' . PHP_EOL;\n';
-            o2+='                /**/\n';
-            o2+='                $o1 .= \'  <input type="hidden" value="\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \'" id="'+champ_primaire+'" />\' . PHP_EOL;\n';
-            o2+='                /*\n';
+            o2+='            if($tt'+ref_select+'[__xst] !== __xsu){\n';
+            o2+='\n';
+            o2+='                return;\n';
+            o2+='\n';
+            o2+='            }\n';
+            o2+='\n';
+            o2+='            $o1 .= \'<h1>modification \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \') <div class="hug_bouton" style="font-weight:normal;" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_liste_des_'+this.#nom_ref+'1))" title="revenir à la liste" >⬱</div></h1>\' . PHP_EOL;\n';
+            o2+='            $o1 .= \'<div id="vv_'+this.#nom_ref+'_modifier1">\' . PHP_EOL;\n';
+            o2+='            /**/\n';
+            o2+='            $o1 .= \'  <input type="hidden" value="\' . $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'] . \'" id="'+champ_primaire+'" />\' . PHP_EOL;\n';
+            o2+='            /*\n';
             
             for(let i=0;i<liste_des_champs_update.length;i++){
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
-                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
+                
+                
+                if(obj_champ.hasOwnProperty('table_mere') && obj_champ.hasOwnProperty('champ_pere') && obj_champ.table_mere !== ''  && obj_champ.champ_pere !== '' ){
+
+                    o2+='        $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    <div class="yy_edition_libelle1">\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'      <span>'+obj_champ.meta.nom_bref_du_champ+'</span>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'        <input type="hidden" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\']) . \'"  id="'+obj_champ.nom_du_champ+'" />\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'        <span id="'+obj_champ.nom_du_champ+'_libelle">\';\n';
+                    o2+='        if($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\'] === null){\n';
+                    o2+='            $o1 .= \'*indéfini\' . PHP_EOL;\n';
+                    o2+='        }else{\n';
+                    o2+='            $o1 .= \'(\' . $tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\'] . \') \';\n';
+
+                    o2+='            $o1 .=  htmlentities($tt'+ref_select+'[__xva][0][\''+obj_champ.alias+'.'+obj_champ.champ_pere+'\']) . PHP_EOL;\n';
+                    o2+='        }\n';
+                    o2+='        $o1 .= \'</span>\' . PHP_EOL;\n';
+                    let nom_de_la_classe=obj_champ.table_mere.replace('tbl_','');
+                    o2+='        $parametre_sous_fenetre=\'c_'+nom_de_la_classe+'1.page_'+nom_de_la_classe+'_sous_liste1(\';\n';
+                    o2+='        $parametre_sous_fenetre .= \' sans_menus1()\';\n';
+                    o2+='        $parametre_sous_fenetre .= \' nom_champ_dans_parent1('+obj_champ.nom_du_champ+')\';\n';
+                    o2+='        $parametre_sous_fenetre .= \' nom_libelle_dans_parent1('+obj_champ.nom_du_champ+'_libelle)\';\n';
+                    o2+='        $parametre_sous_fenetre .= \' libelle_si_vide1("*indéfini")\';\n';
+                    o2+='        $parametre_sous_fenetre .= \')\';\n';
+                    o2+='        $o1 .= \'      <div class="hug_bouton yy__x_signaux_1" \' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'data-hug_click="interface1.affiche_sous_fenetre1(\' . htmlentities($parametre_sous_fenetre) . \')"  title="selectionner">📁</div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'      <div class="hug_bouton yy__x_signaux_2" data-hug_click="interface1.vider_champ1(\' . htmlentities($parametre_sous_fenetre) . \')"  title="annuler">🚫</div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'  </div>\' . PHP_EOL;\n';
+
+                
+                
+                }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre===1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre===1 || obj_champ.genre_objet_du_champ.che_est_nur_genre===1){
                 }else{
-                    o2+='                /*\n';
-                    o2+='                  =====================================================================================\n';
-                    o2+='                */\n';
-                    o2+='                $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
-                    o2+='                $o1 .= \'    <div class="yy_edition_libelle1">\' . PHP_EOL;\n';
-                    o2+='                $o1 .= \'      <span>'+obj_champ.meta.nom_bref_du_champ+'</span>\' . PHP_EOL;\n';
-                    o2+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
-                    o2+='                $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+                    o2+='            /*\n';
+                    o2+='              =====================================================================================\n';
+                    o2+='            */\n';
+                    o2+='            $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
+                    o2+='            $o1 .= \'    <div class="yy_edition_libelle1">\' . PHP_EOL;\n';
+                    o2+='            $o1 .= \'      <span>'+obj_champ.meta.nom_bref_du_champ+'</span>\' . PHP_EOL;\n';
+                    o2+='            $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='            $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
                     if(obj_champ.genre_objet_du_champ.chp_espece_genre==='VARCHAR'){
                         let size='';
                         if(obj_champ.genre_objet_du_champ.che_longueur_genre<=64){
                          size=' size="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" ';
                         }
-                        o2+='                $o1 .= \'      <input type="text" id="'+obj_champ.nom_du_champ+'" '+size+' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\']) . \'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
+                        o2+='            $o1 .= \'      <input type="text" id="'+obj_champ.nom_du_champ+'" '+size+' maxlength="'+obj_champ.genre_objet_du_champ.che_longueur_genre+'" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\']) . \'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='TEXT'){
-                        o2+='        $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
-                        o2+='        $o1 .= \'            <textarea id="'+obj_champ.nom_du_champ+'" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\']) . \'</textarea>\' . PHP_EOL;\n';
-                        o2+='        $o1 .= \'        </div>\' . PHP_EOL;\n';
+                        o2+='            $o1 .= \'        <div class="yy_conteneur_txtara">\' . PHP_EOL;\n';
+                        o2+='            $o1 .= \'            <textarea id="'+obj_champ.nom_du_champ+'" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+obj_champ.nom_du_champ+'\']) . \'</textarea>\' . PHP_EOL;\n';
+                        o2+='            $o1 .= \'        </div>\' . PHP_EOL;\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre==='INTEGER'){
                         if(obj_champ.genre_objet_du_champ.cht_parmis_genre===null){
                             /*champ entier standard*/
-                            o2+='        $o1 .= \'      <input value="" type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
+                            o2+='                $o1 .= \'      <input value="" type="number" size="32" maxlength="32" id="'+obj_champ.nom_du_champ+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' . PHP_EOL;\n';
                         }else{
                             if(obj_champ.genre_objet_du_champ.cht_parmis_genre==='0,1'){
-                                o2+='        $o1 .= \'        <input type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" >\'; . PHP_EOL;\n';
+                                o2+='            $o1 .= \'        <input type="range" id="'+obj_champ.nom_du_champ+'" class="yy_ouinon" min="0" max="1" step="1" value="\' . enti1($tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_insert[i].nom_du_champ+'\']) . \'" >\'; . PHP_EOL;\n';
                             }else{
                                 debugger
                             }
@@ -970,32 +1196,25 @@ class c_php_bdd1{
                          */
                          debugger
                     }
-                    o2+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
-                    o2+='                $o1 .= \'  </div>\' . PHP_EOL;\n';
+                    o2+='            $o1 .= \'    </div>\' . PHP_EOL;\n';
+                    o2+='            $o1 .= \'  </div>\' . PHP_EOL;\n';
                 }
             }
         
         }
-        o2+='                /*\n';
-        o2+='                  =====================================================================================\n';
-        o2+='                */\n';
-        o2+='                $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
-        o2+='                $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
-        o2+='                $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $'+champ_primaire+' . \'),page_liste_des_'+this.#nom_ref+'1())" title="" >enregistrer et revenir à la liste</div>\';\n';
-        o2+='                $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $'+champ_primaire+' . \'))" title="" >enregistrer</div>\';\n';
-        o2+='                $o1 .= \'    </div>\' . PHP_EOL;\n';
-        o2+='                $o1 .= \'  </div>\' . PHP_EOL;\n';
-        o2+='                /**/\n';
-        o2+='                $o1 .= \'</div>\' . PHP_EOL;\n';
-        o2+='                $donnees_retournees[__x_page] .= $o1;\n';
-        o2+='                $donnees_retournees[__xst]=__xsu;\n';
-        o2+='\n';
-        o2+='            }\n';
-        o2+='\n';
-        o2+='\n';
-        o2+='        }else{\n';
-        o2+='\n';
-        o2+='            $this->page_liste_des_'+this.#nom_ref+'1($donnees_retournees,$mat,$donnees_recues);\n';
+        o2+='            /*\n';
+        o2+='              =====================================================================================\n';
+        o2+='            */\n';
+        o2+='            $o1 .= \'  <div class="yy_edition_champ1">\' . PHP_EOL;\n';
+        o2+='            $o1 .= \'    <div class="yy_edition_valeur1">\' . PHP_EOL;\n';
+        o2+='            $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $'+champ_primaire+' . \'),page_liste_des_'+this.#nom_ref+'1())" title="" >enregistrer et revenir à la liste</div>\';\n';
+        o2+='            $o1 .= \'    <div class="hug_bouton" data-hug_click="'+this.#nom_de_la_classe_générée+'.formulaire1(conteneur1(vv_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\' . $'+champ_primaire+' . \'))" title="" >enregistrer</div>\';\n';
+        o2+='            $o1 .= \'    </div>\' . PHP_EOL;\n';
+        o2+='            $o1 .= \'  </div>\' . PHP_EOL;\n';
+        o2+='            /**/\n';
+        o2+='            $o1 .= \'</div>\' . PHP_EOL;\n';
+        o2+='            $donnees_retournees[__x_page] .= $o1;\n';
+        o2+='            $donnees_retournees[__xst]=__xsu;\n';
         o2+='\n';
         o2+='        }\n';
         o2+='\n';
@@ -1064,7 +1283,7 @@ class c_php_bdd1{
         o2+='        $par=array();\n';
         o2+='        $par[\'T0_'+champ_primaire+'\']=\'\';\n';
         if(champ_est_libelle_lien!==null){
-           o2+='        $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\']=\'\';\n';
+           o2+='        $par[\'T0_'+champ_est_libelle_lien.nom_du_champ+'\']=\'\';\n';
            o2+='        $par[\'nom_champ_dans_parent1\']=\'\';\n';
            o2+='        $par[\'nom_libelle_dans_parent1\']=\'\';\n';
            o2+='        $par[\'__num_page\']=0;\n';
@@ -1187,13 +1406,17 @@ class c_php_bdd1{
                o2+='                \'T0_'+champ_primaire+'\' => $par[\'T0_'+champ_primaire+'\'] === \'\' ? \'\' : $par[\'T0_'+champ_primaire+'\'],\n';
                o2+='                \''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\' => $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\'] === \'\' ? \'\' : \'\' . $par[\''+champ_est_libelle_lien.préfixe_du_champ+'_'+champ_est_libelle_lien.nom_du_champ+'\'] . \'\',\n';
                for( let i in liste_des_champs_liste_ecran){
-                if(
-                      liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_incrément_genre===1 
-                   || liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_primaire_genre===1 
-                   || liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien')){
-                }else{
-                   o2+='                \''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\' => \'\',\n';
-                }
+                   try{
+                       if(
+                             liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_incrément_genre===1 
+                          || liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_primaire_genre===1 
+                          || liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.hasOwnProperty('est_libelle_lien')){
+                       }else{
+                          o2+='                \''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\' => \'\',\n';
+                       }
+                   }catch(e){
+                       debugger;
+                   }
                }
                
                o2+='                \'quantitee\' => $__nbMax,\n';
@@ -1271,13 +1494,17 @@ class c_php_bdd1{
         o2+='        $__nbMax=10;\n';
         o2+='        $par=array();\n';
         if(ref_liste_ecran!=='' && ref_liste_ecran!==''){
-            for( let i in liste_des_champs_liste_ecran){
-                if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
-                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
-                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
-                ){
-                }else{
-                    o2+='        $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\']=\'\';\n';
+            for( let i in liste_des_champs_condition_liste_ecran){ // liste_des_champs_liste_ecran
+                try{
+                    if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
+                    ||liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
+                    ||liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
+                    ){
+                    }else{
+                        o2+='        $par[\''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\']=\'\';\n';
+                    }
+                }catch(e){
+                    debugger
                 }
             }
             o2+='        $par[\'__num_page\']=0;\n';
@@ -1352,13 +1579,13 @@ class c_php_bdd1{
             o2+='            $_SESSION[__X_CLE_APPLICATION][\''+this.#nom_de_la_classe_générée+'.page_liste_des_'+this.#nom_ref+'1\']=$par;\n';
             o2+='        }\n';
             o2+='\n';
-            for( let i in liste_des_champs_liste_ecran){
-                if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
-                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
-                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
+            for( let i in liste_des_champs_condition_liste_ecran){ // liste_des_champs_liste_ecran
+                if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
+                ||liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
+                ||liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
                 ){
                 }else{
-                    o2+='        $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\']=$par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\']??\'\';\n';
+                    o2+='        $par[\''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\']=$par[\''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\']??\'\';\n';
                 }
             }
             
@@ -1369,18 +1596,18 @@ class c_php_bdd1{
             o2+='        $__debut=$__num_page * $__nbMax;\n';
             o2+='        $o1 .= \'<div class="yy_filtre_liste1" id="\' . $nom_filtre . \'">\' . PHP_EOL;\n';
 
-            for( let i in liste_des_champs_liste_ecran){
-                if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
-                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
-                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
+            for( let i in liste_des_champs_condition_liste_ecran){
+                if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
+                ||liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
+                ||liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
                 ){
                 }else{
                     o2+='        /*\n';
                     o2+='          \n';
                     o2+='        */\n';
                     o2+='        $o1 .= \'   <div>\' . PHP_EOL;\n';
-                    o2+='        $o1 .= \'      <div><span>'+liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.nom_bref_du_champ+'</span></div>\' . PHP_EOL;\n';
-                    o2+='        $o1 .= \'      <div><input type="text" id="'+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'" value="\' . $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'] . \'" size="8" maxlength="64" autocapitalize="off" />\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'      <div><span>'+liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.meta.nom_bref_du_champ+'</span></div>\' . PHP_EOL;\n';
+                    o2+='        $o1 .= \'      <div><input type="text" id="'+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'" value="\' . $par[\''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\'] . \'" size="8" maxlength="64" autocapitalize="off" />\' . PHP_EOL;\n';
                     o2+='        $o1 .= \'      </div>\' . PHP_EOL;\n';
                     o2+='        $o1 .= \'   </div>\' . PHP_EOL;\n';
                 }
@@ -1399,13 +1626,13 @@ class c_php_bdd1{
             o2+='            '+ref_liste_ecran+',\n';
             o2+='            array(\n';
             o2+='                /**/\n';
-            for( let i in liste_des_champs_liste_ecran){
-                if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
-                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
-                ||liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
+            for( let i in liste_des_champs_condition_liste_ecran){
+                if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre===1
+                ||liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre===1
+                ||liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
                 ){
                 }else{
-                    o2+='                \''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\' => $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'] === \'\' ? \'\' : $par[\''+liste_des_champs_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_liste_ecran[i].nom_du_champ+'\'],\n';
+                    o2+='                \''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\' => $par[\''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\'] === \'\' ? \'\' : $par[\''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\'],\n';
                 }
             }
             o2+='                \'quantitee\' => $__nbMax,\n';
@@ -1578,7 +1805,11 @@ class c_php_bdd1{
                 for( let k=j + 1 ; k < l02 ; k=mat2[k][12] ){
                     if(mat2[k][2] === 'f' && mat2[k][1] === 'nom_de_la_table' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                         nom_de_la_table=mat2[k + 1][1];
-                        this.#obj_bdd[nom_de_la_table]={champs:{},ordre_des_champs:[],meta:{}}
+                        this.#obj_bdd[nom_de_la_table]={
+                            champs:{},
+                            ordre_des_champs:[],
+                            meta:{}
+                        }
                     }
                 }
                 if(nom_de_la_table !== ''){
@@ -1616,6 +1847,11 @@ class c_php_bdd1{
                                             }else if(mat2[n][1] === 'espece_du_champ'){
                                                 this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['espece_du_champ']=mat2[n + 1][1];
                                                 this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['type_du_champ']=mat2[n + 1][1];
+                                            }else if(mat2[n][1] === 'references' && mat2[n][8] === 2 ){
+                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['table_mere']=mat2[n+1][1];
+                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['champ_pere']=mat2[n+2][1];
+                                            }else if(mat2[n][1] === 'longueur_du_champ' && mat2[n][8] === 1  && mat2[n+1][2] === 'c'  ){
+                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=parseInt(mat2[n+1][1],10);
                                             }else if(mat2[n][1] === 'meta' && mat2[n][2] === 'f'){
                                                 for( let o=n + 1 ; o < l02 ; o=mat2[o][12] ){
                                                     if(mat2[o][1] === 'genre' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o+1][2] === 'c'){

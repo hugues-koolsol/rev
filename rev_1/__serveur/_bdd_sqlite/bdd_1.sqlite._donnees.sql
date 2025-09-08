@@ -112,7 +112,7 @@ chx_acces_utilisateur,
 chd__dtm_utilisateur,
 chd__dtc_utilisateur,
 che__nur_utilisateur) VALUES
-('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'732','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('1','webmaster@example.com','$2y$10$qHgCpD5HuoasVWUqBq54ZuOt9yoQbMbZd/0RU9taTNLD2UWnCgPZu',NULL,'737','1307','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','anonyme',NULL,NULL,'0','0','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
@@ -4299,8 +4299,8 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chx_utilisateur_tache''),
             nom_bref_du_champ(''utilisateur''),
-            typologie(che),
-            genre(9),
+            typologie(chx),
+            genre(18),
             espece_du_champ(INTEGER)
          )
       ),
@@ -4340,15 +4340,12 @@ créer_table(
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_projets,chi_id_projet),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_projet_tache''),
             nom_bref_du_champ(''projet''),
             typologie(chx),
-            genre(4),
+            genre(109),
             espece_du_champ(INTEGER)
          )
       ),
@@ -5049,7 +5046,7 @@ créer_table(
          )
       ),
       champ(
-         nom_du_champ(''che_est_utilisateur_genre''),
+         nom_du_champ(''che_est_session_genre''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
@@ -5057,18 +5054,28 @@ créer_table(
          valeur_par_defaut(0),
          meta(
             genre_meta(champ),
-            nom_du_champ(''che_est_utilisateur_genre''),
-            espece_du_champ(INTEGER),
+            nom_du_champ(''che_est_session_genre''),
+            nom_bref_du_champ(''est utilisateur''),
             typologie(che),
             genre(5),
-            nom_bref_du_champ(''est utilisateur''),
-            masquer_champ_dans_svg(0),
-            refe_enfant_droite(0),
-            refe_parent_gauche(0),
-            est_libelle_lien(0),
-            est_critere_recherche_liste_ecran(0),
-            ordre_tri_liste_ecran(0),
-            sens_tri_liste_ecran_decroissant(on)
+            espece_du_champ(INTEGER)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_nom_en_session_genre''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(false),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_nom_en_session_genre''),
+            nom_bref_du_champ(''nom en session''),
+            typologie(chp),
+            genre(12),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(64)
          )
       )
    )
@@ -5838,7 +5845,8 @@ echo __FILE__ . '' '' . __LINE__ . '' __LINE__ = <pre>'' . var_export( $a , true
   999 999 999 999 999 999
 1 000 000 000 000 000 000','4','1','2025-09-06 10:42:26.801','2025-09-05 16:44:43.607','0'),
 ('257','1','traiter le integer(2) pour priorité','3','1','2025-09-06 16:13:30.347','2025-09-06 16:13:30.347','0'),
-('258','1','est_utilisateur => est_session','1','1','2025-09-06 17:41:27.816','2025-09-06 17:41:27.816','0');
+('258','1','est_utilisateur => est_session','99','1','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0'),
+('259','1','ajouter positif dans les genres INTEGER','1','1','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0');
 
 
 /*
@@ -6407,7 +6415,7 @@ WHERE (`chi_id_basedd` = :chi_id_basedd
       trier_par((champ(`T0`,`chp_priorite_tache`),croissant())),
       limité_à(quantité(:quantitee),début(:debut))
    )
-)  ','SELECT 
+)','SELECT 
 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
 `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T0`.`chx_projet_tache`
  FROM b1.tbl_taches T0
@@ -6421,7 +6429,7 @@ WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
    AND `T0`.`chx_projet_tache` = :T0_chx_projet_tache) 
 ORDER BY `T0`.`chp_priorite_tache` ASC  
 LIMIT :quantitee OFFSET :debut 
-;',NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+;',NULL,NULL,'2','2025-09-07 10:51:12.709','2000-01-01 00:00:00.000','1'),
 ('120','tâches priorité - 1','1','update','modifier(
    base_de_reference(1),
    valeurs(affecte(champ(`chp_priorite_tache`),moins(chp_priorite_tache,1))),
@@ -8563,7 +8571,8 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
       champ(`T0`,`chd__dtc_genre`)
       champ(`T0`,`chd__dtm_genre`)
       champ(`T0`,`che__nur_genre`)
-      champ(`T0`,`che_est_utilisateur_genre`)
+      champ(`T0`,`che_est_session_genre`)
+      champ(`T0`,`chp_nom_en_session_genre`)
    )
    provenance(
       table_reference(
@@ -8588,12 +8597,12 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
 `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
 `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
 `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-`T0`.`che__nur_genre` , `T0`.`che_est_utilisateur_genre`
+`T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre`
  FROM b1.tbl_genres T0
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre`T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre`T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre`T0`.`chp_espece_genre` LIKE :T0_chp_espece_genre`T0`.`cht_valeur_init_genre` LIKE :T0_cht_valeur_init_genre`T0`.`cht_parmis_genre` LIKE :T0_cht_parmis_genre 
 ORDER BY `T0`.`che_ordre_genre` ASC, `T0`.`chi_id_genre` DESC  
 LIMIT :quantitee OFFSET :debut 
-;',NULL,NULL,'6','2025-09-06 14:41:33.119','2000-01-01 00:00:00.000','1'),
+;',NULL,NULL,'7','2025-09-07 08:23:14.064','2000-01-01 00:00:00.000','1'),
 ('329','genres','1','insert','insérer(
    base_de_reference(1),
    valeurs(
@@ -8616,7 +8625,8 @@ LIMIT :quantitee OFFSET :debut
       affecte(champ(`che_est_tsc_genre`),:che_est_tsc_genre)
       affecte(champ(`chd__dtc_genre`),:chd__dtc_genre)
       affecte(champ(`chd__dtm_genre`),:chd__dtm_genre)
-      affecte(champ(`che_est_utilisateur_genre`),:che_est_utilisateur_genre)
+      affecte(champ(`che_est_session_genre`),:che_est_session_genre)
+      affecte(champ(`chp_nom_en_session_genre`),:chp_nom_en_session_genre)
    )
    provenance(
       table_reference(
@@ -8643,7 +8653,8 @@ LIMIT :quantitee OFFSET :debut
     `che_est_tsc_genre` , 
     `chd__dtc_genre` , 
     `chd__dtm_genre` , 
-    `che_est_utilisateur_genre`
+    `che_est_session_genre` , 
+    `chp_nom_en_session_genre`
 ) VALUES (
     :chp_nom_genre , 
     :che_ordre_genre , 
@@ -8664,8 +8675,9 @@ LIMIT :quantitee OFFSET :debut
     :che_est_tsc_genre , 
     :chd__dtc_genre , 
     :chd__dtm_genre , 
-    :che_est_utilisateur_genre
-);',NULL,NULL,'6','2025-09-06 14:41:34.081','2000-01-01 00:00:00.000','1'),
+    :che_est_session_genre , 
+    :chp_nom_en_session_genre
+);',NULL,NULL,'8','2025-09-07 08:23:40.563','2000-01-01 00:00:00.000','1'),
 ('330','genres','1','select','sélectionner(
    base_de_reference(1),
    valeurs(
@@ -8690,7 +8702,8 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`chd__dtc_genre`)
       champ(`T0`,`chd__dtm_genre`)
       champ(`T0`,`che__nur_genre`)
-      champ(`T0`,`che_est_utilisateur_genre`)
+      champ(`T0`,`che_est_session_genre`)
+      champ(`T0`,`chp_nom_en_session_genre`)
    )
    provenance(
       table_reference(
@@ -8705,10 +8718,10 @@ LIMIT :quantitee OFFSET :debut
 `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
 `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
 `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-`T0`.`che__nur_genre` , `T0`.`che_est_utilisateur_genre`
+`T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre`
  FROM b1.tbl_genres T0
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
-;',NULL,NULL,'2','2025-09-06 14:42:15.790','2000-01-01 00:00:00.000','1'),
+;',NULL,NULL,'3','2025-09-07 08:23:12.681','2000-01-01 00:00:00.000','1'),
 ('331','genres','1','update','modifier(
    base_de_reference(1),
    valeurs(
@@ -8731,7 +8744,8 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
       affecte(champ(`che_est_tsc_genre`),:n_che_est_tsc_genre)
       affecte(champ(`chd__dtm_genre`),:n_chd__dtm_genre)
       affecte(champ(`che__nur_genre`),:n_che__nur_genre)
-      affecte(champ(`che_est_utilisateur_genre`),:n_che_est_utilisateur_genre)
+      affecte(champ(`che_est_session_genre`),:n_che_est_session_genre)
+      affecte(champ(`chp_nom_en_session_genre`),:n_chp_nom_en_session_genre)
    )
    provenance(
       table_reference(
@@ -8761,8 +8775,9 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
    `che_est_tsc_genre` = :n_che_est_tsc_genre , 
    `chd__dtm_genre` = :n_chd__dtm_genre , 
    `che__nur_genre` = :n_che__nur_genre , 
-   `che_est_utilisateur_genre` = :n_che_est_utilisateur_genre
-WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,NULL,'2','2025-09-06 14:42:17.106','2000-01-01 00:00:00.000','1'),
+   `che_est_session_genre` = :n_che_est_session_genre , 
+   `chp_nom_en_session_genre` = :n_chp_nom_en_session_genre
+WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,NULL,'3','2025-09-07 08:23:11.943','2000-01-01 00:00:00.000','1'),
 ('332','genres','1','delete','supprimer(
    base_de_reference(1),
    provenance(
@@ -8775,7 +8790,7 @@ WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,NULL,'2','2025-09-06 14:42:17.106
       egal(champ(`chi_id_genre`),:chi_id_genre)
    )
 )','DELETE FROM b1.tbl_genres
-WHERE `chi_id_genre` = :chi_id_genre ;',NULL,NULL,'2','2025-09-06 14:42:17.906','2000-01-01 00:00:00.000','1'),
+WHERE `chi_id_genre` = :chi_id_genre ;',NULL,NULL,'3','2025-09-07 08:23:11.023','2000-01-01 00:00:00.000','1'),
 ('333','tous les genres','1','select','sélectionner(
    base_de_reference(1),
    valeurs(
@@ -8797,7 +8812,8 @@ WHERE `chi_id_genre` = :chi_id_genre ;',NULL,NULL,'2','2025-09-06 14:42:17.906',
       champ(`T0`,`cht_fonctions_genre`),
       champ(`T0`,`che_est_nur_genre`),
       champ(`T0`,`che_est_tsm_genre`),
-      champ(`T0`,`che_est_utilisateur_genre`)
+      champ(`T0`,`che_est_session_genre`),
+      champ(`T0`,`chp_nom_en_session_genre`)
    ),
    provenance(
       table_reference(
@@ -8811,7 +8827,7 @@ WHERE `chi_id_genre` = :chi_id_genre ;',NULL,NULL,'2','2025-09-06 14:42:17.906',
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
 `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_tsc_genre` , 
-`T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_utilisateur_genre`
+`T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre`
  FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
 ;',NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('334','genres nouveau numéro','1','update','modifier(
@@ -9006,32 +9022,34 @@ che_est_tsc_genre,
 chd__dtc_genre,
 chd__dtm_genre,
 che__nur_genre,
-che_est_utilisateur_genre) VALUES
-('1','***indéfini***','27','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('4','lien NON NULL','5','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('5','zero_un non nulle à 0','12','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('6','texte NULL','11','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('7','entier NULL','9','che','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('8','lien NULL','6','chx','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('9','entier NON NULL','7','che','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('10','entier NON NULL à zéro','8','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('11','texte NON NULL','10','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('12','varchar 64 NULL','3','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('13','mot de passe','15','chp','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('14','dt23 création','13','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('15','nur','16','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('16','dt23 modification','14','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('18','id utilisateur','17','chu','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-09-06 15:27:49.144','4','1'),
-('99','priorité','18','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2025-09-06 09:19:20.196','0','0'),
-('101','espèce','20','chp','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('102','préfixe','19','chp','VARCHAR','3','0','0','1','1','1','cht','1','cht,chi,che,chx,chp,chd,chu','doit_contenir_n_caracteres(3)','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('103','type_requete','21','chp','VARCHAR','64','0','0','1','1','1','liste_ecran','1','liste_ecran,insert,select,update,delete,requete_manuelle',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('104','fournisseur bdd','22','chp','VARCHAR','64','0','0','1','1','1','sqlite','1','sqlite,mysql',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('105','type_rev','23','chp','VARCHAR','1','0','0','1','0','0','i','1','i,c,f',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('106','nom de fichier','25','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('107','fonctions de champ','26','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_fonctions_de_c_fonctions1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
-('108','nom de dossier','24','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0');
+che_est_session_genre,
+chp_nom_en_session_genre) VALUES
+('1','***indéfini***','28','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2025-09-07 08:02:59.442','1','0',NULL),
+('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('4','lien NON NULL','5','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('5','zero_un non nulle à 0','12','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('6','texte NULL','11','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('7','entier NULL','9','che','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('8','lien NULL','6','chx','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('9','entier NON NULL','7','che','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('10','entier NON NULL à zéro','8','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('11','texte NON NULL','10','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('12','varchar 64 NULL','3','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('13','mot de passe','15','chp','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('14','dt23 création','13','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('15','nur','16','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('16','dt23 modification','14','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('18','id utilisateur','17','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-09-07 09:49:08.061','7','1','chi_id_utilisateur'),
+('99','priorité','18','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2025-09-06 09:19:20.196','0','0',NULL),
+('101','espèce','20','chp','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('102','préfixe','19','chp','VARCHAR','3','0','0','1','1','1','cht','1','cht,chi,che,chx,chp,chd,chu','doit_contenir_n_caracteres(3)','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('103','type_requete','21','chp','VARCHAR','64','0','0','1','1','1','liste_ecran','1','liste_ecran,insert,select,update,delete,requete_manuelle',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('104','fournisseur bdd','22','chp','VARCHAR','64','0','0','1','1','1','sqlite','1','sqlite,mysql',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('105','type_rev','23','chp','VARCHAR','1','0','0','1','0','0','i','1','i,c,f',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('106','nom de fichier','25','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('107','fonctions de champ','26','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_fonctions_de_c_fonctions1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('108','nom de dossier','24','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('109','id projet','27','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-07 09:46:49.711','2025-09-07 09:49:26.741','1','1','chi_id_projet');
 

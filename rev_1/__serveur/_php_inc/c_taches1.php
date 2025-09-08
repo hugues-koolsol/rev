@@ -160,7 +160,7 @@ class c_taches1{
         
         $donnees_sql=array( array(
                     /**/
-                    'chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                    'chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                     'chp_texte_tache' => $donnees_recues[__xva]['chp_texte_tache'],
                     'chp_priorite_tache' => $donnees_recues[__xva]['chp_priorite_tache'],
                     'chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
@@ -277,7 +277,7 @@ class c_taches1{
              /*sql_128()*/ 128,
             array(/**/
                 'T0_chi_id_tache' => $donnees_recues[__xva]['chi_id_tache'],
-                'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                 'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
             ),
             $donnees_retournees
@@ -296,7 +296,7 @@ class c_taches1{
                 $this->sql0->sql_iii(
                  /*sql_131()*/ 131,
                 array(/**/
-                    'chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                    'chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                     'chi_id_tache' => $tt[__xva][0]['T0.chi_id_tache'],
                     'chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
@@ -373,7 +373,7 @@ class c_taches1{
              /*sql_128()*/ 128,
             array(/**/
                 'T0_chi_id_tache' => $donnees_recues[__xva]['chi_id_tache'],
-                'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                 'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
             ),
             $donnees_retournees
@@ -397,7 +397,7 @@ class c_taches1{
                     /**/
                     'n_chp_texte_tache' => $donnees_recues[__xva]['chp_texte_tache'],
                     'n_chp_priorite_tache' => $donnees_recues[__xva]['chp_priorite_tache'],
-                    'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                    'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                     'c_chi_id_tache' => $tt[__xva][0]['T0.chi_id_tache'],
                     'c_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
@@ -455,7 +455,7 @@ class c_taches1{
             $this->sql0->sql_iii(
              /*sql_164()*/ 164,
             array(/**/
-                'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                 'T0_chp_priorite_tache' => 50,
                 'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
             ),
@@ -488,7 +488,7 @@ class c_taches1{
                     array(
                         /**/
                         'n_chp_priorite_tache' => $nouvelle_priorite,
-                        'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                        'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                         'c_chi_id_tache' => $v1['T0.chi_id_tache'],
                         'c_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                     ),
@@ -549,7 +549,7 @@ class c_taches1{
                  /*sql_128()*/ 128,
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
-                    'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                    'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                     'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
@@ -576,7 +576,7 @@ class c_taches1{
                  /*sql_120()*/ 120,
                 array(/**/
                     'c_chi_id_tache' => $chi_id_taches,
-                    'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                    'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                     'c_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
@@ -636,7 +636,7 @@ class c_taches1{
                  /*sql_128()*/ 128,
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
-                    'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                    'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                     'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
@@ -663,7 +663,7 @@ class c_taches1{
                  /*sql_121()*/ 121,
                 array(/**/
                     'c_chi_id_tache' => $chi_id_taches,
-                    'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                    'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                     'c_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
@@ -723,7 +723,7 @@ class c_taches1{
                  /*sql_128()*/ 128,
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
-                    'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                    'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                     'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
@@ -745,7 +745,7 @@ class c_taches1{
                     array(
                         /**/
                         'c_chi_id_tache' => $chi_id_taches,
-                        'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                        'c_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                         'n_chp_priorite_tache' => $valeur,
                         'c_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                     ),
@@ -785,25 +785,48 @@ class c_taches1{
         $o1='';
         $o1 .= '<h1>ajouter ' . self::UN_UNE_ELEMENT_GERE . ' <div class="hug_bouton" style="font-weight:normal;" data-hug_click="c_taches1.formulaire1(action1(page_liste_des_taches1))" title="revenir à la liste" >⬱</div></h1>' . PHP_EOL;
         $o1 .= '<div id="vv_taches_creer1">' . PHP_EOL;
-        /* */
+        
+        
+        
+        /*
+          =====================================================================================================
+        */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>tâche</span>' . PHP_EOL;
+        $o1 .= '      <span>texte</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <textarea rows="20"  cols="20" id="chp_texte_tache" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>' . PHP_EOL;
+        $o1 .= '        <div class="yy_conteneur_txtara">' . PHP_EOL;
+        $o1 .= '            <textarea id="chp_texte_tache" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        if(isset($donnees_recues['dupliquer']['T0.chp_texte_tache'])){;
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.chp_texte_tache']);
+        }else{
+            $o1 .= '';
+        }
+        $o1 .= '</textarea>' . PHP_EOL;
+        $o1 .= '        </div>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        /* */
+        /*
+          =====================================================================================================
+        */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>priorité</span>' . PHP_EOL;
+        $o1 .= '      <span>priorite</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '      <input  type="text" value="0" id="chp_priorite_tache" maxlength="4" style="width:100%;max-width:4em;" autocapitalize="off" />' . PHP_EOL;
+        $o1 .= '      <input type="number" size="32" maxlength="32" id="chp_priorite_tache" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        if(isset($donnees_recues['dupliquer']['T0.chp_priorite_tache'])){;
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.chp_priorite_tache']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '"/>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
-        /* */
+        /*
+          =====================================================================================================
+        */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
         $o1 .= '    <div class="hug_bouton" data-hug_click="c_taches1.formulaire1(conteneur1(vv_taches_creer1),page_liste_des_taches1())" title="" >ajouter et revenir à la liste</div>';
@@ -851,7 +874,7 @@ class c_taches1{
                  /*sql_128()*/ 128,
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
-                    'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                    'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                     'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
@@ -933,7 +956,7 @@ class c_taches1{
                  /*sql_128()*/ 128,
                 array(/**/
                     'T0_chi_id_tache' => $chi_id_taches,
-                    'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                    'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                     'T0_chx_projet_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_projet']
                 ),
                 $donnees_retournees
@@ -1158,7 +1181,7 @@ class c_taches1{
             array(
                 /**/
                 'T0_chi_id_tache' => $par['T0_chi_id_tache'] === '' ? '' : $par['T0_chi_id_tache'],
-                'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'],
+                'T0_chx_utilisateur_tache' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'],
                 'T0_chp_texte_tache' => $par['T0_chp_texte_tache'] === '' ? '' : '' . $par['T0_chp_texte_tache'] . '',
                 'T0_chp_priorite_tache' => $par['T0_chp_priorite_tache'],
                 'T0_chp_priorite_tache2' => $par['T0_chp_priorite_tache2'],

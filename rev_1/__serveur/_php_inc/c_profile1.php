@@ -149,7 +149,7 @@ class c_profile1{
             /*sql_inclure_fin*/
             $this->sql0->sql_iii(
              /*sql_147()*/ 147,
-            array( 'T0_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']),
+            array( 'T0_chi_id_utilisateur' => $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur']),
             $donnees_retournees
         );
         

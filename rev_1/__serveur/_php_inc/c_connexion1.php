@@ -131,7 +131,7 @@ class c_connexion1{
               On se sert de chi_id_utilisateur_courant dans la partie fonctionnelle de l'application
             */
             $_SESSION[__X_CLE_APPLICATION]['bidon']='bidon|bidon "et" encore bidon';
-            $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']=$tt[__xva][0]['T0.chi_id_utilisateur'];
+            $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur']=$tt[__xva][0]['T0.chi_id_utilisateur'];
             $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_initial']=$tt[__xva][0]['T0.chi_id_utilisateur'];
             $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_courant']=$tt[__xva][0]['T1.chx_groupe_acces'];
             $_SESSION[__X_CLE_APPLICATION]['chx_groupe_utilisateur_initial']=$tt[__xva][0]['T1.chx_groupe_acces'];

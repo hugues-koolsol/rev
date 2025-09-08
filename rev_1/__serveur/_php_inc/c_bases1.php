@@ -868,7 +868,7 @@ class c_bases1{
         
         if($continuer === true){
 
-            $fichier_temporaire=$chemin_fichier_temporaire . DIRECTORY_SEPARATOR . sha1(date('Y-m-d-H-i-s') . $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant']) . '.db';
+            $fichier_temporaire=$chemin_fichier_temporaire . DIRECTORY_SEPARATOR . sha1(date('Y-m-d-H-i-s') . $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur']) . '.db';
             $dbtemp=new SQLite3($fichier_temporaire);
             $dbtemp->enableExceptions(true);
             
@@ -2499,7 +2499,7 @@ class c_bases1{
         $id_de_la_base=0;
         $projet_rev=0;
         
-        if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])){
+        if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'])){
 
             for( $i=1 ; $i < count($mat) ; $i++ ){
                 

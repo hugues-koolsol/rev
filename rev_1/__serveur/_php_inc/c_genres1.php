@@ -309,7 +309,7 @@ class c_genres1{
             }
         }
         
-        if(!($chi_id_genre_nouvelle<100 && __X_CLE_APPLICATION === 'rev_1' &&  $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1 && $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'] === 1) ){
+        if(!($chi_id_genre_nouvelle<100 && __X_CLE_APPLICATION === 'rev_1' &&  $_SESSION[__X_CLE_APPLICATION]['chi_id_projet'] === 1 && $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'] === 1) ){
          
             $donnees_retournees[__x_signaux][__xer][]=' seul l\'utilisateur principale peut renuméroter un genre à moins de 100 [' . __LINE__ . ']';
             return;
@@ -467,9 +467,8 @@ class c_genres1{
                 'che_est_tsm_genre' => $v1['T0.che_est_tsm_genre'],
                 'cht_fonctions_genre' => $v1['T0.cht_fonctions_genre'],
                 'che_est_nur_genre' => $v1['T0.che_est_nur_genre'],
-                'che_est_utilisateur_genre' => $v1['T0.che_est_utilisateur_genre'],
-                
-                
+                'che_est_session_genre' => $v1['T0.che_est_session_genre'],
+                'chp_nom_en_session_genre' => $v1['T0.chp_nom_en_session_genre'],
             );
         }
         
@@ -561,8 +560,8 @@ class c_genres1{
             return;
         }
 
-        if(is_null($donnees_recues[__xva]['che_est_utilisateur_genre']) || $donnees_recues[__xva]['che_est_utilisateur_genre']===''){
-            $donnees_retournees[__x_signaux][__xer][]='la valeur "est utilisateur" doit être renseigné [' . __LINE__ . ']';
+        if(is_null($donnees_recues[__xva]['che_est_session_genre']) || $donnees_recues[__xva]['che_est_session_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est session" doit être renseigné [' . __LINE__ . ']';
             return;
         }
 
@@ -605,8 +604,8 @@ class c_genres1{
                     'che_est_nur_genre' => $donnees_recues[__xva]['che_est_nur_genre'],
                     'che_est_tsm_genre' => $donnees_recues[__xva]['che_est_tsm_genre'],
                     'che_est_tsc_genre' => $donnees_recues[__xva]['che_est_tsc_genre'],
-                    'che_est_utilisateur_genre' => $donnees_recues[__xva]['che_est_utilisateur_genre'],
-                    
+                    'che_est_session_genre' => $donnees_recues[__xva]['che_est_session_genre'],
+                    'chp_nom_en_session_genre' => $donnees_recues[__xva]['chp_nom_en_session_genre'],
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt329=$this->sql0->sql_iii(329,$donnees_sql,$donnees_retournees);
@@ -902,7 +901,7 @@ class c_genres1{
             return;
         }
         
-        if(is_null($donnees_recues[__xva]['che_est_utilisateur_genre']) || $donnees_recues[__xva]['che_est_utilisateur_genre']===''){
+        if(is_null($donnees_recues[__xva]['che_est_session_genre']) || $donnees_recues[__xva]['che_est_session_genre']===''){
             $donnees_retournees[__x_signaux][__xer][]='la valeur "est parmis" doit être renseigné [' . __LINE__ . ']';
             return;
         }
@@ -971,10 +970,8 @@ class c_genres1{
                 'n_che_est_tsm_genre' => $donnees_recues[__xva]['che_est_tsm_genre'],
                 'n_cht_fonctions_genre' => $donnees_recues[__xva]['cht_fonctions_genre'],
                 'n_che_est_nur_genre' => $donnees_recues[__xva]['che_est_nur_genre'],
-                'n_che_est_utilisateur_genre' => $donnees_recues[__xva]['che_est_utilisateur_genre'],
-                
-                
-                
+                'n_che_est_session_genre' => $donnees_recues[__xva]['che_est_session_genre'],
+                'n_chp_nom_en_session_genre' => $donnees_recues[__xva]['chp_nom_en_session_genre'],
             ),
             $donnees_retournees
         );
@@ -1324,12 +1321,12 @@ class c_genres1{
         */
         $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-        $o1 .= '      <span>est utilisateur</span>' . PHP_EOL;
+        $o1 .= '      <span>est session</span>' . PHP_EOL;
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-        $o1 .= '        <input type="range" id="che_est_utilisateur_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(isset($donnees_recues['dupliquer']['T0.che_est_utilisateur_genre'])){;
-            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_utilisateur_genre']);
+        $o1 .= '        <input type="range" id="che_est_session_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_session_genre'])){;
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_session_genre']);
         }else{
             $o1 .= '0';
         }
@@ -1337,6 +1334,23 @@ class c_genres1{
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>nom en session</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '      <input  type="text"  size="64"   maxlength="64"  id="chp_nom_en_session_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        if(isset($donnees_recues['dupliquer']['T0.chp_nom_en_session_genre'])){;
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.chp_nom_en_session_genre']);
+        }else{
+            $o1 .= '';
+        }
+        $o1 .= '" />' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
         
         /*
           =====================================================================================================
@@ -1654,13 +1668,24 @@ class c_genres1{
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>est utilisateur</span>' . PHP_EOL;
+                $o1 .= '      <span>est en session</span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '      <input type="text" id="che_est_utilisateur_genre" value="' . enti1($tt[__xva][0]['T0.che_est_utilisateur_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="1" maxlength="1" />' . PHP_EOL;
+                $o1 .= '      <input type="text" id="che_est_session_genre" value="' . enti1($tt[__xva][0]['T0.che_est_session_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="1" maxlength="1" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
+                $o1 .= '  </div>' . PHP_EOL;
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>nom en session</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_nom_en_session_genre"  size="64"  maxlength="64" value="' . enti1($tt330[__xva][0]['T0.chp_nom_en_session_genre']) . '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 
                 
@@ -1997,15 +2022,26 @@ class c_genres1{
                 $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
-                $o1 .= '      <span>est utilisateur</span>' . PHP_EOL;
+                $o1 .= '      <span>est en session </span>' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
-                $o1 .= '        <input type="range" id="che_est_utilisateur_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_utilisateur_genre']).'" >';
+                $o1 .= '        <input type="range" id="che_est_session_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_session_genre']).'" >';
                 $o1 .= '    </div>' . PHP_EOL;
                 /**/
                 $o1 .= '  </div>' . PHP_EOL;
                 
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>nom en session</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="chp_nom_en_session_genre"  size="64"  maxlength="64" value="' . enti1($tt330[__xva][0]['T0.chp_nom_en_session_genre']) . '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                $o1 .= '  </div>' . PHP_EOL;
 
                 /*
                   =====================================================================================

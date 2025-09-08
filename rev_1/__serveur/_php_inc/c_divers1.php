@@ -12,8 +12,8 @@ class c_divers1{
     */
     function generer_index_html(&$donnees_retournees){
         
-        if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'])
-           && $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur_courant'] === 1
+        if(isset($_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'])
+           && $_SESSION[__X_CLE_APPLICATION]['chi_id_utilisateur'] === 1
         ){
 
             $date_de_reference=date('Y_m_d_H_i_s');

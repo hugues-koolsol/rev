@@ -230,9 +230,7 @@ class c_fonctions_js1{
     /*
       =============================================================================================================
     */
-    traite_liste_ecran(reference_table , /*matrice de la base */mat ){
-     
-     
+    traite_liste_ecran(reference_table , /*matrice de la base */mat , requete_rev=null ){
         let l01=mat.length;
         let cht_rev_requete='';
         let champs_rev='';
@@ -242,6 +240,45 @@ class c_fonctions_js1{
         let liste_des_references=[];
         let numero_reference=1;
         
+        let matr=[];
+        if(requete_rev!==null){
+            requete_rev=requete_rev.replace(/\\n/g,'\n').replace(/\\r/g,'\r');
+            let tableau1=__gi1.__m_rev1.txt_en_tableau( requete_rev );
+            let obj1=__gi1.__m_rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
+            if( obj1.__xst===__xsu){
+                matr=obj1.__xva;
+            }else{
+                return({ __xst : __xer });
+            }
+            
+            
+             /*
+               on prend les conditions qui sont déjà définies
+             */
+             
+             l01=matr.length;
+             for(let i=1;i<l01;i=matr[i][12]){
+                 if(matr[i][1]==='sélectionner' && matr[i][2] === 'f' ){
+                     for(let j=i+1;j<l01;j=matr[j][12]){
+                         if(matr[j][1]==='conditions' && matr[j][2] === 'f' && matr[j][8]>0 ){
+                             let objc=__gi1.__m_rev1.matrice_vers_source_rev1(matr,j,true,j+1);
+                             if(objc.__xst === __xsu){
+                                 condition_rev=objc.__xva;
+                             }else{
+                                 return({ __xst : __xer });
+                             }
+                         }
+                     }
+                 }
+             }
+             if(condition_rev===''){
+                 requete_rev=null;
+             }
+            
+        }
+     
+     
+        l01=mat.length;
         for(let i=1;i<l01;i=mat[i][12]){
             let indice=0;
             if(mat[i][1]==='créer_table' && mat[i][2] === 'f' ){
@@ -311,12 +348,17 @@ class c_fonctions_js1{
                                     }
                                 }
                                 champs_rev+='\n      champ(`T0`,`'+nom_du_champ+'`)';
-                                if(est_critere_recherche_liste_ecran===1){
-                                    if(!(genre_du_champ.che_est_tsm_genre===1 || genre_du_champ.che_est_tsc_genre===1 || genre_du_champ.che_est_nur_genre===1)){
-                                        if(genre_du_champ.chp_espece_genre==='INTEGER' || genre_du_champ.chp_espece_genre==='FLOAT'){
-                                            condition_rev+='\n      egal(champ(`T0`,`'+nom_du_champ+'`),:T0_'+nom_du_champ+')';
-                                        }else{
-                                            condition_rev+='\n      comme(champ(`T0`,`'+nom_du_champ+'`),:T0_'+nom_du_champ+')';
+                                
+                                if(requete_rev!==null){
+                                }else{
+                                
+                                    if(est_critere_recherche_liste_ecran===1){
+                                        if(!(genre_du_champ.che_est_tsm_genre===1 || genre_du_champ.che_est_tsc_genre===1 || genre_du_champ.che_est_nur_genre===1)){
+                                            if(genre_du_champ.chp_espece_genre==='INTEGER' || genre_du_champ.chp_espece_genre==='FLOAT'){
+                                                condition_rev+='\n      egal(champ(`T0`,`'+nom_du_champ+'`),:T0_'+nom_du_champ+')';
+                                            }else{
+                                                condition_rev+='\n      comme(champ(`T0`,`'+nom_du_champ+'`),:T0_'+nom_du_champ+')';
+                                            }
                                         }
                                     }
                                 }
@@ -340,6 +382,10 @@ class c_fonctions_js1{
                 }
             }
         }
+        
+        if(requete_rev!==null){
+        }
+        
         
 
         if(liste_des_references.length>0){
@@ -384,7 +430,9 @@ class c_fonctions_js1{
                                         }
                                         if((espece_du_champ==='VARCHAR' || espece_du_champ==='TEXT' ) && nom_du_champ!==''){
                                             champs_rev+='\n      champ(`T'+liste_des_references[ind_joint].numero_reference+'`,`'+nom_du_champ+'`)';
-                                            condition_rev+='\n      comme(champ(`T'+liste_des_references[ind_joint].numero_reference+'`,`'+nom_du_champ+'`),:T'+liste_des_references[ind_joint].numero_reference+'_'+nom_du_champ+')';
+                                            if(requete_rev!==null){
+                                                condition_rev+='\n      comme(champ(`T'+liste_des_references[ind_joint].numero_reference+'`,`'+nom_du_champ+'`),:T'+liste_des_references[ind_joint].numero_reference+'_'+nom_du_champ+')';
+                                            }
                                             continuer=false;
                                         }
                                     }
@@ -843,11 +891,12 @@ class c_fonctions_js1{
             forcer_a_1=parseInt(par.forcer_a_un,10);
         }
         
-        let texte_rev=par.requete.replace(/\\n/g,'\n').replace(/\\r/g,'\r');
         let chp_type_requete=par.chp_type_requete;
-        let tableau1=__gi1.__m_rev1.txt_en_tableau( texte_rev );
-        let obj1=__gi1.__m_rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
-        
+        /*
+          let texte_rev=par.requete.replace(/\\n/g,'\n').replace(/\\r/g,'\r');
+          let tableau1=__gi1.__m_rev1.txt_en_tableau( texte_rev );
+          let obj1=__gi1.__m_rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
+        */
         let liste_des_bases=JSON.parse(par.liste_des_bases.replace(/\\\\r/g,'').replace(/\\\\n/g,'').replace(/\\'/g,'\''))
         let tableau_des_bases_et_tables=JSON.parse(par.tableau_des_bases_et_tables.replace(/\\\\r/g,'').replace(/\\\\n/g,'').replace(/\\'/g,'\''));
 //        debugger
@@ -872,7 +921,7 @@ class c_fonctions_js1{
                      break;
                      
                 case 'liste_ecran':
-                     let objle=this.traite_liste_ecran(tableau_des_bases_et_tables[i] , liste_des_bases[tableau_des_bases_et_tables[i].base].mat);
+                     let objle=this.traite_liste_ecran(tableau_des_bases_et_tables[i] , liste_des_bases[tableau_des_bases_et_tables[i].base].mat , par.requete);
                      if(objle.__xst===__xsu){
                          cht_rev_requete=objle.cht_rev_requete;
                      }else{
