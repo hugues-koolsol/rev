@@ -100,6 +100,11 @@ function sql_331($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`chp_nom_en_session_genre` = \''.sq0($par['n_chp_nom_en_session_genre']).'\'';
     }
+    if($par['n_che_est_positif_genre']==='' || is_null($par['n_che_est_positif_genre']) ){
+        $tableau_champs[]='`che_est_positif_genre` = NULL';
+    }else{
+        $tableau_champs[]='`che_est_positif_genre` = '.sq0($par['n_che_est_positif_genre']).'';
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/

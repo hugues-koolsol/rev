@@ -13,10 +13,10 @@ function sql_102($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_requete'] !== '')){
-        $where0.=' AND `T0`.`chi_id_requete` = '.sq1($par['T0_chi_id_requete']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_requete`',$par['T0_chi_id_requete']);
     }
     if(($par['T0_chx_projet_requete'] !== '')){
-        $where0.=' AND `T0`.`chx_projet_requete` = '.sq1($par['T0_chx_projet_requete']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chx_projet_requete`',$par['T0_chx_projet_requete']);
     }
     if(($par['T0_chp_type_requete'] !== '')){
         $where0.=' AND `T0`.`chp_type_requete` LIKE '.sq2($par['T0_chp_type_requete']).''.PHP_EOL;
@@ -31,7 +31,7 @@ function sql_102($par,&$donnees_retournees,$that){
         $where0.=' AND `T0`.`cht_commentaire_requete` LIKE '.sq2($par['T0_cht_commentaire_requete']).''.PHP_EOL;
     }
     if(($par['T0_che_est_souche_requete'] !== '')){
-        $where0.=' AND `T0`.`che_est_souche_requete` = '.sq1($par['T0_che_est_souche_requete']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`che_est_souche_requete`',$par['T0_che_est_souche_requete']);
     }
     $sql0.=$where0;
     $order0='

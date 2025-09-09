@@ -469,6 +469,8 @@ class c_genres1{
                 'che_est_nur_genre' => $v1['T0.che_est_nur_genre'],
                 'che_est_session_genre' => $v1['T0.che_est_session_genre'],
                 'chp_nom_en_session_genre' => $v1['T0.chp_nom_en_session_genre'],
+                'che_est_positif_genre' => $v1['T0.che_est_positif_genre'],
+                
             );
         }
         
@@ -565,6 +567,12 @@ class c_genres1{
             return;
         }
 
+        if(is_null($donnees_recues[__xva]['che_est_positif_genre']) || $donnees_recues[__xva]['che_est_positif_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est positif" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+
+
         $__test=$GLOBALS['obj_fonctions1']->test_fonctions_de_c_fonctions1($donnees_recues[__xva]['cht_fonctions_genre'],$donnees_retournees);
         if($__test[__xst]!==__xsu){
             $donnees_retournees[__xst]=__xer;
@@ -606,6 +614,8 @@ class c_genres1{
                     'che_est_tsc_genre' => $donnees_recues[__xva]['che_est_tsc_genre'],
                     'che_est_session_genre' => $donnees_recues[__xva]['che_est_session_genre'],
                     'chp_nom_en_session_genre' => $donnees_recues[__xva]['chp_nom_en_session_genre'],
+                    'che_est_positif_genre' => $donnees_recues[__xva]['che_est_positif_genre'],
+                    
                 ));
         /* echo __FILE__ . ' ' . __LINE__ . ' $donnees_sql = <pre>' . var_export( $donnees_sql , true ) . '</pre>' ; exit(0);*/
         $tt329=$this->sql0->sql_iii(329,$donnees_sql,$donnees_retournees);
@@ -902,9 +912,14 @@ class c_genres1{
         }
         
         if(is_null($donnees_recues[__xva]['che_est_session_genre']) || $donnees_recues[__xva]['che_est_session_genre']===''){
-            $donnees_retournees[__x_signaux][__xer][]='la valeur "est parmis" doit être renseigné [' . __LINE__ . ']';
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est session" doit être renseigné [' . __LINE__ . ']';
             return;
         }
+        if(is_null($donnees_recues[__xva]['che_est_positif_genre']) || $donnees_recues[__xva]['che_est_positif_genre']===''){
+            $donnees_retournees[__x_signaux][__xer][]='la valeur "est positif" doit être renseigné [' . __LINE__ . ']';
+            return;
+        }
+        
         
         
 
@@ -972,6 +987,8 @@ class c_genres1{
                 'n_che_est_nur_genre' => $donnees_recues[__xva]['che_est_nur_genre'],
                 'n_che_est_session_genre' => $donnees_recues[__xva]['che_est_session_genre'],
                 'n_chp_nom_en_session_genre' => $donnees_recues[__xva]['chp_nom_en_session_genre'],
+                'n_che_est_positif_genre' => $donnees_recues[__xva]['che_est_positif_genre'],
+                
             ),
             $donnees_retournees
         );
@@ -1352,6 +1369,26 @@ class c_genres1{
         $o1 .= '    </div>' . PHP_EOL;
         $o1 .= '  </div>' . PHP_EOL;
         
+
+        /*
+          =====================================================================================================
+        */
+        $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+        $o1 .= '      <span>est positif</span>' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+        $o1 .= '        <input type="range" id="che_est_positif_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(isset($donnees_recues['dupliquer']['T0.che_est_positif_genre'])){;
+            $o1 .= enti1($donnees_recues['dupliquer']['T0.che_est_positif_genre']);
+        }else{
+            $o1 .= '0';
+        }
+        $o1 .= '" >' . PHP_EOL;
+        $o1 .= '    </div>' . PHP_EOL;
+        $o1 .= '  </div>' . PHP_EOL;
+        
+        
         /*
           =====================================================================================================
         */
@@ -1688,6 +1725,20 @@ class c_genres1{
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
                 
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>est positif</span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '      <input type="text" id="che_est_positif_genre" value="' . enti1($tt[__xva][0]['T0.che_est_positif_genre']) . '" autocorrect="off" autocapitalize="off" spellcheck="false"  size="1" maxlength="1" />' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
                 
                 /*
                   =====================================================================================
@@ -2042,6 +2093,22 @@ class c_genres1{
                 $o1 .= '      <input type="text" id="chp_nom_en_session_genre"  size="64"  maxlength="64" value="' . enti1($tt330[__xva][0]['T0.chp_nom_en_session_genre']) . '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' . PHP_EOL;
                 $o1 .= '    </div>' . PHP_EOL;
                 $o1 .= '  </div>' . PHP_EOL;
+
+                /*
+                  =====================================================================================
+                */
+                $o1 .= '  <div class="yy_edition_champ1">' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_libelle1">' . PHP_EOL;
+                $o1 .= '      <span>est positif </span>' . PHP_EOL;
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '    <div class="yy_edition_valeur1">' . PHP_EOL;
+                $o1 .= '        <input type="range" id="che_est_positif_genre" class="yy_ouinon" min="0" max="1" step="1" value="'.enti1($tt330[__xva][0]['T0.che_est_positif_genre']).'" >';
+                $o1 .= '    </div>' . PHP_EOL;
+                /**/
+                $o1 .= '  </div>' . PHP_EOL;
+
 
                 /*
                   =====================================================================================

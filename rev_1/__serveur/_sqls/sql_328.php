@@ -8,7 +8,7 @@ function sql_328($par,&$donnees_retournees,$that){
       `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
       `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
       `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-      `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre`
+      `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -16,7 +16,7 @@ function sql_328($par,&$donnees_retournees,$that){
     $sql0.=$from0;
     $where0=' WHERE 1=1 '.PHP_EOL;
     if(($par['T0_chi_id_genre'] !== '')){
-        $where0.=' AND `T0`.`chi_id_genre` = '.sq1($par['T0_chi_id_genre']).''.PHP_EOL;
+        $where0.=PHP_EOL.construction_where_sql_sur_id1('`T0`.`chi_id_genre`',$par['T0_chi_id_genre']);
     }
     if(($par['T0_chp_nom_genre'] !== '')){
         $where0.=' AND `T0`.`chp_nom_genre` LIKE '.sq2($par['T0_chp_nom_genre']).''.PHP_EOL;
@@ -70,6 +70,7 @@ function sql_328($par,&$donnees_retournees,$that){
                 'T0.che__nur_genre' => $tab0[20],
                 'T0.che_est_session_genre' => $tab0[21],
                 'T0.chp_nom_en_session_genre' => $tab0[22],
+                'T0.che_est_positif_genre' => $tab0[23],
             );
         }
         $stmt0->close();

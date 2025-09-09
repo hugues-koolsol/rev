@@ -3437,7 +3437,7 @@ WHERE `T2`.`chi_id_acces` = :T2_chi_id_acces
 `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
 `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
 `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-`T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre`
+`T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre`
  FROM b1.tbl_genres T0
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre`T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre`T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre`T0`.`chp_espece_genre` LIKE :T0_chp_espece_genre`T0`.`cht_valeur_init_genre` LIKE :T0_cht_valeur_init_genre`T0`.`cht_parmis_genre` LIKE :T0_cht_parmis_genre 
 ORDER BY `T0`.`che_ordre_genre` ASC, `T0`.`chi_id_genre` DESC  
@@ -3449,49 +3449,49 @@ LIMIT :quantitee OFFSET :debut
     'cht_rev_requete' => 'sélectionner(
    base_de_reference(1),
    valeurs(
-      champ(`T0`,`chi_id_genre`)
-      champ(`T0`,`chp_nom_genre`)
-      champ(`T0`,`che_ordre_genre`)
-      champ(`T0`,`chp_prefixe_genre`)
-      champ(`T0`,`chp_espece_genre`)
-      champ(`T0`,`che_longueur_genre`)
-      champ(`T0`,`che_est_primaire_genre`)
-      champ(`T0`,`che_est_incrément_genre`)
-      champ(`T0`,`che_est_obligatoire_genre`)
-      champ(`T0`,`che_a_init_genre`)
-      champ(`T0`,`che_init_est_mot_genre`)
-      champ(`T0`,`cht_valeur_init_genre`)
-      champ(`T0`,`che_est_parmis_genre`)
-      champ(`T0`,`cht_parmis_genre`)
-      champ(`T0`,`cht_fonctions_genre`)
-      champ(`T0`,`che_est_nur_genre`)
-      champ(`T0`,`che_est_tsm_genre`)
-      champ(`T0`,`che_est_tsc_genre`)
-      champ(`T0`,`chd__dtc_genre`)
-      champ(`T0`,`chd__dtm_genre`)
-      champ(`T0`,`che__nur_genre`)
-      champ(`T0`,`che_est_session_genre`)
-      champ(`T0`,`chp_nom_en_session_genre`)
-   )
+      champ(`T0`,`chi_id_genre`),
+      champ(`T0`,`chp_nom_genre`),
+      champ(`T0`,`che_ordre_genre`),
+      champ(`T0`,`chp_prefixe_genre`),
+      champ(`T0`,`chp_espece_genre`),
+      champ(`T0`,`che_longueur_genre`),
+      champ(`T0`,`che_est_primaire_genre`),
+      champ(`T0`,`che_est_incrément_genre`),
+      champ(`T0`,`che_est_obligatoire_genre`),
+      champ(`T0`,`che_a_init_genre`),
+      champ(`T0`,`che_init_est_mot_genre`),
+      champ(`T0`,`cht_valeur_init_genre`),
+      champ(`T0`,`che_est_parmis_genre`),
+      champ(`T0`,`cht_parmis_genre`),
+      champ(`T0`,`cht_fonctions_genre`),
+      champ(`T0`,`che_est_nur_genre`),
+      champ(`T0`,`che_est_tsm_genre`),
+      champ(`T0`,`che_est_tsc_genre`),
+      champ(`T0`,`chd__dtc_genre`),
+      champ(`T0`,`chd__dtm_genre`),
+      champ(`T0`,`che__nur_genre`),
+      champ(`T0`,`che_est_session_genre`),
+      champ(`T0`,`chp_nom_en_session_genre`),
+      champ(`T0`,`che_est_positif_genre`)
+   ),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_genres,base(b1),alias(T0)))
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
       )
    ),
    conditions(
-
-      egal(champ(`T0`,`chi_id_genre`),:T0_chi_id_genre)
-      comme(champ(`T0`,`chp_nom_genre`),:T0_chp_nom_genre)
-      comme(champ(`T0`,`chp_prefixe_genre`),:T0_chp_prefixe_genre)
-      comme(champ(`T0`,`chp_espece_genre`),:T0_chp_espece_genre)
-      comme(champ(`T0`,`cht_valeur_init_genre`),:T0_cht_valeur_init_genre)
+      egal(champ(`T0`,`chi_id_genre`),:T0_chi_id_genre),
+      comme(champ(`T0`,`chp_nom_genre`),:T0_chp_nom_genre),
+      comme(champ(`T0`,`chp_prefixe_genre`),:T0_chp_prefixe_genre),
+      comme(champ(`T0`,`chp_espece_genre`),:T0_chp_espece_genre),
+      comme(champ(`T0`,`cht_valeur_init_genre`),:T0_cht_valeur_init_genre),
       comme(champ(`T0`,`cht_parmis_genre`),:T0_cht_parmis_genre)
-   )
+   ),
    complements(
-       trier_par((champ(`T0`,`che_ordre_genre`),croissant())(champ(`T0`,`chi_id_genre`),décroissant()))
-       limité_à(quantité(:quantitee),début(:debut))
-    )
-)',
+      trier_par((champ(`T0`,`che_ordre_genre`),croissant()),(champ(`T0`,`chi_id_genre`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ',
   ),
   329 => 
   array (
@@ -3516,7 +3516,8 @@ LIMIT :quantitee OFFSET :debut
     `chd__dtc_genre` , 
     `chd__dtm_genre` , 
     `che_est_session_genre` , 
-    `chp_nom_en_session_genre`
+    `chp_nom_en_session_genre` , 
+    `che_est_positif_genre`
 ) VALUES (
     :chp_nom_genre , 
     :che_ordre_genre , 
@@ -3538,7 +3539,8 @@ LIMIT :quantitee OFFSET :debut
     :chd__dtc_genre , 
     :chd__dtm_genre , 
     :che_est_session_genre , 
-    :chp_nom_en_session_genre
+    :chp_nom_en_session_genre , 
+    :che_est_positif_genre
 );',
     'cht_commentaire_requete' => 'genres',
     'chp_type_requete' => 'insert',
@@ -3546,34 +3548,35 @@ LIMIT :quantitee OFFSET :debut
     'cht_rev_requete' => 'insérer(
    base_de_reference(1),
    valeurs(
-      affecte(champ(`chp_nom_genre`),:chp_nom_genre)
-      affecte(champ(`che_ordre_genre`),:che_ordre_genre)
-      affecte(champ(`chp_prefixe_genre`),:chp_prefixe_genre)
-      affecte(champ(`chp_espece_genre`),:chp_espece_genre)
-      affecte(champ(`che_longueur_genre`),:che_longueur_genre)
-      affecte(champ(`che_est_primaire_genre`),:che_est_primaire_genre)
-      affecte(champ(`che_est_incrément_genre`),:che_est_incrément_genre)
-      affecte(champ(`che_est_obligatoire_genre`),:che_est_obligatoire_genre)
-      affecte(champ(`che_a_init_genre`),:che_a_init_genre)
-      affecte(champ(`che_init_est_mot_genre`),:che_init_est_mot_genre)
-      affecte(champ(`cht_valeur_init_genre`),:cht_valeur_init_genre)
-      affecte(champ(`che_est_parmis_genre`),:che_est_parmis_genre)
-      affecte(champ(`cht_parmis_genre`),:cht_parmis_genre)
-      affecte(champ(`cht_fonctions_genre`),:cht_fonctions_genre)
-      affecte(champ(`che_est_nur_genre`),:che_est_nur_genre)
-      affecte(champ(`che_est_tsm_genre`),:che_est_tsm_genre)
-      affecte(champ(`che_est_tsc_genre`),:che_est_tsc_genre)
-      affecte(champ(`chd__dtc_genre`),:chd__dtc_genre)
-      affecte(champ(`chd__dtm_genre`),:chd__dtm_genre)
-      affecte(champ(`che_est_session_genre`),:che_est_session_genre)
-      affecte(champ(`chp_nom_en_session_genre`),:chp_nom_en_session_genre)
-   )
+      affecte(champ(`chp_nom_genre`),:chp_nom_genre),
+      affecte(champ(`che_ordre_genre`),:che_ordre_genre),
+      affecte(champ(`chp_prefixe_genre`),:chp_prefixe_genre),
+      affecte(champ(`chp_espece_genre`),:chp_espece_genre),
+      affecte(champ(`che_longueur_genre`),:che_longueur_genre),
+      affecte(champ(`che_est_primaire_genre`),:che_est_primaire_genre),
+      affecte(champ(`che_est_incrément_genre`),:che_est_incrément_genre),
+      affecte(champ(`che_est_obligatoire_genre`),:che_est_obligatoire_genre),
+      affecte(champ(`che_a_init_genre`),:che_a_init_genre),
+      affecte(champ(`che_init_est_mot_genre`),:che_init_est_mot_genre),
+      affecte(champ(`cht_valeur_init_genre`),:cht_valeur_init_genre),
+      affecte(champ(`che_est_parmis_genre`),:che_est_parmis_genre),
+      affecte(champ(`cht_parmis_genre`),:cht_parmis_genre),
+      affecte(champ(`cht_fonctions_genre`),:cht_fonctions_genre),
+      affecte(champ(`che_est_nur_genre`),:che_est_nur_genre),
+      affecte(champ(`che_est_tsm_genre`),:che_est_tsm_genre),
+      affecte(champ(`che_est_tsc_genre`),:che_est_tsc_genre),
+      affecte(champ(`chd__dtc_genre`),:chd__dtc_genre),
+      affecte(champ(`chd__dtm_genre`),:chd__dtm_genre),
+      affecte(champ(`che_est_session_genre`),:che_est_session_genre),
+      affecte(champ(`chp_nom_en_session_genre`),:chp_nom_en_session_genre),
+      affecte(champ(`che_est_positif_genre`),:che_est_positif_genre)
+   ),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_genres,base(b1)))
       )
    )
-)',
+)  ',
   ),
   330 => 
   array (
@@ -3582,7 +3585,7 @@ LIMIT :quantitee OFFSET :debut
 `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
 `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
 `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-`T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre`
+`T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre`
  FROM b1.tbl_genres T0
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
 ;',
@@ -3592,39 +3595,38 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
     'cht_rev_requete' => 'sélectionner(
    base_de_reference(1),
    valeurs(
-      champ(`T0`,`chi_id_genre`)
-      champ(`T0`,`chp_nom_genre`)
-      champ(`T0`,`che_ordre_genre`)
-      champ(`T0`,`chp_prefixe_genre`)
-      champ(`T0`,`chp_espece_genre`)
-      champ(`T0`,`che_longueur_genre`)
-      champ(`T0`,`che_est_primaire_genre`)
-      champ(`T0`,`che_est_incrément_genre`)
-      champ(`T0`,`che_est_obligatoire_genre`)
-      champ(`T0`,`che_a_init_genre`)
-      champ(`T0`,`che_init_est_mot_genre`)
-      champ(`T0`,`cht_valeur_init_genre`)
-      champ(`T0`,`che_est_parmis_genre`)
-      champ(`T0`,`cht_parmis_genre`)
-      champ(`T0`,`cht_fonctions_genre`)
-      champ(`T0`,`che_est_nur_genre`)
-      champ(`T0`,`che_est_tsm_genre`)
-      champ(`T0`,`che_est_tsc_genre`)
-      champ(`T0`,`chd__dtc_genre`)
-      champ(`T0`,`chd__dtm_genre`)
-      champ(`T0`,`che__nur_genre`)
-      champ(`T0`,`che_est_session_genre`)
-      champ(`T0`,`chp_nom_en_session_genre`)
-   )
+      champ(`T0`,`chi_id_genre`),
+      champ(`T0`,`chp_nom_genre`),
+      champ(`T0`,`che_ordre_genre`),
+      champ(`T0`,`chp_prefixe_genre`),
+      champ(`T0`,`chp_espece_genre`),
+      champ(`T0`,`che_longueur_genre`),
+      champ(`T0`,`che_est_primaire_genre`),
+      champ(`T0`,`che_est_incrément_genre`),
+      champ(`T0`,`che_est_obligatoire_genre`),
+      champ(`T0`,`che_a_init_genre`),
+      champ(`T0`,`che_init_est_mot_genre`),
+      champ(`T0`,`cht_valeur_init_genre`),
+      champ(`T0`,`che_est_parmis_genre`),
+      champ(`T0`,`cht_parmis_genre`),
+      champ(`T0`,`cht_fonctions_genre`),
+      champ(`T0`,`che_est_nur_genre`),
+      champ(`T0`,`che_est_tsm_genre`),
+      champ(`T0`,`che_est_tsc_genre`),
+      champ(`T0`,`chd__dtc_genre`),
+      champ(`T0`,`chd__dtm_genre`),
+      champ(`T0`,`che__nur_genre`),
+      champ(`T0`,`che_est_session_genre`),
+      champ(`T0`,`chp_nom_en_session_genre`),
+      champ(`T0`,`che_est_positif_genre`)
+   ),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_genres,base(b1),alias(T0)))
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
       )
    ),
-   conditions(
-
-      egal(champ(`T0`,`chi_id_genre`),:T0_chi_id_genre)   )
-)',
+   conditions(egal(champ(`T0`,`chi_id_genre`),:T0_chi_id_genre))
+)  ',
   ),
   331 => 
   array (
@@ -3649,7 +3651,8 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
    `chd__dtm_genre` = :n_chd__dtm_genre , 
    `che__nur_genre` = :n_che__nur_genre , 
    `che_est_session_genre` = :n_che_est_session_genre , 
-   `chp_nom_en_session_genre` = :n_chp_nom_en_session_genre
+   `chp_nom_en_session_genre` = :n_chp_nom_en_session_genre , 
+   `che_est_positif_genre` = :n_che_est_positif_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',
     'cht_commentaire_requete' => 'genres',
     'chp_type_requete' => 'update',
@@ -3657,37 +3660,36 @@ WHERE `chi_id_genre` = :c_chi_id_genre ;',
     'cht_rev_requete' => 'modifier(
    base_de_reference(1),
    valeurs(
-      affecte(champ(`chp_nom_genre`),:n_chp_nom_genre)
-      affecte(champ(`che_ordre_genre`),:n_che_ordre_genre)
-      affecte(champ(`chp_prefixe_genre`),:n_chp_prefixe_genre)
-      affecte(champ(`chp_espece_genre`),:n_chp_espece_genre)
-      affecte(champ(`che_longueur_genre`),:n_che_longueur_genre)
-      affecte(champ(`che_est_primaire_genre`),:n_che_est_primaire_genre)
-      affecte(champ(`che_est_incrément_genre`),:n_che_est_incrément_genre)
-      affecte(champ(`che_est_obligatoire_genre`),:n_che_est_obligatoire_genre)
-      affecte(champ(`che_a_init_genre`),:n_che_a_init_genre)
-      affecte(champ(`che_init_est_mot_genre`),:n_che_init_est_mot_genre)
-      affecte(champ(`cht_valeur_init_genre`),:n_cht_valeur_init_genre)
-      affecte(champ(`che_est_parmis_genre`),:n_che_est_parmis_genre)
-      affecte(champ(`cht_parmis_genre`),:n_cht_parmis_genre)
-      affecte(champ(`cht_fonctions_genre`),:n_cht_fonctions_genre)
-      affecte(champ(`che_est_nur_genre`),:n_che_est_nur_genre)
-      affecte(champ(`che_est_tsm_genre`),:n_che_est_tsm_genre)
-      affecte(champ(`che_est_tsc_genre`),:n_che_est_tsc_genre)
-      affecte(champ(`chd__dtm_genre`),:n_chd__dtm_genre)
-      affecte(champ(`che__nur_genre`),:n_che__nur_genre)
-      affecte(champ(`che_est_session_genre`),:n_che_est_session_genre)
-      affecte(champ(`chp_nom_en_session_genre`),:n_chp_nom_en_session_genre)
-   )
+      affecte(champ(`chp_nom_genre`),:n_chp_nom_genre),
+      affecte(champ(`che_ordre_genre`),:n_che_ordre_genre),
+      affecte(champ(`chp_prefixe_genre`),:n_chp_prefixe_genre),
+      affecte(champ(`chp_espece_genre`),:n_chp_espece_genre),
+      affecte(champ(`che_longueur_genre`),:n_che_longueur_genre),
+      affecte(champ(`che_est_primaire_genre`),:n_che_est_primaire_genre),
+      affecte(champ(`che_est_incrément_genre`),:n_che_est_incrément_genre),
+      affecte(champ(`che_est_obligatoire_genre`),:n_che_est_obligatoire_genre),
+      affecte(champ(`che_a_init_genre`),:n_che_a_init_genre),
+      affecte(champ(`che_init_est_mot_genre`),:n_che_init_est_mot_genre),
+      affecte(champ(`cht_valeur_init_genre`),:n_cht_valeur_init_genre),
+      affecte(champ(`che_est_parmis_genre`),:n_che_est_parmis_genre),
+      affecte(champ(`cht_parmis_genre`),:n_cht_parmis_genre),
+      affecte(champ(`cht_fonctions_genre`),:n_cht_fonctions_genre),
+      affecte(champ(`che_est_nur_genre`),:n_che_est_nur_genre),
+      affecte(champ(`che_est_tsm_genre`),:n_che_est_tsm_genre),
+      affecte(champ(`che_est_tsc_genre`),:n_che_est_tsc_genre),
+      affecte(champ(`chd__dtm_genre`),:n_chd__dtm_genre),
+      affecte(champ(`che__nur_genre`),:n_che__nur_genre),
+      affecte(champ(`che_est_session_genre`),:n_che_est_session_genre),
+      affecte(champ(`chp_nom_en_session_genre`),:n_chp_nom_en_session_genre),
+      affecte(champ(`che_est_positif_genre`),:n_che_est_positif_genre)
+   ),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_genres,base(b1)))
       )
    ),
-   conditions(
-
-      egal(champ(`chi_id_genre`),:c_chi_id_genre)   )
-)',
+   conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
+)  ',
   ),
   332 => 
   array (
@@ -3715,7 +3717,8 @@ WHERE `chi_id_genre` = :chi_id_genre ;',
 `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
 `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
 `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_tsc_genre` , 
-`T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre`
+`T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , 
+`T0`.`che_est_positif_genre`
  FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
 ;',
     'cht_commentaire_requete' => 'tous les genres',
@@ -3743,7 +3746,8 @@ WHERE `chi_id_genre` = :chi_id_genre ;',
       champ(`T0`,`che_est_nur_genre`),
       champ(`T0`,`che_est_tsm_genre`),
       champ(`T0`,`che_est_session_genre`),
-      champ(`T0`,`chp_nom_en_session_genre`)
+      champ(`T0`,`chp_nom_en_session_genre`),
+      champ(`T0`,`che_est_positif_genre`)
    ),
    provenance(
       table_reference(

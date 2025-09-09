@@ -141,6 +141,7 @@ class c_php_bdd1{
         
         
         let liste_des_champs_update=[];
+        let liste_des_champs_condition_update=[];
         let ref_update=document.getElementById('reference_requete_update').value;
         if(ref_update!==''){
             let objet_requete_update=__gi1.__js_des_sql[ref_update];
@@ -164,43 +165,57 @@ class c_php_bdd1{
                                     }
                                 }
                             }
+                        }else if(matu[j][1]==='conditions' && matu[j][2]==='f'){
+                            for(let k=j+1;k<matu.length;k++){
+                                if(matu[k][1]==='champ' && matu[k][2]==='f'  && matu[k][8]===1 && matu[k+1][2]==='c'){
+                                    liste_des_champs_condition_update.push({nom_du_champ:matu[k+1][1],champ_dans_la_base:null});
+                                }
+                            }
                         }
                     }
                 }
             }
         }
-        for(let i in liste_des_champs_update){
-          let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
-          /*ce champ fait-il référence à un champ amont qui est dans le ref_select */
-             
-          if(this.#obj_table.champs[nom_du_champ].hasOwnProperty('table_mere')){
-              let table_mere=this.#obj_table.champs[nom_du_champ].table_mere;
-              /*
-                on va chercher l'alias de la table mere dans la requere select
-              */
-              let l01s=mats.length;
-              for( let j=1 ; j < l01s ; j++ ){
-                  if(mats[j][1]==='provenance' && mats[j][2]==='f'){
-                      for( let k=j+1 ; k < l01s ; k++ ){
-                          if('nom_de_la_table' === mats[k][1] && mats[k][2] === 'f'){
-                              for( let l=k+1;l<l01s;l=mats[l][12]){
-                                  if(mats[l][1]===table_mere){
-                                      for( let m=k+1;m<l01s;m=mats[m][12]){
-                                          if(mats[m][1]==='alias' && mats[m][2] === 'f' && mats[m][8] === 1  && mats[m+1][2] === 'c'  ){
-                                              this.#obj_table.champs[nom_du_champ]['alias']=mats[m+1][1];
-                                              break;
-                                          }
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                  }
-              }
+        let update_contient_nur='';
+        
+        for(let i in liste_des_champs_condition_update){
+           let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_condition_update[i].nom_du_champ];
+           if(champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1){
+               update_contient_nur=liste_des_champs_condition_update[i].nom_du_champ;
+           }
+           liste_des_champs_condition_update[i].champ_dans_la_base=champ_dans_la_base;
+        }
 
-          }
+        for(let i in liste_des_champs_update){
+            let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
+            /*ce champ fait-il référence à un champ amont qui est dans le ref_select */
                
-          
+            if(this.#obj_table.champs[nom_du_champ].hasOwnProperty('table_mere')){
+                let table_mere=this.#obj_table.champs[nom_du_champ].table_mere;
+                /*
+                  on va chercher l'alias de la table mere dans la requere select
+                */
+                let l01s=mats.length;
+                for( let j=1 ; j < l01s ; j++ ){
+                    if(mats[j][1]==='provenance' && mats[j][2]==='f'){
+                        for( let k=j+1 ; k < l01s ; k++ ){
+                            if('nom_de_la_table' === mats[k][1] && mats[k][2] === 'f'){
+                                for( let l=k+1;l<l01s;l=mats[l][12]){
+                                    if(mats[l][1]===table_mere){
+                                        for( let m=k+1;m<l01s;m=mats[m][12]){
+                                            if(mats[m][1]==='alias' && mats[m][2] === 'f' && mats[m][8] === 1  && mats[m+1][2] === 'c'  ){
+                                                this.#obj_table.champs[nom_du_champ]['alias']=mats[m+1][1];
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
         }
 
         let liste_de_tables_liste_ecran={};
@@ -671,7 +686,7 @@ class c_php_bdd1{
             o2+='            $donnees_retournees\n';
             o2+='        );\n';
             o2+='        \n';
-            o2+='        if($tt'+ref_select+'[__xst] === __xsu){\n';
+            o2+='        if($tt'+ref_select+'[__xst] !== __xsu){\n';
             o2+='\n';
             o2+='\n';
             o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification effectuée\';\n';
@@ -746,7 +761,16 @@ class c_php_bdd1{
             o2+='        $tt'+ref_update+'=$this->sql0->sql_iii(\n';
             o2+='             /*sql_'+ref_update+'()*/ '+ref_update+',\n';
             o2+='            array(/**/\n';
-            o2+='                    \'c_'+champ_primaire+'\' => $tt'+ref_select+'[__xva][0][\'T0.'+champ_primaire+'\'],\n';
+            
+            for( let i=0;i<liste_des_champs_condition_update.length;i++){
+                if(liste_des_champs_condition_update[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre === 1){
+                    o2+='                    \'c_'+liste_des_champs_condition_update[i].nom_du_champ+'\' => $donnees_recues[__xva][\''+liste_des_champs_condition_update[i].nom_du_champ+'\'],\n';
+                }else{
+                    o2+='                    \'c_'+liste_des_champs_condition_update[i].nom_du_champ+'\' => $tt'+ref_select+'[__xva][0][\'T0.'+liste_des_champs_condition_update[i].nom_du_champ+'\'],\n';
+                }
+            }
+
+            
             for(let i=0;i<liste_des_champs_update.length;i++){
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
@@ -760,11 +784,15 @@ class c_php_bdd1{
             o2+='            $donnees_retournees\n';
             o2+='        );\n';
             o2+='\n';
-            o2+='        if($tt'+ref_update+'[__xst] === __xer){\n';
+            o2+='        if($tt'+ref_update+'[__xst] !== __xsu){\n';
             o2+='\n';
             o2+='            $donnees_retournees[__x_signaux][__xer][]=\'erreur lors de la modification \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
             o2+='\n';
-            o2+='        }else if($tt'+ref_update+'[\'changements\'] === 1){\n';
+            o2+='        }\n';
+            o2+='\n';
+            o2+='        if($tt'+ref_update+'[\'changements\'] === 1){\n';
+            o2+='\n';
+            o2+='            $donnees_retournees[__x_signaux][__xsu][]=\'👍 modification effectuée avec succès \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
             o2+='\n';
             o2+='\n';
             o2+='            if($page_liste_des_'+this.#nom_ref+'1 === true){\n';
@@ -773,14 +801,24 @@ class c_php_bdd1{
             o2+='\n';
             o2+='            }else{\n';
             o2+='\n';
-            o2+='                $donnees_retournees[__xst]=__xsu;\n';
-            o2+='            }\n';
+            o2+='                $donnees_retournees[__x_action]=\''+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_'+this.#nom_ref+'_modifier1),'+champ_primaire+'(\'.$donnees_recues[__xva][\''+champ_primaire+'\'].\'))\';\n';
+            o2+='                $this->page_'+this.#nom_ref+'_modifier1($donnees_retournees,$mat,$donnees_recues);\n';
             o2+='\n';
-            o2+='            $donnees_retournees[__x_signaux][__xsu][]=\'👍 modification effectuée avec succès \' . self::DUN_DUNE_ELEMENT_GERE . \'(\' . $donnees_recues[__xva][\''+champ_primaire+'\'] . \') [\' . __LINE__ . \']\';\n';
+            o2+='            }\n';
             o2+='\n';
             o2+='        }else{\n';
             o2+='\n';
-            o2+='            $donnees_retournees[__x_signaux][__xal][]=__LINE__ . \' aucune modification effectuée\';\n';
+            if(update_contient_nur!==''){;
+                o2+='            if($tt'+ref_select+'[__xva][0][\'T0.'+update_contient_nur+'\']!==$donnees_recues[__xva][\''+update_contient_nur+'\']){\n';
+                o2+='                $_message=\'\';\n';
+                o2+='                $_message.=\'un autre utilisateur a peut être fait une modification entre temps\';\n';
+                o2+='                $_message.=\'<br />Veuillez vérifier les champs puis réessayer d\\\'enregistrer les modifications\' ;\n';
+                o2+='                $donnees_retournees[__x_signaux][__xal][]=$_message;\n';
+                o2+='            }\n';
+            }
+            o2+='            $donnees_retournees[__x_signaux][__xal][]=\' aucune modification effectuée [\' . __LINE__ . \']\';\n';
+            o2+='            $donnees_retournees[__x_action]=\''+this.#nom_de_la_classe_générée+'.formulaire1(action1(page_'+this.#nom_ref+'_modifier1),champ_primaire(\'.$donnees_recues[__xva][\'champ_primaire\'].\'))\';\n';
+            o2+='            $this->page_'+this.#nom_ref+'_modifier1($donnees_retournees,$mat,$donnees_recues);\n';
             o2+='        }\n';
             o2+='\n';
         }
@@ -1632,7 +1670,7 @@ class c_php_bdd1{
                 ||liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre===1
                 ){
                 }else{
-                    o2+='                \''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\' => $par[\''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\'] === \'\' ? \'\' : $par[\''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\'],\n';
+                    o2+='                \''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\' => $par[\''+liste_des_champs_condition_liste_ecran[i].préfixe_du_champ+'_'+liste_des_champs_condition_liste_ecran[i].nom_du_champ+'\'] ,\n';
                 }
             }
             o2+='                \'quantitee\' => $__nbMax,\n';

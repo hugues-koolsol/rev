@@ -22,6 +22,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 1,
   ),
   3 => 
   array (
@@ -45,6 +46,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   12 => 
   array (
@@ -68,6 +70,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   17 => 
   array (
@@ -91,6 +94,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   4 => 
   array (
@@ -114,6 +118,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   8 => 
   array (
@@ -137,6 +142,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   9 => 
   array (
@@ -160,6 +166,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   10 => 
   array (
@@ -183,6 +190,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   7 => 
   array (
@@ -206,6 +214,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   11 => 
   array (
@@ -229,6 +238,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   6 => 
   array (
@@ -252,6 +262,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   5 => 
   array (
@@ -275,6 +286,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   14 => 
   array (
@@ -298,6 +310,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   16 => 
   array (
@@ -321,6 +334,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   13 => 
   array (
@@ -344,6 +358,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   15 => 
   array (
@@ -367,6 +382,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 1,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   18 => 
   array (
@@ -390,6 +406,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 1,
     'chp_nom_en_session_genre' => 'chi_id_utilisateur',
+    'che_est_positif_genre' => 0,
   ),
   99 => 
   array (
@@ -413,6 +430,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   102 => 
   array (
@@ -436,6 +454,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   101 => 
   array (
@@ -459,6 +478,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   103 => 
   array (
@@ -482,6 +502,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   104 => 
   array (
@@ -505,6 +526,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   105 => 
   array (
@@ -528,6 +550,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   108 => 
   array (
@@ -551,6 +574,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   106 => 
   array (
@@ -574,6 +598,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   107 => 
   array (
@@ -597,6 +622,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
   109 => 
   array (
@@ -620,6 +646,7 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 1,
     'chp_nom_en_session_genre' => 'chi_id_projet',
+    'che_est_positif_genre' => 0,
   ),
   1 => 
   array (
@@ -643,5 +670,6 @@ $__liste_des_genres=array (
     'che_est_nur_genre' => 0,
     'che_est_session_genre' => 0,
     'chp_nom_en_session_genre' => NULL,
+    'che_est_positif_genre' => 0,
   ),
 );

@@ -703,6 +703,7 @@ class c_fonctions_js1{
         let cht_rev_requete='';
         let champs_rev='';
         let condition_rev='';
+        let nb_conditions=0;
         for(let i=1;i<l01;i=mat[i][12]){
             let indice=0;
             if(mat[i][1]==='créer_table' && mat[i][2] === 'f' ){
@@ -736,10 +737,17 @@ class c_fonctions_js1{
                                         }
                                     }
                                 }
-                                if(nom_du_champ !== '' && genre_du_champ && !(genre_du_champ.che_est_incrément_genre===1 || genre_du_champ.che_est_primaire_genre === 1 || genre_du_champ.che_est_tsc_genre === 1 )){
-                                    champs_rev+='\n      affecte(champ(`'+nom_du_champ+'`),:n_'+nom_du_champ+')';
-                                }else if(nom_du_champ !== '' && genre_du_champ && (genre_du_champ.che_est_incrément_genre===1 || genre_du_champ.che_est_primaire_genre === 1)){
-                                    condition_rev+='\n      egal(champ(`'+nom_du_champ+'`),:c_'+nom_du_champ+')';
+                                if('che__nur_tache'===nom_du_champ){
+                                    debugger
+                                }
+                                if(nom_du_champ !== '' && genre_du_champ ){
+                                    if(!(genre_du_champ.che_est_incrément_genre===1 || genre_du_champ.che_est_primaire_genre === 1 || genre_du_champ.che_est_tsc_genre === 1  )){
+                                        champs_rev+='\n      affecte(champ(`'+nom_du_champ+'`),:n_'+nom_du_champ+')';
+                                    }
+                                    if((genre_du_champ.che_est_incrément_genre===1 || genre_du_champ.che_est_primaire_genre === 1 || genre_du_champ.che_est_nur_genre === 1)){
+                                        condition_rev+='\n      egal(champ(`'+nom_du_champ+'`),:c_'+nom_du_champ+')';
+                                        nb_conditions++;
+                                    }
                                 }
                             }
                         }
@@ -749,6 +757,13 @@ class c_fonctions_js1{
             }
         }
         if(champs_rev!=='' && condition_rev!=='' ){
+            if(nb_conditions>1){
+                /* 
+                  il peut y avoir un nur 
+                */
+                condition_rev='et('+condition_rev+')';
+            }
+         
             cht_rev_requete+='modifier(\n';
             cht_rev_requete+='   base_de_reference('+reference_table.base+'),\n';
             cht_rev_requete+='   valeurs(';

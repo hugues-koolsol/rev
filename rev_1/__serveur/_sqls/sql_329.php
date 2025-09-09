@@ -22,7 +22,8 @@ function sql_329($par,&$donnees_retournees,$that){
          `chd__dtc_genre` , 
          `chd__dtm_genre` , 
          `che_est_session_genre` , 
-         `chp_nom_en_session_genre`
+         `chp_nom_en_session_genre` , 
+         `che_est_positif_genre`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -51,7 +52,8 @@ function sql_329($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($GLOBALS[__date_ms]).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($GLOBALS[__date_ms]).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_session_genre']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_en_session_genre']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_en_session_genre']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_positif_genre']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;
