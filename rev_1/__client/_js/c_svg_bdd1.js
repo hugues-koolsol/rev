@@ -4019,12 +4019,21 @@ class c_svg_bdd1{
         var t='';
         t+='<div class="hug_bouton yy__x_signaux_0" data-hug_click="interface1.fermer_sous_fenetre1()" >X</div>';
         t+='<h1>gestion de la table</h1>';
+        /**/
         var cmd='';
         cmd += 'maj_interface1(fermer_fenetre1()),c_generer_php1.page_editer1(';
         cmd += 'nom_de_la_table(\''+nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' )+'\'),';
         cmd += 'chi_id_basedd('+id_bdd_de_la_base_en_cours+'),';
         cmd += ')';
         t+='<div class="hug_bouton yy__x_signaux_1" data-hug_click="' +cmd+ '" >générer le php</div>';
+        /**/
+        var cmd='';
+        cmd += 'maj_interface1(fermer_fenetre1()),c_generer_souche1.page_editer1(';
+        cmd += 'nom_de_la_table(\''+nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' )+'\'),';
+        cmd += 'chi_id_basedd('+id_bdd_de_la_base_en_cours+'),';
+        cmd += ')';
+        t+='<div class="hug_bouton yy__x_signaux_1" data-hug_click="' +cmd+ '" >générer les requêtes souches</div>';
+        /**/
         t+='<hr />';
         t+='<h2>dans ce schema</h2>';
         t+='<h3>changer le nom de la table</h3>';

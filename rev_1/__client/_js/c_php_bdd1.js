@@ -2033,6 +2033,8 @@ class c_php_bdd1{
         cmd+='c_bases1.recuperer_zone_travail_pour_les_bases2(';
         cmd+=' les_id_des_bases(' + par.chi_id_basedd + '),';
         cmd+=' nom_de_la_table(\'' + par.nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        cmd+=' nom_du_module2(\'_js/c_php_bdd1.js\'),';
+        cmd+=' valeurs2(generer_le_php)'
         cmd+=')';
         let obj={"__x_action" : cmd};
         __gi1.envoyer_un_message_au_worker( obj );

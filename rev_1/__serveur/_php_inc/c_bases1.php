@@ -1330,6 +1330,8 @@ class c_bases1{
         */
         $les_id_des_bases='';
         $nom_de_la_table='';
+        $nom_du_module2='';
+        $valeurs2=''; // generer_le_php , générer_les_souches
         $l01=count($mat);
         for( $i=1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
@@ -1346,6 +1348,14 @@ class c_bases1{
                     }else if($mat[$j][1] === 'nom_de_la_table' && $mat[$j][2] === 'f' && $mat[$j + 1][2] === 'c'){
 
                         $nom_de_la_table=$mat[$j + 1][1];
+
+                    }else if($mat[$j][1] === 'nom_du_module2' && $mat[$j][2] === 'f' && $mat[$j + 1][2] === 'c'){
+
+                        $nom_du_module2=$mat[$j + 1][1];
+
+                    }else if($mat[$j][1] === 'valeurs2' && $mat[$j][2] === 'f' && $mat[$j + 1][2] === 'c'){
+
+                        $valeurs2=$mat[$j + 1][1];
 
                     }
 
@@ -1390,8 +1400,8 @@ class c_bases1{
             }else{
 
                 /* $donnees_retournees[__x_signaux][__xal][]='<pre>'.var_export($tt , true ) . '</pre> [' . __LINE__ . '] ';*/
-                $donnees_retournees[__xva]['generer_le_php']=array( 'donnees_bdd' => $tt[__xva][0] , 'nom_de_la_table' => $nom_de_la_table );
-                $donnees_retournees[__xva]['maj']='methode_module_dynamique1(nom_du_module2("_js/c_php_bdd1.js"),methode2(charger_base1),valeurs2(generer_le_php))';
+                $donnees_retournees[__xva][$valeurs2]=array( 'donnees_bdd' => $tt[__xva][0] , 'nom_de_la_table' => $nom_de_la_table );
+                $donnees_retournees[__xva]['maj']='methode_module_dynamique1(nom_du_module2("'.$nom_du_module2.'"),methode2(charger_base1),valeurs2('.$valeurs2.'))';
                 $donnees_retournees[__xst]=__xsu;
                 /* $donnees_retournees[__x_action]='c_bases1.page_liste_des_bases1()';*/
             }

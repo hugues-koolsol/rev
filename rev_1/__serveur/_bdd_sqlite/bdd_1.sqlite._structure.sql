@@ -1863,5 +1863,19 @@ CREATE TABLE tbl_genres(
             )
             */
              chp_nom_en_session_genre VARCHAR(64) DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_positif_genre'),
+            espece_du_champ(INTEGER),
+            typologie(che),
+            genre(5),
+            nom_bref_du_champ('est positif'),
+            masquer_champ_dans_svg(0),refe_enfant_droite(0),refe_parent_gauche(0),est_libelle_lien(0),est_critere_recherche_liste_ecran(0),ordre_tri_liste_ecran(0),sens_tri_liste_ecran_decroissant(on)
+            )
+            */
+             che_est_positif_genre INTEGER NOT NULL DEFAULT  0
     );
 
