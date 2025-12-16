@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>A simple tree and/or sort javascript</title>
+        <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+        <style>
+*{box-sizing:border-box;}
+body{margin:0;padding:0;}
+.le_bo_bouton_deplacer{
+ border:1px green solid;
+ min-width:1em;
+ text-align:center;
+ cursor:ns-resize;
+ color:green;
+}
+.le_bo_bouton_menu{
+    border:2px yellow outset;
+    min-width:1em;
+    text-align:center;
+    cursor:pointer;
+    color:blue;
+}
+.le_bo_bouton_supprimer{
+    border:1px red outset;
+    min-width:1em;
+    text-align:center;
+    cursor:pointer;
+    color:yellow;
+    background:red;
+}
+.le_bo_bouton_editer{
+    border:1px blue outset;
+    min-width:1em;
+    text-align:center;
+    cursor:pointer;
+    color:blue;
+}
+.le_bo_bouton_replier{
+    border:1px pink outset;
+    min-width:1em;
+    text-align:center;
+    cursor:pointer;
+    color:blue;
+}
+.classe_du_menu1{
+    border: 1px yellow inset;
+    user-select: none;
+    max-height: 80vh;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    max-width: calc(100% - 10px);
+    overscroll-behavior-y: none;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+
+
+}</style>
+        <!-- script type="text/javascript" src="tri_arbre1.js?v=004"></script -->
+    </head>
+    <body>003
+        <div style="border:1px red solid;height:50px;width:50px;display:inline-block;overflow:hidden;">50</div>
+        <a href="javascript:goto(50)">goto(50)</a>
+        <h1>exemple</h1>
+        <a href="#fin">fin</a>
+        <span id="toto"></span>
+        <br />
+        <br />
+        <div style="display:flex;margin-left:20px;">
+            <ul id="menu_001" style="display:none;" class="classe_du_menu1">
+                <li>
+                    <a href="">organisation</a>
+                    <ul>
+                        <li>
+                            <a href="">utilisateurs
+                                <br />bla</a>
+                        </li>
+                        <li>autorisations</li>
+                        <li>metiers</li>
+                        <li>groupes</li>
+                        <li>menus</li>
+                    </ul>
+                </li>
+                <li>taches</li>
+                <li>dossiers</li>
+                <li>sources</li>
+                <li>outils
+                    <ul>
+                        <li>génér</li>
+                        <li>cvt
+                            <ul>
+                                <li>pgms
+                                    <ul>
+                                        <li>htmleeeeeeeee</li>
+                                        <li>js</li>
+                                        <li>php</li>
+                                        <li>sql</li>
+                                        <li>css</li>
+                                    </ul>
+                                </li>
+                                <li>autres
+                                    <ul>
+                                        <li>matrice</li>
+                                        <li>txt</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>source</li>
+                    </ul>
+                </li>
+                <li>genre</li>
+                <li>base</li>
+                <li>requetes</li>
+                <li>projets</li>
+                <li>outils
+                    <ul>
+                        <li>génér</li>
+                        <li>cvt
+                            <ul>
+                                <li>pgms
+                                    <ul>
+                                        <li>htmleeeeeeeee</li>
+                                        <li>js</li>
+                                        <li>php</li>
+                                        <li>sql</li>
+                                        <li>css</li>
+                                    </ul>
+                                </li>
+                                <li>autres
+                                    <ul>
+                                        <li>matrice</li>
+                                        <li>txt</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>source</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <br />
+        <br />
+        <br />
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td>
+                        <ul id="tri_arbre_racine1" style="border:0px red solid;">
+                            <li id="123">
+                                <b style="color:red;">a 1</b>
+                                <ul data-replie="">
+                                    <li>aa 2
+                                        <ul>
+                                            <li>aaa 3</li>
+                                            <li>aaa 4</li>
+                                        </ul>
+                                    </li>
+                                    <li>ab 5
+                                        <ul data-replie="" style="color:green;">
+                                            <li>aba 6</li>
+                                            <li>abb 7</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>b 8</li>
+                            <li>c c 90</li>
+                            <li>d d 130</li>
+                            <li>e e 170</li>
+                            <li>f f 210</li>
+                            <li>g g 250</li>
+                            <li>h h 290</li>
+                            <li>i i 330</li>
+                            <li>j j j 370</li>
+                            <li>k k k 410</li>
+                            <li>l l l 450</li>
+                            <li>m m m m 490</li>
+                            <li>n n n n</li>
+                            <li>o o o o</li>
+                            <li>p p p p</li>
+                            <li>q q q q</li>
+                            <li>r r</li>
+                            <li>s s</li>
+                            <li>t t</li>
+                        </ul>
+                    </td>
+                    <!-- 
+                      <li id="123">
+                      <b style="color:red;">a 1</b>
+                      <ul>
+                      <li>aa 2
+                      <ul>
+                      <li>aaa 3</li>
+                      <li>aaa 4</li>
+                      </ul>
+                      </li>
+                      <li>ab 5
+                      <ul data-replie="">
+                      <li>aba 6</li>
+                      <li>abb 7</li>
+                      </ul>
+                      </li>
+                      </ul>
+                      </li>
+                      <li style="color:blue;"><b>b 8</b></li>
+                      
+                      
+                      <ul id="tri_arbre_racine2" style="border:0px red solid;">
+                      
+                      <li id="4" style="border:1px red solid;">tâches</li>
+                      <li data-sous_menu="1">outils</li>
+                      <ul>
+                      <li id="5" style="border:1px red solid;">matrice</li>
+                      <li id="7" style="border:1px red solid;">html</li>
+                      <li id="6" style="border:1px red solid;">js</li>
+                      <li id="8" style="border:1px red solid;">php</li>
+                      <li id="9" style="border:1px red solid;">sql</li>
+                      <li id="10" style="border:1px red solid;">css</li>
+                      <li id="11" style="border:1px red solid;">txt</li>
+                      </ul>
+                      <li id="12" style="border:1px red solid;">projets</li>
+                      <li id="13" style="border:1px red solid;">fido</li>
+                      <li id="14" style="border:1px red solid;">sources</li>
+                      <li id="15" style="border:1px red solid;">bases</li>
+                      <li id="16" style="border:1px red solid;">requêtes</li>
+                      <li id="17" style="border:1px red solid;">revs</li>
+                      <li id="18" style="border:1px red solid;">groupes</li>
+                      <li id="19" style="border:1px red solid;">métiers</li>
+                      <li id="20" style="border:1px red solid;">utilisateurs</li>
+                      <li id="21" style="border:1px red solid;">accès</li>
+                      <li id="22" style="border:1px red solid;">pages</li>
+                      <li id="23" style="border:1px red solid;">menus</li>
+                      <li id="24" style="border:1px red solid;">profile</li></ul>                        
+                      </ul>
+                      
+                    -->
+                    <td style="vertical-align:top;">
+                        <ul id="tri_arbre_racine2" style="border:0px red solid;">
+                            <li id="4">tâches</li>
+                            <li>outils
+                                <ul>
+                                    <li id="5">matrice</li>
+                                    <li id="7">html</li>
+                                </ul>
+                            </li>
+                            <li id="12">projets</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>haut_abs:227,bas_abs:739, 739-50=689, hzone interne=831 avec bouton, 809 sans bouton ( hbouton=22 ),
+        <br />
+        <ul id="tri_arbre_racine3" style="border:0px red solid;">
+            <li id="456">
+                <b style="color:red;">a 1</b>
+                <ul>
+                    <li>aa 2
+                        <ul>
+                            <li>aaa 3</li>
+                            <li>aaa 4</li>
+                        </ul>
+                    </li>
+                    <li>ab 5
+                        <ul data-replie="">
+                            <li>aba 6</li>
+                            <li>abb 7</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>b 8</li>
+            <li>c c 90</li>
+            <li>d d 130</li>
+            <li>e e 170</li>
+            <li>f f 210</li>
+            <li>g g 250</li>
+            <li>h h 290</li>
+        </ul>
+        <div style="min-height:800px;"></div>
+        <footer id="fin"></footer>
+<script type="module" src="tri_arbre.js"></script>
+
+<script type="module" src="menu_arbre.js"></script>
+
+    </body>
+</html>
