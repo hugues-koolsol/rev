@@ -13,6 +13,13 @@ class ecran_generer_souches{
     #_developpement1=null;
     #chemin_module1=null;
     #nom_de_la_table=null;
+    #a_construire={
+     "select" : null,
+     "insert" : null,
+     "liste_ecran" : null,
+     "delete" : null,
+     "update" : null,
+    }
 
     /*
       =============================================================================================================
@@ -179,19 +186,104 @@ class ecran_generer_souches{
     /*
       =============================================================================================================
     */
-    charger_base1( chi_id_basedd , nom_de_la_table ){
+    charger_les_requetes_souches(mat , d, le_message_du_serveur=null){
+        if(le_message_du_serveur && le_message_du_serveur.__xst===__xsu){
+            for(let req in le_message_du_serveur.__xva.requetes){
+                let elt=le_message_du_serveur.__xva.requetes[req];
+                /**/
+                this.#a_construire[elt['T0.chp_type_requete']]={
+                   "id" : parseInt(elt['T0.chi_id_requete'],10),
+                   "type" : elt['T0.chp_type_requete'],
+                }
+            }
+        }
+        let o1='';
+        o1+='<table border="1">'
+        o1+='<tr>'
+        o1+='<th>id</th>'
+        o1+='<th>type</th>'
+        o1+='</tr>'
+        for( let i in this.#a_construire){
+            if(this.#a_construire[i]===null){
+                o1+='<tr>'
+                /**/
+                o1+='<td>';
+                o1+='';
+                o1+='</td>';
+                /**/
+                o1+='<td>';
+                o1+=i;
+                o1+='</td>';
+                /**/
+                o1+='</tr>'
+            }
+        }
+        /*
+        
+        */
+        for( let i in this.#a_construire){
+            if(this.#a_construire[i]!==null){
+                o1+='<tr>'
+                /**/
+                o1+='<td class="yy__1">';
+                o1+=this.#a_construire[i].id;
+                o1+='</td>';
+                /**/
+                o1+='<td class="yy__1">';
+                o1+=this.#a_construire[i].type;
+                o1+='</td>';
+                /**/
+                o1+='</tr>'
+            }
+        }
+        o1+='</table>'
+        document.getElementById('les_requetes').innerHTML=o1;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    charger_les_requetes_existantes( p ){
+        
+        let chi_id_basedd=parseInt(document.getElementById('vv_les_bases').value,10);
+        let nom_de_la_table=document.getElementById('vv_les_tables').value;
+        if(chi_id_basedd>0 && nom_de_la_table && nom_de_la_table!==''){
+            let cmd='';
+            cmd+='pm1(m1(n1(' + this.moi + '),f1(charger_les_requetes_souches(';
+            cmd+=' chi_id_basedd(' + chi_id_basedd + '),';
+            cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+            cmd+=' nom_du_module2(' + this.moi + '),';
+            cmd+='))))';
+            let obj={"__xac" : cmd};
+            __gi1.envoyer_un_message_au_worker( obj );
+         
+        }
+
+        return({"__xst" : __xsu});
+
+
+    }
+    /*
+      =============================================================================================================
+    */
+    charger_base1( chi_id_basedd , nom_de_la_table , le_message_du_serveur=null ){
         let o1='';
         
         this.#mat=this.#arbre[chi_id_basedd];
         this.enrichir_objet_base( this.#mat.matrice );
         this.#nom_de_la_table=nom_de_la_table;
         this.#obj_table=this.#obj_bdd[this.#nom_de_la_table];
-        o1+='<div id="gererer_le_js_bdd1" data-rev_click="m1(n1(' + this.moi + '),f1(générer_les_programmes()))" style="visibility:hidden;" class="rev_bouton yy__1">générer les programmes</div>';
+        let vis='style="visibility:hidden;"';
+        if(nom_de_la_table!=='' && chi_id_basedd>0){
+          vis='style="visibility:;"';
+        }
+        o1+='<div id="gererer_le_js_bdd1" data-rev_click="m1(n1(' + this.moi + '),f1(charger_les_requetes_existantes()))" '+vis+' class="rev_bouton yy__1">générer les requêtes souches</div>';
+        o1+='<div id="les_requetes"></div>';
         let contenu_generer_le_php=document.getElementById( 'contenu_generer_le_php' );
         contenu_generer_le_php.innerHTML=o1;
         __gi1.ajoute_les_evenements_aux_boutons( null );
         setTimeout( () => {
-//                this.pre_selectionner();
+                this.charger_les_requetes_existantes();
                 } , 50 );
         return({"__xst" : __xsu});
         
@@ -355,7 +447,7 @@ class ecran_generer_souches{
             }
         }
         let $o1='';
-        $o1+='<h1>générer les souches </h1>';
+        $o1+='<h1>générer les requêtes souches</h1>';
         $o1+='<div id="zone_selection"></div>';
         $o1+='<div id="contenu_generer_le_php"></div>';
         
@@ -371,7 +463,7 @@ class ecran_generer_souches{
         let obj={"__xac" : cmd};
         __gi1.envoyer_un_message_au_worker( obj );
         __gi1.maj_hash( mat , 0 );
-        __gi1.maj_title_htm1( 'générer les programmes' );
+        __gi1.maj_title_htm1( 'générer les requêtes souches' );
         return({"__xst" : __xsu});
     }
     /*

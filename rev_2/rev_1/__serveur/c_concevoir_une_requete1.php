@@ -33,7 +33,8 @@ class c_concevoir_une_requete1{
                     'cht_sql_requete' => $donnees_recues[__xva]['sql'],
                     'cht_php_requete' => $donnees_recues[__xva]['php'],
                     'cht_commentaire_requete' => $donnees_recues[__xva]['cht_commentaire_requete'],
-                    'che_est_souche_requete' => $donnees_recues[__xva]['che_est_souche_requete']
+                    'che_est_souche_requete' => $donnees_recues[__xva]['che_est_souche_requete'],
+                    'chp_table_reference_requete' => $donnees_recues[__xva]['chp_table_reference_requete'],
                 ));
         $tt390=/*sql_inclure_deb*/
             /* sql_390()
@@ -43,14 +44,16 @@ class c_concevoir_une_requete1{
                 `cht_sql_requete` , 
                 `cht_php_requete` , 
                 `cht_commentaire_requete` , 
-                `che_est_souche_requete`
+                `che_est_souche_requete` ,
+                `chp_table_reference_requete`
             ) VALUES (
                 :chp_type_requete , 
                 :cht_rev_requete , 
                 :cht_sql_requete , 
                 :cht_php_requete , 
                 :cht_commentaire_requete , 
-                :che_est_souche_requete
+                :che_est_souche_requete ,
+                :chp_table_reference_requete
             );
             */
             /*sql_inclure_fin*/
@@ -344,7 +347,8 @@ class c_concevoir_une_requete1{
             'n_cht_php_requete' => $php,
             'n_cht_matrice_requete' => $matrice,
             'n_cht_commentaire_requete' => $donnees_recues[__xva]['cht_commentaire_requete'],
-            'n_che_est_souche_requete' => $donnees_recues[__xva]['che_est_souche_requete']
+            'n_che_est_souche_requete' => $donnees_recues[__xva]['che_est_souche_requete'],
+            'n_chp_table_reference_requete' => $donnees_recues[__xva]['chp_table_reference_requete']
         );
         $tt=/*sql_inclure_deb*/
             /* sql_355()

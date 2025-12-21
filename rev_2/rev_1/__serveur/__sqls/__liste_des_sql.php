@@ -1716,7 +1716,7 @@ WHERE `chi_id_dossier` = :c_chi_id_dossier ;',
    provenance(
       table_reference(source(nom_de_la_table(tbl_projets)))
    )
-)',
+)    ',
   ),
   157 => 
   array (
@@ -2896,14 +2896,15 @@ LIMIT :quantitee OFFSET :debut
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_requetes SET 
    `cht_sql_requete` = :n_cht_sql_requete , 
-   `cht_php_requete` = :n_cht_php_requete
+   `cht_php_requete` = :n_cht_php_requete , 
+   `chp_table_reference_requete` = :n_chp_table_reference_requete
 WHERE `chi_id_requete` = :c_chi_id_requete ;',
     'cht_commentaire_requete' => 'requêtes',
     'chp_type_requete' => 'update',
     'che_est_souche_requete' => 0,
     'cht_rev_requete' => 'modifier(
    base_de_reference(1),
-   valeurs(affecte(champ(`cht_sql_requete`),:n_cht_sql_requete),affecte(champ(`cht_php_requete`),:n_cht_php_requete)),
+   valeurs(affecte(champ(`cht_sql_requete`),:n_cht_sql_requete),affecte(champ(`cht_php_requete`),:n_cht_php_requete),affecte(champ(`chp_table_reference_requete`),:n_chp_table_reference_requete)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_requetes,base(b1)))
@@ -3095,14 +3096,15 @@ WHERE `T0`.`che_contient_version_source` = :T0_che_contient_version_source
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-`T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
+`T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`chp_table_reference_requete`
  FROM b1.tbl_requetes T0
 WHERE ( /* */ `T0`.`chi_id_requete` = :T0_chi_id_requete
    AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete
    AND `T0`.`chp_type_requete` LIKE :T0_chp_type_requete
    AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete
    AND `T0`.`cht_commentaire_requete` LIKE :T0_cht_commentaire_requete
-   AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2) 
+   AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2
+   AND `T0`.`chp_table_reference_requete` LIKE :T0_chp_table_reference_requete) 
 ORDER BY `T0`.`chi_id_requete` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',
@@ -3119,7 +3121,8 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`cht_sql_requete`),
       champ(`T0`,`cht_php_requete`),
       champ(`T0`,`cht_commentaire_requete`),
-      champ(`T0`,`cht_matrice_requete`)
+      champ(`T0`,`cht_matrice_requete`),
+      champ(`T0`,`chp_table_reference_requete`)
    ),
    provenance(
       table_reference(
@@ -3134,7 +3137,8 @@ LIMIT :quantitee OFFSET :debut
          comme(champ(`T0`,`chp_type_requete`),:T0_chp_type_requete),
          comme(champ(`T0`,`cht_rev_requete`),:T0_cht_rev_requete),
          comme(champ(`T0`,`cht_commentaire_requete`),:T0_cht_commentaire_requete),
-         infegal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete2)
+         infegal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete2),
+         comme(champ(`T0`,`chp_table_reference_requete`),:T0_chp_table_reference_requete)
       )
    ),
    complements(
@@ -3207,7 +3211,7 @@ supprimer(
   array (
     'cht_sql_requete' => 'SELECT 
 `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_php_requete` , 
-`T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
+`T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
  FROM b1.tbl_requetes T0
 WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
 ;',
@@ -3224,7 +3228,8 @@ WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
       champ(`T0`,`cht_php_requete`),
       champ(`T0`,`cht_commentaire_requete`),
       champ(`T0`,`cht_matrice_requete`),
-      champ(`T0`,`che_est_souche_requete`)
+      champ(`T0`,`che_est_souche_requete`),
+      champ(`T0`,`chp_table_reference_requete`)
    ),
    provenance(
       table_reference(
@@ -3242,7 +3247,8 @@ WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
    `cht_rev_requete` = :n_cht_rev_requete , 
    `cht_sql_requete` = :n_cht_sql_requete , 
    `cht_php_requete` = :n_cht_php_requete , 
-   `cht_commentaire_requete` = :n_cht_commentaire_requete
+   `cht_commentaire_requete` = :n_cht_commentaire_requete , 
+   `chp_table_reference_requete` = :n_chp_table_reference_requete
 WHERE `chi_id_requete` = :c_chi_id_requete ;',
     'cht_commentaire_requete' => 'requêtes',
     'chp_type_requete' => 'update',
@@ -3255,7 +3261,8 @@ WHERE `chi_id_requete` = :c_chi_id_requete ;',
       affecte(champ(`cht_rev_requete`),:n_cht_rev_requete),
       affecte(champ(`cht_sql_requete`),:n_cht_sql_requete),
       affecte(champ(`cht_php_requete`),:n_cht_php_requete),
-      affecte(champ(`cht_commentaire_requete`),:n_cht_commentaire_requete)
+      affecte(champ(`cht_commentaire_requete`),:n_cht_commentaire_requete),
+      affecte(champ(`chp_table_reference_requete`),:n_chp_table_reference_requete)
    ),
    provenance(
       table_reference(
@@ -4194,15 +4201,15 @@ WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
     'cht_commentaire_requete' => 'sur base 1',
     'chp_type_requete' => 'requete_manuelle',
     'che_est_souche_requete' => 0,
-    'cht_rev_requete' => 'transaction()          ',
+    'cht_rev_requete' => 'transaction()            ',
   ),
   388 => 
   array (
     'cht_sql_requete' => 'COMMIT;',
-    'cht_commentaire_requete' => '',
+    'cht_commentaire_requete' => NULL,
     'chp_type_requete' => 'requete_manuelle',
     'che_est_souche_requete' => 0,
-    'cht_rev_requete' => 'commit()        ',
+    'cht_rev_requete' => 'commit()          ',
   ),
   389 => 
   array (
@@ -4268,14 +4275,16 @@ LIMIT :quantitee OFFSET :debut
     `cht_sql_requete` , 
     `cht_php_requete` , 
     `cht_commentaire_requete` , 
-    `che_est_souche_requete`
+    `che_est_souche_requete` , 
+    `chp_table_reference_requete`
 ) VALUES (
     :chp_type_requete , 
     :cht_rev_requete , 
     :cht_sql_requete , 
     :cht_php_requete , 
     :cht_commentaire_requete , 
-    :che_est_souche_requete
+    :che_est_souche_requete , 
+    :chp_table_reference_requete
 );',
     'cht_commentaire_requete' => 'requêtes',
     'chp_type_requete' => 'insert',
@@ -4288,12 +4297,48 @@ LIMIT :quantitee OFFSET :debut
       affecte(champ(`cht_sql_requete`),:cht_sql_requete),
       affecte(champ(`cht_php_requete`),:cht_php_requete),
       affecte(champ(`cht_commentaire_requete`),:cht_commentaire_requete),
-      affecte(champ(`che_est_souche_requete`),:che_est_souche_requete)
+      affecte(champ(`che_est_souche_requete`),:che_est_souche_requete),
+      affecte(champ(`chp_table_reference_requete`),:chp_table_reference_requete)
    ),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_requetes,base(b1)))
       )
+   )
+)  ',
+  ),
+  391 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
+`T0`.`cht_php_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+ FROM b1.tbl_requetes T0
+WHERE (`T0`.`chp_table_reference_requete` = :T0_chp_table_reference_requete
+   AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete)
+;',
+    'cht_commentaire_requete' => 'requetes',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
+    'cht_rev_requete' => 'sélectionner(
+   base_de_reference(1),
+   valeurs(
+      champ(`T0`,`chi_id_requete`),
+      champ(`T0`,`cht_commentaire_requete`),
+      champ(`T0`,`chp_type_requete`),
+      champ(`T0`,`cht_rev_requete`),
+      champ(`T0`,`cht_sql_requete`),
+      champ(`T0`,`cht_php_requete`),
+      champ(`T0`,`cht_matrice_requete`),
+      champ(`T0`,`che_est_souche_requete`),
+      champ(`T0`,`chp_table_reference_requete`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chp_table_reference_requete`),:T0_chp_table_reference_requete),egal(champ(`T0`,`che_est_souche_requete`),:T0_che_est_souche_requete))
    )
 )  ',
   ),

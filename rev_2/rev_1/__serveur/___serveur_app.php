@@ -1,5 +1,5 @@
 <?php
-define('__version','__j_20251203_000001_');
+define('__version','__j_20251221_000002_');
 define('__xst','__xst');
 /*message*/
 define('__xme','__xme');

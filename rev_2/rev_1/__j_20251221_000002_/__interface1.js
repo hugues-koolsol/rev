@@ -1128,7 +1128,7 @@ class __interface1{
             let t='';
             let le_svg_masquer='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35 0.6077  70 65.3923"><g fill="none" fill-rule="evenodd"><path fill="#FF0000" d=" M 17 39 C 11 39 5 43 4 49 C 1 48 -2 48 -5 49 C -6 43 -11 39 -18 39 C -25 39 -31 45 -31 52 C -31 60 -25 66 -18 66 C -11 66 -5 60 -4 53 C -3 53 0 51 4 53 C 4 60 10 66 17 66 C 25 66 31 60 31 52 C 31 45 25 39 17 39 Z M -18 43 C -12 43 -8 47 -8 52 C -8 58 -12 62 -18 62 C -23 62 -27 58 -27 52 C -27 47 -23 43 -18 43 Z M 17 43 C 23 43 27 47 27 52 C 27 58 23 62 17 62 C 12 62 8 58 8 52 C 8 47 12 43 17 43 Z M 35 31 H -35 V 35 H 35 V 31 Z M 13 3 C 12 1 12 0 9 1 L 0 4 L 0 4 L -9 1 C -11 0 -12 1 -13 3 L -22 27 H 23  L 13 3 Z"></path></g></svg>';
             t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__interface1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
-            t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(__interface1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">🖐👊</div>';
+            t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__interface1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">'+this.les_svg.agrandir+this.les_svg.retrecir+'</div>';
             t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__interface1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + le_svg_masquer + '</div>';
             vv_supprimer_les_messages.innerHTML=t;
             document.getElementById( 'vv_messages' ).insertBefore( vv_supprimer_les_messages , document.getElementById( 'vv_messages' ).firstChild );
@@ -2956,6 +2956,7 @@ class __interface1{
         t+='    margin-right: 1%;';
         t+='    margin-left: 1%;';
         t+='    overflow-x: scroll;';
+        t+='    border-right: 1px red solid;';
         t+='}';
         if(navigator.userAgent.toLowerCase().indexOf( 'firefox' ) >= 0){
             t+='.yy_ouinon::-moz-range-thumb {';

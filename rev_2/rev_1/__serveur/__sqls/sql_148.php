@@ -23,11 +23,6 @@ function sql_148($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`chp_methode_menu` = \''.sq0($par['n_chp_methode_menu']).'\'';
     }
-    if($par['n_cht_initialisation_menu']==='' || is_null($par['n_cht_initialisation_menu']) ){
-        $tableau_champs[]='`cht_initialisation_menu` = NULL';
-    }else{
-        $tableau_champs[]='`cht_initialisation_menu` = \''.sq0($par['n_cht_initialisation_menu']).'\'';
-    }
     if($par['n_cht_condition_menu']==='' || is_null($par['n_cht_condition_menu']) ){
         $tableau_champs[]='`cht_condition_menu` = NULL';
     }else{
@@ -37,6 +32,11 @@ function sql_148($par,&$donnees_retournees,$that){
         $tableau_champs[]='`cht_condition_php_menu` = NULL';
     }else{
         $tableau_champs[]='`cht_condition_php_menu` = \''.sq0($par['n_cht_condition_php_menu']).'\'';
+    }
+    if($par['n_cht_initialisation_menu']==='' || is_null($par['n_cht_initialisation_menu']) ){
+        $tableau_champs[]='`cht_initialisation_menu` = NULL';
+    }else{
+        $tableau_champs[]='`cht_initialisation_menu` = \''.sq0($par['n_cht_initialisation_menu']).'\'';
     }
 
     if(count($tableau_champs)===0){

@@ -139,7 +139,8 @@ class c_requetes1{
                 array(/**/
                     'c_chi_id_requete' => $donnees_recues[__xva]['chi_id_requete'],
                     'n_cht_sql_requete' => $donnees_recues[__xva]['cht_sql_requete'],
-                    'n_cht_php_requete' => ''
+                    'n_cht_php_requete' => '',
+                    'n_chp_table_reference_requete' => $donnees_recues[__xva]['chp_table_reference_requete']
                 ),
                 $donnees_retournees
             );
@@ -159,7 +160,8 @@ class c_requetes1{
                 array(/**/
                     'c_chi_id_requete' => $donnees_recues[__xva]['chi_id_requete'],
                     'n_cht_sql_requete' => $donnees_recues[__xva]['cht_sql_requete'],
-                    'n_cht_php_requete' => $donnees_recues[__xva]['cht_php_requete']
+                    'n_cht_php_requete' => $donnees_recues[__xva]['cht_php_requete'],
+                    'n_chp_table_reference_requete' => $donnees_recues[__xva]['chp_table_reference_requete']
                 ),
                 $donnees_retournees
             );

@@ -5,7 +5,7 @@ function sql_350($par,&$donnees_retournees,$that){
     }
     $champs0='
       `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-      `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
+      `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`chp_table_reference_requete`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -30,6 +30,9 @@ function sql_350($par,&$donnees_retournees,$that){
     if(( isset($par['T0_chi_id_requete2']) && $par['T0_chi_id_requete2'] !== '')){
         $where0.=' AND `T0`.`chi_id_requete` <= '.sq1($par['T0_chi_id_requete2']).''.PHP_EOL;
     }
+    if(( isset($par['T0_chp_table_reference_requete']) && $par['T0_chp_table_reference_requete'] !== '')){
+        $where0.=' AND `T0`.`chp_table_reference_requete` LIKE '.sq2($par['T0_chp_table_reference_requete']).''.PHP_EOL;
+    }
     $sql0.=$where0;
     $order0='
        ORDER BY  `T0`.`chi_id_requete` DESC';
@@ -53,6 +56,7 @@ function sql_350($par,&$donnees_retournees,$that){
                 'T0.cht_php_requete' => $tab0[5],
                 'T0.cht_commentaire_requete' => $tab0[6],
                 'T0.cht_matrice_requete' => $tab0[7],
+                'T0.chp_table_reference_requete' => $tab0[8],
             );
         }
         $stmt0->close();

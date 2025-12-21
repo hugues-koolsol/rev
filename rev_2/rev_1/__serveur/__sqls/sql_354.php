@@ -2,7 +2,7 @@
 function sql_354($par,&$donnees_retournees,$that){
     $champs0='
       `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_php_requete` , 
-      `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
+      `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -28,6 +28,7 @@ function sql_354($par,&$donnees_retournees,$that){
                 'T0.cht_commentaire_requete' => $tab0[5],
                 'T0.cht_matrice_requete' => $tab0[6],
                 'T0.che_est_souche_requete' => $tab0[7],
+                'T0.chp_table_reference_requete' => $tab0[8],
             );
         }
         return array(

@@ -7,7 +7,8 @@ function sql_390($par,&$donnees_retournees,$that){
          `cht_sql_requete` , 
          `cht_php_requete` , 
          `cht_commentaire_requete` , 
-         `che_est_souche_requete`
+         `che_est_souche_requete` , 
+         `chp_table_reference_requete`
       ) VALUES 
     ';
     $liste_des_valeurs='';
@@ -21,7 +22,8 @@ function sql_390($par,&$donnees_retournees,$that){
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_sql_requete']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_php_requete']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_commentaire_requete']).''.',';
-        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_souche_requete']).'';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['che_est_souche_requete']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_table_reference_requete']).'';
         $liste_des_valeurs.=')';
     }
     $sql0.=$liste_des_valeurs;

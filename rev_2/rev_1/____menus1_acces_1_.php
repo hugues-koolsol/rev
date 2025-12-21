@@ -120,6 +120,13 @@ if(isset($_SESSION[_CA_]['chi_id_projet']) && $_SESSION[_CA_]['chi_id_projet'] >
 /*
   ==================
 */
+if(isset($_SESSION[_CA_]['chi_id_projet']) && $_SESSION[_CA_]['chi_id_projet'] > 0 && isset($_SESSION[_CA_]['chi_id_utilisateur']) && $_SESSION[_CA_]['chi_id_utilisateur'] > 0){
+    $le_sous_menu1_2.='
+    <li><div id="menu_30"  class="rev_bouton" data-rev_click="m1(n1(ecran_generer_souches),f1(page_generer_les_souches1()))">souches</div></li>'.PHP_EOL;
+}
+/*
+  ==================
+*/
 if(isset($_SESSION[_CA_]['chi_id_utilisateur']) && $_SESSION[_CA_]['chi_id_utilisateur'] > 0){
     $le_sous_menu1_2.='
     <li><div id="menu_20"  class="rev_bouton" data-rev_click="m1(n1(ecran_source_vers_programme),f1(point_d_entree()))">source</div></li>'.PHP_EOL;

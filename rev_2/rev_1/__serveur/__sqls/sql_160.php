@@ -7,7 +7,7 @@ function sql_160($par,&$donnees_retournees,$that,$db){
             WHERE (`T0`.`chi_id_projet` = '.sq1($par['T0_chi_id_projet']).')
             ;
     ';
-    //echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' . $sql0 . '</pre>' ; exit(0);
+    // echo __FILE__ . ' ' . __LINE__ . ' $sql0 = <pre>' . $sql0 . '</pre>' ; exit(0);
     try{
         $db->enableExceptions(true);
         $stmt0=$db->prepare($sql0);

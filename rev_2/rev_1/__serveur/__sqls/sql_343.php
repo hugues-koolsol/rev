@@ -13,6 +13,11 @@ function sql_343($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`cht_php_requete` = \''.sq0($par['n_cht_php_requete']).'\'';
     }
+    if($par['n_chp_table_reference_requete']==='' || is_null($par['n_chp_table_reference_requete']) ){
+        $tableau_champs[]='`chp_table_reference_requete` = NULL';
+    }else{
+        $tableau_champs[]='`chp_table_reference_requete` = \''.sq0($par['n_chp_table_reference_requete']).'\'';
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/
