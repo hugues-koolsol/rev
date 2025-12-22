@@ -1,5 +1,5 @@
 <?php
-define('__version','__j_20251221_000002_');
+define('__version','__j_20251222_000001_');
 define('__xst','__xst');
 /*message*/
 define('__xme','__xme');
@@ -511,11 +511,17 @@ function demarre_services(&$donnees_retournees){
         'chemin_bdd' => '',
         LIEN_BDD => null
     );
-    if(substr(_CA_,-7)==='_rev_1_'){
+    
+    if(substr(_CA_,-7) === '_rev_1_'){
+
         $chemin_bdd=__RACINE_PGMS__ . '__bdd_sqlite/bdd_1.sqlite';
+
     }else{
+
         $chemin_bdd=$GLOBALS['chemin_des_bdds'] . 'bdd_1.sqlite';
     }
+
+    
     if(!file_exists($chemin_bdd)){
 
         $chemin_bdd_dump=__RACINE_PGMS__ . '__bdd_sqlite/' . $GLOBALS[__BDD][1]['nom_bdd'] . '.sql';
@@ -578,11 +584,16 @@ function demarre_services(&$donnees_retournees){
     }
 
     foreach($GLOBALS[__BDD] as $k1 => $v1){
-        if(substr(_CA_,-7) === '_rev_1_' || substr(_CA_,-7) === '_rev_2_' ){
+        
+        if(substr(_CA_,-7) === '_rev_1_' || substr(_CA_,-7) === '_rev_2_'){
+
             $chemin_bdd=__RACINE_PGMS__ . '__bdd_sqlite' . DIRECTORY_SEPARATOR . $v1['nom_bdd'];
+
         }else{
+
             $chemin_bdd=$GLOBALS['chemin_des_bdds'] . $v1['nom_bdd'];
         }
+
         $GLOBALS[__BDD][$k1]['chemin_bdd']=$chemin_bdd;
         $db=new SQLite3($chemin_bdd);
         $GLOBALS[__BDD][$k1][LIEN_BDD]=$db;
@@ -593,13 +604,17 @@ function demarre_services(&$donnees_retournees){
         foreach($v1['initialisation_bdd'] as $k2 => $v2){
             $ret=$db->querySingle($v2);
         }
+        
         if(substr(_CA_,-7) === '_rev_1_' || substr(_CA_,-7) === '_rev_2_'){
+
             $pragmas_dbs[]='attach database "' . __RACINE_PGMS__ . '__bdd_sqlite/' . 'bdd_' . $k1 . '.sqlite" as `bdd_' . $k1 . '`;';
+
         }else{
+
             $pragmas_dbs[]='attach database "' . $GLOBALS['chemin_des_bdds'] . 'bdd_' . $k1 . '.sqlite" as `bdd_' . $k1 . '`;';
         }
-    }
 
+    }
     $ddd=array();
     foreach($GLOBALS[__BDD] as $k1 => $v1){
         foreach($pragmas_dbs as $k2 => $v2){
@@ -607,8 +622,8 @@ function demarre_services(&$donnees_retournees){
                 $ret=$db->querySingle($v2);
                 $ddd[]=$k1 . ' ' . $v2;
             }catch(Exception $e){
-//                echo __FILE__ . ' ' . __LINE__ . ' $k1  = ' . $k1 . ' $v2='.var_export( $v2 , true) .'<pre>' . var_export($e->getMessage(),true) . '</pre><pre>' . var_export($GLOBALS[__BDD],true) . '</pre><pre>' . var_export($v2,true) . '</pre>' ;
-//                exit(0);
+                /* echo __FILE__ . ' ' . __LINE__ . ' $k1  = ' . $k1 . ' $v2='.var_export( $v2 , true) .'<pre>' . var_export($e->getMessage(),true) . '</pre><pre>' . var_export($GLOBALS[__BDD],true) . '</pre><pre>' . var_export($v2,true) . '</pre>' ;*/
+                /* exit(0);*/
             }
         }
     }
@@ -672,11 +687,16 @@ function appel_fonction(&$mat,$d,&$donnees_retournees,&$donnees_recues){
 
         /* chx_acces_utilisateur*/
         $nom_fichier_acces='___autorisations1_pour_acces_' . $_SESSION[_CA_]['chi_id_acces'] . '_.php';
+        
         if(is_file($nom_fichier_acces)){
+
             include($nom_fichier_acces);
+
         }else{
+
             include('___autorisations1_pour_acces_0_.php');
         }
+
         /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $__autorisations , true ) . '</pre>' ; exit(0);*/
 
     }else{

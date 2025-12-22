@@ -1,41 +1,250 @@
-class c_taches1{
-    moi='c_taches1';
-    DUN_DUNE_ELEMENT_GERE='d\'une tâche';
-    LISTE_DES_ELEMENTS_GERES='liste des tâches';
+import {tri_arbre1} from './tri_arbre1.js';
+class c_acces1{
+    moi='c_acces1';
+    DUN_DUNE_ELEMENT_GERE='d\'un accès';
+    LISTE_DES_ELEMENTS_GERES='liste des accès';
     /*
       filtres liste
     */
     tableau_des_filtres={
         "liste1" : {
             "$__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '$__num_page' ,"taille" : 8} ,
-            "T0_chi_id_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-             /* "T0_chx_utilisateur_tache" : {"type_filtre" :'INTEGER',défaut:'',masqué:false,nom:'utilisateur',taille:8}, */
-            "T0_chp_texte_tache" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'texte' ,"taille" : 8} ,
-            "T0_chp_priorite_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'priorite' ,"taille" : 8} ,
-            "T0_chp_priorite_tache2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'priorite &lt;' ,"taille" : 8}
+            "T0_chi_id_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_chx_groupe_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'groupe' ,"taille" : 8} ,
+            "T1_chp_nom_groupe" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom groupe' ,"taille" : 8} ,
+            "T0_chx_metier_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'metier' ,"taille" : 8} ,
+            "T2_chp_nom_metier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom metier' ,"taille" : 8}
         } ,
         "sous_liste1" : {
-            "$__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '$__num_page'} ,
-            "T0_chi_id_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id'} ,
-             /* "T0_chx_utilisateur_tache" : {"type_filtre" :'INTEGER',défaut:'',masqué:false,nom:'utilisateur',"taille" : 8}, */
-            "T0_chp_texte_tache" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'texte'} ,
-            "T0_chp_priorite_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'priorite'} ,
-            "T0_chp_priorite_tache2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'priorite &lt;'}
+            "$__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '$__num_page' ,"taille" : 8} ,
+            "T0_chi_id_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_chx_groupe_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'groupe' ,"taille" : 8} ,
+            "T1_chp_nom_groupe" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom groupe' ,"taille" : 8} ,
+            "T0_chx_metier_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'metier' ,"taille" : 8} ,
+            "T2_chp_nom_metier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom metier' ,"taille" : 8}
         }
     };
     fonction_liste='liste1';
     $filtres={};
     vv_ecran_liste_boutons_avant='';
+    #reference_arbre_du_menu=null;
+    /*
+      =============================================================================================================
+    */
+    enregister_le_menu_de_l_acces2( mat , d ){
+        __gi1.fermer_la_sous_fenetre( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    enregistrer_le_menu2( evenement , reference_arbre ){
+        let id_original=reference_arbre.reference_zone_triable.getAttribute( 'data-id_original_pour_tri' );
+        let chi_id_acces=parseInt( document.getElementById( id_original ).getAttribute( 'data-chi_id_acces' ) , 10 );
+        let le_json=JSON.stringify( reference_arbre.arbre ).replace( /rev_svg_dans_menu0/g , 'rev_svg_dans_menu1' );
+        let le_html=document.getElementById( id_original ).innerHTML.replace( /rev_svg_dans_menu0/g , 'rev_svg_dans_menu1' );
+        /*
+          afr this.moi n'est pas défini ici
+        */
+        let obj={
+            "__xac" : 'pm1(m1(n1(c_acces1),f1(enregister_le_menu_de_l_acces2())))' ,
+            "__xva" : {"chi_id_acces" : chi_id_acces ,"le_json" : le_json ,"le_html" : le_html}
+        };
+        __gi1.envoyer_un_message_au_worker( obj );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    trier_les_menus( mat , d ){
+        let o1='';
+        o1+='<h1>tri des menus</h1>';
+        o1+='<ul id="trier_les_genres">';
+        for(let i in le_message_du_serveur.__xva){
+            o1+='<li id="' + le_message_du_serveur.__xva[i]['T0.chi_id_genre'] + '">';
+            o1+=le_message_du_serveur.__xva[i]['T0.chp_nom_genre'] + '(' + le_message_du_serveur.__xva[i]['T0.chi_id_genre'] + ')';
+            o1+='</li>';
+        }
+        o1+='</ul>';
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.innerHTML=o1;
+        /* __contenu_modale => vv_sous_fenetre1 */
+        vv_sous_fenetre1.showModal();
+        let options={
+            "hauteur_max_en_vh" : 60 ,
+             /* entre 20 et 80 */
+            "largeur_max" : '400px' ,
+             /* 'calc(100% - 50px)', */
+            "afficher_le_bouton_supprimer" : 0 ,
+            "class_du_bouton_supprimer" : 'rev_bouton yy__0' ,
+            "arborescent" : 0 ,
+            "class_du_bouton_deplacer" : 'rev_bouton' ,
+            "boutons_du_menu" : [] ,
+            "class_du_bouton_menu" : 'rev_bouton' ,
+            "class_du_bouton_replier" : 'rev_bouton yy__2'
+        };
+        options.boutons_du_menu.push( {"libelle" : '💾 enregistrer cet ordre' ,"fonction" : this.enregistrer_l_ordre_des_genres2} );
+        options['afficher_le_bouton_editer']=0;
+        options['class_du_bouton_editer']='rev_bouton yy__xif';
+        new tri_arbre1( 'trier_les_genres' , options );
+        __gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    ajouter_une_branche_au_menu1( evenement , reference_arbre ){
+        let id_original=reference_arbre.reference_zone_triable.getAttribute( 'data-id_original_pour_tri' );
+        if(id_original === 'liste_des_menus'){
+            let max=0;
+            for( let i=0 ; i < reference_arbre.arbre.length ; i++ ){
+                if(reference_arbre.arbre[i].id_interne > max){
+                    max=reference_arbre.arbre[i].id_interne;
+                }
+            }
+            max++;
+            let a={
+                "id_interne" : max ,
+                "id_interne_parent" : 0 ,
+                "replie" : 0 ,
+                "contient_des_enfants" : 0 ,
+                "contenu" : "nouvelle branche " + max ,
+                "attributs" : {}
+            };
+            if(id_original === 'liste_des_menus'){
+                a["attributs"]={"data-liste_des_menus" : 1};
+            }
+            reference_arbre.arbre.splice( 0 , 0 , a );
+            reference_arbre.action_externe_sur_arbre( 'ajoute_branche' , reference_arbre.arbre );
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    action_sur_tri_menu1( reference_arbre , obj ){
+        console.log( 'dans action_sur_tri_menu1 ' , reference_arbre , obj );
+        switch (obj.type_deplacement){
+            case 'editer' :
+                if(obj.id_original === 'liste_des_menus'){
+                    for( let i=0 ; i < obj.arbre.length ; i++ ){
+                        if(obj.id_cible === obj.arbre[i].id_interne){
+                            let contenu_du_html='';
+                            if(obj.arbre[i].attributs.hasOwnProperty( 'data-liste_des_menus' ) && obj.arbre[i].attributs['data-liste_des_menus'] == 1){
+                                let nouveau_nom=window.prompt( "nouveau nom ?" , obj.arbre[i].contenu );
+                                if(nouveau_nom){
+                                    obj.arbre[i].contenu=nouveau_nom;
+                                    reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+                break;
+                
+            case 'supprimer' :
+                /*
+                  on ne peut supprimer que les branches qui ont été créées data-liste_des_menus
+                */
+                for( let i=0 ; i < obj.arbre.length ; i++ ){
+                    if(obj.id_cible === obj.arbre[i].id_interne){
+                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus'] == 1){
+                            obj.arbre.splice( i , 1 );
+                        }
+                        break;
+                    }
+                }
+                reference_arbre.action_externe_sur_arbre( 'supprimer_un_element' , obj.arbre );
+                break;
+                
+            case 'dedans' :
+                /* l'id_cible doit être une branche créée */
+                for( let i=0 ; i < obj.arbre.length ; i++ ){
+                    if(obj.id_cible === obj.arbre[i].id_interne){
+                        if(obj.arbre[i].attributs && obj.arbre[i].attributs['data-liste_des_menus'] == 1){
+                            reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+                        }else{
+                            reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre_avant );
+                        }
+                        break;
+                    }
+                }
+                break;
+                
+            case 'avant' : 
+            case 'apres' : reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre );
+                break;
+            default: break;
+        }
+        console.log( reference_arbre , obj );
+    }
+    /*
+      =============================================================================================================
+    */
+    obtenir_les_menus_d_un_acces( mat , d , ldds ){
+        let chi_id_acces=0;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_acces' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_acces=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let o1='';
+        o1+='<h1>tri des menus</h1>';
+        o1+='<div style="display:flex;flex-direction:row;justify-content: space-evenly;">';
+        o1+='  <div style="">';
+        o1+='    <ul id="liste_des_menus_ancien" data-chi_id_acces="' + chi_id_acces + '">';
+        if(ldds.__xva['cht_parametres_acces'] !== ''
+               && ldds.__xva['cht_parametres_acces'] !== null
+               && ( typeof ldds.__xva['cht_parametres_acces'] === 'string'
+                   || ldds.__xva['cht_parametres_acces'] instanceof String)
+        ){
+            o1+=ldds.__xva['cht_parametres_acces'].replace( /class="rev_svg_dans_menu0"/g , '' ).replace( /<svg /g , '<svg class="rev_svg_dans_menu0" ' );
+        }
+        o1+='    </ul>';
+        o1+='  </div>';
+        o1+='  <div style="">';
+        o1+='    <ul id="liste_des_menus" data-chi_id_acces="' + chi_id_acces + '">';
+        o1+=ldds.__xva.le_nouveau_html.replace( /class="rev_svg_dans_menu0"/g , '' ).replace( /<svg /g , '<svg class="rev_svg_dans_menu0"' );
+        o1+='    </ul>';
+        o1+='  </div>';
+        o1+='  <div id="edition_des_contitions_du_menu"></div>';
+        o1+='</div>';
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.innerHTML=o1;
+        /* __contenu_modale => vv_sous_fenetre1 */
+        vv_sous_fenetre1.showModal();
+        let id='liste_des_menus';
+        let el=document.getElementById( id );
+        let options={
+            "hauteur_max_en_vh" : 80 ,
+             /* entre 20 et 80 */
+            "largeur_max" : '400px' ,
+             /* 'calc(100% - 50px)', */
+            "afficher_le_bouton_supprimer" : 1 ,
+            "class_du_bouton_supprimer" : 'rev_bouton yy__0' ,
+            "fonction_appelee_apres_action" : this.action_sur_tri_menu1 ,
+            "arborescent" : 1 ,
+            "class_du_bouton_deplacer" : 'rev_bouton' ,
+            "boutons_du_menu" : [] ,
+            "class_du_bouton_menu" : 'rev_bouton' ,
+            "class_du_bouton_replier" : 'rev_bouton yy__2'
+        };
+        options.boutons_du_menu.push( {"libelle" : '+' ,"fonction" : this.ajouter_une_branche_au_menu1} );
+        options.boutons_du_menu.push( {"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2} );
+        options['afficher_le_bouton_editer']=1;
+        options['class_du_bouton_editer']='rev_bouton yy__3';
+        this.#reference_arbre_du_menu=new tri_arbre1( id , options );
+        __gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
     /*
       =============================================================================================================
     */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
-            case 'réordonner1' : 
-            case 'ajouter_01_a_la_tache' : 
-            case 'retrancher_01' : 
-            case 'priorite_a' : this.aller_a_la_page( null , null , '$__num_page' , '$__num_page' );
-                break;
+            case 'xxxxx' : break;
             default:
                 __gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
                 return({"__xst" : __xer});
@@ -68,8 +277,7 @@ class c_taches1{
                     this.$filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >'+__gi1.les_svg.nouveau_document+'</div>';
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(réordonner1())))" title="réordonner" >'+__gi1.les_svg.reordonner+'</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + __gi1.les_svg.nouveau_document + '</div>';
         }
     }
     /*
@@ -91,36 +299,37 @@ class c_taches1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_texte_tache'] === ''){
-            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseigné'} );
+        if(fo1['chp_nom_acces'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_texte_tache' ).focus();
+                document.getElementById( 'chp_nom_acces' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_priorite_tache'] === ''){
-            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être renseigné'} );
+        if(fo1['chx_groupe_acces'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "groupe" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_priorite_tache' ).focus();
+                document.getElementById( 'chx_groupe_acces' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=__gi1.__fnt1.entier_compris_entre( 0 , 99 , fo1['chp_priorite_tache'] , 'priorite' );
-        if(__test.__xst !== __xsu){
+        if(fo1['chx_metier_acces'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "metier" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_priorite_tache' ).focus();
+                document.getElementById( 'chx_metier_acces' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques début */
-        fo1['chi_id_tache']=fo1['chi_id_tache'] === '' ? ( null ) : ( parseInt( fo1['chi_id_tache'] , 10 ) );
-        fo1['chp_priorite_tache']=fo1['chp_priorite_tache'] === '' ? ( null ) : ( parseInt( fo1['chp_priorite_tache'] , 10 ) );
+        fo1['chi_id_acces']=fo1['chi_id_acces'] === '' ? ( null ) : ( parseInt( fo1['chi_id_acces'] , 10 ) );
+        fo1['chx_groupe_acces']=fo1['chx_groupe_acces'] === '' ? ( null ) : ( parseInt( fo1['chx_groupe_acces'] , 10 ) );
+        fo1['chx_metier_acces']=fo1['chx_metier_acces'] === '' ? ( null ) : ( parseInt( fo1['chx_metier_acces'] , 10 ) );
         /* conversion des données numériques fin */
         /*
           tout a été vérifié
@@ -153,24 +362,14 @@ class c_taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>texte</span>';
+        o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_texte_tache'] === undefined){
+        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_nom_acces'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=__gi1.__fnt1.boutons_edition1( 'chp_texte_tache' );
-        o1+='</div>\r\n';
-        var sty='';
-        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.cht_initialisation_menu'] === null){
-            sty=' style="height:5vh;" ';
-        }
-        o1+='            <textarea  id="chp_texte_tache" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_texte_tache'] );
-        o1+='</textarea>';
-        o1+='        </div>';
+        o1+='      <input  type="text" id="chp_nom_acces"  size="64"   maxlength="64"  value="' + __gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_nom_acces'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+=__gi1.__fnt1.boutons_edition_text( 'chp_nom_acces' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -178,26 +377,47 @@ class c_taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite</span>';
+        o1+='      <span>groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_priorite_tache'] === undefined){
+        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_groupe_acces'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input value="' + __gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_priorite_tache'] ) + '" type="number" size="32" maxlength="32" id="chp_priorite_tache" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='      <div class="yy_btn_en_ligne1">';
-        o1+='        <div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(0)))))">00</div>';
-        o1+='        <div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(20)))))">20</div>';
-        o1+='        <div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(50)))))">50</div>';
-        o1+='        <div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(80)))))">80</div>';
-        o1+='        <div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(99)))))">99</div>';
-        o1+='      </div>';
+        o1+='        <input type="hidden" value="';
+        o1+=le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_groupe_acces'];
+        o1+='"  id="chx_groupe_acces" />';
+        o1+='        <span id="chx_groupe_acces_libelle">';
+        o1+='(' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_groupe_acces'] + ') ';
+        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T1.chp_nom_groupe'] );
+        o1+='</span>';
+        o1+=__gi1.lien_parent( 'c_groupes1' , 'chx_groupe_acces' , 'chx_groupe_acces_libelle' );
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_tache" value="' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chi_id_tache'] + '">';
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>metier</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_metier_acces'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <input type="hidden" value="';
+        o1+=le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_metier_acces'];
+        o1+='"  id="chx_metier_acces" />';
+        o1+='        <span id="chx_metier_acces_libelle">';
+        o1+='(' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_metier_acces'] + ') ';
+        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T2.chp_nom_metier'] );
+        o1+='</span>';
+        o1+=__gi1.lien_parent( 'c_metiers1' , 'chx_metier_acces' , 'chx_metier_acces_libelle' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='      <input type="hidden" id="chi_id_acces" value="' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chi_id_acces'] + '">';
         /*
           =====================================================================================================
         */
@@ -238,12 +458,10 @@ class c_taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>texte</span>';
+        o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea disabled id="chp_texte_tache" rows="2"  cols="50" >' + __gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chp_texte_tache'] ) + '</textarea>';
-        o1+='        </div>';
+        o1+='      <input disabled  type="text" id="chp_nom_acces"  size="64"   maxlength="64"  value="' + __gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chp_nom_acces'] ) + '"   />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -251,16 +469,39 @@ class c_taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite</span>';
+        o1+='      <span>groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="chp_priorite_tache"  value="' + __gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chp_priorite_tache'] ) + '" />';
+        o1+='        <input type="hidden" value="';
+        o1+=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_groupe_acces'];
+        o1+='"  id="chx_groupe_acces" />';
+        o1+='        <span>';
+        o1+='(' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_groupe_acces'] + ') ';
+        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T1.chp_nom_groupe'] );
+        o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_tache" value="' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chi_id_tache'] + '" />';
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>metier</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="hidden" value="';
+        o1+=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_metier_acces'];
+        o1+='"  id="chx_metier_acces" />';
+        o1+='        <span>';
+        o1+='(' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_metier_acces'] + ') ';
+        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T2.chp_nom_metier'] );
+        o1+='</span>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='      <input type="hidden" id="chi_id_acces" value="' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chi_id_acces'] + '" />';
         /*
           =====================================================================================================
         */
@@ -303,35 +544,36 @@ class c_taches1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_texte_tache'] === ''){
-            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseigné'} );
+        if(fo1['chp_nom_acces'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_texte_tache' ).focus();
+                document.getElementById( 'chp_nom_acces' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_priorite_tache'] === ''){
-            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être renseigné'} );
+        if(fo1['chx_groupe_acces'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "groupe" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_priorite_tache' ).focus();
+                document.getElementById( 'chx_groupe_acces' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=__gi1.__fnt1.entier_compris_entre( 0 , 99 , fo1['chp_priorite_tache'] , 'priorite' );
-        if(__test.__xst !== __xsu){
+        if(fo1['chx_metier_acces'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "metier" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_priorite_tache' ).focus();
+                document.getElementById( 'chx_metier_acces' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques début */
-        fo1['chp_priorite_tache']=fo1['chp_priorite_tache'] === '' ? ( null ) : ( parseInt( fo1['chp_priorite_tache'] , 10 ) );
+        fo1['chx_groupe_acces']=fo1['chx_groupe_acces'] === '' ? ( null ) : ( parseInt( fo1['chx_groupe_acces'] , 10 ) );
+        fo1['chx_metier_acces']=fo1['chx_metier_acces'] === '' ? ( null ) : ( parseInt( fo1['chx_metier_acces'] , 10 ) );
         /* conversion des données numériques fin */
         /*
           tout a été vérifié
@@ -364,43 +606,90 @@ class c_taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>texte</span>';
+        o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <div>\r\n';
-        o1+='              ' + __gi1.__fnt1.boutons_edition1( 'chp_texte_tache' );
-        o1+='            </div>\r\n';
-        o1+='            <textarea id="chp_texte_tache" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_texte_tache' )){
-            o1+=__gi1.fi2( dupliquer['T0.chp_texte_tache'] );
+        o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_nom_acces" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_acces' )){
+            o1+=__gi1.fi2( dupliquer['T0.chp_nom_acces'] );
         }else{
             o1+='';
         }
-        o1+='</textarea>';
-        o1+='        </div>';
+        o1+='" />';
+        o1+=__gi1.__fnt1.boutons_edition_text( 'chp_nom_acces' );
         o1+='    </div>';
         o1+='  </div>';
         /*
-          =====================================================================================================
+          
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite</span>';
+        o1+='      <span>groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="number"  size="2" maxlength="2" max="99" style="width:4em;" id="chp_priorite_tache" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_priorite_tache' )){
-            o1+=__gi1.fi2( dupliquer['T0.chp_priorite_tache'] );
+        o1+='        <input ';
+        o1+=' id="chx_groupe_acces" ';
+        o1+=' type="hidden" ';
+        o1+=' value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_groupe_acces' )){
+            o1+=__gi1.fi2( dupliquer['T0.chx_groupe_acces'] );
         }else{
-            o1+='0';
+            o1+='';
         }
-        o1+='"/>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(0)))))">00</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(20)))))">20</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(50)))))">50</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(80)))))">80</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(99)))))">99</div>';
+        o1+='"';
+        o1+=' />';
+        o1+='        <span id="chx_groupe_acces_libelle">';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_groupe_acces' )){
+            if(dupliquer['T0.chx_groupe_acces'] === null){
+                o1+='*indéfini';
+            }else{
+                o1+='(' + dupliquer['T0.chx_groupe_acces'] + ') ';
+                o1+=__gi1.fi2( dupliquer['T1.chp_nom_groupe'] );
+            }
+        }else{
+            o1+='*indéfini';
+        }
+        o1+='</span>';
+        /*
+          
+        */
+        o1+=__gi1.lien_parent( 'c_groupes1' , 'chx_groupe_acces' , 'chx_groupe_acces_libelle' );
+        /*  */
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>metier</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input ';
+        o1+=' id="chx_metier_acces" ';
+        o1+=' type="hidden" ';
+        o1+=' value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_metier_acces' )){
+            o1+=__gi1.fi2( dupliquer['T0.chx_metier_acces'] );
+        }else{
+            o1+='';
+        }
+        o1+='"';
+        o1+=' />';
+        o1+='        <span id="chx_metier_acces_libelle">';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_metier_acces' )){
+            if(dupliquer['T0.chx_metier_acces'] === null){
+                o1+='*indéfini';
+            }else{
+                o1+='(' + dupliquer['T0.chx_metier_acces'] + ') ';
+                o1+=__gi1.fi2( dupliquer['T2.chp_nom_metier'] );
+            }
+        }else{
+            o1+='*indéfini';
+        }
+        o1+='</span>';
+        o1+=__gi1.lien_parent( 'c_metiers1' , 'chx_metier_acces' , 'chx_metier_acces_libelle' );
+        /*  */
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -497,14 +786,20 @@ class c_taches1{
                         }
                     }
                     o1+='        <div>\r\n';
-                    o1+='            <input type="text" id="' + i + '" value="' + __gi1.fi1( this.$filtres[this.fonction_liste][i] ) + '" size="8" maxlength="64" autocapitalize="off" style="' + bck + '" />\r\n';
+                    o1+='          <input ';
+                    o1+='           type="text" id="' + i + '" ';
+                    o1+='           value="' + __gi1.fi1( this.$filtres[this.fonction_liste][i] ) + '" ';
+                    o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
+                    o1+='           maxlength="64" ';
+                    o1+='           autocapitalize="off" ';
+                    o1+='           style="' + bck + '" />';
                     if(this.$filtres[this.fonction_liste][i] && this.$filtres[this.fonction_liste][i] !== ''){
                         o1+='            <div class="rev_bouton yy__4" data-rev_click="';
                         o1+='m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(' + i + '),valeur(valeur_constante()))))';
                         o1+='">x</div>';
                     }
                     o1+='        </div>\r\n';
-                    o1+='    </div>\r\n';
+                    o1+='    </div>';
                 }
             }
             o1+='   <div>';
@@ -728,10 +1023,10 @@ class c_taches1{
                 $parametres+='m1(n1(__interface1),f1(choisir_dans_sous_fenetre1(';
                 $parametres+=' $nom_champ_dans_parent1(' + this.$nom_champ_dans_parent1 + ')';
                 $parametres+=' $nom_libelle_dans_parent1(' + this.$nom_libelle_dans_parent1 + ')';
-                $parametres+=' id1(' + elem['T0.chi_id_tache'] + ')';
+                $parametres+=' id1(' + elem['T0.chi_id_acces'] + ')';
                 let libelle1='';
-                libelle1+='(' + elem['T0.chi_id_tache'] + ') ';
-                libelle1+=elem['T0.chp_texte_tache'] ? ( ' , ' + elem['T0.chp_texte_tache'] ) : ( '' );
+                libelle1+='(' + elem['T0.chi_id_acces'] + ') ';
+                libelle1+=elem['T0.chp_nom_acces'] ? ( ' , ' + elem['T0.chp_nom_acces'] ) : ( '' );
                 $parametres+=' libelle1(\'' + __gi1.fi1( libelle1 ) + '\')';
                 $parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + $parametres + '">=&gt;</div>';
@@ -739,29 +1034,43 @@ class c_taches1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_tache'] !== null){
-                    lst+=elem['T0.chi_id_tache'];
+                if(elem['T0.chi_id_acces'] !== null){
+                    lst+=elem['T0.chi_id_acces'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_texte_tache'] !== null){
-                    lst+=elem['T0.chp_texte_tache'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                if(elem['T0.chp_nom_acces'] !== null){
+                    lst+=elem['T0.chp_nom_acces'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_priorite_tache'] !== null){
-                    lst+=elem['T0.chp_priorite_tache'];
+                if(elem['T0.chx_groupe_acces'] !== null){
+                    lst+=elem['T0.chx_groupe_acces'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_priorite_tache'] !== null){
-                    lst+=elem['T0.chp_priorite_tache'];
+                if(elem['T1.chp_nom_groupe'] !== null){
+                    lst+=elem['T1.chp_nom_groupe'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chx_metier_acces'] !== null){
+                    lst+=elem['T0.chx_metier_acces'];
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T2.chp_nom_metier'] !== null){
+                    lst+=elem['T2.chp_nom_metier'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -772,9 +1081,11 @@ class c_taches1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+='<th>id</th>';
-                o1+='<th>texte</th>';
-                o1+='<th>priorite</th>';
-                o1+='<th>priorite</th>';
+                o1+='<th>nom</th>';
+                o1+='<th>groupe</th>';
+                o1+='<th>nom groupe</th>';
+                o1+='<th>metier</th>';
+                o1+='<th>nom metier</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -795,51 +1106,87 @@ class c_taches1{
             for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){
                 let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];
                 lst+='<tr>';
+                /*#
+                                                            Si l'utilisateur courant est ... 
+                                                               il peut gérer le menu pour l'acces(chi_id)
+                  dans le projet(rev), utilisateur courant => dev(1) admin(2) autres 
+                         1/2              dev(1)            =>  1       1        0
+                         1/2              adm(2)            =>  0       0        1
+                         n                dev(1)            =>  0       1        0
+                         n                adm(2)            =>  0       0        1
+                */
+                let projet_1_ou_2=false;
+                if(__gi1._CA_.slice( -7 ) === '_rev_1_' || __gi1._CA_.slice( -7 ) === '_rev_2_'){
+                    projet_1_ou_2=true;
+                }
+                let boutons_activés=false;
+                if(projet_1_ou_2 === true
+                       && le_message_du_serveur.__xva.chi_id_utilisateur === 1
+                       && (elem['T0.chi_id_acces'] === 1
+                           || elem['T0.chi_id_acces'] === 2)
+                ){
+                    boutons_activés=true;
+                }else if(projet_1_ou_2 === true && le_message_du_serveur.__xva.chi_id_utilisateur === 2 && elem['T0.chi_id_acces'] > 2){
+                    boutons_activés=true;
+                }else if(projet_1_ou_2 === false && le_message_du_serveur.__xva.chi_id_utilisateur === 1 && elem['T0.chi_id_acces'] === 2){
+                    boutons_activés=true;
+                }else if(projet_1_ou_2 === false && le_message_du_serveur.__xva.chi_id_utilisateur === 2 && elem['T0.chi_id_acces'] > 2){
+                    boutons_activés=true;
+                }
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
                 /* yy_col_act_td1 */
-                /*  */
-                lst+='<div class="rev_b_svg yy__2 " data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + __gi1.les_svg.poubelle + '</div>';
-                /*  */
-                lst+=' <div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + __gi1.les_svg.editer + '</div>';
-                /*  */
-                lst+=' <div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(priorite_a($chi_id_tache(' + elem['T0.chi_id_tache'] + '),$valeur(99)))))"  title="99">99</div>';
-                /*  */
-                lst+=' <div class="rev_bouton yy__1" data-indicateur_graphique="0' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(priorite_a($chi_id_tache(' + elem['T0.chi_id_tache'] + '),$valeur(0)))))';
-                lst+='" title="0">00</div>';
-                /*  */
-                lst+='<div class="rev_bouton yy__4" data-indicateur_graphique="+1' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(ajouter_01_a_la_tache($chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))';
-                lst+='" title="+1">+1</div>';
-                /*  */
-                lst+='<div class="rev_bouton yy__4" data-indicateur_graphique="-1' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(retrancher_01($chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))';
-                lst+='"  title="-1">-1</div>';
-                /*  */
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + __gi1.les_svg.dupliquer + '</div>';
-                /*  */
+                if(boutons_activés === false){
+                    lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + __gi1.les_svg.poubelle + '</div>';
+                    lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + __gi1.les_svg.editer + '</div>';
+                    lst+='<div class="rev_bouton yy__1 yy__1_inactif">menus</div>';
+                }else{
+                    lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">' + __gi1.les_svg.poubelle + '</div>';
+                    lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">' + __gi1.les_svg.editer + '</div>';
+                    lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(obtenir_les_menus_d_un_acces(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">menus</div>';
+                }
                 lst+='</div>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_tache'] !== null){
-                    lst+=elem['T0.chi_id_tache'];
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="">';
-                if(elem['T0.chp_texte_tache'] !== null){
-                    lst+=__gi1.fi2( elem['T0.chp_texte_tache'].substr( 0 , 200 ) );
+                if(elem['T0.chi_id_acces'] !== null){
+                    lst+=elem['T0.chi_id_acces'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_priorite_tache'] !== null){
-                    lst+=elem['T0.chp_priorite_tache'];
+                if(elem['T0.chp_nom_acces'] !== null){
+                    lst+=__gi1.fi2( elem['T0.chp_nom_acces'] );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chx_groupe_acces'] !== null){
+                    lst+=elem['T0.chx_groupe_acces'];
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T1.chp_nom_groupe'] !== null){
+                    lst+=__gi1.fi2( elem['T1.chp_nom_groupe'] );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chx_metier_acces'] !== null){
+                    lst+=elem['T0.chx_metier_acces'];
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T2.chp_nom_metier'] !== null){
+                    lst+=__gi1.fi2( elem['T2.chp_nom_metier'] );
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -850,8 +1197,11 @@ class c_taches1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+='<th>id</th>';
-                o1+='<th>texte</th>';
-                o1+='<th>priorite</th>';
+                o1+='<th>nom</th>';
+                o1+='<th>groupe</th>';
+                o1+='<th>nom groupe</th>';
+                o1+='<th>métier</th>';
+                o1+='<th>nom métier</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -866,4 +1216,4 @@ class c_taches1{
       =============================================================================================================
     */
 }
-export{c_taches1 as c_taches1};
+export{c_acces1 as c_acces1};

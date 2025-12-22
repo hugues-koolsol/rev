@@ -15,7 +15,7 @@ class c_requetes1{
             "T0_cht_rev_requete" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
             "T0_chi_id_requete2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &lt;=' ,"taille" : 8} ,
             "T0_cht_commentaire_requete" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'commentaire' ,"taille" : 8} ,
-            "T0_che_est_souche_requete" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'est souche' ,"taille" : 8},
+            "T0_che_est_souche_requete" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'est souche' ,"taille" : 8} ,
             "T0_chp_table_reference_requete" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'tbl ref' ,"taille" : 8}
         } ,
         "sous_liste1" : {
@@ -25,20 +25,17 @@ class c_requetes1{
             "T0_cht_rev_requete" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
             "T0_chi_id_requete2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &lt;=' ,"taille" : 8} ,
             "T0_cht_commentaire_requete" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'commentaire' ,"taille" : 8} ,
-            "T0_che_est_souche_requete" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'est souche' ,"taille" : 8},
+            "T0_che_est_souche_requete" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'est souche' ,"taille" : 8} ,
             "T0_chp_table_reference_requete" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'tbl ref' ,"taille" : 8}
         }
     };
     fonction_liste='liste1';
     $filtres={};
     vv_ecran_liste_boutons_avant='';
-    
-    
     /*
       =============================================================================================================
     */
     exemple_d_appel( mat , d , le_message_du_serveur=null ){
-     
         let l01=mat.length;
         let chi_id_requete=0;
         let cht_rev_requete='';
@@ -47,30 +44,27 @@ class c_requetes1{
             if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_requete=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'cht_rev_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                cht_rev_requete=mat[i + 1][1].replace(/¶LF¶/g,'\n');
+                cht_rev_requete=mat[i + 1][1].replace( /¶LF¶/g , '\n' );
             }else if(mat[i][1] === 'chp_type_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                chp_type_requete=mat[i + 1][1].replace(/¶LF¶/g,'\n');
+                chp_type_requete=mat[i + 1][1].replace( /¶LF¶/g , '\n' );
             }
         }
-        if(!( cht_rev_requete!=='' && chi_id_requete>0) ){
-            __gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : __gi1.nl2() } );
+        if(!(cht_rev_requete !== '' && chi_id_requete > 0)){
+            __gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : __gi1.nl2()} );
             return({"__xst" : __xer});
         }
-        
         let obj1=__gi1.__rev1.rev_tm( cht_rev_requete );
         if(obj1.__xst !== __xsu){
-            __gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : __gi1.nl2() } );
+            __gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : __gi1.nl2()} );
             return({"__xst" : __xer});
         }
         let o1='';
-        o1+='<h1>exemple d\'appel '+chp_type_requete+'('+chi_id_requete+')</h1>';
-        
+        o1+='<h1>exemple d\'appel ' + chp_type_requete + '(' + chi_id_requete + ')</h1>';
         let mat2=obj1.__xva;
-        
         let tab_conditions=[];
         for( let i=1 ; i < mat2.length ; i++ ){
             if(mat2[i][1] === 'conditions' && mat2[i][2] === 'f' && mat2[i][8] > 0){
-                for( let j=i + 1 ; j < mat2.length && mat2[j][3]>mat2[i][3] ; j++ ){
+                for( let j=i + 1 ; j < mat2.length && mat2[j][3] > mat2[i][3] ; j++ ){
                     if(mat2[j][1] === 'champ' && mat2[j][2] === 'f' && mat2[j][8] > 0){
                         if(mat2[j][8] === 2){
                             tab_conditions.push( [mat2[j + 1][1] + '_' + mat2[j + 2][1],mat2[j + 2][1]] );
@@ -87,42 +81,37 @@ class c_requetes1{
         let tab_valeurs=[];
         for( let i=1 ; i < mat2.length ; i++ ){
             if(mat2[i][1] === 'valeurs' && mat2[i][2] === 'f' && mat2[i][8] > 0){
-                for( let j=i + 1 ; j < mat2.length && mat2[j][3]>mat2[i][3] ; j++ ){
-                    if(mat2[j][1] === 'champ' && mat2[j][2] === 'f' ){
+                for( let j=i + 1 ; j < mat2.length && mat2[j][3] > mat2[i][3] ; j++ ){
+                    if(mat2[j][1] === 'champ' && mat2[j][2] === 'f'){
                         if(mat2[j][8] === 2){
-                            tab_valeurs.push([ mat2[j + 1][1] + '_' +  mat2[j + 2][1],  mat2[j + 2][1]] );
+                            tab_valeurs.push( [mat2[j + 1][1] + '_' + mat2[j + 2][1],mat2[j + 2][1]] );
                         }else if(mat2[j][8] === 1){
-                            tab_valeurs.push([ mat2[j + 1][1] ,  mat2[j + 1][1] ]);
+                            tab_valeurs.push( [mat2[j + 1][1],mat2[j + 1][1]] );
                         }else{
                             __gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : __gi1.nl2()} );
                             return({"__xst" : __xer});
                         }
-
                     }
                 }
             }
         }
-     
-        
-        
-        
         if(chp_type_requete === 'select'){
             o1+=' <div class="rev_b_svg yy__1 rev_b_svg" data-rev_click="m1(n1(__fnt1),f1(copier_le_contenu1(zone_source(exemple_d_appel))))" title="copier le contenu" >' + __gi1.les_svg.copier_tout + '</div>\r\n';
             o1+='<br/>\r\n';
             o1+='<textarea rows="35" id="exemple_d_appel" style="border:1px red solid;">';
             /*
             */
-            o1+='        $tt'+chi_id_requete+'=$this->sql0->sql_iii(\r\n';
-            o1+='            '+chi_id_requete+',\r\n';
+            o1+='        $tt' + chi_id_requete + '=$this->sql0->sql_iii(\r\n';
+            o1+='            ' + chi_id_requete + ',\r\n';
             o1+='            array(/**/\r\n';
-            for(let i=0;i<tab_conditions.length;i++){
-                o1+='                \''+tab_conditions[i][0]+'\' => $form[\''+tab_conditions[i][1]+'\'],\r\n';
+            for( let i=0 ; i < tab_conditions.length ; i++ ){
+                o1+='                \'' + tab_conditions[i][0] + '\' => $form[\'' + tab_conditions[i][1] + '\'],\r\n';
             }
             o1+='            ),\r\n';
             o1+='            $donnees_retournees\r\n';
             o1+='        );\r\n';
             o1+='\r\n';
-            o1+='        if($tt'+chi_id_requete+'[__xst] !== __xsu){\r\n';
+            o1+='        if($tt' + chi_id_requete + '[__xst] !== __xsu){\r\n';
             o1+='\r\n';
             o1+='            $donnees_retournees[__xsi][__xer][]=__METHOD__ . \' [\' . __LINE__ . \']\';\r\n';
             o1+='            return;\r\n';
@@ -130,16 +119,14 @@ class c_requetes1{
             o1+='        }\r\n';
             o1+='/*\r\n';
             o1+='//  en sortie\r\n';
-            for(let i=0;i<tab_valeurs.length;i++){
-                o1+='      $tt'+chi_id_requete+'[__xva][0][\''+tab_valeurs[i][0]+'\'],\r\n';
+            for( let i=0 ; i < tab_valeurs.length ; i++ ){
+                o1+='      $tt' + chi_id_requete + '[__xva][0][\'' + tab_valeurs[i][0] + '\'],\r\n';
             }
             o1+='*/\r\n';
             /*
             */
             o1+='</textarea>';
-            
         }else if(chp_type_requete === 'insert'){
-         
             o1+=' <div class="rev_b_svg yy__1 rev_b_svg" data-rev_click="m1(n1(__fnt1),f1(copier_le_contenu1(zone_source(exemple_d_appel))))" title="copier le contenu" >' + __gi1.les_svg.copier_tout + '</div>\r\n';
             o1+='<br/>\r\n';
             o1+='<textarea rows="35" id="exemple_d_appel" style="border:1px red solid;">';
@@ -147,84 +134,74 @@ class c_requetes1{
             */
             o1+='        $donnees_sql=array( array(\r\n';
             o1+='                    /**/\r\n';
-            for(let i=0;i<tab_valeurs.length;i++){
-                o1+='                    \''+tab_valeurs[i][1]+'\' => $form[\''+tab_valeurs[i][1]+'\'],\r\n';
+            for( let i=0 ; i < tab_valeurs.length ; i++ ){
+                o1+='                    \'' + tab_valeurs[i][1] + '\' => $form[\'' + tab_valeurs[i][1] + '\'],\r\n';
             }
             o1+='                ));\r\n';
             o1+='\r\n';
-            o1+='        $tt'+chi_id_requete+'=$this->sql0->sql_iii(\r\n';
-            o1+='             /*sql_'+chi_id_requete+'()*/ '+chi_id_requete+',\r\n';
+            o1+='        $tt' + chi_id_requete + '=$this->sql0->sql_iii(\r\n';
+            o1+='             /*sql_' + chi_id_requete + '()*/ ' + chi_id_requete + ',\r\n';
             o1+='            $donnees_sql,\r\n';
             o1+='            $donnees_retournees\r\n';
             o1+='        );\r\n';
             o1+='\r\n';
-            o1+='        if($tt'+chi_id_requete+'[__xst] === __xsu && $tt'+chi_id_requete+'[\'changements\'] === 1){\r\n';
+            o1+='        if($tt' + chi_id_requete + '[__xst] === __xsu && $tt' + chi_id_requete + '[\'changements\'] === 1){\r\n';
             o1+='            /*AFR*/\r\n';
             o1+='        }\r\n';
             o1+='\r\n';
             /*
             */
             o1+='</textarea>';
-            
         }else if(chp_type_requete === 'update'){
-            
             o1+=' <div class="rev_b_svg yy__1 rev_b_svg" data-rev_click="m1(n1(__fnt1),f1(copier_le_contenu1(zone_source(exemple_d_appel))))" title="copier le contenu" >' + __gi1.les_svg.copier_tout + '</div>\r\n';
             o1+='<br/>\r\n';
             o1+='<textarea rows="35" id="exemple_d_appel" style="border:1px red solid;">';
-            o1+='            $tt'+chi_id_requete+'=$this->sql0->sql_iii(\r\n';
-            o1+='                 /*sql_'+chi_id_requete+'()*/ '+chi_id_requete+',\r\n';
+            o1+='            $tt' + chi_id_requete + '=$this->sql0->sql_iii(\r\n';
+            o1+='                 /*sql_' + chi_id_requete + '()*/ ' + chi_id_requete + ',\r\n';
             o1+='                array(\r\n';
             o1+='                    /**/\r\n';
-            for(let i=0;i<tab_conditions.length;i++){
-                o1+='                    \'c_'+tab_conditions[i][1]+'\' => $form[\''+tab_conditions[i][1]+'\'],\r\n';
+            for( let i=0 ; i < tab_conditions.length ; i++ ){
+                o1+='                    \'c_' + tab_conditions[i][1] + '\' => $form[\'' + tab_conditions[i][1] + '\'],\r\n';
             }
-            for(let i=0;i<tab_valeurs.length;i++){
-                o1+='                    \'n_'+tab_valeurs[i][1]+'\' => $form[\''+tab_valeurs[i][1]+'\'],\r\n';
+            for( let i=0 ; i < tab_valeurs.length ; i++ ){
+                o1+='                    \'n_' + tab_valeurs[i][1] + '\' => $form[\'' + tab_valeurs[i][1] + '\'],\r\n';
             }
             o1+='                ),\r\n';
             o1+='                $donnees_retournees\r\n';
             o1+='            );\r\n';
             o1+='\r\n';
-            o1+='            if($tt'+chi_id_requete+'[__xst] !== __xsu){\r\n';
+            o1+='            if($tt' + chi_id_requete + '[__xst] !== __xsu){\r\n';
             o1+='\r\n';
             o1+='                return;\r\n';
             o1+='\r\n';
             o1+='            }\r\n';
             o1+='</textarea>';
-            
         }else if(chp_type_requete === 'delete'){
-
             o1+=' <div class="rev_b_svg yy__1 rev_b_svg" data-rev_click="m1(n1(__fnt1),f1(copier_le_contenu1(zone_source(exemple_d_appel))))" title="copier le contenu" >' + __gi1.les_svg.copier_tout + '</div>\r\n';
             o1+='<br/>\r\n';
             o1+='<textarea rows="35" id="exemple_d_appel" style="border:1px red solid;">';
-            o1+='        $tt'+chi_id_requete+'=$this->sql0->sql_iii(\r\n';
-            o1+='             /*sql_'+chi_id_requete+'()*/ '+chi_id_requete+',\r\n';
+            o1+='        $tt' + chi_id_requete + '=$this->sql0->sql_iii(\r\n';
+            o1+='             /*sql_' + chi_id_requete + '()*/ ' + chi_id_requete + ',\r\n';
             o1+='            array(/**/\r\n';
-            for(let i=0;i<tab_conditions.length;i++){
-                o1+='                    \''+tab_conditions[i][1]+'\' => $form[\''+tab_conditions[i][1]+'\'],\r\n';
+            for( let i=0 ; i < tab_conditions.length ; i++ ){
+                o1+='                    \'' + tab_conditions[i][1] + '\' => $form[\'' + tab_conditions[i][1] + '\'],\r\n';
             }
             o1+='            ),\r\n';
             o1+='            $donnees_retournees\r\n';
             o1+='        );\r\n';
             o1+='\r\n';
-            o1+='        if($tt'+chi_id_requete+'[__xst] !== __xsu){\r\n';
+            o1+='        if($tt' + chi_id_requete + '[__xst] !== __xsu){\r\n';
             o1+='\r\n';
             o1+='            return;\r\n';
             o1+='\r\n';
             o1+='        }\r\n';
             o1+='</textarea>';
-            
         }
-        
-        
-        
-        
-        o1+='<pre>'+cht_rev_requete+'</pre>';
+        o1+='<pre>' + cht_rev_requete + '</pre>';
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         vv_sous_fenetre1.innerHTML=o1;
         /* __contenu_modale => vv_sous_fenetre1 */
         vv_sous_fenetre1.showModal();
-   
     }
     /*
       =============================================================================================================
@@ -358,7 +335,7 @@ class c_requetes1{
                 }
             }
             this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(c_concevoir_une_requete1),f1(page_requete1()))">+SQL</div>';
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >'+__gi1.les_svg.nouveau_document+'</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + __gi1.les_svg.nouveau_document + '</div>';
         }
     }
     /*
@@ -1223,7 +1200,7 @@ class c_requetes1{
                 /*  */
                 lst+='<div class="rev_b_svg yy__1" data-rev_click="';
                 lst+='m1(n1(' + this.moi + '),f1(page_nouveau_numero_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '))))';
-                lst+='" title="attribuer un autre numéro" >'+__gi1.les_svg.renuméroter+'</div>';
+                lst+='" title="attribuer un autre numéro" >' + __gi1.les_svg.renuméroter + '</div>';
                 /*  */
                 lst+='<div class="rev_b_svg yy__2" data-rev_click="';
                 lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))';
@@ -1240,11 +1217,10 @@ class c_requetes1{
                 lst+='<div class="rev_bouton yy__4" data-rev_click="';
                 lst+='m1(n1(' + this.moi + '),f1(exemple_d_appel(';
                 lst+='chi_id_requete(' + elem['T0.chi_id_requete'] + ')';
-                lst+='cht_rev_requete(\'' + __gi1.fi2(elem['T0.cht_rev_requete']) + '\')';
-                lst+='chp_type_requete(\'' + __gi1.fi2(elem['T0.chp_type_requete']) + '\')';
+                lst+='cht_rev_requete(\'' + __gi1.fi2( elem['T0.cht_rev_requete'] ) + '\')';
+                lst+='chp_type_requete(\'' + __gi1.fi2( elem['T0.chp_type_requete'] ) + '\')';
                 lst+=')))';
                 lst+='">PHP</div>';
-                
                 lst+='</div>';
                 lst+='</td>';
                 /*
@@ -1261,9 +1237,9 @@ class c_requetes1{
                     lst+=__gi1.fi2( elem['T0.chp_type_requete'] );
                 }
                 if(elem['T0.chp_table_reference_requete'] !== null){
-                    lst+= '<br /><span class="yy__3">' + __gi1.fi2( elem['T0.chp_table_reference_requete'] ) + '</span>';
+                    lst+='<br /><span class="yy__3">' + __gi1.fi2( elem['T0.chp_table_reference_requete'] ) + '</span>';
                 }else{
-                    lst+= '<br /><span class="yy__0">aucune</span>';
+                    lst+='<br /><span class="yy__0">aucune</span>';
                 }
                 if(elem['T0.che_est_souche_requete'] !== null){
                     lst+='<br /><input type="range" disabled id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + elem['T0.che_est_souche_requete'] + '">';
@@ -1274,7 +1250,7 @@ class c_requetes1{
                 if(elem['T0.cht_rev_requete'] !== null){
                     lst+='<td id="T0.cht_rev_requete_' + elem['T0.chi_id_requete'] + '" style="max-width:360px;overflow:hidden;" title="' + __gi1.fi2( elem['T0.cht_rev_requete'] ) + '">';
                     let cmd='m1(n1(_fonctions1),f1(ajoute_le_contenu_du_titre(T0.cht_rev_requete_' + elem['T0.chi_id_requete'] + ')))';
-                    lst+='<div  class="rev_b_svg" data-rev_click="' + cmd + '">'+__gi1.les_svg.agrandir+'</div>';
+                    lst+='<div  class="rev_b_svg" data-rev_click="' + cmd + '">' + __gi1.les_svg.agrandir + '</div>';
                     lst+=__gi1.fi2( elem['T0.cht_rev_requete'].substr( 0 , 200 ) );
                 }else{
                     lst+='<td>';

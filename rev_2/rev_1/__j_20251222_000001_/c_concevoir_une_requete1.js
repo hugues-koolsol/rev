@@ -76,8 +76,8 @@ class c_concevoir_une_requete1{
                         "cht_matrice_requete" : obj1.__xva ,
                         "cht_commentaire_requete" : document.getElementById( 'cht_commentaire_requete' ).value ,
                         "chi_id_requete" : chi_id_requete ,
-                        "che_est_souche_requete" : document.getElementById( 'che_est_souche_requete' ).value,
-                        "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value,
+                        "che_est_souche_requete" : document.getElementById( 'che_est_souche_requete' ).value ,
+                        "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value
                     }
                 };
                 __gi1.envoyer_un_message_au_worker( obj );
@@ -911,9 +911,9 @@ class c_concevoir_une_requete1{
             }
             contenu=contenu.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
             var matriceFonction=__gi1.__rev1.rev_tm( contenu );
-            if(matriceFonction.__xst===__xsu){
+            if(matriceFonction.__xst === __xsu){
                 let obj1=__gi1.__rev1.matrice_vers_source_rev1( matriceFonction.__xva , 0 , true , 1 );
-                if(obj1.__xst===__xsu){
+                if(obj1.__xst === __xsu){
                     t+=obj1.__xva;
                 }else{
                     t+=contenu;
@@ -923,11 +923,11 @@ class c_concevoir_une_requete1{
             }
         }else{
             if(this.#obj_webs[destination].hasOwnProperty( '0' ) && this.#obj_webs[destination]['0'].hasOwnProperty( 'formule' )){
-                let contenu=this.#obj_webs[destination][0].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' )
+                let contenu=this.#obj_webs[destination][0].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
                 var matriceFonction=__gi1.__rev1.rev_tm( contenu );
-                if(matriceFonction.__xst===__xsu){
+                if(matriceFonction.__xst === __xsu){
                     let obj1=__gi1.__rev1.matrice_vers_source_rev1( matriceFonction.__xva , 0 , true , 1 );
-                    if(obj1.__xst===__xsu){
+                    if(obj1.__xst === __xsu){
                         t+=obj1.__xva;
                     }else{
                         t+=contenu;
@@ -2065,7 +2065,13 @@ class c_concevoir_une_requete1{
                     }
                     var obj4=this.#transformer_requete_en_fonction_php( this.#obj_webs.type_de_requete , obj3 , id_requete , obj1.__xva );
                     if(obj4.__xst === __xsu){
-                        return({"__xst" : __xsu ,"source_sql" : obj2.__xva ,"source_php" : obj4.__xva ,"matrice_requete" : matrice_requete ,"chp_table_reference_requete" : obj4.chp_table_reference_requete});
+                        return({
+                                "__xst" : __xsu ,
+                                "source_sql" : obj2.__xva ,
+                                "source_php" : obj4.__xva ,
+                                "matrice_requete" : matrice_requete ,
+                                "chp_table_reference_requete" : obj4.chp_table_reference_requete
+                            });
                     }else{
                         return(__gi1.ajoute_message( {"__xst" : __xer ,"source_sql" : obj2.__xva ,"__xme" : __gi1.__rev1.nl2() + 'conversion en php '} ));
                     }
@@ -3601,7 +3607,6 @@ class c_concevoir_une_requete1{
             }
         }
     }
-
     /*
       =============================================================================================================
     */
@@ -3733,7 +3738,6 @@ class c_concevoir_une_requete1{
             this.#globale_type_requete=le_message_du_serveur.__xva.requete['T0.chp_type_requete'];
             this.#globale_commentaire_requete=le_message_du_serveur.__xva.requete['T0.cht_commentaire_requete']??'';
             this.#globale_chp_table_reference_requete=le_message_du_serveur.__xva.requete['T0.chp_table_reference_requete']??'';
-            
             this.#che_est_souche_requete=le_message_du_serveur.__xva.requete['T0.che_est_souche_requete'];
             this.convertir_rev_pour_construction( bases );
         }

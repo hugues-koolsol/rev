@@ -238,8 +238,8 @@ class c_menus1{
             /* sql_146()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-            `T0`.`cht_initialisation_menu`  , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
-            `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
+            `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , 
+            `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
              FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
             
@@ -284,9 +284,9 @@ class c_menus1{
                    `chp_titre_menu` = :n_chp_titre_menu , 
                    `chx_autorisation_menu` = :n_chx_autorisation_menu , 
                    `chp_methode_menu` = :n_chp_methode_menu , 
-                   `cht_initialisation_menu` = :n_cht_initialisation_menu , 
                    `cht_condition_menu` = :n_cht_condition_menu , 
-                   `cht_condition_php_menu` = :n_cht_condition_php_menu
+                   `cht_condition_php_menu` = :n_cht_condition_php_menu , 
+                   `cht_initialisation_menu` = :n_cht_initialisation_menu
                 WHERE `chi_id_menu` = :c_chi_id_menu ;
                 */
                 /*sql_inclure_fin*/
@@ -333,8 +333,8 @@ class c_menus1{
                 /* sql_146()
                 SELECT 
                 `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-                `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
-                `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
+                `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , 
+                `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
                  FROM b1.tbl_menus T0
                  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
                 
@@ -394,8 +394,8 @@ class c_menus1{
             /* sql_146()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-            `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
-            `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
+            `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , 
+            `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
              FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
             
@@ -454,8 +454,8 @@ class c_menus1{
             /* sql_146()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-            `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
-            `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
+            `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , 
+            `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
              FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
             
@@ -489,8 +489,8 @@ class c_menus1{
             /* sql_146()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-            `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
-            `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
+            `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , 
+            `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
              FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
             
@@ -583,8 +583,8 @@ class c_menus1{
             /* sql_146()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-            `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , 
-            `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
+            `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , 
+            `T2`.`chp_nom_acces` , `T3`.`chp_nom_source` , `T3`.`che_binaire_source`
              FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
             
@@ -685,17 +685,17 @@ class c_menus1{
                 `chx_autorisation_menu` , 
                 `chp_methode_menu` , 
                 `cht_libelle_menu` , 
-                `cht_initialisation_menu` , 
                 `cht_condition_menu` , 
-                `cht_condition_php_menu`
+                `cht_condition_php_menu` , 
+                `cht_initialisation_menu`
             ) VALUES (
                 :chp_titre_menu , 
                 :chx_autorisation_menu , 
                 :chp_methode_menu , 
                 :cht_libelle_menu , 
-                :cht_initialisation_menu , 
                 :cht_condition_menu , 
-                :cht_condition_php_menu
+                :cht_condition_php_menu , 
+                :cht_initialisation_menu
             );
             */
             /*sql_inclure_fin*/
@@ -766,8 +766,8 @@ class c_menus1{
             /* sql_145()
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-            `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , 
-            `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+            `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
+            `T3`.`chp_nom_source`
              FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
             
@@ -803,8 +803,8 @@ class c_menus1{
                 /* sql_145()
                 SELECT 
                 `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-                `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chi_id_acces` , 
-                `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+                `T0`.`cht_condition_menu` , `T0`.`cht_condition_php_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
+                `T3`.`chp_nom_source`
                  FROM b1.tbl_menus T0
                  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
                 

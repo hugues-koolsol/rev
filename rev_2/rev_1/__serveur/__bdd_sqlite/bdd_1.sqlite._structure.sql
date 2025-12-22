@@ -1557,6 +1557,20 @@ CREATE TABLE tbl_requetes(
             )
             */
              che_est_souche_requete INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_table_reference_requete'),
+            nom_bref_du_champ('table de reference'),abrege_du_champ('table de référence de la requête'),
+            typologie(chp),
+            genre(12),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(128)
+            )
+            */
+             chp_table_reference_requete VARCHAR(64) DEFAULT  NULL
     );
 
 CREATE TABLE tbl_genres(

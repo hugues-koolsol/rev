@@ -34,7 +34,7 @@ class c_concevoir_une_requete1{
                     'cht_php_requete' => $donnees_recues[__xva]['php'],
                     'cht_commentaire_requete' => $donnees_recues[__xva]['cht_commentaire_requete'],
                     'che_est_souche_requete' => $donnees_recues[__xva]['che_est_souche_requete'],
-                    'chp_table_reference_requete' => $donnees_recues[__xva]['chp_table_reference_requete'],
+                    'chp_table_reference_requete' => $donnees_recues[__xva]['chp_table_reference_requete']
                 ));
         $tt390=/*sql_inclure_deb*/
             /* sql_390()
@@ -44,7 +44,7 @@ class c_concevoir_une_requete1{
                 `cht_sql_requete` , 
                 `cht_php_requete` , 
                 `cht_commentaire_requete` , 
-                `che_est_souche_requete` ,
+                `che_est_souche_requete` , 
                 `chp_table_reference_requete`
             ) VALUES (
                 :chp_type_requete , 
@@ -52,7 +52,7 @@ class c_concevoir_une_requete1{
                 :cht_sql_requete , 
                 :cht_php_requete , 
                 :cht_commentaire_requete , 
-                :che_est_souche_requete ,
+                :che_est_souche_requete , 
                 :chp_table_reference_requete
             );
             */
@@ -358,7 +358,8 @@ class c_concevoir_une_requete1{
                `cht_rev_requete` = :n_cht_rev_requete , 
                `cht_sql_requete` = :n_cht_sql_requete , 
                `cht_php_requete` = :n_cht_php_requete , 
-               `cht_commentaire_requete` = :n_cht_commentaire_requete
+               `cht_commentaire_requete` = :n_cht_commentaire_requete , 
+               `chp_table_reference_requete` = :n_chp_table_reference_requete
             WHERE `chi_id_requete` = :c_chi_id_requete ;
             */
             /*sql_inclure_fin*/
@@ -420,7 +421,7 @@ class c_concevoir_une_requete1{
                 /* sql_354()
                 SELECT 
                 `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_php_requete` , 
-                `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
+                `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
                  FROM b1.tbl_requetes T0
                 WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
                 ;

@@ -57,11 +57,16 @@ class __interface1{
                 /*
                   maj des genres et des sql
                 */
-                if(substr(_CA_,-7)==='_rev_1_'){
+                
+                if(substr(_CA_,-7) === '_rev_1_'){
+
                     $chemin_fichier__liste_des_genres=$_SESSION[_CA_]['chemin_des_sql'] . '__liste_des_genres.php';
+
                 }else{
+
                     $chemin_fichier__liste_des_genres=$GLOBALS['chemin_des_sql'] . '__liste_des_genres.php';
                 }
+
                 
                 if(is_file($chemin_fichier__liste_des_genres)){
 
@@ -74,11 +79,16 @@ class __interface1{
                 }
 
                 $donnees_retournees[__xac] .= 'm1(n1(_fonctions1),f1(maj_liste_des_genres()))';
-                if(substr(_CA_,-7)==='_rev_1_'){
+                
+                if(substr(_CA_,-7) === '_rev_1_'){
+
                     $chemin_fichier__liste_des_sql=__CHEMIN_ABSOLU_SITE__ . 'rev_' . $_SESSION[_CA_]['chi_id_projet'] . '/__serveur/__sqls/__liste_des_sql.php';
+
                 }else{
+
                     $chemin_fichier__liste_des_sql=$GLOBALS['chemin_des_sql'] . '__liste_des_sql.php';
                 }
+
                 
                 if(is_file($chemin_fichier__liste_des_sql)){
 
@@ -108,12 +118,17 @@ class __interface1{
                   $donnees_retournees[__xva]['$les_menu0']=$les_menu0;
                 */
                 $nom_fichier_acces=__CHEMIN_ABSOLU_PROJET__ . '____menus1_acces_' . $_SESSION[_CA_]['chi_id_acces'] . '_.php';
+                
                 if(is_file($nom_fichier_acces)){
+
                     include($nom_fichier_acces);
+
                 }else{
+
                     $les_menu1=array();
-//                    include('___autorisations1_pour_acces_0_.php');
+                    /* include('___autorisations1_pour_acces_0_.php');*/
                 }
+
                 $donnees_retournees[__xva]['$les_menu1']=$les_menu1;
 
             }

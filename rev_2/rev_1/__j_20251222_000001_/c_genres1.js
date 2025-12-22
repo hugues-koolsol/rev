@@ -207,7 +207,7 @@ class c_genres1{
                     this.$filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >'+__gi1.les_svg.nouveau_document+'</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + __gi1.les_svg.nouveau_document + '</div>';
             this.vv_ecran_liste_boutons_avant+='&nbsp;';
             this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(trier_les_genres())))" title="trier les genres">trier</div>';
         }
@@ -1999,7 +1999,7 @@ class c_genres1{
                 }
                 lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))">' + __gi1.les_svg.editer + '</div>';
                 lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))">' + __gi1.les_svg.dupliquer + '</div>';
-                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero(chi_id_genre(' + elem['T0.chi_id_genre'] + '))))">'+__gi1.les_svg.renuméroter+'</div>';
+                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero(chi_id_genre(' + elem['T0.chi_id_genre'] + '))))">' + __gi1.les_svg.renuméroter + '</div>';
                 if(__gi1._CA_.slice( -7 ) === '_rev_1_' && __gi1.chi_id_projet === 1){
                     lst+='<div class="rev_bouton yy__4" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(page_integrer_ce_genre_dans_un_autre_projet(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))';

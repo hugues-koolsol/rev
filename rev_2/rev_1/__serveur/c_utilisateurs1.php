@@ -23,7 +23,7 @@ class c_utilisateurs1{
       =============================================================================================================
     */
     function modifier_le_mot_de_passe(&$mat,&$d,&$donnees_retournees,&$donnees_recues){
-//        echo __FILE__ . ' ' . __LINE__ . ' $d='.$d.' = <pre>' . var_export( $mat , true ) . '</pre>' ; exit(0);
+        /* echo __FILE__ . ' ' . __LINE__ . ' $d='.$d.' = <pre>' . var_export( $mat , true ) . '</pre>' ; exit(0);*/
         /* $donnees_retournees[__xsi][__xdv][]='AFR ajouter ou pas des "actions_apres_modifier" [' . __LINE__ . ']';*/
         /* return(array(__xst=>__xer));*/
         $chi_id_utilisateur=0;
@@ -31,45 +31,53 @@ class c_utilisateurs1{
         for( $i=$d + 1 ; $i < $l01 ; $i=$mat[$i][12] ){
             
             
-            if($mat[$i][1] === 'chi_id_utilisateur' && $mat[$i][2] === 'f' && $mat[$i][8] === 1 && $mat[$i+1][2] === 'c' ){
+            if($mat[$i][1] === 'chi_id_utilisateur' && $mat[$i][2] === 'f' && $mat[$i][8] === 1 && $mat[$i + 1][2] === 'c'){
 
-                $chi_id_utilisateur=(int)$mat[$i+1][1];
+                $chi_id_utilisateur=(int)($mat[$i + 1][1]);
 
             }
 
         }
-        if($chi_id_utilisateur>=2){
-         
-//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);
-         
+        
+        if($chi_id_utilisateur >= 2){
+
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);*/
             $nom_formulaire=$donnees_recues[__xva]['__co1'];
             $form=$donnees_recues[__xva][__fo1][$nom_formulaire];
-            if(!( $form['chp_mot_de_passe_utilisateur1']===$form['chp_mot_de_passe_utilisateur1'] && strlen($form['chp_mot_de_passe_utilisateur1'])>=7)){
+            
+            if(!($form['chp_mot_de_passe_utilisateur1'] === $form['chp_mot_de_passe_utilisateur1']
+                   && strlen($form['chp_mot_de_passe_utilisateur1']) >= 7)
+            ){
+
                 $donnees_retournees[__xsi][__xer][]='les deux mots de passe doivent être identiques et doivent faire au moins 7 caractères [' . __LINE__ . ']';
                 return;
+
             }
-            
-//            echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $form , true ) . '</pre>' ; exit(0);
+
+            /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $form , true ) . '</pre>' ; exit(0);*/
             $mdp=password_hash($form['chp_mot_de_passe_utilisateur1'],PASSWORD_BCRYPT,array( 'cost' => 10));
-         
-            $tt150=$this->sql0->sql_iii(
-                150,
-                array(
-                    /**/
-                    'c_chi_id_utilisateur' => $chi_id_utilisateur ,
-                    'n_chp_mot_de_passe_utilisateur' => $mdp ,
-                ),
-                $donnees_retournees
-            );
+            $tt150=/*sql_inclure_deb*/
+                /* sql_150()
+                UPDATE b1.tbl_utilisateurs SET 
+                   `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
+                WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
+                */
+                /*sql_inclure_fin*/
+                $this->sql0->sql_iii(150,array(/**/
+                    'c_chi_id_utilisateur' => $chi_id_utilisateur,
+                    'n_chp_mot_de_passe_utilisateur' => $mdp
+                ),$donnees_retournees);
             
             if($tt150[__xst] !== __xsu){
 
                 return;
 
             }
+
             return array( __xst => __xsu);
-         
+
         }
+
     }
     /*
       =============================================================================================================
@@ -105,6 +113,7 @@ class c_utilisateurs1{
             return array( __xst => __xer);
 
         }
+
         return array( __xst => __xsu);
     }
     /*
@@ -648,7 +657,10 @@ class c_utilisateurs1{
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
             
             WHERE ( / *** *** / `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
+               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur
+               AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur
+               AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
+               AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces) 
             ORDER BY `T0`.`chi_id_utilisateur` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
@@ -675,7 +687,10 @@ class c_utilisateurs1{
                  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
                 
                 WHERE ( / *** *** / `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-                   AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur) 
+                   AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur
+                   AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur
+                   AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
+                   AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces) 
                 ORDER BY `T0`.`chi_id_utilisateur` DESC  
                 LIMIT :quantitee OFFSET :debut 
                 ;

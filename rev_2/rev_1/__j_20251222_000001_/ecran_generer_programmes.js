@@ -683,11 +683,11 @@ class ecran_generer_programmes{
         let o2='';
         o2+='class ' + this.#nom_de_la_classe_générée + '{\n';
         o2+='    /*\n';
-        o2+='      ref_select='+ref_select+'\n';
-        o2+='      ref_insert='+ref_insert+'\n';
-        o2+='      ref_delete='+ref_delete+'\n';
-        o2+='      ref_update='+ref_update+'\n';
-        o2+='      ref_liste_ecran='+ref_liste_ecran+'\n';
+        o2+='      ref_select=' + ref_select + '\n';
+        o2+='      ref_insert=' + ref_insert + '\n';
+        o2+='      ref_delete=' + ref_delete + '\n';
+        o2+='      ref_update=' + ref_update + '\n';
+        o2+='      ref_liste_ecran=' + ref_liste_ecran + '\n';
         o2+='    */\n';
         o2+='    moi=\'' + this.#nom_de_la_classe_générée + '\';\r\n';
         o2+='    DUN_DUNE_ELEMENT_GERE = \'' + def_table.meta.distinction_pour_isad + '\';\r\n';

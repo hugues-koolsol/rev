@@ -66,7 +66,6 @@ class c_acces1{
                                 $bb .= ')';
                             }
 
-                            
                             $bb .= '))';
                             $bb .= '"';
                             $bb .= '>' . str_replace('height:25px;width:25px;','',$v1['contenu']) . '</div></li>';
@@ -161,7 +160,6 @@ class c_acces1{
                                     $bb .= ')';
                                 }
 
-                                
                                 $bb .= '))';
                                 /*
                                   $bb .= 'indice_menu(' . $v1['attributs']['data-chi_id_menu'] . ')';

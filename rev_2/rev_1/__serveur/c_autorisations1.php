@@ -739,7 +739,7 @@ class c_autorisations1{
         $tt140=/*sql_inclure_deb*/
             /* sql_140()
             SELECT 
-            `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`chp_nom_autorisation` , `T1`.`chp_nom_acces` , 
+            `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , 
             `T2`.`chp_nom_source` , `T2`.`chx_dossier_id_source`
              FROM b1.tbl_autorisations T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
@@ -771,7 +771,7 @@ class c_autorisations1{
             $tt140=/*sql_inclure_deb*/
                 /* sql_140()
                 SELECT 
-                `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`chp_nom_autorisation` , `T1`.`chp_nom_acces` , 
+                `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , 
                 `T2`.`chp_nom_source` , `T2`.`chx_dossier_id_source`
                  FROM b1.tbl_autorisations T0
                  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation

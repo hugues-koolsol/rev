@@ -1688,7 +1688,8 @@ class c_sources1{
                AND `T0`.`che_binaire_source` = :T0_che_binaire_source
                AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
                AND `T1`.`chp_nom_dossier` LIKE :T1_chp_nom_dossier
-               AND `T0`.`che_contient_version_source` = :T0_che_contient_version_source) 
+               AND `T0`.`che_contient_version_source` = :T0_che_contient_version_source
+               AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source) 
             ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
             LIMIT :quantitee OFFSET :debut 
             ;
@@ -1721,7 +1722,8 @@ class c_sources1{
                    AND `T0`.`che_binaire_source` = :T0_che_binaire_source
                    AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
                    AND `T1`.`chp_nom_dossier` LIKE :T1_chp_nom_dossier
-                   AND `T0`.`che_contient_version_source` = :T0_che_contient_version_source) 
+                   AND `T0`.`che_contient_version_source` = :T0_che_contient_version_source
+                   AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source) 
                 ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
                 LIMIT :quantitee OFFSET :debut 
                 ;

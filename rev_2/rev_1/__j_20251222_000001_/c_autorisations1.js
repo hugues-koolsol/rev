@@ -1,25 +1,39 @@
-class c_metiers1{
-    moi='c_metiers1';
-    DUN_DUNE_ELEMENT_GERE='d\'un metier';
-    LISTE_DES_ELEMENTS_GERES='liste des metiers';
+class c_autorisations1{
+    moi='c_autorisations1';
+    DUN_DUNE_ELEMENT_GERE='d\'une autorisation';
+    LISTE_DES_ELEMENTS_GERES='liste des autorisations';
     /*
       filtres liste
     */
     tableau_des_filtres={
         "liste1" : {
             "$__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '$__num_page' ,"taille" : 8} ,
-            "T0_chi_id_metier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_metier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8}
+            "T0_chi_id_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_autorisation" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom autorisation' ,"taille" : 8} ,
+            "T0_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'acces' ,"taille" : 8} ,
+            "T0_chx_source_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'source' ,"taille" : 8} ,
+            "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
+            "T2_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8}
         } ,
         "sous_liste1" : {
             "$__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '$__num_page' ,"taille" : 8} ,
-            "T0_chi_id_metier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_metier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8}
+            "T0_chi_id_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_autorisation" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom autorisation' ,"taille" : 8} ,
+            "T0_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'acces' ,"taille" : 8} ,
+            "T0_chx_source_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'source' ,"taille" : 8} ,
+            "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
+            "T2_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8}
         }
     };
     fonction_liste='liste1';
     $filtres={};
     vv_ecran_liste_boutons_avant='';
+    /*
+      =============================================================================================================
+    */
+    gererer_les_autorisation_serveur( mat , d , le_message_du_serveur=null ){
+        return({"__xst" : __xsu});
+    }
     /*
       =============================================================================================================
     */
@@ -58,7 +72,8 @@ class c_metiers1{
                     this.$filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >'+__gi1.les_svg.nouveau_document+'</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + __gi1.les_svg.nouveau_document + '</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(gererer_les_autorisation_serveur())))" title="générer les autorisations coté serveur">générer</div>';
         }
     }
     /*
@@ -80,27 +95,37 @@ class c_metiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_metier'] === ''){
+        if(fo1['chp_nom_autorisation'] === ''){
             __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_nom_metier' ).focus();
+                document.getElementById( 'chp_nom_autorisation' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=__gi1.__fnt1.test_du_nom_technique1( fo1['chp_nom_metier'] , 'nom' );
-        if(__test.__xst !== __xsu){
+        if(fo1['chx_acces_autorisation'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_nom_metier' ).focus();
+                document.getElementById( 'chx_acces_autorisation' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['chx_source_autorisation'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseigné'} );
+            __gi1.affiche_les_messages();
+            __gi1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chx_source_autorisation' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques début */
-        fo1['chi_id_metier']=fo1['chi_id_metier'] === '' ? ( null ) : ( parseInt( fo1['chi_id_metier'] , 10 ) );
-        fo1['chx_parent_metier']=fo1['chx_parent_metier'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_metier'] , 10 ) );
+        fo1['chi_id_autorisation']=fo1['chi_id_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chi_id_autorisation'] , 10 ) );
+        fo1['chx_acces_autorisation']=fo1['chx_acces_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_acces_autorisation'] , 10 ) );
+        fo1['chx_source_autorisation']=fo1['chx_source_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_source_autorisation'] , 10 ) );
         /* conversion des données numériques fin */
         /*
           tout a été vérifié
@@ -136,13 +161,14 @@ class c_metiers1{
         o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_nom_metier'] === undefined){
+        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_nom_autorisation'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" id="chp_nom_metier" size="48" maxlength="128" value="' + __gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_nom_metier'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='      <div>';
-        o1+=__gi1.__fnt1.boutons_edition_text( 'chp_nom_groupe' );
-        o1+='      </div>';
+        o1+='      <input  type="text" id="chp_nom_autorisation"   maxlength="255"  value="' + __gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_nom_autorisation'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <div class="rev_bouton yy__1" data-rev_click="';
+        o1+='m1(n1(__fnt1),f1(copier_le_contenu1(zone_source(chp_nom_autorisation))))';
+        o1+='" title="copier le contenu">📋</div>';
+        o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -150,26 +176,47 @@ class c_metiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent</span>';
+        o1+='      <span>acces</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_parent_metier'] === undefined){
+        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_acces_autorisation'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <input type="hidden" value="';
-        o1+=le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_parent_metier'];
-        o1+='"  id="chx_parent_metier" />';
-        o1+='        <span id="chx_parent_metier_libelle">';
-        o1+='(' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_parent_metier'] + ') ';
-        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T1.chp_nom_metier'] );
+        o1+=le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_acces_autorisation'];
+        o1+='"  id="chx_acces_autorisation" />';
+        o1+='        <span id="chx_acces_autorisation_libelle">';
+        o1+='(' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_acces_autorisation'] + ') ';
+        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T1.chp_nom_acces'] );
         o1+='</span>';
-        o1+=__gi1.lien_parent( 'c_metiers1' , 'chx_parent_metier' , 'chx_parent_metier_libelle' );
+        o1+=__gi1.lien_parent( 'c_acces1' , 'chx_acces_autorisation' , 'chx_acces_autorisation_libelle' );
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_metier" value="' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chi_id_metier'] + '">';
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>source</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_source_autorisation'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <input type="hidden" value="';
+        o1+=le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_source_autorisation'];
+        o1+='"  id="chx_source_autorisation" />';
+        o1+='        <span id="chx_source_autorisation_libelle">';
+        o1+='(' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_source_autorisation'] + ') ';
+        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T2.chp_nom_source'] );
+        o1+='</span>';
+        o1+=__gi1.lien_parent( 'c_sources1' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='      <input type="hidden" id="chi_id_autorisation" value="' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chi_id_autorisation'] + '">';
         /*
           =====================================================================================================
         */
@@ -213,7 +260,7 @@ class c_metiers1{
         o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_metier"  size="64"   maxlength="64"  value="' + __gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chp_nom_metier'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_autorisation"   maxlength="255"  value="' + __gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chp_nom_autorisation'] ) + '"   />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -221,22 +268,39 @@ class c_metiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent</span>';
+        o1+='      <span>acces</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_parent_metier'];
-        o1+='"  id="chx_parent_metier" />';
+        o1+=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_acces_autorisation'];
+        o1+='"  id="chx_acces_autorisation" />';
         o1+='        <span>';
-        o1+='(' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_parent_metier'] + ') ';
-        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T1.chp_nom_metier'] );
+        o1+='(' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_acces_autorisation'] + ') ';
+        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T1.chp_nom_acces'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_metier" value="' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chi_id_metier'] + '" />';
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>source</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="hidden" value="';
+        o1+=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_source_autorisation'];
+        o1+='"  id="chx_source_autorisation" />';
+        o1+='        <span>';
+        o1+='(' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_source_autorisation'] + ') ';
+        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T2.chp_nom_source'] );
+        o1+='</span>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='      <input type="hidden" id="chi_id_autorisation" value="' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chi_id_autorisation'] + '" />';
         /*
           =====================================================================================================
         */
@@ -279,26 +343,36 @@ class c_metiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_metier'] === ''){
+        if(fo1['chp_nom_autorisation'] === ''){
             __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_nom_metier' ).focus();
+                document.getElementById( 'chp_nom_autorisation' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=__gi1.__fnt1.test_du_nom_technique1( fo1['chp_nom_metier'] , 'nom' );
-        if(__test.__xst !== __xsu){
+        if(fo1['chx_acces_autorisation'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_nom_metier' ).focus();
+                document.getElementById( 'chx_acces_autorisation' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['chx_source_autorisation'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseigné'} );
+            __gi1.affiche_les_messages();
+            __gi1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chx_source_autorisation' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques début */
-        fo1['chx_parent_metier']=fo1['chx_parent_metier'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_metier'] , 10 ) );
+        fo1['chx_acces_autorisation']=fo1['chx_acces_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_acces_autorisation'] , 10 ) );
+        fo1['chx_source_autorisation']=fo1['chx_source_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_source_autorisation'] , 10 ) );
         /* conversion des données numériques fin */
         /*
           tout a été vérifié
@@ -334,14 +408,16 @@ class c_metiers1{
         o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_nom_metier" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_metier' )){
-            o1+=__gi1.fi2( dupliquer['T0.chp_nom_metier'] );
+        o1+='      <input  type="text"   maxlength="255"  id="chp_nom_autorisation" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_autorisation' )){
+            o1+=__gi1.fi2( dupliquer['T0.chp_nom_autorisation'] );
         }else{
             o1+='';
         }
         o1+='" />';
-        o1+=__gi1.__fnt1.boutons_edition_text( 'chp_nom_groupe' );
+        o1+='      <div class="rev_bouton yy__1" data-rev_click="';
+        o1+='m1(n1(__fnt1),f1(copier_le_contenu1(zone_source(chp_nom_autorisation))))';
+        o1+='" title="copier le contenu">📋</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -349,36 +425,73 @@ class c_metiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent</span>';
+        o1+='      <span>acces</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input ';
-        o1+=' id="chx_parent_metier" ';
+        o1+=' id="chx_acces_autorisation" ';
         o1+=' type="hidden" ';
         o1+=' value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_parent_metier' )){
-            o1+=__gi1.fi2( dupliquer['T0.chx_parent_metier'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_acces_autorisation' )){
+            o1+=__gi1.fi2( dupliquer['T0.chx_acces_autorisation'] );
         }else{
             o1+='';
         }
         o1+='"';
         o1+=' />';
-        o1+='        <span id="chx_parent_metier_libelle">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_parent_metier' )){
-            if(dupliquer['T0.chx_parent_metier'] === null){
+        o1+='        <span id="chx_acces_autorisation_libelle">';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_acces_autorisation' )){
+            if(dupliquer['T0.chx_acces_autorisation'] === null){
                 o1+='*indéfini';
             }else{
-                o1+='(' + dupliquer['T0.chx_parent_metier'] + ') ';
-                o1+=__gi1.fi2( dupliquer['T1.chp_nom_metier'] );
+                o1+='(' + dupliquer['T0.chx_acces_autorisation'] + ') ';
+                o1+=__gi1.fi2( dupliquer['T1.chp_nom_acces'] );
             }
         }else{
-            o1+='NULL';
+            o1+='*indéfini';
+        }
+        o1+='</span>';
+        /*
+          
+        */
+        o1+=__gi1.lien_parent( 'c_acces1' , 'chx_acces_autorisation' , 'chx_acces_autorisation_libelle' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>source</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input ';
+        o1+=' id="chx_source_autorisation" ';
+        o1+=' type="hidden" ';
+        o1+=' value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_source_autorisation' )){
+            o1+=__gi1.fi2( dupliquer['T0.chx_source_autorisation'] );
+        }else{
+            o1+='';
+        }
+        o1+='"';
+        o1+=' />';
+        o1+='        <span id="chx_source_autorisation_libelle">';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_source_autorisation' )){
+            if(dupliquer['T0.chx_source_autorisation'] === null){
+                o1+='*indéfini';
+            }else{
+                o1+='(' + dupliquer['T0.chx_source_autorisation'] + ') ';
+                o1+=__gi1.fi2( dupliquer['T2.chp_nom_source'] );
+            }
+        }else{
+            o1+='*indéfini';
         }
         o1+='</span>';
         /*
           ;
         */
-        o1+=__gi1.lien_parent( 'c_metiers1' , 'chx_parent_metier' , 'chx_parent_metier_libelle' );
+        o1+=__gi1.lien_parent( 'c_sources1' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -464,7 +577,7 @@ class c_metiers1{
             o1+='<div class="yy_filtre_liste1" id="' + this.fonction_liste + '">';
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
                 if(this.tableau_des_filtres[this.fonction_liste][i].masqué === false){
-                    o1+='   <div>';
+                    o1+='    <div>';
                     o1+='        <div><span>' + this.tableau_des_filtres[this.fonction_liste][i].nom + '</span></div>';
                     let bck='background:yellow;';
                     if(this.$filtres[this.fonction_liste][i] === ''){
@@ -712,10 +825,11 @@ class c_metiers1{
                 $parametres+='m1(n1(__interface1),f1(choisir_dans_sous_fenetre1(';
                 $parametres+=' $nom_champ_dans_parent1(' + this.$nom_champ_dans_parent1 + ')';
                 $parametres+=' $nom_libelle_dans_parent1(' + this.$nom_libelle_dans_parent1 + ')';
-                $parametres+=' id1(' + elem['T0.chi_id_metier'] + ')';
+                $parametres+=' id1(' + elem['T0.chi_id_autorisation'] + ')';
                 let libelle1='';
-                libelle1+='(' + elem['T0.chi_id_metier'] + ') ';
-                libelle1+=elem['T0.chp_nom_metier'] ? ( ' , ' + elem['T0.chp_nom_metier'] ) : ( '' );
+                libelle1+='(' + elem['T0.chi_id_autorisation'] + ') ';
+                libelle1+=' ' + elem['T1.chp_nom_acces'];
+                libelle1+=' ' + elem['T2.chp_nom_source'];
                 $parametres+=' libelle1(\'' + __gi1.fi1( libelle1 ) + '\')';
                 $parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + $parametres + '">=&gt;</div>';
@@ -723,15 +837,43 @@ class c_metiers1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_metier'] !== null){
-                    lst+=elem['T0.chi_id_metier'];
+                if(elem['T0.chi_id_autorisation'] !== null){
+                    lst+=elem['T0.chi_id_autorisation'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_nom_metier'] !== null){
-                    lst+=elem['T0.chp_nom_metier'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                if(elem['T0.chp_nom_autorisation'] !== null){
+                    lst+=elem['T0.chp_nom_autorisation'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chx_acces_autorisation'] !== null){
+                    lst+=elem['T0.chx_acces_autorisation'];
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chx_source_autorisation'] !== null){
+                    lst+=elem['T0.chx_source_autorisation'];
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T1.chp_nom_acces'] !== null){
+                    lst+=elem['T1.chp_nom_acces'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T2.chp_nom_source'] !== null){
+                    lst+=elem['T2.chp_nom_source'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -743,6 +885,10 @@ class c_metiers1{
                 o1+='<th>action</th>';
                 o1+='<th>id</th>';
                 o1+='<th>nom</th>';
+                o1+='<th>acces</th>';
+                o1+='<th>source</th>';
+                o1+='<th>nom accès</th>';
+                o1+='<th>nom source</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -765,44 +911,59 @@ class c_metiers1{
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
-                /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
-                if(elem['T0.chi_id_metier'] === 1){
-                    lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + __gi1.les_svg.poubelle + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__2" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))';
-                    lst+='">' + __gi1.les_svg.poubelle + '</div>';
-                }
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))">' + __gi1.les_svg.editer + '</div>';
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))">' + __gi1.les_svg.dupliquer + '</div>';
+                /* yy_col_act_td1 */
+                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_autorisation(' + elem['T0.chi_id_autorisation'] + ')))))">' + __gi1.les_svg.poubelle + '</div>';
+                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_autorisation(' + elem['T0.chi_id_autorisation'] + ')))))">' + __gi1.les_svg.editer + '</div>';
+                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_autorisation(' + elem['T0.chi_id_autorisation'] + ')))))">' + __gi1.les_svg.dupliquer + '</div>';
                 lst+='</div>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_metier'] !== null){
-                    lst+=elem['T0.chi_id_metier'];
+                if(elem['T0.chi_id_autorisation'] !== null){
+                    lst+=elem['T0.chi_id_autorisation'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_nom_metier'] !== null){
-                    lst+=__gi1.fi2( elem['T0.chp_nom_metier'] );
+                if(elem['T0.chp_nom_autorisation'] !== null){
+                    lst+=__gi1.fi2( elem['T0.chp_nom_autorisation'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_parent_metier'] !== null){
-                    lst+=elem['T0.chx_parent_metier'];
+                if(elem['T0.chx_acces_autorisation'] !== null){
+                    lst+=elem['T0.chx_acces_autorisation'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T1.chp_nom_metier'] !== null){
-                    lst+=__gi1.fi2( elem['T1.chp_nom_metier'] );
+                if(elem['T0.chx_source_autorisation'] !== null){
+                    lst+=elem['T0.chx_source_autorisation'];
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T1.chp_nom_acces'] !== null){
+                    lst+=__gi1.fi2( elem['T1.chp_nom_acces'] );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T2.chp_nom_source'] !== null){
+                    lst+=__gi1.fi2( elem['T2.chp_nom_source'] );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T2.chx_dossier_id_source'] !== null){
+                    lst+=elem['T2.chx_dossier_id_source'];
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -814,8 +975,11 @@ class c_metiers1{
                 o1+='<th>action</th>';
                 o1+='<th>id</th>';
                 o1+='<th>nom</th>';
-                o1+='<th>id parent</th>';
-                o1+='<th>nom parent</th>';
+                o1+='<th>acces</th>';
+                o1+='<th>source</th>';
+                o1+='<th>nom accès</th>';
+                o1+='<th>nom source</th>';
+                o1+='<th>id dossier</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -830,4 +994,4 @@ class c_metiers1{
       =============================================================================================================
     */
 }
-export{c_metiers1 as c_metiers1};
+export{c_autorisations1 as c_autorisations1};

@@ -130,13 +130,15 @@ class c_requetes1{
                 /* sql_343()
                 UPDATE b1.tbl_requetes SET 
                    `cht_sql_requete` = :n_cht_sql_requete , 
-                   `cht_php_requete` = :n_cht_php_requete
+                   `cht_php_requete` = :n_cht_php_requete , 
+                   `chp_table_reference_requete` = :n_chp_table_reference_requete
                 WHERE `chi_id_requete` = :c_chi_id_requete ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
                  /*sql_343()*/ 343,
-                array(/**/
+                array(
+                    /**/
                     'c_chi_id_requete' => $donnees_recues[__xva]['chi_id_requete'],
                     'n_cht_sql_requete' => $donnees_recues[__xva]['cht_sql_requete'],
                     'n_cht_php_requete' => '',
@@ -151,13 +153,15 @@ class c_requetes1{
                 /* sql_343()
                 UPDATE b1.tbl_requetes SET 
                    `cht_sql_requete` = :n_cht_sql_requete , 
-                   `cht_php_requete` = :n_cht_php_requete
+                   `cht_php_requete` = :n_cht_php_requete , 
+                   `chp_table_reference_requete` = :n_chp_table_reference_requete
                 WHERE `chi_id_requete` = :c_chi_id_requete ;
                 */
                 /*sql_inclure_fin*/
                 $this->sql0->sql_iii(
                  /*sql_343()*/ 343,
-                array(/**/
+                array(
+                    /**/
                     'c_chi_id_requete' => $donnees_recues[__xva]['chi_id_requete'],
                     'n_cht_sql_requete' => $donnees_recues[__xva]['cht_sql_requete'],
                     'n_cht_php_requete' => $donnees_recues[__xva]['cht_php_requete'],
@@ -603,7 +607,7 @@ class c_requetes1{
             /* sql_354()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_php_requete` , 
-            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
+            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
              FROM b1.tbl_requetes T0
             WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
             ;
@@ -643,7 +647,8 @@ class c_requetes1{
                    `cht_rev_requete` = :n_cht_rev_requete , 
                    `cht_sql_requete` = :n_cht_sql_requete , 
                    `cht_php_requete` = :n_cht_php_requete , 
-                   `cht_commentaire_requete` = :n_cht_commentaire_requete
+                   `cht_commentaire_requete` = :n_cht_commentaire_requete , 
+                   `chp_table_reference_requete` = :n_chp_table_reference_requete
                 WHERE `chi_id_requete` = :c_chi_id_requete ;
                 */
                 /*sql_inclure_fin*/
@@ -689,7 +694,7 @@ class c_requetes1{
                 /* sql_354()
                 SELECT 
                 `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_php_requete` , 
-                `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
+                `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
                  FROM b1.tbl_requetes T0
                 WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
                 ;
@@ -743,7 +748,7 @@ class c_requetes1{
             /* sql_354()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_php_requete` , 
-            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
+            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
              FROM b1.tbl_requetes T0
             WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
             ;
@@ -796,7 +801,7 @@ class c_requetes1{
             /* sql_354()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_php_requete` , 
-            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
+            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
              FROM b1.tbl_requetes T0
             WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
             ;
@@ -824,7 +829,7 @@ class c_requetes1{
             /* sql_354()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_php_requete` , 
-            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
+            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
              FROM b1.tbl_requetes T0
             WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
             ;
@@ -911,7 +916,7 @@ class c_requetes1{
             /* sql_354()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_php_requete` , 
-            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete`
+            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
              FROM b1.tbl_requetes T0
             WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
             ;
@@ -982,14 +987,16 @@ class c_requetes1{
                 `cht_sql_requete` , 
                 `cht_php_requete` , 
                 `cht_commentaire_requete` , 
-                `che_est_souche_requete`
+                `che_est_souche_requete` , 
+                `chp_table_reference_requete`
             ) VALUES (
                 :chp_type_requete , 
                 :cht_rev_requete , 
                 :cht_sql_requete , 
                 :cht_php_requete , 
                 :cht_commentaire_requete , 
-                :che_est_souche_requete
+                :che_est_souche_requete , 
+                :chp_table_reference_requete
             );
             */
             /*sql_inclure_fin*/
@@ -1060,14 +1067,15 @@ class c_requetes1{
             /* sql_350()
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-            `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
+            `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`chp_table_reference_requete`
              FROM b1.tbl_requetes T0
             WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
                AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete
                AND `T0`.`chp_type_requete` LIKE :T0_chp_type_requete
                AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete
                AND `T0`.`cht_commentaire_requete` LIKE :T0_cht_commentaire_requete
-               AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2) 
+               AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2
+               AND `T0`.`chp_table_reference_requete` LIKE :T0_chp_table_reference_requete) 
             ORDER BY `T0`.`chi_id_requete` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
@@ -1089,14 +1097,15 @@ class c_requetes1{
                 /* sql_350()
                 SELECT 
                 `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-                `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete`
+                `T0`.`cht_php_requete` , `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`chp_table_reference_requete`
                  FROM b1.tbl_requetes T0
                 WHERE ( / *** *** / `T0`.`chi_id_requete` = :T0_chi_id_requete
                    AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete
                    AND `T0`.`chp_type_requete` LIKE :T0_chp_type_requete
                    AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete
                    AND `T0`.`cht_commentaire_requete` LIKE :T0_cht_commentaire_requete
-                   AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2) 
+                   AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2
+                   AND `T0`.`chp_table_reference_requete` LIKE :T0_chp_table_reference_requete) 
                 ORDER BY `T0`.`chi_id_requete` DESC  
                 LIMIT :quantitee OFFSET :debut 
                 ;

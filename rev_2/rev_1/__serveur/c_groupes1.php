@@ -115,12 +115,16 @@ class c_groupes1{
             }
 
         }
+        
         if($_SESSION[_CA_]['chi_id_utilisateur'] > 2){
+
             /*
-             seuls les racines et l'admin peuvent modifier un groupe
+              seuls les racines et l'admin peuvent modifier un groupe
             */
             $donnees_retournees[__xsi][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+
         }
+
         
         if($form['chi_id_groupe'] <= 2){
 
@@ -129,11 +133,12 @@ class c_groupes1{
             */
             
             if($_SESSION[_CA_]['chi_id_utilisateur'] !== 1){
-            
 
                 $donnees_retournees[__xsi][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
                 return;
+
             }
+
 
         }
 
@@ -354,20 +359,22 @@ class c_groupes1{
         $nom_formulaire=$donnees_recues[__xva]['__co1'];
         $form=$donnees_recues[__xva][__fo1][$nom_formulaire];
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
-
+        
         if($_SESSION[_CA_]['chi_id_utilisateur'] >= 2){
+
             /*
-             seuls les racines et l'admin peuvent supprimer un groupe
+              seuls les racines et l'admin peuvent supprimer un groupe
             */
             $donnees_retournees[__xsi][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+
         }
+
         
         if($form['chi_id_groupe'] <= 2){
 
             /*
               on ne doit pas supprimer le groupe racine(1) ou admin(2)
             */
-
             $donnees_retournees[__xsi][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
             return;
 

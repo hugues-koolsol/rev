@@ -1,22 +1,20 @@
-class c_projets1{
-    moi='c_projets1';
-    DUN_DUNE_ELEMENT_GERE='d\'un projet';
-    LISTE_DES_ELEMENTS_GERES='liste des projets';
+class c_metiers1{
+    moi='c_metiers1';
+    DUN_DUNE_ELEMENT_GERE='d\'un metier';
+    LISTE_DES_ELEMENTS_GERES='liste des metiers';
     /*
       filtres liste
     */
     tableau_des_filtres={
         "liste1" : {
-            "$__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '$__num_page'} ,
-            "T0_chi_id_projet" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id'} ,
-            "T0_chp_nom_projet" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom'} ,
-            "T0_cht_commentaire_projet" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'commentaire'}
+            "$__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '$__num_page' ,"taille" : 8} ,
+            "T0_chi_id_metier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_metier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8}
         } ,
         "sous_liste1" : {
-            "$__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '$__num_page'} ,
-            "T0_chi_id_projet" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id'} ,
-            "T0_chp_nom_projet" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom'} ,
-            "T0_cht_commentaire_projet" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'commentaire'}
+            "$__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '$__num_page' ,"taille" : 8} ,
+            "T0_chi_id_metier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_metier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8}
         }
     };
     fonction_liste='liste1';
@@ -25,53 +23,9 @@ class c_projets1{
     /*
       =============================================================================================================
     */
-    initialiser_le_clone( mat , d , le_message_du_serveur ){
-        __gi1.maj_menu( mat , d , le_message_du_serveur );
-        this.liste_du_menu0( null , null );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    activer1( mat , d , le_message_du_serveur ){
-        this.$chi_id_projet=0;
-        if(le_message_du_serveur.__xst === __xsu){
-            this.$chi_id_projet=le_message_du_serveur.__xva.chi_id_projet;
-            __gi1.executer1( 'm1(n1(_fonctions1),f1(maj_liste_des_genres()))' , le_message_du_serveur );
-            __gi1.executer1( 'm1(n1(_fonctions1),f1(maj_liste_des_sql()))' , le_message_du_serveur );
-            __gi1.executer1( 'm1(n1(__interface1),f1(maj_menu()))' , le_message_du_serveur );
-        }
-        try{
-            let tt=le_message_du_serveur.__xva.chp_nom_de_connexion_utilisateur;
-            if(le_message_du_serveur.__xva.chi_id_projet > 0){
-                tt+=' ' + le_message_du_serveur.__xva.chi_id_projet;
-            }
-            document.getElementById( 'vv_bouton_connexion' ).title=tt;
-        } catch {}
-        this.liste_du_menu0( null , null );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    desactiver1( mat , d , le_message_du_serveur ){
-        this.$chi_id_projet=0;
-        __gi1.executer1( 'm1(n1(_fonctions1),f1(maj_liste_des_genres()))' , le_message_du_serveur );
-        __gi1.executer1( 'm1(n1(_fonctions1),f1(maj_liste_des_sql()))' , le_message_du_serveur );
-        __gi1.executer1( 'm1(n1(__interface1),f1(maj_menu()))' , le_message_du_serveur );
-        try{
-            let tt=le_message_du_serveur.__xva.chp_nom_de_connexion_utilisateur;
-            document.getElementById( 'vv_bouton_connexion' ).title=tt;
-        } catch {}
-        this.liste_du_menu0( null , null );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
-            case 'initialiser_projet_2' : break;
+            case 'xxxxx' : break;
             default:
                 __gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
                 return({"__xst" : __xer});
@@ -104,7 +58,7 @@ class c_projets1{
                     this.$filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >'+__gi1.les_svg.nouveau_document+'</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + __gi1.les_svg.nouveau_document + '</div>';
         }
     }
     /*
@@ -126,52 +80,27 @@ class c_projets1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_projet'] === ''){
-            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "nom" doit être renseigné'} );
+        if(fo1['chp_nom_metier'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_nom_projet' ).focus();
+                document.getElementById( 'chp_nom_metier' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chx_dossier_requetes_projet'] === ''){
-            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "dossier requetes" doit être renseigné'} );
+        var __test=__gi1.__fnt1.test_du_nom_technique1( fo1['chp_nom_metier'] , 'nom' );
+        if(__test.__xst !== __xsu){
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chx_dossier_requetes_projet' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1['chx_dossier_menus_projet'] === ''){
-            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "dossier menus" doit être renseigné'} );
-            __gi1.affiche_les_messages();
-            __gi1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_dossier_menus_projet' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1['chx_dossier_js_projet'] === ''){
-            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier des javascript" doit être renseigné'} );
-            __gi1.affiche_les_messages();
-            __gi1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_dossier_js_projet' ).focus();
+                document.getElementById( 'chp_nom_metier' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques début */
-        fo1['chi_id_projet']=fo1['chi_id_projet'] === '' ? ( null ) : ( parseInt( fo1['chi_id_projet'] , 10 ) );
-        fo1['chx_dossier_requetes_projet']=fo1['chx_dossier_requetes_projet'] === '' ?
-          ( 
-            null
-          ) : ( 
-            parseInt( fo1['chx_dossier_requetes_projet'] , 10 )
-          );
-        fo1['chx_dossier_menus_projet']=fo1['chx_dossier_menus_projet'] === '' ? ( null ) : ( parseInt( fo1['chx_dossier_menus_projet'] , 10 ) );
-        fo1['chx_dossier_js_projet']=fo1['chx_dossier_js_projet'] === '' ? ( null ) : ( parseInt( fo1['chx_dossier_js_projet'] , 10 ) );
+        fo1['chi_id_metier']=fo1['chi_id_metier'] === '' ? ( null ) : ( parseInt( fo1['chi_id_metier'] , 10 ) );
+        fo1['chx_parent_metier']=fo1['chx_parent_metier'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_metier'] , 10 ) );
         /* conversion des données numériques fin */
         /*
           tout a été vérifié
@@ -207,9 +136,13 @@ class c_projets1{
         o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea id="chp_nom_projet" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' + __gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_nom_projet'] ) + '</textarea>';
-        o1+='        </div>';
+        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_nom_metier'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='      <input  type="text" id="chp_nom_metier" size="48" maxlength="128" value="' + __gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chp_nom_metier'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <div>';
+        o1+=__gi1.__fnt1.boutons_edition_text( 'chp_nom_groupe' );
+        o1+='      </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -217,93 +150,29 @@ class c_projets1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier requetes</span>';
+        o1+='      <span>parent</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_dossier_requetes_projet'];
-        o1+='"  id="chx_dossier_requetes_projet" />';
-        o1+='        <span id="chx_dossier_requetes_projet_libelle">';
-        o1+='(' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_dossier_requetes_projet'] + ') ';
-        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T1.chp_nom_dossier'] );
-        o1+='</span>';
-        o1+=__gi1.lien_parent( 'c_dossiers1' , 'chx_dossier_requetes_projet' , 'chx_dossier_requetes_projet_libelle' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier des bases de données</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_dossier_bdds_projet'] === undefined){
+        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_parent_metier'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <input type="hidden" value="';
-        o1+=le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_dossier_bdds_projet'];
-        o1+='"  id="chx_dossier_bdds_projet" />';
-        o1+='        <span id="chx_dossier_bdds_projet_libelle">';
-        o1+='(' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_dossier_bdds_projet'] + ') ';
-        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T3.chp_nom_dossier'] );
+        o1+=le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_parent_metier'];
+        o1+='"  id="chx_parent_metier" />';
+        o1+='        <span id="chx_parent_metier_libelle">';
+        o1+='(' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_parent_metier'] + ') ';
+        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T1.chp_nom_metier'] );
         o1+='</span>';
-        o1+=__gi1.lien_parent( 'c_dossiers1' , 'chx_dossier_bdds_projet' , 'chx_dossier_bdds_projet_libelle' );
+        o1+=__gi1.lien_parent( 'c_metiers1' , 'chx_parent_metier' , 'chx_parent_metier_libelle' );
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier menus</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_dossier_menus_projet'];
-        o1+='"  id="chx_dossier_menus_projet" />';
-        o1+='        <span id="chx_dossier_menus_projet_libelle">';
-        o1+='(' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_dossier_menus_projet'] + ') ';
-        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T2.chp_nom_dossier'] );
-        o1+='</span>';
-        o1+=__gi1.lien_parent( 'c_dossiers1' , 'chx_dossier_menus_projet' , 'chx_dossier_menus_projet_libelle' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+='      <input type="hidden" id="chi_id_metier" value="' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chi_id_metier'] + '">';
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier des javascript</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_dossier_js_projet'] === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="';
-        o1+=le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_dossier_js_projet'];
-        o1+='"  id="chx_dossier_js_projet" />';
-        o1+='        <span id="chx_dossier_js_projet_libelle">';
-        o1+='(' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chx_dossier_js_projet'] + ') ';
-        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T4.chp_nom_dossier'] );
-        o1+='</span>';
-        o1+=__gi1.lien_parent( 'c_dossiers1' , 'chx_dossier_js_projet' , 'chx_dossier_js_projet_libelle' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea id="cht_commentaire_projet" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' + __gi1.fi2( le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.cht_commentaire_projet'] ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        o1+='      <input type="hidden" id="chi_id_projet" value="' + le_message_du_serveur.__xva.page_modification1.__xva[0]['T0.chi_id_projet'] + '">';
         let cmd='';
         cmd+='liste1(';
         for(let i in this.tableau_des_filtres[this.fonction_liste]){
@@ -344,9 +213,7 @@ class c_projets1{
         o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea disabled id="chp_nom_projet" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' + __gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chp_nom_projet'] ) + '</textarea>';
-        o1+='        </div>';
+        o1+='      <input disabled  type="text" id="chp_nom_metier"  size="64"   maxlength="64"  value="' + __gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chp_nom_metier'] ) + '"   />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -354,49 +221,25 @@ class c_projets1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier requetes</span>';
+        o1+='      <span>parent</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_dossier_requetes_projet'];
-        o1+='"  id="chx_dossier_requetes_projet" />';
+        o1+=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_parent_metier'];
+        o1+='"  id="chx_parent_metier" />';
         o1+='        <span>';
-        o1+='(' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_dossier_requetes_projet'] + ') ';
-        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T1.chp_nom_dossier'] );
+        o1+='(' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_parent_metier'] + ') ';
+        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T1.chp_nom_metier'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier menus</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_dossier_menus_projet'];
-        o1+='"  id="chx_dossier_menus_projet" />';
-        o1+='        <span>';
-        o1+='(' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chx_dossier_menus_projet'] + ') ';
-        o1+=__gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T2.chp_nom_dossier'] );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+='      <input type="hidden" id="chi_id_metier" value="' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chi_id_metier'] + '" />';
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea disabled id="cht_commentaire_projet" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' + __gi1.fi2( le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.cht_commentaire_projet'] ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        o1+='      <input type="hidden" id="chi_id_projet" value="' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chi_id_projet'] + '" />';
         let cmd='';
         cmd+='liste1(';
         for(let i in this.tableau_des_filtres[this.fonction_liste]){
@@ -427,24 +270,43 @@ class c_projets1{
       =============================================================================================================
     */
     verifier_creer1( mat , d , données ){
+        let retour_a_la_liste='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
+                retour_a_la_liste='retour_a_la_liste()';
+            }
+        }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_projet'] === ''){
-            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "nom" doit être renseigné'} );
+        if(fo1['chp_nom_metier'] === ''){
+            __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
             __gi1.affiche_les_messages();
             __gi1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_nom_projet' ).focus();
+                document.getElementById( 'chp_nom_metier' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
+        var __test=__gi1.__fnt1.test_du_nom_technique1( fo1['chp_nom_metier'] , 'nom' );
+        if(__test.__xst !== __xsu){
+            __gi1.affiche_les_messages();
+            __gi1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chp_nom_metier' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques début */
+        fo1['chx_parent_metier']=fo1['chx_parent_metier'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_metier'] , 10 ) );
+        /* conversion des données numériques fin */
         /*
           tout a été vérifié
         */
         let __fo1={};
         __fo1[co1]=fo1;
         __gi1.__worker.postMessage( {
-                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1())))' ,
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__parametres" : __gi1.stockage_local['parametres'] ,"__fo1" : __fo1 ,"__co1" : co1}
             } );
         return({"__xst" : __xsu});
@@ -472,36 +334,56 @@ class c_projets1{
         o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea id="chp_nom_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        /* if(false && isset($donnees_recues['dupliquer']['T0.chp_nom_projet'])){; */
-        /* o1 += enti1($donnees_recues['dupliquer']['T0.chp_nom_projet']); */
-        /* }else{ */
-        o1+='';
-        /* } */
-        o1+='</textarea>';
-        o1+='        </div>';
+        o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_nom_metier" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_metier' )){
+            o1+=__gi1.fi2( dupliquer['T0.chp_nom_metier'] );
+        }else{
+            o1+='';
+        }
+        o1+='" />';
+        o1+=__gi1.__fnt1.boutons_edition_text( 'chp_nom_groupe' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>parent</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input ';
+        o1+=' id="chx_parent_metier" ';
+        o1+=' type="hidden" ';
+        o1+=' value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_parent_metier' )){
+            o1+=__gi1.fi2( dupliquer['T0.chx_parent_metier'] );
+        }else{
+            o1+='';
+        }
+        o1+='"';
+        o1+=' />';
+        o1+='        <span id="chx_parent_metier_libelle">';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_parent_metier' )){
+            if(dupliquer['T0.chx_parent_metier'] === null){
+                o1+='*indéfini';
+            }else{
+                o1+='(' + dupliquer['T0.chx_parent_metier'] + ') ';
+                o1+=__gi1.fi2( dupliquer['T1.chp_nom_metier'] );
+            }
+        }else{
+            o1+='NULL';
+        }
+        o1+='</span>';
+        /*
+          ;
+        */
+        o1+=__gi1.lien_parent( 'c_metiers1' , 'chx_parent_metier' , 'chx_parent_metier_libelle' );
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea id="cht_commentaire_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        /* if(false && isset($donnees_recues['dupliquer']['T0.cht_commentaire_projet'])){; */
-        /* o1 += enti1($donnees_recues['dupliquer']['T0.cht_commentaire_projet']); */
-        /* }else{ */
-        o1+='';
-        /* } */
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
         let cmd='';
         cmd+='liste1(';
         for(let i in this.tableau_des_filtres[this.fonction_liste]){
@@ -583,7 +465,7 @@ class c_projets1{
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
                 if(this.tableau_des_filtres[this.fonction_liste][i].masqué === false){
                     o1+='   <div>';
-                    o1+='      <div><span>' + this.tableau_des_filtres[this.fonction_liste][i].nom + '</span></div>';
+                    o1+='        <div><span>' + this.tableau_des_filtres[this.fonction_liste][i].nom + '</span></div>';
                     let bck='background:yellow;';
                     if(this.$filtres[this.fonction_liste][i] === ''){
                         bck='';
@@ -592,8 +474,21 @@ class c_projets1{
                             nom_zone_non_vide=i;
                         }
                     }
-                    o1+='      <div><input type="text" id="' + i + '" value="' + __gi1.fi1( this.$filtres[this.fonction_liste][i] ) + '" size="8" maxlength="64" autocapitalize="off" style="' + bck + '" /></div>';
-                    o1+='   </div>';
+                    o1+='        <div>\r\n';
+                    o1+='          <input ';
+                    o1+='           type="text" id="' + i + '" ';
+                    o1+='           value="' + __gi1.fi1( this.$filtres[this.fonction_liste][i] ) + '" ';
+                    o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
+                    o1+='           maxlength="64" ';
+                    o1+='           autocapitalize="off" ';
+                    o1+='           style="' + bck + '" />';
+                    if(this.$filtres[this.fonction_liste][i] && this.$filtres[this.fonction_liste][i] !== ''){
+                        o1+='            <div class="rev_bouton yy__4" data-rev_click="';
+                        o1+='m1(n1(__interface1),f1(maj_contenu(type_cible(valeur_constante),id(' + i + '),valeur(valeur_constante()))))';
+                        o1+='">x</div>';
+                    }
+                    o1+='        </div>\r\n';
+                    o1+='    </div>';
                 }
             }
             o1+='   <div>';
@@ -601,8 +496,6 @@ class c_projets1{
             o1+='       <span>&nbsp;</span>';
             o1+='     </div>';
             o1+='     <div>';
-            /* fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(_connexion1),f1(page_connexion1())))) */
-            /* c_formulaire1(conteneur1('+this.fonction_liste+'),classe_et_methode1('+this.moi+'.filtre1($__num_page(0)))) */
             o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
             o1+='fo1(co1(' + this.fonction_liste + '),pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '($__num_page(0))))))';
             o1+='"';
@@ -819,37 +712,26 @@ class c_projets1{
                 $parametres+='m1(n1(__interface1),f1(choisir_dans_sous_fenetre1(';
                 $parametres+=' $nom_champ_dans_parent1(' + this.$nom_champ_dans_parent1 + ')';
                 $parametres+=' $nom_libelle_dans_parent1(' + this.$nom_libelle_dans_parent1 + ')';
-                $parametres+=' id1(' + elem['T0.chi_id_projet'] + ')';
-                if(elem['T0.chx_parent_dossier'] === null){
-                    $parametres+=' libelle1(\'' + elem['T0.chi_id_projet'] + '\')';
-                }else{
-                    let libelle1='';
-                    libelle1+='(' + elem['T0.chi_id_projet'] + ') ';
-                    libelle1+=elem['T0.chp_nom_projet'];
-                    $parametres+=' libelle1(\'' + __gi1.fi1( libelle1 ) + '\')';
-                }
+                $parametres+=' id1(' + elem['T0.chi_id_metier'] + ')';
+                let libelle1='';
+                libelle1+='(' + elem['T0.chi_id_metier'] + ') ';
+                libelle1+=elem['T0.chp_nom_metier'] ? ( ' , ' + elem['T0.chp_nom_metier'] ) : ( '' );
+                $parametres+=' libelle1(\'' + __gi1.fi1( libelle1 ) + '\')';
                 $parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + $parametres + '">=&gt;</div>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_projet'] !== null){
-                    lst+=elem['T0.chi_id_projet'];
+                if(elem['T0.chi_id_metier'] !== null){
+                    lst+=elem['T0.chi_id_metier'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_nom_projet'] !== null){
-                    lst+=elem['T0.chp_nom_projet'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.cht_commentaire_projet'] !== null){
-                    lst+=elem['T0.cht_commentaire_projet'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                if(elem['T0.chp_nom_metier'] !== null){
+                    lst+=elem['T0.chp_nom_metier'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -861,7 +743,6 @@ class c_projets1{
                 o1+='<th>action</th>';
                 o1+='<th>id</th>';
                 o1+='<th>nom</th>';
-                o1+='<th>commentaire</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -878,90 +759,50 @@ class c_projets1{
     zones_liste1( le_message_du_serveur ){
         let o1='';
         if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
-            /*
-              projet courant
-            */
-            this.$chi_id_projet=le_message_du_serveur.__xva.chi_id_projet;
-            /*  */
             let lst='';
             for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){
                 let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];
                 lst+='<tr>';
-                lst+='<td style="min-width:15em;">';
+                lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
-                /* yy_col_act_td1 */
-                /* activer */
-                if(this.$chi_id_projet === elem['T0.chi_id_projet']){
-                    lst+='<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>';
+                /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
+                if(elem['T0.chi_id_metier'] === 1){
+                    lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + __gi1.les_svg.poubelle + '</div>';
                 }else{
-                    if(elem['T0.chi_id_projet'] === 2){
-                        lst+='<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>';
-                    }else{
-                        lst+='<div class="rev_bouton yy__3 ' + (this.$chi_id_projet === elem['T0.chi_id_projet'] ? ( 'yy__3_inactif' ) : ( '' )) + '" data-rev_click="';
-                        lst+='pm1(m1(n1(' + this.moi + '),f1(activer1(';
-                        lst+=' $chi_id_projet(' + elem['T0.chi_id_projet'] + ')';
-                        lst+='))))';
-                        lst+='"  title="activer">=&gt;</div>';
-                    }
+                    lst+='<div class="rev_b_svg yy__2" data-rev_click="';
+                    lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))';
+                    lst+='">' + __gi1.les_svg.poubelle + '</div>';
                 }
-                /* DEsactiver */
-                if(this.$chi_id_projet === elem['T0.chi_id_projet']){
-                    lst+='<div class="rev_bouton yy__0 ' + (this.$chi_id_projet === elem['T0.chi_id_projet'] ? ( '' ) : ( 'yy__0_inactif' )) + '" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + '),f1(desactiver1(';
-                    lst+=' $chi_id_projet(' + elem['T0.chi_id_projet'] + ')';
-                    lst+='))))';
-                    lst+='"  title="désactiver">=&lt;</div>';
-                }else{
-                    lst+='<div class="rev_bouton yy__0 yy__0_inactif" >=&lt;</div>';
-                }
-                /* editer */
-                if(this.$chi_id_projet === 0 || this.$chi_id_projet !== elem['T0.chi_id_projet']){
-                    lst+='<div class="rev_b_svg yy__3 yy__3_inactif" >' + __gi1.les_svg.editer + '</div>';
-                    /* ✎ */
-                }else{
-                    lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + __gi1.les_svg.editer + '</div>';
-                }
-                /* supprimer */
-                if(elem['T0.chi_id_projet'] === 1 || elem['T0.chi_id_projet'] === 2){
-                    lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + __gi1.les_svg.poubelle + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + __gi1.les_svg.poubelle + '</div>';
-                }
-                if(elem['T0.chi_id_projet'] === 1
-                       && __gi1.chi_id_projet === 1
-                       && __gi1.chi_id_utilisateur === 1
-                       && __gi1._CA_.slice( -7 ) === '_rev_1_'
-                ){
-                    lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >initprojet 2</div>';
-                }
-                if(elem['T0.chi_id_projet'] === 2 && __gi1.chi_id_utilisateur === 1 && __gi1._CA_.slice( -7 ) === '_rev_2_'){
-                    lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
-                }
+                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))">' + __gi1.les_svg.editer + '</div>';
+                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))">' + __gi1.les_svg.dupliquer + '</div>';
                 lst+='</div>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_projet'] !== null){
-                    lst+=elem['T0.chi_id_projet'];
-                }
-                lst+='</td>';
-                /*
-                */
-                if(this.$chi_id_projet === elem['T0.chi_id_projet']){
-                    lst+='<td style="text-align:center;" class="yy__1">';
-                }else{
-                    lst+='<td style="text-align:center;">';
-                }
-                if(elem['T0.chp_nom_projet'] !== null){
-                    lst+=elem['T0.chp_nom_projet'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                if(elem['T0.chi_id_metier'] !== null){
+                    lst+=elem['T0.chi_id_metier'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.cht_commentaire_projet'] !== null){
-                    lst+=elem['T0.cht_commentaire_projet'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                if(elem['T0.chp_nom_metier'] !== null){
+                    lst+=__gi1.fi2( elem['T0.chp_nom_metier'] );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chx_parent_metier'] !== null){
+                    lst+=elem['T0.chx_parent_metier'];
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T1.chp_nom_metier'] !== null){
+                    lst+=__gi1.fi2( elem['T1.chp_nom_metier'] );
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -973,7 +814,8 @@ class c_projets1{
                 o1+='<th>action</th>';
                 o1+='<th>id</th>';
                 o1+='<th>nom</th>';
-                o1+='<th>commentaire</th>';
+                o1+='<th>id parent</th>';
+                o1+='<th>nom parent</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -988,4 +830,4 @@ class c_projets1{
       =============================================================================================================
     */
 }
-export{c_projets1 as c_projets1};
+export{c_metiers1 as c_metiers1};

@@ -97,6 +97,12 @@ class _fonctions1{
             } catch {}
             localStorage.setItem( __gi1.cle_lst0 , JSON.stringify( __gi1.stockage_local ) );
             __gi1.css1();
+            let zone_actuelle=document.getElementById( nom_zone + '_actuelle' );
+            if(zone_actuelle !== null){
+                try{
+                    zone_actuelle.innerHTML=__gi1.stockage_local[type_lsto][nom_zone].valeur;
+                } catch {}
+            }
         }
         return({"__xst" : __xsu});
     }
