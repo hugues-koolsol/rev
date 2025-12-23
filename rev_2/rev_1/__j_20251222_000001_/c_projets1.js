@@ -104,7 +104,7 @@ class c_projets1{
                     this.$filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + __gi1.les_svg.nouveau_document + '</div>';
+            this.vv_ecran_liste_boutons_avant+='<div id="vv_nouveau_projet" class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + __gi1.les_svg.nouveau_document + '</div>';
         }
     }
     /*
@@ -517,6 +517,7 @@ class c_projets1{
         __gi1.maj_hash( mat , 0 );
         __gi1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         __gi1.ajoute_les_evenements_aux_boutons();
+        document.getElementById('vv_ajouter_un_element_et_retour_a_la_ligne_'+this.moi).style.visibility='hidden';
         return({"__xst" : __xsu});
     }
     /*
@@ -877,6 +878,15 @@ class c_projets1{
     */
     zones_liste1( le_message_du_serveur ){
         let o1='';
+        if( __gi1.chi_id_projet === 1
+            && __gi1.chi_id_utilisateur === 1
+            && __gi1._CA_.slice( -7 ) === '_rev_1_'
+        ){
+            document.getElementById('vv_nouveau_projet').style.visibility='visible';
+        }else{
+            document.getElementById('vv_nouveau_projet').style.visibility='hidden';
+        }
+        
         if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
             /*
               projet courant
@@ -922,10 +932,18 @@ class c_projets1{
                     lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + __gi1.les_svg.editer + '</div>';
                 }
                 /* supprimer */
-                if(elem['T0.chi_id_projet'] === 1 || elem['T0.chi_id_projet'] === 2){
+                if(elem['T0.chi_id_projet'] <= 3){
                     lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + __gi1.les_svg.poubelle + '</div>';
                 }else{
-                    lst+='<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + __gi1.les_svg.poubelle + '</div>';
+                    /* seul le dev principal peut supprimer un projet */
+                    if( __gi1.chi_id_projet === 1
+                        && __gi1.chi_id_utilisateur === 1
+                        && __gi1._CA_.slice( -7 ) === '_rev_1_'
+                    ){
+                        lst+='<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + __gi1.les_svg.poubelle + '</div>';
+                    }else{
+                        lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + __gi1.les_svg.poubelle + '</div>';
+                    }
                 }
                 if(elem['T0.chi_id_projet'] === 1
                        && __gi1.chi_id_projet === 1

@@ -1171,8 +1171,10 @@ class c_concevoir_une_requete1{
                     nouvelle_chaine=nouvelle_chaine.replace( rgx , '\' . $par[\'' + matches[n].substr( 1 ) + '\'] . \'' );
                 }
             }
-            if(obj3.id_base_principale === ''){
+            /* if(obj3.id_base_principale === '' || nouvelle_chaine.substr(0,6)==='UPDATE' || nouvelle_chaine.substr(0,6)==='INSERT' || nouvelle_chaine.substr(0,6)==='SELECT'){ */
+            if(manuelle_sans_base_de_reference === true){
                 nouvelle_chaine=nouvelle_chaine.replace( /`'\.\$GLOBALS\[__BDD\]\[BDD_NUMERO_\]\[PREFIXE_BDD\]\.'`\./g , '' );
+                nouvelle_chaine=nouvelle_chaine.replace( /`'\.\$GLOBALS\[__BDD]\[BDD_NUMERO_1]\[PREFIXE_BDD]\.'`\./g , '' );
             }
             let c_est_un_select=false;
             for( let ind=1 ; ind < matrice_requete.length ; ind=matrice_requete[ind][12] ){

@@ -18,7 +18,7 @@ che_pour_les_js_dossier) VALUES
 ('16','__bdd_sqlite','2','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('17','__sqls','2','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('18','base_de_test_sur_rev_1','16','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('19','__j_20251221_000002_','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
+('19','__j_20251222_000001_','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1'),
 ('20','bibliotheques_externes','19','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
@@ -100,7 +100,7 @@ chx_acces_utilisateur,
 chd__dtm_utilisateur,
 chd__dtc_utilisateur,
 che__nur_utilisateur) VALUES
-('1','poipoip','$2y$10$e4kIJciV/2Z3QTINAY8blemS17E3NJfcR7M7fjgPT.gbtMZqwjIAm',NULL,'936','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('1','poipoip','$2y$10$e4kIJciV/2Z3QTINAY8blemS17E3NJfcR7M7fjgPT.gbtMZqwjIAm',NULL,'937','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','admin','$2y$10$iiy3WQzGJwIHynqQFiU8tuQwDZY7WRsl6SHLtRv9pRYtv2BgDQcEW',NULL,'6','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
@@ -4422,7 +4422,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('330','1','virer ⎘ 🗑 ✎','99','2025-11-30 08:05:33.590','2025-11-30 07:38:24.928','0'),
 ('331','1','virer cht_complements_menu','99','2025-12-01 16:38:47.277','2025-12-01 16:16:14.521','0'),
 ('332','1','ajouter la référence des insert/update/select/liste dans le js généré','99','2025-12-10 14:58:28.227','2025-12-02 08:52:43.777','0'),
-('333','1','git','2','2025-12-21 11:51:05.736','2025-12-15 12:31:19.368','0'),
+('333','1','git','99','2025-12-23 08:29:27.643','2025-12-15 12:31:19.368','0'),
 ('334','1','ajouter un champ table_reference de requête','99','2025-12-16 15:26:02.509','2025-12-16 12:43:15.811','0'),
 ('335','1','popup d''exemple d''appel de select en php pour une requête','99','2025-12-19 10:51:52.719','2025-12-16 15:25:58.058','0'),
 ('336','1','batch de compilation 
@@ -7863,7 +7863,22 @@ LIMIT :quantitee OFFSET :debut
  FROM b1.tbl_requetes T0
 WHERE (`T0`.`chp_table_reference_requete` = :T0_chp_table_reference_requete
    AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete)
-;',NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes');
+;',NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
+('392',NULL,'requete_manuelle','modifier(
+   valeurs(
+      affecte(champ(`chi_id_projet`),:n_chi_id_projet)
+      affecte(champ(`chp_nom_projet`),:n_chp_nom_projet)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
+)              ','UPDATE b1.tbl_projets SET 
+   `chi_id_projet` = :n_chi_id_projet , 
+   `chp_nom_projet` = :n_chp_nom_projet
+WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets');
 
 
 /*

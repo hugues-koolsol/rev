@@ -2079,6 +2079,7 @@ class __interface1{
     */
     initialisation_des_zones( nom_module ){
         let o1='';
+        let tt1='';
         o1+='<div>';
         o1+=' <h1 id="vv_titre_de_la_page"></h1>';
         o1+=' <div id="vv_retour_a_la_liste1" title="retour à la liste" ';
@@ -2107,15 +2108,10 @@ class __interface1{
         */
         o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
-        o1+='  <div class="rev_bouton yy__3" ';
-        o1+='   data-rev_click="fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))"';
-        o1+='   title="" >ajouter';
-        o1+='  </div>';
-        /*  */
-        o1+='  <div class="rev_bouton yy__3" ';
-        o1+='   data-rev_click="fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))" ';
-        o1+='   title="">ajouter et revenir à la liste';
-        o1+='  </div>';
+        tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
+        o1+=' <div id="vv_ajouter_un_element_'+nom_module+'" class="rev_bouton yy__3" data-rev_click="'+tt1+'">ajouter</div>';
+        tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
+        o1+=' <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_'+nom_module+'" class="rev_bouton yy__3" data-rev_click="'+tt1+'">ajouter et revenir à la liste</div>';
         o1+='</div>';
         /*
           suppression
@@ -2759,6 +2755,7 @@ class __interface1{
         t+='h5{font-size:1.2em;margin-bottom:0.2em;}';
         t+='h6{font-size:1.1em;margin-bottom:0.1em;}';
         t+='table{margin-left:auto;margin-right:auto;}';
+        t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
         t+='input[type="password"],input[type="text"],input[type="number"]{';
         t+='    min-width: var(--t_boutons_carres);';
         t+='    display:inline-block;';

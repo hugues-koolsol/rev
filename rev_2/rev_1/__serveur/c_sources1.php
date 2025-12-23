@@ -634,11 +634,11 @@ class c_sources1{
             }else{
 
                 $donnees_retournees[__xsi][__xer][]='fichier physique ' . $tt116[__xva][0]['T0.chp_nom_source'] . ' non trouvé sur disque [' . __LINE__ . ']';
-                return;
             }
 
 
         }
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $tt116[__xva][0] , true ) . '</pre>' ; exit(0); */
 
         $donnees_retournees[__xva]['ne_pas_retablir_les_elements_masques']=__xsu;
         $donnees_retournees[__xva]['contenu_disque']=$contenu_disque;

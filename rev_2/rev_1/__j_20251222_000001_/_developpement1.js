@@ -251,6 +251,9 @@ class _developpement1{
           Si la matrice est trop grosse, il y a une erreur de transmission des données.
           
         */
+        if(!le_message_du_serveur.__xva.hasOwnProperty('contenu_bdd')){
+            debugger;
+        }
         let nombre_max_de_lignes_dans_la_matrice=64000;
         if(le_message_du_serveur.__xva.contenu_bdd['T0.chx_dossier_id_source'] === null){
             /*

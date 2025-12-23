@@ -450,7 +450,7 @@ class c_projets1{
         if(!is_dir($dir2)){
 
             
-            if(mkdir($dir2,0777)){
+            if(mkdir($dir2,0777,true)){
 
 
             }else{
@@ -955,6 +955,87 @@ class c_projets1{
     /*
       =============================================================================================================
     */
+    function delete_directory($dir){
+
+        /* Check if the directory exists*/
+        
+        if(!file_exists($dir)){
+
+            return true;
+
+        }
+
+        /* If it's a file, delete it*/
+        
+        if(!is_dir($dir)){
+
+            return unlink($dir);
+
+        }
+
+        /* Scan the directory and loop through its contents*/
+        foreach(scandir($dir) as $item){
+            /* Skip the special entries '.' and '..'*/
+            
+            if($item == '.' || $item == '..'){
+
+                continue;
+
+            }
+
+            /* Recursively delete the contents*/
+            
+            if(!$this->delete_directory($dir . DIRECTORY_SEPARATOR . $item)){
+
+                return false;
+
+            }
+
+        }
+        /* Remove the directory itself*/
+        return rmdir($dir);
+
+    }    
+    /*
+      =============================================================================================================
+    */
+    function actions_apres_supprimer(&$mat,&$d,&$donnees_retournees,&$donnees_recues,&$__xva){
+        
+        if($__xva['T0.chi_id_projet'] <= 3){
+         
+            $donnees_retournees[__xsi][__xer][]='ce projet ne peut pas être supprimé [' . __LINE__ . ']'; 
+            return array( __xst => __xsu);
+            
+        }
+        
+        $chemin=__CHEMIN_ABSOLU_SITE__ . 'rev_' . $__xva['T0.chi_id_projet'];
+        
+        if(!is_dir($chemin)){
+            return array( __xst => __xsu);
+        }
+        $chemin_date=date('Y') . DIRECTORY_SEPARATOR . date('m') . DIRECTORY_SEPARATOR . date('d') . DIRECTORY_SEPARATOR . date('H') . DIRECTORY_SEPARATOR . date('i') . DIRECTORY_SEPARATOR . date('s') . DIRECTORY_SEPARATOR;
+        $chemin_absolu_sauvegarde=__CHEMIN_ABSOLU_SITE__ . 'sauvegarde_fichiers/anciens_projets/rev_' . $__xva['T0.chi_id_projet'] . DIRECTORY_SEPARATOR . $chemin_date ;
+        
+        $obj=$this->rcopydir($chemin,$chemin_absolu_sauvegarde);
+        
+        if($obj[__xst] !== __xsu){
+
+            $donnees_retournees[__xsi][__xer][]='impossible de copier les fichiers [' . __LINE__ . ']';
+            return;
+
+        }
+        if(!$this->delete_directory($chemin)){
+            $donnees_retournees[__xsi][__xer][]='le dossier n\'a pas pu être supprimé [' . __LINE__ . ']'; 
+            return array( __xst => __xsu);
+        }
+        
+        
+        return array( __xst => __xsu);
+    }
+    
+    /*
+      =============================================================================================================
+    */
     function actions_apres_modifier(&$mat,&$d,&$donnees_retournees,&$donnees_recues,&$form,&$xva_avant){
         /* $donnees_retournees[__xsi][__xdv][]='AFR ajouter ou pas des "actions_apres_modifier" [' . __LINE__ . ']';*/
         /* return(array(__xst=>__xer));*/
@@ -1095,16 +1176,18 @@ class c_projets1{
     /*
       =============================================================================================================
     */
-    function action_apres_creer(&$mat,&$d,&$donnees_retournees,&$donnees_recues,$nouvel_id){
-        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $nouvel_id , true ) . '</pre>' ; exit(0);*/
+    function action_apres_creer(&$mat,&$d,&$donnees_retournees,&$donnees_recues,$nouvel_id,$form){
+        /* echo __FILE__ . ' ' . __LINE__ . ' $nouvel_id = <pre>' . var_export( $nouvel_id , true ) . '</pre> $donnees_recues = <pre>' . var_export( $donnees_recues , true ) . '</pre>' ; exit(0); */
+        $chp_nom_projet=$form['chp_nom_projet'];
         /*
           =====================================================================================================
           on peut créer la nouvelle base de description du projet
           =====================================================================================================
         */
-        $chemin_base=__RACINE_PGMS__ . '__bdd_sqlite/bdd_' . $nouvel_id . '.sqlite';
+        $chemin_base_systeme_du_projet=__RACINE_PGMS__ . '__bdd_sqlite/bdd_' . $nouvel_id . '.sqlite';
+        $chemin_base_de_reference=__RACINE_PGMS__ . '__bdd_sqlite/bdd_3.sqlite';
         
-        if(is_file($chemin_base)){
+        if(is_file($chemin_base_systeme_du_projet)){
 
             /*
               pourquoi ce fichier existe ?
@@ -1113,6 +1196,96 @@ class c_projets1{
             return;
 
         }
+        
+        $chemin=__CHEMIN_ABSOLU_SITE__ . 'rev_' . $nouvel_id;
+        
+        if(is_dir($chemin)){
+            $donnees_retournees[__xsi][__xer][]='le répertoire racine du nouveau projet existe déjà [' . __LINE__ . ']';
+            return;
+        }
+        
+        /*
+          on tente de créer le répertoire racine
+        */
+        $reprendre_les_fido=false;
+        $une_erreur=false;
+        
+        if(is_dir($chemin)){
+
+            $donnees_retournees[__xsi][__xal][]='le dossier racine existe déjà, il faudra éventuellement reprendre ses fidos [' . __LINE__ . ']';
+            $reprendre_les_fido=true;
+
+        }else{
+
+            
+            if((@mkdir(__CHEMIN_ABSOLU_SITE__ . 'rev_' . $nouvel_id))){
+
+
+            }else{
+
+                $une_erreur=true;
+            }
+
+        }
+        
+
+        /*
+          on crée un clone de la base système du projet 3 qui contiendra tout le projet nnn
+          ce clone est sans les SANS le PRAGMA foreign_keys=ON; car on doit pouvoir
+          insérer :
+          le dossier racine qui pointe sur lui même
+          le projet 
+        */
+        
+        if(!copy($chemin_base_de_reference,$chemin_base_systeme_du_projet)){
+
+            $donnees_retournees[__xsi][__xer][]='le fichier de la base de donnée du projet n\'a pas pu être dupliqué [' . __LINE__ . ']';
+            return;
+        }
+        
+        $db_nouvelle=new SQLite3($chemin_base_systeme_du_projet);
+        
+        $tt392=/*sql_inclure_deb*/
+            /* sql_392()
+            UPDATE b1.tbl_projets SET 
+               `chi_id_projet` = :n_chi_id_projet , 
+               `chp_nom_projet` = :n_chp_nom_projet
+            WHERE `chi_id_projet` = :c_chi_id_projet ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(
+             /*sql_392()*/ 392,
+            array(/**/
+                'c_chi_id_projet' => 3,
+                'n_chi_id_projet' => $nouvel_id,
+                'n_chp_nom_projet' => $chp_nom_projet
+            ),
+            $donnees_retournees,
+            $db_nouvelle
+        );
+
+        if($tt392[__xst] !== __xsu){
+
+            $donnees_retournees[__xsi][__xer][]='le numéro de projet n\'a pas pu être changé dans la nouvelle base système [' . __LINE__ . ']';
+            return;
+
+        }
+        
+        $chemin_3=__CHEMIN_ABSOLU_SITE__ . 'rev_3';
+        $chemin_nouveau=__CHEMIN_ABSOLU_SITE__ . 'rev_' . $nouvel_id;
+        
+        $obj=$this->rcopydir($chemin_3,$chemin_nouveau);
+        
+        if($obj[__xst] !== __xsu){
+
+            $donnees_retournees[__xsi][__xer][]='impossible de copier les fichiers [' . __LINE__ . ']';
+            return;
+
+        }
+        
+        
+        return;
+        
 
         /*
           on crée un clone de la base système du projet 1 qui contiendra tout le projet nnn
@@ -1622,9 +1795,10 @@ class c_projets1{
         $form=$donnees_recues[__xva][__fo1][$nom_formulaire];
         /*fonctions_spéciales1(ne_pas_supprimer_id_un(1))*/
         
-        if($form['chi_id_projet'] === 1){
-
-            $donnees_retournees[__xsi][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+        
+        if($form['chi_id_projet'] <= 3){
+         
+            $donnees_retournees[__xsi][__xer][]='ce projet ne peut pas être supprimé [' . __LINE__ . ']'; 
             return;
 
         }
@@ -1681,6 +1855,15 @@ class c_projets1{
             ),
             $donnees_retournees
         );
+
+        if($tt382[__xst] !== __xsu){
+
+            return;
+
+        }
+
+        $__actions_apres_supprimer=$this->actions_apres_supprimer($mat,$d,$donnees_retournees,$donnees_recues,$tt375[__xva][0]);
+
         
         if(isset($form['__mat_liste_si_ok'])){
 
@@ -1812,7 +1995,7 @@ class c_projets1{
             
             if($retour_a_la_liste === false){
 
-                $this->page_modification1($mat,$d,$donnees_retournees,$donnees_recues,$tt377['nouvel_id']);
+                $this->page_modification1($mat,$d,$donnees_retournees,$donnees_recues,$tt377['nouvel_id'],$form);
                 return;
 
             }

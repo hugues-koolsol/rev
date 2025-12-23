@@ -4342,4 +4342,26 @@ WHERE (`T0`.`chp_table_reference_requete` = :T0_chp_table_reference_requete
    )
 )  ',
   ),
+  392 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_projets SET 
+   `chi_id_projet` = :n_chi_id_projet , 
+   `chp_nom_projet` = :n_chp_nom_projet
+WHERE `chi_id_projet` = :c_chi_id_projet ;',
+    'cht_commentaire_requete' => NULL,
+    'chp_type_requete' => 'requete_manuelle',
+    'che_est_souche_requete' => 0,
+    'cht_rev_requete' => 'modifier(
+   valeurs(
+      affecte(champ(`chi_id_projet`),:n_chi_id_projet)
+      affecte(champ(`chp_nom_projet`),:n_chp_nom_projet)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
+)              ',
+  ),
 );

@@ -512,7 +512,7 @@ function demarre_services(&$donnees_retournees){
         LIEN_BDD => null
     );
     
-    if(substr(_CA_,-7) === '_rev_1_'){
+    if(substr(_CA_,-7) === '_rev_1_' || substr(_CA_,-7) === '_rev_2_'){
 
         $chemin_bdd=__RACINE_PGMS__ . '__bdd_sqlite/bdd_1.sqlite';
 
