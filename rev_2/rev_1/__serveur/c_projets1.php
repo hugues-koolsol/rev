@@ -22,6 +22,43 @@ class c_projets1{
         $donnees_retournees[__xst]=__xsu;
     }
     /*
+      =====================================================================================================================
+    */
+    function page_creer1(&$mat,&$d,&$donnees_retournees,&$donnees_recues){
+
+        $donnees_retournees[__xst]=__xsu;
+        $tt393=/*sql_inclure_deb*/
+            /* sql_393()
+            SELECT 
+            `T0`.`chi_id_projet`
+             FROM b1.tbl_projets T0 ORDER BY  T0.chi_id_projet DESC  LIMIT 1 OFFSET 0 
+            ;
+            */
+            /*sql_inclure_fin*/
+            $this->sql0->sql_iii(393,array(),$donnees_retournees);
+        
+        if($tt393[__xst] !== __xsu){
+
+            $donnees_retournees[__xsi][__xer][]=__METHOD__ . ' [' . __LINE__ . ']';
+            return;
+
+        }
+
+        $nouveau_numero_projet=$tt393[__xva][0]['T0.chi_id_projet'] + 1;
+        $chemin_base_systeme_du_projet=__RACINE_PGMS__ . '__bdd_sqlite/bdd_' . $nouveau_numero_projet . '.sqlite';
+        
+        if(is_file($chemin_base_systeme_du_projet)){
+
+            $donnees_retournees[__xst]=__xer;
+            $donnees_retournees[__xsi][__xer][]='la base de donnée système "bdd_' . $nouveau_numero_projet . '" existe donc le projet ne peut être créé. [' . __LINE__ . ']';
+            return;
+
+        }
+
+        $donnees_retournees[__xst]=__xsu;
+
+    }
+    /*
       =============================================================================================================
       fonction utilisée seulement dans rev_2
     */
@@ -1013,7 +1050,7 @@ class c_projets1{
         if(!is_dir($chemin)){
             return array( __xst => __xsu);
         }
-        $chemin_date=date('Y') . DIRECTORY_SEPARATOR . date('m') . DIRECTORY_SEPARATOR . date('d') . DIRECTORY_SEPARATOR . date('H') . DIRECTORY_SEPARATOR . date('i') . DIRECTORY_SEPARATOR . date('s') . DIRECTORY_SEPARATOR;
+        $chemin_date=date('Y') . DIRECTORY_SEPARATOR . date('m') . DIRECTORY_SEPARATOR . date('d') . DIRECTORY_SEPARATOR . date('H') . '_' . date('i') . '_' . date('s') . DIRECTORY_SEPARATOR;
         $chemin_absolu_sauvegarde=__CHEMIN_ABSOLU_SITE__ . 'sauvegarde_fichiers/anciens_projets/rev_' . $__xva['T0.chi_id_projet'] . DIRECTORY_SEPARATOR . $chemin_date ;
         
         $obj=$this->rcopydir($chemin,$chemin_absolu_sauvegarde);
@@ -1935,7 +1972,7 @@ class c_projets1{
       =============================================================================================================
     */
     function creer1(&$mat,&$d,&$donnees_retournees,&$donnees_recues){
-        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . $d . var_export( $donnees_recues , true ) . '</pre>' ; exit(0);*/
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . $d . var_export( $donnees_recues , true ) . '</pre>' ; exit(0); */
         $retour_a_la_liste=false;
         $l01=count($mat);
         for( $i=$d + 1 ; $i < $l01 ; $i=$mat[$i][12] ){
@@ -1948,6 +1985,7 @@ class c_projets1{
             }
 
         }
+
         $nom_formulaire=$donnees_recues[__xva]['__co1'];
         $form=$donnees_recues[__xva][__fo1][$nom_formulaire];
         
@@ -1991,11 +2029,11 @@ class c_projets1{
         
         if($tt377[__xst] === __xsu && $tt377['changements'] === 1){
 
-            $this->action_apres_creer($mat,$d,$donnees_retournees,$donnees_recues,$tt377['nouvel_id']);
+            $this->action_apres_creer($mat,$d,$donnees_retournees,$donnees_recues,$tt377['nouvel_id'],$form);
             
             if($retour_a_la_liste === false){
 
-                $this->page_modification1($mat,$d,$donnees_retournees,$donnees_recues,$tt377['nouvel_id'],$form);
+                $this->page_modification1($mat,$d,$donnees_retournees,$donnees_recues,$tt377['nouvel_id']);
                 return;
 
             }

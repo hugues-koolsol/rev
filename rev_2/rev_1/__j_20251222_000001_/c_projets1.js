@@ -25,6 +25,34 @@ class c_projets1{
     /*
       =============================================================================================================
     */
+    constructor( mat , d ){
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === '$nom_champ_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                this.$nom_champ_dans_parent1=mat[i + 1][1];
+            }else if(mat[i][1] === '$nom_libelle_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                this.$nom_libelle_dans_parent1=mat[i + 1][1];
+            }
+        }
+        for(let i in this.tableau_des_filtres){
+            this.$filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.$filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        if(this.fonction_liste === 'liste1'){
+            let aa=sessionStorage.getItem( __gi1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste );
+            if(aa !== null){
+                let jso=JSON.parse( aa );
+                for(let i in this.tableau_des_filtres[this.fonction_liste]){
+                    this.$filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
+                }
+            }
+            this.vv_ecran_liste_boutons_avant+='<div id="vv_nouveau_projet" class="rev_b_svg yy__xif" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_creer1())))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + __gi1.les_svg.nouveau_document + '</div>';
+        }
+    }
+    /*
+      =============================================================================================================
+    */
     initialiser_le_clone( mat , d , le_message_du_serveur ){
         __gi1.maj_menu( mat , d , le_message_du_serveur );
         this.liste_du_menu0( null , null );
@@ -78,34 +106,6 @@ class c_projets1{
                 
         }
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    constructor( mat , d ){
-        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
-            if(mat[i][1] === '$nom_champ_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                this.$nom_champ_dans_parent1=mat[i + 1][1];
-            }else if(mat[i][1] === '$nom_libelle_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                this.$nom_libelle_dans_parent1=mat[i + 1][1];
-            }
-        }
-        for(let i in this.tableau_des_filtres){
-            this.$filtres[i]={};
-            for(let j in this.tableau_des_filtres[i]){
-                this.$filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
-            }
-        }
-        if(this.fonction_liste === 'liste1'){
-            let aa=sessionStorage.getItem( __gi1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste );
-            if(aa !== null){
-                let jso=JSON.parse( aa );
-                for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                    this.$filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
-                }
-            }
-            this.vv_ecran_liste_boutons_avant+='<div id="vv_nouveau_projet" class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + __gi1.les_svg.nouveau_document + '</div>';
-        }
     }
     /*
       =============================================================================================================
@@ -429,6 +429,16 @@ class c_projets1{
     verifier_creer1( mat , d , données ){
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        
+        let retour_a_la_liste='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
+                retour_a_la_liste='retour_a_la_liste()';
+            }
+        }
+        
+        
         if(fo1['chp_nom_projet'] === ''){
             __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "nom" doit être renseigné'} );
             __gi1.affiche_les_messages();
@@ -444,7 +454,7 @@ class c_projets1{
         let __fo1={};
         __fo1[co1]=fo1;
         __gi1.__worker.postMessage( {
-                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1())))' ,
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__parametres" : __gi1.stockage_local['parametres'] ,"__fo1" : __fo1 ,"__co1" : co1}
             } );
         return({"__xst" : __xsu});
@@ -474,11 +484,7 @@ class c_projets1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <textarea id="chp_nom_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        /* if(false && isset($donnees_recues['dupliquer']['T0.chp_nom_projet'])){; */
-        /* o1 += enti1($donnees_recues['dupliquer']['T0.chp_nom_projet']); */
-        /* }else{ */
         o1+='';
-        /* } */
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -493,11 +499,7 @@ class c_projets1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <textarea id="cht_commentaire_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        /* if(false && isset($donnees_recues['dupliquer']['T0.cht_commentaire_projet'])){; */
-        /* o1 += enti1($donnees_recues['dupliquer']['T0.cht_commentaire_projet']); */
-        /* }else{ */
         o1+='';
-        /* } */
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -517,7 +519,7 @@ class c_projets1{
         __gi1.maj_hash( mat , 0 );
         __gi1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         __gi1.ajoute_les_evenements_aux_boutons();
-        document.getElementById('vv_ajouter_un_element_et_retour_a_la_ligne_'+this.moi).style.visibility='hidden';
+        document.getElementById('vv_ajouter_un_element_'+this.moi).style.visibility='hidden';
         return({"__xst" : __xsu});
     }
     /*

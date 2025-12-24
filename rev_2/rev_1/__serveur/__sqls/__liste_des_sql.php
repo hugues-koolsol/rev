@@ -4364,4 +4364,27 @@ WHERE `chi_id_projet` = :c_chi_id_projet ;',
    conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
 )              ',
   ),
+  393 => 
+  array (
+    'cht_sql_requete' => 'SELECT 
+`T0`.`chi_id_projet`
+ FROM b1.tbl_projets T0 ORDER BY  T0.chi_id_projet DESC  LIMIT 1 OFFSET 0 
+;',
+    'cht_commentaire_requete' => 'projets',
+    'chp_type_requete' => 'select',
+    'che_est_souche_requete' => 0,
+    'cht_rev_requete' => 'sélectionner(
+   base_de_reference(1),
+   valeurs(champ(`T0`,`chi_id_projet`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
+      )
+   ),
+   complements(
+      trier_par((champ(T0.chi_id_projet),décroissant())),
+      limité_à(quantité(1),début(0))
+   )
+)  ',
+  ),
 );
