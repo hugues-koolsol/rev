@@ -1,3 +1,4 @@
+'use strict';
 import {__rev1} from './__rev1.js';
 import {__fnt1} from './__fnt1.js';
 import {menu_arbre1} from './menu_arbre1.js';
@@ -7,9 +8,9 @@ import {menu_arbre1} from './menu_arbre1.js';
   #traite_message_recupere_du_worker
   #init0
   traite_action1
+  html_principal
   affiche_page_d_accueil
   maj_menu
-  html_principal
   initialisation_des_zones
   afficher_les_zones
   construire_navigation_pour_liste
