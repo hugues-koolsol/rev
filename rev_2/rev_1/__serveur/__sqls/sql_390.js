@@ -1,5 +1,24 @@
-<?php
-function sql_390($par,&$donnees_retournees,$that){
+class sql_390{
+    /*
+      =============================================================================================================
+      node:sqlite
+    */
+    moi='sql_390';
+    __gi1=null;
+    __db1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor(__gi1,__db1){
+//        console.log( 'constructor ' + this.moi );
+        this.__gi1=__gi1;
+        this.__db1=__db1;
+    }
+    /*
+      =============================================================================================================
+    */
+    async sql(par,donnees_retournees){
+
     $sql0='
       INSERT  INTO `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_requetes`(
          `chp_type_requete` , 
@@ -48,3 +67,4 @@ function sql_390($par,&$donnees_retournees,$that){
         );
     }
 }
+export{sql_390 as sql_390};

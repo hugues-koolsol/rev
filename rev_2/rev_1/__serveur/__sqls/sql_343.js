@@ -1,23 +1,27 @@
-<?php
-function sql_355($par,&$donnees_retournees,$that){
+class sql_343{
+    /*
+      =============================================================================================================
+      node:sqlite
+    */
+    moi='sql_343';
+    __gi1=null;
+    __db1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor(__gi1,__db1){
+//        console.log( 'constructor ' + this.moi );
+        this.__gi1=__gi1;
+        this.__db1=__db1;
+    }
+    /*
+      =============================================================================================================
+    */
+    async sql(par,donnees_retournees){
+
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_requetes` SET '.PHP_EOL;
     $tableau_champs=array();
 
-    if($par['n_che_est_souche_requete']==='' || is_null($par['n_che_est_souche_requete']) ){
-        $tableau_champs[]='`che_est_souche_requete` = NULL';
-    }else{
-        $tableau_champs[]='`che_est_souche_requete` = '.sq0($par['n_che_est_souche_requete']).'';
-    }
-    if($par['n_chp_type_requete']==='' || is_null($par['n_chp_type_requete']) ){
-        $tableau_champs[]='`chp_type_requete` = NULL';
-    }else{
-        $tableau_champs[]='`chp_type_requete` = \''.sq0($par['n_chp_type_requete']).'\'';
-    }
-    if($par['n_cht_rev_requete']==='' || is_null($par['n_cht_rev_requete']) ){
-        $tableau_champs[]='`cht_rev_requete` = NULL';
-    }else{
-        $tableau_champs[]='`cht_rev_requete` = \''.sq0($par['n_cht_rev_requete']).'\'';
-    }
     if($par['n_cht_sql_requete']==='' || is_null($par['n_cht_sql_requete']) ){
         $tableau_champs[]='`cht_sql_requete` = NULL';
     }else{
@@ -27,11 +31,6 @@ function sql_355($par,&$donnees_retournees,$that){
         $tableau_champs[]='`cht_php_requete` = NULL';
     }else{
         $tableau_champs[]='`cht_php_requete` = \''.sq0($par['n_cht_php_requete']).'\'';
-    }
-    if($par['n_cht_commentaire_requete']==='' || is_null($par['n_cht_commentaire_requete']) ){
-        $tableau_champs[]='`cht_commentaire_requete` = NULL';
-    }else{
-        $tableau_champs[]='`cht_commentaire_requete` = \''.sq0($par['n_cht_commentaire_requete']).'\'';
     }
     if($par['n_chp_table_reference_requete']==='' || is_null($par['n_chp_table_reference_requete']) ){
         $tableau_champs[]='`chp_table_reference_requete` = NULL';
@@ -73,3 +72,4 @@ function sql_355($par,&$donnees_retournees,$that){
         );
     }
 }
+export{sql_343 as sql_343};

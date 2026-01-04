@@ -142,6 +142,7 @@ class c_requetes1{
                     'c_chi_id_requete' => $donnees_recues[__xva]['chi_id_requete'],
                     'n_cht_sql_requete' => $donnees_recues[__xva]['cht_sql_requete'],
                     'n_cht_php_requete' => '',
+                    'n_cht_js_requete' => '',
                     'n_chp_table_reference_requete' => $donnees_recues[__xva]['chp_table_reference_requete']
                 ),
                 $donnees_retournees
@@ -165,6 +166,7 @@ class c_requetes1{
                     'c_chi_id_requete' => $donnees_recues[__xva]['chi_id_requete'],
                     'n_cht_sql_requete' => $donnees_recues[__xva]['cht_sql_requete'],
                     'n_cht_php_requete' => $donnees_recues[__xva]['cht_php_requete'],
+                    'n_cht_js_requete' => $donnees_recues[__xva]['cht_php_requete'],
                     'n_chp_table_reference_requete' => $donnees_recues[__xva]['chp_table_reference_requete']
                 ),
                 $donnees_retournees
@@ -188,14 +190,34 @@ class c_requetes1{
             
             if($GLOBALS[DEVER_SRV] >= 1){
 
-                $donnees_retournees[__xsi][__xsu][]='le sql a bien été compilé et réécrit [' . __LINE__ . ']';
+                $donnees_retournees[__xsi][__xsu][]='le php sql a bien été compilé et réécrit [' . __LINE__ . ']';
 
             }
 
 
         }else{
 
-            $donnees_retournees[__xsi][__xal][]='le sql a bien été enregistré mais n\'a pas pu être écrit sur disque [' . __LINE__ . ']';
+            $donnees_retournees[__xsi][__xal][]='le php sql a bien été enregistré mais n\'a pas pu être écrit sur disque [' . __LINE__ . ']';
+        }
+
+        
+        $chemin_fichier=$_SESSION[_CA_]['chemin_des_sql'] . 'sql_' . $donnees_recues[__xva]['chi_id_requete'] . '.js';
+        /* echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( $chemin_fichier , true ) . '</pre>' ; exit(0);*/
+        
+        if($this->ecrire_php_sur_disque($mat,$d,$donnees_retournees,$donnees_recues,$chemin_fichier,$donnees_recues[__xva]['cht_js_requete'])
+        ){
+
+            
+            if($GLOBALS[DEVER_SRV] >= 1){
+
+                $donnees_retournees[__xsi][__xsu][]='le js sql a bien été compilé et réécrit [' . __LINE__ . ']';
+
+            }
+
+
+        }else{
+
+            $donnees_retournees[__xsi][__xal][]='le js sql a bien été enregistré mais n\'a pas pu être écrit sur disque [' . __LINE__ . ']';
         }
 
         
@@ -293,7 +315,7 @@ class c_requetes1{
         }
 
         
-        if(substr($contenu,0,5) !== '<?php'){
+        if(substr($chemin_fichier,-4)==='.php' && substr($contenu,0,5) !== '<?php'){
 
             $contenu='<?php' . PHP_EOL . $contenu;
 
@@ -304,10 +326,15 @@ class c_requetes1{
         $contenu=str_replace("\n","\r\n",$contenu);
         
         if((@file_put_contents($chemin_fichier,$contenu))){
+         
+            if(substr($chemin_fichier,-4)==='.php'){
 
-            require_once(__RACINE_PGMS__ . 'c_concevoir_une_requete1.php');
-            $c_concevoir_une_requete1=new c_concevoir_une_requete1($mat,$d,$donnees_retournees,$donnees_recues);
-            $c_concevoir_une_requete1->construire_le_js_des_requetes($donnees_retournees);
+                require_once(__RACINE_PGMS__ . 'c_concevoir_une_requete1.php');
+                $c_concevoir_une_requete1=new c_concevoir_une_requete1($mat,$d,$donnees_retournees,$donnees_recues);
+                $c_concevoir_une_requete1->construire_le_js_contenant_la_liste_des_requetes($donnees_retournees);
+                
+            }
+            
             return true;
 
         }else{
@@ -350,7 +377,7 @@ class c_requetes1{
 
             require_once(__RACINE_PGMS__ . 'c_concevoir_une_requete1.php');
             $c_concevoir_une_requete1=new c_concevoir_une_requete1($mat,$d,$donnees_retournees,$donnees_recues);
-            $c_concevoir_une_requete1->construire_le_js_des_requetes($donnees_retournees);
+            $c_concevoir_une_requete1->construire_le_js_contenant_la_liste_des_requetes($donnees_retournees);
 
         }
 
@@ -512,7 +539,7 @@ class c_requetes1{
         /* return(array(__xst=>__xer));*/
         require_once(__RACINE_PGMS__ . 'c_concevoir_une_requete1.php');
         $c_concevoir_une_requete1=new c_concevoir_une_requete1($mat,$d,$donnees_retournees,$donnees_recues);
-        $c_concevoir_une_requete1->construire_le_js_des_requetes($donnees_retournees);
+        $c_concevoir_une_requete1->construire_le_js_contenant_la_liste_des_requetes($donnees_retournees);
         return array( __xst => __xsu);
     }
     /*
@@ -543,7 +570,7 @@ class c_requetes1{
         /* return(array(__xst=>__xer));*/
         require_once(__RACINE_PGMS__ . 'c_concevoir_une_requete1.php');
         $c_concevoir_une_requete1=new c_concevoir_une_requete1($mat,$d,$donnees_retournees,$donnees_recues);
-        $c_concevoir_une_requete1->construire_le_js_des_requetes($donnees_retournees);
+        $c_concevoir_une_requete1->construire_le_js_contenant_la_liste_des_requetes($donnees_retournees);
         return array( __xst => __xsu);
     }
     /*
@@ -567,7 +594,7 @@ class c_requetes1{
         */
         require_once(__RACINE_PGMS__ . 'c_concevoir_une_requete1.php');
         $c_concevoir_une_requete1=new c_concevoir_une_requete1($mat,$d,$donnees_retournees,$donnees_recues);
-        $c_concevoir_une_requete1->construire_le_js_des_requetes($donnees_retournees);
+        $c_concevoir_une_requete1->construire_le_js_contenant_la_liste_des_requetes($donnees_retournees);
     }
     /*
       =============================================================================================================

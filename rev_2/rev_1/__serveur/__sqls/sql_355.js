@@ -1,5 +1,22 @@
-<?php
-function sql_355($par,&$donnees_retournees,$that){
+class sql_355{
+    /*
+      =============================================================================================================
+    */
+    moi='sql_355';
+    __gi1=null;
+    __db1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor(__gi1,__db1){
+        this.__gi1=__gi1;
+        this.__db1=__db1;
+    }
+    /*
+      =============================================================================================================
+    */
+    async sql(par,donnees_retournees){
+
     $sql0='UPDATE `'.$GLOBALS[__BDD][BDD_NUMERO_1][PREFIXE_BDD].'`.`tbl_requetes` SET '.PHP_EOL;
     $tableau_champs=array();
 
@@ -73,3 +90,4 @@ function sql_355($par,&$donnees_retournees,$that){
         );
     }
 }
+export{sql_355 as sql_355};

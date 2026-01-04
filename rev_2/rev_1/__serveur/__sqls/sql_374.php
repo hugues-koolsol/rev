@@ -4,8 +4,7 @@ function sql_374($par,&$donnees_retournees,$that){
         $donnees_retournees[__xsi][__xif][]='info <b>sql_374</b>';
     }
     $champs0='
-      `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , 
-      `T0`.`cht_commentaire_projet`
+      `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
     ';
     $sql0='SELECT '.$champs0;
     $from0='
@@ -39,9 +38,6 @@ function sql_374($par,&$donnees_retournees,$that){
                 'T0.chi_id_projet' => $tab0[0],
                 'T0.chp_nom_projet' => $tab0[1],
                 'T0.cht_commentaire_projet' => $tab0[2],
-                'T0.chi_id_projet' => $tab0[3],
-                'T0.chp_nom_projet' => $tab0[4],
-                'T0.cht_commentaire_projet' => $tab0[5],
             );
         }
         $stmt0->close();

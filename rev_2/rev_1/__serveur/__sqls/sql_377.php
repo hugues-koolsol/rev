@@ -6,6 +6,24 @@ function sql_377($par,&$donnees_retournees,$that){
          `cht_commentaire_projet` , 
          `chx_dossier_requetes_projet` , 
          `chx_dossier_menus_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_menus_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_menus_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_menus_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_menus_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_menus_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_bdds_projet` , 
+         `chx_dossier_bdds_projet` , 
          `chx_dossier_bdds_projet`
       ) VALUES 
     ';
@@ -17,6 +35,24 @@ function sql_377($par,&$donnees_retournees,$that){
         $liste_des_valeurs.='(';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['chp_nom_projet']).''.',';
         $liste_des_valeurs.=PHP_EOL.'      '.sq1($par[$i]['cht_commentaire_projet']).''.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
+        $liste_des_valeurs.=PHP_EOL.'      1'.',';
         $liste_des_valeurs.=PHP_EOL.'      1'.',';
         $liste_des_valeurs.=PHP_EOL.'      1'.',';
         $liste_des_valeurs.=PHP_EOL.'      1';

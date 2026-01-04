@@ -20,7 +20,6 @@ import {menu_arbre1} from './menu_arbre1.js';
 */
 class __interface1{
     __version='';
-    #liste_des_modules_dynamiques={};
     __rev1=null;
     __fnt1=null;
     __worker1=null;
@@ -919,7 +918,7 @@ class __interface1{
         this.__xac( obj1.__xva , 0 , données );
         return({"__xst" : __xsu});
     }
-    /*#
+    /*
       =============================================================================================================
     */
     executer1( rev , données=null ){

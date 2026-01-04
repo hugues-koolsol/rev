@@ -228,6 +228,7 @@ class c_requetes1{
                     "chi_id_requete" : chi_id_requete ,
                     "cht_sql_requete" : obj.source_sql ,
                     "cht_php_requete" : obj.source_php ,
+                    "cht_js_requete" : obj.source_js ,
                     "cht_matrice_requete" : obj.matrice_requete ,
                     "chp_table_reference_requete" : obj.chp_table_reference_requete
                 }

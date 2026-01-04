@@ -18,6 +18,11 @@ function sql_343($par,&$donnees_retournees,$that){
     }else{
         $tableau_champs[]='`chp_table_reference_requete` = \''.sq0($par['n_chp_table_reference_requete']).'\'';
     }
+    if($par['n_cht_js_requete']==='' || is_null($par['n_cht_js_requete']) ){
+        $tableau_champs[]='`cht_js_requete` = NULL';
+    }else{
+        $tableau_champs[]='`cht_js_requete` = \''.sq0($par['n_cht_js_requete']).'\'';
+    }
 
     if(count($tableau_champs)===0){
         return array(/**/

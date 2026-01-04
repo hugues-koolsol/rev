@@ -1571,6 +1571,23 @@ CREATE TABLE tbl_requetes(
             )
             */
              chp_table_reference_requete VARCHAR(64) DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_js_requete'),
+            espece_du_champ(TEXT),
+            typologie(cht),
+            genre(97),
+            nom_bref_du_champ('js'),abrege_du_champ('requête au format js'),
+            masquer_champ_dans_svg(0),est_en_session(0),nom_en_session(''),
+            refe_enfant_droite(0),
+            refe_parent_gauche(0),
+            est_libelle_lien(0)
+            )
+            */
+             cht_js_requete TEXT DEFAULT  NULL
     );
 
 CREATE TABLE tbl_genres(

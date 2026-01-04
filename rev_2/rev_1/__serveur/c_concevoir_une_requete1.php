@@ -32,6 +32,7 @@ class c_concevoir_une_requete1{
                     'cht_rev_requete' => $donnees_recues[__xva]['rev'],
                     'cht_sql_requete' => $donnees_recues[__xva]['sql'],
                     'cht_php_requete' => $donnees_recues[__xva]['php'],
+                    'cht_js_requete' => $donnees_recues[__xva]['js'],
                     'cht_commentaire_requete' => $donnees_recues[__xva]['cht_commentaire_requete'],
                     'che_est_souche_requete' => $donnees_recues[__xva]['che_est_souche_requete'],
                     'chp_table_reference_requete' => $donnees_recues[__xva]['chp_table_reference_requete']
@@ -45,7 +46,8 @@ class c_concevoir_une_requete1{
                 `cht_php_requete` , 
                 `cht_commentaire_requete` , 
                 `che_est_souche_requete` , 
-                `chp_table_reference_requete`
+                `chp_table_reference_requete` , 
+                `cht_js_requete`
             ) VALUES (
                 :chp_type_requete , 
                 :cht_rev_requete , 
@@ -53,7 +55,8 @@ class c_concevoir_une_requete1{
                 :cht_php_requete , 
                 :cht_commentaire_requete , 
                 :che_est_souche_requete , 
-                :chp_table_reference_requete
+                :chp_table_reference_requete , 
+                :cht_js_requete
             );
             */
             /*sql_inclure_fin*/
@@ -70,6 +73,7 @@ class c_concevoir_une_requete1{
               lors de la création dans l'interface, l'id est égal à 0 ou bien nnn si on part d'une requête existante
             */
             $nouveau_php=str_replace('function sql_' . $donnees_recues[__xva]['chi_id_requete'] . '(','function sql_' . $tt390['nouvel_id'] . '(',$donnees_recues[__xva]['php']);
+            $nouveau_js=str_replace('sql_' . $donnees_recues[__xva]['chi_id_requete'],'sql_' . $tt390['nouvel_id'],$donnees_recues[__xva]['js']);
             $tt376=/*sql_inclure_deb*/
                 /* sql_376()
                 UPDATE b1.tbl_requetes SET 
@@ -89,6 +93,7 @@ class c_concevoir_une_requete1{
             if($tt376[__xst] === __xsu){
 
                 $obj_ecrire=$this->ecrire_le_php_de_la_requete_sur_disque($tt390['nouvel_id'],$nouveau_php,$donnees_retournees);
+                $obj_ecrire=$this->ecrire_le_js_de_la_requete_sur_disque($tt390['nouvel_id'],$nouveau_js,$donnees_retournees);
                 
                 if($tt376[__xst] === __xsu){
 
@@ -214,7 +219,7 @@ class c_concevoir_une_requete1{
     /*
       =============================================================================================================
     */
-    function construire_le_js_des_requetes(&$donnees_retournees){
+    function construire_le_js_contenant_la_liste_des_requetes(&$donnees_retournees){
         $tt385=/*sql_inclure_deb*/
             /* sql_385()
             SELECT 
@@ -275,7 +280,7 @@ class c_concevoir_une_requete1{
         }
 
         
-        if(substr($contenu,0,5) !== '<?php'){
+        if(substr($chemin_fichier,-4) === '.php' && substr($contenu,0,5) !== '<?php'){
 
             $contenu='<?php' . PHP_EOL . $contenu;
 
@@ -287,7 +292,13 @@ class c_concevoir_une_requete1{
         
         if((@file_put_contents($chemin_fichier,$contenu))){
 
-            $this->construire_le_js_des_requetes($donnees_retournees);
+            
+            if(substr($chemin_fichier,-4) === '.php'){
+
+                $this->construire_le_js_contenant_la_liste_des_requetes($donnees_retournees);
+
+            }
+
             return true;
 
         }else{
@@ -295,6 +306,32 @@ class c_concevoir_une_requete1{
             return false;
         }
 
+    }
+    /*
+      =============================================================================================================
+      afr, c'est un doublon avec la fonction qui est dans c_requetes.ecrire_php_sur_disque
+      =============================================================================================================
+    */
+    function ecrire_le_js_de_la_requete_sur_disque($id_requete,$source_js_requete,&$donnees_retournees){
+        
+        if($id_requete === 0){
+
+            return array( __xst => __xsu);
+
+        }
+
+        $chemin_fichier=$_SESSION[_CA_]['chemin_des_sql'] . 'sql_' . $id_requete . '.js';
+        
+        if($this->ecrire_php_sur_disque($chemin_fichier,$source_js_requete,$donnees_retournees)){
+
+            return array( __xst => __xsu);
+
+        }else{
+
+            $donnees_retournees[__xsi][__xer][]='erreur ouverture fichier sql_' . $id_requete . '.js [' . __LINE__ . ']';
+        }
+
+        return array( __xst => __xer);
     }
     /*
       =============================================================================================================
@@ -332,11 +369,13 @@ class c_concevoir_une_requete1{
 
             $matrice='';
             $php='';
+            $js='';
 
         }else{
 
             $matrice=json_encode($donnees_recues[__xva]['cht_matrice_requete']);
             $php=$donnees_recues[__xva]['php'];
+            $js=$donnees_recues[__xva]['js'];
         }
 
         $a_modifier=array(
@@ -345,6 +384,7 @@ class c_concevoir_une_requete1{
             'n_cht_rev_requete' => $donnees_recues[__xva]['rev'],
             'n_cht_sql_requete' => $donnees_recues[__xva]['sql'],
             'n_cht_php_requete' => $php,
+            'n_cht_js_requete' => $js,
             'n_cht_matrice_requete' => $matrice,
             'n_cht_commentaire_requete' => $donnees_recues[__xva]['cht_commentaire_requete'],
             'n_che_est_souche_requete' => $donnees_recues[__xva]['che_est_souche_requete'],
@@ -359,7 +399,8 @@ class c_concevoir_une_requete1{
                `cht_sql_requete` = :n_cht_sql_requete , 
                `cht_php_requete` = :n_cht_php_requete , 
                `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-               `chp_table_reference_requete` = :n_chp_table_reference_requete
+               `chp_table_reference_requete` = :n_chp_table_reference_requete , 
+               `cht_js_requete` = :n_cht_js_requete
             WHERE `chi_id_requete` = :c_chi_id_requete ;
             */
             /*sql_inclure_fin*/
@@ -371,9 +412,10 @@ class c_concevoir_une_requete1{
         
         if($tt[__xst] === __xsu){
 
-            $obj=$this->ecrire_le_php_de_la_requete_sur_disque($donnees_recues[__xva]['chi_id_requete'],$donnees_recues[__xva]['php'],$donnees_retournees);
+            $obj1=$this->ecrire_le_php_de_la_requete_sur_disque($donnees_recues[__xva]['chi_id_requete'],$donnees_recues[__xva]['php'],$donnees_retournees);
+            $obj2=$this->ecrire_le_js_de_la_requete_sur_disque($donnees_recues[__xva]['chi_id_requete'],$donnees_recues[__xva]['js'],$donnees_retournees);
             
-            if($obj[__xst] === __xsu){
+            if($obj1[__xst] === __xsu && $obj2[__xst] === __xsu){
 
                 $donnees_retournees[__xst]=__xsu;
 

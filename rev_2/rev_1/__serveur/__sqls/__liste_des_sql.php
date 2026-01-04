@@ -2897,14 +2897,15 @@ LIMIT :quantitee OFFSET :debut
     'cht_sql_requete' => 'UPDATE b1.tbl_requetes SET 
    `cht_sql_requete` = :n_cht_sql_requete , 
    `cht_php_requete` = :n_cht_php_requete , 
-   `chp_table_reference_requete` = :n_chp_table_reference_requete
+   `chp_table_reference_requete` = :n_chp_table_reference_requete , 
+   `cht_js_requete` = :n_cht_js_requete
 WHERE `chi_id_requete` = :c_chi_id_requete ;',
     'cht_commentaire_requete' => 'requêtes',
     'chp_type_requete' => 'update',
     'che_est_souche_requete' => 0,
     'cht_rev_requete' => 'modifier(
    base_de_reference(1),
-   valeurs(affecte(champ(`cht_sql_requete`),:n_cht_sql_requete),affecte(champ(`cht_php_requete`),:n_cht_php_requete),affecte(champ(`chp_table_reference_requete`),:n_chp_table_reference_requete)),
+   valeurs(affecte(champ(`cht_sql_requete`),:n_cht_sql_requete),affecte(champ(`cht_php_requete`),:n_cht_php_requete),affecte(champ(`chp_table_reference_requete`),:n_chp_table_reference_requete),affecte(champ(`cht_js_requete`),:n_cht_js_requete)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_requetes,base(b1)))
@@ -3248,7 +3249,8 @@ WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
    `cht_sql_requete` = :n_cht_sql_requete , 
    `cht_php_requete` = :n_cht_php_requete , 
    `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-   `chp_table_reference_requete` = :n_chp_table_reference_requete
+   `chp_table_reference_requete` = :n_chp_table_reference_requete , 
+   `cht_js_requete` = :n_cht_js_requete
 WHERE `chi_id_requete` = :c_chi_id_requete ;',
     'cht_commentaire_requete' => 'requêtes',
     'chp_type_requete' => 'update',
@@ -3262,7 +3264,8 @@ WHERE `chi_id_requete` = :c_chi_id_requete ;',
       affecte(champ(`cht_sql_requete`),:n_cht_sql_requete),
       affecte(champ(`cht_php_requete`),:n_cht_php_requete),
       affecte(champ(`cht_commentaire_requete`),:n_cht_commentaire_requete),
-      affecte(champ(`chp_table_reference_requete`),:n_chp_table_reference_requete)
+      affecte(champ(`chp_table_reference_requete`),:n_chp_table_reference_requete),
+      affecte(champ(`cht_js_requete`),:n_cht_js_requete)
    ),
    provenance(
       table_reference(
@@ -3820,8 +3823,7 @@ WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
   array (
     'cht_sql_requete' => '/*meta(sur_base_principale(1))*/
 SELECT 
-`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet` , `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , 
-`T0`.`cht_commentaire_projet`
+`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
  FROM b1.tbl_projets T0
 WHERE ( /* */ `T0`.`chi_id_projet` = :T0_chi_id_projet
    AND `T0`.`chp_nom_projet` LIKE :T0_chp_nom_projet
@@ -3835,14 +3837,7 @@ LIMIT :quantitee OFFSET :debut
     'cht_rev_requete' => '#(meta(sur_base_principale(1))),
 sélectionner(
    base_de_reference(1),
-   valeurs(
-      champ(`T0`,`chi_id_projet`),
-      champ(`T0`,`chp_nom_projet`),
-      champ(`T0`,`cht_commentaire_projet`),
-      champ(`T0`,`chi_id_projet`),
-      champ(`T0`,`chp_nom_projet`),
-      champ(`T0`,`cht_commentaire_projet`)
-   ),
+   valeurs(champ(`T0`,`chi_id_projet`),champ(`T0`,`chp_nom_projet`),champ(`T0`,`cht_commentaire_projet`)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
@@ -3974,10 +3969,46 @@ INSERT INTO b1.`tbl_projets`(
     `cht_commentaire_projet` , 
     `chx_dossier_requetes_projet` , 
     `chx_dossier_menus_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_menus_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_menus_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_menus_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_menus_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_menus_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_bdds_projet` , 
+    `chx_dossier_bdds_projet` , 
     `chx_dossier_bdds_projet`
 ) VALUES (
     :chp_nom_projet , 
     :cht_commentaire_projet , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
+    1 , 
     1 , 
     1 , 
     1
@@ -3994,6 +4025,24 @@ insérer(
       affecte(champ(`chx_dossier_requetes_projet`),1),
       affecte(champ(`chx_dossier_menus_projet`),1),
       affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_menus_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_menus_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_menus_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_menus_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_menus_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1),
+      affecte(champ(`chx_dossier_bdds_projet`),1)
    ),
    provenance(
       table_reference(
@@ -4276,7 +4325,8 @@ LIMIT :quantitee OFFSET :debut
     `cht_php_requete` , 
     `cht_commentaire_requete` , 
     `che_est_souche_requete` , 
-    `chp_table_reference_requete`
+    `chp_table_reference_requete` , 
+    `cht_js_requete`
 ) VALUES (
     :chp_type_requete , 
     :cht_rev_requete , 
@@ -4284,7 +4334,8 @@ LIMIT :quantitee OFFSET :debut
     :cht_php_requete , 
     :cht_commentaire_requete , 
     :che_est_souche_requete , 
-    :chp_table_reference_requete
+    :chp_table_reference_requete , 
+    :cht_js_requete
 );',
     'cht_commentaire_requete' => 'requêtes',
     'chp_type_requete' => 'insert',
@@ -4298,7 +4349,8 @@ LIMIT :quantitee OFFSET :debut
       affecte(champ(`cht_php_requete`),:cht_php_requete),
       affecte(champ(`cht_commentaire_requete`),:cht_commentaire_requete),
       affecte(champ(`che_est_souche_requete`),:che_est_souche_requete),
-      affecte(champ(`chp_table_reference_requete`),:chp_table_reference_requete)
+      affecte(champ(`chp_table_reference_requete`),:chp_table_reference_requete),
+      affecte(champ(`cht_js_requete`),:cht_js_requete)
    ),
    provenance(
       table_reference(
