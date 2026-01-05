@@ -49,24 +49,31 @@ class sql_374{
         LIMIT `+this.__gi1.__fnt1.sq1(par['quantitee'])+` OFFSET `+this.__gi1.__fnt1.sq1(par['debut'])+` `;
     sql0+=plage0;
         /* this.__gi1.ma_trace1('sql_374 sql0=',sql0); */
+        let lignes=[];
+        try{
+            const statement=this.__db1.prepare( sql0 );
+            lignes = statement.values();
+        }catch(e){
+            donnees_retournees['__xst']=0;
+            donnees_retournees['__xsi']['__xer'].push( 'erreur sql 374 '+sql0+' [' + this.__gi1.nl2(e) + ']' );
+            return {__xst  : 0};
+        }
 
-        const statement=this.__db1.prepare( sql0 );
-        const rows = statement.values();
-        /* this.__gi1.ma_trace1(rows); */
+        /* this.__gi1.ma_trace1(lignes); */
 
 
-        for(const row of rows){
+        for(let numero_de_ligne in lignes){
             donnees0.push({
-                'T0.chi_id_projet' : row[0],
-                'T0.chp_nom_projet' : row[1],
-                'T0.cht_commentaire_projet' : row[2],
+                'T0.chi_id_projet' : lignes[numero_de_ligne][0],
+                'T0.chp_nom_projet' : lignes[numero_de_ligne][1],
+                'T0.cht_commentaire_projet' : lignes[numero_de_ligne][2],
             });
         }
 
         const sql1='SELECT COUNT(*) as __nbEnregs '+from0+where0;
         const r1=this.__db1.prepare(sql1).all();
         __nbEnregs=r1[0]['__nbEnregs'];
-//        this.__gi1.ma_trace1('__nbEnregs=',__nbEnregs)
+        /* this.__gi1.ma_trace1('__nbEnregs=',__nbEnregs); */
 
 
         return {

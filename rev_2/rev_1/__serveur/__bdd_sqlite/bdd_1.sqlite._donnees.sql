@@ -100,7 +100,7 @@ chx_acces_utilisateur,
 chd__dtm_utilisateur,
 chd__dtc_utilisateur,
 che__nur_utilisateur) VALUES
-('1','poipoip','$2y$10$e4kIJciV/2Z3QTINAY8blemS17E3NJfcR7M7fjgPT.gbtMZqwjIAm',NULL,'961','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('1','poipoip','$2y$10$e4kIJciV/2Z3QTINAY8blemS17E3NJfcR7M7fjgPT.gbtMZqwjIAm',NULL,'962','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','admin','$2y$10$iiy3WQzGJwIHynqQFiU8tuQwDZY7WRsl6SHLtRv9pRYtv2BgDQcEW',NULL,'6','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
@@ -4694,7 +4694,7 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,NULL,'0','2000-01-01 
       champ(`T0`,`chp_priorite_tache`),
       champ(`T0`,`chd__dtm_tache`),
       champ(`T0`,`chd__dtc_tache`),
-      champ(`T0`,`che__nur_tache`),
+      champ(`T0`,`che__nur_tache`)
    ),
    provenance(
       table_reference(
@@ -4712,7 +4712,7 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,NULL,'0','2000-01-01 
          egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
          comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
          egal(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
-         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2),
+         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2)
       )
    ),
    complements(
@@ -4772,7 +4772,7 @@ LIMIT :quantitee OFFSET :debut
       et(
          #(),
          egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
-         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
+         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache)
       )
    )
 )  ','SELECT 
@@ -4813,7 +4813,7 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
       et(
          #(),
          egal(champ(`chi_id_tache`),:chi_id_tache),
-         egal(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),
+         egal(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache)
       )
    )
 )  ','DELETE FROM b1.tbl_taches
@@ -7621,24 +7621,6 @@ insérer(
       affecte(champ(`cht_commentaire_projet`),:cht_commentaire_projet),
       affecte(champ(`chx_dossier_requetes_projet`),1),
       affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
       affecte(champ(`chx_dossier_bdds_projet`),1)
    ),
    provenance(
@@ -7653,46 +7635,10 @@ INSERT INTO b1.`tbl_projets`(
     `cht_commentaire_projet` , 
     `chx_dossier_requetes_projet` , 
     `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
     `chx_dossier_bdds_projet`
 ) VALUES (
     :chp_nom_projet , 
     :cht_commentaire_projet , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
     1 , 
     1 , 
     1

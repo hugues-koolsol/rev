@@ -1,8 +1,8 @@
-class sql_377{
+class sql_111{
     /*
       =============================================================================================================
     */
-    moi='sql_377';
+    moi='sql_111';
     __gi1=null;
     __db1=null;
     /*
@@ -18,30 +18,30 @@ class sql_377{
     async sql(par,donnees_retournees){
 
         let sql0=`
-      INSERT  INTO \`tbl_projets\`(
-         \`chp_nom_projet\` , 
-         \`cht_commentaire_projet\` , 
-         \`chx_dossier_requetes_projet\` , 
-         \`chx_dossier_menus_projet\` , 
-         \`chx_dossier_bdds_projet\`
+      INSERT  INTO `+(par.base && par.base['b1']?par.base['b1']+'.':'')+`\`tbl_taches\`(
+         \`chx_utilisateur_tache\` , 
+         \`chp_texte_tache\` , 
+         \`chp_priorite_tache\` , 
+         \`chd__dtm_tache\` , 
+         \`chd__dtc_tache\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
         try{
-            for(let i=0;i < par.donnees.length;i++){
+            for(let i=0;i < par.length;i++){
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['chp_nom_projet'])+''+',';
-                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['cht_commentaire_projet'])+''+',';
-                liste_des_valeurs+='\r\n      1'+',';
-                liste_des_valeurs+='\r\n      1'+',';
-                liste_des_valeurs+='\r\n      1';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['chx_utilisateur_tache'])+''+',';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['chp_texte_tache'])+''+',';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['chp_priorite_tache'])+''+',';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(donnees_retournees.date_heure_serveur)+''+',';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(donnees_retournees.date_heure_serveur)+'';
                 liste_des_valeurs+=')';
             }
             sql0+=liste_des_valeurs;
-            /* this.__gi1.ma_trace1('sql_377=',sql0); */
+            /* this.__gi1.ma_trace1('sql_111=',sql0); */
             const res=await this.__db1.exec(sql0);
             /* this.__gi1.ma_trace1('res=',res); */
             return {
@@ -62,4 +62,4 @@ class sql_377{
 
     }
 }
-export{sql_377 as sql_377};
+export{sql_111 as sql_111};

@@ -262,7 +262,7 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`chp_priorite_tache`),
       champ(`T0`,`chd__dtm_tache`),
       champ(`T0`,`chd__dtc_tache`),
-      champ(`T0`,`che__nur_tache`),
+      champ(`T0`,`che__nur_tache`)
    ),
    provenance(
       table_reference(
@@ -280,7 +280,7 @@ LIMIT :quantitee OFFSET :debut
          egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
          comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
          egal(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
-         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2),
+         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2)
       )
    ),
    complements(
@@ -346,7 +346,7 @@ WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
       et(
          #(),
          egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
-         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
+         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache)
       )
    )
 )  ',
@@ -398,7 +398,7 @@ WHERE ( /* */ `chi_id_tache` = :chi_id_tache
       et(
          #(),
          egal(champ(`chi_id_tache`),:chi_id_tache),
-         egal(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),
+         egal(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache)
       )
    )
 )  ',
@@ -3969,46 +3969,10 @@ INSERT INTO b1.`tbl_projets`(
     `cht_commentaire_projet` , 
     `chx_dossier_requetes_projet` , 
     `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_menus_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
-    `chx_dossier_bdds_projet` , 
     `chx_dossier_bdds_projet`
 ) VALUES (
     :chp_nom_projet , 
     :cht_commentaire_projet , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
-    1 , 
     1 , 
     1 , 
     1
@@ -4024,24 +3988,6 @@ insérer(
       affecte(champ(`cht_commentaire_projet`),:cht_commentaire_projet),
       affecte(champ(`chx_dossier_requetes_projet`),1),
       affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_menus_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
-      affecte(champ(`chx_dossier_bdds_projet`),1),
       affecte(champ(`chx_dossier_bdds_projet`),1)
    ),
    provenance(
