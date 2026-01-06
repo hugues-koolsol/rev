@@ -2058,7 +2058,7 @@ chx_acces_utilisateur,
 chd__dtm_utilisateur,
 chd__dtc_utilisateur,
 che__nur_utilisateur) VALUES
-('1','poipoip','$2y$10$e4kIJciV/2Z3QTINAY8blemS17E3NJfcR7M7fjgPT.gbtMZqwjIAm',NULL,'962','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('1','poipoip','$2y$10$e4kIJciV/2Z3QTINAY8blemS17E3NJfcR7M7fjgPT.gbtMZqwjIAm',NULL,'965','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','admin','$2y$10$iiy3WQzGJwIHynqQFiU8tuQwDZY7WRsl6SHLtRv9pRYtv2BgDQcEW',NULL,'6','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
@@ -6751,7 +6751,7 @@ WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
       et(
          #(),
          egal(champ(`chi_id_tache`),:c_chi_id_tache),
-         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),
+         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache)
       )
    )
 )  ','UPDATE b1.tbl_taches SET 
@@ -7912,7 +7912,7 @@ WHERE `chi_id_source` = :c_chi_id_source ;',NULL,NULL,'0','2000-01-01 00:00:00.0
       et(
          #(),
          egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
-         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
+         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache)
       )
    ),
    complements(
@@ -7937,7 +7937,7 @@ ORDER BY `T0`.`chp_priorite_tache` ASC
       et(
          #(),
          egal(champ(`chi_id_tache`),:c_chi_id_tache),
-         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),
+         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache)
       )
    )
 )  ','UPDATE b1.tbl_taches SET 

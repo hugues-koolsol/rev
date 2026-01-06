@@ -374,7 +374,7 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
       et(
          #(),
          egal(champ(`chi_id_tache`),:c_chi_id_tache),
-         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),
+         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache)
       )
    )
 )  ',
@@ -1865,7 +1865,7 @@ ORDER BY `T0`.`chp_priorite_tache` ASC
       et(
          #(),
          egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
-         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
+         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache)
       )
    ),
    complements(
@@ -1894,7 +1894,7 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
       et(
          #(),
          egal(champ(`chi_id_tache`),:c_chi_id_tache),
-         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),
+         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache)
       )
    )
 )  ',
