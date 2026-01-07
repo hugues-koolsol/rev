@@ -2825,7 +2825,7 @@ WHERE `chi_id_requete` = :c_chi_id_requete ;',
  FROM b1.tbl_sources T0
 WHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
 ;',
-    'cht_commentaire_requete' => NULL,
+    'cht_commentaire_requete' => 'sources',
     'chp_type_requete' => 'select',
     'che_est_souche_requete' => 0,
     'cht_rev_requete' => 'sélectionner(
