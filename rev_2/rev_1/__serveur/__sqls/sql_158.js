@@ -1,31 +1,31 @@
-class sql_114{
+class sql_158{
     /*
       =============================================================================================================
     */
     async sql(par,donnees_retournees){
 
     const sql0=`
-      DELETE FROM tbl_taches
-          WHERE ( \`chi_id_tache\` = `+this.__gi1.__fnt1.sq1(par['chi_id_tache'])+` AND \`chx_utilisateur_tache\` = `+this.__gi1.__fnt1.sq1(par['chx_utilisateur_tache'])+`) ;
+      DELETE FROM tbl_dossiers
+          WHERE \`chi_id_dossier\` = `+this.__gi1.__fnt1.sq1(par['chi_id_dossier'])+` ;
     `;
     /* this.__gi1.ma_trace1('sql_' , sql0 ); */
     this.__gi1.ma_trace1('dependances à faire' );
 /*
     $dep=$that->sql_dependances2(
       array(
-          'table_parente'     => 'tbl_taches',
-          'champ_parent'      => 'chi_id_tache',
-          'id_enregistrement' => $par['chi_id_tache'],
+          'table_parente'     => 'tbl_dossiers',
+          'champ_parent'      => 'chi_id_dossier',
+          'id_enregistrement' => $par['chi_id_dossier'],
           'id_bdd'   => BDD_NUMERO_1,
        ),
        $donnees_retournees
     );
     if($dep>0){
-        $donnees_retournees[__xsi][__xer][]=' erreur lors de la suppression, il existe des dépendances sql_114() [' . __LINE__ . ']';
+        $donnees_retournees[__xsi][__xer][]=' erreur lors de la suppression, il existe des dépendances sql_158() [' . __LINE__ . ']';
         return array(
             __xst => __xer,
             'sql0' => $sql0,
-            'texte_requete' => 'la suppression dans la table des taches',
+            'texte_requete' => 'la suppression dans la table des dossiers',
             'exception' => null,
             'id_bdd' => BDD_NUMERO_1,
             'code_erreur' => 19
@@ -55,7 +55,7 @@ class sql_114{
     /*
       =============================================================================================================
     */
-    moi='sql_114';
+    moi='sql_158';
     __gi1=null;
     __db1=null;
     /*
@@ -66,4 +66,4 @@ class sql_114{
         this.__db1=__db1;
     }
 }
-export{sql_114 as sql_114};
+export{sql_158 as sql_158};

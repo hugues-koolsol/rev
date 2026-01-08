@@ -20,6 +20,7 @@ class sql_386{
 
         const statement=this.__db1.prepare( sql0 );
         const lignes = statement.values();
+        statement.finalize();
         const donnees0 = [];
 
         for(const col of lignes){

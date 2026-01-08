@@ -52,6 +52,7 @@ class sql_389{
         try{
             const statement=this.__db1.prepare( sql0 );
             lignes = statement.values();
+            statement.finalize();
         }catch(e){
             donnees_retournees['__xst']=0;
             donnees_retournees['__xsi']['__xer'].push( 'erreur sql 389 '+sql0+' [' + this.__gi1.nl2(e) + ']' );

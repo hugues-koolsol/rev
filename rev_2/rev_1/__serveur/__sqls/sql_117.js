@@ -1,0 +1,67 @@
+class sql_117{
+    /*
+      =============================================================================================================
+    */
+    async sql(par,donnees_retournees){
+
+        let sql0=`
+      INSERT  INTO `+(par.base && par.base['b1']?par.base['b1']+'.':'')+`\`tbl_sources\`(
+         \`chx_dossier_id_source\` , 
+         \`chp_nom_source\` , 
+         \`cht_commentaire_source\` , 
+         \`cht_rev_source\` , 
+         \`cht_genere_source\` , 
+         \`che_binaire_source\`
+      ) VALUES 
+        `;
+        let liste_des_valeurs='';
+        try{
+            for(let i=0;i < par.donnees.length;i++){
+                if(liste_des_valeurs != ''){
+                    liste_des_valeurs+=',';
+                }
+                liste_des_valeurs+='(';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['chx_dossier_id_source'])+''+',';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['chp_nom_source'])+''+',';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['cht_commentaire_source'])+''+',';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['cht_rev_source'])+''+',';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['cht_genere_source'])+''+',';
+                liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(par.donnees[i]['che_binaire_source'])+'';
+                liste_des_valeurs+=')';
+            }
+            sql0+=liste_des_valeurs;
+            /* this.__gi1.ma_trace1('sql_117=',sql0); */
+            const res=await this.__db1.exec(sql0);
+            /* this.__gi1.ma_trace1('res=',res); */
+            return {
+                __xst  : 1,
+                __xva  : {},
+                'sql0'    : sql0,
+                'changements' : res
+            };
+        }catch(e){
+            donnees_retournees['__xsi']['__xer'].push(this.__gi1.nl2());
+            /* this.__gi1.ma_trace1('e=',e); */
+            return {
+                __xst  : 0,
+                __xva  : {},
+                'sql0'    : sql0,
+            };
+        }
+
+    }
+    /*
+      =============================================================================================================
+    */
+    moi='sql_117';
+    __gi1=null;
+    __db1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor(__gi1,__db1){
+        this.__gi1=__gi1;
+        this.__db1=__db1;
+    }
+}
+export{sql_117 as sql_117};

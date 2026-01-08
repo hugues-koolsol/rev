@@ -2,19 +2,6 @@ class sql_375{
     /*
       =============================================================================================================
     */
-    moi='sql_375';
-    __gi1=null;
-    __db1=null;
-    /*
-      =============================================================================================================
-    */
-    constructor(__gi1,__db1){
-        this.__gi1=__gi1;
-        this.__db1=__db1;
-    }
-    /*
-      =============================================================================================================
-    */
     async sql(par,donnees_retournees){
 
     const champs0=`
@@ -40,10 +27,11 @@ class sql_375{
     sql0+=from0;
     const where0=` WHERE \`T0\`.\`chi_id_projet\` = `+this.__gi1.__fnt1.sq1(par['T0_chi_id_projet'])+``;
     sql0+=where0;
-        this.__gi1.ma_trace1('sql_375 sql0=',sql0);
+        /* this.__gi1.ma_trace1('sql_375 sql0=',sql0); */
 
         const statement=this.__db1.prepare( sql0 );
         const lignes = statement.values();
+        statement.finalize();
         const donnees0 = [];
 
         for(const col of lignes){
@@ -89,6 +77,19 @@ class sql_375{
             'where0'  : where0,
         };
 
+    }
+    /*
+      =============================================================================================================
+    */
+    moi='sql_375';
+    __gi1=null;
+    __db1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor(__gi1,__db1){
+        this.__gi1=__gi1;
+        this.__db1=__db1;
     }
 }
 export{sql_375 as sql_375};

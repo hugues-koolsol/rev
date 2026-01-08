@@ -1711,6 +1711,7 @@ class c_concevoir_une_requete1{
             t+='\r\n';
             t+='        const statement=this.__db1.prepare( sql0 );\r\n';
             t+='        const lignes = statement.values();\r\n';
+            t+='        statement.finalize();\r\n';
             t+='        const donnees0 = [];\r\n';
             
             t+='\r\n';
@@ -1950,6 +1951,7 @@ class c_concevoir_une_requete1{
             t+='        try{\r\n';
             t+='            const statement=this.__db1.prepare( sql0 );\r\n';
             t+='            lignes = statement.values();\r\n';
+            t+='            statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
             t+='            donnees_retournees[\'__xst\']=0;\r\n';
             t+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'erreur sql '+id_requete_en_base+' \'+sql0+\' [\' + this.__gi1.nl2(e) + \']\' );\r\n';
