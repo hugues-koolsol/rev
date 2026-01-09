@@ -1648,6 +1648,7 @@ class z_ast_js_vers_rev1{
         let gauche='';
         let droite='';
         let contenu='';
+        let un_wait='';
         obj=this.#traite_element( element.left , niveau + 1 , element , tab_comm , false );
         if(obj.__xst === __xsu){
             gauche+=obj.__xva;
@@ -1677,7 +1678,11 @@ class z_ast_js_vers_rev1{
                 }
             }
         }
+        if(element.await===true){
+            un_wait='un_wait(),';
+        }
         t+='boucle_sur_objet_de(';
+        t+=un_wait;
         t+='pourChaque(de(' + gauche + ' , ' + droite + ')),';
         t+='faire(' + contenu + ')';
         t+=')';

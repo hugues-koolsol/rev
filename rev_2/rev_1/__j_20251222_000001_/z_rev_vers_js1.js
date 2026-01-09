@@ -87,7 +87,16 @@ class z_rev_vers_js1{
                 /* o['plage']=[this.#tb[o.id][5],this.#tb[o.id][6]]; */
             }catch(e){}
         }
-        this.__rev1.empiler_erreur( o );
+        try{
+            this.__rev1.empiler_erreur( o );
+        }catch(e){
+            if(o.hasOwnProperty('__xme')){
+                throw new Error(o.__xme)
+            }else{
+                debugger
+                throw new Error('Erreur non tracée')
+            }
+        }
         return o;
     }
     /*
