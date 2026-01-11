@@ -1318,11 +1318,13 @@ class c_concevoir_une_requete1{
             t+='                \'changements\' : res\r\n';
             t+='            };\r\n';
             t+='        }catch(e){\r\n';
-            t+='            donnees_retournees[\'__xsi\'][\'__xer\'].push(this.__gi1.nl2());\r\n';
+            t+='            let __xme=(e.stack.indexOf(\'FOREIGN KEY\')>=0?\'cet enregistrement possède des dépendants<br />\':\'autre erreur DELETE\') + \' [\' + this.__gi1.nl2() + \']\';\r\n';
+            t+='            donnees_retournees[\'__xsi\'][\'__xer\'].push(__xme);\r\n';
             t+='            /* this.__gi1.ma_trace1(\'e=\',e); */\r\n';
             t+='            return {\r\n';
             t+='                __xst  : 0,\r\n';
             t+='                __xva  : {},\r\n';
+            t+='                __xme  : __xme,\r\n';
             t+='                \'sql0\'    : sql0,\r\n';
             t+='            };\r\n';
             t+='        }\r\n';
@@ -1331,7 +1333,7 @@ class c_concevoir_une_requete1{
         }else if(type_de_requete === 'insert'){
             var nom_de_la_table=obj3.liste_des_tables_pour_select_php;
             /* this.#obj_webs['ordre_des_tables'][0]['nom_de_la_table']; */
-            debugger
+
             nouvelle_chaine=obj3.debut_sql_pour_insert_js; // this.#traiter_chaine_sql_pour_php( obj3.debut_sql_pour_insert_js );
             t+='        let sql0=`' + CRLF;
             t+='      ' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '      ' ) + CRLF;
@@ -1378,19 +1380,31 @@ class c_concevoir_une_requete1{
             t+='            }' + CRLF;
             t+='            sql0+=liste_des_valeurs;' + CRLF;
             t+='            /* this.__gi1.ma_trace1(\'sql_' + id_requete_en_base + '=\',sql0); */\r\n';
-            t+='            const res=await this.__db1.exec(sql0);\r\n';
+            t+='            let res=await this.__db1.exec(sql0);\r\n';
             t+='            /* this.__gi1.ma_trace1(\'res=\',res); */\r\n';
+            t+='            const sql1=\'SELECT last_insert_rowid() as nouvel_id; \';\r\n';
+            t+='            let statement1=await this.__db1.prepare( sql1 );\r\n';
+            t+='            let lignes = await statement1.values();\r\n';
+            t+='            await statement1.finalize();\r\n';
+            t+='            let nouvel_id=0;\r\n';
+            t+='            for(let numero_de_ligne in lignes){\r\n';
+            t+='                nouvel_id=lignes[numero_de_ligne][0];\r\n';
+            t+='            }\r\n';
+            t+='\r\n';            
             t+='            return {\r\n';
             t+='                __xst  : 1,\r\n';
             t+='                __xva  : {},\r\n';
             t+='                \'sql0\'    : sql0,\r\n';
-            t+='                \'changements\' : res\r\n';
+            t+='                \'changements\' : res,\r\n';
+            t+='                \'nouvel_id\' : nouvel_id\r\n';
             t+='            };\r\n';
             t+='        }catch(e){\r\n';
             t+='            donnees_retournees[\'__xsi\'][\'__xer\'].push(this.__gi1.nl2());\r\n';
+            t+='            let __xme=e.stack.indexOf(\'UNIQUE constraint\')>=0?\'cet élément existe déjà dans la base<br />\':\'\';\r\n';
             t+='            /* this.__gi1.ma_trace1(\'e=\',e); */\r\n';
             t+='            return {\r\n';
             t+='                __xst  : 0,\r\n';
+            t+='                __xme  : __xme,\r\n';
             t+='                __xva  : {},\r\n';
             t+='                \'sql0\'    : sql0,\r\n';
             t+='            };\r\n';
@@ -1617,19 +1631,18 @@ class c_concevoir_une_requete1{
                 }
             }
             t+='        sql0+=where0;' + CRLF;
-            t+='        /* this.__gi1.ma_trace1(\' sql0= \' + sql0 ); */' + CRLF;
-            /* ' + id_requete_en_base + ' */
             t+='        try{' + CRLF;
-            t+='            const res=await this.__db1.exec(sql0);' + CRLF;
+            t+='            /* this.__gi1.ma_trace1(\' sql_' + id_requete_en_base + '= \' + sql0 ); */' + CRLF;
+            t+='            let res=await this.__db1.exec(sql0);' + CRLF;
             t+='            return({ "__xst" : 1, \'changements\' : res});' + CRLF;
             t+='        }catch(e){' + CRLF;
+            t+='            let __xme=e.stack.indexOf(\'UNIQUE constraint\')>=0?\'cet élément existe déjà dans la base<br />\':\'\';\r\n';
             t+='            return {/**/' + CRLF;
             t+='                __xst : 0 , ' + CRLF;
             t+='                "sql0" : sql0 , ' + CRLF;
             t+='                "texte_requete" : \'la modification dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\' ,' + CRLF;
             t+='                "exception" : e , ' + CRLF;
-//            t+='            "id_bdd" => ' + obj3.id_base_principale + ',' + CRLF;
-//            t+='            \'bdd\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '] ,' + CRLF;
+            t+='                "__xme" : __xme , ' + CRLF;
             t+='            };' + CRLF;
             t+='        }' + CRLF;
             t+='    }' + CRLF;
@@ -1709,14 +1722,19 @@ class c_concevoir_une_requete1{
             
             t+='        /* this.__gi1.ma_trace1(\'sql_'+id_requete_en_base+' sql0=\',sql0); */\r\n';
             t+='\r\n';
-            t+='        const statement=this.__db1.prepare( sql0 );\r\n';
-            t+='        const lignes = statement.values();\r\n';
-            t+='        statement.finalize();\r\n';
-            t+='        const donnees0 = [];\r\n';
-            
+            t+='        let lignes = [];\r\n';
+            t+='        try{\r\n';
+            t+='            let statement=await this.__db1.prepare( sql0 );\r\n';
+            t+='            lignes = await statement.values();\r\n';
+            t+='            await statement.finalize();\r\n';
+            t+='        }catch(e){\r\n';
+            t+='            donnees_retournees[\'__xst\']=0;\r\n';
+            t+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'erreur sql_'+id_requete_en_base+'=\'+sql0+\' [\' + this.__gi1.nl2(e) + \']\' );\r\n';
+            t+='            return {__xst  : 0};\r\n';
+            t+='        }\r\n';
             t+='\r\n';
-            t+='        for(const col of lignes){\r\n';
-//            t+='            donnees0.push({\'T0.chi_id_projet\' : col[0] });\r\n';
+            t+='        let donnees0 = [];\r\n';
+            t+='        for(let col of lignes){\r\n';
             t+='            donnees0.push({\r\n';
             for( i=0 ; i < obj3.tableau_des_champs_pour_select_php.length ; i++ ){
                 if(obj3.tableau_des_champs_pour_select_php[i].type === 'champ'){
@@ -1949,16 +1967,14 @@ class c_concevoir_une_requete1{
             t+='        /* this.__gi1.ma_trace1(\'sql_'+id_requete_en_base+' sql0=\',sql0); */\r\n';
             t+='        let lignes=[];\r\n';
             t+='        try{\r\n';
-            t+='            const statement=this.__db1.prepare( sql0 );\r\n';
-            t+='            lignes = statement.values();\r\n';
-            t+='            statement.finalize();\r\n';
+            t+='            let statement=await this.__db1.prepare( sql0 );\r\n';
+            t+='            lignes = await statement.values();\r\n';
+            t+='            await statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
             t+='            donnees_retournees[\'__xst\']=0;\r\n';
             t+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'erreur sql '+id_requete_en_base+' \'+sql0+\' [\' + this.__gi1.nl2(e) + \']\' );\r\n';
             t+='            return {__xst  : 0};\r\n';
             t+='        }\r\n';
-            t+='\r\n';
-            t+='        /* this.__gi1.ma_trace1(lignes); */\r\n';
             t+='\r\n';
             t+='\r\n';
             t+='        for(let numero_de_ligne in lignes){\r\n';
@@ -1966,18 +1982,17 @@ class c_concevoir_une_requete1{
             for( i=0 ; i < obj3.tableau_des_champs_pour_select_php.length ; i++ ){
                 t+='                \'' + obj3.tableau_des_champs_pour_select_php[i].alias + '.' + obj3.tableau_des_champs_pour_select_php[i].nom_du_champ + '\' : lignes[numero_de_ligne][' + i + '],\r\n';
             }
-/*            
-            t+='            \'T0.chi_id_projet\' : row[0],\r\n';
-            t+='            \'T0.chp_nom_projet\' : row[1],\r\n';
-            t+='            \'T0.cht_commentaire_projet\' : row[2],\r\n';
-*/            
             t+='            });\r\n';
             t+='        }\r\n';
             t+='\r\n';
             t+='        const sql1=\'SELECT COUNT(*) as __nbEnregs \'+from0+where0;\r\n';
-            t+='        const r1=this.__db1.prepare(sql1).all();\r\n';
-            t+='        __nbEnregs=r1[0][\'__nbEnregs\'];\r\n';
-            t+='        /* this.__gi1.ma_trace1(\'__nbEnregs=\',__nbEnregs); */\r\n';
+            t+='        let statement1=await this.__db1.prepare( sql1 );\r\n';
+            t+='        lignes = await statement1.values();\r\n';
+            t+='        await statement1.finalize();\r\n';
+            t+='        for(let numero_de_ligne in lignes){\r\n';
+            t+='            __nbEnregs=lignes[numero_de_ligne][0];\r\n';
+            t+='        }\r\n';
+            t+='\r\n';            
             t+='\r\n';
             t+='\r\n';
             t+='        return {\r\n';

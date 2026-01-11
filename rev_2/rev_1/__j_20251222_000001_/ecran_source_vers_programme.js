@@ -138,8 +138,8 @@ echo 'hella';`;
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
         /*  */
-        t+='    <select title="décallage à gauche" id="decallage_gauche"><option value="4">4</option><option value="8">8</option><option value="12">12</option></select>';
-        t+='    <select title="nom de la variable" id="nom_de_la_variable"><option value="o1">o1</option><option value="o2">o2</option><option value="t">t</option></select>';
+        t+='    <select title="décallage à gauche" id="decallage_gauche"><option value="8">8</option><option value="4">4</option><option value="12">12</option><option value="16">16</option></select>';
+        t+='    <select title="nom de la variable" id="nom_de_la_variable"><option value="src_js2">src_js2</option><option value="o1">o1</option><option value="o2">o2</option><option value="t">t</option></select>';
         t+='    <div class="rev_bouton yy__1" data-rev_click="';
         t+='m1(n1(ecran_source_vers_programme),f1(';
         t+='source_vers_genere1(zone_source(vv_txtarea_html_rev1),zone_resultat(vv_txtarea_html_rev2),mettre_en_stockage_local(1),transformation(php))';
