@@ -237,7 +237,7 @@ CREATE TABLE tbl_dossiers(
    table('tbl_dossiers'),
    genre_meta(table_de_base),permet_la_gestion_de('dossier'),
    distinction_pour_liste('liste des dossiers'),
-   distinction_pour_isad('d\'un dossier'),
+   distinction_pour_isad('d\'un dossier'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),
    transform_table_sur_svg(translate(721.5,490.5))) 
 */
     
@@ -359,7 +359,7 @@ CREATE TABLE tbl_groupes(
    table('tbl_groupes'),
    genre_meta(table_de_base),permet_la_gestion_de('groupe'),
    distinction_pour_liste('liste des groupes'),
-   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),
+   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),
    transform_table_sur_svg(translate(13.5,51.5))) 
 */
     
@@ -410,7 +410,7 @@ CREATE TABLE tbl_metiers(
    table('tbl_metiers'),
    genre_meta(table_de_base),permet_la_gestion_de('metier'),
    distinction_pour_liste('liste des metiers'),
-   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),
+   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),
    transform_table_sur_svg(translate(25.5,276.5))) 
 */
     
@@ -461,7 +461,7 @@ CREATE TABLE tbl_acces(
    table('tbl_acces'),
    genre_meta(table_de_base),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
-   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),
+   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),
    transform_table_sur_svg(translate(345.5,59.5))) 
 */
     
@@ -538,7 +538,7 @@ CREATE TABLE tbl_projets(
    table('tbl_projets'),
    genre_meta(table_de_base),permet_la_gestion_de('projet'),
    distinction_pour_liste('liste des projets'),
-   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),
+   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(3)'),
    transform_table_sur_svg(translate(703.5,218.5))) 
 */
     
@@ -593,7 +593,7 @@ CREATE TABLE tbl_projets(
             refe_parent_gauche(1)
             )
             */
-             chx_dossier_requetes_projet INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier) 
+             chx_dossier_requetes_projet INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier)  DEFAULT  1
     ,
     
             /*
@@ -607,7 +607,7 @@ CREATE TABLE tbl_projets(
             refe_parent_gauche(1)
             )
             */
-             chx_dossier_menus_projet INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier) 
+             chx_dossier_menus_projet INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier)  DEFAULT  1
     ,
     
             /*
@@ -688,7 +688,7 @@ CREATE TABLE tbl_utilisateurs(
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),permet_la_gestion_de('utilisateur'),
    distinction_pour_liste('liste des utilisateurs'),
-   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),
+   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),
    transform_table_sur_svg(translate(780.5,769.5))) 
 */
     
@@ -995,7 +995,7 @@ CREATE TABLE tbl_bdds(
    table('tbl_bdds'),
    genre_meta(table_de_base),permet_la_gestion_de('base'),
    distinction_pour_liste('liste des bases de données'),
-   distinction_pour_isad('d\'une base de donnée'),
+   distinction_pour_isad('d\'une base de donnée'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),
    transform_table_sur_svg(translate(1135.5,631.5))) 
 */
     
@@ -1577,14 +1577,10 @@ CREATE TABLE tbl_requetes(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_js_requete'),
-            espece_du_champ(TEXT),
+            nom_bref_du_champ('js'),abrege_du_champ('requête au format js'),
             typologie(cht),
             genre(97),
-            nom_bref_du_champ('js'),abrege_du_champ('requête au format js'),
-            masquer_champ_dans_svg(0),est_en_session(0),nom_en_session(''),
-            refe_enfant_droite(0),
-            refe_parent_gauche(0),
-            est_libelle_lien(0)
+            espece_du_champ(TEXT)
             )
             */
              cht_js_requete TEXT DEFAULT  NULL

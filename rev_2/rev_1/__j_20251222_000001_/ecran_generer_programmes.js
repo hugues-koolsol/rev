@@ -590,27 +590,26 @@ class ecran_generer_programmes{
                 }
             }
         }
-        let src_js2='';
-        src_js2+='/* erreur */\r\n';
-        src_js2+='const __xer=0;\r\n';
-        src_js2+='/* succès */\r\n';
-        src_js2+='const __xsu=1;\r\n';
-        src_js2+='/* alarme */\r\n';
-        src_js2+='const __xal=2;\r\n';
-        src_js2+='/* information */\r\n';
-        src_js2+='const __xif=3;\r\n';
-        src_js2+='/* déverminage */\r\n';
-        src_js2+='const __xdv=4;\r\n';
-        src_js2+='/* import {Database} from "https://deno.land/x/sqlite3/mod.ts"; */\r\n';
-        src_js2+='/*\r\n';
-        src_js2+='  =====================================================================================================================\r\n';
-        src_js2+='*/\r\n';
-        src_js2+='class ' + this.#nom_de_la_classe_générée2 + '{\r\n';
-        src_js2+='\r\n';
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='\r\n';
+        let src_serveur_js2='';
+        src_serveur_js2+='/* erreur */\r\n';
+        src_serveur_js2+='const __xer=0;\r\n';
+        src_serveur_js2+='/* succès */\r\n';
+        src_serveur_js2+='const __xsu=1;\r\n';
+        src_serveur_js2+='/* alarme */\r\n';
+        src_serveur_js2+='const __xal=2;\r\n';
+        src_serveur_js2+='/* information */\r\n';
+        src_serveur_js2+='const __xif=3;\r\n';
+        src_serveur_js2+='/* déverminage */\r\n';
+        src_serveur_js2+='const __xdv=4;\r\n';
+        src_serveur_js2+='/*\r\n';
+        src_serveur_js2+='  =====================================================================================================================\r\n';
+        src_serveur_js2+='*/\r\n';
+        src_serveur_js2+='class ' + this.#nom_de_la_classe_générée2 + '{\r\n';
+        src_serveur_js2+='\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='\r\n';
         
         
         let src_hph='';
@@ -648,18 +647,34 @@ class ecran_generer_programmes{
         src_hph+='    }\r\n';
         /*
         */
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='    async tests_et_actions_apres_modifier(mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva , __db1){\r\n';
-        src_js2+='        /*\r\n';
-        src_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
-        src_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
-        src_js2+='          return({"__xst" : __xer});\r\n';
-        src_js2+='        */\r\n';
-        src_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
-        src_js2+='        return{__xst:__xsu};\r\n';
-        src_js2+='    }\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    async actions_et_tests_apres_page_modifications(mat , d , donnees_recues , donnees_retournees , options_generales , __xva , __db1){\r\n';
+        src_serveur_js2+='        /*#\r\n';
+        src_serveur_js2+='          let obj=await this.faire_un_traitement( __xva[\'T0.'+champ_primaire+'\'] ,  donnees_retournees , options_generales , __db1 );\r\n';
+        src_serveur_js2+='          if(obj[\'__xst\'] === __xsu){\r\n';
+        src_serveur_js2+='              return({"__xst" : __xsu});\r\n';
+        src_serveur_js2+='          }else{\r\n';
+        src_serveur_js2+='              return({"__xst" : __xer});\r\n';
+        src_serveur_js2+='          }\r\n';
+        src_serveur_js2+='        */\r\n';
+        src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+        src_serveur_js2+='\r\n';
+        src_serveur_js2+='    }\r\n';
+        src_serveur_js2+='\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    async tests_et_actions_apres_modifier(mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva , __db1){\r\n';
+        src_serveur_js2+='        /*\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
+        src_serveur_js2+='          return({"__xst" : __xer});\r\n';
+        src_serveur_js2+='        */\r\n';
+        src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+        src_serveur_js2+='        return{__xst:__xsu};\r\n';
+        src_serveur_js2+='    }\r\n';
         /*
         */
         src_hph+='\r\n';
@@ -674,18 +689,18 @@ class ecran_generer_programmes{
         src_hph+='\r\n';
         /*
         */
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='    async actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva , __db1 ){\r\n';
-        src_js2+='        /*\r\n';
-        src_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
-        src_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
-        src_js2+='          return({"__xst" : __xer});\r\n';
-        src_js2+='        */\r\n';
-        src_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
-        src_js2+='        return{__xst:__xsu};\r\n';
-        src_js2+='    }\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    async actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva , __db1 ){\r\n';
+        src_serveur_js2+='        /*\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
+        src_serveur_js2+='          return({"__xst" : __xer});\r\n';
+        src_serveur_js2+='        */\r\n';
+        src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+        src_serveur_js2+='        return{__xst:__xsu};\r\n';
+        src_serveur_js2+='    }\r\n';
         /*
         */
         src_hph+='\r\n';
@@ -705,18 +720,18 @@ class ecran_generer_programmes{
         src_hph+='\r\n';
         /*
         */
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='    async test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva , __db1 ){\r\n';
-        src_js2+='        /*\r\n';
-        src_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
-        src_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
-        src_js2+='          return({"__xst" : __xer});\r\n';
-        src_js2+='        */\r\n';
-        src_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
-        src_js2+='        return{__xst:__xsu};\r\n';
-        src_js2+='    }\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    async test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva , __db1 ){\r\n';
+        src_serveur_js2+='        /*\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
+        src_serveur_js2+='          return({"__xst" : __xer});\r\n';
+        src_serveur_js2+='        */\r\n';
+        src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+        src_serveur_js2+='        return{__xst:__xsu};\r\n';
+        src_serveur_js2+='    }\r\n';
         /*
         */
         src_hph+='\r\n';
@@ -731,18 +746,18 @@ class ecran_generer_programmes{
         src_hph+='\r\n';
         /*
         */
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='    async actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva , __db1 ){\r\n';
-        src_js2+='        /*\r\n';
-        src_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
-        src_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
-        src_js2+='          return({"__xst" : __xer});\r\n';
-        src_js2+='        */\r\n';
-        src_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
-        src_js2+='        return{__xst:__xsu};\r\n';
-        src_js2+='    }\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    async actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva , __db1 ){\r\n';
+        src_serveur_js2+='        /*\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
+        src_serveur_js2+='          return({"__xst" : __xer});\r\n';
+        src_serveur_js2+='        */\r\n';
+        src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+        src_serveur_js2+='        return{__xst:__xsu};\r\n';
+        src_serveur_js2+='    }\r\n';
         /*
         */
         src_hph+='\r\n';
@@ -758,18 +773,18 @@ class ecran_generer_programmes{
         src_hph+='\r\n';
         /*
         */
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='    async tests_avant_creer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __db1 ){\r\n';
-        src_js2+='        /*\r\n';
-        src_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
-        src_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
-        src_js2+='          return({"__xst" : __xer});\r\n';
-        src_js2+='        */\r\n';
-        src_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
-        src_js2+='        return{__xst:__xsu};\r\n';
-        src_js2+='    }\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    async tests_avant_creer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __db1 ){\r\n';
+        src_serveur_js2+='        /*\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
+        src_serveur_js2+='          return({"__xst" : __xer});\r\n';
+        src_serveur_js2+='        */\r\n';
+        src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+        src_serveur_js2+='        return{__xst:__xsu};\r\n';
+        src_serveur_js2+='    }\r\n';
         /*
         */
         src_hph+='\r\n';
@@ -787,18 +802,18 @@ class ecran_generer_programmes{
         src_hph+='    }\r\n';
         /*
         */
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='    async action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , nouvel_id , form , __db1 ){\r\n';
-        src_js2+='        /*\r\n';
-        src_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
-        src_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
-        src_js2+='          return({"__xst" : __xer});\r\n';
-        src_js2+='        */\r\n';
-        src_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
-        src_js2+='        return{__xst:__xsu};\r\n';
-        src_js2+='    }\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    async action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , nouvel_id , form , __db1 ){\r\n';
+        src_serveur_js2+='        /*\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xsi\'][\'__xer\'].push( \'AFR [\' + this.__gi1.nl2() + \']\' );\r\n';
+        src_serveur_js2+='          donnees_retournees[\'__xst\']=__xer;\r\n';
+        src_serveur_js2+='          return({"__xst" : __xer});\r\n';
+        src_serveur_js2+='        */\r\n';
+        src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+        src_serveur_js2+='        return{__xst:__xsu};\r\n';
+        src_serveur_js2+='    }\r\n';
         /*
         */
         let o2='';
@@ -1116,26 +1131,26 @@ class ecran_generer_programmes{
         o2+='\r\n';
         
         if(ref_update !== '' && ref_select!==''){
-            src_js2+='    /*\r\n';
-            src_js2+='      =============================================================================================================\r\n';
-            src_js2+='    */\r\n';
-            src_js2+='    async modifier1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
-            src_js2+='        let nom_formulaire=donnees_recues[\'__xva\'][\'__co1\'];\r\n';
-            src_js2+='        let form=donnees_recues[\'__xva\'][\'__fo1\'][nom_formulaire];\r\n';
-            src_js2+='         /**/\r\n';
+            src_serveur_js2+='    /*\r\n';
+            src_serveur_js2+='      =============================================================================================================\r\n';
+            src_serveur_js2+='    */\r\n';
+            src_serveur_js2+='    async modifier1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
+            src_serveur_js2+='        let nom_formulaire=donnees_recues[\'__xva\'][\'__co1\'];\r\n';
+            src_serveur_js2+='        let form=donnees_recues[\'__xva\'][\'__fo1\'][nom_formulaire];\r\n';
+            src_serveur_js2+='         /**/\r\n';
             if(liste_des_conversions_modification.length > 0){
-                src_js2+='        /* conversion des données numériques début */\r\n';
-                src_js2+='        form[\'' + champ_primaire + '\']=form[\'' + champ_primaire + '\']===null?null:parseInt(form[\'' + champ_primaire + '\'],10);\r\n';
+                src_serveur_js2+='        /* conversion des données numériques début */\r\n';
+                src_serveur_js2+='        form[\'' + champ_primaire + '\']=form[\'' + champ_primaire + '\']===null?null:parseInt(form[\'' + champ_primaire + '\'],10);\r\n';
                 for( let i=0 ; i < liste_des_conversions_modification.length ; i++ ){
                     if(liste_des_conversions_modification[i].espece_du_champ === 'INTEGER'){
-                        src_js2+='        form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']=';
-                        src_js2+='form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'] === null ? null:parseInt(form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'] , 10 );\r\n';
+                        src_serveur_js2+='        form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']=';
+                        src_serveur_js2+='form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'] === null ? null:parseInt(form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'] , 10 );\r\n';
                     }else if(liste_des_conversions_modification[i].espece_du_champ === 'FLOAT'){
-                        src_js2+='        form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']=';
-                        src_js2+='form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'] === null ?null:parseFloat(form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']);\r\n';
+                        src_serveur_js2+='        form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']=';
+                        src_serveur_js2+='form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'] === null ?null:parseFloat(form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']);\r\n';
                     }
                 }
-                src_js2+='        /* conversion des données numériques fin */\r\n';
+                src_serveur_js2+='        /* conversion des données numériques fin */\r\n';
             }
             
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
@@ -1151,10 +1166,10 @@ class ecran_generer_programmes{
                     if(obj_champ.genre_objet_du_champ.che_est_session_genre === 1 || obj_champ.champ_session === true){
                     }else{
                         if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1){
-                            src_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
-                            src_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__gi1.nl2() + \']\');\r\n';
-                            src_js2+='            return{__xst:__xer};\r\n';
-                            src_js2+='        }\n';
+                            src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
+                            src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__gi1.nl2() + \']\');\r\n';
+                            src_serveur_js2+='            return{__xst:__xer};\r\n';
+                            src_serveur_js2+='        }\n';
                         }
                     }
                     if(obj_champ.genre_objet_du_champ.che_est_session_genre === 1){
@@ -1168,14 +1183,14 @@ class ecran_generer_programmes{
                             let l01=mat1.length;
                             for( let j=1 ; j < l01 ; j=mat1[j][12] ){
                                 if(mat1[j][2] === 'f'){
-                                    src_js2+='\n';
-                                    src_js2+='        let __test_'+i+'_'+j+'=this.__gi1.__fnt1.' + mat1[j][1] + '(';
+                                    src_serveur_js2+='\n';
+                                    src_serveur_js2+='        let __test_'+i+'_'+j+'=this.__gi1.__fnt1.' + mat1[j][1] + '(';
                                     if(mat1[j][8] === 0){
                                     }else{
                                         for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
                                             if(mat1[k][2] === 'c'){
                                                 if(mat1[k][4] === 0){
-                                                    src_js2+=mat1[k][1] + ',';
+                                                    src_serveur_js2+=mat1[k][1] + ',';
                                                 }else{
                                                     /* afr */
                                                     debugger;
@@ -1186,12 +1201,12 @@ class ecran_generer_programmes{
                                             }
                                         }
                                     }
-                                    src_js2+='form[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.abrege_du_champ + '\');\r\n';
-                                    src_js2+='        if( __test_'+i+'_'+j+'[\'__xst\'] !== __xsu ){\n';
-                                    src_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push(\'erreur sur le contenu de "' + obj_champ.meta.abrege_du_champ + '" [\' + this.__gi1.nl2() + \']\');\r\n';
-                                    src_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
-                                    src_js2+='            return{__xst:__xer};\r\n';
-                                    src_js2+='        }\n\n';
+                                    src_serveur_js2+='form[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.abrege_du_champ + '\');\r\n';
+                                    src_serveur_js2+='        if( __test_'+i+'_'+j+'[\'__xst\'] !== __xsu ){\n';
+                                    src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push(\'erreur sur le contenu de "' + obj_champ.meta.abrege_du_champ + '" [\' + this.__gi1.nl2() + \']\');\r\n';
+                                    src_serveur_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
+                                    src_serveur_js2+='            return{__xst:__xer};\r\n';
+                                    src_serveur_js2+='        }\n\n';
                                 }else{
                                     return({"__xst" : __xer});
                                 }
@@ -1200,68 +1215,68 @@ class ecran_generer_programmes{
                     }
                 }
             }            
-            src_js2+='\r\n';
-            src_js2+='        let retour_a_la_liste=false;\r\n';
-            src_js2+='        let l01=mat.length;\r\n';
-            src_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
-            src_js2+='            if(mat[i][1] === \'retour_a_la_liste\' && mat[i][2] === \'f\'){\r\n';
-            src_js2+='                retour_a_la_liste=true;\r\n';
-            src_js2+='            }\r\n';
-            src_js2+='        }\r\n';
-            src_js2+='\r\n';
-            src_js2+='\r\n';
-            src_js2+='        let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
-            src_js2+='        /* sélection du champ à modifier */\r\n';
-            src_js2+='        let criteres_select_' + ref_select + '={\r\n';
-            src_js2+='            "T0_' + champ_primaire + '" : form[\'' + champ_primaire + '\'],\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='        let retour_a_la_liste=false;\r\n';
+            src_serveur_js2+='        let l01=mat.length;\r\n';
+            src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
+            src_serveur_js2+='            if(mat[i][1] === \'retour_a_la_liste\' && mat[i][2] === \'f\'){\r\n';
+            src_serveur_js2+='                retour_a_la_liste=true;\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
+            src_serveur_js2+='        /* sélection du champ à modifier */\r\n';
+            src_serveur_js2+='        let criteres_select_' + ref_select + '={\r\n';
+            src_serveur_js2+='            "T0_' + champ_primaire + '" : form[\'' + champ_primaire + '\'],\n';
             
             var deja_pris=[champ_primaire];
             for(let i in liste_des_champs_condition_select){
                 if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_pere_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
                 ){
-                    src_js2+='            "T0_' + liste_des_champs_condition_select[i].nom_du_champ + '" : donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
+                    src_serveur_js2+='            "T0_' + liste_des_champs_condition_select[i].nom_du_champ + '" : donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
                     deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
                 }else if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
                 ){
-                    src_js2+='            "T0_' + liste_des_champs_condition_select[i].nom_du_champ + '" : donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
+                    src_serveur_js2+='            "T0_' + liste_des_champs_condition_select[i].nom_du_champ + '" : donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
                     deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
                 }
             }
-            src_js2+='        }\r\n';
-            src_js2+='        let tt' + ref_select + '=await this.__gi1.sql_iii( ' + ref_select + ' , criteres_select_' + ref_select + ' , donnees_retournees , __db1 );\r\n';
-            src_js2+='\r\n';
-            src_js2+='        if(tt' + ref_select + '[\'__xst\'] !== __xsu){\r\n';
-            src_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'enregistrement non trouvé : aucune modification effectuée [\' + this.__gi1.nl2() );\r\n';
-            src_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
-            src_js2+='            return({"__xst" : __xer});\r\n';
-            src_js2+='        }\r\n';
-            src_js2+='        if(tt' + ref_select + '[\'__xst\'] === __xsu && tt' + ref_select + '[\'__xva\'].length === 1){\r\n';
-            src_js2+='\r\n';
-            src_js2+='\r\n';
-            src_js2+='\r\n';
-            src_js2+='            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees  , options_generales, form , tt' + ref_select + '[\'__xva\'][0] , __db1 );\r\n';
-            src_js2+='            if(__actions_et_tests_avant_modifier[\'__xst\'] !== __xsu){\r\n';
-            src_js2+='                return({"__xst" : __xer});\r\n';
-            src_js2+='            }\r\n';
-            src_js2+='\r\n';
-            src_js2+='\r\n';
-            src_js2+='            let donnees_sql={\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        let tt' + ref_select + '=await this.__gi1.sql_iii( ' + ref_select + ' , criteres_select_' + ref_select + ' , donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='        if(tt' + ref_select + '[\'__xst\'] !== __xsu){\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'enregistrement non trouvé : aucune modification effectuée [\' + this.__gi1.nl2() );\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        if(tt' + ref_select + '[\'__xst\'] === __xsu && tt' + ref_select + '[\'__xva\'].length === 1){\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees  , options_generales, form , tt' + ref_select + '[\'__xva\'][0] , __db1 );\r\n';
+            src_serveur_js2+='            if(__actions_et_tests_avant_modifier[\'__xst\'] !== __xsu){\r\n';
+            src_serveur_js2+='                return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='            let donnees_sql={\r\n';
             
             for( let i=0 ; i < liste_des_champs_condition_update.length ; i++ ){
                 if(champ_primaire === liste_des_champs_condition_update[i].nom_du_champ){
-                    src_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
+                    src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
                 }else if(liste_des_champs_condition_update[i].champ_session === true){
                     /* nom_en_session1 */
-                    src_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_condition_update[i].nom_champ_session + ',\n';
+                    src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_condition_update[i].nom_champ_session + ',\n';
                 }else if(liste_des_champs_condition_update[i].champ_dans_la_base.champ_est_en_session1 === true){
                     /* nom_en_session1 */
-                    src_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_condition_update[i].champ_dans_la_base.nom_en_session1 + ',\n';
+                    src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_condition_update[i].champ_dans_la_base.nom_en_session1 + ',\n';
                 }else if(liste_des_champs_condition_update[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre === 1){
-                    src_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
+                    src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
                 }else{
-                    src_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : tt' + ref_select + '[\'__xva\'][0][\'T0.' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
+                    src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : tt' + ref_select + '[\'__xva\'][0][\'T0.' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
                 }
             }
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
@@ -1270,12 +1285,12 @@ class ecran_generer_programmes{
                 if(obj_champ.champ_session === true){
                     if(ne_pas_prendre_les_valeurs_en_session === true){
                         if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
-                            src_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'?NULL:$form[\'' + nom_du_champ + '\'],\n';
+                            src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'?NULL:$form[\'' + nom_du_champ + '\'],\n';
                         }else{
-                            src_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'],\n';
+                            src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'],\n';
                         }
                     }else{
-                        src_js2+='                    \'n_' + nom_du_champ + '\' => donnees_retournees.' + liste_des_champs_update[i].nom_champ_session + ',\r\n';
+                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' => donnees_retournees.' + liste_des_champs_update[i].nom_champ_session + ',\r\n';
                     }
                 }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
@@ -1283,59 +1298,60 @@ class ecran_generer_programmes{
                 ){
                 }else{
                     if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
-                        src_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'?NULL:$form[\'' + nom_du_champ + '\'],\n';
+                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'?NULL:$form[\'' + nom_du_champ + '\'],\n';
                     }else{
-                        src_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'],\n';
+                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'],\n';
                     }
                 }
             }
 /*            
-            src_js2+='                "n_chp_nom_dossier" : form[\'chp_nom_dossier\'] ,\r\n';
-            src_js2+='                "n_chx_parent_dossier" : form[\'chx_parent_dossier\'] ,\r\n';
-            src_js2+='                "n_che_contient_genere_dossier" : form[\'che_contient_genere_dossier\'] ,\r\n';
-            src_js2+='                "n_che_pour_les_js_dossier" : form[\'che_pour_les_js_dossier\']\r\n';
+            src_serveur_js2+='                "n_chp_nom_dossier" : form[\'chp_nom_dossier\'] ,\r\n';
+            src_serveur_js2+='                "n_chx_parent_dossier" : form[\'chx_parent_dossier\'] ,\r\n';
+            src_serveur_js2+='                "n_che_contient_genere_dossier" : form[\'che_contient_genere_dossier\'] ,\r\n';
+            src_serveur_js2+='                "n_che_pour_les_js_dossier" : form[\'che_pour_les_js_dossier\']\r\n';
 */            
-            src_js2+='            };\r\n';
-            src_js2+='\r\n';
-            src_js2+='            await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
-            src_js2+='            let tt' + ref_update + '=await this.__gi1.sql_iii( ' + ref_update + ' , donnees_sql , donnees_retournees , __db1 );\r\n';
-            src_js2+='\r\n';
-            src_js2+='            if(tt' + ref_update + '[\'__xst\'] !== __xsu ){\r\n';
-            src_js2+='                if(tt' + ref_update + '[\'__xme\']!==\'\'){\r\n';
-            src_js2+='                    donnees_retournees[\'__xsi\'][\'__xer\'].push( tt' + ref_update + '[\'__xme\']+\' [\' + this.__gi1.nl2() );\r\n';
-            src_js2+='                }else{\r\n';
-            src_js2+='                    donnees_retournees[\'__xsi\'][\'__xer\'].push( \'erreur de modification [\' + this.__gi1.nl2() );\r\n';
-            src_js2+='                }\r\n';
-            src_js2+='                donnees_retournees[\'__xst\']=__xer;\r\n';
-            src_js2+='                return({"__xst" : __xer});\r\n';
-            src_js2+='            }\r\n';
-            src_js2+='\r\n';
-            src_js2+='            let __taam=this.tests_et_actions_apres_modifier(mat , d , donnees_recues , donnees_retournees , options_generales , form , tt' + ref_select + '[\'__xva\'][0] , __db1);\r\n';
-            src_js2+='            if(__taam[\'__xst\'] !== __xsu ){\r\n';
-            src_js2+='                await __db1.exec(\'ROLLBACK;\');\r\n';
-            src_js2+='                donnees_retournees[\'__xst\']=__xer;\r\n';
-            src_js2+='                return({"__xst" : __xer});\r\n';
-            src_js2+='            }\r\n';
-            src_js2+='            await __db1.exec(\'COMMIT;\');\r\n';
-            src_js2+='\r\n';
-            src_js2+='            if(retour_a_la_liste === true){\r\n';
-            src_js2+='                if(form[\'__mat_liste_si_ok\']){\r\n';
-            src_js2+='                    let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
-            src_js2+='                    let d=1;\r\n';
-            src_js2+='                    await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales  );\r\n';
-            src_js2+='                }\r\n';
-            src_js2+='                return({"__xst" : __xsu});\r\n';
-            src_js2+='            }\r\n';
-            src_js2+='            let tt' + ref_select + '_bis=await this.__gi1.sql_iii( ' + ref_select + ' , criteres_select_' + ref_select + ' , donnees_retournees , __db1 );\r\n';
-            src_js2+='            donnees_retournees[\'__xva\'][\'page_modification1\']=tt'+ref_select+'_bis;\r\n';
-            src_js2+='        }else{\r\n';
-            src_js2+='            donnees_retournees[\'__xva\'][\'page_modification1\']=tt'+ref_select+';\r\n';
-            src_js2+='        }\r\n';
-            src_js2+='\r\n';
-            src_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
-            src_js2+='        return({"__xst" : __xsu});\r\n';
-            src_js2+='\r\n';
-            src_js2+='    }\r\n';
+            src_serveur_js2+='            };\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='            await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
+            src_serveur_js2+='            let tt' + ref_update + '=await this.__gi1.sql_iii( ' + ref_update + ' , donnees_sql , donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='            if(tt' + ref_update + '[\'__xst\'] !== __xsu ){\r\n';
+            src_serveur_js2+='                if(tt' + ref_update + '[\'__xme\']!==\'\'){\r\n';
+            src_serveur_js2+='                    donnees_retournees[\'__xsi\'][\'__xer\'].push( tt' + ref_update + '[\'__xme\']+\' [\' + this.__gi1.nl2() );\r\n';
+            src_serveur_js2+='                }else{\r\n';
+            src_serveur_js2+='                    donnees_retournees[\'__xsi\'][\'__xer\'].push( \'erreur de modification [\' + this.__gi1.nl2() );\r\n';
+            src_serveur_js2+='                }\r\n';
+            src_serveur_js2+='                donnees_retournees[\'__xst\']=__xer;\r\n';
+            src_serveur_js2+='                return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='            let __taam=await this.tests_et_actions_apres_modifier(mat , d , donnees_recues , donnees_retournees , options_generales , form , tt' + ref_select + '[\'__xva\'][0] , __db1);\r\n';
+            src_serveur_js2+='            if(__taam[\'__xst\'] !== __xsu ){\r\n';
+            src_serveur_js2+='                await __db1.exec(\'ROLLBACK;\');\r\n';
+            src_serveur_js2+='                donnees_retournees[\'__xsi\'][\'__xer\'].push( \'erreur après modification [\' + this.__gi1.nl2() );\r\n';
+            src_serveur_js2+='                donnees_retournees[\'__xst\']=__xer;\r\n';
+            src_serveur_js2+='                return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='            await __db1.exec(\'COMMIT;\');\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='            if(retour_a_la_liste === true){\r\n';
+            src_serveur_js2+='                if(form[\'__mat_liste_si_ok\']){\r\n';
+            src_serveur_js2+='                    let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
+            src_serveur_js2+='                    let d=1;\r\n';
+            src_serveur_js2+='                    await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales  );\r\n';
+            src_serveur_js2+='                }\r\n';
+            src_serveur_js2+='                return({"__xst" : __xsu});\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='            let tt' + ref_select + '_bis=await this.__gi1.sql_iii( ' + ref_select + ' , criteres_select_' + ref_select + ' , donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xva\'][\'page_modification1\']=tt'+ref_select+'_bis;\r\n';
+            src_serveur_js2+='        }else{\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xva\'][\'page_modification1\']=tt'+ref_select+';\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+            src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='    }\r\n';
         }
         
         if(ref_update !== '' && ref_select!=='' ){
@@ -1622,45 +1638,41 @@ class ecran_generer_programmes{
         if(ref_select !== '' && ref_update !=='' ){
             
             
-            src_js2+='    /*\r\n';
-            src_js2+='      =============================================================================================================\r\n';
-            src_js2+='    */\r\n';
-            src_js2+='    async page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , ' + champ_primaire + '=null ){\r\n';
-            src_js2+='        if(' + champ_primaire + ' === null){\r\n';
-            src_js2+='            let l01=mat.length;\r\n';
-            src_js2+='            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
-            src_js2+='                if(mat[i][1] === \'' + champ_primaire + '\'\r\n';
-            src_js2+='                       && mat[i][2] === \'f\'\r\n';
-            src_js2+='                       && mat[i][8] === 1\r\n';
-            src_js2+='                       && mat[i + 1][2] === \'c\'\r\n';
-            src_js2+='                       && mat[i + 1][4] === 0\r\n';
-            src_js2+='                ){\r\n';
-            src_js2+='                    ' + champ_primaire + '=parseInt( mat[i + 1][1] , 10 );\r\n';
-            src_js2+='                }\r\n';
-            src_js2+='            }\r\n';
-            src_js2+='        }else{\r\n';
-            src_js2+='            donnees_retournees[\'__xac\']=\'pm1(m1(n1(\' + this.moi + \'),f1(page_modification1(' + champ_primaire + '(\' + ' + champ_primaire + ' + \')))))\';\r\n';
-            src_js2+='        }\r\n';
-            src_js2+='        let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
-            src_js2+='        let tt'+ref_select+'=await this.__gi1.sql_iii( '+ref_select+' , {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , donnees_retournees , __db1 );\r\n';
-            src_js2+='        donnees_retournees[\'__xva\'][\'page_modification1\']=tt'+ref_select+';\r\n';
-            src_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
-            src_js2+='        /*#\r\n';
-            src_js2+='          AFR DEBUT\r\n';
-            src_js2+='          let obj=await this.construire_chemin( ' + champ_primaire + ' , donnees_retournees , options_generales , __db1 );\r\n';
-            src_js2+='          if(obj[\'__xst\'] === __xsu){\r\n';
-            src_js2+='              let chemin_absolu=obj[\'__xva\'][\'chemin_absolu\'];\r\n';
-            src_js2+='              let chemin_relatif=obj[\'__xva\'][\'chemin_relatif\'];\r\n';
-            src_js2+='              await this.liste_des_fidos( ' + champ_primaire + ' , chemin_absolu , donnees_retournees , options_generales , __db1 );\r\n';
-            src_js2+='              return({"__xst" : __xsu});\r\n';
-            src_js2+='          }else{\r\n';
-            src_js2+='              return({"__xst" : __xer});\r\n';
-            src_js2+='          }\r\n';
-            src_js2+='          AFR FIN\r\n';
-            src_js2+='        */\r\n';
-            src_js2+='        return({"__xst" : __xsu});\r\n';
-            src_js2+='    }\r\n';
-            src_js2+='\r\n';
+            src_serveur_js2+='    /*\r\n';
+            src_serveur_js2+='      =============================================================================================================\r\n';
+            src_serveur_js2+='    */\r\n';
+            src_serveur_js2+='    async page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , ' + champ_primaire + '=null ){\r\n';
+            src_serveur_js2+='        if(' + champ_primaire + ' === null){\r\n';
+            src_serveur_js2+='            let l01=mat.length;\r\n';
+            src_serveur_js2+='            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
+            src_serveur_js2+='                if(mat[i][1] === \'' + champ_primaire + '\'\r\n';
+            src_serveur_js2+='                       && mat[i][2] === \'f\'\r\n';
+            src_serveur_js2+='                       && mat[i][8] === 1\r\n';
+            src_serveur_js2+='                       && mat[i + 1][2] === \'c\'\r\n';
+            src_serveur_js2+='                       && mat[i + 1][4] === 0\r\n';
+            src_serveur_js2+='                ){\r\n';
+            src_serveur_js2+='                    ' + champ_primaire + '=parseInt( mat[i + 1][1] , 10 );\r\n';
+            src_serveur_js2+='                }\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='        }else{\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xac\']=\'pm1(m1(n1(\' + this.moi + \'),f1(page_modification1(' + champ_primaire + '(\' + ' + champ_primaire + ' + \')))))\';\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
+            src_serveur_js2+='        let tt'+ref_select+'=await this.__gi1.sql_iii( '+ref_select+' , {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        if(tt'+ref_select+'[\'__xst\'] !== __xsu){\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        let aetam=await this.actions_et_tests_apres_page_modifications(mat , d , donnees_recues , donnees_retournees , options_generales , tt386[\'__xva\'][0] , __db1);\r\n';
+            src_serveur_js2+='        if(aetam[\'__xst\'] !== __xsu){\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xva\'][\'page_modification1\']=tt'+ref_select+';\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+            src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+            src_serveur_js2+='    }\r\n';
+            src_serveur_js2+='\r\n';
             
             src_hph+='    /*\r\n';
             src_hph+='      =============================================================================================================\r\n';
@@ -2116,57 +2128,93 @@ class ecran_generer_programmes{
         if(ref_delete !== '' && ref_select!=='' ){
          
          
-            src_js2+='    /*\r\n';
-            src_js2+='      =============================================================================================================\r\n';
-            src_js2+='    */\r\n';
-            src_js2+='    async supprimer1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
-            src_js2+='        let nom_formulaire=donnees_recues[\'__xva\'][\'__co1\'];\r\n';
-            src_js2+='        let form=donnees_recues[\'__xva\'][\'__fo1\'][nom_formulaire];\r\n';
+            src_serveur_js2+='    /*\r\n';
+            src_serveur_js2+='      =============================================================================================================\r\n';
+            src_serveur_js2+='    */\r\n';
+            src_serveur_js2+='    async supprimer1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
+            src_serveur_js2+='        let nom_formulaire=donnees_recues[\'__xva\'][\'__co1\'];\r\n';
+            src_serveur_js2+='        let form=donnees_recues[\'__xva\'][\'__fo1\'][nom_formulaire];\r\n';
             
-            if(this.#obj_table.meta.hasOwnProperty( 'fonctions_spéciales1' )
-                   && this.#obj_table.meta.fonctions_spéciales1.indexOf( 'ne_pas_supprimer_id_un(1)' ) >= 0
-            ){
-                src_js2+='        /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */\r\n';
-                src_js2+='        if(form[\'' + champ_primaire + '\']===1){\r\n';
-                src_js2+='                donnees_retournees[\'__xsi\'][\'__xer\'].push( \'il n\\\'est pas possible de supprimer cet élément [\' + this.__gi1.nl2() );\r\n';
-                src_js2+='                donnees_retournees[\'__xst\']=__xer;\r\n';
-                src_js2+='                return({"__xst" : __xer});\r\n';
-                src_js2+='        }\r\n';
+            if(this.#obj_table.meta.hasOwnProperty( 'fonctions_spéciales1' ) && this.#obj_table.meta.fonctions_spéciales1!==''){
+                let obj1=__gi1.__rev1.rev_tm( this.#obj_table.meta.fonctions_spéciales1 );
+                if(obj1.__xst===__xsu){
+                    for(let i=1;i<obj1.__xva.length;i=obj1.__xva[i][12]){
+                        if(obj1.__xva[i][1]==='ne_pas_supprimer_id_un' && obj1.__xva[i][2]==='f' && obj1.__xva[i][8]===1 && obj1.__xva[i+1][2]==='c' && __gi1.est_num(obj1.__xva[i+1][1])){
+                            src_serveur_js2+='        /* fonctions_spéciales1(ne_pas_supprimer_id_un('+obj1.__xva[i+1][1]+')) */\r\n';
+                            src_serveur_js2+='        if(form[\'' + champ_primaire + '\']<='+obj1.__xva[i+1][1]+'){\r\n';
+                            src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'il n\\\'est pas possible de supprimer cet élément [\' + this.__gi1.nl2() + \']\' );\r\n';
+                            src_serveur_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
+                            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+                            src_serveur_js2+='        }\r\n';
+                        }
+                    }
+                }
             }
-            console.log('%c A completer =====================================','background:yellow;color:red;')
-            /*
-            src_js2+='        let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
-            src_js2+='        let tt'+ref_select+'=await this.__gi1.sql_iii( '+ref_select+' , {"T0_chi_id_dossier" : form[\'chi_id_dossier\']} , donnees_retournees , __db1 );\r\n';
-            src_js2+='        if(tt'+ref_select+'[\'__xst\'] !== __xsu){\r\n';
-            src_js2+='\r\n';
-            src_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'[\' + this.__gi1.nl2() + \']\' );\r\n';
-            src_js2+='            return({"__xst" : __xer});\r\n';
-            src_js2+='        }\r\n';
-            src_js2+='\r\n';
-            src_js2+='        let __tests_avant_supprimer=await this.test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt'+ref_select+'[\'__xva\'][0] , __db1 );\r\n';
-            src_js2+='        this.__gi1.ma_trace1(\'__tests_avant_supprimer=\',__tests_avant_supprimer);\r\n';
-            src_js2+='        if(__tests_avant_supprimer[\'__xst\'] !== __xsu){\r\n';
-            src_js2+='            return({"__xst" : __xer});\r\n';
-            src_js2+='        }\r\n';
-            src_js2+='        let tt158=await this.__gi1.sql_iii( 158 , {"chi_id_dossier" : form[\'chi_id_dossier\']} , donnees_retournees , __db1 );\r\n';
-            src_js2+='\r\n';
-            src_js2+='        if(tt158[\'__xst\'] !== __xsu){\r\n';
-            src_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'Erreur lors de le suppression [\' + this.__gi1.nl2() + \']\' );\r\n';
-            src_js2+='            return({"__xst" : __xer});\r\n';
-            src_js2+='        }\r\n';
-            src_js2+='        if(form[\'__mat_liste_si_ok\'] !== \'\'){\r\n';
-            src_js2+='            let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
-            src_js2+='\r\n';
-            src_js2+='            await this.filtre1( mat1 , d , donnees_recues , donnees_retournees , options_generales , __db1 );\r\n';
-            src_js2+='        }\r\n';
-            src_js2+='        return({"__xst" : __xsu});\r\n';
-            */
-            src_js2+='    }\r\n';
-            src_js2+='\r\n';
+            src_serveur_js2+='        /**/\r\n';
+            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
+            src_serveur_js2+='        let criteres_'+ref_select+'={/**/\r\n';
+            src_serveur_js2+='                \'T0_' + champ_primaire + '\' : form[\'' + champ_primaire + '\'],\r\n';
+            /* compléments sélectionner */
+            var deja_pris=[champ_primaire];
+            for(let i in liste_des_champs_condition_select){
+                if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_pere_est_en_session1 === true
+                       && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
+                ){
+                    src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
+                    deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
+                }else if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_est_en_session1 === true
+                       && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
+                ){
+                    src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
+                    deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
+                }
+            }
+            src_serveur_js2+='        };\r\n';
+            src_serveur_js2+='        let tt'+ref_select+'=await this.__gi1.sql_iii( '+ref_select+' , criteres_'+ref_select+' , donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        if(tt'+ref_select+'[\'__xst\'] !== __xsu){\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'[\' + this.__gi1.nl2() + \']\' );\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        /**/\r\n';
+            src_serveur_js2+='        let tas=await this.test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt'+ref_select+'[\'__xva\'][0] , __db1 );\r\n';
+            src_serveur_js2+='        if(tas[\'__xst\'] !== __xsu){\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        let criteres_'+ref_delete+'={/**/\r\n';
+            src_serveur_js2+='                \'' + champ_primaire + '\' : form[\'' + champ_primaire + '\'],\r\n';
+            /* compléments sélectionner */
+            var deja_pris=[champ_primaire];
+            for(let i in liste_des_champs_condition_select){
+                if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_pere_est_en_session1 === true
+                       && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
+                ){
+                    src_serveur_js2+='                \'' + liste_des_champs_condition_select[i].nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
+                    deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
+                }else if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_est_en_session1 === true
+                       && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
+                ){
+                    src_serveur_js2+='                \'' + liste_des_champs_condition_select[i].nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
+                    deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
+                }
+            }
+            src_serveur_js2+='        };\r\n';
+            src_serveur_js2+='        let tt'+ref_delete+'=await this.__gi1.sql_iii( '+ref_delete+' , criteres_'+ref_delete+' , donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        /**/\r\n';
+            src_serveur_js2+='        if(tt'+ref_delete+'[\'__xst\'] !== __xsu){\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'erreur lors de le suppression [\' + this.__gi1.nl2() + \']\' );\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        if(form[\'__mat_liste_si_ok\'] !== \'\'){\r\n';
+            src_serveur_js2+='            let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
+            src_serveur_js2+='            await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales , __db1 );\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+            src_serveur_js2+='    }\r\n';
             /*
             
             */
-         
             src_hph+='    /*\r\n';
             src_hph+='      =============================================================================================================\r\n';
             src_hph+='    */\r\n';
@@ -2179,12 +2227,24 @@ class ecran_generer_programmes{
             if(this.#obj_table.meta.hasOwnProperty( 'fonctions_spéciales1' )
                    && this.#obj_table.meta.fonctions_spéciales1.indexOf( 'ne_pas_supprimer_id_un(1)' ) >= 0
             ){
-                src_hph+='        /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */\r\n';
-                src_hph+='        if($form[\'' + champ_primaire + '\']===1){\r\n';
-                src_hph+='            $donnees_retournees[__xsi][__xer][]=__METHOD__ . \' [\' . __LINE__ . \']\';\r\n';
-                src_hph+='            return;\r\n';
-                src_hph+='        }\r\n';
             }
+            if(this.#obj_table.meta.hasOwnProperty( 'fonctions_spéciales1' ) && this.#obj_table.meta.fonctions_spéciales1!==''){
+                let obj1=__gi1.__rev1.rev_tm( this.#obj_table.meta.fonctions_spéciales1 );
+                if(obj1.__xst===__xsu){
+                    for(let i=1;i<obj1.__xva.length;i=obj1.__xva[i][12]){
+                        if(obj1.__xva[i][1]==='ne_pas_supprimer_id_un' && obj1.__xva[i][2]==='f' && obj1.__xva[i][8]===1 && obj1.__xva[i+1][2]==='c' && __gi1.est_num(obj1.__xva[i+1][1])){
+                            src_hph+='        /* fonctions_spéciales1(ne_pas_supprimer_id_un('+obj1.__xva[i+1][1]+')) */\r\n';
+                            src_hph+='        if($form[\'' + champ_primaire + '\']<='+obj1.__xva[i+1][1]+'){\r\n';
+                            src_hph+='            $donnees_retournees[__xsi][__xer][]=__METHOD__ . \' [\' . __LINE__ . \']\';\r\n';
+                            src_hph+='            return;\r\n';
+                            src_hph+='        }\r\n';
+                        }
+                    }
+                }
+            }
+            
+            
+            
             src_hph+='        $tt' + ref_select + '=$this->sql0->sql_iii(\r\n';
             src_hph+='             /*sql_' + ref_select + '()*/ ' + ref_select + ',\r\n';
             src_hph+='            array(/**/\r\n';
@@ -2255,6 +2315,53 @@ class ecran_generer_programmes{
             src_hph+='\r\n';
             src_hph+='    }\r\n';
             src_hph+='\r\n';
+            /*
+            */
+            src_serveur_js2+='    /*\r\n';
+            src_serveur_js2+='      =============================================================================================================\r\n';
+            src_serveur_js2+='    */\r\n';
+            src_serveur_js2+='    async page_confirmation_supprimer1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
+            src_serveur_js2+='        let ' + champ_primaire + '=0;\r\n';
+            src_serveur_js2+='        let l01=mat.length;\r\n';
+            src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
+            src_serveur_js2+='            if(mat[i][1] === \'' + champ_primaire + '\'\r\n';
+            src_serveur_js2+='                   && mat[i][2] === \'f\'\r\n';
+            src_serveur_js2+='                   && mat[i][8] === 1\r\n';
+            src_serveur_js2+='                   && mat[i + 1][2] === \'c\'\r\n';
+            src_serveur_js2+='                   && mat[i + 1][4] === 0\r\n';
+            src_serveur_js2+='            ){\r\n';
+            src_serveur_js2+='                ' + champ_primaire + '=parseInt( mat[i + 1][1] , 10 );\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        if(' + champ_primaire + ' === 0){\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( this.__gi1.nl2() );\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
+            src_serveur_js2+='        let critere_'+ref_select+'={\r\n';
+            src_serveur_js2+='                \'T0_' + champ_primaire + '\' : ' + champ_primaire + ',\r\n';
+            /* compléments sélectionner */
+            var deja_pris=[champ_primaire];
+            for(let i in liste_des_champs_condition_select){
+                if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_pere_est_en_session1 === true
+                       && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
+                ){
+                    src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
+                    deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
+                }else if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_est_en_session1 === true
+                       && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
+                ){
+                    src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
+                    deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
+                }
+            }
+            src_serveur_js2+='        };\r\n';
+            src_serveur_js2+='        let tt'+ref_select+'=await this.__gi1.sql_iii( '+ref_select+' , critere_'+ref_select+' , donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xva\'][\'page_confirmation_supprimer1\']=tt'+ref_select+';\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+            src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+            src_serveur_js2+='    }\r\n';
+            src_serveur_js2+='\r\n';
             /*
             */
             src_hph+='    /*\r\n';
@@ -2431,6 +2538,215 @@ class ecran_generer_programmes{
         o2+='    }\r\n';
         o2+='\r\n';
         if(ref_select !== '' && ref_insert !== ''){
+         
+            /*
+              js serveur
+            */
+            src_serveur_js2+='    /*\r\n';
+            src_serveur_js2+='      =============================================================================================================\r\n';
+            src_serveur_js2+='    */\r\n';
+            src_serveur_js2+='    async creer1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
+            src_serveur_js2+='        const retour_a_la_liste=false;\r\n';
+            src_serveur_js2+='        let l01=mat.length;\r\n';
+            src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
+            src_serveur_js2+='            if(mat[i][1] === \'retour_a_la_liste\' && mat[i][2] === \'f\'){\r\n';
+            src_serveur_js2+='                retour_a_la_liste=true;\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        let nom_formulaire=donnees_recues[\'__xva\'][\'__co1\'];\r\n';
+            src_serveur_js2+='        let form=donnees_recues[\'__xva\'][\'__fo1\'][nom_formulaire];\r\n';
+            src_serveur_js2+='\r\n';
+
+
+            if(liste_des_conversions.length > 0){
+                src_serveur_js2+='        /* conversion des données numériques début */\r\n';
+                for( let i=0 ; i < liste_des_conversions.length ; i++ ){
+                    let valeur_par_defaut='null';
+                    
+                    
+                    if(liste_des_conversions[i].espece_du_champ === 'INTEGER'){
+
+                        if(liste_des_conversions[i].genre_objet_du_champ.che_est_obligatoire_genre===1){
+                            if(liste_des_conversions[i].a_une_valeur_par_defaut===1){
+                                if(liste_des_conversions[i].la_valeur_par_defaut_est_caractere===1){
+                                    valeur_par_defaut='\''+liste_des_conversions[i].valeur_par_defaut.replace(/\'/g,'\\\'')+'\'';
+                                }else{
+                                    valeur_par_defaut=liste_des_conversions[i].valeur_par_defaut;
+                                }
+                            }
+                        }
+                        src_serveur_js2+='        form[\'' + liste_des_conversions[i].nom_du_champ + '\']=';
+                        src_serveur_js2+='form[\'' + liste_des_conversions[i].nom_du_champ + '\'] === null || form[\'' + liste_des_conversions[i].nom_du_champ + '\']===\'\' || form[\'' + liste_des_conversions[i].nom_du_champ + '\']=== undefined ? ( '+valeur_par_defaut+' ):parseInt(form[\'' + liste_des_conversions[i].nom_du_champ + '\'],10);\r\n';
+                    }else if(liste_des_conversions[i].espece_du_champ === 'FLOAT'){
+                        src_serveur_js2+='        form[\'' + liste_des_conversions[i].nom_du_champ + '\']=';
+                        src_serveur_js2+='form[\'' + liste_des_conversions[i].nom_du_champ + '\'] === null || form[\'' + liste_des_conversions[i].nom_du_champ + '\']===\'\' || form[\'' + liste_des_conversions[i].nom_du_champ + '\']=== undefined ? ( '+valeur_par_defaut+' ):parseFloat(form[\'' + liste_des_conversions[i].nom_du_champ + '\']);\r\n';
+                    }
+                }
+                src_serveur_js2+='        /* conversion des données numériques fin */\r\n';
+            }
+            for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
+                let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
+                let obj_champ=this.#obj_table.champs[nom_du_champ];
+                if(obj_champ.genre_objet_du_champ
+                       && (obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
+                           || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
+                           || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
+                           || obj_champ.genre_objet_du_champ.che_est_session_genre === 1
+                               && obj_champ.genre_objet_du_champ.chp_nom_en_session_genre !== null)
+                ){
+                }else{
+                    if(obj_champ.genre_objet_du_champ
+                               && obj_champ.genre_objet_du_champ.che_est_session_genre === 1
+                           || obj_champ.champ_session === true
+                    ){
+                    }else{
+                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1){
+                            src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
+                            src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__gi1.nl2() + \']\');\r\n';
+                            src_serveur_js2+='            return{__xst:__xer};\r\n';
+                            src_serveur_js2+='        }\n';
+                        }
+                    }
+                    if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_session_genre === 1){
+                    }else{
+                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
+                            var obj1=__gi1.__rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
+                            if(obj1.__xst !== __xsu){
+                                return({"__xst" : __xer});
+                            }
+                            let mat1=obj1.__xva;
+                            let l01=mat1.length;
+                            for( let j=1 ; j < l01 ; j=mat1[j][12] ){
+                                if(mat1[j][2] === 'f'){
+                                    src_serveur_js2+='\n';
+                                    src_serveur_js2+='        let __test=this.__gi1.__fnt1.' + mat1[j][1] + '(';
+                                    if(mat1[j][8] === 0){
+                                    }else{
+                                        for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
+                                            if(mat1[k][2] === 'c'){
+                                                if(mat1[k][4] === 0){
+                                                    src_serveur_js2+=mat1[k][1] + ',';
+                                                }else{
+                                                    /* afr */
+                                                    debugger;
+                                                    return({"__xst" : __xer});
+                                                }
+                                            }else{
+                                                return({"__xst" : __xer});
+                                            }
+                                        }
+                                    }
+                                    src_serveur_js2+='form[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.abrege_du_champ + '\');\r\n';
+                                    src_serveur_js2+='        if(__test[\'__xst\']!==__xsu){\n';
+                                    src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push(\'erreur sur le contenu de  "' + obj_champ.meta.abrege_du_champ + '" [\' + this.__gi1.nl2() + \']\');\r\n';
+                                    src_serveur_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
+                                    src_serveur_js2+='            return{__xst:__xer};\r\n';
+                                    src_serveur_js2+='        }\n\n';
+                                }else{
+                                    return({"__xst" : __xer});
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
+            src_serveur_js2+='        let __tac=await this.tests_avant_creer(mat , d , donnees_recues , donnees_retournees , options_generales,form,__db1);\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='        if(__tac[\'__xst\'] !== __xsu){\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='        let donnees_sql={\r\n';
+            src_serveur_js2+='            donnees :[{\r\n';
+            for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
+                let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
+                let obj_champ=this.#obj_table.champs[nom_du_champ];
+                if(obj_champ.genre_objet_du_champ
+                       && (obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
+                           || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
+                           || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1)
+                ){
+                }else if(liste_des_champs_insert[i].champ_dans_la_base.meta.est_en_session === '1'){
+                    if(liste_des_champs_insert[i].champ_dans_la_base.meta.nom_en_session !== ''){
+                        src_serveur_js2+='                    \'' + nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_insert[i].champ_dans_la_base.meta.nom_en_session + ',\n';
+                    }else{
+                        debugger;
+                    }
+                }else if(ne_pas_prendre_les_valeurs_en_session === false && obj_champ.champ_pere_est_en_session1 === true){
+                    src_serveur_js2+='                    \'' + nom_du_champ + '\' : donnees_retournees.' + obj_champ.champ_pere + ',\n';
+                }else if(ne_pas_prendre_les_valeurs_en_session === false
+                       && (obj_champ.champ_session === true
+                           || obj_champ.champ_pere_est_en_session1 === true)
+                ){
+                    debugger;
+                    src_serveur_js2+='                    \'' + nom_du_champ + '\' : donnees_retournees.' + obj_champ.champ_pere + ',\n';
+                }else{
+                    if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
+                        src_serveur_js2+='                    \'' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] === \'\' ? ( null ) : ( $form[\'' + nom_du_champ + '\'] ),\n';
+                    }else{
+                        src_serveur_js2+='                    \'' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'],\n';
+                    }
+                }
+            }
+            src_serveur_js2+='            }]\r\n';
+            src_serveur_js2+='        };\r\n';
+            src_serveur_js2+='        /**/\r\n';
+            src_serveur_js2+='        await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
+            src_serveur_js2+='        let tt'+ref_insert+'=await this.__gi1.sql_iii( '+ref_insert+' , donnees_sql , donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        if(tt'+ref_insert+'[\'__xst\'] === __xsu){\r\n';
+            src_serveur_js2+='            if(tt'+ref_insert+'[\'changements\'] === 0){\r\n';
+            src_serveur_js2+='                donnees_retournees[\'__xsi\'][\'__xer\'].push( \'l\\\'insertion a échoué [\' + this.__gi1.nl2() + \']\' );\r\n';
+            src_serveur_js2+='                return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='            let aac=this.action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , tt377[\'nouvel_id\'] , form , __db1 );\r\n';
+            src_serveur_js2+='            if(aac[\'__xst\'] === __xer){\r\n';
+            src_serveur_js2+='                await __db1.exec( \'ROLLBACK;\' );\r\n';
+            src_serveur_js2+='                donnees_retournees[\'__xsi\'][\'__xer\'].push( \'les actions après créer ont échouées [\' + this.__gi1.nl2() + \']\' );\r\n';
+            src_serveur_js2+='                return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='            }\r\n';
+            
+            src_serveur_js2+='            await __db1.exec(\'COMMIT;\');\r\n';
+            src_serveur_js2+='            if(form[\'__mat_liste_si_ok\'] !== \'\'){\r\n';
+            src_serveur_js2+='                let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
+            src_serveur_js2+='                await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales , __db1 );\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xst\']=__xsu;\r\n';
+            src_serveur_js2+='            return({"__xst" : __xsu});\r\n';
+            src_serveur_js2+='        }else{\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( tt'+ref_insert+'[\'__xme\']+\'\\nl\\\'insertion a échoué [\' + this.__gi1.nl2() + \']\' );\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='    }\r\n';
+            
+            
+            src_serveur_js2+='    /*\r\n';
+            src_serveur_js2+='      =============================================================================================================\r\n';
+            src_serveur_js2+='    */\r\n';
+            src_serveur_js2+='    async page_creer1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
+            src_serveur_js2+='        /*\r\n';
+            src_serveur_js2+='          page optionnelle si on veut vérifier quelque chose avant de créer un projet\r\n';
+            src_serveur_js2+='          dans ce cas, dans le lien de la page, il faudra remplacer :\r\n';
+            src_serveur_js2+='          m1(n1(\'+this.moi+\'),f1(page_creer1()))\r\n';
+            src_serveur_js2+='          par :\r\n';
+            src_serveur_js2+='          pm1(m1(n1(\'+this.moi+\'),f1(page_creer1())))\r\n';
+            src_serveur_js2+='        */\r\n';
+            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xva\'][\'nouveau_numero_projet\']=nouveau_numero_projet;\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+            src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+            src_serveur_js2+='    }\r\n';
+            src_serveur_js2+='\r\n';
+            
+            
+            
+            /*
+              php
+            */
             src_hph+='    /*\r\n';
             src_hph+='      =============================================================================================================\r\n';
             src_hph+='    */\r\n';
@@ -2595,6 +2911,65 @@ class ecran_generer_programmes{
             src_hph+='    }\r\n';
         }
         if(ref_liste_ecran !== ''){
+         
+            
+            src_serveur_js2+='    /*\r\n';
+            src_serveur_js2+='      =============================================================================================================\r\n';
+            src_serveur_js2+='    */\r\n';
+            src_serveur_js2+='    async filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , __db1=null ){\r\n';
+            src_serveur_js2+='        const __nbMax=40;\r\n';
+            src_serveur_js2+='        let __num_page=0;\r\n';
+            src_serveur_js2+='        let formulaire=this.__gi1.__fnt1.debut_filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , this.fonction_liste );\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='        if(!formulaire.hasOwnProperty( \'__num_page\' ) || !this.__gi1.est_num( formulaire.__num_page )){\r\n';
+            src_serveur_js2+='            __num_page=0;\r\n';
+            src_serveur_js2+='        }else{\r\n';
+            src_serveur_js2+='            __num_page=parseInt( formulaire.__num_page , 10 );\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='        let __debut=__num_page * __nbMax;\r\n';
+            src_serveur_js2+='        let criteres'+ref_liste_ecran+'={\r\n';
+            src_serveur_js2+='             /*  */\r\n';
+            src_serveur_js2+='            "quantitee" : __nbMax ,\r\n';
+            src_serveur_js2+='            "debut" : __debut\r\n';
+            src_serveur_js2+='        };\r\n';
+            src_serveur_js2+='        /* echo __FILE__ . \' \' . __LINE__ . \' __LINE__ = <pre>\' . var_export( $form , true ) . \'</pre>\' ; exit(0); */\r\n';
+            src_serveur_js2+='        for(let i in formulaire){\r\n';
+            src_serveur_js2+='            if(i !== \'__num_page\'){\r\n';
+            src_serveur_js2+='                criteres'+ref_liste_ecran+'[i]=formulaire[i];\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        if(__db1===null){\r\n';
+            src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='\r\n';
+            src_serveur_js2+='        let tt'+ref_liste_ecran+'=await this.__gi1.sql_iii( '+ref_liste_ecran+' , criteres'+ref_liste_ecran+' , donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        if(tt'+ref_liste_ecran+'.__xst !== __xsu){\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        if(tt'+ref_liste_ecran+'[\'__xst\'] === __xsu && tt'+ref_liste_ecran+'[\'__xva\'].length === 0 && __debut > 0){\r\n';
+            src_serveur_js2+='            __debut=0;\r\n';
+            src_serveur_js2+='            __num_page=0;\r\n';
+            src_serveur_js2+='            criteres'+ref_liste_ecran+'[\'debut\']=__debut;\r\n';
+            src_serveur_js2+='            let tt'+ref_liste_ecran+'=await this.__gi1.sql_iii( '+ref_liste_ecran+' , criteres'+ref_liste_ecran+' , donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        donnees_retournees.__xva[\'__nbMax\']=__nbMax;\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xva\'][\'__debut\']=__debut;\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xva\'][\'__num_page\']=__num_page;\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xac\']=\'pm1(m1(n1(\' + this.moi + \'),f1(\' + this.fonction_liste + \'(\';\r\n';
+            src_serveur_js2+='        for(let i in formulaire){\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xac\']+=this.__gi1.__fnt1.critere_liste( formulaire , i );\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xac\']+=\'))))\';\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xva\'][this.fonction_liste]=tt'+ref_liste_ecran+';\r\n';
+            src_serveur_js2+='        donnees_retournees[\'__xst\']=__xsu;\r\n';
+            src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+            src_serveur_js2+='    }\r\n';
+            src_serveur_js2+='\r\n';
+            
+            /*
+              serveur php
+            */
             src_hph+='    /*\r\n';
             src_hph+='      =============================================================================================================\r\n';
             src_hph+='    */\r\n';
@@ -3477,23 +3852,36 @@ class ecran_generer_programmes{
         o2+='                lst+=\'<div style="display:inline-flex;">\';\r\n';
         o2+='';
         o2+='\r\n';
-        if(this.#obj_table.meta.hasOwnProperty( 'fonctions_spéciales1' )
-               && this.#obj_table.meta.fonctions_spéciales1.indexOf( 'ne_pas_supprimer_id_un(1)' ) >= 0
-        ){
-            if(ref_delete === ''){
-                o2+='                /*#\r\n';
-            }
-            o2+='                /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */\r\n';
-            o2+='                if(elem[\'T0.' + champ_primaire + '\']===1){\r\n';
-            o2+='                    lst+=\'<div class="rev_b_svg yy__2 yy__2_inactif">\'+__gi1.les_svg.poubelle+\'</div>\';\r\n';
-            o2+='                }else{\r\n';
-            o2+='                    lst+=\'<div class="rev_b_svg yy__2" data-rev_click="\';\r\n';
-            o2+='                    lst+=\'pm1(m1(n1(\'+this.moi+\'),f1(page_confirmation_supprimer1(';
-            o2+='' + champ_primaire + '(\'+elem[\'T0.' + champ_primaire + '\']+\')))))\';\r\n';
-            o2+='                    lst+=\'">\'+__gi1.les_svg.poubelle+\'</div>\';\r\n';
-            o2+='                }\r\n';
-            if(ref_delete === ''){
-                o2+='                */\r\n';
+        
+        
+        if(this.#obj_table.meta.hasOwnProperty( 'fonctions_spéciales1' ) && this.#obj_table.meta.fonctions_spéciales1!==''){
+            let obj1=__gi1.__rev1.rev_tm( this.#obj_table.meta.fonctions_spéciales1 );
+            let fonction_npsiu_trouvee=false;
+            if(obj1.__xst===__xsu){
+                for(let i=1;i<obj1.__xva.length;i=obj1.__xva[i][12]){
+                    if(obj1.__xva[i][1]==='ne_pas_supprimer_id_un' && obj1.__xva[i][2]==='f' && obj1.__xva[i][8]===1 && obj1.__xva[i+1][2]==='c' && __gi1.est_num(obj1.__xva[i+1][1])){
+                        fonction_npsiu_trouvee=true;
+                        o2+='                /* fonctions_spéciales1(ne_pas_supprimer_id_un('+obj1.__xva[i+1][1]+')) */\r\n';
+                        o2+='                if(elem[\'T0.' + champ_primaire + '\']<='+obj1.__xva[i+1][1]+'){\r\n';
+                        o2+='                    lst+=\'<div class="rev_b_svg yy__2 yy__2_inactif">\'+__gi1.les_svg.poubelle+\'</div>\';\r\n';
+                        o2+='                }else{\r\n';
+                        o2+='                    lst+=\'<div class="rev_b_svg yy__2" data-rev_click="\';\r\n';
+                        o2+='                    lst+=\'pm1(m1(n1(\'+this.moi+\'),f1(page_confirmation_supprimer1(' + champ_primaire + '(\'+elem[\'T0.' + champ_primaire + '\']+\')))))\';\r\n';
+                        o2+='                    lst+=\'">\'+__gi1.les_svg.poubelle+\'</div>\';\r\n';
+                        o2+='                }\r\n';
+                    }
+                }
+                if(fonction_npsiu_trouvee===false){
+                    if(ref_delete === ''){
+                        o2+='                /*\r\n';
+                    }
+                    o2+='                lst+=\'<div class="rev_b_svg yy__2" data-rev_click="';
+                    o2+='pm1(m1(n1(\'+this.moi+\'),f1(page_confirmation_supprimer1(' + champ_primaire + '(\'+elem[\'T0.' + champ_primaire + '\']+\')))))';
+                    o2+='">\'+__gi1.les_svg.poubelle+\'</div>\';\r\n';
+                    if(ref_delete === ''){
+                        o2+='                */\r\n';
+                    }
+                }
             }
         }else{
             if(ref_delete === ''){
@@ -3505,9 +3893,6 @@ class ecran_generer_programmes{
             if(ref_delete === ''){
                 o2+='                */\r\n';
             }
-        }
-        if(ref_select === '' || ref_update === ''){
-            o2+='                /*\r\n';
         }
         o2+='                lst+=\'<div class="rev_b_svg yy__3" data-rev_click="';
         o2+='pm1(m1(n1(\'+this.moi+\'),f1(page_modification1(' + champ_primaire + '(\'+elem[\'T0.' + champ_primaire + '\']+\')))))';
@@ -3649,39 +4034,39 @@ class ecran_generer_programmes{
         /*
         
         */
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='    async liste1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
-        src_js2+='        this.fonction_liste=\'liste1\';\r\n';
-        src_js2+='        await this.filtre1( mat , d , donnees_recues , donnees_retournees , options_generales );\r\n';
-        src_js2+='        return({"__xst" : __xsu});\r\n';
-        src_js2+='    }\r\n';
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='    async sous_liste1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
-        src_js2+='        this.fonction_liste=\'sous_liste1\';\r\n';
-        src_js2+='        await this.filtre1( mat , d , donnees_recues , donnees_retournees , options_generales );\r\n';
-        src_js2+='        return({"__xst" : __xsu});\r\n';
-        src_js2+='    }\r\n';
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='    moi=\'' + this.#nom_de_la_classe_générée2 + '\';\r\n';
-        src_js2+='    __gi1=null;\r\n';
-        src_js2+='    fonction_liste=\'liste1\';\r\n';
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='    constructor( __gi1 ){\r\n';
-        src_js2+='        this.__gi1=__gi1;\r\n';
-        src_js2+='    }\r\n';
-        src_js2+='    /*\r\n';
-        src_js2+='      =============================================================================================================\r\n';
-        src_js2+='    */\r\n';
-        src_js2+='}\r\n';
-        src_js2+='export{' + this.#nom_de_la_classe_générée2 + ' as ' + this.#nom_de_la_classe_générée2 + '};\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    async liste1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
+        src_serveur_js2+='        this.fonction_liste=\'liste1\';\r\n';
+        src_serveur_js2+='        await this.filtre1( mat , d , donnees_recues , donnees_retournees , options_generales );\r\n';
+        src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+        src_serveur_js2+='    }\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    async sous_liste1( mat , d , donnees_recues , donnees_retournees , options_generales ){\r\n';
+        src_serveur_js2+='        this.fonction_liste=\'sous_liste1\';\r\n';
+        src_serveur_js2+='        await this.filtre1( mat , d , donnees_recues , donnees_retournees , options_generales );\r\n';
+        src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+        src_serveur_js2+='    }\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    moi=\'' + this.#nom_de_la_classe_générée2 + '\';\r\n';
+        src_serveur_js2+='    __gi1=null;\r\n';
+        src_serveur_js2+='    fonction_liste=\'liste1\';\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='    constructor( __gi1 ){\r\n';
+        src_serveur_js2+='        this.__gi1=__gi1;\r\n';
+        src_serveur_js2+='    }\r\n';
+        src_serveur_js2+='    /*\r\n';
+        src_serveur_js2+='      =============================================================================================================\r\n';
+        src_serveur_js2+='    */\r\n';
+        src_serveur_js2+='}\r\n';
+        src_serveur_js2+='export{' + this.#nom_de_la_classe_générée2 + ' as ' + this.#nom_de_la_classe_générée2 + '};\r\n';
         
         let aa=this.#_developpement1.normaliser_php( src_hph );
         if(aa.__xst === __xsu){
@@ -3700,13 +4085,13 @@ class ecran_generer_programmes{
             document.getElementById( 'js_bdd1' ).value=o2;
             __gi1.affiche_les_messages();
         }
-        let cc=this.#_developpement1.normaliser_javascript( src_js2 );
+        let cc=this.#_developpement1.normaliser_javascript( src_serveur_js2 );
         if(cc.__xst === __xsu){
-            /* document.getElementById( 'serveur_js2' ).value=src_js2; */
+            /* document.getElementById( 'serveur_js2' ).value=src_serveur_js2; */
             document.getElementById( 'serveur_js2' ).value=cc.rev_vers_js.__xva;
         }else{
             __gi1.ajoute_message( {"__xst" : __xif ,"__xme" : 'Erreur dans le javascript généré' + __gi1.__rev1.nl2()} );
-            document.getElementById( 'serveur_js2' ).value=src_js2;
+            document.getElementById( 'serveur_js2' ).value=src_serveur_js2;
             __gi1.affiche_les_messages();
         }
         return({"__xst" : __xsu});
@@ -4048,7 +4433,7 @@ class ecran_generer_programmes{
         */
         o1+='<div class="yy_conteneur_txtara">';
         o1+=' <div>';
-        o1+='  JS2';
+        o1+='  JS serveur 2 : ';
         o1+=__gi1.__fnt1.boutons_edition1( 'serveur_js2' );
         o1+=' </div>';
         o1+=' <textarea id="serveur_js2" rows="10" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
@@ -4057,7 +4442,7 @@ class ecran_generer_programmes{
         */
         o1+='<div class="yy_conteneur_txtara">';
         o1+=' <div>';
-        o1+='  PHP';
+        o1+='  PHP serveur 1:';
         o1+=__gi1.__fnt1.boutons_edition1( 'php_bdd1' );
         o1+=' </div>';
         o1+=' <textarea id="php_bdd1" rows="10" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
@@ -4066,7 +4451,7 @@ class ecran_generer_programmes{
         */
         o1+='<div class="yy_conteneur_txtara">';
         o1+=' <div>';
-        o1+='  JS';
+        o1+='  JS client 1:';
         o1+=__gi1.__fnt1.boutons_edition1( 'js_bdd1' );
         o1+=' </div>';
         o1+=' <textarea id="js_bdd1" rows="10" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
