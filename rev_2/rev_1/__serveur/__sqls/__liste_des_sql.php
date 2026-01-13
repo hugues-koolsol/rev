@@ -4360,7 +4360,7 @@ WHERE `chi_id_projet` = :c_chi_id_projet ;',
       )
    ),
    conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
-)              ',
+)                ',
   ),
   393 => 
   array (
@@ -4383,6 +4383,26 @@ WHERE `chi_id_projet` = :c_chi_id_projet ;',
       trier_par((champ(T0.chi_id_projet),décroissant())),
       limité_à(quantité(1),début(0))
    )
+)  ',
+  ),
+  394 => 
+  array (
+    'cht_sql_requete' => 'UPDATE b1.tbl_projets SET 
+   `chi_id_projet` = :n_chi_id_projet , 
+   `chp_nom_projet` = :n_chp_nom_projet
+WHERE `chi_id_projet` = :c_chi_id_projet ;',
+    'cht_commentaire_requete' => 'projets',
+    'chp_type_requete' => 'update',
+    'che_est_souche_requete' => 0,
+    'cht_rev_requete' => 'modifier(
+   base_de_reference(1),
+   valeurs(affecte(champ(`chi_id_projet`),:n_chi_id_projet),affecte(champ(`chp_nom_projet`),:n_chp_nom_projet)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
 )  ',
   ),
 );

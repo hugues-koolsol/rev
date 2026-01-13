@@ -2206,6 +2206,12 @@ class ecran_generer_programmes{
             src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'erreur lors de le suppression [\' + this.__gi1.nl2() + \']\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        let aac=await this.actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt375[\'__xva\'][0] , __db1 );\r\n';
+            src_serveur_js2+='        if(aac[\'__xst\'] === __xer){\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( \'les actions après créer ont échouées [\' + this.__gi1.nl2() + \']\' );\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        /**/\r\n';            
             src_serveur_js2+='        if(form[\'__mat_liste_si_ok\'] !== \'\'){\r\n';
             src_serveur_js2+='            let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
             src_serveur_js2+='            await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales , __db1 );\r\n';

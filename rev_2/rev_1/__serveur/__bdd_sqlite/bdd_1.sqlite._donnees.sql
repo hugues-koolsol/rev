@@ -100,7 +100,7 @@ chx_acces_utilisateur,
 chd__dtm_utilisateur,
 chd__dtc_utilisateur,
 che__nur_utilisateur) VALUES
-('1','poipoip','$2y$10$e4kIJciV/2Z3QTINAY8blemS17E3NJfcR7M7fjgPT.gbtMZqwjIAm',NULL,'974','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('1','poipoip','$2y$10$e4kIJciV/2Z3QTINAY8blemS17E3NJfcR7M7fjgPT.gbtMZqwjIAm',NULL,'976','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','admin','$2y$10$iiy3WQzGJwIHynqQFiU8tuQwDZY7WRsl6SHLtRv9pRYtv2BgDQcEW',NULL,'6','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 
 
@@ -7901,7 +7901,7 @@ WHERE (`T0`.`chp_table_reference_requete` = :T0_chp_table_reference_requete
       )
    ),
    conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
-)              ','UPDATE b1.tbl_projets SET 
+)                ','UPDATE b1.tbl_projets SET 
    `chi_id_projet` = :n_chi_id_projet , 
    `chp_nom_projet` = :n_chp_nom_projet
 WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets',NULL),
@@ -7920,7 +7920,20 @@ WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,NULL,'0','2000-01-01 00:00:00.0
 )  ','SELECT 
 `T0`.`chi_id_projet`
  FROM b1.tbl_projets T0 ORDER BY  T0.chi_id_projet DESC  LIMIT 1 OFFSET 0 
-;',NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets',NULL);
+;',NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets',NULL),
+('394','projets','update','modifier(
+   base_de_reference(1),
+   valeurs(affecte(champ(`chi_id_projet`),:n_chi_id_projet),affecte(champ(`chp_nom_projet`),:n_chp_nom_projet)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
+)  ','UPDATE b1.tbl_projets SET 
+   `chi_id_projet` = :n_chi_id_projet , 
+   `chp_nom_projet` = :n_chp_nom_projet
+WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets',NULL);
 
 
 /*
