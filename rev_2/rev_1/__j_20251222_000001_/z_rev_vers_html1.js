@@ -588,7 +588,10 @@ class z_rev_vers_html1{
     c_rev_vers_html( source_rev , options_traitement={} ){
         let t='';
         let obj=null;
-        obj=this.__rev1.rev_tm( source_rev );
+        /* obj=this.__rev1.rev_tm( source_rev );*/
+        var tableau1=this.__rev1.txt_en_tableau( source_rev );
+        obj=this.__rev1.tb_vers_matrice( tableau1.__xva ,  /* niv */ true ,  /* cst_dlr */ true ,  /* par */ '' );
+        
         if(obj.__xst === __xsu){
             this.#tb=obj.__xva;
             this.#l02=obj.__xva.length;

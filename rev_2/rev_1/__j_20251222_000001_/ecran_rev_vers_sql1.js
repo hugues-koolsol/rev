@@ -320,7 +320,7 @@ class ecran_rev_vers_sql1{
       =============================================================================================================
     */
     donnees_de_test1( mat , i ){
-        let t=`select a1 fotm table`;
+        let t=`select a1 from \`t1\``;
         document.getElementById( 'vv_txtarea_sql_rev1' ).value=t;
         return({"__xst" : __xsu});
     }
