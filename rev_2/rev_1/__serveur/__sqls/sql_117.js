@@ -31,19 +31,31 @@ class sql_117{
             }
             sql0+=liste_des_valeurs;
             /* this.__gi1.ma_trace1('sql_117=',sql0); */
-            const res=await this.__db1.exec(sql0);
+            let res=await this.__db1.exec(sql0);
             /* this.__gi1.ma_trace1('res=',res); */
+            const sql1='SELECT last_insert_rowid() as nouvel_id; ';
+            let statement1=await this.__db1.prepare( sql1 );
+            let lignes = await statement1.values();
+            await statement1.finalize();
+            let nouvel_id=0;
+            for(let numero_de_ligne in lignes){
+                nouvel_id=lignes[numero_de_ligne][0];
+            }
+
             return {
                 __xst  : 1,
                 __xva  : {},
                 'sql0'    : sql0,
-                'changements' : res
+                'changements' : res,
+                'nouvel_id' : nouvel_id
             };
         }catch(e){
             donnees_retournees['__xsi']['__xer'].push(this.__gi1.nl2());
+            let __xme=e.stack.indexOf('UNIQUE constraint')>=0?'cet élément existe déjà dans la base<br />':'';
             /* this.__gi1.ma_trace1('e=',e); */
             return {
                 __xst  : 0,
+                __xme  : __xme,
                 __xva  : {},
                 'sql0'    : sql0,
             };
