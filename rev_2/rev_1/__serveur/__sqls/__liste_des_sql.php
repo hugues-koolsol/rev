@@ -4028,7 +4028,7 @@ insérer(
     'chp_type_requete' => 'requete_manuelle',
     'che_est_souche_requete' => 0,
     'cht_rev_requete' => 'base_de_reference(1),
-transaction()      ',
+transaction()        ',
   ),
   380 => 
   array (

@@ -1936,7 +1936,7 @@ class ecran_generer_programmes{
             src_serveur_js2+='    /*\r\n';
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
-            src_serveur_js2+='    async page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , ' + champ_primaire + '=null ){\r\n';
+            src_serveur_js2+='    async page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , ' + champ_primaire + '=null , __db1=null ){\r\n';
             src_serveur_js2+='        if(' + champ_primaire + ' === null){\r\n';
             src_serveur_js2+='            let l01=mat.length;\r\n';
             src_serveur_js2+='            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
@@ -1952,7 +1952,13 @@ class ecran_generer_programmes{
             src_serveur_js2+='        }else{\r\n';
             src_serveur_js2+='            donnees_retournees[\'__xac\']=\'pm1(m1(n1(\' + this.moi + \'),f1(page_modification1(' + champ_primaire + '(\' + ' + champ_primaire + ' + \')))))\';\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
+            src_serveur_js2+='        if(' + champ_primaire + ' === null){\r\n';
+            src_serveur_js2+='            donnees_retournees[\'__xsi\'][\'__xer\'].push( this.__gi1.nl2() );\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        if(__db1 === null){\r\n';
+            src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet , options_generales );\r\n';
+            src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let tt'+ref_select+'=await this.__gi1.sql_iii( '+ref_select+' , {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , donnees_retournees , __db1 );\r\n';
             src_serveur_js2+='        if(tt'+ref_select+'[\'__xst\'] !== __xsu){\r\n';
             src_serveur_js2+='            donnees_retournees[\'__xst\']=__xer;\r\n';
@@ -3572,9 +3578,11 @@ class ecran_generer_programmes{
             src_serveur_js2+='            }\r\n';
             
             src_serveur_js2+='            await __db1.exec(\'COMMIT;\');\r\n';
-            src_serveur_js2+='            if(form[\'__mat_liste_si_ok\'] !== \'\'){\r\n';
+            src_serveur_js2+='            if(retour_a_la_liste===true && form[\'__mat_liste_si_ok\'] !== \'\'){\r\n';
             src_serveur_js2+='                let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
             src_serveur_js2+='                await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales , __db1 );\r\n';
+            src_serveur_js2+='            }else{\r\n';
+            src_serveur_js2+='                await this.page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , tt'+ref_insert+'[\'nouvel_id\'] , __db1 );\r\n';
             src_serveur_js2+='            }\r\n';
             src_serveur_js2+='            donnees_retournees[\'__xst\']=__xsu;\r\n';
             src_serveur_js2+='            return({"__xst" : __xsu});\r\n';

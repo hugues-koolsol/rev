@@ -1195,12 +1195,14 @@ class c_concevoir_une_requete1{
                     break;
                 }
             }
-            t+='    $sql0=\'' + CRLF;
-            t+='      ' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '      ' ) + CRLF;
-            t+='    \';' + CRLF;
-            t+='    // echo __FILE__ . \' \' . __LINE__ . \' $sql0 = <pre>\' . $sql0 . \'</pre>\' ; exit(0);' + CRLF;
+            t+='        let sql0=`' + CRLF;
+            t+='          ' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '      ' ).replace( /`/g , '\\`' ) + CRLF;
+            t+='        `;' + CRLF;
+            t+='    /* this.__gi1.ma_trace1(\' sql0 = \' + sql0 ); */' + CRLF;
             if(c_est_un_select === true){
+                debugger
                 t+='    try{' + CRLF;
+/*
                 if(manuelle_sans_base_de_reference === true){
                     t+='        $db->enableExceptions(true);' + CRLF;
                     t+='        $stmt0=$db->prepare($sql0);' + CRLF;
@@ -1208,6 +1210,7 @@ class c_concevoir_une_requete1{
                     t+='        $GLOBALS[__BDD][' + obj3.id_base_principale + '][LIEN_BDD]->enableExceptions(true);' + CRLF;
                     t+='        $stmt0=$GLOBALS[__BDD][' + obj3.id_base_principale + '][LIEN_BDD]->prepare($sql0);' + CRLF;
                 }
+*/                
                 t+='        $res0=$stmt0->execute();' + CRLF;
                 t+='        while(($tab0=$res0->fetchArray(SQLITE3_NUM))){' + CRLF;
                 t+='            $donnees0[]=$tab0;' + CRLF;
@@ -1224,36 +1227,32 @@ class c_concevoir_une_requete1{
                 t+='            \'texte_requete\' => \'la selection sur les éléments\' ,' + CRLF;
                 t+='            \'exception\' => $e,' + CRLF;
                 if(manuelle_sans_base_de_reference === false){
-                    t+='            \'bdd\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '] ,' + CRLF;
+                    t+='                \'bdd\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '] ,' + CRLF;
                 }
-                t+='        );' + CRLF;
-                t+='    }' + CRLF;
+                t+='            );' + CRLF;
+                t+='        }' + CRLF;
             }else{
                 t+='    try{' + CRLF;
                 if(manuelle_sans_base_de_reference === true){
-                    t+='        $ret=$db->exec($sql0);' + CRLF;
+                    t+='            let ret=this.__db1.exec($sql0);' + CRLF;
                 }else{
-                    t+='        $ret=$GLOBALS[__BDD][' + obj3.id_base_principale + '][LIEN_BDD]->exec($sql0);' + CRLF;
+                    /*
+                      t+='        let ret=$GLOBALS[__BDD][' + obj3.id_base_principale + '][LIEN_BDD]->exec($sql0);' + CRLF;
+                    */
+                    t+='            let ret=this.__db1.exec($sql0);' + CRLF;
                 }
-                t+='        return(array( __xst => __xsu ));' + CRLF;
-                t+='    }catch(Exception $e){' + CRLF;
-                t+='        return(' + CRLF;
-                t+='            array( ' + CRLF;
-                t+='                __xst => __xer, ' + CRLF;
-                t+='                \'exception\' => $e , ' + CRLF;
-                t+='                \'sql0\'    => $sql0 ,' + CRLF;
-                if(manuelle_sans_base_de_reference === true){
-                    t+='                \'code_erreur\' => $db->lastErrorCode() ,' + CRLF;
-                    t+='                __xme => \'erreur sql_' + id_requete_en_base + '()\'.\' \'.$db->lastErrorMsg(),' + CRLF;
-                    t+='            )' + CRLF;
-                    t+='        );' + CRLF;
-                }else{
-                    t+='                \'code_erreur\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '][LIEN_BDD]->lastErrorCode() ,' + CRLF;
-                    t+='                __xme => \'erreur sql_' + id_requete_en_base + '()\'.\' \'.$GLOBALS[__BDD][' + obj3.id_base_principale + '][LIEN_BDD]->lastErrorMsg(),' + CRLF;
-                    t+='                \'bdd\' => $GLOBALS[__BDD][' + obj3.id_base_principale + '] ,' + CRLF;
-                    t+='            )' + CRLF;
-                    t+='        );' + CRLF;
-                }
+                t+='            return({ "__xst" : 1, \'changements\' : res});;' + CRLF;
+                t+='        }catch(e){' + CRLF;
+                t+='            let __xme=e.stack.indexOf(\'UNIQUE constraint\')>=0?\'cet élément existe déjà dans la base<br />\':\'erreur SQL\';\r\n';
+                t+='            return {/**/\r\n';
+                t+='                __xst : 0 ,\r\n';
+                t+='                "sql0" : sql0 ,\r\n';
+                t+='                "texte_requete" : \'\' ,\r\n';
+                t+='                    "exception" : e ,\r\n';
+                t+='                "__xme" : __xme ,\r\n';
+                t+='            };\r\n';
+                t+='\r\n';
+                t+='        }' + CRLF;
                 t+='    }' + CRLF;
             }
             /*
