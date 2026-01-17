@@ -2023,30 +2023,25 @@ WHERE `chi_id_metier` = :chi_id_metier ;',
   ),
   305 => 
   array (
-    'cht_sql_requete' => 'UPDATE tbl_projets SET 
+    'cht_sql_requete' => 'UPDATE b1.tbl_projets SET 
    `chp_nom_projet` = :n_chp_nom_projet , 
    `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
    `chx_dossier_menus_projet` = :n_chx_dossier_menus_projet , 
    `cht_commentaire_projet` = :n_cht_commentaire_projet
 WHERE `chi_id_projet` = :c_chi_id_projet ;',
     'cht_commentaire_requete' => 'projets',
-    'chp_type_requete' => 'requete_manuelle',
+    'chp_type_requete' => 'update',
     'che_est_souche_requete' => 0,
     'cht_rev_requete' => 'modifier(
-   valeurs(
-      affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),
-      affecte(champ(`chx_dossier_requetes_projet`),:n_chx_dossier_requetes_projet),
-      affecte(champ(`chx_dossier_menus_projet`),:n_chx_dossier_menus_projet),
-      affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet),
-      
-   ),
+   base_de_reference(1),
+   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`chx_dossier_requetes_projet`),:n_chx_dossier_requetes_projet),affecte(champ(`chx_dossier_menus_projet`),:n_chx_dossier_menus_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_projets))
+         source(nom_de_la_table(tbl_projets,base(b1)))
       )
    ),
    conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
-)        ',
+)  ',
   ),
   306 => 
   array (
@@ -2963,7 +2958,7 @@ WHERE ( /* */ `T0`.`chi_id_rev` = :T0_chi_id_rev)
   ),
   345 => 
   array (
-    'cht_sql_requete' => 'INSERT INTO `tbl_genres`(
+    'cht_sql_requete' => 'INSERT INTO b1.`tbl_genres`(
     `chi_id_genre` , 
     `chp_nom_genre` , 
     `che_ordre_genre` , 
@@ -3015,9 +3010,10 @@ WHERE ( /* */ `T0`.`chi_id_rev` = :T0_chi_id_rev)
     :cht_particularités_genre
 );',
     'cht_commentaire_requete' => 'genres',
-    'chp_type_requete' => 'requete_manuelle',
+    'chp_type_requete' => 'insert',
     'che_est_souche_requete' => 0,
     'cht_rev_requete' => 'insérer(
+   base_de_reference(1),
    valeurs(
       affecte(champ(`chi_id_genre`),:chi_id_genre),
       affecte(champ(`chp_nom_genre`),:chp_nom_genre),
@@ -3046,10 +3042,10 @@ WHERE ( /* */ `T0`.`chi_id_rev` = :T0_chi_id_rev)
    ),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_genres))
+         source(nom_de_la_table(tbl_genres,base(b1)))
       )
    )
-)                ',
+)  ',
   ),
   346 => 
   array (

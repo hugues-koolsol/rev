@@ -111,7 +111,7 @@ class _developpement1{
                     if(match && __gi1.est_num( match[1] ) && __gi1.est_num( match[2] )){
                         lig_col=[parseInt( match[1] , 10 ),parseInt( match[2] , 10 )];
                     }
-                    __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : __gi1.__rev1.nl2() + ' <br />erreur dans le javascript :' + e.message} );
+                    __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : __gi1.__rev1.nl2(e) + ' <br />erreur dans le javascript :' + e.message} );
                 }
                 return({"__xst" : __xer});
             }

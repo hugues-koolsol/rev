@@ -1570,7 +1570,7 @@ class c_concevoir_une_requete1{
                        && this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][la_sortie.non_du_champ_en_bdd].genre_objet_du_champ.che_est_nur_genre === 1
                        && this.#obj_webs.ne_pas_traiter_le_numero_de_revision === 0
                 ){
-                    liste_des_champs_pour_update3+='    $tableau_champs[]=\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.non_du_champ_en_bdd + ' + 1 \';' + CRLF;
+                    liste_des_champs_pour_update3+='        tableau_champs.push(\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.non_du_champ_en_bdd + ' + 1 \');' + CRLF;
                 }else if(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][la_sortie.non_du_champ_en_bdd].genre_objet_du_champ
                        && (this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][la_sortie.non_du_champ_en_bdd].genre_objet_du_champ.che_est_tsc_genre === 1
                            || this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][la_sortie.non_du_champ_en_bdd].genre_objet_du_champ.che_est_tsm_genre === 1)
