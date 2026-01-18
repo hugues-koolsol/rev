@@ -3940,14 +3940,15 @@ WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
   376 => 
   array (
     'cht_sql_requete' => 'UPDATE b1.tbl_requetes SET 
-   `cht_php_requete` = :n_cht_php_requete
+   `cht_php_requete` = :n_cht_php_requete , 
+   `cht_js_requete` = :n_cht_js_requete
 WHERE `chi_id_requete` = :c_chi_id_requete ;',
     'cht_commentaire_requete' => 'requêtes ancienne 135 à supprimer',
     'chp_type_requete' => 'update',
     'che_est_souche_requete' => 0,
     'cht_rev_requete' => 'modifier(
    base_de_reference(1),
-   valeurs(affecte(champ(`cht_php_requete`),:n_cht_php_requete)),
+   valeurs(affecte(champ(`cht_php_requete`),:n_cht_php_requete),affecte(champ(`cht_js_requete`),:n_cht_js_requete)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_requetes,base(b1)))
