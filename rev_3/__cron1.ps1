@@ -1,0 +1,1 @@
+deno run  --unstable-cron --allow-read  --allow-write  --allow-ffi  --allow-env .\__cron1.js

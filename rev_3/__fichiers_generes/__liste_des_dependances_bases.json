@@ -1,0 +1,92 @@
+{
+  "tbl_groupes_chi_id_groupe": {
+    "table_parente": "tbl_groupes",
+    "champ_parent": "chi_id_groupe",
+    "dependances": [
+      {
+        "table_dependante": "tbl_groupes",
+        "champ_dependant": "chx_parent_groupe",
+        "non_nulle": "0",
+        "id_bdd_de_la_base_dependante": 1
+      },
+      {
+        "table_dependante": "tbl_acces",
+        "champ_dependant": "chx_groupe_acces",
+        "non_nulle": "1",
+        "id_bdd_de_la_base_dependante": 1
+      }
+    ]
+  },
+  "tbl_metiers_chi_id_metier": {
+    "table_parente": "tbl_metiers",
+    "champ_parent": "chi_id_metier",
+    "dependances": [
+      {
+        "table_dependante": "tbl_metiers",
+        "champ_dependant": "chx_parent_metier",
+        "non_nulle": "0",
+        "id_bdd_de_la_base_dependante": 1
+      },
+      {
+        "table_dependante": "tbl_acces",
+        "champ_dependant": "chx_metier_acces",
+        "non_nulle": "1",
+        "id_bdd_de_la_base_dependante": 1
+      }
+    ]
+  },
+  "tbl_acces_chi_id_acces": {
+    "table_parente": "tbl_acces",
+    "champ_parent": "chi_id_acces",
+    "dependances": [
+      {
+        "table_dependante": "tbl_utilisateurs",
+        "champ_dependant": "chx_acces_utilisateur",
+        "non_nulle": "1",
+        "id_bdd_de_la_base_dependante": 1
+      },
+      {
+        "table_dependante": "tbl_autorisations",
+        "champ_dependant": "chx_acces_autorisation",
+        "non_nulle": "1",
+        "id_bdd_de_la_base_dependante": 1
+      }
+    ]
+  },
+  "tbl_autorisations_chi_id_autorisation": {
+    "table_parente": "tbl_autorisations",
+    "champ_parent": "chi_id_autorisation",
+    "dependances": [
+      {
+        "table_dependante": "tbl_menus",
+        "champ_dependant": "chx_autorisation_menu",
+        "non_nulle": "1",
+        "id_bdd_de_la_base_dependante": 1
+      }
+    ]
+  },
+  "tbl_utilisateurs_chi_id_utilisateur": {
+    "table_parente": "tbl_utilisateurs",
+    "champ_parent": "chi_id_utilisateur",
+    "dependances": [
+      {
+        "table_dependante": "tbl_taches",
+        "champ_dependant": "chx_utilisateur_tache",
+        "non_nulle": "1",
+        "id_bdd_de_la_base_dependante": 1
+      }
+    ]
+  },
+  "tbl_sources_chi_id_source": {
+    "table_parente": "tbl_sources",
+    "champ_parent": "chi_id_source",
+    "dependances": [
+      {
+        "table_dependante": "tbl_autorisations",
+        "champ_dependant": "chx_source_autorisation",
+        "non_nulle": "1",
+        "id_bdd_de_la_base_dependante": 1
+      }
+    ]
+  }
+}
