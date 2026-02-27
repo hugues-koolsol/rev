@@ -491,8 +491,8 @@ class dossiers1{
         let l01=mat.length;
         /* this.__gi1.__xsi[__xdv][]='mat ='.json_encode( mat  , JSON_FORCE_OBJECT ); */
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][2] === 'f' && mat[i][8] === 0 && mat[i][1] === 'che_binaire_source'){
-                che_binaire_source=int( mat[i + 1][1] );
+            if(mat[i][2] === 'f' && mat[i][8] === 1 && mat[i][1] === 'che_binaire_source'){
+                che_binaire_source=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'provenance' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 provenance=mat[i + 1][1];
             }else if(mat[i][1] === 'liste1' && mat[i][2] === 'f'){
@@ -513,7 +513,25 @@ class dossiers1{
                 return({"__xst" : __xer});
             }
             let chemin_fichier=obj[__xva]['chemin_absolu'] + '/' + chp_nom_source;
-            let chemin_absolu=obj[__xva]['chemin_absolu'];
+            let nouveau_nom='';
+            for(let i=0; i<chp_nom_source.length;i++){
+                let c=chp_nom_source.substr(i,1);
+                if((c>='0' && c<='9') || ( c >= 'a' && c <= 'z' ) || c === '_' || c==='.'){
+                    nouveau_nom+=c;
+                }else{
+                    nouveau_nom+='_';
+                }
+            }
+            if(nouveau_nom !== chp_nom_source ){
+                try{
+                    await Deno.rename(obj[__xva]['chemin_absolu'] + '/' + chp_nom_source , obj[__xva]['chemin_absolu'] + '/' + nouveau_nom);
+                    chemin_fichier=obj[__xva]['chemin_absolu'] + '/' + nouveau_nom;
+                }catch(e){
+                    this.__gi1.__xsi[__xer].push( 'le fichier n\'a pas pu être renommé car il comporte des caractères interdits [' + this.__gi1.nl2() + ']' );
+                    return({"__xst" : __xer});
+                }
+            }
+            
             let contenu_fichier='';
             if(!(che_binaire_source === 1 || donnees_retournees.chi_id_projet === 1)){
                 contenu_fichier=await this.__gi1.file_get_contents( chemin_fichier );
@@ -521,7 +539,7 @@ class dossiers1{
             this.__gi1.ma_trace1( 'contenu_fichier="' + contenu_fichier + '"' );
             let donnees_sql={
                 "donnees" : [{
-                            "chp_nom_source" : chp_nom_source ,
+                            "chp_nom_source" : nouveau_nom ,
                             "chx_dossier_id_source" : chi_id_dossier ,
                             "cht_commentaire_source" : null ,
                             "cht_rev_source" : null ,
@@ -530,6 +548,7 @@ class dossiers1{
                             "che_autorisation_globale_source" : 0
                         }]
             };
+            this.__gi1.ma_trace1('che_binaire_source=',che_binaire_source);
             this.__gi1.ma_trace1( '__db1=' );
             let tt117=await this.__gi1.sql_iii(
             /*sql_inclure_deb*/ /*#

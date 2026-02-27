@@ -226,15 +226,63 @@ class sources1{
                 return({"__xst" : __xer});
             }
             try{
-                let source_dans_navigateur=tt116[__xva][0]['T0.cht_genere_source'];
-                source_dans_navigateur=source_dans_navigateur.replace( /\r\n/g , '\n' );
-                source_dans_navigateur=source_dans_navigateur.replace( /\n/g , '\r\n' );
-                await this.__gi1.file_put_contents( chemin_fichier , source_dans_navigateur );
-                this.__gi1.__xsi[__xif].push( 'le fichier  a été écrit dans le disque ' );
-                donnees_retournees.__xst=__xsu;
-                return({"__xst" : __xsu});
+                if(tt116[__xva][0]['T0.che_binaire_source']===1){
+                    let tableau=tt116[__xva][0]['T0.cht_genere_source'].split('\n');
+                    /* this.__gi1.ma_trace1('tableau=',tableau); */
+                    if(tableau.length>0){
+                        if(tableau[0].substr(8,1)==='h'){
+                            let tab=[];
+                            for(let i=0;i<tableau.length;i++){
+                                let elem=tableau[i];
+                                if(!elem.substr(8,1)==='h'){
+                                    this.__gi1.__xsi[__xer].push( 'etteur en ligne '+i+' le source n\'a pu être écrit sur le disque [' + this.__gi1.nl2( e ) + ']' );
+                                    return({"__xst" : __xer});
+                                }
+                                elem=elem.substr(10,49).replace(/\-\-/g,' ').replace(/ /g,',').replace(/,,/g,'');
+                                /* this.__gi1.ma_trace1('elem="'+elem+'"'); */
+                                elem=elem.split(',');
+                                
+                                for( let j=0;j<elem.length;j++){
+                                    if(elem[j]!==''){
+                                        let k='0x'+elem[j]
+                                        let c=parseInt(k,16);
+                                        tab.push(c);
+                                        /* this.__gi1.ma_trace1('k='+k+',c='+c); */
+                                    }
+                                }
+                            }
+                            /* this.__gi1.ma_trace1('tab=',tab); */
+                            let source_binaire=new Uint8Array(tab);
+                            try{
+                                await Deno.writeFile( chemin_fichier , source_binaire , {"mode" : 0o777} );
+                            }catch(e){
+                                this.ma_trace1( 'chemin_fichier=' + chemin_fichier , 'e=' , e );
+                                this.__gi1.__xsi[__xer].push( 'erreur ecriture du fichier binaire  [' + this.__gi1.nl2( e ) + ']' );
+                                return({"__xst" : __xer});
+                            }
+                            donnees_retournees.__xst=__xsu;
+                            return({"__xst" : __xsu});
+                            
+                            
+                            
+                        }else{
+                            this.__gi1.__xsi[__xer].push( 'le tableau doit commencer par une adresse et "h"  [' + this.__gi1.nl2( e ) + ']' );
+                            return({"__xst" : __xer});
+                        }
+                    }else{
+                        this.__gi1.__xsi[__xer].push( 'il n\'y a rien à écrire  [' + this.__gi1.nl2( e ) + ']' );
+                        return({"__xst" : __xer});
+                    }
+                }else{
+                    let source_dans_navigateur=tt116[__xva][0]['T0.cht_genere_source'];
+                    source_dans_navigateur=source_dans_navigateur.replace( /\r\n/g , '\n' );
+                    source_dans_navigateur=source_dans_navigateur.replace( /\n/g , '\r\n' );
+                    await this.__gi1.file_put_contents( chemin_fichier , source_dans_navigateur );
+                    this.__gi1.__xsi[__xif].push( 'le fichier  a été écrit dans le disque ' );
+                    donnees_retournees.__xst=__xsu;
+                    return({"__xst" : __xsu});
+                }
             }catch(e){
-                debugger;
                 this.__gi1.__xsi[__xer].push( '0 le source n\'a pu être écrit sur le disque "' + chi_id_source + '" , "' + chemin_fichier + '"  [' + this.__gi1.nl2( e ) + ']' );
                 return({"__xst" : __xer});
             }
@@ -284,15 +332,96 @@ class sources1{
                 this.__gi1.__xsi[__xer].push( 'erreur sur la construction du chemin pour le source ' + chi_id_source + '  [' + this.__gi1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
-            if((await this.__gi1.is_file( chemin_fichier ))){
-                try{
-                    let contenu=await this.__gi1.file_get_contents( chemin_fichier );
-                    donnees_retournees[__xva]['contenu_du_fichier']=contenu;
-                    donnees_retournees.__xst=__xsu;
-                    return({"__xst" : __xsu});
-                }catch(e){
-                    this.__gi1.__xsi[__xer].push( 'le source n\'a pu être lu du disque "' + chi_id_source + '" , "' + chemin_fichier + '"  [' + this.__gi1.nl2( e ) + ']' );
-                    return({"__xst" : __xer});
+            if( await this.__gi1.is_file( chemin_fichier ) ){
+                if(tt116[__xva][0]['T0.che_binaire_source']===1){
+                    try{
+                        const contenu=await Deno.readFile( chemin_fichier );
+                        let position=0;
+                        let ligne='';
+                        let tout='';
+                        /* this.__gi1.ma_trace1('chemin_fichier='+chemin_fichier+',contenu=',Array.from(contenu)); */
+                        let tab=Array.from(contenu);
+                        for(let i=0;i<tab.length;i++){
+                            if(i>0 && i%16===0){
+                                let le_num=position.toString(16);
+                                ligne='0'.repeat(8-le_num.length)+le_num+'h '+ligne;
+                                ligne+=' |';
+                                for( let j=position;j<position+16;j++){
+                                    if(tab[j]>=33 && tab[j]<127){
+                                        ligne+=String.fromCharCode(tab[j]);
+                                    }else{
+                                        ligne+=' ';
+                                    }
+                                    if(j>0 && (j-7)%16===0){
+                                        ligne+='--';
+                                    }
+                                }
+                                ligne+='|';
+                                /*
+                                  0         1         2         3         4         5         6 
+                                  0123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789
+                                  00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
+                                */                            
+                                tout+=ligne+'\n';
+                                /* this.__gi1.ma_trace1('ligne='+ligne); */
+                                ligne='';
+                                position+=16;
+                            }
+                            let c=tab[i].toString(16); 
+                            if(c.length===1){
+                                c='0'+c;
+                            }
+                            ligne+=c;
+                            if(i>0 && (i-7)%16===0){
+                                /* on ajoute un espace au milieu des valeurs hexa */
+                                ligne+='--';
+                            }else{
+                                ligne+=' ';
+                            }
+//                            this.__gi1.ma_trace1('c='+c);
+                        }
+                        if(ligne!==''){
+                            let le_num=position.toString(16);
+                            ligne='0'.repeat(8-le_num.length)+le_num+'h '+ligne;
+                            if(ligne.length<59){
+                                ligne+=' '.repeat(59-ligne.length)
+                            }
+                            ligne+=' |';
+                            for( let j=position;j<position+16 && j<tab.length;j++){
+                                if(tab[j]>=33 && tab[j]<127){
+                                    ligne+=String.fromCharCode(tab[j]);
+                                }else{
+                                    ligne+=' ';
+                                }
+                                if(j>0 && (j-7)%16===0){
+                                    ligne+='--';
+                                }
+                            }
+                            ligne+='|';
+                            
+                            tout+=ligne+'\n';
+                        }
+                        if(tout.substr(tout.length-1,1)==='\n'){
+                            tout=tout.substr(0,tout.length-1);
+                        }
+
+                        donnees_retournees[__xva]['contenu_du_fichier']=tout;
+                        donnees_retournees.__xst=__xsu;
+                        return({"__xst" : __xsu});
+                    }catch(e){
+                        this.__gi1.__xsi[__xer].push( 'le source n\'a pu être lu du disque "' + chi_id_source + '" , "' + chemin_fichier + '"  [' + this.__gi1.nl2( e ) + ']' );
+                        return({"__xst" : __xer});
+                    }
+                }else{
+                    try{
+                        let contenu=await this.__gi1.file_get_contents( chemin_fichier );
+                        donnees_retournees[__xva]['contenu_du_fichier']=contenu;
+                        donnees_retournees.__xst=__xsu;
+                        return({"__xst" : __xsu});
+                    }catch(e){
+                        this.__gi1.__xsi[__xer].push( 'le source n\'a pu être lu du disque "' + chi_id_source + '" , "' + chemin_fichier + '"  [' + this.__gi1.nl2( e ) + ']' );
+                        return({"__xst" : __xer});
+                    }
                 }
             }else{
                 this.__gi1.__xsi[__xer].push( 'le source n\'a pu être lu du disque ' + chi_id_source + '  [' + this.__gi1.nl2() + ']' );

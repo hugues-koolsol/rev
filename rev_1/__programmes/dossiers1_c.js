@@ -167,7 +167,7 @@ class dossiers1{
                     o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_ce_fichier_dans_les_sources(';
                     o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
                     o1+=' chi_id_dossier(' + __xva.chi_id_dossier + '),';
-                    o1+=' $che_binaire_source(1)';
+                    o1+=' che_binaire_source(1)';
                     o1+=' provenance(' + provenance + ')';
                     o1+=cmd;
                     o1+='))))';
@@ -308,7 +308,7 @@ class dossiers1{
             return(this.__gi1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];
-        this.__gi1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_basedd'] , this.moi );
+        this.__gi1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_dossier'] , this.moi );
         let o1='';
         /*
           =====================================================================================================

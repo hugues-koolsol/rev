@@ -72,6 +72,7 @@ class __gi1{
     position_dans_la_derniere_zone_editee=0;
     __deverminage=0;
     __xsi={0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []};
+    #date_derniere_navigation=performance.now();  
     /*
       =============================================================================================================
     */
@@ -140,11 +141,37 @@ class __gi1{
                     "__parametres" : this.stockage_local['parametres']
                 }
             } );
+        window.addEventListener( 'hashchange' , ( event ) => {
+                if(performance.now() - this.#date_derniere_navigation > 125){
+                    /*
+                      si l'url est changée manuellement 
+                      et que l'écart de temps entre la dernière navigation et maintenant est supérieure à 125 ms
+                      alors on essaie de recharger l'url;
+                    */
+                    console.log('on poste');
+                    let action=window.location.hash.substr( 1 );
+                    if(action.substr(0,3)==='pm1'){
+                        this.#__worker.postMessage( {"__xac" : action , __xva : {"__parametres" : this.stockage_local['parametres']}} );
+                    }else{
+                     
+                        let obj1=this.__rev1.rev_tm( action );
+                        if(obj1.__xst !== __xsu){
+                            this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de message reçu du worker' + this.nl2() } );
+                            this.affiche_les_messages();
+                            return({"__xst" : __xer});
+                        }
+                        let obj2=this.__xac( obj1.__xva , 0 , null );
+                        
+                     
+                    }
+                }} );
+            
     }
     /*
       =============================================================================================================
     */
     #traite_message_recupere_du_worker( par ){
+        this.#date_derniere_navigation=performance.now();
         let le_message=par.data;
         this._CA_=le_message._CA_;
         if(this.__deverminage === 2){

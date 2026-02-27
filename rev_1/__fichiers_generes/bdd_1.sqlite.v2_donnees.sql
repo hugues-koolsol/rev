@@ -42,7 +42,7 @@ INSERT INTO tbl_projets (  chi_id_projet ,  chp_nom_projet ,  cht_commentaire_pr
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'992','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'998','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -130,7 +130,59 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 ('579','__cron1.js',NULL,'','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
 ('580','__cron1.ps1',NULL,'','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
 ('581','_rev_de_sql_vers_js1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('582','__cr1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0');
+('582','__cr1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+('584','1x1.png','texte(`00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
+00000010h 00 00 00 01 00 00 00 01--08 02 00 00 00 90 77 53  |        --      wS|
+00000020h de 00 00 00 01 73 52 47--42 00 ae ce 1c e9 00 00  |     sRG--B       |
+00000030h 00 04 67 41 4d 41 00 00--b1 8f 0b fc 61 05 00 00  |  gAMA  --    a   |
+00000040h 00 09 70 48 59 73 00 00--0e c3 00 00 0e c3 01 c7  |  pHYs  --        |
+00000050h 6f a8 64 00 00 00 0c 49--44 41 54 18 57 63 f8 ff  |o d    I--DAT Wc  |
+00000060h ff 3f 00 05 fe 02 fe a7--35 81 84 00 00 00 00 49  | ?      --5      I|
+00000070h 45 4e 44 ae 42 60 82                              |END B\` |`)','00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
+00000010h 00 00 00 01 00 00 00 01--08 02 00 00 00 90 77 53  |        --      wS|
+00000020h de 00 00 00 01 73 52 47--42 00 ae ce 1c e9 00 00  |     sRG--B       |
+00000030h 00 04 67 41 4d 41 00 00--b1 8f 0b fc 61 05 00 00  |  gAMA  --    a   |
+00000040h 00 09 70 48 59 73 00 00--0e c3 00 00 0e c3 01 c7  |  pHYs  --        |
+00000050h 6f a8 64 00 00 00 0c 49--44 41 54 18 57 63 f8 ff  |o d    I--DAT Wc  |
+00000060h ff 3f 00 05 fe 02 fe a7--35 81 84 00 00 00 00 49  | ?      --5      I|
+00000070h 45 4e 44 ae 42 60 82                              |END B` |','1','8',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+('585','1x1_rouge.png','texte(`00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
+00000010h 00 00 00 01 00 00 00 01--08 06 00 00 00 1f 15 c4  |        --        |
+00000020h 89 00 00 00 01 73 52 47--42 00 ae ce 1c e9 00 00  |     sRG--B       |
+00000030h 00 04 67 41 4d 41 00 00--b1 8f 0b fc 61 05 00 00  |  gAMA  --    a   |
+00000040h 00 09 70 48 59 73 00 00--0e c4 00 00 0e c4 01 95  |  pHYs  --        |
+00000050h 2b 0e 1b 00 00 00 0d 49--44 41 54 18 57 63 78 2b  |+      I--DAT Wcx+|
+00000060h a3 f2 1f 00 05 54 02 2d--c6 3d 92 9d 00 00 00 00  |     T --- =      |
+00000070h 49 45 4e 44 ae 42 60 82--                         |IEND B\` --|`)','00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
+00000010h 00 00 00 01 00 00 00 01--08 06 00 00 00 1f 15 c4  |        --        |
+00000020h 89 00 00 00 01 73 52 47--42 00 ae ce 1c e9 00 00  |     sRG--B       |
+00000030h 00 04 67 41 4d 41 00 00--b1 8f 0b fc 61 05 00 00  |  gAMA  --    a   |
+00000040h 00 09 70 48 59 73 00 00--0e c4 00 00 0e c4 01 95  |  pHYs  --        |
+00000050h 2b 0e 1b 00 00 00 0d 49--44 41 54 18 57 63 78 2b  |+      I--DAT Wcx+|
+00000060h a3 f2 1f 00 05 54 02 2d--c6 3d 92 9d 00 00 00 00  |     T --- =      |
+00000070h 49 45 4e 44 ae 42 60 82--                         |IEND B` --|','1','8',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+('586','1x1_rouge_bis.png','texte(`00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
+00000010h 00 00 00 01 00 00 00 01--08 06 00 00 00 1f 15 c4  |        --        |
+00000020h 89 00 00 00 01 73 52 47--42 00 ae ce 1c e9 00 00  |     sRG--B       |
+00000030h 00 04 67 41 4d 41 00 00--b1 8f 0b fc 61 05 00 00  |  gAMA  --    a   |
+00000040h 00 09 70 48 59 73 00 00--0e c4 00 00 0e c4 01 95  |  pHYs  --        |
+00000050h 2b 0e 1b 00 00 00 0d 49--44 41 54 18 57 63 78 2b  |+      I--DAT Wcx+|
+00000060h a3 f2 1f 00 05 54 02 2d--c6 3d 92 9d 00 00 00 00  |     T --- =      |
+00000070h 49 45 4e 44 ae 42 60 82--                         |IEND B\` --|`)','00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
+00000010h 00 00 00 01 00 00 00 01--08 06 00 00 00 1f 15 c4  |        --        |
+00000020h 89 00 00 00 01 73 52 47--42 00 ae ce 1c e9 00 00  |     sRG--B       |
+00000030h 00 04 67 41 4d 41 00 00--b1 8f 0b fc 61 05 00 00  |  gAMA  --    a   |
+00000040h 00 09 70 48 59 73 00 00--0e c4 00 00 0e c4 01 95  |  pHYs  --        |
+00000050h 2b 0e 1b 00 00 00 0d 49--44 41 54 18 57 63 78 2b  |+      I--DAT Wcx+|
+00000060h a3 f2 1f 00 05 54 02 2d--c6 3d 92 9d 00 00 00 00  |     T --- =      |
+00000070h 49 45 4e 44 ae 42 60 82--                         |IEND B` --|','1','8','00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
+00000010h 00 00 00 01 00 00 00 01--08 06 00 00 00 1f 15 c4  |        --        |
+00000020h 89 00 00 00 01 73 52 47--42 00 ae ce 1c e9 00 00  |     sRG--B       |
+00000030h 00 04 67 41 4d 41 00 00--b1 8f 0b fc 61 05 00 00  |  gAMA  --    a   |
+00000040h 00 09 70 48 59 73 00 00--0e c4 00 00 0e c4 01 95  |  pHYs  --        |
+00000050h 2b 0e 1b 00 00 00 0d 49--44 41 54 18 57 63 78 2b  |+      I--DAT Wcx+|
+00000060h a3 f2 1f 00 05 54 02 2d--c6 3d 92 9d 00 00 00 00  |     T --- =      |
+00000070h 49 45 4e 44 ae 42 60 82--                         |IEND B` --|','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -2839,7 +2891,7 @@ INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tac
 ('26','1','travaux en batch','99','2026-02-21 11:42:55.900','2000-01-01 00:00:00','0'),
 ('27','1','gérer les versions js css etc','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('28','1','profils de css','99','2025-11-07 11:00:18.094','2000-01-01 00:00:00','0'),
-('29','1','interface : astuces','19','2025-08-15 14:32:17.544','2000-01-01 00:00:00','1'),
+('29','1','interface : astuces','17','2025-08-15 14:32:17.544','2000-01-01 00:00:00','1'),
 ('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('31','1','sauvegarder la position dans la liste','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -2904,7 +2956,7 @@ et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 0
 ('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('80','1','table des bugs','23','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('80','1','table des bugs','21','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('83','1','ajouter les champs 
@@ -2917,7 +2969,7 @@ dtc date technique de création','99','2000-01-01 00:00:00','2000-01-01 00:00:00
 ('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('88','1','sortable pour svg','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('89','1','cliquer en dehors du "dialog" pour le fermer','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('90','1','dupliquer une table','24','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('90','1','dupliquer une table','22','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('91','1','remplacer cible par projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('92','1','quand on modifie le nom d''une table
 alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -2948,7 +3000,7 @@ ou si le champ appartient à un index','99','2000-01-01 00:00:00','2000-01-01 00
 sql_dependances()','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('113','1','renommer un champ d''index','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('114','1','dans le concepteur de requete, mettre les champs mis à jour pour un update sur plusieurs lignes','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('115','1','mettre en place des dépendances de champ sur des bases externes','25','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('115','1','mettre en place des dépendances de champ sur des bases externes','23','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('116','1','ajouter le test des dépendances dans les php delete','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('117','1','renommer une table dans le base','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('118','1','sources','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -3013,7 +3065,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chd__dtm_tache`)
 flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','22','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','20','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -3053,7 +3105,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','21','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
+comme3(xxx)','19','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
 ('170','1','initialiser ecran standard d''une table','99','2026-02-21 11:43:00.445','2025-06-26 15:40:44.916','0'),
 ('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1'),
@@ -3219,10 +3271,10 @@ et garder nom_bref_du_champ','99','2025-11-07 13:35:22.305','2025-08-28 17:42:38
 
 che_est_tsc_genre
 che_est_tsm_genre','99','2025-09-03 15:51:07.883','2025-09-01 12:50:05.454','0'),
-('244','1','ajouter un nom autorisation construit automatiquement pour déterminer le libelle lien','17','2025-09-04 09:38:08.890','2025-09-04 09:38:08.890','0'),
+('244','1','ajouter un nom autorisation construit automatiquement pour déterminer le libelle lien','15','2025-09-04 09:38:08.890','2025-09-04 09:38:08.890','0'),
 ('246','1','ajouter un meta libelle lien','99','2025-09-04 17:25:45.403','2025-09-04 10:47:55.252','0'),
 ('247','1','ajouter les tests sur les editions/créations de champs','99','2025-11-07 10:58:08.476','2025-09-04 17:26:41.178','0'),
-('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','18','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
+('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','16','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
 ('249','1','écran création genre
 
 insérer(
@@ -3266,10 +3318,10 @@ $a= ''-9223372036854775807'' < ''-9223372036854775808'';
 
 9 223 372 036 854 775 807
   999 999 999 999 999 999
-1 000 000 000 000 000 000','16','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
+1 000 000 000 000 000 000','14','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
 ('257','1','traiter le integer(2) pour priorité','99','2025-09-09 10:22:31.674','2025-09-06 16:13:30.347','0'),
 ('258','1','est_utilisateur => est_session','99','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0'),
-('259','1','ajouter positif dans les genres INTEGER','15','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
+('259','1','ajouter positif dans les genres INTEGER','13','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
 ('260','1','gérer "mes tâches" avec valeur de session','99','2025-11-05 07:55:51.279','2025-09-09 13:24:16.968','0'),
 ('261','1','générer les requêtes souches','80','2025-12-21 10:24:24.144','2025-09-09 16:03:18.381','0'),
 ('262','1','','','2025-09-24 17:40:27.284','2025-09-24 17:40:27.284','0'),
@@ -3411,7 +3463,7 @@ https://mdn.github.io/dom-examples/popover-api/nested-popovers/','99','2025-11-0
 ','80','2025-11-02 10:31:29.357','2025-11-02 10:31:29.357','0'),
 ('300','1','dans le projet 3 "les tâches " voir le lien vers l''utilisateur','99','2025-11-04 16:34:45.472','2025-11-04 10:08:45.737','0'),
 ('301','1','taille de la sous fenêtre','99','2025-11-04 11:53:47.354','2025-11-04 11:39:50.934','0'),
-('302','1','pouvoir changer l''utilisateur courant','14','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
+('302','1','pouvoir changer l''utilisateur courant','12','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
 ('303','1','commentaire
 abrégé
 éclaircissement
@@ -3454,7 +3506,7 @@ sens_tri_liste_ecran_decroissant','99','2025-11-04 15:56:53.220','2025-11-04 15:
 ('313','1','sélecteur de couleur','50','2025-11-07 08:54:49.333','2025-11-07 08:54:41.769','0'),
 ('314','1','ajouter au niveau des champs un abrégé','99','2025-11-07 13:35:02.529','2025-11-07 12:06:34.239','0'),
 ('315','1','nouveau projet complet
-','13','2025-12-21 11:05:22.389','2025-11-07 14:09:19.488','0'),
+','11','2025-12-21 11:05:22.389','2025-11-07 14:09:19.488','0'),
 ('316','1','renuméroter les requêtes de rev_1 pour qu''elles soient alignées sur rev_4
 
 318,142,380 autorisation insert 
@@ -3527,7 +3579,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','12','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
+','10','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -3545,8 +3597,8 @@ quand on supprime une requête xxx il faut aussi supprimer le fichier sql_xxx','
 ('346','1','mettre en option l''accès aux nom de la base b1 dans les requetes sql','99','2026-01-26 14:31:54.162','2026-01-26 11:43:13.283','0'),
 ('347','1','dans les projets autres que 1, tester 
 les dépendances des requêtes sql dans le code cad
-vérifier que les sql_iii() ne contiennent pas une requête à effacer','11','2026-01-26 15:37:14.465','2026-01-26 12:44:13.176','0'),
-('348','1','redirect quant on n''est pas connecté','10','2026-01-27 09:23:34.608','2026-01-27 09:23:34.608','0'),
+vérifier que les sql_iii() ne contiennent pas une requête à effacer','9','2026-01-26 15:37:14.465','2026-01-26 12:44:13.176','0'),
+('348','1','redirect quant on n''est pas connecté','8','2026-01-27 09:23:34.608','2026-01-27 09:23:34.608','0'),
 ('349','1','const readable = /*test*/''a'';','99','2026-01-28 07:30:34.276','2026-01-27 13:57:03.873','0'),
 ('350','1','autorisations sur les accès serveur','99','2026-02-22 09:09:06.827','2026-01-28 07:33:03.312','0'),
 ('351','1','performances de l''insert du programme sql_parser_cst1.js dans la table rev
@@ -3571,7 +3623,7 @@ quit
 .output path/to/data.sql
 SELECT * FROM employees;
 ','50','2026-02-05 07:40:19.225','2026-01-30 07:21:59.529','0'),
-('355','1','utiliser les chemins en "dur" et mettre en "dur" les dossiers principaux dans la màj des dossiers','9','2026-02-06 13:37:30.609','2026-01-30 07:24:11.021','0'),
+('355','1','utiliser les chemins en "dur" et mettre en "dur" les dossiers principaux dans la màj des dossiers','7','2026-02-06 13:37:30.609','2026-01-30 07:24:11.021','0'),
 ('356','1','mettre les bases dans le dossier __bases_de_donnees','99','2026-01-30 09:26:42.052','2026-01-30 07:24:43.618','0'),
 ('357','1','renommer __client1 en __programmes','99','2026-01-30 09:26:40.200','2026-01-30 07:25:12.194','0'),
 ('358','1','supprimer che_contient_genere_dossier','99','2026-01-30 09:41:43.875','2026-01-30 09:23:56.032','0'),
@@ -3583,7 +3635,7 @@ donnees_retournees[__xsi] donnees_retournees.__xsi
 this.__gi1.__xsi
 
 ','99','2026-02-03 07:48:39.136','2026-02-02 10:03:14.569','0'),
-('363','1','distinguer les messages techniques et les messages utilisateur','20','2026-02-03 07:48:50.531','2026-02-03 07:48:50.531','0'),
+('363','1','distinguer les messages techniques et les messages utilisateur','18','2026-02-03 07:48:50.531','2026-02-03 07:48:50.531','0'),
 ('364','1','supprimer tous les jobs terminés','99','2026-02-03 10:16:18.326','2026-02-03 07:49:32.733','0'),
 ('365','1','pour les projets autres que 1, 
 mettre le rev du source en base lors de la compilation cron','99','2026-02-03 12:39:32.101','2026-02-03 10:17:57.068','0'),
@@ -3596,7 +3648,7 @@ Reponse : il falait utiliser le genre dtm à la place du genre dtc','99','2026-0
 ('370','1','utiliser le nouveau module commun pour génération des js sql','99','2026-02-06 08:57:40.928','2026-02-05 08:22:08.734','0'),
 ('371','1','compilation de acorn dans rev_2
 OK','99','2026-02-05 14:05:52.153','2026-02-05 11:31:01.404','0'),
-('372','1','nouveau projet 3','6','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0'),
+('372','1','nouveau projet 3','4','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0'),
 ('373','1','renuméroter un dossier','99','2026-02-07 10:15:05.889','2026-02-07 07:52:40.873','0'),
 ('374','1','changer
         this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet
@@ -3609,7 +3661,7 @@ OK','99','2026-02-05 14:05:52.153','2026-02-05 11:31:01.404','0'),
 supprimer le lien chx_utilisateur_travail et ajouter cht_utilisateur_travail
 
 faire dans la table systeme 3 :
-insert into tbl_utilisateurs( chi_id_utilisateur , chx_acces_utilisateur , chp_nom_de_connexion_utilisateur ) values ( 1 , 1 , '''');','8','2026-02-12 10:34:51.771','2026-02-09 14:55:11.957','0'),
+insert into tbl_utilisateurs( chi_id_utilisateur , chx_acces_utilisateur , chp_nom_de_connexion_utilisateur ) values ( 1 , 1 , '''');','6','2026-02-12 10:34:51.771','2026-02-09 14:55:11.957','0'),
 ('379','1','ajouter un drapeau actif aux accès et tester ce drapeau lors de la connexion','99','2026-02-21 11:35:07.843','2026-02-14 10:50:40.471','0'),
 ('380','1','dupliquer une tâche','99','2026-02-14 11:27:49.227','2026-02-14 10:51:01.317','0'),
 ('381','1','retirer des requêtes
@@ -3617,7 +3669,7 @@ meta( sur_ base_ principale(1))
 base_ de_ reference(1),','99','2026-02-15 10:18:00.856','2026-02-14 18:05:47.923','0'),
 ('382','1','supprimer champ cht _php _requete','99','2026-02-15 14:37:53.127','2026-02-15 08:20:02.477','0'),
 ('383','1','mettre des pauses dans le cron pour le relancer toutes les 3 secondes','99','2026-02-16 08:48:10.428','2026-02-15 08:31:15.645','0'),
-('385','1','supprimer les références aux php','7','2026-02-15 10:47:51.004','2026-02-15 10:47:51.004','0'),
+('385','1','supprimer les références aux php','5','2026-02-15 10:47:51.004','2026-02-15 10:47:51.004','0'),
 ('386','1','renommer 
 liste_du_menu0 
 en 
@@ -3635,7 +3687,7 @@ ajouter une entrée séparateur
 ','99','2026-02-19 17:46:38.799','2026-02-18 12:55:37.603','0'),
 ('388','1','empécher de mettre une branche sous un séparateur','99','2026-02-20 11:07:41.146','2026-02-20 10:21:39.444','0'),
 ('389','1','afficher id lors de l''édition','99','2026-02-23 11:55:18.392','2026-02-22 09:13:05.427','0'),
-('391','1','gérer la version','4','2026-02-23 12:18:43.209','2026-02-23 11:54:48.687','0'),
+('391','1','gérer la version','2','2026-02-23 12:18:43.209','2026-02-23 11:54:48.687','0'),
 ('392','1','renommer
 chx_dossier_menus_projet
 en
@@ -3645,10 +3697,20 @@ et
 chx_dossier_js_projet
 en
 chx_dossier_programmes_projet','99','2026-02-23 13:50:51.659','2026-02-23 12:06:33.733','0'),
-('393','1','extraire vers github','2','2026-02-24 07:32:26.413','2026-02-23 12:08:21.767','0'),
-('394','1','websocket','5','2026-02-23 12:18:37.966','2026-02-23 12:18:37.966','0'),
-('395','1','bouton back','3','2026-02-23 12:35:55.820','2026-02-23 12:35:55.820','0'),
-('396','1','supprimer cht_js_ requete et 376','1','2026-02-25 09:01:18.774','2026-02-24 10:15:34.374','0');
+('393','1','extraire vers github','99','2026-02-26 11:05:33.196','2026-02-23 12:08:21.767','0'),
+('394','1','websocket','3','2026-02-23 12:18:37.966','2026-02-23 12:18:37.966','0'),
+('395','1','bouton back','99','2026-02-26 12:08:02.989','2026-02-23 12:35:55.820','0'),
+('396','1','supprimer cht_js_ requete et 376','99','2026-02-26 11:05:28.059','2026-02-24 10:15:34.374','0'),
+('397','1','déplacer favico','1','2026-02-26 12:13:38.208','2026-02-26 12:13:38.208','0'),
+('398','1','hexdump 1x1.png -C
+00000000  89 50 4e 47 0d 0a 1a 0a  00 00 00 0d 49 48 44 52  |.PNG....  ....IHDR|
+00000010  00 00 00 01 00 00 00 01  08 02 00 00 00 90 77 53  |........  ......wS|
+00000020  de 00 00 00 01 73 52 47  42 00 ae ce 1c e9 00 00  |.....sRG  B.......|
+00000030  00 04 67 41 4d 41 00 00  b1 8f 0b fc 61 05 00 00  |..gAMA..  ....a...|
+00000040  00 09 70 48 59 73 00 00  0e c3 00 00 0e c3 01 c7  |..pHYs..  ........|
+00000050  6f a8 64 00 00 00 0c 49  44 41 54 18 57 63 f8 ff  |o.d....I  DAT.Wc..|
+00000060  ff 3f 00 05 fe 02 fe a7  35 81 84 00 00 00 00 49  |.?......  5......I|
+00000070  45 4e 44 ae 42 60 82                              |END.B`.           |','0','2026-02-27 12:45:08.598','2026-02-27 12:18:44.029','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -3737,7 +3799,8 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 ('4','__sessions','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('5','__bases_de_donnees','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('6','__sqls','3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('7','bibliotheques_externes','2','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+('7','bibliotheques_externes','2','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('8','__fichiers_binaires','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 /*================================================================================ FIN BLOC TABLE tbl_dossiers offset 0 */
 
 

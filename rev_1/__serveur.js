@@ -83,13 +83,25 @@ const le_serveur=Deno.serve( {
             let contenu='<!DOCTYPE html>';
             contenu+='<html lang="fr">';
             contenu+='<head id="vv_head">';
-            contenu+='<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="description" />';
-            contenu+='<title id="vv_titre1">V3</title><style id="vv_style1"></style>';
+            contenu+='<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />';
+            contenu+='<meta name="description" content="description" />';
+            contenu+='<title id="vv_titre1">V3</title>';
+            contenu+='<style id="vv_style1"></style>';
+            contenu+='<link rel="icon" type="image/svg+xml" ';
+            contenu+=' href=\'data:image/svg+xml,';
+            contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
+            contenu+='<rect x="-50" y="-50" width="100" height="100" fill="lime" />';
+            contenu+='</svg>\'>';
             contenu+='<script type="text/javascript">';
             contenu+='var __gi0=null;';
             contenu+='const __version=\'' + __version + '\';';
             contenu+='const __xer=0;const __xsu=1;const __xal=2;const __xif=3;const __xdv=4;const _CA_='+_CA_+';';
-            contenu+='</script>  </head><body><script type="module" src="f0?n0=__gi1_c.js&version=' + __version + '"></script></body></html>';
+            contenu+='</script>';
+            contenu+='</head>';
+            contenu+='<body>';
+            contenu+='<script type="module" src="f0?n0=__gi1_c.js&version=' + __version + '"></script>';
+            contenu+='</body>';
+            contenu+='</html>';
             const encoder=new TextEncoder();
             const data=encoder.encode( contenu );
             const le_md5_binaire=await crypto.subtle.digest( "MD5" , data );
@@ -121,10 +133,12 @@ const le_serveur=Deno.serve( {
               
               
             */
+/*
         }else if(pathname1 === "/favicon.ico"){
             const filePath="./__programmes/favicon.ico";
             const file=await Deno.readFile( filePath );
             return(new Response( file , {"status" : 200 ,"headers" : {"content-type" : "image/vnd.microsoft.icon" ,"Cache-Control" : "public, max-age=36000"}} ));
+*/            
         }else if(pathname1 === "/f0"){
             /* console.log( 'req1=' , req1 ); */
             try{

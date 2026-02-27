@@ -30,16 +30,6 @@ Les éléments sont séparés par des virgules.
 
 La syntaxe et les mots clés sont loin d'être complètement définis et en plus, ils sont en français.
 
-Un exemple de fichier produisant du html contenant du javascript à partir d'un fichier rev est là :  
-[Format rev source]((https://github.com/hugues-koolsol/fta/blob/master/fta_inc/rev/test_factorielle.rev)  
-[Format html produit]https://github.com/hugues-koolsol/fta/blob/master/fta_www/test_factorielle.html)
-
-
-
-Un exemple de fichier produisant du php contenant du html et du javascript à partir d'un fichier rev est là :  
-[Format rev source](https://github.com/hugues-koolsol/fta/blob/master/fta_www/aa_login.rev)  
-[Format php produit](https://github.com/hugues-koolsol/fta/blob/master/fta_www/aa_login.php)
-
 
 
 
@@ -314,17 +304,14 @@ Je prévois d'intégrer d'autres langages  au fur et à mesure de l'avancée des
 Le système permet de convertir les sources javascript, php, html, sql dans le format "rev" pour pouvoir reprendre l'existant.  
 A partir du format rev, le programme permet de produire un format tabulaire qui est inséré en base de donnée.  
 A partir du format tabulaire on peut regénérer le source original  
-La très grande majorité des sources présents dans ce git sont générés à partir du format rev.
+Les sources présents dans ce git sont générés à partir du format rev.  
 
 
-Les bibliothèques externes qui sont utilisées pour convertir les sources des programmes en AST ( abstract syntax tree ).
+Les bibliothèques externes qui sont utilisées pour convertir les sources ( php,html,js,sql,css,txt) en AST ( abstract syntax tree ).
 Ces "AST" sont ensuites traités pour produire les "rev".   
 
 Ces bibliothèques sont aussi converties en format "rev".
-Pour php, seuls 2 programmes de la bibliothèque nikic/php-parser sont convertis en rev pour l'instant ce qui permet de valider le principe.
-la bibliothèque https://php-parser.glayzzle.com/readme en javascript est utilisée de manière courante ( bien que celle de nikic soit mise en place )
 
-L'objectif est de n'avoir que des sources au format rev
 
 
 **6°) un exemple :**
