@@ -39,7 +39,7 @@ class x_ecran_generer_programmes1{
     */
     constructor( mat , d , __gi1 ){
         this.__gi1=__gi1;
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
         /* this.#chemin_module1=obj_init.chemin_module1; */
         /* debugger; */
         /* console.log( 'ici' ); */
@@ -844,7 +844,7 @@ class x_ecran_generer_programmes1{
         src_client2+='         case \'xxxxx\':\r\n';
         src_client2+='             /*';
         src_client2+='             this.__gi1.fermer_la_sous_fenetre();\r\n';
-        src_client2+='             this.liste_du_menu0( null );\r\n';
+        src_client2+='             this.entree_module( null );\r\n';
         src_client2+='             */';
         src_client2+='             break;\r\n';
         src_client2+='         default:\r\n';
@@ -2307,7 +2307,6 @@ class x_ecran_generer_programmes1{
         src_client2+='            a.innerHTML=\'création \'+this.DUN_DUNE_ELEMENT_GERE;\r\n';
         src_client2+='            this.__gi1.afficher_les_zones( \'vv_ecran_creation\' );\r\n';
         src_client2+='        }\r\n';
-        src_client2+='        let o1=\'\';\r\n';
         if(ref_insert !== ''){
             for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
                 let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
@@ -2877,7 +2876,7 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    liste_du_menu0( mat , d ){\r\n';
+        src_client2+='    entree_module( mat , d ){\r\n';
         src_client2+='        this.__gi1.recupere_liste_initiale(mat , d , this);\r\n';
         src_client2+='        return({"__xst" : __xsu});\r\n';
         src_client2+='    }\r\n';

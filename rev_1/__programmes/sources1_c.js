@@ -166,10 +166,10 @@ class sources1{
           il faut précharger les bibliothèques externes qui viennent du réseau
           =====================================================================================================
         */
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1.js' );
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/php_parser1.js' );
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/sqlite_parser1.js' );
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/postcss1.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/php_parser1_c.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/sqlite_parser1_c.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/postcss1_c.js' );
         for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
             if(mat[i][1] === 'nom_champ_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 this.nom_champ_dans_parent1=mat[i + 1][1];

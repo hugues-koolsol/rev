@@ -325,7 +325,7 @@ print('<html><body>');
 $mon_nombre=4/2;
 echo "salut php" .", ceci est ".($mon_nombre-1)." exemple de programme" /**/;
 ?>
-<a href="https://github.com/hugues-koolsol/fta"><!-- ceci est un commentaire dans html -->allez voir github.com/hugues-koolsol/fta</a>
+<a href="https://github.com/hugues-koolsol/rev"><!-- ceci est un commentaire dans html -->allez voir github.com/hugues-koolsol/rev</a>
 <script type="text/javascript">
 /* ceci est un commentaire dans javascript */
 let zz=6-4;
@@ -348,9 +348,9 @@ php(
    #(),
    html_dans_php(
       a(
-         ( 'href' , "https://github.com/hugues-koolsol/fta"),
+         ( 'href' , "https://github.com/hugues-koolsol/rev"),
          #( ceci est un commentaire dans html ),
-         'allez voir github.com/hugues-koolsol/fta'
+         'allez voir github.com/hugues-koolsol/rev'
       ),
       javascriptDansHtml(
          ( 'type' , "text/javascript"),
@@ -376,8 +376,8 @@ print('<html><body>');
 $mon_nombre=4 / 2;
 echo "salut php" . ", ceci est " . ($mon_nombre - 1) . " exemple de programme" ;
 /**/?>
-<a href="https://github.com/hugues-koolsol/fta"><!-- ceci est un commentaire dans html -->
-    allez voir github.com/hugues-koolsol/fta
+<a href="https://github.com/hugues-koolsol/rev"><!-- ceci est un commentaire dans html -->
+    allez voir github.com/hugues-koolsol/rev
 </a>
 <script type="text/javascript">
 //<![CDATA[

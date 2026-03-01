@@ -13,16 +13,14 @@ class x_ecran_rev_vers_css1{
     */
     #parseur_cssparseur=null;
     #objet_conversion_astcssparseur_vers_rev1=null;
-    #objet_conversion_astcssnikic_vers_rev1=null;
     #objet_conversion_rev_vers_css=null;
     __gi1=null;
     /*
       =============================================================================================================
     */
     constructor( mat , d , __gi1 ){
-        /* console.log( 'constructor fonctions 1' , e ); */
         this.__gi1=__gi1;
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/postcss1.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/postcss1_c.js' );
         this.#objet_conversion_rev_vers_css=new w_rev_vers_css1( __gi1 );
         this.#objet_conversion_astcss_vers_rev1=new w_ast_postcss_vers_rev1( __gi1 );
     }

@@ -28,6 +28,37 @@ class dossiers1{
     /*
       =============================================================================================================
     */
+    téléverser( mat , d ){
+        let l01=mat.length;
+        let chi_id_dossier=0;
+        let chp_nom_dossier='';
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_dossier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'chp_nom_dossier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chp_nom_dossier=mat[i + 1][1];
+            }
+        }
+        let o1='';
+        o1+='<h1>téléverser un fichier </h1>';
+        o1+='<br />';
+        o1+='<div id="vv_telecharger1">';
+        o1+='    <input type="file" id="vv_fichier_a_telecharger" />';
+        o1+='    <br />';
+        o1+='    <div class="rev_bouton" data-rev_click="';
+        o1+='fo1(co1(vv_telecharger1),pm1(m1(n1(' + this.moi + '),f1(televerser1()))))';
+        o1+='">telecharger</div>';
+        o1+='</div>';
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.innerHTML=o1;
+        /* __contenu_modale => vv_sous_fenetre1 */
+        vv_sous_fenetre1.showModal();
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     page_nouveau_numero_dossier1( mat , d ){
         let l01=mat.length;
         let chi_id_dossier=0;
@@ -216,6 +247,12 @@ class dossiers1{
                 }
                 break;
                 
+            case 'televerser1' :
+                this.__gi1.fermer_la_sous_fenetre();
+                /* this.entree_module( null ); */
+                this.__gi1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(8)))))' ,"__xva" : {}} );
+                break;
+                
             default:
                 this.__gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
                 return({"__xst" : __xer});
@@ -250,6 +287,7 @@ class dossiers1{
                 }
             }
             this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + this.__gi1.les_svg.nouveau_document + '</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(téléverser()))" title="téléverser">' + this.__gi1.les_svg.televerser + '</div>';
         }
     }
     /*
@@ -932,10 +970,10 @@ class dossiers1{
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
                 /* yy_col_act_td1 */
-                if(elem['T0.chi_id_dossier'] > 7){
-                    lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__gi1.les_svg.poubelle + '</div>';
-                }else{
+                if(elem['T0.chi_id_dossier'] <= 8){
                     lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__gi1.les_svg.poubelle + '</div>';
+                }else{
+                    lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__gi1.les_svg.poubelle + '</div>';
                 }
                 if(elem['T0.chi_id_dossier'] > 1){
                     lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__gi1.les_svg.editer + '</div>';

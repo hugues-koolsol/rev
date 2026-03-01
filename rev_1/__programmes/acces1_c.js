@@ -1,4 +1,4 @@
-import {v_tri_arbre1} from '/f0?n0=v_tri_arbre1.js';
+import {_tri_arbre1} from '/f0?n0=_tri_arbre1_c.js';
 class acces1{
     /*
       ref_select=136
@@ -262,7 +262,7 @@ class acces1{
         options.boutons_du_menu.push( {"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2.bind( this )} );
         options['afficher_le_bouton_editer']=1;
         options['class_du_bouton_editer']='rev_bouton yy__3';
-        this.#reference_arbre_du_menu=new v_tri_arbre1( id , options );
+        this.#reference_arbre_du_menu=new _tri_arbre1( id , options );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }

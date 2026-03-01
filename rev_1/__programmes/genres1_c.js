@@ -1,4 +1,4 @@
-import {v_tri_arbre1} from '/f0?n0=v_tri_arbre1.js';
+import {_tri_arbre1} from '/f0?n0=_tri_arbre1_c.js';
 class genres1{
     /*
       ref_select=330
@@ -176,7 +176,7 @@ class genres1{
         options.boutons_du_menu.push( {"libelle" : '💾 enregistrer cet ordre' ,"fonction" : this.enregistrer_l_ordre_des_genres_du_bouton1.bind( this )} );
         options['afficher_le_bouton_editer']=0;
         options['class_du_bouton_editer']='rev_bouton yy__xif';
-        new v_tri_arbre1( 'trier_les_genres' , options );
+        new _tri_arbre1( 'trier_les_genres' , options );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }

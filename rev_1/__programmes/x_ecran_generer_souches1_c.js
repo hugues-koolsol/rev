@@ -18,7 +18,7 @@ class x_ecran_generer_souches1{
     */
     constructor( mat , d , __gi1 ){
         this.__gi1=__gi1;
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
         this.#_developpement1=new _developpement1( mat , d , this.__gi1 );
     }
     /*

@@ -11,6 +11,25 @@ const __xac='__xac';
   =====================================================================================================================
 */
 class dossiers1{
+    
+    /* function televerser1 */
+    async televerser1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+        /* this.__gi1.ma_trace1('mat=',mat); */
+        /* this.__gi1.ma_trace1('donnees_recues=',donnees_recues); */
+        /* this.__gi1.ma_trace1('donnees_retournees=',donnees_retournees); */
+        /* this.__gi1.ma_trace1('options_generales=',options_generales); */
+        let chemin_fichier='../rev_' + donnees_retournees.chi_id_projet + '/__fichiers_binaires/' + donnees_retournees.date_heure_serveur.replace( / /g , '_' ).replace( /\-/g , '_' ).replace( /\:/g , '_' ).replace( /\./g , '_' ) + '.txt';
+        let source_binaire=new Uint8Array( donnees_recues.__xva['fichier_binaire'] );
+        try{
+            await Deno.writeFile( chemin_fichier , source_binaire , {"mode" : 0o777} );
+        }catch(e){
+            this.ma_trace1( 'chemin_fichier=' + chemin_fichier , 'e=' , e );
+            this.__gi1.__xsi[__xer].push( 'erreur ecriture du fichier binaire  [' + this.__gi1.nl2( e ) + ']' );
+            return({"__xst" : __xer});
+        }
+        donnees_retournees.__xst=__xsu;
+        return({"__xst" : __xsu});
+    }
     /*
       =============================================================================================================
     */
@@ -514,24 +533,23 @@ class dossiers1{
             }
             let chemin_fichier=obj[__xva]['chemin_absolu'] + '/' + chp_nom_source;
             let nouveau_nom='';
-            for(let i=0; i<chp_nom_source.length;i++){
-                let c=chp_nom_source.substr(i,1);
-                if((c>='0' && c<='9') || ( c >= 'a' && c <= 'z' ) || c === '_' || c==='.'){
+            for( let i=0 ; i < chp_nom_source.length ; i++ ){
+                let c=chp_nom_source.substr( i , 1 );
+                if(c >= '0' && c <= '9' || c >= 'a' && c <= 'z' || c === '_' || c === '.'){
                     nouveau_nom+=c;
                 }else{
                     nouveau_nom+='_';
                 }
             }
-            if(nouveau_nom !== chp_nom_source ){
+            if(nouveau_nom !== chp_nom_source){
                 try{
-                    await Deno.rename(obj[__xva]['chemin_absolu'] + '/' + chp_nom_source , obj[__xva]['chemin_absolu'] + '/' + nouveau_nom);
+                    await Deno.rename( obj[__xva]['chemin_absolu'] + '/' + chp_nom_source , obj[__xva]['chemin_absolu'] + '/' + nouveau_nom );
                     chemin_fichier=obj[__xva]['chemin_absolu'] + '/' + nouveau_nom;
                 }catch(e){
                     this.__gi1.__xsi[__xer].push( 'le fichier n\'a pas pu être renommé car il comporte des caractères interdits [' + this.__gi1.nl2() + ']' );
                     return({"__xst" : __xer});
                 }
             }
-            
             let contenu_fichier='';
             if(!(che_binaire_source === 1 || donnees_retournees.chi_id_projet === 1)){
                 contenu_fichier=await this.__gi1.file_get_contents( chemin_fichier );
@@ -548,7 +566,7 @@ class dossiers1{
                             "che_autorisation_globale_source" : 0
                         }]
             };
-            this.__gi1.ma_trace1('che_binaire_source=',che_binaire_source);
+            this.__gi1.ma_trace1( 'che_binaire_source=' , che_binaire_source );
             this.__gi1.ma_trace1( '__db1=' );
             let tt117=await this.__gi1.sql_iii(
             /*sql_inclure_deb*/ /*#
@@ -771,6 +789,14 @@ class dossiers1{
         form['chi_id_dossier']=form['chi_id_dossier'] === null ? ( null ) : ( parseInt( form['chi_id_dossier'] , 10 ) );
         form['chx_parent_dossier']=form['chx_parent_dossier'] === null ? ( null ) : ( parseInt( form['chx_parent_dossier'] , 10 ) );
         /* conversion des données numériques fin */
+        
+        if(form['chi_id_dossier'] <= 8){
+            this.__gi1.__xsi[__xer].push( 'il n\'est pas possible de modifier cet élément [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
+        }
+        
+        
         let __test_0_1=this.__gi1.__fnt1.test_du_nom_de_fichier1( form['chp_nom_dossier'] , 'nom' );
         if(__test_0_1[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'erreur sur le contenu de "nom" [' + this.__gi1.nl2() + ']' );
@@ -896,6 +922,8 @@ class dossiers1{
         if(__db1 === null){
             __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         }
+        
+        
         let tt386=await this.__gi1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -1025,6 +1053,13 @@ class dossiers1{
     */
     async supprimer1( mat , d , donnees_recues , donnees_retournees , options_generales ){
         let nom_formulaire=donnees_recues[__xva]['__co1'];
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(8)) */
+        if(form['chi_id_dossier'] <= 8){
+            this.__gi1.__xsi[__xer].push( 'il n\'est pas possible de supprimer cet élément [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
+        }
+        /*  */
         let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let tt386=await this.__gi1.sql_iii(

@@ -630,7 +630,7 @@
     "cht_rev_requete": "sélectionner(\n\n   valeurs(\n      champ(`T0`,`chi_id_basedd`),\n      champ(`T0`,`chp_rev_travail_basedd`),\n      champ(`T0`,`chp_fournisseur_basedd`),\n      champ(`T0`,`chp_commentaire_basedd`),\n      champ(`T0`,`chd__dtm_basedd`),\n      champ(`T0`,`chd__dtc_basedd`),\n      champ(`T0`,`che__nur_basedd`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chi_id_basedd`),:T0_chi_id_basedd)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_basedd`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  "
   },
   "343": {
-    "cht_sql_requete": "UPDATE b1.tbl_requetes SET \n   `cht_sql_requete` = :n_cht_sql_requete , \n   `chp_table_reference_requete` = :n_chp_table_reference_requete\nWHERE `chi_id_requete` = :c_chi_id_requete ;",
+    "cht_sql_requete": "UPDATE b1.tbl_requetes SET \r\n   `cht_sql_requete` = :n_cht_sql_requete , \r\n   `chp_table_reference_requete` = :n_chp_table_reference_requete\nWHERE `chi_id_requete` = :c_chi_id_requete ;",
     "cht_commentaire_requete": "requêtes",
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
@@ -665,7 +665,7 @@
     "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_requete`),\n      champ(`T0`,`che_est_souche_requete`),\n      champ(`T0`,`chp_type_requete`),\n      champ(`T0`,`cht_rev_requete`),\n      champ(`T0`,`cht_sql_requete`),\n      champ(`T0`,`cht_commentaire_requete`),\n      champ(`T0`,`cht_matrice_requete`),\n      champ(`T0`,`chp_table_reference_requete`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete),\n         egal(champ(`T0`,`che_est_souche_requete`),:T0_che_est_souche_requete),\n         comme(champ(`T0`,`chp_type_requete`),:T0_chp_type_requete),\n         comme(champ(`T0`,`cht_rev_requete`),:T0_cht_rev_requete),\n         comme(champ(`T0`,`cht_commentaire_requete`),:T0_cht_commentaire_requete),\n         infegal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete2),\n         comme(champ(`T0`,`chp_table_reference_requete`),:T0_chp_table_reference_requete)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_requete`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  "
   },
   "351": {
-    "cht_sql_requete": "UPDATE b1.tbl_requetes SET \n   `chi_id_requete` = :n_chi_id_requete\nWHERE `chi_id_requete` = :c_chi_id_requete ;",
+    "cht_sql_requete": "UPDATE b1.tbl_requetes SET \r\n   `chi_id_requete` = :n_chi_id_requete\nWHERE `chi_id_requete` = :c_chi_id_requete ;",
     "cht_commentaire_requete": "requetes",
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
@@ -686,14 +686,14 @@
     "cht_rev_requete": "#(meta(ne_pas_tester_les_dependances_de_suppression(1))),\nsupprimer(\n\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_revs,base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`chp_provenance_rev`),:chp_provenance_rev),egal(champ(`chx_source_rev`),:chx_source_rev))\n   )\n)  "
   },
   "354": {
-    "cht_sql_requete": "SELECT \n`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , \n`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`\n FROM b1.tbl_requetes T0\nWHERE `T0`.`chi_id_requete` = :T0_chi_id_requete\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , \r\n`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`\n FROM b1.tbl_requetes T0\nWHERE `T0`.`chi_id_requete` = :T0_chi_id_requete\n;",
     "cht_commentaire_requete": "requêtes",
     "chp_type_requete": "select",
     "che_est_souche_requete": 1,
     "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_requete`),\n      champ(`T0`,`chp_type_requete`),\n      champ(`T0`,`cht_rev_requete`),\n      champ(`T0`,`cht_sql_requete`),\n      champ(`T0`,`cht_commentaire_requete`),\n      champ(`T0`,`cht_matrice_requete`),\n      champ(`T0`,`che_est_souche_requete`),\n      champ(`T0`,`chp_table_reference_requete`),\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete))\n)  "
   },
   "355": {
-    "cht_sql_requete": "UPDATE b1.tbl_requetes SET \n   `che_est_souche_requete` = :n_che_est_souche_requete , \n   `chp_type_requete` = :n_chp_type_requete , \n   `cht_rev_requete` = :n_cht_rev_requete , \n   `cht_sql_requete` = :n_cht_sql_requete , \n   `cht_commentaire_requete` = :n_cht_commentaire_requete , \n   `chp_table_reference_requete` = :n_chp_table_reference_requete\nWHERE `chi_id_requete` = :c_chi_id_requete ;",
+    "cht_sql_requete": "UPDATE b1.tbl_requetes SET \r\n   `che_est_souche_requete` = :n_che_est_souche_requete , \r\n   `chp_type_requete` = :n_chp_type_requete , \r\n   `cht_rev_requete` = :n_cht_rev_requete , \r\n   `cht_sql_requete` = :n_cht_sql_requete , \r\n   `cht_commentaire_requete` = :n_cht_commentaire_requete , \r\n   `chp_table_reference_requete` = :n_chp_table_reference_requete\nWHERE `chi_id_requete` = :c_chi_id_requete ;",
     "cht_commentaire_requete": "requêtes",
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
@@ -791,7 +791,7 @@
     "cht_rev_requete": "sélectionner(\n\n   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`),champ(`T0`,`chp_commentaire_basedd`),champ(`T0`,`chp_fournisseur_basedd`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))\n      )\n   )\n)  "
   },
   "373": {
-    "cht_sql_requete": "SELECT \n`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , \n`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`\n FROM b1.tbl_requetes T0\nWHERE `T0`.`chi_id_requete` = :T0_chi_id_requete\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , \r\n`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`\n FROM b1.tbl_requetes T0\nWHERE `T0`.`chi_id_requete` = :T0_chi_id_requete\n;",
     "cht_commentaire_requete": "requetes",
     "chp_type_requete": "select",
     "che_est_souche_requete": 0,
@@ -805,7 +805,7 @@
     "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_projet`),champ(`T0`,`chp_nom_projet`),champ(`T0`,`cht_commentaire_projet`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet),\n         comme(champ(`T0`,`chp_nom_projet`),:T0_chp_nom_projet),\n         comme(champ(`T0`,`cht_commentaire_projet`),:T0_cht_commentaire_projet)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_projet`),croissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  "
   },
   "375": {
-    "cht_sql_requete": "SELECT \n`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_generes_projet` , `T0`.`cht_commentaire_projet` , \n`T0`.`chx_dossier_programmes_projet` , `T0`.`chx_dossier_bdds_projet` , `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier` , `T3`.`chp_nom_dossier` , \n`T4`.`chp_nom_dossier`\n FROM b1.tbl_projets T0\n LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet\n\n LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_generes_projet\n\n LEFT JOIN b1.tbl_dossiers T3 ON T3.chi_id_dossier = T0.chx_dossier_bdds_projet\n\n LEFT JOIN b1.tbl_dossiers T4 ON T4.chi_id_dossier = T0.chx_dossier_programmes_projet\n\nWHERE `T0`.`chi_id_projet` = :T0_chi_id_projet\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_generes_projet` , `T0`.`cht_commentaire_projet` , \r\n`T0`.`chx_dossier_programmes_projet` , `T0`.`chx_dossier_bdds_projet` , `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier` , `T3`.`chp_nom_dossier` , \r\n`T4`.`chp_nom_dossier`\n FROM b1.tbl_projets T0\r\n LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet\n\r\n LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_generes_projet\n\r\n LEFT JOIN b1.tbl_dossiers T3 ON T3.chi_id_dossier = T0.chx_dossier_bdds_projet\n\r\n LEFT JOIN b1.tbl_dossiers T4 ON T4.chi_id_dossier = T0.chx_dossier_programmes_projet\n\nWHERE `T0`.`chi_id_projet` = :T0_chi_id_projet\n;",
     "cht_commentaire_requete": "projets",
     "chp_type_requete": "select",
     "che_est_souche_requete": 1,
@@ -861,7 +861,7 @@
     "cht_rev_requete": "sélectionner(\n\n   valeurs(champ(`T0`,`chi_id_source`),champ(`T0`,`chx_dossier_id_source`),champ(`T0`,`chp_nom_source`),champ(`T0`,`che_binaire_source`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`che_binaire_source`),:T0_che_binaire_source))\n)  "
   },
   "384": {
-    "cht_sql_requete": "UPDATE b1.tbl_projets SET \n   `chp_nom_projet` = :n_chp_nom_projet , \n   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , \n   `chx_dossier_generes_projet` = :n_chx_dossier_generes_projet , \n   `cht_commentaire_projet` = :n_cht_commentaire_projet , \n   `chx_dossier_bdds_projet` = :n_chx_dossier_bdds_projet , \n   `chx_dossier_programmes_projet` = :n_chx_dossier_programmes_projet\nWHERE `chi_id_projet` = :c_chi_id_projet ;",
+    "cht_sql_requete": "UPDATE b1.tbl_projets SET \r\n   `chp_nom_projet` = :n_chp_nom_projet , \r\n   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , \r\n   `chx_dossier_generes_projet` = :n_chx_dossier_generes_projet , \r\n   `cht_commentaire_projet` = :n_cht_commentaire_projet , \r\n   `chx_dossier_bdds_projet` = :n_chx_dossier_bdds_projet , \r\n   `chx_dossier_programmes_projet` = :n_chx_dossier_programmes_projet\nWHERE `chi_id_projet` = :c_chi_id_projet ;",
     "cht_commentaire_requete": "projets",
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
@@ -903,7 +903,7 @@
     "cht_rev_requete": "sélectionner(\n\n   valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`),champ(`T0`,`chx_parent_dossier`),champ(`T1`,`chp_nom_dossier`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_parent_dossier)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chi_id_dossier`),:T0_chi_id_dossier),comme(champ(`T0`,`chp_nom_dossier`),:T0_chp_nom_dossier),egal(champ(`T0`,`chx_parent_dossier`),:T0_chx_parent_dossier),egal(champ(`T1`,`chp_nom_dossier`),:T1_chp_nom_dossier))\n   ),\n   complements(\n      trier_par((champ(`T0`,`chx_parent_dossier`),croissant()),(champ(`T0`,`chp_nom_dossier`),croissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  "
   },
   "390": {
-    "cht_sql_requete": "INSERT INTO b1.`tbl_requetes`(\n    `chp_type_requete` , \n    `cht_rev_requete` , \n    `cht_sql_requete` , \n    `cht_commentaire_requete` , \n    `che_est_souche_requete` , \n    `chp_table_reference_requete`\n) VALUES (\n    :chp_type_requete , \n    :cht_rev_requete , \n    :cht_sql_requete , \n    :cht_commentaire_requete , \n    :che_est_souche_requete , \n    :chp_table_reference_requete\n);",
+    "cht_sql_requete": "INSERT INTO b1.`tbl_requetes`(\r\n    `chp_type_requete` , \r\n    `cht_rev_requete` , \r\n    `cht_sql_requete` , \r\n    `cht_commentaire_requete` , \r\n    `che_est_souche_requete` , \r\n    `chp_table_reference_requete`\r\n) VALUES (\r\n    :chp_type_requete , \r\n    :cht_rev_requete , \r\n    :cht_sql_requete , \r\n    :cht_commentaire_requete , \r\n    :che_est_souche_requete , \r\n    :chp_table_reference_requete\r\n);",
     "cht_commentaire_requete": "requêtes",
     "chp_type_requete": "insert",
     "che_est_souche_requete": 1,
@@ -1008,7 +1008,7 @@
     "cht_rev_requete": "#(meta(ne_pas_tester_les_dependances_de_suppression(1))),\nsupprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_travaux,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chp_etat_travail`),:chp_etat_travail))\n)  "
   },
   "405": {
-    "cht_sql_requete": "SELECT \n`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`\n FROM b1.tbl_requetes T0\nWHERE `T0`.`chi_id_requete` IN :T0_chi_id_requete \nORDER BY `T0`.`chi_id_requete` DESC  \nLIMIT 1000 OFFSET 0 \n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`\n FROM b1.tbl_requetes T0\nWHERE `T0`.`chi_id_requete` IN :T0_chi_id_requete \r\nORDER BY `T0`.`chi_id_requete` DESC  \r\nLIMIT 1000 OFFSET 0 \n;",
     "cht_commentaire_requete": "tbl_requetes",
     "chp_type_requete": "select",
     "che_est_souche_requete": 0,

@@ -15,7 +15,6 @@ const __xst=/* statut */'__xst';
 const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
-
 import {format as formater_la_date} from "jsr:@std/datetime";
 import {getCookies} from "https://deno.land/std/http/cookie.ts";
 import {crypto} from "jsr:@std/crypto";
@@ -36,7 +35,7 @@ console.clear();
 let repertoire_du_pgm_serveur=Deno.cwd().replace( /\\/g , '/' );
 /* console.log('repertoire_du_pgm_serveur=',repertoire_du_pgm_serveur); */
 let repertoire_racine_de_tous_les_projets=repertoire_du_pgm_serveur.substr( 0 , repertoire_du_pgm_serveur.lastIndexOf( '/' ) ) + '/';
-console.log('repertoire_racine_de_tous_les_projets='+repertoire_racine_de_tous_les_projets)
+console.log( 'repertoire_racine_de_tous_les_projets=' + repertoire_racine_de_tous_les_projets );
 /* console.log('repertoire_racine_de_tous_les_projets=',repertoire_racine_de_tous_les_projets); */
 /* console.log('repertoire_du_pgm_serveur='+repertoire_du_pgm_serveur); */
 let repertoire_des_programmes='__programmes/';
@@ -57,15 +56,15 @@ const le_serveur=Deno.serve( {
         console.log( `aaaaServer started at http://` + hostname + `:` + port );
         /* ... more info specific to your server .. */
     }  ,
+    
      onError( err ){
         console.log( 'err serveur=' , err );
         /* ... more info specific to your server .. */
-        return(new Response( 'erreur' , {"status" : 200 ,"headers" : {"content-type" : "text/html; charset=utf-8" }} ));
-
+        return(new Response( 'erreur' , {"status" : 200 ,"headers" : {"content-type" : "text/html; charset=utf-8"}} ));
     } 
 
 } , async ( req1 ) => {
-    /* console.log('req1.headers.get("upgrade")=',req1.headers.get("upgrade")); // null pour http , websocket pour websocket  */
+    /* console.log('req1.headers.get("upgrade")=',req1.headers.get("upgrade")); // null pour http , websocket pour websocket */
     /* console.log('req1=',req1); */
     /* console.log(Deno.memoryUsage()); // il faut  --allow-sys pour ceci */
     if(req1.method === 'GET'){
@@ -95,7 +94,7 @@ const le_serveur=Deno.serve( {
             contenu+='<script type="text/javascript">';
             contenu+='var __gi0=null;';
             contenu+='const __version=\'' + __version + '\';';
-            contenu+='const __xer=0;const __xsu=1;const __xal=2;const __xif=3;const __xdv=4;const _CA_='+_CA_+';';
+            contenu+='const __xer=0;const __xsu=1;const __xal=2;const __xif=3;const __xdv=4;const _CA_=' + _CA_ + ';';
             contenu+='</script>';
             contenu+='</head>';
             contenu+='<body>';
@@ -109,42 +108,26 @@ const le_serveur=Deno.serve( {
             return(new Response( contenu , {"status" : 200 ,"headers" : {"content-type" : "text/html; charset=utf-8" ,"Last-Modified" : last_modified ,"Etag" : le_etag}} ));
             /*  */
             /* "Cache-Control" : "public" , */
-        }else if(pathname1 === "/hdftest"){
-            /*
-              
-              
-            */
-            console.log( 'hdftest' );
-            const stats_de_ce_fichier=await Deno.stat( "./__serveur.js" );
-            console.log( 'stats_de_ce_fichier=' , stats_de_ce_fichier );
-            const last_modified=stats_de_ce_fichier.mtime?.toUTCString();
-            console.log( 'last_modified=' , last_modified );
-            console.log( 'jour=' , new Date( last_modified ).toLocaleDateString( "en-En" , {"weekday" : 'short'} ) );
-            /*
-              const date_serveur=await Deno.FileInfo("./__serveur.js");
-              console.log('date_serveur=',date_serveur)
-            */
-            const message="Hello, Deno!";
-            const encoder=new TextEncoder();
-            const data=encoder.encode( message );
-            let a=await crypto.subtle.digest( "MD5" , data );
-            console.log( 'a=' + encodeHex( a ) );
-            /*
-              
-              
-            */
-/*
-        }else if(pathname1 === "/favicon.ico"){
-            const filePath="./__programmes/favicon.ico";
-            const file=await Deno.readFile( filePath );
-            return(new Response( file , {"status" : 200 ,"headers" : {"content-type" : "image/vnd.microsoft.icon" ,"Cache-Control" : "public, max-age=36000"}} ));
-*/            
         }else if(pathname1 === "/f0"){
             /* console.log( 'req1=' , req1 ); */
             try{
                 let n0=url1.searchParams.get( "n0" );
-                /* console.log('DANS __serveur1 n0='+n0); */
-                const chemin_du_fichier='./__programmes/' + n0;
+                let content_type='text/javascript; charset=UTF-8';
+                let chemin_du_fichier='';
+                if(n0.slice( -4 ) === '_.js' || n0.slice( -5 ) === '_c.js'){
+                    chemin_du_fichier='./__programmes/' + n0;
+                }else{
+                    chemin_du_fichier='./__fichiers_binaires/' + n0;
+                    if(chemin_du_fichier.slice( -4 ) === '.gif'){
+                        content_type='image/gif';
+                    }else if(chemin_du_fichier.slice( -4 ) === '.png'){
+                        content_type='image/png';
+                    }else if(chemin_du_fichier.slice( -4 ) === '.jpg'){
+                        content_type='image/jpeg';
+                    }else{
+                        return(new Response( "404: Not Found :  ce type de fichier n'est pas pris en compte" , {"status" : 404} ));
+                    }
+                }
                 /* console.log('DANS __serveur1 chemin_du_fichier='+chemin_du_fichier); */
                 const stats_de_ce_fichier=await Deno.stat( chemin_du_fichier );
                 const last_modified=stats_de_ce_fichier.mtime?.toUTCString();
@@ -152,7 +135,7 @@ const le_serveur=Deno.serve( {
                 const le_md5_binaire=await crypto.subtle.digest( "MD5" , contenu_fichier );
                 const le_etag='W/"' + encodeHex( le_md5_binaire ) + '"';
                 /* console.log('contenu_fichier=',contenu_fichier); */
-                return(new Response( contenu_fichier , {"status" : 200 ,"headers" : {"content-type" : "text/javascript; charset=UTF-8" ,"Last-Modified" : last_modified ,"Etag" : le_etag}} ));
+                return(new Response( contenu_fichier , {"status" : 200 ,"headers" : {"content-type" : content_type ,"Last-Modified" : last_modified ,"Etag" : le_etag}} ));
             }catch(e){
                 return(new Response( "404: Not Found" , {"status" : 404} ));
             }
@@ -166,15 +149,12 @@ const le_serveur=Deno.serve( {
         const cookies=getCookies( req1.headers );
         const donnees_retournees={
             "_CA_" : _CA_ ,
-             /* statut __xer:0:erreur , à priori en erreur */
-            "__xst" : 0 ,
+            "__xst" : /* statut __xer:0:erreur , à priori en erreur */0 ,
             "date_heure_serveur" : date_heure_serveur ,
-             /* valeurs */
-            "__xva" : {} ,
-             /* actions au format rev */
-            "__xac" : '' ,
+            "__xva" : /* valeurs */{} ,
+            "__xac" : /* actions au format rev */'' ,
              /* liste des signaux __xer:0:erreur, __xsu:1:succès, __xal:2:alarme, __xif:3:info, __xdv:4:déverminage */
-            //"__xsi" : {"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []} ,
+             /* "__xsi" : {"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []} , */
             "__xsi" : {0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
             "chi_id_acces" : 0 ,
             "chi_id_utilisateur" : 0 ,
@@ -189,8 +169,8 @@ const le_serveur=Deno.serve( {
             "repertoire_du_pgm_serveur" : repertoire_du_pgm_serveur ,
             "bdd_ouvertes" : {} ,
             "chemin_des_bdd" : '' ,
-            "chemin_absolu_projet" : '',
-            "repertoire_racine_de_tous_les_projets" : repertoire_racine_de_tous_les_projets,
+            "chemin_absolu_projet" : '' ,
+            "repertoire_racine_de_tous_les_projets" : repertoire_racine_de_tous_les_projets ,
             "base_de_reference" : 1 ,
             "base_de_travail" : 1
         };
@@ -250,7 +230,6 @@ const le_serveur=Deno.serve( {
                 */
             }
         }
-        
         options_generales.chemin_racine_du_projet='./';
         if(_CA_ === 1 || _CA_ === 2){
             options_generales.chemin_racine_de_tous_les_projets='../../';
@@ -278,7 +257,7 @@ const le_serveur=Deno.serve( {
             /* let ret=await __gi1.appel_fonction(mat , 1 , donnees_recues , donnees_retournees , options_generales ); */
             try{
                 let ret=await __gi1.appel_fonction( mat , 1 , donnees_recues , donnees_retournees , options_generales );
-//                __gi1.ma_trace1('donnees_retournees',donnees_retournees);
+                /* __gi1.ma_trace1('donnees_retournees',donnees_retournees); */
             }catch(eeeee){
                 console.log( 'eeeee=' , eeeee );
             }
@@ -293,10 +272,7 @@ const le_serveur=Deno.serve( {
             headers.append( "Set-Cookie" , options_generales['set-cookie'][i] );
         }
         /* options_http.headers=headers; */
-        let entetes_reponse_http={
-             /* "status" : 200, */
-            "headers" : headers
-        };
+        let entetes_reponse_http={"headers" : /* "status" : 200, */headers};
         for(let i in options_generales.bdd_ouvertes){
             try{
                 await options_generales.bdd_ouvertes[i].base.close();
@@ -307,3 +283,80 @@ const le_serveur=Deno.serve( {
         return(new Response( JSON.stringify( donnees_retournees ) , entetes_reponse_http ));
         /*  */
     }} );
+/*
+  .aac;AAC audio;audio/aac
+  .abw;AbiWord document;application/x-abiword
+  .apng;Animated Portable Network Graphics (APNG) image;image/apng
+  .arc;Archive document (multiple files embedded);application/x-freearc
+  .avif;AVIF image;image/avif
+  .avi;AVI: Audio Video Interleave;video/x-msvideo
+  .azw;Amazon Kindle eBook format;application/vnd.amazon.ebook
+  .bin;Any kind of binary data;application/octet-stream
+  .bmp;Windows OS/2 Bitmap Graphics;image/bmp
+  .bz;BZip archive;application/x-bzip
+  .bz2;BZip2 archive;application/x-bzip2
+  .cda;CD audio;application/x-cdf
+  .csh;C-Shell script;application/x-csh
+  .css;Cascading Style Sheets (CSS);text/css
+  .csv;Comma-separated values (CSV);text/csv
+  .doc;Microsoft Word;application/msword
+  .docx;Microsoft Word (OpenXML);application/vnd.openxmlformats-officedocument.wordprocessingml.document
+  .eot;MS Embedded OpenType fonts;application/vnd.ms-fontobject
+  .epub;Electronic publication (EPUB);application/epub+zip
+  .gz;GZip Compressed Archive;application/gzip. Note, Windows and macOS upload .gz files with the non-standard MIME type application/x-gzip.
+  .gif;Graphics Interchange Format (GIF);image/gif
+  .htm, .html;HyperText Markup Language (HTML);text/html
+  .ico;Icon format;image/vnd.microsoft.icon
+  .ics;iCalendar format;text/calendar
+  .jar;Java Archive (JAR);application/java-archive
+  .jpeg, .jpg;JPEG images;image/jpeg
+  .js;JavaScript;text/javascript (Specifications: HTML and RFC 9239)
+  .json;JSON format;application/json
+  .jsonld;JSON-LD format;application/ld+json
+  .md;Markdown;text/markdown
+  .mid, .midi;Musical Instrument Digital Interface (MIDI);audio/midi, audio/x-midi
+  .mjs;JavaScript module;text/javascript
+  .mp3;MP3 audio;audio/mpeg
+  .mp4;MP4 video;video/mp4
+  .mpeg;MPEG Video;video/mpeg
+  .mpkg;Apple Installer Package;application/vnd.apple.installer+xml
+  .odp;OpenDocument presentation document;application/vnd.oasis.opendocument.presentation
+  .ods;OpenDocument spreadsheet document;application/vnd.oasis.opendocument.spreadsheet
+  .odt;OpenDocument text document;application/vnd.oasis.opendocument.text
+  .oga;Ogg audio;audio/ogg
+  .ogv;Ogg video;video/ogg
+  .ogx;Ogg;application/ogg
+  .opus;Opus audio in Ogg container;audio/ogg
+  .otf;OpenType font;font/otf
+  .png;Portable Network Graphics;image/png
+  .pdf;Adobe Portable Document Format (PDF);application/pdf
+  .php;Hypertext Preprocessor (Personal Home Page);application/x-httpd-php
+  .ppt;Microsoft PowerPoint;application/vnd.ms-powerpoint
+  .pptx;Microsoft PowerPoint (OpenXML);application/vnd.openxmlformats-officedocument.presentationml.presentation
+  .rar;RAR archive;application/vnd.rar
+  .rtf;Rich Text Format (RTF);application/rtf
+  .sh;Bourne shell script;application/x-sh
+  .svg;Scalable Vector Graphics (SVG);image/svg+xml
+  .tar;Tape Archive (TAR);application/x-tar
+  .tif, .tiff;Tagged Image File Format (TIFF);image/tiff
+  .ts;MPEG transport stream;video/mp2t
+  .ttf;TrueType Font;font/ttf
+  .txt;Text, (generally ASCII or ISO 8859-n);text/plain
+  .vsd;Microsoft Visio;application/vnd.visio
+  .wav;Waveform Audio Format;audio/wav
+  .weba;WEBM audio;audio/webm
+  .webm;WEBM video;video/webm
+  .webmanifest;Web application manifest;application/manifest+json
+  .webp;WEBP image;image/webp
+  .woff;Web Open Font Format (WOFF);font/woff
+  .woff2;Web Open Font Format (WOFF);font/woff2
+  .xhtml;XHTML;application/xhtml+xml
+  .xls;Microsoft Excel;application/vnd.ms-excel
+  .xlsx;Microsoft Excel (OpenXML);application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  .xml;XML;application/xml is recommended as of RFC 7303 (section 4.1), but text/xml is still used sometimes. You can assign a specific MIME type to a file with .xml extension depending on how its contents are meant to be interpreted. For instance, an Atom feed is application/atom+xml, but application/xml serves as a valid default.
+  .xul;XUL;application/vnd.mozilla.xul+xml
+  .zip;ZIP archive;application/zip. Note, Windows uploads .zip files with the non-standard MIME type application/x-zip-compressed.
+  .3gp;3GPP audio/video container;video/3gpp or audio/3gpp if it doesn't contain video
+  .3g2;3GPP2 audio/video container;video/3gpp2 or audio/3gpp2 if it doesn't contain video
+  .7z;7-zip archive;application/x-7z-compressed
+*/

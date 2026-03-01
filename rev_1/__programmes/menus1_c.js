@@ -205,7 +205,7 @@ class menus1{
           pré chargement du module externe acorn car on peut en avoir besoin
           lors de la modification d'un menu
         */
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
         this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , __gi1 );
     }
     /*

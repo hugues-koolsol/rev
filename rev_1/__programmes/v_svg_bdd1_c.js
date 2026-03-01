@@ -35,8 +35,7 @@ const __xal=2;
 const __xif=3;
 const __xdv=4;
 import {w_rev_vers_sql1} from '/f0?n0=w_rev_vers_sql1_.js';
-/* import {tri_arbre1} from './tri_arbre1.js'; */
-import {v_tri_arbre1} from '/f0?n0=v_tri_arbre1.js';
+import {_tri_arbre1} from '/f0?n0=_tri_arbre1_c.js';
 class v_svg_bdd1{
     moi='v_svg_bdd1';
     /*
@@ -4403,7 +4402,7 @@ class v_svg_bdd1{
             "arborescent" : false ,
             "class_du_bouton_deplacer" : 'rev_bouton'
         };
-        new v_tri_arbre1( 'ordre_modifie' , options1 );
+        new _tri_arbre1( 'ordre_modifie' , options1 );
         let options2={
             "triable" : false ,
             "hauteur_max_en_vh" : 80 ,
@@ -4413,7 +4412,7 @@ class v_svg_bdd1{
             "arborescent" : false ,
             "class_du_bouton_deplacer" : 'rev_bouton'
         };
-        new v_tri_arbre1( 'ordre_original' , options2 );
+        new _tri_arbre1( 'ordre_original' , options2 );
         if(scrollTop > 0){
             setTimeout( () => {
                     document.getElementById( 'vv_sous_fenetre1' ).scrollTop=scrollTop;} , 5 );

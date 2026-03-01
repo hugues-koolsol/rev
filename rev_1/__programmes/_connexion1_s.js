@@ -70,9 +70,9 @@ class _connexion1{
             /*
               si le fichier sqlite n'est pas trouvé, on le recrée à partir d'une sauvegarde
             */
-            if(!await this.__gi1.is_dir('./__bases_de_donnees')){
+            if(!(await this.__gi1.is_dir( './__bases_de_donnees' ))){
                 try{
-                    await Deno.mkdir( './__bases_de_donnees' , { mode: 0o777 } );
+                    await Deno.mkdir( './__bases_de_donnees' , {"mode" : 0o777} );
                 }catch(e){
                     console.error( 'e=' , e );
                 }
@@ -258,9 +258,9 @@ class _connexion1{
             "chi_id_projet" : donnees_retournees['chi_id_projet'] ,
             "chp_nom_de_connexion_utilisateur" : donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_nom_de_connexion_utilisateur']
         };
-        if(!await this.__gi1.is_dir('./__sessions')){
+        if(!(await this.__gi1.is_dir( './__sessions' ))){
             try{
-                await Deno.mkdir( './__sessions' , { mode: 0o777 } );
+                await Deno.mkdir( './__sessions' , {"mode" : 0o777} );
             }catch(e){
                 console.error( 'e=' , e );
             }

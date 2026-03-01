@@ -31,7 +31,7 @@ class x_ecran_rev_vers_sql1{
     constructor( mat , d , __gi1 ){
         this.__gi1=__gi1;
         /* console.log( 'constructor fonctions 1' , e ); */
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/sqlite_parser1.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/sqlite_parser1_c.js' );
         this.#objet_conversion_astsqliteparseur_vers_rev1=new w_ast_sqliteparseur_vers_rev1( '#objet_conversion_astsqliteparseur_vers_rev1' , this.__gi1 );
         this.#objet_conversion_rev_vers_sql=new w_rev_vers_sql1( '#objet_conversion_rev_vers_sql' , this.__gi1 );
     }

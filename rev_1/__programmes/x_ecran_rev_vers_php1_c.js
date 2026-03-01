@@ -35,11 +35,11 @@ class x_ecran_rev_vers_php1{
         /*
           pour les js dans le html
         */
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
         /*
           pour le php
         */
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/php_parser1.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/php_parser1_c.js' );
         this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , __gi1 );
         this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , __gi1 );
         /*
