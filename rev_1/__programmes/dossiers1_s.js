@@ -11,7 +11,6 @@ const __xac='__xac';
   =====================================================================================================================
 */
 class dossiers1{
-    
     /* function televerser1 */
     async televerser1( mat , d , donnees_recues , donnees_retournees , options_generales ){
         /* this.__gi1.ma_trace1('mat=',mat); */
@@ -789,14 +788,11 @@ class dossiers1{
         form['chi_id_dossier']=form['chi_id_dossier'] === null ? ( null ) : ( parseInt( form['chi_id_dossier'] , 10 ) );
         form['chx_parent_dossier']=form['chx_parent_dossier'] === null ? ( null ) : ( parseInt( form['chx_parent_dossier'] , 10 ) );
         /* conversion des données numériques fin */
-        
         if(form['chi_id_dossier'] <= 8){
             this.__gi1.__xsi[__xer].push( 'il n\'est pas possible de modifier cet élément [' + this.__gi1.nl2() + ']' );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        
-        
         let __test_0_1=this.__gi1.__fnt1.test_du_nom_de_fichier1( form['chp_nom_dossier'] , 'nom' );
         if(__test_0_1[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'erreur sur le contenu de "nom" [' + this.__gi1.nl2() + ']' );
@@ -922,8 +918,6 @@ class dossiers1{
         if(__db1 === null){
             __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         }
-        
-        
         let tt386=await this.__gi1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 

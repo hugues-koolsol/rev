@@ -45,10 +45,10 @@ Deno.cron( "chaque_minute" , {
         const donnees_recues={};
         const donnees_retournees={
             "_CA_" : _CA_ ,
-            "__xst" :  /* statut __xer:0:erreur , à priori en erreur */0 ,
+            "__xst" : /* statut __xer:0:erreur , à priori en erreur */0 ,
             "date_heure_serveur" : date_heure_serveur ,
-            "__xva" :  /* valeurs */{} ,
-            "__xac" :  /* actions au format rev */'' ,
+            "__xva" : /* valeurs */{} ,
+            "__xac" : /* actions au format rev */'' ,
              /* liste des signaux __xer:0:erreur, __xsu:1:succès, __xal:2:alarme, __xif:3:info, __xdv:4:déverminage */
              /* "__xsi" : {"__xer" : [] ,"__xsu" : [] ,"__xal" : [] ,"__xif" : [] ,"__xdv" : []} , */
             "__xsi" : {0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,

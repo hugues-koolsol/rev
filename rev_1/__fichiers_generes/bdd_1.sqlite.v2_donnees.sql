@@ -42,7 +42,7 @@ INSERT INTO tbl_projets (  chi_id_projet ,  chp_nom_projet ,  cht_commentaire_pr
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'1000','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'1004','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -254,7 +254,10 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 00000240h c5 c6 c7 c8 c9 ca d2 d3--d4 d5 d6 d7 d8 d9 da e2  |        --        |
 00000250h e3 e4 e5 e6 e7 e8 e9 ea--f2 f3 f4 f5 f6 f7 f8 f9  |        --        |
 00000260h fa ff da 00 0c 03 01 00--02 11 03 11 00 3f 00 fe  |        --     ?  |
-00000270h fe 28 a2 8a 00 ff d9                              | (     |','1','8','631 octets','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0');
+00000270h fe 28 a2 8a 00 ff d9                              | (     |','1','8','631 octets','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+('589','test.txt','texte(`00000000h 30 31 32 33 34 35 36 37--41 42 43 44 45 46 47 48  |ABCDEFGH--01234567|
+00000010h 61 62 63 64 65 66 67 68--5f 2e                    |abcdefgh--_.|`)','00000000h 30 31 32 33 34 35 36 37--41 42 43 44 45 46 47 48  |01234567--ABCDEFGH|
+00000010h 61 62 63 64 65 66 67 68--5f 2e                    |abcdefgh--_.|','1','8',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -3759,7 +3762,7 @@ ajouter une entrée séparateur
 ','99','2026-02-19 17:46:38.799','2026-02-18 12:55:37.603','0'),
 ('388','1','empécher de mettre une branche sous un séparateur','99','2026-02-20 11:07:41.146','2026-02-20 10:21:39.444','0'),
 ('389','1','afficher id lors de l''édition','99','2026-02-23 11:55:18.392','2026-02-22 09:13:05.427','0'),
-('391','1','gérer la version','3','2026-02-23 12:18:43.209','2026-02-23 11:54:48.687','0'),
+('391','1','gérer la version','99','2026-03-02 14:45:41.907','2026-02-23 11:54:48.687','0'),
 ('392','1','renommer
 chx_dossier_menus_projet
 en
