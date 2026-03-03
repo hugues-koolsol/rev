@@ -143,49 +143,8 @@ class projets1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chx_dossier_requetes_projet'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "dossier requetes" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_dossier_requetes_projet' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1['chx_dossier_generes_projet'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "dossier menus" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_dossier_generes_projet' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1['chx_dossier_programmes_projet'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier des javascript" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_dossier_programmes_projet' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         /* conversion des données numériques début */
         fo1['chi_id_projet']=fo1['chi_id_projet'] === '' ? ( null ) : ( parseInt( fo1['chi_id_projet'] , 10 ) );
-        fo1['chx_dossier_requetes_projet']=fo1['chx_dossier_requetes_projet'] === '' ?
-          ( 
-            null
-          ) : ( 
-            parseInt( fo1['chx_dossier_requetes_projet'] , 10 )
-          );
-        fo1['chx_dossier_generes_projet']=fo1['chx_dossier_generes_projet'] === '' ? ( null ) : ( parseInt( fo1['chx_dossier_generes_projet'] , 10 ) );
-        fo1['chx_dossier_programmes_projet']=fo1['chx_dossier_programmes_projet'] === '' ?
-          ( 
-            null
-          ) : ( 
-            parseInt( fo1['chx_dossier_programmes_projet'] , 10 )
-          );
-        /* conversion des données numériques fin */
         /*
           tout a été vérifié
         */
@@ -227,90 +186,6 @@ class projets1{
         o1+=this.__gi1.fi2( enreg['T0.chp_nom_projet'] );
         o1+='</textarea>';
         o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier des javascript</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chx_dossier_programmes_projet'] === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_dossier_programmes_projet'];
-        o1+='"  id="chx_dossier_programmes_projet" />';
-        o1+='        <span id="chx_dossier_programmes_projet_libelle">';
-        o1+='(' + enreg['T0.chx_dossier_programmes_projet'] + ') ';
-        o1+=this.__gi1.fi2( le_message_du_serveur.__xva.les_chemins['T0.chx_dossier_programmes_projet'] );
-        o1+='</span>';
-        o1+=this.__gi1.lien_parent( 'dossiers1' , 'chx_dossier_programmes_projet' , 'chx_dossier_programmes_projet_libelle' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier des bases de données</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chx_dossier_bdds_projet'] === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_dossier_bdds_projet'];
-        o1+='"  id="chx_dossier_bdds_projet" />';
-        o1+='        <span id="chx_dossier_bdds_projet_libelle">';
-        o1+='(' + enreg['T0.chx_dossier_bdds_projet'] + ') ';
-        o1+=this.__gi1.fi2( le_message_du_serveur.__xva.les_chemins['T0.chx_dossier_bdds_projet'] );
-        o1+='</span>';
-        o1+=this.__gi1.lien_parent( 'dossiers1' , 'chx_dossier_bdds_projet' , 'chx_dossier_bdds_projet_libelle' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier menus</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chx_dossier_generes_projet'] === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_dossier_generes_projet'];
-        o1+='"  id="chx_dossier_generes_projet" />';
-        o1+='        <span id="chx_dossier_generes_projet_libelle">';
-        o1+='(' + enreg['T0.chx_dossier_generes_projet'] + ') ';
-        o1+=this.__gi1.fi2( le_message_du_serveur.__xva.les_chemins['T0.chx_dossier_generes_projet'] );
-        o1+='</span>';
-        o1+=this.__gi1.lien_parent( 'dossiers1' , 'chx_dossier_generes_projet' , 'chx_dossier_generes_projet_libelle' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier requetes</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chx_dossier_requetes_projet'] === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_dossier_requetes_projet'];
-        o1+='"  id="chx_dossier_requetes_projet" />';
-        o1+='        <span id="chx_dossier_requetes_projet_libelle">';
-        o1+='(' + enreg['T0.chx_dossier_requetes_projet'] + ') ';
-        o1+=this.__gi1.fi2( le_message_du_serveur.__xva.les_chemins['T0.chx_dossier_requetes_projet'] );
-        o1+='</span>';
-        o1+=this.__gi1.lien_parent( 'dossiers1' , 'chx_dossier_requetes_projet' , 'chx_dossier_requetes_projet_libelle' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -384,40 +259,6 @@ class projets1{
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <textarea disabled id="chp_nom_projet" rows="10"  cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' + this.__gi1.fi2( enreg['T0.chp_nom_projet'] ) + '</textarea>';
         o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier requetes</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_dossier_requetes_projet'];
-        o1+='"  id="chx_dossier_requetes_projet" />';
-        o1+='        <span>';
-        o1+='(' + enreg['T0.chx_dossier_requetes_projet'] + ') ';
-        o1+=this.__gi1.fi2( enreg['T1.chp_nom_dossier'] );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier menus</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_dossier_generes_projet'];
-        o1+='"  id="chx_dossier_generes_projet" />';
-        o1+='        <span>';
-        o1+='(' + enreg['T0.chx_dossier_generes_projet'] + ') ';
-        o1+=this.__gi1.fi2( enreg['T2.chp_nom_dossier'] );
-        o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
         /*

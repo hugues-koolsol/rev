@@ -6,6 +6,7 @@
   // doc sqlite3
   https://github.com/denodrivers/sqlite3/blob/main/doc.md
 */
+const __version='_2026_03_02_010207_';
 const __xer=/* code erreur */0;
 const __xsu=/* code succès */1;
 const __xal=/* code alarme */2;
@@ -43,7 +44,6 @@ repertoire_du_pgm_serveur=repertoire_du_pgm_serveur + '/';
 /* console.log('repertoire_du_pgm_serveur=',repertoire_du_pgm_serveur); */
 const _CA_=parseInt( repertoire_du_pgm_serveur.substr( repertoire_du_pgm_serveur.lastIndexOf( '_' ) + 1 ) , 10 );
 console.log( '%c===============\n' , 'color:red;' );
-const __version='__j_20251231_000002_';
 const m__gi1=await import( './' + repertoire_des_programmes + '__gi1_s.js?__version=' + __version );
 const le_port=_CA_ + 8000;
 console.log( '_CA_=' + _CA_ + ',repertoire_du_pgm_serveur=' + repertoire_du_pgm_serveur + ',le_port=' + le_port );
@@ -53,17 +53,16 @@ console.log( '_CA_=' + _CA_ + ',repertoire_du_pgm_serveur=' + repertoire_du_pgm_
 const le_serveur=Deno.serve( {
     "port" : le_port ,
      onListen( { port  , hostname } ){
-        console.log( `aaaaServer started at http://` + hostname + `:` + port );
-        /* ... more info specific to your server .. */
+        console.log( `aaaaServeur démaré sur http://` + hostname + `:` + port );
     }  ,
     
      onError( err ){
         console.log( 'err serveur=' , err );
-        /* ... more info specific to your server .. */
         return(new Response( 'erreur' , {"status" : 200 ,"headers" : {"content-type" : "text/html; charset=utf-8"}} ));
     } 
 
 } , async ( req1 ) => {
+    /* console.log('req1.headers.get("upgrade")=',req1.headers.get("upgrade")); // null pour http , websocket pour websocket */
     /* console.log('req1=',req1); */
     /* console.log(Deno.memoryUsage()); // il faut  --allow-sys pour ceci */
     if(req1.method === 'GET'){
@@ -81,13 +80,23 @@ const le_serveur=Deno.serve( {
             let contenu='<!DOCTYPE html>';
             contenu+='<html lang="fr">';
             contenu+='<head id="vv_head">';
-            contenu+='<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="description" />';
-            contenu+='<title id="vv_titre1">V3</title><style id="vv_style1"></style>';
+            contenu+='<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />';
+            contenu+='<meta name="description" content="description" />';
+            contenu+='<title id="vv_titre1">V3</title>';
+            contenu+='<style id="vv_style1"></style>';
+            contenu+='<link rel="icon" type="image/svg+xml" href=\'';
+            contenu+='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100"><rect x="-50" y="-50" width="100" height="100" fill="hotpink" /></svg>';
+            contenu+='\'>';
             contenu+='<script type="text/javascript">';
             contenu+='var __gi0=null;';
             contenu+='const __version=\'' + __version + '\';';
-            contenu+='const __xer=0;const __xsu=1;const __xal=2;const __xif=3;const __xdv=4;';
-            contenu+='</script>  </head><body><script type="module" src="f0?n0=__gi1_c.js&version=' + __version + '"></script></body></html>';
+            contenu+='const __xer=0;const __xsu=1;const __xal=2;const __xif=3;const __xdv=4;const _CA_=' + _CA_ + ';';
+            contenu+='</script>';
+            contenu+='</head>';
+            contenu+='<body>';
+            contenu+='<script type="module" src="f0?n0=__gi1_c.js&__version=' + __version + '"></script>';
+            contenu+='</body>';
+            contenu+='</html>';
             const encoder=new TextEncoder();
             const data=encoder.encode( contenu );
             const le_md5_binaire=await crypto.subtle.digest( "MD5" , data );
@@ -95,48 +104,38 @@ const le_serveur=Deno.serve( {
             return(new Response( contenu , {"status" : 200 ,"headers" : {"content-type" : "text/html; charset=utf-8" ,"Last-Modified" : last_modified ,"Etag" : le_etag}} ));
             /*  */
             /* "Cache-Control" : "public" , */
-        }else if(pathname1 === "/hdftest"){
-            /*
-              
-              
-            */
-            console.log( 'hdftest' );
-            const stats_de_ce_fichier=await Deno.stat( "./__serveur.js" );
-            console.log( 'stats_de_ce_fichier=' , stats_de_ce_fichier );
-            const last_modified=stats_de_ce_fichier.mtime?.toUTCString();
-            console.log( 'last_modified=' , last_modified );
-            console.log( 'jour=' , new Date( last_modified ).toLocaleDateString( "en-En" , {"weekday" : 'short'} ) );
-            /*
-              const date_serveur=await Deno.FileInfo("./__serveur.js");
-              console.log('date_serveur=',date_serveur)
-            */
-            const message="Hello, Deno!";
-            const encoder=new TextEncoder();
-            const data=encoder.encode( message );
-            let a=await crypto.subtle.digest( "MD5" , data );
-            console.log( 'a=' + encodeHex( a ) );
-            /*
-              
-              
-            */
-        }else if(pathname1 === "/favicon.ico"){
-            const filePath="./__programmes/favicon.ico";
-            const file=await Deno.readFile( filePath );
-            return(new Response( file , {"status" : 200 ,"headers" : {"content-type" : "image/vnd.microsoft.icon" ,"Cache-Control" : "public, max-age=36000"}} ));
         }else if(pathname1 === "/f0"){
             /* console.log( 'req1=' , req1 ); */
             try{
                 let n0=url1.searchParams.get( "n0" );
-                /* console.log('DANS __serveur1 n0='+n0); */
-                const chemin_du_fichier='./__programmes/' + n0;
-                /* console.log('DANS __serveur1 chemin_du_fichier='+chemin_du_fichier); */
-                const stats_de_ce_fichier=await Deno.stat( chemin_du_fichier );
-                const last_modified=stats_de_ce_fichier.mtime?.toUTCString();
+                let content_type='text/javascript; charset=UTF-8';
+                let chemin_du_fichier='';
+                if(n0.slice( -4 ) === '_.js' || n0.slice( -5 ) === '_c.js'){
+                    chemin_du_fichier='./__programmes/' + n0;
+                }else{
+                    /* console.log( 'req1=' , req1 ); */
+                    chemin_du_fichier='./__fichiers_binaires/' + n0;
+                    if(chemin_du_fichier.slice( -4 ) === '.gif'){
+                        content_type='image/gif';
+                    }else if(chemin_du_fichier.slice( -4 ) === '.png'){
+                        content_type='image/png';
+                    }else if(chemin_du_fichier.slice( -4 ) === '.jpg'){
+                        content_type='image/jpeg';
+                    }else{
+                        return(new Response( "404: Not Found :  ce type de fichier n'est pas pris en compte" , {"status" : 404} ));
+                    }
+                }
                 const contenu_fichier=await Deno.readFile( chemin_du_fichier );
-                const le_md5_binaire=await crypto.subtle.digest( "MD5" , contenu_fichier );
-                const le_etag='W/"' + encodeHex( le_md5_binaire ) + '"';
-                /* console.log('contenu_fichier=',contenu_fichier); */
-                return(new Response( contenu_fichier , {"status" : 200 ,"headers" : {"content-type" : "text/javascript; charset=UTF-8" ,"Last-Modified" : last_modified ,"Etag" : le_etag}} ));
+                /*
+                  const stats_de_ce_fichier=await Deno.stat( chemin_du_fichier );
+                  const last_modified=stats_de_ce_fichier.mtime?.toUTCString();
+                  const le_md5_binaire=await crypto.subtle.digest( "MD5" , contenu_fichier );
+                  //  const le_etag='W/"' + encodeHex( le_md5_binaire ) + '"';
+                  const le_etag='"' + encodeHex( le_md5_binaire ) + '"';
+                */
+                return(new Response( contenu_fichier , {"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}} ));
+                /* "Last-Modified" : last_modified , */
+                /* "ETag" : le_etag , */
             }catch(e){
                 return(new Response( "404: Not Found" , {"status" : 404} ));
             }

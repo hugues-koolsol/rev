@@ -181,8 +181,7 @@ class __gi1{
             console.log( le_message );
         }
         if(le_message.hasOwnProperty( '__version' ) && le_message.__version !== this.__version){
-            let tt='';
-            tt+='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__gi1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+            let tt='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__gi1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
             this.ajoute_message( {
                     "__xst" : __xal ,
                     "__xme" : '<h5>La version du programme a changé !</h5><div style="text-align:center;font-size:1.3rem;"> cliquez là : ' + tt + ' pour recharger la page ou bien appuyez sur la touche <b>F5</b>  </div>'
@@ -213,7 +212,7 @@ class __gi1{
         let un_message_trouve=false;
         let un_message_d_erreur_trouve=false;
         for(let i in le_message.__xsi){
-            if((i === '__xer' || i === '__xal' || i === '0' || i === '2') && le_message.__xsi[i].length > 0){
+            if((i === '__xer' || i === '__xal' || i === '0' || i === '2' || i === '4') && le_message.__xsi[i].length > 0){
                 un_message_d_erreur_trouve=true;
             }
             for(let j in le_message.__xsi[i]){
@@ -275,7 +274,9 @@ class __gi1{
             return({"__xst" : __xsu});
         }
     }
-    /* function arrayBufferToArray */
+    /* 
+      =============================================================================================================
+    */
     arrayBufferToArray( buffer , TypedArrayConstructor=Uint8Array ){
         if(!(buffer instanceof ArrayBuffer)){
             throw new TypeError( "Expected an ArrayBuffer" );
@@ -1264,9 +1265,11 @@ class __gi1{
       =============================================================================================================
     */
     ajoute_message( obj ){
+/*
         if(this.__deverminage === 0 && obj.hasOwnProperty( '__xst' ) && parseInt( obj.__xst , 10 ) === __xdv){
             return;
         }
+*/        
         /* ancien empiler_erreur */
         let message='';
         if(obj.hasOwnProperty( '__xme' )){

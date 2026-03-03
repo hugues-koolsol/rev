@@ -84,11 +84,9 @@ const le_serveur=Deno.serve( {
             contenu+='<meta name="description" content="description" />';
             contenu+='<title id="vv_titre1">V3</title>';
             contenu+='<style id="vv_style1"></style>';
-            contenu+='<link rel="icon" type="image/svg+xml" ';
-            contenu+=' href=\'data:image/svg+xml,';
-            contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
-            contenu+='<rect x="-50" y="-50" width="100" height="100" fill="lime" />';
-            contenu+='</svg>\'>';
+            contenu+='<link rel="icon" type="image/svg+xml" href=\'';
+            contenu+='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100"><rect x="-50" y="-50" width="100" height="100" fill="lime" /></svg>';
+            contenu+='\'>';
             contenu+='<script type="text/javascript">';
             contenu+='var __gi0=null;';
             contenu+='const __version=\'' + __version + '\';';
@@ -204,7 +202,13 @@ const le_serveur=Deno.serve( {
                     /*
                       options générales
                     */
+                    if(_CA_ > 2){
+                        donnees_retournees.chi_id_projet=_CA_;
+                    }
                     if(donnees_retournees.chi_id_projet === 0){
+                        /*
+                          ce cas ne peut arriver que si on est sur le projet principal
+                        */
                         if(_CA_ === 1){
                             options_generales.chemin_absolu_projet='../rev_1/';
                             options_generales.chemin_des_bdd='./__bases_de_donnees/';
@@ -219,6 +223,9 @@ const le_serveur=Deno.serve( {
                             options_generales.base_de_travail=donnees_retournees.chi_id_projet;
                         }else if(_CA_ === 2){
                             options_generales.chemin_absolu_projet='../rev_2/';
+                            options_generales.chemin_des_bdd='./__bases_de_donnees/';
+                        }else{
+                            options_generales.chemin_absolu_projet='../rev_' + donnees_retournees.chi_id_projet + '/';
                             options_generales.chemin_des_bdd='./__bases_de_donnees/';
                         }
                     }
@@ -258,6 +265,7 @@ const le_serveur=Deno.serve( {
             const mat=json_body.mat;
             /* let ret=await __gi1.appel_fonction(mat , 1 , donnees_recues , donnees_retournees , options_generales ); */
             try{
+                /* __gi1.ma_trace1(donnees_recues.__xac); */
                 let ret=await __gi1.appel_fonction( mat , 1 , donnees_recues , donnees_retournees , options_generales );
                 /* __gi1.ma_trace1('donnees_retournees',donnees_retournees); */
             }catch(eeeee){

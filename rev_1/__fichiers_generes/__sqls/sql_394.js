@@ -10,42 +10,53 @@ class sql_394{
       =============================================================================================================
     */
     async sql( par , donnees_retournees ){
-    const champs0=`
-      \`T0\`.\`chi_id_tache\` , \`T0\`.\`chp_texte_tache\`
-    `;
-    let sql0='SELECT '+champs0;
-    const from0=`
-      FROM  tbl_taches T0    `;
-    sql0+=from0;
-    const where0=` WHERE \`T0\`.\`chx_utilisateur_tache\` = ` + this.__gi1.__fnt1.sq1( par['T0_chx_utilisateur_tache'] ) + ``;
-    sql0+=where0;
-        /* this.__gi1.ma_trace1('sql_394 sql0=',sql0); */
-
-        let lignes = [];
+        let sql0='UPDATE `tbl_projets` SET \r\n';
+        let tableau_champs=[];
         try{
-            let statement=await this.__db1.prepare( sql0 );
-            lignes = await statement.values();
-            await statement.finalize();
+
+            if(par['n_chi_id_projet']===undefined || par['n_chi_id_projet']==='' || par['n_chi_id_projet'] === null ){
+                tableau_champs.push('`chi_id_projet` = NULL');
+            }else{
+                tableau_champs.push('`chi_id_projet` = '+this.__gi1.__fnt1.sq0(par['n_chi_id_projet'])+'');
+            }
+            if(par['n_chp_nom_projet']===undefined || par['n_chp_nom_projet']==='' || par['n_chp_nom_projet'] === null ){
+                tableau_champs.push('`chp_nom_projet` = NULL');
+            }else{
+                tableau_champs.push('`chp_nom_projet` = \''+this.__gi1.__fnt1.sq0(par['n_chp_nom_projet'])+'\'');
+            }
+
+            if(tableau_champs.length===0){
+                return {/**/
+                    "__xst" : __xer ,
+                    "__xme" : 'aucun champ à mettre à jour' ,
+                    "sql0" : sql0 , 
+                    "texte_requete" : 'la modification dans la table des projets' ,
+                };
+            }
+            sql0+=tableau_champs.join(','+'\r\n'+'    ')+'\r\n';
+            let where0='';
+            where0+=' WHERE 1=1 \r\n';
+            where0+=` AND \`chi_id_projet\` = ` + this.__gi1.__fnt1.sq1( par['c_chi_id_projet'] ) + ``+'\r\n';
+            sql0+=where0;
+            /* this.__gi1.ma_trace1(' sql_394= ' + sql0 ); */
+            let res=await this.__db1.exec(sql0);
+            return({ "__xst" : __xsu, 'changements' : res});
         }catch(e){
-            donnees_retournees.__xst=__xer;
-            this.__gi1.__xsi[__xer].push( 'erreur sql_394='+sql0+' [' + this.__gi1.nl2(e) + ']' );
-            return {"__xst"  : __xer};
+            if(this.__gi1.__deverminage===1){
+                this.__gi1.__xsi[__xdv].push(this.__gi1.nl2(e));
+            }else if(this.__gi1.__deverminage===2){
+                let a=RegExp(this.__gi1.repertoire_du_pgm_serveur,'g');
+                this.__gi1.__xsi[__xdv].push(e.stack.replace( /\n/g , '\n' ).replace( a, '').replace(/\(file\:\/\//g,'').replace(/ at/g,'<br />')+'<hr />' );
+            }
+            let __xme=e.stack.indexOf('UNIQUE constraint')>=0?'cet élément existe déjà dans la base ':'erreur de modification ';
+            return {/**/
+                "__xst" : __xer , 
+                "sql0" : sql0 , 
+                "texte_requete" : 'la modification dans la table des projets' ,
+                "exception" : e , 
+                "__xme" : __xme , 
+            };
         }
-
-        let donnees0 = [];
-        for(let col of lignes){
-            donnees0.push({
-                'T0.chi_id_tache' : col[0],
-                'T0.chp_texte_tache' : col[1],
-            });
-        }
-        return {
-            "__xst"  : __xsu,
-            "__xva"  : donnees0,
-            "sql0"    : sql0,
-            "where0"  : where0,
-        };
-
     }
     /*
       =============================================================================================================

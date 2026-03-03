@@ -1709,6 +1709,31 @@ class v_svg_bdd1{
                 id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
             }
         }
+        /*
+          si le champ est le dernier de la table, il vaut mieux éviter
+        */
+        
+        let liste_des_champs=[];
+        let lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName( 'text' );
+        for( let i=0 ; i < lst.length ; i++ ){
+            if('texte_de_champ' === lst[i].getAttribute( 'type_element' )){
+                for( let j=0 ; j < lst[i].childNodes.length ; j++ ){
+                    if(lst[i].childNodes[j].nodeName.toLowerCase() === '#text'){
+                        liste_des_champs.push( lst[i].childNodes[j].data );
+                    }
+                }
+            }
+        }
+        if(liste_des_champs.length===0){
+            return({"__xst" : __xer , "__xme" : ' pas de champ trouvé '});
+        }
+        if(liste_des_champs[liste_des_champs.length-1]===nom_du_champ){
+            this.__gi1.fermer_la_sous_fenetre();
+            return({"__xst" : __xer , "__xme" : ' Veuillez déplacer de champ car il est en dernière position' });
+        }
+        
+        
+        
         let source_sql='ALTER TABLE ' + nom_de_la_table + ' DROP COLUMN ' + nom_du_champ + ';';
         let cmd='';
         cmd+='pm1(m1(n1(' + this.moi + '),f1(executer_sql3(';
@@ -3422,7 +3447,7 @@ class v_svg_bdd1{
           création de la table temporaire
         */
         let reference_base='`bdd_' + this.#id_bdd_de_la_base_en_cours + '`.';
-        let nom_table_temporaire='`____tempo____`';
+        let nom_table_temporaire='____tempo____';
         let t0=this.#creer_definition_table_en_rev( document.getElementById( id_svg_rectangle_de_la_table ) , nom_table_temporaire , ids_ordre_modifie );
         let chaine_create_table='';
         var obj1=this.__gi1.__rev1.rev_tm( t0 );

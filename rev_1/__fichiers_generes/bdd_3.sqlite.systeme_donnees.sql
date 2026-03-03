@@ -29,14 +29,6 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_projets offset 0 */
-INSERT INTO tbl_projets (  chi_id_projet ,  chp_nom_projet ,  cht_commentaire_projet ,  chx_dossier_requetes_projet ,  chx_dossier_generes_projet ,  che__nur_projet ,  chd__dtm_projet ,  chd__dtc_projet ,  chx_dossier_bdds_projet ,  chx_dossier_programmes_projet ) VALUES
-('3','ref 3','projet de référence N°3','6','3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','5','2');
-/*================================================================================ FIN BLOC TABLE tbl_projets offset 0 */
-
-
-/*========================================================================================================================*/
-
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
 ('1','',NULL,NULL,'0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0');
@@ -1256,7 +1248,8 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 ('4','__sessions','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('5','__bases_de_donnees','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('6','__sqls','3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('7','bibliotheques_externes','2','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+('7','bibliotheques_externes','2','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('8','__fichiers_binaires','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 /*================================================================================ FIN BLOC TABLE tbl_dossiers offset 0 */
 
 
@@ -2725,3 +2718,11 @@ WHERE `chi_id_tache` = :c_chi_id_tache ;',NULL,'0','2000-01-01 00:00:00.000','20
 WHERE `T0`.`chi_id_acces` > 1
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_acces');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */
+
+
+/*========================================================================================================================*/
+
+/*================================================================================ DEBUT BLOC TABLE tbl_projets offset 0 */
+INSERT INTO tbl_projets (  chi_id_projet ,  chp_nom_projet ,  cht_commentaire_projet ,  che__nur_projet ,  chd__dtm_projet ,  chd__dtc_projet ) VALUES
+('3','ref 3','projet de référence N°3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+/*================================================================================ FIN BLOC TABLE tbl_projets offset 0 */

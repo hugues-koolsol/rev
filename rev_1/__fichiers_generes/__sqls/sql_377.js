@@ -13,10 +13,7 @@ class sql_377{
         let sql0=`
       INSERT  INTO \`tbl_projets\`(
          \`chp_nom_projet\` , 
-         \`cht_commentaire_projet\` , 
-         \`chx_dossier_requetes_projet\` , 
-         \`chx_dossier_bdds_projet\` , 
-         \`chx_dossier_generes_projet\`
+         \`cht_commentaire_projet\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -27,10 +24,7 @@ class sql_377{
                 }
                 liste_des_valeurs+='(';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_nom_projet'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['cht_commentaire_projet'] ) + ''+',';
-                liste_des_valeurs+='\r\n      1'+',';
-                liste_des_valeurs+='\r\n      1'+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chx_dossier_generes_projet'] ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['cht_commentaire_projet'] ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

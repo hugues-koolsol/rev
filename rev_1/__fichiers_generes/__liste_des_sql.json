@@ -455,11 +455,11 @@
     "cht_rev_requete": "sélectionner(\n\n   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))\n      )\n   ),\n   conditions()\n)  "
   },
   "305": {
-    "cht_sql_requete": "UPDATE b1.tbl_projets SET \r\n   `chp_nom_projet` = :n_chp_nom_projet , \r\n   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , \r\n   `cht_commentaire_projet` = :n_cht_commentaire_projet , \r\n   `chx_dossier_generes_projet` = :n_chx_dossier_generes_projet\nWHERE `chi_id_projet` = :c_chi_id_projet ;",
+    "cht_sql_requete": "UPDATE b1.tbl_projets SET \n   `chp_nom_projet` = :n_chp_nom_projet , \n   `cht_commentaire_projet` = :n_cht_commentaire_projet\nWHERE `chi_id_projet` = :c_chi_id_projet ;",
     "cht_commentaire_requete": "projets",
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`chx_dossier_requetes_projet`),:n_chx_dossier_requetes_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet),affecte(champ(`chx_dossier_generes_projet`),:n_chx_dossier_generes_projet)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n)  "
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n)  "
   },
   "306": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier`\n FROM b1.tbl_dossiers T0\nWHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier\n;",
@@ -474,20 +474,6 @@
     "chp_type_requete": "insert",
     "che_est_souche_requete": 0,
     "cht_rev_requete": "insérer(\n\n   valeurs(\n      affecte(champ(`chi_id_dossier`),:chi_id_dossier),\n      affecte(champ(`chp_nom_dossier`),:chp_nom_dossier),\n      affecte(champ(`chx_parent_dossier`),:chx_parent_dossier),\n      affecte(champ(`chd__dtm_dossier`),:chd__dtm_dossier),\n      affecte(champ(`chd__dtc_dossier`),:chd__dtc_dossier)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_dossiers,base(b1)))\n      )\n   )\n)  "
-  },
-  "308": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_generes_projet`\n FROM b1.tbl_projets T0\nWHERE (`T0`.`chi_id_projet` = 1)\n;",
-    "cht_commentaire_requete": "dossiers du projet à copier dans un autre environnement",
-    "chp_type_requete": "select",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chx_dossier_requetes_projet`),champ(`T0`,`chx_dossier_generes_projet`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chi_id_projet`),1))\n   )\n)  "
-  },
-  "309": {
-    "cht_sql_requete": "UPDATE b1.tbl_projets SET \r\n   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , \r\n   `chx_dossier_generes_projet` = :n_chx_dossier_generes_projet\nWHERE (`chi_id_projet` = :c_chi_id_projet) ;",
-    "cht_commentaire_requete": "dossiers à copier dans un autre environnement",
-    "chp_type_requete": "update",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chx_dossier_requetes_projet`),:n_chx_dossier_requetes_projet),affecte(champ(`chx_dossier_generes_projet`),:n_chx_dossier_generes_projet)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n   )\n)  "
   },
   "310": {
     "cht_sql_requete": "UPDATE b1.tbl_sources SET \r\n   `chi_id_source` = :n_chi_id_source\nWHERE `chi_id_source` = :c_chi_id_source ;",
@@ -805,18 +791,18 @@
     "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_projet`),champ(`T0`,`chp_nom_projet`),champ(`T0`,`cht_commentaire_projet`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet),\n         comme(champ(`T0`,`chp_nom_projet`),:T0_chp_nom_projet),\n         comme(champ(`T0`,`cht_commentaire_projet`),:T0_cht_commentaire_projet)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_projet`),croissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  "
   },
   "375": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_generes_projet` , `T0`.`cht_commentaire_projet` , \r\n`T0`.`chx_dossier_programmes_projet` , `T0`.`chx_dossier_bdds_projet` , `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier` , `T3`.`chp_nom_dossier` , \r\n`T4`.`chp_nom_dossier`\n FROM b1.tbl_projets T0\r\n LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet\n\r\n LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_generes_projet\n\r\n LEFT JOIN b1.tbl_dossiers T3 ON T3.chi_id_dossier = T0.chx_dossier_bdds_projet\n\r\n LEFT JOIN b1.tbl_dossiers T4 ON T4.chi_id_dossier = T0.chx_dossier_programmes_projet\n\nWHERE `T0`.`chi_id_projet` = :T0_chi_id_projet\n;",
+    "cht_sql_requete": "SELECT \n`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`\n FROM b1.tbl_projets T0\nWHERE `T0`.`chi_id_projet` = :T0_chi_id_projet\n;",
     "cht_commentaire_requete": "projets",
     "chp_type_requete": "select",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_projet`),\n      champ(`T0`,`chp_nom_projet`),\n      champ(`T0`,`chx_dossier_requetes_projet`),\n      champ(`T0`,`chx_dossier_generes_projet`),\n      champ(`T0`,`cht_commentaire_projet`),\n      champ(`T0`,`chx_dossier_programmes_projet`),\n      champ(`T0`,`chx_dossier_bdds_projet`),\n      champ(`T1`,`chp_nom_dossier`),\n      champ(`T2`,`chp_nom_dossier`),\n      champ(`T3`,`chp_nom_dossier`),\n      champ(`T4`,`chp_nom_dossier`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_dossier_requetes_projet)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_dossiers,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_dossier),champ(T0,chx_dossier_generes_projet)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_dossiers,alias(T3),base(b1))),\n         contrainte(egal(champ(T3,chi_id_dossier),champ(T0,chx_dossier_bdds_projet)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_dossiers,alias(T4),base(b1))),\n         contrainte(egal(champ(T4,chi_id_dossier),champ(T0,chx_dossier_programmes_projet)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet))\n)  "
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_projet`),champ(`T0`,`chp_nom_projet`),champ(`T0`,`cht_commentaire_projet`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet))\n)  "
   },
   "377": {
-    "cht_sql_requete": "INSERT INTO b1.`tbl_projets`(\r\n    `chp_nom_projet` , \r\n    `cht_commentaire_projet` , \r\n    `chx_dossier_requetes_projet` , \r\n    `chx_dossier_bdds_projet` , \r\n    `chx_dossier_generes_projet`\r\n) VALUES (\r\n    :chp_nom_projet , \r\n    :cht_commentaire_projet , \r\n    1 , \r\n    1 , \r\n    :chx_dossier_generes_projet\r\n);",
+    "cht_sql_requete": "INSERT INTO b1.`tbl_projets`(\n    `chp_nom_projet` , \n    `cht_commentaire_projet`\n) VALUES (\n    :chp_nom_projet , \n    :cht_commentaire_projet\n);",
     "cht_commentaire_requete": "projets",
     "chp_type_requete": "insert",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chp_nom_projet`),:chp_nom_projet),\n      affecte(champ(`cht_commentaire_projet`),:cht_commentaire_projet),\n      affecte(champ(`chx_dossier_requetes_projet`),1),\n      affecte(champ(`chx_dossier_bdds_projet`),1),\n      affecte(champ(`chx_dossier_generes_projet`),:chx_dossier_generes_projet)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   )\n)  "
+    "cht_rev_requete": "insérer(\n   valeurs(affecte(champ(`chp_nom_projet`),:chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:cht_commentaire_projet)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   )\n)  "
   },
   "378": {
     "cht_sql_requete": "INSERT INTO b1.`tbl_dossiers`(\r\n    `chp_nom_dossier` , \r\n    `chx_parent_dossier`\r\n) VALUES (\r\n    :chp_nom_dossier , \r\n    :chx_parent_dossier\r\n);",
@@ -861,11 +847,11 @@
     "cht_rev_requete": "sélectionner(\n\n   valeurs(champ(`T0`,`chi_id_source`),champ(`T0`,`chx_dossier_id_source`),champ(`T0`,`chp_nom_source`),champ(`T0`,`che_binaire_source`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`che_binaire_source`),:T0_che_binaire_source))\n)  "
   },
   "384": {
-    "cht_sql_requete": "UPDATE b1.tbl_projets SET \r\n   `chp_nom_projet` = :n_chp_nom_projet , \r\n   `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , \r\n   `chx_dossier_generes_projet` = :n_chx_dossier_generes_projet , \r\n   `cht_commentaire_projet` = :n_cht_commentaire_projet , \r\n   `chx_dossier_bdds_projet` = :n_chx_dossier_bdds_projet , \r\n   `chx_dossier_programmes_projet` = :n_chx_dossier_programmes_projet\nWHERE `chi_id_projet` = :c_chi_id_projet ;",
+    "cht_sql_requete": "UPDATE b1.tbl_projets SET \n   `chp_nom_projet` = :n_chp_nom_projet , \n   `cht_commentaire_projet` = :n_cht_commentaire_projet\nWHERE `chi_id_projet` = :c_chi_id_projet ;",
     "cht_commentaire_requete": "projets",
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),\n      affecte(champ(`chx_dossier_requetes_projet`),:n_chx_dossier_requetes_projet),\n      affecte(champ(`chx_dossier_generes_projet`),:n_chx_dossier_generes_projet),\n      affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet),\n      affecte(champ(`chx_dossier_bdds_projet`),:n_chx_dossier_bdds_projet),\n      affecte(champ(`chx_dossier_programmes_projet`),:n_chx_dossier_programmes_projet)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n)  "
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n)  "
   },
   "385": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`che_est_souche_requete` , \r\n`T0`.`cht_rev_requete`\n FROM b1.tbl_requetes T0\nWHERE `T0`.`chi_id_requete` < :nb_max \r\nORDER BY `T0`.`chi_id_requete` ASC\n;",
@@ -931,11 +917,11 @@
     "cht_rev_requete": "sélectionner(\n\n   valeurs(champ(`T0`,`chi_id_projet`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))\n      )\n   ),\n   complements(\n      trier_par((champ(T0.chi_id_projet),décroissant())),\n      limité_à(quantité(1),début(0))\n   )\n)  "
   },
   "394": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_tache` , `T0`.`chp_texte_tache`\n FROM b1.tbl_taches T0\nWHERE `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache\n;",
+    "cht_sql_requete": "UPDATE b1.tbl_projets SET \n   `chi_id_projet` = :n_chi_id_projet , \n   `chp_nom_projet` = :n_chp_nom_projet\nWHERE `chi_id_projet` = :c_chi_id_projet ;",
     "cht_commentaire_requete": "taches",
-    "chp_type_requete": "select",
+    "chp_type_requete": "update",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n\n   valeurs(champ(`T0`,`chi_id_tache`),champ(`T0`,`chp_texte_tache`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache))\n)  "
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chi_id_projet`),:n_chi_id_projet),affecte(champ(`chp_nom_projet`),:n_chp_nom_projet)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n)  "
   },
   "395": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , \r\n`T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`\n FROM b1.tbl_travaux T0\r\n LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_travail\n\nWHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail\r\n   AND `T0`.`chp_resume_travail` LIKE :T0_chp_resume_travail\r\n   AND `T0`.`cht_rev_travail` LIKE :T0_cht_rev_travail\r\n   AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail\r\n   AND `T0`.`chd_dtc_travail` LIKE :T0_chd_dtc_travail\r\n   AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur\r\n   AND `T0`.`chp_etat_travail` LIKE :T0_chp_etat_travail) \r\nORDER BY `T0`.`chi_id_travail` DESC  \r\nLIMIT :quantitee OFFSET :debut \n;",

@@ -193,11 +193,13 @@ class __gi1{
             donnees_retournees.__xsi[__xer].push( ' Vous n\'etes pas connecté ' );
             throw new Error( 'veuillez utiliser le formulaire de connexion' );
         }
-        /* this.ma_trace1('chi_id_projet=',chi_id_projet,'options_generales=',options_generales); */
+        this.ma_trace1('reouvrir_la_base',reouvrir_la_base);
+        this.ma_trace1('chi_id_projet=',chi_id_projet,'options_generales=',options_generales);
         if(reouvrir_la_base === true && options_generales.bdd_ouvertes.hasOwnProperty( chi_id_projet )){
             await options_generales.bdd_ouvertes[chi_id_projet].base.close();
         }
         if(reouvrir_la_base === false && options_generales.bdd_ouvertes.hasOwnProperty( chi_id_projet )){
+            this.ma_trace1('condition OK chi_id_projet=',chi_id_projet);
             return options_generales.bdd_ouvertes[chi_id_projet].base;
         }
         /*
@@ -362,7 +364,7 @@ class __gi1{
                                 }
                             }
                             if(this.autorisations_verifiees === false){
-                                this.__xsi[__xdv].push( 'SERVEUR : accès non autorisé à "' + n1 + '" ' + this.nl2() );
+                                this.__xsi[__xdv].push( 'SERVEUR : accès non autorisé à "' + n1 + '" êtes vous connecté ?<a class="yy__1" href="./#pm1(m1(n1(_connexion1),f1(page_connexion1())))">connexion</a>' );
                                 continuer=false;
                             }
                             for( let k=j + 1 ; k < l01 && continuer === true ; k=mat[k][12] ){

@@ -185,19 +185,6 @@ class projets1{
     */
     async actions_et_tests_apres_page_modifications( mat , d , donnees_recues , donnees_retournees , options_generales , __xva_avant , __db1 ){
         /* this.__gi1.ma_trace1( '__xva_avant' , __xva_avant ); */
-        let m=await import( './dossiers1_s.js' );
-        let o=new m['dossiers1']( this.__gi1 );
-        donnees_retournees[__xva]['les_chemins']={};
-        let les_chemins=['T0.chx_dossier_requetes_projet','T0.chx_dossier_generes_projet','T0.chx_dossier_bdds_projet','T0.chx_dossier_programmes_projet'];
-        for(let i in les_chemins){
-            let le_chemin=await o.construire_chemin( __xva_avant[les_chemins[i]] , donnees_retournees , options_generales , __db1 );
-            if(le_chemin[__xst] !== __xsu){
-                this.__gi1.__xsi[__xer].push( ' erreur sur la construction du chemin pour le source ' + __xva_avant[les_chemins[i]] + '[' + this.__gi1.nl2() + ']' );
-                donnees_retournees.__xst=__xer;
-                return({"__xst" : __xer});
-            }
-            donnees_retournees[__xva]['les_chemins'][les_chemins[i]]=le_chemin.__xva.nom_chemin_relatif2;
-        }
         return({"__xst" : __xsu});
     }
     /*
@@ -214,8 +201,6 @@ class projets1{
             let __db_principale=await this.__gi1.ouvrir_bdd( 1 , donnees_retournees , options_generales );
             let donnees_sql={
                 "n_chp_nom_projet" : form['chp_nom_projet'] ,
-                "n_chx_dossier_requetes_projet" : 1 ,
-                "n_chx_dossier_generes_projet" : 1 ,
                 "n_cht_commentaire_projet" : form['cht_commentaire_projet'] ,
                 "c_chi_id_projet" : form['chi_id_projet']
             };
@@ -223,9 +208,7 @@ class projets1{
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_projets SET 
                `chp_nom_projet` = :n_chp_nom_projet , 
-               `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
                `cht_commentaire_projet` = :n_cht_commentaire_projet , 
-               `chx_dossier_generes_projet` = :n_chx_dossier_generes_projet
             WHERE `chi_id_projet` = :c_chi_id_projet ;
             */
             /*sql_inclure_fin*/ 305 , donnees_sql , donnees_retournees , __db_principale );
@@ -253,41 +236,6 @@ class projets1{
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        /*#
-          this.__gi1.ma_trace1( 'chemin_de_la_racine=' , chemin_de_la_racine );
-          this.__gi1.ma_trace1( 'form=' , form );
-          
-          let __ldcp1={
-              "commentaire" : "ceci est la liste des chemins du projet",
-              "racine_du_projet" : chemin_de_la_racine.__xva
-          }
-          
-          let les_chemins=['chx_dossier_requetes_projet','chx_dossier_generes_projet','chx_dossier_bdds_projet','chx_dossier_programmes_projet'];
-          for( let i in les_chemins){
-              let le_chemin=await obj_doss.construire_chemin( form[les_chemins[i]] , donnees_retournees , options_generales , __db1 );
-              if(le_chemin[__xst] !== __xsu){
-                  this.__gi1.__xsi[__xer].push( ' erreur sur la construction du chemin pour le source ' + __xva_avant[les_chemins[i]] + '[' + this.__gi1.nl2() + ']' );
-                  donnees_retournees.__xst=__xer;
-                  return({"__xst" : __xer});
-              }
-              __ldcp1[les_chemins[i].replace(/chx_/,'').replace(/_projet/,'')]=le_chemin.__xva;
-          }
-          this.__gi1.ma_trace1('__ldcp1=',__ldcp1);
-          
-          let chemin_fichier_liste_des_chemins_du_projet='';
-          if( donnees_retournees._CA_ === 2){
-             chemin_fichier_liste_des_chemins_du_projet='../rev_2/__ldcp1_'+form['chi_id_projet']+'.json';
-          }else{
-             chemin_fichier_liste_des_chemins_du_projet='../rev_' + donnees_retournees.chi_id_projet + '/__ldcp1_'+form['chi_id_projet']+'.json';
-          }
-          try{
-              await this.__gi1.file_put_contents( chemin_fichier_liste_des_chemins_du_projet , JSON.stringify( __ldcp1 ) );
-          }catch(e){
-              this.__gi1.__xsi[__xer].push( 'erreur lors de l\'écriture de __ldcp1[' + this.__gi1.nl2( e ) + ']' );
-              donnees_retournees.__xst=__xer;
-              return({"__xst" : __xer});
-          }
-        */
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
@@ -435,15 +383,7 @@ class projets1{
             "n_chi_id_projet" : nouvel_id ,
             "n_chp_nom_projet" : chp_nom_projet
         };
-        let tt394=await this.__gi1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chp_texte_tache`
-         FROM b1.tbl_taches T0
-        WHERE `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-        ;
-        */
-        /*sql_inclure_fin*/ 394 , criteres_394 , donnees_retournees , __db_nouvelle );
+        let tt394=await this.__gi1.sql_iii( 394 , criteres_394 , donnees_retournees , __db_nouvelle );
         /* this.__gi1.ma_trace1('tt394=',tt394); */
         if(tt394[__xst] !== __xsu){
             await __db_nouvelle.close();
@@ -472,44 +412,9 @@ class projets1{
         /*  */
         /* conversion des données numériques début */
         form['chi_id_projet']=form['chi_id_projet'] === null ? ( null ) : ( parseInt( form['chi_id_projet'] , 10 ) );
-        form['chx_dossier_requetes_projet']=form['chx_dossier_requetes_projet'] === null ?
-          ( 
-            null
-          ) : ( 
-            parseInt( form['chx_dossier_requetes_projet'] , 10 )
-          );
-        form['chx_dossier_generes_projet']=form['chx_dossier_generes_projet'] === null ?
-          ( 
-            null
-          ) : ( 
-            parseInt( form['chx_dossier_generes_projet'] , 10 )
-          );
-        form['chx_dossier_bdds_projet']=form['chx_dossier_bdds_projet'] === null ? ( null ) : ( parseInt( form['chx_dossier_bdds_projet'] , 10 ) );
-        form['chx_dossier_programmes_projet']=form['chx_dossier_programmes_projet'] === null ?
-          ( 
-            null
-          ) : ( 
-            parseInt( form['chx_dossier_programmes_projet'] , 10 )
-          );
         /* conversion des données numériques fin */
         if(form['chp_nom_projet'] === null || form['chp_nom_projet'] === ''){
             this.__gi1.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__gi1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_dossier_requetes_projet'] === null || form['chx_dossier_requetes_projet'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "dossier requetes" doit être renseigné [' + this.__gi1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_dossier_generes_projet'] === null || form['chx_dossier_generes_projet'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "dossier menus" doit être renseigné [' + this.__gi1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_dossier_bdds_projet'] === null || form['chx_dossier_bdds_projet'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "dossier des bases de données" doit être renseigné [' + this.__gi1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_dossier_programmes_projet'] === null || form['chx_dossier_programmes_projet'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "dossier des javascript" doit être renseigné [' + this.__gi1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let retour_a_la_liste=false;
@@ -519,28 +424,11 @@ class projets1{
                 retour_a_la_liste=true;
             }
         }
+        this.__gi1.ma_trace1('options_generales.base_de_reference=',options_generales.base_de_reference);
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_reference , donnees_retournees , options_generales );
         /* sélection du champ à modifier */
         let criteres_select_375={"T0_chi_id_projet" : form['chi_id_projet']};
-        let tt375=await this.__gi1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_generes_projet` , `T0`.`cht_commentaire_projet` , 
-        `T0`.`chx_dossier_programmes_projet` , `T0`.`chx_dossier_bdds_projet` , `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier` , `T3`.`chp_nom_dossier` , 
-        `T4`.`chp_nom_dossier`
-         FROM b1.tbl_projets T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
-        
-         LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_generes_projet
-        
-         LEFT JOIN b1.tbl_dossiers T3 ON T3.chi_id_dossier = T0.chx_dossier_bdds_projet
-        
-         LEFT JOIN b1.tbl_dossiers T4 ON T4.chi_id_dossier = T0.chx_dossier_programmes_projet
-        
-        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 375 , criteres_select_375 , donnees_retournees , __db1 );
+        let tt375=await this.__gi1.sql_iii( 375 , criteres_select_375 , donnees_retournees , __db1 );
         if(tt375[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__gi1.nl2() );
             donnees_retournees.__xst=__xer;
@@ -554,25 +442,19 @@ class projets1{
             let donnees_sql={
                 "c_chi_id_projet" : form['chi_id_projet'] ,
                 "n_chp_nom_projet" : form['chp_nom_projet'] ,
-                "n_chx_dossier_requetes_projet" : form['chx_dossier_requetes_projet'] ,
-                "n_chx_dossier_generes_projet" : form['chx_dossier_generes_projet'] ,
                 "n_cht_commentaire_projet" : form['cht_commentaire_projet'] === '' ? ( null ) : ( form['cht_commentaire_projet'] ) ,
-                "n_chx_dossier_bdds_projet" : form['chx_dossier_bdds_projet'] ,
-                "n_chx_dossier_programmes_projet" : form['chx_dossier_programmes_projet']
             };
+            this.__gi1.ma_trace1('donnees_sql',donnees_sql);
             await __db1.exec( 'BEGIN TRANSACTION;' );
             let tt384=await this.__gi1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_projets SET 
                `chp_nom_projet` = :n_chp_nom_projet , 
-               `chx_dossier_requetes_projet` = :n_chx_dossier_requetes_projet , 
-               `chx_dossier_generes_projet` = :n_chx_dossier_generes_projet , 
                `cht_commentaire_projet` = :n_cht_commentaire_projet , 
-               `chx_dossier_bdds_projet` = :n_chx_dossier_bdds_projet , 
-               `chx_dossier_programmes_projet` = :n_chx_dossier_programmes_projet
             WHERE `chi_id_projet` = :c_chi_id_projet ;
             */
             /*sql_inclure_fin*/ 384 , donnees_sql , donnees_retournees , __db1 );
+            this.__gi1.ma_trace1('tt384',tt384);
             if(tt384[__xst] !== __xsu){
                 if(tt384['__xme'] !== ''){
                     this.__gi1.__xsi[__xer].push( tt384['__xme'] + ' [' + this.__gi1.nl2() );
@@ -583,13 +465,13 @@ class projets1{
                 return({"__xst" : __xer});
             }
             let __taam=await this.tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt375[__xva][0] , __db1 );
+//            this.__gi1.ma_trace1('__taam=',__taam);
             if(__taam[__xst] !== __xsu){
                 await __db1.exec( 'ROLLBACK;' );
                 this.__gi1.__xsi[__xer].push( 'erreur après modification [' + this.__gi1.nl2() );
                 donnees_retournees.__xst=__xer;
                 return({"__xst" : __xer});
             }
-            await __db1.exec( 'COMMIT;' );
             /*#
               // Pas de retour à la liste ici
               if(retour_a_la_liste === true){
@@ -602,26 +484,11 @@ class projets1{
                   return({"__xst" : __xsu});
               }
             */
-            let tt375_bis=await this.__gi1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_generes_projet` , `T0`.`cht_commentaire_projet` , 
-            `T0`.`chx_dossier_programmes_projet` , `T0`.`chx_dossier_bdds_projet` , `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier` , `T3`.`chp_nom_dossier` , 
-            `T4`.`chp_nom_dossier`
-             FROM b1.tbl_projets T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
-            
-             LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_generes_projet
-            
-             LEFT JOIN b1.tbl_dossiers T3 ON T3.chi_id_dossier = T0.chx_dossier_bdds_projet
-            
-             LEFT JOIN b1.tbl_dossiers T4 ON T4.chi_id_dossier = T0.chx_dossier_programmes_projet
-            
-            WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-            ;
-            */
-            /*sql_inclure_fin*/ 375 , criteres_select_375 , donnees_retournees , __db1 );
-            donnees_retournees[__xva]['page_modification1']=tt375_bis;
+            this.__gi1.ma_trace1('avant');
+            await __db1.exec( 'COMMIT;' );
+//            let tt375_bis=await this.__gi1.sql_iii(375 , criteres_select_375 , donnees_retournees , __db1 );
+            this.__gi1.ma_trace1('apres');
+            donnees_retournees[__xva]['page_modification1']=tt375;
         }else{
             donnees_retournees[__xva]['page_modification1']=tt375;
         }
@@ -654,25 +521,7 @@ class projets1{
         if(__db1 === null){
             __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_reference , donnees_retournees , options_generales );
         }
-        let tt375=await this.__gi1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_generes_projet` , `T0`.`cht_commentaire_projet` , 
-        `T0`.`chx_dossier_programmes_projet` , `T0`.`chx_dossier_bdds_projet` , `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier` , `T3`.`chp_nom_dossier` , 
-        `T4`.`chp_nom_dossier`
-         FROM b1.tbl_projets T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
-        
-         LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_generes_projet
-        
-         LEFT JOIN b1.tbl_dossiers T3 ON T3.chi_id_dossier = T0.chx_dossier_bdds_projet
-        
-         LEFT JOIN b1.tbl_dossiers T4 ON T4.chi_id_dossier = T0.chx_dossier_programmes_projet
-        
-        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 375 , {"T0_chi_id_projet" : chi_id_projet} , donnees_retournees , __db1 );
+        let tt375=await this.__gi1.sql_iii( 375 , {"T0_chi_id_projet" : chi_id_projet} , donnees_retournees , __db1 );
         if(tt375[__xst] !== __xsu){
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
@@ -704,25 +553,7 @@ class projets1{
              /*  */
             "T0_chi_id_projet" : form['chi_id_projet']
         };
-        let tt375=await this.__gi1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_generes_projet` , `T0`.`cht_commentaire_projet` , 
-        `T0`.`chx_dossier_programmes_projet` , `T0`.`chx_dossier_bdds_projet` , `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier` , `T3`.`chp_nom_dossier` , 
-        `T4`.`chp_nom_dossier`
-         FROM b1.tbl_projets T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
-        
-         LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_generes_projet
-        
-         LEFT JOIN b1.tbl_dossiers T3 ON T3.chi_id_dossier = T0.chx_dossier_bdds_projet
-        
-         LEFT JOIN b1.tbl_dossiers T4 ON T4.chi_id_dossier = T0.chx_dossier_programmes_projet
-        
-        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 375 , criteres_375 , donnees_retournees , __db1 );
+        let tt375=await this.__gi1.sql_iii( 375 , criteres_375 , donnees_retournees , __db1 );
         if(tt375[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
             donnees_retournees.__xst=__xer;
@@ -781,25 +612,7 @@ class projets1{
         }
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_reference , donnees_retournees , options_generales );
         let critere_375={"T0_chi_id_projet" : chi_id_projet};
-        let tt375=await this.__gi1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`chx_dossier_requetes_projet` , `T0`.`chx_dossier_generes_projet` , `T0`.`cht_commentaire_projet` , 
-        `T0`.`chx_dossier_programmes_projet` , `T0`.`chx_dossier_bdds_projet` , `T1`.`chp_nom_dossier` , `T2`.`chp_nom_dossier` , `T3`.`chp_nom_dossier` , 
-        `T4`.`chp_nom_dossier`
-         FROM b1.tbl_projets T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_requetes_projet
-        
-         LEFT JOIN b1.tbl_dossiers T2 ON T2.chi_id_dossier = T0.chx_dossier_generes_projet
-        
-         LEFT JOIN b1.tbl_dossiers T3 ON T3.chi_id_dossier = T0.chx_dossier_bdds_projet
-        
-         LEFT JOIN b1.tbl_dossiers T4 ON T4.chi_id_dossier = T0.chx_dossier_programmes_projet
-        
-        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 375 , critere_375 , donnees_retournees , __db1 );
+        let tt375=await this.__gi1.sql_iii( 375 , critere_375 , donnees_retournees , __db1 );
         donnees_retournees[__xva]['page_confirmation_supprimer1']=tt375;
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
@@ -818,34 +631,9 @@ class projets1{
         let nom_formulaire=donnees_recues[__xva]['__co1'];
         let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* conversion des données numériques début */
-        form['chx_dossier_requetes_projet']=form['chx_dossier_requetes_projet'] === null || form['chx_dossier_requetes_projet'] === '' || form['chx_dossier_requetes_projet'] === undefined ?
-          ( 
-            1
-          ) : ( 
-            parseInt( form['chx_dossier_requetes_projet'] , 10 )
-          );
-        form['chx_dossier_generes_projet']=form['chx_dossier_generes_projet'] === null || form['chx_dossier_generes_projet'] === '' || form['chx_dossier_generes_projet'] === undefined ?
-          ( 
-            1
-          ) : ( 
-            parseInt( form['chx_dossier_generes_projet'] , 10 )
-          );
-        form['chx_dossier_bdds_projet']=form['chx_dossier_bdds_projet'] === null || form['chx_dossier_bdds_projet'] === '' || form['chx_dossier_bdds_projet'] === undefined ? ( 1 ) : ( parseInt( form['chx_dossier_bdds_projet'] , 10 ) );
         /* conversion des données numériques fin */
         if(form['chp_nom_projet'] === null || form['chp_nom_projet'] === ''){
             this.__gi1.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__gi1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_dossier_requetes_projet'] === null || form['chx_dossier_requetes_projet'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "dossier requetes" doit être renseigné [' + this.__gi1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_dossier_generes_projet'] === null || form['chx_dossier_generes_projet'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "dossier menus" doit être renseigné [' + this.__gi1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_dossier_bdds_projet'] === null || form['chx_dossier_bdds_projet'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "dossier des bases de données" doit être renseigné [' + this.__gi1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_reference , donnees_retournees , options_generales );
@@ -857,9 +645,6 @@ class projets1{
             "donnees" : [{
                         "chp_nom_projet" : form['chp_nom_projet'] ,
                         "cht_commentaire_projet" : form['cht_commentaire_projet'] === '' ? ( null ) : ( form['cht_commentaire_projet'] ) ,
-                        "chx_dossier_requetes_projet" : form['chx_dossier_requetes_projet'] ,
-                        "chx_dossier_generes_projet" : form['chx_dossier_generes_projet'] ,
-                        "chx_dossier_bdds_projet" : form['chx_dossier_bdds_projet']
                     }]
         };
         /*  */
@@ -869,16 +654,10 @@ class projets1{
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_projets`(
             `chp_nom_projet` , 
-            `cht_commentaire_projet` , 
-            `chx_dossier_requetes_projet` , 
-            `chx_dossier_bdds_projet` , 
-            `chx_dossier_generes_projet`
+            `cht_commentaire_projet` 
         ) VALUES (
             :chp_nom_projet , 
-            :cht_commentaire_projet , 
-            1 , 
-            1 , 
-            :chx_dossier_generes_projet
+            :cht_commentaire_projet 
         );
         */
         /*sql_inclure_fin*/ 377 , donnees_sql , donnees_retournees , __db1 );

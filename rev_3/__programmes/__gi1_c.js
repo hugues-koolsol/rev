@@ -26,7 +26,7 @@ const __xac='__xac';
 */
 import {__rev1} from './f0?n0=__rev1_.js';
 import {__fnt1} from './f0?n0=__fnt1_.js';
-import {menu_arbre1} from './f0?n0=menu_arbre1.js';
+import {menu_arbre1} from './f0?n0=_menu_arbre1_c.js';
 class __gi1{
     moi='__gi1';
     _CA_=0;
@@ -72,6 +72,7 @@ class __gi1{
     position_dans_la_derniere_zone_editee=0;
     __deverminage=0;
     __xsi={0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []};
+    #date_derniere_navigation=performance.now();
     /*
       =============================================================================================================
     */
@@ -110,7 +111,7 @@ class __gi1{
         this.#div_des_positions_du_curseur.setAttribute( 'style' , 'position:absolute;top:60px;left:0px;background:white;display:inline-block;min-height:12px!important;line-height:12px;' );
         this.#div_des_positions_du_curseur.innerHTML='';
         document.getElementsByTagName( 'body' )[0].appendChild( this.#div_des_positions_du_curseur );
-        this.#__worker=new Worker( "./f0?n0=__worker1.js&__version=" + __version , {"type" : 'module'} );
+        this.#__worker=new Worker( "./f0?n0=__worker1_c.js&__version=" + __version , {"type" : 'module'} );
         this.#liste_des_modules_dynamiques['__worker1']={"objet1" : this.#__worker};
         /*
           initialisation du worker
@@ -140,29 +141,50 @@ class __gi1{
                     "__parametres" : this.stockage_local['parametres']
                 }
             } );
+        window.addEventListener( 'hashchange' , ( event ) => {
+                if(performance.now() - this.#date_derniere_navigation > 125){
+                    /*
+                      si l'url est changée manuellement 
+                      et que l'écart de temps entre la dernière navigation et maintenant est supérieure à 125 ms
+                      alors on essaie de recharger l'url;
+                    */
+                    let action=window.location.hash.substr( 1 );
+                    if(action.substr( 0 , 3 ) === 'pm1'){
+                        /* console.log('on poste'); */
+                        this.#__worker.postMessage( {"__xac" : action ,"__xva" : {"__parametres" : this.stockage_local['parametres']}} );
+                    }else{
+                        let obj1=this.__rev1.rev_tm( action );
+                        if(obj1.__xst !== __xsu){
+                            this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de message reçu du worker' + this.nl2()} );
+                            this.affiche_les_messages();
+                            return({"__xst" : __xer});
+                        }
+                        let obj2=this.__xac( obj1.__xva , 0 , null );
+                    }
+                }} );
+    }
+    /*
+      =============================================================================================================
+    */
+    recharger_la_page( mat , d ){
+        location.reload();
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     #traite_message_recupere_du_worker( par ){
+        this.#date_derniere_navigation=performance.now();
         let le_message=par.data;
         this._CA_=le_message._CA_;
         if(this.__deverminage === 2){
             console.log( le_message );
         }
         if(le_message.hasOwnProperty( '__version' ) && le_message.__version !== this.__version){
-            let tt='';
-            tt+='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="';
-            tt+='m1(n1(__gi1),f1(recharger_la_page()))';
-            tt+='">';
-            tt+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1  19 21" style="transform: scale(0.9);">';
-            tt+='<path d="M 12 17 a 8 8 0 1 1 3 -11 l -1 -6 l 1 6 l -6 0 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:2.5;"></path>';
-            tt+='<path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d="M 12 17 a 8 8 0 1 1 3 -11 l -1 -6 l 1 6 l -6 0 " style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:1;"></path>';
-            tt+='</svg>';
-            tt+='</div>';
+            let tt='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__gi1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
             this.ajoute_message( {
                     "__xst" : __xal ,
-                    "__xme" : '<h5>La version du programme a changé !</h5><div style="text-align:center;font-size:1.3rem;"> cliquez sur ' + tt + ' pour recharger la page ou bien appuyez sur la touche <b>F5</b>  </div>'
+                    "__xme" : '<h5>La version du programme a changé !</h5><div style="text-align:center;font-size:1.3rem;"> cliquez là : ' + tt + ' pour recharger la page ou bien appuyez sur la touche <b>F5</b>  </div>'
                 } );
             this.fermer_la_sous_fenetre();
             this.affiche_les_messages();
@@ -252,6 +274,18 @@ class __gi1{
             return({"__xst" : __xsu});
         }
     }
+    /* 
+      =============================================================================================================
+    */
+    arrayBufferToArray( buffer , TypedArrayConstructor=Uint8Array ){
+        if(!(buffer instanceof ArrayBuffer)){
+            throw new TypeError( "Expected an ArrayBuffer" );
+        }
+        if( typeof TypedArrayConstructor !== "function"){
+            throw new TypeError( "Expected a valid TypedArray constructor" );
+        }
+        return(Array.from( new TypedArrayConstructor( buffer ) ));
+    }
     /*
       =============================================================================================================
     */
@@ -272,6 +306,8 @@ class __gi1{
                     */
                     let co1='';
                     let fo1={};
+                    let nombre_de_valeurs_a_envoyer=0;
+                    let contient_des_fichier_a_televerser=false;
                     for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
                         if(mat[j][1] === 'co1' && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
                             co1=mat[j + 1][1];
@@ -287,8 +323,42 @@ class __gi1{
                                 if(lst[k].value !== null && lst[k].id){
                                     if(lst[k].type && lst[k].type.toLowerCase() === 'checkbox'){
                                         fo1[co1][lst[k].id]=lst[k].checked;
+                                        nombre_de_valeurs_a_envoyer++;
+                                    }else if(lst[k].type && lst[k].type.toLowerCase() === 'file'){
+                                        contient_des_fichier_a_televerser=true;
+                                        const reader=new FileReader();
+                                        let a=reader.readAsArrayBuffer( lst[k].files[0] );
+                                        reader.onload=function( {} ){
+                                            console.log( 'arguments=' , arguments );
+                                            console.log( 'arguments[3].target.result=' , arguments[3].target.result );
+                                            /* "m1(n1(dossiers1),f1(telecharger1(chi_id_dossier(8))))" */
+                                            let l01=arguments[2].length;
+                                            for( let i=1 ; i < l01 ; i=arguments[2][i][12] ){
+                                                if(arguments[2][i][1] === 'fo1' && arguments[2][i][2] === 'f'){
+                                                    for( let j=i + 1 ; j < l01 ; j=arguments[2][j][12] ){
+                                                        if(arguments[2][j][1] === 'pm1' && arguments[2][i][2] === 'f'){
+                                                            /* this.__rev1.matrice_vers_source_rev1(arguments[2],1,false,4,[],[],false,true) */
+                                                            let obj1=this.__rev1.matrice_vers_source_rev1( arguments[2] , j , false , j + 1 );
+                                                            if(obj1.__xst === __xsu){
+                                                                let fichier_binaire=this.arrayBufferToArray( arguments[3].target.result );
+                                                                let xva={"fichier_binaire" : fichier_binaire ,"nom_zone" : arguments[0]};
+                                                                this.envoyer_un_message_au_worker( {"__xac" : 'pm1(' + obj1.__xva + ')' ,"__xva" : xva} );
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }.bind( this , co1 , fo1 , mat );
+                                        /*
+                                          reader.onload=function({target}){
+                                          //target.result
+                                          console.log('target.result=',target.result);
+                                          debugger
+                                          }
+                                        */
                                     }else{
                                         fo1[co1][lst[k].id]=lst[k].value;
+                                        nombre_de_valeurs_a_envoyer++;
                                     }
                                 }
                             }
@@ -311,7 +381,10 @@ class __gi1{
                                 return({"__xst" : __xer});
                                 /* source=re_source.__xva; */
                             }
-                            this.envoyer_un_message_au_worker( {"__xac" : 'pm1(' + re_source.__xva + ')' ,"__xva" : {"__fo1" : fo1 ,"__co1" : co1}} );
+                            if(contient_des_fichier_a_televerser === true){
+                            }else{
+                                this.envoyer_un_message_au_worker( {"__xac" : 'pm1(' + re_source.__xva + ')' ,"__xva" : {"__fo1" : fo1 ,"__co1" : co1}} );
+                            }
                         }else if(mat[j][1] === 'm1' && mat[j][2] === 'f'){
                             /*
                               ... ou bien appeler un module, par exemple pour la vérification du formulaire avant envoie
@@ -1612,6 +1685,15 @@ class __gi1{
         let t='';
         /* t+='<input type="text" style="margin:10px;"/>'; */
         t+='<h1>Accueil</h1>';
+        t+='<div style="text-align:center;border:1px red solid;margin:0 auto;width:fit-content;height:' + (2 * this.css_dimensions.t_border + this.css_dimensions.t_police) + 'px;">';
+        t+='<img src="./f0?n0=1x1_blanc.gif"   style="display:inline-block;width:var(--t_police);margin:0;" />';
+        t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
+        t+='<img src="./f0?n0=1x1_blanc.jpg"   style="display:inline-block;width:var(--t_police);margin:0;" />';
+        t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
+        t+='<img src="./f0?n0=1x1_blanc.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
+        t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
+        t+='<img src="./f0?n0=1x1_blanc_2.png" style="display:inline-block;width:var(--t_police);margin:0;" />';
+        t+='</div>';
         t+='<div style="display:flex;">\r\n';
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
             t+='this.stockage_local[\'parametres\'][\'--bidon\'].valeur ' + i + '<br />';
@@ -1621,6 +1703,7 @@ class __gi1{
         this.maj_contenu_principal( t );
         this.activer_menu( '-1' );
         this.maj_hash( mat , 0 );
+        this.#date_derniere_navigation=performance.now();
         this.maj_title_htm1( 'accueil' );
         return({"__xst" : __xsu});
     }
@@ -3275,7 +3358,9 @@ class __gi1{
         "compiler" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><polygon points=" 45 0 40 8 42 17 34 23 32 32 23 34 17 42 8 40 0 45 -8 40 -17 42 -22 34 -32 32 -33 23 -41 17 -39 8 -45 0 -39 -8 -41 -17 -33 -22 -32 -32 -22 -33 -17 -41 -8 -39 0 -45 8 -39 17 -41 23 -33 32 -32 34 -22 42 -17 40 -8 45 0" style="stroke-width:5;stroke:rgb(0, 0, 0);fill:white;" transform=""></polygon><text x="-34" y="18" style="font-size:55;stroke-width:2;stroke:red;fill:lime;font-family:Verdana;stroke-opacity:1;fill-opacity:1;opacity:1;">01</text><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>' ,
         "rond_rouge1" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:red;stroke-width:1;"></circle><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect></svg>' ,
         "rond_vert1" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:lime;stroke-width:1;"></circle><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect></svg>' ,
-        "lst_des_elts" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g stroke-linecap="round" fill="transparent" stroke="rgb(0, 0, 0)" stroke-linejoin="round" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:6;"><rect x="-50" y="-50" width="100" height="100" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -25 -35 C -16 -35 29 -35 35 -35 C 35 -32 35 -28 35 -25 C 27 -25 -20 -25 -25 -25 a 8 8 0 1 1 0 -10"></path><path d="M -24 -5 C -15 -5 30 -5 36 -5 C 36 -2 36 2 36 5 C 28 5 -19 5 -24 5 a 8 8 0 1 1 0 -10"></path><path d="M -24 25 C -15 25 30 25 36 25 C 36 28 36 32 36 35 C 28 35 -19 35 -24 35 a 8 8 0 1 1 0 -10"></path></g></svg>'
+        "lst_des_elts" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g stroke-linecap="round" fill="transparent" stroke="rgb(0, 0, 0)" stroke-linejoin="round" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:6;"><rect x="-50" y="-50" width="100" height="100" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -25 -35 C -16 -35 29 -35 35 -35 C 35 -32 35 -28 35 -25 C 27 -25 -20 -25 -25 -25 a 8 8 0 1 1 0 -10"></path><path d="M -24 -5 C -15 -5 30 -5 36 -5 C 36 -2 36 2 36 5 C 28 5 -19 5 -24 5 a 8 8 0 1 1 0 -10"></path><path d="M -24 25 C -15 25 30 25 36 25 C 36 28 36 32 36 35 C 28 35 -19 35 -24 35 a 8 8 0 1 1 0 -10"></path></g></svg>' ,
+        "televerser" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"> <g transform="translate(-50 -50)" stroke-linejoin="miter"  stroke-linecap="square">  <path d=" M 8 8 L 78 8 L 93 23  L 93 92 L 8 92 L 8 8" style="stroke:rgb(0, 0, 0);fill:gray;stroke-width:6;fill-opacity:1;"></path>  <path d="M 20 13 L 20 16 " style="stroke:#424242;fill:dimgray;stroke-width:7;"></path>  <path  d="M 34 13 L 34 33 l 38 0 l 0 -20 l -38 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 22 44 L 22 87 l 56 0 l 0 -43 l -56 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 65 17L 65 29" style="stroke:#424242;fill:dimgray;stroke-width:8;"></path>  <path d="M 86 85L 86 85" style="stroke:lightgrey;fill:lightgrey;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 24 85L 76 85" style="stroke:red;fill:lightgrey;stroke-width:9;stroke-opacity:1;"></path>  <path d="M 29 50 L 72 50 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 61 L 72 61 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 72 L 72 72 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path> </g> <path d=" M -50 -50 L 50 -50 l 0 100 l -100 0 l 0 -100 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path> <path d=" M 0 -32  C 0 -25 0 19 0 30 L 18 9 H -18 L 0 30" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:yellow;fill:yellow;stroke-width:10;"></path></svg>' ,
+        "recharger_la_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 255, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M 38 10 A 40 39 0 1 1 38 -10 L 21 -17  L 38 -10 L 38 -31" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:10;"></path></svg>'
     };
 }
 /* __gi0 permet de fermer une sous fenetre */

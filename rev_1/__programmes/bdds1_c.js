@@ -50,7 +50,7 @@ class bdds1{
     /*
       =============================================================================================================
     */
-    éditer_le_schéma( mat , d , chi_id_basedd ){
+    editer_le_schema( mat , d , chi_id_basedd ){
         if(chi_id_basedd === null){
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -113,7 +113,7 @@ class bdds1{
         for(let i in this.les_bases_du_projet){
             cmds+='<div id="bouton_bdd_' + this.les_bases_du_projet[i]['T0.chi_id_basedd'] + '" class="rev_bouton"';
             cmds+=' data-rev_click="';
-            cmds+='m1(n1(' + this.moi + '),f1(éditer_le_schéma(';
+            cmds+='m1(n1(' + this.moi + '),f1(editer_le_schema(';
             cmds+=' chi_id_basedd(' + this.les_bases_du_projet[i]['T0.chi_id_basedd'] + ')';
             cmds+=')))';
             cmds+='">base ' + this.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</div>';
@@ -128,7 +128,8 @@ class bdds1{
                 return(parseInt( x , 10 ));} );
             for( let i=0 ; i < tab_bases_a_editer.length ; i++ ){
                 setTimeout( () => {
-                        this.éditer_le_schéma( null , null , tab_bases_a_editer[i] );} , 200 );
+                        this.editer_le_schema( null , null , tab_bases_a_editer[i] );} , 200 );
+                window.location.hash='#m1(n1(' + this.moi + '),f1(editer_les_schemas(les_bases_a_editer(\'' + tab_bases_a_editer[0] + '\'))))';
             }
         }
         /*
@@ -143,7 +144,7 @@ class bdds1{
     /*
       =============================================================================================================
     */
-    éditer_les_schémas( mat , d ){
+    editer_les_schemas( mat , d ){
         let les_bases_a_editer='';
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -168,7 +169,7 @@ class bdds1{
         this.__gi1.maj_contenu_principal( o1 );
         this.les_bases_du_projet=null;
         document.getElementById( 'message_dans_le_svg' ).innerHTML='Veuillez patienter s\'il vous plaît !';
-        window.location.hash='#m1(n1(' + this.moi + '),f1(éditer_les_schémas(les_bases_a_editer(\'' + les_bases_a_editer + '\'))))';
+        /* window.location.hash='#m1(n1(' + this.moi + '),f1(editer_les_schemas(les_bases_a_editer(\'' + les_bases_a_editer + '\'))))'; */
         this.__gi1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(recuperer_les_revs_des_bases())))' ,"__xva" : {"les_bases_a_editer" : les_bases_a_editer}} );
         return({"__xst" : __xsu});
     }
@@ -855,7 +856,7 @@ class bdds1{
                 lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))">' + this.__gi1.les_svg.editer + '</div>';
                 lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))">' + this.__gi1.les_svg.dupliquer + '</div>';
                 lst+='<div class="rev_b_svg" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(dump_de_la_base(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))" title="faire un dump de la base">' + this.__gi1.les_svg.disquette + '</div>';
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(éditer_les_schémas(les_bases_a_editer(\'' + elem['T0.chi_id_basedd'] + '\'))))">' + this.__gi1.les_svg.bdd + '</div>';
+                lst+='<div class="rev_b_svg yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(editer_les_schemas(les_bases_a_editer(\'' + elem['T0.chi_id_basedd'] + '\'))))">' + this.__gi1.les_svg.bdd + '</div>';
                 if(le_message_du_serveur._CA_ === 1 && le_message_du_serveur.chi_id_projet === 1){
                 }else{
                     lst+='<div class="rev_bouton" data-rev_click="';

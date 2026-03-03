@@ -19,30 +19,10 @@ class sql_384{
             }else{
                 tableau_champs.push('`chp_nom_projet` = \''+this.__gi1.__fnt1.sq0(par['n_chp_nom_projet'])+'\'');
             }
-            if(par['n_chx_dossier_requetes_projet']===undefined || par['n_chx_dossier_requetes_projet']==='' || par['n_chx_dossier_requetes_projet'] === null ){
-                tableau_champs.push('`chx_dossier_requetes_projet` = NULL');
-            }else{
-                tableau_champs.push('`chx_dossier_requetes_projet` = '+this.__gi1.__fnt1.sq0(par['n_chx_dossier_requetes_projet'])+'');
-            }
-            if(par['n_chx_dossier_generes_projet']===undefined || par['n_chx_dossier_generes_projet']==='' || par['n_chx_dossier_generes_projet'] === null ){
-                tableau_champs.push('`chx_dossier_generes_projet` = NULL');
-            }else{
-                tableau_champs.push('`chx_dossier_generes_projet` = '+this.__gi1.__fnt1.sq0(par['n_chx_dossier_generes_projet'])+'');
-            }
             if(par['n_cht_commentaire_projet']===undefined || par['n_cht_commentaire_projet']==='' || par['n_cht_commentaire_projet'] === null ){
                 tableau_champs.push('`cht_commentaire_projet` = NULL');
             }else{
                 tableau_champs.push('`cht_commentaire_projet` = \''+this.__gi1.__fnt1.sq0(par['n_cht_commentaire_projet'])+'\'');
-            }
-            if(par['n_chx_dossier_bdds_projet']===undefined || par['n_chx_dossier_bdds_projet']==='' || par['n_chx_dossier_bdds_projet'] === null ){
-                tableau_champs.push('`chx_dossier_bdds_projet` = NULL');
-            }else{
-                tableau_champs.push('`chx_dossier_bdds_projet` = '+this.__gi1.__fnt1.sq0(par['n_chx_dossier_bdds_projet'])+'');
-            }
-            if(par['n_chx_dossier_programmes_projet']===undefined || par['n_chx_dossier_programmes_projet']==='' || par['n_chx_dossier_programmes_projet'] === null ){
-                tableau_champs.push('`chx_dossier_programmes_projet` = NULL');
-            }else{
-                tableau_champs.push('`chx_dossier_programmes_projet` = '+this.__gi1.__fnt1.sq0(par['n_chx_dossier_programmes_projet'])+'');
             }
 
             if(tableau_champs.length===0){

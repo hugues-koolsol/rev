@@ -366,7 +366,7 @@ CREATE TABLE `tbl_acces`(
    genre_meta(table_de_base),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
    distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),
-   transform_table_sur_svg(translate(345.5,59.5))) 
+   transform_table_sur_svg(translate(349.5,63.5))) 
 */
     
             /*
@@ -447,163 +447,6 @@ CREATE TABLE `tbl_acces`(
             )
             */
              `che_actif_acces` INTEGER NOT NULL DEFAULT  1
-    );
-
-
-
-
-/*
-================================================================================ TABLE tbl_projets 
-*/
-
-CREATE TABLE `tbl_projets`(
-/*
- meta(nom_de_la_table('tbl_projets'),
-   table('tbl_projets'),
-   genre_meta(table_de_base),permet_la_gestion_de('projet'),
-   distinction_pour_liste('liste des projets'),
-   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(3)'),
-   transform_table_sur_svg(translate(703.5,218.5))) 
-*/
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chi_id_projet'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
-            typologie(),
-            genre(2),
-            espece_du_champ(INTEGER),est_en_session(1)
-            )
-            */
-             `chi_id_projet` INTEGER PRIMARY KEY NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_nom_projet'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
-            typologie(),
-            genre(11),
-            espece_du_champ(TEXT),
-            est_libelle_lien(1)
-            )
-            */
-             `chp_nom_projet` TEXT NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_commentaire_projet'),
-            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),
-            typologie(),
-            genre(6),
-            espece_du_champ(TEXT)
-            )
-            */
-             `cht_commentaire_projet` TEXT
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_dossier_requetes_projet'),
-            nom_bref_du_champ('dossier requetes'),abrege_du_champ('dossier requetes'),
-            typologie(chx),
-            genre(4),
-            espece_du_champ(INTEGER),
-            refe_parent_gauche(1)
-            )
-            */
-             `chx_dossier_requetes_projet` INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier)  ON UPDATE CASCADE DEFAULT  1
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_dossier_generes_projet'),
-            nom_bref_du_champ('dossier menus'),abrege_du_champ('dossier menus'),
-            typologie(chx),
-            genre(4),
-            espece_du_champ(INTEGER),
-            refe_parent_gauche(1)
-            )
-            */
-             `chx_dossier_generes_projet` INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier)  ON UPDATE CASCADE DEFAULT  1
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che__nur_projet'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
-            typologie(chi),
-            genre(10),
-            espece_du_champ(INTEGER),
-            masquer_champ_dans_svg(1)
-            )
-            */
-             `che__nur_projet` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chd__dtm_projet'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
-            typologie(chd),
-            genre(16),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(23),
-            masquer_champ_dans_svg(1)
-            )
-            */
-             `chd__dtm_projet` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chd__dtc_projet'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
-            typologie(chi),
-            genre(14),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(23),
-            masquer_champ_dans_svg(1)
-            )
-            */
-             `chd__dtc_projet` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_dossier_bdds_projet'),
-            nom_bref_du_champ('dossier bdds'),abrege_du_champ('dossier des bases de données'),
-            typologie(chx),
-            genre(4),
-            espece_du_champ(INTEGER),
-            refe_parent_gauche(1)
-            )
-            */
-             `chx_dossier_bdds_projet` INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier)  ON UPDATE CASCADE DEFAULT  1
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_dossier_programmes_projet'),
-            nom_bref_du_champ('dossier js'),abrege_du_champ('dossier des javascript'),
-            typologie(chx),
-            genre(4),
-            espece_du_champ(INTEGER),
-            refe_parent_gauche(1)
-            )
-            */
-             `chx_dossier_programmes_projet` INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier)  ON UPDATE CASCADE DEFAULT  1
     );
 
 
@@ -2136,6 +1979,107 @@ CREATE TABLE `tbl_requetes`(
             )
             */
              `chp_table_reference_requete` VARCHAR(64) DEFAULT  NULL
+    );
+
+
+
+
+/*
+================================================================================ TABLE tbl_projets 
+*/
+
+CREATE TABLE `tbl_projets`(
+/*
+ meta(nom_de_la_table('tbl_projets'),
+   table('tbl_projets'),
+   genre_meta(table_de_base),permet_la_gestion_de('projet'),
+   distinction_pour_liste('liste des projets'),
+   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(3)'),
+   transform_table_sur_svg(translate(703.5,218.5))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_projet'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            typologie(),
+            genre(2),
+            espece_du_champ(INTEGER),est_en_session(1)
+            )
+            */
+             `chi_id_projet` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_nom_projet'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
+            typologie(),
+            genre(11),
+            espece_du_champ(TEXT),
+            est_libelle_lien(1)
+            )
+            */
+             `chp_nom_projet` TEXT NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_commentaire_projet'),
+            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),
+            typologie(),
+            genre(6),
+            espece_du_champ(TEXT)
+            )
+            */
+             `cht_commentaire_projet` TEXT
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che__nur_projet'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
+            typologie(chi),
+            genre(10),
+            espece_du_champ(INTEGER),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `che__nur_projet` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtm_projet'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
+            typologie(chd),
+            genre(16),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `chd__dtm_projet` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtc_projet'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
+            typologie(chi),
+            genre(14),
+            espece_du_champ(VARCHAR),
+            longueur_du_champ(23),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `chd__dtc_projet` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
     );
 
 
