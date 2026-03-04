@@ -91,6 +91,7 @@ class __cr1{
                     return({"__xst" : __xer});
                 }
             }
+            __db1.close();
         }catch(e){
             this.__gi1.ma_trace1( 'raaaah' , e );
         }

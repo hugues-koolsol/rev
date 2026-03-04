@@ -362,7 +362,7 @@ class __gi1{
                                 }
                             }
                             if(this.autorisations_verifiees === false){
-                                this.__xsi[__xdv].push( 'SERVEUR : accès non autorisé à "' + n1 + '" ' + this.nl2() );
+                                this.__xsi[__xdv].push( 'SERVEUR : accès non autorisé à "' + n1 + '" êtes vous connecté ?<a class="yy__1" href="./#pm1(m1(n1(_connexion1),f1(page_connexion1())))">connexion</a>' );
                                 continuer=false;
                             }
                             for( let k=j + 1 ; k < l01 && continuer === true ; k=mat[k][12] ){

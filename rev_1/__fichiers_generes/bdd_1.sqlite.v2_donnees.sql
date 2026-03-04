@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'1014','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'1016','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -3702,7 +3702,7 @@ chx_dossier_programmes_projet
 chx_dossier_requetes_projet
 chx_dossier_generes_projet
 chx_dossier_bdds_projet
-chx_dossier_programmes_projet','1','2026-03-03 11:56:56.210','2026-03-03 11:56:56.210','0');
+chx_dossier_programmes_projet','99','2026-03-03 15:55:12.617','2026-03-03 11:56:56.210','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -7219,6 +7219,5 @@ INSERT INTO tbl_projets (  chi_id_projet ,  chp_nom_projet ,  cht_commentaire_pr
 ('1','environnement principal 1','C''est ce projet qui permet de créer d''autres projets
 ','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('2','clone','clone','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('3','ref 3','projet de référence N°3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('4','Nouveau projet 4',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+('3','ref 3','projet de référence N°3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 /*================================================================================ FIN BLOC TABLE tbl_projets offset 0 */

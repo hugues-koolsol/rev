@@ -225,6 +225,7 @@ class __cr1{
                             return({"__xst" : __xer});
                         }
                     }
+                    __dbn.close();
                     let t1=performance.now();
                     let delta=t1 - t0;
                     if(delta < 55000){

@@ -7,6 +7,7 @@ const __xst='__xst';
 const __xva='__xva';
 const __xsi='__xsi';
 const __xac='__xac';
+import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 /*
   =====================================================================================================================
 */
@@ -191,27 +192,23 @@ class projets1{
       =============================================================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
-        /* return(array(__xst=>__xer)); */
-        if(__xva_avant['T0.chi_id_projet'] > 2){
-            /*
-              si on est sur le projet n > 2, 
-              il faut faut aller modifier le projet n dans la base bdd 1 
-              en mettant les références de dossiers à 1 ( qui existe toujours ! )
-            */
-            let __db_principale=await this.__gi1.ouvrir_bdd( 1 , donnees_retournees , options_generales );
+        if(donnees_retournees.chi_id_projet > 2){
+            /* on va modifier la base 3,4,... */
+            let chemin_complet_bdd=options_generales.chemin_des_bdd + 'bdd_' + donnees_retournees.chi_id_projet + '.sqlite';
+            let __db=new Database( chemin_complet_bdd , {"create" : false} );
             let donnees_sql={
                 "n_chp_nom_projet" : form['chp_nom_projet'] ,
                 "n_cht_commentaire_projet" : form['cht_commentaire_projet'] ,
-                "c_chi_id_projet" : form['chi_id_projet']
+                "c_chi_id_projet" : donnees_retournees.chi_id_projet
             };
             let tt305=await this.__gi1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_projets SET 
                `chp_nom_projet` = :n_chp_nom_projet , 
-               `cht_commentaire_projet` = :n_cht_commentaire_projet , 
+               `cht_commentaire_projet` = :n_cht_commentaire_projet
             WHERE `chi_id_projet` = :c_chi_id_projet ;
             */
-            /*sql_inclure_fin*/ 305 , donnees_sql , donnees_retournees , __db_principale );
+            /*sql_inclure_fin*/ 305 , donnees_sql , donnees_retournees , __db );
             if(tt305[__xst] !== __xsu){
                 if(tt305['__xme'] !== ''){
                     this.__gi1.__xsi[__xer].push( tt305['__xme'] + ' [' + this.__gi1.nl2() );
@@ -221,20 +218,7 @@ class projets1{
                 donnees_retournees.__xst=__xer;
                 return({"__xst" : __xer});
             }
-            await __db_principale.close();
-        }
-        /*
-          =====================================================================================================
-          dossier racine, des sql, des bases
-          =====================================================================================================
-        */
-        let m=await import( './dossiers1_s.js' );
-        let obj_doss=new m['dossiers1']( this.__gi1 );
-        let chemin_de_la_racine=await obj_doss.construire_chemin( 1 , donnees_retournees , options_generales , __db1 );
-        if(chemin_de_la_racine[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() );
-            donnees_retournees.__xst=__xer;
-            return({"__xst" : __xer});
+            await __db.close();
         }
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
@@ -282,6 +266,7 @@ class projets1{
         let chemin_date=amj.substr( 0 , 4 ) + '/' + amj.substr( 5 , 2 ) + '/' + amj.substr( 8 , 2 ) + '/' + amj.substr( 11 , 2 ) + '_' + amj.substr( 14 , 2 ) + '_' + amj.substr( 17 , 2 );
         let chemin_absolu_sauvegarde='../sauvegarde_fichiers/anciens_projets/rev_' + __xva_avant['T0.chi_id_projet'] + '/' + chemin_date;
         let repertoire_absolu_sauvegarde=chemin_absolu_sauvegarde.substr( 0 , chemin_absolu_sauvegarde.lastIndexOf( '/' ) );
+        /* this.__gi1.ma_trace1('repertoire_absolu_sauvegarde='+repertoire_absolu_sauvegarde); */
         if(!(await this.__gi1.is_dir( repertoire_absolu_sauvegarde ))){
             try{
                 await Deno.mkdir( repertoire_absolu_sauvegarde , {"mode" : 0o777 ,"recursive" : true} );
@@ -291,11 +276,20 @@ class projets1{
                 return({"__xst" : __xer});
             }
         }
+        /* copie de rev_nnn dans la sauvegarde */
+        let obj=await this.rcopydir( chemin , chemin_absolu_sauvegarde , donnees_retournees );
+        if(obj[__xst] !== __xsu){
+            this.__gi1.__xsi[__xer].push( 'la copie récursive des fichiers n\'a pas fonctionné [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
+        }
+        /* suppression de l'ancien dossier rev_nnn */
         try{
             /* this.__gi1.ma_trace1('\n\n*******\nchemin='+chemin+'\nchemin_absolu_sauvegarde'+chemin_absolu_sauvegarde); */
-            await Deno.rename( chemin , chemin_absolu_sauvegarde );
+            await Deno.remove( chemin , {recursive : true} );
             return({"__xst" : __xsu});
         }catch(e){
+            this.__gi1.ma_trace1('e=',e);
             this.__gi1.__xsi[__xer].push( 'erreur de renommage du fichier "' + chemin + '" vers "' + chemin_absolu_sauvegarde + '"' + this.__gi1.nl2( e ) );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
@@ -340,7 +334,7 @@ class projets1{
         */
         let reprendre_les_fido=false;
         let une_erreur=false;
-        this.__gi1.ma_trace1( 'chemin=' + chemin );
+        /* this.__gi1.ma_trace1( 'chemin=' + chemin ); */
         if((await this.__gi1.is_dir( chemin ))){
             this.__gi1.__xsi[__xal].push( 'le dossier racine existe déjà, il faudra éventuellement reprendre ses fichiers et dossiers [' + this.__gi1.nl2() + ']' );
             reprendre_les_fido=true;
@@ -357,7 +351,7 @@ class projets1{
         }
         let chemin_base_modele='./__bases_de_donnees/bdd_3.sqlite';
         if((await this.__gi1.is_file( chemin_base_modele ))){
-            this.__gi1.ma_trace1( 'OK' );
+            /* this.__gi1.ma_trace1( 'OK' ); */
         }else{
             const currentWorkingDirectory=Deno.cwd();
             this.__gi1.ma_trace1( 'KOKO' , currentWorkingDirectory );
@@ -383,7 +377,14 @@ class projets1{
             "n_chi_id_projet" : nouvel_id ,
             "n_chp_nom_projet" : chp_nom_projet
         };
-        let tt394=await this.__gi1.sql_iii( 394 , criteres_394 , donnees_retournees , __db_nouvelle );
+        let tt394=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_projets SET 
+           `chi_id_projet` = :n_chi_id_projet , 
+           `chp_nom_projet` = :n_chp_nom_projet
+        WHERE `chi_id_projet` = :c_chi_id_projet ;
+        */
+        /*sql_inclure_fin*/ 394 , criteres_394 , donnees_retournees , __db_nouvelle );
         /* this.__gi1.ma_trace1('tt394=',tt394); */
         if(tt394[__xst] !== __xsu){
             await __db_nouvelle.close();
@@ -424,74 +425,67 @@ class projets1{
                 retour_a_la_liste=true;
             }
         }
-        this.__gi1.ma_trace1('options_generales.base_de_reference=',options_generales.base_de_reference);
+        /*
+          ici on ne prend pas 
+          options_generales.base_de_travail = 2,3,4,...
+          mais
+          options_generales.base_de_reference = 1
+        */
+        /* this.__gi1.ma_trace1('options_generales.base_de_reference=',options_generales.base_de_reference); */
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_reference , donnees_retournees , options_generales );
         /* sélection du champ à modifier */
         let criteres_select_375={"T0_chi_id_projet" : form['chi_id_projet']};
-        let tt375=await this.__gi1.sql_iii( 375 , criteres_select_375 , donnees_retournees , __db1 );
-        if(tt375[__xst] !== __xsu){
+        let tt375=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
+         FROM b1.tbl_projets T0
+        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
+        ;
+        */
+        /*sql_inclure_fin*/ 375 , criteres_select_375 , donnees_retournees , __db1 );
+        if(tt375[__xst] !== __xsu || tt375[__xva].length !== 1){
             this.__gi1.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__gi1.nl2() );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        if(tt375[__xst] === __xsu && tt375[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt375[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
-            }
-            let donnees_sql={
-                "c_chi_id_projet" : form['chi_id_projet'] ,
-                "n_chp_nom_projet" : form['chp_nom_projet'] ,
-                "n_cht_commentaire_projet" : form['cht_commentaire_projet'] === '' ? ( null ) : ( form['cht_commentaire_projet'] ) ,
-            };
-            this.__gi1.ma_trace1('donnees_sql',donnees_sql);
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt384=await this.__gi1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_projets SET 
-               `chp_nom_projet` = :n_chp_nom_projet , 
-               `cht_commentaire_projet` = :n_cht_commentaire_projet , 
-            WHERE `chi_id_projet` = :c_chi_id_projet ;
-            */
-            /*sql_inclure_fin*/ 384 , donnees_sql , donnees_retournees , __db1 );
-            this.__gi1.ma_trace1('tt384',tt384);
-            if(tt384[__xst] !== __xsu){
-                if(tt384['__xme'] !== ''){
-                    this.__gi1.__xsi[__xer].push( tt384['__xme'] + ' [' + this.__gi1.nl2() );
-                }else{
-                    this.__gi1.__xsi[__xer].push( 'erreur de modification [' + this.__gi1.nl2() );
-                }
-                donnees_retournees.__xst=__xer;
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt375[__xva][0] , __db1 );
-//            this.__gi1.ma_trace1('__taam=',__taam);
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__gi1.__xsi[__xer].push( 'erreur après modification [' + this.__gi1.nl2() );
-                donnees_retournees.__xst=__xer;
-                return({"__xst" : __xer});
-            }
-            /*#
-              // Pas de retour à la liste ici
-              if(retour_a_la_liste === true){
-                  if(form['__mat_liste_si_ok']){
-                      this.__gi1.ma_trace1('form[__mat_liste_si_ok]='+form['__mat_liste_si_ok']);
-                      let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                      let d=1;
-                      await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales , __db1 );
-                  }
-                  return({"__xst" : __xsu});
-              }
-            */
-            this.__gi1.ma_trace1('avant');
-            await __db1.exec( 'COMMIT;' );
-//            let tt375_bis=await this.__gi1.sql_iii(375 , criteres_select_375 , donnees_retournees , __db1 );
-            this.__gi1.ma_trace1('apres');
-            donnees_retournees[__xva]['page_modification1']=tt375;
-        }else{
-            donnees_retournees[__xva]['page_modification1']=tt375;
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt375[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+            return({"__xst" : __xer});
         }
+        let donnees_sql={
+            "c_chi_id_projet" : form['chi_id_projet'] ,
+            "n_chp_nom_projet" : form['chp_nom_projet'] ,
+            "n_cht_commentaire_projet" : form['cht_commentaire_projet'] === '' ? ( null ) : ( form['cht_commentaire_projet'] )
+        };
+        /* this.__gi1.ma_trace1('donnees_sql',donnees_sql); */
+        /* await __db1.exec( 'BEGIN TRANSACTION;' ); */
+        let tt384=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_projets SET 
+           `chp_nom_projet` = :n_chp_nom_projet , 
+           `cht_commentaire_projet` = :n_cht_commentaire_projet
+        WHERE `chi_id_projet` = :c_chi_id_projet ;
+        */
+        /*sql_inclure_fin*/ 384 , donnees_sql , donnees_retournees , __db1 );
+        /* this.__gi1.ma_trace1('tt384',tt384); */
+        if(tt384[__xst] !== __xsu){
+            if(tt384['__xme'] !== ''){
+                this.__gi1.__xsi[__xer].push( tt384['__xme'] + ' [' + this.__gi1.nl2() );
+            }else{
+                this.__gi1.__xsi[__xer].push( 'erreur de modification [' + this.__gi1.nl2() );
+            }
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
+        }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt375[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            this.__gi1.__xsi[__xer].push( 'erreur après modification [' + this.__gi1.nl2() );
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
+        }
+        /* this.__gi1.ma_trace1('apres'); */
+        donnees_retournees[__xva]['page_modification1']=tt375;
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
@@ -521,7 +515,15 @@ class projets1{
         if(__db1 === null){
             __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_reference , donnees_retournees , options_generales );
         }
-        let tt375=await this.__gi1.sql_iii( 375 , {"T0_chi_id_projet" : chi_id_projet} , donnees_retournees , __db1 );
+        let tt375=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
+         FROM b1.tbl_projets T0
+        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
+        ;
+        */
+        /*sql_inclure_fin*/ 375 , {"T0_chi_id_projet" : chi_id_projet} , donnees_retournees , __db1 );
         if(tt375[__xst] !== __xsu){
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
@@ -553,7 +555,15 @@ class projets1{
              /*  */
             "T0_chi_id_projet" : form['chi_id_projet']
         };
-        let tt375=await this.__gi1.sql_iii( 375 , criteres_375 , donnees_retournees , __db1 );
+        let tt375=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
+         FROM b1.tbl_projets T0
+        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
+        ;
+        */
+        /*sql_inclure_fin*/ 375 , criteres_375 , donnees_retournees , __db1 );
         if(tt375[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
             donnees_retournees.__xst=__xer;
@@ -612,7 +622,15 @@ class projets1{
         }
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_reference , donnees_retournees , options_generales );
         let critere_375={"T0_chi_id_projet" : chi_id_projet};
-        let tt375=await this.__gi1.sql_iii( 375 , critere_375 , donnees_retournees , __db1 );
+        let tt375=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
+         FROM b1.tbl_projets T0
+        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
+        ;
+        */
+        /*sql_inclure_fin*/ 375 , critere_375 , donnees_retournees , __db1 );
         donnees_retournees[__xva]['page_confirmation_supprimer1']=tt375;
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
@@ -644,7 +662,7 @@ class projets1{
         let donnees_sql={
             "donnees" : [{
                         "chp_nom_projet" : form['chp_nom_projet'] ,
-                        "cht_commentaire_projet" : form['cht_commentaire_projet'] === '' ? ( null ) : ( form['cht_commentaire_projet'] ) ,
+                        "cht_commentaire_projet" : form['cht_commentaire_projet'] === '' ? ( null ) : ( form['cht_commentaire_projet'] )
                     }]
         };
         /*  */
@@ -654,10 +672,10 @@ class projets1{
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_projets`(
             `chp_nom_projet` , 
-            `cht_commentaire_projet` 
+            `cht_commentaire_projet`
         ) VALUES (
             :chp_nom_projet , 
-            :cht_commentaire_projet 
+            :cht_commentaire_projet
         );
         */
         /*sql_inclure_fin*/ 377 , donnees_sql , donnees_retournees , __db1 );

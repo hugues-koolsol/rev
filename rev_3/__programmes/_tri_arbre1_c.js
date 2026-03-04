@@ -1,7 +1,7 @@
 /*
   tri un arbre <ul id="aa"><Li><ul><li><li></ul></ul>
 */
-class v_tri_arbre1{
+class _tri_arbre1{
     #racine_html=null;
     arbre=[];
     #id_div='';
@@ -1037,4 +1037,4 @@ class v_tri_arbre1{
         }
     }
 }
-export{v_tri_arbre1 as v_tri_arbre1};
+export{_tri_arbre1 as _tri_arbre1};

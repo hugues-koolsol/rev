@@ -1354,7 +1354,7 @@ class sources1{
             this.__gi1.__xsi[__xer].push( 'la valeur pour "autorisation globale" doit être renseigné [' + this.__gi1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        if(!(form['che_binaire_source'] === 1 && form['chx_dossier_id_source'] === 8)){
+        if(form['che_binaire_source'] === 1 && form['chx_dossier_id_source'] !== 8){
             this.__gi1.__xsi[__xer].push( 'un fichier binaire doit être dans le dossier _fichiers_binaires [' + this.__gi1.nl2() + ']' );
             return({"__xst" : __xer});
         }

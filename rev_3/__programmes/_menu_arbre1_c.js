@@ -3,7 +3,7 @@
   #dessine_l_arbre
   construit_html_de_arbre
 */
-class menu_arbre1{
+class _menu_arbre1{
     #racine_html=null;
     arbre=[];
     #id_div='';
@@ -812,4 +812,4 @@ class menu_arbre1{
         }
     }
 }
-export{menu_arbre1 as menu_arbre1};
+export{_menu_arbre1 as _menu_arbre1};

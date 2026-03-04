@@ -26,7 +26,7 @@ const __xac='__xac';
 */
 import {__rev1} from './f0?n0=__rev1_.js';
 import {__fnt1} from './f0?n0=__fnt1_.js';
-import {menu_arbre1} from './f0?n0=_menu_arbre1_c.js';
+import {_menu_arbre1} from './f0?n0=_menu_arbre1_c.js';
 class __gi1{
     moi='__gi1';
     _CA_=0;
@@ -212,7 +212,7 @@ class __gi1{
         let un_message_trouve=false;
         let un_message_d_erreur_trouve=false;
         for(let i in le_message.__xsi){
-            if((i === '__xer' || i === '__xal' || i === '0' || i === '2') && le_message.__xsi[i].length > 0){
+            if((i === '__xer' || i === '__xal' || i === '0' || i === '2' || i === '4') && le_message.__xsi[i].length > 0){
                 un_message_d_erreur_trouve=true;
             }
             for(let j in le_message.__xsi[i]){
@@ -274,7 +274,7 @@ class __gi1{
             return({"__xst" : __xsu});
         }
     }
-    /* 
+    /*
       =============================================================================================================
     */
     arrayBufferToArray( buffer , TypedArrayConstructor=Uint8Array ){
@@ -1265,9 +1265,11 @@ class __gi1{
       =============================================================================================================
     */
     ajoute_message( obj ){
-        if(this.__deverminage === 0 && obj.hasOwnProperty( '__xst' ) && parseInt( obj.__xst , 10 ) === __xdv){
-            return;
-        }
+        /*#
+          if(this.__deverminage === 0 && obj.hasOwnProperty( '__xst' ) && parseInt( obj.__xst , 10 ) === __xdv){
+              return;
+          }
+        */
         /* ancien empiler_erreur */
         let message='';
         if(obj.hasOwnProperty( '__xme' )){
@@ -1912,7 +1914,7 @@ class __gi1{
                     "max" : 360 ,
                     "valeur" : 0 ,
                     "dimension" : 'deg' ,
-                    "valeurs" : [
+                    "valeurs":[
                         /* tbel */
                         0,10,20,30,40,50,60,70,80,90                ,100,110,120,130,140,150,160,170,180,190
                         ,200,210,220,230,240,250,260,270,280,290                ,300,310,320,330,340,350,360] ,
@@ -2789,7 +2791,7 @@ class __gi1{
             "background_color" : 'var(--c_coul_fond1)' ,
             "class_du_bouton_replier" : 'rev_bouton'
         };
-        var menu1=new menu_arbre1( elt.id , options1 );
+        var menu1=new _menu_arbre1( elt.id , options1 );
     }
     /*
       =============================================================================================================
