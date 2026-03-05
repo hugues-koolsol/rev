@@ -1034,5 +1034,33 @@
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
     "cht_rev_requete": "supprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_dossiers,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_dossier`),:chi_id_dossier))\n)  "
+  },
+  "411": {
+    "cht_sql_requete": "SELECT \n`T0`.`chx_source_rev` , `T0`.`chp_parent_rev`\n FROM b1.tbl_revs T0\nWHERE (`T0`.`chp_provenance_rev` = 'source'\n   AND `T0`.`chp_valeur_rev` = :T0_chp_valeur_rev\n   AND `T0`.`chp_type_rev` = 'c')\n;",
+    "cht_commentaire_requete": "tbl_revs",
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chx_source_rev`),champ(`T0`,`chp_parent_rev`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_revs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chp_provenance_rev`),'source'),egal(champ(`T0`,`chp_valeur_rev`),:T0_chp_valeur_rev),egal(champ(`T0`,`chp_type_rev`),'c'))\n   )\n)  "
+  },
+  "412": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chp_parent_rev`\n FROM b1.tbl_revs T0\nWHERE (`T0`.`chp_provenance_rev` = 'source'\r\n   AND `T0`.`chp_valeur_rev` = 'p'\r\n   AND `T0`.`chp_type_rev` = 'f'\r\n   AND `T0`.`chx_source_rev` IN :T0_chx_source_rev\r\n   AND `T0`.`chp_id_rev` IN :T0_chp_id_rev)\n;",
+    "cht_commentaire_requete": "tbl_revs",
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chp_parent_rev`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_revs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         egal(champ(`T0`,`chp_provenance_rev`),'source'),\n         egal(champ(`T0`,`chp_valeur_rev`),'p'),\n         egal(champ(`T0`,`chp_type_rev`),'f'),\n         dans(champ(`T0`,`chx_source_rev`),:T0_chx_source_rev),\n         dans(champ(`T0`,`chp_id_rev`),:T0_chp_id_rev)\n      )\n   )\n)  "
+  },
+  "413": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chp_id_rev`\n FROM b1.tbl_revs T0\nWHERE (`T0`.`chp_provenance_rev` = 'source'\r\n   AND `T0`.`chp_valeur_rev` = 'nomf'\r\n   AND `T0`.`chp_type_rev` = 'f'\r\n   AND `T0`.`chx_source_rev` IN :T0_chx_source_rev\r\n   AND `T0`.`chp_parent_rev` IN :T0_chp_parent_rev)\n;",
+    "cht_commentaire_requete": "tbl_revs",
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chp_id_rev`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_revs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         egal(champ(`T0`,`chp_provenance_rev`),'source'),\n         egal(champ(`T0`,`chp_valeur_rev`),'nomf'),\n         egal(champ(`T0`,`chp_type_rev`),'f'),\n         dans(champ(`T0`,`chx_source_rev`),:T0_chx_source_rev),\n         dans(champ(`T0`,`chp_parent_rev`),:T0_chp_parent_rev)\n      )\n   )\n)  "
+  },
+  "414": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chp_id_rev` , `T0`.`chx_source_rev`\n FROM b1.tbl_revs T0\nWHERE (`T0`.`chp_provenance_rev` = 'source'\r\n   AND `T0`.`chp_valeur_rev` = 'sql_iii'\r\n   AND `T0`.`chp_type_rev` = 'c'\r\n   AND `T0`.`chx_source_rev` IN :T0_chx_source_rev\r\n   AND `T0`.`chp_parent_rev` IN :T0_chp_parent_rev)\n;",
+    "cht_commentaire_requete": "tbl_revs",
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chp_id_rev`),champ(`T0`,`chx_source_rev`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_revs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         egal(champ(`T0`,`chp_provenance_rev`),'source'),\n         egal(champ(`T0`,`chp_valeur_rev`),'sql_iii'),\n         egal(champ(`T0`,`chp_type_rev`),'c'),\n         dans(champ(`T0`,`chx_source_rev`),:T0_chx_source_rev),\n         dans(champ(`T0`,`chp_parent_rev`),:T0_chp_parent_rev)\n      )\n   )\n)  "
   }
 }

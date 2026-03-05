@@ -827,6 +827,7 @@ class sources1{
                 a_sauvegarder.donnees=[];
             }
         }
+        this.__gi1.ma_trace1('a_sauvegarder.donnees.length=',a_sauvegarder.donnees.length);
         if(a_sauvegarder.donnees.length > 0){
             let tt358=await this.__gi1.sql_iii(
             /*sql_inclure_deb*/ /*#

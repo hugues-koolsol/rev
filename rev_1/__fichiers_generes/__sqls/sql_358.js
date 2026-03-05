@@ -31,8 +31,10 @@ class sql_358{
       ) VALUES 
         `;
         let liste_des_valeurs='';
+        let numero=0;
         try{
             for(let i=0;i < par.donnees.length;i++){
+                numero=i;
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
@@ -56,6 +58,7 @@ class sql_358{
                 liste_des_valeurs+=')';
             }
             let res=0;
+            
             let nouvel_id=-1;
             if(liste_des_valeurs!==''){
                 sql0+=liste_des_valeurs;
@@ -79,6 +82,7 @@ class sql_358{
                 "nouvel_id" : nouvel_id
             };
         }catch(e){
+            this.__gi1.ma_trace1('numero='+numero, par.donnees.length , par.donnees[numero]);
             if(this.__gi1.__deverminage===1){
                 this.__gi1.__xsi[__xdv].push(this.__gi1.nl2(e));
             }else if(this.__gi1.__deverminage===2){
