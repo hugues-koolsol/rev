@@ -31,19 +31,17 @@ class sql_358{
       ) VALUES 
         `;
         let liste_des_valeurs='';
-        let numero=0;
         try{
             for(let i=0;i < par.donnees.length;i++){
-                numero=i;
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_provenance_rev'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_provenance_rev'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chx_source_rev'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_id_rev'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_valeur_rev'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_type_rev'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_valeur_rev'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_type_rev'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_niveau_rev'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_quotee_rev'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_pos_premier_rev'] ) + ''+',';
@@ -54,11 +52,10 @@ class sql_358{
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_profondeur_rev'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_pos_ouver_parenthese_rev'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_enfant_suivant_rev'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_commentaire_rev'] ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_commentaire_rev'] ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;
-            
             let nouvel_id=-1;
             if(liste_des_valeurs!==''){
                 sql0+=liste_des_valeurs;
@@ -82,7 +79,6 @@ class sql_358{
                 "nouvel_id" : nouvel_id
             };
         }catch(e){
-            this.__gi1.ma_trace1('numero='+numero, par.donnees.length , par.donnees[numero]);
             if(this.__gi1.__deverminage===1){
                 this.__gi1.__xsi[__xdv].push(this.__gi1.nl2(e));
             }else if(this.__gi1.__deverminage===2){

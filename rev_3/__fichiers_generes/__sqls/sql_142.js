@@ -26,7 +26,7 @@ class sql_142{
                 liste_des_valeurs+='(';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chx_acces_autorisation'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chx_source_autorisation'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_nom_autorisation'] ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_nom_autorisation'] ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

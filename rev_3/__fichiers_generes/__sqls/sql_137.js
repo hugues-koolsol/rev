@@ -24,7 +24,7 @@ class sql_137{
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_nom_acces'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_nom_acces'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chx_groupe_acces'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chx_metier_acces'] ) + '';
                 liste_des_valeurs+=')';

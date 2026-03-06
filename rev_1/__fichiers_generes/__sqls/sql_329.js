@@ -44,29 +44,29 @@ class sql_329{
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_nom_genre'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_nom_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_ordre_genre'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_prefixe_genre'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_espece_genre'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_prefixe_genre'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_espece_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_longueur_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_est_primaire_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_est_incrément_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_est_obligatoire_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_a_init_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_init_est_mot_genre'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['cht_valeur_init_genre'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['cht_valeur_init_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_est_parmis_genre'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['cht_parmis_genre'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['cht_fonctions_genre'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['cht_parmis_genre'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['cht_fonctions_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_est_nur_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_est_tsm_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_est_tsc_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(donnees_retournees.date_heure_serveur)+''+',';
                 liste_des_valeurs+='\r\n      '+this.__gi1.__fnt1.sq1(donnees_retournees.date_heure_serveur)+''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_est_session_genre'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_nom_en_session_genre'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_nom_en_session_genre'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_est_positif_genre'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['cht_particularités_genre'] ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['cht_particularités_genre'] ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

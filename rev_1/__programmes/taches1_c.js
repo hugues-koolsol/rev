@@ -231,6 +231,9 @@ class taches1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__gi1.__fnt1.boutons_suppression1( 'chp_texte_tache' );
+        o1+='</div>\r\n';
         o1+='            <textarea disabled id="chp_texte_tache" rows="2"  cols="50" >' + this.__gi1.fi2( enreg['T0.chp_texte_tache'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';

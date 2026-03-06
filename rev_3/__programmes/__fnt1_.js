@@ -1021,27 +1021,6 @@ class __fnt1{
         }
         return '';
     }
-    /*
-      =============================================================================================================
-    */
-    sq1( s ){
-        if(this.__gi1.est_num( s )){
-            return s;
-        }else if(s === null){
-            return 'NULL';
-        }else if(s === undefined){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
-        }else if( typeof s !== 'string'){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 n\'est pas une valeur de type "string"' );
-        }
-        /* cette fonction remplace les apostrophes par des doubles apostrophes */
-        let s1=s.replace( /\'/g , '\'\'' );
-        /* SQLite3::escapeString(s); */
-        s1=this.strtr( s1 , this.tab_de_remplacement1 );
-        return('\'' + s1 + '\'');
-    }
     /*#
        =====================================================================================================================
       * JavaScript equivalent of PHP's strtr()
@@ -1077,6 +1056,26 @@ class __fnt1{
             return result;
         }
         throw new Error( "Invalid arguments for strtr()" );
+    }
+    /*
+      =============================================================================================================
+      si s=0o777, on veut quand même mettre cette valeur en texte donc on ne teste pas est_num
+    */
+    sq4( s ){
+        if(s === null){
+            return 'NULL';
+        }else if(s === undefined){
+            let e1=(new Error()).stack;
+            throw new Error( 'le paramètre de sq1 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+        }else if( typeof s !== 'string'){
+            let e1=(new Error()).stack;
+            throw new Error( 'le paramètre de sq1 n\'est pas une valeur de type "string"' );
+        }
+        /* cette fonction remplace les apostrophes par des doubles apostrophes */
+        let s1=s.replace( /\'/g , '\'\'' );
+        /* SQLite3::escapeString(s); */
+        s1=this.strtr( s1 , this.tab_de_remplacement1 );
+        return('\'' + s1 + '\'');
     }
     /*
       =============================================================================================================
@@ -1133,7 +1132,29 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    sq1( s ){
+        if(this.__gi1.est_num( s )){
+            return s;
+        }else if(s === null){
+            return 'NULL';
+        }else if(s === undefined){
+            let e1=(new Error()).stack;
+            throw new Error( 'le paramètre de sq1 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+        }else if( typeof s !== 'string'){
+            let e1=(new Error()).stack;
+            throw new Error( 'le paramètre de sq1 n\'est pas une valeur de type "string"' );
+        }
+        /* cette fonction remplace les apostrophes par des doubles apostrophes */
+        let s1=s.replace( /\'/g , '\'\'' );
+        /* SQLite3::escapeString(s); */
+        s1=this.strtr( s1 , this.tab_de_remplacement1 );
+        return('\'' + s1 + '\'');
+    }
+    /*
+      =============================================================================================================
+    */
     sq0( s ){
+        this.__gi1.ma_trace1('s=',s,this.__gi1.est_num( s ));
         if(this.__gi1.est_num( s )){
             return s;
         }else if(s === null){

@@ -286,10 +286,10 @@ class projets1{
         /* suppression de l'ancien dossier rev_nnn */
         try{
             /* this.__gi1.ma_trace1('\n\n*******\nchemin='+chemin+'\nchemin_absolu_sauvegarde'+chemin_absolu_sauvegarde); */
-            await Deno.remove( chemin , {recursive : true} );
+            await Deno.remove( chemin , {"recursive" : true} );
             return({"__xst" : __xsu});
         }catch(e){
-            this.__gi1.ma_trace1('e=',e);
+            this.__gi1.ma_trace1( 'e=' , e );
             this.__gi1.__xsi[__xer].push( 'erreur de renommage du fichier "' + chemin + '" vers "' + chemin_absolu_sauvegarde + '"' + this.__gi1.nl2( e ) );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});

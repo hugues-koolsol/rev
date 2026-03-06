@@ -23,8 +23,8 @@ class sql_377{
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_nom_projet'] ) + ''+',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['cht_commentaire_projet'] ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_nom_projet'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['cht_commentaire_projet'] ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

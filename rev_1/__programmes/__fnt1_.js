@@ -728,6 +728,17 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    boutons_suppression1( nom_de_la_zone ){
+        /* let svg_copier_la_selection='<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el" viewBox="0 0  100 100"><rect x="7" y="6" width="0" height="0" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect><path d=" M 18 10 C 24 10 31 10 38 10 C 40 2 56 2 59 10 C 65 10 72 10 79 10 C 82 10 84 13 84 16 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 16 c 0 -3 2 -6 5 -6 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:4;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="24" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>'; */
+        let o1='';
+        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__gi1.les_svg.copier_tout + '</div>\r\n';
+        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__gi1.les_svg.agrandir + '</div>\r\n';
+        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__gi1.les_svg.retrecir + '</div>\r\n';
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
     boutons_edition1( nom_de_la_zone ){
         /* let svg_copier_la_selection='<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el" viewBox="0 0  100 100"><rect x="7" y="6" width="0" height="0" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect><path d=" M 18 10 C 24 10 31 10 38 10 C 40 2 56 2 59 10 C 65 10 72 10 79 10 C 82 10 84 13 84 16 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 16 c 0 -3 2 -6 5 -6 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:4;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="24" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>'; */
         let o1='';
@@ -1021,27 +1032,6 @@ class __fnt1{
         }
         return '';
     }
-    /*
-      =============================================================================================================
-    */
-    sq1( s ){
-        if(this.__gi1.est_num( s ) ){
-            return s;
-        }else if(s === null){
-            return 'NULL';
-        }else if(s === undefined){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
-        }else if( typeof s !== 'string'){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 n\'est pas une valeur de type "string"' );
-        }
-        /* cette fonction remplace les apostrophes par des doubles apostrophes */
-        let s1=s.replace( /\'/g , '\'\'' );
-        /* SQLite3::escapeString(s); */
-        s1=this.strtr( s1 , this.tab_de_remplacement1 );
-        return('\'' + s1 + '\'');
-    }
     /*#
        =====================================================================================================================
       * JavaScript equivalent of PHP's strtr()
@@ -1077,6 +1067,26 @@ class __fnt1{
             return result;
         }
         throw new Error( "Invalid arguments for strtr()" );
+    }
+    /*
+      =============================================================================================================
+      si s=0o777, on veut quand même mettre cette valeur en texte donc on ne teste pas est_num
+    */
+    sq4( s ){
+        if(s === null){
+            return 'NULL';
+        }else if(s === undefined){
+            let e1=(new Error()).stack;
+            throw new Error( 'le paramètre de sq1 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+        }else if( typeof s !== 'string'){
+            let e1=(new Error()).stack;
+            throw new Error( 'le paramètre de sq1 n\'est pas une valeur de type "string"' );
+        }
+        /* cette fonction remplace les apostrophes par des doubles apostrophes */
+        let s1=s.replace( /\'/g , '\'\'' );
+        /* SQLite3::escapeString(s); */
+        s1=this.strtr( s1 , this.tab_de_remplacement1 );
+        return('\'' + s1 + '\'');
     }
     /*
       =============================================================================================================
@@ -1129,6 +1139,27 @@ class __fnt1{
         }else{
             return('\'%' + s1 + '%\'');
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    sq1( s ){
+        if(this.__gi1.est_num( s )){
+            return s;
+        }else if(s === null){
+            return 'NULL';
+        }else if(s === undefined){
+            let e1=(new Error()).stack;
+            throw new Error( 'le paramètre de sq1 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+        }else if( typeof s !== 'string'){
+            let e1=(new Error()).stack;
+            throw new Error( 'le paramètre de sq1 n\'est pas une valeur de type "string"' );
+        }
+        /* cette fonction remplace les apostrophes par des doubles apostrophes */
+        let s1=s.replace( /\'/g , '\'\'' );
+        /* SQLite3::escapeString(s); */
+        s1=this.strtr( s1 , this.tab_de_remplacement1 );
+        return('\'' + s1 + '\'');
     }
     /*
       =============================================================================================================

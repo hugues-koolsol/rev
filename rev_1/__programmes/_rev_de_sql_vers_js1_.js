@@ -503,7 +503,15 @@ class _rev_de_sql_vers_js1{
                 ){
                     tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \'+this.__gi1.__fnt1.sq1(\'0\')+\'\'' );
                 }else{
-                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      ' + obj3.tableau_des_valeurs_pour_insert_js[i][0] + '\'' );
+                    let spec=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ.chp_espece_genre.toLowerCase();
+                    if(spec === 'varchar' || spec === 'text'){
+                        /* debugger */
+                        let s01=obj3.tableau_des_valeurs_pour_insert_js[i][0];
+                        s01=s01.replace( /__fnt1\.sq1\(/g , '__fnt1.sq4(' );
+                        tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      ' + s01 + '\'' );
+                    }else{
+                        tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      ' + obj3.tableau_des_valeurs_pour_insert_js[i][0] + '\'' );
+                    }
                 }
             }
             /* this.__gi1.ma_trace1('tableau_des_insert=',tableau_des_insert); */

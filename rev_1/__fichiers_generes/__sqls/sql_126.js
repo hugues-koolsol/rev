@@ -23,7 +23,7 @@ class sql_126{
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_nom_metier'] ) + ''+',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_nom_metier'] ) + ''+',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chx_parent_metier'] ) + '';
                 liste_des_valeurs+=')';
             }

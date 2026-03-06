@@ -885,14 +885,11 @@ class v_svg_bdd1{
             }
             liste_des_projets=tt316[__xva];
         }
-        
         for(let i in options_generales.bdd_ouvertes){
             try{
                 await options_generales.bdd_ouvertes[i].base.close();
             } catch {}
         }
-        
-        
         let chemin_bdd='../rev_' + donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
         if(!(await this.__gi1.is_file( chemin_bdd ))){
             this.__gi1.__xsi[__xer].push( ' le fichier de la base n\'existe pas [' + this.__gi1.nl2() );
@@ -908,24 +905,21 @@ class v_svg_bdd1{
             return({"__xst" : __xer});
         }
         let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA journal_mode=WAL;'];
-        
         let la_requete=donnees_recues[__xva]['source_sql'];
-        
-        if(la_requete.indexOf('ADD COLUMN')>=0){
+        if(la_requete.indexOf( 'ADD COLUMN' ) >= 0){
             let regex=/\/\*[\s\S]*?\*\//g;
-            la_requete=la_requete.replace( regex , '' ).replace(/\n/g ,' ').replace(/\r/g ,' ');
-            this.__gi1.ma_trace1('la_requete='+la_requete);
-            les_pragma_set.push('PRAGMA foreign_keys=OFF;');
+            la_requete=la_requete.replace( regex , '' ).replace( /\n/g , ' ' ).replace( /\r/g , ' ' );
+            this.__gi1.ma_trace1( 'la_requete=' + la_requete );
+            les_pragma_set.push( 'PRAGMA foreign_keys=OFF;' );
         }else{
-            /* 
+            /*
               ajouter une colonne aver reference non nulle et valeur par défaut ne fonctionne pas 
               par exemple si on ajoute un champ chx_id_dossier à le table projet avec comme valeur par défaut 1
               on a une erreur !
             */
-            this.__gi1.ma_trace1(' on ajoute foreign key');
-            les_pragma_set.push('PRAGMA foreign_keys=ON;');
+            this.__gi1.ma_trace1( ' on ajoute foreign key' );
+            les_pragma_set.push( 'PRAGMA foreign_keys=ON;' );
         }
-        
         for(let i in les_pragma_set){
             let a=await db1temp.exec( les_pragma_set[i] );
         }
@@ -935,20 +929,18 @@ class v_svg_bdd1{
             await db1temp.close();
             this.__gi1.__xsi[__xsu].push( 'la base ' + id_bdd_de_la_base + ' a bien été modifiée contexte(' + contexte + ')' );
         }catch(e){
-            if(e.stack.indexOf('duplicate column name')>=0 && la_requete.indexOf('ADD COLUMN')>=0 ){
-                this.__gi1.ma_trace1('e=',e,'\n la_requete='+la_requete);
+            if(e.stack.indexOf( 'duplicate column name' ) >= 0 && la_requete.indexOf( 'ADD COLUMN' ) >= 0){
+                this.__gi1.ma_trace1( 'e=' , e , '\n la_requete=' + la_requete );
                 this.__gi1.__xsi[__xal].push( 'la colonne existe déjà dans la base ' + id_bdd_de_la_base + ' contexte(' + contexte + ')' );
-            }else if(e.stack.indexOf('no such column')>=0 && la_requete.indexOf('DROP COLUMN')>=0 ){
-                /* si la colonne a déjà été supprimée, ce n'est pas vraiment une erreur*/
+            }else if(e.stack.indexOf( 'no such column' ) >= 0 && la_requete.indexOf( 'DROP COLUMN' ) >= 0){
+                /* si la colonne a déjà été supprimée, ce n'est pas vraiment une erreur */
                 this.__gi1.__xsi[__xal].push( 'la colonne a déjà été supprimée de la base ' + id_bdd_de_la_base + ' contexte(' + contexte + ')' );
                 await db1temp.close();
             }else{
-                this.__gi1.ma_trace1( 'bug dans la requête ' + la_requete +  e.stack );
+                this.__gi1.ma_trace1( 'bug dans la requête ' + la_requete + e.stack );
                 await db1temp.close();
                 this.__gi1.__xsi[__xer].push( ' erreur d\'exécution de la requête de la base ' + chemin_bdd + ' <pre>' + la_requete + '</pre> [' + this.__gi1.nl2( e ) );
-                if(la_requete.indexOf( 'DROP' ) >= 0
-                       && la_requete.indexOf( 'COLUMN' ) >= 0
-                ){
+                if(la_requete.indexOf( 'DROP' ) >= 0 && la_requete.indexOf( 'COLUMN' ) >= 0){
                     this.__gi1.__xsi[__xer].push( ' <b>REMARQUE : </b><br /> si la colonne à supprimer est la dernière de la table, il faut la déplacer en avant dernière position pour la supprimer ' );
                 }
                 donnees_retournees.__xst=__xer;
@@ -984,12 +976,12 @@ class v_svg_bdd1{
                             await db1temp.close();
                             this.__gi1.__xsi[__xsu].push( 'la base ' + v1['T0.chi_id_projet'] + ' a bien été modifiée contexte(' + contexte + ')' );
                         }catch(e){
-                            if(e.stack.indexOf('duplicate column name')>=0 && la_requete.indexOf('ADD COLUMN')>=0 ){
-                                this.__gi1.ma_trace1('e=',e,'\n la_requete='+la_requete);
+                            if(e.stack.indexOf( 'duplicate column name' ) >= 0 && la_requete.indexOf( 'ADD COLUMN' ) >= 0){
+                                this.__gi1.ma_trace1( 'e=' , e , '\n la_requete=' + la_requete );
                                 this.__gi1.__xsi[__xal].push( 'la colonne existe déjà dans la base ' + v1['T0.chi_id_projet'] + ' contexte(' + contexte + ')' );
                                 await db1temp.close();
-                            }else if(e.stack.indexOf('no such column')>=0 && la_requete.indexOf('DROP COLUMN')>=0 ){
-                                this.__gi1.ma_trace1('e=',e,'\n la_requete='+la_requete);
+                            }else if(e.stack.indexOf( 'no such column' ) >= 0 && la_requete.indexOf( 'DROP COLUMN' ) >= 0){
+                                this.__gi1.ma_trace1( 'e=' , e , '\n la_requete=' + la_requete );
                                 this.__gi1.__xsi[__xal].push( 'la colonne a déjà été supprimée de la base ' + v1['T0.chi_id_projet'] + ' contexte(' + contexte + ')' );
                                 await db1temp.close();
                             }else{

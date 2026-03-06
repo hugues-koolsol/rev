@@ -833,10 +833,8 @@ class requetes1{
             return({"__xst" : __xer});
         }
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-
         let liste_des_sources_utilisant_cette_requete={};
-        
-        /*
+        /*#
           exemple pour sql_110
           appelf(
              element(this.__gi1),
@@ -846,21 +844,28 @@ class requetes1{
              p(donnees_retournees),
              p(__db1)
           )
-          
         */
-        
         let critere_411={"T0_chp_valeur_rev" : chi_id_requete};
         /*
           SELECT `T0`.`chx_source_rev` , `T0`.`chp_parent_rev` FROM  tbl_revs T0     WHERE (`T0`.`chp_provenance_rev` = 'source'  AND `T0`.`chp_valeur_rev` = 110  AND `T0`.`chp_type_rev` = 'c');
           recherche des parents des éléments qui contiennent 110 pour obtenir les id de 'p'
         */
-        let tt411=await this.__gi1.sql_iii( 411 , critere_411 , donnees_retournees , __db1 );
+        let tt411=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chx_source_rev` , `T0`.`chp_parent_rev`
+         FROM b1.tbl_revs T0
+        WHERE (`T0`.`chp_provenance_rev` = 'source'
+           AND `T0`.`chp_valeur_rev` = :T0_chp_valeur_rev
+           AND `T0`.`chp_type_rev` = 'c')
+        ;
+        */
+        /*sql_inclure_fin*/ 411 , critere_411 , donnees_retournees , __db1 );
         if(tt411[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__gi1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        
-        if(tt411[__xva].length>0){
+        if(tt411[__xva].length > 0){
             /* this.__gi1.ma_trace1('tt411[__xva]=',tt411[__xva]); */
             /*
               position du 'p' de p(110)
@@ -873,57 +878,61 @@ class requetes1{
               110|1296
               110|17214
             */
-            let liste_des_chx_source_rev=''; 
-            let liste_des_chp_parent_rev_de_id_requete=''; 
+            let liste_des_chx_source_rev='';
+            let liste_des_chp_parent_rev_de_id_requete='';
             for(let i in tt411[__xva]){
-                liste_des_chx_source_rev+=','+tt411[__xva][i]['T0.chx_source_rev'];
-                liste_des_chp_parent_rev_de_id_requete+=','+tt411[__xva][i]['T0.chp_parent_rev'];
+                liste_des_chx_source_rev+=',' + tt411[__xva][i]['T0.chx_source_rev'];
+                liste_des_chp_parent_rev_de_id_requete+=',' + tt411[__xva][i]['T0.chp_parent_rev'];
             }
-            liste_des_chx_source_rev='(' + liste_des_chx_source_rev.substr(1) + ')';
-            liste_des_chp_parent_rev_de_id_requete='(' + liste_des_chp_parent_rev_de_id_requete.substr(1) + ')';
+            liste_des_chx_source_rev='(' + liste_des_chx_source_rev.substr( 1 ) + ')';
+            liste_des_chp_parent_rev_de_id_requete='(' + liste_des_chp_parent_rev_de_id_requete.substr( 1 ) + ')';
             /*
               this.__gi1.ma_trace1('liste_des_chx_source_rev='+liste_des_chx_source_rev);
               this.__gi1.ma_trace1('liste_des_chp_parent_rev_de_id_requete='+liste_des_chp_parent_rev_de_id_requete);
             */
-            
-                /*#
-                  SELECT `T0`.`chp_parent_rev` FROM  tbl_revs T0 WHERE (`T0`.`chp_provenance_rev` = 'source' AND `T0`.`chp_valeur_rev` = 'p' AND `T0`.`chp_type_rev` = 'f' 
-                           AND `T0`.`chx_source_rev` IN (83,91,91,93,93,110,110,110)
-                           AND `T0`.`chp_id_rev` IN ( 10520 , 2749 , 2804 , 2579 , 2634 , 642 , 1297 , 17224) )                
-                           
-                  recherche des éléments qui contiennent p et 
-                */
+            /*#
+              SELECT `T0`.`chp_parent_rev` FROM  tbl_revs T0 WHERE (`T0`.`chp_provenance_rev` = 'source' AND `T0`.`chp_valeur_rev` = 'p' AND `T0`.`chp_type_rev` = 'f' 
+                       AND `T0`.`chx_source_rev` IN (83,91,91,93,93,110,110,110)
+                       AND `T0`.`chp_id_rev` IN ( 10520 , 2749 , 2804 , 2579 , 2634 , 642 , 1297 , 17224) )                
+                       
+              recherche des éléments qui contiennent p et 
+            */
+            /*
+              [
+              { "T0.chp_parent_rev": 2746 } ,
+              { "T0.chp_parent_rev": 2801 } 
+              ]
+            */
+            if(liste_des_chx_source_rev !== ''){
                 /*
-                  [
-                    { "T0.chp_parent_rev": 2746 } ,
-                    { "T0.chp_parent_rev": 2801 } 
-                  ]
+                  recherche des parents de ces "p"
                 */
-            
-
-            if(liste_des_chx_source_rev!==''){
-                /*
-                 recherche des parents de ces "p"
+                let critere_412={"T0_chx_source_rev" : liste_des_chx_source_rev ,"T0_chp_id_rev" : liste_des_chp_parent_rev_de_id_requete};
+                let tt412=await this.__gi1.sql_iii(
+                /*sql_inclure_deb*/ /*#
+                SELECT 
+                `T0`.`chp_parent_rev`
+                 FROM b1.tbl_revs T0
+                WHERE (`T0`.`chp_provenance_rev` = 'source'
+                   AND `T0`.`chp_valeur_rev` = 'p'
+                   AND `T0`.`chp_type_rev` = 'f'
+                   AND `T0`.`chx_source_rev` IN :T0_chx_source_rev
+                   AND `T0`.`chp_id_rev` IN :T0_chp_id_rev)
+                ;
                 */
-                let critere_412={
-
-                    "T0_chx_source_rev" : liste_des_chx_source_rev ,
-                    "T0_chp_id_rev" : liste_des_chp_parent_rev_de_id_requete ,
-                };
-                let tt412=await this.__gi1.sql_iii( 412 , critere_412 , donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 412 , critere_412 , donnees_retournees , __db1 );
                 if(tt412[__xst] !== __xsu){
                     this.__gi1.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__gi1.nl2() + ']' );
                     return({"__xst" : __xer});
                 }
                 let liste_des_parents_des_p_chp_parent_rev='';
                 for(let i in tt412[__xva]){
-                    liste_des_parents_des_p_chp_parent_rev+=','+tt412[__xva][i]['T0.chp_parent_rev'];
+                    liste_des_parents_des_p_chp_parent_rev+=',' + tt412[__xva][i]['T0.chp_parent_rev'];
                 }
                 /* this.__gi1.ma_trace1('tt412[__xva]=',tt412[__xva]); */
-                if(liste_des_parents_des_p_chp_parent_rev!==''){
-                    liste_des_parents_des_p_chp_parent_rev='(' + liste_des_parents_des_p_chp_parent_rev.substr(1) + ')';
+                if(liste_des_parents_des_p_chp_parent_rev !== ''){
+                    liste_des_parents_des_p_chp_parent_rev='(' + liste_des_parents_des_p_chp_parent_rev.substr( 1 ) + ')';
                     /* this.__gi1.ma_trace1('liste_des_parents_des_p_chp_parent_rev='+liste_des_parents_des_p_chp_parent_rev); */
-                 
                     /*#
                       [
                         { "T0.chp_parent_rev": 10495 },
@@ -936,18 +945,26 @@ class requetes1{
                       ]
                     */
                     /*
-                     liste des enfants de ces id de type nomf
-                     SELECT `T0`.`chp_id_rev` FROM b1.tbl_revs T0 WHERE (`T0`.`chp_provenance_rev` = 'source'    AND `T0`.`chp_valeur_rev` = 'nomf'    AND `T0`.`chp_type_rev` = 'f'
+                      liste des enfants de ces id de type nomf
+                      SELECT `T0`.`chp_id_rev` FROM b1.tbl_revs T0 WHERE (`T0`.`chp_provenance_rev` = 'source'    AND `T0`.`chp_valeur_rev` = 'nomf'    AND `T0`.`chp_type_rev` = 'f'
+                      AND `T0`.`chx_source_rev` IN :T0_chx_source_rev
+                      AND `T0`.`chp_parent_rev` IN :T0_chp_parent_rev)
+                      ;
+                    */
+                    let critere_413={"T0_chx_source_rev" : liste_des_chx_source_rev ,"T0_chp_parent_rev" : liste_des_parents_des_p_chp_parent_rev};
+                    let tt413=await this.__gi1.sql_iii(
+                    /*sql_inclure_deb*/ /*#
+                    SELECT 
+                    `T0`.`chp_id_rev`
+                     FROM b1.tbl_revs T0
+                    WHERE (`T0`.`chp_provenance_rev` = 'source'
+                       AND `T0`.`chp_valeur_rev` = 'nomf'
+                       AND `T0`.`chp_type_rev` = 'f'
                        AND `T0`.`chx_source_rev` IN :T0_chx_source_rev
                        AND `T0`.`chp_parent_rev` IN :T0_chp_parent_rev)
-    ;
+                    ;
                     */
-                 
-                    let critere_413={
-                        "T0_chx_source_rev" : liste_des_chx_source_rev ,
-                        "T0_chp_parent_rev" : liste_des_parents_des_p_chp_parent_rev ,
-                    };
-                    let tt413=await this.__gi1.sql_iii( 413 , critere_413 , donnees_retournees , __db1 );
+                    /*sql_inclure_fin*/ 413 , critere_413 , donnees_retournees , __db1 );
                     if(tt413[__xst] !== __xsu){
                         this.__gi1.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__gi1.nl2() + ']' );
                         return({"__xst" : __xer});
@@ -957,23 +974,30 @@ class requetes1{
                     for(let i in tt413[__xva]){
                         liste_des_nomf_chp_id_rev+=',' + tt413[__xva][i]['T0.chp_id_rev'];
                     }
-                    if(liste_des_nomf_chp_id_rev!==''){
-                        liste_des_nomf_chp_id_rev='(' + liste_des_nomf_chp_id_rev.substr(1) + ')';
+                    if(liste_des_nomf_chp_id_rev !== ''){
+                        liste_des_nomf_chp_id_rev='(' + liste_des_nomf_chp_id_rev.substr( 1 ) + ')';
                         /* this.__gi1.ma_trace1('liste_des_nomf_chp_id_rev='+liste_des_nomf_chp_id_rev); */
-                        
-                        
-                        let critere_414={
-                            "T0_chx_source_rev" : liste_des_chx_source_rev ,
-                            "T0_chp_parent_rev" : liste_des_nomf_chp_id_rev ,
-                        };
-                        let tt414=await this.__gi1.sql_iii( 414 , critere_414 , donnees_retournees , __db1 );
+                        let critere_414={"T0_chx_source_rev" : liste_des_chx_source_rev ,"T0_chp_parent_rev" : liste_des_nomf_chp_id_rev};
+                        let tt414=await this.__gi1.sql_iii(
+                        /*sql_inclure_deb*/ /*#
+                        SELECT 
+                        `T0`.`chp_id_rev` , `T0`.`chx_source_rev`
+                         FROM b1.tbl_revs T0
+                        WHERE (`T0`.`chp_provenance_rev` = 'source'
+                           AND `T0`.`chp_valeur_rev` = 'sql_iii'
+                           AND `T0`.`chp_type_rev` = 'c'
+                           AND `T0`.`chx_source_rev` IN :T0_chx_source_rev
+                           AND `T0`.`chp_parent_rev` IN :T0_chp_parent_rev)
+                        ;
+                        */
+                        /*sql_inclure_fin*/ 414 , critere_414 , donnees_retournees , __db1 );
                         if(tt414[__xst] !== __xsu){
                             this.__gi1.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__gi1.nl2() + ']' );
                             return({"__xst" : __xer});
                         }
                         /* this.__gi1.ma_trace1('tt414[__xva]=',tt414[__xva]); */
                         for(let i in tt414[__xva]){
-                            if(!liste_des_sources_utilisant_cette_requete.hasOwnProperty(tt414[__xva][i]['T0.chx_source_rev'])){
+                            if(!liste_des_sources_utilisant_cette_requete.hasOwnProperty( tt414[__xva][i]['T0.chx_source_rev'] )){
                                 liste_des_sources_utilisant_cette_requete[tt414[__xva][i]['T0.chx_source_rev']]=1;
                             }else{
                                 liste_des_sources_utilisant_cette_requete[tt414[__xva][i]['T0.chx_source_rev']]+=1;
@@ -984,21 +1008,16 @@ class requetes1{
                 }
             }
         }
-        let la_requete_est_utilisee_dans_un_source=false
-        for( let i in liste_des_sources_utilisant_cette_requete){
-             la_requete_est_utilisee_dans_un_source=true;
-             this.__gi1.__xsi[__xal].push( 'id_du source = ' + i + ' , ' + liste_des_sources_utilisant_cette_requete[i] + ' fois' );
+        let la_requete_est_utilisee_dans_un_source=false;
+        for(let i in liste_des_sources_utilisant_cette_requete){
+            la_requete_est_utilisee_dans_un_source=true;
+            this.__gi1.__xsi[__xal].push( 'id_du source = ' + i + ' , ' + liste_des_sources_utilisant_cette_requete[i] + ' fois' );
         }
-        if(la_requete_est_utilisee_dans_un_source===true){
+        if(la_requete_est_utilisee_dans_un_source === true){
             this.__gi1.__xsi[__xer].push( 'la requête ' + chi_id_requete + ' est utilisée dans des sources' );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        
-        
-        
-        
-        
         let critere_354={"T0_chi_id_requete" : chi_id_requete};
         let tt354=await this.__gi1.sql_iii(
         /*sql_inclure_deb*/ /*#

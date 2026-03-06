@@ -111,6 +111,7 @@ class travaux1{
           éxécution du travail
         */
         let heure_debut_travail=performance.now();
+        /* this.__gi1.ma_trace1('obj_matrice[__xva]=',obj_matrice[__xva]); */
         let ret=await this.__gi1.appel_fonction( obj_matrice[__xva] , 1 , donnees_recues , donnees_retournees , options_generales );
         /* this.__gi1.ma_trace1('ret=',ret,'cht_rev_travail='+cht_rev_travail); */
         if(ret.__xst !== __xsu){

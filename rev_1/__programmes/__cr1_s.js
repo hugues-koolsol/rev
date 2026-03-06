@@ -150,6 +150,7 @@ class __cr1{
                               =============================================================
                             */
                             ret=await this.__gi1.appel_fonction( obj_matrice[__xva] , 1 , donnees_recues , donnees_retournees , options_generales );
+                            /* this.__gi1.ma_trace1('ret=',ret,obj_matrice[__xva]); */
                             function sleep1( ms ){
                                 return(new Promise( ( resolve ) => {
                                         setTimeout( resolve , ms );} ));

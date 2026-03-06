@@ -709,7 +709,14 @@ class sources1{
                 return({"__xst" : __xer});
             }
         }
-        await this.sauvegarder_une_matrice_de_source( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_source , obj2.matriceFonction , __db1 );
+        if(donnees_retournees._CA_ === 1 && donnees_retournees.chi_id_projet > 3 || donnees_retournees._CA_ === 2){
+            let obj1=await this.sauvegarder_une_matrice_de_source( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_source , obj2.matriceFonction , __db1 );
+            if(obj1.__xst !== __xsu){
+                this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
+                donnees_retournees.__xst=__xer;
+                return({"__xst" : __xer});
+            }
+        }
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
@@ -824,10 +831,15 @@ class sources1{
                 );
                 */
                 /*sql_inclure_fin*/ 358 , a_sauvegarder , donnees_retournees , __db1 );
+                if(tt358.__xst !== __xsu){
+                    this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
+                    donnees_retournees.__xst=__xer;
+                    return({"__xst" : __xer});
+                }
                 a_sauvegarder.donnees=[];
             }
         }
-        this.__gi1.ma_trace1('a_sauvegarder.donnees.length=',a_sauvegarder.donnees.length);
+        /* this.__gi1.ma_trace1('a_sauvegarder.donnees.length=',a_sauvegarder.donnees.length); */
         if(a_sauvegarder.donnees.length > 0){
             let tt358=await this.__gi1.sql_iii(
             /*sql_inclure_deb*/ /*#
@@ -868,6 +880,11 @@ class sources1{
             );
             */
             /*sql_inclure_fin*/ 358 , a_sauvegarder , donnees_retournees , __db1 );
+            if(tt358.__xst !== __xsu){
+                this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
+                donnees_retournees.__xst=__xer;
+                return({"__xst" : __xer});
+            }
         }
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
@@ -1054,7 +1071,12 @@ class sources1{
         /*
           =====================================================================================================
         */
-        await this.sauvegarder_une_matrice_de_source( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_source , donnees_recues.__xva.matrice_source , __db1 );
+        let obj1=await this.sauvegarder_une_matrice_de_source( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_source , donnees_recues.__xva.matrice_source , __db1 );
+        if(obj1.__xst !== __xsu){
+            this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
+        }
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }

@@ -1712,9 +1712,8 @@ class v_svg_bdd1{
         /*
           si le champ est le dernier de la table, il vaut mieux éviter
         */
-        
         let liste_des_champs=[];
-        let lst=document.getElementById(id_svg_conteneur_table).getElementsByTagName( 'text' );
+        let lst=document.getElementById( id_svg_conteneur_table ).getElementsByTagName( 'text' );
         for( let i=0 ; i < lst.length ; i++ ){
             if('texte_de_champ' === lst[i].getAttribute( 'type_element' )){
                 for( let j=0 ; j < lst[i].childNodes.length ; j++ ){
@@ -1724,16 +1723,13 @@ class v_svg_bdd1{
                 }
             }
         }
-        if(liste_des_champs.length===0){
-            return({"__xst" : __xer , "__xme" : ' pas de champ trouvé '});
+        if(liste_des_champs.length === 0){
+            return({"__xst" : __xer ,"__xme" : ' pas de champ trouvé '});
         }
-        if(liste_des_champs[liste_des_champs.length-1]===nom_du_champ){
+        if(liste_des_champs[liste_des_champs.length - 1] === nom_du_champ){
             this.__gi1.fermer_la_sous_fenetre();
-            return({"__xst" : __xer , "__xme" : ' Veuillez déplacer de champ car il est en dernière position' });
+            return({"__xst" : __xer ,"__xme" : ' Veuillez déplacer de champ car il est en dernière position'});
         }
-        
-        
-        
         let source_sql='ALTER TABLE ' + nom_de_la_table + ' DROP COLUMN ' + nom_du_champ + ';';
         let cmd='';
         cmd+='pm1(m1(n1(' + this.moi + '),f1(executer_sql3(';
