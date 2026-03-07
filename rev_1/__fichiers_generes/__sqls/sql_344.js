@@ -30,6 +30,9 @@ class sql_344{
             lignes = await statement.values();
             await statement.finalize();
         }catch(e){
+            if(e.stack.indexOf('API misuse')>=0){
+                console.log('%c\nATTENTION API MISUSE, un await est il manquant quelquepart ?\n\n'+e.stack,'color:red;background-color:yellow;')
+            }
             donnees_retournees.__xst=__xer;
             this.__gi1.__xsi[__xer].push( 'erreur sql_344='+sql0+' [' + this.__gi1.nl2(e) + ']' );
             return {"__xst"  : __xer};

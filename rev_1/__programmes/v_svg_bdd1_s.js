@@ -1001,7 +1001,7 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    async envoyer_le_rev_de_le_base_en_post( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async enregistrer_le_modele_de_la_base( mat , d , donnees_recues , donnees_retournees , options_generales ){
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let criteres_356={
              /*  */
@@ -1035,6 +1035,30 @@ class v_svg_bdd1{
             this.__gi1.__xsi[__xer].push( 'erreur d\'écriture du fichier js des dependances [' + this.__gi1.nl2( e ) + ']' );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
+        }
+        if(donnees_retournees.chi_id_projet >= 4){
+            let chi_id_basedd=0;
+            let l01=mat.length;
+            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+                if(mat[i][1] === 'chi_id_basedd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+                }
+            }
+            if(chi_id_basedd > 0){
+                let m=await import( './bdds1_s.js' );
+                let o=new m['bdds1']( this.__gi1 );
+                let obj=o.enregistrer_la_matrice_dans_la_table_rev( mat , d , donnees_recues , donnees_retournees , options_generales , __db1 );
+                console.log( 'obj=' , obj );
+                if(obj[__xst] !== __xsu){
+                    this.__gi1.__xsi[__xer].push( 'erreur de sauvegarde de matrice de la base [' + this.__gi1.nl2() );
+                    donnees_retournees.__xst=__xer;
+                    return({"__xst" : __xer});
+                }
+            }else{
+                this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() );
+                donnees_retournees.__xst=__xer;
+                return({"__xst" : __xer});
+            }
         }
         this.__gi1.__xsi[__xsu].push( 'le schéma de la base a bien été sauvegardée et le fichier des dépendances reconstruit' );
         donnees_retournees.__xst=__xsu;

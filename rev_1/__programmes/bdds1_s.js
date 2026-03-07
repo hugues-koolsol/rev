@@ -14,16 +14,11 @@ class bdds1{
     /*
       =============================================================================================================
     */
-    async enregistrer_la_matrice_dans_la_table_rev( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async enregistrer_la_matrice_dans_la_table_rev( mat , d , donnees_recues , donnees_retournees , options_generales , __db1=null ){
         let chi_id_basedd=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_basedd'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_basedd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -32,7 +27,9 @@ class bdds1{
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        if(__db1 === null){
+            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        }
         let criteres_357={"T0_chi_id_basedd" : chi_id_basedd};
         let tt357=await this.__gi1.sql_iii(
         /*sql_inclure_deb*/ /*#

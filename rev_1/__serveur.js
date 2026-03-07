@@ -267,7 +267,6 @@ const le_serveur=Deno.serve( {
             try{
                 /* __gi1.ma_trace1(donnees_recues.__xac); */
                 let ret=await __gi1.appel_fonction( mat , 1 , donnees_recues , donnees_retournees , options_generales );
-                /* __gi1.ma_trace1('donnees_retournees',donnees_retournees); */
             }catch(eeeee){
                 console.log( 'eeeee=' , eeeee );
             }

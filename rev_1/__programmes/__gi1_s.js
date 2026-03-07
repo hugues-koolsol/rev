@@ -436,7 +436,6 @@ class __gi1{
                                                         this.__xsi[__xer].push( 'SERVEUR : il manque "return({__xst:__xsu});" à ' + n1 + '_s.' + nom_de_la_fonction_a_appeler + '() ' );
                                                         continuer=false;
                                                     }else{
-                                                        /* console.log('ret=',ret,this.nl2()); */
                                                         if(ret.__xst !== __xsu){
                                                             if(ret.__xst === __xer){
                                                                 continuer=false;

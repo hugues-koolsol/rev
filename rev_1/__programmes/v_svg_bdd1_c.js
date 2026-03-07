@@ -140,7 +140,7 @@ class v_svg_bdd1{
     */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
-            case 'envoyer_le_rev_de_le_base_en_post' : 
+            case 'enregistrer_le_modele_de_la_base' : 
             case 'reconstruire_la_base_a_partir_du_shema_sur_disque' :
                 /* les retours du serveur sans traitements à faire */
                 this.__gi1.fermer_la_sous_fenetre();
@@ -6663,7 +6663,7 @@ class v_svg_bdd1{
                     if(obj2.__xst === __xsu){
                         let a_envoyer={
                              /*  */
-                            "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(envoyer_le_rev_de_le_base_en_post())))' ,
+                            "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(enregistrer_le_modele_de_la_base(chi_id_basedd(' + id_bdd_de_la_base + ')))))' ,
                             "__xva" : {
                                  /*  */
                                 "id_bdd_de_la_base" : this.#id_bdd_de_la_base_en_cours ,

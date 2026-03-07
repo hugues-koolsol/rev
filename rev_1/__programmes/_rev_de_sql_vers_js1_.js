@@ -333,6 +333,9 @@ class _rev_de_sql_vers_js1{
                 t+='           \'sql0\'    => $sql0          ,' + CRLF;
                 t+='        };' + CRLF;
                 t+='    }catch(Exception $e){' + CRLF;
+                t+='        if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
+                t+='            console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
+                t+='        }\r\n';
                 t+='        return {' + CRLF;
                 t+='            "__xst" => __xer ,' + CRLF;
                 t+='            "sql0" => $sql0 ,' + CRLF;
@@ -345,6 +348,9 @@ class _rev_de_sql_vers_js1{
                 t+='            let ret=this.__db1.exec($sql0);' + CRLF;
                 t+='            return({ "__xst" : __xsu, \'changements\' : res});;' + CRLF;
                 t+='        }catch(e){' + CRLF;
+                t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
+                t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
+                t+='            }\r\n';
                 t+='            let __xme=e.stack.indexOf(\'UNIQUE constraint\')>=0?\'cet élément existe déjà dans la base \':\'erreur SQL\';\r\n';
                 t+='            return {/**/\r\n';
                 t+='                "__xst" : __xer ,\r\n';
@@ -369,6 +375,9 @@ class _rev_de_sql_vers_js1{
             t+='            `;' + CRLF;
             t+='            /* this.__gi1.ma_trace1(\'sql_\' , sql0 ); */' + CRLF;
             t+='        }catch(e){\r\n';
+            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
+            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
+            t+='            }\r\n';
             t+='            if(this.__gi1.__deverminage===1){\r\n';
             t+='                this.__gi1.__xsi[__xdv].push(this.__gi1.nl2(e));\r\n';
             t+='            }else if(this.__gi1.__deverminage===2){\r\n';
@@ -425,6 +434,9 @@ class _rev_de_sql_vers_js1{
             t+='                "changements" : res\r\n';
             t+='            };\r\n';
             t+='        }catch(e){\r\n';
+            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
+            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
+            t+='            }\r\n';
             t+='            let __xme=(e.stack.indexOf(\'FOREIGN KEY\')>=0?\'cet enregistrement possède des dépendants et ne peut être supprimé\':\'autre erreur DELETE\') + \' [\' + this.__gi1.nl2() + \']\';\r\n';
             if(this.#obj_webs.ne_pas_tester_les_dependances_de_suppression === 0){
                 let nom_du_champ_cle='';
@@ -548,6 +560,9 @@ class _rev_de_sql_vers_js1{
             t+='                "nouvel_id" : nouvel_id\r\n';
             t+='            };\r\n';
             t+='        }catch(e){\r\n';
+            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
+            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
+            t+='            }\r\n';
             t+='            if(this.__gi1.__deverminage===1){\r\n';
             t+='                this.__gi1.__xsi[__xdv].push(this.__gi1.nl2(e));\r\n';
             t+='            }else if(this.__gi1.__deverminage===2){\r\n';
@@ -791,6 +806,9 @@ class _rev_de_sql_vers_js1{
             t+='            let res=await this.__db1.exec(sql0);' + CRLF;
             t+='            return({ "__xst" : __xsu, \'changements\' : res});' + CRLF;
             t+='        }catch(e){' + CRLF;
+            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
+            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
+            t+='            }\r\n';
             t+='            if(this.__gi1.__deverminage===1){\r\n';
             t+='                this.__gi1.__xsi[__xdv].push(this.__gi1.nl2(e));\r\n';
             t+='            }else if(this.__gi1.__deverminage===2){\r\n';
@@ -887,6 +905,9 @@ class _rev_de_sql_vers_js1{
             t+='            lignes = await statement.values();\r\n';
             t+='            await statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
+            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
+            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
+            t+='            }\r\n';
             t+='            donnees_retournees.__xst=__xer;\r\n';
             t+='            this.__gi1.__xsi[__xer].push( \'erreur sql_' + id_requete_en_base + '=\'+sql0+\' [\' + this.__gi1.nl2(e) + \']\' );\r\n';
             t+='            return {"__xst"  : __xer};\r\n';
@@ -1137,6 +1158,9 @@ class _rev_de_sql_vers_js1{
             t+='            lignes=await statement.values();\r\n';
             t+='            await statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
+            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
+            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
+            t+='            }\r\n';
             t+='            donnees_retournees.__xst=__xer;\r\n';
             t+='            this.__gi1.__xsi[__xer].push( \'erreur sql ' + id_requete_en_base + ' \' + sql0 + \' [\' + this.__gi1.nl2( e ) + \']\' );\r\n';
             t+='            return({"__xst" : __xer});\r\n';
