@@ -167,6 +167,27 @@ class __gi1{
     /*
       =============================================================================================================
     */
+    traite_erreur_sql( numero_de_requete , e , chaine_sql , donnees_retournees , objet_dependances ){
+        let __xme='';
+        if(e.stack.indexOf( 'API misuse' ) >= 0){
+            console.log( '%c\nATTENTION API MISUSE, un await est il manquant quelquepart avant sql_' + numero_de_requete + ' ?\n\n' + e.stack , 'color:red;background-color:yellow;' );
+        }
+        donnees_retournees.__xst=__xer;
+        if(this.__deverminage === 1){
+            this.__xsi[__xdv].push( this.nl2( e ) );
+        }else if(this.__deverminage === 2){
+            let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
+            this.__xsi[__xdv].push( e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />' );
+        }
+        if(this.__deverminage > 0){
+            this.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_112=' + chaine_sql.replace( /\n/g , '<br />' ) );
+        }
+        let obj={"__xst" : __xer ,"__xme" : __xme ,"__xva" : {} ,"sql0" : chaine_sql};
+        return obj;
+    }
+    /*
+      =============================================================================================================
+    */
     async sql_iii( numero_de_sql , par , donnees_retournees , db=null ){
         let la_classe_sql='sql_' + numero_de_sql;
         let nom_du_fichier='/__fichiers_generes/__sqls/' + la_classe_sql + '.js';

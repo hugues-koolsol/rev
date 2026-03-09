@@ -10,16 +10,16 @@ class sql_393{
       =============================================================================================================
     */
     async sql( par , donnees_retournees ){
-    const champs0=`
-      \`T0\`.\`chi_id_projet\`
-    `;
-    let sql0='SELECT '+champs0;
-    const from0=`
-      FROM  tbl_projets T0    `;
-    sql0+=from0;
-    /* ATTENTION : pas de condition dans cette liste */
-    const where0=' WHERE 1 ';
-    sql0+=where0;
+        const champs0=`
+          \`T0\`.\`chi_id_projet\`
+        `;
+        let sql0='SELECT ' + champs0;
+        const from0=`
+          FROM  tbl_projets T0        `;
+        sql0+=from0;
+        /* ATTENTION : pas de condition dans cette liste */
+        const where0=' WHERE 1 ';
+        sql0+=where0;
     const order0=`
        ORDER BY  T0.chi_id_projet DESC`;
     sql0+=order0;
@@ -27,34 +27,21 @@ class sql_393{
         LIMIT 1 OFFSET 0 `;
     sql0+=plage0;
         /* this.__gi1.ma_trace1('sql_393 sql0=',sql0); */
-
-        let lignes = [];
+        let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
-            lignes = await statement.values();
+            lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            if(e.stack.indexOf('API misuse')>=0){
-                console.log('%c\nATTENTION API MISUSE, un await est il manquant quelquepart ?\n\n'+e.stack,'color:red;background-color:yellow;')
-            }
-            donnees_retournees.__xst=__xer;
-            this.__gi1.__xsi[__xer].push( 'erreur sql_393='+sql0+' [' + this.__gi1.nl2(e) + ']' );
-            return {"__xst"  : __xer};
+            return(this.__gi1.traite_erreur_sql( 393 , e , sql0 , donnees_retournees , {} ));
         }
-
-        let donnees0 = [];
+        let donnees0=[];
         for(let col of lignes){
-            donnees0.push({
-                'T0.chi_id_projet' : col[0],
-            });
+            donnees0.push( {
+                    "T0.chi_id_projet" : col[0]
+                } );
         }
-        return {
-            "__xst"  : __xsu,
-            "__xva"  : donnees0,
-            "sql0"    : sql0,
-            "where0"  : where0,
-        };
-
+        return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});
     }
     /*
       =============================================================================================================

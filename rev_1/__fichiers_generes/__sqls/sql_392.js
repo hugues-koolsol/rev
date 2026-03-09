@@ -32,7 +32,6 @@ class sql_392{
                     "exception" : e ,
                 "__xme" : __xme ,
             };
-
         }
     }
     /*

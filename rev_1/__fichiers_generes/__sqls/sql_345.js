@@ -79,7 +79,6 @@ class sql_345{
                     "exception" : e ,
                 "__xme" : __xme ,
             };
-
         }
     }
     /*

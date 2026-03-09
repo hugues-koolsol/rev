@@ -359,7 +359,6 @@ class _rev_de_sql_vers_js1{
                 t+='                    "exception" : e ,\r\n';
                 t+='                "__xme" : __xme ,\r\n';
                 t+='            };\r\n';
-                t+='\r\n';
                 t+='        }' + CRLF;
                 t+='    }' + CRLF;
             }
@@ -369,28 +368,6 @@ class _rev_de_sql_vers_js1{
         }else if(type_de_requete === 'delete'){
             var nom_de_la_table=obj3.liste_des_tables_pour_select_js;
             nouvelle_chaine=this.#traiter_chaine_sql_pour_js( obj3.t_js );
-            t+='        let sql0=\'\'' + CRLF;
-            t+='        try{' + CRLF;
-            t+='            sql0=`' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '          ' ) + CRLF;
-            t+='            `;' + CRLF;
-            t+='            /* this.__gi1.ma_trace1(\'sql_\' , sql0 ); */' + CRLF;
-            t+='        }catch(e){\r\n';
-            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
-            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
-            t+='            }\r\n';
-            t+='            if(this.__gi1.__deverminage===1){\r\n';
-            t+='                this.__gi1.__xsi[__xdv].push(this.__gi1.nl2(e));\r\n';
-            t+='            }else if(this.__gi1.__deverminage===2){\r\n';
-            t+='                let a=RegExp(this.__gi1.repertoire_du_pgm_serveur,\'g\');\r\n';
-            t+='                this.__gi1.__xsi[__xdv].push(e.stack.replace( /\\n/g , \'\\n\' ).replace( a, \'\').replace(/\\(file\\:\\/\\//g,\'\').replace(/ at/g,\'<br />\')+\'<hr />\' );\r\n';
-            t+='            }\r\n';
-            t+='            return {\r\n';
-            t+='                "__xst"  : __xer,\r\n';
-            t+='                "__xva"  : {},\r\n';
-            t+='                "__xme"  : \'erreur de construction de la requete ' + id_requete_en_base + '\',\r\n';
-            t+='            };\r\n';
-            t+='        }\r\n';
-            t+='\r\n';
             if(this.#obj_webs.ne_pas_tester_les_dependances_de_suppression === 0){
                 let nom_du_champ_cle='';
                 for(let id_champcle in this.#obj_webs.bases[id_numerique_base_principale].tables[nom_de_la_table].champs){
@@ -405,39 +382,25 @@ class _rev_de_sql_vers_js1{
                         this.__gi1.affiche_les_messages();
                         return({"__xst" : __xer});
                     }
-                    t+='        let obj1=await this.__gi1.tester_les_dependances1(\r\n';
-                    t+='           {\r\n';
-                    t+='              \'table_parente\'     : \'' + nom_de_la_table + '\',\r\n';
-                    t+='              \'champ_parent\'      : \'' + nom_du_champ_cle + '\',\r\n';
-                    t+='              \'id_enregistrement\' : par[\'' + nom_du_champ_cle + '\'],\r\n';
-                    t+='              \'__db1\'             : this.__db1,\r\n';
-                    t+='           },\r\n';
-                    t+='           donnees_retournees\r\n';
-                    t+='        );\r\n';
-                    t+='        if(obj1.__xst!==__xsu){\r\n';
-                    t+='            return {\r\n';
-                    t+='                "__xst"  : __xer,\r\n';
-                    t+='                "__xva"  : {},\r\n';
-                    t+='                "__xme"  : \'cet enregistrement possède des dépendants et ne peut être supprimé\',\r\n';
-                    t+='                "sql0"   : sql0,\r\n';
-                    t+='            };\r\n';
+                    t+='        let obj1=await this.__gi1.tester_les_dependances1( {';
+                    t+='"table_parente" : \'' + nom_de_la_table + '\' ,';
+                    t+='"champ_parent" : \'' + nom_du_champ_cle + '\' ,';
+                    t+='"id_enregistrement" : par[\'' + nom_du_champ_cle + '\'] ,';
+                    t+='"__db1" : this.__db1} , donnees_retournees );\r\n';
+                    t+='        if(obj1.__xst !== __xsu){\r\n';
+                    t+='            return({"__xst" : __xer ,"__xva" : {} ,"__xme" : \'cet enregistrement possède des dépendants et ne peut être supprimé\' ,"sql0" : sql0});\r\n';
                     t+='        }\r\n';
                 }
             }
+            t+='        let sql0=\'\';' + CRLF;
             t+='        try{\r\n';
-            t+='            const res=await this.__db1.exec(sql0);\r\n';
-            t+='            /* this.__gi1.ma_trace1(\'res=\',res) */;\r\n';
-            t+='            return {\r\n';
-            t+='                "__xst"  : __xsu,\r\n';
-            t+='                "__xva"  : {},\r\n';
-            t+='                "sql0"    : sql0,\r\n';
-            t+='                "changements" : res\r\n';
-            t+='            };\r\n';
+            t+='            sql0=`' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '          ' ) + CRLF;
+            t+='            `;' + CRLF;
+            t+='            /* this.__gi1.ma_trace1(\'sql_\' , sql0 ); */' + CRLF;
+            t+='            const res=await this.__db1.exec( sql0 );\r\n';
+            t+='            /* this.__gi1.ma_trace1(\'res=\',res) */\r\n';
+            t+='            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res});\r\n';
             t+='        }catch(e){\r\n';
-            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
-            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
-            t+='            }\r\n';
-            t+='            let __xme=(e.stack.indexOf(\'FOREIGN KEY\')>=0?\'cet enregistrement possède des dépendants et ne peut être supprimé\':\'autre erreur DELETE\') + \' [\' + this.__gi1.nl2() + \']\';\r\n';
             if(this.#obj_webs.ne_pas_tester_les_dependances_de_suppression === 0){
                 let nom_du_champ_cle='';
                 for(let id_champcle in this.#obj_webs.bases[id_numerique_base_principale].tables[nom_de_la_table].champs){
@@ -447,39 +410,18 @@ class _rev_de_sql_vers_js1{
                     }
                 }
                 if(nom_du_champ_cle !== ''){
-                    t+='            if(e.stack.indexOf(\'FOREIGN KEY\')>=0){\r\n';
-                    t+='                __xme=\'cet enregistrement possède des dépendants et ne peut être supprimé\';\r\n';
-                    t+='                await this.__gi1.afficher_les_dependances1(\r\n';
-                    t+='                   {\r\n';
-                    t+='                      \'table_parente\'     : \'' + nom_de_la_table + '\',\r\n';
-                    t+='                      \'champ_parent\'      : \'' + nom_du_champ_cle + '\',\r\n';
-                    t+='                      \'id_enregistrement\' : par[\'' + nom_du_champ_cle + '\'],\r\n';
-                    t+='                      \'__db1\'             : this.__db1,\r\n';
-                    t+='                   },\r\n';
-                    t+='                   donnees_retournees\r\n';
-                    t+='                );\r\n';
+                    t+='            if(e.stack.indexOf( \'FOREIGN KEY\' ) >= 0){\r\n';
+                    t+='                await this.__gi1.afficher_les_dependances1( {';
+                    t+='"table_parente" : \'' + nom_de_la_table + '\' ,';
+                    t+='"champ_parent" : \'' + nom_du_champ_cle + '\' ,';
+                    t+='"id_enregistrement" : par[\'' + nom_du_champ_cle + '\'] ,';
+                    t+='"__db1" : this.__db1} , donnees_retournees );\r\n';
                     t+='            }\r\n';
-                    t+='\r\n';
                 }
             }
-            t+='            if(this.__gi1.__deverminage===1){\r\n';
-            t+='                this.__gi1.__xsi[__xdv].push(this.__gi1.nl2(e));\r\n';
-            t+='            }else if(this.__gi1.__deverminage===2){\r\n';
-            t+='                let a=RegExp(this.__gi1.repertoire_du_pgm_serveur,\'g\');\r\n';
-            t+='                this.__gi1.__xsi[__xdv].push(e.stack.replace( /\\n/g , \'\\n\' ).replace( a, \'\').replace(/\\(file\\:\\/\\//g,\'\').replace(/ at/g,\'<br />\')+\'<hr />\' );\r\n';
-            t+='                this.__gi1.ma_trace1(\'par ici\');\r\n';
-            t+='            }\r\n';
-            t+='            this.__gi1.__xsi[__xer].push(__xme);\r\n';
-            t+='            /* this.__gi1.ma_trace1(\'e=\',e); */\r\n';
-            t+='            return {\r\n';
-            t+='                "__xst"  : __xer,\r\n';
-            t+='                "__xva"  : {},\r\n';
-            t+='                "__xme"  : __xme,\r\n';
-            t+='                "sql0"   : sql0,\r\n';
-            t+='            };\r\n';
+            t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }\r\n';
-            t+='\r\n';
-            t+='    }' + CRLF;
+            t+='    }\r\n';
         }else if(type_de_requete === 'insert'){
             var nom_de_la_table=obj3.liste_des_tables_pour_select_js;
             nouvelle_chaine=obj3.debut_sql_pour_insert_js;
@@ -488,7 +430,7 @@ class _rev_de_sql_vers_js1{
             t+='        `;' + CRLF;
             t+='        let liste_des_valeurs=\'\';' + CRLF;
             t+='        try{' + CRLF;
-            t+='            for(let i=0;i < par.donnees.length;i++){' + CRLF;
+            t+='            for( let i=0 ; i < par.donnees.length ; i++ ){' + CRLF;
             t+='                if(liste_des_valeurs != \'\'){' + CRLF;
             t+='                    liste_des_valeurs+=\',\';' + CRLF;
             t+='                }' + CRLF;
@@ -509,11 +451,11 @@ class _rev_de_sql_vers_js1{
                            || this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ.che_est_tsm_genre === 1)
                        && this.#obj_webs.ne_pas_traiter_la_maj_ts_creation === 0
                 ){
-                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \'+this.__gi1.__fnt1.sq1(donnees_retournees.date_heure_serveur)+\'\'' );
+                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__gi1.__fnt1.sq1( donnees_retournees.date_heure_serveur ) + \'\'' );
                 }else if(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ
                        && this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ.che_est_nur_genre === 1
                 ){
-                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \'+this.__gi1.__fnt1.sq1(\'0\')+\'\'' );
+                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \'+this.__gi1.__fnt1.sq1(\'0\') + \'\'' );
                 }else{
                     let spec=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ.chp_espece_genre.toLowerCase();
                     if(spec === 'varchar' || spec === 'text'){
@@ -527,7 +469,7 @@ class _rev_de_sql_vers_js1{
                 }
             }
             /* this.__gi1.ma_trace1('tableau_des_insert=',tableau_des_insert); */
-            t+=tableau_des_insert.join( '+\',\';' + CRLF );
+            t+=tableau_des_insert.join( ' + \',\';' + CRLF );
             if(tableau_des_insert.length > 0){
                 t+=';';
             }else{
@@ -538,49 +480,23 @@ class _rev_de_sql_vers_js1{
             t+='            }' + CRLF;
             t+='            let res=0;' + CRLF;
             t+='            let nouvel_id=-1;' + CRLF;
-            t+='            if(liste_des_valeurs!==\'\'){' + CRLF;
+            t+='            if(liste_des_valeurs !== \'\'){' + CRLF;
             t+='                sql0+=liste_des_valeurs;' + CRLF;
-            t+='                /* this.__gi1.ma_trace1(\'sql_' + id_requete_en_base + '=\',sql0); */\r\n';
-            t+='                res=await this.__db1.exec(sql0);\r\n';
+            t+='                /* this.__gi1.ma_trace1( \'sql_' + id_requete_en_base + '=\' + sql0 ); */\r\n';
+            t+='                res=await this.__db1.exec( sql0 );\r\n';
             t+='                /* this.__gi1.ma_trace1(\'res=\',res); */\r\n';
             t+='                const sql1=\'SELECT last_insert_rowid() as nouvel_id; \';\r\n';
             t+='                let statement1=await this.__db1.prepare( sql1 );\r\n';
-            t+='                let lignes = await statement1.values();\r\n';
+            t+='                let lignes=await statement1.values();\r\n';
             t+='                await statement1.finalize();\r\n';
             t+='                for(let numero_de_ligne in lignes){\r\n';
             t+='                    nouvel_id=lignes[numero_de_ligne][0];\r\n';
             t+='                }\r\n';
             t+='            }\r\n';
-            t+='\r\n';
-            t+='            return {\r\n';
-            t+='                "__xst"  : __xsu,\r\n';
-            t+='                "__xva"  : {},\r\n';
-            t+='                "sql0"    : sql0,\r\n';
-            t+='                "changements" : res,\r\n';
-            t+='                "nouvel_id" : nouvel_id\r\n';
-            t+='            };\r\n';
+            t+='            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});\r\n';
             t+='        }catch(e){\r\n';
-            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
-            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
-            t+='            }\r\n';
-            t+='            if(this.__gi1.__deverminage===1){\r\n';
-            t+='                this.__gi1.__xsi[__xdv].push(this.__gi1.nl2(e));\r\n';
-            t+='            }else if(this.__gi1.__deverminage===2){\r\n';
-            t+='                let a=RegExp(this.__gi1.repertoire_du_pgm_serveur,\'g\');\r\n';
-            t+='                this.__gi1.__xsi[__xdv].push(e.stack.replace( /\\n/g , \'\\n\' ).replace( a, \'\').replace(/\\(file\\:\\/\\//g,\'\').replace(/ at/g,\'<br />\')+\'<hr />\' );\r\n';
-            t+='            }\r\n';
-            t+='\r\n';
-            /* t+='            this.__gi1.__xsi[__xer].push(this.__gi1.nl2());\r\n'; */
-            t+='            let __xme=e.stack.indexOf(\'UNIQUE constraint\')>=0?\'cet élément existe déjà dans la base \':\'erreur d\\\'insertion \';\r\n';
-            t+='            /* this.__gi1.ma_trace1(\'e=\',e); */\r\n';
-            t+='            return {\r\n';
-            t+='                "__xst"  : __xer,\r\n';
-            t+='                "__xme"  : __xme,\r\n';
-            t+='                "__xva"  : {},\r\n';
-            t+='                "sql0"    : sql0,\r\n';
-            t+='            };\r\n';
+            t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }\r\n';
-            t+='\r\n';
             t+='    }' + CRLF;
             /*
               =============================================================================================
@@ -658,7 +574,7 @@ class _rev_de_sql_vers_js1{
                                                     valeur_du_champ='NULL';
                                                 }else{
                                                     if(tab[m][1].substr( 0 , 1 ) === ':'){
-                                                        valeur_du_champ='\'+this.__gi1.__fnt1.sq0(par[\'' + tab[m][1].substr( 1 ) + '\'])+\'';
+                                                        valeur_du_champ='\' + this.__gi1.__fnt1.sq0( par[\'' + tab[m][1].substr( 1 ) + '\'] ) + \'';
                                                         type_de_champ='variable';
                                                     }else{
                                                         valeur_du_champ='\'' + tab[m][1].replace( /\'/g , "''" ) + '\'';
@@ -748,28 +664,28 @@ class _rev_de_sql_vers_js1{
                            || this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][la_sortie.non_du_champ_en_bdd].genre_objet_du_champ.che_est_tsm_genre === 1)
                        && this.#obj_webs.ne_pas_traiter_la_maj_ts_modification === 0
                 ){
-                    liste_des_champs_pour_update3+='            tableau_champs.push(\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = \\\'\'+donnees_retournees.date_heure_serveur+\'\\\' \');' + CRLF;
+                    liste_des_champs_pour_update3+='            tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = \\\'\' + donnees_retournees.date_heure_serveur + \'\\\' \' );' + CRLF;
                 }else if(la_sortie.type_de_champ === 'constante'){
-                    liste_des_champs_pour_update3+='            tableau_champs.push(\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\');' + CRLF;
+                    liste_des_champs_pour_update3+='            tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\' );' + CRLF;
                 }else{
-                    liste_des_champs_pour_update3+='            if(par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']===undefined || par[\'n_' + la_sortie.non_du_champ_en_bdd + '\']===\'\' || par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] === null ){' + CRLF;
-                    liste_des_champs_pour_update3+='                tableau_champs.push(\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = NULL\');' + CRLF;
+                    liste_des_champs_pour_update3+='            if(par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] === undefined || par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] === \'\' || par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] === null){' + CRLF;
+                    liste_des_champs_pour_update3+='                tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = NULL\' );' + CRLF;
                     liste_des_champs_pour_update3+='            }else{' + CRLF;
-                    liste_des_champs_pour_update3+='                tableau_champs.push(\'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\');' + CRLF;
+                    liste_des_champs_pour_update3+='                tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\' );' + CRLF;
                     liste_des_champs_pour_update3+='            }' + CRLF;
                 }
             }
-            t+=CRLF + liste_des_champs_pour_update3 + CRLF;
-            t+='            if(tableau_champs.length===0){' + CRLF;
-            t+='                return {/**/' + CRLF;
-            t+='                    "__xst" : __xer ,' + CRLF;
-            t+='                    "__xme" : \'aucun champ à mettre à jour\' ,' + CRLF;
-            /* t+='                    "id_bdd" : ' + obj3.id_base_principale + ' ,' + CRLF; */
-            t+='                    "sql0" : sql0 , ' + CRLF;
-            t+='                    "texte_requete" : \'la modification dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\' ,' + CRLF;
-            t+='                };' + CRLF;
+            t+=liste_des_champs_pour_update3;
+            t+='            if(tableau_champs.length === 0){' + CRLF;
+            t+='                return({' + CRLF;
+            t+='                         /*  */' + CRLF;
+            t+='                        "__xst" : __xer ,' + CRLF;
+            t+='                        "__xme" : \'aucun champ à mettre à jour\' ,' + CRLF;
+            t+='                        "sql0" : sql0 ,' + CRLF;
+            t+='                        "texte_requete" : \'la modification dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\'' + CRLF;
+            t+='                    });' + CRLF;
             t+='            }' + CRLF;
-            t+='            sql0+=tableau_champs.join(\',\'+\'\\r\\n\'+\'    \')+\'\\r\\n\';' + CRLF;
+            t+='            sql0+=tableau_champs.join( \',\' + \'\\r\\n\' + \'    \' ) + \'\\r\\n\';' + CRLF;
             t+='            let where0=\'\';' + CRLF;
             var tableau_des_conditions=[];
             if(this.#obj_webs.conditions.length === 0){
@@ -795,34 +711,20 @@ class _rev_de_sql_vers_js1{
                            && (elem.operation === 'egal'
                                || elem.operation === 'dans')
                     ){
-                        t+='            where0+=\'\\r\\n\'+this.__gi1.__fnt1.construction_where_sql_sur_id1(\'' + elem.nom_du_champ_pour_where + '\',' + elem.condition + ');' + CRLF;
+                        t+='            where0+=\'\\r\\n\' + this.__gi1.__fnt1.construction_where_sql_sur_id1(\'' + elem.nom_du_champ_pour_where + '\',' + elem.condition + ');' + CRLF;
                     }else{
-                        t+='            where0+=` AND ' + elem.valeur_js + '`+\'\\r\\n\';' + CRLF;
+                        let tt='            where0+=` AND ' + elem.valeur_js + '` + \'\\r\\n\';' + CRLF;
+                        tt=tt.replace( /\+ `` \+ '/ , '+ \'' );
+                        t+=tt;
                     }
                 }
             }
             t+='            sql0+=where0;' + CRLF;
             t+='            /* this.__gi1.ma_trace1(\' sql_' + id_requete_en_base + '= \' + sql0 ); */' + CRLF;
-            t+='            let res=await this.__db1.exec(sql0);' + CRLF;
-            t+='            return({ "__xst" : __xsu, \'changements\' : res});' + CRLF;
+            t+='            let res=await this.__db1.exec( sql0 );' + CRLF;
+            t+='            return({"__xst" : __xsu ,"changements" : res});' + CRLF;
             t+='        }catch(e){' + CRLF;
-            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
-            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
-            t+='            }\r\n';
-            t+='            if(this.__gi1.__deverminage===1){\r\n';
-            t+='                this.__gi1.__xsi[__xdv].push(this.__gi1.nl2(e));\r\n';
-            t+='            }else if(this.__gi1.__deverminage===2){\r\n';
-            t+='                let a=RegExp(this.__gi1.repertoire_du_pgm_serveur,\'g\');\r\n';
-            t+='                this.__gi1.__xsi[__xdv].push(e.stack.replace( /\\n/g , \'\\n\' ).replace( a, \'\').replace(/\\(file\\:\\/\\//g,\'\').replace(/ at/g,\'<br />\')+\'<hr />\' );\r\n';
-            t+='            }\r\n';
-            t+='            let __xme=e.stack.indexOf(\'UNIQUE constraint\')>=0?\'cet élément existe déjà dans la base \':\'erreur de modification \';\r\n';
-            t+='            return {/**/' + CRLF;
-            t+='                "__xst" : __xer , ' + CRLF;
-            t+='                "sql0" : sql0 , ' + CRLF;
-            t+='                "texte_requete" : \'la modification dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\' ,' + CRLF;
-            t+='                "exception" : e , ' + CRLF;
-            t+='                "__xme" : __xme , ' + CRLF;
-            t+='            };' + CRLF;
+            t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }' + CRLF;
             t+='    }' + CRLF;
             /*
@@ -839,7 +741,7 @@ class _rev_de_sql_vers_js1{
                     champs0+=' , ';
                 }
                 if(i% 5 === 0){
-                    champs0+=CRLF + '      ';
+                    champs0+=CRLF + '          ';
                 }
                 if(obj3.tableau_des_champs_pour_select_js[i].type === 'champ'){
                     champs0+='`' + obj3.tableau_des_champs_pour_select_js[i].alias + '`.`' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '`';
@@ -856,16 +758,16 @@ class _rev_de_sql_vers_js1{
                     champs0+=obj3.tableau_des_champs_pour_select_js[i].valeur;
                 }
             }
-            t+='    const champs0=`' + champs0.replace( /\`/g , '\\`' ) + CRLF + '    `;' + CRLF;
-            t+='    let sql0=\'SELECT \'+champs0;' + CRLF;
-            t+='    const from0=`' + CRLF;
-            t+=obj3.liste_des_tables_pour_select_js;
-            t+='    `;' + CRLF;
-            t+='    sql0+=from0;' + CRLF;
+            t+='        const champs0=`' + champs0.replace( /\`/g , '\\`' ) + CRLF + '        `;' + CRLF;
+            t+='        let sql0=\'SELECT \' + champs0;' + CRLF;
+            t+='        const from0=`' + CRLF;
+            t+=obj3.liste_des_tables_pour_select_js.replace( /    /g , '        ' );
+            t+='        `;' + CRLF;
+            t+='        sql0+=from0;' + CRLF;
             var tableau_des_conditions=[];
             if(this.#obj_webs.conditions.length === 0){
-                t+='    /* ATTENTION : pas de condition dans cette liste */' + CRLF;
-                t+='    const where0=\' WHERE 1 \';' + CRLF;
+                t+='        /* ATTENTION : pas de condition dans cette liste */' + CRLF;
+                t+='        const where0=\' WHERE 1 \';' + CRLF;
             }else{
                 /*
                   les conditions dans un select sont soit une seule conditions, soit une liste contenue dans un et[] 
@@ -876,12 +778,12 @@ class _rev_de_sql_vers_js1{
                 var matriceFonction=this.__gi1.__rev1.tb_vers_matrice( tableau2.__xva , true , false , '' );
                 var les_conditions=this.__m_rev_vers_sql1.c_tab_vers_sql( matriceFonction.__xva , {"au_format_programme" : true} );
                 if(les_conditions.__xst === __xsu){
-                    t+='    const where0=` WHERE ' + les_conditions.t_js + '`;' + CRLF;
+                    t+='        const where0=` WHERE ' + les_conditions.t_js + '`;' + CRLF;
                 }else{
                     return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + ' conversion en php '} ));
                 }
             }
-            t+='    sql0+=where0;' + CRLF;
+            t+='        sql0+=where0;' + CRLF;
             if(this.#obj_webs.complements.length === 0){
             }else{
                 if(obj3.liste_des_tris !== ''){
@@ -898,40 +800,31 @@ class _rev_de_sql_vers_js1{
                 t+='    sql0+=plage0;' + CRLF;
             }
             t+='        /* this.__gi1.ma_trace1(\'sql_' + id_requete_en_base + ' sql0=\',sql0); */\r\n';
-            t+='\r\n';
-            t+='        let lignes = [];\r\n';
+            t+='        let lignes=[];\r\n';
             t+='        try{\r\n';
             t+='            let statement=await this.__db1.prepare( sql0 );\r\n';
-            t+='            lignes = await statement.values();\r\n';
+            t+='            lignes=await statement.values();\r\n';
             t+='            await statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
-            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
-            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
-            t+='            }\r\n';
-            t+='            donnees_retournees.__xst=__xer;\r\n';
-            t+='            this.__gi1.__xsi[__xer].push( \'erreur sql_' + id_requete_en_base + '=\'+sql0+\' [\' + this.__gi1.nl2(e) + \']\' );\r\n';
-            t+='            return {"__xst"  : __xer};\r\n';
+            t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }\r\n';
-            t+='\r\n';
-            t+='        let donnees0 = [];\r\n';
+            t+='        let donnees0=[];\r\n';
             t+='        for(let col of lignes){\r\n';
-            t+='            donnees0.push({\r\n';
+            t+='            donnees0.push( {\r\n';
             for( i=0 ; i < obj3.tableau_des_champs_pour_select_js.length ; i++ ){
                 if(obj3.tableau_des_champs_pour_select_js[i].type === 'champ'){
-                    t+='                \'' + obj3.tableau_des_champs_pour_select_js[i].alias + '.' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '\' : col[' + i + '],' + CRLF;
+                    t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '.' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : col[' + i + ']';
                 }else{
-                    t+='                \'' + i + '\' => col[' + i + '],' + CRLF;
+                    t+='                    "' + i + '" => col[' + i + ']';
                 }
+                if(i < obj3.tableau_des_champs_pour_select_js.length - 1){
+                    t+=' ,';
+                }
+                t+=CRLF;
             }
-            t+='            });\r\n';
+            t+='                } );\r\n';
             t+='        }\r\n';
-            t+='        return {\r\n';
-            t+='            "__xst"  : __xsu,\r\n';
-            t+='            "__xva"  : donnees0,\r\n';
-            t+='            "sql0"    : sql0,\r\n';
-            t+='            "where0"  : where0,\r\n';
-            t+='        };\r\n';
-            t+='\r\n';
+            t+='        return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});\r\n';
             t+='    }' + CRLF;
             /*
               =============================================================================================
@@ -1158,12 +1051,7 @@ class _rev_de_sql_vers_js1{
             t+='            lignes=await statement.values();\r\n';
             t+='            await statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
-            t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
-            t+='                console.log(\'%c\\nATTENTION API MISUSE, un await est il manquant quelquepart ?\\n\\n\'+e.stack,\'color:red;background-color:yellow;\')\r\n';
-            t+='            }\r\n';
-            t+='            donnees_retournees.__xst=__xer;\r\n';
-            t+='            this.__gi1.__xsi[__xer].push( \'erreur sql ' + id_requete_en_base + ' \' + sql0 + \' [\' + this.__gi1.nl2( e ) + \']\' );\r\n';
-            t+='            return({"__xst" : __xer});\r\n';
+            t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }\r\n';
             t+='        /*  */\r\n';
             t+='        for(let numero_de_ligne in lignes){\r\n';

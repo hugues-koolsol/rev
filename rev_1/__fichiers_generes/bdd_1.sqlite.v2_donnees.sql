@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'1020','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'1028','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -3593,7 +3593,7 @@ appelf(
    p(criteres110),
    p(donnees_retournees),
    p(__db1)
-)','3','2026-03-05 09:45:01.477','2026-01-26 12:44:13.176','0'),
+)','99','2026-03-08 09:16:11.848','2026-01-26 12:44:13.176','0'),
 ('348','1','redirect quant on n''est pas connecté','99','2026-03-03 10:57:30.919','2026-01-27 09:23:34.608','0'),
 ('349','1','const readable = /*test*/''a'';','99','2026-01-28 07:30:34.276','2026-01-27 13:57:03.873','0'),
 ('350','1','autorisations sur les accès serveur','99','2026-02-22 09:09:06.827','2026-01-28 07:33:03.312','0'),
@@ -3772,9 +3772,25 @@ insérer(
          source(nom_de_la_table(tbl_acces,base(b1)))
       )
    )
-)  ','1','2026-03-06 14:23:48.653','2026-03-06 14:18:18.163','0'),
+)  ','99','2026-03-07 09:53:24.680','2026-03-06 14:18:18.163','0'),
 ('405','1','ajouter dans l''écran supprimer pour les zones texte les boutons :
-copier,agrandir,retrécir','2','2026-03-06 14:25:32.082','2026-03-06 14:25:32.082','0');
+copier,agrandir,retrécir
+comme sur l''écran tâches','99','2026-03-09 11:34:54.712','2026-03-06 14:25:32.082','0'),
+('406','1','lors de la sauvegarde du modèle de la base, sauvegarder aussi la base dans la table rev','99','2026-03-08 09:14:29.435','2026-03-07 10:10:04.018','0'),
+('407','1','sql 357
+            if(e.stack.indexOf(''API misuse'')>=0){
+                console.log(''%c\nATTENTION API MISUSE, un await est il manquant quelquepart ?\n\n''+e.stack,''color:red;background-color:yellow;'')
+            }
+','99','2026-03-08 09:14:23.624','2026-03-07 12:48:04.740','0'),
+('408','1','normaliser les erreurs dans les js sql','99','2026-03-09 10:48:14.629','2026-03-08 09:15:07.899','0'),
+('409','1','Lors de la lecture d''un create table sql :
+
+ajouter dans meta
+            typologie(cht),
+supprimer 
+         type(int,1),
+         
+','0','2026-03-09 13:57:44.311','2026-03-09 13:57:44.311','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -3999,7 +4015,6 @@ ORDER BY `T0`.`chp_priorite_tache` ASC
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'2','2025-09-07 10:51:12.709','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('111','tâches','insert','insérer(
-
    valeurs(
       affecte(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),
       affecte(champ(`chp_texte_tache`),:chp_texte_tache),
@@ -4026,7 +4041,6 @@ LIMIT :quantitee OFFSET :debut
     :chd__dtc_tache
 );',NULL,'44','2025-09-06 14:41:31.713','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('112','tâches par id','select','sélectionner(
-
    valeurs(
       champ(`T0`,`chi_id_tache`),
       champ(`T0`,`chx_utilisateur_tache`),

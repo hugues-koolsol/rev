@@ -588,8 +588,12 @@ class __rev1{
         const l01=tab.length;
         let chaine='';
         let les_espaces='';
-        if(tab[debut][3] > 0 && retourLigne !== false){
-            les_espaces=this.espacesnrev( tab[debut][3] );
+        try{
+            if(tab[debut][3] > 0 && retourLigne !== false){
+                les_espaces=this.espacesnrev( tab[debut][3] );
+            }
+        }catch(e){
+            debugger;
         }
         let count=0;
         let count_avec_commentaires=0;

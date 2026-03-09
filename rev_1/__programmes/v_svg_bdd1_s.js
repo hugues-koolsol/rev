@@ -1047,8 +1047,7 @@ class v_svg_bdd1{
             if(chi_id_basedd > 0){
                 let m=await import( './bdds1_s.js' );
                 let o=new m['bdds1']( this.__gi1 );
-                let obj=o.enregistrer_la_matrice_dans_la_table_rev( mat , d , donnees_recues , donnees_retournees , options_generales , __db1 );
-                console.log( 'obj=' , obj );
+                let obj=await o.enregistrer_la_matrice_dans_la_table_rev( mat , d , donnees_recues , donnees_retournees , options_generales , __db1 );
                 if(obj[__xst] !== __xsu){
                     this.__gi1.__xsi[__xer].push( 'erreur de sauvegarde de matrice de la base [' + this.__gi1.nl2() );
                     donnees_retournees.__xst=__xer;

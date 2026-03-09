@@ -29,7 +29,6 @@ class sql_388{
                     "exception" : e ,
                 "__xme" : __xme ,
             };
-
         }
     }
     /*

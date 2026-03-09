@@ -721,6 +721,7 @@ class w_ast_sqliteparseur_vers_rev1{
         }else{
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'nom'} ));
         }
+        let nom_du_champ='';
         if(element.definition && element.definition.length > 0){
             t+='\n' + esp0 + esp1 + 'champs(#()';
             for( var i=0 ; i < element.definition.length ; i++ ){
@@ -746,31 +747,45 @@ class w_ast_sqliteparseur_vers_rev1{
                             }
                         }
                         t+='nom_du_champ(`' + element.definition[i].name + '`)';
+                        nom_du_champ=element.definition[i].name;
                     }else{
                         return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'definition'} ));
                     }
                 }else{
                     return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'definition'} ));
                 }
+                /*
+                  if(nom_du_champ==='code_profession'){
+                  debugger
+                  }
+                */
+                let les_meta='#(),genre_meta(champ)';
                 if(element.definition[i].datatype){
-                    t+=' , type(' + element.definition[i].datatype.variant;
+                    /* t+=' , type[' + element.definition[i].datatype.variant; */
                     let longueur_du_champ='';
                     if(element.definition[i].datatype.args){
                         t+=',';
                         for( var j=0 ; j < element.definition[i].datatype.args.expression.length ; j++ ){
                             if(j > 0){
-                                t+=',';
+                                /* t+=','; */
                             }
                             if(element.definition[i].datatype.args.expression[j].type === 'literal'){
-                                t+=element.definition[i].datatype.args.expression[j].value;
+                                /* t+=element.definition[i].datatype.args.expression[j].value; */
                                 longueur_du_champ=element.definition[i].datatype.args.expression[j].value;
                             }else{
                                 return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'définition type'} ));
                             }
                         }
-                        t+='';
+                        /* t+=''; */
                     }
-                    t+=')';
+                    /* t+=']'; */
+                    if(element.definition[i].datatype.variant.toLowerCase() === 'varchar'){
+                        les_meta+=' , typologie(chp)';
+                    }else if(element.definition[i].datatype.variant.toLowerCase() === 'integer'
+                           || element.definition[i].datatype.variant.toLowerCase() === 'int'
+                    ){
+                        les_meta+=' typologie(che)';
+                    }
                     t+=' , espece_du_champ(' + element.definition[i].datatype.variant.toUpperCase() + ')';
                     if(longueur_du_champ !== ''){
                         t+=' , longueur_du_champ(' + longueur_du_champ + ')';
@@ -778,6 +793,7 @@ class w_ast_sqliteparseur_vers_rev1{
                 }else{
                     return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'définition type'} ));
                 }
+                let est_non_nulle=false;
                 if(element.definition[i].definition && element.definition[i].definition.length >= 1){
                     for( var j=0 ; j < element.definition[i].definition.length ; j++ ){
                         if(element.definition[i].definition[j].type === "constraint"
@@ -793,6 +809,10 @@ class w_ast_sqliteparseur_vers_rev1{
                         }
                         if(element.definition[i].definition[j].type === "constraint" && element.definition[i].definition[j].variant === "not null"){
                             t+=' , non_nulle()';
+                            est_non_nulle=true;
+                            if(element.definition[i].datatype.variant.toLowerCase() === 'varchar'){
+                                les_meta+=' genre(17) ';
+                            }
                         }
                         if(element.definition[i].definition[j].type === "constraint"
                                && element.definition[i].definition[j].variant === "default"
@@ -807,6 +827,13 @@ class w_ast_sqliteparseur_vers_rev1{
                                     }else if(element.definition[i].definition[j].value.variant === 'null'){
                                         t+=' , la_valeur_par_defaut_est_caractere(0)';
                                         t+=' , valeur_par_defaut(NULL)';
+                                        if(element.definition[i].datatype.variant.toLowerCase() === 'integer'
+                                               || element.definition[i].datatype.variant.toLowerCase() === 'int'
+                                        ){
+                                            les_meta+=' genre(7) ';
+                                        }else if(element.definition[i].datatype.variant.toLowerCase() === 'varchar'){
+                                            les_meta+=' genre(12) ';
+                                        }
                                     }else{
                                         t+=' , la_valeur_par_defaut_est_caractere(1)';
                                         t+=' , valeur_par_defaut(\'' + element.definition[i].definition[j].value.value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
@@ -839,6 +866,21 @@ class w_ast_sqliteparseur_vers_rev1{
                         }
                     }
                 }
+                if(les_meta.indexOf( 'genre(' ) < 0){
+                    if(element.definition[i].datatype.variant
+                           && (element.definition[i].datatype.variant.toLowerCase() === 'integer'
+                               || element.definition[i].datatype.variant.toLowerCase() === 'int')
+                    ){
+                        if(est_non_nulle === false){
+                            les_meta+=' genre(9) ';
+                        }else{
+                            les_meta+=' genre(7) ';
+                        }
+                    }else{
+                        debugger;
+                    }
+                }
+                t+='meta(' + les_meta + ')';
                 t+=')';
             }
             t+='\n' + esp0 + esp1 + ')';

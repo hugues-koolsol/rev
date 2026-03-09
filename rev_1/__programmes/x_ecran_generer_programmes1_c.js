@@ -1607,9 +1607,12 @@ class x_ecran_generer_programmes1{
                     src_client2+='\'+this.__gi1.fi2(le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0][\'T0.' + obj_champ.nom_du_champ + '\'])+\'';
                     src_client2+='" ';
                     src_client2+='  />\' ;\r\n';
+                    src_client2+='        o1+=this.__gi1.__fnt1.boutons_suppression2( \'chp_priorite_tache\' );\r\n';
                 }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
                     src_client2+='        o1 += \'        <div class="yy_conteneur_txtara">\' ;\r\n';
-                    src_client2+='';
+                    src_client2+='        o1+=\'<div>\\r\\n\';\r\n';
+                    src_client2+='        o1+=this.__gi1.__fnt1.boutons_suppression1( \'chp_texte_tache\' );\r\n';
+                    src_client2+='        o1+=\'</div>\\r\\n\';\r\n';
                     src_client2+='        o1 += \'            <textarea disabled ';
                     src_client2+='id="' + obj_champ.nom_du_champ + '" rows="2"  cols="50" >';
                     src_client2+='\' + this.__gi1.fi2(le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0][\'T0.' + obj_champ.nom_du_champ + '\']) + \'';
@@ -1623,6 +1626,7 @@ class x_ecran_generer_programmes1{
                         src_client2+=' value="';
                         src_client2+='\'+this.__gi1.fi2(le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0][\'T0.' + obj_champ.nom_du_champ + '\'])+\'';
                         src_client2+='" />\' ;\r\n';
+                        src_client2+='        o1+=this.__gi1.__fnt1.boutons_suppression2( \'chp_priorite_tache\' );\r\n';
                     }else{
                         if(obj_champ.genre_objet_du_champ.cht_parmis_genre === '0,1'){
                             src_client2+='';
@@ -1640,6 +1644,7 @@ class x_ecran_generer_programmes1{
                             src_client2+='<input disabled type="text" id="' + obj_champ.nom_du_champ + '" value="';
                             src_client2+='\' + this.__gi1.fi2(le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0][\'T0.' + obj_champ.nom_du_champ + '\']) + \'';
                             src_client2+='" >\'; ;\r\n';
+                            src_client2+='        o1+=this.__gi1.__fnt1.boutons_suppression2( \'chp_priorite_tache\' );\r\n';
                         }
                     }
                 }else{
