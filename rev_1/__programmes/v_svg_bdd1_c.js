@@ -6066,23 +6066,48 @@ class v_svg_bdd1{
         }
         if(nom_bref_du_champ === '' || nom_bref_du_champ.indexOf( 'à faire' ) >= 0 || nom_bref_du_champ.indexOf( 'A faire' ) >= 0){
             let tab=nom_du_champ.split( '_' );
-            if(tab.length >= 2){
-                tab.splice( 0 , 1 );
+            if(nom_bref_du_champ === ''){
+                if(nom_du_champ.substr( 0 , 2 ) === 'ch' && tab.length === 3){
+                    tab.splice( 0 , 1 );
+                    if(tab.length >= 2){
+                        tab.splice( tab.length - 1 , 1 );
+                    }
+                    nom_bref_du_champ=tab.join( ' ' );
+                }else{
+                    nom_bref_du_champ=nom_du_champ.replace(/_d_/g,' d\'').replace(/_/g,' ');
+                }
+                
+            }else{
+                if(tab.length >= 2){
+                    tab.splice( 0 , 1 );
+                }
+                if(tab.length >= 2){
+                    tab.splice( tab.length - 1 , 1 );
+                }
+                nom_bref_du_champ=tab.join( ' ' );
             }
-            if(tab.length >= 2){
-                tab.splice( tab.length - 1 , 1 );
-            }
-            nom_bref_du_champ=tab.join( ' ' );
         }
         if(abrege_du_champ === '' || abrege_du_champ.indexOf( 'à faire' ) >= 0 || abrege_du_champ.indexOf( 'A faire' ) >= 0){
             let tab=nom_du_champ.split( '_' );
-            if(tab.length >= 2){
-                tab.splice( 0 , 1 );
+            if(abrege_du_champ === ''){
+                if(nom_du_champ.substr( 0 , 2 ) === 'ch' && tab.length === 3){
+                    tab.splice( 0 , 1 );
+                    if(tab.length >= 2){
+                        tab.splice( tab.length - 1 , 1 );
+                    }
+                    abrege_du_champ=tab.join( ' ' );
+                }else{
+                    abrege_du_champ=nom_du_champ.replace(/_d_/g,' d\'').replace(/_/g,' ');
+                }
+            }else{
+                if(tab.length >= 2){
+                    tab.splice( 0 , 1 );
+                }
+                if(tab.length >= 2){
+                    tab.splice( tab.length - 1 , 1 );
+                }
+                abrege_du_champ=tab.join( ' ' );
             }
-            if(tab.length >= 2){
-                tab.splice( tab.length - 1 , 1 );
-            }
-            abrege_du_champ=tab.join( ' ' );
         }
         o1+='meta(';
         o1+='    genre_meta(champ),';

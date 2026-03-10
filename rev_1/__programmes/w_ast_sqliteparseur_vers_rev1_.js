@@ -714,6 +714,20 @@ class w_ast_sqliteparseur_vers_rev1{
                         }
                     }
                 }
+                if(commentaire_table_trouve===false){
+                     t+='\n' + esp0 + esp1 + 'meta(';
+                     t+='\n' + esp0 + esp1 + '   nom_de_la_table(\'' + element.name.name + '\'),'
+                     t+='\n' + esp0 + esp1 + '   table(\'' + element.name.name + '\'),'
+                     t+='\n' + esp0 + esp1 + '   genre_meta(table_de_base),'
+                     t+='\n' + esp0 + esp1 + '   permet_la_gestion_de(\'' + element.name.name + '\'),'
+                     t+='\n' + esp0 + esp1 + '   distinction_pour_liste(\'liste des ' + element.name.name + '\'),'
+                     t+='\n' + esp0 + esp1 + '   distinction_pour_isad(\'d\\\'un ' + element.name.name + '\'),'
+                     t+='\n' + esp0 + esp1 + '   transform_base_sur_svg(translate(10,10))'
+                     t+='\n' + esp0 + esp1 + '),'
+                 
+                 
+                 
+                }
                 t+='\n' + esp0 + esp1 + 'nom_de_la_table(' + element.name.name + ')';
             }else{
                 return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'nom'} ));

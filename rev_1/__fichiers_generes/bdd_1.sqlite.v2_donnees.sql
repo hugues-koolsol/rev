@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'1028','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'1030','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -3785,12 +3785,134 @@ comme sur l''écran tâches','99','2026-03-09 11:34:54.712','2026-03-06 14:25:32
 ('408','1','normaliser les erreurs dans les js sql','99','2026-03-09 10:48:14.629','2026-03-08 09:15:07.899','0'),
 ('409','1','Lors de la lecture d''un create table sql :
 
+reprendre le libelle du champ
+
 ajouter dans meta
             typologie(cht),
 supprimer 
          type(int,1),
          
-','0','2026-03-09 13:57:44.311','2026-03-09 13:57:44.311','0');
+
+CREATE TABLE `rpps` (
+  `numero_de_ligne` INTEGER,
+  `type_d_identifiant_pp` int(1) DEFAULT NULL,
+  `identifiant_pp` varchar(13) NOT NULL ,
+  `identification_nationale_pp` varchar(14) DEFAULT NULL,
+  `code_civilite_d_exercice` varchar(2) DEFAULT NULL ,
+  `libelle_civilite_d_exercice` varchar(12) DEFAULT NULL,
+  `code_civilite` varchar(5) DEFAULT NULL,
+  `libelle_civilite` varchar(14) DEFAULT NULL,
+  `nom_d_exercice` varchar(47) DEFAULT NULL ,
+  `prenom_d_exercice` varchar(35) DEFAULT NULL ,
+  `code_profession` int(2) NOT NULL ,
+  `libelle_profession` varchar(41) DEFAULT NULL ,
+  `code_categorie_professionnelle` varchar(1) NOT NULL ,
+  `libelle_categorie_professionnelle` varchar(11) DEFAULT NULL ,
+  `code_type_savoir_faire` varchar(4) DEFAULT NULL,
+  `libelle_type_savoir_faire` varchar(25) DEFAULT NULL,
+  `code_savoir_faire` varchar(6) NOT NULL,
+  `libelle_savoir_faire` varchar(79) DEFAULT NULL,
+  `code_mode_exercice` varchar(1) DEFAULT NULL,
+  `libelle_mode_exercice` varchar(12) NOT NULL,
+  `numero_siret_site` varchar(17) DEFAULT NULL,
+  `numero_siren_site` varchar(11) DEFAULT NULL,
+  `numero_finess_site` varchar(11) DEFAULT NULL,
+  `numero_finess_etablissement_juridique` varchar(11) DEFAULT NULL,
+  `identifiant_technique_de_la_structure` varchar(22) NOT NULL,
+  `raison_sociale_site` varchar(197) DEFAULT NULL,
+  `enseigne_commerciale_site` varchar(60) DEFAULT NULL,
+  `complement_destinataire__coord__structure_` varchar(48) DEFAULT NULL,
+  `complement_point_geographique__coord__structure_` varchar(48) DEFAULT NULL,
+  `numero_voie__coord__structure_` varchar(5) DEFAULT NULL,
+  `indice_repetition_voie__coord__structure_` varchar(4) DEFAULT NULL,
+  `code_type_de_voie__coord__structure_` varchar(5) DEFAULT NULL,
+  `libelle_type_de_voie__coord__structure_` varchar(34) DEFAULT NULL,
+  `libelle_voie__coord__structure_` varchar(46) DEFAULT NULL,
+  `mention_distribution__coord__structure_` varchar(47) DEFAULT NULL,
+  `bureau_cedex__coord__structure_` varchar(46) DEFAULT NULL,
+  `code_postal__coord__structure_` varchar(6) DEFAULT NULL,
+  `code_commune__coord__structure_` varchar(6) DEFAULT NULL,
+  `libelle_commune__coord__structure_` varchar(54) DEFAULT NULL,
+  `code_pays__coord__structure_` varchar(6) DEFAULT NULL,
+  `libelle_pays__coord__structure_` varchar(10) DEFAULT NULL,
+  `telephone__coord__structure_` varchar(22) DEFAULT NULL,
+  `telephone_2__coord__structure_` varchar(18) DEFAULT NULL,
+  `telecopie__coord__structure_` varchar(18) DEFAULT NULL,
+  `adresse_e_mail__coord__structure_` varchar(72) DEFAULT NULL,
+  `code_departement__structure_` varchar(1) DEFAULT NULL,
+  `libelle_departement__structure_` varchar(1) DEFAULT NULL,
+  `ancien_identifiant_de_la_structure` varchar(18) DEFAULT NULL,
+  `autorite_d_enregistrement` varchar(25) DEFAULT NULL,
+  `code_secteur_d_activite` varchar(5) DEFAULT NULL,
+  `libelle_secteur_d_activite` varchar(64) DEFAULT NULL,
+  `code_section_tableau_pharmaciens` varchar(2) NOT NULL,
+  `libelle_section_tableau_pharmaciens` varchar(255) DEFAULT NULL,
+  `code_role` varchar(14) DEFAULT NULL,
+  `libelle_role` varchar(255) DEFAULT NULL,
+  `code_genre_activite` varchar(14) DEFAULT NULL,
+  `libelle_genre_activite` varchar(255) DEFAULT NULL
+
+
+);','0','2026-03-10 08:53:53.149','2026-03-09 13:57:44.311','0'),
+('410','1','lecture fichier zip
+
+    async extractZipStreaming(zipPath, outputDir) {
+     
+     
+      // Convertit un Deno.FsFile en WritableStream
+      function fileWritableStream(file){
+        return new WritableStream({
+          write(chunk) {
+            return file.write(chunk);
+          },
+          close() {
+            file.close();
+          },
+          abort() {
+            file.close();
+          },
+        });
+      }
+     
+      // Ouvre le ZIP en streaming
+      const zipFile = await Deno.open(zipPath, { read: true });
+      const zipStream = zipFile.readable;
+
+      // Initialise zip.js avec un stream
+      const reader = new ZipReader(zipStream);
+      const entries = await reader.getEntries();
+      for (const entry of entries) {
+           const fullPath = `${outputDir}/${entry.filename}`;
+
+           if (entry.directory) {
+             await Deno.mkdir(fullPath, { recursive: true });
+             continue;
+           }
+
+           // Crée les dossiers si nécessaire
+           const dir = fullPath.substring(0, fullPath.lastIndexOf("/"));
+           await Deno.mkdir(dir, { recursive: true });
+
+           // Ouvre le fichier de sortie
+           const outFile = await Deno.open(fullPath, {
+             write: true,
+             create: true,
+             truncate: true,
+           });
+
+           // Transforme le fichier en WritableStream
+           const writable = fileWritableStream(outFile);
+
+           // Extraction en streaming
+           await entry.getData?.(writable);
+
+           console.log("Extracted:", entry.filename);
+      }
+
+//      await reader.close();
+//      zipFile.close();
+    }
+','99','2026-03-10 15:26:03.346','2026-03-10 15:05:21.172','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
