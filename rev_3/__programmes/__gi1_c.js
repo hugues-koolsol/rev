@@ -2921,7 +2921,7 @@ class __gi1{
       =============================================================================================================
     */
     afficher_les_zones( nz ){
-        let tab=['vv_ecran_liste','vv_ecran_creation','vv_ecran_suppression','vv_ecran_modification'];
+        let tab=['vv_ecran_liste','vv_ecran_creation','vv_ecran_suppression','vv_ecran_modification','vv_ecran_visualisation'];
         for( let i=0 ; i < tab.length ; i++ ){
             /* les éléments qui commencent par */
             let lst=document.querySelectorAll( '[id^="' + tab[i] + '"]' );
@@ -2962,6 +2962,8 @@ class __gi1{
             sujet='modification';
         }else if('vv_ecran_suppression' === nom_de_la_zone){
             sujet='suppression';
+        }else if('vv_ecran_visualisation' === nom_de_la_zone){
+            sujet='visualisation';
         }else if('vv_ecran_creation' === nom_de_la_zone){
             sujet='création';
         }
@@ -3005,6 +3007,10 @@ class __gi1{
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
         o1+=' <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter et revenir à la liste</div>';
         o1+='</div>';
+        /*
+          visualisation
+        */
+        o1+='<div id="vv_ecran_visualisation_zone_contenu" style="display:none;"></div>';
         /*
           suppression
         */

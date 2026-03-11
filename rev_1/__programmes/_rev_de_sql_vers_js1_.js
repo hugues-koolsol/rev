@@ -36,7 +36,8 @@ class _rev_de_sql_vers_js1{
         "ne_pas_traiter_la_maj_ts_modification" : 0 ,
         "ne_pas_traiter_la_maj_ts_creation" : 0 ,
         "ne_pas_traiter_le_numero_de_revision" : 0 ,
-        "inclure_le_prefixe_de_la_base_devant_la_table" : 0
+        "inclure_le_prefixe_de_la_base_devant_la_table" : 0 ,
+        "insert_brut" : 0
     };
     #obj_webs={};
     #deb_selection_dans_formule=0;
@@ -422,15 +423,29 @@ class _rev_de_sql_vers_js1{
             t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }\r\n';
             t+='    }\r\n';
+            /*
+            
+            */
         }else if(type_de_requete === 'insert'){
+            /*
+            
+            */
             var nom_de_la_table=obj3.liste_des_tables_pour_select_js;
             nouvelle_chaine=obj3.debut_sql_pour_insert_js;
-            t+='        let sql0=`' + CRLF;
-            t+='      ' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '      ' ) + CRLF;
-            t+='        `;' + CRLF;
+            if(this.#obj_webs.insert_brut === 1 ){
+                t+='        let sql0=\'INSERT INTO `' + this.#obj_webs.ordre_des_tables[0].nom_de_la_table + '` VALUES \';'+CRLF;
+            }else{
+                t+='        let sql0=`' + CRLF;
+                t+='      ' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '      ' ) + CRLF;
+                t+='        `;' + CRLF;
+            }
             t+='        let liste_des_valeurs=\'\';' + CRLF;
             t+='        try{' + CRLF;
-            t+='            for( let i=0 ; i < par.donnees.length ; i++ ){' + CRLF;
+            if(this.#obj_webs.insert_brut === 1 ){
+                t+='            for( let i=0 ; i < par.length ; i++ ){' + CRLF;
+            }else{
+                t+='            for( let i=0 ; i < par.donnees.length ; i++ ){' + CRLF;
+            }
             t+='                if(liste_des_valeurs != \'\'){' + CRLF;
             t+='                    liste_des_valeurs+=\',\';' + CRLF;
             t+='                }' + CRLF;
@@ -446,7 +461,15 @@ class _rev_de_sql_vers_js1{
                         } ));
                 }
                 /* console.log(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]]); */
-                if(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ
+                
+                if(this.#obj_webs.insert_brut === 1 ){
+                       let virgule=',';
+                       if(i===obj3.tableau_des_valeurs_pour_insert_js.length-1){
+                         virgule=' ';
+                       }
+                       tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__gi1.__fnt1.sq1( par[i]['+i+'] ) + \'\' + \'' + virgule + '\'; // ' + obj3.tableau_des_valeurs_pour_insert_js[i][1]+ '\r\n');
+                 
+                }else if(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ
                        && (this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ.che_est_tsc_genre === 1
                            || this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ.che_est_tsm_genre === 1)
                        && this.#obj_webs.ne_pas_traiter_la_maj_ts_creation === 0
@@ -469,9 +492,16 @@ class _rev_de_sql_vers_js1{
                 }
             }
             /* this.__gi1.ma_trace1('tableau_des_insert=',tableau_des_insert); */
-            t+=tableau_des_insert.join( ' + \',\';' + CRLF );
+            if(this.#obj_webs.insert_brut === 1 ){
+                t+=tableau_des_insert.join('');
+            }else{
+                t+=tableau_des_insert.join( ' + \',\';' + CRLF );
+            }
             if(tableau_des_insert.length > 0){
-                t+=';';
+                if(this.#obj_webs.insert_brut === 1 ){
+                }else{
+                    t+=';';
+                }
             }else{
                 return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + 'pas de valeur pour insert'} ));
             }
@@ -1300,6 +1330,7 @@ class _rev_de_sql_vers_js1{
         this.#obj_webs.ne_pas_tester_les_dependances_de_suppression=0;
         this.#obj_webs.ne_pas_traiter_la_maj_ts_modification=0;
         this.#obj_webs.ne_pas_traiter_la_maj_ts_creation=0;
+        this.#obj_webs.insert_brut=0;
         this.#obj_webs.ne_pas_traiter_le_numero_de_revision=0;
         this.#obj_webs.inclure_le_prefixe_de_la_base_devant_la_table=0;
         var i=0;
@@ -1336,6 +1367,15 @@ class _rev_de_sql_vers_js1{
                             ){
                                 if(obj2.__xva[k + 1][1] === '1'){
                                     this.#obj_webs.ne_pas_traiter_la_maj_ts_creation=1;
+                                }
+                                
+                            }else if(obj2.__xva[k][1] === 'insert_brut'
+                                   && obj2.__xva[k][2] === 'f'
+                                   && obj2.__xva[k + 1][2] === 'c'
+                                   && obj2.__xva[k][8] === 1
+                            ){
+                                if(obj2.__xva[k + 1][1] === '1'){
+                                    this.#obj_webs.insert_brut=1;
                                 }
                             }else if(obj2.__xva[k][1] === 'inclure_le_prefixe_de_la_base_devant_la_table'
                                    && obj2.__xva[k][2] === 'f'

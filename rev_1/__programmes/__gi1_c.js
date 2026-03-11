@@ -2921,7 +2921,7 @@ class __gi1{
       =============================================================================================================
     */
     afficher_les_zones( nz ){
-        let tab=['vv_ecran_liste','vv_ecran_creation','vv_ecran_suppression','vv_ecran_modification'];
+        let tab=['vv_ecran_liste','vv_ecran_creation','vv_ecran_suppression','vv_ecran_modification','vv_ecran_visualisation'];
         for( let i=0 ; i < tab.length ; i++ ){
             /* les éléments qui commencent par */
             let lst=document.querySelectorAll( '[id^="' + tab[i] + '"]' );
@@ -2962,6 +2962,8 @@ class __gi1{
             sujet='modification';
         }else if('vv_ecran_suppression' === nom_de_la_zone){
             sujet='suppression';
+        }else if('vv_ecran_visualisation' === nom_de_la_zone){
+            sujet='visualisation';
         }else if('vv_ecran_creation' === nom_de_la_zone){
             sujet='création';
         }
@@ -3005,6 +3007,10 @@ class __gi1{
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
         o1+=' <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter et revenir à la liste</div>';
         o1+='</div>';
+        /*
+          visualisation
+        */
+        o1+='<div id="vv_ecran_visualisation_zone_contenu" style="display:none;"></div>';
         /*
           suppression
         */
@@ -3362,7 +3368,8 @@ class __gi1{
         "rond_vert1" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:lime;stroke-width:1;"></circle><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect></svg>' ,
         "lst_des_elts" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g stroke-linecap="round" fill="transparent" stroke="rgb(0, 0, 0)" stroke-linejoin="round" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:6;"><rect x="-50" y="-50" width="100" height="100" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -25 -35 C -16 -35 29 -35 35 -35 C 35 -32 35 -28 35 -25 C 27 -25 -20 -25 -25 -25 a 8 8 0 1 1 0 -10"></path><path d="M -24 -5 C -15 -5 30 -5 36 -5 C 36 -2 36 2 36 5 C 28 5 -19 5 -24 5 a 8 8 0 1 1 0 -10"></path><path d="M -24 25 C -15 25 30 25 36 25 C 36 28 36 32 36 35 C 28 35 -19 35 -24 35 a 8 8 0 1 1 0 -10"></path></g></svg>' ,
         "televerser" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"> <g transform="translate(-50 -50)" stroke-linejoin="miter"  stroke-linecap="square">  <path d=" M 8 8 L 78 8 L 93 23  L 93 92 L 8 92 L 8 8" style="stroke:rgb(0, 0, 0);fill:gray;stroke-width:6;fill-opacity:1;"></path>  <path d="M 20 13 L 20 16 " style="stroke:#424242;fill:dimgray;stroke-width:7;"></path>  <path  d="M 34 13 L 34 33 l 38 0 l 0 -20 l -38 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 22 44 L 22 87 l 56 0 l 0 -43 l -56 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 65 17L 65 29" style="stroke:#424242;fill:dimgray;stroke-width:8;"></path>  <path d="M 86 85L 86 85" style="stroke:lightgrey;fill:lightgrey;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 24 85L 76 85" style="stroke:red;fill:lightgrey;stroke-width:9;stroke-opacity:1;"></path>  <path d="M 29 50 L 72 50 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 61 L 72 61 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 72 L 72 72 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path> </g> <path d=" M -50 -50 L 50 -50 l 0 100 l -100 0 l 0 -100 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path> <path d=" M 0 -32  C 0 -25 0 19 0 30 L 18 9 H -18 L 0 30" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:yellow;fill:yellow;stroke-width:10;"></path></svg>' ,
-        "recharger_la_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 255, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M 38 10 A 40 39 0 1 1 38 -10 L 21 -17  L 38 -10 L 38 -31" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:10;"></path></svg>'
+        "recharger_la_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 255, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M 38 10 A 40 39 0 1 1 38 -10 L 21 -17  L 38 -10 L 38 -31" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:10;"></path></svg>' ,
+        "voir" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -8 10 C 2 0 -23 -35 -38 -20 C -57 0 -19 20 -8 10 " stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d=" M 8 10 C 18 20 59 0 38 -20  C 23 -35 -2 0 8 10" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><circle cx="-17" cy="-2" r="6" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle><circle cx="17" cy="-1" r="6" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle><path d=" M -41 -34  C -34 -44 -8 -39 -5 -24" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d=" M 10 -30 C 17 -34 33 -34 44 -30 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path></svg>'
     };
 }
 /* __gi0 permet de fermer une sous fenetre */

@@ -70,9 +70,7 @@ class sql_145{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            donnees_retournees.__xst=__xer;
-            this.__gi1.__xsi[__xer].push( 'erreur sql 145 ' + sql0 + ' [' + this.__gi1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return(this.__gi1.traite_erreur_sql( 145 , e , sql0 , donnees_retournees , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
