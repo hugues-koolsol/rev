@@ -44,7 +44,66 @@ class __fnt1{
     }
     /*
       =============================================================================================================
+      =============================================================================================================
+      =============================================================================================================
       fonctions serveur
+      =============================================================================================================
+      =============================================================================================================
+      =============================================================================================================
+    */
+    /*
+      =============================================================================================================
+    */
+    async dezipper_un_fichier_dans_un_repertoire( chemin_fichier_zip , repertoire_en_sortie ){
+        /* Convertit un Deno.FsFile en WritableStream */
+        function fileWritableStream( file ){
+            return(new WritableStream( {
+                     write( chunk ){
+                        return(file.write( chunk ));
+                    }  ,
+                    
+                     close(){
+                        file.close();
+                    }  ,
+                    
+                     abort(){
+                        file.close();
+                    } 
+                
+                } ));
+        }
+        /* Ouvre le ZIP en streaming */
+        const zipFile=await Deno.open( chemin_fichier_zip , {"read" : true} );
+        const zipStream=zipFile.readable;
+        /* Initialise zip.js avec un stream */
+        const reader=new ZipReader( zipStream );
+        const entries=await reader.getEntries();
+        for(const entry of entries){
+            const fullPath=repertoire_en_sortie + '/' + entry.filename;
+            if(entry.directory){
+                await Deno.mkdir( fullPath , {"recursive" : true} );
+                continue;
+            }
+            /* Crée les dossiers si nécessaire */
+            const dir=fullPath.substring( 0 , fullPath.lastIndexOf( "/" ) );
+            await Deno.mkdir( dir , {"recursive" : true} );
+            /* Ouvre le fichier de sortie */
+            const outFile=await Deno.open( fullPath , {"write" : true ,"create" : true ,"truncate" : true} );
+            /* Transforme le fichier en WritableStream */
+            const writable=fileWritableStream( outFile );
+            /* Extraction en streaming */
+            await entry.getData?.( writable );
+            console.log( "Extracted:" , entry.filename );
+        }
+        try{
+            await reader.close();
+        } catch {}
+        try{
+            zipFile.close();
+        } catch {}
+    }
+    /*
+      =============================================================================================================
     */
     async supprimer_fichier_sans_sauvegarde( chemin , donnees_retournees ){
         try{
@@ -199,6 +258,8 @@ class __fnt1{
     /*
       =============================================================================================================
       =============================================================================================================
+      =============================================================================================================
+      fonctions client
       =============================================================================================================
       =============================================================================================================
       =============================================================================================================

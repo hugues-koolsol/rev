@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'1031','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$XCDLE4WG7yBPqiHOE5gMKOVTCWhDZGRu5HgbQOHxOVA7jSiFLKQ5q',NULL,'1032','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -3854,65 +3854,288 @@ CREATE TABLE `rpps` (
 
 
 );','1','2026-03-10 08:53:53.149','2026-03-09 13:57:44.311','0'),
-('410','1','lecture fichier zip
+('410','1','dans __fnt1 :
 
-    async extractZipStreaming(zipPath, outputDir) {
-     
-     
-      // Convertit un Deno.FsFile en WritableStream
-      function fileWritableStream(file){
-        return new WritableStream({
-          write(chunk) {
-            return file.write(chunk);
-          },
-          close() {
-            file.close();
-          },
-          abort() {
-            file.close();
-          },
-        });
-      }
-     
-      // Ouvre le ZIP en streaming
-      const zipFile = await Deno.open(zipPath, { read: true });
-      const zipStream = zipFile.readable;
 
-      // Initialise zip.js avec un stream
-      const reader = new ZipReader(zipStream);
-      const entries = await reader.getEntries();
-      for (const entry of entries) {
-           const fullPath = `${outputDir}/${entry.filename}`;
 
-           if (entry.directory) {
-             await Deno.mkdir(fullPath, { recursive: true });
-             continue;
-           }
-
-           // Crée les dossiers si nécessaire
-           const dir = fullPath.substring(0, fullPath.lastIndexOf("/"));
-           await Deno.mkdir(dir, { recursive: true });
-
-           // Ouvre le fichier de sortie
-           const outFile = await Deno.open(fullPath, {
-             write: true,
-             create: true,
-             truncate: true,
-           });
-
-           // Transforme le fichier en WritableStream
-           const writable = fileWritableStream(outFile);
-
-           // Extraction en streaming
-           await entry.getData?.(writable);
-
-           console.log("Extracted:", entry.filename);
-      }
-
-//      await reader.close();
-//      zipFile.close();
+    /*
+      =============================================================================================================
+    */
+    async dezipper_un_fichier_dans_un_repertoire( chemin_fichier_zip , repertoire_en_sortie ){
+        /* Convertit un Deno.FsFile en WritableStream */
+        function fileWritableStream( file ){
+            return(new WritableStream( {
+                     write( chunk ){
+                        return(file.write( chunk ));
+                    }  ,
+                    
+                     close(){
+                        file.close();
+                    }  ,
+                    
+                     abort(){
+                        file.close();
+                    } 
+                
+                } ));
+        }
+        /* Ouvre le ZIP en streaming */
+        const zipFile=await Deno.open( chemin_fichier_zip , {"read" : true} );
+        const zipStream=zipFile.readable;
+        /* Initialise zip.js avec un stream */
+        let reader=null;
+        try{
+            reader=new ZipReader( zipStream );
+        }catch(e){
+            throw new Error(e.stack);
+            return;
+        }
+        let entries=null;
+        try{
+            entries=await reader.getEntries();
+        }catch(e){
+            throw new Error(e.stack);
+            return;
+        }
+        for(const entry of entries){
+            const fullPath=repertoire_en_sortie + ''/'' + entry.filename;
+            if(entry.directory){
+                await Deno.mkdir( fullPath , {"recursive" : true} );
+                continue;
+            }
+            /* Crée les dossiers si nécessaire */
+            const dir=fullPath.substring( 0 , fullPath.lastIndexOf( "/" ) );
+            await Deno.mkdir( dir , {"recursive" : true} );
+            /* Ouvre le fichier de sortie */
+            const outFile=await Deno.open( fullPath , {"write" : true ,"create" : true ,"truncate" : true} );
+            /* Transforme le fichier en WritableStream */
+            const writable=fileWritableStream( outFile );
+            /* Extraction en streaming */
+            await entry.getData?.( writable );
+            console.log( "Extracted:" , entry.filename );
+        }
+        try{
+            await reader.close();
+        } catch {}
+        try{
+            zipFile.close();
+        } catch {}
     }
-','99','2026-03-10 15:26:03.346','2026-03-10 15:05:21.172','0'),
+
+
+
+dans le programme rpps
+
+    async integrer_les_lignes_du_csv(tableau_des_lignes_a_integrer , donnees_retournees , __db1 ){
+//        this.__gi1.ma_trace1(''tableau_des_lignes_a_integrer='',tableau_des_lignes_a_integrer);
+        let tab_pour_sql=[];
+        for( let i = 0; i<tableau_des_lignes_a_integrer.length;i++){
+          let ar1=[tableau_des_lignes_a_integrer[i][0]]
+          let ar2=tableau_des_lignes_a_integrer[i][1].split(''|'');
+          tab_pour_sql.push(ar1.concat(ar2));
+        }
+//        this.__gi1.ma_trace1(''tab_pour_sql='',tab_pour_sql);
+         
+        let tt165=await this.__gi1.sql_iii( 165 , tab_pour_sql , donnees_retournees , __db1 );
+        // this.__gi1.ma_trace1(''tt165='',tt165);
+        return tt165;
+         
+         
+         
+    }
+    /*
+      =============================================================================================================
+    */
+    async importer_un_csv_methode_01( chemin_du_fichier , sauter_n_enregistrements=1 , nombre_max_d_entrees=0 , donnees_retournees , options_generales ){
+     
+     
+        let debut=performance.now();
+        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+     
+     
+        let buf_cumule = [];
+        let texte_du_buffer = '''';
+        let buffer_temporaire=null;
+        
+        let numero_de_ligne=0;
+        let nombre_d_entrees=0;
+        let tableau_des_lignes_a_integrer=[];
+        
+        let file = await Deno.open(chemin_du_fichier, { read: true });
+        const taille_du_buffer=10000;
+        let ligne_du_csv='''';
+        const fileInfo = await file.stat();
+        if (fileInfo.isFile) {
+            /*
+              on lit par paquets de taille_du_buffer octets
+            */
+            let continuer=true;
+            while(continuer === true){
+                let buf = new Uint8Array(taille_du_buffer);
+                let numberOfBytesRead = await file.readSync(buf);
+                if(numberOfBytesRead===null){
+                    continuer=false;
+                    break;
+                }
+                for(let i=0;i<taille_du_buffer && continuer === true ;i++){
+                    if( buf[i] === 0 ){
+                        break;
+                    }else if( buf[i] === 10 ){
+                        numero_de_ligne++;
+                        if( numero_de_ligne <= sauter_n_enregistrements ){
+                            buf_cumule = [];
+                            continue
+                        }
+//                        this.__gi1.ma_trace1(''nombre_d_entrees=''+nombre_d_entrees+'',nombre_max_d_entrees=''+nombre_max_d_entrees );
+                        if( nombre_max_d_entrees > 0 && nombre_d_entrees >= nombre_max_d_entrees ){
+                            buf_cumule = [];
+                            continuer=false;
+                            break;
+                        }
+                        nombre_d_entrees++;
+                        
+                        buffer_temporaire=new Uint8Array(buf_cumule);
+                        texte_du_buffer = new TextDecoder().decode(buffer_temporaire);  // "hello world"
+                        /*
+                          si on a un csv avec du texte délimité par ", ( qui peut contenir aussi \" dans le texte )
+                          et qui contient des CRLF, il faut ajouter un traitement ici pour
+                          détecter si on est dans une chaine délimitée par des " ou c''est vraiement une fin de ligne
+                        */
+                        
+                        tableau_des_lignes_a_integrer.push([numero_de_ligne,texte_du_buffer]);
+                        if(tableau_des_lignes_a_integrer.length > 1000){
+                         
+                            let ret=await this.integrer_les_lignes_du_csv(tableau_des_lignes_a_integrer , donnees_retournees , __db1 );
+                            if(ret[__xst] !== __xsu){
+                                await __db1.close();
+                                await file.close()
+                                this.__gi1.__xsi[__xer].push( '' ['' + this.__gi1.nl2() );
+                                donnees_retournees.__xst=__xer;
+                                return({"__xst" : __xer});
+                            }
+                            function sleep1( ms ){
+                                return(new Promise( ( resolve ) => {
+                                        setTimeout( resolve , ms );} ));
+                            }
+                            /*
+                              on met un petit timeout entre chaque insert pour ne pas bloquer 
+                              les autres actions lors de l''intégration
+                            */
+                            await sleep1(25)
+                            
+                            
+                            tableau_des_lignes_a_integrer=[]
+                        }
+                        
+                        
+                        buf_cumule = [];
+                    }else{
+                        buf_cumule.push(buf[i]);
+                    }
+                }
+            }
+        }
+        if(buf_cumule.length > 0 && nombre_d_entrees < nombre_max_d_entrees ){
+            console.log('' au final, buf_cumule='' + buf_cumule);
+            buffer_temporaire=new Uint8Array(buf_cumule);
+            texte_du_buffer = new TextDecoder().decode(buffer_temporaire);  // "hello world"
+            this.__gi1.ma_trace1(''= = = = = = =final texte_du_buffer="''+texte_du_buffer+''"'');
+            tableau_des_lignes_a_integrer.push(texte_du_buffer);
+        }
+        await this.integrer_les_lignes_du_csv(tableau_des_lignes_a_integrer , donnees_retournees , __db1 );
+        __db1.close();
+        tableau_des_lignes_a_integrer=[]
+        await file.close()
+        let fin=performance.now();
+        this.__gi1.ma_trace1(''temps=''+parseInt( (fin-debut)/1000 , 10));
+        
+     
+ 
+    }
+    
+    
+    /*
+      =============================================================================================================
+    */
+    async vider_la_table( mat , d , donnees_recues , donnees_retournees , options_generales ){
+
+        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+
+        let tt168=await this.__gi1.sql_iii(166 , {} , donnees_retournees , __db1 );
+        /*  */
+        if(tt168[__xst] !== __xsu){
+            this.__gi1.__xsi[__xer].push( ''erreur lors de le suppression ['' + this.__gi1.nl2() + '']'' );
+            return({"__xst" : __xer});
+        }
+        await __db1.exec( ''VACUUM;'' );
+        return({"__xst" : __xsu});
+
+    }
+     
+
+         
+    /*
+      =============================================================================================================
+    */
+    async importer_un_csv1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+     
+        let nom_du_fichier='''';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''nom_du_fichier''
+                   && mat[i][2] === ''f''
+                   && mat[i][8] === 1
+                   && mat[i + 1][2] === ''c''
+            ){
+                nom_du_fichier=mat[i + 1][1];
+            }
+        }
+        let nom_complet_du_fichier=''./__fichiers_generes/'' + nom_du_fichier;
+        /* 
+          sans index
+          pour   100 000 enregs :   47 s
+          pour 1 000 000 enregs :  467 s =>  7 mn 47 s
+          pour 2 227 484 enregs : 1098 s => 18 mn 18 s
+        */
+           
+        
+        this.importer_un_csv_methode_01(nom_complet_du_fichier , 1 , 0   , donnees_retournees , options_generales );
+        
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async dezipper( mat , d , donnees_recues , donnees_retournees , options_generales ){
+        let nom_du_fichier='''';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''nom_du_fichier''
+                   && mat[i][2] === ''f''
+                   && mat[i][8] === 1
+                   && mat[i + 1][2] === ''c''
+            ){
+                nom_du_fichier=mat[i + 1][1];
+            }
+        }
+        let nom_complet_du_fichier=''./__fichiers_generes/'' + nom_du_fichier;
+        if(!await this.__gi1.is_file(nom_complet_du_fichier)){
+            this.__gi1.__xsi[__xer].push( '' le fichier .zip n\''a pas été trouvé ['' + this.__gi1.nl2() + '']'' );
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
+        }
+        try{        
+            /* 
+              mettre un await pour attendre le dézip effectif 
+            */
+            this.__gi1.__fnt1.dezipper_un_fichier_dans_un_repertoire(nom_complet_du_fichier , ''./__fichiers_generes/'');
+        }catch(e){
+            this.__gi1.ma_trace1(''e='',e);
+        }
+        
+        
+        return({"__xst" : __xsu});
+    }','99','2026-03-12 18:58:43.982','2026-03-10 15:05:21.172','0'),
 ('411','1','faire une option  insert brut pour les sql 
 qui ne liste pas les noms des champs 
 et qui prend les valeurs directenemnt dans un tableau 
