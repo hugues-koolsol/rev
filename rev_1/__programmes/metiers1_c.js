@@ -438,7 +438,7 @@ class metiers1{
             let trouvé=false;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1];
+                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
                     trouvé=true;
                     break;
                 }

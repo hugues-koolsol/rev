@@ -173,7 +173,6 @@ class x_ecran_concevoir_une_requete1{
         this.#obj_webs.inclure_le_prefixe_de_la_base_devant_la_table=document.getElementById( 'vv_inclure_le_prefixe_de_la_base_devant_la_table' ).checked ? ( 1 ) : ( 0 );
         this.#mettre_en_stokage_local_et_afficher();
     }
-    
     /*
       =============================================================================================================
     */
@@ -1163,16 +1162,12 @@ class x_ecran_concevoir_une_requete1{
             cmd+=')))';
             t+=' ne_pas_traiter_la_maj_ts_creation';
             t+='<input  id="vv_ne_pas_traiter_la_maj_ts_creation" type="checkbox" data-rev_click="' + cmd + '" ' + (this.#obj_webs.ne_pas_traiter_la_maj_ts_creation === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
-            
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(maj_insert_brut(';
             cmd+=' nom_zone(vv_insert_brut),';
             cmd+=')))';
             t+=' insert_brut';
             t+='<input  id="vv_insert_brut" type="checkbox" data-rev_click="' + cmd + '" ' + (this.#obj_webs.insert_brut === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
-            
-            
-            
         }else{
             t+='<input style="display:none;" id="vv_ne_pas_traiter_la_maj_ts_creation" type="checkbox" checked="false" />';
             t+='<input style="display:none;" id="vv_insert_brut" type="checkbox" checked="false" />';
@@ -1722,9 +1717,7 @@ class x_ecran_concevoir_une_requete1{
         ){
             liste_des_meta+='ne_pas_traiter_la_maj_ts_creation(1)';
         }
-        if((this.#obj_webs.type_de_requete === 'insert')
-               && this.#obj_webs.insert_brut === 1
-        ){
+        if(this.#obj_webs.type_de_requete === 'insert' && this.#obj_webs.insert_brut === 1){
             liste_des_meta+='insert_brut(1)';
         }
         if((this.#obj_webs.type_de_requete === 'insert'

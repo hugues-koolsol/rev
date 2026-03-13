@@ -424,16 +424,16 @@ class _rev_de_sql_vers_js1{
             t+='        }\r\n';
             t+='    }\r\n';
             /*
-            
+              
             */
         }else if(type_de_requete === 'insert'){
             /*
-            
+              
             */
             var nom_de_la_table=obj3.liste_des_tables_pour_select_js;
             nouvelle_chaine=obj3.debut_sql_pour_insert_js;
-            if(this.#obj_webs.insert_brut === 1 ){
-                t+='        let sql0=\'INSERT INTO `' + this.#obj_webs.ordre_des_tables[0].nom_de_la_table + '` VALUES \';'+CRLF;
+            if(this.#obj_webs.insert_brut === 1){
+                t+='        let sql0=\'INSERT INTO `' + this.#obj_webs.ordre_des_tables[0].nom_de_la_table + '` VALUES \';' + CRLF;
             }else{
                 t+='        let sql0=`' + CRLF;
                 t+='      ' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '      ' ) + CRLF;
@@ -441,7 +441,7 @@ class _rev_de_sql_vers_js1{
             }
             t+='        let liste_des_valeurs=\'\';' + CRLF;
             t+='        try{' + CRLF;
-            if(this.#obj_webs.insert_brut === 1 ){
+            if(this.#obj_webs.insert_brut === 1){
                 t+='            for( let i=0 ; i < par.length ; i++ ){' + CRLF;
             }else{
                 t+='            for( let i=0 ; i < par.donnees.length ; i++ ){' + CRLF;
@@ -461,26 +461,30 @@ class _rev_de_sql_vers_js1{
                         } ));
                 }
                 /* console.log(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]]); */
-                
-                if(this.#obj_webs.insert_brut === 1 ){
-                       let virgule=',';
-                       if(i===obj3.tableau_des_valeurs_pour_insert_js.length-1){
-                         virgule=' ';
-                       }
-                       tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__gi1.__fnt1.sq1( par[i]['+i+'] ) + \'\' + \'' + virgule + '\'; // ' + obj3.tableau_des_valeurs_pour_insert_js[i][1]+ '\r\n');
-                 
-                }else if(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ
-                       && (this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ.che_est_tsc_genre === 1
-                           || this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ.che_est_tsm_genre === 1)
+                let detail_champ=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]];
+                if(this.#obj_webs.insert_brut === 1){
+                    let virgule=',';
+                    if(i === obj3.tableau_des_valeurs_pour_insert_js.length - 1){
+                        virgule=' ';
+                    }
+                    if(detail_champ.espece_du_champ.toLowerCase() === 'varchar'
+                           && detail_champ.genre_objet_du_champ.che_a_init_genre === 1
+                           && detail_champ.genre_objet_du_champ.cht_valeur_init_genre.toUpperCase() === 'NULL'
+                    ){
+                        tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + ( par[i][' + i + ']===\'\' ? \'NULL\' : this.__gi1.__fnt1.sq1( par[i][' + i + '] ) ) + \'\' + \'' + virgule + '\'; // ' + obj3.tableau_des_valeurs_pour_insert_js[i][1] + '\r\n' );
+                    }else{
+                        tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__gi1.__fnt1.sq1( par[i][' + i + '] ) + \'\' + \'' + virgule + '\'; // ' + obj3.tableau_des_valeurs_pour_insert_js[i][1] + '\r\n' );
+                    }
+                }else if(detail_champ.genre_objet_du_champ
+                       && (detail_champ.genre_objet_du_champ.che_est_tsc_genre === 1
+                           || detail_champ.genre_objet_du_champ.che_est_tsm_genre === 1)
                        && this.#obj_webs.ne_pas_traiter_la_maj_ts_creation === 0
                 ){
                     tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__gi1.__fnt1.sq1( donnees_retournees.date_heure_serveur ) + \'\'' );
-                }else if(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ
-                       && this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ.che_est_nur_genre === 1
-                ){
+                }else if(detail_champ.genre_objet_du_champ && detail_champ.genre_objet_du_champ.che_est_nur_genre === 1){
                     tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \'+this.__gi1.__fnt1.sq1(\'0\') + \'\'' );
                 }else{
-                    let spec=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]].genre_objet_du_champ.chp_espece_genre.toLowerCase();
+                    let spec=detail_champ.genre_objet_du_champ.chp_espece_genre.toLowerCase();
                     if(spec === 'varchar' || spec === 'text'){
                         /* debugger */
                         let s01=obj3.tableau_des_valeurs_pour_insert_js[i][0];
@@ -492,13 +496,13 @@ class _rev_de_sql_vers_js1{
                 }
             }
             /* this.__gi1.ma_trace1('tableau_des_insert=',tableau_des_insert); */
-            if(this.#obj_webs.insert_brut === 1 ){
-                t+=tableau_des_insert.join('');
+            if(this.#obj_webs.insert_brut === 1){
+                t+=tableau_des_insert.join( '' );
             }else{
                 t+=tableau_des_insert.join( ' + \',\';' + CRLF );
             }
             if(tableau_des_insert.length > 0){
-                if(this.#obj_webs.insert_brut === 1 ){
+                if(this.#obj_webs.insert_brut === 1){
                 }else{
                     t+=';';
                 }
@@ -1368,12 +1372,7 @@ class _rev_de_sql_vers_js1{
                                 if(obj2.__xva[k + 1][1] === '1'){
                                     this.#obj_webs.ne_pas_traiter_la_maj_ts_creation=1;
                                 }
-                                
-                            }else if(obj2.__xva[k][1] === 'insert_brut'
-                                   && obj2.__xva[k][2] === 'f'
-                                   && obj2.__xva[k + 1][2] === 'c'
-                                   && obj2.__xva[k][8] === 1
-                            ){
+                            }else if(obj2.__xva[k][1] === 'insert_brut' && obj2.__xva[k][2] === 'f' && obj2.__xva[k + 1][2] === 'c' && obj2.__xva[k][8] === 1){
                                 if(obj2.__xva[k + 1][1] === '1'){
                                     this.#obj_webs.insert_brut=1;
                                 }

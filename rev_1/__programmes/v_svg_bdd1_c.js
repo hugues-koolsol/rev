@@ -2143,7 +2143,7 @@ class v_svg_bdd1{
             }
             l_option+=' value="' + this.__gi1.__liste_des_genres[i].chi_id_genre + '"';
             l_option+=' data-genre="' + this.__gi1.fi2( JSON.stringify( this.__gi1.__liste_des_genres[i] ) ) + '"';
-            l_option+='>';
+            l_option+='>(' + this.__gi1.__liste_des_genres[i].chi_id_genre + ') ';
             l_option+=this.__gi1.__liste_des_genres[i].chp_nom_genre;
             l_option+='</option>';
             tableau_des_genres.push( [this.__gi1.__liste_des_genres[i].che_ordre_genre,l_option] );
@@ -5300,7 +5300,6 @@ class v_svg_bdd1{
             let obj1=this.__gi1.__rev1.rev_tm( cmd );
             this.modale_modifier_le_champ( obj1.__xva , 0 );
         }else if('selection_d_index' === e.target.getAttribute( 'type_element' )){
-            debugger;
             var cmd='';
             /* cmd+='m1[n1[' + this.moi + '],f1[modale_modifier_l_index['; */
             cmd+=' id_svg_conteneur_table(' + e.target.getAttribute( 'id_svg_conteneur_table' ) + ')';
@@ -6074,9 +6073,8 @@ class v_svg_bdd1{
                     }
                     nom_bref_du_champ=tab.join( ' ' );
                 }else{
-                    nom_bref_du_champ=nom_du_champ.replace(/_d_/g,' d\'').replace(/_/g,' ');
+                    nom_bref_du_champ=nom_du_champ.replace( /_d_/g , ' d\'' ).replace( /_/g , ' ' );
                 }
-                
             }else{
                 if(tab.length >= 2){
                     tab.splice( 0 , 1 );
@@ -6097,7 +6095,7 @@ class v_svg_bdd1{
                     }
                     abrege_du_champ=tab.join( ' ' );
                 }else{
-                    abrege_du_champ=nom_du_champ.replace(/_d_/g,' d\'').replace(/_/g,' ');
+                    abrege_du_champ=nom_du_champ.replace( /_d_/g , ' d\'' ).replace( /_/g , ' ' );
                 }
             }else{
                 if(tab.length >= 2){
@@ -6125,7 +6123,7 @@ class v_svg_bdd1{
         }
         o1+='    typologie(' + typologie + '),';
         o1+='    genre(' + genre + '),';
-        o1+='    espece_du_champ(' + espece_du_champ + '),';
+        /* o1+='    espece_du_champ(' + espece_du_champ + '),'; */
         if(refe_enfant_droite === 1){
             o1+='    refe_enfant_droite(' + refe_enfant_droite + '),';
         }
@@ -6135,9 +6133,11 @@ class v_svg_bdd1{
         if(est_libelle_lien === 1){
             o1+='    est_libelle_lien(' + est_libelle_lien + '),';
         }
-        if(longueur_du_champ !== ''){
-            o1+='    longueur_du_champ(' + longueur_du_champ + '),';
-        }
+        /*
+          if(longueur_du_champ !== ''){
+          o1+='    longueur_du_champ(' + longueur_du_champ + '),';
+          }
+        */
         if(masquer_champ_dans_svg === 1){
             o1+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + '),';
         }

@@ -54,57 +54,6 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    async dezipper_un_fichier_dans_un_repertoire( chemin_fichier_zip , repertoire_en_sortie ){
-        /* Convertit un Deno.FsFile en WritableStream */
-        function fileWritableStream( file ){
-            return(new WritableStream( {
-                     write( chunk ){
-                        return(file.write( chunk ));
-                    }  ,
-                    
-                     close(){
-                        file.close();
-                    }  ,
-                    
-                     abort(){
-                        file.close();
-                    } 
-                
-                } ));
-        }
-        /* Ouvre le ZIP en streaming */
-        const zipFile=await Deno.open( chemin_fichier_zip , {"read" : true} );
-        const zipStream=zipFile.readable;
-        /* Initialise zip.js avec un stream */
-        const reader=new ZipReader( zipStream );
-        const entries=await reader.getEntries();
-        for(const entry of entries){
-            const fullPath=repertoire_en_sortie + '/' + entry.filename;
-            if(entry.directory){
-                await Deno.mkdir( fullPath , {"recursive" : true} );
-                continue;
-            }
-            /* Crée les dossiers si nécessaire */
-            const dir=fullPath.substring( 0 , fullPath.lastIndexOf( "/" ) );
-            await Deno.mkdir( dir , {"recursive" : true} );
-            /* Ouvre le fichier de sortie */
-            const outFile=await Deno.open( fullPath , {"write" : true ,"create" : true ,"truncate" : true} );
-            /* Transforme le fichier en WritableStream */
-            const writable=fileWritableStream( outFile );
-            /* Extraction en streaming */
-            await entry.getData?.( writable );
-            console.log( "Extracted:" , entry.filename );
-        }
-        try{
-            await reader.close();
-        } catch {}
-        try{
-            zipFile.close();
-        } catch {}
-    }
-    /*
-      =============================================================================================================
-    */
     async supprimer_fichier_sans_sauvegarde( chemin , donnees_retournees ){
         try{
             await Deno.remove( chemin );
@@ -1099,7 +1048,8 @@ class __fnt1{
             if(this.__gi1.est_num( a[b] )){
                 return(b + '(' + a[b] + ')');
             }
-            return(b + '(\'' + a[b].replace( /\\/g , '\\\\' ).replace( /\''/g , '\\\'' ) + '\')');
+            let x=b + '(\'' + a[b].replace( /\\/g , '\\\\' ).replace( /'/g , '\\\'' ) + '\')';
+            return x;
         }
         return '';
     }
@@ -1148,10 +1098,10 @@ class __fnt1{
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+            throw new Error( 'le paramètre de sq4 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
         }else if( typeof s !== 'string'){
             let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 n\'est pas une valeur de type "string"' );
+            throw new Error( 'le paramètre de sq4 n\'est pas une valeur de type "string"' );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         let s1=s.replace( /\'/g , '\'\'' );
@@ -1197,7 +1147,7 @@ class __fnt1{
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq1 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            throw new Error( 'Paramètre de sq2 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
         }
         /* cette fonction escapeString remplace les apostrophes par des doubles apostrophes */
         /* $s1=SQLite3::escapeString($s); */
@@ -1242,7 +1192,7 @@ class __fnt1{
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq1 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            throw new Error( 'Paramètre de sq0 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         s=s.replace( /\'/g , '\'\'' );

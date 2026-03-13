@@ -11,7 +11,60 @@ const __xac='__xac';
   =====================================================================================================================
 */
 class dossiers1{
-    /* function televerser1 */
+    /*
+      =============================================================================================================
+    */
+    async analyser_premiere_ligne_de_csv( mat , d , donnees_recues , donnees_retournees , options_generales ){
+        let chp_nom_source='';
+        let chi_id_dossier=0;
+        let provenance='';
+        let liste1=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'provenance' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                provenance=mat[i + 1][1];
+            }else if(mat[i][1] === 'liste1' && mat[i][2] === 'f'){
+                liste1=i;
+            }else if(mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                if(mat[i][1] === 'chi_id_dossier'){
+                    chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][1] === 'chp_nom_source'){
+                    chp_nom_source=mat[i + 1][1];
+                }
+            }
+        }
+        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        if(chi_id_dossier > 0 && chp_nom_source !== ''){
+            let obj=await this.construire_chemin( chi_id_dossier , donnees_retournees , options_generales , __db1 );
+            if(obj[__xst] !== __xsu){
+                this.__gi1.__xsi[__xer].push( 'le chemin absolu n\'a pas pu être récupéré [' + this.__gi1.nl2() + ']' );
+                donnees_retournees.__xst=__xer;
+                return({"__xst" : __xer});
+            }
+            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + chp_nom_source;
+            /* this.__gi1.ma_trace1('chemin_du_fichier='+chemin_du_fichier); */
+            let file=await Deno.open( chemin_du_fichier , {"read" : true} );
+            let buf=new Uint8Array( 100000 );
+            let numberOfBytesRead=await file.readSync( buf );
+            let buf_cumule=[];
+            for(let i in buf){
+                if(buf[i] === 0 || buf[i] === 10 || buf[i] === 13){
+                    break;
+                }
+                buf_cumule.push( buf[i] );
+            }
+            let buffer_temporaire=new Uint8Array( buf_cumule );
+            let texte_du_buffer=new TextDecoder().decode( buffer_temporaire );
+            /* "hello world" */
+            donnees_retournees.__xva['premiere_ligne']=texte_du_buffer;
+            await file.close();
+        }
+        donnees_retournees.__xst=__xsu;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async televerser1( mat , d , donnees_recues , donnees_retournees , options_generales ){
         /* this.__gi1.ma_trace1('mat=',mat); */
         /* this.__gi1.ma_trace1('donnees_recues=',donnees_recues); */

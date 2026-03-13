@@ -1923,7 +1923,6 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='\r\n';
             src_serveur_js2+='\r\n';
         }
-        
         if(ref_select !== ''){
             src_serveur_js2+='    /*\r\n';
             src_serveur_js2+='      =============================================================================================================\r\n';
@@ -1971,8 +1970,6 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='    }\r\n';
             src_serveur_js2+='\r\n';
         }
-        
-        
         if(ref_delete !== '' && ref_select !== ''){
             src_serveur_js2+='    /*\r\n';
             src_serveur_js2+='      =============================================================================================================\r\n';
@@ -2915,7 +2912,7 @@ class x_ecran_generer_programmes1{
         src_client2+='            let trouvé=false;\r\n';
         src_client2+='            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
         src_client2+='                if(nom_champ_filtre===mat[i][1] && mat[i][2]===\'f\' &&  mat[i][8]===1 &&  mat[i+1][2]===\'c\'){\r\n';
-        src_client2+='                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1];\r\n';
+        src_client2+='                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1].replace( /\\\\\'/g , \'\\\'\' ).replace( /\\\\\\\\/g , \'\\\\\' );\r\n';
         src_client2+='                    trouvé=true;\r\n';
         src_client2+='                    break\r\n';
         src_client2+='                }\r\n';

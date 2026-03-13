@@ -2707,6 +2707,8 @@ class __gi1{
         t+='    transform: translate(0px,var(--t_marge_hb_plus));';
         t+='    text-shadow: none;';
         t+='    font-weight: 100;';
+        t+='    position: fixed;';
+        t+='    left: 5%;';
         t+='}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
@@ -2956,7 +2958,9 @@ class __gi1{
             this.initialisation_des_zones( '' + nom_de_la_classe_js + '' );
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
-        let bouton_retour='<div title="retour à la liste" data-rev_click="m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))" class="rev_bouton rev_b_svg yy_btn_retour_liste" >' + this.les_svg.lst_des_elts + '</div>';
+        let bouton_retour='<div title="retour à la liste"  class="rev_bouton rev_b_svg yy_btn_retour_liste" data-rev_click="';
+        bouton_retour+='m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))';
+        bouton_retour+='">' + this.les_svg.lst_des_elts + '</div>';
         let sujet='modification';
         if('vv_ecran_modification' === nom_de_la_zone){
             sujet='modification';

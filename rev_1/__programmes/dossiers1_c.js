@@ -28,6 +28,62 @@ class dossiers1{
     /*
       =============================================================================================================
     */
+    analyse_csv_1(){
+        let contenu=document.getElementById( 'vv_brut' ).value.toLowerCase();
+        let contenu2='';
+        for( let i=0 ; i < contenu.length ; i++ ){
+            let c=contenu[i];
+            if(c >= '0' && c <= '9' || c >= 'a' && c <= 'z' || c === '_'){
+                contenu2+=c;
+            }else if(c === 'é' || c === 'è'){
+                contenu2+='e';
+            }else if(c === 'ô'){
+                contenu2+='o';
+            }else if(c === 'î'){
+                contenu2+='i';
+            }else if(c === 'à' || c === 'â'){
+                contenu2+='a';
+            }else if(c === '|'){
+                contenu2+='|';
+            }else if(c === '\n'){
+                contenu2+='\n';
+            }else{
+                contenu2+='_';
+            }
+        }
+        contenu2=contenu2.replace( /\|/g , '` TEXT DEFAULT NULL,\n`' );
+        document.getElementById( 'vv_sortie1' ).value=contenu2;
+    }
+    /*
+      =============================================================================================================
+    */
+    analyser_premiere_ligne_de_csv( mat , d , le_message_du_serveur=null ){
+        console.log( 'premiere_ligne="' + le_message_du_serveur.__xva.premiere_ligne + '"' );
+        let o1='';
+        o1+='<h1>analyse de la première ligne d\'un fichier</h1>';
+        o1+='<br />';
+        o1+='<div id="brut">';
+        o1+='    <textarea id="vv_brut">' + this.__gi1.fi2( le_message_du_serveur.__xva.premiere_ligne ) + '</textarea>';
+        o1+='    <br />';
+        o1+='    <div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_1()))">csv 1</div>';
+        o1+='    <br />';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__gi1.__fnt1.boutons_edition1( 'vv_sortie1' );
+        o1+='</div>\r\n';
+        o1+='    <textarea data-editeur1="source_editeur1" id="vv_sortie1"></textarea>';
+        o1+='        </div>\r\n';
+        o1+='</div>';
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.innerHTML=o1;
+        /* __contenu_modale => vv_sous_fenetre1 */
+        vv_sous_fenetre1.showModal();
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     téléverser( mat , d ){
         let l01=mat.length;
         let chi_id_dossier=0;
@@ -139,7 +195,7 @@ class dossiers1{
                   les dossiers
                 */
                 if(__xva.liste_des_fido[i].present_en_base === __xsu){
-                    o1+='le dossier est présent en bdd';
+                    o1+='<div title="le dossier est présent en bdd" style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__gi1.les_svg.rond_vert1 + '</div>';
                 }else{
                     o1+='<div';
                     o1+=' class="rev_bouton yy__1"';
@@ -180,10 +236,25 @@ class dossiers1{
                   les fichiers
                 */
                 if(__xva.liste_des_fido[i].present_en_base === __xsu){
-                    o1+='le fichier est présent en bdd';
+                    o1+='<div title="le fichier est présent en bdd" style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__gi1.les_svg.rond_vert1 + '</div>';
+                    if(__xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.csv'
+                           || __xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.txt'
+                    ){
+                        o1+='<div';
+                        o1+=' class="rev_b_svg yy__0"';
+                        o1+=' data-rev_click="';
+                        o1+='pm1(m1(n1(' + this.moi + '),f1(analyser_premiere_ligne_de_csv(';
+                        o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
+                        o1+=' chi_id_dossier(' + __xva.chi_id_dossier + '),';
+                        o1+=' provenance(' + provenance + ')';
+                        o1+='))))';
+                        o1+='" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
+                    }else{
+                        o1+='<div class="rev_b_svg yy__2 yy__2_inactif" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
+                    }
                 }else{
                     o1+='<div';
-                    o1+=' class="rev_bouton yy__1"';
+                    o1+=' class="rev_b_svg yy__1"';
                     o1+=' data-rev_click="';
                     o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_ce_fichier_dans_les_sources(';
                     o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -191,9 +262,9 @@ class dossiers1{
                     o1+=' provenance(' + provenance + ')';
                     o1+=cmd;
                     o1+='))))';
-                    o1+='">intégrer</div>';
+                    o1+='" title="intégrer non binaire">' + this.__gi1.les_svg.bdd + '</div>';
                     o1+='<div';
-                    o1+=' class="rev_bouton yy__2"';
+                    o1+=' class="rev_b_svg yy__2"';
                     o1+=' data-rev_click="';
                     o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_ce_fichier_dans_les_sources(';
                     o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -202,9 +273,9 @@ class dossiers1{
                     o1+=' provenance(' + provenance + ')';
                     o1+=cmd;
                     o1+='))))';
-                    o1+='">intégrer binaire</div>';
+                    o1+='" title="intégrer non binaire">' + this.__gi1.les_svg.bdd + '</div>';
                     o1+='<div';
-                    o1+=' class="rev_bouton yy__0"';
+                    o1+=' class="rev_b_svg yy__0"';
                     o1+=' data-rev_click="';
                     o1+='confirmer1(pm1(m1(n1(' + this.moi + '),f1(supprimer_un_fichier_du_disque(';
                     o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -212,7 +283,22 @@ class dossiers1{
                     o1+=' provenance(' + provenance + ')';
                     o1+=cmd;
                     o1+=')))))';
-                    o1+='">supprimer du disque</div>';
+                    o1+='" title="supprimer du disque">' + this.__gi1.les_svg.poubelle + '</div>';
+                    if(__xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.csv'
+                           || __xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.txt'
+                    ){
+                        o1+='<div';
+                        o1+=' class="rev_b_svg yy__0"';
+                        o1+=' data-rev_click="';
+                        o1+='pm1(m1(n1(' + this.moi + '),f1(analyser_premiere_ligne_de_csv(';
+                        o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
+                        o1+=' chi_id_dossier(' + __xva.chi_id_dossier + '),';
+                        o1+=' provenance(' + provenance + ')';
+                        o1+='))))';
+                        o1+='" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
+                    }else{
+                        o1+='<div class="rev_b_svg yy__2 yy__2_inactif" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
+                    }
                 }
             }
             o1+='</td>';
@@ -650,7 +736,7 @@ class dossiers1{
             let trouvé=false;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1];
+                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
                     trouvé=true;
                     break;
                 }
