@@ -120,6 +120,17 @@ class taches1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let __test_3_1=this.__gi1.__fnt1.date_nulle_ou_comprise_entre( '1000_01_01' , '9999_12_31' , fo1['chd_une_date_tache'] , 'une date' );
+        if(__test_3_1.__xst !== __xsu){
+            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_3_1.__xme} );
+            this.__gi1.affiche_les_messages();
+            this.__gi1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chd_une_date_tache' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        
         /* conversion des données numériques début */
         fo1['chi_id_tache']=fo1['chi_id_tache'] === '' ? ( null ) : ( parseInt( fo1['chi_id_tache'] , 10 ) );
         fo1['chp_priorite_tache']=fo1['chp_priorite_tache'] === '' ? ( null ) : ( parseInt( fo1['chp_priorite_tache'] , 10 ) );
@@ -186,6 +197,21 @@ class taches1{
         o1+='        <div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__gi1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(80)))))">80</div>';
         o1+='        <div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__gi1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(99)))))">99</div>';
         o1+='      </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>une date</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.chd_une_date_tache'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='      <input type="text" id="chd_une_date_tache" size="10" maxlength="10" value="' + this.__gi1.fi2( enreg['T0.chd_une_date_tache'] ) + '" />';
+        o1+='      <div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(maj_date1(nom_du_champ(chd_une_date_tache))))">date</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -761,6 +787,8 @@ class taches1{
                     lst+=elem['T0.chp_priorite_tache'];
                 }
                 lst+='</td>';
+                /*
+                */
                 lst+='</tr>';
             }
             if(lst !== ''){

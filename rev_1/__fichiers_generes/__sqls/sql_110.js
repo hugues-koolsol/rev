@@ -19,7 +19,7 @@ class sql_110{
         /*  */
         champs0=`
           \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`chp_priorite_tache\` , \`T0\`.\`chd__dtm_tache\` , 
-          \`T0\`.\`chd__dtc_tache\` , \`T0\`.\`che__nur_tache\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\`
+          \`T0\`.\`chd__dtc_tache\` , \`T0\`.\`che__nur_tache\` , \`T0\`.\`chd_une_date_tache\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -69,7 +69,8 @@ class sql_110{
                     "T0.chd__dtm_tache" : lignes[numero_de_ligne][4] ,
                     "T0.chd__dtc_tache" : lignes[numero_de_ligne][5] ,
                     "T0.che__nur_tache" : lignes[numero_de_ligne][6] ,
-                    "T1.chp_nom_de_connexion_utilisateur" : lignes[numero_de_ligne][7]
+                    "T0.chd_une_date_tache" : lignes[numero_de_ligne][7] ,
+                    "T1.chp_nom_de_connexion_utilisateur" : lignes[numero_de_ligne][8]
                 } );
         }
         /* comptage */

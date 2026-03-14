@@ -165,7 +165,9 @@ class _connexion1{
             throw new Error( 'erreur sur ' + chemin_complet_bdd );
         }
         /*#        
-          // pour les devs : on peut décommenter le code ci dessous et remplacer le if(false) par un if(true) pour modifier un mot de passe en "dur"
+          // méthode préférée
+          // pour les devs : on peut décommenter le code ci dessous et remplacer le if(false) par un if(true) 
+          // pour modifier un utilisateur et son mot de passe
           if(false){
               // rattrapage du mot de passe utilisateur 1 
               // return(this.__gi1.bug1()); 
@@ -178,6 +180,16 @@ class _connexion1{
               let tt109=await this.__gi1.sql_iii( 109 , critere_109 , donnees_retournees , __db1 );
           }
         */
+        /*#
+          // méthode alternative à la méthode plus haut
+          // pour les devs : on peut aussi mettre à jour directement l'utilisateur/mot de passe en exécutant directement dans la bdd
+          // ça correspond à r.../r... ( vous êtes censé savoit à quoi correspond r... )
+          UPDATE tbl_utilisateurs set 
+           chp_nom_de_connexion_utilisateur = 'r...' , 
+           chp_mot_de_passe_utilisateur = '$2a$10$ZUwPUmwknnqKX6R4hxSpouG0TagvEgBPo7Q8SydizbMRitXDxk/Fy'
+          WHERE chi_id_utilisateur = 1;
+        */
+        
         let tt101=await this.__gi1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 

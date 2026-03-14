@@ -206,6 +206,98 @@ class __fnt1{
     }
     /*
       =============================================================================================================
+    */
+    maj_date1(mat , d){
+        let l01=mat.length;
+        let nom_du_champ='';
+        for( let i=d+1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }
+        }
+        if(nom_du_champ===''){
+            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" :'paramètre "nom_du_champ" non trouvé !'} );
+            return({"__xst" : __xer});
+        }
+        let ref_champ=null;
+        try{
+            ref_champ=document.getElementById(nom_du_champ);
+        }catch{}
+        if( ref_champ=== null ){
+            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" :'"' +nom_du_champ + '" non trouvé dans la page !'} );
+            return({"__xst" : __xer});
+        }
+        
+        
+        let o1='';
+        o1+='<h1>date</h1>';
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.style.minWidth='400px';
+        vv_sous_fenetre1.style.maxWidth='400px';
+        vv_sous_fenetre1.innerHTML=o1;
+        vv_sous_fenetre1.showModal();
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    date_nulle_ou_comprise_entre( inf , sup , valeur , nom_du_champ ){
+        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  1000_01_01 et 9999_12_31 inclus<br />';
+        if(valeur === '' || valeur === null){
+            return({"__xst" : __xsu});
+        }
+        if(valeur.length !== 10){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2() });
+        }
+        if(!( this.__gi1.est_num(valeur.substr(0,4)) && this.__gi1.est_num(valeur.substr(5,2)) && this.__gi1.est_num(valeur.substr(8,2)) )){
+            return({"__xst" : __xer ,"__xme" : mes_err  + ' ' + this.__gi1.nl2() });
+        }
+        if( ! (valeur.substr(4,1) === '_' &&  valeur.substr(7,1) === '_') ){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']' });
+        }
+        let annee_num=parseInt(valeur.substr(0,4),10);
+        if(  annee_num < 1000){
+            return({"__xst" : __xer ,"__xme" : ' l\'année doit être comprise entre 1000 et 9999 inclus ' });
+        }
+        let mois_num=parseInt(valeur.substr(5,2),10);
+        if( mois_num < 1 ||  mois_num > 12 ){
+            return({"__xst" : __xer ,"__xme" : ' le mois doit être compris entre 01 et 12 inclus' });
+        }
+        
+        let jour_num=parseInt(valeur.substr(8,2),10);
+        if( jour_num < 1 ||  jour_num > 31 ){
+            return({"__xst" : __xer ,"__xme" : ' le mois jour être compris entre 01 et 31 inclus' });
+        }
+        if(mois_num===4 || mois_num===6  || mois_num===9 || mois_num===11 ){
+            if(jour_num===31){
+                return({"__xst" : __xer ,"__xme" : ' pour les mois 4,6,9 et 11 le jour ne doit pas être supérieur à 30 ' });
+            }
+        }else if(mois_num===2){
+            if( jour_num <= 28){
+            }else if( jour_num === 29){
+               if((annee_num % 4 === 0 && !(annee_num % 100 === 0)) || annee_num % 400 === 0){
+                  /*
+                    une année est bisextile si elle est divisible par 4 et pas pas 100 ou bien divisible par 400 ( cf k&r  )
+                  */
+               }else{
+                  return({"__xst" : __xer ,"__xme" : ' cette année n\'est pas bisextile ' });
+               }
+            }else{
+               return({"__xst" : __xer ,"__xme" : ' le mois de février ne comporte que 28 ou 29 jours ' });
+            }
+        }
+        
+        if(valeur < inf || valeur > sup){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']' });
+        }
+        
+        
+        return({"__xst" : __xsu});
+    }
+    
+    /*
+      =============================================================================================================
       =============================================================================================================
       =============================================================================================================
       fonctions client

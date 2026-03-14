@@ -101,6 +101,9 @@ class __gi1{
                 if(e.clientX < dim.left || e.clientX > dim.right || e.clientY < dim.top || e.clientY > dim.bottom){
                     try{
                         if( typeof e.target['close'] === 'function'){
+                            try{
+                                e.target.removeAttribute('style');
+                            }catch{}
                             e.target.close();
                         }
                     } catch {}

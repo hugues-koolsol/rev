@@ -796,6 +796,8 @@ class w_ast_sqliteparseur_vers_rev1{
                         les_meta+=' , typologie(chp)';
                     }else if(element.definition[i].datatype.variant.toLowerCase() === 'integer'
                            || element.definition[i].datatype.variant.toLowerCase() === 'int'
+                           || element.definition[i].datatype.variant.toLowerCase() === 'bigint'
+                           || element.definition[i].datatype.variant.toLowerCase() === 'decimal'
                     ){
                         les_meta+=' typologie(che)';
                     }
@@ -823,7 +825,7 @@ class w_ast_sqliteparseur_vers_rev1{
                         if(element.definition[i].definition[j].type === "constraint" && element.definition[i].definition[j].variant === "not null"){
                             t+=' , non_nulle()';
                             est_non_nulle=true;
-                            if(element.definition[i].datatype.variant.toLowerCase() === 'varchar'){
+                            if(element.definition[i].datatype.variant.toLowerCase() === 'varchar' || element.definition[i].datatype.variant.toLowerCase() === 'char'){
                                 les_meta+=' genre(17) ';
                             }
                         }
@@ -842,9 +844,11 @@ class w_ast_sqliteparseur_vers_rev1{
                                         t+=' , valeur_par_defaut(NULL)';
                                         if(element.definition[i].datatype.variant.toLowerCase() === 'integer'
                                                || element.definition[i].datatype.variant.toLowerCase() === 'int'
+                                               || element.definition[i].datatype.variant.toLowerCase() === 'bigint'
+                                               || element.definition[i].datatype.variant.toLowerCase() === 'decimal'
                                         ){
                                             les_meta+=' genre(7) ';
-                                        }else if(element.definition[i].datatype.variant.toLowerCase() === 'varchar'){
+                                        }else if(element.definition[i].datatype.variant.toLowerCase() === 'varchar' || element.definition[i].datatype.variant.toLowerCase() === 'char'){
                                             les_meta+=' genre(12) ';
                                         }
                                     }else{
@@ -882,7 +886,10 @@ class w_ast_sqliteparseur_vers_rev1{
                 if(les_meta.indexOf( 'genre(' ) < 0){
                     if(element.definition[i].datatype.variant
                            && (element.definition[i].datatype.variant.toLowerCase() === 'integer'
-                               || element.definition[i].datatype.variant.toLowerCase() === 'int')
+                               || element.definition[i].datatype.variant.toLowerCase() === 'int'
+                               || element.definition[i].datatype.variant.toLowerCase() === 'bigint'
+                               || element.definition[i].datatype.variant.toLowerCase() === 'decimal'
+                              )
                     ){
                         if(est_non_nulle === false){
                             les_meta+=' genre(9) ';
@@ -896,7 +903,8 @@ class w_ast_sqliteparseur_vers_rev1{
                             les_meta+=' genre(6) ';
                         }
                     }else{
-                        debugger;
+                        console.log('%c type non pris en compte "' + element.definition[i].datatype.variant + '"','color:yellow;background-color:red;')
+//                        debugger;
                     }
                 }
                 t+='meta(' + les_meta + ')';

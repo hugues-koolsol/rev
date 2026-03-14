@@ -975,6 +975,9 @@ class x_ecran_generer_programmes1{
                                     if(mat1[k][2] === 'c'){
                                         if(mat1[k][4] === 0){
                                             src_client2+=mat1[k][1] + ',';
+                                        }else if(mat1[k][4] === 1){
+                                            /* entre quotes */
+                                            src_client2+='\'' + mat1[k][1] + '\',';
                                         }else{
                                             /* afr */
                                             debugger;
@@ -987,6 +990,7 @@ class x_ecran_generer_programmes1{
                             }
                             src_client2+='fo1[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.nom_bref_du_champ + '\');\r\n';
                             src_client2+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
+                            src_client2+='            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
                             src_client2+='            this.__gi1.affiche_les_messages();\r\n';
                             src_client2+='            this.__gi1.retablir_les_boutons_masques();\r\n';
                             src_client2+='            try{\r\n';
@@ -1092,6 +1096,9 @@ class x_ecran_generer_programmes1{
                                             if(mat1[k][2] === 'c'){
                                                 if(mat1[k][4] === 0){
                                                     src_serveur_js2+=mat1[k][1] + ',';
+                                                }else if(mat1[k][4] === 1){
+                                                    /* entre quotes */
+                                                    src_serveur_js2+='\'' + mat1[k][1] + '\',';
                                                 }else{
                                                     /* afr */
                                                     debugger;
@@ -1390,15 +1397,21 @@ class x_ecran_generer_programmes1{
                 src_client2+='        o1 += \'      <span>' + obj_champ.meta.abrege_du_champ + '</span>\' ;\r\n';
                 src_client2+='        o1 += \'    </div>\' ;\r\n';
                 src_client2+='        o1 += \'    <div class="yy_edition_valeur1">\' ;\r\n';
-                if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'VARCHAR'){
+                src_client2+='        if(enreg[\'T0.' + obj_champ.nom_du_champ + '\']===undefined){\r\n';
+                src_client2+='            o1 += \'        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\\\'est pas inclus dans le SELECT</div>\'; ;\r\n';
+                src_client2+='        }\r\n';
+                if(obj_champ.genre_objet_du_champ.chi_id_genre === 22){
+                    /*
+                      si c'est une date aaaa_mm_jj
+                    */
+                    src_client2+='        o1 += \'      <input id="' + obj_champ.nom_du_champ + '" type="text" size="10" maxlength="10" value="" />\';\r\n';
+                 
+                }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'VARCHAR'){
                     let size='';
                     if(obj_champ.genre_objet_du_champ.che_longueur_genre <= 64){
                         size=' size="' + obj_champ.genre_objet_du_champ.che_longueur_genre + '" ';
                     }
                     src_client2+='';
-                    src_client2+='        if(enreg[\'T0.' + obj_champ.nom_du_champ + '\']===undefined){\r\n';
-                    src_client2+='            o1 += \'        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\\\'est pas inclus dans le SELECT</div>\'; ;\r\n';
-                    src_client2+='        }\r\n';
                     src_client2+='';
                     src_client2+='        o1 += \'      <input ';
                     src_client2+=' type="text" style="height: var(--t_hauteur_input1);" id="' + obj_champ.nom_du_champ + '" ' + size + ' ';
@@ -1421,9 +1434,6 @@ class x_ecran_generer_programmes1{
                         src_client2+='        o1 += \'      </div>\';\r\n';
                     }
                 }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
-                    src_client2+='        if(enreg[\'T0.' + obj_champ.nom_du_champ + '\']===undefined){\r\n';
-                    src_client2+='            o1 += \'        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\\\'est pas inclus dans le SELECT</div>\'; ;\r\n';
-                    src_client2+='        }\r\n';
                     src_client2+='        o1 += \'        <div class="yy_conteneur_txtara">\' ;\r\n';
                     let format_source='';
                     if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
@@ -1452,9 +1462,6 @@ class x_ecran_generer_programmes1{
                     src_client2+='\r\n';
                     src_client2+='            o1 += \'        </div>\' ;\r\n';
                 }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'INTEGER'){
-                    src_client2+='        if(enreg[\'T0.' + obj_champ.nom_du_champ + '\']===undefined){\r\n';
-                    src_client2+='            o1 += \'        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\\\'est pas inclus dans le SELECT</div>\'; ;\r\n';
-                    src_client2+='        }\r\n';
                     if(obj_champ.genre_objet_du_champ.cht_parmis_genre === null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
                         /* champ entier standard */
                         src_client2+='        o1 += \'      ';
@@ -3200,6 +3207,8 @@ class x_ecran_generer_programmes1{
                 }
             }
         }
+        src_client2+='                /*\r\n';
+        src_client2+='                */\r\n';
         src_client2+='                lst+=\'</tr>\';\r\n';
         src_client2+='            }\r\n';
         src_client2+='            if(lst !== \'\'){\r\n';

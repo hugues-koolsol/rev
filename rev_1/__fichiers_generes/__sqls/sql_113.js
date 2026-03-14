@@ -24,6 +24,11 @@ class sql_113{
                 tableau_champs.push( '`chp_priorite_tache` = ' + this.__gi1.__fnt1.sq0( par['n_chp_priorite_tache'] ) + '' );
             }
             tableau_champs.push( '`chd__dtm_tache` = \'' + donnees_retournees.date_heure_serveur + '\' ' );
+            if(par['n_chd_une_date_tache'] === undefined || par['n_chd_une_date_tache'] === '' || par['n_chd_une_date_tache'] === null){
+                tableau_champs.push( '`chd_une_date_tache` = NULL' );
+            }else{
+                tableau_champs.push( '`chd_une_date_tache` = \'' + this.__gi1.__fnt1.sq0( par['n_chd_une_date_tache'] ) + '\'' );
+            }
             if(tableau_champs.length === 0){
                 return({
                          /*  */

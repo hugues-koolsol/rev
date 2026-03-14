@@ -1,4 +1,5 @@
 import {w_ast_sqliteparseur_vers_rev1} from '/f0?n0=w_ast_sqliteparseur_vers_rev1_.js';
+import {w_ast_sql_parseur_cst_vers_rev1} from '/f0?n0=w_ast_sql_parseur_cst_vers_rev1_.js';
 import {w_rev_vers_sql1} from '/f0?n0=w_rev_vers_sql1_.js';
 class x_ecran_rev_vers_sql1{
     moi='x_ecran_rev_vers_sql1';
@@ -7,6 +8,7 @@ class x_ecran_rev_vers_sql1{
       =============================================================================================================
     */
     #objet_conversion_astsqliteparseur_vers_rev1=null;
+    #parseur_mysql=null;
     /*
       pour les js dans le html
     */
@@ -32,7 +34,9 @@ class x_ecran_rev_vers_sql1{
         this.__gi1=__gi1;
         /* console.log( 'constructor fonctions 1' , e ); */
         this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/sqlite_parser1_c.js' );
+        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/sql_parser_cst1_c.js' );
         this.#objet_conversion_astsqliteparseur_vers_rev1=new w_ast_sqliteparseur_vers_rev1( '#objet_conversion_astsqliteparseur_vers_rev1' , this.__gi1 );
+        this.#parseur_mysql=new w_ast_sql_parseur_cst_vers_rev1( this.__gi1 );
         this.#objet_conversion_rev_vers_sql=new w_rev_vers_sql1( '#objet_conversion_rev_vers_sql' , this.__gi1 );
     }
     /*
@@ -75,6 +79,106 @@ class x_ecran_rev_vers_sql1{
         }
         return({"__xst" : __xer});
     }
+    
+    /*
+      =============================================================================================================
+    */
+    sql2_vers_rev( mat , d ){
+
+        let options_pour_le_parseur={
+            "dialect" : "mysql" ,
+             /* These are optional: */
+            "includeSpaces" : true ,
+             /* Adds spaces/tabs */
+            "includeNewlines" : true ,
+             /* Adds newlines */
+            "includeComments" : true ,
+             /* Adds comments */
+            "includeRange" : true ,
+             /* Adds source code location data */
+            };
+        let l01=mat.length;
+        let zone_source='';
+        let zone_resultat='';
+        let mettre_en_stockage_local=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && mat[i][1] === 'zone_source'){
+                if(mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    zone_source=mat[i + 1][1];
+                }
+            }else if(mat[i][2] === 'f' && mat[i][1] === 'zone_resultat'){
+                if(mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    zone_resultat=mat[i + 1][1];
+                }
+            }else if(mat[i][2] === 'f' && mat[i][1] === 'mettre_en_stockage_local'){
+                if(mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    mettre_en_stockage_local=parseInt( mat[i + 1][1] , 10 );
+                }
+            }
+        }
+        if(zone_source !== '' && zone_resultat !== ''){
+            this.__gi1.zone_d_edition_en_cours=zone_source;
+            let t1=document.getElementById( zone_source );
+            let t2=document.getElementById( zone_resultat );
+            t2.innerHTML='';
+
+            if(t1 && t2){
+                if(mettre_en_stockage_local === 1){
+                    this.sauvegarder_contenu_en_localstorage( 'ecran_rev_vers_sql1' , t1.value );
+                }
+                let ast_de_sql=null;
+                try{
+                    let a_convertir=t1.value.replace( /\:/g , '___deux___points___' );
+                    ast_de_sql=window.sql_parser_cst2.parse( a_convertir , options_pour_le_parseur );
+                }catch(e1){
+                    if(e1.message.indexOf( 'on line ' ) >= 0){
+                        let tt=e1.message.substr( e1.message.indexOf( 'on line ' ) + 8 );
+                        if(this.__gi1.est_num( tt )){
+                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : e1.message ,"ligne" : parseInt( tt , 10 )} ));
+                        }else{
+                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : e1.message} ));
+                        }
+                    }else if(e1.message.indexOf( 'undefined:' ) >= 0){
+                        let tt=e1.message.substr( e1.message.indexOf( 'undefined:' ) + 10 );
+                        if(tt.indexOf( ':' ) >= 1){
+                            tt=tt.substr( 0 , tt.indexOf( ':' ) );
+                            if(this.__gi1.est_num( tt )){
+                                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : e1.message ,"ligne" : parseInt( tt , 10 )} ));
+                            }else{
+                                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : e1.message} ));
+                            }
+                        }else{
+                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : e1.message} ));
+                        }
+                    }else{
+                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : e1.message} ));
+                    }
+                }
+
+                let obj1=this.#parseur_mysql.traite_ast_de_sql_parseur_cst( ast_de_sql , {} );
+                if(obj1.__xst === __xsu){
+                    let tt=this.__gi1.__rev1.rev_tcm( obj1.__xva );
+                    if(tt.__xst === __xsu){
+                        let ttt=this.__gi1.__rev1.matrice_vers_source_rev1( tt.__xva , 0 , true , 1 );
+                        if(ttt.__xst === __xsu){
+                            t2.value=ttt.__xva;
+                            return({"__xst" : __xsu});
+                        }else{
+                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + '<br />de la matrice'} ));
+                        }
+                    }else{
+                        t2.value=obj1.__xva;
+                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + '<br />du rev produit'} ));
+                    }
+                }else{
+                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + '<br />erreur lors de la convertion du sql'} ));
+                }
+
+            }
+            
+        }
+        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + '<br />erreur lors de la convertion du sql'} ));
+    }    
     /*
       =============================================================================================================
     */
@@ -243,7 +347,7 @@ class x_ecran_rev_vers_sql1{
         t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_sql1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
         t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_sql1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
         t+='  </div>';
-        t+='  <textarea id="vv_txtarea_sql_rev1" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
+        t+='  <textarea id="vv_txtarea_sql_rev1" data-editeur1="source_editeur1" rows="20" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         if(this.__gi1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
                && this.__gi1.stockage_local['zones_sauvegardées'].hasOwnProperty( 'x_ecran_rev_vers_sql1' )
         ){
@@ -255,18 +359,21 @@ class x_ecran_rev_vers_sql1{
         */
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
+        /*
+        */
         t+='    <div class="rev_bouton yy__1" data-rev_click="';
         t+='m1(n1(x_ecran_rev_vers_sql1),f1(sql1_vers_rev(zone_source(vv_txtarea_sql_rev1),zone_resultat(vv_txtarea_sql_rev2),mettre_en_stockage_local(1))))';
         t+='" title="cvt" >sql-&gt;rev 1</div>';
-        /*#
-          // ancien code qui utilisait sql_parser_cst1
-          t+='    <div class="rev_bouton yy__1" data-rev_click="';
-          t+='m1(n1(x_ecran_rev_vers_sql1),f1(sql2_vers_rev(zone_source(vv_txtarea_sql_rev1),zone_resultat(vv_txtarea_sql_rev2))))';
-          t+='" title="cvt" >sql-&gt;rev 2</div>';
+        /*
+        */
+        t+='    <div class="rev_bouton yy__1" data-rev_click="';
+        t+='m1(n1(x_ecran_rev_vers_sql1),f1(sql2_vers_rev(zone_source(vv_txtarea_sql_rev1),zone_resultat(vv_txtarea_sql_rev2))))';
+        t+='" title="cvt" >sql-&gt;rev 2</div>';
+        /*
         */
         t+=this.__gi1.__fnt1.boutons_rev3( 'vv_txtarea_sql_rev2' );
         t+='  </div>';
-        t+='  <textarea id="vv_txtarea_sql_rev2" data-editeur1="rev" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
+        t+='  <textarea id="vv_txtarea_sql_rev2" data-editeur1="rev" rows="20" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         t+='</textarea>';
         t+='</div>';
         t+='<div class="yy_conteneur_txtara">';
@@ -279,7 +386,7 @@ class x_ecran_rev_vers_sql1{
         /*  */
         t+=this.__gi1.__fnt1.boutons_edition1( 'vv_txtarea_sql_rev3' );
         t+='  </div>';
-        t+='  <textarea id="vv_txtarea_sql_rev3" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
+        t+='  <textarea id="vv_txtarea_sql_rev3" data-editeur1="source_editeur1" rows="20" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         t+='</textarea>';
         t+='</div>';
         this.__gi1.maj_contenu_principal( t );
