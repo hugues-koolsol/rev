@@ -292,7 +292,7 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    __xac( mat , d , données ){
+    __xac( mat , d , données , evenement=null){
         if(!Array.isArray( mat )){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : 'oops, on n\'a pas reçu une matrice dans __gi1.__xac() ' + this.nl2()} );
             this.affiche_les_messages();
@@ -433,7 +433,7 @@ class __gi1{
                     }
                 }
                 if(n1 !== '' && indice > 0){
-                    let ret1=this.m1( n1 , mat , indice , données );
+                    let ret1=this.m1( n1 , mat , indice , données , evenement );
                 }else{
                     debugger;
                     let re_source=this.__rev1.matrice_vers_source_rev1( mat , 0 , true , 1 );
@@ -460,7 +460,7 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    async m1( m1 , mat , d , __xva_param=null ){
+    async m1( m1 , mat , d , __xva_param=null , evenement=null ){
         let l01=mat.length;
         let dejà_importe=[];
         let f1='';
@@ -553,7 +553,7 @@ class __gi1{
                 for( let i=indice ; i < l01 ; i=mat[i][12] ){
                     try{
                         if( typeof this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]] === 'function'){
-                            let obj3=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param );
+                            let obj3=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param , evenement );
                             if(obj3 && obj3.then &&  typeof obj3.then === 'function'){
                                 /*
                                   si le module vient d'etre chargé, c'est une promesse
@@ -1005,7 +1005,7 @@ class __gi1{
         elt.classList.add( 'yy_invisible' );
         this.#boutons_masques_avant_appel.push( elt );
         let mat=obj1.__xva;
-        let obj=this.__xac( mat , 0 , null );
+        let obj=this.__xac( mat , 0 , null , e );
         if(obj.__xst === __xer){
             this.ajoute_message( {
                     "__xst" : __xer ,

@@ -204,10 +204,29 @@ class __fnt1{
         }
         return({"__xst" : __xsu});
     }
+    
+    //=====================================================================================================================
+    numero_de_semaine(dt){
+        var d = new Date(Date.UTC(dt.getFullYear(), dt.getMonth(), dt.getDate()));
+        var dayNum = d.getUTCDay() || 7;
+        d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+        var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        return Math.ceil((((d - yearStart) / 86400000) + 1) / 7)
+    }
     /*
       =============================================================================================================
     */
-    maj_date1(mat , d){
+    ajouter_jours(dt , nb_jours) {
+        var dat = new Date(dt.valueOf());
+        dat.setDate(dat.getDate() + nb_jours);
+        return dat;
+    }
+    
+    /*
+      =============================================================================================================
+    */
+    annuler_le_champ_date1( mat , d){
+     
         let l01=mat.length;
         let nom_du_champ='';
         for( let i=d+1 ; i < l01 ; i=mat[i][12] ){
@@ -215,26 +234,374 @@ class __fnt1{
                 nom_du_champ=mat[i + 1][1];
             }
         }
+        document.getElementById(nom_du_champ).value='';
+        this.__gi1.fermer_la_sous_fenetre();
+    }     
+    /*
+      =============================================================================================================
+    */
+    selectionner_la_date1( mat , d){
+     
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d+1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'jour' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                jour=parseInt(mat[i + 1][1],10);
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt(mat[i + 1][1],10);
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt(mat[i + 1][1],10);
+            }
+        }
+        let t=annee+'_'+(mois<10?'0'+mois:mois)+'_'+(jour<10?'0'+jour:jour);
+        document.getElementById(nom_du_champ).value=t;
+        this.__gi1.fermer_la_sous_fenetre();
+    }
+    /*
+      =============================================================================================================
+    */
+    mois_suivant(mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d+1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt(mat[i + 1][1],10);
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt(mat[i + 1][1],10);
+            }
+        }
+        if(mois===12){
+            annee+=1;
+            mois=1;
+        }else{
+            mois++;
+        }
+        
+        vv_sous_fenetre1.innerHTML=this.html_de_date1(format_calendrier,nom_du_champ,annee,mois);
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+    }
+    /*
+      =============================================================================================================
+    */
+    mois_precedent(mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d+1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt(mat[i + 1][1],10);
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt(mat[i + 1][1],10);
+            }
+        }
+        if(mois===1){
+            annee-=1;
+            mois=12;
+        }else{
+            mois--;
+        }
+        vv_sous_fenetre1.innerHTML=this.html_de_date1(format_calendrier,nom_du_champ,annee,mois);
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+    }
+        
+    /*
+      =============================================================================================================
+    */
+    html_de_date1(format_calendrier,nom_du_champ,annee_a_afficher,mois_a_afficher){
+        let o1='';
+        let maintenant=new Date();
+        let ref_champ_date=document.getElementById(nom_du_champ);
+        
+        let annee_courante=maintenant.getFullYear();
+        var la_date_est_renseignee = false;
+        
+        if(ref_champ_date.value!==''){
+            annee_courante=parseInt(ref_champ_date.value.substr(0,4),10);
+        }
+        o1+='<style type="text/css">';
+        o1+='#vv_calendrier td{';
+        o1+='  min-width:2em;';
+        o1+='  text-align:center;';
+        o1+='  border-width:'+this.__gi1.css_dimensions.t_border+'px;';
+        o1+='  border-style:solid;';
+        o1+='  border-color:white;';
+        o1+='}';
+        o1+='</style>';
+        o1+='<table id="vv_calendrier" border="0">';
+        /*
+        
+        
+        */
+        o1+='<tr id="vv_premiere_ligne" style="box-shadow:none;">'
+        /*
+        
+        */
+          o1+='<td id="vv_annee_precedente">';
+          o1+='&lt;';
+          o1+='</td>';
+          o1+='<td id="vv_annee_courante" colspan="2">';
+          o1+=annee_a_afficher;
+          o1+='</td>';
+          o1+='<td id="vv_annee_suivante">';
+          o1+='&gt;';
+          o1+='</td>';
+          o1+='<td>&nbsp;</td>';
+          o1+='<td>';
+          o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(annuler_le_champ_date1(nom_du_champ('+nom_du_champ+'))))">Ø</div>';
+          o1+='';
+          o1+='</td>';
+          o1+='<td>&nbsp;</td>';
+          o1+='<td>×</td>';
+        /*
+        
+        */
+
+        let mois_courant=maintenant.getMonth()+1;
+        if(ref_champ_date.value !== '' ){
+            mois_courant=parseInt(ref_champ_date.value.substr(5,2),10);
+        }
+        let mois_courant_texte=mois_courant<10?'0'+mois_courant:mois_courant;
+
+
+        o1+='<tr id="vv_deuxieme_ligne" style="box-shadow:none;">'
+        /*
+        
+        */
+          o1+='<td>&nbsp;</td>';
+          o1+='<td id="vv_mois_precedent">';
+          o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(mois_precedent(nom_du_champ('+nom_du_champ+'),annee('+annee_a_afficher+'),mois('+mois_a_afficher+'))))">&lt;</div>';
+          o1+='';
+          o1+='</td>';
+          o1+='<td id="vv_mois_courant" colspan="4">'; 
+          o1+=annee_a_afficher+' '+(mois_a_afficher<10?'0'+mois_a_afficher:mois_a_afficher);
+          o1+='</td>';
+          o1+='<td id="vv_mois_suivant">';
+          o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(mois_suivant(nom_du_champ('+nom_du_champ+'),annee('+annee_a_afficher+'),mois('+mois_a_afficher+'))))">&gt;</div>';
+          o1+='';
+          o1+='</td>';
+          o1+='<td>&nbsp;</td>';
+        /*
+        
+        */
+        o1+='</tr>'
+        /*
+
+        
+        */
+        o1+='<tr id="vv_trisieme_ligne" style="box-shadow:none;">'
+        /*
+        
+        */
+          o1+='<td>se</td>';
+          o1+='<td>Lu</td>';
+          o1+='<td>Ma</td>';
+          o1+='<td>Me</td>';
+          o1+='<td>Je</td>';
+          o1+='<td>Ve</td>';
+          o1+='<td>Sa</td>';
+          o1+='<td>Di</td>';
+        /*
+        
+        */
+        o1+='</tr>'
+        /*
+
+        
+        */
+        let jour_courant=maintenant.getDate();
+        let obj_date_de_la_zone=null
+        if(ref_champ_date.value !== '' ){
+            jour_courant=parseInt(ref_champ_date.value.substr(8,2),10);
+            la_date_est_renseignee = true;
+            obj_date_de_la_zone=new Date(annee_courante, mois_courant_texte - 1, jour_courant)
+        }
+        let premier_jour_du_mois = new Date(annee_a_afficher, mois_a_afficher - 1, 1); // 2017-11-01 = mercredi
+        let jour_du_premier_jour = premier_jour_du_mois.getDay();
+        let dtFirstDay2 = premier_jour_du_mois;
+        if (jour_du_premier_jour == 0) {
+            jour_du_premier_jour = 7; // dayOfFirstDay
+        }
+        o1 += '<tr style="box-shadow:none;">';
+        o1 += '<td>' + this.numero_de_semaine(premier_jour_du_mois) + '</td>'; // numeroDeSemaine
+        let numero_de_colonne=1;
+        
+        for (let i = 0; i < jour_du_premier_jour - 1; i++) {
+            o1 += '<td>&nbsp;</td>';
+            numero_de_colonne++;
+        }
+        // nM = mois_courant
+        // nY = annee_courante
+        // maxDay = jour_max
+        let jour_max=31;
+        if (mois_a_afficher == 2) { 
+            if ((annee_a_afficher % 4 == 0 && !(annee_a_afficher % 100 == 0)) || annee_a_afficher % 400 == 0) {
+                jour_max = 29;
+            } else {
+                jour_max = 28;
+            }
+        } else if (mois_a_afficher == 4 || mois_a_afficher == 6 || mois_a_afficher == 9 || mois_a_afficher == 11) {
+            jour_max = 30;
+        }
+        // lineNumber = numero_de_ligne
+        var numero_de_ligne = 1;
+        
+        // dateIsSet = la_date_est_renseignee
+        // nD = jour_courant
+        for (let i = 1; i <= jour_max; i++) {
+            let date_en_cours=false;
+            let fontWeight = '';
+            let borderSty1 = '';
+            if (i == maintenant.getDate() && mois_a_afficher == maintenant.getMonth() + 1 && annee_a_afficher == maintenant.getFullYear()) {
+                if (obj_date_de_la_zone!==null && i == jour_courant && mois_a_afficher == obj_date_de_la_zone.getMonth() + 1 && annee_a_afficher == obj_date_de_la_zone.getFullYear()) {
+                    borderSty1+= 'border-color:red;'
+                    date_en_cours=true;
+                }else{
+                    borderSty1+= 'border-color:red;'
+                }
+                
+            }else{
+                if (obj_date_de_la_zone!==null && i == jour_courant && mois_a_afficher == obj_date_de_la_zone.getMonth() + 1 && annee_a_afficher == obj_date_de_la_zone.getFullYear()) {
+                    borderSty1+= 'border-color:blue;border-style:inset;'
+                    date_en_cours=true;
+                }else{
+                    borderSty1+= ''; // border-color:hotpink;'
+                }
+            }
+            /*#
+              if (obj_date_de_la_zone!==null && i == jour_courant && mois_courant == obj_date_de_la_zone.getMonth() + 1 && annee_courante == obj_date_de_la_zone.getFullYear()) {
+                  borderSty1+= 'border-color:red;'
+              }
+            */
+            o1 += '<td style="'+borderSty1;
+            if ((jour_du_premier_jour + 1) % 7 === 0 || (jour_du_premier_jour + 7) % 7 === 0) {
+                o1 += 'background-color:yellow;';
+            }
+            o1 += '">';
+            // href="javascript:putDate1(' + annee_courante + ',' + mois_courant + ',' + i + ',\'' + valueId + '\',\'' + buttonId + '\',\'' + divId + '\',' + withDateNull + ',' + searchDateMode + ',\'' + callBackDate1 + '\')"
+            if(date_en_cours===true){
+                o1+='<span>' + i + '</span>';
+            }else{
+                o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(selectionner_la_date1(nom_du_champ('+nom_du_champ+'),jour('+i+'),mois('+mois_a_afficher+'),annee('+annee_a_afficher+'))))">' + i + '</div>';
+            }
+            
+            o1 += '</td>';
+            if (jour_du_premier_jour % 7 == 0) {
+                o1 += '</tr>';
+                o1 += '<tr style="box-shadow:none;">';
+                if(i + 1 <= jour_max) {
+                    dtFirstDay2=this.ajouter_jours(dtFirstDay2,7)
+                    o1 += '<td>' + this.numero_de_semaine(dtFirstDay2) + '</td>'; // numeroDeSemaine
+                    numero_de_colonne=1;
+                }
+                numero_de_ligne++;
+            }
+            jour_du_premier_jour++;
+        }
+        o1 += '</tr>';
+
+        if(numero_de_ligne<6){
+            for(let i=0;i<6-numero_de_ligne;i++){
+                o1 += '<tr><td colspan="8">&nbsp;</td></tr>';
+            }
+        }else{
+            if(numero_de_colonne===1){
+                o1 += '<tr><td colspan="8">&nbsp;</td></tr>';
+            }
+        }
+        /*
+
+        
+        */
+        
+        
+        o1+='</table>'
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_date1(mat , d , x , evenement_navigateur ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let format_calendrier=0;
+        for( let i=d+1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'format_calendrier' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                format_calendrier=parseInt(mat[i + 1][1],10);
+            }
+        }
         if(nom_du_champ===''){
             this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" :'paramètre "nom_du_champ" non trouvé !'} );
             return({"__xst" : __xer});
         }
-        let ref_champ=null;
+        let ref_champ_date=null;
         try{
-            ref_champ=document.getElementById(nom_du_champ);
+            ref_champ_date=document.getElementById(nom_du_champ);
         }catch{}
-        if( ref_champ=== null ){
+        if( ref_champ_date=== null ){
             this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" :'"' +nom_du_champ + '" non trouvé dans la page !'} );
             return({"__xst" : __xer});
         }
         
         
-        let o1='';
-        o1+='<h1>date</h1>';
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-        vv_sous_fenetre1.style.minWidth='400px';
-        vv_sous_fenetre1.style.maxWidth='400px';
-        vv_sous_fenetre1.innerHTML=o1;
+
+        let dim=null;
+        if(evenement_navigateur && evenement_navigateur.target){
+             dim=evenement_navigateur.target.getBoundingClientRect();
+        }else{
+             dim=ref_champ_date.getBoundingClientRect();
+        }
+/*
+        vv_sous_fenetre1.style.minWidth=( this.__gi1.css_dimensions.t_police*2*8)+'px';
+        vv_sous_fenetre1.style.maxWidth=( this.__gi1.css_dimensions.t_police*2*8)+'px';
+*/        
+        vv_sous_fenetre1.style.minWidth='auto';
+        vv_sous_fenetre1.style.maxWidth='none';
+        vv_sous_fenetre1.style.width='fit-content';
+/*
+        vv_sous_fenetre1.style.minHeight=( this.__gi1.css_dimensions.t_police*2*9)+'px'; // 
+        vv_sous_fenetre1.style.maxHeight=( this.__gi1.css_dimensions.t_police*2*9)+'px';
+*/        
+        vv_sous_fenetre1.style.minHeight='auto'; // 
+        vv_sous_fenetre1.style.maxHeight='none';
+        vv_sous_fenetre1.style.position='absolute';
+        vv_sous_fenetre1.style.top=parseInt(dim.top,10)+'px';
+        vv_sous_fenetre1.style.left=parseInt(dim.left,10)+'px';
+        vv_sous_fenetre1.style.margin='0';
+        vv_sous_fenetre1.style.padding='0';
+        /* 
+          affichage du calendrier 
+        */
+        let maintenant=new Date();
+        let annee_a_afficher=maintenant.getFullYear();
+        if(ref_champ_date.value!==''){
+            annee_a_afficher=parseInt(ref_champ_date.value.substr(0,4),10);
+        }
+        
+        let mois_a_afficher=maintenant.getMonth()+1;
+        if(ref_champ_date.value!==''){
+            mois_a_afficher=parseInt(ref_champ_date.value.substr(5,2),10);
+        }
+        vv_sous_fenetre1.innerHTML=this.html_de_date1(format_calendrier,nom_du_champ,annee_a_afficher,mois_a_afficher);
         vv_sous_fenetre1.showModal();
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
