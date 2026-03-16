@@ -331,7 +331,7 @@ class _rev_de_sql_vers_js1{
                 t+='        return {' + CRLF;
                 t+='           "__xst"  => __xsu  ,' + CRLF;
                 t+='           "__xva"  => $donnees0   ,' + CRLF;
-                t+='           \'sql0\'    => $sql0          ,' + CRLF;
+                t+='           \'sql0\'    => sql0          ,' + CRLF;
                 t+='        };' + CRLF;
                 t+='    }catch(Exception $e){' + CRLF;
                 t+='        if(e.stack.indexOf(\'API misuse\')>=0){\r\n';
@@ -339,14 +339,14 @@ class _rev_de_sql_vers_js1{
                 t+='        }\r\n';
                 t+='        return {' + CRLF;
                 t+='            "__xst" => __xer ,' + CRLF;
-                t+='            "sql0" => $sql0 ,' + CRLF;
+                t+='            "sql0" => sql0 ,' + CRLF;
                 t+='            "texte_requete" => \'la selection sur les éléments\' ,' + CRLF;
                 t+='            "exception" => $e,' + CRLF;
                 t+='            };' + CRLF;
                 t+='        }' + CRLF;
             }else{
                 t+='    try{' + CRLF;
-                t+='            let ret=this.__db1.exec($sql0);' + CRLF;
+                t+='            let ret=this.__db1.exec(sql0);' + CRLF;
                 t+='            return({ "__xst" : __xsu, \'changements\' : res});;' + CRLF;
                 t+='        }catch(e){' + CRLF;
                 t+='            if(e.stack.indexOf(\'API misuse\')>=0){\r\n';

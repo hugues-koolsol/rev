@@ -15,7 +15,7 @@ class sql_380{
         `;
     /* this.__gi1.ma_trace1(' sql0 = ' + sql0 ); */
     try{
-            let ret=this.__db1.exec($sql0);
+            let ret=this.__db1.exec(sql0);
             return({ "__xst" : __xsu, 'changements' : res});;
         }catch(e){
             if(e.stack.indexOf('API misuse')>=0){

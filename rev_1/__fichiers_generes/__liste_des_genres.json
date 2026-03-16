@@ -544,7 +544,7 @@
     "che_ordre_genre": 16,
     "che_est_tsc_genre": 0,
     "che_est_tsm_genre": 0,
-    "cht_fonctions_genre": null,
+    "cht_fonctions_genre": "heure_nulle_ou_comprise_entre('00_00_00','23_59_59')",
     "che_est_nur_genre": 0,
     "che_est_session_genre": 0,
     "chp_nom_en_session_genre": null,

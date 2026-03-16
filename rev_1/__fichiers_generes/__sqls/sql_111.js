@@ -16,7 +16,8 @@ class sql_111{
          \`chp_texte_tache\` , 
          \`chp_priorite_tache\` , 
          \`chd__dtm_tache\` , 
-         \`chd__dtc_tache\`
+         \`chd__dtc_tache\` , 
+         \`chd_une_heure_tache\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -30,7 +31,8 @@ class sql_111{
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_texte_tache'] ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['chp_priorite_tache'] ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( donnees_retournees.date_heure_serveur ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( donnees_retournees.date_heure_serveur ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( donnees_retournees.date_heure_serveur ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chd_une_heure_tache'] ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

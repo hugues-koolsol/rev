@@ -278,7 +278,6 @@ class taches1{
             "c_chi_id_tache" : form['chi_id_tache'] ,
             "c_chx_utilisateur_tache" : donnees_retournees.chi_id_utilisateur ,
             "n_chp_texte_tache" : form['chp_texte_tache'] ,
-            "n_chd_une_date_tache" : form['chd_une_date_tache'] ,
             "n_chp_priorite_tache" : form['chp_priorite_tache']
         };
         let tt113=await this.__gi1.sql_iii(
@@ -503,11 +502,12 @@ class taches1{
             this.__gi1.__xsi[__xer].push( __test['__xme'] );
             return({"__xst" : __xer});
         }
+        
         let donnees_sql={
             "donnees" : [{
                         "chx_utilisateur_tache" : donnees_retournees.chi_id_utilisateur ,
                         "chp_texte_tache" : form['chp_texte_tache'] ,
-                        "chp_priorite_tache" : form['chp_priorite_tache']
+                        "chp_priorite_tache" : form['chp_priorite_tache'] ,
                     }]
         };
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
