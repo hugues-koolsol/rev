@@ -837,7 +837,13 @@ class w_ast_sql_parseur_cst_vers_rev1{
         }
         if(element.dataType){
             espece_du_champ=element.dataType.name.name.toLowerCase();
-            if(espece_du_champ === 'tinyint'){
+            if(espece_du_champ === 'enum'){
+                espece_du_champ='enum'
+                longueur_du_champ=64;
+            }else if(espece_du_champ === 'timestamp'){
+                espece_du_champ='varchar'
+                longueur_du_champ=23;
+            }else if(espece_du_champ === 'tinyint'){
                 espece_du_champ='integer'
                 longueur_du_champ=1;
             }else if(espece_du_champ === 'bigint'){
@@ -859,6 +865,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
         }else{
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + ' type de donnée non précisé pour le champ ' + name + ' '} ));
         }
+        let c_est_un_ts=false;
         if(element.constraints){
             for( let i=0 ; i < element.constraints.length ; i++ ){
                 if('constraint_primary_key' === element.constraints[i].type){
@@ -882,12 +889,22 @@ class w_ast_sql_parseur_cst_vers_rev1{
                         constraints+='a_une_valeur_par_defaut(1),';
                         constraints+='la_valeur_par_defaut_est_caractere(0),';
                         constraints+='valeur_par_defaut(' + element.constraints[i].expr.value + ')';
+                    }else if('func_call' === element.constraints[i].expr.type && element.constraints[1].expr.name.name.toUpperCase() === 'CURRENT_TIMESTAMP'){
+                        /*
+                          espece_du_champ(VARCHAR),
+                          longueur_du_champ(23),
+                          typologie(chd),
+                          genre(14),
+                        */
+                        let c_est_un_ts=true;
                     }else{
-                        console.log( element.constraints[i] );
+                        console.log( element.name.text + ' ' , element.constraints[i] );
                         debugger;
                     }
+                }else if("constraint_comment" === element.constraints[i].type || 'constraint_collate' === element.constraints[i].type ){
+                    /* ras */
                 }else{
-                    console.log( element.constraints[i] );
+                    console.log( element.name.text + ' ' ,element.constraints[i].type );
                     debugger;
                 }
             }
@@ -928,15 +945,69 @@ class w_ast_sql_parseur_cst_vers_rev1{
             t+='         meta(\r\n';
             t+='            #(),\r\n';
             t+='            genre_meta(champ),\r\n';
-            if(espece_du_champ==='integer' && constraints.indexOf('non_nulle()')>=0){
+            if(c_est_un_ts === true){
+                t+='            typologie(chd),\r\n';
+                t+='            genre(16)\r\n';
+            }else if( ( espece_du_champ==='integer' || espece_du_champ==='int' ) && constraints.indexOf('non_nulle()')>=0){
+                if(constraints.indexOf('primary_key()')>=0){
+                    t+='            typologie(chi),\r\n';
+                    t+='            genre(2)\r\n';
+                }else{
+                    t+='            typologie(che),\r\n';
+                    t+='            genre(9)\r\n';
+                }
+            }else if( ( espece_du_champ==='integer' || espece_du_champ==='int' ) && constraints.indexOf('non_nulle()')<0){
                 t+='            typologie(che),\r\n';
                 t+='            genre(7)\r\n';
-            }else if(espece_du_champ==='varchar' && constraints.indexOf('non_nulle()')>=0){
+            }else if((espece_du_champ==='varchar' || espece_du_champ==='char' ) && constraints.indexOf('non_nulle()')>=0){
                 t+='            typologie(chp),\r\n';
                 t+='            genre(17)\r\n';
+            }else if((espece_du_champ==='varchar' || espece_du_champ==='char' ) && constraints.indexOf('non_nulle()')<0){
+                t+='            typologie(chp),\r\n';
+                t+='            genre(12)\r\n';
             }else if(espece_du_champ==='text' && constraints.indexOf('non_nulle()')<0){
                 t+='            typologie(cht),\r\n';
                 t+='            genre(11)\r\n';
+            }else if(espece_du_champ==='decimal' && constraints.indexOf('non_nulle()')>=0){
+                t+='            typologie(che),\r\n';
+                t+='            genre(9)\r\n';
+            }else if(espece_du_champ==='date' ){
+                t+='            typologie(chd),\r\n';
+                t+='            genre(22)\r\n';
+            }else if(espece_du_champ==='text' && constraints.indexOf('non_nulle()')>=0){
+                t+='            typologie(cht),\r\n';
+                t+='            genre(11)\r\n';
+            }else if(espece_du_champ==='time' && constraints.indexOf('non_nulle()')>=0){
+                t+='            typologie(chd),\r\n';
+                t+='            genre(23)\r\n';
+            }else if(espece_du_champ==='datetime' && constraints.indexOf('non_nulle()')>=0){
+                t+='            typologie(chd),\r\n';
+                t+='            genre(23)\r\n';
+            }else if(espece_du_champ==='enum' ){
+             
+                let tt='';
+                for(let dd in element.dataType.params.expr.items){
+                    tt+=','+element.dataType.params.expr.items[dd].value
+                }
+                let trouve = false;
+                if(tt!==''){
+                    tt=tt.substr(1);
+                    for( let i in this.__gi1.__liste_des_genres){
+                        if(this.__gi1.__liste_des_genres[i].cht_parmis_genre===tt){
+                            t+='            typologie(chp),\r\n';
+                            t+='            genre('+i+')\r\n';
+                            trouve=true;
+                            break;
+                        }
+                    }
+                }
+                if(trouve===false){
+                
+                
+                    console.log('%c Le champ "' + name + '" "' + espece_du_champ + '" DOIT être rattaché à un nouveau genre contenant les valeurs \n'+tt,'color:yellow;background-color:red;')
+                }
+                
+                
             }else{
                 console.log('%c todo champ "' + name + '" "' + espece_du_champ + '" ','color:yellow;background-color:red;')
 //                debugger; // todo
@@ -948,7 +1019,11 @@ class w_ast_sql_parseur_cst_vers_rev1{
             t+=meta_champ;
         }
         t+='nom_du_champ( `' + name + '`),';
-        t+='espece_du_champ(' + espece_du_champ.toUpperCase() + '),';
+        if(espece_du_champ==='enum'){
+            t+='espece_du_champ(VARCHAR),';
+        }else{
+            t+='espece_du_champ(' + espece_du_champ.toUpperCase() + '),';
+        }
         if(longueur_du_champ !== ''){
             t+='longueur_du_champ(' + longueur_du_champ + '),';
         }
@@ -1331,7 +1406,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + ' '} ));
         }
         if(element.options){
-            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + ' '} ));
+            /* return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + ' '} )); */
         }
         if(element.orReplaceKw){
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + ' '} ));

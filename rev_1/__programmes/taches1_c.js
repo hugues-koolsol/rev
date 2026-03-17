@@ -350,24 +350,6 @@ class taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>une heure</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input id="chd_une_heure_tache" type="text" size="8" maxlength="8" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_priorite_tache' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.chd_une_heure_tache'] );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(maj_heure1(nom_du_champ(chd_une_heure_tache))))">' + this.__gi1.les_svg.calendrier + '</div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>texte</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';

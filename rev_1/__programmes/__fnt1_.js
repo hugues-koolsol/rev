@@ -207,7 +207,7 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    maj_heure1( mat , d , x , evenement_navigateur ){
+    popup_horloge1( mat , d , x , evenement_navigateur ){
         let l01=mat.length;
         let nom_du_champ='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -244,20 +244,23 @@ class __fnt1{
         vv_sous_fenetre1.style.left=parseInt( dim.left , 10 ) + 'px';
         vv_sous_fenetre1.style.margin='0';
         vv_sous_fenetre1.style.padding='0';
+        vv_sous_fenetre1.style.borderRadius=this.__gi1.css_dimensions.t_rayon_b + 'px';
         /*
           affichage du calendrier 
         */
         let maintenant=new Date();
         let heure_a_afficher=maintenant.getHours();
-        let minutes_a_afficher=maintenant.getMinutes() + 1;
+        let minute_a_afficher=maintenant.getMinutes();
+        let seconde_a_afficher=maintenant.getSeconds();
         if(ref_champ_heure.value !== ''){
             let obj=this.heure_nulle_ou_comprise_entre( '00_00_00' , '23_59_59' , ref_champ_heure.value , nom_du_champ );
             if(obj.__xst === __xsu){
                 heure_a_afficher=parseInt( ref_champ_heure.value.substr( 0 , 2 ) , 10 );
-                minutes_a_afficher=parseInt( ref_champ_heure.value.substr( 3 , 2 ) , 10 );
+                minute_a_afficher=parseInt( ref_champ_heure.value.substr( 3 , 2 ) , 10 );
+                seconde_a_afficher=parseInt( ref_champ_heure.value.substr( 6 , 2 ) , 10 );
             }
         }
-        this.affiche_horloge1(this.html_de_horloge1( nom_du_champ , heure_a_afficher , minutes_a_afficher ));
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
         vv_sous_fenetre1.showModal();
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
@@ -265,7 +268,174 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    html_de_horloge1( nom_du_champ , annee_a_afficher , mois_a_afficher , afficher_siecle=false ){
+    maj_drop_horloge( mat , d ){
+        let l01=mat.length;
+        let zone_select='';
+        let nom_du_champ='';
+        let valeur=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'zone_select' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                zone_select=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }
+        }
+        if(zone_select === 'vv_option_heure'){
+           let val=parseInt(document.getElementById(zone_select).value,10)
+           this.maj_heure( nom_du_champ , val );
+        }else if(zone_select === 'vv_option_minute'){
+           let val=parseInt(document.getElementById(zone_select).value,10)
+           this.maj_minute( nom_du_champ , val );
+        }else if(zone_select === 'vv_option_seconde'){
+           let val=parseInt(document.getElementById(zone_select).value,10)
+           this.maj_seconde( nom_du_champ , val );
+        }
+        
+    }
+    /*
+      =============================================================================================================
+    */
+    definir_l_heure( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let valeur=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'valeur' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                valeur=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        this.maj_heure( nom_du_champ , valeur );
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_heure( nom_du_champ , valeur){
+        let heure_a_afficher=valeur;
+        let minute_a_afficher=0;
+        let seconde_a_afficher=0;
+        let dt=new Date();
+        let t='';
+        let valeur_courante=document.getElementById( nom_du_champ ).value;
+        if(valeur_courante === ''){
+            heure_a_afficher=valeur;
+            t=(valeur < 10 ? ( '0' + valeur ) : ( valeur )) + '_00_00';
+        }else{
+            t=(valeur < 10 ? ( '0' + valeur ) : ( valeur )) + valeur_courante.substr( 2 );
+            minute_a_afficher=parseInt( valeur_courante.substr( 3 , 2 ) , 10 );
+            seconde_a_afficher=parseInt( valeur_courante.substr( 6 , 2 ) , 10 );
+        }
+        document.getElementById( nom_du_champ ).value=t;
+        let a=document.getElementById( 'vv_option_heure' );
+        let es=a.getElementsByTagName( 'option' );
+        for(let e in es){
+            if(e == valeur){
+                a.selectedIndex=valeur;
+                break;
+            }
+        }
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    definir_la_minute( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let valeur=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'valeur' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                valeur=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        this.maj_minute( nom_du_champ , valeur );
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_minute( nom_du_champ , valeur){
+        let heure_a_afficher=0;
+        let minute_a_afficher=valeur;
+        let seconde_a_afficher=0;
+        let dt=new Date();
+        let t='';
+        let valeur_courante=document.getElementById( nom_du_champ ).value;
+        if(valeur_courante === ''){
+            t='00_' + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + '_00';
+        }else{
+            t=valeur_courante.substr( 0 , 3 ) + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + valeur_courante.substr( 5 );
+            heure_a_afficher=parseInt( valeur_courante.substr( 0 , 2 ) , 10 );
+            seconde_a_afficher=parseInt( valeur_courante.substr( 6 , 2 ) , 10 );
+        }
+        document.getElementById( nom_du_champ ).value=t;
+        let a=document.getElementById( 'vv_option_minute' );
+        let es=a.getElementsByTagName( 'option' );
+        for(let e in es){
+            if(e == valeur){
+                a.selectedIndex=valeur;
+                break;
+            }
+        }
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    definir_la_seconde( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let valeur=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'valeur' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                valeur=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        this.maj_seconde( nom_du_champ , valeur );
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_seconde( nom_du_champ , valeur){
+        
+        let heure_a_afficher=0;
+        let minute_a_afficher=0;
+        let seconde_a_afficher=valeur;
+        let dt=new Date();
+        let t='';
+        let valeur_courante=document.getElementById( nom_du_champ ).value;
+        if(valeur_courante === ''){
+            t='00_' + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + '_00';
+        }else{
+            t=valeur_courante.substr( 0 , 6 ) + (valeur < 10 ? ( '0' + valeur ) : ( valeur ));
+            heure_a_afficher=parseInt( valeur_courante.substr( 0 , 2 ) , 10 );
+            minute_a_afficher=parseInt( valeur_courante.substr( 3 , 2 ) , 10 );
+        }
+        document.getElementById( nom_du_champ ).value=t;
+        let a=document.getElementById( 'vv_option_seconde' );
+        let es=a.getElementsByTagName( 'option' );
+        for(let e in es){
+            if(e == valeur){
+                a.selectedIndex=valeur;
+                break;
+            }
+        }
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ){
         let o1='';
         let maintenant=new Date();
         let ref_champ_date=document.getElementById( nom_du_champ );
@@ -284,105 +454,214 @@ class __fnt1{
         o1+='}';
         o1+='</style>';
         o1+='<table id="vv_horloge" border="0">';
-        for(let i=0;i<24;i++){
-         if(i % 6 === 0){
-          o1+='<tr style="box-shadow:none;">';
-         }
-         o1+='<td style="border-color:red;">';
-         o1+=i<10?'0'+i:i;
-         o1+='</td>';
-         if(i+1 % 6 === 0){
-          o1+='</tr>';
-         }
-         
-        }
+        /*
+          =====================================================================================================
+          les 3 dropdown
+        */
         o1+='<tr style="box-shadow:none;">';
-        for(let i=0;i<60;i+=10){
-         o1+='<td style="border-color:lime;">';
-         o1+=i<10?'0'+i:i;
-         o1+='</td>';
-        }
-        o1+='</tr>';
-        
-        o1+='<tr style="box-shadow:none;">';
-        for(let i=0;i<60;i+=10){
-         o1+='<td style="border-color:hotpink;">';
-         o1+=i<10?'0'+i:i;
-         o1+='</td>';
-        }
-        o1+='</tr>';
-
-
-        o1+='<tr style="box-shadow:none;">';
+        /* dropdown hh */
         o1+='<td style="border-color:hotpink;" colspan="2">';
-        o1+='<select id="vv_option_heure">';
-        for(let i=0;i<24;i++){
-            o1+='<option>'+i+'</option>';
+        o1+='<select id="vv_option_heure" data-rev_change="m1( n1('+this.moi+'), f1(maj_drop_horloge(zone_select(vv_option_heure),nom_du_champ('+nom_du_champ+'))))">';
+        for( let i=0 ; i < 24 ; i++ ){
+            let sele1='';
+            if(heure_a_afficher === i){
+                sele1=' selected="true" ';
+            }
+            o1+='<option ' + sele1 + ' value="' + i + '">' + (i < 10 ? ( '0' + i ) : ( i )) + '</option>';
         }
         o1+='</select>';
         o1+='</td>';
-
+        /* dropdown mm */
         o1+='<td style="border-color:hotpink;" colspan="2">';
-        o1+='<select id="vv_option_minute">';
-        for(let i=0;i<60;i++){
-            o1+='<option>'+i+'</option>';
+        o1+='<select id="vv_option_minute" data-rev_change="m1( n1('+this.moi+'), f1(maj_drop_horloge(zone_select(vv_option_minute),nom_du_champ('+nom_du_champ+'))))">';
+        for( let i=0 ; i < 60 ; i++ ){
+            let sele1='';
+            if(minute_a_afficher === i){
+                sele1=' selected="true" ';
+            }
+            o1+='<option ' + sele1 + ' value="' + i + '">' + (i < 10 ? ( '0' + i ) : ( i )) + '</option>';
         }
         o1+='</select>';
         o1+='</td>';
-
+        /* dropdown ss */
         o1+='<td style="border-color:hotpink;" colspan="2">';
-        o1+='<select  id="vv_option_seconde">';
-        for(let i=0;i<60;i++){
-            o1+='<option>'+i+'</option>';
+        o1+='<select  id="vv_option_seconde" data-rev_change="m1( n1('+this.moi+'), f1(maj_drop_horloge(zone_select(vv_option_seconde),nom_du_champ('+nom_du_champ+'))))">';
+        for( let i=0 ; i < 60 ; i++ ){
+            let sele1='';
+            if(seconde_a_afficher === i){
+                sele1=' selected="true" ';
+            }
+            o1+='<option ' + sele1 + ' value="' + i + '">' + (i < 10 ? ( '0' + i ) : ( i )) + '</option>';
         }
         o1+='</select>';
         o1+='</td>';
-
         o1+='</tr>';
-        
+        /*
+          =====================================================================================================
+          les 24 heures
+        */
+        for( let i=0 ; i < 24 ; i++ ){
+            if(i% 6 === 0){
+                o1+='<tr style="box-shadow:none;">';
+            }
+            o1+='<td style="border-color:red;">';
+            if(ref_champ_date.value !== '' && heure_a_afficher === i){
+                o1+='<span style="background:yellow;">' + (i < 10 ? ( '0' + i ) : ( i )) + '</span>';
+            }else{
+                o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(definir_l_heure(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'h">' + (i < 10 ? ( '0' + i ) : ( i )) + '</div>';
+            }
+            o1+='</td>';
+            if(i + 1% 6 === 0){
+                o1+='</tr>';
+            }
+        }
+        /*
+          =====================================================================================================
+          les 10 minutes
+        */
+        o1+='<tr style="box-shadow:none;">';
+        for( let i=0 ; i < 60 ; i+=10 ){
+            o1+='<td style="border-color:lime;">';
+            if(ref_champ_date.value !== '' && minute_a_afficher === i){
+                o1+='<span style="background:yellow;">' + (i < 10 ? ( '0' + i ) : ( i )) + '</span>';
+            }else{
+                o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(definir_la_minute(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'mn">' + (i < 10 ? ( '0' + i ) : ( i )) + '</div>';
+            }
+            o1+='</td>';
+            o1+='</td>';
+        }
+        o1+='</tr>';
+        /*
+          =====================================================================================================
+          les 10 secondes 
+        */
+        o1+='<tr style="box-shadow:none;">';
+        for( let i=0 ; i < 60 ; i+=10 ){
+            o1+='<td style="border-color:hotpink;">';
+            if(ref_champ_date.value !== '' && seconde_a_afficher === i){
+                o1+='<span style="background:yellow;">' + (i < 10 ? ( '0' + i ) : ( i )) + '</span>';
+            }else{
+                o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(definir_la_seconde(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'ss">' + (i < 10 ? ( '0' + i ) : ( i )) + '</div>';
+            }
+            o1+='</td>';
+        }
+        o1+='</tr>';
+        /*
+          les boutons du bas 
+        */
+        o1+='<tr style="box-shadow:none;">';
+        /*
+        */
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt yy__4" data-rev_click="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(0))))" title="nulle">Ø</div>';
+        o1+='</td>';
+        /*
+          maintenant hh mm ss
+        */
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(1))))" title="maintenant">mn</div>';
+        o1+='</td>';
+        /*
+        */
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(2))))" title="secondes à zéro">hm</div>';
+        o1+='</td>';
+        /*
+        */
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(3))))" title="minutes et secondes à zéro">00</div>';
+        o1+='</td>';
+        /*
+        */
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt yy__1" data-rev_click="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(4))))" title="valider">OK</div>';
+        o1+='</td>';
+        /*
+        */
         o1+='</tr>';
         o1+='</table>';
         return o1;
-    }    
+    }
     /*
       =============================================================================================================
     */
-    affiche_horloge1(le_chetemel){
+    maintenant_hhmmss( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let option='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'option' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                option=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let tt=new Date();
+        let t='';
+        let heure_a_afficher=0;
+        let minute_a_afficher=0;
+        let seconde_a_afficher=0;
+        if(option === 0){
+            /* nulle */
+        }else if(option === 1){
+            t=(tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + '_' + (tt.getMinutes() < 10 ? ( '0' + tt.getMinutes() ) : ( tt.getMinutes() )) + '_' + (tt.getSeconds() < 10 ? ( '0' + tt.getSeconds() ) : ( tt.getSeconds() ));
+            heure_a_afficher=tt.getHours();
+            minute_a_afficher=tt.getMinutes();
+            seconde_a_afficher=tt.getSeconds();
+        }else if(option === 2){
+            t=(tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + '_' + (tt.getMinutes() < 10 ? ( '0' + tt.getMinutes() ) : ( tt.getMinutes() )) + '_00';
+            heure_a_afficher=tt.getHours();
+            minute_a_afficher=tt.getMinutes();
+            seconde_a_afficher=0;
+        }else if(option === 3){
+            t=(tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + '_00_00';
+            heure_a_afficher=tt.getHours();
+            minute_a_afficher=0;
+            seconde_a_afficher=0;
+        }else if(option === 4){
+            this.__gi1.fermer_la_sous_fenetre();
+            return({"__xst" : __xsu});
+            
+        }
+        document.getElementById( nom_du_champ ).value=t;
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        /* this.__gi1.fermer_la_sous_fenetre(); */
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    affiche_horloge1( le_chetemel ){
         let a=this.getPageSize();
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         vv_sous_fenetre1.innerHTML=le_chetemel;
-        setTimeout(function(p){
-//          console.log(p);
-          let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-          let tt=vv_sous_fenetre1.getBoundingClientRect();
-          if(tt.right>p.width){
-            let nouveau_left=Math.max(parseInt(vv_sous_fenetre1.style.left.replace(/px/,''),10)-(tt.right-p.width),0);
-            if(nouveau_left>=20){
-                nouveau_left-=20;
-            }
-            if(nouveau_left<=10){
-                nouveau_left=0;
-            }
-            vv_sous_fenetre1.style.left=nouveau_left+'px';
-//            console.log(tt,nouveau_left);
-          }
-          setTimeout(function(p){
-              let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-              let tt=vv_sous_fenetre1.getBoundingClientRect();
-              if(tt.bottom>p.height){
-                  console.log(tt , p);
-                  window.scrollTo( {"top" : parseInt(tt.bottom-p.height,10)} );
-                  
-              }
-             
-          },50,p)
-          
-        },50,a)
-        
-        
+        setTimeout( function( p ){
+                /* ajustement horizontal */
+                let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                let tt=vv_sous_fenetre1.getBoundingClientRect();
+                if(tt.right > p.width){
+                    let nouveau_left=Math.max( parseInt( vv_sous_fenetre1.style.left.replace( /px/ , '' ) , 10 ) - (tt.right - p.width) , 0 );
+                    if(nouveau_left >= 20){
+                        nouveau_left-=20;
+                    }
+                    if(nouveau_left <= 10){
+                        nouveau_left=0;
+                    }
+                    vv_sous_fenetre1.style.left=nouveau_left + 'px';
+                    /* console.log(tt,nouveau_left); */
+                }
+                /* ajustement vertical */
+                setTimeout( function( p ){
+                        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                        let tt=vv_sous_fenetre1.getBoundingClientRect();
+                        if(tt.bottom > p.height){
+                            console.log( tt , p );
+                            window.scrollTo( {"top" : parseInt( tt.bottom - p.height , 10 )} );
+                        }
+                    } , 50 , p );
+            } , 50 , a );
     }
-    
-    
     /* ===================================================================================================================== */
     numero_de_semaine( dt ){
         var d=new Date( Date.UTC( dt.getFullYear() , dt.getMonth() , dt.getDate() ) );
@@ -486,7 +765,7 @@ class __fnt1{
         }else{
             mois++;
         }
-        this.affiche_calendrier(this.html_de_date1( format_calendrier , nom_du_champ , annee , mois  ));
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
     }
     /*
@@ -514,7 +793,7 @@ class __fnt1{
         }else{
             mois--;
         }
-        this.affiche_calendrier(this.html_de_date1( format_calendrier , nom_du_champ , annee , mois  ));
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
     }
     /*
@@ -541,7 +820,7 @@ class __fnt1{
         }else{
             annee=1000;
         }
-        this.affiche_calendrier(this.html_de_date1( format_calendrier , nom_du_champ , annee , mois  ));
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
     }
     /*
@@ -568,7 +847,7 @@ class __fnt1{
         }else{
             annee=9999;
         }
-        this.affiche_calendrier(this.html_de_date1( format_calendrier , nom_du_champ , annee , mois  ));
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
     }
     /*
@@ -589,7 +868,7 @@ class __fnt1{
         let tt=new Date();
         annee=tt.getFullYear();
         mois=tt.getMonth() + 1;
-        this.affiche_calendrier(this.html_de_date1( format_calendrier , nom_du_champ , annee , mois  ));
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
@@ -613,7 +892,7 @@ class __fnt1{
             }
         }
         annee=annee - annee% 50;
-        this.affiche_calendrier(this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ));
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
     }
     /*
@@ -640,7 +919,7 @@ class __fnt1{
         }else{
             annee=1000;
         }
-        this.affiche_calendrier(this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ));
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
     }
     /*
@@ -667,7 +946,7 @@ class __fnt1{
         }else{
             annee=9950;
         }
-        this.affiche_calendrier(this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ));
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
     }
     /*
@@ -693,7 +972,7 @@ class __fnt1{
             let dt=new Date();
             annee=dt.getFullYear();
         }
-        this.affiche_calendrier(this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ));
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
     }
     /*
@@ -749,7 +1028,7 @@ class __fnt1{
                 }
                 let sty1='';
                 if(maintenant.getFullYear() === annee_courante){
-                    sty1=' style="border-color:red;"'
+                    sty1=' style="border-color:red;"';
                 }
                 o1+='<td ' + sty1 + ' data-i="' + i + '-' + (i% (nb_annees_par_ligne - 1)) + '-' + ((i - 1)% nb_annees_par_ligne) + '-' + '">';
                 o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(choisir_annee(nom_du_champ(' + nom_du_champ + '),annee(' + annee_courante + '),mois(' + mois_a_afficher + '))))">' + annee_courante + '</div>';
@@ -1022,70 +1301,63 @@ class __fnt1{
                 mois_a_afficher=parseInt( ref_champ_date.value.substr( 5 , 2 ) , 10 );
             }
         }
-        this.affiche_calendrier(this.html_de_date1( format_calendrier , nom_du_champ , annee_a_afficher , mois_a_afficher ));
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee_a_afficher , mois_a_afficher ) );
         vv_sous_fenetre1.showModal();
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
-    
-    //=====================================================================================================================
-    getPageSize() {
+    /* ===================================================================================================================== */
+    getPageSize(){
         let dkW=100;
         let dkH=100;
-        if (typeof(window.innerWidth) === 'number') {
+        if( typeof window.innerWidth === 'number'){
             /* adans la majorité des cas, on passe ici */
-            dkW = window.innerWidth;
-            dkH = window.innerHeight;
-        } else {
-            if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
-                dkW = document.documentElement.clientWidth;
-                dkH = document.documentElement.clientHeight;
-            } else {
-                if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
-                    dkW = document.body.clientWidth;
-                    dkH = document.body.clientHeight;
+            dkW=window.innerWidth;
+            dkH=window.innerHeight;
+        }else{
+            if(document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)){
+                dkW=document.documentElement.clientWidth;
+                dkH=document.documentElement.clientHeight;
+            }else{
+                if(document.body && (document.body.clientWidth || document.body.clientHeight)){
+                    dkW=document.body.clientWidth;
+                    dkH=document.body.clientHeight;
                 }
             }
         }
-        return({"width" : dkW , "height" : dkH});
+        return({"width" : dkW ,"height" : dkH});
     }
-    
     /*
       =============================================================================================================
     */
-    affiche_calendrier(le_chetemel){
+    affiche_calendrier( le_chetemel ){
         let a=this.getPageSize();
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         vv_sous_fenetre1.innerHTML=le_chetemel;
-        setTimeout(function(p){
-//          console.log(p);
-          let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-          let tt=vv_sous_fenetre1.getBoundingClientRect();
-          if(tt.right>p.width){
-            let nouveau_left=Math.max(parseInt(vv_sous_fenetre1.style.left.replace(/px/,''),10)-(tt.right-p.width),0);
-            if(nouveau_left>=20){
-                nouveau_left-=20;
-            }
-            if(nouveau_left<=10){
-                nouveau_left=0;
-            }
-            vv_sous_fenetre1.style.left=nouveau_left+'px';
-//            console.log(tt,nouveau_left);
-          }
-          setTimeout(function(p){
-              let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-              let tt=vv_sous_fenetre1.getBoundingClientRect();
-              if(tt.bottom>p.height){
-                  console.log(tt , p);
-                  window.scrollTo( {"top" : parseInt(tt.bottom-p.height,10)} );
-                  
-              }
-             
-          },50,p)
-          
-        },50,a)
-        
-        
+        setTimeout( function( p ){
+                /* ajustement horizontal */
+                let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                let tt=vv_sous_fenetre1.getBoundingClientRect();
+                if(tt.right > p.width){
+                    let nouveau_left=Math.max( parseInt( vv_sous_fenetre1.style.left.replace( /px/ , '' ) , 10 ) - (tt.right - p.width) , 0 );
+                    if(nouveau_left >= 20){
+                        nouveau_left-=20;
+                    }
+                    if(nouveau_left <= 10){
+                        nouveau_left=0;
+                    }
+                    vv_sous_fenetre1.style.left=nouveau_left + 'px';
+                }
+                /* ajustement vertical */
+                setTimeout( function( p ){
+                        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                        let tt=vv_sous_fenetre1.getBoundingClientRect();
+                        if(tt.bottom > p.height){
+                            console.log( tt , p );
+                            window.scrollTo( {"top" : parseInt( tt.bottom - p.height , 10 )} );
+                        }
+                    } , 50 , p );
+            } , 50 , a );
     }
     /*
       =============================================================================================================
@@ -1106,13 +1378,10 @@ class __fnt1{
             return({"__xst" : __xer});
         }
         let maintenant=new Date();
-        let t=maintenant.getFullYear() + '_' + (maintenant.getMonth() + 1 < 10 ? ( '0' + ( maintenant.getMonth() + 1 ) ) : ( maintenant.getMonth() + 1 )) + '_' + ( maintenant.getDate() < 10 ? ( '0' + maintenant.getDate() ) : ( maintenant.getDate() ));
+        let t=maintenant.getFullYear() + '_' + (maintenant.getMonth() + 1 < 10 ? ( '0' + (maintenant.getMonth() + 1) ) : ( maintenant.getMonth() + 1 )) + '_' + (maintenant.getDate() < 10 ? ( '0' + maintenant.getDate() ) : ( maintenant.getDate() ));
         document.getElementById( nom_du_champ ).value=t;
         return({"__xst" : __xsu});
-        
     }
-    
-    
     /*
       =============================================================================================================
     */
@@ -1121,7 +1390,7 @@ class __fnt1{
         if(valeur === '' || valeur === null){
             return({"__xst" : __xsu});
         }
-        if(valeur.length !== 10){
+        if(valeur.length !== 8){
             return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
         }
         if(!(this.__gi1.est_num( valeur.substr( 0 , 2 ) )
@@ -1437,6 +1706,73 @@ class __fnt1{
                 }
                 return({"__xst" : __xsu});
             }
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
+    remplacer_la_valeur_dans_la_zone(mat , d){
+        let l01=mat.length;
+        let zone_source='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && mat[i][1] === 'zone_source'){
+                if(mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    zone_source=mat[i + 1][1];
+                }
+            }
+        }
+        if(zone_source !== ''){
+            let aa=document.getElementById( zone_source ).value;
+            let cc=document.getElementById('vv_valeur_a_remplacer').value;
+            if(cc !== ''){
+             
+                let dd=document.getElementById('vv_valeur_remplacante').value;
+                let b=new RegExp( cc , 'g' )
+                aa=aa.replace( b , dd );
+                document.getElementById( zone_source ).value=aa;
+                this.__gi1.fermer_la_sous_fenetre();
+                return({"__xst" : __xsu});
+            }
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
+    remplacer_dans_la_zone( mat , d){
+        let l01=mat.length;
+        let zone_source='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && mat[i][1] === 'zone_source'){
+                if(mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    zone_source=mat[i + 1][1];
+                }
+            }
+        }
+        if(zone_source !== ''){
+         
+            this.__gi1.zone_d_edition_en_cours=zone_source;
+            let aa=document.getElementById( zone_source );
+            let bb='';
+            if(aa.selectionStart === aa.selectionEnd){
+            }else{
+                bb=document.getElementById( zone_source ).value.substr( aa.selectionStart , aa.selectionEnd - aa.selectionStart );
+            }
+            
+            let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+            let o1='';
+            o1+='<h1>remplacer</h1>';
+            o1+='<input id="vv_valeur_a_remplacer" value="' + bb + '" />';
+            o1+='<br />';
+            o1+='<input id="vv_valeur_remplacante" value="" />';
+            o1+='<br />';
+            o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_la_valeur_dans_la_zone(zone_source('+zone_source+'))))" title="remplacer_dans_la_zone" >remplacer</div>\r\n';
+            vv_sous_fenetre1.innerHTML=o1;
+            
+            vv_sous_fenetre1.showModal();
+            this.__gi1.ajoute_les_evenements_aux_boutons( null );
+            return({"__xst" : __xsu});
         }
         return({"__xst" : __xer});
     }
@@ -1771,6 +2107,8 @@ class __fnt1{
         o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__gi1.les_svg.agrandir + '</div>\r\n';
         o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__gi1.les_svg.retrecir + '</div>\r\n';
         o1+=' <div class="rev_b_svg yy__xsi_2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__gi1.les_svg.ensemble_vide + '</div>\r\n';
+        o1+=' <div class="rev_bouton yy__xsi_1 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >remplacer</div>\r\n';
+        
         return o1;
     }
     /*

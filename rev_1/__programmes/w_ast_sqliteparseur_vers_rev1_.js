@@ -792,16 +792,19 @@ class w_ast_sqliteparseur_vers_rev1{
                     /* t+=']'; */
                     if(element.definition[i].datatype.variant.toLowerCase() === 'varchar'){
                         les_meta+=' , typologie(chp)';
+                        t+=' , espece_du_champ(' + element.definition[i].datatype.variant.toUpperCase() + ')';
                     }else if(element.definition[i].datatype.variant.toLowerCase() === 'text'){
                         les_meta+=' , typologie(chp)';
+                        t+=' , espece_du_champ(' + element.definition[i].datatype.variant.toUpperCase() + ')';
                     }else if(element.definition[i].datatype.variant.toLowerCase() === 'integer'
                            || element.definition[i].datatype.variant.toLowerCase() === 'int'
                            || element.definition[i].datatype.variant.toLowerCase() === 'bigint'
                            || element.definition[i].datatype.variant.toLowerCase() === 'decimal'
+                           || element.definition[i].datatype.variant.toLowerCase() === 'tinyint'
                     ){
                         les_meta+=' typologie(che)';
+                        t+=' , espece_du_champ(INTEGER)';
                     }
-                    t+=' , espece_du_champ(' + element.definition[i].datatype.variant.toUpperCase() + ')';
                     if(longueur_du_champ !== ''){
                         t+=' , longueur_du_champ(' + longueur_du_champ + ')';
                     }
@@ -815,6 +818,8 @@ class w_ast_sqliteparseur_vers_rev1{
                                && element.definition[i].definition[j].variant === "primary key"
                         ){
                             t+=' , primary_key()';
+                            les_meta=les_meta.replace(/typologie\(che\)/,'typologie(chi)')
+                            
                         }
                         if(element.definition[i].definition[j].type === "constraint"
                                && element.definition[i].definition[j].hasOwnProperty( 'autoIncrement' )
@@ -887,6 +892,7 @@ class w_ast_sqliteparseur_vers_rev1{
                     if(element.definition[i].datatype.variant
                            && (element.definition[i].datatype.variant.toLowerCase() === 'integer'
                                || element.definition[i].datatype.variant.toLowerCase() === 'int'
+                               || element.definition[i].datatype.variant.toLowerCase() === 'tinyint'
                                || element.definition[i].datatype.variant.toLowerCase() === 'bigint'
                                || element.definition[i].datatype.variant.toLowerCase() === 'decimal'
                               )
@@ -902,6 +908,8 @@ class w_ast_sqliteparseur_vers_rev1{
                         }else{
                             les_meta+=' genre(6) ';
                         }
+                    }else if(element.definition[i].datatype.variant && element.definition[i].datatype.variant.toLowerCase() === 'date'){
+                            les_meta+=' genre(22) ';
                     }else{
                         console.log('%c type non pris en compte "' + element.definition[i].datatype.variant + '"','color:yellow;background-color:red;')
 //                        debugger;

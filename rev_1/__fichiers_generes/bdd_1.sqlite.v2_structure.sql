@@ -935,122 +935,6 @@ CREATE TABLE `tbl_menus`(
 
 
 /*
-================================================================================ TABLE tbl_taches 
-*/
-
-CREATE TABLE `tbl_taches`(
-/*
- meta(nom_de_la_table('tbl_taches'),
-   table('tbl_taches'),
-   genre_meta(table_de_base),permet_la_gestion_de('tâche'),
-   distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(361,329))) 
-*/
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chi_id_tache'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
-            typologie(),
-            genre(2)
-            )
-            */
-             `chi_id_tache` INTEGER PRIMARY KEY NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_utilisateur_tache'),
-            nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur'),
-            typologie(chx),
-            genre(18),est_en_session(1),nom_en_session('chi_id_utilisateur')
-            )
-            */
-             `chx_utilisateur_tache` INTEGER NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_texte_tache'),
-            nom_bref_du_champ('texte'),abrege_du_champ('texte'),
-            typologie(),
-            genre(11),
-            est_libelle_lien(1)
-            )
-            */
-             `chp_texte_tache` TEXT NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_priorite_tache'),
-            nom_bref_du_champ('priorite'),abrege_du_champ('priorite'),
-            typologie(),
-            genre(99)
-            )
-            */
-             `chp_priorite_tache` INTEGER(2) NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chd__dtm_tache'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
-            typologie(chd),
-            genre(16),
-            masquer_champ_dans_svg(1)
-            )
-            */
-             `chd__dtm_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chd__dtc_tache'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
-            typologie(chi),
-            genre(14),
-            masquer_champ_dans_svg(1)
-            )
-            */
-             `chd__dtc_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che__nur_tache'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
-            typologie(che),
-            genre(15),
-            masquer_champ_dans_svg(1)
-            )
-            */
-             `che__nur_tache` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chd_une_date_tache'),
-            nom_bref_du_champ('une date'),abrege_du_champ('une date'),
-            typologie(cha),
-            genre(22)
-            )
-            */
-             `chd_une_date_tache` VARCHAR(10) DEFAULT  NULL
-    );
-
-
-
-
-/*
 ================================================================================ TABLE tbl_autorisations 
 */
 
@@ -1906,6 +1790,110 @@ CREATE TABLE `tbl_projets`(
             */
              `chd__dtc_projet` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
     );
+
+
+
+
+/*
+================================================================================ TABLE tbl_taches 
+*/
+
+CREATE TABLE `tbl_taches`(
+/*
+ meta(nom_de_la_table('tbl_taches'),
+   table('tbl_taches'),
+   genre_meta(table_de_base),permet_la_gestion_de('tâche'),
+   distinction_pour_liste('liste des tâches'),
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(361,329))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_tache'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            typologie(),
+            genre(2)
+            )
+            */
+             `chi_id_tache` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_utilisateur_tache'),
+            nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur'),
+            typologie(chx),
+            genre(18),est_en_session(1),nom_en_session('chi_id_utilisateur')
+            )
+            */
+             `chx_utilisateur_tache` INTEGER NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_texte_tache'),
+            nom_bref_du_champ('texte'),abrege_du_champ('texte'),
+            typologie(),
+            genre(11),
+            est_libelle_lien(1)
+            )
+            */
+             `chp_texte_tache` TEXT NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_priorite_tache'),
+            nom_bref_du_champ('priorite'),abrege_du_champ('priorite'),
+            typologie(),
+            genre(99)
+            )
+            */
+             `chp_priorite_tache` INTEGER(2) NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtm_tache'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
+            typologie(chd),
+            genre(16),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `chd__dtm_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtc_tache'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
+            typologie(chi),
+            genre(14),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `chd__dtc_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che__nur_tache'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
+            typologie(che),
+            genre(15),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `che__nur_tache` INTEGER NOT NULL DEFAULT  0
+    , `chd_une_heure_tache` VARCHAR(8) NOT NULL DEFAULT  '00_00_00');
 
 
 

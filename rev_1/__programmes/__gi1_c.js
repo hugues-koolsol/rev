@@ -31,16 +31,18 @@ class __gi1{
     moi='__gi1';
     _CA_=0;
     __version='';
-    css_dimensions={
-         /*  */
-        "h_barre" : 0 ,
-        "t_padding" : 0 ,
-        "hauteur_max_textarea" : 80 ,
-        "t_border" : 0 ,
-        "t_police" : 0 ,
-        "t_boutons_carres" : 0 ,
-        "t_padding_de_input" : 0
-    };
+    /*#
+      css_dimensions={
+          "h_barre" : 0 ,
+          "t_padding" : 0 ,
+          "hauteur_max_textarea" : 80 ,
+          "t_border" : 0 ,
+          "t_police" : 0 ,
+          "t_boutons_carres" : 0 ,
+          "t_padding_de_input" : 0
+          "t_rayon_de_bouton" : 0
+      };
+    */
     stockage_local={};
     #__worker=null;
     #chi_id_utilisateur=0;
@@ -2098,7 +2100,8 @@ class __gi1{
             "t_border" : val_border ,
             "t_police" : val_police ,
             "t_boutons_carres" : taille_bouton_carre ,
-            "t_padding_de_input" : val_padding_de_input
+            "t_padding_de_input" : val_padding_de_input ,
+            "t_rayon_b" : t_rayon_b
         };
         let t='';
         t+='*,*::before,*::after{box-sizing:border-box;}';
@@ -3251,6 +3254,9 @@ class __gi1{
       =============================================================================================================
     */
     fermer_la_sous_fenetre( mat , d ){
+        try{
+            this.#la_sous_fenetre1.removeAttribute('style');
+        }catch{}
         this.#la_sous_fenetre1.close();
         return({"__xst" : __xsu});
     }

@@ -77,7 +77,7 @@ class v_svg_bdd1{
         /*  */
         {
                 "nom_du_meta_table" : 'permet_la_gestion_de' ,
-                "exemple" : '"cheval,base ..."' ,
+                "exemple" : '"cheval"' ,
                 "zone_html2" : 'text' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
@@ -85,7 +85,7 @@ class v_svg_bdd1{
             },
         {
                 "nom_du_meta_table" : 'distinction_pour_liste' ,
-                "exemple" : '"liste des ..."' ,
+                "exemple" : '"liste des chevaux"' ,
                 "zone_html2" : 'text' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
@@ -93,7 +93,7 @@ class v_svg_bdd1{
             },
         {
                 "nom_du_meta_table" : 'distinction_pour_isad' ,
-                "exemple" : '"d\'un,d\'une ..."' ,
+                "exemple" : '"d\'un cheval,d\'une ..."' ,
                 "zone_html2" : 'text' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
