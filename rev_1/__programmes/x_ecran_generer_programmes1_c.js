@@ -571,15 +571,23 @@ class x_ecran_generer_programmes1{
                 }
             }
             for(let i in liste_des_champs_condition_liste_ecran){
-                /* hugues */
                 if(liste_des_champs_condition_liste_ecran[i].préfixe_du_champ === 'T0'){
                     let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_condition_liste_ecran[i].nom_du_champ];
                     liste_des_champs_condition_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
                 }else{
                     let nt=liste_de_tables_liste_ecran[liste_des_champs_condition_liste_ecran[i].préfixe_du_champ].nom_de_la_table;
                     let aa=this.#obj_bdd[nt];
-                    let champ_dans_la_base=aa['champs'][liste_des_champs_condition_liste_ecran[i].nom_du_champ];
-                    liste_des_champs_condition_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
+                    if(aa===undefined){
+                        /*
+                          hugues
+                          le champ fait référence à une table dans une autre base
+                          exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
+                          que le champ commercial fait référence la table "utilisateur"
+                        */
+                    }else{
+                        let champ_dans_la_base=aa['champs'][liste_des_champs_condition_liste_ecran[i].nom_du_champ];
+                        liste_des_champs_condition_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
+                    }
                 }
             }
             /*
@@ -599,8 +607,17 @@ class x_ecran_generer_programmes1{
                     /* champ Tn */
                     let nt=liste_de_tables_liste_ecran[liste_des_champs_liste_ecran[i].préfixe_du_champ].nom_de_la_table;
                     let aa=this.#obj_bdd[nt];
-                    let champ_dans_la_base=aa['champs'][liste_des_champs_liste_ecran[i].nom_du_champ];
-                    liste_des_champs_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
+                    if(aa===undefined){
+                        /*
+                          hugues
+                          le champ fait référence à une table dans une autre base
+                          exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
+                          que le champ commercial fait référence la table "utilisateur"
+                        */
+                    }else{
+                        let champ_dans_la_base=aa['champs'][liste_des_champs_liste_ecran[i].nom_du_champ];
+                        liste_des_champs_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
+                    }
                 }
             }
         }
@@ -608,7 +625,14 @@ class x_ecran_generer_programmes1{
         for(let i in liste_des_champs_condition_liste_ecran){
             liste_des_champs_condition_liste_ecran[i]['dans_filtre']=false;
             let el=liste_des_champs_condition_liste_ecran[i];
-            if(el.champ_dans_la_base.hasOwnProperty( 'table_mere' ) && el.champ_dans_la_base.table_mere !== ''){
+            if(el.champ_dans_la_base===null){
+            /*
+              hugues
+              le champ fait référence à une table dans une autre base
+              exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
+              que le champ commercial fait référence la table "utilisateur"
+            */
+            }else if(el.champ_dans_la_base.hasOwnProperty( 'table_mere' ) && el.champ_dans_la_base.table_mere !== ''){
                 if(this.#obj_bdd[el.champ_dans_la_base.table_mere].champs[el.champ_dans_la_base.champ_pere].meta.hasOwnProperty( 'est_en_session' )
                        && this.#obj_bdd[el.champ_dans_la_base.table_mere].champs[el.champ_dans_la_base.champ_pere].meta.est_en_session === '1'
                 ){
@@ -782,11 +806,20 @@ class x_ecran_generer_programmes1{
                         src_client2+='            "' + i + '" : {"type_filtre" :\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
                     }else{
                         let nom_de_la_table_mere=liste_de_tables_liste_ecran[i.substr( 0 , i.indexOf( '_' ) )].nom_de_la_table;
-                        let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
-                        nom+=' ' + this.#obj_bdd[nom_de_la_table_mere].meta.permet_la_gestion_de;
-                        liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
-                        liste_des_champs_condition_liste_ecran[i]['nom_filtre']=nom;
-                        src_client2+='            "' + i + '" : {"type_filtre" :\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
+                        if(el.champ_dans_la_base === null){
+                            /*
+                              hugues
+                              le champ fait référence à une table dans une autre base
+                              exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
+                              que le champ commercial fait référence la table "utilisateur"
+                            */
+                        }else{
+                            let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
+                            nom+=' ' + this.#obj_bdd[nom_de_la_table_mere].meta.permet_la_gestion_de;
+                            liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
+                            liste_des_champs_condition_liste_ecran[i]['nom_filtre']=nom;
+                            src_client2+='            "' + i + '" : {"type_filtre" :\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
+                        }
                     }
                 }
             }catch(e){
@@ -818,12 +851,21 @@ class x_ecran_generer_programmes1{
                     liste_des_champs_condition_liste_ecran[i]['nom_filtre']=nom;
                     src_client2+='          ' + i + ' : {type_filtre:\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
                 }else{
-                    let nom_de_la_table_mere=liste_de_tables_liste_ecran[i.substr( 0 , i.indexOf( '_' ) )].nom_de_la_table;
-                    let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
-                    nom+=' ' + this.#obj_bdd[nom_de_la_table_mere].meta.permet_la_gestion_de;
-                    liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
-                    liste_des_champs_condition_liste_ecran[i]['nom_filtre']=nom;
-                    src_client2+='          ' + i + ' : {type_filtre:\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
+                    if(el.champ_dans_la_base===null){
+                        /*
+                          hugues
+                          le champ fait référence à une table dans une autre base
+                          exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
+                          que le champ commercial fait référence la table "utilisateur"
+                        */
+                    }else{
+                        let nom_de_la_table_mere=liste_de_tables_liste_ecran[i.substr( 0 , i.indexOf( '_' ) )].nom_de_la_table;
+                        let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
+                        nom+=' ' + this.#obj_bdd[nom_de_la_table_mere].meta.permet_la_gestion_de;
+                        liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
+                        liste_des_champs_condition_liste_ecran[i]['nom_filtre']=nom;
+                        src_client2+='          ' + i + ' : {type_filtre:\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
+                    }
                 }
             }
         }
@@ -2500,15 +2542,24 @@ class x_ecran_generer_programmes1{
                 */
                 for(let i in liste_des_champs_condition_liste_ecran){
                     console.log( liste_des_champs_condition_liste_ecran[i] );
-                    if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.champ_est_en_session1 === true){
+                    if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base === null){
                         /*
-                          par exemple, ici on traite le programme gérant les tâches et chaque tâche est rattachée à un utilisateur.
+                          hugues
+                          le champ fait référence à une table dans une autre base
+                          exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
+                          que le champ commercial fait référence la table "utilisateur"
                         */
-                        champs_en_session+='            criteres_' + ref_liste_ecran + '[\'' + liste_des_champs_condition_liste_ecran[i].préfixe_du_champ + '_' + liste_des_champs_condition_liste_ecran[i].nom_du_champ + '\']=donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_en_session1 + ';\r\n';
-                        liste_des_champs+=',donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_en_session1;
-                    }else if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.champ_pere_est_en_session1 === true){
-                        champs_en_session+='            criteres_' + ref_liste_ecran + '[\'' + liste_des_champs_condition_liste_ecran[i].préfixe_du_champ + '_' + liste_des_champs_condition_liste_ecran[i].nom_du_champ + '\']=donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_du_champ_session1 + ';\r\n';
-                        liste_des_champs+=',donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_du_champ_session1;
+                    }else{
+                        if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.champ_est_en_session1 === true){
+                            /*
+                              par exemple, ici on traite le programme gérant les tâches et chaque tâche est rattachée à un utilisateur.
+                            */
+                            champs_en_session+='            criteres_' + ref_liste_ecran + '[\'' + liste_des_champs_condition_liste_ecran[i].préfixe_du_champ + '_' + liste_des_champs_condition_liste_ecran[i].nom_du_champ + '\']=donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_en_session1 + ';\r\n';
+                            liste_des_champs+=',donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_en_session1;
+                        }else if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.champ_pere_est_en_session1 === true){
+                            champs_en_session+='            criteres_' + ref_liste_ecran + '[\'' + liste_des_champs_condition_liste_ecran[i].préfixe_du_champ + '_' + liste_des_champs_condition_liste_ecran[i].nom_du_champ + '\']=donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_du_champ_session1 + ';\r\n';
+                            liste_des_champs+=',donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_du_champ_session1;
+                        }
                     }
                 }
             }
@@ -3390,49 +3441,58 @@ class x_ecran_generer_programmes1{
             let cle=el.préfixe_du_champ + '.' + el.nom_du_champ;
             if(tab_champs_sortie.includes( cle )){
             }else{
-                if(el.champ_dans_la_base.genre_objet_du_champ
-                       && (el.champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre === 1
-                           || el.champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre === 1
-                           || el.champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre === 1)
-                ){
-                    continue;
-                }
-                tab_champs_sortie.push( cle );
-                src_client2+='';
-                src_client2+='            /' + '*\n';
-                src_client2+='            *' + '/\n';
-                if(el.champ_dans_la_base.espece_du_champ === 'TEXT'){
-                    src_client2+='            lst += \'<td style="max-width:360px;overflow:hidden;">\';\r\n';
-                    src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
-                    src_client2+='                lst+=this.__gi1.fi2( elem[\'' + cle + '\'].substr(0,200));\r\n';
-                    src_client2+='            }\r\n';
-                }else if(el.champ_dans_la_base.espece_du_champ === 'VARCHAR'){
-                    src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
-                    src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
-                    src_client2+='                lst+=this.__gi1.fi2( elem[\'' + cle + '\']);\r\n';
-                    src_client2+='            }\r\n';
+                if(el.champ_dans_la_base === null){
+                    /*
+                      hugues
+                      le champ fait référence à une table dans une autre base
+                      exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
+                      que le champ commercial fait référence la table "utilisateur"
+                    */
                 }else{
-                    if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.cht_parmis_genre === '0,1'
-                           && liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.cht_valeur_init_genre === '0'
-                           && liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.chp_espece_genre === 'INTEGER'
+                    if(el.champ_dans_la_base.genre_objet_du_champ
+                           && (el.champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre === 1
+                               || el.champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre === 1
+                               || el.champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre === 1)
                     ){
+                        continue;
+                    }
+                    tab_champs_sortie.push( cle );
+                    src_client2+='';
+                    src_client2+='            /' + '*\n';
+                    src_client2+='            *' + '/\n';
+                    if(el.champ_dans_la_base.espece_du_champ === 'TEXT'){
+                        src_client2+='            lst += \'<td style="max-width:360px;overflow:hidden;">\';\r\n';
+                        src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
+                        src_client2+='                lst+=this.__gi1.fi2( elem[\'' + cle + '\'].substr(0,200));\r\n';
+                        src_client2+='            }\r\n';
+                    }else if(el.champ_dans_la_base.espece_du_champ === 'VARCHAR'){
                         src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
                         src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
-                        src_client2+='                    if(elem[\'' + cle + '\']===0){\r\n';
-                        src_client2+='                        lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">\'+this.__gi1.les_svg.rond_rouge1+\'</div>\';\r\n';
-                        src_client2+='                    }else{\r\n';
-                        src_client2+='                        lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">\'+this.__gi1.les_svg.rond_vert1+\'</div>\';\r\n';
-                        src_client2+='                    }\r\n';
-                        src_client2+='\r\n';
+                        src_client2+='                lst+=this.__gi1.fi2( elem[\'' + cle + '\']);\r\n';
                         src_client2+='            }\r\n';
                     }else{
-                        src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
-                        src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
-                        src_client2+='                lst+=elem[\'' + cle + '\'];\r\n';
-                        src_client2+='            }\r\n';
+                        if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.cht_parmis_genre === '0,1'
+                               && liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.cht_valeur_init_genre === '0'
+                               && liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.chp_espece_genre === 'INTEGER'
+                        ){
+                            src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
+                            src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
+                            src_client2+='                    if(elem[\'' + cle + '\']===0){\r\n';
+                            src_client2+='                        lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">\'+this.__gi1.les_svg.rond_rouge1+\'</div>\';\r\n';
+                            src_client2+='                    }else{\r\n';
+                            src_client2+='                        lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">\'+this.__gi1.les_svg.rond_vert1+\'</div>\';\r\n';
+                            src_client2+='                    }\r\n';
+                            src_client2+='\r\n';
+                            src_client2+='            }\r\n';
+                        }else{
+                            src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
+                            src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
+                            src_client2+='                lst+=elem[\'' + cle + '\'];\r\n';
+                            src_client2+='            }\r\n';
+                        }
                     }
+                    src_client2+='            lst += \'</td>\';\r\n';
                 }
-                src_client2+='            lst += \'</td>\';\r\n';
             }
         }
         src_client2+='                lst+=\'</tr>\';\r\n';
@@ -3448,19 +3508,29 @@ class x_ecran_generer_programmes1{
             let cle=liste_des_champs_liste_ecran[i].préfixe_du_champ + '.' + liste_des_champs_liste_ecran[i].nom_du_champ;
             if(tab_champs_sortie.includes( cle )){
             }else{
-                if(el.champ_dans_la_base.genre_objet_du_champ
-                       && (el.champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre === 1
-                           || el.champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre === 1
-                           || el.champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre === 1)
-                ){
-                    continue;
+             
+                if(el.champ_dans_la_base===null){
+                    /*
+                      hugues
+                      le champ fait référence à une table dans une autre base
+                      exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
+                      que le champ commercial fait référence la table "utilisateur"
+                    */
+                }else{
+                    if(el.champ_dans_la_base.genre_objet_du_champ
+                           && (el.champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre === 1
+                               || el.champ_dans_la_base.genre_objet_du_champ.che_est_tsc_genre === 1
+                               || el.champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre === 1)
+                    ){
+                        continue;
+                    }
+                    tab_champs_sortie.push( cle );
+                    src_client2+='                o1+=/* ' + liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.nom_du_champ + ' */\'<th';
+                    if(el.champ_dans_la_base.espece_du_champ === 'TEXT'){
+                        src_client2+=' style="max-width:360px;"';
+                    }
+                    src_client2+='>' + liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.nom_bref_du_champ + '</th>\';\r\n';
                 }
-                tab_champs_sortie.push( cle );
-                src_client2+='                o1+=/* ' + liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.nom_du_champ + ' */\'<th';
-                if(el.champ_dans_la_base.espece_du_champ === 'TEXT'){
-                    src_client2+=' style="max-width:360px;"';
-                }
-                src_client2+='>' + liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.nom_bref_du_champ + '</th>\';\r\n';
             }
         }
         src_client2+='                o1+=\'</tr>\';\r\n';

@@ -36,7 +36,7 @@ class v_svg_bdd1{
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        let chemin_bdd='./__bases_de_donnees/bdd_' + donnees_recues[__xva]['id_bdd_de_la_base'] + '.sqlite';
+        let chemin_bdd='../rev_' + donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + donnees_recues[__xva]['id_bdd_de_la_base'] + '.sqlite';
         if((await this.__gi1.is_file( chemin_bdd ))){
             this.__gi1.__xsi[__xer].push( 'le fichier bdd existe déjà [' + this.__gi1.nl2() );
             donnees_retournees.__xst=__xer;

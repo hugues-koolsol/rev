@@ -1,12 +1,13 @@
 
-L'idée est de mettre en place une structure qui permet de considérer que **les programmes sont des données**.
+L'idée est de mettre en place un système qui permet de considérer que **les programmes sont des données**.  
+
+Les données ( cad les programmes ) peuvent alors être vérifiées du point de vue de la cohérence et de la limite.
+
+Le premier programme écrit avec ce système doit être lui même.
+
 
 le programme en cours de développement transforme des fonctions imbriquées en tableau
-de façon à écrire des traitements ( c'est à dire les programmes ) et des données avec **une syntaxe commune appelée "rev"**.
-
-
-
-Il faut que cette structure soit écrite avec elle même.
+de façon à écrire les programmes et des données avec **une syntaxe commune appelée "rev"**.
 
 Comme il n'existe pas encore de compilateur, on s'appuie sur les langages html, css, javascript, sql et php.
 
@@ -29,8 +30,6 @@ Les constantes sont sous deux formats :
 Les éléments sont séparés par des virgules.
 
 La syntaxe et les mots clés sont loin d'être complètement définis et en plus, ils sont en français.
-
-
 
 
 **Brève description** : un source est écrit sous ce format "rev" ( comme "réversible", "reverse engineering"  ou bien "rêve" ;-)
