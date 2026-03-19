@@ -776,27 +776,6 @@
     "che_est_souche_requete": 1,
     "cht_rev_requete": "insérer(\n\n   valeurs(\n      affecte(champ(`chp_nom_dossier`),:chp_nom_dossier),\n      affecte(champ(`chx_parent_dossier`),:chx_parent_dossier),\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_dossiers,base(b1)))\n      )\n   )\n)"
   },
-  "379": {
-    "cht_sql_requete": "BEGIN TRANSACTION;",
-    "cht_commentaire_requete": "sur base 1",
-    "chp_type_requete": "requete_manuelle",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "\ntransaction()      "
-  },
-  "380": {
-    "cht_sql_requete": "COMMIT;",
-    "cht_commentaire_requete": "",
-    "chp_type_requete": "requete_manuelle",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "\ncommit()    "
-  },
-  "381": {
-    "cht_sql_requete": "ROLLBACK;",
-    "cht_commentaire_requete": "",
-    "chp_type_requete": "requete_manuelle",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "\nrollback()            "
-  },
   "382": {
     "cht_sql_requete": "DELETE FROM b1.tbl_projets\nWHERE (`chi_id_projet` = :chi_id_projet) ;",
     "cht_commentaire_requete": "projets",
@@ -832,20 +811,6 @@
     "che_est_souche_requete": 1,
     "cht_rev_requete": "sélectionner(\n\n   valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`),champ(`T0`,`chx_parent_dossier`),champ(`T1`,`chp_nom_dossier`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_parent_dossier)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_dossier`),:T0_chi_id_dossier))\n)  "
   },
-  "387": {
-    "cht_sql_requete": "BEGIN TRANSACTION;",
-    "cht_commentaire_requete": "sur base 1",
-    "chp_type_requete": "requete_manuelle",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "transaction()            "
-  },
-  "388": {
-    "cht_sql_requete": "COMMIT;",
-    "cht_commentaire_requete": null,
-    "chp_type_requete": "requete_manuelle",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "commit()            "
-  },
   "389": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`\n FROM b1.tbl_dossiers T0\r\n LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier\n\nWHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier\r\n   AND `T0`.`chp_nom_dossier` LIKE :T0_chp_nom_dossier\r\n   AND `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier\r\n   AND `T1`.`chp_nom_dossier` = :T1_chp_nom_dossier) \r\nORDER BY `T0`.`chx_parent_dossier` ASC, `T0`.`chp_nom_dossier` ASC  \r\nLIMIT :quantitee OFFSET :debut \n;",
     "cht_commentaire_requete": "liste des dossiers",
@@ -866,13 +831,6 @@
     "chp_type_requete": "select",
     "che_est_souche_requete": 0,
     "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_requete`),\n      champ(`T0`,`cht_commentaire_requete`),\n      champ(`T0`,`chp_type_requete`),\n      champ(`T0`,`cht_rev_requete`),\n      champ(`T0`,`cht_sql_requete`),\n      champ(`T0`,`cht_matrice_requete`),\n      champ(`T0`,`che_est_souche_requete`),\n      champ(`T0`,`chp_table_reference_requete`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chp_table_reference_requete`),:T0_chp_table_reference_requete),egal(champ(`T0`,`che_est_souche_requete`),:T0_che_est_souche_requete))\n   )\n)  "
-  },
-  "392": {
-    "cht_sql_requete": "UPDATE b1.tbl_projets SET \r\n   `chi_id_projet` = :n_chi_id_projet , \r\n   `chp_nom_projet` = :n_chp_nom_projet\nWHERE `chi_id_projet` = :c_chi_id_projet ;",
-    "cht_commentaire_requete": null,
-    "chp_type_requete": "requete_manuelle",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chi_id_projet`),:n_chi_id_projet)\n      affecte(champ(`chp_nom_projet`),:n_chp_nom_projet)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n)              "
   },
   "393": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_projet`\n FROM b1.tbl_projets T0 ORDER BY  T0.chi_id_projet DESC  LIMIT 1 OFFSET 0 \n;",

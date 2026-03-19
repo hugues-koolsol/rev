@@ -1654,13 +1654,60 @@ class x_ecran_concevoir_une_requete1{
           var tableau1=this.__gi1.__rev1.txt_en_tableau(rev_texte);
           var matriceFonction=functionToArray2(tableau1.__xva,true,false,'');
         */
+        let nom_des_bases=[];
         var matriceFonction=this.__gi1.__rev1.rev_tm( rev_texte );
         if(matriceFonction.__xst === __xsu){
             var obj2=this.__gi1.__rev1.matrice_vers_source_rev1( matriceFonction.__xva , 0 , true , 1 );
             if(obj2.__xst === __xsu){
                 rev_texte=obj2.__xva;
+                let matrice_requete=matriceFonction.__xva;
+                
+                /*
+                  les requetes select peuvent être multibase 
+                  ( select * from b1.tbl_dans_b1 T0 , b2.tbl_dans_b1 T1 WHERE  T0.id = T1.id )
+                  il faut le détecter
+                */
+                
+                let lmr01=matrice_requete.length;
+                for(let i=1 ; i < lmr01 ; i=matrice_requete[i][12]){
+                    if(matrice_requete[i][1]==='sélectionner' && matrice_requete[i][2]==='f' ){
+                        for(let j=i+1 ; j < lmr01 ; j=matrice_requete[j][12]){
+                            if(matrice_requete[j][1]==='provenance' && matrice_requete[j][2]==='f' ){
+                                for(let k=j+1 ; k < lmr01 ; k=matrice_requete[k][12]){
+                                    if(( matrice_requete[k][1]==='table_reference' || matrice_requete[k][1]==='jointure_gauche' || matrice_requete[k][1]==='jointure_croisée' ) && matrice_requete[k][2]==='f' ){
+                                        for(let l=k+1 ; l < lmr01 ; l=matrice_requete[l][12]){
+                                            if(matrice_requete[l][1]==='source' && matrice_requete[l][2]==='f' ){
+                                                for(let m=l+1 ; m < lmr01 ; m=matrice_requete[m][12]){
+                                                    if(matrice_requete[m][1]==='nom_de_la_table' && matrice_requete[m][2]==='f' ){
+                                                        for(let n=m+1 ; n < lmr01 ; n=matrice_requete[n][12]){
+                                                            if(matrice_requete[n][1]==='base' && matrice_requete[n][2]==='f'  && matrice_requete[n][8]=== 1  && matrice_requete[n+1][2]=== 'c' ){
+                                                                let trouvé=false;
+                                                                for(let zz in nom_des_bases){
+                                                                    if(matrice_requete[n+1][1]===nom_des_bases[zz]){
+                                                                        trouve=true;
+                                                                        break;
+                                                                    }
+                                                                }
+                                                                if(trouvé === false){
+                                                                    nom_des_bases.push(matrice_requete[n+1][1])
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
+
+
+
         if(this.#obj_webs.type_de_requete === 'requete_manuelle'){
             if(rev_initial === null){
                 if(this.#globale_rev_requete === ''){
@@ -1720,10 +1767,11 @@ class x_ecran_concevoir_une_requete1{
         if(this.#obj_webs.type_de_requete === 'insert' && this.#obj_webs.insert_brut === 1){
             liste_des_meta+='insert_brut(1)';
         }
-        if((this.#obj_webs.type_de_requete === 'insert'
+        if(((this.#obj_webs.type_de_requete === 'insert'
                    || this.#obj_webs.type_de_requete === 'select'
                    || this.#obj_webs.type_de_requete === 'liste_ecran')
                && this.#obj_webs.inclure_le_prefixe_de_la_base_devant_la_table === 1
+               )|| nom_des_bases.length>1
         ){
             liste_des_meta+='inclure_le_prefixe_de_la_base_devant_la_table(1)';
         }

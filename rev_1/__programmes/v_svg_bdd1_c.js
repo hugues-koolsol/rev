@@ -3100,13 +3100,25 @@ class v_svg_bdd1{
         if(id_de_la_zone !== ''){
             let nom_de_la_table=document.getElementById( id_de_la_zone ).value;
             try{
-                document.getElementById( 'vv_distinction_pour_liste' ).value='liste des ' + nom_de_la_table.substr( 4 );
+                if(nom_de_la_table.substr(3,1)=== '_'){
+                    document.getElementById( 'vv_distinction_pour_liste' ).value='liste des ' + nom_de_la_table.substr( 4 );
+                }else{
+                    document.getElementById( 'vv_distinction_pour_liste' ).value='liste des ' + nom_de_la_table;
+                }
             } catch {}
             try{
-                document.getElementById( 'vv_distinction_pour_isad' ).value=masculin_feminin + nom_de_la_table.substr( 4 , nom_de_la_table.length - 5 );
+                if(nom_de_la_table.substr(3,1)=== '_'){
+                    document.getElementById( 'vv_distinction_pour_isad' ).value=masculin_feminin + nom_de_la_table.substr( 4 , nom_de_la_table.length - 5 );
+                }else{
+                    document.getElementById( 'vv_distinction_pour_isad' ).value=masculin_feminin + nom_de_la_table.substr( 0 , nom_de_la_table.length - 1 );
+                }
             } catch {}
             try{
-                document.getElementById( 'vv_permet_la_gestion_de' ).value=nom_de_la_table.substr( 4 , nom_de_la_table.length - 5 );
+                if(nom_de_la_table.substr(3,1)=== '_'){
+                    document.getElementById( 'vv_permet_la_gestion_de' ).value=nom_de_la_table.substr( 4 , nom_de_la_table.length - 5 );
+                }else{
+                    document.getElementById( 'vv_permet_la_gestion_de' ).value=nom_de_la_table.substr( 0 , nom_de_la_table.length - 1 );
+                }
             } catch {}
         }
         return({"__xst" : __xsu});

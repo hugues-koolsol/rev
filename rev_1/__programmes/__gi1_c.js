@@ -1349,10 +1349,9 @@ class __gi1{
             vv_supprimer_les_messages.style.position='sticky';
             vv_supprimer_les_messages.style.top='0';
             let t='';
-            let le_svg_masquer='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35 0.6077  70 65.3923"><g fill="none" fill-rule="evenodd"><path fill="#FF0000" d=" M 17 39 C 11 39 5 43 4 49 C 1 48 -2 48 -5 49 C -6 43 -11 39 -18 39 C -25 39 -31 45 -31 52 C -31 60 -25 66 -18 66 C -11 66 -5 60 -4 53 C -3 53 0 51 4 53 C 4 60 10 66 17 66 C 25 66 31 60 31 52 C 31 45 25 39 17 39 Z M -18 43 C -12 43 -8 47 -8 52 C -8 58 -12 62 -18 62 C -23 62 -27 58 -27 52 C -27 47 -23 43 -18 43 Z M 17 43 C 23 43 27 47 27 52 C 27 58 23 62 17 62 C 12 62 8 58 8 52 C 8 47 12 43 17 43 Z M 35 31 H -35 V 35 H 35 V 31 Z M 13 3 C 12 1 12 0 9 1 L 0 4 L 0 4 L -9 1 C -11 0 -12 1 -13 3 L -22 27 H 23  L 13 3 Z"></path></g></svg>';
             t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__gi1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
             t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__gi1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + this.les_svg.retrecir + '</div>';
-            t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__gi1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + le_svg_masquer + '</div>';
+            t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__gi1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
             vv_supprimer_les_messages.innerHTML=t;
             document.getElementById( 'vv_messages' ).insertBefore( vv_supprimer_les_messages , document.getElementById( 'vv_messages' ).firstChild );
             this.ajoute_les_evenements_aux_boutons();
@@ -1449,7 +1448,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=le_message_du_serveur.__xva[xva];
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1458,7 +1457,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=document.getElementById( valeur_de_champ ).value;
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1467,7 +1466,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=valeur_constante;
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1475,7 +1474,7 @@ class __gi1{
             try{
                 document.getElementById( id ).value=valeur_constante;
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1483,7 +1482,7 @@ class __gi1{
             try{
                 document.getElementById( id ).style[nom_du_style]=document.getElementById( valeur_de_champ ).value + dimension;
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1497,7 +1496,7 @@ class __gi1{
             try{
                 document.getElementById( id ).classList.remove( nom_de_la_classe );
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1513,7 +1512,7 @@ class __gi1{
                     } catch {}
                 }
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1521,7 +1520,7 @@ class __gi1{
             console.log( 'Aucune action pour la matrice\n' , 'background:yellow;color:yellow;' , mat );
             /*
               debugger
-              this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + __gi1.nl2()});
+              this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + this.nl2()});
               this.affiche_les_messages();
               return {__xst:__xer};
             */
@@ -1594,7 +1593,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=le_message_du_serveur.__xva[xva];
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1603,7 +1602,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=document.getElementById( valeur_de_champ ).value;
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1612,7 +1611,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=valeur_constante;
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1620,7 +1619,7 @@ class __gi1{
             try{
                 document.getElementById( id ).value=valeur_constante;
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1628,7 +1627,7 @@ class __gi1{
             try{
                 document.getElementById( id ).style[nom_du_style]=document.getElementById( valeur_de_champ ).value + dimension;
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1638,7 +1637,7 @@ class __gi1{
             }catch(e){
                 console.log( '%cla zone ' + id + ' n\'a pa élé trouvée' , 'background:yellow;' );
                 /*
-                  this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + __gi1.nl2(e)});
+                  this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + this.nl2(e)});
                   this.affiche_les_messages();
                   return {__xst:__xer};
                 */
@@ -1652,7 +1651,7 @@ class __gi1{
                     } catch {}
                 }
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1669,7 +1668,7 @@ class __gi1{
                     } catch {}
                 }
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1677,12 +1676,28 @@ class __gi1{
             console.log( 'Aucune action pour la matrice\n' , 'background:yellow;color:yellow;' , mat );
             /*
               debugger
-              this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + __gi1.nl2()});
+              this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + this.nl2()});
               this.affiche_les_messages();
               return {__xst:__xer};
             */
         }
         return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    exemple_de_message( mat , d){
+        let numero=0;     
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'numero' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i+1][2] === 'c'){
+                numero=parseInt( mat[i+1][1] , 10);
+            }
+        }
+        numero=( numero>=0 && numero<=4) ? numero  : 0;
+        this.ajoute_message( {"__xst" : numero ,"__xme" : 'exemple de message ' + numero + ' ' + parseInt( performance.now(),10 ) } );
+        this.affiche_les_messages();
+        return({__xst : __xsu});
     }
     /*
       =============================================================================================================
@@ -1701,9 +1716,14 @@ class __gi1{
         t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='<img src="./f0?n0=1x1_blanc_2.png" style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='</div>';
-        t+='<div style="display:flex;">\r\n';
+        t+='<div>\r\n'; //  style="display:flex;"
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
-            t+='this.stockage_local[\'parametres\'][\'--bidon\'].valeur ' + i + '<br />';
+            t+='<span>&nbsp;bidon=' + i + '</span><br />';
+            if( i === 20 ){
+                for(let j=0 ; j <= 4 ; j++){
+                    t+='<div class="rev_bouton yy__'+j+'" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero('+j+'))))" title="exemple de message">exemple de message '+j+'</div><br />';
+                }
+            }
         }
         t+='</div>\r\n';
         /* t+='<input type="text" />'; */
@@ -3383,7 +3403,8 @@ class __gi1{
         "televerser" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"> <g transform="translate(-50 -50)" stroke-linejoin="miter"  stroke-linecap="square">  <path d=" M 8 8 L 78 8 L 93 23  L 93 92 L 8 92 L 8 8" style="stroke:rgb(0, 0, 0);fill:gray;stroke-width:6;fill-opacity:1;"></path>  <path d="M 20 13 L 20 16 " style="stroke:#424242;fill:dimgray;stroke-width:7;"></path>  <path  d="M 34 13 L 34 33 l 38 0 l 0 -20 l -38 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 22 44 L 22 87 l 56 0 l 0 -43 l -56 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 65 17L 65 29" style="stroke:#424242;fill:dimgray;stroke-width:8;"></path>  <path d="M 86 85L 86 85" style="stroke:lightgrey;fill:lightgrey;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 24 85L 76 85" style="stroke:red;fill:lightgrey;stroke-width:9;stroke-opacity:1;"></path>  <path d="M 29 50 L 72 50 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 61 L 72 61 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 72 L 72 72 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path> </g> <path d=" M -50 -50 L 50 -50 l 0 100 l -100 0 l 0 -100 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path> <path d=" M 0 -32  C 0 -25 0 19 0 30 L 18 9 H -18 L 0 30" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:yellow;fill:yellow;stroke-width:10;"></path></svg>' ,
         "recharger_la_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 255, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M 38 10 A 40 39 0 1 1 38 -10 L 21 -17  L 38 -10 L 38 -31" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:10;"></path></svg>' ,
         "voir" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -8 10 C 2 0 -23 -35 -38 -20 C -57 0 -19 20 -8 10 " stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d=" M 8 10 C 18 20 59 0 38 -20  C 23 -35 -2 0 8 10" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><circle cx="-17" cy="-2" r="6" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle><circle cx="17" cy="-1" r="6" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle><path d=" M -41 -34  C -34 -44 -8 -39 -5 -24" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d=" M 10 -30 C 17 -34 33 -34 44 -30 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path></svg>' ,
-        "calendrier" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -40 -40 L 40 -40 l 0 80 l -80 0 v -80 m 0 20  h 80" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d="  m -17 -6   l 4 0   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 9 0   h 4 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;"></path><path d=" M -10 -30  H 6" stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -15 -45 V -42  M 15 -45 V -42" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:10;"></path></svg>'
+        "calendrier" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -40 -40 L 40 -40 l 0 80 l -80 0 v -80 m 0 20  h 80" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d="  m -17 -6   l 4 0   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 9 0   h 4 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;"></path><path d=" M -10 -30  H 6" stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -15 -45 V -42  M 15 -45 V -42" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:10;"></path></svg>' ,
+        "masquer" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g fill="none" fill-rule="evenodd"><path fill="#FF0000" d="M 22 5   C 14 5 6 10 5 17     C 1 16 -3 16 -6 17     C -8 10 -14 5 -23 5     C -32 5 -40 12 -40 21     C -40 31 -32 39 -23 39     C -14 39 -6 31 -5 22     C -4 22 0 20 5 22     C 5 31 13 39 22 39     C 32 39 40 31 40 21     C 40 12 32 5 22 5     Z M -23 10   C -15 10 -10 15 -10 21     C -10 29 -15 34 -23 34     C -30 34 -35 29 -35 21     C -35 15 -30 10 -23 10     Z M 22 10   C 30 10 35 15 35 21     C 35 29 30 34 22 34     C 15 34 10 29 10 21     C 10 15 15 10 22 10     Z M 45 -6   H -45       V -1       H 45       V -6       Z M 17 -41   C 15 -44 15 -45 12 -44  L 0 -40L 0 -40L -12 -44   C -14 -45 -15 -44 -17 -41  L -28 -11   H 30    L 17 -41   Z "></path></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>'
     };
 }
 /* __gi0 permet de fermer une sous fenetre */

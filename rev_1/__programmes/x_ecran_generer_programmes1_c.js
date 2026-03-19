@@ -34,6 +34,7 @@ class x_ecran_generer_programmes1{
     #arbre={};
     #_developpement1=null;
     __gi1=null;
+    chi_id_projet=0;
     /*
       =============================================================================================================
     */
@@ -116,7 +117,7 @@ class x_ecran_generer_programmes1{
             for(let i in liste_des_champs_insert){
                 let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_insert[i].nom_du_champ];
                 liste_des_champs_insert[i].champ_dans_la_base=champ_dans_la_base;
-                if(champ_dans_la_base.nom_du_champ === 'chp_nom_genre'){
+                if(champ_dans_la_base.nom_du_champ === 'fld_id_commercial_client' ){
                     /* debugger */
                 }
                 if(champ_est_libelle_lien === null){
@@ -374,12 +375,18 @@ class x_ecran_generer_programmes1{
             let el=les_jointures[i];
             if(el.alias1 === el.alias_de_la_table){
                 let libelle_lien=[];
-                for(j in this.#obj_bdd[el.nom_de_la_table]['champs']){
-                    if(this.#obj_bdd[el.nom_de_la_table]['champs'][j].meta.est_libelle_lien === '1'){
-                        libelle_lien.push( j );
+                if(!this.#obj_bdd.hasOwnProperty(el.nom_de_la_table)){
+                    /*
+                      hugues à voir pour les liens externes
+                    */
+                }else{
+                    for(j in this.#obj_bdd[el.nom_de_la_table]['champs']){
+                        if(this.#obj_bdd[el.nom_de_la_table]['champs'][j].meta.est_libelle_lien === '1'){
+                            libelle_lien.push( j );
+                        }
                     }
+                    les_jointures[i].libelles_lien=libelle_lien;
                 }
-                les_jointures[i].libelles_lien=libelle_lien;
             }
         }
         for(let ind_update in liste_des_champs_update){
@@ -1175,7 +1182,14 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='\r\n';
             src_serveur_js2+='\r\n';
-            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            if(this.chi_id_projet<=2){
+                src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            }else{
+                src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
+            }
+            /*
+              src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            */
             src_serveur_js2+='        /* sélection du champ à modifier */\r\n';
             src_serveur_js2+='        let criteres_select_' + ref_select + '={\r\n';
             src_serveur_js2+='            "T0_' + champ_primaire + '" : form[\'' + champ_primaire + '\'],\n';
@@ -1321,7 +1335,14 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        if(__db1 === null){\r\n';
-            src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            if(this.chi_id_projet<=2){
+                src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            }else{
+                src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
+            }
+            /*
+              src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            */
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let tt' + ref_select + '=await this.__gi1.sql_iii( ' + ref_select + ' , {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , donnees_retournees , __db1 );\r\n';
             src_serveur_js2+='        if(tt' + ref_select + '[__xst] !== __xsu){\r\n';
@@ -1771,7 +1792,14 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            }\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='\r\n';
-            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            if(this.chi_id_projet<=2){
+                src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            }else{
+                src_serveur_js2+='       let __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
+            }
+            /*
+              src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            */
             src_serveur_js2+='        let criteres_' + ref_select + '={\r\n';
             src_serveur_js2+='             /*  */\r\n';
             src_serveur_js2+='            "T0_' + champ_primaire + '" : ' + champ_primaire + '\r\n';
@@ -1962,7 +1990,14 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            }\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='\r\n';
-            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            if(this.chi_id_projet<=2){
+                src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            }else{
+                src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
+            }
+            /*
+              src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            */
             src_serveur_js2+='        let criteres_' + ref_select + '={\r\n';
             src_serveur_js2+='             /*  */\r\n';
             src_serveur_js2+='            "T0_' + champ_primaire + '" : ' + champ_primaire + '\r\n';
@@ -2002,7 +2037,14 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            this.__gi1.__xsi[__xer].push( this.__gi1.nl2() );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            if(this.chi_id_projet<=2){
+                src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            }else{
+                src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
+            }
+            /*
+              src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            */
             src_serveur_js2+='        let critere_' + ref_select + '={\r\n';
             src_serveur_js2+='                \'T0_' + champ_primaire + '\' : ' + champ_primaire + ',\r\n';
             /* compléments sélectionner */
@@ -2056,7 +2098,14 @@ class x_ecran_generer_programmes1{
                 }
             }
             src_serveur_js2+='        /**/\r\n';
-            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            if(this.chi_id_projet<=2){
+                src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            }else{
+                src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
+            }
+            /* 
+              src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            */
             src_serveur_js2+='        let criteres_' + ref_select + '={/**/\r\n';
             src_serveur_js2+='                \'T0_' + champ_primaire + '\' : form[\'' + champ_primaire + '\'],\r\n';
             /* compléments sélectionner */
@@ -2146,7 +2195,14 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            this.__gi1.__xsi[__xer].push( this.__gi1.nl2() );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            if(this.chi_id_projet<=2){
+                src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            }else{
+                src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
+            }
+            /* 
+              src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            */
             src_serveur_js2+='        let critere_' + ref_select + '={\r\n';
             src_serveur_js2+='                \'T0_' + champ_primaire + '\' : ' + champ_primaire + ',\r\n';
             /* compléments sélectionner */
@@ -2329,8 +2385,27 @@ class x_ecran_generer_programmes1{
             if(liste_des_conversions.length > 0){
                 src_serveur_js2+='        /* conversion des données numériques début */\r\n';
                 for( let i=0 ; i < liste_des_conversions.length ; i++ ){
+                 
+                 
+                    let reference_externe_base='';
+                    let reference_externe_table='';
+                    let reference_externe_champ='';
+                    if(liste_des_conversions[i].meta.hasOwnProperty('reference_externe_base')){
+                        reference_externe_base=parseInt( liste_des_conversions[i].meta.reference_externe_base , 10);
+                        reference_externe_table=liste_des_conversions[i].meta.reference_externe_table;
+                        reference_externe_champ=liste_des_conversions[i].meta.reference_externe_champ;
+                        /*
+                          this.#arbre
+                        */
+                    }
                     let valeur_par_defaut='null';
-                    if(liste_des_conversions[i].espece_du_champ === 'INTEGER'){
+                    if(reference_externe_base===1 && reference_externe_table === 'tbl_utilisateurs' && reference_externe_champ === 'chi_id_utilisateur' ){
+                        /*
+                          pas de convertion pour ce champ
+                        */
+                        src_serveur_js2+='        /* pas de convertion pour le champ ' + liste_des_conversions[i].nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
+
+                    }else if(liste_des_conversions[i].espece_du_champ === 'INTEGER'){
                         if(liste_des_conversions[i].genre_objet_du_champ.che_est_obligatoire_genre === 1){
                             if(liste_des_conversions[i].a_une_valeur_par_defaut === 1){
                                 if(liste_des_conversions[i].la_valeur_par_defaut_est_caractere === 1){
@@ -2417,7 +2492,14 @@ class x_ecran_generer_programmes1{
                     }
                 }
             }
-            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            if(this.chi_id_projet<=2){
+                src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            }else{
+                src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
+            }
+            /*
+              src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            */
             src_serveur_js2+='        let __tac=await this.tests_avant_creer(mat , d , donnees_recues , donnees_retournees , options_generales,form,__db1);\r\n';
             src_serveur_js2+='\r\n';
             src_serveur_js2+='\r\n';
@@ -2431,7 +2513,22 @@ class x_ecran_generer_programmes1{
             for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
                 let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
-                if(obj_champ.genre_objet_du_champ
+                if(nom_du_champ === 'fld_id_commercial_client'){
+                }
+                let reference_externe_base='';
+                let reference_externe_table='';
+                let reference_externe_champ='';
+                if(obj_champ.meta.hasOwnProperty('reference_externe_base')){
+                    reference_externe_base=parseInt( obj_champ.meta.reference_externe_base , 10);
+                    reference_externe_table=obj_champ.meta.reference_externe_table;
+                    reference_externe_champ=obj_champ.meta.reference_externe_champ;
+                    /*
+                      this.#arbre
+                    */
+                }
+                if(reference_externe_base===1 && reference_externe_table==='tbl_utilisateurs' && reference_externe_champ === 'chi_id_utilisateur'){
+                    src_serveur_js2+='                    \'' + nom_du_champ + '\' : donnees_retournees.chi_id_utilisateur ,\n';
+                }else if(obj_champ.genre_objet_du_champ
                        && (obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                            || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
                            || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1)
@@ -2501,7 +2598,14 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='          par :\r\n';
             src_serveur_js2+='          pm1( m1(n1(\'+this.moi+\'),f1(page_creer1())) )\r\n';
             src_serveur_js2+='        */\r\n';
-            src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            if(this.chi_id_projet<=2){
+                src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            }else{
+                src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
+            }
+            /*
+              src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            */
             src_serveur_js2+='        donnees_retournees[__xva][\'nouveau_numero_projet\']=nouveau_numero_projet;\r\n';
             src_serveur_js2+='        donnees_retournees.__xst=__xsu;\r\n';
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
@@ -2541,7 +2645,7 @@ class x_ecran_generer_programmes1{
                   ici, il faut prendre les champs en session
                 */
                 for(let i in liste_des_champs_condition_liste_ecran){
-                    console.log( liste_des_champs_condition_liste_ecran[i] );
+                    /* console.log( liste_des_champs_condition_liste_ecran[i] ); */
                     if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base === null){
                         /*
                           hugues
@@ -2574,7 +2678,11 @@ class x_ecran_generer_programmes1{
                 this.__gi1.affiche_les_messages();
             }
             src_serveur_js2+='        if(__db1===null){\r\n';
-            src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            if(this.chi_id_projet<=2){
+                src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+            }else{
+                src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10) + ' , donnees_retournees , options_generales );\r\n';
+            }
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='\r\n';
             src_serveur_js2+='        let tt' + ref_liste_ecran + '=await this.__gi1.sql_iii( ' + ref_liste_ecran + ' , criteres_' + ref_liste_ecran + ' , donnees_retournees , __db1 );\r\n';
@@ -3813,9 +3921,16 @@ class x_ecran_generer_programmes1{
                                                           this.__gi1.__liste_des_genres
                                                         */
                                                         /* console.log('mat2[o][1]='+nom_du_champ+ ' : ' +mat2[o+1][1]); */
+                                                    }else if(mat2[o][1] === 'reference_externe' && mat2[o][2] === 'f' && mat2[o][8] === 3){
+                                                         this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1]+'_base']=mat2[o+1][1]
+                                                         this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1]+'_table']=mat2[o+2][1]
+                                                         this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1]+'_champ']=mat2[o+3][1]
+                                                         debugger 
                                                     }else{
                                                         if(mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                                             this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1]]=mat2[o + 1][1];
+                                                        }else{
+                                                            console.log('%c meta "' + mat2[o][1] + '" non pris en compte ' , 'background:yellow;color:red;')
                                                         }
                                                     }
                                                 }
@@ -4013,6 +4128,7 @@ class x_ecran_generer_programmes1{
       =============================================================================================================
     */
     selectionner_une_table( mat , d ){
+
         document.getElementById( 'contenu_generer_le_programme' ).innerHTML='';
         let zone_select='';
         let l01=mat.length;
@@ -4089,6 +4205,7 @@ class x_ecran_generer_programmes1{
         o1+=' id="vv_les_bases" ';
         o1+=' data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases))))">';
         o1+='<option  value="0" ' + (0 === chi_id_basedd ? ( ' selected ' ) : ( '' )) + '>sélectionnez une base </option>';
+        this.chi_id_projet=le_message_du_serveur.chi_id_projet;
         for(let i in le_message_du_serveur.__xva.les_bases_du_projet){
             if(le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === null){
             }else{

@@ -477,7 +477,10 @@ class w_rev_vers_sql1{
                                                             if(options.au_format_programme === true){
                                                                 liste_des_tables_php+=CRLF + '       LEFT JOIN `\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
-                                                                    liste_des_tables_js+=CRLF + '       LEFT JOIN `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    /*
+                                                                      liste_des_tables_js+=CRLF + '       LEFT JOIN `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    */
+                                                                    liste_des_tables_js+=CRLF + '       LEFT JOIN b' + nom_de_la_base + '.' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }else{
                                                                     liste_des_tables_js+=CRLF + '       LEFT JOIN ' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }
@@ -485,7 +488,10 @@ class w_rev_vers_sql1{
                                                             }else{
                                                                 liste_des_tables_php+=CRLF + ' LEFT JOIN ' + (nom_de_la_base !== '' ? ( nom_de_la_base + '.' ) : ( '' )) + '' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
-                                                                    liste_des_tables_js+=CRLF + ' LEFT JOIN `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    /*
+                                                                      liste_des_tables_js+=CRLF + ' LEFT JOIN `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    */
+                                                                    liste_des_tables_js+=CRLF + ' LEFT JOIN b' + nom_de_la_base + '.' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }else{
                                                                     liste_des_tables_js+=CRLF + ' LEFT JOIN ' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }
@@ -494,7 +500,10 @@ class w_rev_vers_sql1{
                                                             if(options.au_format_programme === true){
                                                                 liste_des_tables_php+='      FROM `\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
-                                                                    liste_des_tables_js+='      FROM  `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    /*
+                                                                      liste_des_tables_js+='      FROM  `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    */
+                                                                    liste_des_tables_js+='      FROM  b' + nom_de_la_base + '.' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }else{
                                                                     liste_des_tables_js+='      FROM  ' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }
@@ -503,7 +512,10 @@ class w_rev_vers_sql1{
                                                             }else{
                                                                 liste_des_tables_php+=' FROM ' + (nom_de_la_base !== '' ? ( nom_de_la_base + '.' ) : ( '' )) + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
-                                                                    liste_des_tables_js+=' FROM `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    /*
+                                                                      liste_des_tables_js+=' FROM `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    */
+                                                                    liste_des_tables_js+=' FROM b' + nom_de_la_base + '.' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }else{
                                                                     liste_des_tables_js+=' FROM ' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }
@@ -512,7 +524,10 @@ class w_rev_vers_sql1{
                                                             if(options.au_format_programme === true){
                                                                 liste_des_tables_php+='      , ' + CRLF + '           `\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
-                                                                    liste_des_tables_js+='      , ' + CRLF + '           `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    /*
+                                                                      liste_des_tables_js+='      , ' + CRLF + '           `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    */
+                                                                    liste_des_tables_js+='      , ' + CRLF + '           b' + nom_de_la_base + '.' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }else{
                                                                     liste_des_tables_js+='      , ' + CRLF + '           ' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }
@@ -520,7 +535,10 @@ class w_rev_vers_sql1{
                                                             }else{
                                                                 liste_des_tables_php+=' , ' + CRLF + '      ' + (nom_de_la_base !== '' ? ( nom_de_la_base + '.' ) : ( '' )) + '' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
-                                                                    liste_des_tables_js+=' , ' + CRLF + '      `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    /*
+                                                                      liste_des_tables_js+=' , ' + CRLF + '      `+((par[\'b' + nom_de_la_base + '\']?\'`\'+par[\'b' + nom_de_la_base + '\']+\'`.\':\'\'))+`' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
+                                                                    */
+                                                                    liste_des_tables_js+=' , ' + CRLF + '      b' + nom_de_la_base + '.' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }else{
                                                                     liste_des_tables_js+=' , ' + CRLF + '      ' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }
@@ -1064,10 +1082,13 @@ class w_rev_vers_sql1{
                                         t+=la_valeur.replace( /\n/g , ' ' ).replace( /\r/g , ' ' ) + ';';
                                         options.debut_sql_pour_insert='INSERT ' + ignorer + ' INTO ';
                                         options.debut_sql_pour_insert_js='INSERT ' + ignorer + ' INTO ';
+                                        /*# plus la peine de faire ceci, in insert ne se fait que sur une table 
                                         if(nom_de_la_base !== ''){
+                                            
                                             options.debut_sql_pour_insert+='`\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.';
                                             options.debut_sql_pour_insert_js+='`\'+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+\'`';
                                         }
+                                        */
                                         options.debut_sql_pour_insert+='`' + nom_de_la_table + '`';
                                         options.debut_sql_pour_insert_js+='`' + nom_de_la_table + '`';
                                         if(liste_des_champs_pour_insert !== ''){
@@ -1099,12 +1120,13 @@ class w_rev_vers_sql1{
                                         t_js+='INSERT ' + ignorer + '' + (commentaire_general !== '' ? ( '/* ' + commentaire_general + ' */ ' ) : ( '' )) + 'INTO ';
                                         if(nom_de_la_base !== ''){
                                             t+='`\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.';
+                                            /*# plus la peine de faire ceci, in insert ne se fait que sur une table 
                                             if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
                                                 t_js+='`+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+`';
                                             }else{
                                                 t_js+='';
                                             }
-                                            /* $GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD] */
+                                            */
                                         }
                                         t+='`' + nom_de_la_table + '`(';
                                         t+='' + liste_des_champs_pour_insert + CRLF + ') VALUES (' + liste_des_valeurs_pour_insert + CRLF + ');';
@@ -1112,11 +1134,13 @@ class w_rev_vers_sql1{
                                         options.debut_sql_pour_insert_js='INSERT ' + ignorer + ' INTO ';
                                         if(nom_de_la_base !== ''){
                                             options.debut_sql_pour_insert+='`\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.';
+                                            /* plus la peine de faire ceci, in insert ne se fait que sur une table 
                                             if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
                                                 options.debut_sql_pour_insert_js+='`+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+`';
                                             }else{
                                                 options.debut_sql_pour_insert_js+='';
                                             }
+                                            */
                                             /* $GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD] */
                                         }
                                         options.debut_sql_pour_insert+='`' + nom_de_la_table + '`(' + liste_des_champs_pour_insert + CRLF + ') VALUES ';

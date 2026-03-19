@@ -232,6 +232,48 @@ class _rev_de_sql_vers_js1{
       =============================================================================================================
     */
     transformer_requete_en_fonction_js1( type_de_requete , obj3 , id_requete_en_base , matrice_requete ){
+     
+        let nom_des_bases=[];
+        let lmr01=matrice_requete.length;
+        for(let i=1 ; i < lmr01 ; i=matrice_requete[i][12]){
+            if(matrice_requete[i][1]==='sélectionner' && matrice_requete[i][2]==='f' ){
+                for(let j=i+1 ; j < lmr01 ; j=matrice_requete[j][12]){
+                    if(matrice_requete[j][1]==='provenance' && matrice_requete[j][2]==='f' ){
+                        for(let k=j+1 ; k < lmr01 ; k=matrice_requete[k][12]){
+                            if(( matrice_requete[k][1]==='table_reference' || matrice_requete[k][1]==='jointure_gauche' || matrice_requete[k][1]==='jointure_croisée' ) && matrice_requete[k][2]==='f' ){
+                                for(let l=k+1 ; l < lmr01 ; l=matrice_requete[l][12]){
+                                    if(matrice_requete[l][1]==='source' && matrice_requete[l][2]==='f' ){
+                                        for(let m=l+1 ; m < lmr01 ; m=matrice_requete[m][12]){
+                                            if(matrice_requete[m][1]==='nom_de_la_table' && matrice_requete[m][2]==='f' ){
+                                                for(let n=m+1 ; n < lmr01 ; n=matrice_requete[n][12]){
+                                                    if(matrice_requete[n][1]==='base' && matrice_requete[n][2]==='f'  && matrice_requete[n][8]=== 1  && matrice_requete[n+1][2]=== 'c' ){
+                                                        let trouvé=false;
+                                                        for(let zz in nom_des_bases){
+                                                            if(matrice_requete[n+1][1]===nom_des_bases[zz]){
+                                                                trouve=true;
+                                                                break;
+                                                            }
+                                                        }
+                                                        if(trouvé === false){
+                                                            nom_des_bases.push(matrice_requete[n+1][1])
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(nom_des_bases.length>1){
+        }
+        
+        
+        
         let t='';
         t+='const __xer=0;\r\n';
         t+='const __xsu=1;\r\n';
