@@ -76,6 +76,14 @@ class v_svg_bdd1{
     #liste_des_meta_table=[
         /*  */
         {
+                "nom_du_meta_table" : 'est_table_virtuelle' ,
+                "exemple" : '"1 pour oui"' ,
+                "zone_html2" : 'text' ,
+                "valeur_normale_pour_meta" : null ,
+                "valeur_brut_pour_meta" : null ,
+                "doit_etre_dans_meta" : false
+            },
+        {
                 "nom_du_meta_table" : 'permet_la_gestion_de' ,
                 "exemple" : '"cheval"' ,
                 "zone_html2" : 'text' ,
@@ -122,7 +130,7 @@ class v_svg_bdd1{
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
                 "doit_etre_dans_meta" : false
-            }
+            },
     ];
     __m_rev_vers_sql1=null;
     #date_derniere_sauvegarde=performance.now();
@@ -288,7 +296,7 @@ class v_svg_bdd1{
         let ancien_nom='';
         let nouveau_nom='';
         let id_svg_rectangle_de_la_table=0;
-        for( let i=k + 1 ; i < mat.length ; i=mat[i][12] ){
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
             if(mat[i][1] === 'id_svg_du_texte' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_svg_du_texte=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -604,6 +612,7 @@ class v_svg_bdd1{
       function ajouter_un_champ_de_modale
     */
     ajouter_un_champ_de_modale( mat ){
+
         /* id_svg_conteneur_table , nom_de_la_table ]{ */
         let id_svg_conteneur_table=0;
         let nom_de_la_table='';
@@ -1295,7 +1304,6 @@ class v_svg_bdd1{
         let reference_amont_ou_aval=false;
         if(base_mere !== ''){
             /* le lien est sur une autre base */
-            debugger
             a['reference_externe']='(' + base_mere + ' , \'' + table_mere + '\' , \'' + champ_pere + '\')';
          
         }else{
@@ -2138,8 +2146,6 @@ class v_svg_bdd1{
                         base_mere=tab1[i+1][1]
                         table_mere=tab1[i+2][1]
                         champ_pere=tab1[i+3][1]
-                        
-                        debugger
                     }
                     
                 }
@@ -3647,7 +3653,7 @@ class v_svg_bdd1{
         switch (contexte){
             case 'ordonner_les_champs' : this.apres_trier_les_champs1( mat , d );
                 break;
-            case 'apres_renommer_une_table1' : debugger;
+            case 'apres_renommer_une_table1' : ;
                 this.apres_renommer_une_table1( mat , d );
                 break;
             case 'renommer_en_bdd_un_champ' : this.apres_renommer_un_champs1( mat , d );
@@ -3898,41 +3904,44 @@ class v_svg_bdd1{
         }else{
             nom_de_la_table='zzz';
         }
-        let nom_du_champ_actuel=document.getElementById( nom_zone_du_champ ).value;
-        if(nom_du_champ_actuel === 'chi_'){
-            let typologie=document.getElementById( nom_zone ).value;
-            let a=document.getElementById( nom_zone_du_champ );
-            switch (typologie){
-                case 'chi' :
-                    a.value='chi_id_' + nom_de_la_table;
-                    a.focus();
-                    a.selectionStart=4;
-                    a.selectionEnd=6;
-                    break;
-                    
-                case 'chp' :
-                    a.value='chp_nom_' + nom_de_la_table;
-                    a.focus();
-                    a.selectionStart=4;
-                    a.selectionEnd=7;
-                    break;
-                    
-                case 'chx' :
-                    a.value='chx_parent_' + nom_de_la_table;
-                    a.focus();
-                    a.selectionStart=4;
-                    a.selectionEnd=10;
-                    break;
-                    
-                default:
-                    a.value=typologie + '_yyy_' + nom_de_la_table;
-                    a.focus();
-                    a.selectionStart=4;
-                    a.selectionEnd=7;
-                    break;
-                    
+        debugger
+        try{
+            let nom_du_champ_actuel=document.getElementById( nom_zone_du_champ ).value;
+            if(nom_du_champ_actuel === 'chi_'){
+                let typologie=document.getElementById( nom_zone ).value;
+                let a=document.getElementById( nom_zone_du_champ );
+                switch (typologie){
+                    case 'chi' :
+                        a.value='chi_id_' + nom_de_la_table;
+                        a.focus();
+                        a.selectionStart=4;
+                        a.selectionEnd=6;
+                        break;
+                        
+                    case 'chp' :
+                        a.value='chp_nom_' + nom_de_la_table;
+                        a.focus();
+                        a.selectionStart=4;
+                        a.selectionEnd=7;
+                        break;
+                        
+                    case 'chx' :
+                        a.value='chx_parent_' + nom_de_la_table;
+                        a.focus();
+                        a.selectionStart=4;
+                        a.selectionEnd=10;
+                        break;
+                        
+                    default:
+                        a.value=typologie + '_yyy_' + nom_de_la_table;
+                        a.focus();
+                        a.selectionStart=4;
+                        a.selectionEnd=7;
+                        break;
+                        
+                }
             }
-        }
+        }catch{}
         return({"__xst" : __xsu});
     }
     /*
@@ -4247,15 +4256,10 @@ class v_svg_bdd1{
         t+='<br />est_libelle_lien : <input id="est_libelle_lien" type="checkbox" />';
         t+='<br />';
         var cmd='';
-        cmd+='m1(';
-        cmd+=' n1(' + this.moi + '),';
-        cmd+=' f1(';
-        cmd+='  ajouter_un_champ_de_modale(';
-        cmd+='   id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
-        cmd+='   nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
-        cmd+='  )';
-        cmd+=' )';
-        cmd+=')';
+        cmd+='m1(n1(' + this.moi + '),f1(ajouter_un_champ_de_modale(';
+        cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
+        cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
+        cmd+=')))';
         t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >ajouter ce champ à la table du schéma</div>';
         /*
           =====================================================================================================
@@ -4739,6 +4743,7 @@ class v_svg_bdd1{
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_la_table].proprietes.meta_rev_de_la_table=nouveau_meta.texte;
         this.__gi1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
