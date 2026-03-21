@@ -79,22 +79,16 @@ class x_ecran_rev_vers_sql1{
         }
         return({"__xst" : __xer});
     }
-    
     /*
       =============================================================================================================
     */
     sql2_vers_rev( mat , d ){
-
         let options_pour_le_parseur={
             "dialect" : "sqlite" ,
-             /* These are optional: */
-            "includeSpaces" : true ,
-             /* Adds spaces/tabs */
-            "includeNewlines" : true ,
-             /* Adds newlines */
-            "includeComments" : true ,
-             /* Adds comments */
-            "includeRange" : true ,
+            "includeSpaces" :  /* These are optional: */true ,
+            "includeNewlines" :  /* Adds spaces/tabs */true ,
+            "includeComments" :  /* Adds newlines */true ,
+            "includeRange" :  /* Adds comments */true ,
              /* Adds source code location data */
             };
         let l01=mat.length;
@@ -121,7 +115,6 @@ class x_ecran_rev_vers_sql1{
             let t1=document.getElementById( zone_source );
             let t2=document.getElementById( zone_resultat );
             t2.innerHTML='';
-
             if(t1 && t2){
                 if(mettre_en_stockage_local === 1){
                     this.sauvegarder_contenu_en_localstorage( 'ecran_rev_vers_sql1' , t1.value );
@@ -154,7 +147,6 @@ class x_ecran_rev_vers_sql1{
                         return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : e1.message} ));
                     }
                 }
-
                 let obj1=this.#parseur_mysql.traite_ast_de_sql_parseur_cst( ast_de_sql , {} );
                 if(obj1.__xst === __xsu){
                     let tt=this.__gi1.__rev1.rev_tcm( obj1.__xva );
@@ -173,12 +165,10 @@ class x_ecran_rev_vers_sql1{
                 }else{
                     return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + '<br />erreur lors de la convertion du sql'} ));
                 }
-
             }
-            
         }
         return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + '<br />erreur lors de la convertion du sql'} ));
-    }    
+    }
     /*
       =============================================================================================================
     */

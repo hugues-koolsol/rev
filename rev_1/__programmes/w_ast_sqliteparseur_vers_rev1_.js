@@ -818,8 +818,7 @@ class w_ast_sqliteparseur_vers_rev1{
                                && element.definition[i].definition[j].variant === "primary key"
                         ){
                             t+=' , primary_key()';
-                            les_meta=les_meta.replace(/typologie\(che\)/,'typologie(chi)')
-                            
+                            les_meta=les_meta.replace( /typologie\(che\)/ , 'typologie(chi)' );
                         }
                         if(element.definition[i].definition[j].type === "constraint"
                                && element.definition[i].definition[j].hasOwnProperty( 'autoIncrement' )
@@ -830,7 +829,9 @@ class w_ast_sqliteparseur_vers_rev1{
                         if(element.definition[i].definition[j].type === "constraint" && element.definition[i].definition[j].variant === "not null"){
                             t+=' , non_nulle()';
                             est_non_nulle=true;
-                            if(element.definition[i].datatype.variant.toLowerCase() === 'varchar' || element.definition[i].datatype.variant.toLowerCase() === 'char'){
+                            if(element.definition[i].datatype.variant.toLowerCase() === 'varchar'
+                                   || element.definition[i].datatype.variant.toLowerCase() === 'char'
+                            ){
                                 les_meta+=' genre(17) ';
                             }
                         }
@@ -853,7 +854,9 @@ class w_ast_sqliteparseur_vers_rev1{
                                                || element.definition[i].datatype.variant.toLowerCase() === 'decimal'
                                         ){
                                             les_meta+=' genre(7) ';
-                                        }else if(element.definition[i].datatype.variant.toLowerCase() === 'varchar' || element.definition[i].datatype.variant.toLowerCase() === 'char'){
+                                        }else if(element.definition[i].datatype.variant.toLowerCase() === 'varchar'
+                                               || element.definition[i].datatype.variant.toLowerCase() === 'char'
+                                        ){
                                             les_meta+=' genre(12) ';
                                         }
                                     }else{
@@ -894,8 +897,7 @@ class w_ast_sqliteparseur_vers_rev1{
                                || element.definition[i].datatype.variant.toLowerCase() === 'int'
                                || element.definition[i].datatype.variant.toLowerCase() === 'tinyint'
                                || element.definition[i].datatype.variant.toLowerCase() === 'bigint'
-                               || element.definition[i].datatype.variant.toLowerCase() === 'decimal'
-                              )
+                               || element.definition[i].datatype.variant.toLowerCase() === 'decimal')
                     ){
                         if(est_non_nulle === false){
                             les_meta+=' genre(9) ';
@@ -909,10 +911,10 @@ class w_ast_sqliteparseur_vers_rev1{
                             les_meta+=' genre(6) ';
                         }
                     }else if(element.definition[i].datatype.variant && element.definition[i].datatype.variant.toLowerCase() === 'date'){
-                            les_meta+=' genre(22) ';
+                        les_meta+=' genre(22) ';
                     }else{
-                        console.log('%c type non pris en compte "' + element.definition[i].datatype.variant + '"','color:yellow;background-color:red;')
-//                        debugger;
+                        console.log( '%c type non pris en compte "' + element.definition[i].datatype.variant + '"' , 'color:yellow;background-color:red;' );
+                        /* debugger; */
                     }
                 }
                 t+='meta(' + les_meta + ')';

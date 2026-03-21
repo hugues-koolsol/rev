@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1048','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1050','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -2955,7 +2955,6 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`chp_texte_tache`),
       champ(`T0`,`chp_priorite_tache`),
       champ(`T1`,`chp_nom_de_connexion_utilisateur`),
-      champ(`T0`,`chd_une_heure_tache`)
    ),
    provenance(
       table_reference(
@@ -2970,8 +2969,7 @@ LIMIT :quantitee OFFSET :debut
       et(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache))
    )
 )  ','SELECT 
-`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-`T0`.`chd_une_heure_tache`
+`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
  FROM b1.tbl_taches T0
  LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
 
@@ -7785,5 +7783,91 @@ SELECT
            ORDER BY  `T0`.`numero_de_ligne` DESC
         LIMIT 40 OFFSET 0        ','99','2026-03-20 12:56:57.095','2026-03-20 12:39:52.718','0','00_00_00'),
 ('420','1','fulltext search','2','2026-03-20 13:33:16.370','2026-03-20 13:33:16.370','0','00_00_00'),
-('421','1','créer une table virtuelle','1','2026-03-20 16:11:07.508','2026-03-20 16:11:03.443','0','00_00_00');
+('421','1','créer une table virtuelle','1','2026-03-20 16:11:07.508','2026-03-20 16:11:03.443','0','00_00_00'),
+('422','1','insérer dans la table virtuelle
+
+
+INSERT INTO rpps_fts (
+ numero_de_ligne , 
+ libelle_civilite_d_exercice , 
+ libelle_civilite , 
+ nom_d_exercice , 
+ prenom_d_exercice , 
+ libelle_profession , 
+ code_postal__coord__structure_ , 
+ libelle_savoir_faire , 
+ libelle_voie__coord__structure_ 
+) SELECT  numero_de_ligne , 
+ libelle_civilite_d_exercice , 
+ libelle_civilite , 
+ nom_d_exercice , 
+ prenom_d_exercice , 
+ libelle_profession , 
+ code_postal__coord__structure_ , 
+ libelle_savoir_faire , 
+ libelle_voie__coord__structure_ 
+FROM rpps;
+
+/*
+
+
+*/
+
+CREATE TRIGGER delete_rpps_fts AFTER DELETE ON rpps BEGIN
+DELETE FROM rpps_fts 
+WHERE
+    numero_de_ligne = OLD.numero_de_ligne ;
+END;
+
+
+
+DROP TRIGGER update_rpps_fts;
+
+CREATE TRIGGER update_rpps_fts AFTER UPDATE ON rpps BEGIN
+UPDATE rpps_fts SET  
+    libelle_civilite_d_exercice     = NEW.libelle_civilite_d_exercice , 
+    libelle_civilite                = NEW.libelle_civilite, 
+    nom_d_exercice                  = NEW.nom_d_exercice , 
+    prenom_d_exercice               = NEW.prenom_d_exercice , 
+    libelle_profession              = NEW.libelle_profession , 
+    code_postal__coord__structure_  = NEW.code_postal__coord__structure_ , 
+    libelle_savoir_faire            = NEW.libelle_savoir_faire , 
+    libelle_voie__coord__structure_ = NEW.libelle_voie__coord__structure_ 
+WHERE
+    numero_de_ligne = NEW.numero_de_ligne ;
+END;
+
+
+DROP TRIGGER insert_rpps_fts;
+
+CREATE TRIGGER insert_rpps_fts AFTER INSERT ON rpps BEGIN
+INSERT INTO rpps_fts ( 
+ numero_de_ligne , 
+ libelle_civilite_d_exercice , 
+ libelle_civilite , 
+ nom_d_exercice , 
+ prenom_d_exercice , 
+ libelle_profession , 
+ code_postal__coord__structure_ , 
+ libelle_savoir_faire , 
+ libelle_voie__coord__structure_ 
+) VALUES (
+ NEW.numero_de_ligne , 
+ NEW.libelle_civilite_d_exercice , 
+ NEW.libelle_civilite , 
+ NEW.nom_d_exercice , 
+ NEW.prenom_d_exercice , 
+ NEW.libelle_profession , 
+ NEW.code_postal__coord__structure_ , 
+ NEW.libelle_savoir_faire , 
+ NEW.libelle_voie__coord__structure_ 
+);
+END;
+
+select count(*) FROM rpps;
+
+29 secondes pour 2 227 484
+
+
+','0','2026-03-21 15:21:18.872','2026-03-21 10:39:43.949','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

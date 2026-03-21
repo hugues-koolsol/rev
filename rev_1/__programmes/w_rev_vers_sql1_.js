@@ -1083,11 +1083,11 @@ class w_rev_vers_sql1{
                                         options.debut_sql_pour_insert='INSERT ' + ignorer + ' INTO ';
                                         options.debut_sql_pour_insert_js='INSERT ' + ignorer + ' INTO ';
                                         /*# plus la peine de faire ceci, in insert ne se fait que sur une table 
-                                        if(nom_de_la_base !== ''){
-                                            
-                                            options.debut_sql_pour_insert+='`\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.';
-                                            options.debut_sql_pour_insert_js+='`\'+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+\'`';
-                                        }
+                                          if(nom_de_la_base !== ''){
+                                              
+                                              options.debut_sql_pour_insert+='`\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.';
+                                              options.debut_sql_pour_insert_js+='`\'+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+\'`';
+                                          }
                                         */
                                         options.debut_sql_pour_insert+='`' + nom_de_la_table + '`';
                                         options.debut_sql_pour_insert_js+='`' + nom_de_la_table + '`';
@@ -1121,11 +1121,11 @@ class w_rev_vers_sql1{
                                         if(nom_de_la_base !== ''){
                                             t+='`\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.';
                                             /*# plus la peine de faire ceci, in insert ne se fait que sur une table 
-                                            if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
-                                                t_js+='`+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+`';
-                                            }else{
-                                                t_js+='';
-                                            }
+                                              if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
+                                                  t_js+='`+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+`';
+                                              }else{
+                                                  t_js+='';
+                                              }
                                             */
                                         }
                                         t+='`' + nom_de_la_table + '`(';
@@ -1134,12 +1134,13 @@ class w_rev_vers_sql1{
                                         options.debut_sql_pour_insert_js='INSERT ' + ignorer + ' INTO ';
                                         if(nom_de_la_base !== ''){
                                             options.debut_sql_pour_insert+='`\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.';
-                                            /* plus la peine de faire ceci, in insert ne se fait que sur une table 
-                                            if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
-                                                options.debut_sql_pour_insert_js+='`+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+`';
-                                            }else{
-                                                options.debut_sql_pour_insert_js+='';
-                                            }
+                                            /*
+                                              plus la peine de faire ceci, in insert ne se fait que sur une table 
+                                              if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
+                                              options.debut_sql_pour_insert_js+='`+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+`';
+                                              }else{
+                                              options.debut_sql_pour_insert_js+='';
+                                              }
                                             */
                                             /* $GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD] */
                                         }
@@ -1526,25 +1527,27 @@ class w_rev_vers_sql1{
                         */
                         let definition_sql_du_champ2='';
                         definition_sql_du_champ2+=' `' + variables_pour_tableau_tables.nom_du_champ + '`';
-                        definition_sql_du_champ2+=' ' + variables_pour_tableau_tables.espece_du_champ.toUpperCase();
-                        if(variables_pour_tableau_tables.longueur_du_champ !== ''){
-                            definition_sql_du_champ2+='(' + variables_pour_tableau_tables.longueur_du_champ + ')';
-                        }
-                        if(variables_pour_tableau_tables.cle_primaire){
-                            definition_sql_du_champ2+=' PRIMARY KEY';
-                        }
-                        if(variables_pour_tableau_tables.non_nulle){
-                            definition_sql_du_champ2+=' NOT NULL';
-                        }
-                        if(variables_pour_tableau_tables.reference.est_defini){
-                            definition_sql_du_champ2+=' REFERENCES ' + variables_pour_tableau_tables.reference.table + '(' + variables_pour_tableau_tables.reference.champ + ')  ON UPDATE CASCADE';
-                        }
-                        if(variables_pour_tableau_tables.a_une_valeur_par_defaut === true){
-                            definition_sql_du_champ2+=' DEFAULT ';
-                            if(variables_pour_tableau_tables.la_valeur_par_defaut_est_caractere === true){
-                                definition_sql_du_champ2+=' \'' + variables_pour_tableau_tables.valeur_par_defaut.replace( /\\\'/ , '\'\'' ) + '\'';
-                            }else{
-                                definition_sql_du_champ2+=' ' + variables_pour_tableau_tables.valeur_par_defaut + '';
+                        if(options.est_table_virtuelle !== 1){
+                            definition_sql_du_champ2+=' ' + variables_pour_tableau_tables.espece_du_champ.toUpperCase();
+                            if(variables_pour_tableau_tables.longueur_du_champ !== ''){
+                                definition_sql_du_champ2+='(' + variables_pour_tableau_tables.longueur_du_champ + ')';
+                            }
+                            if(variables_pour_tableau_tables.cle_primaire){
+                                definition_sql_du_champ2+=' PRIMARY KEY';
+                            }
+                            if(variables_pour_tableau_tables.non_nulle){
+                                definition_sql_du_champ2+=' NOT NULL';
+                            }
+                            if(variables_pour_tableau_tables.reference.est_defini){
+                                definition_sql_du_champ2+=' REFERENCES ' + variables_pour_tableau_tables.reference.table + '(' + variables_pour_tableau_tables.reference.champ + ')  ON UPDATE CASCADE';
+                            }
+                            if(variables_pour_tableau_tables.a_une_valeur_par_defaut === true){
+                                definition_sql_du_champ2+=' DEFAULT ';
+                                if(variables_pour_tableau_tables.la_valeur_par_defaut_est_caractere === true){
+                                    definition_sql_du_champ2+=' \'' + variables_pour_tableau_tables.valeur_par_defaut.replace( /\\\'/ , '\'\'' ) + '\'';
+                                }else{
+                                    definition_sql_du_champ2+=' ' + variables_pour_tableau_tables.valeur_par_defaut + '';
+                                }
                             }
                         }
                         /*
@@ -1558,7 +1561,11 @@ class w_rev_vers_sql1{
                             t+=',';
                             t+=this.__gi1.__rev1.resps( niveau );
                         }
-                        t+=meta_du_champ + definition_sql_du_champ2;
+                        if(options.est_table_virtuelle !== 1){
+                            t+=meta_du_champ + definition_sql_du_champ2;
+                        }else{
+                            t+=definition_sql_du_champ2;
+                        }
                         if(options.hasOwnProperty( 'dans_definition_de_champ' ) && options.dans_definition_de_champ === true){
                             options.tableau_tables_champs[options.tableau_tables_champs.length - 1].champs.push( variables_pour_tableau_tables );
                         }
@@ -1572,6 +1579,16 @@ class w_rev_vers_sql1{
                         break;
                         
                     case 'créer_table' :
+                        options.est_table_virtuelle=0;
+                        for( let l=i + 1 ; l < this.#l02 ; l=this.#tb[l][12] ){
+                            if(this.#tb[l][1] === 'meta' && this.#tb[l][2] === 'f'){
+                                for( let m=l + 1 ; m < this.#l02 ; m=this.#tb[m][12] ){
+                                    if(this.#tb[m][1] === 'est_table_virtuelle' && this.#tb[m][2] === 'f' && this.#tb[m][8] === 1 && this.#tb[m + 1][2] === 'c'){
+                                        options.est_table_virtuelle=parseInt( this.#tb[m + 1][1] , 10 );
+                                    }
+                                }
+                            }
+                        }
                         var engine='';
                         var auto_increment='';
                         var charset='';
@@ -1625,7 +1642,7 @@ class w_rev_vers_sql1{
                                 obj=this.#rev_sql1( j , niveau + 1 , options );
                                 if(obj.__xst === __xsu){
                                     /*
-                                      on supprime la virgule
+                                      on supprime la première virgule
                                     */
                                     definitions_des_champs=obj.__xva.substr( 1 );
                                 }else{
@@ -1664,17 +1681,24 @@ class w_rev_vers_sql1{
                             chaine_meta_table+=') */';
                             donnees_table.chaine_meta=chaine_meta_table;
                         }
+                        let _virtuelle_='';
+                        let _using_virtuelle_='';
+                        if(options.est_table_virtuelle === 1){
+                            _virtuelle_=' VIRTUAL ';
+                            _using_virtuelle_=' USING fts5 ';
+                            complementaires='';
+                        }
                         if(definitions_des_champs === ''){
                             t+='/*\r\n';
                             t+='-- ========== ATTENTION : TABLE SANS CHAMP ============================================================\r\n';
                             t+='-- \n';
-                            t+='CREATE TABLE ' + if_exists + ' `' + nom_table_en_cours + '`(\r\n';
+                            t+='CREATE ' + _virtuelle_ + 'TABLE ' + if_exists + ' `' + nom_table_en_cours + '`' + _using_virtuelle_ + '(\r\n';
                             t+=')' + complementaires + ';\r\n';
                             t+='*/\r\n';
                             t+=chaine_meta_table;
                             t+='\r\n-- ========== ATTENTION : TABLE SANS CHAMP ============================================================\r\n';
                         }else{
-                            t+='CREATE TABLE ' + if_exists + ' `' + nom_table_en_cours + '`(';
+                            t+='CREATE ' + _virtuelle_ + 'TABLE ' + if_exists + ' `' + nom_table_en_cours + '`' + _using_virtuelle_ + '(';
                             t+=this.__gi1.__rev1.resps( niveau );
                             t+=chaine_meta_table;
                             t+=definitions_des_champs;
@@ -2315,7 +2339,8 @@ class w_rev_vers_sql1{
             "liste_des_tris" : '' ,
             "liste_des_limites" : '' ,
             "liste_des_limites_js" : '' ,
-            "liste_des_limites_php" : ''
+            "liste_des_limites_php" : '' ,
+            "est_table_virtuelle" : 0
         };
         obj=this.#rev_sql1( indice_de_debut , 0 , options );
         if(obj.__xst === __xsu){

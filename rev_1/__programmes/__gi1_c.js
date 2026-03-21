@@ -104,8 +104,8 @@ class __gi1{
                     try{
                         if( typeof e.target['close'] === 'function'){
                             try{
-                                e.target.removeAttribute('style');
-                            }catch{}
+                                e.target.removeAttribute( 'style' );
+                            } catch {}
                             e.target.close();
                         }
                     } catch {}
@@ -294,7 +294,7 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    __xac( mat , d , données , evenement=null){
+    __xac( mat , d , données , evenement=null ){
         if(!Array.isArray( mat )){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : 'oops, on n\'a pas reçu une matrice dans __gi1.__xac() ' + this.nl2()} );
             this.affiche_les_messages();
@@ -1686,18 +1686,18 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    exemple_de_message( mat , d){
-        let numero=0;     
+    exemple_de_message( mat , d ){
+        let numero=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'numero' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i+1][2] === 'c'){
-                numero=parseInt( mat[i+1][1] , 10);
+            if(mat[i][1] === 'numero' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                numero=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        numero=( numero>=0 && numero<=4) ? numero  : 0;
-        this.ajoute_message( {"__xst" : numero ,"__xme" : 'exemple de message ' + numero + ' ' + parseInt( performance.now(),10 ) } );
+        numero=numero >= 0 && numero <= 4 ? ( numero ) : ( 0 );
+        this.ajoute_message( {"__xst" : numero ,"__xme" : 'exemple de message ' + numero + ' ' + parseInt( performance.now() , 10 )} );
         this.affiche_les_messages();
-        return({__xst : __xsu});
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -1716,12 +1716,13 @@ class __gi1{
         t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='<img src="./f0?n0=1x1_blanc_2.png" style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='</div>';
-        t+='<div>\r\n'; //  style="display:flex;"
+        t+='<div>\r\n';
+        /* style="display:flex;" */
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
             t+='<span>&nbsp;bidon=' + i + '</span><br />';
-            if( i === 20 ){
-                for(let j=0 ; j <= 4 ; j++){
-                    t+='<div class="rev_bouton yy__'+j+'" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero('+j+'))))" title="exemple de message">exemple de message '+j+'</div><br />';
+            if(i === 20){
+                for( let j=0 ; j <= 4 ; j++ ){
+                    t+='<div class="rev_bouton yy__' + j + '" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
                 }
             }
         }
@@ -3275,8 +3276,8 @@ class __gi1{
     */
     fermer_la_sous_fenetre( mat , d ){
         try{
-            this.#la_sous_fenetre1.removeAttribute('style');
-        }catch{}
+            this.#la_sous_fenetre1.removeAttribute( 'style' );
+        } catch {}
         this.#la_sous_fenetre1.close();
         return({"__xst" : __xsu});
     }

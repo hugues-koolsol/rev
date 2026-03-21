@@ -189,7 +189,6 @@ class _connexion1{
            chp_mot_de_passe_utilisateur = '$2a$10$ZUwPUmwknnqKX6R4hxSpouG0TagvEgBPo7Q8SydizbMRitXDxk/Fy'
           WHERE chi_id_utilisateur = 1;
         */
-        
         let tt101=await this.__gi1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 

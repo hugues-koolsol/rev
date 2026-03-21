@@ -281,16 +281,15 @@ class __fnt1{
             }
         }
         if(zone_select === 'vv_option_heure'){
-           let val=parseInt(document.getElementById(zone_select).value,10)
-           this.maj_heure( nom_du_champ , val );
+            let val=parseInt( document.getElementById( zone_select ).value , 10 );
+            this.maj_heure( nom_du_champ , val );
         }else if(zone_select === 'vv_option_minute'){
-           let val=parseInt(document.getElementById(zone_select).value,10)
-           this.maj_minute( nom_du_champ , val );
+            let val=parseInt( document.getElementById( zone_select ).value , 10 );
+            this.maj_minute( nom_du_champ , val );
         }else if(zone_select === 'vv_option_seconde'){
-           let val=parseInt(document.getElementById(zone_select).value,10)
-           this.maj_seconde( nom_du_champ , val );
+            let val=parseInt( document.getElementById( zone_select ).value , 10 );
+            this.maj_seconde( nom_du_champ , val );
         }
-        
     }
     /*
       =============================================================================================================
@@ -311,7 +310,7 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    maj_heure( nom_du_champ , valeur){
+    maj_heure( nom_du_champ , valeur ){
         let heure_a_afficher=valeur;
         let minute_a_afficher=0;
         let seconde_a_afficher=0;
@@ -358,7 +357,7 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    maj_minute( nom_du_champ , valeur){
+    maj_minute( nom_du_champ , valeur ){
         let heure_a_afficher=0;
         let minute_a_afficher=valeur;
         let seconde_a_afficher=0;
@@ -404,8 +403,7 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    maj_seconde( nom_du_champ , valeur){
-        
+    maj_seconde( nom_du_champ , valeur ){
         let heure_a_afficher=0;
         let minute_a_afficher=0;
         let seconde_a_afficher=valeur;
@@ -461,7 +459,7 @@ class __fnt1{
         o1+='<tr style="box-shadow:none;">';
         /* dropdown hh */
         o1+='<td style="border-color:hotpink;" colspan="2">';
-        o1+='<select id="vv_option_heure" data-rev_change="m1( n1('+this.moi+'), f1(maj_drop_horloge(zone_select(vv_option_heure),nom_du_champ('+nom_du_champ+'))))">';
+        o1+='<select id="vv_option_heure" data-rev_change="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_heure),nom_du_champ(' + nom_du_champ + '))))">';
         for( let i=0 ; i < 24 ; i++ ){
             let sele1='';
             if(heure_a_afficher === i){
@@ -473,7 +471,7 @@ class __fnt1{
         o1+='</td>';
         /* dropdown mm */
         o1+='<td style="border-color:hotpink;" colspan="2">';
-        o1+='<select id="vv_option_minute" data-rev_change="m1( n1('+this.moi+'), f1(maj_drop_horloge(zone_select(vv_option_minute),nom_du_champ('+nom_du_champ+'))))">';
+        o1+='<select id="vv_option_minute" data-rev_change="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_minute),nom_du_champ(' + nom_du_champ + '))))">';
         for( let i=0 ; i < 60 ; i++ ){
             let sele1='';
             if(minute_a_afficher === i){
@@ -485,7 +483,7 @@ class __fnt1{
         o1+='</td>';
         /* dropdown ss */
         o1+='<td style="border-color:hotpink;" colspan="2">';
-        o1+='<select  id="vv_option_seconde" data-rev_change="m1( n1('+this.moi+'), f1(maj_drop_horloge(zone_select(vv_option_seconde),nom_du_champ('+nom_du_champ+'))))">';
+        o1+='<select  id="vv_option_seconde" data-rev_change="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_seconde),nom_du_champ(' + nom_du_champ + '))))">';
         for( let i=0 ; i < 60 ; i++ ){
             let sele1='';
             if(seconde_a_afficher === i){
@@ -621,7 +619,6 @@ class __fnt1{
         }else if(option === 4){
             this.__gi1.fermer_la_sous_fenetre();
             return({"__xst" : __xsu});
-            
         }
         document.getElementById( nom_du_champ ).value=t;
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
@@ -1712,7 +1709,7 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    remplacer_la_valeur_dans_la_zone(mat , d){
+    remplacer_la_valeur_dans_la_zone( mat , d ){
         let l01=mat.length;
         let zone_source='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1724,11 +1721,10 @@ class __fnt1{
         }
         if(zone_source !== ''){
             let aa=document.getElementById( zone_source ).value;
-            let cc=document.getElementById('vv_valeur_a_remplacer').value;
+            let cc=document.getElementById( 'vv_valeur_a_remplacer' ).value;
             if(cc !== ''){
-             
-                let dd=document.getElementById('vv_valeur_remplacante').value;
-                let b=new RegExp( cc , 'g' )
+                let dd=document.getElementById( 'vv_valeur_remplacante' ).value;
+                let b=new RegExp( cc , 'g' );
                 aa=aa.replace( b , dd );
                 document.getElementById( zone_source ).value=aa;
                 this.__gi1.fermer_la_sous_fenetre();
@@ -1740,7 +1736,7 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    remplacer_dans_la_zone( mat , d){
+    remplacer_dans_la_zone( mat , d ){
         let l01=mat.length;
         let zone_source='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1751,7 +1747,6 @@ class __fnt1{
             }
         }
         if(zone_source !== ''){
-         
             this.__gi1.zone_d_edition_en_cours=zone_source;
             let aa=document.getElementById( zone_source );
             let bb='';
@@ -1759,7 +1754,6 @@ class __fnt1{
             }else{
                 bb=document.getElementById( zone_source ).value.substr( aa.selectionStart , aa.selectionEnd - aa.selectionStart );
             }
-            
             let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
             let o1='';
             o1+='<h1>remplacer</h1>';
@@ -1767,9 +1761,8 @@ class __fnt1{
             o1+='<br />';
             o1+='<input id="vv_valeur_remplacante" value="" />';
             o1+='<br />';
-            o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_la_valeur_dans_la_zone(zone_source('+zone_source+'))))" title="remplacer_dans_la_zone" >remplacer</div>\r\n';
+            o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_la_valeur_dans_la_zone(zone_source(' + zone_source + '))))" title="remplacer_dans_la_zone" >remplacer</div>\r\n';
             vv_sous_fenetre1.innerHTML=o1;
-            
             vv_sous_fenetre1.showModal();
             this.__gi1.ajoute_les_evenements_aux_boutons( null );
             return({"__xst" : __xsu});
@@ -2108,7 +2101,6 @@ class __fnt1{
         o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__gi1.les_svg.retrecir + '</div>\r\n';
         o1+=' <div class="rev_b_svg yy__xsi_2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__gi1.les_svg.ensemble_vide + '</div>\r\n';
         o1+=' <div class="rev_bouton yy__xsi_1 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >remplacer</div>\r\n';
-        
         return o1;
     }
     /*

@@ -120,7 +120,6 @@ class taches1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        
         /* conversion des données numériques début */
         fo1['chi_id_tache']=fo1['chi_id_tache'] === '' ? ( null ) : ( parseInt( fo1['chi_id_tache'] , 10 ) );
         fo1['chp_priorite_tache']=fo1['chp_priorite_tache'] === '' ? ( null ) : ( parseInt( fo1['chp_priorite_tache'] , 10 ) );

@@ -1,3 +1,4 @@
+import {v_svg_bdd1} from '/f0?n0=v_svg_bdd1_c.js';
 class bdds1{
     /*
       ref_select=371
@@ -128,7 +129,7 @@ class bdds1{
                 return(parseInt( x , 10 ));} );
             for( let i=0 ; i < tab_bases_a_editer.length ; i++ ){
                 setTimeout( () => {
-                        this.editer_le_schema( null , null , tab_bases_a_editer[i] );} , 200 );
+                        this.editer_le_schema( null , null , tab_bases_a_editer[i] );} , 50 );
                 window.location.hash='#m1(n1(' + this.moi + '),f1(editer_les_schemas(les_bases_a_editer(\'' + tab_bases_a_editer[0] + '\'))))';
             }
         }

@@ -90,7 +90,7 @@ class genres1{
         let __db_autre=await this.__gi1.ouvrir_bdd( chi_id_projet , donnees_retournees , options_generales );
         let tt345=await this.__gi1.sql_iii(
         /*sql_inclure_deb*/ /*#
-        INSERT INTO `tbl_genres`(
+        INSERT INTO b1.`tbl_genres`(
             `chi_id_genre` , 
             `chp_nom_genre` , 
             `che_ordre_genre` , 
@@ -111,6 +111,7 @@ class genres1{
             `che_est_tsc_genre` , 
             `chd__dtc_genre` , 
             `chd__dtm_genre` , 
+            `che__nur_genre` , 
             `che_est_session_genre` , 
             `chp_nom_en_session_genre` , 
             `che_est_positif_genre` , 
@@ -136,6 +137,7 @@ class genres1{
             :che_est_tsc_genre , 
             :chd__dtc_genre , 
             :chd__dtm_genre , 
+            :che__nur_genre , 
             :che_est_session_genre , 
             :chp_nom_en_session_genre , 
             :che_est_positif_genre , 

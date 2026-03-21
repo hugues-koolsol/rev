@@ -130,7 +130,7 @@ class v_svg_bdd1{
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
                 "doit_etre_dans_meta" : false
-            },
+            }
     ];
     __m_rev_vers_sql1=null;
     #date_derniere_sauvegarde=performance.now();
@@ -331,7 +331,6 @@ class v_svg_bdd1{
                 id_svg_rectangle_de_la_table=parseInt( mat[i + 1][1] , 10 );
             }
         }
-
         var nouveau_nom=document.getElementById( 'nouveau_nom' ).value;
         var nom_de_la_table=document.getElementById( 'ancien_nom' ).value;
         id_svg_conteneur_table=parseInt( id_svg_conteneur_table , 10 );
@@ -351,7 +350,7 @@ class v_svg_bdd1{
             if(trouve === false){
                 let source_sql='ALTER TABLE ' + nom_de_la_table + ' RENAME  TO ' + nouveau_nom + '';
                 let cmd='';
-                cmd+='pm1(m1(n1(' + this.moi +'),f1(executer_sql3(';
+                cmd+='pm1(m1(n1(' + this.moi + '),f1(executer_sql3(';
                 cmd+=' id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + ')';
                 /* ancien maj */
                 cmd+=' contexte(apres_renommer_une_table1)';
@@ -600,7 +599,7 @@ class v_svg_bdd1{
             var a=this.#ajouter_table_a_svg( nom_de_la_table , indice_courant , [20,20] , meta_table );
             var id_svg_conteneur_table=a.id_svg_conteneur_table;
             indice_courant+=2;
-            var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0 );
+            var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0 , false );
             this.__gi1.fermer_la_sous_fenetre();
             this.#dessiner_le_svg();
         }
@@ -612,7 +611,6 @@ class v_svg_bdd1{
       function ajouter_un_champ_de_modale
     */
     ajouter_un_champ_de_modale( mat ){
-
         /* id_svg_conteneur_table , nom_de_la_table ]{ */
         let id_svg_conteneur_table=0;
         let nom_de_la_table='';
@@ -1305,11 +1303,8 @@ class v_svg_bdd1{
         if(base_mere !== ''){
             /* le lien est sur une autre base */
             a['reference_externe']='(' + base_mere + ' , \'' + table_mere + '\' , \'' + champ_pere + '\')';
-         
         }else{
             a['reference_externe']='';
-         
-         
             if(table_mere !== ''){
                 reference_amont_ou_aval=true;
                 if(document.getElementById( 'champ_père' ).value !== ''){
@@ -1392,8 +1387,8 @@ class v_svg_bdd1{
                                 "id_svg_enfant_champ" : id_svg_rectangle_du_champ - 1 ,
                                 "nom_parent_base" : base_mere ,
                                 "nom_parent_table" : table_mere ,
-                                "nom_parent_champ" : champ_pere ,
-                                }
+                                "nom_parent_champ" : champ_pere
+                            }
                         };
                         var d='M 0 0 C 10 0 10 20 20 20';
                         max_id_svg++;
@@ -1475,10 +1470,6 @@ class v_svg_bdd1{
                 }
                 a.proprietes.references='';
             }
-         
-         
-         
-         
         }
         /*
           document.getElementById( 'espece_du_champ' ).value=data_genre.;
@@ -1518,7 +1509,7 @@ class v_svg_bdd1{
             "abrege_du_champ" : document.getElementById( 'meta_modifier__abrege_du_champ' ).value ,
             "typologie" : /* meta_modifier__typologie */document.getElementById( 'chp_prefixe_genre' ).value ,
             "genre" : /* meta_modifier__genre */document.getElementById( 'vv_genre1' ).value ,
-            "reference_externe" : a.reference_externe ,
+            "reference_externe" : a.reference_externe
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ );
         /* meta_modifier__genre */
@@ -1814,20 +1805,14 @@ class v_svg_bdd1{
             document.getElementById( zone_liste_des_champs ).innerHTML='';
             document.getElementById( zone_champ_parent ).value='';
             if(document.getElementById( zone_select ).value !== ''){
-             
                 let chi_id_base=document.getElementById( zone_select ).options[document.getElementById( zone_select ).selectedIndex].getAttribute( 'data-chi_id_base' );
-                
-                let num_base_en_cours=parseInt( this.#id_bdd_de_la_base_en_cours , 10);
-                let num_base=parseInt(chi_id_base , 10);
+                let num_base_en_cours=parseInt( this.#id_bdd_de_la_base_en_cours , 10 );
+                let num_base=parseInt( chi_id_base , 10 );
                 if(num_base_en_cours === num_base){
-                    document.getElementById('base_mère').value='';
+                    document.getElementById( 'base_mère' ).value='';
                 }else{
-                    document.getElementById('base_mère').value=num_base;
+                    document.getElementById( 'base_mère' ).value=num_base;
                 }
-                
-                
-                
-                
                 let mat1=this.#arbre[chi_id_base].matrice;
                 let sel01='';
                 let l01=mat1.length;
@@ -2066,7 +2051,7 @@ class v_svg_bdd1{
                     }
                 }
             }else if(lst[i].nodeName.toLowerCase() === 'rect' && 'rectangle_de_champ' === lst[i].getAttribute( 'type_element' )){
-                les_meta_rev=lst[i].getAttribute('donnees_rev_du_champ')
+                les_meta_rev=lst[i].getAttribute( 'donnees_rev_du_champ' );
             }
         }
         if(id_element_texte_du_nom_de_champ_svg === 0){
@@ -2129,31 +2114,23 @@ class v_svg_bdd1{
         var a_une_valeur_par_defaut=document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'a_une_valeur_par_defaut' ) === '1';
         var la_valeur_par_defaut_est_caractere=document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'la_valeur_par_defaut_est_caractere' ) === '1';
         var valeur_par_defaut=document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'valeur_par_defaut' );
-        
         var base_mere='';
         var table_mere='';
         var champ_pere='';
-
-        if(les_meta_rev.indexOf('reference_externe(')>=0){
-            let o1=this.__gi1.__rev1.rev_tm(les_meta_rev);
+        if(les_meta_rev.indexOf( 'reference_externe(' ) >= 0){
+            let o1=this.__gi1.__rev1.rev_tm( les_meta_rev );
             if(o1.__xst === __xsu){
                 let tab1=o1.__xva;
                 let l02=tab1.length;
-                for(let i=0 ; i < l02 ; i++ ){
-                 
+                for( let i=0 ; i < l02 ; i++ ){
                     if(tab1[i][1] === 'reference_externe' && tab1[i][2] === 'f' && tab1[i][8] === 3){
-                        
-                        base_mere=tab1[i+1][1]
-                        table_mere=tab1[i+2][1]
-                        champ_pere=tab1[i+3][1]
+                        base_mere=tab1[i + 1][1];
+                        table_mere=tab1[i + 2][1];
+                        champ_pere=tab1[i + 3][1];
                     }
-                    
                 }
             }
-         
         }
-        
-        
         var references=document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'references' );
         if(references !== null && references !== ''){
             references=references.split( ',' );
@@ -2235,20 +2212,22 @@ class v_svg_bdd1{
         t+='<br />base mère : <input id="base_mère" type="text" value="' + base_mere + '" autocapitalize="off" />';
         t+='<br />table mère : <input id="table_mère" type="text" value="' + table_mere + '" autocapitalize="off" />';
         let sel='';
-
-        for( let id_base in this.#arbre){
-            let mat1=this.#arbre[id_base].matrice; // this.#id_bdd_de_la_base_en_cours
+        for(let id_base in this.#arbre){
+            let mat1=this.#arbre[id_base].matrice;
+            /* this.#id_bdd_de_la_base_en_cours */
             l01=mat1.length;
             for( let i=1 ; i < l01 ; i=mat1[i][12] ){
                 if(mat1[i][1] === 'créer_table'){
                     for( let j=i + 1 ; j < l01 ; j=mat1[j][12] ){
                         if(mat1[j][1] === 'nom_de_la_table' && mat1[j][2] === 'f' && mat1[j][8] === 1 && mat1[j + 1][2] === 'c'){
                             sel+='<option ';
-                            sel+=' data-chi_id_base="' + id_base + '" '; // this.#id_bdd_de_la_base_en_cours
+                            sel+=' data-chi_id_base="' + id_base + '" ';
+                            /* this.#id_bdd_de_la_base_en_cours */
                             sel+=' value="' + mat1[j + 1][1] + '"';
                             sel+='' + (table_mere === mat1[j + 1][1] ? ( ' selected="true" ' ) : ( '' )) + '';
                             sel+='>';
-                            sel+='(' + id_base + ')' + mat1[j + 1][1] + ''; // this.#id_bdd_de_la_base_en_cours
+                            sel+='(' + id_base + ')' + mat1[j + 1][1] + '';
+                            /* this.#id_bdd_de_la_base_en_cours */
                             sel+='</option>';
                         }
                     }
@@ -3106,21 +3085,21 @@ class v_svg_bdd1{
         if(id_de_la_zone !== ''){
             let nom_de_la_table=document.getElementById( id_de_la_zone ).value;
             try{
-                if(nom_de_la_table.substr(3,1)=== '_'){
+                if(nom_de_la_table.substr( 3 , 1 ) === '_'){
                     document.getElementById( 'vv_distinction_pour_liste' ).value='liste des ' + nom_de_la_table.substr( 4 );
                 }else{
                     document.getElementById( 'vv_distinction_pour_liste' ).value='liste des ' + nom_de_la_table;
                 }
             } catch {}
             try{
-                if(nom_de_la_table.substr(3,1)=== '_'){
+                if(nom_de_la_table.substr( 3 , 1 ) === '_'){
                     document.getElementById( 'vv_distinction_pour_isad' ).value=masculin_feminin + nom_de_la_table.substr( 4 , nom_de_la_table.length - 5 );
                 }else{
                     document.getElementById( 'vv_distinction_pour_isad' ).value=masculin_feminin + nom_de_la_table.substr( 0 , nom_de_la_table.length - 1 );
                 }
             } catch {}
             try{
-                if(nom_de_la_table.substr(3,1)=== '_'){
+                if(nom_de_la_table.substr( 3 , 1 ) === '_'){
                     document.getElementById( 'vv_permet_la_gestion_de' ).value=nom_de_la_table.substr( 4 , nom_de_la_table.length - 5 );
                 }else{
                     document.getElementById( 'vv_permet_la_gestion_de' ).value=nom_de_la_table.substr( 0 , nom_de_la_table.length - 1 );
@@ -3653,8 +3632,7 @@ class v_svg_bdd1{
         switch (contexte){
             case 'ordonner_les_champs' : this.apres_trier_les_champs1( mat , d );
                 break;
-            case 'apres_renommer_une_table1' : ;
-                this.apres_renommer_une_table1( mat , d );
+            case 'apres_renommer_une_table1' : this.apres_renommer_une_table1( mat , d );
                 break;
             case 'renommer_en_bdd_un_champ' : this.apres_renommer_un_champs1( mat , d );
                 break;
@@ -3904,7 +3882,7 @@ class v_svg_bdd1{
         }else{
             nom_de_la_table='zzz';
         }
-        debugger
+        debugger;
         try{
             let nom_du_champ_actuel=document.getElementById( nom_zone_du_champ ).value;
             if(nom_du_champ_actuel === 'chi_'){
@@ -3941,8 +3919,375 @@ class v_svg_bdd1{
                         
                 }
             }
-        }catch{}
+        } catch {}
         return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    recupere_les_champs_virtuels( mat1 , nom_de_la_table , nom_table_reelle ){
+        let liste_des_champs_de_la_table_virtuelle={};
+        let ordre=0;
+        let l02=mat1.length;
+        for( let i=1 ; i < l02 ; i=mat1[i][12] ){
+            if(mat1[i][1] === 'créer_table' && mat1[i][2] === 'f'){
+                for( let j=i + 1 ; j < l02 ; j=mat1[j][12] ){
+                    if(mat1[j][1] === 'nom_de_la_table' && mat1[j][2] === 'f' && mat1[j][8] === 1 && mat1[j + 1][2] === 'c'){
+                        if(mat1[j + 1][1] === nom_de_la_table){
+                            for( let k=i + 1 ; k < l02 ; k=mat1[k][12] ){
+                                if(mat1[k][1] === 'champs' && mat1[k][2] === 'f'){
+                                    for( let l=k + 1 ; l < l02 ; l=mat1[l][12] ){
+                                        if(mat1[l][1] === 'champ' && mat1[l][2] === 'f'){
+                                            for( let m=l + 1 ; m < l02 ; m=mat1[m][12] ){
+                                                if(mat1[m][1] === 'nom_du_champ' && mat1[m][2] === 'f' && mat1[m][8] === 1 && mat1[m + 1][2] === 'c'){
+                                                    liste_des_champs_de_la_table_virtuelle[mat1[m + 1][1]]={"dans_table_reelle" : false ,"est_primaire" : false ,"ordre" : ordre++};
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        let liste_des_champs_de_la_table_reelle={};
+        for( let i=1 ; i < l02 ; i=mat1[i][12] ){
+            if(mat1[i][1] === 'créer_table' && mat1[i][2] === 'f'){
+                for( let j=i + 1 ; j < l02 ; j=mat1[j][12] ){
+                    if(mat1[j][1] === 'nom_de_la_table' && mat1[j][2] === 'f' && mat1[j][8] === 1 && mat1[j + 1][2] === 'c'){
+                        if(mat1[j + 1][1] === nom_table_reelle){
+                            for( let k=i + 1 ; k < l02 ; k=mat1[k][12] ){
+                                if(mat1[k][1] === 'champs' && mat1[k][2] === 'f'){
+                                    for( let l=k + 1 ; l < l02 ; l=mat1[l][12] ){
+                                        if(mat1[l][1] === 'champ' && mat1[l][2] === 'f'){
+                                            for( let m=l + 1 ; m < l02 ; m=mat1[m][12] ){
+                                                if(mat1[m][1] === 'nom_du_champ' && mat1[m][2] === 'f' && mat1[m][8] === 1 && mat1[m + 1][2] === 'c'){
+                                                    if(liste_des_champs_de_la_table_virtuelle.hasOwnProperty( mat1[m + 1][1] )){
+                                                        liste_des_champs_de_la_table_virtuelle[mat1[m + 1][1]].dans_table_reelle=true;
+                                                        for( let o=l + 1 ; o < l02 ; o=mat1[o][12] ){
+                                                            if(mat1[o][1] === 'primary_key' && mat1[o][2] === 'f' && mat1[o][8] === 1 && mat1[o + 1][2] === 'c'){
+                                                                liste_des_champs_de_la_table_virtuelle[mat1[m + 1][1]].est_primaire=true;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return liste_des_champs_de_la_table_virtuelle;
+    }
+    /*
+      =============================================================================================================
+    */
+    operation_trigger_update_de_la_table_virtuelle( mat , d ){
+        var l01=mat.length;
+        var id_svg_conteneur_table=0;
+        var nom_de_la_table_virtuelle='';
+        var id_bdd_de_la_base_en_cours=0;
+        var operation='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'nom_de_la_table_virtuelle' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_table_virtuelle=mat[i + 1][1];
+            }else if(mat[i][1] === 'operation' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                operation=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(id_bdd_de_la_base_en_cours > 0
+               && nom_de_la_table_virtuelle !== ''
+               && nom_de_la_table_virtuelle.substr( nom_de_la_table_virtuelle.length - 4 , 4 ) === '_fts'
+        ){
+            let obj=this.#creer_rev_de_la_base_a_partir_de_svg( id_bdd_de_la_base_en_cours );
+            if(obj.__xst === __xsu){
+                let objrev=this.__gi1.__rev1.rev_tm( obj.__xva );
+                if(objrev.__xst === __xsu){
+                    let mat1=objrev.__xva;
+                    /*
+                      afr _fts pour nom_de_la_table_virtuelle
+                    */
+                    let nom_table_reelle=nom_de_la_table_virtuelle.substr( 0 , nom_de_la_table_virtuelle.length - 4 );
+                    let liste_des_champs_de_la_table_virtuelle=this.recupere_les_champs_virtuels( mat1 , nom_de_la_table_virtuelle , nom_table_reelle );
+                    /* console.log('liste_des_champs_de_la_table_virtuelle=',liste_des_champs_de_la_table_virtuelle) */
+                    let champ_primaire='';
+                    for(let i in liste_des_champs_de_la_table_virtuelle){
+                        if(liste_des_champs_de_la_table_virtuelle[i].dans_table_reelle === false){
+                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
+                        }
+                        if(liste_des_champs_de_la_table_virtuelle[i].est_primaire === true){
+                            champ_primaire=i;
+                        }
+                    }
+                    if(champ_primaire === ''){
+                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
+                    }
+                    console.log( 'champ_primaire=' + champ_primaire );
+                    let source_sql='';
+                    if(operation === 'creer_trigger_update'){
+                        source_sql+='CREATE TRIGGER update_' + nom_de_la_table_virtuelle + ' AFTER UPDATE ON ' + nom_table_reelle + ' BEGIN  \n';
+                        source_sql+='UPDATE ' + nom_de_la_table_virtuelle + ' SET \n';
+                        for(let i in liste_des_champs_de_la_table_virtuelle){
+                            if(liste_des_champs_de_la_table_virtuelle[i].est_primaire === false){
+                                source_sql+='  ' + i + ' = NEW.' + i + ' ,\r\n';
+                            }
+                        }
+                        source_sql=source_sql.substr( source_sql , source_sql.length - 3 ) + '\r\n';
+                        source_sql+='WHERE    ' + champ_primaire + ' = NEW.' + champ_primaire + ' ;\n';
+                        source_sql+='END;\n';
+                    }else if(operation === 'supprimer_trigger_update'){
+                        source_sql+='DROP TRIGGER update_' + nom_de_la_table_virtuelle + ' ;\n';
+                    }else{
+                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'opération ' + operation + ' n\'est pas prise en compte'} ));
+                    }
+                    console.log( 'source_sql=' + source_sql );
+                    let obj={
+                        "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
+                        "__xva" : {"source_sql" : source_sql ,"operation_table" : operation}
+                    };
+                    this.__gi1.envoyer_un_message_au_worker( obj );
+                    return({"__xst" : __xsu});
+                }
+            }
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
+    operation_trigger_insert_de_la_table_virtuelle( mat , d ){
+        var l01=mat.length;
+        var id_svg_conteneur_table=0;
+        var nom_de_la_table_virtuelle='';
+        var id_bdd_de_la_base_en_cours=0;
+        var operation='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'nom_de_la_table_virtuelle' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_table_virtuelle=mat[i + 1][1];
+            }else if(mat[i][1] === 'operation' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                operation=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(id_bdd_de_la_base_en_cours > 0
+               && nom_de_la_table_virtuelle !== ''
+               && nom_de_la_table_virtuelle.substr( nom_de_la_table_virtuelle.length - 4 , 4 ) === '_fts'
+        ){
+            let obj=this.#creer_rev_de_la_base_a_partir_de_svg( id_bdd_de_la_base_en_cours );
+            if(obj.__xst === __xsu){
+                let objrev=this.__gi1.__rev1.rev_tm( obj.__xva );
+                if(objrev.__xst === __xsu){
+                    let mat1=objrev.__xva;
+                    /*
+                      afr _fts pour nom_de_la_table_virtuelle
+                    */
+                    let nom_table_reelle=nom_de_la_table_virtuelle.substr( 0 , nom_de_la_table_virtuelle.length - 4 );
+                    let liste_des_champs_de_la_table_virtuelle=this.recupere_les_champs_virtuels( mat1 , nom_de_la_table_virtuelle , nom_table_reelle );
+                    /* console.log('liste_des_champs_de_la_table_virtuelle=',liste_des_champs_de_la_table_virtuelle) */
+                    let champ_primaire='';
+                    for(let i in liste_des_champs_de_la_table_virtuelle){
+                        if(liste_des_champs_de_la_table_virtuelle[i].dans_table_reelle === false){
+                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
+                        }
+                        if(liste_des_champs_de_la_table_virtuelle[i].est_primaire === true){
+                            champ_primaire=i;
+                        }
+                    }
+                    if(champ_primaire === ''){
+                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
+                    }
+                    console.log( 'champ_primaire=' + champ_primaire );
+                    let source_sql='';
+                    if(operation === 'creer_trigger_insert'){
+                        source_sql+='CREATE TRIGGER insert_' + nom_de_la_table_virtuelle + ' AFTER INSERT ON ' + nom_table_reelle + ' BEGIN  \n';
+                        source_sql+='INSERT INTO ' + nom_de_la_table_virtuelle + ' ( \n';
+                        for(let i in liste_des_champs_de_la_table_virtuelle){
+                            source_sql+='  ' + i + ' ,\r\n';
+                        }
+                        source_sql=source_sql.substr( source_sql , source_sql.length - 3 ) + '\r\n';
+                        source_sql+=') VALUES (\n';
+                        for(let i in liste_des_champs_de_la_table_virtuelle){
+                            source_sql+='  NEW.' + i + ' ,\r\n';
+                        }
+                        source_sql=source_sql.substr( source_sql , source_sql.length - 3 ) + '\r\n';
+                        source_sql+=');\n';
+                        source_sql+='END;\n';
+                    }else if(operation === 'supprimer_trigger_insert'){
+                        source_sql+='DROP TRIGGER insert_' + nom_de_la_table_virtuelle + ' ;\n';
+                    }else{
+                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'opération ' + operation + ' n\'est pas prise en compte'} ));
+                    }
+                    console.log( 'source_sql=' + source_sql );
+                    let obj={
+                        "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
+                        "__xva" : {"source_sql" : source_sql ,"operation_table" : operation}
+                    };
+                    this.__gi1.envoyer_un_message_au_worker( obj );
+                    return({"__xst" : __xsu});
+                }
+            }
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
+    operation_trigger_delete_de_la_table_virtuelle( mat , d ){
+        var l01=mat.length;
+        var id_svg_conteneur_table=0;
+        var nom_de_la_table_virtuelle='';
+        var id_bdd_de_la_base_en_cours=0;
+        var operation='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'nom_de_la_table_virtuelle' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_table_virtuelle=mat[i + 1][1];
+            }else if(mat[i][1] === 'operation' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                operation=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(id_bdd_de_la_base_en_cours > 0
+               && nom_de_la_table_virtuelle !== ''
+               && nom_de_la_table_virtuelle.substr( nom_de_la_table_virtuelle.length - 4 , 4 ) === '_fts'
+        ){
+            let obj=this.#creer_rev_de_la_base_a_partir_de_svg( id_bdd_de_la_base_en_cours );
+            if(obj.__xst === __xsu){
+                let objrev=this.__gi1.__rev1.rev_tm( obj.__xva );
+                if(objrev.__xst === __xsu){
+                    let mat1=objrev.__xva;
+                    /*
+                      afr _fts pour nom_de_la_table_virtuelle
+                    */
+                    let nom_table_reelle=nom_de_la_table_virtuelle.substr( 0 , nom_de_la_table_virtuelle.length - 4 );
+                    let liste_des_champs_de_la_table_virtuelle=this.recupere_les_champs_virtuels( mat1 , nom_de_la_table_virtuelle , nom_table_reelle );
+                    /* console.log('liste_des_champs_de_la_table_virtuelle=',liste_des_champs_de_la_table_virtuelle) */
+                    let champ_primaire='';
+                    for(let i in liste_des_champs_de_la_table_virtuelle){
+                        if(liste_des_champs_de_la_table_virtuelle[i].dans_table_reelle === false){
+                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
+                        }
+                        if(liste_des_champs_de_la_table_virtuelle[i].est_primaire === true){
+                            champ_primaire=i;
+                        }
+                    }
+                    if(champ_primaire === ''){
+                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
+                    }
+                    console.log( 'champ_primaire=' + champ_primaire );
+                    let source_sql='';
+                    if(operation === 'creer_trigger_delete'){
+                        source_sql+='CREATE TRIGGER delete_' + nom_de_la_table_virtuelle + ' AFTER DELETE ON ' + nom_table_reelle + ' BEGIN  \n';
+                        source_sql+='DELETE FROM ' + nom_de_la_table_virtuelle + '\n';
+                        source_sql+='WHERE    ' + champ_primaire + ' = OLD.' + champ_primaire + ' ;\n';
+                        source_sql+='END;\n';
+                    }else if(operation === 'supprimer_trigger_delete'){
+                        source_sql+='DROP TRIGGER delete_' + nom_de_la_table_virtuelle + ' ;\n';
+                    }else{
+                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'opération ' + operation + ' n\'est pas prise en compte'} ));
+                    }
+                    console.log( 'source_sql=' + source_sql );
+                    let obj={
+                        "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
+                        "__xva" : {"source_sql" : source_sql ,"operation_table" : operation}
+                    };
+                    this.__gi1.envoyer_un_message_au_worker( obj );
+                    return({"__xst" : __xsu});
+                }
+            }
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+      t+='m1(n1(' + this.moi + '),f1(insérer_les_donnees_dans_la_table_virtuelle(';
+      t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+      t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
+      t+=' id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ' ),';
+      t+=')))';
+    */
+    insérer_les_donnees_dans_la_table_virtuelle( mat , d ){
+        var l01=mat.length;
+        var id_svg_conteneur_table=0;
+        var nom_de_la_table_virtuelle='';
+        var id_bdd_de_la_base_en_cours=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'nom_de_la_table_virtuelle' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_table_virtuelle=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(id_bdd_de_la_base_en_cours > 0
+               && nom_de_la_table_virtuelle !== ''
+               && nom_de_la_table_virtuelle.substr( nom_de_la_table_virtuelle.length - 4 , 4 ) === '_fts'
+        ){
+            let obj=this.#creer_rev_de_la_base_a_partir_de_svg( id_bdd_de_la_base_en_cours );
+            if(obj.__xst === __xsu){
+                let objrev=this.__gi1.__rev1.rev_tm( obj.__xva );
+                if(objrev.__xst === __xsu){
+                    let mat1=objrev.__xva;
+                    /*
+                      créer_table[
+                      nom_de_la_table_virtuelle['rpps_fts'],
+                    */
+                    let nom_table_reelle=nom_de_la_table_virtuelle.substr( 0 , nom_de_la_table_virtuelle.length - 4 );
+                    let liste_des_champs_de_la_table_virtuelle=this.recupere_les_champs_virtuels( mat1 , nom_de_la_table_virtuelle );
+                    /* console.log('liste_des_champs_de_la_table_virtuelle=',liste_des_champs_de_la_table_virtuelle) */
+                    let champ_primaire='';
+                    for(let i in liste_des_champs_de_la_table_virtuelle){
+                        if(liste_des_champs_de_la_table_virtuelle[i].dans_table_reelle === false){
+                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
+                        }
+                        if(liste_des_champs_de_la_table_virtuelle[i].est_primaire === true){
+                            champ_primaire=i;
+                        }
+                    }
+                    if(champ_primaire === ''){
+                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
+                    }
+                    /* console.log('champ_primaire='+champ_primaire) */
+                    let source_sql='';
+                    source_sql+='INSERT INTO ' + nom_de_la_table_virtuelle + ' (\n';
+                    for(let i in liste_des_champs_de_la_table_virtuelle){
+                        source_sql+='  ' + i + ' ,\r\n';
+                    }
+                    source_sql=source_sql.substr( source_sql , source_sql.length - 3 ) + '\r\n';
+                    source_sql+=') SELECT ';
+                    for(let i in liste_des_champs_de_la_table_virtuelle){
+                        source_sql+='  ' + i + ' ,\r\n';
+                    }
+                    source_sql=source_sql.substr( source_sql , source_sql.length - 3 ) + '\r\n';
+                    source_sql+=' FROM  ' + nom_table_reelle + ';';
+                    console.log( 'source_sql=' + source_sql );
+                    let obj={
+                        "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
+                        "__xva" : {"source_sql" : source_sql ,"operation_table" : 'insérer_les_donnees_dans_la_table_virtuelle'}
+                    };
+                    this.__gi1.envoyer_un_message_au_worker( obj );
+                    return({"__xst" : __xsu});
+                    return({"__xst" : __xsu});
+                }
+            }
+        }
+        return({"__xst" : __xer});
     }
     /*
       =============================================================================================================
@@ -4055,6 +4400,7 @@ class v_svg_bdd1{
         rev+='m1(n1(' + this.moi + '),f1(remplir_les_metas_de_la_table(id_de_la_zone(\'ancien_nom\'),masculin_feminin(0))))';
         t+='<div class="rev_bouton yy__3" data-rev_click="' + rev + '">remplir les champs féminin</div>';
         t+='<br />';
+        let est_table_virtuelle=0;
         let nouveau_meta=this.#corrige_meta_table( document.getElementById( id_svg_rectangle_de_la_table ).getAttribute( 'meta_rev_de_la_table' ) , {} , nom_de_la_table );
         for(let i in this.#liste_des_meta_table){
             t+=this.#liste_des_meta_table[i].nom_du_meta_table.replace( /_/ , ' ' );
@@ -4065,6 +4411,9 @@ class v_svg_bdd1{
                        && nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] !== null
                 ){
                     t+=' value="' + nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table].replace( /"/g , '&quot;' ) + '" ';
+                    if('est_table_virtuelle' === this.#liste_des_meta_table[i].nom_du_meta_table){
+                        est_table_virtuelle=parseInt( nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] , 10 );
+                    }
                 }else{
                     t+=' value="" ';
                 }
@@ -4307,29 +4656,141 @@ class v_svg_bdd1{
         /*
           =====================================================================================================
         */
-        t+='<h2>base physique</h2>';
+        t+='<h2>table dans la base physique</h2>';
         t+='<hr />';
         t+='<div class="rev_bouton yy__1" data-rev_click="';
-        t+='m1(n1(' + this.moi + '),f1(';
-        t+=' ajouter_la_table_en_base_de_modale(';
-        t+='  nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-        t+='  id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + '),';
-        t+=' )';
-        t+='))';
+        t+='m1(n1(' + this.moi + '),f1(ajouter_la_table_en_base_de_modale(';
+        t+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        t+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + '),';
+        t+=')))';
         t+='" >ajouter la table dans la base physique</div>';
         /*  */
         t+='<br /><br />';
         t+='<div class="rev_bouton yy__0" data-rev_click="';
-        t+='m1(';
-        t+=' n1(' + this.moi + '),';
-        t+=' f1(';
-        t+='  supprimer_la_table_en_base_de_modale(';
-        t+='   nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
-        t+='   id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ' ),';
-        t+='  )';
-        t+=' )';
-        t+=')';
+        t+='m1(n1(' + this.moi + '),f1(supprimer_la_table_en_base_de_modale(';
+        t+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+        t+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ' ),';
+        t+=')))';
         t+='" >supprimer la table de la base physique</div>';
+        if(est_table_virtuelle === 1){
+            t+='<br /><br />';
+            t+='<div class="rev_bouton yy__4" data-rev_click="';
+            t+='m1(n1(' + this.moi + '),f1(insérer_les_donnees_dans_la_table_virtuelle(';
+            t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
+            t+=' id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ' ),';
+            t+=')))';
+            t+='" >insérer les donnees dans la table virtuelle</div>';
+            t+='<table border="1">';
+            /*
+            */
+            t+='<tr>';
+            t+='<td>trigger</td>';
+            t+='<td>créer</td>';
+            t+='<td>supprimer</td>';
+            t+='</tr>';
+            /*
+              delete
+            */
+            t+='<tr>';
+            /*  */
+            t+='<td>delete</td>';
+            /*  */
+            t+='<td>';
+            t+='<div class="rev_bouton yy__4" data-rev_click="';
+            t+='m1(n1(' + this.moi + '),f1(operation_trigger_delete_de_la_table_virtuelle(';
+            t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
+            t+=' id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ' ),';
+            t+=' operation(creer_trigger_delete),';
+            t+=')))';
+            t+='" >creer le trigger delete</div>';
+            t+='</td>';
+            /*  */
+            /*  */
+            t+='<td>';
+            t+='<div class="rev_bouton yy__4" data-rev_click="';
+            t+='m1(n1(' + this.moi + '),f1(operation_trigger_delete_de_la_table_virtuelle(';
+            t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
+            t+=' id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ' ),';
+            t+=' operation(supprimer_trigger_delete),';
+            t+=')))';
+            t+='" >supprimer le trigger delete</div>';
+            t+='</td>';
+            /*  */
+            t+='</tr>';
+            /*
+            */
+            /*
+              update
+            */
+            t+='<tr>';
+            /*  */
+            t+='<td>update</td>';
+            /*  */
+            t+='<td>';
+            t+='<div class="rev_bouton yy__4" data-rev_click="';
+            t+='m1(n1(' + this.moi + '),f1(operation_trigger_update_de_la_table_virtuelle(';
+            t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
+            t+=' id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ' ),';
+            t+=' operation(creer_trigger_update),';
+            t+=')))';
+            t+='" >creer le trigger update</div>';
+            t+='</td>';
+            /*  */
+            /*  */
+            t+='<td>';
+            t+='<div class="rev_bouton yy__4" data-rev_click="';
+            t+='m1(n1(' + this.moi + '),f1(operation_trigger_update_de_la_table_virtuelle(';
+            t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
+            t+=' id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ' ),';
+            t+=' operation(supprimer_trigger_update),';
+            t+=')))';
+            t+='" >supprimer le trigger update</div>';
+            t+='</td>';
+            /*  */
+            t+='</tr>';
+            /*
+              insert
+            */
+            t+='<tr>';
+            /*  */
+            t+='<td>insert</td>';
+            /*  */
+            t+='<td>';
+            t+='<div class="rev_bouton yy__4" data-rev_click="';
+            t+='m1(n1(' + this.moi + '),f1(operation_trigger_insert_de_la_table_virtuelle(';
+            t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
+            t+=' id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ' ),';
+            t+=' operation(creer_trigger_insert),';
+            t+=')))';
+            t+='" >creer le trigger insert</div>';
+            t+='</td>';
+            /*  */
+            /*  */
+            t+='<td>';
+            t+='<div class="rev_bouton yy__4" data-rev_click="';
+            t+='m1(n1(' + this.moi + '),f1(operation_trigger_insert_de_la_table_virtuelle(';
+            t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
+            t+=' id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ' ),';
+            t+=' operation(supprimer_trigger_insert),';
+            t+=')))';
+            t+='" >supprimer le trigger insert</div>';
+            t+='</td>';
+            /*  */
+            t+='</tr>';
+            /*
+            */
+            t+='</table>';
+            /*
+            */
+            t+='<br /><br />';
+        }
         /*
           
         */
@@ -5956,7 +6417,6 @@ class v_svg_bdd1{
         let refe_parent_gauche=0;
         let est_libelle_lien=0;
         let reference_externe='';
-
         let obj1=this.__gi1.__rev1.rev_tm( texte_meta_rev );
         if(obj1.__xst === __xsu){
             let mat2=obj1.__xva;
@@ -6083,7 +6543,7 @@ class v_svg_bdd1{
                                 genre=mat2[k + 2][1];
                             }
                         }else if(mat2[k][1] === 'reference_externe' && mat2[k][2] === 'f' && mat2[k][8] === 3){
-                            reference_externe='('+mat2[k+1][1]+',\''+mat2[k+2][1]+'\',\''+mat2[k+3][1]+'\')';
+                            reference_externe='(' + mat2[k + 1][1] + ',\'' + mat2[k + 2][1] + '\',\'' + mat2[k + 3][1] + '\')';
                         }else if(mat2[k][1] === 'longueur_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 0){
                         }else{
                             console.log( '%c meta "' + mat2[k][1] + '" non traité' , 'background:yellow;color:red;' );
@@ -6104,7 +6564,7 @@ class v_svg_bdd1{
         ){
             refe_enfant_droite=1;
         }
-        if(nouvelles_valeurs.hasOwnProperty( 'reference_externe' )  && nouvelles_valeurs.reference_externe !== ''){
+        if(nouvelles_valeurs.hasOwnProperty( 'reference_externe' ) && nouvelles_valeurs.reference_externe !== ''){
             reference_externe=nouvelles_valeurs.reference_externe;
         }
         if(nouvelles_valeurs.hasOwnProperty( 'refe_parent_gauche' )
@@ -6233,8 +6693,6 @@ class v_svg_bdd1{
         }
         if(reference_externe !== ''){
             o1+='    reference_externe' + reference_externe + ',';
-            
-         
         }
         o1+=')';
         let obj2=this.__gi1.__rev1.rev_tm( o1 );
@@ -6268,7 +6726,7 @@ class v_svg_bdd1{
                 "longueur_du_champ" : longueur_du_champ ,
                 "genre" : genre ,
                 "est_libelle_lien" : est_libelle_lien ,
-                "reference_externe" : reference_externe 
+                "reference_externe" : reference_externe
             });
     }
     /*
@@ -6891,7 +7349,7 @@ class v_svg_bdd1{
       =============================================================================================================
       function ajouter_nom_de_table_au_svg
     */
-    #ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , largeur_de_la_boite ){
+    #ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , largeur_de_la_boite , la_table_est_virtuelle=false ){
         var id_svg_champ_en_cours=indice_courant;
         var id_svg_rectangle_du_nom_de_la_table=0;
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[indice_courant]={
@@ -6936,7 +7394,7 @@ class v_svg_bdd1{
                 "y" : 0 ,
                 "width" : 18 ,
                 "height" : this.#hauteur_de_boite ,
-                "style" : "stroke:white;stroke-width:" + this.#taille_bordure + ";fill:red;fill-opacity:1;"
+                "style" : "stroke:white;stroke-width:" + this.#taille_bordure + ";fill:" + (la_table_est_virtuelle ? ( 'darkorange' ) : ( 'red' )) + ";fill-opacity:1;"
             }
         };
         indice_courant++;
@@ -7368,12 +7826,19 @@ class v_svg_bdd1{
                     */
                     var meta_de_la_table='';
                     var tt=[0,0];
+                    let la_table_est_virtuelle=false;
+                    /*#
+                      if(nom_de_la_table==='rpps_fts'){
+                          debugger
+                      }
+                    */
                     for( l=indice_matr + 1 ; l < l01 ; l=tab[l][12] ){
                         if(tab[l][1] === 'meta' && tab[l][2] === 'f'){
                             var objxx=this.__gi1.__rev1.matrice_vers_source_rev1( tab , tab[l][7] , false , l , 0 , [] , null , true );
                             if(objxx.__xst === __xsu){
                                 let obj_meta_de_la_base=this.#corrige_meta_table( objxx.__xva , {"nom_de_la_table" : nom_de_la_table} , nom_de_la_table );
                                 meta_de_la_table=obj_meta_de_la_base.texte;
+                                la_table_est_virtuelle=meta_de_la_table.indexOf( 'est_table_virtuelle(\'1\')' ) >= 0;
                                 tt[0]=obj_meta_de_la_base.decallage_x;
                                 tt[1]=obj_meta_de_la_base.decallage_y;
                             }else{
@@ -7387,7 +7852,7 @@ class v_svg_bdd1{
                     position_gauche_de_la_table=parseFloat( tt[0] );
                     position_haut_de_la_table=parseFloat( tt[1] );
                     id_svg_champ_en_cours=indice_courant;
-                    var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , largeur_de_la_boite );
+                    var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , largeur_de_la_boite , la_table_est_virtuelle );
                     indice_courant=a.indice_courant;
                     largeur_de_la_boite=a.largeur_de_la_boite;
                 }

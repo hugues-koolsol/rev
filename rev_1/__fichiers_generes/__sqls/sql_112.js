@@ -11,8 +11,7 @@ class sql_112{
     */
     async sql( par , donnees_retournees ){
         const champs0=`
-          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`chp_priorite_tache\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\` , 
-          \`T0\`.\`chd_une_heure_tache\`
+          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`chp_priorite_tache\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -39,8 +38,7 @@ class sql_112{
                     "T0.chx_utilisateur_tache" : col[1] ,
                     "T0.chp_texte_tache" : col[2] ,
                     "T0.chp_priorite_tache" : col[3] ,
-                    "T1.chp_nom_de_connexion_utilisateur" : col[4] ,
-                    "T0.chd_une_heure_tache" : col[5]
+                    "T1.chp_nom_de_connexion_utilisateur" : col[4]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

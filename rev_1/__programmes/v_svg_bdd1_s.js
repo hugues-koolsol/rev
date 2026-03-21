@@ -386,9 +386,11 @@ class v_svg_bdd1{
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
+        this.__gi1.ma_trace1( 'source' , source );
         try{
             let res0=await dbtemp.exec( source );
         }catch(e){
+            this.__gi1.ma_trace1( 'e.stack=' , e.stack );
             this.__gi1.__xsi[__xer].push( 'erreur lors de la création des table dans la base temporaire [' + this.__gi1.nl2( e ) + ']' );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
@@ -693,10 +695,8 @@ class v_svg_bdd1{
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        
-        
-        /* 
-          NE pas prendre les CREATE VIRTUAL
+        /*
+          NE pas prendre les sous tables de CREATE VIRTUAL
         */
         let sql0='SELECT tbl_name FROM sqlite_master WHERE  name NOT LIKE \'sqlite_%\' AND type == \'table\' AND sql LIKE \'%CREATE virtual%\'';
         let lignes0=[];
@@ -710,16 +710,15 @@ class v_svg_bdd1{
             return({"__xst" : __xer});
         }
         let complementaire_sans_virtuelles='';
-        if( lignes0.length >0){
-            for( let i in lignes0){
-                complementaire_sans_virtuelles+=' AND tbl_name <> \'' + lignes0[i][0] +'\''
-                complementaire_sans_virtuelles+=' AND tbl_name NOT LIKE \'' + lignes0[i][0] +'_%\''
+        if(lignes0.length > 0){
+            for(let i in lignes0){
+                complementaire_sans_virtuelles+=' AND tbl_name <> \'' + lignes0[i][0] + '\'';
+                complementaire_sans_virtuelles+=' AND tbl_name NOT LIKE \'' + lignes0[i][0] + '_%\'';
             }
         }
-        
         this.__gi1.ma_trace1( 'lignes0=' , lignes0 , 'complementaire_sans_virtuelles=' , complementaire_sans_virtuelles );
-        
-        let sql='SELECT tbl_name FROM sqlite_master WHERE  name NOT LIKE \'sqlite_%\' AND type == \'table\' '+complementaire_sans_virtuelles; //  AND tbl_name LIKE \'%o%\'
+        let sql='SELECT tbl_name FROM sqlite_master WHERE  name NOT LIKE \'sqlite_%\' AND type == \'table\' ' + complementaire_sans_virtuelles;
+        /* AND tbl_name LIKE \'%o%\' */
         let listeDesTables={};
         let lignes=[];
         try{
@@ -731,7 +730,6 @@ class v_svg_bdd1{
             this.__gi1.__xsi[__xer].push( 'erreur sql = ' + sql + ' [' + this.__gi1.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
-        
         let tableau_des_tables=[];
         for(let col of lignes){
             tableau_des_tables.push( col[0] );
