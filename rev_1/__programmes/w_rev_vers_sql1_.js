@@ -65,6 +65,8 @@ class w_rev_vers_sql1{
             t=' < ';
         }else if(op === 'diff'){
             t=' <> ';
+        }else if(op === 'match'){
+            t=' match ';
         }else if(op === 'comme'){
             t=' LIKE ';
         }else if(op === 'pas_comme'){

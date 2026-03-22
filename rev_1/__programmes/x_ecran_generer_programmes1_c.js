@@ -4141,6 +4141,15 @@ class x_ecran_generer_programmes1{
                                && this.__gi1.__liste_des_sql[i].che_est_souche_requete === 1
                         ){
                             o1+='<option value="' + i + '">' + i + '</option>';
+                        }else{
+                            let nom_temporaire=this.#nom_de_la_table + '_fts';
+                            
+                            if(this.__gi1.__liste_des_sql[i].cht_sql_requete.indexOf( nom_temporaire + ' T0' ) >= 0
+                                   && this.__gi1.__liste_des_sql[i].chp_type_requete === type_requete
+                                   && this.__gi1.__liste_des_sql[i].che_est_souche_requete === 1
+                            ){
+                                o1+='<option value="' + i + '">' + i + '</option>';
+                            }
                         }
                     }
                 }else{

@@ -233,6 +233,7 @@ class _rev_de_sql_vers_js1{
     */
     transformer_requete_en_fonction_js1( type_de_requete , obj3 , id_requete_en_base , matrice_requete ){
         let nom_des_bases=[];
+        let table_reference='';
         let lmr01=matrice_requete.length;
         for( let i=1 ; i < lmr01 ; i=matrice_requete[i][12] ){
             if(matrice_requete[i][1] === 'sélectionner' && matrice_requete[i][2] === 'f'){
@@ -248,6 +249,9 @@ class _rev_de_sql_vers_js1{
                                     if(matrice_requete[l][1] === 'source' && matrice_requete[l][2] === 'f'){
                                         for( let m=l + 1 ; m < lmr01 ; m=matrice_requete[m][12] ){
                                             if(matrice_requete[m][1] === 'nom_de_la_table' && matrice_requete[m][2] === 'f'){
+                                                if(matrice_requete[k][1] === 'table_reference'){
+                                                    table_reference=matrice_requete[m+1][1];
+                                                }
                                                 for( let n=m + 1 ; n < lmr01 ; n=matrice_requete[n][12] ){
                                                     if(matrice_requete[n][1] === 'base'
                                                            && matrice_requete[n][2] === 'f'
@@ -910,6 +914,13 @@ class _rev_de_sql_vers_js1{
               =============================================================================================
             */
         }else if(type_de_requete === 'liste_ecran'){
+         
+            let est_table_virtuelle=0;
+         
+            if(this.#obj_webs.bases[1].tables[table_reference].est_table_virtuelle === 1){
+                est_table_virtuelle=1
+            }
+            debugger
             /*
               =============================================================================================
               console.log( this.#obj_webs );
@@ -963,146 +974,183 @@ class _rev_de_sql_vers_js1{
                   Il n'y a alors qu'une seule formule
                 */
                 t+='        where0=\' WHERE 1=1 \';' + CRLF;
-                var formule=this.#obj_webs.conditions[0].formule;
-                /*
-                  var tableau1=this.__gi1.__rev1.txt_en_tableau(formule);
-                  var matriceFonction=functionToArray2(tableau1.__xva,true,true,'');
-                */
-                var matriceFonction=this.__gi1.__rev1.rev_tm( formule );
-                var tab=matriceFonction.__xva;
-                var l01=tab.length;
-                var options={
-                    "au_format_programme" : true ,
-                    "tableau_des_tables_utilisees" : obj3.tableau_des_tables_utilisees ,
-                    "pour_where" : true ,
-                    "type_de_champ_pour_where" : '' ,
-                    "nom_du_champ_pour_where" : '' ,
-                    "espece_du_champ_pour_where" : ''
-                };
-                for( var i=1 ; i < l01 ; i++ ){
-                    if(tab[i][7] === 0){
-                        if(tab[i][1] === '#' && tab[i][2] === 'f'){
-                        }else{
-                            if(tab[i][1] === 'et' && tab[i][2] === 'f'){
-                                var j=i + 1;
-                                for( j=i + 1 ; j < l01 && tab[j][3] > tab[i][3] ; j++ ){
-                                    if(tab[j][7] === i){
-                                        if(tab[j][2] === 'f'
-                                               && (tab[j][1] === 'egal'
-                                                   || tab[j][1] === 'diff'
-                                                   || tab[j][1] === 'comme'
-                                                   || tab[j][1] === 'pas_comme'
-                                                   || tab[j][1] === 'equivalent'
-                                                   || tab[j][1] === 'pas_equivalent'
-                                                   || tab[j][1] === 'sup'
-                                                   || tab[j][1] === 'supegal'
-                                                   || tab[j][1] === 'inf'
-                                                   || tab[j][1] === 'infegal'
-                                                   || tab[j][1] === 'dans'
-                                                   || tab[j][1] === 'est'
-                                                   || tab[j][1] === 'n_est_pas')
-                                        ){
-                                            var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
-                                            if(obj.__xst === __xsu){
-                                                var parametre=obj.t_js.match( /\par\[(.*)\]/ );
-                                                if(parametre === null){
-                                                    tableau_des_conditions.push( {
-                                                            "type_condition" : 'constante' ,
-                                                            "valeur" : obj.t_js ,
-                                                            "type" : options.type_de_champ_pour_where ,
-                                                            "nom_du_champ_pour_where" : options.nom_du_champ_pour_where ,
-                                                            "espece_du_champ_pour_where" : options.espece_du_champ_pour_where
-                                                        } );
+                
+                if(est_table_virtuelle===1){
+                     debugger
+                 
+                     t+='        if(par.hasOwnProperty( \'les_match\' )  && par[\'les_match\'] !== \'\'){\r\n';
+                     t+='                where0+=` AND '+table_reference+' match ` + this.__gi1.__fnt1.sq1( par[\'les_match\'] ) + \'\\r\\n\';\r\n';
+                     t+='        }else{\r\n';
+                     t+='\r\n';
+                     t+='            let debut=performance.now();\r\n';
+                     t+='            const sql1=\'SELECT COUNT(*) as __nbEnregs FROM ' + table_reference.substr(0,table_reference.length-4 ) + '\';\r\n';
+                     t+='            this.__gi1.ma_trace1(\'sql_175 sql1=\',sql1);\r\n';
+                     t+='            let statement1=await this.__db1.prepare( sql1 );\r\n';
+                     t+='            let lignes=await statement1.values();\r\n';
+                     t+='            await statement1.finalize();\r\n';
+                     t+='            for(let numero_de_ligne in lignes){\r\n';
+                     t+='                __nbEnregs=lignes[numero_de_ligne][0];\r\n';
+                     t+='            }\r\n';
+                     t+='            this.__gi1.ma_trace1(__nbEnregs);\r\n';
+                     t+='            let fin=performance.now();\r\n';
+                     t+='            this.__gi1.ma_trace1(\'ms=\'+parseInt((fin-debut),10));\r\n';
+                     t+='            return({\r\n';
+                     t+='                     /*  */\r\n';
+                     t+='                    "__xst" : __xer ,\r\n';
+                     t+='                    "__xva" : {__nbEnregs : __nbEnregs } ,\r\n';
+                     t+='                });\r\n';
+                     t+='        }\r\n';
+                     t+='\r\n';
+                 
+                 
+                 
+                }else{
+                
+                    var formule=this.#obj_webs.conditions[0].formule;
+                    /*
+                      var tableau1=this.__gi1.__rev1.txt_en_tableau(formule);
+                      var matriceFonction=functionToArray2(tableau1.__xva,true,true,'');
+                    */
+                    var matriceFonction=this.__gi1.__rev1.rev_tm( formule );
+                    var tab=matriceFonction.__xva;
+                    var l01=tab.length;
+                    var options={
+                        "au_format_programme" : true ,
+                        "tableau_des_tables_utilisees" : obj3.tableau_des_tables_utilisees ,
+                        "pour_where" : true ,
+                        "type_de_champ_pour_where" : '' ,
+                        "nom_du_champ_pour_where" : '' ,
+                        "espece_du_champ_pour_where" : ''
+                    };
+                    for( var i=1 ; i < l01 ; i++ ){
+                        if(tab[i][7] === 0){
+                            if(tab[i][1] === '#' && tab[i][2] === 'f'){
+                            }else{
+                                if(tab[i][1] === 'et' && tab[i][2] === 'f'){
+                                    var j=i + 1;
+                                    for( j=i + 1 ; j < l01 && tab[j][3] > tab[i][3] ; j++ ){
+                                        if(tab[j][7] === i){
+                                            if(tab[j][2] === 'f'
+                                                   && (tab[j][1] === 'egal'
+                                                       || tab[j][1] === 'diff'
+                                                       || tab[j][1] === 'comme'
+                                                       || tab[j][1] === 'pas_comme'
+                                                       || tab[j][1] === 'equivalent'
+                                                       || tab[j][1] === 'pas_equivalent'
+                                                       || tab[j][1] === 'match'
+                                                       || tab[j][1] === 'sup'
+                                                       || tab[j][1] === 'supegal'
+                                                       || tab[j][1] === 'inf'
+                                                       || tab[j][1] === 'infegal'
+                                                       || tab[j][1] === 'dans'
+                                                       || tab[j][1] === 'est'
+                                                       || tab[j][1] === 'n_est_pas')
+                                            ){
+                                                var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
+                                                if(obj.__xst === __xsu){
+                                                    var parametre=obj.t_js.match( /\par\[(.*)\]/ );
+                                                    if(parametre === null){
+                                                        tableau_des_conditions.push( {
+                                                                "type_condition" : 'constante' ,
+                                                                "valeur" : obj.t_js ,
+                                                                "type" : options.type_de_champ_pour_where ,
+                                                                "nom_du_champ_pour_where" : options.nom_du_champ_pour_where ,
+                                                                "espece_du_champ_pour_where" : options.espece_du_champ_pour_where
+                                                            } );
+                                                    }else{
+                                                        tableau_des_conditions.push( {
+                                                                "type_condition" : 'variable' ,
+                                                                "valeur" : obj.t_js ,
+                                                                "condition" : parametre[0] ,
+                                                                "operation" : tab[j][1] ,
+                                                                "type" : options.type_de_champ_pour_where ,
+                                                                "nom_du_champ_pour_where" : options.nom_du_champ_pour_where ,
+                                                                "espece_du_champ_pour_where" : options.espece_du_champ_pour_where
+                                                            } );
+                                                    }
                                                 }else{
-                                                    tableau_des_conditions.push( {
-                                                            "type_condition" : 'variable' ,
-                                                            "valeur" : obj.t_js ,
-                                                            "condition" : parametre[0] ,
-                                                            "operation" : tab[j][1] ,
-                                                            "type" : options.type_de_champ_pour_where ,
-                                                            "nom_du_champ_pour_where" : options.nom_du_champ_pour_where ,
-                                                            "espece_du_champ_pour_where" : options.espece_du_champ_pour_where
-                                                        } );
+                                                    debugger;
                                                 }
+                                            }else if(tab[j][2] === 'f' && tab[j][1] === '#'){
                                             }else{
                                                 debugger;
                                             }
-                                        }else if(tab[j][2] === 'f' && tab[j][1] === '#'){
-                                        }else{
-                                            debugger;
                                         }
                                     }
-                                }
-                            }else if(tab[i][2] === 'f'
-                                   && (tab[i][1] === 'egal'
-                                       || tab[i][1] === 'diff'
-                                       || tab[i][1] === 'comme'
-                                       || tab[i][1] === 'pas_comme'
-                                       || tab[i][1] === 'equivalent'
-                                       || tab[i][1] === 'pas_equivalent'
-                                       || tab[i][1] === 'sup'
-                                       || tab[i][1] === 'supegal'
-                                       || tab[i][1] === 'inf'
-                                       || tab[i][1] === 'infegal'
-                                       || tab[i][1] === 'dans'
-                                       || tab[i][1] === 'est'
-                                       || tab[i][1] === 'n_est_pas')
-                            ){
-                                var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , i , 0 , options );
-                                if(obj.__xst === __xsu){
-                                    var parametre=obj.__xva.match( /\par\[(.*)\]/ );
-                                    if(parametre === null){
-                                        tableau_des_conditions.push( {
-                                                "type_condition" : 'constante' ,
-                                                "valeur" : obj.t_js ,
-                                                "type" : options.type_de_champ_pour_where ,
-                                                "nom_du_champ_pour_where" : options.nom_du_champ_pour_where ,
-                                                "espece_du_champ_pour_where" : options.espece_du_champ_pour_where
-                                            } );
+                                }else if(tab[i][2] === 'f'
+                                       && (tab[i][1] === 'egal'
+                                           || tab[i][1] === 'diff'
+                                           || tab[i][1] === 'comme'
+                                           || tab[i][1] === 'pas_comme'
+                                           || tab[i][1] === 'equivalent'
+                                           || tab[i][1] === 'pas_equivalent'
+                                           || tab[i][1] === 'match'
+                                           || tab[i][1] === 'sup'
+                                           || tab[i][1] === 'supegal'
+                                           || tab[i][1] === 'inf'
+                                           || tab[i][1] === 'infegal'
+                                           || tab[i][1] === 'dans'
+                                           || tab[i][1] === 'est'
+                                           || tab[i][1] === 'n_est_pas')
+                                ){
+                                    var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , i , 0 , options );
+                                    if(obj.__xst === __xsu){
+                                        var parametre=obj.__xva.match( /\par\[(.*)\]/ );
+                                        if(parametre === null){
+                                            tableau_des_conditions.push( {
+                                                    "type_condition" : 'constante' ,
+                                                    "valeur" : obj.t_js ,
+                                                    "type" : options.type_de_champ_pour_where ,
+                                                    "nom_du_champ_pour_where" : options.nom_du_champ_pour_where ,
+                                                    "espece_du_champ_pour_where" : options.espece_du_champ_pour_where
+                                                } );
+                                        }else{
+                                            tableau_des_conditions.push( {
+                                                    "type_condition" : 'variable' ,
+                                                    "valeur" : obj.t_js ,
+                                                    "condition" : parametre[0] ,
+                                                    "operation" : tab[i][1] ,
+                                                    "type" : options.type_de_champ_pour_where ,
+                                                    "nom_du_champ_pour_where" : options.nom_du_champ_pour_where ,
+                                                    "espece_du_champ_pour_where" : options.espece_du_champ_pour_where
+                                                } );
+                                        }
                                     }else{
-                                        tableau_des_conditions.push( {
-                                                "type_condition" : 'variable' ,
-                                                "valeur" : obj.t_js ,
-                                                "condition" : parametre[0] ,
-                                                "operation" : tab[i][1] ,
-                                                "type" : options.type_de_champ_pour_where ,
-                                                "nom_du_champ_pour_where" : options.nom_du_champ_pour_where ,
-                                                "espece_du_champ_pour_where" : options.espece_du_champ_pour_where
-                                            } );
+                                        debugger;
                                     }
                                 }else{
                                     debugger;
                                 }
-                            }else{
-                                debugger;
                             }
                         }
                     }
                 }
-            }
-            for( var i=0 ; i < tableau_des_conditions.length ; i++ ){
-                var elem=tableau_des_conditions[i];
-                if(elem.type_condition === 'constante'){
-                    t+='        where0+=` AND ' + elem.valeur + '`;' + CRLF;
-                }else if(elem.type_condition === 'variable'){
-                    t+='        if(par.hasOwnProperty( ' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + ' ) && par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] !== \'\'){' + CRLF;
-                    if((elem.espece_du_champ_pour_where.toLowerCase() === 'integer'
-                               || elem.espece_du_champ_pour_where.toLowerCase() === 'int')
-                           && elem.operation === 'egal'
-                    ){
-                        t+='            where0+=\'\\r\\n\' + this.__gi1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF;
-                    }else{
-                        let s00='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
-                        if(elem.valeur.substr( elem.valeur.length - 4 , 4 ) === ' + `'){
-                            t+='            where0+=` AND ' + elem.valeur.substr( 0 , elem.valeur.length - 1 ) + '\'\\r\\n\';' + CRLF;
+                for( var i=0 ; i < tableau_des_conditions.length ; i++ ){
+                    var elem=tableau_des_conditions[i];
+                    if(elem.type_condition === 'constante'){
+                        t+='        where0+=` AND ' + elem.valeur + '`;' + CRLF;
+                    }else if(elem.type_condition === 'variable'){
+                        t+='        if(par.hasOwnProperty( ' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + ' ) && par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] !== \'\'){' + CRLF;
+                        if((elem.espece_du_champ_pour_where.toLowerCase() === 'integer'
+                                   || elem.espece_du_champ_pour_where.toLowerCase() === 'int')
+                               && elem.operation === 'egal'
+                        ){
+                            t+='            where0+=\'\\r\\n\' + this.__gi1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF;
                         }else{
-                            t+='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
+                            let s00='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
+                            if(elem.valeur.substr( elem.valeur.length - 4 , 4 ) === ' + `'){
+                                t+='            where0+=` AND ' + elem.valeur.substr( 0 , elem.valeur.length - 1 ) + '\'\\r\\n\';' + CRLF;
+                            }else{
+                                t+='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
+                            }
+                            /* PHP_EOL */
                         }
-                        /* PHP_EOL */
+                        t+='        }' + CRLF;
                     }
-                    t+='        }' + CRLF;
                 }
             }
+            
+            
             t+='        sql0+=where0;' + CRLF;
             if(this.#obj_webs.complements.length === 0){
                 t+='        /* ATTENTION : pas de complements ( order by , limit dans cette liste */' + CRLF;
@@ -1865,11 +1913,23 @@ class _rev_de_sql_vers_js1{
                     for( let j=i + 1 ; j < l01 ; j=tab[j][12] ){
                         if("nom_de_la_table" === tab[j][1] && tab[j][2] === 'f'){
                             nom_de_la_table=tab[j + 1][1];
-                            this.#obj_webs['bases'][ind]['tables'][nom_de_la_table]={"active" : false ,"champs" : []};
+                            let est_table_virtuelle=0;
+                            for(let k=i+1 ; k < l01 && est_table_virtuelle===0 ; k=tab[k][12]){
+                                if(tab[k][1]==='meta' && tab[k][2]==='f'){
+                                    for(let l=k+1 ; l < l01 && est_table_virtuelle===0 ; l=tab[l][12]){
+                                        if(tab[l][1]==='est_table_virtuelle' && tab[l][2]==='f' && tab[l][8]===1 && tab[l+1][2]==='c'){
+                                            est_table_virtuelle=parseInt(tab[l+1][1],10);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            this.#obj_webs['bases'][ind]['tables'][nom_de_la_table]={"active" : false , "est_table_virtuelle" : est_table_virtuelle ,"champs" : []};
                             break;
                         }
                     }
                     if(nom_de_la_table !== ''){
+                        
                         /* this.#obj_webs['bases'][indice_de_la_base]['tables'][nom_de_la_table]={champs:[]} */
                         /* debugger */
                         this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]={"champs" : {}};

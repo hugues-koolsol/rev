@@ -4249,7 +4249,8 @@ class v_svg_bdd1{
                       nom_de_la_table_virtuelle['rpps_fts'],
                     */
                     let nom_table_reelle=nom_de_la_table_virtuelle.substr( 0 , nom_de_la_table_virtuelle.length - 4 );
-                    let liste_des_champs_de_la_table_virtuelle=this.recupere_les_champs_virtuels( mat1 , nom_de_la_table_virtuelle );
+                    debugger
+                    let liste_des_champs_de_la_table_virtuelle=this.recupere_les_champs_virtuels( mat1 , nom_de_la_table_virtuelle , nom_table_reelle );
                     /* console.log('liste_des_champs_de_la_table_virtuelle=',liste_des_champs_de_la_table_virtuelle) */
                     let champ_primaire='';
                     for(let i in liste_des_champs_de_la_table_virtuelle){
