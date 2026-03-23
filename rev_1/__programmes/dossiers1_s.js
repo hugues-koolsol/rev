@@ -11,6 +11,134 @@ const __xac='__xac';
   =====================================================================================================================
 */
 class dossiers1{
+ 
+ 
+     /*
+      =============================================================================================================
+    */
+    async importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , les_champs , sauter_n_enregistrements=1 , nombre_max_d_entrees=0 , donnees_retournees , options_generales ){
+     
+      // 
+      
+        //let nom_complet_du_fichier='./__fichiers_generes/' + nom_du_fichier;
+
+        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        
+        let obj=await this.construire_chemin( chi_id_dossier , donnees_retournees , options_generales , __db1 );
+        if(obj[__xst] !== __xsu){
+            this.__gi1.__xsi[__xer].push( 'le chemin absolu n\'a pas pu être récupéré [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
+        }
+
+        let criteres_select_116={"T0_chi_id_source" : chi_id_source};
+        let tt116=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_sources T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+        
+        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        ;
+        */
+        /*sql_inclure_fin*/ 116 , criteres_select_116 , donnees_retournees , __db1 );
+        if(tt116[__xst] !== __xsu){
+            this.__gi1.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
+        }
+
+        
+        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt116.__xva[0]['T0.chp_nom_source'];
+        
+        /* this.__gi1.ma_trace1('chemin_fichier='+chemin_fichier); */
+        
+        
+        
+        __db1.close();
+        
+        let chemin_base_cible='../../rev_'+donnees_retournees.chi_id_projet+'/__bases_de_donnees/base_'+chi_id_basedd+'.sqlite';
+        this.__gi1.ma_trace1( 'chemin_base_cible=' + chemin_base_cible );
+        
+        let debut=performance.now();
+        try{
+            let __db_cible=await this.__gi1.ouvrir_bdd_temp( chemin_base_cible , donnees_retournees , options_generales );
+        }catch(e){
+            return({ __xst : __xer});
+        }
+        __db_cible.close();
+        
+        return({__xst : __xsu});
+     
+     
+        let buf_cumule = [];
+        let texte_du_buffer = '';
+        let buffer_temporaire=null;
+        
+        let numero_de_ligne=0;
+        let nombre_d_entrees=0;
+        let tableau_des_lignes_a_integrer=[];
+        let file=null;
+        try{
+            file = await Deno.open(chemin_du_fichier, { read: true });
+        }catch(e){
+            __db1.close();
+            return({ __xst : __xer});
+        }
+        this.__gi1.ma_trace1('\n\nimporter_un_csv_methode_01');
+        const taille_du_buffer=10000;
+        let ligne_du_csv='';
+        let fileInfo=null;
+        try{
+             fileInfo = await file.stat();
+        }catch(e){
+            this.__gi1.ma_trace1('\n\n==== ERREUR CE N\'EST PAS UN FICHIER =========================================');
+            this.__gi1.ma_trace1('\n\nimporter_un_csv_methode_01');
+            __db1.close();
+            return({ __xst : __xer});
+        }
+        if (fileInfo.isFile) {
+        }
+        
+        await file.close()
+        let fin=performance.now();
+        this.__gi1.ma_trace1('temps='+parseInt( (fin-debut)/1000 , 10) + ' secondes' );
+        
+      
+      
+    }
+
+    /*
+      =============================================================================================================
+    */
+    async traitement_integrer_csv0( mat , d , donnees_recues , donnees_retournees , options_generales ){
+        let chi_id_dossier=0;
+        let chi_id_basedd=0;
+        let chi_id_source=0;
+        let la_table='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_dossier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10);
+            }else if(mat[i][1] === 'chi_id_basedd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_basedd=parseInt( mat[i + 1][1] , 10);
+            }else if(mat[i][1] === 'chi_id_source' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_source=parseInt( mat[i + 1][1] , 10);
+            }else if(mat[i][1] === 'la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                la_table=parseInt( mat[i + 1][1] , 10);
+            }
+        }
+        if(chi_id_dossier>0 && chi_id_basedd > 0 && chi_id_source >0 && la_table!==''){
+            this.__gi1.ma_trace1('ok' , donnees_recues.__xva.les_champs);
+            /*
+              ca peut être long ici donc pas d'await
+            */
+            this.importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , donnees_recues.__xva.les_champs , 1 , 0 , donnees_retournees , options_generales )            
+        }
+        return({"__xst" : __xsu});
+    }
     /*
       =============================================================================================================
     */
@@ -60,6 +188,27 @@ class dossiers1{
             await file.close();
         }
         donnees_retournees.__xst=__xsu;
+        
+        let criteres_171={};
+        let tt171=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+         FROM b1.tbl_bdds T0
+        ;
+        */
+        /*sql_inclure_fin*/ 171 , criteres_171 , donnees_retournees , __db1 );
+        if(tt171[__xst] !== __xsu){
+            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
+        }
+        donnees_retournees[__xva]['les_bases_du_projet']=[];
+        if(tt171[__xva].length > 0){
+            donnees_retournees[__xva]['les_bases_du_projet']=tt171[__xva];
+        }
+        
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -344,9 +493,9 @@ class dossiers1{
         if(isd === true){
             for await (const dirEntry of Deno.readDir( obj[__xva].chemin_absolu )){
                 if(dirEntry.isDirectory === true){
-                    liste_des_fido.push( {"type_element" : 'd' ,"nom" : dirEntry.name ,"present_en_base" : __xer} );
+                    liste_des_fido.push( {"type_element" : 'd' ,"nom" : dirEntry.name ,"present_en_base" : __xer , "chi_id_dossier" : 0 } );
                 }else if(dirEntry.isFile === true){
-                    liste_des_fido.push( {"type_element" : 'f' ,"nom" : dirEntry.name ,"present_en_base" : __xer} );
+                    liste_des_fido.push( {"type_element" : 'f' ,"nom" : dirEntry.name ,"present_en_base" : __xer , "chi_id_source" : 0 } );
                 }
             }
             if(__db1 === null){
@@ -369,6 +518,7 @@ class dossiers1{
                             let v2=tt341[__xva][k2];
                             if(v2['T0.chp_nom_source'] === v1['nom']){
                                 liste_des_fido[k1]['present_en_base']=__xsu;
+                                liste_des_fido[k1]['chi_id_source']=v2['T0.chi_id_source'];
                                 break;
                             }
                         }
@@ -392,6 +542,7 @@ class dossiers1{
                             let v2=tt169[__xva][k2];
                             if(v2['T0.chp_nom_dossier'] === v1['nom']){
                                 liste_des_fido[k1]['present_en_base']=__xsu;
+                                liste_des_fido[k1]['chi_id_source']=v2['T0.chi_id_dossier'];
                                 break;
                             }
                         }

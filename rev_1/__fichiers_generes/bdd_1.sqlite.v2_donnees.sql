@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1052','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1054','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -4819,8 +4819,7 @@ WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000'
    `che__nur_requete` = :n_che__nur_requete
 WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
 ('341','sources','select','sélectionner(
-
-   valeurs(champ(`T0`,`chp_nom_source`)),
+   valeurs(champ(`T0`,`chp_nom_source`),champ(`T0`,`chi_id_source`)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
@@ -4828,7 +4827,7 @@ WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000'
    ),
    conditions(egal(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source))
 )  ','SELECT 
-`T0`.`chp_nom_source`
+`T0`.`chp_nom_source` , `T0`.`chi_id_source`
  FROM b1.tbl_sources T0
 WHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
 ;','','0','2025-10-06 18:00:46.255','2025-10-06 18:00:46.255','0','tbl_sources'),

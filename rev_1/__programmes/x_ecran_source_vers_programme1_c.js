@@ -122,6 +122,9 @@ print('hella');`;
             if(prec === ''){
                 x+=esp + '    if(' + nvm + '[' + tab[i] + '][1]===\'xxxxx' + i + '\' && ' + nvm + '[' + tab[i] + '][2]===\'f\' && ' + nvm + '[' + tab[i] + '][8]===1 && ' + nvm + '[' + tab[i] + '+1][2]===\'c\'){\n';
                 x+=esp + '        /* */\n';
+                x+=esp + '        yyyyyyy=' + nvm + '[' + tab[i] + '+1][1];\n';
+                x+=esp + '        zzzzzzz=parseInt( ' + nvm + '[' + tab[i] + '+1][1] , 10 );\n';
+                x+=esp + '        /* */\n';
             }else{
                 x+=esp + '    if(' + nvm + '[' + tab[i] + '][1]===\'xxxxx' + i + '\' && ' + nvm + '[' + tab[i] + '][2]===\'f\'){\n';
                 x+=prec;

@@ -567,11 +567,11 @@
     "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(`che_est_souche_requete`),:n_che_est_souche_requete),affecte(champ(`chd__dtm_requete`),:n_chd__dtm_requete),affecte(champ(`che__nur_requete`),:n_che__nur_requete)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_requetes,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_requete`),:c_chi_id_requete))\n)  "
   },
   "341": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chp_nom_source`\n FROM b1.tbl_sources T0\nWHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source\n;",
+    "cht_sql_requete": "SELECT \n`T0`.`chp_nom_source` , `T0`.`chi_id_source`\n FROM b1.tbl_sources T0\nWHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source\n;",
     "cht_commentaire_requete": "sources",
     "chp_type_requete": "select",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n\n   valeurs(champ(`T0`,`chp_nom_source`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source))\n)  "
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chp_nom_source`),champ(`T0`,`chi_id_source`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source))\n)  "
   },
   "342": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chd__dtm_basedd` , \r\n`T0`.`chd__dtc_basedd` , `T0`.`che__nur_basedd`\n FROM b1.tbl_bdds T0\nWHERE ( /* */ `T0`.`chi_id_basedd` = :T0_chi_id_basedd) \r\nORDER BY `T0`.`chi_id_basedd` DESC  \r\nLIMIT :quantitee OFFSET :debut \n;",

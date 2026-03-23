@@ -1498,6 +1498,7 @@ class v_svg_bdd1{
                 masquer_champ_dans_svg=0;
             }
         }
+
         let obj={
             "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
             "est_en_session" : est_en_session ,
@@ -6505,7 +6506,9 @@ class v_svg_bdd1{
                             est_libelle_lien=parseInt( mat2[k + 1][1] , 10 );
                         }else if(mat2[k][1] === 'typologie' && mat2[k][2] === 'f'){
                             if(mat2[k][8] === 0){
-                                typologie='';
+                                if(nouvelles_valeurs.hasOwnProperty( 'typologie' )){
+                                    typologie=nouvelles_valeurs.typologie;
+                                }
                             }else{
                                 if(nouvelles_valeurs.hasOwnProperty( 'typologie' )){
                                     mat2[k + 1][1]=nouvelles_valeurs.typologie;

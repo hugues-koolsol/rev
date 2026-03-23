@@ -1313,6 +1313,7 @@ class sources1{
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
+                lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + elem['T0.chx_dossier_id_source'] + ')))))">' + this.__gi1.les_svg.dossier + '</div>';
                 lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__gi1.les_svg.poubelle + '</div>';
                 lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__gi1.les_svg.editer + '</div>';
                 lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__gi1.les_svg.dupliquer + '</div>';
