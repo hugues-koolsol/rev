@@ -231,6 +231,7 @@ class v_svg_bdd1{
             return({"__xst" : __xer});
         }
         let sql2='ATTACH DATABASE \'' + this.__gi1.__fnt1.sq0( chemin_bdd ) + '\' as \'source\';';
+        /* this.__gi1.ma_trace1('sql2=',sql2); */
         try{
             db1temp.exec( sql2 );
         }catch(e){
@@ -244,6 +245,7 @@ class v_svg_bdd1{
                 let v1=liste_des_tables[k1];
                 let liste_des_champs=liste_des_tables_champs[v1].join( ',' );
                 let sql3='INSERT INTO `' + this.__gi1.__fnt1.sq0( v1 ) + '`(' + liste_des_champs + ') SELECT ' + liste_des_champs + ' FROM `source`.`' + this.__gi1.__fnt1.sq0( v1 ) + '`';
+                /* this.__gi1.ma_trace1('sql3=',sql3); */
                 try{
                     db1temp.exec( sql3 );
                 }catch(e){

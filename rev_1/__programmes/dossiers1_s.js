@@ -11,26 +11,50 @@ const __xac='__xac';
   =====================================================================================================================
 */
 class dossiers1{
- 
- 
-     /*
+    /*
+      =============================================================================================================
+    */
+    async integrer_des_enregistrements_de_fichier_csv1(tableau_des_enregistrements  , la_table , les_champs , __db1 , donnees_retournees , options_generales  ){
+        /* this.__gi1.ma_trace1('tableau_des_enregistrements=',tableau_des_enregistrements, la_table , les_champs); */
+        
+        let les_inserts='';
+        for( let i=0 ; i < tableau_des_enregistrements.length; i++){
+            les_inserts +='\n(';
+            let l_insert='';
+            for( let j=0 ; j < tableau_des_enregistrements[i].length; j++){
+                if(tableau_des_enregistrements[i][j]===null){
+                    l_insert+=' NULL ,';
+                }else{
+                    l_insert+=' \'' + tableau_des_enregistrements[i][j].replace(/\'/g,'\'\'') + '\' ,';
+                }
+            }
+            if(l_insert!==''){
+               l_insert=l_insert.substr(0,l_insert.length-1);
+               les_inserts+=l_insert;
+               les_inserts +='),'
+            }
+        }
+        if(les_inserts!== ''){
+            les_inserts=les_inserts.substr( 0 , les_inserts.length-1);
+            let sql0='INSERT INTO  '+la_table+' (' + les_champs.join(' , ') + ') VALUES ';
+            sql0+=les_inserts;
+            this.__gi1.ma_trace1('sql0='+sql0);
+            let res=await __db1.exec( sql0 );
+        }
+        
+    }
+    /*
       =============================================================================================================
     */
     async importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , les_champs , sauter_n_enregistrements=1 , nombre_max_d_entrees=0 , donnees_retournees , options_generales ){
-     
-      // 
-      
         //let nom_complet_du_fichier='./__fichiers_generes/' + nom_du_fichier;
-
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-        
         let obj=await this.construire_chemin( chi_id_dossier , donnees_retournees , options_generales , __db1 );
         if(obj[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'le chemin absolu n\'a pas pu être récupéré [' + this.__gi1.nl2() + ']' );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-
         let criteres_select_116={"T0_chi_id_source" : chi_id_source};
         let tt116=await this.__gi1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -59,19 +83,34 @@ class dossiers1{
         
         __db1.close();
         
-        let chemin_base_cible='../../rev_'+donnees_retournees.chi_id_projet+'/__bases_de_donnees/base_'+chi_id_basedd+'.sqlite';
-        this.__gi1.ma_trace1( 'chemin_base_cible=' + chemin_base_cible );
+        let chemin_base_cible='../rev_'+donnees_retournees.chi_id_projet+'/__bases_de_donnees/bdd_'+chi_id_basedd+'.sqlite';
         
+        /* this.__gi1.ma_trace1( 'chemin_base_cible=' + chemin_base_cible ); */
+        
+        if(await this.__gi1.is_file(chemin_base_cible)){
+            /* this.__gi1.ma_trace1('c\'est un fichier bdd'); */
+        }else{
+            this.__gi1.ma_trace1('KO');
+            return({__xst : __xer});
+        }
+        let __db_cible=null;
         let debut=performance.now();
         try{
-            let __db_cible=await this.__gi1.ouvrir_bdd_temp( chemin_base_cible , donnees_retournees , options_generales );
+            __db_cible=await this.__gi1.ouvrir_bdd_temp( chemin_base_cible , donnees_retournees , options_generales );
         }catch(e){
             return({ __xst : __xer});
         }
-        __db_cible.close();
-        
-        return({__xst : __xsu});
-     
+        /*
+              ========================================
+        */
+        function sleep1( ms ){
+            return(new Promise( ( resolve ) => {
+                    setTimeout( resolve , ms );} ));
+        }
+        /*
+              ========================================
+        */
+        let le_debug=false;
      
         let buf_cumule = [];
         let texte_du_buffer = '';
@@ -83,25 +122,267 @@ class dossiers1{
         let file=null;
         try{
             file = await Deno.open(chemin_du_fichier, { read: true });
+            /* this.__gi1.ma_trace1('le fichier est ouvert'); */
         }catch(e){
-            __db1.close();
+            __db_cible.close();
             return({ __xst : __xer});
         }
-        this.__gi1.ma_trace1('\n\nimporter_un_csv_methode_01');
-        const taille_du_buffer=10000;
+        /* this.__gi1.ma_trace1('\n\nimporter_un_csv_methode_01'); */
+        const taille_du_buffer=5000;
+        let nb_enregistrements_par_insert=2;
         let ligne_du_csv='';
         let fileInfo=null;
+        let tableau_des_enregistrements=[];
+        
         try{
              fileInfo = await file.stat();
         }catch(e){
             this.__gi1.ma_trace1('\n\n==== ERREUR CE N\'EST PAS UN FICHIER =========================================');
             this.__gi1.ma_trace1('\n\nimporter_un_csv_methode_01');
-            __db1.close();
+            __db_cible.close();
             return({ __xst : __xer});
         }
         if (fileInfo.isFile) {
+         
+
+            /*
+              on lit par paquets de taille_du_buffer octets
+              le csv est produit avec l'option par défaut de mysqladmin "csv" et non pas "csv pour ms" , 
+              séparateur = ","  
+              tous les champs sont contenus dans des guillemets 
+            */
+            let continuer=true;
+            let dans_quotes = false;
+            let tab=[]
+            while(continuer === true){
+                let buf = new Uint8Array(taille_du_buffer);
+                let numberOfBytesRead = await file.readSync(buf);
+                if(numberOfBytesRead===null){
+                    continuer=false;
+                    break;
+                }
+                for(let i=0;i<taille_du_buffer && continuer === true ;i++){
+                    if(le_debug===true){
+                        if(i>=3067){
+//                            this.__gi1.ma_trace1('i='+i+', buf[i]='+  buf[i] + ' dans_quotes = '+(dans_quotes?'true' : 'false') );
+                        }
+                    }
+                    if( buf[i] === 0 ){
+                        break;
+                    }else if( buf[i] === 34 ){ // "
+                        if(dans_quotes===true){
+                            if(le_debug===true){
+                                if(i>=3067 && i<=3090){
+//                                    this.__gi1.ma_trace1('i='+i+', buf[i]='+  buf[i] + ' dans_quotes = '+(dans_quotes?'true' : 'false') + ' buf_cumule=',buf_cumule );
+                                }
+                            }
+                            if(i<taille_du_buffer-1 && buf[i+1] === 34 ){
+                                buf_cumule.push(buf[i]);
+                                i++;
+                            }else{
+                                dans_quotes=false;
+                                buffer_temporaire=new Uint8Array(buf_cumule);
+                                texte_du_buffer = new TextDecoder().decode(buffer_temporaire);
+
+                                if(le_debug===true){
+                                    if(i>=3067){
+                                        this.__gi1.ma_trace1('i= "'+i+'" texte_du_buffer=<'+texte_du_buffer+'> dans_quotes='+(dans_quotes?'true':'false')+' , tab=',tab );
+                                    }
+                                }
+                                this.__gi1.ma_trace1('texte_du_buffer='+texte_du_buffer);
+                                
+                                
+                                if(texte_du_buffer.substr(0,5) === ',NULL'){
+                                    /*il faut boucler sur tous les "null potentiels */
+                                    let en_boucle=true;
+                                    do{
+                                        tab.push(null); //
+                                        texte_du_buffer=texte_du_buffer.substr(5);
+                                        if(texte_du_buffer.substr(0,5) === ',NULL'){
+                                        }else{
+                                         en_boucle=false;
+                                        }
+                                         
+                                    }while( en_boucle === true ){
+                                    }
+                                }
+                                    
+                                
+                                
+                                if(tab.length===0 && texte_du_buffer.substr(0,1)==='"'){
+                                    /* 
+                                      premier champ 
+                                    */
+                                    if(le_debug===true){
+                                        if(i>=3067){
+                                            this.__gi1.ma_trace1('i='+i+', buf[i]='+  buf[i] + ' dans_quotes = '+(dans_quotes?'true' : 'false') + ' , texte_du_buffer=<' + texte_du_buffer + '> buf_cumule=',buf_cumule );
+                                        }
+                                    }
+                                    texte_du_buffer=texte_du_buffer.substr(1);
+                                }else if(tab.length>0 && (texte_du_buffer.substr(0,2)===';"' || texte_du_buffer.substr(0,2)===',"') ){
+                                    /* 
+                                      champ suivant 
+                                    */
+                                    texte_du_buffer=texte_du_buffer.substr(2);
+                                }else if(tab.length>0 && (texte_du_buffer.substr(0,3)===';;"' || texte_du_buffer.substr(0,3)===',,"') ){
+                                    /* 
+                                      champ suivant vide ( ,," ou ;;" ) 
+                                    */
+                                    tab.push(''); //
+                                    texte_du_buffer=texte_du_buffer.substr(3);
+                                }else if(tab.length>0 && (texte_du_buffer.substr(0,3)===';;;' || texte_du_buffer.substr(0,3)===',,,') ){
+
+                                    if(le_debug===true){
+                                        if(i>=3067){
+                                            this.__gi1.ma_trace1('i= "'+i+'" texte_du_buffer=<'+texte_du_buffer+'> dans_quotes='+(dans_quotes?'true':'false')+' , tab=',tab );
+                                        }
+                                    }
+
+//                                    this.__gi1.ma_trace1('texte_du_buffer=',texte_du_buffer);
+                                    /* 
+                                      plusieurs champs vides ( ,,, " ou ;;;" ) 
+                                    */
+                                    let guillemet_trouve=0;
+                                    for(let j=0;j<texte_du_buffer.length;j++){
+                                        if(texte_du_buffer.substr(j,1)==='"'){
+                                            guillemet_trouve=j
+                                            break;
+                                        }
+                                    }
+                                    if(le_debug===true){
+                                        if(i>=3067){
+                                            this.__gi1.ma_trace1('guillemet_trouve=' + guillemet_trouve + ' i= "'+i+'" texte_du_buffer=<'+texte_du_buffer+'> dans_quotes='+(dans_quotes?'true':'false')+' , tab=',tab );
+                                        }
+                                    }
+                                    
+//                                    this.__gi1.ma_trace1('ici guillemet_trouve=',guillemet_trouve);
+                                    if(guillemet_trouve>0){
+                                        let chaine_avant_guillemets=texte_du_buffer.substr(0,guillemet_trouve);
+                                        let nb_champs=0;
+                                        if((chaine_avant_guillemets.split(',').length - 1) === 0 ){
+                                            if( ( chaine_avant_guillemets.split(';').length - 1) === 0 ){
+                                            }else{
+                                              nb_champs=chaine_avant_guillemets.split(';').length - 1
+                                            }
+                                        }else{
+                                          nb_champs=chaine_avant_guillemets.split(',').length - 1
+                                        }
+                                        
+                                        if(nb_champs<3){
+                                            this.__gi1.ma_trace1('RRRRRRAAAAAA nb_champs<3');
+                                            await __db_cible.close();
+                                            await file.close()
+                                            return( {__xst : __xer} );
+                                        }
+                                        for( let j=0;j<nb_champs-1;j++){
+                                           tab.push(''); //
+                                        }
+                                        
+                                        texte_du_buffer=texte_du_buffer.substr(guillemet_trouve); 
+                                    }else{
+                                        /*
+                                          en fin de ligne
+                                        */
+//                                        this.__gi1.ma_trace1('en fin de ligne');
+                                       
+                                    }
+                                    
+                                }
+                                tab.push(texte_du_buffer);
+                                if(le_debug===true){
+                                    if(i>=3067){
+                                        this.__gi1.ma_trace1('texte_du_buffer='+texte_du_buffer+'  i= "'+i+'" dans_quotes='+(dans_quotes?'true':'false')+' , tab=',tab );
+                                    }
+                                }
+                                
+                                
+                                buf_cumule = [];
+                            }
+                        }else if(dans_quotes===false){
+                            dans_quotes=true;
+                            buf_cumule.push(buf[i]);
+                        }
+                    }else if( buf[i] === 10 ){ 
+                        if(dans_quotes === true){
+                            /* this.__gi1.ma_trace1('ici ================================') */
+                            buf_cumule.push(buf[i]);
+                        }else if(dans_quotes === false){
+                             numero_de_ligne++;
+                             if( numero_de_ligne <= sauter_n_enregistrements ){
+                                 buf_cumule = [];
+                                 tab=[];
+                                 continue
+                             }
+                             /* c'est une fin de ligne */
+                             /* this.__gi1.ma_trace1('buf_cumule=',buf_cumule); */
+                             buffer_temporaire=new Uint8Array(buf_cumule);
+                             texte_du_buffer = new TextDecoder().decode(buffer_temporaire);
+                             
+//                             this.__gi1.ma_trace1('texte_du_buffer="'+texte_du_buffer+'"');
+                             
+                             
+                             if(texte_du_buffer === '\r'){
+                             }else{
+                                if(texte_du_buffer.substr(0,1) === ',' || texte_du_buffer.substr(0,1) === ';'){
+//                                    this.__gi1.ma_trace1('Fin de ligne avec que des "," ou des ";" texte_du_buffer='+texte_du_buffer);
+                                    let chaine_avant_guillemets=texte_du_buffer;
+//                                    this.__gi1.ma_trace1(chaine_avant_guillemets.split(','));
+                                    let nb_champs=chaine_avant_guillemets.split(',').length - 1
+//                                    this.__gi1.ma_trace1('nb_champs='+nb_champs);
+                                    for( let j=0;j<nb_champs;j++){
+                                       tab.push(''); //
+                                    }
+                                }else{
+                                    tab.push(texte_du_buffer);
+                                }
+                             }
+                             if(le_debug===true){
+                                 if(i>=2353){
+                                     this.__gi1.ma_trace1('tab=',tab );
+                                 }
+                             }
+                             nombre_d_entrees++;
+                             
+                             if(tableau_des_enregistrements.length===nb_enregistrements_par_insert){
+                              
+                             /*#
+                               if( tableau_des_enregistrements[1][0] == '19'){
+                                   le_debug=true;
+                                   this.__gi1.ma_trace1('le_debug=' , le_debug );
+                               }
+                             */
+                              
+                              await this.integrer_des_enregistrements_de_fichier_csv1(tableau_des_enregistrements , la_table , les_champs , __db_cible , donnees_retournees , options_generales );
+                              
+                              
+                              /*
+                                on met un petit timeout entre chaque insert pour ne pas bloquer 
+                                les autres actions lors de l'intégration
+                              */
+                              await sleep1(25)
+                              /* this.__gi1.ma_trace1('dormir 25'); */
+                              
+                              tableau_des_enregistrements=[];
+                              
+                              
+                             }
+                             tableau_des_enregistrements.push(tab);
+                             
+//                             this.__gi1.ma_trace1('tab=',tab);
+                             tab=[];
+                             buf_cumule = [];
+                        }
+                        
+                    }else{
+                        buf_cumule.push(buf[i]);
+                    }
+                }
+            }
         }
-        
+        if(tableau_des_enregistrements.length>0){
+            await this.integrer_des_enregistrements_de_fichier_csv1(tableau_des_enregistrements , la_table , les_champs , __db_cible , donnees_retournees , options_generales );
+        }
+        await __db_cible.close();
         await file.close()
         let fin=performance.now();
         this.__gi1.ma_trace1('temps='+parseInt( (fin-debut)/1000 , 10) + ' secondes' );
@@ -127,11 +408,11 @@ class dossiers1{
             }else if(mat[i][1] === 'chi_id_source' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_source=parseInt( mat[i + 1][1] , 10);
             }else if(mat[i][1] === 'la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                la_table=parseInt( mat[i + 1][1] , 10);
+                la_table=mat[i + 1][1];
             }
         }
         if(chi_id_dossier>0 && chi_id_basedd > 0 && chi_id_source >0 && la_table!==''){
-            this.__gi1.ma_trace1('ok' , donnees_recues.__xva.les_champs);
+//            this.__gi1.ma_trace1('ok' , donnees_recues.__xva.les_champs);
             /*
               ca peut être long ici donc pas d'await
             */
@@ -209,6 +490,49 @@ class dossiers1{
         }
         
         
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async traitement_vider_la_table( mat , d , donnees_recues , donnees_retournees , options_generales ){
+        let chi_id_basedd=0;
+        let la_table='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_basedd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_basedd=parseInt( mat[i + 1][1] , 10);
+            }else if(mat[i][1] === 'la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                la_table=mat[i + 1][1];
+            }
+        }
+        if(!(chi_id_basedd > 0 && la_table!=='')){
+            return({ __xst : __xer});
+        }
+        
+        let chemin_base_cible='../rev_'+donnees_retournees.chi_id_projet+'/__bases_de_donnees/bdd_'+chi_id_basedd+'.sqlite';
+        
+        /* this.__gi1.ma_trace1( 'chemin_base_cible=' + chemin_base_cible ); */
+        
+        if(await this.__gi1.is_file(chemin_base_cible)){
+            /* this.__gi1.ma_trace1('c\'est un fichier qui est une base de donnée '); */
+        }else{
+            this.__gi1.ma_trace1('KO');
+            return({__xst : __xer});
+        }
+
+        let __db_cible=null;
+        try{
+            __db_cible=await this.__gi1.ouvrir_bdd_temp( chemin_base_cible , donnees_retournees , options_generales );
+        }catch(e){
+            return({ __xst : __xer});
+        }
+        let sql0='DELETE FROM '+la_table+';';
+        
+        let res=await __db_cible.exec( sql0 );
+//        this.__gi1.ma_trace1('sql0='+sql0);
+        __db_cible.close();
+         
         return({"__xst" : __xsu});
     }
     /*

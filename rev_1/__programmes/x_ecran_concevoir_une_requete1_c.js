@@ -1058,7 +1058,9 @@ class x_ecran_concevoir_une_requete1{
                     "source_sql" : obj2.__xva ,
                     "source_js" : obj5.__xva ,
                     "matrice_requete" : matrice_requete ,
-                    "chp_table_reference_requete" : obj5.chp_table_reference_requete
+                    "chp_table_reference_requete" : obj5.chp_table_reference_requete ,
+                    "table_reference" : obj5.table_reference ,
+                    "base_reference" : obj5.base_reference ,
                 });
         }else{
             return(this.__gi1.ajoute_message( {"__xst" : __xer ,"source_sql" : obj2.__xva ,"__xme" : this.__gi1.__rev1.nl2() + 'conversion en js '} ));
@@ -1091,6 +1093,9 @@ class x_ecran_concevoir_une_requete1{
         if(obj1.__xst === __xsu){
             document.getElementById( txtarea_dest ).value=obj1.source_sql;
             document.getElementById( 'js1_de_la_requete' ).value=obj1.source_js;
+            if(document.getElementById( 'chp_table_reference_requete').value === ''){
+                document.getElementById( 'chp_table_reference_requete').value=obj1.table_reference;
+            }
         }else{
             if(obj1.hasOwnProperty( 'source_sql' )){
                 document.getElementById( txtarea_dest ).value=obj1.source_sql;

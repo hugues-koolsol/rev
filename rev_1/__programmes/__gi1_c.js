@@ -39,7 +39,7 @@ class __gi1{
           "t_border" : 0 ,
           "t_police" : 0 ,
           "t_boutons_carres" : 0 ,
-          "t_padding_de_input" : 0
+          "t_padding_de_input" : 0 ,
           "t_rayon_de_bouton" : 0
       };
     */
@@ -1717,7 +1717,6 @@ class __gi1{
         t+='<img src="./f0?n0=1x1_blanc_2.png" style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='</div>';
         t+='<div>\r\n';
-        /* style="display:flex;" */
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
             t+='<span>&nbsp;bidon=' + i + '</span><br />';
             if(i === 20){
@@ -1727,7 +1726,6 @@ class __gi1{
             }
         }
         t+='</div>\r\n';
-        /* t+='<input type="text" />'; */
         this.maj_contenu_principal( t );
         this.activer_menu( '-1' );
         this.maj_hash( mat , 0 );
@@ -3262,11 +3260,15 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    la_liste_est_vide(){
+    la_liste_est_vide( __nbEnregs=null ){
         let o1='';
         o1+='<table border="1">';
         o1+='<tr>';
-        o1+='<th class="yy__0" style="font-size:1.3rem;padding:5px;">la liste est vide</th>';
+        if(__nbEnregs!==null ){
+            o1+='<th class="yy__0" style="font-size:1.3rem;padding:5px;">veuillez renseigner les critères de recherche ( ' + __nbEnregs + ' enregistrements) </th>';
+        }else{
+            o1+='<th class="yy__0" style="font-size:1.3rem;padding:5px;">la liste est vide</th>';
+        }
         o1+='</tr>';
         o1+='</table>';
         return o1;

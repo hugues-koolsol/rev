@@ -442,6 +442,7 @@ class x_ecran_generer_programmes1{
                                 if((matle[k][1] === 'table_reference' || matle[k][1] === 'jointure_gauche') && matle[k][2] === 'f'){
                                     let nom_de_la_table='';
                                     let base='';
+                                    let base_numerique=0;
                                     let alias='';
                                     let champ_contrainte1='';
                                     let alias_contrainte1='';
@@ -457,6 +458,7 @@ class x_ecran_generer_programmes1{
                                                                 alias=matle[n + 1][1];
                                                             }else if(matle[n][1] === 'base'){
                                                                 base=matle[n + 1][1];
+                                                                base_numerique=parseInt( matle[n + 1][1].replace(/b/g,'') , 10 );
                                                             }
                                                         }else{
                                                             nom_de_la_table=matle[n][1];
@@ -466,7 +468,7 @@ class x_ecran_generer_programmes1{
                                                         /*
                                                            
                                                         */
-                                                        if(this.#obj_bdd['rpps_fts'].meta.hasOwnProperty('est_table_virtuelle') && parseInt(this.#obj_bdd['rpps_fts'].meta.est_table_virtuelle,10) === 1){
+                                                        if(this.#obj_bdd[nom_de_la_table].meta.hasOwnProperty('est_table_virtuelle') && parseInt(this.#obj_bdd[nom_de_la_table].meta.est_table_virtuelle,10) === 1){
                                                             table_reference_est_table_virtuelle=[
                                                                 /* xxxx_fts , xxxx */
                                                                 nom_de_la_table , 
@@ -498,6 +500,7 @@ class x_ecran_generer_programmes1{
                                          /*  */
                                         "alias" : alias ,
                                         "base" : base ,
+                                        "base_numerique" : base_numerique ,
                                         "nom_de_la_table" : nom_de_la_table ,
                                         "champ_contrainte1" : champ_contrainte1 ,
                                         "alias_contrainte1" : alias_contrainte1 ,
@@ -1459,7 +1462,7 @@ class x_ecran_generer_programmes1{
                     if(nom_table_mere.substr( 0 , 4 ) === 'tbl_'){
                         nom_de_la_classe_lien=nom_table_mere.substr( 4 );
                     }else{
-                        console.log( '%c attention, la table parente ne commence pas par "tbl_" pour le champ ""' , 'background:red; color:yellow;' );
+                        console.log( '%c dans page_modification1, la table parente ne commence pas par "tbl_" pour le champ "' + obj_champ.nom_du_champ + '" et la table "' + nom_table_mere + '"' , 'background:red; color:yellow;' );
                     }
                     /*
                       if(les_jointures[indice_jointure].nom_de_la_table.substr( 0 , 4 ) === 'tbl_'){
@@ -2883,7 +2886,7 @@ class x_ecran_generer_programmes1{
                         */
                     }else{
                         src_client2+='    /*\r\n';
-                        src_client2+='\r\n';
+                        src_client2+='      =====================================================================================================\r\n';
                         src_client2+='    */\r\n';
                         src_client2+='        o1 += \'  <div class="yy_edition_champ1">\' ;\r\n';
                         src_client2+='        o1 += \'    <div class="yy_edition_libelle1">\' ;\r\n';
@@ -2961,7 +2964,8 @@ class x_ecran_generer_programmes1{
                         if(nom_table_mere.substr( 0 , 4 ) === 'tbl_'){
                             nom_de_la_classe_lien=nom_table_mere.substr( 4 );
                         }else{
-                            console.log( '%c attention, la table parente ne commence pas par "tbl_" pour le champ ""' , 'background:red; color:yellow;' );
+                            nom_de_la_classe_lien=nom_table_mere;
+                            console.log( '%c dans page_creer1 la table parente ne commence pas par "tbl_" pour le champ "' + obj_champ.nom_du_champ + '" et la table "' + nom_table_mere + '"' , 'background:red; color:yellow;' );
                         }
                         src_client2+='        o1+=this.__gi1.lien_parent( \'' + nom_de_la_classe_lien + '1\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\');\r\n';
                         src_client2+='        /**/;\r\n';
@@ -2998,7 +3002,7 @@ class x_ecran_generer_programmes1{
                               si c'est une date aaaa_mm_jj
                             */
                             src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" size="10" maxlength="10" value="\';\r\n';
-                            src_client2+='        if(dupliquer && dupliquer.hasOwnProperty( \'T0.chp_priorite_tache\' )){\r\n';
+                            src_client2+='        if(dupliquer && dupliquer.hasOwnProperty( \'T0.' + obj_champ.nom_du_champ + '\' )){\r\n';
                             src_client2+='            o1+=this.__gi1.fi2( dupliquer[\'T0.' + obj_champ.nom_du_champ + '\'] );\r\n';
                             src_client2+='        }else{\r\n';
                             src_client2+='            o1+=\'\';\r\n';
@@ -3011,7 +3015,7 @@ class x_ecran_generer_programmes1{
                               si c'est une date aaaa_mm_jj
                             */
                             src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" size="8" maxlength="8" value="\';\r\n';
-                            src_client2+='        if(dupliquer && dupliquer.hasOwnProperty( \'T0.chp_priorite_tache\' )){\r\n';
+                            src_client2+='        if(dupliquer && dupliquer.hasOwnProperty( \'T0.' + obj_champ.nom_du_champ + '\' )){\r\n';
                             src_client2+='            o1+=this.__gi1.fi2( dupliquer[\'T0.' + obj_champ.nom_du_champ + '\'] );\r\n';
                             src_client2+='        }else{\r\n';
                             src_client2+='            o1+=\'\';\r\n';

@@ -26,6 +26,24 @@ class dossiers1{
     filtres={};
     vv_ecran_liste_boutons_avant='';
     les_bases={};
+    
+    
+    /*
+      =============================================================================================================
+    */
+    vider_la_table( mat , d){
+        if(document.getElementById('vv_les_tables').value !== '' && document.getElementById('vv_les_bases').value !== ''){
+            let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
+            let la_table=document.getElementById('vv_les_tables').value;
+            let cmd='pm1(m1(n1(' + this.moi + '),f1(traitement_vider_la_table(';
+            cmd+=' chi_id_basedd('+chi_id_basedd+'),';
+            cmd+=' la_table(\''+la_table+'\')';
+            cmd+='))))';
+            this.__gi1.envoyer_un_message_au_worker( {"__xac" : cmd  ,"__xva" : {}} );
+        }
+        return({"__xst" : __xsu});
+    }
+        
     /*
       =============================================================================================================
     */
@@ -177,8 +195,11 @@ class dossiers1{
         }
         document.getElementById('champs_csv').innerHTML=o2;
         document.getElementById('bouton_importer').style.display='none';
+        document.getElementById('bouton_vider').style.display='none';
+        
         if(o1!=='' && o2 !== ''){
-         document.getElementById('bouton_importer').style.display='inline-block';
+            document.getElementById('bouton_importer').style.display='inline-block';
+            document.getElementById('bouton_vider').style.display='inline-block';
         }
         
         return({"__xst" : __xsu});
@@ -207,6 +228,7 @@ class dossiers1{
             }
         }
         document.getElementById('bouton_importer').style.display='none';
+        document.getElementById('bouton_vider').style.display='none';
         document.getElementById('vv_les_tables').innerHTML=o1;
         return({"__xst" : __xsu});
         
@@ -301,6 +323,7 @@ class dossiers1{
         o1+='<tr>';
         o1+='<td colspan="2">';
         o1+='<div id="bouton_importer" class="rev_bouton yy__2" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(integrer_csv0(chi_id_source('+chi_id_source+'),chi_id_dossier('+chi_id_dossier+'))))" >intégrer ce csv</div>';
+        o1+='<div id="bouton_vider" class="rev_bouton yy__0" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_table()))" >vider la table</div>';
         o1+='</td>';
         o1+='</tr>';
         o1+='</table>';
@@ -554,6 +577,7 @@ class dossiers1{
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
             case 'traitement_integrer_csv0' :
+            case 'traitement_vider_la_table' :
                 break
             case 'vv_dossiers_nouveau_numero1' :
                 this.__gi1.fermer_la_sous_fenetre();

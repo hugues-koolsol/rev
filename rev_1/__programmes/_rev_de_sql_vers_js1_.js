@@ -234,9 +234,10 @@ class _rev_de_sql_vers_js1{
     transformer_requete_en_fonction_js1( type_de_requete , obj3 , id_requete_en_base , matrice_requete ){
         let nom_des_bases=[];
         let table_reference='';
+        let base_reference=0;
         let lmr01=matrice_requete.length;
         for( let i=1 ; i < lmr01 ; i=matrice_requete[i][12] ){
-            if(matrice_requete[i][1] === 'sélectionner' && matrice_requete[i][2] === 'f'){
+            if((matrice_requete[i][1] === 'sélectionner' || 'liste_ecran'  === matrice_requete[i][1] || 'insérer' === matrice_requete[i][1] || 'modifier' === matrice_requete[i][1]  || 'supprimer' === matrice_requete[i][1] ) && matrice_requete[i][2] === 'f'){
                 for( let j=i + 1 ; j < lmr01 ; j=matrice_requete[j][12] ){
                     if(matrice_requete[j][1] === 'provenance' && matrice_requete[j][2] === 'f'){
                         for( let k=j + 1 ; k < lmr01 ; k=matrice_requete[k][12] ){
@@ -258,6 +259,10 @@ class _rev_de_sql_vers_js1{
                                                            && matrice_requete[n][8] === 1
                                                            && matrice_requete[n + 1][2] === 'c'
                                                     ){
+                                                        if(matrice_requete[k][1] === 'table_reference'){
+                                                            base_reference=parseInt(matrice_requete[n+1][1].replace(/b/,'') , 10);
+                                                        }
+                                                        
                                                         let trouvé=false;
                                                         for(let zz in nom_des_bases){
                                                             if(matrice_requete[n + 1][1] === nom_des_bases[zz]){
@@ -916,11 +921,9 @@ class _rev_de_sql_vers_js1{
         }else if(type_de_requete === 'liste_ecran'){
          
             let est_table_virtuelle=0;
-         
-            if(this.#obj_webs.bases[1].tables[table_reference].est_table_virtuelle === 1){
+            if(this.#obj_webs.bases[base_reference].tables[table_reference].hasOwnProperty('est_table_virtuelle') && this.#obj_webs.bases[base_reference].tables[table_reference].est_table_virtuelle === 1){
                 est_table_virtuelle=1
             }
-            debugger
             /*
               =============================================================================================
               console.log( this.#obj_webs );
@@ -1227,7 +1230,7 @@ class _rev_de_sql_vers_js1{
         t+='    }\r\n';
         t+='}' + CRLF;
         t+='export{sql_' + id_requete_en_base + ' as sql_' + id_requete_en_base + '};';
-        return({"__xst" : __xsu ,"__xva" : t ,"chp_table_reference_requete" : this.#globale_chp_table_reference_requete});
+        return({"__xst" : __xsu ,"__xva" : t ,"chp_table_reference_requete" : this.#globale_chp_table_reference_requete , "table_reference" : table_reference , "base_reference" : base_reference });
     }
     /*
       =============================================================================================================
@@ -2147,7 +2150,9 @@ class _rev_de_sql_vers_js1{
                         "source_php" : '' ,
                         "source_js" : obj5.__xva ,
                         "matrice_requete" : matrice_requete ,
-                        "chp_table_reference_requete" : obj5.chp_table_reference_requete
+                        "chp_table_reference_requete" : obj5.chp_table_reference_requete ,
+                        "table_reference" : obj5.__xva.table_reference , 
+                        "base_reference" : obj5.__xva.base_reference
                     });
             }else{
                 return(this.__gi1.ajoute_message( {"__xst" : __xer ,"source_sql" : obj2.__xva ,"__xme" : this.__gi1.__rev1.nl2() + 'conversion en js '} ));
