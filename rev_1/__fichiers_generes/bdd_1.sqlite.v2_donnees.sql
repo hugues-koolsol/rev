@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1055','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1057','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -5588,14 +5588,14 @@ WHERE `T0`.`che_binaire_source` = :T0_che_binaire_source
    `cht_commentaire_projet` = :n_cht_commentaire_projet
 WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
 ('385','requetes','select','sélectionner(
-
    valeurs(
       champ(`T0`,`chi_id_requete`),
       champ(`T0`,`cht_sql_requete`),
       champ(`T0`,`cht_commentaire_requete`),
       champ(`T0`,`chp_type_requete`),
       champ(`T0`,`che_est_souche_requete`),
-      champ(`T0`,`cht_rev_requete`)
+      champ(`T0`,`cht_rev_requete`),
+      champ(`T0`,`chp_table_reference_requete`)
    ),
    provenance(
       table_reference(
@@ -5608,7 +5608,7 @@ WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','
    )
 )  ','SELECT 
 `T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`che_est_souche_requete` , 
-`T0`.`cht_rev_requete`
+`T0`.`cht_rev_requete` , `T0`.`chp_table_reference_requete`
  FROM b1.tbl_requetes T0
 WHERE `T0`.`chi_id_requete` < :nb_max 
 ORDER BY `T0`.`chi_id_requete` ASC

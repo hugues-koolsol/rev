@@ -163,7 +163,13 @@ print('hella');`;
         t+='  <div>';
         /*  */
         t+='    <select title="décallage à gauche" id="decallage_gauche"><option value="12">12</option><option value="8">8</option><option value="4">4</option><option value="16">16</option></select>';
-        t+='    <select title="nom de la variable" id="nom_de_la_variable"><option value="src_serveur_js2">src_serveur_js2</option><option value="o1">o1</option><option value="o2">o2</option><option value="t">t</option></select>';
+        t+='    <select title="nom de la variable" id="nom_de_la_variable">';
+        t+='      <option value="src_serveur_js2">src_serveur_js2</option>';
+        t+='      <option value="src_client2">src_client2</option>';
+        t+='      <option value="o1">o1</option>';
+        t+='      <option value="o2">o2</option>';
+        t+='      <option value="t">t</option>';
+        t+='    </select>';
         /*  */
         t+='    <div class="rev_bouton yy__1" data-rev_click="';
         t+='m1(n1(' + this.moi + '),f1(';

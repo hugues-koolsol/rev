@@ -504,6 +504,11 @@ class dossiers1{
                         o1+=' provenance(' + provenance + ')';
                         o1+='))))';
                         o1+='" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
+                        /**/
+                        o1+='<div';
+                        o1+=' class="rev_b_svg yy__0"';
+                        o1+=' data-rev_click="pm1(m1(n1(sources1),f1(page_modification1(chi_id_source(' + __xva.liste_des_fido[i].chi_id_source + ')))))';
+                        o1+='" title="édition du source">source</div>';
                     }else{
                         o1+='<div class="rev_b_svg yy__2 yy__2_inactif" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
                     }

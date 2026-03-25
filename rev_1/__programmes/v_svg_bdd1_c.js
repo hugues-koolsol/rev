@@ -672,6 +672,7 @@ class v_svg_bdd1{
         var refe_enfant_droite=document.getElementById( 'refe_enfant_droite' ).checked ? ( 1 ) : ( 0 );
         var refe_parent_gauche=document.getElementById( 'refe_parent_gauche' ).checked ? ( 1 ) : ( 0 );
         var est_libelle_lien=document.getElementById( 'est_libelle_lien' ).checked ? ( 1 ) : ( 0 );
+        var est_utilisateur_autre_que_courant=document.getElementById( 'est_utilisateur_autre_que_courant' ).checked ? ( 1 ) : ( 0 );
         var j=0;
         var i=0;
         let trouve=false;
@@ -739,6 +740,7 @@ class v_svg_bdd1{
         rev+='    refe_enfant_droite(' + refe_enfant_droite + ')';
         rev+='    refe_parent_gauche(' + refe_parent_gauche + ')';
         rev+='    est_libelle_lien(' + est_libelle_lien + ')';
+        rev+='    est_utilisateur_autre_que_courant(' + est_utilisateur_autre_que_courant + ')';
         rev+=')';
         var a=this.#ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , this.#id_bdd_de_la_base_en_cours , rev , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere );
         this.__gi1.fermer_la_sous_fenetre();
@@ -1296,6 +1298,8 @@ class v_svg_bdd1{
         a.proprietes.refe_enfant_droite=document.getElementById( 'refe_enfant_droite' ).checked ? ( 1 ) : ( 0 );
         a.proprietes.refe_parent_gauche=document.getElementById( 'refe_parent_gauche' ).checked ? ( 1 ) : ( 0 );
         a.proprietes.est_libelle_lien=document.getElementById( 'est_libelle_lien' ).checked ? ( 1 ) : ( 0 );
+        a.proprietes.est_utilisateur_autre_que_courant=document.getElementById( 'est_utilisateur_autre_que_courant' ).checked ? ( 1 ) : ( 0 );
+        
         let base_mere=document.getElementById( 'base_mère' ).value.trim();
         let table_mere=document.getElementById( 'table_mère' ).value.trim();
         let champ_pere=document.getElementById( 'champ_père' ).value.trim();
@@ -1429,7 +1433,8 @@ class v_svg_bdd1{
                                 "p2" : [50,50] ,
                                 "refe_enfant_droite" : a.proprietes.refe_enfant_droite ,
                                 "refe_parent_gauche" : a.proprietes.refe_parent_gauche ,
-                                "est_libelle_lien" : a.proprietes.est_libelle_lien
+                                "est_libelle_lien" : a.proprietes.est_libelle_lien ,
+                                "est_utilisateur_autre_que_courant" : a.proprietes.est_utilisateur_autre_que_courant
                             } );
                     }else{
                         /* si le champ était déjà lié, il faut modifier le lien existant */
@@ -1510,7 +1515,8 @@ class v_svg_bdd1{
             "abrege_du_champ" : document.getElementById( 'meta_modifier__abrege_du_champ' ).value ,
             "typologie" : /* meta_modifier__typologie */document.getElementById( 'chp_prefixe_genre' ).value ,
             "genre" : /* meta_modifier__genre */document.getElementById( 'vv_genre1' ).value ,
-            "reference_externe" : a.reference_externe
+            "reference_externe" : a.reference_externe ,
+            "est_utilisateur_autre_que_courant" : a.proprietes.est_utilisateur_autre_que_courant
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ );
         /* meta_modifier__genre */
@@ -2150,6 +2156,7 @@ class v_svg_bdd1{
         let refe_enfant_droite=obj_donnees_rev_du_champ.refe_enfant_droite;
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
         let est_libelle_lien=obj_donnees_rev_du_champ.est_libelle_lien;
+        let est_utilisateur_autre_que_courant=obj_donnees_rev_du_champ.est_utilisateur_autre_que_courant;
         t+='<h2>changer les éléments du champ</h2>';
         /*
           
@@ -2307,6 +2314,7 @@ class v_svg_bdd1{
         t+='<br />refe_enfant_droite : <input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />refe_parent_gauche : <input type="checkbox" id="refe_parent_gauche" ' + (refe_parent_gauche === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />est_libelle_lien : <input type="checkbox" id="est_libelle_lien" ' + (est_libelle_lien === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />est_utilisateur_autre_que_courant : <input type="checkbox" id="est_utilisateur_autre_que_courant" ' + (est_utilisateur_autre_que_courant === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_un_champ_de_modale(';
@@ -3802,6 +3810,34 @@ class v_svg_bdd1{
             this.modale_gerer_la_table( obj1.__xva , 0 );
         }
     }
+    
+    
+    /*
+      =============================================================================================================
+    */
+    basculer_est_utilisateur_autre_que_courant( mat , d ){
+        let id_rectangle_de_champ=0;
+        let id_svg_conteneur_table=0;
+        for( let i=d + 1 ; i < mat.length ; i++ ){
+            if(mat[i][1] === 'id_rectangle_de_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_rectangle_de_champ=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let etat_futur_est_utilisateur_autre_que_courant=document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ).indexOf( 'est_utilisateur_autre_que_courant(1)' ) >= 0 ? ( 0 ) : ( 1 );
+        let obj=this.#corrige_meta_champ( /*  */ document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , {"est_utilisateur_autre_que_courant" : etat_futur_est_utilisateur_autre_que_courant} , null );
+        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
+        let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
+        this.__gi1.fermer_la_sous_fenetre();
+        this.#dessiner_le_svg();
+        /* id_svg_conteneur_table */
+        var obj1=this.__gi1.__rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
+        if(obj1.__xst === __xsu){
+            this.modale_gerer_la_table( obj1.__xva , 0 );
+        }
+    }
+    
     /*
       =============================================================================================================
     */
@@ -4605,6 +4641,8 @@ class v_svg_bdd1{
         t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
         t+='<br />refe_parent_gauche : <input id="refe_parent_gauche" type="checkbox" />';
         t+='<br />est_libelle_lien : <input id="est_libelle_lien" type="checkbox" />';
+        t+='<br />est_utilisateur_autre_que_courant : <input id="est_utilisateur_autre_que_courant" type="checkbox" />';
+        
         t+='<br />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(ajouter_un_champ_de_modale(';
@@ -6418,6 +6456,7 @@ class v_svg_bdd1{
         let refe_enfant_droite=0;
         let refe_parent_gauche=0;
         let est_libelle_lien=0;
+        let est_utilisateur_autre_que_courant=0;
         let reference_externe='';
         let obj1=this.__gi1.__rev1.rev_tm( texte_meta_rev );
         if(obj1.__xst === __xsu){
@@ -6504,6 +6543,12 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.est_libelle_lien , 10 );
                             }
                             est_libelle_lien=parseInt( mat2[k + 1][1] , 10 );
+                            
+                        }else if(mat2[k][1] === 'est_utilisateur_autre_que_courant' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'est_utilisateur_autre_que_courant' )){
+                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.est_utilisateur_autre_que_courant , 10 );
+                            }
+                            est_utilisateur_autre_que_courant=parseInt( mat2[k + 1][1] , 10 );
                         }else if(mat2[k][1] === 'typologie' && mat2[k][2] === 'f'){
                             if(mat2[k][8] === 0){
                                 if(nouvelles_valeurs.hasOwnProperty( 'typologie' )){
@@ -6583,6 +6628,15 @@ class v_svg_bdd1{
         ){
             est_libelle_lien=1;
         }
+        if(nouvelles_valeurs.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
+               && (nouvelles_valeurs.est_utilisateur_autre_que_courant === '1'
+                   || nouvelles_valeurs.est_utilisateur_autre_que_courant === 1)
+        ){
+            est_utilisateur_autre_que_courant=1;
+        }
+        
+        
+        
         if(nouvelles_valeurs.hasOwnProperty( 'masquer_champ_dans_svg' )
                && (nouvelles_valeurs.masquer_champ_dans_svg === '1'
                    || nouvelles_valeurs.masquer_champ_dans_svg === 1)
@@ -6681,6 +6735,10 @@ class v_svg_bdd1{
         if(est_libelle_lien === 1){
             o1+='    est_libelle_lien(' + est_libelle_lien + '),';
         }
+        if(est_utilisateur_autre_que_courant === 1){
+            o1+='    est_utilisateur_autre_que_courant(' + est_utilisateur_autre_que_courant + '),';
+        }
+        
         /*
           if(longueur_du_champ !== ''){
           o1+='    longueur_du_champ(' + longueur_du_champ + '),';
@@ -6730,7 +6788,8 @@ class v_svg_bdd1{
                 "longueur_du_champ" : longueur_du_champ ,
                 "genre" : genre ,
                 "est_libelle_lien" : est_libelle_lien ,
-                "reference_externe" : reference_externe
+                "reference_externe" : reference_externe ,
+                "est_utilisateur_autre_que_courant" : est_utilisateur_autre_que_courant
             });
     }
     /*

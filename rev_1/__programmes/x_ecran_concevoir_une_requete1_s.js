@@ -150,7 +150,8 @@ class x_ecran_concevoir_une_requete1{
                 "cht_commentaire_requete" : v1['T0.cht_commentaire_requete'] ,
                 "chp_type_requete" : v1['T0.chp_type_requete'] ,
                 "che_est_souche_requete" : v1['T0.che_est_souche_requete'] ,
-                "cht_rev_requete" : v1['T0.cht_rev_requete']
+                "cht_rev_requete" : v1['T0.cht_rev_requete'],
+                "chp_table_reference_requete" : v1['T0.chp_table_reference_requete'],
             };
         }
         /* this.__gi1.ma_trace1('__liste_des_sql',__liste_des_sql); */

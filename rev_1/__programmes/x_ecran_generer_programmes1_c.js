@@ -117,9 +117,11 @@ class x_ecran_generer_programmes1{
             for(let i in liste_des_champs_insert){
                 let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_insert[i].nom_du_champ];
                 liste_des_champs_insert[i].champ_dans_la_base=champ_dans_la_base;
-                if(champ_dans_la_base.nom_du_champ === 'fld_id_commercial_client'){
-                    /* debugger */
-                }
+                /*#
+                  if(champ_dans_la_base.nom_du_champ === 'fld_id_commercial_client'){
+                      //debugger 
+                  }
+                */
                 if(champ_est_libelle_lien === null){
                     if(champ_dans_la_base.meta.hasOwnProperty( 'est_libelle_lien' ) && champ_dans_la_base.meta.est_libelle_lien === '1'){
                         champ_est_libelle_lien=liste_des_champs_insert[i];
@@ -371,6 +373,7 @@ class x_ecran_generer_programmes1{
                 }
             }
         }
+
         for( let i=0 ; i < les_jointures.length ; i++ ){
             let el=les_jointures[i];
             if(el.alias1 === el.alias_de_la_table){
@@ -381,7 +384,7 @@ class x_ecran_generer_programmes1{
                     */
                 }else{
                     for(j in this.#obj_bdd[el.nom_de_la_table]['champs']){
-                        if(this.#obj_bdd[el.nom_de_la_table]['champs'][j].meta.est_libelle_lien === '1'){
+                        if(this.#obj_bdd[el.nom_de_la_table]['champs'][j].meta.est_libelle_lien === 1 || this.#obj_bdd[el.nom_de_la_table]['champs'][j].meta.est_libelle_lien === '1'){
                             libelle_lien.push( j );
                         }
                     }
@@ -808,6 +811,8 @@ class x_ecran_generer_programmes1{
         src_client2+='          __num_page:{type_filtre:\'entier\',défaut:0,masqué:true,nom:\'__num_page\',taille:8},\r\n';
         for(let i in liste_des_champs_condition_liste_ecran){
             let el=liste_des_champs_condition_liste_ecran[i];
+            console.log('el=',el);
+            
             let taille=champ_primaire === el.nom_du_champ && el.préfixe_du_champ === 'T0' ? ( 12 ) : ( 8 );
             try{
                 if(el.préfixe_du_champ === 'T0'
@@ -830,6 +835,16 @@ class x_ecran_generer_programmes1{
                     }else{
                         let nom_de_la_table_mere=liste_de_tables_liste_ecran[i.substr( 0 , i.indexOf( '_' ) )].nom_de_la_table;
                         if(el.champ_dans_la_base === null){
+                         
+                            if(el.nom_du_champ === 'chp_nom_de_connexion_utilisateur' && el.préfixe_du_champ !== 'T0' ){
+                                /*
+                                  dans un filtre, on peut avoir besoin d'un champ nom_de_connexion_utilisateur 
+                                  par exemple : fdl_id_prestataire_missaffect
+                                */
+                                src_client2+='            "' + el.préfixe_du_champ + '_chp_nom_de_connexion_utilisateur" : {"type_filtre" :\'VARCHAR\',défaut:\'\',masqué:false,nom:\'nom\',taille:8},\r\n';
+                                //"T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom prestataire' ,"taille" : 8} ,
+                            }
+                         
                             /*
                               hugues
                               le champ fait référence à une table dans une autre base
@@ -987,7 +1002,23 @@ class x_ecran_generer_programmes1{
             let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
             /* liste_des_champs_insert */
             let obj_champ=this.#obj_table.champs[nom_du_champ];
-            if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
+            let reference_externe_base='';
+            let reference_externe_table='';
+            let reference_externe_champ='';
+            if(obj_champ.meta.hasOwnProperty( 'reference_externe_base' )){
+                reference_externe_base=parseInt( obj_champ.meta.reference_externe_base , 10 );
+                reference_externe_table=obj_champ.meta.reference_externe_table;
+                reference_externe_champ=obj_champ.meta.reference_externe_champ;
+            }
+            if(reference_externe_base === 1
+                   && reference_externe_table === 'tbl_utilisateurs'
+                   && reference_externe_champ === 'chi_id_utilisateur'
+            ){
+                src_client2+='    /*\r\n';
+                src_client2+='      =====================================================================================================\r\n';
+                src_client2+='      pas de test pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur )\r\n';
+                src_client2+='    */\r\n';
+            }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                    || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
                    || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
                    || obj_champ.genre_objet_du_champ.che_est_session_genre === 1
@@ -1110,7 +1141,10 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        let form=donnees_recues[__xva][\'__fo1\'][nom_formulaire];\r\n';
             src_serveur_js2+='         /**/\r\n';
             if(liste_des_conversions_modification.length > 0){
-                src_serveur_js2+='        /* conversion des données numériques début */\r\n';
+                src_serveur_js2+='        /*\r\n';
+                src_serveur_js2+='          conversion des données numériques début\r\n';
+                src_serveur_js2+='          =====================================================================================================\r\n';
+                src_serveur_js2+='        */\r\n';
                 src_serveur_js2+='        form[\'' + champ_primaire + '\']=form[\'' + champ_primaire + '\']===null?null:parseInt(form[\'' + champ_primaire + '\'],10);\r\n';
                 for( let i=0 ; i < liste_des_conversions_modification.length ; i++ ){
                     if(liste_des_conversions_modification[i].espece_du_champ === 'INTEGER'){
@@ -1121,12 +1155,52 @@ class x_ecran_generer_programmes1{
                         src_serveur_js2+='form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'] === null ?null:parseFloat(form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']);\r\n';
                     }
                 }
-                src_serveur_js2+='        /* conversion des données numériques fin */\r\n';
+                src_serveur_js2+='        /*\r\n';
+                src_serveur_js2+='          =====================================================================================================\r\n';
+                src_serveur_js2+='          conversion des données numériques fin\r\n';
+                src_serveur_js2+='        */\r\n';
             }
+            src_serveur_js2+='        /*\r\n';
+            src_serveur_js2+='          tests début\r\n';
+            src_serveur_js2+='          =====================================================================================================\r\n';
+            src_serveur_js2+='        */\r\n';
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
-                if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
+
+
+                let reference_externe_base='';
+                let reference_externe_table='';
+                let reference_externe_champ='';
+                if(obj_champ.meta.hasOwnProperty( 'reference_externe_base' )){
+                    reference_externe_base=parseInt( obj_champ.meta.reference_externe_base , 10 );
+                    reference_externe_table=obj_champ.meta.reference_externe_table;
+                    reference_externe_champ=obj_champ.meta.reference_externe_champ;
+                    /*
+                      this.#les_bases
+                    */
+                }
+                if(reference_externe_base === 1
+                       && reference_externe_table === 'tbl_utilisateurs'
+                       && reference_externe_champ === 'chi_id_utilisateur'
+                ){
+                 
+                   if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
+                    
+                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1){
+                            src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
+                            src_serveur_js2+='            this.__gi1.__xsi[__xer].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__gi1.nl2() + \']\');\r\n';
+                            src_serveur_js2+='            return{__xst:__xer};\r\n';
+                            src_serveur_js2+='        }\n';
+                        }else{
+                        }
+                    
+                   }else{
+                        src_serveur_js2+='        /* pas de test pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
+                   }
+                 
+                     
+                }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_session_genre === 1
@@ -1188,6 +1262,10 @@ class x_ecran_generer_programmes1{
                     }
                 }
             }
+            src_serveur_js2+='        /*\r\n';
+            src_serveur_js2+='          =====================================================================================================\r\n';
+            src_serveur_js2+='          tests fin\r\n';
+            src_serveur_js2+='        */\r\n';
             src_serveur_js2+='\r\n';
             src_serveur_js2+='        let retour_a_la_liste=false;\r\n';
             src_serveur_js2+='        let l01=mat.length;\r\n';
@@ -1211,6 +1289,8 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            "T0_' + champ_primaire + '" : form[\'' + champ_primaire + '\'],\n';
             var deja_pris=[champ_primaire];
             for(let i in liste_des_champs_condition_select){
+             
+             
                 if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_pere_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
                 ){
@@ -1244,6 +1324,8 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            let criteres_' + ref_update + '={\r\n';
             src_serveur_js2+='                /**/\r\n';
             for( let i=0 ; i < liste_des_champs_condition_update.length ; i++ ){
+             
+             
                 if(champ_primaire === liste_des_champs_condition_update[i].nom_du_champ){
                     src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
                 }else if(liste_des_champs_condition_update[i].champ_session === true){
@@ -1261,12 +1343,36 @@ class x_ecran_generer_programmes1{
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
-                if(obj_champ.champ_session === true){
+                
+                
+                if(nom_du_champ === 'fld_id_commercial_client'){
+                }
+                let reference_externe_base='';
+                let reference_externe_table='';
+                let reference_externe_champ='';
+                if(obj_champ.meta.hasOwnProperty( 'reference_externe_base' )){
+                    reference_externe_base=parseInt( obj_champ.meta.reference_externe_base , 10 );
+                    reference_externe_table=obj_champ.meta.reference_externe_table;
+                    reference_externe_champ=obj_champ.meta.reference_externe_champ;
+                    /*
+                      this.#les_bases
+                    */
+                }
+                if(reference_externe_base === 1
+                       && reference_externe_table === 'tbl_utilisateurs'
+                       && reference_externe_champ === 'chi_id_utilisateur'
+                ){
+                    if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
+                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
+                    }else{
+                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : donnees_retournees.chi_id_utilisateur ,\n';
+                    }
+                }else if(obj_champ.champ_session === true){
                     if(ne_pas_prendre_les_valeurs_en_session === true){
                         if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
                             src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
                         }else{
-                            src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'],\n';
+                            src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
                         }
                     }else{
                         src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : donnees_retournees.' + liste_des_champs_update[i].nom_champ_session + ',\r\n';
@@ -1279,7 +1385,7 @@ class x_ecran_generer_programmes1{
                     if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
                         src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
                     }else{
-                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'],\n';
+                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
                     }
                 }
             }
@@ -1404,10 +1510,40 @@ class x_ecran_generer_programmes1{
                    && reference_externe_table === 'tbl_utilisateurs'
                    && reference_externe_champ === 'chi_id_utilisateur'
             ){
-                src_client2+='        /*\r\n';
-                src_client2+='          =====================================================================================================\r\n';
-                src_client2+='          pas d\'édition pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur )\r\n';
-                src_client2+='        */\r\n';
+                if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
+                    src_client2+='        /*\r\n';
+                    src_client2+='          =====================================================================================================\r\n';
+                    src_client2+='        */\r\n';
+                    src_client2+='        o1+=\'  <div class="yy_edition_champ1">\';\r\n';
+                    src_client2+='        o1+=\'    <div class="yy_edition_libelle1">\';\r\n';
+                    src_client2+='        o1+=\'      <span>' + obj_champ.meta.abrege_du_champ + '</span>\';\r\n';
+                    src_client2+='        o1+=\'    </div>\';\r\n';
+                    src_client2+='        o1+=\'    <div class="yy_edition_valeur1">\';\r\n';
+                    src_client2+='        if(enreg[\'T0.' + obj_champ.nom_du_champ + '\'] === undefined){\r\n';
+                    src_client2+='            o1+=\'        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\\\'est pas inclus dans le SELECT</div>\';\r\n';
+                    src_client2+='        }\r\n';
+                    src_client2+='        o1+=\'        <input type="hidden" value="\';\r\n';
+                    src_client2+='        o1+=enreg[\'T0.' + obj_champ.nom_du_champ + '\'];\r\n';
+                    src_client2+='        o1+=\'"  id="' + obj_champ.nom_du_champ + '" />\';\r\n';
+                    src_client2+='        o1+=\'        <span id="' + obj_champ.nom_du_champ + '_libelle">\';\r\n';
+                    src_client2+='        o1+=\'(\' + enreg[\'T0.' + obj_champ.nom_du_champ + '\'] + \') \';\r\n';
+                    for( let j=0 ; j < les_jointures.length ; j++ ){
+                        if(les_jointures[j].aa_provenance==='jointure_gauche' && les_jointures[j].champ2 === obj_champ.nom_du_champ ){
+                            src_client2+='        o1+=this.__gi1.fi2( enreg[\'' + les_jointures[j].alias1 +'.chp_nom_de_connexion_utilisateur\'] ) + \' \';\r\n';
+                        }
+                    }
+                    
+                    src_client2+='        o1+=\'</span>\';\r\n';
+                    src_client2+='        o1+=this.__gi1.lien_parent( \'utilisateurs1\' , \'' + obj_champ.nom_du_champ + '\' , \'' + obj_champ.nom_du_champ + '_libelle\' );\r\n';
+                    src_client2+='        o1+=\'    </div>\';\r\n';
+                    src_client2+='        o1+=\'  </div>\';\r\n';
+                    src_client2+='\r\n';
+                }else{
+                    src_client2+='        /*\r\n';
+                    src_client2+='          =====================================================================================================\r\n';
+                    src_client2+='          pas d\'édition pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur )\r\n';
+                    src_client2+='        */\r\n';
+                }
             }else if(obj_champ.hasOwnProperty( 'table_mere' )
                    && obj_champ.hasOwnProperty( 'champ_pere' )
                    && obj_champ.table_mere !== ''
@@ -1436,24 +1572,25 @@ class x_ecran_generer_programmes1{
                     src_client2+='        o1 +=  \'(\'+enreg[\'T0.' + obj_champ.nom_du_champ + '\']+\') \' ;\r\n';
                     let indice_jointure=0;
                     for( let j=0 ; j < les_jointures.length ; j++ ){
-                        if(les_jointures[j].alias2 === 'T0'
-                               && les_jointures[j].alias_de_la_table === les_jointures[j].alias1
-                               && obj_champ.nom_du_champ === les_jointures[j].champ2
-                        ){
-                            indice_jointure=j;
-                            src_client2+='\r\n';
-                            for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
-                                src_client2+='        o1 +=  this.__gi1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
-                            }
-                        }else if(les_jointures[j].alias1 === 'T0'
-                               && les_jointures[j].alias_de_la_table === les_jointures[j].alias2
-                               && obj_champ.nom_du_champ === les_jointures[j].champ1
-                        ){
-                            indice_jointure=j;
-                            for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
-                                src_client2+='        o1 +=  this.__gi1.fi2(enreg[\'' + les_jointures[j].alias2 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
-                            }
-                        }
+                          if(les_jointures[j].alias2 === 'T0'
+                                 && les_jointures[j].alias_de_la_table === les_jointures[j].alias1
+                                 && obj_champ.nom_du_champ === les_jointures[j].champ2
+                          ){
+                              indice_jointure=j;
+                              src_client2+='\r\n';
+                              for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
+                                  src_client2+='        o1 +=  this.__gi1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
+                              }
+                          }else if(les_jointures[j].alias1 === 'T0'
+                                 && les_jointures[j].alias_de_la_table === les_jointures[j].alias2
+                                 && obj_champ.nom_du_champ === les_jointures[j].champ1
+                          ){
+                              indice_jointure=j;
+                              for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
+                                  src_client2+='        o1 +=  this.__gi1.fi2(enreg[\'' + les_jointures[j].alias2 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
+                              }
+                          }
+
                     }
                     src_client2+='        o1+=\'</span>\' ;\r\n';
                     /*  */
@@ -1462,7 +1599,7 @@ class x_ecran_generer_programmes1{
                     if(nom_table_mere.substr( 0 , 4 ) === 'tbl_'){
                         nom_de_la_classe_lien=nom_table_mere.substr( 4 );
                     }else{
-                        console.log( '%c dans page_modification1, la table parente ne commence pas par "tbl_" pour le champ "' + obj_champ.nom_du_champ + '" et la table "' + nom_table_mere + '"' , 'background:red; color:yellow;' );
+                        nom_de_la_classe_lien=nom_table_mere;
                     }
                     /*
                       if(les_jointures[indice_jointure].nom_de_la_table.substr( 0 , 4 ) === 'tbl_'){
@@ -1905,10 +2042,35 @@ class x_ecran_generer_programmes1{
                    && reference_externe_table === 'tbl_utilisateurs'
                    && reference_externe_champ === 'chi_id_utilisateur'
             ){
-                src_client2+='        /*\r\n';
-                src_client2+='          =====================================================================================================\r\n';
-                src_client2+='          pas d\'édition pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur )\r\n';
-                src_client2+='        */\r\n';
+                if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
+                    src_client2+='        /*\r\n';
+                    src_client2+='          =====================================================================================================\r\n';
+                    src_client2+='        */\r\n';
+                    src_client2+='        o1+=\'  <div class="yy_edition_champ1">\';\r\n';
+                    src_client2+='        o1+=\'    <div class="yy_edition_libelle1">\';\r\n';
+                    src_client2+='        o1+=\'      <span>' + obj_champ.meta.abrege_du_champ + '</span>\';\r\n';
+                    src_client2+='        o1+=\'    </div>\';\r\n';
+                    src_client2+='        o1+=\'    <div class="yy_edition_valeur1">\';\r\n';
+                    src_client2+='        o1+=\'        <input type="hidden" value="\';\r\n';
+                    src_client2+='        o1+=enreg[\'T0.' + obj_champ.nom_du_champ + '\'];\r\n';
+                    src_client2+='        o1+=\'"  id="' + obj_champ.nom_du_champ + '" />\';\r\n';
+                    src_client2+='        o1+=\'        <span>\';\r\n';
+                    src_client2+='        o1+=\'(\' + enreg[\'T0.' + obj_champ.nom_du_champ + '\'] + \') \';\r\n';
+                    for( let j=0 ; j < les_jointures.length ; j++ ){
+                        if( les_jointures[j].aa_provenance === 'jointure_gauche' && 'chi_id_utilisateur' === les_jointures[j].champ1 && les_jointures[j].alias_de_la_table !== 'T0' ){
+                            src_client2+='        o1+=this.__gi1.fi2( enreg[\'' + les_jointures[j].alias_de_la_table + '.chp_nom_de_connexion_utilisateur\'] );\r\n';
+                        }
+                    }
+                    src_client2+='        o1+=\'</span>\';\r\n';
+                    src_client2+='        o1+=\'    </div>\';\r\n';
+                    src_client2+='        o1+=\'  </div>\';\r\n';
+                    src_client2+='\r\n';
+                }else{
+                    src_client2+='        /*\r\n';
+                    src_client2+='          =====================================================================================================\r\n';
+                    src_client2+='          pas d\'édition pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur )\r\n';
+                    src_client2+='        */\r\n';
+                }
             }else if(obj_champ.hasOwnProperty( 'table_mere' )
                    && obj_champ.hasOwnProperty( 'champ_pere' )
                    && obj_champ.table_mere !== ''
@@ -2333,7 +2495,37 @@ class x_ecran_generer_programmes1{
         for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
             let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
             let obj_champ=this.#obj_table.champs[nom_du_champ];
-            if(obj_champ.genre_objet_du_champ
+            let reference_externe_base='';
+            let reference_externe_table='';
+            let reference_externe_champ='';
+            if(obj_champ.meta.hasOwnProperty( 'reference_externe_base' )){
+                reference_externe_base=parseInt( obj_champ.meta.reference_externe_base , 10 );
+                reference_externe_table=obj_champ.meta.reference_externe_table;
+                reference_externe_champ=obj_champ.meta.reference_externe_champ;
+            }
+            if(reference_externe_base === 1
+                   && reference_externe_table === 'tbl_utilisateurs'
+                   && reference_externe_champ === 'chi_id_utilisateur'
+            ){
+             
+                if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
+                    src_client2+='        if(fo1[\'' + nom_du_champ + '\']===\'\'){\r\n';
+                    src_client2+='            this.__gi1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné\'  });\r\n';
+                    src_client2+='            this.__gi1.affiche_les_messages();\r\n';
+                    src_client2+='            this.__gi1.retablir_les_boutons_masques();\r\n';
+                    src_client2+='            try{\r\n';
+                    src_client2+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
+                    src_client2+='            }catch{}\r\n';
+                    src_client2+='            return({__xst:__xsu})\r\n';
+                    src_client2+='        }\r\n';
+                    liste_des_conversions.push( obj_champ );
+                }else{
+                    src_client2+='    /*\r\n';
+                    src_client2+='      =====================================================================================================\r\n';
+                    src_client2+='      pas de test pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur )\r\n';
+                    src_client2+='    */\r\n';
+                }
+            }else if(obj_champ.genre_objet_du_champ
                    && (obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
@@ -2424,6 +2616,8 @@ class x_ecran_generer_programmes1{
                        && reference_externe_table === 'tbl_utilisateurs'
                        && reference_externe_champ === 'chi_id_utilisateur'
                 ){
+                 
+                 
                     src_client2+='        /* pas de convertion pour le champ ' + liste_des_conversions[i].nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
                 }else{
                     if(liste_des_conversions[i].espece_du_champ === 'INTEGER'){
@@ -2476,6 +2670,11 @@ class x_ecran_generer_programmes1{
             if(liste_des_conversions.length > 0){
                 src_serveur_js2+='        /* conversion des données numériques début */\r\n';
                 for( let i=0 ; i < liste_des_conversions.length ; i++ ){
+
+                    let nom_du_champ=liste_des_conversions[i].nom_du_champ;
+                    let obj_champ=this.#obj_table.champs[nom_du_champ];
+
+
                     let reference_externe_base='';
                     let reference_externe_table='';
                     let reference_externe_champ='';
@@ -2492,10 +2691,20 @@ class x_ecran_generer_programmes1{
                            && reference_externe_table === 'tbl_utilisateurs'
                            && reference_externe_champ === 'chi_id_utilisateur'
                     ){
-                        /*
-                          pas de convertion pour ce champ
-                        */
-                        src_serveur_js2+='        /* pas de convertion pour le champ ' + liste_des_conversions[i].nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
+                     
+                        if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
+                            src_serveur_js2+='        form[\'' + liste_des_conversions[i].nom_du_champ + '\']=';
+                            src_serveur_js2+='form[\'' + liste_des_conversions[i].nom_du_champ + '\'] === null || ';
+                            src_serveur_js2+='form[\'' + liste_des_conversions[i].nom_du_champ + '\']===\'\' || ';
+                            src_serveur_js2+='form[\'' + liste_des_conversions[i].nom_du_champ + '\']=== undefined ';
+                            src_serveur_js2+='? ( ' + valeur_par_defaut + ' ):parseInt(form[\'' + liste_des_conversions[i].nom_du_champ + '\'],10);\r\n';
+
+                        }else{
+                            /*
+                              pas de convertion pour ce champ
+                            */
+                            src_serveur_js2+='        /* pas de convertion pour le champ ' + liste_des_conversions[i].nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
+                        }
                     }else if(liste_des_conversions[i].espece_du_champ === 'INTEGER'){
                         if(liste_des_conversions[i].genre_objet_du_champ.che_est_obligatoire_genre === 1){
                             if(liste_des_conversions[i].a_une_valeur_par_defaut === 1){
@@ -2518,7 +2727,42 @@ class x_ecran_generer_programmes1{
             for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
                 let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
-                if(obj_champ.genre_objet_du_champ
+                
+                
+                
+                let reference_externe_base='';
+                let reference_externe_table='';
+                let reference_externe_champ='';
+                if(obj_champ.meta.hasOwnProperty( 'reference_externe_base' )){
+                    reference_externe_base=parseInt( obj_champ.meta.reference_externe_base , 10 );
+                    reference_externe_table=obj_champ.meta.reference_externe_table;
+                    reference_externe_champ=obj_champ.meta.reference_externe_champ;
+                    /*
+                      this.#les_bases
+                    */
+                }
+                let valeur_par_defaut='null';
+                if(reference_externe_base === 1
+                       && reference_externe_table === 'tbl_utilisateurs'
+                       && reference_externe_champ === 'chi_id_utilisateur'
+                ){
+
+                   if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
+                    
+                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1){
+                            src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
+                            src_serveur_js2+='            this.__gi1.__xsi[__xer].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__gi1.nl2() + \']\');\r\n';
+                            src_serveur_js2+='            return{__xst:__xer};\r\n';
+                            src_serveur_js2+='        }\n';
+                        }else{
+                        }
+                    
+                   }else{
+
+
+                        src_serveur_js2+='        /* pas de test pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
+                   }
+                }else if(obj_champ.genre_objet_du_champ
                        && (obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                            || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
                            || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
@@ -2584,9 +2828,9 @@ class x_ecran_generer_programmes1{
                 }
             }
             if(this.chi_id_projet <= 2){
-                src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
+                src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
             }else{
-                src_serveur_js2+='            __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
+                src_serveur_js2+='            let __db1=await this.__gi1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' , donnees_retournees , options_generales );\r\n';
             }
             /*
               src_serveur_js2+='        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );\r\n';
@@ -2621,7 +2865,15 @@ class x_ecran_generer_programmes1{
                        && reference_externe_table === 'tbl_utilisateurs'
                        && reference_externe_champ === 'chi_id_utilisateur'
                 ){
-                    src_serveur_js2+='                    \'' + nom_du_champ + '\' : donnees_retournees.chi_id_utilisateur ,\n';
+                    if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
+                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
+                            src_serveur_js2+='                    \'' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] === \'\' ? ( null ) : ( form[\'' + nom_du_champ + '\'] ),\n';
+                        }else{
+                            src_serveur_js2+='                    \'' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'],\n';
+                        }
+                    }else{
+                        src_serveur_js2+='                    \'' + nom_du_champ + '\' : donnees_retournees.chi_id_utilisateur ,\n';
+                    }
                 }else if(obj_champ.genre_objet_du_champ
                        && (obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                            || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
@@ -2639,7 +2891,6 @@ class x_ecran_generer_programmes1{
                        && (obj_champ.champ_session === true
                            || obj_champ.champ_pere_est_en_session1 === true)
                 ){
-                    debugger;
                     src_serveur_js2+='                    \'' + nom_du_champ + '\' : donnees_retournees.' + obj_champ.champ_pere + ',\n';
                 }else{
                     if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
@@ -2866,10 +3117,54 @@ class x_ecran_generer_programmes1{
                        && reference_externe_table === 'tbl_utilisateurs'
                        && reference_externe_champ === 'chi_id_utilisateur'
                 ){
-                    src_client2+='    /*\r\n';
-                    src_client2+='      =====================================================================================================\r\n';
-                    src_client2+='      pas d\'édition pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur )\r\n';
-                    src_client2+='    */\r\n';
+                    if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
+                     
+                        /* exemple : fdl_id_prestataire_missaffect */
+                        src_client2+='        /*\r\n';
+                        src_client2+='          =====================================================================================================\r\n';
+                        src_client2+='        */\r\n';
+                        src_client2+='        o1+=\'  <div class="yy_edition_champ1">\';\r\n';
+                        src_client2+='        o1+=\'    <div class="yy_edition_libelle1">\';\r\n';
+                        src_client2+='        o1+=\'      <span>'+obj_champ.meta.nom_bref_du_champ +'</span>\';\r\n';
+                        src_client2+='        o1+=\'    </div>\';\r\n';
+                        src_client2+='        o1+=\'    <div class="yy_edition_valeur1">\';\r\n';
+                        src_client2+='        o1+=\'        <input \';\r\n';
+                        src_client2+='        o1+=\' id="' + nom_du_champ + '" \';\r\n';
+                        src_client2+='        o1+=\' type="hidden" \';\r\n';
+                        src_client2+='        o1+=\' value="\';\r\n';
+                        src_client2+='        if(dupliquer && dupliquer.hasOwnProperty( \'T0.' + nom_du_champ + '\' )){\r\n';
+                        src_client2+='            o1+=this.__gi1.fi2( dupliquer[\'T0.' + nom_du_champ + '\'] );\r\n';
+                        src_client2+='        }else{\r\n';
+                        src_client2+='            o1+=\'\';\r\n';
+                        src_client2+='        }\r\n';
+                        src_client2+='        o1+=\'"\';\r\n';
+                        src_client2+='        o1+=\' />\';\r\n';
+                        src_client2+='        o1+=\'        <span id="' + nom_du_champ + '_libelle">\';\r\n';
+                        src_client2+='        if(dupliquer && dupliquer.hasOwnProperty( \'T0.' + nom_du_champ + '\' )){\r\n';
+                        src_client2+='            if(dupliquer[\'T0.' + nom_du_champ + '\'] === null){\r\n';
+                        src_client2+='                o1+=\'*indéfini\';\r\n';
+                        src_client2+='            }else{\r\n';
+                        src_client2+='                o1+=\'(\' + dupliquer[\'T0.' + nom_du_champ + '\'] + \') \';\r\n';
+                        src_client2+='            }\r\n';
+                        src_client2+='        }else{\r\n';
+                        src_client2+='            o1+=\'*indéfini\';\r\n';
+                        src_client2+='        }\r\n';
+                        src_client2+='        o1+=\'</span>\';\r\n';
+                        src_client2+='        /*\r\n';
+                        src_client2+='          ;\r\n';
+                        src_client2+='        */\r\n';
+                        src_client2+='        o1+=this.__gi1.lien_parent( \'utilisateurs1\' , \'' + nom_du_champ + '\' , \'' + nom_du_champ + '_libelle\' );\r\n';
+                        src_client2+='        /*  */\r\n';
+                        src_client2+='        o1+=\'    </div>\';\r\n';
+                        src_client2+='        o1+=\'  </div>\';\r\n';
+                        src_client2+='\r\n';
+                     
+                    }else{
+                        src_client2+='    /*\r\n';
+                        src_client2+='      =====================================================================================================\r\n';
+                        src_client2+='      pas d\'édition pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur )\r\n';
+                        src_client2+='    */\r\n';
+                    }
                 }else if(obj_champ.hasOwnProperty( 'table_mere' )
                        && obj_champ.hasOwnProperty( 'champ_pere' )
                        && obj_champ.table_mere !== ''
@@ -2965,7 +3260,6 @@ class x_ecran_generer_programmes1{
                             nom_de_la_classe_lien=nom_table_mere.substr( 4 );
                         }else{
                             nom_de_la_classe_lien=nom_table_mere;
-                            console.log( '%c dans page_creer1 la table parente ne commence pas par "tbl_" pour le champ "' + obj_champ.nom_du_champ + '" et la table "' + nom_table_mere + '"' , 'background:red; color:yellow;' );
                         }
                         src_client2+='        o1+=this.__gi1.lien_parent( \'' + nom_de_la_classe_lien + '1\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\');\r\n';
                         src_client2+='        /**/;\r\n';
@@ -3488,12 +3782,16 @@ class x_ecran_generer_programmes1{
         src_client2+='                parametres += \' nom_libelle_dans_parent1(\' + this.nom_libelle_dans_parent1 + \')\';\r\n';
         src_client2+='                parametres += \' id1(\' + elem[\'T0.' + champ_primaire + '\'] + \')\';\r\n';
         src_client2+='                let libelle1=\'\';\r\n';
-        src_client2+='                libelle1+=\'(\'+elem[\'T0.' + champ_primaire + '\']+\') \';\r\n';
+
+        src_client2+='                libelle1+=\'(\';\r\n';
+        src_client2+='                libelle1+=elem[\'T0.'+champ_primaire+'\'];\r\n';
+        src_client2+='                libelle1+=\') \';\r\n';
+        src_client2+='                libelle1+=\' \';\r\n';
         /*
           liste des champs est_libelle_lien de la table
         */
         for(let i in this.#obj_table.champs){
-            if(this.#obj_table.champs[i].meta.est_libelle_lien === '1'){
+            if(this.#obj_table.champs[i].meta.est_libelle_lien === 1){
                 /* src_client2+='                    libelle1+=elem[\'T0.'+i+'\'];\r\n'; */
                 src_client2+='                libelle1+=elem[\'T0.' + i + '\']?\' , \'+elem[\'T0.' + i + '\']:\'\';\r\n';
             }
@@ -3683,6 +3981,20 @@ class x_ecran_generer_programmes1{
             if(tab_champs_sortie.includes( cle )){
             }else{
                 if(el.champ_dans_la_base === null){
+                    if(el.nom_du_champ === 'chp_nom_de_connexion_utilisateur' && el.préfixe_du_champ !== 'T0' ){
+                        /*
+                          dans un filtre, on peut avoir besoin d'un champ nom_de_connexion_utilisateur 
+                          par exemple : fdl_id_prestataire_missaffect
+                        */
+                        src_client2+='            /' + '*\n';
+                        src_client2+='            *' + '/\n';
+                        src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
+                        src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
+                        src_client2+='                lst+=this.__gi1.fi2( elem[\'' + cle + '\']);\r\n';
+                        src_client2+='            }\r\n';
+                        src_client2+='            lst += \'</td>\';\r\n';
+                        //"T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom prestataire' ,"taille" : 8} ,
+                    }
                     /*
                       hugues
                       le champ fait référence à une table dans une autre base
@@ -3756,6 +4068,10 @@ class x_ecran_generer_programmes1{
                       exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
                       que le champ commercial fait référence la table "utilisateur"
                     */
+                    if(el.nom_du_champ === 'chp_nom_de_connexion_utilisateur' && el.préfixe_du_champ !== 'T0' ){
+                        src_client2+='                o1+=/* chp_nom_de_connexion_utilisateur */\'<th>nom</th>\';\r\n';
+                    }
+                    
                 }else{
                     if(el.champ_dans_la_base.genre_objet_du_champ
                            && (el.champ_dans_la_base.genre_objet_du_champ.che_est_tsm_genre === 1
@@ -4059,6 +4375,10 @@ class x_ecran_generer_programmes1{
                                                         this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1] + '_champ']=mat2[o + 3][1];
                                                     }else if(mat2[o][1] === 'typologie' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o+1][2] === 'c'){
                                                         this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta['typologie']=mat2[o + 1][1];
+                                                    }else if(mat2[o][1] === 'est_libelle_lien' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o+1][2] === 'c'){
+                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta['est_libelle_lien']=parseInt(mat2[o + 1][1],10);
+                                                    }else if(mat2[o][1] === 'est_utilisateur_autre_que_courant' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o+1][2] === 'c'){
+                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta['est_utilisateur_autre_que_courant']=parseInt(mat2[o + 1][1],10);
                                                     }else{
                                                         if(mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                                             this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1]]=mat2[o + 1][1];
@@ -4184,6 +4504,7 @@ class x_ecran_generer_programmes1{
                         if(this.__gi1.__liste_des_sql[i].cht_sql_requete.indexOf( this.#nom_de_la_table + ' T0' ) >= 0
                                && this.__gi1.__liste_des_sql[i].chp_type_requete === type_requete
                                && this.__gi1.__liste_des_sql[i].che_est_souche_requete === 1
+                               && this.__gi1.__liste_des_sql[i].chp_table_reference_requete === this.#nom_de_la_table 
                         ){
                             o1+='<option value="' + i + '">' + i + '</option>';
                         }else{
@@ -4205,6 +4526,7 @@ class x_ecran_generer_programmes1{
                         if(this.__gi1.__liste_des_sql[i].cht_sql_requete.indexOf( this.#nom_de_la_table ) >= 0
                                && this.__gi1.__liste_des_sql[i].chp_type_requete === type_requete
                                && this.__gi1.__liste_des_sql[i].che_est_souche_requete === 1
+                               && this.__gi1.__liste_des_sql[i].chp_table_reference_requete === this.#nom_de_la_table 
                         ){
                             o1+='<option value="' + i + '">' + i + '</option>';
                         }

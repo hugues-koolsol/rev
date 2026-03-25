@@ -330,7 +330,7 @@ class sources1{
         if(enreg['T0.chp_nom_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source"   maxlength="128"  value="' + this.__gi1.fi2( enreg['T0.chp_nom_source'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source" size="64"  maxlength="128"  value="' + this.__gi1.fi2( enreg['T0.chp_nom_source'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+=this.__gi1.__fnt1.boutons_edition_text( 'chp_nom_source' );
         o1+='    </div>';
         o1+='  </div>';
@@ -367,6 +367,9 @@ class sources1{
         o1+=this.__gi1.fi2( enreg['T1.chp_nom_dossier'] );
         o1+='</span>';
         o1+=this.__gi1.lien_parent( 'dossiers1' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' );
+        if(enreg['T0.chx_dossier_id_source'] !== null && this.__gi1.est_num(enreg['T0.chx_dossier_id_source'])){
+            o1+='<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + enreg['T0.chx_dossier_id_source'] + ')))))" title="aller au dossier" > aller au dossier</div>';
+        }
         o1+='    </div>';
         o1+='  </div>';
         /*
