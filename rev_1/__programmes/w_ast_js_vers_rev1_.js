@@ -2551,7 +2551,10 @@ class w_ast_js_vers_rev1{
         }else{
             return(this.#astjs_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() ,"element" : element} ));
         }
-        t='(' + t + ')';
+        if(t === ''){
+        }else{
+            t='(' + t + ')';
+        }
         return({"__xst" : __xsu ,"__xva" : t});
     }
     /*

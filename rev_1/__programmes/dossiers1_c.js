@@ -1,4 +1,11 @@
 class dossiers1{
+    /*
+      ref_select=386
+      ref_insert=378
+      ref_delete=410
+      ref_update=407
+      ref_liste_ecran=389
+    */
     moi='dossiers1';
     DUN_DUNE_ELEMENT_GERE='d\'un dossier';
     LISTE_DES_ELEMENTS_GERES='liste des dossiers';
@@ -533,7 +540,7 @@ class dossiers1{
                     o1+=' provenance(' + provenance + ')';
                     o1+=cmd;
                     o1+='))))';
-                    o1+='" title="intégrer non binaire">' + this.__gi1.les_svg.bdd + '</div>';
+                    o1+='" title="intégrer binaire">' + this.__gi1.les_svg.bdd + '</div>';
                     o1+='<div';
                     o1+=' class="rev_b_svg yy__0"';
                     o1+=' data-rev_click="';

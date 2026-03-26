@@ -1716,6 +1716,12 @@ class __gi1{
         t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='<img src="./f0?n0=1x1_blanc_2.png" style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='</div>';
+        
+        t+='<div style="margin-top:20px;">';
+        for(let i in this.les_svg){
+            t+='<div style="display:inline-block;width:' + ( 2 * this.css_dimensions.t_police ) + 'px;height:' + ( 2 * this.css_dimensions.t_police ) + 'px;">' + this.les_svg[i] + '</div>';
+        }
+        t+='</div>';
         t+='<div>\r\n';
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
             t+='<span>&nbsp;bidon=' + i + '</span><br />';

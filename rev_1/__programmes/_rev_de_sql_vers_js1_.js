@@ -31,6 +31,7 @@ class _rev_de_sql_vers_js1{
         "champs_sortie" : [] ,
         "conditions" : [] ,
         "complements" : [] ,
+        "champs_visualisation" : [] ,
         "tableau_des_bases_tables_champs" : {} ,
         "ne_pas_tester_les_dependances_de_suppression" : 0 ,
         "ne_pas_traiter_la_maj_ts_modification" : 0 ,
@@ -1377,6 +1378,30 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
+                
+        this.#obj_webs['champs_visualisation']=[];
+        for( var i=1 ; i < l01 ; i=tab[i][12] ){
+            if(tab[i][2] === 'f'){
+                /* sélectionner, supprimer , insérer, modifier ... */
+                for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
+                    if(tab[j][1] === 'champs_visualisation' && tab[j][2] === 'f'){
+                        if(tab[j][8]===0){
+                            /* aucun champ de visualisation */
+                        }else{
+                            for( var k=j + 1 ; k < l01 ; k=tab[k][12] ){
+                                if(tab[k][2] === 'f' && tab[k][1] === 'champ' && tab[k][8] === 2 ){
+                                    this.#obj_webs['champs_visualisation'].push([tab[k+1][1] , tab[k+2][1]]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+                    
+        
+        
+        
         this.#obj_webs['champs_sortie']=[];
         for( var i=1 ; i < l01 ; i=tab[i][12] ){
             if(tab[i][2] === 'f'){
