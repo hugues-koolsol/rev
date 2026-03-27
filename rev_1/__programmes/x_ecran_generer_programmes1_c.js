@@ -213,6 +213,8 @@ class x_ecran_generer_programmes1{
         }
         let liste_des_champs_update=[];
         let liste_des_champs_condition_update=[];
+        let liste_des_champs_visualisation_update=[];
+        let matu=null;
         if(ref_update !== ''){
             let objet_requete_update=this.__gi1.__liste_des_sql[ref_update];
             let matrice_update=this.__gi1.__rev1.rev_tm( objet_requete_update.cht_rev_requete );
@@ -221,13 +223,14 @@ class x_ecran_generer_programmes1{
                 return({"__xst" : __xer});
             }
             let matu=matrice_update.__xva;
-            for( let i=1 ; i < matu.length ; i=matu[i][12] ){
+            let lngumat=matu.length;
+            for( let i=1 ; i < lngumat ; i=matu[i][12] ){
                 if(matu[i][1] === 'modifier' && matu[i][2] === 'f'){
-                    for( let j=i + 1 ; j < matu.length ; j=matu[j][12] ){
+                    for( let j=i + 1 ; j < lngumat ; j=matu[j][12] ){
                         if(matu[j][1] === 'valeurs' && matu[j][2] === 'f'){
-                            for( let k=j + 1 ; k < matu.length ; k=matu[k][12] ){
+                            for( let k=j + 1 ; k < lngumat ; k=matu[k][12] ){
                                 if(matu[k][1] === 'affecte' && matu[k][2] === 'f'){
-                                    for( let l=k + 1 ; l < matu.length ; l=matu[l][12] ){
+                                    for( let l=k + 1 ; l < lngumat ; l=matu[l][12] ){
                                         if(matu[l][1] === 'champ' && matu[l][2] === 'f' && matu[l][8] === 1 && matu[l + 1][2] === 'c'){
                                             let nom_du_champ=matu[l + 1][1];
                                             let champ_session=false;
@@ -255,7 +258,7 @@ class x_ecran_generer_programmes1{
                                 }
                             }
                         }else if(matu[j][1] === 'conditions' && matu[j][2] === 'f'){
-                            for( let k=j + 1 ; k < matu.length ; k++ ){
+                            for( let k=j + 1 ; k < lngumat ; k++ ){
                                 if(matu[k][1] === 'champ' && matu[k][2] === 'f' && matu[k + 1][2] === 'c'){
                                     if(matu[k][8] === 1){
                                         let nom_du_champ=matu[k + 1][1];
@@ -278,11 +281,165 @@ class x_ecran_generer_programmes1{
                                     }
                                 }
                             }
+                        }else if(matu[j][1] === 'champs_visualisation' && matu[j][2] === 'f'){
+                            let lngumat=matu.length;
+                            for(let k=j+1 ; k < lngumat ; k=matu[k][12]){
+                                if(matu[k][1]==='champ' && matu[k][2]==='f' && matu[k][8]===2 && matu[k+1][2]==='c'){
+                                    let trouve=false;
+                                    for( let l in liste_des_champs_select){
+                                        if( liste_des_champs_select[l].prefixe_du_champ === matu[k+1][1] && liste_des_champs_select[l].nom_du_champ === matu[k+2][1]){
+                                            /* si le champ est dans le select, on l'intègre */
+                                            let nom_du_champ=matu[k+2][1]
+                                            let prefixe_du_champ = matu[k+1][1];
+                                            
+                                            
+                                            let chi_id_basedd=0;
+                                            let nom_de_la_table='';
+                                            for(let m=i+1 ; m < lngumat && chi_id_basedd===0 ; m=matu[m][12]){
+                                                if(matu[m][1]==='provenance' && matu[m][2]==='f'){
+                                                    for(let n=m+1 ; n < lngumat  && chi_id_basedd===0; n=matu[n][12]){
+                                                        if( ( matu[n][1]==='table_reference' || matu[n][1]==='jointure_croisée' || matu[n][1]==='jointure_gauche' ) && matu[n][2]==='f'){
+                                                            for(let o=n+1 ; o < lngumat ; o=matu[o][12]){
+                                                                if(matu[o][1]==='source' && matu[o][2]==='f'){
+                                                                   for(let p=o+1 ; p < lngumat  && chi_id_basedd===0; p=matu[p][12]){
+                                                                       if(matu[p][1]==='nom_de_la_table' && matu[p][2]==='f'  ){ // && matu[p][8]===1 && matu[p+1][2]==='c' && matu[p+1][1]===prefixe_du_champ
+                                                                           for(let q=p+1 ; q < lngumat  && chi_id_basedd===0; q=matu[q][12]){
+                                                                               if(matu[q][1]==='alias' && matu[q][2]==='f'  && matu[q][8]===1 && matu[q+1][2]==='c' && matu[q+1][1]===prefixe_du_champ){
+                                                                                   for(let r=p+1 ; r < lngumat  && chi_id_basedd===0; r=matu[r][12]){
+                                                                                       if(matu[r][1]==='base' && matu[r][2]==='f'  && matu[r][8]===1 && matu[r+1][2]==='c' ){
+                                                                                           chi_id_basedd=parseInt(matu[r+1][1].replace(/b/,''),10);
+                                                                                           nom_de_la_table=matu[p+1][1];
+                                                                                       }
+                                                                                   }
+                                                                               }
+                                                                           }
+                                                                       }
+                                                                   }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            if(chi_id_basedd>0){
+                                                let champ_dans_la_base={
+                                                   "chi_id_basedd" : chi_id_basedd ,
+                                                   "nom_de_la_table" : nom_de_la_table ,
+                                                   "nom_bref_du_champ" : '' ,
+                                                   "abrege_du_champ" : '' ,
+                                                   "genre" : '' ,
+                                                }
+                                                let matb=this.#les_bases[chi_id_basedd].matrice;
+                                                /*
+                                                  créer_table(
+                                                     nom_de_la_table('clients'),
+                                                     champs(
+                                                        champ(
+                                                           nom_du_champ('chi_id_client'),
+                                                           espece_du_champ(INTEGER),
+                                                           primary_key(1),
+                                                           non_nulle(1),
+                                                           meta(
+                                                              genre_meta(champ),
+                                                              nom_du_champ('chi_id_client'),
+                                                              nom_bref_du_champ('id'),
+                                                              abrege_du_champ('id'),
+                                                              typologie(chi),
+                                                              genre(2)
+                                                
+                                                */
+                                                let lngbmat=matb.length;
+                                                for(let l=1 ; l < lngbmat && !trouve; l=matb[l][12]){
+                                                    if(matb[l][1]==='créer_table' && matb[l][2]==='f'){
+                                                        for(let m=l+1 ; m < lngbmat  && !trouve; m=matb[m][12]){
+                                                            if(matb[m][1]==='nom_de_la_table' && matb[m][2]==='f' && matb[m+1][1] === nom_de_la_table ){
+                                                                for(let o=l+1 ; o < lngbmat  && !trouve; o=matb[o][12]){
+                                                                    if(matb[o][1]==='champs' && matb[o][2]==='f'){
+                                                                        for(let p=o+1 ; p < lngbmat  && !trouve; p=matb[p][12]){
+                                                                            if(matb[p][1]==='champ' && matb[p][2]==='f'){
+                                                                                for(let q=p+1 ; q < lngbmat  && !trouve; q=matb[q][12]){
+                                                                                    if(matb[q][1]==='nom_du_champ' && matb[q][2]==='f'  && matb[q+1][1]===nom_du_champ){
+                                                                                        for(let r=p+1 ; r < lngbmat  && !trouve; r=matb[r][12]){
+                                                                                            if(matb[r][1]==='meta' && matb[r][2]==='f' ){
+                                                                                               for(let s=r+1 ; s < lngbmat ; s=matb[s][12]){
+                                                                                                   if(matb[s][1]==='nom_bref_du_champ' && matb[s][2]==='f' ){
+                                                                                                      champ_dans_la_base.nom_bref_du_champ=matb[s+1][1]
+                                                                                                   }else if(matb[s][1]==='abrege_du_champ' && matb[s][2]==='f' ){
+                                                                                                      champ_dans_la_base.abrege_du_champ=matb[s+1][1]
+                                                                                                   }else if(matb[s][1]==='genre' && matb[s][2]==='f' ){
+                                                                                                      champ_dans_la_base.genre=matb[s+1][1]
+                                                                                                   }
+                                                                                               }
+                                                                                               liste_des_champs_visualisation_update.push({"prefixe_du_champ" : matu[k+1][1], "nom_du_champ" : matu[k+2][1] , champ_dans_la_base : champ_dans_la_base });
+                                                                                               trouve=true;
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    
+                                                }                                                
+//                                                console.log( chi_id_basedd + ' ' + nom_de_la_table + ' ' + matu[k+2][1] )
+                                                break
+                                            }
+                                        }
+                                    }
+                                    if(trouve===false){
+                                        console.log('%c le champ visualisation '+matu[k+1][1]+ '.'+matu[k+2][1]+ 'non trouvé dans la requete select ','color:red;')
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
         }
+        
+        for( let i in liste_des_champs_visualisation_update ){
+            let prefixe_du_champ=liste_des_champs_visualisation_update[i].prefixe_du_champ
+            let nom_du_champ=liste_des_champs_visualisation_update[i].nom_du_champ
+            /*#
+              modifier(
+                 valeurs(
+                    affecte(champ(`fld_visa_commercial_prestation`),:n_fld_visa_commercial_prestation),
+                    affecte(champ(`fld_qte_facturee_prestation`),:n_fld_qte_facturee_prestation),
+                    affecte(champ(`fld_cout_prestation`),:n_fld_cout_prestation),
+                    affecte(champ(`fld_tva_prestation`),:n_fld_tva_prestation)
+                 ),
+                 champs_visualisation(
+                    champ(`T0`,`fld_nom_prestation`),
+                    champ(`T0`,`fld_date_prestation`),
+                    champ(`T0`,`fld_type_prestation`),
+                    champ(`T0`,`fld_qte_prestation`),
+                    champ(`T2`,`fld_nom_mission`)
+                 ),
+                 provenance(
+                    table_reference(
+                       source(nom_de_la_table(prestations,alias(T0),base(b2)))
+                    ),
+                    jointure_croisée(
+                       source(nom_de_la_table(affectations_aux_missions,alias(T1),base(b2)))
+                    ),
+                    jointure_croisée(
+                       source(nom_de_la_table(missions,alias(T2),base(b2)))
+                    )
+                 ),
+                 conditions(egal(champ(`fld_id_prestation`),:c_fld_id_prestation))
+              )  
+            */
+            /* 1°] */
+            
+            
+        }
+        /* pour chaque champ de liste_des_champs_visualisation_update, il faut aller chercher le champ de la base*/
+        
+        
         let update_contient_nur='';
         for(let i in liste_des_champs_condition_update){
             let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_condition_update[i].nom_du_champ];
@@ -815,8 +972,6 @@ class x_ecran_generer_programmes1{
         src_client2+='          __num_page:{type_filtre:\'entier\',défaut:0,masqué:true,nom:\'__num_page\',taille:8},\r\n';
         for(let i in liste_des_champs_condition_liste_ecran){
             let el=liste_des_champs_condition_liste_ecran[i];
-            console.log('el=',el);
-            
             let taille=champ_primaire === el.nom_du_champ && el.préfixe_du_champ === 'T0' ? ( 12 ) : ( 8 );
             try{
                 if(el.préfixe_du_champ === 'T0'
@@ -1496,6 +1651,27 @@ class x_ecran_generer_programmes1{
         src_client2+='        let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];\r\n';
         src_client2+='        this.__gi1.afficher_le_titre_des_zones( \'vv_ecran_modification\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi );\r\n';
         src_client2+='        let o1=\'\';\r\n';
+        
+        
+        
+        for( let i=0 ; i < liste_des_champs_visualisation_update.length ; i++ ){
+            src_client2+='        /*\r\n';
+            src_client2+='          =====================================================================================================\r\n';
+            src_client2+='        */\r\n';
+            src_client2+='        o1+=\'  <div class="yy_edition_champ1">\';\r\n';
+            src_client2+='        o1+=\'    <div class="yy_edition_libelle1">\';\r\n';
+            src_client2+='        o1+=\'      <span>' + liste_des_champs_visualisation_update[i].champ_dans_la_base.abrege_du_champ + '</span>\';\r\n';
+            src_client2+='        o1+=\'    </div>\';\r\n';
+            src_client2+='        o1+=\'    <div class="yy_edition_valeur1">\';\r\n';
+            src_client2+='        if(enreg[\'' + liste_des_champs_visualisation_update[i].prefixe_du_champ + '.' + liste_des_champs_visualisation_update[i].nom_du_champ + '\'] === undefined){\r\n';
+            src_client2+='            o1+=\'        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\\\'est pas inclus dans le SELECT</div>\';\r\n';
+            src_client2+='        }\r\n';
+            src_client2+='        o1+=\'        <span>\';\r\n';
+            src_client2+='        o1+=enreg[\'' + liste_des_champs_visualisation_update[i].prefixe_du_champ + '.' + liste_des_champs_visualisation_update[i].nom_du_champ + '\'];\r\n';
+            src_client2+='        o1+=\'        </span>\';\r\n';
+            src_client2+='        o1+=\'    </div>\';\r\n';
+            src_client2+='        o1+=\'  </div>\';\r\n';
+        }
         for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
             let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
             let obj_champ=this.#obj_table.champs[nom_du_champ];
@@ -1541,7 +1717,6 @@ class x_ecran_generer_programmes1{
                     src_client2+='        o1+=this.__gi1.lien_parent( \'utilisateurs1\' , \'' + obj_champ.nom_du_champ + '\' , \'' + obj_champ.nom_du_champ + '_libelle\' );\r\n';
                     src_client2+='        o1+=\'    </div>\';\r\n';
                     src_client2+='        o1+=\'  </div>\';\r\n';
-                    src_client2+='\r\n';
                 }else{
                     src_client2+='        /*\r\n';
                     src_client2+='          =====================================================================================================\r\n';
@@ -3357,7 +3532,6 @@ class x_ecran_generer_programmes1{
                             src_client2+='        o1 += \'" />\';\r\n';
                             src_client2+='        o1 += \'    <div>\';\r\n';
                             src_client2+='        o1 +=this.__gi1.__fnt1.boutons_edition_text( \'' + obj_champ.nom_du_champ + '\' );\r\n';
-                            src_client2+='        o1 += \'    </div>\';\r\n';
                             if(obj_champ.genre_objet_du_champ.cht_parmis_genre !== null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
                                 let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split( ',' );
                                 src_client2+='        o1 += \'      <br />\';\r\n';
@@ -3368,6 +3542,7 @@ class x_ecran_generer_programmes1{
                                     src_client2+='">' + tab[opt] + '</div>\';\r\n';
                                 }
                             }
+                            src_client2+='        o1 += \'    </div>\';\r\n';
                         }
                     }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
                         src_client2+='        o1 += \'        <div class="yy_conteneur_txtara">\';\r\n';

@@ -748,8 +748,6 @@ class x_ecran_concevoir_une_requete1{
                         this.#obj_webs.champs_visualisation.push([obj.__xva[i+1][1] , obj.__xva[i+2][1]]);
                     }
                 }                
-                debugger
-                
             }else{
                 if(!this.#obj_webs[destination]){
                     this.#obj_webs[destination]=[];
@@ -1613,12 +1611,13 @@ class x_ecran_concevoir_une_requete1{
                 provenance+=CRLF + '      ' + elem.jointure + '(';
                 provenance+=CRLF + '         ' + 'source(';
                 provenance+='nom_de_la_table(';
-                if(this.#obj_webs.type_de_requete === 'update'
-                       || this.#obj_webs.type_de_requete === 'insert'
+                if(
+                       this.#obj_webs.type_de_requete === 'insert'
                        || this.#obj_webs.type_de_requete === 'delete'
                 ){
                     provenance+=elem.nom_de_la_table + ',base(b' + elem.id_bdd + ')';
                 }else{
+                    // this.#obj_webs.type_de_requete === 'update'
                     provenance+=elem.nom_de_la_table + ',alias(T' + elem.indice_table + '),base(b' + elem.id_bdd + ')';
                 }
                 provenance+=')';

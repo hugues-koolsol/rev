@@ -1959,7 +1959,9 @@ class v_svg_bdd1{
         let nom_du_champ='';
         let meta_champ='';
         let mode='';
+        let methode='';
         let zone_du_champ='';
+        let nom_de_la_table='';
         for( let i=d + 1 ; i < mat.length ; i++ ){
             if(mat[i][1] === 'nom_de_la_zone' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 nom_de_la_zone=mat[i + 1][1];
@@ -1971,6 +1973,10 @@ class v_svg_bdd1{
                 mode=mat[i + 1][1];
             }else if(mat[i][1] === 'zone_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 zone_du_champ=mat[i + 1][1];
+            }else if(mat[i][1] === 'methode' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                methode=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_de_la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_table=mat[i + 1][1];
             }
         }
         if(mode === 'nouveau_champ' && nom_de_la_zone !== ''){
@@ -1993,22 +1999,51 @@ class v_svg_bdd1{
             }
         }else{
             if(nom_de_la_zone !== '' && nom_du_champ !== ''){
+                let nom_bref_du_champ='';
+                let tab=nom_du_champ.split( '_' );
+                if(tab[0].length === 3){
+                    if(tab.length >= 2){
+                        tab.splice( 0 , 1 );
+                    }
+                    if(tab.length >= 2){
+                        tab.splice( tab.length - 1 , 1 );
+                    }
+                    nom_bref_du_champ=tab.join( ' ' );
+                }else{
+                    nom_bref_du_champ=nom_du_champ.replace( /_d_/g , ' d\'' ).replace( /_/g , ' ' );
+                }
                 if(meta_champ === 'bref'){
-                    let tab=nom_du_champ.split( '_' );
-                    if(tab[0].length === 3){
-                        if(tab.length >= 2){
-                            tab.splice( 0 , 1 );
+                    try{
+                        document.getElementById( nom_de_la_zone ).value=nom_bref_du_champ;
+                    }catch(e){
+                    }
+                }else if(meta_champ === 'abrege'){
+                    let nom_court_de_la_table='';
+                    if(nom_de_la_table.substr(nom_de_la_table.length-1,1)==='s'){
+                        nom_de_la_table=nom_de_la_table.substr(0,nom_de_la_table.length-1);
+                    }
+                    let tabt=nom_de_la_table.split( '_' );
+                    if(tabt[0].length === 3){
+                        if(tabt.length >= 2){
+                            tabt.splice( 0 , 1 );
                         }
-                        if(tab.length >= 2){
-                            tab.splice( tab.length - 1 , 1 );
+                        if(tabt.length >= 2){
+                            tabt.splice( tab.length - 1 , 1 );
                         }
+                        nom_court_de_la_table=tabt.join( ' ' );
+                    }else{
+                        nom_court_de_la_table=nom_de_la_table.replace( /_d_/g , ' d\'' ).replace( /_/g , ' ' );
+                    }
+                    if(methode==='de_la'){
                         try{
-                            document.getElementById( nom_de_la_zone ).value=tab.join( ' ' );
-                        } catch {}
+                            document.getElementById( nom_de_la_zone ).value=nom_bref_du_champ + ' de la ' + nom_court_de_la_table;
+                        }catch(e){
+                        }
                     }else{
                         try{
-                            document.getElementById( nom_de_la_zone ).value=nom_du_champ.replace( /_d_/g , ' d\'' ).replace( /_/g , ' ' );
-                        } catch {}
+                            document.getElementById( nom_de_la_zone ).value=nom_bref_du_champ + ' du ' + nom_court_de_la_table;
+                        }catch(e){
+                        }
                     }
                 }
             }
@@ -2294,6 +2329,7 @@ class v_svg_bdd1{
         cmd+=' nom_de_la_zone(meta_modifier__nom_bref_du_champ),';
         cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+=' meta_champ(bref)';
+        cmd+=' nom_de_la_table('+nom_de_la_table+')';
         cmd+=')))';
         t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >construire le nom</div>';
         /*  */
@@ -2303,9 +2339,20 @@ class v_svg_bdd1{
         cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
         cmd+=' nom_de_la_zone(meta_modifier__abrege_du_champ),';
         cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-        cmd+=' meta_champ(bref)';
+        cmd+=' meta_champ(abrege)';
+        cmd+=' methode(de_la)';
+        cmd+=' nom_de_la_table('+nom_de_la_table+')';
         cmd+=')))';
-        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >construire le nom</div>';
+        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >construire le nom "de la" </div>';
+        var cmd='';
+        cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
+        cmd+=' nom_de_la_zone(meta_modifier__abrege_du_champ),';
+        cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        cmd+=' meta_champ(abrege)';
+        cmd+=' methode(du)';
+        cmd+=' nom_de_la_table('+nom_de_la_table+')';
+        cmd+=')))';
+        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >construire le nom "du" </div>';
         /*  */
         t+='<br />masquer_champ_dans_svg : ';
         t+='<input type="checkbox" id="masquer_champ_dans_svg" ' + (masquer_champ_dans_svg === 1 ? ( 'checked' ) : ( '' )) + ' />';
