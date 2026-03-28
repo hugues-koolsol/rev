@@ -66,6 +66,46 @@ class v_svg_bdd1{
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
+    
+    /*
+      =============================================================================================================
+      exécute la requête contenue dans $donnees_recues[__xva]['source_sql']
+    */
+    async analyser_l_index( mat , d , donnees_recues , donnees_retournees , options_generales , __db1){
+         /* this.__gi1.ma_trace1('donnees_recues.__xva=',donnees_recues.__xva); */
+         try{
+          
+            let statement=await __db1.prepare( donnees_recues[__xva]['source_sql'] );
+            let lignes=await statement.values();
+            await statement.finalize();
+            let donnees0=[];
+            for(let numero_de_ligne in lignes){
+                /* this.__gi1.ma_trace1(lignes[numero_de_ligne]); */
+                let aa={};
+                aa['T0.'+donnees_recues.__xva['primary_key']] = lignes[numero_de_ligne][0];
+                aa['T1.'+donnees_recues.__xva['primary_key']] = lignes[numero_de_ligne][1];
+                let num_champ=2;
+                for(let i in donnees_recues.__xva['liste_des_champs']){
+                    aa['T0.'+donnees_recues.__xva['liste_des_champs'][i]] = lignes[numero_de_ligne][num_champ++];
+                    aa['T1.'+donnees_recues.__xva['liste_des_champs'][i]] = lignes[numero_de_ligne][num_champ++];
+                }
+//                this.__gi1.ma_trace1('aa=',aa);
+                donnees0.push( aa );
+            }
+            donnees_retournees.__xva['donnees0']=donnees0;
+            donnees_retournees.__xva['liste_des_champs']=donnees_recues.__xva['liste_des_champs'];
+            donnees_retournees.__xva['primary_key']=donnees_recues.__xva['primary_key'];
+            donnees_retournees.__xva['id_svg_rectangle_de_l_index']=donnees_recues.__xva['id_svg_rectangle_de_l_index'];
+            donnees_retournees.__xva['id_svg_conteneur_table']=donnees_recues.__xva['id_svg_conteneur_table'];
+            donnees_retournees.__xva['nom_de_la_table']=donnees_recues.__xva['nom_de_la_table'];
+            donnees_retournees.__xva['id_svg_de_la_base_en_cours']=donnees_recues.__xva['id_svg_de_la_base_en_cours'];
+            donnees_retournees.__xva['operation_table']=donnees_recues[__xva]['operation_table'];
+            donnees_retournees.__xva['id_bdd_de_la_base']=donnees_recues[__xva]['id_bdd_de_la_base'];
+            donnees_retournees.__xva['liste_des_champs_avec_type']=donnees_recues[__xva]['liste_des_champs_avec_type'];
+         }catch(e){
+          this.__gi1.ma_trace1(e.stack);
+         }
+    }
     /*
       =============================================================================================================
       exécute la requête contenue dans $donnees_recues[__xva]['source_sql']
@@ -104,7 +144,7 @@ class v_svg_bdd1{
             return({"__xst" : __xer});
         }
         let chemin_bdd='../rev_' + donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
-        this.__gi1.ma_trace1( 'chemin_bdd=' , chemin_bdd );
+        /* this.__gi1.ma_trace1( 'chemin_bdd=' , chemin_bdd ); */
         let db1=null;
         try{
             db1=await new Database( chemin_bdd , {"create" : false} );
@@ -116,16 +156,26 @@ class v_svg_bdd1{
         if(donnees_recues[__xva]['source_sql'] === ''){
             this.__gi1.__xsi[__xer].push( ' operation_table_dans_base(' + donnees_recues[__xva]['operation_table'] + ') source sql vide [' + this.__gi1.nl2( e ) + ']' );
             donnees_retournees.__xst=__xer;
+            await db1.close();
             return({"__xst" : __xer});
         }
-        try{
-            db1.exec( donnees_recues[__xva]['source_sql'] );
-            this.__gi1.__xsi[__xsu].push( donnees_recues[__xva]['operation_table'] + ' dans la base physique réussie  [' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xsu;
-        }catch(e){
-            this.__gi1.__xsi[__xer].push( ' ' + donnees_recues[__xva]['operation_table'] + ' dans la base physique impossible [' + this.__gi1.nl2( e ) + ']' );
-            /* donnees_retournees.__xst=__xer; */
-            /* return({"__xst" : __xer}); */
+        if(donnees_recues[__xva]['operation_table']==='analyser_l_index'){
+             await this.analyser_l_index(mat , d , donnees_recues , donnees_retournees , options_generales , db1)
+        }else{
+            try{
+                /* this.__gi1.ma_trace1('donnees_recues[__xva][source_sql]='+donnees_recues[__xva]['source_sql']); */
+                db1.exec( donnees_recues[__xva]['source_sql'] );
+                this.__gi1.__xsi[__xsu].push( donnees_recues[__xva]['operation_table'] + ' dans la base physique réussie  [' + this.__gi1.nl2() + ']' );
+                donnees_retournees.__xst=__xsu;
+            }catch(e){
+                await db1.close();
+                /* this.__gi1.ma_trace1('e='+e.stack); */
+                this.__gi1.__xsi[__xer].push( ' ' + donnees_recues[__xva]['operation_table'] + ' dans la base physique impossible  [' + this.__gi1.nl2( e ) + '] <pre>' + donnees_recues[__xva]['source_sql'].replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</pre>' );
+                donnees_retournees.__xst=__xer;
+                return({"__xst" : __xer});
+                /* donnees_retournees.__xst=__xer; */
+                /* return({"__xst" : __xer}); */
+            }
         }
         await db1.close();
         if(donnees_retournees._CA_ === 1 && donnees_retournees.chi_id_projet === 1){
@@ -388,7 +438,7 @@ class v_svg_bdd1{
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        this.__gi1.ma_trace1( 'source' , source );
+        /* this.__gi1.ma_trace1( 'source' , source ); */
         try{
             let res0=await dbtemp.exec( source );
         }catch(e){
@@ -718,7 +768,7 @@ class v_svg_bdd1{
                 complementaire_sans_virtuelles+=' AND tbl_name NOT LIKE \'' + lignes0[i][0] + '_%\'';
             }
         }
-        this.__gi1.ma_trace1( 'lignes0=' , lignes0 , 'complementaire_sans_virtuelles=' , complementaire_sans_virtuelles );
+        /* this.__gi1.ma_trace1( 'lignes0=' , lignes0 , 'complementaire_sans_virtuelles=' , complementaire_sans_virtuelles ); */
         let sql='SELECT tbl_name FROM sqlite_master WHERE  name NOT LIKE \'sqlite_%\' AND type == \'table\' ' + complementaire_sans_virtuelles;
         /* AND tbl_name LIKE \'%o%\' */
         let listeDesTables={};
@@ -780,7 +830,7 @@ class v_svg_bdd1{
             return({"__xst" : __xer});
         }
         let chemin_bdd='../rev_' + donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
-        this.__gi1.ma_trace1( 'chemin_bdd=' , chemin_bdd );
+        /* this.__gi1.ma_trace1( 'chemin_bdd=' , chemin_bdd ); */
         if(!(await this.__gi1.is_file( chemin_bdd ))){
             this.__gi1.__xsi[__xer].push( ' fichier de la base de donnée sqlite introuvable pour la base ' + id_bdd_de_la_base + '[' + this.__gi1.nl2() + ']' );
             donnees_retournees.__xst=__xer;

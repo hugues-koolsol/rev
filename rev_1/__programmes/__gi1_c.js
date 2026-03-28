@@ -20,7 +20,7 @@ const __xac='__xac';
   initialisation_des_zones
   afficher_les_zones
   construire_navigation_pour_liste
-  affiche_sous_fenetre1
+  popup_sous_fenetre_lien_parent1
   quand_click
   envoyer_un_message_au_worker
 */
@@ -104,6 +104,7 @@ class __gi1{
                     try{
                         if( typeof e.target['close'] === 'function'){
                             try{
+                                document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
                                 e.target.removeAttribute( 'style' );
                             } catch {}
                             e.target.close();
@@ -231,7 +232,7 @@ class __gi1{
                 txt+='Erreur coté serveur';
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : txt} );
             }
-            this.fermer_la_sous_fenetre();
+            /* this.fermer_la_sous_fenetre(); */
             this.affiche_les_messages();
             this.retablir_les_boutons_masques( le_message );
             return({"__xst" : __xer});
@@ -269,7 +270,7 @@ class __gi1{
             }
         }
         if(un_message_trouve === true){
-            this.affiche_les_messages();
+            this.affiche_les_messages( null , le_message );
             if(un_message_d_erreur_trouve === true){
                 return({"__xst" : __xer});
             }else{
@@ -574,8 +575,8 @@ class __gi1{
                                     if(obj3.hasOwnProperty( '__xme' )){
                                         this.ajoute_message( {"__xst" : __xer ,"__xme" : obj3.__xme} );
                                     }else{
-                                        debugger;
-                                        this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
+                                        console.log( '%c'+this.nl2() , 'background:black;color:yellow;');
+//                                        this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
                                     }
                                 }
                                 this.affiche_les_messages();
@@ -1171,42 +1172,6 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    #faire_disparaitre_les_messages_OK( e ){
-        /* console.log( '#faire_disparaitre_les_messages_OK' ); */
-        let au_moins_un_a_garder=false;
-        this.#timeout_de_dispatition_de_message=null;
-        let rac=document.getElementById( 'vv_messages' );
-        let lst=rac.getElementsByTagName( 'div' );
-        let a_supprimer=[];
-        /* console.log(lst); */
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(lst[i].parentNode === rac){
-                if(lst[i].id && lst[i].id === 'vv_supprimer_les_messages'){
-                }else{
-                    if(lst[i].className
-                           && (lst[i].className.indexOf( 'yy__1' ) >= 0
-                               || lst[i].className.indexOf( 'yy__3' ) >= 0
-                               || lst[i].className.indexOf( 'yy__xsu' ) >= 0
-                               || lst[i].className.indexOf( 'yy__xif' ) >= 0)
-                    ){
-                        a_supprimer.push( i );
-                    }else{
-                        au_moins_un_a_garder=true;
-                    }
-                }
-            }
-        }
-        if(au_moins_un_a_garder === false){
-            this.supprimer_les_messages( null );
-        }else{
-            for( let i=a_supprimer.length - 1 ; i >= 0 ; i-- ){
-                lst[a_supprimer[i]].remove();
-            }
-        }
-    }
-    /*
-      =============================================================================================================
-    */
     masquer_ou_afficher( mat , ind ){
         let l01=mat.length;
         let zone_source='';
@@ -1251,10 +1216,14 @@ class __gi1{
       =============================================================================================================
     */
     agrandir_la_zone_message(){
-        if(document.getElementById( 'vv_messages' ).style.maxHeight !== '70vh'){
-            document.getElementById( 'vv_messages' ).style.maxHeight='70vh';
+        let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+        if(a1===null){
+           a1=document.getElementById( 'vv_messages' );
+        }
+        if(a1.style.maxHeight !== '70vh'){
+            a1.style.maxHeight='70vh';
         }else{
-            document.getElementById( 'vv_messages' ).style.maxHeight='20vh';
+            a1.style.maxHeight='20vh';
         }
         return({"__xst" : __xsu});
     }
@@ -1262,8 +1231,12 @@ class __gi1{
       =============================================================================================================
     */
     supprimer_les_messages( mat ){
-        document.getElementById( 'vv_messages' ).innerHTML='';
-        document.getElementById( 'vv_messages' ).style.visibility='hidden';
+        let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+        if(a1===null){
+           a1=document.getElementById( 'vv_messages' );
+        }
+        a1.innerHTML='';
+        a1.style.visibility='hidden';
         return({"__xst" : __xsu});
     }
     /*
@@ -1282,7 +1255,10 @@ class __gi1{
         }
         try{
             let t='';
-            let a1=document.getElementById( 'vv_messages' );
+            let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+            if(a1===null){
+               a1=document.getElementById( 'vv_messages' );
+            }
             let la_classe=this.est_num( obj.__xst ) ? ( 'yy__' + obj.__xst ) : ( 'yy' + obj.__xst );
             if(obj.hasOwnProperty( 'lig_col' )){
                 t+='<div';
@@ -1307,7 +1283,7 @@ class __gi1{
                 let temp=document.createElement( 'div' );
                 temp.setAttribute( 'class' , la_classe );
                 temp.innerHTML=t;
-                document.getElementById( 'vv_messages' ).insertBefore( temp , document.getElementById( 'vv_messages' ).firstChild );
+                a1.insertBefore( temp , document.getElementById( 'vv_messages' ).firstChild );
                 this.ajoute_les_evenements_aux_boutons();
             }
         }catch(e2){
@@ -1323,25 +1299,84 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    affiche_les_messages( obj=null ){
+    #faire_disparaitre_les_messages_OK( e ){
+        /* console.log( '#faire_disparaitre_les_messages_OK' ); */
+        let au_moins_un_a_garder=false;
+        this.#timeout_de_dispatition_de_message=null;
+        let rac=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+        if(rac===null){
+            rac=document.getElementById( 'vv_messages' )
+        }
+        let lst=rac.getElementsByTagName( 'div' );
+        let a_supprimer=[];
+        /* console.log(lst); */
+        for( let i=0 ; i < lst.length ; i++ ){
+            if(lst[i].parentNode === rac){
+                if(lst[i].id && lst[i].id === 'vv_supprimer_les_messages'){
+                }else{
+                    if(lst[i].className
+                           && (lst[i].className.indexOf( 'yy__1' ) >= 0
+                               || lst[i].className.indexOf( 'yy__3' ) >= 0
+                               || lst[i].className.indexOf( 'yy__xsu' ) >= 0
+                               || lst[i].className.indexOf( 'yy__xif' ) >= 0)
+                    ){
+                        a_supprimer.push( i );
+                    }else{
+                        au_moins_un_a_garder=true;
+                    }
+                }
+            }
+        }
+        if(au_moins_un_a_garder === false){
+            this.supprimer_les_messages( null );
+        }else{
+            for( let i=a_supprimer.length - 1 ; i >= 0 ; i-- ){
+                lst[a_supprimer[i]].remove();
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    affiche_les_messages( obj=null , le_message_du_serveur=null ){
+
         if(obj !== null){
             this.ajoute_message( obj );
         }
-        let lst=document.getElementById( 'vv_messages' ).getElementsByTagName( 'div' );
+        let dans_sous_fenetre=true;
+        let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' )
+        if(a1===null){
+            a1=document.getElementById( 'vv_messages' )
+            dans_sous_fenetre=false;
+        }
+        
+        let lst=a1.getElementsByTagName( 'div' );
         for( let i=lst.length - 1 ; i >= 0 ; i-- ){
             if(lst[i].id === "vv_supprimer_les_messages"){
                 lst[i].remove();
                 break;
             }
         }
-        if(document.getElementById( 'vv_messages' ).innerHTML === ''){
+        if(a1.innerHTML === ''){
+            let texte_a_afficher='rien à dire :-)'
+            if(le_message_du_serveur !== null){
+                let cumul='';
+                for( let i in le_message_du_serveur.__xsi){
+                    for(let j in le_message_du_serveur.__xsi[i]){
+                        cumul+='<br />'+le_message_du_serveur.__xsi[i];
+                    }
+                }
+                if(cumul!=''){
+                    texte_a_afficher=cumul.substr(6);
+                }
+            }
             let vv_supprimer_les_messages=document.createElement( 'div' );
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
             vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
             vv_supprimer_les_messages.style.position='sticky';
-            vv_supprimer_les_messages.innerHTML='Rien à dire';
+            vv_supprimer_les_messages.innerHTML=texte_a_afficher;
             vv_supprimer_les_messages.style.top='0';
-            document.getElementById( 'vv_messages' ).insertBefore( vv_supprimer_les_messages , document.getElementById( 'vv_messages' ).firstChild );
+            a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
         }else{
             let vv_supprimer_les_messages=document.createElement( 'div' );
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
@@ -1350,15 +1385,23 @@ class __gi1{
             vv_supprimer_les_messages.style.top='0';
             let t='';
             t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__gi1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
-            t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__gi1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + this.les_svg.retrecir + '</div>';
-            t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__gi1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+            if(dans_sous_fenetre===false){
+                t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__gi1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + this.les_svg.retrecir + '</div>';
+                t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__gi1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+            }
             vv_supprimer_les_messages.innerHTML=t;
-            document.getElementById( 'vv_messages' ).insertBefore( vv_supprimer_les_messages , document.getElementById( 'vv_messages' ).firstChild );
+            a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
             this.ajoute_les_evenements_aux_boutons();
+            if(dans_sous_fenetre===true){
+              if(a1.innerHTML.indexOf('class="yy__0"')>=0 || a1.innerHTML.indexOf('class="yy__2"')>=0){
+                try{
+                 document.getElementById('vv_sous_fenetre1').scrollTo({"top" : 0 ,"left" : 0 ,"behavior" : "smooth"});
+                }catch{};
+              }
+            }
         }
         try{
-            let a1=document.getElementById( 'vv_messages' ).innerHTML;
-            document.getElementById( 'vv_messages' ).style.visibility='visible';
+            a1.style.visibility='visible';
             this.ajoute_les_evenements_aux_boutons();
         }catch(e2){}
         if(this.#timeout_de_dispatition_de_message === null){
@@ -2021,6 +2064,7 @@ class __gi1{
         }else{
             /* nouvel accès */
         }
+        this.__deverminage=this.stockage_local['parametres']['__deverminage'].valeur;
     }
     /*
       =============================================================================================================
@@ -3282,10 +3326,27 @@ class __gi1{
     /*
       =============================================================================================================
     */
+    ma_trace1( ...p ){
+        if(this.__deverminage === 0){
+            return;
+        }
+        console.log( '%c===============================================================================================' , 'background-color:black;color:white;' );
+        let tab=(new Error()).stack.split( '\n' );
+        let e=tab[2];
+        console.log( '->' + e );
+        for(let a of p){
+            console.log( a );
+        }
+        console.log( '' );
+    }
+    /*
+      =============================================================================================================
+    */
     fermer_la_sous_fenetre( mat , d ){
         try{
             this.#la_sous_fenetre1.removeAttribute( 'style' );
         } catch {}
+        document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
         this.#la_sous_fenetre1.close();
         return({"__xst" : __xsu});
     }
@@ -3320,7 +3381,18 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    affiche_sous_fenetre1( mat , d ){
+    affiche_sous_fenetre1( le_cheml ){
+        let contenu_a_afficher='<div id="vv_les_messages_dans_la_sous_fenetre"></div>';
+        contenu_a_afficher+=le_cheml;
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.innerHTML=contenu_a_afficher;
+        vv_sous_fenetre1.showModal();
+        this.ajoute_les_evenements_aux_boutons( null );
+    }
+    /*
+      =============================================================================================================
+    */
+    popup_sous_fenetre_lien_parent1( mat , d ){
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'pm1' && mat[i][2] === 'f' && mat[i][8] > 0){
@@ -3364,7 +3436,7 @@ class __gi1{
     */
     lien_parent( module1 , champ_fils , id_span_libelle ){
         let o1='';
-        o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__gi1),f1(affiche_sous_fenetre1(';
+        o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__gi1),f1(popup_sous_fenetre_lien_parent1(';
         o1+=' pm1(m1(n1(' + module1 + '),f1(sous_liste1(';
         o1+='  nom_champ_dans_parent1(' + champ_fils + ')';
         o1+='  nom_libelle_dans_parent1(' + id_span_libelle + ')';

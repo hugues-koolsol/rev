@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1059','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1064','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -6947,7 +6947,72 @@ Tant pis pour les perfs','99','2026-01-28 13:24:25.130','2026-01-28 07:36:15.027
 ('352','1','NON
 faire un fichier contenant les chemins relatifs du projet','99','2026-02-21 14:02:43.102','2026-01-28 15:31:08.195','0','00_00_00'),
 ('353','1','REFERENCES departments(department_id) ON UPDATE CASCADE','99','2026-01-28 17:38:57.899','2026-01-28 16:04:48.722','0','00_00_00'),
-('354','1','.output path/to/your/backup.sql
+('354','1','
+sur base 2
+
+.headers on
+.mode csv
+.output ../__fichiers_binaires/missions.csv
+select * from missions;
+.quit
+
+chi_id_mission,fld_nom_mission,fld_date_debut_mission,fld_date_fin_mission,fld_id_client_mission,fld_description_mission,fld_environnement_technique_mission,fld_nom_bref_mission,fld_id_commercial_mission
+1,"Responsable technique",2001-11-01,2005-12-31,11,"Responsable informatique et télécommunications
+","W2000 server,
+Exchange,
+Pershing: macros Excel
+macros word pour etudes,
+macros word pour flash,
+bureautique,
+Configuration logicielle et installation des PC,
+Bloomberg,
+Reuters,
+firewall,
+téléphonie,
+Colt,
+France Télécom","Rsp tech",4
+8,"Interface Base média",2003-11-20,2003-12-19,19,"Interface Base Media","PHP MySql, sun",BaseMedia,4
+9,"Interface Base mobiles",2003-12-22,2003-12-30,19,"Interface de gestion de la base des téléphones mobiles de plurimedia","php MySql",BaseMobiles,4
+29,test,,,25,"description 
+test 0
+test 1 '' ""€"" 
+test 2 test",test,test,4
+
+
+
+===============================
+
+
+sur base 1
+.headers on
+.mode csv
+.output ../__fichiers_binaires/rpps.csv
+select * from rpps;
+.quit
+
+numero_de_ligne,type_d_identifiant_pp,identifiant_pp,identification_nationale_pp,code_civilite_d_exercice,libelle_civilite_d_exercice,code_civilite,libelle_civilite,nom_d_exercice,prenom_d_exercice,code_profession,libelle_profession,code_categorie_professionnelle,libelle_categorie_professionnelle,code_type_savoir_faire,libelle_type_savoir_faire,code_savoir_faire,libelle_savoir_faire,code_mode_exercice,libelle_mode_exercice,numero_siret_site,numero_siren_site,numero_finess_site,numero_finess_etablissement_juridique,identifiant_technique_de_la_structure,raison_sociale_site,enseigne_commerciale_site,complement_destinataire__coord__structure_,complement_point_geographique__coord__structure_,numero_voie__coord__structure_,indice_repetition_voie__coord__structure_,code_type_de_voie__coord__structure_,libelle_type_de_voie__coord__structure_,libelle_voie__coord__structure_,mention_distribution__coord__structure_,bureau_cedex__coord__structure_,code_postal__coord__structure_,code_commune__coord__structure_,libelle_commune__coord__structure_,code_pays__coord__structure_,libelle_pays__coord__structure_,telephone__coord__structure_,telephone_2__coord__structure_,telecopie__coord__structure_,adresse_e_mail__coord__structure_,code_departement__structure_,libelle_departement__structure_,ancien_identifiant_de_la_structure,autorite_d_enregistrement,code_secteur_d_activite,libelle_secteur_d_activite,code_section_tableau_pharmaciens,libelle_section_tableau_pharmaciens,code_role,libelle_role,code_genre_activite,libelle_genre_activite
+2,8,10000001494,810000001494,,,MME,Madame,GRANDISSON,JACQUELINE,50,Sage-Femme,C,Civil,,,"",,,"",,,,,"",,,,,,,,,,,,,,,,,,,,,,,,CNOSF//,,,"",,,,,
+3,8,10000001866,810000001866,DR,Docteur,M,Monsieur,TELCHID,CHRISTIAN,40,Chirurgien-Dentiste,C,Civil,,,"",,L,"Lib,indép,artis,com",,,,,R10000002521234,"Cabinet du Dr TELCHID",,,,46,,,,"BOULEVARD DELGRES",,"97130 CAPESTERRE BELLE EAU",97130,97107,Capesterre-Belle-Eau,,,,,,,,,410000001866001,ONCD/ONCD/ONCD,SA07,"Cabinet individuel","",,FON-01,"Titulaire de cabinet",GENR01,"Activité standard de soin ou de pharmacien"
+4,8,10000002179,810000002179,DR,Docteur,M,Monsieur,PIQUION,HENRI,40,Chirurgien-Dentiste,C,Civil,,,"",,,"",,,,,"",,,,,,,,,,,,,,,,,,,,,,,,ONCD//,,,"",,,,,
+
+
+===============================
+
+sqlite> .headers on
+sqlite> .mode csv
+sqlite> .output ../output.csv
+sqlite> select * from prestations;
+sqlite> .quit
+
+fld_id_prestation,fld_nom_prestation,fld_date_prestation,fld_type_prestation,fld_qte_prestation,fld_id_affectation_prestation,fld_heure_debut_prestation,fld_visa_commercial_prestation,fld_qte_facturee_prestation,fld_cout_prestation,fld_tva_prestation,fld_id_facture_prestation,fld_cntupd_prestation
+2,"Pershing + portable bhusson + office 2000 US Gregoire",2002-11-08,HORAIRE,3.5,1,15:00:00,1,1.5,75.0,19.6,2,0
+3,"Installation de Reuters Messaging avec py + outlook BH",2002-11-07,HORAIRE,7,1,08:30:00,1,0.5,75.0,19.6,2,0
+
+
+===============================
+
+
+.output path/to/your/backup.sql
 .dump
 exit
 
@@ -6962,7 +7027,7 @@ quit
 .mode insert
 .output path/to/data.sql
 SELECT * FROM employees;
-','51','2026-02-05 07:40:19.225','2026-01-30 07:21:59.529','0','00_00_00'),
+','51','2026-03-28 17:54:48.407','2026-01-30 07:21:59.529','0','00_00_00'),
 ('355','1','utiliser les chemins en "dur" et mettre en "dur" les dossiers principaux dans la màj des dossiers','99','2026-03-03 10:59:10.216','2026-01-30 07:24:11.021','0','00_00_00'),
 ('356','1','mettre les bases dans le dossier __bases_de_donnees','99','2026-01-30 09:26:42.052','2026-01-30 07:24:43.618','0','00_00_00'),
 ('357','1','renommer __client1 en __programmes','99','2026-01-30 09:26:40.200','2026-01-30 07:25:12.194','0','00_00_00'),
@@ -7884,5 +7949,56 @@ select count(*) FROM rpps;
 
 
 ','99','2026-03-22 09:19:51.493','2026-03-21 10:39:43.949','0','00_00_00'),
-('423','1','champ à visualiser dans une requête update','1','2026-03-26 16:37:15.572','2026-03-26 16:37:15.572','0','00_00_00');
+('423','1','champ à visualiser dans une requête update','99','2026-03-27 12:18:15.902','2026-03-26 16:37:15.572','0','00_00_00'),
+('424','1','analyser un index unique
+
+UPDATE prestations SET fld_nom_prestation = CONCAT( fld_nom_prestation , ''[1]'' ) WHERE fld_id_prestation = 3092 ;
+UPDATE prestations SET fld_nom_prestation = CONCAT( fld_nom_prestation , ''[1]'' ) WHERE fld_id_prestation = 3084 ;
+UPDATE prestations SET fld_nom_prestation = CONCAT( fld_nom_prestation , ''[1]'' ) WHERE fld_id_prestation = 3022 ;
+UPDATE prestations SET fld_nom_prestation = CONCAT( fld_nom_prestation , ''[1]'' ) WHERE fld_id_prestation = 1955 ;
+
+update prestations set fld_nom_prestation = ''orbt Offre d''''essai Tonalité phase 3'' where fld_id_prestation = 1955;
+update prestations set fld_nom_prestation = ''tsmw'' where fld_id_prestation = 3022;
+update prestations set fld_nom_prestation = ''airbus safran et asl : mise en ppr'' where fld_id_prestation = 3084;
+update prestations set fld_nom_prestation = ''evrest national : modification des pages salarié'' where fld_id_prestation = 3092;
+
+
+update prestations set fld_nom_prestation = ''orbt Offre d''''essai Tonalité phase 3 - 1'' where fld_id_prestation = 1955;
+update prestations set fld_nom_prestation = ''tsmw - 1'' where fld_id_prestation = 3022;
+update prestations set fld_nom_prestation = ''airbus safran et asl : mise en ppr - 1'' where fld_id_prestation = 3084;
+update prestations set fld_nom_prestation = ''evrest national : modification des pages salarié - 1'' where fld_id_prestation = 3092;
+
+SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.fld_nom_prestation , T0.fld_id_facture_prestation , T1.fld_id_facture_prestation , T0.fld_date_prestation
+ FROM prestations T0 , prestations T1 
+ WHERE T0.fld_nom_prestation = T1.fld_nom_prestation 
+ AND T0.fld_date_prestation = T1.fld_date_prestation 
+ AND T0.fld_type_prestation = T1.fld_type_prestation 
+ AND T0.fld_id_affectation_prestation = T1.fld_id_affectation_prestation
+ AND T0.fld_id_prestation <> T1.fld_id_prestation
+ LIMIT 50;
+
+
+
+
++───────────────────┬───────────────────┬──────────────────────────────────────────────────┬──────────────────────────────────────────────────+
+│ fld_id_prestation │ fld_id_prestation │                fld_nom_prestation                │                fld_nom_prestation                │
+╞═══════════════════╪═══════════════════╪══════════════════════════════════════════════════╪══════════════════════════════════════════════════╡
+│              1955 │              1958 │ orbt Offre d''essai Tonalité phase 3              │ orbt Offre d''essai Tonalité phase 3              │
+│              1958 │              1955 │ orbt Offre d''essai Tonalité phase 3              │ orbt Offre d''essai Tonalité phase 3              │
+│              3022 │              3024 │ tsmw                                             │ tsmw                                             │
+│              3024 │              3022 │ tsmw                                             │ tsmw                                             │
+│              3084 │              3085 │ airbus safran et asl : mise en ppr               │ airbus safran et asl : mise en ppr               │
+│              3085 │              3084 │ airbus safran et asl : mise en ppr               │ airbus safran et asl : mise en ppr               │
+│              3092 │              3093 │ evrest national : modification des pages salarié │ evrest national : modification des pages salarié │
+│              3093 │              3092 │ evrest national : modification des pages salarié │ evrest national : modification des pages salarié │
++───────────────────┴───────────────────┴──────────────────────────────────────────────────┴──────────────────────────────────────────────────+
+
+SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.fld_nom_prestation 
+ FROM prestations T0 , prestations T1 
+ WHERE T0.fld_nom_prestation = T1.fld_nom_prestation 
+ AND T0.fld_date_prestation = T1.fld_date_prestation 
+ AND T0.fld_type_prestation = T1.fld_type_prestation 
+ AND T0.fld_id_affectation_prestation = T1.fld_id_affectation_prestation
+ AND T0.fld_id_prestation <> T1.fld_id_prestation
+ LIMIT 50;','99','2026-03-28 17:36:14.049','2026-03-27 13:22:44.220','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
