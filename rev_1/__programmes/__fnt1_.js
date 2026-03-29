@@ -160,6 +160,57 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    tester_longueur_de_champ_dans_genre( valeur , nom_champ ){
+     
+        if(valeur===null || valeur === ''){
+            return({"__xst" : __xsu});
+        }
+        if(this.__gi1.est_num(valeur)){
+            
+            let v=parseFloat(valeur);
+            /* si on a entré "3.4" 34  est différent de 30 ) */
+            if(v*10 !== parseInt(v,10)*10){
+                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir une nombre avec une virgule ( "," )' + this.__gi1.nl2()} );
+                return({"__xst" : __xer});
+            }
+            /* si on a entré 10e21 */
+            if(v>20){
+                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être < 20 ' + this.__gi1.nl2()} );
+                return({"__xst" : __xer});
+            }
+            return({"__xst" : __xsu});
+        }
+        let contient_virgule=false;
+        for(let i=0;i<valeur.length;i++){
+            let c=valeur.substr(i,1);
+            if( (c >= '0' && c <= '9' ) || c === ',' ){
+                if(c===','){
+                    contient_virgule=true;
+                }
+            }else{
+                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir des chiffres et/ou des virgules' + this.__gi1.nl2()} );
+                return({"__xst" : __xer});
+            }
+        }
+        if(contient_virgule===true){
+            let tab=valeur.split(',');
+            if(tab.length>2){
+                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit  contenir une virgule uniquement' + this.__gi1.nl2()} );
+                return({"__xst" : __xer});
+            }
+            let val1=parseInt(tab[0],10);
+            let val2=parseInt(tab[1],10);
+            if(val1+val2>20){
+                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" contenir une longueur cumulée de 20' + this.__gi1.nl2()} );
+                return({"__xst" : __xer});
+            }
+        }
+        return({"__xst" : __xsu});
+        
+    }
+    /*
+      =============================================================================================================
+    */
     doit_contenir_n_caracteres( n , valeur , nom_champ ){
         if(valeur && valeur.length === n){
             return({"__xst" : __xsu});

@@ -282,7 +282,7 @@ CREATE TABLE `tbl_metiers`(
    table('tbl_metiers'),
    genre_meta(table_de_base),permet_la_gestion_de('metier'),
    distinction_pour_liste('liste des metiers'),
-   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(38,350))) 
+   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(34,252))) 
 */
     
             /*
@@ -424,7 +424,7 @@ CREATE TABLE `tbl_utilisateurs`(
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),permet_la_gestion_de('utilisateur'),
    distinction_pour_liste('liste des utilisateurs'),
-   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(651,692))) 
+   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(326,288))) 
 */
     
             /*
@@ -1079,12 +1079,12 @@ CREATE TABLE `tbl_genres`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_longueur_genre'),
-            nom_bref_du_champ('longueur'),abrege_du_champ('longueur'),
-            typologie(che),
-            genre(7)
+            nom_bref_du_champ('longueur'),abrege_du_champ('longueur du genre'),
+            typologie(chp),
+            genre(110)
             )
             */
-             `che_longueur_genre` INTEGER
+             `che_longueur_genre` VARCHAR(20) DEFAULT  NULL
     ,
     
             /*
@@ -1804,7 +1804,7 @@ CREATE TABLE `tbl_taches`(
    table('tbl_taches'),
    genre_meta(table_de_base),permet_la_gestion_de('tâche'),
    distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(361,329))) 
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(701,696))) 
 */
     
             /*
@@ -1828,7 +1828,7 @@ CREATE TABLE `tbl_taches`(
             genre(18),est_en_session(1),nom_en_session('chi_id_utilisateur')
             )
             */
-             `chx_utilisateur_tache` INTEGER NOT NULL
+             `chx_utilisateur_tache` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur)  ON UPDATE CASCADE
     ,
     
             /*
@@ -1893,7 +1893,19 @@ CREATE TABLE `tbl_taches`(
             )
             */
              `che__nur_tache` INTEGER NOT NULL DEFAULT  0
-    , `chd_une_heure_tache` VARCHAR(8) NOT NULL DEFAULT  '00_00_00');
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd_une_heure_tache'),
+            nom_bref_du_champ('une heure'),abrege_du_champ('une heure'),
+            typologie(chd),
+            genre(23)
+            )
+            */
+             `chd_une_heure_tache` VARCHAR(8) NOT NULL DEFAULT  '00_00_00'
+    );
 
 
 

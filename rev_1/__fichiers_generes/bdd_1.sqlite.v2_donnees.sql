@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1064','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1066','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -260,7 +260,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(4.5,2.5))
+   transform_base_sur_svg(translate(3.5,9.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_revs''),
@@ -596,7 +596,7 @@ créer_table(
       distinction_pour_liste(''liste des metiers''),
       distinction_pour_isad(''d\''un metier''),
       fonctions_spéciales1(''ne_pas_supprimer_id_un(2)''),
-      transform_base_sur_svg(translate(38,350))
+      transform_base_sur_svg(translate(34,252))
    ),
    champs(
       champ(
@@ -777,7 +777,7 @@ créer_table(
       distinction_pour_liste(''liste des utilisateurs''),
       distinction_pour_isad(''d\''un utilisateur''),
       fonctions_spéciales1(''ne_pas_supprimer_id_un(2)''),
-      transform_base_sur_svg(translate(651,692))
+      transform_base_sur_svg(translate(326,288))
    ),
    champs(
       champ(
@@ -1597,14 +1597,18 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che_longueur_genre''),
-         espece_du_champ(INTEGER),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(20),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(NULL),
          meta(
             genre_meta(champ),
             nom_du_champ(''che_longueur_genre''),
             nom_bref_du_champ(''longueur''),
-            abrege_du_champ(''longueur''),
-            typologie(che),
-            genre(7)
+            abrege_du_champ(''longueur du genre''),
+            typologie(chp),
+            genre(110)
          )
       ),
       champ(
@@ -2508,7 +2512,7 @@ créer_table(
       permet_la_gestion_de(''tâche''),
       distinction_pour_liste(''liste des tâches''),
       distinction_pour_isad(''d\''une tâche''),
-      transform_base_sur_svg(translate(361,329))
+      transform_base_sur_svg(translate(701,696))
    ),
    champs(
       champ(
@@ -2529,6 +2533,7 @@ créer_table(
          nom_du_champ(''chx_utilisateur_tache''),
          espece_du_champ(INTEGER),
          non_nulle(1),
+         references(tbl_utilisateurs,chi_id_utilisateur),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_utilisateur_tache''),
@@ -2635,18 +2640,10 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''chd_une_heure_tache''),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(8),
-            typologie(chd),
-            genre(23),
             nom_bref_du_champ(''une heure''),
             abrege_du_champ(''une heure''),
-            masquer_champ_dans_svg(0),
-            est_en_session(0),
-            nom_en_session(''''),
-            refe_enfant_droite(0),
-            refe_parent_gauche(0),
-            est_libelle_lien(0)
+            typologie(chd),
+            genre(23)
          )
       )
    )
@@ -2740,7 +2737,7 @@ INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chp_nom_autorisation ,  
 
 /*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 */
 INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ,  che_est_session_genre ,  chp_nom_en_session_genre ,  che_est_positif_genre ,  cht_particularités_genre ) VALUES
-('1','***indéfini***','35','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('1','***indéfini***','36','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2025-09-25 16:55:08.841','18','0',NULL,'1',NULL),
 ('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('4','lien NON NULL','5','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
@@ -2774,7 +2771,8 @@ INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  ch
 ('106','nom de fichier','32','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('107','fonctions de champ','33','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_fonctions_de_c_fonctions1()','0','0','0','2000-01-01 00:00:00.000','2025-10-03 18:16:54.710','3','0',NULL,'0',NULL),
 ('108','nom de dossier','31','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('109','id projet','34','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-07 09:46:49.711','2026-01-17 12:57:08.547','3','1','chi_id_projet','0',NULL);
+('109','id projet','34','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-07 09:46:49.711','2026-01-17 12:57:08.547','3','1','chi_id_projet','0',NULL),
+('110','longueur de champ','35','chp','VARCHAR','20','0','0','0','1','0','NULL','0',NULL,'tester_longueur_de_champ_dans_genre()','0','0','0','2026-03-29 13:29:01.613','2026-03-29 13:33:00.985','2','0',NULL,'0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
 
 
@@ -4485,7 +4483,6 @@ ORDER BY `T0`.`che_ordre_genre` ASC, `T0`.`chi_id_genre` DESC
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'7','2025-09-07 08:23:14.064','2000-01-01 00:00:00.000','1','tbl_genres'),
 ('329','genres','insert','insérer(
-
    valeurs(
       affecte(champ(`chp_nom_genre`),:chp_nom_genre),
       affecte(champ(`che_ordre_genre`),:che_ordre_genre),
@@ -4609,7 +4606,6 @@ LIMIT :quantitee OFFSET :debut
 WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
 ;',NULL,'3','2025-09-07 08:23:12.681','2000-01-01 00:00:00.000','1','tbl_genres'),
 ('331','genres','update','modifier(
-
    valeurs(
       affecte(champ(`chp_nom_genre`),:n_chp_nom_genre),
       affecte(champ(`che_ordre_genre`),:n_che_ordre_genre),
@@ -4637,7 +4633,7 @@ WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
    ),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_genres,base(b1)))
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
       )
    ),
    conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
@@ -4722,11 +4718,10 @@ WHERE `chi_id_genre` = :chi_id_genre ;',NULL,'3','2025-09-07 08:23:11.023','2000
  FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
 ('334','genres nouveau numéro','update','modifier(
-
    valeurs(affecte(champ(`chi_id_genre`),:n_chi_id_genre)),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_genres,base(b1)))
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
       )
    ),
    conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
@@ -4734,11 +4729,10 @@ WHERE `chi_id_genre` = :chi_id_genre ;',NULL,'3','2025-09-07 08:23:11.023','2000
    `chi_id_genre` = :n_chi_id_genre
 WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
 ('335','genres maj ordre','update','modifier(
-
    valeurs(affecte(champ(`che_ordre_genre`),:n_che_ordre_genre)),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_genres,base(b1)))
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
       )
    ),
    conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
@@ -6332,7 +6326,7 @@ ou si le champ appartient à un index','99','2000-01-01 00:00:00','2000-01-01 00
 sql_dependances()','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','00_00_00'),
 ('113','1','renommer un champ d''index','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','00_00_00'),
 ('114','1','dans le concepteur de requete, mettre les champs mis à jour pour un update sur plusieurs lignes','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','00_00_00'),
-('115','1','mettre en place des dépendances de champ sur des bases externes','2','2026-03-18 08:27:59.830','2000-01-01 00:00:00.000','0','00_00_00'),
+('115','1','mettre en place des dépendances de champ sur des bases externes','99','2026-03-29 11:56:31.090','2000-01-01 00:00:00.000','0','00_00_00'),
 ('116','1','ajouter le test des dépendances dans les php delete','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','00_00_00'),
 ('117','1','renommer une table dans le base','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','00_00_00'),
 ('118','1','sources','99','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','00_00_00'),

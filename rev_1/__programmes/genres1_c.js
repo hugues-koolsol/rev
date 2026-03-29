@@ -288,6 +288,16 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let __test_4_1=this.__gi1.__fnt1.tester_longueur_de_champ_dans_genre( fo1['che_longueur_genre'] , 'longueur' );
+        if(__test_4_1.__xst !== __xsu){
+            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
+            this.__gi1.affiche_les_messages();
+            this.__gi1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_longueur_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         if(fo1['che_est_primaire_genre'] === ''){
             this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est primaire" doit être renseigné'} );
             this.__gi1.affiche_les_messages();
@@ -411,7 +421,6 @@ class genres1{
         /* conversion des données numériques début */
         fo1['chi_id_genre']=fo1['chi_id_genre'] === '' ? ( null ) : ( parseInt( fo1['chi_id_genre'] , 10 ) );
         fo1['che_ordre_genre']=fo1['che_ordre_genre'] === '' ? ( null ) : ( parseInt( fo1['che_ordre_genre'] , 10 ) );
-        fo1['che_longueur_genre']=fo1['che_longueur_genre'] === '' ? ( null ) : ( parseInt( fo1['che_longueur_genre'] , 10 ) );
         fo1['che_est_primaire_genre']=fo1['che_est_primaire_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_primaire_genre'] , 10 ) );
         fo1['che_est_incrément_genre']=fo1['che_est_incrément_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_incrément_genre'] , 10 ) );
         fo1['che_est_obligatoire_genre']=fo1['che_est_obligatoire_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_obligatoire_genre'] , 10 ) );
@@ -533,7 +542,7 @@ class genres1{
         if(enreg['T0.che_longueur_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input value="' + this.__gi1.fi2( enreg['T0.che_longueur_genre'] ) + '" type="number" size="32" maxlength="32" id="che_longueur_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input type="text" style="height: var(--t_hauteur_input1);" value="' + this.__gi1.fi2( enreg['T0.che_longueur_genre'] ) + '" size="20" maxlength="20" id="che_longueur_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -892,7 +901,7 @@ class genres1{
         o1+='      <span>longueur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_longueur_genre"  value="' + this.__gi1.fi2( enreg['T0.che_longueur_genre'] ) + '" />';
+        o1+='      <input disabled type="text" size="20" maxlength="20" id="che_longueur_genre"  value="' + this.__gi1.fi2( enreg['T0.che_longueur_genre'] ) + '" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1163,6 +1172,15 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        var __test=this.__gi1.__fnt1.tester_longueur_de_champ_dans_genre( fo1['che_longueur_genre'] , 'longueur' );
+        if(__test.__xst !== __xsu){
+            this.__gi1.affiche_les_messages();
+            this.__gi1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_longueur_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         if(fo1['che_est_primaire_genre'] === ''){
             this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est primaire" doit être renseigné'} );
             this.__gi1.affiche_les_messages();
@@ -1273,7 +1291,6 @@ class genres1{
         }
         /* conversion des données numériques début */
         fo1['che_ordre_genre']=fo1['che_ordre_genre'] === '' ? ( null ) : ( parseInt( fo1['che_ordre_genre'] , 10 ) );
-        fo1['che_longueur_genre']=fo1['che_longueur_genre'] === '' ? ( null ) : ( parseInt( fo1['che_longueur_genre'] , 10 ) );
         fo1['che_est_primaire_genre']=fo1['che_est_primaire_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_primaire_genre'] , 10 ) );
         fo1['che_est_incrément_genre']=fo1['che_est_incrément_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_incrément_genre'] , 10 ) );
         fo1['che_est_obligatoire_genre']=fo1['che_est_obligatoire_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_obligatoire_genre'] , 10 ) );
@@ -1411,7 +1428,7 @@ class genres1{
         o1+='      <span>longueur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="number"  size="18" maxlength="18" max="999999999999999999"  min="-999999999999999999"  id="che_longueur_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        o1+='      <input type="text"  size="20" maxlength="20"  id="che_longueur_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_longueur_genre' )){
             o1+=this.__gi1.fi2( dupliquer['T0.che_longueur_genre'] );
         }else{

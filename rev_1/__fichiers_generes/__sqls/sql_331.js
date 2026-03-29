@@ -36,7 +36,7 @@ class sql_331{
             if(par['n_che_longueur_genre'] === undefined || par['n_che_longueur_genre'] === '' || par['n_che_longueur_genre'] === null){
                 tableau_champs.push( '`che_longueur_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_longueur_genre` = ' + this.__gi1.__fnt1.sq0( par['n_che_longueur_genre'] ) + '' );
+                tableau_champs.push( '`che_longueur_genre` = \'' + this.__gi1.__fnt1.sq0( par['n_che_longueur_genre'] ) + '\'' );
             }
             if(par['n_che_est_primaire_genre'] === undefined || par['n_che_est_primaire_genre'] === '' || par['n_che_est_primaire_genre'] === null){
                 tableau_champs.push( '`che_est_primaire_genre` = NULL' );

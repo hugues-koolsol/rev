@@ -562,7 +562,6 @@ class genres1{
         /* conversion des données numériques début */
         form['chi_id_genre']=form['chi_id_genre'] === null ? ( null ) : ( parseInt( form['chi_id_genre'] , 10 ) );
         form['che_ordre_genre']=form['che_ordre_genre'] === null ? ( null ) : ( parseInt( form['che_ordre_genre'] , 10 ) );
-        form['che_longueur_genre']=form['che_longueur_genre'] === null ? ( null ) : ( parseInt( form['che_longueur_genre'] , 10 ) );
         form['che_est_primaire_genre']=form['che_est_primaire_genre'] === null ? ( null ) : ( parseInt( form['che_est_primaire_genre'] , 10 ) );
         form['che_est_incrément_genre']=form['che_est_incrément_genre'] === null ? ( null ) : ( parseInt( form['che_est_incrément_genre'] , 10 ) );
         form['che_est_obligatoire_genre']=form['che_est_obligatoire_genre'] === null ? ( null ) : ( parseInt( form['che_est_obligatoire_genre'] , 10 ) );
@@ -998,7 +997,6 @@ class genres1{
         let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* conversion des données numériques début */
         form['che_ordre_genre']=form['che_ordre_genre'] === null || form['che_ordre_genre'] === '' || form['che_ordre_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_ordre_genre'] , 10 ) );
-        form['che_longueur_genre']=form['che_longueur_genre'] === null || form['che_longueur_genre'] === '' || form['che_longueur_genre'] === undefined ? ( null ) : ( parseInt( form['che_longueur_genre'] , 10 ) );
         form['che_est_primaire_genre']=form['che_est_primaire_genre'] === null || form['che_est_primaire_genre'] === '' || form['che_est_primaire_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_primaire_genre'] , 10 ) );
         form['che_est_incrément_genre']=form['che_est_incrément_genre'] === null || form['che_est_incrément_genre'] === '' || form['che_est_incrément_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_incrément_genre'] , 10 ) );
         form['che_est_obligatoire_genre']=form['che_est_obligatoire_genre'] === null || form['che_est_obligatoire_genre'] === '' || form['che_est_obligatoire_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_obligatoire_genre'] , 10 ) );

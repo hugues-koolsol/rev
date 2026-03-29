@@ -6673,7 +6673,7 @@ SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.
                         if(deja_fait === false){
                             var conteneur_de_table=this.#svg_dessin.getElementById( tab[j].id_parent );
                             if(conteneur_de_table !== null){
-                                /* on a peut supprimé une table pour la recréer par exemple après un tri de champs */
+                                /* on a peut être supprimé une table pour la recréer par exemple après un tri de champs */
                                 var nombre_elements=conteneur_de_table.childNodes.length;
                                 var position=(nombre_elements - 1) * this.#hauteur_de_boite_affichage + this.#taille_bordure;
                                 this.#recursuf_arbre_svg( tab , tab[j].id_parent , j , true , conteneur_de_table , position );
@@ -7543,76 +7543,78 @@ SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.
                references[ tbl_utilisateurs , chi_id_utilisateur],
             ],      
     */
-    #construire_tableau_dependances( mat , id_bdd_de_la_base ){
-        let l01=mat.length;
-        let objet_dependances={};
-        for( var i=1 ; i < l01 ; i=mat[i][12] ){
-            if('créer_table' === mat[i][1] && mat[i][2] === 'f'){
-                let table_dependante='';
-                for( var j=i + 1 ; j < l01 ; j=mat[j][12] ){
-                    if('nom_de_la_table' === mat[j][1] && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
-                        table_dependante=mat[j + 1][1];
-                        break;
-                    }
-                }
-                for( var j=i + 1 ; j < l01 ; j=mat[j][12] ){
-                    if('champs' === mat[j][1] && mat[j][2] === 'f'){
-                        for( var k=j + 1 ; k < l01 ; k=mat[k][12] ){
-                            if('champ' === mat[k][1] && mat[k][2] === 'f'){
-                                let champ_dependant='';
-                                let non_nulle='0';
-                                for( var l=k + 1 ; l < l01 ; l=mat[l][12] ){
-                                    if('nom_du_champ' === mat[l][1] && mat[l][2] === 'f' && mat[l][8] === 1){
-                                        champ_dependant=mat[l + 1][1];
-                                    }else if('non_nulle' === mat[l][1] && mat[l][2] === 'f' && mat[l][8] === 1){
-                                        non_nulle=mat[l + 1][1];
-                                    }
-                                }
-                                for( var l=k + 1 ; l < l01 ; l=mat[l][12] ){
-                                    if('references' === mat[l][1] && mat[l][2] === 'f'){
-                                        let table_parente='';
-                                        let champ_parent='';
-                                        for( var m=l + 1 ; m < l01 ; m=mat[m][12] ){
-                                            if(mat[m][2] === 'c'){
-                                                if(table_parente === ''){
-                                                    table_parente=mat[m][1];
-                                                }else{
-                                                    champ_parent=mat[m][1];
-                                                }
-                                            }
-                                        }
-                                        if(table_parente !== '' && champ_parent !== ''){
-                                            let cle=table_parente + '_' + champ_parent;
-                                            if(!objet_dependances.hasOwnProperty( cle )){
-                                                objet_dependances[cle]={
-                                                    "table_parente" : table_parente ,
-                                                    "champ_parent" : champ_parent ,
-                                                    "dependances" : [{
-                                                                "table_dependante" : table_dependante ,
-                                                                "champ_dependant" : champ_dependant ,
-                                                                "non_nulle" : non_nulle ,
-                                                                "id_bdd_de_la_base_dependante" : id_bdd_de_la_base
-                                                            }]
-                                                };
-                                            }else{
-                                                objet_dependances[cle].dependances.push( {
-                                                        "table_dependante" : table_dependante ,
-                                                        "champ_dependant" : champ_dependant ,
-                                                        "non_nulle" : non_nulle ,
-                                                        "id_bdd_de_la_base_dependante" : id_bdd_de_la_base
-                                                    } );
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return({"__xst" : __xsu ,"__xva" : objet_dependances});
-    }
+    /*#
+      #construire_tableau_dependances( mat , id_bdd_de_la_base ){
+          let l01=mat.length;
+          let objet_dependances={};
+          for( var i=1 ; i < l01 ; i=mat[i][12] ){
+              if('créer_table' === mat[i][1] && mat[i][2] === 'f'){
+                  let table_dependante='';
+                  for( var j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                      if('nom_de_la_table' === mat[j][1] && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
+                          table_dependante=mat[j + 1][1];
+                          break;
+                      }
+                  }
+                  for( var j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                      if('champs' === mat[j][1] && mat[j][2] === 'f'){
+                          for( var k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                              if('champ' === mat[k][1] && mat[k][2] === 'f'){
+                                  let champ_dependant='';
+                                  let non_nulle='0';
+                                  for( var l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                                      if('nom_du_champ' === mat[l][1] && mat[l][2] === 'f' && mat[l][8] === 1){
+                                          champ_dependant=mat[l + 1][1];
+                                      }else if('non_nulle' === mat[l][1] && mat[l][2] === 'f' && mat[l][8] === 1){
+                                          non_nulle=mat[l + 1][1];
+                                      }
+                                  }
+                                  for( var l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                                      if('references' === mat[l][1] && mat[l][2] === 'f'){
+                                          let table_parente='';
+                                          let champ_parent='';
+                                          for( var m=l + 1 ; m < l01 ; m=mat[m][12] ){
+                                              if(mat[m][2] === 'c'){
+                                                  if(table_parente === ''){
+                                                      table_parente=mat[m][1];
+                                                  }else{
+                                                      champ_parent=mat[m][1];
+                                                  }
+                                              }
+                                          }
+                                          if(table_parente !== '' && champ_parent !== ''){
+                                              let cle=table_parente + '_' + champ_parent;
+                                              if(!objet_dependances.hasOwnProperty( cle )){
+                                                  objet_dependances[cle]={
+                                                      "table_parente" : table_parente ,
+                                                      "champ_parent" : champ_parent ,
+                                                      "dependances" : [{
+                                                                  "table_dependante" : table_dependante ,
+                                                                  "champ_dependant" : champ_dependant ,
+                                                                  "non_nulle" : non_nulle ,
+                                                                  "id_bdd_de_la_base_dependante" : id_bdd_de_la_base
+                                                              }]
+                                                  };
+                                              }else{
+                                                  objet_dependances[cle].dependances.push( {
+                                                          "table_dependante" : table_dependante ,
+                                                          "champ_dependant" : champ_dependant ,
+                                                          "non_nulle" : non_nulle ,
+                                                          "id_bdd_de_la_base_dependante" : id_bdd_de_la_base
+                                                      } );
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+          return({"__xst" : __xsu ,"__xva" : objet_dependances});
+      }
+    */    
     /*
       =============================================================================================================
     */
@@ -7631,7 +7633,7 @@ SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.
             if(obj.__xst === __xsu){
                 let objrev=this.__gi1.__rev1.rev_tm( obj.__xva );
                 if(objrev.__xst === __xsu){
-                    let obj_tableau_des_dependances=this.#construire_tableau_dependances( objrev.__xva , this.#id_bdd_de_la_base_en_cours );
+                    /* let obj_tableau_des_dependances=this.#construire_tableau_dependances( objrev.__xva , this.#id_bdd_de_la_base_en_cours ); */
                     var obj2=this.__gi1.__rev1.matrice_vers_source_rev1( objrev.__xva , 0 , true , 1 );
                     if(obj2.__xst === __xsu){
                         let a_envoyer={
@@ -7640,10 +7642,12 @@ SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.
                             "__xva" : {
                                  /*  */
                                 "id_bdd_de_la_base" : this.#id_bdd_de_la_base_en_cours ,
-                                "source_rev_de_la_base" : obj2.__xva ,
-                                "tableau_des_dependances" : obj_tableau_des_dependances.__xva
+                                "source_rev_de_la_base" : obj2.__xva
                             }
                         };
+                        /*
+                          "tableau_des_dependances" : obj_tableau_des_dependances.__xva
+                        */
                         this.__gi1.envoyer_un_message_au_worker( a_envoyer );
                         return({"__xst" : __xsu});
                     }
