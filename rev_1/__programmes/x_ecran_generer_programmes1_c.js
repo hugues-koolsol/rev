@@ -1186,9 +1186,9 @@ class x_ecran_generer_programmes1{
             ){
             }else{
              
-             
                 liste_des_conversions_modification.push( obj_champ );
-                if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1 || obj_champ.hasOwnProperty('non_nulle') && obj_champ.non_nulle===true ){
+                //if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1 || obj_champ.hasOwnProperty('non_nulle') && obj_champ.non_nulle===true ){
+                if( obj_champ.non_nulle === true ){
                     src_client2+='        if(fo1[\'' + nom_du_champ + '\']===\'\'){\r\n';
                     src_client2+='            this.__gi1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné\'  });\r\n';
                     src_client2+='            this.__gi1.affiche_les_messages();\r\n';
@@ -1344,12 +1344,13 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        */\r\n';
             }
             src_serveur_js2+='        /*\r\n';
-            src_serveur_js2+='          tests début\r\n';
+            src_serveur_js2+='          tests début modifier serveur\r\n';
             src_serveur_js2+='          =====================================================================================================\r\n';
             src_serveur_js2+='        */\r\n';
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
+                
 
 
                 let reference_externe_base='';
@@ -1371,7 +1372,7 @@ class x_ecran_generer_programmes1{
                  
                    if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
                     
-                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1){
+                        if(obj_champ.non_nulle===true){
                             src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
                             src_serveur_js2+='            this.__gi1.__xsi[__xer].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__gi1.nl2() + \']\');\r\n';
                             src_serveur_js2+='            return{__xst:__xer};\r\n';
@@ -1394,7 +1395,7 @@ class x_ecran_generer_programmes1{
                     if(obj_champ.genre_objet_du_champ.che_est_session_genre === 1 || obj_champ.champ_session === true){
                     }else{
 
-                        if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1 || obj_champ.hasOwnProperty('non_nulle') && obj_champ.non_nulle===true ){
+                        if( obj_champ.non_nulle===true ){
                             src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
                             src_serveur_js2+='            this.__gi1.__xsi[__xer].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__gi1.nl2() + \']\');\r\n';
                             src_serveur_js2+='            return{__xst:__xer};\r\n';
@@ -1449,7 +1450,7 @@ class x_ecran_generer_programmes1{
             }
             src_serveur_js2+='        /*\r\n';
             src_serveur_js2+='          =====================================================================================================\r\n';
-            src_serveur_js2+='          tests fin\r\n';
+            src_serveur_js2+='          tests fin modifier serveur\r\n';
             src_serveur_js2+='        */\r\n';
             src_serveur_js2+='\r\n';
             src_serveur_js2+='        let retour_a_la_liste=false;\r\n';
@@ -1554,7 +1555,7 @@ class x_ecran_generer_programmes1{
                     }
                 }else if(obj_champ.champ_session === true){
                     if(ne_pas_prendre_les_valeurs_en_session === true){
-                        if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
+                        if(obj_champ.non_nulle===false){
                             src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
                         }else{
                             src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
@@ -1567,7 +1568,7 @@ class x_ecran_generer_programmes1{
                        || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
                 ){
                 }else{
-                    if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
+                    if(obj_champ.non_nulle===false){
                         src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
                     }else{
                         src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
@@ -1979,7 +1980,7 @@ class x_ecran_generer_programmes1{
         src_client2+='        cmd+=\')\';\r\n';
         src_client2+='        let obj2=this.__gi1.__rev1.rev_tm(cmd);\r\n';
         src_client2+='        let jso=JSON.stringify(obj2.__xva);\r\n';
-        src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" size="128" value="\'+this.__gi1.fi2(jso)+\'" />\';\r\n';
+        src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" value="\'+this.__gi1.fi2(jso)+\'" />\';\r\n';
         src_client2+='        document.getElementById( \'vv_ecran_modification_zone_contenu\' ).innerHTML=o1;\r\n';
         src_client2+='        this.__gi1.maj_hash(mat,0);\r\n';
         src_client2+='        this.__gi1.maj_title_htm1(\'modification \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
@@ -2140,7 +2141,7 @@ class x_ecran_generer_programmes1{
         src_client2+='        cmd+=\')\';\r\n';
         src_client2+='        let obj2=this.__gi1.__rev1.rev_tm(cmd);\r\n';
         src_client2+='        let jso=JSON.stringify(obj2.__xva);\r\n';
-        src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" size="128" value="\'+this.__gi1.fi2(jso)+\'" />\';\r\n';
+        src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" value="\'+this.__gi1.fi2(jso)+\'" />\';\r\n';
         src_client2+='        document.getElementById( \'vv_ecran_suppression_zone_contenu\' ).innerHTML=o1;\r\n';
         src_client2+='        this.__gi1.maj_title_htm1(\'suppression \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
         src_client2+='        if(this.__gi1.stockage_local[\'parametres\'][\'__deverminage\'][\'valeur\']>0){\r\n';
@@ -2693,7 +2694,7 @@ class x_ecran_generer_programmes1{
             }else{
                 liste_des_conversions.push( obj_champ );
                 if(obj_champ.genre_objet_du_champ){
-                    if( obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1 || obj_champ.hasOwnProperty('non_nulle') && obj_champ.non_nulle  === true){
+                    if(  obj_champ.non_nulle  === true){
                         src_client2+='        if(fo1[\'' + nom_du_champ + '\']===\'\'){\r\n';
                         src_client2+='            this.__gi1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné\'  });\r\n';
                         src_client2+='            this.__gi1.affiche_les_messages();\r\n';
@@ -2879,6 +2880,12 @@ class x_ecran_generer_programmes1{
                             src_serveur_js2+='        /* pas de convertion pour le champ ' + liste_des_conversions[i].nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
                         }
                     }else if(liste_des_conversions[i].espece_du_champ === 'INTEGER'){
+                        debugger
+                        /*
+                        
+                          à faire, utiliser obj_champ.non_nulle===true à la place de che_est_obligatoire_genre === 1
+                        
+                        */
                         if(liste_des_conversions[i].genre_objet_du_champ.che_est_obligatoire_genre === 1){
                             if(liste_des_conversions[i].a_une_valeur_par_defaut === 1){
                                 if(liste_des_conversions[i].la_valeur_par_defaut_est_caractere === 1){
@@ -2922,12 +2929,11 @@ class x_ecran_generer_programmes1{
 
                    if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
                     
-                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1){
+                        if(obj_champ.non_nulle===true){
                             src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
                             src_serveur_js2+='            this.__gi1.__xsi[__xer].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__gi1.nl2() + \']\');\r\n';
                             src_serveur_js2+='            return{__xst:__xer};\r\n';
                             src_serveur_js2+='        }\n';
-                        }else{
                         }
                     
                    }else{
@@ -2951,7 +2957,7 @@ class x_ecran_generer_programmes1{
                      
                 
                      
-                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1 || obj_champ.hasOwnProperty('non_nulle') && obj_champ.non_nulle===true  ){
+                        if( obj_champ.non_nulle===true  ){
                             src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
                             src_serveur_js2+='            this.__gi1.__xsi[__xer].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__gi1.nl2() + \']\');\r\n';
                             src_serveur_js2+='            return{__xst:__xer};\r\n';
@@ -3042,7 +3048,7 @@ class x_ecran_generer_programmes1{
                        && reference_externe_champ === 'chi_id_utilisateur'
                 ){
                     if(obj_champ.meta.hasOwnProperty('est_utilisateur_autre_que_courant') && obj_champ.meta.est_utilisateur_autre_que_courant === 1 ){
-                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
+                        if(obj_champ.non_nulle===false){
                             src_serveur_js2+='                    \'' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] === \'\' ? ( null ) : ( form[\'' + nom_du_champ + '\'] ),\n';
                         }else{
                             src_serveur_js2+='                    \'' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'],\n';
@@ -3069,7 +3075,7 @@ class x_ecran_generer_programmes1{
                 ){
                     src_serveur_js2+='                    \'' + nom_du_champ + '\' : donnees_retournees.' + obj_champ.champ_pere + ',\n';
                 }else{
-                    if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
+                    if(obj_champ.non_nulle===false){
                         src_serveur_js2+='                    \'' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] === \'\' ? ( null ) : ( form[\'' + nom_du_champ + '\'] ),\n';
                     }else{
                         src_serveur_js2+='                    \'' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'],\n';
@@ -3167,7 +3173,7 @@ class x_ecran_generer_programmes1{
                     src_serveur_js2+='&& formulaire[\'' + elem.préfixe_du_champ + '_\' + \'' + elem.nom_du_champ + '\']!== \'\' ';
                     src_serveur_js2+='&& formulaire[\'' + elem.préfixe_du_champ + '_\' + \'' + elem.nom_du_champ + '\']!== null';
                     src_serveur_js2+='){\r\n';
-                    src_serveur_js2+='            les_match+=\' {' + elem.nom_du_champ + '}:\'+formulaire[\'' + elem.préfixe_du_champ + '_\' + \'' + elem.nom_du_champ + '\'].replace( /\\-/g ,\' \' )+\'*\'\r\n';
+                    src_serveur_js2+='            les_match+=\' {' + elem.nom_du_champ + '}:\'+formulaire[\'' + elem.préfixe_du_champ + '_\' + \'' + elem.nom_du_champ + '\'].replace( /\\-/g ,\' \' ).replace( /\\\'/g ,\' \' )+\'*\'\r\n';
                     src_serveur_js2+='        }\r\n';
                 }
                 src_serveur_js2+='        if(les_match !==\'\'){\r\n';
@@ -3519,7 +3525,7 @@ class x_ecran_generer_programmes1{
                             src_client2+='        if(dupliquer && dupliquer.hasOwnProperty(\'T0.' + obj_champ.nom_du_champ + '\')){\r\n';
                             src_client2+='            o1+=this.__gi1.fi2(dupliquer[\'T0.' + obj_champ.nom_du_champ + '\']);\r\n';
                             src_client2+='        }else{\n';
-                            if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
+                            if(obj_champ.non_nulle===false){
                                 src_client2+='            o1 += \'\';\r\n';
                             }else{
                                 src_client2+='            o1 += \'' + (obj_champ.genre_objet_du_champ.cht_valeur_init_genre === null ?
@@ -3567,7 +3573,7 @@ class x_ecran_generer_programmes1{
                         src_client2+='        if(dupliquer && dupliquer.hasOwnProperty(\'T0.' + obj_champ.nom_du_champ + '\')){\r\n';
                         src_client2+='            o1+=this.__gi1.fi2(dupliquer[\'T0.' + obj_champ.nom_du_champ + '\']);\r\n';
                         src_client2+='        }else{\n';
-                        if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
+                        if(obj_champ.non_nulle===false){
                             src_client2+='            o1 += \'\';\r\n';
                         }else{
                             src_client2+='            o1 += \'' + (obj_champ.genre_objet_du_champ.cht_valeur_init_genre === null ?
@@ -3605,7 +3611,7 @@ class x_ecran_generer_programmes1{
                             src_client2+='            o1+=this.__gi1.fi2(dupliquer[\'T0.' + obj_champ.nom_du_champ + '\']);\r\n';
                             src_client2+='        }else{\n';
                             /* champ entier standard */
-                            if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
+                            if(obj_champ.non_nulle === false){
                                 src_client2+='            o1 += \'\';\r\n';
                             }else{
                                 src_client2+='            o1 += \'' + (obj_champ.genre_objet_du_champ.cht_valeur_init_genre === null ?
@@ -3654,7 +3660,7 @@ class x_ecran_generer_programmes1{
                         src_client2+='            o1+=this.__gi1.fi2(dupliquer[\'T0.' + obj_champ.nom_du_champ + '\']);\r\n';
                         src_client2+='        }else{\n';
                         /* champ entier standard */
-                        if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 0){
+                        if(obj_champ.non_nulle===false){
                             src_client2+='            o1 += \'\';\r\n';
                         }else{
                             src_client2+='            o1 += \'' + (obj_champ.genre_objet_du_champ.cht_valeur_init_genre === null ?
@@ -3690,7 +3696,7 @@ class x_ecran_generer_programmes1{
         src_client2+='        cmd+=\')\';\r\n';
         src_client2+='        let obj2=this.__gi1.__rev1.rev_tm(cmd);\r\n';
         src_client2+='        let jso=JSON.stringify(obj2.__xva);\r\n';
-        src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" size="128" value="\'+this.__gi1.fi2(jso)+\'" />\';\r\n';
+        src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" value="\'+this.__gi1.fi2(jso)+\'" />\';\r\n';
         src_client2+='\r\n';
         src_client2+='        document.getElementById( \'vv_ecran_creation_zone_contenu\' ).innerHTML=o1;\r\n';
         src_client2+='        this.__gi1.maj_hash(mat,0);\r\n';
@@ -3811,7 +3817,11 @@ class x_ecran_generer_programmes1{
         src_client2+='            o1+=\'     </div>\';\r\n';
         src_client2+='            o1+=\'     <div>\';\r\n';
         src_client2+='            o1+=\'        <div class="rev_bouton yy_bouton_loupe" data-rev_click="\';\r\n';
-        src_client2+='            o1+=\'fo1(co1(\'+this.fonction_liste+\'),pm1(m1(n1(\'+this.moi+\'),f1(\'+this.fonction_liste+\'(__num_page(0))))))\';\r\n';
+        if(table_reference_est_table_virtuelle.length === 2){
+            src_client2+='            o1+=\'fo1(sur_table_virtuelle(),co1(\'+this.fonction_liste+\'),pm1(m1(n1(\'+this.moi+\'),f1(\'+this.fonction_liste+\'(__num_page(0))))))\';\r\n';
+        }else{
+            src_client2+='            o1+=\'fo1(co1(\'+this.fonction_liste+\'),pm1(m1(n1(\'+this.moi+\'),f1(\'+this.fonction_liste+\'(__num_page(0))))))\';\r\n';
+        }
         src_client2+='            o1+=\'"\';\r\n';
         src_client2+='            o1+=\'        >🔎</div>\';\r\n';
         src_client2+='            o1+=\'     </div>\';\r\n';
@@ -4655,6 +4665,7 @@ class x_ecran_generer_programmes1{
                                     }
                                     if(nom_du_champ !== ''){
                                         this.#obj_bdd[nom_de_la_table].ordre_des_champs.push( nom_du_champ );
+                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['non_nulle']=false;
                                         for( let n=m + 1 ; n < l02 ; n=mat2[n][12] ){
                                             if(mat2[n][1] === 'type'){
                                                 this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['type_du_champ']=mat2[n + 1][1];

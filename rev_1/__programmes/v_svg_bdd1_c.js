@@ -4632,6 +4632,7 @@ SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.
                 if(nouveau_meta.hasOwnProperty( this.#liste_des_meta_table[i].nom_du_meta_table )
                        && nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] !== null
                 ){
+                    debugger
                     t+=' value="' + nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table].replace( /"/g , '&quot;' ) + '" ';
                     if('est_table_virtuelle' === this.#liste_des_meta_table[i].nom_du_meta_table){
                         est_table_virtuelle=parseInt( nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] , 10 );
