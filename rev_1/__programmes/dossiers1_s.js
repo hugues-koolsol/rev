@@ -63,9 +63,12 @@ class dossiers1{
         let tt116=await this.__gi1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
+        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
          FROM b1.tbl_sources T0
-        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+        
+        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_select_116 , donnees_retournees , __db1 );
@@ -372,7 +375,7 @@ class dossiers1{
         await __db_cible.close();
         await file.close();
         let fin=performance.now();
-        this.__gi1.ma_trace1( __nbEnregs + 'e '  + parseInt( fin - debut , 10 ) + 'ms ( enregs et temps )' );
+        this.__gi1.ma_trace1( __nbEnregs + 'e ' + parseInt( fin - debut , 10 ) + 'ms ( enregs et temps )' );
         return({"__xst" : __xsu});
     }
     /*
@@ -456,19 +459,10 @@ class dossiers1{
         let criteres_171={};
         let tt171=await this.__gi1.sql_iii(
         /*sql_inclure_deb*/ /*#
-        INSERT INTO b2.`clients`(
-            `fld_nom_client` , 
-            `fld_id_commercial_client` , 
-            `fld_nom_bref_client` , 
-            `fld_adresse1_client` , 
-            `fld_adresse2_client`
-        ) VALUES (
-            :fld_nom_client , 
-            :fld_id_commercial_client , 
-            :fld_nom_bref_client , 
-            :fld_adresse1_client , 
-            :fld_adresse2_client
-        );
+        SELECT 
+        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+         FROM b1.tbl_bdds T0
+        ;
         */
         /*sql_inclure_fin*/ 171 , criteres_171 , donnees_retournees , __db1 );
         if(tt171[__xst] !== __xsu){
@@ -566,7 +560,17 @@ class dossiers1{
         */
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let criteres_386_1={"T0_chi_id_dossier" : chi_id_dossier_ancienne};
-        let tt386_1=await this.__gi1.sql_iii( 386 , criteres_386_1 , donnees_retournees , __db1 );
+        let tt386_1=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 386 , criteres_386_1 , donnees_retournees , __db1 );
         if(tt386_1[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'Erreur de sélection du dossier ancien [' + this.__gi1.nl2() );
             donnees_retournees.__xst=__xer;
@@ -576,7 +580,17 @@ class dossiers1{
           Essai de récupération du nouveau dossier.
         */
         let criteres_386_2={"T0_chi_id_dossier" : chi_id_dossier_nouvelle};
-        let tt386_2=await this.__gi1.sql_iii( 386 , criteres_386_2 , donnees_retournees , __db1 );
+        let tt386_2=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 386 , criteres_386_2 , donnees_retournees , __db1 );
         if(tt386_2[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'Erreur de sélection du dossier nouveau [' + this.__gi1.nl2() );
             donnees_retournees.__xst=__xer;
@@ -591,7 +605,13 @@ class dossiers1{
             return({"__xst" : __xer});
         }
         let criteres_406={"c_chi_id_dossier" : chi_id_dossier_ancienne ,"n_chi_id_dossier" : chi_id_dossier_nouvelle};
-        let tt406=await this.__gi1.sql_iii( 406 , criteres_406 , donnees_retournees , __db1 );
+        let tt406=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_dossiers SET 
+           `chi_id_dossier` = :n_chi_id_dossier
+        WHERE `chi_id_dossier` = :c_chi_id_dossier ;
+        */
+        /*sql_inclure_fin*/ 406 , criteres_406 , donnees_retournees , __db1 );
         if(tt406[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'Erreur de sélection du dossier ancien [' + this.__gi1.nl2() );
             donnees_retournees.__xst=__xer;
@@ -628,7 +648,17 @@ class dossiers1{
                 });
         }
         let id_dossier=chi_id_dossier;
-        let tt386=await this.__gi1.sql_iii( 386 , {"T0_chi_id_dossier" : id_dossier} , donnees_retournees , __db1 );
+        let tt386=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : id_dossier} , donnees_retournees , __db1 );
         if(tt386[__xst] !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'problème sur construire_chemin [' + this.__gi1.nl2() + ']'});
         }
@@ -651,7 +681,17 @@ class dossiers1{
                     }else{
                         chemin='/' + tt386[__xva][0]['T0.chp_nom_dossier'] + chemin;
                         tt386=null;
-                        tt386=await this.__gi1.sql_iii( 386 , {"T0_chi_id_dossier" : id_dossier} , donnees_retournees , __db1 );
+                        tt386=await this.__gi1.sql_iii(
+                        /*sql_inclure_deb*/ /*#
+                        SELECT 
+                        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+                         FROM b1.tbl_dossiers T0
+                         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+                        
+                        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+                        ;
+                        */
+                        /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : id_dossier} , donnees_retournees , __db1 );
                     }
                 }
             }else{
@@ -763,7 +803,15 @@ class dossiers1{
             if(__db1 === null){
                 __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
             }
-            let tt341=await this.__gi1.sql_iii( 341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , donnees_retournees , __db1 );
+            let tt341=await this.__gi1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chp_nom_source` , `T0`.`chi_id_source`
+             FROM b1.tbl_sources T0
+            WHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
+            ;
+            */
+            /*sql_inclure_fin*/ 341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , donnees_retournees , __db1 );
             if(tt341[__xst] === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
@@ -781,64 +829,11 @@ class dossiers1{
             }
             let tt169=await this.__gi1.sql_iii(
             /*sql_inclure_deb*/ /*#
-            UPDATE b1.rpps SET 
-               `type_d_identifiant_pp` = :n_type_d_identifiant_pp , 
-               `identifiant_pp` = :n_identifiant_pp , 
-               `identification_nationale_pp` = :n_identification_nationale_pp , 
-               `code_civilite_d_exercice` = :n_code_civilite_d_exercice , 
-               `libelle_civilite_d_exercice` = :n_libelle_civilite_d_exercice , 
-               `code_civilite` = :n_code_civilite , 
-               `libelle_civilite` = :n_libelle_civilite , 
-               `nom_d_exercice` = :n_nom_d_exercice , 
-               `prenom_d_exercice` = :n_prenom_d_exercice , 
-               `code_profession` = :n_code_profession , 
-               `libelle_profession` = :n_libelle_profession , 
-               `code_categorie_professionnelle` = :n_code_categorie_professionnelle , 
-               `libelle_categorie_professionnelle` = :n_libelle_categorie_professionnelle , 
-               `code_type_savoir_faire` = :n_code_type_savoir_faire , 
-               `libelle_type_savoir_faire` = :n_libelle_type_savoir_faire , 
-               `code_savoir_faire` = :n_code_savoir_faire , 
-               `libelle_savoir_faire` = :n_libelle_savoir_faire , 
-               `code_mode_exercice` = :n_code_mode_exercice , 
-               `libelle_mode_exercice` = :n_libelle_mode_exercice , 
-               `numero_siret_site` = :n_numero_siret_site , 
-               `numero_siren_site` = :n_numero_siren_site , 
-               `numero_finess_site` = :n_numero_finess_site , 
-               `numero_finess_etablissement_juridique` = :n_numero_finess_etablissement_juridique , 
-               `identifiant_technique_de_la_structure` = :n_identifiant_technique_de_la_structure , 
-               `raison_sociale_site` = :n_raison_sociale_site , 
-               `enseigne_commerciale_site` = :n_enseigne_commerciale_site , 
-               `complement_destinataire__coord__structure_` = :n_complement_destinataire__coord__structure_ , 
-               `complement_point_geographique__coord__structure_` = :n_complement_point_geographique__coord__structure_ , 
-               `numero_voie__coord__structure_` = :n_numero_voie__coord__structure_ , 
-               `indice_repetition_voie__coord__structure_` = :n_indice_repetition_voie__coord__structure_ , 
-               `code_type_de_voie__coord__structure_` = :n_code_type_de_voie__coord__structure_ , 
-               `libelle_type_de_voie__coord__structure_` = :n_libelle_type_de_voie__coord__structure_ , 
-               `libelle_voie__coord__structure_` = :n_libelle_voie__coord__structure_ , 
-               `mention_distribution__coord__structure_` = :n_mention_distribution__coord__structure_ , 
-               `bureau_cedex__coord__structure_` = :n_bureau_cedex__coord__structure_ , 
-               `code_postal__coord__structure_` = :n_code_postal__coord__structure_ , 
-               `code_commune__coord__structure_` = :n_code_commune__coord__structure_ , 
-               `libelle_commune__coord__structure_` = :n_libelle_commune__coord__structure_ , 
-               `code_pays__coord__structure_` = :n_code_pays__coord__structure_ , 
-               `libelle_pays__coord__structure_` = :n_libelle_pays__coord__structure_ , 
-               `telephone__coord__structure_` = :n_telephone__coord__structure_ , 
-               `telephone_2__coord__structure_` = :n_telephone_2__coord__structure_ , 
-               `telecopie__coord__structure_` = :n_telecopie__coord__structure_ , 
-               `adresse_e_mail__coord__structure_` = :n_adresse_e_mail__coord__structure_ , 
-               `code_departement__structure_` = :n_code_departement__structure_ , 
-               `libelle_departement__structure_` = :n_libelle_departement__structure_ , 
-               `ancien_identifiant_de_la_structure` = :n_ancien_identifiant_de_la_structure , 
-               `autorite_d_enregistrement` = :n_autorite_d_enregistrement , 
-               `code_secteur_d_activite` = :n_code_secteur_d_activite , 
-               `libelle_secteur_d_activite` = :n_libelle_secteur_d_activite , 
-               `code_section_tableau_pharmaciens` = :n_code_section_tableau_pharmaciens , 
-               `libelle_section_tableau_pharmaciens` = :n_libelle_section_tableau_pharmaciens , 
-               `code_role` = :n_code_role , 
-               `libelle_role` = :n_libelle_role , 
-               `code_genre_activite` = :n_code_genre_activite , 
-               `libelle_genre_activite` = :n_libelle_genre_activite
-            WHERE `numero_de_ligne` = :c_numero_de_ligne ;
+            SELECT 
+            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier`
+             FROM b1.tbl_dossiers T0
+            WHERE `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
+            ;
             */
             /*sql_inclure_fin*/ 169 , {"T0_chx_parent_dossier" : chi_id_dossier} , donnees_retournees , __db1 );
             if(tt169[__xst] === __xsu){
@@ -921,7 +916,17 @@ class dossiers1{
               => on remonte les parents de chx_parent_dossier et si on trouve id_actuel ==> bug
               on s'arrête quand chx_parent_dossier = null
             */
-            let tt386=await this.__gi1.sql_iii( 386 , {"T0_chi_id_dossier" : chx_parent_dossier} , donnees_retournees , __db1 );
+            let tt386=await this.__gi1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+             FROM b1.tbl_dossiers T0
+             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+            
+            WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+            ;
+            */
+            /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : chx_parent_dossier} , donnees_retournees , __db1 );
             let continuer=30;
             do{
                 continuer--;
@@ -939,7 +944,17 @@ class dossiers1{
                                 return({"__xst" : __xsu});
                             }
                             tt386=null;
-                            tt386=await this.__gi1.sql_iii( 386 , {"T0_chi_id_dossier" : tempo} , donnees_retournees , __db1 );
+                            tt386=await this.__gi1.sql_iii(
+                            /*sql_inclure_deb*/ /*#
+                            SELECT 
+                            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+                             FROM b1.tbl_dossiers T0
+                             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+                            
+                            WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+                            ;
+                            */
+                            /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : tempo} , donnees_retournees , __db1 );
                         }
                     }
                 }else{
@@ -1061,17 +1076,19 @@ class dossiers1{
             let tt117=await this.__gi1.sql_iii(
             /*sql_inclure_deb*/ /*#
             INSERT INTO b1.`tbl_sources`(
+                `chx_dossier_id_source` , 
                 `chp_nom_source` , 
-                `che_binaire_source` , 
                 `cht_commentaire_source` , 
-                `che_contient_version_source` , 
-                `che_autorisation_globale_source`
+                `cht_rev_source` , 
+                `cht_genere_source` , 
+                `che_binaire_source`
             ) VALUES (
+                :chx_dossier_id_source , 
                 :chp_nom_source , 
-                :che_binaire_source , 
                 :cht_commentaire_source , 
-                :che_contient_version_source , 
-                :che_autorisation_globale_source
+                :cht_rev_source , 
+                :cht_genere_source , 
+                :che_binaire_source
             );
             */
             /*sql_inclure_fin*/ 117 , donnees_sql , donnees_retournees , __db1 );
@@ -1160,7 +1177,17 @@ class dossiers1{
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         if(chp_nom_dossier !== '' && chx_parent_dossier > 0){
             let donnees_sql={"donnees" : [{"chp_nom_dossier" : chp_nom_dossier ,"chx_parent_dossier" : chx_parent_dossier}]};
-            let tt378=await this.__gi1.sql_iii( 378 , donnees_sql , donnees_retournees , __db1 );
+            let tt378=await this.__gi1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            INSERT INTO b1.`tbl_dossiers`(
+                `chp_nom_dossier` , 
+                `chx_parent_dossier`
+            ) VALUES (
+                :chp_nom_dossier , 
+                :chx_parent_dossier
+            );
+            */
+            /*sql_inclure_fin*/ 378 , donnees_sql , donnees_retournees , __db1 );
             let obj=await this.construire_chemin( chx_parent_dossier , donnees_retournees , options_generales , __db1 );
             if(obj[__xst] === __xsu){
                 let chemin_absolu=obj[__xva]['chemin_absolu'];
@@ -1292,7 +1319,17 @@ class dossiers1{
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         /* sélection du champ à modifier */
         let criteres_select_386={"T0_chi_id_dossier" : form['chi_id_dossier']};
-        let tt386=await this.__gi1.sql_iii( 386 , criteres_select_386 , donnees_retournees , __db1 );
+        let tt386=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 386 , criteres_select_386 , donnees_retournees , __db1 );
         if(tt386[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__gi1.nl2() );
             donnees_retournees.__xst=__xer;
@@ -1309,7 +1346,14 @@ class dossiers1{
                 "n_chx_parent_dossier" : form['chx_parent_dossier']
             };
             await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt407=await this.__gi1.sql_iii( 407 , donnees_sql , donnees_retournees , __db1 );
+            let tt407=await this.__gi1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_dossiers SET 
+               `chp_nom_dossier` = :n_chp_nom_dossier , 
+               `chx_parent_dossier` = :n_chx_parent_dossier
+            WHERE `chi_id_dossier` = :c_chi_id_dossier ;
+            */
+            /*sql_inclure_fin*/ 407 , donnees_sql , donnees_retournees , __db1 );
             if(tt407[__xst] !== __xsu){
                 if(tt407['__xme'] !== ''){
                     this.__gi1.__xsi[__xer].push( tt407['__xme'] + ' [' + this.__gi1.nl2() );
@@ -1335,7 +1379,17 @@ class dossiers1{
                 }
                 return({"__xst" : __xsu});
             }
-            let tt386_bis=await this.__gi1.sql_iii( 386 , criteres_select_386 , donnees_retournees , __db1 );
+            let tt386_bis=await this.__gi1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+             FROM b1.tbl_dossiers T0
+             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+            
+            WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+            ;
+            */
+            /*sql_inclure_fin*/ 386 , criteres_select_386 , donnees_retournees , __db1 );
             donnees_retournees[__xva]['page_modification1']=tt386_bis;
         }else{
             donnees_retournees[__xva]['page_modification1']=tt386;
@@ -1370,7 +1424,17 @@ class dossiers1{
         if(__db1 === null){
             __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         }
-        let tt386=await this.__gi1.sql_iii( 386 , {"T0_chi_id_dossier" : chi_id_dossier} , donnees_retournees , __db1 );
+        let tt386=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : chi_id_dossier} , donnees_retournees , __db1 );
         if(tt386[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'enregistrement non trouvé : modification impossible [' + this.__gi1.nl2() );
             donnees_retournees.__xst=__xer;
@@ -1419,7 +1483,17 @@ class dossiers1{
         }
         let donnees_sql={"donnees" : [{"chx_parent_dossier" : form['chx_parent_dossier'] ,"chp_nom_dossier" : form['chp_nom_dossier']}]};
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt378=await this.__gi1.sql_iii( 378 , donnees_sql , donnees_retournees , __db1 );
+        let tt378=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        INSERT INTO b1.`tbl_dossiers`(
+            `chp_nom_dossier` , 
+            `chx_parent_dossier`
+        ) VALUES (
+            :chp_nom_dossier , 
+            :chx_parent_dossier
+        );
+        */
+        /*sql_inclure_fin*/ 378 , donnees_sql , donnees_retournees , __db1 );
         if(tt378[__xst] === __xsu){
             if(tt378['changements'] === 0){
                 this.__gi1.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__gi1.nl2() + ']' );
@@ -1488,7 +1562,17 @@ class dossiers1{
         /*  */
         let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-        let tt386=await this.__gi1.sql_iii( 386 , {"T0_chi_id_dossier" : form['chi_id_dossier']} , donnees_retournees , __db1 );
+        let tt386=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : form['chi_id_dossier']} , donnees_retournees , __db1 );
         if(tt386[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
             return({"__xst" : __xer});
@@ -1497,7 +1581,12 @@ class dossiers1{
         if(__tests_avant_supprimer[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
-        let tt410=await this.__gi1.sql_iii( 410 , {"chi_id_dossier" : form['chi_id_dossier']} , donnees_retournees , __db1 );
+        let tt410=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        DELETE FROM b1.tbl_dossiers
+        WHERE `chi_id_dossier` = :chi_id_dossier ;
+        */
+        /*sql_inclure_fin*/ 410 , {"chi_id_dossier" : form['chi_id_dossier']} , donnees_retournees , __db1 );
         if(tt410[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'Erreur lors de le suppression [' + this.__gi1.nl2() + ']' );
             this.__gi1.ma_trace1( 'donnees_retournees.__xsi[__xer]=' , donnees_retournees.__xsi[__xer] );
@@ -1533,7 +1622,17 @@ class dossiers1{
             return({"__xst" : __xer});
         }
         let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-        let tt386=await this.__gi1.sql_iii( 386 , {"T0_chi_id_dossier" : chi_id_dossier} , donnees_retournees , __db1 );
+        let tt386=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : chi_id_dossier} , donnees_retournees , __db1 );
         donnees_retournees[__xva]['page_confirmation_supprimer1']=tt386;
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
@@ -1564,7 +1663,22 @@ class dossiers1{
         if(__db1 === null){
             __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         }
-        let tt389=await this.__gi1.sql_iii( 389 , criteres389 , donnees_retournees , __db1 );
+        let tt389=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
+           AND `T0`.`chp_nom_dossier` LIKE :T0_chp_nom_dossier
+           AND `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
+           AND `T1`.`chp_nom_dossier` = :T1_chp_nom_dossier) 
+        ORDER BY `T0`.`chx_parent_dossier` ASC, `T0`.`chp_nom_dossier` ASC  
+        LIMIT :quantitee OFFSET :debut 
+        ;
+        */
+        /*sql_inclure_fin*/ 389 , criteres389 , donnees_retournees , __db1 );
         if(tt389.__xst !== __xsu){
             this.__gi1.__xsi[__xer].push( 'Erreur de lecture de liste 1 [' + this.__gi1.nl2() + ']' );
             return({"__xst" : __xer});
@@ -1573,7 +1687,22 @@ class dossiers1{
             __debut=0;
             __num_page=0;
             criteres389['debut']=__debut;
-            let tt389=await this.__gi1.sql_iii( 389 , criteres389 , donnees_retournees , __db1 );
+            let tt389=await this.__gi1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+             FROM b1.tbl_dossiers T0
+             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+            
+            WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
+               AND `T0`.`chp_nom_dossier` LIKE :T0_chp_nom_dossier
+               AND `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
+               AND `T1`.`chp_nom_dossier` = :T1_chp_nom_dossier) 
+            ORDER BY `T0`.`chx_parent_dossier` ASC, `T0`.`chp_nom_dossier` ASC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/ 389 , criteres389 , donnees_retournees , __db1 );
             if(tt389.__xst !== __xsu){
                 this.__gi1.__xsi[__xer].push( 'Erreur de lecture de liste 2 [' + this.__gi1.nl2() + ']' );
                 return({"__xst" : __xer});

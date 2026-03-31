@@ -136,11 +136,7 @@ class requetes1{
             o1+='fo1(co1(vv_requetes_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_requetes_nouveau_numero1()))))';
             o1+='">attribuer ce nouveau numéro</div>';
             o1+='</div>';
-            let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-            vv_sous_fenetre1.innerHTML=o1;
-            /* __contenu_modale => vv_sous_fenetre1 */
-            vv_sous_fenetre1.showModal();
-            this.__gi1.ajoute_les_evenements_aux_boutons( null );
+            this.__gi1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer});

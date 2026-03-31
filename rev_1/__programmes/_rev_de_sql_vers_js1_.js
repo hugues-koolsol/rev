@@ -238,7 +238,13 @@ class _rev_de_sql_vers_js1{
         let base_reference=0;
         let lmr01=matrice_requete.length;
         for( let i=1 ; i < lmr01 ; i=matrice_requete[i][12] ){
-            if((matrice_requete[i][1] === 'sélectionner' || 'liste_ecran'  === matrice_requete[i][1] || 'insérer' === matrice_requete[i][1] || 'modifier' === matrice_requete[i][1]  || 'supprimer' === matrice_requete[i][1] ) && matrice_requete[i][2] === 'f'){
+            if((matrice_requete[i][1] === 'sélectionner'
+                       || 'liste_ecran' === matrice_requete[i][1]
+                       || 'insérer' === matrice_requete[i][1]
+                       || 'modifier' === matrice_requete[i][1]
+                       || 'supprimer' === matrice_requete[i][1])
+                   && matrice_requete[i][2] === 'f'
+            ){
                 for( let j=i + 1 ; j < lmr01 ; j=matrice_requete[j][12] ){
                     if(matrice_requete[j][1] === 'provenance' && matrice_requete[j][2] === 'f'){
                         for( let k=j + 1 ; k < lmr01 ; k=matrice_requete[k][12] ){
@@ -252,7 +258,7 @@ class _rev_de_sql_vers_js1{
                                         for( let m=l + 1 ; m < lmr01 ; m=matrice_requete[m][12] ){
                                             if(matrice_requete[m][1] === 'nom_de_la_table' && matrice_requete[m][2] === 'f'){
                                                 if(matrice_requete[k][1] === 'table_reference'){
-                                                    table_reference=matrice_requete[m+1][1];
+                                                    table_reference=matrice_requete[m + 1][1];
                                                 }
                                                 for( let n=m + 1 ; n < lmr01 ; n=matrice_requete[n][12] ){
                                                     if(matrice_requete[n][1] === 'base'
@@ -261,9 +267,8 @@ class _rev_de_sql_vers_js1{
                                                            && matrice_requete[n + 1][2] === 'c'
                                                     ){
                                                         if(matrice_requete[k][1] === 'table_reference'){
-                                                            base_reference=parseInt(matrice_requete[n+1][1].replace(/b/,'') , 10);
+                                                            base_reference=parseInt( matrice_requete[n + 1][1].replace( /b/ , '' ) , 10 );
                                                         }
-                                                        
                                                         let trouvé=false;
                                                         for(let zz in nom_des_bases){
                                                             if(matrice_requete[n + 1][1] === nom_des_bases[zz]){
@@ -920,10 +925,11 @@ class _rev_de_sql_vers_js1{
               =============================================================================================
             */
         }else if(type_de_requete === 'liste_ecran'){
-         
             let est_table_virtuelle=0;
-            if(this.#obj_webs.bases[base_reference].tables[table_reference].hasOwnProperty('est_table_virtuelle') && this.#obj_webs.bases[base_reference].tables[table_reference].est_table_virtuelle === 1){
-                est_table_virtuelle=1
+            if(this.#obj_webs.bases[base_reference].tables[table_reference].hasOwnProperty( 'est_table_virtuelle' )
+                   && this.#obj_webs.bases[base_reference].tables[table_reference].est_table_virtuelle === 1
+            ){
+                est_table_virtuelle=1;
             }
             /*
               =============================================================================================
@@ -978,38 +984,32 @@ class _rev_de_sql_vers_js1{
                   Il n'y a alors qu'une seule formule
                 */
                 t+='        where0=\' WHERE 1=1 \';' + CRLF;
-                
-                if(est_table_virtuelle===1){
-                     debugger
-                 
-                     t+='        if(par.hasOwnProperty( \'les_match\' )  && par[\'les_match\'] !== \'\'){\r\n';
-                     t+='                where0+=` AND '+table_reference+' match ` + this.__gi1.__fnt1.sq1( par[\'les_match\'] ) + \'\\r\\n\';\r\n';
-                     t+='        }else{\r\n';
-                     t+='\r\n';
-                     t+='            let debut=performance.now();\r\n';
-                     t+='            const sql1=\'SELECT COUNT(*) as __nbEnregs FROM ' + table_reference.substr(0,table_reference.length-4 ) + '\';\r\n';
-                     t+='            this.__gi1.ma_trace1(\'sql_175 sql1=\',sql1);\r\n';
-                     t+='            let statement1=await this.__db1.prepare( sql1 );\r\n';
-                     t+='            let lignes=await statement1.values();\r\n';
-                     t+='            await statement1.finalize();\r\n';
-                     t+='            for(let numero_de_ligne in lignes){\r\n';
-                     t+='                __nbEnregs=lignes[numero_de_ligne][0];\r\n';
-                     t+='            }\r\n';
-                     t+='            this.__gi1.ma_trace1(__nbEnregs);\r\n';
-                     t+='            let fin=performance.now();\r\n';
-                     t+='            this.__gi1.ma_trace1(\'ms=\'+parseInt((fin-debut),10));\r\n';
-                     t+='            return({\r\n';
-                     t+='                     /*  */\r\n';
-                     t+='                    "__xst" : __xer ,\r\n';
-                     t+='                    "__xva" : {__nbEnregs : __nbEnregs } ,\r\n';
-                     t+='                });\r\n';
-                     t+='        }\r\n';
-                     t+='\r\n';
-                 
-                 
-                 
+                if(est_table_virtuelle === 1){
+                    debugger;
+                    t+='        if(par.hasOwnProperty( \'les_match\' )  && par[\'les_match\'] !== \'\'){\r\n';
+                    t+='                where0+=` AND ' + table_reference + ' match ` + this.__gi1.__fnt1.sq1( par[\'les_match\'] ) + \'\\r\\n\';\r\n';
+                    t+='        }else{\r\n';
+                    t+='\r\n';
+                    t+='            let debut=performance.now();\r\n';
+                    t+='            const sql1=\'SELECT COUNT(*) as __nbEnregs FROM ' + table_reference.substr( 0 , table_reference.length - 4 ) + '\';\r\n';
+                    t+='            this.__gi1.ma_trace1(\'sql_175 sql1=\',sql1);\r\n';
+                    t+='            let statement1=await this.__db1.prepare( sql1 );\r\n';
+                    t+='            let lignes=await statement1.values();\r\n';
+                    t+='            await statement1.finalize();\r\n';
+                    t+='            for(let numero_de_ligne in lignes){\r\n';
+                    t+='                __nbEnregs=lignes[numero_de_ligne][0];\r\n';
+                    t+='            }\r\n';
+                    t+='            this.__gi1.ma_trace1(__nbEnregs);\r\n';
+                    t+='            let fin=performance.now();\r\n';
+                    t+='            this.__gi1.ma_trace1(\'ms=\'+parseInt((fin-debut),10));\r\n';
+                    t+='            return({\r\n';
+                    t+='                     /*  */\r\n';
+                    t+='                    "__xst" : __xer ,\r\n';
+                    t+='                    "__xva" : {__nbEnregs : __nbEnregs } ,\r\n';
+                    t+='                });\r\n';
+                    t+='        }\r\n';
+                    t+='\r\n';
                 }else{
-                
                     var formule=this.#obj_webs.conditions[0].formule;
                     /*
                       var tableau1=this.__gi1.__rev1.txt_en_tableau(formule);
@@ -1153,8 +1153,6 @@ class _rev_de_sql_vers_js1{
                     }
                 }
             }
-            
-            
             t+='        sql0+=where0;' + CRLF;
             if(this.#obj_webs.complements.length === 0){
                 t+='        /* ATTENTION : pas de complements ( order by , limit dans cette liste */' + CRLF;
@@ -1231,7 +1229,13 @@ class _rev_de_sql_vers_js1{
         t+='    }\r\n';
         t+='}' + CRLF;
         t+='export{sql_' + id_requete_en_base + ' as sql_' + id_requete_en_base + '};';
-        return({"__xst" : __xsu ,"__xva" : t ,"chp_table_reference_requete" : this.#globale_chp_table_reference_requete , "table_reference" : table_reference , "base_reference" : base_reference });
+        return({
+                "__xst" : __xsu ,
+                "__xva" : t ,
+                "chp_table_reference_requete" : this.#globale_chp_table_reference_requete ,
+                "table_reference" : table_reference ,
+                "base_reference" : base_reference
+            });
     }
     /*
       =============================================================================================================
@@ -1378,19 +1382,18 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
-                
         this.#obj_webs['champs_visualisation']=[];
         for( var i=1 ; i < l01 ; i=tab[i][12] ){
             if(tab[i][2] === 'f'){
                 /* sélectionner, supprimer , insérer, modifier ... */
                 for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
                     if(tab[j][1] === 'champs_visualisation' && tab[j][2] === 'f'){
-                        if(tab[j][8]===0){
+                        if(tab[j][8] === 0){
                             /* aucun champ de visualisation */
                         }else{
                             for( var k=j + 1 ; k < l01 ; k=tab[k][12] ){
-                                if(tab[k][2] === 'f' && tab[k][1] === 'champ' && tab[k][8] === 2 ){
-                                    this.#obj_webs['champs_visualisation'].push([tab[k+1][1] , tab[k+2][1]]);
+                                if(tab[k][2] === 'f' && tab[k][1] === 'champ' && tab[k][8] === 2){
+                                    this.#obj_webs['champs_visualisation'].push( [tab[k + 1][1],tab[k + 2][1]] );
                                 }
                             }
                         }
@@ -1398,10 +1401,6 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
-                    
-        
-        
-        
         this.#obj_webs['champs_sortie']=[];
         for( var i=1 ; i < l01 ; i=tab[i][12] ){
             if(tab[i][2] === 'f'){
@@ -1942,22 +1941,21 @@ class _rev_de_sql_vers_js1{
                         if("nom_de_la_table" === tab[j][1] && tab[j][2] === 'f'){
                             nom_de_la_table=tab[j + 1][1];
                             let est_table_virtuelle=0;
-                            for(let k=i+1 ; k < l01 && est_table_virtuelle===0 ; k=tab[k][12]){
-                                if(tab[k][1]==='meta' && tab[k][2]==='f'){
-                                    for(let l=k+1 ; l < l01 && est_table_virtuelle===0 ; l=tab[l][12]){
-                                        if(tab[l][1]==='est_table_virtuelle' && tab[l][2]==='f' && tab[l][8]===1 && tab[l+1][2]==='c'){
-                                            est_table_virtuelle=parseInt(tab[l+1][1],10);
+                            for( let k=i + 1 ; k < l01 && est_table_virtuelle === 0 ; k=tab[k][12] ){
+                                if(tab[k][1] === 'meta' && tab[k][2] === 'f'){
+                                    for( let l=k + 1 ; l < l01 && est_table_virtuelle === 0 ; l=tab[l][12] ){
+                                        if(tab[l][1] === 'est_table_virtuelle' && tab[l][2] === 'f' && tab[l][8] === 1 && tab[l + 1][2] === 'c'){
+                                            est_table_virtuelle=parseInt( tab[l + 1][1] , 10 );
                                             break;
                                         }
                                     }
                                 }
                             }
-                            this.#obj_webs['bases'][ind]['tables'][nom_de_la_table]={"active" : false , "est_table_virtuelle" : est_table_virtuelle ,"champs" : []};
+                            this.#obj_webs['bases'][ind]['tables'][nom_de_la_table]={"active" : false ,"est_table_virtuelle" : est_table_virtuelle ,"champs" : []};
                             break;
                         }
                     }
                     if(nom_de_la_table !== ''){
-                        
                         /* this.#obj_webs['bases'][indice_de_la_base]['tables'][nom_de_la_table]={champs:[]} */
                         /* debugger */
                         this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]={"champs" : {}};
@@ -2176,7 +2174,7 @@ class _rev_de_sql_vers_js1{
                         "source_js" : obj5.__xva ,
                         "matrice_requete" : matrice_requete ,
                         "chp_table_reference_requete" : obj5.chp_table_reference_requete ,
-                        "table_reference" : obj5.__xva.table_reference , 
+                        "table_reference" : obj5.__xva.table_reference ,
                         "base_reference" : obj5.__xva.base_reference
                     });
             }else{

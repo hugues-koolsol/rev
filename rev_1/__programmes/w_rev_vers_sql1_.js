@@ -1389,9 +1389,9 @@ class w_rev_vers_sql1{
                                 if(this.#tb[j][8] === 1 && this.#tb[j + 1][2] === 'c'){
                                     variables_pour_tableau_tables.longueur_du_champ=this.#tb[j + 1][1];
                                 }else if(this.#tb[j][8] === 2 && this.#tb[j + 1][2] === 'c' && this.#tb[j + 2][2] === 'c'){
-                                    variables_pour_tableau_tables.longueur_du_champ=this.#tb[j + 1][1]+','+this.#tb[j + 2][1];
+                                    variables_pour_tableau_tables.longueur_du_champ=this.#tb[j + 1][1] + ',' + this.#tb[j + 2][1];
                                 }else{
-                                    return(this.#rev_sql_le( {"__xst" : __xer ,"id" : i ,"__xme" : this.__gi1.__rev1.nl2() + ' le champ ' + this.#tb[j][1] + ' doit avoir 1 ou 2 arguments' } ));
+                                    return(this.#rev_sql_le( {"__xst" : __xer ,"id" : i ,"__xme" : this.__gi1.__rev1.nl2() + ' le champ ' + this.#tb[j][1] + ' doit avoir 1 ou 2 arguments'} ));
                                 }
                             }else if(this.#tb[j][1] === '#'){
                                 debugger;

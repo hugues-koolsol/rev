@@ -158,15 +158,20 @@ class _tri_arbre1{
             }
         }
         if(trouve === false){
-            /* il faut aussi vérifier que l'id_cible n'est pas un séparateur */
-            for( let i=0 ; i < this.arbre.length && trouve === false ; i++ ){
-                if(this.arbre[i].id_interne === id_cible){
-                    if(this.arbre[i].separateur === 1){
-                        trouve=true;
-                    }
-                    break;
-                }
-            }
+            /*
+              il faut aussi vérifier que l'id_cible n'est pas un séparateur 
+              euh, non pas ici !
+            */
+            /*#
+              for( let i=0 ; i < this.arbre.length && trouve === false ; i++ ){
+                  if(this.arbre[i].id_interne === id_cible){
+                      if(this.arbre[i].separateur === 1){
+                          trouve=true;
+                      }
+                      break;
+                  }
+              }
+            */
         }
         return trouve;
     }

@@ -367,7 +367,7 @@ class sources1{
         o1+=this.__gi1.fi2( enreg['T1.chp_nom_dossier'] );
         o1+='</span>';
         o1+=this.__gi1.lien_parent( 'dossiers1' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' );
-        if(enreg['T0.chx_dossier_id_source'] !== null && this.__gi1.est_num(enreg['T0.chx_dossier_id_source'])){
+        if(enreg['T0.chx_dossier_id_source'] !== null && this.__gi1.est_num( enreg['T0.chx_dossier_id_source'] )){
             o1+='<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + enreg['T0.chx_dossier_id_source'] + ')))))" title="aller au dossier" > aller au dossier</div>';
         }
         o1+='    </div>';

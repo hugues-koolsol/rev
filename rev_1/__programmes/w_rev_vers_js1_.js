@@ -1296,6 +1296,19 @@ class w_rev_vers_js1{
                     }
                     break;
                     
+                case 'defaut' :
+                    /* valeur par défaut d'un paramètre de tableau */
+                    if(this.#tb[this.#tb[id][7]][1] === 'p'){
+                        if(this.#tb[id][8] === 1 && this.#tb[id + 1][2] === 'c'){
+                            t+='=' + this.#macst_pour_javascript( this.#tb[id + 1] );
+                        }else{
+                            return(this.#rev_js_le( {"__xst" : __xer ,"id" : id ,"__xme" : this.__rev1.nl2() + this.#tb[id][1]} ));
+                        }
+                    }else{
+                        return(this.#rev_js_le( {"__xst" : __xer ,"id" : id ,"__xme" : this.__rev1.nl2() + this.#tb[id][1]} ));
+                    }
+                    break;
+                    
                 case 'tableau' :
                     var objtableau=this.#js_traitetableau1( id , niveau , {} );
                     if(objtableau.__xst === __xsu){
@@ -2122,7 +2135,14 @@ class w_rev_vers_js1{
                                 if(precedent_est_commentaire === true){
                                     precedent_est_commentaire=false;
                                 }else{
-                                    textObj+=',';
+                                    if(obje.__xva.substr( 0 , 1 ) === '='){
+                                        /*
+                                          c'est une initialisation dans un tableau , par exemple:
+                                          let [a, b = ''] = c.split('.');
+                                        */
+                                    }else{
+                                        textObj+=',';
+                                    }
                                 }
                                 if(mettre_des_sauts){
                                     textObj+=this.__rev1.resps( niveau + 1 );

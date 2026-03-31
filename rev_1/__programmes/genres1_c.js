@@ -69,10 +69,7 @@ class genres1{
                 o1+='">(' + le_message_du_serveur.__xva[i]['T0.chi_id_projet'] + ') ' + this.__gi1.fi0( le_message_du_serveur.__xva[i]['T0.chp_nom_projet'] ) + '</div>';
             }
             o1+='</ul>';
-            let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-            vv_sous_fenetre1.innerHTML=o1;
-            vv_sous_fenetre1.showModal();
-            this.__gi1.ajoute_les_evenements_aux_boutons( null );
+            this.__gi1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer});
@@ -109,11 +106,7 @@ class genres1{
             o1+='fo1(co1(vv_genres_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_genres_nouveau_numero1()))))';
             o1+='">attribuer ce nouveau numéro</div>';
             o1+='</div>';
-            let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-            vv_sous_fenetre1.innerHTML=o1;
-            /* __contenu_modale => vv_sous_fenetre1 */
-            vv_sous_fenetre1.showModal();
-            this.__gi1.ajoute_les_evenements_aux_boutons( null );
+            this.__gi1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer});
@@ -158,10 +151,7 @@ class genres1{
             o1+='</li>';
         }
         o1+='</ul>';
-        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-        vv_sous_fenetre1.innerHTML=o1;
-        /* __contenu_modale => vv_sous_fenetre1 */
-        vv_sous_fenetre1.showModal();
+        this.__gi1.affiche_sous_fenetre1( o1 );
         let options={
             "hauteur_max_en_vh" : /* entre 20 et 80 */60 ,
             "largeur_max" : /* 'calc(100% - 50px)', */'400px' ,

@@ -66,15 +66,13 @@ class v_svg_bdd1{
         donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
-    
     /*
       =============================================================================================================
       exécute la requête contenue dans $donnees_recues[__xva]['source_sql']
     */
-    async analyser_l_index( mat , d , donnees_recues , donnees_retournees , options_generales , __db1){
-         /* this.__gi1.ma_trace1('donnees_recues.__xva=',donnees_recues.__xva); */
-         try{
-          
+    async analyser_l_index( mat , d , donnees_recues , donnees_retournees , options_generales , __db1 ){
+        /* this.__gi1.ma_trace1('donnees_recues.__xva=',donnees_recues.__xva); */
+        try{
             let statement=await __db1.prepare( donnees_recues[__xva]['source_sql'] );
             let lignes=await statement.values();
             await statement.finalize();
@@ -82,14 +80,14 @@ class v_svg_bdd1{
             for(let numero_de_ligne in lignes){
                 /* this.__gi1.ma_trace1(lignes[numero_de_ligne]); */
                 let aa={};
-                aa['T0.'+donnees_recues.__xva['primary_key']] = lignes[numero_de_ligne][0];
-                aa['T1.'+donnees_recues.__xva['primary_key']] = lignes[numero_de_ligne][1];
+                aa['T0.' + donnees_recues.__xva['primary_key']]=lignes[numero_de_ligne][0];
+                aa['T1.' + donnees_recues.__xva['primary_key']]=lignes[numero_de_ligne][1];
                 let num_champ=2;
                 for(let i in donnees_recues.__xva['liste_des_champs']){
-                    aa['T0.'+donnees_recues.__xva['liste_des_champs'][i]] = lignes[numero_de_ligne][num_champ++];
-                    aa['T1.'+donnees_recues.__xva['liste_des_champs'][i]] = lignes[numero_de_ligne][num_champ++];
+                    aa['T0.' + donnees_recues.__xva['liste_des_champs'][i]]=lignes[numero_de_ligne][num_champ++];
+                    aa['T1.' + donnees_recues.__xva['liste_des_champs'][i]]=lignes[numero_de_ligne][num_champ++];
                 }
-//                this.__gi1.ma_trace1('aa=',aa);
+                /* this.__gi1.ma_trace1('aa=',aa); */
                 donnees0.push( aa );
             }
             donnees_retournees.__xva['donnees0']=donnees0;
@@ -102,9 +100,9 @@ class v_svg_bdd1{
             donnees_retournees.__xva['operation_table']=donnees_recues[__xva]['operation_table'];
             donnees_retournees.__xva['id_bdd_de_la_base']=donnees_recues[__xva]['id_bdd_de_la_base'];
             donnees_retournees.__xva['liste_des_champs_avec_type']=donnees_recues[__xva]['liste_des_champs_avec_type'];
-         }catch(e){
-          this.__gi1.ma_trace1(e.stack);
-         }
+        }catch(e){
+            this.__gi1.ma_trace1( e.stack );
+        }
     }
     /*
       =============================================================================================================
@@ -159,8 +157,8 @@ class v_svg_bdd1{
             await db1.close();
             return({"__xst" : __xer});
         }
-        if(donnees_recues[__xva]['operation_table']==='analyser_l_index'){
-             await this.analyser_l_index(mat , d , donnees_recues , donnees_retournees , options_generales , db1)
+        if(donnees_recues[__xva]['operation_table'] === 'analyser_l_index'){
+            await this.analyser_l_index( mat , d , donnees_recues , donnees_retournees , options_generales , db1 );
         }else{
             try{
                 /* this.__gi1.ma_trace1('donnees_recues[__xva][source_sql]='+donnees_recues[__xva]['source_sql']); */
@@ -170,7 +168,7 @@ class v_svg_bdd1{
             }catch(e){
                 await db1.close();
                 /* this.__gi1.ma_trace1('e='+e.stack); */
-                this.__gi1.__xsi[__xer].push( ' ' + donnees_recues[__xva]['operation_table'] + ' dans la base physique impossible  [' + this.__gi1.nl2( e ) + '] <pre>' + donnees_recues[__xva]['source_sql'].replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</pre>' );
+                this.__gi1.__xsi[__xer].push( ' ' + donnees_recues[__xva]['operation_table'] + ' dans la base physique impossible  [' + this.__gi1.nl2( e ) + '] <pre>' + donnees_recues[__xva]['source_sql'].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '</pre>' );
                 donnees_retournees.__xst=__xer;
                 return({"__xst" : __xer});
                 /* donnees_retournees.__xst=__xer; */
@@ -1106,158 +1104,142 @@ class v_svg_bdd1{
           il faut frendre toutes les bases du projet et chercher les champs 
           references et reference_externe
         */
-        let tt372=await this.__gi1.sql_iii(372 , {} , donnees_retournees , __db1 );
+        let tt372=await this.__gi1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_fournisseur_basedd`
+         FROM b1.tbl_bdds T0
+        ;
+        */
+        /*sql_inclure_fin*/ 372 , {} , donnees_retournees , __db1 );
         if(tt372[__xst] !== __xsu){
             this.__gi1.__xsi[__xer].push( 'erreur de modification [' + this.__gi1.nl2() );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-//        this.__gi1.ma_trace1(tt372.__xva);
-        let les_dependances_json={};        
-        for( let i in tt372.__xva){
+        let tableau_liste_des_bases=[];
+        let les_dependances_json={};
+        for(let i in tt372.__xva){
             let id_basedd=tt372.__xva[i]['T0.chi_id_basedd'];
+            tableau_liste_des_bases.push( id_basedd );
             let rev_basedd=tt372.__xva[i]['T0.chp_rev_travail_basedd'];
             /* this.__gi1.ma_trace1('id_basedd='+id_basedd+' , rev_basedd=' + rev_basedd.substr(0,200)); */
-            let omat=this.__gi1.__rev1.rev_tm(rev_basedd);
-            if(omat.__xst!==__xsu){
+            let omat=this.__gi1.__rev1.rev_tm( rev_basedd );
+            if(omat.__xst !== __xsu){
                 this.__gi1.__xsi[__xer].push( 'erreur d\'écriture du fichier js des dependances [' + this.__gi1.nl2( e ) + ']' );
                 donnees_retournees.__xst=__xer;
                 return({"__xst" : __xer});
             }
             let mat1=omat.__xva;
-            for(let i=0;i<10;i++){
-//                this.__gi1.ma_trace1(mat1[i]);
+            for( let i=0 ; i < 10 ; i++ ){
+                /* this.__gi1.ma_trace1(mat1[i]); */
             }
             let l01=mat1.length;
-            for(let i=1 ; i < l01 ; i=mat1[i][12]){
-                if(mat1[i][1]==='créer_table' && mat1[i][2]==='f'){
-                    for(let j=i+1 ; j < l01 ; j=mat1[j][12]){
-                        if(mat1[j][1]==='champs' && mat1[j][2]==='f'){
-                            for(let k=j+1 ; k < l01 ; k=mat1[k][12]){
-                                if(mat1[k][1]==='champ' && mat1[k][2]==='f'){
-                                    for(let l=k+1 ; l < l01 ; l=mat1[l][12]){
-                                        if(mat1[l][1]==='references' && mat1[l][2]==='f' ){
-                                            if( !(mat1[l][8] === 2 && mat1[l+1][2] === 'c' && mat1[l+2][2] === 'c') ){
+            for( let i=1 ; i < l01 ; i=mat1[i][12] ){
+                if(mat1[i][1] === 'créer_table' && mat1[i][2] === 'f'){
+                    for( let j=i + 1 ; j < l01 ; j=mat1[j][12] ){
+                        if(mat1[j][1] === 'champs' && mat1[j][2] === 'f'){
+                            for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
+                                if(mat1[k][1] === 'champ' && mat1[k][2] === 'f'){
+                                    for( let l=k + 1 ; l < l01 ; l=mat1[l][12] ){
+                                        if(mat1[l][1] === 'references' && mat1[l][2] === 'f'){
+                                            if(!(mat1[l][8] === 2 && mat1[l + 1][2] === 'c' && mat1[l + 2][2] === 'c')){
                                                 this.__gi1.__xsi[__xer].push( 'un champ "references" ne contient pas le bon nombre d\'arguments [' + this.__gi1.nl2() );
                                                 donnees_retournees.__xst=__xer;
                                                 return({"__xst" : __xer});
                                             }
                                             let id_bdd_de_la_base_parente=id_basedd;
-                                            let nom_de_la_table_parente=mat1[l+1][1];
-                                            let nom_du_champ_parent=mat1[l+2][1];
+                                            let nom_de_la_table_parente=mat1[l + 1][1];
+                                            let nom_du_champ_parent=mat1[l + 2][1];
                                             let id_base_enfant=id_basedd;
                                             let nom_de_la_table_enfant='';
                                             let nom_du_champ_enfant='';
                                             /*
                                               on a trouvé une référence interne et on va rechercher le nom de la table / champ enfant
                                             */
-                                            for(let m=i+1 ; m < l01 ; m=mat1[m][12]){
-                                                if(mat1[m][1]==='nom_de_la_table' && mat1[m][2]==='f' ){
-                                                    if( !(mat1[m][8]===1 && mat1[m+1][2]==='c')){
+                                            for( let m=i + 1 ; m < l01 ; m=mat1[m][12] ){
+                                                if(mat1[m][1] === 'nom_de_la_table' && mat1[m][2] === 'f'){
+                                                    if(!(mat1[m][8] === 1 && mat1[m + 1][2] === 'c')){
                                                         this.__gi1.__xsi[__xer].push( 'le champ "nom_de_la_table" ne contient pas le bon nombre d\'argument [' + this.__gi1.nl2() );
                                                         donnees_retournees.__xst=__xer;
                                                         return({"__xst" : __xer});
                                                     }
-                                                    nom_de_la_table_enfant=mat1[m+1][1];
+                                                    nom_de_la_table_enfant=mat1[m + 1][1];
                                                 }
                                             }
-                                            for(let m=k+1 ; m < l01 ; m=mat1[m][12]){
-                                                if(mat1[m][1]==='nom_du_champ' && mat1[m][2]==='f' ){
-                                                    if( !(mat1[m][8]===1 && mat1[m+1][2]==='c')){
+                                            for( let m=k + 1 ; m < l01 ; m=mat1[m][12] ){
+                                                if(mat1[m][1] === 'nom_du_champ' && mat1[m][2] === 'f'){
+                                                    if(!(mat1[m][8] === 1 && mat1[m + 1][2] === 'c')){
                                                         this.__gi1.__xsi[__xer].push( 'le champ "nom_du_champ" ne contient pas le bon nombre d\'argument [' + this.__gi1.nl2() );
                                                         donnees_retournees.__xst=__xer;
                                                         return({"__xst" : __xer});
                                                     }
-                                                    nom_du_champ_enfant=mat1[m+1][1];
+                                                    nom_du_champ_enfant=mat1[m + 1][1];
                                                 }
                                             }
                                             /*
                                               this.__gi1.ma_trace1('reference interne : ' + id_bdd_de_la_base_parente+'/'+nom_de_la_table_parente+'/'+nom_du_champ_parent + ' ' + id_base_enfant + '/' + nom_de_la_table_enfant + '/' + nom_du_champ_enfant );
                                             */
-                                            if(!les_dependances_json.hasOwnProperty(nom_de_la_table_parente+'_'+nom_du_champ_parent)){
-                                                 les_dependances_json[nom_de_la_table_parente+'_'+nom_du_champ_parent]={
-                                                     "id_bdd_de_la_base_parente": id_bdd_de_la_base_parente ,
-                                                     "table_parente": nom_de_la_table_parente,
-                                                     "champ_parent": nom_du_champ_parent,
-                                                     "dependances": [
-                                                       {
-                                                         "table_dependante": nom_de_la_table_enfant,
-                                                         "champ_dependant": nom_du_champ_enfant,
-                                                         "id_bdd_de_la_base_dependante": id_base_enfant
-                                                       }
-                                                      ]
-                                                 }
+                                            if(!les_dependances_json.hasOwnProperty( nom_de_la_table_parente + '_' + nom_du_champ_parent )){
+                                                les_dependances_json[nom_de_la_table_parente + '_' + nom_du_champ_parent]={
+                                                    "id_bdd_de_la_base_parente" : id_bdd_de_la_base_parente ,
+                                                    "table_parente" : nom_de_la_table_parente ,
+                                                    "champ_parent" : nom_du_champ_parent ,
+                                                    "dependances" : [{"table_dependante" : nom_de_la_table_enfant ,"champ_dependant" : nom_du_champ_enfant ,"id_bdd_de_la_base_dependante" : id_base_enfant}]
+                                                };
                                             }else{
-                                                 les_dependances_json[nom_de_la_table_parente+'_'+nom_du_champ_parent]['dependances'].push({
-                                                     "table_dependante": nom_de_la_table_enfant,
-                                                     "champ_dependant": nom_du_champ_enfant,
-                                                     "id_bdd_de_la_base_dependante": id_base_enfant
-                                                 });
+                                                les_dependances_json[nom_de_la_table_parente + '_' + nom_du_champ_parent]['dependances'].push( {"table_dependante" : nom_de_la_table_enfant ,"champ_dependant" : nom_du_champ_enfant ,"id_bdd_de_la_base_dependante" : id_base_enfant} );
                                             }
-                                            
-                                            
-                                        }else if(mat1[l][1]==='meta' && mat1[l][2]==='f' ){
-                                            for(let m=l+1 ; m < l01 ; m=mat1[m][12]){
-                                                if(mat1[m][1]==='reference_externe' && mat1[m][2]==='f' ){
-                                                    if( !(mat1[m][8] === 3 && mat1[m+1][2] === 'c' && mat1[m+2][2] === 'c' && mat1[m+2][2] === 'c') ){
+                                        }else if(mat1[l][1] === 'meta' && mat1[l][2] === 'f'){
+                                            for( let m=l + 1 ; m < l01 ; m=mat1[m][12] ){
+                                                if(mat1[m][1] === 'reference_externe' && mat1[m][2] === 'f'){
+                                                    if(!(mat1[m][8] === 3 && mat1[m + 1][2] === 'c' && mat1[m + 2][2] === 'c' && mat1[m + 2][2] === 'c')){
                                                         this.__gi1.__xsi[__xer].push( 'un champ "reference_externe" ne contient pas le bon nombre d\'arguments [' + this.__gi1.nl2() );
                                                         donnees_retournees.__xst=__xer;
                                                         return({"__xst" : __xer});
                                                     }
-                                                    let id_bdd_de_la_base_parente=parseInt(mat1[m+1][1],10);
-                                                    let nom_de_la_table_parente=mat1[m+2][1];
-                                                    let nom_du_champ_parent=mat1[m+3][1];
+                                                    let id_bdd_de_la_base_parente=parseInt( mat1[m + 1][1] , 10 );
+                                                    let nom_de_la_table_parente=mat1[m + 2][1];
+                                                    let nom_du_champ_parent=mat1[m + 3][1];
                                                     let id_base_enfant=id_basedd;
                                                     let nom_de_la_table_enfant='';
                                                     let nom_du_champ_enfant='';
                                                     /*
                                                       on a trouvé une référence externe et on va rechercher le nom de la table / champ enfant
                                                     */
-                                                    for(let n=i+1 ; n < l01 ; n=mat1[n][12]){
-                                                        if(mat1[n][1]==='nom_de_la_table' && mat1[n][2]==='f' ){
-                                                            if( !(mat1[n][8]===1 && mat1[n+1][2]==='c')){
+                                                    for( let n=i + 1 ; n < l01 ; n=mat1[n][12] ){
+                                                        if(mat1[n][1] === 'nom_de_la_table' && mat1[n][2] === 'f'){
+                                                            if(!(mat1[n][8] === 1 && mat1[n + 1][2] === 'c')){
                                                                 this.__gi1.__xsi[__xer].push( 'le champ "nom_de_la_table" ne contient pas le bon nombre d\'argument [' + this.__gi1.nl2() );
                                                                 donnees_retournees.__xst=__xer;
                                                                 return({"__xst" : __xer});
                                                             }
-                                                            nom_de_la_table_enfant=mat1[n+1][1];
+                                                            nom_de_la_table_enfant=mat1[n + 1][1];
                                                         }
                                                     }
-                                                    for(let n=k+1 ; n < l01 ; n=mat1[m][12]){
-                                                        if(mat1[n][1]==='nom_du_champ' && mat1[n][2]==='f' ){
-                                                            if( !(mat1[n][8]===1 && mat1[n+1][2]==='c')){
+                                                    for( let n=k + 1 ; n < l01 ; n=mat1[m][12] ){
+                                                        if(mat1[n][1] === 'nom_du_champ' && mat1[n][2] === 'f'){
+                                                            if(!(mat1[n][8] === 1 && mat1[n + 1][2] === 'c')){
                                                                 this.__gi1.__xsi[__xer].push( 'le champ "nom_du_champ" ne contient pas le bon nombre d\'argument [' + this.__gi1.nl2() );
                                                                 donnees_retournees.__xst=__xer;
                                                                 return({"__xst" : __xer});
                                                             }
-                                                            nom_du_champ_enfant=mat1[n+1][1];
+                                                            nom_du_champ_enfant=mat1[n + 1][1];
                                                         }
                                                     }
                                                     /*
                                                       this.__gi1.ma_trace1('reference externe : ' + id_bdd_de_la_base_parente+'/'+nom_de_la_table_parente+'/'+nom_du_champ_parent + ' ' + id_base_enfant + '/' + nom_de_la_table_enfant + '/' + nom_du_champ_enfant );
                                                     */
-                                                    if(!les_dependances_json.hasOwnProperty(nom_de_la_table_parente+'_'+nom_du_champ_parent)){
-                                                         les_dependances_json[nom_de_la_table_parente+'_'+nom_du_champ_parent]={
-                                                             "id_bdd_de_la_base_parente": id_bdd_de_la_base_parente ,
-                                                             "table_parente": nom_de_la_table_parente,
-                                                             "champ_parent": nom_du_champ_parent,
-                                                             "dependances": [
-                                                               {
-                                                                 "table_dependante": nom_de_la_table_enfant,
-                                                                 "champ_dependant": nom_du_champ_enfant,
-                                                                 "id_bdd_de_la_base_dependante": id_base_enfant
-                                                               },
-                                                             ]
-                                                         }
+                                                    if(!les_dependances_json.hasOwnProperty( nom_de_la_table_parente + '_' + nom_du_champ_parent )){
+                                                        les_dependances_json[nom_de_la_table_parente + '_' + nom_du_champ_parent]={
+                                                            "id_bdd_de_la_base_parente" : id_bdd_de_la_base_parente ,
+                                                            "table_parente" : nom_de_la_table_parente ,
+                                                            "champ_parent" : nom_du_champ_parent ,
+                                                            "dependances" : [{"table_dependante" : nom_de_la_table_enfant ,"champ_dependant" : nom_du_champ_enfant ,"id_bdd_de_la_base_dependante" : id_base_enfant}]
+                                                        };
                                                     }else{
-                                                         les_dependances_json[nom_de_la_table_parente+'_'+nom_du_champ_parent]['dependances'].push({
-                                                             "table_dependante": nom_de_la_table_enfant,
-                                                             "champ_dependant": nom_du_champ_enfant,
-                                                             "id_bdd_de_la_base_dependante": id_base_enfant
-                                                         });
+                                                        les_dependances_json[nom_de_la_table_parente + '_' + nom_du_champ_parent]['dependances'].push( {"table_dependante" : nom_de_la_table_enfant ,"champ_dependant" : nom_du_champ_enfant ,"id_bdd_de_la_base_dependante" : id_base_enfant} );
                                                     }
-                                                    
-                                                    
                                                 }
                                             }
                                         }
@@ -1269,10 +1251,19 @@ class v_svg_bdd1{
                 }
             }
             /* this.__gi1.ma_trace1('les_dependances_json=',les_dependances_json); */
-            
+        }
+        let chemin_fichier__liste_des_bases='../rev_' + donnees_retournees.chi_id_projet + '/__fichiers_generes/__liste_des_bases.json';
+        let contenu_fichier__liste_des_bases='' + JSON.stringify( tableau_liste_des_bases );
+        try{
+            await this.__gi1.file_put_contents( chemin_fichier__liste_des_bases , contenu_fichier__liste_des_bases );
+        }catch{
+            this.__gi1.__xsi[__xer].push( 'erreur d\'écriture du fichier js des liste_des_bases [' + this.__gi1.nl2( e ) + ']' );
+            donnees_retournees.__xst=__xer;
+            return({"__xst" : __xer});
         }
         let chemin_fichier__liste_des_dependances='../rev_' + donnees_retournees.chi_id_projet + '/__fichiers_generes/__liste_des_dependances_bases.json';
-        let contenu_fichier__liste_des_dependances='' + JSON.stringify( les_dependances_json , null , 2 ) + ''; // donnees_recues[__xva]['tableau_des_dependances']
+        let contenu_fichier__liste_des_dependances='' + JSON.stringify( les_dependances_json , null , 2 ) + '';
+        /* donnees_recues[__xva]['tableau_des_dependances'] */
         try{
             await this.__gi1.file_put_contents( chemin_fichier__liste_des_dependances , contenu_fichier__liste_des_dependances );
         }catch{

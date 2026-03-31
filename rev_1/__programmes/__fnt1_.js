@@ -161,30 +161,28 @@ class __fnt1{
       =============================================================================================================
     */
     tester_longueur_de_champ_dans_genre( valeur , nom_champ ){
-     
-        if(valeur===null || valeur === ''){
+        if(valeur === null || valeur === ''){
             return({"__xst" : __xsu});
         }
-        if(this.__gi1.est_num(valeur)){
-            
-            let v=parseFloat(valeur);
-            /* si on a entré "3.4" 34  est différent de 30 ) */
-            if(v*10 !== parseInt(v,10)*10){
+        if(this.__gi1.est_num( valeur )){
+            let v=parseFloat( valeur );
+            /* si on a entré "3.4" 34  est différent de 30 ] */
+            if(v * 10 !== parseInt( v , 10 ) * 10){
                 this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir une nombre avec une virgule ( "," )' + this.__gi1.nl2()} );
                 return({"__xst" : __xer});
             }
             /* si on a entré 10e21 */
-            if(v>20){
+            if(v > 20){
                 this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être < 20 ' + this.__gi1.nl2()} );
                 return({"__xst" : __xer});
             }
             return({"__xst" : __xsu});
         }
         let contient_virgule=false;
-        for(let i=0;i<valeur.length;i++){
-            let c=valeur.substr(i,1);
-            if( (c >= '0' && c <= '9' ) || c === ',' ){
-                if(c===','){
+        for( let i=0 ; i < valeur.length ; i++ ){
+            let c=valeur.substr( i , 1 );
+            if(c >= '0' && c <= '9' || c === ','){
+                if(c === ','){
                     contient_virgule=true;
                 }
             }else{
@@ -192,21 +190,20 @@ class __fnt1{
                 return({"__xst" : __xer});
             }
         }
-        if(contient_virgule===true){
-            let tab=valeur.split(',');
-            if(tab.length>2){
+        if(contient_virgule === true){
+            let tab=valeur.split( ',' );
+            if(tab.length > 2){
                 this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit  contenir une virgule uniquement' + this.__gi1.nl2()} );
                 return({"__xst" : __xer});
             }
-            let val1=parseInt(tab[0],10);
-            let val2=parseInt(tab[1],10);
-            if(val1+val2>20){
+            let val1=parseInt( tab[0] , 10 );
+            let val2=parseInt( tab[1] , 10 );
+            if(val1 + val2 > 20){
                 this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" contenir une longueur cumulée de 20' + this.__gi1.nl2()} );
                 return({"__xst" : __xer});
             }
         }
         return({"__xst" : __xsu});
-        
     }
     /*
       =============================================================================================================
@@ -333,7 +330,7 @@ class __fnt1{
         }
         if(zone_select === 'vv_option_heure'){
             let val=parseInt( document.getElementById( zone_select ).value , 10 );
-            this.maj_heure( nom_du_champ , val );
+            this.maj_heure1( nom_du_champ , val );
         }else if(zone_select === 'vv_option_minute'){
             let val=parseInt( document.getElementById( zone_select ).value , 10 );
             this.maj_minute( nom_du_champ , val );
@@ -341,6 +338,7 @@ class __fnt1{
             let val=parseInt( document.getElementById( zone_select ).value , 10 );
             this.maj_seconde( nom_du_champ , val );
         }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -356,12 +354,14 @@ class __fnt1{
                 valeur=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        this.maj_heure( nom_du_champ , valeur );
+        this.maj_heure1( nom_du_champ , valeur );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    maj_heure( nom_du_champ , valeur ){
+    maj_heure1( nom_du_champ , valeur ){
+        let sepa_heure=':';
         let heure_a_afficher=valeur;
         let minute_a_afficher=0;
         let seconde_a_afficher=0;
@@ -370,7 +370,7 @@ class __fnt1{
         let valeur_courante=document.getElementById( nom_du_champ ).value;
         if(valeur_courante === ''){
             heure_a_afficher=valeur;
-            t=(valeur < 10 ? ( '0' + valeur ) : ( valeur )) + '_00_00';
+            t=((valeur < 10 ? ( '0' + valeur ) : ( valeur )) + sepa_heure) + '00' + sepa_heure + '00';
         }else{
             t=(valeur < 10 ? ( '0' + valeur ) : ( valeur )) + valeur_courante.substr( 2 );
             minute_a_afficher=parseInt( valeur_courante.substr( 3 , 2 ) , 10 );
@@ -404,11 +404,13 @@ class __fnt1{
             }
         }
         this.maj_minute( nom_du_champ , valeur );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     maj_minute( nom_du_champ , valeur ){
+        let sepa_heure=':';
         let heure_a_afficher=0;
         let minute_a_afficher=valeur;
         let seconde_a_afficher=0;
@@ -416,7 +418,7 @@ class __fnt1{
         let t='';
         let valeur_courante=document.getElementById( nom_du_champ ).value;
         if(valeur_courante === ''){
-            t='00_' + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + '_00';
+            t='00' + sepa_heure + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + sepa_heure + '00';
         }else{
             t=valeur_courante.substr( 0 , 3 ) + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + valeur_courante.substr( 5 );
             heure_a_afficher=parseInt( valeur_courante.substr( 0 , 2 ) , 10 );
@@ -450,11 +452,13 @@ class __fnt1{
             }
         }
         this.maj_seconde( nom_du_champ , valeur );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     maj_seconde( nom_du_champ , valeur ){
+        let sepa_heure=':';
         let heure_a_afficher=0;
         let minute_a_afficher=0;
         let seconde_a_afficher=valeur;
@@ -462,7 +466,7 @@ class __fnt1{
         let t='';
         let valeur_courante=document.getElementById( nom_du_champ ).value;
         if(valeur_courante === ''){
-            t='00_' + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + '_00';
+            t='00' + sepa_heure + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + sepa_heure + '00';
         }else{
             t=valeur_courante.substr( 0 , 6 ) + (valeur < 10 ? ( '0' + valeur ) : ( valeur ));
             heure_a_afficher=parseInt( valeur_courante.substr( 0 , 2 ) , 10 );
@@ -635,6 +639,7 @@ class __fnt1{
       =============================================================================================================
     */
     maintenant_hhmmss( mat , d ){
+        let sepa_heure=':';
         let l01=mat.length;
         let nom_du_champ='';
         let option='';
@@ -653,17 +658,17 @@ class __fnt1{
         if(option === 0){
             /* nulle */
         }else if(option === 1){
-            t=(tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + '_' + (tt.getMinutes() < 10 ? ( '0' + tt.getMinutes() ) : ( tt.getMinutes() )) + '_' + (tt.getSeconds() < 10 ? ( '0' + tt.getSeconds() ) : ( tt.getSeconds() ));
+            t=(tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + sepa_heure + (tt.getMinutes() < 10 ? ( '0' + tt.getMinutes() ) : ( tt.getMinutes() )) + sepa_heure + (tt.getSeconds() < 10 ? ( '0' + tt.getSeconds() ) : ( tt.getSeconds() ));
             heure_a_afficher=tt.getHours();
             minute_a_afficher=tt.getMinutes();
             seconde_a_afficher=tt.getSeconds();
         }else if(option === 2){
-            t=(tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + '_' + (tt.getMinutes() < 10 ? ( '0' + tt.getMinutes() ) : ( tt.getMinutes() )) + '_00';
+            t=((tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + sepa_heure + (tt.getMinutes() < 10 ? ( '0' + tt.getMinutes() ) : ( tt.getMinutes() )) + sepa_heure) + '00';
             heure_a_afficher=tt.getHours();
             minute_a_afficher=tt.getMinutes();
             seconde_a_afficher=0;
         }else if(option === 3){
-            t=(tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + '_00_00';
+            t=((tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + sepa_heure) + '00' + sepa_heure + '00';
             heure_a_afficher=tt.getHours();
             minute_a_afficher=0;
             seconde_a_afficher=0;
@@ -697,14 +702,12 @@ class __fnt1{
                         nouveau_left=0;
                     }
                     vv_sous_fenetre1.style.left=nouveau_left + 'px';
-                    /* console.log(tt,nouveau_left); */
                 }
                 /* ajustement vertical */
                 setTimeout( function( p ){
                         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
                         let tt=vv_sous_fenetre1.getBoundingClientRect();
                         if(tt.bottom > p.height){
-                            console.log( tt , p );
                             window.scrollTo( {"top" : parseInt( tt.bottom - p.height , 10 )} );
                         }
                     } , 50 , p );
@@ -745,6 +748,7 @@ class __fnt1{
       =============================================================================================================
     */
     selectionner_le_jour_courant( mat , d ){
+        let sepa_date='-';
         let l01=mat.length;
         let nom_du_champ='';
         let jour='';
@@ -757,7 +761,7 @@ class __fnt1{
             }
         }
         let tt=new Date();
-        let t=tt.getFullYear() + '_' + (tt.getMonth() + 1 < 10 ? ( '0' + (tt.getMonth() + 1) ) : ( tt.getMonth() + 1 )) + '_' + (tt.getDate() < 10 ? ( '0' + tt.getDate() ) : ( tt.getDate() ));
+        let t=tt.getFullYear() + sepa_date + (tt.getMonth() + 1 < 10 ? ( '0' + (tt.getMonth() + 1) ) : ( tt.getMonth() + 1 )) + sepa_date + (tt.getDate() < 10 ? ( '0' + tt.getDate() ) : ( tt.getDate() ));
         document.getElementById( nom_du_champ ).value=t;
         this.__gi1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
@@ -766,6 +770,7 @@ class __fnt1{
       =============================================================================================================
     */
     selectionner_la_date1( mat , d ){
+        let sepa_date='-';
         let l01=mat.length;
         let nom_du_champ='';
         let jour='';
@@ -783,7 +788,7 @@ class __fnt1{
                 annee=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        let t=annee + '_' + (mois < 10 ? ( '0' + mois ) : ( mois )) + '_' + (jour < 10 ? ( '0' + jour ) : ( jour ));
+        let t=annee + sepa_date + (mois < 10 ? ( '0' + mois ) : ( mois )) + sepa_date + (jour < 10 ? ( '0' + jour ) : ( jour ));
         document.getElementById( nom_du_champ ).value=t;
         this.__gi1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
@@ -1411,6 +1416,7 @@ class __fnt1{
       =============================================================================================================
     */
     jour_courant1( mat , d , x , evenement_navigateur ){
+        let sepa_date='-';
         let l01=mat.length;
         let nom_du_champ='';
         let format_calendrier=0;
@@ -1426,7 +1432,7 @@ class __fnt1{
             return({"__xst" : __xer});
         }
         let maintenant=new Date();
-        let t=maintenant.getFullYear() + '_' + (maintenant.getMonth() + 1 < 10 ? ( '0' + (maintenant.getMonth() + 1) ) : ( maintenant.getMonth() + 1 )) + '_' + (maintenant.getDate() < 10 ? ( '0' + maintenant.getDate() ) : ( maintenant.getDate() ));
+        let t=maintenant.getFullYear() + sepa_date + (maintenant.getMonth() + 1 < 10 ? ( '0' + (maintenant.getMonth() + 1) ) : ( maintenant.getMonth() + 1 )) + sepa_date + (maintenant.getDate() < 10 ? ( '0' + maintenant.getDate() ) : ( maintenant.getDate() ));
         document.getElementById( nom_du_champ ).value=t;
         return({"__xst" : __xsu});
     }
@@ -1434,6 +1440,7 @@ class __fnt1{
       =============================================================================================================
     */
     heure_nulle_ou_comprise_entre( inf , sup , valeur , nom_du_champ ){
+        let sepa_heure=':';
         let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  00_00_00 et 23_59_59 inclus<br />';
         if(valeur === '' || valeur === null){
             return({"__xst" : __xsu});
@@ -1447,7 +1454,7 @@ class __fnt1{
         ){
             return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
         }
-        if(!(valeur.substr( 2 , 1 ) === '_' && valeur.substr( 5 , 1 ) === '_')){
+        if(!(valeur.substr( 2 , 1 ) === sepa_heure && valeur.substr( 5 , 1 ) === sepa_heure)){
             return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']'});
         }
         let heure_num=parseInt( valeur.substr( 0 , 2 ) , 10 );
@@ -1471,6 +1478,7 @@ class __fnt1{
       =============================================================================================================
     */
     date_nulle_ou_comprise_entre( inf , sup , valeur , nom_du_champ ){
+        let sepa_date='-';
         let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  1000_01_01 et 9999_12_31 inclus<br />';
         if(valeur === '' || valeur === null){
             return({"__xst" : __xsu});
@@ -1484,7 +1492,7 @@ class __fnt1{
         ){
             return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
         }
-        if(!(valeur.substr( 4 , 1 ) === '_' && valeur.substr( 7 , 1 ) === '_')){
+        if(!(valeur.substr( 4 , 1 ) === sepa_date && valeur.substr( 7 , 1 ) === sepa_date)){
             return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']'});
         }
         let annee_num=parseInt( valeur.substr( 0 , 4 ) , 10 );
@@ -1813,10 +1821,7 @@ class __fnt1{
             o1+='<input id="vv_valeur_remplacante" value="" />';
             o1+='<br />';
             o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_la_valeur_dans_la_zone(zone_source(' + zone_source + '))))" title="remplacer_dans_la_zone" >remplacer</div>\r\n';
-            vv_sous_fenetre1.innerHTML=o1;
-            vv_sous_fenetre1.showModal();
-            this.__gi1.ajoute_les_evenements_aux_boutons( null );
-            return({"__xst" : __xsu});
+            this.__gi1.affiche_sous_fenetre1( o1 );
         }
         return({"__xst" : __xer});
     }

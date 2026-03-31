@@ -85,10 +85,10 @@ class x_ecran_rev_vers_sql1{
     sql2_vers_rev( mat , d ){
         let options_pour_le_parseur={
             "dialect" : "sqlite" ,
-            "includeSpaces" :  /* These are optional: */true ,
-            "includeNewlines" :  /* Adds spaces/tabs */true ,
-            "includeComments" :  /* Adds newlines */true ,
-            "includeRange" :  /* Adds comments */true ,
+            "includeSpaces" : /* These are optional: */true ,
+            "includeNewlines" : /* Adds spaces/tabs */true ,
+            "includeComments" : /* Adds newlines */true ,
+            "includeRange" : /* Adds comments */true ,
              /* Adds source code location data */
             };
         let l01=mat.length;

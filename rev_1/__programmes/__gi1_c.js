@@ -295,6 +295,69 @@ class __gi1{
     /*
       =============================================================================================================
     */
+    supprime_l_exposant( num ){
+        if(num === null || num === undefined || num === ''){
+            throw new Error( "Invalid input: value is null, undefined, or empty." );
+        }
+        /* Convert to string to handle both number and string inputs */
+        let str=String( num );
+        /* If it's not in exponential notation, return as is */
+        if(!/e/i.test( str )){
+            return str;
+        }
+        /* Split into coefficient and exponent */
+        const [coeff,exp]=str.toLowerCase().split( 'e' );
+        const exponent=parseInt( exp , 10 );
+        /* Handle positive exponent */
+        if(exponent > 0){
+            let [intPart,fracPart='']=coeff.split( '.' );
+            fracPart=fracPart.padEnd( exponent , '0' );
+            return(intPart + fracPart.slice( 0 , exponent ) + (fracPart.slice( exponent ) || ''));
+        }else{
+            /* Handle negative exponent */
+            let [intPart,fracPart='']=coeff.split( '.' );
+            const zeros='0'.repeat( Math.abs( exponent ) - 1 );
+            return('0.' + zeros + intPart + fracPart);
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    utf8ToAscii( input ){
+        if( typeof input !== "string"){
+            throw new TypeError( "Input must be a string" );
+        }
+        /* Normalize to NFD form and remove diacritics */
+        /* Split letters and diacritics */
+        /* Remove diacritical marks */
+        /* Replace remaining non-ASCII with space */
+        if(input === ''){
+            return input;
+        }
+        if(this.est_num( input )){
+            console.log( 'String(input)=' + String( input ) );
+            return(this.supprime_l_exposant( input ).replace( /[^a-zA-Z0-9]+/g , ' ' ).trim());
+        }
+        let ret='';
+        if(false && this.__deverminage >= 2){
+            console.log( 'en entree : input=' + input );
+            ret=input.normalize( "NFD" );
+            console.log( 'ret normalize : ret=' + ret );
+            ret=ret.replace( /[\u0300-\u036f]/g , "" );
+            console.log( 'ret replace1 : ret=' + ret );
+            ret=ret.replace( /[^\x00-\x7F]/g , " " );
+            console.log( 'ret replace2 : ret=' + ret );
+            ret=ret.replace( /[^a-zA-Z0-9]+/g , ' ' );
+            ret=ret.trim();
+            console.log( 'ret final : ret="' + ret + '"' );
+        }else{
+            ret=input.normalize( "NFD" ).replace( /[\u0300-\u036f]/g , "" ).replace( /[^\x00-\x7F]/g , " " ).replace( /[^a-zA-Z0-9]+/g , ' ' ).trim();
+        }
+        return ret;
+    }
+    /*
+      =============================================================================================================
+    */
     __xac( mat , d , données , evenement=null ){
         if(!Array.isArray( mat )){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : 'oops, on n\'a pas reçu une matrice dans __gi1.__xac() ' + this.nl2()} );
@@ -314,6 +377,13 @@ class __gi1{
                     let fo1={};
                     let nombre_de_valeurs_a_envoyer=0;
                     let contient_des_fichier_a_televerser=false;
+                    let sur_table_virtuelle=false;
+                    for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                        if(mat[j][1] === 'sur_table_virtuelle' && mat[j][2] === 'f'){
+                            sur_table_virtuelle=true;
+                            break;
+                        }
+                    }
                     for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
                         if(mat[j][1] === 'co1' && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
                             co1=mat[j + 1][1];
@@ -331,6 +401,9 @@ class __gi1{
                                         fo1[co1][lst[k].id]=lst[k].checked;
                                         nombre_de_valeurs_a_envoyer++;
                                     }else if(lst[k].type && lst[k].type.toLowerCase() === 'file'){
+                                        /*
+                                          téléversement d'un fichier
+                                        */
                                         contient_des_fichier_a_televerser=true;
                                         const reader=new FileReader();
                                         let a=reader.readAsArrayBuffer( lst[k].files[0] );
@@ -363,7 +436,11 @@ class __gi1{
                                           }
                                         */
                                     }else{
-                                        fo1[co1][lst[k].id]=lst[k].value;
+                                        if(sur_table_virtuelle === true){
+                                            fo1[co1][lst[k].id]=this.utf8ToAscii( lst[k].value );
+                                        }else{
+                                            fo1[co1][lst[k].id]=lst[k].value;
+                                        }
                                         nombre_de_valeurs_a_envoyer++;
                                     }
                                 }
@@ -399,6 +476,7 @@ class __gi1{
                             let cmd1='m1(' + re_source.__xva + ')';
                             this.executer1( cmd1 , {"__fo1" : fo1 ,"__co1" : co1} );
                         }else if(mat[j][1] === 'co1' && mat[j][2] === 'f'){
+                        }else if(mat[j][1] === 'sur_table_virtuelle' && mat[j][2] === 'f'){
                         }else{
                             debugger;
                         }
@@ -575,8 +653,7 @@ class __gi1{
                                     if(obj3.hasOwnProperty( '__xme' )){
                                         this.ajoute_message( {"__xst" : __xer ,"__xme" : obj3.__xme} );
                                     }else{
-                                        console.log( '%c'+this.nl2() , 'background:black;color:yellow;');
-//                                        this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
+                                        console.log( '%c' + this.nl2() , 'background:black;color:yellow;' );
                                     }
                                 }
                                 this.affiche_les_messages();
@@ -1172,6 +1249,43 @@ class __gi1{
     /*
       =============================================================================================================
     */
+    #faire_disparaitre_les_messages_OK( e ){
+        let au_moins_un_a_garder=false;
+        this.#timeout_de_dispatition_de_message=null;
+        let rac=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+        if(rac === null){
+            rac=document.getElementById( 'vv_messages' );
+        }
+        let lst=rac.getElementsByTagName( 'div' );
+        let a_supprimer=[];
+        for( let i=0 ; i < lst.length ; i++ ){
+            if(lst[i].parentNode === rac){
+                if(lst[i].id && lst[i].id === 'vv_supprimer_les_messages'){
+                }else{
+                    if(lst[i].className
+                           && (lst[i].className.indexOf( 'yy__1' ) >= 0
+                               || lst[i].className.indexOf( 'yy__3' ) >= 0
+                               || lst[i].className.indexOf( 'yy__xsu' ) >= 0
+                               || lst[i].className.indexOf( 'yy__xif' ) >= 0)
+                    ){
+                        a_supprimer.push( i );
+                    }else{
+                        au_moins_un_a_garder=true;
+                    }
+                }
+            }
+        }
+        if(au_moins_un_a_garder === false){
+            this.supprimer_les_messages( null );
+        }else{
+            for( let i=a_supprimer.length - 1 ; i >= 0 ; i-- ){
+                lst[a_supprimer[i]].remove();
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
     masquer_ou_afficher( mat , ind ){
         let l01=mat.length;
         let zone_source='';
@@ -1217,8 +1331,8 @@ class __gi1{
     */
     agrandir_la_zone_message(){
         let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
-        if(a1===null){
-           a1=document.getElementById( 'vv_messages' );
+        if(a1 === null){
+            a1=document.getElementById( 'vv_messages' );
         }
         if(a1.style.maxHeight !== '70vh'){
             a1.style.maxHeight='70vh';
@@ -1232,8 +1346,8 @@ class __gi1{
     */
     supprimer_les_messages( mat ){
         let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
-        if(a1===null){
-           a1=document.getElementById( 'vv_messages' );
+        if(a1 === null){
+            a1=document.getElementById( 'vv_messages' );
         }
         a1.innerHTML='';
         a1.style.visibility='hidden';
@@ -1256,8 +1370,8 @@ class __gi1{
         try{
             let t='';
             let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
-            if(a1===null){
-               a1=document.getElementById( 'vv_messages' );
+            if(a1 === null){
+                a1=document.getElementById( 'vv_messages' );
             }
             let la_classe=this.est_num( obj.__xst ) ? ( 'yy__' + obj.__xst ) : ( 'yy' + obj.__xst );
             if(obj.hasOwnProperty( 'lig_col' )){
@@ -1299,57 +1413,16 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    #faire_disparaitre_les_messages_OK( e ){
-        /* console.log( '#faire_disparaitre_les_messages_OK' ); */
-        let au_moins_un_a_garder=false;
-        this.#timeout_de_dispatition_de_message=null;
-        let rac=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
-        if(rac===null){
-            rac=document.getElementById( 'vv_messages' )
-        }
-        let lst=rac.getElementsByTagName( 'div' );
-        let a_supprimer=[];
-        /* console.log(lst); */
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(lst[i].parentNode === rac){
-                if(lst[i].id && lst[i].id === 'vv_supprimer_les_messages'){
-                }else{
-                    if(lst[i].className
-                           && (lst[i].className.indexOf( 'yy__1' ) >= 0
-                               || lst[i].className.indexOf( 'yy__3' ) >= 0
-                               || lst[i].className.indexOf( 'yy__xsu' ) >= 0
-                               || lst[i].className.indexOf( 'yy__xif' ) >= 0)
-                    ){
-                        a_supprimer.push( i );
-                    }else{
-                        au_moins_un_a_garder=true;
-                    }
-                }
-            }
-        }
-        if(au_moins_un_a_garder === false){
-            this.supprimer_les_messages( null );
-        }else{
-            for( let i=a_supprimer.length - 1 ; i >= 0 ; i-- ){
-                lst[a_supprimer[i]].remove();
-            }
-        }
-    }
-    /*
-      =============================================================================================================
-    */
     affiche_les_messages( obj=null , le_message_du_serveur=null ){
-
         if(obj !== null){
             this.ajoute_message( obj );
         }
         let dans_sous_fenetre=true;
-        let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' )
-        if(a1===null){
-            a1=document.getElementById( 'vv_messages' )
+        let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+        if(a1 === null){
+            a1=document.getElementById( 'vv_messages' );
             dans_sous_fenetre=false;
         }
-        
         let lst=a1.getElementsByTagName( 'div' );
         for( let i=lst.length - 1 ; i >= 0 ; i-- ){
             if(lst[i].id === "vv_supprimer_les_messages"){
@@ -1358,16 +1431,16 @@ class __gi1{
             }
         }
         if(a1.innerHTML === ''){
-            let texte_a_afficher='rien à dire :-)'
+            let texte_a_afficher='rien à dire :-)';
             if(le_message_du_serveur !== null){
                 let cumul='';
-                for( let i in le_message_du_serveur.__xsi){
+                for(let i in le_message_du_serveur.__xsi){
                     for(let j in le_message_du_serveur.__xsi[i]){
-                        cumul+='<br />'+le_message_du_serveur.__xsi[i];
+                        cumul+='<br />' + le_message_du_serveur.__xsi[i];
                     }
                 }
-                if(cumul!=''){
-                    texte_a_afficher=cumul.substr(6);
+                if(cumul != ''){
+                    texte_a_afficher=cumul.substr( 6 );
                 }
             }
             let vv_supprimer_les_messages=document.createElement( 'div' );
@@ -1385,19 +1458,19 @@ class __gi1{
             vv_supprimer_les_messages.style.top='0';
             let t='';
             t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__gi1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
-            if(dans_sous_fenetre===false){
+            if(dans_sous_fenetre === false){
                 t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__gi1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + this.les_svg.retrecir + '</div>';
                 t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__gi1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
             }
             vv_supprimer_les_messages.innerHTML=t;
             a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
             this.ajoute_les_evenements_aux_boutons();
-            if(dans_sous_fenetre===true){
-              if(a1.innerHTML.indexOf('class="yy__0"')>=0 || a1.innerHTML.indexOf('class="yy__2"')>=0){
-                try{
-                 document.getElementById('vv_sous_fenetre1').scrollTo({"top" : 0 ,"left" : 0 ,"behavior" : "smooth"});
-                }catch{};
-              }
+            if(dans_sous_fenetre === true){
+                if(a1.innerHTML.indexOf( 'class="yy__0"' ) >= 0 || a1.innerHTML.indexOf( 'class="yy__2"' ) >= 0){
+                    try{
+                        document.getElementById( 'vv_sous_fenetre1' ).scrollTo( {"top" : 0 ,"left" : 0 ,"behavior" : "smooth"} );
+                    } catch {}
+                }
             }
         }
         try{
@@ -1587,6 +1660,15 @@ class __gi1{
             t=t.replace( /liste des/ , '⬱' );
             document.getElementById( 'vv_titre1' ).innerText=t;
         } catch {}
+        let a=document.getElementById( 'vv_bouton_retour_a_la_liste' );
+        if(a){
+            let b=a.getBoundingClientRect();
+            if(b.x < 0){
+                try{
+                    a.style.marginLeft='0px';
+                } catch {}
+            }
+        }
     }
     /*
       =============================================================================================================
@@ -1759,12 +1841,11 @@ class __gi1{
         t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='<img src="./f0?n0=1x1_blanc_2.png" style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='</div>';
-        
         t+='<div style="margin-top:20px;">';
         for(let i in this.les_svg){
-            t+='<div style="display:inline-block;width:' + ( 2 * this.css_dimensions.t_police ) + 'px;height:' + ( 2 * this.css_dimensions.t_police ) + 'px;">' + this.les_svg[i] + '</div>';
+            t+='<div style="display:inline-block;width:' + (2 * this.css_dimensions.t_police) + 'px;height:' + (2 * this.css_dimensions.t_police) + 'px;">' + this.les_svg[i] + '</div>';
         }
-        t+='</div>';
+        t+='</div>\r\n';
         t+='<div>\r\n';
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
             t+='<span>&nbsp;bidon=' + i + '</span><br />';
@@ -2513,7 +2594,7 @@ class __gi1{
         t+='.yy_element_actif_donc_masque{visibility:hidden;}';
         t+='.yy__OK{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;}';
         t+='h1,h2,h3,h4,h5,h6{text-shadow:#ccc 1px 1px 1px;text-align:center;color:red;margin:0 auto;}';
-        t+='h1{font-size:1.6em;margin-bottom:0.6em;line-height:1.1em;}';
+        t+='h1{font-size:1.6em;margin-bottom:0.6em;line-height:1.3em;text-wrap-style:balance;}';
         t+='h2{font-size:1.5em;margin-bottom:0.5em;}';
         t+='h3{font-size:1.4em;margin-bottom:0.4em;}';
         t+='h4{font-size:1.3em;margin-bottom:0.3em;}';
@@ -2779,11 +2860,10 @@ class __gi1{
         t+='}';
         t+='.yy_btn_retour_liste{';
         t+='    opacity: 0.7;';
-        t+='    transform: translate(0px,var(--t_marge_hb_plus));';
         t+='    text-shadow: none;';
         t+='    font-weight: 100;';
         t+='    position: fixed;';
-        t+='    left: 5%;';
+        t+='    margin-left:-1.6em;';
         t+='}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
@@ -3033,7 +3113,7 @@ class __gi1{
             this.initialisation_des_zones( '' + nom_de_la_classe_js + '' );
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
-        let bouton_retour='<div title="retour à la liste"  class="rev_bouton rev_b_svg yy_btn_retour_liste" data-rev_click="';
+        let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="rev_bouton rev_b_svg yy_btn_retour_liste" data-rev_click="';
         bouton_retour+='m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))';
         bouton_retour+='">' + this.les_svg.lst_des_elts + '</div>';
         let sujet='modification';
@@ -3258,7 +3338,7 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , nom_de_module , fonction_liste , filtres , ref_zone=null , num_page=null ){
+    aller_a_la_page( mat , d , nom_de_module , fonction_liste , filtres , ref_zone=null , num_page=null , est_table_virtuelle=false ){
         let nom_de_zone='';
         if(ref_zone !== null){
             nom_de_zone=ref_zone;
@@ -3292,7 +3372,11 @@ class __gi1{
                 filtres[fonction_liste]={};
                 for( let i=0 ; i < lst.length ; i++ ){
                     if(lst[i].id){
-                        filtres[fonction_liste][lst[i].id]=lst[i].value;
+                        if(est_table_virtuelle === true){
+                            filtres[fonction_liste][lst[i].id]=this.utf8ToAscii( lst[i].value );
+                        }else{
+                            filtres[fonction_liste][lst[i].id]=lst[i].value;
+                        }
                     }
                 }
                 let __fo1={};
@@ -3314,8 +3398,8 @@ class __gi1{
         let o1='';
         o1+='<table border="1">';
         o1+='<tr>';
-        if(__nbEnregs!==null ){
-            o1+='<th class="yy__0" style="font-size:1.3rem;padding:5px;">veuillez renseigner les critères de recherche ( ' + __nbEnregs + ' enregistrements) </th>';
+        if(__nbEnregs !== null){
+            o1+='<th class="yy__0" style="font-size:1.3rem;padding:5px;line-height:1.1em;">veuillez renseigner les critères de recherche ( ' + __nbEnregs + ' enregistrements) </th>';
         }else{
             o1+='<th class="yy__0" style="font-size:1.3rem;padding:5px;">la liste est vide</th>';
         }

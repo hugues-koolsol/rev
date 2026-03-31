@@ -130,7 +130,7 @@ class x_ecran_concevoir_une_requete1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`che_est_souche_requete` , 
-        `T0`.`cht_rev_requete`
+        `T0`.`cht_rev_requete` , `T0`.`chp_table_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` < :nb_max 
         ORDER BY `T0`.`chi_id_requete` ASC
@@ -150,8 +150,8 @@ class x_ecran_concevoir_une_requete1{
                 "cht_commentaire_requete" : v1['T0.cht_commentaire_requete'] ,
                 "chp_type_requete" : v1['T0.chp_type_requete'] ,
                 "che_est_souche_requete" : v1['T0.che_est_souche_requete'] ,
-                "cht_rev_requete" : v1['T0.cht_rev_requete'],
-                "chp_table_reference_requete" : v1['T0.chp_table_reference_requete'],
+                "cht_rev_requete" : v1['T0.cht_rev_requete'] ,
+                "chp_table_reference_requete" : v1['T0.chp_table_reference_requete']
             };
         }
         /* this.__gi1.ma_trace1('__liste_des_sql',__liste_des_sql); */

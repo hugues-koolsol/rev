@@ -33,57 +33,51 @@ class dossiers1{
     filtres={};
     vv_ecran_liste_boutons_avant='';
     les_bases={};
-    
-    
     /*
       =============================================================================================================
     */
-    vider_la_table( mat , d){
-        if(document.getElementById('vv_les_tables').value !== '' && document.getElementById('vv_les_bases').value !== ''){
+    vider_la_table( mat , d ){
+        if(document.getElementById( 'vv_les_tables' ).value !== '' && document.getElementById( 'vv_les_bases' ).value !== ''){
             let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
-            let la_table=document.getElementById('vv_les_tables').value;
+            let la_table=document.getElementById( 'vv_les_tables' ).value;
             let cmd='pm1(m1(n1(' + this.moi + '),f1(traitement_vider_la_table(';
-            cmd+=' chi_id_basedd('+chi_id_basedd+'),';
-            cmd+=' la_table(\''+la_table+'\')';
+            cmd+=' chi_id_basedd(' + chi_id_basedd + '),';
+            cmd+=' la_table(\'' + la_table + '\')';
             cmd+='))))';
-            this.__gi1.envoyer_un_message_au_worker( {"__xac" : cmd  ,"__xva" : {}} );
+            this.__gi1.envoyer_un_message_au_worker( {"__xac" : cmd ,"__xva" : {}} );
         }
         return({"__xst" : __xsu});
     }
-        
     /*
       =============================================================================================================
     */
-    integrer_csv0( mat , d){
+    integrer_csv0( mat , d ){
         let chi_id_dossier=0;
         let chi_id_source=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_dossier' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
-                chi_id_dossier=parseInt( mat[i + 1][1] , 10);
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'chi_id_source' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
-                chi_id_source=parseInt( mat[i + 1][1] , 10);
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
             }
         }
         if(chi_id_dossier > 0 && chi_id_source > 0){
-         
-            if(document.getElementById('vv_les_tables').value !== '' && document.getElementById('vv_les_bases').value !== ''){
-             
-                let lst=document.getElementById('champs_bdd').getElementsByTagName('div');
-                let les_champs=[]
-                for(let i=0;i<lst.length;i++){
-                    les_champs.push(lst[i].innerHTML);
+            if(document.getElementById( 'vv_les_tables' ).value !== '' && document.getElementById( 'vv_les_bases' ).value !== ''){
+                let lst=document.getElementById( 'champs_bdd' ).getElementsByTagName( 'div' );
+                let les_champs=[];
+                for( let i=0 ; i < lst.length ; i++ ){
+                    les_champs.push( lst[i].innerHTML );
                 }
-             
                 let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
-                let la_table=document.getElementById('vv_les_tables').value;
+                let la_table=document.getElementById( 'vv_les_tables' ).value;
                 let cmd='pm1(m1(n1(' + this.moi + '),f1(traitement_integrer_csv0(';
-                cmd+=' chi_id_dossier('+chi_id_dossier+'),';
-                cmd+=' chi_id_basedd('+chi_id_basedd+'),';
-                cmd+=' chi_id_source('+chi_id_source+'),';
-                cmd+=' la_table(\''+la_table+'\')';
+                cmd+=' chi_id_dossier(' + chi_id_dossier + '),';
+                cmd+=' chi_id_basedd(' + chi_id_basedd + '),';
+                cmd+=' chi_id_source(' + chi_id_source + '),';
+                cmd+=' la_table(\'' + la_table + '\')';
                 cmd+='))))';
-                this.__gi1.envoyer_un_message_au_worker( {"__xac" : cmd  ,"__xva" : { les_champs : les_champs}} );
+                this.__gi1.envoyer_un_message_au_worker( {"__xac" : cmd ,"__xva" : {"les_champs" : les_champs}} );
             }
         }
         return({"__xst" : __xsu});
@@ -116,6 +110,7 @@ class dossiers1{
         }
         contenu2=contenu2.replace( /\|/g , '` TEXT DEFAULT NULL,\n`' );
         document.getElementById( 'vv_sortie1' ).value=contenu2;
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -138,22 +133,22 @@ class dossiers1{
             }else if(c === 'à' || c === 'â'){
                 contenu2+='a';
             }else if(c === '"'){
-                if(dans_quot===true){
-                    if(i<contenu.length-1 && contenu[i+1]==='"'){
+                if(dans_quot === true){
+                    if(i < contenu.length - 1 && contenu[i + 1] === '"'){
                         contenu2+='_';
                     }else{
-                        tab.push(contenu2);
+                        tab.push( contenu2 );
                         contenu2='';
                         dans_quot=false;
                     }
-                }else if(dans_quot===false){
+                }else if(dans_quot === false){
                     dans_quot=true;
-                } 
+                }
             }else if(c === ','){
-                if(dans_quot===true){
+                if(dans_quot === true){
                     contenu2+='_';
                 }else{
-                    /* changement de champ*/
+                    /* changement de champ */
                 }
             }else if(c === '\n'){
                 break;
@@ -162,14 +157,13 @@ class dossiers1{
                 contenu2+='_';
             }
         }
-        if(contenu2!==''){
-            tab.push(contenu2);
+        if(contenu2 !== ''){
+            tab.push( contenu2 );
         }
-        
-        contenu2=tab.join(' TEXT DEFAULT NULL ,\n' )+' TEXT DEFAULT NULL';
+        contenu2=tab.join( ' TEXT DEFAULT NULL ,\n' ) + ' TEXT DEFAULT NULL';
         document.getElementById( 'vv_sortie1' ).value=contenu2;
+        return({"__xst" : __xsu});
     }
-    
     /*
       =============================================================================================================
     */
@@ -183,34 +177,31 @@ class dossiers1{
         }
         let o1='';
         if(zone_select !== ''){
-           if(document.getElementById('vv_les_tables').value !== '' && document.getElementById('vv_les_bases').value !== ''){
-               let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
-               let la_table=document.getElementById('vv_les_tables').value;
-               for(let i in this.les_bases[chi_id_basedd].tables[la_table]){
-                   o1+='<div>' + this.les_bases[chi_id_basedd].tables[la_table][i]+ '</div>';
-               }
-           }
-           // champs_bdd
+            if(document.getElementById( 'vv_les_tables' ).value !== '' && document.getElementById( 'vv_les_bases' ).value !== ''){
+                let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
+                let la_table=document.getElementById( 'vv_les_tables' ).value;
+                for(let i in this.les_bases[chi_id_basedd].tables[la_table]){
+                    o1+='<div>' + this.les_bases[chi_id_basedd].tables[la_table][i] + '</div>';
+                }
+            }
+            /* champs_bdd */
         }
-        document.getElementById('champs_bdd').innerHTML=o1;
+        document.getElementById( 'champs_bdd' ).innerHTML=o1;
         let o2='';
-        if(vv_sortie1!==''){
-            let vv_sortie1=document.getElementById('vv_sortie1').value.replace(/ TEXT DEFAULT NULL/g,'').split(',')
+        if(vv_sortie1 !== ''){
+            let vv_sortie1=document.getElementById( 'vv_sortie1' ).value.replace( / TEXT DEFAULT NULL/g , '' ).split( ',' );
             for(let i in vv_sortie1){
                 o2+='<div>' + vv_sortie1[i].trim() + '</div>';
             }
         }
-        document.getElementById('champs_csv').innerHTML=o2;
-        document.getElementById('bouton_importer').style.display='none';
-        document.getElementById('bouton_vider').style.display='none';
-        
-        if(o1!=='' && o2 !== ''){
-            document.getElementById('bouton_importer').style.display='inline-block';
-            document.getElementById('bouton_vider').style.display='inline-block';
+        document.getElementById( 'champs_csv' ).innerHTML=o2;
+        document.getElementById( 'bouton_importer' ).style.display='none';
+        document.getElementById( 'bouton_vider' ).style.display='none';
+        if(o1 !== '' && o2 !== ''){
+            document.getElementById( 'bouton_importer' ).style.display='inline-block';
+            document.getElementById( 'bouton_vider' ).style.display='inline-block';
         }
-        
         return({"__xst" : __xsu});
-        
     }
     /*
       =============================================================================================================
@@ -226,19 +217,17 @@ class dossiers1{
         let o1='';
         if(zone_select !== ''){
             let chi_id_basedd=parseInt( document.getElementById( zone_select ).value );
-            if(this.__gi1.est_num(chi_id_basedd) && chi_id_basedd > 0){
+            if(this.__gi1.est_num( chi_id_basedd ) && chi_id_basedd > 0){
                 o1+='<option  value="" selected>sélectionnez une table </option>';
                 for(let j in this.les_bases[chi_id_basedd].tables){
                     o1+='<option value="' + j + '">' + j + '</option>';
                 }
-
             }
         }
-        document.getElementById('bouton_importer').style.display='none';
-        document.getElementById('bouton_vider').style.display='none';
-        document.getElementById('vv_les_tables').innerHTML=o1;
+        document.getElementById( 'bouton_importer' ).style.display='none';
+        document.getElementById( 'bouton_vider' ).style.display='none';
+        document.getElementById( 'vv_les_tables' ).innerHTML=o1;
         return({"__xst" : __xsu});
-        
     }
     /*
       =============================================================================================================
@@ -246,41 +235,35 @@ class dossiers1{
     analyser_premiere_ligne_de_csv( mat , d , le_message_du_serveur=null ){
         let chi_id_dossier=0;
         let chi_id_source=0;
-
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_dossier' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
-                chi_id_dossier=parseInt( mat[i + 1][1] , 10);
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'chi_id_source' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
-                chi_id_source=parseInt( mat[i + 1][1] , 10);
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
             }
         }
-     
-        for( let i in le_message_du_serveur.__xva.les_bases_du_projet){
+        for(let i in le_message_du_serveur.__xva.les_bases_du_projet){
             let elt=le_message_du_serveur.__xva.les_bases_du_projet[i];
-            let omat=this.__gi1.__rev1.rev_tm(elt['T0.chp_rev_travail_basedd']);
-            if(omat.__xst===__xsu){
+            let omat=this.__gi1.__rev1.rev_tm( elt['T0.chp_rev_travail_basedd'] );
+            if(omat.__xst === __xsu){
                 let mat1=omat.__xva;
-                this.les_bases[elt['T0.chi_id_basedd']]={
-                    chp_rev_travail_basedd : elt['T0.chp_rev_travail_basedd'] ,
-                    mat_rev : mat1,
-                    tables : {}
-                } // 
+                this.les_bases[elt['T0.chi_id_basedd']]={"chp_rev_travail_basedd" : elt['T0.chp_rev_travail_basedd'] ,"mat_rev" : mat1 ,"tables" : {}};
                 let l02=mat1.length;
-                for(let j=1 ; j < l02 ; j=mat1[j][12]){
-                    if(mat1[j][1]==='créer_table' && mat1[j][2]==='f'){
+                for( let j=1 ; j < l02 ; j=mat1[j][12] ){
+                    if(mat1[j][1] === 'créer_table' && mat1[j][2] === 'f'){
                         let nom_de_la_table='';
                         let les_champs=[];
-                        for(let k=j+1 ; k < l02 ; k=mat1[k][12]){
-                            if(mat1[k][1]==='nom_de_la_table' && mat1[k][2]==='f' && mat1[k][8]===1 && mat1[k+1][2]==='c'){
-                                nom_de_la_table=mat1[k+1][1];
-                                /* */
-                            }else if(mat1[k][1]==='champs' && mat1[k][2]==='f'){
-                                for(let l=k+1 ; l < l02 ; l=mat1[l][12]){
-                                    if(mat1[l][1]==='champ' && mat1[l][2]==='f'){
-                                        for(let m=l+1 ; m < l02 ; m=mat1[m][12]){
-                                            if(mat1[m][1]==='nom_du_champ' && mat1[m][2]==='f' && mat1[m][8]===1 && mat1[m+1][2]==='c'){
-                                                les_champs.push(mat1[m+1][1]);
+                        for( let k=j + 1 ; k < l02 ; k=mat1[k][12] ){
+                            if(mat1[k][1] === 'nom_de_la_table' && mat1[k][2] === 'f' && mat1[k][8] === 1 && mat1[k + 1][2] === 'c'){
+                                nom_de_la_table=mat1[k + 1][1];
+                                /*  */
+                            }else if(mat1[k][1] === 'champs' && mat1[k][2] === 'f'){
+                                for( let l=k + 1 ; l < l02 ; l=mat1[l][12] ){
+                                    if(mat1[l][1] === 'champ' && mat1[l][2] === 'f'){
+                                        for( let m=l + 1 ; m < l02 ; m=mat1[m][12] ){
+                                            if(mat1[m][1] === 'nom_du_champ' && mat1[m][2] === 'f' && mat1[m][8] === 1 && mat1[m + 1][2] === 'c'){
+                                                les_champs.push( mat1[m + 1][1] );
                                             }
                                         }
                                     }
@@ -289,17 +272,16 @@ class dossiers1{
                         }
                         this.les_bases[elt['T0.chi_id_basedd']].tables[nom_de_la_table]=les_champs;
                     }
-                }                
+                }
             }
         }
         let o1='';
-     
         o1+='<h1>analyse de la première ligne d\'un fichier</h1>';
         o1+='<br />';
         o1+='<div id="brut">';
         o1+='    <textarea id="vv_brut">' + this.__gi1.fi2( le_message_du_serveur.__xva.premiere_ligne ) + '</textarea>';
         o1+='    <br />';
-        o1+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_0(chi_id_source('+chi_id_source+'),chi_id_dossier('+chi_id_dossier+'))))">csv mysql</div>';
+        o1+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_0(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">csv mysql</div>';
         o1+='    <div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_1()))">csv 1</div>';
         o1+='    <br />';
         o1+='        <div class="yy_conteneur_txtara">';
@@ -309,14 +291,13 @@ class dossiers1{
         o1+='    <textarea data-editeur1="source_editeur1" id="vv_sortie1" rows="20"></textarea>';
         o1+='        </div>\r\n';
         o1+='</div>';
-        o1+='<select id="vv_les_bases" data-rev_change="m1(n1('+this.moi+'),f1(selectionner_une_base(zone_select(vv_les_bases),chi_id_source('+chi_id_source+'),chi_id_dossier('+chi_id_dossier+'))))">';
+        o1+='<select id="vv_les_bases" data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases),chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">';
         o1+='<option value="">sélectionnez une base</option>';
         for(let i in this.les_bases){
-          o1+='<option value="'+i+'">'+i+'</option>';
+            o1+='<option value="' + i + '">' + i + '</option>';
         }
         o1+='</select>';
-        
-        o1+='<select id="vv_les_tables" data-rev_change="m1(n1('+this.moi+'),f1(selectionner_une_table(zone_select(vv_les_tables)chi_id_source('+chi_id_source+'),chi_id_dossier('+chi_id_dossier+'))))">';
+        o1+='<select id="vv_les_tables" data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_une_table(zone_select(vv_les_tables)chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">';
         o1+='</select>';
         o1+='<table border="1">';
         o1+='<tr>';
@@ -329,16 +310,12 @@ class dossiers1{
         o1+='</tr>';
         o1+='<tr>';
         o1+='<td colspan="2">';
-        o1+='<div id="bouton_importer" class="rev_bouton yy__2" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(integrer_csv0(chi_id_source('+chi_id_source+'),chi_id_dossier('+chi_id_dossier+'))))" >intégrer ce csv</div>';
+        o1+='<div id="bouton_importer" class="rev_bouton yy__2" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(integrer_csv0(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))" >intégrer ce csv</div>';
         o1+='<div id="bouton_vider" class="rev_bouton yy__0" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_table()))" >vider la table</div>';
         o1+='</td>';
         o1+='</tr>';
         o1+='</table>';
-        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-        vv_sous_fenetre1.innerHTML=o1;
-        /* __contenu_modale => vv_sous_fenetre1 */
-        vv_sous_fenetre1.showModal();
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__gi1.affiche_sous_fenetre1( o1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -365,11 +342,7 @@ class dossiers1{
         o1+='fo1(co1(vv_telecharger1),pm1(m1(n1(' + this.moi + '),f1(televerser1()))))';
         o1+='">telecharger</div>';
         o1+='</div>';
-        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-        vv_sous_fenetre1.innerHTML=o1;
-        /* __contenu_modale => vv_sous_fenetre1 */
-        vv_sous_fenetre1.showModal();
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__gi1.affiche_sous_fenetre1( o1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -396,11 +369,7 @@ class dossiers1{
             o1+='fo1(co1(vv_dossiers_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_dossiers_nouveau_numero1()))))';
             o1+='">attribuer ce nouveau numéro</div>';
             o1+='</div>';
-            let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-            vv_sous_fenetre1.innerHTML=o1;
-            /* __contenu_modale => vv_sous_fenetre1 */
-            vv_sous_fenetre1.showModal();
-            this.__gi1.ajoute_les_evenements_aux_boutons( null );
+            this.__gi1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer});
@@ -497,7 +466,7 @@ class dossiers1{
                 */
                 if(__xva.liste_des_fido[i].present_en_base === __xsu){
                     o1+='<div title="le fichier est présent en bdd" style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__gi1.les_svg.rond_vert1 + '</div>';
-                    o1+='(' + __xva.liste_des_fido[i].chi_id_source + ')' ;
+                    o1+='(' + __xva.liste_des_fido[i].chi_id_source + ')';
                     if(__xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.csv'
                            || __xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.txt'
                     ){
@@ -511,7 +480,7 @@ class dossiers1{
                         o1+=' provenance(' + provenance + ')';
                         o1+='))))';
                         o1+='" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
-                        /**/
+                        /*  */
                         o1+='<div';
                         o1+=' class="rev_b_svg yy__0"';
                         o1+=' data-rev_click="pm1(m1(n1(sources1),f1(page_modification1(chi_id_source(' + __xva.liste_des_fido[i].chi_id_source + ')))))';
@@ -551,23 +520,23 @@ class dossiers1{
                     o1+=cmd;
                     o1+=')))))';
                     o1+='" title="supprimer du disque">' + this.__gi1.les_svg.poubelle + '</div>';
-/*                    
-                    if(__xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.csv'
-                           || __xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.txt'
-                    ){
-                        o1+='<div';
-                        o1+=' class="rev_b_svg yy__0"';
-                        o1+=' data-rev_click="';
-                        o1+='pm1(m1(n1(' + this.moi + '),f1(analyser_premiere_ligne_de_csv(';
-                        o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
-                        o1+=' chi_id_dossier(' + __xva.chi_id_dossier + '),';
-                        o1+=' provenance(' + provenance + ')';
-                        o1+='))))';
-                        o1+='" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
-                    }else{
-                        o1+='<div class="rev_b_svg yy__2 yy__2_inactif" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
-                    }
-*/                    
+                    /*
+                      if(__xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.csv'
+                      || __xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.txt'
+                      ){
+                      o1+='<div';
+                      o1+=' class="rev_b_svg yy__0"';
+                      o1+=' data-rev_click="';
+                      o1+='pm1(m1(n1(' + this.moi + '),f1(analyser_premiere_ligne_de_csv(';
+                      o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
+                      o1+=' chi_id_dossier(' + __xva.chi_id_dossier + '),';
+                      o1+=' provenance(' + provenance + ')';
+                      o1+='))))';
+                      o1+='" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
+                      }else{
+                      o1+='<div class="rev_b_svg yy__2 yy__2_inactif" title="analyser premiere ligne de csv">' + this.__gi1.les_svg.cle + '</div>';
+                      }
+                    */
                 }
             }
             o1+='</td>';
@@ -588,9 +557,8 @@ class dossiers1{
     */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
-            case 'traitement_integrer_csv0' :
-            case 'traitement_vider_la_table' :
-                break
+            case 'traitement_integrer_csv0' : 
+            case 'traitement_vider_la_table' : break;
             case 'vv_dossiers_nouveau_numero1' :
                 this.__gi1.fermer_la_sous_fenetre();
                 this.entree_module( null );
@@ -600,7 +568,6 @@ class dossiers1{
             case 'integrer_ce_dossier1' : 
             case 'integrer_ce_fichier_dans_les_sources' : 
             case 'supprimer_un_fichier_du_disque' :
-            
                 if(le_message_du_serveur && le_message_du_serveur.__xva.hasOwnProperty( 'liste_des_fido' )){
                     this.liste_des_des_fichiers_et_dossiers( le_message_du_serveur.__xva , 'Dossiers et fichiers  de ce dossier' );
                 }
