@@ -2744,6 +2744,7 @@ class x_ecran_generer_programmes1{
                             }
                             src_client2+='fo1[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.nom_bref_du_champ + '\');\r\n';
                             src_client2+='        if(__test.__xst!==__xsu){\r\n';
+                            src_client2+='            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : \'erreur sur le contenu du champ "' + obj_champ.meta.abrege_du_champ + '"\'} );\r\n';
                             src_client2+='            this.__gi1.affiche_les_messages();\r\n';
                             src_client2+='            this.__gi1.retablir_les_boutons_masques();\r\n';
                             src_client2+='            try{\r\n';
@@ -2862,7 +2863,6 @@ class x_ecran_generer_programmes1{
                             src_serveur_js2+='        /* pas de convertion pour le champ ' + liste_des_conversions[i].nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
                         }
                     }else if(liste_des_conversions[i].espece_du_champ === 'INTEGER'){
-                        debugger;
                         /*
                           
                           à faire, utiliser obj_champ.non_nulle===true à la place de che_est_obligatoire_genre === 1

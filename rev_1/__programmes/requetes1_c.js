@@ -146,7 +146,9 @@ class requetes1{
     */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
-            case 'enregistrer_une_requete_compile_en_ligne1' : break;
+            case 'enregistrer_une_requete_compile_en_ligne1' : 
+               this.__gi1.delai_selectionner_champ_filtre();
+            break;
             case 'vv_requetes_nouveau_numero1' : 
             case 'compiler_cette_liste_de_sql_en_cron2' :
                 this.__gi1.fermer_la_sous_fenetre();

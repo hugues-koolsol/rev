@@ -75,6 +75,8 @@ class __gi1{
     __deverminage=0;
     __xsi={0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []};
     #date_derniere_navigation=performance.now();
+    #liste_des_appels_au_serveur=[];
+    #changement_hash_par_programme=false;
     /*
       =============================================================================================================
     */
@@ -131,6 +133,7 @@ class __gi1{
             return({"__xst" : __xer});
         }.bind( this );
         this.#__worker.onmessage=function( le_message_recu_du_worker ){
+            this.#liste_des_appels_au_serveur.pop();
             let obj1=this.#traite_message_recupere_du_worker( le_message_recu_du_worker );
             if(obj1.__xst !== __xsu){
                 this.affiche_les_messages();
@@ -138,17 +141,18 @@ class __gi1{
             }
             let obj2=this.#apres_traite_message_recupere_du_worker( le_message_recu_du_worker );
         }.bind( this );
-        this.#__worker.postMessage( {
-                "__xac" : 'pm1(m1(n1(__gi1),f1(init0())))' ,
-                "__xva" : {
-                    "__href" : decodeURIComponent( window.location.href ) ,
-                    "__hash" : decodeURIComponent( window.location.hash ) ,
-                    "csrfToken" : this.getCookie( "csrf_token" ) ,
-                    "__parametres" : this.stockage_local['parametres']
-                }
-            } );
+        let message_a_envoyer={
+            "__xac" : 'pm1(m1(n1(__gi1),f1(init0())))' ,
+            "__xva" : {
+                "__href" : decodeURIComponent( window.location.href ) ,
+                "__hash" : decodeURIComponent( window.location.hash ) ,
+                "csrfToken" : this.getCookie( "csrf_token" ) ,
+                "__parametres" : this.stockage_local['parametres']
+            }
+        };
+        this.envoyer_un_message_au_worker( message_a_envoyer );
         window.addEventListener( 'hashchange' , ( event ) => {
-                if(performance.now() - this.#date_derniere_navigation > 125){
+                if(performance.now() - this.#date_derniere_navigation > 125 && this.#changement_hash_par_programme === false){
                     /*
                       si l'url est changée manuellement 
                       et que l'écart de temps entre la dernière navigation et maintenant est supérieure à 125 ms
@@ -156,8 +160,10 @@ class __gi1{
                     */
                     let action=window.location.hash.substr( 1 );
                     if(action.substr( 0 , 3 ) === 'pm1'){
-                        /* console.log('on poste'); */
-                        this.#__worker.postMessage( {"__xac" : action ,"__xva" : {"__parametres" : this.stockage_local['parametres']}} );
+                        console.log( '%cHASH change ' + (performance.now() - this.#date_derniere_navigation) + ' ' + this.#liste_des_appels_au_serveur.length , 'background:black;color:white;' );
+                        this.#liste_des_appels_au_serveur.push( {"contexte" : 'hash'} );
+                        let message_a_envoyer={"__xac" : action ,"__xva" : {"__parametres" : this.stockage_local['parametres']}};
+                        this.envoyer_un_message_au_worker( message_a_envoyer );
                     }else{
                         let obj1=this.__rev1.rev_tm( action );
                         if(obj1.__xst !== __xsu){
@@ -167,7 +173,8 @@ class __gi1{
                         }
                         let obj2=this.__xac( obj1.__xva , 0 , null );
                     }
-                }} );
+                }
+                this.#changement_hash_par_programme=false;} );
     }
     /*
       =============================================================================================================
@@ -184,7 +191,7 @@ class __gi1{
         let le_message=par.data;
         this._CA_=le_message._CA_;
         if(this.__deverminage === 2){
-            console.log( le_message );
+            console.log( '%cdeverminage 2 __gi1_c','background:black;color:white;',le_message );
         }
         if(le_message.hasOwnProperty( '__version' ) && le_message.__version !== this.__version){
             let tt='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__gi1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
@@ -474,7 +481,7 @@ class __gi1{
                             */
                             let re_source=this.__rev1.matrice_vers_source_rev1( mat , j , false , j + 1 );
                             let cmd1='m1(' + re_source.__xva + ')';
-                            this.executer1( cmd1 , {"__fo1" : fo1 ,"__co1" : co1} );
+                            this.executer1( cmd1 , {"__fo1" : fo1 ,"__co1" : co1} , evenement );
                         }else if(mat[j][1] === 'co1' && mat[j][2] === 'f'){
                         }else if(mat[j][1] === 'sur_table_virtuelle' && mat[j][2] === 'f'){
                         }else{
@@ -634,7 +641,13 @@ class __gi1{
                 for( let i=indice ; i < l01 ; i=mat[i][12] ){
                     try{
                         if( typeof this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]] === 'function'){
+                            /*
+                              appel du module déjà charge
+                            */
                             let obj3=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param , evenement );
+                            /*
+                              appel du module déjà charge
+                            */
                             if(obj3 && obj3.then &&  typeof obj3.then === 'function'){
                                 /*
                                   si le module vient d'etre chargé, c'est une promesse
@@ -715,7 +728,11 @@ class __gi1{
                         return({"__xst" : __xer});
                     }
                 }
-                this.retablir_les_boutons_masques( __xva_param );
+                if(this.#liste_des_appels_au_serveur.length > 0){
+                    /* on ne rétablit pas les boutons car on attend le retour serveur */
+                }else{
+                    this.retablir_les_boutons_masques( __xva_param );
+                }
             }
         }
     }
@@ -851,6 +868,7 @@ class __gi1{
             return({"__xst" : __xer});
         }
         obj.__xva['__parametres']=this.stockage_local['parametres'];
+        this.#liste_des_appels_au_serveur.push( {"contexte" : 'envoyer_un_message_au_worker' ,"__xac" : obj.__xac} );
         this.#__worker.postMessage( obj );
     }
     /*
@@ -1083,6 +1101,11 @@ class __gi1{
             return({"__xst" : __xer});
         }
         elt.classList.add( 'yy_invisible' );
+        if(this.#liste_des_appels_au_serveur.length > 0){
+            this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Un appel au serveur est déjà en cours'} );
+            this.affiche_les_messages();
+            return({"__xst" : __xer});
+        }
         this.#boutons_masques_avant_appel.push( elt );
         let mat=obj1.__xva;
         let obj=this.__xac( mat , 0 , null , e );
@@ -1171,6 +1194,7 @@ class __gi1{
       =============================================================================================================
     */
     maj_hash( mat , d ){
+        this.#changement_hash_par_programme=true;
         let tmp=this.__rev1.matrice_vers_source_rev1( mat , 0 , true , 1 );
         /* console.log('dans maj_hash' + ' ' + tmp.__xva + ' this.maj_hash_init_fait=',this.maj_hash_init_fait ) */
         this.maj_hash_fait=true;
@@ -2966,14 +2990,14 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    executer1( rev , données=null ){
+    executer1( rev , données=null , evenement ){
         let obj1=this.__rev1.rev_tm( rev );
         if(obj1.__xst !== __xsu){
             __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : __gi1.nl2()} );
             this.affiche_les_messages();
             return({"__xst" : __xer});
         }
-        this.__xac( obj1.__xva , 0 , données );
+        this.__xac( obj1.__xva , 0 , données , evenement );
         return({"__xst" : __xsu});
     }
     /*
@@ -3372,10 +3396,16 @@ class __gi1{
                 filtres[fonction_liste]={};
                 for( let i=0 ; i < lst.length ; i++ ){
                     if(lst[i].id){
-                        if(est_table_virtuelle === true){
-                            filtres[fonction_liste][lst[i].id]=this.utf8ToAscii( lst[i].value );
+                        if(lst[i].value === ''){
                         }else{
-                            filtres[fonction_liste][lst[i].id]=lst[i].value;
+                            if(est_table_virtuelle === true){
+                                filtres[fonction_liste][lst[i].id]=this.utf8ToAscii( lst[i].value );
+                                if(filtres[fonction_liste][lst[i].id].indexOf( '%' ) >= 0){
+                                    debugger;
+                                }
+                            }else{
+                                filtres[fonction_liste][lst[i].id]=lst[i].value;
+                            }
                         }
                     }
                 }
