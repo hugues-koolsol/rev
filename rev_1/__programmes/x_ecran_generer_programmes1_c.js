@@ -3123,6 +3123,13 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , __db1=null ){\r\n';
+            src_serveur_js2+='        let l01=mat.length;\r\n';
+            src_serveur_js2+='        let option_de_13=\'\';\r\n';
+            src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
+            src_serveur_js2+='            if(mat[i][1] === \'de_13\' && mat[i][2] === \'f\' && mat[i][8] === 1 && mat[i+1][2] === \'c\'){\r\n';
+            src_serveur_js2+='                option_de_13=\'de_13(\' + mat[i+1][1] + \')\';\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        const __nbMax=40;\r\n';
             src_serveur_js2+='        let __num_page=0;\r\n';
             src_serveur_js2+='        let formulaire=this.__gi1.__fnt1.debut_filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , this.fonction_liste );\r\n';
@@ -3230,7 +3237,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        donnees_retournees.__xva[\'__nbMax\']=__nbMax;\r\n';
             src_serveur_js2+='        donnees_retournees[__xva][\'__debut\']=__debut;\r\n';
             src_serveur_js2+='        donnees_retournees[__xva][\'__num_page\']=__num_page;\r\n';
-            src_serveur_js2+='        donnees_retournees[__xac]=\'pm1(m1(n1(\' + this.moi + \'),f1(\' + this.fonction_liste + \'(\';\r\n';
+            src_serveur_js2+='        donnees_retournees[__xac]=\'pm1(m1(n1(\' + this.moi + \'),f1(\' + this.fonction_liste + \'(\' + option_de_13;\r\n';
             src_serveur_js2+='        for(let i in formulaire){\r\n';
             src_serveur_js2+='            donnees_retournees[__xac]+=this.__gi1.__fnt1.critere_liste( formulaire , i );\r\n';
             src_serveur_js2+='        }\r\n';
@@ -3720,11 +3727,13 @@ class x_ecran_generer_programmes1{
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
         src_client2+='    zones_filtres1( mat , d , le_message_du_serveur ){\r\n';
-        src_client2+='\r\n';
-        src_client2+='\r\n';
         src_client2+='        let l01=mat.length;\r\n';
-        src_client2+='\r\n';
-        src_client2+='\r\n';
+        src_client2+='        let de_13=\'\';\r\n';
+        src_client2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
+        src_client2+='            if(\'de_13\' === mat[i][1] && mat[i][2] === \'f\' && mat[i][8] === 1 && mat[i+1][2] === \'c\' ){\r\n';
+        src_client2+='                de_13=mat[i+1][1];\r\n';
+        src_client2+='            }\r\n';
+        src_client2+='        }\r\n';
         src_client2+='        for( let nom_champ_filtre in this.tableau_des_filtres[this.fonction_liste] ){\r\n';
         src_client2+='            let trouvé=false;\r\n';
         src_client2+='            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
@@ -3740,8 +3749,6 @@ class x_ecran_generer_programmes1{
         src_client2+='        }\r\n';
         src_client2+='        let cle_session=this.__gi1.cle_lst0 + \'_\' + this.moi +\'_\'+this.fonction_liste;\r\n';
         src_client2+='        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );\r\n';
-        src_client2+='\r\n';
-        src_client2+='\r\n';
         src_client2+='        if(le_message_du_serveur.__xva.hasOwnProperty( \'__fo1\' )\r\n';
         src_client2+='               && le_message_du_serveur.__xva.__fo1 !== null\r\n';
         src_client2+='               && le_message_du_serveur.__xva.__fo1.hasOwnProperty( \'origine\' )\r\n';
@@ -3754,7 +3761,6 @@ class x_ecran_generer_programmes1{
         src_client2+='            let o1=\'\';\r\n';
         src_client2+='            let nom_zone_non_vide=\'\';\r\n';
         src_client2+='            o1+=\'<div class="yy_filtre_liste1" id="\'+this.fonction_liste+\'">\';\r\n';
-        src_client2+='\r\n';
         src_client2+='            for(let i in this.tableau_des_filtres[this.fonction_liste]){\r\n';
         src_client2+='                if(this.tableau_des_filtres[this.fonction_liste][i].masqué===false){\r\n';
         src_client2+='                   o1+=\'    <div>\';\r\n';
@@ -3768,8 +3774,7 @@ class x_ecran_generer_programmes1{
         src_client2+='                       }\r\n';
         src_client2+='                   }\r\n';
         src_client2+='                       o1+=\'        <div>\\r\\n\';\r\n';
-        src_client2+='                       o1+=\'          <input \';\r\n';
-        src_client2+='                       o1+=\'           type="text" id="\' + i + \'" \';\r\n';
+        src_client2+='                       o1+=\'          <input type="text" id="\' + i + \'" aria-autocomplete="list" \';\r\n';
         src_client2+='                       o1+=\'           value="\' + this.__gi1.fi1( this.filtres[this.fonction_liste][i] ) + \'" \';\r\n';
         src_client2+='                       o1+=\'           size="\'+this.tableau_des_filtres[this.fonction_liste][i].taille+\'" \';\r\n';
         src_client2+='                       o1+=\'           maxlength="64" \';\r\n';
@@ -3813,11 +3818,10 @@ class x_ecran_generer_programmes1{
         src_client2+='                lst[i].addEventListener(\'keyup\',(e)=>{\r\n';
         src_client2+='                 if(e.keyCode===13){\r\n';
         if(table_reference_est_table_virtuelle.length === 2){
-            src_client2+='                  this.aller_a_la_page( null , null , \'__num_page\' , 0 , true)\r\n';
+            src_client2+='                  this.aller_a_la_page( null , null , \'__num_page\' , 0 , true , e.target.id )\r\n';
         }else{
-            src_client2+='                  this.aller_a_la_page( null , null , \'__num_page\' , 0)\r\n';
+            src_client2+='                  this.aller_a_la_page( null , null , \'__num_page\' , 0 , false , e.target.id )\r\n';
         }
-        src_client2+='                  console.log(e,this)\r\n';
         src_client2+='                 }\r\n';
         src_client2+='\r\n';
         src_client2+='                })\r\n';
@@ -3834,7 +3838,19 @@ class x_ecran_generer_programmes1{
         src_client2+='              }\r\n';
         src_client2+='            }\r\n';
         src_client2+='        }\r\n';
-        src_client2+='        this.__gi1.delai_selectionner_champ_filtre();\r\n';
+        src_client2+='        if(de_13===\'\'){\r\n';
+        src_client2+='            this.__gi1.delai_selectionner_champ_filtre();\r\n';
+        src_client2+='        }else{\r\n';
+        src_client2+='            try{\r\n';
+        src_client2+='                document.getElementById(de_13).select();\r\n';
+        src_client2+='            }catch{}\r\n';
+        src_client2+='        }\r\n';
+        src_client2+='    }\r\n';
+        src_client2+='    /*\r\n';
+        src_client2+='      =============================================================================================================\r\n';
+        src_client2+='    */\r\n';
+        src_client2+='    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13=\'\' ){\r\n';
+        src_client2+='        return this.__gi1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle, de_13 );\r\n';
         src_client2+='    }\r\n';
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
@@ -3855,17 +3871,6 @@ class x_ecran_generer_programmes1{
         src_client2+='        return({"__xst" : __xsu});\r\n';
         src_client2+='    }\r\n';
         src_client2+='\r\n';
-        src_client2+='    /*\r\n';
-        src_client2+='      =============================================================================================================\r\n';
-        src_client2+='    */\r\n';
-        if(table_reference_est_table_virtuelle.length === 2){
-            src_client2+='    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false ){\r\n';
-            src_client2+='        return this.__gi1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle );\r\n';
-        }else{
-            src_client2+='    aller_a_la_page( mat , d , ref_zone=null , num_page=null){\r\n';
-            src_client2+='        return this.__gi1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page );\r\n';
-        }
-        src_client2+='    }\r\n';
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';

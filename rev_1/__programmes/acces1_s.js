@@ -1216,6 +1216,13 @@ class acces1{
       =============================================================================================================
     */
     async filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , __db1=null ){
+        let l01=mat.length;
+        let option_de_13='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'de_13' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                option_de_13='de_13(' + mat[i + 1][1] + ')';
+            }
+        }
         const __nbMax=40;
         let __num_page=0;
         let formulaire=this.__gi1.__fnt1.debut_filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , this.fonction_liste );
@@ -1293,7 +1300,7 @@ class acces1{
         donnees_retournees.__xva['__nbMax']=__nbMax;
         donnees_retournees[__xva]['__debut']=__debut;
         donnees_retournees[__xva]['__num_page']=__num_page;
-        donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(';
+        donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
         for(let i in formulaire){
             donnees_retournees[__xac]+=this.__gi1.__fnt1.critere_liste( formulaire , i );
         }

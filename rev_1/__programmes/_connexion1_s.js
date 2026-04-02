@@ -261,7 +261,11 @@ class _connexion1{
         options_generales["set-cookie"].push( le_cookie );
         donnees_retournees['chi_id_utilisateur']=user['chi_id_utilisateur'];
         donnees_retournees['chi_id_acces']=user['chi_id_acces'];
-        donnees_retournees['chi_id_projet']=0;
+        if(donnees_retournees._CA_===1){
+            donnees_retournees['chi_id_projet']=0;
+        }else{
+            donnees_retournees['chi_id_projet']=donnees_retournees._CA_;
+        }
         donnees_retournees['chp_nom_de_connexion_utilisateur']=user['chp_nom_de_connexion_utilisateur'];
         const json_content={
             "chi_id_utilisateur" : donnees_retournees['chi_id_utilisateur'] ,

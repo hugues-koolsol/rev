@@ -791,6 +791,12 @@ class acces1{
     */
     zones_filtres1( mat , d , le_message_du_serveur ){
         let l01=mat.length;
+        let de_13='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                de_13=mat[i + 1][1];
+            }
+        }
         for(let nom_champ_filtre in this.tableau_des_filtres[this.fonction_liste]){
             let trouvé=false;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -831,8 +837,7 @@ class acces1{
                         }
                     }
                     o1+='        <div>\r\n';
-                    o1+='          <input ';
-                    o1+='           type="text" id="' + i + '" ';
+                    o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
                     o1+='           value="' + this.__gi1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
                     o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
                     o1+='           maxlength="64" ';
@@ -870,8 +875,7 @@ class acces1{
             for( let i=0 ; i < lst.length ; i++ ){
                 lst[i].addEventListener( 'keyup' , ( e ) => {
                         if(e.keyCode === 13){
-                            this.aller_a_la_page( null , null , '__num_page' , 0 );
-                            console.log( e , this );
+                            this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
                         }} );
             }
         }else{
@@ -884,7 +888,13 @@ class acces1{
                 }
             }
         }
-        this.__gi1.delai_selectionner_champ_filtre();
+        if(de_13 === ''){
+            this.__gi1.delai_selectionner_champ_filtre();
+        }else{
+            try{
+                document.getElementById( de_13 ).select();
+            } catch {}
+        }
     }
     /*
       =============================================================================================================
@@ -905,8 +915,8 @@ class acces1{
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , ref_zone=null , num_page=null ){
-        return(this.__gi1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page ));
+    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
+        return(this.__gi1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================

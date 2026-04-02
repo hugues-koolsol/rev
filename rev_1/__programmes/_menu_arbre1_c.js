@@ -179,11 +179,14 @@ class _menu_arbre1{
     */
     #defilement_menu( e ){
         let aa=document.getElementById( 'les_enfants_du_menu_' + this.cle_aleatoire );
-        let lst3=aa.getElementsByTagName( 'div' );
-        for( let i=0 ; i < lst3.length ; i++ ){
-            let niveau=lst3[i].getAttribute( 'data-niveau' );
-            if(niveau === '0'){
-                this.#fermer_le_menu( lst3[i] );
+        if(aa!==null){
+            /* lors du glisser du menu haut sur mobile, aa===null */
+            let lst3=aa.getElementsByTagName( 'div' );
+            for( let i=0 ; i < lst3.length ; i++ ){
+                let niveau=lst3[i].getAttribute( 'data-niveau' );
+                if(niveau === '0'){
+                    this.#fermer_le_menu( lst3[i] );
+                }
             }
         }
     }

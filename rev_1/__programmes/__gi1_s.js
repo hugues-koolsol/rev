@@ -143,7 +143,7 @@ class __gi1{
             let les_dependances=contenu_json_fichier__liste_des_dependances[obj1.table_parente + '_' + obj1.champ_parent]['dependances'];
             /* this.ma_trace1('les_dependances=',les_dependances); */
             for(let i in les_dependances){
-                let sql1='SELECT count( * ) FROM ' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
+                let sql1='SELECT count( * ) FROM b' + les_dependances[i]['id_bdd_de_la_base_dependante'] + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
                 /* this.ma_trace1('sql1='+sql1); */
                 let statement1=await obj1.__db1.prepare( sql1 );
                 let lignes=await statement1.values();
@@ -180,7 +180,10 @@ class __gi1{
             this.__xsi[__xdv].push( e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />' );
         }
         if(this.__deverminage > 0){
-            this.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_112=' + chaine_sql.replace( /\n/g , '<br />' ) );
+            this.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_'+numero_de_requete+'=' + chaine_sql.replace( /\n/g , '<br />' ) );
+        }
+        if(e.stack.indexOf( 'UNIQUE constraint' ) >= 0){
+            __xme+='<b>doublon</b>';
         }
         let obj={"__xst" : __xer ,"__xme" : __xme ,"__xva" : {} ,"sql0" : chaine_sql};
         return obj;
@@ -209,32 +212,33 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    async ouvrir_bdd( chi_id_projet , donnees_retournees , options_generales , reouvrir_la_base=false ){
+    async ouvrir_bdd( chi_id_basedd , donnees_retournees , options_generales , reouvrir_la_base=false ){
         if(donnees_retournees.chi_id_utilisateur === 0){
             donnees_retournees.__xsi[__xer].push( ' Vous n\'etes pas connecté ' );
             throw new Error( 'veuillez utiliser le formulaire de connexion' );
         }
-        /* this.ma_trace1('chi_id_projet=',chi_id_projet,'options_generales=',options_generales); */
-        if(reouvrir_la_base === true && options_generales.bdd_ouvertes.hasOwnProperty( chi_id_projet )){
-            await options_generales.bdd_ouvertes[chi_id_projet].base.close();
+        if(reouvrir_la_base === true && options_generales.bdd_ouvertes.hasOwnProperty( chi_id_basedd )){
+            await options_generales.bdd_ouvertes[chi_id_basedd].base.close();
         }
-        if(reouvrir_la_base === false && options_generales.bdd_ouvertes.hasOwnProperty( chi_id_projet )){
-            return options_generales.bdd_ouvertes[chi_id_projet].base;
+        if(reouvrir_la_base === false && options_generales.bdd_ouvertes.hasOwnProperty( chi_id_basedd )){
+            return options_generales.bdd_ouvertes[chi_id_basedd].base;
         }
-        /*
-          if(options_generales.bdd_ouvertes.hasOwnProperty(chi_id_projet)){
-          this.ma_trace1('déjà ouverte '+chi_id_projet);
-          return options_generales.bdd_ouvertes[chi_id_projet].base;
-          }
-        */
-        let chemin_complet_bdd=options_generales.chemin_des_bdd + 'bdd_' + chi_id_projet + '.sqlite';
+        let chemin_complet_bdd=options_generales.chemin_des_bdd + 'bdd_' + chi_id_basedd + '.sqlite';
         try{
             let __db=new Database( chemin_complet_bdd , {"create" : false} );
-            let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_projet + ''];
+            let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
+            if(donnees_retournees._CA_ > 2 && donnees_retournees.__liste_des_bases.length > 0){
+                for(let i=0 ; i < donnees_retournees.__liste_des_bases.length ; i++){
+                    if(chi_id_basedd !== donnees_retournees.__liste_des_bases[i] ){
+                        let chemin_complet_bdd1=options_generales.chemin_des_bdd + 'bdd_'+donnees_retournees.__liste_des_bases[i]+'.sqlite';
+                        les_pragma_set.push( 'attach database "' + chemin_complet_bdd1 + '" as b' + donnees_retournees.__liste_des_bases[i] )
+                    }
+                }
+            }
             for(let i in les_pragma_set){
                 let a=await __db.exec( les_pragma_set[i] );
             }
-            options_generales.bdd_ouvertes[chi_id_projet]={"base" : __db ,"ouverte" : true};
+            options_generales.bdd_ouvertes[chi_id_basedd]={"base" : __db ,"ouverte" : true};
             return __db;
         }catch(e){
             console.log( e.stack );
@@ -452,7 +456,7 @@ class __gi1{
                                                 let ret=null;
                                                 try{
                                                     ret=await this.objet_des_modules_charges[n1][nom_de_la_fonction_a_appeler]( mat , position_f1 , donnees_recues , donnees_retournees , options_generales );
-                                                    /* this.ma_trace1('après appel de la fonction du module, ret=',ret); */
+                                                    /* this.ma_trace1('après appel de la fonction '+nom_de_la_fonction_a_appeler+' du module, ret=',ret); */
                                                     if(ret === undefined){
                                                         this.__xsi[__xer].push( 'SERVEUR : il manque "return({__xst:__xsu});" à ' + n1 + '_s.' + nom_de_la_fonction_a_appeler + '() ' );
                                                         continuer=false;

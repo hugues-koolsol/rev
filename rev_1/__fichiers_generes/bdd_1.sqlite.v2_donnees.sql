@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1072','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1073','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 

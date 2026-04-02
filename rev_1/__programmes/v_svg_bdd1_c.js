@@ -4607,7 +4607,6 @@ class v_svg_bdd1{
                 if(nouveau_meta.hasOwnProperty( this.#liste_des_meta_table[i].nom_du_meta_table )
                        && nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] !== null
                 ){
-                    debugger;
                     t+=' value="' + nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table].replace( /"/g , '&quot;' ) + '" ';
                     if('est_table_virtuelle' === this.#liste_des_meta_table[i].nom_du_meta_table){
                         est_table_virtuelle=parseInt( nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] , 10 );
@@ -5542,7 +5541,7 @@ class v_svg_bdd1{
             let source_sql='UPDATE ' + nom_de_la_table + ' SET ' + nom_du_champ_a_modifier + ' = CONCAT( ' + nom_du_champ_a_modifier + ' , \'[1]\' ) WHERE ' + nom_du_champ_cle + ' = ' + k0 + ' ;';
             this.__gi1.ma_trace1( 'source_sql=' + source_sql );
             let obj={
-                "__xac" :  /* 1955 */'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + ')))))' ,
+                "__xac" : /* 1955 */'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + ')))))' ,
                 "__xva" : {
                      /*  */
                     "source_sql" : source_sql ,

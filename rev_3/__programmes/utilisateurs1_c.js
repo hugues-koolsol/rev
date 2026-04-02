@@ -64,11 +64,7 @@ class utilisateurs1{
         o1+='<br/>';
         o1+='<div class="rev_bouton yy__3" data-rev_click="fo1(co1(formulaire_mot_de_passe),pm1(m1(n1(' + this.moi + '),f1(modifier_le_mot_de_passe(chi_id_utilisateur(' + chi_id_utilisateur + '))))))" title="">modifier</div>';
         o1+='</div>';
-        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-        vv_sous_fenetre1.innerHTML=o1;
-        /* __contenu_modale => vv_sous_fenetre1 */
-        vv_sous_fenetre1.showModal();
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__gi1.affiche_sous_fenetre1( o1 );
         return({"__xst" : __xsu});
     }
     /*

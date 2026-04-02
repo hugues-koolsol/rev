@@ -442,6 +442,12 @@ class taches1{
     */
     zones_filtres1( mat , d , le_message_du_serveur ){
         let l01=mat.length;
+        let de_13='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                de_13=mat[i + 1][1];
+            }
+        }
         for(let nom_champ_filtre in this.tableau_des_filtres[this.fonction_liste]){
             let trouvé=false;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -482,7 +488,7 @@ class taches1{
                         }
                     }
                     o1+='        <div>\r\n';
-                    o1+='            <input type="text" id="' + i + '" value="' + this.__gi1.fi1( this.filtres[this.fonction_liste][i] ) + '" size="8" maxlength="64" autocapitalize="off" style="' + bck + '" />\r\n';
+                    o1+='            <input aria-autocomplete="list" type="text" id="' + i + '" value="' + this.__gi1.fi1( this.filtres[this.fonction_liste][i] ) + '" size="8" maxlength="64" autocapitalize="off" style="' + bck + '" />\r\n';
                     if(this.filtres[this.fonction_liste][i] && this.filtres[this.fonction_liste][i] !== ''){
                         o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
                     }
@@ -515,8 +521,7 @@ class taches1{
             for( let i=0 ; i < lst.length ; i++ ){
                 lst[i].addEventListener( 'keyup' , ( e ) => {
                         if(e.keyCode === 13){
-                            this.aller_a_la_page( null , null , '__num_page' , 0 );
-                            console.log( e , this );
+                            this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
                         }} );
             }
         }else{
@@ -529,7 +534,19 @@ class taches1{
                 }
             }
         }
-        this.__gi1.delai_selectionner_champ_filtre();
+        if(de_13 === ''){
+            this.__gi1.delai_selectionner_champ_filtre();
+        }else{
+            try{
+                document.getElementById( de_13 ).select();
+            } catch {}
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
+        return(this.__gi1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================
@@ -546,12 +563,6 @@ class taches1{
             this.page_modification1( mat , d , le_message_du_serveur );
         }
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    aller_a_la_page( mat , d , ref_zone=null , num_page=null ){
-        return(this.__gi1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page ));
     }
     /*
       =============================================================================================================

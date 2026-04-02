@@ -972,6 +972,12 @@ class dossiers1{
     */
     zones_filtres1( mat , d , le_message_du_serveur ){
         let l01=mat.length;
+        let de_13='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                de_13=mat[i + 1][1];
+            }
+        }
         for(let nom_champ_filtre in this.tableau_des_filtres[this.fonction_liste]){
             let trouvé=false;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1011,7 +1017,7 @@ class dossiers1{
                             nom_zone_non_vide=i;
                         }
                     }
-                    o1+='      <div><input type="text" id="' + i + '" value="' + this.__gi1.fi1( this.filtres[this.fonction_liste][i] ) + '" size="8" maxlength="64" autocapitalize="off" style="' + bck + '" /></div>';
+                    o1+='      <div><input aria-autocomplete="list" type="text" id="' + i + '" value="' + this.__gi1.fi1( this.filtres[this.fonction_liste][i] ) + '" size="8" maxlength="64" autocapitalize="off" style="' + bck + '" /></div>';
                     o1+='   </div>';
                 }
             }
@@ -1040,7 +1046,7 @@ class dossiers1{
             for( let i=0 ; i < lst.length ; i++ ){
                 lst[i].addEventListener( 'keyup' , ( e ) => {
                         if(e.keyCode === 13){
-                            this.aller_a_la_page( null , null , '__num_page' , 0 );
+                            this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
                             console.log( e , this );
                         }} );
             }
@@ -1054,7 +1060,13 @@ class dossiers1{
                 }
             }
         }
-        this.__gi1.delai_selectionner_champ_filtre();
+        if(de_13 === ''){
+            this.__gi1.delai_selectionner_champ_filtre();
+        }else{
+            try{
+                document.getElementById( de_13 ).select();
+            } catch {}
+        }
     }
     /*
       =============================================================================================================
@@ -1075,57 +1087,8 @@ class dossiers1{
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , ref_zone=null , $num_page=null ){
-        let nom_de_zone='';
-        if(ref_zone !== null){
-            nom_de_zone=ref_zone;
-        }else{
-            let l01=mat.length;
-            let __num_page=-1;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][2] === 'c'){
-                    nom_de_zone=mat[i][1];
-                }
-            }
-        }
-        if(nom_de_zone !== ''){
-            let __num_page=-1;
-            if(ref_zone !== null){
-                if(isNaN( $num_page )){
-                    try{
-                        __num_page=parseInt( document.getElementById( ref_zone ).value , 10 );
-                    }catch{
-                        __num_page=0;
-                    }
-                }else{
-                    __num_page=$num_page;
-                }
-            }else{
-                __num_page=parseInt( document.getElementById( nom_de_zone ).getAttribute( 'data-numero_page' ) , 10 );
-            }
-            if(__num_page >= 0){
-                document.getElementById( '__num_page' ).value=__num_page;
-                let lst=document.getElementById( this.fonction_liste ).querySelectorAll( "input" );
-                this.filtres[this.fonction_liste]={};
-                for( let i=0 ; i < lst.length ; i++ ){
-                    if(lst[i].id){
-                        this.filtres[this.fonction_liste][lst[i].id]=lst[i].value;
-                    }
-                }
-                let __fo1={};
-                __fo1[this.fonction_liste]=this.filtres[this.fonction_liste];
-                this.__gi1.envoyer_un_message_au_worker( {
-                        "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '())))' ,
-                        "__xva" : {"__fo1" : __fo1 ,"__co1" : this.fonction_liste}
-                    } );
-            }else{
-                if(ref_zone == null){
-                    setTimeout( ( a ) => {
-                            (document.getElementById( a.nom_de_zone ).classList).remove( 'yy_invisible' );} , 100 , {"nom_de_zone" : nom_de_zone} );
-                }
-            }
-        }
-        return({"__xst" : __xsu});
+    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
+        return(this.__gi1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================

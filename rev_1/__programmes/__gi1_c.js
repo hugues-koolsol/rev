@@ -191,7 +191,7 @@ class __gi1{
         let le_message=par.data;
         this._CA_=le_message._CA_;
         if(this.__deverminage === 2){
-            console.log( '%cdeverminage 2 __gi1_c','background:black;color:white;',le_message );
+            console.log( '%cdeverminage 2 __gi1_c' , 'background:black;color:white;' , le_message );
         }
         if(le_message.hasOwnProperty( '__version' ) && le_message.__version !== this.__version){
             let tt='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__gi1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
@@ -3362,7 +3362,7 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , nom_de_module , fonction_liste , filtres , ref_zone=null , num_page=null , est_table_virtuelle=false ){
+    aller_a_la_page( mat , d , nom_de_module , fonction_liste , filtres , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
         let nom_de_zone='';
         if(ref_zone !== null){
             nom_de_zone=ref_zone;
@@ -3411,7 +3411,14 @@ class __gi1{
                 }
                 let __fo1={};
                 __fo1[fonction_liste]=filtres[fonction_liste];
-                this.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + nom_de_module + '),f1(' + fonction_liste + '())))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : fonction_liste}} );
+                let option_de_13='';
+                if(de_13 !== ''){
+                    option_de_13='de_13(' + de_13 + ')';
+                }
+                this.envoyer_un_message_au_worker( {
+                        "__xac" : 'pm1(m1(n1(' + nom_de_module + '),f1(' + fonction_liste + '(' + option_de_13 + '))))' ,
+                        "__xva" : {"__fo1" : __fo1 ,"__co1" : fonction_liste}
+                    } );
             }else{
                 if(ref_zone == null){
                     setTimeout( ( a ) => {
