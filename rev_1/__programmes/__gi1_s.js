@@ -180,7 +180,7 @@ class __gi1{
             this.__xsi[__xdv].push( e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />' );
         }
         if(this.__deverminage > 0){
-            this.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_'+numero_de_requete+'=' + chaine_sql.replace( /\n/g , '<br />' ) );
+            this.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
         }
         if(e.stack.indexOf( 'UNIQUE constraint' ) >= 0){
             __xme+='<b>doublon</b>';
@@ -228,10 +228,10 @@ class __gi1{
             let __db=new Database( chemin_complet_bdd , {"create" : false} );
             let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
             if(donnees_retournees._CA_ > 2 && donnees_retournees.__liste_des_bases.length > 0){
-                for(let i=0 ; i < donnees_retournees.__liste_des_bases.length ; i++){
-                    if(chi_id_basedd !== donnees_retournees.__liste_des_bases[i] ){
-                        let chemin_complet_bdd1=options_generales.chemin_des_bdd + 'bdd_'+donnees_retournees.__liste_des_bases[i]+'.sqlite';
-                        les_pragma_set.push( 'attach database "' + chemin_complet_bdd1 + '" as b' + donnees_retournees.__liste_des_bases[i] )
+                for( let i=0 ; i < donnees_retournees.__liste_des_bases.length ; i++ ){
+                    if(chi_id_basedd !== donnees_retournees.__liste_des_bases[i]){
+                        let chemin_complet_bdd1=options_generales.chemin_des_bdd + 'bdd_' + donnees_retournees.__liste_des_bases[i] + '.sqlite';
+                        les_pragma_set.push( 'attach database "' + chemin_complet_bdd1 + '" as b' + donnees_retournees.__liste_des_bases[i] );
                     }
                 }
             }

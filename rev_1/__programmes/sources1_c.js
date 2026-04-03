@@ -142,13 +142,13 @@ class sources1{
     */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
+            case 'exporter_dans_rev_un' : 
             case 'importer_de_rev_un' : this.__gi1.delai_selectionner_champ_filtre();
-                break
+                break;
             case 'compiler_cette_liste_de_js_en_cron2' : 
             case 'ecrire_ce_source_sur_disque1' : 
             case 'supprimer_ce_source_du_disque1' : 
             case 'charger_source_pour_compilation2' : 
-            case 'exporter_dans_rev_un' : 
             case 'exporter_dans_base_de_prod1' : break;
             default:
                 this.__gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );

@@ -427,7 +427,7 @@ class x_ecran_concevoir_une_requete1{
                             }
                         }
                     }else{
-                        debugger;
+                        /* debugger; */
                     }
                 }else{
                     if(this.#obj_webs['complements'][k].Tn === alias_de_la_table){
@@ -486,7 +486,7 @@ class x_ecran_concevoir_une_requete1{
                             }
                         }
                     }else{
-                        debugger;
+                        /* debugger; */
                     }
                 }else{
                     debugger;
@@ -511,7 +511,7 @@ class x_ecran_concevoir_une_requete1{
                     }
                 }
             }else{
-                debugger;
+                /* debugger; */
             }
         }else{
             /* on sélectionne */
@@ -753,6 +753,7 @@ class x_ecran_concevoir_une_requete1{
             this.__gi1.fermer_la_sous_fenetre();
             this.#mettre_en_stokage_local_et_afficher();
         }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -773,6 +774,7 @@ class x_ecran_concevoir_une_requete1{
             zone_formule.value=(debut + formule) + ',' + fin;
         }
         zone_formule.focus();
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -863,6 +865,7 @@ class x_ecran_concevoir_une_requete1{
             }
         }
         zone_formule.focus();
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -982,6 +985,7 @@ class x_ecran_concevoir_une_requete1{
         cmd+=')))';
         t+='<div class="rev_bouton" data-rev_click="' + cmd + '">modifier la formule</div>';
         this.__gi1.affiche_sous_fenetre1( t );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================

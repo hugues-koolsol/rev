@@ -372,9 +372,22 @@ class __fnt1{
             heure_a_afficher=valeur;
             t=((valeur < 10 ? ( '0' + valeur ) : ( valeur )) + sepa_heure) + '00' + sepa_heure + '00';
         }else{
-            t=(valeur < 10 ? ( '0' + valeur ) : ( valeur )) + valeur_courante.substr( 2 );
-            minute_a_afficher=parseInt( valeur_courante.substr( 3 , 2 ) , 10 );
-            seconde_a_afficher=parseInt( valeur_courante.substr( 6 , 2 ) , 10 );
+            t=valeur < 10 ? ( '0' + valeur ) : ( valeur );
+            try{
+                minute_a_afficher=parseInt( valeur_courante.substr( 3 , 2 ) , 10 );
+            }catch{
+                minute_a_afficher=0;
+            }
+            try{
+                seconde_a_afficher=parseInt( valeur_courante.substr( 6 , 2 ) , 10 );
+            }catch{
+                seconde_a_afficher=0;
+            }
+            minute_a_afficher=minute_a_afficher > 59 ? ( 0 ) : ( minute_a_afficher );
+            minute_a_afficher=minute_a_afficher < 10 ? ( '0' + minute_a_afficher ) : ( minute_a_afficher );
+            seconde_a_afficher=seconde_a_afficher > 59 ? ( 0 ) : ( seconde_a_afficher );
+            seconde_a_afficher=seconde_a_afficher < 10 ? ( '0' + seconde_a_afficher ) : ( seconde_a_afficher );
+            t+=sepa_heure + minute_a_afficher + sepa_heure + seconde_a_afficher;
         }
         document.getElementById( nom_du_champ ).value=t;
         let a=document.getElementById( 'vv_option_heure' );
@@ -385,7 +398,7 @@ class __fnt1{
                 break;
             }
         }
-        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , parseInt( minute_a_afficher , 10 ) , parseInt( seconde_a_afficher , 10 ) ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
@@ -820,6 +833,7 @@ class __fnt1{
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -848,6 +862,7 @@ class __fnt1{
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -875,6 +890,7 @@ class __fnt1{
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -902,6 +918,7 @@ class __fnt1{
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -947,6 +964,7 @@ class __fnt1{
         annee=annee - annee% 50;
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -974,6 +992,7 @@ class __fnt1{
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -1001,6 +1020,7 @@ class __fnt1{
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -1027,6 +1047,7 @@ class __fnt1{
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
         this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================

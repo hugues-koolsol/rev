@@ -179,7 +179,7 @@ class _menu_arbre1{
     */
     #defilement_menu( e ){
         let aa=document.getElementById( 'les_enfants_du_menu_' + this.cle_aleatoire );
-        if(aa!==null){
+        if(aa !== null){
             /* lors du glisser du menu haut sur mobile, aa===null */
             let lst3=aa.getElementsByTagName( 'div' );
             for( let i=0 ; i < lst3.length ; i++ ){

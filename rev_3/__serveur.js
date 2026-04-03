@@ -243,14 +243,16 @@ const le_serveur=Deno.serve( {
         if(_CA_ === 1 || _CA_ === 2){
             options_generales.chemin_racine_de_tous_les_projets='../../';
         }
+        let __deverminage=0;
+        let donnees_recues=null;
         if(req1.body){
             const json_body=await req1.json();
             /* console.log( "json_body.__xac:" , json_body.__xac ); */
             /* console.log( "json_body.__xva:" , json_body.__xva ); */
             /* console.log("json_body.mat:", json_body.mat); */
             donnees_retournees["__xac"]=json_body.__xac;
-            let donnees_recues=json_body;
-            let __deverminage=donnees_recues[__xva].hasOwnProperty( '__parametres' ) ?
+            donnees_recues=json_body;
+            __deverminage=donnees_recues[__xva].hasOwnProperty( '__parametres' ) ?
               ( 
                 donnees_recues[__xva]['__parametres'].hasOwnProperty( '__deverminage' ) ?
                   ( 
@@ -287,6 +289,15 @@ const le_serveur=Deno.serve( {
             try{
                 await options_generales.bdd_ouvertes[i].base.close();
             } catch {}
+        }
+        if(__deverminage > 0){
+            let repertoire_des_bdd=repertoire_du_pgm_serveur + '__bases_de_donnees/';
+            for await (const dirEntry of Deno.readDir( repertoire_des_bdd )){
+                if(dirEntry.name.indexOf( 'sqlite-wal' ) >= 0){
+                    console.log( '%c\nATTENTION base non fermée ' + dirEntry.name , 'color:red;background-color:yellow;' );
+                    donnees_retournees.__xsi["4"].push( 'ATTENTION base non fermée <br />' + dirEntry.name + '<br />__xac=' + JSON.stringify( donnees_recues.__xac ) );
+                }
+            }
         }
         options_generales=null;
         /* __gi1.ma_trace1(options_http); */

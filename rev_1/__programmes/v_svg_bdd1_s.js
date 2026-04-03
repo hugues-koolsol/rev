@@ -237,23 +237,16 @@ class v_svg_bdd1{
     */
     async reecrire_la_base( mat , d , donnees_recues , donnees_retournees , options_generales , id_bdd_de_la_base , chemin_absolu , source_sql_de_la_base , liste_des_tables , liste_des_tables_champs ){
         let chemin_bdd=chemin_absolu;
-        
         try{
             let db_source=await new Database( chemin_bdd , {"create" : false} );
             let a=await db_source.exec( 'PRAGMA wal_checkpoint(FULL);' );
             db_source.close();
         }catch(e){
-            this.__gi1.ma_trace1('e='+e.stack);
+            this.__gi1.ma_trace1( 'e=' + e.stack );
             this.__gi1.__xsi[__xer].push( 'erreur douverture base originale [' + this.__gi1.nl2( e ) + ']' );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        
-        
-        
-        
-        
-        
         let repertoire=chemin_bdd.substr( 0 , chemin_bdd.lastIndexOf( '/' ) );
         if(!(await this.__gi1.is_file( chemin_bdd ))){
             this.__gi1.__xsi[__xer].push( 'fichier de bdd non trouvé [' + this.__gi1.nl2() );

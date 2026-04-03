@@ -1343,6 +1343,9 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        */\r\n';
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
+                if(nom_du_champ === 'fld_heure_debut_prestation'){
+                    debugger;
+                }
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
                 let reference_externe_base='';
                 let reference_externe_table='';

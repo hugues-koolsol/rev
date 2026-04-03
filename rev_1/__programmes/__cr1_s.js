@@ -56,6 +56,7 @@ class __cr1{
                 return({"__xst" : __xer});
             }
         }
+        await __db1.close();
         let t0=performance.now();
         console.log( 't0=' + t0 );
         let continuer=true;
@@ -106,6 +107,7 @@ class __cr1{
                     /*sql_inclure_fin*/ 400 , criteres_400 , donnees_retournees , __dbn );
                     if(tt400.__xst !== __xsu){
                         this.__gi1.ma_trace1( 'erreur lecture des tâches ' );
+                        await __dbn.close();
                         return({"__xst" : __xer});
                     }
                     /* this.__gi1.ma_trace1('tt400.__xva.length='+tt400.__xva.length); */
@@ -139,6 +141,7 @@ class __cr1{
                         if(obj_matrice[__xst] !== __xsu){
                             donnees_retournees.__xsi[__xal].push( ' erreur de convertion en matrice [' + this.__gi1.nl2() + ']' );
                             donnees_retournees.__xst=__xer;
+                            await __dbn.close();
                             return({"__xst" : __xer});
                         }
                         let ret=null;
@@ -162,6 +165,7 @@ class __cr1{
                         }catch(e){
                             donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__gi1.nl2( e ) + ']' );
                             donnees_retournees.__xst=__xer;
+                            await __dbn.close();
                             ret={"__xst" : __xer};
                         }
                         if(ret.__xst !== __xsu){
@@ -187,10 +191,12 @@ class __cr1{
                                     this.__gi1.__xsi[__xer].push( 'erreur de modification [' + this.__gi1.nl2() );
                                 }
                                 donnees_retournees.__xst=__xer;
+                                await __dbn.close();
                                 return({"__xst" : __xer});
                             }
                             donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__gi1.nl2() + ']' );
                             donnees_retournees.__xst=__xer;
+                            await __dbn.close();
                             return({"__xst" : __xer});
                         }
                         let heure_fin_travail=performance.now();
@@ -223,6 +229,7 @@ class __cr1{
                                 this.__gi1.__xsi[__xer].push( 'erreur de modification [' + this.__gi1.nl2() );
                             }
                             donnees_retournees.__xst=__xer;
+                            await __dbn.close();
                             return({"__xst" : __xer});
                         }
                     }
