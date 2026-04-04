@@ -566,34 +566,7 @@ class metiers1{
     */
     sous_liste1( mat , d , le_message_du_serveur=null ){
         this.fonction_liste='sous_liste1';
-        if(le_message_du_serveur == null || !le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
-            /* F5 */
-            debugger;
-            /* this.#init1(null,'liste1'); */
-            return({"__xst" : __xsu});
-        }
-        let o1='';
-        let initialisation_fait=false;
-        let a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a === null){
-            this.__gi1.initialisation_des_zones( this.moi );
-            initialisation_fait=true;
-        }
-        a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){
-        }else{
-            if(initialisation_fait === false){
-                this.__gi1.initialisation_des_zones( this.moi );
-                a=document.getElementById( 'vv_titre_de_la_page' );
-            }
-            a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
-            this.__gi1.afficher_les_zones( 'vv_ecran_liste' );
-        }
-        this.zones_filtres1( mat , d , le_message_du_serveur );
-        this.__gi1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , '' , this.fonction_liste );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_sous_liste1( le_message_du_serveur );
-        this.__gi1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
+        return(this.__gi1.sous_liste_generique1( mat , d , le_message_du_serveur , this ));
     }
     /*
       =============================================================================================================

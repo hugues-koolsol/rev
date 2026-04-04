@@ -24745,8 +24745,7 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2),
-            espece_du_champ(INTEGER)
+            genre(2)
          )
       ),
       champ(
@@ -24761,9 +24760,7 @@ créer_table(
             abrege_du_champ(''nom''),
             typologie(cht),
             genre(19),
-            espece_du_champ(VARCHAR),
-            est_libelle_lien(1),
-            longueur_du_champ(64)
+            est_libelle_lien(1)
          )
       ),
       champ(
@@ -24779,8 +24776,7 @@ créer_table(
             nom_bref_du_champ(''parent''),
             abrege_du_champ(''parent''),
             typologie(chx),
-            genre(8),
-            espece_du_champ(INTEGER)
+            genre(8)
          )
       )
    )
@@ -24818,8 +24814,7 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2),
-            espece_du_champ(INTEGER)
+            genre(2)
          )
       ),
       champ(
@@ -24834,9 +24829,7 @@ créer_table(
             abrege_du_champ(''nom''),
             typologie(cht),
             genre(19),
-            espece_du_champ(VARCHAR),
-            est_libelle_lien(1),
-            longueur_du_champ(64)
+            est_libelle_lien(1)
          )
       ),
       champ(
@@ -24852,8 +24845,7 @@ créer_table(
             nom_bref_du_champ(''parent''),
             abrege_du_champ(''parent''),
             typologie(chx),
-            genre(8),
-            espece_du_champ(INTEGER)
+            genre(8)
          )
       )
    )
@@ -24891,8 +24883,7 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2),
-            espece_du_champ(INTEGER)
+            genre(2)
          )
       ),
       champ(
@@ -24907,9 +24898,7 @@ créer_table(
             abrege_du_champ(''nom''),
             typologie(chp),
             genre(3),
-            espece_du_champ(VARCHAR),
-            est_libelle_lien(1),
-            longueur_du_champ(64)
+            est_libelle_lien(1)
          )
       ),
       champ(
@@ -24923,8 +24912,7 @@ créer_table(
             nom_bref_du_champ(''groupe''),
             abrege_du_champ(''groupe''),
             typologie(chx),
-            genre(4),
-            espece_du_champ(INTEGER)
+            genre(4)
          )
       ),
       champ(
@@ -24938,8 +24926,7 @@ créer_table(
             nom_bref_du_champ(''metier''),
             abrege_du_champ(''metier''),
             typologie(chx),
-            genre(4),
-            espece_du_champ(INTEGER)
+            genre(4)
          )
       ),
       champ(
@@ -24954,8 +24941,7 @@ créer_table(
             nom_bref_du_champ(''parametres''),
             abrege_du_champ(''parametres''),
             typologie(cht),
-            genre(6),
-            espece_du_champ(TEXT)
+            genre(6)
          )
       ),
       champ(
@@ -24971,8 +24957,7 @@ créer_table(
             nom_bref_du_champ(''actif''),
             abrege_du_champ(''actif''),
             typologie(che),
-            genre(5),
-            espece_du_champ(INTEGER)
+            genre(5)
          )
       )
    )
@@ -25011,7 +24996,6 @@ créer_table(
             abrege_du_champ(''id''),
             typologie(chi),
             genre(2),
-            espece_du_champ(INTEGER),
             est_en_session(1)
          )
       ),
@@ -25027,9 +25011,7 @@ créer_table(
             abrege_du_champ(''nom de connexion''),
             typologie(cht),
             genre(3),
-            espece_du_champ(VARCHAR),
-            est_libelle_lien(1),
-            longueur_du_champ(64)
+            est_libelle_lien(1)
          )
       ),
       champ(
@@ -25045,9 +25027,7 @@ créer_table(
             nom_bref_du_champ(''mot de passe''),
             abrege_du_champ(''mot de passe''),
             typologie(cht),
-            genre(13),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(256)
+            genre(13)
          )
       ),
       champ(
@@ -25062,8 +25042,7 @@ créer_table(
             nom_bref_du_champ(''parametres''),
             abrege_du_champ(''parametres''),
             typologie(cht),
-            genre(6),
-            espece_du_champ(TEXT)
+            genre(6)
          )
       ),
       champ(
@@ -25079,8 +25058,7 @@ créer_table(
             nom_bref_du_champ(''compteur1''),
             abrege_du_champ(''compteur1''),
             typologie(chi),
-            genre(10),
-            espece_du_champ(INTEGER)
+            genre(10)
          )
       ),
       champ(
@@ -25094,8 +25072,7 @@ créer_table(
             nom_bref_du_champ(''acces''),
             abrege_du_champ(''acces''),
             typologie(chx),
-            genre(4),
-            espece_du_champ(INTEGER)
+            genre(4)
          )
       ),
       champ(
@@ -25113,8 +25090,6 @@ créer_table(
             abrege_du_champ('' dtm''),
             typologie(chd),
             genre(16),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(23),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -25133,8 +25108,6 @@ créer_table(
             abrege_du_champ('' dtc''),
             typologie(chi),
             genre(14),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(23),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -25152,7 +25125,6 @@ créer_table(
             abrege_du_champ('' nur''),
             typologie(chi),
             genre(10),
-            espece_du_champ(INTEGER),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -25169,8 +25141,7 @@ créer_table(
             nom_bref_du_champ(''actif''),
             abrege_du_champ(''actif''),
             typologie(che),
-            genre(5),
-            espece_du_champ(INTEGER)
+            genre(5)
          )
       )
    )
@@ -25207,8 +25178,7 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2),
-            espece_du_champ(INTEGER)
+            genre(2)
          )
       ),
       champ(
@@ -25221,9 +25191,7 @@ créer_table(
             nom_bref_du_champ(''libelle''),
             abrege_du_champ(''libelle''),
             typologie(cht),
-            genre(11),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
+            genre(11)
          )
       ),
       champ(
@@ -25238,9 +25206,7 @@ créer_table(
             abrege_du_champ(''titre''),
             typologie(chp),
             genre(3),
-            espece_du_champ(VARCHAR),
-            est_libelle_lien(1),
-            longueur_du_champ(64)
+            est_libelle_lien(1)
          )
       ),
       champ(
@@ -25254,8 +25220,7 @@ créer_table(
             nom_bref_du_champ(''autorisation''),
             abrege_du_champ(''autorisation''),
             typologie(chx),
-            genre(4),
-            espece_du_champ(INTEGER)
+            genre(4)
          )
       ),
       champ(
@@ -25269,9 +25234,7 @@ créer_table(
             nom_bref_du_champ(''methode''),
             abrege_du_champ(''methode''),
             typologie(chp),
-            genre(3),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
+            genre(3)
          )
       ),
       champ(
@@ -25286,8 +25249,7 @@ créer_table(
             nom_bref_du_champ(''initialisation''),
             abrege_du_champ(''initialisation''),
             typologie(cht),
-            genre(98),
-            espece_du_champ(TEXT)
+            genre(98)
          )
       ),
       champ(
@@ -25302,8 +25264,7 @@ créer_table(
             nom_bref_du_champ(''condition''),
             abrege_du_champ(''condition''),
             typologie(cht),
-            genre(98),
-            espece_du_champ(TEXT)
+            genre(98)
          )
       ),
       champ(
@@ -25318,8 +25279,7 @@ créer_table(
             nom_bref_du_champ(''condition php''),
             abrege_du_champ(''condition php''),
             typologie(cht),
-            genre(97),
-            espece_du_champ(TEXT)
+            genre(97)
          )
       )
    )
@@ -25347,8 +25307,7 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(),
-            genre(2),
-            espece_du_champ(INTEGER)
+            genre(2)
          )
       ),
       champ(
@@ -25363,7 +25322,6 @@ créer_table(
             abrege_du_champ(''utilisateur''),
             typologie(chx),
             genre(18),
-            espece_du_champ(INTEGER),
             est_en_session(1),
             nom_en_session(''chi_id_utilisateur'')
          )
@@ -25379,7 +25337,6 @@ créer_table(
             abrege_du_champ(''texte''),
             typologie(),
             genre(11),
-            espece_du_champ(TEXT),
             est_libelle_lien(1)
          )
       ),
@@ -25397,8 +25354,7 @@ créer_table(
             nom_bref_du_champ(''priorite''),
             abrege_du_champ(''priorite''),
             typologie(),
-            genre(99),
-            espece_du_champ(INTEGER)
+            genre(99)
          )
       ),
       champ(
@@ -25416,8 +25372,6 @@ créer_table(
             abrege_du_champ('' dtm''),
             typologie(chd),
             genre(16),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(23),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -25436,8 +25390,6 @@ créer_table(
             abrege_du_champ('' dtc''),
             typologie(chi),
             genre(14),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(23),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -25455,7 +25407,6 @@ créer_table(
             abrege_du_champ('' nur''),
             typologie(che),
             genre(15),
-            espece_du_champ(INTEGER),
             masquer_champ_dans_svg(1)
          )
       )
@@ -25493,8 +25444,7 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2),
-            espece_du_champ(INTEGER)
+            genre(2)
          )
       ),
       champ(
@@ -25509,9 +25459,7 @@ créer_table(
             abrege_du_champ(''nom''),
             typologie(chp),
             genre(17),
-            espece_du_champ(VARCHAR),
-            est_libelle_lien(1),
-            longueur_du_champ(64)
+            est_libelle_lien(1)
          )
       ),
       champ(
@@ -25525,8 +25473,7 @@ créer_table(
             nom_bref_du_champ(''acces''),
             abrege_du_champ(''acces''),
             typologie(chx),
-            genre(4),
-            espece_du_champ(INTEGER)
+            genre(4)
          )
       ),
       champ(
@@ -25541,7 +25488,6 @@ créer_table(
             abrege_du_champ(''source''),
             typologie(chx),
             genre(4),
-            espece_du_champ(INTEGER),
             refe_enfant_droite(1),
             refe_parent_gauche(1)
          )
@@ -25580,8 +25526,7 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(),
-            genre(2),
-            espece_du_champ(INTEGER)
+            genre(2)
          )
       ),
       champ(
@@ -25596,7 +25541,6 @@ créer_table(
             abrege_du_champ(''nom''),
             typologie(),
             genre(19),
-            espece_du_champ(TEXT),
             est_libelle_lien(1)
          )
       ),
@@ -25612,8 +25556,7 @@ créer_table(
             nom_bref_du_champ(''rev''),
             abrege_du_champ(''rev''),
             typologie(),
-            genre(98),
-            espece_du_champ(TEXT)
+            genre(98)
          )
       ),
       champ(
@@ -25628,8 +25571,7 @@ créer_table(
             nom_bref_du_champ(''genere''),
             abrege_du_champ(''genere''),
             typologie(),
-            genre(97),
-            espece_du_champ(TEXT)
+            genre(97)
          )
       ),
       champ(
@@ -25645,8 +25587,7 @@ créer_table(
             nom_bref_du_champ(''binaire''),
             abrege_du_champ(''binaire''),
             typologie(che),
-            genre(5),
-            espece_du_champ(INTEGER)
+            genre(5)
          )
       ),
       champ(
@@ -25659,8 +25600,7 @@ créer_table(
             nom_bref_du_champ(''dossier id''),
             abrege_du_champ(''dossier id''),
             typologie(chx),
-            genre(4),
-            espece_du_champ(INTEGER)
+            genre(4)
          )
       ),
       champ(
@@ -25675,8 +25615,7 @@ créer_table(
             nom_bref_du_champ(''commentaire''),
             abrege_du_champ(''commentaire''),
             typologie(),
-            genre(6),
-            espece_du_champ(TEXT)
+            genre(6)
          )
       ),
       champ(
@@ -25694,8 +25633,6 @@ créer_table(
             abrege_du_champ('' dtm''),
             typologie(chd),
             genre(16),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(23),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -25714,8 +25651,6 @@ créer_table(
             abrege_du_champ('' dtc''),
             typologie(chd),
             genre(14),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(23),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -25733,7 +25668,6 @@ créer_table(
             abrege_du_champ('' nur''),
             typologie(chi),
             genre(10),
-            espece_du_champ(INTEGER),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -25750,8 +25684,7 @@ créer_table(
             nom_bref_du_champ(''contient version''),
             abrege_du_champ(''contient version''),
             typologie(che),
-            genre(5),
-            espece_du_champ(INTEGER)
+            genre(5)
          )
       ),
       champ(
@@ -25767,8 +25700,7 @@ créer_table(
             nom_bref_du_champ(''autorisation globale''),
             abrege_du_champ(''autorisation globale''),
             typologie(che),
-            genre(5),
-            espece_du_champ(INTEGER)
+            genre(5)
          )
       )
    )
@@ -25781,1035 +25713,6 @@ ajouter_index(
    meta(nom_de_l_index(idx_source),genre_meta(index_de_table),message('''')),
    champs(''chx_dossier_id_source'',''chp_nom_source''),
    unique()
-),
-créer_table(
-   nom_de_la_table(''rpps''),
-   meta(
-      nom_de_la_table(''rpps''),
-      table(''rpps''),
-      genre_meta(table_de_base),
-      permet_la_gestion_de(''rpps''),
-      distinction_pour_liste(''liste des rpps''),
-      distinction_pour_isad(''d\''un rpps''),
-      transform_base_sur_svg(translate(14,231))
-   ),
-   champs(
-      champ(
-         nom_du_champ(''numero_de_ligne''),
-         espece_du_champ(INTEGER),
-         primary_key(1),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''numero_de_ligne''),
-            nom_bref_du_champ(''ligne''),
-            abrege_du_champ(''ligne''),
-            typologie(chi),
-            genre(2),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''type_d_identifiant_pp''),
-         espece_du_champ(INT),
-         longueur_du_champ(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''type_d_identifiant_pp''),
-            nom_bref_du_champ(''type d\''identifiant pp''),
-            abrege_du_champ(''type d\''identifiant pp''),
-            typologie(che),
-            genre(7),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''identifiant_pp''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(13),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''identifiant_pp''),
-            nom_bref_du_champ(''rpps''),
-            abrege_du_champ(''rpps''),
-            typologie(chp),
-            genre(17),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(255)
-         )
-      ),
-      champ(
-         nom_du_champ(''identification_nationale_pp''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(14),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''identification_nationale_pp''),
-            nom_bref_du_champ(''identification nationale pp''),
-            abrege_du_champ(''identification nationale pp''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_civilite_d_exercice''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(2),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_civilite_d_exercice''),
-            nom_bref_du_champ(''code civilite d\''exercice''),
-            abrege_du_champ(''code civilite d\''exercice''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_civilite_d_exercice''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(12),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_civilite_d_exercice''),
-            nom_bref_du_champ(''titre''),
-            abrege_du_champ(''titre''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_civilite''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(5),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_civilite''),
-            nom_bref_du_champ(''code civilite''),
-            abrege_du_champ(''code civilite''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_civilite''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(14),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_civilite''),
-            nom_bref_du_champ(''civilite''),
-            abrege_du_champ(''civilite''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''nom_d_exercice''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(47),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''nom_d_exercice''),
-            nom_bref_du_champ(''nom''),
-            abrege_du_champ(''nom''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''prenom_d_exercice''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(35),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''prenom_d_exercice''),
-            nom_bref_du_champ(''prenom''),
-            abrege_du_champ(''prenom''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_profession''),
-         espece_du_champ(INT),
-         longueur_du_champ(2),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_profession''),
-            nom_bref_du_champ(''code profession''),
-            abrege_du_champ(''code profession''),
-            typologie(che),
-            genre(7),
-            espece_du_champ(INTEGER)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_profession''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(41),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_profession''),
-            nom_bref_du_champ(''profession''),
-            abrege_du_champ(''profession''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_categorie_professionnelle''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(1),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_categorie_professionnelle''),
-            nom_bref_du_champ(''code categorie professionnelle''),
-            abrege_du_champ(''code categorie professionnelle''),
-            typologie(chp),
-            genre(17),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(255)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_categorie_professionnelle''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(11),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_categorie_professionnelle''),
-            nom_bref_du_champ(''libelle categorie professionnelle''),
-            abrege_du_champ(''libelle categorie professionnelle''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_type_savoir_faire''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(4),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_type_savoir_faire''),
-            nom_bref_du_champ(''code type savoir faire''),
-            abrege_du_champ(''code type savoir faire''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_type_savoir_faire''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(25),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_type_savoir_faire''),
-            nom_bref_du_champ(''libelle type savoir faire''),
-            abrege_du_champ(''libelle type savoir faire''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_savoir_faire''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(6),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_savoir_faire''),
-            nom_bref_du_champ(''code savoir faire''),
-            abrege_du_champ(''code savoir faire''),
-            typologie(chp),
-            genre(17),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(255)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_savoir_faire''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(79),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_savoir_faire''),
-            nom_bref_du_champ(''savoir faire''),
-            abrege_du_champ(''savoir faire''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_mode_exercice''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_mode_exercice''),
-            nom_bref_du_champ(''code mode exercice''),
-            abrege_du_champ(''code mode exercice''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_mode_exercice''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(12),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_mode_exercice''),
-            nom_bref_du_champ(''libelle mode exercice''),
-            abrege_du_champ(''libelle mode exercice''),
-            typologie(chp),
-            genre(17),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(255)
-         )
-      ),
-      champ(
-         nom_du_champ(''numero_siret_site''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(17),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''numero_siret_site''),
-            nom_bref_du_champ(''numero siret site''),
-            abrege_du_champ(''numero siret site''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''numero_siren_site''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(11),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''numero_siren_site''),
-            nom_bref_du_champ(''numero siren site''),
-            abrege_du_champ(''numero siren site''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''numero_finess_site''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(11),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''numero_finess_site''),
-            nom_bref_du_champ(''numero finess site''),
-            abrege_du_champ(''numero finess site''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''numero_finess_etablissement_juridique''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(11),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''numero_finess_etablissement_juridique''),
-            nom_bref_du_champ(''numero finess etablissement juridique''),
-            abrege_du_champ(''numero finess etablissement juridique''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''identifiant_technique_de_la_structure''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(22),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''identifiant_technique_de_la_structure''),
-            nom_bref_du_champ(''identifiant technique de la structure''),
-            abrege_du_champ(''identifiant technique de la structure''),
-            typologie(chp),
-            genre(17),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(255)
-         )
-      ),
-      champ(
-         nom_du_champ(''raison_sociale_site''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(197),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''raison_sociale_site''),
-            nom_bref_du_champ(''raison sociale site''),
-            abrege_du_champ(''raison sociale site''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''enseigne_commerciale_site''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(60),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''enseigne_commerciale_site''),
-            nom_bref_du_champ(''enseigne commerciale site''),
-            abrege_du_champ(''enseigne commerciale site''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''complement_destinataire__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(48),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''complement_destinataire__coord__structure_''),
-            nom_bref_du_champ(''complement destinataire  coord  structure ''),
-            abrege_du_champ(''complement destinataire  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''complement_point_geographique__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(48),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''complement_point_geographique__coord__structure_''),
-            nom_bref_du_champ(''complement point geographique  coord  structure ''),
-            abrege_du_champ(''complement point geographique  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''numero_voie__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(5),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''numero_voie__coord__structure_''),
-            nom_bref_du_champ(''numero voie  coord  structure ''),
-            abrege_du_champ(''numero voie  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''indice_repetition_voie__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(4),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''indice_repetition_voie__coord__structure_''),
-            nom_bref_du_champ(''indice repetition voie  coord  structure ''),
-            abrege_du_champ(''indice repetition voie  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_type_de_voie__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(5),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_type_de_voie__coord__structure_''),
-            nom_bref_du_champ(''code type de voie  coord  structure ''),
-            abrege_du_champ(''code type de voie  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_type_de_voie__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(34),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_type_de_voie__coord__structure_''),
-            nom_bref_du_champ(''libelle type de voie  coord  structure ''),
-            abrege_du_champ(''libelle type de voie  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_voie__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(46),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_voie__coord__structure_''),
-            nom_bref_du_champ(''libelle voie  coord  structure ''),
-            abrege_du_champ(''libelle voie  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''mention_distribution__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(47),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''mention_distribution__coord__structure_''),
-            nom_bref_du_champ(''mention distribution  coord  structure ''),
-            abrege_du_champ(''mention distribution  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''bureau_cedex__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(46),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''bureau_cedex__coord__structure_''),
-            nom_bref_du_champ(''bureau cedex  coord  structure ''),
-            abrege_du_champ(''bureau cedex  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_postal__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(6),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_postal__coord__structure_''),
-            nom_bref_du_champ(''c.postal''),
-            abrege_du_champ(''code postal''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_commune__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(6),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_commune__coord__structure_''),
-            nom_bref_du_champ(''code commune  coord  structure ''),
-            abrege_du_champ(''code commune  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_commune__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(54),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_commune__coord__structure_''),
-            nom_bref_du_champ(''libelle commune  coord  structure ''),
-            abrege_du_champ(''libelle commune  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_pays__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(6),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_pays__coord__structure_''),
-            nom_bref_du_champ(''code pays  coord  structure ''),
-            abrege_du_champ(''code pays  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_pays__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(10),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_pays__coord__structure_''),
-            nom_bref_du_champ(''libelle pays  coord  structure ''),
-            abrege_du_champ(''libelle pays  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''telephone__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(22),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''telephone__coord__structure_''),
-            nom_bref_du_champ(''telephone  coord  structure ''),
-            abrege_du_champ(''telephone  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''telephone_2__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(18),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''telephone_2__coord__structure_''),
-            nom_bref_du_champ(''telephone 2  coord  structure ''),
-            abrege_du_champ(''telephone 2  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''telecopie__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(18),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''telecopie__coord__structure_''),
-            nom_bref_du_champ(''telecopie  coord  structure ''),
-            abrege_du_champ(''telecopie  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''adresse_e_mail__coord__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(72),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''adresse_e_mail__coord__structure_''),
-            nom_bref_du_champ(''adresse e mail  coord  structure ''),
-            abrege_du_champ(''adresse e mail  coord  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_departement__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_departement__structure_''),
-            nom_bref_du_champ(''code departement  structure ''),
-            abrege_du_champ(''code departement  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_departement__structure_''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_departement__structure_''),
-            nom_bref_du_champ(''libelle departement  structure ''),
-            abrege_du_champ(''libelle departement  structure ''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''ancien_identifiant_de_la_structure''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(18),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''ancien_identifiant_de_la_structure''),
-            nom_bref_du_champ(''ancien identifiant de la structure''),
-            abrege_du_champ(''ancien identifiant de la structure''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''autorite_d_enregistrement''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(25),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''autorite_d_enregistrement''),
-            nom_bref_du_champ(''autorite d\''enregistrement''),
-            abrege_du_champ(''autorite d\''enregistrement''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_secteur_d_activite''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(5),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_secteur_d_activite''),
-            nom_bref_du_champ(''code secteur d\''activite''),
-            abrege_du_champ(''code secteur d\''activite''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_secteur_d_activite''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_secteur_d_activite''),
-            nom_bref_du_champ(''libelle secteur d\''activite''),
-            abrege_du_champ(''libelle secteur d\''activite''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_section_tableau_pharmaciens''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(2),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_section_tableau_pharmaciens''),
-            nom_bref_du_champ(''code section tableau pharmaciens''),
-            abrege_du_champ(''code section tableau pharmaciens''),
-            typologie(chp),
-            genre(17),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(255)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_section_tableau_pharmaciens''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(255),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_section_tableau_pharmaciens''),
-            nom_bref_du_champ(''libelle section tableau pharmaciens''),
-            abrege_du_champ(''libelle section tableau pharmaciens''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_role''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(14),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_role''),
-            nom_bref_du_champ(''code role''),
-            abrege_du_champ(''code role''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_role''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(255),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_role''),
-            nom_bref_du_champ(''libelle role''),
-            abrege_du_champ(''libelle role''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''code_genre_activite''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(14),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''code_genre_activite''),
-            nom_bref_du_champ(''code genre activite''),
-            abrege_du_champ(''code genre activite''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      ),
-      champ(
-         nom_du_champ(''libelle_genre_activite''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(255),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''libelle_genre_activite''),
-            nom_bref_du_champ(''libelle genre activite''),
-            abrege_du_champ(''libelle genre activite''),
-            typologie(chp),
-            genre(12),
-            espece_du_champ(VARCHAR),
-            longueur_du_champ(64)
-         )
-      )
-   )
-),
-#(=================================================================),
-ajouter_index(
-   #(),
-   nom_de_la_table_pour_l_index(''rpps''),
-   nom_de_l_index(''idx_nom''),
-   meta(nom_de_l_index(idx_nom),genre_meta(index_de_table),message('''')),
-   champs(''nom_d_exercice'')
 )','sqlite',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_bdds offset 0 */
 
@@ -26831,14 +25734,6 @@ INSERT INTO tbl_menus (  chi_id_menu ,  cht_libelle_menu ,  chp_titre_menu ,  ch
 ('11','<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg>','mes coordonnées','12','entree_module',NULL,NULL,NULL),
 ('12','mes tâches','tâches','13','entree_module',NULL,NULL,NULL);
 /*================================================================================ FIN BLOC TABLE tbl_menus offset 0 */
-
-
-/*========================================================================================================================*/
-
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 */
-INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  chp_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
-('1','1','les tâches des utilisateurs','0','2026-02-09 07:38:23.887','2026-02-09 07:38:23.887','0');
-/*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
 /*========================================================================================================================*/
@@ -26866,11 +25761,11 @@ INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chp_nom_autorisation ,  
 
 /*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 */
 INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ,  che_est_session_genre ,  chp_nom_en_session_genre ,  che_est_positif_genre ,  cht_particularités_genre ) VALUES
-('1','***indéfini***','23','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('1','***indéfini***','24','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2025-09-25 16:55:08.841','18','0',NULL,'1',NULL),
 ('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('4','lien NON NULL','5','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('5','zero_un non nulle à 0','15','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('5','zero_un non nulle à 0','16','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('6','texte NULL','12','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('7','entier NULL','9','che','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('8','lien NULL','6','chx','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
@@ -26878,18 +25773,20 @@ INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  ch
 ('10','entier NON NULL à zéro','8','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('11','texte NON NULL','11','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('12','varchar 64 NULL','3','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('13','mot de passe','18','chp','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('14','dt23 création','16','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('15','nur','20','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('16','dt23 modification','17','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('13','mot de passe','19','chp','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('14','dt23 création','17','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('15','nur','21','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('16','dt23 modification','18','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('18','id utilisateur','21','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8','1','chi_id_utilisateur','0',NULL),
-('19','nom technique','19','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 12:07:33.326','2025-11-19 12:07:33.326','0','0',NULL,'0',NULL),
+('18','id utilisateur','22','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8','1','chi_id_utilisateur','0',NULL),
+('19','nom technique','20','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 12:07:33.326','2025-11-19 12:07:33.326','0','0',NULL,'0',NULL),
 ('21','durée_du_travail','10','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:48:23.907','2026-02-15 14:10:08.496','1','0',NULL,'0',NULL),
+('22','dt10 aaaa_mm_jj','15','chd','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,'date_nulle_ou_comprise_entre(''1000_01_01'',''9999_12_31'')','0','0','0','2026-03-16 12:16:06.262','2026-03-16 12:16:06.262','0','0',NULL,'0',NULL),
+('23','tp8 hh_mm_ss','16','chd','VARCHAR','8','0','0','1','1','1','00_00_00','0',NULL,'heure_nulle_ou_comprise_entre(''00_00_00'',''23_59_59'')','0','0','0','2026-03-17 15:45:36.973','2026-03-17 15:45:36.973','0','0',NULL,'0',NULL),
 ('97','texte NULL source_non_rev','14','cht','TEXT','','0','0','0','1','0','NULL','0','','','0','0','0','2025-10-21 10:14:55.512','2025-10-21 10:14:55.512','0','0','','0','source_non_rev(1)'),
 ('98','texte NULL source_au_format_rev','13','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2025-10-20 17:48:22.207','2025-10-21 09:41:32.943','5','0',NULL,'0','source_au_format_rev(1)'),
-('99','priorité','22','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2025-09-06 09:19:20.196','0','0',NULL,'0',NULL),
-('109','id projet','24','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-01-17 12:12:01.759','2026-01-17 12:12:01.759','0','1','chi_id_projet','0',NULL);
+('99','priorité','23','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2025-09-06 09:19:20.196','0','0',NULL,'0',NULL),
+('109','id projet','25','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-01-17 12:12:01.759','2026-01-17 12:12:01.759','0','1','chi_id_projet','0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
 
 
@@ -28286,3 +27183,11 @@ WHERE `T0`.`chi_id_acces` > 1
 INSERT INTO tbl_projets (  chi_id_projet ,  chp_nom_projet ,  cht_commentaire_projet ,  che__nur_projet ,  chd__dtm_projet ,  chd__dtc_projet ) VALUES
 ('3','ref 3','projet de référence N°3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 /*================================================================================ FIN BLOC TABLE tbl_projets offset 0 */
+
+
+/*========================================================================================================================*/
+
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 */
+INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  chp_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
+('1','1','les tâches des utilisateurs','0','2026-02-09 07:38:23.887','2026-02-09 07:38:23.887','0','00_00_00');
+/*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

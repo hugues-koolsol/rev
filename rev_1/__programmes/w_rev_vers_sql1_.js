@@ -224,8 +224,9 @@ class w_rev_vers_sql1{
                         if(options.au_format_programme === true){
                             if(tab[i][1].substr( 0 , 1 ) === ':'){
                                 if(operateur_rev === '' && tab[tab[id][7]][1] === 'dans' || operateur_rev === 'dans'){
+                                    /* pour un dans/IN on ne fait aucune transformation */
                                     t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
-                                    t_js+='` + this.__gi1.__fnt1.sq0( par[\'' + tab[i][1].substr( 1 ) + '\'] ) + `';
+                                    t_js+='` + par[\'' + tab[i][1].substr( 1 ) + '\'] + `';
                                 }else{
                                     if(operateur_rev === 'equivalent' || operateur_rev === 'pas_equivalent'){
                                         t+='\'.sq3($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';

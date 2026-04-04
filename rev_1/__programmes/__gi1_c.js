@@ -3101,126 +3101,6 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    afficher_les_zones( nz ){
-        let tab=['vv_ecran_liste','vv_ecran_creation','vv_ecran_suppression','vv_ecran_modification','vv_ecran_visualisation'];
-        for( let i=0 ; i < tab.length ; i++ ){
-            /* les éléments qui commencent par */
-            let lst=document.querySelectorAll( '[id^="' + tab[i] + '"]' );
-            if(tab[i] === nz){
-                for( let j=0 ; j < lst.length ; j++ ){
-                    try{
-                        lst[j].style.display='';
-                    }catch(e){
-                        debugger;
-                    }
-                }
-            }else{
-                for( let j=0 ; j < lst.length ; j++ ){
-                    try{
-                        if(lst[j].id.indexOf( 'boutons' ) < 0){
-                            lst[j].innerHTML='';
-                        }
-                        lst[j].style.display='none';
-                    }catch(e){
-                        debugger;
-                    }
-                }
-            }
-        }
-    }
-    /*
-      =============================================================================================================
-    */
-    afficher_le_titre_des_zones( nom_de_la_zone , nom_de_le_methode_entree , préfixe_titre , id_element , nom_de_la_classe_js ){
-        let a=document.getElementById( nom_de_la_zone );
-        if(a === null){
-            this.initialisation_des_zones( '' + nom_de_la_classe_js + '' );
-        }
-        a=document.getElementById( 'vv_titre_de_la_page' );
-        let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="rev_bouton rev_b_svg yy_btn_retour_liste" data-rev_click="';
-        bouton_retour+='m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))';
-        bouton_retour+='">' + this.les_svg.lst_des_elts + '</div>';
-        let sujet='modification';
-        if('vv_ecran_modification' === nom_de_la_zone){
-            sujet='modification';
-        }else if('vv_ecran_suppression' === nom_de_la_zone){
-            sujet='suppression';
-        }else if('vv_ecran_visualisation' === nom_de_la_zone){
-            sujet='visualisation';
-        }else if('vv_ecran_creation' === nom_de_la_zone){
-            sujet='création';
-        }
-        let titre=sujet + ' ' + préfixe_titre + (id_element === null ? ( '' ) : ( ' (' + id_element + ')' ));
-        if(a.innerHTML !== bouton_retour + titre){
-            a.innerHTML=bouton_retour + titre;
-            this.afficher_les_zones( nom_de_la_zone );
-        }
-    }
-    /*
-      =============================================================================================================
-    */
-    initialisation_des_zones( nom_module ){
-        let o1='';
-        let tt1='';
-        o1+='<div>';
-        o1+=' <h1 id="vv_titre_de_la_page"></h1>';
-        /* liste */
-        o1+='<div id="vv_ecran_liste_zone_filtre" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_liste_zones_navigation1"  class="yy_navigation_liste"  style="display:none;">';
-        o1+='  <div id="vv_ecran_liste_boutons_avant" style="display:none;"></div>';
-        o1+='  <div id="vv_ecran_liste_bouton_precedents"  class="rev_bouton yy_suivant_precedent_inactif" data-rev_click="';
-        o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_precedents)))';
-        o1+='"';
-        o1+='    data-numero_page="-1" style="display:none;">&laquo;</div>';
-        o1+='  <div id="vv_ecran_liste_bouton_suivants" class="rev_bouton yy_suivant_precedent_inactif"  data-rev_click="';
-        o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))';
-        o1+='"';
-        o1+='    data-numero_page="-1" style="display:none;">&raquo;</div>';
-        o1+='  <div id="vv_ecran_liste_zone_pages" style="display:none;"></div>';
-        o1+='</div>';
-        o1+='<div id="vv_ecran_liste_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_liste_zone_complement" style="display:none;"></div>';
-        /*
-          création
-        */
-        o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
-        tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
-        o1+=' <div id="vv_ajouter_un_element_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter</div>';
-        tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
-        o1+=' <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter et revenir à la liste</div>';
-        o1+='</div>';
-        /*
-          visualisation
-        */
-        o1+='<div id="vv_ecran_visualisation_zone_contenu" style="display:none;"></div>';
-        /*
-          suppression
-        */
-        o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;">';
-        o1+='  <div class="rev_bouton yy__2" data-rev_click="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
-        o1+='</div>';
-        /*
-          modification
-        */
-        o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
-        o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="rev_bouton yy__3" data-indicateur_graphique="bouton_modification_zone" ';
-        o1+='   data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
-        o1+='   title="">modifier';
-        o1+='  </div>    ';
-        o1+='  <div class="rev_bouton yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
-        o1+='   data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
-        o1+='   title="">Modifier et retour à la liste';
-        o1+='  </div>';
-        o1+='</div>';
-        o1+='<div id="vv_ecran_modification_zone_complement" style="display:none;"></div>';
-        this.maj_contenu_principal( o1 );
-    }
-    /*
-      =============================================================================================================
-    */
     est_num( mot ){
         if( typeof mot === 'number'){
             return true;
@@ -3302,32 +3182,6 @@ class __gi1{
                 } catch {}
                 let le_message='<b>' + libelle_erreur + '</b>' + texte_erreur + '^G ' + numero_de_ligne;
                 return le_message;
-                /*
-                  var nom_fichier=texte_erreur.match[ /\/[[^\/:]+]:/ ][1];
-                  nom_fonction='';
-                  if[texte_erreur.match[ / at [[^\.]+] \[/ ] === null]{
-                  if[texte_erreur.match[ / at [[^]+] \[/ ] === null]{
-                  if[texte_erreur.match[ /[[^]+]\/[[^]+]/ ][2] !== null]{
-                  nom_fonction='erreur javascript ' + texte_erreur.match[ /[[^]+]\/[[^]+]/ ][2];
-                  }
-                  }else{
-                  nom_fonction=texte_erreur.match[ / at [[^]+] \[/ ][1];
-                  }
-                  }else{
-                  nom_fonction=texte_erreur.match[ / at [[^\.]+] \[/ ][1];
-                  }
-                  var libelle_erreur='';
-                  try{
-                  libelle_erreur='<br />' + e.stack.toString[].split[ /\r\n|\n/ ][0];
-                  } catch {}
-                  var numero_de_ligne=modele_champ_erreur.exec[ texte_erreur ][1];
-                  
-                  return[[libelle_erreur == '' ? [ '' ] : [ '<b>' + libelle_erreur + '</b><br />' ]] + '^G ' + numero_de_ligne + ' ' + nom_fichier + ' ' + nom_fonction + ' '];
-                  /*                
-                  }else{
-                  /* console.error[ e_originale ]; 
-                */
-                return('Voir la console pour le numéro de ligne <br /> ' + e.stack.toString());
             }
         }else{
             var stack=e.stack.toString().split( /\r\n|\n/ );
@@ -3551,6 +3405,157 @@ class __gi1{
             elt.setAttribute( 'src' , chemin_du_script );
             document.getElementById( 'vv_head' ).appendChild( elt );
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_les_zones( nz ){
+        let tab=['vv_ecran_liste','vv_ecran_creation','vv_ecran_suppression','vv_ecran_modification','vv_ecran_visualisation'];
+        for( let i=0 ; i < tab.length ; i++ ){
+            /* les éléments qui commencent par */
+            let lst=document.querySelectorAll( '[id^="' + tab[i] + '"]' );
+            if(tab[i] === nz){
+                for( let j=0 ; j < lst.length ; j++ ){
+                    try{
+                        lst[j].style.display='';
+                    }catch(e){
+                        debugger;
+                    }
+                }
+            }else{
+                for( let j=0 ; j < lst.length ; j++ ){
+                    try{
+                        if(lst[j].id.indexOf( 'boutons' ) < 0){
+                            lst[j].innerHTML='';
+                        }
+                        lst[j].style.display='none';
+                    }catch(e){
+                        debugger;
+                    }
+                }
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_le_titre_des_zones( nom_de_la_zone , nom_de_le_methode_entree , préfixe_titre , id_element , nom_de_la_classe_js ){
+        let a=document.getElementById( nom_de_la_zone );
+        if(a === null){
+            this.initialisation_des_zones( '' + nom_de_la_classe_js + '' );
+        }
+        a=document.getElementById( 'vv_titre_de_la_page' );
+        let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="rev_bouton rev_b_svg yy_btn_retour_liste" data-rev_click="';
+        bouton_retour+='m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))';
+        bouton_retour+='">' + this.les_svg.lst_des_elts + '</div>';
+        let sujet='modification';
+        if('vv_ecran_modification' === nom_de_la_zone){
+            sujet='modification';
+        }else if('vv_ecran_suppression' === nom_de_la_zone){
+            sujet='suppression';
+        }else if('vv_ecran_visualisation' === nom_de_la_zone){
+            sujet='visualisation';
+        }else if('vv_ecran_creation' === nom_de_la_zone){
+            sujet='création';
+        }
+        let titre=sujet + ' ' + préfixe_titre + (id_element === null ? ( '' ) : ( ' (' + id_element + ')' ));
+        if(a.innerHTML !== bouton_retour + titre){
+            a.innerHTML=bouton_retour + titre;
+            this.afficher_les_zones( nom_de_la_zone );
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    initialisation_des_zones( nom_module ){
+        let o1='';
+        let tt1='';
+        o1+='<div>';
+        o1+=' <h1 id="vv_titre_de_la_page"></h1>';
+        /* liste */
+        o1+='<div id="vv_ecran_liste_zone_filtre" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_liste_zones_navigation1"  class="yy_navigation_liste"  style="display:none;">';
+        o1+='  <div id="vv_ecran_liste_boutons_avant" style="display:none;"></div>';
+        o1+='  <div id="vv_ecran_liste_bouton_precedents"  class="rev_bouton yy_suivant_precedent_inactif" data-rev_click="';
+        o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_precedents)))';
+        o1+='"';
+        o1+='    data-numero_page="-1" style="display:none;">&laquo;</div>';
+        o1+='  <div id="vv_ecran_liste_bouton_suivants" class="rev_bouton yy_suivant_precedent_inactif"  data-rev_click="';
+        o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))';
+        o1+='"';
+        o1+='    data-numero_page="-1" style="display:none;">&raquo;</div>';
+        o1+='  <div id="vv_ecran_liste_zone_pages" style="display:none;"></div>';
+        o1+='</div>';
+        o1+='<div id="vv_ecran_liste_zone_contenu" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_liste_zone_complement" style="display:none;"></div>';
+        /*
+          création
+        */
+        o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
+        tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
+        o1+=' <div id="vv_ajouter_un_element_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter</div>';
+        tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
+        o1+=' <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter et revenir à la liste</div>';
+        o1+='</div>';
+        /*
+          visualisation
+        */
+        o1+='<div id="vv_ecran_visualisation_zone_contenu" style="display:none;"></div>';
+        /*
+          suppression
+        */
+        o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;">';
+        o1+='  <div class="rev_bouton yy__2" data-rev_click="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
+        o1+='</div>';
+        /*
+          modification
+        */
+        o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
+        o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="rev_bouton yy__3" data-indicateur_graphique="bouton_modification_zone" ';
+        o1+='   data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
+        o1+='   title="">modifier';
+        o1+='  </div>    ';
+        o1+='  <div class="rev_bouton yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
+        o1+='   data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
+        o1+='   title="">Modifier et retour à la liste';
+        o1+='  </div>';
+        o1+='</div>';
+        o1+='<div id="vv_ecran_modification_zone_complement" style="display:none;"></div>';
+        this.maj_contenu_principal( o1 );
+    }    
+    /*
+      =============================================================================================================
+    */
+    sous_liste_generique1( mat , d , le_message_du_serveur=null , that ){
+        if(le_message_du_serveur == null || !le_message_du_serveur.__xva.hasOwnProperty( that.fonction_liste )){
+            return({"__xst" : __xer});
+        }
+        let o1='';
+        let initialisation_fait=false;
+        let a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a === null){
+            this.initialisation_des_zones( that.moi );
+            initialisation_fait=true;
+        }
+        let le_titre='sélection '+that.DUN_DUNE_ELEMENT_GERE
+        a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a.innerHTML === le_titre){
+        }else{
+            if(initialisation_fait === false){
+                this.initialisation_des_zones( that.moi );
+                a=document.getElementById( 'vv_titre_de_la_page' );
+            }
+            a.innerHTML=le_titre;
+            this.afficher_les_zones( 'vv_ecran_liste' );
+        }
+        that.zones_filtres1( mat , d , le_message_du_serveur );
+        this.vv_ecran_liste_zones_navigation1( le_message_du_serveur , '' , that.fonction_liste );
+        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=that.zones_sous_liste1( le_message_du_serveur );
+        this.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
