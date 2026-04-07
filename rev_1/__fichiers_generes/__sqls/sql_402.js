@@ -17,7 +17,7 @@ class sql_402{
         const from0=`
           FROM  tbl_sources T0        `;
         sql0+=from0;
-        const where0=` WHERE ( \`T0\`.\`chi_id_source\` IN ` + this.__gi1.__fnt1.sq0( par['T0_chi_id_source'] ) + `
+        const where0=` WHERE ( \`T0\`.\`chi_id_source\` IN ` + par['T0_chi_id_source'] + `
          AND \`T0\`.\`chp_nom_source\` LIKE '%.js'
          AND \`T0\`.\`che_binaire_source\` = 0)`;
         sql0+=where0;

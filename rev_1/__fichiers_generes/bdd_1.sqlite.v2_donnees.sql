@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1073','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1084','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -260,7 +260,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(3.5,9.5))
+   transform_base_sur_svg(translate(0.5,8.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_revs''),
@@ -271,7 +271,7 @@ créer_table(
       permet_la_gestion_de(''rev''),
       distinction_pour_liste(''liste des revs''),
       distinction_pour_isad(''d\''un rev''),
-      transform_base_sur_svg(translate(308,582))
+      transform_base_sur_svg(translate(334,554))
    ),
    champs(
       champ(
@@ -994,7 +994,7 @@ créer_table(
       ),
       champ(
          nom_du_champ(''cht_rev_source''),
-         espece_du_champ(TEXT),
+         espece_du_champ(LONGTEXT),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
          valeur_par_defaut(NULL),
@@ -1003,13 +1003,13 @@ créer_table(
             nom_du_champ(''cht_rev_source''),
             nom_bref_du_champ(''rev''),
             abrege_du_champ(''rev''),
-            typologie(),
+            typologie(chi),
             genre(98)
          )
       ),
       champ(
          nom_du_champ(''cht_genere_source''),
-         espece_du_champ(TEXT),
+         espece_du_champ(LONGTEXT),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
          valeur_par_defaut(NULL),
@@ -1018,7 +1018,7 @@ créer_table(
             nom_du_champ(''cht_genere_source''),
             nom_bref_du_champ(''genere''),
             abrege_du_champ(''genere''),
-            typologie(),
+            typologie(chi),
             genre(97)
          )
       ),
@@ -2763,7 +2763,7 @@ INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  ch
 ('97','texte NULL source_non_rev','13','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2025-10-21 10:14:55.512','2026-01-17 13:29:10.886','1','0',NULL,'0','source_non_rev(1)'),
 ('98','texte NULL source_au_format_rev','12','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2025-10-20 17:48:22.207','2025-10-21 09:41:32.943','5','0',NULL,'0','source_au_format_rev(1)'),
 ('99','priorité','25','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2025-09-06 09:19:20.196','0','0',NULL,'0',NULL),
-('101','espèce','27','chp','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('101','espèce','27','chp','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL,LONGTEXT',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-04-07 10:18:08.507','1','0',NULL,'0',NULL),
 ('102','préfixe','26','chp','VARCHAR','3','0','0','1','1','1','cht','1','cht,chi,che,chx,chp,chd,chu,chn','doit_contenir_n_caracteres(3)','0','0','0','2000-01-01 00:00:00.000','2026-02-15 14:08:39.293','2','0',NULL,'0',NULL),
 ('103','type_requete','28','chp','VARCHAR','64','0','0','1','1','1','liste_ecran','1','liste_ecran,insert,select,update,delete,requete_manuelle',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('104','fournisseur bdd','29','chp','VARCHAR','64','0','0','1','1','1','sqlite','1','sqlite,mysql',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
@@ -2772,7 +2772,7 @@ INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  ch
 ('107','fonctions de champ','33','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_fonctions_de_c_fonctions1()','0','0','0','2000-01-01 00:00:00.000','2025-10-03 18:16:54.710','3','0',NULL,'0',NULL),
 ('108','nom de dossier','31','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('109','id projet','34','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-07 09:46:49.711','2026-01-17 12:57:08.547','3','1','chi_id_projet','0',NULL),
-('110','longueur de champ','35','chp','VARCHAR','20','0','0','0','1','0','NULL','0',NULL,'tester_longueur_de_champ_dans_genre()','0','0','0','2026-03-29 13:29:01.613','2026-03-29 13:33:00.985','2','0',NULL,'0',NULL);
+('110','longueur de champ','35','chp','VARCHAR','20','0','0','0','1','0','NULL','0',NULL,'tester_longueur_de_champ_dans_genre()','0','0','0','2026-03-29 13:29:01.613','2026-04-07 10:16:16.233','5','0',NULL,'0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
 
 
@@ -3004,7 +3004,6 @@ WHERE (`chi_id_tache` = :c_chi_id_tache
 WHERE (`chi_id_tache` = :chi_id_tache
    AND `chx_utilisateur_tache` = :chx_utilisateur_tache) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('115','sources','liste_ecran','sélectionner(
-
    valeurs(
       champ(`T0`,`chi_id_source`),
       champ(`T0`,`chx_dossier_id_source`),
@@ -4137,34 +4136,28 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
  FROM b1.tbl_acces T0
 WHERE `T0`.`chi_id_acces` > 1
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_acces'),
-('163','sources','update','modifier(
-
-   valeurs(
-      affecte(champ(`chp_nom_source`),:n_chp_nom_source),
-      affecte(champ(`che_binaire_source`),:n_che_binaire_source),
-      affecte(champ(`chx_dossier_id_source`),:n_chx_dossier_id_source),
-      affecte(champ(`cht_rev_source`),:n_cht_rev_source),
-      affecte(champ(`cht_genere_source`),:n_cht_genere_source),
-      affecte(champ(`cht_commentaire_source`),:n_cht_commentaire_source),
-      affecte(champ(`che_contient_version_source`),:n_che_contient_version_source),
-      affecte(champ(`che_autorisation_globale_source`),:n_che_autorisation_globale_source)
-   ),
+('163','','select','sélectionner(
+   valeurs(champ(`T0`,`chi_id_autorisation`),champ(`T1`,`chp_nom_source`)),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_sources,base(b1)))
+         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_sources,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_source),champ(T0,chx_source_autorisation)))
       )
    ),
-   conditions(egal(champ(`chi_id_source`),:c_chi_id_source))
-)  ','UPDATE b1.tbl_sources SET 
-   `chp_nom_source` = :n_chp_nom_source , 
-   `che_binaire_source` = :n_che_binaire_source , 
-   `chx_dossier_id_source` = :n_chx_dossier_id_source , 
-   `cht_rev_source` = :n_cht_rev_source , 
-   `cht_genere_source` = :n_cht_genere_source , 
-   `cht_commentaire_source` = :n_cht_commentaire_source , 
-   `che_contient_version_source` = :n_che_contient_version_source , 
-   `che_autorisation_globale_source` = :n_che_autorisation_globale_source
-WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+   conditions(
+      et(egal(champ(`T0`,`chx_acces_autorisation`),:T0_chx_acces_autorisation),dans(champ(`T1`,`chp_nom_source`),(:T1_chp_nom_source)))
+   )
+)  ','SELECT 
+`T0`.`chi_id_autorisation` , `T1`.`chp_nom_source`
+ FROM b1.tbl_autorisations T0
+ LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
+
+WHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+   AND `T1`.`chp_nom_source` IN (:T1_chp_nom_source))
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_autorisations'),
 ('165','tâches priorité par id=','update','modifier(
 
    valeurs(affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache)),
@@ -4289,6 +4282,34 @@ WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
     :chd__dtm_dossier , 
     :chd__dtc_dossier
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_dossiers'),
+('308','sources','update','modifier(
+
+   valeurs(
+      affecte(champ(`chp_nom_source`),:n_chp_nom_source),
+      affecte(champ(`che_binaire_source`),:n_che_binaire_source),
+      affecte(champ(`chx_dossier_id_source`),:n_chx_dossier_id_source),
+      affecte(champ(`cht_rev_source`),:n_cht_rev_source),
+      affecte(champ(`cht_genere_source`),:n_cht_genere_source),
+      affecte(champ(`cht_commentaire_source`),:n_cht_commentaire_source),
+      affecte(champ(`che_contient_version_source`),:n_che_contient_version_source),
+      affecte(champ(`che_autorisation_globale_source`),:n_che_autorisation_globale_source)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_source`),:c_chi_id_source))
+)  ','UPDATE b1.tbl_sources SET 
+   `chp_nom_source` = :n_chp_nom_source , 
+   `che_binaire_source` = :n_che_binaire_source , 
+   `chx_dossier_id_source` = :n_chx_dossier_id_source , 
+   `cht_rev_source` = :n_cht_rev_source , 
+   `cht_genere_source` = :n_cht_genere_source , 
+   `cht_commentaire_source` = :n_cht_commentaire_source , 
+   `che_contient_version_source` = :n_che_contient_version_source , 
+   `che_autorisation_globale_source` = :n_che_autorisation_globale_source
+WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
 ('310','sources','update','modifier(
 
    valeurs(affecte(champ(`chi_id_source`),:n_chi_id_source)),
@@ -4301,34 +4322,6 @@ WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
 )  ','UPDATE b1.tbl_sources SET 
    `chi_id_source` = :n_chi_id_source
 WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
-('313','sources à copier dans un autre environnement','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_source`),
-      champ(`T0`,`chp_nom_source`),
-      champ(`T0`,`cht_commentaire_source`),
-      champ(`T0`,`cht_rev_source`),
-      champ(`T0`,`cht_genere_source`),
-      champ(`T0`,`che_binaire_source`),
-      champ(`T0`,`chx_dossier_id_source`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      ou(
-         et(inf(champ(`T0`,`chi_id_source`),:T0_chi_id_source),pas_comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source)),
-         dans(champ(`T0`,`chi_id_source`),(:T0_chi_id_source2))
-      )
-   )
-)  ','SELECT 
-`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
-`T0`.`che_binaire_source` , `T0`.`chx_dossier_id_source`
- FROM b1.tbl_sources T0
-WHERE ((`T0`.`chi_id_source` < :T0_chi_id_source
-   AND `T0`.`chp_nom_source` NOT LIKE :T0_chp_nom_source) OR `T0`.`chi_id_source` IN (:T0_chi_id_source2))
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
 ('314','dossiers à copier dans un autre environnement','insert','insérer(
 
    valeurs(
@@ -6217,7 +6210,7 @@ INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tac
 ('26','1','travaux en batch','99','2026-02-21 11:42:55.900','2000-01-01 00:00:00','0','00_00_00'),
 ('27','1','gérer les versions js css etc','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('28','1','profils de css','99','2025-11-07 11:00:18.094','2000-01-01 00:00:00','0','00_00_00'),
-('29','1','interface : astuces','12','2025-08-15 14:32:17.544','2000-01-01 00:00:00','1','00_00_00'),
+('29','1','interface : astuces','15','2025-08-15 14:32:17.544','2000-01-01 00:00:00','1','00_00_00'),
 ('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('31','1','sauvegarder la position dans la liste','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -6282,7 +6275,7 @@ et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 0
 ('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
-('80','1','table des bugs','16','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
+('80','1','table des bugs','19','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('83','1','ajouter les champs 
@@ -6295,7 +6288,7 @@ dtc date technique de création','99','2000-01-01 00:00:00','2000-01-01 00:00:00
 ('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('88','1','sortable pour svg','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('89','1','cliquer en dehors du "dialog" pour le fermer','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
-('90','1','dupliquer une table','17','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
+('90','1','dupliquer une table','20','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('91','1','remplacer cible par projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('92','1','quand on modifie le nom d''une table
 alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -6390,7 +6383,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chd__dtm_tache`)
 flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4','00_00_00'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','15','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1','00_00_00'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','18','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1','00_00_00'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -6430,7 +6423,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','14','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1','00_00_00'),
+comme3(xxx)','17','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1','00_00_00'),
 ('170','1','initialiser ecran standard d''une table','99','2026-02-21 11:43:00.445','2025-06-26 15:40:44.916','0','00_00_00'),
 ('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1','00_00_00'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1','00_00_00'),
@@ -6596,10 +6589,10 @@ et garder nom_bref_du_champ','99','2025-11-07 13:35:22.305','2025-08-28 17:42:38
 
 che_est_tsc_genre
 che_est_tsm_genre','99','2025-09-03 15:51:07.883','2025-09-01 12:50:05.454','0','00_00_00'),
-('244','1','ajouter un nom autorisation construit automatiquement pour déterminer le libelle lien','10','2025-09-04 09:38:08.890','2025-09-04 09:38:08.890','0','00_00_00'),
+('244','1','ajouter un nom autorisation construit automatiquement pour déterminer le libelle lien','13','2025-09-04 09:38:08.890','2025-09-04 09:38:08.890','0','00_00_00'),
 ('246','1','ajouter un meta libelle lien','99','2025-09-04 17:25:45.403','2025-09-04 10:47:55.252','0','00_00_00'),
 ('247','1','ajouter les tests sur les editions/créations de champs','99','2025-11-07 10:58:08.476','2025-09-04 17:26:41.178','0','00_00_00'),
-('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','11','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0','00_00_00'),
+('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','14','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0','00_00_00'),
 ('249','1','écran création genre
 
 insérer(
@@ -6643,10 +6636,10 @@ $a= ''-9223372036854775807'' < ''-9223372036854775808'';
 
 9 223 372 036 854 775 807
   999 999 999 999 999 999
-1 000 000 000 000 000 000','9','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0','00_00_00'),
+1 000 000 000 000 000 000','11','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0','00_00_00'),
 ('257','1','traiter le integer(2) pour priorité','99','2025-09-09 10:22:31.674','2025-09-06 16:13:30.347','0','00_00_00'),
 ('258','1','est_utilisateur => est_session','99','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0','00_00_00'),
-('259','1','ajouter positif dans les genres INTEGER','8','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0','00_00_00'),
+('259','1','ajouter positif dans les genres INTEGER','10','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0','00_00_00'),
 ('260','1','gérer "mes tâches" avec valeur de session','99','2025-11-05 07:55:51.279','2025-09-09 13:24:16.968','0','00_00_00'),
 ('261','1','générer les requêtes souches','80','2025-12-21 10:24:24.144','2025-09-09 16:03:18.381','0','00_00_00'),
 ('262','1','','','2025-09-24 17:40:27.284','2025-09-24 17:40:27.284','0','00_00_00'),
@@ -6788,7 +6781,7 @@ https://mdn.github.io/dom-examples/popover-api/nested-popovers/','99','2025-11-0
 ','80','2025-11-02 10:31:29.357','2025-11-02 10:31:29.357','0','00_00_00'),
 ('300','1','dans le projet 3 "les tâches " voir le lien vers l''utilisateur','99','2025-11-04 16:34:45.472','2025-11-04 10:08:45.737','0','00_00_00'),
 ('301','1','taille de la sous fenêtre','99','2025-11-04 11:53:47.354','2025-11-04 11:39:50.934','0','00_00_00'),
-('302','1','pouvoir changer l''utilisateur courant','7','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0','00_00_00'),
+('302','1','pouvoir changer l''utilisateur courant','9','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0','00_00_00'),
 ('303','1','commentaire
 abrégé
 éclaircissement
@@ -6902,7 +6895,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0','00_00_00'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','6','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0','00_00_00'),
+','8','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0','00_00_00'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0','00_00_00'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0','00_00_00'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -7034,7 +7027,7 @@ donnees_retournees[__xsi] donnees_retournees.__xsi
 this.__gi1.__xsi
 
 ','99','2026-02-03 07:48:39.136','2026-02-02 10:03:14.569','0','00_00_00'),
-('363','1','distinguer les messages techniques et les messages utilisateur','13','2026-02-03 07:48:50.531','2026-02-03 07:48:50.531','0','00_00_00'),
+('363','1','distinguer les messages techniques et les messages utilisateur','16','2026-02-03 07:48:50.531','2026-02-03 07:48:50.531','0','00_00_00'),
 ('364','1','supprimer tous les jobs terminés','99','2026-02-03 10:16:18.326','2026-02-03 07:49:32.733','0','00_00_00'),
 ('365','1','pour les projets autres que 1, 
 mettre le rev du source en base lors de la compilation cron','99','2026-02-03 12:39:32.101','2026-02-03 10:17:57.068','0','00_00_00'),
@@ -7047,7 +7040,7 @@ Reponse : il falait utiliser le genre dtm à la place du genre dtc','99','2026-0
 ('370','1','utiliser le nouveau module commun pour génération des js sql','99','2026-02-06 08:57:40.928','2026-02-05 08:22:08.734','0','00_00_00'),
 ('371','1','compilation de acorn dans rev_2
 OK','99','2026-02-05 14:05:52.153','2026-02-05 11:31:01.404','0','00_00_00'),
-('372','1','nouveau projet 3','5','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0','00_00_00'),
+('372','1','nouveau projet 3','7','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0','00_00_00'),
 ('373','1','renuméroter un dossier','99','2026-02-07 10:15:05.889','2026-02-07 07:52:40.873','0','00_00_00'),
 ('374','1','changer
         this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet
@@ -7110,7 +7103,7 @@ chx_dossier_programmes_projet','99','2026-02-23 13:50:51.659','2026-02-23 12:06:
 00000060  ff 3f 00 05 fe 02 fe a7  35 81 84 00 00 00 00 49  |.?......  5......I|
 00000070  45 4e 44 ae 42 60 82                              |END.B`.           |','99','2026-02-28 08:52:14.641','2026-02-27 12:18:44.029','0','00_00_00'),
 ('399','1','téléverser un fichier','99','2026-03-01 12:08:30.841','2026-02-28 08:54:06.360','0','00_00_00'),
-('400','1','nouveau projet 4','4','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0','00_00_00'),
+('400','1','nouveau projet 4','6','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0','00_00_00'),
 ('401','1','virer
 chx_dossier_programmes_projet
 chx_dossier_requetes_projet
@@ -7546,7 +7539,7 @@ et non pas d''un objet ( voir fichier rpps )','99','2026-03-11 17:18:45.244','20
 ('412','1','sélecteur de date','99','2026-03-31 17:42:11.818','2026-03-14 10:08:48.066','0','00_00_00'),
 ('413','1','reprendre ugc
 http://localhost/ugc/ugc_www/
-http://localhost/mysqlreader/app_bbb_sample/tdo_www/','0','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0','00_00_00'),
+http://localhost/mysqlreader/app_bbb_sample/tdo_www/','4','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0','00_00_00'),
 ('414','1','traiter le champ date aaaa_mm_jj Ø','99','2026-03-17 17:37:23.386','2026-03-14 13:41:33.194','0','00_00_00'),
 ('415','1','traiter le champ heure 8 hh_mm_ss','99','2026-03-17 17:37:27.012','2026-03-14 14:22:42.444','0','00_00_00'),
 ('416','1','voir l''utilité des requetes manuelles','99','2026-03-19 08:31:26.252','2026-03-19 07:35:21.160','0','00_00_00'),
@@ -8078,7 +8071,24 @@ SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.
 this.__gi1.affiche_sous_fenetre1(
 à la place de 
 vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48.543','0','00_00_00'),
-('428','1','sortir la sous sélection de l''iframe','2','2026-03-31 15:44:02.141','2026-03-31 15:44:02.141','0','00_00_00'),
+('428','1','mettre la sous_liste dans __gi1_c
+
+    /*
+      =============================================================================================================
+    */
+    sous_liste1( mat , d , le_message_du_serveur=null ){
+        this.fonction_liste=''sous_liste1'';
+        let ret=this.__gi1.sous_liste_generique1(mat , d , le_message_du_serveur , this);
+        if(ret.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xsu});
+    }
+','99','2026-04-07 08:03:28.754','2026-03-31 15:44:02.141','0','00_00_00'),
 ('429','1','après avoir cliqué sur le bouton pour compiler une requête, revenir à la sélection du filtre','99','2026-04-01 16:02:44.327','2026-03-31 17:41:45.006','0','00_00_00'),
-('430','1','mettre la table des taches en virtuelle','1','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0','00_00_00');
+('430','1','mettre la table des taches en virtuelle','5','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0','00_00_00'),
+('431','1','ajouter des valeurs préférées ( 0.25 , 0.50 , 0.75 , 1.00 )','3','2026-04-03 08:25:39.403','2026-04-03 08:25:31.277','0','00_00_00'),
+('432','1','utiliser indexedDb du navigateur','12','2026-04-04 09:54:00.112','2026-04-04 09:51:44.238','0','00_00_00'),
+('433','1','gérer les autorisations pour les listes et les actions','99','2026-04-07 08:51:43.327','2026-04-04 13:06:19.057','0','00_00_00'),
+('434','1','longtext sur les champs cht_rev_source et cht_genere_source','1','2026-04-07 08:51:13.688','2026-04-07 08:51:13.688','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

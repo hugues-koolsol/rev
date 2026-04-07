@@ -37,7 +37,6 @@ class __gi1{
       =============================================================================================================
     */
     constructor( _CA_ , repertoire_du_pgm_serveur , repertoire_des_programmes , repertoire_racine_de_tous_les_projets , __deverminage ){
-        /* console.log('constructor de '+this.moi) */
         this.__fnt1=new __fnt1( [] , 0 , this );
         this.__rev1=new __rev1( this );
         this.objet_des_modules_charges['__fnt1']=this.__fnt1;
@@ -72,7 +71,7 @@ class __gi1{
             }else if( typeof x === 'object'){
                 s+=JSON.stringify( x );
             }else{
-                console.log(  typeof x , x );
+                this.ma_trace1(  typeof x , x );
                 s+=x;
             }
         }
@@ -241,7 +240,7 @@ class __gi1{
             options_generales.bdd_ouvertes[chi_id_basedd]={"base" : __db ,"ouverte" : true};
             return __db;
         }catch(e){
-            console.log( e.stack );
+            this.ma_trace1( e.stack );
             throw new Error( 'erreur sur ' + chemin_complet_bdd );
         }
     }
@@ -257,7 +256,7 @@ class __gi1{
             }
             return __db;
         }catch(e){
-            console.log( e.stack );
+            this.ma_trace1( e.stack );
             throw new Error( 'erreur sur ' + chemin_complet_bdd );
         }
     }
@@ -330,7 +329,6 @@ class __gi1{
         let session_json=JSON.parse( session_texte );
         session_json[cle]=valeur;
         await Deno.writeTextFile( './__sessions/' + la_cle + '.json' , JSON.stringify( session_json ) );
-        /* console.log('session_texte=',session_texte); */
     }
     /*
       =============================================================================================================
@@ -367,7 +365,9 @@ class __gi1{
                         /* this.ma_trace1( 'n1="' + n1 + '"' ); */
                         if(n1 !== ''){
                             /* this.ma_trace1('this.autorisations_verifiees=',this.autorisations_verifiees); */
+                            let verifier_fonction_sous_liste=false;
                             if(this.autorisations_verifiees !== true){
+                                verifier_fonction_sous_liste=false;
                                 if(donnees_retournees.chi_id_utilisateur === 1){
                                     /* l'utilisateur 1 a droit à tout */
                                     this.autorisations_verifiees=true;
@@ -377,6 +377,10 @@ class __gi1{
                                         let contenu_texte=await this.file_get_contents( chemin_des_autorisations );
                                         let contenu_json=JSON.parse( contenu_texte );
                                         if(contenu_json.hasOwnProperty( n1 )){
+                                            if(contenu_json[n1].autorisation_cote_client === 0){
+                                                verifier_fonction_sous_liste=true;
+                                                this.ma_trace1( 'verifier_fonction_sous_liste=true' );
+                                            }
                                             this.autorisations_verifiees=true;
                                         }
                                     }catch(e){
@@ -385,6 +389,8 @@ class __gi1{
                                         continuer=false;
                                     }
                                 }
+                            }else{
+                                verifier_fonction_sous_liste=false;
                             }
                             if(this.autorisations_verifiees === false){
                                 this.__xsi[__xdv].push( 'SERVEUR : accès non autorisé à "' + n1 + '" êtes vous connecté ?<a class="yy__1" href="./#pm1(m1(n1(_connexion1),f1(page_connexion1())))">connexion</a>' );
@@ -409,10 +415,6 @@ class __gi1{
                                             /* this.ma_trace1('nom_du_fichier='+nom_du_fichier,this.objet_des_modules_charges[n1]); */
                                             if(this.objet_des_modules_charges[n1] !== undefined){
                                             }else{
-                                                /*
-                                                  console.log('this.repertoire_du_pgm_serveur='+this.repertoire_du_pgm_serveur)
-                                                  console.log('this.repertoire_des_programmes='+this.repertoire_des_programmes)
-                                                */
                                                 let chemin_du_module='';
                                                 if(options_generales.mode_cron){
                                                     chemin_du_module=this.repertoire_du_pgm_serveur + '/' + this.repertoire_des_programmes + nom_du_fichier;
@@ -449,9 +451,18 @@ class __gi1{
                                                         continue;
                                                     }
                                                 }
-                                                /* console.log( 'this.objet_des_modules_charges=',this.objet_des_modules_charges ); */
                                             }
                                             /* this.ma_trace1('continuer=',(continuer?'true':'false')); */
+                                            if(verifier_fonction_sous_liste === true){
+                                                this.ma_trace1( 'n1 = ' + n1 + ' , nom_de_la_fonction_a_appeler=' + nom_de_la_fonction_a_appeler );
+                                                if(nom_de_la_fonction_a_appeler === 'sous_liste1'){
+                                                    /* c'est OK */
+                                                }else{
+                                                    this.__xsi[__xer].push( 'SERVEUR : autorisation non déclarée' + this.nl2() );
+                                                    continuer=false;
+                                                    continue;
+                                                }
+                                            }
                                             if(continuer === true){
                                                 let ret=null;
                                                 try{

@@ -1425,7 +1425,7 @@ class sources1{
                 "n_che_autorisation_globale_source" : form['che_autorisation_globale_source']
             };
             await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt163=await this.__gi1.sql_iii(
+            let tt308=await this.__gi1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_sources SET 
                `chp_nom_source` = :n_chp_nom_source , 
@@ -1438,10 +1438,10 @@ class sources1{
                `che_autorisation_globale_source` = :n_che_autorisation_globale_source
             WHERE `chi_id_source` = :c_chi_id_source ;
             */
-            /*sql_inclure_fin*/ 163 , donnees_sql , donnees_retournees , __db1 );
-            if(tt163[__xst] !== __xsu){
-                if(tt163['__xme'] !== ''){
-                    this.__gi1.__xsi[__xer].push( tt163['__xme'] + ' [' + this.__gi1.nl2() );
+            /*sql_inclure_fin*/ 308 , donnees_sql , donnees_retournees , __db1 );
+            if(tt308[__xst] !== __xsu){
+                if(tt308['__xme'] !== ''){
+                    this.__gi1.__xsi[__xer].push( tt308['__xme'] + ' [' + this.__gi1.nl2() );
                 }else{
                     this.__gi1.__xsi[__xer].push( 'erreur de modification [' + this.__gi1.nl2() );
                 }

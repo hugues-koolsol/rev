@@ -291,9 +291,9 @@ const le_serveur=Deno.serve( {
         }
         /* options_http.headers=headers; */
         let entetes_reponse_http={"headers" : /* "status" : 200, */headers};
-        for(let i in options_generales.bdd_ouvertes){
+        for(let ref_base in options_generales.bdd_ouvertes){
             try{
-                await options_generales.bdd_ouvertes[i].base.close();
+                await options_generales.bdd_ouvertes[ref_base].base.close();
             } catch {}
         }
         if(__deverminage > 0){
@@ -306,7 +306,6 @@ const le_serveur=Deno.serve( {
             }
         }
         options_generales=null;
-        /* __gi1.ma_trace1(options_http); */
         return(new Response( JSON.stringify( donnees_retournees ) , entetes_reponse_http ));
         /*  */
     }} );

@@ -1,6 +1,22 @@
 {
-  "x_ecran_coordonnees1": 33,
-  "taches1": 32,
-  "_connexion1": 0,
-  "__gi1": 0
+  "x_ecran_coordonnees1": {
+    "generale": false,
+    "id_autorisation": 33,
+    "autorisation_cote_client": 19
+  },
+  "taches1": {
+    "generale": false,
+    "id_autorisation": 32,
+    "autorisation_cote_client": 17
+  },
+  "_connexion1": {
+    "generale": true,
+    "id_autorisation": 0,
+    "autorisation_cote_client": true
+  },
+  "__gi1": {
+    "generale": true,
+    "id_autorisation": 0,
+    "autorisation_cote_client": true
+  }
 }

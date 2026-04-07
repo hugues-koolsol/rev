@@ -545,7 +545,12 @@ class _rev_de_sql_vers_js1{
                 }else if(detail_champ.genre_objet_du_champ && detail_champ.genre_objet_du_champ.che_est_nur_genre === 1){
                     tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \'+this.__gi1.__fnt1.sq1(\'0\') + \'\'' );
                 }else{
-                    let spec=detail_champ.genre_objet_du_champ.chp_espece_genre.toLowerCase();
+                    let spec='';
+                    try{
+                        spec=detail_champ.genre_objet_du_champ.chp_espece_genre.toLowerCase();
+                    }catch(e){
+                        this.__gi1.ma_trace1('bizarre', detail_champ);
+                    }
                     if(spec === 'varchar' || spec === 'text'){
                         /* debugger */
                         let s01=obj3.tableau_des_valeurs_pour_insert_js[i][0];
@@ -1186,8 +1191,27 @@ class _rev_de_sql_vers_js1{
             t+='        /*  */\r\n';
             t+='        for(let numero_de_ligne in lignes){\r\n';
             t+='            donnees0.push( {\r\n';
-            for( i=0 ; i < obj3.tableau_des_champs_pour_select_js.length ; i++ ){
-                t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '.' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : lignes[numero_de_ligne][' + i + ']';
+            for( let i=0 ; i < obj3.tableau_des_champs_pour_select_js.length ; i++ ){
+                let type_du_champ='';
+                for(let j in obj3.tableau_des_tables_utilisees){
+                    if(obj3.tableau_des_tables_utilisees[j].nom_de_l_alias === obj3.tableau_des_champs_pour_select_js[i].alias){
+                        let base=obj3.tableau_des_tables_utilisees[j].base;
+                        let nom_de_la_table_du_champ=obj3.tableau_des_tables_utilisees[j].table;
+                        for(let k in this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs){
+                            if(this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs[k].nom_du_champ === obj3.tableau_des_champs_pour_select_js[i].nom_du_champ
+                                   && this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs[k].espece_du_champ.toUpperCase() === 'LONGTEXT'
+                            ){
+                                type_du_champ='LONGTEXT';
+                                break;
+                            }
+                        }
+                    }
+                }
+                if(type_du_champ === 'LONGTEXT'){
+                    t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '.' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : (lignes[numero_de_ligne][' + i + ']===null?null:lignes[numero_de_ligne][' + i + '].substr(0,200))';
+                }else{
+                    t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '.' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : lignes[numero_de_ligne][' + i + ']';
+                }
                 if(i < obj3.tableau_des_champs_pour_select_js.length - 1){
                     t+=' ,';
                 }

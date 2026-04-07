@@ -3,7 +3,7 @@ class sources1{
       ref_select=116
       ref_insert=117
       ref_delete=118
-      ref_update=163
+      ref_update=308
       ref_liste_ecran=115
     */
     moi='sources1';

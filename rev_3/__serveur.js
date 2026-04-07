@@ -16,6 +16,7 @@ const __xst=/* statut */'__xst';
 const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
+let __liste_des_bases=[1];
 import {format as formater_la_date} from "jsr:@std/datetime";
 import {getCookies} from "https://deno.land/std/http/cookie.ts";
 import {crypto} from "jsr:@std/crypto";
@@ -47,6 +48,11 @@ console.log( '%c===============\n' , 'color:red;' );
 const m__gi1=await import( './' + repertoire_des_programmes + '__gi1_s.js?__version=' + __version );
 const le_port=_CA_ + 8000;
 console.log( '_CA_=' + _CA_ + ',repertoire_du_pgm_serveur=' + repertoire_du_pgm_serveur + ',le_port=' + le_port );
+try{
+    if(_CA_ > 2){
+        __liste_des_bases=JSON.parse( await Deno.readTextFile( './__fichiers_generes/__liste_des_bases.json' ) );
+    }
+} catch {}
 /*
   =====================================================================================================================
 */
@@ -160,7 +166,8 @@ const le_serveur=Deno.serve( {
             "chi_id_utilisateur" : 0 ,
             "chi_id_projet" : 0 ,
             "chp_nom_de_connexion_utilisateur" : '' ,
-            "__version" : __version
+            "__version" : __version ,
+            "__liste_des_bases" : __liste_des_bases
         };
         let options_generales={
             "set-cookie" : [] ,
@@ -269,7 +276,6 @@ const le_serveur=Deno.serve( {
             try{
                 /* __gi1.ma_trace1(donnees_recues.__xac); */
                 let ret=await __gi1.appel_fonction( mat , 1 , donnees_recues , donnees_retournees , options_generales );
-                /* __gi1.ma_trace1('donnees_retournees',donnees_retournees); */
             }catch(eeeee){
                 console.log( 'eeeee=' , eeeee );
             }
@@ -285,9 +291,9 @@ const le_serveur=Deno.serve( {
         }
         /* options_http.headers=headers; */
         let entetes_reponse_http={"headers" : /* "status" : 200, */headers};
-        for(let i in options_generales.bdd_ouvertes){
+        for(let ref_base in options_generales.bdd_ouvertes){
             try{
-                await options_generales.bdd_ouvertes[i].base.close();
+                await options_generales.bdd_ouvertes[ref_base].base.close();
             } catch {}
         }
         if(__deverminage > 0){
@@ -300,7 +306,6 @@ const le_serveur=Deno.serve( {
             }
         }
         options_generales=null;
-        /* __gi1.ma_trace1(options_http); */
         return(new Response( JSON.stringify( donnees_retournees ) , entetes_reponse_http ));
         /*  */
     }} );

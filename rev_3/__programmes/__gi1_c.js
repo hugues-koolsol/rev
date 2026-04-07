@@ -20,7 +20,7 @@ const __xac='__xac';
   initialisation_des_zones
   afficher_les_zones
   construire_navigation_pour_liste
-  affiche_sous_fenetre1
+  popup_sous_fenetre_lien_parent1
   quand_click
   envoyer_un_message_au_worker
 */
@@ -31,16 +31,18 @@ class __gi1{
     moi='__gi1';
     _CA_=0;
     __version='';
-    css_dimensions={
-         /*  */
-        "h_barre" : 0 ,
-        "t_padding" : 0 ,
-        "hauteur_max_textarea" : 80 ,
-        "t_border" : 0 ,
-        "t_police" : 0 ,
-        "t_boutons_carres" : 0 ,
-        "t_padding_de_input" : 0
-    };
+    /*#
+      css_dimensions={
+          "h_barre" : 0 ,
+          "t_padding" : 0 ,
+          "hauteur_max_textarea" : 80 ,
+          "t_border" : 0 ,
+          "t_police" : 0 ,
+          "t_boutons_carres" : 0 ,
+          "t_padding_de_input" : 0 ,
+          "t_rayon_de_bouton" : 0
+      };
+    */
     stockage_local={};
     #__worker=null;
     #chi_id_utilisateur=0;
@@ -73,6 +75,8 @@ class __gi1{
     __deverminage=0;
     __xsi={0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []};
     #date_derniere_navigation=performance.now();
+    #liste_des_appels_au_serveur=[];
+    #changement_hash_par_programme=false;
     /*
       =============================================================================================================
     */
@@ -101,6 +105,10 @@ class __gi1{
                 if(e.clientX < dim.left || e.clientX > dim.right || e.clientY < dim.top || e.clientY > dim.bottom){
                     try{
                         if( typeof e.target['close'] === 'function'){
+                            try{
+                                document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
+                                e.target.removeAttribute( 'style' );
+                            } catch {}
                             e.target.close();
                         }
                     } catch {}
@@ -125,6 +133,7 @@ class __gi1{
             return({"__xst" : __xer});
         }.bind( this );
         this.#__worker.onmessage=function( le_message_recu_du_worker ){
+            this.#liste_des_appels_au_serveur.pop();
             let obj1=this.#traite_message_recupere_du_worker( le_message_recu_du_worker );
             if(obj1.__xst !== __xsu){
                 this.affiche_les_messages();
@@ -132,17 +141,18 @@ class __gi1{
             }
             let obj2=this.#apres_traite_message_recupere_du_worker( le_message_recu_du_worker );
         }.bind( this );
-        this.#__worker.postMessage( {
-                "__xac" : 'pm1(m1(n1(__gi1),f1(init0())))' ,
-                "__xva" : {
-                    "__href" : decodeURIComponent( window.location.href ) ,
-                    "__hash" : decodeURIComponent( window.location.hash ) ,
-                    "csrfToken" : this.getCookie( "csrf_token" ) ,
-                    "__parametres" : this.stockage_local['parametres']
-                }
-            } );
+        let message_a_envoyer={
+            "__xac" : 'pm1(m1(n1(__gi1),f1(init0())))' ,
+            "__xva" : {
+                "__href" : decodeURIComponent( window.location.href ) ,
+                "__hash" : decodeURIComponent( window.location.hash ) ,
+                "csrfToken" : this.getCookie( "csrf_token" ) ,
+                "__parametres" : this.stockage_local['parametres']
+            }
+        };
+        this.envoyer_un_message_au_worker( message_a_envoyer );
         window.addEventListener( 'hashchange' , ( event ) => {
-                if(performance.now() - this.#date_derniere_navigation > 125){
+                if(performance.now() - this.#date_derniere_navigation > 125 && this.#changement_hash_par_programme === false){
                     /*
                       si l'url est changée manuellement 
                       et que l'écart de temps entre la dernière navigation et maintenant est supérieure à 125 ms
@@ -150,8 +160,10 @@ class __gi1{
                     */
                     let action=window.location.hash.substr( 1 );
                     if(action.substr( 0 , 3 ) === 'pm1'){
-                        /* console.log('on poste'); */
-                        this.#__worker.postMessage( {"__xac" : action ,"__xva" : {"__parametres" : this.stockage_local['parametres']}} );
+                        console.log( '%cHASH change ' + (performance.now() - this.#date_derniere_navigation) + ' ' + this.#liste_des_appels_au_serveur.length , 'background:black;color:white;' );
+                        this.#liste_des_appels_au_serveur.push( {"contexte" : 'hash'} );
+                        let message_a_envoyer={"__xac" : action ,"__xva" : {"__parametres" : this.stockage_local['parametres']}};
+                        this.envoyer_un_message_au_worker( message_a_envoyer );
                     }else{
                         let obj1=this.__rev1.rev_tm( action );
                         if(obj1.__xst !== __xsu){
@@ -161,7 +173,8 @@ class __gi1{
                         }
                         let obj2=this.__xac( obj1.__xva , 0 , null );
                     }
-                }} );
+                }
+                this.#changement_hash_par_programme=false;} );
     }
     /*
       =============================================================================================================
@@ -178,7 +191,7 @@ class __gi1{
         let le_message=par.data;
         this._CA_=le_message._CA_;
         if(this.__deverminage === 2){
-            console.log( le_message );
+            console.log( '%cdeverminage 2 __gi1_c' , 'background:black;color:white;' , le_message );
         }
         if(le_message.hasOwnProperty( '__version' ) && le_message.__version !== this.__version){
             let tt='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__gi1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
@@ -226,7 +239,7 @@ class __gi1{
                 txt+='Erreur coté serveur';
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : txt} );
             }
-            this.fermer_la_sous_fenetre();
+            /* this.fermer_la_sous_fenetre(); */
             this.affiche_les_messages();
             this.retablir_les_boutons_masques( le_message );
             return({"__xst" : __xer});
@@ -264,7 +277,7 @@ class __gi1{
             }
         }
         if(un_message_trouve === true){
-            this.affiche_les_messages();
+            this.affiche_les_messages( null , le_message );
             if(un_message_d_erreur_trouve === true){
                 return({"__xst" : __xer});
             }else{
@@ -289,7 +302,70 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    __xac( mat , d , données ){
+    supprime_l_exposant( num ){
+        if(num === null || num === undefined || num === ''){
+            throw new Error( "Invalid input: value is null, undefined, or empty." );
+        }
+        /* Convert to string to handle both number and string inputs */
+        let str=String( num );
+        /* If it's not in exponential notation, return as is */
+        if(!/e/i.test( str )){
+            return str;
+        }
+        /* Split into coefficient and exponent */
+        const [coeff,exp]=str.toLowerCase().split( 'e' );
+        const exponent=parseInt( exp , 10 );
+        /* Handle positive exponent */
+        if(exponent > 0){
+            let [intPart,fracPart='']=coeff.split( '.' );
+            fracPart=fracPart.padEnd( exponent , '0' );
+            return(intPart + fracPart.slice( 0 , exponent ) + (fracPart.slice( exponent ) || ''));
+        }else{
+            /* Handle negative exponent */
+            let [intPart,fracPart='']=coeff.split( '.' );
+            const zeros='0'.repeat( Math.abs( exponent ) - 1 );
+            return('0.' + zeros + intPart + fracPart);
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    utf8ToAscii( input ){
+        if( typeof input !== "string"){
+            throw new TypeError( "Input must be a string" );
+        }
+        /* Normalize to NFD form and remove diacritics */
+        /* Split letters and diacritics */
+        /* Remove diacritical marks */
+        /* Replace remaining non-ASCII with space */
+        if(input === ''){
+            return input;
+        }
+        if(this.est_num( input )){
+            console.log( 'String(input)=' + String( input ) );
+            return(this.supprime_l_exposant( input ).replace( /[^a-zA-Z0-9]+/g , ' ' ).trim());
+        }
+        let ret='';
+        if(false && this.__deverminage >= 2){
+            console.log( 'en entree : input=' + input );
+            ret=input.normalize( "NFD" );
+            console.log( 'ret normalize : ret=' + ret );
+            ret=ret.replace( /[\u0300-\u036f]/g , "" );
+            console.log( 'ret replace1 : ret=' + ret );
+            ret=ret.replace( /[^\x00-\x7F]/g , " " );
+            console.log( 'ret replace2 : ret=' + ret );
+            ret=ret.replace( /[^a-zA-Z0-9]+/g , ' ' );
+            ret=ret.trim();
+            console.log( 'ret final : ret="' + ret + '"' );
+        }else{
+            ret=input.normalize( "NFD" ).replace( /[\u0300-\u036f]/g , "" ).replace( /[^\x00-\x7F]/g , " " ).replace( /[^a-zA-Z0-9]+/g , ' ' ).trim();
+        }
+        return ret;
+    }
+    /*
+      =============================================================================================================
+    */
+    __xac( mat , d , données , evenement=null ){
         if(!Array.isArray( mat )){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : 'oops, on n\'a pas reçu une matrice dans __gi1.__xac() ' + this.nl2()} );
             this.affiche_les_messages();
@@ -308,6 +384,13 @@ class __gi1{
                     let fo1={};
                     let nombre_de_valeurs_a_envoyer=0;
                     let contient_des_fichier_a_televerser=false;
+                    let sur_table_virtuelle=false;
+                    for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                        if(mat[j][1] === 'sur_table_virtuelle' && mat[j][2] === 'f'){
+                            sur_table_virtuelle=true;
+                            break;
+                        }
+                    }
                     for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
                         if(mat[j][1] === 'co1' && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
                             co1=mat[j + 1][1];
@@ -325,6 +408,9 @@ class __gi1{
                                         fo1[co1][lst[k].id]=lst[k].checked;
                                         nombre_de_valeurs_a_envoyer++;
                                     }else if(lst[k].type && lst[k].type.toLowerCase() === 'file'){
+                                        /*
+                                          téléversement d'un fichier
+                                        */
                                         contient_des_fichier_a_televerser=true;
                                         const reader=new FileReader();
                                         let a=reader.readAsArrayBuffer( lst[k].files[0] );
@@ -357,7 +443,11 @@ class __gi1{
                                           }
                                         */
                                     }else{
-                                        fo1[co1][lst[k].id]=lst[k].value;
+                                        if(sur_table_virtuelle === true){
+                                            fo1[co1][lst[k].id]=this.utf8ToAscii( lst[k].value );
+                                        }else{
+                                            fo1[co1][lst[k].id]=lst[k].value;
+                                        }
                                         nombre_de_valeurs_a_envoyer++;
                                     }
                                 }
@@ -391,8 +481,9 @@ class __gi1{
                             */
                             let re_source=this.__rev1.matrice_vers_source_rev1( mat , j , false , j + 1 );
                             let cmd1='m1(' + re_source.__xva + ')';
-                            this.executer1( cmd1 , {"__fo1" : fo1 ,"__co1" : co1} );
+                            this.executer1( cmd1 , {"__fo1" : fo1 ,"__co1" : co1} , evenement );
                         }else if(mat[j][1] === 'co1' && mat[j][2] === 'f'){
+                        }else if(mat[j][1] === 'sur_table_virtuelle' && mat[j][2] === 'f'){
                         }else{
                             debugger;
                         }
@@ -430,7 +521,7 @@ class __gi1{
                     }
                 }
                 if(n1 !== '' && indice > 0){
-                    let ret1=this.m1( n1 , mat , indice , données );
+                    let ret1=this.m1( n1 , mat , indice , données , evenement );
                 }else{
                     debugger;
                     let re_source=this.__rev1.matrice_vers_source_rev1( mat , 0 , true , 1 );
@@ -457,7 +548,7 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    async m1( m1 , mat , d , __xva_param=null ){
+    async m1( m1 , mat , d , __xva_param=null , evenement=null ){
         let l01=mat.length;
         let dejà_importe=[];
         let f1='';
@@ -550,7 +641,13 @@ class __gi1{
                 for( let i=indice ; i < l01 ; i=mat[i][12] ){
                     try{
                         if( typeof this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]] === 'function'){
-                            let obj3=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param );
+                            /*
+                              appel du module déjà charge
+                            */
+                            let obj3=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param , evenement );
+                            /*
+                              appel du module déjà charge
+                            */
                             if(obj3 && obj3.then &&  typeof obj3.then === 'function'){
                                 /*
                                   si le module vient d'etre chargé, c'est une promesse
@@ -569,8 +666,7 @@ class __gi1{
                                     if(obj3.hasOwnProperty( '__xme' )){
                                         this.ajoute_message( {"__xst" : __xer ,"__xme" : obj3.__xme} );
                                     }else{
-                                        debugger;
-                                        this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
+                                        console.log( '%c' + this.nl2() , 'background:black;color:yellow;' );
                                     }
                                 }
                                 this.affiche_les_messages();
@@ -632,7 +728,11 @@ class __gi1{
                         return({"__xst" : __xer});
                     }
                 }
-                this.retablir_les_boutons_masques( __xva_param );
+                if(this.#liste_des_appels_au_serveur.length > 0){
+                    /* on ne rétablit pas les boutons car on attend le retour serveur */
+                }else{
+                    this.retablir_les_boutons_masques( __xva_param );
+                }
             }
         }
     }
@@ -768,6 +868,7 @@ class __gi1{
             return({"__xst" : __xer});
         }
         obj.__xva['__parametres']=this.stockage_local['parametres'];
+        this.#liste_des_appels_au_serveur.push( {"contexte" : 'envoyer_un_message_au_worker' ,"__xac" : obj.__xac} );
         this.#__worker.postMessage( obj );
     }
     /*
@@ -1000,9 +1101,14 @@ class __gi1{
             return({"__xst" : __xer});
         }
         elt.classList.add( 'yy_invisible' );
+        if(this.#liste_des_appels_au_serveur.length > 0){
+            this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Un appel au serveur est déjà en cours'} );
+            this.affiche_les_messages();
+            return({"__xst" : __xer});
+        }
         this.#boutons_masques_avant_appel.push( elt );
         let mat=obj1.__xva;
-        let obj=this.__xac( mat , 0 , null );
+        let obj=this.__xac( mat , 0 , null , e );
         if(obj.__xst === __xer){
             this.ajoute_message( {
                     "__xst" : __xer ,
@@ -1088,6 +1194,7 @@ class __gi1{
       =============================================================================================================
     */
     maj_hash( mat , d ){
+        this.#changement_hash_par_programme=true;
         let tmp=this.__rev1.matrice_vers_source_rev1( mat , 0 , true , 1 );
         /* console.log('dans maj_hash' + ' ' + tmp.__xva + ' this.maj_hash_init_fait=',this.maj_hash_init_fait ) */
         this.maj_hash_fait=true;
@@ -1167,13 +1274,14 @@ class __gi1{
       =============================================================================================================
     */
     #faire_disparaitre_les_messages_OK( e ){
-        /* console.log( '#faire_disparaitre_les_messages_OK' ); */
         let au_moins_un_a_garder=false;
         this.#timeout_de_dispatition_de_message=null;
-        let rac=document.getElementById( 'vv_messages' );
+        let rac=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+        if(rac === null){
+            rac=document.getElementById( 'vv_messages' );
+        }
         let lst=rac.getElementsByTagName( 'div' );
         let a_supprimer=[];
-        /* console.log(lst); */
         for( let i=0 ; i < lst.length ; i++ ){
             if(lst[i].parentNode === rac){
                 if(lst[i].id && lst[i].id === 'vv_supprimer_les_messages'){
@@ -1246,10 +1354,14 @@ class __gi1{
       =============================================================================================================
     */
     agrandir_la_zone_message(){
-        if(document.getElementById( 'vv_messages' ).style.maxHeight !== '70vh'){
-            document.getElementById( 'vv_messages' ).style.maxHeight='70vh';
+        let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+        if(a1 === null){
+            a1=document.getElementById( 'vv_messages' );
+        }
+        if(a1.style.maxHeight !== '70vh'){
+            a1.style.maxHeight='70vh';
         }else{
-            document.getElementById( 'vv_messages' ).style.maxHeight='20vh';
+            a1.style.maxHeight='20vh';
         }
         return({"__xst" : __xsu});
     }
@@ -1257,8 +1369,12 @@ class __gi1{
       =============================================================================================================
     */
     supprimer_les_messages( mat ){
-        document.getElementById( 'vv_messages' ).innerHTML='';
-        document.getElementById( 'vv_messages' ).style.visibility='hidden';
+        let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+        if(a1 === null){
+            a1=document.getElementById( 'vv_messages' );
+        }
+        a1.innerHTML='';
+        a1.style.visibility='hidden';
         return({"__xst" : __xsu});
     }
     /*
@@ -1277,7 +1393,10 @@ class __gi1{
         }
         try{
             let t='';
-            let a1=document.getElementById( 'vv_messages' );
+            let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+            if(a1 === null){
+                a1=document.getElementById( 'vv_messages' );
+            }
             let la_classe=this.est_num( obj.__xst ) ? ( 'yy__' + obj.__xst ) : ( 'yy' + obj.__xst );
             if(obj.hasOwnProperty( 'lig_col' )){
                 t+='<div';
@@ -1302,7 +1421,7 @@ class __gi1{
                 let temp=document.createElement( 'div' );
                 temp.setAttribute( 'class' , la_classe );
                 temp.innerHTML=t;
-                document.getElementById( 'vv_messages' ).insertBefore( temp , document.getElementById( 'vv_messages' ).firstChild );
+                a1.insertBefore( temp , document.getElementById( 'vv_messages' ).firstChild );
                 this.ajoute_les_evenements_aux_boutons();
             }
         }catch(e2){
@@ -1318,25 +1437,43 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    affiche_les_messages( obj=null ){
+    affiche_les_messages( obj=null , le_message_du_serveur=null ){
         if(obj !== null){
             this.ajoute_message( obj );
         }
-        let lst=document.getElementById( 'vv_messages' ).getElementsByTagName( 'div' );
+        let dans_sous_fenetre=true;
+        let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+        if(a1 === null){
+            a1=document.getElementById( 'vv_messages' );
+            dans_sous_fenetre=false;
+        }
+        let lst=a1.getElementsByTagName( 'div' );
         for( let i=lst.length - 1 ; i >= 0 ; i-- ){
             if(lst[i].id === "vv_supprimer_les_messages"){
                 lst[i].remove();
                 break;
             }
         }
-        if(document.getElementById( 'vv_messages' ).innerHTML === ''){
+        if(a1.innerHTML === ''){
+            let texte_a_afficher='rien à dire :-)';
+            if(le_message_du_serveur !== null){
+                let cumul='';
+                for(let i in le_message_du_serveur.__xsi){
+                    for(let j in le_message_du_serveur.__xsi[i]){
+                        cumul+='<br />' + le_message_du_serveur.__xsi[i];
+                    }
+                }
+                if(cumul != ''){
+                    texte_a_afficher=cumul.substr( 6 );
+                }
+            }
             let vv_supprimer_les_messages=document.createElement( 'div' );
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
             vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
             vv_supprimer_les_messages.style.position='sticky';
-            vv_supprimer_les_messages.innerHTML='Rien à dire';
+            vv_supprimer_les_messages.innerHTML=texte_a_afficher;
             vv_supprimer_les_messages.style.top='0';
-            document.getElementById( 'vv_messages' ).insertBefore( vv_supprimer_les_messages , document.getElementById( 'vv_messages' ).firstChild );
+            a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
         }else{
             let vv_supprimer_les_messages=document.createElement( 'div' );
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
@@ -1344,17 +1481,24 @@ class __gi1{
             vv_supprimer_les_messages.style.position='sticky';
             vv_supprimer_les_messages.style.top='0';
             let t='';
-            let le_svg_masquer='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35 0.6077  70 65.3923"><g fill="none" fill-rule="evenodd"><path fill="#FF0000" d=" M 17 39 C 11 39 5 43 4 49 C 1 48 -2 48 -5 49 C -6 43 -11 39 -18 39 C -25 39 -31 45 -31 52 C -31 60 -25 66 -18 66 C -11 66 -5 60 -4 53 C -3 53 0 51 4 53 C 4 60 10 66 17 66 C 25 66 31 60 31 52 C 31 45 25 39 17 39 Z M -18 43 C -12 43 -8 47 -8 52 C -8 58 -12 62 -18 62 C -23 62 -27 58 -27 52 C -27 47 -23 43 -18 43 Z M 17 43 C 23 43 27 47 27 52 C 27 58 23 62 17 62 C 12 62 8 58 8 52 C 8 47 12 43 17 43 Z M 35 31 H -35 V 35 H 35 V 31 Z M 13 3 C 12 1 12 0 9 1 L 0 4 L 0 4 L -9 1 C -11 0 -12 1 -13 3 L -22 27 H 23  L 13 3 Z"></path></g></svg>';
             t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__gi1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
-            t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__gi1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + this.les_svg.retrecir + '</div>';
-            t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__gi1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + le_svg_masquer + '</div>';
+            if(dans_sous_fenetre === false){
+                t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__gi1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + this.les_svg.retrecir + '</div>';
+                t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__gi1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+            }
             vv_supprimer_les_messages.innerHTML=t;
-            document.getElementById( 'vv_messages' ).insertBefore( vv_supprimer_les_messages , document.getElementById( 'vv_messages' ).firstChild );
+            a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
             this.ajoute_les_evenements_aux_boutons();
+            if(dans_sous_fenetre === true){
+                if(a1.innerHTML.indexOf( 'class="yy__0"' ) >= 0 || a1.innerHTML.indexOf( 'class="yy__2"' ) >= 0){
+                    try{
+                        document.getElementById( 'vv_sous_fenetre1' ).scrollTo( {"top" : 0 ,"left" : 0 ,"behavior" : "smooth"} );
+                    } catch {}
+                }
+            }
         }
         try{
-            let a1=document.getElementById( 'vv_messages' ).innerHTML;
-            document.getElementById( 'vv_messages' ).style.visibility='visible';
+            a1.style.visibility='visible';
             this.ajoute_les_evenements_aux_boutons();
         }catch(e2){}
         if(this.#timeout_de_dispatition_de_message === null){
@@ -1444,7 +1588,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=le_message_du_serveur.__xva[xva];
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1453,7 +1597,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=document.getElementById( valeur_de_champ ).value;
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1462,7 +1606,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=valeur_constante;
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1470,7 +1614,7 @@ class __gi1{
             try{
                 document.getElementById( id ).value=valeur_constante;
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1478,7 +1622,7 @@ class __gi1{
             try{
                 document.getElementById( id ).style[nom_du_style]=document.getElementById( valeur_de_champ ).value + dimension;
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1492,7 +1636,7 @@ class __gi1{
             try{
                 document.getElementById( id ).classList.remove( nom_de_la_classe );
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1508,7 +1652,7 @@ class __gi1{
                     } catch {}
                 }
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1516,7 +1660,7 @@ class __gi1{
             console.log( 'Aucune action pour la matrice\n' , 'background:yellow;color:yellow;' , mat );
             /*
               debugger
-              this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + __gi1.nl2()});
+              this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + this.nl2()});
               this.affiche_les_messages();
               return {__xst:__xer};
             */
@@ -1540,6 +1684,15 @@ class __gi1{
             t=t.replace( /liste des/ , '⬱' );
             document.getElementById( 'vv_titre1' ).innerText=t;
         } catch {}
+        let a=document.getElementById( 'vv_bouton_retour_a_la_liste' );
+        if(a){
+            let b=a.getBoundingClientRect();
+            if(b.x < 0){
+                try{
+                    a.style.marginLeft='0px';
+                } catch {}
+            }
+        }
     }
     /*
       =============================================================================================================
@@ -1589,7 +1742,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=le_message_du_serveur.__xva[xva];
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1598,7 +1751,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=document.getElementById( valeur_de_champ ).value;
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1607,7 +1760,7 @@ class __gi1{
                 document.getElementById( id ).innerHTML=valeur_constante;
                 this.ajoute_les_evenements_aux_boutons();
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1615,7 +1768,7 @@ class __gi1{
             try{
                 document.getElementById( id ).value=valeur_constante;
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1623,7 +1776,7 @@ class __gi1{
             try{
                 document.getElementById( id ).style[nom_du_style]=document.getElementById( valeur_de_champ ).value + dimension;
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1633,7 +1786,7 @@ class __gi1{
             }catch(e){
                 console.log( '%cla zone ' + id + ' n\'a pa élé trouvée' , 'background:yellow;' );
                 /*
-                  this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + __gi1.nl2(e)});
+                  this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + this.nl2(e)});
                   this.affiche_les_messages();
                   return {__xst:__xer};
                 */
@@ -1647,7 +1800,7 @@ class __gi1{
                     } catch {}
                 }
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1664,7 +1817,7 @@ class __gi1{
                     } catch {}
                 }
             }catch(e){
-                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + __gi1.nl2( e )} );
+                this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
                 return({"__xst" : __xer});
             }
@@ -1672,11 +1825,27 @@ class __gi1{
             console.log( 'Aucune action pour la matrice\n' , 'background:yellow;color:yellow;' , mat );
             /*
               debugger
-              this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + __gi1.nl2()});
+              this.ajoute_message({ __xst : __xer, __xme : 'Erreur de mise à jour du contenu ' + this.nl2()});
               this.affiche_les_messages();
               return {__xst:__xer};
             */
         }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    exemple_de_message( mat , d ){
+        let numero=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'numero' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                numero=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        numero=numero >= 0 && numero <= 4 ? ( numero ) : ( 0 );
+        this.ajoute_message( {"__xst" : numero ,"__xme" : 'exemple de message ' + numero + ' ' + parseInt( performance.now() , 10 )} );
+        this.affiche_les_messages();
         return({"__xst" : __xsu});
     }
     /*
@@ -1696,12 +1865,21 @@ class __gi1{
         t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='<img src="./f0?n0=1x1_blanc_2.png" style="display:inline-block;width:var(--t_police);margin:0;" />';
         t+='</div>';
-        t+='<div style="display:flex;">\r\n';
-        for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
-            t+='this.stockage_local[\'parametres\'][\'--bidon\'].valeur ' + i + '<br />';
+        t+='<div style="margin-top:20px;">';
+        for(let i in this.les_svg){
+            t+='<div style="display:inline-block;width:' + (2 * this.css_dimensions.t_police) + 'px;height:' + (2 * this.css_dimensions.t_police) + 'px;">' + this.les_svg[i] + '</div>';
         }
         t+='</div>\r\n';
-        /* t+='<input type="text" />'; */
+        t+='<div>\r\n';
+        for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
+            t+='<span>&nbsp;bidon=' + i + '</span><br />';
+            if(i === 20){
+                for( let j=0 ; j <= 4 ; j++ ){
+                    t+='<div class="rev_bouton yy__' + j + '" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
+                }
+            }
+        }
+        t+='</div>\r\n';
         this.maj_contenu_principal( t );
         this.activer_menu( '-1' );
         this.maj_hash( mat , 0 );
@@ -1991,6 +2169,7 @@ class __gi1{
         }else{
             /* nouvel accès */
         }
+        this.__deverminage=this.stockage_local['parametres']['__deverminage'].valeur;
     }
     /*
       =============================================================================================================
@@ -2095,7 +2274,8 @@ class __gi1{
             "t_border" : val_border ,
             "t_police" : val_police ,
             "t_boutons_carres" : taille_bouton_carre ,
-            "t_padding_de_input" : val_padding_de_input
+            "t_padding_de_input" : val_padding_de_input ,
+            "t_rayon_b" : t_rayon_b
         };
         let t='';
         t+='*,*::before,*::after{box-sizing:border-box;}';
@@ -2438,7 +2618,7 @@ class __gi1{
         t+='.yy_element_actif_donc_masque{visibility:hidden;}';
         t+='.yy__OK{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;}';
         t+='h1,h2,h3,h4,h5,h6{text-shadow:#ccc 1px 1px 1px;text-align:center;color:red;margin:0 auto;}';
-        t+='h1{font-size:1.6em;margin-bottom:0.6em;}';
+        t+='h1{font-size:1.6em;margin-bottom:0.6em;line-height:1.3em;text-wrap-style:balance;}';
         t+='h2{font-size:1.5em;margin-bottom:0.5em;}';
         t+='h3{font-size:1.4em;margin-bottom:0.4em;}';
         t+='h4{font-size:1.3em;margin-bottom:0.3em;}';
@@ -2704,9 +2884,10 @@ class __gi1{
         t+='}';
         t+='.yy_btn_retour_liste{';
         t+='    opacity: 0.7;';
-        t+='    transform: translate(0px,var(--t_marge_hb_plus));';
         t+='    text-shadow: none;';
         t+='    font-weight: 100;';
+        t+='    position: fixed;';
+        t+='    margin-left:-1.6em;';
         t+='}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
@@ -2809,14 +2990,14 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    executer1( rev , données=null ){
+    executer1( rev , données=null , evenement ){
         let obj1=this.__rev1.rev_tm( rev );
         if(obj1.__xst !== __xsu){
             __gi1.ajoute_message( {"__xst" : __xer ,"__xme" : __gi1.nl2()} );
             this.affiche_les_messages();
             return({"__xst" : __xer});
         }
-        this.__xac( obj1.__xva , 0 , données );
+        this.__xac( obj1.__xva , 0 , données , evenement );
         return({"__xst" : __xsu});
     }
     /*
@@ -2920,124 +3101,6 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    afficher_les_zones( nz ){
-        let tab=['vv_ecran_liste','vv_ecran_creation','vv_ecran_suppression','vv_ecran_modification','vv_ecran_visualisation'];
-        for( let i=0 ; i < tab.length ; i++ ){
-            /* les éléments qui commencent par */
-            let lst=document.querySelectorAll( '[id^="' + tab[i] + '"]' );
-            if(tab[i] === nz){
-                for( let j=0 ; j < lst.length ; j++ ){
-                    try{
-                        lst[j].style.display='';
-                    }catch(e){
-                        debugger;
-                    }
-                }
-            }else{
-                for( let j=0 ; j < lst.length ; j++ ){
-                    try{
-                        if(lst[j].id.indexOf( 'boutons' ) < 0){
-                            lst[j].innerHTML='';
-                        }
-                        lst[j].style.display='none';
-                    }catch(e){
-                        debugger;
-                    }
-                }
-            }
-        }
-    }
-    /*
-      =============================================================================================================
-    */
-    afficher_le_titre_des_zones( nom_de_la_zone , nom_de_le_methode_entree , préfixe_titre , id_element , nom_de_la_classe_js ){
-        let a=document.getElementById( nom_de_la_zone );
-        if(a === null){
-            this.initialisation_des_zones( '' + nom_de_la_classe_js + '' );
-        }
-        a=document.getElementById( 'vv_titre_de_la_page' );
-        let bouton_retour='<div title="retour à la liste" data-rev_click="m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))" class="rev_bouton rev_b_svg yy_btn_retour_liste" >' + this.les_svg.lst_des_elts + '</div>';
-        let sujet='modification';
-        if('vv_ecran_modification' === nom_de_la_zone){
-            sujet='modification';
-        }else if('vv_ecran_suppression' === nom_de_la_zone){
-            sujet='suppression';
-        }else if('vv_ecran_visualisation' === nom_de_la_zone){
-            sujet='visualisation';
-        }else if('vv_ecran_creation' === nom_de_la_zone){
-            sujet='création';
-        }
-        let titre=sujet + ' ' + préfixe_titre + (id_element === null ? ( '' ) : ( ' (' + id_element + ')' ));
-        if(a.innerHTML !== bouton_retour + titre){
-            a.innerHTML=bouton_retour + titre;
-            this.afficher_les_zones( nom_de_la_zone );
-        }
-    }
-    /*
-      =============================================================================================================
-    */
-    initialisation_des_zones( nom_module ){
-        let o1='';
-        let tt1='';
-        o1+='<div>';
-        o1+=' <h1 id="vv_titre_de_la_page"></h1>';
-        /* liste */
-        o1+='<div id="vv_ecran_liste_zone_filtre" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_liste_zones_navigation1"  class="yy_navigation_liste"  style="display:none;">';
-        o1+='  <div id="vv_ecran_liste_boutons_avant" style="display:none;"></div>';
-        o1+='  <div id="vv_ecran_liste_bouton_precedents"  class="rev_bouton yy_suivant_precedent_inactif" data-rev_click="';
-        o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_precedents)))';
-        o1+='"';
-        o1+='    data-numero_page="-1" style="display:none;">&laquo;</div>';
-        o1+='  <div id="vv_ecran_liste_bouton_suivants" class="rev_bouton yy_suivant_precedent_inactif"  data-rev_click="';
-        o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))';
-        o1+='"';
-        o1+='    data-numero_page="-1" style="display:none;">&raquo;</div>';
-        o1+='  <div id="vv_ecran_liste_zone_pages" style="display:none;"></div>';
-        o1+='</div>';
-        o1+='<div id="vv_ecran_liste_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_liste_zone_complement" style="display:none;"></div>';
-        /*
-          création
-        */
-        o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
-        tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
-        o1+=' <div id="vv_ajouter_un_element_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter</div>';
-        tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
-        o1+=' <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter et revenir à la liste</div>';
-        o1+='</div>';
-        /*
-          visualisation
-        */
-        o1+='<div id="vv_ecran_visualisation_zone_contenu" style="display:none;"></div>';
-        /*
-          suppression
-        */
-        o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;">';
-        o1+='  <div class="rev_bouton yy__2" data-rev_click="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
-        o1+='</div>';
-        /*
-          modification
-        */
-        o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
-        o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="rev_bouton yy__3" data-indicateur_graphique="bouton_modification_zone" ';
-        o1+='   data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
-        o1+='   title="">modifier';
-        o1+='  </div>    ';
-        o1+='  <div class="rev_bouton yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
-        o1+='   data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
-        o1+='   title="">Modifier et retour à la liste';
-        o1+='  </div>';
-        o1+='</div>';
-        o1+='<div id="vv_ecran_modification_zone_complement" style="display:none;"></div>';
-        this.maj_contenu_principal( o1 );
-    }
-    /*
-      =============================================================================================================
-    */
     est_num( mot ){
         if( typeof mot === 'number'){
             return true;
@@ -3119,32 +3182,6 @@ class __gi1{
                 } catch {}
                 let le_message='<b>' + libelle_erreur + '</b>' + texte_erreur + '^G ' + numero_de_ligne;
                 return le_message;
-                /*
-                  var nom_fichier=texte_erreur.match[ /\/[[^\/:]+]:/ ][1];
-                  nom_fonction='';
-                  if[texte_erreur.match[ / at [[^\.]+] \[/ ] === null]{
-                  if[texte_erreur.match[ / at [[^]+] \[/ ] === null]{
-                  if[texte_erreur.match[ /[[^]+]\/[[^]+]/ ][2] !== null]{
-                  nom_fonction='erreur javascript ' + texte_erreur.match[ /[[^]+]\/[[^]+]/ ][2];
-                  }
-                  }else{
-                  nom_fonction=texte_erreur.match[ / at [[^]+] \[/ ][1];
-                  }
-                  }else{
-                  nom_fonction=texte_erreur.match[ / at [[^\.]+] \[/ ][1];
-                  }
-                  var libelle_erreur='';
-                  try{
-                  libelle_erreur='<br />' + e.stack.toString[].split[ /\r\n|\n/ ][0];
-                  } catch {}
-                  var numero_de_ligne=modele_champ_erreur.exec[ texte_erreur ][1];
-                  
-                  return[[libelle_erreur == '' ? [ '' ] : [ '<b>' + libelle_erreur + '</b><br />' ]] + '^G ' + numero_de_ligne + ' ' + nom_fichier + ' ' + nom_fonction + ' '];
-                  /*                
-                  }else{
-                  /* console.error[ e_originale ]; 
-                */
-                return('Voir la console pour le numéro de ligne <br /> ' + e.stack.toString());
             }
         }else{
             var stack=e.stack.toString().split( /\r\n|\n/ );
@@ -3179,7 +3216,7 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , nom_de_module , fonction_liste , filtres , ref_zone=null , num_page=null ){
+    aller_a_la_page( mat , d , nom_de_module , fonction_liste , filtres , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
         let nom_de_zone='';
         if(ref_zone !== null){
             nom_de_zone=ref_zone;
@@ -3213,12 +3250,29 @@ class __gi1{
                 filtres[fonction_liste]={};
                 for( let i=0 ; i < lst.length ; i++ ){
                     if(lst[i].id){
-                        filtres[fonction_liste][lst[i].id]=lst[i].value;
+                        if(lst[i].value === ''){
+                        }else{
+                            if(est_table_virtuelle === true){
+                                filtres[fonction_liste][lst[i].id]=this.utf8ToAscii( lst[i].value );
+                                if(filtres[fonction_liste][lst[i].id].indexOf( '%' ) >= 0){
+                                    debugger;
+                                }
+                            }else{
+                                filtres[fonction_liste][lst[i].id]=lst[i].value;
+                            }
+                        }
                     }
                 }
                 let __fo1={};
                 __fo1[fonction_liste]=filtres[fonction_liste];
-                this.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + nom_de_module + '),f1(' + fonction_liste + '())))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : fonction_liste}} );
+                let option_de_13='';
+                if(de_13 !== ''){
+                    option_de_13='de_13(' + de_13 + ')';
+                }
+                this.envoyer_un_message_au_worker( {
+                        "__xac" : 'pm1(m1(n1(' + nom_de_module + '),f1(' + fonction_liste + '(' + option_de_13 + '))))' ,
+                        "__xva" : {"__fo1" : __fo1 ,"__co1" : fonction_liste}
+                    } );
             }else{
                 if(ref_zone == null){
                     setTimeout( ( a ) => {
@@ -3231,11 +3285,15 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    la_liste_est_vide(){
+    la_liste_est_vide( __nbEnregs=null ){
         let o1='';
         o1+='<table border="1">';
         o1+='<tr>';
-        o1+='<th class="yy__0" style="font-size:1.3rem;padding:5px;">la liste est vide</th>';
+        if(__nbEnregs !== null){
+            o1+='<th class="yy__0" style="font-size:1.3rem;padding:5px;line-height:1.1em;">veuillez renseigner les critères de recherche ( ' + __nbEnregs + ' enregistrements) </th>';
+        }else{
+            o1+='<th class="yy__0" style="font-size:1.3rem;padding:5px;">la liste est vide</th>';
+        }
         o1+='</tr>';
         o1+='</table>';
         return o1;
@@ -3243,7 +3301,27 @@ class __gi1{
     /*
       =============================================================================================================
     */
+    ma_trace1( ...p ){
+        if(this.__deverminage === 0){
+            return;
+        }
+        console.log( '%c===============================================================================================' , 'background-color:black;color:white;' );
+        let tab=(new Error()).stack.split( '\n' );
+        let e=tab[2];
+        console.log( '->' + e );
+        for(let a of p){
+            console.log( a );
+        }
+        console.log( '' );
+    }
+    /*
+      =============================================================================================================
+    */
     fermer_la_sous_fenetre( mat , d ){
+        try{
+            this.#la_sous_fenetre1.removeAttribute( 'style' );
+        } catch {}
+        document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
         this.#la_sous_fenetre1.close();
         return({"__xst" : __xsu});
     }
@@ -3278,7 +3356,18 @@ class __gi1{
     /*
       =============================================================================================================
     */
-    affiche_sous_fenetre1( mat , d ){
+    affiche_sous_fenetre1( le_cheml ){
+        let contenu_a_afficher='<div id="vv_les_messages_dans_la_sous_fenetre"></div>';
+        contenu_a_afficher+=le_cheml;
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.innerHTML=contenu_a_afficher;
+        vv_sous_fenetre1.showModal();
+        this.ajoute_les_evenements_aux_boutons( null );
+    }
+    /*
+      =============================================================================================================
+    */
+    popup_sous_fenetre_lien_parent1( mat , d ){
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'pm1' && mat[i][2] === 'f' && mat[i][8] > 0){
@@ -3320,9 +3409,160 @@ class __gi1{
     /*
       =============================================================================================================
     */
+    afficher_les_zones( nz ){
+        let tab=['vv_ecran_liste','vv_ecran_creation','vv_ecran_suppression','vv_ecran_modification','vv_ecran_visualisation'];
+        for( let i=0 ; i < tab.length ; i++ ){
+            /* les éléments qui commencent par */
+            let lst=document.querySelectorAll( '[id^="' + tab[i] + '"]' );
+            if(tab[i] === nz){
+                for( let j=0 ; j < lst.length ; j++ ){
+                    try{
+                        lst[j].style.display='';
+                    }catch(e){
+                        debugger;
+                    }
+                }
+            }else{
+                for( let j=0 ; j < lst.length ; j++ ){
+                    try{
+                        if(lst[j].id.indexOf( 'boutons' ) < 0){
+                            lst[j].innerHTML='';
+                        }
+                        lst[j].style.display='none';
+                    }catch(e){
+                        debugger;
+                    }
+                }
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_le_titre_des_zones( nom_de_la_zone , nom_de_le_methode_entree , préfixe_titre , id_element , nom_de_la_classe_js ){
+        let a=document.getElementById( nom_de_la_zone );
+        if(a === null){
+            this.initialisation_des_zones( '' + nom_de_la_classe_js + '' );
+        }
+        a=document.getElementById( 'vv_titre_de_la_page' );
+        let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="rev_bouton rev_b_svg yy_btn_retour_liste" data-rev_click="';
+        bouton_retour+='m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))';
+        bouton_retour+='">' + this.les_svg.lst_des_elts + '</div>';
+        let sujet='modification';
+        if('vv_ecran_modification' === nom_de_la_zone){
+            sujet='modification';
+        }else if('vv_ecran_suppression' === nom_de_la_zone){
+            sujet='suppression';
+        }else if('vv_ecran_visualisation' === nom_de_la_zone){
+            sujet='visualisation';
+        }else if('vv_ecran_creation' === nom_de_la_zone){
+            sujet='création';
+        }
+        let titre=sujet + ' ' + préfixe_titre + (id_element === null ? ( '' ) : ( ' (' + id_element + ')' ));
+        if(a.innerHTML !== bouton_retour + titre){
+            a.innerHTML=bouton_retour + titre;
+            this.afficher_les_zones( nom_de_la_zone );
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    initialisation_des_zones( nom_module ){
+        let o1='';
+        let tt1='';
+        o1+='<div>';
+        o1+=' <h1 id="vv_titre_de_la_page"></h1>';
+        /* liste */
+        o1+='<div id="vv_ecran_liste_zone_filtre" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_liste_zones_navigation1"  class="yy_navigation_liste"  style="display:none;">';
+        o1+='  <div id="vv_ecran_liste_boutons_avant" style="display:none;"></div>';
+        o1+='  <div id="vv_ecran_liste_bouton_precedents"  class="rev_bouton yy_suivant_precedent_inactif" data-rev_click="';
+        o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_precedents)))';
+        o1+='"';
+        o1+='    data-numero_page="-1" style="display:none;">&laquo;</div>';
+        o1+='  <div id="vv_ecran_liste_bouton_suivants" class="rev_bouton yy_suivant_precedent_inactif"  data-rev_click="';
+        o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))';
+        o1+='"';
+        o1+='    data-numero_page="-1" style="display:none;">&raquo;</div>';
+        o1+='  <div id="vv_ecran_liste_zone_pages" style="display:none;"></div>';
+        o1+='</div>';
+        o1+='<div id="vv_ecran_liste_zone_contenu" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_liste_zone_complement" style="display:none;"></div>';
+        /*
+          création
+        */
+        o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
+        tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
+        o1+=' <div id="vv_ajouter_un_element_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter</div>';
+        tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
+        o1+=' <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter et revenir à la liste</div>';
+        o1+='</div>';
+        /*
+          visualisation
+        */
+        o1+='<div id="vv_ecran_visualisation_zone_contenu" style="display:none;"></div>';
+        /*
+          suppression
+        */
+        o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;">';
+        o1+='  <div class="rev_bouton yy__2" data-rev_click="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
+        o1+='</div>';
+        /*
+          modification
+        */
+        o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
+        o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="rev_bouton yy__3" data-indicateur_graphique="bouton_modification_zone" ';
+        o1+='   data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
+        o1+='   title="">modifier';
+        o1+='  </div>    ';
+        o1+='  <div class="rev_bouton yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
+        o1+='   data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
+        o1+='   title="">Modifier et retour à la liste';
+        o1+='  </div>';
+        o1+='</div>';
+        o1+='<div id="vv_ecran_modification_zone_complement" style="display:none;"></div>';
+        this.maj_contenu_principal( o1 );
+    }
+    /*
+      =============================================================================================================
+    */
+    sous_liste_generique1( mat , d , le_message_du_serveur=null , that ){
+        if(le_message_du_serveur == null || !le_message_du_serveur.__xva.hasOwnProperty( that.fonction_liste )){
+            return({"__xst" : __xer});
+        }
+        let o1='';
+        let initialisation_fait=false;
+        let a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a === null){
+            this.initialisation_des_zones( that.moi );
+            initialisation_fait=true;
+        }
+        let le_titre='sélection ' + that.DUN_DUNE_ELEMENT_GERE;
+        a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a.innerHTML === le_titre){
+        }else{
+            if(initialisation_fait === false){
+                this.initialisation_des_zones( that.moi );
+                a=document.getElementById( 'vv_titre_de_la_page' );
+            }
+            a.innerHTML=le_titre;
+            this.afficher_les_zones( 'vv_ecran_liste' );
+        }
+        that.zones_filtres1( mat , d , le_message_du_serveur );
+        this.vv_ecran_liste_zones_navigation1( le_message_du_serveur , '' , that.fonction_liste );
+        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=that.zones_sous_liste1( le_message_du_serveur );
+        this.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     lien_parent( module1 , champ_fils , id_span_libelle ){
         let o1='';
-        o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__gi1),f1(affiche_sous_fenetre1(';
+        o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__gi1),f1(popup_sous_fenetre_lien_parent1(';
         o1+=' pm1(m1(n1(' + module1 + '),f1(sous_liste1(';
         o1+='  nom_champ_dans_parent1(' + champ_fils + ')';
         o1+='  nom_libelle_dans_parent1(' + id_span_libelle + ')';
@@ -3368,7 +3608,10 @@ class __gi1{
         "rond_vert1" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:lime;stroke-width:1;"></circle><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect></svg>' ,
         "lst_des_elts" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g stroke-linecap="round" fill="transparent" stroke="rgb(0, 0, 0)" stroke-linejoin="round" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:6;"><rect x="-50" y="-50" width="100" height="100" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -25 -35 C -16 -35 29 -35 35 -35 C 35 -32 35 -28 35 -25 C 27 -25 -20 -25 -25 -25 a 8 8 0 1 1 0 -10"></path><path d="M -24 -5 C -15 -5 30 -5 36 -5 C 36 -2 36 2 36 5 C 28 5 -19 5 -24 5 a 8 8 0 1 1 0 -10"></path><path d="M -24 25 C -15 25 30 25 36 25 C 36 28 36 32 36 35 C 28 35 -19 35 -24 35 a 8 8 0 1 1 0 -10"></path></g></svg>' ,
         "televerser" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"> <g transform="translate(-50 -50)" stroke-linejoin="miter"  stroke-linecap="square">  <path d=" M 8 8 L 78 8 L 93 23  L 93 92 L 8 92 L 8 8" style="stroke:rgb(0, 0, 0);fill:gray;stroke-width:6;fill-opacity:1;"></path>  <path d="M 20 13 L 20 16 " style="stroke:#424242;fill:dimgray;stroke-width:7;"></path>  <path  d="M 34 13 L 34 33 l 38 0 l 0 -20 l -38 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 22 44 L 22 87 l 56 0 l 0 -43 l -56 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 65 17L 65 29" style="stroke:#424242;fill:dimgray;stroke-width:8;"></path>  <path d="M 86 85L 86 85" style="stroke:lightgrey;fill:lightgrey;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 24 85L 76 85" style="stroke:red;fill:lightgrey;stroke-width:9;stroke-opacity:1;"></path>  <path d="M 29 50 L 72 50 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 61 L 72 61 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 72 L 72 72 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path> </g> <path d=" M -50 -50 L 50 -50 l 0 100 l -100 0 l 0 -100 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path> <path d=" M 0 -32  C 0 -25 0 19 0 30 L 18 9 H -18 L 0 30" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:yellow;fill:yellow;stroke-width:10;"></path></svg>' ,
-        "recharger_la_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 255, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M 38 10 A 40 39 0 1 1 38 -10 L 21 -17  L 38 -10 L 38 -31" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:10;"></path></svg>'
+        "recharger_la_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 255, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M 38 10 A 40 39 0 1 1 38 -10 L 21 -17  L 38 -10 L 38 -31" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:10;"></path></svg>' ,
+        "voir" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50.915 -50  101.83 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><circle cx="20" cy="9" r="9" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle><ellipse cx="-25" cy="0" rx="20" ry="38" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(10 0 0 )" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></ellipse><ellipse cx="25" cy="0" rx="20" ry="38" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(-10 0 0 )" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></ellipse><circle cx="-20" cy="9" r="9" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle></svg>' ,
+        "calendrier" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -40 -40 L 40 -40 l 0 80 l -80 0 v -80 m 0 20  h 80" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d="  m -17 -6   l 4 0   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 9 0   h 4 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;"></path><path d=" M -10 -30  H 6" stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -15 -45 V -42  M 15 -45 V -42" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:10;"></path></svg>' ,
+        "masquer" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g fill="none" fill-rule="evenodd"><path fill="#FF0000" d="M 22 5   C 14 5 6 10 5 17     C 1 16 -3 16 -6 17     C -8 10 -14 5 -23 5     C -32 5 -40 12 -40 21     C -40 31 -32 39 -23 39     C -14 39 -6 31 -5 22     C -4 22 0 20 5 22     C 5 31 13 39 22 39     C 32 39 40 31 40 21     C 40 12 32 5 22 5     Z M -23 10   C -15 10 -10 15 -10 21     C -10 29 -15 34 -23 34     C -30 34 -35 29 -35 21     C -35 15 -30 10 -23 10     Z M 22 10   C 30 10 35 15 35 21     C 35 29 30 34 22 34     C 15 34 10 29 10 21     C 10 15 15 10 22 10     Z M 45 -6   H -45       V -1       H 45       V -6       Z M 17 -41   C 15 -44 15 -45 12 -44  L 0 -40L 0 -40L -12 -44   C -14 -45 -15 -44 -17 -41  L -28 -11   H 30    L 17 -41   Z "></path></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>'
     };
 }
 /* __gi0 permet de fermer une sous fenetre */

@@ -20,8 +20,8 @@ class sql_412{
         const where0=` WHERE (\`T0\`.\`chp_provenance_rev\` = 'source'
          AND \`T0\`.\`chp_valeur_rev\` = 'p'
          AND \`T0\`.\`chp_type_rev\` = 'f'
-         AND \`T0\`.\`chx_source_rev\` IN ` + this.__gi1.__fnt1.sq0( par['T0_chx_source_rev'] ) + `
-         AND \`T0\`.\`chp_id_rev\` IN ` + this.__gi1.__fnt1.sq0( par['T0_chp_id_rev'] ) + `)`;
+         AND \`T0\`.\`chx_source_rev\` IN ` + par['T0_chx_source_rev'] + `
+         AND \`T0\`.\`chp_id_rev\` IN ` + par['T0_chp_id_rev'] + `)`;
         sql0+=where0;
         /* this.__gi1.ma_trace1('sql_412 sql0=',sql0); */
         let lignes=[];

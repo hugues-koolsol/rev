@@ -1,5 +1,17 @@
 {
-  "x_ecran_coordonnees1": 56,
-  "_connexion1": 0,
-  "__gi1": 0
+  "x_ecran_coordonnees1": {
+    "generale": false,
+    "id_autorisation": 56,
+    "autorisation_cote_client": 49
+  },
+  "_connexion1": {
+    "generale": true,
+    "id_autorisation": 0,
+    "autorisation_cote_client": true
+  },
+  "__gi1": {
+    "generale": true,
+    "id_autorisation": 0,
+    "autorisation_cote_client": true
+  }
 }

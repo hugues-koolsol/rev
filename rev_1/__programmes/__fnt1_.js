@@ -171,11 +171,6 @@ class __fnt1{
                 this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir une nombre avec une virgule ( "," )' + this.__gi1.nl2()} );
                 return({"__xst" : __xer});
             }
-            /* si on a entré 10e21 */
-            if(v > 20){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être < 20 ' + this.__gi1.nl2()} );
-                return({"__xst" : __xer});
-            }
             return({"__xst" : __xsu});
         }
         let contient_virgule=false;
@@ -191,6 +186,7 @@ class __fnt1{
             }
         }
         if(contient_virgule === true){
+            /* c'est probablement un champ décimal */
             let tab=valeur.split( ',' );
             if(tab.length > 2){
                 this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit  contenir une virgule uniquement' + this.__gi1.nl2()} );

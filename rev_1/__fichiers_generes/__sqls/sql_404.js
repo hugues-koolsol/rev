@@ -15,7 +15,7 @@ class sql_404{
             sql0=`DELETE FROM tbl_travaux
               WHERE \`chp_etat_travail\` = ` + this.__gi1.__fnt1.sq1( par['chp_etat_travail'] ) + ` ;
             `;
-            /* this.__gi1.ma_trace1('sql_' , sql0 ); */
+            this.__gi1.ma_trace1('sql_' , sql0 );
             const res=await this.__db1.exec( sql0 );
             /* this.__gi1.ma_trace1('res=',res) */
             return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res});

@@ -17,7 +17,7 @@ class sql_405{
         const from0=`
           FROM  tbl_requetes T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_requete\` IN ` + this.__gi1.__fnt1.sq0( par['T0_chi_id_requete'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_requete\` IN ` + par['T0_chi_id_requete'] + ``;
         sql0+=where0;
     const order0=`
        ORDER BY  \`T0\`.\`chi_id_requete\` DESC`;

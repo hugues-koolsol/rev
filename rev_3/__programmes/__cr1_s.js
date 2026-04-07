@@ -9,6 +9,7 @@ const __xva='__xva';
 const __xsi='__xsi';
 const __xac='__xac';
 /*  */
+import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 class __cr1{
     moi='__cr1';
     __gi1=null;
@@ -17,13 +18,16 @@ class __cr1{
     */
     constructor( __gi1 ){
         this.__gi1=__gi1;
-        this.__gi1.ma_trace1( 'constructeur de __cr1' );
+        /* this.__gi1.ma_trace1( 'constructeur de __cr1' ); */
     }
     /*
       =============================================================================================================
     */
     async executer_job_cron( donnees_recues , donnees_retournees , options_generales ){
         try{
+            /*
+              on constitue la liste des projets 
+            */
             let __db1=await this.__gi1.ouvrir_bdd( 1 , donnees_retournees , options_generales );
             let criteres_400={"T0_chp_etat_travail" : 'en_file_d_attente' ,"quantitee" : 100};
             let tt400=await this.__gi1.sql_iii( 400 , criteres_400 , donnees_retournees , __db1 );
@@ -31,6 +35,7 @@ class __cr1{
                 this.__gi1.__xsi[__xer].push( this.__gi1.nl2() );
                 return({"__xst" : __xer});
             }
+            __db1.close();
             for( let i=0 ; i < tt400.__xva.length ; i++ ){
                 donnees_retournees.chi_id_utilisateur=tt400.__xva[i]['T0.chx_utilisateur_travail'];
                 donnees_retournees.chi_id_projet=tt400.__xva[i]['T0.chx_projet_travail'];
@@ -60,7 +65,9 @@ class __cr1{
                         "n_chp_etat_travail" : 'ko_termine' ,
                         "n_cht_log_travail" : JSON.stringify( this.__gi1.__xsi , null , 2 )
                     };
+                    let __db1=await this.__gi1.ouvrir_bdd( 1 , donnees_retournees , options_generales );
                     let tt401=await this.__gi1.sql_iii( 401 , criteres_401 , donnees_retournees , __db1 );
+                    __db1.close();
                     if(tt401[__xst] !== __xsu){
                         if(tt397['__xme'] !== ''){
                             this.__gi1.__xsi[__xer].push( tt397['__xme'] + ' [' + this.__gi1.nl2() );
@@ -80,7 +87,9 @@ class __cr1{
                     "n_chp_etat_travail" : 'ok_termine' ,
                     "n_cht_log_travail" : 'OK  executer_job_cron()'
                 };
+                let __db1=await this.__gi1.ouvrir_bdd( 1 , donnees_retournees , options_generales );
                 let tt401=await this.__gi1.sql_iii( 401 , criteres_401 , donnees_retournees , __db1 );
+                __db1.close();
                 if(tt401[__xst] !== __xsu){
                     if(tt401['__xme'] !== ''){
                         this.__gi1.__xsi[__xer].push( tt401['__xme'] + ' [' + this.__gi1.nl2() );
@@ -91,9 +100,9 @@ class __cr1{
                     return({"__xst" : __xer});
                 }
             }
-            __db1.close();
         }catch(e){
             this.__gi1.ma_trace1( 'raaaah' , e );
+            return({"__xst" : __xer});
         }
         return({"__xst" : __xsu});
     }

@@ -9,7 +9,7 @@ CREATE TABLE `tbl_revs`(
    table('tbl_revs'),
    genre_meta(table_de_base),permet_la_gestion_de('rev'),
    distinction_pour_liste('liste des revs'),
-   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(308,582))) 
+   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(334,554))) 
 */
     
             /*
@@ -597,11 +597,11 @@ CREATE TABLE `tbl_sources`(
             genre_meta(champ),
             nom_du_champ('cht_rev_source'),
             nom_bref_du_champ('rev'),abrege_du_champ('rev'),
-            typologie(),
+            typologie(chi),
             genre(98)
             )
             */
-             `cht_rev_source` TEXT DEFAULT  NULL
+             `cht_rev_source` LONGTEXT DEFAULT  NULL
     ,
     
             /*
@@ -609,11 +609,11 @@ CREATE TABLE `tbl_sources`(
             genre_meta(champ),
             nom_du_champ('cht_genere_source'),
             nom_bref_du_champ('genere'),abrege_du_champ('genere'),
-            typologie(),
+            typologie(chi),
             genre(97)
             )
             */
-             `cht_genere_source` TEXT DEFAULT  NULL
+             `cht_genere_source` LONGTEXT DEFAULT  NULL
     ,
     
             /*

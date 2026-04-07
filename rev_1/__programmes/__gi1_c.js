@@ -3525,7 +3525,7 @@ class __gi1{
         o1+='</div>';
         o1+='<div id="vv_ecran_modification_zone_complement" style="display:none;"></div>';
         this.maj_contenu_principal( o1 );
-    }    
+    }
     /*
       =============================================================================================================
     */
@@ -3540,7 +3540,7 @@ class __gi1{
             this.initialisation_des_zones( that.moi );
             initialisation_fait=true;
         }
-        let le_titre='sélection '+that.DUN_DUNE_ELEMENT_GERE
+        let le_titre='sélection ' + that.DUN_DUNE_ELEMENT_GERE;
         a=document.getElementById( 'vv_titre_de_la_page' );
         if(a.innerHTML === le_titre){
         }else{

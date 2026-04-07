@@ -14,6 +14,50 @@ class autorisations1{
     /*
       =============================================================================================================
     */
+    async ecrire_fichier_des_autorisations( donnees_retournees , tableau_des_auto , nom_du_fichier , chx_acces_autorisation , __db1 ){
+        let T1_chp_nom_source='';
+        for(let i in tableau_des_auto){
+            T1_chp_nom_source+=',\'' + i + '_c.js\'';
+        }
+        if(T1_chp_nom_source !== ''){
+            T1_chp_nom_source=T1_chp_nom_source.substr( 1 );
+            let criteres_select_163={
+                "T0_chx_acces_autorisation" : chx_acces_autorisation ,
+                "T1_chp_nom_source" : T1_chp_nom_source ,
+                 /* recherche des autorisations globales */
+                };
+            let tt163=await this.__gi1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_autorisation` , `T1`.`chp_nom_source`
+             FROM b1.tbl_autorisations T0
+             LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
+            
+            WHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+               AND `T1`.`chp_nom_source` IN (:T1_chp_nom_source))
+            ;
+            */
+            /*sql_inclure_fin*/ 163 , criteres_select_163 , donnees_retournees , __db1 );
+            if(tt163[__xst] !== __xsu){
+                this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() );
+                donnees_retournees.__xst=__xer;
+                return({"__xst" : __xer});
+            }
+            for(let i in tt163.__xva){
+                tableau_des_auto[tt163.__xva[i]['T1.chp_nom_source'].substr( 0 , tt163.__xva[i]['T1.chp_nom_source'].length - 5 )].autorisation_cote_client=tt163.__xva[i]['T0.chi_id_autorisation'];
+            }
+        }
+        try{
+            this.__gi1.file_put_contents( nom_du_fichier , JSON.stringify( tableau_des_auto , null , 2 ) );
+        }catch(e){
+            donnees_retournees.__xsi[__xal].push( '[' + this.__gi1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async gererer_les_autorisation_serveur( mat , d , donnees_recues , donnees_retournees , options_generales , __db1=null ){
         if(__db1 === null){
             __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
@@ -54,7 +98,7 @@ class autorisations1{
         }
         let autorisations_globales={};
         for(let k1 in tt151.__xva){
-            autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source'].substr( 0 , tt151.__xva[k1]['T0.chp_nom_source'].length - 5 )]=0;
+            autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source'].substr( 0 , tt151.__xva[k1]['T0.chp_nom_source'].length - 5 )]={"generale" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true};
         }
         let criteres_select_152={"T1_chp_nom_source" : /* on récupère les autorisations serveur */'%_s.js'};
         let tt152=await this.__gi1.sql_iii(
@@ -81,14 +125,13 @@ class autorisations1{
             let v1=tt152.__xva[k1];
             if(chx_acces_autorisation !== v1['T0.chx_acces_autorisation']){
                 if(chx_acces_autorisation === 0){
-                    tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]=v1['T0.chi_id_autorisation'];
+                    tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"generale" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0};
                 }else{
                     /* on concatène les autorisations générales et particulières array_merge , concat */
                     tableau_des_auto={ ...tableau_des_auto  , ...autorisations_globales };
                     let nom_du_fichier='../rev_' + donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + chx_acces_autorisation + '_.json';
-                    try{
-                        this.__gi1.file_put_contents( nom_du_fichier , JSON.stringify( tableau_des_auto , null , 2 ) );
-                    }catch(e){
+                    let ret=await this.ecrire_fichier_des_autorisations( donnees_retournees , tableau_des_auto , nom_du_fichier , chx_acces_autorisation , __db1 );
+                    if(ret.__xst !== __xsu){
                         donnees_retournees.__xsi[__xal].push( '[' + this.__gi1.nl2() + ']' );
                         return({"__xst" : __xer});
                     }
@@ -100,28 +143,27 @@ class autorisations1{
                         }
                     }
                     tableau_des_auto={};
-                    tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]=v1['T0.chi_id_autorisation'];
+                    tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"generale" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0};
                 }
                 chx_acces_autorisation=v1['T0.chx_acces_autorisation'];
             }else{
-                tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]=v1['T0.chi_id_autorisation'];
+                tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"generale" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0};
             }
         }
         if(chx_acces_autorisation > 1){
             tableau_des_auto={ ...tableau_des_auto  , ...autorisations_globales };
             let nom_du_fichier='../rev_' + donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + chx_acces_autorisation + '_.json';
-            try{
-                this.__gi1.file_put_contents( nom_du_fichier , JSON.stringify( tableau_des_auto , null , 2 ) );
-                for(let i in tt162.__xva){
-                    if(tt162.__xva[i]['T0.chi_id_acces'] === chx_acces_autorisation){
-                        /* marquer que l'accès est traité */
-                        tt162.__xva[i]['acces_ecrit']=true;
-                        break;
-                    }
-                }
-            }catch(e){
+            let ret=await this.ecrire_fichier_des_autorisations( donnees_retournees , tableau_des_auto , nom_du_fichier , chx_acces_autorisation , __db1 );
+            if(ret.__xst !== __xsu){
                 donnees_retournees.__xsi[__xal].push( '[' + this.__gi1.nl2() + ']' );
                 return({"__xst" : __xer});
+            }
+            for(let i in tt162.__xva){
+                if(tt162.__xva[i]['T0.chi_id_acces'] === chx_acces_autorisation){
+                    /* marquer que l'accès est traité */
+                    tt162.__xva[i]['acces_ecrit']=true;
+                    break;
+                }
             }
         }
         /*
@@ -130,9 +172,8 @@ class autorisations1{
         for(let i in tt162.__xva){
             if(!tt162.__xva[i].hasOwnProperty( 'acces_ecrit' )){
                 let nom_du_fichier='../rev_' + donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + tt162.__xva[i]['T0.chi_id_acces'] + '_.json';
-                try{
-                    this.__gi1.file_put_contents( nom_du_fichier , JSON.stringify( autorisations_globales , null , 2 ) );
-                }catch(e){
+                let ret=await this.ecrire_fichier_des_autorisations( donnees_retournees , tableau_des_auto , nom_du_fichier , tt162.__xva[i]['T0.chi_id_acces'] , __db1 );
+                if(ret.__xst !== __xsu){
                     donnees_retournees.__xsi[__xal].push( '[' + this.__gi1.nl2() + ']' );
                     return({"__xst" : __xer});
                 }
@@ -144,9 +185,8 @@ class autorisations1{
           __gi1_s.js, _connexion1_s.js
         */
         let nom_du_fichier='../rev_' + donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_0_.json';
-        try{
-            this.__gi1.file_put_contents( nom_du_fichier , JSON.stringify( autorisations_globales , null , 2 ) );
-        }catch(e){
+        let ret=await this.ecrire_fichier_des_autorisations( donnees_retournees , autorisations_globales , nom_du_fichier , 0 , __db1 );
+        if(ret.__xst !== __xsu){
             donnees_retournees.__xsi[__xal].push( '[' + this.__gi1.nl2() + ']' );
             return({"__xst" : __xer});
         }

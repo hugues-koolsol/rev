@@ -54,57 +54,6 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    async dezipper_un_fichier_dans_un_repertoire( chemin_fichier_zip , repertoire_en_sortie ){
-        /* Convertit un Deno.FsFile en WritableStream */
-        function fileWritableStream( file ){
-            return(new WritableStream( {
-                     write( chunk ){
-                        return(file.write( chunk ));
-                    }  ,
-                    
-                     close(){
-                        file.close();
-                    }  ,
-                    
-                     abort(){
-                        file.close();
-                    } 
-                
-                } ));
-        }
-        /* Ouvre le ZIP en streaming */
-        const zipFile=await Deno.open( chemin_fichier_zip , {"read" : true} );
-        const zipStream=zipFile.readable;
-        /* Initialise zip.js avec un stream */
-        const reader=new ZipReader( zipStream );
-        const entries=await reader.getEntries();
-        for(const entry of entries){
-            const fullPath=repertoire_en_sortie + '/' + entry.filename;
-            if(entry.directory){
-                await Deno.mkdir( fullPath , {"recursive" : true} );
-                continue;
-            }
-            /* Crée les dossiers si nécessaire */
-            const dir=fullPath.substring( 0 , fullPath.lastIndexOf( "/" ) );
-            await Deno.mkdir( dir , {"recursive" : true} );
-            /* Ouvre le fichier de sortie */
-            const outFile=await Deno.open( fullPath , {"write" : true ,"create" : true ,"truncate" : true} );
-            /* Transforme le fichier en WritableStream */
-            const writable=fileWritableStream( outFile );
-            /* Extraction en streaming */
-            await entry.getData?.( writable );
-            console.log( "Extracted:" , entry.filename );
-        }
-        try{
-            await reader.close();
-        } catch {}
-        try{
-            zipFile.close();
-        } catch {}
-    }
-    /*
-      =============================================================================================================
-    */
     async supprimer_fichier_sans_sauvegarde( chemin , donnees_retournees ){
         try{
             await Deno.remove( chemin );
@@ -211,6 +160,50 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    tester_longueur_de_champ_dans_genre( valeur , nom_champ ){
+        if(valeur === null || valeur === ''){
+            return({"__xst" : __xsu});
+        }
+        if(this.__gi1.est_num( valeur )){
+            let v=parseFloat( valeur );
+            /* si on a entré "3.4" 34  est différent de 30 ] */
+            if(v * 10 !== parseInt( v , 10 ) * 10){
+                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir une nombre avec une virgule ( "," )' + this.__gi1.nl2()} );
+                return({"__xst" : __xer});
+            }
+            return({"__xst" : __xsu});
+        }
+        let contient_virgule=false;
+        for( let i=0 ; i < valeur.length ; i++ ){
+            let c=valeur.substr( i , 1 );
+            if(c >= '0' && c <= '9' || c === ','){
+                if(c === ','){
+                    contient_virgule=true;
+                }
+            }else{
+                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir des chiffres et/ou des virgules' + this.__gi1.nl2()} );
+                return({"__xst" : __xer});
+            }
+        }
+        if(contient_virgule === true){
+            /* c'est probablement un champ décimal */
+            let tab=valeur.split( ',' );
+            if(tab.length > 2){
+                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit  contenir une virgule uniquement' + this.__gi1.nl2()} );
+                return({"__xst" : __xer});
+            }
+            let val1=parseInt( tab[0] , 10 );
+            let val2=parseInt( tab[1] , 10 );
+            if(val1 + val2 > 20){
+                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" contenir une longueur cumulée de 20' + this.__gi1.nl2()} );
+                return({"__xst" : __xer});
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     doit_contenir_n_caracteres( n , valeur , nom_champ ){
         if(valeur && valeur.length === n){
             return({"__xst" : __xsu});
@@ -252,6 +245,1305 @@ class __fnt1{
         }
         if(val < inf || val > sup){
             return({"__xst" : __xer ,"__xme" : mes_err});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    popup_horloge1( mat , d , x , evenement_navigateur ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }
+        }
+        if(nom_du_champ === ''){
+            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
+            return({"__xst" : __xer});
+        }
+        let ref_champ_heure=null;
+        try{
+            ref_champ_heure=document.getElementById( nom_du_champ );
+        } catch {}
+        if(ref_champ_heure === null){
+            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : '"' + nom_du_champ + '" non trouvé dans la page !'} );
+            return({"__xst" : __xer});
+        }
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        let dim=null;
+        if(evenement_navigateur && evenement_navigateur.target){
+            dim=evenement_navigateur.target.getBoundingClientRect();
+        }else{
+            dim=ref_champ_heure.getBoundingClientRect();
+        }
+        vv_sous_fenetre1.style.minWidth='auto';
+        vv_sous_fenetre1.style.maxWidth='none';
+        vv_sous_fenetre1.style.width='fit-content';
+        vv_sous_fenetre1.style.minHeight='auto';
+        vv_sous_fenetre1.style.maxHeight='none';
+        vv_sous_fenetre1.style.position='absolute';
+        vv_sous_fenetre1.style.top=parseInt( dim.top , 10 ) + 'px';
+        vv_sous_fenetre1.style.left=parseInt( dim.left , 10 ) + 'px';
+        vv_sous_fenetre1.style.margin='0';
+        vv_sous_fenetre1.style.padding='0';
+        vv_sous_fenetre1.style.borderRadius=this.__gi1.css_dimensions.t_rayon_b + 'px';
+        /*
+          affichage du calendrier 
+        */
+        let maintenant=new Date();
+        let heure_a_afficher=maintenant.getHours();
+        let minute_a_afficher=maintenant.getMinutes();
+        let seconde_a_afficher=maintenant.getSeconds();
+        if(ref_champ_heure.value !== ''){
+            let obj=this.heure_nulle_ou_comprise_entre( '00_00_00' , '23_59_59' , ref_champ_heure.value , nom_du_champ );
+            if(obj.__xst === __xsu){
+                heure_a_afficher=parseInt( ref_champ_heure.value.substr( 0 , 2 ) , 10 );
+                minute_a_afficher=parseInt( ref_champ_heure.value.substr( 3 , 2 ) , 10 );
+                seconde_a_afficher=parseInt( ref_champ_heure.value.substr( 6 , 2 ) , 10 );
+            }
+        }
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
+        vv_sous_fenetre1.showModal();
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_drop_horloge( mat , d ){
+        let l01=mat.length;
+        let zone_select='';
+        let nom_du_champ='';
+        let valeur=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'zone_select' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                zone_select=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }
+        }
+        if(zone_select === 'vv_option_heure'){
+            let val=parseInt( document.getElementById( zone_select ).value , 10 );
+            this.maj_heure1( nom_du_champ , val );
+        }else if(zone_select === 'vv_option_minute'){
+            let val=parseInt( document.getElementById( zone_select ).value , 10 );
+            this.maj_minute( nom_du_champ , val );
+        }else if(zone_select === 'vv_option_seconde'){
+            let val=parseInt( document.getElementById( zone_select ).value , 10 );
+            this.maj_seconde( nom_du_champ , val );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    definir_l_heure( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let valeur=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'valeur' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                valeur=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        this.maj_heure1( nom_du_champ , valeur );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_heure1( nom_du_champ , valeur ){
+        let sepa_heure=':';
+        let heure_a_afficher=valeur;
+        let minute_a_afficher=0;
+        let seconde_a_afficher=0;
+        let dt=new Date();
+        let t='';
+        let valeur_courante=document.getElementById( nom_du_champ ).value;
+        if(valeur_courante === ''){
+            heure_a_afficher=valeur;
+            t=((valeur < 10 ? ( '0' + valeur ) : ( valeur )) + sepa_heure) + '00' + sepa_heure + '00';
+        }else{
+            t=valeur < 10 ? ( '0' + valeur ) : ( valeur );
+            try{
+                minute_a_afficher=parseInt( valeur_courante.substr( 3 , 2 ) , 10 );
+            }catch{
+                minute_a_afficher=0;
+            }
+            try{
+                seconde_a_afficher=parseInt( valeur_courante.substr( 6 , 2 ) , 10 );
+            }catch{
+                seconde_a_afficher=0;
+            }
+            minute_a_afficher=minute_a_afficher > 59 ? ( 0 ) : ( minute_a_afficher );
+            minute_a_afficher=minute_a_afficher < 10 ? ( '0' + minute_a_afficher ) : ( minute_a_afficher );
+            seconde_a_afficher=seconde_a_afficher > 59 ? ( 0 ) : ( seconde_a_afficher );
+            seconde_a_afficher=seconde_a_afficher < 10 ? ( '0' + seconde_a_afficher ) : ( seconde_a_afficher );
+            t+=sepa_heure + minute_a_afficher + sepa_heure + seconde_a_afficher;
+        }
+        document.getElementById( nom_du_champ ).value=t;
+        let a=document.getElementById( 'vv_option_heure' );
+        let es=a.getElementsByTagName( 'option' );
+        for(let e in es){
+            if(e == valeur){
+                a.selectedIndex=valeur;
+                break;
+            }
+        }
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , parseInt( minute_a_afficher , 10 ) , parseInt( seconde_a_afficher , 10 ) ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    definir_la_minute( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let valeur=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'valeur' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                valeur=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        this.maj_minute( nom_du_champ , valeur );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_minute( nom_du_champ , valeur ){
+        let sepa_heure=':';
+        let heure_a_afficher=0;
+        let minute_a_afficher=valeur;
+        let seconde_a_afficher=0;
+        let dt=new Date();
+        let t='';
+        let valeur_courante=document.getElementById( nom_du_champ ).value;
+        if(valeur_courante === ''){
+            t='00' + sepa_heure + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + sepa_heure + '00';
+        }else{
+            t=valeur_courante.substr( 0 , 3 ) + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + valeur_courante.substr( 5 );
+            heure_a_afficher=parseInt( valeur_courante.substr( 0 , 2 ) , 10 );
+            seconde_a_afficher=parseInt( valeur_courante.substr( 6 , 2 ) , 10 );
+        }
+        document.getElementById( nom_du_champ ).value=t;
+        let a=document.getElementById( 'vv_option_minute' );
+        let es=a.getElementsByTagName( 'option' );
+        for(let e in es){
+            if(e == valeur){
+                a.selectedIndex=valeur;
+                break;
+            }
+        }
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    definir_la_seconde( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let valeur=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'valeur' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                valeur=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        this.maj_seconde( nom_du_champ , valeur );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_seconde( nom_du_champ , valeur ){
+        let sepa_heure=':';
+        let heure_a_afficher=0;
+        let minute_a_afficher=0;
+        let seconde_a_afficher=valeur;
+        let dt=new Date();
+        let t='';
+        let valeur_courante=document.getElementById( nom_du_champ ).value;
+        if(valeur_courante === ''){
+            t='00' + sepa_heure + (valeur < 10 ? ( '0' + valeur ) : ( valeur )) + sepa_heure + '00';
+        }else{
+            t=valeur_courante.substr( 0 , 6 ) + (valeur < 10 ? ( '0' + valeur ) : ( valeur ));
+            heure_a_afficher=parseInt( valeur_courante.substr( 0 , 2 ) , 10 );
+            minute_a_afficher=parseInt( valeur_courante.substr( 3 , 2 ) , 10 );
+        }
+        document.getElementById( nom_du_champ ).value=t;
+        let a=document.getElementById( 'vv_option_seconde' );
+        let es=a.getElementsByTagName( 'option' );
+        for(let e in es){
+            if(e == valeur){
+                a.selectedIndex=valeur;
+                break;
+            }
+        }
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ){
+        let o1='';
+        let maintenant=new Date();
+        let ref_champ_date=document.getElementById( nom_du_champ );
+        let annee_courante=maintenant.getFullYear();
+        var la_date_est_renseignee=false;
+        if(ref_champ_date.value !== ''){
+            annee_courante=parseInt( ref_champ_date.value.substr( 0 , 4 ) , 10 );
+        }
+        o1+='<style type="text/css">';
+        o1+='#vv_horloge td{';
+        o1+='  min-width:2em;';
+        o1+='  text-align:center;';
+        o1+='  border-width:' + this.__gi1.css_dimensions.t_border + 'px;';
+        o1+='  border-style:solid;';
+        o1+='  border-color:white;';
+        o1+='}';
+        o1+='</style>';
+        o1+='<table id="vv_horloge" border="0">';
+        /*
+          =====================================================================================================
+          les 3 dropdown
+        */
+        o1+='<tr style="box-shadow:none;">';
+        /* dropdown hh */
+        o1+='<td style="border-color:hotpink;" colspan="2">';
+        o1+='<select id="vv_option_heure" data-rev_change="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_heure),nom_du_champ(' + nom_du_champ + '))))">';
+        for( let i=0 ; i < 24 ; i++ ){
+            let sele1='';
+            if(heure_a_afficher === i){
+                sele1=' selected="true" ';
+            }
+            o1+='<option ' + sele1 + ' value="' + i + '">' + (i < 10 ? ( '0' + i ) : ( i )) + '</option>';
+        }
+        o1+='</select>';
+        o1+='</td>';
+        /* dropdown mm */
+        o1+='<td style="border-color:hotpink;" colspan="2">';
+        o1+='<select id="vv_option_minute" data-rev_change="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_minute),nom_du_champ(' + nom_du_champ + '))))">';
+        for( let i=0 ; i < 60 ; i++ ){
+            let sele1='';
+            if(minute_a_afficher === i){
+                sele1=' selected="true" ';
+            }
+            o1+='<option ' + sele1 + ' value="' + i + '">' + (i < 10 ? ( '0' + i ) : ( i )) + '</option>';
+        }
+        o1+='</select>';
+        o1+='</td>';
+        /* dropdown ss */
+        o1+='<td style="border-color:hotpink;" colspan="2">';
+        o1+='<select  id="vv_option_seconde" data-rev_change="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_seconde),nom_du_champ(' + nom_du_champ + '))))">';
+        for( let i=0 ; i < 60 ; i++ ){
+            let sele1='';
+            if(seconde_a_afficher === i){
+                sele1=' selected="true" ';
+            }
+            o1+='<option ' + sele1 + ' value="' + i + '">' + (i < 10 ? ( '0' + i ) : ( i )) + '</option>';
+        }
+        o1+='</select>';
+        o1+='</td>';
+        o1+='</tr>';
+        /*
+          =====================================================================================================
+          les 24 heures
+        */
+        for( let i=0 ; i < 24 ; i++ ){
+            if(i% 6 === 0){
+                o1+='<tr style="box-shadow:none;">';
+            }
+            o1+='<td style="border-color:red;">';
+            if(ref_champ_date.value !== '' && heure_a_afficher === i){
+                o1+='<span style="background:yellow;">' + (i < 10 ? ( '0' + i ) : ( i )) + '</span>';
+            }else{
+                o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(definir_l_heure(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'h">' + (i < 10 ? ( '0' + i ) : ( i )) + '</div>';
+            }
+            o1+='</td>';
+            if(i + 1% 6 === 0){
+                o1+='</tr>';
+            }
+        }
+        /*
+          =====================================================================================================
+          les 10 minutes
+        */
+        o1+='<tr style="box-shadow:none;">';
+        for( let i=0 ; i < 60 ; i+=10 ){
+            o1+='<td style="border-color:lime;">';
+            if(ref_champ_date.value !== '' && minute_a_afficher === i){
+                o1+='<span style="background:yellow;">' + (i < 10 ? ( '0' + i ) : ( i )) + '</span>';
+            }else{
+                o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(definir_la_minute(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'mn">' + (i < 10 ? ( '0' + i ) : ( i )) + '</div>';
+            }
+            o1+='</td>';
+            o1+='</td>';
+        }
+        o1+='</tr>';
+        /*
+          =====================================================================================================
+          les 10 secondes 
+        */
+        o1+='<tr style="box-shadow:none;">';
+        for( let i=0 ; i < 60 ; i+=10 ){
+            o1+='<td style="border-color:hotpink;">';
+            if(ref_champ_date.value !== '' && seconde_a_afficher === i){
+                o1+='<span style="background:yellow;">' + (i < 10 ? ( '0' + i ) : ( i )) + '</span>';
+            }else{
+                o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(definir_la_seconde(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'ss">' + (i < 10 ? ( '0' + i ) : ( i )) + '</div>';
+            }
+            o1+='</td>';
+        }
+        o1+='</tr>';
+        /*
+          les boutons du bas 
+        */
+        o1+='<tr style="box-shadow:none;">';
+        /*
+        */
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt yy__4" data-rev_click="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(0))))" title="nulle">Ø</div>';
+        o1+='</td>';
+        /*
+          maintenant hh mm ss
+        */
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(1))))" title="maintenant">mn</div>';
+        o1+='</td>';
+        /*
+        */
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(2))))" title="secondes à zéro">hm</div>';
+        o1+='</td>';
+        /*
+        */
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(3))))" title="minutes et secondes à zéro">00</div>';
+        o1+='</td>';
+        /*
+        */
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt yy__1" data-rev_click="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(4))))" title="valider">OK</div>';
+        o1+='</td>';
+        /*
+        */
+        o1+='</tr>';
+        o1+='</table>';
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
+    maintenant_hhmmss( mat , d ){
+        let sepa_heure=':';
+        let l01=mat.length;
+        let nom_du_champ='';
+        let option='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'option' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                option=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let tt=new Date();
+        let t='';
+        let heure_a_afficher=0;
+        let minute_a_afficher=0;
+        let seconde_a_afficher=0;
+        if(option === 0){
+            /* nulle */
+        }else if(option === 1){
+            t=(tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + sepa_heure + (tt.getMinutes() < 10 ? ( '0' + tt.getMinutes() ) : ( tt.getMinutes() )) + sepa_heure + (tt.getSeconds() < 10 ? ( '0' + tt.getSeconds() ) : ( tt.getSeconds() ));
+            heure_a_afficher=tt.getHours();
+            minute_a_afficher=tt.getMinutes();
+            seconde_a_afficher=tt.getSeconds();
+        }else if(option === 2){
+            t=((tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + sepa_heure + (tt.getMinutes() < 10 ? ( '0' + tt.getMinutes() ) : ( tt.getMinutes() )) + sepa_heure) + '00';
+            heure_a_afficher=tt.getHours();
+            minute_a_afficher=tt.getMinutes();
+            seconde_a_afficher=0;
+        }else if(option === 3){
+            t=((tt.getHours() < 10 ? ( '0' + tt.getHours() ) : ( tt.getHours() )) + sepa_heure) + '00' + sepa_heure + '00';
+            heure_a_afficher=tt.getHours();
+            minute_a_afficher=0;
+            seconde_a_afficher=0;
+        }else if(option === 4){
+            this.__gi1.fermer_la_sous_fenetre();
+            return({"__xst" : __xsu});
+        }
+        document.getElementById( nom_du_champ ).value=t;
+        this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        /* this.__gi1.fermer_la_sous_fenetre(); */
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    affiche_horloge1( le_chetemel ){
+        let a=this.getPageSize();
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.innerHTML=le_chetemel;
+        setTimeout( function( p ){
+                /* ajustement horizontal */
+                let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                let tt=vv_sous_fenetre1.getBoundingClientRect();
+                if(tt.right > p.width){
+                    let nouveau_left=Math.max( parseInt( vv_sous_fenetre1.style.left.replace( /px/ , '' ) , 10 ) - (tt.right - p.width) , 0 );
+                    if(nouveau_left >= 20){
+                        nouveau_left-=20;
+                    }
+                    if(nouveau_left <= 10){
+                        nouveau_left=0;
+                    }
+                    vv_sous_fenetre1.style.left=nouveau_left + 'px';
+                }
+                /* ajustement vertical */
+                setTimeout( function( p ){
+                        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                        let tt=vv_sous_fenetre1.getBoundingClientRect();
+                        if(tt.bottom > p.height){
+                            window.scrollTo( {"top" : parseInt( tt.bottom - p.height , 10 )} );
+                        }
+                    } , 50 , p );
+            } , 50 , a );
+    }
+    /* ===================================================================================================================== */
+    numero_de_semaine( dt ){
+        var d=new Date( Date.UTC( dt.getFullYear() , dt.getMonth() , dt.getDate() ) );
+        var dayNum=d.getUTCDay() || 7;
+        d.setUTCDate( (d.getUTCDate() + 4) - dayNum );
+        var yearStart=new Date( Date.UTC( d.getUTCFullYear() , 0 , 1 ) );
+        return(Math.ceil( ((d - yearStart) / 86400000 + 1) / 7 ));
+    }
+    /*
+      =============================================================================================================
+    */
+    ajouter_jours( dt , nb_jours ){
+        var dat=new Date( dt.valueOf() );
+        dat.setDate( dat.getDate() + nb_jours );
+        return dat;
+    }
+    /*
+      =============================================================================================================
+    */
+    annuler_le_champ_date1( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }
+        }
+        document.getElementById( nom_du_champ ).value='';
+        this.__gi1.fermer_la_sous_fenetre();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    selectionner_le_jour_courant( mat , d ){
+        let sepa_date='-';
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }
+        }
+        let tt=new Date();
+        let t=tt.getFullYear() + sepa_date + (tt.getMonth() + 1 < 10 ? ( '0' + (tt.getMonth() + 1) ) : ( tt.getMonth() + 1 )) + sepa_date + (tt.getDate() < 10 ? ( '0' + tt.getDate() ) : ( tt.getDate() ));
+        document.getElementById( nom_du_champ ).value=t;
+        this.__gi1.fermer_la_sous_fenetre();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    selectionner_la_date1( mat , d ){
+        let sepa_date='-';
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'jour' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                jour=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let t=annee + sepa_date + (mois < 10 ? ( '0' + mois ) : ( mois )) + sepa_date + (jour < 10 ? ( '0' + jour ) : ( jour ));
+        document.getElementById( nom_du_champ ).value=t;
+        this.__gi1.fermer_la_sous_fenetre();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    mois_suivant( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(mois === 12){
+            annee+=1;
+            mois=1;
+        }else{
+            mois++;
+        }
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    mois_precedent( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(mois === 1){
+            annee-=1;
+            mois=12;
+        }else{
+            mois--;
+        }
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    annee_precedente( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(annee > 1000){
+            annee-=1;
+        }else{
+            annee=1000;
+        }
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    annee_suivante( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(annee < 9999){
+            annee+=1;
+        }else{
+            annee=9999;
+        }
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    affiche_mois_courant( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }
+        }
+        let tt=new Date();
+        annee=tt.getFullYear();
+        mois=tt.getMonth() + 1;
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_siecle( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        annee=annee - annee% 50;
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    demi_siecle_precedent( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(annee >= 1050){
+            annee-=50;
+        }else{
+            annee=1000;
+        }
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    demi_siecle_suivant( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(annee < 9950){
+            annee+=50;
+        }else{
+            annee=9950;
+        }
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    choisir_annee( mat , d ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let jour='';
+        let mois='';
+        let annee='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'mois' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                mois=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'annee' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                annee=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(!(annee >= 1000 && annee <= 9999)){
+            let dt=new Date();
+            annee=dt.getFullYear();
+        }
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    html_de_date1( format_calendrier , nom_du_champ , annee_a_afficher , mois_a_afficher , afficher_siecle=false ){
+        let o1='';
+        let maintenant=new Date();
+        let ref_champ_date=document.getElementById( nom_du_champ );
+        let annee_courante=maintenant.getFullYear();
+        var la_date_est_renseignee=false;
+        if(ref_champ_date.value !== ''){
+            annee_courante=parseInt( ref_champ_date.value.substr( 0 , 4 ) , 10 );
+        }
+        o1+='<style type="text/css">';
+        o1+='#vv_calendrier td{';
+        o1+='  min-width:2em;';
+        o1+='  text-align:center;';
+        o1+='  border-width:' + this.__gi1.css_dimensions.t_border + 'px;';
+        o1+='  border-style:solid;';
+        o1+='  border-color:white;';
+        o1+='}';
+        o1+='</style>';
+        o1+='<table id="vv_calendrier" border="0">';
+        if(afficher_siecle === true){
+            o1+='<tr id="vv_premiere_ligne" style="box-shadow:none;">';
+            /*  */
+            let annee_de_debut=parseInt( annee_a_afficher / 100 , 10 ) * 100;
+            if(annee_a_afficher - annee_de_debut >= 50){
+                annee_de_debut+=50;
+            }
+            let derniere_annee=annee_de_debut + 49;
+            /*  */
+            o1+='<td id="vv_demi_siecle_precedente">';
+            o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(demi_siecle_precedent(nom_du_champ(' + nom_du_champ + '),annee(' + annee_de_debut + '),mois(' + mois_a_afficher + '))))">&lt;</div>';
+            o1+='</td>';
+            /*  */
+            o1+='<td colspan="3">';
+            o1+='' + annee_de_debut + ' - ' + derniere_annee + '';
+            o1+='</td>';
+            /*  */
+            o1+='<td id="vv_demi_siecle_precedente">';
+            o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(demi_siecle_suivant(nom_du_champ(' + nom_du_champ + '),annee(' + annee_de_debut + '),mois(' + mois_a_afficher + '))))">&gt;</div>';
+            o1+='</td>';
+            /*  */
+            o1+='</tr>';
+            o1+='<tr>';
+            annee_courante=annee_de_debut;
+            let nb_annees_par_ligne=5;
+            for( let i=0 ; i <= 49 ; i++ ){
+                if(i% nb_annees_par_ligne == 0){
+                    o1+='<tr>';
+                }
+                let sty1='';
+                if(maintenant.getFullYear() === annee_courante){
+                    sty1=' style="border-color:red;"';
+                }
+                o1+='<td ' + sty1 + ' data-i="' + i + '-' + (i% (nb_annees_par_ligne - 1)) + '-' + ((i - 1)% nb_annees_par_ligne) + '-' + '">';
+                o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(choisir_annee(nom_du_champ(' + nom_du_champ + '),annee(' + annee_courante + '),mois(' + mois_a_afficher + '))))">' + annee_courante + '</div>';
+                o1+='</td>';
+                if(i >= nb_annees_par_ligne - 1 && (i - (nb_annees_par_ligne - 1))% nb_annees_par_ligne == 0){
+                    o1+='</tr>';
+                }
+                annee_courante++;
+            }
+            o1+='</table>';
+            return o1;
+        }
+        /*
+          
+          
+        */
+        o1+='<tr id="vv_premiere_ligne" style="box-shadow:none;">';
+        /*
+          
+        */
+        o1+='<td id="vv_annee_precedente">';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(annee_precedente(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&lt;</div>';
+        o1+='</td>';
+        o1+='<td id="vv_annee_courante" colspan="2">';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(afficher_siecle(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">' + annee_a_afficher + '</div>';
+        o1+='</td>';
+        o1+='<td id="vv_annee_suivante">';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(annee_suivante(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&gt;</div>';
+        o1+='</td>';
+        o1+='<td>&nbsp;</td>';
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt yy__4" data-rev_click="m1(n1(__fnt1),f1(annuler_le_champ_date1(nom_du_champ(' + nom_du_champ + '))))">Ø</div>';
+        o1+='';
+        o1+='</td>';
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt yy__1" data-rev_click="m1(n1(__fnt1),f1(selectionner_le_jour_courant(nom_du_champ(' + nom_du_champ + '))))" title="jour courant">JC</div>';
+        o1+='</td>';
+        o1+='<td>';
+        o1+='<div class="rev_bouton rev_b_ctxt yy__4" data-rev_click="m1(n1(__fnt1),f1(affiche_mois_courant(nom_du_champ(' + nom_du_champ + '))))" title="mois courant">MC</div>';
+        o1+='</td>';
+        /*
+          
+        */
+        o1+='</tr>';
+        /*
+          
+          
+        */
+        let mois_courant=maintenant.getMonth() + 1;
+        if(ref_champ_date.value !== ''){
+            mois_courant=parseInt( ref_champ_date.value.substr( 5 , 2 ) , 10 );
+        }
+        let mois_courant_texte=mois_courant < 10 ? ( '0' + mois_courant ) : ( mois_courant );
+        o1+='<tr id="vv_deuxieme_ligne" style="box-shadow:none;">';
+        /*
+          
+        */
+        o1+='<td>&nbsp;</td>';
+        o1+='<td id="vv_mois_precedent">';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(mois_precedent(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&lt;</div>';
+        o1+='';
+        o1+='</td>';
+        o1+='<td id="vv_mois_courant" colspan="4">';
+        o1+=annee_a_afficher + ' ' + (mois_a_afficher < 10 ? ( '0' + mois_a_afficher ) : ( mois_a_afficher ));
+        o1+='</td>';
+        o1+='<td id="vv_mois_suivant">';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(mois_suivant(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&gt;</div>';
+        o1+='';
+        o1+='</td>';
+        o1+='<td>&nbsp;</td>';
+        /*
+          
+        */
+        o1+='</tr>';
+        /*
+          
+          
+        */
+        o1+='<tr id="vv_trisieme_ligne" style="box-shadow:none;">';
+        /*
+          
+        */
+        o1+='<td>se</td>';
+        o1+='<td>Lu</td>';
+        o1+='<td>Ma</td>';
+        o1+='<td>Me</td>';
+        o1+='<td>Je</td>';
+        o1+='<td>Ve</td>';
+        o1+='<td>Sa</td>';
+        o1+='<td>Di</td>';
+        /*
+          
+        */
+        o1+='</tr>';
+        /*
+          
+          
+        */
+        let jour_courant=maintenant.getDate();
+        let obj_date_de_la_zone=null;
+        if(ref_champ_date.value !== ''){
+            jour_courant=parseInt( ref_champ_date.value.substr( 8 , 2 ) , 10 );
+            la_date_est_renseignee=true;
+            obj_date_de_la_zone=new Date( annee_courante , mois_courant_texte - 1 , jour_courant );
+        }
+        let premier_jour_du_mois=new Date( annee_a_afficher , mois_a_afficher - 1 , 1 );
+        /* 2017-11-01 = mercredi */
+        let jour_du_premier_jour=premier_jour_du_mois.getDay();
+        let dtFirstDay2=premier_jour_du_mois;
+        if(jour_du_premier_jour == 0){
+            jour_du_premier_jour=7;
+            /* dayOfFirstDay */
+        }
+        o1+='<tr style="box-shadow:none;">';
+        o1+='<td>' + this.numero_de_semaine( premier_jour_du_mois ) + '</td>';
+        /* numeroDeSemaine */
+        let numero_de_colonne=1;
+        for( let i=0 ; i < jour_du_premier_jour - 1 ; i++ ){
+            o1+='<td>&nbsp;</td>';
+            numero_de_colonne++;
+        }
+        /* nM = mois_courant */
+        /* nY = annee_courante */
+        /* maxDay = jour_max */
+        let jour_max=31;
+        if(mois_a_afficher == 2){
+            if(annee_a_afficher% 4 == 0 && !(annee_a_afficher% 100 == 0) || annee_a_afficher% 400 == 0){
+                jour_max=29;
+            }else{
+                jour_max=28;
+            }
+        }else if(mois_a_afficher == 4 || mois_a_afficher == 6 || mois_a_afficher == 9 || mois_a_afficher == 11){
+            jour_max=30;
+        }
+        /* lineNumber = numero_de_ligne */
+        var numero_de_ligne=1;
+        /* dateIsSet = la_date_est_renseignee */
+        /* nD = jour_courant */
+        for( let i=1 ; i <= jour_max ; i++ ){
+            let date_en_cours=false;
+            let fontWeight='';
+            let borderSty1='';
+            if(i == maintenant.getDate()
+                   && mois_a_afficher == maintenant.getMonth() + 1
+                   && annee_a_afficher == maintenant.getFullYear()
+            ){
+                if(obj_date_de_la_zone !== null
+                       && i == jour_courant
+                       && mois_a_afficher == obj_date_de_la_zone.getMonth() + 1
+                       && annee_a_afficher == obj_date_de_la_zone.getFullYear()
+                ){
+                    borderSty1+='border-color:red;';
+                    date_en_cours=true;
+                }else{
+                    borderSty1+='border-color:red;';
+                }
+            }else{
+                if(obj_date_de_la_zone !== null
+                       && i == jour_courant
+                       && mois_a_afficher == obj_date_de_la_zone.getMonth() + 1
+                       && annee_a_afficher == obj_date_de_la_zone.getFullYear()
+                ){
+                    borderSty1+='border-color:blue;border-style:inset;';
+                    date_en_cours=true;
+                }else{
+                    borderSty1+='';
+                    /* border-color:hotpink;' */
+                }
+            }
+            /*#
+              if (obj_date_de_la_zone!==null && i == jour_courant && mois_courant == obj_date_de_la_zone.getMonth() + 1 && annee_courante == obj_date_de_la_zone.getFullYear()) {
+                  borderSty1+= 'border-color:red;'
+              }
+            */
+            o1+='<td style="' + borderSty1;
+            if((jour_du_premier_jour + 1)% 7 === 0 || (jour_du_premier_jour + 7)% 7 === 0){
+                o1+='background-color:yellow;';
+            }
+            o1+='">';
+            /* href="javascript:putDate1(' + annee_courante + ',' + mois_courant + ',' + i + ',\'' + valueId + '\',\'' + buttonId + '\',\'' + divId + '\',' + withDateNull + ',' + searchDateMode + ',\'' + callBackDate1 + '\')" */
+            if(date_en_cours === true){
+                o1+='<span>' + i + '</span>';
+            }else{
+                o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(selectionner_la_date1(nom_du_champ(' + nom_du_champ + '),jour(' + i + '),mois(' + mois_a_afficher + '),annee(' + annee_a_afficher + '))))">' + i + '</div>';
+            }
+            o1+='</td>';
+            if(jour_du_premier_jour% 7 == 0){
+                o1+='</tr>';
+                o1+='<tr style="box-shadow:none;">';
+                if(i + 1 <= jour_max){
+                    dtFirstDay2=this.ajouter_jours( dtFirstDay2 , 7 );
+                    o1+='<td>' + this.numero_de_semaine( dtFirstDay2 ) + '</td>';
+                    /* numeroDeSemaine */
+                    numero_de_colonne=1;
+                }
+                numero_de_ligne++;
+            }
+            jour_du_premier_jour++;
+        }
+        o1+='</tr>';
+        if(numero_de_ligne < 6){
+            for( let i=0 ; i < 6 - numero_de_ligne ; i++ ){
+                o1+='<tr><td colspan="8">&nbsp;</td></tr>';
+            }
+        }else{
+            if(numero_de_colonne === 1){
+                o1+='<tr><td colspan="8">&nbsp;</td></tr>';
+            }
+        }
+        /*
+          
+          
+        */
+        o1+='</table>';
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_date1( mat , d , x , evenement_navigateur ){
+        let l01=mat.length;
+        let nom_du_champ='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'format_calendrier' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                format_calendrier=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(nom_du_champ === ''){
+            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
+            return({"__xst" : __xer});
+        }
+        let ref_champ_date=null;
+        try{
+            ref_champ_date=document.getElementById( nom_du_champ );
+        } catch {}
+        if(ref_champ_date === null){
+            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : '"' + nom_du_champ + '" non trouvé dans la page !'} );
+            return({"__xst" : __xer});
+        }
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        let dim=null;
+        if(evenement_navigateur && evenement_navigateur.target){
+            dim=evenement_navigateur.target.getBoundingClientRect();
+        }else{
+            dim=ref_champ_date.getBoundingClientRect();
+        }
+        vv_sous_fenetre1.style.minWidth='auto';
+        vv_sous_fenetre1.style.maxWidth='none';
+        vv_sous_fenetre1.style.width='fit-content';
+        vv_sous_fenetre1.style.minHeight='auto';
+        vv_sous_fenetre1.style.maxHeight='none';
+        vv_sous_fenetre1.style.position='absolute';
+        vv_sous_fenetre1.style.top=parseInt( dim.top , 10 ) + 'px';
+        vv_sous_fenetre1.style.left=parseInt( dim.left , 10 ) + 'px';
+        vv_sous_fenetre1.style.margin='0';
+        vv_sous_fenetre1.style.padding='0';
+        /*
+          affichage du calendrier 
+        */
+        let maintenant=new Date();
+        let annee_a_afficher=maintenant.getFullYear();
+        let mois_a_afficher=maintenant.getMonth() + 1;
+        if(ref_champ_date.value !== ''){
+            let obj=this.date_nulle_ou_comprise_entre( '1000_01_01' , '9999_12_31' , ref_champ_date.value , nom_du_champ );
+            if(obj.__xst === __xsu){
+                annee_a_afficher=parseInt( ref_champ_date.value.substr( 0 , 4 ) , 10 );
+                mois_a_afficher=parseInt( ref_champ_date.value.substr( 5 , 2 ) , 10 );
+            }
+        }
+        this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee_a_afficher , mois_a_afficher ) );
+        vv_sous_fenetre1.showModal();
+        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /* ===================================================================================================================== */
+    getPageSize(){
+        let dkW=100;
+        let dkH=100;
+        if( typeof window.innerWidth === 'number'){
+            /* adans la majorité des cas, on passe ici */
+            dkW=window.innerWidth;
+            dkH=window.innerHeight;
+        }else{
+            if(document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)){
+                dkW=document.documentElement.clientWidth;
+                dkH=document.documentElement.clientHeight;
+            }else{
+                if(document.body && (document.body.clientWidth || document.body.clientHeight)){
+                    dkW=document.body.clientWidth;
+                    dkH=document.body.clientHeight;
+                }
+            }
+        }
+        return({"width" : dkW ,"height" : dkH});
+    }
+    /*
+      =============================================================================================================
+    */
+    affiche_calendrier( le_chetemel ){
+        let a=this.getPageSize();
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.innerHTML=le_chetemel;
+        setTimeout( function( p ){
+                /* ajustement horizontal */
+                let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                let tt=vv_sous_fenetre1.getBoundingClientRect();
+                if(tt.right > p.width){
+                    let nouveau_left=Math.max( parseInt( vv_sous_fenetre1.style.left.replace( /px/ , '' ) , 10 ) - (tt.right - p.width) , 0 );
+                    if(nouveau_left >= 20){
+                        nouveau_left-=20;
+                    }
+                    if(nouveau_left <= 10){
+                        nouveau_left=0;
+                    }
+                    vv_sous_fenetre1.style.left=nouveau_left + 'px';
+                }
+                /* ajustement vertical */
+                setTimeout( function( p ){
+                        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                        let tt=vv_sous_fenetre1.getBoundingClientRect();
+                        if(tt.bottom > p.height){
+                            console.log( tt , p );
+                            window.scrollTo( {"top" : parseInt( tt.bottom - p.height , 10 )} );
+                        }
+                    } , 50 , p );
+            } , 50 , a );
+    }
+    /*
+      =============================================================================================================
+    */
+    jour_courant1( mat , d , x , evenement_navigateur ){
+        let sepa_date='-';
+        let l01=mat.length;
+        let nom_du_champ='';
+        let format_calendrier=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'format_calendrier' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                format_calendrier=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(nom_du_champ === ''){
+            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
+            return({"__xst" : __xer});
+        }
+        let maintenant=new Date();
+        let t=maintenant.getFullYear() + sepa_date + (maintenant.getMonth() + 1 < 10 ? ( '0' + (maintenant.getMonth() + 1) ) : ( maintenant.getMonth() + 1 )) + sepa_date + (maintenant.getDate() < 10 ? ( '0' + maintenant.getDate() ) : ( maintenant.getDate() ));
+        document.getElementById( nom_du_champ ).value=t;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    heure_nulle_ou_comprise_entre( inf , sup , valeur , nom_du_champ ){
+        let sepa_heure=':';
+        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  00_00_00 et 23_59_59 inclus<br />';
+        if(valeur === '' || valeur === null){
+            return({"__xst" : __xsu});
+        }
+        if(valeur.length !== 8){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
+        }
+        if(!(this.__gi1.est_num( valeur.substr( 0 , 2 ) )
+                   && this.__gi1.est_num( valeur.substr( 3 , 2 ) )
+                   && this.__gi1.est_num( valeur.substr( 6 , 2 ) ))
+        ){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
+        }
+        if(!(valeur.substr( 2 , 1 ) === sepa_heure && valeur.substr( 5 , 1 ) === sepa_heure)){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']'});
+        }
+        let heure_num=parseInt( valeur.substr( 0 , 2 ) , 10 );
+        if(heure_num < 0 || heure_num > 23){
+            return({"__xst" : __xer ,"__xme" : 'l\'heure doit être comprise entre 00 et 23 inclus '});
+        }
+        let minutes_num=parseInt( valeur.substr( 3 , 2 ) , 10 );
+        if(minutes_num < 0 || minutes_num > 59){
+            return({"__xst" : __xer ,"__xme" : ' les minutes doit être comprises entre 01 et 12 inclus'});
+        }
+        let secondes_num=parseInt( valeur.substr( 6 , 2 ) , 10 );
+        if(secondes_num < 0 || secondes_num > 59){
+            return({"__xst" : __xer ,"__xme" : 'les secondes doivent être comprises entre 00 et 59 inclus'});
+        }
+        if(valeur < inf || valeur > sup){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']'});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    date_nulle_ou_comprise_entre( inf , sup , valeur , nom_du_champ ){
+        let sepa_date='-';
+        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  1000_01_01 et 9999_12_31 inclus<br />';
+        if(valeur === '' || valeur === null){
+            return({"__xst" : __xsu});
+        }
+        if(valeur.length !== 10){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
+        }
+        if(!(this.__gi1.est_num( valeur.substr( 0 , 4 ) )
+                   && this.__gi1.est_num( valeur.substr( 5 , 2 ) )
+                   && this.__gi1.est_num( valeur.substr( 8 , 2 ) ))
+        ){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
+        }
+        if(!(valeur.substr( 4 , 1 ) === sepa_date && valeur.substr( 7 , 1 ) === sepa_date)){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']'});
+        }
+        let annee_num=parseInt( valeur.substr( 0 , 4 ) , 10 );
+        if(annee_num < 1000){
+            return({"__xst" : __xer ,"__xme" : ' l\'année doit être comprise entre 1000 et 9999 inclus '});
+        }
+        let mois_num=parseInt( valeur.substr( 5 , 2 ) , 10 );
+        if(mois_num < 1 || mois_num > 12){
+            return({"__xst" : __xer ,"__xme" : ' le mois doit être compris entre 01 et 12 inclus'});
+        }
+        let jour_num=parseInt( valeur.substr( 8 , 2 ) , 10 );
+        if(jour_num < 1 || jour_num > 31){
+            return({"__xst" : __xer ,"__xme" : ' le mois jour être compris entre 01 et 31 inclus'});
+        }
+        if(mois_num === 4 || mois_num === 6 || mois_num === 9 || mois_num === 11){
+            if(jour_num === 31){
+                return({"__xst" : __xer ,"__xme" : ' pour les mois 4,6,9 et 11 le jour ne doit pas être supérieur à 30 '});
+            }
+        }else if(mois_num === 2){
+            if(jour_num <= 28){
+            }else if(jour_num === 29){
+                if(annee_num% 4 === 0 && !(annee_num% 100 === 0) || annee_num% 400 === 0){
+                    /*
+                      une année est bisextile si elle est divisible par 4 et pas pas 100 ou bien divisible par 400 ( cf k&r  )
+                    */
+                }else{
+                    return({"__xst" : __xer ,"__xme" : ' cette année n\'est pas bisextile '});
+                }
+            }else{
+                return({"__xst" : __xer ,"__xme" : ' le mois de février ne comporte que 28 ou 29 jours '});
+            }
+        }
+        if(valeur < inf || valeur > sup){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']'});
         }
         return({"__xst" : __xsu});
     }
@@ -487,6 +1779,66 @@ class __fnt1{
                 }
                 return({"__xst" : __xsu});
             }
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
+    remplacer_la_valeur_dans_la_zone( mat , d ){
+        let l01=mat.length;
+        let zone_source='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && mat[i][1] === 'zone_source'){
+                if(mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    zone_source=mat[i + 1][1];
+                }
+            }
+        }
+        if(zone_source !== ''){
+            let aa=document.getElementById( zone_source ).value;
+            let cc=document.getElementById( 'vv_valeur_a_remplacer' ).value;
+            if(cc !== ''){
+                let dd=document.getElementById( 'vv_valeur_remplacante' ).value;
+                let b=new RegExp( cc , 'g' );
+                aa=aa.replace( b , dd );
+                document.getElementById( zone_source ).value=aa;
+                this.__gi1.fermer_la_sous_fenetre();
+                return({"__xst" : __xsu});
+            }
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
+    remplacer_dans_la_zone( mat , d ){
+        let l01=mat.length;
+        let zone_source='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && mat[i][1] === 'zone_source'){
+                if(mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    zone_source=mat[i + 1][1];
+                }
+            }
+        }
+        if(zone_source !== ''){
+            this.__gi1.zone_d_edition_en_cours=zone_source;
+            let aa=document.getElementById( zone_source );
+            let bb='';
+            if(aa.selectionStart === aa.selectionEnd){
+            }else{
+                bb=document.getElementById( zone_source ).value.substr( aa.selectionStart , aa.selectionEnd - aa.selectionStart );
+            }
+            let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+            let o1='';
+            o1+='<h1>remplacer</h1>';
+            o1+='<input id="vv_valeur_a_remplacer" value="' + bb + '" />';
+            o1+='<br />';
+            o1+='<input id="vv_valeur_remplacante" value="" />';
+            o1+='<br />';
+            o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_la_valeur_dans_la_zone(zone_source(' + zone_source + '))))" title="remplacer_dans_la_zone" >remplacer</div>\r\n';
+            this.__gi1.affiche_sous_fenetre1( o1 );
         }
         return({"__xst" : __xer});
     }
@@ -821,6 +2173,7 @@ class __fnt1{
         o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__gi1.les_svg.agrandir + '</div>\r\n';
         o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__gi1.les_svg.retrecir + '</div>\r\n';
         o1+=' <div class="rev_b_svg yy__xsi_2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__gi1.les_svg.ensemble_vide + '</div>\r\n';
+        o1+=' <div class="rev_bouton yy__xsi_1 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</div>\r\n';
         return o1;
     }
     /*
@@ -1099,7 +2452,8 @@ class __fnt1{
             if(this.__gi1.est_num( a[b] )){
                 return(b + '(' + a[b] + ')');
             }
-            return(b + '(\'' + a[b].replace( /\\/g , '\\\\' ).replace( /\''/g , '\\\'' ) + '\')');
+            let x=b + '(\'' + a[b].replace( /\\/g , '\\\\' ).replace( /'/g , '\\\'' ) + '\')';
+            return x;
         }
         return '';
     }
@@ -1148,10 +2502,10 @@ class __fnt1{
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+            throw new Error( 'le paramètre de sq4 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
         }else if( typeof s !== 'string'){
             let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 n\'est pas une valeur de type "string"' );
+            throw new Error( 'le paramètre de sq4 n\'est pas une valeur de type "string"' );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         let s1=s.replace( /\'/g , '\'\'' );
@@ -1197,7 +2551,7 @@ class __fnt1{
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq1 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            throw new Error( 'Paramètre de sq2 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
         }
         /* cette fonction escapeString remplace les apostrophes par des doubles apostrophes */
         /* $s1=SQLite3::escapeString($s); */
@@ -1242,7 +2596,7 @@ class __fnt1{
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq1 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            throw new Error( 'Paramètre de sq0 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         s=s.replace( /\'/g , '\'\'' );
