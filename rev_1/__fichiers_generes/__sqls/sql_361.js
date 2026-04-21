@@ -26,23 +26,23 @@ class sql_361{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_basedd' ) && par['T0_chi_id_basedd'] !== ''){
-            where0+='\r\n' + this.__gi1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_basedd`' , par['T0_chi_id_basedd'] );
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_basedd`' , par['T0_chi_id_basedd'] );
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_basedd\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__gi1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__gi1.__fnt1.sq1( par['debut'] ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] ) + ` `;
         sql0+=plage0;
-        /* this.__gi1.ma_trace1('sql_361 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_361 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 361 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 361 , e , sql0 , donnees_retournees , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
@@ -73,13 +73,13 @@ class sql_361{
       =============================================================================================================
     */
     moi='sql_361';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

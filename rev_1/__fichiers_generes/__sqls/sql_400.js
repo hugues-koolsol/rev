@@ -20,22 +20,22 @@ class sql_400{
            LEFT JOIN tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_travail
         `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`chp_etat_travail\` = ` + this.__gi1.__fnt1.sq1( par['T0_chp_etat_travail'] ) + `)`;
+        const where0=` WHERE (\`T0\`.\`chp_etat_travail\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_etat_travail'] ) + `)`;
         sql0+=where0;
     const order0=`
        ORDER BY  \`T0\`.\`chi_id_travail\` ASC`;
     sql0+=order0;
     const plage0=`
-        LIMIT ` + this.__gi1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET 0 `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET 0 `;
     sql0+=plage0;
-        /* this.__gi1.ma_trace1('sql_400 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_400 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 400 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 400 , e , sql0 , donnees_retournees , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -56,13 +56,13 @@ class sql_400{
       =============================================================================================================
     */
     moi='sql_400';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

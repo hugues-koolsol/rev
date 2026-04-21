@@ -26,29 +26,29 @@ class sql_374{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_projet' ) && par['T0_chi_id_projet'] !== ''){
-            where0+='\r\n' + this.__gi1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_projet`' , par['T0_chi_id_projet'] );
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_projet`' , par['T0_chi_id_projet'] );
         }
         if(par.hasOwnProperty( 'T0_chp_nom_projet' ) && par['T0_chp_nom_projet'] !== ''){
-            where0+=` AND \`T0\`.\`chp_nom_projet\` LIKE ` + this.__gi1.__fnt1.sq2( par['T0_chp_nom_projet'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chp_nom_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_projet'] ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_cht_commentaire_projet' ) && par['T0_cht_commentaire_projet'] !== ''){
-            where0+=` AND \`T0\`.\`cht_commentaire_projet\` LIKE ` + this.__gi1.__fnt1.sq2( par['T0_cht_commentaire_projet'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`cht_commentaire_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_commentaire_projet'] ) + '\r\n';
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_projet\` ASC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__gi1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__gi1.__fnt1.sq1( par['debut'] ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] ) + ` `;
         sql0+=plage0;
-        /* this.__gi1.ma_trace1('sql_374 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_374 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 374 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 374 , e , sql0 , donnees_retournees , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
@@ -80,13 +80,13 @@ class sql_374{
       =============================================================================================================
     */
     moi='sql_374';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

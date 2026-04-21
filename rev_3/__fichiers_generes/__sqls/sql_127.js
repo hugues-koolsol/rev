@@ -16,12 +16,12 @@ class sql_127{
             if(par['n_chp_nom_metier'] === undefined || par['n_chp_nom_metier'] === '' || par['n_chp_nom_metier'] === null){
                 tableau_champs.push( '`chp_nom_metier` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_metier` = \'' + this.__gi1.__fnt1.sq0( par['n_chp_nom_metier'] ) + '\'' );
+                tableau_champs.push( '`chp_nom_metier` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_metier'] ) + '\'' );
             }
             if(par['n_chx_parent_metier'] === undefined || par['n_chx_parent_metier'] === '' || par['n_chx_parent_metier'] === null){
                 tableau_champs.push( '`chx_parent_metier` = NULL' );
             }else{
-                tableau_champs.push( '`chx_parent_metier` = ' + this.__gi1.__fnt1.sq0( par['n_chx_parent_metier'] ) + '' );
+                tableau_champs.push( '`chx_parent_metier` = ' + this.__ig1.__fnt1.sq0( par['n_chx_parent_metier'] ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -35,26 +35,26 @@ class sql_127{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_metier\` = ` + this.__gi1.__fnt1.sq1( par['c_chi_id_metier'] ) + '\r\n';
+            where0+=` AND \`chi_id_metier\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_metier'] ) + '\r\n';
             sql0+=where0;
-            /* this.__gi1.ma_trace1(' sql_127= ' + sql0 ); */
+            /* this.__ig1.ma_trace1(' sql_127= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 127 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 127 , e , sql0 , donnees_retournees , {} ));
         }
     }
     /*
       =============================================================================================================
     */
     moi='sql_127';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

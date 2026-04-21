@@ -7,14 +7,14 @@ class x_ecran_rev_vers_txt1{
       =============================================================================================================
     */
     #objet_conversion_rev_vers_texte=null;
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
     */
-    constructor( mat , d , __gi1 ){
-        this.__gi1=__gi1;
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
         /* console.log( 'constructor fonctions 1' , e ); */
-        this.#objet_conversion_rev_vers_texte=new w_rev_vers_txt1( '#objet_conversion_rev_vers_texte' , __gi1 );
+        this.#objet_conversion_rev_vers_texte=new w_rev_vers_txt1( '#objet_conversion_rev_vers_texte' , __ig1 );
     }
     /*
       =============================================================================================================
@@ -37,15 +37,15 @@ class x_ecran_rev_vers_txt1{
         if(zone_source === '' || zone_resultat === ''){
             return({"__xst" : __xer});
         }
-        this.__gi1.zone_d_edition_en_cours=zone_source;
+        this.__ig1.zone_d_edition_en_cours=zone_source;
         let t1=document.getElementById( zone_source );
         let t2=document.getElementById( zone_resultat );
         t2.innerHTML='';
         if(!(t1 && t2)){
             return({"__xst" : __xer});
         }
-        let tableau1=this.__gi1.__rev1.txt_en_tableau( t1.value );
-        let obj1=this.__gi1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
+        let tableau1=this.__ig1.__rev1.txt_en_tableau( t1.value );
+        let obj1=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
         if(obj1.__xst === __xsu){
             /* on transforme le rev en texte */
             let obj2=this.#objet_conversion_rev_vers_texte.c_rev_vers_texte( obj1.__xva , 0 , 0 );
@@ -53,10 +53,10 @@ class x_ecran_rev_vers_txt1{
                 t2.value=obj2.__xva;
                 return({"__xst" : __xsu});
             }else{
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.nl2()} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
             }
         }else{
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.nl2()} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
         }
         return({"__xst" : __xer});
     }
@@ -93,7 +93,7 @@ class x_ecran_rev_vers_txt1{
             }
         }
         if(zone_source !== '' && zone_resultat !== ''){
-            this.__gi1.zone_d_edition_en_cours=zone_source;
+            this.__ig1.zone_d_edition_en_cours=zone_source;
             let t1=document.getElementById( zone_source );
             let t2=document.getElementById( zone_resultat );
             t2.innerHTML='';
@@ -107,10 +107,10 @@ class x_ecran_rev_vers_txt1{
                         t2.value=obj1.__xva;
                         return({"__xst" : __xsu});
                     }else{
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.nl2() + '<br />erreur lors de la convertion du texte'} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + '<br />erreur lors de la convertion du texte'} ));
                     }
                 }catch(e2){
-                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2( e2 ) + '<br />erreur lors de la convertion du texte'} ));
+                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2( e2 ) + '<br />erreur lors de la convertion du texte'} ));
                 }
             }
         }
@@ -119,11 +119,11 @@ class x_ecran_rev_vers_txt1{
       =============================================================================================================
     */
     sauvegarder_contenu_en_localstorage( nom_de_la_zone , valeur ){
-        if(!this.__gi1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )){
-            this.__gi1.stockage_local['zones_sauvegardées']={};
+        if(!this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )){
+            this.__ig1.stockage_local['zones_sauvegardées']={};
         }
-        this.__gi1.stockage_local['zones_sauvegardées'][nom_de_la_zone]=valeur;
-        localStorage.setItem( this.__gi1.cle_lst0 , JSON.stringify( this.__gi1.stockage_local ) );
+        this.__ig1.stockage_local['zones_sauvegardées'][nom_de_la_zone]=valeur;
+        localStorage.setItem( this.__ig1.cle_lst0 , JSON.stringify( this.__ig1.stockage_local ) );
     }
     /*
       =============================================================================================================
@@ -153,16 +153,16 @@ J'aimerais bien que les navigateurs fassent la même chose dans le zones textare
         */
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
-        t+=this.__gi1.__fnt1.boutons_edition1( 'vv_txtarea_txt_rev1' );
+        t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_txt_rev1' );
         /*  */
         t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_txt1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
         t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_txt1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_txt_rev1" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
-        if(this.__gi1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
-               && this.__gi1.stockage_local['zones_sauvegardées'].hasOwnProperty( 'x_ecran_rev_vers_txt1' )
+        if(this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
+               && this.__ig1.stockage_local['zones_sauvegardées'].hasOwnProperty( 'x_ecran_rev_vers_txt1' )
         ){
-            t+=this.__gi1.stockage_local['zones_sauvegardées']['x_ecran_rev_vers_txt1'].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
+            t+=this.__ig1.stockage_local['zones_sauvegardées']['x_ecran_rev_vers_txt1'].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
         }
         t+='</textarea>';
         t+='</div>';
@@ -173,7 +173,7 @@ J'aimerais bien que les navigateurs fassent la même chose dans le zones textare
         t+='    <div class="rev_bouton yy__1" data-rev_click="';
         t+='m1(n1(x_ecran_rev_vers_txt1),f1(texte1_vers_rev(zone_source(vv_txtarea_txt_rev1),zone_resultat(vv_txtarea_txt_rev2),mettre_en_stockage_local(1))))';
         t+='" title="cvt" >txt-&gt;rev 1</div>';
-        t+=this.__gi1.__fnt1.boutons_rev3( 'vv_txtarea_txt_rev2' );
+        t+=this.__ig1.__fnt1.boutons_rev3( 'vv_txtarea_txt_rev2' );
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_txt_rev2" data-editeur1="rev" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         t+='</textarea>';
@@ -188,14 +188,14 @@ J'aimerais bien que les navigateurs fassent la même chose dans le zones textare
         t+='m1(n1(x_ecran_rev_vers_txt1),f1(rev_vers_texte1(zone_source(vv_txtarea_txt_rev2),zone_resultat(vv_txtarea_txt_rev3))))';
         t+='" title="convertir en rev" >rev-&gt;txt</div>';
         /*  */
-        t+=this.__gi1.__fnt1.boutons_edition1( 'vv_txtarea_txt_rev3' );
+        t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_txt_rev3' );
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_txt_rev3" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         t+='</textarea>';
         t+='</div>';
-        this.__gi1.maj_contenu_principal( t );
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'cvt txt' );
+        this.__ig1.maj_contenu_principal( t );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'cvt txt' );
         return({"__xst" : __xsu});
     }
 }

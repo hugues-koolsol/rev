@@ -1,5 +1,5 @@
 class x_ecran_rev_vers_matrice1{
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
     */
@@ -22,8 +22,8 @@ class x_ecran_rev_vers_matrice1{
     /*
       =============================================================================================================
     */
-    constructor( mat , d , __gi1 ){
-        this.__gi1=__gi1;
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
     }
     /*
       =============================================================================================================
@@ -140,12 +140,12 @@ class x_ecran_rev_vers_matrice1{
             }
         }
         if(zone_source !== '' && zone_resultat !== ''){
-            this.__gi1.zone_d_edition_en_cours=zone_source;
+            this.__ig1.zone_d_edition_en_cours=zone_source;
             let t1=document.getElementById( zone_source );
             let t2=document.getElementById( zone_resultat );
             t2.innerHTML='';
             if(t1 && t2){
-                let tt=this.__gi1.__rev1.txt_en_tableau( t1.value );
+                let tt=this.__ig1.__rev1.txt_en_tableau( t1.value );
                 t2.innerHTML=this.construit_un_html_du_tableau_des_caracteres2( tt );
                 t2.style.display='';
                 return({"__xst" : __xsu});
@@ -157,11 +157,11 @@ class x_ecran_rev_vers_matrice1{
       =============================================================================================================
     */
     sauvegarder_contenu_en_localstorage( nom_de_la_zone , valeur ){
-        if(!this.__gi1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )){
-            this.__gi1.stockage_local['zones_sauvegardées']={};
+        if(!this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )){
+            this.__ig1.stockage_local['zones_sauvegardées']={};
         }
-        this.__gi1.stockage_local['zones_sauvegardées'][nom_de_la_zone]=valeur;
-        localStorage.setItem( this.__gi1.cle_lst0 , JSON.stringify( this.__gi1.stockage_local ) );
+        this.__ig1.stockage_local['zones_sauvegardées'][nom_de_la_zone]=valeur;
+        localStorage.setItem( this.__ig1.cle_lst0 , JSON.stringify( this.__ig1.stockage_local ) );
     }
     /*
       =============================================================================================================
@@ -235,13 +235,13 @@ class x_ecran_rev_vers_matrice1{
             }
         }
         if(zone_source !== '' && zone_resultat !== ''){
-            this.__gi1.zone_d_edition_en_cours=zone_source;
+            this.__ig1.zone_d_edition_en_cours=zone_source;
             let t1=document.getElementById( zone_source );
             this.sauvegarder_contenu_en_localstorage( 'ecran_rev_vers_matrice1' , t1.value );
             let t2=document.getElementById( zone_resultat );
             t2.innerHTML='';
             if(t1 && t2){
-                let tt=this.__gi1.__rev1.rev_tcm( t1.value );
+                let tt=this.__ig1.__rev1.rev_tcm( t1.value );
                 if(tt.__xst === __xsu){
                     t2.innerHTML=this.construit_tableau_html_de_le_matrice_rev2( tt );
                     t2.style.display='';
@@ -304,28 +304,28 @@ class x_ecran_rev_vers_matrice1{
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
         /*  */
-        t+=this.__gi1.__fnt1.boutons_rev3( 'vv_txtarea_rev1' );
+        t+=this.__ig1.__fnt1.boutons_rev3( 'vv_txtarea_rev1' );
         /*  */
         t+='    <div style="float:right;" class="rev_bouton" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
         t+='    <div style="float:right;" class="rev_bouton" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
         t+='  </div>  ';
         t+='  <textarea id="vv_txtarea_rev1" data-editeur1="rev" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
-        if(this.__gi1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
-               && this.__gi1.stockage_local['zones_sauvegardées'].hasOwnProperty( 'ecran_rev_vers_matrice1' )
+        if(this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
+               && this.__ig1.stockage_local['zones_sauvegardées'].hasOwnProperty( 'ecran_rev_vers_matrice1' )
         ){
-            t+=this.__gi1.stockage_local['zones_sauvegardées']['ecran_rev_vers_matrice1'];
+            t+=this.__ig1.stockage_local['zones_sauvegardées']['ecran_rev_vers_matrice1'];
         }
         t+='</textarea>';
         t+='</div>';
         t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(zone_rev_vers_zone_matrice2(zone_source(vv_txtarea_rev1),zone_resultat(vv_matrice1))))" title="transformer en matrice" >rev-&gt;mat</div>';
-        t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(__gi1),f1(masquer_ou_afficher(zone_source(vv_matrice1))))" title="masquer ou afficher" >masquer/afficher</div>';
+        t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(__ig1),f1(masquer_ou_afficher(zone_source(vv_matrice1))))" title="masquer ou afficher" >masquer/afficher</div>';
         t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(zone_rev_vers_zone_tableau2(zone_source(vv_txtarea_rev1),zone_resultat(vv_tableau1))))" title="transformer en tableau" >rev-&gt;tab</div>';
-        t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(__gi1),f1(masquer_ou_afficher(zone_source(vv_tableau1))))" title="masquer ou afficher" >masquer/afficher</div>';
+        t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(__ig1),f1(masquer_ou_afficher(zone_source(vv_tableau1))))" title="masquer ou afficher" >masquer/afficher</div>';
         t+='<div id="vv_matrice1" style="overflow-x:scroll;border:var(--t_border) lightgreen inset;transform: translate3d(0, 0, 0);"></div>';
         t+='<div id="vv_tableau1" style="overflow-x:scroll;border:var(--t_border) blue inset;transform: translate3d(0, 0, 0);"></div>';
-        this.__gi1.maj_contenu_principal( t );
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'cvt matrice' );
+        this.__ig1.maj_contenu_principal( t );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'cvt matrice' );
         return({"__xst" : __xsu});
     }
 }

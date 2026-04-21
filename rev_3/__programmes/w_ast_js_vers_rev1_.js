@@ -15,16 +15,16 @@ class w_ast_js_vers_rev1{
     #nom_de_la_variable='';
     #options_traitement=null;
     __m_rev1=null;
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
       le seul argument est pour l'instant le nom de la variable qui est déclarée
     */
-    constructor( nom_de_la_variable , __gi1 ){
+    constructor( nom_de_la_variable , __ig1 ){
         /* module_rev ]{ */
-        this.__gi1=__gi1;
+        this.__ig1=__ig1;
         this.#nom_de_la_variable=nom_de_la_variable;
-        this.__rev1=this.__gi1.__rev1;
+        this.__rev1=this.__ig1.__rev1;
     }
     /*
       =============================================================================================================
@@ -34,7 +34,7 @@ class w_ast_js_vers_rev1{
             o.plage=[o.element.start,o.element.end];
         }
         /* this.__m _ rev1.empiler _ erreur( o ); */
-        this.__gi1.ajoute_message( o );
+        this.__ig1.ajoute_message( o );
         return o;
     }
     /*

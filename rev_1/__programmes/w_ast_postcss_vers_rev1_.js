@@ -14,14 +14,14 @@ const __xdv=4;
 class w_ast_postcss_vers_rev1{
     #options_traitement={};
     __m_rev1=null;
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
       le seul argument est pour l'instant le nom de la variable qui est déclarée
     */
-    constructor( __gi1 ){
-        this.__gi1=__gi1;
-        this.__m_rev1=this.__gi1.__rev1;
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
+        this.__m_rev1=this.__ig1.__rev1;
     }
     /*
       =============================================================================================================
@@ -53,7 +53,7 @@ class w_ast_postcss_vers_rev1{
                     if(la_declaration.prop && la_declaration.value){
                         t+='d(p(\'' + la_declaration.prop.replace( /\'/g , '\\\'' ) + '\'),v(\'' + la_declaration.value.replace( /\'/g , '\\\'' ) + '\')' + (la_declaration.important === true ? ( ',important()' ) : ( '' )) + ')';
                     }else{
-                        return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__gi1.nl2() + la_declaration.type ,"element" : la_declaration} ));
+                        return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__ig1.nl2() + la_declaration.type ,"element" : la_declaration} ));
                     }
                     break;
                     
@@ -69,7 +69,7 @@ class w_ast_postcss_vers_rev1{
                             t+=obj.__xva;
                         }else{
                             debugger;
-                            return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__gi1.nl2() ,"element" : la_declaration} ));
+                            return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__ig1.nl2() ,"element" : la_declaration} ));
                         }
                     }
                     t+=')';
@@ -83,14 +83,14 @@ class w_ast_postcss_vers_rev1{
                             t+=obj.__xva;
                         }else{
                             debugger;
-                            return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__gi1.nl2() ,"element" : la_declaration} ));
+                            return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__ig1.nl2() ,"element" : la_declaration} ));
                         }
                     }
                     t+=')';
                     break;
                     
                 default:
-                    return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__gi1.nl2() + ' type non traité : "<b>' + la_declaration.type + '</b>"' ,"element" : la_declaration} ));
+                    return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__ig1.nl2() + ' type non traité : "<b>' + la_declaration.type + '</b>"' ,"element" : la_declaration} ));
                     break;
                     
             }
@@ -125,7 +125,7 @@ class w_ast_postcss_vers_rev1{
                             t+=',' + obj.__xva;
                         }else{
                             debugger;
-                            return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__gi1.nl2() ,"element" : node} ));
+                            return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__ig1.nl2() ,"element" : node} ));
                         }
                     }
                     t+=')';
@@ -139,7 +139,7 @@ class w_ast_postcss_vers_rev1{
                             t+=obj.__xva;
                         }else{
                             debugger;
-                            return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__gi1.nl2() ,"element" : node} ));
+                            return(this.#astcss_le( {"__xstr" : __xer ,"__xme" : this.__ig1.nl2() ,"element" : node} ));
                         }
                     }
                     t+=')';

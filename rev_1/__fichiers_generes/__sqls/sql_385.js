@@ -18,21 +18,21 @@ class sql_385{
         const from0=`
           FROM  tbl_requetes T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_requete\` < ` + this.__gi1.__fnt1.sq1( par['nb_max'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_requete\` < ` + this.__ig1.__fnt1.sq1( par['nb_max'] ) + ``;
         sql0+=where0;
     const order0=`
        ORDER BY  \`T0\`.\`chi_id_requete\` ASC`;
     sql0+=order0;
     const plage0='';
     sql0+=plage0;
-        /* this.__gi1.ma_trace1('sql_385 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_385 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 385 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 385 , e , sql0 , donnees_retournees , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -52,13 +52,13 @@ class sql_385{
       =============================================================================================================
     */
     moi='sql_385';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

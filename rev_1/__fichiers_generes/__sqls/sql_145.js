@@ -33,44 +33,44 @@ class sql_145{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T3_chp_nom_source' ) && par['T3_chp_nom_source'] !== ''){
-            where0+=` AND \`T3\`.\`chp_nom_source\` LIKE ` + this.__gi1.__fnt1.sq2( par['T3_chp_nom_source'] ) + '\r\n';
+            where0+=` AND \`T3\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( par['T3_chp_nom_source'] ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chi_id_menu' ) && par['T0_chi_id_menu'] !== ''){
-            where0+='\r\n' + this.__gi1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_menu`' , par['T0_chi_id_menu'] );
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_menu`' , par['T0_chi_id_menu'] );
         }
         if(par.hasOwnProperty( 'T0_cht_libelle_menu' ) && par['T0_cht_libelle_menu'] !== ''){
-            where0+=` AND \`T0\`.\`cht_libelle_menu\` LIKE ` + this.__gi1.__fnt1.sq2( par['T0_cht_libelle_menu'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`cht_libelle_menu\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_libelle_menu'] ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chp_titre_menu' ) && par['T0_chp_titre_menu'] !== ''){
-            where0+=` AND \`T0\`.\`chp_titre_menu\` LIKE ` + this.__gi1.__fnt1.sq2( par['T0_chp_titre_menu'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chp_titre_menu\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_titre_menu'] ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_autorisation_menu' ) && par['T0_chx_autorisation_menu'] !== ''){
-            where0+='\r\n' + this.__gi1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_autorisation_menu`' , par['T0_chx_autorisation_menu'] );
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_autorisation_menu`' , par['T0_chx_autorisation_menu'] );
         }
         if(par.hasOwnProperty( 'T1_chp_nom_autorisation' ) && par['T1_chp_nom_autorisation'] !== ''){
-            where0+=` AND \`T1\`.\`chp_nom_autorisation\` LIKE ` + this.__gi1.__fnt1.sq2( par['T1_chp_nom_autorisation'] ) + '\r\n';
+            where0+=` AND \`T1\`.\`chp_nom_autorisation\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_autorisation'] ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chp_methode_menu' ) && par['T0_chp_methode_menu'] !== ''){
-            where0+=` AND \`T0\`.\`chp_methode_menu\` LIKE ` + this.__gi1.__fnt1.sq2( par['T0_chp_methode_menu'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chp_methode_menu\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_methode_menu'] ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T1_chx_acces_autorisation' ) && par['T1_chx_acces_autorisation'] !== ''){
-            where0+='\r\n' + this.__gi1.__fnt1.construction_where_sql_sur_id1( '`T1`.`chx_acces_autorisation`' , par['T1_chx_acces_autorisation'] );
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T1`.`chx_acces_autorisation`' , par['T1_chx_acces_autorisation'] );
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_menu\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__gi1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__gi1.__fnt1.sq1( par['debut'] ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] ) + ` `;
         sql0+=plage0;
-        /* this.__gi1.ma_trace1('sql_145 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_145 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 145 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 145 , e , sql0 , donnees_retournees , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
@@ -109,13 +109,13 @@ class sql_145{
       =============================================================================================================
     */
     moi='sql_145';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

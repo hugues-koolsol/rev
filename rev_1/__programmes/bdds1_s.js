@@ -7,10 +7,35 @@ const __xst='__xst';
 const __xva='__xva';
 const __xsi='__xsi';
 const __xac='__xac';
+import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 /*
   =====================================================================================================================
 */
 class bdds1{
+    /*
+      =============================================================================================================
+    */
+    async forcer_fermeture_fichier_wal( mat , d , donnees_recues , donnees_retournees , options_generales ){
+        let chi_id_basedd=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_basedd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let chemin_complet_bdd=options_generales.repertoire_racine_de_tous_les_projets + 'rev_' + donnees_retournees.chi_id_projet + '/__bases_de_donnees/' + 'bdd_' + chi_id_basedd + '.sqlite';
+        /* this.ma_trace1("chemin_complet_bdd="+chemin_complet_bdd); */
+        try{
+            let __db=new Database( chemin_complet_bdd , {"create" : false} );
+            await __db.exec( "PRAGMA wal_checkpoint(FULL);" );
+            await __db.exec( "VACUUM;" );
+            __db.close();
+            this.__ig1.ma_trace1( "all good !" );
+        }catch(e){
+            this.__ig1.ma_trace1( "e" , e.stack );
+        }
+        return({"__xst" : __xsu});
+    }
     /*
       =============================================================================================================
     */
@@ -22,16 +47,15 @@ class bdds1{
                 chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        if(!(this.__gi1.est_num( chi_id_basedd ) && chi_id_basedd > 0)){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+        if(!(this.__ig1.est_num( chi_id_basedd ) && chi_id_basedd > 0)){
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(__db1 === null){
-            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+            __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         }
         let criteres_357={"T0_chi_id_basedd" : chi_id_basedd};
-        let tt357=await this.__gi1.sql_iii(
+        let tt357=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
@@ -41,13 +65,12 @@ class bdds1{
         */
         /*sql_inclure_fin*/ 357 , criteres_357 , donnees_retournees , __db1 );
         if(tt357[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let criteres_353={"chp_provenance_rev" : 'base' ,"chx_source_rev" : chi_id_basedd};
         /* suppression des anciennes données de la table rev */
-        let tt353=await this.__gi1.sql_iii(
+        let tt353=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
@@ -57,18 +80,15 @@ class bdds1{
         */
         /*sql_inclure_fin*/ 353 , criteres_353 , donnees_retournees , __db1 );
         if(tt353[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(donnees_retournees._CA_ === 1 && donnees_retournees.chi_id_projet === 1){
-            donnees_retournees.__xst=__xsu;
             return({"__xst" : __xsu});
         }
-        let obj_matrice=await this.__gi1.__rev1.rev_tcm( tt357[__xva][0]['T0.chp_rev_travail_basedd'] );
+        let obj_matrice=await this.__ig1.__rev1.rev_tcm( tt357[__xva][0]['T0.chp_rev_travail_basedd'] );
         if(obj_matrice[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         const repl0=new RegExp( '¶' + 'LF¶' , 'g' );
@@ -95,7 +115,7 @@ class bdds1{
                     "chp_commentaire_rev" : matrice[i][13]
                 } );
         }
-        let tt358=await this.__gi1.sql_iii(
+        let tt358=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_revs`(
             `chp_provenance_rev` , 
@@ -134,8 +154,7 @@ class bdds1{
         );
         */
         /*sql_inclure_fin*/ 358 , a_sauvegarder , donnees_retournees , __db1 );
-        this.__gi1.__xsi[__xif].push( 'la table rev a été enrichie' );
-        donnees_retournees.__xst=__xsu;
+        donnees_retournees.__xsi[__xif].push( 'la table rev a été enrichie' );
         return({"__xst" : __xsu});
     }
     /*
@@ -159,24 +178,106 @@ class bdds1{
         let chemin_fichier_definition_de_la_base='';
         let chemin_fichier_definition_des_index='';
         let chemin_fichier_insert_seulement='';
+        let les_tables_virtuelles=[];
         if(chi_id_projet !== null){
             /*
               Cas où on fait une sauvegarde de la base du projet.
             */
             let chemin_bdd='../rev_1/__bases_de_donnees/bdd_' + chi_id_projet + '.sqlite';
-            db=await this.__gi1.ouvrir_bdd_temp( chemin_bdd , donnees_retournees , options_generales );
+            db=await this.__ig1.ouvrir_bdd_temp( chemin_bdd , donnees_retournees , options_generales );
             chemin_fichier_definition_de_la_base='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_structure.sql';
             chemin_fichier_definition_des_index='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_index.sql';
             chemin_fichier_insert_seulement='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_donnees.sql';
         }else{
-            db=await this.__gi1.ouvrir_bdd( chi_id_basedd , donnees_retournees , options_generales );
+            /*
+              on ne fait pas de sauvegarde des tables virtuelles 
+              il faut donc aller les repérer
+            */
+            let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+            /* sélection du champ à modifier */
+            let criteres_select_371={"T0_chi_id_basedd" : chi_id_basedd};
+            let tt371=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
+             FROM b1.tbl_bdds T0
+            WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
+            ;
+            */
+            /*sql_inclure_fin*/ 371 , criteres_select_371 , donnees_retournees , __db1 );
+            __db1.close();
+            if(tt371[__xst] !== __xsu){
+                donnees_retournees.__xsi[__xer].push( 'base non trouvée  [' + this.__ig1.nl2() );
+                return({"__xst" : __xer});
+            }
+            let le_rev_de_la_base=tt371.__xva[0]['T0.chp_rev_travail_basedd'];
+            /* this.__ig1.ma_trace1("le_rev_de_la_base",le_rev_de_la_base); */
+            let obj1=this.__ig1.__rev1.rev_tm( le_rev_de_la_base );
+            if(obj1.__xst !== 1){
+                donnees_retournees.__xsi[__xer].push( 'erreur de transformation du rev de la base en matrice [' + this.__ig1.nl2() + ']' );
+                return({"__xst" : __xer});
+            }
+            /*#
+              créer_table[
+                 nom_de_la_table['rpps_fts'],
+                 meta[
+                    nom_de_la_table['rpps_fts'],
+                    table['rpps_fts'],
+                    genre_meta[table_de_base],
+                    est_table_virtuelle['1'],
+            */
+            let l01=obj1.__xva.length;
+            for( let i=1 ; i < l01 ; i=obj1.__xva[i][12] ){
+                if(obj1.__xva[i][1] === 'créer_table' && obj1.__xva[i][2] === 'f'){
+                    let nom_de_la_table='';
+                    for( let j=i + 1 ; j < l01 ; j=obj1.__xva[j][12] ){
+                        if(obj1.__xva[j][1] === 'nom_de_la_table'
+                               && obj1.__xva[j][2] === 'f'
+                               && obj1.__xva[j][8] === 1
+                               && obj1.__xva[j + 1][2] === 'c'
+                        ){
+                            nom_de_la_table=obj1.__xva[j + 1][1];
+                            /* this.__ig1.ma_trace1("nom_de_la_table=",nom_de_la_table); */
+                        }
+                    }
+                    for( let j=i + 1 ; j < l01 ; j=obj1.__xva[j][12] ){
+                        if(obj1.__xva[j][1] === 'meta' && obj1.__xva[j][2] === 'f'){
+                            for( let k=j + 1 ; k < l01 ; k=obj1.__xva[k][12] ){
+                                if(obj1.__xva[k][1] === 'est_table_virtuelle'
+                                       && obj1.__xva[k][2] === 'f'
+                                       && obj1.__xva[k][8] === 1
+                                       && obj1.__xva[k + 1][2] === 'c'
+                                ){
+                                    les_tables_virtuelles.push( nom_de_la_table );
+                                    les_tables_virtuelles.push( nom_de_la_table + '_data' );
+                                    les_tables_virtuelles.push( nom_de_la_table + '_idx' );
+                                    les_tables_virtuelles.push( nom_de_la_table + '_content' );
+                                    les_tables_virtuelles.push( nom_de_la_table + '_docsize' );
+                                    les_tables_virtuelles.push( nom_de_la_table + '_config' );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            this.__ig1.ma_trace1( "les_tables_virtuelles" , les_tables_virtuelles );
+            /*
+              donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+              return({"__xst" : __xer});
+            */
+            /* this.__ig1.ma_trace1("chi_id_projet="+chi_id_projet , options_generales,chi_id_basedd , donnees_retournees); */
+            let chemin_de_la_base=options_generales.repertoire_racine_de_tous_les_projets + 'rev_' + donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
+            if(!(await this.__ig1.is_file( chemin_de_la_base ))){
+                donnees_retournees.__xsi[__xer].push( 'base non trouvée [' + this.__ig1.nl2() + ']' );
+                return({"__xst" : 0});
+            }
+            db=await this.__ig1.ouvrir_bdd_temp( chemin_de_la_base , donnees_retournees , options_generales );
             if(chi_id_basedd === 0){
-                this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-                donnees_retournees.__xst=__xer;
+                donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
             let m=await import( './dossiers1_s.js' );
-            let o=new m['dossiers1']( this.__gi1 );
+            let o=new m['dossiers1']( this.__ig1 );
             if(donnees_retournees._CA_ === 2){
                 chemin_fichier_definition_de_la_base='../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
                 chemin_fichier_definition_des_index='../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
@@ -197,13 +298,15 @@ class bdds1{
             await statement.finalize();
         }catch(e){
             donnees_retournees.__xst=0;
-            this.__gi1.__xsi[__xer].push( 'erreur de récupération des tables de la base [' + this.__gi1.nl2( e ) + ']' );
+            donnees_retournees.__xsi[__xer].push( 'erreur de récupération des tables de la base [' + this.__ig1.nl2( e ) + ']' );
             return({"__xst" : 0});
         }
-        /* return(this.__gi1.bug1(donnees_retournees,tableau_des_tables1)); */
+        /* return(this.__ig1.bug1(donnees_retournees,tableau_des_tables1)); */
         let les_tables=[];
         for( let i=0 ; i < tableau_des_tables1.length ; i++ ){
-            les_tables.push( tableau_des_tables1[i][0] );
+            if(!les_tables_virtuelles.includes( tableau_des_tables1[i][0] )){
+                les_tables.push( tableau_des_tables1[i][0] );
+            }
         }
         /*
           =====================================================================================================
@@ -237,7 +340,7 @@ class bdds1{
         let statement1=await db.prepare( sql1 );
         let lignes1=await statement1.values();
         await statement1.finalize();
-        /* return(this.__gi1.bug1(donnees_retournees,lignes1)); */
+        /* return(this.__ig1.bug1(donnees_retournees,lignes1)); */
         for(let i in lignes1){
             const sql2="SELECT sql FROM sqlite_master WHERE tbl_name='" + lignes1[i][1] + "' and name='" + lignes1[i][0] + "';";
             let statement1=await db.prepare( sql2 );
@@ -253,6 +356,7 @@ class bdds1{
           ecriture séquentielle des INSERT INTO
           =====================================================================================================
         */
+        let les_champs_des_tables={};
         const pointeur_fichier_des_insert_seulement=await Deno.create( chemin_fichier_insert_seulement );
         const writer_insert_seulement=pointeur_fichier_des_insert_seulement.writable.getWriter();
         let chaine_insert_seulement='';
@@ -265,12 +369,13 @@ class bdds1{
             let lignes22=await statement22.values();
             await statement22.finalize();
             /* [[0,"chi_id_rev","INTEGER",1,null,1],[1,"chp_provenance_rev","VARCHAR(64)",0,"NULL",0], */
-            /* return(this.__gi1.bug1(donnees_retournees,lignes2)); */
+            /* return(this.__ig1.bug1(donnees_retournees,lignes2)); */
             let liste_des_champs=[];
             for( let i=0 ; i < lignes22.length ; i++ ){
                 debut_de_insert+=' ' + lignes22[i][1] + ' , ';
                 liste_des_champs.push( lignes22[i][1] );
             }
+            les_champs_des_tables[les_tables[k1]]=liste_des_champs;
             debut_de_insert=debut_de_insert.slice( 0 , -2 ) + ") VALUES";
             const sql1="SELECT count(*) as __nb_enregs FROM " + v1 + "";
             let statement1=await db.prepare( sql1 );
@@ -309,7 +414,7 @@ class bdds1{
                         if(offset === 0){
                             await writer_insert_seulement.write( new TextEncoder().encode( '\r\n\r\n/*' + "=".repeat( 120 ) + '*/\r\n' ) );
                         }
-                        await writer_insert_seulement.write( new TextEncoder().encode( '\r\n/*' + "=".repeat( 80 ) + ' DEBUT BLOC TABLE ' + v1 + ' offset ' + offset + ' */\r\n' ) );
+                        await writer_insert_seulement.write( new TextEncoder().encode( '\r\n/*' + "=".repeat( 80 ) + ' DEBUT BLOC TABLE ' + v1 + ' offset ' + offset + ' (' + nb_enregs + ') */\r\n' ) );
                         await writer_insert_seulement.write( new TextEncoder().encode( debut_de_insert ) );
                         chaine_insert_seulement=chaine_insert_seulement.substr( 0 , chaine_insert_seulement.length - 1 ) + ';';
                         await writer_insert_seulement.write( new TextEncoder().encode( chaine_insert_seulement ) );
@@ -321,9 +426,67 @@ class bdds1{
             }
         }
         await writer_insert_seulement.close();
+        /*
+          création des csv des tables
+        */
+        if(!(donnees_retournees._CA_ === 2 || donnees_retournees._CA_ === 1 && donnees_retournees.chi_id_projet === 1)){
+            for(let k1 in les_tables){
+                let v1=les_tables[k1];
+                let chemin_fichier_csv_seulement='../rev_' + donnees_retournees.chi_id_projet + '/__fichiers_generes/csv_bdd_' + chi_id_basedd + '_table_' + les_tables[k1] + '.csv';
+                const pointeur_fichier_csv_seulement=await Deno.create( chemin_fichier_csv_seulement );
+                const writer_fichier_csv_seulement=pointeur_fichier_csv_seulement.writable.getWriter();
+                let la_preliere_ligne='';
+                for( let i=0 ; i < les_champs_des_tables[les_tables[k1]].length ; i++ ){
+                    la_preliere_ligne+=',"' + les_champs_des_tables[les_tables[k1]][i] + '"';
+                }
+                la_preliere_ligne=la_preliere_ligne.substr( 1 );
+                await writer_fichier_csv_seulement.write( new TextEncoder().encode( la_preliere_ligne + '\r\n' ) );
+                const sql1="SELECT count(*) as __nb_enregs FROM " + v1 + "";
+                let statement1=await db.prepare( sql1 );
+                let nb_enregs=0;
+                for(const row of statement1){
+                    nb_enregs=row.__nb_enregs;
+                }
+                statement1.finalize();
+                if(nb_enregs > 0){
+                    const nombre_d_enregistrements_par_bloc=1000;
+                    let offset=0;
+                    let continuer=true;
+                    do{
+                        chaine_insert_seulement='';
+                        let les_lignes='';
+                        const sql2="SELECT * FROM " + v1 + ' LIMIT ' + nombre_d_enregistrements_par_bloc + ' OFFSET ' + offset + ';';
+                        let statement2=await db.prepare( sql2 );
+                        for(let row2 of statement2){
+                            let le_insert=[];
+                            for(let elt in row2){
+                                if(row2[elt] === null){
+                                    chaine_insert_seulement+=',NULL';
+                                }else{
+                                    chaine_insert_seulement+=',"' + String( row2[elt] ).replace( /"/g , '""' ) + '"';
+                                }
+                            }
+                            if(chaine_insert_seulement !== ''){
+                                les_lignes+=chaine_insert_seulement.substr( 1 ) + '\r\n';
+                            }
+                            chaine_insert_seulement='';
+                        }
+                        statement2.finalize();
+                        if(offset > nb_enregs){
+                            continuer=false;
+                        }
+                        if(les_lignes !== ''){
+                            await writer_fichier_csv_seulement.write( new TextEncoder().encode( les_lignes ) );
+                            les_lignes='';
+                        }
+                        offset+=nombre_d_enregistrements_par_bloc;
+                    }while(continuer === true);
+                }
+                await writer_fichier_csv_seulement.close();
+            }
+        }
         await db.close();
-        this.__gi1.__xsi[__xsu].push( ' le dump de la base "' + chi_id_basedd + '" a été réalisé [' + this.__gi1.nl2() + ']' );
-        donnees_retournees.__xst=__xsu;
+        donnees_retournees.__xsi[__xsu].push( ' le dump de la base "' + chi_id_basedd + '" a été réalisé [' + this.__ig1.nl2() + ']' );
         return({"__xst" : __xsu});
     }
     /*
@@ -334,9 +497,9 @@ class bdds1{
         if(donnees_recues[__xva].hasOwnProperty( 'les_bases_a_editer' )){
             les_bases_a_editer=donnees_recues[__xva]['les_bases_a_editer'];
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let criteres_171={};
-        let tt171=await this.__gi1.sql_iii(
+        let tt171=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
@@ -345,8 +508,7 @@ class bdds1{
         */
         /*sql_inclure_fin*/ 171 , criteres_171 , donnees_retournees , __db1 );
         if(tt171[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         donnees_retournees[__xva]['les_bases_du_projet']=[];
@@ -354,10 +516,8 @@ class bdds1{
             donnees_retournees[__xva]['les_bases_du_projet']=tt171[__xva];
         }
         donnees_retournees[__xac]='';
-        await this.__gi1.obtenir_les_genres( mat , d , donnees_recues , donnees_retournees , options_generales );
+        await this.__ig1.obtenir_les_genres( mat , d , donnees_recues , donnees_retournees , options_generales );
         donnees_retournees[__xac]+='m1(n1(' + this.moi + '),f1(apres_recuperer_les_revs_des_bases(les_bases_a_editer(\'' + les_bases_a_editer + '\'))))';
-        /* ,sans_maj_de_hash() */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -378,8 +538,7 @@ class bdds1{
       =============================================================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
-        /* this.__gi1.__xsi[__xdv][]=' ajouter ou pas des "actions_apres_modifier" [' + __LINE__ + ']'; */
-        donnees_retournees.__xst=__xsu;
+        /* donnees_retournees.__xsi[__xdv][]=' ajouter ou pas des "actions_apres_modifier" [' + __LINE__ + ']'; */
         return({"__xst" : __xsu});
     }
     /*
@@ -387,11 +546,9 @@ class bdds1{
     */
     async actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -399,11 +556,9 @@ class bdds1{
     */
     async test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -411,11 +566,9 @@ class bdds1{
     */
     async actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -423,11 +576,9 @@ class bdds1{
     */
     async tests_avant_creer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -435,11 +586,9 @@ class bdds1{
     */
     async action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , nouvel_id , form , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -453,7 +602,7 @@ class bdds1{
         form['chi_id_basedd']=form['chi_id_basedd'] === null ? ( null ) : ( parseInt( form['chi_id_basedd'] , 10 ) );
         /* conversion des données numériques fin */
         if(form['chp_fournisseur_basedd'] === null || form['chp_fournisseur_basedd'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "fournisseur" doit être renseigné [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'la valeur pour "fournisseur" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let retour_a_la_liste=false;
@@ -463,10 +612,10 @@ class bdds1{
                 retour_a_la_liste=true;
             }
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         /* sélection du champ à modifier */
         let criteres_select_371={"T0_chi_id_basedd" : form['chi_id_basedd']};
-        let tt371=await this.__gi1.sql_iii(
+        let tt371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -476,8 +625,7 @@ class bdds1{
         */
         /*sql_inclure_fin*/ 371 , criteres_select_371 , donnees_retournees , __db1 );
         if(tt371[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__gi1.nl2() );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         if(tt371[__xst] === __xsu && tt371[__xva].length === 1){
@@ -492,7 +640,7 @@ class bdds1{
                 "n_chp_fournisseur_basedd" : form['chp_fournisseur_basedd']
             };
             await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt362=await this.__gi1.sql_iii(
+            let tt362=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_bdds SET 
                `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
@@ -503,18 +651,16 @@ class bdds1{
             /*sql_inclure_fin*/ 362 , donnees_sql , donnees_retournees , __db1 );
             if(tt362[__xst] !== __xsu){
                 if(tt362['__xme'] !== ''){
-                    this.__gi1.__xsi[__xer].push( tt362['__xme'] + ' [' + this.__gi1.nl2() );
+                    donnees_retournees.__xsi[__xer].push( tt362['__xme'] + ' [' + this.__ig1.nl2() );
                 }else{
-                    this.__gi1.__xsi[__xer].push( 'erreur de modification [' + this.__gi1.nl2() );
+                    donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
                 }
-                donnees_retournees.__xst=__xer;
                 return({"__xst" : __xer});
             }
             let __taam=await this.tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt371[__xva][0] , __db1 );
             if(__taam[__xst] !== __xsu){
                 await __db1.exec( 'ROLLBACK;' );
-                this.__gi1.__xsi[__xer].push( 'erreur après modification [' + this.__gi1.nl2() );
-                donnees_retournees.__xst=__xer;
+                donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
                 return({"__xst" : __xer});
             }
             await __db1.exec( 'COMMIT;' );
@@ -526,7 +672,7 @@ class bdds1{
                 }
                 return({"__xst" : __xsu});
             }
-            let tt371_bis=await this.__gi1.sql_iii(
+            let tt371_bis=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -539,7 +685,6 @@ class bdds1{
         }else{
             donnees_retournees[__xva]['page_modification1']=tt371;
         }
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -562,13 +707,13 @@ class bdds1{
             donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_basedd(' + chi_id_basedd + ')))))';
         }
         if(chi_id_basedd === null){
-            this.__gi1.__xsi[__xer].push( this.__gi1.nl2() );
+            donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         if(__db1 === null){
-            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+            __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         }
-        let tt371=await this.__gi1.sql_iii(
+        let tt371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -578,16 +723,13 @@ class bdds1{
         */
         /*sql_inclure_fin*/ 371 , {"T0_chi_id_basedd" : chi_id_basedd} , donnees_retournees , __db1 );
         if(tt371[__xst] !== __xsu){
-            donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , donnees_recues , donnees_retournees , options_generales , tt371[__xva][0] , __db1 );
         if(aetam[__xst] !== __xsu){
-            donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         donnees_retournees[__xva]['page_modification1']=tt371;
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -608,12 +750,12 @@ class bdds1{
                 }
             }
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let criteres_371={
              /*  */
             "T0_chi_id_basedd" : chi_id_basedd
         };
-        let tt371=await this.__gi1.sql_iii(
+        let tt371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -623,12 +765,10 @@ class bdds1{
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , donnees_retournees , __db1 );
         if(tt371[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         donnees_retournees[__xva]['page_duplication1']=tt371;
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -639,17 +779,16 @@ class bdds1{
         let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
         if(form['chi_id_basedd'] <= 1){
-            this.__gi1.__xsi[__xer].push( 'il n\'est pas possible de supprimer cet élément [' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let criteres_371={
              /*  */
             "T0_chi_id_basedd" : form['chi_id_basedd']
         };
-        let tt371=await this.__gi1.sql_iii(
+        let tt371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -659,21 +798,19 @@ class bdds1{
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , donnees_retournees , __db1 );
         if(tt371[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt371[__xva][0] , __db1 );
         if(tas[__xst] !== __xsu){
-            donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         let criteres_364={
              /*  */
             "chi_id_basedd" : form['chi_id_basedd']
         };
-        let tt364=await this.__gi1.sql_iii(
+        let tt364=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_bdds
         WHERE `chi_id_basedd` = :chi_id_basedd ;
@@ -681,12 +818,12 @@ class bdds1{
         /*sql_inclure_fin*/ 364 , criteres_364 , donnees_retournees , __db1 );
         /*  */
         if(tt364[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let aac=await this.actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt371[__xva][0] , __db1 );
         if(aac[__xst] === __xer){
-            this.__gi1.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
@@ -713,12 +850,12 @@ class bdds1{
             }
         }
         if(chi_id_basedd === 0){
-            this.__gi1.__xsi[__xer].push( this.__gi1.nl2() );
+            donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let critere_371={"T0_chi_id_basedd" : chi_id_basedd};
-        let tt371=await this.__gi1.sql_iii(
+        let tt371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -728,7 +865,6 @@ class bdds1{
         */
         /*sql_inclure_fin*/ 371 , critere_371 , donnees_retournees , __db1 );
         donnees_retournees[__xva]['page_confirmation_supprimer1']=tt371;
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -745,10 +881,10 @@ class bdds1{
         let nom_formulaire=donnees_recues[__xva]['__co1'];
         let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
         if(form['chp_fournisseur_basedd'] === null || form['chp_fournisseur_basedd'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "fournisseur" doit être renseigné [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'la valeur pour "fournisseur" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let __tac=await this.tests_avant_creer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __db1 );
         if(__tac[__xst] !== __xsu){
             return({"__xst" : __xer});
@@ -761,7 +897,7 @@ class bdds1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt363=await this.__gi1.sql_iii(
+        let tt363=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_bdds`(
             `chp_commentaire_basedd` , 
@@ -774,13 +910,13 @@ class bdds1{
         /*sql_inclure_fin*/ 363 , donnees_sql , donnees_retournees , __db1 );
         if(tt363[__xst] === __xsu){
             if(tt363['changements'] === 0){
-                this.__gi1.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__gi1.nl2() + ']' );
+                donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
             let aac=await this.action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , tt363['nouvel_id'] , form , __db1 );
             if(aac[__xst] === __xer){
                 await __db1.exec( 'ROLLBACK;' );
-                this.__gi1.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__gi1.nl2() + ']' );
+                donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
             await __db1.exec( 'COMMIT;' );
@@ -790,11 +926,9 @@ class bdds1{
             }else{
                 await this.page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , tt363['nouvel_id'] , __db1 );
             }
-            donnees_retournees.__xst=__xsu;
             return({"__xst" : __xsu});
         }else{
-            this.__gi1.__xsi[__xer].push( tt363['__xme'] + '\nl\'insertion a échoué [' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( tt363['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
     }
@@ -809,9 +943,8 @@ class bdds1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -827,8 +960,8 @@ class bdds1{
         }
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__gi1.__fnt1.debut_filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , this.fonction_liste );
-        if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__gi1.est_num( formulaire.__num_page )){
+        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , this.fonction_liste );
+        if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
             __num_page=parseInt( formulaire.__num_page , 10 );
@@ -845,9 +978,9 @@ class bdds1{
             }
         }
         if(__db1 === null){
-            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+            __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         }
-        let tt361=await this.__gi1.sql_iii(
+        let tt361=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd`
@@ -865,7 +998,7 @@ class bdds1{
             __debut=0;
             __num_page=0;
             criteres361['debut']=__debut;
-            let tt361=await this.__gi1.sql_iii(
+            let tt361=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd`
@@ -882,11 +1015,10 @@ class bdds1{
         donnees_retournees[__xva]['__num_page']=__num_page;
         donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
         for(let i in formulaire){
-            donnees_retournees[__xac]+=this.__gi1.__fnt1.critere_liste( formulaire , i );
+            donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         donnees_retournees[__xac]+='))))';
         donnees_retournees[__xva][this.fonction_liste]=tt361;
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -909,13 +1041,13 @@ class bdds1{
       =============================================================================================================
     */
     moi='bdds1';
-    __gi1=null;
+    __ig1=null;
     fonction_liste='liste1';
     /*
       =============================================================================================================
     */
-    constructor( __gi1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
     }
     /*
       =============================================================================================================

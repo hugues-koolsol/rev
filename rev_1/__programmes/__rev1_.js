@@ -31,7 +31,7 @@ const REGEX_CR=new RegExp( MON_CR , 'g' );
   
 */
 class __rev1{
-    __gi1=null;
+    __ig1=null;
     #NBESPACESSOURCEPRODUIT=4;
     #NBESPACESREV=3;
     /* __m__rev1.globale_messages */
@@ -39,15 +39,15 @@ class __rev1{
     /*
       =============================================================================================================
     */
-    constructor( __gi1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
     }
     /*
       =============================================================================================================
     */
     ajoute_message( obj ){
         try{
-            return(this.__gi1.ajoute_message( obj ));
+            return(this.__ig1.ajoute_message( obj ));
         }catch{
             return obj;
         }
@@ -70,9 +70,9 @@ class __rev1{
         var endMicro=performance.now();
         if(texte_rev.length > 5000){
             /* le_biscuit */
-            if(this.__gi1
-                   && this.__gi1.hasOwnProperty( 'stockage_local' )
-                   && this.__gi1.stockage_local.parametres['__deverminage'].valeur > 0
+            if(this.__ig1
+                   && this.__ig1.hasOwnProperty( 'stockage_local' )
+                   && this.__ig1.stockage_local.parametres['__deverminage'].valeur > 0
             ){
                 var temps=parseInt( (endMicro - startMicro) * 1000 , 10 ) / 1000;
                 console.log( 'temps de conversion de texte rev vers matrice pour un source rev de ' + texte_rev.length + ' octets  : ' , temps );
@@ -90,36 +90,6 @@ class __rev1{
         var matrice_fonction=this.tb_vers_matrice( tableau1.__xva ,  /* niv */ true ,  /* cst_dlr */ true ,  /* par */ '' );
         return matrice_fonction;
     }
-    /*
-      =============================================================================================================
-      met les valeurs dans la variable globale_messages ( l og erreu r ) logerreur __m__rev1.ajoute_message
-      =============================================================================================================
-    */
-    /*
-      empiler _ erreur( o ){
-      var a_retourner={
-      "__xst" : o.hasOwnProperty( '__xst' ) ? ( o.__xst ) : ( __xer ) ,
-      "__xme" : o.hasOwnProperty( '__xme' ) ? ( o.__xme ) : ( null ) ,
-      "__xva" : o.hasOwnProperty( '__xva' ) ? ( o.__xva ) : ( null ) ,
-      "masquee" : o.hasOwnProperty( 'masquee' ) ? ( o.masquee ) : ( false ) ,
-      "plage" : o.hasOwnProperty( 'plage' ) ? ( o.plage ) : ( null ) ,
-      "lig_col" : o.hasOwnProperty( 'lig_col' ) ? ( o.lig_col ) : ( null ) ,
-      "ligne" : o.hasOwnProperty( 'ligne' ) ? ( o.ligne ) : ( null )
-      };
-      if(a_retourner.__xst === __xal){
-      this.globale_messages.__xal.push( a_retourner );
-      }else if(a_retourner.__xst === __xif){
-      this.globale_messages.__xif.push( a_retourner );
-      }else if(a_retourner.__xst === __xsu){
-      this.globale_messages.__xsu.push( a_retourner );
-      }else if(a_retourner.__xst === __xdv){
-      this.globale_messages.__xdv.push( a_retourner );
-      }else{
-      this.globale_messages.__xer.push( a_retourner );
-      }
-      return a_retourner;
-      }
-    */
     /*
       =============================================================================================================
       fonction respr (__m__rev1.#respr) PRIVÉE : retour chariot + nouvelle ligne + n espaces dans les rev produits

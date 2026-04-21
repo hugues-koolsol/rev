@@ -17,16 +17,16 @@ class sql_341{
         const from0=`
           FROM  tbl_sources T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chx_dossier_id_source\` = ` + this.__gi1.__fnt1.sq1( par['T0_chx_dossier_id_source'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chx_dossier_id_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_dossier_id_source'] ) + ``;
         sql0+=where0;
-        /* this.__gi1.ma_trace1('sql_341 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_341 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 341 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 341 , e , sql0 , donnees_retournees , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -41,13 +41,13 @@ class sql_341{
       =============================================================================================================
     */
     moi='sql_341';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

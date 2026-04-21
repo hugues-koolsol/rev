@@ -16,7 +16,7 @@ class sql_340{
             if(par['n_che_est_souche_requete'] === undefined || par['n_che_est_souche_requete'] === '' || par['n_che_est_souche_requete'] === null){
                 tableau_champs.push( '`che_est_souche_requete` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_souche_requete` = ' + this.__gi1.__fnt1.sq0( par['n_che_est_souche_requete'] ) + '' );
+                tableau_champs.push( '`che_est_souche_requete` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_souche_requete'] ) + '' );
             }
             tableau_champs.push( '`chd__dtm_requete` = \'' + donnees_retournees.date_heure_serveur + '\' ' );
             tableau_champs.push('`che__nur_requete` = che__nur_requete + 1 ');
@@ -32,26 +32,26 @@ class sql_340{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_requete\` = ` + this.__gi1.__fnt1.sq1( par['c_chi_id_requete'] ) + '\r\n';
+            where0+=` AND \`chi_id_requete\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_requete'] ) + '\r\n';
             sql0+=where0;
-            /* this.__gi1.ma_trace1(' sql_340= ' + sql0 ); */
+            /* this.__ig1.ma_trace1(' sql_340= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 340 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 340 , e , sql0 , donnees_retournees , {} ));
         }
     }
     /*
       =============================================================================================================
     */
     moi='sql_340';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

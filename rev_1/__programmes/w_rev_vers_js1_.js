@@ -16,7 +16,7 @@ const REGEX_CR=new RegExp( MON_CR , 'g' );
   =====================================================================================================================
 */
 class w_rev_vers_js1{
-    __gi1=null;
+    __ig1=null;
     __m_rev1=null;
     #nom_de_la_variable='';
     #tb=[];
@@ -73,9 +73,9 @@ class w_rev_vers_js1{
     /*
       =============================================================================================================
     */
-    constructor( nom_de_la_variable , __gi1 ){
-        this.__gi1=__gi1;
-        this.__rev1=__gi1.__rev1;
+    constructor( nom_de_la_variable , __ig1 ){
+        this.__ig1=__ig1;
+        this.__rev1=__ig1.__rev1;
         /* console.log('constructor'); */
         this.#nom_de_la_variable=nom_de_la_variable;
     }
@@ -2198,7 +2198,7 @@ class w_rev_vers_js1{
                 }
             }
         }
-        if(nombre_de_parametres === 1 && nombre_de_proprietes === 0 && seul_element !== '' && this.__gi1.est_num( seul_element )){
+        if(nombre_de_parametres === 1 && nombre_de_proprietes === 0 && seul_element !== '' && this.__ig1.est_num( seul_element )){
             if(this.#tb[this.#tb[id][7]][1] === 'new' && this.#tb[this.#tb[id][7]][2] === 'f'){
                 t='Array(' + seul_element + ')';
             }else{
@@ -2613,7 +2613,7 @@ class w_rev_vers_js1{
                 }else if(tableau_prop_objet[i].cle.substr( 0 , 1 ) === '{' || tableau_prop_objet[i].cle.substr( 0 , 1 ) === '['){
                     tt+=tableau_prop_objet[i].cle + ' : ' + tableau_prop_objet[i].valeur;
                 }else{
-                    if(this.__gi1.est_num( tableau_prop_objet[i].cle )){
+                    if(this.__ig1.est_num( tableau_prop_objet[i].cle )){
                         tt+=tableau_prop_objet[i].cle + ' : ' + tableau_prop_objet[i].valeur;
                     }else{
                         tt+='"' + tableau_prop_objet[i].cle + '" : ' + le_commentaire_en_ligne + tableau_prop_objet[i].valeur;
@@ -3060,6 +3060,7 @@ class w_rev_vers_js1{
                         'charAt',
                         'charCodeAt',
                         'cloneNode',
+                        'close',
                         'codePointAt',
                         'concat',
                         'delete',
@@ -3212,7 +3213,7 @@ class w_rev_vers_js1{
         argumentsFonction=argumentsFonction !== '' ? ( argumentsFonction.substr( 1 ) ) : ( '' );
         if(!enfantTermineParUnePropriete){
             if(nomFonction === 'Array' && nbEnfants <= 1){
-                if(argumentsFonction === '' || this.__gi1.est_num( argumentsFonction )){
+                if(argumentsFonction === '' || this.__ig1.est_num( argumentsFonction )){
                     t+='[';
                 }else{
                     t+='Array(';
@@ -3243,8 +3244,8 @@ class w_rev_vers_js1{
         }else{
             if(nomFonction === 'sql_iii'
                    && premier_argument_de_la_fonction_pour_sqliii !== null
-                   && this.__gi1.est_num( premier_argument_de_la_fonction_pour_sqliii )
-                   && this.__gi1.__liste_des_sql.hasOwnProperty( premier_argument_de_la_fonction_pour_sqliii )
+                   && this.__ig1.est_num( premier_argument_de_la_fonction_pour_sqliii )
+                   && this.__ig1.__liste_des_sql.hasOwnProperty( premier_argument_de_la_fonction_pour_sqliii )
             ){
                 /*
                   Attention, çi dessous bien laisser les débuts et fin de commentaires
@@ -3254,7 +3255,7 @@ class w_rev_vers_js1{
                 t+='/' + '*sql_' + 'inclure_deb*' + '/ /*#';
                 t+=this.__rev1.resps( niveau );
                 let les_espaces=this.__rev1.resps( niveau );
-                t+=this.__gi1.__liste_des_sql[premier_argument_de_la_fonction_pour_sqliii].cht_sql_requete.replace( /\/\*/g , '' ).replace( /\*\//g , '' ).replace( /\r/g , '' ).replace( /\n/g , les_espaces );
+                t+=this.__ig1.__liste_des_sql[premier_argument_de_la_fonction_pour_sqliii].cht_sql_requete.replace( /\/\*/g , '' ).replace( /\*\//g , '' ).replace( /\r/g , '' ).replace( /\n/g , les_espaces );
                 t+=this.__rev1.resps( niveau );
                 t+='*/';
                 t+=this.__rev1.resps( niveau );
@@ -3273,7 +3274,7 @@ class w_rev_vers_js1{
         }
         if(!enfantTermineParUnePropriete){
             if(nomFonction === 'Array' && nbEnfants <= 1){
-                if(argumentsFonction === '' || this.__gi1.est_num( argumentsFonction )){
+                if(argumentsFonction === '' || this.__ig1.est_num( argumentsFonction )){
                     t+=']';
                 }else{
                     t+=')';

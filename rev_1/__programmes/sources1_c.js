@@ -9,7 +9,7 @@ class sources1{
     moi='sources1';
     DUN_DUNE_ELEMENT_GERE='d\'un source';
     LISTE_DES_ELEMENTS_GERES='liste des sources';
-    __gi1=null;
+    __ig1=null;
     /*
       filtres liste
     */
@@ -23,7 +23,6 @@ class sources1{
             "T0_che_binaire_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8} ,
             "T0_chx_dossier_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
             "T1_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8} ,
-            "T0_che_contient_version_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'contient version' ,"taille" : 8} ,
             "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8}
         } ,
         "sous_liste1" : {
@@ -35,7 +34,6 @@ class sources1{
             "T0_che_binaire_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8} ,
             "T0_chx_dossier_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
             "T1_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8} ,
-            "T0_che_contient_version_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'contient version' ,"taille" : 8} ,
             "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8}
         }
     };
@@ -45,13 +43,65 @@ class sources1{
     /*
       =============================================================================================================
     */
+    constituer_la_liste_et_envoyer_en_cron( mat , d ){
+        let la_liste=[];
+        let lst=document.getElementById( 'vv_ecran_liste_zone_contenu' ).querySelectorAll( "[data-chi_id_source]" );
+        for( let i=0 ; i < lst.length ; i++ ){
+            la_liste.push( lst[i].getAttribute( 'data-chi_id_source' ) );
+        }
+        if(la_liste.length > 0 && document.getElementById( 'vv_chaine_remplacee' ).value !== ''){
+            this.__ig1.envoyer_un_message_au_worker( {
+                     /*  */
+                    "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(remplacer_une_chaine_par_une_autre())))' ,
+                    "__xva" : {
+                        "vv_chaine_remplacee" : document.getElementById( 'vv_chaine_remplacee' ).value ,
+                        "vv_chaine_qui_la_remplace" : document.getElementById( 'vv_chaine_qui_la_remplace' ).value ,
+                        "liste_des_chi_id_source" : la_liste
+                    }
+                } );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
+    remplacer_une_chaine_par_une_autre_dans_les_sources( mat , d ){
+        let la_liste=[];
+        let lst=document.getElementById( 'vv_ecran_liste_zone_contenu' ).querySelectorAll( "[data-chi_id_source]" );
+        for( let i=0 ; i < lst.length ; i++ ){
+            la_liste.push( lst[i].getAttribute( 'data-chi_id_source' ) );
+        }
+        let o1='';
+        o1+='<h1>remplacer en arière plan un mot par un autre dans les sources de cette liste</h1>';
+        o1+='remplacer ceci :';
+        o1+='<br />';
+        o1+='<input type="text" value="__gi1" id="vv_chaine_remplacee">';
+        o1+='<br />';
+        o1+='par cela';
+        o1+='<br />';
+        o1+='<input type="text" value="__ig1" id="vv_chaine_qui_la_remplace">';
+        o1+='<br />';
+        if(la_liste.length > 0){
+            o1+='Liste des sources =  ';
+            o1+='<br />';
+            o1+='' + la_liste.join( ',' );
+            o1+='<br />';
+            o1+='<div class="rev_bouton yy__xal" data-rev_click="m1(n1(' + this.moi + '),f1(constituer_la_liste_et_envoyer_en_cron()))" title="" >remplacer pour la liste affichée</div>';
+        }
+        this.__ig1.affiche_sous_fenetre1( o1 );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     compiler_cette_liste_de_js_en_cron1(){
         let liste_des_chi_id_source=[];
         let lst=document.querySelectorAll( "[data-chi_id_source]" );
         for( let i=0 ; i < lst.length ; i++ ){
             liste_des_chi_id_source.push( parseInt( lst[i].getAttribute( 'data-chi_id_source' ) , 10 ) );
         }
-        this.__gi1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_message_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_js_en_cron2())))' ,
                 "__xva" : {"liste_des_chi_id_source" : liste_des_chi_id_source}
@@ -64,9 +114,9 @@ class sources1{
       au retour du serveur
     */
     charger_source_pour_compilation1( mat , d , le_message_du_serveur=null ){
-        let tt=this.__gi1.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
+        let tt=this.__ig1.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
         let action='m1(n1(_developpement1_),f1(compiler_source1(' + tt.__xva + ')))';
-        this.__gi1.executer1( action , le_message_du_serveur );
+        this.__ig1.executer1( action , le_message_du_serveur );
         return({"__xst" : __xsu});
     }
     /*
@@ -86,22 +136,22 @@ class sources1{
         if(zone_source === '' || zone_resultat === ''){
             return({"__xst" : __xer});
         }
-        this.__gi1.zone_d_edition_en_cours=zone_source;
+        this.__ig1.zone_d_edition_en_cours=zone_source;
         let t1=document.getElementById( zone_source );
         let t2=document.getElementById( zone_resultat );
         if(!(t1 && t2)){
             return({"__xst" : __xer});
         }
         t2.innerHTML='';
-        let tableau1=this.__gi1.__rev1.txt_en_tableau( t1.value );
-        let obj2=this.__gi1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
+        let tableau1=this.__ig1.__rev1.txt_en_tableau( t1.value );
+        let obj2=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
         if(obj2.__xst === __xsu){
-            let ttt=this.__gi1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
+            let ttt=this.__ig1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
             if(ttt.__xst === __xsu){
                 t2.value=ttt.__xva;
                 return({"__xst" : __xsu});
             }else{
-                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : __gi1.__rev1.nl2() + '<br />de la matrice'} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __ig1.__rev1.nl2() + '<br />de la matrice'} ));
             }
         }
         return({"__xst" : __xer});
@@ -142,8 +192,10 @@ class sources1{
     */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
+            case 'remplacer_une_chaine_par_une_autre' : this.__ig1.fermer_la_sous_fenetre();
+                break;
             case 'exporter_dans_rev_un' : 
-            case 'importer_de_rev_un' : this.__gi1.delai_selectionner_champ_filtre();
+            case 'importer_de_rev_un' : this.__ig1.delai_selectionner_champ_filtre();
                 break;
             case 'compiler_cette_liste_de_js_en_cron2' : 
             case 'ecrire_ce_source_sur_disque1' : 
@@ -151,7 +203,7 @@ class sources1{
             case 'charger_source_pour_compilation2' : 
             case 'exporter_dans_base_de_prod1' : break;
             default:
-                this.__gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
+                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
                 return({"__xst" : __xer});
                 
         }
@@ -160,17 +212,17 @@ class sources1{
     /*
       =============================================================================================================
     */
-    constructor( mat , d , __gi1 ){
-        this.__gi1=__gi1;
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
         /*
           =====================================================================================================
           il faut précharger les bibliothèques externes qui viennent du réseau
           =====================================================================================================
         */
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/php_parser1_c.js' );
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/sqlite_parser1_c.js' );
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/postcss1_c.js' );
+        this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
+        this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/php_parser1_c.js' );
+        this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/sqlite_parser1_c.js' );
+        this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/postcss1_c.js' );
         for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
             if(mat[i][1] === 'nom_champ_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 this.nom_champ_dans_parent1=mat[i + 1][1];
@@ -185,15 +237,13 @@ class sources1{
             }
         }
         if(this.fonction_liste === 'liste1'){
-            let aa=sessionStorage.getItem( this.__gi1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste );
+            let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste );
             if(aa !== null){
                 let jso=JSON.parse( aa );
                 for(let i in this.tableau_des_filtres[this.fonction_liste]){
                     this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_js_en_cron1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >compiler cette liste en cron</div>';
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__gi1.les_svg.nouveau_document + '</div>';
         }
     }
     /*
@@ -216,66 +266,57 @@ class sources1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chp_nom_source'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_nom_source' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=this.__gi1.__fnt1.test_du_nom_technique1( fo1['chp_nom_source'] , 'nom' );
+        var __test=this.__ig1.__fnt1.test_du_nom_technique1( fo1['chp_nom_source'] , 'nom' );
         if(__test.__xst !== __xsu){
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_nom_source' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['che_binaire_source'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'che_binaire_source' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['chx_dossier_id_source'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chx_dossier_id_source' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['cht_rev_source'] !== null && fo1['cht_rev_source'] !== ''){
-            let obj1=this.__gi1.__rev1.rev_tm( fo1['cht_rev_source'] );
+            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_rev_source'] );
             if(obj1.__xst !== __xsu){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "rev" n\'est pas dans un format rev valide'} );
-                this.__gi1.affiche_les_messages();
-                this.__gi1.retablir_les_boutons_masques();
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "rev" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
                 try{
                     document.getElementById( 'cht_rev_source' ).focus();
                 } catch {}
                 return({"__xst" : __xsu});
             }
         }
-        if(fo1['che_contient_version_source'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "contient version" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_contient_version_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         if(fo1['che_autorisation_globale_source'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'che_autorisation_globale_source' ).focus();
             } catch {}
@@ -285,12 +326,6 @@ class sources1{
         fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
         fo1['chx_dossier_id_source']=fo1['chx_dossier_id_source'] === '' ? ( null ) : ( parseInt( fo1['chx_dossier_id_source'] , 10 ) );
-        fo1['che_contient_version_source']=fo1['che_contient_version_source'] === '' ?
-          ( 
-            null
-          ) : ( 
-            parseInt( fo1['che_contient_version_source'] , 10 )
-          );
         fo1['che_autorisation_globale_source']=fo1['che_autorisation_globale_source'] === '' ?
           ( 
             null
@@ -303,7 +338,7 @@ class sources1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__gi1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_message_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -315,10 +350,10 @@ class sources1{
     */
     page_modification1( mat , d , le_message_du_serveur=null ){
         if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_modification1' )){
-            return(this.__gi1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];
-        this.__gi1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi );
         let o1='';
         /*
           =====================================================================================================
@@ -331,8 +366,8 @@ class sources1{
         if(enreg['T0.chp_nom_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source" size="64"  maxlength="128"  value="' + this.__gi1.fi2( enreg['T0.chp_nom_source'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+=this.__gi1.__fnt1.boutons_edition_text( 'chp_nom_source' );
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source" size="64"  maxlength="128"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_source'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_source' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -346,7 +381,7 @@ class sources1{
         if(enreg['T0.che_binaire_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__gi1.fi2( enreg['T0.che_binaire_source'] ) + '" >';
+        o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_binaire_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -365,10 +400,10 @@ class sources1{
         o1+='"  id="chx_dossier_id_source" />';
         o1+='        <span id="chx_dossier_id_source_libelle">';
         o1+='(' + enreg['T0.chx_dossier_id_source'] + ') ';
-        o1+=this.__gi1.fi2( enreg['T1.chp_nom_dossier'] );
+        o1+=this.__ig1.fi2( enreg['T1.chp_nom_dossier'] );
         o1+='</span>';
-        o1+=this.__gi1.lien_parent( 'dossiers1' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' );
-        if(enreg['T0.chx_dossier_id_source'] !== null && this.__gi1.est_num( enreg['T0.chx_dossier_id_source'] )){
+        o1+=this.__ig1.lien_parent( 'dossiers1' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' );
+        if(enreg['T0.chx_dossier_id_source'] !== null && this.__ig1.est_num( enreg['T0.chx_dossier_id_source'] )){
             o1+='<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + enreg['T0.chx_dossier_id_source'] + ')))))" title="aller au dossier" > aller au dossier</div>';
         }
         o1+='    </div>';
@@ -386,14 +421,14 @@ class sources1{
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
-        o1+=this.__gi1.__fnt1.boutons_rev3( 'cht_rev_source' );
+        o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_rev_source' );
         o1+='</div>\r\n';
         var sty='';
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  data-editeur1="rev"  id="cht_rev_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__gi1.fi2( enreg['T0.cht_rev_source'] );
+        o1+=this.__ig1.fi2( enreg['T0.cht_rev_source'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -499,7 +534,7 @@ class sources1{
             o1+='</div>';
             /*  */
         }
-        o1+=this.__gi1.__fnt1.boutons_edition1( 'cht_genere_source' );
+        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_genere_source' );
         o1+='<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(lire_ce_source_du_disque1(chi_id_source(' + enreg['T0.chi_id_source'] + ')))))" title="lire du disque" >📤 du 💽</div>';
         o1+='<div class="rev_bouton yy__2" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(ecrire_ce_source_sur_disque1(chi_id_source(' + enreg['T0.chi_id_source'] + ')))))" title="écrire sur disque" >📥 sur 💽</div>';
         o1+='<div class="rev_bouton yy__0" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer_ce_source_du_disque1(chi_id_source(' + enreg['T0.chi_id_source'] + ')))))" title="supprimer du disque" >🗑 du 💽</div>';
@@ -509,7 +544,7 @@ class sources1{
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_genere_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__gi1.fi2( enreg['T0.cht_genere_source'] );
+        o1+=this.__ig1.fi2( enreg['T0.cht_genere_source'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -527,30 +562,16 @@ class sources1{
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
-        o1+=this.__gi1.__fnt1.boutons_edition1( 'cht_commentaire_source' );
+        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_source' );
         o1+='</div>\r\n';
         var sty='';
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_commentaire_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__gi1.fi2( enreg['T0.cht_commentaire_source'] );
+        o1+=this.__ig1.fi2( enreg['T0.cht_commentaire_source'] );
         o1+='</textarea>';
         o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>contient version</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_contient_version_source'] === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="range" id="che_contient_version_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__gi1.fi2( enreg['T0.che_contient_version_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -564,7 +585,7 @@ class sources1{
         if(enreg['T0.che_autorisation_globale_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__gi1.fi2( enreg['T0.che_autorisation_globale_source'] ) + '" >';
+        o1+='        <input type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_autorisation_globale_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -578,17 +599,17 @@ class sources1{
         cmd+='liste1(';
         for(let i in this.tableau_des_filtres[this.fonction_liste]){
             if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__gi1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
             }
         }
         cmd+=')';
-        let obj2=this.__gi1.__rev1.rev_tm( cmd );
+        let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__gi1.fi2( jso ) + '" />';
+        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__gi1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
     }
     /*
@@ -596,10 +617,10 @@ class sources1{
     */
     page_confirmation_supprimer1( mat , d , le_message_du_serveur=null ){
         if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
-            return(this.__gi1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__gi1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi );
         let o1='';
         /*
           =====================================================================================================
@@ -609,7 +630,7 @@ class sources1{
         o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_source"   maxlength="128"  value="' + this.__gi1.fi2( enreg['T0.chp_nom_source'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_source"   maxlength="128"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_source'] ) + '"   />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -620,7 +641,7 @@ class sources1{
         o1+='      <span>binaire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__gi1.fi2( enreg['T0.che_binaire_source'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_binaire_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -636,7 +657,7 @@ class sources1{
         o1+='"  id="chx_dossier_id_source" />';
         o1+='        <span>';
         o1+='(' + enreg['T0.chx_dossier_id_source'] + ') ';
-        o1+=this.__gi1.fi2( enreg['T1.chp_nom_dossier'] );
+        o1+=this.__ig1.fi2( enreg['T1.chp_nom_dossier'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -649,7 +670,7 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea disabled id="cht_rev_source" rows="2"  cols="50" >' + this.__gi1.fi2( enreg['T0.cht_rev_source'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -662,7 +683,7 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea disabled id="cht_genere_source" rows="2"  cols="50" >' + this.__gi1.fi2( enreg['T0.cht_genere_source'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_genere_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_genere_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -675,19 +696,8 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea disabled id="cht_commentaire_source" rows="2"  cols="50" >' + this.__gi1.fi2( enreg['T0.cht_commentaire_source'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_commentaire_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_commentaire_source'] ) + '</textarea>';
         o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>contient version</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_contient_version_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__gi1.fi2( enreg['T0.che_contient_version_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -698,7 +708,7 @@ class sources1{
         o1+='      <span>autorisation globale</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__gi1.fi2( enreg['T0.che_autorisation_globale_source'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_autorisation_globale_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -712,19 +722,19 @@ class sources1{
         cmd+='liste1(';
         for(let i in this.tableau_des_filtres[this.fonction_liste]){
             if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__gi1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
             }
         }
         cmd+=')';
-        let obj2=this.__gi1.__rev1.rev_tm( cmd );
+        let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__gi1.fi2( jso ) + '" />';
+        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
         document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
-        this.__gi1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
-        if(this.__gi1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
-            this.__gi1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
+        if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
+            this.__ig1.maj_hash( mat , 0 );
         }
-        this.__gi1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
     }
     /*
@@ -748,36 +758,36 @@ class sources1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chx_dossier_id_source'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chx_dossier_id_source' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['chp_nom_source'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_nom_source' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=this.__gi1.__fnt1.test_du_nom_technique1( fo1['chp_nom_source'] , 'nom' );
+        var __test=this.__ig1.__fnt1.test_du_nom_technique1( fo1['chp_nom_source'] , 'nom' );
         if(__test.__xst !== __xsu){
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_nom_source' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['che_binaire_source'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'che_binaire_source' ).focus();
             } catch {}
@@ -792,7 +802,7 @@ class sources1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__gi1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_message_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -803,7 +813,7 @@ class sources1{
       =============================================================================================================
     */
     page_creer1( mat , d , dupliquer=null ){
-        this.__gi1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi );
         let o1='';
         /*
           
@@ -818,7 +828,7 @@ class sources1{
         o1+=' type="hidden" ';
         o1+=' value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_dossier_id_source' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.chx_dossier_id_source'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.chx_dossier_id_source'] );
         }else{
             o1+='';
         }
@@ -830,7 +840,7 @@ class sources1{
                 o1+='*indéfini';
             }else{
                 o1+='(' + dupliquer['T0.chx_dossier_id_source'] + ') ';
-                o1+=this.__gi1.fi2( dupliquer['T1.chp_nom_dossier'] );
+                o1+=this.__ig1.fi2( dupliquer['T1.chp_nom_dossier'] );
             }
         }else{
             o1+='*indéfini';
@@ -839,7 +849,7 @@ class sources1{
         /*
           ;
         */
-        o1+=this.__gi1.lien_parent( 'dossiers1' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' );
+        o1+=this.__ig1.lien_parent( 'dossiers1' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' );
         /*  */
         o1+='    </div>';
         o1+='  </div>';
@@ -853,13 +863,13 @@ class sources1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input  type="text"   maxlength="128"  id="chp_nom_source" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_source' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.chp_nom_source'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_source'] );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='    <div>';
-        o1+=this.__gi1.__fnt1.boutons_edition_text( 'chp_nom_source' );
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_source' );
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -873,11 +883,11 @@ class sources1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <div>\r\n';
-        o1+='              ' + this.__gi1.__fnt1.boutons_edition1( 'cht_genere_source' );
+        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_genere_source' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_genere_source" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_genere_source' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.cht_genere_source'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.cht_genere_source'] );
         }else{
             o1+='';
         }
@@ -895,11 +905,11 @@ class sources1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <div>\r\n';
-        o1+='              ' + this.__gi1.__fnt1.boutons_edition1( 'cht_commentaire_source' );
+        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_source' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_commentaire_source" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_commentaire_source' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.cht_commentaire_source'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.cht_commentaire_source'] );
         }else{
             o1+='';
         }
@@ -917,11 +927,11 @@ class sources1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <div>\r\n';
-        o1+='              ' + this.__gi1.__fnt1.boutons_rev3( 'cht_rev_source' );
+        o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_rev_source' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="rev"  id="cht_rev_source" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_rev_source' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.cht_rev_source'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.cht_rev_source'] );
         }else{
             o1+='';
         }
@@ -939,7 +949,7 @@ class sources1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_binaire_source' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.che_binaire_source'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.che_binaire_source'] );
         }else{
             o1+='0';
         }
@@ -953,17 +963,17 @@ class sources1{
         cmd+='liste1(';
         for(let i in this.tableau_des_filtres[this.fonction_liste]){
             if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__gi1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
             }
         }
         cmd+=')';
-        let obj2=this.__gi1.__rev1.rev_tm( cmd );
+        let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__gi1.fi2( jso ) + '" />';
+        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
         document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__gi1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
     }
     /*
@@ -977,7 +987,7 @@ class sources1{
         let tt=this.zones_liste1( le_message_du_serveur );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
         this.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant );
-        this.__gi1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.ajoute_les_evenements_aux_boutons();
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
         for( let i=0 ; i < lst.length ; i++ ){
@@ -985,13 +995,13 @@ class sources1{
                 this.filtres[lst[i].id]=lst[i].value;
             }
         }
-        let aa=sessionStorage.getItem( this.__gi1.cle_lst0 + '_' + this.moi );
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi );
         if(aa === null){
-            sessionStorage.setItem( this.__gi1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
+            sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
         }else{
             let jso=JSON.parse( aa );
             jso['filtres']=this.filtres;
-            sessionStorage.setItem( this.__gi1.cle_lst0 + '_' + this.moi , JSON.stringify( jso ) );
+            sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( jso ) );
         }
         return({"__xst" : __xsu});
     }
@@ -1019,7 +1029,7 @@ class sources1{
                 this.filtres[this.fonction_liste][nom_champ_filtre]='';
             }
         }
-        let cle_session=this.__gi1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
+        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
         sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
         if(le_message_du_serveur.__xva.hasOwnProperty( '__fo1' )
                && le_message_du_serveur.__xva.__fo1 !== null
@@ -1047,7 +1057,7 @@ class sources1{
                     }
                     o1+='        <div>\r\n';
                     o1+='          <input aria-autocomplete="list" type="text" id="' + i + '" ';
-                    o1+='           value="' + this.__gi1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
+                    o1+='           value="' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
                     o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
                     o1+='           maxlength="64" ';
                     o1+='           autocapitalize="off" ';
@@ -1098,7 +1108,7 @@ class sources1{
             }
         }
         if(de_13 === ''){
-            this.__gi1.delai_selectionner_champ_filtre();
+            this.__ig1.delai_selectionner_champ_filtre();
         }else{
             try{
                 document.getElementById( de_13 ).select();
@@ -1125,14 +1135,14 @@ class sources1{
       =============================================================================================================
     */
     aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__gi1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================
     */
     sous_liste1( mat , d , le_message_du_serveur=null ){
         this.fonction_liste='sous_liste1';
-        return(this.__gi1.sous_liste_generique1( mat , d , le_message_du_serveur , this ));
+        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this ));
     }
     /*
       =============================================================================================================
@@ -1144,36 +1154,42 @@ class sources1{
             /* this.#init1(null,'liste1'); */
             return({"__xst" : __xsu});
         }
+        this.vv_ecran_liste_boutons_avant='';
+        this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_js_en_cron1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >compiler cette liste en cron</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        if(this.__ig1.chi_id_projet >= 3){
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xal" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_une_chaine_par_une_autre_dans_les_sources()))" title="remplacer une chaîne par une autre">remplacer</div>';
+        }
         let o1='';
         let initialisation_fait=false;
         let a=document.getElementById( 'vv_titre_de_la_page' );
         if(a === null){
-            this.__gi1.initialisation_des_zones( this.moi );
+            this.__ig1.initialisation_des_zones( this.moi );
             initialisation_fait=true;
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
         if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){
         }else{
             if(initialisation_fait === false){
-                this.__gi1.initialisation_des_zones( this.moi );
+                this.__ig1.initialisation_des_zones( this.moi );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
-            this.__gi1.afficher_les_zones( 'vv_ecran_liste' );
+            this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
         this.zones_filtres1( mat , d , le_message_du_serveur );
-        this.__gi1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_message_du_serveur );
-        this.__gi1.ajoute_les_evenements_aux_boutons();
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     entree_module( mat , d ){
-        this.__gi1.recupere_liste_initiale( mat , d , this );
+        this.__ig1.recupere_liste_initiale( mat , d , this );
         return({"__xst" : __xsu});
     }
     /*
@@ -1188,14 +1204,14 @@ class sources1{
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
-                parametres+='m1(n1(__gi1),f1(choisir_dans_sous_fenetre1(';
+                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre1(';
                 parametres+=' nom_champ_dans_parent1(' + this.nom_champ_dans_parent1 + ')';
                 parametres+=' nom_libelle_dans_parent1(' + this.nom_libelle_dans_parent1 + ')';
                 parametres+=' id1(' + elem['T0.chi_id_source'] + ')';
                 let libelle1='';
                 libelle1+='(' + elem['T0.chi_id_source'] + ') ';
                 libelle1+=elem['T0.chp_nom_source'] ? ( ' , ' + elem['T0.chp_nom_source'] ) : ( '' );
-                parametres+=' libelle1(\'' + this.__gi1.fi1( libelle1 ) + '\')';
+                parametres+=' libelle1(\'' + this.__ig1.fi1( libelle1 ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
                 lst+='</td>';
@@ -1203,7 +1219,7 @@ class sources1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chp_nom_source'] !== null){
-                    lst+=this.__gi1.fi2( elem['T0.chp_nom_source'] );
+                    lst+=this.__ig1.fi2( elem['T0.chp_nom_source'] );
                 }
                 lst+='</td>';
                 /*
@@ -1251,13 +1267,6 @@ class sources1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_contient_version_source'] !== null){
-                    lst+=elem['T0.che_contient_version_source'];
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
                 if(elem['T0.che_autorisation_globale_source'] !== null){
                     lst+=elem['T0.che_autorisation_globale_source'];
                 }
@@ -1276,14 +1285,13 @@ class sources1{
                 o1+='<th>binaire</th>';
                 o1+='<th>dossier id</th>';
                 o1+='<th>nom dossier</th>';
-                o1+='<th>contient version</th>';
                 o1+='<th>autorisation globale</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
                 o1+='</div>';
             }else{
-                o1+=this.__gi1.la_liste_est_vide();
+                o1+=this.__ig1.la_liste_est_vide();
             }
         }
         return o1;
@@ -1300,16 +1308,16 @@ class sources1{
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
-                lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + elem['T0.chx_dossier_id_source'] + ')))))">' + this.__gi1.les_svg.dossier + '</div>';
-                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__gi1.les_svg.poubelle + '</div>';
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__gi1.les_svg.editer + '</div>';
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__gi1.les_svg.dupliquer + '</div>';
+                lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + elem['T0.chx_dossier_id_source'] + ')))))">' + this.__ig1.les_svg.dossier + '</div>';
+                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
                 let affiche_bouton_compiler=true;
                 if(elem['T0.che_binaire_source'] === 1){
                     affiche_bouton_compiler=false;
                 }else{
                     /* sur rev1 / projet 1 ou 2, on ne peut compiler que la racine */
-                    if(this.__gi1._CA_ === 1){
+                    if(this.__ig1._CA_ === 1){
                         if(le_message_du_serveur.chi_id_projet === 1 || le_message_du_serveur.chi_id_projet === 2){
                             if(elem['T0.chx_dossier_id_source'] !== 1){
                                 affiche_bouton_compiler=false;
@@ -1330,24 +1338,24 @@ class sources1{
                     lst+=' chi_id_source(' + elem['T0.chi_id_source'] + '),';
                     lst+=' bouton_compiler(vv_bouton_compiler_' + elem['T0.chi_id_source'] + '),';
                     lst+=' pas_de_message_de_succes(1),';
-                    lst+='))))"  title="compiler">' + this.__gi1.les_svg.compiler + '</div>';
+                    lst+='))))"  title="compiler">' + this.__ig1.les_svg.compiler + '</div>';
                 }else{
-                    lst+='<div class="rev_bouton yy__4 yy__4_inactif" title="compiler">' + this.__gi1.les_svg.compiler + '</div>';
+                    lst+='<div class="rev_bouton yy__4 yy__4_inactif" title="compiler">' + this.__ig1.les_svg.compiler + '</div>';
                 }
-                if(this.__gi1._CA_ === 2 || this.__gi1._CA_ === 1 && le_message_du_serveur.chi_id_projet >= 2){
+                if(this.__ig1._CA_ === 2 || this.__ig1._CA_ === 1 && le_message_du_serveur.chi_id_projet >= 2){
                     /*  */
                     lst+='  <div class="rev_bouton yy__4" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + ')))))';
                     lst+='" >importer de 1</div>';
                 }
-                if(this.__gi1._CA_ === 2){
+                if(this.__ig1._CA_ === 2){
                     /*  */
                     lst+='  <div class="rev_bouton yy__0" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + ')))))';
                     lst+='" >exporter dans 1</div>';
                     /*  */
                 }
-                if(this.__gi1._CA_ === 1 && le_message_du_serveur.chi_id_projet > 2){
+                if(this.__ig1._CA_ === 1 && le_message_du_serveur.chi_id_projet > 2){
                     lst+='  <div class="rev_bouton yy__2" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_base_de_prod1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))';
                     lst+='" >⎘ dans la base de prod</div>';
@@ -1365,13 +1373,13 @@ class sources1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chp_nom_source'] !== null){
-                    lst+=this.__gi1.fi2( elem['T0.chp_nom_source'] );
+                    lst+=this.__ig1.fi2( elem['T0.chp_nom_source'] );
                 }
                 if(elem['T0.che_autorisation_globale_source'] !== null){
                     if(elem['T0.che_autorisation_globale_source'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__gi1.les_svg.rond_rouge1 + '</div>';
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__gi1.les_svg.rond_vert1 + '</div>';
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
                 lst+='</td>';
@@ -1382,28 +1390,28 @@ class sources1{
                     lst+='(' + elem['T0.chx_dossier_id_source'] + ')';
                 }
                 if(elem['T1.chp_nom_dossier'] !== null){
-                    lst+=this.__gi1.fi2( elem['T1.chp_nom_dossier'] );
+                    lst+=this.__ig1.fi2( elem['T1.chp_nom_dossier'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
                 if(elem['T0.cht_commentaire_source'] !== null){
-                    lst+=this.__gi1.fi2( elem['T0.cht_commentaire_source'].substr( 0 , 200 ) );
+                    lst+=this.__ig1.fi2( elem['T0.cht_commentaire_source'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
                 if(elem['T0.cht_rev_source'] !== null){
-                    lst+=this.__gi1.fi2( elem['T0.cht_rev_source'].substr( 0 , 200 ) );
+                    lst+=this.__ig1.fi2( elem['T0.cht_rev_source'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
                 if(elem['T0.cht_genere_source'] !== null){
-                    lst+=this.__gi1.fi2( elem['T0.cht_genere_source'].substr( 0 , 200 ) );
+                    lst+=this.__ig1.fi2( elem['T0.cht_genere_source'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
@@ -1411,20 +1419,9 @@ class sources1{
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.che_binaire_source'] !== null){
                     if(elem['T0.che_binaire_source'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__gi1.les_svg.rond_rouge1 + '</div>';
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__gi1.les_svg.rond_vert1 + '</div>';
-                    }
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.che_contient_version_source'] !== null){
-                    if(elem['T0.che_contient_version_source'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__gi1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__gi1.les_svg.rond_vert1 + '</div>';
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
                 lst+='</td>';
@@ -1445,14 +1442,13 @@ class sources1{
                 o1+='<th style="max-width:360px;">genere</th>';
                 /* o1+='<th>nom</th>'; */
                 o1+='<th>binaire</th>';
-                o1+='<th>contient version</th>';
                 /* o1+='<th>autorisation globale</th>'; */
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
                 o1+='</div>';
             }else{
-                o1+=this.__gi1.la_liste_est_vide();
+                o1+=this.__ig1.la_liste_est_vide();
             }
         }
         return o1;

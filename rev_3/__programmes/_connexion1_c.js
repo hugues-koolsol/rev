@@ -1,11 +1,11 @@
 class _connexion1{
     moi='_connexion1';
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
     */
-    constructor( mat , d , __gi1 ){
-        this.__gi1=__gi1;
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
         console.log( 'constructor _connexion1' );
     }
     /*
@@ -97,12 +97,12 @@ class _connexion1{
         t+='</table>';
         t+='</div>';
         t+='<div style="text-align:center;margin-top:40px;">ou bien aller ici: ';
-        t+=' <div style="margin:0 auto;"  class="rev_bouton" data-rev_click="m1(n1(__gi1)f1(affiche_page_d_accueil()))" title="affiche la page d\'accueil" >Accueil</div>';
+        t+=' <div style="margin:0 auto;"  class="rev_bouton" data-rev_click="m1(n1(__ig1)f1(affiche_page_d_accueil()))" title="affiche la page d\'accueil" >Accueil</div>';
         t+='</div>';
-        this.__gi1.maj_contenu_principal( t );
-        this.__gi1.activer_menu( null , null , '-3' );
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'connexion' );
+        this.__ig1.maj_contenu_principal( t );
+        this.__ig1.activer_menu( null , null , '-3' );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'connexion' );
         return({"__xst" : __xsu});
     }
 }

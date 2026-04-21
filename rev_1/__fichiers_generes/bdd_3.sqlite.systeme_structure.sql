@@ -9,7 +9,7 @@ CREATE TABLE `tbl_revs`(
    table('tbl_revs'),
    genre_meta(table_de_base),permet_la_gestion_de('rev'),
    distinction_pour_liste('liste des revs'),
-   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(308,582))) 
+   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(334,554))) 
 */
     
             /*
@@ -335,7 +335,7 @@ CREATE TABLE `tbl_acces`(
    table('tbl_acces'),
    genre_meta(table_de_base),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
-   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(349,63))) 
+   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(341,56))) 
 */
     
             /*
@@ -597,11 +597,11 @@ CREATE TABLE `tbl_sources`(
             genre_meta(champ),
             nom_du_champ('cht_rev_source'),
             nom_bref_du_champ('rev'),abrege_du_champ('rev'),
-            typologie(),
+            typologie(chi),
             genre(98)
             )
             */
-             `cht_rev_source` TEXT DEFAULT  NULL
+             `cht_rev_source` LONGTEXT DEFAULT  NULL
     ,
     
             /*
@@ -609,11 +609,11 @@ CREATE TABLE `tbl_sources`(
             genre_meta(champ),
             nom_du_champ('cht_genere_source'),
             nom_bref_du_champ('genere'),abrege_du_champ('genere'),
-            typologie(),
+            typologie(chi),
             genre(97)
             )
             */
-             `cht_genere_source` TEXT DEFAULT  NULL
+             `cht_genere_source` LONGTEXT DEFAULT  NULL
     ,
     
             /*
@@ -689,18 +689,6 @@ CREATE TABLE `tbl_sources`(
             )
             */
              `che__nur_source` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_contient_version_source'),
-            nom_bref_du_champ('contient version'),abrege_du_champ('contient version'),
-            typologie(che),
-            genre(5)
-            )
-            */
-             `che_contient_version_source` INTEGER NOT NULL DEFAULT  0
     ,
     
             /*

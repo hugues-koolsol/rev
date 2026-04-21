@@ -1,1 +1,2 @@
-deno run  --watch  --allow-net  --allow-read  --allow-write  --allow-ffi  --allow-env --allow-import .\__serveur.js
+deno run --allow-read --allow-net --allow-env --allow-ffi --allow-write __serveur.js
+#deno run --watch --allow-read --allow-net --allow-env --allow-ffi --allow-write __serveur.js

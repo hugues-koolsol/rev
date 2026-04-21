@@ -19,7 +19,7 @@ class sql_115{
         /*  */
         champs0=`
           \`T0\`.\`chi_id_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`cht_rev_source\` , 
-          \`T0\`.\`cht_genere_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_contient_version_source\` , \`T0\`.\`che_autorisation_globale_source\`
+          \`T0\`.\`cht_genere_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_autorisation_globale_source\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -29,47 +29,44 @@ class sql_115{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chp_nom_source' ) && par['T0_chp_nom_source'] !== ''){
-            where0+=` AND \`T0\`.\`chp_nom_source\` LIKE ` + this.__gi1.__fnt1.sq2( par['T0_chp_nom_source'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_source'] ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chi_id_source' ) && par['T0_chi_id_source'] !== ''){
-            where0+='\r\n' + this.__gi1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_source`' , par['T0_chi_id_source'] );
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_source`' , par['T0_chi_id_source'] );
         }
         if(par.hasOwnProperty( 'T0_chi_id_source2' ) && par['T0_chi_id_source2'] !== ''){
-            where0+=` AND \`T0\`.\`chi_id_source\` > ` + this.__gi1.__fnt1.sq1( par['T0_chi_id_source2'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chi_id_source\` > ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_source2'] ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chi_id_source3' ) && par['T0_chi_id_source3'] !== ''){
-            where0+=` AND \`T0\`.\`chi_id_source\` <= ` + this.__gi1.__fnt1.sq1( par['T0_chi_id_source3'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chi_id_source\` <= ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_source3'] ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_che_binaire_source' ) && par['T0_che_binaire_source'] !== ''){
-            where0+='\r\n' + this.__gi1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_binaire_source`' , par['T0_che_binaire_source'] );
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_binaire_source`' , par['T0_che_binaire_source'] );
         }
         if(par.hasOwnProperty( 'T0_chx_dossier_id_source' ) && par['T0_chx_dossier_id_source'] !== ''){
-            where0+='\r\n' + this.__gi1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_dossier_id_source`' , par['T0_chx_dossier_id_source'] );
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_dossier_id_source`' , par['T0_chx_dossier_id_source'] );
         }
         if(par.hasOwnProperty( 'T1_chp_nom_dossier' ) && par['T1_chp_nom_dossier'] !== ''){
-            where0+=` AND \`T1\`.\`chp_nom_dossier\` LIKE ` + this.__gi1.__fnt1.sq2( par['T1_chp_nom_dossier'] ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_che_contient_version_source' ) && par['T0_che_contient_version_source'] !== ''){
-            where0+='\r\n' + this.__gi1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_contient_version_source`' , par['T0_che_contient_version_source'] );
+            where0+=` AND \`T1\`.\`chp_nom_dossier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_dossier'] ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_che_autorisation_globale_source' ) && par['T0_che_autorisation_globale_source'] !== ''){
-            where0+='\r\n' + this.__gi1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_autorisation_globale_source`' , par['T0_che_autorisation_globale_source'] );
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_autorisation_globale_source`' , par['T0_che_autorisation_globale_source'] );
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chx_dossier_id_source\` ASC, \`T0\`.\`chp_nom_source\` ASC, \`T0\`.\`chi_id_source\` ASC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__gi1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__gi1.__fnt1.sq1( par['debut'] ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] ) + ` `;
         sql0+=plage0;
-        /* this.__gi1.ma_trace1('sql_115 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_115 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 115 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 115 , e , sql0 , donnees_retournees , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
@@ -82,8 +79,7 @@ class sql_115{
                     "T0.cht_genere_source" : (lignes[numero_de_ligne][5]===null?null:lignes[numero_de_ligne][5].substr(0,200)) ,
                     "T1.chp_nom_dossier" : lignes[numero_de_ligne][6] ,
                     "T0.che_binaire_source" : lignes[numero_de_ligne][7] ,
-                    "T0.che_contient_version_source" : lignes[numero_de_ligne][8] ,
-                    "T0.che_autorisation_globale_source" : lignes[numero_de_ligne][9]
+                    "T0.che_autorisation_globale_source" : lignes[numero_de_ligne][8]
                 } );
         }
         /* comptage */
@@ -108,13 +104,13 @@ class sql_115{
       =============================================================================================================
     */
     moi='sql_115';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

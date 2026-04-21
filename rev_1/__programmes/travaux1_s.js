@@ -7,20 +7,360 @@ const __xst=/* statut */'__xst';
 const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
+import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 /*
   =====================================================================================================================
 */
 class travaux1{
     /*
       =============================================================================================================
+      ================================== Attention, lancée en asynchrone ==========================================
+      =============================================================================================================
+    */
+    async lancer_la_compilation( mat , d , donnees_recues , donnees_retournees , options_generales ){
+        function sleep0( ms ){
+            return(new Promise( ( resolve ) => {
+                    setTimeout( resolve , ms );} ));
+        }
+        /*
+          on attend 0.3 secondes
+        */
+        await sleep0( 300 );
+        /* this.__ig1.ma_trace1( 'lancer_la_compilation' ); */
+        /*
+          this.__ig1.ma_trace1( 'donnees_recues' , donnees_recues );
+          this.__ig1.ma_trace1( 'donnees_retournees' , donnees_retournees );
+          this.__ig1.ma_trace1( 'options_generales' , options_generales );
+        */
+        /*#
+          donnees_recues
+          {
+            __xac: "pm1(m1(n1(travaux1),f1(compiler_les_travaux())))",
+            __xva: {
+              __parametres: {
+                "--bidon": { valeur: 0, dimension: "" },
+                __deverminage: { valeur: 2, dimension: "" }
+              }
+            },
+            mat: [....],
+            mat_hash: []
+          }
+          donnees_retournees
+          {
+            _CA_: 2,
+            __xst: 1,
+            date_heure_serveur: "2026-04-09 17:02:53.599",
+            __xva: {},
+            __xac: "pm1(m1(n1(travaux1),f1(compiler_les_travaux())))",
+            __xsi: { "0": [], "1": [], "2": [], "3": [], "4": [] },
+            chi_id_acces: 1,
+            chi_id_utilisateur: 1,
+            chi_id_projet: 1,
+            chp_nom_de_connexion_utilisateur: "poipoip",
+            __version: "2026_04_09_10_39_36_180",
+            __liste_des_bases: [ 1 ]
+          }
+          options_generales
+          {
+            "set-cookie": [],
+            cookies: {
+              ugclang: "fr",
+              ugccssvalue: "1",
+              tdolang: "fr",
+              tdocssvalue: "1",
+              cle_de_session_rev_1_websocket: "la_cle_websocket_rev_1_822deb75-5472-45a7-903c-77ac3bb38a9b",
+              cle_de_session_rev_1: "rev_1_5e3ff9c2-f318-4bdd-822f-afd68ce43bc3",
+              cle_de_session_rev_2_websocket: "la_cle_websocket_rev_2_1b33c117-22ba-40ab-a664-220ac1cd5516"
+            },
+            cle_de_session: "la_cle_websocket_rev_2_1b33c117-22ba-40ab-a664-220ac1cd5516",
+            repertoire_du_pgm_serveur: "C:/wamp64/www/deno/app_009/rev_2",
+            bdd_ouvertes: {},
+            chemin_des_bdd: "./__bases_de_donnees/",
+            chemin_absolu_projet: "../rev_2/",
+            repertoire_racine_de_tous_les_projets: "C:/wamp64/www/deno/app_009/",
+            base_de_reference: 1,
+            base_de_travail: 1,
+            chemin_racine_du_projet: "./",
+            chemin_racine_de_tous_les_projets: "../../"
+          }
+        */
+        try{
+            /*
+              on constitue la liste des projets 
+            */
+            let chemin_bdd_1='./__bases_de_donnees/bdd_1.sqlite';
+            /* this.__ig1.ma_trace1( 'hello' + chemin_bdd_1 ); */
+            let __db1=null;
+            try{
+                __db1=new Database( chemin_bdd_1 , {"create" : false} );
+            }catch(e){
+                this.__ig1.ma_trace1( 'e=' , e , e.stack );
+                this.__ig1.ma_trace1( 'Erreur ouverture ' + chemin_bdd_1 );
+                return({"__xst" : __xer});
+            }
+            let criteres_316={"T0_chi_id_projet" : 3};
+            if(donnees_retournees._CA_ === 2){
+                criteres_316={"T0_chi_id_projet" : 1};
+            }
+            let tt316=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
+             FROM b1.tbl_projets T0
+            WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
+            ;
+            */
+            /*sql_inclure_fin*/ 316 , criteres_316 , donnees_retournees , __db1 );
+            if(donnees_retournees._CA_ === 2){
+                /* dans le cas du projet 2, on force un résultat */
+                tt316.__xva.push( {"T0.chi_id_projet" : 1} );
+            }else{
+                if(tt316.__xst !== __xsu || tt316.__xva.length === 0){
+                    donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
+                    return({"__xst" : __xer});
+                }
+            }
+            await __db1.close();
+            let t0=performance.now();
+            this.__ig1.ma_trace1( 't0=' + t0 );
+            let continuer=true;
+            /* this.__ig1.ma_trace1( 'tt316.__xva=' , tt316.__xva ); */
+            do{
+                for(let i in tt316.__xva){
+                    try{
+                        /*
+                          base système du projet
+                        */
+                        let chemin_bdd_1='';
+                        if(donnees_retournees._CA_ === 2){
+                            chemin_bdd_1='../rev_2/__bases_de_donnees/bdd_1.sqlite';
+                        }else{
+                            chemin_bdd_1='../rev_1/__bases_de_donnees/bdd_' + tt316.__xva[i]['T0.chi_id_projet'] + '.sqlite';
+                        }
+                        /* this.__ig1.ma_trace1( 'chemin_bdd_1=' + chemin_bdd_1 ); */
+                        let __dbn=null;
+                        try{
+                            __dbn=new Database( chemin_bdd_1 , {"create" : false} );
+                            /* this.__ig1.ma_trace1( 'OK ouverture ' + chemin_bdd_1 ); */
+                        }catch(e){
+                            /*
+                              console.log( 'e=' , e , e.stack );
+                              this.__ig1.ma_trace1( 'Erreur ouverture ' + chemin_bdd_1 );
+                            */
+                            continue;
+                        }
+                        /* this.__ig1.ma_trace1( '__dbn=' , __dbn ); */
+                        let criteres_400={
+                             /*
+                              on ne prend que 50 travaux par projet pour ne pas bloquer les autres
+                             */
+                            "T0_chp_etat_travail" : 'en_file_d_attente' ,
+                            "quantitee" : /* 5 */50
+                        };
+                        let tt400=await this.__ig1.sql_iii(
+                        /*sql_inclure_deb*/ /*#
+                        SELECT 
+                        `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
+                        `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur`
+                         FROM b1.tbl_travaux T0
+                         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_travail
+                        
+                        WHERE (`T0`.`chp_etat_travail` = :T0_chp_etat_travail) 
+                        ORDER BY `T0`.`chi_id_travail` ASC  
+                        LIMIT :quantitee OFFSET 0 
+                        ;
+                        */
+                        /*sql_inclure_fin*/ 400 , criteres_400 , donnees_retournees , __dbn );
+                        await __dbn.close();
+                        if(tt400.__xst !== __xsu){
+                            this.__ig1.ma_trace1( 'erreur lecture des tâches ' );
+                            return({"__xst" : __xer});
+                        }
+                        /* this.__ig1.ma_trace1( 'tt400.__xva.length=' + tt400.__xva.length ); */
+                        for( let i=0 ; i < tt400.__xva.length ; i++ ){
+                            __dbn=new Database( chemin_bdd_1 , {"create" : false} );
+                            let criteres_401_0={
+                                "c_chi_id_travail" : tt400.__xva[i]['T0.chi_id_travail'] ,
+                                "n_chp_etat_travail" : 'en_cours' ,
+                                "n_cht_log_travail" : JSON.stringify( donnees_retournees.__xsi , null , 2 ) ,
+                                "n_chn_duree_travail" : 0
+                            };
+                            let tt401_0=await this.__ig1.sql_iii(
+                            /*sql_inclure_deb*/ /*#
+                            UPDATE b1.tbl_travaux SET 
+                               `chp_etat_travail` = :n_chp_etat_travail , 
+                               `cht_log_travail` = :n_cht_log_travail , 
+                               `chn_duree_travail` = :n_chn_duree_travail
+                            WHERE `chi_id_travail` = :c_chi_id_travail ;
+                            */
+                            /*sql_inclure_fin*/ 401 , criteres_401_0 , donnees_retournees , __dbn );
+                            await __dbn.close();
+                            if(tt401_0.__xst !== __xsu){
+                                this.__ig1.ma_trace1( 'erreur tt401_0 ' );
+                                return({"__xst" : __xer});
+                            }
+                            donnees_retournees.chi_id_utilisateur=1;
+                            donnees_retournees.chi_id_projet=tt400.__xva[i]['T0.chx_projet_travail'];
+                            donnees_retournees.chi_id_acces=tt400.__xva[i]['T1.chx_acces_utilisateur'];
+                            options_generales.base_de_travail=tt400.__xva[i]['T0.chx_projet_travail'];
+                            if(donnees_retournees._CA_ === 1 || donnees_retournees._CA_ === 2){
+                                await this.__ig1.obtenir_les_sql( [] , 0 , donnees_recues , donnees_retournees , options_generales );
+                                await this.__ig1.obtenir_les_genres( [] , 0 , donnees_recues , donnees_retournees , options_generales );
+                            }
+                            let cht_rev_travail=tt400.__xva[i]['T0.cht_rev_travail'];
+                            /* this.__ig1.ma_trace1('cht_rev_travail='+cht_rev_travail); */
+                            let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_travail );
+                            if(obj_matrice[__xst] !== __xsu){
+                                donnees_retournees.__xsi[__xal].push( ' erreur de convertion en matrice [' + this.__ig1.nl2() + ']' );
+                                return({"__xst" : __xer});
+                            }
+                            let ret=null;
+                            let heure_debut_travail=performance.now();
+                            try{
+                                /*
+                                  =====================================================
+                                  on exécute le travail ici
+                                  =====================================================
+                                */
+                                /* this.__ig1.ma_trace1( 'obj_matrice[__xva]=' , obj_matrice[__xva] ); */
+                                /* this.__ig1.ma_trace1( 'OK ici' ); */
+                                ret=await this.__ig1.appel_fonction( obj_matrice[__xva] , 1 , donnees_recues , donnees_retournees , options_generales );
+                                /* this.__ig1.ma_trace1('ret=',ret,obj_matrice[__xva]); */
+                                function sleep1( ms ){
+                                    return(new Promise( ( resolve ) => {
+                                            setTimeout( resolve , ms );} ));
+                                }
+                                /*
+                                  on fait une petite pause pour libérer du temps pour l'interface
+                                */
+                                await sleep1( 50 );
+                            }catch(e){
+                                donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2( e ) + ']' );
+                                ret={"__xst" : __xer};
+                            }
+                            if(ret.__xst !== __xsu){
+                                __dbn=new Database( chemin_bdd_1 , {"create" : false} );
+                                let criteres_401={
+                                    "c_chi_id_travail" : tt400.__xva[i]['T0.chi_id_travail'] ,
+                                    "n_chp_etat_travail" : 'ko_termine' ,
+                                    "n_cht_log_travail" : JSON.stringify( donnees_retournees.__xsi , null , 2 ) ,
+                                    "n_chn_duree_travail" : 0
+                                };
+                                let tt401=await this.__ig1.sql_iii(
+                                /*sql_inclure_deb*/ /*#
+                                UPDATE b1.tbl_travaux SET 
+                                   `chp_etat_travail` = :n_chp_etat_travail , 
+                                   `cht_log_travail` = :n_cht_log_travail , 
+                                   `chn_duree_travail` = :n_chn_duree_travail
+                                WHERE `chi_id_travail` = :c_chi_id_travail ;
+                                */
+                                /*sql_inclure_fin*/ 401 , criteres_401 , donnees_retournees , __dbn );
+                                if(tt401[__xst] !== __xsu){
+                                    if(tt397['__xme'] !== ''){
+                                        donnees_retournees.__xsi[__xer].push( tt397['__xme'] + ' [' + this.__ig1.nl2() );
+                                    }else{
+                                        donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
+                                    }
+                                    await __dbn.close();
+                                    return({"__xst" : __xer});
+                                }
+                                donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2() + ']' );
+                                await __dbn.close();
+                                return({"__xst" : __xer});
+                            }
+                            let heure_fin_travail=performance.now();
+                            let etat_travail='ok_termine';
+                            let duree=parseInt( (heure_fin_travail - heure_debut_travail) * 1000 , 10 ) / 1000;
+                            if(duree >= 3000){
+                                /* un travail qui dure 3 secondes doit être signalé */
+                                etat_travail='ok_mais_avertissement';
+                            }
+                            __dbn=new Database( chemin_bdd_1 , {"create" : false} );
+                            let criteres_401={
+                                 /*  */
+                                "c_chi_id_travail" : tt400.__xva[i]['T0.chi_id_travail'] ,
+                                "n_chp_etat_travail" : etat_travail ,
+                                "n_cht_log_travail" : 'statut(OK),executer_job_cron(' + duree + ')' ,
+                                "n_chn_duree_travail" : duree
+                            };
+                            let tt401=await this.__ig1.sql_iii(
+                            /*sql_inclure_deb*/ /*#
+                            UPDATE b1.tbl_travaux SET 
+                               `chp_etat_travail` = :n_chp_etat_travail , 
+                               `cht_log_travail` = :n_cht_log_travail , 
+                               `chn_duree_travail` = :n_chn_duree_travail
+                            WHERE `chi_id_travail` = :c_chi_id_travail ;
+                            */
+                            /*sql_inclure_fin*/ 401 , criteres_401 , donnees_retournees , __dbn );
+                            if(tt401[__xst] !== __xsu){
+                                if(tt401['__xme'] !== ''){
+                                    donnees_retournees.__xsi[__xer].push( tt401['__xme'] + ' [' + this.__ig1.nl2() );
+                                }else{
+                                    donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
+                                }
+                                await __dbn.close();
+                                return({"__xst" : __xer});
+                            }
+                            await __dbn.close();
+                        }
+                        let t1=performance.now();
+                        let delta=t1 - t0;
+                        if(delta < 55000){
+                            /*
+                              à priori, on continue
+                            */
+                            continuer=true;
+                            /*
+                              mais si on n'a rien eu à faire et que le traitement a duré moins de 100ms ...
+                            */
+                            if(tt400.__xva.length === 0 && delta < 100){
+                                /*
+                                  ... alors on attend la prochaine vague
+                                */
+                                continuer=false;
+                                this.__ig1.ma_trace1( 'on attend la prochaine vague' );
+                            }else{
+                                function sleep2( ms ){
+                                    return(new Promise( ( resolve ) => {
+                                            setTimeout( resolve , ms );} ));
+                                }
+                                /*
+                                  on attend 3 secondes
+                                */
+                                await sleep2( 3000 );
+                            }
+                        }else{
+                            continuer=false;
+                        }
+                    }catch(e){
+                        this.__ig1.ma_trace1( 'rrrraaaah' , e );
+                    }
+                }
+            }while(continuer === true);
+        }catch(e){
+            this.__ig1.ma_trace1( 'raaaah' , e );
+            return({"__xst" : __xer});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async compiler_les_travaux( mat , d , donnees_recues , donnees_retournees , options_generales ){
+        /* lancement en asynchrone */
+        this.lancer_la_compilation( mat , d , donnees_recues , donnees_retournees , options_generales );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
     */
     async supprimer_les_travaux_termines( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let criteres_404={
              /*  */
             "chp_etat_travail" : 'ok_termine'
         };
-        let tt404=await this.__gi1.sql_iii(
+        let tt404=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
@@ -29,7 +369,7 @@ class travaux1{
         */
         /*sql_inclure_fin*/ 404 , criteres_404 , donnees_retournees , __db1 );
         if(tt404[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         return({"__xst" : __xsu});
@@ -38,11 +378,11 @@ class travaux1{
       =============================================================================================================
     */
     async supprimer_les_travaux( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let criteres_403={
              /*  */
             };
-        let tt403=await this.__gi1.sql_iii(
+        let tt403=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
@@ -51,7 +391,7 @@ class travaux1{
         /*sql_inclure_fin*/ 403 , criteres_403 , donnees_retournees , __db1 );
         /*  */
         if(tt403[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         return({"__xst" : __xsu});
@@ -72,9 +412,9 @@ class travaux1{
                 chi_id_travail=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let criteres_396={"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur};
-        let tt396=await this.__gi1.sql_iii(
+        let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -88,40 +428,39 @@ class travaux1{
         ;
         */
         /*sql_inclure_fin*/ 396 , criteres_396 , donnees_retournees , __db1 );
-        /* this.__gi1.ma_trace1('tt396.__xva=',tt396.__xva); */
+        /* this.__ig1.ma_trace1('tt396.__xva=',tt396.__xva); */
         if(tt396.__xst !== __xsu || tt396.__xva.length !== 1){
-            this.__gi1.__xsi[__xer].push( this.__gi1.nl2() );
+            donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         donnees_recues.chi_id_utiliseteur=tt396.__xva[0]['T0.chx_utilisateur_travail'];
         donnees_recues.chi_id_projet=tt396.__xva[0]['T0.chx_projet_travail'];
         donnees_recues.chi_id_acces=tt396.__xva[0]['T1.chx_acces_utilisateur'];
         let cht_rev_travail=tt396.__xva[0]['T0.cht_rev_travail'];
-        let obj_matrice=await this.__gi1.__rev1.rev_tcm( cht_rev_travail );
+        let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_travail );
         if(obj_matrice[__xst] !== __xsu){
-            this.__gi1.__xsi[__xal].push( ' erreur de convertion en matrice [' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xal].push( ' erreur de convertion en matrice [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        /* this.__gi1.ma_trace1('cht_rev_travail=',cht_rev_travail); */
-        this.__gi1.obtenir_les_genres( mat , d , donnees_recues , donnees_retournees , options_generales );
-        this.__gi1.obtenir_les_sql( mat , d , donnees_recues , donnees_retournees , options_generales );
+        /* this.__ig1.ma_trace1('cht_rev_travail=',cht_rev_travail); */
+        this.__ig1.obtenir_les_genres( mat , d , donnees_recues , donnees_retournees , options_generales );
+        this.__ig1.obtenir_les_sql( mat , d , donnees_recues , donnees_retournees , options_generales );
         /*
           =====================================================================================================
           éxécution du travail
         */
         let heure_debut_travail=performance.now();
-        /* this.__gi1.ma_trace1('obj_matrice[__xva]=',obj_matrice[__xva]); */
-        let ret=await this.__gi1.appel_fonction( obj_matrice[__xva] , 1 , donnees_recues , donnees_retournees , options_generales );
-        /* this.__gi1.ma_trace1('ret=',ret,'cht_rev_travail='+cht_rev_travail); */
+        /* this.__ig1.ma_trace1('obj_matrice[__xva]=',obj_matrice[__xva]); */
+        let ret=await this.__ig1.appel_fonction( obj_matrice[__xva] , 1 , donnees_recues , donnees_retournees , options_generales );
+        /* this.__ig1.ma_trace1('ret=',ret,'cht_rev_travail='+cht_rev_travail); */
         if(ret.__xst !== __xsu){
             let criteres_401={
                 "c_chi_id_travail" : chi_id_travail ,
                 "n_chp_etat_travail" : 'ko_termine' ,
-                "n_cht_log_travail" : JSON.stringify( this.__gi1.__xsi , null , 2 ) ,
+                "n_cht_log_travail" : JSON.stringify( donnees_retournees.__xsi , null , 2 ) ,
                 "n_chn_duree_travail" : 0
             };
-            let tt401=await this.__gi1.sql_iii(
+            let tt401=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_travaux SET 
                `chp_etat_travail` = :n_chp_etat_travail , 
@@ -130,8 +469,7 @@ class travaux1{
             WHERE `chi_id_travail` = :c_chi_id_travail ;
             */
             /*sql_inclure_fin*/ 401 , criteres_401 , donnees_retournees , __db1 );
-            this.__gi1.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let heure_fin_travail=performance.now();
@@ -148,7 +486,7 @@ class travaux1{
             "n_cht_log_travail" : 'statut(OK),executer_job_cron(' + duree + ')' ,
             "n_chn_duree_travail" : duree
         };
-        let tt401=await this.__gi1.sql_iii(
+        let tt401=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_travaux SET 
            `chp_etat_travail` = :n_chp_etat_travail , 
@@ -178,11 +516,9 @@ class travaux1{
     */
     async tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -190,11 +526,9 @@ class travaux1{
     */
     async actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -202,11 +536,9 @@ class travaux1{
     */
     async test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -214,11 +546,9 @@ class travaux1{
     */
     async actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -226,11 +556,9 @@ class travaux1{
     */
     async tests_avant_creer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -238,11 +566,9 @@ class travaux1{
     */
     async action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , nouvel_id , form , __db1 ){
         /*
-          this.__gi1.__xsi[__xer].push( ' [' + this.__gi1.nl2() + ']' );
-          donnees_retournees.__xst=__xer;
+          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -258,15 +584,15 @@ class travaux1{
         form['chx_projet_travail']=form['chx_projet_travail'] === null ? ( null ) : ( parseInt( form['chx_projet_travail'] , 10 ) );
         /* conversion des données numériques fin */
         if(form['chp_resume_travail'] === null || form['chp_resume_travail'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chp_etat_travail'] === null || form['chp_etat_travail'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chx_projet_travail'] === null || form['chx_projet_travail'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let retour_a_la_liste=false;
@@ -276,10 +602,10 @@ class travaux1{
                 retour_a_la_liste=true;
             }
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         /* sélection du champ à modifier */
         let criteres_select_396={"T0_chi_id_travail" : form['chi_id_travail'] ,"T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur};
-        let tt396=await this.__gi1.sql_iii(
+        let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -294,8 +620,7 @@ class travaux1{
         */
         /*sql_inclure_fin*/ 396 , criteres_select_396 , donnees_retournees , __db1 );
         if(tt396[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__gi1.nl2() );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         if(tt396[__xst] === __xsu && tt396[__xva].length === 1){
@@ -313,7 +638,7 @@ class travaux1{
                 "n_chd_dtc_travail" : donnees_retournees.date_heure_serveur
             };
             await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt397=await this.__gi1.sql_iii(
+            let tt397=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_travaux SET 
                `chp_resume_travail` = :n_chp_resume_travail , 
@@ -327,18 +652,16 @@ class travaux1{
             /*sql_inclure_fin*/ 397 , criteres_397 , donnees_retournees , __db1 );
             if(tt397[__xst] !== __xsu){
                 if(tt397['__xme'] !== ''){
-                    this.__gi1.__xsi[__xer].push( tt397['__xme'] + ' [' + this.__gi1.nl2() );
+                    donnees_retournees.__xsi[__xer].push( tt397['__xme'] + ' [' + this.__ig1.nl2() );
                 }else{
-                    this.__gi1.__xsi[__xer].push( 'erreur de modification [' + this.__gi1.nl2() );
+                    donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
                 }
-                donnees_retournees.__xst=__xer;
                 return({"__xst" : __xer});
             }
             let __taam=await this.tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt396[__xva][0] , __db1 );
             if(__taam[__xst] !== __xsu){
                 await __db1.exec( 'ROLLBACK;' );
-                this.__gi1.__xsi[__xer].push( 'erreur après modification [' + this.__gi1.nl2() );
-                donnees_retournees.__xst=__xer;
+                donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
                 return({"__xst" : __xer});
             }
             await __db1.exec( 'COMMIT;' );
@@ -350,7 +673,7 @@ class travaux1{
                 }
                 return({"__xst" : __xsu});
             }
-            let tt396_bis=await this.__gi1.sql_iii(
+            let tt396_bis=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -368,7 +691,6 @@ class travaux1{
         }else{
             donnees_retournees[__xva]['page_modification1']=tt396;
         }
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -391,13 +713,13 @@ class travaux1{
             donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_travail(' + chi_id_travail + ')))))';
         }
         if(chi_id_travail === null){
-            this.__gi1.__xsi[__xer].push( this.__gi1.nl2() );
+            donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         if(__db1 === null){
-            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+            __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         }
-        let tt396=await this.__gi1.sql_iii(
+        let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -412,16 +734,13 @@ class travaux1{
         */
         /*sql_inclure_fin*/ 396 , {"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur} , donnees_retournees , __db1 );
         if(tt396[__xst] !== __xsu){
-            donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , donnees_recues , donnees_retournees , options_generales , tt396[__xva][0] , __db1 );
         if(aetam[__xst] !== __xsu){
-            donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         donnees_retournees[__xva]['page_modification1']=tt396;
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -442,13 +761,13 @@ class travaux1{
                 }
             }
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let criteres_396={
              /*  */
             "T0_chi_id_travail" : chi_id_travail ,
             "T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur
         };
-        let tt396=await this.__gi1.sql_iii(
+        let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -463,12 +782,10 @@ class travaux1{
         */
         /*sql_inclure_fin*/ 396 , criteres_396 , donnees_retournees , __db1 );
         if(tt396[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         donnees_retournees[__xva]['page_duplication1']=tt396;
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -478,13 +795,13 @@ class travaux1{
         let nom_formulaire=donnees_recues[__xva]['__co1'];
         let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let criteres_396={
              /*  */
             "T0_chi_id_travail" : form['chi_id_travail'] ,
             "T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur
         };
-        let tt396=await this.__gi1.sql_iii(
+        let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -499,21 +816,19 @@ class travaux1{
         */
         /*sql_inclure_fin*/ 396 , criteres_396 , donnees_retournees , __db1 );
         if(tt396[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt396[__xva][0] , __db1 );
         if(tas[__xst] !== __xsu){
-            donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         let criteres_399={
              /*  */
             "chi_id_travail" : form['chi_id_travail']
         };
-        let tt399=await this.__gi1.sql_iii(
+        let tt399=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_travaux
         WHERE `chi_id_travail` = :chi_id_travail ;
@@ -521,12 +836,12 @@ class travaux1{
         /*sql_inclure_fin*/ 399 , criteres_399 , donnees_retournees , __db1 );
         /*  */
         if(tt399[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let aac=await this.actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt396[__xva][0] , __db1 );
         if(aac[__xst] === __xer){
-            this.__gi1.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
@@ -553,12 +868,12 @@ class travaux1{
             }
         }
         if(chi_id_travail === 0){
-            this.__gi1.__xsi[__xer].push( this.__gi1.nl2() );
+            donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let critere_396={"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur};
-        let tt396=await this.__gi1.sql_iii(
+        let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -573,7 +888,6 @@ class travaux1{
         */
         /*sql_inclure_fin*/ 396 , critere_396 , donnees_retournees , __db1 );
         donnees_retournees[__xva]['page_confirmation_supprimer1']=tt396;
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -593,18 +907,18 @@ class travaux1{
         form['chx_projet_travail']=form['chx_projet_travail'] === null || form['chx_projet_travail'] === '' || form['chx_projet_travail'] === undefined ? ( 1 ) : ( parseInt( form['chx_projet_travail'] , 10 ) );
         /* conversion des données numériques fin */
         if(form['chp_resume_travail'] === null || form['chp_resume_travail'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chp_etat_travail'] === null || form['chp_etat_travail'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chx_projet_travail'] === null || form['chx_projet_travail'] === ''){
-            this.__gi1.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__gi1.nl2() + ']' );
+            donnees_retournees.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         let __tac=await this.tests_avant_creer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __db1 );
         if(__tac[__xst] !== __xsu){
             return({"__xst" : __xer});
@@ -621,7 +935,7 @@ class travaux1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt398=await this.__gi1.sql_iii(
+        let tt398=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_travaux`(
             `chp_resume_travail` , 
@@ -644,13 +958,13 @@ class travaux1{
         /*sql_inclure_fin*/ 398 , donnees_sql , donnees_retournees , __db1 );
         if(tt398[__xst] === __xsu){
             if(tt398['changements'] === 0){
-                this.__gi1.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__gi1.nl2() + ']' );
+                donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
             let aac=await this.action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , tt398['nouvel_id'] , form , __db1 );
             if(aac[__xst] === __xer){
                 await __db1.exec( 'ROLLBACK;' );
-                this.__gi1.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__gi1.nl2() + ']' );
+                donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
             await __db1.exec( 'COMMIT;' );
@@ -660,11 +974,9 @@ class travaux1{
             }else{
                 await this.page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , tt398['nouvel_id'] , __db1 );
             }
-            donnees_retournees.__xst=__xsu;
             return({"__xst" : __xsu});
         }else{
-            this.__gi1.__xsi[__xer].push( tt398['__xme'] + '\nl\'insertion a échoué [' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( tt398['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
     }
@@ -679,9 +991,8 @@ class travaux1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -697,8 +1008,8 @@ class travaux1{
         }
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__gi1.__fnt1.debut_filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , this.fonction_liste );
-        if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__gi1.est_num( formulaire.__num_page )){
+        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , this.fonction_liste );
+        if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
             __num_page=parseInt( formulaire.__num_page , 10 );
@@ -718,9 +1029,9 @@ class travaux1{
         criteres_395['T0_chx_utilisateur_travail']=donnees_retournees.chi_id_utilisateur;
         /* fin ====== on force le(s) champ(s) en session =============================== */
         if(__db1 === null){
-            __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+            __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
         }
-        let tt395=await this.__gi1.sql_iii(
+        let tt395=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -747,7 +1058,7 @@ class travaux1{
             __debut=0;
             __num_page=0;
             criteres_395['debut']=__debut;
-            let tt395=await this.__gi1.sql_iii(
+            let tt395=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -773,11 +1084,10 @@ class travaux1{
         donnees_retournees[__xva]['__num_page']=__num_page;
         donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
         for(let i in formulaire){
-            donnees_retournees[__xac]+=this.__gi1.__fnt1.critere_liste( formulaire , i );
+            donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         donnees_retournees[__xac]+='))))';
         donnees_retournees[__xva][this.fonction_liste]=tt395;
-        donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -800,13 +1110,13 @@ class travaux1{
       =============================================================================================================
     */
     moi='travaux1';
-    __gi1=null;
+    __ig1=null;
     fonction_liste='liste1';
     /*
       =============================================================================================================
     */
-    constructor( __gi1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
     }
     /*
       =============================================================================================================

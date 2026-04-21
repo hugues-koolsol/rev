@@ -19,16 +19,16 @@ class sql_386{
            LEFT JOIN tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_dossier\` = ` + this.__gi1.__fnt1.sq1( par['T0_chi_id_dossier'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_dossier\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_dossier'] ) + ``;
         sql0+=where0;
-        /* this.__gi1.ma_trace1('sql_386 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_386 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 386 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 386 , e , sql0 , donnees_retournees , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -45,13 +45,13 @@ class sql_386{
       =============================================================================================================
     */
     moi='sql_386';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

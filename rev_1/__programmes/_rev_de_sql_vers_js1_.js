@@ -20,7 +20,7 @@ const __xsi='__xsi';
 const __xac='__xac';
 const CRLF='\r\n';
 class _rev_de_sql_vers_js1{
-    __gi1=null;
+    __ig1=null;
     #obj_webs_init={
         "type_de_requete" : 'select' ,
         "bases" : {} ,
@@ -52,15 +52,15 @@ class _rev_de_sql_vers_js1{
     /*
       =============================================================================================================
     */
-    constructor( __gi1 ){
-        this.__gi1=__gi1;
-        if(__gi1.hasOwnProperty( 'css_dimensions' )){
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
+        if(__ig1.hasOwnProperty( 'css_dimensions' )){
             import( '/f0?n0=w_rev_vers_sql1_.js' ).then( ( m ) => {
-                    this.__m_rev_vers_sql1=new m['w_rev_vers_sql1']( '__m_rev_vers_sql1' , this.__gi1 );
+                    this.__m_rev_vers_sql1=new m['w_rev_vers_sql1']( '__m_rev_vers_sql1' , this.__ig1 );
                 } );
         }else{
             import( './w_rev_vers_sql1_.js' ).then( ( m ) => {
-                    this.__m_rev_vers_sql1=new m['w_rev_vers_sql1']( '__m_rev_vers_sql1' , this.__gi1 );
+                    this.__m_rev_vers_sql1=new m['w_rev_vers_sql1']( '__m_rev_vers_sql1' , this.__ig1 );
                 } );
         }
     }
@@ -87,7 +87,7 @@ class _rev_de_sql_vers_js1{
     */
     obtenir_le_tableau_des_conditions( formule , obj3 , type_de_requete=null ){
         var tableau_des_conditions=[];
-        var matriceFonction=this.__gi1.__rev1.rev_tm( formule );
+        var matriceFonction=this.__ig1.__rev1.rev_tm( formule );
         var tab=matriceFonction.__xva;
         var l01=tab.length;
         var options={
@@ -190,8 +190,8 @@ class _rev_de_sql_vers_js1{
                                     } );
                             }
                         }else{
-                            this.__gi1.ajoute_message( {"__xst" : __xal ,"__xme" : 'erreur sur la condition du champ ' + this.__gi1.__rev1.nl2()} );
-                            this.__gi1.affiche_les_messages();
+                            this.__ig1.ajoute_message( {"__xst" : __xal ,"__xme" : 'erreur sur la condition du champ ' + this.__ig1.__rev1.nl2()} );
+                            this.__ig1.affiche_les_messages();
                         }
                     }else{
                         debugger;
@@ -308,7 +308,7 @@ class _rev_de_sql_vers_js1{
         t+='      =============================================================================================================\r\n';
         t+='    */\r\n';
         t+='    async sql( par , donnees_retournees ){\r\n';
-        if(this.__gi1.le_niveau_de_deverminage > 0){
+        if(this.__ig1.le_niveau_de_deverminage > 0){
             console.log( 'obj3=' , obj3 );
         }
         var i=0;
@@ -320,11 +320,11 @@ class _rev_de_sql_vers_js1{
                 text_rev=document.getElementById( 'vv_zone_rev_01' ).value;
             }catch(e){
                 let mat1=obj3.matriceFonction;
-                let obj1=this.__gi1.__rev1.matrice_vers_source_rev1( mat1 , 0 , true , 1 );
+                let obj1=this.__ig1.__rev1.matrice_vers_source_rev1( mat1 , 0 , true , 1 );
                 if(obj1.__xst === __xsu){
                     text_rev=obj1.__xva;
                 }else{
-                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + 'requete manuelle avec rev incorrecte '} ));
+                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + 'requete manuelle avec rev incorrecte '} ));
                 }
             }
         }
@@ -348,7 +348,7 @@ class _rev_de_sql_vers_js1{
                 id_numerique_base_principale=parseInt( obj3.id_base_principale.substr( 1 ) , 10 );
                 obj3.id_base_principale='BDD_NUMERO_' + obj3.id_base_principale.substr( 1 );
             }else{
-                if(this.__gi1.est_num( obj3.id_base_principale )){
+                if(this.__ig1.est_num( obj3.id_base_principale )){
                     id_numerique_base_principale=parseInt( obj3.id_base_principale , 10 );
                     obj3.id_base_principale='BDD_NUMERO_' + obj3.id_base_principale;
                 }else{
@@ -380,7 +380,7 @@ class _rev_de_sql_vers_js1{
             t+='        let sql0=`' + CRLF;
             t+='          ' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '      ' ).replace( /`/g , '\\`' ) + CRLF;
             t+='        `;' + CRLF;
-            t+='    /* this.__gi1.ma_trace1(\' sql0 = \' + sql0 ); */' + CRLF;
+            t+='    /* this.__ig1.ma_trace1(\' sql0 = \' + sql0 ); */' + CRLF;
             if(c_est_un_select === true){
                 debugger;
                 /* AFRAFRAFR */
@@ -440,11 +440,11 @@ class _rev_de_sql_vers_js1{
                 }
                 if(nom_du_champ_cle !== ''){
                     if(nouvelle_chaine.indexOf( nom_du_champ_cle ) < 0){
-                        this.__gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'cette requete supprimer ne peut pas tester les dépendances sur le champ "' + nom_du_champ_cle + '"'} );
-                        this.__gi1.affiche_les_messages();
+                        this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'cette requete supprimer ne peut pas tester les dépendances sur le champ "' + nom_du_champ_cle + '"'} );
+                        this.__ig1.affiche_les_messages();
                         return({"__xst" : __xer});
                     }
-                    t+='        let obj1=await this.__gi1.tester_les_dependances1( {';
+                    t+='        let obj1=await this.__ig1.tester_les_dependances1( {';
                     t+='"table_parente" : \'' + nom_de_la_table + '\' ,';
                     t+='"champ_parent" : \'' + nom_du_champ_cle + '\' ,';
                     t+='"id_enregistrement" : par[\'' + nom_du_champ_cle + '\'] ,';
@@ -458,9 +458,9 @@ class _rev_de_sql_vers_js1{
             t+='        try{\r\n';
             t+='            sql0=`' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '          ' ) + CRLF;
             t+='            `;' + CRLF;
-            t+='            /* this.__gi1.ma_trace1(\'sql_\' , sql0 ); */' + CRLF;
+            t+='            /* this.__ig1.ma_trace1(\'sql_\' , sql0 ); */' + CRLF;
             t+='            const res=await this.__db1.exec( sql0 );\r\n';
-            t+='            /* this.__gi1.ma_trace1(\'res=\',res) */\r\n';
+            t+='            /* this.__ig1.ma_trace1(\'res=\',res) */\r\n';
             t+='            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res});\r\n';
             t+='        }catch(e){\r\n';
             if(this.#obj_webs.ne_pas_tester_les_dependances_de_suppression === 0){
@@ -473,7 +473,7 @@ class _rev_de_sql_vers_js1{
                 }
                 if(nom_du_champ_cle !== ''){
                     t+='            if(e.stack.indexOf( \'FOREIGN KEY\' ) >= 0){\r\n';
-                    t+='                await this.__gi1.afficher_les_dependances1( {';
+                    t+='                await this.__ig1.afficher_les_dependances1( {';
                     t+='"table_parente" : \'' + nom_de_la_table + '\' ,';
                     t+='"champ_parent" : \'' + nom_du_champ_cle + '\' ,';
                     t+='"id_enregistrement" : par[\'' + nom_du_champ_cle + '\'] ,';
@@ -481,7 +481,7 @@ class _rev_de_sql_vers_js1{
                     t+='            }\r\n';
                 }
             }
-            t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
+            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }\r\n';
             t+='    }\r\n';
             /*
@@ -512,13 +512,13 @@ class _rev_de_sql_vers_js1{
             t+='                }' + CRLF;
             t+='                liste_des_valeurs+=\'(\';' + CRLF;
             let tableau_des_insert=[];
-            /* this.__gi1.ma_trace1('obj3.tableau_des_valeurs_pour_insert_js=',obj3.tableau_des_valeurs_pour_insert_js); */
+            /* this.__ig1.ma_trace1('obj3.tableau_des_valeurs_pour_insert_js=',obj3.tableau_des_valeurs_pour_insert_js); */
             for( i=0 ; i < obj3.tableau_des_valeurs_pour_insert_js.length ; i++ ){
                 if(!this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'].hasOwnProperty( obj3.tableau_des_valeurs_pour_insert_js[i][1] )
                 ){
-                    return(this.__gi1.ajoute_message( {
+                    return(this.__ig1.ajoute_message( {
                             "__xst" : __xer ,
-                            "__xme" : 'Le champ "' + obj3.tableau_des_valeurs_pour_insert_js[i][1] + '" n\'existe pas dans la base ' + this.__gi1.__rev1.nl2()
+                            "__xme" : 'Le champ "' + obj3.tableau_des_valeurs_pour_insert_js[i][1] + '" n\'existe pas dans la base ' + this.__ig1.__rev1.nl2()
                         } ));
                 }
                 /* console.log(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_js[i][1]]); */
@@ -532,24 +532,24 @@ class _rev_de_sql_vers_js1{
                            && detail_champ.genre_objet_du_champ.che_a_init_genre === 1
                            && detail_champ.genre_objet_du_champ.cht_valeur_init_genre.toUpperCase() === 'NULL'
                     ){
-                        tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + ( par[i][' + i + ']===\'\' ? \'NULL\' : this.__gi1.__fnt1.sq1( par[i][' + i + '] ) ) + \'\' + \'' + virgule + '\'; // ' + obj3.tableau_des_valeurs_pour_insert_js[i][1] + '\r\n' );
+                        tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + ( par[i][' + i + ']===\'\' ? \'NULL\' : this.__ig1.__fnt1.sq1( par[i][' + i + '] ) ) + \'\' + \'' + virgule + '\'; // ' + obj3.tableau_des_valeurs_pour_insert_js[i][1] + '\r\n' );
                     }else{
-                        tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__gi1.__fnt1.sq1( par[i][' + i + '] ) + \'\' + \'' + virgule + '\'; // ' + obj3.tableau_des_valeurs_pour_insert_js[i][1] + '\r\n' );
+                        tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__ig1.__fnt1.sq1( par[i][' + i + '] ) + \'\' + \'' + virgule + '\'; // ' + obj3.tableau_des_valeurs_pour_insert_js[i][1] + '\r\n' );
                     }
                 }else if(detail_champ.genre_objet_du_champ
                        && (detail_champ.genre_objet_du_champ.che_est_tsc_genre === 1
                            || detail_champ.genre_objet_du_champ.che_est_tsm_genre === 1)
                        && this.#obj_webs.ne_pas_traiter_la_maj_ts_creation === 0
                 ){
-                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__gi1.__fnt1.sq1( donnees_retournees.date_heure_serveur ) + \'\'' );
+                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__ig1.__fnt1.sq1( donnees_retournees.date_heure_serveur ) + \'\'' );
                 }else if(detail_champ.genre_objet_du_champ && detail_champ.genre_objet_du_champ.che_est_nur_genre === 1){
-                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \'+this.__gi1.__fnt1.sq1(\'0\') + \'\'' );
+                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \'+this.__ig1.__fnt1.sq1(\'0\') + \'\'' );
                 }else{
                     let spec='';
                     try{
                         spec=detail_champ.genre_objet_du_champ.chp_espece_genre.toLowerCase();
                     }catch(e){
-                        this.__gi1.ma_trace1('bizarre', detail_champ);
+                        this.__ig1.ma_trace1( 'bizarre' , detail_champ );
                     }
                     if(spec === 'varchar' || spec === 'text'){
                         /* debugger */
@@ -561,7 +561,7 @@ class _rev_de_sql_vers_js1{
                     }
                 }
             }
-            /* this.__gi1.ma_trace1('tableau_des_insert=',tableau_des_insert); */
+            /* this.__ig1.ma_trace1('tableau_des_insert=',tableau_des_insert); */
             if(this.#obj_webs.insert_brut === 1){
                 t+=tableau_des_insert.join( '' );
             }else{
@@ -573,7 +573,7 @@ class _rev_de_sql_vers_js1{
                     t+=';';
                 }
             }else{
-                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + 'pas de valeur pour insert'} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + 'pas de valeur pour insert'} ));
             }
             t+=CRLF;
             t+='                liste_des_valeurs+=\')\';' + CRLF;
@@ -582,9 +582,9 @@ class _rev_de_sql_vers_js1{
             t+='            let nouvel_id=-1;' + CRLF;
             t+='            if(liste_des_valeurs !== \'\'){' + CRLF;
             t+='                sql0+=liste_des_valeurs;' + CRLF;
-            t+='                /* this.__gi1.ma_trace1( \'sql_' + id_requete_en_base + '=\' + sql0 ); */\r\n';
+            t+='                /* this.__ig1.ma_trace1( \'sql_' + id_requete_en_base + '=\' + sql0 ); */\r\n';
             t+='                res=await this.__db1.exec( sql0 );\r\n';
-            t+='                /* this.__gi1.ma_trace1(\'res=\',res); */\r\n';
+            t+='                /* this.__ig1.ma_trace1(\'res=\',res); */\r\n';
             t+='                const sql1=\'SELECT last_insert_rowid() as nouvel_id; \';\r\n';
             t+='                let statement1=await this.__db1.prepare( sql1 );\r\n';
             t+='                let lignes=await statement1.values();\r\n';
@@ -595,7 +595,7 @@ class _rev_de_sql_vers_js1{
             t+='            }\r\n';
             t+='            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});\r\n';
             t+='        }catch(e){\r\n';
-            t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
+            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }\r\n';
             t+='    }' + CRLF;
             /*
@@ -634,10 +634,10 @@ class _rev_de_sql_vers_js1{
                 if(this.#obj_webs['champs_sortie'][champ_sortie].type_d_element === 'formule'){
                     var formule=this.#obj_webs['champs_sortie'][champ_sortie].formule;
                     /*
-                      var tableau1=this.__gi1.__rev1.txt_en_tableau(formule);
+                      var tableau1=this.__ig1.__rev1.txt_en_tableau(formule);
                       var matriceFonction=functionToArray2(tableau1.__xva,true,true,'');
                     */
-                    var matriceFonction=this.__gi1.__rev1.rev_tm( formule );
+                    var matriceFonction=this.__ig1.__rev1.rev_tm( formule );
                     var tab=matriceFonction.__xva;
                     var l01=tab.length;
                     var nom_du_champ='';
@@ -667,14 +667,14 @@ class _rev_de_sql_vers_js1{
                                                 if(obj.__xst === __xsu){
                                                     valeur_du_champ=obj.__xva;
                                                 }else{
-                                                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + 'fonction dans update conditions "' + tab[l][1] + '"'} ));
+                                                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + 'fonction dans update conditions "' + tab[l][1] + '"'} ));
                                                 }
                                             }else{
                                                 if(tab[m][1].toLowerCase() === 'null' && tab[m][4] === 0){
                                                     valeur_du_champ='NULL';
                                                 }else{
                                                     if(tab[m][1].substr( 0 , 1 ) === ':'){
-                                                        valeur_du_champ='\' + this.__gi1.__fnt1.sq0( par[\'' + tab[m][1].substr( 1 ) + '\'] ) + \'';
+                                                        valeur_du_champ='\' + this.__ig1.__fnt1.sq0( par[\'' + tab[m][1].substr( 1 ) + '\'] ) + \'';
                                                         type_de_champ='variable';
                                                     }else{
                                                         valeur_du_champ='\'' + tab[m][1].replace( /\'/g , "''" ) + '\'';
@@ -749,7 +749,7 @@ class _rev_de_sql_vers_js1{
                 }
             }
             if(tableau_des_champs_en_sortie.length === 0){
-                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + ' il manque les champs en sortie '} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ' il manque les champs en sortie '} ));
             }
             var liste_des_champs_pour_update3='';
             for( var i=0 ; i < tableau_des_champs_en_sortie.length ; i++ ){
@@ -811,7 +811,7 @@ class _rev_de_sql_vers_js1{
                            && (elem.operation === 'egal'
                                || elem.operation === 'dans')
                     ){
-                        t+='            where0+=\'\\r\\n\' + this.__gi1.__fnt1.construction_where_sql_sur_id1(\'' + elem.nom_du_champ_pour_where + '\',' + elem.condition + ');' + CRLF;
+                        t+='            where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1(\'' + elem.nom_du_champ_pour_where + '\',' + elem.condition + ');' + CRLF;
                     }else{
                         let tt='            where0+=` AND ' + elem.valeur_js + '` + \'\\r\\n\';' + CRLF;
                         tt=tt.replace( /\+ `` \+ '/ , '+ \'' );
@@ -820,11 +820,11 @@ class _rev_de_sql_vers_js1{
                 }
             }
             t+='            sql0+=where0;' + CRLF;
-            t+='            /* this.__gi1.ma_trace1(\' sql_' + id_requete_en_base + '= \' + sql0 ); */' + CRLF;
+            t+='            /* this.__ig1.ma_trace1(\' sql_' + id_requete_en_base + '= \' + sql0 ); */' + CRLF;
             t+='            let res=await this.__db1.exec( sql0 );' + CRLF;
             t+='            return({"__xst" : __xsu ,"changements" : res});' + CRLF;
             t+='        }catch(e){' + CRLF;
-            t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
+            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }' + CRLF;
             t+='    }' + CRLF;
             /*
@@ -874,13 +874,13 @@ class _rev_de_sql_vers_js1{
                   Il n'y a alors qu'une seule formule
                 */
                 var formule='conditions(' + this.#obj_webs.conditions[0].formule + ')';
-                var tableau2=this.__gi1.__rev1.txt_en_tableau( formule );
-                var matriceFonction=this.__gi1.__rev1.tb_vers_matrice( tableau2.__xva , true , false , '' );
+                var tableau2=this.__ig1.__rev1.txt_en_tableau( formule );
+                var matriceFonction=this.__ig1.__rev1.tb_vers_matrice( tableau2.__xva , true , false , '' );
                 var les_conditions=this.__m_rev_vers_sql1.c_tab_vers_sql( matriceFonction.__xva , {"au_format_programme" : true} );
                 if(les_conditions.__xst === __xsu){
                     t+='        const where0=` WHERE ' + les_conditions.t_js + '`;' + CRLF;
                 }else{
-                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + ' conversion en php '} ));
+                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ' conversion en php '} ));
                 }
             }
             t+='        sql0+=where0;' + CRLF;
@@ -899,14 +899,14 @@ class _rev_de_sql_vers_js1{
                 }
                 t+='    sql0+=plage0;' + CRLF;
             }
-            t+='        /* this.__gi1.ma_trace1(\'sql_' + id_requete_en_base + ' sql0=\',sql0); */\r\n';
+            t+='        /* this.__ig1.ma_trace1(\'sql_' + id_requete_en_base + ' sql0=\',sql0); */\r\n';
             t+='        let lignes=[];\r\n';
             t+='        try{\r\n';
             t+='            let statement=await this.__db1.prepare( sql0 );\r\n';
             t+='            lignes=await statement.values();\r\n';
             t+='            await statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
-            t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
+            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }\r\n';
             t+='        let donnees0=[];\r\n';
             t+='        for(let col of lignes){\r\n';
@@ -992,21 +992,21 @@ class _rev_de_sql_vers_js1{
                 if(est_table_virtuelle === 1){
                     debugger;
                     t+='        if(par.hasOwnProperty( \'les_match\' )  && par[\'les_match\'] !== \'\'){\r\n';
-                    t+='                where0+=` AND ' + table_reference + ' match ` + this.__gi1.__fnt1.sq1( par[\'les_match\'] ) + \'\\r\\n\';\r\n';
+                    t+='                where0+=` AND ' + table_reference + ' match ` + this.__ig1.__fnt1.sq1( par[\'les_match\'] ) + \'\\r\\n\';\r\n';
                     t+='        }else{\r\n';
                     t+='\r\n';
                     t+='            let debut=performance.now();\r\n';
                     t+='            const sql1=\'SELECT COUNT(*) as __nbEnregs FROM ' + table_reference.substr( 0 , table_reference.length - 4 ) + '\';\r\n';
-                    t+='            this.__gi1.ma_trace1(\'sql_175 sql1=\',sql1);\r\n';
+                    t+='            this.__ig1.ma_trace1(\'sql_175 sql1=\',sql1);\r\n';
                     t+='            let statement1=await this.__db1.prepare( sql1 );\r\n';
                     t+='            let lignes=await statement1.values();\r\n';
                     t+='            await statement1.finalize();\r\n';
                     t+='            for(let numero_de_ligne in lignes){\r\n';
                     t+='                __nbEnregs=lignes[numero_de_ligne][0];\r\n';
                     t+='            }\r\n';
-                    t+='            this.__gi1.ma_trace1(__nbEnregs);\r\n';
+                    t+='            this.__ig1.ma_trace1(__nbEnregs);\r\n';
                     t+='            let fin=performance.now();\r\n';
-                    t+='            this.__gi1.ma_trace1(\'ms=\'+parseInt((fin-debut),10));\r\n';
+                    t+='            this.__ig1.ma_trace1(\'ms=\'+parseInt((fin-debut),10));\r\n';
                     t+='            return({\r\n';
                     t+='                     /*  */\r\n';
                     t+='                    "__xst" : __xer ,\r\n';
@@ -1017,10 +1017,10 @@ class _rev_de_sql_vers_js1{
                 }else{
                     var formule=this.#obj_webs.conditions[0].formule;
                     /*
-                      var tableau1=this.__gi1.__rev1.txt_en_tableau(formule);
+                      var tableau1=this.__ig1.__rev1.txt_en_tableau(formule);
                       var matriceFonction=functionToArray2(tableau1.__xva,true,true,'');
                     */
-                    var matriceFonction=this.__gi1.__rev1.rev_tm( formule );
+                    var matriceFonction=this.__ig1.__rev1.rev_tm( formule );
                     var tab=matriceFonction.__xva;
                     var l01=tab.length;
                     var options={
@@ -1144,7 +1144,7 @@ class _rev_de_sql_vers_js1{
                                    || elem.espece_du_champ_pour_where.toLowerCase() === 'int')
                                && elem.operation === 'egal'
                         ){
-                            t+='            where0+=\'\\r\\n\' + this.__gi1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF;
+                            t+='            where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF;
                         }else{
                             let s00='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
                             if(elem.valeur.substr( elem.valeur.length - 4 , 4 ) === ' + `'){
@@ -1179,14 +1179,14 @@ class _rev_de_sql_vers_js1{
                 }
                 t+='        sql0+=plage0;' + CRLF;
             }
-            t+='        /* this.__gi1.ma_trace1(\'sql_' + id_requete_en_base + ' sql0=\',sql0); */\r\n';
+            t+='        /* this.__ig1.ma_trace1(\'sql_' + id_requete_en_base + ' sql0=\',sql0); */\r\n';
             t+='        let lignes=[];\r\n';
             t+='        try{\r\n';
             t+='            let statement=await this.__db1.prepare( sql0 );\r\n';
             t+='            lignes=await statement.values();\r\n';
             t+='            await statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
-            t+='            return(this.__gi1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
+            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
             t+='        }\r\n';
             t+='        /*  */\r\n';
             t+='        for(let numero_de_ligne in lignes){\r\n';
@@ -1242,13 +1242,13 @@ class _rev_de_sql_vers_js1{
         t+='      =============================================================================================================\r\n';
         t+='    */\r\n';
         t+='    moi=\'sql_' + id_requete_en_base + '\';\r\n';
-        t+='    __gi1=null;\r\n';
+        t+='    __ig1=null;\r\n';
         t+='    __db1=null;\r\n';
         t+='    /*\r\n';
         t+='      =============================================================================================================\r\n';
         t+='    */\r\n';
-        t+='    constructor( __gi1 , __db1 ){\r\n';
-        t+='        this.__gi1=__gi1;\r\n';
+        t+='    constructor( __ig1 , __db1 ){\r\n';
+        t+='        this.__ig1=__ig1;\r\n';
         t+='        this.__db1=__db1;\r\n';
         t+='    }\r\n';
         t+='}' + CRLF;
@@ -1275,7 +1275,7 @@ class _rev_de_sql_vers_js1{
         /*
           console.log( 'this.#obj_webs.tableau_des_bases_tables_champs=' , this.#obj_webs.tableau_des_bases_tables_champs );
         */
-        var obj1=this.__gi1.__rev1.rev_tm( this.#globale_rev_requete );
+        var obj1=this.__ig1.__rev1.rev_tm( this.#globale_rev_requete );
         if(obj1.__xst !== __xsu){
             return;
         }
@@ -1486,7 +1486,7 @@ class _rev_de_sql_vers_js1{
         for( var i=0 ; i < l01 ; i++ ){
             if(tab[i][3] === 0 && tab[i][1] === '#' && tab[i][2] === 'f' && tab[i][13].indexOf( 'meta(' ) >= 0){
                 /* cette requête a un commentaire que contient un meta , on essaie de le convertir */
-                var obj2=this.__gi1.__rev1.rev_tm( tab[i][13] );
+                var obj2=this.__ig1.__rev1.rev_tm( tab[i][13] );
                 if(obj2.__xst !== __xsu){
                     continue;
                 }
@@ -1852,17 +1852,17 @@ class _rev_de_sql_vers_js1{
                                     */
                                     if(this.#obj_webs.type_de_requete === 'update'){
                                         if(tab[j][1] === 'affecte' && tab[j][2] === 'f'){
-                                            var obj=this.__gi1.__rev1.matrice_vers_source_rev1( tab , j , false , j + 1 );
+                                            var obj=this.__ig1.__rev1.matrice_vers_source_rev1( tab , j , false , j + 1 );
                                             if(obj.__xst === __xsu){
                                                 if(formule_update !== ''){
                                                     formule_update+=',';
                                                 }
                                                 formule_update+='affecte(' + obj.__xva + ')';
                                             }else{
-                                                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + ' il faut un affecte pour une requete update '} );
+                                                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ' il faut un affecte pour une requete update '} );
                                             }
                                         }else{
-                                            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + ' il faut un affecte pour une requete update '} );
+                                            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ' il faut un affecte pour une requete update '} );
                                         }
                                     }else{
                                         this.#obj_webs['champs_sortie'].push( {
@@ -1879,12 +1879,12 @@ class _rev_de_sql_vers_js1{
                                       c'est une formule
                                     */
                                     if(tab[j][1] === 'affecte'){
-                                        var obj=this.__gi1.__rev1.matrice_vers_source_rev1( tab , j , true , j + 1 );
+                                        var obj=this.__ig1.__rev1.matrice_vers_source_rev1( tab , j , true , j + 1 );
                                         if(obj.__xst === __xsu){
                                             this.#obj_webs['champs_sortie'].push( {"type_d_element" : 'formule' ,"formule" : 'affecte(' + obj.__xva + ')'} );
                                         }
                                     }else{
-                                        var obj=this.__gi1.__rev1.matrice_vers_source_rev1( tab , tab[j][7] , true , j );
+                                        var obj=this.__ig1.__rev1.matrice_vers_source_rev1( tab , tab[j][7] , true , j );
                                         if(obj.__xst === __xsu){
                                             this.#obj_webs['champs_sortie'].push( {"type_d_element" : 'formule' ,"formule" : obj.__xva} );
                                         }
@@ -1894,7 +1894,7 @@ class _rev_de_sql_vers_js1{
                                 /*
                                   c'est une formule
                                 */
-                                var obj=this.__gi1.__rev1.matrice_vers_source_rev1( tab , tab[j][7] , true , j );
+                                var obj=this.__ig1.__rev1.matrice_vers_source_rev1( tab , tab[j][7] , true , j );
                                 if(obj.__xst === __xsu){
                                     this.#obj_webs['champs_sortie'].push( {"type_d_element" : 'formule' ,"formule" : obj.__xva} );
                                 }
@@ -1902,7 +1902,7 @@ class _rev_de_sql_vers_js1{
                         }else{
                             if(tab[j][1] === 'alias_champ'){
                             }else{
-                                var obj=this.__gi1.__rev1.matrice_vers_source_rev1( tab , j , true , j + 1 );
+                                var obj=this.__ig1.__rev1.matrice_vers_source_rev1( tab , j , true , j + 1 );
                                 if(obj.__xst === __xsu){
                                     this.#obj_webs['champs_sortie'].push( {"type_d_element" : 'formule' ,"formule" : tab[j][1] + '(' + obj.__xva + ')'} );
                                 }
@@ -1914,14 +1914,14 @@ class _rev_de_sql_vers_js1{
                 }
             }else if(tab[i][2] === 'f' && 'conditions' === tab[i][1]){
                 if(tab[i][8] > 0){
-                    var obj=this.__gi1.__rev1.matrice_vers_source_rev1( tab , tab[i + 1][7] , true , i + 1 );
+                    var obj=this.__ig1.__rev1.matrice_vers_source_rev1( tab , tab[i + 1][7] , true , i + 1 );
                     if(obj.__xst === __xsu){
                         this.#obj_webs['conditions'].push( {"type_d_element" : 'formule' ,"formule" : obj.__xva} );
                     }
                 }
             }else if(tab[i][2] === 'f' && 'complements' === tab[i][1]){
                 if(tab[i][8] > 0){
-                    var obj=this.__gi1.__rev1.matrice_vers_source_rev1( tab , tab[i + 1][7] , true , i + 1 );
+                    var obj=this.__ig1.__rev1.matrice_vers_source_rev1( tab , tab[i + 1][7] , true , i + 1 );
                     if(obj.__xst === __xsu){
                         this.#obj_webs['complements'].push( {"type_d_element" : 'formule' ,"formule" : obj.__xva} );
                     }
@@ -2010,10 +2010,10 @@ class _rev_de_sql_vers_js1{
                                                     for( let o=n + 1 ; o < l01 ; o=tab[o][12] ){
                                                         if(tab[o][1] === 'genre' && tab[o][2] === 'f' && tab[o][8] === 1 && tab[o + 1][2] === 'c'){
                                                             this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['genre_numerique_du_champ']=parseInt( tab[o + 1][1] , 10 );
-                                                            this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['genre_objet_du_champ']=this.__gi1.__liste_des_genres[tab[o + 1][1]];
+                                                            this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['genre_objet_du_champ']=this.__ig1.__liste_des_genres[tab[o + 1][1]];
                                                             /*
                                                               debugger
-                                                              this.__gi1.__liste_des_genres
+                                                              this.__ig1.__liste_des_genres
                                                             */
                                                             /* console.log('tab[o][1]='+nom_du_champ+ ' : ' +tab[o+1][1]); */
                                                         }
@@ -2032,8 +2032,7 @@ class _rev_de_sql_vers_js1{
                             }
                         }
                     }else{
-                        this.__gi1.__xsi[__xer].push( 'nom_de_la_table est vide  [' + this.__gi1.nl2() + ']' );
-                        donnees_retournees.__xst=__xer;
+                        donnees_retournees.__xsi[__xer].push( 'nom_de_la_table est vide  [' + this.__ig1.nl2() + ']' );
                         return({"__xst" : __xer});
                     }
                 }
@@ -2057,7 +2056,7 @@ class _rev_de_sql_vers_js1{
         this.#globale_id_requete=chi_id_requete;
         let bases=le_message_du_serveur.__xva.les_bases_du_projet;
         for(let indice_de_la_base in bases){
-            var obj1=this.__gi1.__rev1.rev_tm( bases[indice_de_la_base]['T0.chp_rev_travail_basedd'] );
+            var obj1=this.__ig1.__rev1.rev_tm( bases[indice_de_la_base]['T0.chp_rev_travail_basedd'] );
             if(obj1.__xst !== __xsu){
                 return;
             }
@@ -2117,10 +2116,9 @@ class _rev_de_sql_vers_js1{
         this.#globale_id_requete=donnees_recues.__xva.chi_id_requete;
         /*  */
         for(let indice_de_la_base in bases){
-            let obj0=this.__gi1.__rev1.rev_tm( bases[indice_de_la_base]['T0.chp_rev_travail_basedd'] );
+            let obj0=this.__ig1.__rev1.rev_tm( bases[indice_de_la_base]['T0.chp_rev_travail_basedd'] );
             if(obj0.__xst !== __xsu){
-                this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-                donnees_retournees.__xst=__xer;
+                donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
             bases[indice_de_la_base]['matrice']=obj0.__xva;
@@ -2128,8 +2126,7 @@ class _rev_de_sql_vers_js1{
         }
         let obj0=this.traiter_donnees_bases_rev( mat , d , donnees_recues , donnees_retournees , options_generales , bases );
         if(obj0.__xst !== __xsu){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2() + ']' );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(this.#globale_id_requete > 0){
@@ -2144,14 +2141,14 @@ class _rev_de_sql_vers_js1{
         /*
           2°] le partie transform_source_rev_vers_sql( le_message_du_serveur.__xva.requete['T0.cht_rev_requete'] , chi_id_requete );
         */
-        var obj1=this.__gi1.__rev1.rev_tm( this.#globale_rev_requete );
+        var obj1=this.__ig1.__rev1.rev_tm( this.#globale_rev_requete );
         if(obj1.__xst !== __xsu){
-            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + ''} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ''} ));
         }
         let matrice_requete=obj1.__xva;
         var obj2=this.__m_rev_vers_sql1.c_tab_vers_sql( obj1.__xva , {} );
         if(obj2.__xst !== __xsu){
-            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + 'conversion en sql '} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + 'conversion en sql '} ));
         }
         obj2.__xva=obj2.__xva.replace( /\/\* ==========DEBUT DEFINITION=========== \*\//g , '' );
         if(obj2.__xva.indexOf( 'WHERE ' ) >= 0){
@@ -2172,7 +2169,7 @@ class _rev_de_sql_vers_js1{
             "inclure_le_prefixe_de_la_base_devant_la_table" : this.#obj_webs.inclure_le_prefixe_de_la_base_devant_la_table
         } );
         if(obj3.__xst !== __xsu){
-            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"source_sql" : obj2.__xva ,"message" : this.__gi1.__rev1.nl2() + 'conversion en sql '} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"source_sql" : obj2.__xva ,"message" : this.__ig1.__rev1.nl2() + 'conversion en sql '} ));
         }
         for( let i=0 ; i < obj3.tableau_des_tables_utilisees.length ; i++ ){
             var base={};
@@ -2202,10 +2199,10 @@ class _rev_de_sql_vers_js1{
                         "base_reference" : obj5.__xva.base_reference
                     });
             }else{
-                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"source_sql" : obj2.__xva ,"__xme" : this.__gi1.__rev1.nl2() + 'conversion en js '} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"source_sql" : obj2.__xva ,"__xme" : this.__ig1.__rev1.nl2() + 'conversion en js '} ));
             }
         }catch(e){
-            this.__gi1.__xsi[__xer].push( '[' + this.__gi1.nl2( e ) + ']' );
+            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
         return({"__xst" : __xsu});

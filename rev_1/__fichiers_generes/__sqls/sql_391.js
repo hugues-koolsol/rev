@@ -18,17 +18,17 @@ class sql_391{
         const from0=`
           FROM  tbl_requetes T0        `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`chp_table_reference_requete\` = ` + this.__gi1.__fnt1.sq1( par['T0_chp_table_reference_requete'] ) + `
-         AND \`T0\`.\`che_est_souche_requete\` = ` + this.__gi1.__fnt1.sq1( par['T0_che_est_souche_requete'] ) + `)`;
+        const where0=` WHERE (\`T0\`.\`chp_table_reference_requete\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_table_reference_requete'] ) + `
+         AND \`T0\`.\`che_est_souche_requete\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_est_souche_requete'] ) + `)`;
         sql0+=where0;
-        /* this.__gi1.ma_trace1('sql_391 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_391 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 391 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 391 , e , sql0 , donnees_retournees , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -49,13 +49,13 @@ class sql_391{
       =============================================================================================================
     */
     moi='sql_391';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

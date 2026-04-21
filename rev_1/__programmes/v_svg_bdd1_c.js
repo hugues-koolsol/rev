@@ -27,7 +27,7 @@
                 "id_bdd_de_la_base" : id_bdd_de_la_base_en_cours
             }
         };
-        this.__gi1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_message_au_worker( obj );
 */
 const __xer=0;
 const __xsu=1;
@@ -37,6 +37,7 @@ const __xdv=4;
 import {w_rev_vers_sql1} from '/f0?n0=w_rev_vers_sql1_.js';
 import {_tri_arbre1} from '/f0?n0=_tri_arbre1_c.js';
 class v_svg_bdd1{
+    __ig1=null;
     moi='v_svg_bdd1';
     /*
       permet d'utiliser le nom de la variable dans des href="nom_de_la_variable.methode()"  
@@ -134,28 +135,33 @@ class v_svg_bdd1{
     ];
     __m_rev_vers_sql1=null;
     #date_derniere_sauvegarde=performance.now();
-    __gi1=null;
+    les_bases_du_projet=null;
     /*
       =============================================================================================================
       function constructor
     */
-    constructor( mat , d , __gi1 ){
-        this.__gi1=__gi1;
-        this.__m_rev_vers_sql1=new w_rev_vers_sql1( '__m_rev_vers_sql1' , this.__gi1 );
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        this.__m_rev_vers_sql1=new w_rev_vers_sql1( '__m_rev_vers_sql1' , this.__ig1 );
     }
     /*
       =============================================================================================================
     */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
+            case 'compter_le_nombre_d_enregistrements' :
+                let aa=document.getElementById( 'vv_sous_fenetre1' );
+                aa.scrollTo( {"left" : 0 ,"top" : 0} );
+                break;
+                
             case 'enregistrer_le_modele_de_la_base' : 
             case 'reconstruire_la_base_a_partir_du_shema_sur_disque' :
                 /* les retours du serveur sans traitements à faire */
-                this.__gi1.fermer_la_sous_fenetre();
+                this.__ig1.fermer_la_sous_fenetre();
                 break;
                 
             default:
-                this.__gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'CLIENT : la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
+                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
                 return({"__xst" : __xer});
                 
         }
@@ -193,20 +199,23 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    init001( mat , d ){
+    init001( id_du_svg , nom_de_la_div_contenant_le_svg ){
+        /* mat , d ]{ */
         console.log( 'init001' );
-        let id_du_svg='';
-        let nom_de_la_div_contenant_le_svg='';
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if('id_du_svg' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_du_svg=mat[i + 1][1];
-            }else if('nom_de_la_div_contenant_le_svg' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                nom_de_la_div_contenant_le_svg=mat[i + 1][1];
-            }
-        }
+        /*
+          let id_du_svg='';
+          let nom_de_la_div_contenant_le_svg='';
+          let l01=mat.length;
+          for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+          if('id_du_svg' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+          id_du_svg=mat[i + 1][1];
+          }else if('nom_de_la_div_contenant_le_svg' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+          nom_de_la_div_contenant_le_svg=mat[i + 1][1];
+          }
+          }
+        */
         this.#div_svg=document.getElementById( nom_de_la_div_contenant_le_svg );
-        this.#taille_bordure=this.__gi1.css_dimensions.t_border;
+        this.#taille_bordure=this.__ig1.css_dimensions.t_border;
         this.#div_svg.style.maxWidth='calc(100% - var(--t_boutons_carres))';
         this.#div_svg.style.width='calc(100% - var(--t_boutons_carres))';
         this.#div_svg.style.maxHeight='80vh';
@@ -231,7 +240,7 @@ class v_svg_bdd1{
         */
         this.#hauteur_du_svg=hauteur_de_la_div - 2 * this.#taille_bordure;
         this.#largeur_du_svg=largeur_de_la_div - 2 * this.#taille_bordure;
-        this.#hauteur_de_boite=this.__gi1.css_dimensions.t_police + 2 * this.__gi1.css_dimensions.t_padding + 2 * this.#taille_bordure;
+        this.#hauteur_de_boite=this.__ig1.css_dimensions.t_police + 2 * this.__ig1.css_dimensions.t_padding + 2 * this.#taille_bordure;
         this.#hauteur_de_boite_affichage=this.#hauteur_de_boite + 1 * this.#taille_bordure;
         this.#svg_dessin.setAttribute( 'viewBox' , '0 0 ' + this.#largeur_du_svg + ' ' + this.#hauteur_du_svg );
         this.#svg_dessin.style.width=this.#largeur_du_svg + 'px';
@@ -240,7 +249,7 @@ class v_svg_bdd1{
         this.#div_svg.addEventListener( 'wheel' , this.zoom_avec_roulette.bind( this ) , false );
         this.#svg_dessin.addEventListener( 'mousedown' , this.#souris_bas_listener , false );
         this.#svg_dessin.addEventListener( 'touchstart' , this.#doigt_bas_listener , false );
-        this.#arbre={};
+        /* this.#arbre={}; */
         return({"__xst" : __xsu});
     }
     /*
@@ -261,7 +270,7 @@ class v_svg_bdd1{
         document.getElementById( '__message_modale' ).innerHTML='<div class="yysucces">OK</div>';
         setTimeout( function(){
                 document.getElementById( '__message_modale' ).innerHTML='';
-                this.__gi1.fermer_la_sous_fenetre();
+                this.__ig1.fermer_la_sous_fenetre();
             } , 500 );
     }
     /*
@@ -283,7 +292,7 @@ class v_svg_bdd1{
     */
     modale_ajouter_une_table(){
         document.getElementById( '__contenu_modale' ).innerHTML=t;
-        this.__gi1.global_modale2.showModal();
+        this.__ig1.global_modale2.showModal();
     }
     /*
       =============================================================================================================
@@ -371,7 +380,7 @@ class v_svg_bdd1{
                         "operation_table" : 'renommer_une_table'
                     }
                 };
-                this.__gi1.envoyer_un_message_au_worker( obj );
+                this.__ig1.envoyer_un_message_au_worker( obj );
                 return({"__xst" : __xsu});
             }
         }
@@ -428,7 +437,7 @@ class v_svg_bdd1{
                           on change les champs meta donnees_rev_de_l_index
                         */
                         let rev_texte=lst[i].getAttribute( 'donnees_rev_de_l_index' );
-                        var obj1=this.__gi1.__rev1.rev_tm( rev_texte );
+                        var obj1=this.__ig1.__rev1.rev_tm( rev_texte );
                         if(obj1.__xst === __xsu){
                             let mat2=obj1.__xva;
                             for( let k=1 ; k < mat2.length ; k++ ){
@@ -436,7 +445,7 @@ class v_svg_bdd1{
                                     mat2[k + 1][1]=nouveau_nom;
                                 }
                             }
-                            var obj2=this.__gi1.__rev1.matrice_vers_source_rev1( mat2 , 0 , false , 1 );
+                            var obj2=this.__ig1.__rev1.matrice_vers_source_rev1( mat2 , 0 , false , 1 );
                             if(obj2.__xst === __xsu){
                                 lst[i].setAttribute( 'donnees_rev_de_l_index' , obj2.__xva );
                             }
@@ -495,7 +504,7 @@ class v_svg_bdd1{
                 */
             }
             this.#svg_ajuster_largeur_de_table( id_svg_conteneur_table );
-            this.__gi1.fermer_la_sous_fenetre();
+            this.__ig1.fermer_la_sous_fenetre();
             this.#dessiner_le_svg();
         }
     }
@@ -547,7 +556,7 @@ class v_svg_bdd1{
         var max_id=-1;
         var lst=this.#svg_dessin.getElementsByTagName( '*' );
         for( i=0 ; i < lst.length ; i++ ){
-            if(lst[i].id && this.__gi1.est_num( lst[i].id )){
+            if(lst[i].id && this.__ig1.est_num( lst[i].id )){
                 j=parseInt( lst[i].id , 10 );
                 if(j > max_id){
                     max_id=j;
@@ -600,7 +609,7 @@ class v_svg_bdd1{
             var id_svg_conteneur_table=a.id_svg_conteneur_table;
             indice_courant+=2;
             var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0 , false );
-            this.__gi1.fermer_la_sous_fenetre();
+            this.__ig1.fermer_la_sous_fenetre();
             this.#dessiner_le_svg();
         }
         return({"__xst" : __xsu});
@@ -743,7 +752,7 @@ class v_svg_bdd1{
         rev+='    est_utilisateur_autre_que_courant(' + est_utilisateur_autre_que_courant + ')';
         rev+=')';
         var a=this.#ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , this.#id_bdd_de_la_base_en_cours , rev , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere );
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         return({"__xst" : __xsu});
     }
@@ -810,7 +819,7 @@ class v_svg_bdd1{
                     }
                 }
                 this.#svg_ajuster_largeur_de_table( id_svg_conteneur_table );
-                this.__gi1.fermer_la_sous_fenetre();
+                this.__ig1.fermer_la_sous_fenetre();
                 this.#dessiner_le_svg();
                 return({"__xst" : __xsu});
             }
@@ -908,7 +917,7 @@ class v_svg_bdd1{
                         "operation_table" : 'renommer_un_champs'
                     }
                 };
-                this.__gi1.envoyer_un_message_au_worker( obj );
+                this.__ig1.envoyer_un_message_au_worker( obj );
                 return({"__xst" : __xsu});
             }
         }
@@ -977,7 +986,7 @@ class v_svg_bdd1{
             }
         }
         this.#svg_ajuster_largeur_de_table( id_svg_conteneur_table );
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
     }
     /*
@@ -1020,7 +1029,7 @@ class v_svg_bdd1{
                 this.#changer_le_nom_de_champ_sur_le_svg( id_svg_conteneur_table , id_svg_text , id_svg_champ_en_cours , nouveau_nom , ancien_nom );
             }
         }
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
     /*
@@ -1046,7 +1055,7 @@ class v_svg_bdd1{
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_l_index].proprietes['champs']=document.getElementById( 'liste_des_champs_de_l_index' ).value;
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_l_index].proprietes['unique']=document.getElementById( 'unique' ).checked ? ( 1 ) : ( 0 );
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_l_index].proprietes['donnees_rev_de_l_index']='meta( genre_meta(index_de_table) , message( \'' + document.getElementById( 'meta_modifier__message' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\' ))';
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         return({"__xst" : __xsu});
     }
@@ -1068,7 +1077,7 @@ class v_svg_bdd1{
         }
         var id_de_l_index=parseInt( document.getElementById( id_svg_rectangle_de_l_index ).parentNode.id , 10 );
         this.#supprimer_recursivement_les_elements_de_l_arbre( this.#id_bdd_de_la_base_en_cours , id_de_l_index );
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         return({"__xst" : __xsu});
     }
@@ -1098,7 +1107,7 @@ class v_svg_bdd1{
                 "operation_table" : 'supprimer_l_index'
             }
         };
-        this.__gi1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_message_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -1139,14 +1148,14 @@ class v_svg_bdd1{
                 }
             }
             if(primary_key === ''){
-                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ clé primaire n\'a pas été trouvé pour cette table'} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ clé primaire n\'a pas été trouvé pour cette table'} ));
             }
             let element_svg_rectangle_de_l_index=document.getElementById( id_svg_rectangle_de_l_index );
             let champs=element_svg_rectangle_de_l_index.getAttribute( 'champs' );
             let liste_des_champs=champs.split( ',' );
             console.log( liste_des_champs );
             if(liste_des_champs.length <= 0){
-                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'les champs de l\'index n\'ont pas été trouvés'} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'les champs de l\'index n\'ont pas été trouvés'} ));
             }
             let source_sql='';
             let les_champs='T0.' + primary_key + ' , T1.' + primary_key + ' ';
@@ -1194,10 +1203,10 @@ class v_svg_bdd1{
                     "liste_des_champs_avec_type" : liste_des_champs_avec_type
                 }
             };
-            this.__gi1.envoyer_un_message_au_worker( obj );
+            this.__ig1.envoyer_un_message_au_worker( obj );
             return({"__xst" : __xsu});
         }
-        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de l\'analyse de l\'index '} ));
+        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de l\'analyse de l\'index '} ));
         /*
           
           SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.fld_nom_prestation 
@@ -1248,7 +1257,7 @@ class v_svg_bdd1{
             }
         }
         let rev_texte=this.#creer_definition_index_en_rev( document.getElementById( id_svg_rectangle_de_l_index ) );
-        var obj1=this.__gi1.__rev1.rev_tm( rev_texte );
+        var obj1=this.__ig1.__rev1.rev_tm( rev_texte );
         if(obj1.__xst === __xsu){
             var obj2=this.__m_rev_vers_sql1.c_tab_vers_sql( obj1.__xva , {} );
             if(obj2.__xst === __xsu){
@@ -1262,7 +1271,7 @@ class v_svg_bdd1{
                         "operation_table" : 'ajouter_l_index'
                     }
                 };
-                this.__gi1.envoyer_un_message_au_worker( obj );
+                this.__ig1.envoyer_un_message_au_worker( obj );
                 return({"__xst" : __xsu});
             }
         }
@@ -1295,7 +1304,7 @@ class v_svg_bdd1{
         if(a.getAttribute( 'type_element' ) && a.getAttribute( 'type_element' ) === 'rectangle_de_champ'){
             /* definition_du_champ+='sql(champ(' + a.getAttribute( 'donnees_rev_du_champ' ) + '))'; */
             definition_du_champ='sql(' + this.creer_definition_de_champ_a_partir_de_svg_rectangle( id_svg_rectangle_du_champ ) + ')';
-            var obj1=this.__gi1.__rev1.rev_tm( definition_du_champ );
+            var obj1=this.__ig1.__rev1.rev_tm( definition_du_champ );
             if(obj1.__xst === __xsu){
                 var obj2=this.__m_rev_vers_sql1.c_tab_vers_sql( obj1.__xva , {} );
                 if(obj2.__xst === __xsu){
@@ -1309,7 +1318,7 @@ class v_svg_bdd1{
                             "operation_table" : 'ajouter_un_champ'
                         }
                     };
-                    this.__gi1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_message_au_worker( obj );
                 }else{
                     debugger;
                 }
@@ -1363,7 +1372,7 @@ class v_svg_bdd1{
                   
                   il faut supprimer le champ de cet index puis supprimer l'index s'il n'y a plus de champ
                 */
-                var obj=this.__gi1.__rev1.rev_tm( elt.proprietes.donnees_rev_de_l_index );
+                var obj=this.__ig1.__rev1.rev_tm( elt.proprietes.donnees_rev_de_l_index );
                 if(obj.__xst === __xsu){
                     var j=0;
                     for( j=0 ; j < obj.__xva.length ; j++ ){
@@ -1383,8 +1392,8 @@ class v_svg_bdd1{
                                         */
                                         this.#supprimer_recursivement_les_elements_de_l_arbre( this.#id_bdd_de_la_base_en_cours , elt.id_parent );
                                     }else{
-                                        var nouvelle_matrice=this.__gi1.__rev1.supprimer_un_element_de_la_matrice( obj.__xva , k , 0 );
-                                        var obj=this.__gi1.__rev1.matrice_vers_source_rev1( nouvelle_matrice , 0 , false , 1 );
+                                        var nouvelle_matrice=this.__ig1.__rev1.supprimer_un_element_de_la_matrice( obj.__xva , k , 0 );
+                                        var obj=this.__ig1.__rev1.matrice_vers_source_rev1( nouvelle_matrice , 0 , false , 1 );
                                         if(obj.__xst === __xsu){
                                             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[i].proprietes.donnees_rev_de_l_index=obj.__xva;
                                         }else{
@@ -1402,7 +1411,7 @@ class v_svg_bdd1{
                 }
             }
         }
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         return({"__xst" : __xsu});
     }
@@ -1461,7 +1470,7 @@ class v_svg_bdd1{
                     var max_id_svg=-1;
                     var lst2=this.#svg_dessin.getElementsByTagName( '*' );
                     for( j=0 ; j < lst2.length ; j++ ){
-                        if(lst2[j].id && this.__gi1.est_num( lst2[j].id )){
+                        if(lst2[j].id && this.__ig1.est_num( lst2[j].id )){
                             var k=parseInt( lst2[j].id , 10 );
                             if(k > max_id_svg){
                                 max_id_svg=k;
@@ -1655,7 +1664,7 @@ class v_svg_bdd1{
             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ - 1].proprietes.style='display:inline;';
         }
         a.proprietes.donnees_rev_du_champ=obj_donnees_rev_du_champ.texte;
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         return({"__xst" : __xsu});
     }
@@ -1711,7 +1720,7 @@ class v_svg_bdd1{
                 liste_des_champs_de_l_index=document.getElementById( id_svg_rectangle_de_l_index ).getAttribute( 'champs' );
                 unique=document.getElementById( id_svg_rectangle_de_l_index ).getAttribute( 'unique' );
                 if(lst[i].getAttribute( 'donnees_rev_de_l_index' ) && lst[i].getAttribute( 'donnees_rev_de_l_index' ) !== ''){
-                    var obj_matrice_de_l_index=this.__gi1.__rev1.rev_tm( lst[i].getAttribute( 'donnees_rev_de_l_index' ) );
+                    var obj_matrice_de_l_index=this.__ig1.__rev1.rev_tm( lst[i].getAttribute( 'donnees_rev_de_l_index' ) );
                     if(obj_matrice_de_l_index.__xst === __xsu){
                         for( let k=1 ; k < obj_matrice_de_l_index.__xva.length ; k=obj_matrice_de_l_index.__xva[k][12] ){
                             if(obj_matrice_de_l_index.__xva[k][2] === 'f'){
@@ -1831,9 +1840,9 @@ class v_svg_bdd1{
         t+='<div class="rev_bouton yy__0" data-rev_click="' + cmd + '" >supprimer l\'index</div>';
         /*
           document.getElementById( '__contenu_modale' ).innerHTML=t;
-          this.__gi1.global_modale2.showModal();
+          this.__ig1.global_modale2.showModal();
         */
-        this.__gi1.affiche_sous_fenetre1( t );
+        this.__ig1.affiche_sous_fenetre1( t );
         return({"__xst" : __xsu});
     }
     /*
@@ -1882,7 +1891,7 @@ class v_svg_bdd1{
             return({"__xst" : __xer ,"__xme" : ' pas de champ trouvé '});
         }
         if(liste_des_champs[liste_des_champs.length - 1] === nom_du_champ){
-            this.__gi1.fermer_la_sous_fenetre();
+            this.__ig1.fermer_la_sous_fenetre();
             return({"__xst" : __xer ,"__xme" : ' Veuillez déplacer de champ car il est en dernière position'});
         }
         let source_sql='ALTER TABLE ' + nom_de_la_table + ' DROP COLUMN ' + nom_du_champ + ';';
@@ -1898,7 +1907,7 @@ class v_svg_bdd1{
         cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+='))))';
         let obj={"__xac" : cmd ,"__xva" : {"source_sql" : source_sql ,"operation_table" : 'supprimer_en_bdd_le_champ'}};
-        this.__gi1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_message_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -1987,7 +1996,7 @@ class v_svg_bdd1{
                     cmd+=' zone_cible(' + zone_champ_parent + '),';
                     cmd+=')))';
                     document.getElementById( zone_liste_des_champs ).innerHTML='<select id="vv_champ_parent" data-rev_change="' + cmd + '"><option value=""></option>' + sel01 + '</select>';
-                    this.__gi1.ajoute_les_evenements_aux_boutons( null );
+                    this.__ig1.ajoute_les_evenements_aux_boutons( null );
                 }
             }
         }
@@ -2290,7 +2299,7 @@ class v_svg_bdd1{
         var table_mere='';
         var champ_pere='';
         if(les_meta_rev.indexOf( 'reference_externe(' ) >= 0){
-            let o1=this.__gi1.__rev1.rev_tm( les_meta_rev );
+            let o1=this.__ig1.__rev1.rev_tm( les_meta_rev );
             if(o1.__xst === __xsu){
                 let tab1=o1.__xva;
                 let l02=tab1.length;
@@ -2333,7 +2342,7 @@ class v_svg_bdd1{
         let texte__liste_des_genres='';
         let genre_courant='';
         let tableau_des_genres=[];
-        for(let i in this.__gi1.__liste_des_genres){
+        for(let i in this.__ig1.__liste_des_genres){
             /*
               {
               "chp_espece_genre":"TEXT",
@@ -2351,15 +2360,15 @@ class v_svg_bdd1{
             */
             l_option='';
             l_option+='<option';
-            if(genre == this.__gi1.__liste_des_genres[i].chi_id_genre){
+            if(genre == this.__ig1.__liste_des_genres[i].chi_id_genre){
                 l_option+=' selected="true"';
             }
-            l_option+=' value="' + this.__gi1.__liste_des_genres[i].chi_id_genre + '"';
-            l_option+=' data-genre="' + this.__gi1.fi2( JSON.stringify( this.__gi1.__liste_des_genres[i] ) ) + '"';
-            l_option+='>(' + this.__gi1.__liste_des_genres[i].chi_id_genre + ') ';
-            l_option+=this.__gi1.__liste_des_genres[i].chp_nom_genre;
+            l_option+=' value="' + this.__ig1.__liste_des_genres[i].chi_id_genre + '"';
+            l_option+=' data-genre="' + this.__ig1.fi2( JSON.stringify( this.__ig1.__liste_des_genres[i] ) ) + '"';
+            l_option+='>(' + this.__ig1.__liste_des_genres[i].chi_id_genre + ') ';
+            l_option+=this.__ig1.__liste_des_genres[i].chp_nom_genre;
             l_option+='</option>';
-            tableau_des_genres.push( [this.__gi1.__liste_des_genres[i].che_ordre_genre,l_option] );
+            tableau_des_genres.push( [this.__ig1.__liste_des_genres[i].che_ordre_genre,l_option] );
         }
         tableau_des_genres.sort( function( a , b ){
                 /* return a[0].localeCompare(b[0]); */
@@ -2552,7 +2561,7 @@ class v_svg_bdd1{
         cmd+=')))';
         t+='<div class="rev_bouton yy__0" data-rev_click="' + cmd + '" >supprimer le champ en bdd</div>';
         t+='<hr />';
-        this.__gi1.affiche_sous_fenetre1( t );
+        this.__ig1.affiche_sous_fenetre1( t );
         return({"__xst" : __xsu});
     }
     /*
@@ -2562,7 +2571,7 @@ class v_svg_bdd1{
     /* afficher_resultat_comparaison_base_physique_et_base_virtuelle( par ){ */
     recuperer_les_tableaux_des_bases( mat , d , le_message_serveur ){
         /* par */
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         var differences_entre_les_tables=false;
         var differences_entre_les_champs=false;
         var differences_entre_les_indexe=false;
@@ -2577,20 +2586,20 @@ class v_svg_bdd1{
                 tables[a2].presente_dans_tableau_2=true;
             }else{
                 tables[a2]={"presente_dans_tableau_1" : false ,"presente_dans_tableau_2" : true};
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : ' la table ' + a2 + ' est absente de la base physique[tableau1] '} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ' la table ' + a2 + ' est absente de la base physique[tableau1] '} );
                 differences_entre_les_tables=true;
             }
         }
         for(var a0 in tables){
             if(tables[a0].presente_dans_tableau_2 === false){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : ' la table ' + a0 + ' est absente du schema svg[tableau2]'} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ' la table ' + a0 + ' est absente du schema svg[tableau2]'} );
                 differences_entre_les_tables=true;
             }
         }
         if(differences_entre_les_tables === true){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : ' des tables ne sont pas les mêmes'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ' des tables ne sont pas les mêmes'} );
         }else{
-            this.__gi1.ajoute_message( {"__xst" : __xsu ,"__xme" : ' il y a les mêmes tables dans les deux tableaux'} );
+            this.__ig1.ajoute_message( {"__xst" : __xsu ,"__xme" : ' il y a les mêmes tables dans les deux tableaux'} );
         }
         if(differences_entre_les_tables === false){
             for(var a0 in tables){
@@ -2743,12 +2752,12 @@ class v_svg_bdd1{
                                     }else{
                                         if('cid' === typechamp){
                                         }else if(typechamp === 'auto_increment'){
-                                            this.__gi1.ajoute_message( {
+                                            this.__ig1.ajoute_message( {
                                                     "__xst" : __xer ,
                                                     "__xme" : ' pour la table ' + a0 + ' , le champ ' + champ + ' , le type ' + typechamp + ' on a une différence mais ce n\'est peut-être pas une erreur ! '
                                                 } );
                                         }else{
-                                            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : ' pour la table ' + a0 + ' , le champ ' + champ + ' , le type ' + typechamp + ' on a une différence'} );
+                                            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ' pour la table ' + a0 + ' , le champ ' + champ + ' , le type ' + typechamp + ' on a une différence'} );
                                         }
                                     }
                                 }
@@ -2765,12 +2774,12 @@ class v_svg_bdd1{
                             */
                         }else{
                             if(champs[champ].presente_dans_tableau_1 === true && champs[champ].presente_dans_tableau_2 === false){
-                                this.__gi1.ajoute_message( {
+                                this.__ig1.ajoute_message( {
                                         "__xst" : __xer ,
                                         "__xme" : ' pour la table ' + a0 + ' , le champ ' + champ + ' est dans la base physique mais pas dans la base du champ généré '
                                     } );
                             }else{
-                                this.__gi1.ajoute_message( {
+                                this.__ig1.ajoute_message( {
                                         "__xst" : __xer ,
                                         "__xme" : ' pour la table ' + a0 + ' , le champ ' + champ + ' est dans la base du champ généré mais pas dans la base physique  '
                                     } );
@@ -3049,7 +3058,7 @@ class v_svg_bdd1{
             t+='</td>';
         }
         t+='</tr></table>';
-        this.__gi1.affiche_sous_fenetre1( t );
+        this.__ig1.affiche_sous_fenetre1( t );
         if(differences_entre_les_tables === false
                && differences_entre_les_champs === false
                && differences_entre_les_indexe === false
@@ -3062,7 +3071,7 @@ class v_svg_bdd1{
         }
         /*  */
         vv_sous_fenetre1.showModal();
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -3078,7 +3087,7 @@ class v_svg_bdd1{
         }
         var obj1=this.#creer_rev_de_la_base_a_partir_de_svg( id_bdd_de_la_base_en_cours );
         if(obj1.__xst === __xsu){
-            var obj2=this.__gi1.__rev1.rev_tm( obj1.__xva );
+            var obj2=this.__ig1.__rev1.rev_tm( obj1.__xva );
             if(obj2.__xst === __xsu){
                 var obj3=this.__m_rev_vers_sql1.c_tab_vers_sql( obj2.__xva , {} );
                 /* debugger */
@@ -3092,7 +3101,7 @@ class v_svg_bdd1{
                             "id_bdd_de_la_base_en_cours" : id_bdd_de_la_base_en_cours
                         }
                     };
-                    this.__gi1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_message_au_worker( obj );
                     er=__xsu;
                 }else{
                     return({"__xst" : __xer});
@@ -3125,27 +3134,27 @@ class v_svg_bdd1{
             }
         }
         this.#id_bdd_de_la_base_en_cours=parseInt( id_bdd_de_la_base_en_cours , 10 );
-        this.__gi1.supprimer_les_messages();
+        this.__ig1.supprimer_les_messages();
         let obj=this.#creer_rev_de_la_base_a_partir_de_svg( this.#id_bdd_de_la_base_en_cours );
         if(obj.__xst === __xsu){
             var texte_rev=obj.__xva;
-            var obj2=this.__gi1.__rev1.rev_tm( texte_rev );
+            var obj2=this.__ig1.__rev1.rev_tm( texte_rev );
             if(obj2.__xst === __xsu){
                 var obj3=this.__m_rev_vers_sql1.c_tab_vers_sql( obj2.__xva , {} );
                 if(obj3.__xst === __xsu){
                     var source_sql_de_la_base=obj3.__xva;
                 }else{
-                    /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+                    /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
                     alert( 'Problème sur reecrire_la_base 1739 ' );
                     return({"__xst" : __xer});
                 }
             }else{
-                /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+                /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
                 alert( 'Problème sur reecrire_la_base 1739 ' );
                 return({"__xst" : __xer});
             }
         }else{
-            /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+            /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
             alert( 'Problème sur reecrire_la_base 1746 ' );
             return({"__xst" : __xer});
         }
@@ -3157,7 +3166,7 @@ class v_svg_bdd1{
                 "id_bdd_de_la_base" : id_bdd_de_la_base_en_cours
             }
         };
-        this.__gi1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_message_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -3173,11 +3182,11 @@ class v_svg_bdd1{
         var liste_des_tables=[];
         var liste_des_tables_champs={};
         this.#id_bdd_de_la_base_en_cours=parseInt( id_bdd , 10 );
-        this.__gi1.supprimer_les_messages();
+        this.__ig1.supprimer_les_messages();
         var obj=this.#creer_rev_de_la_base_a_partir_de_svg( this.#id_bdd_de_la_base_en_cours );
         if(obj.__xst === __xsu){
             var texte_rev=obj.__xva;
-            var obj2=this.__gi1.__rev1.rev_tm( texte_rev );
+            var obj2=this.__ig1.__rev1.rev_tm( texte_rev );
             if(obj2.__xst === __xsu){
                 var obj3=this.__m_rev_vers_sql1.c_tab_vers_sql( obj2.__xva , {} );
                 if(obj3.__xst === __xsu){
@@ -3194,7 +3203,7 @@ class v_svg_bdd1{
                                         liste_des_tables.push( nom_de_la_table );
                                         liste_des_tables_champs[nom_de_la_table]=[];
                                     }else{
-                                        /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+                                        /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
                                         alert( 'Problème sur reecrire_la_base 1739 ' );
                                         return({"__xst" : __xer});
                                     }
@@ -3216,17 +3225,17 @@ class v_svg_bdd1{
                         }
                     }
                 }else{
-                    /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+                    /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
                     alert( 'Problème sur reecrire_la_base 1739 ' );
                     return({"__xst" : __xer});
                 }
             }else{
-                /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+                /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
                 alert( 'Problème sur reecrire_la_base 1739 ' );
                 return({"__xst" : __xer});
             }
         }else{
-            /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+            /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
             alert( 'Problème sur reecrire_la_base 1746 ' );
             return({"__xst" : __xer});
         }
@@ -3241,7 +3250,7 @@ class v_svg_bdd1{
                 "liste_des_tables_champs" : liste_des_tables_champs
             }
         };
-        this.__gi1.envoyer_un_message_au_worker( obj1 );
+        this.__ig1.envoyer_un_message_au_worker( obj1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -3385,7 +3394,7 @@ class v_svg_bdd1{
         /*
           =====================================================================================================
         */
-        this.__gi1.affiche_sous_fenetre1( t );
+        this.__ig1.affiche_sous_fenetre1( t );
         return({"__xst" : __xsu});
     }
     /*
@@ -3393,7 +3402,7 @@ class v_svg_bdd1{
       function modifier_une_table_en_bdd
     */
     voir_la_définition_de_la_base_à_partir_de_ce_schema( mat , d ){
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         let id_bdd_de_la_base_en_cours=0;
         for( let i=0 ; i < mat.length ; i++ ){
             if((mat[i][1] === 'id_bdd_de_la_base_en_cours'
@@ -3406,23 +3415,23 @@ class v_svg_bdd1{
             }
         }
         this.#id_bdd_de_la_base_en_cours=parseInt( id_bdd_de_la_base_en_cours , 10 );
-        this.__gi1.supprimer_les_messages();
+        this.__ig1.supprimer_les_messages();
         let obj=this.#creer_rev_de_la_base_a_partir_de_svg( this.#id_bdd_de_la_base_en_cours );
         if(obj.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'erreur de reconstruction du rev à partir du schema [' + this.__gi1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'erreur de reconstruction du rev à partir du schema [' + this.__ig1.nl2() + ']'});
         }
         /*
         */
         var texte_rev=obj.__xva;
-        var obj2=this.__gi1.__rev1.rev_tm( texte_rev );
+        var obj2=this.__ig1.__rev1.rev_tm( texte_rev );
         if(obj2.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'erreur de construction de la matrice du rev [' + this.__gi1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'erreur de construction de la matrice du rev [' + this.__ig1.nl2() + ']'});
         }
         /*
         */
         var obj3=this.__m_rev_vers_sql1.c_tab_vers_sql( obj2.__xva , {} );
         if(obj3.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'erreur de construction de la matrice du rev [' + this.__gi1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'erreur de construction de la matrice du rev [' + this.__ig1.nl2() + ']'});
         }
         var source_sql_de_la_base=obj3.__xva;
         let t='';
@@ -3430,19 +3439,19 @@ class v_svg_bdd1{
         /*  */
         t+='<div class="yy_conteneur_txtara">';
         t+='    <div>\r\n';
-        t+=this.__gi1.__fnt1.boutons_rev3( 'cht_rev_source' );
+        t+=this.__ig1.__fnt1.boutons_rev3( 'cht_rev_source' );
         t+='    </div>\r\n';
-        t+='<textarea data-editeur1="rev"  id="cht_rev_source" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' + this.__gi1.fi2( texte_rev ) + '</textarea>';
+        t+='<textarea data-editeur1="rev"  id="cht_rev_source" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' + this.__ig1.fi2( texte_rev ) + '</textarea>';
         t+='</div>\r\n';
         /*  */
         t+='<div class="yy_conteneur_txtara">';
         t+='    <div>\r\n';
-        t+=this.__gi1.__fnt1.boutons_edition1( 'cht_genere_source' );
+        t+=this.__ig1.__fnt1.boutons_edition1( 'cht_genere_source' );
         t+='    </div>\r\n';
-        t+='<textarea data-editeur1="source_editeur1"  id="cht_genere_source" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' + this.__gi1.fi2( source_sql_de_la_base ) + '</textarea>';
+        t+='<textarea data-editeur1="source_editeur1"  id="cht_genere_source" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' + this.__ig1.fi2( source_sql_de_la_base ) + '</textarea>';
         t+='</div>\r\n';
         /*  */
-        this.__gi1.affiche_sous_fenetre1( t );
+        this.__ig1.affiche_sous_fenetre1( t );
         return({"__xst" : __xsu});
     }
     /*
@@ -3508,7 +3517,7 @@ class v_svg_bdd1{
         }
         var nouveau_rev=(t0 + nouveauTableau.join( ',' )) + '))';
         var chaine_create_table='';
-        var obj1=this.__gi1.__rev1.rev_tm( nouveau_rev );
+        var obj1=this.__ig1.__rev1.rev_tm( nouveau_rev );
         if(obj1.__xst === __xsu){
             var obj2=this.__m_rev_vers_sql1.c_tab_vers_sql( obj1.__xva , {} );
             if(obj2.__xst === __xsu){
@@ -3520,7 +3529,7 @@ class v_svg_bdd1{
             return({"__xst" : __xer});
         }
         for( let i=0 ; i < tab_des_index_rev.length ; i++ ){
-            var obj1=this.__gi1.__rev1.rev_tm( tab_des_index_rev[i] );
+            var obj1=this.__ig1.__rev1.rev_tm( tab_des_index_rev[i] );
             if(obj1.__xst === __xsu){
                 var obj2=this.__m_rev_vers_sql1.c_tab_vers_sql( obj1.__xva , {} );
                 if(obj2.__xst === __xsu){
@@ -3543,7 +3552,7 @@ class v_svg_bdd1{
           supprimer récursivement tous les éléments de la table
         */
         this.#supprimer_recursivement_les_elements_de_l_arbre( id_bdd_de_la_base , id_svg_conteneur_table );
-        var obj1=this.__gi1.__rev1.rev_tm( nouveau_rev );
+        var obj1=this.__ig1.__rev1.rev_tm( nouveau_rev );
         if(obj1.__xst === __xsu){
             var indice_courant=this.#recuperer_prochain_id_svg();
             this.#ajouter_table_et_index_a_arbre( obj1.__xva , 1 , indice_courant , id_bdd_de_la_base , nom_de_la_table );
@@ -3597,7 +3606,7 @@ class v_svg_bdd1{
         let nouveau_rev=this.#creer_definition_table_en_rev( document.getElementById( id_svg_rectangle_de_la_table ) , null , ids_ordre_modifie );
         this.#supprimer_recursivement_les_elements_de_l_arbre( this.#id_bdd_de_la_base_en_cours , id_svg_conteneur_table , 'tri_des_champs' );
         nouveau_rev+=chaine_des_index;
-        var obj1=this.__gi1.__rev1.rev_tm( nouveau_rev );
+        var obj1=this.__ig1.__rev1.rev_tm( nouveau_rev );
         if(obj1.__xst === __xsu){
             var indice_courant=this.#recuperer_prochain_id_svg();
             let id_tab_table_en_cours=0;
@@ -3610,7 +3619,7 @@ class v_svg_bdd1{
             this.#ajouter_table_et_index_a_arbre( obj1.__xva , id_tab_table_en_cours , indice_courant , this.#id_bdd_de_la_base_en_cours , nom_de_la_table );
             this.#modifier_les_references_des_liens( this.#id_bdd_de_la_base_en_cours );
         }
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         return({"__xst" : __xsu});
     }
@@ -3684,7 +3693,7 @@ class v_svg_bdd1{
         let nom_table_temporaire='____tempo____';
         let t0=this.#creer_definition_table_en_rev( document.getElementById( id_svg_rectangle_de_la_table ) , nom_table_temporaire , ids_ordre_modifie );
         let chaine_create_table='';
-        var obj1=this.__gi1.__rev1.rev_tm( t0 );
+        var obj1=this.__ig1.__rev1.rev_tm( t0 );
         if(obj1.__xst === __xsu){
             var obj2=this.__m_rev_vers_sql1.c_tab_vers_sql( obj1.__xva , {} );
             if(obj2.__xst === __xsu){
@@ -3722,7 +3731,7 @@ class v_svg_bdd1{
         ttt+='   )';
         ttt+=')';
         let chaine_copier_donnees='';
-        var obj1=this.__gi1.__rev1.rev_tm( ttt );
+        var obj1=this.__ig1.__rev1.rev_tm( ttt );
         if(obj1.__xst === __xsu){
             var obj2=this.__m_rev_vers_sql1.c_tab_vers_sql( obj1.__xva , {} );
             if(obj2.__xst === __xsu){
@@ -3744,7 +3753,7 @@ class v_svg_bdd1{
         }
         let chaine_creer_index='';
         if(chaine_des_index !== ''){
-            var obj1=this.__gi1.__rev1.rev_tm( chaine_des_index );
+            var obj1=this.__ig1.__rev1.rev_tm( chaine_des_index );
             if(obj1.__xst === __xsu){
                 var obj2=this.__m_rev_vers_sql1.c_tab_vers_sql( obj1.__xva , {} );
                 if(obj2.__xst === __xsu){
@@ -3784,7 +3793,7 @@ class v_svg_bdd1{
                  /* "maj" : maj */
                 }
         };
-        this.__gi1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_message_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -3810,7 +3819,7 @@ class v_svg_bdd1{
                 break;
             default: debugger;
         }
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
     /*
@@ -3837,7 +3846,7 @@ class v_svg_bdd1{
                 if(mat[j][8] === 0){
                     /* il n'y a pas d'index */
                 }else{
-                    let obj3=this.__gi1.__rev1.matrice_vers_source_rev1( mat , j , true , j + 1 );
+                    let obj3=this.__ig1.__rev1.matrice_vers_source_rev1( mat , j , true , j + 1 );
                     if(obj3.__xst === __xsu){
                         chaine_des_index=obj3.__xva;
                     }
@@ -3853,7 +3862,7 @@ class v_svg_bdd1{
         let nouveau_rev=this.#creer_definition_table_en_rev( document.getElementById( id_svg_rectangle_de_la_table ) , null , ids_ordre_modifie );
         this.#supprimer_recursivement_les_elements_de_l_arbre( id_bdd_de_la_base , id_svg_conteneur_table , 'tri_des_champs' );
         nouveau_rev+=chaine_des_index;
-        var obj1=this.__gi1.__rev1.rev_tm( nouveau_rev );
+        var obj1=this.__ig1.__rev1.rev_tm( nouveau_rev );
         if(obj1.__xst === __xsu){
             var indice_courant=this.#recuperer_prochain_id_svg();
             let id_tab_table_en_cours=0;
@@ -3907,7 +3916,7 @@ class v_svg_bdd1{
             var max_id=-1;
             var lst=this.#svg_dessin.getElementsByTagName( '*' );
             for( i=0 ; i < lst.length ; i++ ){
-                if(lst[i].id && this.__gi1.est_num( lst[i].id )){
+                if(lst[i].id && this.__ig1.est_num( lst[i].id )){
                     j=parseInt( lst[i].id , 10 );
                     if(j > max_id){
                         max_id=j;
@@ -3917,7 +3926,7 @@ class v_svg_bdd1{
             max_id++;
             let donnees_rev_de_l_index='meta(#(),genre_meta(index_de_table),message(\'' + message_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'))';
             var a=this.#ajouter_index_a_table( this.#id_bdd_de_la_base_en_cours , max_id , nom_de_l_index , id_svg_conteneur_table , nom_de_la_table , donnees_rev_de_l_index , liste_des_champs_de_l_index , unique );
-            this.__gi1.fermer_la_sous_fenetre();
+            this.__ig1.fermer_la_sous_fenetre();
             this.#dessiner_le_svg();
         }
     }
@@ -3964,10 +3973,10 @@ class v_svg_bdd1{
         let obj=this.#corrige_meta_champ( /*  */ document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , {"est_libelle_lien" : etat_futur_est_libelle_lien} , null );
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
         let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         /* id_svg_conteneur_table */
-        var obj1=this.__gi1.__rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
+        var obj1=this.__ig1.__rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
         if(obj1.__xst === __xsu){
             this.modale_gerer_la_table( obj1.__xva , 0 );
         }
@@ -3989,10 +3998,10 @@ class v_svg_bdd1{
         let obj=this.#corrige_meta_champ( /*  */ document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , {"est_utilisateur_autre_que_courant" : etat_futur_est_utilisateur_autre_que_courant} , null );
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
         let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         /* id_svg_conteneur_table */
-        var obj1=this.__gi1.__rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
+        var obj1=this.__ig1.__rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
         if(obj1.__xst === __xsu){
             this.modale_gerer_la_table( obj1.__xva , 0 );
         }
@@ -4021,10 +4030,10 @@ class v_svg_bdd1{
             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ - 1].proprietes.style='display:inline;';
         }
         let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         /* id_svg_conteneur_table */
-        var obj1=this.__gi1.__rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
+        var obj1=this.__ig1.__rev1.rev_tm( 'id_svg_conteneur_table(' + id_svg_conteneur_table + '),scrollTop(' + scrlTop + ')' );
         if(obj1.__xst === __xsu){
             this.modale_gerer_la_table( obj1.__xva , 0 );
         }
@@ -4207,7 +4216,7 @@ class v_svg_bdd1{
         ){
             let obj=this.#creer_rev_de_la_base_a_partir_de_svg( id_bdd_de_la_base_en_cours );
             if(obj.__xst === __xsu){
-                let objrev=this.__gi1.__rev1.rev_tm( obj.__xva );
+                let objrev=this.__ig1.__rev1.rev_tm( obj.__xva );
                 if(objrev.__xst === __xsu){
                     let mat1=objrev.__xva;
                     /*
@@ -4219,14 +4228,14 @@ class v_svg_bdd1{
                     let champ_primaire='';
                     for(let i in liste_des_champs_de_la_table_virtuelle){
                         if(liste_des_champs_de_la_table_virtuelle[i].dans_table_reelle === false){
-                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
+                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
                         }
                         if(liste_des_champs_de_la_table_virtuelle[i].est_primaire === true){
                             champ_primaire=i;
                         }
                     }
                     if(champ_primaire === ''){
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
                     }
                     console.log( 'champ_primaire=' + champ_primaire );
                     let source_sql='';
@@ -4244,14 +4253,14 @@ class v_svg_bdd1{
                     }else if(operation === 'supprimer_trigger_update'){
                         source_sql+='DROP TRIGGER update_' + nom_de_la_table_virtuelle + ' ;\n';
                     }else{
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'opération ' + operation + ' n\'est pas prise en compte'} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'opération ' + operation + ' n\'est pas prise en compte'} ));
                     }
                     console.log( 'source_sql=' + source_sql );
                     let obj={
                         "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
                         "__xva" : {"source_sql" : source_sql ,"operation_table" : operation}
                     };
-                    this.__gi1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_message_au_worker( obj );
                     return({"__xst" : __xsu});
                 }
             }
@@ -4284,7 +4293,7 @@ class v_svg_bdd1{
         ){
             let obj=this.#creer_rev_de_la_base_a_partir_de_svg( id_bdd_de_la_base_en_cours );
             if(obj.__xst === __xsu){
-                let objrev=this.__gi1.__rev1.rev_tm( obj.__xva );
+                let objrev=this.__ig1.__rev1.rev_tm( obj.__xva );
                 if(objrev.__xst === __xsu){
                     let mat1=objrev.__xva;
                     /*
@@ -4296,14 +4305,14 @@ class v_svg_bdd1{
                     let champ_primaire='';
                     for(let i in liste_des_champs_de_la_table_virtuelle){
                         if(liste_des_champs_de_la_table_virtuelle[i].dans_table_reelle === false){
-                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
+                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
                         }
                         if(liste_des_champs_de_la_table_virtuelle[i].est_primaire === true){
                             champ_primaire=i;
                         }
                     }
                     if(champ_primaire === ''){
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
                     }
                     console.log( 'champ_primaire=' + champ_primaire );
                     let source_sql='';
@@ -4324,14 +4333,14 @@ class v_svg_bdd1{
                     }else if(operation === 'supprimer_trigger_insert'){
                         source_sql+='DROP TRIGGER insert_' + nom_de_la_table_virtuelle + ' ;\n';
                     }else{
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'opération ' + operation + ' n\'est pas prise en compte'} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'opération ' + operation + ' n\'est pas prise en compte'} ));
                     }
                     console.log( 'source_sql=' + source_sql );
                     let obj={
                         "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
                         "__xva" : {"source_sql" : source_sql ,"operation_table" : operation}
                     };
-                    this.__gi1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_message_au_worker( obj );
                     return({"__xst" : __xsu});
                 }
             }
@@ -4364,7 +4373,7 @@ class v_svg_bdd1{
         ){
             let obj=this.#creer_rev_de_la_base_a_partir_de_svg( id_bdd_de_la_base_en_cours );
             if(obj.__xst === __xsu){
-                let objrev=this.__gi1.__rev1.rev_tm( obj.__xva );
+                let objrev=this.__ig1.__rev1.rev_tm( obj.__xva );
                 if(objrev.__xst === __xsu){
                     let mat1=objrev.__xva;
                     /*
@@ -4376,14 +4385,14 @@ class v_svg_bdd1{
                     let champ_primaire='';
                     for(let i in liste_des_champs_de_la_table_virtuelle){
                         if(liste_des_champs_de_la_table_virtuelle[i].dans_table_reelle === false){
-                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
+                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
                         }
                         if(liste_des_champs_de_la_table_virtuelle[i].est_primaire === true){
                             champ_primaire=i;
                         }
                     }
                     if(champ_primaire === ''){
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
                     }
                     console.log( 'champ_primaire=' + champ_primaire );
                     let source_sql='';
@@ -4395,14 +4404,14 @@ class v_svg_bdd1{
                     }else if(operation === 'supprimer_trigger_delete'){
                         source_sql+='DROP TRIGGER delete_' + nom_de_la_table_virtuelle + ' ;\n';
                     }else{
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'opération ' + operation + ' n\'est pas prise en compte'} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'opération ' + operation + ' n\'est pas prise en compte'} ));
                     }
                     console.log( 'source_sql=' + source_sql );
                     let obj={
                         "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
                         "__xva" : {"source_sql" : source_sql ,"operation_table" : operation}
                     };
-                    this.__gi1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_message_au_worker( obj );
                     return({"__xst" : __xsu});
                 }
             }
@@ -4437,7 +4446,7 @@ class v_svg_bdd1{
         ){
             let obj=this.#creer_rev_de_la_base_a_partir_de_svg( id_bdd_de_la_base_en_cours );
             if(obj.__xst === __xsu){
-                let objrev=this.__gi1.__rev1.rev_tm( obj.__xva );
+                let objrev=this.__ig1.__rev1.rev_tm( obj.__xva );
                 if(objrev.__xst === __xsu){
                     let mat1=objrev.__xva;
                     /*
@@ -4451,14 +4460,14 @@ class v_svg_bdd1{
                     let champ_primaire='';
                     for(let i in liste_des_champs_de_la_table_virtuelle){
                         if(liste_des_champs_de_la_table_virtuelle[i].dans_table_reelle === false){
-                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
+                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + i + '" n\'est pas dans la table réelle'} ));
                         }
                         if(liste_des_champs_de_la_table_virtuelle[i].est_primaire === true){
                             champ_primaire=i;
                         }
                     }
                     if(champ_primaire === ''){
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ primaire n\'a pas été trouvé !'} ));
                     }
                     /* console.log('champ_primaire='+champ_primaire) */
                     let source_sql='';
@@ -4478,8 +4487,7 @@ class v_svg_bdd1{
                         "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
                         "__xva" : {"source_sql" : source_sql ,"operation_table" : 'insérer_les_donnees_dans_la_table_virtuelle'}
                     };
-                    this.__gi1.envoyer_un_message_au_worker( obj );
-                    return({"__xst" : __xsu});
+                    this.__ig1.envoyer_un_message_au_worker( obj );
                     return({"__xst" : __xsu});
                 }
             }
@@ -4546,7 +4554,7 @@ class v_svg_bdd1{
         t+='<h1>gestion de la table</h1>';
         /*  */
         var cmd='';
-        cmd+='m1(n1(__gi1),f1(fermer_la_sous_fenetre()))';
+        cmd+='m1(n1(__ig1),f1(fermer_la_sous_fenetre()))';
         cmd+='m1(n1(x_ecran_generer_programmes1),f1(entree_module(';
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         cmd+=' chi_id_basedd(' + id_bdd_de_la_base_en_cours + ')';
@@ -4554,7 +4562,7 @@ class v_svg_bdd1{
         t+='<div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >générer le programme</div>';
         /*  */
         var cmd='';
-        cmd+='m1(n1(__gi1),f1(fermer_la_sous_fenetre()))';
+        cmd+='m1(n1(__ig1),f1(fermer_la_sous_fenetre()))';
         cmd+='m1(n1(ecran_generer_souches),f1(entree_module(';
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         cmd+=' chi_id_basedd(' + id_bdd_de_la_base_en_cours + '),';
@@ -4654,7 +4662,7 @@ class v_svg_bdd1{
         let l_option='';
         let texte__liste_des_genres='';
         let tableau_des_genres=[];
-        for(let i in this.__gi1.__liste_des_genres){
+        for(let i in this.__ig1.__liste_des_genres){
             /*
               {
               "chi_id_genre":1,
@@ -4671,15 +4679,15 @@ class v_svg_bdd1{
             */
             l_option='';
             l_option+='<option';
-            if(1 == this.__gi1.__liste_des_genres[i].chi_id_genre){
+            if(1 == this.__ig1.__liste_des_genres[i].chi_id_genre){
                 l_option+=' selected="true"';
             }
-            l_option+=' value="' + this.__gi1.__liste_des_genres[i].chi_id_genre + '"';
-            l_option+=' data-genre="' + this.__gi1.fi2( JSON.stringify( this.__gi1.__liste_des_genres[i] ) ) + '"';
+            l_option+=' value="' + this.__ig1.__liste_des_genres[i].chi_id_genre + '"';
+            l_option+=' data-genre="' + this.__ig1.fi2( JSON.stringify( this.__ig1.__liste_des_genres[i] ) ) + '"';
             l_option+='>';
-            l_option+='(' + this.__gi1.__liste_des_genres[i].chi_id_genre + ')' + this.__gi1.__liste_des_genres[i].chp_nom_genre;
+            l_option+='(' + this.__ig1.__liste_des_genres[i].chi_id_genre + ')' + this.__ig1.__liste_des_genres[i].chp_nom_genre;
             l_option+='</option>';
-            tableau_des_genres.push( [this.__gi1.__liste_des_genres[i].che_ordre_genre,l_option] );
+            tableau_des_genres.push( [this.__ig1.__liste_des_genres[i].che_ordre_genre,l_option] );
         }
         tableau_des_genres.sort( function( a , b ){
                 /* return a[0].localeCompare(b[0]); */
@@ -4860,6 +4868,14 @@ class v_svg_bdd1{
         t+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ' ),';
         t+=')))';
         t+='" >supprimer la table de la base physique</div>';
+        t+='<br /><br />';
+        t+='<div class="rev_bouton yy__2" data-rev_click="';
+        t+='pm1(m1(n1(' + this.moi + '),f1(compter_le_nombre_d_enregistrements(';
+        t+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+        t+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ' ),';
+        t+=' id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ' ),';
+        t+='))))';
+        t+='" >compter le nombre d enregistrements</div>';
         if(est_table_virtuelle === 1){
             t+='<br /><br />';
             t+='<div class="rev_bouton yy__4" data-rev_click="';
@@ -4994,7 +5010,7 @@ class v_svg_bdd1{
           t+='<div id="ordre_original">';
           for( i=0 ; i < liste_des_champs.length ; i++ ){
               t+='<div ';
-              t+=' style="padding:' + this.__gi1.css_dimensions.t_padding + 'px;border:' + this.__gi1.css_dimensions.t_border + 'px white solid;"';
+              t+=' style="padding:' + this.__ig1.css_dimensions.t_padding + 'px;border:' + this.__ig1.css_dimensions.t_border + 'px white solid;"';
               t+=' data-id_rectangle_champ="' + liste_des_champs[i].id_rectangle_de_champ + '"';
               t+='>' + liste_des_champs[i].nom_du_champ;
               t+='</div>';
@@ -5014,7 +5030,7 @@ class v_svg_bdd1{
           t+='<div id="ordre_modifie" style="cursor:n-resize;">';
           for( i=0 ; i < liste_des_champs.length ; i++ ){
           t+='<div ';
-          t+=' style="padding:' + this.__gi1.css_dimensions.t_padding + 'px;border:' + this.__gi1.css_dimensions.t_border + 'px red outset;"';
+          t+=' style="padding:' + this.__ig1.css_dimensions.t_padding + 'px;border:' + this.__ig1.css_dimensions.t_border + 'px red outset;"';
           t+=' data-id_rectangle_champ="' + liste_des_champs[i].id_rectangle_de_champ + '"';
           t+='>' + liste_des_champs[i].nom_du_champ + '</div>';
           }
@@ -5146,7 +5162,7 @@ class v_svg_bdd1{
         t+='</table>';
         t+='<hr />';
         t+='<hr />';
-        this.__gi1.affiche_sous_fenetre1( t );
+        this.__ig1.affiche_sous_fenetre1( t );
         let options1={
             "hauteur_max_en_vh" : 80 ,
             "largeur_max" : /* entre 20 et 80 */'400px' ,
@@ -5358,11 +5374,10 @@ class v_svg_bdd1{
                 "collate" : document.getElementById( 'vv_meta_collate' ).value
             } );
             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_la_base].proprietes.donnees_rev_meta_de_la_base=nouveau_meta.texte;
-            this.__gi1.fermer_la_sous_fenetre();
+            this.__ig1.fermer_la_sous_fenetre();
             this.#dessiner_le_svg();
         }else{
-            return({"__xst" : __xer ,"__xme" : this.__gi1.nl2()});
-            debugger;
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         return({"__xst" : __xsu});
     }
@@ -5386,7 +5401,7 @@ class v_svg_bdd1{
         }
         let nouveau_meta=this.#corrige_meta_table( document.getElementById( id_svg_rectangle_de_la_table ).getAttribute( 'meta_rev_de_la_table' ) , obj , nom_de_la_table );
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_la_table].proprietes.meta_rev_de_la_table=nouveau_meta.texte;
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         return({"__xst" : __xsu});
     }
@@ -5539,7 +5554,7 @@ class v_svg_bdd1{
         }
         if(nom_du_champ_cle !== '' && nom_du_champ_a_modifier !== '' && nom_de_la_table !== '' && k0 !== ''){
             let source_sql='UPDATE ' + nom_de_la_table + ' SET ' + nom_du_champ_a_modifier + ' = CONCAT( ' + nom_du_champ_a_modifier + ' , \'[1]\' ) WHERE ' + nom_du_champ_cle + ' = ' + k0 + ' ;';
-            this.__gi1.ma_trace1( 'source_sql=' + source_sql );
+            this.__ig1.ma_trace1( 'source_sql=' + source_sql );
             let obj={
                 "__xac" : /* 1955 */'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + ')))))' ,
                 "__xva" : {
@@ -5548,7 +5563,7 @@ class v_svg_bdd1{
                     "operation_table" : 'ajouter_indicateur_pour_correction_index'
                 }
             };
-            this.__gi1.envoyer_un_message_au_worker( obj );
+            this.__ig1.envoyer_un_message_au_worker( obj );
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer});
@@ -5562,7 +5577,7 @@ class v_svg_bdd1{
         console.log( lmds );
         if(lmds.donnees0.length === 0){
             t='Aucun doublon';
-            this.__gi1.affiche_sous_fenetre1( t );
+            this.__ig1.affiche_sous_fenetre1( t );
             return({"__xst" : __xsu});
         }
         t+='<table border="1">';
@@ -5624,7 +5639,7 @@ class v_svg_bdd1{
             t+='</tr>';
         }
         t+='</table>';
-        this.__gi1.affiche_sous_fenetre1( t );
+        this.__ig1.affiche_sous_fenetre1( t );
         return({"__xst" : __xsu});
     }
     /*
@@ -5635,12 +5650,12 @@ class v_svg_bdd1{
                && le_message_du_serveur.__xva.hasOwnProperty( 'operation_table' )
                && le_message_du_serveur.__xva.operation_table === 'analyser_l_index'
         ){
-            this.__gi1.fermer_la_sous_fenetre();
+            this.__ig1.fermer_la_sous_fenetre();
             this.affiche_resultat_analyse_index( le_message_du_serveur );
             return({"__xst" : __xsu});
         }
         if(le_message_du_serveur.__xst === __xsu){
-            this.__gi1.fermer_la_sous_fenetre();
+            this.__ig1.fermer_la_sous_fenetre();
         }
         return({"__xst" : __xsu});
     }
@@ -5668,7 +5683,7 @@ class v_svg_bdd1{
                 "operation_table" : 'supprimer_une_table'
             }
         };
-        this.__gi1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_message_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -5685,7 +5700,7 @@ class v_svg_bdd1{
             }
         }
         var t=this.#creer_definition_table_en_rev( document.getElementById( id_svg_rectangle_de_la_table ) , null , null );
-        var obj1=this.__gi1.__rev1.rev_tm( t );
+        var obj1=this.__ig1.__rev1.rev_tm( t );
         if(obj1.__xst === __xsu){
             let obj2=this.__m_rev_vers_sql1.c_tab_vers_sql( obj1.__xva , {} );
             if(obj2.__xst === __xsu){
@@ -5700,7 +5715,7 @@ class v_svg_bdd1{
                             "source_sql" : obj2.__xva
                         }
                     };
-                    this.__gi1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_message_au_worker( obj );
                 }else{
                     debugger;
                 }
@@ -5746,7 +5761,7 @@ class v_svg_bdd1{
                   
                   On repère tous les champs qui font référence à cette table         
                 */
-                var obj=this.__gi1.__rev1.rev_tm( this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[i].proprietes.donnees_rev_du_champ );
+                var obj=this.__ig1.__rev1.rev_tm( this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[i].proprietes.donnees_rev_du_champ );
                 if(obj.__xst === __xsu){
                     var j=0;
                     for( j=0 ; j < obj.__xva.length ; j++ ){
@@ -5797,7 +5812,7 @@ class v_svg_bdd1{
                 }
             }
         }
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         /* this.#svg_ajuster_la_largeur_de_la_base( this.#id_svg_de_la_base_en_cours ); */
         return({"__xst" : __xsu});
@@ -5915,14 +5930,14 @@ class v_svg_bdd1{
         if(type_element === 'base'){
             var id_svg_rectangle=id_svg_element + 1;
             var texte_rev=document.getElementById( id_svg_rectangle ).getAttribute( nom_propriete );
-            var obj1=this.__gi1.__rev1.rev_tm( texte_rev );
+            var obj1=this.__ig1.__rev1.rev_tm( texte_rev );
             var nouveau_rev='';
             if(obj1.__xst === __xsu){
                 var i=0;
                 for( i=0 ; i < obj1.__xva.length ; i++ ){
                     if(obj1.__xva[i][3] === 1 && obj1.__xva[i][1] === 'transform_base_sur_svg'){
-                        var tab=this.__gi1.__rev1.supprimer_un_element_de_la_matrice( obj1.__xva , i - 1 , 0 );
-                        var obj2=this.__gi1.__rev1.matrice_vers_source_rev1( tab , 0 , false , 1 );
+                        var tab=this.__ig1.__rev1.supprimer_un_element_de_la_matrice( obj1.__xva , i - 1 , 0 );
+                        var obj2=this.__ig1.__rev1.matrice_vers_source_rev1( tab , 0 , false , 1 );
                         if(obj2.__xst === __xsu){
                             if(obj2.__xva !== ''){
                                 obj2.__xva+=',';
@@ -5940,14 +5955,14 @@ class v_svg_bdd1{
         }else if(type_element === 'table'){
             var id_svg_rectangle=id_svg_element + 1;
             var texte_rev=document.getElementById( id_svg_rectangle ).getAttribute( nom_propriete );
-            var obj1=this.__gi1.__rev1.rev_tm( texte_rev );
+            var obj1=this.__ig1.__rev1.rev_tm( texte_rev );
             var nouveau_rev='';
             if(obj1.__xst === __xsu){
                 var i=0;
                 for( i=0 ; i < obj1.__xva.length ; i++ ){
                     if(obj1.__xva[i][3] === 1 && obj1.__xva[i][1] === 'transform_table_sur_svg'){
-                        var tab=this.__gi1.__rev1.supprimer_un_element_de_la_matrice( obj1.__xva , i - 1 , 0 );
-                        var obj2=this.__gi1.__rev1.matrice_vers_source_rev1( tab , 0 , false , 1 );
+                        var tab=this.__ig1.__rev1.supprimer_un_element_de_la_matrice( obj1.__xva , i - 1 , 0 );
+                        var obj2=this.__ig1.__rev1.matrice_vers_source_rev1( tab , 0 , false , 1 );
                         if(obj2.__xst === __xsu){
                             if(obj2.__xva !== ''){
                                 obj2.__xva+=',';
@@ -6128,7 +6143,7 @@ class v_svg_bdd1{
             cmd+=' id_svg_conteneur_table(' + e.target.getAttribute( 'id_svg_conteneur_table' ) + '),';
             cmd+=' id_bdd_de_la_base_en_cours(' + e.target.getAttribute( 'id_bdd_de_la_base_en_cours' ) + ')';
             /* cmd+=']]]'; */
-            let obj1=this.__gi1.__rev1.rev_tm( cmd );
+            let obj1=this.__ig1.__rev1.rev_tm( cmd );
             this.modale_gerer_la_table( obj1.__xva , 0 );
         }else if('selection_du_champ' === e.target.getAttribute( 'type_element' )){
             var cmd='';
@@ -6138,7 +6153,7 @@ class v_svg_bdd1{
             cmd+=' nom_du_champ(\'' + e.target.getAttribute( 'nom_du_champ' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
             cmd+=' nom_de_la_table(\'' + e.target.getAttribute( 'nom_de_la_table' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\') ';
             /* cmd+=']]]'; */
-            let obj1=this.__gi1.__rev1.rev_tm( cmd );
+            let obj1=this.__ig1.__rev1.rev_tm( cmd );
             this.modale_modifier_le_champ( obj1.__xva , 0 );
         }else if('selection_d_index' === e.target.getAttribute( 'type_element' )){
             var cmd='';
@@ -6147,13 +6162,13 @@ class v_svg_bdd1{
             cmd+=' nom_de_l_index(\'' + e.target.getAttribute( 'nom_de_l_index' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
             cmd+=' id_svg_conteneur_d_index(' + e.target.getAttribute( 'id_svg_conteneur_d_index' ) + ')';
             /* cmd+=']]]"'; */
-            let obj1=this.__gi1.__rev1.rev_tm( cmd );
+            let obj1=this.__ig1.__rev1.rev_tm( cmd );
             this.modale_modifier_l_index( obj1.__xva , 0 );
         }else if('edition_de_la_base' === e.target.getAttribute( 'type_element' )){
             console.log( 'edition_de_la_base' , e );
             var cmd='';
             cmd+='   id_bdd_de_la_base(' + e.target.getAttribute( 'id_bdd_de_la_base' ) + ')\n';
-            let obj1=this.__gi1.__rev1.rev_tm( cmd );
+            let obj1=this.__ig1.__rev1.rev_tm( cmd );
             this.modale_modifier_la_base( obj1.__xva , 0 );
         }else if('sauvegarde_de_la_base' === e.target.getAttribute( 'type_element' )){
             /*
@@ -6171,7 +6186,7 @@ class v_svg_bdd1{
             console.log( 'sauvegarde_de_la_base' , e );
             var cmd='';
             cmd+='   id_bdd_de_la_base(' + e.target.getAttribute( 'id_bdd_de_la_base' ) + ')\n';
-            let obj1=this.__gi1.__rev1.rev_tm( cmd );
+            let obj1=this.__ig1.__rev1.rev_tm( cmd );
             this.sauvegarder_la_base( obj1.__xva , 0 );
             this.#date_derniere_sauvegarde=performance.now();
             /* contenu+='<tspan type_element="sauvegarde_de_la_base" id_bdd_de_la_base="' + id_bdd_de_la_base + '"  style="fill:green;cursor:pointer;">sauvegarder</tspan>'; */
@@ -6666,7 +6681,7 @@ class v_svg_bdd1{
         for(i in tableau_svg){
             this.#svg_ajuster_la_largeur_de_la_base( tableau_svg[i] );
         }
-        this.__gi1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.ajoute_les_evenements_aux_boutons();
     }
     /*
       
@@ -6721,7 +6736,7 @@ class v_svg_bdd1{
         let est_libelle_lien=0;
         let est_utilisateur_autre_que_courant=0;
         let reference_externe='';
-        let obj1=this.__gi1.__rev1.rev_tm( texte_meta_rev );
+        let obj1=this.__ig1.__rev1.rev_tm( texte_meta_rev );
         if(obj1.__xst === __xsu){
             let mat2=obj1.__xva;
             let l01=mat2.length;
@@ -6912,13 +6927,13 @@ class v_svg_bdd1{
             nom_en_session=nouvelles_valeurs.nom_en_session;
         }
         if(espece_du_champ === '' && genre !== ''){
-            for(let i in this.__gi1.__liste_des_genres){
-                if(genre == this.__gi1.__liste_des_genres[i].chi_id_genre){
-                    espece_du_champ=this.__gi1.__liste_des_genres[i].chp_espece_genre;
-                    if(this.__gi1.__liste_des_genres[i].che_longueur_genre !== null
-                           && this.__gi1.__liste_des_genres[i].che_longueur_genre !== 0
+            for(let i in this.__ig1.__liste_des_genres){
+                if(genre == this.__ig1.__liste_des_genres[i].chi_id_genre){
+                    espece_du_champ=this.__ig1.__liste_des_genres[i].chp_espece_genre;
+                    if(this.__ig1.__liste_des_genres[i].che_longueur_genre !== null
+                           && this.__ig1.__liste_des_genres[i].che_longueur_genre !== 0
                     ){
-                        longueur_du_champ=this.__gi1.__liste_des_genres[i].che_longueur_genre;
+                        longueur_du_champ=this.__ig1.__liste_des_genres[i].che_longueur_genre;
                     }
                     break;
                 }
@@ -7015,9 +7030,9 @@ class v_svg_bdd1{
             o1+='    reference_externe' + reference_externe + ',';
         }
         o1+=')';
-        let obj2=this.__gi1.__rev1.rev_tm( o1 );
+        let obj2=this.__ig1.__rev1.rev_tm( o1 );
         if(obj2.__xst === __xsu){
-            let obj3=this.__gi1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
+            let obj3=this.__ig1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
             if(obj3.__xst === __xsu){
                 o1=obj3.__xva;
             }else{
@@ -7063,7 +7078,7 @@ class v_svg_bdd1{
         */
         let table='';
         let message='';
-        let obj1=this.__gi1.__rev1.rev_tm( texte_meta_rev );
+        let obj1=this.__ig1.__rev1.rev_tm( texte_meta_rev );
         if(obj1.__xst === __xsu){
             let mat2=obj1.__xva;
             let l01=mat2.length;
@@ -7101,9 +7116,9 @@ class v_svg_bdd1{
         o1+=' genre_meta(index_de_table),';
         o1+=' message(\'' + message + '\'),';
         o1+=')';
-        let obj2=this.__gi1.__rev1.rev_tm( o1 );
+        let obj2=this.__ig1.__rev1.rev_tm( o1 );
         if(obj2.__xst === __xsu){
-            let obj3=this.__gi1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
+            let obj3=this.__ig1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
             if(obj3.__xst === __xsu){
                 o1=obj3.__xva;
             }else{
@@ -7125,7 +7140,7 @@ class v_svg_bdd1{
              ( transform_table_sur_svg , transform( translate( 23 , 326 ) ))
           ),
         
-          var obj=this.__gi1.__rev1.matrice_vers_source_rev1( nouvelle_matrice , 0 , false , 1 );
+          var obj=this.__ig1.__rev1.matrice_vers_source_rev1( nouvelle_matrice , 0 , false , 1 );
           if(obj.__xst === __xsu){
         */
         let table='';
@@ -7133,7 +7148,7 @@ class v_svg_bdd1{
         let transform_table_sur_svg='';
         let decallage_x=0;
         let decallage_y=0;
-        let obj1=this.__gi1.__rev1.rev_tm( texte_meta_rev );
+        let obj1=this.__ig1.__rev1.rev_tm( texte_meta_rev );
         for(let i in this.#liste_des_meta_table){
             this.#liste_des_meta_table[i].valeur_normale_pour_meta=null;
             this.#liste_des_meta_table[i].valeur_brut_pour_meta=null;
@@ -7195,7 +7210,7 @@ class v_svg_bdd1{
                                 debugger;
                                 transform_table_sur_svg='transform_base_sur_svg(translate(10,10))';
                             }else{
-                                var obj=this.__gi1.__rev1.matrice_vers_source_rev1( mat2 , k , false , k + 1 );
+                                var obj=this.__ig1.__rev1.matrice_vers_source_rev1( mat2 , k , false , k + 1 );
                                 if(obj.__xst === __xsu){
                                     transform_table_sur_svg=obj.__xva;
                                 }else{
@@ -7223,8 +7238,8 @@ class v_svg_bdd1{
                                             if(nouvelles_valeurs.hasOwnProperty( mat2[k][1] )){
                                                 mat2[k + 1][1]=nouvelles_valeurs[mat2[k][1]];
                                             }
-                                            this.#liste_des_meta_table[l].valeur_normale_pour_meta=this.__gi1.__rev1.ma_constante( mat2[k + 1] );
-                                            this.#liste_des_meta_table[l].valeur_brut_pour_meta=this.__gi1.__rev1.ma_constante_inverse( mat2[k + 1] );
+                                            this.#liste_des_meta_table[l].valeur_normale_pour_meta=this.__ig1.__rev1.ma_constante( mat2[k + 1] );
+                                            this.#liste_des_meta_table[l].valeur_brut_pour_meta=this.__ig1.__rev1.ma_constante_inverse( mat2[k + 1] );
                                         }else{
                                             this.#liste_des_meta_table[l].valeur_normale_pour_meta='\'\'';
                                             this.#liste_des_meta_table[l].valeur_brut_pour_meta='';
@@ -7281,17 +7296,17 @@ class v_svg_bdd1{
         }
         if(nouvelles_valeurs.hasOwnProperty( 'decallage_x' )
                && nouvelles_valeurs.hasOwnProperty( 'decallage_y' )
-               && this.__gi1.est_num( nouvelles_valeurs.decallage_x )
-               && this.__gi1.est_num( nouvelles_valeurs.decallage_y )
+               && this.__ig1.est_num( nouvelles_valeurs.decallage_x )
+               && this.__ig1.est_num( nouvelles_valeurs.decallage_y )
         ){
             o1+=' transform_base_sur_svg(translate(' + nouvelles_valeurs.decallage_x + ' , ' + nouvelles_valeurs.decallage_y + '))';
         }else{
             o1+=' transform_table_sur_svg(' + transform_table_sur_svg + ')';
         }
         o1+=')';
-        let obj2=this.__gi1.__rev1.rev_tm( o1 );
+        let obj2=this.__ig1.__rev1.rev_tm( o1 );
         if(obj2.__xst === __xsu){
-            let obj3=this.__gi1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
+            let obj3=this.__ig1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
             if(obj3.__xst === __xsu){
                 o1=obj3.__xva;
             }else{
@@ -7326,7 +7341,7 @@ class v_svg_bdd1{
           ( collate , 'utf8mb4_unicode_ci'),
           ( transform_base_sur_svg , transform( translate( 3.5 , 8.5 ) ))
           ),
-          var obj=this.__gi1.__rev1.matrice_vers_source_rev1( nouvelle_matrice , 0 , false , 1 );
+          var obj=this.__ig1.__rev1.matrice_vers_source_rev1( nouvelle_matrice , 0 , false , 1 );
           if(obj.__xst === __xsu){
         */
         let default_charset='';
@@ -7334,7 +7349,7 @@ class v_svg_bdd1{
         let transform_base_sur_svg='';
         let decallage_x=0;
         let decallage_y=0;
-        let obj1=this.__gi1.__rev1.rev_tm( texte_meta_rev );
+        let obj1=this.__ig1.__rev1.rev_tm( texte_meta_rev );
         if(obj1.__xst === __xsu){
             let mat2=obj1.__xva;
             let l01=mat2.length;
@@ -7384,7 +7399,7 @@ class v_svg_bdd1{
                             }
                             transform_base_sur_svg='translate(' + decallage_x + ',' + decallage_y + ')';
                             /*
-                              var obj=this.__gi1.__rev1.matrice_vers_source_rev1( mat2 , k , false , k + 1 );
+                              var obj=this.__ig1.__rev1.matrice_vers_source_rev1( mat2 , k , false , k + 1 );
                               if(obj.__xst === __xsu){
                               transform_base_sur_svg=obj.__xva;
                               }else{
@@ -7398,7 +7413,7 @@ class v_svg_bdd1{
                             }else if(mat2[k + 1][1] === 'collate' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 collate=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'transform_base_sur_svg' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'f'){
-                                var obj=this.__gi1.__rev1.matrice_vers_source_rev1( mat2 , k + 2 , false , k + 3 );
+                                var obj=this.__ig1.__rev1.matrice_vers_source_rev1( mat2 , k + 2 , false , k + 3 );
                                 if(obj.__xst === __xsu){
                                     transform_base_sur_svg=obj.__xva;
                                 }else{
@@ -7422,9 +7437,9 @@ class v_svg_bdd1{
         o1+=' collate(\'' + collate.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         o1+=' transform_base_sur_svg(' + transform_base_sur_svg + '),';
         o1+=')';
-        let obj2=this.__gi1.__rev1.rev_tm( o1 );
+        let obj2=this.__ig1.__rev1.rev_tm( o1 );
         if(obj2.__xst === __xsu){
-            let obj3=this.__gi1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
+            let obj3=this.__ig1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
             if(obj3.__xst === __xsu){
                 o1=obj3.__xva;
             }else{
@@ -7454,7 +7469,7 @@ class v_svg_bdd1{
             }
         }
         if(racine_du_svg === null){
-            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.nl2() + 'il y a eu un problème lors de la récupération de l\'arbre svg'} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + 'il y a eu un problème lors de la récupération de l\'arbre svg'} ));
         }
         this.#id_svg_de_la_base_en_cours=parseInt( racine_du_svg.getAttribute( 'id_svg_de_la_base_en_cours' ) , 10 );
         /*
@@ -7588,13 +7603,13 @@ class v_svg_bdd1{
         }
         if(id_bdd_de_la_base > 0){
             this.#id_bdd_de_la_base_en_cours=id_bdd_de_la_base;
-            this.__gi1.supprimer_les_messages();
+            this.__ig1.supprimer_les_messages();
             let obj=this.#creer_rev_de_la_base_a_partir_de_svg( this.#id_bdd_de_la_base_en_cours );
             if(obj.__xst === __xsu){
-                let objrev=this.__gi1.__rev1.rev_tm( obj.__xva );
+                let objrev=this.__ig1.__rev1.rev_tm( obj.__xva );
                 if(objrev.__xst === __xsu){
                     /* let obj_tableau_des_dependances=this.#construire_tableau_dependances( objrev.__xva , this.#id_bdd_de_la_base_en_cours ); */
-                    var obj2=this.__gi1.__rev1.matrice_vers_source_rev1( objrev.__xva , 0 , true , 1 );
+                    var obj2=this.__ig1.__rev1.matrice_vers_source_rev1( objrev.__xva , 0 , true , 1 );
                     if(obj2.__xst === __xsu){
                         let a_envoyer={
                              /*  */
@@ -7608,7 +7623,7 @@ class v_svg_bdd1{
                         /*
                           "tableau_des_dependances" : obj_tableau_des_dependances.__xva
                         */
-                        this.__gi1.envoyer_un_message_au_worker( a_envoyer );
+                        this.__ig1.envoyer_un_message_au_worker( a_envoyer );
                         return({"__xst" : __xsu});
                     }
                 }
@@ -7787,7 +7802,7 @@ class v_svg_bdd1{
                 "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
                 "nom_de_la_table" : nom_de_la_table ,
                 "x" : (this.#hauteur_de_boite + 2 * this.#taille_bordure) * 2 ,
-                "y" : this.#hauteur_de_boite - 0.3 * this.__gi1.css_dimensions.t_police - this.#taille_bordure ,
+                "y" : this.#hauteur_de_boite - 0.3 * this.__ig1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:white;cursor:context-menu;"
             }
         };
@@ -7816,7 +7831,7 @@ class v_svg_bdd1{
         */
         let genre_du_champ=1;
         if(donnees_rev_du_champ.indexOf( 'genre(1)' ) < 0){
-            var obj1=this.__gi1.__rev1.rev_tm( donnees_rev_du_champ );
+            var obj1=this.__ig1.__rev1.rev_tm( donnees_rev_du_champ );
             if(obj1.__xst === __xsu){
                 let mat=obj1.__xva;
                 for( let i=1 ; i < mat.length ; i=mat[i][12] ){
@@ -7959,8 +7974,8 @@ class v_svg_bdd1{
                 "id_svg_champ_en_cours" : id_svg_champ_en_cours ,
                 "nom_de_la_table" : nom_de_la_table ,
                 "nom_du_champ" : nom_du_champ ,
-                "x" : this.#hauteur_de_boite + 2 * this.#taille_bordure + this.__gi1.css_dimensions.t_police * 1.8 ,
-                "y" : this.#hauteur_de_boite - 0.3 * this.__gi1.css_dimensions.t_police - this.#taille_bordure ,
+                "x" : this.#hauteur_de_boite + 2 * this.#taille_bordure + this.__ig1.css_dimensions.t_police * 1.8 ,
+                "y" : this.#hauteur_de_boite - 0.3 * this.__ig1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:" + couleur_nom_de_champ + ";"
             }
         };
@@ -7979,7 +7994,7 @@ class v_svg_bdd1{
                 "nom_de_la_table" : nom_de_la_table ,
                 "nom_du_champ" : nom_du_champ ,
                 "x" : this.#hauteur_de_boite + 2 * this.#taille_bordure ,
-                "y" : this.#hauteur_de_boite - 0.3 * this.__gi1.css_dimensions.t_police - this.#taille_bordure ,
+                "y" : this.#hauteur_de_boite - 0.3 * this.__ig1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:" + couleur_nom_de_champ + ";font-size: smaller;"
             }
         };
@@ -8102,7 +8117,7 @@ class v_svg_bdd1{
                 "id_svg_conteneur_table" : id_svg_conteneur_table ,
                 "nom_de_la_table_pour_l_index" : nom_de_la_table ,
                 "x" : this.#taille_bordure + this.#hauteur_de_boite + 2 * this.#taille_bordure ,
-                "y" : this.#hauteur_de_boite - 0.3 * this.__gi1.css_dimensions.t_police - this.#taille_bordure ,
+                "y" : this.#hauteur_de_boite - 0.3 * this.__ig1.css_dimensions.t_police - this.#taille_bordure ,
                 "style" : "fill:green;"
             }
         };
@@ -8159,7 +8174,7 @@ class v_svg_bdd1{
                     */
                     for( l=indice_matr + 1 ; l < l01 ; l=tab[l][12] ){
                         if(tab[l][1] === 'meta' && tab[l][2] === 'f'){
-                            var objxx=this.__gi1.__rev1.matrice_vers_source_rev1( tab , tab[l][7] , false , l , 0 , [] , null , true );
+                            var objxx=this.__ig1.__rev1.matrice_vers_source_rev1( tab , tab[l][7] , false , l , 0 , [] , null , true );
                             if(objxx.__xst === __xsu){
                                 let obj_meta_de_la_base=this.#corrige_meta_table( objxx.__xva , {"nom_de_la_table" : nom_de_la_table} , nom_de_la_table );
                                 meta_de_la_table=obj_meta_de_la_base.texte;
@@ -8263,12 +8278,12 @@ class v_svg_bdd1{
                                     }
                                 }
                                 if(indice_meta > 0){
-                                    var obj1=this.__gi1.__rev1.matrice_vers_source_rev1( tab , tab[indice_meta][7] , false , indice_meta , 0 , [] , null , true );
+                                    var obj1=this.__ig1.__rev1.matrice_vers_source_rev1( tab , tab[indice_meta][7] , false , indice_meta , 0 , [] , null , true );
                                     if(obj1.__xst === __xsu){
                                         donnees_rev_du_champ=obj1.__xva;
                                     }else{
-                                        this.__gi1.ajoute_message( {"__xst" : __xsu ,"__xme" : '0849 problème sur les données du champ "' + nom_du_champ + '"'} );
-                                        /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+                                        this.__ig1.ajoute_message( {"__xst" : __xsu ,"__xme" : '0849 problème sur les données du champ "' + nom_du_champ + '"'} );
+                                        /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
                                         return({"__xst" : __xer});
                                     }
                                 }
@@ -8341,14 +8356,14 @@ class v_svg_bdd1{
                             }
                         }
                         if(indice_meta > 0){
-                            var obj1=this.__gi1.__rev1.matrice_vers_source_rev1( tab , tab[indice_meta][7] , false , indice_meta , 0 , [] , null , true );
+                            var obj1=this.__ig1.__rev1.matrice_vers_source_rev1( tab , tab[indice_meta][7] , false , indice_meta , 0 , [] , null , true );
                             if(obj1.__xst === __xsu){
                                 donnees_rev_de_l_index=obj1.__xva;
                                 donnees_rev_de_l_index=this.#corrige_meta_index( donnees_rev_de_l_index , {} , nom_de_l_index );
                                 donnees_rev_de_l_index=donnees_rev_de_l_index.texte;
                             }else{
-                                this.__gi1.ajoute_message( {"__xst" : __xsu ,"__xme" : '0849 problème sur les données de l\'index "' + nom_de_l_index + '"'} );
-                                /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+                                this.__ig1.ajoute_message( {"__xst" : __xsu ,"__xme" : '0849 problème sur les données de l\'index "' + nom_de_l_index + '"'} );
+                                /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
                                 return({"__xst" : __xer});
                             }
                         }
@@ -8527,6 +8542,18 @@ class v_svg_bdd1{
                 id_bdd_de_la_base=parseInt( mat[i + 1][1] , 10 );
             }
         }
+        let arbre_charge=false;
+        for(let i in this.#arbre){
+            arbre_charge=true;
+        }
+        if(arbre_charge === false){
+            console.log( "%cl'arbre n'est pas chargé" , "background:red;" );
+        }else{
+            console.log( "%cl'arbre est chargé" , "background:lightgreen;" );
+        }
+        if(arbre_charge === false){
+            return({"__xst" : __xsu});
+        }
         var indice_svg_courant=0;
         for(let i in this.#arbre){
             if(this.#arbre[i].arbre_svg.length > 0){
@@ -8535,7 +8562,7 @@ class v_svg_bdd1{
                 }
             }
         }
-        console.log( 'indice_svg_courant=' + indice_svg_courant );
+        console.log( 'indice_svg_courant=' + indice_svg_courant , mat , this.#arbre );
         var id_svg_conteneur_table=0;
         var id_tab_table_en_cours=0;
         var id_svg_rectangle_base_en_cours=0;
@@ -8601,7 +8628,7 @@ class v_svg_bdd1{
                 "type_element" : 'texte_id_bdd_de_la_base' ,
                 "id_svg_de_la_base_en_cours" : this.#id_svg_de_la_base_en_cours ,
                 "x" : this.#taille_bordure ,
-                "y" : this.#taille_bordure + this.__gi1.css_dimensions.t_police ,
+                "y" : this.#taille_bordure + this.__ig1.css_dimensions.t_police ,
                 "style" : "fill:blue;"
             }
         };
@@ -8622,7 +8649,7 @@ class v_svg_bdd1{
         var decallage_y=0;
         for( let indice_matr=1 ; indice_matr < l01 ; indice_matr=tab[indice_matr][12] ){
             if(tab[indice_matr][3] === 0 && tab[indice_matr][1] === 'meta' && tab[indice_matr][2] === 'f'){
-                var objxx=this.__gi1.__rev1.matrice_vers_source_rev1( tab , tab[indice_matr][7] , false , indice_matr , 0 , [] , null , true );
+                var objxx=this.__ig1.__rev1.matrice_vers_source_rev1( tab , tab[indice_matr][7] , false , indice_matr , 0 , [] , null , true );
                 if(objxx.__xst === __xsu){
                     let obj_meta_de_la_base=this.#corrige_meta_base( objxx.__xva , {} );
                     meta_de_la_base=obj_meta_de_la_base.texte;
@@ -8661,34 +8688,127 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    integrer_les_revs_des_bases( mat , d , le_message_du_serveur ){
+    editer_le_schema( mat , d , chi_id_basedd ){
+        if(chi_id_basedd === null){
+            let l01=mat.length;
+            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+                if('chi_id_basedd' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+                }
+            }
+        }
+        if(document.getElementById( 'bouton_bdd_' + chi_id_basedd ).className.indexOf( 'yy__1' ) < 0){
+            document.getElementById( 'bouton_bdd_' + chi_id_basedd ).classList.add( 'yy__1' );
+            var rev='';
+            /* refZnDessin , nom_de_la_div_contenant_le_svg */
+            rev+='   selectionner_une_base(id_bdd_de_la_base(' + chi_id_basedd + '))';
+            let mat2=this.__ig1.__rev1.rev_tm( rev );
+            this.__ig1.m1( 'v_svg_bdd1' , mat2.__xva , 0 );
+            /* this.v_svg_bdd1.selectionner_une_base(chi_id_basedd); */
+        }else{
+            var rev='';
+            /* refZnDessin , nom_de_la_div_contenant_le_svg */
+            rev+='   déselectionner_une_base(id_bdd_de_la_base(' + chi_id_basedd + '))';
+            let mat2=this.__ig1.__rev1.rev_tm( rev );
+            this.__ig1.m1( 'v_svg_bdd1' , mat2.__xva , 0 );
+            document.getElementById( 'bouton_bdd_' + chi_id_basedd ).classList.remove( 'yy__1' );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    editer_les_schemas2( mat , d , le_colis=null ){
+        let les_bases_a_editer='';
+        let tab_les_bases_a_editer=[];
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if('les_bases_a_editer' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                les_bases_a_editer=mat[i + 1][1];
+                tab_les_bases_a_editer=les_bases_a_editer.split( ',' ).map( ( x ) => {
+                    return(parseInt( x , 10 ));} );
+            }
+        }
+        let o1='';
+        o1+='<h1>édition du schéma</h1>';
+        o1+='<div id="vv_liste_des_bases"></div>';
+        o1+='<div id="div_svg1"';
+        o1+=' style="background: url(';
+        o1+='&quot;data:image/svg+xml,%3Csvg xmlns=\\&quot;http://www.w3.org/2000/svg\\&quot; ';
+        o1+=' viewBox=\\&quot;0 0 10 10\\&quot;%3E%3Cpath d=\\&quot;M 0 0 l 10 10 l 0 -10 l -10 10 Z\\&quot;';
+        o1+=' fill=\\&quot;black\\&quot;';
+        o1+=' fill-opacity=\\&quot;.04\\&quot;/%3E%3C/svg%3E&quot;';
+        o1+=') 208px 261px / 10px;">';
+        o1+='    <svg id="refZnDessin" transform="rotate(0 0 0)" viewBox="0 0 400 400" style="border: 0; position: relative; background: transparent; top: 0px; left: 0px; width: 400px; height: 400px;">';
+        o1+='        <text id="message_dans_le_svg" x="10" y="20" style="stroke:black;stroke-width:0.1;fill:black;">Veuillez patienter s\'il vous plaît !</text>';
+        o1+='    </svg>';
+        o1+='</div>';
+        this.__ig1.maj_contenu_principal( o1 );
+        document.getElementById( 'message_dans_le_svg' ).innerHTML='Veuillez patienter s\'il vous plaît !';
+        if(le_colis !== null){
+            let ret1=this.integrer_les_revs_des_bases( mat , d , le_colis );
+            if(ret1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
+                return({"__xst" : __xer});
+            }
+            let cmds='';
+            for(let i in this.les_bases_du_projet){
+                cmds+='<div id="bouton_bdd_' + this.les_bases_du_projet[i]['T0.chi_id_basedd'] + '" ';
+                if(tab_les_bases_a_editer.includes( this.les_bases_du_projet[i]['T0.chi_id_basedd'] )){
+                    cmds+=' class="rev_bouton yy__3" ';
+                }else{
+                    cmds+=' class="rev_bouton" ';
+                }
+                cmds+='data-rev_click="';
+                cmds+='m1(n1(' + this.moi + '),f1(editer_le_schema(chi_id_basedd(' + this.les_bases_du_projet[i]['T0.chi_id_basedd'] + '))))';
+                cmds+='">base ' + this.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</div>';
+            }
+            cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(zoomPlus()))">++</div>';
+            cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(zoomMoins()))">--</div>';
+            document.getElementById( 'vv_liste_des_bases' ).innerHTML=cmds;
+            var rev='';
+            this.init001( 'refZnDessin' , 'div_svg1' );
+            this.__ig1.ajoute_les_evenements_aux_boutons();
+            this.editer_le_schema( null , null , tab_les_bases_a_editer[0] );
+            window.location.hash='#pm1(m1(n1(' + this.moi + '),f1(editer_les_schemas2(les_bases_a_editer(\'' + les_bases_a_editer + '\')))))';
+            return({"__xst" : __xsu});
+        }
+        /* this.les_bases_du_projet=null; */
+        /* this.__ig1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(recuperer_les_revs_des_bases())))' ,"__xva" : {"les_bases_a_editer" : les_bases_a_editer}} ); */
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
+    integrer_les_revs_des_bases( mat , d , le_colis ){
         console.log( 'integrer_les_revs_des_bases' );
+        this.les_bases_du_projet=le_colis.__xva.les_bases_du_projet;
         /* this.#arbre={}; */
-        for(let i in le_message_du_serveur.__xva.les_bases_du_projet){
+        for(let i in le_colis.__xva.les_bases_du_projet){
             /* obj */
-            this.#arbre[le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]={
+            this.#arbre[le_colis.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]={
                  /*  */
-                "chp_rev_travail_basedd" : le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] ,
+                "chp_rev_travail_basedd" : le_colis.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] ,
                 "arbre_svg" : []
             };
-            if(le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === ''
-                   || le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === null
+            if(le_colis.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === ''
+                   || le_colis.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === null
             ){
                 /*
-                  // this.__gi1.ajoute_message( {"__xst" : __xif ,"__xme" : this.__gi1.nl2() + 'le champ chp_rev_travail_basedd est vide'} ); 
-                  this.__gi1.ajoute_message( {
+                  // this.__ig1.ajoute_message( {"__xst" : __xif ,"__xme" : this.__ig1.nl2() + 'le champ chp_rev_travail_basedd est vide'} ); 
+                  this.__ig1.ajoute_message( {
                   "__xst" : __xer ,
-                  "__xme" : '<b>Pour la base ' + le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</b>, le champ chp_rev_travail_basedd est vide<br />' + this.__gi1.nl2()
+                  "__xme" : '<b>Pour la base ' + le_colis.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</b>, le champ chp_rev_travail_basedd est vide<br />' + this.__ig1.nl2()
                   } );
                   return({"__xst" : __xer});
                 */
             }else{
-                var obj1=this.__gi1.__rev1.rev_tm( le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] );
+                var obj1=this.__ig1.__rev1.rev_tm( le_colis.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] );
                 if(obj1.__xst === __xsu){
-                    this.#arbre[le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]['matrice']=obj1.__xva;
+                    this.#arbre[le_colis.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]['matrice']=obj1.__xva;
                 }else{
-                    this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.nl2()} );
-                    /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
+                    /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
                     return({"__xst" : __xer});
                 }
             }
@@ -8698,14 +8818,36 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
+    zoom_moins( mat , d ){
+        let rev='';
+        rev+='zoomMoins()';
+        let mat2=this.__ig1.__rev1.rev_tm( rev );
+        this.__ig1.m1( 'v_svg_bdd1' , mat2.__xva , 0 );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    zoom_plus( mat , d ){
+        let rev='';
+        rev+='zoomPlus()';
+        let mat2=this.__ig1.__rev1.rev_tm( rev );
+        this.__ig1.m1( 'v_svg_bdd1' , mat2.__xva , 0 );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     zoomMoins(){
         this.zoomPlusMoins( 2 );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     zoomPlus(){
         this.zoomPlusMoins( 0.5 );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -8732,6 +8874,7 @@ class v_svg_bdd1{
         }else{
             this.zoomPlusMoins( 0.5 );
         }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================

@@ -21,22 +21,22 @@ class x_ecran_rev_vers_html1{
     /*
       =============================================================================================================
     */
-    constructor( mat , d , __gi1 ){
-        this.__gi1=__gi1;
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
         /*
           console.log( 'constructor fonctions 1' , e );
         */
         /*
           pour les js dans le html
         */
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
-        this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , __gi1 );
-        this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , __gi1 );
+        this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
+        this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , __ig1 );
+        this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , __ig1 );
         /*
           pour le html
         */
-        this.#objet_conversion_html_vers_rev=new w_html_vers_rev1( '#objet_conversion_html_vers_rev' , __gi1 , this.#objet_conversion_ast_js_vers_rev );
-        this.#objet_conversion_rev_vers_html=new w_rev_vers_html1( '#objet_conversion_rev_vers_html' , __gi1 , this.#objet_conversion_rev_vers_js );
+        this.#objet_conversion_html_vers_rev=new w_html_vers_rev1( '#objet_conversion_html_vers_rev' , __ig1 , this.#objet_conversion_ast_js_vers_rev );
+        this.#objet_conversion_rev_vers_html=new w_rev_vers_html1( '#objet_conversion_rev_vers_html' , __ig1 , this.#objet_conversion_rev_vers_js );
     }
     /*
       =============================================================================================================
@@ -55,7 +55,7 @@ class x_ecran_rev_vers_html1{
         if(zone_source === '' || zone_resultat === ''){
             return({"__xst" : __xer});
         }
-        this.__gi1.zone_d_edition_en_cours=zone_source;
+        this.__ig1.zone_d_edition_en_cours=zone_source;
         let t1=document.getElementById( zone_source );
         let t2=document.getElementById( zone_resultat );
         t2.innerHTML='';
@@ -68,7 +68,7 @@ class x_ecran_rev_vers_html1{
             t2.value=obj1.__xva;
             return({"__xst" : __xsu});
         }else{
-            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2()} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} ));
         }
         return({"__xst" : __xer});
     }
@@ -90,7 +90,7 @@ class x_ecran_rev_vers_html1{
             }
         }
         if(zone_source !== '' && zone_resultat !== ''){
-            this.__gi1.zone_d_edition_en_cours=zone_source;
+            this.__ig1.zone_d_edition_en_cours=zone_source;
             let t1=document.getElementById( zone_source );
             let t2=document.getElementById( zone_resultat );
             t2.innerHTML='';
@@ -112,8 +112,8 @@ class x_ecran_rev_vers_html1{
                     t2.value=obj1.__xva;
                     return({"__xst" : __xsu});
                 }else{
-                    /* this.__gi1.__rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2()} ); */
-                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2()} ));
+                    /* this.__ig1.__rev1.empiler_erreur( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} ); */
+                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} ));
                 }
             }
         }
@@ -123,11 +123,11 @@ class x_ecran_rev_vers_html1{
       =============================================================================================================
     */
     sauvegarder_contenu_en_localstorage( nom_de_la_zone , valeur ){
-        if(!this.__gi1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )){
-            this.__gi1.stockage_local['zones_sauvegardées']={};
+        if(!this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )){
+            this.__ig1.stockage_local['zones_sauvegardées']={};
         }
-        this.__gi1.stockage_local['zones_sauvegardées'][nom_de_la_zone]=valeur;
-        localStorage.setItem( this.__gi1.cle_lst0 , JSON.stringify( this.__gi1.stockage_local ) );
+        this.__ig1.stockage_local['zones_sauvegardées'][nom_de_la_zone]=valeur;
+        localStorage.setItem( this.__ig1.cle_lst0 , JSON.stringify( this.__ig1.stockage_local ) );
     }
     /*
       =============================================================================================================
@@ -183,17 +183,17 @@ class x_ecran_rev_vers_html1{
         t+='<h1>convertion de rev vers html</h1>';
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
-        t+=this.__gi1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev1' );
+        t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev1' );
         /*
         */
         t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_html1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
         t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_html1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_html_rev1" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
-        if(this.__gi1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
-               && this.__gi1.stockage_local['zones_sauvegardées'].hasOwnProperty( 'x_ecran_rev_vers_html1' )
+        if(this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
+               && this.__ig1.stockage_local['zones_sauvegardées'].hasOwnProperty( 'x_ecran_rev_vers_html1' )
         ){
-            t+=this.__gi1.stockage_local['zones_sauvegardées']['x_ecran_rev_vers_html1'].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
+            t+=this.__ig1.stockage_local['zones_sauvegardées']['x_ecran_rev_vers_html1'].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
         }
         t+='</textarea>';
         t+='</div>';
@@ -203,7 +203,7 @@ class x_ecran_rev_vers_html1{
         t+='m1(n1(x_ecran_rev_vers_html1),f1(html_vers_rev1(zone_source(vv_txtarea_html_rev1),zone_resultat(vv_txtarea_html_rev2),mettre_en_stockage_local(1))))';
         t+='" title="convertir en rev" >html-&gt;rev</div>';
         /*  */
-        t+=this.__gi1.__fnt1.boutons_rev3( 'vv_txtarea_html_rev2' );
+        t+=this.__ig1.__fnt1.boutons_rev3( 'vv_txtarea_html_rev2' );
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_html_rev2" data-editeur1="rev" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false">';
         t+='</textarea>';
@@ -213,14 +213,14 @@ class x_ecran_rev_vers_html1{
         t+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_html1),f1(rev_vers_html1(zone_source(vv_txtarea_html_rev2),zone_resultat(vv_txtarea_html_rev3))))" title="convertir en rev">rev-&gt;html</div>';
         /*
         */
-        t+=this.__gi1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev3' );
+        t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev3' );
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_html_rev3" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         t+='</textarea>';
         t+='</div>';
-        this.__gi1.maj_contenu_principal( t );
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'cvt html' );
+        this.__ig1.maj_contenu_principal( t );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'cvt html' );
         return({"__xst" : __xsu});
     }
 }

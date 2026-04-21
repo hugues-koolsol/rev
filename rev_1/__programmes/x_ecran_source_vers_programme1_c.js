@@ -3,22 +3,22 @@ class x_ecran_source_vers_programme1{
       =============================================================================================================
     */
     moi='x_ecran_source_vers_programme1';
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
     */
-    constructor( mat , d , __gi1 ){
-        this.__gi1=__gi1;
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
     }
     /*
       =============================================================================================================
     */
     sauvegarder_contenu_en_localstorage( nom_de_la_zone , valeur ){
-        if(!this.__gi1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )){
-            this.__gi1.stockage_local['zones_sauvegardées']={};
+        if(!this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )){
+            this.__ig1.stockage_local['zones_sauvegardées']={};
         }
-        this.__gi1.stockage_local['zones_sauvegardées'][nom_de_la_zone]={"valeur" : valeur};
-        localStorage.setItem( this.__gi1.cle_lst0 , JSON.stringify( this.__gi1.stockage_local ) );
+        this.__ig1.stockage_local['zones_sauvegardées'][nom_de_la_zone]={"valeur" : valeur};
+        localStorage.setItem( this.__ig1.cle_lst0 , JSON.stringify( this.__ig1.stockage_local ) );
     }
     /*
       =============================================================================================================
@@ -90,7 +90,7 @@ print('hella');`;
         if(zone_source !== '' && zone_resultat !== ''){
             let decallage_gauche=parseInt( document.getElementById( 'decallage_gauche' ).value , 10 );
             let nom_de_la_variable=document.getElementById( 'nom_de_la_variable' ).value;
-            this.__gi1.zone_d_edition_en_cours=zone_source;
+            this.__ig1.zone_d_edition_en_cours=zone_source;
             let t1=document.getElementById( zone_source );
             let t2=document.getElementById( zone_resultat );
             t2.innerHTML='';
@@ -145,17 +145,17 @@ print('hella');`;
         t+='<h1>convertion de programme</h1>';
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
-        t+=this.__gi1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev1' );
+        t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev1' );
         /*  */
         t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(' + this.moi + '),f1(donnees_de_test1()))" title="charger les données de test" >pgm js</div>    ';
         t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(' + this.moi + '),f1(donnees_de_test2()))" title="charger les données de test2" >pgp php</div>';
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_html_rev1" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
-        if(this.__gi1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
-               && this.__gi1.stockage_local['zones_sauvegardées'].hasOwnProperty( this.moi )
-               && this.__gi1.stockage_local['zones_sauvegardées'][this.moi].hasOwnProperty( 'valeur' )
+        if(this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
+               && this.__ig1.stockage_local['zones_sauvegardées'].hasOwnProperty( this.moi )
+               && this.__ig1.stockage_local['zones_sauvegardées'][this.moi].hasOwnProperty( 'valeur' )
         ){
-            t+=this.__gi1.stockage_local['zones_sauvegardées'][this.moi]['valeur'].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
+            t+=this.__ig1.stockage_local['zones_sauvegardées'][this.moi]['valeur'].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
         }
         t+='</textarea>';
         t+='</div>';
@@ -176,7 +176,7 @@ print('hella');`;
         t+='source_vers_genere1(zone_source(vv_txtarea_html_rev1),zone_resultat(vv_txtarea_html_rev2),mettre_en_stockage_local(1),transformation(js))';
         t+='))" title="cvt js" >src-&gt;js</div>';
         /*  */
-        t+=this.__gi1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev2' );
+        t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev2' );
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_html_rev2" data-editeur1="rev" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         t+='</textarea>';
@@ -197,9 +197,9 @@ print('hella');`;
           }
           
         */
-        this.__gi1.maj_contenu_principal( t );
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'source vers programme' );
+        this.__ig1.maj_contenu_principal( t );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'source vers programme' );
         return({"__xst" : __xsu});
     }
 }

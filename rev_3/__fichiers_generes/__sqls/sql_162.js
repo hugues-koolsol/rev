@@ -19,14 +19,14 @@ class sql_162{
         sql0+=from0;
         const where0=` WHERE \`T0\`.\`chi_id_acces\` > 1`;
         sql0+=where0;
-        /* this.__gi1.ma_trace1('sql_162 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_162 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 162 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 162 , e , sql0 , donnees_retournees , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -40,13 +40,13 @@ class sql_162{
       =============================================================================================================
     */
     moi='sql_162';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

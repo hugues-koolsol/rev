@@ -17,15 +17,15 @@ class w_ast_phpparseur_vers_rev1{
     #options_traitement=null;
     __m_rev1=null;
     __module_html1=null;
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
       le seul argument est pour l'instant le nom de la variable qui est déclarée
     */
-    constructor( nom_de_la_variable , __gi1 , module_html ){
-        this.__gi1=__gi1;
+    constructor( nom_de_la_variable , __ig1 , module_html ){
+        this.__ig1=__ig1;
         this.#nom_de_la_variable=nom_de_la_variable;
-        this.__rev1=this.__gi1.__rev1;
+        this.__rev1=this.__ig1.__rev1;
         this.__module_html1=module_html;
     }
     /*
@@ -39,7 +39,7 @@ class w_ast_phpparseur_vers_rev1{
         ){
             o.plage=[o.element.loc.start.offset,o.element.loc.end.offset];
         }
-        return(this.__gi1.ajoute_message( o ));
+        return(this.__ig1.ajoute_message( o ));
     }
     /*
       =============================================================================================================
@@ -1995,7 +1995,7 @@ class w_ast_phpparseur_vers_rev1{
             case '!' : t+='non(' + what + ')';
                 break;
             case '-' :
-                if(this.__gi1.est_num( what )){
+                if(this.__ig1.est_num( what )){
                     t+='-' + what;
                 }else if(element.what.kind === 'variable'){
                     t+='-' + what;
@@ -2005,7 +2005,7 @@ class w_ast_phpparseur_vers_rev1{
                 break;
                 
             case '+' :
-                if(this.__gi1.est_num( what )){
+                if(this.__ig1.est_num( what )){
                     t+='+' + what;
                 }else if(element.what.kind === 'variable'){
                     t+='+' + what;

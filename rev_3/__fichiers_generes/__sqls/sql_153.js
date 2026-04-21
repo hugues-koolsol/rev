@@ -23,17 +23,17 @@ class sql_153{
            LEFT JOIN tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
         `;
         sql0+=from0;
-        const where0=` WHERE ( \`T2\`.\`chi_id_acces\` = ` + this.__gi1.__fnt1.sq1( par['T2_chi_id_acces'] ) + `
+        const where0=` WHERE ( \`T2\`.\`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['T2_chi_id_acces'] ) + `
          AND T1.chi_id_autorisation = T0.chx_autorisation_menu)`;
         sql0+=where0;
-        /* this.__gi1.ma_trace1('sql_153 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_153 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 153 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 153 , e , sql0 , donnees_retournees , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -56,13 +56,13 @@ class sql_153{
       =============================================================================================================
     */
     moi='sql_153';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

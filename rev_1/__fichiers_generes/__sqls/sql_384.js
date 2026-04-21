@@ -16,12 +16,12 @@ class sql_384{
             if(par['n_chp_nom_projet'] === undefined || par['n_chp_nom_projet'] === '' || par['n_chp_nom_projet'] === null){
                 tableau_champs.push( '`chp_nom_projet` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_projet` = \'' + this.__gi1.__fnt1.sq0( par['n_chp_nom_projet'] ) + '\'' );
+                tableau_champs.push( '`chp_nom_projet` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_projet'] ) + '\'' );
             }
             if(par['n_cht_commentaire_projet'] === undefined || par['n_cht_commentaire_projet'] === '' || par['n_cht_commentaire_projet'] === null){
                 tableau_champs.push( '`cht_commentaire_projet` = NULL' );
             }else{
-                tableau_champs.push( '`cht_commentaire_projet` = \'' + this.__gi1.__fnt1.sq0( par['n_cht_commentaire_projet'] ) + '\'' );
+                tableau_champs.push( '`cht_commentaire_projet` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_commentaire_projet'] ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -35,26 +35,26 @@ class sql_384{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_projet\` = ` + this.__gi1.__fnt1.sq1( par['c_chi_id_projet'] ) + '\r\n';
+            where0+=` AND \`chi_id_projet\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_projet'] ) + '\r\n';
             sql0+=where0;
-            /* this.__gi1.ma_trace1(' sql_384= ' + sql0 ); */
+            /* this.__ig1.ma_trace1(' sql_384= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 384 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 384 , e , sql0 , donnees_retournees , {} ));
         }
     }
     /*
       =============================================================================================================
     */
     moi='sql_384';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

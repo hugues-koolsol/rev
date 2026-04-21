@@ -34,15 +34,15 @@ const REGEX_CRLF=new RegExp( MON_CRLF , 'g' );
 class w_html_vers_rev1{
     #nom_de_la_variable='';
     __m_astjs_vers_rev=null;
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
     */
-    constructor( nom_de_la_variable , __gi1 , module_astjs_vers_rev ){
+    constructor( nom_de_la_variable , __ig1 , module_astjs_vers_rev ){
         /* module_rev */
         this.#nom_de_la_variable=nom_de_la_variable;
-        this.__gi1=__gi1;
-        this.__rev1=this.__gi1.__rev1;
+        this.__ig1=__ig1;
+        this.__rev1=this.__ig1.__rev1;
         this.__m_astjs_vers_rev=module_astjs_vers_rev;
     }
     /*
@@ -130,7 +130,7 @@ class w_html_vers_rev1{
                             typeScriptNonTraite=true;
                             type='script';
                             t+='\n' + esp0 + 'script(';
-                            __gi1.ajoute_message( {
+                            __ig1.ajoute_message( {
                                     "__xst" : __xal ,
                                     "__xme" : this.__rev1.nl2() + '<br />attention, seuls "text/javascript", "module" et "application/ld+json" sont traités <br />et il existe un type de script non traité <b>"' + jsonDeHtml.attributes.type + '"</b>'
                                 } );
@@ -191,7 +191,7 @@ class w_html_vers_rev1{
                     var chaineJsEquivalente='a=' + jsonDeHtml.content[0].replace( /&quot;/g , '"' ).replace( /\\\//g , '/' ) + ';';
                 }
                 tableau_des_javascript_a_convertir.push( {"type" : "ldplusjsondanshtml" ,"__xva" : chaineJsEquivalente ,"cas" : "ldjson"} );
-                var obj=__gi1.convertit_source_javascript_en_rev( chaineJsEquivalente );
+                var obj=__ig1.convertit_source_javascript_en_rev( chaineJsEquivalente );
                 if(obj.__xst === __xsu){
                     let obj1=this.__rev1.rev_tm( obj.__xva );
                     if(obj1.__xst === __xsu){
@@ -199,13 +199,13 @@ class w_html_vers_rev1{
                         if(obj2.__xst === __xsu){
                             t+='' + obj2.__xva + '';
                         }else{
-                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'traiteJsonDeHtml' + jsonDeHtml.type} ));
+                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'traiteJsonDeHtml' + jsonDeHtml.type} ));
                         }
                     }else{
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'traiteJsonDeHtml' + jsonDeHtml.type} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'traiteJsonDeHtml' + jsonDeHtml.type} ));
                     }
                 }else{
-                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'traiteJsonDeHtml' + jsonDeHtml.type} ));
+                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'traiteJsonDeHtml' + jsonDeHtml.type} ));
                 }
                 t+='\n' + esp0 + ')';
             }else if(type.toLowerCase() === 'javascriptdanshtml' && jsonDeHtml.content && jsonDeHtml.content.length > 0){
@@ -232,7 +232,7 @@ class w_html_vers_rev1{
                             */
                             var source_js=jsonDeHtml.content[i].replace( /&amp;/g , '&' );
                             tableau_des_javascript_a_convertir.push( {"type" : "javascriptdanshtml" ,"__xva" : source_js ,"cas" : "js2"} );
-                            var obj=__gi1.convertit_source_javascript_en_rev( source_js );
+                            var obj=__ig1.convertit_source_javascript_en_rev( source_js );
                             if(obj.__xst === __xsu){
                                 debugger;
                                 if(t.indexOf( 'text/javascript' ) >= 0){
@@ -241,20 +241,20 @@ class w_html_vers_rev1{
                                     contenu+='(\'type\' , "text/javascript")' + obj.__xva;
                                 }
                             }else{
-                                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'traiteJsonDeHtml ' + jsonDeHtml.type} ));
+                                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'traiteJsonDeHtml ' + jsonDeHtml.type} ));
                             }
                         }else{
                             debugger;
-                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'traiteJsonDeHtml' + jsonDeHtml.type} ));
+                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'traiteJsonDeHtml' + jsonDeHtml.type} ));
                         }
                     }
                 }else{
                     tableau_des_javascript_a_convertir.push( {"type" : "javascriptdanshtml" ,"__xva" : source_js ,"cas" : "js3"} );
-                    var obj=__gi1.convertit_source_javascript_en_rev( jsonDeHtml.content );
+                    var obj=__ig1.convertit_source_javascript_en_rev( jsonDeHtml.content );
                     if(obj.__xst === __xsu){
                         contenu+='<![CDATA[' + obj.__xva + ']]>';
                     }else{
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + ' traiteJsonDeHtml  ' + jsonDeHtml.type} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + ' traiteJsonDeHtml  ' + jsonDeHtml.type} ));
                     }
                 }
                 t+='\n' + esp0 + contenu + ')';
@@ -273,7 +273,7 @@ class w_html_vers_rev1{
                             }
                             contenu+=obj.__xva;
                         }else{
-                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + ' traiteJsonDeHtml ' + jsonDeHtml.type} ));
+                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + ' traiteJsonDeHtml ' + jsonDeHtml.type} ));
                         }
                     }
                 }else{
@@ -370,7 +370,7 @@ class w_html_vers_rev1{
                 tableau_des_javascript_a_convertir.push( {"type" : "javascriptdanshtml" ,"__xva" : source_js ,"cas" : "js4"} );
                 /* avrif */
                 debugger;
-                var obj=__gi1.convertit_source_javascript_en_rev( jsonDeHtml );
+                var obj=__ig1.convertit_source_javascript_en_rev( jsonDeHtml );
                 if(obj.__xst === __xsu){
                     t+='' + obj.__xva + '';
                 }else{
@@ -471,10 +471,10 @@ class w_html_vers_rev1{
                                         if(obj1.__xst === __xsu){
                                             t=obj1.__xva;
                                         }else{
-                                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                         }
                                     }else{
-                                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                     }
                                 }else{
                                     var nouveauJsonDeHtml=this.mapMatriceVersJsonDeHtml( nouveauTableau2 );
@@ -483,10 +483,10 @@ class w_html_vers_rev1{
                                         if(obj.__xst === __xsu){
                                             t=obj.__xva;
                                         }else{
-                                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                         }
                                     }else{
-                                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                     }
                                 }
                             }else{
@@ -496,10 +496,10 @@ class w_html_vers_rev1{
                                     if(obj1.__xst === __xsu){
                                         t=obj1.__xva;
                                     }else{
-                                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                     }
                                 }else{
-                                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                 }
                             }
                         }else{
@@ -520,7 +520,7 @@ class w_html_vers_rev1{
                                             if(obj.__xst === __xsu){
                                                 t+=',' + obj.__xva + '\n';
                                             }else{
-                                                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                             }
                                         }
                                     }
@@ -540,7 +540,7 @@ class w_html_vers_rev1{
                                 if(obj1.__xst === __xsu){
                                     t=obj1.__xva;
                                 }else{
-                                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                 }
                             }
                         }
@@ -555,7 +555,7 @@ class w_html_vers_rev1{
                     */
                 }
             }else{
-                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
             }
         }
         /*
@@ -779,7 +779,7 @@ class w_html_vers_rev1{
                                     attrib[tab[i + 1][1]]=tab[i + 2][1];
                                     a_des_attributs=true;
                                 }else{
-                                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"message" : this.__rev1.nl2()} ));
+                                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"message" : this.__rev1.nl2()} ));
                                 }
                             }
                         }
@@ -804,7 +804,7 @@ class w_html_vers_rev1{
                                                 attrib[tab[j + 1][1]]=tab[j + 2][1];
                                                 a_des_attributs=true;
                                             }else{
-                                                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"message" : this.__rev1.nl2()} ));
+                                                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"message" : this.__rev1.nl2()} ));
                                             }
                                         }
                                     }
@@ -825,7 +825,7 @@ class w_html_vers_rev1{
                                         if(objContenuJs.__xst === __xsu){
                                             le_contenu.push( JSON.parse( JSON.stringify( {"type" : 'javascriptdanshtml' ,"content" : objContenuJs.__xva ,"attributes" : attrib} ) ) );
                                         }else{
-                                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                         }
                                     }else if(tab[parentId][1].toLowerCase() === 'ldplusjsondanshtml'){
                                         var debut=indice + 1;
@@ -849,7 +849,7 @@ class w_html_vers_rev1{
                                             content.push( contenu );
                                             le_contenu.push( JSON.parse( JSON.stringify( {"type" : 'ldplusjsondanshtml' ,"content" : contenu ,"attributes" : attrib} ) ) );
                                         }else{
-                                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                         }
                                     }else{
                                         var obj=reconstruit( tab , i );
@@ -861,7 +861,7 @@ class w_html_vers_rev1{
                                                 le_contenu.push( JSON.parse( JSON.stringify( {"type" : tab[i][1] ,"content" : obj.content} ) ) );
                                             }
                                         }else{
-                                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"message" : this.__rev1.nl2()} ));
+                                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"message" : this.__rev1.nl2()} ));
                                         }
                                     }
                                 }
@@ -894,7 +894,7 @@ class w_html_vers_rev1{
         if(obj.__xst === __xsu){
             return({"__xst" : __xsu ,"__xva" : obj.content});
         }else{
-            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
         }
     }
     /*
@@ -994,13 +994,13 @@ class w_html_vers_rev1{
                                 }catch(e){
                                     console.log( tableau_de_javascripts_a_convertir[indjs].__xva.replace( /&amp;/g , '&' ) );
                                     if(e.pos){
-                                        return(this.__gi1.ajoute_message( {
+                                        return(this.__ig1.ajoute_message( {
                                                 "__xst" : __xer ,
                                                 "__xme" : this.__rev1.nl2() + '<br />erreur dans un source javascript contenu dans un html<br />' + e.message ,
                                                 "plage" : [e.pos,e.pos]
                                             } ));
                                     }else{
-                                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + '<br />erreur dans un source javascript contenu dans un html<br />' + e.message} ));
+                                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + '<br />erreur dans un source javascript contenu dans un html<br />' + e.message} ));
                                     }
                                 }
                                 if(tableau_des_commentaires_js.length > 0){
@@ -1029,7 +1029,7 @@ class w_html_vers_rev1{
                                     var phrase_a_remplacer='#(cle_javascript_a_remplacer,' + tableau_de_javascripts_a_convertir[indjs].cle + ')';
                                     obj.__xva=obj.__xva.replace( phrase_a_remplacer , '' + obj1.__xva + '' );
                                 }else{
-                                    return(this.__gi1.ajoute_message( {
+                                    return(this.__ig1.ajoute_message( {
                                             "__xst" : __xer ,
                                             "__xme" : this.__rev1.nl2() + 'il y a un problème dans la transformation de ast js vers rev dans un source javascript'
                                         } ));
@@ -1067,16 +1067,16 @@ class w_html_vers_rev1{
                                         }
                                         var matriceFonction=this.__rev1.rev_tm( source_rev );
                                         if(matriceFonction.__xst === __xer){
-                                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'conversion en matrice'} ));
+                                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'conversion en matrice'} ));
                                         }
                                         var obj1=this.__rev1.matrice_vers_source_rev1( matriceFonction.__xva , 0 , true , 1 );
                                         if(obj1.__xst === __xsu){
                                             document.getElementById( options.zone_html_rev ).value=obj1.__xva;
                                         }else{
-                                            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'nettoyage en matrice'} ));
+                                            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'nettoyage en matrice'} ));
                                         }
                                     }catch(e){
-                                        return(this.__gi1.ajoute_message( {
+                                        return(this.__ig1.ajoute_message( {
                                                 "__xst" : __xer ,
                                                 "__xme" : this.__rev1.nl2( e ) + 'la zone "' + options.zone_html_rev + '" indiquée en paramètre n\'existe pas dans le document'
                                             } ));
@@ -1098,17 +1098,17 @@ class w_html_vers_rev1{
                                     document.getElementById( options.zone_html_rev ).value=obj.__xva.replace( REGEX_LF , '\n' ).replace( REGEX_CR , '\r' ).replace( /\\\\¶\\\\LF\\\\¶/g , '\n' ).replace( /\\\\¶\\\\CR\\\\¶/g , '\r' );
                                     var matriceFonction=this.__rev1.rev_tm( obj.__xva );
                                     if(matriceFonction.__xst === __xer){
-                                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                     }
                                     var obj1=this.__rev1.matrice_vers_source_rev1( matriceFonction.__xva , 0 , true , 1 );
                                     if(obj1.__xst === __xsu){
                                         document.getElementById( options.zone_html_rev ).value=obj1.__xva;
                                     }else{
-                                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                     }
                                 }catch(e){
                                     console.error( 'e=' , e );
-                                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                                 }
                                 return({"__xst" : __xsu ,"__xva" : obj.__xva});
                             }else{
@@ -1116,21 +1116,21 @@ class w_html_vers_rev1{
                             }
                         }
                     }else{
-                        return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
                     }
                 }catch(e){
                     console.error( 'e=' , e );
-                    return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2( e )} ));
+                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2( e )} ));
                 }
             }else{
                 console.log( 'elementsJson=' , elementsJson );
-                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
             }
             console.log( 'par ici' , elementsJson );
-            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2()} ));
         }catch(e){
             console.log( 'e=' , e );
-            return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2( e )} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2( e )} ));
         }
         console.log( 'fin' );
     }
@@ -1512,7 +1512,7 @@ class w_html_vers_rev1{
                 }
                 t+='html_dans_php(' + obj.__xva + ')';
             }else{
-                return(this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'transformation html en rev'} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() + 'transformation html en rev'} ));
             }
         }else{
             /*
@@ -1522,7 +1522,7 @@ class w_html_vers_rev1{
             estTraiteSansErreur=false;
             if(options_traitement && options_traitement.hasOwnProperty( 'nettoyer_html' ) && options_traitement.nettoyer_html === 1){
             }else{
-                return(this.__gi1.ajoute_message( {"__xst" : __xal ,"__xme" : 'ce php contient du html en ligne qui n\'est pas complet<br />' + this.__rev1.nl2() ,"cumul_message" : __xer} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xal ,"__xme" : 'ce php contient du html en ligne qui n\'est pas complet<br />' + this.__rev1.nl2() ,"cumul_message" : __xer} ));
             }
             if(contenu.toLowerCase().indexOf( '<script' ) < 0){
                 /*
@@ -1533,8 +1533,8 @@ class w_html_vers_rev1{
                 var cle=this.#construit_cle( 10 );
                 t+='#( === transformation html incomplet en e-c-h-o voir ci dessous pour la clé = "' + cle + '")';
                 if(options_traitement.nettoyer_html === 0){
-                    __gi1.ajoute_message( {"__xst" : __xal ,"__xme" : __gi1.nl2() + "<br />ATTENTION, html incomplet converti en e-c-h-o (" + cle + ") !"} );
-                    __gi1.affiche_les_messages();
+                    __ig1.ajoute_message( {"__xst" : __xal ,"__xme" : __ig1.nl2() + "<br />ATTENTION, html incomplet converti en e-c-h-o (" + cle + ") !"} );
+                    __ig1.affiche_les_messages();
                     return({"__xst" : __xer ,"cumul_message" : __xer});
                 }
                 t+='\n' + 'appelf(nomf(echo),p(\'' + contenu.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'))';
@@ -1555,8 +1555,8 @@ class w_html_vers_rev1{
                     }else{
                         var cle=this.#construit_cle( 10 );
                         t+='#( === transformation html incomplet en e-c-h-o voir ci dessous pour la clé = "' + cle + '")';
-                        __gi1.ajoute_message( {"__xst" : __xal ,"__xme" : this.__rev1.nl2() + "<br />ATTENTION, html incomplet converti en e-c-h-o (" + cle + ") !"} );
-                        __gi1.ajoute_message( {"__xst" : __xal ,"__xme" : this.__rev1.nl2() + '<br />les scripts ne sont pas validés et peuvent contenir des erreurs'} );
+                        __ig1.ajoute_message( {"__xst" : __xal ,"__xme" : this.__rev1.nl2() + "<br />ATTENTION, html incomplet converti en e-c-h-o (" + cle + ") !"} );
+                        __ig1.ajoute_message( {"__xst" : __xal ,"__xme" : this.__rev1.nl2() + '<br />les scripts ne sont pas validés et peuvent contenir des erreurs'} );
                         t+='appelf(nomf(echo),p(\'' + contenu.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'))';
                     }
                 }else{
@@ -1565,8 +1565,8 @@ class w_html_vers_rev1{
                     */
                     var cle=this.#construit_cle( 10 );
                     t+='#( === transformation html incomplet en e-c-h-o voir ci dessous pour la clé = "' + cle + '")';
-                    __gi1.ajoute_message( {"__xst" : __xal ,"__xme" : this.__rev1.nl2() + "<br />ATTENTION, html incomplet converti en e-c-h-o (" + cle + ") !"} );
-                    __gi1.ajoute_message( {"__xst" : __xal ,"__xme" : this.__rev1.nl2() + '<br />les scripts ne sont pas validés et peuvent contenir des erreurs'} );
+                    __ig1.ajoute_message( {"__xst" : __xal ,"__xme" : this.__rev1.nl2() + "<br />ATTENTION, html incomplet converti en e-c-h-o (" + cle + ") !"} );
+                    __ig1.ajoute_message( {"__xst" : __xal ,"__xme" : this.__rev1.nl2() + '<br />les scripts ne sont pas validés et peuvent contenir des erreurs'} );
                     t+='appelf(nomf(echo),p(\'' + contenu.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'))';
                 }
             }

@@ -31,7 +31,7 @@ const REGEX_CR=new RegExp( MON_CR , 'g' );
   
 */
 class __rev1{
-    __gi1=null;
+    __ig1=null;
     #NBESPACESSOURCEPRODUIT=4;
     #NBESPACESREV=3;
     /* __m__rev1.globale_messages */
@@ -39,15 +39,15 @@ class __rev1{
     /*
       =============================================================================================================
     */
-    constructor( __gi1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
     }
     /*
       =============================================================================================================
     */
     ajoute_message( obj ){
         try{
-            return(this.__gi1.ajoute_message( obj ));
+            return(this.__ig1.ajoute_message( obj ));
         }catch{
             return obj;
         }
@@ -70,9 +70,9 @@ class __rev1{
         var endMicro=performance.now();
         if(texte_rev.length > 5000){
             /* le_biscuit */
-            if(this.__gi1
-                   && this.__gi1.hasOwnProperty( 'stockage_local' )
-                   && this.__gi1.stockage_local.parametres['__deverminage'].valeur > 0
+            if(this.__ig1
+                   && this.__ig1.hasOwnProperty( 'stockage_local' )
+                   && this.__ig1.stockage_local.parametres['__deverminage'].valeur > 0
             ){
                 var temps=parseInt( (endMicro - startMicro) * 1000 , 10 ) / 1000;
                 console.log( 'temps de conversion de texte rev vers matrice pour un source rev de ' + texte_rev.length + ' octets  : ' , temps );

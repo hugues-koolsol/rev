@@ -12,14 +12,14 @@ class x_ecran_generer_souches1{
     #_developpement1=null;
     #nom_de_la_table=null;
     #a_construire={"select" : null ,"insert" : null ,"liste_ecran" : null ,"delete" : null ,"update" : null};
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
     */
-    constructor( mat , d , __gi1 ){
-        this.__gi1=__gi1;
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
-        this.#_developpement1=new _developpement1( mat , d , this.__gi1 );
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
+        this.#_developpement1=new _developpement1( mat , d , this.__ig1 );
     }
     /*
       =============================================================================================================
@@ -98,23 +98,23 @@ class x_ecran_generer_souches1{
                                                         */
                                                         let aa=null;
                                                         try{
-                                                            aa=this.__gi1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre;
+                                                            aa=this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre;
                                                         }catch(e){
                                                             /* debugger */
                                                         }
                                                         if(aa !== null && aa !== ''){
-                                                            var obj1=this.__gi1.__rev1.rev_tm( this.__gi1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre );
+                                                            var obj1=this.__ig1.__rev1.rev_tm( this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre );
                                                             for( let o=1 ; o < obj1.__xva.length ; o=obj1.__xva[o][12] ){
                                                                 if(obj1.__xva[o][2] === 'f' && obj1.__xva[o][8] === 1 && obj1.__xva[o + 1][2] === 'c'){
-                                                                    cht_particularités_genre[obj1.__xva[o][1]]=this.__gi1.est_num( obj1.__xva[o + 1][1] ) ? ( parseInt( obj1.__xva[o + 1][1] ) ) : ( obj1.__xva[o + 1][1] );
+                                                                    cht_particularités_genre[obj1.__xva[o][1]]=this.__ig1.est_num( obj1.__xva[o + 1][1] ) ? ( parseInt( obj1.__xva[o + 1][1] ) ) : ( obj1.__xva[o + 1][1] );
                                                                 }
                                                             }
                                                         }
                                                         this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['cht_particularités_genre']=cht_particularités_genre;
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['genre_objet_du_champ']=this.__gi1.__liste_des_genres[mat2[o + 1][1]];
+                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['genre_objet_du_champ']=this.__ig1.__liste_des_genres[mat2[o + 1][1]];
                                                         /*
                                                           debugger
-                                                          this.__gi1.__liste_des_genres
+                                                          this.__ig1.__liste_des_genres
                                                         */
                                                         /* console.log('mat2[o][1]='+nom_du_champ+ ' : ' +mat2[o+1][1]); */
                                                     }else{
@@ -239,7 +239,7 @@ class x_ecran_generer_souches1{
             cmd+=' nom_du_module2(' + this.moi + '),';
             cmd+='))))';
             let obj={"__xac" : cmd};
-            this.__gi1.envoyer_un_message_au_worker( obj );
+            this.__ig1.envoyer_un_message_au_worker( obj );
         }
         return({"__xst" : __xsu});
     }
@@ -260,7 +260,7 @@ class x_ecran_generer_souches1{
         o1+='<div id="les_requetes"></div>';
         let contenu_generer_le_programme=document.getElementById( 'contenu_generer_le_programme' );
         contenu_generer_le_programme.innerHTML=o1;
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         setTimeout( () => {
                 this.charger_les_requetes_existantes();} , 50 );
         return({"__xst" : __xsu});
@@ -281,14 +281,14 @@ class x_ecran_generer_souches1{
             let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
             let nom_de_la_table=document.getElementById( 'vv_les_tables' ).value;
             if(nom_de_la_table !== ''){
-                window.location.hash='m1(n1(x_ecran_generer_souches1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '),nom_de_la_table(\'' + this.__gi1.fi1( nom_de_la_table ) + '\'))))';
+                window.location.hash='m1(n1(x_ecran_generer_souches1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '),nom_de_la_table(\'' + this.__ig1.fi1( nom_de_la_table ) + '\'))))';
                 this.charger_base1( chi_id_basedd , nom_de_la_table );
             }else{
                 window.location.hash='m1(n1(x_ecran_generer_souches1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
             }
         }else{
             window.location.hash='m1(n1(x_ecran_generer_souches1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
-            this.__gi1.ajoute_les_evenements_aux_boutons( null );
+            this.__ig1.ajoute_les_evenements_aux_boutons( null );
         }
         return({"__xst" : __xsu});
     }
@@ -320,7 +320,7 @@ class x_ecran_generer_souches1{
             }
         }
         document.getElementById( 'vv_les_tables' ).innerHTML=o1;
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -359,7 +359,7 @@ class x_ecran_generer_souches1{
                 }
                 o1+='>' + le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</option>';
                 this.#arbre[le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]={"matrice" : null ,"tables" : []};
-                var obj1=this.__gi1.__rev1.rev_tm( le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] );
+                var obj1=this.__ig1.__rev1.rev_tm( le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] );
                 if(obj1.__xst === __xsu){
                     this.#arbre[le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']].matrice=obj1.__xva;
                     let mat2=obj1.__xva;
@@ -374,8 +374,8 @@ class x_ecran_generer_souches1{
                         }
                     }
                 }else{
-                    this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2()} );
-                    /* this.__gi1.remplis_les_messages_et_affiche( '' ); */
+                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} );
+                    /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
                     return({"__xst" : __xer});
                 }
             }
@@ -404,7 +404,7 @@ class x_ecran_generer_souches1{
         if(chi_id_basedd > 0 && nom_de_la_table !== ''){
             this.charger_base1( chi_id_basedd , nom_de_la_table );
         }else{
-            this.__gi1.ajoute_les_evenements_aux_boutons( null );
+            this.__ig1.ajoute_les_evenements_aux_boutons( null );
         }
         return({"__xst" : __xsu});
     }
@@ -427,7 +427,7 @@ class x_ecran_generer_souches1{
         $o1+='<div id="zone_selection"></div>';
         $o1+='<div id="contenu_generer_le_programme"></div>';
         /* sur ' + nom_de_la_table + '(' + chi_id_basedd + ') */
-        this.__gi1.maj_contenu_principal( $o1 );
+        this.__ig1.maj_contenu_principal( $o1 );
         let cmd='';
         cmd+='pm1(m1(n1(' + this.moi + '),f1(recuperer_zone_travail_pour_les_bases2(';
         cmd+=' chi_id_basedd(' + chi_id_basedd + '),';
@@ -436,9 +436,9 @@ class x_ecran_generer_souches1{
         /* cmd+=' fonction_a_appeler(charger_base1)'; */
         cmd+='))))';
         let obj={"__xac" : cmd};
-        this.__gi1.envoyer_un_message_au_worker( obj );
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'générer les requêtes souches' );
+        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'générer les requêtes souches' );
         return({"__xst" : __xsu});
     }
     /*

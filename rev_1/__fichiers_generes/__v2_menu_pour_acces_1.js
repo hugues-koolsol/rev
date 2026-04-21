@@ -12,9 +12,9 @@ class v2_menu_pour_acces_1{
         let les_menu1='';
         /* contenu initialisé avec une chaine vide pour indice 0 */
         let les_sous_menus=[''];
-        les_menu1+=`<li><div id="menu_1" data-id_auto="52" data-id_menu="24" class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets</div></li>`;
+        les_menu1+=`<li><div id="menu_2" data-id_auto="52" data-id_menu="24" class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets</div></li>`;
         if(donnees_retournees.chi_id_projet > 0){
-            les_menu1+=`<li><div id="menu_2" data-id_auto="53" data-id_menu="31" class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="Liste des tâches">tâches</div></li>`;
+            les_menu1+=`<li><div id="menu_1" data-id_auto="53" data-id_menu="31" class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="Liste des tâches">tâches</div></li>`;
         }
         if(donnees_retournees.chi_id_projet > 0){
             les_menu1+=`<li><div id="menu_3" data-id_auto="25" data-id_menu="9" class="rev_bouton" data-rev_click="m1(n1(dossiers1),f1(entree_module()))" title="liste des dossiers et des fichiers">dossiers</div></li>`;
@@ -38,7 +38,7 @@ class v2_menu_pour_acces_1{
             les_menu1+=`<li><div id="menu_9" data-id_auto="55" data-id_menu="34" class="rev_bouton" data-rev_click="m1(n1(travaux1),f1(entree_module()))" title="liste des travaux">travaux</div></li>`;
         }
         /* ================== */
-        les_sous_menus[0]+=`<li><div  id="menu_10"   data-id_auto="46" data-id_menu="32" class="rev_b_svg"  title="coordonnées" data-rev_click="m1(n1(x_ecran_coordonnees1),f1(entree_module()))"><svg class="rev_svg_dans_menu1" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg></div></li>`;
+        les_sous_menus[0]+=`<li><div  id="menu_11"   data-id_auto="46" data-id_menu="32" class="rev_b_svg"  title="coordonnées" data-rev_click="m1(n1(x_ecran_coordonnees1),f1(entree_module()))"><svg class="rev_svg_dans_menu1" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg></div></li>`;
         les_sous_menus[0]+=`<li data-separateur="1">organisation</li>`;
         if(donnees_retournees.chi_id_projet > 0){
             les_sous_menus[0]+=`<li><div  id="menu_13"   data-id_auto="31" data-id_menu="14" class="rev_bouton"  title="liste des groupes" data-rev_click="m1(n1(groupes1),f1(entree_module()))">groupes</div></li>`;
@@ -77,7 +77,7 @@ class v2_menu_pour_acces_1{
         /* niveau 0 */
         if(les_sous_menus[0] !== ''){
             les_menu1+='<li><div data-separateur="0" data-libelle_noeud_menu1="0">autres</div>';
-            les_menu1+=`<ul id="menu_11" data-id_menu="11">`;
+            les_menu1+=`<ul id="menu_10" data-id_menu="10">`;
             les_menu1+=les_sous_menus[0];
             les_menu1+=`</ul>`;
             les_menu1+='</li>';

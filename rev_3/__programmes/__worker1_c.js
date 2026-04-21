@@ -15,7 +15,6 @@ import {__rev1} from './f0?n0=__rev1_.js';
   __m__worker11
 */
 class __worker1{
-    #nom_de_la_variable='';
     #url_du_site='../';
     #la_chausette_web=null;
     #adresse_du_websocket='';
@@ -27,13 +26,12 @@ class __worker1{
     /* objet des fonctions de traitement des revs */
     __rev1=null;
     #objet_envoye_au_serveur=null;
-    #utiliser_les_sockets=0;
     __deverminage=0;
+    ma_connexion_socket=null;
     /*
       =============================================================================================================
     */
-    constructor( nom_de_la_variable ){
-        this.#nom_de_la_variable=nom_de_la_variable;
+    constructor(){
         this.__rev1=new __rev1( null );
         /*
           console.log( 'constructor de __worker' );
@@ -43,7 +41,7 @@ class __worker1{
       =============================================================================================================
     */
     async action_quand_message_recu_du_js_principal( le_message ){
-        this.__deverminage=this.__deverminage=le_message.data.__xva.__parametres.__deverminage.valeur;
+        this.__deverminage=le_message.data.__xva.__parametres.__deverminage.valeur;
         if(this.__deverminage === 2){
             console.log( 'le_message.data=' , le_message.data );
         }
@@ -71,9 +69,69 @@ class __worker1{
         }
         obj['mat']=mat;
         /* console.log('%cDANS __worker','color:red;background:yellow;','cmat=',mat,'obj.__xac=',obj.__xac); */
-        if(obj.__xac === 'pm1(m1(n1(__gi1),f1(init0())))'){
-            /* console.log( '%cDANS __worker' , 'color:red;background:yellow;' ); */
-            /* mat.length===2 && mat[1][1]==='__gi1.init0' */
+        let initialisation=false;
+        if(obj.__xac === 'pm1(m1(n1(__ig1),f1(retablir_la_connexion_au_ws())))'){
+            initialisation=true;
+            try{
+                this.ma_connexion_socket=new WebSocket( "ws://" + obj.__xva.__le_serveur + ":" + obj.__xva.__le_port );
+            }catch(e){
+                let le_json={"__xst" : __xer ,"__xme" : e.stack};
+                postMessage( json );
+            }
+            this.ma_connexion_socket.addEventListener( "open" , () => {
+                    this.ma_connexion_socket.send( JSON.stringify( obj ) );} );
+            this.ma_connexion_socket.addEventListener( "close" , () => {
+                    this.ma_connexion_socket=null;
+                    let le_json_ferme={
+                        "__xst" : __xsu ,
+                        "__xac" : 'm1(n1(__ig1),f1(connexion_au_websocket_fermee()))' ,
+                        "__xva" : {"chi_id_acces" : 0 ,"chi_id_projet" : 0 ,"chi_id_utilisateur" : 0}
+                    };
+                    postMessage( le_json_ferme );} );
+            this.ma_connexion_socket.addEventListener( "message" , ( evenement ) => {
+                    let le_json=null;
+                    try{
+                        if(this.__deverminage >= 2){
+                            console.log( 'serveur ->worker1 ' , evenement.data.substr( 0 , 500 ) );
+                        }
+                        le_json=JSON.parse( evenement.data );
+                        postMessage( le_json );
+                    }catch(e){
+                        console.log( '%ce=' + e.stack , 'background:yellow;' );
+                        let le_retour_ko={"__xst" : __xer ,"__xme" : e.stack};
+                        postMessage( le_retour_ko );
+                    }} );
+        }else if(obj.__xac === 'pm1(m1(n1(__ig1),f1(init0())))'){
+            initialisation=true;
+            try{
+                this.ma_connexion_socket=new WebSocket( "ws://" + obj.__xva.__le_serveur + ":" + obj.__xva.__le_port );
+            }catch(e){
+                let le_json={"__xst" : __xer ,"__xme" : e.stack};
+                postMessage( json );
+            }
+            this.ma_connexion_socket.addEventListener( "open" , () => {
+                    this.ma_connexion_socket.send( JSON.stringify( obj ) );} );
+            this.ma_connexion_socket.addEventListener( "close" , () => {
+                    this.ma_connexion_socket=null;
+                    let le_json_ferme={
+                        "__xst" : __xsu ,
+                        "__xac" : 'm1(n1(__ig1),f1(connexion_au_websocket_fermee()))' ,
+                        "__xva" : {"chi_id_acces" : 0 ,"chi_id_projet" : 0 ,"chi_id_utilisateur" : 0}
+                    };
+                    postMessage( le_json_ferme );} );
+            this.ma_connexion_socket.addEventListener( "message" , ( evenement ) => {
+                    let le_json=null;
+                    try{
+                        if(this.__deverminage >= 2){
+                            console.log( 'serveur ->worker0 ' , evenement.data.substr( 0 , 500 ) );
+                        }
+                        le_json=JSON.parse( evenement.data );
+                        postMessage( le_json );
+                    }catch(e){
+                        console.log( '%ce=' + e.stack , 'background:yellow;' );
+                        let le_retour_ko={"__xst" : __xer ,"__xme" : e.stack};
+                        postMessage( le_retour_ko );
+                    }} );
             let url=le_message.data.__xva.__href;
             if(url.indexOf( '#' ) > 0){
                 url=url.substr( 0 , url.indexOf( '#' ) );
@@ -91,53 +149,11 @@ class __worker1{
             }
         }
         obj['mat_hash']=mat_hash;
-        if(this.__deverminage === 2){
-            console.log( 'dans worker on envoie obj=' , obj );
-        }
-        const csrfToken=le_message.data.__xva.csrfToken;
-        obj.csrfToken=csrfToken;
-        /* console.log( 'csrfToken=' , csrfToken ); */
-        const method="POST";
-        const options={ method  ,"headers" : {"X-CSRF-Token" : csrfToken || ""} ,"credentials" : "include"};
-        if(method !== "GET" && obj !== undefined){
-            options.headers["Content-Type"]="application/json";
-            options.body=JSON.stringify( obj );
-        }
-        /* console.log( 'options=' , options ); */
-        let res=null;
-        try{
-            res=await fetch( this.#url_du_site , options );
-        }catch(e0){
-            postMessage( {"__xac" : 'action(affiche_erreur())' ,"__xst" : __xer ,"__xva" : {} ,"__xsi" : {0 : ['Le serveur est arrété']}} );
-            return;
-        }
-        /* console.log( 'res=' , res ); */
-        const text=await res.text();
-        let json;
-        try{
-            json=JSON.parse( text );
+        if(initialisation === false){
             if(this.__deverminage === 2){
-                console.log( 'au retour dans le worker, json=' , json );
+                console.log( 'dans worker on envoie obj=' , obj );
             }
-            if(json.__xst === __xer){
-                let trouve=false;
-                for(let i in json.__xsi['0']){
-                    trouve=true;
-                }
-                for(let i in json.__xsi['2']){
-                    trouve=true;
-                }
-                for(let i in json.__xsi['4']){
-                    trouve=true;
-                }
-                if(trouve === false){
-                    json.__xsi[__xer]={0 : 'Le message reçu du serveur est en erreur'};
-                }
-            }
-            postMessage( json );
-        }catch{
-            json=text;
-            postMessage( {"__xac" : 'action(affiche_erreur())' ,"__xst" : __xer ,"__xme" : text ,"__xva" : {}} );
+            this.ma_connexion_socket.send( JSON.stringify( obj ) );
         }
         return;
     }

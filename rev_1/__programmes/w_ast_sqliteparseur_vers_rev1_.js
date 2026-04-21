@@ -17,7 +17,7 @@ const NBESPACESREV=3;
   =====================================================================================================================
 */
 class w_ast_sqliteparseur_vers_rev1{
-    __gi1=null;
+    __ig1=null;
     #nom_de_la_variable='';
     #options_traitement=null;
     __m_rev1=null;
@@ -30,10 +30,10 @@ class w_ast_sqliteparseur_vers_rev1{
       =============================================================================================================
       le seul argument est pour l'instant le nom de la variable qui est déclarée
     */
-    constructor( nom_de_la_variable , __gi1 ){
-        this.__gi1=__gi1;
+    constructor( nom_de_la_variable , __ig1 ){
+        this.__ig1=__ig1;
         this.#nom_de_la_variable=nom_de_la_variable;
-        this.__m_rev1=this.__gi1.__rev1;
+        this.__m_rev1=this.__ig1.__rev1;
     }
     /*
       =============================================================================================================

@@ -50,8 +50,8 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 ('498','_connexion1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
 ('499','_connexion1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','1'),
 ('500','__fnt1_.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('501','__gi1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('502','__gi1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','1'),
+('501','__ig1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+('502','__ig1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','1'),
 ('503','__rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
 ('504','__worker1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
 ('505','__serveur.js',NULL,NULL,'0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
@@ -6925,7 +6925,7 @@ vérifier que les sql_iii() ne contiennent pas une requête à effacer
 Exemple pour 110
 
 appelf(
-   element(this.__gi1),
+   element(this.__ig1),
    nomf(sql_iii),
    p(110),
    p(criteres110),
@@ -7029,9 +7029,9 @@ SELECT * FROM employees;
 ('359','1','a+=/**/''b'';','99','2026-01-30 15:36:08.199','2026-01-30 09:26:23.689','0','00_00_00'),
 ('360','1','virer chx_dossier_id_basedd','99','2026-01-30 13:14:00.570','2026-01-30 09:44:51.869','0','00_00_00'),
 ('361','1','virer les anciens e-c-h-o php','99','2026-01-30 13:55:51.717','2026-01-30 10:08:12.036','0','00_00_00'),
-('362','1','mettre les messages dans les __gi1
+('362','1','mettre les messages dans les __ig1
 donnees_retournees[__xsi] donnees_retournees.__xsi
-this.__gi1.__xsi
+this.__ig1.__xsi
 
 ','99','2026-02-03 07:48:39.136','2026-02-02 10:03:14.569','0','00_00_00'),
 ('363','1','distinguer les messages techniques et les messages utilisateur','16','2026-02-03 07:48:50.531','2026-02-03 07:48:50.531','0','00_00_00'),
@@ -7050,8 +7050,8 @@ OK','99','2026-02-05 14:05:52.153','2026-02-05 11:31:01.404','0','00_00_00'),
 ('372','1','nouveau projet 3','7','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0','00_00_00'),
 ('373','1','renuméroter un dossier','99','2026-02-07 10:15:05.889','2026-02-07 07:52:40.873','0','00_00_00'),
 ('374','1','changer
-        this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet
-        this.__gi1.ouvrir_bdd( options_generales.base_de_travail
+        this.__ig1.ouvrir_bdd( donnees_retournees.chi_id_projet
+        this.__ig1.ouvrir_bdd( options_generales.base_de_travail
 ','99','2026-02-07 17:14:06.339','2026-02-07 10:19:42.744','0','00_00_00'),
 ('375','1','ajouter un drapeau actif aux utilisateurs','99','2026-02-14 10:50:45.983','2026-02-08 09:09:10.418','0','00_00_00'),
 ('376','1','ajouter le nombre de connexions','99','2026-02-20 15:36:29.279','2026-02-09 11:10:39.046','0','00_00_00'),
@@ -7330,17 +7330,17 @@ CREATE TABLE `rpps` (
 dans le programme rpps
 
     async integrer_les_lignes_du_csv(tableau_des_lignes_a_integrer , donnees_retournees , __db1 ){
-//        this.__gi1.ma_trace1(''tableau_des_lignes_a_integrer='',tableau_des_lignes_a_integrer);
+//        this.__ig1.ma_trace1(''tableau_des_lignes_a_integrer='',tableau_des_lignes_a_integrer);
         let tab_pour_sql=[];
         for( let i = 0; i<tableau_des_lignes_a_integrer.length;i++){
           let ar1=[tableau_des_lignes_a_integrer[i][0]]
           let ar2=tableau_des_lignes_a_integrer[i][1].split(''|'');
           tab_pour_sql.push(ar1.concat(ar2));
         }
-//        this.__gi1.ma_trace1(''tab_pour_sql='',tab_pour_sql);
+//        this.__ig1.ma_trace1(''tab_pour_sql='',tab_pour_sql);
          
-        let tt165=await this.__gi1.sql_iii( 165 , tab_pour_sql , donnees_retournees , __db1 );
-        // this.__gi1.ma_trace1(''tt165='',tt165);
+        let tt165=await this.__ig1.sql_iii( 165 , tab_pour_sql , donnees_retournees , __db1 );
+        // this.__ig1.ma_trace1(''tt165='',tt165);
         return tt165;
          
          
@@ -7353,7 +7353,7 @@ dans le programme rpps
      
      
         let debut=performance.now();
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
      
      
         let buf_cumule = [];
@@ -7389,7 +7389,7 @@ dans le programme rpps
                             buf_cumule = [];
                             continue
                         }
-//                        this.__gi1.ma_trace1(''nombre_d_entrees=''+nombre_d_entrees+'',nombre_max_d_entrees=''+nombre_max_d_entrees );
+//                        this.__ig1.ma_trace1(''nombre_d_entrees=''+nombre_d_entrees+'',nombre_max_d_entrees=''+nombre_max_d_entrees );
                         if( nombre_max_d_entrees > 0 && nombre_d_entrees >= nombre_max_d_entrees ){
                             buf_cumule = [];
                             continuer=false;
@@ -7412,7 +7412,7 @@ dans le programme rpps
                             if(ret[__xst] !== __xsu){
                                 await __db1.close();
                                 await file.close()
-                                this.__gi1.__xsi[__xer].push( '' ['' + this.__gi1.nl2() );
+                                this.__ig1.__xsi[__xer].push( '' ['' + this.__ig1.nl2() );
                                 donnees_retournees.__xst=__xer;
                                 return({"__xst" : __xer});
                             }
@@ -7442,7 +7442,7 @@ dans le programme rpps
             console.log('' au final, buf_cumule='' + buf_cumule);
             buffer_temporaire=new Uint8Array(buf_cumule);
             texte_du_buffer = new TextDecoder().decode(buffer_temporaire);  // "hello world"
-            this.__gi1.ma_trace1(''= = = = = = =final texte_du_buffer="''+texte_du_buffer+''"'');
+            this.__ig1.ma_trace1(''= = = = = = =final texte_du_buffer="''+texte_du_buffer+''"'');
             tableau_des_lignes_a_integrer.push(texte_du_buffer);
         }
         await this.integrer_les_lignes_du_csv(tableau_des_lignes_a_integrer , donnees_retournees , __db1 );
@@ -7450,7 +7450,7 @@ dans le programme rpps
         tableau_des_lignes_a_integrer=[]
         await file.close()
         let fin=performance.now();
-        this.__gi1.ma_trace1(''temps=''+parseInt( (fin-debut)/1000 , 10));
+        this.__ig1.ma_trace1(''temps=''+parseInt( (fin-debut)/1000 , 10));
         
      
  
@@ -7462,12 +7462,12 @@ dans le programme rpps
     */
     async vider_la_table( mat , d , donnees_recues , donnees_retournees , options_generales ){
 
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
 
-        let tt168=await this.__gi1.sql_iii(166 , {} , donnees_retournees , __db1 );
+        let tt168=await this.__ig1.sql_iii(166 , {} , donnees_retournees , __db1 );
         /*  */
         if(tt168[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( ''erreur lors de le suppression ['' + this.__gi1.nl2() + '']'' );
+            this.__ig1.__xsi[__xer].push( ''erreur lors de le suppression ['' + this.__ig1.nl2() + '']'' );
             return({"__xst" : __xer});
         }
         await __db1.exec( ''VACUUM;'' );
@@ -7522,8 +7522,8 @@ dans le programme rpps
             }
         }
         let nom_complet_du_fichier=''./__fichiers_generes/'' + nom_du_fichier;
-        if(!await this.__gi1.is_file(nom_complet_du_fichier)){
-            this.__gi1.__xsi[__xer].push( '' le fichier .zip n\''a pas été trouvé ['' + this.__gi1.nl2() + '']'' );
+        if(!await this.__ig1.is_file(nom_complet_du_fichier)){
+            this.__ig1.__xsi[__xer].push( '' le fichier .zip n\''a pas été trouvé ['' + this.__ig1.nl2() + '']'' );
             donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
@@ -7531,9 +7531,9 @@ dans le programme rpps
             /* 
               mettre un await pour attendre le dézip effectif 
             */
-            this.__gi1.__fnt1.dezipper_un_fichier_dans_un_repertoire(nom_complet_du_fichier , ''./__fichiers_generes/'');
+            this.__ig1.__fnt1.dezipper_un_fichier_dans_un_repertoire(nom_complet_du_fichier , ''./__fichiers_generes/'');
         }catch(e){
-            this.__gi1.ma_trace1(''e='',e);
+            this.__ig1.ma_trace1(''e='',e);
         }
         
         
@@ -8075,17 +8075,17 @@ SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.
 */','99','2026-03-31 11:04:34.792','2026-03-31 11:04:34.792','0','00_00_00'),
 ('426','1','mettre la table des tâches en table virtuelle','80','2026-03-31 11:05:02.000','2026-03-31 11:05:02.000','0','00_00_00'),
 ('427','1','utiliser 
-this.__gi1.affiche_sous_fenetre1(
+this.__ig1.affiche_sous_fenetre1(
 à la place de 
 vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48.543','0','00_00_00'),
-('428','1','mettre la sous_liste dans __gi1_c
+('428','1','mettre la sous_liste dans __ig1_c
 
     /*
       =============================================================================================================
     */
     sous_liste1( mat , d , le_message_du_serveur=null ){
         this.fonction_liste=''sous_liste1'';
-        let ret=this.__gi1.sous_liste_generique1(mat , d , le_message_du_serveur , this);
+        let ret=this.__ig1.sous_liste_generique1(mat , d , le_message_du_serveur , this);
         if(ret.__xst !== __xsu){
             return({"__xst" : __xsu});
         }

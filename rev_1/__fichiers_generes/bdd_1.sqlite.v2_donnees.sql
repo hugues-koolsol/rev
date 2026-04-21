@@ -31,7 +31,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$Cu/NQdDqRJfTU1pbWvZlBOqdhS6p8CBUnwyIGYKqynJmySjQ87spG',NULL,'1084','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$FthOoiiFXU5oM89teJRgjea226qJzSvDf6wWZq3xQr2VP5a/8kXpm',NULL,'1107','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$HfZR8iSiEWOvB9sBh5wxA.qHNbisKhr4oovsPtAiIPZiDW3eHPp5a',NULL,'9','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -39,86 +39,83 @@ INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utili
 /*========================================================================================================================*/
 
 /*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 */
-INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ,  che_contient_version_source ,  che_autorisation_globale_source ) VALUES
-('489','dossiers1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('490','dossiers1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('492','_menu_arbre1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('493','projets1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('494','projets1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('495','taches1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('496','taches1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('498','_connexion1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('499','_connexion1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','1'),
-('500','__fnt1_.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('501','__gi1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('502','__gi1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','1'),
-('503','__rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('504','__worker1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('505','__serveur.js',NULL,NULL,'0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('506','w_ast_js_vers_rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('507','w_ast_phpparseur_vers_rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('508','w_ast_postcss_vers_rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('509','w_ast_sqliteparseur_vers_rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('511','w_html_vers_rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('512','w_rev_vers_css1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('513','w_rev_vers_html1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('514','w_rev_vers_js1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('515','w_rev_vers_php1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('516','w_rev_vers_sql1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('517','w_rev_vers_txt1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('518','x_ecran_rev_vers_css1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('519','x_ecran_rev_vers_html1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('520','x_ecran_rev_vers_js1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('521','x_ecran_rev_vers_matrice1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('522','x_ecran_rev_vers_php1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('523','x_ecran_rev_vers_sql1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('524','x_ecran_rev_vers_txt1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('525','sources1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('526','sources1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('527','acorn1_c.js',NULL,NULL,'0','7',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('528','php_parser1_c.js',NULL,NULL,'0','7',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('529','postcss1_c.js',NULL,NULL,'0','7',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('530','sqlite_parser1_c.js',NULL,NULL,'0','7',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('540','__serveur.ps1',NULL,'','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('541','bdds1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('542','bdds1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('544','genres1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('545','genres1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('546','_tri_arbre1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('547','requetes1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('548','requetes1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('549','v_svg_bdd1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('550','v_svg_bdd1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('551','x_ecran_concevoir_une_requete1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('552','x_ecran_concevoir_une_requete1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('553','x_ecran_generer_programmes1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('554','x_ecran_generer_programmes1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('555','_developpement1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('556','metiers1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('557','metiers1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('558','acces1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('560','acces1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('561','autorisations1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('562','autorisations1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('563','menus1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('564','menus1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('565','groupes1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('566','groupes1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('567','x_ecran_coordonnees1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('568','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('569','utilisateurs1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('570','utilisateurs1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('571','x_ecran_source_vers_programme1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('572','x_ecran_generer_souches1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('573','revs1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('574','revs1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('576','x_ecran_generer_souches1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('577','travaux1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('578','travaux1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('579','__cron1.js',NULL,'','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('580','__cron1.ps1',NULL,'','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('581','_rev_de_sql_vers_js1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('582','__cr1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ,  che_autorisation_globale_source ) VALUES
+('489','dossiers1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('490','dossiers1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('492','_menu_arbre1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('493','projets1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('494','projets1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('495','taches1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('496','taches1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('498','_connexion1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('499','_connexion1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('500','__fnt1_.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('501','__ig1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('502','__ig1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('503','__rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('504','__worker1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('505','__serveur.js',NULL,NULL,'0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('506','w_ast_js_vers_rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('507','w_ast_phpparseur_vers_rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('508','w_ast_postcss_vers_rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('509','w_ast_sqliteparseur_vers_rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('511','w_html_vers_rev1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('512','w_rev_vers_css1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('513','w_rev_vers_html1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('514','w_rev_vers_js1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('515','w_rev_vers_php1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('516','w_rev_vers_sql1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('517','w_rev_vers_txt1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('518','x_ecran_rev_vers_css1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('519','x_ecran_rev_vers_html1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('520','x_ecran_rev_vers_js1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('521','x_ecran_rev_vers_matrice1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('522','x_ecran_rev_vers_php1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('523','x_ecran_rev_vers_sql1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('524','x_ecran_rev_vers_txt1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('525','sources1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('526','sources1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('527','acorn1_c.js',NULL,NULL,'0','7',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('528','php_parser1_c.js',NULL,NULL,'0','7',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('529','postcss1_c.js',NULL,NULL,'0','7',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('530','sqlite_parser1_c.js',NULL,NULL,'0','7',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('540','__serveur.ps1',NULL,'','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('541','bdds1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('542','bdds1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('544','genres1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('545','genres1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('546','_tri_arbre1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('547','requetes1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('548','requetes1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('549','v_svg_bdd1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('550','v_svg_bdd1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('551','x_ecran_concevoir_une_requete1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('552','x_ecran_concevoir_une_requete1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('553','x_ecran_generer_programmes1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('554','x_ecran_generer_programmes1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('555','_developpement1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('556','metiers1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('557','metiers1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('558','acces1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('560','acces1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('561','autorisations1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('562','autorisations1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('563','menus1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('564','menus1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('565','groupes1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('566','groupes1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('567','x_ecran_coordonnees1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('568','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('569','utilisateurs1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('570','utilisateurs1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('571','x_ecran_source_vers_programme1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('572','x_ecran_generer_souches1_c.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('573','revs1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('574','revs1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('576','x_ecran_generer_souches1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('577','travaux1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('578','travaux1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('581','_rev_de_sql_vers_js1_.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
 ('584','1x1_blanc.png','texte(`00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
 00000010h 00 00 00 01 00 00 00 01--08 06 00 00 00 1f 15 c4  |        --        |
 00000020h 89 00 00 00 01 73 52 47--42 00 ae ce 1c e9 00 00  |     sRG--B       |
@@ -133,7 +130,7 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 00000040h 00 09 70 48 59 73 00 00--0e c2 00 00 0e c2 01 15  |  pHYs  --        |
 00000050h 28 4a 80 00 00 00 0d 49--44 41 54 18 57 63 f8 ff  |(J     I--DAT Wc  |
 00000060h ff ff 7f 00 09 fb 03 fd--05 43 45 ca 00 00 00 00  |        -- CE     |
-00000070h 49 45 4e 44 ae 42 60 82--                         |IEND B` --|','1','8','120 octets = 70h=112d + 8 caracères de la dernière ligne = 120','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+00000070h 49 45 4e 44 ae 42 60 82--                         |IEND B` --|','1','8','120 octets = 70h=112d + 8 caracères de la dernière ligne = 120','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
 ('585','1x1_rouge.png','texte(`00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
 00000010h 00 00 00 01 00 00 00 01--08 06 00 00 00 1f 15 c4  |        --        |
 00000020h 89 00 00 00 01 73 52 47--42 00 ae ce 1c e9 00 00  |     sRG--B       |
@@ -148,12 +145,12 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 00000040h 00 09 70 48 59 73 00 00--0e c4 00 00 0e c4 01 95  |  pHYs  --        |
 00000050h 2b 0e 1b 00 00 00 0d 49--44 41 54 18 57 63 78 2b  |+      I--DAT Wcx+|
 00000060h a3 f2 1f 00 05 54 02 2d--c6 3d 92 9d 00 00 00 00  |     T --- =      |
-00000070h 49 45 4e 44 ae 42 60 82--                         |IEND B` --|','1','8','120 octets','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+00000070h 49 45 4e 44 ae 42 60 82--                         |IEND B` --|','1','8','120 octets','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
 ('586','1x1_blanc.gif','texte(`00000000h 47 49 46 38 37 61 01 00--01 00 88 00 00 ff ff ff  |GIF87a  --        |
 00000010h 00 00 00 2c 00 00 00 00--01 00 01 00 00 02 02 44  |   ,    --       D|
 00000020h 01 00 3b                                          |  ;|`)','00000000h 47 49 46 38 37 61 01 00--01 00 88 00 00 ff ff ff  |GIF87a  --        |
 00000010h 00 00 00 2c 00 00 00 00--01 00 01 00 00 02 02 44  |   ,    --       D|
-00000020h 01 00 3b                                          |  ;|','1','8','35 octets','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+00000020h 01 00 3b                                          |  ;|','1','8','35 octets','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
 ('587','1x1_blanc_2.png','texte(`00000000h 89 50 4e 47 0d 0a 1a 0a--00 00 00 0d 49 48 44 52  | PNG    --    IHDR|
 00000010h 00 00 00 01 00 00 00 01--08 02 00 00 00 90 77 53  |        --      wS|
 00000020h de 00 00 00 09 70 48 59--73 00 00 0e c3 00 00 0e  |     pHY--s       |
@@ -164,7 +161,7 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 00000020h de 00 00 00 09 70 48 59--73 00 00 0e c3 00 00 0e  |     pHY--s       |
 00000030h c3 01 c7 6f a8 64 00 00--00 0c 49 44 41 54 78 da  |   o d  --  IDATx |
 00000040h 63 f8 ff ff 3f 00 05 fe--02 fe 33 12 95 14 00 00  |c   ?   --  3     |
-00000050h 00 00 49 45 4e 44 ae 42--60 82                    |  IEND B--` |','1','8','90 octets ( 50h = 80d , 80 + 10 caractères de la dernière ligne )','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+00000050h 00 00 49 45 4e 44 ae 42--60 82                    |  IEND B--` |','1','8','90 octets ( 50h = 80d , 80 + 10 caractères de la dernière ligne )','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
 ('588','1x1_blanc.jpg','texte(`00000000h ff d8 ff e0 00 10 4a 46--49 46 00 01 01 01 00 48  |      JF--IF     H|
 00000010h 00 48 00 00 ff db 00 43--00 01 01 01 01 01 01 01  | H     C--        |
 00000020h 01 01 01 01 01 01 01 01--01 01 01 01 01 01 01 01  |        --        |
@@ -243,11 +240,11 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 00000240h c5 c6 c7 c8 c9 ca d2 d3--d4 d5 d6 d7 d8 d9 da e2  |        --        |
 00000250h e3 e4 e5 e6 e7 e8 e9 ea--f2 f3 f4 f5 f6 f7 f8 f9  |        --        |
 00000260h fa ff da 00 0c 03 01 00--02 11 03 11 00 3f 00 fe  |        --     ?  |
-00000270h fe 28 a2 8a 00 ff d9                              | (     |','1','8','631 octets','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
+00000270h fe 28 a2 8a 00 ff d9                              | (     |','1','8','631 octets','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
 ('589','test.txt','texte(`00000000h 30 31 32 33 34 35 36 37--41 42 43 44 45 46 47 48  |ABCDEFGH--01234567|
 00000010h 61 62 63 64 65 66 67 68--5f 2e                    |abcdefgh--_.|`)','00000000h 30 31 32 33 34 35 36 37--41 42 43 44 45 46 47 48  |01234567--ABCDEFGH|
-00000010h 61 62 63 64 65 66 67 68--5f 2e                    |abcdefgh--_.|','1','8',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0'),
-('590','__zip1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0');
+00000010h 61 62 63 64 65 66 67 68--5f 2e                    |abcdefgh--_.|','1','8',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('590','__zip1_s.js',NULL,'','0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -260,7 +257,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(0.5,8.5))
+   transform_base_sur_svg(translate(9.5,11.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_revs''),
@@ -665,7 +662,7 @@ créer_table(
       distinction_pour_liste(''liste des accès''),
       distinction_pour_isad(''d\''un accès''),
       fonctions_spéciales1(''ne_pas_supprimer_id_un(2)''),
-      transform_base_sur_svg(translate(349,63))
+      transform_base_sur_svg(translate(341,56))
    ),
    champs(
       champ(
@@ -1118,22 +1115,6 @@ créer_table(
             typologie(chi),
             genre(10),
             masquer_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''che_contient_version_source''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(false),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''che_contient_version_source''),
-            nom_bref_du_champ(''contient version''),
-            abrege_du_champ(''contient version''),
-            typologie(che),
-            genre(5)
          )
       ),
       champ(
@@ -3013,7 +2994,6 @@ WHERE (`chi_id_tache` = :chi_id_tache
       champ(`T0`,`cht_genere_source`),
       champ(`T1`,`chp_nom_dossier`),
       champ(`T0`,`che_binaire_source`),
-      champ(`T0`,`che_contient_version_source`),
       champ(`T0`,`che_autorisation_globale_source`)
    ),
    provenance(
@@ -3035,7 +3015,6 @@ WHERE (`chi_id_tache` = :chi_id_tache
          egal(champ(`T0`,`che_binaire_source`),:T0_che_binaire_source),
          egal(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source),
          comme(champ(`T1`,`chp_nom_dossier`),:T1_chp_nom_dossier),
-         egal(champ(`T0`,`che_contient_version_source`),:T0_che_contient_version_source),
          egal(champ(`T0`,`che_autorisation_globale_source`),:T0_che_autorisation_globale_source)
       )
    ),
@@ -3045,7 +3024,7 @@ WHERE (`chi_id_tache` = :chi_id_tache
    )
 )  ','SELECT 
 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-`T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
+`T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source`
  FROM b1.tbl_sources T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
 
@@ -3056,13 +3035,11 @@ WHERE ( /* */ `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
    AND `T0`.`che_binaire_source` = :T0_che_binaire_source
    AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
    AND `T1`.`chp_nom_dossier` LIKE :T1_chp_nom_dossier
-   AND `T0`.`che_contient_version_source` = :T0_che_contient_version_source
    AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source) 
 ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
 ('116','sources','select','sélectionner(
-
    valeurs(
       champ(`T0`,`chi_id_source`),
       champ(`T0`,`chx_dossier_id_source`),
@@ -3071,7 +3048,6 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`cht_rev_source`),
       champ(`T0`,`cht_genere_source`),
       champ(`T0`,`che_binaire_source`),
-      champ(`T0`,`che_contient_version_source`),
       champ(`T0`,`che_autorisation_globale_source`),
       champ(`T1`,`chp_nom_dossier`)
    ),
@@ -3092,7 +3068,7 @@ LIMIT :quantitee OFFSET :debut
    )
 )  ','SELECT 
 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-`T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+`T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
  FROM b1.tbl_sources T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
 
@@ -3129,7 +3105,6 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source)
     :che_binaire_source
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
 ('118','sources','delete','supprimer(
-
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_sources,base(b1)))
@@ -4283,7 +4258,6 @@ WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
     :chd__dtc_dossier
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_dossiers'),
 ('308','sources','update','modifier(
-
    valeurs(
       affecte(champ(`chp_nom_source`),:n_chp_nom_source),
       affecte(champ(`che_binaire_source`),:n_che_binaire_source),
@@ -4291,12 +4265,11 @@ WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
       affecte(champ(`cht_rev_source`),:n_cht_rev_source),
       affecte(champ(`cht_genere_source`),:n_cht_genere_source),
       affecte(champ(`cht_commentaire_source`),:n_cht_commentaire_source),
-      affecte(champ(`che_contient_version_source`),:n_che_contient_version_source),
       affecte(champ(`che_autorisation_globale_source`),:n_che_autorisation_globale_source)
    ),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_sources,base(b1)))
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
       )
    ),
    conditions(egal(champ(`chi_id_source`),:c_chi_id_source))
@@ -4307,7 +4280,6 @@ WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
    `cht_rev_source` = :n_cht_rev_source , 
    `cht_genere_source` = :n_cht_genere_source , 
    `cht_commentaire_source` = :n_cht_commentaire_source , 
-   `che_contient_version_source` = :n_che_contient_version_source , 
    `che_autorisation_globale_source` = :n_che_autorisation_globale_source
 WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
 ('310','sources','update','modifier(
@@ -4392,11 +4364,11 @@ WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','
          source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
       )
    ),
-   conditions(sup(champ(`T0`,`chi_id_projet`),2))
+   conditions(supegal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet))
 )  ','SELECT 
 `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
  FROM b1.tbl_projets T0
-WHERE `T0`.`chi_id_projet` > 2
+WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
 ('326','menus','select','sélectionner(
 
@@ -4990,20 +4962,6 @@ WHERE ( /* */ `T0`.`chi_id_rev` = :T0_chi_id_rev)
     :che_est_positif_genre , 
     :cht_particularités_genre
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
-('347','sources avec version','select','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_source`),champ(`T0`,`chp_nom_source`),champ(`T0`,`che_contient_version_source`),champ(`T0`,`chx_dossier_id_source`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`che_contient_version_source`),:T0_che_contient_version_source))
-)  ','SELECT 
-`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_contient_version_source` , `T0`.`chx_dossier_id_source`
- FROM b1.tbl_sources T0
-WHERE `T0`.`che_contient_version_source` = :T0_che_contient_version_source
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
 ('350','liste des requêtes','liste_ecran','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_requete`),
@@ -6210,7 +6168,7 @@ INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tac
 ('26','1','travaux en batch','99','2026-02-21 11:42:55.900','2000-01-01 00:00:00','0','00_00_00'),
 ('27','1','gérer les versions js css etc','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('28','1','profils de css','99','2025-11-07 11:00:18.094','2000-01-01 00:00:00','0','00_00_00'),
-('29','1','interface : astuces','15','2025-08-15 14:32:17.544','2000-01-01 00:00:00','1','00_00_00'),
+('29','1','interface : astuces','19','2025-08-15 14:32:17.544','2000-01-01 00:00:00','1','00_00_00'),
 ('30','1','CREATE UNIQUE INDEX texte_unique ON tbl_taches(chp_texte_tache);','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('31','1','sauvegarder la position dans la liste','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('33','1','sur mobile, ne pas faire de focus sur le premier champ','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -6275,7 +6233,7 @@ et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 0
 ('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
-('80','1','table des bugs','19','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
+('80','1','table des bugs','24','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('83','1','ajouter les champs 
@@ -6288,7 +6246,7 @@ dtc date technique de création','99','2000-01-01 00:00:00','2000-01-01 00:00:00
 ('87','1','gestion des dossiers pour les utilisateurs autres que 1','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('88','1','sortable pour svg','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('89','1','cliquer en dehors du "dialog" pour le fermer','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
-('90','1','dupliquer une table','20','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
+('90','1','dupliquer une table','25','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('91','1','remplacer cible par projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('92','1','quand on modifie le nom d''une table
 alors modifier aussi le nom_de_la_table_pour_l_index dans l''index','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -6383,7 +6341,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chd__dtm_tache`)
 flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4','00_00_00'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','18','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1','00_00_00'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','23','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1','00_00_00'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -6423,7 +6381,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','17','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1','00_00_00'),
+comme3(xxx)','22','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1','00_00_00'),
 ('170','1','initialiser ecran standard d''une table','99','2026-02-21 11:43:00.445','2025-06-26 15:40:44.916','0','00_00_00'),
 ('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1','00_00_00'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1','00_00_00'),
@@ -6589,10 +6547,10 @@ et garder nom_bref_du_champ','99','2025-11-07 13:35:22.305','2025-08-28 17:42:38
 
 che_est_tsc_genre
 che_est_tsm_genre','99','2025-09-03 15:51:07.883','2025-09-01 12:50:05.454','0','00_00_00'),
-('244','1','ajouter un nom autorisation construit automatiquement pour déterminer le libelle lien','13','2025-09-04 09:38:08.890','2025-09-04 09:38:08.890','0','00_00_00'),
+('244','1','ajouter un nom autorisation construit automatiquement pour déterminer le libelle lien','17','2025-09-04 09:38:08.890','2025-09-04 09:38:08.890','0','00_00_00'),
 ('246','1','ajouter un meta libelle lien','99','2025-09-04 17:25:45.403','2025-09-04 10:47:55.252','0','00_00_00'),
 ('247','1','ajouter les tests sur les editions/créations de champs','99','2025-11-07 10:58:08.476','2025-09-04 17:26:41.178','0','00_00_00'),
-('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','14','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0','00_00_00'),
+('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','18','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0','00_00_00'),
 ('249','1','écran création genre
 
 insérer(
@@ -6636,10 +6594,10 @@ $a= ''-9223372036854775807'' < ''-9223372036854775808'';
 
 9 223 372 036 854 775 807
   999 999 999 999 999 999
-1 000 000 000 000 000 000','11','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0','00_00_00'),
+1 000 000 000 000 000 000','15','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0','00_00_00'),
 ('257','1','traiter le integer(2) pour priorité','99','2025-09-09 10:22:31.674','2025-09-06 16:13:30.347','0','00_00_00'),
 ('258','1','est_utilisateur => est_session','99','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0','00_00_00'),
-('259','1','ajouter positif dans les genres INTEGER','10','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0','00_00_00'),
+('259','1','ajouter positif dans les genres INTEGER','14','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0','00_00_00'),
 ('260','1','gérer "mes tâches" avec valeur de session','99','2025-11-05 07:55:51.279','2025-09-09 13:24:16.968','0','00_00_00'),
 ('261','1','générer les requêtes souches','80','2025-12-21 10:24:24.144','2025-09-09 16:03:18.381','0','00_00_00'),
 ('262','1','','','2025-09-24 17:40:27.284','2025-09-24 17:40:27.284','0','00_00_00'),
@@ -6781,7 +6739,7 @@ https://mdn.github.io/dom-examples/popover-api/nested-popovers/','99','2025-11-0
 ','80','2025-11-02 10:31:29.357','2025-11-02 10:31:29.357','0','00_00_00'),
 ('300','1','dans le projet 3 "les tâches " voir le lien vers l''utilisateur','99','2025-11-04 16:34:45.472','2025-11-04 10:08:45.737','0','00_00_00'),
 ('301','1','taille de la sous fenêtre','99','2025-11-04 11:53:47.354','2025-11-04 11:39:50.934','0','00_00_00'),
-('302','1','pouvoir changer l''utilisateur courant','9','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0','00_00_00'),
+('302','1','pouvoir changer l''utilisateur courant','13','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0','00_00_00'),
 ('303','1','commentaire
 abrégé
 éclaircissement
@@ -6895,7 +6853,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0','00_00_00'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','8','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0','00_00_00'),
+','12','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0','00_00_00'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0','00_00_00'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0','00_00_00'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -6918,7 +6876,7 @@ vérifier que les sql_iii() ne contiennent pas une requête à effacer
 Exemple pour 110
 
 appelf(
-   element(this.__gi1),
+   element(this.__ig1),
    nomf(sql_iii),
    p(110),
    p(criteres110),
@@ -7022,12 +6980,12 @@ SELECT * FROM employees;
 ('359','1','a+=/**/''b'';','99','2026-01-30 15:36:08.199','2026-01-30 09:26:23.689','0','00_00_00'),
 ('360','1','virer chx_dossier_id_basedd','99','2026-01-30 13:14:00.570','2026-01-30 09:44:51.869','0','00_00_00'),
 ('361','1','virer les anciens e-c-h-o php','99','2026-01-30 13:55:51.717','2026-01-30 10:08:12.036','0','00_00_00'),
-('362','1','mettre les messages dans les __gi1
+('362','1','mettre les messages dans les __ig1
 donnees_retournees[__xsi] donnees_retournees.__xsi
-this.__gi1.__xsi
+this.__ig1.__xsi
 
 ','99','2026-02-03 07:48:39.136','2026-02-02 10:03:14.569','0','00_00_00'),
-('363','1','distinguer les messages techniques et les messages utilisateur','16','2026-02-03 07:48:50.531','2026-02-03 07:48:50.531','0','00_00_00'),
+('363','1','distinguer les messages techniques et les messages utilisateur','20','2026-02-03 07:48:50.531','2026-02-03 07:48:50.531','0','00_00_00'),
 ('364','1','supprimer tous les jobs terminés','99','2026-02-03 10:16:18.326','2026-02-03 07:49:32.733','0','00_00_00'),
 ('365','1','pour les projets autres que 1, 
 mettre le rev du source en base lors de la compilation cron','99','2026-02-03 12:39:32.101','2026-02-03 10:17:57.068','0','00_00_00'),
@@ -7040,11 +6998,11 @@ Reponse : il falait utiliser le genre dtm à la place du genre dtc','99','2026-0
 ('370','1','utiliser le nouveau module commun pour génération des js sql','99','2026-02-06 08:57:40.928','2026-02-05 08:22:08.734','0','00_00_00'),
 ('371','1','compilation de acorn dans rev_2
 OK','99','2026-02-05 14:05:52.153','2026-02-05 11:31:01.404','0','00_00_00'),
-('372','1','nouveau projet 3','7','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0','00_00_00'),
+('372','1','nouveau projet 3','11','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0','00_00_00'),
 ('373','1','renuméroter un dossier','99','2026-02-07 10:15:05.889','2026-02-07 07:52:40.873','0','00_00_00'),
 ('374','1','changer
-        this.__gi1.ouvrir_bdd( donnees_retournees.chi_id_projet
-        this.__gi1.ouvrir_bdd( options_generales.base_de_travail
+        this.__ig1.ouvrir_bdd( donnees_retournees.chi_id_projet
+        this.__ig1.ouvrir_bdd( options_generales.base_de_travail
 ','99','2026-02-07 17:14:06.339','2026-02-07 10:19:42.744','0','00_00_00'),
 ('375','1','ajouter un drapeau actif aux utilisateurs','99','2026-02-14 10:50:45.983','2026-02-08 09:09:10.418','0','00_00_00'),
 ('376','1','ajouter le nombre de connexions','99','2026-02-20 15:36:29.279','2026-02-09 11:10:39.046','0','00_00_00'),
@@ -7103,7 +7061,7 @@ chx_dossier_programmes_projet','99','2026-02-23 13:50:51.659','2026-02-23 12:06:
 00000060  ff 3f 00 05 fe 02 fe a7  35 81 84 00 00 00 00 49  |.?......  5......I|
 00000070  45 4e 44 ae 42 60 82                              |END.B`.           |','99','2026-02-28 08:52:14.641','2026-02-27 12:18:44.029','0','00_00_00'),
 ('399','1','téléverser un fichier','99','2026-03-01 12:08:30.841','2026-02-28 08:54:06.360','0','00_00_00'),
-('400','1','nouveau projet 4','6','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0','00_00_00'),
+('400','1','nouveau projet 4','10','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0','00_00_00'),
 ('401','1','virer
 chx_dossier_programmes_projet
 chx_dossier_requetes_projet
@@ -7251,287 +7209,10 @@ CREATE TABLE `rpps` (
 
 );','99','2026-03-14 10:07:57.037','2026-03-09 13:57:44.311','0','00_00_00'),
 ('410','1','dans __fnt1 :
-
-
-
-    /*
-      =============================================================================================================
-    */
-    async dezipper_un_fichier_dans_un_repertoire( chemin_fichier_zip , repertoire_en_sortie ){
-        /* Convertit un Deno.FsFile en WritableStream */
-        function fileWritableStream( file ){
-            return(new WritableStream( {
-                     write( chunk ){
-                        return(file.write( chunk ));
-                    }  ,
-                    
-                     close(){
-                        file.close();
-                    }  ,
-                    
-                     abort(){
-                        file.close();
-                    } 
-                
-                } ));
-        }
-        /* Ouvre le ZIP en streaming */
-        const zipFile=await Deno.open( chemin_fichier_zip , {"read" : true} );
-        const zipStream=zipFile.readable;
-        /* Initialise zip.js avec un stream */
-        let reader=null;
-        try{
-            reader=new ZipReader( zipStream );
-        }catch(e){
-            throw new Error(e.stack);
-            return;
-        }
-        let entries=null;
-        try{
-            entries=await reader.getEntries();
-        }catch(e){
-            throw new Error(e.stack);
-            return;
-        }
-        for(const entry of entries){
-            const fullPath=repertoire_en_sortie + ''/'' + entry.filename;
-            if(entry.directory){
-                await Deno.mkdir( fullPath , {"recursive" : true} );
-                continue;
-            }
-            /* Crée les dossiers si nécessaire */
-            const dir=fullPath.substring( 0 , fullPath.lastIndexOf( "/" ) );
-            await Deno.mkdir( dir , {"recursive" : true} );
-            /* Ouvre le fichier de sortie */
-            const outFile=await Deno.open( fullPath , {"write" : true ,"create" : true ,"truncate" : true} );
-            /* Transforme le fichier en WritableStream */
-            const writable=fileWritableStream( outFile );
-            /* Extraction en streaming */
-            await entry.getData?.( writable );
-            console.log( "Extracted:" , entry.filename );
-        }
-        try{
-            await reader.close();
-        } catch {}
-        try{
-            zipFile.close();
-        } catch {}
-    }
-
-
-
-dans le programme rpps
-
-    async integrer_les_lignes_du_csv(tableau_des_lignes_a_integrer , donnees_retournees , __db1 ){
-//        this.__gi1.ma_trace1(''tableau_des_lignes_a_integrer='',tableau_des_lignes_a_integrer);
-        let tab_pour_sql=[];
-        for( let i = 0; i<tableau_des_lignes_a_integrer.length;i++){
-          let ar1=[tableau_des_lignes_a_integrer[i][0]]
-          let ar2=tableau_des_lignes_a_integrer[i][1].split(''|'');
-          tab_pour_sql.push(ar1.concat(ar2));
-        }
-//        this.__gi1.ma_trace1(''tab_pour_sql='',tab_pour_sql);
-         
-        let tt165=await this.__gi1.sql_iii( 165 , tab_pour_sql , donnees_retournees , __db1 );
-        // this.__gi1.ma_trace1(''tt165='',tt165);
-        return tt165;
-         
-         
-         
-    }
-    /*
-      =============================================================================================================
-    */
-    async importer_un_csv_methode_01( chemin_du_fichier , sauter_n_enregistrements=1 , nombre_max_d_entrees=0 , donnees_retournees , options_generales ){
-     
-     
-        let debut=performance.now();
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-     
-     
-        let buf_cumule = [];
-        let texte_du_buffer = '''';
-        let buffer_temporaire=null;
-        
-        let numero_de_ligne=0;
-        let nombre_d_entrees=0;
-        let tableau_des_lignes_a_integrer=[];
-        
-        let file = await Deno.open(chemin_du_fichier, { read: true });
-        const taille_du_buffer=10000;
-        let ligne_du_csv='''';
-        const fileInfo = await file.stat();
-        if (fileInfo.isFile) {
-            /*
-              on lit par paquets de taille_du_buffer octets
-            */
-            let continuer=true;
-            while(continuer === true){
-                let buf = new Uint8Array(taille_du_buffer);
-                let numberOfBytesRead = await file.readSync(buf);
-                if(numberOfBytesRead===null){
-                    continuer=false;
-                    break;
-                }
-                for(let i=0;i<taille_du_buffer && continuer === true ;i++){
-                    if( buf[i] === 0 ){
-                        break;
-                    }else if( buf[i] === 10 ){
-                        numero_de_ligne++;
-                        if( numero_de_ligne <= sauter_n_enregistrements ){
-                            buf_cumule = [];
-                            continue
-                        }
-//                        this.__gi1.ma_trace1(''nombre_d_entrees=''+nombre_d_entrees+'',nombre_max_d_entrees=''+nombre_max_d_entrees );
-                        if( nombre_max_d_entrees > 0 && nombre_d_entrees >= nombre_max_d_entrees ){
-                            buf_cumule = [];
-                            continuer=false;
-                            break;
-                        }
-                        nombre_d_entrees++;
-                        
-                        buffer_temporaire=new Uint8Array(buf_cumule);
-                        texte_du_buffer = new TextDecoder().decode(buffer_temporaire);  // "hello world"
-                        /*
-                          si on a un csv avec du texte délimité par ", ( qui peut contenir aussi \" dans le texte )
-                          et qui contient des CRLF, il faut ajouter un traitement ici pour
-                          détecter si on est dans une chaine délimitée par des " ou c''est vraiement une fin de ligne
-                        */
-                        
-                        tableau_des_lignes_a_integrer.push([numero_de_ligne,texte_du_buffer]);
-                        if(tableau_des_lignes_a_integrer.length > 1000){
-                         
-                            let ret=await this.integrer_les_lignes_du_csv(tableau_des_lignes_a_integrer , donnees_retournees , __db1 );
-                            if(ret[__xst] !== __xsu){
-                                await __db1.close();
-                                await file.close()
-                                this.__gi1.__xsi[__xer].push( '' ['' + this.__gi1.nl2() );
-                                donnees_retournees.__xst=__xer;
-                                return({"__xst" : __xer});
-                            }
-                            function sleep1( ms ){
-                                return(new Promise( ( resolve ) => {
-                                        setTimeout( resolve , ms );} ));
-                            }
-                            /*
-                              on met un petit timeout entre chaque insert pour ne pas bloquer 
-                              les autres actions lors de l''intégration
-                            */
-                            await sleep1(25)
-                            
-                            
-                            tableau_des_lignes_a_integrer=[]
-                        }
-                        
-                        
-                        buf_cumule = [];
-                    }else{
-                        buf_cumule.push(buf[i]);
-                    }
-                }
-            }
-        }
-        if(buf_cumule.length > 0 && nombre_d_entrees < nombre_max_d_entrees ){
-            console.log('' au final, buf_cumule='' + buf_cumule);
-            buffer_temporaire=new Uint8Array(buf_cumule);
-            texte_du_buffer = new TextDecoder().decode(buffer_temporaire);  // "hello world"
-            this.__gi1.ma_trace1(''= = = = = = =final texte_du_buffer="''+texte_du_buffer+''"'');
-            tableau_des_lignes_a_integrer.push(texte_du_buffer);
-        }
-        await this.integrer_les_lignes_du_csv(tableau_des_lignes_a_integrer , donnees_retournees , __db1 );
-        __db1.close();
-        tableau_des_lignes_a_integrer=[]
-        await file.close()
-        let fin=performance.now();
-        this.__gi1.ma_trace1(''temps=''+parseInt( (fin-debut)/1000 , 10));
-        
-     
- 
-    }
-    
-    
-    /*
-      =============================================================================================================
-    */
-    async vider_la_table( mat , d , donnees_recues , donnees_retournees , options_generales ){
-
-        let __db1=await this.__gi1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-
-        let tt168=await this.__gi1.sql_iii(166 , {} , donnees_retournees , __db1 );
-        /*  */
-        if(tt168[__xst] !== __xsu){
-            this.__gi1.__xsi[__xer].push( ''erreur lors de le suppression ['' + this.__gi1.nl2() + '']'' );
-            return({"__xst" : __xer});
-        }
-        await __db1.exec( ''VACUUM;'' );
-        return({"__xst" : __xsu});
-
-    }
-     
-
-         
-    /*
-      =============================================================================================================
-    */
-    async importer_un_csv1( mat , d , donnees_recues , donnees_retournees , options_generales ){
-     
-        let nom_du_fichier='''';
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''nom_du_fichier''
-                   && mat[i][2] === ''f''
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === ''c''
-            ){
-                nom_du_fichier=mat[i + 1][1];
-            }
-        }
-        let nom_complet_du_fichier=''./__fichiers_generes/'' + nom_du_fichier;
-        /* 
-          sans index
-          pour   100 000 enregs :   47 s
-          pour 1 000 000 enregs :  467 s =>  7 mn 47 s
-          pour 2 227 484 enregs : 1098 s => 18 mn 18 s
-        */
-           
-        
-        this.importer_un_csv_methode_01(nom_complet_du_fichier , 1 , 0   , donnees_retournees , options_generales );
-        
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async dezipper( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        let nom_du_fichier='''';
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''nom_du_fichier''
-                   && mat[i][2] === ''f''
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === ''c''
-            ){
-                nom_du_fichier=mat[i + 1][1];
-            }
-        }
-        let nom_complet_du_fichier=''./__fichiers_generes/'' + nom_du_fichier;
-        if(!await this.__gi1.is_file(nom_complet_du_fichier)){
-            this.__gi1.__xsi[__xer].push( '' le fichier .zip n\''a pas été trouvé ['' + this.__gi1.nl2() + '']'' );
-            donnees_retournees.__xst=__xer;
-            return({"__xst" : __xer});
-        }
-        try{        
-            /* 
-              mettre un await pour attendre le dézip effectif 
-            */
-            this.__gi1.__fnt1.dezipper_un_fichier_dans_un_repertoire(nom_complet_du_fichier , ''./__fichiers_generes/'');
-        }catch(e){
-            this.__gi1.ma_trace1(''e='',e);
-        }
-        
-        
-        return({"__xst" : __xsu});
-    }','99','2026-03-12 18:58:43.982','2026-03-10 15:05:21.172','0','00_00_00'),
+VACUUM
+PRAGMA journal_mode = OFF;
+PRAGMA wal_checkpoint;
+','99','2026-04-14 08:20:55.666','2026-03-10 15:05:21.172','0','00_00_00'),
 ('411','1','faire une option  insert brut pour les sql 
 qui ne liste pas les noms des champs 
 et qui prend les valeurs directenemnt dans un tableau 
@@ -7539,7 +7220,7 @@ et non pas d''un objet ( voir fichier rpps )','99','2026-03-11 17:18:45.244','20
 ('412','1','sélecteur de date','99','2026-03-31 17:42:11.818','2026-03-14 10:08:48.066','0','00_00_00'),
 ('413','1','reprendre ugc
 http://localhost/ugc/ugc_www/
-http://localhost/mysqlreader/app_bbb_sample/tdo_www/','4','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0','00_00_00'),
+http://localhost/mysqlreader/app_bbb_sample/tdo_www/','8','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0','00_00_00'),
 ('414','1','traiter le champ date aaaa_mm_jj Ø','99','2026-03-17 17:37:23.386','2026-03-14 13:41:33.194','0','00_00_00'),
 ('415','1','traiter le champ heure 8 hh_mm_ss','99','2026-03-17 17:37:27.012','2026-03-14 14:22:42.444','0','00_00_00'),
 ('416','1','voir l''utilité des requetes manuelles','99','2026-03-19 08:31:26.252','2026-03-19 07:35:21.160','0','00_00_00'),
@@ -8068,17 +7749,17 @@ SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.
 */','99','2026-03-31 11:04:34.792','2026-03-31 11:04:34.792','0','00_00_00'),
 ('426','1','mettre la table des tâches en table virtuelle','80','2026-03-31 11:05:02.000','2026-03-31 11:05:02.000','0','00_00_00'),
 ('427','1','utiliser 
-this.__gi1.affiche_sous_fenetre1(
+this.__ig1.affiche_sous_fenetre1(
 à la place de 
 vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48.543','0','00_00_00'),
-('428','1','mettre la sous_liste dans __gi1_c
+('428','1','mettre la sous_liste dans __ig1_c
 
     /*
       =============================================================================================================
     */
     sous_liste1( mat , d , le_message_du_serveur=null ){
         this.fonction_liste=''sous_liste1'';
-        let ret=this.__gi1.sous_liste_generique1(mat , d , le_message_du_serveur , this);
+        let ret=this.__ig1.sous_liste_generique1(mat , d , le_message_du_serveur , this);
         if(ret.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
@@ -8086,9 +7767,31 @@ vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48
     }
 ','99','2026-04-07 08:03:28.754','2026-03-31 15:44:02.141','0','00_00_00'),
 ('429','1','après avoir cliqué sur le bouton pour compiler une requête, revenir à la sélection du filtre','99','2026-04-01 16:02:44.327','2026-03-31 17:41:45.006','0','00_00_00'),
-('430','1','mettre la table des taches en virtuelle','5','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0','00_00_00'),
-('431','1','ajouter des valeurs préférées ( 0.25 , 0.50 , 0.75 , 1.00 )','3','2026-04-03 08:25:39.403','2026-04-03 08:25:31.277','0','00_00_00'),
-('432','1','utiliser indexedDb du navigateur','12','2026-04-04 09:54:00.112','2026-04-04 09:51:44.238','0','00_00_00'),
+('430','1','mettre la table des taches en virtuelle','9','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0','00_00_00'),
+('431','1','ajouter des valeurs préférées ( 0.25 , 0.50 , 0.75 , 1.00 )','7','2026-04-03 08:25:39.403','2026-04-03 08:25:31.277','0','00_00_00'),
+('432','1','utiliser indexedDb du navigateur','16','2026-04-04 09:54:00.112','2026-04-04 09:51:44.238','0','00_00_00'),
 ('433','1','gérer les autorisations pour les listes et les actions','99','2026-04-07 08:51:43.327','2026-04-04 13:06:19.057','0','00_00_00'),
-('434','1','longtext sur les champs cht_rev_source et cht_genere_source','1','2026-04-07 08:51:13.688','2026-04-07 08:51:13.688','0','00_00_00');
+('434','1','longtext sur les champs cht_rev_source et cht_genere_source','6','2026-04-07 08:51:13.688','2026-04-07 08:51:13.688','0','00_00_00'),
+('435','1','virer
+donnees_retournees.__xst=__xer;
+
+this.__ig1.__xsi et remplacer par donnees_retournees.__xsi
+
+
+','5','2026-04-11 15:29:06.969','2026-04-10 13:51:41.833','0','00_00_00'),
+('436','1','effacer le contenu d''une table ( DELETE FROM table )
+update tbl_sources set cht_rev_source='''';
+update tbl_sources set cht_genere_source='''';
+
+drop table rpps_fts
+
+SELECT tbl_name FROM sqlite_master 
+WHERE  
+name NOT LIKE ''sqlite_%'' 
+AND type == ''table'' 
+AND sql LIKE \''%CREATE virtual%\''','4','2026-04-12 18:02:33.275','2026-04-12 17:48:10.740','0','00_00_00'),
+('437','1','téléversement de gros fichiers','1','2026-04-18 08:32:08.270','2026-04-13 07:54:17.849','0','00_00_00'),
+('438','1','virer che_contient_version_source','2','2026-04-14 08:40:58.645','2026-04-14 08:40:48.064','0','00_00_00'),
+('439','1','recherche / remplacer dans les sources','3','2026-04-14 08:50:50.799','2026-04-14 08:50:50.799','0','00_00_00'),
+('440','1','naviguer dans les répertoires des sauvegardes','21','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

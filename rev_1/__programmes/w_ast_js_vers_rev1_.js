@@ -15,16 +15,16 @@ class w_ast_js_vers_rev1{
     #nom_de_la_variable='';
     #options_traitement=null;
     __m_rev1=null;
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
       le seul argument est pour l'instant le nom de la variable qui est déclarée
     */
-    constructor( nom_de_la_variable , __gi1 ){
+    constructor( nom_de_la_variable , __ig1 ){
         /* module_rev ]{ */
-        this.__gi1=__gi1;
+        this.__ig1=__ig1;
         this.#nom_de_la_variable=nom_de_la_variable;
-        this.__rev1=this.__gi1.__rev1;
+        this.__rev1=this.__ig1.__rev1;
     }
     /*
       =============================================================================================================
@@ -34,7 +34,7 @@ class w_ast_js_vers_rev1{
             o.plage=[o.element.start,o.element.end];
         }
         /* this.__m _ rev1.empiler _ erreur( o ); */
-        this.__gi1.ajoute_message( o );
+        this.__ig1.ajoute_message( o );
         return o;
     }
     /*
@@ -2560,11 +2560,11 @@ class w_ast_js_vers_rev1{
     /*
       =============================================================================================================
     */
-    #traite_element( element , niveau , parent , tab_comm , ignorer_commentaires_avant ){
+    #traite_element( element , niveau , parent , tab_comm , ignorer_commentaires_avant , parent_de_parent=null ){
         let t='';
         let obj=null;
         if(!(ignorer_commentaires_avant !== undefined && ignorer_commentaires_avant === true)){
-            t+=this.#comm_avant_debut1( element , niveau , parent , tab_comm );
+            t+=this.#comm_avant_debut1( element , niveau , parent , tab_comm , parent_de_parent );
         }
         switch (element.type){
             case 'Super' : t='super';
@@ -3230,7 +3230,7 @@ class w_ast_js_vers_rev1{
       =============================================================================================================
       on cherche les commentaires avant elem
     */
-    #comm_avant_debut1( elem , niveau , parent , tab_comm ){
+    #comm_avant_debut1( elem , niveau , parent , tab_comm , parent_de_parent=null ){
         let t='';
         let i=0;
         let c1=0;
@@ -3318,6 +3318,10 @@ class w_ast_js_vers_rev1{
                 continue;
             }
             txtComment=tab_comm[i].value;
+            let mon_test=true;
+            if(mon_test && parent_de_parent && parent_de_parent.type === 'BlockStatement' && parent_de_parent.start > tab_comm[i].end){
+                continue;
+            }
             if(txtComment.indexOf( '\n' ) < 0){
                 txtComment=txtComment.trim();
                 txtComment=' ' + txtComment + ' ';
@@ -3361,7 +3365,7 @@ class w_ast_js_vers_rev1{
             for( let i=0 ; i < element.length ; i++ ){
                 switch (element[i].type){
                     case 'ExpressionStatement' :
-                        obj=this.#traite_element( element[i].expression , niveau , element , tab_comm , false );
+                        obj=this.#traite_element( element[i].expression , niveau , element , tab_comm , false , parent );
                         if(obj.__xst === __xsu){
                             t+=espaces + obj.__xva;
                         }else{

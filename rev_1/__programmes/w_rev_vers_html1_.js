@@ -12,7 +12,7 @@ const __xdv=4;
   =====================================================================================================================
 */
 class w_rev_vers_html1{
-    __gi1=null;
+    __ig1=null;
     #nom_de_la_variable='';
     __m_rev1=null;
     __m_rev_vers_js1=null;
@@ -21,12 +21,12 @@ class w_rev_vers_html1{
     /*
       =============================================================================================================
     */
-    constructor( nom_de_la_variable , __gi1 , module_rev_vers_js ){
+    constructor( nom_de_la_variable , __ig1 , module_rev_vers_js ){
         /* module_rev */
         /* console.log('constructor'); */
         this.#nom_de_la_variable=nom_de_la_variable;
-        this.__gi1=__gi1;
-        this.__rev1=this.__gi1.__rev1;
+        this.__ig1=__ig1;
+        this.__rev1=this.__ig1.__rev1;
         /* module_rev; */
         this.__m_rev_vers_js1=module_rev_vers_js;
     }
@@ -39,7 +39,7 @@ class w_rev_vers_html1{
                 o.plage=[this.#tb[o.id][5],this.#tb[o.id][6]];
             }catch(e){}
         }
-        return(this.__gi1.ajoute_message( o ));
+        return(this.__ig1.ajoute_message( o ));
     }
     /*
       =============================================================================================================

@@ -27,21 +27,21 @@ class sql_390{
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_type_requete'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['cht_rev_requete'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['cht_sql_requete'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['cht_commentaire_requete'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq1( par.donnees[i]['che_est_souche_requete'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__gi1.__fnt1.sq4( par.donnees[i]['chp_table_reference_requete'] ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_type_requete'] ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_rev_requete'] ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_sql_requete'] ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_commentaire_requete'] ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_est_souche_requete'] ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_table_reference_requete'] ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;
             let nouvel_id=-1;
             if(liste_des_valeurs !== ''){
                 sql0+=liste_des_valeurs;
-                /* this.__gi1.ma_trace1( 'sql_390=' + sql0 ); */
+                /* this.__ig1.ma_trace1( 'sql_390=' + sql0 ); */
                 res=await this.__db1.exec( sql0 );
-                /* this.__gi1.ma_trace1('res=',res); */
+                /* this.__ig1.ma_trace1('res=',res); */
                 const sql1='SELECT last_insert_rowid() as nouvel_id; ';
                 let statement1=await this.__db1.prepare( sql1 );
                 let lignes=await statement1.values();
@@ -52,20 +52,20 @@ class sql_390{
             }
             return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
         }catch(e){
-            return(this.__gi1.traite_erreur_sql( 390 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 390 , e , sql0 , donnees_retournees , {} ));
         }
     }
     /*
       =============================================================================================================
     */
     moi='sql_390';
-    __gi1=null;
+    __ig1=null;
     __db1=null;
     /*
       =============================================================================================================
     */
-    constructor( __gi1 , __db1 ){
-        this.__gi1=__gi1;
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
         this.__db1=__db1;
     }
 }

@@ -1,11 +1,11 @@
 class x_ecran_coordonnees1{
     moi='x_ecran_coordonnees1';
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
     */
-    constructor( mat , d , __gi1 ){
-        this.__gi1=__gi1;
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
     }
     /*
       =============================================================================================================
@@ -13,8 +13,8 @@ class x_ecran_coordonnees1{
     */
     modifier1( mat , d , données ){
         if(données.__xst === __xsu){
-            this.__gi1.ajoute_message( {"__xst" : __xsu ,"__xme" : 'vos coordonnées ont bien été modifiées'} );
-            this.__gi1.affiche_les_messages();
+            this.__ig1.ajoute_message( {"__xst" : __xsu ,"__xme" : 'vos coordonnées ont bien été modifiées'} );
+            this.__ig1.affiche_les_messages();
         }else{
         }
         return({"__xst" : __xsu});
@@ -43,36 +43,36 @@ class x_ecran_coordonnees1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chp_mot_de_passe_utilisateur'] !== fo1['chp_mot_de_passe_utilisateur2']){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'les mots de passe ne correspondent pas'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'les mots de passe ne correspondent pas'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_mot_de_passe_utilisateur' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['chp_mot_de_passe_utilisateur'].length < 7){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le mot de passe doit faire au moins 7 caractères'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le mot de passe doit faire au moins 7 caractères'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_mot_de_passe_utilisateur' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['chp_nom_de_connexion_utilisateur'].length < 5){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le nom de connexion doit comporter au moins 5 caractères'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le nom de connexion doit comporter au moins 5 caractères'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_nom_de_connexion_utilisateur' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['chp_nom_de_connexion_utilisateur'].indexOf( ' ' ) >= 0 || fo1['chp_mot_de_passe_utilisateur'].indexOf( ' ' ) >= 0){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le nom de connexion et le mot de passe ne doivent pas comporter le caractère espace'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le nom de connexion et le mot de passe ne doivent pas comporter le caractère espace'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_nom_de_connexion_utilisateur' ).focus();
             } catch {}
@@ -83,7 +83,7 @@ class x_ecran_coordonnees1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__gi1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1())))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : co1}} );
+        this.__ig1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1())))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : co1}} );
         return({"__xst" : __xsu});
     }
     /*
@@ -131,13 +131,13 @@ class x_ecran_coordonnees1{
         t+='</div>';
         t+=' <p id="nombre_de_connexions"></p>';
         t+=' <p></p>';
-        this.__gi1.maj_contenu_principal( t );
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'mes coordonnées' );
+        this.__ig1.maj_contenu_principal( t );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'mes coordonnées' );
         let cmd='';
         cmd+='pm1(m1(n1(' + this.moi + '),f1(recupérer_mes_coordonnées())))';
         let obj={"__xac" : cmd};
-        this.__gi1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_message_au_worker( obj );
         return({"__xst" : __xsu});
     }
 }

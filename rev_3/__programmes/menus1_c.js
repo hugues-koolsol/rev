@@ -10,7 +10,7 @@ class menus1{
     moi='menus1';
     DUN_DUNE_ELEMENT_GERE='d\'un menu';
     LISTE_DES_ELEMENTS_GERES='liste des menus';
-    __gi1=null;
+    __ig1=null;
     #objet_conversion_ast_js_vers_rev=null;
     /*
       filtres liste
@@ -55,7 +55,7 @@ class menus1{
             try{
                 parseur_javascript=window.acorn.Parser;
             }catch(e){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de chargement du parseur js ' + this.__gi1.__m_rev1.nl2( e )} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de chargement du parseur js ' + this.__ig1.__m_rev1.nl2( e )} );
                 return({"__xst" : __xer});
             }
             let tableau_des_commentaires_js=[];
@@ -69,10 +69,10 @@ class menus1{
                     /* const text = "anything(aa:bb)otherthing"; */
                     const regex=/(?<=\()(\w+):(\w+)(?=\))/;
                     const match=tt.match( regex );
-                    if(match && this.__gi1.est_num( match[1] ) && this.__gi1.est_num( match[2] )){
+                    if(match && this.__ig1.est_num( match[1] ) && this.__ig1.est_num( match[2] )){
                         lig_col=[parseInt( match[1] , 10 ),parseInt( match[2] , 10 )];
                     }
-                    this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2() + ' <br />erreur dans le javascript :' + e.message} );
+                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ' <br />erreur dans le javascript :' + e.message} );
                 }
                 return({"__xst" : __xer});
             }
@@ -82,18 +82,16 @@ class menus1{
             */
             let obj1=this.#objet_conversion_ast_js_vers_rev.traite_ast( obj.body , tableau_des_commentaires_js , {} );
             if(obj1.__xst !== __xsu){
-                /* this.__gi1.__rev1.empiler _ erreur( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2()} ); */
-                this.__gi1.__xsi[__xer].push( ' erreur de transformation du js en rev ' + chi_id_source + '[' + this.__gi1.nl2() + ']' );
-                donnees_retournees.__xst=__xer;
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de transformation du js en rev ' + chi_id_source + '[' + this.__ig1.nl2() + ']'} );
                 return({"__xst" : __xer});
             }
             /*
               =============================================================================================
               on transforme le ast du js en rev 
             */
-            let obj2=this.__gi1.__rev1.rev_tm( obj1.__xva );
+            let obj2=this.__ig1.__rev1.rev_tm( obj1.__xva );
             if(obj2.__xst !== __xsu){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__gi1.__rev1.nl2()} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} );
                 return({"__xst" : __xer});
             }
             let mat1=obj2.__xva;
@@ -116,7 +114,7 @@ class menus1{
                                                     vv_liste_des_methodes+='<div ';
                                                     vv_liste_des_methodes+=' class="rev_bouton"';
                                                     vv_liste_des_methodes+=' data-rev_click="';
-                                                    vv_liste_des_methodes+='m1(n1(__gi1),f1(maj_contenu(type_cible(valeur_constante),id(chp_methode_menu),valeur(valeur_constante(' + mat1[m + 1][1] + ')))))';
+                                                    vv_liste_des_methodes+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_methode_menu),valeur(valeur_constante(' + mat1[m + 1][1] + ')))))';
                                                     vv_liste_des_methodes+='"';
                                                     vv_liste_des_methodes+='>' + mat1[m + 1][1] + '</div>';
                                                 }
@@ -131,7 +129,7 @@ class menus1{
             }
         }
         document.getElementById( 'vv_liste_des_methodes' ).innerHTML=vv_liste_des_methodes;
-        this.__gi1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
     }
     /*
@@ -145,13 +143,13 @@ class menus1{
             }
         }
         if(champ === ''){
-            return({"__xst" : __xer ,"__xme" : 'champ vide' + __gi1.nl2( e )});
+            return({"__xst" : __xer ,"__xme" : 'champ vide' + __ig1.nl2( e )});
         }
         let chi_id_autorisation=parseInt( document.getElementById( champ ).value );
         if(isNaN( chi_id_autorisation )){
-            return({"__xst" : __xer ,"__xme" : 'champ vide' + __gi1.nl2( e )});
+            return({"__xst" : __xer ,"__xme" : 'champ vide' + __ig1.nl2( e )});
         }
-        this.__gi1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(recupere_methodes1(chi_id_autorisation(' + chi_id_autorisation + ')))))'} );
+        this.__ig1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(recupere_methodes1(chi_id_autorisation(' + chi_id_autorisation + ')))))'} );
         return({"__xst" : __xsu});
     }
     /*
@@ -161,13 +159,13 @@ class menus1{
         switch (mat[d][1]){
             case 'xxxxx' :
                 /*
-                  this.__gi1.fermer_la_sous_fenetre();
+                  this.__ig1.fermer_la_sous_fenetre();
                   this.entree_module( null );
                 */
                 break;
                 
             default:
-                this.__gi1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans ' + this.moi + '_c, la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
+                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
                 return({"__xst" : __xer});
                 
         }
@@ -176,8 +174,8 @@ class menus1{
     /*
       =============================================================================================================
     */
-    constructor( mat , d , __gi1 ){
-        this.__gi1=__gi1;
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
         for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
             if(mat[i][1] === 'nom_champ_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 this.nom_champ_dans_parent1=mat[i + 1][1];
@@ -192,21 +190,21 @@ class menus1{
             }
         }
         if(this.fonction_liste === 'liste1'){
-            let aa=sessionStorage.getItem( this.__gi1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste );
+            let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste );
             if(aa !== null){
                 let jso=JSON.parse( aa );
                 for(let i in this.tableau_des_filtres[this.fonction_liste]){
                     this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__gi1.les_svg.nouveau_document + '</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         }
         /*
           pré chargement du module externe acorn car on peut en avoir besoin
           lors de la modification d'un menu
         */
-        this.__gi1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
-        this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , __gi1 );
+        this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
+        this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , __ig1 );
     }
     /*
       =============================================================================================================
@@ -228,47 +226,47 @@ class menus1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['cht_libelle_menu'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'cht_libelle_menu' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['chp_titre_menu'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_titre_menu' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['chx_autorisation_menu'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chx_autorisation_menu' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['chp_methode_menu'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_methode_menu' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['cht_condition_menu'] !== null && fo1['cht_condition_menu'] !== ''){
-            let obj1=this.__gi1.__rev1.rev_tm( fo1['cht_condition_menu'] );
+            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_condition_menu'] );
             if(obj1.__xst !== __xsu){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "condition" n\'est pas dans un format rev valide'} );
-                this.__gi1.affiche_les_messages();
-                this.__gi1.retablir_les_boutons_masques();
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "condition" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
                 try{
                     document.getElementById( 'cht_condition_menu' ).focus();
                 } catch {}
@@ -276,11 +274,11 @@ class menus1{
             }
         }
         if(fo1['cht_initialisation_menu'] !== null && fo1['cht_initialisation_menu'] !== ''){
-            let obj1=this.__gi1.__rev1.rev_tm( fo1['cht_initialisation_menu'] );
+            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_initialisation_menu'] );
             if(obj1.__xst !== __xsu){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'} );
-                this.__gi1.affiche_les_messages();
-                this.__gi1.retablir_les_boutons_masques();
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
                 try{
                     document.getElementById( 'cht_initialisation_menu' ).focus();
                 } catch {}
@@ -296,7 +294,7 @@ class menus1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__gi1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_message_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -308,10 +306,10 @@ class menus1{
     */
     page_modification1( mat , d , le_message_du_serveur=null ){
         if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_modification1' )){
-            return(this.__gi1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];
-        this.__gi1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi );
         let o1='';
         /*
           =====================================================================================================
@@ -326,14 +324,14 @@ class menus1{
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
-        o1+=this.__gi1.__fnt1.boutons_edition1( 'cht_libelle_menu' );
+        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_libelle_menu' );
         o1+='</div>\r\n';
         var sty='';
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_libelle_menu" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__gi1.fi2( enreg['T0.cht_libelle_menu'] );
+        o1+=this.__ig1.fi2( enreg['T0.cht_libelle_menu'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -349,8 +347,8 @@ class menus1{
         if(enreg['T0.chp_titre_menu'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_titre_menu"  size="64"   maxlength="64"  value="' + this.__gi1.fi2( enreg['T0.chp_titre_menu'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+=this.__gi1.__fnt1.boutons_edition_text( 'chp_titre_menu' );
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_titre_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_titre_menu'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_titre_menu' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -369,9 +367,9 @@ class menus1{
         o1+='"  id="chx_autorisation_menu" />';
         o1+='        <span id="chx_autorisation_menu_libelle">';
         o1+='(' + enreg['T0.chx_autorisation_menu'] + ') ';
-        o1+=this.__gi1.fi2( enreg['T1.chp_nom_autorisation'] );
+        o1+=this.__ig1.fi2( enreg['T1.chp_nom_autorisation'] );
         o1+='</span>';
-        o1+=this.__gi1.lien_parent( 'autorisations1' , 'chx_autorisation_menu' , 'chx_autorisation_menu_libelle' );
+        o1+=this.__ig1.lien_parent( 'autorisations1' , 'chx_autorisation_menu' , 'chx_autorisation_menu_libelle' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -388,8 +386,8 @@ class menus1{
         o1+='        <div style="display:inline-block;" class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes">Méthodes</div>';
         o1+='        <div style="display:inline-block;" id="vv_liste_des_methodes"></div>';
         o1+='        <br />';
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_methode_menu"  size="64"   maxlength="64"  value="' + this.__gi1.fi2( enreg['T0.chp_methode_menu'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+=this.__gi1.__fnt1.boutons_edition_text( 'chp_methode_menu' );
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_methode_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_methode_menu'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_methode_menu' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -405,14 +403,14 @@ class menus1{
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
-        o1+=this.__gi1.__fnt1.boutons_rev3( 'cht_condition_menu' );
+        o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_condition_menu' );
         o1+='</div>\r\n';
         var sty='';
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  data-editeur1="rev"  id="cht_condition_menu" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__gi1.fi2( enreg['T0.cht_condition_menu'] );
+        o1+=this.__ig1.fi2( enreg['T0.cht_condition_menu'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -437,14 +435,14 @@ class menus1{
         o1+='  <div data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_menu),zone_resultat(cht_condition_menu))))"';
         o1+='    class="rev_bouton yy__1" title="convertir en rev" >↥js->rev↥</div>';
         /*  */
-        o1+=this.__gi1.__fnt1.boutons_edition1( 'cht_condition_js_menu' );
+        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_condition_js_menu' );
         o1+='</div>\r\n';
         var sty='';
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_menu" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__gi1.fi2( enreg['T0.cht_condition_js_menu'] );
+        o1+=this.__ig1.fi2( enreg['T0.cht_condition_js_menu'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -462,14 +460,14 @@ class menus1{
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
-        o1+=this.__gi1.__fnt1.boutons_rev3( 'cht_initialisation_menu' );
+        o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_initialisation_menu' );
         o1+='</div>\r\n';
         var sty='';
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  data-editeur1="rev"  id="cht_initialisation_menu" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__gi1.fi2( enreg['T0.cht_initialisation_menu'] );
+        o1+=this.__ig1.fi2( enreg['T0.cht_initialisation_menu'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -485,17 +483,17 @@ class menus1{
         cmd+='liste1(';
         for(let i in this.tableau_des_filtres[this.fonction_liste]){
             if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__gi1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
             }
         }
         cmd+=')';
-        let obj2=this.__gi1.__rev1.rev_tm( cmd );
+        let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__gi1.fi2( jso ) + '" />';
+        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__gi1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
     }
     /*
@@ -503,10 +501,10 @@ class menus1{
     */
     page_confirmation_supprimer1( mat , d , le_message_du_serveur=null ){
         if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
-            return(this.__gi1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__gi1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi );
         let o1='';
         /*
           =====================================================================================================
@@ -517,7 +515,7 @@ class menus1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea disabled id="cht_libelle_menu" rows="2"  cols="50" >' + this.__gi1.fi2( enreg['T0.cht_libelle_menu'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_libelle_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_libelle_menu'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -529,7 +527,7 @@ class menus1{
         o1+='      <span>titre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_titre_menu"  size="64"   maxlength="64"  value="' + this.__gi1.fi2( enreg['T0.chp_titre_menu'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_titre_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_titre_menu'] ) + '"   />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -545,7 +543,7 @@ class menus1{
         o1+='"  id="chx_autorisation_menu" />';
         o1+='        <span>';
         o1+='(' + enreg['T0.chx_autorisation_menu'] + ') ';
-        o1+=this.__gi1.fi2( enreg['T1.chp_nom_autorisation'] );
+        o1+=this.__ig1.fi2( enreg['T1.chp_nom_autorisation'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -557,7 +555,7 @@ class menus1{
         o1+='      <span>methode</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_methode_menu"  size="64"   maxlength="64"  value="' + this.__gi1.fi2( enreg['T0.chp_methode_menu'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_methode_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_methode_menu'] ) + '"   />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -569,7 +567,7 @@ class menus1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea disabled id="cht_condition_menu" rows="2"  cols="50" >' + this.__gi1.fi2( enreg['T0.cht_condition_menu'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_condition_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_condition_menu'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -582,7 +580,7 @@ class menus1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea disabled id="cht_condition_js_menu" rows="2"  cols="50" >' + this.__gi1.fi2( enreg['T0.cht_condition_js_menu'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_condition_js_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_condition_js_menu'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -595,7 +593,7 @@ class menus1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <textarea disabled id="cht_initialisation_menu" rows="2"  cols="50" >' + this.__gi1.fi2( enreg['T0.cht_initialisation_menu'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_initialisation_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_initialisation_menu'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -610,19 +608,19 @@ class menus1{
         cmd+='liste1(';
         for(let i in this.tableau_des_filtres[this.fonction_liste]){
             if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__gi1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
             }
         }
         cmd+=')';
-        let obj2=this.__gi1.__rev1.rev_tm( cmd );
+        let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__gi1.fi2( jso ) + '" />';
+        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
         document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
-        this.__gi1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
-        if(this.__gi1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
-            this.__gi1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
+        if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
+            this.__ig1.maj_hash( mat , 0 );
         }
-        this.__gi1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
     }
     /*
@@ -646,36 +644,36 @@ class menus1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chp_titre_menu'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_titre_menu' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['chx_autorisation_menu'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chx_autorisation_menu' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['chp_methode_menu'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_methode_menu' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
         if(fo1['cht_libelle_menu'] === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseigné'} );
-            this.__gi1.affiche_les_messages();
-            this.__gi1.retablir_les_boutons_masques();
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'cht_libelle_menu' ).focus();
             } catch {}
@@ -689,7 +687,7 @@ class menus1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__gi1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_message_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -700,7 +698,7 @@ class menus1{
       =============================================================================================================
     */
     page_creer1( mat , d , dupliquer=null ){
-        this.__gi1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi );
         let o1='';
         /*
           =====================================================================================================
@@ -712,13 +710,13 @@ class menus1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_titre_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_titre_menu' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.chp_titre_menu'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.chp_titre_menu'] );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='    <div>';
-        o1+=this.__gi1.__fnt1.boutons_edition_text( 'chp_titre_menu' );
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_titre_menu' );
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -735,7 +733,7 @@ class menus1{
         o1+=' type="hidden" ';
         o1+=' value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_autorisation_menu' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.chx_autorisation_menu'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.chx_autorisation_menu'] );
         }else{
             o1+='';
         }
@@ -747,7 +745,7 @@ class menus1{
                 o1+='*indéfini';
             }else{
                 o1+='(' + dupliquer['T0.chx_autorisation_menu'] + ') ';
-                o1+=this.__gi1.fi2( dupliquer['T1.chp_nom_autorisation'] );
+                o1+=this.__ig1.fi2( dupliquer['T1.chp_nom_autorisation'] );
             }
         }else{
             o1+='*indéfini';
@@ -756,7 +754,7 @@ class menus1{
         /*
           ;
         */
-        o1+=this.__gi1.lien_parent( 'autorisations1' , 'chx_autorisation_menu' , 'chx_autorisation_menu_libelle' );
+        o1+=this.__ig1.lien_parent( 'autorisations1' , 'chx_autorisation_menu' , 'chx_autorisation_menu_libelle' );
         /*  */
         o1+='    </div>';
         o1+='  </div>';
@@ -770,13 +768,13 @@ class menus1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_methode_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_methode_menu' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.chp_methode_menu'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.chp_methode_menu'] );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='    <div>';
-        o1+=this.__gi1.__fnt1.boutons_edition_text( 'chp_methode_menu' );
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_methode_menu' );
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -790,11 +788,11 @@ class menus1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <div>\r\n';
-        o1+='              ' + this.__gi1.__fnt1.boutons_edition1( 'cht_libelle_menu' );
+        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_libelle_menu' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_libelle_menu" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_libelle_menu' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.cht_libelle_menu'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.cht_libelle_menu'] );
         }else{
             o1+='';
         }
@@ -812,11 +810,11 @@ class menus1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <div>\r\n';
-        o1+='              ' + this.__gi1.__fnt1.boutons_rev3( 'cht_condition_menu' );
+        o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_condition_menu' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="rev"  id="cht_condition_menu" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_condition_menu' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.cht_condition_menu'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.cht_condition_menu'] );
         }else{
             o1+='';
         }
@@ -834,11 +832,11 @@ class menus1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <div>\r\n';
-        o1+='              ' + this.__gi1.__fnt1.boutons_rev3( 'cht_initialisation_menu' );
+        o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_initialisation_menu' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="rev"  id="cht_initialisation_menu" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_initialisation_menu' )){
-            o1+=this.__gi1.fi2( dupliquer['T0.cht_initialisation_menu'] );
+            o1+=this.__ig1.fi2( dupliquer['T0.cht_initialisation_menu'] );
         }else{
             o1+='';
         }
@@ -853,17 +851,17 @@ class menus1{
         cmd+='liste1(';
         for(let i in this.tableau_des_filtres[this.fonction_liste]){
             if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__gi1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
             }
         }
         cmd+=')';
-        let obj2=this.__gi1.__rev1.rev_tm( cmd );
+        let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__gi1.fi2( jso ) + '" />';
+        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
         document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__gi1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
     }
     /*
@@ -877,7 +875,7 @@ class menus1{
         let tt=this.zones_liste1( le_message_du_serveur );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
         this.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant );
-        this.__gi1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.ajoute_les_evenements_aux_boutons();
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
         for( let i=0 ; i < lst.length ; i++ ){
@@ -885,13 +883,13 @@ class menus1{
                 this.filtres[lst[i].id]=lst[i].value;
             }
         }
-        let aa=sessionStorage.getItem( this.__gi1.cle_lst0 + '_' + this.moi );
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi );
         if(aa === null){
-            sessionStorage.setItem( this.__gi1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
+            sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
         }else{
             let jso=JSON.parse( aa );
             jso['filtres']=this.filtres;
-            sessionStorage.setItem( this.__gi1.cle_lst0 + '_' + this.moi , JSON.stringify( jso ) );
+            sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( jso ) );
         }
         return({"__xst" : __xsu});
     }
@@ -919,7 +917,7 @@ class menus1{
                 this.filtres[this.fonction_liste][nom_champ_filtre]='';
             }
         }
-        let cle_session=this.__gi1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
+        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
         sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
         if(le_message_du_serveur.__xva.hasOwnProperty( '__fo1' )
                && le_message_du_serveur.__xva.__fo1 !== null
@@ -947,7 +945,7 @@ class menus1{
                     }
                     o1+='        <div>\r\n';
                     o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
-                    o1+='           value="' + this.__gi1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
+                    o1+='           value="' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
                     o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
                     o1+='           maxlength="64" ';
                     o1+='           autocapitalize="off" ';
@@ -998,7 +996,7 @@ class menus1{
             }
         }
         if(de_13 === ''){
-            this.__gi1.delai_selectionner_champ_filtre();
+            this.__ig1.delai_selectionner_champ_filtre();
         }else{
             try{
                 document.getElementById( de_13 ).select();
@@ -1025,14 +1023,14 @@ class menus1{
       =============================================================================================================
     */
     aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__gi1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================
     */
     sous_liste1( mat , d , le_message_du_serveur=null ){
         this.fonction_liste='sous_liste1';
-        return(this.__gi1.sous_liste_generique1( mat , d , le_message_du_serveur , this ));
+        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this ));
     }
     /*
       =============================================================================================================
@@ -1048,32 +1046,32 @@ class menus1{
         let initialisation_fait=false;
         let a=document.getElementById( 'vv_titre_de_la_page' );
         if(a === null){
-            this.__gi1.initialisation_des_zones( this.moi );
+            this.__ig1.initialisation_des_zones( this.moi );
             initialisation_fait=true;
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
         if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){
         }else{
             if(initialisation_fait === false){
-                this.__gi1.initialisation_des_zones( this.moi );
+                this.__ig1.initialisation_des_zones( this.moi );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
-            this.__gi1.afficher_les_zones( 'vv_ecran_liste' );
+            this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
         this.zones_filtres1( mat , d , le_message_du_serveur );
-        this.__gi1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_message_du_serveur );
-        this.__gi1.ajoute_les_evenements_aux_boutons();
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     entree_module( mat , d ){
-        this.__gi1.recupere_liste_initiale( mat , d , this );
+        this.__ig1.recupere_liste_initiale( mat , d , this );
         return({"__xst" : __xsu});
     }
     /*
@@ -1088,14 +1086,14 @@ class menus1{
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
-                parametres+='m1(n1(__gi1),f1(choisir_dans_sous_fenetre1(';
+                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre1(';
                 parametres+=' nom_champ_dans_parent1(' + this.nom_champ_dans_parent1 + ')';
                 parametres+=' nom_libelle_dans_parent1(' + this.nom_libelle_dans_parent1 + ')';
                 parametres+=' id1(' + elem['T0.chi_id_menu'] + ')';
                 let libelle1='';
                 libelle1+='(' + elem['T0.chi_id_menu'] + ') ';
                 libelle1+=elem['T0.chp_titre_menu'] ? ( ' , ' + elem['T0.chp_titre_menu'] ) : ( '' );
-                parametres+=' libelle1(\'' + this.__gi1.fi1( libelle1 ) + '\')';
+                parametres+=' libelle1(\'' + this.__ig1.fi1( libelle1 ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=></div>';
                 lst+='</td>';
@@ -1167,7 +1165,7 @@ class menus1{
                 o1+='</table>';
                 o1+='</div>';
             }else{
-                o1+=this.__gi1.la_liste_est_vide();
+                o1+=this.__ig1.la_liste_est_vide();
             }
         }
         return o1;
@@ -1184,9 +1182,9 @@ class menus1{
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
-                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_menu(' + elem['T0.chi_id_menu'] + ')))))">' + this.__gi1.les_svg.poubelle + '</div>';
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + elem['T0.chi_id_menu'] + ')))))">' + this.__gi1.les_svg.editer + '</div>';
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_menu(' + elem['T0.chi_id_menu'] + ')))))">' + this.__gi1.les_svg.dupliquer + '</div>';
+                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_menu(' + elem['T0.chi_id_menu'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + elem['T0.chi_id_menu'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_menu(' + elem['T0.chi_id_menu'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
                 lst+='</div>';
                 lst+='</td>';
                 /*
@@ -1200,7 +1198,7 @@ class menus1{
                     lst+='(' + elem['T1.chx_source_autorisation'] + ')';
                 }
                 if(elem['T0.chp_methode_menu'] !== null){
-                    lst+='<br />' + this.__gi1.fi2( elem['T0.chp_methode_menu'] );
+                    lst+='<br />' + this.__ig1.fi2( elem['T0.chp_methode_menu'] );
                 }
                 lst+='</td>';
                 /*
@@ -1214,13 +1212,13 @@ class menus1{
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
                 if(elem['T0.chp_titre_menu'] !== null){
-                    lst+='<br /><b class="yy__3">' + this.__gi1.fi2( elem['T0.chp_titre_menu'] ) + '</b>';
+                    lst+='<br /><b class="yy__3">' + this.__ig1.fi2( elem['T0.chp_titre_menu'] ) + '</b>';
                 }
                 if(elem['T0.cht_libelle_menu'] !== null){
-                    lst+='<br />' + this.__gi1.fi2( elem['T0.cht_libelle_menu'].substr( 0 , 100 ) );
+                    lst+='<br />' + this.__ig1.fi2( elem['T0.cht_libelle_menu'].substr( 0 , 100 ) );
                 }
                 if(elem['T0.cht_condition_menu'] !== null){
-                    lst+='<hr />' + this.__gi1.fi2( elem['T0.cht_condition_menu'].substr( 0 , 200 ) );
+                    lst+='<hr />' + this.__ig1.fi2( elem['T0.cht_condition_menu'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
@@ -1230,7 +1228,7 @@ class menus1{
                     lst+=elem['T1.chx_acces_autorisation'];
                 }
                 if(elem['T2.chp_nom_acces'] !== null){
-                    lst+='<br />' + this.__gi1.fi2( elem['T2.chp_nom_acces'] );
+                    lst+='<br />' + this.__ig1.fi2( elem['T2.chp_nom_acces'] );
                 }
                 lst+='</td>';
                 /*
@@ -1251,7 +1249,7 @@ class menus1{
                 o1+='</table>';
                 o1+='</div>';
             }else{
-                o1+=this.__gi1.la_liste_est_vide();
+                o1+=this.__ig1.la_liste_est_vide();
             }
         }
         return o1;

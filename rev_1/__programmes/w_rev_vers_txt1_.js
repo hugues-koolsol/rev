@@ -21,15 +21,15 @@ class w_rev_vers_txt1{
     #tb=[];
     #l02=0;
     __m_rev1=null;
-    __gi1=null;
+    __ig1=null;
     /*
       =============================================================================================================
     */
-    constructor( nom_de_la_variable , __gi1 ){
+    constructor( nom_de_la_variable , __ig1 ){
         /* console.log('constructor'); */
-        this.__gi1=__gi1;
+        this.__ig1=__ig1;
         this.#nom_de_la_variable=nom_de_la_variable;
-        this.__m_rev1=this.__gi1.__rev1;
+        this.__m_rev1=this.__ig1.__rev1;
     }
     /*
       =============================================================================================================

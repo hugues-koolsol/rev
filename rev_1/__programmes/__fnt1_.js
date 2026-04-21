@@ -12,7 +12,7 @@ class __fnt1{
       =============================================================================================================
     */
     moi='__fnt1';
-    __gi1=null;
+    __ig1=null;
     tab_de_remplacement1={
          /* tbel */
         "à" : 'à' ,
@@ -36,11 +36,11 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    constructor( mat , d , __gi1 ){
+    constructor( mat , d , __ig1 ){
         /*
-          console.log( 'constructor fnt1' , mat , d , __gi1 );
+          console.log( 'constructor fnt1' , mat , d , __ig1 );
         */
-        this.__gi1=__gi1;
+        this.__ig1=__ig1;
     }
     /*
       =============================================================================================================
@@ -58,7 +58,7 @@ class __fnt1{
         try{
             await Deno.remove( chemin );
         }catch(e){
-            donnees_retournees[__xsi][__xdv].push( 'erreur supprimer_fichier_sans_sauvegarde "' + chemin + '" ' + this.__gi1.nl2( e ) );
+            donnees_retournees[__xsi][__xdv].push( 'erreur supprimer_fichier_sans_sauvegarde "' + chemin + '" ' + this.__ig1.nl2( e ) );
         }
         return({"__xst" : __xsu});
     }
@@ -68,46 +68,43 @@ class __fnt1{
     async sauvegarder_et_supprimer_fichier( chemin , donnees_retournees ){
         /* ne_pas_faire_une_sauvegarde]{ */
         if(donnees_retournees.chi_id_projet === 0){
-            donnees_retournees[__xsi][__xer].push( 'on ne peut pas supprimer un fichier si on n\'a pas sélectionné un environnement ' + this.__gi1.nl2() );
-            donnees_retournees.__xst=__xer;
+            donnees_retournees[__xsi][__xer].push( 'on ne peut pas supprimer un fichier si on n\'a pas sélectionné un environnement ' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         let prefix1='../rev_' + donnees_retournees.chi_id_projet + '/';
         let sous_chemin=chemin.substr( prefix1.length );
-        let la_cle=await this.__gi1.cle_aleatoire();
+        let la_cle=await this.__ig1.cle_aleatoire();
         /* crypto.randomUUID(); */
         let amj=donnees_retournees.date_heure_serveur;
         let chemin_date=amj.substr( 0 , 4 ) + '/' + amj.substr( 5 , 2 ) + '/' + amj.substr( 8 , 2 ) + '/';
         let chemin_absolu_sauvegarde='../sauvegarde_fichiers/rev_' + donnees_retournees.chi_id_projet + '/' + chemin_date + sous_chemin + '.' + amj.replace( / /g , '_' ).replace( /:/g , '_' ) + '.' + la_cle + '.bak';
-        /* this.__gi1.ma_trace1('chemin_absolu_sauvegarde='+chemin_absolu_sauvegarde); */
+        /* this.__ig1.ma_trace1('chemin_absolu_sauvegarde='+chemin_absolu_sauvegarde); */
         let repertoire_absolu_sauvegarde=chemin_absolu_sauvegarde.substr( 0 , chemin_absolu_sauvegarde.lastIndexOf( '/' ) );
-        /* this.__gi1.ma_trace1('repertoire_absolu_sauvegarde='+repertoire_absolu_sauvegarde); */
-        if(!(await this.__gi1.is_dir( repertoire_absolu_sauvegarde ))){
+        /* this.__ig1.ma_trace1('repertoire_absolu_sauvegarde='+repertoire_absolu_sauvegarde); */
+        if(!(await this.__ig1.is_dir( repertoire_absolu_sauvegarde ))){
             try{
                 await Deno.mkdir( repertoire_absolu_sauvegarde , {"mode" : 0o777 ,"recursive" : true} );
-                /* this.__gi1.ma_trace1( 'repertoire créé' ); */
+                /* this.__ig1.ma_trace1( 'repertoire créé' ); */
             }catch(e){
-                donnees_retournees[__xsi][__xer].push( 'erreur de création du répertoire "' + repertoire_absolu_sauvegarde + '" ' + this.__gi1.nl2( e ) );
-                donnees_retournees.__xst=__xer;
+                donnees_retournees[__xsi][__xer].push( 'erreur de création du répertoire "' + repertoire_absolu_sauvegarde + '" ' + this.__ig1.nl2( e ) );
                 return({"__xst" : __xer});
             }
         }else{
-            /* this.__gi1.ma_trace1('repertoire existe repertoire_absolu_sauvegarde='+repertoire_absolu_sauvegarde); */
+            /* this.__ig1.ma_trace1('repertoire existe repertoire_absolu_sauvegarde='+repertoire_absolu_sauvegarde); */
         }
-        if((await this.__gi1.is_file( chemin ))){
+        if((await this.__ig1.is_file( chemin ))){
             try{
+                /* this.__ig1.ma_trace1(chemin, chemin_absolu_sauvegarde); */
                 /*
                   ../rev_1/toto.txt
                   ../sauvegarde_fichiers/rev_1/2026/01/23/toto.txt.2026-01-23_14_56_51.045.43aaa27f-9dba-4d1c-914d-c29537029931.bak
                 */
-                /* this.__gi1.ma_trace1(chemin, chemin_absolu_sauvegarde); */
                 await Deno.rename( chemin , chemin_absolu_sauvegarde );
-                /* this.__gi1.ma_trace1('\n\n\n\n\n\n\n\n\n/_**************** rename OK **********************_/\n\n\n'); */
+                /* this.__ig1.ma_trace1('\n\n\n\n\n\n\n\n\n/_**************** rename OK **********************_/\n\n\n'); */
                 return({"__xst" : __xsu});
             }catch(e){
-                this.__gi1.ma_trace1( 'e=' , e );
-                donnees_retournees[__xsi][__xer].push( 'erreur de renommage du fichier "' + chemin + '" vers "' + chemin_absolu_sauvegarde + '"' + this.__gi1.nl2( e ) );
-                donnees_retournees.__xst=__xer;
+                this.__ig1.ma_trace1( 'e=' , e );
+                donnees_retournees[__xsi][__xer].push( 'erreur de renommage du fichier "' + chemin + '" vers "' + chemin_absolu_sauvegarde + '"' + this.__ig1.nl2( e ) );
                 return({"__xst" : __xer});
             }
         }else{
@@ -120,14 +117,14 @@ class __fnt1{
     */
     test_du_nom_technique1( valeur , nom_champ ){
         if(valeur === null || valeur === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseigné' + this.__gi1.nl2()} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseigné' + this.__ig1.nl2()} );
             return({"__xst" : __xer});
         }
         let mes_err='erreur sur le champ "' + nom_champ + '" car ce caractère n\est pas admis : ';
         for( let i=0 ; i < valeur.length ; i++ ){
             let c=valeur.substr( i , 1 );
             if(!(c >= 'a' && c <= 'z' || c >= '0' && c <= '9' || c === '_' || c === '.')){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : mes_err + '<b>"' + c + '"</b> <br />'} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : mes_err + '<b>"' + c + '"</b> <br />'} );
                 return({"__xst" : __xer});
             }
         }
@@ -140,7 +137,7 @@ class __fnt1{
         if(valeur === ''){
             return({"__xst" : __xsu});
         }else{
-            let tt=this.__gi1.__rev1.rev_tcm( valeur );
+            let tt=this.__ig1.__rev1.rev_tcm( valeur );
             if(tt.__xst === __xsu){
                 let des_fonctions_non_trouvees='';
                 let mat=tt.__xva;
@@ -152,7 +149,7 @@ class __fnt1{
                 if(des_fonctions_non_trouvees === ''){
                     return({"__xst" : __xsu});
                 }
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'des fonctions ne sont pas définies " ' + des_fonctions_non_trouvees + '" ' + this.__gi1.nl2()} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'des fonctions ne sont pas définies " ' + des_fonctions_non_trouvees + '" ' + this.__ig1.nl2()} );
             }
         }
         return({"__xst" : __xer});
@@ -164,11 +161,11 @@ class __fnt1{
         if(valeur === null || valeur === ''){
             return({"__xst" : __xsu});
         }
-        if(this.__gi1.est_num( valeur )){
+        if(this.__ig1.est_num( valeur )){
             let v=parseFloat( valeur );
             /* si on a entré "3.4" 34  est différent de 30 ] */
             if(v * 10 !== parseInt( v , 10 ) * 10){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir une nombre avec une virgule ( "," )' + this.__gi1.nl2()} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir une nombre avec une virgule ( "," )' + this.__ig1.nl2()} );
                 return({"__xst" : __xer});
             }
             return({"__xst" : __xsu});
@@ -181,7 +178,7 @@ class __fnt1{
                     contient_virgule=true;
                 }
             }else{
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir des chiffres et/ou des virgules' + this.__gi1.nl2()} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir des chiffres et/ou des virgules' + this.__ig1.nl2()} );
                 return({"__xst" : __xer});
             }
         }
@@ -189,13 +186,13 @@ class __fnt1{
             /* c'est probablement un champ décimal */
             let tab=valeur.split( ',' );
             if(tab.length > 2){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit  contenir une virgule uniquement' + this.__gi1.nl2()} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit  contenir une virgule uniquement' + this.__ig1.nl2()} );
                 return({"__xst" : __xer});
             }
             let val1=parseInt( tab[0] , 10 );
             let val2=parseInt( tab[1] , 10 );
             if(val1 + val2 > 20){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" contenir une longueur cumulée de 20' + this.__gi1.nl2()} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" contenir une longueur cumulée de 20' + this.__ig1.nl2()} );
                 return({"__xst" : __xer});
             }
         }
@@ -208,7 +205,7 @@ class __fnt1{
         if(valeur && valeur.length === n){
             return({"__xst" : __xsu});
         }
-        this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit doit contenir ' + n + ' caractères.' + this.__gi1.nl2()} );
+        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit doit contenir ' + n + ' caractères.' + this.__ig1.nl2()} );
         return({"__xst" : __xer});
     }
     /*
@@ -216,14 +213,14 @@ class __fnt1{
     */
     test_du_nom_de_fichier1( valeur , nom_champ ){
         if(valeur === null || valeur === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseigné' + this.__gi1.nl2()} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseigné' + this.__ig1.nl2()} );
             return({"__xst" : __xer});
         }
         let mes_err='Erreur sur le champ "' + nom_champ + '" , ce caractère n\est pas admis : ';
         for( let i=0 ; i < valeur.length ; i++ ){
             let c=valeur.substr( i , 1 );
             if(!(c >= 'a' && c <= 'z' || c >= '0' && c <= '9' || c === '_' || c === '.')){
-                this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : mes_err + '<b>"' + c + '"</b> <br />'} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : mes_err + '<b>"' + c + '"</b> <br />'} );
                 return({"__xst" : __xer});
             }
         }
@@ -260,7 +257,7 @@ class __fnt1{
             }
         }
         if(nom_du_champ === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
             return({"__xst" : __xer});
         }
         let ref_champ_heure=null;
@@ -268,7 +265,7 @@ class __fnt1{
             ref_champ_heure=document.getElementById( nom_du_champ );
         } catch {}
         if(ref_champ_heure === null){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : '"' + nom_du_champ + '" non trouvé dans la page !'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : '"' + nom_du_champ + '" non trouvé dans la page !'} );
             return({"__xst" : __xer});
         }
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
@@ -288,7 +285,7 @@ class __fnt1{
         vv_sous_fenetre1.style.left=parseInt( dim.left , 10 ) + 'px';
         vv_sous_fenetre1.style.margin='0';
         vv_sous_fenetre1.style.padding='0';
-        vv_sous_fenetre1.style.borderRadius=this.__gi1.css_dimensions.t_rayon_b + 'px';
+        vv_sous_fenetre1.style.borderRadius=this.__ig1.css_dimensions.t_rayon_b + 'px';
         /*
           affichage du calendrier 
         */
@@ -306,7 +303,7 @@ class __fnt1{
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
         vv_sous_fenetre1.showModal();
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -395,7 +392,7 @@ class __fnt1{
             }
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , parseInt( minute_a_afficher , 10 ) , parseInt( seconde_a_afficher , 10 ) ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -443,7 +440,7 @@ class __fnt1{
             }
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -491,7 +488,7 @@ class __fnt1{
             }
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -510,7 +507,7 @@ class __fnt1{
         o1+='#vv_horloge td{';
         o1+='  min-width:2em;';
         o1+='  text-align:center;';
-        o1+='  border-width:' + this.__gi1.css_dimensions.t_border + 'px;';
+        o1+='  border-width:' + this.__ig1.css_dimensions.t_border + 'px;';
         o1+='  border-style:solid;';
         o1+='  border-color:white;';
         o1+='}';
@@ -682,13 +679,13 @@ class __fnt1{
             minute_a_afficher=0;
             seconde_a_afficher=0;
         }else if(option === 4){
-            this.__gi1.fermer_la_sous_fenetre();
+            this.__ig1.fermer_la_sous_fenetre();
             return({"__xst" : __xsu});
         }
         document.getElementById( nom_du_champ ).value=t;
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
-        /* this.__gi1.fermer_la_sous_fenetre(); */
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        /* this.__ig1.fermer_la_sous_fenetre(); */
         return({"__xst" : __xsu});
     }
     /*
@@ -750,7 +747,7 @@ class __fnt1{
             }
         }
         document.getElementById( nom_du_champ ).value='';
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
     /*
@@ -772,7 +769,7 @@ class __fnt1{
         let tt=new Date();
         let t=tt.getFullYear() + sepa_date + (tt.getMonth() + 1 < 10 ? ( '0' + (tt.getMonth() + 1) ) : ( tt.getMonth() + 1 )) + sepa_date + (tt.getDate() < 10 ? ( '0' + tt.getDate() ) : ( tt.getDate() ));
         document.getElementById( nom_du_champ ).value=t;
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
     /*
@@ -799,7 +796,7 @@ class __fnt1{
         }
         let t=annee + sepa_date + (mois < 10 ? ( '0' + mois ) : ( mois )) + sepa_date + (jour < 10 ? ( '0' + jour ) : ( jour ));
         document.getElementById( nom_du_champ ).value=t;
-        this.__gi1.fermer_la_sous_fenetre();
+        this.__ig1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
     /*
@@ -828,7 +825,7 @@ class __fnt1{
             mois++;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -857,7 +854,7 @@ class __fnt1{
             mois--;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -885,7 +882,7 @@ class __fnt1{
             annee=1000;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -913,7 +910,7 @@ class __fnt1{
             annee=9999;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -935,7 +932,7 @@ class __fnt1{
         annee=tt.getFullYear();
         mois=tt.getMonth() + 1;
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -959,7 +956,7 @@ class __fnt1{
         }
         annee=annee - annee% 50;
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -987,7 +984,7 @@ class __fnt1{
             annee=1000;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -1015,7 +1012,7 @@ class __fnt1{
             annee=9950;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -1042,7 +1039,7 @@ class __fnt1{
             annee=dt.getFullYear();
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -1061,7 +1058,7 @@ class __fnt1{
         o1+='#vv_calendrier td{';
         o1+='  min-width:2em;';
         o1+='  text-align:center;';
-        o1+='  border-width:' + this.__gi1.css_dimensions.t_border + 'px;';
+        o1+='  border-width:' + this.__ig1.css_dimensions.t_border + 'px;';
         o1+='  border-style:solid;';
         o1+='  border-color:white;';
         o1+='}';
@@ -1330,7 +1327,7 @@ class __fnt1{
             }
         }
         if(nom_du_champ === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
             return({"__xst" : __xer});
         }
         let ref_champ_date=null;
@@ -1338,7 +1335,7 @@ class __fnt1{
             ref_champ_date=document.getElementById( nom_du_champ );
         } catch {}
         if(ref_champ_date === null){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : '"' + nom_du_champ + '" non trouvé dans la page !'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : '"' + nom_du_champ + '" non trouvé dans la page !'} );
             return({"__xst" : __xer});
         }
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
@@ -1373,7 +1370,7 @@ class __fnt1{
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee_a_afficher , mois_a_afficher ) );
         vv_sous_fenetre1.showModal();
-        this.__gi1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /* ===================================================================================================================== */
@@ -1445,7 +1442,7 @@ class __fnt1{
             }
         }
         if(nom_du_champ === ''){
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
             return({"__xst" : __xer});
         }
         let maintenant=new Date();
@@ -1463,16 +1460,16 @@ class __fnt1{
             return({"__xst" : __xsu});
         }
         if(valeur.length !== 8){
-            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__ig1.nl2()});
         }
-        if(!(this.__gi1.est_num( valeur.substr( 0 , 2 ) )
-                   && this.__gi1.est_num( valeur.substr( 3 , 2 ) )
-                   && this.__gi1.est_num( valeur.substr( 6 , 2 ) ))
+        if(!(this.__ig1.est_num( valeur.substr( 0 , 2 ) )
+                   && this.__ig1.est_num( valeur.substr( 3 , 2 ) )
+                   && this.__ig1.est_num( valeur.substr( 6 , 2 ) ))
         ){
-            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__ig1.nl2()});
         }
         if(!(valeur.substr( 2 , 1 ) === sepa_heure && valeur.substr( 5 , 1 ) === sepa_heure)){
-            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__ig1.nl2() + ']'});
         }
         let heure_num=parseInt( valeur.substr( 0 , 2 ) , 10 );
         if(heure_num < 0 || heure_num > 23){
@@ -1487,7 +1484,7 @@ class __fnt1{
             return({"__xst" : __xer ,"__xme" : 'les secondes doivent être comprises entre 00 et 59 inclus'});
         }
         if(valeur < inf || valeur > sup){
-            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__ig1.nl2() + ']'});
         }
         return({"__xst" : __xsu});
     }
@@ -1501,16 +1498,16 @@ class __fnt1{
             return({"__xst" : __xsu});
         }
         if(valeur.length !== 10){
-            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__ig1.nl2()});
         }
-        if(!(this.__gi1.est_num( valeur.substr( 0 , 4 ) )
-                   && this.__gi1.est_num( valeur.substr( 5 , 2 ) )
-                   && this.__gi1.est_num( valeur.substr( 8 , 2 ) ))
+        if(!(this.__ig1.est_num( valeur.substr( 0 , 4 ) )
+                   && this.__ig1.est_num( valeur.substr( 5 , 2 ) )
+                   && this.__ig1.est_num( valeur.substr( 8 , 2 ) ))
         ){
-            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__gi1.nl2()});
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__ig1.nl2()});
         }
         if(!(valeur.substr( 4 , 1 ) === sepa_date && valeur.substr( 7 , 1 ) === sepa_date)){
-            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__ig1.nl2() + ']'});
         }
         let annee_num=parseInt( valeur.substr( 0 , 4 ) , 10 );
         if(annee_num < 1000){
@@ -1543,7 +1540,7 @@ class __fnt1{
             }
         }
         if(valeur < inf || valeur > sup){
-            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__gi1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__ig1.nl2() + ']'});
         }
         return({"__xst" : __xsu});
     }
@@ -1604,7 +1601,7 @@ class __fnt1{
         }
         if(ligne !== null && colonne !== null && zone_source !== null){
             try{
-                this.__gi1.masquer_la_zone_message();
+                this.__ig1.masquer_la_zone_message();
                 let aa=document.getElementById( zone_source );
                 let tt=aa.value.split( '\n' );
                 let pos_deb=0;
@@ -1636,11 +1633,11 @@ class __fnt1{
             }
         }
         if(zone_source !== ''){
-            if(this.__gi1.derniere_zone_editee && zone_source === this.__gi1.derniere_zone_editee.id){
-                let debut=this.__gi1.derniere_zone_editee.value.substr( 0 , this.__gi1.position_dans_la_derniere_zone_editee );
-                let fin=this.__gi1.derniere_zone_editee.value.substr( this.__gi1.position_dans_la_derniere_zone_editee );
+            if(this.__ig1.derniere_zone_editee && zone_source === this.__ig1.derniere_zone_editee.id){
+                let debut=this.__ig1.derniere_zone_editee.value.substr( 0 , this.__ig1.position_dans_la_derniere_zone_editee );
+                let fin=this.__ig1.derniere_zone_editee.value.substr( this.__ig1.position_dans_la_derniere_zone_editee );
                 let nouveau=debut + '#()' + fin;
-                this.__gi1.derniere_zone_editee.value=nouveau;
+                this.__ig1.derniere_zone_editee.value=nouveau;
                 let obj=this.formater_le_rev_de_textarea1( mat , d );
                 if(obj.__xst === __xsu){
                     return({"__xst" : __xsu});
@@ -1672,9 +1669,9 @@ class __fnt1{
         if(zone_source !== ''){
             let t=document.getElementById( zone_source );
             if(t){
-                let tt=this.__gi1.__rev1.rev_tcm( t.value );
+                let tt=this.__ig1.__rev1.rev_tcm( t.value );
                 if(tt.__xst === __xsu){
-                    let ttt=this.__gi1.__rev1.matrice_vers_source_rev1( tt.__xva , 0 , true , 1 );
+                    let ttt=this.__ig1.__rev1.matrice_vers_source_rev1( tt.__xva , 0 , true , 1 );
                     if(ttt.__xst === __xsu){
                         try{
                             t.value=ttt.__xva;
@@ -1686,7 +1683,7 @@ class __fnt1{
                 }
             }
         }else{
-            this.__gi1.ajoute_message( {"__xst" : __xer ,"__xme" : 'zone source non trouvée ' + this.__gi1.nl2()} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'zone source non trouvée ' + this.__ig1.nl2()} );
             return({"__xst" : __xer});
         }
         return({"__xst" : __xer});
@@ -1760,21 +1757,21 @@ class __fnt1{
                     let hauteur=Math.max( parseInt( ((rectangles[numero_bloc].y + rectangles[numero_bloc].height) - rectangles[0].y) + rectangles[0].height , 10 ) , 60 );
                     document.getElementById( 'dummy' ).remove();
                     /* ajout d'un espace de hauteur de police */
-                    hauteur+=this.__gi1.css_dimensions.t_police;
+                    hauteur+=this.__ig1.css_dimensions.t_police;
                     t1.style.height=hauteur + 'px';
                 }else{
-                    t1.style.height=this.__gi1.css_dimensions.hauteur_max_textarea + 'vh';
+                    t1.style.height=this.__ig1.css_dimensions.hauteur_max_textarea + 'vh';
                 }
                 let dim=t1.getBoundingClientRect();
                 let bosition_bas=dim.bottom;
                 /* window.innerHeight = partie visible de la fenêtre */
                 let difference=parseInt( window.innerHeight , 10 ) - parseInt( bosition_bas , 10 );
-                if(difference - 2 * this.__gi1.css_dimensions.h_barre < 0){
+                if(difference - 2 * this.__ig1.css_dimensions.h_barre < 0){
                     /* il faut faire défiler le fenêtre de la différence */
                     let valeur_scroll_actuel=window.scrollY;
                     let decallage=valeur_scroll_actuel - difference;
                     /* on ajoute au décallage 2*( la hauteur du pied de page ) */
-                    decallage=decallage + 2 * this.__gi1.css_dimensions.h_barre;
+                    decallage=decallage + 2 * this.__ig1.css_dimensions.h_barre;
                     window.scrollTo( 0 , decallage );
                 }
                 return({"__xst" : __xsu});
@@ -1803,7 +1800,7 @@ class __fnt1{
                 let b=new RegExp( cc , 'g' );
                 aa=aa.replace( b , dd );
                 document.getElementById( zone_source ).value=aa;
-                this.__gi1.fermer_la_sous_fenetre();
+                this.__ig1.fermer_la_sous_fenetre();
                 return({"__xst" : __xsu});
             }
         }
@@ -1823,7 +1820,7 @@ class __fnt1{
             }
         }
         if(zone_source !== ''){
-            this.__gi1.zone_d_edition_en_cours=zone_source;
+            this.__ig1.zone_d_edition_en_cours=zone_source;
             let aa=document.getElementById( zone_source );
             let bb='';
             if(aa.selectionStart === aa.selectionEnd){
@@ -1838,7 +1835,7 @@ class __fnt1{
             o1+='<input id="vv_valeur_remplacante" value="" />';
             o1+='<br />';
             o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_la_valeur_dans_la_zone(zone_source(' + zone_source + '))))" title="remplacer_dans_la_zone" >remplacer</div>\r\n';
-            this.__gi1.affiche_sous_fenetre1( o1 );
+            this.__ig1.affiche_sous_fenetre1( o1 );
         }
         return({"__xst" : __xer});
     }
@@ -1856,7 +1853,7 @@ class __fnt1{
             }
         }
         if(zone_source !== ''){
-            this.__gi1.zone_d_edition_en_cours=zone_source;
+            this.__ig1.zone_d_edition_en_cours=zone_source;
             const copyToClipboard=async ( str ) => {
                 try{
                     await navigator.clipboard.writeText( str );
@@ -1883,7 +1880,7 @@ class __fnt1{
             }
         }
         if(zone_source !== ''){
-            this.__gi1.zone_d_edition_en_cours=zone_source;
+            this.__ig1.zone_d_edition_en_cours=zone_source;
             const copyToClipboard=async ( str ) => {
                 try{
                     await navigator.clipboard.writeText( str );
@@ -1894,8 +1891,8 @@ class __fnt1{
             };
             let aa=document.getElementById( zone_source );
             if(aa.selectionStart === aa.selectionEnd){
-                this.__gi1.ajoute_message( {"__xst" : __xsu ,"__xme" : 'zone de sélection vide '} );
-                this.__gi1.affiche_les_messages();
+                this.__ig1.ajoute_message( {"__xst" : __xsu ,"__xme" : 'zone de sélection vide '} );
+                this.__ig1.affiche_les_messages();
                 return({"__xst" : __xsu});
             }else{
                 let bb=document.getElementById( zone_source ).value.substr( aa.selectionStart , aa.selectionEnd - aa.selectionStart );
@@ -1926,8 +1923,8 @@ class __fnt1{
                     const clipboardContents=await navigator.clipboard.read();
                     for(let item of clipboardContents){
                         if(!item.types.includes( "text/plain" )){
-                            this.__gi1.ajoute_message( {"__xst" : __xsu ,"__xme" : 'le contenu du press-papier n\'est pas de type texte'} );
-                            this.__gi1.affiche_les_messages();
+                            this.__ig1.ajoute_message( {"__xst" : __xsu ,"__xme" : 'le contenu du press-papier n\'est pas de type texte'} );
+                            this.__ig1.affiche_les_messages();
                             return({"__xst" : __xsu});
                         }
                         const blob=await item.getType( "text/plain" );
@@ -1964,8 +1961,8 @@ class __fnt1{
         let le_texte=la_textarea.value.replace( /</g , '&lt;' ).replace( />/g , '&gt;' );
         /* Appending element to the DOM after textarea */
         let le_bounding=la_textarea.getBoundingClientRect();
-        let le_top=le_bounding.top + this.__gi1.css_dimensions.t_padding_de_input + this.__gi1.css_dimensions.t_border;
-        let le_left=parseInt( le_bounding.left + this.__gi1.css_dimensions.t_padding_de_input + this.__gi1.css_dimensions.t_border , 10 );
+        let le_top=le_bounding.top + this.__ig1.css_dimensions.t_padding_de_input + this.__ig1.css_dimensions.t_border;
+        let le_left=parseInt( le_bounding.left + this.__ig1.css_dimensions.t_padding_de_input + this.__ig1.css_dimensions.t_border , 10 );
         let le_height=parseInt( le_bounding.height , 10 );
         /* la_textarea.scrollTo(0,0); // ; */
         /*
@@ -1985,8 +1982,8 @@ class __fnt1{
             /*
               à la fin de la formule çi dessous il y a un "-numero_bloc' comme si yl y avait in pixem en trop par ligne
             */
-            decallage_y=parseInt( rectangles[numero_bloc].y - rectangles[0].y - rectangles[0].height - 2 * this.__gi1.css_dimensions.t_border - 2 * this.__gi1.css_dimensions.t_padding_de_input - numero_bloc , 10 );
-            /* rectangles[62].top-rectangles[0].top-rectangles[0].height-2*__gi1.css_dimensions.t_border-2*__gi1.css_dimensions.t_padding_de_input */
+            decallage_y=parseInt( rectangles[numero_bloc].y - rectangles[0].y - rectangles[0].height - 2 * this.__ig1.css_dimensions.t_border - 2 * this.__ig1.css_dimensions.t_padding_de_input - numero_bloc , 10 );
+            /* rectangles[62].top-rectangles[0].top-rectangles[0].height-2*__ig1.css_dimensions.t_border-2*__ig1.css_dimensions.t_padding_de_input */
         }else{
             decallage_y=999999999;
         }
@@ -2072,11 +2069,11 @@ class __fnt1{
             }
         }
         if(zone_source !== ''){
-            this.__gi1.zone_d_edition_en_cours=zone_source;
+            this.__ig1.zone_d_edition_en_cours=zone_source;
             let numero_de_ligne=window.prompt( "numero de ligne ?" , "0" );
-            if(this.__gi1.est_num( numero_de_ligne ) && parseInt( numero_de_ligne , 10 ) > 0){
+            if(this.__ig1.est_num( numero_de_ligne ) && parseInt( numero_de_ligne , 10 ) > 0){
                 let cmd='ligne(' + numero_de_ligne + '),zone(\'' + zone_source + '\')';
-                let mat=this.__gi1.__rev1.rev_tcm( cmd );
+                let mat=this.__ig1.__rev1.rev_tcm( cmd );
                 if(mat.__xst === __xsu){
                     this.placer_le_curseur_en_lig1( mat.__xva , 0 );
                     return({"__xst" : __xsu});
@@ -2100,9 +2097,9 @@ class __fnt1{
             }
         }
         if(zone_source !== ''){
-            this.__gi1.zone_d_edition_en_cours=zone_source;
+            this.__ig1.zone_d_edition_en_cours=zone_source;
             let position=window.prompt( "position ?" );
-            if(this.__gi1.est_num( position ) && parseInt( position , 10 ) >= 0){
+            if(this.__ig1.est_num( position ) && parseInt( position , 10 ) >= 0){
                 function toto( par ){
                     let aa=document.getElementById( par.zone_source );
                     aa.focus();
@@ -2133,7 +2130,7 @@ class __fnt1{
     */
     boutons_suppression2( nom_de_la_zone ){
         let o1='';
-        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__gi1.les_svg.copier_tout + '</div>\r\n';
+        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>\r\n';
         return o1;
     }
     /*
@@ -2142,9 +2139,9 @@ class __fnt1{
     boutons_suppression1( nom_de_la_zone ){
         /* let svg_copier_la_selection='<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el" viewBox="0 0  100 100"><rect x="7" y="6" width="0" height="0" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect><path d=" M 18 10 C 24 10 31 10 38 10 C 40 2 56 2 59 10 C 65 10 72 10 79 10 C 82 10 84 13 84 16 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 16 c 0 -3 2 -6 5 -6 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:4;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="24" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>'; */
         let o1='';
-        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__gi1.les_svg.copier_tout + '</div>\r\n';
-        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__gi1.les_svg.agrandir + '</div>\r\n';
-        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__gi1.les_svg.retrecir + '</div>\r\n';
+        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>\r\n';
+        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>\r\n';
+        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>\r\n';
         return o1;
     }
     /*
@@ -2153,10 +2150,10 @@ class __fnt1{
     boutons_edition_text( nom_de_la_zone ){
         /* let svg_copier_la_selection='<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el"viewBox="0 0  100 100"><rect x="7" y="6" width="0" height="0" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect><path d=" M 18 10 C 24 10 31 10 38 10 C 40 2 56 2 59 10 C 65 10 72 10 79 10 C 82 10 84 13 84 16 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 16 c 0 -3 2 -6 5 -6 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:4;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="24" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>'; */
         let o1='';
-        o1+=' <div class="rev_b_svg yy__1 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__gi1.les_svg.copier_tout + '</div>\r\n';
-        o1+=' <div class="rev_b_svg yy__3 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__gi1.les_svg.copier_la_selection + '</div>';
-        o1+=' <div class="rev_b_svg yy__0 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__gi1.les_svg.scotcher + '</div>';
-        o1+=' <div class="rev_b_svg yy__xsi_2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__gi1.les_svg.ensemble_vide + '</div>\r\n';
+        o1+=' <div class="rev_b_svg yy__1 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>\r\n';
+        o1+=' <div class="rev_b_svg yy__3 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</div>';
+        o1+=' <div class="rev_b_svg yy__0 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
+        o1+=' <div class="rev_b_svg yy__xsi_2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>\r\n';
         return o1;
     }
     /*
@@ -2167,12 +2164,12 @@ class __fnt1{
         let o1='';
         o1+=' <div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_position1(zone_source(' + nom_de_la_zone + '))))" title="aller à la position" >position</div>\r\n';
         o1+=' <div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_ligne1(zone_source(' + nom_de_la_zone + '))))" title="aller à la ligne" >ligne</div>\r\n';
-        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__gi1.les_svg.copier_tout + '</div>\r\n';
-        o1+=' <div class="rev_b_svg yy__3  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__gi1.les_svg.copier_la_selection + '</div>';
-        o1+=' <div class="rev_b_svg yy__0  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__gi1.les_svg.scotcher + '</div>';
-        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__gi1.les_svg.agrandir + '</div>\r\n';
-        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__gi1.les_svg.retrecir + '</div>\r\n';
-        o1+=' <div class="rev_b_svg yy__xsi_2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__gi1.les_svg.ensemble_vide + '</div>\r\n';
+        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>\r\n';
+        o1+=' <div class="rev_b_svg yy__3  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</div>';
+        o1+=' <div class="rev_b_svg yy__0  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
+        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>\r\n';
+        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>\r\n';
+        o1+=' <div class="rev_b_svg yy__xsi_2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>\r\n';
         o1+=' <div class="rev_bouton yy__xsi_1 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</div>\r\n';
         return o1;
     }
@@ -2202,22 +2199,22 @@ class __fnt1{
         }
         if(nom_zone !== '' && type_lsto !== ''){
             try{
-                this.__gi1.stockage_local[type_lsto][nom_zone].valeur=parseInt( document.getElementById( nom_zone ).value , 10 );
+                this.__ig1.stockage_local[type_lsto][nom_zone].valeur=parseInt( document.getElementById( nom_zone ).value , 10 );
             } catch {}
-            let deverminage_avant=this.__gi1.__deverminage;
-            this.__gi1.__deverminage=this.__gi1.stockage_local.parametres.__deverminage.valeur;
-            if(deverminage_avant !== this.__gi1.__deverminage){
-                console.log( 'Changement de déverminage=' , this.__gi1.__deverminage );
+            let deverminage_avant=this.__ig1.__deverminage;
+            this.__ig1.__deverminage=this.__ig1.stockage_local.parametres.__deverminage.valeur;
+            if(deverminage_avant !== this.__ig1.__deverminage){
+                console.log( 'Changement de déverminage=' , this.__ig1.__deverminage );
             }
-            if(this.__gi1.__deverminage === 2){
-                console.log( this.__gi1.stockage_local );
+            if(this.__ig1.__deverminage === 2){
+                console.log( this.__ig1.stockage_local );
             }
-            localStorage.setItem( this.__gi1.cle_lst0 , JSON.stringify( this.__gi1.stockage_local ) );
-            this.__gi1.css1();
+            localStorage.setItem( this.__ig1.cle_lst0 , JSON.stringify( this.__ig1.stockage_local ) );
+            this.__ig1.css1();
             let zone_actuelle=document.getElementById( nom_zone + '_actuelle' );
             if(zone_actuelle !== null){
                 try{
-                    zone_actuelle.innerHTML=this.__gi1.stockage_local[type_lsto][nom_zone].valeur;
+                    zone_actuelle.innerHTML=this.__ig1.stockage_local[type_lsto][nom_zone].valeur;
                 } catch {}
             }
         }
@@ -2255,44 +2252,45 @@ class __fnt1{
         let min=0;
         let max=10;
         let step=1;
+        let font_size_fixe='14px';
+        let largeur_des_champs_input='3rem';
+        let style_des_tds0='border:1px black solid;text-align:center;font-size:' + font_size_fixe + ';';
+        let style_des_tds1=' style="border:1px black solid;"';
+        let style_des_tds2=' style="border:1px green solid;height:40px;"';
+        let le_style_des_tables1=' style="border:1px black solid;border-collapse:collapse;min-width:80vw;"';
         let t='';
         t+='<h1>paramètres et aides</h1>';
-        for(let i in this.__gi1.reference_stockage_local['aspect']){
-            t+='<div style="border:1px red solid;margin:10px;padding:10px;overflow-x:scroll;">';
+        for(let i in this.__ig1.reference_stockage_local['aspect']){
+            t+='<div style="border:1px red solid;margin:1px;padding:1px;overflow-x:scroll;">';
             t+='';
-            t+='<table border="1"><tr>';
-            t+='<td>';
-            t+='<span style="font-size:16px;">' + this.__gi1.reference_stockage_local['aspect'][i].libelle0 + '</span>';
+            t+='<table ' + le_style_des_tables1 + ' ><tr>';
+            t+='<td style="' + style_des_tds0 + '">';
+            t+='<b>' + this.__ig1.reference_stockage_local['aspect'][i].libelle0 + '</b>';
             t+='</td>';
-            t+='<td>';
+            t+='<td  ' + style_des_tds1 + '>';
             t+='<input ';
             t+=' type="range" ';
             t+=' id="' + i + '" ';
-            t+=' min="' + this.__gi1.reference_stockage_local['aspect'][i].min + '" ';
-            t+=' max="' + this.__gi1.reference_stockage_local['aspect'][i].max + '" ';
-            t+=' step="' + this.__gi1.reference_stockage_local['aspect'][i].step + '" ';
-            t+=' value="' + this.__gi1.stockage_local['aspect'][i].valeur + '" ';
+            t+=' min="' + this.__ig1.reference_stockage_local['aspect'][i].min + '" ';
+            t+=' max="' + this.__ig1.reference_stockage_local['aspect'][i].max + '" ';
+            t+=' step="' + this.__ig1.reference_stockage_local['aspect'][i].step + '" ';
+            t+=' value="' + this.__ig1.stockage_local['aspect'][i].valeur + '" ';
             t+=' data-rev_change_ou_entree="';
-            t+='m1(';
-            t+=' n1(__gi1)';
-            t+=' f1(';
-            t+='  maj_contenu(';
-            t+='   type_cible(inner_html)';
-            t+='   id(' + i + '_nouvelle),';
-            t+='   valeur(';
-            t+='    valeur_de_champ(' + i + ')';
-            t+='   )';
-            t+='  )';
-            t+=' ),';
-            t+='),';
-            if(this.__gi1.reference_stockage_local['aspect'][i].nom_du_style !== ''){
-                t+='m1(n1(__gi1),f1(maj_contenu(';
+            t+='m1(n1(__ig1),f1(maj_contenu(';
+            t+=' type_cible(inner_html)';
+            t+=' id(' + i + '_nouvelle),';
+            t+=' valeur(';
+            t+='  valeur_de_champ(' + i + ')';
+            t+=' )';
+            t+='))),';
+            if(this.__ig1.reference_stockage_local['aspect'][i].nom_du_style !== ''){
+                t+='m1(n1(__ig1),f1(maj_contenu(';
                 t+=' type_cible(style)';
                 t+=' id(' + i + '_nouvelle),';
                 t+=' valeur(';
-                t+='   nom_du_style(' + this.__gi1.reference_stockage_local['aspect'][i].nom_du_style + ')';
+                t+='   nom_du_style(' + this.__ig1.reference_stockage_local['aspect'][i].nom_du_style + ')';
                 t+='   valeur_de_champ(' + i + '),';
-                t+='   dimension(' + this.__gi1.stockage_local['aspect'][i].dimension + ')';
+                t+='   dimension(' + this.__ig1.stockage_local['aspect'][i].dimension + ')';
                 t+=' )';
                 t+=')))';
             }
@@ -2302,53 +2300,69 @@ class __fnt1{
             t+=' maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))';
             t+='))';
             t+='"';
-            if(this.__gi1.reference_stockage_local['aspect'][i].style_interface){
-                t+=' style="' + this.__gi1.reference_stockage_local['aspect'][i].style_interface + '"';
+            if(this.__ig1.reference_stockage_local['aspect'][i].style_interface){
+                t+=' style="' + this.__ig1.reference_stockage_local['aspect'][i].style_interface + '"';
             }
             t+='>';
             t+='</td>';
             t+='</tr>';
             t+='</tr>';
-            t+='<td colspan="2" style="height:40px;font-size:16px;"> nouvelle : ';
+            t+='<td colspan="2" ' + style_des_tds2 + '> nouvelle : ';
             t+=' <div style="display:inline-block;border:1px blue solid;">';
-            t+='  <span id="' + i + '_nouvelle" style="display:inline-block;border-color:red;border-style:solid;min-width:4rem;min-height:30px;';
+            t+='  <span id="' + i + '_nouvelle" style="display:inline-block;border-color:red;border-style:solid;min-width:' + largeur_des_champs_input + ';min-height:22px;';
             if(i === '--t_police'){
-                t+='font-size:' + this.__gi1.stockage_local['aspect'][i].valeur + 'px;';
+                t+='font-size:' + this.__ig1.stockage_local['aspect'][i].valeur + 'px;';
             }else{
                 t+='font-size:14px;';
             }
             if(i === '--t_border'){
-                t+='border-width:' + this.__gi1.stockage_local['aspect'][i].valeur + 'px;';
+                t+='border-width:' + this.__ig1.stockage_local['aspect'][i].valeur + 'px;';
             }else{
                 t+='border-width:1px;';
             }
-            t+='">' + this.__gi1.stockage_local['aspect'][i].valeur + '</span>';
-            t+=' </div>' + this.__gi1.stockage_local['aspect'][i].dimension + '';
+            t+='">' + this.__ig1.stockage_local['aspect'][i].valeur + '</span>';
+            t+=' </div>' + this.__ig1.stockage_local['aspect'][i].dimension + '';
             t+=' , actuelle : ';
-            t+=' <span id="' + i + '_actuelle">' + this.__gi1.stockage_local['aspect'][i].valeur + '</span>';
-            t+=' ' + this.__gi1.stockage_local['aspect'][i].dimension;
+            t+=' <span id="' + i + '_actuelle">' + this.__ig1.stockage_local['aspect'][i].valeur + '</span>';
+            t+=' ' + this.__ig1.stockage_local['aspect'][i].dimension;
             t+='</td>';
             t+='</tr></table>';
             t+='</div>';
         }
-        for(let i in this.__gi1.reference_stockage_local['parametres']){
-            t+='<div style="border:1px red solid;margin:10px;padding:10px;overflow-x:scroll;">';
+        for(let i in this.__ig1.reference_stockage_local['parametres']){
+            t+='<div style="border:1px red solid;margin:1px;padding:1px;overflow-x:scroll;">';
             t+='';
-            t+='<table border="1"><tr>';
-            t+='<td>';
-            t+='<span style="font-size:16px;">' + this.__gi1.reference_stockage_local['parametres'][i].libelle0 + '</span>';
+            t+='<table ' + le_style_des_tables1 + '><tr>';
+            if(i === '__deverminage'){
+                console.log( 'this.__ig1.stockage_local[parametres][i].valeur=' , this.__ig1.stockage_local['parametres'][i].valeur );
+                if(this.__ig1.stockage_local['parametres'][i].valeur === 0){
+                    t+='<td style="' + style_des_tds0 + ';background:SpringGreen;color:black;min-width:70%;">';
+                }else if(this.__ig1.stockage_local['parametres'][i].valeur === 1){
+                    t+='<td style="' + style_des_tds0 + ';background:DarkOrange;color:black;min-width:70%;">';
+                }else if(this.__ig1.stockage_local['parametres'][i].valeur === 2){
+                    t+='<td style="' + style_des_tds0 + ';background:yellow;color:red;min-width:70%;">';
+                }else{
+                    t+='<td style="' + style_des_tds0 + ';background:SaddleBrown;color:white;min-width:70%;">';
+                }
+            }else{
+                t+='<td style="' + style_des_tds0 + '">';
+            }
+            t+='<b>' + this.__ig1.reference_stockage_local['parametres'][i].libelle0 + '</b>';
             t+='</td>';
-            t+='<td>';
+            t+='<td ' + style_des_tds1 + '>';
             t+='<input ';
+            if(i === '__deverminage'){
+                t+=' style="width:80px;" ';
+            }
             t+=' type="range" ';
             t+=' id="' + i + '" ';
-            t+=' min="' + this.__gi1.reference_stockage_local['parametres'][i].min + '" ';
-            t+=' max="' + this.__gi1.reference_stockage_local['parametres'][i].max + '" ';
-            t+=' step="' + this.__gi1.reference_stockage_local['parametres'][i].step + '" ';
-            t+=' value="' + this.__gi1.stockage_local['parametres'][i].valeur + '" ';
+            t+=' min="' + this.__ig1.reference_stockage_local['parametres'][i].min + '" ';
+            t+=' max="' + this.__ig1.reference_stockage_local['parametres'][i].max + '" ';
+            t+=' step="' + this.__ig1.reference_stockage_local['parametres'][i].step + '" ';
+            t+=' value="' + this.__ig1.stockage_local['parametres'][i].valeur + '" ';
             t+=' data-rev_change_ou_entree="';
             t+='m1(';
-            t+=' n1(__gi1)';
+            t+=' n1(__ig1)';
             t+=' f1(';
             t+='  maj_contenu(';
             t+='   type_cible(inner_html)';
@@ -2359,21 +2373,16 @@ class __fnt1{
             t+='  )';
             t+=' ),';
             t+='),';
-            if(this.__gi1.reference_stockage_local['parametres'][i].nom_du_style !== ''){
-                t+='m1(';
-                t+=' n1(__gi1)';
-                t+=' f1(';
-                t+='  maj_contenu(';
-                t+='   type_cible(style)';
-                t+='   id(' + i + '_nouvelle),';
-                t+='   valeur(';
-                t+='     nom_du_style(' + this.__gi1.reference_stockage_local['parametres'][i].nom_du_style + ')';
-                t+='     valeur_de_champ(' + i + '),';
-                t+='     dimension(' + this.__gi1.stockage_local['parametres'][i].dimension + ')';
-                t+='   )';
-                t+='  )';
+            if(this.__ig1.reference_stockage_local['parametres'][i].nom_du_style !== ''){
+                t+='m1(n1(__ig1),f1(maj_contenu(';
+                t+=' type_cible(style)';
+                t+=' id(' + i + '_nouvelle),';
+                t+=' valeur(';
+                t+='   nom_du_style(' + this.__ig1.reference_stockage_local['parametres'][i].nom_du_style + ')';
+                t+='   valeur_de_champ(' + i + '),';
+                t+='   dimension(' + this.__ig1.stockage_local['parametres'][i].dimension + ')';
                 t+=' )';
-                t+=')';
+                t+=')))';
             }
             t+='"';
             t+=' data-rev_click="';
@@ -2388,48 +2397,48 @@ class __fnt1{
             t+='</td>';
             t+='</tr>';
             t+='</tr>';
-            t+='<td colspan="2" style="height:40px;font-size:16px;"> nouvelle : ';
+            t+='<td colspan="2" ' + style_des_tds2 + '> nouvelle : ';
             t+='<div style="display:inline-block;border:1px blue solid;">';
-            t+='<span id="' + i + '_nouvelle" style="display:inline-block;border:1px red solid;min-width:4rem;min-height:30px;">';
-            t+='' + this.__gi1.stockage_local['parametres'][i].valeur + '';
+            t+='  <span id="' + i + '_nouvelle" style="display:inline-block;border-color:red:border-style:solid;min-width:' + largeur_des_champs_input + ';min-height:22px;">';
+            t+='' + this.__ig1.stockage_local['parametres'][i].valeur + '';
             t+='</span>';
-            t+='</div>' + this.__gi1.stockage_local['parametres'][i].dimension + '';
+            t+='</div>' + this.__ig1.stockage_local['parametres'][i].dimension + '';
             t+=' , actuelle : ';
-            t+='<span id="' + i + '_actuelle">' + this.__gi1.stockage_local['parametres'][i].valeur + '</span>' + this.__gi1.stockage_local['parametres'][i].dimension;
+            t+='<span id="' + i + '_actuelle">' + this.__ig1.stockage_local['parametres'][i].valeur + '</span>' + this.__ig1.stockage_local['parametres'][i].dimension;
             t+='</td>';
             t+='</tr></table>';
             t+='</div>';
         }
         let ecran_tactile='ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-        t+='<table border="1">';
+        t+='<table ' + le_style_des_tables1 + '>';
         t+='  <tr>';
-        t+='    <td>ecran tactile</td>';
-        t+='    <td><b>' + JSON.stringify( ecran_tactile ) + '</b></td>';
+        t+='    <td ' + style_des_tds1 + '>ecran tactile</td>';
+        t+='    <td ' + style_des_tds1 + '><b>' + JSON.stringify( ecran_tactile ) + '</b></td>';
         t+='  </tr>';
         t+='  <tr>';
-        t+='    <td>safari mobile</td>';
-        t+='    <td><b>' + JSON.stringify( navigator.userAgent.match( /(iPod|iPhone|iPad)/ ) && navigator.userAgent.match( /AppleWebKit/ ) ) + '</b></td>';
+        t+='    <td ' + style_des_tds1 + '>safari mobile</td>';
+        t+='    <td ' + style_des_tds1 + '><b>' + JSON.stringify( navigator.userAgent.match( /(iPod|iPhone|iPad)/ ) && navigator.userAgent.match( /AppleWebKit/ ) ) + '</b></td>';
         t+='  </tr>';
         t+='  <tr>';
-        t+='    <td>taille de l\'écran</td>';
-        t+='    <td><b> largeur=' + window.innerWidth + ' , hauteur=' + window.innerHeight + '</b></td>';
+        t+='    <td ' + style_des_tds1 + '>taille de l\'écran</td>';
+        t+='    <td ' + style_des_tds1 + '><b> largeur=' + window.innerWidth + ' , hauteur=' + window.innerHeight + '</b></td>';
         t+='  </tr>';
         let genre_safari=this.#le_userAgent( /safari/i ) && !this.#le_userAgent( /chrome/i ) && !this.#le_userAgent( /android/i );
         t+='  <tr>';
-        t+='    <td>genre safari</td>';
-        t+='    <td><b>' + genre_safari + '</b></td>';
+        t+='    <td ' + style_des_tds1 + '>genre safari</td>';
+        t+='    <td ' + style_des_tds1 + '><b>' + genre_safari + '</b></td>';
         t+='  </tr>';
         t+='  <tr>';
-        t+='    <td>ipad ou iphone</td>';
-        t+='    <td><b>' + (genre_safari && navigator && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) + '</b></td>';
+        t+='    <td ' + style_des_tds1 + '>ipad ou iphone</td>';
+        t+='    <td ' + style_des_tds1 + '><b>' + (genre_safari && navigator && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) + '</b></td>';
         t+='  </tr>';
         t+='  <tr>';
-        t+='    <td>crios</td>';
-        t+='    <td><b>' + (navigator && navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && ecran_tactile && this.#le_userAgent( /crios/i )) + '</b></td>';
+        t+='    <td ' + style_des_tds1 + '>crios</td>';
+        t+='    <td ' + style_des_tds1 + '><b>' + (navigator && navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && ecran_tactile && this.#le_userAgent( /crios/i )) + '</b></td>';
         t+='  </tr>';
         t+='  <tr>';
-        t+='    <td>navigator.userAgent</td>';
-        t+='    <td><b>' + JSON.stringify( navigator.userAgent ) + '</b></td>';
+        t+='    <td ' + style_des_tds1 + '>navigator.userAgent</td>';
+        t+='    <td ' + style_des_tds1 + '><b>' + JSON.stringify( navigator.userAgent ) + '</b></td>';
         t+='  </tr>';
         t+='</table>';
         t+='<br />';
@@ -2438,10 +2447,10 @@ class __fnt1{
           t+='<br />';
           t+='navigator.userAgent = <b>' + JSON.stringify( navigator.userAgent ) + '</b>';
         */
-        this.__gi1.maj_contenu_principal( t );
-        this.__gi1.activer_menu( null , null , '-2' );
-        this.__gi1.maj_hash( mat , 0 );
-        this.__gi1.maj_title_htm1( 'paramètres et aide' );
+        this.__ig1.maj_contenu_principal( t );
+        this.__ig1.activer_menu( null , null , '-2' );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( 'paramètres et aide' );
         return({"__xst" : __xsu});
     }
     /*
@@ -2449,7 +2458,7 @@ class __fnt1{
     */
     critere_liste( a , b ){
         if(a.hasOwnProperty( b ) && a[b] !== ''){
-            if(this.__gi1.est_num( a[b] )){
+            if(this.__ig1.est_num( a[b] )){
                 return(b + '(' + a[b] + ')');
             }
             let x=b + '(\'' + a[b].replace( /\\/g , '\\\\' ).replace( /'/g , '\\\'' ) + '\')';
@@ -2519,7 +2528,7 @@ class __fnt1{
       %tagada% => \%tagada\%
     */
     sq3( s ){
-        if(this.__gi1.est_num( s )){
+        if(this.__ig1.est_num( s )){
             return s;
         }else if(s === null){
             return 'NULL';
@@ -2545,7 +2554,7 @@ class __fnt1{
       condition "comme" 
     */
     sq2( s ){
-        if(this.__gi1.est_num( s )){
+        if(this.__ig1.est_num( s )){
             return('\'%' + s + '%\'');
         }else if(s === null){
             return 'NULL';
@@ -2569,7 +2578,7 @@ class __fnt1{
       =============================================================================================================
     */
     sq1( s ){
-        if(this.__gi1.est_num( s )){
+        if(this.__ig1.est_num( s )){
             return s;
         }else if(s === null){
             return 'NULL';
@@ -2590,7 +2599,7 @@ class __fnt1{
       =============================================================================================================
     */
     sq0( s ){
-        if(this.__gi1.est_num( s )){
+        if(this.__ig1.est_num( s )){
             return s;
         }else if(s === null){
             return 'NULL';
@@ -2617,7 +2626,7 @@ class __fnt1{
             let tableau_liste_des_valeurs=critere.split( ',' );
             let chaine_recherche='';
             for(let i in tableau_liste_des_valeurs){
-                if(this.__gi1.est_num( tableau_liste_des_valeurs[i] )){
+                if(this.__ig1.est_num( tableau_liste_des_valeurs[i] )){
                     chaine_recherche+=',' + tableau_liste_des_valeurs[i];
                 }
             }
@@ -2627,7 +2636,7 @@ class __fnt1{
             }
         }else if(critere === null){
             champ_where+='AND ' + this.sq0( nom_du_champ ) + ' IS NULL ';
-        }else if(this.__gi1.est_num( critere )){
+        }else if(this.__ig1.est_num( critere )){
             champ_where+='AND ' + this.sq0( nom_du_champ ) + ' = ' + this.sq0( critere ) + ' ';
         }
         return champ_where;
@@ -2653,7 +2662,7 @@ class __fnt1{
         formulaire=donnees_recues.__xva.__fo1[fonction_liste];
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === '__num_page' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                if(this.__gi1.est_num( mat[i + 1][1] )){
+                if(this.__ig1.est_num( mat[i + 1][1] )){
                     formulaire['__num_page']=parseInt( mat[i + 1][1] , 10 );
                 }
             }
