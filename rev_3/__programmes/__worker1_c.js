@@ -79,13 +79,18 @@ class __worker1{
                 postMessage( json );
             }
             this.ma_connexion_socket.addEventListener( "open" , () => {
-                    this.ma_connexion_socket.send( JSON.stringify( obj ) );} );
+                    let a_envoyer=JSON.stringify( obj );
+                    this.ma_connexion_socket.send( JSON.stringify( obj ) );
+                    a_envoyer=null;} );
             this.ma_connexion_socket.addEventListener( "close" , () => {
                     this.ma_connexion_socket=null;
                     let le_json_ferme={
                         "__xst" : __xsu ,
                         "__xac" : 'm1(n1(__ig1),f1(connexion_au_websocket_fermee()))' ,
-                        "__xva" : {"chi_id_acces" : 0 ,"chi_id_projet" : 0 ,"chi_id_utilisateur" : 0}
+                        "chi_id_acces" : 0 ,
+                        "chi_id_projet" : 0 ,
+                        "chi_id_utilisateur" : 0 ,
+                        "__xva" : {}
                     };
                     postMessage( le_json_ferme );} );
             this.ma_connexion_socket.addEventListener( "message" , ( evenement ) => {
@@ -96,6 +101,7 @@ class __worker1{
                         }
                         le_json=JSON.parse( evenement.data );
                         postMessage( le_json );
+                        le_json=null;
                     }catch(e){
                         console.log( '%ce=' + e.stack , 'background:yellow;' );
                         let le_retour_ko={"__xst" : __xer ,"__xme" : e.stack};
@@ -110,13 +116,18 @@ class __worker1{
                 postMessage( json );
             }
             this.ma_connexion_socket.addEventListener( "open" , () => {
-                    this.ma_connexion_socket.send( JSON.stringify( obj ) );} );
+                    let a_envoyer=JSON.stringify( obj );
+                    this.ma_connexion_socket.send( JSON.stringify( obj ) );
+                    a_envoyer=null;} );
             this.ma_connexion_socket.addEventListener( "close" , () => {
                     this.ma_connexion_socket=null;
                     let le_json_ferme={
                         "__xst" : __xsu ,
                         "__xac" : 'm1(n1(__ig1),f1(connexion_au_websocket_fermee()))' ,
-                        "__xva" : {"chi_id_acces" : 0 ,"chi_id_projet" : 0 ,"chi_id_utilisateur" : 0}
+                        "chi_id_acces" : 0 ,
+                        "chi_id_projet" : 0 ,
+                        "chi_id_utilisateur" : 0 ,
+                        "__xva" : {}
                     };
                     postMessage( le_json_ferme );} );
             this.ma_connexion_socket.addEventListener( "message" , ( evenement ) => {
@@ -127,6 +138,7 @@ class __worker1{
                         }
                         le_json=JSON.parse( evenement.data );
                         postMessage( le_json );
+                        le_json=null;
                     }catch(e){
                         console.log( '%ce=' + e.stack , 'background:yellow;' );
                         let le_retour_ko={"__xst" : __xer ,"__xme" : e.stack};
@@ -153,7 +165,9 @@ class __worker1{
             if(this.__deverminage === 2){
                 console.log( 'dans worker on envoie obj=' , obj );
             }
-            this.ma_connexion_socket.send( JSON.stringify( obj ) );
+            let a_envoyer=JSON.stringify( obj );
+            this.ma_connexion_socket.send( a_envoyer );
+            a_envoyer=null;
         }
         return;
     }

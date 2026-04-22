@@ -117,7 +117,7 @@ class x_ecran_rev_vers_sql1{
             t2.innerHTML='';
             if(t1 && t2){
                 if(mettre_en_stockage_local === 1){
-                    this.sauvegarder_contenu_en_localstorage( 'ecran_rev_vers_sql1' , t1.value );
+                    this.sauvegarder_contenu_en_localstorage( this.moi , t1.value );
                 }
                 let ast_de_sql=null;
                 try{
@@ -215,7 +215,7 @@ class x_ecran_rev_vers_sql1{
             t2.innerHTML='';
             if(t1 && t2){
                 if(mettre_en_stockage_local === 1){
-                    this.sauvegarder_contenu_en_localstorage( 'x_ecran_rev_vers_sql1' , t1.value );
+                    this.sauvegarder_contenu_en_localstorage( this.moi , t1.value );
                 }
                 let ast_de_sql=null;
                 try{
@@ -334,14 +334,14 @@ class x_ecran_rev_vers_sql1{
         t+='  <div>';
         t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_sql_rev1' );
         /*  */
-        t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_sql1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
-        t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_sql1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
+        t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(' + this.moi + '),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
+        t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(' + this.moi + '),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_sql_rev1" data-editeur1="source_editeur1" rows="20" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         if(this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
-               && this.__ig1.stockage_local['zones_sauvegardées'].hasOwnProperty( 'x_ecran_rev_vers_sql1' )
+               && this.__ig1.stockage_local['zones_sauvegardées'].hasOwnProperty( this.moi )
         ){
-            t+=this.__ig1.stockage_local['zones_sauvegardées']['x_ecran_rev_vers_sql1'].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
+            t+=this.__ig1.stockage_local['zones_sauvegardées'][this.moi].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
         }
         t+='</textarea>';
         t+='</div>';
@@ -352,12 +352,12 @@ class x_ecran_rev_vers_sql1{
         /*
         */
         t+='    <div class="rev_bouton yy__1" data-rev_click="';
-        t+='m1(n1(x_ecran_rev_vers_sql1),f1(sql1_vers_rev(zone_source(vv_txtarea_sql_rev1),zone_resultat(vv_txtarea_sql_rev2),mettre_en_stockage_local(1))))';
+        t+='m1(n1(' + this.moi + '),f1(sql1_vers_rev(zone_source(vv_txtarea_sql_rev1),zone_resultat(vv_txtarea_sql_rev2),mettre_en_stockage_local(1))))';
         t+='" title="cvt" >sql-&gt;rev 1</div>';
         /*
         */
         t+='    <div class="rev_bouton yy__1" data-rev_click="';
-        t+='m1(n1(x_ecran_rev_vers_sql1),f1(sql2_vers_rev(zone_source(vv_txtarea_sql_rev1),zone_resultat(vv_txtarea_sql_rev2))))';
+        t+='m1(n1(' + this.moi + '),f1(sql2_vers_rev(zone_source(vv_txtarea_sql_rev1),zone_resultat(vv_txtarea_sql_rev2),mettre_en_stockage_local(1))))';
         t+='" title="cvt" >sql-&gt;rev 2</div>';
         /*
         */
@@ -371,7 +371,7 @@ class x_ecran_rev_vers_sql1{
         t+='    <div ';
         t+=' class="rev_bouton yy__1" ';
         t+=' data-rev_click="';
-        t+='m1(n1(x_ecran_rev_vers_sql1),f1(rev_vers_sql1(zone_source(vv_txtarea_sql_rev2),zone_resultat(vv_txtarea_sql_rev3),mettre_en_stockage_local(1))))';
+        t+='m1(n1(' + this.moi + '),f1(rev_vers_sql1(zone_source(vv_txtarea_sql_rev2),zone_resultat(vv_txtarea_sql_rev3),mettre_en_stockage_local(1))))';
         t+='" title="convertir en rev" >rev-&gt;sql</div>';
         /*  */
         t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_sql_rev3' );

@@ -21,6 +21,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
     #meta_table_fait=true;
     #meta_table='';
     __ig1=null;
+    #liste_des_primary_keys=[];
     
     /*
       =============================================================================================================
@@ -43,6 +44,30 @@ class w_ast_sql_parseur_cst_vers_rev1{
         
 //        this.__rev1.empiler_erreur( o );
         return o;
+    }
+    /*
+      =============================================================================================================
+    */
+    #traite_constraint_primary_key( element , niveau , parent , options , vient_de ){
+        let t='';
+        let obj1=null;
+        let behaviorKw='';
+        let column='';
+        let ifExistsKw='';
+        if(element.hasOwnProperty('primaryKeyKw')){
+            if(element.primaryKeyKw.length===2 && element.primaryKeyKw[0].text.toUpperCase() === 'PRIMARY' &&  element.primaryKeyKw[1].text.toUpperCase() === 'KEY'){
+                if(element.hasOwnProperty('columns') && element.columns.expr.items.length === 1 ){
+                    this.#liste_des_primary_keys.push(element.columns.expr.items[0].expr.name);
+                }else{
+                    return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+                }
+            }else{
+               return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+            }
+        }else{
+            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+        }
+        return({"__xst" : __xsu ,"__xva" : ''});
     }
     /*
       =============================================================================================================
@@ -70,6 +95,37 @@ class w_ast_sql_parseur_cst_vers_rev1{
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
         }
         t+=' drop_column(\'' + column.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        return({"__xst" : __xsu ,"__xva" : t});
+    }
+    
+    
+    /*
+      =============================================================================================================
+    */
+    #drop_table_stmt( element , niveau , parent , options , vient_de ){
+        let t='';
+        let obj1=null;
+        let actions='';
+        let table='';
+        let ifExistsKw='';
+        let nom_de_la_table='';
+        if(element.ifExistsKw){
+            ifExistsKw='ifexists()'
+        }
+        if(element.tables && element.tables.items && element.tables.items.length){
+            for(let i = 0 ; i<element.tables.items.length;i++){
+//                 +='nom_de_la_table(`' + element.tables.items[i].name + '`)';
+                obj1=this.#traite_expr( element.tables.items[i] , niveau , element , options , vient_de );
+                if(obj1.__xst === __xsu){
+                    nom_de_la_table+='nom_de_la_table(`' + obj1.__xva + '`)';
+                }else{
+                    return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+                }
+            }
+        }else{
+            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : 'il manque les noms des tables dans le drop table ' + this.__ig1.nl2() + ' '} ));
+        }
+        t+='drop_table('+ifExistsKw+'' + nom_de_la_table + ')';
         return({"__xst" : __xsu ,"__xva" : t});
     }
     /*
@@ -838,7 +894,13 @@ class w_ast_sql_parseur_cst_vers_rev1{
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
         }
         if(element.dataType){
-            espece_du_champ=element.dataType.name.name.toLowerCase();
+            try{
+                espece_du_champ=element.dataType.name.name.toLowerCase();
+            }catch(e){
+                if(element.dataType.name && Array.isArray(element.dataType.name) && element.dataType.name[0].hasOwnProperty('text') ){
+                    espece_du_champ=element.dataType.name[0].text;
+                }
+            }
             if(espece_du_champ === 'enum'){
                 espece_du_champ='enum'
                 longueur_du_champ=64;
@@ -1020,7 +1082,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
         }else{
             t+=meta_champ;
         }
-        t+='nom_du_champ( `' + name + '`),';
+        t+='nom_du_champ(`' + name + '`),';
         if(espece_du_champ==='enum'){
             t+='espece_du_champ(VARCHAR),';
         }else{
@@ -1337,8 +1399,22 @@ class w_ast_sql_parseur_cst_vers_rev1{
                 vient_de.pop();
                 break;
                 
+            case 'constraint_primary_key' :
+                
+                vient_de.push( 'alter_action_drop_column' );
+                obj1=this.#traite_constraint_primary_key( element , niveau , parent , options , vient_de );
+                if(obj1.__xst === __xsu){
+                    t=obj1.__xva;
+                }else{
+                    return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+                }
+                vient_de.pop();
+                break;
+            
+                break;
+                
             default:
-                return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+                return(this.#astsql_le( {"__xst" : __xer ,"__xme" : '<b>'+element.type + ' non traité </b>' + this.__ig1.nl2() + ' '} ));
                 break;
                 
         }
@@ -1400,7 +1476,8 @@ class w_ast_sql_parseur_cst_vers_rev1{
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : '<b style="font-size:1.2em;">clauses non prévu</b>' + this.__ig1.nl2() + ' '} ));
         }
         if(element.ifNotExistsKw){
-            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+            ifNotExistsKw='ifnotexists()'
+//            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
         }
         if(element.kind){
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
@@ -1445,9 +1522,26 @@ class w_ast_sql_parseur_cst_vers_rev1{
         }else{
             t+=this.#meta_table;
         }
+        t+=ifNotExistsKw;
         t+=' nom_de_la_table(' + name + '),';
         t+=' champs' + columns + ',';
         t+=')';
+        if(this.#liste_des_primary_keys.length > 0){
+           /* 
+             dans mysql le mot PRIMART KEY(`nom_du_champ`)
+             peut éventuellement être à la fin
+             
+           */
+           if(t.indexOf('nom_du_champ(`'+this.#liste_des_primary_keys[0]+'`)')>=0){
+               let nom_du_champ_primaire=this.#liste_des_primary_keys[0];
+               this.#liste_des_primary_keys.pop();
+               t=t.replace('nom_du_champ(`'+nom_du_champ_primaire+'`)' , 'nom_du_champ(`'+nom_du_champ_primaire+'`),primary_key()' )
+           }else{
+               return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+           }
+        }
+        
+        
         return({"__xst" : __xsu ,"__xva" : t});
     }
     /*
@@ -1677,8 +1771,18 @@ class w_ast_sql_parseur_cst_vers_rev1{
                 }
                 vient_de.pop();
                 break;
+            case 'drop_table_stmt' :
+                vient_de.push( element.type );
+                obj=this.#drop_table_stmt( element , niveau , parent , options , vient_de );
+                if(obj.__xst === __xsu){
+                    t+=obj.__xva;
+                }else{
+                    return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + 'select'} ));
+                }
+                vient_de.pop();
+                break;
                 
-            default: return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+            default: return(this.#astsql_le( {"__xst" : __xer ,"__xme" : '<b><pre>\n' + element.type + ' non traité\n</pre></b> ' +this.__ig1.nl2() + ' '} ));
         }
         return({"__xst" : __xsu ,"__xva" : t});
     }
@@ -1694,7 +1798,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
             for( let i=0 ; i < tableau.length ; i++ ){
                 obj=this.#traite_ast_sql_parseur_cst( tableau[i] , 0 , null , options_traitement , vient_de );
                 if(obj.__xst === __xsu){
-                    t+=obj.__xva;
+                    t+=obj.__xva.replace(/___deux___points___/g,':');
                 }else{
                     return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
                 }
@@ -1713,7 +1817,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
         for( let i=0 ; i < tableau.length ; i++ ){
             obj=this.#traite_ast_sql_parseur_cst( tableau[i] , 0 , null , options_traitement , vient_de );
             if(obj.__xst === __xsu){
-                t+=obj.__xva;
+                t+=obj.__xva.replace(/___deux___points___/g,':');
             }else{
                 return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
             }

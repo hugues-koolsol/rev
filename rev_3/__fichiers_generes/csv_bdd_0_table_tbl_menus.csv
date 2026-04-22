@@ -1,0 +1,13 @@
+"chi_id_menu","cht_libelle_menu","chp_titre_menu","chx_autorisation_menu","chp_methode_menu","cht_initialisation_menu","cht_condition_menu","cht_condition_js_menu"
+"1","mes tâches","tâches","1","entree_module",NULL,NULL,NULL
+"2","sources","sources","2","entree_module",NULL,NULL,NULL
+"3","utilisateurs","utilisateurs","3","entree_module",NULL,NULL,NULL
+"4","autorisations","autorisations","4","entree_module",NULL,NULL,NULL
+"5","métier","métier","5","entree_module",NULL,NULL,NULL
+"6","menus","menus","6","entree_module",NULL,NULL,NULL
+"7","accès","accès","7","entree_module",NULL,NULL,NULL
+"8","<svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""-50 -50  100 100""><g style=""stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;"" transform=""   ""><circle cx=""0"" cy=""-10"" r=""34""></circle><path d="" M -43 46 C -30 20 30 20 43 46 ""></path><circle cx=""-10"" cy=""-15"" r=""5""></circle><circle cx=""10"" cy=""-15"" r=""5""></circle><path d="" M -10 0 C -15 10 15 10 10 0""></path><path d="" M 0 -10 V 0""></path><path d="" M -15 -15 H -30""></path><path d="" M 15 -15 H 30""></path><path d="" M -5 -15 c 0 -5 10 -5 10 0""></path></g><path d="" M -50 -50 h 100 v 100 h -100 v -100 "" stroke=""rgb(0, 0, 0)"" stroke-width=""0"" fill=""transparent"" stroke-linejoin=""round"" stroke-linecap=""round"" transform="""" style=""stroke:black;fill:transparent;stroke-width:0.1;""></path></svg>","mes coordonnées","10","entree_module",NULL,NULL,NULL
+"9","groupes","groupes","9","entree_module",NULL,NULL,NULL
+"10","les tâches","les tâches","11","entree_module",NULL,NULL,NULL
+"11","<svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""-50 -50  100 100""><g style=""stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;"" transform=""   ""><circle cx=""0"" cy=""-10"" r=""34""></circle><path d="" M -43 46 C -30 20 30 20 43 46 ""></path><circle cx=""-10"" cy=""-15"" r=""5""></circle><circle cx=""10"" cy=""-15"" r=""5""></circle><path d="" M -10 0 C -15 10 15 10 10 0""></path><path d="" M 0 -10 V 0""></path><path d="" M -15 -15 H -30""></path><path d="" M 15 -15 H 30""></path><path d="" M -5 -15 c 0 -5 10 -5 10 0""></path></g><path d="" M -50 -50 h 100 v 100 h -100 v -100 "" stroke=""rgb(0, 0, 0)"" stroke-width=""0"" fill=""transparent"" stroke-linejoin=""round"" stroke-linecap=""round"" transform="""" style=""stroke:black;fill:transparent;stroke-width:0.1;""></path></svg>","mes coordonnées","12","entree_module",NULL,NULL,NULL
+"12","mes tâches","tâches","13","entree_module",NULL,NULL,NULL

@@ -1,48 +1,13 @@
 {
   "x_ecran_coordonnees1": {
     "generale": false,
-    "id_autorisation": 31,
-    "autorisation_cote_client": 4
+    "id_autorisation": 14,
+    "autorisation_cote_client": 12
   },
   "taches1": {
     "generale": false,
-    "id_autorisation": 34,
-    "autorisation_cote_client": 5
-  },
-  "groupes1": {
-    "generale": false,
-    "id_autorisation": 24,
-    "autorisation_cote_client": 6
-  },
-  "metiers1": {
-    "generale": false,
-    "id_autorisation": 25,
-    "autorisation_cote_client": 8
-  },
-  "acces1": {
-    "generale": false,
-    "id_autorisation": 26,
-    "autorisation_cote_client": 12
-  },
-  "utilisateurs1": {
-    "generale": false,
-    "id_autorisation": 27,
-    "autorisation_cote_client": 23
-  },
-  "sources1": {
-    "generale": false,
-    "id_autorisation": 29,
-    "autorisation_cote_client": 14
-  },
-  "autorisations1": {
-    "generale": false,
-    "id_autorisation": 28,
-    "autorisation_cote_client": 10
-  },
-  "menus1": {
-    "generale": false,
-    "id_autorisation": 30,
-    "autorisation_cote_client": 21
+    "id_autorisation": 15,
+    "autorisation_cote_client": 13
   },
   "_connexion1": {
     "generale": true,

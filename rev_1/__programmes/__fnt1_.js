@@ -1953,71 +1953,97 @@ class __fnt1{
       // inspiré de https://erikmartinjordan.com/get-caret-position-textarea-pixels
     */
     getCaretPos( la_textarea , numero_de_ligne ){
-        /* Getting the textarea element */
-        /* let textarea = document.getElementById('textarea'); */
-        /* Adjusting textarea to prevent scrolling */
-        /* textarea.style.height = `${e.target.scrollHeight}px` */
-        /* la_textarea.style.height = `${la_textarea.scrollHeight}px`; */
         let le_texte=la_textarea.value.replace( /</g , '&lt;' ).replace( />/g , '&gt;' );
         /* Appending element to the DOM after textarea */
         let le_bounding=la_textarea.getBoundingClientRect();
         let le_top=le_bounding.top + this.__ig1.css_dimensions.t_padding_de_input + this.__ig1.css_dimensions.t_border;
         let le_left=parseInt( le_bounding.left + this.__ig1.css_dimensions.t_padding_de_input + this.__ig1.css_dimensions.t_border , 10 );
         let le_height=parseInt( le_bounding.height , 10 );
-        /* la_textarea.scrollTo(0,0); // ; */
+        let le_contenu='';
         /*
-          la_textarea.insertAdjacentHTML('afterend', '<span style="white-space: pre;font-family:monospace;overflow-x:scroll;background:lightblue;opacity:0.5;position:absolute;left:'+le_left+'px;top:'+le_top+'px;" id="dummy">'+le_texte+'</span>');
-          debugger
+          je ne comprends pas pourquoi il faut absolument mettre un span ici
+          Le fait d'un mettre un span permet d'utiliser getClientRects();
+          et chaque ligne est dans un rectangle, il suffit alors de choisir le bon rectangle
         */
-        la_textarea.insertAdjacentHTML( 'afterend' , '<span style="white-space: pre;font-family:monospace;overflow-x:scroll;background:lightblue;opacity:0.5;" id="dummy">' + le_texte + '</span>' );
-        /* Getting position info of the rectangles inside dummy element */
-        let rectangles=document.getElementById( 'dummy' ).getClientRects();
+        le_contenu+='<span ';
+        le_contenu+=' style="';
+        le_contenu+='white-space: pre;';
+        le_contenu+='font-family:monospace;';
+        le_contenu+='overflow-x:scroll;';
+        le_contenu+='background:lightblue;';
+        le_contenu+='margin-top: -363px;';
+        le_contenu+='margin-left: 6px; ';
+        le_contenu+='line-height: ' + (this.__ig1.css_dimensions.t_police + 2) + 'px;';
+        /*# 
+          ne pas mettre ceci sauf pour la phase de debug
+          le_contenu+='display: block; '; 
+          mettre le contenu en js pour exemple
+           var a='001';
+           var a='002';
+           var a='003';
+           var a='004';
+           var a='005';
+           var a='006';
+           var a='007';
+           var a='008';
+           var a='009';
+           var a='010';
+           var a='011';
+           var a='012';
+           var a='013';
+           var a='014';
+           var a='015';
+           var a='016';
+           var a='017';
+           var a='018';
+           var a='019';
+           var a='020';
+           var a='021';
+           var a='022';
+           var a bb='023';
+           var a='024';
+           var a='025';
+           var a='026';
+           var a='027';
+           var a='028';
+           var a='029';
+           var a='030';
+           var a='031';
+           var a='032';
+           var a='033';
+           var a='034';
+           var a='035';
+           var a='036';
+           var a='037';
+           var a='038';          
+        */
+        le_contenu+='" ';
+        le_contenu+=' id="vv_bidon_pour_positionnement">';
+        le_contenu+=le_texte;
+        le_contenu+='</span>';
+        la_textarea.insertAdjacentHTML( 'afterend' , le_contenu );
+        let rectangles=document.getElementById( 'vv_bidon_pour_positionnement' ).getClientRects();
         let numero_bloc=Math.min( rectangles.length - 1 , numero_de_ligne );
         /* debugger */
         let decallage_y=0;
         if(rectangles.length >= numero_bloc){
-            /* console.log( rectangles[numero_bloc].y ); */
-            /* console.log( rectangles[0].y ); */
-            /* decallage_y=parseInt(rectangles[numero_bloc].y-rectangles[0].y-rectangles[0].height,10); */
-            /*
-              à la fin de la formule çi dessous il y a un "-numero_bloc' comme si yl y avait in pixem en trop par ligne
-            */
-            decallage_y=parseInt( rectangles[numero_bloc].y - rectangles[0].y - rectangles[0].height - 2 * this.__ig1.css_dimensions.t_border - 2 * this.__ig1.css_dimensions.t_padding_de_input - numero_bloc , 10 );
-            /* rectangles[62].top-rectangles[0].top-rectangles[0].height-2*__ig1.css_dimensions.t_border-2*__ig1.css_dimensions.t_padding_de_input */
+            /* decallage_y=parseInt( rectangles[numero_bloc].y - rectangles[0].y - rectangles[0].height - 2 * this.__ig1.css_dimensions.t_border - 2 * this.__ig1.css_dimensions.t_padding_de_input - numero_bloc , 10 ); */
+            decallage_y=parseInt( rectangles[numero_bloc].y - rectangles[0].y , 10 );
         }else{
             decallage_y=999999999;
         }
-        document.getElementById( 'dummy' ).remove();
+        document.getElementById( 'vv_bidon_pour_positionnement' ).remove();
         if(decallage_y <= le_height / 2){
             decallage_y=0;
         }else{
             decallage_y=decallage_y - le_height / 2;
         }
-        /* la_textarea.scrollTo(0,0); */
-        /* console.log( 'decallage_y=' , decallage_y ); */
         function decal( par ){
             /* console.log(par) */
             par.la_textarea.scrollTo( 0 , par.decallage_y );
             par.la_textarea.focus();
         }
         setTimeout( decal , 20 , {"la_textarea" : la_textarea ,"decallage_y" : decallage_y ,"numero_bloc" : numero_bloc} );
-        /*
-          
-          let last = rectangles[rectangles.length - 1];
-          
-          // Getting position info of the textarea
-          let text = la_textarea.getBoundingClientRect();
-          
-          // Setting coordinates
-          let x = last.x + last.width;
-          let y = text.y + text.height - last.height;
-          
-          // Removing dummy
-          //dummy.remove();
-          
-          // Returning variables
-          return [x, y];
-        */
     }
     /*
       =============================================================================================================

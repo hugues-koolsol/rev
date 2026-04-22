@@ -42,22 +42,30 @@ class __ig1{
     #timeout_de_dispatition_de_message=null;
     #boutons_masques_avant_appel=[];
     #liste_des_modules_dynamiques=[];
-    #chi_id_utilisateur=0;
-    #chi_id_acces=0;
-    #chi_id_projet=0;
+    chi_id_utilisateur=0;
+    chi_id_acces=0;
+    chi_id_projet=0;
     #changement_hash_par_programme=false;
     #nombre_de_tentatives_de_reconnexion_au_websocket=0;
     zones_des_editeur=[];
+    __liste_des_genres={};
+    __liste_des_sql={};
     /*
       =============================================================================================================
     */
     #traite_message_recupere_du_worker( par ){
         this.#date_derniere_navigation=performance.now();
-        let le_message=par.data;
+        let le_colis=par.data;
         if(this.__deverminage === 2){
-            console.log( '%cdeverminage 2 __ig1_c' , 'background:black;color:white;' , le_message );
+            console.log( '%cdeverminage 2 __ig1_c' , 'background:black;color:white;' , le_colis );
         }
-        if(le_message.hasOwnProperty( '__version' ) && le_message.__version !== this.__version){
+        if(le_colis.hasOwnProperty( '__liste_des_genres' )){
+            this.__liste_des_genres=le_colis.__liste_des_genres;
+        }
+        if(le_colis.hasOwnProperty( '__liste_des_sql' )){
+            this.__liste_des_sql=le_colis.__liste_des_sql;
+        }
+        if(le_colis.hasOwnProperty( '__version' ) && le_colis.__version !== this.__version){
             let tt='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
             this.ajoute_message( {
                     "__xst" : __xal ,
@@ -78,37 +86,37 @@ class __ig1{
                 /* console.log('this.maj_hash_init_fait=',this.maj_hash_init_fait) */
                 this.maj_hash_fait=false;
                 this.maj_hash_init_fait=false;} , 500 );
-        this.#chi_id_acces=le_message.__xva.chi_id_acces;
-        this.#chi_id_projet=le_message.__xva.chi_id_projet;
-        this.#chi_id_utilisateur=le_message.__xva.chi_id_utilisateur;
+        this.chi_id_acces=le_colis.chi_id_acces;
+        this.chi_id_projet=le_colis.chi_id_projet;
+        this.chi_id_utilisateur=le_colis.chi_id_utilisateur;
         this.#sans_maj_de_hash=false;
         /* pas_de_maj_de_hash */
         this.#avec_maj_de_hash=__xer;
         /* } */
         let un_message_trouve=false;
         let un_message_d_erreur_trouve=false;
-        for(let i in le_message.__xsi){
-            if((i === '__xer' || i === '__xal' || i === '0' || i === '2' || i === '4') && le_message.__xsi[i].length > 0){
+        for(let i in le_colis.__xsi){
+            if((i === '__xer' || i === '__xal' || i === '0' || i === '2' || i === '4') && le_colis.__xsi[i].length > 0){
                 un_message_d_erreur_trouve=true;
             }
-            for(let j in le_message.__xsi[i]){
-                this.ajoute_message( {"__xst" : i ,"__xme" : le_message.__xsi[i][j]} );
+            for(let j in le_colis.__xsi[i]){
+                this.ajoute_message( {"__xst" : i ,"__xme" : le_colis.__xsi[i][j]} );
                 un_message_trouve=true;
             }
         }
-        if(le_message.__xst !== __xsu){
+        if(le_colis.__xst !== __xsu){
             if(un_message_trouve === false){
-                let txt=le_message.hasOwnProperty( '__xme' ) ? ( le_message.__xme + '<br />' ) : ( '' );
+                let txt=le_colis.hasOwnProperty( '__xme' ) ? ( le_colis.__xme + '<br />' ) : ( '' );
                 txt+='Erreur coté serveur';
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : txt} );
             }
             /* this.fermer_la_sous_fenetre(); */
             this.affiche_les_messages();
-            this.retablir_les_boutons_masques( le_message );
+            this.retablir_les_boutons_masques( le_colis );
             return({"__xst" : __xer});
         }else{
-            if(le_message.__xac !== ''){
-                let obj1=this.__rev1.rev_tm( le_message.__xac );
+            if(le_colis.__xac !== ''){
+                let obj1=this.__rev1.rev_tm( le_colis.__xac );
                 if(obj1.__xst !== __xsu){
                     this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de message reçu du worker' + this.nl2() + obj1.__xme} );
                     this.affiche_les_messages();
@@ -117,7 +125,7 @@ class __ig1{
                 /*
                   ============= appel des actions ==============
                 */
-                let obj2=this.__xac( obj1.__xva , 0 , le_message );
+                let obj2=this.__xac( obj1.__xva , 0 , le_colis );
                 /*
                   ============= appel des actions ==============
                 */
@@ -136,11 +144,11 @@ class __ig1{
                         this.maj_hash( obj1.__xva , 0 );
                     }
                 }
-                this.retablir_les_boutons_masques( le_message.__xva );
+                this.retablir_les_boutons_masques( le_colis.__xva );
             }
         }
         if(un_message_trouve === true){
-            this.affiche_les_messages( null , le_message );
+            this.affiche_les_messages( null , le_colis );
             if(un_message_d_erreur_trouve === true){
                 return({"__xst" : __xer});
             }else{
@@ -215,7 +223,20 @@ class __ig1{
                 for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
                     let obj=null;
                     try{
+                        /*
+                          =====================================================================
+                          appel du module qui vient d'être charge
+                          =====================================================================
+                        */
+                        if(this.__deverminage === 2){
+                            console.log( '%cappel du module qui vient d\'être charge ' + m1 + '.' + mat[i][1] + '()' , 'background:LightCoral;' );
+                        }
                         obj=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param );
+                        /*
+                          =====================================================================
+                          appel du module qui vient d'être charge
+                          =====================================================================
+                        */
                     }catch(e){
                         let complement='';
                         let tab1=e.stack.split( '\n' );
@@ -258,11 +279,18 @@ class __ig1{
                     try{
                         if( typeof this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]] === 'function'){
                             /*
+                              =============================================================
                               appel du module déjà charge
+                              =============================================================
                             */
+                            if(this.__deverminage === 2){
+                                console.log( '%cappel du module déjà charge ' + m1 + '.' + mat[i][1] + '()' , 'background:Khaki;' );
+                            }
                             let obj3=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param , evenement );
                             /*
+                              =============================================================
                               appel du module déjà charge
+                              =============================================================
                             */
                             if(obj3 && obj3.then &&  typeof obj3.then === 'function'){
                                 /*
@@ -288,6 +316,7 @@ class __ig1{
                                 this.affiche_les_messages();
                                 this.retablir_les_boutons_masques( __xva_param );
                                 return({"__xst" : __xer ,"cumul_message" : cumul_message});
+                            }else if(obj3.__xst === __xsu){
                             }
                         }else{
                             if( typeof this.#liste_des_modules_dynamiques[m1].objet1['f1'] === 'function'){
@@ -399,17 +428,9 @@ class __ig1{
                                         nombre_de_valeurs_a_envoyer++;
                                     }else if(lst[k].type && lst[k].type.toLowerCase() === 'file'){
                                         /*
-                                          téléversement d'un fichier
+                                          le téléversement de fichiers se passe ailleurs
                                         */
                                         contient_des_fichier_a_televerser=true;
-                                        this.televerser_des_fichiers( lst[k].files , co1 , fo1 , mat );
-                                        /*
-                                          reader.onload=function({target}){
-                                          //target.result
-                                          console.log('target.result=',target.result);
-                                          debugger
-                                          }
-                                        */
                                     }else{
                                         if(sur_table_virtuelle === true){
                                             fo1[co1][lst[k].id]=this.utf8ToAscii( lst[k].value );
@@ -1313,6 +1334,7 @@ class __ig1{
         t+='    min-height: 5vh;';
         t+='    overscroll-behavior: none;';
         t+='    color:' + couleur6hex + ';';
+        t+='    line-height:' + (val_police + 2) + 'px;';
         t+='}';
         t+='a:focus{';
         t+='    box-shadow:0px 0px 8px red;';
@@ -2359,9 +2381,11 @@ class __ig1{
         }
         try{
             let t='';
-            let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
+            let la_zone='vv_les_messages_dans_la_sous_fenetre';
+            let a1=document.getElementById( la_zone );
             if(a1 === null){
-                a1=document.getElementById( 'vv_messages' );
+                la_zone='vv_messages';
+                a1=document.getElementById( la_zone );
             }
             let la_classe=this.est_num( obj.__xst ) ? ( 'yy__' + obj.__xst ) : ( 'yy' + obj.__xst );
             if(obj.hasOwnProperty( 'lig_col' )){
@@ -2387,13 +2411,11 @@ class __ig1{
                 let temp=document.createElement( 'div' );
                 temp.setAttribute( 'class' , la_classe );
                 temp.innerHTML=t;
-                a1.insertBefore( temp , document.getElementById( 'vv_messages' ).firstChild );
+                a1.insertBefore( temp , document.getElementById( la_zone ).firstChild );
                 this.ajoute_les_evenements_aux_boutons();
             }
         }catch(e2){
-            console.log( '%ce2=' + e2.stack );
-            let a1=document.body.innerHTML;
-            document.body.innerHTML=a1 + '<div style="color:red;">Erreur ' + message + '</div>' + a1;
+            console.log( '%ce2=' + e2.stack , 'background:yellow;color:black;' );
         }
         let cumul_message=__xsu;
         if(obj.hasOwnProperty( 'cumul_message' ) && obj.cumul_message === __xer){
@@ -3409,258 +3431,65 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    #les_fichiers_a_televerser=[];
-    #le_fichier_a_televerser=null;
-    #reste_a_envoyer_pour_televersement=null;
-    #taille_du_morceau_pour_televersement=10000;
-    #cumul_televersé=0;
-    /*
-      =============================================================================================================
-    */
-    envoyer_un_televersement1(){
-        this.envoyer_un_message_au_worker( {"__xac" : this.#le_fichier_a_televerser.__xac ,"__xva" : this.#le_fichier_a_televerser.__xva} );
-        let chaine=String( 'vv_' + this.#le_fichier_a_televerser.le_fichier.type + '_' + this.#le_fichier_a_televerser.le_fichier.size + '_' + this.#le_fichier_a_televerser.le_fichier.name );
-        let id_vv=this.nettoyer_chaine_pour_id_vv( chaine );
-        if(this.#reste_a_envoyer_pour_televersement.length === 0){
-            /* console.log('%c========================','background:blue;') */
-            /* console.log('id_vv=' , id_vv); */
-            /* console.log('%cthis.#le_fichier_a_televerser=','background:red;' , this.#le_fichier_a_televerser.le_fichier.type , this.#le_fichier_a_televerser.le_fichier.size , this.#le_fichier_a_televerser.le_fichier.name ) */
-            try{
-                document.getElementById( id_vv ).style.background='lime';
-                document.getElementById( id_vv ).style.width='100%';
-            } catch {}
-            try{
-                document.getElementById( id_vv + '_td' ).style.background='lime';
-            } catch {}
-            this.#le_fichier_a_televerser=null;
+    supprime_l_exposant( num ){
+        if(num === null || num === undefined || num === ''){
+            throw new Error( "Invalid input: value is null, undefined, or empty." );
+        }
+        /* Convert to string to handle both number and string inputs */
+        let str=String( num );
+        /* If it's not in exponential notation, return as is */
+        if(!/e/i.test( str )){
+            return str;
+        }
+        /* Split into coefficient and exponent */
+        const [coeff,exp]=str.toLowerCase().split( 'e' );
+        const exponent=parseInt( exp , 10 );
+        /* Handle positive exponent */
+        if(exponent > 0){
+            let [intPart,fracPart='']=coeff.split( '.' );
+            fracPart=fracPart.padEnd( exponent , '0' );
+            return(intPart + fracPart.slice( 0 , exponent ) + (fracPart.slice( exponent ) || ''));
         }else{
-            /* console.log(this.#reste_a_envoyer_pour_televersement.length , this.#le_fichier_a_televerser.le_fichier.size); */
-            let quantite_envoyee=this.#le_fichier_a_televerser.le_fichier.size - this.#reste_a_envoyer_pour_televersement.length;
-            let pourcentage_envoye=parseInt( (100 * quantite_envoyee) / this.#le_fichier_a_televerser.le_fichier.size );
-            try{
-                document.getElementById( id_vv ).style.background='lime';
-                document.getElementById( id_vv ).style.width=pourcentage_envoye + '%';
-            } catch {}
-            try{
-                let aa=document.getElementById( 'vv_total_a_televerser' );
-                if(aa){
-                    let total=aa.getAttribute( 'data-entier' );
-                    total=parseInt( total , 10 );
-                    /* console.log( total , this.#cumul_televersé); */
-                    let pourcentage_total=parseInt( (100 * this.#cumul_televersé) / total , 10 );
-                    let bb=document.getElementById( 'vv_message_televersement' );
-                    if(bb){
-                        bb.style.background='lime';
-                        bb.style.width=pourcentage_total + '%';
-                        if(pourcentage_total > 10){
-                            bb.innerHTML=pourcentage_total + ' %';
-                        }
-                    }
-                }
-            } catch {}
+            /* Handle negative exponent */
+            let [intPart,fracPart='']=coeff.split( '.' );
+            const zeros='0'.repeat( Math.abs( exponent ) - 1 );
+            return('0.' + zeros + intPart + fracPart);
         }
     }
     /*
       =============================================================================================================
     */
-    televerser1( mat , d , le_colis=null ){
-        if(this.#le_fichier_a_televerser === null){
-            if(this.#les_fichiers_a_televerser.length > 0){
-                this.#le_fichier_a_televerser=this.#les_fichiers_a_televerser.pop();
-                this.#reste_a_envoyer_pour_televersement=this.#le_fichier_a_televerser.__xva.fichier_binaire;
-                setTimeout( this.televerser1.bind( this ) , 50 );
-            }else{
-                try{
-                    document.getElementById( 'vv_message_televersement_th' ).innerHTML='Téléversement terminé...';
-                    document.getElementById( 'vv_message_televersement_th' ).style.background='lime';
-                    let bb=document.getElementById( 'vv_message_televersement' );
-                    if(bb){
-                        bb.style.width='100%';
-                        bb.innerHTML='<b>100 %</b>';
-                    }
-                } catch {}
-            }
+    utf8ToAscii( input ){
+        if( typeof input !== "string"){
+            throw new TypeError( "Input must be a string" );
+        }
+        /* Normalize to NFD form and remove diacritics */
+        /* Split letters and diacritics */
+        /* Remove diacritical marks */
+        /* Replace remaining non-ASCII with space */
+        if(input === ''){
+            return input;
+        }
+        if(this.est_num( input )){
+            console.log( 'String(input)=' + String( input ) );
+            return(this.supprime_l_exposant( input ).replace( /[^a-zA-Z0-9]+/g , ' ' ).trim());
+        }
+        let ret='';
+        if(false && this.__deverminage >= 2){
+            console.log( 'en entree : input=' + input );
+            ret=input.normalize( "NFD" );
+            console.log( 'ret normalize : ret=' + ret );
+            ret=ret.replace( /[\u0300-\u036f]/g , "" );
+            console.log( 'ret replace1 : ret=' + ret );
+            ret=ret.replace( /[^\x00-\x7F]/g , " " );
+            console.log( 'ret replace2 : ret=' + ret );
+            ret=ret.replace( /[^a-zA-Z0-9]+/g , ' ' );
+            ret=ret.trim();
+            console.log( 'ret final : ret="' + ret + '"' );
         }else{
-            /* console.log('this.#le_fichier_a_televerser=',this.#le_fichier_a_televerser); */
-            let le_morceau=this.#reste_a_envoyer_pour_televersement.splice( 0 , this.#taille_du_morceau_pour_televersement );
-            this.#cumul_televersé+=le_morceau.length;
-            this.#le_fichier_a_televerser.__xva.fichier_binaire=le_morceau;
-            this.#le_fichier_a_televerser.__xva['longueur_reste_a_envoyer']=this.#reste_a_envoyer_pour_televersement.length;
-            if(le_colis !== null){
-                this.#le_fichier_a_televerser.__xva['nom_du_fichier']=le_colis.__xva.nom_du_fichier;
-            }
-            if(le_morceau.length > 0){
-                /* entre l'envoie de chaque morceau, on laisse passer 50 millisecondes */
-                setTimeout( this.envoyer_un_televersement1.bind( this ) , 25 );
-            }
+            ret=input.normalize( "NFD" ).replace( /[\u0300-\u036f]/g , "" ).replace( /[^\x00-\x7F]/g , " " ).replace( /[^a-zA-Z0-9]+/g , ' ' ).trim();
         }
-        /* console.log('this.#les_fichiers_a_televerser=',this.#les_fichiers_a_televerser); */
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    televerser_des_fichiers( les_fichiers , co1 , fo1 , mat ){
-        if(les_fichiers.length > 0){
-            for( let num_fichier=0 ; num_fichier < les_fichiers.length ; num_fichier++ ){
-                const reader=new FileReader();
-                let a=reader.readAsArrayBuffer( les_fichiers[num_fichier] );
-                reader.onload=function( {} ){
-                    /* console.log( 'arguments=' , arguments ); */
-                    /* console.log( 'arguments[3].target.result=' , arguments[3].target.result ); */
-                    let l01=arguments[2].length;
-                    for( let i=1 ; i < l01 ; i=arguments[2][i][12] ){
-                        if(arguments[2][i][1] === 'fo1' && arguments[2][i][2] === 'f'){
-                            for( let j=i + 1 ; j < l01 ; j=arguments[2][j][12] ){
-                                if(arguments[2][j][1] === 'pm1' && arguments[2][i][2] === 'f'){
-                                    /* this.__rev1.matrice_vers_source_rev1(arguments[2],1,false,4,[],[],false,true) */
-                                    let obj1=this.__rev1.matrice_vers_source_rev1( arguments[2] , j , false , j + 1 );
-                                    if(obj1.__xst === __xsu){
-                                        let fichier_binaire=this.arrayBufferToArray( arguments[3].target.result );
-                                        let xva={"fichier_binaire" : fichier_binaire ,"nom_zone" : arguments[0]};
-                                        /* console.log('les_fichiers[num_fichier]=',les_fichiers[num_fichier]); */
-                                        this.#les_fichiers_a_televerser.push( {"__xva" : xva ,"le_fichier" : les_fichiers[num_fichier] ,"position" : 0 ,"__xac" : 'pm1(' + obj1.__xva + ')'} );
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }.bind( this , co1 , fo1 , mat );
-            }
-            setTimeout( this.televerser1.bind( this ) , 16 );
-            try{
-                document.getElementById( 'vv_message_televersement_th' ).innerHTML='Téléversement en cours...';
-            } catch {}
-            try{
-                document.getElementById( 'vv_bouton_téléverser' ).style.visibility='hidden';
-            } catch {}
-        }
-    }
-    /*
-      =============================================================================================================
-    */
-    nettoyer_chaine_pour_id_vv( txt ){
-        let o='';
-        for( let i=0 ; i < txt.length ; i++ ){
-            let c=txt.substr( i , 1 );
-            if(c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9' || c == '_'){
-                o+=c;
-            }else{
-                o+='_';
-            }
-        }
-        return o;
-    }
-    /*
-      =============================================================================================================
-    */
-    fichiers_ajoutés_pour_téléversement( mat , d , e ){
-        let l01=mat.length;
-        let id=null;
-        let id_du_bouton=null;
-        let la_zone_des_fichiers;
-        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
-            if(mat[i][1] === 'id' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id=mat[i + 1][1];
-            }else if(mat[i][1] === 'id_du_bouton' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_du_bouton=mat[i + 1][1];
-            }else if(mat[i][1] === 'la_zone_des_fichiers' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                la_zone_des_fichiers=mat[i + 1][1];
-            }
-        }
-        if(id_du_bouton !== null && id !== null && la_zone_des_fichiers !== null){
-            let a=null;
-            try{
-                a=document.getElementById( id_du_bouton );
-            } catch {}
-            let b=null;
-            try{
-                b=document.getElementById( id );
-            } catch {}
-            let c=null;
-            try{
-                c=document.getElementById( la_zone_des_fichiers );
-            } catch {}
-            if(a !== null && b !== null && c !== null){
-                if(b.files.length > 0){
-                    let cumul_taille=0;
-                    let t='';
-                    t+='<table style="width:100%" border="1">';
-                    t+='<tr>';
-                    t+='<th style="width:100%;" id="vv_message_televersement_th">';
-                    t+='veuillez cliquer sur le bouton';
-                    t+='</tr>';
-                    t+='<tr>';
-                    t+='<td style="width:100%;">';
-                    t+='<div id="vv_message_televersement" style="height:' + (this.css_dimensions.t_police + 2) + 'px;width:0%;text-align:right;"></div>';
-                    t+='</td>';
-                    t+='</th>';
-                    t+='</tr>';
-                    for( let i=0 ; i < b.files.length ; i++ ){
-                        let id_vv=this.nettoyer_chaine_pour_id_vv( 'vv_' + b.files[i].type + '_' + b.files[i].size + '_' + b.files[i].name );
-                        t+='<tr>';
-                        t+='<td style="width:100%;" id="' + id_vv + '_td">';
-                        cumul_taille+=b.files[i].size;
-                        t+='[' + b.files[i].type + ']  (' + b.files[i].size + ') ' + b.files[i].name + '';
-                        t+='</td>';
-                        t+='</tr>';
-                        t+='<tr>';
-                        t+='<td style="width:100%;">';
-                        t+='<div id="' + id_vv + '" style="height:10px;width:0%;"></div>';
-                        t+='</td>';
-                        t+='</tr>';
-                    }
-                    t+='<tr>';
-                    t+='<td style="width:100%;">';
-                    t+='<span id="vv_total_a_televerser" data-entier="' + cumul_taille + '">' + cumul_taille.toLocaleString( 'fr-FR' , {"minimumFractionDigits" : 0} ) + '</span> octets au total à téléverser';
-                    t+='</td>';
-                    t+='</tr>';
-                    c.innerHTML=t;
-                    c.style.display='block';
-                    a.style.visibility='visible';
-                    return({"__xst" : __xsu});
-                }
-            }
-        }
-        return({"__xst" : __xer});
-    }
-    /*
-      =============================================================================================================
-    */
-    téléverser( mat , d ){
-        let l01=mat.length;
-        let chi_id_dossier=0;
-        let chp_nom_dossier='';
-        let paramètres=null;
-        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
-            if(mat[i][1] === 'paramètres'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 1
-            ){
-                /* les paramètres doivent être sous une forme de chaine de caractères encadrés par des apostrophes */
-                paramètres=mat[i + 1][1];
-            }
-        }
-        if(paramètres !== null){
-            let o1='';
-            o1+='<h1>téléverser des fichiers</h1>';
-            o1+='<br />';
-            o1+='<div id="vv_telecharger1">';
-            o1+='   <label for="vv_fichier_a_telecharger" style="border: 1px solid #ccc;display: inline-block;padding: 6px 12px;">';
-            o1+='       cliquez ici pour sélectionner les fichiers';
-            o1+='    </label>';
-            o1+='    <input type="file" id="vv_fichier_a_telecharger" style="display:none;" multiple  data-rev_change="m1(n1(' + this.moi + '),f1(fichiers_ajoutés_pour_téléversement(id(vv_fichier_a_telecharger),id_du_bouton(vv_bouton_téléverser),la_zone_des_fichiers(vv_la_liste_des_fichiers))))" />';
-            o1+='    <br />';
-            o1+='    <div style="visibility:hidden;" class="rev_bouton" data-rev_click="fo1(co1(vv_telecharger1),pm1(m1(n1(__ig1),f1(televerser1()))))" id="vv_bouton_téléverser">téléverser</div>';
-            o1+='    <div id="vv_la_liste_des_fichiers" style="display:none;"></div>';
-            o1+='</div>';
-            this.affiche_sous_fenetre1( o1 );
-            return({"__xst" : __xsu});
-        }
-        this.ajoute_message( {"__xst" : __xdv ,"__xme" : 'des paramètres doivent être indiqués dans le contenu de cet appel '} );
-        return({"__xst" : __xer});
+        return ret;
     }
     /*
       =============================================================================================================
@@ -3668,6 +3497,14 @@ class __ig1{
     connexion_socket_etablie( mat , d ){
         this.#nombre_de_tentatives_de_reconnexion_au_websocket=0;
         document.getElementById( 'vv_info_connexion' ).innerHTML=this.les_svg.rond_vert1;
+        const lst=document.querySelectorAll( '.yy__bidon_reconnexion1' );
+        if(lst.length > 0){
+            for( let i=lst.length - 1 ; i >= 0 ; i-- ){
+                lst[i].parentNode.remove();
+            }
+            this.ajoute_message( {"__xst" : __xsu ,"__xme" : 'reconnexion effectuée :-)'} );
+            this.affiche_les_messages();
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -3706,7 +3543,8 @@ class __ig1{
         "recharger_la_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 255, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M 38 10 A 40 39 0 1 1 38 -10 L 21 -17  L 38 -10 L 38 -31" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:10;"></path></svg>' ,
         "voir" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50.915 -50  101.83 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><circle cx="20" cy="9" r="9" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle><ellipse cx="-25" cy="0" rx="20" ry="38" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(10 0 0 )" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></ellipse><ellipse cx="25" cy="0" rx="20" ry="38" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(-10 0 0 )" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></ellipse><circle cx="-20" cy="9" r="9" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle></svg>' ,
         "calendrier" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -40 -40 L 40 -40 l 0 80 l -80 0 v -80 m 0 20  h 80" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d="  m -17 -6   l 4 0   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 9 0   h 4 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;"></path><path d=" M -10 -30  H 6" stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -15 -45 V -42  M 15 -45 V -42" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:10;"></path></svg>' ,
-        "masquer" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g fill="none" fill-rule="evenodd"><path fill="#FF0000" d="M 22 5   C 14 5 6 10 5 17     C 1 16 -3 16 -6 17     C -8 10 -14 5 -23 5     C -32 5 -40 12 -40 21     C -40 31 -32 39 -23 39     C -14 39 -6 31 -5 22     C -4 22 0 20 5 22     C 5 31 13 39 22 39     C 32 39 40 31 40 21     C 40 12 32 5 22 5     Z M -23 10   C -15 10 -10 15 -10 21     C -10 29 -15 34 -23 34     C -30 34 -35 29 -35 21     C -35 15 -30 10 -23 10     Z M 22 10   C 30 10 35 15 35 21     C 35 29 30 34 22 34     C 15 34 10 29 10 21     C 10 15 15 10 22 10     Z M 45 -6   H -45       V -1       H 45       V -6       Z M 17 -41   C 15 -44 15 -45 12 -44  L 0 -40L 0 -40L -12 -44   C -14 -45 -15 -44 -17 -41  L -28 -11   H 30    L 17 -41   Z "></path></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>'
+        "masquer" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g fill="none" fill-rule="evenodd"><path fill="#FF0000" d="M 22 5   C 14 5 6 10 5 17     C 1 16 -3 16 -6 17     C -8 10 -14 5 -23 5     C -32 5 -40 12 -40 21     C -40 31 -32 39 -23 39     C -14 39 -6 31 -5 22     C -4 22 0 20 5 22     C 5 31 13 39 22 39     C 32 39 40 31 40 21     C 40 12 32 5 22 5     Z M -23 10   C -15 10 -10 15 -10 21     C -10 29 -15 34 -23 34     C -30 34 -35 29 -35 21     C -35 15 -30 10 -23 10     Z M 22 10   C 30 10 35 15 35 21     C 35 29 30 34 22 34     C 15 34 10 29 10 21     C 10 15 15 10 22 10     Z M 45 -6   H -45       V -1       H 45       V -6       Z M 17 -41   C 15 -44 15 -45 12 -44  L 0 -40L 0 -40L -12 -44   C -14 -45 -15 -44 -17 -41  L -28 -11   H 30    L 17 -41   Z "></path></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>' ,
+        "outils" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -40 -40 L -38 -42 L -32 -39 L -32 -35 L 12 8 L 15 5 L 20 10 C 19 14 21 16 25 15 L 40 30 L 30 40 L 15 25 C 16 21 14 19 10 20 L 5 15 L 8 12 L -35 -32  L -39 -32 L -42 -38 L -40 -40" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path><path d=" M -35 35 L -40 30 L -9 -1 M -1 -9 L 12 -22 C 9 -27 5 -30 0 -30 L -2 -32 C 8 -39 18 -38 36 -25 C 34 -20 37 -18 40 -20 L 43 -17 L 31 -4 L 27 -7 C 29 -12 26 -14 22 -12 L 9 1 M -9 -1 L 1 9  L -30 40 L -35 35" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path></svg>'
     };
     /*
       =============================================================================================================
@@ -3761,7 +3599,8 @@ class __ig1{
             return({"__xst" : __xer});
         }else{
             let tt='tentatuve de reconnexion en cours, surveillez le rond ';
-            tt+='<div class="rev_bouton_carre">' + this.les_svg.rond_rouge1 + '</div><div class="rev_bouton_carre">' + this.les_svg.rond_vert1 + '</div>';
+            tt+='<div class="rev_bouton_carre yy__bidon_reconnexion1">' + this.les_svg.rond_rouge1 + '</div>';
+            tt+='<div class="rev_bouton_carre yy__bidon_reconnexion2">' + this.les_svg.rond_vert1 + '</div>';
             tt+='en bas à droite de la page ';
             this.ajoute_message( {"__xst" : __xal ,"__xme" : tt} );
             this.fermer_la_sous_fenetre();

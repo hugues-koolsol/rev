@@ -1,0 +1,27 @@
+"chi_id_genre","chp_nom_genre","che_ordre_genre","chp_prefixe_genre","chp_espece_genre","che_longueur_genre","che_est_primaire_genre","che_est_incrément_genre","che_est_obligatoire_genre","che_a_init_genre","che_init_est_mot_genre","cht_valeur_init_genre","che_est_parmis_genre","cht_parmis_genre","cht_fonctions_genre","che_est_nur_genre","che_est_tsm_genre","che_est_tsc_genre","chd__dtc_genre","chd__dtm_genre","che__nur_genre","che_est_session_genre","chp_nom_en_session_genre","che_est_positif_genre","cht_particularités_genre"
+"1","***indéfini***","25","cht","TEXT",NULL,"0","0","0","0","0",NULL,"0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"2","id primaire non nulle","1","chi","INTEGER",NULL,"1","0","1","0","0",NULL,"0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2025-09-25 16:55:08.841","18","0",NULL,"1",NULL
+"3","varchar 64 NON NULLE","2","chp","VARCHAR","64","0","0","1","0","0",NULL,"0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"4","lien NON NULL","5","chx","INTEGER",NULL,"0","0","1","0","0",NULL,"0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"5","zero_un non nulle à 0","17","che","INTEGER",NULL,"0","0","1","1","0","0","1","0,1",NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"6","texte NULL","12","cht","TEXT",NULL,"0","0","0","1","0","NULL","0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"7","entier NULL","9","che","INTEGER",NULL,"0","0","0","1","0","NULL","0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"8","lien NULL","6","chx","INTEGER",NULL,"0","0","0","1","0","NULL","0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"9","entier NON NULL","7","che","INTEGER",NULL,"0","0","1","0","0",NULL,"0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"10","entier NON NULL à zéro","8","che","INTEGER",NULL,"0","0","1","1","0","0","0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"11","texte NON NULL","11","cht","TEXT",NULL,"0","0","1","0","0",NULL,"0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"12","varchar 64 NULL","3","chp","VARCHAR","64","0","0","0","1","0","NULL","0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"13","mot de passe","20","chp","VARCHAR","256","0","0","0","1","0","NULL","0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"14","dt23 création","18","chd","VARCHAR","23","0","0","1","1","1","2000-01-01 00:00:00.000","0",NULL,NULL,"0","0","1","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"15","nur","22","che","INTEGER",NULL,"0","0","1","1","0","0","0",NULL,NULL,"1","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"16","dt23 modification","19","chd","VARCHAR","23","0","0","1","1","1","2000-01-01 00:00:00.000","0",NULL,NULL,"0","1","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"17","varchar 255 NON NULLE","4","chp","VARCHAR","255","0","0","1","0","0",NULL,"0",NULL,NULL,"0","0","0","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0",NULL,"0",NULL
+"18","id utilisateur","23","chx","INTEGER",NULL,"0","0","1","0","0",NULL,"0",NULL,NULL,"0","0","0","2025-09-06 14:10:54.357","2025-10-04 07:03:24.668","8","1","chi_id_utilisateur","0",NULL
+"19","nom technique","21","cht","VARCHAR","128","0","0","1","0","0",NULL,"0",NULL,"test_du_nom_technique1()","0","0","0","2025-11-19 12:07:33.326","2025-11-19 12:07:33.326","0","0",NULL,"0",NULL
+"21","durée_du_travail","10","chn","FLOAT",NULL,"0","0","0","0","0",NULL,"0",NULL,NULL,"0","0","0","2026-02-15 13:48:23.907","2026-02-15 14:10:08.496","1","0",NULL,"0",NULL
+"22","dt10 aaaa_mm_jj","15","chd","VARCHAR","10","0","0","0","1","0","NULL","0",NULL,"date_nulle_ou_comprise_entre('1000_01_01','9999_12_31')","0","0","0","2026-03-16 12:16:06.262","2026-03-16 12:16:06.262","0","0",NULL,"0",NULL
+"23","tp8 hh_mm_ss","16","chd","VARCHAR","8","0","0","1","1","1","00_00_00","0",NULL,"heure_nulle_ou_comprise_entre('00_00_00','23_59_59')","0","0","0","2026-03-17 15:45:36.973","2026-03-17 15:45:36.973","0","0",NULL,"0",NULL
+"97","texte NULL source_non_rev","14","cht","TEXT","","0","0","0","1","0","NULL","0","","","0","0","0","2025-10-21 10:14:55.512","2025-10-21 10:14:55.512","0","0","","0","source_non_rev(1)"
+"98","texte NULL source_au_format_rev","13","cht","TEXT",NULL,"0","0","0","1","0","NULL","0",NULL,NULL,"0","0","0","2025-10-20 17:48:22.207","2025-10-21 09:41:32.943","5","0",NULL,"0","source_au_format_rev(1)"
+"99","priorité","24","che","INTEGER","2","0","0","1","1","0","0","0",NULL,"entier_compris_entre(0,99)","0","0","0","2025-09-06 09:19:20.196","2025-09-06 09:19:20.196","0","0",NULL,"0",NULL
+"109","id projet","26","chx","INTEGER",NULL,"0","0","1","0","0",NULL,"0",NULL,NULL,"0","0","0","2026-01-17 12:12:01.759","2026-01-17 12:12:01.759","0","1","chi_id_projet","0",NULL

@@ -39,30 +39,25 @@
     "champ_parent": "chi_id_acces",
     "dependances": [
       {
-        "table_dependante": "tbl_utilisateurs",
-        "champ_dependant": "chx_acces_utilisateur",
+        "table_dependante": "tbl_autorisations",
+        "champ_dependant": "chx_acces_autorisation",
         "id_bdd_de_la_base_dependante": 1
       },
       {
-        "table_dependante": "tbl_autorisations",
-        "champ_dependant": "chx_acces_autorisation",
+        "table_dependante": "tbl_utilisateurs",
+        "champ_dependant": "chx_acces_utilisateur",
         "id_bdd_de_la_base_dependante": 1
       }
     ]
   },
-  "tbl_dossiers_chi_id_dossier": {
+  "tbl_sources_chi_id_source": {
     "id_bdd_de_la_base_parente": 1,
-    "table_parente": "tbl_dossiers",
-    "champ_parent": "chi_id_dossier",
+    "table_parente": "tbl_sources",
+    "champ_parent": "chi_id_source",
     "dependances": [
       {
-        "table_dependante": "tbl_sources",
-        "champ_dependant": "chx_dossier_id_source",
-        "id_bdd_de_la_base_dependante": 1
-      },
-      {
-        "table_dependante": "tbl_dossiers",
-        "champ_dependant": "chx_parent_dossier",
+        "table_dependante": "tbl_autorisations",
+        "champ_dependant": "chx_source_autorisation",
         "id_bdd_de_la_base_dependante": 1
       }
     ]
@@ -79,14 +74,19 @@
       }
     ]
   },
-  "tbl_sources_chi_id_source": {
+  "tbl_dossiers_chi_id_dossier": {
     "id_bdd_de_la_base_parente": 1,
-    "table_parente": "tbl_sources",
-    "champ_parent": "chi_id_source",
+    "table_parente": "tbl_dossiers",
+    "champ_parent": "chi_id_dossier",
     "dependances": [
       {
-        "table_dependante": "tbl_autorisations",
-        "champ_dependant": "chx_source_autorisation",
+        "table_dependante": "tbl_dossiers",
+        "champ_dependant": "chx_parent_dossier",
+        "id_bdd_de_la_base_dependante": 1
+      },
+      {
+        "table_dependante": "tbl_sources",
+        "champ_dependant": "chx_dossier_id_source",
         "id_bdd_de_la_base_dependante": 1
       }
     ]

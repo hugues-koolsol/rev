@@ -1334,6 +1334,7 @@ class __ig1{
         t+='    min-height: 5vh;';
         t+='    overscroll-behavior: none;';
         t+='    color:' + couleur6hex + ';';
+        t+='    line-height:' + (val_police + 2) + 'px;';
         t+='}';
         t+='a:focus{';
         t+='    box-shadow:0px 0px 8px red;';

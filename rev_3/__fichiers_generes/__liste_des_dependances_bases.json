@@ -39,13 +39,25 @@
     "champ_parent": "chi_id_acces",
     "dependances": [
       {
-        "table_dependante": "tbl_utilisateurs",
-        "champ_dependant": "chx_acces_utilisateur",
+        "table_dependante": "tbl_autorisations",
+        "champ_dependant": "chx_acces_autorisation",
         "id_bdd_de_la_base_dependante": 1
       },
       {
+        "table_dependante": "tbl_utilisateurs",
+        "champ_dependant": "chx_acces_utilisateur",
+        "id_bdd_de_la_base_dependante": 1
+      }
+    ]
+  },
+  "tbl_sources_chi_id_source": {
+    "id_bdd_de_la_base_parente": 1,
+    "table_parente": "tbl_sources",
+    "champ_parent": "chi_id_source",
+    "dependances": [
+      {
         "table_dependante": "tbl_autorisations",
-        "champ_dependant": "chx_acces_autorisation",
+        "champ_dependant": "chx_source_autorisation",
         "id_bdd_de_la_base_dependante": 1
       }
     ]
@@ -70,18 +82,6 @@
       {
         "table_dependante": "tbl_taches",
         "champ_dependant": "chx_utilisateur_tache",
-        "id_bdd_de_la_base_dependante": 1
-      }
-    ]
-  },
-  "tbl_sources_chi_id_source": {
-    "id_bdd_de_la_base_parente": 1,
-    "table_parente": "tbl_sources",
-    "champ_parent": "chi_id_source",
-    "dependances": [
-      {
-        "table_dependante": "tbl_autorisations",
-        "champ_dependant": "chx_source_autorisation",
         "id_bdd_de_la_base_dependante": 1
       }
     ]

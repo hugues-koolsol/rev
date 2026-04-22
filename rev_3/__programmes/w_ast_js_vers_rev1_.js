@@ -2560,11 +2560,11 @@ class w_ast_js_vers_rev1{
     /*
       =============================================================================================================
     */
-    #traite_element( element , niveau , parent , tab_comm , ignorer_commentaires_avant ){
+    #traite_element( element , niveau , parent , tab_comm , ignorer_commentaires_avant , parent_de_parent=null ){
         let t='';
         let obj=null;
         if(!(ignorer_commentaires_avant !== undefined && ignorer_commentaires_avant === true)){
-            t+=this.#comm_avant_debut1( element , niveau , parent , tab_comm );
+            t+=this.#comm_avant_debut1( element , niveau , parent , tab_comm , parent_de_parent );
         }
         switch (element.type){
             case 'Super' : t='super';
@@ -3230,7 +3230,7 @@ class w_ast_js_vers_rev1{
       =============================================================================================================
       on cherche les commentaires avant elem
     */
-    #comm_avant_debut1( elem , niveau , parent , tab_comm ){
+    #comm_avant_debut1( elem , niveau , parent , tab_comm , parent_de_parent=null ){
         let t='';
         let i=0;
         let c1=0;
@@ -3318,6 +3318,10 @@ class w_ast_js_vers_rev1{
                 continue;
             }
             txtComment=tab_comm[i].value;
+            let mon_test=true;
+            if(mon_test && parent_de_parent && parent_de_parent.type === 'BlockStatement' && parent_de_parent.start > tab_comm[i].end){
+                continue;
+            }
             if(txtComment.indexOf( '\n' ) < 0){
                 txtComment=txtComment.trim();
                 txtComment=' ' + txtComment + ' ';
@@ -3361,7 +3365,7 @@ class w_ast_js_vers_rev1{
             for( let i=0 ; i < element.length ; i++ ){
                 switch (element[i].type){
                     case 'ExpressionStatement' :
-                        obj=this.#traite_element( element[i].expression , niveau , element , tab_comm , false );
+                        obj=this.#traite_element( element[i].expression , niveau , element , tab_comm , false , parent );
                         if(obj.__xst === __xsu){
                             t+=espaces + obj.__xva;
                         }else{

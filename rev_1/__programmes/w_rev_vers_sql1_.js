@@ -1719,20 +1719,23 @@ class w_rev_vers_sql1{
                         
                     case 'drop_table' :
                         t+=this.__ig1.__rev1.resps( niveau );
-                        t+='DROP TABLE';
+                        var if_exists='';
+                        var les_tables='';
                         for( j=i + 1 ; j < this.#l02 ; j=this.#tb[j][12] ){
                             if(this.#tb[j][1] === 'ifexists' && this.#tb[j][8] === 0){
-                                t+=' IF EXISTS';
+                                if_exists=' IF EXISTS';
                             }else if(this.#tb[j][1] === 'ifnotexists' && this.#tb[j][8] === 0){
                                 t+=' IF NOT EXISTS';
                             }else if(this.#tb[j][1] === 'nom_de_la_table' && this.#tb[j][8] === 1 && this.#tb[j + 1][2] === 'c'){
-                                t+=' ' + this.#tb[j + 1][1] + '';
-                                j++;
+                                if(les_tables !== ''){
+                                    les_tables+=' , ';
+                                }
+                                les_tables+=' ' + this.#tb[j + 1][1] + '';
                             }else{
                                 return(this.#rev_sql_le( {"__xst" : __xer ,"__xva" : t ,"id" : i ,"__xme" : this.__ig1.__rev1.nl2() + 'drop table ' + this.#tb[j][1]} ));
                             }
                         }
-                        t+=';';
+                        t+='DROP TABLE' + if_exists + ' ' + les_tables + ';';
                         break;
                         
                     case 'create_database' :

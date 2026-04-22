@@ -92,36 +92,6 @@ class __rev1{
     }
     /*
       =============================================================================================================
-      met les valeurs dans la variable globale_messages ( l og erreu r ) logerreur __m__rev1.ajoute_message
-      =============================================================================================================
-    */
-    /*
-      empiler _ erreur( o ){
-      var a_retourner={
-      "__xst" : o.hasOwnProperty( '__xst' ) ? ( o.__xst ) : ( __xer ) ,
-      "__xme" : o.hasOwnProperty( '__xme' ) ? ( o.__xme ) : ( null ) ,
-      "__xva" : o.hasOwnProperty( '__xva' ) ? ( o.__xva ) : ( null ) ,
-      "masquee" : o.hasOwnProperty( 'masquee' ) ? ( o.masquee ) : ( false ) ,
-      "plage" : o.hasOwnProperty( 'plage' ) ? ( o.plage ) : ( null ) ,
-      "lig_col" : o.hasOwnProperty( 'lig_col' ) ? ( o.lig_col ) : ( null ) ,
-      "ligne" : o.hasOwnProperty( 'ligne' ) ? ( o.ligne ) : ( null )
-      };
-      if(a_retourner.__xst === __xal){
-      this.globale_messages.__xal.push( a_retourner );
-      }else if(a_retourner.__xst === __xif){
-      this.globale_messages.__xif.push( a_retourner );
-      }else if(a_retourner.__xst === __xsu){
-      this.globale_messages.__xsu.push( a_retourner );
-      }else if(a_retourner.__xst === __xdv){
-      this.globale_messages.__xdv.push( a_retourner );
-      }else{
-      this.globale_messages.__xer.push( a_retourner );
-      }
-      return a_retourner;
-      }
-    */
-    /*
-      =============================================================================================================
       fonction respr (__m__rev1.#respr) PRIVÉE : retour chariot + nouvelle ligne + n espaces dans les rev produits
       =============================================================================================================
     */

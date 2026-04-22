@@ -309,7 +309,7 @@ class __ig1{
                     if(lignes[numero_de_ligne][0] > 0){
                         let tt='<b>Il existe des enregistrements dépendants dans la table des ' + les_dependances[i]['table_dependante'].replace( 'tbl_' , '' ) + '</b>';
                         /* this.ma_trace1('tt=',tt); */
-                        this.__xsi[__xer].push( tt );
+                        donnees_retournees.__xsi[__xer].push( tt );
                         les_erreurs++;
                     }
                 }
@@ -336,16 +336,101 @@ class __ig1{
         }
         let le_machin={
             "__xst" : __xsu ,
-            "__xva" : {
-                 /*  */
-                "chi_id_acces" : 0 ,
-                "chi_id_projet" : 0 ,
-                "chi_id_utilisateur" : 0 ,
-                "__xsi" : {0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []}
-            } ,
+            "chi_id_acces" : 0 ,
+            "chi_id_projet" : 0 ,
+            "chi_id_utilisateur" : 0 ,
+            "__xsi" : {0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
+            "__xva" : {} ,
             "__xac" : 'pm1(m1(n1(__ig1),f1(connexion_socket_etablie())))'
         };
         socket.send( JSON.stringify( le_machin ) );
+    }
+    /*
+      =============================================================================================================
+    */
+    async contenu_de_post( req1 ){
+        const contentType=req1.headers.get( "content-type" ) || "";
+        const nom_du_fichier=req1.headers.get( "x-nom_du_fichier" ) || "";
+        const nom_original=req1.headers.get( "x-nom_original" ) || "";
+        const _CA_=req1.headers.get( "x-_CA_" ) || 0;
+        const chi_id_acces=req1.headers.get( "x-chi_id_acces" ) || 0;
+        const chi_id_utilisateur=req1.headers.get( "x-chi_id_utilisateur" ) || 0;
+        const chi_id_projet=req1.headers.get( "x-chi_id_projet" ) || 0;
+        const numero_morceau_de_fichier=req1.headers.get( "x-numero_morceau_de_fichier" ) || 0;
+        const nombre_de_morceaux=req1.headers.get( "x-nombre_de_morceaux" ) || 0;
+        this.__deverminage=req1.headers.get( "x-__deverminage" ) || 0;
+        const cookies=getCookies( req1.headers );
+        let la_cle=null;
+        /* 'la_cle_websocket_rev_' + this._CA_ + '_' + (await crypto.randomUUID()); */
+        if(cookies.hasOwnProperty( this.__ndlcs )
+               && cookies[this.__ndlcs] !== ''
+               && cookies[this.__ndlcs].substr( 0 , String( 'la_cle_websocket_rev_' + this._CA_ + '_' ).length ) === 'la_cle_websocket_rev_' + this._CA_ + '_'
+        ){
+            /* console.log("cookie trouve") */
+            la_cle=cookies[this.__ndlcs];
+        }
+        if(la_cle === null){
+            const headers=new Headers();
+            headers.append( "status" , "200" );
+            headers.append( "Content-Type" , "text/html; charset=utf-8" );
+            let entetes_reponse_http={"headers" : headers};
+            return({
+                    "__xst" : __xer ,
+                    "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'cookie non trouvé\'))' ,"entetes_reponse_http" : entetes_reponse_http}
+                });
+        }
+        /* this.ma_trace1("la_cle=",la_cle); */
+        let chemin_session='../rev_' + this._CA_ + '/__sessions/' + la_cle + '.json';
+        if(!(await this.is_file( chemin_session ))){
+            const headers=new Headers();
+            headers.append( "status" , "200" );
+            headers.append( "Content-Type" , "text/html; charset=utf-8" );
+            let entetes_reponse_http={"headers" : headers};
+            return({
+                    "__xst" : __xer ,
+                    "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'session non trouvée\'))' ,"entetes_reponse_http" : entetes_reponse_http}
+                });
+        }
+        if(!(_CA_ > 0 && chi_id_acces > 0 && chi_id_utilisateur > 0 && chi_id_projet > 0)){
+            const headers=new Headers();
+            headers.append( "status" , "200" );
+            headers.append( "Content-Type" , "text/html; charset=utf-8" );
+            let entetes_reponse_http={"headers" : headers};
+            return({
+                    "__xst" : __xer ,
+                    "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'il manque des paramètres\'))' ,"entetes_reponse_http" : entetes_reponse_http}
+                });
+        }
+        /*
+          this.ma_trace1('nom_du_fichier=' + nom_du_fichier + '\nnom_original=' + nom_original + '\n_CA_=' + _CA_ + '\nchi_id_acces=' + chi_id_acces + '\nchi_id_utilisateur=' + chi_id_utilisateur )
+          this.ma_trace1('chi_id_projet=' + chi_id_projet )
+        */
+        /* https://docs.deno.com/api/web/~/Body */
+        let aaa=await req1.arrayBuffer();
+        let chemin_fichier='../rev_' + chi_id_projet + '/__fichiers_binaires/' + this.nettoyer_chaine_pour_id_vv( nom_original + '-' + nom_du_fichier ) + '.txt';
+        if(!(await this.is_file( chemin_fichier ))){
+            /*
+              si le fichier n'existe pas on le crée ...
+            */
+            await Deno.writeFile( chemin_fichier , new Uint8Array( aaa ) , {"mode" : 0o777 ,"create" : true} );
+        }else{
+            /*
+              ... sinon on ajoute le contenu
+            */
+            /* this.ma_trace1("on ajoute au fichier"); */
+            await Deno.writeFile( chemin_fichier , new Uint8Array( aaa ) , {"mode" : 0o777 ,"append" : true} );
+        }
+        let le_cookie='cle_de_session_rev_' + this._CA_ + '_websocket=' + la_cle + '; Secure; HttpOnly; SameSite=Strict; Path=/;';
+        const headers=new Headers();
+        headers.append( "status" , "200" );
+        headers.append( "Content-Type" , "text/html; charset=utf-8" );
+        headers.append( "Set-Cookie" , le_cookie );
+        let entetes_reponse_http={"headers" : headers};
+        let le_json_de_retour={
+            "contenu" : 'ok_dans_serveur(nom_du_fichier(' + nom_du_fichier + '),numero_morceau_de_fichier(' + numero_morceau_de_fichier + '),nombre_de_morceaux(' + nombre_de_morceaux + '))' ,
+            "entetes_reponse_http" : entetes_reponse_http
+        };
+        return({"__xst" : __xsu ,"__xva" : le_json_de_retour});
     }
     /*
       =============================================================================================================
@@ -446,13 +531,13 @@ class __ig1{
             console.log( '%c\nATTENTION API MISUSE, un await est il manquant quelquepart avant sql_' + numero_de_requete + ' ?\n\n' + e.stack , 'color:red;background-color:yellow;' );
         }
         if(this.__deverminage === 1){
-            this.__xsi[__xdv].push( this.nl2( e ) );
+            donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
         }else if(this.__deverminage === 2){
             let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
-            this.__xsi[__xdv].push( e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />' );
+            donnees_retournees.__xsi[__xdv].push( e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />' );
         }
         if(this.__deverminage > 0){
-            this.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
+            donnees_retournees.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
         }
         if(e.stack.indexOf( 'UNIQUE constraint' ) >= 0){
             __xme+='<b>doublon</b>';
@@ -467,7 +552,7 @@ class __ig1{
         let la_classe_sql='sql_' + numero_de_sql;
         let nom_du_fichier='/__fichiers_generes/__sqls/' + la_classe_sql + '.js';
         if(!this.is_file( '..' + nom_du_fichier )){
-            this.__xsi[__xer].push( 'Le fichier sql_' + numero_de_sql + ' n\'a pas été trouvé [' + this.nl2( e ) + ']' );
+            donnees_retournees.__xsi[__xer].push( 'Le fichier sql_' + numero_de_sql + ' n\'a pas été trouvé [' + this.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
         try{
@@ -477,7 +562,7 @@ class __ig1{
             let ret=o.sql( par , donnees_retournees );
             return ret;
         }catch(e){
-            this.__xsi[__xer].push( 'Le sql_' + numero_de_sql + ' comporte une erreur [' + this.nl2( e ) + ']' );
+            donnees_retournees.__xsi[__xer].push( 'Le sql_' + numero_de_sql + ' comporte une erreur [' + this.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
     }
@@ -495,7 +580,10 @@ class __ig1{
         if(reouvrir_la_base === true && options_generales.bdd_ouvertes.hasOwnProperty( chi_id_basedd )){
             await options_generales.bdd_ouvertes[chi_id_basedd].base.close();
         }
-        if(reouvrir_la_base === false && options_generales.bdd_ouvertes.hasOwnProperty( chi_id_basedd )){
+        if(reouvrir_la_base === false
+               && options_generales.bdd_ouvertes.hasOwnProperty( chi_id_basedd )
+               && options_generales.bdd_ouvertes[chi_id_basedd] !== null
+        ){
             return options_generales.bdd_ouvertes[chi_id_basedd].base;
         }
         let chemin_complet_bdd=options_generales.chemin_des_bdd + 'bdd_' + chi_id_basedd + '.sqlite';
@@ -796,6 +884,7 @@ class __ig1{
         }
         if(pm1_trouve === false){
             if('pm1(m1(n1(__ig1),f1(init0())))' === donnees_recues.__xac){
+                donnees_retournees.__xva['init0']=true;
             }else{
                 donnees_retournees.__xsi[__xdv].push( 'pas de pm1 trouvé ' + donnees_recues.__xac + ' ' + this.nl2() + ' ' );
                 continuer=false;
@@ -820,7 +909,6 @@ class __ig1{
         if(donnees_retournees.chi_id_projet === 0){
             this.__liste_des_sql={};
             donnees_retournees['__liste_des_sql']={};
-            donnees_retournees[__xac]+='m1(n1(_developpement1_),f1(maj_liste_des_sql()))';
         }else{
             let chemin_fichier__liste_des_sql='';
             if(donnees_retournees._CA_ === 2){
@@ -834,12 +922,10 @@ class __ig1{
                 let contenu_json=JSON.parse( contenu_texte );
                 donnees_retournees['__liste_des_sql']=contenu_json;
                 this.__liste_des_sql=contenu_json;
-                donnees_retournees[__xac]+='m1(n1(_developpement1_),f1(maj_liste_des_sql()))';
             }catch(e){
                 /* this.ma_trace1( 'par ici' ); */
-                this.__xsi[__xdv].push( 'SERVEUR : le fichier des sql n\'a pas pu être lu<br />' + this.nl2( e ) );
+                donnees_retournees.__xsi[__xdv].push( 'SERVEUR : le fichier des sql n\'a pas pu être lu<br />' + this.nl2( e ) );
                 donnees_retournees['__liste_des_sql']={};
-                donnees_retournees[__xac]+='m1(n1(_developpement1_),f1(maj_liste_des_sql()))';
             }
         }
     }
@@ -851,7 +937,6 @@ class __ig1{
         if(donnees_retournees.chi_id_projet === 0){
             donnees_retournees['__liste_des_genres']={};
             this.__liste_des_genres={};
-            donnees_retournees[__xac]+='m1(n1(_developpement1_),f1(maj_liste_des_genres()))';
         }else{
             let chemin_fichier__liste_des_genres='';
             if(donnees_retournees._CA_ === 2){
@@ -864,9 +949,8 @@ class __ig1{
                 let contenu_json=JSON.parse( contenu_texte );
                 donnees_retournees['__liste_des_genres']=contenu_json;
                 this.__liste_des_genres=contenu_json;
-                donnees_retournees[__xac]+='m1(n1(_developpement1_),f1(maj_liste_des_genres()))';
             }catch(e){
-                this.__xsi[__xdv].push( 'SERVEUR : le fichier des genres n\'a pas pu être lu<br />' + this.nl2( e ) );
+                donnees_retournees.__xsi[__xdv].push( 'SERVEUR : le fichier des genres n\'a pas pu être lu<br />' + this.nl2( e ) );
             }
         }
     }
@@ -888,7 +972,6 @@ class __ig1{
             donnees_retournees[__xac]='m1(n1(' + this.moi + '),f1(affiche_page_d_accueil()))';
             donnees_retournees[__xac]+='m1(n1(' + this.moi + '),f1(maj_hash_init(m1(n1(' + this.moi + '),f1(affiche_page_d_accueil())))))';
         }
-        /* this.__xsi[__xdv].push('debug ' + donnees_retournees.chi_id_utilisateur + this.nl2()); */
         await this.obtenir_les_menus( mat , d , donnees_recues , donnees_retournees , options_generales );
         if(donnees_retournees._CA_ === 1 || donnees_retournees._CA_ === 2){
             await this.obtenir_les_genres( mat , d , donnees_recues , donnees_retournees , options_generales );
@@ -913,35 +996,29 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    async televerser1( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        /* this.ma_trace1('mat=',mat); */
-        /* this.ma_trace1('donnees_recues=',donnees_recues.__xva); */
-        /* this.ma_trace1('donnees_retournees=',donnees_retournees); */
-        /* this.ma_trace1('options_generales=',options_generales); */
-        let nom_du_fichier=null;
-        let longueur_reste_a_envoyer=donnees_recues.__xva.longueur_reste_a_envoyer;
-        let nouveau_fichier=false;
-        if(donnees_recues.__xva.hasOwnProperty( 'nom_du_fichier' )){
-            nom_du_fichier=donnees_recues.__xva.nom_du_fichier;
-        }else{
-            nom_du_fichier=donnees_retournees.date_heure_serveur.replace( / /g , '_' ).replace( /\-/g , '_' ).replace( /\:/g , '_' ).replace( /\./g , '_' ) + '.txt';
-            nouveau_fichier=true;
-        }
-        let chemin_fichier='../rev_' + donnees_retournees.chi_id_projet + '/__fichiers_binaires/' + nom_du_fichier;
-        let source_binaire=new Uint8Array( donnees_recues.__xva['fichier_binaire'] );
-        try{
-            if(nouveau_fichier === true){
-                await Deno.writeFile( chemin_fichier , source_binaire , {"mode" : 0o777 ,"create" : true} );
+    nettoyer_chaine_pour_id_vv( txt ){
+        let o='';
+        for( let i=0 ; i < txt.length ; i++ ){
+            let c=txt.substr( i , 1 );
+            if(c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9' || c == '_'){
+                o+=c;
             }else{
-                await Deno.writeFile( chemin_fichier , source_binaire , {"mode" : 0o777 ,"append" : true} );
+                o+='_';
             }
-            donnees_retournees.__xva['nom_du_fichier']=nom_du_fichier;
-        }catch(e){
-            this.ma_trace1( 'chemin_fichier=' + chemin_fichier , 'e=' , e );
-            donnees_retournees.__xsi[__xer].push( 'erreur ecriture du fichier binaire  [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
         }
-        return({"__xst" : __xsu});
+        return o;
+    }
+    /*
+      =============================================================================================================
+    */
+    arrayBufferToArray( buffer , TypedArrayConstructor=Uint8Array ){
+        if(!(buffer instanceof ArrayBuffer)){
+            throw new TypeError( "Expected an ArrayBuffer" );
+        }
+        if( typeof TypedArrayConstructor !== "function"){
+            throw new TypeError( "Expected a valid TypedArray constructor" );
+        }
+        return(Array.from( new TypedArrayConstructor( buffer ) ));
     }
     /*
       =============================================================================================================

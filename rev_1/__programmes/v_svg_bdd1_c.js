@@ -85,6 +85,14 @@ class v_svg_bdd1{
                 "doit_etre_dans_meta" : false
             },
         {
+                "nom_du_meta_table" : 'rang_de_la_table' ,
+                "exemple" : '0,1,2' ,
+                "zone_html2" : 'text' ,
+                "valeur_normale_pour_meta" : 0 ,
+                "valeur_brut_pour_meta" : 0 ,
+                "doit_etre_dans_meta" : true
+            },
+        {
                 "nom_du_meta_table" : 'permet_la_gestion_de' ,
                 "exemple" : '"cheval"' ,
                 "zone_html2" : 'text' ,
@@ -3340,7 +3348,11 @@ class v_svg_bdd1{
         for(let i in this.#liste_des_meta_table){
             t+=this.#liste_des_meta_table[i].nom_du_meta_table.replace( /_/ , ' ' );
             if(this.#liste_des_meta_table[i].zone_html2 === 'text'){
-                t+=' : <input id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" type="text" value="" autocapitalize="off" />';
+                t+=' : <input id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" type="text" autocapitalize="off" value="';
+                if(this.#liste_des_meta_table[i].nom_du_meta_table === 'rang_de_la_table'){
+                    t+='0';
+                }
+                t+='"  />';
             }else if(this.#liste_des_meta_table[i].zone_html2 === 'textarea'){
                 t+=' : <textarea id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" rows="5" cols="50" autocapitalize="off" /></textarea>';
             }else{
@@ -4608,11 +4620,17 @@ class v_svg_bdd1{
         let est_table_virtuelle=0;
         let nouveau_meta=this.#corrige_meta_table( document.getElementById( id_svg_rectangle_de_la_table ).getAttribute( 'meta_rev_de_la_table' ) , {} , nom_de_la_table );
         for(let i in this.#liste_des_meta_table){
-            t+=this.#liste_des_meta_table[i].nom_du_meta_table.replace( /_/ , ' ' );
+            t+=this.#liste_des_meta_table[i].nom_du_meta_table.replace( /_/g , ' ' );
             if(this.#liste_des_meta_table[i].zone_html2 === 'text'){
                 t+=' : <input id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '"';
                 t+=' type="text" ';
-                if(nouveau_meta.hasOwnProperty( this.#liste_des_meta_table[i].nom_du_meta_table )
+                if(this.#liste_des_meta_table[i].nom_du_meta_table === 'rang_de_la_table'){
+                    if(nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] === ''){
+                        t+=' value="0" ';
+                    }else{
+                        t+=' value="' + nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] + '" ';
+                    }
+                }else if(nouveau_meta.hasOwnProperty( this.#liste_des_meta_table[i].nom_du_meta_table )
                        && nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] !== null
                 ){
                     t+=' value="' + nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table].replace( /"/g , '&quot;' ) + '" ';
@@ -7148,6 +7166,7 @@ class v_svg_bdd1{
         let transform_table_sur_svg='';
         let decallage_x=0;
         let decallage_y=0;
+        let rang_de_la_table=0;
         let obj1=this.__ig1.__rev1.rev_tm( texte_meta_rev );
         for(let i in this.#liste_des_meta_table){
             this.#liste_des_meta_table[i].valeur_normale_pour_meta=null;
@@ -7177,6 +7196,11 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.nom_de_la_table;
                             }
                             nom_de_la_table=mat2[k + 1][1];
+                        }else if(mat2[k][1] === 'rang_de_la_table' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'rang_de_la_table' )){
+                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.rang_de_la_table , 10 );
+                            }
+                            rang_de_la_table=parseInt( mat2[k + 1][1] , 10 );
                         }else if(mat2[k][1] === 'transform_table_sur_svg' && mat2[k][2] === 'f'){
                             for( var j=k + 1 ; j < l01 ; j=mat2[j][12] ){
                                 if('translate' === mat2[j][1] && mat2[j][8] === 2){
@@ -7272,7 +7296,9 @@ class v_svg_bdd1{
         o1+=' table(\'' + table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         o1+=' genre_meta(table_de_base),';
         for(let l in this.#liste_des_meta_table){
-            if(nouvelles_valeurs.hasOwnProperty( this.#liste_des_meta_table[l].nom_du_meta_table )){
+            if('rang_de_la_table' === this.#liste_des_meta_table[l].nom_du_meta_table){
+                o1+=' rang_de_la_table(' + rang_de_la_table + ')';
+            }else if(nouvelles_valeurs.hasOwnProperty( this.#liste_des_meta_table[l].nom_du_meta_table )){
                 this.#liste_des_meta_table[l].valeur_brut_pour_meta=nouvelles_valeurs[this.#liste_des_meta_table[l].nom_du_meta_table].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
                 if(this.#liste_des_meta_table[l].valeur_brut_pour_meta !== ''){
                     o1+=' ' + this.#liste_des_meta_table[l].nom_du_meta_table + '(\'' + this.#liste_des_meta_table[l].valeur_brut_pour_meta.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
@@ -7324,6 +7350,7 @@ class v_svg_bdd1{
                 this.#liste_des_meta_table[l].valeur_brut_pour_meta
               );
         }
+        ret['rang_de_la_table']=rang_de_la_table;
         /*
           if(nom_de_la_table_en_parametre_pour_debug==='tbl_utilisateurs'){
           debugger
@@ -7477,119 +7504,60 @@ class v_svg_bdd1{
           ce sont les rectangles qui contiennent les informations sur la base
         */
         lst=racine_du_svg.getElementsByTagName( 'rect' );
-        var i=0;
-        for( i=0 ; i < lst.length ; i++ ){
-            if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) === 'rectangle_de_base'){
-                /*#
-                */
-                let meta_base=this.#corrige_meta_base( lst[i].getAttribute( 'donnees_rev_meta_de_la_base' ) , {} );
-                t+=meta_base.texte;
-                /*#
-                  t+='\n#(';
-                  t+='\n  ================';
-                  t+='\n  liste des tables';
-                  t+='\n  ================';
-                  t+='\n),';
-                */
-            }else if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) === 'rectangle_de_table'){
-                /*#
-                  if(lst[i].getAttribute('nom_de_la_table')==='tbl_y'){
-                      debugger
-                  }
-                */
-                t+=this.#creer_definition_table_en_rev( lst[i] , null , null );
-            }else if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) === 'rectangle_d_index'){
-                t+=this.#creer_definition_index_en_rev( lst[i] );
+        let les_tables_ordonnées=[];
+        for( let i=0 ; i < lst.length ; i++ ){
+            if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) === 'rectangle_de_table'){
+                les_tables_ordonnées.push( {"position" : 0 ,"element" : lst[i]} );
             }
         }
-        return({"__xst" : __xsu ,"__xva" : t});
+        for( let i=0 ; i < les_tables_ordonnées.length ; i++ ){
+            let obj1=this.__ig1.__rev1.rev_tm( les_tables_ordonnées[i].element.getAttribute( 'meta_rev_de_la_table' ) );
+            if(obj1.__xst === __xsu){
+                let rang_de_la_table=0;
+                let l01=obj1.__xva.length;
+                for( let i=1 ; i < l01 ; i=obj1.__xva[i][12] ){
+                    if(obj1.__xva[i][1] === 'meta' && obj1.__xva[i][2] === 'f'){
+                        for( let j=i + 1 ; j < l01 ; j=obj1.__xva[j][12] ){
+                            if(obj1.__xva[j][1] === 'rang_de_la_table'
+                                   && obj1.__xva[j][2] === 'f'
+                                   && obj1.__xva[j][8] === 1
+                                   && obj1.__xva[j + 1][2] === 'c'
+                            ){
+                                rang_de_la_table=parseInt( obj1.__xva[j + 1][1] , 10 );
+                            }
+                        }
+                    }
+                }
+                les_tables_ordonnées[i].position=rang_de_la_table;
+            }
+        }
+        if(les_tables_ordonnées.length > 0){
+            les_tables_ordonnées.sort( ( a , b ) => {
+                    if(a.position < b.position){
+                        return -1;
+                    }else if(a.position > b.position){
+                        return 1;
+                    }
+                    return 0;} );
+            for( let i=0 ; i < lst.length ; i++ ){
+                if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) === 'rectangle_de_base'){
+                    let meta_base=this.#corrige_meta_base( lst[i].getAttribute( 'donnees_rev_meta_de_la_base' ) , {} );
+                    t+=meta_base.texte;
+                }
+            }
+            for( let i=0 ; i < les_tables_ordonnées.length ; i++ ){
+                t+=this.#creer_definition_table_en_rev( les_tables_ordonnées[i].element , null , null );
+            }
+            for( let i=0 ; i < lst.length ; i++ ){
+                if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) === 'rectangle_d_index'){
+                    t+=this.#creer_definition_index_en_rev( lst[i] );
+                }
+            }
+            return({"__xst" : __xsu ,"__xva" : t});
+        }else{
+            return({"__xst" : __xer ,"__xva" : t});
+        }
     }
-    /*#
-      =============================================================================================================
-      
-      
-      créer_table[
-         nom_de_la_table[ 'tbl_taches'],
-         champs[
-            champ[
-               nom_du_champ[ 'chx_utilisateur_tache'],
-               type[ 'integer'],
-               non_nulle[1],
-               references[ tbl_utilisateurs , chi_id_utilisateur],
-            ],      
-    */
-    /*#
-      #construire_tableau_dependances( mat , id_bdd_de_la_base ){
-          let l01=mat.length;
-          let objet_dependances={};
-          for( var i=1 ; i < l01 ; i=mat[i][12] ){
-              if('créer_table' === mat[i][1] && mat[i][2] === 'f'){
-                  let table_dependante='';
-                  for( var j=i + 1 ; j < l01 ; j=mat[j][12] ){
-                      if('nom_de_la_table' === mat[j][1] && mat[j][2] === 'f' && mat[j][8] === 1 && mat[j + 1][2] === 'c'){
-                          table_dependante=mat[j + 1][1];
-                          break;
-                      }
-                  }
-                  for( var j=i + 1 ; j < l01 ; j=mat[j][12] ){
-                      if('champs' === mat[j][1] && mat[j][2] === 'f'){
-                          for( var k=j + 1 ; k < l01 ; k=mat[k][12] ){
-                              if('champ' === mat[k][1] && mat[k][2] === 'f'){
-                                  let champ_dependant='';
-                                  let non_nulle='0';
-                                  for( var l=k + 1 ; l < l01 ; l=mat[l][12] ){
-                                      if('nom_du_champ' === mat[l][1] && mat[l][2] === 'f' && mat[l][8] === 1){
-                                          champ_dependant=mat[l + 1][1];
-                                      }else if('non_nulle' === mat[l][1] && mat[l][2] === 'f' && mat[l][8] === 1){
-                                          non_nulle=mat[l + 1][1];
-                                      }
-                                  }
-                                  for( var l=k + 1 ; l < l01 ; l=mat[l][12] ){
-                                      if('references' === mat[l][1] && mat[l][2] === 'f'){
-                                          let table_parente='';
-                                          let champ_parent='';
-                                          for( var m=l + 1 ; m < l01 ; m=mat[m][12] ){
-                                              if(mat[m][2] === 'c'){
-                                                  if(table_parente === ''){
-                                                      table_parente=mat[m][1];
-                                                  }else{
-                                                      champ_parent=mat[m][1];
-                                                  }
-                                              }
-                                          }
-                                          if(table_parente !== '' && champ_parent !== ''){
-                                              let cle=table_parente + '_' + champ_parent;
-                                              if(!objet_dependances.hasOwnProperty( cle )){
-                                                  objet_dependances[cle]={
-                                                      "table_parente" : table_parente ,
-                                                      "champ_parent" : champ_parent ,
-                                                      "dependances" : [{
-                                                                  "table_dependante" : table_dependante ,
-                                                                  "champ_dependant" : champ_dependant ,
-                                                                  "non_nulle" : non_nulle ,
-                                                                  "id_bdd_de_la_base_dependante" : id_bdd_de_la_base
-                                                              }]
-                                                  };
-                                              }else{
-                                                  objet_dependances[cle].dependances.push( {
-                                                          "table_dependante" : table_dependante ,
-                                                          "champ_dependant" : champ_dependant ,
-                                                          "non_nulle" : non_nulle ,
-                                                          "id_bdd_de_la_base_dependante" : id_bdd_de_la_base
-                                                      } );
-                                              }
-                                          }
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                  }
-              }
-          }
-          return({"__xst" : __xsu ,"__xva" : objet_dependances});
-      }
-    */
     /*
       =============================================================================================================
     */
@@ -8617,7 +8585,7 @@ class v_svg_bdd1{
         indice_svg_courant++;
         let contenu='';
         contenu+='<tspan type_element="edition_de_la_base" id_bdd_de_la_base="' + id_bdd_de_la_base + '" style="fill:blue;cursor:pointer;">base(' + id_bdd_de_la_base + ')</tspan>';
-        contenu+='<tspan type_element="sauvegarde_de_la_base" id_bdd_de_la_base="' + id_bdd_de_la_base + '"  style="fill:green;cursor:pointer;">sauvegarder</tspan>';
+        contenu+='<tspan type_element="sauvegarde_de_la_base" data-commentaire="voir la méthode sauvegarder_la_base" id_bdd_de_la_base="' + id_bdd_de_la_base + '"  style="fill:green;cursor:pointer;">sauvegarder</tspan>';
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_svg_courant]={
             "type" : 'text' ,
             "id" : indice_svg_courant ,

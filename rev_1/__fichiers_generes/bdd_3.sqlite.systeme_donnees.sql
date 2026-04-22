@@ -2,7 +2,15 @@
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_groupes offset 0 */
+/*================================================================================ DEBUT BLOC TABLE tbl_projets offset 0 (1) */
+INSERT INTO tbl_projets (  chi_id_projet ,  chp_nom_projet ,  cht_commentaire_projet ,  che__nur_projet ,  chd__dtm_projet ,  chd__dtc_projet ) VALUES
+('3','ref 3','projet de référence N°3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+/*================================================================================ FIN BLOC TABLE tbl_projets offset 0 */
+
+
+/*========================================================================================================================*/
+
+/*================================================================================ DEBUT BLOC TABLE tbl_groupes offset 0 (2) */
 INSERT INTO tbl_groupes (  chi_id_groupe ,  chp_nom_groupe ,  chx_parent_groupe ) VALUES
 ('1',' dev','1'),
 ('2','admin','2');
@@ -11,7 +19,7 @@ INSERT INTO tbl_groupes (  chi_id_groupe ,  chp_nom_groupe ,  chx_parent_groupe 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_metiers offset 0 */
+/*================================================================================ DEBUT BLOC TABLE tbl_metiers offset 0 (2) */
 INSERT INTO tbl_metiers (  chi_id_metier ,  chp_nom_metier ,  chx_parent_metier ) VALUES
 ('1','dev','1'),
 ('2','admin','2');
@@ -20,7 +28,7 @@ INSERT INTO tbl_metiers (  chi_id_metier ,  chp_nom_metier ,  chx_parent_metier 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_acces offset 0 */
+/*================================================================================ DEBUT BLOC TABLE tbl_acces offset 0 (2) */
 INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  chx_metier_acces ,  cht_parametres_acces ,  che_actif_acces ) VALUES
 ('1','dev_dev','1','1','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"88\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mes coordonnées\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"10\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"mes tâches\",\"attributs\":{\"data-chi_id_source\":\"90\",\"data-chp_nom_source\":\"taches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"tâches\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"1\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"les tâches\",\"attributs\":{\"data-chi_id_source\":\"92\",\"data-chp_nom_source\":\"taches2_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"les tâches\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"11\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":7,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"},\"separateur\":0},{\"id_interne\":5,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"94\",\"data-chp_nom_source\":\"groupes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"groupes\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"9\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":6,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"métier\",\"attributs\":{\"data-chi_id_source\":\"96\",\"data-chp_nom_source\":\"metiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"métier\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"5\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":7,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"accès\",\"attributs\":{\"data-chi_id_source\":\"99\",\"data-chp_nom_source\":\"acces1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"accès\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"7\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":8,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"101\",\"data-chp_nom_source\":\"utilisateurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"utilisateurs\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"3\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":9,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"103\",\"data-chp_nom_source\":\"sources1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"sources\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"2\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":10,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"105\",\"data-chp_nom_source\":\"autorisations1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"autorisations\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"4\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":11,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"107\",\"data-chp_nom_source\":\"menus1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"menus\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"6\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"88\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"10\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"90\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"tâches\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"1\" data-separateur=\"0\">mes tâches</li><li data-chi_id_source=\"92\" data-chp_nom_source=\"taches2_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"les tâches\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"11\" data-separateur=\"0\">les tâches</li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"94\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"groupes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"9\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"96\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"métier\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"5\" data-separateur=\"0\">métier</li><li data-chi_id_source=\"99\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"accès\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"7\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"101\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"utilisateurs\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"3\" data-separateur=\"0\">utilisateurs</li><li data-chi_id_source=\"103\" data-chp_nom_source=\"sources1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"sources\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"2\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"105\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"autorisations\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"4\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"107\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"menus\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"6\" data-separateur=\"0\">menus</li></ul></li>    "}','1'),
 ('2','admin_admin','2','2','{
@@ -73,118 +81,64 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 */
-INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','',NULL,NULL,'0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0');
-/*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
+/*================================================================================ DEBUT BLOC TABLE tbl_autorisations offset 0 (14) */
+INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chp_nom_autorisation ,  chx_acces_autorisation ,  chx_source_autorisation ) VALUES
+('1','mes tâches dev','1','90'),
+('2','sources','1','103'),
+('3','utilisateurs','1','101'),
+('4','autorisations','1','105'),
+('5','métiers pour dev','1','96'),
+('6','menus','1','107'),
+('7','accés','1','99'),
+('9','groupes','1','94'),
+('10','mes coordonnées','1','88'),
+('11','les tâches dev','1','92'),
+('12','mes coordonnées','2','88'),
+('13','mes tâches admin','2','90'),
+('14','mes coordonnées','2','89'),
+('15','mes tâches admin','2','91');
+/*================================================================================ FIN BLOC TABLE tbl_autorisations offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 */
+/*================================================================================ DEBUT BLOC TABLE tbl_menus offset 0 (12) */
+INSERT INTO tbl_menus (  chi_id_menu ,  cht_libelle_menu ,  chp_titre_menu ,  chx_autorisation_menu ,  chp_methode_menu ,  cht_initialisation_menu ,  cht_condition_menu ,  cht_condition_js_menu ) VALUES
+('1','mes tâches','tâches','1','entree_module',NULL,NULL,NULL),
+('2','sources','sources','2','entree_module',NULL,NULL,NULL),
+('3','utilisateurs','utilisateurs','3','entree_module',NULL,NULL,NULL),
+('4','autorisations','autorisations','4','entree_module',NULL,NULL,NULL),
+('5','métier','métier','5','entree_module',NULL,NULL,NULL),
+('6','menus','menus','6','entree_module',NULL,NULL,NULL),
+('7','accès','accès','7','entree_module',NULL,NULL,NULL),
+('8','<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg>','mes coordonnées','10','entree_module',NULL,NULL,NULL),
+('9','groupes','groupes','9','entree_module',NULL,NULL,NULL),
+('10','les tâches','les tâches','11','entree_module',NULL,NULL,NULL),
+('11','<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg>','mes coordonnées','12','entree_module',NULL,NULL,NULL),
+('12','mes tâches','tâches','13','entree_module',NULL,NULL,NULL);
+/*================================================================================ FIN BLOC TABLE tbl_menus offset 0 */
+
+
+/*========================================================================================================================*/
+
+/*================================================================================ DEBUT BLOC TABLE tbl_dossiers offset 0 (8) */
+INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_dossier ,  che__nur_dossier ,  chd__dtm_dossier ,  chd__dtc_dossier ) VALUES
+('1',NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('2','__programmes','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('3','__fichiers_generes','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('4','__sessions','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('5','__bases_de_donnees','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('6','__sqls','3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('7','bibliotheques_externes','2','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('8','__fichiers_binaires','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+/*================================================================================ FIN BLOC TABLE tbl_dossiers offset 0 */
+
+
+/*========================================================================================================================*/
+
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (33) */
 INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ,  che_autorisation_globale_source ) VALUES
-('77','__serveur.js','
-#(
-  Basé sur l''exemple décrit ici
-  // https://www.youtube.com/watch?v=FC4IrkHEg4A
-  // deno run --watch --allow-read --allow-net --allow-env --allow-ffi --allow-write serveur.js
-  // deno --allow-read --allow-net serveur.js
-)#( console.clear(); )importer(bibliotheque_spécifiée(getCookies),provenance("https://deno.land/std/http/cookie.ts"))
-declare_constante(__xer , 0)
-declare_constante(__xsu , 1)
-declare_constante(stats_de_ce_fichier , await(appelf(element(Deno),nomf(stat),p("./__serveur.js"))))
-declare_constante(__version , appelf(element(appelf(element(appelf(element(appelf(element(appelf(element(appelf(nomf(String),p(chainé(stats_de_ce_fichier.mtime,appelf(nomf(toJSON)p()))))),nomf(replace),p(''T''),p(''_''))),nomf(replace),p(/\:/g),p(''_''))),nomf(replace),p(/-/g),p(''_''))),nomf(replace),p(/\./g),p(''_''))),nomf(substr),p(0),p(23)))
-#( Interface Globale )declare_constante(m__ig1 , await(appelf(nomf(import),p(concat(''./__programmes/__ig1_s.js?__version='',__version)))))
-declare_variable(repertoire_du_pgm_serveur , appelf(element(appelf(element(Deno),nomf(cwd),p())),nomf(replace),p(/\\/g),p(''/'')))
-declare_variable(repertoire_racine_de_tous_les_projets , concat(appelf(element(repertoire_du_pgm_serveur),nomf(substr),p(0),p(appelf(element(repertoire_du_pgm_serveur),nomf(lastIndexOf),p(''/'')))),''/''))
-#( clé application )declare_constante(_CA_ , appelf(nomf(parseInt),p(appelf(element(repertoire_du_pgm_serveur),nomf(substr),p(plus(appelf(element(repertoire_du_pgm_serveur),nomf(lastIndexOf),p(''_'')),1)))),p(10)))
-declare_constante(__le_port , plus(_CA_,7000))
-appelf(element(console),nomf(log),p(concat(''_CA_='',_CA_,'',port='',__le_port)))
-appelf(element(Deno),nomf(serve),p(obj(("port",__le_port),(appelf(nomf(onListen),contenu(#( console.log( `aaaaServeur démaré sur http://` + hostname + `:` + port ); )),p(obj((port),(hostname))))),(appelf(nomf(onError),contenu(appelf(element(console),nomf(log),p(''errrrrrreurrrrrrrrr  serveur=''),p(err.stack)),retourner(new(appelf(nomf(Response),p(concat(''erreur : '',err.stack)),p(obj(("status",200),("headers",obj(("content-type","text/html; charset=utf-8"))))))))),p(err))))),p(appelf(asynchrone(),flechee(),p(req1),contenu(
-         choix(si(condition(diffstricte(appelf(element(req1.headers),nomf(get),p("upgrade")),"websocket")),alors(
-               #(
-              si ce n''est pas un websocket, ça ne peut être qu''un GET
-              les POST et autres types sont envoyés par le canal WS
-            )choix(si(condition(egalstricte(req1.method,''GET'')),alors(
-                     declare_constante(__ig1 , new(appelf(nomf(tableau(nomt(m__ig1),p(''__ig1''))),p(_CA_),p(__le_port),p(__version),p(repertoire_du_pgm_serveur),p(repertoire_racine_de_tous_les_projets))))
-                     #( , repertoire_du_pgm_serveur , repertoire_des_programmes , repertoire_racine_de_tous_les_projets , __deverminage ]; )declare_variable(le_contenu_de_get , await(appelf(element(__ig1),nomf(contenu_de_get),p(req1))))
-                     choix(si(condition(egalstricte(le_contenu_de_get.__xst,__xsu)),alors(
-                           #( console.log( ''__version='' , __version ); )retourner(new(appelf(nomf(Response),p(le_contenu_de_get.__xva.contenu),p(le_contenu_de_get.__xva.entetes_reponse_http)))))))))sinon(alors(
-                     appelf(element(console),nomf(log),p(''\n\n\n\n\nce type de requete n\''est pas traité reg=''),p(req1)))))
-               retourner(new(appelf(nomf(Response),p(null),p(obj(("status",501)))))))))
-         declare_constante(obj((socket,),(response,)) , appelf(element(Deno),nomf(upgradeWebSocket),p(req1)))
-         declare_constante(__ig1 , new(appelf(nomf(tableau(nomt(m__ig1),p(''__ig1''))),p(_CA_),p(__le_port),p(__version),p(repertoire_du_pgm_serveur),p(repertoire_racine_de_tous_les_projets))))
-         appelf(element(socket),nomf(addEventListener),p("open"),p(appelf(flechee(),p(),contenu(
-                  #( console.log(''dans serveur, open ws '') )declare_variable(traitement_open_socket , appelf(element(__ig1),nomf(traiter_open_socket),p(req1),p(socket)))))))
-         appelf(element(socket),nomf(addEventListener),p("message"),p(appelf(asynchrone(),flechee(),p(evenement),contenu(
-                  declare_variable(traitement_mesage_socket , await(appelf(element(__ig1),nomf(traiter_message_socket),p(evenement),p(req1))))
-                  #( console.log(''dans serveur '', traitement_mesage_socket ) )choix(si(condition(egalstricte(traitement_mesage_socket.__xst,__xsu)),alors(
-                        appelf(element(socket),nomf(send),p(appelf(element(JSON),nomf(stringify),p(traitement_mesage_socket))))))sinon(alors(
-                        appelf(element(socket),nomf(send),p(appelf(element(JSON),nomf(stringify),p(traitement_mesage_socket)))))))))))
-         retourner(response)))))','/*
-  Basé sur l''exemple décrit ici
-  // https://www.youtube.com/watch?v=FC4IrkHEg4A
-  // deno run --watch --allow-read --allow-net --allow-env --allow-ffi --allow-write serveur.js
-  // deno --allow-read --allow-net serveur.js
-*/
-/* console.clear(); */
-import {getCookies} from "https://deno.land/std/http/cookie.ts";
-const __xer=0;
-const __xsu=1;
-const stats_de_ce_fichier=await Deno.stat( "./__serveur.js" );
-const __version=String( stats_de_ce_fichier.mtime?.toJSON() ).replace( ''T'' , ''_'' ).replace( /\:/g , ''_'' ).replace( /-/g , ''_'' ).replace( /\./g , ''_'' ).substr( 0 , 23 );
-/* Interface Globale */
-const m__ig1=await import( ''./__programmes/__ig1_s.js?__version='' + __version );
-let repertoire_du_pgm_serveur=Deno.cwd().replace( /\\/g , ''/'' );
-let repertoire_racine_de_tous_les_projets=repertoire_du_pgm_serveur.substr( 0 , repertoire_du_pgm_serveur.lastIndexOf( ''/'' ) ) + ''/'';
-/* clé application */
-const _CA_=parseInt( repertoire_du_pgm_serveur.substr( repertoire_du_pgm_serveur.lastIndexOf( ''_'' ) + 1 ) , 10 );
-const __le_port=_CA_ + 7000;
-console.log( ''_CA_='' + _CA_ + '',port='' + __le_port );
-Deno.serve( {
-        "port" : __le_port ,
-         onListen( { port  , hostname } ){
-            /* console.log( `aaaaServeur démaré sur http://` + hostname + `:` + port ); */
-        }  ,
-        
-         onError( err ){
-            console.log( ''errrrrrreurrrrrrrrr  serveur='' , err.stack );
-            return(new Response( ''erreur : '' + err.stack , {"status" : 200 ,"headers" : {"content-type" : "text/html; charset=utf-8"}} ));
-        } 
-    
-    } , async ( req1 ) => {
-        if(req1.headers.get( "upgrade" ) !== "websocket"){
-            /*
-              si ce n''est pas un websocket, ça ne peut être qu''un GET
-              les POST et autres types sont envoyés par le canal WS
-            */
-            if(req1.method === ''GET''){
-                const __ig1=new m__ig1[''__ig1'']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets );
-                /* , repertoire_du_pgm_serveur , repertoire_des_programmes , repertoire_racine_de_tous_les_projets , __deverminage ]; */
-                let le_contenu_de_get=await __ig1.contenu_de_get( req1 );
-                if(le_contenu_de_get.__xst === __xsu){
-                    /* console.log( ''__version='' , __version ); */
-                    return(new Response( le_contenu_de_get.__xva.contenu , le_contenu_de_get.__xva.entetes_reponse_http ));
-                }
-            }else{
-                console.log( ''\n\n\n\n\nce type de requete n\''est pas traité reg='' , req1 );
-            }
-            return(new Response( null , {"status" : 501} ));
-        }
-        const { socket  , response }=Deno.upgradeWebSocket( req1 );
-        const __ig1=new m__ig1[''__ig1'']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets );
-        socket.addEventListener( "open" , () => {
-                /* console.log(''dans serveur, open ws '') */
-                let traitement_open_socket=__ig1.traiter_open_socket( req1 , socket );} );
-        socket.addEventListener( "message" , async ( evenement ) => {
-                let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , req1 );
-                /* console.log(''dans serveur '', traitement_mesage_socket ) */
-                if(traitement_mesage_socket.__xst === __xsu){
-                    socket.send( JSON.stringify( traitement_mesage_socket ) );
-                }else{
-                    socket.send( JSON.stringify( traitement_mesage_socket ) );
-                }} );
-        return response;} );','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
+('77','__serveur.js',NULL,NULL,'0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
 ('78','__serveur.ps1',NULL,NULL,'0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
 ('79','_connexion1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0'),
 ('80','_connexion1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
@@ -222,14 +176,63 @@ Deno.serve( {
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_bdds offset 0 */
+/*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (1) */
+INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
+('1','',NULL,NULL,'0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0');
+/*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
+
+
+/*========================================================================================================================*/
+
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (1) */
+INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  chp_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
+('1','1','les tâches des utilisateurs','0','2026-02-09 07:38:23.887','2026-02-09 07:38:23.887','0','00_00_00');
+/*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
+
+
+/*========================================================================================================================*/
+
+/*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (26) */
+INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ,  che_est_session_genre ,  chp_nom_en_session_genre ,  che_est_positif_genre ,  cht_particularités_genre ) VALUES
+('1','***indéfini***','25','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2025-09-25 16:55:08.841','18','0',NULL,'1',NULL),
+('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('4','lien NON NULL','5','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('5','zero_un non nulle à 0','17','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('6','texte NULL','12','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('7','entier NULL','9','che','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('8','lien NULL','6','chx','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('9','entier NON NULL','7','che','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('10','entier NON NULL à zéro','8','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('11','texte NON NULL','11','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('12','varchar 64 NULL','3','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('13','mot de passe','20','chp','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('14','dt23 création','18','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('15','nur','22','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('16','dt23 modification','19','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
+('18','id utilisateur','23','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8','1','chi_id_utilisateur','0',NULL),
+('19','nom technique','21','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 12:07:33.326','2025-11-19 12:07:33.326','0','0',NULL,'0',NULL),
+('21','durée_du_travail','10','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:48:23.907','2026-02-15 14:10:08.496','1','0',NULL,'0',NULL),
+('22','dt10 aaaa_mm_jj','15','chd','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,'date_nulle_ou_comprise_entre(''1000_01_01'',''9999_12_31'')','0','0','0','2026-03-16 12:16:06.262','2026-03-16 12:16:06.262','0','0',NULL,'0',NULL),
+('23','tp8 hh_mm_ss','16','chd','VARCHAR','8','0','0','1','1','1','00_00_00','0',NULL,'heure_nulle_ou_comprise_entre(''00_00_00'',''23_59_59'')','0','0','0','2026-03-17 15:45:36.973','2026-03-17 15:45:36.973','0','0',NULL,'0',NULL),
+('97','texte NULL source_non_rev','14','cht','TEXT','','0','0','0','1','0','NULL','0','','','0','0','0','2025-10-21 10:14:55.512','2025-10-21 10:14:55.512','0','0','','0','source_non_rev(1)'),
+('98','texte NULL source_au_format_rev','13','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2025-10-20 17:48:22.207','2025-10-21 09:41:32.943','5','0',NULL,'0','source_au_format_rev(1)'),
+('99','priorité','24','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2025-09-06 09:19:20.196','0','0',NULL,'0',NULL),
+('109','id projet','26','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-01-17 12:12:01.759','2026-01-17 12:12:01.759','0','1','chi_id_projet','0',NULL);
+/*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
+
+
+/*========================================================================================================================*/
+
+/*================================================================================ DEBUT BLOC TABLE tbl_bdds offset 0 (1) */
 INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisseur_basedd ,  chp_commentaire_basedd ,  chd__dtm_basedd ,  chd__dtc_basedd ,  che__nur_basedd ) VALUES
 ('1','meta(
    #(),
    genre_meta(base_de_données),
    default_charset(''''),
    collate(''''),
-   transform_base_sur_svg(translate(9.5,20.5))
+   transform_base_sur_svg(translate(10.5,26.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_groupes''),
@@ -237,6 +240,7 @@ créer_table(
       nom_de_la_table(''tbl_groupes''),
       table(''tbl_groupes''),
       genre_meta(table_de_base),
+      rang_de_la_table(10),
       permet_la_gestion_de(''groupe''),
       distinction_pour_liste(''liste des groupes''),
       distinction_pour_isad(''d\''un groupe''),
@@ -291,21 +295,13 @@ créer_table(
       )
    )
 ),
-#(=================================================================),
-ajouter_index(
-   #(),
-   nom_de_la_table_pour_l_index(''tbl_groupes''),
-   nom_de_l_index(''idx_nom_groupe''),
-   meta(nom_de_l_index(idx_nom_groupe),genre_meta(index_de_table),message(''ce nom de groupe existe'')),
-   champs(''chp_nom_groupe''),
-   unique()
-),
 créer_table(
    nom_de_la_table(''tbl_metiers''),
    meta(
       nom_de_la_table(''tbl_metiers''),
       table(''tbl_metiers''),
       genre_meta(table_de_base),
+      rang_de_la_table(20),
       permet_la_gestion_de(''metier''),
       distinction_pour_liste(''liste des metiers''),
       distinction_pour_isad(''d\''un metier''),
@@ -360,26 +356,18 @@ créer_table(
       )
    )
 ),
-#(=================================================================),
-ajouter_index(
-   #(),
-   nom_de_la_table_pour_l_index(''tbl_metiers''),
-   nom_de_l_index(''idx_nom_metier''),
-   meta(nom_de_l_index(idx_nom_metier),genre_meta(index_de_table),message('''')),
-   champs(''chp_nom_metier''),
-   unique()
-),
 créer_table(
    nom_de_la_table(''tbl_acces''),
    meta(
       nom_de_la_table(''tbl_acces''),
       table(''tbl_acces''),
       genre_meta(table_de_base),
+      rang_de_la_table(30),
       permet_la_gestion_de(''accès''),
       distinction_pour_liste(''liste des accès''),
       distinction_pour_isad(''d\''un accès''),
       fonctions_spéciales1(''ne_pas_supprimer_id_un(2)''),
-      transform_base_sur_svg(translate(248,77))
+      transform_base_sur_svg(translate(198,119))
    ),
    champs(
       champ(
@@ -472,113 +460,56 @@ créer_table(
       )
    )
 ),
-#(=================================================================),
-ajouter_index(
-   #(),
-   nom_de_la_table_pour_l_index(''tbl_acces''),
-   nom_de_l_index(''idx_acces_grp_metier''),
-   meta(nom_de_l_index(idx_acces_grp_metier),genre_meta(index_de_table),message('''')),
-   champs(''chx_groupe_acces'',''chx_metier_acces''),
-   unique()
-),
 créer_table(
-   nom_de_la_table(''tbl_utilisateurs''),
+   nom_de_la_table(''tbl_autorisations''),
    meta(
-      nom_de_la_table(''tbl_utilisateurs''),
-      table(''tbl_utilisateurs''),
+      nom_de_la_table(''tbl_autorisations''),
+      table(''tbl_autorisations''),
       genre_meta(table_de_base),
-      permet_la_gestion_de(''utilisateur''),
-      distinction_pour_liste(''liste des utilisateurs''),
-      distinction_pour_isad(''d\''un utilisateur''),
-      fonctions_spéciales1(''ne_pas_supprimer_id_un(1)''),
-      transform_base_sur_svg(translate(502,332))
+      rang_de_la_table(40),
+      permet_la_gestion_de(''autorisation''),
+      distinction_pour_liste(''liste des autorisations''),
+      distinction_pour_isad(''d\''une autorisation''),
+      transform_base_sur_svg(translate(411,119))
    ),
    champs(
       champ(
-         nom_du_champ(''chi_id_utilisateur''),
+         nom_du_champ(''chi_id_autorisation''),
          espece_du_champ(INTEGER),
          primary_key(1),
          non_nulle(1),
          meta(
             genre_meta(champ),
-            nom_du_champ(''chi_id_utilisateur''),
+            nom_du_champ(''chi_id_autorisation''),
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2),
-            est_en_session(1)
+            genre(2)
          )
       ),
       champ(
-         nom_du_champ(''chp_nom_de_connexion_utilisateur''),
+         nom_du_champ(''chp_nom_autorisation''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(255),
          non_nulle(1),
          meta(
             genre_meta(champ),
-            nom_du_champ(''chp_nom_de_connexion_utilisateur''),
-            nom_bref_du_champ(''nom de connexion''),
-            abrege_du_champ(''nom de connexion''),
-            typologie(cht),
-            genre(3),
+            nom_du_champ(''chp_nom_autorisation''),
+            nom_bref_du_champ(''nom''),
+            abrege_du_champ(''nom''),
+            typologie(chp),
+            genre(17),
             est_libelle_lien(1)
          )
       ),
       champ(
-         nom_du_champ(''chp_mot_de_passe_utilisateur''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(256),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_mot_de_passe_utilisateur''),
-            nom_bref_du_champ(''mot de passe''),
-            abrege_du_champ(''mot de passe''),
-            typologie(cht),
-            genre(13)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_parametres_utilisateur''),
-         espece_du_champ(TEXT),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_parametres_utilisateur''),
-            nom_bref_du_champ(''parametres''),
-            abrege_du_champ(''parametres''),
-            typologie(cht),
-            genre(6)
-         )
-      ),
-      champ(
-         nom_du_champ(''chi_compteur1_utilisateur''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chi_compteur1_utilisateur''),
-            nom_bref_du_champ(''compteur1''),
-            abrege_du_champ(''compteur1''),
-            typologie(chi),
-            genre(10)
-         )
-      ),
-      champ(
-         nom_du_champ(''chx_acces_utilisateur''),
+         nom_du_champ(''chx_acces_autorisation''),
          espece_du_champ(INTEGER),
          non_nulle(1),
          references(tbl_acces,chi_id_acces),
          meta(
             genre_meta(champ),
-            nom_du_champ(''chx_acces_utilisateur''),
+            nom_du_champ(''chx_acces_autorisation''),
             nom_bref_du_champ(''acces''),
             abrege_du_champ(''acces''),
             typologie(chx),
@@ -586,84 +517,22 @@ créer_table(
          )
       ),
       champ(
-         nom_du_champ(''chd__dtm_utilisateur''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(23),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(1),
-         valeur_par_defaut(''2000-01-01 00:00:00.000''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chd__dtm_utilisateur''),
-            nom_bref_du_champ('' dtm''),
-            abrege_du_champ('' dtm''),
-            typologie(chd),
-            genre(16),
-            masquer_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chd__dtc_utilisateur''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(23),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(1),
-         valeur_par_defaut(''2000-01-01 00:00:00.000''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chd__dtc_utilisateur''),
-            nom_bref_du_champ('' dtc''),
-            abrege_du_champ('' dtc''),
-            typologie(chi),
-            genre(14),
-            masquer_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''che__nur_utilisateur''),
+         nom_du_champ(''chx_source_autorisation''),
          espece_du_champ(INTEGER),
          non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(0),
+         references(tbl_sources,chi_id_source),
          meta(
             genre_meta(champ),
-            nom_du_champ(''che__nur_utilisateur''),
-            nom_bref_du_champ('' nur''),
-            abrege_du_champ('' nur''),
-            typologie(chi),
-            genre(10),
-            masquer_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''che_actif_utilisateur''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''che_actif_utilisateur''),
-            nom_bref_du_champ(''actif''),
-            abrege_du_champ(''actif''),
-            typologie(che),
-            genre(5)
+            nom_du_champ(''chx_source_autorisation''),
+            nom_bref_du_champ(''source''),
+            abrege_du_champ(''source''),
+            typologie(chx),
+            genre(4),
+            refe_enfant_droite(1),
+            refe_parent_gauche(1)
          )
       )
    )
-),
-#(=================================================================),
-ajouter_index(
-   #(),
-   nom_de_la_table_pour_l_index(''tbl_utilisateurs''),
-   nom_de_l_index(''idx_nom_unique_utilisateurs''),
-   meta(nom_de_l_index(idx_nom_unique_utilisateurs),genre_meta(index_de_table),message(''Ce nom d\''utilisateur existe déjà'')),
-   champs(''chp_nom_de_connexion_utilisateur''),
-   unique()
 ),
 créer_table(
    nom_de_la_table(''tbl_menus''),
@@ -671,10 +540,11 @@ créer_table(
       nom_de_la_table(''tbl_menus''),
       table(''tbl_menus''),
       genre_meta(table_de_base),
+      rang_de_la_table(50),
       permet_la_gestion_de(''menu''),
       distinction_pour_liste(''liste des menus''),
       distinction_pour_isad(''d\''un menu''),
-      transform_base_sur_svg(translate(885,54))
+      transform_base_sur_svg(translate(677,100))
    ),
    champs(
       champ(
@@ -795,234 +665,16 @@ créer_table(
    )
 ),
 créer_table(
-   nom_de_la_table(''tbl_taches''),
-   meta(
-      nom_de_la_table(''tbl_taches''),
-      table(''tbl_taches''),
-      genre_meta(table_de_base),
-      permet_la_gestion_de(''tâche''),
-      distinction_pour_liste(''liste des tâches''),
-      distinction_pour_isad(''d\''une tâche''),
-      transform_base_sur_svg(translate(892,576))
-   ),
-   champs(
-      champ(
-         nom_du_champ(''chi_id_tache''),
-         espece_du_champ(INTEGER),
-         primary_key(1),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chi_id_tache''),
-            nom_bref_du_champ(''id''),
-            abrege_du_champ(''id''),
-            typologie(),
-            genre(2)
-         )
-      ),
-      champ(
-         nom_du_champ(''chx_utilisateur_tache''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         references(tbl_utilisateurs,chi_id_utilisateur),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chx_utilisateur_tache''),
-            nom_bref_du_champ(''utilisateur''),
-            abrege_du_champ(''utilisateur''),
-            typologie(chx),
-            genre(18),
-            est_en_session(1),
-            nom_en_session(''chi_id_utilisateur'')
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_texte_tache''),
-         espece_du_champ(TEXT),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_texte_tache''),
-            nom_bref_du_champ(''texte''),
-            abrege_du_champ(''texte''),
-            typologie(),
-            genre(11),
-            est_libelle_lien(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_priorite_tache''),
-         espece_du_champ(INTEGER),
-         longueur_du_champ(2),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_priorite_tache''),
-            nom_bref_du_champ(''priorite''),
-            abrege_du_champ(''priorite''),
-            typologie(),
-            genre(99)
-         )
-      ),
-      champ(
-         nom_du_champ(''chd__dtm_tache''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(23),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(1),
-         valeur_par_defaut(''2000-01-01 00:00:00.000''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chd__dtm_tache''),
-            nom_bref_du_champ('' dtm''),
-            abrege_du_champ('' dtm''),
-            typologie(chd),
-            genre(16),
-            masquer_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chd__dtc_tache''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(23),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(1),
-         valeur_par_defaut(''2000-01-01 00:00:00.000''),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chd__dtc_tache''),
-            nom_bref_du_champ('' dtc''),
-            abrege_du_champ('' dtc''),
-            typologie(chi),
-            genre(14),
-            masquer_champ_dans_svg(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''che__nur_tache''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(0),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''che__nur_tache''),
-            nom_bref_du_champ('' nur''),
-            abrege_du_champ('' nur''),
-            typologie(che),
-            genre(15),
-            masquer_champ_dans_svg(1)
-         )
-      )
-   )
-),
-#(=================================================================),
-ajouter_index(
-   #(),
-   nom_de_la_table_pour_l_index(''tbl_taches''),
-   nom_de_l_index(''idx_texte_unique_taches''),
-   meta(nom_de_l_index(idx_texte_unique_taches),genre_meta(index_de_table),message(''Cete tache existe déjà'')),
-   champs(''chp_texte_tache''),
-   unique()
-),
-créer_table(
-   nom_de_la_table(''tbl_autorisations''),
-   meta(
-      nom_de_la_table(''tbl_autorisations''),
-      table(''tbl_autorisations''),
-      genre_meta(table_de_base),
-      permet_la_gestion_de(''autorisation''),
-      distinction_pour_liste(''liste des autorisations''),
-      distinction_pour_isad(''d\''une autorisation''),
-      transform_base_sur_svg(translate(516,69))
-   ),
-   champs(
-      champ(
-         nom_du_champ(''chi_id_autorisation''),
-         espece_du_champ(INTEGER),
-         primary_key(1),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chi_id_autorisation''),
-            nom_bref_du_champ(''id''),
-            abrege_du_champ(''id''),
-            typologie(chi),
-            genre(2)
-         )
-      ),
-      champ(
-         nom_du_champ(''chp_nom_autorisation''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(255),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_nom_autorisation''),
-            nom_bref_du_champ(''nom''),
-            abrege_du_champ(''nom''),
-            typologie(chp),
-            genre(17),
-            est_libelle_lien(1)
-         )
-      ),
-      champ(
-         nom_du_champ(''chx_acces_autorisation''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         references(tbl_acces,chi_id_acces),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chx_acces_autorisation''),
-            nom_bref_du_champ(''acces''),
-            abrege_du_champ(''acces''),
-            typologie(chx),
-            genre(4)
-         )
-      ),
-      champ(
-         nom_du_champ(''chx_source_autorisation''),
-         espece_du_champ(INTEGER),
-         non_nulle(1),
-         references(tbl_sources,chi_id_source),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chx_source_autorisation''),
-            nom_bref_du_champ(''source''),
-            abrege_du_champ(''source''),
-            typologie(chx),
-            genre(4),
-            refe_enfant_droite(1),
-            refe_parent_gauche(1)
-         )
-      )
-   )
-),
-#(=================================================================),
-ajouter_index(
-   #(),
-   nom_de_la_table_pour_l_index(''tbl_autorisations''),
-   nom_de_l_index(''idx_unique1''),
-   meta(nom_de_l_index(idx_unique1),genre_meta(index_de_table),message('''')),
-   champs(''chx_acces_autorisation'',''chx_source_autorisation''),
-   unique()
-),
-créer_table(
    nom_de_la_table(''tbl_sources''),
    meta(
       nom_de_la_table(''tbl_sources''),
       table(''tbl_sources''),
       genre_meta(table_de_base),
+      rang_de_la_table(60),
       permet_la_gestion_de(''source''),
       distinction_pour_liste(''liste des sources''),
       distinction_pour_isad(''d\''un source''),
-      transform_base_sur_svg(translate(869,277))
+      transform_base_sur_svg(translate(679,261))
    ),
    champs(
       champ(
@@ -1215,6 +867,347 @@ créer_table(
       )
    )
 ),
+créer_table(
+   nom_de_la_table(''tbl_utilisateurs''),
+   meta(
+      nom_de_la_table(''tbl_utilisateurs''),
+      table(''tbl_utilisateurs''),
+      genre_meta(table_de_base),
+      rang_de_la_table(70),
+      permet_la_gestion_de(''utilisateur''),
+      distinction_pour_liste(''liste des utilisateurs''),
+      distinction_pour_isad(''d\''un utilisateur''),
+      fonctions_spéciales1(''ne_pas_supprimer_id_un(1)''),
+      transform_base_sur_svg(translate(392,269))
+   ),
+   champs(
+      champ(
+         nom_du_champ(''chi_id_utilisateur''),
+         espece_du_champ(INTEGER),
+         primary_key(1),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chi_id_utilisateur''),
+            nom_bref_du_champ(''id''),
+            abrege_du_champ(''id''),
+            typologie(chi),
+            genre(2),
+            est_en_session(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_nom_de_connexion_utilisateur''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_nom_de_connexion_utilisateur''),
+            nom_bref_du_champ(''nom de connexion''),
+            abrege_du_champ(''nom de connexion''),
+            typologie(cht),
+            genre(3),
+            est_libelle_lien(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_mot_de_passe_utilisateur''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(256),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_mot_de_passe_utilisateur''),
+            nom_bref_du_champ(''mot de passe''),
+            abrege_du_champ(''mot de passe''),
+            typologie(cht),
+            genre(13)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_parametres_utilisateur''),
+         espece_du_champ(TEXT),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_parametres_utilisateur''),
+            nom_bref_du_champ(''parametres''),
+            abrege_du_champ(''parametres''),
+            typologie(cht),
+            genre(6)
+         )
+      ),
+      champ(
+         nom_du_champ(''chi_compteur1_utilisateur''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chi_compteur1_utilisateur''),
+            nom_bref_du_champ(''compteur1''),
+            abrege_du_champ(''compteur1''),
+            typologie(chi),
+            genre(10)
+         )
+      ),
+      champ(
+         nom_du_champ(''chx_acces_utilisateur''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         references(tbl_acces,chi_id_acces),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chx_acces_utilisateur''),
+            nom_bref_du_champ(''acces''),
+            abrege_du_champ(''acces''),
+            typologie(chx),
+            genre(4)
+         )
+      ),
+      champ(
+         nom_du_champ(''chd__dtm_utilisateur''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(1),
+         valeur_par_defaut(''2000-01-01 00:00:00.000''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chd__dtm_utilisateur''),
+            nom_bref_du_champ('' dtm''),
+            abrege_du_champ('' dtm''),
+            typologie(chd),
+            genre(16),
+            masquer_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chd__dtc_utilisateur''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(1),
+         valeur_par_defaut(''2000-01-01 00:00:00.000''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chd__dtc_utilisateur''),
+            nom_bref_du_champ('' dtc''),
+            abrege_du_champ('' dtc''),
+            typologie(chi),
+            genre(14),
+            masquer_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''che__nur_utilisateur''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che__nur_utilisateur''),
+            nom_bref_du_champ('' nur''),
+            abrege_du_champ('' nur''),
+            typologie(chi),
+            genre(10),
+            masquer_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_actif_utilisateur''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_actif_utilisateur''),
+            nom_bref_du_champ(''actif''),
+            abrege_du_champ(''actif''),
+            typologie(che),
+            genre(5)
+         )
+      )
+   )
+),
+créer_table(
+   nom_de_la_table(''tbl_taches''),
+   meta(
+      nom_de_la_table(''tbl_taches''),
+      table(''tbl_taches''),
+      genre_meta(table_de_base),
+      rang_de_la_table(80),
+      permet_la_gestion_de(''tâche''),
+      distinction_pour_liste(''liste des tâches''),
+      distinction_pour_isad(''d\''une tâche''),
+      transform_base_sur_svg(translate(676,475))
+   ),
+   champs(
+      champ(
+         nom_du_champ(''chi_id_tache''),
+         espece_du_champ(INTEGER),
+         primary_key(1),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chi_id_tache''),
+            nom_bref_du_champ(''id''),
+            abrege_du_champ(''id''),
+            typologie(),
+            genre(2)
+         )
+      ),
+      champ(
+         nom_du_champ(''chx_utilisateur_tache''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         references(tbl_utilisateurs,chi_id_utilisateur),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chx_utilisateur_tache''),
+            nom_bref_du_champ(''utilisateur''),
+            abrege_du_champ(''utilisateur''),
+            typologie(chx),
+            genre(18),
+            est_en_session(1),
+            nom_en_session(''chi_id_utilisateur'')
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_texte_tache''),
+         espece_du_champ(TEXT),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_texte_tache''),
+            nom_bref_du_champ(''texte''),
+            abrege_du_champ(''texte''),
+            typologie(),
+            genre(11),
+            est_libelle_lien(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_priorite_tache''),
+         espece_du_champ(INTEGER),
+         longueur_du_champ(2),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_priorite_tache''),
+            nom_bref_du_champ(''priorite''),
+            abrege_du_champ(''priorite''),
+            typologie(),
+            genre(99)
+         )
+      ),
+      champ(
+         nom_du_champ(''chd__dtm_tache''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(1),
+         valeur_par_defaut(''2000-01-01 00:00:00.000''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chd__dtm_tache''),
+            nom_bref_du_champ('' dtm''),
+            abrege_du_champ('' dtm''),
+            typologie(chd),
+            genre(16),
+            masquer_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''chd__dtc_tache''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(23),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(1),
+         valeur_par_defaut(''2000-01-01 00:00:00.000''),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chd__dtc_tache''),
+            nom_bref_du_champ('' dtc''),
+            abrege_du_champ('' dtc''),
+            typologie(chi),
+            genre(14),
+            masquer_champ_dans_svg(1)
+         )
+      ),
+      champ(
+         nom_du_champ(''che__nur_tache''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che__nur_tache''),
+            nom_bref_du_champ('' nur''),
+            abrege_du_champ('' nur''),
+            typologie(che),
+            genre(15),
+            masquer_champ_dans_svg(1)
+         )
+      )
+   )
+),
+#(=================================================================),
+ajouter_index(
+   #(),
+   nom_de_la_table_pour_l_index(''tbl_groupes''),
+   nom_de_l_index(''idx_nom_groupe''),
+   meta(nom_de_l_index(idx_nom_groupe),genre_meta(index_de_table),message(''ce nom de groupe existe'')),
+   champs(''chp_nom_groupe''),
+   unique()
+),
+#(=================================================================),
+ajouter_index(
+   #(),
+   nom_de_la_table_pour_l_index(''tbl_metiers''),
+   nom_de_l_index(''idx_nom_metier''),
+   meta(nom_de_l_index(idx_nom_metier),genre_meta(index_de_table),message('''')),
+   champs(''chp_nom_metier''),
+   unique()
+),
+#(=================================================================),
+ajouter_index(
+   #(),
+   nom_de_la_table_pour_l_index(''tbl_acces''),
+   nom_de_l_index(''idx_acces_grp_metier''),
+   meta(nom_de_l_index(idx_acces_grp_metier),genre_meta(index_de_table),message('''')),
+   champs(''chx_groupe_acces'',''chx_metier_acces''),
+   unique()
+),
+#(=================================================================),
+ajouter_index(
+   #(),
+   nom_de_la_table_pour_l_index(''tbl_autorisations''),
+   nom_de_l_index(''idx_unique1''),
+   meta(nom_de_l_index(idx_unique1),genre_meta(index_de_table),message('''')),
+   champs(''chx_acces_autorisation'',''chx_source_autorisation''),
+   unique()
+),
 #(=================================================================),
 ajouter_index(
    #(),
@@ -1223,101 +1216,31 @@ ajouter_index(
    meta(nom_de_l_index(idx_source),genre_meta(index_de_table),message('''')),
    champs(''chx_dossier_id_source'',''chp_nom_source''),
    unique()
+),
+#(=================================================================),
+ajouter_index(
+   #(),
+   nom_de_la_table_pour_l_index(''tbl_utilisateurs''),
+   nom_de_l_index(''idx_nom_unique_utilisateurs''),
+   meta(nom_de_l_index(idx_nom_unique_utilisateurs),genre_meta(index_de_table),message(''Ce nom d\''utilisateur existe déjà'')),
+   champs(''chp_nom_de_connexion_utilisateur''),
+   unique()
+),
+#(=================================================================),
+ajouter_index(
+   #(),
+   nom_de_la_table_pour_l_index(''tbl_taches''),
+   nom_de_l_index(''idx_texte_unique_taches''),
+   meta(nom_de_l_index(idx_texte_unique_taches),genre_meta(index_de_table),message(''Cete tache existe déjà'')),
+   champs(''chp_texte_tache''),
+   unique()
 )','sqlite',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_bdds offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_menus offset 0 */
-INSERT INTO tbl_menus (  chi_id_menu ,  cht_libelle_menu ,  chp_titre_menu ,  chx_autorisation_menu ,  chp_methode_menu ,  cht_initialisation_menu ,  cht_condition_menu ,  cht_condition_js_menu ) VALUES
-('1','mes tâches','tâches','1','entree_module',NULL,NULL,NULL),
-('2','sources','sources','2','entree_module',NULL,NULL,NULL),
-('3','utilisateurs','utilisateurs','3','entree_module',NULL,NULL,NULL),
-('4','autorisations','autorisations','4','entree_module',NULL,NULL,NULL),
-('5','métier','métier','5','entree_module',NULL,NULL,NULL),
-('6','menus','menus','6','entree_module',NULL,NULL,NULL),
-('7','accès','accès','7','entree_module',NULL,NULL,NULL),
-('8','<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg>','mes coordonnées','10','entree_module',NULL,NULL,NULL),
-('9','groupes','groupes','9','entree_module',NULL,NULL,NULL),
-('10','les tâches','les tâches','11','entree_module',NULL,NULL,NULL),
-('11','<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg>','mes coordonnées','12','entree_module',NULL,NULL,NULL),
-('12','mes tâches','tâches','13','entree_module',NULL,NULL,NULL);
-/*================================================================================ FIN BLOC TABLE tbl_menus offset 0 */
-
-
-/*========================================================================================================================*/
-
-/*================================================================================ DEBUT BLOC TABLE tbl_autorisations offset 0 */
-INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chp_nom_autorisation ,  chx_acces_autorisation ,  chx_source_autorisation ) VALUES
-('1','mes tâches dev','1','90'),
-('2','sources','1','103'),
-('3','utilisateurs','1','101'),
-('4','autorisations','1','105'),
-('5','métiers pour dev','1','96'),
-('6','menus','1','107'),
-('7','accés','1','99'),
-('9','groupes','1','94'),
-('10','mes coordonnées','1','88'),
-('11','les tâches dev','1','92'),
-('12','mes coordonnées','2','88'),
-('13','mes tâches admin','2','90'),
-('14','mes coordonnées','2','89'),
-('15','mes tâches admin','2','91');
-/*================================================================================ FIN BLOC TABLE tbl_autorisations offset 0 */
-
-
-/*========================================================================================================================*/
-
-/*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 */
-INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ,  che_est_session_genre ,  chp_nom_en_session_genre ,  che_est_positif_genre ,  cht_particularités_genre ) VALUES
-('1','***indéfini***','25','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2025-09-25 16:55:08.841','18','0',NULL,'1',NULL),
-('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('4','lien NON NULL','5','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('5','zero_un non nulle à 0','17','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('6','texte NULL','12','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('7','entier NULL','9','che','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('8','lien NULL','6','chx','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('9','entier NON NULL','7','che','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('10','entier NON NULL à zéro','8','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('11','texte NON NULL','11','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('12','varchar 64 NULL','3','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('13','mot de passe','20','chp','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('14','dt23 création','18','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('15','nur','22','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('16','dt23 modification','19','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('18','id utilisateur','23','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8','1','chi_id_utilisateur','0',NULL),
-('19','nom technique','21','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 12:07:33.326','2025-11-19 12:07:33.326','0','0',NULL,'0',NULL),
-('21','durée_du_travail','10','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:48:23.907','2026-02-15 14:10:08.496','1','0',NULL,'0',NULL),
-('22','dt10 aaaa_mm_jj','15','chd','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,'date_nulle_ou_comprise_entre(''1000_01_01'',''9999_12_31'')','0','0','0','2026-03-16 12:16:06.262','2026-03-16 12:16:06.262','0','0',NULL,'0',NULL),
-('23','tp8 hh_mm_ss','16','chd','VARCHAR','8','0','0','1','1','1','00_00_00','0',NULL,'heure_nulle_ou_comprise_entre(''00_00_00'',''23_59_59'')','0','0','0','2026-03-17 15:45:36.973','2026-03-17 15:45:36.973','0','0',NULL,'0',NULL),
-('97','texte NULL source_non_rev','14','cht','TEXT','','0','0','0','1','0','NULL','0','','','0','0','0','2025-10-21 10:14:55.512','2025-10-21 10:14:55.512','0','0','','0','source_non_rev(1)'),
-('98','texte NULL source_au_format_rev','13','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2025-10-20 17:48:22.207','2025-10-21 09:41:32.943','5','0',NULL,'0','source_au_format_rev(1)'),
-('99','priorité','24','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2025-09-06 09:19:20.196','0','0',NULL,'0',NULL),
-('109','id projet','26','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-01-17 12:12:01.759','2026-01-17 12:12:01.759','0','1','chi_id_projet','0',NULL);
-/*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
-
-
-/*========================================================================================================================*/
-
-/*================================================================================ DEBUT BLOC TABLE tbl_dossiers offset 0 */
-INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_dossier ,  che__nur_dossier ,  chd__dtm_dossier ,  chd__dtc_dossier ) VALUES
-('1',NULL,'1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('2','__programmes','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('3','__fichiers_generes','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('4','__sessions','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('5','__bases_de_donnees','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('6','__sqls','3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('7','bibliotheques_externes','2','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('8','__fichiers_binaires','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
-/*================================================================================ FIN BLOC TABLE tbl_dossiers offset 0 */
-
-
-/*========================================================================================================================*/
-
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (57) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ) VALUES
 ('101','tbl_utilisateurs','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -2711,15 +2634,69 @@ WHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_projets offset 0 */
-INSERT INTO tbl_projets (  chi_id_projet ,  chp_nom_projet ,  cht_commentaire_projet ,  che__nur_projet ,  chd__dtm_projet ,  chd__dtc_projet ) VALUES
-('3','ref 3','projet de référence N°3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
-/*================================================================================ FIN BLOC TABLE tbl_projets offset 0 */
-
-
-/*========================================================================================================================*/
-
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 */
-INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  chp_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
-('1','1','les tâches des utilisateurs','0','2026-02-09 07:38:23.887','2026-02-09 07:38:23.887','0','00_00_00');
-/*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
+/*================================================================================ DEBUT BLOC TABLE tbl_travaux offset 0 (57) */
+INSERT INTO tbl_travaux (  chi_id_travail ,  chp_resume_travail ,  cht_rev_travail ,  chx_utilisateur_travail ,  cht_utilisateur_travail ,  chd_dtc_travail ,  chp_etat_travail ,  chx_projet_travail ,  cht_log_travail ,  chn_duree_travail ) VALUES
+('1','compilation  select sql_163 tbl_autorisations','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(163)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(67.523)','67.523'),
+('2','compilation  select sql_162 tbl_acces','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(162)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(73.486)','73.486'),
+('3','compilation  update sql_161 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(161)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(58.128)','58.128'),
+('4','compilation  select sql_160 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(160)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(58.386)','58.386'),
+('5','compilation  update sql_159 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(159)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(60.805)','60.805'),
+('6','compilation  update sql_158 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(158)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(62.739)','62.739'),
+('7','compilation  update sql_157 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(157)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(73.395)','73.395'),
+('8','compilation  update sql_156 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(156)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(72.546)','72.546'),
+('9','compilation  select sql_155 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(155)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(73.469)','73.469'),
+('10','compilation  update sql_154 tbl_acces','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(154)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(58.196)','58.196'),
+('11','compilation  select sql_153 tbl_menus','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(153)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(89.293)','89.293'),
+('12','compilation  select sql_152 tbl_autorisations','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(152)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(74.705)','74.705'),
+('13','compilation  select sql_151 tbl_sources','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(151)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(58.262)','58.262'),
+('14','compilation  update sql_150 tbl_utilisateurs','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(150)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(58.33)','58.33'),
+('15','compilation  delete sql_149 tbl_menus','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(149)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(73.332)','73.332'),
+('16','compilation  update sql_148 tbl_menus','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(148)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(73.413)','73.413'),
+('17','compilation  insert sql_147 tbl_menus','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(147)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(58.074)','58.074'),
+('18','compilation  select sql_146 tbl_menus','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(146)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(73.699)','73.699'),
+('19','compilation  liste_ecran sql_145 tbl_menus','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(145)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(73.627)','73.627'),
+('20','compilation  delete sql_144 tbl_autorisations','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(144)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(76.388)','76.388'),
+('21','compilation  update sql_143 tbl_autorisations','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(143)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(58.132)','58.132'),
+('22','compilation  insert sql_142 tbl_autorisations','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(142)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(72.026)','72.026'),
+('23','compilation  select sql_141 tbl_autorisations','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(141)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(71.547)','71.547'),
+('24','compilation  liste_ecran sql_140 tbl_autorisations','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(140)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(72.945)','72.945'),
+('25','compilation  delete sql_139 tbl_acces','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(139)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(73.278)','73.278'),
+('26','compilation  update sql_138 tbl_acces','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(138)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(58.146)','58.146'),
+('27','compilation  insert sql_137 tbl_acces','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(137)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(58.488)','58.488'),
+('28','compilation  select sql_136 tbl_acces','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(136)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(61.416)','61.416'),
+('29','compilation  liste_ecran sql_135 tbl_acces','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(135)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(73.915)','73.915'),
+('30','compilation  delete sql_134 tbl_groupes','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(134)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(67.187)','67.187'),
+('31','compilation  update sql_133 tbl_groupes','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(133)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(61.002)','61.002'),
+('32','compilation  insert sql_132 tbl_groupes','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(132)))))','1','poipoip','2026-04-22 15:30:31.312','ok_termine','3','statut(OK),executer_job_cron(81.881)','81.881'),
+('33','compilation  select sql_131 tbl_groupes','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(131)))))','1','poipoip','2026-04-22 15:30:31.312','en_cours','3','{
+  "0": [],
+  "1": [],
+  "2": [],
+  "3": [],
+  "4": []
+}','0'),
+('34','compilation  liste_ecran sql_130 tbl_groupes','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(130)))))','1','poipoip','2026-04-22 15:30:31.312','en_file_d_attente','3',NULL,'0'),
+('35','compilation  delete sql_129 tbl_metiers','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(129)))))','1','poipoip','2026-04-22 15:30:31.312','en_file_d_attente','3',NULL,'0'),
+('36','compilation  update sql_127 tbl_metiers','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(127)))))','1','poipoip','2026-04-22 15:30:31.312','en_file_d_attente','3',NULL,'0'),
+('37','compilation  insert sql_126 tbl_metiers','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(126)))))','1','poipoip','2026-04-22 15:30:31.312','en_file_d_attente','3',NULL,'0'),
+('38','compilation  select sql_125 tbl_metiers','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(125)))))','1','poipoip','2026-04-22 15:30:31.312','en_file_d_attente','3',NULL,'0'),
+('39','compilation  liste_ecran sql_124 tbl_metiers','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(124)))))','1','poipoip','2026-04-22 15:30:31.312','en_file_d_attente','3',NULL,'0'),
+('40','compilation  delete sql_123 tbl_utilisateurs','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(123)))))','1','poipoip','2026-04-22 15:30:31.312','en_file_d_attente','3',NULL,'0'),
+('41','compilation  update sql_122 tbl_utilisateurs','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(122)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('42','compilation  select sql_121 tbl_utilisateurs','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(121)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('43','compilation  insert sql_120 tbl_utilisateurs','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(120)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('44','compilation  liste_ecran sql_119 tbl_utilisateurs','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(119)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('45','compilation  delete sql_118 tbl_sources','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(118)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('46','compilation  insert sql_117 tbl_sources','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(117)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('47','compilation  select sql_116 tbl_sources','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(116)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('48','compilation  liste_ecran sql_115 tbl_sources','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(115)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('49','compilation  delete sql_114 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(114)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('50','compilation  update sql_113 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(113)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('51','compilation  select sql_112 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(112)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('52','compilation  insert sql_111 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(111)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('53','compilation  liste_ecran sql_110 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(110)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('54','compilation  update sql_109 tbl_utilisateurs','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(109)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('55','compilation  select sql_108 tbl_utilisateurs','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(108)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('56','compilation  update sql_107 tbl_utilisateurs','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(107)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0'),
+('57','compilation  select sql_101 tbl_utilisateurs','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(101)))))','1','poipoip','2026-04-22 15:30:33.588','en_file_d_attente','3',NULL,'0');
+/*================================================================================ FIN BLOC TABLE tbl_travaux offset 0 */

@@ -12,7 +12,6 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
   =====================================================================================================================
 */
 class v_svg_bdd1{
-    
     /* function compter_le_nombre_d_enregistrements */
     async compter_le_nombre_d_enregistrements( mat , d , donnees_recues , donnees_retournees , options_generales ){
         let nom_de_la_table='';

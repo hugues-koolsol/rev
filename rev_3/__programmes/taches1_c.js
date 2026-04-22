@@ -577,10 +577,6 @@ class taches1{
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
             this.__ig1.affiche_les_messages();
             return({"__xst" : __xsu});
-            /* F5 */
-            debugger;
-            /* this.#init1(null,'liste1'); */
-            return({"__xst" : __xsu});
         }
         let o1='';
         let initialisation_fait=false;

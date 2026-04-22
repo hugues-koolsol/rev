@@ -41,10 +41,11 @@ class __ig1{
     autorisations_verifiees=false;
     /* nom_de_la_cle_de_session */
     __ndlcs='';
+    __socket=null;
     /*
       =============================================================================================================
     */
-    constructor( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets ){
+    constructor( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , __socket=null ){
         /* , repertoire_du_pgm_serveur , repertoire_des_programmes , repertoire_racine_de_tous_les_projets , __deverminage ]{ */
         /* console.log('dans __ig1_s.constructor , _CA_='+_CA_+',__le_port='+__le_port+',__version='+__version) */
         this._CA_=_CA_;
@@ -58,6 +59,7 @@ class __ig1{
         this.objet_des_modules_charges['__rev1']=this.__rev1;
         this.__ndlcs='cle_de_session_rev_' + _CA_ + '_websocket';
         this.__liste_des_bases=[1];
+        this.__socket=__socket;
     }
     /*
       =============================================================================================================
@@ -534,7 +536,12 @@ class __ig1{
             donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
         }else if(this.__deverminage === 2){
             let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
-            donnees_retournees.__xsi[__xdv].push( e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />' );
+            let le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
+            donnees_retournees.__xsi[__xdv].push( le_message );
+            /*
+              dans le cas d'un appel asynchrone
+            */
+            this.ma_trace1( "e" , e );
         }
         if(this.__deverminage > 0){
             donnees_retournees.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );

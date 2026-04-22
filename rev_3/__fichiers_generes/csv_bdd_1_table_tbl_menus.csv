@@ -1,0 +1,12 @@
+"chi_id_menu","cht_libelle_menu","chp_titre_menu","chx_autorisation_menu","chp_methode_menu","cht_initialisation_menu","cht_condition_menu","cht_condition_js_menu"
+"1","mes tâches","tâches","5","entree_module",NULL,NULL,NULL
+"2","mes coordonnées","mes coordonnées","4","page_coordonnees",NULL,NULL,NULL
+"3","groupes","groupes","6","entree_module",NULL,NULL,NULL
+"4","métiers","métiers","8","entree_module",NULL,NULL,NULL
+"5","autorisations","autorisations","10","entree_module",NULL,NULL,NULL
+"6","accès","accès","12","entree_module",NULL,NULL,NULL
+"7","sources","sources","14","entree_module",NULL,NULL,NULL
+"8","menus","menus","21","entree_module",NULL,NULL,NULL
+"10","utilisateurs","utilisateurs","23","entree_module",NULL,NULL,NULL
+"11","mes tâches","tâches","17","entree_module",NULL,NULL,NULL
+"12","mes coordonnées","mes coordonnées","19","entree_module",NULL,NULL,NULL

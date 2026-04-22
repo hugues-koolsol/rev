@@ -32,19 +32,18 @@ Deno.serve( {
     } , async ( req1 ) => {
         if(req1.headers.get( "upgrade" ) !== "websocket"){
             /*
-              si ce n'est pas un websocket, ça ne peut être qu'un GET
-              les POST et autres types sont envoyés par le canal WS
+              si ce n'est pas un websocket
             */
             if(req1.method === 'GET'){
                 const __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets );
-                /* , repertoire_du_pgm_serveur , repertoire_des_programmes , repertoire_racine_de_tous_les_projets , __deverminage ]; */
                 let le_contenu_de_get=await __ig1.contenu_de_get( req1 );
                 if(le_contenu_de_get.__xst === __xsu){
-                    /* console.log( '__version=' , __version ); */
                     return(new Response( le_contenu_de_get.__xva.contenu , le_contenu_de_get.__xva.entetes_reponse_http ));
                 }
             }else{
-                console.log( '\n\n\n\n\nce type de requete n\'est pas traité reg=' , req1 );
+                const __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets );
+                let le_contenu_de_post=await __ig1.contenu_de_post( req1 );
+                return(new Response( le_contenu_de_post.__xva.contenu , le_contenu_de_post.__xva.entetes_reponse_http ));
             }
             return(new Response( null , {"status" : 501} ));
         }
