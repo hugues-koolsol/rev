@@ -161,6 +161,16 @@ class bdds1{
       =============================================================================================================
     */
     async dump_de_la_base( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_projet=null ){
+        this.asynchrone_dump_de_la_base( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_projet=null , true );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async asynchrone_dump_de_la_base( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_projet=null , asynchrone=false ){
+        if(asynchrone === true){
+            await this.__ig1.sleep3( 200 );
+        }
         let chi_id_basedd=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -486,6 +496,20 @@ class bdds1{
             }
         }
         await db.close();
+        if(asynchrone === true){
+            let aa={
+                "_CA_" : this.__ig1._CA_ ,
+                "__xst" : 1 ,
+                "__xva" : {} ,
+                "__xac" : "m1(n1(__ig1),f1(affiche_les_messages()))" ,
+                "__xsi" : {0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : ['le dump a été effectué en arrière plan']} ,
+                "chi_id_acces" : this.__ig1.chi_id_acces ,
+                "chi_id_utilisateur" : this.__ig1.chi_id_utilisateur ,
+                "chi_id_projet" : this.__ig1.chi_id_projet ,
+                "__version" : this.__ig1.__version
+            };
+            this.__ig1.__socket.send( JSON.stringify( aa ) );
+        }
         donnees_retournees.__xsi[__xsu].push( ' le dump de la base "' + chi_id_basedd + '" a été réalisé [' + this.__ig1.nl2() + ']' );
         return({"__xst" : __xsu});
     }

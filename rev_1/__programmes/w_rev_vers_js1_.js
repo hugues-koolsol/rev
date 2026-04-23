@@ -2400,6 +2400,14 @@ class w_rev_vers_js1{
                 }else{
                     return(this.#rev_js_le( {"__xst" : __xer ,"id" : id ,"__xme" : this.__rev1.nl2() + '"' + this.#tb[i][1] + '"'} ));
                 }
+            }else if(this.#tb[i][1] === 'affecte' && this.#tb[i][2] === 'f'){
+                var obj=this.#js_traite_affecte( i , niveau , {} );
+                if(obj.__xst === __xsu){
+                    valeur='(' + obj.__xva + ')';
+                }else{
+                    return(this.#rev_js_le( {"__xst" : __xer ,"id" : id ,"__xme" : this.__rev1.nl2() + this.#tb[i][1]} ));
+                }
+                break;
             }else{
                 return(this.#rev_js_le( {"__xst" : __xer ,"id" : id ,"__xme" : this.__rev1.nl2() + 'inconnu "' + this.#tb[i][1] + '"'} ));
             }

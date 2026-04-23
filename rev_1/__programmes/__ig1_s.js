@@ -64,6 +64,13 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    async sleep3( ms ){
+        return(new Promise( ( resolve ) => {
+                setTimeout( resolve , ms );} ));
+    }
+    /*
+      =============================================================================================================
+    */
     ajoute_message( obj ){
         this.ma_trace1( 'dans ajoute_message, obj=' , obj );
         return({"__xst" : obj.__xst});
@@ -480,17 +487,23 @@ class __ig1{
             contenu+='<style id="vv_style1"></style>';
             contenu+='<link id="vv_icon1" rel="icon" type="image/svg+xml" href=\'';
             if(this._CA_ === 1){
-                contenu+='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100"><rect x="-50" y="-50" width="100" height="100" fill="lime" /></svg>';
+                contenu+='data:image/svg+xml,';
+                contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
+                contenu+='<rect x="-50" y="-50" width="100" height="100" fill="lime" />';
+                contenu+='<text x="-30.5" y="40.5" style="font-size:106;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;"></text>';
+                contenu+='</svg>';
             }else if(this._CA_ === 2){
                 contenu+='data:image/svg+xml,';
                 contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
                 contenu+='<rect x="-50" y="-50" width="100" height="100" fill="lightblue" />';
-                contenu+='<text x="-30.5" y="40.5" style="font-size:106;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;" >2</text></svg>';
+                contenu+='<text x="-30.5" y="40.5" style="font-size:106;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;" >2</text>';
+                contenu+='</svg>';
             }else{
                 contenu+='data:image/svg+xml,';
                 contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
                 contenu+='<rect x="-50" y="-50" width="100" height="100" fill="yellow" />';
-                contenu+='<text x="-20.5" y="20.5" style="font-size:80;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;">' + this._CA_ + '</text></svg>';
+                contenu+='<text x="-20.5" y="20.5" style="font-size:80;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;">' + this._CA_ + '</text>';
+                contenu+='</svg>';
             }
             contenu+='\'>';
             contenu+='<script type="text/javascript">\r\n';

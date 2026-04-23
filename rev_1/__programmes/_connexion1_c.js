@@ -11,10 +11,11 @@ class _connexion1{
     /*
       =============================================================================================================
     */
-    deconnexion1( mat , d ){
+    deconnexion1( mat , d , le_message_du_serveur ){
         try{
             document.getElementById( 'vv_info_projet' ).innerHTML='';
         } catch {}
+        this.__ig1.maj_fav_icone( le_message_du_serveur._CA_ , 0 );
         return({"__xst" : __xsu});
     }
     /*

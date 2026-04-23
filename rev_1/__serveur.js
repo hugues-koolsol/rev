@@ -48,7 +48,7 @@ Deno.serve( {
             return(new Response( null , {"status" : 501} ));
         }
         const { socket  , response }=Deno.upgradeWebSocket( req1 );
-        const __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets );
+        const __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket );
         socket.addEventListener( "open" , () => {
                 /* console.log('dans serveur, open ws ') */
                 let traitement_open_socket=__ig1.traiter_open_socket( req1 , socket );} );

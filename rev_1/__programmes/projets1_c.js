@@ -77,6 +77,23 @@ class projets1{
             }
             document.getElementById( 'vv_bouton_connexion' ).title=tt;
         } catch {}
+        let aa=document.getElementById( 'vv_info_projet' );
+        if(aa){
+            let tt='';
+            tt+='<div class="yy_texte_clair_fond_fonce" style="margin:auto;" title="';
+            if(le_message_du_serveur._CA_ === 1){
+                tt+='projet ' + le_message_du_serveur.chi_id_projet + '" >p' + le_message_du_serveur.chi_id_projet + '/' + le_message_du_serveur.chp_nom_de_connexion_utilisateur.substr( 0 , 4 );
+            }else{
+                tt+='utilisateur ' + le_message_du_serveur.chi_id_utilisateur + '" >' + le_message_du_serveur.chp_nom_de_connexion_utilisateur.substr( 0 , 4 );
+            }
+            tt+='</div>';
+            try{
+                document.getElementById( 'vv_info_projet' ).innerHTML=tt;
+            }catch(e){
+                console.log( e );
+            }
+            this.__ig1.maj_fav_icone( le_message_du_serveur._CA_ , le_message_du_serveur.chi_id_projet );
+        }
         this.entree_module( null , null );
         return({"__xst" : __xsu});
     }
@@ -91,6 +108,7 @@ class projets1{
             document.getElementById( 'vv_bouton_connexion' ).title=tt;
         } catch {}
         this.entree_module( null , null );
+        this.__ig1.maj_fav_icone( le_message_du_serveur._CA_ , 0 );
         return({"__xst" : __xsu});
     }
     /*

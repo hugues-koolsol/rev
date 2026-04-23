@@ -3277,13 +3277,7 @@ class __ig1{
         /* t+='<input type="text" style="margin:10px;"/>'; */
         t+='<h1>Accueil</h1>';
         t+='<div style="text-align:center;border:1px red solid;margin:0 auto;width:fit-content;height:' + (2 * this.css_dimensions.t_border + this.css_dimensions.t_police) + 'px;">';
-        t+='<img src="./f0?n0=1x1_blanc.gif"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_blanc.jpg"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_blanc.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_blanc_2.png" style="display:inline-block;width:var(--t_police);margin:0;" />';
+        t+='Bienvenue';
         t+='</div>';
         t+='<div style="margin-top:20px;">';
         for(let i in this.les_svg){
