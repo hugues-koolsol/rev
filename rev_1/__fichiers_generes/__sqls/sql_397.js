@@ -9,7 +9,7 @@ class sql_397{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0='UPDATE `tbl_travaux` SET \r\n';
         let tableau_champs=[];
         try{
@@ -23,7 +23,7 @@ class sql_397{
             }else{
                 tableau_champs.push( '`cht_rev_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_rev_travail'] ) + '\'' );
             }
-            tableau_champs.push( '`chd_dtc_travail` = \'' + donnees_retournees.date_heure_serveur + '\' ' );
+            tableau_champs.push( '`chd_dtc_travail` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             if(par['n_chp_etat_travail'] === undefined || par['n_chp_etat_travail'] === '' || par['n_chp_etat_travail'] === null){
                 tableau_champs.push( '`chp_etat_travail` = NULL' );
             }else{
@@ -57,7 +57,7 @@ class sql_397{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 397 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 397 , e , sql0 , {} ));
         }
     }
     /*

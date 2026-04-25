@@ -9,7 +9,7 @@ class sql_150{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];
         try{
@@ -36,7 +36,7 @@ class sql_150{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 150 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 150 , e , sql0 , {} ));
         }
     }
     /*

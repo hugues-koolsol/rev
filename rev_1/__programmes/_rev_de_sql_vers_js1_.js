@@ -307,7 +307,7 @@ class _rev_de_sql_vers_js1{
         t+='    /*\r\n';
         t+='      =============================================================================================================\r\n';
         t+='    */\r\n';
-        t+='    async sql( par , donnees_retournees ){\r\n';
+        t+='    async sql( par ){\r\n';
         if(this.__ig1.le_niveau_de_deverminage > 0){
             console.log( 'obj3=' , obj3 );
         }
@@ -448,7 +448,7 @@ class _rev_de_sql_vers_js1{
                     t+='"table_parente" : \'' + nom_de_la_table + '\' ,';
                     t+='"champ_parent" : \'' + nom_du_champ_cle + '\' ,';
                     t+='"id_enregistrement" : par[\'' + nom_du_champ_cle + '\'] ,';
-                    t+='"__db1" : this.__db1} , donnees_retournees );\r\n';
+                    t+='"__db1" : this.__db1} );\r\n';
                     t+='        if(obj1.__xst !== __xsu){\r\n';
                     t+='            return({"__xst" : __xer ,"__xva" : {} ,"__xme" : \'cet enregistrement possède des dépendants et ne peut être supprimé\' ,"sql0" : sql0});\r\n';
                     t+='        }\r\n';
@@ -477,11 +477,11 @@ class _rev_de_sql_vers_js1{
                     t+='"table_parente" : \'' + nom_de_la_table + '\' ,';
                     t+='"champ_parent" : \'' + nom_du_champ_cle + '\' ,';
                     t+='"id_enregistrement" : par[\'' + nom_du_champ_cle + '\'] ,';
-                    t+='"__db1" : this.__db1} , donnees_retournees );\r\n';
+                    t+='"__db1" : this.__db1} );\r\n';
                     t+='            }\r\n';
                 }
             }
-            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
+            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , {} ));\r\n';
             t+='        }\r\n';
             t+='    }\r\n';
             /*
@@ -541,7 +541,7 @@ class _rev_de_sql_vers_js1{
                            || detail_champ.genre_objet_du_champ.che_est_tsm_genre === 1)
                        && this.#obj_webs.ne_pas_traiter_la_maj_ts_creation === 0
                 ){
-                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__ig1.__fnt1.sq1( donnees_retournees.date_heure_serveur ) + \'\'' );
+                    tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + \'\'' );
                 }else if(detail_champ.genre_objet_du_champ && detail_champ.genre_objet_du_champ.che_est_nur_genre === 1){
                     tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      \'+this.__ig1.__fnt1.sq1(\'0\') + \'\'' );
                 }else{
@@ -595,7 +595,7 @@ class _rev_de_sql_vers_js1{
             t+='            }\r\n';
             t+='            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});\r\n';
             t+='        }catch(e){\r\n';
-            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
+            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , {} ));\r\n';
             t+='        }\r\n';
             t+='    }' + CRLF;
             /*
@@ -764,7 +764,7 @@ class _rev_de_sql_vers_js1{
                            || this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][la_sortie.non_du_champ_en_bdd].genre_objet_du_champ.che_est_tsm_genre === 1)
                        && this.#obj_webs.ne_pas_traiter_la_maj_ts_modification === 0
                 ){
-                    liste_des_champs_pour_update3+='            tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = \\\'\' + donnees_retournees.date_heure_serveur + \'\\\' \' );' + CRLF;
+                    liste_des_champs_pour_update3+='            tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = \\\'\' + this.__ig1.donnees_retournees.date_heure_serveur + \'\\\' \' );' + CRLF;
                 }else if(la_sortie.type_de_champ === 'constante'){
                     liste_des_champs_pour_update3+='            tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\' );' + CRLF;
                 }else{
@@ -824,7 +824,7 @@ class _rev_de_sql_vers_js1{
             t+='            let res=await this.__db1.exec( sql0 );' + CRLF;
             t+='            return({"__xst" : __xsu ,"changements" : res});' + CRLF;
             t+='        }catch(e){' + CRLF;
-            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
+            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , {} ));\r\n';
             t+='        }' + CRLF;
             t+='    }' + CRLF;
             /*
@@ -906,7 +906,7 @@ class _rev_de_sql_vers_js1{
             t+='            lignes=await statement.values();\r\n';
             t+='            await statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
-            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
+            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , {} ));\r\n';
             t+='        }\r\n';
             t+='        let donnees0=[];\r\n';
             t+='        for(let col of lignes){\r\n';
@@ -1186,7 +1186,7 @@ class _rev_de_sql_vers_js1{
             t+='            lignes=await statement.values();\r\n';
             t+='            await statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
-            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , donnees_retournees , {} ));\r\n';
+            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , {} ));\r\n';
             t+='        }\r\n';
             t+='        /*  */\r\n';
             t+='        for(let numero_de_ligne in lignes){\r\n';
@@ -1269,7 +1269,7 @@ class _rev_de_sql_vers_js1{
       contenus dans init.bases[n].matrices
       puis mettre les valeurs dans les champs de #obj_webs
     */
-    convertir_rev_pour_construction( mat , d , donnees_recues , donnees_retournees , options_generales , bases ){
+    convertir_rev_pour_construction( mat , d , bases ){
         this.#obj_webs.type_de_requete=this.#globale_type_requete;
         /* this.#obj_webs.bases=bases; */
         /*
@@ -1938,7 +1938,7 @@ class _rev_de_sql_vers_js1{
     /*
       =============================================================================================================
     */
-    traiter_donnees_bases_rev( mat , d , donnees_recues , donnees_retournees , options_generales , bases ){
+    traiter_donnees_bases_rev( mat , d , bases ){
         for(let i in bases){
             /* donnees.__xva]{ */
             if(bases[i]['T0.chp_rev_travail_basedd'] === null){
@@ -2032,7 +2032,7 @@ class _rev_de_sql_vers_js1{
                             }
                         }
                     }else{
-                        donnees_retournees.__xsi[__xer].push( 'nom_de_la_table est vide  [' + this.__ig1.nl2() + ']' );
+                        this.__ig1.donnees_retournees.__xsi[__xer].push( 'nom_de_la_table est vide  [' + this.__ig1.nl2() + ']' );
                         return({"__xst" : __xer});
                     }
                 }
@@ -2066,7 +2066,7 @@ class _rev_de_sql_vers_js1{
         /*
           this.traiter_donnees_bases_rev( bases );
         */
-        this.traiter_donnees_bases_rev( [] , 0 , {} , {"__xst" : __xer} , {} , bases );
+        this.traiter_donnees_bases_rev( [] , 0 , bases );
         /* this.#enrichir_tableau_des_bases_tables_champs( bases ); */
         let a_retourner={
             "globale_id_requete" : 0 ,
@@ -2102,41 +2102,43 @@ class _rev_de_sql_vers_js1{
     }
     /*
       =============================================================================================================
-      donnees_recues contient les revs
+      les_bases_et_la_requete contient les revs
       - le rev des bases
       - le rev de la requete
       - chi_id_requete
     */
-    compiler_requete_vers_js1( mat , d , donnees_recues , donnees_retournees=null , options_generales=null ){
+    compiler_requete_vers_js1( mat , d , les_bases_et_la_requete ){
         this.#obj_webs=this.#obj_webs_init;
         /*
           1°] la partie traite_les_donnees_base_et_requetes_du_serveur
         */
-        let bases=donnees_recues.__xva.les_bases_du_projet;
-        this.#globale_id_requete=donnees_recues.__xva.chi_id_requete;
+        let bases=les_bases_et_la_requete.__xva.les_bases_du_projet;
+        /* les_bases.les_bases_du_projet; */
+        this.#globale_id_requete=les_bases_et_la_requete.__xva.chi_id_requete;
+        /* les_bases.__xva.chi_id_requete; */
         /*  */
         for(let indice_de_la_base in bases){
             let obj0=this.__ig1.__rev1.rev_tm( bases[indice_de_la_base]['T0.chp_rev_travail_basedd'] );
             if(obj0.__xst !== __xsu){
-                donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
             bases[indice_de_la_base]['matrice']=obj0.__xva;
             bases[indice_de_la_base]['selectionne']=false;
         }
-        let obj0=this.traiter_donnees_bases_rev( mat , d , donnees_recues , donnees_retournees , options_generales , bases );
+        let obj0=this.traiter_donnees_bases_rev( mat , d , bases );
         if(obj0.__xst !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(this.#globale_id_requete > 0){
-            this.#globale_id_requete=donnees_recues.__xva.requete['T0.chi_id_requete'];
-            this.#globale_rev_requete=donnees_recues.__xva.requete['T0.cht_rev_requete'];
-            this.#globale_type_requete=donnees_recues.__xva.requete['T0.chp_type_requete'];
-            this.#globale_commentaire_requete=donnees_recues.__xva.requete['T0.cht_commentaire_requete']??'';
-            this.#globale_chp_table_reference_requete=donnees_recues.__xva.requete['T0.chp_table_reference_requete']??'';
-            this.#che_est_souche_requete=donnees_recues.__xva.requete['T0.che_est_souche_requete'];
-            this.convertir_rev_pour_construction( mat , d , donnees_recues , donnees_retournees , options_generales , bases );
+            this.#globale_id_requete=les_bases_et_la_requete.__xva.requete['T0.chi_id_requete'];
+            this.#globale_rev_requete=les_bases_et_la_requete.__xva.requete['T0.cht_rev_requete'];
+            this.#globale_type_requete=les_bases_et_la_requete.__xva.requete['T0.chp_type_requete'];
+            this.#globale_commentaire_requete=les_bases_et_la_requete.__xva.requete['T0.cht_commentaire_requete']??'';
+            this.#globale_chp_table_reference_requete=les_bases_et_la_requete.__xva.requete['T0.chp_table_reference_requete']??'';
+            this.#che_est_souche_requete=les_bases_et_la_requete.__xva.requete['T0.che_est_souche_requete'];
+            this.convertir_rev_pour_construction( mat , d , les_bases_et_la_requete );
         }
         /*
           2°] le partie transform_source_rev_vers_sql( le_message_du_serveur.__xva.requete['T0.cht_rev_requete'] , chi_id_requete );
@@ -2202,7 +2204,7 @@ class _rev_de_sql_vers_js1{
                 return(this.__ig1.ajoute_message( {"__xst" : __xer ,"source_sql" : obj2.__xva ,"__xme" : this.__ig1.__rev1.nl2() + 'conversion en js '} ));
             }
         }catch(e){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2( e ) + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
         return({"__xst" : __xsu});

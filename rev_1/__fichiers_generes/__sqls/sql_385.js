@@ -9,7 +9,7 @@ class sql_385{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_requete\` , \`T0\`.\`cht_sql_requete\` , \`T0\`.\`cht_commentaire_requete\` , \`T0\`.\`chp_type_requete\` , \`T0\`.\`che_est_souche_requete\` , 
           \`T0\`.\`cht_rev_requete\` , \`T0\`.\`chp_table_reference_requete\`
@@ -32,7 +32,7 @@ class sql_385{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 385 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 385 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){

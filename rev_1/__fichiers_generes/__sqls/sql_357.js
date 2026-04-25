@@ -9,7 +9,7 @@ class sql_357{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_basedd\` , \`T0\`.\`chp_rev_travail_basedd\`
         `;
@@ -26,7 +26,7 @@ class sql_357{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 357 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 357 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){

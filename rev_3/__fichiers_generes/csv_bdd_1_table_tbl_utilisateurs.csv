@@ -1,4 +1,4 @@
 "chi_id_utilisateur","chp_nom_de_connexion_utilisateur","chp_mot_de_passe_utilisateur","chp_parametres_utilisateur","chi_compteur1_utilisateur","chx_acces_utilisateur","chd__dtm_utilisateur","chd__dtc_utilisateur","che__nur_utilisateur","che_actif_utilisateur"
-"1","poipoip","$2a$10$aFhKV3/znpVkOgA2.RA0zuZ9GSH4scRCrtn6yUYcFDgOeiYLfX9m.",NULL,"80","1","2025-11-08 11:43:00.312","2025-11-08 11:43:00.312","0","1"
-"2","admin","$2a$10$Z6ff6VhYskADIYnPxKmBJeYigip4dMWsExi5d2glHP6GwmwJYDl6y",NULL,"36","2","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","1"
+"1","poipoip","$2a$10$3484.miHmi7ffCX/7AbEVe9XHgIKmi//YPtuB77BFOmTB6/jx3TVG",NULL,"86","1","2025-11-08 11:43:00.312","2025-11-08 11:43:00.312","0","1"
+"2","admin","$2a$10$Z6ff6VhYskADIYnPxKmBJeYigip4dMWsExi5d2glHP6GwmwJYDl6y",NULL,"40","2","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","1"
 "3","u1","$2a$10$dG63WjU4q2WxyKOdFIZBcucA34ZoN3Wn0.fS2KJd62RKjVxcmp.eq",NULL,"14","3","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","1"

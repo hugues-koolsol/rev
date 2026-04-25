@@ -9,7 +9,7 @@ class sql_136{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_acces\` , \`T0\`.\`chp_nom_acces\` , \`T0\`.\`chx_groupe_acces\` , \`T0\`.\`chx_metier_acces\` , \`T0\`.\`cht_parametres_acces\` , 
           \`T1\`.\`chp_nom_groupe\` , \`T2\`.\`chp_nom_metier\` , \`T0\`.\`che_actif_acces\`
@@ -31,7 +31,7 @@ class sql_136{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 136 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 136 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){

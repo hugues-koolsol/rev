@@ -9,8 +9,8 @@ class sql_123{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
-        let obj1=await this.__ig1.tester_les_dependances1( {"table_parente" : 'tbl_utilisateurs' ,"champ_parent" : 'chi_id_utilisateur' ,"id_enregistrement" : par['chi_id_utilisateur'] ,"__db1" : this.__db1} , donnees_retournees );
+    async sql( par ){
+        let obj1=await this.__ig1.tester_les_dependances1( {"table_parente" : 'tbl_utilisateurs' ,"champ_parent" : 'chi_id_utilisateur' ,"id_enregistrement" : par['chi_id_utilisateur'] ,"__db1" : this.__db1} );
         if(obj1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xva" : {} ,"__xme" : 'cet enregistrement possède des dépendants et ne peut être supprimé' ,"sql0" : sql0});
         }
@@ -25,9 +25,9 @@ class sql_123{
             return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res});
         }catch(e){
             if(e.stack.indexOf( 'FOREIGN KEY' ) >= 0){
-                await this.__ig1.afficher_les_dependances1( {"table_parente" : 'tbl_utilisateurs' ,"champ_parent" : 'chi_id_utilisateur' ,"id_enregistrement" : par['chi_id_utilisateur'] ,"__db1" : this.__db1} , donnees_retournees );
+                await this.__ig1.afficher_les_dependances1( {"table_parente" : 'tbl_utilisateurs' ,"champ_parent" : 'chi_id_utilisateur' ,"id_enregistrement" : par['chi_id_utilisateur'] ,"__db1" : this.__db1} );
             }
-            return(this.__ig1.traite_erreur_sql( 123 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 123 , e , sql0 , {} ));
         }
     }
     /*

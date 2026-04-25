@@ -195,13 +195,14 @@ class __ig1{
                 }catch(e){
                     console.error( e );
                     if(e.message.indexOf( 'Failed to fetch dynamically imported module' ) >= 0){
-                        this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Appuyez sur F5 pour recharger la page'} );
+                        this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Le module "' + m1 + '" n\'a pas pas pu être chargé ( voir traces réseau )'} );
+                    }else{
+                        let re_source=this.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
+                        this.ajoute_message( {
+                                "__xst" : __xer ,
+                                "__xme" : 'erreur import du module <br><pre>' + re_source.__xva + '</pre><br />"' + nom_de_classe + '" ' + this.nl2( e )
+                            } );
                     }
-                    let re_source=this.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
-                    this.ajoute_message( {
-                            "__xst" : __xer ,
-                            "__xme" : 'erreur import du module <br><pre>' + re_source.__xva + '</pre><br />"' + nom_de_classe + '" ' + this.nl2( e )
-                        } );
                     this.affiche_les_messages();
                     return({"__xst" : __xer});
                 }
@@ -223,14 +224,14 @@ class __ig1{
                 for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
                     let obj=null;
                     try{
-                        /*
+                        /*#
                           =====================================================================
                           appel du module qui vient d'être charge
                           =====================================================================
+                          if(this.__deverminage === 2){
+                              console.log( '%cappel du module qui vient d\'être charge ' + m1 + '.' + mat[i][1] + '()' , 'background:LightCoral;' );
+                          }
                         */
-                        if(this.__deverminage === 2){
-                            console.log( '%cappel du module qui vient d\'être charge ' + m1 + '.' + mat[i][1] + '()' , 'background:LightCoral;' );
-                        }
                         obj=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param );
                         /*
                           =====================================================================
@@ -278,14 +279,14 @@ class __ig1{
                 for( let i=indice ; i < l01 ; i=mat[i][12] ){
                     try{
                         if( typeof this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]] === 'function'){
-                            /*
+                            /*#
                               =============================================================
                               appel du module déjà charge
                               =============================================================
+                              if(this.__deverminage === 2){
+                                  console.log( '%cappel du module déjà charge ' + m1 + '.' + mat[i][1] + '()' , 'background:Khaki;' );
+                              }
                             */
-                            if(this.__deverminage === 2){
-                                console.log( '%cappel du module déjà charge ' + m1 + '.' + mat[i][1] + '()' , 'background:Khaki;' );
-                            }
                             let obj3=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param , evenement );
                             /*
                               =============================================================
@@ -1502,35 +1503,30 @@ class __ig1{
         t+='    border: 2px outset white;';
         t+='    box-shadow: -30rem 0 0 30rem #12ed12;';
         t+='}';
-        t+='.yy_w100{';
-        t+='    width:100%;';
+        t+='.yy_w100{width:100%;}';
+        t+='.yy_jcl{justify-content:left;}';
+        t+='div[data-libelle_noeud_menu1]{color: ' + couleur6hex + ';';
+        t+=' display: flex;';
+        t+=' background: var(--c_coul_fond4);';
+        t+=' color: var(--c_coul_fond1);';
+        t+=' margin-top: var(--t_marge_hb_plus);';
+        t+=' border-top:  var(--t_border) var(--c_coul_4) solid;';
+        t+=' border-bottom:  var(--t_border) var(--c_coul_4) solid;';
+        t+=' min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
+        t+=' line-height: ' + val_police + 'px;';
+        t+=' padding-top:' + val_padding + 'px;';
+        t+=' padding-bottom:' + (val_padding + 2) + 'px;';
+        t+=' padding-left:' + val_padding + 'px;';
+        t+=' padding-right:' + val_padding + 'px;';
         t+='}';
-        t+='.yy_jcl{';
-        t+='    justify-content:left;';
+        t+='div[data-libelle_noeud_menu1="0"]{';
+        t+='    align-items: center;';
         t+='}';
-        t+='div[data-libelle_noeud_menu1] {\r\n';
-        t+='    color: ' + couleur6hex + ';\r\n';
-        t+='    display: flex;\r\n';
-        t+='    background: var(--c_coul_fond4);\r\n';
-        t+='    color: var(--c_coul_fond1);\r\n';
-        t+='    margin-top: var(--t_marge_hb_plus);\r\n';
-        t+='    border-top:  var(--t_border) var(--c_coul_4) solid;\r\n';
-        t+='    border-bottom:  var(--t_border) var(--c_coul_4) solid;\r\n';
-        t+='    min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    line-height: ' + val_police + 'px;';
-        t+='    padding-top:' + val_padding + 'px;';
-        t+='    padding-bottom:' + (val_padding + 2) + 'px;';
-        t+='    padding-left:' + val_padding + 'px;';
-        t+='    padding-right:' + val_padding + 'px;';
-        t+='}\r\n';
-        t+='div[data-libelle_noeud_menu1="0"] {\r\n';
-        t+='    align-items: center;\r\n';
-        t+='}\r\n';
         t+='.yy_col_act_td1{';
         t+='   display:inline-flex;';
         /* t+='   text-wrap-mode:nowrap;'; */
         t+='   padding:' + val_padding + 'px;';
-        t+='}\r\n';
+        t+='}';
         t+='.yy_conteneur_table>table{';
         t+='    border: 1px ' + couleur5hex + ' solid;';
         t+='    border-collapse: collapse;';
@@ -1792,6 +1788,29 @@ class __ig1{
         t+='</div>';
         t+='<dialog id="vv_sous_fenetre1"></dialog>';
         return t;
+    }
+    /*
+      =============================================================================================================
+    */
+    defilement_bas( mat , d ){
+        const décal=parseInt( 0.85 * (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) , 10 );
+        window.scrollTo( {"top" : window.scrollY + décal ,"left" : 0 ,"behavior" : "smooth"} );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    defilement_haut( mat , d ){
+        const décal=parseInt( 0.85 * (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) , 10 );
+        window.scrollTo( {"top" : window.scrollY - décal ,"left" : 0 ,"behavior" : "smooth"} );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    page_haut( mat , d ){
+        window.scrollTo( {"top" : 0 ,"left" : 0 ,"behavior" : "smooth"} );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -2104,6 +2123,7 @@ class __ig1{
         vv_sous_fenetre1.innerHTML=contenu_a_afficher;
         vv_sous_fenetre1.showModal();
         this.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -3277,13 +3297,7 @@ class __ig1{
         /* t+='<input type="text" style="margin:10px;"/>'; */
         t+='<h1>Accueil</h1>';
         t+='<div style="text-align:center;border:1px red solid;margin:0 auto;width:fit-content;height:' + (2 * this.css_dimensions.t_border + this.css_dimensions.t_police) + 'px;">';
-        t+='<img src="./f0?n0=1x1_blanc.gif"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_blanc.jpg"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_blanc.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_rouge.png"   style="display:inline-block;width:var(--t_police);margin:0;" />';
-        t+='<img src="./f0?n0=1x1_blanc_2.png" style="display:inline-block;width:var(--t_police);margin:0;" />';
+        t+='bienvenue';
         t+='</div>';
         t+='<div style="margin-top:20px;">';
         for(let i in this.les_svg){
@@ -3475,7 +3489,6 @@ class __ig1{
             return input;
         }
         if(this.est_num( input )){
-            console.log( 'String(input)=' + String( input ) );
             return(this.supprime_l_exposant( input ).replace( /[^a-zA-Z0-9]+/g , ' ' ).trim());
         }
         let ret='';
@@ -3560,7 +3573,7 @@ class __ig1{
                 let contenu='';
                 contenu+='data:image/svg+xml,';
                 contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
-                contenu+='<rect x="-50" y="-50" width="100" height="100" fill="lime" />';
+                contenu+='<rect x="-50" y="-50" width="100" height="100" fill="bisque" />';
                 contenu+='<text x="-30.5" y="40.5" style="font-size:106;stroke-width:4;stroke:red;fill:red;font-family:Verdana;">' + chi_id_projet + '</text>';
                 contenu+='</svg>';
                 try{

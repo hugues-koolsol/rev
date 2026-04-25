@@ -195,13 +195,14 @@ class __ig1{
                 }catch(e){
                     console.error( e );
                     if(e.message.indexOf( 'Failed to fetch dynamically imported module' ) >= 0){
-                        this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Appuyez sur F5 pour recharger la page'} );
+                        this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Le module "' + m1 + '" n\'a pas pas pu être chargé ( voir traces réseau )'} );
+                    }else{
+                        let re_source=this.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
+                        this.ajoute_message( {
+                                "__xst" : __xer ,
+                                "__xme" : 'erreur import du module <br><pre>' + re_source.__xva + '</pre><br />"' + nom_de_classe + '" ' + this.nl2( e )
+                            } );
                     }
-                    let re_source=this.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
-                    this.ajoute_message( {
-                            "__xst" : __xer ,
-                            "__xme" : 'erreur import du module <br><pre>' + re_source.__xva + '</pre><br />"' + nom_de_classe + '" ' + this.nl2( e )
-                        } );
                     this.affiche_les_messages();
                     return({"__xst" : __xer});
                 }
@@ -223,14 +224,14 @@ class __ig1{
                 for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
                     let obj=null;
                     try{
-                        /*
+                        /*#
                           =====================================================================
                           appel du module qui vient d'être charge
                           =====================================================================
+                          if(this.__deverminage === 2){
+                              console.log( '%cappel du module qui vient d\'être charge ' + m1 + '.' + mat[i][1] + '()' , 'background:LightCoral;' );
+                          }
                         */
-                        if(this.__deverminage === 2){
-                            console.log( '%cappel du module qui vient d\'être charge ' + m1 + '.' + mat[i][1] + '()' , 'background:LightCoral;' );
-                        }
                         obj=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param );
                         /*
                           =====================================================================
@@ -278,14 +279,14 @@ class __ig1{
                 for( let i=indice ; i < l01 ; i=mat[i][12] ){
                     try{
                         if( typeof this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]] === 'function'){
-                            /*
+                            /*#
                               =============================================================
                               appel du module déjà charge
                               =============================================================
+                              if(this.__deverminage === 2){
+                                  console.log( '%cappel du module déjà charge ' + m1 + '.' + mat[i][1] + '()' , 'background:Khaki;' );
+                              }
                             */
-                            if(this.__deverminage === 2){
-                                console.log( '%cappel du module déjà charge ' + m1 + '.' + mat[i][1] + '()' , 'background:Khaki;' );
-                            }
                             let obj3=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param , evenement );
                             /*
                               =============================================================
@@ -1796,6 +1797,29 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    defilement_bas( mat , d ){
+        const décal=parseInt( 0.85 * (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) , 10 );
+        window.scrollTo( {"top" : window.scrollY + décal ,"left" : 0 ,"behavior" : "smooth"} );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    defilement_haut( mat , d ){
+        const décal=parseInt( 0.85 * (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) , 10 );
+        window.scrollTo( {"top" : window.scrollY - décal ,"left" : 0 ,"behavior" : "smooth"} );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    page_haut( mat , d ){
+        window.scrollTo( {"top" : 0 ,"left" : 0 ,"behavior" : "smooth"} );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     getCookie( name ){
         const match=document.cookie.match( new RegExp( "(^| )" + name + "=([^;]+)" ) );
         if(match){
@@ -2104,6 +2128,7 @@ class __ig1{
         vv_sous_fenetre1.innerHTML=contenu_a_afficher;
         vv_sous_fenetre1.showModal();
         this.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -3277,7 +3302,7 @@ class __ig1{
         /* t+='<input type="text" style="margin:10px;"/>'; */
         t+='<h1>Accueil</h1>';
         t+='<div style="text-align:center;border:1px red solid;margin:0 auto;width:fit-content;height:' + (2 * this.css_dimensions.t_border + this.css_dimensions.t_police) + 'px;">';
-        t+='Bienvenue';
+        t+='bienvenue';
         t+='</div>';
         t+='<div style="margin-top:20px;">';
         for(let i in this.les_svg){
@@ -3399,18 +3424,21 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    maj_menu( mat , d , le_message ){
+    maj_menu( mat , d , le_message_du_serveur ){
         let t='';
-        if(le_message && le_message.hasOwnProperty( '__xva' ) && le_message.__xva.hasOwnProperty( 'les_menu1' )){
-            if( typeof le_message.__xva.les_menu1 === 'object'){
+        if(le_message_du_serveur
+               && le_message_du_serveur.hasOwnProperty( '__xva' )
+               && le_message_du_serveur.__xva.hasOwnProperty( 'les_menu1' )
+        ){
+            if( typeof le_message_du_serveur.__xva.les_menu1 === 'object'){
                 t+='Les menus ne sont pas définis 1';
-            }else if( typeof le_message.__xva.les_menu1 === 'string'){
-                t+=le_message.__xva.les_menu1;
+            }else if( typeof le_message_du_serveur.__xva.les_menu1 === 'string'){
+                t+=le_message_du_serveur.__xva.les_menu1;
             }else{
                 t+='Les menus ne sont pas définis 2';
             }
         }
-        if(le_message.__xva.chi_id_utilisateur !== 0){
+        if(le_message_du_serveur.__xva.chi_id_utilisateur !== 0){
             document.getElementById( 'vv_bouton_connexion' ).classList.remove( 'yy__1' );
             document.getElementById( 'vv_bouton_connexion' ).classList.add( 'yy__0' );
         }else{
@@ -3420,6 +3448,7 @@ class __ig1{
         /* document.getElementById( 'vv_nav_centre_defilement' ).innerHTML=t; */
         document.getElementById( 'vv_nav_centre' ).innerHTML=t;
         this.ajoute_les_evenements_aux_boutons();
+        this.maj_fav_icone( le_message_du_serveur._CA_ , le_message_du_serveur.chi_id_projet );
         return({"__xst" : __xsu});
     }
     /*
@@ -3465,7 +3494,6 @@ class __ig1{
             return input;
         }
         if(this.est_num( input )){
-            console.log( 'String(input)=' + String( input ) );
             return(this.supprime_l_exposant( input ).replace( /[^a-zA-Z0-9]+/g , ' ' ).trim());
         }
         let ret='';
@@ -3540,6 +3568,25 @@ class __ig1{
         "masquer" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g fill="none" fill-rule="evenodd"><path fill="#FF0000" d="M 22 5   C 14 5 6 10 5 17     C 1 16 -3 16 -6 17     C -8 10 -14 5 -23 5     C -32 5 -40 12 -40 21     C -40 31 -32 39 -23 39     C -14 39 -6 31 -5 22     C -4 22 0 20 5 22     C 5 31 13 39 22 39     C 32 39 40 31 40 21     C 40 12 32 5 22 5     Z M -23 10   C -15 10 -10 15 -10 21     C -10 29 -15 34 -23 34     C -30 34 -35 29 -35 21     C -35 15 -30 10 -23 10     Z M 22 10   C 30 10 35 15 35 21     C 35 29 30 34 22 34     C 15 34 10 29 10 21     C 10 15 15 10 22 10     Z M 45 -6   H -45       V -1       H 45       V -6       Z M 17 -41   C 15 -44 15 -45 12 -44  L 0 -40L 0 -40L -12 -44   C -14 -45 -15 -44 -17 -41  L -28 -11   H 30    L 17 -41   Z "></path></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>' ,
         "outils" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -40 -40 L -38 -42 L -32 -39 L -32 -35 L 12 8 L 15 5 L 20 10 C 19 14 21 16 25 15 L 40 30 L 30 40 L 15 25 C 16 21 14 19 10 20 L 5 15 L 8 12 L -35 -32  L -39 -32 L -42 -38 L -40 -40" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path><path d=" M -35 35 L -40 30 L -9 -1 M -1 -9 L 12 -22 C 9 -27 5 -30 0 -30 L -2 -32 C 8 -39 18 -38 36 -25 C 34 -20 37 -18 40 -20 L 43 -17 L 31 -4 L 27 -7 C 29 -12 26 -14 22 -12 L 9 1 M -9 -1 L 1 9  L -30 40 L -35 35" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path></svg>'
     };
+    /*
+      =============================================================================================================
+    */
+    maj_fav_icone( _CA_ , chi_id_projet ){
+        if(_CA_ === 1){
+            let bb=document.getElementById( 'vv_icon1' );
+            if(bb){
+                let contenu='';
+                contenu+='data:image/svg+xml,';
+                contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
+                contenu+='<rect x="-50" y="-50" width="100" height="100" fill="bisque" />';
+                contenu+='<text x="-30.5" y="40.5" style="font-size:106;stroke-width:4;stroke:red;fill:red;font-family:Verdana;">' + chi_id_projet + '</text>';
+                contenu+='</svg>';
+                try{
+                    bb.href=contenu;
+                } catch {}
+            }
+        }
+    }
     /*
       =============================================================================================================
     */

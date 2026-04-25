@@ -9,7 +9,7 @@ class sql_330{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_genre\` , \`T0\`.\`chp_nom_genre\` , \`T0\`.\`che_ordre_genre\` , \`T0\`.\`chp_prefixe_genre\` , \`T0\`.\`chp_espece_genre\` , 
           \`T0\`.\`che_longueur_genre\` , \`T0\`.\`che_est_primaire_genre\` , \`T0\`.\`che_est_incrément_genre\` , \`T0\`.\`che_est_obligatoire_genre\` , \`T0\`.\`che_a_init_genre\` , 
@@ -30,7 +30,7 @@ class sql_330{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 330 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 330 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){

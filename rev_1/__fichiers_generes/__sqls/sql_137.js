@@ -9,7 +9,7 @@ class sql_137{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0=`
       INSERT  INTO \`tbl_acces\`(
          \`chp_nom_acces\` , 
@@ -46,7 +46,7 @@ class sql_137{
             }
             return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 137 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 137 , e , sql0 , {} ));
         }
     }
     /*

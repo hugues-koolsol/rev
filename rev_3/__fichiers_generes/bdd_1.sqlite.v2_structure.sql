@@ -115,7 +115,7 @@ CREATE TABLE `tbl_acces`(
    table('tbl_acces'),
    genre_meta(table_de_base),rang_de_la_table(30),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
-   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(248,77))) 
+   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(198,119))) 
 */
     
             /*
@@ -204,7 +204,7 @@ CREATE TABLE `tbl_autorisations`(
    table('tbl_autorisations'),
    genre_meta(table_de_base),rang_de_la_table(40),permet_la_gestion_de('autorisation'),
    distinction_pour_liste('liste des autorisations'),
-   distinction_pour_isad('d\'une autorisation'),transform_base_sur_svg(translate(516,69))) 
+   distinction_pour_isad('d\'une autorisation'),transform_base_sur_svg(translate(411,119))) 
 */
     
             /*
@@ -271,7 +271,7 @@ CREATE TABLE `tbl_menus`(
    table('tbl_menus'),
    genre_meta(table_de_base),rang_de_la_table(50),permet_la_gestion_de('menu'),
    distinction_pour_liste('liste des menus'),
-   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(885,54))) 
+   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(677,100))) 
 */
     
             /*
@@ -384,7 +384,7 @@ CREATE TABLE `tbl_sources`(
    table('tbl_sources'),
    genre_meta(table_de_base),rang_de_la_table(60),permet_la_gestion_de('source'),
    distinction_pour_liste('liste des sources'),
-   distinction_pour_isad('d\'un source'),transform_base_sur_svg(translate(869,277))) 
+   distinction_pour_isad('d\'un source'),transform_base_sur_svg(translate(679,261))) 
 */
     
             /*
@@ -548,7 +548,7 @@ CREATE TABLE `tbl_utilisateurs`(
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),rang_de_la_table(70),permet_la_gestion_de('utilisateur'),
    distinction_pour_liste('liste des utilisateurs'),
-   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),transform_base_sur_svg(translate(502,332))) 
+   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),transform_base_sur_svg(translate(392,269))) 
 */
     
             /*
@@ -688,7 +688,7 @@ CREATE TABLE `tbl_taches`(
    table('tbl_taches'),
    genre_meta(table_de_base),rang_de_la_table(80),permet_la_gestion_de('tâche'),
    distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(892,576))) 
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(676,475))) 
 */
     
             /*

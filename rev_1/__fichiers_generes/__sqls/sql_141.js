@@ -9,7 +9,7 @@ class sql_141{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_autorisation\` , \`T0\`.\`chp_nom_autorisation\` , \`T0\`.\`chx_acces_autorisation\` , \`T0\`.\`chx_source_autorisation\` , \`T1\`.\`chp_nom_acces\` , 
           \`T2\`.\`chp_nom_source\` , \`T2\`.\`che_binaire_source\` , \`T2\`.\`chx_dossier_id_source\`
@@ -31,7 +31,7 @@ class sql_141{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 141 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 141 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){

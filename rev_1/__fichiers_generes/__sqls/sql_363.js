@@ -9,7 +9,7 @@ class sql_363{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0=`
       INSERT  INTO \`tbl_bdds\`(
          \`chp_commentaire_basedd\` , 
@@ -44,7 +44,7 @@ class sql_363{
             }
             return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 363 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 363 , e , sql0 , {} ));
         }
     }
     /*

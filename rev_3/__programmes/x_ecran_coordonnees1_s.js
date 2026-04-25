@@ -15,28 +15,28 @@ class x_ecran_coordonnees1{
     /*
       =============================================================================================================
     */
-    async modifier1( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        let form=donnees_recues[__xva]['__fo1'][donnees_recues[__xva]['__co1']];
+    async modifier1( mat , d ){
+        let form=this.__ig1.donnees_recues[__xva]['__fo1'][this.__ig1.donnees_recues[__xva]['__co1']];
         if(form['chp_mot_de_passe_utilisateur'] !== form['chp_mot_de_passe_utilisateur2']){
-            donnees_retournees.__xsi[__xer].push( 'les deux mots de passe ne correspondent pas [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les deux mots de passe ne correspondent pas [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chp_mot_de_passe_utilisateur'].length < 7){
-            donnees_retournees.__xsi[__xer].push( 'le mot de passe doit comporter au moins 7 caractères [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'le mot de passe doit comporter au moins 7 caractères [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chp_nom_de_connexion_utilisateur'].length < 5){
-            donnees_retournees.__xsi[__xer].push( 'le nom de connexion doit comporter au moins 5 caractères [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'le nom de connexion doit comporter au moins 5 caractères [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chp_nom_de_connexion_utilisateur'].indexOf( ' ' ) >= 0 || form['chp_mot_de_passe_utilisateur'].indexOf( ' ' ) >= 0){
-            donnees_retournees.__xsi[__xer].push( 'le mot de passe et le nom de connexion ne doivent pas contenit d\'espaces [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'le mot de passe et le nom de connexion ne doivent pas contenit d\'espaces [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*
           La base de données est la base principale numéro un.
         */
-        let __db1=await this.__ig1.ouvrir_bdd( 1 , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
         let tt101=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -50,22 +50,22 @@ class x_ecran_coordonnees1{
         LIMIT 1 OFFSET 0 
         ;
         */
-        /*sql_inclure_fin*/ 101 , {"T0_chp_nom_de_connexion_utilisateur" : form['chp_nom_de_connexion_utilisateur_ancien']} , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 101 , {"T0_chp_nom_de_connexion_utilisateur" : form['chp_nom_de_connexion_utilisateur_ancien']} , this.__ig1.donnees_retournees , __db1 );
         if(tt101[__xst] !== __xsu || tt101[__xva].length !== 1){
             return({"__xst" : __xer});
         }
         const isValid=await compare( form['chp_mot_de_passe_utilisateur3'] , tt101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] );
         if(isValid !== true){
-            donnees_retournees.__xsi[__xer].push( 'l\'ancien mot de passe que vous avez indiqué n\'est pas le bon ' + this.__ig1.nl2() );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'ancien mot de passe que vous avez indiqué n\'est pas le bon ' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         const mot_de_passe_crypte=await crypte_mot( form['chp_mot_de_passe_utilisateur'] );
         let critere_109={
             "n_chp_nom_de_connexion_utilisateur" : form['chp_nom_de_connexion_utilisateur'] ,
             "n_chp_mot_de_passe_utilisateur" : mot_de_passe_crypte ,
-            "c_chi_id_utilisateur" : donnees_retournees.chi_id_utilisateur
+            "c_chi_id_utilisateur" : this.__ig1.donnees_retournees.chi_id_utilisateur
         };
-        /* return(this.__ig1.bug1(donnees_retournees,'critere_109=',critere_109)); */
+        /* return(this.__ig1.bug1(this.__ig1.donnees_retournees,'critere_109=',critere_109)); */
         let tt109=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_utilisateurs SET 
@@ -73,7 +73,7 @@ class x_ecran_coordonnees1{
            `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
         WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
         */
-        /*sql_inclure_fin*/ 109 , critere_109 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 109 , critere_109 , this.__ig1.donnees_retournees , __db1 );
         if(tt109[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
@@ -82,11 +82,11 @@ class x_ecran_coordonnees1{
     /*
       =============================================================================================================
     */
-    async recupérer_mes_coordonnées( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async recupérer_mes_coordonnées( mat , d ){
         /*
           La base de données est la base principale numéro un.
         */
-        let __db1=await this.__ig1.ouvrir_bdd( 1 , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
         let tt108=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -98,11 +98,11 @@ class x_ecran_coordonnees1{
         WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
         ;
         */
-        /*sql_inclure_fin*/ 108 , {"T0_chi_id_utilisateur" : donnees_retournees.chi_id_utilisateur} , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 108 , {"T0_chi_id_utilisateur" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
         if(tt108[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
-        donnees_retournees[__xva]=tt108;
+        this.__ig1.donnees_retournees[__xva]=tt108;
         return({"__xst" : __xsu});
     }
     /*

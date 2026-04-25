@@ -9,7 +9,7 @@ class sql_344{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_rev\` , \`T0\`.\`chp_provenance_rev\` , \`T0\`.\`chx_source_rev\` , \`T0\`.\`chp_id_rev\` , \`T0\`.\`chp_valeur_rev\` , 
           \`T0\`.\`chp_type_rev\` , \`T0\`.\`chp_niveau_rev\` , \`T0\`.\`chp_quotee_rev\` , \`T0\`.\`chp_pos_premier_rev\` , \`T0\`.\`chp_pos_dernier_rev\` , 
@@ -29,7 +29,7 @@ class sql_344{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 344 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 344 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){

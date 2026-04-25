@@ -2367,6 +2367,28 @@ class w_ast_js_vers_rev1{
             }else{
                 return(this.#astjs_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() ,"element" : element} ));
             }
+        }else if(element.callee && element.callee.type === 'AssignmentExpression'){
+            obj=this.#traite_AssignmentExpression( element.callee , niveau + 1 , parent , tab_comm );
+            let les_arguments='p()';
+            if(element.arguments && element.arguments.length > 0){
+                les_arguments='';
+                for( let i=0 ; i < element.arguments.length ; i++ ){
+                    if(les_arguments !== ''){
+                        les_arguments+=',';
+                    }
+                    obj1=this.#traite_element( element.arguments[i] , niveau + 1 , element.arguments , tab_comm , true );
+                    if(obj1.__xst === __xsu){
+                        les_arguments+='p(' + obj1.__xva + ')';
+                    }else{
+                        return(this.#astjs_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() ,"element" : element} ));
+                    }
+                }
+            }
+            if(obj.__xst === __xsu){
+                t+='appelf(nomf(new(' + obj.__xva + ')),' + les_arguments + ')';
+            }else{
+                return(this.#astjs_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() ,"element" : element} ));
+            }
         }else{
             return(this.#astjs_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() ,"element" : element} ));
         }

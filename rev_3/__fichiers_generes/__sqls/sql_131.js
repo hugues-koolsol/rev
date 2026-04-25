@@ -9,7 +9,7 @@ class sql_131{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_groupe\` , \`T0\`.\`chp_nom_groupe\` , \`T0\`.\`chx_parent_groupe\` , \`T1\`.\`chp_nom_groupe\`
         `;
@@ -28,7 +28,7 @@ class sql_131{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 131 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 131 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){

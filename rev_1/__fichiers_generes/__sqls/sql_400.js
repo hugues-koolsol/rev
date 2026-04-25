@@ -9,7 +9,7 @@ class sql_400{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_travail\` , \`T0\`.\`chp_resume_travail\` , \`T0\`.\`cht_rev_travail\` , \`T0\`.\`chx_utilisateur_travail\` , \`T0\`.\`chd_dtc_travail\` , 
           \`T0\`.\`chp_etat_travail\` , \`T0\`.\`chx_projet_travail\` , \`T1\`.\`chx_acces_utilisateur\`
@@ -35,7 +35,7 @@ class sql_400{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 400 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 400 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){

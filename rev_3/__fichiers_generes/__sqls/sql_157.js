@@ -9,7 +9,7 @@ class sql_157{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0='UPDATE `tbl_taches` SET \r\n';
         let tableau_champs=[];
         try{
@@ -18,7 +18,7 @@ class sql_157{
             }else{
                 tableau_champs.push( '`chp_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chp_priorite_tache'] ) + '' );
             }
-            tableau_champs.push( '`chd__dtm_tache` = \'' + donnees_retournees.date_heure_serveur + '\' ' );
+            tableau_champs.push( '`chd__dtm_tache` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */
@@ -38,7 +38,7 @@ class sql_157{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 157 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 157 , e , sql0 , {} ));
         }
     }
     /*

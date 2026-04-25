@@ -9,7 +9,7 @@ class sql_353{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0='';
         try{
             sql0=`DELETE FROM tbl_revs
@@ -21,7 +21,7 @@ class sql_353{
             /* this.__ig1.ma_trace1('res=',res) */
             return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 353 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 353 , e , sql0 , {} ));
         }
     }
     /*

@@ -9,7 +9,7 @@ class sql_117{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0=`
       INSERT  INTO \`tbl_sources\`(
          \`chp_nom_source\` , 
@@ -50,7 +50,7 @@ class sql_117{
             }
             return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 117 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 117 , e , sql0 , {} ));
         }
     }
     /*

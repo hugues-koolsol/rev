@@ -11,8 +11,10 @@ const __xac='__xac';
   =====================================================================================================================
 */
 class acces1{
-    /* function construit_menu_vjs2 */
-    construit_menu_vjs2( id_interne_parent , le_tableau_du_menu , niveau , donnees_retournees , parent_est_select=false ){
+    /*
+      =============================================================================================================
+    */
+    construit_menu_vjs2( id_interne_parent , le_tableau_du_menu , niveau , parent_est_select=false ){
         let contenu_menu1='';
         for(let k1 in le_tableau_du_menu){
             let v1=le_tableau_du_menu[k1];
@@ -219,14 +221,14 @@ class acces1{
                       Appel au récursif
                       =============================================================================
                     */
-                    let le_contenu_recursif=this.construit_menu_vjs2( v1['id_interne'] , le_tableau_du_menu , niveau + 1 , donnees_retournees , true );
+                    let le_contenu_recursif=this.construit_menu_vjs2( v1['id_interne'] , le_tableau_du_menu , niveau + 1 , true );
                     /*
                       =============================================================================
                       Appel au récursif
                       =============================================================================
                     */
                     if(le_contenu_recursif.__xst !== __xsu){
-                        donnees_retournees.__xsi[__xer].push( (le_contenu_recursif.hasOwnProperty( '__xme' ) ? ( le_contenu_recursif.__xma ) : ( '' )) + '[' + this.__ig1.nl2() + ']' );
+                        this.__ig1.donnees_retournees.__xsi[__xer].push( (le_contenu_recursif.hasOwnProperty( '__xme' ) ? ( le_contenu_recursif.__xma ) : ( '' )) + '[' + this.__ig1.nl2() + ']' );
                         return({"__xst" : __xer});
                     }
                     contenu_menu1+=le_contenu_recursif.__xva;
@@ -263,8 +265,8 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async produire_le_menu( mat , d , donnees_recues , donnees_retournees , options_generales , __db1 ){
-        let chi_id_acces=donnees_recues[__xva]['chi_id_acces'];
+    async produire_le_menu( mat , d , __db1 ){
+        let chi_id_acces=this.__ig1.donnees_recues[__xva]['chi_id_acces'];
         let criteres_136={
              /*  */
             "T0_chi_id_acces" : chi_id_acces
@@ -282,15 +284,15 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 136 , criteres_136 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 136 , criteres_136 , this.__ig1.donnees_retournees , __db1 );
         if(tt136[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let le_contenu_du_menu='';
         let cht_parametres_acces=tt136[__xva][0]['T0.cht_parametres_acces'];
         if(cht_parametres_acces === null){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }else{
             cht_parametres_acces=JSON.parse( cht_parametres_acces );
@@ -306,9 +308,9 @@ class acces1{
             }
         }
         /* this.__ig1.ma_trace1('le_tableau_du_menu=',le_tableau_du_menu); */
-        let menus2=this.construit_menu_vjs2( 0 , le_tableau_du_menu , 0 , donnees_retournees );
+        let menus2=this.construit_menu_vjs2( 0 , le_tableau_du_menu , 0 );
         if(menus2.__xst !== __xsu){
-            donnees_retournees.__xsi[__xer].push( menus2.__xme + '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( menus2.__xme + '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let contenu_fichier2='';
@@ -342,15 +344,15 @@ class acces1{
         contenu_fichier2+='export{v2_menu_pour_acces_' + chi_id_acces + ' as v2_menu_pour_acces_' + chi_id_acces + '};\r\n';
         contenu_fichier2+='\r\n';
         let fichier2='';
-        if(donnees_retournees._CA_ === 2){
+        if(this.__ig1.donnees_retournees._CA_ === 2){
             fichier2='../rev_2/__fichiers_generes/__v2_menu_pour_acces_' + chi_id_acces + '.js';
         }else{
-            fichier2='../rev_' + donnees_retournees.chi_id_projet + '/__fichiers_generes/__v2_menu_pour_acces_' + chi_id_acces + '.js';
+            fichier2='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__v2_menu_pour_acces_' + chi_id_acces + '.js';
         }
         try{
             await this.__ig1.file_put_contents( fichier2 , contenu_fichier2 );
         }catch(e){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         return({"__xst" : __xsu});
@@ -358,27 +360,27 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async enregister_le_menu_de_l_acces2( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        if(donnees_retournees.chi_id_utilisateur === 1){
-            if(donnees_retournees.chi_id_acces > 2){
-                donnees_retournees.__xsi[__xer].push( 'Le développeur ne peut que modifier son menu ainsi que celui de l\'admin [' + this.__ig1.nl2() + ']' );
+    async enregister_le_menu_de_l_acces2( mat , d ){
+        if(this.__ig1.donnees_retournees.chi_id_utilisateur === 1){
+            if(this.__ig1.donnees_retournees.chi_id_acces > 2){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'Le développeur ne peut que modifier son menu ainsi que celui de l\'admin [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
-        }else if(donnees_retournees.chi_id_utilisateur === 2){
-            if(donnees_recues[__xva]['chi_id_acces'] <= 2){
-                donnees_retournees.__xsi[__xer].push( 'l\'admin peut modifier les menus >2  [' + this.__ig1.nl2() + ']' );
+        }else if(this.__ig1.donnees_retournees.chi_id_utilisateur === 2){
+            if(this.__ig1.donnees_recues[__xva]['chi_id_acces'] <= 2){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'admin peut modifier les menus >2  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
         }else{
-            donnees_retournees.__xsi[__xer].push( 'seuls l\'administrateur et le développeur peuvent modifier un menu  [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'seuls l\'administrateur et le développeur peuvent modifier un menu  [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let le_json=donnees_recues[__xva]['le_json'];
-        let le_html=donnees_recues[__xva]['le_html'];
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let le_json=this.__ig1.donnees_recues[__xva]['le_json'];
+        let le_html=this.__ig1.donnees_recues[__xva]['le_html'];
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_136={
              /*  */
-            "T0_chi_id_acces" : donnees_recues[__xva]['chi_id_acces']
+            "T0_chi_id_acces" : this.__ig1.donnees_recues[__xva]['chi_id_acces']
         };
         let tt136=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -393,9 +395,9 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 136 , criteres_136 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 136 , criteres_136 , this.__ig1.donnees_retournees , __db1 );
         if(tt136[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let nouveau={};
@@ -410,19 +412,19 @@ class acces1{
             nouveau['le_json_du_menu']=le_json;
             nouveau['le_html_ul_li_du_menu']=le_html;
         }
-        let criteres_154={"c_chi_id_acces" : donnees_recues[__xva]['chi_id_acces'] ,"n_cht_parametres_acces" : JSON.stringify( nouveau )};
+        let criteres_154={"c_chi_id_acces" : this.__ig1.donnees_recues[__xva]['chi_id_acces'] ,"n_cht_parametres_acces" : JSON.stringify( nouveau )};
         let tt154=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_acces SET 
            `cht_parametres_acces` = :n_cht_parametres_acces
         WHERE `chi_id_acces` = :c_chi_id_acces ;
         */
-        /*sql_inclure_fin*/ 154 , criteres_154 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 154 , criteres_154 , this.__ig1.donnees_retournees , __db1 );
         if(tt154[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let obj=await this.produire_le_menu( mat , d , donnees_recues , donnees_retournees , options_generales , __db1 );
+        let obj=await this.produire_le_menu( mat , d , __db1 );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xer});
         }
@@ -470,7 +472,7 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async recuperer_les_menus_d_un_acces( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async recuperer_les_menus_d_un_acces( mat , d ){
         let chi_id_acces=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -484,10 +486,10 @@ class acces1{
             }
         }
         if(chi_id_acces === 0){
-            donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_153={
              /*  */
             "T2_chi_id_acces" : chi_id_acces
@@ -507,9 +509,9 @@ class acces1{
            AND T1.chi_id_autorisation = T0.chx_autorisation_menu)
         ;
         */
-        /*sql_inclure_fin*/ 153 , criteres_153 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 153 , criteres_153 , this.__ig1.donnees_retournees , __db1 );
         if(tt153[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let liste_des_menus=[];
@@ -546,9 +548,9 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 136 , criteres_136 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 136 , criteres_136 , this.__ig1.donnees_retournees , __db1 );
         if(tt136[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let les_elements_du_menu_actuel=[];
@@ -569,7 +571,7 @@ class acces1{
                     les_elements_du_menu_actuel=nouveau['le_json_du_menu'];
                 }
             }else{
-                donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
         }
@@ -644,9 +646,9 @@ class acces1{
         let le_nouveau_html=this.construit_html_du_menu( les_elements_du_menu_actuel , 0 );
         /* this.__ig1.ma_trace1('le_nouveau_html='+le_nouveau_html); */
         /* this.__ig1.ma_trace1('le_nouveau_html=',le_nouveau_html); */
-        donnees_retournees[__xva]['liste_des_menus']=liste_des_menus;
-        donnees_retournees[__xva]['cht_parametres_acces']=cht_parametres_acces;
-        donnees_retournees[__xva]['le_nouveau_html']=le_nouveau_html;
+        this.__ig1.donnees_retournees[__xva]['liste_des_menus']=liste_des_menus;
+        this.__ig1.donnees_retournees[__xva]['cht_parametres_acces']=cht_parametres_acces;
+        this.__ig1.donnees_retournees[__xva]['le_nouveau_html']=le_nouveau_html;
         return({"__xst" : __xsu});
     }
     /*
@@ -655,9 +657,9 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_apres_page_modifications( mat , d , donnees_recues , donnees_retournees , options_generales , __xva_avant , __db1 ){
+    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
         /*#
-          let obj=await this.faire_un_traitement( __xva_avant['T0.chi_id_acces'] ,  donnees_retournees , options_generales , __db1 );
+          let obj=await this.faire_un_traitement( __xva_avant['T0.chi_id_acces'] ,  this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
           if(obj[__xst] === __xsu){
               return({"__xst" : __xsu});
           }else{
@@ -669,9 +671,9 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
+    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -679,28 +681,28 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
+    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
         if(form['chi_id_acces'] === 2){
             if(form['che_actif_acces'] === 0){
-                donnees_retournees.__xsi[__xer].push( 'l\'accès admin doit toujours être actif' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'accès admin doit toujours être actif' );
                 return({"__xst" : __xer});
             }
             if(form['chx_groupe_acces'] !== 2){
-                donnees_retournees.__xsi[__xer].push( 'l\'accès admin doit toujours être sur le groupe admin(2)' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'accès admin doit toujours être sur le groupe admin(2)' );
                 return({"__xst" : __xer});
             }
             if(form['chx_metier_acces'] !== 2){
-                donnees_retournees.__xsi[__xer].push( 'l\'accès admin doit toujours être sur le métier admin(2)' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'accès admin doit toujours être sur le métier admin(2)' );
                 return({"__xst" : __xer});
             }
         }
         if(form['chi_id_acces'] === 1){
             if(form['chx_groupe_acces'] !== 1){
-                donnees_retournees.__xsi[__xer].push( 'l\'accès dev doit toujours être sur le groupe dev(1)' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'accès dev doit toujours être sur le groupe dev(1)' );
                 return({"__xst" : __xer});
             }
             if(form['chx_metier_acces'] !== 1){
-                donnees_retournees.__xsi[__xer].push( 'l\'accès dev doit toujours être sur le métier dev(1)' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'accès dev doit toujours être sur le métier dev(1)' );
                 return({"__xst" : __xer});
             }
         }
@@ -711,9 +713,9 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
+    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -721,9 +723,9 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
+    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -731,9 +733,9 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async tests_avant_creer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __db1 ){
+    async tests_avant_creer( mat , d , form , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -741,9 +743,9 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , nouvel_id , form , __db1 ){
+    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -751,9 +753,9 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async modifier1( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        let nom_formulaire=donnees_recues[__xva]['__co1'];
-        let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
+    async modifier1( mat , d ){
+        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
+        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
         /* conversion des données numériques début */
         form['chi_id_acces']=form['chi_id_acces'] === null ? ( null ) : ( parseInt( form['chi_id_acces'] , 10 ) );
@@ -762,19 +764,19 @@ class acces1{
         form['che_actif_acces']=form['che_actif_acces'] === null ? ( null ) : ( parseInt( form['che_actif_acces'] , 10 ) );
         /* conversion des données numériques fin */
         if(form['chp_nom_acces'] === null || form['chp_nom_acces'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chx_groupe_acces'] === null || form['chx_groupe_acces'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "groupe" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "groupe" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chx_metier_acces'] === null || form['chx_metier_acces'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "metier" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "metier" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['che_actif_acces'] === null || form['che_actif_acces'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "actif" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "actif" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let retour_a_la_liste=false;
@@ -784,7 +786,7 @@ class acces1{
                 retour_a_la_liste=true;
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
         let criteres_select_136={"T0_chi_id_acces" : form['chi_id_acces']};
         let tt136=await this.__ig1.sql_iii(
@@ -800,13 +802,13 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 136 , criteres_select_136 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 136 , criteres_select_136 , this.__ig1.donnees_retournees , __db1 );
         if(tt136[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         if(tt136[__xst] === __xsu && tt136[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt136[__xva][0] , __db1 );
+            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt136[__xva][0] , __db1 );
             if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
                 return({"__xst" : __xer});
             }
@@ -827,19 +829,19 @@ class acces1{
                `che_actif_acces` = :n_che_actif_acces
             WHERE `chi_id_acces` = :c_chi_id_acces ;
             */
-            /*sql_inclure_fin*/ 138 , donnees_sql , donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 138 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
             if(tt138[__xst] !== __xsu){
                 if(tt138['__xme'] !== ''){
-                    donnees_retournees.__xsi[__xer].push( tt138['__xme'] + ' [' + this.__ig1.nl2() );
+                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt138['__xme'] + ' [' + this.__ig1.nl2() );
                 }else{
-                    donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
+                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
                 }
                 return({"__xst" : __xer});
             }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt136[__xva][0] , __db1 );
+            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt136[__xva][0] , __db1 );
             if(__taam[__xst] !== __xsu){
                 await __db1.exec( 'ROLLBACK;' );
-                donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
                 return({"__xst" : __xer});
             }
             await __db1.exec( 'COMMIT;' );
@@ -847,7 +849,7 @@ class acces1{
                 if(form['__mat_liste_si_ok']){
                     let mat1=JSON.parse( form['__mat_liste_si_ok'] );
                     let d=1;
-                    await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales );
+                    await this.filtre1( mat1 , 1 , __db1 );
                 }
                 return({"__xst" : __xsu});
             }
@@ -864,17 +866,17 @@ class acces1{
             WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
             ;
             */
-            /*sql_inclure_fin*/ 136 , criteres_select_136 , donnees_retournees , __db1 );
-            donnees_retournees[__xva]['page_modification1']=tt136_bis;
+            /*sql_inclure_fin*/ 136 , criteres_select_136 , this.__ig1.donnees_retournees , __db1 );
+            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt136_bis;
         }else{
-            donnees_retournees[__xva]['page_modification1']=tt136;
+            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt136;
         }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_acces=null , __db1=null ){
+    async page_modification1( mat , d , chi_id_acces=null , __db1=null ){
         if(chi_id_acces === null){
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -888,14 +890,14 @@ class acces1{
                 }
             }
         }else{
-            donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_acces(' + chi_id_acces + ')))))';
+            this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_acces(' + chi_id_acces + ')))))';
         }
         if(chi_id_acces === null){
-            donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
         let tt136=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -910,22 +912,22 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 136 , {"T0_chi_id_acces" : chi_id_acces} , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 136 , {"T0_chi_id_acces" : chi_id_acces} , this.__ig1.donnees_retournees , __db1 );
         if(tt136[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , donnees_recues , donnees_retournees , options_generales , tt136[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt136[__xva][0] , __db1 );
         if(aetam[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
-        donnees_retournees[__xva]['page_modification1']=tt136;
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt136;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
       recherche dans la base de données l'enregistrement à dupliquer.
     */
-    async page_duplication1( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_acces=null ){
+    async page_duplication1( mat , d , chi_id_acces=null ){
         if(chi_id_acces === null){
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -939,7 +941,7 @@ class acces1{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_136={
              /*  */
             "T0_chi_id_acces" : chi_id_acces
@@ -957,27 +959,27 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 136 , criteres_136 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 136 , criteres_136 , this.__ig1.donnees_retournees , __db1 );
         if(tt136[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        donnees_retournees[__xva]['page_duplication1']=tt136;
+        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt136;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async supprimer1( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        let nom_formulaire=donnees_recues[__xva]['__co1'];
-        let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
+    async supprimer1( mat , d ){
+        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
+        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
         if(form['chi_id_acces'] <= 2){
-            donnees_retournees.__xsi[__xer].push( 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_136={
              /*  */
             "T0_chi_id_acces" : form['chi_id_acces']
@@ -995,13 +997,13 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 136 , criteres_136 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 136 , criteres_136 , this.__ig1.donnees_retournees , __db1 );
         if(tt136[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt136[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt136[__xva][0] , __db1 );
         if(tas[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
@@ -1014,28 +1016,28 @@ class acces1{
         DELETE FROM b1.tbl_acces
         WHERE `chi_id_acces` = :chi_id_acces ;
         */
-        /*sql_inclure_fin*/ 139 , criteres_139 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 139 , criteres_139 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt139[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt136[__xva][0] , __db1 );
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt136[__xva][0] , __db1 );
         if(aac[__xst] === __xer){
-            donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-            await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales , __db1 );
+            await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async page_confirmation_supprimer1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async page_confirmation_supprimer1( mat , d ){
         let chi_id_acces=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1049,10 +1051,10 @@ class acces1{
             }
         }
         if(chi_id_acces === 0){
-            donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_136={"T0_chi_id_acces" : chi_id_acces};
         let tt136=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -1067,14 +1069,14 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 136 , critere_136 , donnees_retournees , __db1 );
-        donnees_retournees[__xva]['page_confirmation_supprimer1']=tt136;
+        /*sql_inclure_fin*/ 136 , critere_136 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt136;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async creer1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async creer1( mat , d ){
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1082,26 +1084,26 @@ class acces1{
                 retour_a_la_liste=true;
             }
         }
-        let nom_formulaire=donnees_recues[__xva]['__co1'];
-        let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
+        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* conversion des données numériques début */
         form['chx_groupe_acces']=form['chx_groupe_acces'] === null || form['chx_groupe_acces'] === '' || form['chx_groupe_acces'] === undefined ? ( null ) : ( parseInt( form['chx_groupe_acces'] , 10 ) );
         form['chx_metier_acces']=form['chx_metier_acces'] === null || form['chx_metier_acces'] === '' || form['chx_metier_acces'] === undefined ? ( null ) : ( parseInt( form['chx_metier_acces'] , 10 ) );
         /* conversion des données numériques fin */
         if(form['chp_nom_acces'] === null || form['chp_nom_acces'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chx_groupe_acces'] === null || form['chx_groupe_acces'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "groupe" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "groupe" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chx_metier_acces'] === null || form['chx_metier_acces'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "metier" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "metier" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-        let __tac=await this.tests_avant_creer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __db1 );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
@@ -1122,35 +1124,35 @@ class acces1{
             :chx_metier_acces
         );
         */
-        /*sql_inclure_fin*/ 137 , donnees_sql , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 137 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
         if(tt137[__xst] === __xsu){
             if(tt137['changements'] === 0){
-                donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
-            let aac=await this.action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , tt137['nouvel_id'] , form , __db1 );
+            let aac=await this.action_apres_creer( mat , d , tt137['nouvel_id'] , form , __db1 );
             if(aac[__xst] === __xer){
                 await __db1.exec( 'ROLLBACK;' );
-                donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
             await __db1.exec( 'COMMIT;' );
             if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales , __db1 );
+                await this.filtre1( mat1 , 1 , __db1 );
             }else{
-                await this.page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , tt137['nouvel_id'] , __db1 );
+                await this.page_modification1( mat , d , tt137['nouvel_id'] , __db1 );
             }
             return({"__xst" : __xsu});
         }else{
-            donnees_retournees.__xsi[__xer].push( tt137['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( tt137['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
     }
     /*
       =============================================================================================================
     */
-    async page_creer1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async page_creer1( mat , d ){
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
@@ -1158,14 +1160,14 @@ class acces1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-        donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , __db1=null ){
+    async filtre1( mat , d , __db1=null ){
         let l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1175,7 +1177,7 @@ class acces1{
         }
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , this.fonction_liste );
+        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -1193,7 +1195,7 @@ class acces1{
             }
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
         let tt135=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -1216,7 +1218,7 @@ class acces1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 135 , criteres135 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 135 , criteres135 , this.__ig1.donnees_retournees , __db1 );
         if(tt135.__xst !== __xsu){
             return({"__xst" : __xer});
         }
@@ -1224,7 +1226,7 @@ class acces1{
             __debut=0;
             __num_page=0;
             criteres135['debut']=__debut;
-            let tt135=await this.__ig1.sql_iii(
+            tt135=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`che_actif_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , 
@@ -1245,33 +1247,33 @@ class acces1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 135 , criteres135 , donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 135 , criteres135 , this.__ig1.donnees_retournees , __db1 );
         }
-        donnees_retournees.__xva['__nbMax']=__nbMax;
-        donnees_retournees[__xva]['__debut']=__debut;
-        donnees_retournees[__xva]['__num_page']=__num_page;
-        donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
+        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
+        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
+        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
         for(let i in formulaire){
-            donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
+            this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        donnees_retournees[__xac]+='))))';
-        donnees_retournees[__xva][this.fonction_liste]=tt135;
+        this.__ig1.donnees_retournees[__xac]+='))))';
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt135;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async liste1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async liste1( mat , d ){
         this.fonction_liste='liste1';
-        await this.filtre1( mat , d , donnees_recues , donnees_retournees , options_generales );
+        await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async sous_liste1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async sous_liste1( mat , d ){
         this.fonction_liste='sous_liste1';
-        await this.filtre1( mat , d , donnees_recues , donnees_retournees , options_generales );
+        await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }
     /*

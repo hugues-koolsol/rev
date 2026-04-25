@@ -199,7 +199,7 @@ var a=1;
 </script>
 <div>bla bla</div><?php
 /* provenance = serveur*/
-print('hello');
+print('hella');
 `;
         document.getElementById( 'vv_txtarea_php_rev1' ).value=t;
         return({"__xst" : __xsu});

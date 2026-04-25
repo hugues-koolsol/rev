@@ -28,169 +28,154 @@ class _connexion1{
     /*
       =============================================================================================================
     */
-    deconnexion1( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_contenu1(id(vv_se_deconnecter),type_cible(style),valeur(nom_du_style(display),valeur_de_style(none)))))';
-        donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_menu()))';
-        donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_contenu(id(vv_bouton_connexion),type_cible(supprimer_class),valeur(nom_de_la_classe(yy__0)))))';
-        donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_contenu(id(vv_bouton_connexion),type_cible(ajouter_class),valeur(nom_de_la_classe(yy__1)))))';
-        donnees_retournees['chi_id_acces']=0;
-        donnees_retournees['chi_id_utilisateur']=0;
-        donnees_retournees['chi_id_projet']=0;
+    deconnexion1( mat , d ){
+        this.__ig1.donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_contenu1(id(vv_se_deconnecter),type_cible(style),valeur(nom_du_style(display),valeur_de_style(none)))))';
+        this.__ig1.donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_menu()))';
+        this.__ig1.donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_contenu(id(vv_bouton_connexion),type_cible(supprimer_class),valeur(nom_de_la_classe(yy__0)))))';
+        this.__ig1.donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_contenu(id(vv_bouton_connexion),type_cible(ajouter_class),valeur(nom_de_la_classe(yy__1)))))';
+        this.__ig1.donnees_retournees['chi_id_acces']=0;
+        this.__ig1.donnees_retournees['chi_id_utilisateur']=0;
+        this.__ig1.donnees_retournees['chi_id_projet']=0;
         /*
           on met max-age à 0 pour supprimer le cookie
         */
-        if(options_generales.cle_de_session !== ''){
+        if(this.__ig1.options_generales.cle_de_session !== ''){
             try{
-                Deno.removeSync( './__sessions/' + options_generales.cle_de_session + '.json' );
+                Deno.removeSync( './__sessions/' + this.__ig1.options_generales.cle_de_session + '.json' );
             } catch {}
             /* max-age = 0 pour supprimer le cookie */
             let le_cookie=this.__ig1.__ndlcs + '=; HttpOnly; Max-Age=0; SameSite=Strict; Path=/;';
-            /* 'cle_de_session_rev_' + donnees_retournees._CA_ */
-            options_generales["set-cookie"].push( le_cookie );
+            /* 'cle_de_session_rev_' + this.__ig1.donnees_retournees._CA_ */
+            this.__ig1.options_generales["set-cookie"].push( le_cookie );
         }
-        donnees_retournees[__xva]['__liste_des_genres']=[];
+        this.__ig1.donnees_retournees[__xva]['__liste_des_genres']=[];
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async recherche_utilisateur_dans_la_base( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async initialiser_la_base_a_partir_de_la_sauvegarde( mat , d ){
+        const nom_du_fichier_bdd='bdd_1.sqlite';
+        const chemin_du_fichier_bdd='./__bases_de_donnees/' + nom_du_fichier_bdd;
+        const mot_de_passe_en_clair=this.__ig1.donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_mot_de_passe_utilisateur_en_clair'];
+        /*
+          si le fichier sqlite n'est pas trouvé, on le recrée à partir d'une sauvegarde
+        */
+        if(!(await this.__ig1.is_dir( './__bases_de_donnees' ))){
+            try{
+                await Deno.mkdir( './__bases_de_donnees' , {"mode" : 0o777} );
+            }catch(e){
+                console.error( 'e=' , e );
+            }
+        }
+        let __db1=null;
+        try{
+            __db1=await new Database( chemin_du_fichier_bdd , {"create" : true} );
+        }catch(e){
+            this.__ig1.ma_trace1( e );
+        }
+        let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=OFF;','PRAGMA journal_mode=WAL;'];
+        for(let i in les_pragma_set){
+            try{
+                let a=await __db1.exec( les_pragma_set[i] );
+            }catch(e){
+                this.__ig1.ma_trace1( e );
+            }
+        }
+        const contenu_structure=await Deno.readTextFile( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_structure.sql" );
+        /* bdd_1.sqlite.v2_structure.sql */
+        try{
+            await __db1.exec( contenu_structure );
+        }catch(e){
+            this.__ig1.ma_trace1( e );
+        }
+        const contenu_index=await Deno.readTextFile( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_index.sql" );
+        try{
+            await __db1.exec( contenu_index );
+        }catch(e){
+            this.__ig1.ma_trace1( e );
+        }
+        /*
+          lecture séquentielle du fichier des INSERT
+        */
+        let file=await Deno.open( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_donnees.sql" );
+        /* Convert bytes to string and Split into lines */
+        const readable=file.readable.pipeThrough( new TextDecoderStream() ).pipeThrough( new TextLineStream() );
+        let dans_bloc=false;
+        let texte_bloc='';
+        for await (const line of readable){
+            if(line.indexOf( 'DEBUT BLOC TABLE' ) >= 0){
+                dans_bloc=true;
+                continue;
+            }
+            if(line.indexOf( 'FIN BLOC TABLE' ) >= 0){
+                if(texte_bloc !== ''){
+                    try{
+                        await __db1.exec( texte_bloc );
+                    }catch(e){
+                        this.__ig1.ma_trace1( e );
+                    }
+                    /* console.log('ECRIRE BLOC'+texte_bloc.substr(0,100)) */
+                }
+                dans_bloc=false;
+                texte_bloc='';
+            }
+            if(dans_bloc === true){
+                texte_bloc+=line + '\n';
+            }
+            /* console.log("Line:", line); */
+        }
+        /* this.__ig1.ma_trace1( 'mot_de_passe_en_clair=' + mot_de_passe_en_clair ); */
+        const mot_de_passe_crypte=await crypte_mot( mot_de_passe_en_clair );
+        let sql_1='UPDATE tbl_utilisateurs SET chp_mot_de_passe_utilisateur = \'' + mot_de_passe_crypte + '\' WHERE chi_id_utilisateur=1;';
+        try{
+            await __db1.prepare( sql_1 ).run();
+            await __db1.close();
+        }catch(e){
+            await __db1.close();
+            return({"__xst" : __xer});
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    async recherche_utilisateur_dans_la_base( mat , d , __db1 ){
         /* la table des utilisateurs est toujours dans la base 1 */
         const nom_du_fichier_bdd='bdd_1.sqlite';
         const chemin_du_fichier_bdd='./__bases_de_donnees/' + nom_du_fichier_bdd;
-        const chp_nom_de_connexion_utilisateur=donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_nom_de_connexion_utilisateur'];
-        const mot_de_passe_en_clair=donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_mot_de_passe_utilisateur_en_clair'];
+        /* this.__ig1.ma_trace1("this.__ig1.donnees_recues",this.__ig1.donnees_recues); */
+        const chp_nom_de_connexion_utilisateur=this.__ig1.donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_nom_de_connexion_utilisateur'];
+        const mot_de_passe_en_clair=this.__ig1.donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_mot_de_passe_utilisateur_en_clair'];
         try{
             /*
               à la connexion, on n'a pas forcément une base disponible mais on a une sauvegarde
             */
             await Deno.stat( chemin_du_fichier_bdd );
             /* this.__ig1.ma_trace1( "ici" ); */
-        }catch(e){
-            this.__ig1.ma_trace1( "on recharge" );
-            /*
-              si le fichier sqlite n'est pas trouvé, on le recrée à partir d'une sauvegarde
-            */
-            if(!(await this.__ig1.is_dir( './__bases_de_donnees' ))){
-                try{
-                    await Deno.mkdir( './__bases_de_donnees' , {"mode" : 0o777} );
-                }catch(e){
-                    console.error( 'e=' , e );
-                }
-            }
-            let __db1=null;
-            try{
-                __db1=await new Database( chemin_du_fichier_bdd , {"create" : true} );
-            }catch(e){
-                this.__ig1.ma_trace1( e );
-            }
-            let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=OFF;','PRAGMA journal_mode=WAL;'];
-            for(let i in les_pragma_set){
-                try{
-                    let a=await __db1.exec( les_pragma_set[i] );
-                }catch(e){
-                    this.__ig1.ma_trace1( e );
-                }
-            }
-            const contenu_structure=await Deno.readTextFile( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_structure.sql" );
-            /* bdd_1.sqlite.v2_structure.sql */
-            try{
-                await __db1.exec( contenu_structure );
-            }catch(e){
-                this.__ig1.ma_trace1( e );
-            }
-            const contenu_index=await Deno.readTextFile( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_index.sql" );
-            try{
-                await __db1.exec( contenu_index );
-            }catch(e){
-                this.__ig1.ma_trace1( e );
-            }
-            /*
-              lecture séquentielle du fichier des INSERT
-            */
-            let file=await Deno.open( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_donnees.sql" );
-            /* Convert bytes to string and Split into lines */
-            const readable=file.readable.pipeThrough( new TextDecoderStream() ).pipeThrough( new TextLineStream() );
-            let dans_bloc=false;
-            let texte_bloc='';
-            for await (const line of readable){
-                if(line.indexOf( 'DEBUT BLOC TABLE' ) >= 0){
-                    dans_bloc=true;
-                    continue;
-                }
-                if(line.indexOf( 'FIN BLOC TABLE' ) >= 0){
-                    if(texte_bloc !== ''){
-                        try{
-                            await __db1.exec( texte_bloc );
-                        }catch(e){
-                            this.__ig1.ma_trace1( e );
-                        }
-                        /* console.log('ECRIRE BLOC'+texte_bloc.substr(0,100)) */
-                    }
-                    dans_bloc=false;
-                    texte_bloc='';
-                }
-                if(dans_bloc === true){
-                    texte_bloc+=line + '\n';
-                }
-                /* console.log("Line:", line); */
-            }
-            /* this.__ig1.ma_trace1( 'mot_de_passe_en_clair=' + mot_de_passe_en_clair ); */
-            const mot_de_passe_crypte=await crypte_mot( mot_de_passe_en_clair );
-            let sql_1='UPDATE tbl_utilisateurs SET chp_mot_de_passe_utilisateur = \'' + mot_de_passe_crypte + '\' WHERE chi_id_utilisateur=1;';
-            try{
-                await __db1.prepare( sql_1 ).run();
-                await __db1.close();
-            }catch(e){
-                await __db1.close();
-                return({"__xst" : __xer});
-            }
-        }
-        /*
-          l'id du projet en cours n'est pas encore fixé.
-        */
-        options_generales.chemin_des_bdd='./__bases_de_donnees/';
-        /* const __db1=await this.__ig1.ouvrir_bdd( 1 , options_generales ); */
-        /* const __db1=await this.__ig1.ouvrir_bdd( 1 , donnees_retournees , options_generales ); */
-        let __db1=null;
-        let chemin_complet_bdd=options_generales.chemin_des_bdd + 'bdd_1.sqlite';
-        /* this.ma_trace1('chemin_complet_bdd=',chemin_complet_bdd); */
-        try{
-            __db1=new Database( chemin_complet_bdd , {"create" : false} );
-            let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b1'];
-            for(let i in les_pragma_set){
-                let a=await __db1.exec( les_pragma_set[i] );
-            }
-            options_generales.bdd_ouvertes[1]={"base" : __db1 ,"ouverte" : true};
-        }catch(e){
-            __db1.close();
-            console.log( e.stack );
-            throw new Error( 'erreur sur ' + chemin_complet_bdd );
-        }
+        }catch(e){}
         /*#        
-          // méthode préférée
-          // pour les devs : on peut décommenter le code ci dessous et remplacer le if(false) par un if(true) 
-          // pour modifier un utilisateur et son mot de passe
-          if(false){
-              // rattrapage du mot de passe utilisateur 1 
-              // return(this.__ig1.bug1()); 
-              const mot_de_passe_crypte=await hash( mot_de_passe_en_clair );
-              let critere_109={
-                  "n_chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur ,
-                  "n_chp_mot_de_passe_utilisateur" : mot_de_passe_crypte ,
-                  "c_chi_id_utilisateur" : 1
-              };
-              let tt109=await this.__ig1.sql_iii( 109 , critere_109 , donnees_retournees , __db1 );
-          }
-        */
-        /*#
-          // méthode alternative à la méthode plus haut
-          // pour les devs : on peut aussi mettre à jour directement l'utilisateur/mot de passe en exécutant directement dans la bdd
-          // ça correspond à r.../r... ( vous êtes censé savoit à quoi correspond r... )
-          UPDATE tbl_utilisateurs set 
-           chp_nom_de_connexion_utilisateur = 'r...' , 
-           chp_mot_de_passe_utilisateur = '$2a$10$ZUwPUmwknnqKX6R4hxSpouG0TagvEgBPo7Q8SydizbMRitXDxk/Fy'
-          WHERE chi_id_utilisateur = 1;
+          // si on veut réilitialiser le mdp de l'utilisateur proncipal :
+          // 1°] méthode préférée
+          //   pour les devs : on peut décommenter le code ci dessous et remplacer le if[false] par un if[true] 
+          //   pour modifier un utilisateur et son mot de passe
+               if[false]{
+                   // rattrapage du mot de passe utilisateur 1 
+                   // return[this.__ig1.bug1[]]; 
+                   const mot_de_passe_crypte=await hash[ mot_de_passe_en_clair ];
+                   let critere_109={
+                       "n_chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur ,
+                       "n_chp_mot_de_passe_utilisateur" : mot_de_passe_crypte ,
+                       "c_chi_id_utilisateur" : 1
+                   };
+                   let tt109=await this.__ig1.sql_iii[ 109 , critere_109 , this.donnees_retournees , __db1 ];
+               }
+          // 2°] méthode alternative à la méthode plus haut
+          //   pour les devs : on peut aussi mettre à jour directement l'utilisateur/mot de passe en exécutant directement dans la bdd
+          //   le mot de passe crypté correspond à r.../r... [ vous êtes censé savoit à quoi correspond r... ]
+               UPDATE tbl_utilisateurs set 
+                chp_nom_de_connexion_utilisateur = 'r...' , 
+                chp_mot_de_passe_utilisateur = '$2a$10$ZUwPUmwknnqKX6R4hxSpouG0TagvEgBPo7Q8SydizbMRitXDxk/Fy'
+               WHERE chi_id_utilisateur = 1;
         */
         let tt101=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -205,43 +190,50 @@ class _connexion1{
         LIMIT 1 OFFSET 0 
         ;
         */
-        /*sql_inclure_fin*/ 101 , {"T0_chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur} , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 101 , {"T0_chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur} , this.donnees_retournees , __db1 );
         if(tt101[__xst] !== __xsu || tt101[__xva].length !== 1){
-            __db1.close();
-            donnees_retournees.__xsi[__xdv].push( 'erreur [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : 'la combinaison du nom d\'utilisateur et du mot de passe est incorrecte ou bien cet utilisateur est inactif'
+                });
+        }
+        const chp_mot_de_passe_utilisateur_en_clair=this.__ig1.donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_mot_de_passe_utilisateur_en_clair'];
+        const isValid=await compare( chp_mot_de_passe_utilisateur_en_clair , tt101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] );
+        if(!isValid){
+            return({"__xst" : __xer ,"__xme" : 'erreur sur le nom d\'utilisateur ou sur le mot de passe '});
         }
         return({
                 "__xst" : __xsu ,
                 "chi_id_utilisateur" : tt101[__xva][0]['T0.chi_id_utilisateur'] ,
                 "chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur ,
                 "chp_mot_de_passe_utilisateur" : tt101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] ,
-                "chi_id_acces" : tt101[__xva][0]['T0.chx_acces_utilisateur'] ,
-                "__db1" : __db1
+                "chi_id_acces" : tt101[__xva][0]['T0.chx_acces_utilisateur']
             });
     }
     /*
       =============================================================================================================
     */
-    async verifier_connexion1( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        /* this.__ig1.ma_trace1( 'donnees_recues=' , donnees_recues ); */
-        const user=await this.recherche_utilisateur_dans_la_base( mat , d , donnees_recues , donnees_retournees , options_generales );
-        if(!user || user.__xst !== __xsu){
-            try{
-                user['__db1'].close();
-            } catch {}
-            donnees_retournees.__xsi[__xer].push( 'la combinaison du nom d\'utilisateur et du mot de passe est incorrecte ou bien cet utilisateur est inactif' );
-            return({"__xst" : __xer});
+    async verifier_connexion1( mat , d ){
+        const nom_du_fichier_bdd='';
+        const chemin_du_fichier_bdd='./__bases_de_donnees/bdd_1.sqlite';
+        try{
+            /*
+              à la première connexion, on n'a pas forcément une base disponible mais on a une sauvegarde
+            */
+            await Deno.stat( chemin_du_fichier_bdd );
+            /* this.__ig1.ma_trace1( "ici" ); */
+        }catch(e){
+            await this.initialiser_la_base_a_partir_de_la_sauvegarde( mat , d );
         }
-        const chp_mot_de_passe_utilisateur_en_clair=donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_mot_de_passe_utilisateur_en_clair'];
-        const isValid=await compare( chp_mot_de_passe_utilisateur_en_clair , user.chp_mot_de_passe_utilisateur );
-        if(!isValid){
-            donnees_retournees.__xsi[__xer].push( 'erreur sur le nom d\'utilisateur ou sur le mot de passe ' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+        let __db1=await this.__ig1.ouvrir_bdd( 1 , false , true );
+        /* this.__ig1.ma_trace1( 'this.__ig1.donnees_recues=' , this.__ig1.donnees_recues ); */
+        const user=await this.recherche_utilisateur_dans_la_base( mat , d , __db1 );
+        if(user.__xst !== __xsu){
+            return user;
         }
-        if(options_generales.cle_de_session !== ''){
+        if(this.__ig1.options_generales.cle_de_session !== ''){
             try{
-                Deno.removeSync( './__sessions/' + options_generales.cle_de_session + '.json' );
+                Deno.removeSync( './__sessions/' + this.__ig1.options_generales.cle_de_session + '.json' );
             } catch {}
         }
         /*
@@ -254,35 +246,31 @@ class _connexion1{
            `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
         WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
         */
-        /*sql_inclure_fin*/ 107 , criteres_107 , donnees_retournees , user['__db1'] );
+        /*sql_inclure_fin*/ 107 , criteres_107 , this.donnees_retournees , __db1 );
         /*
           voir aussi :
           https://www.phptutorial.net/php-tutorial/php-csrf/
         */
-        let la_cle=options_generales.cle_de_session;
-        /* 'rev_' + donnees_retournees._CA_ + '_' + (await this.__ig1.cle_aleatoire()); */
+        let la_cle=this.__ig1.options_generales.cle_de_session;
         /*
           ici expires = session
           pour avoir un cookie avec expires=valeur alors apres HttpOnly, il faut ajouter : Max-Age=86400;
         */
-        /* let le_cookie=this.__ig1.__ndlcs + '=' + la_cle + '; Secure; HttpOnly; SameSite=Strict; Path=/;'; // 'cle_de_session_rev_' + donnees_retournees._CA_ + ' */
-        /* options_generales["set-cookie"].push( le_cookie ); */
-        try{
-            user['__db1'].close();
-        } catch {}
-        donnees_retournees['chi_id_utilisateur']=user['chi_id_utilisateur'];
-        donnees_retournees['chi_id_acces']=user['chi_id_acces'];
-        if(donnees_retournees._CA_ === 1){
-            donnees_retournees['chi_id_projet']=0;
+        /* let le_cookie=this.__ig1.__ndlcs + '=' + la_cle + '; Secure; HttpOnly; SameSite=Strict; Path=/;'; // 'cle_de_session_rev_' + this.__ig1.donnees_retournees._CA_ + ' */
+        /* this.__ig1.options_generales["set-cookie"].push( le_cookie ); */
+        this.__ig1.donnees_retournees['chi_id_utilisateur']=user['chi_id_utilisateur'];
+        this.__ig1.donnees_retournees['chi_id_acces']=user['chi_id_acces'];
+        if(this.__ig1.donnees_retournees._CA_ === 1){
+            this.__ig1.donnees_retournees['chi_id_projet']=0;
         }else{
-            donnees_retournees['chi_id_projet']=donnees_retournees._CA_;
+            this.__ig1.donnees_retournees['chi_id_projet']=this.__ig1.donnees_retournees._CA_;
         }
-        donnees_retournees['chp_nom_de_connexion_utilisateur']=user['chp_nom_de_connexion_utilisateur'];
+        this.__ig1.donnees_retournees['chp_nom_de_connexion_utilisateur']=user['chp_nom_de_connexion_utilisateur'];
         const json_content={
-            "chi_id_utilisateur" : donnees_retournees['chi_id_utilisateur'] ,
-            "chi_id_acces" : donnees_retournees['chi_id_acces'] ,
-            "chi_id_projet" : donnees_retournees['chi_id_projet'] ,
-            "chp_nom_de_connexion_utilisateur" : donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_nom_de_connexion_utilisateur']
+            "chi_id_utilisateur" : this.__ig1.donnees_retournees['chi_id_utilisateur'] ,
+            "chi_id_acces" : this.__ig1.donnees_retournees['chi_id_acces'] ,
+            "chi_id_projet" : this.__ig1.donnees_retournees['chi_id_projet'] ,
+            "chp_nom_de_connexion_utilisateur" : this.__ig1.donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_nom_de_connexion_utilisateur']
         };
         if(!(await this.__ig1.is_dir( './__sessions' ))){
             try{
@@ -292,17 +280,17 @@ class _connexion1{
             }
         }
         try{
-            Deno.writeTextFile( './__sessions/' + options_generales.cle_de_session + '.json' , JSON.stringify( json_content ) );
+            Deno.writeTextFile( './__sessions/' + this.__ig1.options_generales.cle_de_session + '.json' , JSON.stringify( json_content ) );
         }catch(e){
             console.error( 'e=' , e );
         }
-        await this.__ig1.obtenir_les_menus( mat , d , donnees_recues , donnees_retournees , options_generales );
-        return({"__xst" : __xsu});
+        await this.__ig1.obtenir_les_menus( mat , d );
+        return user;
     }
     /*
       =============================================================================================================
     */
-    page_connexion1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    page_connexion1( mat , d ){
         return({"__xst" : __xsu});
     }
     /*

@@ -9,7 +9,7 @@ class sql_308{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0='UPDATE `tbl_sources` SET \r\n';
         let tableau_champs=[];
         try{
@@ -66,7 +66,7 @@ class sql_308{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 308 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 308 , e , sql0 , {} ));
         }
     }
     /*

@@ -9,7 +9,7 @@ class sql_331{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0='UPDATE `tbl_genres` SET \r\n';
         let tableau_champs=[];
         try{
@@ -98,7 +98,7 @@ class sql_331{
             }else{
                 tableau_champs.push( '`che_est_tsc_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_tsc_genre'] ) + '' );
             }
-            tableau_champs.push( '`chd__dtm_genre` = \'' + donnees_retournees.date_heure_serveur + '\' ' );
+            tableau_champs.push( '`chd__dtm_genre` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             tableau_champs.push('`che__nur_genre` = che__nur_genre + 1 ');
             if(par['n_che_est_session_genre'] === undefined || par['n_che_est_session_genre'] === '' || par['n_che_est_session_genre'] === null){
                 tableau_champs.push( '`che_est_session_genre` = NULL' );
@@ -138,7 +138,7 @@ class sql_331{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 331 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 331 , e , sql0 , {} ));
         }
     }
     /*

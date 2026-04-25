@@ -2360,7 +2360,6 @@ class __fnt1{
             t+='';
             t+='<table ' + le_style_des_tables1 + '><tr>';
             if(i === '__deverminage'){
-                console.log( 'this.__ig1.stockage_local[parametres][i].valeur=' , this.__ig1.stockage_local['parametres'][i].valeur );
                 if(this.__ig1.stockage_local['parametres'][i].valeur === 0){
                     t+='<td style="' + style_des_tds0 + ';background:SpringGreen;color:black;min-width:70%;">';
                 }else if(this.__ig1.stockage_local['parametres'][i].valeur === 1){
@@ -2672,20 +2671,23 @@ class __fnt1{
       pour les écrans liste
       =============================================================================================================
     */
-    debut_filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , fonction_liste ){
+    debut_filtre1( mat , d , fonction_liste ){
+        /* , donnees_recues , donnees_retournees , options_generales ,  ]{ */
         let formulaire={};
         const l01=mat.length;
-        /* console.log(donnees_recues) */
-        if(!donnees_recues.__xva.hasOwnProperty( '__fo1' ) || !donnees_recues.__xva.__fo1.hasOwnProperty( fonction_liste )){
-            donnees_recues.__xva['__fo1']={};
-            donnees_recues.__xva.__fo1[fonction_liste]={};
+        /* console.log(this.__ig1.donnees_recues) */
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__fo1' )
+               || !this.__ig1.donnees_recues.__xva.__fo1.hasOwnProperty( fonction_liste )
+        ){
+            this.__ig1.donnees_recues.__xva['__fo1']={};
+            this.__ig1.donnees_recues.__xva.__fo1[fonction_liste]={};
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    donnees_recues.__xva.__fo1[fonction_liste][mat[i][1]]=mat[i + 1][1];
+                    this.__ig1.donnees_recues.__xva.__fo1[fonction_liste][mat[i][1]]=mat[i + 1][1];
                 }
             }
         }
-        formulaire=donnees_recues.__xva.__fo1[fonction_liste];
+        formulaire=this.__ig1.donnees_recues.__xva.__fo1[fonction_liste];
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === '__num_page' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 if(this.__ig1.est_num( mat[i + 1][1] )){

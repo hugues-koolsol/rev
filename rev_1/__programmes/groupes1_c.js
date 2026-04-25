@@ -45,7 +45,7 @@ class groupes1{
                 break;
                 
             default:
-                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
+                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans ' + this.moi + '_c, la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
                 return({"__xst" : __xer});
                 
         }

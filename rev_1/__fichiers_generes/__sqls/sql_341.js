@@ -9,7 +9,7 @@ class sql_341{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         const champs0=`
           \`T0\`.\`chp_nom_source\` , \`T0\`.\`chi_id_source\`
         `;
@@ -26,7 +26,7 @@ class sql_341{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 341 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 341 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){

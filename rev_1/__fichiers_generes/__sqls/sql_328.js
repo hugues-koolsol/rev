@@ -9,7 +9,7 @@ class sql_328{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let donnees0=[];
         let __nbEnregs=0;
         let where0='';
@@ -64,7 +64,7 @@ class sql_328{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 328 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 328 , e , sql0 , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){

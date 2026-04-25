@@ -9,7 +9,7 @@ class sql_412{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         const champs0=`
           \`T0\`.\`chp_parent_rev\`
         `;
@@ -30,7 +30,7 @@ class sql_412{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 412 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 412 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){

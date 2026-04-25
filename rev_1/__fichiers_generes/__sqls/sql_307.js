@@ -9,7 +9,7 @@ class sql_307{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0=`
       INSERT  INTO \`tbl_dossiers\`(
          \`chi_id_dossier\` , 
@@ -29,8 +29,8 @@ class sql_307{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chi_id_dossier'] ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_dossier'] ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_parent_dossier'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( donnees_retournees.date_heure_serveur ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( donnees_retournees.date_heure_serveur ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;
@@ -50,7 +50,7 @@ class sql_307{
             }
             return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 307 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 307 , e , sql0 , {} ));
         }
     }
     /*

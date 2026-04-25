@@ -17,7 +17,7 @@ class travaux1{
       ================================== Attention, lancée en asynchrone ==========================================
       =============================================================================================================
     */
-    async lancer_la_compilation( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async lancer_la_compilation( mat , d ){
         function sleep0( ms ){
             return(new Promise( ( resolve ) => {
                     setTimeout( resolve , ms );} ));
@@ -28,12 +28,12 @@ class travaux1{
         await sleep0( 300 );
         /* this.__ig1.ma_trace1( 'lancer_la_compilation' ); */
         /*
-          this.__ig1.ma_trace1( 'donnees_recues' , donnees_recues );
-          this.__ig1.ma_trace1( 'donnees_retournees' , donnees_retournees );
-          this.__ig1.ma_trace1( 'options_generales' , options_generales );
+          this.__ig1.ma_trace1( 'this.__ig1.donnees_recues' , this.__ig1.donnees_recues );
+          this.__ig1.ma_trace1( 'this.__ig1.donnees_retournees' , this.__ig1.donnees_retournees );
+          this.__ig1.ma_trace1( 'this.__ig1.options_generales' , this.__ig1.options_generales );
         */
         /*#
-          donnees_recues
+          this.__ig1.donnees_recues
           {
             __xac: "pm1(m1(n1(travaux1),f1(compiler_les_travaux())))",
             __xva: {
@@ -45,7 +45,7 @@ class travaux1{
             mat: [....],
             mat_hash: []
           }
-          donnees_retournees
+          this.__ig1.donnees_retournees
           {
             _CA_: 2,
             __xst: 1,
@@ -60,7 +60,7 @@ class travaux1{
             __version: "2026_04_09_10_39_36_180",
             __liste_des_bases: [ 1 ]
           }
-          options_generales
+          this.__ig1.options_generales
           {
             "set-cookie": [],
             cookies: {
@@ -89,7 +89,6 @@ class travaux1{
               on constitue la liste des projets 
             */
             let chemin_bdd_1='./__bases_de_donnees/bdd_1.sqlite';
-            /* this.__ig1.ma_trace1( 'hello' + chemin_bdd_1 ); */
             let __db1=null;
             try{
                 __db1=new Database( chemin_bdd_1 , {"create" : false} );
@@ -99,7 +98,7 @@ class travaux1{
                 return({"__xst" : __xer});
             }
             let criteres_316={"T0_chi_id_projet" : 3};
-            if(donnees_retournees._CA_ === 2){
+            if(this.__ig1.donnees_retournees._CA_ === 2){
                 criteres_316={"T0_chi_id_projet" : 1};
             }
             let tt316=await this.__ig1.sql_iii(
@@ -110,13 +109,13 @@ class travaux1{
             WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
             ;
             */
-            /*sql_inclure_fin*/ 316 , criteres_316 , donnees_retournees , __db1 );
-            if(donnees_retournees._CA_ === 2){
+            /*sql_inclure_fin*/ 316 , criteres_316 , this.__ig1.donnees_retournees , __db1 );
+            if(this.__ig1.donnees_retournees._CA_ === 2){
                 /* dans le cas du projet 2, on force un résultat */
                 tt316.__xva.push( {"T0.chi_id_projet" : 1} );
             }else{
                 if(tt316.__xst !== __xsu || tt316.__xva.length === 0){
-                    donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
+                    this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
                     return({"__xst" : __xer});
                 }
             }
@@ -132,7 +131,7 @@ class travaux1{
                           base système du projet
                         */
                         let chemin_bdd_1='';
-                        if(donnees_retournees._CA_ === 2){
+                        if(this.__ig1.donnees_retournees._CA_ === 2){
                             chemin_bdd_1='../rev_2/__bases_de_donnees/bdd_1.sqlite';
                         }else{
                             chemin_bdd_1='../rev_1/__bases_de_donnees/bdd_' + tt316.__xva[i]['T0.chi_id_projet'] + '.sqlite';
@@ -170,7 +169,7 @@ class travaux1{
                         LIMIT :quantitee OFFSET 0 
                         ;
                         */
-                        /*sql_inclure_fin*/ 400 , criteres_400 , donnees_retournees , __dbn );
+                        /*sql_inclure_fin*/ 400 , criteres_400 , this.__ig1.donnees_retournees , __dbn );
                         await __dbn.close();
                         if(tt400.__xst !== __xsu){
                             this.__ig1.ma_trace1( 'erreur lecture des tâches ' );
@@ -182,7 +181,7 @@ class travaux1{
                             let criteres_401_0={
                                 "c_chi_id_travail" : tt400.__xva[i]['T0.chi_id_travail'] ,
                                 "n_chp_etat_travail" : 'en_cours' ,
-                                "n_cht_log_travail" : JSON.stringify( donnees_retournees.__xsi , null , 2 ) ,
+                                "n_cht_log_travail" : JSON.stringify( this.__ig1.donnees_retournees.__xsi , null , 2 ) ,
                                 "n_chn_duree_travail" : 0
                             };
                             let tt401_0=await this.__ig1.sql_iii(
@@ -193,25 +192,25 @@ class travaux1{
                                `chn_duree_travail` = :n_chn_duree_travail
                             WHERE `chi_id_travail` = :c_chi_id_travail ;
                             */
-                            /*sql_inclure_fin*/ 401 , criteres_401_0 , donnees_retournees , __dbn );
+                            /*sql_inclure_fin*/ 401 , criteres_401_0 , this.__ig1.donnees_retournees , __dbn );
                             await __dbn.close();
                             if(tt401_0.__xst !== __xsu){
                                 this.__ig1.ma_trace1( 'erreur tt401_0 ' );
                                 return({"__xst" : __xer});
                             }
-                            donnees_retournees.chi_id_utilisateur=1;
-                            donnees_retournees.chi_id_projet=tt400.__xva[i]['T0.chx_projet_travail'];
-                            donnees_retournees.chi_id_acces=tt400.__xva[i]['T1.chx_acces_utilisateur'];
-                            options_generales.base_de_travail=tt400.__xva[i]['T0.chx_projet_travail'];
-                            if(donnees_retournees._CA_ === 1 || donnees_retournees._CA_ === 2){
-                                await this.__ig1.obtenir_les_sql( [] , 0 , donnees_recues , donnees_retournees , options_generales );
-                                await this.__ig1.obtenir_les_genres( [] , 0 , donnees_recues , donnees_retournees , options_generales );
+                            this.__ig1.donnees_retournees.chi_id_utilisateur=1;
+                            this.__ig1.donnees_retournees.chi_id_projet=tt400.__xva[i]['T0.chx_projet_travail'];
+                            this.__ig1.donnees_retournees.chi_id_acces=tt400.__xva[i]['T1.chx_acces_utilisateur'];
+                            this.__ig1.options_generales.base_de_travail=tt400.__xva[i]['T0.chx_projet_travail'];
+                            if(this.__ig1.donnees_retournees._CA_ === 1 || this.__ig1.donnees_retournees._CA_ === 2){
+                                await this.__ig1.obtenir_les_sql( [] , 0 );
+                                await this.__ig1.obtenir_les_genres( [] , 0 );
                             }
                             let cht_rev_travail=tt400.__xva[i]['T0.cht_rev_travail'];
                             /* this.__ig1.ma_trace1('cht_rev_travail='+cht_rev_travail); */
                             let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_travail );
                             if(obj_matrice[__xst] !== __xsu){
-                                donnees_retournees.__xsi[__xal].push( ' erreur de convertion en matrice [' + this.__ig1.nl2() + ']' );
+                                this.__ig1.donnees_retournees.__xsi[__xal].push( ' erreur de convertion en matrice [' + this.__ig1.nl2() + ']' );
                                 return({"__xst" : __xer});
                             }
                             let ret=null;
@@ -224,7 +223,7 @@ class travaux1{
                                 */
                                 /* this.__ig1.ma_trace1( 'obj_matrice[__xva]=' , obj_matrice[__xva] ); */
                                 /* this.__ig1.ma_trace1( 'OK ici' ); */
-                                ret=await this.__ig1.appel_fonction( obj_matrice[__xva] , 1 , donnees_recues , donnees_retournees , options_generales );
+                                ret=await this.__ig1.appel_fonction( obj_matrice[__xva] , 1 );
                                 /* this.__ig1.ma_trace1('ret=',ret,obj_matrice[__xva]); */
                                 function sleep1( ms ){
                                     return(new Promise( ( resolve ) => {
@@ -235,7 +234,7 @@ class travaux1{
                                 */
                                 await sleep1( 50 );
                             }catch(e){
-                                donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2( e ) + ']' );
+                                this.__ig1.donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2( e ) + ']' );
                                 ret={"__xst" : __xer};
                             }
                             if(ret.__xst !== __xsu){
@@ -243,7 +242,7 @@ class travaux1{
                                 let criteres_401={
                                     "c_chi_id_travail" : tt400.__xva[i]['T0.chi_id_travail'] ,
                                     "n_chp_etat_travail" : 'ko_termine' ,
-                                    "n_cht_log_travail" : JSON.stringify( donnees_retournees.__xsi , null , 2 ) ,
+                                    "n_cht_log_travail" : JSON.stringify( this.__ig1.donnees_retournees.__xsi , null , 2 ) ,
                                     "n_chn_duree_travail" : 0
                                 };
                                 let tt401=await this.__ig1.sql_iii(
@@ -254,17 +253,17 @@ class travaux1{
                                    `chn_duree_travail` = :n_chn_duree_travail
                                 WHERE `chi_id_travail` = :c_chi_id_travail ;
                                 */
-                                /*sql_inclure_fin*/ 401 , criteres_401 , donnees_retournees , __dbn );
+                                /*sql_inclure_fin*/ 401 , criteres_401 , this.__ig1.donnees_retournees , __dbn );
                                 if(tt401[__xst] !== __xsu){
                                     if(tt397['__xme'] !== ''){
-                                        donnees_retournees.__xsi[__xer].push( tt397['__xme'] + ' [' + this.__ig1.nl2() );
+                                        this.__ig1.donnees_retournees.__xsi[__xer].push( tt397['__xme'] + ' [' + this.__ig1.nl2() );
                                     }else{
-                                        donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
+                                        this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
                                     }
                                     await __dbn.close();
                                     return({"__xst" : __xer});
                                 }
-                                donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2() + ']' );
+                                this.__ig1.donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2() + ']' );
                                 await __dbn.close();
                                 return({"__xst" : __xer});
                             }
@@ -291,12 +290,12 @@ class travaux1{
                                `chn_duree_travail` = :n_chn_duree_travail
                             WHERE `chi_id_travail` = :c_chi_id_travail ;
                             */
-                            /*sql_inclure_fin*/ 401 , criteres_401 , donnees_retournees , __dbn );
+                            /*sql_inclure_fin*/ 401 , criteres_401 , this.__ig1.donnees_retournees , __dbn );
                             if(tt401[__xst] !== __xsu){
                                 if(tt401['__xme'] !== ''){
-                                    donnees_retournees.__xsi[__xer].push( tt401['__xme'] + ' [' + this.__ig1.nl2() );
+                                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt401['__xme'] + ' [' + this.__ig1.nl2() );
                                 }else{
-                                    donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
+                                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
                                 }
                                 await __dbn.close();
                                 return({"__xst" : __xer});
@@ -346,16 +345,16 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async compiler_les_travaux( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async compiler_les_travaux( mat , d ){
         /* lancement en asynchrone */
-        this.lancer_la_compilation( mat , d , donnees_recues , donnees_retournees , options_generales );
+        this.lancer_la_compilation( mat , d );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async supprimer_les_travaux_termines( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+    async supprimer_les_travaux_termines( mat , d ){
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_404={
              /*  */
             "chp_etat_travail" : 'ok_termine'
@@ -367,9 +366,9 @@ class travaux1{
         DELETE FROM b1.tbl_travaux
         WHERE `chp_etat_travail` = :chp_etat_travail ;
         */
-        /*sql_inclure_fin*/ 404 , criteres_404 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 404 , criteres_404 , this.__ig1.donnees_retournees , __db1 );
         if(tt404[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         return({"__xst" : __xsu});
@@ -377,8 +376,8 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async supprimer_les_travaux( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+    async supprimer_les_travaux( mat , d ){
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_403={
              /*  */
             };
@@ -388,10 +387,10 @@ class travaux1{
         
         DELETE FROM b1.tbl_travaux
         */
-        /*sql_inclure_fin*/ 403 , criteres_403 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 403 , criteres_403 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt403[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         return({"__xst" : __xsu});
@@ -399,7 +398,7 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async demarrer_manuellement_job_cron( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async demarrer_manuellement_job_cron( mat , d ){
         let chi_id_travail=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -412,8 +411,8 @@ class travaux1{
                 chi_id_travail=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-        let criteres_396={"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur};
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_396={"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur};
         let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -427,37 +426,37 @@ class travaux1{
            AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
         ;
         */
-        /*sql_inclure_fin*/ 396 , criteres_396 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 396 , criteres_396 , this.__ig1.donnees_retournees , __db1 );
         /* this.__ig1.ma_trace1('tt396.__xva=',tt396.__xva); */
         if(tt396.__xst !== __xsu || tt396.__xva.length !== 1){
-            donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
-        donnees_recues.chi_id_utiliseteur=tt396.__xva[0]['T0.chx_utilisateur_travail'];
-        donnees_recues.chi_id_projet=tt396.__xva[0]['T0.chx_projet_travail'];
-        donnees_recues.chi_id_acces=tt396.__xva[0]['T1.chx_acces_utilisateur'];
+        this.__ig1.donnees_recues.chi_id_utiliseteur=tt396.__xva[0]['T0.chx_utilisateur_travail'];
+        this.__ig1.donnees_recues.chi_id_projet=tt396.__xva[0]['T0.chx_projet_travail'];
+        this.__ig1.donnees_recues.chi_id_acces=tt396.__xva[0]['T1.chx_acces_utilisateur'];
         let cht_rev_travail=tt396.__xva[0]['T0.cht_rev_travail'];
         let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_travail );
         if(obj_matrice[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xal].push( ' erreur de convertion en matrice [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xal].push( ' erreur de convertion en matrice [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /* this.__ig1.ma_trace1('cht_rev_travail=',cht_rev_travail); */
-        this.__ig1.obtenir_les_genres( mat , d , donnees_recues , donnees_retournees , options_generales );
-        this.__ig1.obtenir_les_sql( mat , d , donnees_recues , donnees_retournees , options_generales );
+        this.__ig1.obtenir_les_genres( mat , d );
+        this.__ig1.obtenir_les_sql( mat , d );
         /*
           =====================================================================================================
           éxécution du travail
         */
         let heure_debut_travail=performance.now();
         /* this.__ig1.ma_trace1('obj_matrice[__xva]=',obj_matrice[__xva]); */
-        let ret=await this.__ig1.appel_fonction( obj_matrice[__xva] , 1 , donnees_recues , donnees_retournees , options_generales );
+        let ret=await this.__ig1.appel_fonction( obj_matrice[__xva] , 1 );
         /* this.__ig1.ma_trace1('ret=',ret,'cht_rev_travail='+cht_rev_travail); */
         if(ret.__xst !== __xsu){
             let criteres_401={
                 "c_chi_id_travail" : chi_id_travail ,
                 "n_chp_etat_travail" : 'ko_termine' ,
-                "n_cht_log_travail" : JSON.stringify( donnees_retournees.__xsi , null , 2 ) ,
+                "n_cht_log_travail" : JSON.stringify( this.__ig1.donnees_retournees.__xsi , null , 2 ) ,
                 "n_chn_duree_travail" : 0
             };
             let tt401=await this.__ig1.sql_iii(
@@ -468,8 +467,8 @@ class travaux1{
                `chn_duree_travail` = :n_chn_duree_travail
             WHERE `chi_id_travail` = :c_chi_id_travail ;
             */
-            /*sql_inclure_fin*/ 401 , criteres_401 , donnees_retournees , __db1 );
-            donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2() + ']' );
+            /*sql_inclure_fin*/ 401 , criteres_401 , this.__ig1.donnees_retournees , __db1 );
+            this.__ig1.donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let heure_fin_travail=performance.now();
@@ -494,15 +493,15 @@ class travaux1{
            `chn_duree_travail` = :n_chn_duree_travail
         WHERE `chi_id_travail` = :c_chi_id_travail ;
         */
-        /*sql_inclure_fin*/ 401 , criteres_401 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 401 , criteres_401 , this.__ig1.donnees_retournees , __db1 );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async actions_et_tests_apres_page_modifications( mat , d , donnees_recues , donnees_retournees , options_generales , __xva_avant , __db1 ){
+    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
         /*#
-          let obj=await this.faire_un_traitement( __xva_avant['T0.chi_id_travail'] ,  donnees_retournees , options_generales , __db1 );
+          let obj=await this.faire_un_traitement( __xva_avant['T0.chi_id_travail'] ,  this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
           if(obj[__xst] === __xsu){
               return({"__xst" : __xsu});
           }else{
@@ -514,9 +513,9 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
+    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -524,9 +523,9 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
+    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -534,9 +533,9 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
+    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -544,9 +543,9 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __xva_avant , __db1 ){
+    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -554,9 +553,9 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async tests_avant_creer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __db1 ){
+    async tests_avant_creer( mat , d , form , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -564,9 +563,9 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , nouvel_id , form , __db1 ){
+    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
         /*
-          donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
+          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
         */
         return({"__xst" : __xsu});
@@ -574,9 +573,9 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async modifier1( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        let nom_formulaire=donnees_recues[__xva]['__co1'];
-        let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
+    async modifier1( mat , d ){
+        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
+        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
         /* conversion des données numériques début */
         form['chi_id_travail']=form['chi_id_travail'] === null ? ( null ) : ( parseInt( form['chi_id_travail'] , 10 ) );
@@ -584,15 +583,15 @@ class travaux1{
         form['chx_projet_travail']=form['chx_projet_travail'] === null ? ( null ) : ( parseInt( form['chx_projet_travail'] , 10 ) );
         /* conversion des données numériques fin */
         if(form['chp_resume_travail'] === null || form['chp_resume_travail'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chp_etat_travail'] === null || form['chp_etat_travail'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chx_projet_travail'] === null || form['chx_projet_travail'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let retour_a_la_liste=false;
@@ -602,9 +601,9 @@ class travaux1{
                 retour_a_la_liste=true;
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_396={"T0_chi_id_travail" : form['chi_id_travail'] ,"T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur};
+        let criteres_select_396={"T0_chi_id_travail" : form['chi_id_travail'] ,"T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur};
         let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -618,13 +617,13 @@ class travaux1{
            AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
         ;
         */
-        /*sql_inclure_fin*/ 396 , criteres_select_396 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 396 , criteres_select_396 , this.__ig1.donnees_retournees , __db1 );
         if(tt396[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         if(tt396[__xst] === __xsu && tt396[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt396[__xva][0] , __db1 );
+            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt396[__xva][0] , __db1 );
             if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
                 return({"__xst" : __xer});
             }
@@ -635,7 +634,7 @@ class travaux1{
                 "n_cht_rev_travail" : form['cht_rev_travail'] === '' ? ( null ) : ( form['cht_rev_travail'] ) ,
                 "n_chp_etat_travail" : form['chp_etat_travail'] ,
                 "n_chx_projet_travail" : form['chx_projet_travail'] ,
-                "n_chd_dtc_travail" : donnees_retournees.date_heure_serveur
+                "n_chd_dtc_travail" : this.__ig1.donnees_retournees.date_heure_serveur
             };
             await __db1.exec( 'BEGIN TRANSACTION;' );
             let tt397=await this.__ig1.sql_iii(
@@ -649,19 +648,19 @@ class travaux1{
                `cht_log_travail` = :n_cht_log_travail
             WHERE `chi_id_travail` = :c_chi_id_travail ;
             */
-            /*sql_inclure_fin*/ 397 , criteres_397 , donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 397 , criteres_397 , this.__ig1.donnees_retournees , __db1 );
             if(tt397[__xst] !== __xsu){
                 if(tt397['__xme'] !== ''){
-                    donnees_retournees.__xsi[__xer].push( tt397['__xme'] + ' [' + this.__ig1.nl2() );
+                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt397['__xme'] + ' [' + this.__ig1.nl2() );
                 }else{
-                    donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
+                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
                 }
                 return({"__xst" : __xer});
             }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt396[__xva][0] , __db1 );
+            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt396[__xva][0] , __db1 );
             if(__taam[__xst] !== __xsu){
                 await __db1.exec( 'ROLLBACK;' );
-                donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
                 return({"__xst" : __xer});
             }
             await __db1.exec( 'COMMIT;' );
@@ -669,7 +668,7 @@ class travaux1{
                 if(form['__mat_liste_si_ok']){
                     let mat1=JSON.parse( form['__mat_liste_si_ok'] );
                     let d=1;
-                    await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales );
+                    await this.filtre1( mat1 , 1 , __db1 );
                 }
                 return({"__xst" : __xsu});
             }
@@ -686,17 +685,17 @@ class travaux1{
                AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
             ;
             */
-            /*sql_inclure_fin*/ 396 , criteres_select_396 , donnees_retournees , __db1 );
-            donnees_retournees[__xva]['page_modification1']=tt396_bis;
+            /*sql_inclure_fin*/ 396 , criteres_select_396 , this.__ig1.donnees_retournees , __db1 );
+            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt396_bis;
         }else{
-            donnees_retournees[__xva]['page_modification1']=tt396;
+            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt396;
         }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_travail=null , __db1=null ){
+    async page_modification1( mat , d , chi_id_travail=null , __db1=null ){
         if(chi_id_travail === null){
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -710,14 +709,14 @@ class travaux1{
                 }
             }
         }else{
-            donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_travail(' + chi_id_travail + ')))))';
+            this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_travail(' + chi_id_travail + ')))))';
         }
         if(chi_id_travail === null){
-            donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
         let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -732,22 +731,22 @@ class travaux1{
            AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
         ;
         */
-        /*sql_inclure_fin*/ 396 , {"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur} , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 396 , {"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
         if(tt396[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , donnees_recues , donnees_retournees , options_generales , tt396[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt396[__xva][0] , __db1 );
         if(aetam[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
-        donnees_retournees[__xva]['page_modification1']=tt396;
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt396;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
       recherche dans la base de données l'enregistrement à dupliquer.
     */
-    async page_duplication1( mat , d , donnees_recues , donnees_retournees , options_generales , chi_id_travail=null ){
+    async page_duplication1( mat , d , chi_id_travail=null ){
         if(chi_id_travail === null){
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -761,11 +760,11 @@ class travaux1{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_396={
              /*  */
             "T0_chi_id_travail" : chi_id_travail ,
-            "T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur
+            "T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur
         };
         let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -780,26 +779,26 @@ class travaux1{
            AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
         ;
         */
-        /*sql_inclure_fin*/ 396 , criteres_396 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 396 , criteres_396 , this.__ig1.donnees_retournees , __db1 );
         if(tt396[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        donnees_retournees[__xva]['page_duplication1']=tt396;
+        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt396;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async supprimer1( mat , d , donnees_recues , donnees_retournees , options_generales ){
-        let nom_formulaire=donnees_recues[__xva]['__co1'];
-        let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
+    async supprimer1( mat , d ){
+        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
+        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_396={
              /*  */
             "T0_chi_id_travail" : form['chi_id_travail'] ,
-            "T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur
+            "T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur
         };
         let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -814,13 +813,13 @@ class travaux1{
            AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
         ;
         */
-        /*sql_inclure_fin*/ 396 , criteres_396 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 396 , criteres_396 , this.__ig1.donnees_retournees , __db1 );
         if(tt396[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt396[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt396[__xva][0] , __db1 );
         if(tas[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
@@ -833,28 +832,28 @@ class travaux1{
         DELETE FROM b1.tbl_travaux
         WHERE `chi_id_travail` = :chi_id_travail ;
         */
-        /*sql_inclure_fin*/ 399 , criteres_399 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 399 , criteres_399 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt399[__xst] !== __xsu){
-            donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , donnees_recues , donnees_retournees , options_generales , form , tt396[__xva][0] , __db1 );
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt396[__xva][0] , __db1 );
         if(aac[__xst] === __xer){
-            donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-            await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales , __db1 );
+            await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async page_confirmation_supprimer1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async page_confirmation_supprimer1( mat , d ){
         let chi_id_travail=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -868,11 +867,11 @@ class travaux1{
             }
         }
         if(chi_id_travail === 0){
-            donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-        let critere_396={"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : donnees_retournees.chi_id_utilisateur};
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let critere_396={"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur};
         let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -886,14 +885,14 @@ class travaux1{
            AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
         ;
         */
-        /*sql_inclure_fin*/ 396 , critere_396 , donnees_retournees , __db1 );
-        donnees_retournees[__xva]['page_confirmation_supprimer1']=tt396;
+        /*sql_inclure_fin*/ 396 , critere_396 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt396;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async creer1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async creer1( mat , d ){
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -901,25 +900,25 @@ class travaux1{
                 retour_a_la_liste=true;
             }
         }
-        let nom_formulaire=donnees_recues[__xva]['__co1'];
-        let form=donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
+        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* conversion des données numériques début */
         form['chx_projet_travail']=form['chx_projet_travail'] === null || form['chx_projet_travail'] === '' || form['chx_projet_travail'] === undefined ? ( 1 ) : ( parseInt( form['chx_projet_travail'] , 10 ) );
         /* conversion des données numériques fin */
         if(form['chp_resume_travail'] === null || form['chp_resume_travail'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chp_etat_travail'] === null || form['chp_etat_travail'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chx_projet_travail'] === null || form['chx_projet_travail'] === ''){
-            donnees_retournees.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-        let __tac=await this.tests_avant_creer( mat , d , donnees_recues , donnees_retournees , options_generales , form , __db1 );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
@@ -928,7 +927,7 @@ class travaux1{
                         "chp_resume_travail" : form['chp_resume_travail'] ,
                         "cht_rev_travail" : form['cht_rev_travail'] === '' ? ( null ) : ( form['cht_rev_travail'] ) ,
                         "chx_utilisateur_travail" : form['chx_utilisateur_travail'] ,
-                        "cht_utilisateur_travail" : donnees_retournees.chp_nom_de_connexion_utilisateur ,
+                        "cht_utilisateur_travail" : this.__ig1.donnees_retournees.chp_nom_de_connexion_utilisateur ,
                         "chp_etat_travail" : form['chp_etat_travail'] ,
                         "chx_projet_travail" : form['chx_projet_travail']
                     }]
@@ -955,35 +954,35 @@ class travaux1{
             :cht_utilisateur_travail
         );
         */
-        /*sql_inclure_fin*/ 398 , donnees_sql , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
         if(tt398[__xst] === __xsu){
             if(tt398['changements'] === 0){
-                donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
-            let aac=await this.action_apres_creer( mat , d , donnees_recues , donnees_retournees , options_generales , tt398['nouvel_id'] , form , __db1 );
+            let aac=await this.action_apres_creer( mat , d , tt398['nouvel_id'] , form , __db1 );
             if(aac[__xst] === __xer){
                 await __db1.exec( 'ROLLBACK;' );
-                donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
             await __db1.exec( 'COMMIT;' );
             if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                await this.filtre1( mat1 , 1 , donnees_recues , donnees_retournees , options_generales , __db1 );
+                await this.filtre1( mat1 , 1 , __db1 );
             }else{
-                await this.page_modification1( mat , d , donnees_recues , donnees_retournees , options_generales , tt398['nouvel_id'] , __db1 );
+                await this.page_modification1( mat , d , tt398['nouvel_id'] , __db1 );
             }
             return({"__xst" : __xsu});
         }else{
-            donnees_retournees.__xsi[__xer].push( tt398['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( tt398['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
     }
     /*
       =============================================================================================================
     */
-    async page_creer1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async page_creer1( mat , d ){
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
@@ -991,14 +990,14 @@ class travaux1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
-        donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , __db1=null ){
+    async filtre1( mat , d , __db1=null ){
         let l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1008,7 +1007,7 @@ class travaux1{
         }
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , donnees_recues , donnees_retournees , options_generales , this.fonction_liste );
+        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -1026,10 +1025,10 @@ class travaux1{
             }
         }
         /* debut ==== on force le(s) champ(s) en session =============================== */
-        criteres_395['T0_chx_utilisateur_travail']=donnees_retournees.chi_id_utilisateur;
+        criteres_395['T0_chx_utilisateur_travail']=this.__ig1.donnees_retournees.chi_id_utilisateur;
         /* fin ====== on force le(s) champ(s) en session =============================== */
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( options_generales.base_de_travail , donnees_retournees , options_generales );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
         let tt395=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -1050,7 +1049,7 @@ class travaux1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 395 , criteres_395 , donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 395 , criteres_395 , this.__ig1.donnees_retournees , __db1 );
         if(tt395.__xst !== __xsu){
             return({"__xst" : __xer});
         }
@@ -1077,33 +1076,33 @@ class travaux1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 395 , criteres_395 , donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 395 , criteres_395 , this.__ig1.donnees_retournees , __db1 );
         }
-        donnees_retournees.__xva['__nbMax']=__nbMax;
-        donnees_retournees[__xva]['__debut']=__debut;
-        donnees_retournees[__xva]['__num_page']=__num_page;
-        donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
+        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
+        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
+        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
         for(let i in formulaire){
-            donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
+            this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        donnees_retournees[__xac]+='))))';
-        donnees_retournees[__xva][this.fonction_liste]=tt395;
+        this.__ig1.donnees_retournees[__xac]+='))))';
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt395;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async liste1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async liste1( mat , d ){
         this.fonction_liste='liste1';
-        await this.filtre1( mat , d , donnees_recues , donnees_retournees , options_generales );
+        await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async sous_liste1( mat , d , donnees_recues , donnees_retournees , options_generales ){
+    async sous_liste1( mat , d ){
         this.fonction_liste='sous_liste1';
-        await this.filtre1( mat , d , donnees_recues , donnees_retournees , options_generales );
+        await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }
     /*

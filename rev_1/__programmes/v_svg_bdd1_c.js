@@ -8069,7 +8069,6 @@ class v_svg_bdd1{
         };
         indice_courant++;
         /*
-          "contenu" : 'hello'+nom_de_l_index ,
         */
         /* carré vert */
         let contenu=nom_de_l_index;

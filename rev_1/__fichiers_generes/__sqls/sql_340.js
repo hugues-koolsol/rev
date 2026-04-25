@@ -9,7 +9,7 @@ class sql_340{
     /*
       =============================================================================================================
     */
-    async sql( par , donnees_retournees ){
+    async sql( par ){
         let sql0='UPDATE `tbl_requetes` SET \r\n';
         let tableau_champs=[];
         try{
@@ -18,7 +18,7 @@ class sql_340{
             }else{
                 tableau_champs.push( '`che_est_souche_requete` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_souche_requete'] ) + '' );
             }
-            tableau_champs.push( '`chd__dtm_requete` = \'' + donnees_retournees.date_heure_serveur + '\' ' );
+            tableau_champs.push( '`chd__dtm_requete` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             tableau_champs.push('`che__nur_requete` = che__nur_requete + 1 ');
             if(tableau_champs.length === 0){
                 return({
@@ -38,7 +38,7 @@ class sql_340{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 340 , e , sql0 , donnees_retournees , {} ));
+            return(this.__ig1.traite_erreur_sql( 340 , e , sql0 , {} ));
         }
     }
     /*

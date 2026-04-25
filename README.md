@@ -1,21 +1,23 @@
 
 L'idée est de mettre en place un système qui permet de considérer que **les programmes sont des données**.  
 
-Les données ( cad les programmes ) peuvent alors être vérifiées du point de vue de la cohérence et de la limite.
+Les données ( cad les programmes ) peuvent alors être vérifiées et analysées du point de vue de la cohérence et de la limite.
+
+Les données ( cad les programmes ) peuvent alors être ajoutées, supprimées, modifiées ( génération de programmes ).
 
 Le premier programme écrit avec ce système doit être lui même.
-
 
 le programme en cours de développement transforme des fonctions imbriquées en tableau
 de façon à écrire les programmes et des données avec **une syntaxe commune appelée "rev"**.
 
-Comme il n'existe pas encore de compilateur, on s'appuie sur les langages html, css, javascript, sql et php.
+Comme il n'existe pas encore de compilateur, on s'appuie sur les langages html, css, javascript, sql et php ( anciennes versions ).
 
 Les programmes écrits dans ces ces langages sont traduits en rev et puis retraduits dans leur langage.
 
-
-
 **Principe général du format rev**
+
+Il ya deux formats : le format texte qu'on peut écrire dans un éditeur de texte classique ou bien le format
+tabulaire qui est utilisé pour traiter les données
 
 Il n'y a que deux types d'éléments de base :   
 - les constantes   
@@ -27,7 +29,7 @@ Les constantes sont sous deux formats :
 - sans délimiteurs : typiquement les noms de variables, les constantes des langages...   
 - avec délimiteurs : ' (apostrophe) , " (guillemet) , / (divisé pour les regex ) , ` ( apostrophe inversé ) 
 
-Les éléments sont séparés par des virgules.
+Les éléments sont séparés par des virgules qui ne sont pas obligatoires quand il n'y a pas de doute.
 
 La syntaxe et les mots clés sont loin d'être complètement définis et en plus, ils sont en français.
 
