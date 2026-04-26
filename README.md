@@ -394,7 +394,7 @@ console.log('salut javascript,' + ' ceci est ' + (zz - 1) + ' exemple');
 print('</body></html>');
 ```
 
-Les sources javascript, php, html, sql contenus dans ce github sont tous passés par le format rev.
+Les sources javascript, html, sql , css contenus dans ce github sont tous passés par le format rev.
 
 Vous trouverez à la racine de ce projet des exemples simples de sources en format rev en en format natif.
 

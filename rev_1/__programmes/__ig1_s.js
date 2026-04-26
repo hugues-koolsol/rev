@@ -486,7 +486,7 @@ class __ig1{
             return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu_fichier ,"entetes_reponse_http" : entetes_reponse_http}});
         }else if(chemin_get0 === "/"){
             let __le_serveur=url0.hostname;
-            console.log( 'url0=' , url0.hostname );
+            /* console.log( '__gi1_s contenu_de_get url0=' , url0.hostname ); */
             let contenu='<!DOCTYPE html>';
             contenu+='<html lang="fr">';
             contenu+='<head id="vv_head1">';
@@ -1082,6 +1082,36 @@ class __ig1{
             throw new TypeError( "Expected a valid TypedArray constructor" );
         }
         return(Array.from( new TypedArrayConstructor( buffer ) ));
+    }
+    /*
+      =============================================================================================================
+    */
+    envoyer_un_message_a_l_utilisateur( le_message ){
+        let aa={
+            "_CA_" : this._CA_ ,
+            "__xst" : 1 ,
+            "__xva" : {} ,
+            "__xac" : "m1(n1(__ig1),f1(affiche_les_messages()))" ,
+            "__xsi" : {0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
+            "chi_id_acces" : this.chi_id_acces ,
+            "chi_id_utilisateur" : this.chi_id_utilisateur ,
+            "chi_id_projet" : this.chi_id_projet ,
+            "__version" : this.__version
+        };
+        if(le_message.hasOwnProperty( '__xme' )
+               && le_message.__xme !== ''
+               && le_message.hasOwnProperty( '__xst' )
+               && le_message.__xst >= 0
+               && le_message.__xst <= 4
+        ){
+            aa.__xsi[le_message.__xst].push( le_message.__xme );
+        }else{
+            aa.__xsi[__xer].push( 'un message incomplet vous est envoyé par le serveur ' + JSON.stringify( le_message ) );
+        }
+        try{
+            this.__socket.send( JSON.stringify( aa ) );
+        } catch {}
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================

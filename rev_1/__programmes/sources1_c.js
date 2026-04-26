@@ -405,6 +405,7 @@ class sources1{
         o1+=this.__ig1.lien_parent( 'dossiers1' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' );
         if(enreg['T0.chx_dossier_id_source'] !== null && this.__ig1.est_num( enreg['T0.chx_dossier_id_source'] )){
             o1+='<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + enreg['T0.chx_dossier_id_source'] + ')))))" title="aller au dossier" > aller au dossier</div>';
+            o1+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(sources1),f1(page_confirmation_supprimer1(chi_id_source(' + enreg['T0.chi_id_source'] + ')))))">Supprimer</div>';
         }
         o1+='    </div>';
         o1+='  </div>';

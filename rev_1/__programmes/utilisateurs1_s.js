@@ -600,7 +600,7 @@ class utilisateurs1{
             __debut=0;
             __num_page=0;
             criteres119['debut']=__debut;
-            let tt119=await this.__ig1.sql_iii(
+            tt119=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , 

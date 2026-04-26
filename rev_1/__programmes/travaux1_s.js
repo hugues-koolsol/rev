@@ -1057,7 +1057,7 @@ class travaux1{
             __debut=0;
             __num_page=0;
             criteres_395['debut']=__debut;
-            let tt395=await this.__ig1.sql_iii(
+            tt395=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 

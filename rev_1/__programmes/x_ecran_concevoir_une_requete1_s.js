@@ -141,7 +141,7 @@ class x_ecran_concevoir_une_requete1{
         for(let k1 in tt385[__xva]){
             let v1=tt385[__xva][k1];
             __liste_des_sql[v1['T0.chi_id_requete']]={
-                "cht_sql_requete" : v1['T0.cht_sql_requete'].replace(/\r\n/g,'\n').replace(/\r/g,'').replace(/\n/g,'\r\n') ,
+                "cht_sql_requete" : v1['T0.cht_sql_requete'].replace( /\r\n/g , '\n' ).replace( /\r/g , '' ).replace( /\n/g , '\r\n' ) ,
                 "cht_commentaire_requete" : v1['T0.cht_commentaire_requete'] ,
                 "chp_type_requete" : v1['T0.chp_type_requete'] ,
                 "che_est_souche_requete" : v1['T0.che_est_souche_requete'] ,
@@ -269,7 +269,7 @@ class x_ecran_concevoir_une_requete1{
             }else{
                 chemin_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sqls/sql_' + this.__ig1.donnees_recues[__xva]['chi_id_requete'] + '.js';
             }
-            let contenu=this.__ig1.donnees_recues[__xva]['js'].replace( /\r\n/g , '\n' ).replace(/\r/g,'').replace(/\n/g,'\r\n');
+            let contenu=this.__ig1.donnees_recues[__xva]['js'].replace( /\r\n/g , '\n' ).replace( /\r/g , '' ).replace( /\n/g , '\r\n' );
             try{
                 await this.__ig1.file_put_contents( chemin_fichier , contenu );
             }catch(e){

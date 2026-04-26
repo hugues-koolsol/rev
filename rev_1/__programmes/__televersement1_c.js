@@ -23,10 +23,10 @@ class __televersement1{
     */
     #les_morceaux_a_televerser=[];
     /*
-      en réalité 799 287 149 : c'est le plus gros fichier que j'ai essayé de télécharger
-      ici on met 800 000 000
+      en réalité 802 736 280  : c'est le plus gros fichier que j'ai essayé de télécharger
+      ici on met 900 000 000
     */
-    #poids_max_televersement=800e6;
+    #poids_max_televersement=900e6;
     /*
       cette taille de 10 000 000 octets ( 10 millions ) est
       un bon compromis entre la vitesse de téléchargement et la capacité

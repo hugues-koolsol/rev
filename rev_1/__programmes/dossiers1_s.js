@@ -14,6 +14,52 @@ class dossiers1{
     /*
       =============================================================================================================
     */
+    async zipper( mat , d ){
+        let m=null;
+        try{
+            m=await import( './__zip1_s.js' );
+            /* this.__ig1.ma_trace1('le module est importé'); */
+            /* this.__ig1.donnees_retournees.__xsi[__xif].push('chargement du module module "'+nom_du_fichier+'" pour la fonction '+nom_de_la_fonction_a_appeler+'()' + this.nl2()); *_/ */
+        }catch(e){
+            this.__ig1.ma_trace1( "e=" , e.stack );
+            return({"__xst" : __xer});
+        }
+        let l_objet_zip=null;
+        try{
+            l_objet_zip=new m['__zip1']( this.__ig1 );
+            /* this.__ig1.ma_trace1("l'objet est initialisé"); */
+        }catch(e){
+            this.__ig1.ma_trace1( "e=" , e.stack );
+            return({"__xst" : __xer});
+        }
+        let chp_nom_source='';
+        let chi_id_dossier=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_dossier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'chp_nom_source' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chp_nom_source=mat[i + 1][1];
+            }
+        }
+        if(chi_id_dossier > 0 && chp_nom_source !== ''){
+            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj[__xst] !== __xsu){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']' );
+                return({"__xst" : __xer});
+            }
+            let chemin_fichier_zip=obj[__xva]['chemin_absolu'] + '/' + chp_nom_source;
+            this.__ig1.ma_trace1( "chemin_fichier_zip=" + chemin_fichier_zip );
+            l_objet_zip.zipper_un_fichier_dans_un_repertoire( chemin_fichier_zip , obj[__xva]['chemin_absolu'] );
+            /* on se fiche du retour car c'est exécuté de manière asynchrone */
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
     async dézipper( mat , d ){
         let m=null;
         try{
@@ -1504,7 +1550,7 @@ class dossiers1{
                 if(form['__mat_liste_si_ok']){
                     let mat1=JSON.parse( form['__mat_liste_si_ok'] );
                     let d=1;
-                    await this.filtre1( mat1 , 1 );
+                    await this.filtre1( mat1 , 1 , __db1 );
                 }
                 return({"__xst" : __xsu});
             }
@@ -1815,7 +1861,7 @@ class dossiers1{
             __debut=0;
             __num_page=0;
             criteres389['debut']=__debut;
-            let tt389=await this.__ig1.sql_iii(
+            tt389=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`

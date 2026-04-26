@@ -1469,6 +1469,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
         let partitionOf='';
         let columns='';
         let name='';
+        let est_virtuelle='';
         this.#meta_table_fait=false;
         this.#meta_table='';
         if(Array.isArray( element.clauses ) && element.clauses.length > 0){
@@ -1477,10 +1478,13 @@ class w_ast_sql_parseur_cst_vers_rev1{
         }
         if(element.ifNotExistsKw){
             ifNotExistsKw='ifnotexists()'
-//            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
         }
         if(element.kind){
-            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+            if(element.kind.kindKw && element.kind.kindKw.name === 'VIRTUAL'){
+                est_virtuelle='      est_table_virtuelle(\'1\')\r\n'
+            }else{
+                return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+            }
         }
         if(element.ofType){
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
@@ -1518,6 +1522,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
             t+='      distinction_pour_liste(\'liste des ' + name + '\'),\r\n';
             t+='      distinction_pour_isad(\'d\\\'un ' + name + '\'),\r\n';
             t+='      transform_base_sur_svg(translate(10,10))\r\n';
+            t+=est_virtuelle;
             t+='   ),\r\n';
         }else{
             t+=this.#meta_table;

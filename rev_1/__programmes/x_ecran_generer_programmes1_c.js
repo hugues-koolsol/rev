@@ -3168,7 +3168,7 @@ class x_ecran_generer_programmes1{
             }
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='\r\n';
-            src_serveur_js2+='        tt' + ref_liste_ecran + '=await this.__ig1.sql_iii( ' + ref_liste_ecran + ' , criteres_' + ref_liste_ecran + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        let tt' + ref_liste_ecran + '=await this.__ig1.sql_iii( ' + ref_liste_ecran + ' , criteres_' + ref_liste_ecran + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
             src_serveur_js2+='        if(tt' + ref_liste_ecran + '.__xst !== __xsu){\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
@@ -3179,7 +3179,7 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='            __debut=0;\r\n';
                 src_serveur_js2+='            __num_page=0;\r\n';
                 src_serveur_js2+='            criteres_' + ref_liste_ecran + '[\'debut\']=__debut;\r\n';
-                src_serveur_js2+='            let tt' + ref_liste_ecran + '=await this.__ig1.sql_iii( ' + ref_liste_ecran + ' , criteres_' + ref_liste_ecran + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
+                src_serveur_js2+='            tt' + ref_liste_ecran + '=await this.__ig1.sql_iii( ' + ref_liste_ecran + ' , criteres_' + ref_liste_ecran + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
                 src_serveur_js2+='        }\r\n';
             }
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'__nbMax\']=__nbMax;\r\n';

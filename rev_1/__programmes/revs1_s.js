@@ -394,7 +394,7 @@ class revs1{
             __debut=0;
             __num_page=0;
             criteres359['debut']=__debut;
-            let tt359=await this.__ig1.sql_iii(
+            tt359=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_rev` , `T0`.`chp_provenance_rev` , `T0`.`chx_source_rev` , `T0`.`chp_id_rev` , `T0`.`chp_valeur_rev` , 

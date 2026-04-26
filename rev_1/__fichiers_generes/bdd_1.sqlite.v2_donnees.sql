@@ -343,14 +343,14 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$QtA6tSSYKmH9dDva4xC7Hu3SOadA1MA9XqSKgtT04aF0NMqVqwVBu',NULL,'1170','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$QtA6tSSYKmH9dDva4xC7Hu3SOadA1MA9XqSKgtT04aF0NMqVqwVBu',NULL,'1171','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'11','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (429) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (430) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  chp_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -2282,7 +2282,8 @@ else:
 retirer le let dans le deuxième appel quand zéro résultats à tt110=await this.__ig1.sql_iii( ','3','2026-04-24 12:35:19.887','2026-04-24 12:35:19.887','0','00_00_00'),
 ('449','1','ajouter __db1 dans l''appel
                     await this.filtre1( mat1 , 1 , __db1 );
-dans async modifier1','1','2026-04-25 09:43:48.742','2026-04-25 09:43:48.742','0','00_00_00');
+dans async modifier1','99','2026-04-26 17:23:25.484','2026-04-25 09:43:48.742','0','00_00_00'),
+('450','1','sauvegarder les dumps sql et les csv dans des répertoires différents','1','2026-04-26 17:49:39.498','2026-04-26 17:49:39.498','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -5233,7 +5234,6 @@ ORDER BY `T0`.`chi_id_metier` DESC
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
 ('125','métier','select','sélectionner(
-
    valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T1`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`)),
    provenance(
       table_reference(

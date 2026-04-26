@@ -844,6 +844,7 @@ class __ig1{
     }
     /*
       =============================================================================================================
+      Attention, ne pas mettre de retour chariot + ligne 0D0A à la fin des lignes css
     */
     css1(){
         let val_police=parseInt( this.stockage_local.aspect['--t_police']['valeur'] , 10 );
@@ -1904,7 +1905,11 @@ class __ig1{
             }while(!modele_champ_erreur.exec( ligne_erreur ) && stack.length);
             /* at nom_fonction (http://localhost/a/b/c/js/fichier.js:25:15) */
             var texte_erreur=stack.shift();
+            /* texte_erreur=texte_erreur.replace(/http:\/\//g,'').replace(/https:\/\//g,'').replace(/localhost:\d{4}/,'').replace(/\/f0\?n0=/,'') */
+            texte_erreur=texte_erreur.replace( /http:\/\//g , '' ).replace( /https:\/\//g , '' );
+            texte_erreur=texte_erreur.replace( /localhost/g , '' );
             var nom_fichier=texte_erreur.match( /\/([^\/:]+):/ )[1];
+            nom_fichier=nom_fichier.replace( /f0\?n0=/ , '' );
             if(texte_erreur.match( / at ([^\.]+) \(/ ) === null){
                 if(texte_erreur.match( / at ([^]+) \(/ ) === null){
                     /*
@@ -2399,6 +2404,7 @@ class __ig1{
         if(obj.hasOwnProperty( '__xme' )){
             message=obj.__xme;
         }
+        message=message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
         try{
             let t='';
             let la_zone='vv_les_messages_dans_la_sous_fenetre';

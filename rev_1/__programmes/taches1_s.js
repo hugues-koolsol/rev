@@ -256,6 +256,7 @@ class taches1{
             return({"__xst" : __xer});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_112={"T0_chi_id_tache" : form['chi_id_tache'] ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur};
         let tt112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -267,20 +268,19 @@ class taches1{
            AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
         ;
         */
-        /*sql_inclure_fin*/ 112 , {"T0_chi_id_tache" : form['chi_id_tache'] ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt112[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+        /*sql_inclure_fin*/ 112 , criteres_select_112 , this.__ig1.donnees_retournees , __db1 );
+        if(tt112[__xst] !== __xsu || tt112[__xva].length !== 1){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
-        /*
-          __actions_et_tests_avant_modifier=this->actions_et_tests_avant_modifier(mat,d,this.__ig1.donnees_retournees,this.__ig1.donnees_recues,form,tt112[__xva][0]);
-        */
-        let donnees_sql={
+        let criteres_113={
+             /*  */
             "c_chi_id_tache" : form['chi_id_tache'] ,
             "c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
             "n_chp_texte_tache" : form['chp_texte_tache'] ,
             "n_chp_priorite_tache" : form['chp_priorite_tache']
         };
+        await __db1.exec( 'BEGIN TRANSACTION;' );
         let tt113=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_taches SET 
@@ -290,17 +290,36 @@ class taches1{
         WHERE (`chi_id_tache` = :c_chi_id_tache
            AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
         */
-        /*sql_inclure_fin*/ 113 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        /* this.__ig1.ma_trace1(tt113); */
+        /*sql_inclure_fin*/ 113 , criteres_113 , this.__ig1.donnees_retournees , __db1 );
         if(tt113[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            if(tt113['__xme'] !== ''){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( tt113['__xme'] + ' [' + this.__ig1.nl2() );
+            }else{
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
+            }
             return({"__xst" : __xer});
         }
-        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-            /* this.__ig1.ma_trace1( 'ici' ); */
-            await this.filtre1( mat1 , 1 , __db1 );
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                await this.filtre1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
         }
+        let tt112_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+         FROM b1.tbl_taches T0
+         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
+        
+        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
+           AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+        ;
+        */
+        /*sql_inclure_fin*/ 112 , criteres_select_112 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt112_bis;
         return({"__xst" : __xsu});
     }
     /*

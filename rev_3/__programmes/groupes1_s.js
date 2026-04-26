@@ -552,7 +552,7 @@ class groupes1{
             __debut=0;
             __num_page=0;
             criteres_130['debut']=__debut;
-            let tt130=await this.__ig1.sql_iii(
+            tt130=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`

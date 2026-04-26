@@ -796,7 +796,7 @@ class menus1{
             __debut=0;
             __num_page=0;
             criteres145['debut']=__debut;
-            let tt145=await this.__ig1.sql_iii(
+            tt145=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 

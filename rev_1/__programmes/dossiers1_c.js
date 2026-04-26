@@ -61,6 +61,15 @@ class dossiers1{
             o1+=' chi_id_dossier(' + chi_id_dossier + ')';
             o1+='))))';
             o1+='" title="outils">dézipper</div>';
+            /**/
+            o1+='<div';
+            o1+=' class="rev_bouton"';
+            o1+=' data-rev_click="pm1(m1(n1(' + this.moi + '),f1(zipper(';
+            o1+=' chp_nom_source(\'' + chp_nom_source + '\'),';
+            o1+=' chi_id_dossier(' + chi_id_dossier + ')';
+            o1+='))))';
+            o1+='" title="outils">zipper</div>';
+            /**/
             this.__ig1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
         }
@@ -582,10 +591,16 @@ class dossiers1{
                       }
                     */
                 }
-                if(provenance === 'modification'
-                       && __xva
+                if(provenance === 'modification' &&
+                    (
+                       __xva
                        && __xva.hasOwnProperty( 'page_modification1' )
                        && __xva.page_modification1.__xva[0]['T0.chp_nom_dossier'] === '__fichiers_binaires'
+                    ) || (
+                        __xva
+                        && __xva.chi_id_dossier 
+                        && __xva.chi_id_dossier === 8
+                    )
                 ){
                     o1+='<div';
                     o1+=' class="rev_b_svg yy__4"';
@@ -616,6 +631,16 @@ class dossiers1{
     */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
+            case 'zipper' :
+                this.__ig1.fermer_la_sous_fenetre();
+                this.__ig1.affiche_les_messages({"__xst" : __xal ,"__xme" : '⏲️ le fichier est zippé en arrière plan, veuillez patienter'});
+                this.__ig1.retablir_les_boutons_masques();
+                break;
+            case 'dézipper' :
+                this.__ig1.fermer_la_sous_fenetre();
+                this.__ig1.affiche_les_messages({"__xst" : __xal ,"__xme" : '⏲️ le fichier est dézippé en arrière plan, veuillez patienter'});
+                this.__ig1.retablir_les_boutons_masques();
+                break;
             case 'traitement_integrer_csv0' : 
             case 'traitement_vider_la_table' : break;
             case 'vv_dossiers_nouveau_numero1' :
@@ -628,7 +653,7 @@ class dossiers1{
             case 'integrer_ce_fichier_dans_les_sources' : 
             case 'supprimer_un_fichier_du_disque' :
                 if(le_message_du_serveur && le_message_du_serveur.__xva.hasOwnProperty( 'liste_des_fido' )){
-                    this.liste_des_des_fichiers_et_dossiers( le_message_du_serveur.__xva , 'Dossiers et fichiers  de ce dossier' );
+                    this.liste_des_des_fichiers_et_dossiers( le_message_du_serveur.__xva , 'Dossiers et fichiers  de ce dossier' , 'modification' );
                 }
                 break;
                 

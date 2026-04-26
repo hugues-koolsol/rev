@@ -110,7 +110,7 @@ class requetes1{
         }else{
             chemin_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sqls/sql_' + chi_id_requete + '.js';
         }
-        let contenu=obj0.source_js.replace( /\r\n/g , '\n' ).replace(/\r/g,'').replace(/\n/g,'\r\n');
+        let contenu=obj0.source_js.replace( /\r\n/g , '\n' ).replace( /\r/g , '' ).replace( /\n/g , '\r\n' );
         try{
             await this.__ig1.file_put_contents( chemin_fichier , contenu );
         }catch(e){
@@ -230,7 +230,7 @@ class requetes1{
         }else{
             chemin_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sqls/sql_' + this.__ig1.donnees_recues[__xva]['chi_id_requete'] + '.js';
         }
-        let contenu=this.__ig1.donnees_recues[__xva]['source_js'].replace( /\r\n/g , '\n' ).replace(/\r/g,'').replace(/\n/g,'\r\n');
+        let contenu=this.__ig1.donnees_recues[__xva]['source_js'].replace( /\r\n/g , '\n' ).replace( /\r/g , '' ).replace( /\n/g , '\r\n' );
         try{
             await this.__ig1.file_put_contents( chemin_fichier , contenu );
         }catch(e){
@@ -1137,7 +1137,7 @@ class requetes1{
             __debut=0;
             __num_page=0;
             criteres350['debut']=__debut;
-            let tt350=await this.__ig1.sql_iii(
+            tt350=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 

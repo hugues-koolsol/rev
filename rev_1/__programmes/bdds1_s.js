@@ -744,7 +744,7 @@ class bdds1{
                 if(form['__mat_liste_si_ok']){
                     let mat1=JSON.parse( form['__mat_liste_si_ok'] );
                     let d=1;
-                    await this.filtre1( mat1 , 1 );
+                    await this.filtre1( mat1 , 1 , __db1 );
                 }
                 return({"__xst" : __xsu});
             }
@@ -1074,7 +1074,7 @@ class bdds1{
             __debut=0;
             __num_page=0;
             criteres361['debut']=__debut;
-            let tt361=await this.__ig1.sql_iii(
+            tt361=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd`
