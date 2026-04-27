@@ -82,14 +82,14 @@ class _connexion1{
                 this.__ig1.ma_trace1( e );
             }
         }
-        const contenu_structure=await Deno.readTextFile( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_structure.sql" );
+        const contenu_structure=await Deno.readTextFile( "./__fichiers_generes/__sauvegarde_des_bases/" + nom_du_fichier_bdd + ".v2_structure.sql" );
         /* bdd_1.sqlite.v2_structure.sql */
         try{
             await __db1.exec( contenu_structure );
         }catch(e){
             this.__ig1.ma_trace1( e );
         }
-        const contenu_index=await Deno.readTextFile( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_index.sql" );
+        const contenu_index=await Deno.readTextFile( "./__fichiers_generes/__sauvegarde_des_bases/" + nom_du_fichier_bdd + ".v2_index.sql" );
         try{
             await __db1.exec( contenu_index );
         }catch(e){
@@ -98,7 +98,7 @@ class _connexion1{
         /*
           lecture séquentielle du fichier des INSERT
         */
-        let file=await Deno.open( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_donnees.sql" );
+        let file=await Deno.open( "./__fichiers_generes/__sauvegarde_des_bases/" + nom_du_fichier_bdd + ".v2_donnees.sql" );
         /* Convert bytes to string and Split into lines */
         const readable=file.readable.pipeThrough( new TextDecoderStream() ).pipeThrough( new TextLineStream() );
         let dans_bloc=false;

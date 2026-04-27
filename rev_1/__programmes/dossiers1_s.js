@@ -1377,7 +1377,7 @@ class dossiers1{
             );
             */
             /*sql_inclure_fin*/ 378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            let obj=await this.construire_chemin( chx_parent_dossier , this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
+            let obj=await this.construire_chemin( chx_parent_dossier , __db1 );
             if(obj[__xst] === __xsu){
                 let chemin_absolu=obj[__xva]['chemin_absolu'];
                 await this.liste_des_fidos( chx_parent_dossier , __db1 );
@@ -1408,13 +1408,13 @@ class dossiers1{
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*  */
-        let obj_construire_chemin_ancien_de_parent=await this.construire_chemin( __xva_avant['T0.chx_parent_dossier'] , this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
+        let obj_construire_chemin_ancien_de_parent=await this.construire_chemin( __xva_avant['T0.chx_parent_dossier'] , __db1 );
         if(obj_construire_chemin_ancien_de_parent[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'le chemin absolu ancien n\'a pas pu être récupéré [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
         let chemin_absolu_ancien_nom=obj_construire_chemin_ancien_de_parent[__xva]['chemin_absolu'] + __xva_avant['T0.chp_nom_dossier'];
-        let obj_construire_chemin_nouveau=await this.construire_chemin( form['chx_parent_dossier'] , this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
+        let obj_construire_chemin_nouveau=await this.construire_chemin( form['chx_parent_dossier'] , __db1 );
         if(obj_construire_chemin_nouveau[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
@@ -1474,7 +1474,7 @@ class dossiers1{
         form['chi_id_dossier']=form['chi_id_dossier'] === null ? ( null ) : ( parseInt( form['chi_id_dossier'] , 10 ) );
         form['chx_parent_dossier']=form['chx_parent_dossier'] === null ? ( null ) : ( parseInt( form['chx_parent_dossier'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chi_id_dossier'] <= 8){
+        if(form['chi_id_dossier'] <= 9){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'il n\'est pas possible de modifier cet élément [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
@@ -1724,7 +1724,7 @@ class dossiers1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(8)) */
-        if(form['chi_id_dossier'] <= 8){
+        if(form['chi_id_dossier'] <= 9){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }

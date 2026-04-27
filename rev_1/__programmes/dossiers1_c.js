@@ -1333,7 +1333,7 @@ class dossiers1{
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
                 /* yy_col_act_td1 */
-                if(elem['T0.chi_id_dossier'] <= 8){
+                if(elem['T0.chi_id_dossier'] <= 9){
                     lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
                 }else{
                     lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';

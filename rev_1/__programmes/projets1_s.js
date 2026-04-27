@@ -51,23 +51,21 @@ class projets1{
         let chi_id_projet=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_projet'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_projet' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_projet=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        let m=await import( './bdds1_s.js' );
-        let o=new m['bdds1']( this.__ig1 );
-        let obj=await o.dump_de_la_base( mat , d , chi_id_projet );
-        if(obj[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+        if(chi_id_projet>0){
+            let m=await import( './bdds1_s.js' );
+            let o=new m['bdds1']( this.__ig1 );
+            let obj=await o.dump_de_la_base( mat , d , chi_id_projet );
+            if(obj[__xst] !== __xsu){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+                return({"__xst" : __xer});
+            }
+            return({"__xst" : __xsu});
         }
-        return({"__xst" : __xsu});
+        return({"__xst" : __xer});
     }
     /*
       =============================================================================================================

@@ -161,8 +161,9 @@ class bdds1{
       =============================================================================================================
     */
     async dump_de_la_base( mat , d , chi_id_projet=null ){
+        /* chi_id_projet est <> de null dans le cas ou on fait une saugegarde de la base système */
         this.__ig1.asynchrone=true;
-        this.asynchrone_dump_de_la_base( mat , d , chi_id_projet=null , true );
+        this.asynchrone_dump_de_la_base( mat , d , chi_id_projet , true );
         return({"__xst" : __xsu});
     }
     /*
@@ -186,21 +187,35 @@ class bdds1{
                     chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
                 }
             }
+            let chemin_sauvegarde='';
             let db=null;
             let chemin_bdd='';
             let chemin_fichier_definition_de_la_base='';
             let chemin_fichier_definition_des_index='';
             let chemin_fichier_insert_seulement='';
             let les_tables_virtuelles=[];
+            /* this.__ig1.ma_trace1("chi_id_projet=",chi_id_projet); */
             if(chi_id_projet !== null){
-                /*
-                  Cas où on fait une sauvegarde de la base du projet.
+                /* 
+                  =================================================================================================
+                  chi_id_projet est <> de null dans le cas ou on fait une sauvegarde de la base système 
+                  à partir de la liste des projets
+                  =================================================================================================
                 */
                 let chemin_bdd='../rev_1/__bases_de_donnees/bdd_' + chi_id_projet + '.sqlite';
                 db=await this.__ig1.ouvrir_bdd_temp( chemin_bdd );
-                chemin_fichier_definition_de_la_base='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_structure.sql';
-                chemin_fichier_definition_des_index='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_index.sql';
-                chemin_fichier_insert_seulement='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_donnees.sql';
+                let chemin_sauvegarde='../rev_1/__fichiers_generes/__sauvegarde_des_bases/';
+                if(!await this.__ig1.is_dir(chemin_sauvegarde)){
+                    await Deno.mkdir( chemin_sauvegarde , {"mode" : 0o777} );
+                }
+                /*
+                  chemin_fichier_definition_de_la_base='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_structure.sql';
+                  chemin_fichier_definition_des_index ='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_index.sql';
+                  chemin_fichier_insert_seulement     ='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_donnees.sql';
+                */
+                chemin_fichier_definition_de_la_base=chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_structure.sql';
+                chemin_fichier_definition_des_index =chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_index.sql';
+                chemin_fichier_insert_seulement     =chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_donnees.sql';
             }else{
                 /*
                   on ne fait pas de sauvegarde des tables virtuelles 
@@ -223,6 +238,7 @@ class bdds1{
                     this.__ig1.donnees_retournees.__xsi[__xer].push( 'base non trouvée  [' + this.__ig1.nl2() );
                     return({"__xst" : __xer});
                 }
+                /* this.__ig1.ma_trace1("tt371=" , tt371 ); */
                 let le_rev_de_la_base=tt371.__xva[0]['T0.chp_rev_travail_basedd'];
                 /* this.__ig1.ma_trace1("le_rev_de_la_base",le_rev_de_la_base); */
                 let obj1=this.__ig1.__rev1.rev_tm( le_rev_de_la_base );
@@ -273,7 +289,7 @@ class bdds1{
                         }
                     }
                 }
-                this.__ig1.ma_trace1( "les_tables_virtuelles" , les_tables_virtuelles );
+                /* this.__ig1.ma_trace1( "les_tables_virtuelles" , les_tables_virtuelles ); */
                 /*
                   this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
                   return({"__xst" : __xer});
@@ -297,17 +313,31 @@ class bdds1{
                   }
                 */
                 let o=new m['dossiers1']( this.__ig1 );
+                
+                
                 if(this.__ig1.donnees_retournees._CA_ === 2){
-                    chemin_fichier_definition_de_la_base='../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
-                    chemin_fichier_definition_des_index='../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
+                    chemin_sauvegarde='../rev_2/__fichiers_generes/__sauvegarde_des_bases/';
+                    /*
+                      chemin_fichier_definition_de_la_base = '../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
+                      chemin_fichier_definition_des_index  = '../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
+                      chemin_fichier_insert_seulement      = '../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
+                    */
+                    chemin_fichier_definition_de_la_base = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
+                    chemin_fichier_definition_des_index  = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
+                    chemin_fichier_insert_seulement      = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
                 }else{
-                    chemin_fichier_definition_de_la_base='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
-                    chemin_fichier_definition_des_index='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
+                    chemin_sauvegarde='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sauvegarde_des_bases/';
+                    /*
+                      chemin_fichier_definition_de_la_base = '../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
+                      chemin_fichier_definition_des_index  = '../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
+                      chemin_fichier_insert_seulement      = '../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
+                    */
+                    chemin_fichier_definition_de_la_base = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
+                    chemin_fichier_definition_des_index  = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
+                    chemin_fichier_insert_seulement      = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
                 }
-                if(this.__ig1.donnees_retournees._CA_ === 2){
-                    chemin_fichier_insert_seulement='../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
-                }else{
-                    chemin_fichier_insert_seulement='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
+                if(!await this.__ig1.is_dir(chemin_sauvegarde)){
+                    await Deno.mkdir( chemin_sauvegarde , {"mode" : 0o777} );
                 }
             }
             let tableau_des_tables1=[];
@@ -454,7 +484,7 @@ class bdds1{
             ){
                 for(let k1 in les_tables){
                     let v1=les_tables[k1];
-                    let chemin_fichier_csv_seulement='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/csv_bdd_' + chi_id_basedd + '_table_' + les_tables[k1] + '.csv';
+                    let chemin_fichier_csv_seulement=chemin_sauvegarde + 'csv_bdd_' + chi_id_basedd + '_table_' + les_tables[k1] + '.csv';
                     const pointeur_fichier_csv_seulement=await Deno.create( chemin_fichier_csv_seulement );
                     const writer_fichier_csv_seulement=pointeur_fichier_csv_seulement.writable.getWriter();
                     let la_preliere_ligne='';
@@ -533,6 +563,7 @@ class bdds1{
                 return(this.signaler_asynchrone( {"__xst" : __xer ,"__xme" : le_message} ));
             }
             this.__ig1.ma_trace1( "e.stack" , e.stack );
+            return({"__xst" : __xer});
         }
     }
     /*
