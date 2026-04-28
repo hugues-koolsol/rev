@@ -656,8 +656,7 @@ class taches1{
     */
     async liste1( mat , d ){
         this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+        return(await this.filtre1( mat , d ));
     }
     /*
       =============================================================================================================

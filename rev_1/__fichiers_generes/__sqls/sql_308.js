@@ -48,6 +48,21 @@ class sql_308{
             }else{
                 tableau_champs.push( '`che_autorisation_globale_source` = ' + this.__ig1.__fnt1.sq0( par['n_che_autorisation_globale_source'] ) + '' );
             }
+            if(par['n_cht_condition_rev_source'] === undefined || par['n_cht_condition_rev_source'] === '' || par['n_cht_condition_rev_source'] === null){
+                tableau_champs.push( '`cht_condition_rev_source` = NULL' );
+            }else{
+                tableau_champs.push( '`cht_condition_rev_source` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_condition_rev_source'] ) + '\'' );
+            }
+            if(par['n_cht_condition_js_source'] === undefined || par['n_cht_condition_js_source'] === '' || par['n_cht_condition_js_source'] === null){
+                tableau_champs.push( '`cht_condition_js_source` = NULL' );
+            }else{
+                tableau_champs.push( '`cht_condition_js_source` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_condition_js_source'] ) + '\'' );
+            }
+            if(par['n_cht_notification_ko_source'] === undefined || par['n_cht_notification_ko_source'] === '' || par['n_cht_notification_ko_source'] === null){
+                tableau_champs.push( '`cht_notification_ko_source` = NULL' );
+            }else{
+                tableau_champs.push( '`cht_notification_ko_source` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_notification_ko_source'] ) + '\'' );
+            }
             if(tableau_champs.length === 0){
                 return({
                          /*  */

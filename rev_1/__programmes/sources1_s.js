@@ -1504,7 +1504,7 @@ class sources1{
             if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
                 return({"__xst" : __xer});
             }
-            let donnees_sql={
+            let criteres_308={
                 "c_chi_id_source" : form['chi_id_source'] ,
                 "n_chp_nom_source" : form['chp_nom_source'] ,
                 "n_che_binaire_source" : form['che_binaire_source'] ,
@@ -1512,7 +1512,10 @@ class sources1{
                 "n_cht_rev_source" : form['cht_rev_source'] === '' ? ( null ) : ( form['cht_rev_source'] ) ,
                 "n_cht_genere_source" : form['cht_genere_source'] === '' ? ( null ) : ( form['cht_genere_source'] ) ,
                 "n_cht_commentaire_source" : form['cht_commentaire_source'] === '' ? ( null ) : ( form['cht_commentaire_source'] ) ,
-                "n_che_autorisation_globale_source" : form['che_autorisation_globale_source']
+                "n_che_autorisation_globale_source" : form['che_autorisation_globale_source'] ,
+                "n_cht_condition_rev_source" : form['cht_condition_rev_source'] === '' ? ( null ) : ( form['cht_condition_rev_source'] ) ,
+                "n_cht_condition_js_source" : form['cht_condition_js_source'] === '' ? ( null ) : ( form['cht_condition_js_source'] ) ,
+                "n_cht_notification_ko_source" : form['cht_notification_ko_source'] === '' ? ( null ) : ( form['cht_notification_ko_source'] )
             };
             await __db1.exec( 'BEGIN TRANSACTION;' );
             let tt308=await this.__ig1.sql_iii(
@@ -1527,7 +1530,7 @@ class sources1{
                `che_autorisation_globale_source` = :n_che_autorisation_globale_source
             WHERE `chi_id_source` = :c_chi_id_source ;
             */
-            /*sql_inclure_fin*/ 308 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 308 , criteres_308 , this.__ig1.donnees_retournees , __db1 );
             if(tt308[__xst] !== __xsu){
                 if(tt308['__xme'] !== ''){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( tt308['__xme'] + ' [' + this.__ig1.nl2() );

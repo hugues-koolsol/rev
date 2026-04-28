@@ -844,6 +844,7 @@ class __ig1{
     }
     /*
       =============================================================================================================
+      Attention, ne pas mettre de retour chariot + ligne 0D0A à la fin des lignes css
     */
     css1(){
         let val_police=parseInt( this.stockage_local.aspect['--t_police']['valeur'] , 10 );
@@ -1503,35 +1504,30 @@ class __ig1{
         t+='    border: 2px outset white;';
         t+='    box-shadow: -30rem 0 0 30rem #12ed12;';
         t+='}';
-        t+='.yy_w100{';
-        t+='    width:100%;';
+        t+='.yy_w100{width:100%;}';
+        t+='.yy_jcl{justify-content:left;}';
+        t+='div[data-libelle_noeud_menu1]{color: ' + couleur6hex + ';';
+        t+=' display: flex;';
+        t+=' background: var(--c_coul_fond4);';
+        t+=' color: var(--c_coul_fond1);';
+        t+=' margin-top: var(--t_marge_hb_plus);';
+        t+=' border-top:  var(--t_border) var(--c_coul_4) solid;';
+        t+=' border-bottom:  var(--t_border) var(--c_coul_4) solid;';
+        t+=' min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
+        t+=' line-height: ' + val_police + 'px;';
+        t+=' padding-top:' + val_padding + 'px;';
+        t+=' padding-bottom:' + (val_padding + 2) + 'px;';
+        t+=' padding-left:' + val_padding + 'px;';
+        t+=' padding-right:' + val_padding + 'px;';
         t+='}';
-        t+='.yy_jcl{';
-        t+='    justify-content:left;';
+        t+='div[data-libelle_noeud_menu1="0"]{';
+        t+='    align-items: center;';
         t+='}';
-        t+='div[data-libelle_noeud_menu1] {\r\n';
-        t+='    color: ' + couleur6hex + ';\r\n';
-        t+='    display: flex;\r\n';
-        t+='    background: var(--c_coul_fond4);\r\n';
-        t+='    color: var(--c_coul_fond1);\r\n';
-        t+='    margin-top: var(--t_marge_hb_plus);\r\n';
-        t+='    border-top:  var(--t_border) var(--c_coul_4) solid;\r\n';
-        t+='    border-bottom:  var(--t_border) var(--c_coul_4) solid;\r\n';
-        t+='    min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    line-height: ' + val_police + 'px;';
-        t+='    padding-top:' + val_padding + 'px;';
-        t+='    padding-bottom:' + (val_padding + 2) + 'px;';
-        t+='    padding-left:' + val_padding + 'px;';
-        t+='    padding-right:' + val_padding + 'px;';
-        t+='}\r\n';
-        t+='div[data-libelle_noeud_menu1="0"] {\r\n';
-        t+='    align-items: center;\r\n';
-        t+='}\r\n';
         t+='.yy_col_act_td1{';
         t+='   display:inline-flex;';
         /* t+='   text-wrap-mode:nowrap;'; */
         t+='   padding:' + val_padding + 'px;';
-        t+='}\r\n';
+        t+='}';
         t+='.yy_conteneur_table>table{';
         t+='    border: 1px ' + couleur5hex + ' solid;';
         t+='    border-collapse: collapse;';
@@ -1887,7 +1883,13 @@ class __ig1{
                 /*
                   "    at #js_traiteDefinitionObjet (http://localhost:8001/f0?n0=w_rev_vers_js1_.js:2576:21)"
                 */
-                var texte_erreur=ligne_erreur.replace( /http:\/\// , '' ).replace( /https:\/\// , '' ).replace( /localhost/ , '' ).replace( /\/f0\?n0=/ , '-' ).replace( /\(:/ , '' );
+                let texte_erreur=ligne_erreur.replace( /http:\/\// , '' );
+                texte_erreur=texte_erreur.replace( /https:\/\// , '' );
+//                texte_erreur=texte_erreur.replace( /localhost/ , '' );
+                texte_erreur=texte_erreur.replace( /\/f0\?n0=/ , '-' ).replace( /\(:/ , '' );
+                texte_erreur=texte_erreur.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+                texte_erreur=texte_erreur.replace( /\&__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+
                 /*
                   "    at #js_traiteDefinitionObjet (8001-w_rev_vers_js1_.js:2576:21)"
                 */
@@ -1896,6 +1898,10 @@ class __ig1{
                 try{
                     libelle_erreur='<br />' + e.stack.toString().split( /\r\n|\n/ )[0];
                 } catch {}
+                let tt01=new RegExp( 'localhost:'+this.__le_port )
+                texte_erreur=texte_erreur.replace( tt01 , '' );
+                texte_erreur=texte_erreur.replace( 'localhost' , '' );
+                texte_erreur=texte_erreur.replace( / at /g , '<br />at ' );
                 let le_message='<b>' + libelle_erreur + '</b>' + texte_erreur + '^G ' + numero_de_ligne;
                 return le_message;
             }
@@ -1908,8 +1914,12 @@ class __ig1{
                 var ligne_erreur=stack.shift();
             }while(!modele_champ_erreur.exec( ligne_erreur ) && stack.length);
             /* at nom_fonction (http://localhost/a/b/c/js/fichier.js:25:15) */
-            var texte_erreur=stack.shift();
+            let texte_erreur=stack.shift();
+            /* texte_erreur=texte_erreur.replace(/http:\/\//g,'').replace(/https:\/\//g,'').replace(/localhost:\d{4}/,'').replace(/\/f0\?n0=/,'') */
+            texte_erreur=texte_erreur.replace( /http:\/\//g , '' ).replace( /https:\/\//g , '' );
+            texte_erreur=texte_erreur.replace( /localhost/g , '' );
             var nom_fichier=texte_erreur.match( /\/([^\/:]+):/ )[1];
+            nom_fichier=nom_fichier.replace( /f0\?n0=/ , '' );
             if(texte_erreur.match( / at ([^\.]+) \(/ ) === null){
                 if(texte_erreur.match( / at ([^]+) \(/ ) === null){
                     /*
@@ -2404,6 +2414,7 @@ class __ig1{
         if(obj.hasOwnProperty( '__xme' )){
             message=obj.__xme;
         }
+        message=message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
         try{
             let t='';
             let la_zone='vv_les_messages_dans_la_sous_fenetre';
@@ -2710,6 +2721,7 @@ class __ig1{
         for( let i=0 ; i < lst.length ; i++ ){
             if(!lst[i].getAttribute( 'data-rev_event' )){
                 lst[i].setAttribute( "data-rev_event" , "1" );
+                /* console.log('traite menu de ', lst[i] ) */
                 this.traite_menu( lst[i] );
             }
         }
@@ -3299,6 +3311,7 @@ class __ig1{
     affiche_page_d_accueil( mat , d , le_message_du_serveur ){
         let l01=mat.length;
         let t='';
+        let tri_affiche=false;
         /* t+='<input type="text" style="margin:10px;"/>'; */
         t+='<h1>Accueil</h1>';
         t+='<div style="text-align:center;border:1px red solid;margin:0 auto;width:fit-content;height:' + (2 * this.css_dimensions.t_border + this.css_dimensions.t_police) + 'px;">';
@@ -3311,15 +3324,109 @@ class __ig1{
         t+='</div>\r\n';
         t+='<div>\r\n';
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
-            t+='<span>&nbsp;bidon=' + i + '</span><br />';
-            if(i === 20){
+            t+='<span>&nbsp;bidon=' + ( i + 1 ) + '</span><br />';
+            if(i === 5){
                 for( let j=0 ; j <= 4 ; j++ ){
                     t+='<div class="rev_bouton yy__' + j + '" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
                 }
             }
+            if(i === 10){
+                 tri_affiche=true;
+                 t+='<div  style="display:flex;">';
+                 t+='<div style="margin : 0 auto 0 auto;">';
+                 t+='<ul id="vv_tri_bidon">';
+                 t+='<li>pouvez</li>';
+                 t+='<li>vous</li>';
+                 t+='<li>hiérarchiser</li>';
+                 t+='<li>cette</li>';
+                 t+='<li>liste</li>';
+                 t+='<li>qui</li>';
+                 t+='<li>contient</li>';
+                 t+='<li>beaucoup</li>';
+                 t+='<li>d\'éléments</li>';
+                 t+='<li>?</li>';
+                 t+='</ul>';
+                 t+='</div>';
+                 t+='</div>';
+            }
+            
+            if(i === 15){
+                 t+='<div style="display:flex;">';
+                 /*
+                 
+                 */
+                 t+='<ul data-rev_menu="1" id="vv_menu_bidon1">';
+                 t+=' <li>';
+                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un menu dans la page</div>';
+                 t+='  <ul>';
+                 t+='   <li>';
+                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="liste des taches">taches 1</div>';
+                 t+='   </li>';
+                 t+='   <li>';
+                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))" title="convertion de js">convertion de js</div>';
+                 t+='   </li>';
+                 t+='   <li>';
+                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 1</div>';
+                 t+='   </li>';
+                 t+='   <li>';
+                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 1</div>';
+                 t+='   </li>';
+                 t+='   <li>';
+                 t+='     bla';
+                 t+='     <ul>';
+                 t+='       <li>';
+                 t+='         <div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 11</div>';
+                 t+='       </li>';
+                 t+='       <li>';
+                 t+='         <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 11</div>';
+                 t+='       </li>';
+                 t+='     </ul>';
+                 t+='   </li>';
+                 t+='  </ul>';
+                 t+=' </li>';
+                 t+='</ul>';
+                 /*
+                 
+                 */
+                 t+='<ul data-rev_menu="1" id="vv_menu_bidon2">';
+                 t+=' <li>';
+                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un autre menu</div>';
+                 t+='  <ul>';
+                 t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 2</div></li>';
+                 t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 2</div></li>';
+                 t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="liste des taches">taches 2</div></li>';
+                 t+='  </ul>';
+                 t+=' </li>';
+                 t+='</ul>';
+                 /*
+                 
+                 */
+                 t+='</div>';
+            }
         }
         t+='</div>\r\n';
         this.maj_contenu_principal( t );
+        
+        if(tri_affiche === true){
+         
+            let options={
+                "hauteur_max_en_vh" : /* entre 20 et 80 */20 ,
+                "largeur_max" : /* 'calc(100% - 50px)', */'340px' ,
+                "afficher_le_bouton_supprimer" : 0 ,
+                "class_du_bouton_supprimer" : 'rev_bouton yy__0' ,
+                "arborescent" : 1 ,
+                "class_du_bouton_deplacer" : 'rev_bouton' ,
+                "boutons_du_menu" : [] ,
+                "class_du_bouton_menu" : 'rev_bouton' ,
+                "class_du_bouton_replier" : 'rev_bouton yy__2'
+            };
+            options['afficher_le_bouton_editer']=0;
+            options['class_du_bouton_editer']='rev_bouton yy__xif';
+            import( './f0?n0=_tri_arbre1_c.js&__version=' + this.__version ).then((le_module)=>{
+              new le_module['_tri_arbre1']( 'vv_tri_bidon' , options );
+            });
+        }
+        
         this.activer_menu( '-1' );
         this.maj_hash( mat , 0 );
         this.#date_derniere_navigation=performance.now();
@@ -3445,7 +3552,7 @@ class __ig1{
             document.getElementById( 'vv_bouton_connexion' ).classList.remove( 'yy__0' );
             document.getElementById( 'vv_bouton_connexion' ).classList.add( 'yy__1' );
         }
-        /* document.getElementById( 'vv_nav_centre_defilement' ).innerHTML=t; */
+
         document.getElementById( 'vv_nav_centre' ).innerHTML=t;
         this.ajoute_les_evenements_aux_boutons();
         this.maj_fav_icone( le_message_du_serveur._CA_ , le_message_du_serveur.chi_id_projet );

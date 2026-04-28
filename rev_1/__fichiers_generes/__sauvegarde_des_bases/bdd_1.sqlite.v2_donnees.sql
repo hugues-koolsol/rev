@@ -114,7 +114,7 @@ INSERT INTO tbl_menus (  chi_id_menu ,  cht_libelle_menu ,  chp_titre_menu ,  ch
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_dossiers offset 0 (8) */
+/*================================================================================ DEBUT BLOC TABLE tbl_dossiers offset 0 (9) */
 INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_dossier ,  che__nur_dossier ,  chd__dtm_dossier ,  chd__dtc_dossier ) VALUES
 ('1','','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','__programmes','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
@@ -123,7 +123,8 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 ('5','__bases_de_donnees','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('6','__sqls','3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('7','bibliotheques_externes','2','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('8','__fichiers_binaires','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
+('8','__fichiers_binaires','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('9','__sauvegarde_des_bases','3','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 /*================================================================================ FIN BLOC TABLE tbl_dossiers offset 0 */
 
 
@@ -343,7 +344,7 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$QtA6tSSYKmH9dDva4xC7Hu3SOadA1MA9XqSKgtT04aF0NMqVqwVBu',NULL,'1171','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1174','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'11','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -2339,7 +2340,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(2.5,9.5))
+   transform_base_sur_svg(translate(0.5,7.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_projets''),
@@ -2891,7 +2892,7 @@ créer_table(
       permet_la_gestion_de(''dossier''),
       distinction_pour_liste(''liste des dossiers''),
       distinction_pour_isad(''d\''un dossier''),
-      fonctions_spéciales1(''ne_pas_supprimer_id_un(8)''),
+      fonctions_spéciales1(''ne_pas_supprimer_id_un(9)''),
       transform_base_sur_svg(translate(721,490))
    ),
    champs(

@@ -2,8 +2,9 @@ class v2_menu_pour_acces_1{
     /*
       =============================================================================================================
     */
-    constructor(){
-        /* console.log('constructor de menu1'); */
+    __ig1=null;
+    constructor(__ig1){
+        this.__ig1=__ig1;
     }
     /*
       =============================================================================================================
@@ -13,7 +14,7 @@ class v2_menu_pour_acces_1{
         /* contenu initialisé avec une chaine vide pour indice 0 */
         let les_sous_menus=[''];
         les_menu1+=`<li><div id="menu_1" data-id_auto="52" data-id_menu="24" class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets</div></li>`;
-        if(donnees_retournees.chi_id_projet > 0){
+        if(this.__ig1.donnees_retournees.chi_id_projet > 0){
             les_menu1+=`<li><div id="menu_2" data-id_auto="53" data-id_menu="31" class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="Liste des tâches">tâches</div></li>`;
         }
         if(donnees_retournees.chi_id_projet > 0){

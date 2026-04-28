@@ -318,8 +318,9 @@ class acces1{
         contenu_fichier2+='    /*\r\n';
         contenu_fichier2+='      =============================================================================================================\r\n';
         contenu_fichier2+='    */\r\n';
-        contenu_fichier2+='    constructor(){\r\n';
-        contenu_fichier2+='        /* console.log(\'constructor de menu' + chi_id_acces + '\'); */\r\n';
+        contenu_fichier2+='    __ig1=null;\r\n';
+        contenu_fichier2+='    constructor(__ig1){\r\n';
+        contenu_fichier2+='        this.__ig1=__ig1;\r\n';
         contenu_fichier2+='    }\r\n';
         contenu_fichier2+='    /*\r\n';
         contenu_fichier2+='      =============================================================================================================\r\n';

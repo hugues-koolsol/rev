@@ -322,6 +322,19 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['cht_condition_rev_source'] !== null && fo1['cht_condition_rev_source'] !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_condition_rev_source'] );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_condition_rev_source' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        
         /* conversion des données numériques début */
         fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
@@ -409,6 +422,7 @@ class sources1{
         }
         o1+='    </div>';
         o1+='  </div>';
+        
         /*
           =====================================================================================================
         */
@@ -546,6 +560,86 @@ class sources1{
         }
         o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_genere_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_genere_source'] );
+        o1+='</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>condition au format rev</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.cht_condition_rev_source'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_condition_rev_source' );
+        o1+='</div>\r\n';
+        var sty='';
+        if(enreg['T0.cht_initialisation_menu'] === null){
+            sty=' style="height:5vh;" ';
+        }
+        o1+='            <textarea  data-editeur1="rev"  id="cht_condition_rev_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( enreg['T0.cht_condition_rev_source'] );
+        o1+='</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>condition au format js</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.cht_condition_js_source'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+='  <div data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_rev_source),zone_resultat(cht_condition_js_source))))"';
+        o1+='    class="rev_bouton yy__3" title="convertir en js">↧rev-&gt;js↧</div>';
+        /*  */
+        o1+='  <div data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_source),zone_resultat(cht_condition_rev_source))))"';
+        o1+='    class="rev_bouton yy__1" title="convertir en rev" >↥js->rev↥</div>';
+        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_condition_js_source' );
+        o1+='</div>\r\n';
+        var sty='';
+        if(enreg['T0.cht_initialisation_menu'] === null){
+            sty=' style="height:5vh;" ';
+        }
+        o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( enreg['T0.cht_condition_js_source'] );
+        o1+='</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>notification si condition ko</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.cht_notification_ko_source'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_notification_ko_source' );
+        o1+='</div>\r\n';
+        var sty='';
+        if(enreg['T0.cht_initialisation_menu'] === null){
+            sty=' style="height:5vh;" ';
+        }
+        o1+='            <textarea  id="cht_notification_ko_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( enreg['T0.cht_notification_ko_source'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -1428,6 +1522,13 @@ class sources1{
                 lst+='</td>';
                 /*
                 */
+                lst+='<td style="max-width:360px;overflow:hidden;">';
+                if(elem['T0.cht_condition_rev_source'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.cht_condition_rev_source'].substr( 0 , 200 ) );
+                }
+                lst+='</td>';
+                /*
+                */
                 lst+='</tr>';
             }
             if(lst !== ''){
@@ -1444,6 +1545,7 @@ class sources1{
                 /* o1+='<th>nom</th>'; */
                 o1+='<th>binaire</th>';
                 /* o1+='<th>autorisation globale</th>'; */
+                o1+=/* cht_condition_rev_source */'<th style="max-width:360px;">condition rev</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

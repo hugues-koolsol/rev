@@ -17,7 +17,7 @@ class sql_162{
         const from0=`
           FROM  tbl_acces T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_acces\` > 1`;
+        const where0=` WHERE \`T0\`.\`chi_id_acces\` >= 1`;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_162 sql0=',sql0); */
         let lignes=[];

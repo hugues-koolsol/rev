@@ -1,0 +1,134 @@
+{
+  "dossiers1_s.js": {
+    "id_autorisation": 59,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "projets1_s.js": {
+    "id_autorisation": 58,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "taches1_s.js": {
+    "id_autorisation": 57,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "sources1_s.js": {
+    "id_autorisation": 60,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "bdds1_s.js": {
+    "id_autorisation": 62,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "genres1_s.js": {
+    "id_autorisation": 61,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "requetes1_s.js": {
+    "id_autorisation": 65,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "v_svg_bdd1_s.js": {
+    "id_autorisation": 64,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "x_ecran_concevoir_une_requete1_s.js": {
+    "id_autorisation": 67,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "x_ecran_generer_programmes1_s.js": {
+    "id_autorisation": 76,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "metiers1_s.js": {
+    "id_autorisation": 71,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "acces1_s.js": {
+    "id_autorisation": 72,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "autorisations1_s.js": {
+    "id_autorisation": 73,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "menus1_s.js": {
+    "id_autorisation": 74,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "groupes1_s.js": {
+    "id_autorisation": 70,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "x_ecran_coordonnees1_s.js": {
+    "id_autorisation": 78,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "utilisateurs1_s.js": {
+    "id_autorisation": 75,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "revs1_s.js": {
+    "id_autorisation": 68,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "x_ecran_generer_souches1_s.js": {
+    "id_autorisation": 77,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "travaux1_s.js": {
+    "id_autorisation": 69,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_projet > 0;",
+    "cht_notification_ko_source": "veuillez sélectionner un projet"
+  },
+  "_connexion1_s.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "__ig1_s.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  }
+}

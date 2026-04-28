@@ -50,6 +50,7 @@ class __ig1{
     zones_des_editeur=[];
     __liste_des_genres={};
     __liste_des_sql={};
+    __liste_des_autorisations1={};
     /*
       =============================================================================================================
     */
@@ -174,20 +175,42 @@ class __ig1{
                 break;
             }
         }
+        let nom_de_classe=m1;
+        let nom_a_importer=m1;
+        if(m1.slice( -1 ) === '_'){
+            nom_a_importer+='.js';
+            nom_de_classe=m1.substr( 0 , m1.length - 1 );
+        }else{
+            nom_a_importer+='_c.js';
+        }
         if(indice > 0){
             if(!this.#liste_des_modules_dynamiques.hasOwnProperty( m1 )){
                 /*
                   si le module n'a pas encore été chargé
                 */
                 let module=null;
-                let nom_de_classe=m1;
-                let nom_a_importer=m1;
-                if(m1.slice( -1 ) === '_'){
-                    nom_a_importer+='.js';
-                    nom_de_classe=m1.substr( 0 , m1.length - 1 );
-                }else{
-                    nom_a_importer+='_c.js';
+                if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_.js' === nom_a_importer )){
+                    try{
+                       
+                        console.log('%celem=','background:lightgreen;',nom_a_importer)
+                        let elem=this.__liste_des_autorisations1[nom_a_importer];
+                        console.log('%celem=','background:lightblue;',elem)
+                        if(elem && elem.cht_condition_js_source!==null){
+                            let aa=eval(elem.cht_condition_js_source);
+                            if(aa && aa === true){
+                            }else{
+                                //this.ajoute_message(  );
+                                this.affiche_les_messages({"__xst" : __xer ,"__xme" : 'erreur autorisation 1'});
+                                return({__xst : __xer })
+                            }
+                        }
+                    }catch(e){
+                        console.error(e.stack)
+                    }
                 }
+
+                
+                
                 dejà_importe.push( nom_a_importer );
                 try{
                     module=await import( './f0?n0=' + nom_a_importer + '&__version=' + __version );
@@ -275,6 +298,27 @@ class __ig1{
                 }
                 this.retablir_les_boutons_masques( __xva_param );
             }else{
+             
+             
+                if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_.js' === nom_a_importer )){
+                    try{
+                        console.log('%celem=','background:lightgreen;',nom_a_importer)
+                        let elem=this.__liste_des_autorisations1[nom_a_importer];
+                        console.log('%celem=','background:lightblue;',elem)
+                        if(elem && elem.cht_condition_js_source!==null){
+                            let aa=eval(elem.cht_condition_js_source);
+                            if(aa && aa === true){
+                            }else{
+                                //this.ajoute_message(  );
+                                this.affiche_les_messages({"__xst" : __xer ,"__xme" : 'erreur autorisation 2'});
+                                return({__xst : __xer })
+                            }
+                        }
+                    }catch(e){
+                        console.error(e.stack)
+                    }
+                }
+             
                 /* déjà chargé */
                 for( let i=indice ; i < l01 ; i=mat[i][12] ){
                     try{
@@ -3319,18 +3363,18 @@ class __ig1{
         t+='</div>';
         t+='<div style="margin-top:20px;">';
         for(let i in this.les_svg){
-            t+='<div style="display:inline-block;width:' + (2 * this.css_dimensions.t_police) + 'px;height:' + (2 * this.css_dimensions.t_police) + 'px;">' + this.les_svg[i] + '</div>';
+            t+='<div style="margin-left:3px;border:1px red solid;display:inline-block;width:' + (1.5 * this.css_dimensions.t_police) + 'px;height:' + (1.5 * this.css_dimensions.t_police) + 'px;">' + this.les_svg[i] + '</div>';
         }
         t+='</div>\r\n';
         t+='<div>\r\n';
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
             t+='<span>&nbsp;bidon=' + ( i + 1 ) + '</span><br />';
-            if(i === 9){
+            if(i === 5){
                 for( let j=0 ; j <= 4 ; j++ ){
                     t+='<div class="rev_bouton yy__' + j + '" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
                 }
             }
-            if(i === 29){
+            if(i === 10){
                  tri_affiche=true;
                  t+='<div  style="display:flex;">';
                  t+='<div style="margin : 0 auto 0 auto;">';
@@ -3350,7 +3394,7 @@ class __ig1{
                  t+='</div>';
             }
             
-            if(i === 49){
+            if(i === 15){
                  t+='<div style="display:flex;">';
                  /*
                  
@@ -3360,13 +3404,16 @@ class __ig1{
                  t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un menu dans la page</div>';
                  t+='  <ul>';
                  t+='   <li>';
+                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="liste des taches">taches 1</div>';
+                 t+='   </li>';
+                 t+='   <li>';
+                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))" title="convertion de js">convertion de js</div>';
+                 t+='   </li>';
+                 t+='   <li>';
                  t+='     <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 1</div>';
                  t+='   </li>';
                  t+='   <li>';
                  t+='     <div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 1</div>';
-                 t+='   </li>';
-                 t+='   <li>';
-                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="liste des taches">taches 1</div>';
                  t+='   </li>';
                  t+='   <li>';
                  t+='     bla';
@@ -3529,17 +3576,20 @@ class __ig1{
       =============================================================================================================
     */
     maj_menu( mat , d , le_message_du_serveur ){
-        let t='';
+        let les_menu1='';
         if(le_message_du_serveur
                && le_message_du_serveur.hasOwnProperty( '__xva' )
                && le_message_du_serveur.__xva.hasOwnProperty( 'les_menu1' )
         ){
             if( typeof le_message_du_serveur.__xva.les_menu1 === 'object'){
-                t+='Les menus ne sont pas définis 1';
+                les_menu1+='Les menus ne sont pas définis 1';
             }else if( typeof le_message_du_serveur.__xva.les_menu1 === 'string'){
-                t+=le_message_du_serveur.__xva.les_menu1;
+                les_menu1+=le_message_du_serveur.__xva.les_menu1;
+                if(le_message_du_serveur.__xva.hasOwnProperty('__liste_des_autorisations1')){
+                    this.__liste_des_autorisations1=le_message_du_serveur.__xva.__liste_des_autorisations1;
+                }
             }else{
-                t+='Les menus ne sont pas définis 2';
+                les_menu1+='Les menus ne sont pas définis 2';
             }
         }
         if(le_message_du_serveur.__xva.chi_id_utilisateur !== 0){
@@ -3550,7 +3600,7 @@ class __ig1{
             document.getElementById( 'vv_bouton_connexion' ).classList.add( 'yy__1' );
         }
 
-        document.getElementById( 'vv_nav_centre' ).innerHTML=t;
+        document.getElementById( 'vv_nav_centre' ).innerHTML=les_menu1;
         this.ajoute_les_evenements_aux_boutons();
         this.maj_fav_icone( le_message_du_serveur._CA_ , le_message_du_serveur.chi_id_projet );
         return({"__xst" : __xsu});

@@ -25,10 +25,12 @@ class _menu_arbre1{
     };
     #ref_div_contenant_les_boutons=null;
     #ref_div_contenant_la_zone_scrollable=null;
+    #pour_menu_haut=0;
     /*
       =============================================================================================================
     */
     constructor( par_id_de_l_element , options ){
+        /* console.log('constructor de ',par_id_de_l_element) */
         if(document.getElementById( par_id_de_l_element ) === null){
             console.error( 'menu_arbre1 id="' + par_id_de_l_element + '" non trouvé :-/' );
             return;
@@ -39,6 +41,13 @@ class _menu_arbre1{
             return;
         }
         this.#racine_html=document.getElementById( par_id_de_l_element );
+        
+        if(this.#racine_html.parentNode.id==='vv_nav_centre'){
+            this.#pour_menu_haut=1;
+        }else{
+            this.#pour_menu_haut=0;
+        }
+        
         if(this.#racine_html.tagName.toUpperCase() !== 'UL'){
             console.error( 'menu_arbre1 la racine doit être un <ul>' );
             return;
@@ -73,7 +82,7 @@ class _menu_arbre1{
         /*
           la racine du menu
         */
-        t+='<div id="' + this.#id_div + '" ' + la_classe_racine + ' data-id_original_pour_menu="' + par_id_de_l_element + '"  date-repere="racine"></div>';
+        t+='<div id="' + this.#id_div + '" ' + la_classe_racine + ' data-id_original_pour_menu="' + par_id_de_l_element + '" data-reference_pour_menu_haut="' + this.#pour_menu_haut + '" date-repere="racine" data-cle_aleatoire="' + this.cle_aleatoire + '"></div>';
         /*
           et on insert ce nouvel élément
         */
@@ -92,7 +101,24 @@ class _menu_arbre1{
         /*
           si on utilise la roulette sur un menu horizontal, on fait défiler
         */
-        this.#ref_div_contenant_la_zone_scrollable.addEventListener( 'wheel' , this.#roulette_sur_menu_listener , false );
+        if(this.#pour_menu_haut===1){
+            this.#ref_div_contenant_la_zone_scrollable.addEventListener( 'wheel' , this.#roulette_sur_menu_listener , false );
+            /*
+              si on met à jour le menu du haut
+            */
+            let lst4=document.querySelectorAll( '[data-pour_menu_haut="1"]' );
+            for(let i=lst4.length-1 ; i >=0 ; i--){
+                if(lst4[i].getAttribute('data-cle_aleatoire') !== this.cle_aleatoire){
+                    lst4[i].remove()
+                }
+            }
+        }else{
+            /* 
+              si le sous menu est autre que celui du haut, il faut supprimer 
+              les divs qui contiennent les anciens éléments
+            */
+            setTimeout( this.retirer_les_anciens_enfants , 500);
+        }
         /* debugger */
         /* document.getElementById( 'vv_nav_centre' ).addEventListener( 'wheel' , this.roulette_sur_menu , false ); */
     }
@@ -102,10 +128,46 @@ class _menu_arbre1{
     /*
       =============================================================================================================
     */
+    retirer_les_anciens_enfants(){
+        /*
+           on recherche toutes les clefs aléatoires des data-pour_menu_haut="0"
+        */
+        let tableau_des_cles=[];
+        let lst4=document.querySelectorAll( '[data-pour_menu_haut="0"]' );
+        for(let i=lst4.length-1 ; i >=0 ; i--){
+            tableau_des_cles.push({ cle_aleatoire : lst4[i].getAttribute('data-cle_aleatoire') , element : lst4[i] });
+        }
+        //console.log('tableau_des_cles=',tableau_des_cles);
+        /*
+          pour toutes ces clés aléatoires il faut que 
+          date-repere="racine" 
+          data-reference_pour_menu_haut="0"
+          avec cette clé existe
+        */
+        let tableau_des_elements_racine=[];
+        let lst3=document.querySelectorAll( '[data-reference_pour_menu_haut="0"]' );
+        for(let i=lst3.length-1 ; i >=0 ; i--){
+            tableau_des_elements_racine.push(lst3[i].getAttribute('data-cle_aleatoire'));
+        }
+        //console.log('tableau_des_elements_racine=',tableau_des_elements_racine);
+        for( let i=0;i<tableau_des_cles.length;i++){
+            if(tableau_des_elements_racine.includes(tableau_des_cles[i].cle_aleatoire)){
+            }else{
+                /* console.log('on retire ',tableau_des_cles[i].element) */
+                try{
+                    tableau_des_cles[i].element.remove();
+                }catch(e){
+                    console.log(e)
+                }
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
     #fermer_le_menu( ref ){
         /* console.log( '#fermer_le_menu' ); */
         ref.style.display='none';
-        /* let lst4=document.getElementById( this.#id_div ).querySelectorAll( '[data-bouton_plusmoins_de="' + ref.getAttribute( 'data-enfants_de' ) + '"]' ); */
         let lst4=document.querySelectorAll( '[data-bouton_plusmoins_de="' + ref.getAttribute( 'data-enfants_de' ) + '"]' );
         if(lst4.length > 0){
             try{
@@ -118,6 +180,7 @@ class _menu_arbre1{
       =============================================================================================================
     */
     #click_sur_ecran( event ){
+        /* console.log('#click_sur_ecran',event) */
         /*
           y-a-t-il un menu ouvert
         */
@@ -195,6 +258,7 @@ class _menu_arbre1{
       many thanks to https://bobbyhadz.com/blog/javascript-remove-event-listener-not-working
       =============================================================================================================
     */
+    #souris_bas_plus_moins_listener_clic=this.#souris_bas_plus_moins_clic.bind( this );
     #souris_bas_plus_moins_listener=this.#souris_bas_plus_moins.bind( this );
     #souris_haut_listener=this.#souris_haut.bind( this );
     #doigt_haut_listener=this.#doigt_haut.bind( this );
@@ -207,6 +271,7 @@ class _menu_arbre1{
       =============================================================================================================
     */
     #souris_haut_branche( e ){
+        /* console.log('#souris_haut_branche', e ); */
         let cible=null;
         if(e.target.getAttribute( 'data-rev_click' )){
             cible=e.target;
@@ -282,23 +347,51 @@ class _menu_arbre1{
     /*
       =============================================================================================================
     */
-    #souris_bas_plus_moins( e ){
-        window.addEventListener( 'mouseup' , this.#souris_haut_listener , false );
+    #souris_bas_plus_moins_clic( e ){
+        e.stopPropagation();
+        e.preventDefault();
+        console.log('#souris_bas_plus_moins_clic', e.target );
+        return;
+//        window.addEventListener( 'mouseup' , this.#souris_haut_listener , false );
         /* window.addEventListener( 'mousemove' , this.#souris_bouge_listener , false ); */
+//        this.#souris_ou_doigt_bas( e );
+    }
+    /*
+      =============================================================================================================
+    */
+    #souris_bas_plus_moins( e ){
+        /* console.log('#souris_bas_plus_moins', e ); */
+        window.addEventListener( 'mouseup' , this.#souris_haut_listener , false );
         this.#souris_ou_doigt_bas( e );
+        return;
+        /* window.addEventListener( 'mousemove' , this.#souris_bouge_listener , false ); */
     }
     /*
       =============================================================================================================
     */
     #souris_haut( e ){
+        /* console.log('#souris_haut', e.target , e.target.parentNode , e.target.parentNode.parentNode ); */
         window.removeEventListener( 'mouseup' , this.#souris_haut_listener , false );
         /* window.removeEventListener( 'mousemove' , this.#souris_bouge_listener , false ); */
+        let aa=e.target.getAttribute('data-rev_click');
+        if(aa && aa!=='' && aa.indexOf('m1(')>=0){
+            /* console.log('%ce.target.getAttribute(\'data-rev_click\') = ' + e.target.getAttribute('data-rev_click') , 'background:red;color:yellow;') */
+            
+           let lst4=document.querySelectorAll( '[data-pour_menu_haut="0"]' ); // 
+           if(lst4.length > 0){
+               for(let i=0;i<lst4.length;i++){
+                  /* console.log('%clst4[i]=','color:red;background:navy;',lst4[i]) */
+                  lst4[i].style.display='none';
+               }
+           }
+        }
         this.#souris_ou_doigt_haut( e );
     }
     /*
       =============================================================================================================
     */
     #souris_ou_doigt_haut( e ){
+        /* console.log('#souris_ou_doigt_haut', e.target ); */
         /* rien ici */
     }
     /*
@@ -306,6 +399,8 @@ class _menu_arbre1{
     */
     #souris_ou_doigt_bas( e ){
         var tar=e.target;
+        /* console.log('#souris_ou_doigt_bas', tar ); */
+        
         let txt_log='';
         /* let tt=document.getElementById( this.#id_div ).getBoundingClientRect(); */
         if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-replie" )){
@@ -319,103 +414,107 @@ class _menu_arbre1{
               ici, action sur +/- pour plier ou déplier un menu
               =============================================================================================
             */
-            if(lst1[0].style.display === 'none'){
-                lst1[0].style.display='flex';
-                let aa=e.target.parentNode.getBoundingClientRect();
-                let bod=document.body.getBoundingClientRect();
-                if(lst1[0].getAttribute( 'data-niveau' ) === '0'){
-                    lst1[0].style.top=(aa.y + aa.height) + 'px';
-                    /* lst1[0].style.left=(aa.x - bod.x) + 'px'; */
-                    lst1[0].style.left=aa.x + 'px';
-                }
-                tar.innerHTML='-';
-                let num_conteneur_parent=e.target.getAttribute( 'data-num_conteneur_parent' );
-                /* let lst2=document.getElementById( this.#id_div ).querySelectorAll( '[data-enfants_de="' + num_conteneur_parent + '"]' ); */
-                let lst2=document.querySelectorAll( '[data-enfants_de="' + num_conteneur_parent + '"]' );
-                lst2[0].style.width='';
-                /*
-                  déplacement du sous menu à gauche ou à droite si il dépasse de l'écran
-                */
-                let bb=lst2[0].getBoundingClientRect();
-                if(bb.right > document.documentElement.clientWidth){
-                    let a=parseInt( lst2[0].style.left );
-                    a=a - (bb.right - document.documentElement.clientWidth) - 5;
-                    lst2[0].style.left=a + 'px';
-                }else if(bb.left <= 0){
-                    if(aa.left > 5){
-                        lst2[0].style.left=aa.left + 'px';
-                    }else{
-                        let a=parseInt( lst2[0].style.left );
-                        lst2[0].style.left=((a - bb.left) + 5) + 'px';
+            if(lst1.length > 0){
+                if(lst1[0].style.display === 'none'){
+                    lst1[0].style.display='flex';
+                    let aa=e.target.parentNode.getBoundingClientRect();
+                    let bod=document.body.getBoundingClientRect();
+                    if(lst1[0].getAttribute( 'data-niveau' ) === '0'){
+                        lst1[0].style.top=(aa.y + aa.height) + 'px';
+                        /* lst1[0].style.left=(aa.x - bod.x) + 'px'; */
+                        lst1[0].style.left=aa.x + 'px';
                     }
-                }
-                /*
-                  fermeture des autres menus
-                */
-                let autre_menu_ferme=false;
-                let lst3=document.getElementById( 'les_enfants_du_menu_' + this.cle_aleatoire ).getElementsByTagName( 'div' );
-                for( let i=0 ; i < lst3.length ; i++ ){
-                    let niveau=lst3[i].getAttribute( 'data-niveau' );
-                    if(niveau === '0'){
-                        if(lst3[i].getAttribute( 'data-enfants_de' ) !== num_conteneur_parent){
-                            if(lst3[i].style.display !== 'none'){
-                                lst3[i].style.display='none';
-                                /* let lst4=document.getElementById( this.#id_div ).querySelectorAll( '[data-bouton_plusmoins_de="' + lst3[i].getAttribute( 'data-enfants_de' ) + '"]' ); */
-                                let lst4=document.querySelectorAll( '[data-bouton_plusmoins_de="' + lst3[i].getAttribute( 'data-enfants_de' ) + '"]' );
-                                lst4[0].innerHTML='+';
-                                autre_menu_ferme=true;
+                    tar.innerHTML='-';
+                    let num_conteneur_parent=e.target.getAttribute( 'data-num_conteneur_parent' );
+                    /* let lst2=document.getElementById( this.#id_div ).querySelectorAll( '[data-enfants_de="' + num_conteneur_parent + '"]' ); */
+                    let lst2=document.querySelectorAll( '[data-enfants_de="' + num_conteneur_parent + '"]' );
+                    lst2[0].style.width='';
+                    /*
+                      déplacement du sous menu à gauche ou à droite si il dépasse de l'écran
+                    */
+                    let bb=lst2[0].getBoundingClientRect();
+                    if(bb.right > document.documentElement.clientWidth){
+                        let a=parseInt( lst2[0].style.left );
+                        a=a - (bb.right - document.documentElement.clientWidth) - 5;
+                        lst2[0].style.left=a + 'px';
+                    }else if(bb.left <= 0){
+                        if(aa.left > 5){
+                            lst2[0].style.left=aa.left + 'px';
+                        }else{
+                            let a=parseInt( lst2[0].style.left );
+                            lst2[0].style.left=((a - bb.left) + 5) + 'px';
+                        }
+                    }
+                    /*
+                      fermeture des autres menus
+                    */
+                    let autre_menu_ferme=false;
+                    let lst3=document.getElementById( 'les_enfants_du_menu_' + this.cle_aleatoire ).getElementsByTagName( 'div' );
+                    for( let i=0 ; i < lst3.length ; i++ ){
+                        let niveau=lst3[i].getAttribute( 'data-niveau' );
+                        if(niveau === '0'){
+                            if(lst3[i].getAttribute( 'data-enfants_de' ) !== num_conteneur_parent){
+                                if(lst3[i].style.display !== 'none'){
+                                    lst3[i].style.display='none';
+                                    /* let lst4=document.getElementById( this.#id_div ).querySelectorAll( '[data-bouton_plusmoins_de="' + lst3[i].getAttribute( 'data-enfants_de' ) + '"]' ); */
+                                    let lst4=document.querySelectorAll( '[data-bouton_plusmoins_de="' + lst3[i].getAttribute( 'data-enfants_de' ) + '"]' );
+                                    lst4[0].innerHTML='+';
+                                    autre_menu_ferme=true;
+                                }
                             }
                         }
                     }
-                }
-                let le_sous_menu=lst2[0].getBoundingClientRect();
-                let la_boite_parente_du_sous_menu=document.getElementById( 'dedans_' + num_conteneur_parent + '_' + this.cle_aleatoire ).getBoundingClientRect();
-                if(la_boite_parente_du_sous_menu.width > le_sous_menu.width){
-                    lst2[0].style.width=la_boite_parente_du_sous_menu.width + 'px';
-                }
-                if(lst1[0].getAttribute( 'data-niveau' ) === '0' && autre_menu_ferme === false){
-                    /*
-                      si on clique en dehors d'un menu ouvert il faut le fermer
-                    */
-                    document.addEventListener( 'mousedown' , this.#click_sur_ecran_listener , false );
-                    /* console.log('on ouvre un menu' , lst1[0]); */
-                }
-            }else{
-                if(lst1[0].getAttribute( 'data-niveau' ) === '0'){
-                    this.#fermer_le_menu( lst1[0] );
-                    return;
+                    let le_sous_menu=lst2[0].getBoundingClientRect();
+                    let la_boite_parente_du_sous_menu=document.getElementById( 'dedans_' + num_conteneur_parent + '_' + this.cle_aleatoire ).getBoundingClientRect();
+                    if(la_boite_parente_du_sous_menu.width > le_sous_menu.width && this.#pour_menu_haut === 1){
+                        console.log('la_boite_parente_du_sous_menu.width='+la_boite_parente_du_sous_menu.width);
+                        lst2[0].style.width=la_boite_parente_du_sous_menu.width + 'px';
+                    }
+                    if(lst1[0].getAttribute( 'data-niveau' ) === '0' && autre_menu_ferme === false){
+                        /*
+                          si on clique en dehors d'un menu ouvert il faut le fermer
+                        */
+                        document.addEventListener( 'mousedown' , this.#click_sur_ecran_listener , false );
+                        /* console.log('on ouvre un menu' , lst1[0]); */
+                    }
                 }else{
-                    lst1[0].style.display='none';
-                }
-                tar.innerHTML='+';
-                let num_conteneur_parent=e.target.getAttribute( 'data-num_conteneur_parent' );
-                /* let lst2=document.getElementById( this.#id_div ).querySelectorAll( '[data-enfants_de="' + num_conteneur_parent + '"]' ); */
-                let lst2=document.querySelectorAll( '[data-enfants_de="' + num_conteneur_parent + '"]' );
-                /*
-                  déplacement du sous menu à gauche ou à droite si il dépasse de l'écran
-                */
-                let le_sous_menu=lst2[0].getBoundingClientRect();
-                let la_boite_parente_du_sous_menu=document.getElementById( 'dedans_' + num_conteneur_parent + '_' + this.cle_aleatoire ).getBoundingClientRect();
-                if(la_boite_parente_du_sous_menu.right > le_sous_menu.right){
-                    let valeur_courante=parseInt( lst2[0].style.left );
-                    let nouvelle_valeur=valeur_courante + (la_boite_parente_du_sous_menu.right - le_sous_menu.right);
-                    if(la_boite_parente_du_sous_menu.width > le_sous_menu.width){
-                        nouvelle_valeur=nouvelle_valeur - (la_boite_parente_du_sous_menu.width - le_sous_menu.width);
-                    }
-                    lst2[0].style.left=nouvelle_valeur + 'px';
-                }
-                if(la_boite_parente_du_sous_menu.width > le_sous_menu.width){
-                    lst2[0].style.width=la_boite_parente_du_sous_menu.width + 'px';
-                }
-            }
-            for( let i=0 ; i < this.arbre.length ; i++ ){
-                if(this.arbre[i].id_interne === id_interne){
-                    if(tar.innerHTML === '+'){
-                        this.arbre[i].replie=1;
+                    if(lst1[0].getAttribute( 'data-niveau' ) === '0'){
+                        this.#fermer_le_menu( lst1[0] );
+                        return;
                     }else{
-                        this.arbre[i].replie=0;
+                        lst1[0].style.display='none';
                     }
-                    break;
+                    tar.innerHTML='+';
+                    let num_conteneur_parent=e.target.getAttribute( 'data-num_conteneur_parent' );
+                    /* let lst2=document.getElementById( this.#id_div ).querySelectorAll( '[data-enfants_de="' + num_conteneur_parent + '"]' ); */
+                    let lst2=document.querySelectorAll( '[data-enfants_de="' + num_conteneur_parent + '"]' );
+                    /*
+                      déplacement du sous menu à gauche ou à droite si il dépasse de l'écran
+                    */
+                    let le_sous_menu=lst2[0].getBoundingClientRect();
+                    let la_boite_parente_du_sous_menu=document.getElementById( 'dedans_' + num_conteneur_parent + '_' + this.cle_aleatoire ).getBoundingClientRect();
+                    if(la_boite_parente_du_sous_menu.right > le_sous_menu.right){
+                        let valeur_courante=parseInt( lst2[0].style.left );
+                        let nouvelle_valeur=valeur_courante + (la_boite_parente_du_sous_menu.right - le_sous_menu.right);
+                        if(la_boite_parente_du_sous_menu.width > le_sous_menu.width){
+                            nouvelle_valeur=nouvelle_valeur - (la_boite_parente_du_sous_menu.width - le_sous_menu.width);
+                        }
+                        lst2[0].style.left=nouvelle_valeur + 'px';
+                    }
+                    if(la_boite_parente_du_sous_menu.width > le_sous_menu.width &&  this.#pour_menu_haut === 1 ){
+                        console.log('la_boite_parente_du_sous_menu.width='+la_boite_parente_du_sous_menu.width);
+                        lst2[0].style.width=la_boite_parente_du_sous_menu.width + 'px';
+                    }
+                }
+                for( let i=0 ; i < this.arbre.length ; i++ ){
+                    if(this.arbre[i].id_interne === id_interne){
+                        if(tar.innerHTML === '+'){
+                            this.arbre[i].replie=1;
+                        }else{
+                            this.arbre[i].replie=0;
+                        }
+                        break;
+                    }
                 }
             }
         }
@@ -490,6 +589,7 @@ class _menu_arbre1{
                     t+=' data-attributs_originaux="' + JSON.stringify( this.arbre[i].attributs ).replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
                     t+=' data-contenu_original="' + this.arbre[i].contenu.replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
                     t+=' data-repere="racine"';
+                    t+=' data-cle_aleatoire="' + this.cle_aleatoire + '"';
                     t+='>\n';
                     t+=' '.repeat( 4 ) + '<div style="text-align:left;display:flex;flex-grow:1;align-items:flex-start;" data-id_interne="' + this.arbre[i].id_interne + '" >\n';
                     /*
@@ -519,6 +619,7 @@ class _menu_arbre1{
                         t+=' data-bouton_plusmoins_de="' + this.arbre[i].id_interne + '" ';
                         t+=' data-num_conteneur_parent="' + this.arbre[i].id_interne + '" ';
                         t+=' class="' + this.#options.class_du_bouton_replier + '"';
+                        t+=' data-cle_aleatoire="' + this.cle_aleatoire + '"';
                         t+=' style="float:right;' + style_replie + 'min-width:2em;text-align:center;margin-left:1px;">';
                         t+=libelle_replie;
                         t+='</div>\n';
@@ -536,6 +637,8 @@ class _menu_arbre1{
             if(racine_contient_des_enfants === true){
                 let aa=document.createElement( 'div' );
                 aa.id='les_enfants_du_menu_' + this.cle_aleatoire;
+                aa.setAttribute( 'data-pour_menu_haut' , this.#pour_menu_haut );
+                aa.setAttribute( 'data-cle_aleatoire' , this.cle_aleatoire );
                 let tt='';
                 for( let i=0 ; i < this.arbre.length ; i++ ){
                     if(this.arbre[i].id_interne_parent === 0){
@@ -581,13 +684,18 @@ class _menu_arbre1{
             /*  */
             let lst2=document.querySelectorAll( '[data-replie]' );
             for( let i=0 ; i < lst2.length ; i++ ){
-                lst2[i].addEventListener( 'mousedown' , this.#souris_bas_plus_moins_listener , false );
+                if(this.cle_aleatoire === lst2[i].getAttribute('data-cle_aleatoire')){
+                    lst2[i].addEventListener( 'click' , this.#souris_bas_plus_moins_listener , false );
+                    /* console.log('on ajoute un listener sur ' , lst2[i] , this.cle_aleatoire ) //, lst2[i].parentNode.parentNode) */
+                }
             }
             /*  */
             let lst3=document.querySelectorAll( '[data-position_pour_tri="dedans"]' );
             for( let i=0 ; i < lst3.length ; i++ ){
                 /* lst3[i].addEventListener( 'mousedown' , this.#souris_bas_branche_listener , false ); */
-                lst3[i].addEventListener( 'mouseup' , this.#souris_haut_branche_listener , false );
+                if(this.cle_aleatoire === lst3[i].getAttribute('data-cle_aleatoire')){
+                   lst3[i].addEventListener( 'mouseup' , this.#souris_haut_branche_listener , false );
+                }
             }
         }else{
             for( let i=0 ; i < this.arbre.length ; i++ ){
@@ -634,6 +742,7 @@ class _menu_arbre1{
                           bouton +/- au niveau des sous menus
                         */
                         le_html+=' '.repeat( 4 * (niveau + 2) ) + '<div ';
+                        le_html+=' data-cle_aleatoire="' + this.cle_aleatoire + '" ';
                         le_html+=' data-replie="' + this.arbre[i].id_interne + '" ';
                         le_html+=' class="' + this.#options.class_du_bouton_replier + '" ';
                         le_html+=' data-num_conteneur_parent="' + num_conteneur_parent + '" ';
@@ -653,7 +762,14 @@ class _menu_arbre1{
                         le_html+=' '.repeat( 4 * (niveau + 2) ) + '<div ';
                         le_html+=' data-niveau="' + niveau + '" ';
                         le_html+=' data-enfants_de="' + this.arbre[i].id_interne + '" ';
-                        le_html+=' style="flex-direction:column;position:relative;top:0;border:' + this.#options.border_bloc_sous_menu + ';left:0;margin-left:' + this.#options.decallage_entre_niveaux_en_px + 'px;' + style_bloc_replie + '">\n';
+                        le_html+=' style="';
+                        le_html+='flex-direction:column;';
+                        le_html+='position:relative;';
+                        le_html+='top:0;';
+                        le_html+='border:' + this.#options.border_bloc_sous_menu + ';';
+                        le_html+='left:0;';
+                        le_html+='margin-left:' + this.#options.decallage_entre_niveaux_en_px + 'px;';
+                        le_html+='' + style_bloc_replie + '">\n';
                         le_html+=le_sous_html;
                         le_html+=' '.repeat( 4 * (niveau + 2) ) + '</div>\n';
                     }

@@ -11,7 +11,8 @@ class sql_402{
     */
     async sql( par ){
         const champs0=`
-          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\`
+          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T0\`.\`cht_rev_source\` , \`T0\`.\`cht_genere_source\` , 
+          \`T0\`.\`che_binaire_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`cht_condition_rev_source\` , \`T0\`.\`cht_condition_js_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -35,7 +36,14 @@ class sql_402{
             donnees0.push( {
                     "T0.chi_id_source" : col[0] ,
                     "T0.chp_nom_source" : col[1] ,
-                    "T0.chx_dossier_id_source" : col[2]
+                    "T0.chx_dossier_id_source" : col[2] ,
+                    "T0.cht_rev_source" : col[3] ,
+                    "T0.cht_genere_source" : col[4] ,
+                    "T0.che_binaire_source" : col[5] ,
+                    "T0.cht_commentaire_source" : col[6] ,
+                    "T0.che_autorisation_globale_source" : col[7] ,
+                    "T0.cht_condition_rev_source" : col[8] ,
+                    "T0.cht_condition_js_source" : col[9]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

@@ -15,15 +15,15 @@ let repertoire_racine_de_tous_les_projets=repertoire_du_pgm_serveur.substr( 0 , 
 /* clé application */
 const _CA_=parseInt( repertoire_du_pgm_serveur.substr( repertoire_du_pgm_serveur.lastIndexOf( '_' ) + 1 ) , 10 );
 const __le_port=_CA_ + 6000;
-console.log( '_CA_=' + _CA_ + ',port=' + __le_port );
+console.log( '__serveur.js _CA_=' + _CA_ + ',port=' + __le_port );
 Deno.serve( {
         "port" : __le_port ,
          onListen( { port  , hostname } ){
-            /* console.log( `aaaaServeur démaré sur http://` + hostname + `:` + port ); */
+            /* console.log( '__serveur.js aaaaServeur démaré sur http://' + hostname + ':' + port ); */
         }  ,
         
          onError( err ){
-            console.log( 'errrrrrreurrrrrrrrr  serveur=' , err.stack );
+            console.log( '__serveur.js errrrrrreurrrrrrrrr  serveur=' , err.stack );
             return(new Response( 'erreur : ' + err.stack , {"status" : 200 ,"headers" : {"content-type" : "text/html; charset=utf-8"}} ));
         } 
     
@@ -48,14 +48,14 @@ Deno.serve( {
         }
         const { socket  , response }=Deno.upgradeWebSocket( req1 );
         socket.addEventListener( "open" , () => {
-                /* console.log('dans serveur, open ws ') */
+                /* console.log('__serveur.js  open ws ') */
                 let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket );
                 let traitement_open_socket=__ig1.traiter_open_socket( req1 , socket );
                 __ig1=null;} );
         socket.addEventListener( "message" , async ( evenement ) => {
                 let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket );
                 let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , req1 );
-                /* console.log('dans serveur ', traitement_mesage_socket ) */
+                /* console.log('__serveur.js ', traitement_mesage_socket ) */
                 if(traitement_mesage_socket.__xst === __xsu){
                     socket.send( JSON.stringify( traitement_mesage_socket ) );
                 }else{

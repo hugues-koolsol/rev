@@ -17,7 +17,9 @@ class sql_117{
          \`cht_commentaire_source\` , 
          \`cht_rev_source\` , 
          \`cht_genere_source\` , 
-         \`che_binaire_source\`
+         \`che_binaire_source\` , 
+         \`cht_condition_rev_source\` , 
+         \`cht_condition_js_source\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -32,7 +34,9 @@ class sql_117{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_commentaire_source'] ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_rev_source'] ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_genere_source'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_binaire_source'] ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_binaire_source'] ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_condition_rev_source'] ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_condition_js_source'] ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;
