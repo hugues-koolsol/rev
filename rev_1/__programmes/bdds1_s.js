@@ -196,16 +196,16 @@ class bdds1{
             let les_tables_virtuelles=[];
             /* this.__ig1.ma_trace1("chi_id_projet=",chi_id_projet); */
             if(chi_id_projet !== null){
-                /* 
-                  =================================================================================================
+                /*
+                  =====================================================================================
                   chi_id_projet est <> de null dans le cas ou on fait une sauvegarde de la base système 
                   à partir de la liste des projets
-                  =================================================================================================
+                  =====================================================================================
                 */
                 let chemin_bdd='../rev_1/__bases_de_donnees/bdd_' + chi_id_projet + '.sqlite';
                 db=await this.__ig1.ouvrir_bdd_temp( chemin_bdd );
                 let chemin_sauvegarde='../rev_1/__fichiers_generes/__sauvegarde_des_bases/';
-                if(!await this.__ig1.is_dir(chemin_sauvegarde)){
+                if(!(await this.__ig1.is_dir( chemin_sauvegarde ))){
                     await Deno.mkdir( chemin_sauvegarde , {"mode" : 0o777} );
                 }
                 /*
@@ -214,8 +214,8 @@ class bdds1{
                   chemin_fichier_insert_seulement     ='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_donnees.sql';
                 */
                 chemin_fichier_definition_de_la_base=chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_structure.sql';
-                chemin_fichier_definition_des_index =chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_index.sql';
-                chemin_fichier_insert_seulement     =chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_donnees.sql';
+                chemin_fichier_definition_des_index=chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_index.sql';
+                chemin_fichier_insert_seulement=chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_donnees.sql';
             }else{
                 /*
                   on ne fait pas de sauvegarde des tables virtuelles 
@@ -313,8 +313,6 @@ class bdds1{
                   }
                 */
                 let o=new m['dossiers1']( this.__ig1 );
-                
-                
                 if(this.__ig1.donnees_retournees._CA_ === 2){
                     chemin_sauvegarde='../rev_2/__fichiers_generes/__sauvegarde_des_bases/';
                     /*
@@ -322,9 +320,9 @@ class bdds1{
                       chemin_fichier_definition_des_index  = '../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
                       chemin_fichier_insert_seulement      = '../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
                     */
-                    chemin_fichier_definition_de_la_base = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
-                    chemin_fichier_definition_des_index  = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
-                    chemin_fichier_insert_seulement      = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
+                    chemin_fichier_definition_de_la_base=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
+                    chemin_fichier_definition_des_index=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
+                    chemin_fichier_insert_seulement=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
                 }else{
                     chemin_sauvegarde='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sauvegarde_des_bases/';
                     /*
@@ -332,11 +330,11 @@ class bdds1{
                       chemin_fichier_definition_des_index  = '../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
                       chemin_fichier_insert_seulement      = '../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
                     */
-                    chemin_fichier_definition_de_la_base = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
-                    chemin_fichier_definition_des_index  = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
-                    chemin_fichier_insert_seulement      = chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
+                    chemin_fichier_definition_de_la_base=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
+                    chemin_fichier_definition_des_index=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
+                    chemin_fichier_insert_seulement=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
                 }
-                if(!await this.__ig1.is_dir(chemin_sauvegarde)){
+                if(!(await this.__ig1.is_dir( chemin_sauvegarde ))){
                     await Deno.mkdir( chemin_sauvegarde , {"mode" : 0o777} );
                 }
             }

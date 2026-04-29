@@ -39,7 +39,9 @@ class v2_menu_pour_acces_1{
             les_menu1+=`<li><div id="menu_9" data-id_auto="55" data-id_menu="34" class="rev_bouton" data-rev_click="m1(n1(travaux1),f1(entree_module()))" title="liste des travaux">travaux</div></li>`;
         }
         /* ================== */
-        les_sous_menus[0]+=`<li><div  id="menu_11"   data-id_auto="46" data-id_menu="32" class="rev_b_svg"  title="coordonnées" data-rev_click="m1(n1(x_ecran_coordonnees1),f1(entree_module()))"><svg class="rev_svg_dans_menu1" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg></div></li>`;
+        if(this.__ig1.donnees_retournees.chi_id_utilisateur > 0){
+            les_sous_menus[0]+=`<li><div  id="menu_11"   data-id_auto="46" data-id_menu="32" class="rev_b_svg"  title="mes coordonnées" data-rev_click="m1(n1(x_ecran_coordonnees1),f1(entree_module()))"><svg class="rev_svg_dans_menu1" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg></div></li>`;
+        }
         les_sous_menus[0]+=`<li data-separateur="1">organisation</li>`;
         if(donnees_retournees.chi_id_projet > 0){
             les_sous_menus[0]+=`<li><div  id="menu_13"   data-id_auto="31" data-id_menu="14" class="rev_bouton"  title="liste des groupes" data-rev_click="m1(n1(groupes1),f1(entree_module()))">groupes</div></li>`;
@@ -72,7 +74,9 @@ class v2_menu_pour_acces_1{
         les_sous_menus[0]+=`<li><div  id="menu_25"   data-id_auto="39" data-id_menu="21" class="rev_bouton"  title="html" data-rev_click="m1(n1(x_ecran_rev_vers_html1),f1(entree_module()))">html</div></li>`;
         les_sous_menus[0]+=`<li><div  id="menu_26"   data-id_auto="40" data-id_menu="4" class="rev_bouton"  title="convertion de php" data-rev_click="m1(n1(x_ecran_rev_vers_php1),f1(entree_module()))">php</div></li>`;
         les_sous_menus[0]+=`<li><div  id="menu_27"   data-id_auto="41" data-id_menu="5" class="rev_bouton"  title="convertion de sql" data-rev_click="m1(n1(x_ecran_rev_vers_sql1),f1(entree_module()))">sql</div></li>`;
-        les_sous_menus[0]+=`<li><div  id="menu_28"   data-id_auto="42" data-id_menu="6" class="rev_bouton"  title="convertion de css" data-rev_click="m1(n1(x_ecran_rev_vers_css1),f1(entree_module()))">css</div></li>`;
+        if(this.__ig1.donnees_retournees.chi_id_utilisateur > 0){
+            les_sous_menus[0]+=`<li><div  id="menu_28"   data-id_auto="42" data-id_menu="6" class="rev_bouton"  title="convertion de css" data-rev_click="m1(n1(x_ecran_rev_vers_css1),f1(entree_module()))">css</div></li>`;
+        }
         les_sous_menus[0]+=`<li><div  id="menu_29"   data-id_auto="44" data-id_menu="7" class="rev_bouton"  title="convertion de textes" data-rev_click="m1(n1(x_ecran_rev_vers_txt1),f1(entree_module()))">txt</div></li>`;
         les_sous_menus[0]+=`<li><div  id="menu_30"   data-id_auto="45" data-id_menu="27" class="rev_bouton"  title="source vers programme" data-rev_click="m1(n1(x_ecran_source_vers_programme1),f1(entree_module()))">src->pgm</div></li>`;
         /* niveau 0 */

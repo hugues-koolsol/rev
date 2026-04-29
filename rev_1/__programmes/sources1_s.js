@@ -55,7 +55,8 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -129,7 +130,8 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -205,7 +207,8 @@ class sources1{
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -266,7 +269,8 @@ class sources1{
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -374,7 +378,8 @@ class sources1{
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -502,7 +507,8 @@ class sources1{
         let tt402=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
+        `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , `T0`.`cht_condition_js_source`
          FROM b1.tbl_sources T0
         WHERE (   `T0`.`chi_id_source` IN :T0_chi_id_source
            AND `T0`.`chp_nom_source` LIKE '%.js'
@@ -588,7 +594,8 @@ class sources1{
         let tt402=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
+        `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , `T0`.`cht_condition_js_source`
          FROM b1.tbl_sources T0
         WHERE (   `T0`.`chi_id_source` IN :T0_chi_id_source
            AND `T0`.`chp_nom_source` LIKE '%.js'
@@ -720,7 +727,8 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1047,7 +1055,8 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1227,7 +1236,8 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1301,7 +1311,8 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1487,7 +1498,8 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1527,7 +1539,10 @@ class sources1{
                `cht_rev_source` = :n_cht_rev_source , 
                `cht_genere_source` = :n_cht_genere_source , 
                `cht_commentaire_source` = :n_cht_commentaire_source , 
-               `che_autorisation_globale_source` = :n_che_autorisation_globale_source
+               `che_autorisation_globale_source` = :n_che_autorisation_globale_source , 
+               `cht_condition_rev_source` = :n_cht_condition_rev_source , 
+               `cht_condition_js_source` = :n_cht_condition_js_source , 
+               `cht_notification_ko_source` = :n_cht_notification_ko_source
             WHERE `chi_id_source` = :c_chi_id_source ;
             */
             /*sql_inclure_fin*/ 308 , criteres_308 , this.__ig1.donnees_retournees , __db1 );
@@ -1558,7 +1573,8 @@ class sources1{
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -1598,11 +1614,13 @@ class sources1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
+        /* this.__ig1.ma_trace1("chi_id_source=",chi_id_source); */
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1636,7 +1654,8 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1706,7 +1725,8 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier`
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1803,7 +1823,7 @@ class sources1{
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
                 await this.filtre1( mat1 , 1 , __db1 );
             }else{
-                await this.page_modification1( mat , d , this.__ig1.donnees_recues , tt117['nouvel_id'] , __db1 );
+                await this.page_modification1( mat , d , tt117['nouvel_id'] , __db1 );
             }
             return({"__xst" : __xsu});
         }else{
@@ -1863,7 +1883,8 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source`
+        `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1891,7 +1912,8 @@ class sources1{
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source`
+            `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             

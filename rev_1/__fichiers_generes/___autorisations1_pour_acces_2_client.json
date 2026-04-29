@@ -2,8 +2,8 @@
   "x_ecran_coordonnees1_c.js": {
     "id_autorisation": 49,
     "autorisation_cote_client": 0,
-    "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
+    "cht_notification_ko_source": "Vous devez être connecté"
   },
   "_connexion1_c.js": {
     "id_autorisation": 0,
@@ -12,6 +12,18 @@
     "cht_notification_ko_source": null
   },
   "__ig1_c.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "x_ecran_a_propos1_c.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "x_ecran_contacte1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,

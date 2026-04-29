@@ -2499,7 +2499,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let aac=await this.actions_apres_supprimer( mat , d , form , tt' + ref_select + '[__xva][0] , __db1 );\r\n';
             src_serveur_js2+='        if(aac[__xst] === __xer){\r\n';
-            src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'les actions après créer ont échouées [\' + this.__ig1.nl2() + \']\' );\r\n';
+            src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'les actions après supprimer ont échouées [\' + this.__ig1.nl2() + \']\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        /**/\r\n';
@@ -2952,7 +2952,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='\r\n';
-            src_serveur_js2+='        let donnees_sql={\r\n';
+            src_serveur_js2+='        let criteres_' + ref_insert + '={\r\n';
             src_serveur_js2+='            donnees :[{\r\n';
             for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
                 let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
@@ -3015,7 +3015,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        };\r\n';
             src_serveur_js2+='        /**/\r\n';
             src_serveur_js2+='        await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
-            src_serveur_js2+='        let tt' + ref_insert + '=await this.__ig1.sql_iii( ' + ref_insert + ' , donnees_sql , this.__ig1.donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        let tt' + ref_insert + '=await this.__ig1.sql_iii( ' + ref_insert + ' , criteres_' + ref_insert + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
             src_serveur_js2+='        if(tt' + ref_insert + '[__xst] === __xsu){\r\n';
             src_serveur_js2+='            if(tt' + ref_insert + '[\'changements\'] === 0){\r\n';
             src_serveur_js2+='                this.__ig1.donnees_retournees.__xsi[__xer].push( \'l\\\'insertion a échoué [\' + this.__ig1.nl2() + \']\' );\r\n';

@@ -15,42 +15,41 @@ class autorisations1{
       =============================================================================================================
     */
     async ecrire_fichier_des_autorisations( tableau_des_auto , chx_acces_autorisation , __db1 ){
-        /*     
-        let nom_du_fichier1='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + chx_acces_autorisation + '_.json';
-        let T1_chp_nom_source='';
-        
-        for(let i in tableau_des_auto){
-            T1_chp_nom_source+=',\'' + i + '_c.js\'';
-        }
-        if(T1_chp_nom_source !== ''){
-            T1_chp_nom_source=T1_chp_nom_source.substr( 1 );
-            let criteres_select_163={
-                "T0_chx_acces_autorisation" : chx_acces_autorisation ,
-                "T1_chp_nom_source" : T1_chp_nom_source ,
-                };
-            let tt163=await this.__ig1.sql_iii(163 , criteres_select_163 , this.__ig1.donnees_retournees , __db1 );
-            if(tt163[__xst] !== __xsu){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
-            }
-            for(let i in tt163.__xva){
-//                tableau_des_auto[tt163.__xva[i]['T1.chp_nom_source'].substr( 0 , tt163.__xva[i]['T1.chp_nom_source'].length - 5 )].autorisation_cote_client=tt163.__xva[i]['T0.chi_id_autorisation'];
-                tableau_des_auto[tt163.__xva[i]['T1.chp_nom_source']].autorisation_cote_client=tt163.__xva[i]['T0.chi_id_autorisation'];
-            }
-        }
-        try{
-            this.__ig1.file_put_contents( nom_du_fichier1 , JSON.stringify( tableau_des_auto , null , 2 ) );
-        }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xal].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
+        /*
+          let nom_du_fichier1='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + chx_acces_autorisation + '_.json';
+          let T1_chp_nom_source='';
+          
+          for(let i in tableau_des_auto){
+          T1_chp_nom_source+=',\'' + i + '_c.js\'';
+          }
+          if(T1_chp_nom_source !== ''){
+          T1_chp_nom_source=T1_chp_nom_source.substr( 1 );
+          let criteres_select_163={
+          "T0_chx_acces_autorisation" : chx_acces_autorisation ,
+          "T1_chp_nom_source" : T1_chp_nom_source ,
+          };
+          let tt163=await this.__ig1.sql_iii(163 , criteres_select_163 , this.__ig1.donnees_retournees , __db1 );
+          if(tt163[__xst] !== __xsu){
+          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
+          return({"__xst" : __xer});
+          }
+          for(let i in tt163.__xva){
+          //                tableau_des_auto[tt163.__xva[i]['T1.chp_nom_source'].substr( 0 , tt163.__xva[i]['T1.chp_nom_source'].length - 5 )].autorisation_cote_client=tt163.__xva[i]['T0.chi_id_autorisation'];
+          tableau_des_auto[tt163.__xva[i]['T1.chp_nom_source']].autorisation_cote_client=tt163.__xva[i]['T0.chi_id_autorisation'];
+          }
+          }
+          try{
+          this.__ig1.file_put_contents( nom_du_fichier1 , JSON.stringify( tableau_des_auto , null , 2 ) );
+          }catch(e){
+          this.__ig1.donnees_retournees.__xsi[__xal].push( '[' + this.__ig1.nl2() + ']' );
+          return({"__xst" : __xer});
+          }
         */
-        this.__ig1.ma_trace1("tableau_des_auto=",tableau_des_auto);
-        
+        this.__ig1.ma_trace1( "tableau_des_auto=" , tableau_des_auto );
         let tableau_des_auto_client={};
-        for( let i in tableau_des_auto){
-            if(i.substr(i.length-4) === '_.js' || i.substr(i.length-5) === '_c.js'){
-                tableau_des_auto_client[i]=tableau_des_auto[i]
+        for(let i in tableau_des_auto){
+            if(i.substr( i.length - 4 ) === '_.js' || i.substr( i.length - 5 ) === '_c.js'){
+                tableau_des_auto_client[i]=tableau_des_auto[i];
             }
         }
         let nom_du_fichier_client='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + chx_acces_autorisation + '_client.json';
@@ -61,9 +60,9 @@ class autorisations1{
             return({"__xst" : __xer});
         }
         let tableau_des_auto_serveur={};
-        for( let i in tableau_des_auto){
-            if(i.substr(i.length-4) === '_.js' || i.substr(i.length-5) === '_s.js'){
-                tableau_des_auto_serveur[i]=tableau_des_auto[i]
+        for(let i in tableau_des_auto){
+            if(i.substr( i.length - 4 ) === '_.js' || i.substr( i.length - 5 ) === '_s.js'){
+                tableau_des_auto_serveur[i]=tableau_des_auto[i];
             }
         }
         let nom_du_fichier_serveur='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + chx_acces_autorisation + '_serveur.json';
@@ -90,7 +89,7 @@ class autorisations1{
         SELECT 
         `T0`.`chi_id_acces`
          FROM b1.tbl_acces T0
-        WHERE `T0`.`chi_id_acces` > 1
+        WHERE `T0`.`chi_id_acces` >= 1
         ;
         */
         /*sql_inclure_fin*/ 162 , criteres_select_162 , this.__ig1.donnees_retournees , __db1 );
@@ -117,13 +116,11 @@ class autorisations1{
         }
         let autorisations_globales={};
         for(let k1 in tt151.__xva){
-            //autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source'].substr( 0 , tt151.__xva[k1]['T0.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true};
+            /* autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source'].substr( 0 , tt151.__xva[k1]['T0.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true}; */
             autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source']]={
-//                "che_autorisation_globale_source" : true ,
-                "id_autorisation" : 0 ,
+                "id_autorisation" :  /* "che_autorisation_globale_source" : true , */0 ,
                 "autorisation_cote_client" : true ,
-//                "cht_condition_rev_source" : null ,
-                "cht_condition_js_source" : null ,
+                "cht_condition_js_source" :  /* "cht_condition_rev_source" : null , */null ,
                 "cht_notification_ko_source" : null
             };
         }
@@ -131,12 +128,12 @@ class autorisations1{
         let tt152=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_source` , 
+        `T1`.`cht_condition_rev_source` , `T1`.`cht_condition_js_source` , `T1`.`cht_notification_ko_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
         
-        WHERE (`T1`.`chp_nom_source` LIKE :T1_chp_nom_source
-           AND `T0`.`chx_acces_autorisation` > 1) 
+        WHERE `T0`.`chx_acces_autorisation` >= 1 
         ORDER BY `T0`.`chx_acces_autorisation` ASC
         ;
         */
@@ -145,28 +142,28 @@ class autorisations1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        //this.__ig1.ma_trace1("tt152=",tt152);
+        /* this.__ig1.ma_trace1("tt152=",tt152); */
         let chx_acces_autorisation=0;
         let tableau_des_auto={};
         for(let k1 in tt152.__xva){
             let v1=tt152.__xva[k1];
             if(chx_acces_autorisation !== v1['T0.chx_acces_autorisation']){
                 if(chx_acces_autorisation === 0){
-                    //tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0};
+                    /* tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0}; */
                     tableau_des_auto[v1['T1.chp_nom_source']]={
-                          /*  */
-//                        "che_autorisation_globale_source" : false ,
+                         /*  */
+                         /* "che_autorisation_globale_source" : false , */
                         "id_autorisation" : v1['T0.chi_id_autorisation'] ,
                         "autorisation_cote_client" : 0 ,
-//                        "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] ,
+                         /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
                         "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
+                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source']
                     };
                 }else{
                     /* on concatène les autorisations générales et particulières array_merge , concat */
                     tableau_des_auto={ ...tableau_des_auto  , ...autorisations_globales };
                     let nom_du_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + chx_acces_autorisation + '_.json';
-                    let ret=await this.ecrire_fichier_des_autorisations( tableau_des_auto ,  chx_acces_autorisation , __db1 );
+                    let ret=await this.ecrire_fichier_des_autorisations( tableau_des_auto , chx_acces_autorisation , __db1 );
                     if(ret.__xst !== __xsu){
                         this.__ig1.donnees_retournees.__xsi[__xal].push( '[' + this.__ig1.nl2() + ']' );
                         return({"__xst" : __xer});
@@ -179,35 +176,35 @@ class autorisations1{
                         }
                     }
                     tableau_des_auto={};
-//                    tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0};
+                    /* tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0}; */
                     tableau_des_auto[v1['T1.chp_nom_source']]={
-                        /* */
-//                        "che_autorisation_globale_source" : false ,
+                         /*  */
+                         /* "che_autorisation_globale_source" : false , */
                         "id_autorisation" : v1['T0.chi_id_autorisation'] ,
                         "autorisation_cote_client" : 0 ,
-//                        "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] ,
+                         /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
                         "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
+                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source']
                     };
                 }
                 chx_acces_autorisation=v1['T0.chx_acces_autorisation'];
             }else{
-                //tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0};
+                /* tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0}; */
                 tableau_des_auto[v1['T1.chp_nom_source']]={
-                    /*  */
-//                    "che_autorisation_globale_source" : false ,
+                     /*  */
+                     /* "che_autorisation_globale_source" : false , */
                     "id_autorisation" : v1['T0.chi_id_autorisation'] ,
                     "autorisation_cote_client" : 0 ,
-//                    "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] ,
+                     /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
                     "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                    "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
+                    "cht_notification_ko_source" : v1['T1.cht_notification_ko_source']
                 };
             }
         }
         if(chx_acces_autorisation >= 1){
             tableau_des_auto={ ...tableau_des_auto  , ...autorisations_globales };
             let nom_du_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + chx_acces_autorisation + '_.json';
-            let ret=await this.ecrire_fichier_des_autorisations( tableau_des_auto ,  chx_acces_autorisation , __db1 );
+            let ret=await this.ecrire_fichier_des_autorisations( tableau_des_auto , chx_acces_autorisation , __db1 );
             if(ret.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xal].push( '[' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
@@ -333,10 +330,6 @@ class autorisations1{
         form['chx_acces_autorisation']=form['chx_acces_autorisation'] === null ? ( null ) : ( parseInt( form['chx_acces_autorisation'] , 10 ) );
         form['chx_source_autorisation']=form['chx_source_autorisation'] === null ? ( null ) : ( parseInt( form['chx_source_autorisation'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chx_acces_autorisation'] === null || form['chx_acces_autorisation'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "acces" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         if(form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
@@ -381,7 +374,7 @@ class autorisations1{
             let criteres_143={
                  /*  */
                 "c_chi_id_autorisation" : form['chi_id_autorisation'] ,
-                "n_chx_acces_autorisation" : form['chx_acces_autorisation'] ,
+                "n_chx_acces_autorisation" : form['chx_acces_autorisation'] === '' ? ( null ) : ( form['chx_acces_autorisation'] ) ,
                 "n_chx_source_autorisation" : form['chx_source_autorisation'] ,
                 "n_chp_nom_autorisation" : form['chp_nom_autorisation']
             };
@@ -650,10 +643,6 @@ class autorisations1{
         form['chx_acces_autorisation']=form['chx_acces_autorisation'] === null || form['chx_acces_autorisation'] === '' || form['chx_acces_autorisation'] === undefined ? ( null ) : ( parseInt( form['chx_acces_autorisation'] , 10 ) );
         form['chx_source_autorisation']=form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === '' || form['chx_source_autorisation'] === undefined ? ( null ) : ( parseInt( form['chx_source_autorisation'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chx_acces_autorisation'] === null || form['chx_acces_autorisation'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "acces" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         if(form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
@@ -669,7 +658,7 @@ class autorisations1{
         }
         let donnees_sql={
             "donnees" : [{
-                        "chx_acces_autorisation" : form['chx_acces_autorisation'] ,
+                        "chx_acces_autorisation" : form['chx_acces_autorisation'] === '' ? ( null ) : ( form['chx_acces_autorisation'] ) ,
                         "chx_source_autorisation" : form['chx_source_autorisation'] ,
                         "chp_nom_autorisation" : form['chp_nom_autorisation']
                     }]

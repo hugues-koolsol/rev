@@ -116,6 +116,9 @@ class __ig1{
             this.retablir_les_boutons_masques( le_colis );
             return({"__xst" : __xer});
         }else{
+            if(le_colis.__xva.hasOwnProperty( '__liste_des_autorisations1' )){
+                this.__liste_des_autorisations1=le_colis.__xva.__liste_des_autorisations1;
+            }
             if(le_colis.__xac !== ''){
                 let obj1=this.__rev1.rev_tm( le_colis.__xac );
                 if(obj1.__xst !== __xsu){
@@ -189,28 +192,36 @@ class __ig1{
                   si le module n'a pas encore été chargé
                 */
                 let module=null;
-                if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_.js' === nom_a_importer )){
-                    try{
-                       
-                        console.log('%celem=','background:lightgreen;',nom_a_importer)
-                        let elem=this.__liste_des_autorisations1[nom_a_importer];
-                        console.log('%celem=','background:lightblue;',elem)
-                        if(elem && elem.cht_condition_js_source!==null){
-                            let aa=eval(elem.cht_condition_js_source);
-                            if(aa && aa === true){
+                if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_c.js' === nom_a_importer)){
+                    if(true){
+                        try{
+                            /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
+                            let elem=this.__liste_des_autorisations1[nom_a_importer];
+                            /* console.log('%celem=','background:lightblue;',elem) */
+                            if(elem){
+                                if(elem.cht_condition_js_source !== null){
+                                    let aa=eval( elem.cht_condition_js_source );
+                                    if(aa && aa === true){
+                                    }else{
+                                        if(elem.cht_notification_ko_source && elem.cht_notification_ko_source !== ''){
+                                            this.affiche_les_messages( {"__xst" : __xal ,"__xme" : elem.cht_notification_ko_source} );
+                                        }else{
+                                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 1 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                        }
+                                        return({"__xst" : __xer});
+                                    }
+                                }else{
+                                    /* ok, pas de condition particulière à tester */
+                                }
                             }else{
-                                //this.ajoute_message(  );
-                                this.affiche_les_messages({"__xst" : __xer ,"__xme" : 'erreur autorisation 1'});
-                                return({__xst : __xer })
+                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
+                                return({"__xst" : __xer});
                             }
+                        }catch(e){
+                            console.error( e.stack );
                         }
-                    }catch(e){
-                        console.error(e.stack)
                     }
                 }
-
-                
-                
                 dejà_importe.push( nom_a_importer );
                 try{
                     module=await import( './f0?n0=' + nom_a_importer + '&__version=' + __version );
@@ -298,27 +309,36 @@ class __ig1{
                 }
                 this.retablir_les_boutons_masques( __xva_param );
             }else{
-             
-             
-                if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_.js' === nom_a_importer )){
-                    try{
-                        console.log('%celem=','background:lightgreen;',nom_a_importer)
-                        let elem=this.__liste_des_autorisations1[nom_a_importer];
-                        console.log('%celem=','background:lightblue;',elem)
-                        if(elem && elem.cht_condition_js_source!==null){
-                            let aa=eval(elem.cht_condition_js_source);
-                            if(aa && aa === true){
+                if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_c.js' === nom_a_importer)){
+                    if(true){
+                        try{
+                            /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
+                            let elem=this.__liste_des_autorisations1[nom_a_importer];
+                            /* console.log('%celem=','background:lightblue;',elem) */
+                            if(elem){
+                                if(elem.cht_condition_js_source !== null){
+                                    let aa=eval( elem.cht_condition_js_source );
+                                    if(aa && aa === true){
+                                    }else{
+                                        if(elem.cht_notification_ko_source && elem.cht_notification_ko_source !== ''){
+                                            this.affiche_les_messages( {"__xst" : __xal ,"__xme" : elem.cht_notification_ko_source} );
+                                        }else{
+                                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 2 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                        }
+                                        return({"__xst" : __xer});
+                                    }
+                                }else{
+                                    /* ok, pas de condition particulière à tester */
+                                }
                             }else{
-                                //this.ajoute_message(  );
-                                this.affiche_les_messages({"__xst" : __xer ,"__xme" : 'erreur autorisation 2'});
-                                return({__xst : __xer })
+                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 4 <br />cette action n\'est pas disponnible'} );
+                                return({"__xst" : __xer});
                             }
+                        }catch(e){
+                            console.error( e.stack );
                         }
-                    }catch(e){
-                        console.error(e.stack)
                     }
                 }
-             
                 /* déjà chargé */
                 for( let i=indice ; i < l01 ; i=mat[i][12] ){
                     try{
@@ -1929,11 +1949,10 @@ class __ig1{
                 */
                 let texte_erreur=ligne_erreur.replace( /http:\/\// , '' );
                 texte_erreur=texte_erreur.replace( /https:\/\// , '' );
-//                texte_erreur=texte_erreur.replace( /localhost/ , '' );
+                /* texte_erreur=texte_erreur.replace( /localhost/ , '' ); */
                 texte_erreur=texte_erreur.replace( /\/f0\?n0=/ , '-' ).replace( /\(:/ , '' );
                 texte_erreur=texte_erreur.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
                 texte_erreur=texte_erreur.replace( /\&__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
-
                 /*
                   "    at #js_traiteDefinitionObjet (8001-w_rev_vers_js1_.js:2576:21)"
                 */
@@ -1942,7 +1961,7 @@ class __ig1{
                 try{
                     libelle_erreur='<br />' + e.stack.toString().split( /\r\n|\n/ )[0];
                 } catch {}
-                let tt01=new RegExp( 'localhost:'+this.__le_port )
+                let tt01=new RegExp( 'localhost:' + this.__le_port );
                 texte_erreur=texte_erreur.replace( tt01 , '' );
                 texte_erreur=texte_erreur.replace( 'localhost' , '' );
                 texte_erreur=texte_erreur.replace( / at /g , '<br />at ' );
@@ -3368,91 +3387,91 @@ class __ig1{
         t+='</div>\r\n';
         t+='<div>\r\n';
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
-            t+='<span>&nbsp;bidon=' + ( i + 1 ) + '</span><br />';
+            t+='<span>&nbsp;bidon=' + (i + 1) + '</span><br />';
             if(i === 5){
                 for( let j=0 ; j <= 4 ; j++ ){
                     t+='<div class="rev_bouton yy__' + j + '" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
                 }
             }
             if(i === 10){
-                 tri_affiche=true;
-                 t+='<div  style="display:flex;">';
-                 t+='<div style="margin : 0 auto 0 auto;">';
-                 t+='<ul id="vv_tri_bidon">';
-                 t+='<li>pouvez</li>';
-                 t+='<li>vous</li>';
-                 t+='<li>hiérarchiser</li>';
-                 t+='<li>cette</li>';
-                 t+='<li>liste</li>';
-                 t+='<li>qui</li>';
-                 t+='<li>contient</li>';
-                 t+='<li>beaucoup</li>';
-                 t+='<li>d\'éléments</li>';
-                 t+='<li>?</li>';
-                 t+='</ul>';
-                 t+='</div>';
-                 t+='</div>';
+                tri_affiche=true;
+                t+='<div  style="display:flex;">';
+                t+='<div style="margin : 0 auto 0 auto;">';
+                t+='<ul id="vv_tri_bidon">';
+                t+='<li>pouvez</li>';
+                t+='<li>vous</li>';
+                t+='<li>hiérarchiser</li>';
+                t+='<li>cette</li>';
+                t+='<li>liste</li>';
+                t+='<li>qui</li>';
+                t+='<li>contient</li>';
+                t+='<li>beaucoup</li>';
+                t+='<li>d\'éléments</li>';
+                t+='<li>?</li>';
+                t+='</ul>';
+                t+='</div>';
+                t+='</div>';
             }
-            
             if(i === 15){
-                 t+='<div style="display:flex;">';
-                 /*
-                 
-                 */
-                 t+='<ul data-rev_menu="1" id="vv_menu_bidon1">';
-                 t+=' <li>';
-                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un menu dans la page</div>';
-                 t+='  <ul>';
-                 t+='   <li>';
-                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="liste des taches">taches 1</div>';
-                 t+='   </li>';
-                 t+='   <li>';
-                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))" title="convertion de js">convertion de js</div>';
-                 t+='   </li>';
-                 t+='   <li>';
-                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 1</div>';
-                 t+='   </li>';
-                 t+='   <li>';
-                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 1</div>';
-                 t+='   </li>';
-                 t+='   <li>';
-                 t+='     bla';
-                 t+='     <ul>';
-                 t+='       <li>';
-                 t+='         <div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 11</div>';
-                 t+='       </li>';
-                 t+='       <li>';
-                 t+='         <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 11</div>';
-                 t+='       </li>';
-                 t+='     </ul>';
-                 t+='   </li>';
-                 t+='  </ul>';
-                 t+=' </li>';
-                 t+='</ul>';
-                 /*
-                 
-                 */
-                 t+='<ul data-rev_menu="1" id="vv_menu_bidon2">';
-                 t+=' <li>';
-                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un autre menu</div>';
-                 t+='  <ul>';
-                 t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 2</div></li>';
-                 t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 2</div></li>';
-                 t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="liste des taches">taches 2</div></li>';
-                 t+='  </ul>';
-                 t+=' </li>';
-                 t+='</ul>';
-                 /*
-                 
-                 */
-                 t+='</div>';
+                t+='<div style="display:flex;">';
+                /*
+                  
+                */
+                t+='<ul data-rev_menu="1" id="vv_menu_bidon1">';
+                t+=' <li>';
+                t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un menu dans la page</div>';
+                t+='  <ul>';
+                t+='   <li>';
+                t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="liste des taches">taches 1</div>';
+                t+='   </li>';
+                t+='   <li>';
+                t+='     <div class="rev_bouton" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))" title="convertion de js">convertion de js</div>';
+                t+='   </li>';
+                t+='   <li>';
+                t+='     <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 1</div>';
+                t+='   </li>';
+                t+='   <li>';
+                t+='     <div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 1</div>';
+                t+='   </li>';
+                t+='   <li>';
+                t+='     <div class="rev_bouton" data-rev_click="m1(n1(x_ecran_coordonnees1),f1(entree_module()))" title="mes coordonnées">mes coordonnées</div>';
+                t+='   </li>';
+                t+='   <li>';
+                t+='     bla';
+                t+='     <ul>';
+                t+='       <li>';
+                t+='         <div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 11</div>';
+                t+='       </li>';
+                t+='       <li>';
+                t+='         <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 11</div>';
+                t+='       </li>';
+                t+='     </ul>';
+                t+='   </li>';
+                t+='  </ul>';
+                t+=' </li>';
+                t+='</ul>';
+                /*
+                  
+                */
+                t+='<ul data-rev_menu="1" id="vv_menu_bidon2">';
+                t+=' <li>';
+                t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un autre menu</div>';
+                t+='  <ul>';
+                t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 2</div></li>';
+                t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 2</div></li>';
+                t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="liste des taches">taches 2</div></li>';
+                t+='  </ul>';
+                t+=' </li>';
+                t+='</ul>';
+                /*
+                  
+                */
+                t+='</div>';
             }
         }
         t+='</div>\r\n';
         this.maj_contenu_principal( t );
-        
         if(tri_affiche === true){
-         
             let options={
                 "hauteur_max_en_vh" : /* entre 20 et 80 */20 ,
                 "largeur_max" : /* 'calc(100% - 50px)', */'340px' ,
@@ -3466,11 +3485,10 @@ class __ig1{
             };
             options['afficher_le_bouton_editer']=0;
             options['class_du_bouton_editer']='rev_bouton yy__xif';
-            import( './f0?n0=_tri_arbre1_c.js&__version=' + this.__version ).then((le_module)=>{
-              new le_module['_tri_arbre1']( 'vv_tri_bidon' , options );
-            });
+            import( './f0?n0=_tri_arbre1_c.js&__version=' + this.__version ).then( ( le_module ) => {
+                    new le_module['_tri_arbre1']( 'vv_tri_bidon' , options );
+                } );
         }
-        
         this.activer_menu( '-1' );
         this.maj_hash( mat , 0 );
         this.#date_derniere_navigation=performance.now();
@@ -3585,7 +3603,7 @@ class __ig1{
                 les_menu1+='Les menus ne sont pas définis 1';
             }else if( typeof le_message_du_serveur.__xva.les_menu1 === 'string'){
                 les_menu1+=le_message_du_serveur.__xva.les_menu1;
-                if(le_message_du_serveur.__xva.hasOwnProperty('__liste_des_autorisations1')){
+                if(le_message_du_serveur.__xva.hasOwnProperty( '__liste_des_autorisations1' )){
                     this.__liste_des_autorisations1=le_message_du_serveur.__xva.__liste_des_autorisations1;
                 }
             }else{
@@ -3599,7 +3617,6 @@ class __ig1{
             document.getElementById( 'vv_bouton_connexion' ).classList.remove( 'yy__0' );
             document.getElementById( 'vv_bouton_connexion' ).classList.add( 'yy__1' );
         }
-
         document.getElementById( 'vv_nav_centre' ).innerHTML=les_menu1;
         this.ajoute_les_evenements_aux_boutons();
         this.maj_fav_icone( le_message_du_serveur._CA_ , le_message_du_serveur.chi_id_projet );

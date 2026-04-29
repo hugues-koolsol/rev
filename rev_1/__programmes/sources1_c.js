@@ -334,7 +334,6 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        
         /* conversion des données numériques début */
         fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
@@ -422,7 +421,6 @@ class sources1{
         }
         o1+='    </div>';
         o1+='  </div>';
-        
         /*
           =====================================================================================================
         */
@@ -1470,17 +1468,22 @@ class sources1{
                 if(elem['T0.chp_nom_source'] !== null){
                     lst+=this.__ig1.fi2( elem['T0.chp_nom_source'] );
                 }
+                lst+='<br />';
                 if(elem['T0.che_autorisation_globale_source'] !== null){
                     if(elem['T0.che_autorisation_globale_source'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
+                if(elem['T0.che_binaire_source'] !== null){
+                    if(elem['T0.che_binaire_source'] === 0){
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
+                }
+                lst+='<br />';
                 if(elem['T0.chx_dossier_id_source'] !== null){
                     lst+='(' + elem['T0.chx_dossier_id_source'] + ')';
                 }
@@ -1490,11 +1493,8 @@ class sources1{
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
-                if(elem['T0.cht_commentaire_source'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.cht_commentaire_source'].substr( 0 , 200 ) );
-                }
-                lst+='</td>';
+                /* lst+='<td style="text-align:center;">'; */
+                /* lst+='</td>'; */
                 /*
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
@@ -1511,20 +1511,30 @@ class sources1{
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.che_binaire_source'] !== null){
-                    if(elem['T0.che_binaire_source'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                /*
+                  lst+='<td style="text-align:center;">';
+                  lst+='</td>';
+                */
+                /*
+                */
+                lst+='<td style="max-width:360px;overflow:hidden;">';
+                if(elem['T0.cht_condition_rev_source'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.cht_condition_rev_source'].substr( 0 , 200 ) );
+                }
+                lst+='<hr />';
+                if(elem['T0.cht_notification_ko_source'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.cht_notification_ko_source'] );
+                }else{
+                    if(elem['T0.cht_condition_rev_source'] !== null){
+                        lst+='<div class="yy__2">une notification serait la bienvenue !</div>';
                     }
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
-                if(elem['T0.cht_condition_rev_source'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.cht_condition_rev_source'].substr( 0 , 200 ) );
+                if(elem['T0.cht_commentaire_source'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.cht_commentaire_source'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
@@ -1537,15 +1547,15 @@ class sources1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+='<th>id</th>';
-                o1+='<th>nom / auto globale</th>';
-                o1+='<th>dossier</th>';
-                o1+='<th style="max-width:360px;">commentaire</th>';
+                o1+='<th>nom / auto globale / binaire<br />dossiers</th>';
+                /* o1+='<th>dossier</th>'; */
                 o1+='<th style="max-width:360px;">rev</th>';
                 o1+='<th style="max-width:360px;">genere</th>';
                 /* o1+='<th>nom</th>'; */
-                o1+='<th>binaire</th>';
+                /* o1+='<th>binaire</th>'; */
                 /* o1+='<th>autorisation globale</th>'; */
                 o1+=/* cht_condition_rev_source */'<th style="max-width:360px;">condition rev</th>';
+                o1+='<th style="max-width:360px;">commentaire</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

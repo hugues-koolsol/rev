@@ -55,7 +55,7 @@ class projets1{
                 chi_id_projet=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        if(chi_id_projet>0){
+        if(chi_id_projet > 0){
             let m=await import( './bdds1_s.js' );
             let o=new m['bdds1']( this.__ig1 );
             let obj=await o.dump_de_la_base( mat , d , chi_id_projet );

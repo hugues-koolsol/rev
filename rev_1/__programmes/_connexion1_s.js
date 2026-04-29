@@ -28,7 +28,7 @@ class _connexion1{
     /*
       =============================================================================================================
     */
-    deconnexion1( mat , d ){
+    async deconnexion1( mat , d ){
         this.__ig1.donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_contenu1(id(vv_se_deconnecter),type_cible(style),valeur(nom_du_style(display),valeur_de_style(none)))))';
         this.__ig1.donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_menu()))';
         this.__ig1.donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_contenu(id(vv_bouton_connexion),type_cible(supprimer_class),valeur(nom_de_la_classe(yy__0)))))';
@@ -49,6 +49,7 @@ class _connexion1{
             this.__ig1.options_generales["set-cookie"].push( le_cookie );
         }
         this.__ig1.donnees_retournees[__xva]['__liste_des_genres']=[];
+        await this.__ig1.obtenir_les_menus();
         return({"__xst" : __xsu});
     }
     /*
