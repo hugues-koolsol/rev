@@ -101,7 +101,7 @@ CREATE TABLE `tbl_groupes`(
    table('tbl_groupes'),
    genre_meta(table_de_base),rang_de_la_table(10),permet_la_gestion_de('groupe'),
    distinction_pour_liste('liste des groupes'),
-   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(13,51))) 
+   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(10,33))) 
 */
     
             /*
@@ -265,10 +265,10 @@ CREATE TABLE `tbl_acces`(
             nom_du_champ('cht_parametres_acces'),
             nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),
             typologie(cht),
-            genre(6)
+            genre(11)
             )
             */
-             `cht_parametres_acces` TEXT DEFAULT  NULL
+             `cht_parametres_acces` TEXT NOT NULL DEFAULT  '{}'
     ,
     
             /*
@@ -330,10 +330,10 @@ CREATE TABLE `tbl_autorisations`(
             nom_du_champ('chx_acces_autorisation'),
             nom_bref_du_champ('acces'),abrege_du_champ('acces'),
             typologie(chx),
-            genre(4)
+            genre(8)
             )
             */
-             `chx_acces_autorisation` INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces)  ON UPDATE CASCADE
+             `chx_acces_autorisation` INTEGER REFERENCES tbl_acces(chi_id_acces)  ON UPDATE CASCADE DEFAULT  NULL
     ,
     
             /*
@@ -476,7 +476,7 @@ CREATE TABLE `tbl_dossiers`(
    table('tbl_dossiers'),
    genre_meta(table_de_base),rang_de_la_table(60),permet_la_gestion_de('dossier'),
    distinction_pour_liste('liste des dossiers'),
-   distinction_pour_isad('d\'un dossier'),fonctions_spéciales1('ne_pas_supprimer_id_un(8)'),transform_base_sur_svg(translate(721,490))) 
+   distinction_pour_isad('d\'un dossier'),fonctions_spéciales1('ne_pas_supprimer_id_un(9)'),transform_base_sur_svg(translate(721,490))) 
 */
     
             /*
@@ -706,6 +706,42 @@ CREATE TABLE `tbl_sources`(
             )
             */
              `che_autorisation_globale_source` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_condition_rev_source'),
+            nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),
+            typologie(cht),
+            genre(98)
+            )
+            */
+             `cht_condition_rev_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_condition_js_source'),
+            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),
+            typologie(cht),
+            genre(97)
+            )
+            */
+             `cht_condition_js_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_notification_ko_source'),
+            nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),
+            typologie(cht),
+            genre(6)
+            )
+            */
+             `cht_notification_ko_source` TEXT DEFAULT  NULL
     );
 
 
