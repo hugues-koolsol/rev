@@ -45,7 +45,7 @@ class autorisations1{
           return({"__xst" : __xer});
           }
         */
-        this.__ig1.ma_trace1( "tableau_des_auto=" , tableau_des_auto );
+        /* this.__ig1.ma_trace1( "tableau_des_auto=" , tableau_des_auto ); */
         let tableau_des_auto_client={};
         for(let i in tableau_des_auto){
             if(i.substr( i.length - 4 ) === '_.js' || i.substr( i.length - 5 ) === '_c.js'){

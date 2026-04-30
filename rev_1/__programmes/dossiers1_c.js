@@ -717,7 +717,7 @@ class dossiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        var __test=this.__ig1.__fnt1.test_du_nom_de_fichier1( fo1['chp_nom_dossier'] , 'nom' );
+        var __test=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1['chp_nom_dossier'] , 'nom' );
         if(__test.__xst !== __xsu){
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -925,8 +925,8 @@ class dossiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        var __test=this.__ig1.__fnt1.test_du_nom_de_fichier1( fo1['chp_nom_dossier'] , 'nom' );
-        if(__test.__xst !== __xsu){
+        var __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1['chp_nom_dossier'] , 'nom' );
+        if(__test_0_1.__xst !== __xsu){
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{

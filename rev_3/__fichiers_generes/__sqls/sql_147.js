@@ -17,6 +17,7 @@ class sql_147{
          \`chp_methode_menu\` , 
          \`cht_libelle_menu\` , 
          \`cht_condition_menu\` , 
+         \`cht_condition_js_menu\` , 
          \`cht_initialisation_menu\`
       ) VALUES 
         `;
@@ -32,6 +33,7 @@ class sql_147{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_methode_menu'] ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_libelle_menu'] ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_condition_menu'] ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_condition_js_menu'] ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_initialisation_menu'] ) + '';
                 liste_des_valeurs+=')';
             }

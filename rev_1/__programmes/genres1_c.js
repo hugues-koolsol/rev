@@ -342,7 +342,7 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=this.__ig1.__fnt1.test_fonctions_de_c_fonctions1( fo1['cht_fonctions_genre'] , 'fonctions' );
+        var __test=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( fo1['cht_fonctions_genre'] , 'fonctions' );
         if(__test.__xst !== __xsu){
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -1225,7 +1225,7 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=this.__ig1.__fnt1.test_fonctions_de_c_fonctions1( fo1['cht_fonctions_genre'] , 'fonctions' );
+        var __test=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( fo1['cht_fonctions_genre'] , 'fonctions' );
         if(__test.__xst !== __xsu){
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();

@@ -93,8 +93,8 @@ class menus1{
         /*
           après maj du menu, on met à jour le tri du menu
         */
-        this.__ig1.ma_trace1( '__xva_avant=' , __xva_avant );
-        this.__ig1.ma_trace1( 'form=' , form );
+        /* this.__ig1.ma_trace1( '__xva_avant=' , __xva_avant ); */
+        /* this.__ig1.ma_trace1( 'form=' , form ); */
         /*#
           __xva_avant={
             "T0.chi_id_menu": 4,
@@ -132,12 +132,18 @@ class menus1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
-        this.__ig1.ma_trace1( 'tt141=' , tt141[__xva][0] );
+        /* this.__ig1.ma_trace1( 'tt141=' , tt141[__xva][0] ); */
         if(tt141[__xva][0]['T0.chx_acces_autorisation'] === null){
             /* c'est un menu qui est pour les utilisateurs non connectés */
             tt141[__xva][0]['T0.chx_acces_autorisation']=0;
             /* return({"__xst" : __xsu}); */
         }
+        if(tt141[__xva][0]['T2.chp_nom_source'].slice(-5) === '_s.js'){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'autorisation de ce menu pointe sur un source serveur et devrait pointer sur un source client' );
+            return({"__xst" : __xer});
+        }
+        
+        
         let criteres_136={
              /*  */
             "T0_chi_id_acces" : tt141[__xva][0]['T0.chx_acces_autorisation']
@@ -160,7 +166,7 @@ class menus1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        this.__ig1.ma_trace1( 'tt136=' , tt136[__xva] );
+        /* this.__ig1.ma_trace1( 'tt136=' , tt136[__xva] ); */
         let json_de_l_acces=JSON.parse( tt136[__xva][0]['T0.cht_parametres_acces'] );
         /* this.__ig1.ma_trace1('json_de_l_acces=',json_de_l_acces); */
         let le_json_du_menu=null;
@@ -271,6 +277,7 @@ class menus1{
       =============================================================================================================
     */
     async tests_avant_creer( mat , d , form , __db1 ){
+        /* afr vérifier que le js et le rev correspondent bien */
         /*
           this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           return({"__xst" : __xer});
@@ -673,6 +680,7 @@ class menus1{
                         "chp_methode_menu" : form['chp_methode_menu'] ,
                         "cht_libelle_menu" : form['cht_libelle_menu'] ,
                         "cht_condition_menu" : form['cht_condition_menu'] === '' ? ( null ) : ( form['cht_condition_menu'] ) ,
+                        "cht_condition_js_menu" : form['condition_js_menu'] === '' ? ( null ) : ( form['condition_js_menu'] ) ,
                         "cht_initialisation_menu" : form['cht_initialisation_menu'] === '' ? ( null ) : ( form['cht_initialisation_menu'] )
                     }]
         };
@@ -686,6 +694,7 @@ class menus1{
             `chp_methode_menu` , 
             `cht_libelle_menu` , 
             `cht_condition_menu` , 
+            `cht_condition_js_menu` , 
             `cht_initialisation_menu`
         ) VALUES (
             :chp_titre_menu , 
@@ -693,6 +702,7 @@ class menus1{
             :chp_methode_menu , 
             :cht_libelle_menu , 
             :cht_condition_menu , 
+            :cht_condition_js_menu , 
             :cht_initialisation_menu
         );
         */

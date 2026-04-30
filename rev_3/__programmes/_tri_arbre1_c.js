@@ -216,13 +216,13 @@ class _tri_arbre1{
         if(window.screen.width < fait_iech_zipad.width){
             document.body.style.position='fixed';
         }else{
-//            document.body.style.position='fixed';
+            /* document.body.style.position='fixed'; */
             document.body.style.marginLeft=fait_iech_zipad.left + 'px';
             try{
                 document.getElementById( 'vv_contenu_principal' ).style.width=fait_iech_zipad.width + 'px';
             } catch {}
         }
-//        document.body.style.position='fixed';
+        /* document.body.style.position='fixed'; */
         this.#souris_ou_doigt_bas( e.touches[0] );
     }
     /*

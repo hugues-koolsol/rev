@@ -28,7 +28,7 @@ class _connexion1{
     /*
       =============================================================================================================
     */
-    deconnexion1( mat , d ){
+    async deconnexion1( mat , d ){
         this.__ig1.donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_contenu1(id(vv_se_deconnecter),type_cible(style),valeur(nom_du_style(display),valeur_de_style(none)))))';
         this.__ig1.donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_menu()))';
         this.__ig1.donnees_retournees[__xac]+='m1(n1(__ig1),f1(maj_contenu(id(vv_bouton_connexion),type_cible(supprimer_class),valeur(nom_de_la_classe(yy__0)))))';
@@ -49,6 +49,7 @@ class _connexion1{
             this.__ig1.options_generales["set-cookie"].push( le_cookie );
         }
         this.__ig1.donnees_retournees[__xva]['__liste_des_genres']=[];
+        await this.__ig1.obtenir_les_menus();
         return({"__xst" : __xsu});
     }
     /*
@@ -82,14 +83,14 @@ class _connexion1{
                 this.__ig1.ma_trace1( e );
             }
         }
-        const contenu_structure=await Deno.readTextFile( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_structure.sql" );
+        const contenu_structure=await Deno.readTextFile( "./__fichiers_generes/__sauvegarde_des_bases/" + nom_du_fichier_bdd + ".v2_structure.sql" );
         /* bdd_1.sqlite.v2_structure.sql */
         try{
             await __db1.exec( contenu_structure );
         }catch(e){
             this.__ig1.ma_trace1( e );
         }
-        const contenu_index=await Deno.readTextFile( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_index.sql" );
+        const contenu_index=await Deno.readTextFile( "./__fichiers_generes/__sauvegarde_des_bases/" + nom_du_fichier_bdd + ".v2_index.sql" );
         try{
             await __db1.exec( contenu_index );
         }catch(e){
@@ -98,7 +99,7 @@ class _connexion1{
         /*
           lecture séquentielle du fichier des INSERT
         */
-        let file=await Deno.open( "./__fichiers_generes/" + nom_du_fichier_bdd + ".v2_donnees.sql" );
+        let file=await Deno.open( "./__fichiers_generes/__sauvegarde_des_bases/" + nom_du_fichier_bdd + ".v2_donnees.sql" );
         /* Convert bytes to string and Split into lines */
         const readable=file.readable.pipeThrough( new TextDecoderStream() ).pipeThrough( new TextLineStream() );
         let dans_bloc=false;

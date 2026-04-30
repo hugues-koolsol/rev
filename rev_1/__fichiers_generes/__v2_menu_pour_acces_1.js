@@ -81,7 +81,7 @@ class v2_menu_pour_acces_1{
         les_sous_menus[0]+=`<li><div  id="menu_30"   data-id_auto="45" data-id_menu="27" class="rev_bouton"  title="source vers programme" data-rev_click="m1(n1(x_ecran_source_vers_programme1),f1(entree_module()))">src->pgm</div></li>`;
         /* niveau 0 */
         if(les_sous_menus[0] !== ''){
-            les_menu1+='<li><div data-separateur="0" data-libelle_noeud_menu1="0">autres</div>';
+            les_menu1+='<li><div data-separateur="0" data-libelle_noeud_menu1="0">admin</div>';
             les_menu1+=`<ul id="menu_10" data-id_menu="10">`;
             les_menu1+=les_sous_menus[0];
             les_menu1+=`</ul>`;

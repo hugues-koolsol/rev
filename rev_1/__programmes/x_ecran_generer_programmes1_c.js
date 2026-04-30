@@ -1226,7 +1226,7 @@ class x_ecran_generer_programmes1{
                     for( let j=1 ; j < l01 ; j=mat1[j][12] ){
                         if(mat1[j][2] === 'f'){
                             src_client2+='\n';
-                            src_client2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnt1.' + mat1[j][1] + '(';
+                            src_client2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
                             /* 0,99,fo1[\'chp_texte_tache\'],\'priorite\'];\r\n'; */
                             if(mat1[j][8] === 0){
                             }else{
@@ -1391,7 +1391,7 @@ class x_ecran_generer_programmes1{
                             for( let j=1 ; j < l01 ; j=mat1[j][12] ){
                                 if(mat1[j][2] === 'f'){
                                     src_serveur_js2+='\n';
-                                    src_serveur_js2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnt1.' + mat1[j][1] + '(';
+                                    src_serveur_js2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
                                     if(mat1[j][8] === 0){
                                     }else{
                                         for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
@@ -2680,7 +2680,7 @@ class x_ecran_generer_programmes1{
                     for( let j=1 ; j < l01 ; j=mat1[j][12] ){
                         if(mat1[j][2] === 'f'){
                             src_client2+='\n';
-                            src_client2+='        var __test=this.__ig1.__fnt1.' + mat1[j][1] + '(';
+                            src_client2+='        var __test=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
                             /* 0,99,fo1[\'chp_texte_tache\'],\'priorite\'];\r\n'; */
                             if(mat1[j][8] === 0){
                             }else{
@@ -2907,7 +2907,7 @@ class x_ecran_generer_programmes1{
                             for( let j=1 ; j < l01 ; j=mat1[j][12] ){
                                 if(mat1[j][2] === 'f'){
                                     src_serveur_js2+='\n';
-                                    src_serveur_js2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnt1.' + mat1[j][1] + '(';
+                                    src_serveur_js2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
                                     if(mat1[j][8] === 0){
                                     }else{
                                         for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){

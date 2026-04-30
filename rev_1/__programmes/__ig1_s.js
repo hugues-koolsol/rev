@@ -10,8 +10,9 @@ const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
 import {getCookies} from "https://deno.land/std/http/cookie.ts";
 import {crypto} from "jsr:@std/crypto";
-import {__fnt1} from "./__fnt1_.js";
+import {__fnt1} from "./__fnt1_s.js";
 import {__rev1} from "./__rev1_.js";
+import {__fnts_c_et_s} from './__fnts_c_et_s_.js';
 import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 import {format as formater_la_date} from "jsr:@std/datetime";
 /*
@@ -25,6 +26,7 @@ class __ig1{
     __version='';
     /* module des fonctions générales */
     __fnt1=null;
+    __fnts_c_et_s=null;
     /* module de convertions des sources rev */
     __rev1=null;
     repertoire_racine_de_tous_les_projets='';
@@ -85,6 +87,7 @@ class __ig1{
         this.repertoire_racine_de_tous_les_projets=repertoire_racine_de_tous_les_projets;
         this.__fnt1=new __fnt1( [] , 0 , this );
         this.__rev1=new __rev1( this );
+        this.__fnts_c_et_s=new __fnts_c_et_s( this , 'cote_serveur');
         this.objet_des_modules_charges['__fnt1']=this.__fnt1;
         this.objet_des_modules_charges['__rev1']=this.__rev1;
         this.__ndlcs='cle_de_session_rev_' + _CA_ + '_websocket';
@@ -599,6 +602,7 @@ class __ig1{
       =============================================================================================================
     */
     ajoute_message( obj ){
+        this.donnees_retournees.__xsi[obj.__xst].push( obj.__xme );
         this.ma_trace1( 'dans ajoute_message, obj=' , obj );
         return({"__xst" : obj.__xst});
     }

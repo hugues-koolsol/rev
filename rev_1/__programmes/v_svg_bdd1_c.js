@@ -3406,12 +3406,85 @@ class v_svg_bdd1{
         /*
           =====================================================================================================
         */
+        t+='<hr /><h3>exécuter une requete sql directement sur la base</h3>';
+        rev='';
+        rev+='m1(n1(' + this.moi + '),f1(page_exécuter_une_requete_sql_directement_sur_la_base(id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '))))';
+        t+='<div class="rev_bouton yy__1" data-rev_click="' + rev + '">page exécuter</div>';
+        /*
+          =====================================================================================================
+        */
+        this.__ig1.affiche_sous_fenetre1( t );
+        return({"__xst" : __xsu});
+    }
+    
+    
+    /*
+      =============================================================================================================
+    */
+    exécution_d_une_requete_sql_directement_sur_la_base( mat , d ){
+        let id_bdd_de_la_base_en_cours=0;
+        let nom_de_zone='';
+        for( let i=0 ; i < mat.length ; i++ ){
+            if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'nom_de_zone' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_zone=mat[i + 1][1];
+            }
+        }
+        if(!(nom_de_zone!=='' && id_bdd_de_la_base_en_cours>0 && document.getElementById(nom_de_zone))){
+            return({"__xst" : __xer});
+        }
+        let source_sql=document.getElementById(nom_de_zone).value;
+        let cmd='';
+        cmd+='pm1(m1(n1(' + this.moi + '),f1(executer_sql3(';
+        cmd+=' contexte(executer_un_ordre_sql_directe)';
+        cmd+=' id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')';
+        cmd+='))))';
+        let obj={"__xac" : cmd ,"__xva" : {"source_sql" : source_sql}};
+        this.__ig1.envoyer_un_message_au_worker( obj );
+        return({"__xst" : __xsu});
+        
+    }
+    /*
+      =============================================================================================================
+    */
+    page_exécuter_une_requete_sql_directement_sur_la_base( mat , d ){
+        this.__ig1.fermer_la_sous_fenetre();
+        let id_bdd_de_la_base_en_cours=0;
+        for( let i=0 ; i < mat.length ; i++ ){
+            if((mat[i][1] === 'id_bdd_de_la_base_en_cours'
+                       || 'temp' === mat[i][1])
+                   && mat[i][2] === 'f'
+                   && mat[i][8] === 1
+                   && mat[i + 1][2] === 'c'
+            ){
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let t='';
+        t+='<h1>définition de la base</h1>';
+        /*  */
+        t+='<div class="yy_conteneur_txtara">';
+        t+='    <div>\r\n';
+        t+=this.__ig1.__fnt1.boutons_edition1( 'vv_commande_sql' );
+        t+='    </div>\r\n';
+        t+='<textarea data-editeur1="source_editeur1"  id="vv_commande_sql" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        t+='insert INTO tbl_acces( chi_id_acces , chp_nom_acces , chx_groupe_acces , chx_metier_acces , cht_parametres_acces , che_actif_acces )\n';
+        t+='VALUES( 0 , \'anonymes\' , 1 , 2 , \'{}\' , 1 );\n\n';
+        t+='DELETE FROM tbl_acces WHERE chi_id_acces = 0;';
+        t+='</textarea>';
+        t+='</div>\r\n';
+        let rev='';
+        rev+='m1(n1(' + this.moi + '),f1(exécution_d_une_requete_sql_directement_sur_la_base(id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + '),nom_de_zone(vv_commande_sql))))';
+        t+='<div class="rev_bouton yy__2" data-rev_click="' + rev + '">exécuter</div>';
+        
+        
+        
         this.__ig1.affiche_sous_fenetre1( t );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
-      function modifier_une_table_en_bdd
     */
     voir_la_définition_de_la_base_à_partir_de_ce_schema( mat , d ){
         this.__ig1.fermer_la_sous_fenetre();
@@ -3821,17 +3894,23 @@ class v_svg_bdd1{
         }
         switch (contexte){
             case 'ordonner_les_champs' : this.apres_trier_les_champs1( mat , d );
+                this.__ig1.fermer_la_sous_fenetre();
                 break;
             case 'apres_renommer_une_table1' : this.apres_renommer_une_table1( mat , d );
+                this.__ig1.fermer_la_sous_fenetre();
                 break;
             case 'renommer_en_bdd_un_champ' : this.apres_renommer_un_champs1( mat , d );
+                this.__ig1.fermer_la_sous_fenetre();
                 break;
             case 'ajouter_en_bdd_le_champ' : break;
             case 'supprimer_en_bdd_le_champ' : /* this.apres_supprimer_un_champs1(mat,d); */
+                this.__ig1.fermer_la_sous_fenetre();
                 break;
-            default: debugger;
+            case 'executer_un_ordre_sql_directe' : /* this.apres_supprimer_un_champs1(mat,d); */
+                break;
+            default: 
+                debugger;
         }
-        this.__ig1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
     /*

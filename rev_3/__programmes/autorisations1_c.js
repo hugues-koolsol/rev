@@ -339,15 +339,6 @@ class autorisations1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chx_acces_autorisation'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseigné'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_acces_autorisation' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         if(fo1['chx_source_autorisation'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseigné'} );
             this.__ig1.affiche_les_messages();

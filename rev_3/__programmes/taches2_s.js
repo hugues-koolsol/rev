@@ -14,7 +14,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_apres_page_modifications( mat , d  , __xva_avant , __db1 ){
+    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
         /*#
           let obj=await this.faire_un_traitement( __xva_avant['T0.chi_id_tache'] ,  this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
           if(obj[__xst] === __xsu){
@@ -28,7 +28,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async tests_et_actions_apres_modifier( mat , d  , form , __xva_avant , __db1 ){
+    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           this.__ig1.donnees_retournees.__xst=__xer;
@@ -40,7 +40,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_avant_modifier( mat , d  , form , __xva_avant , __db1 ){
+    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           this.__ig1.donnees_retournees.__xst=__xer;
@@ -52,7 +52,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async test_avant_supprimer( mat , d  , form , __xva_avant , __db1 ){
+    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           this.__ig1.donnees_retournees.__xst=__xer;
@@ -64,7 +64,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async actions_apres_supprimer( mat , d  , form , __xva_avant , __db1 ){
+    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           this.__ig1.donnees_retournees.__xst=__xer;
@@ -76,7 +76,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async tests_avant_creer( mat , d  , form , __db1 ){
+    async tests_avant_creer( mat , d , form , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           this.__ig1.donnees_retournees.__xst=__xer;
@@ -88,7 +88,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async action_apres_creer( mat , d  , nouvel_id , form , __db1 ){
+    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
           this.__ig1.donnees_retournees.__xst=__xer;
@@ -100,7 +100,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async modifier1( mat , d  ){
+    async modifier1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
@@ -149,7 +149,7 @@ class taches2{
             return({"__xst" : __xer});
         }
         if(tt160[__xst] === __xsu && tt160[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d  , form , tt160[__xva][0] , __db1 );
+            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt160[__xva][0] , __db1 );
             if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
                 return({"__xst" : __xer});
             }
@@ -180,7 +180,7 @@ class taches2{
                 this.__ig1.donnees_retournees.__xst=__xer;
                 return({"__xst" : __xer});
             }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d  , form , tt160[__xva][0] , __db1 );
+            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt160[__xva][0] , __db1 );
             if(__taam[__xst] !== __xsu){
                 await __db1.exec( 'ROLLBACK;' );
                 this.__ig1.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
@@ -192,7 +192,7 @@ class taches2{
                 if(form['__mat_liste_si_ok']){
                     let mat1=JSON.parse( form['__mat_liste_si_ok'] );
                     let d=1;
-                    await this.filtre1( mat1 , 1 ,__db1 );
+                    await this.filtre1( mat1 , 1 , __db1 );
                 }
                 return({"__xst" : __xsu});
             }
@@ -217,7 +217,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async page_modification1( mat , d  , chi_id_tache=null , __db1=null ){
+    async page_modification1( mat , d , chi_id_tache=null , __db1=null ){
         if(chi_id_tache === null){
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -255,7 +255,7 @@ class taches2{
             this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d  , tt160[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt160[__xva][0] , __db1 );
         if(aetam[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
@@ -268,7 +268,7 @@ class taches2{
       =============================================================================================================
       recherche dans la base de données l'enregistrement à dupliquer.
     */
-    async page_duplication1( mat , d  , chi_id_tache=null ){
+    async page_duplication1( mat , d , chi_id_tache=null ){
         if(chi_id_tache === null){
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -310,7 +310,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async supprimer1( mat , d  ){
+    async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
@@ -336,7 +336,7 @@ class taches2{
             return({"__xst" : __xer});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d  , form , tt160[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt160[__xva][0] , __db1 );
         if(tas[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
@@ -357,7 +357,7 @@ class taches2{
             this.__ig1.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let aac=await this.actions_apres_supprimer( mat , d  , form , tt160[__xva][0] , __db1 );
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt160[__xva][0] , __db1 );
         if(aac[__xst] === __xer){
             this.__ig1.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
@@ -365,14 +365,14 @@ class taches2{
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-            await this.filtre1( mat1 , 1  , __db1 );
+            await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async page_confirmation_supprimer1( mat , d  ){
+    async page_confirmation_supprimer1( mat , d ){
         let chi_id_tache=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -409,7 +409,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async creer1( mat , d  ){
+    async creer1( mat , d ){
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -437,7 +437,7 @@ class taches2{
             return({"__xst" : __xer});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail , this.__ig1.donnees_retournees , this.__ig1.options_generales );
-        let __tac=await this.tests_avant_creer( mat , d  , form , __db1 );
+        let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
@@ -472,7 +472,7 @@ class taches2{
                 this.__ig1.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
-            let aac=await this.action_apres_creer( mat , d  , tt111['nouvel_id'] , form , __db1 );
+            let aac=await this.action_apres_creer( mat , d , tt111['nouvel_id'] , form , __db1 );
             if(aac[__xst] === __xer){
                 await __db1.exec( 'ROLLBACK;' );
                 this.__ig1.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
@@ -481,9 +481,9 @@ class taches2{
             await __db1.exec( 'COMMIT;' );
             if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                await this.filtre1( mat1 , 1  , __db1 );
+                await this.filtre1( mat1 , 1 , __db1 );
             }else{
-                await this.page_modification1( mat , d  , tt111['nouvel_id'] , __db1 );
+                await this.page_modification1( mat , d , tt111['nouvel_id'] , __db1 );
             }
             this.__ig1.donnees_retournees.__xst=__xsu;
             return({"__xst" : __xsu});
@@ -496,7 +496,7 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async page_creer1( mat , d  ){
+    async page_creer1( mat , d ){
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
@@ -512,10 +512,10 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async filtre1( mat , d  , __db1=null ){
+    async filtre1( mat , d , __db1=null ){
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d  , this.fonction_liste );
+        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -594,17 +594,17 @@ class taches2{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d  ){
+    async liste1( mat , d ){
         this.fonction_liste='liste1';
-        await this.filtre1( mat , d  );
+        await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async sous_liste1( mat , d  ){
+    async sous_liste1( mat , d ){
         this.fonction_liste='sous_liste1';
-        await this.filtre1( mat , d  );
+        await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }
     /*

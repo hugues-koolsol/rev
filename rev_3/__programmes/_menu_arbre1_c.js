@@ -41,13 +41,11 @@ class _menu_arbre1{
             return;
         }
         this.#racine_html=document.getElementById( par_id_de_l_element );
-        
-        if(this.#racine_html.parentNode.id==='vv_nav_centre'){
+        if(this.#racine_html.parentNode.id === 'vv_nav_centre'){
             this.#pour_menu_haut=1;
         }else{
             this.#pour_menu_haut=0;
         }
-        
         if(this.#racine_html.tagName.toUpperCase() !== 'UL'){
             console.error( 'menu_arbre1 la racine doit être un <ul>' );
             return;
@@ -101,23 +99,23 @@ class _menu_arbre1{
         /*
           si on utilise la roulette sur un menu horizontal, on fait défiler
         */
-        if(this.#pour_menu_haut===1){
+        if(this.#pour_menu_haut === 1){
             this.#ref_div_contenant_la_zone_scrollable.addEventListener( 'wheel' , this.#roulette_sur_menu_listener , false );
             /*
               si on met à jour le menu du haut
             */
             let lst4=document.querySelectorAll( '[data-pour_menu_haut="1"]' );
-            for(let i=lst4.length-1 ; i >=0 ; i--){
-                if(lst4[i].getAttribute('data-cle_aleatoire') !== this.cle_aleatoire){
-                    lst4[i].remove()
+            for( let i=lst4.length - 1 ; i >= 0 ; i-- ){
+                if(lst4[i].getAttribute( 'data-cle_aleatoire' ) !== this.cle_aleatoire){
+                    lst4[i].remove();
                 }
             }
         }else{
-            /* 
+            /*
               si le sous menu est autre que celui du haut, il faut supprimer 
               les divs qui contiennent les anciens éléments
             */
-            setTimeout( this.retirer_les_anciens_enfants , 500);
+            setTimeout( this.retirer_les_anciens_enfants , 500 );
         }
         /* debugger */
         /* document.getElementById( 'vv_nav_centre' ).addEventListener( 'wheel' , this.roulette_sur_menu , false ); */
@@ -130,14 +128,14 @@ class _menu_arbre1{
     */
     retirer_les_anciens_enfants(){
         /*
-           on recherche toutes les clefs aléatoires des data-pour_menu_haut="0"
+          on recherche toutes les clefs aléatoires des data-pour_menu_haut="0"
         */
         let tableau_des_cles=[];
         let lst4=document.querySelectorAll( '[data-pour_menu_haut="0"]' );
-        for(let i=lst4.length-1 ; i >=0 ; i--){
-            tableau_des_cles.push({ cle_aleatoire : lst4[i].getAttribute('data-cle_aleatoire') , element : lst4[i] });
+        for( let i=lst4.length - 1 ; i >= 0 ; i-- ){
+            tableau_des_cles.push( {"cle_aleatoire" : lst4[i].getAttribute( 'data-cle_aleatoire' ) ,"element" : lst4[i]} );
         }
-        //console.log('tableau_des_cles=',tableau_des_cles);
+        /* console.log('tableau_des_cles=',tableau_des_cles); */
         /*
           pour toutes ces clés aléatoires il faut que 
           date-repere="racine" 
@@ -146,18 +144,18 @@ class _menu_arbre1{
         */
         let tableau_des_elements_racine=[];
         let lst3=document.querySelectorAll( '[data-reference_pour_menu_haut="0"]' );
-        for(let i=lst3.length-1 ; i >=0 ; i--){
-            tableau_des_elements_racine.push(lst3[i].getAttribute('data-cle_aleatoire'));
+        for( let i=lst3.length - 1 ; i >= 0 ; i-- ){
+            tableau_des_elements_racine.push( lst3[i].getAttribute( 'data-cle_aleatoire' ) );
         }
-        //console.log('tableau_des_elements_racine=',tableau_des_elements_racine);
-        for( let i=0;i<tableau_des_cles.length;i++){
-            if(tableau_des_elements_racine.includes(tableau_des_cles[i].cle_aleatoire)){
+        /* console.log('tableau_des_elements_racine=',tableau_des_elements_racine); */
+        for( let i=0 ; i < tableau_des_cles.length ; i++ ){
+            if(tableau_des_elements_racine.includes( tableau_des_cles[i].cle_aleatoire )){
             }else{
                 /* console.log('on retire ',tableau_des_cles[i].element) */
                 try{
                     tableau_des_cles[i].element.remove();
                 }catch(e){
-                    console.log(e)
+                    console.log( e );
                 }
             }
         }
@@ -350,11 +348,11 @@ class _menu_arbre1{
     #souris_bas_plus_moins_clic( e ){
         e.stopPropagation();
         e.preventDefault();
-        console.log('#souris_bas_plus_moins_clic', e.target );
+        console.log( '#souris_bas_plus_moins_clic' , e.target );
         return;
-//        window.addEventListener( 'mouseup' , this.#souris_haut_listener , false );
+        /* window.addEventListener( 'mouseup' , this.#souris_haut_listener , false ); */
         /* window.addEventListener( 'mousemove' , this.#souris_bouge_listener , false ); */
-//        this.#souris_ou_doigt_bas( e );
+        /* this.#souris_ou_doigt_bas( e ); */
     }
     /*
       =============================================================================================================
@@ -373,17 +371,16 @@ class _menu_arbre1{
         /* console.log('#souris_haut', e.target , e.target.parentNode , e.target.parentNode.parentNode ); */
         window.removeEventListener( 'mouseup' , this.#souris_haut_listener , false );
         /* window.removeEventListener( 'mousemove' , this.#souris_bouge_listener , false ); */
-        let aa=e.target.getAttribute('data-rev_click');
-        if(aa && aa!=='' && aa.indexOf('m1(')>=0){
+        let aa=e.target.getAttribute( 'data-rev_click' );
+        if(aa && aa !== '' && aa.indexOf( 'm1(' ) >= 0){
             /* console.log('%ce.target.getAttribute(\'data-rev_click\') = ' + e.target.getAttribute('data-rev_click') , 'background:red;color:yellow;') */
-            
-           let lst4=document.querySelectorAll( '[data-pour_menu_haut="0"]' ); // 
-           if(lst4.length > 0){
-               for(let i=0;i<lst4.length;i++){
-                  /* console.log('%clst4[i]=','color:red;background:navy;',lst4[i]) */
-                  lst4[i].style.display='none';
-               }
-           }
+            let lst4=document.querySelectorAll( '[data-pour_menu_haut="0"]' );
+            if(lst4.length > 0){
+                for( let i=0 ; i < lst4.length ; i++ ){
+                    /* console.log('%clst4[i]=','color:red;background:navy;',lst4[i]) */
+                    lst4[i].style.display='none';
+                }
+            }
         }
         this.#souris_ou_doigt_haut( e );
     }
@@ -400,7 +397,6 @@ class _menu_arbre1{
     #souris_ou_doigt_bas( e ){
         var tar=e.target;
         /* console.log('#souris_ou_doigt_bas', tar ); */
-        
         let txt_log='';
         /* let tt=document.getElementById( this.#id_div ).getBoundingClientRect(); */
         if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-replie" )){
@@ -467,7 +463,7 @@ class _menu_arbre1{
                     let le_sous_menu=lst2[0].getBoundingClientRect();
                     let la_boite_parente_du_sous_menu=document.getElementById( 'dedans_' + num_conteneur_parent + '_' + this.cle_aleatoire ).getBoundingClientRect();
                     if(la_boite_parente_du_sous_menu.width > le_sous_menu.width && this.#pour_menu_haut === 1){
-                        console.log('la_boite_parente_du_sous_menu.width='+la_boite_parente_du_sous_menu.width);
+                        console.log( 'la_boite_parente_du_sous_menu.width=' + la_boite_parente_du_sous_menu.width );
                         lst2[0].style.width=la_boite_parente_du_sous_menu.width + 'px';
                     }
                     if(lst1[0].getAttribute( 'data-niveau' ) === '0' && autre_menu_ferme === false){
@@ -501,8 +497,8 @@ class _menu_arbre1{
                         }
                         lst2[0].style.left=nouvelle_valeur + 'px';
                     }
-                    if(la_boite_parente_du_sous_menu.width > le_sous_menu.width &&  this.#pour_menu_haut === 1 ){
-                        console.log('la_boite_parente_du_sous_menu.width='+la_boite_parente_du_sous_menu.width);
+                    if(la_boite_parente_du_sous_menu.width > le_sous_menu.width && this.#pour_menu_haut === 1){
+                        console.log( 'la_boite_parente_du_sous_menu.width=' + la_boite_parente_du_sous_menu.width );
                         lst2[0].style.width=la_boite_parente_du_sous_menu.width + 'px';
                     }
                 }
@@ -684,17 +680,17 @@ class _menu_arbre1{
             /*  */
             let lst2=document.querySelectorAll( '[data-replie]' );
             for( let i=0 ; i < lst2.length ; i++ ){
-                if(this.cle_aleatoire === lst2[i].getAttribute('data-cle_aleatoire')){
+                if(this.cle_aleatoire === lst2[i].getAttribute( 'data-cle_aleatoire' )){
                     lst2[i].addEventListener( 'click' , this.#souris_bas_plus_moins_listener , false );
-                    /* console.log('on ajoute un listener sur ' , lst2[i] , this.cle_aleatoire ) //, lst2[i].parentNode.parentNode) */
+                    /* console.log['on ajoute un listener sur ' , lst2[i] , this.cle_aleatoire ] //, lst2[i].parentNode.parentNode] */
                 }
             }
             /*  */
             let lst3=document.querySelectorAll( '[data-position_pour_tri="dedans"]' );
             for( let i=0 ; i < lst3.length ; i++ ){
                 /* lst3[i].addEventListener( 'mousedown' , this.#souris_bas_branche_listener , false ); */
-                if(this.cle_aleatoire === lst3[i].getAttribute('data-cle_aleatoire')){
-                   lst3[i].addEventListener( 'mouseup' , this.#souris_haut_branche_listener , false );
+                if(this.cle_aleatoire === lst3[i].getAttribute( 'data-cle_aleatoire' )){
+                    lst3[i].addEventListener( 'mouseup' , this.#souris_haut_branche_listener , false );
                 }
             }
         }else{

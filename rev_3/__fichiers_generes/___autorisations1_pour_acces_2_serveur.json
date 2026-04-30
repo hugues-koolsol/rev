@@ -1,0 +1,62 @@
+{
+  "x_ecran_coordonnees1_s.js": {
+    "id_autorisation": 14,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "taches1_s.js": {
+    "id_autorisation": 15,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "groupes1_s.js": {
+    "id_autorisation": 29,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "metiers1_s.js": {
+    "id_autorisation": 31,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "acces1_s.js": {
+    "id_autorisation": 33,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "utilisateurs1_s.js": {
+    "id_autorisation": 37,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "autorisations1_s.js": {
+    "id_autorisation": 35,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "menus1_s.js": {
+    "id_autorisation": 27,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.__ig1.donnees_retournees.chi_id_utilisateur === 1 || this.__ig1.donnees_retournees.chi_id_utilisateur === 2;",
+    "cht_notification_ko_source": "vous nêtes pas autorisé à accéder à cette page"
+  },
+  "_connexion1_s.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "__ig1_s.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  }
+}

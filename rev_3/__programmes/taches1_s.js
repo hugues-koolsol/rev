@@ -269,7 +269,7 @@ class taches1{
         ;
         */
         /*sql_inclure_fin*/ 112 , criteres_select_112 , this.__ig1.donnees_retournees , __db1 );
-        if(tt112[__xst] !== __xsu || tt112[__xva].length !== 1 ){
+        if(tt112[__xst] !== __xsu || tt112[__xva].length !== 1){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
@@ -656,8 +656,7 @@ class taches1{
     */
     async liste1( mat , d ){
         this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+        return(await this.filtre1( mat , d ));
     }
     /*
       =============================================================================================================

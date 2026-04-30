@@ -1098,7 +1098,6 @@ class acces1{
                 if(boutons_activés === false){
                     lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
                     lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
-                    lst+='<div class="rev_bouton yy__1 yy__1_inactif">menus</div>';
                 }else{
                     if(elem['T0.chi_id_acces'] <= 2){
                         lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
@@ -1106,6 +1105,14 @@ class acces1{
                         lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
                     }
                     lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                }
+                if(boutons_activés === false){
+                    if(elem['T0.chi_id_acces'] === 0){
+                        lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">menus</div>';
+                    }else{
+                        lst+='<div class="rev_bouton yy__1 yy__1_inactif">menus</div>';
+                    }
+                }else{
                     lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">menus</div>';
                 }
                 lst+='</div>';

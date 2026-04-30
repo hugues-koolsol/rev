@@ -1,0 +1,74 @@
+{
+  "x_ecran_coordonnees1_s.js": {
+    "id_autorisation": 17,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "taches1_s.js": {
+    "id_autorisation": 16,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "taches2_s.js": {
+    "id_autorisation": 18,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "groupes1_s.js": {
+    "id_autorisation": 19,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "metiers1_s.js": {
+    "id_autorisation": 20,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "acces1_s.js": {
+    "id_autorisation": 21,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "utilisateurs1_s.js": {
+    "id_autorisation": 22,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "sources1_s.js": {
+    "id_autorisation": 23,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "autorisations1_s.js": {
+    "id_autorisation": 24,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "menus1_s.js": {
+    "id_autorisation": 25,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.__ig1.donnees_retournees.chi_id_utilisateur === 1 || this.__ig1.donnees_retournees.chi_id_utilisateur === 2;",
+    "cht_notification_ko_source": "vous nêtes pas autorisé à accéder à cette page"
+  },
+  "_connexion1_s.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "__ig1_s.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  }
+}

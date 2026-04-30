@@ -583,7 +583,7 @@ class genres1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "est parmis" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __test_13_1=this.__ig1.__fnt1.test_fonctions_de_c_fonctions1( form['cht_fonctions_genre'] , 'fonctions' );
+        let __test_13_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( form['cht_fonctions_genre'] , 'fonctions' );
         if(__test_13_1[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur le contenu de "fonctions" [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
@@ -1003,7 +1003,7 @@ class genres1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "est parmis" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __test_13_1=this.__ig1.__fnt1.test_fonctions_de_c_fonctions1( form['cht_fonctions_genre'] , 'fonctions' );
+        let __test_13_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( form['cht_fonctions_genre'] , 'fonctions' );
         if(__test_13_1[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur le contenu de  "fonctions" [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});

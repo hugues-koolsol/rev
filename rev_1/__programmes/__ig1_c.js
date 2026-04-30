@@ -10,7 +10,9 @@ const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
 import {__rev1} from './f0?n0=__rev1_.js';
-import {__fnt1} from './f0?n0=__fnt1_.js';
+import {__fnt1} from './f0?n0=__fnt1_c.js';
+import {__fnts_c_et_s} from './f0?n0=__fnts_c_et_s_.js';
+
 import {_menu_arbre1} from './f0?n0=_menu_arbre1_c.js';
 /*
   Interface Globale coté client
@@ -32,6 +34,8 @@ class __ig1{
     cle_lst0='';
     reference_stockage_local={};
     __rev1=null;
+    __fnt1=null;
+    __fnts_c_et_s=null;
     #sans_maj_de_hash=false;
     #avec_maj_de_hash=__xer;
     #maj_hash_init_fait=false;
@@ -794,6 +798,7 @@ class __ig1{
         this._CA_=_CA_;
         this.__rev1=new __rev1( this );
         this.__fnt1=new __fnt1( [] , 0 , this );
+        this.__fnts_c_et_s=new __fnts_c_et_s( this , 'cote_client' )
         this.#liste_des_modules_dynamiques['__ig1']={"objet1" : this};
         this.#liste_des_modules_dynamiques['__rev1']={"objet1" : this.__rev1};
         this.#liste_des_modules_dynamiques['__fnt1']={"objet1" : this.__fnt1};
@@ -1837,7 +1842,7 @@ class __ig1{
         t+='                      <div id="vv_nav_centre_defilement" class="vv_nav_centre_defilement"></div>';
         t+='                    </div>';
         t+='                    <div id="vv_nav_droite">';
-        t+='                        <div data-id_menu="-2" class="rev_bouton_carre" id="vv_bouton_aide" data-rev_click="m1(n1(__fnt1_),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
+        t+='                        <div data-id_menu="-2" class="rev_bouton_carre" id="vv_bouton_aide" data-rev_click="m1(n1(__fnt1),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
         t+='                        <div data-id_menu="-3" class="rev_bouton_carre yy__1" id="vv_bouton_connexion" data-rev_click="pm1(m1(n1(_connexion1),f1(page_connexion1())))" title="vers la page de connexion">' + this.les_svg.cle + '</div>\n';
         t+='                    </div>';
         t+='                </div>';
@@ -2491,7 +2496,7 @@ class __ig1{
                 t+='<div';
                 t+=' class="rev_bouton ' + la_classe + '"';
                 t+=' data-rev_click="';
-                t+='m1(n1(__fnt1_),f1(placer_le_curseur_en_lig_col1(';
+                t+='m1(n1(__fnt1),f1(placer_le_curseur_en_lig_col1(';
                 t+=' zone_source(' + (obj.zone_edition === undefined ? ( __ig1.zone_d_edition_en_cours ) : ( obj.zone_edition )) + '),';
                 t+=' ligne(' + obj.lig_col[0] + '),';
                 t+=' colonne(' + obj.lig_col[1] + '),';
