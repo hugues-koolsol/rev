@@ -65,9 +65,6 @@ class _developpement1{
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
-        /*
-          console.log( 'constructor _developpement1' , e );
-        */
         /* js */
         this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , __ig1 );
         this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , __ig1 );

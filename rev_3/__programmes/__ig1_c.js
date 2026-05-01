@@ -10,7 +10,8 @@ const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
 import {__rev1} from './f0?n0=__rev1_.js';
-import {__fnt1} from './f0?n0=__fnt1_.js';
+import {__fnt1} from './f0?n0=__fnt1_c.js';
+import {__fnts_c_et_s} from './f0?n0=__fnts_c_et_s_.js';
 import {_menu_arbre1} from './f0?n0=_menu_arbre1_c.js';
 /*
   Interface Globale coté client
@@ -32,6 +33,8 @@ class __ig1{
     cle_lst0='';
     reference_stockage_local={};
     __rev1=null;
+    __fnt1=null;
+    __fnts_c_et_s=null;
     #sans_maj_de_hash=false;
     #avec_maj_de_hash=__xer;
     #maj_hash_init_fait=false;
@@ -648,10 +651,10 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    afficher_le_titre_des_zones( nom_de_la_zone , nom_de_le_methode_entree , préfixe_titre , id_element , nom_de_la_classe_js ){
+    afficher_le_titre_des_zones( nom_de_la_zone , nom_de_le_methode_entree , préfixe_titre , id_element , nom_de_la_classe_js , nom_du_champ_cle ){
         let a=document.getElementById( nom_de_la_zone );
         if(a === null){
-            this.initialisation_des_zones( '' + nom_de_la_classe_js + '' );
+            this.initialisation_des_zones( nom_de_la_classe_js , nom_du_champ_cle );
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
         let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="rev_bouton rev_b_svg yy_btn_retour_liste" data-rev_click="';
@@ -676,7 +679,55 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    initialisation_des_zones( nom_module ){
+    aller_a_la_page_confirmation_supprimer( mat , d ){
+        let nom_module='';
+        let nom_du_champ_cle='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'nom_module' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_module=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_du_champ_cle' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ_cle=mat[i + 1][1];
+            }
+        }
+        if(nom_module !== '' && nom_du_champ_cle !== '' && document.getElementById( nom_du_champ_cle )){
+            let zone=document.getElementById( nom_du_champ_cle );
+            if(!this.est_entier_positif( zone.value )){
+                return({"__xst" : __xer});
+            }
+            let aller_a='pm1(m1(n1(' + nom_module + '),f1(page_confirmation_supprimer1(' + nom_du_champ_cle + '(' + zone.value + ')))))';
+            return(this.executer1( aller_a , null , null ));
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    aller_a_la_page_modification1( mat , d ){
+        let nom_module='';
+        let nom_du_champ_cle='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'nom_module' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_module=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_du_champ_cle' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ_cle=mat[i + 1][1];
+            }
+        }
+        if(nom_module !== '' && nom_du_champ_cle !== '' && document.getElementById( nom_du_champ_cle )){
+            let zone=document.getElementById( nom_du_champ_cle );
+            if(!this.est_entier_positif( zone.value )){
+                return({"__xst" : __xer});
+            }
+            let aller_a='pm1(m1(n1(' + nom_module + '),f1(page_modification1(' + nom_du_champ_cle + '(' + zone.value + ')))))';
+            return(this.executer1( aller_a , null , null ));
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    initialisation_des_zones( nom_module , nom_du_champ_cle ){
         let o1='';
         let tt1='';
         o1+='<div>';
@@ -717,6 +768,7 @@ class __ig1{
         o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;">';
         o1+='  <div class="rev_bouton yy__2" data-rev_click="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
+        o1+='  <div class="rev_bouton yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</div>';
         o1+='</div>';
         /*
           modification
@@ -724,13 +776,14 @@ class __ig1{
         o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
         o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="rev_bouton yy__3" data-indicateur_graphique="bouton_modification_zone" ';
-        o1+='   data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
-        o1+='   title="">modifier';
-        o1+='  </div>    ';
+        o1+='    data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
+        o1+='    title="">modifier</div>    ';
         o1+='  <div class="rev_bouton yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
-        o1+='   data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
-        o1+='   title="">Modifier et retour à la liste';
-        o1+='  </div>';
+        o1+='    data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
+        o1+='    title="">Modifier et retour à la liste</div>';
+        o1+='  <div class="rev_bouton yy__2" id="vv_bouton_aller_page_confirmation_supprimer_' + nom_module + '" ';
+        o1+='    data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_page_confirmation_supprimer(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" ';
+        o1+='    title="page de confirmation de suppression">suppression</div>';
         o1+='</div>';
         o1+='<div id="vv_ecran_modification_zone_complement" style="display:none;"></div>';
         this.maj_contenu_principal( o1 );
@@ -738,7 +791,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    sous_liste_generique1( mat , d , le_message_du_serveur=null , that ){
+    sous_liste_generique1( mat , d , le_message_du_serveur=null , that , nom_du_champ_cle ){
         if(le_message_du_serveur == null || !le_message_du_serveur.__xva.hasOwnProperty( that.fonction_liste )){
             return({"__xst" : __xer});
         }
@@ -746,7 +799,7 @@ class __ig1{
         let initialisation_fait=false;
         let a=document.getElementById( 'vv_titre_de_la_page' );
         if(a === null){
-            this.initialisation_des_zones( that.moi );
+            this.initialisation_des_zones( that.moi , nom_du_champ_cle );
             initialisation_fait=true;
         }
         let le_titre='sélection ' + that.DUN_DUNE_ELEMENT_GERE;
@@ -754,7 +807,7 @@ class __ig1{
         if(a.innerHTML === le_titre){
         }else{
             if(initialisation_fait === false){
-                this.initialisation_des_zones( that.moi );
+                this.initialisation_des_zones( that.moi , nom_du_champ_cle );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
             a.innerHTML=le_titre;
@@ -794,6 +847,7 @@ class __ig1{
         this._CA_=_CA_;
         this.__rev1=new __rev1( this );
         this.__fnt1=new __fnt1( [] , 0 , this );
+        this.__fnts_c_et_s=new __fnts_c_et_s( this , 'cote_client' );
         this.#liste_des_modules_dynamiques['__ig1']={"objet1" : this};
         this.#liste_des_modules_dynamiques['__rev1']={"objet1" : this.__rev1};
         this.#liste_des_modules_dynamiques['__fnt1']={"objet1" : this.__fnt1};
@@ -1837,7 +1891,7 @@ class __ig1{
         t+='                      <div id="vv_nav_centre_defilement" class="vv_nav_centre_defilement"></div>';
         t+='                    </div>';
         t+='                    <div id="vv_nav_droite">';
-        t+='                        <div data-id_menu="-2" class="rev_bouton_carre" id="vv_bouton_aide" data-rev_click="m1(n1(__fnt1_),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
+        t+='                        <div data-id_menu="-2" class="rev_bouton_carre" id="vv_bouton_aide" data-rev_click="m1(n1(__fnt1),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
         t+='                        <div data-id_menu="-3" class="rev_bouton_carre yy__1" id="vv_bouton_connexion" data-rev_click="pm1(m1(n1(_connexion1),f1(page_connexion1())))" title="vers la page de connexion">' + this.les_svg.cle + '</div>\n';
         t+='                    </div>';
         t+='                </div>';
@@ -2359,6 +2413,23 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    est_entier_positif( mot ){
+        if(!this.est_num( mot )){
+            return false;
+        }
+        let mot1=parseFloat( mot );
+        if(mot1 === 0){
+            return true;
+        }
+        let mot2=parseInt( mot , 10 );
+        if(mot1 >= 0 && mot1 === mot2){
+            return true;
+        }
+        return false;
+    }
+    /*
+      =============================================================================================================
+    */
     #faire_disparaitre_les_messages_OK( e ){
         let au_moins_un_a_garder=false;
         this.#timeout_de_dispatition_de_message=null;
@@ -2491,7 +2562,7 @@ class __ig1{
                 t+='<div';
                 t+=' class="rev_bouton ' + la_classe + '"';
                 t+=' data-rev_click="';
-                t+='m1(n1(__fnt1_),f1(placer_le_curseur_en_lig_col1(';
+                t+='m1(n1(__fnt1),f1(placer_le_curseur_en_lig_col1(';
                 t+=' zone_source(' + (obj.zone_edition === undefined ? ( __ig1.zone_d_edition_en_cours ) : ( obj.zone_edition )) + '),';
                 t+=' ligne(' + obj.lig_col[0] + '),';
                 t+=' colonne(' + obj.lig_col[1] + '),';

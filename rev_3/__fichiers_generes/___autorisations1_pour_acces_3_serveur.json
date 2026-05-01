@@ -1,9 +1,11 @@
 {
   "x_ecran_coordonnees1_s.js": {
-    "id_autorisation": 56,
-    "autorisation_cote_client": 0,
-    "cht_condition_js_source": "this.donnees_retournees.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": "vous devez être connecté"
+    "id_autorisation": 33,
+    "autorisation_cote_client": 0
+  },
+  "taches1_s.js": {
+    "id_autorisation": 32,
+    "autorisation_cote_client": 0
   },
   "_connexion1_s.js": {
     "id_autorisation": 0,

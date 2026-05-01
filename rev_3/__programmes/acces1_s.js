@@ -522,7 +522,7 @@ class acces1{
             ;
             */
             /*sql_inclure_fin*/ 415 , criteres_415 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.ma_trace1( "tt415=" , tt415 );
+            /* this.__ig1.ma_trace1( "tt415=" , tt415 ); */
             for(let k1 in tt415[__xva]){
                 let v1=tt415[__xva][k1];
                 liste_des_menus.push( {
@@ -561,7 +561,7 @@ class acces1{
             ;
             */
             /*sql_inclure_fin*/ 153 , criteres_153 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.ma_trace1( "tt153=" , tt153 );
+            /* this.__ig1.ma_trace1( "tt153=" , tt153 ); */
             if(tt153[__xst] !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});

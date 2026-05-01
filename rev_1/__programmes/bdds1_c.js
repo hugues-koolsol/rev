@@ -135,7 +135,7 @@ class bdds1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_basedd'] , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_basedd'] , this.moi , 'chi_id_basedd' );
         let o1='';
         /*
           =====================================================================================================
@@ -238,7 +238,7 @@ class bdds1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_basedd'] , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_basedd'] , this.moi , 'chi_id_basedd' );
         let o1='';
         /*
           =====================================================================================================
@@ -348,7 +348,7 @@ class bdds1{
       =============================================================================================================
     */
     page_creer1( mat , d , dupliquer=null ){
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_basedd' );
         let o1='';
         /*
           =====================================================================================================
@@ -582,7 +582,7 @@ class bdds1{
     */
     sous_liste1( mat , d , le_message_du_serveur=null ){
         this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this ));
+        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this , 'chi_id_basedd' ));
     }
     /*
       =============================================================================================================
@@ -598,14 +598,14 @@ class bdds1{
         let initialisation_fait=false;
         let a=document.getElementById( 'vv_titre_de_la_page' );
         if(a === null){
-            this.__ig1.initialisation_des_zones( this.moi );
+            this.__ig1.initialisation_des_zones( this.moi , 'chi_id_basedd' );
             initialisation_fait=true;
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
         if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){
         }else{
             if(initialisation_fait === false){
-                this.__ig1.initialisation_des_zones( this.moi );
+                this.__ig1.initialisation_des_zones( this.moi , 'chi_id_basedd' );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;

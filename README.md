@@ -273,15 +273,14 @@ Si il existe des parenthèses dans un commentaire alors elles doivent être corr
 
 ```
  #( a() , b( c , d(x) ) )
-```
+
 est valide
 
-
 alors que
-```
+
  #( a() , b( c , d(x  ) )
 ```
-ne l'est pas.
+ne l'est pas car une parenthèse fermante a été supprimée juste après le x.
 
 
 
@@ -317,84 +316,9 @@ Ces bibliothèques sont aussi converties en format "rev".
 
 **6°) un exemple :**
 
-ce source php: 
+Vous pouvez voir [ce source html qui contient du javascript](https://github.com/hugues-koolsol/rev/blob/main/tictactoe.html "tictactoe.html").
 
-```
-<?php
-/* ceci est un commentaire dans php */
-print('<html><body>');
-$mon_nombre=4/2;
-echo "salut php" .", ceci est ".($mon_nombre-1)." exemple de programme" /**/;
-?>
-<a href="https://github.com/hugues-koolsol/rev"><!-- ceci est un commentaire dans html -->allez voir github.com/hugues-koolsol/rev</a>
-<script type="text/javascript">
-/* ceci est un commentaire dans javascript */
-let zz=6-4;
-console.log('salut javascript,'+' ceci est '+(zz-1)+' exemple');
-</script>
-<?php
-print('</body></html>');
-```
+ainsi que la version [rev](https://github.com/hugues-koolsol/rev/blob/main/tictactoe.rev "tictactoe au format rev").
 
-est transformé en format rev qui est :  
-```
-php(
-   #( ceci est un commentaire dans php ),
-   appelf( nomf(print) , p( '<html><body>' )),
-   affecte( $mon_nombre , divi( 4 , 2 )),
-   appelf(
-      nomf(echo),
-      p( concat( "salut php" , ", ceci est " , moins( $mon_nombre , 1 ) , " exemple de programme" ))
-   ),
-   #(),
-   html_dans_php(
-      a(
-         ( 'href' , "https://github.com/hugues-koolsol/rev"),
-         #( ceci est un commentaire dans html ),
-         'allez voir github.com/hugues-koolsol/rev'
-      ),
-      javascriptDansHtml(
-         ( 'type' , "text/javascript"),
-         #( ceci est un commentaire dans javascript ),
-         declare_variable( zz , moins( 6 , 4 )),
-         appelf(
-            element(console),
-            nomf(log),
-            p( concat( 'salut javascript,' , ' ceci est ' , moins( zz , 1 ) , ' exemple' ))
-         )
-      )
-   ),
-   appelf( nomf(print) , p( '</body></html>' ))
-)
-```
-
-et à partir du format rev on obtiendra :  
-
-```
-<?php
-/* ceci est un commentaire dans php */
-print('<html><body>');
-$mon_nombre=4 / 2;
-echo "salut php" . ", ceci est " . ($mon_nombre - 1) . " exemple de programme" ;
-/**/?>
-<a href="https://github.com/hugues-koolsol/rev"><!-- ceci est un commentaire dans html -->
-    allez voir github.com/hugues-koolsol/rev
-</a>
-<script type="text/javascript">
-//<![CDATA[
-//<source_javascript_rev>
-/* ceci est un commentaire dans javascript */
-let zz=6 - 4;
-console.log('salut javascript,' + ' ceci est ' + (zz - 1) + ' exemple');
-//</source_javascript_rev>
-//]]>
-</script>
-
-<?php
-print('</body></html>');
-```
 
 Les sources javascript, html, sql , css contenus dans ce github sont tous passés par le format rev.
-
-Vous trouverez à la racine de ce projet des exemples simples de sources en format rev en en format natif.
-

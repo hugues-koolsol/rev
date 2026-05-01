@@ -9,25 +9,88 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="tictactoe" />
         <title>tictactoe</title>
-        <!-- 
+        <!-- #
           =====================================================================================================
           le css principal utilise des variables qu'il faut déclarer 
+          Au format rev, il donne :
+          =========================================================================================================
+                    
+          regle(
+             selecteur(':root'),
+             d(p('--yyvtrg'),v('40px')),
+             #(taille de référence du texte),
+             d(p('--yyvtrt'),v('12px')),
+             #(taille de référence du espaces [ padding ]),
+             d(p('--yyvtrp'),v('2px')),
+             #(taille de référence des bordures),
+             d(p('--yyvtrb'),v('1px')),
+             #(taille de référence dus marges),
+             d(p('--yyvtrm'),v('1px')),
+             #(hauteur minimales des boutons),
+             d(p('--yyvhmb'),v('22px')),
+             #(hauteur de ligne),
+             d(p('--yyvhal'),v('14px')),
+             #(hauteur du menu à défilement),
+             d(p('--yyvhmd'),v('35px')),
+             #(hauteur des grands boutons [ quitter et index ]),
+             d(p('--yyvhgb'),v('32px')),
+             #(hauteur minimale de conteneur [ div ]),
+             d(p('--yyvhmc'),v('24px'))
+          ),
+          regle(selecteur('h1'),d(p('text-align'),v('center'))),
+          regle(selecteur('#t1'),d(p('width'),v('70vmin')),d(p('height'),v('70vmin')),d(p('margin'),v('0 auto 0 auto'))),
+          regle(
+             selecteur('#t1 td'),
+             d(p('width'),v('33%')),
+             d(p('text-align'),v('center')),
+             d(p('font-size'),v('10vw')),
+             d(p('cursor'),v('pointer'))
+          ),
+          regle(selecteur('h1'),d(p('border'),v('0')),d(p('margin'),v('0')),d(p('height'),v('10vmin'))),
+          regle(selecteur('#numero_de_joueur'),d(p('font-size'),v('1.8em')),d(p('color'),v('red')),d(p('text-align'),v('center'))),
+          at(
+             nomr('keyframes'),
+             params('acsb1'),
+             regle(selecteur('0%'),d(p('transform'),v('translateY(0)'))),
+             regle(selecteur('25%'),d(p('transform'),v('translateY(15px)'))),
+             regle(selecteur('50%'),d(p('transform'),v('translateY(-15px)'))),
+             regle(selecteur('75%'),d(p('transform'),v('translateY(15px)'))),
+             regle(selecteur('100%'),d(p('transform'),v('translateY(0)')))
+          ),
+          regle(selecteur('.csb1'),d(p('animation'),v('acsb1 0.25s')),d(p('animation-iteration-count'),v('3'))),
+          regle(
+             selecteur('.csb2'),
+             d(p('color'),v('blue'),important()),
+             d(p('background'),v('yellow')),
+             d(p('animation'),v('acsb1 0.25s')),
+             d(p('animation-iteration-count'),v('3'))
+          )
+          les css au format rev ne sont pas encore intégrés au format rev du html
+          comme cela a déjà été fait pour les javascripts mais ça viendra.
           =====================================================================================================
         -->
         <style type="text/css">
-            :root{ 
---yyvtrg:40px; 
---yyvtrt:12px; /* taille de référence du texte */ 
---yyvtrp:2px; /* taille de référence du espaces ( padding ) */ 
---yyvtrb:1px; /* taille de référence des bordures */ 
---yyvtrm:1px; /* taille de référence dus marges */ 
---yyvhmb:22px; /* hauteur minimales des boutons */ 
---yyvhal:14px; /* hauteur de ligne */ 
---yyvhmd:35px; /* hauteur du menu à défilement */ 
---yyvhgb:32px; /* hauteur des grands boutons ( quitter et index ) */ 
---yyvhmc:24px; /* hauteur minimale de conteneur ( div ) */ 
+:root{ 
+   --yyvtrg:40px; 
+   /* taille de référence du texte */
+   --yyvtrt:12px;
+   /* taille de référence du espaces ( padding ) */
+   --yyvtrp:2px;
+   /* taille de référence des bordures */
+   --yyvtrb:1px;
+    /* taille de référence dus marges */
+   --yyvtrm:1px;
+    /* hauteur minimales des boutons */
+   --yyvhmb:22px;
+   /* hauteur de ligne */
+   --yyvhal:14px;
+   /* hauteur du menu à défilement */
+   --yyvhmd:35px;
+   /* hauteur des grands boutons ( quitter et index ) */   
+   --yyvhgb:32px;
+   /* hauteur minimale de conteneur ( div ) */
+   --yyvhmc:24px;
 }
-
 h1{text-align:center;} 
 #t1{  width:70vmin;  height:70vmin;  margin: 0 auto 0 auto; } 
 #t1 td {  width:33%;  text-align:center;  font-size:10vw;  cursor:pointer; } 
@@ -47,21 +110,22 @@ h1{  border:0;  margin:0;  height:10vmin; }
   color: blue!important;
   background: yellow;
   animation: acsb1 0.25s; animation-iteration-count: 3;
-}</style>
-        <!-- 
-          =====================================================================================================
-          on peut utiliser le css principal 
-          =====================================================================================================
-        -->
-        <link rel="stylesheet" as="style" type="text/css" href="fta_www/6.css" />
-        <style type="text/css">
+}
 tbody tr:nth-child(2n) {
  background-color: revert;
 }</style>
+        <!-- 
+          =====================================================================================================
+          on peut utiliser un css externe
+          =====================================================================================================
+        -->
+        <!-- 
+          <link rel="stylesheet" as="style" type="text/css" href="fta_www/6.css" />
+        -->
     </head>
     <body>
         <h1>tictactoe
-            <a href=".">page d'accueil</a></h1>
+            <a href="">vers moi même</a></h1>
         <div id="numero_de_joueur" class=""></div>
         <table border="1" id="t1">
             <tbody>

@@ -1641,12 +1641,10 @@ class dossiers1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( form['chp_nom_dossier'] , 'nom' );
         if(__test_0_1[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
-        
         if(!form.hasOwnProperty( 'chp_nom_dossier' ) || form['chp_nom_dossier'] === null || form['chp_nom_dossier'].trim() === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseignée ' );
             return({"__xst" : __xer});

@@ -112,10 +112,8 @@ class groupes1{
             this.__ig1.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __test_0_1=this.__ig1.__fnt1.test_du_nom_technique1( form['chp_nom_groupe'] , 'nom' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_groupe'] , 'nom' );
         if(__test_0_1[__xst] !== __xsu){
-            this.__ig1.__xsi[__xer].push( 'erreur sur le contenu de "nom" [' + this.__ig1.nl2() + ']' );
-            this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         let retour_a_la_liste=false;
@@ -424,7 +422,7 @@ class groupes1{
             this.__ig1.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __test_0_1=this.__ig1.__fnt1.test_du_nom_technique1( form['chp_nom_groupe'] , 'nom' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_groupe'] , 'nom' );
         if(__test_0_1[__xst] !== __xsu){
             this.__ig1.__xsi[__xer].push( 'erreur sur le contenu de  "nom" [' + this.__ig1.nl2() + ']' );
             this.__ig1.donnees_retournees.__xst=__xer;

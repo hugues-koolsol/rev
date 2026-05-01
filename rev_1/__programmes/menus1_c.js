@@ -285,9 +285,7 @@ class menus1{
                 return({"__xst" : __xsu});
             }
         }
-        
         /* afr vérifier que le js et le rev correspondent bien */
-        
         /* conversion des données numériques début */
         fo1['chi_id_menu']=fo1['chi_id_menu'] === '' ? ( null ) : ( parseInt( fo1['chi_id_menu'] , 10 ) );
         fo1['chx_autorisation_menu']=fo1['chx_autorisation_menu'] === '' ? ( null ) : ( parseInt( fo1['chx_autorisation_menu'] , 10 ) );
@@ -312,7 +310,7 @@ class menus1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi , 'chi_id_menu' );
         let o1='';
         /*
           =====================================================================================================
@@ -507,7 +505,7 @@ class menus1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi , 'chi_id_menu' );
         let o1='';
         /*
           =====================================================================================================
@@ -682,7 +680,6 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        
         if(fo1['cht_condition_menu'] !== null && fo1['cht_condition_menu'] !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_condition_menu'] );
             if(obj1.__xst !== __xsu){
@@ -707,7 +704,6 @@ class menus1{
                 return({"__xst" : __xsu});
             }
         }
-        
         /* afr vérifier que le js et le rev correspondent bien */
         /* conversion des données numériques début */
         fo1['chx_autorisation_menu']=fo1['chx_autorisation_menu'] === '' ? ( null ) : ( parseInt( fo1['chx_autorisation_menu'] , 10 ) );
@@ -728,7 +724,7 @@ class menus1{
       =============================================================================================================
     */
     page_creer1( mat , d , dupliquer=null ){
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_menu' );
         let o1='';
         /*
           =====================================================================================================
@@ -1091,7 +1087,7 @@ class menus1{
     */
     sous_liste1( mat , d , le_message_du_serveur=null ){
         this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this ));
+        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this , 'chi_id_menu' ));
     }
     /*
       =============================================================================================================
@@ -1107,14 +1103,14 @@ class menus1{
         let initialisation_fait=false;
         let a=document.getElementById( 'vv_titre_de_la_page' );
         if(a === null){
-            this.__ig1.initialisation_des_zones( this.moi );
+            this.__ig1.initialisation_des_zones( this.moi , 'chi_id_menu' );
             initialisation_fait=true;
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
         if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){
         }else{
             if(initialisation_fait === false){
-                this.__ig1.initialisation_des_zones( this.moi );
+                this.__ig1.initialisation_des_zones( this.moi , 'chi_id_menu' );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;

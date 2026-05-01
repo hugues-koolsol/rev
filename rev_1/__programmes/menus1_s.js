@@ -138,12 +138,10 @@ class menus1{
             tt141[__xva][0]['T0.chx_acces_autorisation']=0;
             /* return({"__xst" : __xsu}); */
         }
-        if(tt141[__xva][0]['T2.chp_nom_source'].slice(-5) === '_s.js'){
+        if(tt141[__xva][0]['T2.chp_nom_source'].slice( -5 ) === '_s.js'){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'autorisation de ce menu pointe sur un source serveur et devrait pointer sur un source client' );
             return({"__xst" : __xer});
         }
-        
-        
         let criteres_136={
              /*  */
             "T0_chi_id_acces" : tt141[__xva][0]['T0.chx_acces_autorisation']
@@ -694,16 +692,16 @@ class menus1{
             `chp_methode_menu` , 
             `cht_libelle_menu` , 
             `cht_condition_menu` , 
-            `cht_condition_js_menu` , 
-            `cht_initialisation_menu`
+            `cht_initialisation_menu` , 
+            `cht_condition_js_menu`
         ) VALUES (
             :chp_titre_menu , 
             :chx_autorisation_menu , 
             :chp_methode_menu , 
             :cht_libelle_menu , 
             :cht_condition_menu , 
-            :cht_condition_js_menu , 
-            :cht_initialisation_menu
+            :cht_initialisation_menu , 
+            :cht_condition_js_menu
         );
         */
         /*sql_inclure_fin*/ 147 , donnees_sql , this.__ig1.donnees_retournees , __db1 );

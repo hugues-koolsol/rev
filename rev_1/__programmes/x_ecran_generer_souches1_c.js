@@ -1,4 +1,4 @@
-import {_developpement1} from '/f0?n0=_developpement1_.js';
+import {_developpement1} from '/f0?n0=_developpement1_c.js';
 /*
   enrichir_objet_base
 */

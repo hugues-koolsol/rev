@@ -1,4 +1,4 @@
-import {_developpement1} from '/f0?n0=_developpement1_.js';
+import {_developpement1} from '/f0?n0=_developpement1_c.js';
 /*
   enrichir_objet_base
 */
@@ -1413,7 +1413,6 @@ class x_ecran_generer_programmes1{
                                     }
                                     src_serveur_js2+='form[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.abrege_du_champ + '\');\r\n';
                                     src_serveur_js2+='        if( __test_' + i + '_' + j + '[__xst] !== __xsu ){\n';
-                                    src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push(\'erreur sur le contenu de "' + obj_champ.meta.abrege_du_champ + '" [\' + this.__ig1.nl2() + \']\');\r\n';
                                     src_serveur_js2+='            return{__xst:__xer};\r\n';
                                     src_serveur_js2+='        }\n\n';
                                 }else{
@@ -1635,7 +1634,7 @@ class x_ecran_generer_programmes1{
         src_client2+='            return( this.__ig1.affiche_les_messages({"__xst" : __xer ,"__xme" : \'cet élément n\\\'a pas été trouvé\'}) );\r\n';
         src_client2+='        }\r\n';
         src_client2+='        let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];\r\n';
-        src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_modification\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi );\r\n';
+        src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_modification\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi , \'' + champ_primaire + '\' );\r\n';
         src_client2+='        let o1=\'\';\r\n';
         for( let i=0 ; i < liste_des_champs_visualisation_update.length ; i++ ){
             src_client2+='        /*\r\n';
@@ -1958,7 +1957,7 @@ class x_ecran_generer_programmes1{
         src_client2+='            return( this.__ig1.affiche_les_messages({"__xst" : __xer ,"__xme" : \'cet élément n\\\'a pas été trouvé\'}) );\r\n';
         src_client2+='        }\r\n';
         src_client2+='        let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];\r\n';
-        src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_suppression\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi );\r\n';
+        src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_suppression\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi , \'' + champ_primaire + '\' );\r\n';
         src_client2+='        let o1=\'\';\r\n';
         for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
             let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
@@ -2125,7 +2124,7 @@ class x_ecran_generer_programmes1{
         src_client2+='            return( this.__ig1.affiche_les_messages({"__xst" : __xer ,"__xme" : \'cet élément n\\\'a pas été trouvé\'}) );\r\n';
         src_client2+='        }\r\n';
         src_client2+='        let enreg=le_message_du_serveur.__xva.page_voir1.__xva[0];\r\n';
-        src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_visualisation\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi );\r\n';
+        src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_visualisation\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi , \'' + champ_primaire + '\' );\r\n';
         src_client2+='        let o1=\'\';\r\n';
         for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
             let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
@@ -3203,7 +3202,7 @@ class x_ecran_generer_programmes1{
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
         src_client2+='    page_creer1( mat , d , dupliquer=null){\r\n';
-        src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_creation\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi );\r\n';
+        src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_creation\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , \'' + champ_primaire + '\' );\r\n';
         src_client2+='        let o1=\'\';\r\n';
         src_client2+='        let a=document.getElementById( \'vv_titre_de_la_page\' );\r\n';
         src_client2+='        if(a === null){\r\n';
@@ -3820,7 +3819,7 @@ class x_ecran_generer_programmes1{
         src_client2+='    */\r\n';
         src_client2+='    sous_liste1( mat , d , le_message_du_serveur=null ){\r\n';
         src_client2+='        this.fonction_liste=\'sous_liste1\';\r\n';
-        src_client2+='        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this ));\r\n';
+        src_client2+='        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this , \'' + champ_primaire + '\' ));\r\n';
         src_client2+='    }\r\n';
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
@@ -3838,14 +3837,14 @@ class x_ecran_generer_programmes1{
         src_client2+='        let initialisation_fait=false;\r\n';
         src_client2+='        let a=document.getElementById( \'vv_titre_de_la_page\' );\r\n';
         src_client2+='        if(a===null){\r\n';
-        src_client2+='            this.__ig1.initialisation_des_zones(this.moi);\r\n';
+        src_client2+='            this.__ig1.initialisation_des_zones( this.moi , \'' + champ_primaire + '\' );\r\n';
         src_client2+='            initialisation_fait=true;\r\n';
         src_client2+='        }\r\n';
         src_client2+='        a=document.getElementById( \'vv_titre_de_la_page\' );\r\n';
         src_client2+='        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){\r\n';
         src_client2+='        }else{\r\n';
         src_client2+='            if(initialisation_fait===false){\r\n';
-        src_client2+='               this.__ig1.initialisation_des_zones(this.moi);\r\n';
+        src_client2+='               this.__ig1.initialisation_des_zones( this.moi , \'' + champ_primaire + '\' );\r\n';
         src_client2+='               a=document.getElementById( \'vv_titre_de_la_page\' );\r\n';
         src_client2+='            }\r\n';
         src_client2+='            a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;\r\n';

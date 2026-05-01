@@ -8,8 +8,8 @@
   "projets1_s.js": {
     "id_autorisation": 58,
     "autorisation_cote_client": 0,
-    "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_utilisateur > 0;",
+    "cht_notification_ko_source": "vous devez être connecté"
   },
   "taches1_s.js": {
     "id_autorisation": 57,
@@ -92,8 +92,8 @@
   "x_ecran_coordonnees1_s.js": {
     "id_autorisation": 78,
     "autorisation_cote_client": 0,
-    "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_condition_js_source": "this.donnees_retournees.chi_id_utilisateur > 0;",
+    "cht_notification_ko_source": "vous devez être connecté"
   },
   "utilisateurs1_s.js": {
     "id_autorisation": 75,

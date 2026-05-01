@@ -285,6 +285,7 @@ class menus1{
                 return({"__xst" : __xsu});
             }
         }
+        /* afr vérifier que le js et le rev correspondent bien */
         /* conversion des données numériques début */
         fo1['chi_id_menu']=fo1['chi_id_menu'] === '' ? ( null ) : ( parseInt( fo1['chi_id_menu'] , 10 ) );
         fo1['chx_autorisation_menu']=fo1['chx_autorisation_menu'] === '' ? ( null ) : ( parseInt( fo1['chx_autorisation_menu'] , 10 ) );
@@ -309,7 +310,7 @@ class menus1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi , 'chi_id_menu' );
         let o1='';
         /*
           =====================================================================================================
@@ -504,7 +505,7 @@ class menus1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_menu'] , this.moi , 'chi_id_menu' );
         let o1='';
         /*
           =====================================================================================================
@@ -679,6 +680,31 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['cht_condition_menu'] !== null && fo1['cht_condition_menu'] !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_condition_menu'] );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "condition" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_condition_menu' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        if(fo1['cht_initialisation_menu'] !== null && fo1['cht_initialisation_menu'] !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_initialisation_menu'] );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_initialisation_menu' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        /* afr vérifier que le js et le rev correspondent bien */
         /* conversion des données numériques début */
         fo1['chx_autorisation_menu']=fo1['chx_autorisation_menu'] === '' ? ( null ) : ( parseInt( fo1['chx_autorisation_menu'] , 10 ) );
         /* conversion des données numériques fin */
@@ -698,7 +724,7 @@ class menus1{
       =============================================================================================================
     */
     page_creer1( mat , d , dupliquer=null ){
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_menu' );
         let o1='';
         /*
           =====================================================================================================
@@ -766,6 +792,9 @@ class menus1{
         o1+='      <span>methode</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <div style="display:inline-block;" class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes">Méthodes</div>';
+        o1+='        <div style="display:inline-block;" id="vv_liste_des_methodes"></div>';
+        o1+='        <br />';
         o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_methode_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_methode_menu' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_methode_menu'] );
@@ -790,7 +819,7 @@ class menus1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_libelle_menu' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_libelle_menu" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_libelle_menu" rows="5" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_libelle_menu' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_libelle_menu'] );
         }else{
@@ -805,18 +834,46 @@ class menus1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>condition</span>';
+        o1+='      <span>condition au format rev</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_condition_menu' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  data-editeur1="rev"  id="cht_condition_menu" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="rev"  id="cht_condition_menu" rows="5" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_condition_menu' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_condition_menu'] );
         }else{
-            o1+='';
+            o1+='sup(this.chi_id_utilisateur,0)';
+        }
+        o1+='</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>condition au format js</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='            <div>\r\n';
+        o1+='               <div data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_menu),zone_resultat(cht_condition_js_menu))))"';
+        o1+='                 class="rev_bouton yy__3" title="convertir en js">↧rev-&gt;js↧</div>';
+        /*  */
+        o1+='               <div data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_menu),zone_resultat(cht_condition_menu))))"';
+        o1+='                 class="rev_bouton yy__1" title="convertir en rev" >↥js->rev↥</div>';
+        /*  */
+        o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_condition_js_menu' );
+        o1+='            </div>\r\n';
+        o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_menu" rows="5" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_condition_js_menu' )){
+            o1+=this.__ig1.fi2( dupliquer['T0.cht_condition_js_menu'] );
+        }else{
+            o1+='this.chi_id_utilisateur > 0;';
         }
         o1+='</textarea>';
         o1+='        </div>';
@@ -1030,7 +1087,7 @@ class menus1{
     */
     sous_liste1( mat , d , le_message_du_serveur=null ){
         this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this ));
+        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this , 'chi_id_menu' ));
     }
     /*
       =============================================================================================================
@@ -1046,14 +1103,14 @@ class menus1{
         let initialisation_fait=false;
         let a=document.getElementById( 'vv_titre_de_la_page' );
         if(a === null){
-            this.__ig1.initialisation_des_zones( this.moi );
+            this.__ig1.initialisation_des_zones( this.moi , 'chi_id_menu' );
             initialisation_fait=true;
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
         if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){
         }else{
             if(initialisation_fait === false){
-                this.__ig1.initialisation_des_zones( this.moi );
+                this.__ig1.initialisation_des_zones( this.moi , 'chi_id_menu' );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;

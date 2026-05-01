@@ -45,7 +45,7 @@ class autorisations1{
           return({"__xst" : __xer});
           }
         */
-        this.__ig1.ma_trace1( "tableau_des_auto=" , tableau_des_auto );
+        /* this.__ig1.ma_trace1( "tableau_des_auto=" , tableau_des_auto ); */
         let tableau_des_auto_client={};
         for(let i in tableau_des_auto){
             if(i.substr( i.length - 4 ) === '_.js' || i.substr( i.length - 5 ) === '_c.js'){
@@ -118,9 +118,9 @@ class autorisations1{
         for(let k1 in tt151.__xva){
             /* autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source'].substr( 0 , tt151.__xva[k1]['T0.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true}; */
             autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source']]={
-                "id_autorisation" :  /* "che_autorisation_globale_source" : true , */0 ,
+                "id_autorisation" : /* "che_autorisation_globale_source" : true , */0 ,
                 "autorisation_cote_client" : true ,
-                "cht_condition_js_source" :  /* "cht_condition_rev_source" : null , */null ,
+                "cht_condition_js_source" : /* "cht_condition_rev_source" : null , */null ,
                 "cht_notification_ko_source" : null
             };
         }

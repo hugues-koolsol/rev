@@ -118,9 +118,9 @@ class autorisations1{
         for(let k1 in tt151.__xva){
             /* autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source'].substr( 0 , tt151.__xva[k1]['T0.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true}; */
             autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source']]={
-                "id_autorisation" :  /* "che_autorisation_globale_source" : true , */0 ,
+                "id_autorisation" : /* "che_autorisation_globale_source" : true , */0 ,
                 "autorisation_cote_client" : true ,
-                "cht_condition_js_source" :  /* "cht_condition_rev_source" : null , */null ,
+                "cht_condition_js_source" : /* "cht_condition_rev_source" : null , */null ,
                 "cht_notification_ko_source" : null
             };
         }

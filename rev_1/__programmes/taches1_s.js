@@ -249,10 +249,8 @@ class taches1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite" doit être renseignée ' );
             return({"__xst" : __xer});
         }
-        const __test=this.__ig1.__fnt1.entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , "priorite" );
-        if(__test[__xst] !== __xsu){
-            this.__ig1.ma_trace1( __test );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( __test['__xme'] );
+        const __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , "priorite" );
+        if(__test_2_1[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -449,7 +447,7 @@ class taches1{
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
             await this.filtre1( mat1 , 1 , __db1 );
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -512,9 +510,8 @@ class taches1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite" doit être renseignée ' );
             return({"__xst" : __xer});
         }
-        const __test=this.__ig1.__fnt1.entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , "priorite" );
-        if(__test[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( __test['__xme'] );
+        const __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , "priorite" );
+        if(__test_2_1[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
         let donnees_sql={

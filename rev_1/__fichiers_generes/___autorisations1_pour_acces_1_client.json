@@ -9,7 +9,7 @@
     "id_autorisation": 52,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": "vous devez être connecté"
   },
   "taches1_c.js": {
     "id_autorisation": 53,
@@ -21,7 +21,7 @@
     "id_autorisation": 42,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": "Vous devez être connecté"
   },
   "x_ecran_rev_vers_html1_c.js": {
     "id_autorisation": 39,
@@ -51,13 +51,13 @@
     "id_autorisation": 41,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": "Vous devez être connecté"
   },
   "x_ecran_rev_vers_txt1_c.js": {
     "id_autorisation": 44,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": "Vous devez être connecté"
   },
   "sources1_c.js": {
     "id_autorisation": 27,
@@ -100,6 +100,12 @@
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
     "cht_notification_ko_source": "Vous devez sélectionner un projet"
+  },
+  "_developpement1_c.js": {
+    "id_autorisation": 81,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
   },
   "metiers1_c.js": {
     "id_autorisation": 32,
@@ -147,7 +153,7 @@
     "id_autorisation": 45,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": "Vous devez être connecté"
   },
   "x_ecran_generer_souches1_c.js": {
     "id_autorisation": 51,

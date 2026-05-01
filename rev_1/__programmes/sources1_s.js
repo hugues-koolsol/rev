@@ -1463,9 +1463,8 @@ class sources1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __test_0_1=this.__ig1.__fnt1.test_du_nom_technique1( form['chp_nom_source'] , 'nom' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_source'] , 'nom' );
         if(__test_0_1[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur le contenu de "nom" [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['che_binaire_source'] === null || form['che_binaire_source'] === ''){
@@ -1762,8 +1761,8 @@ class sources1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __test=this.__ig1.__fnt1.test_du_nom_technique1( form['chp_nom_source'] , 'nom' );
-        if(__test[__xst] !== __xsu){
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_source'] , 'nom' );
+        if(__test_0_1[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur le contenu de  "nom" [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }

@@ -324,9 +324,9 @@ class travaux1{
                                             setTimeout( resolve , ms );} ));
                                 }
                                 /*
-                                  on attend 3 secondes
+                                  on attend 1 secondes
                                 */
-                                await sleep2( 3000 );
+                                await sleep2( 1000 );
                             }
                         }else{
                             continuer=false;

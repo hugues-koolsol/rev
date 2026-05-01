@@ -550,9 +550,8 @@ class genres1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "prefixe" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __test_2_1=this.__ig1.__fnt1.doit_contenir_n_caracteres( 3 , form['chp_prefixe_genre'] , 'prefixe' );
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , form['chp_prefixe_genre'] , 'prefixe' );
         if(__test_2_1[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur le contenu de "prefixe" [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chp_espece_genre'] === null || form['chp_espece_genre'] === ''){
@@ -970,13 +969,16 @@ class genres1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "prefixe" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __test_2_1=this.__ig1.__fnt1.doit_contenir_n_caracteres( 3 , form['chp_prefixe_genre'] , 'prefixe' );
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , form['chp_prefixe_genre'] , 'prefixe' );
         if(__test_2_1[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur le contenu de  "prefixe" [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         if(form['chp_espece_genre'] === null || form['chp_espece_genre'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "espece" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre( form['che_longueur_genre'] , 'nom' );
+        if(__test_0_1[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
         if(form['che_est_primaire_genre'] === null || form['che_est_primaire_genre'] === ''){

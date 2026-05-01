@@ -56,8 +56,8 @@
   "menus1_c.js": {
     "id_autorisation": 6,
     "autorisation_cote_client": 0,
-    "cht_condition_js_source": "this.chi_id_utilisateur === 1 || this.chi_id_utilisateur === 2;",
-    "cht_notification_ko_source": "vous n'êtes pas autorisé à accéder à cette page"
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
   },
   "_connexion1_c.js": {
     "id_autorisation": 0,

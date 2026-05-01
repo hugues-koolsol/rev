@@ -3416,8 +3416,6 @@ class v_svg_bdd1{
         this.__ig1.affiche_sous_fenetre1( t );
         return({"__xst" : __xsu});
     }
-    
-    
     /*
       =============================================================================================================
     */
@@ -3431,10 +3429,10 @@ class v_svg_bdd1{
                 nom_de_zone=mat[i + 1][1];
             }
         }
-        if(!(nom_de_zone!=='' && id_bdd_de_la_base_en_cours>0 && document.getElementById(nom_de_zone))){
+        if(!(nom_de_zone !== '' && id_bdd_de_la_base_en_cours > 0 && document.getElementById( nom_de_zone ))){
             return({"__xst" : __xer});
         }
-        let source_sql=document.getElementById(nom_de_zone).value;
+        let source_sql=document.getElementById( nom_de_zone ).value;
         let cmd='';
         cmd+='pm1(m1(n1(' + this.moi + '),f1(executer_sql3(';
         cmd+=' contexte(executer_un_ordre_sql_directe)';
@@ -3443,7 +3441,6 @@ class v_svg_bdd1{
         let obj={"__xac" : cmd ,"__xva" : {"source_sql" : source_sql}};
         this.__ig1.envoyer_un_message_au_worker( obj );
         return({"__xst" : __xsu});
-        
     }
     /*
       =============================================================================================================
@@ -3477,9 +3474,6 @@ class v_svg_bdd1{
         let rev='';
         rev+='m1(n1(' + this.moi + '),f1(exécution_d_une_requete_sql_directement_sur_la_base(id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + '),nom_de_zone(vv_commande_sql))))';
         t+='<div class="rev_bouton yy__2" data-rev_click="' + rev + '">exécuter</div>';
-        
-        
-        
         this.__ig1.affiche_sous_fenetre1( t );
         return({"__xst" : __xsu});
     }
@@ -3893,23 +3887,30 @@ class v_svg_bdd1{
             }
         }
         switch (contexte){
-            case 'ordonner_les_champs' : this.apres_trier_les_champs1( mat , d );
+            case 'ordonner_les_champs' :
+                this.apres_trier_les_champs1( mat , d );
                 this.__ig1.fermer_la_sous_fenetre();
                 break;
-            case 'apres_renommer_une_table1' : this.apres_renommer_une_table1( mat , d );
+                
+            case 'apres_renommer_une_table1' :
+                this.apres_renommer_une_table1( mat , d );
                 this.__ig1.fermer_la_sous_fenetre();
                 break;
-            case 'renommer_en_bdd_un_champ' : this.apres_renommer_un_champs1( mat , d );
+                
+            case 'renommer_en_bdd_un_champ' :
+                this.apres_renommer_un_champs1( mat , d );
                 this.__ig1.fermer_la_sous_fenetre();
                 break;
+                
             case 'ajouter_en_bdd_le_champ' : break;
-            case 'supprimer_en_bdd_le_champ' : /* this.apres_supprimer_un_champs1(mat,d); */
+            case 'supprimer_en_bdd_le_champ' :
+                /* this.apres_supprimer_un_champs1(mat,d); */
                 this.__ig1.fermer_la_sous_fenetre();
                 break;
+                
             case 'executer_un_ordre_sql_directe' : /* this.apres_supprimer_un_champs1(mat,d); */
                 break;
-            default: 
-                debugger;
+            default: debugger;
         }
         return({"__xst" : __xsu});
     }
