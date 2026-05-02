@@ -201,9 +201,9 @@ class __televersement1{
             let obj1=this.__ig1.__rev1.rev_tm( this.#parametres_televersement );
             if(obj1.__xst === __xsu){
                 let l01=obj1.__xva.length;
-                for(let i=1 ; i < l01 ; i=obj1.__xva[i][12]){
-                    if(obj1.__xva[i][1]==='a_la_fin_du_televersement' && obj1.__xva[i][2]==='f'){
-                        this.__ig1.__xac(obj1.__xva,i,null,null);
+                for( let i=1 ; i < l01 ; i=obj1.__xva[i][12] ){
+                    if(obj1.__xva[i][1] === 'a_la_fin_du_televersement' && obj1.__xva[i][2] === 'f'){
+                        this.__ig1.__xac( obj1.__xva , i , null , null );
                         return({"__xst" : __xsu});
                     }
                 }

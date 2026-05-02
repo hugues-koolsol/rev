@@ -23,6 +23,45 @@ class sources1{
     /*
       =============================================================================================================
     */
+    async vv_sources_nouveau_numero1( mat , d ){
+        let chi_id_source_ancienne=0;
+        let chi_id_source_nouvelle=0;
+        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
+        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        if(form['vv_nouveau_numero_de_source'] && this.__ig1.est_num( form['vv_nouveau_numero_de_source'] )){
+            chi_id_source_nouvelle=parseInt( form['vv_nouveau_numero_de_source'] , 10 );
+        }else{
+            this.__ig1.donnees_retournees.__xsi[__xer].push( ' le nouveau numéro doit être numérique [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        if(form['vv_ancien_numero_de_source'] && this.__ig1.est_num( form['vv_ancien_numero_de_source'] )){
+            chi_id_source_ancienne=parseInt( form['vv_ancien_numero_de_source'] , 10 );
+        }else{
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'ancien numéro doit être numérique [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_415={
+             /*  */
+            "c_chi_id_source" : chi_id_source_ancienne ,
+            "n_chi_id_source" : chi_id_source_nouvelle
+        };
+        let tt415=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_sources SET 
+           `chi_id_source` = :n_chi_id_source
+        WHERE `chi_id_source` = :c_chi_id_source ;
+        */
+        /*sql_inclure_fin*/ 415 , criteres_select_415 , this.__ig1.donnees_retournees , __db1 );
+        if(tt415[__xst] !== __xsu){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de la renumérotation du source [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async remplacer_une_chaine_par_une_autre_en_arriere_plan( mat , d ){
         /* this.__ig1.ma_trace1('d='+d+',mat',mat); */
         let chi_id_source=0;

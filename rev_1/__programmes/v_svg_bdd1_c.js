@@ -616,7 +616,7 @@ class v_svg_bdd1{
             var a=this.#ajouter_table_a_svg( nom_de_la_table , indice_courant , [20,20] , meta_table );
             var id_svg_conteneur_table=a.id_svg_conteneur_table;
             indice_courant+=2;
-            var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0 , false );
+            var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0 , false , false );
             this.__ig1.fermer_la_sous_fenetre();
             this.#dessiner_le_svg();
         }
@@ -685,6 +685,7 @@ class v_svg_bdd1{
         }
         var masquer_champ_dans_svg=document.getElementById( 'masquer_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
         var est_en_session=document.getElementById( 'est_en_session' ).checked ? ( 1 ) : ( 0 );
+        var est_pas_cascade_quand_maj=document.getElementById( 'est_pas_cascade_quand_maj' ).checked ? ( 1 ) : ( 0 );
         var nom_en_session=document.getElementById( 'nom_en_session' ).value;
         var refe_enfant_droite=document.getElementById( 'refe_enfant_droite' ).checked ? ( 1 ) : ( 0 );
         var refe_parent_gauche=document.getElementById( 'refe_parent_gauche' ).checked ? ( 1 ) : ( 0 );
@@ -753,6 +754,7 @@ class v_svg_bdd1{
         rev+='    abrege_du_champ(\'' + document.getElementById( 'meta_ajouter__abrege_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + ')';
         rev+='    est_en_session(' + est_en_session + ')';
+        rev+='    est_pas_cascade_quand_maj(' + est_pas_cascade_quand_maj + ')';
         rev+='    nom_en_session(\'' + nom_en_session + '\')';
         rev+='    refe_enfant_droite(' + refe_enfant_droite + ')';
         rev+='    refe_parent_gauche(' + refe_parent_gauche + ')';
@@ -1641,6 +1643,7 @@ class v_svg_bdd1{
         a.proprietes.a_une_valeur_par_defaut=document.getElementById( 'che_a_init_genre' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.la_valeur_par_defaut_est_caractere=document.getElementById( 'che_init_est_mot_genre' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.valeur_par_defaut=document.getElementById( 'cht_valeur_init_genre' ).value;
+        a.proprietes.est_pas_cascade_quand_maj=document.getElementById( 'est_pas_cascade_quand_maj' ).checked ? ( 1 ) : ( 0 );
         var masquer_champ_dans_svg=document.getElementById( 'masquer_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
         var est_en_session=document.getElementById( 'est_en_session' ).checked ? ( 1 ) : ( 0 );
         var nom_en_session=document.getElementById( 'nom_en_session' ).value;
@@ -1652,6 +1655,7 @@ class v_svg_bdd1{
         let obj={
             "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
             "est_en_session" : est_en_session ,
+            "est_pas_cascade_quand_maj" : a.proprietes.est_pas_cascade_quand_maj ,
             "nom_en_session" : nom_en_session ,
             "refe_enfant_droite" : a.proprietes.refe_enfant_droite ,
             "refe_parent_gauche" : a.proprietes.refe_parent_gauche ,
@@ -2334,6 +2338,7 @@ class v_svg_bdd1{
         let abrege_du_champ=obj_donnees_rev_du_champ.abrege_du_champ;
         let masquer_champ_dans_svg=obj_donnees_rev_du_champ.masquer_champ_dans_svg;
         let est_en_session=obj_donnees_rev_du_champ.est_en_session;
+        let est_pas_cascade_quand_maj=obj_donnees_rev_du_champ.est_pas_cascade_quand_maj;
         let nom_en_session=obj_donnees_rev_du_champ.nom_en_session;
         let refe_enfant_droite=obj_donnees_rev_du_champ.refe_enfant_droite;
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
@@ -2439,6 +2444,7 @@ class v_svg_bdd1{
         }
         t+='<br />champ père : <input id="champ_père" type="text" value="' + champ_pere + '" autocapitalize="off" />';
         t+='<span id="vv_liste_des_champs_pere"></span>';
+        t+='<br />est_pas_cascade_quand_maj : <input type="checkbox" id="est_pas_cascade_quand_maj" ' + (est_pas_cascade_quand_maj === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />clé primary_key  : <input type="checkbox" id="che_est_primaire_genre" ' + (primary_key === true ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />non nulle  : <input type="checkbox" id="che_est_obligatoire_genre" ' + (non_nulle === true ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />auto increment  : <input type="checkbox" id="che_est_incrément_genre" ' + (auto_increment === true ? ( 'checked' ) : ( '' )) + ' />';
@@ -4892,6 +4898,7 @@ class v_svg_bdd1{
         t+='<br />abrege_du_champ : <input type="text" id="meta_ajouter__abrege_du_champ" value="A faire ..." autocapitalize="off" />';
         t+='<br />masquer_champ_dans_svg : <input id="masquer_champ_dans_svg" type="checkbox" />';
         t+='<br />est_en_session : <input id="est_en_session" type="checkbox" />';
+        t+='<br />est_pas_cascade_quand_maj : <input id="est_pas_cascade_quand_maj" type="checkbox" />';
         t+='<br />nom_en_session : <input id="nom_en_session" type="text" value="" />';
         t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
         t+='<br />refe_parent_gauche : <input id="refe_parent_gauche" type="checkbox" />';
@@ -6828,6 +6835,7 @@ class v_svg_bdd1{
         let genre='1';
         let masquer_champ_dans_svg=0;
         let est_en_session=0;
+        let est_pas_cascade_quand_maj=0;
         let nom_en_session='';
         let refe_enfant_droite=0;
         let refe_parent_gauche=0;
@@ -6899,6 +6907,11 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.est_en_session , 10 );
                             }
                             est_en_session=parseInt( mat2[k + 1][1] , 10 );
+                        }else if(mat2[k][1] === 'est_pas_cascade_quand_maj' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'est_pas_cascade_quand_maj' )){
+                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.est_pas_cascade_quand_maj , 10 );
+                            }
+                            est_pas_cascade_quand_maj=parseInt( mat2[k + 1][1] , 10 );
                         }else if(mat2[k][1] === 'nom_en_session' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'nom_en_session' )){
                                 mat2[k + 1][1]=nouvelles_valeurs.nom_en_session;
@@ -7021,6 +7034,12 @@ class v_svg_bdd1{
         ){
             est_en_session=1;
         }
+        if(nouvelles_valeurs.hasOwnProperty( 'est_pas_cascade_quand_maj' )
+               && (nouvelles_valeurs.est_pas_cascade_quand_maj === '1'
+                   || nouvelles_valeurs.est_pas_cascade_quand_maj === 1)
+        ){
+            est_pas_cascade_quand_maj=1;
+        }
         if(nouvelles_valeurs.hasOwnProperty( 'nom_en_session' ) && nouvelles_valeurs.nom_en_session != ''){
             nom_en_session=nouvelles_valeurs.nom_en_session;
         }
@@ -7121,6 +7140,9 @@ class v_svg_bdd1{
         if(est_en_session === 1){
             o1+='    est_en_session(' + est_en_session + '),';
         }
+        if(est_pas_cascade_quand_maj === 1){
+            o1+='    est_pas_cascade_quand_maj(' + est_pas_cascade_quand_maj + '),';
+        }
         if(nom_en_session !== ''){
             o1+='    nom_en_session(\'' + nom_en_session + '\'),';
         }
@@ -7152,6 +7174,7 @@ class v_svg_bdd1{
                 "typologie" : typologie ,
                 "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
                 "est_en_session" : est_en_session ,
+                "est_pas_cascade_quand_maj" : est_pas_cascade_quand_maj ,
                 "nom_en_session" : nom_en_session ,
                 "refe_enfant_droite" : refe_enfant_droite ,
                 "refe_parent_gauche" : refe_parent_gauche ,

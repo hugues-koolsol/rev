@@ -10,5 +10,11 @@
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
     "cht_notification_ko_source": null
+  },
+  "x_ecran_a_propos1_c.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
   }
 }

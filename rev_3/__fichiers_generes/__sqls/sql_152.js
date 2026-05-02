@@ -11,7 +11,8 @@ class sql_152{
     */
     async sql( par ){
         const champs0=`
-          \`T0\`.\`chi_id_autorisation\` , \`T0\`.\`chp_nom_autorisation\` , \`T0\`.\`chx_acces_autorisation\` , \`T0\`.\`chx_source_autorisation\` , \`T1\`.\`chp_nom_source\`
+          \`T0\`.\`chi_id_autorisation\` , \`T0\`.\`chp_nom_autorisation\` , \`T0\`.\`chx_acces_autorisation\` , \`T0\`.\`chx_source_autorisation\` , \`T1\`.\`chp_nom_source\` , 
+          \`T1\`.\`cht_condition_rev_source\` , \`T1\`.\`cht_condition_js_source\` , \`T1\`.\`cht_notification_ko_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -19,8 +20,7 @@ class sql_152{
            LEFT JOIN tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
         `;
         sql0+=from0;
-        const where0=` WHERE (\`T1\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq3( par['T1_chp_nom_source'] ) + `
-         AND \`T0\`.\`chx_acces_autorisation\` > 1)`;
+        const where0=` WHERE \`T0\`.\`chx_acces_autorisation\` >= 1`;
         sql0+=where0;
     const order0=`
        ORDER BY  \`T0\`.\`chx_acces_autorisation\` ASC`;
@@ -43,7 +43,10 @@ class sql_152{
                     "T0.chp_nom_autorisation" : col[1] ,
                     "T0.chx_acces_autorisation" : col[2] ,
                     "T0.chx_source_autorisation" : col[3] ,
-                    "T1.chp_nom_source" : col[4]
+                    "T1.chp_nom_source" : col[4] ,
+                    "T1.cht_condition_rev_source" : col[5] ,
+                    "T1.cht_condition_js_source" : col[6] ,
+                    "T1.cht_notification_ko_source" : col[7]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

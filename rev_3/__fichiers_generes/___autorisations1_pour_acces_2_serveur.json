@@ -5,6 +5,42 @@
     "cht_condition_js_source": null,
     "cht_notification_ko_source": null
   },
+  "groupes1_s.js": {
+    "id_autorisation": 26,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "metiers1_s.js": {
+    "id_autorisation": 28,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "acces1_s.js": {
+    "id_autorisation": 30,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "utilisateurs1_s.js": {
+    "id_autorisation": 35,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "autorisations1_s.js": {
+    "id_autorisation": 32,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "menus1_s.js": {
+    "id_autorisation": 34,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
   "taches1_s.js": {
     "id_autorisation": 15,
     "autorisation_cote_client": 0,

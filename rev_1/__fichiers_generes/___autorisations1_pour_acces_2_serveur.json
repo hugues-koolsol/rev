@@ -5,13 +5,13 @@
     "cht_condition_js_source": "this.donnees_retournees.chi_id_utilisateur > 0;",
     "cht_notification_ko_source": "vous devez être connecté"
   },
-  "_connexion1_s.js": {
+  "__ig1_s.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
     "cht_notification_ko_source": null
   },
-  "__ig1_s.js": {
+  "_connexion1_s.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,

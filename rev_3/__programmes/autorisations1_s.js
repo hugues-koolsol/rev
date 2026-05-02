@@ -15,36 +15,18 @@ class autorisations1{
       =============================================================================================================
     */
     async ecrire_fichier_des_autorisations( tableau_des_auto , chx_acces_autorisation , __db1 ){
-        /*
-          let nom_du_fichier1='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + chx_acces_autorisation + '_.json';
-          let T1_chp_nom_source='';
-          
-          for(let i in tableau_des_auto){
-          T1_chp_nom_source+=',\'' + i + '_c.js\'';
-          }
-          if(T1_chp_nom_source !== ''){
-          T1_chp_nom_source=T1_chp_nom_source.substr( 1 );
-          let criteres_select_163={
-          "T0_chx_acces_autorisation" : chx_acces_autorisation ,
-          "T1_chp_nom_source" : T1_chp_nom_source ,
-          };
-          let tt163=await this.__ig1.sql_iii(163 , criteres_select_163 , this.__ig1.donnees_retournees , __db1 );
-          if(tt163[__xst] !== __xsu){
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
-          return({"__xst" : __xer});
-          }
-          for(let i in tt163.__xva){
-          //                tableau_des_auto[tt163.__xva[i]['T1.chp_nom_source'].substr( 0 , tt163.__xva[i]['T1.chp_nom_source'].length - 5 )].autorisation_cote_client=tt163.__xva[i]['T0.chi_id_autorisation'];
-          tableau_des_auto[tt163.__xva[i]['T1.chp_nom_source']].autorisation_cote_client=tt163.__xva[i]['T0.chi_id_autorisation'];
-          }
-          }
-          try{
-          this.__ig1.file_put_contents( nom_du_fichier1 , JSON.stringify( tableau_des_auto , null , 2 ) );
-          }catch(e){
-          this.__ig1.donnees_retournees.__xsi[__xal].push( '[' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-          }
-        */
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur >=2 && chx_acces_autorisation<=2){
+            /*
+              l'utilisateur admin ( > 2 ) ne peut pas modifier les autorisations des accès < 2 ...
+            */
+            if(chx_acces_autorisation === 0 ){
+               /*
+                 ... sauf celui des anonymes
+               */
+            }else{
+               return({"__xst" : __xsu});
+            }
+        }
         /* this.__ig1.ma_trace1( "tableau_des_auto=" , tableau_des_auto ); */
         let tableau_des_auto_client={};
         for(let i in tableau_des_auto){
@@ -142,7 +124,7 @@ class autorisations1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        /* this.__ig1.ma_trace1("tt152=",tt152); */
+        this.__ig1.ma_trace1("tt152=",tt152);
         let chx_acces_autorisation=0;
         let tableau_des_auto={};
         for(let k1 in tt152.__xva){
@@ -264,20 +246,27 @@ class autorisations1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1 ){
+            if( !( __xva_avant['T0.chx_acces_autorisation'] > 2 || __xva_avant['T0.chx_acces_autorisation'] === 0 ) ){
+               this.__ig1.donnees_retournees.__xsi[__xer].push( ' vous ne pouvez pas modifier l\'autorisation pour cet accès  (' + __xva_avant['T0.chx_acces_autorisation'] + ')' );
+               return({"__xst" : __xer});
+            }
+        }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
+        this.__ig1.ma_trace1("this.__ig1.donnees_retournees._CA_="+this.__ig1.donnees_retournees._CA_);
+        this.__ig1.ma_trace1("this.__ig1.donnees_retournees.chi_id_utilisateur="+this.__ig1.donnees_retournees.chi_id_utilisateur);
+        this.__ig1.ma_trace1("__xva_avant['T0.chx_acces_autorisation']"+__xva_avant['T0.chx_acces_autorisation']);
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1 ){
+            if( !( __xva_avant['T0.chx_acces_autorisation'] > 2 || __xva_avant['T0.chx_acces_autorisation'] === 0 ) ){
+               this.__ig1.donnees_retournees.__xsi[__xer].push( ' vous ne pouvez pas supprimer l\'autorisation pour cet accès  (' + __xva_avant['T0.chx_acces_autorisation'] + ')' );
+               return({"__xst" : __xer});
+            }
+        }
         return({"__xst" : __xsu});
     }
     /*

@@ -13,6 +13,9 @@ class v2_menu_pour_acces_0{
         let les_menu1='';
         /* contenu initialisé avec une chaine vide pour indice 0 */
         let les_sous_menus=[''];
+        les_menu1+=`<li><div id="menu_1" data-id_auto="38" data-id_menu="17" class="rev_bouton" data-rev_click="m1(n1(x_ecran_a_propos1),f1(entree_module()))" title="à propos">à propos</div></li>`;
+
+
         if(les_menu1 !== ''){
             les_menu1='<ul data-rev_menu="1" class="vv_nav_centre_defilement" style="display:none;"  id="v2_menu_pour_acces_0">' + les_menu1 + '</ul>';
         }

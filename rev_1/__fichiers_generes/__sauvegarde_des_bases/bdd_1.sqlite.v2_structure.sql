@@ -9,7 +9,7 @@ CREATE TABLE `tbl_projets`(
    table('tbl_projets'),
    genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('projet'),
    distinction_pour_liste('liste des projets'),
-   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(3)'),transform_base_sur_svg(translate(703,218))) 
+   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(3)'),transform_base_sur_svg(translate(64,378))) 
 */
     
             /*
@@ -154,7 +154,7 @@ CREATE TABLE `tbl_metiers`(
    table('tbl_metiers'),
    genre_meta(table_de_base),rang_de_la_table(20),permet_la_gestion_de('metier'),
    distinction_pour_liste('liste des metiers'),
-   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(34,252))) 
+   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(9,189))) 
 */
     
             /*
@@ -207,7 +207,7 @@ CREATE TABLE `tbl_acces`(
    table('tbl_acces'),
    genre_meta(table_de_base),rang_de_la_table(30),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
-   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(341,56))) 
+   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(218,170))) 
 */
     
             /*
@@ -287,186 +287,6 @@ CREATE TABLE `tbl_acces`(
 
 
 /*
-================================================================================ TABLE tbl_autorisations 
-*/
-
-CREATE TABLE `tbl_autorisations`(
-/*
- meta(nom_de_la_table('tbl_autorisations'),
-   table('tbl_autorisations'),
-   genre_meta(table_de_base),rang_de_la_table(40),permet_la_gestion_de('autorisation'),
-   distinction_pour_liste('liste des autorisations'),
-   distinction_pour_isad('d\'une autorisation'),transform_base_sur_svg(translate(659,18))) 
-*/
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chi_id_autorisation'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
-            typologie(chi),
-            genre(2)
-            )
-            */
-             `chi_id_autorisation` INTEGER PRIMARY KEY NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_nom_autorisation'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
-            typologie(chp),
-            genre(17),
-            est_libelle_lien(1)
-            )
-            */
-             `chp_nom_autorisation` VARCHAR(255) NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_acces_autorisation'),
-            nom_bref_du_champ('acces'),abrege_du_champ('acces'),
-            typologie(chx),
-            genre(8)
-            )
-            */
-             `chx_acces_autorisation` INTEGER REFERENCES tbl_acces(chi_id_acces)  ON UPDATE CASCADE DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_source_autorisation'),
-            nom_bref_du_champ('source'),abrege_du_champ('source'),
-            typologie(chx),
-            genre(4),
-            refe_enfant_droite(1),
-            refe_parent_gauche(1)
-            )
-            */
-             `chx_source_autorisation` INTEGER NOT NULL REFERENCES tbl_sources(chi_id_source)  ON UPDATE CASCADE
-    );
-
-
-
-
-/*
-================================================================================ TABLE tbl_menus 
-*/
-
-CREATE TABLE `tbl_menus`(
-/*
- meta(nom_de_la_table('tbl_menus'),
-   table('tbl_menus'),
-   genre_meta(table_de_base),rang_de_la_table(50),permet_la_gestion_de('menu'),
-   distinction_pour_liste('liste des menus'),
-   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(1101,13))) 
-*/
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chi_id_menu'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
-            typologie(chi),
-            genre(2)
-            )
-            */
-             `chi_id_menu` INTEGER PRIMARY KEY NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_libelle_menu'),
-            nom_bref_du_champ('libelle'),abrege_du_champ('libelle'),
-            typologie(cht),
-            genre(11)
-            )
-            */
-             `cht_libelle_menu` TEXT NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_titre_menu'),
-            nom_bref_du_champ('titre'),abrege_du_champ('titre'),
-            typologie(chp),
-            genre(3),
-            est_libelle_lien(1)
-            )
-            */
-             `chp_titre_menu` VARCHAR(64) NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_autorisation_menu'),
-            nom_bref_du_champ('autorisation'),abrege_du_champ('autorisation'),
-            typologie(chx),
-            genre(4)
-            )
-            */
-             `chx_autorisation_menu` INTEGER NOT NULL REFERENCES tbl_autorisations(chi_id_autorisation)  ON UPDATE CASCADE
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_methode_menu'),
-            nom_bref_du_champ('methode'),abrege_du_champ('methode'),
-            typologie(chp),
-            genre(3)
-            )
-            */
-             `chp_methode_menu` VARCHAR(64) NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_initialisation_menu'),
-            nom_bref_du_champ('initialisation'),abrege_du_champ('initialisation'),
-            typologie(cht),
-            genre(98)
-            )
-            */
-             `cht_initialisation_menu` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_condition_menu'),
-            nom_bref_du_champ('condition'),abrege_du_champ('condition'),
-            typologie(cht),
-            genre(98)
-            )
-            */
-             `cht_condition_menu` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_condition_js_menu'),
-            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),
-            typologie(cht),
-            genre(97)
-            )
-            */
-             `cht_condition_js_menu` TEXT DEFAULT  NULL
-    );
-
-
-
-
-/*
 ================================================================================ TABLE tbl_dossiers 
 */
 
@@ -476,7 +296,7 @@ CREATE TABLE `tbl_dossiers`(
    table('tbl_dossiers'),
    genre_meta(table_de_base),rang_de_la_table(60),permet_la_gestion_de('dossier'),
    distinction_pour_liste('liste des dossiers'),
-   distinction_pour_isad('d\'un dossier'),fonctions_spéciales1('ne_pas_supprimer_id_un(9)'),transform_base_sur_svg(translate(721,490))) 
+   distinction_pour_isad('d\'un dossier'),fonctions_spéciales1('ne_pas_supprimer_id_un(9)'),transform_base_sur_svg(translate(281,18))) 
 */
     
             /*
@@ -569,7 +389,7 @@ CREATE TABLE `tbl_sources`(
    table('tbl_sources'),
    genre_meta(table_de_base),rang_de_la_table(70),permet_la_gestion_de('source'),
    distinction_pour_liste('liste des sources'),
-   distinction_pour_isad('d\'un source'),transform_base_sur_svg(translate(1103,320))) 
+   distinction_pour_isad('d\'un source'),transform_base_sur_svg(translate(555,8))) 
 */
     
             /*
@@ -748,6 +568,184 @@ CREATE TABLE `tbl_sources`(
 
 
 /*
+================================================================================ TABLE tbl_autorisations 
+*/
+
+CREATE TABLE `tbl_autorisations`(
+/*
+ meta(nom_de_la_table('tbl_autorisations'),
+   table('tbl_autorisations'),
+   genre_meta(table_de_base),rang_de_la_table(75),permet_la_gestion_de('autorisation'),
+   distinction_pour_liste('liste des autorisations'),
+   distinction_pour_isad('d\'une autorisation'),transform_base_sur_svg(translate(823,256))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_autorisation'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            typologie(chi),
+            genre(2)
+            )
+            */
+             `chi_id_autorisation` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_nom_autorisation'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
+            typologie(chp),
+            genre(17),
+            est_libelle_lien(1)
+            )
+            */
+             `chp_nom_autorisation` VARCHAR(255) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_source_autorisation'),
+            nom_bref_du_champ('source'),abrege_du_champ('source'),
+            typologie(chx),
+            genre(4)
+            )
+            */
+             `chx_source_autorisation` INTEGER NOT NULL REFERENCES tbl_sources(chi_id_source)  ON UPDATE CASCADE
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_acces_autorisation'),
+            nom_bref_du_champ('acces'),abrege_du_champ('acces'),
+            typologie(chx),
+            genre(8)
+            )
+            */
+             `chx_acces_autorisation` INTEGER REFERENCES tbl_acces(chi_id_acces)  ON UPDATE CASCADE DEFAULT  NULL
+    );
+
+
+
+
+/*
+================================================================================ TABLE tbl_menus 
+*/
+
+CREATE TABLE `tbl_menus`(
+/*
+ meta(nom_de_la_table('tbl_menus'),
+   table('tbl_menus'),
+   genre_meta(table_de_base),rang_de_la_table(78),permet_la_gestion_de('menu'),
+   distinction_pour_liste('liste des menus'),
+   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(1101,298))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_menu'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            typologie(chi),
+            genre(2)
+            )
+            */
+             `chi_id_menu` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_libelle_menu'),
+            nom_bref_du_champ('libelle'),abrege_du_champ('libelle'),
+            typologie(cht),
+            genre(11)
+            )
+            */
+             `cht_libelle_menu` TEXT NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_titre_menu'),
+            nom_bref_du_champ('titre'),abrege_du_champ('titre'),
+            typologie(chp),
+            genre(3),
+            est_libelle_lien(1)
+            )
+            */
+             `chp_titre_menu` VARCHAR(64) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_autorisation_menu'),
+            nom_bref_du_champ('autorisation'),abrege_du_champ('autorisation'),
+            typologie(chx),
+            genre(4)
+            )
+            */
+             `chx_autorisation_menu` INTEGER NOT NULL REFERENCES tbl_autorisations(chi_id_autorisation)  ON UPDATE CASCADE
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_methode_menu'),
+            nom_bref_du_champ('methode'),abrege_du_champ('methode'),
+            typologie(chp),
+            genre(3)
+            )
+            */
+             `chp_methode_menu` VARCHAR(64) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_initialisation_menu'),
+            nom_bref_du_champ('initialisation'),abrege_du_champ('initialisation'),
+            typologie(cht),
+            genre(98)
+            )
+            */
+             `cht_initialisation_menu` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_condition_menu'),
+            nom_bref_du_champ('condition'),abrege_du_champ('condition'),
+            typologie(cht),
+            genre(98)
+            )
+            */
+             `cht_condition_menu` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_condition_js_menu'),
+            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),
+            typologie(cht),
+            genre(97)
+            )
+            */
+             `cht_condition_js_menu` TEXT DEFAULT  NULL
+    );
+
+
+
+
+/*
 ================================================================================ TABLE tbl_utilisateurs 
 */
 
@@ -757,7 +755,7 @@ CREATE TABLE `tbl_utilisateurs`(
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),rang_de_la_table(80),permet_la_gestion_de('utilisateur'),
    distinction_pour_liste('liste des utilisateurs'),
-   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(326,288))) 
+   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(481,312))) 
 */
     
             /*
@@ -897,7 +895,7 @@ CREATE TABLE `tbl_taches`(
    table('tbl_taches'),
    genre_meta(table_de_base),rang_de_la_table(90),permet_la_gestion_de('tâche'),
    distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(701,696))) 
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(841,568))) 
 */
     
             /*
@@ -1333,7 +1331,7 @@ CREATE TABLE `tbl_bdds`(
    table('tbl_bdds'),
    genre_meta(table_de_base),rang_de_la_table(110),permet_la_gestion_de('base'),
    distinction_pour_liste('liste des bases de données'),
-   distinction_pour_isad('d\'une base de donnée'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),transform_base_sur_svg(translate(1135,631))) 
+   distinction_pour_isad('d\'une base de donnée'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),transform_base_sur_svg(translate(833,15))) 
 */
     
             /*
@@ -1436,7 +1434,7 @@ CREATE TABLE `tbl_requetes`(
    table('tbl_requetes'),
    genre_meta(table_de_base),rang_de_la_table(120),permet_la_gestion_de('requete'),
    distinction_pour_liste('liste des requetes'),
-   distinction_pour_isad('d\'une requete'),transform_base_sur_svg(translate(1154,830))) 
+   distinction_pour_isad('d\'une requete'),transform_base_sur_svg(translate(1040,113))) 
 */
     
             /*
@@ -1588,7 +1586,7 @@ CREATE TABLE `tbl_travaux`(
    table('tbl_travaux'),
    genre_meta(table_de_base),rang_de_la_table(130),permet_la_gestion_de('travail'),
    distinction_pour_liste('liste des travaux'),
-   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(941,829))) 
+   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(616,588))) 
 */
     
             /*

@@ -1,11 +1,15 @@
 {
   "x_ecran_coordonnees1_s.js": {
     "id_autorisation": 33,
-    "autorisation_cote_client": 0
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
   },
   "taches1_s.js": {
-    "id_autorisation": 32,
-    "autorisation_cote_client": 0
+    "id_autorisation": 35,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
   },
   "_connexion1_s.js": {
     "id_autorisation": 0,

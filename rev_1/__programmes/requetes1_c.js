@@ -1052,7 +1052,7 @@ class requetes1{
                 lst+='<div class="rev_bouton yy__4" id="vv_bouton_compiler_' + elem['T0.chi_id_requete'] + '" data-rev_click="';
                 lst+='m1(n1(' + this.moi + '),f1(compiler_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '),bouton_compiler(vv_bouton_compiler_' + elem['T0.chi_id_requete'] + '))))';
                 lst+='" title="compiler cette requête">' + this.__ig1.les_svg.compiler + '</div>';
-                lst+='</tdiv>';
+                lst+='</div>';
                 lst+='</td>';
                 /*
                 */

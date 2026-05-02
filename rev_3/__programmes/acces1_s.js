@@ -368,7 +368,7 @@ class acces1{
                 return({"__xst" : __xer});
             }
         }else if(this.__ig1.donnees_retournees.chi_id_utilisateur === 2){
-            if(this.__ig1.donnees_recues[__xva]['chi_id_acces'] <= 2){
+            if(!( this.__ig1.donnees_recues[__xva]['chi_id_acces'] > 2 || this.__ig1.donnees_recues[__xva]['chi_id_acces'] === 0)){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'admin peut modifier les menus >2  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
@@ -506,8 +506,8 @@ class acces1{
               WHERE (`T1`.`chx_acces_autorisation` = 0);              
               
             */
-            let criteres_415={};
-            let tt415=await this.__ig1.sql_iii(
+            let criteres_164={};
+            let tt164=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T0`.`chi_id_menu` , `T0`.`cht_initialisation_menu` , 
@@ -521,10 +521,10 @@ class acces1{
             WHERE (`T1`.`chx_acces_autorisation` = 0)
             ;
             */
-            /*sql_inclure_fin*/ 415 , criteres_415 , this.__ig1.donnees_retournees , __db1 );
-            /* this.__ig1.ma_trace1( "tt415=" , tt415 ); */
-            for(let k1 in tt415[__xva]){
-                let v1=tt415[__xva][k1];
+            /*sql_inclure_fin*/ 164 , criteres_164 , this.__ig1.donnees_retournees , __db1 );
+            /* this.__ig1.ma_trace1( "tt164=" , tt164 ); */
+            for(let k1 in tt164[__xva]){
+                let v1=tt164[__xva][k1];
                 liste_des_menus.push( {
                         "chi_id_source" : v1['T1.chx_source_autorisation'] ,
                         "cht_libelle_menu" : v1['T0.cht_libelle_menu'] ,
@@ -739,6 +739,10 @@ class acces1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1 &&  __xva_avant['T0.chi_id_acces'] <=2 ){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( ' vous ne pouvez pas modifier l\'accès (' + __xva_avant['T0.chi_id_acces'] + ')' );
+            return({"__xst" : __xer});
+        }
         if(form['chi_id_acces'] === 2){
             if(form['che_actif_acces'] === 0){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'accès admin doit toujours être actif' );

@@ -812,19 +812,21 @@ class __ig1{
         if(e.stack.indexOf( 'API misuse' ) >= 0){
             console.log( '%c\nATTENTION API MISUSE, un await est il manquant quelquepart avant sql_' + numero_de_requete + ' ?\n\n' + e.stack , 'color:red;background-color:yellow;' );
         }
+        let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
+        let le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
+        le_message=le_message.replace( /__programmes\// , '' );
+        le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
         if(this.__deverminage === 1){
             this.donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
         }else if(this.__deverminage === 2){
-            let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
-            let le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
             this.donnees_retournees.__xsi[__xdv].push( le_message );
             /*
               dans le cas d'un appel asynchrone
             */
-            this.ma_trace1( "e" , e );
+            this.ma_trace1( "e8478324" , le_message );
         }
         if(this.__deverminage > 0){
-            this.donnees_retournees.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
+            this.donnees_retournees.__xsi[__xer].push( 'aaaaaaa<b>' + le_message + 'xxxxxxxxx</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
         }
         if(e.stack.indexOf( 'UNIQUE constraint' ) >= 0){
             __xme+='<b>doublon</b>';

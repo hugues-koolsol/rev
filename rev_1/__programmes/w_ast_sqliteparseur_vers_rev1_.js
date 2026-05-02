@@ -871,6 +871,9 @@ class w_ast_sqliteparseur_vers_rev1{
                                 return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__m_rev1.nl2() + 'valeur par défaut'} ));
                             }
                         }
+                        if(nom_du_champ === 'chx_source_autorisation'){
+                            debugger;
+                        }
                         if(element.definition[i].definition[j].type === "constraint"
                                && element.definition[i].definition[j].variant === "foreign key"
                                && element.definition[i].definition[j].references

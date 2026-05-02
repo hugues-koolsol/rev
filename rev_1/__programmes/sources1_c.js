@@ -43,6 +43,35 @@ class sources1{
     /*
       =============================================================================================================
     */
+    page_nouveau_numero_source1( mat , d ){
+        let l01=mat.length;
+        let chi_id_source=0;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_source' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_source > 0){
+            let o1='';
+            o1+='<h1>Attribuer un nouveau numéro à un source</h1>';
+            o1+='le numéro actuel est <b>' + chi_id_source + '</b>';
+            o1+='<br />';
+            o1+='<div id="vv_sources_nouveau_numero1">';
+            o1+='    <input type="hidden" id="vv_ancien_numero_de_source" value="' + chi_id_source + '" />';
+            o1+='    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_source" value="" />';
+            o1+='    <br />';
+            o1+='    <div class="rev_bouton" data-rev_click="';
+            o1+='fo1(co1(vv_sources_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_sources_nouveau_numero1()))))';
+            o1+='">attribuer ce nouveau numéro</div>';
+            o1+='</div>';
+            this.__ig1.affiche_sous_fenetre1( o1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
     constituer_la_liste_et_envoyer_en_cron( mat , d ){
         let la_liste=[];
         let lst=document.getElementById( 'vv_ecran_liste_zone_contenu' ).querySelectorAll( "[data-chi_id_source]" );
@@ -192,6 +221,11 @@ class sources1{
     */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
+            case 'vv_sources_nouveau_numero1' :
+                this.__ig1.fermer_la_sous_fenetre();
+                this.entree_module( null );
+                break;
+                
             case 'remplacer_une_chaine_par_une_autre' : this.__ig1.fermer_la_sous_fenetre();
                 break;
             case 'exporter_dans_rev_un' : 
@@ -1401,6 +1435,11 @@ class sources1{
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
+                /*
+                  =====================================================================================
+                  boutons de la liste début
+                  =====================================================================================
+                */
                 lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + elem['T0.chx_dossier_id_source'] + ')))))">' + this.__ig1.les_svg.dossier + '</div>';
                 lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
                 lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
@@ -1453,7 +1492,13 @@ class sources1{
                     lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_base_de_prod1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))';
                     lst+='" >⎘ dans la base de prod</div>';
                 }
-                lst+='</tdiv>';
+                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_source1(chi_id_source(' + elem['T0.chi_id_source'] + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
+                /*
+                  =====================================================================================
+                  boutons de la liste fin
+                  =====================================================================================
+                */
+                lst+='</div>';
                 lst+='</td>';
                 /*
                 */

@@ -217,8 +217,15 @@ class __ig1{
                                     /* ok, pas de condition particulière à tester */
                                 }
                             }else{
-                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
-                                return({"__xst" : __xer});
+                                if(mat[d][1] === 'f1' && mat[d][8] === 1 &&  mat[d+1][1] === 'sous_liste1' ){
+                                    /*
+                                      si c'est une sous liste, on autorise l'accès
+                                    */
+                                }else{
+                                    debugger
+                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
+                                    return({"__xst" : __xer});
+                                }
                             }
                         }catch(e){
                             console.error( e.stack );
@@ -334,8 +341,14 @@ class __ig1{
                                     /* ok, pas de condition particulière à tester */
                                 }
                             }else{
-                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 4 <br />cette action n\'est pas disponnible'} );
-                                return({"__xst" : __xer});
+                                if(mat[d][1] === 'f1' && mat[d][8] === 1 &&  mat[d+1][1] === 'sous_liste1' ){
+                                    /*
+                                      si c'est une sous liste, on autorise l'accès
+                                    */
+                                }else{
+                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 4 <br />cette action n\'est pas disponnible'} );
+                                    return({"__xst" : __xer});
+                                }
                             }
                         }catch(e){
                             console.error( e.stack );

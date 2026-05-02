@@ -2077,7 +2077,7 @@ class genres1{
                     lst+='pm1(m1(n1(' + this.moi + '),f1(page_integrer_ce_genre_dans_un_autre_projet(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))';
                     lst+='" title="integrer ce genre dans un autre projet">intégrer</div>';
                 }
-                lst+='</tdiv>';
+                lst+='</div>';
                 lst+='</td>';
                 /*
                 */

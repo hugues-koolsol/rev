@@ -129,7 +129,8 @@ class __ig1{
                                         if(mat[l][1] !== '' && mat[l][2] === 'f'){
                                             position_f1=l;
                                             let nom_de_la_fonction_a_appeler=mat[position_f1][1];
-                                            /* this.ma_trace1('\n\nn1="'+n1+'"' , 'nom_de_la_fonction_a_appeler=' , nom_de_la_fonction_a_appeler , 'objet_des_modules_charges=',this.objet_des_modules_charges); */
+                                            this.ma_trace1('\n\nn1="'+n1+'"' , 'nom_de_la_fonction_a_appeler=' , nom_de_la_fonction_a_appeler );
+                                            /* this.ma_trace1('objet_des_modules_charges=',this.objet_des_modules_charges); */
                                             let m=null;
                                             let nom_du_fichier='';
                                             let cle_pour_json_du_fichier='';
@@ -144,7 +145,7 @@ class __ig1{
                                             let verifier_fonction_sous_liste=false;
                                             if(this.autorisations_verifiees !== true){
                                                 verifier_fonction_sous_liste=false;
-                                                if(cle_pour_json_du_fichier === '__ig1_s.js'){
+                                                if(cle_pour_json_du_fichier === '__ig1_s.js' || nom_de_la_fonction_a_appeler === 'sous_liste1'){
                                                     /* petite exception car on appelle ce programme très souvent */
                                                     this.autorisations_verifiees=true;
                                                 }else{
@@ -157,7 +158,7 @@ class __ig1{
                                                         if(contenu_json.hasOwnProperty( cle_pour_json_du_fichier )){
                                                             /* this.ma_trace1("trouve " , cle_pour_json_du_fichier , contenu_texte ); */
                                                             let elem=contenu_json[cle_pour_json_du_fichier];
-                                                            /* this.ma_trace1("elem[" + cle_pour_json_du_fichier + "]=" , elem ); */
+                                                            this.ma_trace1("elem[" + cle_pour_json_du_fichier + "]=" , elem );
                                                             /* this.autorisations_verifiees=true; */
                                                             /*#
                                                               // afr pour les sous listes
@@ -817,11 +818,12 @@ class __ig1{
         }else if(this.__deverminage === 2){
             let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
             let le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
+            le_message=le_message.replace(/__programmes\//,'');
             this.donnees_retournees.__xsi[__xdv].push( le_message );
             /*
               dans le cas d'un appel asynchrone
             */
-            this.ma_trace1( "e" , e );
+            this.ma_trace1( "e468978" , le_message );
         }
         if(this.__deverminage > 0){
             this.donnees_retournees.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );

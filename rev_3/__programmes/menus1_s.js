@@ -678,7 +678,7 @@ class menus1{
                         "chp_methode_menu" : form['chp_methode_menu'] ,
                         "cht_libelle_menu" : form['cht_libelle_menu'] ,
                         "cht_condition_menu" : form['cht_condition_menu'] === '' ? ( null ) : ( form['cht_condition_menu'] ) ,
-                        "cht_condition_js_menu" : form['condition_js_menu'] === '' ? ( null ) : ( form['condition_js_menu'] ) ,
+                        "cht_condition_js_menu" : form['cht_condition_js_menu'] === '' ? ( null ) : ( form['cht_condition_js_menu'] ) ,
                         "cht_initialisation_menu" : form['cht_initialisation_menu'] === '' ? ( null ) : ( form['cht_initialisation_menu'] )
                     }]
         };

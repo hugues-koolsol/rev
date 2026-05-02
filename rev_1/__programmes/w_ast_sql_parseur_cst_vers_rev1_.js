@@ -22,14 +22,12 @@ class w_ast_sql_parseur_cst_vers_rev1{
     #meta_table='';
     __ig1=null;
     #liste_des_primary_keys=[];
-    
     /*
       =============================================================================================================
     */
     constructor( __ig1 ){
         this.__ig1=__ig1;
         this.__m_rev1=this.__ig1.__rev1;
-        
     }
     /*
       =============================================================================================================
@@ -40,9 +38,9 @@ class w_ast_sql_parseur_cst_vers_rev1{
               o.plage=[o.element.loc.start.offset,o.element.loc.end.offset];
           }
         */
-        this.__ig1.ajoute_message( o ); //{"__xst" : numero ,"__xme" : 'exemple de message ' + numero + ' ' + parseInt( performance.now(),10 ) } );
-        
-//        this.__rev1.empiler_erreur( o );
+        this.__ig1.ajoute_message( o );
+        /* {"__xst" : numero ,"__xme" : 'exemple de message ' + numero + ' ' + parseInt[ performance.now[],10 ] } ]; */
+        /* this.__rev1.empiler_erreur( o ); */
         return o;
     }
     /*
@@ -54,15 +52,18 @@ class w_ast_sql_parseur_cst_vers_rev1{
         let behaviorKw='';
         let column='';
         let ifExistsKw='';
-        if(element.hasOwnProperty('primaryKeyKw')){
-            if(element.primaryKeyKw.length===2 && element.primaryKeyKw[0].text.toUpperCase() === 'PRIMARY' &&  element.primaryKeyKw[1].text.toUpperCase() === 'KEY'){
-                if(element.hasOwnProperty('columns') && element.columns.expr.items.length === 1 ){
-                    this.#liste_des_primary_keys.push(element.columns.expr.items[0].expr.name);
+        if(element.hasOwnProperty( 'primaryKeyKw' )){
+            if(element.primaryKeyKw.length === 2
+                   && element.primaryKeyKw[0].text.toUpperCase() === 'PRIMARY'
+                   && element.primaryKeyKw[1].text.toUpperCase() === 'KEY'
+            ){
+                if(element.hasOwnProperty( 'columns' ) && element.columns.expr.items.length === 1){
+                    this.#liste_des_primary_keys.push( element.columns.expr.items[0].expr.name );
                 }else{
                     return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
                 }
             }else{
-               return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+                return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
             }
         }else{
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
@@ -97,8 +98,6 @@ class w_ast_sql_parseur_cst_vers_rev1{
         t+=' drop_column(\'' + column.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         return({"__xst" : __xsu ,"__xva" : t});
     }
-    
-    
     /*
       =============================================================================================================
     */
@@ -110,11 +109,11 @@ class w_ast_sql_parseur_cst_vers_rev1{
         let ifExistsKw='';
         let nom_de_la_table='';
         if(element.ifExistsKw){
-            ifExistsKw='ifexists()'
+            ifExistsKw='ifexists()';
         }
         if(element.tables && element.tables.items && element.tables.items.length){
-            for(let i = 0 ; i<element.tables.items.length;i++){
-//                 +='nom_de_la_table(`' + element.tables.items[i].name + '`)';
+            for( let i=0 ; i < element.tables.items.length ; i++ ){
+                /* +='nom_de_la_table(`' + element.tables.items[i].name + '`)'; */
                 obj1=this.#traite_expr( element.tables.items[i] , niveau , element , options , vient_de );
                 if(obj1.__xst === __xsu){
                     nom_de_la_table+='nom_de_la_table(`' + obj1.__xva + '`)';
@@ -125,7 +124,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
         }else{
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : 'il manque les noms des tables dans le drop table ' + this.__ig1.nl2() + ' '} ));
         }
-        t+='drop_table('+ifExistsKw+'' + nom_de_la_table + ')';
+        t+='drop_table(' + ifExistsKw + '' + nom_de_la_table + ')';
         return({"__xst" : __xsu ,"__xva" : t});
     }
     /*
@@ -897,23 +896,24 @@ class w_ast_sql_parseur_cst_vers_rev1{
             try{
                 espece_du_champ=element.dataType.name.name.toLowerCase();
             }catch(e){
-                if(element.dataType.name && Array.isArray(element.dataType.name) && element.dataType.name[0].hasOwnProperty('text') ){
+                if(element.dataType.name && Array.isArray( element.dataType.name ) && element.dataType.name[0].hasOwnProperty( 'text' )){
                     espece_du_champ=element.dataType.name[0].text;
                 }
             }
             if(espece_du_champ === 'enum'){
-                espece_du_champ='enum'
+                espece_du_champ='enum';
                 longueur_du_champ=64;
             }else if(espece_du_champ === 'timestamp'){
-                espece_du_champ='varchar'
+                espece_du_champ='varchar';
                 longueur_du_champ=23;
             }else if(espece_du_champ === 'tinyint'){
-                espece_du_champ='integer'
+                espece_du_champ='integer';
                 longueur_du_champ=1;
             }else if(espece_du_champ === 'bigint'){
-                espece_du_champ='integer'
-//                dataType=element.dataType.name.name + '(' + element.dataType.params.expr.items[0].value + ')';
-                longueur_du_champ=20; //element.dataType.params.expr.items[0].value;
+                espece_du_champ='integer';
+                /* dataType=element.dataType.name.name + '(' + element.dataType.params.expr.items[0].value + ')'; */
+                longueur_du_champ=20;
+                /* element.dataType.params.expr.items[0].value; */
             }else{
                 if(element.dataType
                        && element.dataType.hasOwnProperty( 'params' )
@@ -953,7 +953,9 @@ class w_ast_sql_parseur_cst_vers_rev1{
                         constraints+='a_une_valeur_par_defaut(1),';
                         constraints+='la_valeur_par_defaut_est_caractere(0),';
                         constraints+='valeur_par_defaut(' + element.constraints[i].expr.value + ')';
-                    }else if('func_call' === element.constraints[i].expr.type && element.constraints[1].expr.name.name.toUpperCase() === 'CURRENT_TIMESTAMP'){
+                    }else if('func_call' === element.constraints[i].expr.type
+                           && element.constraints[1].expr.name.name.toUpperCase() === 'CURRENT_TIMESTAMP'
+                    ){
                         /*
                           espece_du_champ(VARCHAR),
                           longueur_du_champ(23),
@@ -965,10 +967,10 @@ class w_ast_sql_parseur_cst_vers_rev1{
                         console.log( element.name.text + ' ' , element.constraints[i] );
                         debugger;
                     }
-                }else if("constraint_comment" === element.constraints[i].type || 'constraint_collate' === element.constraints[i].type ){
+                }else if("constraint_comment" === element.constraints[i].type || 'constraint_collate' === element.constraints[i].type){
                     /* ras */
                 }else{
-                    console.log( element.name.text + ' ' ,element.constraints[i].type );
+                    console.log( element.name.text + ' ' , element.constraints[i].type );
                     debugger;
                 }
             }
@@ -1005,85 +1007,78 @@ class w_ast_sql_parseur_cst_vers_rev1{
             }
         }
         t+='champ(';
-        if(meta_champ===''){
+        if(meta_champ === ''){
             t+='         meta(\r\n';
             t+='            #(),\r\n';
             t+='            genre_meta(champ),\r\n';
             if(c_est_un_ts === true){
                 t+='            typologie(chd),\r\n';
                 t+='            genre(16)\r\n';
-            }else if( ( espece_du_champ==='integer' || espece_du_champ==='int' ) && constraints.indexOf('non_nulle()')>=0){
-                if(constraints.indexOf('primary_key()')>=0){
+            }else if((espece_du_champ === 'integer' || espece_du_champ === 'int') && constraints.indexOf( 'non_nulle()' ) >= 0){
+                if(constraints.indexOf( 'primary_key()' ) >= 0){
                     t+='            typologie(chi),\r\n';
                     t+='            genre(2)\r\n';
                 }else{
                     t+='            typologie(che),\r\n';
                     t+='            genre(9)\r\n';
                 }
-            }else if( ( espece_du_champ==='integer' || espece_du_champ==='int' ) && constraints.indexOf('non_nulle()')<0){
+            }else if((espece_du_champ === 'integer' || espece_du_champ === 'int') && constraints.indexOf( 'non_nulle()' ) < 0){
                 t+='            typologie(che),\r\n';
                 t+='            genre(7)\r\n';
-            }else if((espece_du_champ==='varchar' || espece_du_champ==='char' ) && constraints.indexOf('non_nulle()')>=0){
+            }else if((espece_du_champ === 'varchar' || espece_du_champ === 'char') && constraints.indexOf( 'non_nulle()' ) >= 0){
                 t+='            typologie(chp),\r\n';
                 t+='            genre(17)\r\n';
-            }else if((espece_du_champ==='varchar' || espece_du_champ==='char' ) && constraints.indexOf('non_nulle()')<0){
+            }else if((espece_du_champ === 'varchar' || espece_du_champ === 'char') && constraints.indexOf( 'non_nulle()' ) < 0){
                 t+='            typologie(chp),\r\n';
                 t+='            genre(12)\r\n';
-            }else if(espece_du_champ==='text' && constraints.indexOf('non_nulle()')<0){
+            }else if(espece_du_champ === 'text' && constraints.indexOf( 'non_nulle()' ) < 0){
                 t+='            typologie(cht),\r\n';
                 t+='            genre(11)\r\n';
-            }else if(espece_du_champ==='decimal' && constraints.indexOf('non_nulle()')>=0){
+            }else if(espece_du_champ === 'decimal' && constraints.indexOf( 'non_nulle()' ) >= 0){
                 t+='            typologie(che),\r\n';
                 t+='            genre(9)\r\n';
-            }else if(espece_du_champ==='date' ){
+            }else if(espece_du_champ === 'date'){
                 t+='            typologie(chd),\r\n';
                 t+='            genre(22)\r\n';
-            }else if(espece_du_champ==='text' && constraints.indexOf('non_nulle()')>=0){
+            }else if(espece_du_champ === 'text' && constraints.indexOf( 'non_nulle()' ) >= 0){
                 t+='            typologie(cht),\r\n';
                 t+='            genre(11)\r\n';
-            }else if(espece_du_champ==='time' && constraints.indexOf('non_nulle()')>=0){
+            }else if(espece_du_champ === 'time' && constraints.indexOf( 'non_nulle()' ) >= 0){
                 t+='            typologie(chd),\r\n';
                 t+='            genre(23)\r\n';
-            }else if(espece_du_champ==='datetime' && constraints.indexOf('non_nulle()')>=0){
+            }else if(espece_du_champ === 'datetime' && constraints.indexOf( 'non_nulle()' ) >= 0){
                 t+='            typologie(chd),\r\n';
                 t+='            genre(23)\r\n';
-            }else if(espece_du_champ==='enum' ){
-             
+            }else if(espece_du_champ === 'enum'){
                 let tt='';
                 for(let dd in element.dataType.params.expr.items){
-                    tt+=','+element.dataType.params.expr.items[dd].value
+                    tt+=',' + element.dataType.params.expr.items[dd].value;
                 }
-                let trouve = false;
-                if(tt!==''){
-                    tt=tt.substr(1);
-                    for( let i in this.__ig1.__liste_des_genres){
-                        if(this.__ig1.__liste_des_genres[i].cht_parmis_genre===tt){
+                let trouve=false;
+                if(tt !== ''){
+                    tt=tt.substr( 1 );
+                    for(let i in this.__ig1.__liste_des_genres){
+                        if(this.__ig1.__liste_des_genres[i].cht_parmis_genre === tt){
                             t+='            typologie(chp),\r\n';
-                            t+='            genre('+i+')\r\n';
+                            t+='            genre(' + i + ')\r\n';
                             trouve=true;
                             break;
                         }
                     }
                 }
-                if(trouve===false){
-                
-                
-                    console.log('%c Le champ "' + name + '" "' + espece_du_champ + '" DOIT être rattaché à un nouveau genre contenant les valeurs \n'+tt,'color:yellow;background-color:red;')
+                if(trouve === false){
+                    console.log( '%c Le champ "' + name + '" "' + espece_du_champ + '" DOIT être rattaché à un nouveau genre contenant les valeurs \n' + tt , 'color:yellow;background-color:red;' );
                 }
-                
-                
             }else{
-                console.log('%c todo champ "' + name + '" "' + espece_du_champ + '" ','color:yellow;background-color:red;')
-//                debugger; // todo
+                console.log( '%c todo champ "' + name + '" "' + espece_du_champ + '" ' , 'color:yellow;background-color:red;' );
+                /* debugger; // todo */
             }
-            
             t+='         )\r\n';
-         
         }else{
             t+=meta_champ;
         }
         t+='nom_du_champ(`' + name + '`),';
-        if(espece_du_champ==='enum'){
+        if(espece_du_champ === 'enum'){
             t+='espece_du_champ(VARCHAR),';
         }else{
             t+='espece_du_champ(' + espece_du_champ.toUpperCase() + '),';
@@ -1091,7 +1086,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
         if(longueur_du_champ !== ''){
             t+='longueur_du_champ(' + longueur_du_champ + '),';
         }
-//        t+='type(' + dataType + ')';
+        /* t+='type(' + dataType + ')'; */
         t+='' + constraints + '';
         t+=')';
         return({"__xst" : __xsu ,"__xva" : t});
@@ -1400,7 +1395,6 @@ class w_ast_sql_parseur_cst_vers_rev1{
                 break;
                 
             case 'constraint_primary_key' :
-                
                 vient_de.push( 'alter_action_drop_column' );
                 obj1=this.#traite_constraint_primary_key( element , niveau , parent , options , vient_de );
                 if(obj1.__xst === __xsu){
@@ -1410,11 +1404,10 @@ class w_ast_sql_parseur_cst_vers_rev1{
                 }
                 vient_de.pop();
                 break;
-            
                 break;
                 
             default:
-                return(this.#astsql_le( {"__xst" : __xer ,"__xme" : '<b>'+element.type + ' non traité </b>' + this.__ig1.nl2() + ' '} ));
+                return(this.#astsql_le( {"__xst" : __xer ,"__xme" : '<b>' + element.type + ' non traité </b>' + this.__ig1.nl2() + ' '} ));
                 break;
                 
         }
@@ -1473,15 +1466,15 @@ class w_ast_sql_parseur_cst_vers_rev1{
         this.#meta_table_fait=false;
         this.#meta_table='';
         if(Array.isArray( element.clauses ) && element.clauses.length > 0){
-            debugger
+            debugger;
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : '<b style="font-size:1.2em;">clauses non prévu</b>' + this.__ig1.nl2() + ' '} ));
         }
         if(element.ifNotExistsKw){
-            ifNotExistsKw='ifnotexists()'
+            ifNotExistsKw='ifnotexists()';
         }
         if(element.kind){
             if(element.kind.kindKw && element.kind.kindKw.name === 'VIRTUAL'){
-                est_virtuelle='      est_table_virtuelle(\'1\')\r\n'
+                est_virtuelle='      est_table_virtuelle(\'1\')\r\n';
             }else{
                 return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
             }
@@ -1512,8 +1505,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
             }
         }
         t+='créer_table(';
-        if(this.#meta_table===''){
-         
+        if(this.#meta_table === ''){
             t+='   meta(\r\n';
             t+='      nom_de_la_table(\'' + name + '\'),\r\n';
             t+='      table(\'' + name + '\'),\r\n';
@@ -1532,21 +1524,19 @@ class w_ast_sql_parseur_cst_vers_rev1{
         t+=' champs' + columns + ',';
         t+=')';
         if(this.#liste_des_primary_keys.length > 0){
-           /* 
-             dans mysql le mot PRIMART KEY(`nom_du_champ`)
-             peut éventuellement être à la fin
-             
-           */
-           if(t.indexOf('nom_du_champ(`'+this.#liste_des_primary_keys[0]+'`)')>=0){
-               let nom_du_champ_primaire=this.#liste_des_primary_keys[0];
-               this.#liste_des_primary_keys.pop();
-               t=t.replace('nom_du_champ(`'+nom_du_champ_primaire+'`)' , 'nom_du_champ(`'+nom_du_champ_primaire+'`),primary_key()' )
-           }else{
-               return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
-           }
+            /*
+              dans mysql le mot PRIMART KEY(`nom_du_champ`)
+              peut éventuellement être à la fin
+              
+            */
+            if(t.indexOf( 'nom_du_champ(`' + this.#liste_des_primary_keys[0] + '`)' ) >= 0){
+                let nom_du_champ_primaire=this.#liste_des_primary_keys[0];
+                this.#liste_des_primary_keys.pop();
+                t=t.replace( 'nom_du_champ(`' + nom_du_champ_primaire + '`)' , 'nom_du_champ(`' + nom_du_champ_primaire + '`),primary_key()' );
+            }else{
+                return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+            }
         }
-        
-        
         return({"__xst" : __xsu ,"__xva" : t});
     }
     /*
@@ -1776,6 +1766,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
                 }
                 vient_de.pop();
                 break;
+                
             case 'drop_table_stmt' :
                 vient_de.push( element.type );
                 obj=this.#drop_table_stmt( element , niveau , parent , options , vient_de );
@@ -1787,7 +1778,9 @@ class w_ast_sql_parseur_cst_vers_rev1{
                 vient_de.pop();
                 break;
                 
-            default: return(this.#astsql_le( {"__xst" : __xer ,"__xme" : '<b><pre>\n' + element.type + ' non traité\n</pre></b> ' +this.__ig1.nl2() + ' '} ));
+            default:
+                return(this.#astsql_le( {"__xst" : __xer ,"__xme" : '<b><pre>\n' + element.type + ' non traité\n</pre></b> ' + this.__ig1.nl2() + ' '} ));
+                
         }
         return({"__xst" : __xsu ,"__xva" : t});
     }
@@ -1803,7 +1796,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
             for( let i=0 ; i < tableau.length ; i++ ){
                 obj=this.#traite_ast_sql_parseur_cst( tableau[i] , 0 , null , options_traitement , vient_de );
                 if(obj.__xst === __xsu){
-                    t+=obj.__xva.replace(/___deux___points___/g,':');
+                    t+=obj.__xva.replace( /___deux___points___/g , ':' );
                 }else{
                     return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
                 }
@@ -1822,7 +1815,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
         for( let i=0 ; i < tableau.length ; i++ ){
             obj=this.#traite_ast_sql_parseur_cst( tableau[i] , 0 , null , options_traitement , vient_de );
             if(obj.__xst === __xsu){
-                t+=obj.__xva.replace(/___deux___points___/g,':');
+                t+=obj.__xva.replace( /___deux___points___/g , ':' );
             }else{
                 return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
             }

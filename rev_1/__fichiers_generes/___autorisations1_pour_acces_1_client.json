@@ -1,4 +1,10 @@
 {
+  "_developpement1_c.js": {
+    "id_autorisation": 81,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
   "dossiers1_c.js": {
     "id_autorisation": 25,
     "autorisation_cote_client": 0,
@@ -10,12 +16,6 @@
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
     "cht_notification_ko_source": "vous devez être connecté"
-  },
-  "taches1_c.js": {
-    "id_autorisation": 53,
-    "autorisation_cote_client": 0,
-    "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
   },
   "x_ecran_rev_vers_css1_c.js": {
     "id_autorisation": 42,
@@ -101,12 +101,6 @@
     "cht_condition_js_source": "this.chi_id_projet > 0;",
     "cht_notification_ko_source": "Vous devez sélectionner un projet"
   },
-  "_developpement1_c.js": {
-    "id_autorisation": 81,
-    "autorisation_cote_client": 0,
-    "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
-  },
   "metiers1_c.js": {
     "id_autorisation": 32,
     "autorisation_cote_client": 0,
@@ -173,11 +167,11 @@
     "cht_condition_js_source": "this.chi_id_projet > 0;",
     "cht_notification_ko_source": "Vous devez sélectionner un projet"
   },
-  "_connexion1_c.js": {
-    "id_autorisation": 0,
-    "autorisation_cote_client": true,
-    "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+  "taches1_c.js": {
+    "id_autorisation": 53,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": "this.chi_id_projet > 0;",
+    "cht_notification_ko_source": "Vous devez sélectionner un projet"
   },
   "__ig1_c.js": {
     "id_autorisation": 0,
@@ -185,13 +179,19 @@
     "cht_condition_js_source": null,
     "cht_notification_ko_source": null
   },
-  "x_ecran_a_propos1_c.js": {
+  "_connexion1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
     "cht_notification_ko_source": null
   },
   "x_ecran_contacte1_c.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "x_ecran_a_propos1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,

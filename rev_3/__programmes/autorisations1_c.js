@@ -798,9 +798,23 @@ class autorisations1{
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
-                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_autorisation(' + elem['T0.chi_id_autorisation'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_autorisation(' + elem['T0.chi_id_autorisation'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_autorisation(' + elem['T0.chi_id_autorisation'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+                let peut_gerer_cette_autorisation=false;
+                if(le_message_du_serveur._CA_ > 2 && le_message_du_serveur.chi_id_utilisateur > 1){
+                    if(elem['T0.chx_acces_autorisation'] === 0 || elem['T0.chx_acces_autorisation'] > 2 ){
+                        peut_gerer_cette_autorisation=true;
+                    }
+                }else{
+                    peut_gerer_cette_autorisation=true;
+                }
+                if(peut_gerer_cette_autorisation===true){
+                   lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_autorisation(' + elem['T0.chi_id_autorisation'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                   lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_autorisation(' + elem['T0.chi_id_autorisation'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                   lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_autorisation(' + elem['T0.chi_id_autorisation'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+                }else{
+                   lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+                   lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
+                   lst+='<div class="rev_b_svg yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
+                }
                 lst+='</div>';
                 lst+='</td>';
                 /*

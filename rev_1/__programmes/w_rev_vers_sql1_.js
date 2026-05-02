@@ -1366,6 +1366,12 @@ class w_rev_vers_sql1{
                                     contient_un_autoincr=true;
                                     variables_pour_tableau_tables.autoincrement=true;
                                 }
+                            }else if(this.#tb[j][1] === 'meta'){
+                                for( let k=j + 1 ; k < this.#l02 ; k=this.#tb[k][12] ){
+                                    if(this.#tb[k][2] === 'f' && this.#tb[k][8] === 1){
+                                        variables_pour_tableau_tables.tableau_meta[this.#tb[k][1]]=this.#tb[k + 1][1];
+                                    }
+                                }
                             }
                         }
                         for( j=i + 1 ; j < this.#l02 ; j=this.#tb[j][12] ){
@@ -1470,7 +1476,15 @@ class w_rev_vers_sql1{
                                     }
                                 }
                             }else if(this.#tb[j][1] === 'references' && this.#tb[j][8] === 2 && this.#tb[j + 1][2] === 'c'){
-                                definition_sql_du_champ+=' REFERENCES ' + this.__ig1.__rev1.ma_constante( this.#tb[j + 1] ) + '(' + this.__ig1.__rev1.ma_constante( this.#tb[j + 2] ) + ')  ON UPDATE CASCADE';
+                                definition_sql_du_champ+=' REFERENCES ' + this.__ig1.__rev1.ma_constante( this.#tb[j + 1] ) + '(' + this.__ig1.__rev1.ma_constante( this.#tb[j + 2] ) + ')';
+                                if(variables_pour_tableau_tables.tableau_meta.hasOwnProperty( 'est_pas_cascade_quand_maj' )
+                                       && (variables_pour_tableau_tables.tableau_meta.est_pas_cascade_quand_maj === 1
+                                           || variables_pour_tableau_tables.tableau_meta.est_pas_cascade_quand_maj === '1')
+                                ){
+                                    /* pas de UPDATE CASCADE */
+                                }else{
+                                    definition_sql_du_champ+=' ON UPDATE CASCADE';
+                                }
                                 variables_pour_tableau_tables.reference.est_defini=true;
                                 variables_pour_tableau_tables.reference.table=this.__ig1.__rev1.ma_constante( this.#tb[j + 1] );
                                 variables_pour_tableau_tables.reference.champ=this.__ig1.__rev1.ma_constante( this.#tb[j + 2] );
@@ -1548,7 +1562,15 @@ class w_rev_vers_sql1{
                                 definition_sql_du_champ2+=' NOT NULL';
                             }
                             if(variables_pour_tableau_tables.reference.est_defini){
-                                definition_sql_du_champ2+=' REFERENCES ' + variables_pour_tableau_tables.reference.table + '(' + variables_pour_tableau_tables.reference.champ + ')  ON UPDATE CASCADE';
+                                definition_sql_du_champ2+=' REFERENCES ' + variables_pour_tableau_tables.reference.table + '(' + variables_pour_tableau_tables.reference.champ + ')';
+                                if(variables_pour_tableau_tables.tableau_meta.hasOwnProperty( 'est_pas_cascade_quand_maj' )
+                                       && (variables_pour_tableau_tables.tableau_meta.est_pas_cascade_quand_maj === 1
+                                           || variables_pour_tableau_tables.tableau_meta.est_pas_cascade_quand_maj === '1')
+                                ){
+                                    /* pas de UPDATE CASCADE */
+                                }else{
+                                    definition_sql_du_champ2+=' ON UPDATE CASCADE';
+                                }
                             }
                             if(variables_pour_tableau_tables.a_une_valeur_par_defaut === true){
                                 definition_sql_du_champ2+=' DEFAULT ';
@@ -2163,7 +2185,8 @@ class w_rev_vers_sql1{
                     "nom_bref_du_champ" : 'à faire ' + nom_champ + '' ,
                     "typologie" : typologie ,
                     "default_charset" : '' ,
-                    "collate" : ''
+                    "collate" : '' ,
+                    "est_pas_cascade_quand_maj" : ''
                 };
                 var texte_meta_champ='';
                 /* on vérifie que pour chaque libellé ci dessus on a quelque chose, sinon, on complète */
@@ -2213,7 +2236,15 @@ class w_rev_vers_sql1{
                     }
                 }
                 if(cle_etrangere === true){
-                    t+='\n' + '   references(\'' + pc['cle_etrangere']['table'].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\' , \'' + pc['cle_etrangere']['to'].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\' ) ON UPDATE CASCADE';
+                    if(nom_champ === 'chx_source_autorisation'){
+                        debugger;
+                    }
+                    t+='\n' + '   references(';
+                    t+='\'' + pc['cle_etrangere']['table'].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'';
+                    t+=' , ';
+                    t+=' \'' + pc['cle_etrangere']['to'].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'';
+                    t+=')';
+                    t+=' ON UPDATE CASCADE';
                 }
                 t+='\n' + '   meta(';
                 var elt_meta={};

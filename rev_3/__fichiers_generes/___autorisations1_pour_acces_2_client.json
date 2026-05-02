@@ -5,6 +5,42 @@
     "cht_condition_js_source": null,
     "cht_notification_ko_source": null
   },
+  "groupes1_c.js": {
+    "id_autorisation": 25,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "metiers1_c.js": {
+    "id_autorisation": 27,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "acces1_c.js": {
+    "id_autorisation": 29,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "utilisateurs1_c.js": {
+    "id_autorisation": 36,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "autorisations1_c.js": {
+    "id_autorisation": 31,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "menus1_c.js": {
+    "id_autorisation": 33,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
   "taches1_c.js": {
     "id_autorisation": 13,
     "autorisation_cote_client": 0,
@@ -18,6 +54,12 @@
     "cht_notification_ko_source": null
   },
   "__ig1_c.js": {
+    "id_autorisation": 0,
+    "autorisation_cote_client": true,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null
+  },
+  "x_ecran_a_propos1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,

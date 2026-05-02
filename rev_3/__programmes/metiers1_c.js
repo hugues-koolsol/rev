@@ -686,8 +686,13 @@ class metiers1{
                     lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))';
                     lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
                 }
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+                if(le_message_du_serveur._CA_ > 2 && le_message_du_serveur.chi_id_utilisateur > 1 &&  elem['T0.chi_id_metier'] <=2 ){
+                    lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
+                    lst+='<div class="rev_b_svg yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
+                }else{
+                    lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                    lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_metier(' + elem['T0.chi_id_metier'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+                }
                 lst+='</div>';
                 lst+='</td>';
                 /*

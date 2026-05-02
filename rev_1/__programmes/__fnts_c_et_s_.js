@@ -31,13 +31,13 @@ class __fnts_c_et_s{
     */
     test_du_nom_de_fichier1( valeur , nom_champ ){
         if(valeur === null || valeur === ''){
-            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseigné ('+this.__cote_c_ou_s+')'} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseigné (' + this.__cote_c_ou_s + ')'} ));
         }
         let mes_err='erreur sur le champ "' + nom_champ + '" , ce caractère n\est pas admis : ';
         for( let i=0 ; i < valeur.length ; i++ ){
             let c=valeur.substr( i , 1 );
             if(!(c >= 'a' && c <= 'z' || c >= '0' && c <= '9' || c === '_' || c === '.')){
-                return( this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : mes_err + '<b>"' + c + '"</b> ('+this.__cote_c_ou_s+')'} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : mes_err + '<b>"' + c + '"</b> (' + this.__cote_c_ou_s + ')'} ));
             }
         }
         return({"__xst" : __xsu});
@@ -46,7 +46,6 @@ class __fnts_c_et_s{
       =============================================================================================================
     */
     test_du_nom_technique1( valeur , nom_champ ){
-     
         if(valeur === null || valeur === ''){
             return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseigné'} ));
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
@@ -56,7 +55,7 @@ class __fnts_c_et_s{
         for( let i=0 ; i < valeur.length ; i++ ){
             let c=valeur.substr( i , 1 );
             if(!(c >= 'a' && c <= 'z' || c >= '0' && c <= '9' || c === '_' || c === '.')){
-                return( this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" :  mes_err + '<b>"' + c + '"</b>'} ));
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : mes_err + '<b>"' + c + '"</b>'} ));
             }
         }
         return({"__xst" : __xsu});

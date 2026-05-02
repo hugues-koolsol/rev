@@ -709,7 +709,7 @@ class bdds1{
                     lst+='" title="forcer fermeture fichier wal">forcer fermeture wal</div>';
                     /*  */
                 }
-                lst+='</tdiv>';
+                lst+='</div>';
                 lst+='</td>';
                 /*
                 */

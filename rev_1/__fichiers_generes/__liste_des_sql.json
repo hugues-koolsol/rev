@@ -439,6 +439,14 @@
     "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_autorisation`),champ(`T1`,`chp_nom_source`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_sources,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_source),champ(T0,chx_source_autorisation)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chx_acces_autorisation`),:T0_chx_acces_autorisation),dans(champ(`T1`,`chp_nom_source`),(:T1_chp_nom_source)))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_autorisations"
   },
+  "164": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T0`.`chi_id_menu` , `T0`.`cht_initialisation_menu` , \r\n`T1`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_js_menu` , `T0`.`chx_autorisation_menu` , \r\n`T2`.`cht_condition_js_source` , `T2`.`cht_notification_ko_source` , `T0`.`cht_condition_js_menu`\r\n FROM b1.tbl_menus T0\r\n LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu\r\n\r\n LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T1.chx_source_autorisation\r\n\r\nWHERE (`T1`.`chx_acces_autorisation` = 0)\r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`cht_libelle_menu`),\n      champ(`T0`,`chp_titre_menu`),\n      champ(`T0`,`chp_methode_menu`),\n      champ(`T0`,`chi_id_menu`),\n      champ(`T0`,`cht_initialisation_menu`),\n      champ(`T1`,`chx_source_autorisation`),\n      champ(`T2`,`chp_nom_source`),\n      champ(`T0`,`cht_condition_menu`),\n      champ(`T0`,`cht_condition_js_menu`),\n      champ(`T0`,`chx_autorisation_menu`),\n      champ(`T2`,`cht_condition_js_source`),\n      champ(`T2`,`cht_notification_ko_source`),\n      champ(`T0`,`cht_condition_js_menu`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_source),champ(T1,chx_source_autorisation)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T1`,`chx_acces_autorisation`),0))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_menus"
+  },
   "165": {
     "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `chp_priorite_tache` = :n_chp_priorite_tache\r\nWHERE ( /* */ `chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;",
     "cht_commentaire_requete": "tâches priorité par id=",
@@ -1120,11 +1128,11 @@
     "chp_table_reference_requete": "tbl_revs"
   },
   "415": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T0`.`chi_id_menu` , `T0`.`cht_initialisation_menu` , \r\n`T1`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_js_menu` , `T0`.`chx_autorisation_menu` , \r\n`T2`.`cht_condition_js_source` , `T2`.`cht_notification_ko_source` , `T0`.`cht_condition_js_menu`\r\n FROM b1.tbl_menus T0\r\n LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu\r\n\r\n LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T1.chx_source_autorisation\r\n\r\nWHERE (`T1`.`chx_acces_autorisation` = 0)\r\n;",
-    "cht_commentaire_requete": null,
-    "chp_type_requete": "select",
+    "cht_sql_requete": "UPDATE b1.tbl_sources SET \r\n   `chi_id_source` = :n_chi_id_source\r\nWHERE `chi_id_source` = :c_chi_id_source ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`cht_libelle_menu`),\n      champ(`T0`,`chp_titre_menu`),\n      champ(`T0`,`chp_methode_menu`),\n      champ(`T0`,`chi_id_menu`),\n      champ(`T0`,`cht_initialisation_menu`),\n      champ(`T1`,`chx_source_autorisation`),\n      champ(`T2`,`chp_nom_source`),\n      champ(`T0`,`cht_condition_menu`),\n      champ(`T0`,`cht_condition_js_menu`),\n      champ(`T0`,`chx_autorisation_menu`),\n      champ(`T2`,`cht_condition_js_source`),\n      champ(`T2`,`cht_notification_ko_source`),\n      champ(`T0`,`cht_condition_js_menu`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_source),champ(T1,chx_source_autorisation)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T1`,`chx_acces_autorisation`),0))\n   )\n)  ",
-    "chp_table_reference_requete": "tbl_menus"
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chi_id_source`),:n_chi_id_source)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_source`),:c_chi_id_source))\n)  ",
+    "chp_table_reference_requete": "tbl_sources"
   }
 }
