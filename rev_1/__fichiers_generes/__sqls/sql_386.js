@@ -19,7 +19,7 @@ class sql_386{
            LEFT JOIN tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_dossier\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_dossier'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_dossier\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_dossier'] , 'T0_chi_id_dossier' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_386 sql0=',sql0); */
         let lignes=[];

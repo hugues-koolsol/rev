@@ -15,19 +15,21 @@ class autorisations1{
       =============================================================================================================
     */
     async ecrire_fichier_des_autorisations( tableau_des_auto , chx_acces_autorisation , __db1 ){
-        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur >=2 && chx_acces_autorisation<=2){
+        if(this.__ig1.donnees_retournees._CA_ > 2
+               && this.__ig1.donnees_retournees.chi_id_utilisateur >= 2
+               && chx_acces_autorisation <= 2
+        ){
             /*
               l'utilisateur admin ( > 2 ) ne peut pas modifier les autorisations des accès < 2 ...
             */
-            if(chx_acces_autorisation === 0 ){
-               /*
-                 ... sauf celui des anonymes
-               */
+            if(chx_acces_autorisation === 0){
+                /*
+                  ... sauf celui des anonymes
+                */
             }else{
-               return({"__xst" : __xsu});
+                return({"__xst" : __xsu});
             }
         }
-        /* this.__ig1.ma_trace1( "tableau_des_auto=" , tableau_des_auto ); */
         let tableau_des_auto_client={};
         for(let i in tableau_des_auto){
             if(i.substr( i.length - 4 ) === '_.js' || i.substr( i.length - 5 ) === '_c.js'){
@@ -103,7 +105,8 @@ class autorisations1{
                 "id_autorisation" : /* "che_autorisation_globale_source" : true , */0 ,
                 "autorisation_cote_client" : true ,
                 "cht_condition_js_source" : /* "cht_condition_rev_source" : null , */null ,
-                "cht_notification_ko_source" : null
+                "cht_notification_ko_source" : null ,
+                "che_pour_sous_liste_autorisation" : 0
             };
         }
         let criteres_select_152={"T1_chp_nom_source" : /* on récupère les autorisations serveur */'%_s.js'};
@@ -124,7 +127,7 @@ class autorisations1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        this.__ig1.ma_trace1("tt152=",tt152);
+        /* this.__ig1.ma_trace1("tt152=",tt152); */
         let chx_acces_autorisation=0;
         let tableau_des_auto={};
         for(let k1 in tt152.__xva){
@@ -139,7 +142,8 @@ class autorisations1{
                         "autorisation_cote_client" : 0 ,
                          /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
                         "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source']
+                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
+                        "che_pour_sous_liste_autorisation" : v1['T0.che_pour_sous_liste_autorisation']
                     };
                 }else{
                     /* on concatène les autorisations générales et particulières array_merge , concat */
@@ -166,7 +170,8 @@ class autorisations1{
                         "autorisation_cote_client" : 0 ,
                          /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
                         "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source']
+                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
+                        "che_pour_sous_liste_autorisation" : v1['T0.che_pour_sous_liste_autorisation']
                     };
                 }
                 chx_acces_autorisation=v1['T0.chx_acces_autorisation'];
@@ -179,7 +184,8 @@ class autorisations1{
                     "autorisation_cote_client" : 0 ,
                      /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
                     "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                    "cht_notification_ko_source" : v1['T1.cht_notification_ko_source']
+                    "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
+                    "che_pour_sous_liste_autorisation" : v1['T0.che_pour_sous_liste_autorisation']
                 };
             }
         }
@@ -246,27 +252,20 @@ class autorisations1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1 ){
-            if( !( __xva_avant['T0.chx_acces_autorisation'] > 2 || __xva_avant['T0.chx_acces_autorisation'] === 0 ) ){
-               this.__ig1.donnees_retournees.__xsi[__xer].push( ' vous ne pouvez pas modifier l\'autorisation pour cet accès  (' + __xva_avant['T0.chx_acces_autorisation'] + ')' );
-               return({"__xst" : __xer});
-            }
-        }
+        /*
+          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
+          return({"__xst" : __xer});
+        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        this.__ig1.ma_trace1("this.__ig1.donnees_retournees._CA_="+this.__ig1.donnees_retournees._CA_);
-        this.__ig1.ma_trace1("this.__ig1.donnees_retournees.chi_id_utilisateur="+this.__ig1.donnees_retournees.chi_id_utilisateur);
-        this.__ig1.ma_trace1("__xva_avant['T0.chx_acces_autorisation']"+__xva_avant['T0.chx_acces_autorisation']);
-        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1 ){
-            if( !( __xva_avant['T0.chx_acces_autorisation'] > 2 || __xva_avant['T0.chx_acces_autorisation'] === 0 ) ){
-               this.__ig1.donnees_retournees.__xsi[__xer].push( ' vous ne pouvez pas supprimer l\'autorisation pour cet accès  (' + __xva_avant['T0.chx_acces_autorisation'] + ')' );
-               return({"__xst" : __xer});
-            }
-        }
+        /*
+          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
+          return({"__xst" : __xer});
+        */
         return({"__xst" : __xsu});
     }
     /*
@@ -318,6 +317,12 @@ class autorisations1{
         form['chi_id_autorisation']=form['chi_id_autorisation'] === null ? ( null ) : ( parseInt( form['chi_id_autorisation'] , 10 ) );
         form['chx_acces_autorisation']=form['chx_acces_autorisation'] === null ? ( null ) : ( parseInt( form['chx_acces_autorisation'] , 10 ) );
         form['chx_source_autorisation']=form['chx_source_autorisation'] === null ? ( null ) : ( parseInt( form['chx_source_autorisation'] , 10 ) );
+        form['che_pour_sous_liste_autorisation']=form['che_pour_sous_liste_autorisation'] === null ?
+          ( 
+            null
+          ) : ( 
+            parseInt( form['che_pour_sous_liste_autorisation'] , 10 )
+          );
         /* conversion des données numériques fin */
         if(form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']' );
@@ -325,6 +330,10 @@ class autorisations1{
         }
         if(form['chp_nom_autorisation'] === null || form['chp_nom_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        if(form['che_pour_sous_liste_autorisation'] === null || form['che_pour_sous_liste_autorisation'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pour accès sous liste" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let retour_a_la_liste=false;
@@ -365,7 +374,8 @@ class autorisations1{
                 "c_chi_id_autorisation" : form['chi_id_autorisation'] ,
                 "n_chx_acces_autorisation" : form['chx_acces_autorisation'] === '' ? ( null ) : ( form['chx_acces_autorisation'] ) ,
                 "n_chx_source_autorisation" : form['chx_source_autorisation'] ,
-                "n_chp_nom_autorisation" : form['chp_nom_autorisation']
+                "n_chp_nom_autorisation" : form['chp_nom_autorisation'] ,
+                "n_che_pour_sous_liste_autorisation" : form['che_pour_sous_liste_autorisation']
             };
             await __db1.exec( 'BEGIN TRANSACTION;' );
             let tt143=await this.__ig1.sql_iii(
@@ -373,7 +383,8 @@ class autorisations1{
             UPDATE b1.tbl_autorisations SET 
                `chx_acces_autorisation` = :n_chx_acces_autorisation , 
                `chx_source_autorisation` = :n_chx_source_autorisation , 
-               `chp_nom_autorisation` = :n_chp_nom_autorisation
+               `chp_nom_autorisation` = :n_chp_nom_autorisation ,
+               `che_pour_sous_liste_autorisation` = :n_che_pour_sous_liste_autorisation
             WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;
             */
             /*sql_inclure_fin*/ 143 , criteres_143 , this.__ig1.donnees_retournees , __db1 );
@@ -631,6 +642,12 @@ class autorisations1{
         /* conversion des données numériques début */
         form['chx_acces_autorisation']=form['chx_acces_autorisation'] === null || form['chx_acces_autorisation'] === '' || form['chx_acces_autorisation'] === undefined ? ( null ) : ( parseInt( form['chx_acces_autorisation'] , 10 ) );
         form['chx_source_autorisation']=form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === '' || form['chx_source_autorisation'] === undefined ? ( null ) : ( parseInt( form['chx_source_autorisation'] , 10 ) );
+        form['che_pour_sous_liste_autorisation']=form['che_pour_sous_liste_autorisation'] === null || form['che_pour_sous_liste_autorisation'] === '' || form['che_pour_sous_liste_autorisation'] === undefined ?
+          ( 
+            0
+          ) : ( 
+            parseInt( form['che_pour_sous_liste_autorisation'] , 10 )
+          );
         /* conversion des données numériques fin */
         if(form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']' );
@@ -638,6 +655,10 @@ class autorisations1{
         }
         if(form['chp_nom_autorisation'] === null || form['chp_nom_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        if(form['che_pour_sous_liste_autorisation'] === null || form['che_pour_sous_liste_autorisation'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pour accès sous liste" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -649,7 +670,8 @@ class autorisations1{
             "donnees" : [{
                         "chx_acces_autorisation" : form['chx_acces_autorisation'] === '' ? ( null ) : ( form['chx_acces_autorisation'] ) ,
                         "chx_source_autorisation" : form['chx_source_autorisation'] ,
-                        "chp_nom_autorisation" : form['chp_nom_autorisation']
+                        "chp_nom_autorisation" : form['chp_nom_autorisation'] ,
+                        "che_pour_sous_liste_autorisation" : form['che_pour_sous_liste_autorisation']
                     }]
         };
         /*  */
@@ -659,11 +681,13 @@ class autorisations1{
         INSERT INTO b1.`tbl_autorisations`(
             `chx_acces_autorisation` , 
             `chx_source_autorisation` , 
-            `chp_nom_autorisation`
+            `chp_nom_autorisation` ,
+            `che_pour_sous_liste_autorisation`
         ) VALUES (
             :chx_acces_autorisation , 
             :chx_source_autorisation , 
-            :chp_nom_autorisation
+            :chp_nom_autorisation ,
+            :che_pour_sous_liste_autorisation
         );
         */
         /*sql_inclure_fin*/ 142 , donnees_sql , this.__ig1.donnees_retournees , __db1 );

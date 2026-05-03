@@ -16,12 +16,12 @@ class sql_394{
             if(par['n_chi_id_projet'] === undefined || par['n_chi_id_projet'] === '' || par['n_chi_id_projet'] === null){
                 tableau_champs.push( '`chi_id_projet` = NULL' );
             }else{
-                tableau_champs.push( '`chi_id_projet` = ' + this.__ig1.__fnt1.sq0( par['n_chi_id_projet'] ) + '' );
+                tableau_champs.push( '`chi_id_projet` = ' + this.__ig1.__fnt1.sq0( par['n_chi_id_projet'] , 'n_chi_id_projet' ) + '' );
             }
             if(par['n_chp_nom_projet'] === undefined || par['n_chp_nom_projet'] === '' || par['n_chp_nom_projet'] === null){
                 tableau_champs.push( '`chp_nom_projet` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_projet` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_projet'] ) + '\'' );
+                tableau_champs.push( '`chp_nom_projet` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_projet'] , 'n_chp_nom_projet' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -35,7 +35,7 @@ class sql_394{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_projet\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_projet'] ) + '\r\n';
+            where0+=` AND \`chi_id_projet\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_projet'] , 'c_chi_id_projet' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_394= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

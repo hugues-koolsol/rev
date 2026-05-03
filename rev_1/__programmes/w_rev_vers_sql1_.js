@@ -230,13 +230,13 @@ class w_rev_vers_sql1{
                                 }else{
                                     if(operateur_rev === 'equivalent' || operateur_rev === 'pas_equivalent'){
                                         t+='\'.sq3($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
-                                        t_js+='` + this.__ig1.__fnt1.sq3( par[\'' + tab[i][1].substr( 1 ) + '\'] ) + `';
+                                        t_js+='` + this.__ig1.__fnt1.sq3( par[\'' + tab[i][1].substr( 1 ) + '\'] , \'' + tab[i][1].substr( 1 ) + '\' ) + `';
                                     }else if(operateur_rev === 'comme' || operateur_rev === 'pas_comme'){
                                         t+='\'.sq2($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
-                                        t_js+='` + this.__ig1.__fnt1.sq2( par[\'' + tab[i][1].substr( 1 ) + '\'] ) + `';
+                                        t_js+='` + this.__ig1.__fnt1.sq2( par[\'' + tab[i][1].substr( 1 ) + '\'] , \'' + tab[i][1].substr( 1 ) + '\' ) + `';
                                     }else{
                                         t+='\'.sq1($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
-                                        t_js+='` + this.__ig1.__fnt1.sq1( par[\'' + tab[i][1].substr( 1 ) + '\'] ) + `';
+                                        t_js+='` + this.__ig1.__fnt1.sq1( par[\'' + tab[i][1].substr( 1 ) + '\'] , \'' + tab[i][1].substr( 1 ) + '\' ) + `';
                                     }
                                 }
                             }else{
@@ -261,12 +261,12 @@ class w_rev_vers_sql1{
                         if(options.au_format_programme === true){
                             if(tab[i][1].substr( 0 , 1 ) === ':'){
                                 if(operateur_rev === '' && tab[tab[id][7]][1] === 'dans' || operateur_rev === 'dans'){
-                                    debugger;
-                                    t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\']).\'';
-                                    t_js+='` + this.__ig1.__fnt1.sq0( par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] ) + `';
+                                    t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] ).\'';
+                                    t_js+='` + this.__ig1.__fnt1.sq0( par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] , \'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\' ) + `';
                                 }else{
                                     t+='\'.sq1($par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\']).\'';
-                                    t_js+='` + this.__ig1.__fnt1.sq1( par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] ) + `';
+                                    debugger;
+                                    t_js+='` + this.__ig1.__fnt1.sq1( par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] , \'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\' ) + `';
                                 }
                             }else{
                                 t+='\'' + tab[i][1].replace( /\'/g , "''" ) + '\'';
@@ -956,7 +956,7 @@ class w_rev_vers_sql1{
                                                         if(this.#tb[m][1].substr( 0 , 1 ) === ':'){
                                                             if(options.au_format_programme === true){
                                                                 valeur_du_champ='\'.sq1($par[\'' + this.#tb[m][1].substr( 1 ) + '\']).\'';
-                                                                valeur_du_champ_js='\' + this.__ig1.__fnt1.sq1( par[\'' + this.#tb[m][1].substr( 1 ) + '\'] ) + \'';
+                                                                valeur_du_champ_js='\' + this.__ig1.__fnt1.sq1( par[\'' + this.#tb[m][1].substr( 1 ) + '\'] , \'' + this.#tb[m][1].substr( 1 ) + '\' ) + \'';
                                                             }else{
                                                                 valeur_du_champ=this.#tb[m][1];
                                                                 valeur_du_champ_js=this.#tb[m][1];

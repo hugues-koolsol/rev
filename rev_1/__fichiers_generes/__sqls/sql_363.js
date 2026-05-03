@@ -23,8 +23,8 @@ class sql_363{
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_commentaire_basedd'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_fournisseur_basedd'] ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_commentaire_basedd'] , 'chp_commentaire_basedd' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_fournisseur_basedd'] , 'chp_fournisseur_basedd' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

@@ -31,14 +31,14 @@ class sql_124{
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_metier`' , par['T0_chi_id_metier'] );
         }
         if(par.hasOwnProperty( 'T0_chp_nom_metier' ) && par['T0_chp_nom_metier'] !== ''){
-            where0+=` AND \`T0\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_metier'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_metier'] , 'T0_chp_nom_metier' ) + '\r\n';
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_metier\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_124 sql0=',sql0); */
         let lignes=[];

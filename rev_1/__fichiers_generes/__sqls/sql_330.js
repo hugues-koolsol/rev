@@ -21,7 +21,7 @@ class sql_330{
         const from0=`
           FROM  tbl_genres T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_genre'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_genre'] , 'T0_chi_id_genre' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_330 sql0=',sql0); */
         let lignes=[];

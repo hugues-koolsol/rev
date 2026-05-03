@@ -17,7 +17,7 @@ class sql_144{
         let sql0='';
         try{
             sql0=`DELETE FROM tbl_autorisations
-              WHERE \`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_autorisation'] ) + ` ;
+              WHERE \`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_autorisation'] , 'chi_id_autorisation' ) + ` ;
             `;
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );

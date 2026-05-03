@@ -549,7 +549,7 @@ class acces1{
             SELECT 
             `T1`.`chx_source_autorisation` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
             `T0`.`cht_initialisation_menu` , `T0`.`chi_id_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_js_menu` , `T0`.`chx_autorisation_menu` , 
-            `T3`.`cht_condition_js_source` , `T0`.`cht_condition_js_menu`
+            `T3`.`cht_condition_js_source`
              FROM b1.tbl_menus T0 , 
                   b1.tbl_autorisations T1
              LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation

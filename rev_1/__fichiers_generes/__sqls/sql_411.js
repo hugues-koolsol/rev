@@ -18,7 +18,7 @@ class sql_411{
           FROM  tbl_revs T0        `;
         sql0+=from0;
         const where0=` WHERE (\`T0\`.\`chp_provenance_rev\` = 'source'
-         AND \`T0\`.\`chp_valeur_rev\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_valeur_rev'] ) + `
+         AND \`T0\`.\`chp_valeur_rev\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_valeur_rev'] , 'T0_chp_valeur_rev' ) + `
          AND \`T0\`.\`chp_type_rev\` = 'c')`;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_411 sql0=',sql0); */

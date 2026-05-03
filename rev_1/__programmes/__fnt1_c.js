@@ -2097,7 +2097,7 @@ class __fnt1{
             }
             t+='"';
             t+=' data-rev_click="';
-            t+='m1(n1(__fnt1_),f1(';
+            t+='m1(n1(__fnt1),f1(';
             t+=' maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))';
             t+='))';
             t+='"';
@@ -2186,12 +2186,7 @@ class __fnt1{
             }
             t+='"';
             t+=' data-rev_click="';
-            t+='m1(';
-            t+=' n1(__fnt1_)';
-            t+=' f1(';
-            t+='  maj_stockage_local(nom_zone(' + i + '),type_lsto(parametres))';
-            t+=' )';
-            t+=')';
+            t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(parametres))))';
             t+='"';
             t+='>';
             t+='</td>';

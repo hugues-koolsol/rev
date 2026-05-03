@@ -13,8 +13,8 @@ class sql_353{
         let sql0='';
         try{
             sql0=`DELETE FROM tbl_revs
-              WHERE (\`chp_provenance_rev\` = ` + this.__ig1.__fnt1.sq1( par['chp_provenance_rev'] ) + `
-                   AND \`chx_source_rev\` = ` + this.__ig1.__fnt1.sq1( par['chx_source_rev'] ) + `) ;
+              WHERE (\`chp_provenance_rev\` = ` + this.__ig1.__fnt1.sq1( par['chp_provenance_rev'] , 'chp_provenance_rev' ) + `
+                   AND \`chx_source_rev\` = ` + this.__ig1.__fnt1.sq1( par['chx_source_rev'] , 'chx_source_rev' ) + `) ;
             `;
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );

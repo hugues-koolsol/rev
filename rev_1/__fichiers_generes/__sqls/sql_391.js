@@ -18,8 +18,8 @@ class sql_391{
         const from0=`
           FROM  tbl_requetes T0        `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`chp_table_reference_requete\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_table_reference_requete'] ) + `
-         AND \`T0\`.\`che_est_souche_requete\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_est_souche_requete'] ) + `)`;
+        const where0=` WHERE (\`T0\`.\`chp_table_reference_requete\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_table_reference_requete'] , 'T0_chp_table_reference_requete' ) + `
+         AND \`T0\`.\`che_est_souche_requete\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_est_souche_requete'] , 'T0_che_est_souche_requete' ) + `)`;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_391 sql0=',sql0); */
         let lignes=[];

@@ -11,8 +11,8 @@ class sql_152{
     */
     async sql( par ){
         const champs0=`
-          \`T0\`.\`chi_id_autorisation\` , \`T0\`.\`chp_nom_autorisation\` , \`T0\`.\`chx_acces_autorisation\` , \`T0\`.\`chx_source_autorisation\` , \`T1\`.\`chp_nom_source\` , 
-          \`T1\`.\`cht_condition_rev_source\` , \`T1\`.\`cht_condition_js_source\` , \`T1\`.\`cht_notification_ko_source\`
+          \`T0\`.\`chi_id_autorisation\` , \`T0\`.\`chp_nom_autorisation\` , \`T0\`.\`chx_acces_autorisation\` , \`T0\`.\`chx_source_autorisation\` , \`T0\`.\`che_pour_sous_liste_autorisation\` , 
+          \`T1\`.\`chp_nom_source\` , \`T1\`.\`cht_condition_rev_source\` , \`T1\`.\`cht_condition_js_source\` , \`T1\`.\`cht_notification_ko_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -43,10 +43,11 @@ class sql_152{
                     "T0.chp_nom_autorisation" : col[1] ,
                     "T0.chx_acces_autorisation" : col[2] ,
                     "T0.chx_source_autorisation" : col[3] ,
-                    "T1.chp_nom_source" : col[4] ,
-                    "T1.cht_condition_rev_source" : col[5] ,
-                    "T1.cht_condition_js_source" : col[6] ,
-                    "T1.cht_notification_ko_source" : col[7]
+                    "T0.che_pour_sous_liste_autorisation" : col[4] ,
+                    "T1.chp_nom_source" : col[5] ,
+                    "T1.cht_condition_rev_source" : col[6] ,
+                    "T1.cht_condition_js_source" : col[7] ,
+                    "T1.cht_notification_ko_source" : col[8]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

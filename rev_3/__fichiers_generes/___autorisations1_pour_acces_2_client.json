@@ -3,66 +3,84 @@
     "id_autorisation": 12,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "groupes1_c.js": {
     "id_autorisation": 25,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "metiers1_c.js": {
     "id_autorisation": 27,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "acces1_c.js": {
     "id_autorisation": 29,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "utilisateurs1_c.js": {
     "id_autorisation": 36,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
+  },
+  "sources1_c.js": {
+    "id_autorisation": 39,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 1
   },
   "autorisations1_c.js": {
     "id_autorisation": 31,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "menus1_c.js": {
     "id_autorisation": 33,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "taches1_c.js": {
     "id_autorisation": 13,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "_connexion1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "__ig1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_a_propos1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   }
 }

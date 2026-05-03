@@ -167,8 +167,7 @@ class projets1{
     */
     async desactiver1( mat , d ){
         this.__ig1.donnees_retournees.chi_id_projet=0;
-        await this.__ig1.modifier_valeur_session( this.__ig1.options_generales , 'chi_id_projet' , this.__ig1.donnees_retournees.chi_id_projet );
-        await this.__ig1.modifier_valeur_session( this.__ig1.options_generales , 'chemin_des_bdd' , '' );
+        await this.__ig1.modifier_valeur_session( 'chi_id_projet' , this.__ig1.donnees_retournees.chi_id_projet );
         await this.__ig1.obtenir_les_menus( mat , d );
         await this.__ig1.obtenir_les_genres( mat , d );
         await this.__ig1.obtenir_les_sql( mat , d );
@@ -192,8 +191,7 @@ class projets1{
         }
         this.__ig1.donnees_retournees.chi_id_projet=0;
         this.__ig1.donnees_retournees['chi_id_projet']=chi_id_projet;
-        await this.__ig1.modifier_valeur_session( this.__ig1.options_generales , 'chi_id_projet' , this.__ig1.donnees_retournees.chi_id_projet );
-        await this.__ig1.modifier_valeur_session( this.__ig1.options_generales , 'chemin_des_bdd' , './__programmes/' );
+        await this.__ig1.modifier_valeur_session( 'chi_id_projet' , this.__ig1.donnees_retournees.chi_id_projet );
         await this.__ig1.obtenir_les_menus( mat , d );
         await this.__ig1.obtenir_les_genres( mat , d );
         await this.__ig1.obtenir_les_sql( mat , d );

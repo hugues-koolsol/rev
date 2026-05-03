@@ -19,7 +19,7 @@ class sql_163{
            LEFT JOIN tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
         `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`chx_acces_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_acces_autorisation'] ) + `
+        const where0=` WHERE (\`T0\`.\`chx_acces_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_acces_autorisation'] , 'T0_chx_acces_autorisation' ) + `
          AND \`T1\`.\`chp_nom_source\` IN (` + par['T1_chp_nom_source'] + `))`;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_163 sql0=',sql0); */

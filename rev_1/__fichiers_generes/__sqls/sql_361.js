@@ -33,7 +33,7 @@ class sql_361{
            ORDER BY  \`T0\`.\`chi_id_basedd\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_361 sql0=',sql0); */
         let lignes=[];

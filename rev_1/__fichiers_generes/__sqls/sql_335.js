@@ -16,7 +16,7 @@ class sql_335{
             if(par['n_che_ordre_genre'] === undefined || par['n_che_ordre_genre'] === '' || par['n_che_ordre_genre'] === null){
                 tableau_champs.push( '`che_ordre_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_ordre_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_ordre_genre'] ) + '' );
+                tableau_champs.push( '`che_ordre_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_ordre_genre'] , 'n_che_ordre_genre' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -30,7 +30,7 @@ class sql_335{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_genre'] ) + '\r\n';
+            where0+=` AND \`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_genre'] , 'c_chi_id_genre' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_335= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

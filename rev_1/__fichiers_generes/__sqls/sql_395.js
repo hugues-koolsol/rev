@@ -32,29 +32,29 @@ class sql_395{
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_travail`' , par['T0_chi_id_travail'] );
         }
         if(par.hasOwnProperty( 'T0_chp_resume_travail' ) && par['T0_chp_resume_travail'] !== ''){
-            where0+=` AND \`T0\`.\`chp_resume_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_resume_travail'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chp_resume_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_resume_travail'] , 'T0_chp_resume_travail' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_cht_rev_travail' ) && par['T0_cht_rev_travail'] !== ''){
-            where0+=` AND \`T0\`.\`cht_rev_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_rev_travail'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`cht_rev_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_rev_travail'] , 'T0_cht_rev_travail' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_utilisateur_travail' ) && par['T0_chx_utilisateur_travail'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_utilisateur_travail`' , par['T0_chx_utilisateur_travail'] );
         }
         if(par.hasOwnProperty( 'T0_chd_dtc_travail' ) && par['T0_chd_dtc_travail'] !== ''){
-            where0+=` AND \`T0\`.\`chd_dtc_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chd_dtc_travail'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chd_dtc_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chd_dtc_travail'] , 'T0_chd_dtc_travail' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T1_chp_nom_de_connexion_utilisateur' ) && par['T1_chp_nom_de_connexion_utilisateur'] !== ''){
-            where0+=` AND \`T1\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_de_connexion_utilisateur'] ) + '\r\n';
+            where0+=` AND \`T1\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_de_connexion_utilisateur'] , 'T1_chp_nom_de_connexion_utilisateur' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chp_etat_travail' ) && par['T0_chp_etat_travail'] !== ''){
-            where0+=` AND \`T0\`.\`chp_etat_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_etat_travail'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chp_etat_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_etat_travail'] , 'T0_chp_etat_travail' ) + '\r\n';
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_travail\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_395 sql0=',sql0); */
         let lignes=[];

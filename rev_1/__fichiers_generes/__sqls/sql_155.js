@@ -19,8 +19,8 @@ class sql_155{
            LEFT JOIN tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         `;
         sql0+=from0;
-        const where0=` WHERE ( \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_utilisateur_tache'] ) + `
-         AND \`T0\`.\`chp_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_chp_priorite_tache'] ) + `)`;
+        const where0=` WHERE ( \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_utilisateur_tache'] , 'T0_chx_utilisateur_tache' ) + `
+         AND \`T0\`.\`chp_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_chp_priorite_tache'] , 'T0_chp_priorite_tache' ) + `)`;
         sql0+=where0;
     const order0=`
        ORDER BY  \`T0\`.\`chp_priorite_tache\` ASC`;

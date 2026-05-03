@@ -3,198 +3,224 @@
     "id_autorisation": 81,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "dossiers1_c.js": {
     "id_autorisation": 25,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "projets1_c.js": {
     "id_autorisation": 52,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": "vous devez être connecté"
+    "cht_notification_ko_source": "vous devez être connecté",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_rev_vers_css1_c.js": {
     "id_autorisation": 42,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": "Vous devez être connecté"
+    "cht_notification_ko_source": "Vous devez être connecté",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_rev_vers_html1_c.js": {
     "id_autorisation": 39,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": "vous devez être connecté"
+    "cht_notification_ko_source": "vous devez être connecté",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_rev_vers_js1_c.js": {
     "id_autorisation": 38,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "vous devez choisir un projet"
+    "cht_notification_ko_source": "vous devez choisir un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_rev_vers_matrice1_c.js": {
     "id_autorisation": 37,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": "Vous devez être connecté"
+    "cht_notification_ko_source": "Vous devez être connecté",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_rev_vers_php1_c.js": {
     "id_autorisation": 40,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": "Vous devez être connecté"
+    "cht_notification_ko_source": "Vous devez être connecté",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_rev_vers_sql1_c.js": {
     "id_autorisation": 41,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": "Vous devez être connecté"
+    "cht_notification_ko_source": "Vous devez être connecté",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_rev_vers_txt1_c.js": {
     "id_autorisation": 44,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": "Vous devez être connecté"
+    "cht_notification_ko_source": "Vous devez être connecté",
+    "che_pour_sous_liste_autorisation": 0
   },
   "sources1_c.js": {
     "id_autorisation": 27,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "bdds1_c.js": {
     "id_autorisation": 29,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "genres1_c.js": {
     "id_autorisation": 28,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "requetes1_c.js": {
     "id_autorisation": 30,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "v_svg_bdd1_c.js": {
     "id_autorisation": 63,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_concevoir_une_requete1_c.js": {
     "id_autorisation": 66,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_generer_programmes1_c.js": {
     "id_autorisation": 36,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "metiers1_c.js": {
     "id_autorisation": 32,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "acces1_c.js": {
     "id_autorisation": 33,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "autorisations1_c.js": {
     "id_autorisation": 26,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "menus1_c.js": {
     "id_autorisation": 34,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "groupes1_c.js": {
     "id_autorisation": 31,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_coordonnees1_c.js": {
     "id_autorisation": 46,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": "Vous devez être connecté"
+    "cht_notification_ko_source": "Vous devez être connecté",
+    "che_pour_sous_liste_autorisation": 0
   },
   "utilisateurs1_c.js": {
     "id_autorisation": 35,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_source_vers_programme1_c.js": {
     "id_autorisation": 45,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
-    "cht_notification_ko_source": "Vous devez être connecté"
+    "cht_notification_ko_source": "Vous devez être connecté",
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_generer_souches1_c.js": {
     "id_autorisation": 51,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "revs1_c.js": {
     "id_autorisation": 54,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "travaux1_c.js": {
     "id_autorisation": 55,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "taches1_c.js": {
     "id_autorisation": 53,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "Vous devez sélectionner un projet"
+    "cht_notification_ko_source": "Vous devez sélectionner un projet",
+    "che_pour_sous_liste_autorisation": 0
   },
   "__ig1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "_connexion1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
-  },
-  "x_ecran_contacte1_c.js": {
-    "id_autorisation": 0,
-    "autorisation_cote_client": true,
-    "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_a_propos1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   }
 }

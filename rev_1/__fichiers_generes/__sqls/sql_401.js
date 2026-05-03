@@ -16,17 +16,17 @@ class sql_401{
             if(par['n_chp_etat_travail'] === undefined || par['n_chp_etat_travail'] === '' || par['n_chp_etat_travail'] === null){
                 tableau_champs.push( '`chp_etat_travail` = NULL' );
             }else{
-                tableau_champs.push( '`chp_etat_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_etat_travail'] ) + '\'' );
+                tableau_champs.push( '`chp_etat_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_etat_travail'] , 'n_chp_etat_travail' ) + '\'' );
             }
             if(par['n_cht_log_travail'] === undefined || par['n_cht_log_travail'] === '' || par['n_cht_log_travail'] === null){
                 tableau_champs.push( '`cht_log_travail` = NULL' );
             }else{
-                tableau_champs.push( '`cht_log_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_log_travail'] ) + '\'' );
+                tableau_champs.push( '`cht_log_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_log_travail'] , 'n_cht_log_travail' ) + '\'' );
             }
             if(par['n_chn_duree_travail'] === undefined || par['n_chn_duree_travail'] === '' || par['n_chn_duree_travail'] === null){
                 tableau_champs.push( '`chn_duree_travail` = NULL' );
             }else{
-                tableau_champs.push( '`chn_duree_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chn_duree_travail'] ) + '' );
+                tableau_champs.push( '`chn_duree_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chn_duree_travail'] , 'n_chn_duree_travail' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -40,7 +40,7 @@ class sql_401{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_travail\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_travail'] ) + '\r\n';
+            where0+=` AND \`chi_id_travail\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_travail'] , 'c_chi_id_travail' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_401= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

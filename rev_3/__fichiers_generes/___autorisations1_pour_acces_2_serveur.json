@@ -3,60 +3,77 @@
     "id_autorisation": 14,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "groupes1_s.js": {
-    "id_autorisation": 26,
+    "id_autorisation": 41,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "metiers1_s.js": {
     "id_autorisation": 28,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "acces1_s.js": {
     "id_autorisation": 30,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "utilisateurs1_s.js": {
     "id_autorisation": 35,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
+  },
+  "sources1_s.js": {
+    "id_autorisation": 42,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 1
   },
   "autorisations1_s.js": {
     "id_autorisation": 32,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "menus1_s.js": {
     "id_autorisation": 34,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "taches1_s.js": {
     "id_autorisation": 15,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "_connexion1_s.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "__ig1_s.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   }
 }

@@ -16,12 +16,12 @@ class sql_133{
             if(par['n_chp_nom_groupe'] === undefined || par['n_chp_nom_groupe'] === '' || par['n_chp_nom_groupe'] === null){
                 tableau_champs.push( '`chp_nom_groupe` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_groupe` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_groupe'] ) + '\'' );
+                tableau_champs.push( '`chp_nom_groupe` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_groupe'] , 'n_chp_nom_groupe' ) + '\'' );
             }
             if(par['n_chx_parent_groupe'] === undefined || par['n_chx_parent_groupe'] === '' || par['n_chx_parent_groupe'] === null){
                 tableau_champs.push( '`chx_parent_groupe` = NULL' );
             }else{
-                tableau_champs.push( '`chx_parent_groupe` = ' + this.__ig1.__fnt1.sq0( par['n_chx_parent_groupe'] ) + '' );
+                tableau_champs.push( '`chx_parent_groupe` = ' + this.__ig1.__fnt1.sq0( par['n_chx_parent_groupe'] , 'n_chx_parent_groupe' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -35,7 +35,7 @@ class sql_133{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_groupe\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_groupe'] ) + '\r\n';
+            where0+=` AND \`chi_id_groupe\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_groupe'] , 'c_chi_id_groupe' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_133= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

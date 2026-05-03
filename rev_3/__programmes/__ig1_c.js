@@ -57,7 +57,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    #traite_message_recupere_du_worker( par ){
+    async #traite_message_recupere_du_worker( par ){
         this.#date_derniere_navigation=performance.now();
         let le_colis=par.data;
         if(this.__deverminage === 2){
@@ -90,9 +90,9 @@ class __ig1{
                 /* console.log('this.maj_hash_init_fait=',this.maj_hash_init_fait) */
                 this.maj_hash_fait=false;
                 this.maj_hash_init_fait=false;} , 500 );
-        this.chi_id_acces=le_colis.chi_id_acces;
-        this.chi_id_projet=le_colis.chi_id_projet;
-        this.chi_id_utilisateur=le_colis.chi_id_utilisateur;
+        this.chi_id_acces=le_colis.hasOwnProperty('chi_id_acces')?le_colis.chi_id_acces:this.chi_id_acces;
+        this.chi_id_projet=le_colis.hasOwnProperty('chi_id_projet')?le_colis.chi_id_projet:this.chi_id_projet;
+        this.chi_id_utilisateur=le_colis.hasOwnProperty('chi_id_utilisateur')?le_colis.chi_id_utilisateur:this.chi_id_utilisateur;
         this.#sans_maj_de_hash=false;
         /* pas_de_maj_de_hash */
         this.#avec_maj_de_hash=__xer;
@@ -132,7 +132,7 @@ class __ig1{
                 /*
                   ============= appel des actions ==============
                 */
-                let obj2=this.__xac( obj1.__xva , 0 , le_colis );
+                let obj2=await this.__xac( obj1.__xva , 0 , le_colis );
                 /*
                   ============= appel des actions ==============
                 */
@@ -141,7 +141,9 @@ class __ig1{
                     if(obj2.hasOwnProperty( 'cumul_message' ) && obj2.cumul_message === __xer){
                         cumul_message=__xer;
                     }else{
-                        this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
+                        if(this.__deverminage > 0){
+                            this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
+                        }
                     }
                     this.affiche_les_messages();
                     return({"__xst" : __xer});
@@ -189,283 +191,284 @@ class __ig1{
         }else{
             nom_a_importer+='_c.js';
         }
-        if(indice > 0){
-            if(!this.#liste_des_modules_dynamiques.hasOwnProperty( m1 )){
-                /*
-                  si le module n'a pas encore été chargé
-                */
-                let module=null;
-                if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_c.js' === nom_a_importer)){
-                    if(true){
-                        try{
-                            /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
-                            let elem=this.__liste_des_autorisations1[nom_a_importer];
-                            /* console.log('%celem=','background:lightblue;',elem) */
-                            if(elem){
-                                if(elem.cht_condition_js_source !== null){
-                                    let aa=eval( elem.cht_condition_js_source );
-                                    if(aa && aa === true){
-                                    }else{
-                                        if(elem.cht_notification_ko_source && elem.cht_notification_ko_source !== ''){
-                                            this.affiche_les_messages( {"__xst" : __xal ,"__xme" : elem.cht_notification_ko_source} );
-                                        }else{
-                                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 1 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
-                                        }
-                                        return({"__xst" : __xer});
-                                    }
+        if(indice === 0){
+            return(affiche_les_messages( {"__xst" : __xer , __xme : 'il manque une fonction dans m1 '+JSON.stringify(mat)} ));
+        }
+        if(!this.#liste_des_modules_dynamiques.hasOwnProperty( m1 )){
+            /*
+              si le module n'a pas encore été chargé
+            */
+            let module=null;
+            if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_c.js' === nom_a_importer)){
+                if(true){
+                    try{
+                        /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
+                        let elem=this.__liste_des_autorisations1[nom_a_importer];
+                        /* console.log('%celem=','background:lightblue;',elem) */
+                        if(elem){
+                            if(elem.cht_condition_js_source !== null){
+                                let aa=eval( elem.cht_condition_js_source );
+                                if(aa && aa === true){
                                 }else{
-                                    /* ok, pas de condition particulière à tester */
+                                    if(elem.cht_notification_ko_source && elem.cht_notification_ko_source !== ''){
+                                        this.affiche_les_messages( {"__xst" : __xal ,"__xme" : elem.cht_notification_ko_source} );
+                                    }else{
+                                        this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 1 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                    }
+                                    return({"__xst" : __xer});
                                 }
                             }else{
-                                if(mat[d][1] === 'f1' && mat[d][8] === 1 &&  mat[d+1][1] === 'sous_liste1' ){
-                                    /*
-                                      si c'est une sous liste, on autorise l'accès
-                                    */
-                                }else{
-                                    debugger
-                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
+                                /* ok, pas de condition particulière à tester */
+                            }
+                            if(elem.che_pour_sous_liste_autorisation === 1){
+                                if(mat[d+1][1] !== 'sous_liste1'){
+                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     return({"__xst" : __xer});
                                 }
                             }
-                        }catch(e){
-                            console.error( e.stack );
+                        }else{
+                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
+                            return({"__xst" : __xer});
                         }
+                    }catch(e){
+                        console.error( e.stack );
                     }
                 }
-                dejà_importe.push( nom_a_importer );
+            }
+            dejà_importe.push( nom_a_importer );
+            try{
+                module=await import( './f0?n0=' + nom_a_importer + '&__version=' + __version );
+                this.#liste_des_modules_dynamiques[m1]={"objet1" : null};
+            }catch(e){
+                console.error( e );
+                if(e.message.indexOf( 'Failed to fetch dynamically imported module' ) >= 0){
+                    this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Le module "' + m1 + '" n\'a pas pas pu être chargé ( voir traces réseau )'} );
+                }else{
+                    let re_source=this.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
+                    this.ajoute_message( {
+                            "__xst" : __xer ,
+                            "__xme" : 'erreur import du module <br><pre>' + re_source.__xva + '</pre><br />"' + nom_de_classe + '" ' + this.nl2( e )
+                        } );
+                }
+                this.affiche_les_messages();
+                return({"__xst" : __xer});
+            }
+            /* ancienne position */
+            /* this.#liste_des_modules_dynamiques[m1]={"objet1" : null}; */
+            if(this.#liste_des_modules_dynamiques[m1].objet1 === null){
                 try{
-                    module=await import( './f0?n0=' + nom_a_importer + '&__version=' + __version );
-                    this.#liste_des_modules_dynamiques[m1]={"objet1" : null};
+                    this.#liste_des_modules_dynamiques[m1].objet1=new module[nom_de_classe]( mat , indice , this );
                 }catch(e){
                     console.error( e );
-                    if(e.message.indexOf( 'Failed to fetch dynamically imported module' ) >= 0){
-                        this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Le module "' + m1 + '" n\'a pas pas pu être chargé ( voir traces réseau )'} );
-                    }else{
-                        let re_source=this.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
-                        this.ajoute_message( {
-                                "__xst" : __xer ,
-                                "__xme" : 'erreur import du module <br><pre>' + re_source.__xva + '</pre><br />"' + nom_de_classe + '" ' + this.nl2( e )
-                            } );
-                    }
+                    this.ajoute_message( {
+                            "__xst" : __xer ,
+                            "__xme" : 'erreur new "' + nom_de_classe + '"<br /><b>Regardez la console pour repérer l\'erreur</b> ' + this.nl2( e )
+                        } );
                     this.affiche_les_messages();
                     return({"__xst" : __xer});
                 }
-                /* ancienne position */
-                /* this.#liste_des_modules_dynamiques[m1]={"objet1" : null}; */
-                if(this.#liste_des_modules_dynamiques[m1].objet1 === null){
-                    try{
-                        this.#liste_des_modules_dynamiques[m1].objet1=new module[nom_de_classe]( mat , indice , this );
-                    }catch(e){
-                        console.error( e );
-                        this.ajoute_message( {
-                                "__xst" : __xer ,
-                                "__xme" : 'erreur new "' + nom_de_classe + '"<br /><b>Regardez la console pour repérer l\'erreur</b> ' + this.nl2( e )
-                            } );
-                        this.affiche_les_messages();
-                        return({"__xst" : __xer});
+            }
+            for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+                let obj=null;
+                try{
+                    /*#
+                      =====================================================================
+                      appel du module qui vient d'être charge
+                      =====================================================================
+                      if(this.__deverminage === 2){
+                          console.log( '%cappel du module qui vient d\'être charge ' + m1 + '.' + mat[i][1] + '()' , 'background:LightCoral;' );
+                      }
+                    */
+                    obj=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param );
+                    /*
+                      =====================================================================
+                      appel du module qui vient d'être charge
+                      =====================================================================
+                    */
+                }catch(e){
+                    let complement='';
+                    let tab1=e.stack.split( '\n' );
+                    if(tab1[0].indexOf( 'TypeError:' ) >= 0 && tab1[0].indexOf( 'is not a function' ) >= 0){
+                        complement=tab1[0].substr( 0 , tab1[0].indexOf( 'is not a function' ) );
+                        complement=complement.replace( 'TypeError:' , '' ).trim();
+                        complement='<br /><b>la fonction "' + complement + '" existe-t-elle ?</b>';
+                    }else{
+                        complement='<br />Existe-t-elle ? est-elle publique 1?';
                     }
+                    console.log( e.stack );
+                    this.retablir_les_boutons_masques( __xva_param );
+                    this.ajoute_message( {
+                            "__xst" : __xer ,
+                            "__xme" : 'Impossible d\'appeler la fonction "' + mat[i][1] + '" du module "' + m1 + '" ' + complement + '<br />' + this.nl2( e )
+                        } );
+                    this.affiche_les_messages();
+                    return({"__xst" : __xer});
                 }
-                for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
-                    let obj=null;
-                    try{
-                        /*#
-                          =====================================================================
-                          appel du module qui vient d'être charge
-                          =====================================================================
-                          if(this.__deverminage === 2){
-                              console.log( '%cappel du module qui vient d\'être charge ' + m1 + '.' + mat[i][1] + '()' , 'background:LightCoral;' );
-                          }
-                        */
-                        obj=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param );
-                        /*
-                          =====================================================================
-                          appel du module qui vient d'être charge
-                          =====================================================================
-                        */
-                    }catch(e){
-                        let complement='';
-                        let tab1=e.stack.split( '\n' );
-                        if(tab1[0].indexOf( 'TypeError:' ) >= 0 && tab1[0].indexOf( 'is not a function' ) >= 0){
-                            complement=tab1[0].substr( 0 , tab1[0].indexOf( 'is not a function' ) );
-                            complement=complement.replace( 'TypeError:' , '' ).trim();
-                            complement='<br /><b>la fonction "' + complement + '" existe-t-elle ?</b>';
-                        }else{
-                            complement='<br />Existe-t-elle ? est-elle publique 1?';
-                        }
-                        console.log( e.stack );
+                if(obj){
+                    if(obj.hasOwnProperty( '__xst' ) && obj.__xst !== __xsu){
                         this.retablir_les_boutons_masques( __xva_param );
                         this.ajoute_message( {
                                 "__xst" : __xer ,
-                                "__xme" : 'Impossible d\'appeler la fonction "' + mat[i][1] + '" du module "' + m1 + '" ' + complement + '<br />' + this.nl2( e )
+                                "__xme" : 'Impossible d\'appeler la fonction "' + mat[i][1] + '" du module "' + m1 + '" <br />Existe-t-elle ? est-elle publique 2? <br />' + this.nl2()
                             } );
                         this.affiche_les_messages();
                         return({"__xst" : __xer});
-                    }
-                    if(obj){
-                        if(obj.hasOwnProperty( '__xst' ) && obj.__xst !== __xsu){
-                            this.retablir_les_boutons_masques( __xva_param );
-                            this.ajoute_message( {
-                                    "__xst" : __xer ,
-                                    "__xme" : 'Impossible d\'appeler la fonction "' + mat[i][1] + '" du module "' + m1 + '" <br />Existe-t-elle ? est-elle publique 2? <br />' + this.nl2()
-                                } );
-                            this.affiche_les_messages();
-                            return({"__xst" : __xer});
-                        }else{
-                            /* console.error('%c AFR CAS NON TRAITE m1(n1('+m1+'),f1('+mat[i][1]+'))','background:red;color:yellow;'); */
-                        }
                     }else{
                         /* console.error('%c AFR CAS NON TRAITE m1(n1('+m1+'),f1('+mat[i][1]+'))','background:red;color:yellow;'); */
                     }
+                }else{
+                    /* console.error('%c AFR CAS NON TRAITE m1(n1('+m1+'),f1('+mat[i][1]+'))','background:red;color:yellow;'); */
                 }
-                this.retablir_les_boutons_masques( __xva_param );
-            }else{
-                if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_c.js' === nom_a_importer)){
-                    if(true){
-                        try{
-                            /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
-                            let elem=this.__liste_des_autorisations1[nom_a_importer];
-                            /* console.log('%celem=','background:lightblue;',elem) */
-                            if(elem){
-                                if(elem.cht_condition_js_source !== null){
-                                    let aa=eval( elem.cht_condition_js_source );
-                                    if(aa && aa === true){
+            }
+            this.retablir_les_boutons_masques( __xva_param );
+        }else{
+            if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_c.js' === nom_a_importer)){
+                if(true){
+                    try{
+                        /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
+                        let elem=this.__liste_des_autorisations1[nom_a_importer];
+                        /* console.log('%celem=','background:lightblue;',elem) */
+                        if(elem){
+                            if(elem.cht_condition_js_source !== null){
+                                let aa=eval( elem.cht_condition_js_source );
+                                if(aa && aa === true){
+                                }else{
+                                    if(elem.cht_notification_ko_source && elem.cht_notification_ko_source !== ''){
+                                        this.affiche_les_messages( {"__xst" : __xal ,"__xme" : elem.cht_notification_ko_source} );
                                     }else{
-                                        if(elem.cht_notification_ko_source && elem.cht_notification_ko_source !== ''){
-                                            this.affiche_les_messages( {"__xst" : __xal ,"__xme" : elem.cht_notification_ko_source} );
-                                        }else{
-                                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 2 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
-                                        }
-                                        return({"__xst" : __xer});
+                                        this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 2 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     }
-                                }else{
-                                    /* ok, pas de condition particulière à tester */
-                                }
-                            }else{
-                                if(mat[d][1] === 'f1' && mat[d][8] === 1 &&  mat[d+1][1] === 'sous_liste1' ){
-                                    /*
-                                      si c'est une sous liste, on autorise l'accès
-                                    */
-                                }else{
-                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 4 <br />cette action n\'est pas disponnible'} );
                                     return({"__xst" : __xer});
                                 }
+                            }else{
+                                /* ok, pas de condition particulière à tester */
                             }
-                        }catch(e){
-                            console.error( e.stack );
-                        }
-                    }
-                }
-                /* déjà chargé */
-                for( let i=indice ; i < l01 ; i=mat[i][12] ){
-                    try{
-                        if( typeof this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]] === 'function'){
-                            /*#
-                              =============================================================
-                              appel du module déjà charge
-                              =============================================================
-                              if(this.__deverminage === 2){
-                                  console.log( '%cappel du module déjà charge ' + m1 + '.' + mat[i][1] + '()' , 'background:Khaki;' );
-                              }
-                            */
-                            let obj3=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param , evenement );
-                            /*
-                              =============================================================
-                              appel du module déjà charge
-                              =============================================================
-                            */
-                            if(obj3 && obj3.then &&  typeof obj3.then === 'function'){
-                                /*
-                                  si le module vient d'etre chargé, c'est une promesse
-                                */
-                            }else if(obj3 === undefined){
-                                this.ajoute_message( {
-                                         /*  */
-                                        "__xst" : __xal ,
-                                        "__xme" : 'la fonction ' + m1 + '.' + mat[i][1] + '() ne retourne rien'
-                                    } );
-                            }else if(obj3.__xst !== __xsu){
-                                let cumul_message=__xsu;
-                                if(obj3.hasOwnProperty( 'cumul_message' ) && obj3.cumul_message === __xer){
-                                    cumul_message=__xer;
-                                }else{
-                                    if(obj3.hasOwnProperty( '__xme' )){
-                                        this.ajoute_message( {"__xst" : __xer ,"__xme" : obj3.__xme} );
-                                    }else{
-                                        console.log( '%c' + this.nl2() , 'background:black;color:yellow;' );
-                                    }
+                            if(elem.che_pour_sous_liste_autorisation === 1){
+                                if(mat[d+1][1] !== 'sous_liste1'){
+                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 6 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                    return({"__xst" : __xer});
                                 }
-                                this.affiche_les_messages();
-                                this.retablir_les_boutons_masques( __xva_param );
-                                return({"__xst" : __xer ,"cumul_message" : cumul_message});
-                            }else if(obj3.__xst === __xsu){
                             }
                         }else{
-                            if( typeof this.#liste_des_modules_dynamiques[m1].objet1['f1'] === 'function'){
-                                try{
-                                    let obj3=this.#liste_des_modules_dynamiques[m1].objet1.f1( mat , i , __xva_param );
-                                    if(obj3.then &&  typeof obj3.then === 'function'){
-                                        /*
-                                          si le module vient d'etre chargé, c'est une promesse
-                                        */
-                                    }else if(obj3.__xst !== __xsu){
-                                        let cumul_message=__xsu;
-                                        if(obj3.hasOwnProperty( 'cumul_message' ) && obj3.cumul_message === __xer){
-                                            cumul_message=__xer;
-                                        }else{
-                                            if(obj3.hasOwnProperty( '__xme' )){
-                                                this.ajoute_message( {"__xst" : __xer ,"__xme" : obj3.__xme} );
-                                            }else{
-                                                this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
-                                            }
-                                        }
-                                        this.affiche_les_messages();
-                                        this.retablir_les_boutons_masques( __xva_param );
-                                        return({"__xst" : __xer ,"cumul_message" : cumul_message});
-                                    }
-                                }catch(e2){
-                                    this.retablir_les_boutons_masques( __xva_param );
-                                    let t1='';
-                                    t1+='CLIENT : lors de l\'appel à la fonction ' + mat[i][1] + ' du modume ' + m1 + '<br />';
-                                    t1+=this.nl2( e2 ) + '<br />';
-                                    t1+='la méthode "' + mat[i][1] + '" existe-t-elle ? est-elle publique 3? retourne-t-elle __xst:__xsu';
-                                    this.ajoute_message( {"__xst" : __xer ,"__xme" : t1} );
-                                    this.affiche_les_messages();
-                                    return({"__xst" : __xer});
-                                }
+                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 4 <br />cette action n\'est pas disponnible'} );
+                            return({"__xst" : __xer});
+                        }
+                    }catch(e){
+                        console.error( e.stack );
+                    }
+                }
+            }
+            /* déjà chargé */
+            for( let i=indice ; i < l01 ; i=mat[i][12] ){
+                try{
+                    if( typeof this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]] === 'function'){
+                        /*#
+                          =============================================================
+                          appel du module déjà charge
+                          =============================================================
+                          if(this.__deverminage === 2){
+                              console.log( '%cappel du module déjà charge ' + m1 + '.' + mat[i][1] + '()' , 'background:Khaki;' );
+                          }
+                        */
+                        let obj3=this.#liste_des_modules_dynamiques[m1].objet1[mat[i][1]]( mat , i , __xva_param , evenement );
+                        /*
+                          =============================================================
+                          appel du module déjà charge
+                          =============================================================
+                        */
+                        if(obj3 && obj3.then &&  typeof obj3.then === 'function'){
+                            /*
+                              si le module vient d'etre chargé, c'est une promesse
+                            */
+                        }else if(obj3 === undefined){
+                            this.ajoute_message( {
+                                     /*  */
+                                    "__xst" : __xal ,
+                                    "__xme" : 'la fonction ' + m1 + '.' + mat[i][1] + '() ne retourne rien'
+                                } );
+                        }else if(obj3.__xst !== __xsu){
+                            let cumul_message=__xsu;
+                            if(obj3.hasOwnProperty( 'cumul_message' ) && obj3.cumul_message === __xer){
+                                cumul_message=__xer;
                             }else{
+                                if(obj3.hasOwnProperty( '__xme' )){
+                                    this.ajoute_message( {"__xst" : __xer ,"__xme" : obj3.__xme} );
+                                }else{
+                                    console.log( '%c' + this.nl2() , 'background:black;color:yellow;' );
+                                }
+                            }
+                            this.affiche_les_messages();
+                            this.retablir_les_boutons_masques( __xva_param );
+                            return({"__xst" : __xer ,"cumul_message" : cumul_message});
+                        }else if(obj3.__xst === __xsu){
+                        }
+                    }else{
+                        if( typeof this.#liste_des_modules_dynamiques[m1].objet1['f1'] === 'function'){
+                            try{
+                                let obj3=this.#liste_des_modules_dynamiques[m1].objet1.f1( mat , i , __xva_param );
+                                if(obj3.then &&  typeof obj3.then === 'function'){
+                                    /*
+                                      si le module vient d'etre chargé, c'est une promesse
+                                    */
+                                }else if(obj3.__xst !== __xsu){
+                                    let cumul_message=__xsu;
+                                    if(obj3.hasOwnProperty( 'cumul_message' ) && obj3.cumul_message === __xer){
+                                        cumul_message=__xer;
+                                    }else{
+                                        if(obj3.hasOwnProperty( '__xme' )){
+                                            this.ajoute_message( {"__xst" : __xer ,"__xme" : obj3.__xme} );
+                                        }else{
+                                            this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
+                                        }
+                                    }
+                                    this.affiche_les_messages();
+                                    this.retablir_les_boutons_masques( __xva_param );
+                                    return({"__xst" : __xer ,"cumul_message" : cumul_message});
+                                }
+                            }catch(e2){
                                 this.retablir_les_boutons_masques( __xva_param );
                                 let t1='';
-                                t1+=' erreur client lors de l\'appel à la fonction ' + mat[i][1] + ' du module ' + m1 + '<br />';
-                                t1+='<br />';
-                                t1+='la méthode "' + mat[i][1] + '" existe-t-elle ? est-elle publique 4? retourne-t-elle __xst:__xsu';
+                                t1+='CLIENT : lors de l\'appel à la fonction ' + mat[i][1] + ' du modume ' + m1 + '<br />';
+                                t1+=this.nl2( e2 ) + '<br />';
+                                t1+='la méthode "' + mat[i][1] + '" existe-t-elle ? est-elle publique 3? retourne-t-elle __xst:__xsu';
                                 this.ajoute_message( {"__xst" : __xer ,"__xme" : t1} );
                                 this.affiche_les_messages();
                                 return({"__xst" : __xer});
                             }
+                        }else{
+                            this.retablir_les_boutons_masques( __xva_param );
+                            let t1='';
+                            t1+=' erreur client lors de l\'appel à la fonction ' + mat[i][1] + ' du module ' + m1 + '<br />';
+                            t1+='<br />';
+                            t1+='la méthode "' + mat[i][1] + '" existe-t-elle ? est-elle publique 4? retourne-t-elle __xst:__xsu';
+                            this.ajoute_message( {"__xst" : __xer ,"__xme" : t1} );
+                            this.affiche_les_messages();
+                            return({"__xst" : __xer});
                         }
-                    }catch(e1){
-                        this.retablir_les_boutons_masques( __xva_param );
-                        let t1='';
-                        t1+=' erreur lors de l\'appel au js ' + m1 + '[' + mat[i][1] + ']<br />';
-                        t1+=this.nl2( e1 ) + '<br />';
-                        t1+='la méthode "' + mat[i][1] + '" existe-t-elle ? est-elle publique 5? retourne-t-elle __xst:__xsu';
-                        this.ajoute_message( {"__xst" : __xer ,"__xme" : t1} );
-                        this.affiche_les_messages();
-                        return({"__xst" : __xer});
                     }
-                }
-                if(this.#liste_des_appels_au_serveur.length > 0){
-                    /* on ne rétablit pas les boutons car on attend le retour serveur */
-                }else{
+                }catch(e1){
                     this.retablir_les_boutons_masques( __xva_param );
+                    let t1='';
+                    t1+=' erreur lors de l\'appel au js ' + m1 + '[' + mat[i][1] + ']<br />';
+                    t1+=this.nl2( e1 ) + '<br />';
+                    t1+='la méthode "' + mat[i][1] + '" existe-t-elle ? est-elle publique 5? retourne-t-elle __xst:__xsu';
+                    this.ajoute_message( {"__xst" : __xer ,"__xme" : t1} );
+                    this.affiche_les_messages();
+                    return({"__xst" : __xer});
                 }
             }
+            if(this.#liste_des_appels_au_serveur.length > 0){
+                /* on ne rétablit pas les boutons car on attend le retour serveur */
+            }else{
+                this.retablir_les_boutons_masques( __xva_param );
+            }
         }
+        return({__xst : __xsu});
     }
     /*
       =============================================================================================================
     */
-    __xac( mat , d , données , evenement=null ){
+    async __xac( mat , d , données , evenement=null ){
         if(!Array.isArray( mat )){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : 'oops, on n\'a pas reçu une matrice dans __ig1.__xac() ' + this.nl2()} );
             this.affiche_les_messages();
@@ -576,7 +579,10 @@ class __ig1{
                     if(i > 1 && données.__xva.hasOwnProperty( 'redirection' ) && données.__xva.redirection !== ''){
                         this.envoyer_un_message_au_worker( {"__xac" : données.__xva.redirection ,"__xva" : {}} );
                     }else{
-                        this.__xac( mat , i , données );
+                        let ret1=await this.__xac( mat , i , données );
+                        if(ret1.__xst !== __xsu){
+                            return({"__xst" : __xer});
+                        }
                     }
                 }
             }else if(mat[i][1] === 'm1' && mat[i][8] > 0){
@@ -591,7 +597,10 @@ class __ig1{
                     }
                 }
                 if(n1 !== '' && indice > 0){
-                    let ret1=this.m1( n1 , mat , indice , données , evenement );
+                    let ret1=await this.m1( n1 , mat , indice , données , evenement );
+                    if(ret1.__xst !== __xsu){
+                        return({"__xst" : __xer});
+                    }
                 }else{
                     debugger;
                     let re_source=this.__rev1.matrice_vers_source_rev1( mat , 0 , true , 1 );
@@ -911,13 +920,6 @@ class __ig1{
         this.#__worker.onmessage=function( le_message_recu_du_worker ){
             this.#liste_des_appels_au_serveur.pop();
             let obj1=this.#traite_message_recupere_du_worker( le_message_recu_du_worker );
-            if(obj1.__xst !== __xsu){
-                this.affiche_les_messages();
-                return({"__xst" : __xer});
-            }
-            /*
-              let obj2=this.#apres_traite_message_recupere_du_worker( le_message_recu_du_worker );
-            */
         }.bind( this );
         /*
         */

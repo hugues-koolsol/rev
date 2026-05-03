@@ -16,28 +16,28 @@ class sql_397{
             if(par['n_chp_resume_travail'] === undefined || par['n_chp_resume_travail'] === '' || par['n_chp_resume_travail'] === null){
                 tableau_champs.push( '`chp_resume_travail` = NULL' );
             }else{
-                tableau_champs.push( '`chp_resume_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_resume_travail'] ) + '\'' );
+                tableau_champs.push( '`chp_resume_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_resume_travail'] , 'n_chp_resume_travail' ) + '\'' );
             }
             if(par['n_cht_rev_travail'] === undefined || par['n_cht_rev_travail'] === '' || par['n_cht_rev_travail'] === null){
                 tableau_champs.push( '`cht_rev_travail` = NULL' );
             }else{
-                tableau_champs.push( '`cht_rev_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_rev_travail'] ) + '\'' );
+                tableau_champs.push( '`cht_rev_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_rev_travail'] , 'n_cht_rev_travail' ) + '\'' );
             }
             tableau_champs.push( '`chd_dtc_travail` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             if(par['n_chp_etat_travail'] === undefined || par['n_chp_etat_travail'] === '' || par['n_chp_etat_travail'] === null){
                 tableau_champs.push( '`chp_etat_travail` = NULL' );
             }else{
-                tableau_champs.push( '`chp_etat_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_etat_travail'] ) + '\'' );
+                tableau_champs.push( '`chp_etat_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_etat_travail'] , 'n_chp_etat_travail' ) + '\'' );
             }
             if(par['n_chx_projet_travail'] === undefined || par['n_chx_projet_travail'] === '' || par['n_chx_projet_travail'] === null){
                 tableau_champs.push( '`chx_projet_travail` = NULL' );
             }else{
-                tableau_champs.push( '`chx_projet_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chx_projet_travail'] ) + '' );
+                tableau_champs.push( '`chx_projet_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chx_projet_travail'] , 'n_chx_projet_travail' ) + '' );
             }
             if(par['n_cht_log_travail'] === undefined || par['n_cht_log_travail'] === '' || par['n_cht_log_travail'] === null){
                 tableau_champs.push( '`cht_log_travail` = NULL' );
             }else{
-                tableau_champs.push( '`cht_log_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_log_travail'] ) + '\'' );
+                tableau_champs.push( '`cht_log_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_log_travail'] , 'n_cht_log_travail' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -51,7 +51,7 @@ class sql_397{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_travail\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_travail'] ) + '\r\n';
+            where0+=` AND \`chi_id_travail\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_travail'] , 'c_chi_id_travail' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_397= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

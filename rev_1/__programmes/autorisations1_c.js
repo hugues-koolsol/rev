@@ -17,18 +17,20 @@ class autorisations1{
         "liste1" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
             "T2_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
-            "T0_chi_id_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'acces' ,"taille" : 8} ,
-            "T0_chx_source_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'source' ,"taille" : 8} ,
-            "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8}
+            "T0_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
+            "T0_che_pour_sous_liste_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour s/liste' ,"taille" : 8} ,
+            "T0_chx_source_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id source' ,"taille" : 8} ,
+            "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
+            "T0_chi_id_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
         } ,
         "sous_liste1" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
             "T2_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
-            "T0_chi_id_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'acces' ,"taille" : 8} ,
-            "T0_chx_source_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'source' ,"taille" : 8} ,
-            "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8}
+            "T0_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
+            "T0_che_pour_sous_liste_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour s/liste' ,"taille" : 8} ,
+            "T0_chx_source_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id source' ,"taille" : 8} ,
+            "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
+            "T0_chi_id_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
         }
     };
     fonction_liste='liste1';
@@ -130,10 +132,37 @@ class autorisations1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['che_pour_sous_liste_autorisation'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_pour_sous_liste_autorisation' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['che_pour_sous_liste_autorisation'] !== ''){
+            let tab_est_parmis_3='0,1'.split( ',' );
+            if(!tab_est_parmis_3.includes( fo1['che_pour_sous_liste_autorisation'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être correctement renseigné (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_pour_sous_liste_autorisation' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         /* conversion des données numériques début */
         fo1['chi_id_autorisation']=fo1['chi_id_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chi_id_autorisation'] , 10 ) );
         fo1['chx_acces_autorisation']=fo1['chx_acces_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_acces_autorisation'] , 10 ) );
         fo1['chx_source_autorisation']=fo1['chx_source_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_source_autorisation'] , 10 ) );
+        fo1['che_pour_sous_liste_autorisation']=fo1['che_pour_sous_liste_autorisation'] === '' ?
+          ( 
+            null
+          ) : ( 
+            parseInt( fo1['che_pour_sous_liste_autorisation'] , 10 )
+          );
         /* conversion des données numériques fin */
         /*
           tout a été vérifié
@@ -212,6 +241,20 @@ class autorisations1{
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_autorisation"   maxlength="255"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_autorisation'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_autorisation' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>pour accès sous liste</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.che_pour_sous_liste_autorisation'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <input type="range" id="che_pour_sous_liste_autorisation" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_pour_sous_liste_autorisation'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -296,6 +339,18 @@ class autorisations1{
         /*
           =====================================================================================================
         */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>pour accès sous liste</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_pour_sous_liste_autorisation"  value="' + this.__ig1.fi2( enreg['T0.che_pour_sous_liste_autorisation'] ) + '" />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_pour_sous_liste_autorisation' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
         o1+='      <input type="hidden" id="chi_id_autorisation" value="' + enreg['T0.chi_id_autorisation'] + '" />';
         /*
           =====================================================================================================
@@ -357,9 +412,36 @@ class autorisations1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['che_pour_sous_liste_autorisation'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être renseigné'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_pour_sous_liste_autorisation' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['che_pour_sous_liste_autorisation'] !== ''){
+            let tab_est_parmis_3='0,1'.split( ',' );
+            if(!tab_est_parmis_3.includes( fo1['che_pour_sous_liste_autorisation'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être correctement renseigné (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_pour_sous_liste_autorisation' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         /* conversion des données numériques début */
         fo1['chx_acces_autorisation']=fo1['chx_acces_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_acces_autorisation'] , 10 ) );
         fo1['chx_source_autorisation']=fo1['chx_source_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_source_autorisation'] , 10 ) );
+        fo1['che_pour_sous_liste_autorisation']=fo1['che_pour_sous_liste_autorisation'] === '' ?
+          ( 
+            null
+          ) : ( 
+            parseInt( fo1['che_pour_sous_liste_autorisation'] , 10 )
+          );
         /* conversion des données numériques fin */
         /*
           tout a été vérifié
@@ -473,6 +555,23 @@ class autorisations1{
         o1+='    <div>';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_autorisation' );
         o1+='    </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>pour accès sous liste</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_pour_sous_liste_autorisation" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_pour_sous_liste_autorisation' )){
+            o1+=this.__ig1.fi2( dupliquer['T0.che_pour_sous_liste_autorisation'] );
+        }else{
+            o1+='0';
+        }
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -764,6 +863,17 @@ class autorisations1{
                     lst+=elem['T2.chp_nom_source'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
                 }
                 lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.che_pour_sous_liste_autorisation'] !== null){
+                    if(elem['T0.che_pour_sous_liste_autorisation'] === 0){
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
+                }
+                lst+='</td>';
                 lst+='</tr>';
             }
             if(lst !== ''){
@@ -776,6 +886,7 @@ class autorisations1{
                 o1+='<th>source</th>';
                 o1+='<th>nom accès</th>';
                 o1+='<th>nom source</th>';
+                o1+=/* che_pour_sous_liste_autorisation */'<th>s/liste</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -858,6 +969,17 @@ class autorisations1{
                   }
                   lst+='</td>';
                 */
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.che_pour_sous_liste_autorisation'] !== null){
+                    if(elem['T0.che_pour_sous_liste_autorisation'] === 0){
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
+                }
+                lst+='</td>';
                 lst+='</tr>';
             }
             if(lst !== ''){
@@ -872,6 +994,7 @@ class autorisations1{
                 /* o1+='<th>nom</th>'; */
                 /* o1+='<th>nom</th>'; */
                 /* o1+='<th>dossier id</th>'; */
+                o1+=/* che_pour_sous_liste_autorisation */'<th>pour s/liste</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

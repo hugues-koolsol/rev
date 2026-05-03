@@ -627,7 +627,7 @@ CREATE TABLE `tbl_autorisations`(
             )
             */
              `chx_acces_autorisation` INTEGER REFERENCES tbl_acces(chi_id_acces)  ON UPDATE CASCADE DEFAULT  NULL
-    );
+    , `che_pour_sous_liste_autorisation` INTEGER NOT NULL DEFAULT  0);
 
 
 

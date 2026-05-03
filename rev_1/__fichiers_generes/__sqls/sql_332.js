@@ -17,7 +17,7 @@ class sql_332{
         let sql0='';
         try{
             sql0=`DELETE FROM tbl_genres
-              WHERE \`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_genre'] ) + ` ;
+              WHERE \`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_genre'] , 'chi_id_genre' ) + ` ;
             `;
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );

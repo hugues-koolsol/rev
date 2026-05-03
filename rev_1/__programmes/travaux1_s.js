@@ -32,58 +32,6 @@ class travaux1{
           this.__ig1.ma_trace1( 'this.__ig1.donnees_retournees' , this.__ig1.donnees_retournees );
           this.__ig1.ma_trace1( 'this.__ig1.options_generales' , this.__ig1.options_generales );
         */
-        /*#
-          this.__ig1.donnees_recues
-          {
-            __xac: "pm1(m1(n1(travaux1),f1(compiler_les_travaux())))",
-            __xva: {
-              __parametres: {
-                "--bidon": { valeur: 0, dimension: "" },
-                __deverminage: { valeur: 2, dimension: "" }
-              }
-            },
-            mat: [....],
-            mat_hash: []
-          }
-          this.__ig1.donnees_retournees
-          {
-            _CA_: 2,
-            __xst: 1,
-            date_heure_serveur: "2026-04-09 17:02:53.599",
-            __xva: {},
-            __xac: "pm1(m1(n1(travaux1),f1(compiler_les_travaux())))",
-            __xsi: { "0": [], "1": [], "2": [], "3": [], "4": [] },
-            chi_id_acces: 1,
-            chi_id_utilisateur: 1,
-            chi_id_projet: 1,
-            chp_nom_de_connexion_utilisateur: "poipoip",
-            __version: "2026_04_09_10_39_36_180",
-            __liste_des_bases: [ 1 ]
-          }
-          this.__ig1.options_generales
-          {
-            "set-cookie": [],
-            cookies: {
-              ugclang: "fr",
-              ugccssvalue: "1",
-              tdolang: "fr",
-              tdocssvalue: "1",
-              cle_de_session_rev_1_websocket: "la_cle_websocket_rev_1_822deb75-5472-45a7-903c-77ac3bb38a9b",
-              cle_de_session_rev_1: "rev_1_5e3ff9c2-f318-4bdd-822f-afd68ce43bc3",
-              cle_de_session_rev_2_websocket: "la_cle_websocket_rev_2_1b33c117-22ba-40ab-a664-220ac1cd5516"
-            },
-            cle_de_session: "la_cle_websocket_rev_2_1b33c117-22ba-40ab-a664-220ac1cd5516",
-            repertoire_du_pgm_serveur: "C:/wamp64/www/deno/app_009/rev_2",
-            bdd_ouvertes: {},
-            chemin_des_bdd: "./__bases_de_donnees/",
-            chemin_absolu_projet: "../rev_2/",
-            repertoire_racine_de_tous_les_projets: "C:/wamp64/www/deno/app_009/",
-            base_de_reference: 1,
-            base_de_travail: 1,
-            chemin_racine_du_projet: "./",
-            chemin_racine_de_tous_les_projets: "../../"
-          }
-        */
         try{
             /*
               on constitue la liste des projets 

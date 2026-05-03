@@ -17,7 +17,7 @@ class sql_383{
         const from0=`
           FROM  tbl_sources T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`che_binaire_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_binaire_source'] ) + ``;
+        const where0=` WHERE \`T0\`.\`che_binaire_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_binaire_source'] , 'T0_che_binaire_source' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_383 sql0=',sql0); */
         let lignes=[];

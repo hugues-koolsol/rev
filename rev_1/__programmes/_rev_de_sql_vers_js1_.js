@@ -220,6 +220,10 @@ class _rev_de_sql_vers_js1{
                     nouvelle_chaine+=c;
                 }else if(i < l01 - 1 && chaine.substr( i + 1 , 1 ) === ']'){
                     nouvelle_chaine+=c;
+                }else if(i > 0 && chaine.substr( i - 1 , 1 ) === ' '){
+                    nouvelle_chaine+=c;
+                }else if(i < l01 - 1 && chaine.substr( i + 1 , 1 ) === ' '){
+                    nouvelle_chaine+=c;
                 }else{
                     nouvelle_chaine+='\\\'';
                 }
@@ -552,7 +556,6 @@ class _rev_de_sql_vers_js1{
                         this.__ig1.ma_trace1( 'bizarre' , detail_champ );
                     }
                     if(spec === 'varchar' || spec === 'text'){
-                        /* debugger */
                         let s01=obj3.tableau_des_valeurs_pour_insert_js[i][0];
                         s01=s01.replace( /__fnt1\.sq1\(/g , '__fnt1.sq4(' );
                         tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      ' + s01 + '\'' );
@@ -674,7 +677,7 @@ class _rev_de_sql_vers_js1{
                                                     valeur_du_champ='NULL';
                                                 }else{
                                                     if(tab[m][1].substr( 0 , 1 ) === ':'){
-                                                        valeur_du_champ='\' + this.__ig1.__fnt1.sq0( par[\'' + tab[m][1].substr( 1 ) + '\'] ) + \'';
+                                                        valeur_du_champ='\' + this.__ig1.__fnt1.sq0( par[\'' + tab[m][1].substr( 1 ) + '\'] , \'' + tab[m][1].substr( 1 ) + '\' ) + \'';
                                                         type_de_champ='variable';
                                                     }else{
                                                         valeur_du_champ='\'' + tab[m][1].replace( /\'/g , "''" ) + '\'';

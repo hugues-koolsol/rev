@@ -525,6 +525,10 @@ class groupes1{
                 criteres_130[i]=formulaire[i];
             }
         }
+        criteres_130['groupe_mini']=0;
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            criteres_130['groupe_mini']=3;
+        }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -538,7 +542,8 @@ class groupes1{
         WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
            AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe
            AND `T0`.`chx_parent_groupe` = :T0_chx_parent_groupe
-           AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe) 
+           AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
+           AND `T0`.`chi_id_groupe` >= :groupe_mini) 
         ORDER BY `T0`.`chi_id_groupe` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -561,7 +566,8 @@ class groupes1{
             WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
                AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe
                AND `T0`.`chx_parent_groupe` = :T0_chx_parent_groupe
-               AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe) 
+               AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
+               AND `T0`.`chi_id_groupe` >= :groupe_mini) 
             ORDER BY `T0`.`chi_id_groupe` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;

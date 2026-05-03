@@ -105,15 +105,16 @@ class autorisations1{
                 "id_autorisation" : /* "che_autorisation_globale_source" : true , */0 ,
                 "autorisation_cote_client" : true ,
                 "cht_condition_js_source" : /* "cht_condition_rev_source" : null , */null ,
-                "cht_notification_ko_source" : null
+                "cht_notification_ko_source" : null ,
+                "che_pour_sous_liste_autorisation" : 0
             };
         }
         let criteres_select_152={"T1_chp_nom_source" : /* on récupère les autorisations serveur */'%_s.js'};
         let tt152=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_source` , 
-        `T1`.`cht_condition_rev_source` , `T1`.`cht_condition_js_source` , `T1`.`cht_notification_ko_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+        `T1`.`chp_nom_source` , `T1`.`cht_condition_rev_source` , `T1`.`cht_condition_js_source` , `T1`.`cht_notification_ko_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
         
@@ -141,7 +142,8 @@ class autorisations1{
                         "autorisation_cote_client" : 0 ,
                          /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
                         "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source']
+                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
+                        "che_pour_sous_liste_autorisation" : v1['T0.che_pour_sous_liste_autorisation']
                     };
                 }else{
                     /* on concatène les autorisations générales et particulières array_merge , concat */
@@ -168,7 +170,8 @@ class autorisations1{
                         "autorisation_cote_client" : 0 ,
                          /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
                         "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source']
+                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
+                        "che_pour_sous_liste_autorisation" : v1['T0.che_pour_sous_liste_autorisation']
                     };
                 }
                 chx_acces_autorisation=v1['T0.chx_acces_autorisation'];
@@ -181,7 +184,8 @@ class autorisations1{
                     "autorisation_cote_client" : 0 ,
                      /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
                     "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                    "cht_notification_ko_source" : v1['T1.cht_notification_ko_source']
+                    "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
+                    "che_pour_sous_liste_autorisation" : v1['T0.che_pour_sous_liste_autorisation']
                 };
             }
         }
@@ -313,6 +317,12 @@ class autorisations1{
         form['chi_id_autorisation']=form['chi_id_autorisation'] === null ? ( null ) : ( parseInt( form['chi_id_autorisation'] , 10 ) );
         form['chx_acces_autorisation']=form['chx_acces_autorisation'] === null ? ( null ) : ( parseInt( form['chx_acces_autorisation'] , 10 ) );
         form['chx_source_autorisation']=form['chx_source_autorisation'] === null ? ( null ) : ( parseInt( form['chx_source_autorisation'] , 10 ) );
+        form['che_pour_sous_liste_autorisation']=form['che_pour_sous_liste_autorisation'] === null ?
+          ( 
+            null
+          ) : ( 
+            parseInt( form['che_pour_sous_liste_autorisation'] , 10 )
+          );
         /* conversion des données numériques fin */
         if(form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']' );
@@ -320,6 +330,10 @@ class autorisations1{
         }
         if(form['chp_nom_autorisation'] === null || form['chp_nom_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        if(form['che_pour_sous_liste_autorisation'] === null || form['che_pour_sous_liste_autorisation'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pour accès sous liste" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let retour_a_la_liste=false;
@@ -335,8 +349,8 @@ class autorisations1{
         let tt141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , 
-        `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+        `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -360,7 +374,8 @@ class autorisations1{
                 "c_chi_id_autorisation" : form['chi_id_autorisation'] ,
                 "n_chx_acces_autorisation" : form['chx_acces_autorisation'] === '' ? ( null ) : ( form['chx_acces_autorisation'] ) ,
                 "n_chx_source_autorisation" : form['chx_source_autorisation'] ,
-                "n_chp_nom_autorisation" : form['chp_nom_autorisation']
+                "n_chp_nom_autorisation" : form['chp_nom_autorisation'] ,
+                "n_che_pour_sous_liste_autorisation" : form['che_pour_sous_liste_autorisation']
             };
             await __db1.exec( 'BEGIN TRANSACTION;' );
             let tt143=await this.__ig1.sql_iii(
@@ -368,7 +383,8 @@ class autorisations1{
             UPDATE b1.tbl_autorisations SET 
                `chx_acces_autorisation` = :n_chx_acces_autorisation , 
                `chx_source_autorisation` = :n_chx_source_autorisation , 
-               `chp_nom_autorisation` = :n_chp_nom_autorisation
+               `chp_nom_autorisation` = :n_chp_nom_autorisation , 
+               `che_pour_sous_liste_autorisation` = :n_che_pour_sous_liste_autorisation
             WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;
             */
             /*sql_inclure_fin*/ 143 , criteres_143 , this.__ig1.donnees_retournees , __db1 );
@@ -398,8 +414,8 @@ class autorisations1{
             let tt141_bis=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , 
-            `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+            `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+            `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
              FROM b1.tbl_autorisations T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
             
@@ -444,8 +460,8 @@ class autorisations1{
         let tt141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , 
-        `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+        `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -491,8 +507,8 @@ class autorisations1{
         let tt141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , 
-        `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+        `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -524,8 +540,8 @@ class autorisations1{
         let tt141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , 
-        `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+        `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -596,8 +612,8 @@ class autorisations1{
         let tt141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , 
-        `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+        `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -626,6 +642,12 @@ class autorisations1{
         /* conversion des données numériques début */
         form['chx_acces_autorisation']=form['chx_acces_autorisation'] === null || form['chx_acces_autorisation'] === '' || form['chx_acces_autorisation'] === undefined ? ( null ) : ( parseInt( form['chx_acces_autorisation'] , 10 ) );
         form['chx_source_autorisation']=form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === '' || form['chx_source_autorisation'] === undefined ? ( null ) : ( parseInt( form['chx_source_autorisation'] , 10 ) );
+        form['che_pour_sous_liste_autorisation']=form['che_pour_sous_liste_autorisation'] === null || form['che_pour_sous_liste_autorisation'] === '' || form['che_pour_sous_liste_autorisation'] === undefined ?
+          ( 
+            0
+          ) : ( 
+            parseInt( form['che_pour_sous_liste_autorisation'] , 10 )
+          );
         /* conversion des données numériques fin */
         if(form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']' );
@@ -633,6 +655,10 @@ class autorisations1{
         }
         if(form['chp_nom_autorisation'] === null || form['chp_nom_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        if(form['che_pour_sous_liste_autorisation'] === null || form['che_pour_sous_liste_autorisation'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pour accès sous liste" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -644,7 +670,8 @@ class autorisations1{
             "donnees" : [{
                         "chx_acces_autorisation" : form['chx_acces_autorisation'] === '' ? ( null ) : ( form['chx_acces_autorisation'] ) ,
                         "chx_source_autorisation" : form['chx_source_autorisation'] ,
-                        "chp_nom_autorisation" : form['chp_nom_autorisation']
+                        "chp_nom_autorisation" : form['chp_nom_autorisation'] ,
+                        "che_pour_sous_liste_autorisation" : form['che_pour_sous_liste_autorisation']
                     }]
         };
         /*  */
@@ -654,11 +681,13 @@ class autorisations1{
         INSERT INTO b1.`tbl_autorisations`(
             `chx_acces_autorisation` , 
             `chx_source_autorisation` , 
-            `chp_nom_autorisation`
+            `chp_nom_autorisation` , 
+            `che_pour_sous_liste_autorisation`
         ) VALUES (
             :chx_acces_autorisation , 
             :chx_source_autorisation , 
-            :chp_nom_autorisation
+            :chp_nom_autorisation , 
+            :che_pour_sous_liste_autorisation
         );
         */
         /*sql_inclure_fin*/ 142 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
@@ -738,8 +767,8 @@ class autorisations1{
         let tt140=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , 
-        `T2`.`chp_nom_source` , `T2`.`chx_dossier_id_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+        `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`chx_dossier_id_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -749,7 +778,8 @@ class autorisations1{
            AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
            AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
            AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
-           AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces) 
+           AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
+           AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation) 
         ORDER BY `T0`.`chx_acces_autorisation` DESC, `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC, `T2`.`chp_nom_source` ASC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -765,8 +795,8 @@ class autorisations1{
             tt140=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T1`.`chp_nom_acces` , 
-            `T2`.`chp_nom_source` , `T2`.`chx_dossier_id_source`
+            `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+            `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`chx_dossier_id_source`
              FROM b1.tbl_autorisations T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
             
@@ -776,7 +806,8 @@ class autorisations1{
                AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
                AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
                AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
-               AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces) 
+               AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
+               AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation) 
             ORDER BY `T0`.`chx_acces_autorisation` DESC, `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC, `T2`.`chp_nom_source` ASC  
             LIMIT :quantitee OFFSET :debut 
             ;

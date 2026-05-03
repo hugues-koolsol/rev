@@ -17,7 +17,7 @@ class sql_169{
         const from0=`
           FROM  tbl_dossiers T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chx_parent_dossier\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_parent_dossier'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chx_parent_dossier\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_parent_dossier'] , 'T0_chx_parent_dossier' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_169 sql0=',sql0); */
         let lignes=[];

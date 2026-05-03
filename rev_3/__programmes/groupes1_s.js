@@ -41,7 +41,10 @@ class groupes1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1 &&  __xva_avant['T0.chi_id_groupe'] <=2 ){
+        if(this.__ig1.donnees_retournees._CA_ > 2
+               && this.__ig1.donnees_retournees.chi_id_utilisateur > 1
+               && __xva_avant['T0.chi_id_groupe'] <= 2
+        ){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ' vous ne pouvez pas modifier le groupe (' + __xva_avant['T0.chi_id_groupe'] + ')' );
             return({"__xst" : __xer});
         }
@@ -521,6 +524,10 @@ class groupes1{
             if(i !== '__num_page'){
                 criteres_130[i]=formulaire[i];
             }
+        }
+        criteres_130['groupe_mini']=0;
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            criteres_130['groupe_mini']=3;
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );

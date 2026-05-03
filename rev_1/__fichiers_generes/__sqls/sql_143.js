@@ -16,17 +16,22 @@ class sql_143{
             if(par['n_chx_acces_autorisation'] === undefined || par['n_chx_acces_autorisation'] === '' || par['n_chx_acces_autorisation'] === null){
                 tableau_champs.push( '`chx_acces_autorisation` = NULL' );
             }else{
-                tableau_champs.push( '`chx_acces_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_chx_acces_autorisation'] ) + '' );
+                tableau_champs.push( '`chx_acces_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_chx_acces_autorisation'] , 'n_chx_acces_autorisation' ) + '' );
             }
             if(par['n_chx_source_autorisation'] === undefined || par['n_chx_source_autorisation'] === '' || par['n_chx_source_autorisation'] === null){
                 tableau_champs.push( '`chx_source_autorisation` = NULL' );
             }else{
-                tableau_champs.push( '`chx_source_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_chx_source_autorisation'] ) + '' );
+                tableau_champs.push( '`chx_source_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_chx_source_autorisation'] , 'n_chx_source_autorisation' ) + '' );
             }
             if(par['n_chp_nom_autorisation'] === undefined || par['n_chp_nom_autorisation'] === '' || par['n_chp_nom_autorisation'] === null){
                 tableau_champs.push( '`chp_nom_autorisation` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_autorisation` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_autorisation'] ) + '\'' );
+                tableau_champs.push( '`chp_nom_autorisation` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_autorisation'] , 'n_chp_nom_autorisation' ) + '\'' );
+            }
+            if(par['n_che_pour_sous_liste_autorisation'] === undefined || par['n_che_pour_sous_liste_autorisation'] === '' || par['n_che_pour_sous_liste_autorisation'] === null){
+                tableau_champs.push( '`che_pour_sous_liste_autorisation` = NULL' );
+            }else{
+                tableau_champs.push( '`che_pour_sous_liste_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_che_pour_sous_liste_autorisation'] , 'n_che_pour_sous_liste_autorisation' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -40,7 +45,7 @@ class sql_143{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_autorisation'] ) + '\r\n';
+            where0+=` AND \`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_autorisation'] , 'c_chi_id_autorisation' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_143= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

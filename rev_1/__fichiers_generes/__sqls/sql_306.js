@@ -17,7 +17,7 @@ class sql_306{
         const from0=`
           FROM  tbl_dossiers T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chp_nom_dossier\` NOT LIKE ` + this.__ig1.__fnt1.sq3( par['T0_chp_nom_dossier'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chp_nom_dossier\` NOT LIKE ` + this.__ig1.__fnt1.sq3( par['T0_chp_nom_dossier'] , 'T0_chp_nom_dossier' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_306 sql0=',sql0); */
         let lignes=[];

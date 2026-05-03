@@ -16,109 +16,109 @@ class sql_331{
             if(par['n_chp_nom_genre'] === undefined || par['n_chp_nom_genre'] === '' || par['n_chp_nom_genre'] === null){
                 tableau_champs.push( '`chp_nom_genre` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_genre'] ) + '\'' );
+                tableau_champs.push( '`chp_nom_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_genre'] , 'n_chp_nom_genre' ) + '\'' );
             }
             if(par['n_che_ordre_genre'] === undefined || par['n_che_ordre_genre'] === '' || par['n_che_ordre_genre'] === null){
                 tableau_champs.push( '`che_ordre_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_ordre_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_ordre_genre'] ) + '' );
+                tableau_champs.push( '`che_ordre_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_ordre_genre'] , 'n_che_ordre_genre' ) + '' );
             }
             if(par['n_chp_prefixe_genre'] === undefined || par['n_chp_prefixe_genre'] === '' || par['n_chp_prefixe_genre'] === null){
                 tableau_champs.push( '`chp_prefixe_genre` = NULL' );
             }else{
-                tableau_champs.push( '`chp_prefixe_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_prefixe_genre'] ) + '\'' );
+                tableau_champs.push( '`chp_prefixe_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_prefixe_genre'] , 'n_chp_prefixe_genre' ) + '\'' );
             }
             if(par['n_chp_espece_genre'] === undefined || par['n_chp_espece_genre'] === '' || par['n_chp_espece_genre'] === null){
                 tableau_champs.push( '`chp_espece_genre` = NULL' );
             }else{
-                tableau_champs.push( '`chp_espece_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_espece_genre'] ) + '\'' );
+                tableau_champs.push( '`chp_espece_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_espece_genre'] , 'n_chp_espece_genre' ) + '\'' );
             }
             if(par['n_che_longueur_genre'] === undefined || par['n_che_longueur_genre'] === '' || par['n_che_longueur_genre'] === null){
                 tableau_champs.push( '`che_longueur_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_longueur_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_che_longueur_genre'] ) + '\'' );
+                tableau_champs.push( '`che_longueur_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_che_longueur_genre'] , 'n_che_longueur_genre' ) + '\'' );
             }
             if(par['n_che_est_primaire_genre'] === undefined || par['n_che_est_primaire_genre'] === '' || par['n_che_est_primaire_genre'] === null){
                 tableau_champs.push( '`che_est_primaire_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_primaire_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_primaire_genre'] ) + '' );
+                tableau_champs.push( '`che_est_primaire_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_primaire_genre'] , 'n_che_est_primaire_genre' ) + '' );
             }
             if(par['n_che_est_incrément_genre'] === undefined || par['n_che_est_incrément_genre'] === '' || par['n_che_est_incrément_genre'] === null){
                 tableau_champs.push( '`che_est_incrément_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_incrément_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_incrément_genre'] ) + '' );
+                tableau_champs.push( '`che_est_incrément_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_incrément_genre'] , 'n_che_est_incrément_genre' ) + '' );
             }
             if(par['n_che_est_obligatoire_genre'] === undefined || par['n_che_est_obligatoire_genre'] === '' || par['n_che_est_obligatoire_genre'] === null){
                 tableau_champs.push( '`che_est_obligatoire_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_obligatoire_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_obligatoire_genre'] ) + '' );
+                tableau_champs.push( '`che_est_obligatoire_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_obligatoire_genre'] , 'n_che_est_obligatoire_genre' ) + '' );
             }
             if(par['n_che_a_init_genre'] === undefined || par['n_che_a_init_genre'] === '' || par['n_che_a_init_genre'] === null){
                 tableau_champs.push( '`che_a_init_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_a_init_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_a_init_genre'] ) + '' );
+                tableau_champs.push( '`che_a_init_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_a_init_genre'] , 'n_che_a_init_genre' ) + '' );
             }
             if(par['n_che_init_est_mot_genre'] === undefined || par['n_che_init_est_mot_genre'] === '' || par['n_che_init_est_mot_genre'] === null){
                 tableau_champs.push( '`che_init_est_mot_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_init_est_mot_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_init_est_mot_genre'] ) + '' );
+                tableau_champs.push( '`che_init_est_mot_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_init_est_mot_genre'] , 'n_che_init_est_mot_genre' ) + '' );
             }
             if(par['n_cht_valeur_init_genre'] === undefined || par['n_cht_valeur_init_genre'] === '' || par['n_cht_valeur_init_genre'] === null){
                 tableau_champs.push( '`cht_valeur_init_genre` = NULL' );
             }else{
-                tableau_champs.push( '`cht_valeur_init_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_valeur_init_genre'] ) + '\'' );
+                tableau_champs.push( '`cht_valeur_init_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_valeur_init_genre'] , 'n_cht_valeur_init_genre' ) + '\'' );
             }
             if(par['n_che_est_parmis_genre'] === undefined || par['n_che_est_parmis_genre'] === '' || par['n_che_est_parmis_genre'] === null){
                 tableau_champs.push( '`che_est_parmis_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_parmis_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_parmis_genre'] ) + '' );
+                tableau_champs.push( '`che_est_parmis_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_parmis_genre'] , 'n_che_est_parmis_genre' ) + '' );
             }
             if(par['n_cht_parmis_genre'] === undefined || par['n_cht_parmis_genre'] === '' || par['n_cht_parmis_genre'] === null){
                 tableau_champs.push( '`cht_parmis_genre` = NULL' );
             }else{
-                tableau_champs.push( '`cht_parmis_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_parmis_genre'] ) + '\'' );
+                tableau_champs.push( '`cht_parmis_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_parmis_genre'] , 'n_cht_parmis_genre' ) + '\'' );
             }
             if(par['n_cht_fonctions_genre'] === undefined || par['n_cht_fonctions_genre'] === '' || par['n_cht_fonctions_genre'] === null){
                 tableau_champs.push( '`cht_fonctions_genre` = NULL' );
             }else{
-                tableau_champs.push( '`cht_fonctions_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_fonctions_genre'] ) + '\'' );
+                tableau_champs.push( '`cht_fonctions_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_fonctions_genre'] , 'n_cht_fonctions_genre' ) + '\'' );
             }
             if(par['n_che_est_nur_genre'] === undefined || par['n_che_est_nur_genre'] === '' || par['n_che_est_nur_genre'] === null){
                 tableau_champs.push( '`che_est_nur_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_nur_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_nur_genre'] ) + '' );
+                tableau_champs.push( '`che_est_nur_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_nur_genre'] , 'n_che_est_nur_genre' ) + '' );
             }
             if(par['n_che_est_tsm_genre'] === undefined || par['n_che_est_tsm_genre'] === '' || par['n_che_est_tsm_genre'] === null){
                 tableau_champs.push( '`che_est_tsm_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_tsm_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_tsm_genre'] ) + '' );
+                tableau_champs.push( '`che_est_tsm_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_tsm_genre'] , 'n_che_est_tsm_genre' ) + '' );
             }
             if(par['n_che_est_tsc_genre'] === undefined || par['n_che_est_tsc_genre'] === '' || par['n_che_est_tsc_genre'] === null){
                 tableau_champs.push( '`che_est_tsc_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_tsc_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_tsc_genre'] ) + '' );
+                tableau_champs.push( '`che_est_tsc_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_tsc_genre'] , 'n_che_est_tsc_genre' ) + '' );
             }
             tableau_champs.push( '`chd__dtm_genre` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             tableau_champs.push('`che__nur_genre` = che__nur_genre + 1 ');
             if(par['n_che_est_session_genre'] === undefined || par['n_che_est_session_genre'] === '' || par['n_che_est_session_genre'] === null){
                 tableau_champs.push( '`che_est_session_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_session_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_session_genre'] ) + '' );
+                tableau_champs.push( '`che_est_session_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_session_genre'] , 'n_che_est_session_genre' ) + '' );
             }
             if(par['n_chp_nom_en_session_genre'] === undefined || par['n_chp_nom_en_session_genre'] === '' || par['n_chp_nom_en_session_genre'] === null){
                 tableau_champs.push( '`chp_nom_en_session_genre` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_en_session_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_en_session_genre'] ) + '\'' );
+                tableau_champs.push( '`chp_nom_en_session_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_en_session_genre'] , 'n_chp_nom_en_session_genre' ) + '\'' );
             }
             if(par['n_che_est_positif_genre'] === undefined || par['n_che_est_positif_genre'] === '' || par['n_che_est_positif_genre'] === null){
                 tableau_champs.push( '`che_est_positif_genre` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_positif_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_positif_genre'] ) + '' );
+                tableau_champs.push( '`che_est_positif_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_positif_genre'] , 'n_che_est_positif_genre' ) + '' );
             }
             if(par['n_cht_particularités_genre'] === undefined || par['n_cht_particularités_genre'] === '' || par['n_cht_particularités_genre'] === null){
                 tableau_champs.push( '`cht_particularités_genre` = NULL' );
             }else{
-                tableau_champs.push( '`cht_particularités_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_particularités_genre'] ) + '\'' );
+                tableau_champs.push( '`cht_particularités_genre` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_particularités_genre'] , 'n_cht_particularités_genre' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -132,7 +132,7 @@ class sql_331{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_genre'] ) + '\r\n';
+            where0+=` AND \`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_genre'] , 'c_chi_id_genre' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_331= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

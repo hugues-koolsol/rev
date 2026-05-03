@@ -16,12 +16,12 @@ class sql_109{
             if(par['n_chp_nom_de_connexion_utilisateur'] === undefined || par['n_chp_nom_de_connexion_utilisateur'] === '' || par['n_chp_nom_de_connexion_utilisateur'] === null){
                 tableau_champs.push( '`chp_nom_de_connexion_utilisateur` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_de_connexion_utilisateur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_de_connexion_utilisateur'] ) + '\'' );
+                tableau_champs.push( '`chp_nom_de_connexion_utilisateur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_de_connexion_utilisateur'] , 'n_chp_nom_de_connexion_utilisateur' ) + '\'' );
             }
             if(par['n_chp_mot_de_passe_utilisateur'] === undefined || par['n_chp_mot_de_passe_utilisateur'] === '' || par['n_chp_mot_de_passe_utilisateur'] === null){
                 tableau_champs.push( '`chp_mot_de_passe_utilisateur` = NULL' );
             }else{
-                tableau_champs.push( '`chp_mot_de_passe_utilisateur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_mot_de_passe_utilisateur'] ) + '\'' );
+                tableau_champs.push( '`chp_mot_de_passe_utilisateur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_mot_de_passe_utilisateur'] , 'n_chp_mot_de_passe_utilisateur' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -35,7 +35,7 @@ class sql_109{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_utilisateur'] ) + '\r\n';
+            where0+=` AND \`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_utilisateur'] , 'c_chi_id_utilisateur' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_109= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

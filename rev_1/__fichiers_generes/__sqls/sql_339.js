@@ -16,12 +16,12 @@ class sql_339{
             if(par['n_cht_rev_requete'] === undefined || par['n_cht_rev_requete'] === '' || par['n_cht_rev_requete'] === null){
                 tableau_champs.push( '`cht_rev_requete` = NULL' );
             }else{
-                tableau_champs.push( '`cht_rev_requete` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_rev_requete'] ) + '\'' );
+                tableau_champs.push( '`cht_rev_requete` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_rev_requete'] , 'n_cht_rev_requete' ) + '\'' );
             }
             if(par['n_che_est_souche_requete'] === undefined || par['n_che_est_souche_requete'] === '' || par['n_che_est_souche_requete'] === null){
                 tableau_champs.push( '`che_est_souche_requete` = NULL' );
             }else{
-                tableau_champs.push( '`che_est_souche_requete` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_souche_requete'] ) + '' );
+                tableau_champs.push( '`che_est_souche_requete` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_souche_requete'] , 'n_che_est_souche_requete' ) + '' );
             }
             tableau_champs.push( '`chd__dtm_requete` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             tableau_champs.push('`che__nur_requete` = che__nur_requete + 1 ');
@@ -37,7 +37,7 @@ class sql_339{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_requete\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_requete'] ) + '\r\n';
+            where0+=` AND \`chi_id_requete\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_requete'] , 'c_chi_id_requete' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_339= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

@@ -17,7 +17,7 @@ class sql_371{
         const from0=`
           FROM  tbl_bdds T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_basedd\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_basedd'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_basedd\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_basedd'] , 'T0_chi_id_basedd' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_371 sql0=',sql0); */
         let lignes=[];

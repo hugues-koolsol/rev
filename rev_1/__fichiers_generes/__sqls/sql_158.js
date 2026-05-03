@@ -26,8 +26,8 @@ class sql_158{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] ) + '\r\n';
-            where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chx_utilisateur_tache'] ) + '\r\n';
+            where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] , 'c_chi_id_tache' ) + '\r\n';
+            where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chx_utilisateur_tache'] , 'c_chx_utilisateur_tache' ) + '\r\n';
             where0+=` AND \`chp_priorite_tache\` >= 1`+'\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_158= ' + sql0 ); */

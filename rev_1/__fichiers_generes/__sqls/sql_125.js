@@ -19,7 +19,7 @@ class sql_125{
            LEFT JOIN tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_metier\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_metier'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_metier\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_metier'] , 'T0_chi_id_metier' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_125 sql0=',sql0); */
         let lignes=[];

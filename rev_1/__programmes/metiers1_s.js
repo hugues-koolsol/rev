@@ -41,12 +41,13 @@ class metiers1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          this.__ig1.donnees_retournees.__xst=__xer;
-          return({"__xst" : __xer});
-        */
-        this.__ig1.donnees_retournees.__xst=__xsu;
+        if(this.__ig1.donnees_retournees._CA_ > 2
+               && this.__ig1.donnees_retournees.chi_id_utilisateur > 1
+               && __xva_avant['T0.chi_id_metier'] <= 2
+        ){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( ' vous ne pouvez pas modifier le métier (' + __xva_avant['T0.chi_id_metier'] + ')' );
+            return({"__xst" : __xer});
+        }
         return({"__xst" : __xsu});
     }
     /*

@@ -25,7 +25,7 @@ class sql_146{
            LEFT JOIN tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_menu\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_menu'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_menu\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_menu'] , 'T0_chi_id_menu' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_146 sql0=',sql0); */
         let lignes=[];

@@ -154,15 +154,15 @@ class __fnt1{
       =============================================================================================================
       si s=0o777, on veut quand même mettre cette valeur en texte donc on ne teste pas est_num
     */
-    sq4( s , nom_du_champ='' ){
+    sq4( s , nom_du_parametre='' ){
         if(s === null){
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq4 "' + nom_du_champ + '" n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+            throw new Error( 'le paramètre de sq4 "' + nom_du_parametre + '" n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
         }else if( typeof s !== 'string'){
             let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq4 "' + nom_du_champ + '" n\'est pas une valeur de type "string"' );
+            throw new Error( 'le paramètre de sq4 "' + nom_du_parametre + '" n\'est pas une valeur de type "string"' );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         let s1=s.replace( /\'/g , '\'\'' );
@@ -175,14 +175,14 @@ class __fnt1{
       condition "equivalent" 
       %tagada% => \%tagada\%
     */
-    sq3( s ){
+    sq3( s , nom_du_parametre='' ){
         if(this.__ig1.est_num( s )){
             return s;
         }else if(s === null){
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq3 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            throw new Error( 'Paramètre de sq3 "' + nom_du_parametre + '" non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
         }
         /* cette fonction escapeString remplace les apostrophes par des doubles apostrophes */
         /* $s1=SQLite3::escapeString($s); */
@@ -201,14 +201,14 @@ class __fnt1{
       %tagada% => \%tagada\%
       condition "comme" 
     */
-    sq2( s ){
+    sq2( s , nom_du_parametre='' ){
         if(this.__ig1.est_num( s )){
             return('\'%' + s + '%\'');
         }else if(s === null){
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq2 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            throw new Error( 'Paramètre de sq2 "' + nom_du_parametre + '" non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
         }
         /* cette fonction escapeString remplace les apostrophes par des doubles apostrophes */
         /* $s1=SQLite3::escapeString($s); */
@@ -225,17 +225,17 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    sq1( s ){
+    sq1( s , nom_du_parametre='' ){
         if(this.__ig1.est_num( s )){
             return s;
         }else if(s === null){
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+            throw new Error( 'le paramètre de sq1 "' + nom_du_parametre + '" n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
         }else if( typeof s !== 'string'){
             let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 n\'est pas une valeur de type "string"' );
+            throw new Error( 'le paramètre de sq1 "' + nom_du_parametre + '" n\'est pas une valeur de type "string"' );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         let s1=s.replace( /\'/g , '\'\'' );
@@ -246,14 +246,14 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    sq0( s ){
+    sq0( s , nom_du_parametre='' ){
         if(this.__ig1.est_num( s )){
             return s;
         }else if(s === null){
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq0 non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            throw new Error( 'Paramètre de sq0 "' + nom_du_parametre + '" non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         s=s.replace( /\'/g , '\'\'' );

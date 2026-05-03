@@ -12,7 +12,8 @@ class sql_153{
     async sql( par ){
         const champs0=`
           \`T1\`.\`chx_source_autorisation\` , \`T0\`.\`chp_titre_menu\` , \`T0\`.\`chp_methode_menu\` , \`T3\`.\`chp_nom_source\` , \`T0\`.\`cht_libelle_menu\` , 
-          \`T0\`.\`cht_initialisation_menu\` , \`T0\`.\`chi_id_menu\` , \`T0\`.\`cht_condition_menu\` , \`T0\`.\`cht_condition_js_menu\` , \`T0\`.\`chx_autorisation_menu\`
+          \`T0\`.\`cht_initialisation_menu\` , \`T0\`.\`chi_id_menu\` , \`T0\`.\`cht_condition_menu\` , \`T0\`.\`cht_condition_js_menu\` , \`T0\`.\`chx_autorisation_menu\` , 
+          \`T3\`.\`cht_condition_js_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -47,7 +48,8 @@ class sql_153{
                     "T0.chi_id_menu" : col[6] ,
                     "T0.cht_condition_menu" : col[7] ,
                     "T0.cht_condition_js_menu" : col[8] ,
-                    "T0.chx_autorisation_menu" : col[9]
+                    "T0.chx_autorisation_menu" : col[9] ,
+                    "T3.cht_condition_js_source" : col[10]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

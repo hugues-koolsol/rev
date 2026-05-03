@@ -19,7 +19,7 @@ class sql_101{
            LEFT JOIN tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
         `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`chp_nom_de_connexion_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_de_connexion_utilisateur'] ) + `
+        const where0=` WHERE (\`T0\`.\`chp_nom_de_connexion_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_de_connexion_utilisateur'] , 'T0_chp_nom_de_connexion_utilisateur' ) + `
          AND \`T0\`.\`che_actif_utilisateur\` = 1
          AND \`T1\`.\`che_actif_acces\` = 1)`;
         sql0+=where0;

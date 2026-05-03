@@ -39,6 +39,9 @@ class sql_130{
         if(par.hasOwnProperty( 'T1_chp_nom_groupe' ) && par['T1_chp_nom_groupe'] !== ''){
             where0+=` AND \`T1\`.\`chp_nom_groupe\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_groupe'] ) + '\r\n';
         }
+        if(par.hasOwnProperty( 'groupe_mini' ) && par['groupe_mini'] !== ''){
+            where0+=` AND \`T0\`.\`chi_id_groupe\` >= ` + this.__ig1.__fnt1.sq1( par['groupe_mini'] ) + '\r\n';
+        }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_groupe\` DESC`;

@@ -16,22 +16,22 @@ class sql_138{
             if(par['n_chp_nom_acces'] === undefined || par['n_chp_nom_acces'] === '' || par['n_chp_nom_acces'] === null){
                 tableau_champs.push( '`chp_nom_acces` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_acces` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_acces'] ) + '\'' );
+                tableau_champs.push( '`chp_nom_acces` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_acces'] , 'n_chp_nom_acces' ) + '\'' );
             }
             if(par['n_chx_groupe_acces'] === undefined || par['n_chx_groupe_acces'] === '' || par['n_chx_groupe_acces'] === null){
                 tableau_champs.push( '`chx_groupe_acces` = NULL' );
             }else{
-                tableau_champs.push( '`chx_groupe_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_groupe_acces'] ) + '' );
+                tableau_champs.push( '`chx_groupe_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_groupe_acces'] , 'n_chx_groupe_acces' ) + '' );
             }
             if(par['n_chx_metier_acces'] === undefined || par['n_chx_metier_acces'] === '' || par['n_chx_metier_acces'] === null){
                 tableau_champs.push( '`chx_metier_acces` = NULL' );
             }else{
-                tableau_champs.push( '`chx_metier_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_metier_acces'] ) + '' );
+                tableau_champs.push( '`chx_metier_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_metier_acces'] , 'n_chx_metier_acces' ) + '' );
             }
             if(par['n_che_actif_acces'] === undefined || par['n_che_actif_acces'] === '' || par['n_che_actif_acces'] === null){
                 tableau_champs.push( '`che_actif_acces` = NULL' );
             }else{
-                tableau_champs.push( '`che_actif_acces` = ' + this.__ig1.__fnt1.sq0( par['n_che_actif_acces'] ) + '' );
+                tableau_champs.push( '`che_actif_acces` = ' + this.__ig1.__fnt1.sq0( par['n_che_actif_acces'] , 'n_che_actif_acces' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -45,7 +45,7 @@ class sql_138{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_acces'] ) + '\r\n';
+            where0+=` AND \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_acces'] , 'c_chi_id_acces' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_138= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

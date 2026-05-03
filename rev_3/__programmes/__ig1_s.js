@@ -103,6 +103,10 @@ class __ig1{
         let continuer=true;
         let l01=mat.length;
         let pm1_trouve=false;
+        let les_autorisations_verifiees={
+            "__ig1_s.js" : true,
+            "__fnt1_s.js" : true,
+        };
         for( let i=1 ; i < l01 && continuer === true ; i=mat[i][12] ){
             /* this.ma_trace1('mat[i][1]='+mat[i][1]); */
             if(mat[i][1] === 'pm1' && mat[i][2] === 'f'){
@@ -129,7 +133,7 @@ class __ig1{
                                         if(mat[l][1] !== '' && mat[l][2] === 'f'){
                                             position_f1=l;
                                             let nom_de_la_fonction_a_appeler=mat[position_f1][1];
-                                            this.ma_trace1('\n\nn1="'+n1+'"' , 'nom_de_la_fonction_a_appeler=' , nom_de_la_fonction_a_appeler );
+                                            /* this.ma_trace1('\n\nn1="'+n1+'"' , 'nom_de_la_fonction_a_appeler=' , nom_de_la_fonction_a_appeler ); */
                                             /* this.ma_trace1('objet_des_modules_charges=',this.objet_des_modules_charges); */
                                             let m=null;
                                             let nom_du_fichier='';
@@ -141,67 +145,57 @@ class __ig1{
                                                 nom_du_fichier='./' + n1 + '_s.js';
                                                 cle_pour_json_du_fichier=n1 + '_s.js';
                                             }
-                                            /* this.ma_trace1( "cle_pour_json_du_fichier=" , cle_pour_json_du_fichier ); */
-                                            let verifier_fonction_sous_liste=false;
-                                            if(this.autorisations_verifiees !== true){
-                                                verifier_fonction_sous_liste=false;
-                                                if(cle_pour_json_du_fichier === '__ig1_s.js' || nom_de_la_fonction_a_appeler === 'sous_liste1'){
-                                                    /* petite exception car on appelle ce programme très souvent */
-                                                    this.autorisations_verifiees=true;
-                                                }else{
-                                                    let chemin_des_autorisations='./__fichiers_generes/___autorisations1_pour_acces_' + this.donnees_retournees.chi_id_acces + '_serveur.json';
-                                                    /* this.ma_trace1('chemin_des_autorisations='+chemin_des_autorisations); */
-                                                    try{
-                                                        let contenu_texte=await this.file_get_contents( chemin_des_autorisations );
-                                                        let contenu_json=JSON.parse( contenu_texte );
-                                                        /* this.ma_trace1('contenu_json=',contenu_json); */
-                                                        if(contenu_json.hasOwnProperty( cle_pour_json_du_fichier )){
-                                                            /* this.ma_trace1("trouve " , cle_pour_json_du_fichier , contenu_texte ); */
-                                                            let elem=contenu_json[cle_pour_json_du_fichier];
-                                                            this.ma_trace1("elem[" + cle_pour_json_du_fichier + "]=" , elem );
-                                                            /* this.autorisations_verifiees=true; */
-                                                            /*#
-                                                              // afr pour les sous listes
-                                                              if(contenu_json[cle_pour_json_du_fichier].autorisation_cote_client === 0){
-                                                                  verifier_fonction_sous_liste=true;
-                                                                  this.ma_trace1( 'verifier_fonction_sous_liste=true' );
-                                                              }
-                                                            */
+                                            if(les_autorisations_verifiees.hasOwnProperty(cle_pour_json_du_fichier) && les_autorisations_verifiees[cle_pour_json_du_fichier] === true){
+                                                this.ma_trace1('autorisation OK pour "'+cle_pour_json_du_fichier+'"');
+                                            }else{
+                                                this.ma_trace1('à vérifier pour "'+cle_pour_json_du_fichier+'"');
+                                                let chemin_des_autorisations='./__fichiers_generes/___autorisations1_pour_acces_' + this.donnees_retournees.chi_id_acces + '_serveur.json';
+                                                this.ma_trace1('chemin_des_autorisations='+chemin_des_autorisations);
+                                                try{
+                                                    let contenu_texte=await this.file_get_contents( chemin_des_autorisations );
+                                                    let contenu_json=JSON.parse( contenu_texte );
+                                                    /* this.ma_trace1('contenu_json=',contenu_json); */
+                                                    if(contenu_json.hasOwnProperty( cle_pour_json_du_fichier )){
+                                                        let elem=contenu_json[cle_pour_json_du_fichier];
+                                                        this.ma_trace1("elem[" + cle_pour_json_du_fichier + "]=" , elem );
+                                                        // http://localhost:6003/#pm1(m1(n1(autorisations1),f1(liste1(__num_page(0)))))
+                                                        if(elem.che_pour_sous_liste_autorisation === 1){
+                                                            this.ma_trace1("vérifier nom_de_la_fonction_a_appeler="+nom_de_la_fonction_a_appeler);
+                                                            if(nom_de_la_fonction_a_appeler==='sous_liste1'){
+                                                                this.ma_trace1("autorisation sous liste mise à OK pour "+cle_pour_json_du_fichier);
+                                                                les_autorisations_verifiees[cle_pour_json_du_fichier]=true;
+                                                            }else{
+                                                                this.donnees_retournees.__xsi[__xer].push( '<b>1autorisation non référencée '+m1+'.'+n1+'</b>' + this.nl2() );
+                                                                return({"__xst" : __xer});
+                                                            }
+                                                         
+                                                        }else if(elem.che_pour_sous_liste_autorisation === 0){
                                                             if(elem.cht_condition_js_source === null){
-                                                                this.autorisations_verifiees=true;
+                                                                this.ma_trace1("autorisation sans test de condition mise à OK pour "+cle_pour_json_du_fichier);
+                                                                les_autorisations_verifiees[cle_pour_json_du_fichier]=true;
                                                             }else{
                                                                 let a=eval( elem.cht_condition_js_source );
                                                                 /* this.ma_trace1("this.donnees_retournees.chi_id_projet" , this.donnees_retournees.chi_id_projet , elem.cht_condition_js_source , a); */
                                                                 if(a && a === true){
-                                                                    this.autorisations_verifiees=true;
+                                                                    this.ma_trace1("autorisation avec test de condition mise à OK pour "+cle_pour_json_du_fichier);
+                                                                    les_autorisations_verifiees[cle_pour_json_du_fichier]=true;
                                                                 }else{
                                                                     if(elem.cht_notification_ko_source !== null && elem.cht_notification_ko_source){
                                                                         this.donnees_retournees.__xsi[__xer].push( elem.cht_notification_ko_source );
                                                                     }
+                                                                    this.donnees_retournees.__xsi[__xer].push( 'erreur autorisation serveur 2 ' + this.nl2() );
                                                                     return({"__xst" : __xer});
                                                                 }
                                                             }
-                                                        }else{
-                                                            /*
-                                                              this.ma_trace1("cle_pour_json_du_fichier non trouvé " , cle_pour_json_du_fichier , 'dans' , contenu_texte );
-                                                            */
                                                         }
-                                                    }catch(e){
-                                                        this.donnees_retournees.__xsi[__xdv].push( 'erreur de lecture du fichier des autorisations ' + this.nl2( e ) );
-                                                        this.ma_trace1( 'erreur de lecture du fichier des autorisations ' + this.nl2( e ) );
-                                                        continuer=false;
+                                                    }else{
+                                                        this.donnees_retournees.__xsi[__xer].push( '<b>3:autorisation serveur non référencée '+n1+'</b>' );
+                                                        return({"__xst" : __xer});
                                                     }
+                                                }catch(e){
+                                                    this.donnees_retournees.__xsi[__xer].push( 'erreur autorisation serveur 4 ' + this.nl2(e) );
+                                                    return({"__xst" : __xer});
                                                 }
-                                            }else{
-                                                verifier_fonction_sous_liste=false;
-                                            }
-                                            if(this.autorisations_verifiees === false){
-                                                let tt='';
-                                                tt+='SERVEUR : accès non autorisé à "' + n1 + '" êtes vous connecté ?';
-                                                tt+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(_connexion1),f1(page_connexion1())))">connexion</div>';
-                                                tt+='';
-                                                this.donnees_retournees.__xsi[__xdv].push( tt );
-                                                continuer=false;
                                             }
                                             /* this.ma_trace1('nom_du_fichier='+nom_du_fichier,this.objet_des_modules_charges); */
                                             if(this.objet_des_modules_charges[n1] !== undefined){
@@ -241,17 +235,6 @@ class __ig1{
                                                         continuer=false;
                                                         continue;
                                                     }
-                                                }
-                                            }
-                                            /* this.ma_trace1('continuer=',(continuer?'true':'false')); */
-                                            if(verifier_fonction_sous_liste === true){
-                                                this.ma_trace1( 'n1 = ' + n1 + ' , nom_de_la_fonction_a_appeler=' + nom_de_la_fonction_a_appeler );
-                                                if(nom_de_la_fonction_a_appeler === 'sous_liste1'){
-                                                    /* c'est OK */
-                                                }else{
-                                                    this.donnees_retournees.__xsi[__xer].push( 'SERVEUR : autorisation non déclarée' + this.nl2() );
-                                                    continuer=false;
-                                                    continue;
                                                 }
                                             }
                                             if(continuer === true){
@@ -813,20 +796,21 @@ class __ig1{
         if(e.stack.indexOf( 'API misuse' ) >= 0){
             console.log( '%c\nATTENTION API MISUSE, un await est il manquant quelquepart avant sql_' + numero_de_requete + ' ?\n\n' + e.stack , 'color:red;background-color:yellow;' );
         }
+        let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
+        let le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
+        le_message=le_message.replace( /__programmes\// , '' );
+        le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
         if(this.__deverminage === 1){
             this.donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
         }else if(this.__deverminage === 2){
-            let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
-            let le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
-            le_message=le_message.replace(/__programmes\//,'');
             this.donnees_retournees.__xsi[__xdv].push( le_message );
             /*
               dans le cas d'un appel asynchrone
             */
-            this.ma_trace1( "e468978" , le_message );
+            this.ma_trace1( "e8478324" , le_message );
         }
         if(this.__deverminage > 0){
-            this.donnees_retournees.__xsi[__xer].push( '<b>' + e.message + '</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
+            this.donnees_retournees.__xsi[__xer].push( 'aaaaaaa<b>' + le_message + 'xxxxxxxxx</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
         }
         if(e.stack.indexOf( 'UNIQUE constraint' ) >= 0){
             __xme+='<b>doublon</b>';

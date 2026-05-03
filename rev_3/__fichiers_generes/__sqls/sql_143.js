@@ -28,6 +28,11 @@ class sql_143{
             }else{
                 tableau_champs.push( '`chp_nom_autorisation` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_autorisation'] ) + '\'' );
             }
+            if(par['n_che_pour_sous_liste_autorisation'] === undefined || par['n_che_pour_sous_liste_autorisation'] === '' || par['n_che_pour_sous_liste_autorisation'] === null){
+                tableau_champs.push( '`che_pour_sous_liste_autorisation` = NULL' );
+            }else{
+                tableau_champs.push( '`che_pour_sous_liste_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_che_pour_sous_liste_autorisation'] ) + '' );
+            }
             if(tableau_champs.length === 0){
                 return({
                          /*  */

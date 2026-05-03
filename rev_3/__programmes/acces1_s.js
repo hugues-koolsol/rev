@@ -368,7 +368,7 @@ class acces1{
                 return({"__xst" : __xer});
             }
         }else if(this.__ig1.donnees_retournees.chi_id_utilisateur === 2){
-            if(!( this.__ig1.donnees_recues[__xva]['chi_id_acces'] > 2 || this.__ig1.donnees_recues[__xva]['chi_id_acces'] === 0)){
+            if(!(this.__ig1.donnees_recues[__xva]['chi_id_acces'] > 2 || this.__ig1.donnees_recues[__xva]['chi_id_acces'] === 0)){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'admin peut modifier les menus >2  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
@@ -739,7 +739,10 @@ class acces1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1 &&  __xva_avant['T0.chi_id_acces'] <=2 ){
+        if(this.__ig1.donnees_retournees._CA_ > 2
+               && this.__ig1.donnees_retournees.chi_id_utilisateur > 1
+               && __xva_avant['T0.chi_id_acces'] <= 2
+        ){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ' vous ne pouvez pas modifier l\'accès (' + __xva_avant['T0.chi_id_acces'] + ')' );
             return({"__xst" : __xer});
         }

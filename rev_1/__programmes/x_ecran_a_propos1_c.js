@@ -14,7 +14,7 @@ class x_ecran_a_propos1{
     entree_module( mat , d ){
         let o1='';
         o1+='<h1>à propos</h1>';
-        o1+='<p>blo blo blo</p>';
+        o1+='<p style="text-align:center;">pô pô pô pôôô ! </p>';
         this.__ig1.maj_contenu_principal( o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'à propos' );

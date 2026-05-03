@@ -1983,7 +1983,7 @@ class x_ecran_concevoir_une_requete1{
             }
         }
         /*  */
-        console.log( '=========================compiler_en_ligne=' , this.#obj_webs );
+        /* console.log( '=========================compiler_en_ligne=' , this.#obj_webs ); */
         let donnees_recues_a_transmettre={
             "__xva" : {
                 "les_bases_du_projet" : le_message_du_serveur.__xva.les_bases_du_projet ,

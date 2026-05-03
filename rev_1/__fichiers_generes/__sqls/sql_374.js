@@ -29,17 +29,17 @@ class sql_374{
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_projet`' , par['T0_chi_id_projet'] );
         }
         if(par.hasOwnProperty( 'T0_chp_nom_projet' ) && par['T0_chp_nom_projet'] !== ''){
-            where0+=` AND \`T0\`.\`chp_nom_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_projet'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chp_nom_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_projet'] , 'T0_chp_nom_projet' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_cht_commentaire_projet' ) && par['T0_cht_commentaire_projet'] !== ''){
-            where0+=` AND \`T0\`.\`cht_commentaire_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_commentaire_projet'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`cht_commentaire_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_commentaire_projet'] , 'T0_cht_commentaire_projet' ) + '\r\n';
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_projet\` ASC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_374 sql0=',sql0); */
         let lignes=[];

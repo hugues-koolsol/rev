@@ -16,17 +16,17 @@ class sql_362{
             if(par['n_chp_commentaire_basedd'] === undefined || par['n_chp_commentaire_basedd'] === '' || par['n_chp_commentaire_basedd'] === null){
                 tableau_champs.push( '`chp_commentaire_basedd` = NULL' );
             }else{
-                tableau_champs.push( '`chp_commentaire_basedd` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_commentaire_basedd'] ) + '\'' );
+                tableau_champs.push( '`chp_commentaire_basedd` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_commentaire_basedd'] , 'n_chp_commentaire_basedd' ) + '\'' );
             }
             if(par['n_chp_rev_travail_basedd'] === undefined || par['n_chp_rev_travail_basedd'] === '' || par['n_chp_rev_travail_basedd'] === null){
                 tableau_champs.push( '`chp_rev_travail_basedd` = NULL' );
             }else{
-                tableau_champs.push( '`chp_rev_travail_basedd` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_rev_travail_basedd'] ) + '\'' );
+                tableau_champs.push( '`chp_rev_travail_basedd` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_rev_travail_basedd'] , 'n_chp_rev_travail_basedd' ) + '\'' );
             }
             if(par['n_chp_fournisseur_basedd'] === undefined || par['n_chp_fournisseur_basedd'] === '' || par['n_chp_fournisseur_basedd'] === null){
                 tableau_champs.push( '`chp_fournisseur_basedd` = NULL' );
             }else{
-                tableau_champs.push( '`chp_fournisseur_basedd` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_fournisseur_basedd'] ) + '\'' );
+                tableau_champs.push( '`chp_fournisseur_basedd` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_fournisseur_basedd'] , 'n_chp_fournisseur_basedd' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -40,7 +40,7 @@ class sql_362{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_basedd\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_basedd'] ) + '\r\n';
+            where0+=` AND \`chi_id_basedd\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_basedd'] , 'c_chi_id_basedd' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_362= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
