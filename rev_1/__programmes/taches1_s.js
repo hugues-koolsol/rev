@@ -503,17 +503,19 @@ class taches1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "texte" doit être renseignée ' );
             return({"__xst" : __xer});
         }
-        if(!form.hasOwnProperty( 'chp_priorite_tache' )
-               || form['chp_priorite_tache'] === null
-               || !this.__ig1.est_num( form['chp_priorite_tache'] )
-        ){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite" doit être renseignée ' );
-            return({"__xst" : __xer});
-        }
-        const __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , "priorite" );
-        if(__test_2_1[__xst] !== __xsu){
-            return({"__xst" : __xer});
-        }
+        /*#
+          if(!form.hasOwnProperty( 'chp_priorite_tache' )
+                 || form['chp_priorite_tache'] === null
+                 || !this.__ig1.est_num( form['chp_priorite_tache'] )
+          ){
+              this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite" doit être renseignée ' );
+              return({"__xst" : __xer});
+          }
+          const __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , "priorite" );
+          if(__test_2_1[__xst] !== __xsu){
+              return({"__xst" : __xer});
+          }
+        */
         let donnees_sql={
             "donnees" : [{
                         "chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,

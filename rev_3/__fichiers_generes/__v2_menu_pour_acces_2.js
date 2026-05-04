@@ -21,6 +21,7 @@ class v2_menu_pour_acces_2{
         les_sous_menus[0]+=`<li><div  id="menu_6"   data-id_auto="29" data-id_menu="15" class="rev_bouton"  title="accès" data-rev_click="m1(n1(acces1),f1(entree_module()))">accès</div></li>`;
         les_sous_menus[0]+=`<li><div  id="menu_7"   data-id_auto="31" data-id_menu="16" class="rev_bouton"  title="autorisations" data-rev_click="m1(n1(autorisations1),f1(entree_module()))">autorisations</div></li>`;
         les_sous_menus[0]+=`<li><div  id="menu_8"   data-id_auto="33" data-id_menu="18" class="rev_bouton"  title="menus" data-rev_click="m1(n1(menus1),f1(entree_module()))">menus</div></li>`;
+        les_sous_menus[0]+=`<li><div  id="menu_9"   data-id_auto="36" data-id_menu="19" class="rev_bouton"  title="utilisateurs" data-rev_click="m1(n1(utilisateurs1),f1(entree_module()))">utilisateurs</div></li>`;
         /* niveau 0 */
         if(les_sous_menus[0] !== ''){
             les_menu1+='<li><div data-separateur="0" data-libelle_noeud_menu1="0">admin</div>';

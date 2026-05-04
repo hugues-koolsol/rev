@@ -34,7 +34,7 @@ class sql_135{
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_acces`' , par['T0_chi_id_acces'] );
         }
         if(par.hasOwnProperty( 'T0_chp_nom_acces' ) && par['T0_chp_nom_acces'] !== ''){
-            where0+=` AND \`T0\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_acces'] ) + '\r\n';
+            where0+=` AND \`T0\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_acces'] , 'T0_chp_nom_acces' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_che_actif_acces' ) && par['T0_che_actif_acces'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_actif_acces`' , par['T0_che_actif_acces'] );
@@ -43,20 +43,23 @@ class sql_135{
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_groupe_acces`' , par['T0_chx_groupe_acces'] );
         }
         if(par.hasOwnProperty( 'T1_chp_nom_groupe' ) && par['T1_chp_nom_groupe'] !== ''){
-            where0+=` AND \`T1\`.\`chp_nom_groupe\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_groupe'] ) + '\r\n';
+            where0+=` AND \`T1\`.\`chp_nom_groupe\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_groupe'] , 'T1_chp_nom_groupe' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_metier_acces' ) && par['T0_chx_metier_acces'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_metier_acces`' , par['T0_chx_metier_acces'] );
         }
         if(par.hasOwnProperty( 'T2_chp_nom_metier' ) && par['T2_chp_nom_metier'] !== ''){
-            where0+=` AND \`T2\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T2_chp_nom_metier'] ) + '\r\n';
+            where0+=` AND \`T2\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T2_chp_nom_metier'] , 'T2_chp_nom_metier' ) + '\r\n';
+        }
+        if(par.hasOwnProperty( 'acces_pas_dans' ) && par['acces_pas_dans'] !== ''){
+            where0+=` AND \`T0\`.\`chi_id_acces\` NOT IN ` + par['acces_pas_dans'] + '\r\n';
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_acces\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_135 sql0=',sql0); */
         let lignes=[];

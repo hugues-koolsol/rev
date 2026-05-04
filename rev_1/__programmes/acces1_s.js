@@ -1262,6 +1262,10 @@ class acces1{
                 criteres135[i]=formulaire[i];
             }
         }
+        criteres135['acces_pas_dans']='(-1)';
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            criteres135['acces_pas_dans']='(1,2)';
+        }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -1281,7 +1285,8 @@ class acces1{
            AND `T0`.`chx_groupe_acces` = :T0_chx_groupe_acces
            AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
            AND `T0`.`chx_metier_acces` = :T0_chx_metier_acces
-           AND `T2`.`chp_nom_metier` LIKE :T2_chp_nom_metier) 
+           AND `T2`.`chp_nom_metier` LIKE :T2_chp_nom_metier
+           AND `T0`.`chi_id_acces` NOT IN :acces_pas_dans) 
         ORDER BY `T0`.`chi_id_acces` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -1310,7 +1315,8 @@ class acces1{
                AND `T0`.`chx_groupe_acces` = :T0_chx_groupe_acces
                AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
                AND `T0`.`chx_metier_acces` = :T0_chx_metier_acces
-               AND `T2`.`chp_nom_metier` LIKE :T2_chp_nom_metier) 
+               AND `T2`.`chp_nom_metier` LIKE :T2_chp_nom_metier
+               AND `T0`.`chi_id_acces` NOT IN :acces_pas_dans) 
             ORDER BY `T0`.`chi_id_acces` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;

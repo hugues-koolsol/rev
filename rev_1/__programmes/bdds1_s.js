@@ -537,18 +537,7 @@ class bdds1{
             }
             await db.close();
             if(asynchrone === true){
-                let aa={
-                    "_CA_" : this.__ig1._CA_ ,
-                    "__xst" : 1 ,
-                    "__xva" : {} ,
-                    "__xac" : "m1(n1(__ig1),f1(affiche_les_messages()))" ,
-                    "__xsi" : {0 : [] ,1 : ['le dump a été effectué en arrière plan'] ,2 : [] ,3 : [] ,4 : []} ,
-                    "chi_id_acces" : this.__ig1.chi_id_acces ,
-                    "chi_id_utilisateur" : this.__ig1.chi_id_utilisateur ,
-                    "chi_id_projet" : this.__ig1.chi_id_projet ,
-                    "__version" : this.__ig1.__version
-                };
-                this.__ig1.__socket.send( JSON.stringify( aa ) );
+                this.__ig1.envoyer_un_message_a_l_utilisateur( {"__xst" : __xsu ,"__xme" : 'le dump de la base "' + chi_id_basedd + '" a été réalisé'} );
             }
             this.__ig1.donnees_retournees.__xsi[__xsu].push( ' le dump de la base "' + chi_id_basedd + '" a été réalisé [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xsu});
@@ -558,7 +547,9 @@ class bdds1{
                 if(this.__ig1.__deverminage > 0){
                     le_message+=this.formatter_erreur_catch( e );
                 }
-                return(this.signaler_asynchrone( {"__xst" : __xer ,"__xme" : le_message} ));
+                if(asynchrone === true){
+                    this.__ig1.envoyer_un_message_a_l_utilisateur( {"__xst" : __xer ,"__xme" : le_message} );
+                }
             }
             this.__ig1.ma_trace1( "e.stack" , e.stack );
             return({"__xst" : __xer});
@@ -572,27 +563,6 @@ class bdds1{
         let le_message='pile erreur 1=\n' + e.stack.replace( repl0 , '' ).replace( /https\:\/\/deno/g , 'deno' ).replace( /file\:\/\/\/\//g , '' );
         le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
         return('<pre>' + le_message + '</pre>');
-    }
-    /*
-      =============================================================================================================
-    */
-    signaler_asynchrone( obj ){
-        let aa={
-            "_CA_" : this.__ig1._CA_ ,
-            "__xst" : 1 ,
-            "__xva" : {} ,
-            "__xac" : "m1(n1(__ig1),f1(affiche_les_messages()))" ,
-            "__xsi" : {0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
-            "chi_id_acces" : this.__ig1.chi_id_acces ,
-            "chi_id_utilisateur" : this.__ig1.chi_id_utilisateur ,
-            "chi_id_projet" : this.__ig1.chi_id_projet ,
-            "__version" : this.__ig1.__version
-        };
-        if(obj.hasOwnProperty( '__xme' ) && obj.__xme !== ''){
-            aa.__xsi[obj.__xst].push( obj.__xme );
-        }
-        this.__ig1.__socket.send( JSON.stringify( aa ) );
-        return obj;
     }
     /*
       =============================================================================================================

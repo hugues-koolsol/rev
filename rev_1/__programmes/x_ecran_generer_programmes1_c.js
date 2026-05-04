@@ -2476,17 +2476,21 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='                \'' + champ_primaire + '\' : form[\'' + champ_primaire + '\'],\r\n';
             /* compléments sélectionner */
             var deja_pris=[champ_primaire];
-            for(let i in liste_des_champs_condition_select){
-                if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_pere_est_en_session1 === true
-                       && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
+            for(let i in liste_des_champs_condition_delete){
+                if(liste_des_champs_condition_delete[i].champ_dans_la_base.champ_pere_est_en_session1 === true
+                       && !deja_pris.includes( liste_des_champs_condition_delete[i].nom_du_champ )
                 ){
-                    src_serveur_js2+='                \'' + liste_des_champs_condition_select[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
-                    deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
-                }else if(liste_des_champs_condition_select[i].champ_dans_la_base.champ_est_en_session1 === true
-                       && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
+                    if(ne_pas_prendre_les_valeurs_en_session === true){
+                        src_serveur_js2+='                \'' + liste_des_champs_condition_delete[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_delete[i].nom_du_champ + '\'] ,\r\n';
+                    }else{
+                        src_serveur_js2+='                \'' + liste_des_champs_condition_delete[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_delete[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
+                    }
+                    deja_pris.push( liste_des_champs_condition_delete[i].nom_du_champ );
+                }else if(liste_des_champs_condition_delete[i].champ_dans_la_base.champ_est_en_session1 === true
+                       && !deja_pris.includes( liste_des_champs_condition_delete[i].nom_du_champ )
                 ){
-                    src_serveur_js2+='                \'' + liste_des_champs_condition_select[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
-                    deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
+                    src_serveur_js2+='                \'' + liste_des_champs_condition_delete[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_delete[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
+                    deja_pris.push( liste_des_champs_condition_delete[i].nom_du_champ );
                 }
             }
             src_serveur_js2+='        };\r\n';
@@ -2991,7 +2995,11 @@ class x_ecran_generer_programmes1{
                 ){
                 }else if(liste_des_champs_insert[i].champ_dans_la_base.meta.est_en_session === '1'){
                     if(liste_des_champs_insert[i].champ_dans_la_base.meta.nom_en_session !== ''){
-                        src_serveur_js2+='                    \'' + nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_insert[i].champ_dans_la_base.meta.nom_en_session + ',\n';
+                        if(ne_pas_prendre_les_valeurs_en_session === true){
+                            src_serveur_js2+='                    \'' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
+                        }else{
+                            src_serveur_js2+='                    \'' + nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_insert[i].champ_dans_la_base.meta.nom_en_session + ' ,\n';
+                        }
                     }else{
                         debugger;
                     }

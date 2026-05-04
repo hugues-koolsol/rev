@@ -549,7 +549,7 @@ class acces1{
             SELECT 
             `T1`.`chx_source_autorisation` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
             `T0`.`cht_initialisation_menu` , `T0`.`chi_id_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_js_menu` , `T0`.`chx_autorisation_menu` , 
-            `T3`.`cht_condition_js_source` , `T0`.`cht_condition_js_menu`
+            `T3`.`cht_condition_js_source`
              FROM b1.tbl_menus T0 , 
                   b1.tbl_autorisations T1
              LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
@@ -1262,6 +1262,12 @@ class acces1{
                 criteres135[i]=formulaire[i];
             }
         }
+        
+        criteres135['acces_pas_dans']='(-1)';
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            criteres135['acces_pas_dans']='(1,2)';
+        }
+        
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }

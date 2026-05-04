@@ -116,7 +116,7 @@ class taches2{
             this.__ig1.__xsi[__xer].push( 'la valeur pour "priorite" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __test_1_1=this.__ig1.__fnt1.entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , 'priorite' );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , 'priorite' );
         if(__test_1_1[__xst] !== __xsu){
             this.__ig1.__xsi[__xer].push( 'erreur sur le contenu de "priorite" [' + this.__ig1.nl2() + ']' );
             this.__ig1.donnees_retournees.__xst=__xer;
@@ -343,8 +343,10 @@ class taches2{
         }
         let criteres_114={
              /*  */
-            "chi_id_tache" : form['chi_id_tache']
+            "chi_id_tache" : form['chi_id_tache'] ,
+            "chx_utilisateur_tache" : form['chx_utilisateur_tache']
         };
+        console.log("criteres_114",criteres_114);
         let tt114=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_taches
@@ -430,7 +432,7 @@ class taches2{
             this.__ig1.__xsi[__xer].push( 'la valeur pour "priorite" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let __test_2_1=this.__ig1.__fnt1.entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , 'priorite' );
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , 'priorite' );
         if(__test_2_1[__xst] !== __xsu){
             this.__ig1.__xsi[__xer].push( 'erreur sur le contenu de  "priorite" [' + this.__ig1.nl2() + ']' );
             this.__ig1.donnees_retournees.__xst=__xer;
@@ -443,7 +445,7 @@ class taches2{
         }
         let donnees_sql={
             "donnees" : [{
-                        "chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
+                        "chx_utilisateur_tache" : form['chx_utilisateur_tache'] ,
                         "chp_texte_tache" : form['chp_texte_tache'] ,
                         "chp_priorite_tache" : form['chp_priorite_tache']
                     }]

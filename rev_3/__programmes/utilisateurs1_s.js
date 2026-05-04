@@ -400,7 +400,9 @@ class utilisateurs1{
         /*sql_inclure_fin*/ 123 , criteres_123 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt123[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
+            if(this.__ig1.__deverminage > 1){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
+            }
             return({"__xst" : __xer});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt121[__xva][0] , __db1 );
@@ -570,6 +572,11 @@ class utilisateurs1{
                 criteres119[i]=formulaire[i];
             }
         }
+        criteres119['acces_pas_dans']='(-1)';
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            criteres119['acces_pas_dans']='(1,2)';
+        }
+        
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }

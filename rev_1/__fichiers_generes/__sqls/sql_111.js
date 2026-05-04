@@ -10,6 +10,9 @@ class sql_111{
       =============================================================================================================
     */
     async sql( par ){
+     
+     
+     
         let sql0=`
       INSERT  INTO \`tbl_taches\`(
          \`chx_utilisateur_tache\` , 
@@ -22,6 +25,19 @@ class sql_111{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+
+                if(
+                  !par.donnees[i].hasOwnProperty('chp_priorite_tache')
+                  || par.donnees[i]['chp_priorite_tache'] === null
+                  || !this.__ig1.est_num( par.donnees[i]['chp_priorite_tache'] )
+                 ){
+                    return({"__xst" : __xer , __xme : 'erreur sur le champ priorité 1' });
+                }
+                const __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , par.donnees[i]['chp_priorite_tache'] , "priorite" );
+                if(__test_2_1[__xst] !== __xsu){
+                    return(__test_2_1);
+                }
+
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

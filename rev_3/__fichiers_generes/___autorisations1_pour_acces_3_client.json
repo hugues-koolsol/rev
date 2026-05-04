@@ -3,30 +3,35 @@
     "id_autorisation": 19,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "taches1_c.js": {
     "id_autorisation": 34,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "_connexion1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "__ig1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_a_propos1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,
     "cht_condition_js_source": null,
-    "cht_notification_ko_source": null
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
   }
 }

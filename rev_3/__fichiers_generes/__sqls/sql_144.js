@@ -10,14 +10,14 @@ class sql_144{
       =============================================================================================================
     */
     async sql( par ){
+        let sql0='';
         let obj1=await this.__ig1.tester_les_dependances1( {"table_parente" : 'tbl_autorisations' ,"champ_parent" : 'chi_id_autorisation' ,"id_enregistrement" : par['chi_id_autorisation'] ,"__db1" : this.__db1} );
         if(obj1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xva" : {} ,"__xme" : 'cet enregistrement possède des dépendants et ne peut être supprimé' ,"sql0" : sql0});
         }
-        let sql0='';
         try{
             sql0=`DELETE FROM tbl_autorisations
-              WHERE \`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_autorisation'] ) + ` ;
+              WHERE \`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_autorisation'] , 'chi_id_autorisation' ) + ` ;
             `;
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );

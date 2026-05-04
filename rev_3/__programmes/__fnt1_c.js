@@ -1644,6 +1644,35 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    effacer_la_selection( mat , ind ){
+        let l01=mat.length;
+        let zone_source='';
+        for( let i=ind + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && mat[i][1] === 'zone_source'){
+                if(mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    zone_source=mat[i + 1][1];
+                }
+            }
+        }
+        if(zone_source !== ''){
+            this.__ig1.zone_d_edition_en_cours=zone_source;
+            let aa=document.getElementById( zone_source );
+            if(aa.selectionStart === aa.selectionEnd){
+                this.__ig1.affiche_les_messages({"__xst" : __xsu ,"__xme" : 'zone de sélection vide'});
+                return({"__xst" : __xsu});
+            }else{
+                let debut=aa.value.substr( 0 , aa.selectionStart );
+                let fin=aa.value.substr( aa.selectionEnd );
+                aa.value=debut+fin;
+                return({"__xst" : __xsu});
+            }
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
     copier_le_contenu_sélectionné1( mat , ind ){
         let l01=mat.length;
         let zone_source='';
@@ -1666,8 +1695,7 @@ class __fnt1{
             };
             let aa=document.getElementById( zone_source );
             if(aa.selectionStart === aa.selectionEnd){
-                this.__ig1.ajoute_message( {"__xst" : __xsu ,"__xme" : 'zone de sélection vide '} );
-                this.__ig1.affiche_les_messages();
+                this.__ig1.affiche_les_messages({"__xst" : __xsu ,"__xme" : 'zone de sélection vide'});
                 return({"__xst" : __xsu});
             }else{
                 let bb=document.getElementById( zone_source ).value.substr( aa.selectionStart , aa.selectionEnd - aa.selectionStart );
@@ -1970,8 +1998,9 @@ class __fnt1{
         o1+=' <div class="rev_b_svg yy__0  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
         o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>\r\n';
         o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>\r\n';
-        o1+=' <div class="rev_b_svg yy__xsi_2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>\r\n';
-        o1+=' <div class="rev_bouton yy__xsi_1 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</div>\r\n';
+        o1+=' <div class="rev_b_svg yy__0 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>\r\n';
+        o1+=' <div class="rev_bouton yy__1 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</div>\r\n';
+        o1+=' <div class="rev_bouton yy__2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(effacer_la_selection(zone_source(' + nom_de_la_zone + '))))" title="effacer la sélection">' + this.__ig1.les_svg.clav_supp + '</div>\r\n';
         return o1;
     }
     /*

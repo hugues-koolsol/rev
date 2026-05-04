@@ -33,6 +33,9 @@ class sql_124{
         if(par.hasOwnProperty( 'T0_chp_nom_metier' ) && par['T0_chp_nom_metier'] !== ''){
             where0+=` AND \`T0\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_metier'] , 'T0_chp_nom_metier' ) + '\r\n';
         }
+        if(par.hasOwnProperty( 'metier_mini' ) && par['metier_mini'] !== ''){
+            where0+=` AND \`T0\`.\`chi_id_metier\` >= ` + this.__ig1.__fnt1.sq1( par['metier_mini'] , 'metier_mini' ) + '\r\n';
+        }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_metier\` DESC`;

@@ -121,7 +121,7 @@ class taches2{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_1_1=this.__ig1.__fnt1.entier_compris_entre( 0 , 99 , fo1['chp_priorite_tache'] , 'priorite' );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1['chp_priorite_tache'] , 'priorite' );
         if(__test_1_1.__xst !== __xsu){
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -355,7 +355,7 @@ class taches2{
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=this.__ig1.__fnt1.entier_compris_entre( 0 , 99 , fo1['chp_priorite_tache'] , 'priorite' );
+        var __test=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1['chp_priorite_tache'] , 'priorite' );
         if(__test.__xst !== __xsu){
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();

@@ -13,7 +13,7 @@ class sql_146{
         const champs0=`
           \`T0\`.\`chi_id_menu\` , \`T0\`.\`chp_titre_menu\` , \`T0\`.\`chx_autorisation_menu\` , \`T0\`.\`chp_methode_menu\` , \`T0\`.\`cht_libelle_menu\` , 
           \`T0\`.\`cht_initialisation_menu\` , \`T0\`.\`cht_condition_menu\` , \`T1\`.\`chx_acces_autorisation\` , \`T1\`.\`chx_source_autorisation\` , \`T2\`.\`chp_nom_acces\` , 
-          \`T3\`.\`chp_nom_source\` , \`T3\`.\`che_binaire_source\` , \`T0\`.\`cht_condition_js_menu\` , \`T1\`.\`chp_nom_autorisation\`
+          \`T3\`.\`chp_nom_source\` , \`T3\`.\`che_binaire_source\` , \`T0\`.\`cht_condition_js_menu\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -25,7 +25,7 @@ class sql_146{
            LEFT JOIN tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_menu\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_menu'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_menu\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_menu'] , 'T0_chi_id_menu' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_146 sql0=',sql0); */
         let lignes=[];
@@ -51,8 +51,7 @@ class sql_146{
                     "T2.chp_nom_acces" : col[9] ,
                     "T3.chp_nom_source" : col[10] ,
                     "T3.che_binaire_source" : col[11] ,
-                    "T0.cht_condition_js_menu" : col[12] ,
-                    "T1.chp_nom_autorisation" : col[13]
+                    "T0.cht_condition_js_menu" : col[12]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

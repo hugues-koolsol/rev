@@ -37,8 +37,8 @@
   "x_ecran_rev_vers_js1_c.js": {
     "id_autorisation": 38,
     "autorisation_cote_client": 0,
-    "cht_condition_js_source": "this.chi_id_projet > 0;",
-    "cht_notification_ko_source": "vous devez choisir un projet",
+    "cht_condition_js_source": "this.chi_id_utilisateur > 0;",
+    "cht_notification_ko_source": "vous devez être connecté",
     "che_pour_sous_liste_autorisation": 0
   },
   "x_ecran_rev_vers_matrice1_c.js": {

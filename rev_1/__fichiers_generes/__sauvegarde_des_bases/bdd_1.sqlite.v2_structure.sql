@@ -9,7 +9,7 @@ CREATE TABLE `tbl_projets`(
    table('tbl_projets'),
    genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('projet'),
    distinction_pour_liste('liste des projets'),
-   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(3)'),transform_base_sur_svg(translate(64,378))) 
+   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(3)'),transform_base_sur_svg(translate(11,344))) 
 */
     
             /*
@@ -138,7 +138,7 @@ CREATE TABLE `tbl_groupes`(
             genre(8)
             )
             */
-             `chx_parent_groupe` INTEGER REFERENCES tbl_groupes(chi_id_groupe)  ON UPDATE CASCADE DEFAULT  NULL
+             `chx_parent_groupe` INTEGER REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE DEFAULT  NULL
     );
 
 
@@ -191,7 +191,7 @@ CREATE TABLE `tbl_metiers`(
             genre(8)
             )
             */
-             `chx_parent_metier` INTEGER REFERENCES tbl_metiers(chi_id_metier)  ON UPDATE CASCADE DEFAULT  NULL
+             `chx_parent_metier` INTEGER REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE DEFAULT  NULL
     );
 
 
@@ -207,7 +207,7 @@ CREATE TABLE `tbl_acces`(
    table('tbl_acces'),
    genre_meta(table_de_base),rang_de_la_table(30),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
-   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(218,170))) 
+   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(254,174))) 
 */
     
             /*
@@ -244,7 +244,7 @@ CREATE TABLE `tbl_acces`(
             genre(4)
             )
             */
-             `chx_groupe_acces` INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe)  ON UPDATE CASCADE
+             `chx_groupe_acces` INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE
     ,
     
             /*
@@ -256,7 +256,7 @@ CREATE TABLE `tbl_acces`(
             genre(4)
             )
             */
-             `chx_metier_acces` INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier)  ON UPDATE CASCADE
+             `chx_metier_acces` INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE
     ,
     
             /*
@@ -334,7 +334,7 @@ CREATE TABLE `tbl_dossiers`(
             refe_parent_gauche(1)
             )
             */
-             `chx_parent_dossier` INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier)  ON UPDATE CASCADE DEFAULT  '1'
+             `chx_parent_dossier` INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier) ON UPDATE CASCADE DEFAULT  '1'
     ,
     
             /*
@@ -462,7 +462,7 @@ CREATE TABLE `tbl_sources`(
             genre(4)
             )
             */
-             `chx_dossier_id_source` INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier)  ON UPDATE CASCADE
+             `chx_dossier_id_source` INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier) ON UPDATE CASCADE
     ,
     
             /*
@@ -595,26 +595,13 @@ CREATE TABLE `tbl_autorisations`(
             /*
             meta(
             genre_meta(champ),
-            nom_du_champ('chp_nom_autorisation'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
-            typologie(chp),
-            genre(17),
-            est_libelle_lien(1)
-            )
-            */
-             `chp_nom_autorisation` VARCHAR(255) NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
             nom_du_champ('chx_source_autorisation'),
             nom_bref_du_champ('source'),abrege_du_champ('source'),
             typologie(chx),
             genre(4)
             )
             */
-             `chx_source_autorisation` INTEGER NOT NULL REFERENCES tbl_sources(chi_id_source)  ON UPDATE CASCADE
+             `chx_source_autorisation` INTEGER NOT NULL REFERENCES tbl_sources(chi_id_source) ON UPDATE CASCADE
     ,
     
             /*
@@ -626,8 +613,20 @@ CREATE TABLE `tbl_autorisations`(
             genre(8)
             )
             */
-             `chx_acces_autorisation` INTEGER REFERENCES tbl_acces(chi_id_acces)  ON UPDATE CASCADE DEFAULT  NULL
-    , `che_pour_sous_liste_autorisation` INTEGER NOT NULL DEFAULT  0);
+             `chx_acces_autorisation` INTEGER REFERENCES tbl_acces(chi_id_acces) ON UPDATE CASCADE DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_pour_sous_liste_autorisation'),
+            nom_bref_du_champ('pour sous liste'),abrege_du_champ('pour accès sous liste'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_pour_sous_liste_autorisation` INTEGER NOT NULL DEFAULT  0
+    );
 
 
 
@@ -691,7 +690,7 @@ CREATE TABLE `tbl_menus`(
             genre(4)
             )
             */
-             `chx_autorisation_menu` INTEGER NOT NULL REFERENCES tbl_autorisations(chi_id_autorisation)  ON UPDATE CASCADE
+             `chx_autorisation_menu` INTEGER NOT NULL REFERENCES tbl_autorisations(chi_id_autorisation) ON UPDATE CASCADE
     ,
     
             /*
@@ -755,7 +754,7 @@ CREATE TABLE `tbl_utilisateurs`(
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),rang_de_la_table(80),permet_la_gestion_de('utilisateur'),
    distinction_pour_liste('liste des utilisateurs'),
-   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(481,312))) 
+   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(490,341))) 
 */
     
             /*
@@ -828,7 +827,7 @@ CREATE TABLE `tbl_utilisateurs`(
             genre(4)
             )
             */
-             `chx_acces_utilisateur` INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces)  ON UPDATE CASCADE
+             `chx_acces_utilisateur` INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces) ON UPDATE CASCADE
     ,
     
             /*
@@ -919,7 +918,7 @@ CREATE TABLE `tbl_taches`(
             genre(18),est_en_session(1),nom_en_session('chi_id_utilisateur')
             )
             */
-             `chx_utilisateur_tache` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur)  ON UPDATE CASCADE
+             `chx_utilisateur_tache` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) ON UPDATE CASCADE
     ,
     
             /*
@@ -1434,7 +1433,7 @@ CREATE TABLE `tbl_requetes`(
    table('tbl_requetes'),
    genre_meta(table_de_base),rang_de_la_table(120),permet_la_gestion_de('requete'),
    distinction_pour_liste('liste des requetes'),
-   distinction_pour_isad('d\'une requete'),transform_base_sur_svg(translate(1040,113))) 
+   distinction_pour_isad('d\'une requete'),transform_base_sur_svg(translate(1052,19))) 
 */
     
             /*

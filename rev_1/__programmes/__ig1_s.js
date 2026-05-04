@@ -800,7 +800,9 @@ class __ig1{
         let le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
         le_message=le_message.replace( /__programmes\// , '' );
         le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
-        if(this.__deverminage === 1){
+        if(this.__deverminage === 0){
+            this.donnees_retournees.__xsi[__xer].push( 'Il y a une erreur dans le programme, veuillez appeler la maintenance' );
+        }else if(this.__deverminage === 1){
             this.donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
         }else if(this.__deverminage === 2){
             this.donnees_retournees.__xsi[__xdv].push( le_message );
@@ -1124,27 +1126,27 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    envoyer_un_message_a_l_utilisateur( le_message ){
+    envoyer_un_message_a_l_utilisateur( obj_le_message ){
         let aa={
             "_CA_" : this._CA_ ,
             "__xst" : 1 ,
-            "__xva" : {} ,
-            "__xac" : "m1(n1(__ig1),f1(affiche_les_messages()))" ,
-            "__xsi" : {0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
-            "chi_id_acces" : this.chi_id_acces ,
-            "chi_id_utilisateur" : this.chi_id_utilisateur ,
-            "chi_id_projet" : this.chi_id_projet ,
+            "__xva" : obj_le_message.hasOwnProperty( '__xva' ) ? ( obj_le_message ) : ( {} ) ,
+            "__xac" : "" ,
+            "__xsi" :  /* m1(n1(__ig1),f1(affiche_les_messages())) */{0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
+            "chi_id_acces" : this.donnees_retournees.chi_id_acces ,
+            "chi_id_utilisateur" : this.donnees_retournees.chi_id_utilisateur ,
+            "chi_id_projet" : this.donnees_retournees.chi_id_projet ,
             "__version" : this.__version
         };
-        if(le_message.hasOwnProperty( '__xme' )
-               && le_message.__xme !== ''
-               && le_message.hasOwnProperty( '__xst' )
-               && le_message.__xst >= 0
-               && le_message.__xst <= 4
+        if(obj_le_message.hasOwnProperty( '__xme' )
+               && obj_le_message.__xme !== ''
+               && obj_le_message.hasOwnProperty( '__xst' )
+               && obj_le_message.__xst >= 0
+               && obj_le_message.__xst <= 4
         ){
-            aa.__xsi[le_message.__xst].push( le_message.__xme );
+            aa.__xsi[obj_le_message.__xst].push( obj_le_message.__xme );
         }else{
-            aa.__xsi[__xer].push( 'un message incomplet vous est envoyé par le serveur ' + JSON.stringify( le_message ) );
+            aa.__xsi[__xer].push( 'un message incomplet vous est envoyé par le serveur ' + JSON.stringify( obj_le_message ) );
         }
         try{
             this.__socket.send( JSON.stringify( aa ) );

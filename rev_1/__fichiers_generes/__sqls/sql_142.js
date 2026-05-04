@@ -14,7 +14,6 @@ class sql_142{
       INSERT  INTO \`tbl_autorisations\`(
          \`chx_acces_autorisation\` , 
          \`chx_source_autorisation\` , 
-         \`chp_nom_autorisation\` , 
          \`che_pour_sous_liste_autorisation\`
       ) VALUES 
         `;
@@ -27,7 +26,6 @@ class sql_142{
                 liste_des_valeurs+='(';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_acces_autorisation'] , 'chx_acces_autorisation' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_source_autorisation'] , 'chx_source_autorisation' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_autorisation'] , 'chp_nom_autorisation' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_pour_sous_liste_autorisation'] , 'che_pour_sous_liste_autorisation' ) + '';
                 liste_des_valeurs+=')';
             }

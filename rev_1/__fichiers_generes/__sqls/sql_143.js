@@ -23,11 +23,6 @@ class sql_143{
             }else{
                 tableau_champs.push( '`chx_source_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_chx_source_autorisation'] , 'n_chx_source_autorisation' ) + '' );
             }
-            if(par['n_chp_nom_autorisation'] === undefined || par['n_chp_nom_autorisation'] === '' || par['n_chp_nom_autorisation'] === null){
-                tableau_champs.push( '`chp_nom_autorisation` = NULL' );
-            }else{
-                tableau_champs.push( '`chp_nom_autorisation` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_autorisation'] , 'n_chp_nom_autorisation' ) + '\'' );
-            }
             if(par['n_che_pour_sous_liste_autorisation'] === undefined || par['n_che_pour_sous_liste_autorisation'] === '' || par['n_che_pour_sous_liste_autorisation'] === null){
                 tableau_champs.push( '`che_pour_sous_liste_autorisation` = NULL' );
             }else{

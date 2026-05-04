@@ -36,8 +36,8 @@ class menus1{
         let tt141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
-        `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
+        `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -110,15 +110,14 @@ class menus1{
             "T3.chp_nom_source": "x_ecran_rev_vers_php1_c.js",
             "T3.che_binaire_source": 0,
             "T0.cht_condition_js_menu": null,
-            "T1.chp_nom_autorisation": "rev php js"
           }
         */
         let criteres_select_141={"T0_chi_id_autorisation" : form['chx_autorisation_menu']};
         let tt141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
-        `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
+        `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -334,7 +333,7 @@ class menus1{
         SELECT 
         `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
         `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu` , `T1`.`chp_nom_autorisation`
+        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
          FROM b1.tbl_menus T0
          LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
         
@@ -409,7 +408,7 @@ class menus1{
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
             `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-            `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu` , `T1`.`chp_nom_autorisation`
+            `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
              FROM b1.tbl_menus T0
              LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
             
@@ -458,7 +457,7 @@ class menus1{
         SELECT 
         `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
         `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu` , `T1`.`chp_nom_autorisation`
+        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
          FROM b1.tbl_menus T0
          LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
         
@@ -508,7 +507,7 @@ class menus1{
         SELECT 
         `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
         `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu` , `T1`.`chp_nom_autorisation`
+        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
          FROM b1.tbl_menus T0
          LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
         
@@ -544,7 +543,7 @@ class menus1{
         SELECT 
         `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
         `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu` , `T1`.`chp_nom_autorisation`
+        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
          FROM b1.tbl_menus T0
          LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
         
@@ -619,7 +618,7 @@ class menus1{
         SELECT 
         `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
         `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu` , `T1`.`chp_nom_autorisation`
+        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
          FROM b1.tbl_menus T0
          LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
         
@@ -774,6 +773,10 @@ class menus1{
                 criteres145[i]=formulaire[i];
             }
         }
+        criteres145['acces_pas_dans']='(-1)';
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            criteres145['acces_pas_dans']='(1,2)';
+        }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -794,9 +797,9 @@ class menus1{
            AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
            AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
            AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
-           AND `T1`.`chp_nom_autorisation` LIKE :T1_chp_nom_autorisation
            AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
-           AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation) 
+           AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation
+           AND `T1`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
         ORDER BY `T0`.`chi_id_menu` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -826,9 +829,9 @@ class menus1{
                AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
                AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
                AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
-               AND `T1`.`chp_nom_autorisation` LIKE :T1_chp_nom_autorisation
                AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
-               AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation) 
+               AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation
+               AND `T1`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
             ORDER BY `T0`.`chi_id_menu` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;

@@ -8,6 +8,8 @@ const __xst=/* statut */'__xst';
 const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
+/* clef de session rev */
+const prefixe_nom_fichier_session='csr_rev_';
 import {getCookies} from "https://deno.land/std/http/cookie.ts";
 import {crypto} from "jsr:@std/crypto";
 import {__fnt1} from "./__fnt1_s.js";
@@ -35,7 +37,7 @@ class __ig1{
     /* 0 1 ou 2 */
     __deverminage=0;
     /*  */
-    /* les signaux de type 0:erreur/1:succès/alarme/information/déverminage */
+    /* les signaux de type 0:erreur/1:succès/2:alarme/3:information/4:déverminage */
     __xsi={0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []};
     __liste_des_genres={};
     __liste_des_sql={};
@@ -44,6 +46,7 @@ class __ig1{
     /* nom_de_la_cle_de_session */
     __ndlcs='';
     __socket=null;
+    __session_json={};
     donnees_retournees={
         "_CA_" : 0 ,
         "__xst" : /* statut __xer:0:erreur , à priori en erreur */0 ,
@@ -103,10 +106,7 @@ class __ig1{
         let continuer=true;
         let l01=mat.length;
         let pm1_trouve=false;
-        let les_autorisations_verifiees={
-            "__ig1_s.js" : true,
-            "__fnt1_s.js" : true,
-        };
+        let les_autorisations_verifiees={"__ig1_s.js" : true ,"__fnt1_s.js" : true};
         for( let i=1 ; i < l01 && continuer === true ; i=mat[i][12] ){
             /* this.ma_trace1('mat[i][1]='+mat[i][1]); */
             if(mat[i][1] === 'pm1' && mat[i][2] === 'f'){
@@ -145,39 +145,40 @@ class __ig1{
                                                 nom_du_fichier='./' + n1 + '_s.js';
                                                 cle_pour_json_du_fichier=n1 + '_s.js';
                                             }
-                                            if(les_autorisations_verifiees.hasOwnProperty(cle_pour_json_du_fichier) && les_autorisations_verifiees[cle_pour_json_du_fichier] === true){
-                                                this.ma_trace1('autorisation OK pour "'+cle_pour_json_du_fichier+'"');
+                                            if(les_autorisations_verifiees.hasOwnProperty( cle_pour_json_du_fichier )
+                                                   && les_autorisations_verifiees[cle_pour_json_du_fichier] === true
+                                            ){
+                                                /* this.ma_trace1('autorisation OK pour "'+cle_pour_json_du_fichier+'"'); */
                                             }else{
-                                                this.ma_trace1('à vérifier pour "'+cle_pour_json_du_fichier+'"');
+                                                /* this.ma_trace1('à vérifier pour "'+cle_pour_json_du_fichier+'"'); */
                                                 let chemin_des_autorisations='./__fichiers_generes/___autorisations1_pour_acces_' + this.donnees_retournees.chi_id_acces + '_serveur.json';
-                                                this.ma_trace1('chemin_des_autorisations='+chemin_des_autorisations);
+                                                /* this.ma_trace1('chemin_des_autorisations='+chemin_des_autorisations); */
                                                 try{
                                                     let contenu_texte=await this.file_get_contents( chemin_des_autorisations );
                                                     let contenu_json=JSON.parse( contenu_texte );
                                                     /* this.ma_trace1('contenu_json=',contenu_json); */
                                                     if(contenu_json.hasOwnProperty( cle_pour_json_du_fichier )){
                                                         let elem=contenu_json[cle_pour_json_du_fichier];
-                                                        this.ma_trace1("elem[" + cle_pour_json_du_fichier + "]=" , elem );
-                                                        // http://localhost:6003/#pm1(m1(n1(autorisations1),f1(liste1(__num_page(0)))))
+                                                        /* this.ma_trace1("elem[" + cle_pour_json_du_fichier + "]=" , elem ); */
+                                                        /* http://localhost:6003/#pm1(m1(n1(autorisations1),f1(liste1(__num_page(0))))) */
                                                         if(elem.che_pour_sous_liste_autorisation === 1){
-                                                            this.ma_trace1("vérifier nom_de_la_fonction_a_appeler="+nom_de_la_fonction_a_appeler);
-                                                            if(nom_de_la_fonction_a_appeler==='sous_liste1'){
-                                                                this.ma_trace1("autorisation sous liste mise à OK pour "+cle_pour_json_du_fichier);
+                                                            this.ma_trace1( "vérifier nom_de_la_fonction_a_appeler=" + nom_de_la_fonction_a_appeler );
+                                                            if(nom_de_la_fonction_a_appeler === 'sous_liste1'){
+                                                                this.ma_trace1( "autorisation sous liste mise à OK pour " + cle_pour_json_du_fichier );
                                                                 les_autorisations_verifiees[cle_pour_json_du_fichier]=true;
                                                             }else{
-                                                                this.donnees_retournees.__xsi[__xer].push( '<b>1autorisation non référencée '+m1+'.'+n1+'</b>' + this.nl2() );
+                                                                this.donnees_retournees.__xsi[__xer].push( '<b>1autorisation non référencée ' + m1 + '.' + n1 + '</b>' + this.nl2() );
                                                                 return({"__xst" : __xer});
                                                             }
-                                                         
                                                         }else if(elem.che_pour_sous_liste_autorisation === 0){
                                                             if(elem.cht_condition_js_source === null){
-                                                                this.ma_trace1("autorisation sans test de condition mise à OK pour "+cle_pour_json_du_fichier);
+                                                                this.ma_trace1( "autorisation sans test de condition mise à OK pour " + cle_pour_json_du_fichier );
                                                                 les_autorisations_verifiees[cle_pour_json_du_fichier]=true;
                                                             }else{
                                                                 let a=eval( elem.cht_condition_js_source );
                                                                 /* this.ma_trace1("this.donnees_retournees.chi_id_projet" , this.donnees_retournees.chi_id_projet , elem.cht_condition_js_source , a); */
                                                                 if(a && a === true){
-                                                                    this.ma_trace1("autorisation avec test de condition mise à OK pour "+cle_pour_json_du_fichier);
+                                                                    /* this.ma_trace1("autorisation avec test de condition mise à OK pour "+cle_pour_json_du_fichier); */
                                                                     les_autorisations_verifiees[cle_pour_json_du_fichier]=true;
                                                                 }else{
                                                                     if(elem.cht_notification_ko_source !== null && elem.cht_notification_ko_source){
@@ -189,11 +190,11 @@ class __ig1{
                                                             }
                                                         }
                                                     }else{
-                                                        this.donnees_retournees.__xsi[__xer].push( '<b>3:autorisation serveur non référencée '+n1+'</b>' );
+                                                        this.donnees_retournees.__xsi[__xer].push( '<b>3:autorisation serveur non référencée ' + n1 + '</b>' );
                                                         return({"__xst" : __xer});
                                                     }
                                                 }catch(e){
-                                                    this.donnees_retournees.__xsi[__xer].push( 'erreur autorisation serveur 4 ' + this.nl2(e) );
+                                                    this.donnees_retournees.__xsi[__xer].push( 'erreur autorisation serveur 4 ' + this.nl2( e ) );
                                                     return({"__xst" : __xer});
                                                 }
                                             }
@@ -349,7 +350,7 @@ class __ig1{
         /* this.ma_trace1('this.__ndlcs='+this.__ndlcs+',cookies=',cookies); */
         if(cookies.hasOwnProperty( this.__ndlcs )
                && cookies[this.__ndlcs] !== ''
-               && cookies[this.__ndlcs].substr( 0 , String( 'la_cle_websocket_rev_' + this._CA_ + '_' ).length ) === 'la_cle_websocket_rev_' + this._CA_ + '_'
+               && cookies[this.__ndlcs].substr( 0 , String( (prefixe_nom_fichier_session + this._CA_) + '_' ).length ) === (prefixe_nom_fichier_session + this._CA_) + '_'
         ){
             /* options_http.headers.cle_de_session=cookies.cle_de_session; */
             this.options_generales.cle_de_session=cookies[this.__ndlcs];
@@ -357,22 +358,22 @@ class __ig1{
             try{
                 const text_json=await Deno.readTextFile( './__sessions/' + cookies[this.__ndlcs] + '.json' );
                 try{
-                    let session_json=JSON.parse( text_json );
+                    this.__session_json=JSON.parse( text_json );
                     /*
                       sessions
                     */
-                    if(session_json.hasOwnProperty( 'chi_id_acces' )){
-                        this.donnees_retournees.chi_id_acces=session_json.chi_id_acces;
+                    if(this.__session_json.hasOwnProperty( 'chi_id_acces' )){
+                        this.donnees_retournees.chi_id_acces=this.__session_json.chi_id_acces;
                     }
-                    if(session_json.hasOwnProperty( 'chi_id_utilisateur' )){
-                        this.donnees_retournees.chi_id_utilisateur=session_json.chi_id_utilisateur;
+                    if(this.__session_json.hasOwnProperty( 'chi_id_utilisateur' )){
+                        this.donnees_retournees.chi_id_utilisateur=this.__session_json.chi_id_utilisateur;
                     }
                     /* this.ma_trace1('this.donnees_retournees.chi_id_utilisateur='+this.donnees_retournees.chi_id_utilisateur); */
-                    if(session_json.hasOwnProperty( 'chi_id_projet' )){
-                        this.donnees_retournees.chi_id_projet=session_json.chi_id_projet;
+                    if(this.__session_json.hasOwnProperty( 'chi_id_projet' )){
+                        this.donnees_retournees.chi_id_projet=this.__session_json.chi_id_projet;
                     }
-                    if(session_json.hasOwnProperty( 'chp_nom_de_connexion_utilisateur' )){
-                        this.donnees_retournees.chp_nom_de_connexion_utilisateur=session_json.chp_nom_de_connexion_utilisateur;
+                    if(this.__session_json.hasOwnProperty( 'chp_nom_de_connexion_utilisateur' )){
+                        this.donnees_retournees.chp_nom_de_connexion_utilisateur=this.__session_json.chp_nom_de_connexion_utilisateur;
                     }
                     /*
                       options générales
@@ -557,10 +558,10 @@ class __ig1{
             contenu+='<script type="module" src="f0?n0=__ig1_c.js&__version=' + this.__version + '"></script>';
             contenu+='</html>';
             const cookies=getCookies( req1.headers );
-            let la_cle='la_cle_websocket_rev_' + this._CA_ + '_' + (await crypto.randomUUID());
+            let la_cle=(prefixe_nom_fichier_session + this._CA_) + '_' + (await crypto.randomUUID());
             if(cookies.hasOwnProperty( this.__ndlcs )
                    && cookies[this.__ndlcs] !== ''
-                   && cookies[this.__ndlcs].substr( 0 , String( 'la_cle_websocket_rev_' + this._CA_ + '_' ).length ) === 'la_cle_websocket_rev_' + this._CA_ + '_'
+                   && cookies[this.__ndlcs].substr( 0 , String( (prefixe_nom_fichier_session + this._CA_) + '_' ).length ) === (prefixe_nom_fichier_session + this._CA_) + '_'
             ){
                 /* console.log("cookie trouve") */
                 la_cle=cookies[this.__ndlcs];
@@ -685,7 +686,7 @@ class __ig1{
         let la_cle='';
         if(cookies.hasOwnProperty( this.__ndlcs )
                && cookies[this.__ndlcs] !== ''
-               && cookies[this.__ndlcs].substr( 0 , String( 'la_cle_websocket_rev_' + this._CA_ + '_' ).length ) === 'la_cle_websocket_rev_' + this._CA_ + '_'
+               && cookies[this.__ndlcs].substr( 0 , String( (prefixe_nom_fichier_session + this._CA_) + '_' ).length ) === (prefixe_nom_fichier_session + this._CA_) + '_'
         ){
             /* console.log( "cookie trouve" ); */
             la_cle=cookies[this.__ndlcs];
@@ -717,10 +718,9 @@ class __ig1{
         this.__deverminage=req1.headers.get( "x-__deverminage" ) || 0;
         const cookies=getCookies( req1.headers );
         let la_cle=null;
-        /* 'la_cle_websocket_rev_' + this._CA_ + '_' + (await crypto.randomUUID()); */
         if(cookies.hasOwnProperty( this.__ndlcs )
                && cookies[this.__ndlcs] !== ''
-               && cookies[this.__ndlcs].substr( 0 , String( 'la_cle_websocket_rev_' + this._CA_ + '_' ).length ) === 'la_cle_websocket_rev_' + this._CA_ + '_'
+               && cookies[this.__ndlcs].substr( 0 , String( (prefixe_nom_fichier_session + this._CA_) + '_' ).length ) === (prefixe_nom_fichier_session + this._CA_) + '_'
         ){
             /* console.log("cookie trouve") */
             la_cle=cookies[this.__ndlcs];
@@ -800,7 +800,9 @@ class __ig1{
         let le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
         le_message=le_message.replace( /__programmes\// , '' );
         le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
-        if(this.__deverminage === 1){
+        if(this.__deverminage === 0){
+            this.donnees_retournees.__xsi[__xer].push( 'Il y a une erreur dans le programme, veuillez appeler la maintenance'  );
+        }else if(this.__deverminage === 1){
             this.donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
         }else if(this.__deverminage === 2){
             this.donnees_retournees.__xsi[__xdv].push( le_message );
@@ -965,9 +967,8 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    async modifier_valeur_session( options_generales , cle , valeur ){
-        let la_cle=options_generales.cle_de_session;
-        /* this.ma_trace1('modifier_valeur_session',options_generales,cle,valeur); */
+    async modifier_valeur_session( cle , valeur ){
+        let la_cle=this.options_generales.cle_de_session;
         let session_texte=await Deno.readTextFile( './__sessions/' + la_cle + '.json' );
         let session_json=JSON.parse( session_texte );
         session_json[cle]=valeur;
@@ -1125,27 +1126,27 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    envoyer_un_message_a_l_utilisateur( le_message ){
+    envoyer_un_message_a_l_utilisateur( obj_le_message ){
         let aa={
             "_CA_" : this._CA_ ,
             "__xst" : 1 ,
-            "__xva" : {} ,
-            "__xac" : "m1(n1(__ig1),f1(affiche_les_messages()))" ,
+            "__xva" : ( obj_le_message.hasOwnProperty( '__xva' ) ? ( obj_le_message ) : ( {} ) ),
+            "__xac" : "" , // m1(n1(__ig1),f1(affiche_les_messages()))
             "__xsi" : {0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
-            "chi_id_acces" : this.chi_id_acces ,
-            "chi_id_utilisateur" : this.chi_id_utilisateur ,
-            "chi_id_projet" : this.chi_id_projet ,
+            "chi_id_acces" : this.donnees_retournees.chi_id_acces ,
+            "chi_id_utilisateur" : this.donnees_retournees.chi_id_utilisateur ,
+            "chi_id_projet" : this.donnees_retournees.chi_id_projet ,
             "__version" : this.__version
         };
-        if(le_message.hasOwnProperty( '__xme' )
-               && le_message.__xme !== ''
-               && le_message.hasOwnProperty( '__xst' )
-               && le_message.__xst >= 0
-               && le_message.__xst <= 4
+        if(obj_le_message.hasOwnProperty( '__xme' )
+               && obj_le_message.__xme !== ''
+               && obj_le_message.hasOwnProperty( '__xst' )
+               && obj_le_message.__xst >= 0
+               && obj_le_message.__xst <= 4
         ){
-            aa.__xsi[le_message.__xst].push( le_message.__xme );
+            aa.__xsi[obj_le_message.__xst].push( obj_le_message.__xme );
         }else{
-            aa.__xsi[__xer].push( 'un message incomplet vous est envoyé par le serveur ' + JSON.stringify( le_message ) );
+            aa.__xsi[__xer].push( 'un message incomplet vous est envoyé par le serveur ' + JSON.stringify( obj_le_message ) );
         }
         try{
             this.__socket.send( JSON.stringify( aa ) );

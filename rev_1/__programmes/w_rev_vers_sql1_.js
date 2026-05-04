@@ -101,6 +101,8 @@ class w_rev_vers_sql1{
             t='';
         }else if(op === 'dans'){
             t=' IN ';
+        }else if(op === 'pas_dans'){
+            t=' NOT IN ';
         }else if(op === 'est'){
             t=' IS ';
         }else if(op === 'max'){
@@ -202,8 +204,13 @@ class w_rev_vers_sql1{
                 }else if(operateur === 'LIMIT'){
                     t=' LIMIT ' + t;
                     t_js=' LIMIT ' + t_js;
-                }else if(operateur === '' && tab[tab[i][7]][1] === '' && tab[tab[i][7]][2] === 'f' && tab[tab[id][7]][1] === 'dans'){
-                    /* suite d'éléments comme dans un IN () */
+                }else if(operateur === ''
+                       && tab[tab[i][7]][1] === ''
+                       && tab[tab[i][7]][2] === 'f'
+                       && (tab[tab[id][7]][1] === 'dans'
+                           || tab[tab[id][7]][1] === 'pas_dans')
+                ){
+                    /* suite d'éléments comme dans un IN () ou NOT IN () */
                     t+=',';
                     t_js+=',';
                 }else{
@@ -225,6 +232,10 @@ class w_rev_vers_sql1{
                             if(tab[i][1].substr( 0 , 1 ) === ':'){
                                 if(operateur_rev === '' && tab[tab[id][7]][1] === 'dans' || operateur_rev === 'dans'){
                                     /* pour un dans/IN on ne fait aucune transformation */
+                                    t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
+                                    t_js+='` + par[\'' + tab[i][1].substr( 1 ) + '\'] + `';
+                                }else if(operateur_rev === '' && tab[tab[id][7]][1] === 'pas_dans' || operateur_rev === 'pas_dans'){
+                                    /* pour un pas_dans/NOT IN on ne fait aucune transformation */
                                     t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ) + '\']).\'';
                                     t_js+='` + par[\'' + tab[i][1].substr( 1 ) + '\'] + `';
                                 }else{
@@ -261,6 +272,9 @@ class w_rev_vers_sql1{
                         if(options.au_format_programme === true){
                             if(tab[i][1].substr( 0 , 1 ) === ':'){
                                 if(operateur_rev === '' && tab[tab[id][7]][1] === 'dans' || operateur_rev === 'dans'){
+                                    t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] ).\'';
+                                    t_js+='` + this.__ig1.__fnt1.sq0( par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] , \'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\' ) + `';
+                                }else if(operateur_rev === '' && tab[tab[id][7]][1] === 'pas_dans' || operateur_rev === 'pas_dans'){
                                     t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] ).\'';
                                     t_js+='` + this.__ig1.__fnt1.sq0( par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] , \'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\' ) + `';
                                 }else{
@@ -346,6 +360,9 @@ class w_rev_vers_sql1{
             t='CONCAT(' + t + ')';
             t_js='CONCAT(' + t_js + ')';
         }else if(operateur === '' && tab[tab[id][7]][1].toLowerCase() === 'dans' && tab[tab[id][7]][2] === 'f'){
+            t='(' + t + ')';
+            t_js='(' + t_js + ')';
+        }else if(operateur === '' && tab[tab[id][7]][1].toLowerCase() === 'pas_dans' && tab[tab[id][7]][2] === 'f'){
             t='(' + t + ')';
             t_js='(' + t_js + ')';
         }else if(operateur.toUpperCase() === 'OFFSET'){

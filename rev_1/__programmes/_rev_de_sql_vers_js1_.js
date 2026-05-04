@@ -120,7 +120,8 @@ class _rev_de_sql_vers_js1{
                                        || tab[j][1] === 'infegal'
                                        || tab[j][1] === 'est'
                                        || tab[j][1] === 'n_est_pas'
-                                       || tab[j][1] === 'dans')
+                                       || tab[j][1] === 'dans'
+                                       || tab[j][1] === 'pas_dans')
                             ){
                                 var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
                                 if(obj.__xst === __xsu){
@@ -165,7 +166,8 @@ class _rev_de_sql_vers_js1{
                                || tab[i][1] === 'infegal'
                                || tab[i][1] === 'est'
                                || tab[i][1] === 'n_est_pas'
-                               || tab[i][1] === 'dans')
+                               || tab[i][1] === 'dans'
+                               || tab[i][1] === 'pas_dans')
                     ){
                         var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , i , 0 , options );
                         if(obj.__xst === __xsu){
@@ -432,6 +434,7 @@ class _rev_de_sql_vers_js1{
               
             */
         }else if(type_de_requete === 'delete'){
+            t+='        let sql0=\'\';' + CRLF;
             var nom_de_la_table=obj3.liste_des_tables_pour_select_js;
             nouvelle_chaine=this.#traiter_chaine_sql_pour_js( obj3.t_js );
             if(this.#obj_webs.ne_pas_tester_les_dependances_de_suppression === 0){
@@ -458,7 +461,6 @@ class _rev_de_sql_vers_js1{
                     t+='        }\r\n';
                 }
             }
-            t+='        let sql0=\'\';' + CRLF;
             t+='        try{\r\n';
             t+='            sql0=`' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '          ' ) + CRLF;
             t+='            `;' + CRLF;
@@ -1055,6 +1057,7 @@ class _rev_de_sql_vers_js1{
                                                        || tab[j][1] === 'inf'
                                                        || tab[j][1] === 'infegal'
                                                        || tab[j][1] === 'dans'
+                                                       || tab[j][1] === 'pas_dans'
                                                        || tab[j][1] === 'est'
                                                        || tab[j][1] === 'n_est_pas')
                                             ){

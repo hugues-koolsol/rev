@@ -303,28 +303,30 @@ class taches1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(!fo1.hasOwnProperty( 'chp_priorite_tache' )
-               || fo1['chp_priorite_tache'] === ''
-               || !this.__ig1.est_num( fo1['chp_priorite_tache'] )
-        ){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être renseigné'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_priorite_tache' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        var __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1['chp_priorite_tache'] , 'priorite' );
-        if(__test_2_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test['__xme']} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_priorite_tache' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
+        /*
+          if(!fo1.hasOwnProperty( 'chp_priorite_tache' )
+          || fo1['chp_priorite_tache'] === ''
+          || !this.__ig1.est_num( fo1['chp_priorite_tache'] )
+          ){
+          this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être renseigné'} );
+          this.__ig1.affiche_les_messages();
+          this.__ig1.retablir_les_boutons_masques();
+          try{
+          document.getElementById( 'chp_priorite_tache' ).focus();
+          } catch {}
+          return({"__xst" : __xsu});
+          }
+          var __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1['chp_priorite_tache'] , 'priorite' );
+          if(__test_2_1.__xst !== __xsu){
+          this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1['__xme']} );
+          this.__ig1.affiche_les_messages();
+          this.__ig1.retablir_les_boutons_masques();
+          try{
+          document.getElementById( 'chp_priorite_tache' ).focus();
+          } catch {}
+          return({"__xst" : __xsu});
+          }
+        */
         /* conversion des données numériques début */
         fo1['chp_priorite_tache']=fo1['chp_priorite_tache'] === '' ? ( null ) : ( parseInt( fo1['chp_priorite_tache'] , 10 ) );
         /* conversion des données numériques fin */
@@ -369,7 +371,7 @@ class taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite</span>';
+        o1+='      <span>priorite de la tâche</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input type="number"  size="2" maxlength="2" max="99" style="width:4em;" id="chp_priorite_tache" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';

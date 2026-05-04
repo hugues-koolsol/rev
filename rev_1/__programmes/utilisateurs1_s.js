@@ -570,6 +570,10 @@ class utilisateurs1{
                 criteres119[i]=formulaire[i];
             }
         }
+        criteres119['acces_pas_dans']='(-1)';
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            criteres119['acces_pas_dans']='(1,2)';
+        }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -587,7 +591,8 @@ class utilisateurs1{
            AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur
            AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
            AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
-           AND `T1`.`che_actif_acces` = :T1_che_actif_acces) 
+           AND `T1`.`che_actif_acces` = :T1_che_actif_acces
+           AND `T0`.`chx_acces_utilisateur` NOT IN :acces_pas_dans) 
         ORDER BY `T0`.`chi_id_utilisateur` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -614,7 +619,8 @@ class utilisateurs1{
                AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur
                AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
                AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
-               AND `T1`.`che_actif_acces` = :T1_che_actif_acces) 
+               AND `T1`.`che_actif_acces` = :T1_che_actif_acces
+               AND `T0`.`chx_acces_utilisateur` NOT IN :acces_pas_dans) 
             ORDER BY `T0`.`chi_id_utilisateur` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;

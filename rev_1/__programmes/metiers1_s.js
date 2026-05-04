@@ -525,6 +525,10 @@ class metiers1{
                 criteres_124[i]=formulaire[i];
             }
         }
+        criteres_124['metier_mini']=0;
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            criteres_124['metier_mini']=3;
+        }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -535,8 +539,9 @@ class metiers1{
          FROM b1.tbl_metiers T0
          LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
         
-        WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
-           AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+        WHERE (   `T0`.`chi_id_metier` = :T0_chi_id_metier
+           AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
+           AND `T0`.`chi_id_metier` >= :metier_mini) 
         ORDER BY `T0`.`chi_id_metier` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -556,8 +561,9 @@ class metiers1{
              FROM b1.tbl_metiers T0
              LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
             
-            WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
-               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+            WHERE (   `T0`.`chi_id_metier` = :T0_chi_id_metier
+               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
+               AND `T0`.`chi_id_metier` >= :metier_mini) 
             ORDER BY `T0`.`chi_id_metier` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;

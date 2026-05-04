@@ -18,25 +18,23 @@ class menus1{
     tableau_des_filtres={
         "liste1" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T3_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
+            "T1_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
+            "T0_chi_id_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_cht_libelle_menu" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'libelle' ,"taille" : 8} ,
             "T0_chp_titre_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'titre' ,"taille" : 8} ,
             "T0_chx_autorisation_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id autorisation' ,"taille" : 8} ,
-            "T1_chp_nom_autorisation" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom autorisation' ,"taille" : 8} ,
-            "T0_chp_methode_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'methode' ,"taille" : 8} ,
-            "T1_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8}
+            "T0_chp_methode_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'methode' ,"taille" : 8}
         } ,
         "sous_liste1" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T3_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
+            "T1_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
+            "T0_chi_id_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_cht_libelle_menu" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'libelle' ,"taille" : 8} ,
             "T0_chp_titre_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'titre' ,"taille" : 8} ,
             "T0_chx_autorisation_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id autorisation' ,"taille" : 8} ,
-            "T1_chp_nom_autorisation" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom autorisation' ,"taille" : 8} ,
-            "T0_chp_methode_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'methode' ,"taille" : 8} ,
-            "T1_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8}
+            "T0_chp_methode_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'methode' ,"taille" : 8}
         }
     };
     fonction_liste='liste1';
@@ -368,7 +366,7 @@ class menus1{
         o1+='"  id="chx_autorisation_menu" />';
         o1+='        <span id="chx_autorisation_menu_libelle">';
         o1+='(' + enreg['T0.chx_autorisation_menu'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_autorisation'] );
+        o1+=' ' + enreg['T2.chp_nom_acces'] + '/' + enreg['T3.chp_nom_source'] + ' ';
         o1+='</span>';
         o1+=this.__ig1.lien_parent( 'autorisations1' , 'chx_autorisation_menu' , 'chx_autorisation_menu_libelle' );
         o1+='    </div>';
@@ -544,7 +542,6 @@ class menus1{
         o1+='"  id="chx_autorisation_menu" />';
         o1+='        <span>';
         o1+='(' + enreg['T0.chx_autorisation_menu'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_autorisation'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -771,7 +768,6 @@ class menus1{
                 o1+='*indéfini';
             }else{
                 o1+='(' + dupliquer['T0.chx_autorisation_menu'] + ') ';
-                o1+=this.__ig1.fi2( dupliquer['T1.chp_nom_autorisation'] );
             }
         }else{
             o1+='*indéfini';
@@ -1185,13 +1181,6 @@ class menus1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T1.chp_nom_autorisation'] !== null){
-                    lst+=elem['T1.chp_nom_autorisation'].substr( 0 , 100 ).replace( />/g , '>' ).replace( /</g , '<' );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
                 if(elem['T0.chp_methode_menu'] !== null){
                     lst+=elem['T0.chp_methode_menu'].substr( 0 , 100 ).replace( />/g , '>' ).replace( /</g , '<' );
                 }
@@ -1214,7 +1203,6 @@ class menus1{
                 o1+='<th>libelle</th>';
                 o1+='<th>titre</th>';
                 o1+='<th>autorisation</th>';
-                o1+='<th>nom autorisation</th>';
                 o1+='<th>methode</th>';
                 o1+='<th>acces autorisation</th>';
                 o1+='</tr>';
@@ -1250,42 +1238,45 @@ class menus1{
                 if(elem['T0.chi_id_menu'] !== null){
                     lst+='<b>(' + elem['T0.chi_id_menu'] + ')</b>';
                 }
+                if(elem['T0.chp_methode_menu'] !== null){
+                    lst+=' ' + this.__ig1.fi2( elem['T0.chp_methode_menu'] );
+                }
                 if(elem['T3.chp_nom_source'] !== null){
                     lst+='<br />' + elem['T3.chp_nom_source'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
                     lst+='(' + elem['T1.chx_source_autorisation'] + ')';
-                }
-                if(elem['T0.chp_methode_menu'] !== null){
-                    lst+='<br />' + this.__ig1.fi2( elem['T0.chp_methode_menu'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chx_autorisation_menu'] !== null){
-                    lst+=elem['T0.chx_autorisation_menu'];
+                    lst+='(' + elem['T0.chx_autorisation_menu'] + ') ';
+                }
+                if(elem['T1.chx_acces_autorisation'] !== null){
+                    lst+='/(' + elem['T1.chx_acces_autorisation'] + ')';
+                }
+                if(elem['T2.chp_nom_acces'] !== null){
+                    lst+='<br />' + this.__ig1.fi2( elem['T2.chp_nom_acces'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
-                if(elem['T0.chp_titre_menu'] !== null){
-                    lst+='<br /><b class="yy__3">' + this.__ig1.fi2( elem['T0.chp_titre_menu'] ) + '</b>';
-                }
                 if(elem['T0.cht_libelle_menu'] !== null){
-                    lst+='<br />' + this.__ig1.fi2( elem['T0.cht_libelle_menu'].substr( 0 , 100 ) );
+                    if(elem['T0.cht_libelle_menu'].substr( 0 , 4 ) === '<svg'){
+                        lst+='<div style="width:25px;border:1px white solid;display:inline-block;background:var(--c_coul_fond4);">' + elem['T0.cht_libelle_menu'] + '</div>';
+                    }else{
+                        lst+='' + this.__ig1.fi2( elem['T0.cht_libelle_menu'].substr( 0 , 100 ) );
+                    }
                 }
+                if(elem['T0.chp_titre_menu'] !== null){
+                    lst+=' / ' + this.__ig1.fi2( elem['T0.chp_titre_menu'] );
+                }
+                lst+='<hr />';
                 if(elem['T0.cht_condition_menu'] !== null){
-                    lst+='<hr />' + this.__ig1.fi2( elem['T0.cht_condition_menu'].substr( 0 , 200 ) );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T1.chx_acces_autorisation'] !== null){
-                    lst+=elem['T1.chx_acces_autorisation'];
-                }
-                if(elem['T2.chp_nom_acces'] !== null){
-                    lst+='<br />' + this.__ig1.fi2( elem['T2.chp_nom_acces'] );
+                    lst+='<b>' + this.__ig1.fi2( elem['T0.cht_condition_menu'].substr( 0 , 200 ) ) + '</b>';
+                }else{
+                    lst+='<i>pas de condition</i>';
                 }
                 lst+='</td>';
                 /*
@@ -1298,9 +1289,8 @@ class menus1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+='<th>id,nom source,titre,méthode</th>';
-                o1+='<th>autorisation</th>';
+                o1+='<th>autorisation/id et nom accès </th>';
                 o1+='<th style="max-width:360px;">titre/libelle/condition</th>';
-                o1+='<th>id acces / nom</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

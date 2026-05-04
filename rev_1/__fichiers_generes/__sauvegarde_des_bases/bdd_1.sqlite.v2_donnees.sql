@@ -34,27 +34,251 @@ INSERT INTO tbl_metiers (  chi_id_metier ,  chp_nom_metier ,  chx_parent_metier 
 
 /*================================================================================ DEBUT BLOC TABLE tbl_acces offset 0 (3) */
 INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  chx_metier_acces ,  cht_parametres_acces ,  che_actif_acces ) VALUES
-('0','anonymes','1','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"à propos\",\"attributs\":{\"data-chi_id_source\":\"1000\",\"data-chp_nom_source\":\"x_ecran_a_propos1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"35\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"à propos\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"79\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"1000\" data-chp_nom_source=\"x_ecran_a_propos1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"35\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"à propos\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"79\" data-separateur=\"0\">à propos</li>    "}','1'),
-('1','dev','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"493\" data-chp_nom_source=\"projets1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"24\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"52\" data-separateur=\"0\">projets</li><li data-chi_id_source=\"495\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"31\" data-cht_initialisation_menu=\"T0_chp_priorite_tache2(99)\" data-chp_titre_menu=\"Liste des tâches\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"53\" data-separateur=\"0\">tâches</li><li data-chi_id_source=\"489\" data-chp_nom_source=\"dossiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">dossiers</li><li data-chi_id_source=\"525\" data-chp_nom_source=\"sources1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"544\" data-chp_nom_source=\"genres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des genres de données dans la bdd\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"28\" data-separateur=\"0\">genres</li><li data-chi_id_source=\"541\" data-chp_nom_source=\"bdds1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">bases</li><li data-chi_id_source=\"547\" data-chp_nom_source=\"requetes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des requêtes sur les bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"30\" data-separateur=\"0\">requêtes</li><li data-chi_id_source=\"574\" data-chp_nom_source=\"revs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"33\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"54\" data-separateur=\"0\">revs</li><li data-chi_id_source=\"577\" data-chp_nom_source=\"travaux1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"34\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des travaux\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"55\" data-separateur=\"0\">travaux</li><li data-liste_des_menus=\"1\">autres<ul><li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"32\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"46\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-liste_des_menus=\"1\" data-separateur=\"1\">organisation<ul></ul></li><li data-chi_id_source=\"565\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"556\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des métiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"32\" data-separateur=\"0\">métiers</li><li data-chi_id_source=\"558\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"25\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des accès\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"561\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"26\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"563\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"34\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"569\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet === 1 &amp;&amp; donnees_retournees._CA_ == 1;\" data-cht_condition_menu=\"et(\n   #(),\n   egalstricte(donnees_retournees.chi_id_projet,1),\n   egal(donnees_retournees._CA_,1)\n)\" data-chx_autorisation_menu=\"35\" data-separateur=\"0\">utilisateurs</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils génération<ul></ul></li><li data-chi_id_source=\"553\" data-chp_nom_source=\"x_ecran_generer_programmes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"26\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">générer</li><li data-chi_id_source=\"572\" data-chp_nom_source=\"x_ecran_generer_souches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"30\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer les souches\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"51\" data-separateur=\"0\">souches</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils convertions<ul></ul></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"38\" data-separateur=\"0\">js</li><li data-chi_id_source=\"521\" data-chp_nom_source=\"x_ecran_rev_vers_matrice1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"37\" data-separateur=\"0\">matrice</li><li data-chi_id_source=\"519\" data-chp_nom_source=\"x_ecran_rev_vers_html1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"html\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"39\" data-separateur=\"0\">html</li><li data-chi_id_source=\"522\" data-chp_nom_source=\"x_ecran_rev_vers_php1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"40\" data-separateur=\"0\">php</li><li data-chi_id_source=\"523\" data-chp_nom_source=\"x_ecran_rev_vers_sql1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"41\" data-separateur=\"0\">sql</li><li data-chi_id_source=\"518\" data-chp_nom_source=\"x_ecran_rev_vers_css1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"42\" data-separateur=\"0\">css</li><li data-chi_id_source=\"524\" data-chp_nom_source=\"x_ecran_rev_vers_txt1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"44\" data-separateur=\"0\">txt</li><li data-chi_id_source=\"571\" data-chp_nom_source=\"x_ecran_source_vers_programme1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"27\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"source vers programme\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"45\" data-separateur=\"0\">src-&gt;pgm</li></ul></li>    ","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"projets\",\"attributs\":{\"data-chi_id_source\":\"493\",\"data-chp_nom_source\":\"projets1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"24\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des projets\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"52\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"tâches\",\"attributs\":{\"data-chi_id_source\":\"495\",\"data-chp_nom_source\":\"taches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"31\",\"data-cht_initialisation_menu\":\"T0_chp_priorite_tache2(99)\",\"data-chp_titre_menu\":\"Liste des tâches\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"53\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"dossiers\",\"attributs\":{\"data-chi_id_source\":\"489\",\"data-chp_nom_source\":\"dossiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"25\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"525\",\"data-chp_nom_source\":\"sources1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des sources des programmes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"27\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":5,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"544\",\"data-chp_nom_source\":\"genres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des genres de données dans la bdd\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"28\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":6,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"541\",\"data-chp_nom_source\":\"bdds1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des bases\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"29\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":7,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requêtes\",\"attributs\":{\"data-chi_id_source\":\"547\",\"data-chp_nom_source\":\"requetes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des requêtes sur les bases\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"30\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":8,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"revs\",\"attributs\":{\"data-chi_id_source\":\"574\",\"data-chp_nom_source\":\"revs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"33\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des revs\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"54\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":9,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"travaux\",\"attributs\":{\"data-chi_id_source\":\"577\",\"data-chp_nom_source\":\"travaux1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"34\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des travaux\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"55\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":10,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":20,\"contenu\":\"admin\",\"attributs\":{\"data-liste_des_menus\":\"1\"},\"separateur\":\"0\"},{\"id_interne\":11,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"567\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"32\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mes coordonnées\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"\\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"46\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":12,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":13,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"565\",\"data-chp_nom_source\":\"groupes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des groupes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"31\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":14,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"métiers\",\"attributs\":{\"data-chi_id_source\":\"556\",\"data-chp_nom_source\":\"metiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des métiers\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"32\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":15,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"accès\",\"attributs\":{\"data-chi_id_source\":\"558\",\"data-chp_nom_source\":\"acces1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"25\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des accès\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"33\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":16,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"561\",\"data-chp_nom_source\":\"autorisations1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des autorisations\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"26\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":17,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"563\",\"data-chp_nom_source\":\"menus1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des menus\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"34\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":18,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"569\",\"data-chp_nom_source\":\"utilisateurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des utilisateurs\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1;\",\"data-cht_condition_menu\":\"et(\\n   #(),\\n   egalstricte(donnees_retournees.chi_id_projet,1),\\n   egal(donnees_retournees._CA_,1)\\n)\",\"data-chx_autorisation_menu\":\"35\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":19,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"outils génération\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":20,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"générer\",\"attributs\":{\"data-chi_id_source\":\"553\",\"data-chp_nom_source\":\"x_ecran_generer_programmes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"26\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"générer des programmes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"36\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":21,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"souches\",\"attributs\":{\"data-chi_id_source\":\"572\",\"data-chp_nom_source\":\"x_ecran_generer_souches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"30\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"générer les souches\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"51\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":22,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"outils convertions\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":23,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"520\",\"data-chp_nom_source\":\"x_ecran_rev_vers_js1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"38\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":24,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"521\",\"data-chp_nom_source\":\"x_ecran_rev_vers_matrice1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"37\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":25,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"519\",\"data-chp_nom_source\":\"x_ecran_rev_vers_html1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"html\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"39\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":26,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"522\",\"data-chp_nom_source\":\"x_ecran_rev_vers_php1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de php\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"40\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":27,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"523\",\"data-chp_nom_source\":\"x_ecran_rev_vers_sql1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de sql\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"41\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":28,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"518\",\"data-chp_nom_source\":\"x_ecran_rev_vers_css1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de css\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"42\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":29,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"524\",\"data-chp_nom_source\":\"x_ecran_rev_vers_txt1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de textes\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"44\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":30,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"src->pgm\",\"attributs\":{\"data-chi_id_source\":\"571\",\"data-chp_nom_source\":\"x_ecran_source_vers_programme1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"27\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"source vers programme\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"45\",\"data-separateur\":\"0\"},\"separateur\":0}]"}','1'),
-('2','admin','2','2','{
+('0','anonymes','1','2','{
   "le_json_du_menu": [
     {
       "id_interne": 1,
       "id_interne_parent": 0,
       "replie": 0,
-      "contient_des_enfants": 2,
-      "contenu": "test",
+      "contient_des_enfants": 0,
+      "contenu": "à propos",
       "attributs": {
-        "data-liste_des_menus": "1"
+        "data-chi_id_source": 1000,
+        "data-chp_nom_source": "x_ecran_a_propos1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": 35,
+        "data-cht_initialisation_menu": null,
+        "data-chp_titre_menu": "à propos",
+        "data-cht_condition_js_menu": null,
+        "data-cht_condition_menu": null,
+        "data-chx_autorisation_menu": "79",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    }
+  ],
+  "le_html_ul_li_du_menu": "<li data-chi_id_source=\"1000\" data-chp_nom_source=\"x_ecran_a_propos1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"35\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"à propos\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"79\" data-separateur=\"0\">à propos</li>    "
+}','1'),
+('1','dev','1','1','{
+  "le_html_ul_li_du_menu": "<li data-chi_id_source=\"493\" data-chp_nom_source=\"projets1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"24\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"52\" data-separateur=\"0\">projets</li><li data-chi_id_source=\"495\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"31\" data-cht_initialisation_menu=\"T0_chp_priorite_tache2(99)\" data-chp_titre_menu=\"Liste des tâches\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"53\" data-separateur=\"0\">tâches</li><li data-chi_id_source=\"489\" data-chp_nom_source=\"dossiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">dossiers</li><li data-chi_id_source=\"525\" data-chp_nom_source=\"sources1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"544\" data-chp_nom_source=\"genres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des genres de données dans la bdd\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"28\" data-separateur=\"0\">genres</li><li data-chi_id_source=\"541\" data-chp_nom_source=\"bdds1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">bases</li><li data-chi_id_source=\"547\" data-chp_nom_source=\"requetes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des requêtes sur les bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"30\" data-separateur=\"0\">requêtes</li><li data-chi_id_source=\"574\" data-chp_nom_source=\"revs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"33\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"54\" data-separateur=\"0\">revs</li><li data-chi_id_source=\"577\" data-chp_nom_source=\"travaux1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"34\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des travaux\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"55\" data-separateur=\"0\">travaux</li><li data-liste_des_menus=\"1\">autres<ul><li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"32\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"46\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-liste_des_menus=\"1\" data-separateur=\"1\">organisation<ul></ul></li><li data-chi_id_source=\"565\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"556\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des métiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"32\" data-separateur=\"0\">métiers</li><li data-chi_id_source=\"558\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"25\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des accès\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"561\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"26\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"563\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"34\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"569\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet === 1 &amp;&amp; donnees_retournees._CA_ == 1;\" data-cht_condition_menu=\"et(\n   #(),\n   egalstricte(donnees_retournees.chi_id_projet,1),\n   egal(donnees_retournees._CA_,1)\n)\" data-chx_autorisation_menu=\"35\" data-separateur=\"0\">utilisateurs</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils génération<ul></ul></li><li data-chi_id_source=\"553\" data-chp_nom_source=\"x_ecran_generer_programmes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"26\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">générer</li><li data-chi_id_source=\"572\" data-chp_nom_source=\"x_ecran_generer_souches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"30\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer les souches\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"51\" data-separateur=\"0\">souches</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils convertions<ul></ul></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"38\" data-separateur=\"0\">js</li><li data-chi_id_source=\"521\" data-chp_nom_source=\"x_ecran_rev_vers_matrice1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"37\" data-separateur=\"0\">matrice</li><li data-chi_id_source=\"519\" data-chp_nom_source=\"x_ecran_rev_vers_html1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"html\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"39\" data-separateur=\"0\">html</li><li data-chi_id_source=\"522\" data-chp_nom_source=\"x_ecran_rev_vers_php1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"40\" data-separateur=\"0\">php</li><li data-chi_id_source=\"523\" data-chp_nom_source=\"x_ecran_rev_vers_sql1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"41\" data-separateur=\"0\">sql</li><li data-chi_id_source=\"518\" data-chp_nom_source=\"x_ecran_rev_vers_css1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"42\" data-separateur=\"0\">css</li><li data-chi_id_source=\"524\" data-chp_nom_source=\"x_ecran_rev_vers_txt1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"44\" data-separateur=\"0\">txt</li><li data-chi_id_source=\"571\" data-chp_nom_source=\"x_ecran_source_vers_programme1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"27\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"source vers programme\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"45\" data-separateur=\"0\">src-&gt;pgm</li></ul></li>    ",
+  "le_json_du_menu": [
+    {
+      "id_interne": 1,
+      "id_interne_parent": 0,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "projets",
+      "attributs": {
+        "data-chi_id_source": "493",
+        "data-chp_nom_source": "projets1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "24",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des projets",
+        "data-cht_condition_js_menu": "null",
+        "data-cht_condition_menu": "null",
+        "data-chx_autorisation_menu": "52",
+        "data-separateur": "0"
       },
       "separateur": 0
     },
     {
       "id_interne": 2,
-      "id_interne_parent": 1,
+      "id_interne_parent": 0,
       "replie": 0,
       "contient_des_enfants": 0,
-      "contenu": "aaa",
+      "contenu": "tâches",
+      "attributs": {
+        "data-chi_id_source": "495",
+        "data-chp_nom_source": "taches1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "31",
+        "data-cht_initialisation_menu": "T0_chp_priorite_tache2(99)",
+        "data-chp_titre_menu": "Liste des tâches",
+        "data-cht_condition_js_menu": "this.__ig1.donnees_retournees.chi_id_projet > 0;",
+        "data-cht_condition_menu": "sup(this.__ig1.donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "53",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 3,
+      "id_interne_parent": 0,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "dossiers",
+      "attributs": {
+        "data-chi_id_source": "489",
+        "data-chp_nom_source": "dossiers1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "9",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des dossiers et des fichiers",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "25",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 4,
+      "id_interne_parent": 0,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "sources",
+      "attributs": {
+        "data-chi_id_source": "525",
+        "data-chp_nom_source": "sources1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "10",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des sources des programmes",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "27",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 5,
+      "id_interne_parent": 0,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "genres",
+      "attributs": {
+        "data-chi_id_source": "544",
+        "data-chp_nom_source": "genres1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "22",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des genres de données dans la bdd",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "28",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 6,
+      "id_interne_parent": 0,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "bases",
+      "attributs": {
+        "data-chi_id_source": "541",
+        "data-chp_nom_source": "bdds1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "11",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des bases",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "29",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 7,
+      "id_interne_parent": 0,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "requêtes",
+      "attributs": {
+        "data-chi_id_source": "547",
+        "data-chp_nom_source": "requetes1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "12",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des requêtes sur les bases",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "30",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 8,
+      "id_interne_parent": 0,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "revs",
+      "attributs": {
+        "data-chi_id_source": "574",
+        "data-chp_nom_source": "revs1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "33",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des revs",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "54",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 9,
+      "id_interne_parent": 0,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "travaux",
+      "attributs": {
+        "data-chi_id_source": "577",
+        "data-chp_nom_source": "travaux1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "34",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des travaux",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "55",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 10,
+      "id_interne_parent": 0,
+      "replie": 0,
+      "contient_des_enfants": 20,
+      "contenu": "admin",
+      "attributs": {
+        "data-liste_des_menus": "1"
+      },
+      "separateur": "0"
+    },
+    {
+      "id_interne": 11,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "<svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg>",
+      "attributs": {
+        "data-chi_id_source": "567",
+        "data-chp_nom_source": "x_ecran_coordonnees1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "32",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "mes coordonnées",
+        "data-cht_condition_js_menu": "this.__ig1.donnees_retournees.chi_id_utilisateur > 0;",
+        "data-cht_condition_menu": "\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)",
+        "data-chx_autorisation_menu": "46",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 12,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "organisation",
       "attributs": {
         "data-liste_des_menus": "1",
         "data-separateur": "1"
@@ -62,28 +286,352 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
       "separateur": 1
     },
     {
-      "id_interne": 3,
-      "id_interne_parent": 1,
+      "id_interne": 13,
+      "id_interne_parent": 10,
       "replie": 0,
       "contient_des_enfants": 0,
-      "contenu": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg>",
+      "contenu": "groupes",
       "attributs": {
-        "data-chi_id_source": 567,
-        "data-chp_nom_source": "x_ecran_coordonnees1_c.js",
+        "data-chi_id_source": "565",
+        "data-chp_nom_source": "groupes1_c.js",
         "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": 29,
+        "data-chi_id_menu": "14",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des groupes",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "31",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 14,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "métiers",
+      "attributs": {
+        "data-chi_id_source": "556",
+        "data-chp_nom_source": "metiers1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "15",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des métiers",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "32",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 15,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "accès",
+      "attributs": {
+        "data-chi_id_source": "558",
+        "data-chp_nom_source": "acces1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "25",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des accès",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "33",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 16,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "autorisations",
+      "attributs": {
+        "data-chi_id_source": "561",
+        "data-chp_nom_source": "autorisations1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "18",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des autorisations",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "26",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 17,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "menus",
+      "attributs": {
+        "data-chi_id_source": "563",
+        "data-chp_nom_source": "menus1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "19",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "liste des menus",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "34",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 18,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "utilisateurs",
+      "attributs": {
+        "data-chi_id_source": 569,
+        "data-chp_nom_source": "utilisateurs1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": 17,
         "data-cht_initialisation_menu": null,
-        "data-chp_titre_menu": "mon profile",
+        "data-chp_titre_menu": "liste des utilisateurs",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1;",
+        "data-cht_condition_menu": "et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))",
+        "data-chx_autorisation_menu": "35",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 19,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "outils génération",
+      "attributs": {
+        "data-liste_des_menus": "1",
+        "data-separateur": "1"
+      },
+      "separateur": 1
+    },
+    {
+      "id_interne": 20,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "générer",
+      "attributs": {
+        "data-chi_id_source": "553",
+        "data-chp_nom_source": "x_ecran_generer_programmes1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "26",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "générer des programmes",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "36",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 21,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "souches",
+      "attributs": {
+        "data-chi_id_source": "572",
+        "data-chp_nom_source": "x_ecran_generer_souches1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "30",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "générer les souches",
+        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
+        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
+        "data-chx_autorisation_menu": "51",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 22,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "outils convertions",
+      "attributs": {
+        "data-liste_des_menus": "1",
+        "data-separateur": "1"
+      },
+      "separateur": 1
+    },
+    {
+      "id_interne": 23,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "js",
+      "attributs": {
+        "data-chi_id_source": "520",
+        "data-chp_nom_source": "x_ecran_rev_vers_js1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "3",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "convertion de javascript ",
+        "data-cht_condition_js_menu": "null",
+        "data-cht_condition_menu": "null",
+        "data-chx_autorisation_menu": "38",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 24,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "matrice",
+      "attributs": {
+        "data-chi_id_source": "521",
+        "data-chp_nom_source": "x_ecran_rev_vers_matrice1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "2",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "convertion de rev vers matrice",
+        "data-cht_condition_js_menu": "null",
+        "data-cht_condition_menu": "null",
+        "data-chx_autorisation_menu": "37",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 25,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "html",
+      "attributs": {
+        "data-chi_id_source": "519",
+        "data-chp_nom_source": "x_ecran_rev_vers_html1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "21",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "html",
+        "data-cht_condition_js_menu": "null",
+        "data-cht_condition_menu": "null",
+        "data-chx_autorisation_menu": "39",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 26,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "php",
+      "attributs": {
+        "data-chi_id_source": "522",
+        "data-chp_nom_source": "x_ecran_rev_vers_php1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "4",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "convertion de php",
+        "data-cht_condition_js_menu": "null",
+        "data-cht_condition_menu": "null",
+        "data-chx_autorisation_menu": "40",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 27,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "sql",
+      "attributs": {
+        "data-chi_id_source": "523",
+        "data-chp_nom_source": "x_ecran_rev_vers_sql1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "5",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "convertion de sql",
+        "data-cht_condition_js_menu": "null",
+        "data-cht_condition_menu": "null",
+        "data-chx_autorisation_menu": "41",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 28,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "css",
+      "attributs": {
+        "data-chi_id_source": "518",
+        "data-chp_nom_source": "x_ecran_rev_vers_css1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "6",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "convertion de css",
         "data-cht_condition_js_menu": "this.__ig1.donnees_retournees.chi_id_utilisateur > 0;",
-        "data-cht_condition_menu": "\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)",
-        "data-chx_autorisation_menu": "49",
+        "data-cht_condition_menu": "sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)",
+        "data-chx_autorisation_menu": "42",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 29,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "txt",
+      "attributs": {
+        "data-chi_id_source": "524",
+        "data-chp_nom_source": "x_ecran_rev_vers_txt1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "7",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "convertion de textes",
+        "data-cht_condition_js_menu": "null",
+        "data-cht_condition_menu": "null",
+        "data-chx_autorisation_menu": "44",
+        "data-separateur": "0"
+      },
+      "separateur": 0
+    },
+    {
+      "id_interne": 30,
+      "id_interne_parent": 10,
+      "replie": 0,
+      "contient_des_enfants": 0,
+      "contenu": "src->pgm",
+      "attributs": {
+        "data-chi_id_source": "571",
+        "data-chp_nom_source": "x_ecran_source_vers_programme1_c.js",
+        "data-chp_methode_menu": "entree_module",
+        "data-chi_id_menu": "27",
+        "data-cht_initialisation_menu": "null",
+        "data-chp_titre_menu": "source vers programme",
+        "data-cht_condition_js_menu": "null",
+        "data-cht_condition_menu": "null",
+        "data-chx_autorisation_menu": "45",
         "data-separateur": "0"
       },
       "separateur": 0
     }
-  ],
-  "le_html_ul_li_du_menu": "<li data-liste_des_menus=\"1\">test<ul><li data-liste_des_menus=\"1\" data-separateur=\"1\">aaa<ul></ul></li><li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"29\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mon profile\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"49\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li></ul></li>    "
-}','1');
+  ]
+}','1'),
+('2','admin','2','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"567\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"29\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mon profile\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"\\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"49\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"520\",\"data-chp_nom_source\":\"x_ecran_rev_vers_js1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"36\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"82\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"29\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mon profile\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"49\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"36\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"82\" data-separateur=\"0\">js</li>    "}','1');
 /*================================================================================ FIN BLOC TABLE tbl_acces offset 0 */
 
 
@@ -144,8 +692,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
 ('518','x_ecran_rev_vers_css1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté'),
 ('519','x_ecran_rev_vers_html1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','
 sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','vous devez être connecté'),
-('520','x_ecran_rev_vers_js1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','
-sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','vous devez choisir un projet'),
+('520','x_ecran_rev_vers_js1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','vous devez être connecté'),
 ('521','x_ecran_rev_vers_matrice1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','
 sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté'),
 ('522','x_ecran_rev_vers_php1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté'),
@@ -239,66 +786,67 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_autorisations offset 0 (52) */
-INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chp_nom_autorisation ,  chx_source_autorisation ,  chx_acces_autorisation ,  che_pour_sous_liste_autorisation ) VALUES
-('25','dossiers client','489','1','0'),
-('26','autorisation client','561','1','0'),
-('27','sources client','525','1','0'),
-('28','genres client','544','1','0'),
-('29','bdds client','541','1','0'),
-('30','requetes client','547','1','0'),
-('31','groupes client','565','1','0'),
-('32','metiers client','556','1','0'),
-('33','acces client','558','1','0'),
-('34','menus client','563','1','0'),
-('35','utilisateurs client','569','1','0'),
-('36','generer_programmes client','553','1','0'),
-('37','matrice js','521','1','0'),
-('38','rev_js js','520','1','0'),
-('39','rev html js','519','1','0'),
-('40','rev php js','522','1','0'),
-('41','rev sql js','523','1','0'),
-('42','rev css js','518','1','0'),
-('44','rev txt js','524','1','0'),
-('45','src vers pgm','571','1','0'),
-('46','coordonnées client','567','1','0'),
-('49','coordonnées client','567','2','0'),
-('51','generer souches client','572','1','0'),
-('52','projet client','493','1','0'),
-('53','taches client','1011','1','0'),
-('54','rev client','574','1','0'),
-('55','travaux client','577','1','0'),
-('56','coordonnées client','568','2','0'),
-('57','taches serveur','1012','1','0'),
-('58','projet serveur','494','1','0'),
-('59','dossiers serveur','490','1','0'),
-('60','sources serveur','526','1','0'),
-('61','genres serveur','545','1','0'),
-('62','bdds serveur','542','1','0'),
-('63','svg_bdd client','549','1','0'),
-('64','svg_bdd serveur','550','1','0'),
-('65','requetes serveur','548','1','0'),
-('66','concevoir requete client','551','1','0'),
-('67','concevoir requete serveur','552','1','0'),
-('68','rev serveur','573','1','0'),
-('69','travaux serveur','578','1','0'),
-('70','groupes serveur','566','1','0'),
-('71','metiers serveur','557','1','0'),
-('72','acces serveur','560','1','0'),
-('73','autorisation serveur','562','1','0'),
-('74','menus serveur','564','1','0'),
-('75','utilisateurs serveur','570','1','0'),
-('76','generer programme serveur','554','1','0'),
-('77','generer souches serveur','576','1','0'),
-('78','coordonnées serveur','568','1','0'),
-('79','a_propos client','1000','0','0'),
-('81','_developpement client','52','1','0');
+/*================================================================================ DEBUT BLOC TABLE tbl_autorisations offset 0 (53) */
+INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chx_source_autorisation ,  chx_acces_autorisation ,  che_pour_sous_liste_autorisation ) VALUES
+('25','489','1','0'),
+('26','561','1','0'),
+('27','525','1','0'),
+('28','544','1','0'),
+('29','541','1','0'),
+('30','547','1','0'),
+('31','565','1','0'),
+('32','556','1','0'),
+('33','558','1','0'),
+('34','563','1','0'),
+('35','569','1','0'),
+('36','553','1','0'),
+('37','521','1','0'),
+('38','520','1','0'),
+('39','519','1','0'),
+('40','522','1','0'),
+('41','523','1','0'),
+('42','518','1','0'),
+('44','524','1','0'),
+('45','571','1','0'),
+('46','567','1','0'),
+('49','567','2','0'),
+('51','572','1','0'),
+('52','493','1','0'),
+('53','1011','1','0'),
+('54','574','1','0'),
+('55','577','1','0'),
+('56','568','2','0'),
+('57','1012','1','0'),
+('58','494','1','0'),
+('59','490','1','0'),
+('60','526','1','0'),
+('61','545','1','0'),
+('62','542','1','0'),
+('63','549','1','0'),
+('64','550','1','0'),
+('65','548','1','0'),
+('66','551','1','0'),
+('67','552','1','0'),
+('68','573','1','0'),
+('69','578','1','0'),
+('70','566','1','0'),
+('71','557','1','0'),
+('72','560','1','0'),
+('73','562','1','0'),
+('74','564','1','0'),
+('75','570','1','0'),
+('76','554','1','0'),
+('77','576','1','0'),
+('78','568','1','0'),
+('79','1000','0','0'),
+('81','52','1','0'),
+('82','520','2','0');
 /*================================================================================ FIN BLOC TABLE tbl_autorisations offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_menus offset 0 (28) */
+/*================================================================================ DEBUT BLOC TABLE tbl_menus offset 0 (29) */
 INSERT INTO tbl_menus (  chi_id_menu ,  cht_libelle_menu ,  chp_titre_menu ,  chx_autorisation_menu ,  chp_methode_menu ,  cht_initialisation_menu ,  cht_condition_menu ,  cht_condition_js_menu ) VALUES
 ('2','matrice','convertion de rev vers matrice','37','entree_module',NULL,NULL,NULL),
 ('3','js','convertion de javascript ','38','entree_module',NULL,NULL,NULL),
@@ -312,11 +860,7 @@ INSERT INTO tbl_menus (  chi_id_menu ,  cht_libelle_menu ,  chp_titre_menu ,  ch
 ('12','requêtes','liste des requêtes sur les bases','30','entree_module',NULL,'sup(donnees_retournees.chi_id_projet,0)','donnees_retournees.chi_id_projet > 0'),
 ('14','groupes','liste des groupes','31','entree_module',NULL,'sup(donnees_retournees.chi_id_projet,0)','donnees_retournees.chi_id_projet > 0'),
 ('15','métiers','liste des métiers','32','entree_module',NULL,'sup(donnees_retournees.chi_id_projet,0)','donnees_retournees.chi_id_projet > 0;'),
-('17','utilisateurs','liste des utilisateurs','35','entree_module',NULL,'et(
-   #(),
-   egalstricte(donnees_retournees.chi_id_projet,1),
-   egal(donnees_retournees._CA_,1)
-)','donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1;'),
+('17','utilisateurs','liste des utilisateurs','35','entree_module',NULL,'et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))','donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1;'),
 ('18','autorisations','liste des autorisations','26','entree_module',NULL,'sup(donnees_retournees.chi_id_projet,0)','donnees_retournees.chi_id_projet > 0;'),
 ('19','menus','liste des menus','34','entree_module',NULL,'sup(donnees_retournees.chi_id_projet,0)','donnees_retournees.chi_id_projet > 0;'),
 ('21','html','html','39','entree_module',NULL,NULL,NULL),
@@ -333,7 +877,8 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_retournees.chi_id_utilisateur > 0;'),
 ('33','revs','liste des revs','54','entree_module',NULL,'sup(donnees_retournees.chi_id_projet,0)','donnees_retournees.chi_id_projet > 0;'),
 ('34','travaux','liste des travaux','55','entree_module',NULL,'sup(donnees_retournees.chi_id_projet,0)','donnees_retournees.chi_id_projet > 0;'),
-('35','à propos','à propos','79','entree_module',NULL,NULL,NULL);
+('35','à propos','à propos','79','entree_module',NULL,NULL,NULL),
+('36','js','convertion de javascript ','82','entree_module',NULL,NULL,NULL);
 /*================================================================================ FIN BLOC TABLE tbl_menus offset 0 */
 
 
@@ -341,14 +886,14 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1249','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
-('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'11','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
+('1','poipoip','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1254','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'14','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (449) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (450) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  chp_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -2318,7 +2863,20 @@ par exemple, dans le projet 3, je pointais sur le menu_s à la place du menu_c
 
 #pm1(m1(n1(menus1),f1(page_modification1(chi_id_menu(13)))))','99','2026-04-30 12:23:56.611','2026-04-30 11:45:59.424','0','00_00_00'),
 ('457','1','créer un __fnt1_c, un __fnt1_s et inclure __fnts_c_et_s_ dans les deux','99','2026-05-03 18:07:38.325','2026-04-30 14:15:01.623','0','00_00_00'),
-('458','1','mettre les fonctions de test de champs dans les sql','7','2026-05-01 09:15:01.292','2026-05-01 09:15:01.292','0','00_00_00'),
+('458','1','mettre les fonctions de test de champs dans les sql
+ajouter dans la requete 111
+                if(
+                  !par.donnees[i].hasOwnProperty(''chp_priorite_tache'')
+                  || par.donnees[i][''chp_priorite_tache''] === null
+                  || !this.__ig1.est_num( par.donnees[i][''chp_priorite_tache''] )
+                 ){
+                    return({"__xst" : __xer , __xme : ''erreur sur le champ priorité 1'' });
+                }
+                const __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , par.donnees[i][''chp_priorite_tache''] , "priorite" );
+                if(__test_2_1[__xst] !== __xsu){
+                    return(__test_2_1);
+                }
+','7','2026-05-04 18:03:11.299','2026-05-01 09:15:01.292','0','00_00_00'),
 ('459','1','renommer 
 doit_contenir_n_caracteres 
 EN 
@@ -2342,11 +2900,13 @@ exemple sql 147','99','2026-05-03 18:06:44.563','2026-05-02 09:14:25.782','0','0
 ('465','1','créer une autorisation client et serveur pour sous_liste uniquement
 par exemple, on doit pouvoir séléctionner un utilisateur dans une sous liste 
 sans avoir le droit de gérer les utilisateurs','5','2026-05-03 11:11:10.672','2026-05-02 17:52:59.445','0','00_00_00'),
-('466','1','virer le champ chp_nom_autorisation','4','2026-05-03 13:44:26.784','2026-05-03 13:44:26.784','0','00_00_00'),
+('466','1','virer le champ chp_nom_autorisation','1','2026-05-04 08:32:46.190','2026-05-03 13:44:26.784','0','00_00_00'),
 ('467','1','ajouter les conditions pour les listes des 
-groupes/metiers/acces/autorisations....','3','2026-05-03 15:10:15.245','2026-05-03 15:10:06.600','0','00_00_00'),
-('468','1','mettre les autorisations utilisateur en session et les raz quand on modifie les autorisations coté interface','2','2026-05-03 17:16:14.869','2026-05-03 17:16:14.869','0','00_00_00'),
-('469','1','message après sauvegarde de base','1','2026-05-03 18:13:20.438','2026-05-03 18:13:03.074','0','00_00_00');
+groupes/metiers/acces/autorisations....','4','2026-05-03 15:10:15.245','2026-05-03 15:10:06.600','0','00_00_00'),
+('468','1','mettre les autorisations utilisateur en session et les raz quand on modifie les autorisations coté interface','3','2026-05-03 17:16:14.869','2026-05-03 17:16:14.869','0','00_00_00'),
+('469','1','message après sauvegarde de base','99','2026-05-04 08:27:46.297','2026-05-03 18:13:03.074','0','00_00_00'),
+('470','1','requete 145 sur env 3
+le source n''est pas bien maj sur disque quand on passe par l''interface de modification du sql','2','2026-05-04 13:35:00.362','2026-05-04 13:35:00.362','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -2402,7 +2962,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-26.5,39.5))
+   transform_base_sur_svg(translate(31.5,28.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_projets''),
@@ -2441,8 +3001,8 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chp_nom_projet''),
             nom_bref_du_champ(''nom''),
-            abrege_du_champ(''nom''),
-            typologie(),
+            abrege_du_champ(''nom du projet''),
+            typologie(chi),
             genre(11),
             est_libelle_lien(1)
          )
@@ -2454,8 +3014,8 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''cht_commentaire_projet''),
             nom_bref_du_champ(''commentaire''),
-            abrege_du_champ(''commentaire''),
-            typologie(),
+            abrege_du_champ(''commentaire sur le projet''),
+            typologie(chi),
             genre(6)
          )
       ),
@@ -2551,7 +3111,7 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chp_nom_groupe''),
             nom_bref_du_champ(''nom''),
-            abrege_du_champ(''nom''),
+            abrege_du_champ(''nom du groupe''),
             typologie(cht),
             genre(19),
             est_libelle_lien(1)
@@ -2612,7 +3172,7 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chp_nom_metier''),
             nom_bref_du_champ(''nom''),
-            abrege_du_champ(''nom''),
+            abrege_du_champ(''nom du metier''),
             typologie(cht),
             genre(19),
             est_libelle_lien(1)
@@ -2780,7 +3340,7 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chp_nom_dossier''),
             nom_bref_du_champ(''nom''),
-            abrege_du_champ(''nom''),
+            abrege_du_champ(''nom du dossier''),
             typologie(chp),
             genre(108),
             est_libelle_lien(1)
@@ -2895,8 +3455,8 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chp_nom_source''),
             nom_bref_du_champ(''nom''),
-            abrege_du_champ(''nom''),
-            typologie(),
+            abrege_du_champ(''nom du source''),
+            typologie(chi),
             genre(19),
             est_libelle_lien(1)
          )
@@ -3120,21 +3680,6 @@ créer_table(
          )
       ),
       champ(
-         nom_du_champ(''chp_nom_autorisation''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(255),
-         non_nulle(1),
-         meta(
-            genre_meta(champ),
-            nom_du_champ(''chp_nom_autorisation''),
-            nom_bref_du_champ(''nom''),
-            abrege_du_champ(''nom''),
-            typologie(chp),
-            genre(17),
-            est_libelle_lien(1)
-         )
-      ),
-      champ(
          nom_du_champ(''chx_source_autorisation''),
          espece_du_champ(INTEGER),
          non_nulle(1),
@@ -3174,19 +3719,10 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che_pour_sous_liste_autorisation''),
-            espece_du_champ(INTEGER),
-            typologie(che),
-            genre(5),
             nom_bref_du_champ(''pour sous liste''),
             abrege_du_champ(''pour accès sous liste''),
-            masquer_champ_dans_svg(0),
-            est_en_session(0),
-            est_pas_cascade_quand_maj(0),
-            nom_en_session(''''),
-            refe_enfant_droite(0),
-            refe_parent_gauche(0),
-            est_libelle_lien(0),
-            est_utilisateur_autre_que_courant(0)
+            typologie(che),
+            genre(5)
          )
       )
    )
@@ -3359,7 +3895,7 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chp_nom_de_connexion_utilisateur''),
             nom_bref_du_champ(''nom de connexion''),
-            abrege_du_champ(''nom de connexion''),
+            abrege_du_champ(''nom de connexion de l\''utilisateur''),
             typologie(cht),
             genre(3),
             est_libelle_lien(1)
@@ -3376,7 +3912,7 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chp_mot_de_passe_utilisateur''),
             nom_bref_du_champ(''mot de passe''),
-            abrege_du_champ(''mot de passe''),
+            abrege_du_champ(''mot de passe de l\''utilisateur''),
             typologie(cht),
             genre(13)
          )
@@ -3566,8 +4102,8 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chp_priorite_tache''),
             nom_bref_du_champ(''priorite''),
-            abrege_du_champ(''priorite''),
-            typologie(),
+            abrege_du_champ(''priorite de la tâche''),
+            typologie(chi),
             genre(99)
          )
       ),
@@ -3680,7 +4216,7 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chp_nom_genre''),
             nom_bref_du_champ(''nom''),
-            abrege_du_champ(''nom''),
+            abrege_du_champ(''nom du genre''),
             typologie(chp),
             genre(3),
             est_libelle_lien(1)
@@ -4193,7 +4729,7 @@ créer_table(
       permet_la_gestion_de(''requete''),
       distinction_pour_liste(''liste des requetes''),
       distinction_pour_isad(''d\''une requete''),
-      transform_base_sur_svg(translate(1040,113))
+      transform_base_sur_svg(translate(1052,19))
    ),
    champs(
       champ(
@@ -5247,7 +5783,8 @@ WHERE `chi_id_source` = :chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','20
          supegal(champ(`T0`,`chi_compteur1_utilisateur`),:T0_chi_compteur1_utilisateur),
          egal(champ(`T0`,`chx_acces_utilisateur`),:T0_chx_acces_utilisateur),
          comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),
-         egal(champ(`T1`,`che_actif_acces`),:T1_che_actif_acces)
+         egal(champ(`T1`,`che_actif_acces`),:T1_che_actif_acces),
+         pas_dans(champ(`T0`,`chx_acces_utilisateur`),:acces_pas_dans)
       )
    ),
    complements(
@@ -5266,7 +5803,8 @@ WHERE (`T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
    AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur
    AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
    AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
-   AND `T1`.`che_actif_acces` = :T1_che_actif_acces) 
+   AND `T1`.`che_actif_acces` = :T1_che_actif_acces
+   AND `T0`.`chx_acces_utilisateur` NOT IN :acces_pas_dans) 
 ORDER BY `T0`.`chi_id_utilisateur` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
@@ -5346,7 +5884,6 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00
 )  ','DELETE FROM b1.tbl_utilisateurs
 WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
 ('124','métier','liste_ecran','sélectionner(
-
    valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T1`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`)),
    provenance(
       table_reference(
@@ -5358,7 +5895,12 @@ WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:0
       )
    ),
    conditions(
-      et(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier))
+      et(
+         #(),
+         egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),
+         comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),
+         supegal(champ(`T0`,`chi_id_metier`),:metier_mini)
+      )
    ),
    complements(
       trier_par((champ(`T0`,`chi_id_metier`),décroissant())),
@@ -5369,8 +5911,9 @@ WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:0
  FROM b1.tbl_metiers T0
  LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
 
-WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
-   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+WHERE ( /* */ `T0`.`chi_id_metier` = :T0_chi_id_metier
+   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
+   AND `T0`.`chi_id_metier` >= :metier_mini) 
 ORDER BY `T0`.`chi_id_metier` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
@@ -5560,7 +6103,8 @@ WHERE `chi_id_groupe` = :chi_id_groupe ;',NULL,'1','2025-10-07 12:18:31.517','20
          egal(champ(`T0`,`chx_groupe_acces`),:T0_chx_groupe_acces),
          comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),
          egal(champ(`T0`,`chx_metier_acces`),:T0_chx_metier_acces),
-         comme(champ(`T2`,`chp_nom_metier`),:T2_chp_nom_metier)
+         comme(champ(`T2`,`chp_nom_metier`),:T2_chp_nom_metier),
+         pas_dans(champ(`T0`,`chi_id_acces`),:acces_pas_dans)
       )
    ),
    complements(
@@ -5581,7 +6125,8 @@ WHERE (`T0`.`chi_id_acces` = :T0_chi_id_acces
    AND `T0`.`chx_groupe_acces` = :T0_chx_groupe_acces
    AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
    AND `T0`.`chx_metier_acces` = :T0_chx_metier_acces
-   AND `T2`.`chp_nom_metier` LIKE :T2_chp_nom_metier) 
+   AND `T2`.`chp_nom_metier` LIKE :T2_chp_nom_metier
+   AND `T0`.`chi_id_acces` NOT IN :acces_pas_dans) 
 ORDER BY `T0`.`chi_id_acces` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
@@ -5664,7 +6209,6 @@ WHERE `chi_id_acces` = :chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000
 ('140','autorisations','liste_ecran','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_autorisation`),
-      champ(`T0`,`chp_nom_autorisation`),
       champ(`T0`,`chx_acces_autorisation`),
       champ(`T0`,`chx_source_autorisation`),
       champ(`T0`,`che_pour_sous_liste_autorisation`),
@@ -5692,7 +6236,8 @@ WHERE `chi_id_acces` = :chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000
          egal(champ(`T0`,`chx_acces_autorisation`),:T0_chx_acces_autorisation),
          egal(champ(`T0`,`chx_source_autorisation`),:T0_chx_source_autorisation),
          comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),
-         egal(champ(`T0`,`che_pour_sous_liste_autorisation`),:T0_che_pour_sous_liste_autorisation)
+         egal(champ(`T0`,`che_pour_sous_liste_autorisation`),:T0_che_pour_sous_liste_autorisation),
+         pas_dans(champ(`T0`,`chx_acces_autorisation`),:acces_pas_dans)
       )
    ),
    complements(
@@ -5700,8 +6245,8 @@ WHERE `chi_id_acces` = :chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000
       limité_à(quantité(:quantitee),début(:debut))
    )
 )  ','SELECT 
-`T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
-`T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`chx_dossier_id_source`
+`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
+`T2`.`chp_nom_source` , `T2`.`chx_dossier_id_source`
  FROM b1.tbl_autorisations T0
  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
 
@@ -5712,14 +6257,14 @@ WHERE (`T2`.`chp_nom_source` LIKE :T2_chp_nom_source
    AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
    AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
    AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
-   AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation) 
+   AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation
+   AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
 ORDER BY `T0`.`chx_acces_autorisation` DESC, `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC, `T2`.`chp_nom_source` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
 ('141','autorisations','select','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_autorisation`),
-      champ(`T0`,`chp_nom_autorisation`),
       champ(`T0`,`chx_acces_autorisation`),
       champ(`T0`,`chx_source_autorisation`),
       champ(`T0`,`che_pour_sous_liste_autorisation`),
@@ -5743,8 +6288,8 @@ LIMIT :quantitee OFFSET :debut
    ),
    conditions(egal(champ(`T0`,`chi_id_autorisation`),:T0_chi_id_autorisation))
 )  ','SELECT 
-`T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
-`T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
+`T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
  FROM b1.tbl_autorisations T0
  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
 
@@ -5753,12 +6298,7 @@ LIMIT :quantitee OFFSET :debut
 WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
 ('142','autorisations','insert','insérer(
-   valeurs(
-      affecte(champ(`chx_acces_autorisation`),:chx_acces_autorisation),
-      affecte(champ(`chx_source_autorisation`),:chx_source_autorisation),
-      affecte(champ(`chp_nom_autorisation`),:chp_nom_autorisation),
-      affecte(champ(`che_pour_sous_liste_autorisation`),:che_pour_sous_liste_autorisation),
-   ),
+   valeurs(affecte(champ(`chx_acces_autorisation`),:chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:chx_source_autorisation),affecte(champ(`che_pour_sous_liste_autorisation`),:che_pour_sous_liste_autorisation)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_autorisations,base(b1)))
@@ -5767,16 +6307,14 @@ WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
 )  ','INSERT INTO b1.`tbl_autorisations`(
     `chx_acces_autorisation` , 
     `chx_source_autorisation` , 
-    `chp_nom_autorisation` , 
     `che_pour_sous_liste_autorisation`
 ) VALUES (
     :chx_acces_autorisation , 
     :chx_source_autorisation , 
-    :chp_nom_autorisation , 
     :che_pour_sous_liste_autorisation
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
 ('143','autorisations','update','modifier(
-   valeurs(affecte(champ(`chx_acces_autorisation`),:n_chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:n_chx_source_autorisation),affecte(champ(`chp_nom_autorisation`),:n_chp_nom_autorisation),affecte(champ(`che_pour_sous_liste_autorisation`),:n_che_pour_sous_liste_autorisation)),
+   valeurs(affecte(champ(`chx_acces_autorisation`),:n_chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:n_chx_source_autorisation),affecte(champ(`che_pour_sous_liste_autorisation`),:n_che_pour_sous_liste_autorisation)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
@@ -5786,7 +6324,6 @@ WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
 )  ','UPDATE b1.tbl_autorisations SET 
    `chx_acces_autorisation` = :n_chx_acces_autorisation , 
    `chx_source_autorisation` = :n_chx_source_autorisation , 
-   `chp_nom_autorisation` = :n_chp_nom_autorisation , 
    `che_pour_sous_liste_autorisation` = :n_che_pour_sous_liste_autorisation
 WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
 ('144','autorisations','delete','supprimer(
@@ -5800,7 +6337,6 @@ WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',NULL,'0','2000-01-01 00:
 )  ','DELETE FROM b1.tbl_autorisations
 WHERE `chi_id_autorisation` = :chi_id_autorisation ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
 ('145','menus','liste_ecran','sélectionner(
-
    valeurs(
       champ(`T0`,`chi_id_menu`),
       champ(`T0`,`chp_titre_menu`),
@@ -5837,9 +6373,9 @@ WHERE `chi_id_autorisation` = :chi_id_autorisation ;',NULL,'0','2000-01-01 00:00
          comme(champ(`T0`,`cht_libelle_menu`),:T0_cht_libelle_menu),
          comme(champ(`T0`,`chp_titre_menu`),:T0_chp_titre_menu),
          egal(champ(`T0`,`chx_autorisation_menu`),:T0_chx_autorisation_menu),
-         comme(champ(`T1`,`chp_nom_autorisation`),:T1_chp_nom_autorisation),
          comme(champ(`T0`,`chp_methode_menu`),:T0_chp_methode_menu),
-         egal(champ(`T1`,`chx_acces_autorisation`),:T1_chx_acces_autorisation)
+         egal(champ(`T1`,`chx_acces_autorisation`),:T1_chx_acces_autorisation),
+         pas_dans(champ(`T1`,`chx_acces_autorisation`),:acces_pas_dans)
       )
    ),
    complements(
@@ -5861,14 +6397,13 @@ WHERE (`T3`.`chp_nom_source` LIKE :T3_chp_nom_source
    AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
    AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
    AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
-   AND `T1`.`chp_nom_autorisation` LIKE :T1_chp_nom_autorisation
    AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
-   AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation) 
+   AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation
+   AND `T1`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
 ORDER BY `T0`.`chi_id_menu` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
 ('146','menus','select','sélectionner(
-
    valeurs(
       champ(`T0`,`chi_id_menu`),
       champ(`T0`,`chp_titre_menu`),
@@ -5883,7 +6418,6 @@ LIMIT :quantitee OFFSET :debut
       champ(`T3`,`chp_nom_source`),
       champ(`T3`,`che_binaire_source`),
       champ(`T0`,`cht_condition_js_menu`),
-      champ(`T1`,`chp_nom_autorisation`)
    ),
    provenance(
       table_reference(
@@ -5906,7 +6440,7 @@ LIMIT :quantitee OFFSET :debut
 )  ','SELECT 
 `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
 `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-`T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu` , `T1`.`chp_nom_autorisation`
+`T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
  FROM b1.tbl_menus T0
  LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
 
@@ -6013,7 +6547,6 @@ WHERE `T0`.`che_autorisation_globale_source` = 1
 ('152',NULL,'select','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_autorisation`),
-      champ(`T0`,`chp_nom_autorisation`),
       champ(`T0`,`chx_acces_autorisation`),
       champ(`T0`,`chx_source_autorisation`),
       champ(`T0`,`che_pour_sous_liste_autorisation`),
@@ -6036,8 +6569,8 @@ WHERE `T0`.`che_autorisation_globale_source` = 1
       trier_par((champ(`T0`,`chx_acces_autorisation`),croissant()))
    )
 )  ','SELECT 
-`T0`.`chi_id_autorisation` , `T0`.`chp_nom_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
-`T1`.`chp_nom_source` , `T1`.`cht_condition_rev_source` , `T1`.`cht_condition_js_source` , `T1`.`cht_notification_ko_source`
+`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_source` , 
+`T1`.`cht_condition_rev_source` , `T1`.`cht_condition_js_source` , `T1`.`cht_notification_ko_source`
  FROM b1.tbl_autorisations T0
  LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
 

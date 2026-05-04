@@ -49,6 +49,9 @@ class sql_119{
         if(par.hasOwnProperty( 'T1_che_actif_acces' ) && par['T1_che_actif_acces'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T1`.`che_actif_acces`' , par['T1_che_actif_acces'] );
         }
+        if(par.hasOwnProperty( 'acces_pas_dans' ) && par['acces_pas_dans'] !== ''){
+            where0+=` AND \`T0\`.\`chx_acces_utilisateur\` NOT IN ` + par['acces_pas_dans'] + '\r\n';
+        }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_utilisateur\` DESC`;

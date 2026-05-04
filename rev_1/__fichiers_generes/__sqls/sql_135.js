@@ -51,6 +51,9 @@ class sql_135{
         if(par.hasOwnProperty( 'T2_chp_nom_metier' ) && par['T2_chp_nom_metier'] !== ''){
             where0+=` AND \`T2\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T2_chp_nom_metier'] , 'T2_chp_nom_metier' ) + '\r\n';
         }
+        if(par.hasOwnProperty( 'acces_pas_dans' ) && par['acces_pas_dans'] !== ''){
+            where0+=` AND \`T0\`.\`chi_id_acces\` NOT IN ` + par['acces_pas_dans'] + '\r\n';
+        }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_acces\` DESC`;
