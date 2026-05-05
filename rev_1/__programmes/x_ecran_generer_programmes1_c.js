@@ -699,6 +699,7 @@ class x_ecran_generer_programmes1{
                                            || matle[matle[k][7]][1] === 'sup'
                                            || matle[matle[k][7]][1] === 'infegal'
                                            || matle[matle[k][7]][1] === 'supegal'
+                                           || matle[matle[k][7]][1] === 'pas_dans'
                                     ){
                                         let cle='';
                                         let libelle_selection='';
@@ -712,6 +713,8 @@ class x_ecran_generer_programmes1{
                                             libelle_selection=' &lt;=';
                                         }else if(matle[matle[k][7]][1] === 'supegal'){
                                             libelle_selection=' &gt;=';
+                                        }else if(matle[matle[k][7]][1] === 'pas_dans'){
+                                            libelle_selection=' NOT IN';
                                         }else{
                                             console.log( 'il manque le traitement du libelle ' + matle[matle[k][7]][1] + ' ' + this.__ig1.nl2() + '' , 'color:red;background-color:yellow;' );
                                             /* matle[matle[k][7]][1] */
@@ -1325,109 +1328,6 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='          conversion des données numériques fin\r\n';
                 src_serveur_js2+='        */\r\n';
             }
-            src_serveur_js2+='        /*\r\n';
-            src_serveur_js2+='          tests début modifier serveur\r\n';
-            src_serveur_js2+='          =====================================================================================================\r\n';
-            src_serveur_js2+='        */\r\n';
-            for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
-                let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
-                if(nom_du_champ === 'fld_heure_debut_prestation'){
-                    debugger;
-                }
-                let obj_champ=this.#obj_table.champs[nom_du_champ];
-                let reference_externe_base='';
-                let reference_externe_table='';
-                let reference_externe_champ='';
-                if(obj_champ.meta.hasOwnProperty( 'reference_externe_base' )){
-                    reference_externe_base=parseInt( obj_champ.meta.reference_externe_base , 10 );
-                    reference_externe_table=obj_champ.meta.reference_externe_table;
-                    reference_externe_champ=obj_champ.meta.reference_externe_champ;
-                    /*
-                      this.#les_bases
-                    */
-                }
-                if(reference_externe_base === 1
-                       && reference_externe_table === 'tbl_utilisateurs'
-                       && reference_externe_champ === 'chi_id_utilisateur'
-                ){
-                    if(obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
-                           && obj_champ.meta.est_utilisateur_autre_que_courant === 1
-                    ){
-                        if(obj_champ.non_nulle === true){
-                            src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
-                            src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__ig1.nl2() + \']\');\r\n';
-                            src_serveur_js2+='            return{__xst:__xer};\r\n';
-                            src_serveur_js2+='        }\n';
-                        }else{
-                        }
-                    }else{
-                        src_serveur_js2+='        /* pas de test pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
-                    }
-                }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
-                       || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
-                       || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
-                       || obj_champ.genre_objet_du_champ.che_est_session_genre === 1
-                           && obj_champ.genre_objet_du_champ.chp_nom_en_session_genre !== null
-                ){
-                }else{
-                    if(obj_champ.genre_objet_du_champ.che_est_session_genre === 1 || obj_champ.champ_session === true){
-                    }else{
-                        if(obj_champ.non_nulle === true){
-                            src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
-                            src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__ig1.nl2() + \']\');\r\n';
-                            src_serveur_js2+='            return{__xst:__xer};\r\n';
-                            src_serveur_js2+='        }\n';
-                        }
-                    }
-                    if(obj_champ.genre_objet_du_champ.che_est_session_genre === 1){
-                    }else{
-                        if(obj_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
-                            var obj1=this.__ig1.__rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
-                            if(obj1.__xst !== __xsu){
-                                return({"__xst" : __xer});
-                            }
-                            let mat1=obj1.__xva;
-                            let l01=mat1.length;
-                            for( let j=1 ; j < l01 ; j=mat1[j][12] ){
-                                if(mat1[j][2] === 'f'){
-                                    src_serveur_js2+='\n';
-                                    src_serveur_js2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
-                                    if(mat1[j][8] === 0){
-                                    }else{
-                                        for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
-                                            if(mat1[k][2] === 'c'){
-                                                if(mat1[k][4] === 0){
-                                                    src_serveur_js2+=mat1[k][1] + ',';
-                                                }else if(mat1[k][4] === 1){
-                                                    /* entre quotes */
-                                                    src_serveur_js2+='\'' + mat1[k][1] + '\',';
-                                                }else{
-                                                    /* afr */
-                                                    debugger;
-                                                    return({"__xst" : __xer});
-                                                }
-                                            }else{
-                                                return({"__xst" : __xer});
-                                            }
-                                        }
-                                    }
-                                    src_serveur_js2+='form[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.abrege_du_champ + '\');\r\n';
-                                    src_serveur_js2+='        if( __test_' + i + '_' + j + '[__xst] !== __xsu ){\n';
-                                    src_serveur_js2+='            return{__xst:__xer};\r\n';
-                                    src_serveur_js2+='        }\n\n';
-                                }else{
-                                    return({"__xst" : __xer});
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            src_serveur_js2+='        /*\r\n';
-            src_serveur_js2+='          =====================================================================================================\r\n';
-            src_serveur_js2+='          tests fin modifier serveur\r\n';
-            src_serveur_js2+='        */\r\n';
-            src_serveur_js2+='\r\n';
             src_serveur_js2+='        let retour_a_la_liste=false;\r\n';
             src_serveur_js2+='        let l01=mat.length;\r\n';
             src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
@@ -1461,21 +1361,16 @@ class x_ecran_generer_programmes1{
             }
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let tt' + ref_select + '=await this.__ig1.sql_iii( ' + ref_select + ' , criteres_select_' + ref_select + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
-            src_serveur_js2+='\r\n';
             src_serveur_js2+='        if(tt' + ref_select + '[__xst] !== __xsu){\r\n';
             src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'enregistrement non trouvé : aucune modification effectuée [\' + this.__ig1.nl2() );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        if(tt' + ref_select + '[__xst] === __xsu && tt' + ref_select + '[__xva].length === 1){\r\n';
-            src_serveur_js2+='\r\n';
-            src_serveur_js2+='\r\n';
-            src_serveur_js2+='\r\n';
+            src_serveur_js2+='            await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
             src_serveur_js2+='            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt' + ref_select + '[__xva][0] , __db1 );\r\n';
             src_serveur_js2+='            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){\r\n';
             src_serveur_js2+='                return({"__xst" : __xer});\r\n';
             src_serveur_js2+='            }\r\n';
-            src_serveur_js2+='\r\n';
-            src_serveur_js2+='\r\n';
             src_serveur_js2+='            let criteres_' + ref_update + '={\r\n';
             src_serveur_js2+='                /**/\r\n';
             for( let i=0 ; i < liste_des_champs_condition_update.length ; i++ ){
@@ -1543,19 +1438,10 @@ class x_ecran_generer_programmes1{
                 }
             }
             src_serveur_js2+='            };\r\n';
-            src_serveur_js2+='\r\n';
-            src_serveur_js2+='            await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
             src_serveur_js2+='            let tt' + ref_update + '=await this.__ig1.sql_iii( ' + ref_update + ' , criteres_' + ref_update + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
-            src_serveur_js2+='\r\n';
-            src_serveur_js2+='            if(tt' + ref_update + '[__xst] !== __xsu ){\r\n';
-            src_serveur_js2+='                if(tt' + ref_update + '[\'__xme\']!==\'\'){\r\n';
-            src_serveur_js2+='                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt' + ref_update + '[\'__xme\']+\' [\' + this.__ig1.nl2() );\r\n';
-            src_serveur_js2+='                }else{\r\n';
-            src_serveur_js2+='                    this.__ig1.donnees_retournees.__xsi[__xer].push( \'erreur de modification [\' + this.__ig1.nl2() );\r\n';
-            src_serveur_js2+='                }\r\n';
-            src_serveur_js2+='                return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='            if(tt' + ref_update + '[__xst] !== __xsu  || tt' + ref_update + '.changements !== 1){\r\n';
+            src_serveur_js2+='                return({"__xst" : __xer , "__xme" : tt' + ref_update + '.__xme  });\r\n';
             src_serveur_js2+='            }\r\n';
-            src_serveur_js2+='\r\n';
             src_serveur_js2+='            let __taam=await this.tests_et_actions_apres_modifier(mat , d , form , tt' + ref_select + '[__xva][0] , __db1);\r\n';
             src_serveur_js2+='            if(__taam[__xst] !== __xsu ){\r\n';
             src_serveur_js2+='                await __db1.exec(\'ROLLBACK;\');\r\n';
@@ -1563,7 +1449,6 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='                return({"__xst" : __xer});\r\n';
             src_serveur_js2+='            }\r\n';
             src_serveur_js2+='            await __db1.exec(\'COMMIT;\');\r\n';
-            src_serveur_js2+='\r\n';
             src_serveur_js2+='            if(retour_a_la_liste === true){\r\n';
             src_serveur_js2+='                if(form[\'__mat_liste_si_ok\']){\r\n';
             src_serveur_js2+='                    let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
@@ -1577,9 +1462,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        }else{\r\n';
             src_serveur_js2+='            this.__ig1.donnees_retournees[__xva][\'page_modification1\']=tt' + ref_select + ';\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='\r\n';
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
-            src_serveur_js2+='\r\n';
             src_serveur_js2+='    }\r\n';
         }
         if(ref_select !== '' && ref_update !== ''){
@@ -2847,114 +2730,15 @@ class x_ecran_generer_programmes1{
                 }
                 src_serveur_js2+='        /* conversion des données numériques fin */\r\n';
             }
-            for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
-                let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
-                let obj_champ=this.#obj_table.champs[nom_du_champ];
-                let reference_externe_base='';
-                let reference_externe_table='';
-                let reference_externe_champ='';
-                if(obj_champ.meta.hasOwnProperty( 'reference_externe_base' )){
-                    reference_externe_base=parseInt( obj_champ.meta.reference_externe_base , 10 );
-                    reference_externe_table=obj_champ.meta.reference_externe_table;
-                    reference_externe_champ=obj_champ.meta.reference_externe_champ;
-                    /*
-                      this.#les_bases
-                    */
-                }
-                let valeur_par_defaut='null';
-                if(reference_externe_base === 1
-                       && reference_externe_table === 'tbl_utilisateurs'
-                       && reference_externe_champ === 'chi_id_utilisateur'
-                ){
-                    if(obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
-                           && obj_champ.meta.est_utilisateur_autre_que_courant === 1
-                    ){
-                        if(obj_champ.non_nulle === true){
-                            src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
-                            src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__ig1.nl2() + \']\');\r\n';
-                            src_serveur_js2+='            return{__xst:__xer};\r\n';
-                            src_serveur_js2+='        }\n';
-                        }
-                    }else{
-                        src_serveur_js2+='        /* pas de test pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
-                    }
-                }else if(obj_champ.genre_objet_du_champ
-                       && (obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
-                           || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
-                           || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
-                           || obj_champ.genre_objet_du_champ.che_est_session_genre === 1
-                               && obj_champ.genre_objet_du_champ.chp_nom_en_session_genre !== null)
-                ){
-                }else{
-                    if(obj_champ.genre_objet_du_champ
-                               && obj_champ.genre_objet_du_champ.che_est_session_genre === 1
-                           || obj_champ.champ_session === true
-                    ){
-                    }else{
-                        if(obj_champ.non_nulle === true){
-                            src_serveur_js2+='        if(form[\'' + nom_du_champ + '\'] === null || form[\'' + nom_du_champ + '\']===\'\'){\n';
-                            src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push(\'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__ig1.nl2() + \']\');\r\n';
-                            src_serveur_js2+='            return{__xst:__xer};\r\n';
-                            src_serveur_js2+='        }\n';
-                        }
-                    }
-                    if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.che_est_session_genre === 1){
-                    }else{
-                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
-                            var obj1=this.__ig1.__rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
-                            if(obj1.__xst !== __xsu){
-                                return({"__xst" : __xer});
-                            }
-                            let mat1=obj1.__xva;
-                            let l01=mat1.length;
-                            for( let j=1 ; j < l01 ; j=mat1[j][12] ){
-                                if(mat1[j][2] === 'f'){
-                                    src_serveur_js2+='\n';
-                                    src_serveur_js2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
-                                    if(mat1[j][8] === 0){
-                                    }else{
-                                        for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
-                                            if(mat1[k][2] === 'c'){
-                                                if(mat1[k][4] === 0){
-                                                    src_serveur_js2+=mat1[k][1] + ',';
-                                                }else if(mat1[k][4] === 1){
-                                                    src_serveur_js2+='\'' + mat1[k][1].replace( /\\/g , '\\\\' ).replace( /`'/g , '\\\'' ) + '\',';
-                                                }else{
-                                                    /* afr */
-                                                    debugger;
-                                                    return({"__xst" : __xer});
-                                                }
-                                            }else{
-                                                return({"__xst" : __xer});
-                                            }
-                                        }
-                                    }
-                                    src_serveur_js2+='form[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.abrege_du_champ + '\');\r\n';
-                                    src_serveur_js2+='        if(__test_' + i + '_' + j + '[__xst]!==__xsu){\n';
-                                    src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push(\'erreur sur le contenu de  "' + obj_champ.meta.abrege_du_champ + '" [\' + this.__ig1.nl2() + \']\');\r\n';
-                                    src_serveur_js2+='            return{__xst:__xer};\r\n';
-                                    src_serveur_js2+='        }\n\n';
-                                }else{
-                                    return({"__xst" : __xer});
-                                }
-                            }
-                        }
-                    }
-                }
-            }
             if(this.chi_id_projet <= 2){
                 src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
             }else{
                 src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
             }
             src_serveur_js2+='        let __tac=await this.tests_avant_creer(mat , d , form,__db1);\r\n';
-            src_serveur_js2+='\r\n';
-            src_serveur_js2+='\r\n';
             src_serveur_js2+='        if(__tac[__xst] !== __xsu){\r\n';
-            src_serveur_js2+='\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='\r\n';
             src_serveur_js2+='        let criteres_' + ref_insert + '={\r\n';
             src_serveur_js2+='            donnees :[{\r\n';
             for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){

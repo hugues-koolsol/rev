@@ -530,18 +530,6 @@ class travaux1{
         form['chx_utilisateur_travail']=form['chx_utilisateur_travail'] === null ? ( null ) : ( parseInt( form['chx_utilisateur_travail'] , 10 ) );
         form['chx_projet_travail']=form['chx_projet_travail'] === null ? ( null ) : ( parseInt( form['chx_projet_travail'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_resume_travail'] === null || form['chp_resume_travail'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_etat_travail'] === null || form['chp_etat_travail'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_projet_travail'] === null || form['chx_projet_travail'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -853,18 +841,6 @@ class travaux1{
         /* conversion des données numériques début */
         form['chx_projet_travail']=form['chx_projet_travail'] === null || form['chx_projet_travail'] === '' || form['chx_projet_travail'] === undefined ? ( 1 ) : ( parseInt( form['chx_projet_travail'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_resume_travail'] === null || form['chp_resume_travail'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_etat_travail'] === null || form['chp_etat_travail'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_projet_travail'] === null || form['chx_projet_travail'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){

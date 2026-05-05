@@ -22,6 +22,31 @@ class sql_307{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                /* test "non nul" sur le champ "chi_id_dossier" */
+                if(par.donnees[i]['chi_id_dossier'] === null || par.donnees[i]['chi_id_dossier']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "id" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /*
+                  === test spécifique sur le champ "chp_nom_dossier" ===
+                */
+                let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1(par.donnees[i]['chp_nom_dossier'],'nom du dossier');
+                if(__test_1_1.__xst !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_1_1.__xme);
+                    return{"__xst" : __xer};
+                }
+
+                /* test "non nul" sur le champ "chx_parent_dossier" */
+                if(par.donnees[i]['chx_parent_dossier'] === null || par.donnees[i]['chx_parent_dossier']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "parent" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /*
+                  === pas === de test sur le champ "chd__dtm_dossier"
+                */
+                /*
+                  === pas === de test sur le champ "chd__dtc_dossier"
+                */
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

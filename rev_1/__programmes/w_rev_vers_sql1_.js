@@ -1012,7 +1012,7 @@ class w_rev_vers_sql1{
                                             liste_des_valeurs_pour_insert+=CRLF + '    ' + valeur_du_champ;
                                             liste_des_valeurs_pour_insert_js+=CRLF + '    ' + valeur_du_champ;
                                             options.tableau_des_valeurs_pour_insert.push( [valeur_du_champ.replace( /\$par\[/g , '$par[$i][' ),nom_du_champ] );
-                                            options.tableau_des_valeurs_pour_insert_js.push( [valeur_du_champ_js.replace( /\par\[/g , 'par.donnees[i][' ),nom_du_champ] );
+                                            options.tableau_des_valeurs_pour_insert_ou_update_js.push( [valeur_du_champ_js.replace( /\par\[/g , 'par.donnees[i][' ),nom_du_champ] );
                                         }else{
                                             if(this.#tb[i][1] === 'modifier'){
                                                 la_valeur+=CRLF + '   ';
@@ -2392,7 +2392,7 @@ class w_rev_vers_sql1{
             "debut_sql_pour_insert" : '' ,
             "debut_sql_pour_insert_js" : '' ,
             "tableau_des_valeurs_pour_insert" : [] ,
-            "tableau_des_valeurs_pour_insert_js" : [] ,
+            "tableau_des_valeurs_pour_insert_ou_update_js" : [] ,
             "tableau_des_champs_pour_select_js" : [] ,
             "liste_des_tables_pour_select_js" : '' ,
             "tableau_des_tables_utilisees" : [] ,
@@ -2422,7 +2422,7 @@ class w_rev_vers_sql1{
             obj.debut_sql_pour_insert=options.debut_sql_pour_insert;
             obj.debut_sql_pour_insert_js=options.debut_sql_pour_insert_js;
             obj.tableau_des_valeurs_pour_insert=options.tableau_des_valeurs_pour_insert;
-            obj.tableau_des_valeurs_pour_insert_js=options.tableau_des_valeurs_pour_insert_js;
+            obj.tableau_des_valeurs_pour_insert_ou_update_js=options.tableau_des_valeurs_pour_insert_ou_update_js;
             obj.tableau_des_champs_pour_select_js=options.tableau_des_champs_pour_select_js;
             obj.liste_des_tables_pour_select_js=options.liste_des_tables_pour_select_js;
             obj.tableau_des_tables_utilisees=options.tableau_des_tables_utilisees;

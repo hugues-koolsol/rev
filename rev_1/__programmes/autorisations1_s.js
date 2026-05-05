@@ -324,14 +324,6 @@ class autorisations1{
             parseInt( form['che_pour_sous_liste_autorisation'] , 10 )
           );
         /* conversion des données numériques fin */
-        if(form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['che_pour_sous_liste_autorisation'] === null || form['che_pour_sous_liste_autorisation'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pour accès sous liste" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -643,14 +635,6 @@ class autorisations1{
             parseInt( form['che_pour_sous_liste_autorisation'] , 10 )
           );
         /* conversion des données numériques fin */
-        if(form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['che_pour_sous_liste_autorisation'] === null || form['che_pour_sous_liste_autorisation'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pour accès sous liste" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){

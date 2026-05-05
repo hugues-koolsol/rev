@@ -134,7 +134,7 @@ class v_svg_bdd1{
             },
         {
                 "nom_du_meta_table" : 'fonctions_spéciales1' ,
-                "exemple" : '"ne_pas_supprimer_id_un(1)"' ,
+                "exemple" : '"ne_pas_supprimer_id_un(1),ne_pas_modifier(0)"' ,
                 "zone_html2" : 'textarea' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,

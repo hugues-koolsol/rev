@@ -109,14 +109,6 @@ class metiers1{
         form['chi_id_metier']=form['chi_id_metier'] === null ? ( null ) : ( parseInt( form['chi_id_metier'] , 10 ) );
         form['chx_parent_metier']=form['chx_parent_metier'] === null ? ( null ) : ( parseInt( form['chx_parent_metier'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_nom_metier'] === null || form['chp_nom_metier'] === ''){
-            this.__ig1.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_metier'] , 'nom' );
-        if(__test_0_1[__xst] !== __xsu){
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -419,16 +411,6 @@ class metiers1{
         /* conversion des données numériques début */
         form['chx_parent_metier']=form['chx_parent_metier'] === null || form['chx_parent_metier'] === '' || form['chx_parent_metier'] === undefined ? ( null ) : ( parseInt( form['chx_parent_metier'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_nom_metier'] === null || form['chp_nom_metier'] === ''){
-            this.__ig1.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_metier'] , 'nom' );
-        if(__test_0_1[__xst] !== __xsu){
-            this.__ig1.__xsi[__xer].push( 'erreur sur le contenu de  "nom" [' + this.__ig1.nl2() + ']' );
-            this.__ig1.donnees_retournees.__xst=__xer;
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){

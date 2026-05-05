@@ -23,6 +23,30 @@ class sql_117{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                /* test "non nul" sur le champ "chx_dossier_id_source" */
+                if(par.donnees[i]['chx_dossier_id_source'] === null || par.donnees[i]['chx_dossier_id_source']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "dossier id" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "chp_nom_source" */
+                if(par.donnees[i]['chp_nom_source'] === null || par.donnees[i]['chp_nom_source']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du source" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /*
+                  === test spécifique sur le champ "chp_nom_source" ===
+                */
+                let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(par.donnees[i]['chp_nom_source'],'nom du source');
+                if(__test_1_1.__xst !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_1_1.__xme);
+                    return{"__xst" : __xer};
+                }
+
+                /* test "non nul" sur le champ "che_binaire_source" */
+                if(par.donnees[i]['che_binaire_source'] === null || par.donnees[i]['che_binaire_source']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "binaire" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

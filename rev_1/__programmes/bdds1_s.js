@@ -676,10 +676,6 @@ class bdds1{
         /* conversion des données numériques début */
         form['chi_id_basedd']=form['chi_id_basedd'] === null ? ( null ) : ( parseInt( form['chi_id_basedd'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_fournisseur_basedd'] === null || form['chp_fournisseur_basedd'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "fournisseur" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -955,10 +951,6 @@ class bdds1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        if(form['chp_fournisseur_basedd'] === null || form['chp_fournisseur_basedd'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "fournisseur" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){

@@ -519,14 +519,6 @@ class requetes1{
         form['chi_id_requete']=form['chi_id_requete'] === null ? ( null ) : ( parseInt( form['chi_id_requete'] , 10 ) );
         form['che_est_souche_requete']=form['che_est_souche_requete'] === null ? ( null ) : ( parseInt( form['che_est_souche_requete'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['che_est_souche_requete'] === null || form['che_est_souche_requete'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "requête souche ?" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_type_requete'] === null || form['chp_type_requete'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "type de requête" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -996,14 +988,6 @@ class requetes1{
         /* conversion des données numériques début */
         form['che_est_souche_requete']=form['che_est_souche_requete'] === null || form['che_est_souche_requete'] === '' || form['che_est_souche_requete'] === undefined ? ( 0 ) : ( parseInt( form['che_est_souche_requete'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_type_requete'] === null || form['chp_type_requete'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "type de requête" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['che_est_souche_requete'] === null || form['che_est_souche_requete'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "requête souche ?" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){

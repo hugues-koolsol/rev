@@ -302,22 +302,6 @@ class menus1{
         form['chi_id_menu']=form['chi_id_menu'] === null ? ( null ) : ( parseInt( form['chi_id_menu'] , 10 ) );
         form['chx_autorisation_menu']=form['chx_autorisation_menu'] === null ? ( null ) : ( parseInt( form['chx_autorisation_menu'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['cht_libelle_menu'] === null || form['cht_libelle_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "libelle" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_titre_menu'] === null || form['chp_titre_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "titre" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_autorisation_menu'] === null || form['chx_autorisation_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "autorisation" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_methode_menu'] === null || form['chp_methode_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "methode" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -649,22 +633,6 @@ class menus1{
         /* conversion des données numériques début */
         form['chx_autorisation_menu']=form['chx_autorisation_menu'] === null || form['chx_autorisation_menu'] === '' || form['chx_autorisation_menu'] === undefined ? ( null ) : ( parseInt( form['chx_autorisation_menu'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_titre_menu'] === null || form['chp_titre_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "titre" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_autorisation_menu'] === null || form['chx_autorisation_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "autorisation" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_methode_menu'] === null || form['chp_methode_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "methode" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['cht_libelle_menu'] === null || form['cht_libelle_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "libelle" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){

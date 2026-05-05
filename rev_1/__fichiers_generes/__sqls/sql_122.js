@@ -10,6 +10,21 @@ class sql_122{
       =============================================================================================================
     */
     async sql( par ){
+        /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
+        if(par['n_chp_nom_de_connexion_utilisateur'] === null || par['n_chp_nom_de_connexion_utilisateur']===''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom de connexion de l\'utilisateur" doit être renseigné [' + this.__ig1.nl2() + ']');
+            return{__xst:__xer};
+        }
+        /* test "non nul" sur le champ "chx_acces_utilisateur" */
+        if(par['n_chx_acces_utilisateur'] === null || par['n_chx_acces_utilisateur']===''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "acces" doit être renseigné [' + this.__ig1.nl2() + ']');
+            return{__xst:__xer};
+        }
+        /* test "non nul" sur le champ "che_actif_utilisateur" */
+        if(par['n_che_actif_utilisateur'] === null || par['n_che_actif_utilisateur']===''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "actif" doit être renseigné [' + this.__ig1.nl2() + ']');
+            return{__xst:__xer};
+        }
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];
         try{

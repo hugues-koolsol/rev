@@ -42,6 +42,124 @@ class sql_345{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                /* test "non nul" sur le champ "chi_id_genre" */
+                if(par.donnees[i]['chi_id_genre'] === null || par.donnees[i]['chi_id_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "id" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "chp_nom_genre" */
+                if(par.donnees[i]['chp_nom_genre'] === null || par.donnees[i]['chp_nom_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du genre" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_ordre_genre" */
+                if(par.donnees[i]['che_ordre_genre'] === null || par.donnees[i]['che_ordre_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "ordre" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "chp_prefixe_genre" */
+                if(par.donnees[i]['chp_prefixe_genre'] === null || par.donnees[i]['chp_prefixe_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "prefixe" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /*
+                  === test spécifique sur le champ "chp_prefixe_genre" ===
+                */
+                let __test_3_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres(3,par.donnees[i]['chp_prefixe_genre'],'prefixe');
+                if(__test_3_1.__xst !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_3_1.__xme);
+                    return{"__xst" : __xer};
+                }
+
+                /* test "non nul" sur le champ "chp_espece_genre" */
+                if(par.donnees[i]['chp_espece_genre'] === null || par.donnees[i]['chp_espece_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "espece" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /*
+                  === test spécifique sur le champ "che_longueur_genre" ===
+                */
+                let __test_5_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre(par.donnees[i]['che_longueur_genre'],'longueur du genre');
+                if(__test_5_1.__xst !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_5_1.__xme);
+                    return{"__xst" : __xer};
+                }
+
+                /* test "non nul" sur le champ "che_est_primaire_genre" */
+                if(par.donnees[i]['che_est_primaire_genre'] === null || par.donnees[i]['che_est_primaire_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "est primaire" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_est_incrément_genre" */
+                if(par.donnees[i]['che_est_incrément_genre'] === null || par.donnees[i]['che_est_incrément_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "est incrément" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_est_obligatoire_genre" */
+                if(par.donnees[i]['che_est_obligatoire_genre'] === null || par.donnees[i]['che_est_obligatoire_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "est obligatoire" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_a_init_genre" */
+                if(par.donnees[i]['che_a_init_genre'] === null || par.donnees[i]['che_a_init_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "a init" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_init_est_mot_genre" */
+                if(par.donnees[i]['che_init_est_mot_genre'] === null || par.donnees[i]['che_init_est_mot_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "init est mot" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_est_parmis_genre" */
+                if(par.donnees[i]['che_est_parmis_genre'] === null || par.donnees[i]['che_est_parmis_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "est parmis" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /*
+                  === test spécifique sur le champ "cht_fonctions_genre" ===
+                */
+                let __test_14_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1(par.donnees[i]['cht_fonctions_genre'],'fonctions');
+                if(__test_14_1.__xst !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_14_1.__xme);
+                    return{"__xst" : __xer};
+                }
+
+                /* test "non nul" sur le champ "che_est_nur_genre" */
+                if(par.donnees[i]['che_est_nur_genre'] === null || par.donnees[i]['che_est_nur_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "est nur" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_est_tsm_genre" */
+                if(par.donnees[i]['che_est_tsm_genre'] === null || par.donnees[i]['che_est_tsm_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "est tsm" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_est_tsc_genre" */
+                if(par.donnees[i]['che_est_tsc_genre'] === null || par.donnees[i]['che_est_tsc_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "est tsc" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /*
+                  === pas === de test sur le champ "chd__dtc_genre"
+                */
+                /*
+                  === pas === de test sur le champ "chd__dtm_genre"
+                */
+                /* test "non nul" sur le champ "che__nur_genre" */
+                if(par.donnees[i]['che__nur_genre'] === null || par.donnees[i]['che__nur_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour " nur" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_est_session_genre" */
+                if(par.donnees[i]['che_est_session_genre'] === null || par.donnees[i]['che_est_session_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "est session" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_est_positif_genre" */
+                if(par.donnees[i]['che_est_positif_genre'] === null || par.donnees[i]['che_est_positif_genre']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "est positif" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

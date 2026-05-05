@@ -20,6 +20,16 @@ class sql_142{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                /* test "non nul" sur le champ "chx_source_autorisation" */
+                if(par.donnees[i]['chx_source_autorisation'] === null || par.donnees[i]['chx_source_autorisation']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
+                if(par.donnees[i]['che_pour_sous_liste_autorisation'] === null || par.donnees[i]['che_pour_sous_liste_autorisation']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "pour accès sous liste" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

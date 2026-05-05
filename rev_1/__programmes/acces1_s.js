@@ -827,26 +827,12 @@ class acces1{
         form['chx_metier_acces']=form['chx_metier_acces'] === null ? ( null ) : ( parseInt( form['chx_metier_acces'] , 10 ) );
         form['che_actif_acces']=form['che_actif_acces'] === null ? ( null ) : ( parseInt( form['che_actif_acces'] , 10 ) );
         /* conversion des données numériques fin */
+/*
         if(form['chi_id_acces'] === 0 || form['chi_id_acces'] === null){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'on ne peut pas modifier l\'accès 0 [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        if(form['chp_nom_acces'] === null || form['chp_nom_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_groupe_acces'] === null || form['chx_groupe_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "groupe" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_metier_acces'] === null || form['chx_metier_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "metier" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['che_actif_acces'] === null || form['che_actif_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "actif" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
+*/        
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -898,7 +884,7 @@ class acces1{
             WHERE `chi_id_acces` = :c_chi_id_acces ;
             */
             /*sql_inclure_fin*/ 138 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            if(tt138[__xst] !== __xsu){
+            if(tt138[__xst] !== __xsu || tt138.changements !== 1 ){
                 if(tt138['__xme'] !== ''){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( tt138['__xme'] + ' [' + this.__ig1.nl2() );
                 }else{
@@ -1158,18 +1144,6 @@ class acces1{
         form['chx_groupe_acces']=form['chx_groupe_acces'] === null || form['chx_groupe_acces'] === '' || form['chx_groupe_acces'] === undefined ? ( null ) : ( parseInt( form['chx_groupe_acces'] , 10 ) );
         form['chx_metier_acces']=form['chx_metier_acces'] === null || form['chx_metier_acces'] === '' || form['chx_metier_acces'] === undefined ? ( null ) : ( parseInt( form['chx_metier_acces'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_nom_acces'] === null || form['chp_nom_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_groupe_acces'] === null || form['chx_groupe_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "groupe" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_metier_acces'] === null || form['chx_metier_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "metier" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){

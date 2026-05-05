@@ -20,6 +20,21 @@ class sql_137{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                /* test "non nul" sur le champ "chp_nom_acces" */
+                if(par.donnees[i]['chp_nom_acces'] === null || par.donnees[i]['chp_nom_acces']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "chx_groupe_acces" */
+                if(par.donnees[i]['chx_groupe_acces'] === null || par.donnees[i]['chx_groupe_acces']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "groupe" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "chx_metier_acces" */
+                if(par.donnees[i]['chx_metier_acces'] === null || par.donnees[i]['chx_metier_acces']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "metier" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

@@ -24,6 +24,26 @@ class sql_147{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                /* test "non nul" sur le champ "chp_titre_menu" */
+                if(par.donnees[i]['chp_titre_menu'] === null || par.donnees[i]['chp_titre_menu']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "titre" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "chx_autorisation_menu" */
+                if(par.donnees[i]['chx_autorisation_menu'] === null || par.donnees[i]['chx_autorisation_menu']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "autorisation" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "chp_methode_menu" */
+                if(par.donnees[i]['chp_methode_menu'] === null || par.donnees[i]['chp_methode_menu']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "methode" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "cht_libelle_menu" */
+                if(par.donnees[i]['cht_libelle_menu'] === null || par.donnees[i]['cht_libelle_menu']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "libelle" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

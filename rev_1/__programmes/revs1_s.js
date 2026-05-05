@@ -180,54 +180,6 @@ class revs1{
           );
         form['chp_enfant_suivant_rev']=form['chp_enfant_suivant_rev'] === null || form['chp_enfant_suivant_rev'] === '' || form['chp_enfant_suivant_rev'] === undefined ? ( null ) : ( parseInt( form['chp_enfant_suivant_rev'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_id_rev'] === null || form['chp_id_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "id" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_type_rev'] === null || form['chp_type_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "type" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_niveau_rev'] === null || form['chp_niveau_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "niveau" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_quotee_rev'] === null || form['chp_quotee_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "quotee" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_pos_premier_rev'] === null || form['chp_pos_premier_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pos premier" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_pos_dernier_rev'] === null || form['chp_pos_dernier_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pos dernier" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_parent_rev'] === null || form['chp_parent_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "parent" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_nbr_enfants_rev'] === null || form['chp_nbr_enfants_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nbr enfants" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_num_enfant_rev'] === null || form['chp_num_enfant_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "num enfant" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_profondeur_rev'] === null || form['chp_profondeur_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "profondeur" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_pos_ouver_parenthese_rev'] === null || form['chp_pos_ouver_parenthese_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pos ouver parenthese" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_enfant_suivant_rev'] === null || form['chp_enfant_suivant_rev'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "enfant suivant" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){

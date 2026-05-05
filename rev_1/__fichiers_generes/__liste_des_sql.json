@@ -44,7 +44,7 @@
     "cht_commentaire_requete": "tâches",
     "chp_type_requete": "insert",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),\n      affecte(champ(`chp_texte_tache`),:chp_texte_tache),\n      affecte(champ(`chp_priorite_tache`),:chp_priorite_tache),\n      affecte(champ(`chd__dtm_tache`),:chd__dtm_tache),\n      affecte(champ(`chd__dtc_tache`),:chd__dtc_tache),\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   )\n)  ",
+    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),\n      affecte(champ(`chp_texte_tache`),:chp_texte_tache),\n      affecte(champ(`chp_priorite_tache`),:chp_priorite_tache),\n      affecte(champ(`chd__dtm_tache`),:chd__dtm_tache),\n      affecte(champ(`chd__dtc_tache`),:chd__dtc_tache)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "112": {
@@ -60,7 +60,7 @@
     "cht_commentaire_requete": "tâches texte et priorité par id",
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache))\n   )\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "114": {
@@ -252,7 +252,7 @@
     "cht_commentaire_requete": "accès",
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_acces`),:n_chp_nom_acces),affecte(champ(`chx_groupe_acces`),:n_chx_groupe_acces),affecte(champ(`chx_metier_acces`),:n_chx_metier_acces),affecte(champ(`che_actif_acces`),:n_che_actif_acces)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acces,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_acces`),:c_chi_id_acces))\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_acces`),:n_chp_nom_acces),affecte(champ(`chx_groupe_acces`),:n_chx_groupe_acces),affecte(champ(`chx_metier_acces`),:n_chx_metier_acces),affecte(champ(`che_actif_acces`),:n_che_actif_acces)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_acces`),:c_chi_id_acces))\n)  ",
     "chp_table_reference_requete": "tbl_acces"
   },
   "139": {

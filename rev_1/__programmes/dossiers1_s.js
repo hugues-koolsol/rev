@@ -1476,19 +1476,6 @@ class dossiers1{
         form['chi_id_dossier']=form['chi_id_dossier'] === null ? ( null ) : ( parseInt( form['chi_id_dossier'] , 10 ) );
         form['chx_parent_dossier']=form['chx_parent_dossier'] === null ? ( null ) : ( parseInt( form['chx_parent_dossier'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chi_id_dossier'] <= 9){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'il n\'est pas possible de modifier cet élément [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        let __test_0_1=this.__ig1.__fnt1.test_du_nom_de_fichier1( form['chp_nom_dossier'] , 'nom' );
-        if(__test_0_1[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur le contenu de "nom" [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_parent_dossier'] === null || form['chx_parent_dossier'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "parent" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1641,18 +1628,6 @@ class dossiers1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( form['chp_nom_dossier'] , 'nom' );
-        if(__test_0_1[__xst] !== __xsu){
-            return({"__xst" : __xer});
-        }
-        if(!form.hasOwnProperty( 'chp_nom_dossier' ) || form['chp_nom_dossier'] === null || form['chp_nom_dossier'].trim() === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseignée ' );
-            return({"__xst" : __xer});
-        }
-        if(!form.hasOwnProperty( 'chx_parent_dossier' ) || form.chx_parent_dossier === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur "parent" doit être renseigné s[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(tac[__xst] !== __xsu){

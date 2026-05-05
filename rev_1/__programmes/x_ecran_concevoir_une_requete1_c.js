@@ -1102,7 +1102,8 @@ class x_ecran_concevoir_une_requete1{
             this.__ig1.supprimer_les_messages();
         }
         this.__ig1.masquer_la_zone_message( '' );
-        var obj1=this.transform_source_rev_vers_sql( document.getElementById( txtarea_source ).value , id_requete );
+        let requete_rev=document.getElementById( txtarea_source ).value;
+        var obj1=this.transform_source_rev_vers_sql( requete_rev , id_requete );
         if(obj1.__xst === __xsu){
             document.getElementById( txtarea_dest ).value=obj1.source_sql;
             document.getElementById( 'js1_de_la_requete' ).value=obj1.source_js;
@@ -1837,7 +1838,7 @@ class x_ecran_concevoir_une_requete1{
         t+=this.__ig1.__fnt1.boutons_rev3( 'vv_zone_rev_01' );
         t+='    <div class="rev_bouton yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_tous()))" title="raz des champs sortie , condition et compléments">RAZ</div>';
         t+='  </div>';
-        t+='  <textarea ';
+        t+='  <textarea disabled ';
         t+='    class="txtar1" ';
         t+='    data-editeur1="rev" id="vv_zone_rev_01" rows="10" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(this.#obj_webs.type_de_requete === 'requete_manuelle'){

@@ -1498,30 +1498,6 @@ class sources1{
             parseInt( form['che_autorisation_globale_source'] , 10 )
           );
         /* conversion des données numériques fin */
-        if(form['chp_nom_source'] === null || form['chp_nom_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_source'] , 'nom' );
-        if(__test_0_1[__xst] !== __xsu){
-            return({"__xst" : __xer});
-        }
-        if(form['che_binaire_source'] === null || form['che_binaire_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "binaire" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_dossier_id_source'] === null || form['chx_dossier_id_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "dossier id" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['che_autorisation_globale_source'] === null || form['che_autorisation_globale_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "autorisation globale" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['che_binaire_source'] === 1 && form['chx_dossier_id_source'] !== 8){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'un fichier binaire doit être dans le dossier _fichiers_binaires [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1792,23 +1768,6 @@ class sources1{
         form['chx_dossier_id_source']=form['chx_dossier_id_source'] === null || form['chx_dossier_id_source'] === '' || form['chx_dossier_id_source'] === undefined ? ( null ) : ( parseInt( form['chx_dossier_id_source'] , 10 ) );
         form['che_binaire_source']=form['che_binaire_source'] === null || form['che_binaire_source'] === '' || form['che_binaire_source'] === undefined ? ( 0 ) : ( parseInt( form['che_binaire_source'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chx_dossier_id_source'] === null || form['chx_dossier_id_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "dossier id" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_nom_source'] === null || form['chp_nom_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_source'] , 'nom' );
-        if(__test_0_1[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur le contenu de  "nom" [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['che_binaire_source'] === null || form['che_binaire_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "binaire" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){

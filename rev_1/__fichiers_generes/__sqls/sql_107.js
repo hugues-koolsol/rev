@@ -10,6 +10,11 @@ class sql_107{
       =============================================================================================================
     */
     async sql( par ){
+        /* test "non nul" sur le champ "chi_compteur1_utilisateur" */
+        if(par['n_chi_compteur1_utilisateur'] === null || par['n_chi_compteur1_utilisateur']===''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "compteur1" doit être renseigné [' + this.__ig1.nl2() + ']');
+            return{__xst:__xer};
+        }
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];
         try{

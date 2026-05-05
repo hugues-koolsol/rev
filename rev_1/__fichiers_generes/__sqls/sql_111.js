@@ -10,9 +10,6 @@ class sql_111{
       =============================================================================================================
     */
     async sql( par ){
-     
-     
-     
         let sql0=`
       INSERT  INTO \`tbl_taches\`(
          \`chx_utilisateur_tache\` , 
@@ -25,19 +22,36 @@ class sql_111{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
-
-                if(
-                  !par.donnees[i].hasOwnProperty('chp_priorite_tache')
-                  || par.donnees[i]['chp_priorite_tache'] === null
-                  || !this.__ig1.est_num( par.donnees[i]['chp_priorite_tache'] )
-                 ){
-                    return({"__xst" : __xer , __xme : 'erreur sur le champ priorité 1' });
+                /* test "non nul" sur le champ "chx_utilisateur_tache" */
+                if(par.donnees[i]['chx_utilisateur_tache'] === null || par.donnees[i]['chx_utilisateur_tache']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "utilisateur" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
                 }
-                const __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , par.donnees[i]['chp_priorite_tache'] , "priorite" );
-                if(__test_2_1[__xst] !== __xsu){
-                    return(__test_2_1);
+                /* test "non nul" sur le champ "chp_texte_tache" */
+                if(par.donnees[i]['chp_texte_tache'] === null || par.donnees[i]['chp_texte_tache']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "texte" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "chp_priorite_tache" */
+                if(par.donnees[i]['chp_priorite_tache'] === null || par.donnees[i]['chp_priorite_tache']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "priorite de la tâche" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /*
+                  === test spécifique sur le champ "chp_priorite_tache" ===
+                */
+                let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre(0,99,par.donnees[i]['chp_priorite_tache'],'priorite de la tâche');
+                if(__test_2_1.__xst !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_2_1.__xme);
+                    return{"__xst" : __xer};
                 }
 
+                /*
+                  === pas === de test sur le champ "chd__dtm_tache"
+                */
+                /*
+                  === pas === de test sur le champ "chd__dtc_tache"
+                */
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

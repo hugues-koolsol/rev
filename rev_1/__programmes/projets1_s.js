@@ -410,10 +410,6 @@ class projets1{
         /* conversion des données numériques début */
         form['chi_id_projet']=form['chi_id_projet'] === null ? ( null ) : ( parseInt( form['chi_id_projet'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_nom_projet'] === null || form['chp_nom_projet'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -635,10 +631,6 @@ class projets1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* conversion des données numériques début */
         /* conversion des données numériques fin */
-        if(form['chp_nom_projet'] === null || form['chp_nom_projet'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){

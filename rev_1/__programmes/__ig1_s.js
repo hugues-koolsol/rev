@@ -172,7 +172,7 @@ class __ig1{
                                                             }
                                                         }else if(elem.che_pour_sous_liste_autorisation === 0){
                                                             if(elem.cht_condition_js_source === null){
-                                                                this.ma_trace1( "autorisation sans test de condition mise à OK pour " + cle_pour_json_du_fichier );
+                                                                /* this.ma_trace1( "autorisation sans test de condition mise à OK pour " + cle_pour_json_du_fichier ); */
                                                                 les_autorisations_verifiees[cle_pour_json_du_fichier]=true;
                                                             }else{
                                                                 let a=eval( elem.cht_condition_js_source );
