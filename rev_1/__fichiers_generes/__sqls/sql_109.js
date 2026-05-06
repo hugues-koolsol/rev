@@ -11,9 +11,9 @@ class sql_109{
     */
     async sql( par ){
         /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
-        if(par['n_chp_nom_de_connexion_utilisateur'] === null || par['n_chp_nom_de_connexion_utilisateur']===''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom de connexion de l\'utilisateur" doit être renseigné [' + this.__ig1.nl2() + ']');
-            return{__xst:__xer};
+        if(par['n_chp_nom_de_connexion_utilisateur'] === null || par['n_chp_nom_de_connexion_utilisateur'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom de connexion de l\'utilisateur" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
         }
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];

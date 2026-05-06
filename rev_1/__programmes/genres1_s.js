@@ -561,109 +561,102 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 330 , criteres_select_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+        if(tt330[__xst] !== __xsu || tt330[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [330 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt330[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer});
         }
-        if(tt330[__xst] === __xsu && tt330[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt330[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
-            }
-            let donnees_sql={
-                "c_chi_id_genre" : form['chi_id_genre'] ,
-                "n_chp_nom_genre" : form['chp_nom_genre'] ,
-                "n_che_ordre_genre" : form['che_ordre_genre'] ,
-                "n_chp_prefixe_genre" : form['chp_prefixe_genre'] ,
-                "n_chp_espece_genre" : form['chp_espece_genre'] ,
-                "n_che_longueur_genre" : form['che_longueur_genre'] === '' ? ( null ) : ( form['che_longueur_genre'] ) ,
-                "n_che_est_primaire_genre" : form['che_est_primaire_genre'] ,
-                "n_che_est_incrément_genre" : form['che_est_incrément_genre'] ,
-                "n_che_est_obligatoire_genre" : form['che_est_obligatoire_genre'] ,
-                "n_che_a_init_genre" : form['che_a_init_genre'] ,
-                "n_che_init_est_mot_genre" : form['che_init_est_mot_genre'] ,
-                "n_cht_valeur_init_genre" : form['cht_valeur_init_genre'] === '' ? ( null ) : ( form['cht_valeur_init_genre'] ) ,
-                "n_che_est_parmis_genre" : form['che_est_parmis_genre'] ,
-                "n_cht_parmis_genre" : form['cht_parmis_genre'] === '' ? ( null ) : ( form['cht_parmis_genre'] ) ,
-                "n_cht_fonctions_genre" : form['cht_fonctions_genre'] === '' ? ( null ) : ( form['cht_fonctions_genre'] ) ,
-                "n_che_est_nur_genre" : form['che_est_nur_genre'] ,
-                "n_che_est_tsm_genre" : form['che_est_tsm_genre'] ,
-                "n_che_est_tsc_genre" : form['che_est_tsc_genre'] ,
-                "n_che_est_session_genre" : form['che_est_session_genre'] ,
-                "n_chp_nom_en_session_genre" : form['chp_nom_en_session_genre'] === '' ? ( null ) : ( form['chp_nom_en_session_genre'] ) ,
-                "n_che_est_positif_genre" : form['che_est_positif_genre'] ,
-                "n_cht_particularités_genre" : form['cht_particularités_genre'] === '' ? ( null ) : ( form['cht_particularités_genre'] )
-            };
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt331=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_genres SET 
-               `chp_nom_genre` = :n_chp_nom_genre , 
-               `che_ordre_genre` = :n_che_ordre_genre , 
-               `chp_prefixe_genre` = :n_chp_prefixe_genre , 
-               `chp_espece_genre` = :n_chp_espece_genre , 
-               `che_longueur_genre` = :n_che_longueur_genre , 
-               `che_est_primaire_genre` = :n_che_est_primaire_genre , 
-               `che_est_incrément_genre` = :n_che_est_incrément_genre , 
-               `che_est_obligatoire_genre` = :n_che_est_obligatoire_genre , 
-               `che_a_init_genre` = :n_che_a_init_genre , 
-               `che_init_est_mot_genre` = :n_che_init_est_mot_genre , 
-               `cht_valeur_init_genre` = :n_cht_valeur_init_genre , 
-               `che_est_parmis_genre` = :n_che_est_parmis_genre , 
-               `cht_parmis_genre` = :n_cht_parmis_genre , 
-               `cht_fonctions_genre` = :n_cht_fonctions_genre , 
-               `che_est_nur_genre` = :n_che_est_nur_genre , 
-               `che_est_tsm_genre` = :n_che_est_tsm_genre , 
-               `che_est_tsc_genre` = :n_che_est_tsc_genre , 
-               `chd__dtm_genre` = :n_chd__dtm_genre , 
-               `che__nur_genre` = :n_che__nur_genre , 
-               `che_est_session_genre` = :n_che_est_session_genre , 
-               `chp_nom_en_session_genre` = :n_chp_nom_en_session_genre , 
-               `che_est_positif_genre` = :n_che_est_positif_genre , 
-               `cht_particularités_genre` = :n_cht_particularités_genre
-            WHERE `chi_id_genre` = :c_chi_id_genre ;
-            */
-            /*sql_inclure_fin*/ 331 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            if(tt331[__xst] !== __xsu){
-                if(tt331['__xme'] !== ''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt331['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt330[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true){
-                if(form['__mat_liste_si_ok']){
-                    let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                    let d=1;
-                    await this.filtre1( mat1 , 1 , __db1 );
-                }
-                return({"__xst" : __xsu});
-            }
-            let tt330_bis=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
-            `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
-            `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
-            `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-            `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
-             FROM b1.tbl_genres T0
-            WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
-            ;
-            */
-            /*sql_inclure_fin*/ 330 , criteres_select_330 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt330_bis;
-        }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt330;
+        let donnees_sql={
+            "c_chi_id_genre" : form['chi_id_genre'] ,
+            "n_chp_nom_genre" : form['chp_nom_genre'] ,
+            "n_che_ordre_genre" : form['che_ordre_genre'] ,
+            "n_chp_prefixe_genre" : form['chp_prefixe_genre'] ,
+            "n_chp_espece_genre" : form['chp_espece_genre'] ,
+            "n_che_longueur_genre" : form['che_longueur_genre'] === '' ? ( null ) : ( form['che_longueur_genre'] ) ,
+            "n_che_est_primaire_genre" : form['che_est_primaire_genre'] ,
+            "n_che_est_incrément_genre" : form['che_est_incrément_genre'] ,
+            "n_che_est_obligatoire_genre" : form['che_est_obligatoire_genre'] ,
+            "n_che_a_init_genre" : form['che_a_init_genre'] ,
+            "n_che_init_est_mot_genre" : form['che_init_est_mot_genre'] ,
+            "n_cht_valeur_init_genre" : form['cht_valeur_init_genre'] === '' ? ( null ) : ( form['cht_valeur_init_genre'] ) ,
+            "n_che_est_parmis_genre" : form['che_est_parmis_genre'] ,
+            "n_cht_parmis_genre" : form['cht_parmis_genre'] === '' ? ( null ) : ( form['cht_parmis_genre'] ) ,
+            "n_cht_fonctions_genre" : form['cht_fonctions_genre'] === '' ? ( null ) : ( form['cht_fonctions_genre'] ) ,
+            "n_che_est_nur_genre" : form['che_est_nur_genre'] ,
+            "n_che_est_tsm_genre" : form['che_est_tsm_genre'] ,
+            "n_che_est_tsc_genre" : form['che_est_tsc_genre'] ,
+            "n_che_est_session_genre" : form['che_est_session_genre'] ,
+            "n_chp_nom_en_session_genre" : form['chp_nom_en_session_genre'] === '' ? ( null ) : ( form['chp_nom_en_session_genre'] ) ,
+            "n_che_est_positif_genre" : form['che_est_positif_genre'] ,
+            "n_cht_particularités_genre" : form['cht_particularités_genre'] === '' ? ( null ) : ( form['cht_particularités_genre'] )
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt331=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_genres SET 
+           `chp_nom_genre` = :n_chp_nom_genre , 
+           `che_ordre_genre` = :n_che_ordre_genre , 
+           `chp_prefixe_genre` = :n_chp_prefixe_genre , 
+           `chp_espece_genre` = :n_chp_espece_genre , 
+           `che_longueur_genre` = :n_che_longueur_genre , 
+           `che_est_primaire_genre` = :n_che_est_primaire_genre , 
+           `che_est_incrément_genre` = :n_che_est_incrément_genre , 
+           `che_est_obligatoire_genre` = :n_che_est_obligatoire_genre , 
+           `che_a_init_genre` = :n_che_a_init_genre , 
+           `che_init_est_mot_genre` = :n_che_init_est_mot_genre , 
+           `cht_valeur_init_genre` = :n_cht_valeur_init_genre , 
+           `che_est_parmis_genre` = :n_che_est_parmis_genre , 
+           `cht_parmis_genre` = :n_cht_parmis_genre , 
+           `cht_fonctions_genre` = :n_cht_fonctions_genre , 
+           `che_est_nur_genre` = :n_che_est_nur_genre , 
+           `che_est_tsm_genre` = :n_che_est_tsm_genre , 
+           `che_est_tsc_genre` = :n_che_est_tsc_genre , 
+           `chd__dtm_genre` = :n_chd__dtm_genre , 
+           `che__nur_genre` = :n_che__nur_genre , 
+           `che_est_session_genre` = :n_che_est_session_genre , 
+           `chp_nom_en_session_genre` = :n_chp_nom_en_session_genre , 
+           `che_est_positif_genre` = :n_che_est_positif_genre , 
+           `cht_particularités_genre` = :n_cht_particularités_genre
+        WHERE `chi_id_genre` = :c_chi_id_genre ;
+        */
+        /*sql_inclure_fin*/ 331 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt331[__xst] !== __xsu || tt331.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt331.__xme});
         }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt330[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
+            return({"__xst" : __xer});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                let d=1;
+                await this.filtre1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
+        }
+        let tt330_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
+        `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
+        `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
+        `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
+        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+         FROM b1.tbl_genres T0
+        WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
+        ;
+        */
+        /*sql_inclure_fin*/ 330 , criteres_select_330 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt330_bis;
         return({"__xst" : __xsu});
     }
     /*

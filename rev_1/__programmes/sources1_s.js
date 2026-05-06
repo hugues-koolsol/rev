@@ -1521,85 +1521,78 @@ class sources1{
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
-        if(tt116[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+        if(tt116[__xst] !== __xsu || tt116[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [116 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt116[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer});
         }
-        if(tt116[__xst] === __xsu && tt116[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt116[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
-            }
-            let criteres_308={
-                "c_chi_id_source" : form['chi_id_source'] ,
-                "n_chp_nom_source" : form['chp_nom_source'] ,
-                "n_che_binaire_source" : form['che_binaire_source'] ,
-                "n_chx_dossier_id_source" : form['chx_dossier_id_source'] ,
-                "n_cht_rev_source" : form['cht_rev_source'] === '' ? ( null ) : ( form['cht_rev_source'] ) ,
-                "n_cht_genere_source" : form['cht_genere_source'] === '' ? ( null ) : ( form['cht_genere_source'] ) ,
-                "n_cht_commentaire_source" : form['cht_commentaire_source'] === '' ? ( null ) : ( form['cht_commentaire_source'] ) ,
-                "n_che_autorisation_globale_source" : form['che_autorisation_globale_source'] ,
-                "n_cht_condition_rev_source" : form['cht_condition_rev_source'] === '' ? ( null ) : ( form['cht_condition_rev_source'] ) ,
-                "n_cht_condition_js_source" : form['cht_condition_js_source'] === '' ? ( null ) : ( form['cht_condition_js_source'] ) ,
-                "n_cht_notification_ko_source" : form['cht_notification_ko_source'] === '' ? ( null ) : ( form['cht_notification_ko_source'] )
-            };
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt308=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_sources SET 
-               `chp_nom_source` = :n_chp_nom_source , 
-               `che_binaire_source` = :n_che_binaire_source , 
-               `chx_dossier_id_source` = :n_chx_dossier_id_source , 
-               `cht_rev_source` = :n_cht_rev_source , 
-               `cht_genere_source` = :n_cht_genere_source , 
-               `cht_commentaire_source` = :n_cht_commentaire_source , 
-               `che_autorisation_globale_source` = :n_che_autorisation_globale_source , 
-               `cht_condition_rev_source` = :n_cht_condition_rev_source , 
-               `cht_condition_js_source` = :n_cht_condition_js_source , 
-               `cht_notification_ko_source` = :n_cht_notification_ko_source
-            WHERE `chi_id_source` = :c_chi_id_source ;
-            */
-            /*sql_inclure_fin*/ 308 , criteres_308 , this.__ig1.donnees_retournees , __db1 );
-            if(tt308[__xst] !== __xsu){
-                if(tt308['__xme'] !== ''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt308['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt116[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true){
-                if(form['__mat_liste_si_ok']){
-                    let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                    let d=1;
-                    await this.filtre1( mat1 , 1 , __db1 );
-                }
-                return({"__xst" : __xsu});
-            }
-            let tt116_bis=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
-             FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-            ;
-            */
-            /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt116_bis;
-        }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt116;
+        let criteres_308={
+            "c_chi_id_source" : form['chi_id_source'] ,
+            "n_chp_nom_source" : form['chp_nom_source'] ,
+            "n_che_binaire_source" : form['che_binaire_source'] ,
+            "n_chx_dossier_id_source" : form['chx_dossier_id_source'] ,
+            "n_cht_rev_source" : form['cht_rev_source'] === '' ? ( null ) : ( form['cht_rev_source'] ) ,
+            "n_cht_genere_source" : form['cht_genere_source'] === '' ? ( null ) : ( form['cht_genere_source'] ) ,
+            "n_cht_commentaire_source" : form['cht_commentaire_source'] === '' ? ( null ) : ( form['cht_commentaire_source'] ) ,
+            "n_che_autorisation_globale_source" : form['che_autorisation_globale_source'] ,
+            "n_cht_condition_rev_source" : form['cht_condition_rev_source'] === '' ? ( null ) : ( form['cht_condition_rev_source'] ) ,
+            "n_cht_condition_js_source" : form['cht_condition_js_source'] === '' ? ( null ) : ( form['cht_condition_js_source'] ) ,
+            "n_cht_notification_ko_source" : form['cht_notification_ko_source'] === '' ? ( null ) : ( form['cht_notification_ko_source'] )
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt308=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_sources SET 
+           `chp_nom_source` = :n_chp_nom_source , 
+           `che_binaire_source` = :n_che_binaire_source , 
+           `chx_dossier_id_source` = :n_chx_dossier_id_source , 
+           `cht_rev_source` = :n_cht_rev_source , 
+           `cht_genere_source` = :n_cht_genere_source , 
+           `cht_commentaire_source` = :n_cht_commentaire_source , 
+           `che_autorisation_globale_source` = :n_che_autorisation_globale_source , 
+           `cht_condition_rev_source` = :n_cht_condition_rev_source , 
+           `cht_condition_js_source` = :n_cht_condition_js_source , 
+           `cht_notification_ko_source` = :n_cht_notification_ko_source
+        WHERE `chi_id_source` = :c_chi_id_source ;
+        */
+        /*sql_inclure_fin*/ 308 , criteres_308 , this.__ig1.donnees_retournees , __db1 );
+        if(tt308.__xst !== __xsu || tt308.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt308.__xme});
         }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt116[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
+            return({"__xst" : __xer});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                let d=1;
+                await this.filtre1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
+        }
+        let tt116_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+         FROM b1.tbl_sources T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+        
+        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        ;
+        */
+        /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt116_bis;
         return({"__xst" : __xsu});
     }
     /*

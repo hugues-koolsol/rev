@@ -13,15 +13,14 @@ class sql_407{
         /*
           === test spécifique sur le champ "chp_nom_dossier" ===
         */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1(par['n_chp_nom_dossier'],'nom du dossier');
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( par['n_chp_nom_dossier'] , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push(__test_0_1.__xme);
-            return{"__xst" : __xer};
+            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
         /* test "non nul" sur le champ "chx_parent_dossier" */
-        if(par['n_chx_parent_dossier'] === null || par['n_chx_parent_dossier']===''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "parent" doit être renseigné [' + this.__ig1.nl2() + ']');
-            return{__xst:__xer};
+        if(par['n_chx_parent_dossier'] === null || par['n_chx_parent_dossier'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "parent" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
         }
         let sql0='UPDATE `tbl_dossiers` SET \r\n';
         let tableau_champs=[];
@@ -52,6 +51,10 @@ class sql_407{
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_407= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
+            /* si c'est une requete souche la maj DOIT se faire */
+            if(res === 0){
+                return({"__xst" : __xer ,"changements" : res ,"__xme" : 'pas d\'enregistrement à modifier'});
+            }
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 407 , e , sql0 , {} ));

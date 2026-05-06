@@ -11,17 +11,17 @@ class sql_340{
     */
     async sql( par ){
         /* test "non nul" sur le champ "che_est_souche_requete" */
-        if(par['n_che_est_souche_requete'] === null || par['n_che_est_souche_requete']===''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "requête souche ?" doit être renseigné [' + this.__ig1.nl2() + ']');
-            return{__xst:__xer};
+        if(par['n_che_est_souche_requete'] === null || par['n_che_est_souche_requete'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "requête souche ?" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
         }
         /*
           === pas === de test sur le champ "chd__dtm_requete"
         */
         /* test "non nul" sur le champ "che__nur_requete" */
-        if(par['n_che__nur_requete'] === null || par['n_che__nur_requete']===''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour " nur" doit être renseigné [' + this.__ig1.nl2() + ']');
-            return{__xst:__xer};
+        if(par['n_che__nur_requete'] === null || par['n_che__nur_requete'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour " nur" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
         }
         let sql0='UPDATE `tbl_requetes` SET \r\n';
         let tableau_champs=[];

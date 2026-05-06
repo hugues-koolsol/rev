@@ -1361,31 +1361,30 @@ class x_ecran_generer_programmes1{
             }
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let tt' + ref_select + '=await this.__ig1.sql_iii( ' + ref_select + ' , criteres_select_' + ref_select + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
-            src_serveur_js2+='        if(tt' + ref_select + '[__xst] !== __xsu){\r\n';
-            src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'enregistrement non trouvé : aucune modification effectuée [\' + this.__ig1.nl2() );\r\n';
+            src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu || tt' + ref_select + '.__xva.length !== 1){\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
+            src_serveur_js2+='        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt' + ref_select + '[__xva][0] , __db1 );\r\n';
+            src_serveur_js2+='        if(__actions_et_tests_avant_modifier.__xst !== __xsu){\r\n';
+            src_serveur_js2+='            await __db1.exec(\'ROLLBACK;\');\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        if(tt' + ref_select + '[__xst] === __xsu && tt' + ref_select + '[__xva].length === 1){\r\n';
-            src_serveur_js2+='            await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
-            src_serveur_js2+='            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt' + ref_select + '[__xva][0] , __db1 );\r\n';
-            src_serveur_js2+='            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){\r\n';
-            src_serveur_js2+='                return({"__xst" : __xer});\r\n';
-            src_serveur_js2+='            }\r\n';
-            src_serveur_js2+='            let criteres_' + ref_update + '={\r\n';
+            src_serveur_js2+='        let criteres_' + ref_update + '={\r\n';
             src_serveur_js2+='                /**/\r\n';
             for( let i=0 ; i < liste_des_champs_condition_update.length ; i++ ){
                 if(champ_primaire === liste_des_champs_condition_update[i].nom_du_champ){
-                    src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
+                    src_serveur_js2+='                    \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
                 }else if(liste_des_champs_condition_update[i].champ_session === true){
                     /* nom_en_session1 */
-                    src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_update[i].nom_champ_session + ',\n';
+                    src_serveur_js2+='                    \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_update[i].nom_champ_session + ',\n';
                 }else if(liste_des_champs_condition_update[i].champ_dans_la_base.champ_est_en_session1 === true){
                     /* nom_en_session1 */
-                    src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_update[i].champ_dans_la_base.nom_en_session1 + ',\n';
+                    src_serveur_js2+='                    \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_update[i].champ_dans_la_base.nom_en_session1 + ',\n';
                 }else if(liste_des_champs_condition_update[i].champ_dans_la_base.genre_objet_du_champ.che_est_nur_genre === 1){
-                    src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
+                    src_serveur_js2+='                    \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
                 }else{
-                    src_serveur_js2+='                        \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : tt' + ref_select + '[__xva][0][\'T0.' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
+                    src_serveur_js2+='                    \'c_' + liste_des_champs_condition_update[i].nom_du_champ + '\' : tt' + ref_select + '[__xva][0][\'T0.' + liste_des_champs_condition_update[i].nom_du_champ + '\'],\n';
                 }
             }
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
@@ -1411,19 +1410,19 @@ class x_ecran_generer_programmes1{
                     if(obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
                            && obj_champ.meta.est_utilisateur_autre_que_courant === 1
                     ){
-                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
+                        src_serveur_js2+='                \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
                     }else{
-                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : this.__ig1.donnees_retournees.chi_id_utilisateur ,\n';
+                        src_serveur_js2+='                \'n_' + nom_du_champ + '\' : this.__ig1.donnees_retournees.chi_id_utilisateur ,\n';
                     }
                 }else if(obj_champ.champ_session === true){
                     if(ne_pas_prendre_les_valeurs_en_session === true){
                         if(obj_champ.non_nulle === false){
-                            src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
+                            src_serveur_js2+='                \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
                         }else{
-                            src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
+                            src_serveur_js2+='                \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
                         }
                     }else{
-                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_update[i].nom_champ_session + ',\r\n';
+                        src_serveur_js2+='                \'n_' + nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_update[i].nom_champ_session + ',\r\n';
                     }
                 }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
@@ -1431,37 +1430,35 @@ class x_ecran_generer_programmes1{
                 ){
                 }else{
                     if(obj_champ.non_nulle === false){
-                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
+                        src_serveur_js2+='                \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
                     }else{
-                        src_serveur_js2+='                    \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
+                        src_serveur_js2+='                \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
                     }
                 }
             }
-            src_serveur_js2+='            };\r\n';
-            src_serveur_js2+='            let tt' + ref_update + '=await this.__ig1.sql_iii( ' + ref_update + ' , criteres_' + ref_update + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
-            src_serveur_js2+='            if(tt' + ref_update + '[__xst] !== __xsu  || tt' + ref_update + '.changements !== 1){\r\n';
-            src_serveur_js2+='                return({"__xst" : __xer , "__xme" : tt' + ref_update + '.__xme  });\r\n';
-            src_serveur_js2+='            }\r\n';
-            src_serveur_js2+='            let __taam=await this.tests_et_actions_apres_modifier(mat , d , form , tt' + ref_select + '[__xva][0] , __db1);\r\n';
-            src_serveur_js2+='            if(__taam[__xst] !== __xsu ){\r\n';
-            src_serveur_js2+='                await __db1.exec(\'ROLLBACK;\');\r\n';
-            src_serveur_js2+='                this.__ig1.donnees_retournees.__xsi[__xer].push( \'erreur après modification [\' + this.__ig1.nl2() );\r\n';
-            src_serveur_js2+='                return({"__xst" : __xer});\r\n';
-            src_serveur_js2+='            }\r\n';
-            src_serveur_js2+='            await __db1.exec(\'COMMIT;\');\r\n';
-            src_serveur_js2+='            if(retour_a_la_liste === true){\r\n';
-            src_serveur_js2+='                if(form[\'__mat_liste_si_ok\']){\r\n';
-            src_serveur_js2+='                    let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
-            src_serveur_js2+='                    let d=1;\r\n';
-            src_serveur_js2+='                    await this.filtre1( mat1 , 1 , __db1 );\r\n';
-            src_serveur_js2+='                }\r\n';
-            src_serveur_js2+='                return({"__xst" : __xsu});\r\n';
-            src_serveur_js2+='            }\r\n';
-            src_serveur_js2+='            let tt' + ref_select + '_bis=await this.__ig1.sql_iii( ' + ref_select + ' , criteres_select_' + ref_select + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
-            src_serveur_js2+='            this.__ig1.donnees_retournees[__xva][\'page_modification1\']=tt' + ref_select + '_bis;\r\n';
-            src_serveur_js2+='        }else{\r\n';
-            src_serveur_js2+='            this.__ig1.donnees_retournees[__xva][\'page_modification1\']=tt' + ref_select + ';\r\n';
+            src_serveur_js2+='        };\r\n';
+            src_serveur_js2+='        /* =========================== mise à jour effective ======================== */\r\n';
+            src_serveur_js2+='        let tt' + ref_update + '=await this.__ig1.sql_iii( ' + ref_update + ' , criteres_' + ref_update + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        if(tt' + ref_update + '.__xst !== __xsu  || tt' + ref_update + '.changements !== 1){\r\n';
+            src_serveur_js2+='            await __db1.exec(\'ROLLBACK;\');\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer , "__xme" : tt' + ref_update + '.__xme  });\r\n';
             src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        let __taam=await this.tests_et_actions_apres_modifier(mat , d , form , tt' + ref_select + '[__xva][0] , __db1);\r\n';
+            src_serveur_js2+='        if(__taam.__xst !== __xsu ){\r\n';
+            src_serveur_js2+='            await __db1.exec(\'ROLLBACK;\');\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'erreur après modification [\' + this.__ig1.nl2() + \']\'});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        await __db1.exec(\'COMMIT;\');\r\n';
+            src_serveur_js2+='        if(retour_a_la_liste === true){\r\n';
+            src_serveur_js2+='            if(form[\'__mat_liste_si_ok\']){\r\n';
+            src_serveur_js2+='                let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
+            src_serveur_js2+='                let d=1;\r\n';
+            src_serveur_js2+='                await this.filtre1( mat1 , 1 , __db1 );\r\n';
+            src_serveur_js2+='            }\r\n';
+            src_serveur_js2+='            return({"__xst" : __xsu});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        let tt' + ref_select + '_bis=await this.__ig1.sql_iii( ' + ref_select + ' , criteres_select_' + ref_select + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
+            src_serveur_js2+='        this.__ig1.donnees_retournees[__xva][\'page_modification1\']=tt' + ref_select + '_bis;\r\n';
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
             src_serveur_js2+='    }\r\n';
         }

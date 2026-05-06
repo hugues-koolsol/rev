@@ -36,6 +36,9 @@ const __xif=3;
 const __xdv=4;
 import {w_rev_vers_sql1} from '/f0?n0=w_rev_vers_sql1_.js';
 import {_tri_arbre1} from '/f0?n0=_tri_arbre1_c.js';
+/* pour les fonctions_coherence1 */
+import {w_ast_js_vers_rev1} from './f0?n0=w_ast_js_vers_rev1_.js';
+import {w_rev_vers_js1} from './f0?n0=w_rev_vers_js1_.js';
 class v_svg_bdd1{
     __ig1=null;
     moi='v_svg_bdd1';
@@ -74,6 +77,8 @@ class v_svg_bdd1{
     #debut_de_click=0;
     #hauteur_de_boite=20;
     #hauteur_de_boite_affichage=30;
+    #objet_conversion_ast_js_vers_rev=null;
+    #objet_conversion_rev_vers_js=null;
     #liste_des_meta_table=[
         /*  */
         {
@@ -139,6 +144,14 @@ class v_svg_bdd1{
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
                 "doit_etre_dans_meta" : false
+            },
+        {
+                "nom_du_meta_table" : 'fonctions_coherence1' ,
+                "exemple" : 'if(par.n_chp_espece_genre === \'VARCHAR\' && par.n_che_longueur_genre === null){\n    throw new Error( \'une longueur doit être indiquée pour le l\\\'espèce VARCHAR \' );\n}' ,
+                "zone_html2" : 'textarea' ,
+                "valeur_normale_pour_meta" : null ,
+                "valeur_brut_pour_meta" : null ,
+                "doit_etre_dans_meta" : false
             }
     ];
     __m_rev_vers_sql1=null;
@@ -151,6 +164,9 @@ class v_svg_bdd1{
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
         this.__m_rev_vers_sql1=new w_rev_vers_sql1( '__m_rev_vers_sql1' , this.__ig1 );
+        this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
+        this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , this.__ig1 );
+        this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , this.__ig1 );
     }
     /*
       =============================================================================================================
@@ -4728,16 +4744,30 @@ class v_svg_bdd1{
                 }
                 t+=' autocapitalize="off" />';
             }else if(this.#liste_des_meta_table[i].zone_html2 === 'textarea'){
-                t+=' : <textarea id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" autocapitalize="off" rows="5" cols="50">';
+                let contenu='';
                 if(nouveau_meta.hasOwnProperty( this.#liste_des_meta_table[i].nom_du_meta_table )){
-                    t+=nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table].replace( /"/g , '&quot;' ) + '';
+                    contenu=nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table];
                 }
+                if(contenu.trim() !== '' && this.#liste_des_meta_table[i].nom_du_meta_table === 'fonctions_coherence1'){
+                    let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( contenu.replace( /¶CRLF¶/g , '\r\n' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ) , {} );
+                    if(obj1.__xst === __xsu){
+                        contenu=obj1.__xva;
+                    }else{
+                        return({"__xst" : __xer});
+                    }
+                }
+                t+=' : <textarea id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" autocapitalize="off" rows="5" cols="50">';
+                t+=contenu.replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '';
                 t+='</textarea>';
             }else{
                 debugger;
             }
             if(this.#liste_des_meta_table[i].hasOwnProperty( 'exemple' )){
-                t+=this.#liste_des_meta_table[i].exemple;
+                if(this.#liste_des_meta_table[i].nom_du_meta_table === 'fonctions_coherence1'){
+                    t+='<pre>' + this.#liste_des_meta_table[i].exemple + '</pre>';
+                }else{
+                    t+=this.#liste_des_meta_table[i].exemple;
+                }
             }
             t+='<br />';
         }
@@ -5502,7 +5532,30 @@ class v_svg_bdd1{
         }
         let obj={};
         for(let i in this.#liste_des_meta_table){
-            obj[this.#liste_des_meta_table[i].nom_du_meta_table]=document.getElementById( 'vv_' + this.#liste_des_meta_table[i].nom_du_meta_table ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
+            if(this.#liste_des_meta_table[i].nom_du_meta_table === 'fonctions_coherence1'){
+                let source_js=document.getElementById( 'vv_' + this.#liste_des_meta_table[i].nom_du_meta_table ).value;
+                if(source_js.trim !== ''){
+                    let le_parseur=window.acorn.Parser;
+                    let tableau_des_commentaires_js=[];
+                    let obj0=null;
+                    try{
+                        obj0=le_parseur.parse( source_js , {"ecmaVersion" : 'latest' ,"sourceType" : 'module' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
+                    }catch(e){
+                        console.log( e.stack );
+                        return({"__xst" : __xer});
+                    }
+                    /* on transforme le ast du js en rev */
+                    let obj1=this.#objet_conversion_ast_js_vers_rev.traite_ast( obj0.body , tableau_des_commentaires_js , {} );
+                    if(obj1.__xst === __xsu){
+                        /* afr vérifier que les champs utilisés appartiennent bien à la table ( par.xxxx ) */
+                        obj[this.#liste_des_meta_table[i].nom_du_meta_table]=obj1.__xva.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
+                    }
+                }else{
+                    obj[this.#liste_des_meta_table[i].nom_du_meta_table]='';
+                }
+            }else{
+                obj[this.#liste_des_meta_table[i].nom_du_meta_table]=document.getElementById( 'vv_' + this.#liste_des_meta_table[i].nom_du_meta_table ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
+            }
         }
         let nouveau_meta=this.#corrige_meta_table( document.getElementById( id_svg_rectangle_de_la_table ).getAttribute( 'meta_rev_de_la_table' ) , obj , nom_de_la_table );
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_la_table].proprietes.meta_rev_de_la_table=nouveau_meta.texte;
@@ -7356,11 +7409,6 @@ class v_svg_bdd1{
                             }else if(mat2[k][2] === 'f'){
                                 for(let l in this.#liste_des_meta_table){
                                     if(this.#liste_des_meta_table[l].nom_du_meta_table === mat2[k][1]){
-                                        /*
-                                          if(mat2[k][1]==='fonctions_spéciales1' && nom_de_la_table_en_parametre_pour_debug==='tbl_utilisateurs'){
-                                          debugger
-                                          }
-                                        */
                                         if(mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                                             if(nouvelles_valeurs.hasOwnProperty( mat2[k][1] )){
                                                 mat2[k + 1][1]=nouvelles_valeurs[mat2[k][1]];

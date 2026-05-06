@@ -91,35 +91,35 @@ class taches1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-/*        
-        if(fo1['chp_texte_tache'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseigné'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_texte_tache' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1['chp_priorite_tache'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être renseigné'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_priorite_tache' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        var __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1['chp_priorite_tache'] , 'priorite' );
-        if(__test_2_1.__xst !== __xsu){
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_priorite_tache' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-*/        
+        /*
+          if(fo1['chp_texte_tache'] === ''){
+          this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseigné'} );
+          this.__ig1.affiche_les_messages();
+          this.__ig1.retablir_les_boutons_masques();
+          try{
+          document.getElementById( 'chp_texte_tache' ).focus();
+          } catch {}
+          return({"__xst" : __xsu});
+          }
+          if(fo1['chp_priorite_tache'] === ''){
+          this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être renseigné'} );
+          this.__ig1.affiche_les_messages();
+          this.__ig1.retablir_les_boutons_masques();
+          try{
+          document.getElementById( 'chp_priorite_tache' ).focus();
+          } catch {}
+          return({"__xst" : __xsu});
+          }
+          var __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1['chp_priorite_tache'] , 'priorite' );
+          if(__test_2_1.__xst !== __xsu){
+          this.__ig1.affiche_les_messages();
+          this.__ig1.retablir_les_boutons_masques();
+          try{
+          document.getElementById( 'chp_priorite_tache' ).focus();
+          } catch {}
+          return({"__xst" : __xsu});
+          }
+        */
         /* conversion des données numériques début */
         fo1['chi_id_tache']=fo1['chi_id_tache'] === '' ? ( null ) : ( parseInt( fo1['chi_id_tache'] , 10 ) );
         fo1['chp_priorite_tache']=fo1['chp_priorite_tache'] === '' ? ( null ) : ( parseInt( fo1['chp_priorite_tache'] , 10 ) );

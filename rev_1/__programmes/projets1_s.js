@@ -461,12 +461,7 @@ class projets1{
         /*sql_inclure_fin*/ 384 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
         /* this.__ig1.ma_trace1('tt384',tt384); */
         if(tt384[__xst] !== __xsu){
-            if(tt384['__xme'] !== ''){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( tt384['__xme'] + ' [' + this.__ig1.nl2() );
-            }else{
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-            }
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt1384.__xme});
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt375[__xva][0] , __db1 );
         if(__taam[__xst] !== __xsu){

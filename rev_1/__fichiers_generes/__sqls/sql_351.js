@@ -11,9 +11,9 @@ class sql_351{
     */
     async sql( par ){
         /* test "non nul" sur le champ "chi_id_requete" */
-        if(par['n_chi_id_requete'] === null || par['n_chi_id_requete']===''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "id" doit être renseigné [' + this.__ig1.nl2() + ']');
-            return{__xst:__xer};
+        if(par['n_chi_id_requete'] === null || par['n_chi_id_requete'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "id" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
         }
         let sql0='UPDATE `tbl_requetes` SET \r\n';
         let tableau_champs=[];

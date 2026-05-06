@@ -66,7 +66,7 @@ class __fnts_c_et_s{
       valeur ( par exemple : test_du_nom_de_fichier1() ) existe
     */
     test_fonctions_de_c_fonctions1( valeur , nom_champ ){
-        if(valeur === ''){
+        if(valeur === '' || valeur === null){
             return({"__xst" : __xsu});
         }else{
             let tt=this.__ig1.__rev1.rev_tcm( valeur );

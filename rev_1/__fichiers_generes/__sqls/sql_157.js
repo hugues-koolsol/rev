@@ -11,17 +11,16 @@ class sql_157{
     */
     async sql( par ){
         /* test "non nul" sur le champ "chp_priorite_tache" */
-        if(par['n_chp_priorite_tache'] === null || par['n_chp_priorite_tache']===''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "priorite de la tâche" doit être renseigné [' + this.__ig1.nl2() + ']');
-            return{__xst:__xer};
+        if(par['n_chp_priorite_tache'] === null || par['n_chp_priorite_tache'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite de la tâche" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
         }
         /*
           === test spécifique sur le champ "chp_priorite_tache" ===
         */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre(0,99,par['n_chp_priorite_tache'],'priorite de la tâche');
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , par['n_chp_priorite_tache'] , 'priorite de la tâche' );
         if(__test_0_1.__xst !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push(__test_0_1.__xme);
-            return{"__xst" : __xer};
+            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
         /*
           === pas === de test sur le champ "chd__dtm_tache"

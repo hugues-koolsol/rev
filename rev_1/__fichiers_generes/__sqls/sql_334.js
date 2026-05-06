@@ -9,12 +9,38 @@ class sql_334{
     /*
       =============================================================================================================
     */
+    verifier_coherence( par ){
+        this.__ig1.options_generales.erreur_controlee=true;
+if(par.n_chp_espece_genre.toUpperCase() === 'VARCHAR' && par.n_che_longueur_genre === null){
+    throw new Error( 'une longueur doit être indiquée pour le l\'espèce VARCHAR' );
+}
+if(par.n_chp_espece_genre.toUpperCase() === 'DECIMAL' && par.n_che_longueur_genre === null){
+    throw new Error( 'une longueur doit être indiquée pour le l\'espèce DECIMAL' );
+}
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+
+    /*
+      =============================================================================================================
+    */
     async sql( par ){
         /* test "non nul" sur le champ "chi_id_genre" */
-        if(par['n_chi_id_genre'] === null || par['n_chi_id_genre']===''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "id" doit être renseigné [' + this.__ig1.nl2() + ']');
-            return{__xst:__xer};
+        if(par['n_chi_id_genre'] === null || par['n_chi_id_genre'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "id" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction de coherence qui fait un throw ==============================
+          =====================================================================================================
+        */
+        this.verifier_coherence(par);
+        /*
+          =====================================================================================================
+          ================== appel de la fonction de coherence qui fait un throw ==============================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_genres` SET \r\n';
         let tableau_champs=[];
         try{

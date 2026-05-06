@@ -253,9 +253,9 @@ class taches1{
         */
         /*sql_inclure_fin*/ 112 , criteres_select_112 , this.__ig1.donnees_retournees , __db1 );
         if(tt112[__xst] !== __xsu || tt112[__xva].length !== 1){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [112 ' + this.__ig1.nl2() + ']'});
         }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
         let criteres_113={
              /*  */
             "c_chi_id_tache" : form['chi_id_tache'] ,
@@ -263,7 +263,7 @@ class taches1{
             "n_chp_texte_tache" : form['chp_texte_tache'] ,
             "n_chp_priorite_tache" : form['chp_priorite_tache']
         };
-        await __db1.exec( 'BEGIN TRANSACTION;' );
+        /* =========================== mise à jour effective ======================== */
         let tt113=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_taches SET 
@@ -274,9 +274,9 @@ class taches1{
            AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
         */
         /*sql_inclure_fin*/ 113 , criteres_113 , this.__ig1.donnees_retournees , __db1 );
-        if(tt113[__xst] !== __xsu){
+        if(tt113.__xst !== __xsu || tt113.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer , __xme : tt113.__xme });
+            return({"__xst" : __xer ,"__xme" : tt113.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){

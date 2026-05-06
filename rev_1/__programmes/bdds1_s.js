@@ -695,67 +695,60 @@ class bdds1{
         ;
         */
         /*sql_inclure_fin*/ 371 , criteres_select_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+        if(tt371[__xst] !== __xsu || tt371[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [371 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt371[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer});
         }
-        if(tt371[__xst] === __xsu && tt371[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt371[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
-            }
-            let donnees_sql={
-                "c_chi_id_basedd" : form['chi_id_basedd'] ,
-                "n_chp_commentaire_basedd" : form['chp_commentaire_basedd'] === '' ? ( null ) : ( form['chp_commentaire_basedd'] ) ,
-                "n_chp_rev_travail_basedd" : form['chp_rev_travail_basedd'] === '' ? ( null ) : ( form['chp_rev_travail_basedd'] ) ,
-                "n_chp_fournisseur_basedd" : form['chp_fournisseur_basedd']
-            };
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt362=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_bdds SET 
-               `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
-               `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd , 
-               `chp_fournisseur_basedd` = :n_chp_fournisseur_basedd
-            WHERE `chi_id_basedd` = :c_chi_id_basedd ;
-            */
-            /*sql_inclure_fin*/ 362 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            if(tt362[__xst] !== __xsu){
-                if(tt362['__xme'] !== ''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt362['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt371[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true){
-                if(form['__mat_liste_si_ok']){
-                    let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                    let d=1;
-                    await this.filtre1( mat1 , 1 , __db1 );
-                }
-                return({"__xst" : __xsu});
-            }
-            let tt371_bis=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
-             FROM b1.tbl_bdds T0
-            WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
-            ;
-            */
-            /*sql_inclure_fin*/ 371 , criteres_select_371 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt371_bis;
-        }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt371;
+        let donnees_sql={
+            "c_chi_id_basedd" : form['chi_id_basedd'] ,
+            "n_chp_commentaire_basedd" : form['chp_commentaire_basedd'] === '' ? ( null ) : ( form['chp_commentaire_basedd'] ) ,
+            "n_chp_rev_travail_basedd" : form['chp_rev_travail_basedd'] === '' ? ( null ) : ( form['chp_rev_travail_basedd'] ) ,
+            "n_chp_fournisseur_basedd" : form['chp_fournisseur_basedd']
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt362=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_bdds SET 
+           `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
+           `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd , 
+           `chp_fournisseur_basedd` = :n_chp_fournisseur_basedd
+        WHERE `chi_id_basedd` = :c_chi_id_basedd ;
+        */
+        /*sql_inclure_fin*/ 362 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt362[__xst] !== __xsu || tt362.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt362.__xme});
         }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt371[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
+            return({"__xst" : __xer});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                let d=1;
+                await this.filtre1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
+        }
+        let tt371_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
+         FROM b1.tbl_bdds T0
+        WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
+        ;
+        */
+        /*sql_inclure_fin*/ 371 , criteres_select_371 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt371_bis;
         return({"__xst" : __xsu});
     }
     /*

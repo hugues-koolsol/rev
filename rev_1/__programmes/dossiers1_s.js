@@ -1497,67 +1497,60 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 386 , criteres_select_386 , this.__ig1.donnees_retournees , __db1 );
-        if(tt386[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+        if(tt386[__xst] !== __xsu || tt386[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [386 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt386[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer});
         }
-        if(tt386[__xst] === __xsu && tt386[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt386[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
-            }
-            let donnees_sql={
-                "c_chi_id_dossier" : form['chi_id_dossier'] ,
-                "n_chp_nom_dossier" : form['chp_nom_dossier'] === '' ? ( NULL ) : ( form['chp_nom_dossier'] ) ,
-                "n_chx_parent_dossier" : form['chx_parent_dossier']
-            };
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt407=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_dossiers SET 
-               `chp_nom_dossier` = :n_chp_nom_dossier , 
-               `chx_parent_dossier` = :n_chx_parent_dossier
-            WHERE `chi_id_dossier` = :c_chi_id_dossier ;
-            */
-            /*sql_inclure_fin*/ 407 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            if(tt407[__xst] !== __xsu){
-                if(tt407['__xme'] !== ''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt407['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt386[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true){
-                if(form['__mat_liste_si_ok']){
-                    let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                    let d=1;
-                    await this.filtre1( mat1 , 1 , __db1 );
-                }
-                return({"__xst" : __xsu});
-            }
-            let tt386_bis=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
-             FROM b1.tbl_dossiers T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
-            
-            WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
-            ;
-            */
-            /*sql_inclure_fin*/ 386 , criteres_select_386 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt386_bis;
-        }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt386;
+        let donnees_sql={
+            "c_chi_id_dossier" : form['chi_id_dossier'] ,
+            "n_chp_nom_dossier" : form['chp_nom_dossier'] === '' ? ( NULL ) : ( form['chp_nom_dossier'] ) ,
+            "n_chx_parent_dossier" : form['chx_parent_dossier']
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt407=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_dossiers SET 
+           `chp_nom_dossier` = :n_chp_nom_dossier , 
+           `chx_parent_dossier` = :n_chx_parent_dossier
+        WHERE `chi_id_dossier` = :c_chi_id_dossier ;
+        */
+        /*sql_inclure_fin*/ 407 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt407[__xst] !== __xsu || tt407.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt407.__xme});
         }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt386[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
+            return({"__xst" : __xer});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                let d=1;
+                await this.filtre1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
+        }
+        let tt386_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 386 , criteres_select_386 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt386_bis;
         await this.liste_des_fidos( form['chi_id_dossier'] , __db1 );
         return({"__xst" : __xsu});
     }

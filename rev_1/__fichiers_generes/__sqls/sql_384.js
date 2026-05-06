@@ -11,9 +11,9 @@ class sql_384{
     */
     async sql( par ){
         /* test "non nul" sur le champ "chp_nom_projet" */
-        if(par['n_chp_nom_projet'] === null || par['n_chp_nom_projet']===''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du projet" doit être renseigné [' + this.__ig1.nl2() + ']');
-            return{__xst:__xer};
+        if(par['n_chp_nom_projet'] === null || par['n_chp_nom_projet'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
         }
         let sql0='UPDATE `tbl_projets` SET \r\n';
         let tableau_champs=[];
@@ -44,6 +44,10 @@ class sql_384{
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_384= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
+            /* si c'est une requete souche la maj DOIT se faire */
+            if(res === 0){
+                return({"__xst" : __xer ,"changements" : res ,"__xme" : 'pas d\'enregistrement à modifier'});
+            }
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 384 , e , sql0 , {} ));

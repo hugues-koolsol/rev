@@ -554,78 +554,71 @@ class travaux1{
         ;
         */
         /*sql_inclure_fin*/ 396 , criteres_select_396 , this.__ig1.donnees_retournees , __db1 );
-        if(tt396[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+        if(tt396[__xst] !== __xsu || tt396[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [396 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt396[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer});
         }
-        if(tt396[__xst] === __xsu && tt396[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt396[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
-            }
-            let criteres_397={
-                 /*  */
-                "c_chi_id_travail" : form['chi_id_travail'] ,
-                "n_chp_resume_travail" : form['chp_resume_travail'] ,
-                "n_cht_rev_travail" : form['cht_rev_travail'] === '' ? ( null ) : ( form['cht_rev_travail'] ) ,
-                "n_chp_etat_travail" : form['chp_etat_travail'] ,
-                "n_chx_projet_travail" : form['chx_projet_travail'] ,
-                "n_chd_dtc_travail" : this.__ig1.donnees_retournees.date_heure_serveur
-            };
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt397=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_travaux SET 
-               `chp_resume_travail` = :n_chp_resume_travail , 
-               `cht_rev_travail` = :n_cht_rev_travail , 
-               `chd_dtc_travail` = :n_chd_dtc_travail , 
-               `chp_etat_travail` = :n_chp_etat_travail , 
-               `chx_projet_travail` = :n_chx_projet_travail , 
-               `cht_log_travail` = :n_cht_log_travail
-            WHERE `chi_id_travail` = :c_chi_id_travail ;
-            */
-            /*sql_inclure_fin*/ 397 , criteres_397 , this.__ig1.donnees_retournees , __db1 );
-            if(tt397[__xst] !== __xsu){
-                if(tt397['__xme'] !== ''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt397['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt396[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true){
-                if(form['__mat_liste_si_ok']){
-                    let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                    let d=1;
-                    await this.filtre1( mat1 , 1 , __db1 );
-                }
-                return({"__xst" : __xsu});
-            }
-            let tt396_bis=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
-            `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-            `T0`.`cht_utilisateur_travail`
-             FROM b1.tbl_travaux T0
-             LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
-            
-            WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
-               AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
-            ;
-            */
-            /*sql_inclure_fin*/ 396 , criteres_select_396 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt396_bis;
-        }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt396;
+        let criteres_397={
+             /*  */
+            "c_chi_id_travail" : form['chi_id_travail'] ,
+            "n_chp_resume_travail" : form['chp_resume_travail'] ,
+            "n_cht_rev_travail" : form['cht_rev_travail'] === '' ? ( null ) : ( form['cht_rev_travail'] ) ,
+            "n_chp_etat_travail" : form['chp_etat_travail'] ,
+            "n_chx_projet_travail" : form['chx_projet_travail'] ,
+            "n_chd_dtc_travail" : this.__ig1.donnees_retournees.date_heure_serveur
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt397=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_travaux SET 
+           `chp_resume_travail` = :n_chp_resume_travail , 
+           `cht_rev_travail` = :n_cht_rev_travail , 
+           `chd_dtc_travail` = :n_chd_dtc_travail , 
+           `chp_etat_travail` = :n_chp_etat_travail , 
+           `chx_projet_travail` = :n_chx_projet_travail , 
+           `cht_log_travail` = :n_cht_log_travail
+        WHERE `chi_id_travail` = :c_chi_id_travail ;
+        */
+        /*sql_inclure_fin*/ 397 , criteres_397 , this.__ig1.donnees_retournees , __db1 );
+        if(tt397.__xst !== __xsu || tt397.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt397.__xme});
         }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt396[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
+            return({"__xst" : __xer});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                let d=1;
+                await this.filtre1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
+        }
+        let tt396_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
+        `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
+        `T0`.`cht_utilisateur_travail`
+         FROM b1.tbl_travaux T0
+         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
+        
+        WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
+           AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
+        ;
+        */
+        /*sql_inclure_fin*/ 396 , criteres_select_396 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt396_bis;
         return({"__xst" : __xsu});
     }
     /*

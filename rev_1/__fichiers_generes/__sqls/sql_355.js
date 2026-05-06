@@ -11,14 +11,14 @@ class sql_355{
     */
     async sql( par ){
         /* test "non nul" sur le champ "che_est_souche_requete" */
-        if(par['n_che_est_souche_requete'] === null || par['n_che_est_souche_requete']===''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "requête souche ?" doit être renseigné [' + this.__ig1.nl2() + ']');
-            return{__xst:__xer};
+        if(par['n_che_est_souche_requete'] === null || par['n_che_est_souche_requete'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "requête souche ?" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
         }
         /* test "non nul" sur le champ "chp_type_requete" */
-        if(par['n_chp_type_requete'] === null || par['n_chp_type_requete']===''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "type de requête" doit être renseigné [' + this.__ig1.nl2() + ']');
-            return{__xst:__xer};
+        if(par['n_chp_type_requete'] === null || par['n_chp_type_requete'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "type de requête" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
         }
         let sql0='UPDATE `tbl_requetes` SET \r\n';
         let tableau_champs=[];
@@ -69,6 +69,10 @@ class sql_355{
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_355= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
+            /* si c'est une requete souche la maj DOIT se faire */
+            if(res === 0){
+                return({"__xst" : __xer ,"changements" : res ,"__xme" : 'pas d\'enregistrement à modifier'});
+            }
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 355 , e , sql0 , {} ));

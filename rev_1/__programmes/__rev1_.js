@@ -926,24 +926,24 @@ class __rev1{
         let mat_retour=[];
         let l01=mat.length;
         if(l01 > 0){
-             mat_retour.push( mat[0] );
-             mat_retour.push( mat[id] );
-             let id_init=mat[id][0];
-             let niveau_init=mat[id][3];
-             /* ajustement manuel du premier élément*/
-             mat_retour[1][0]=1;
-             mat_retour[1][3]=0;
-             mat_retour[1][7]=0;
-             let indice_courant=2;
-             for( let i= id + 1 ; i < l01 && mat[i][3] > niveau_init ; i++ ){
-                 mat_retour.push( mat[i] );
-                 mat_retour[indice_courant][0]=mat_retour[indice_courant][0]-id_init+1;
-                 mat_retour[indice_courant][3]=mat_retour[indice_courant][3]-niveau_init;
-                 mat_retour[indice_courant][7]=mat_retour[indice_courant][7]-id_init+1;
-                 indice_courant++;
-             }
-             mat_retour=this.indicer_le_tableau( mat_retour );
-             return({"__xst" : __xsu ,"__xva" : mat_retour});
+            mat_retour.push( mat[0] );
+            mat_retour.push( mat[id] );
+            let id_init=mat[id][0];
+            let niveau_init=mat[id][3];
+            /* ajustement manuel du premier élément */
+            mat_retour[1][0]=1;
+            mat_retour[1][3]=0;
+            mat_retour[1][7]=0;
+            let indice_courant=2;
+            for( let i=id + 1 ; i < l01 && mat[i][3] > niveau_init ; i++ ){
+                mat_retour.push( mat[i] );
+                mat_retour[indice_courant][0]=(mat_retour[indice_courant][0] - id_init) + 1;
+                mat_retour[indice_courant][3]=mat_retour[indice_courant][3] - niveau_init;
+                mat_retour[indice_courant][7]=(mat_retour[indice_courant][7] - id_init) + 1;
+                indice_courant++;
+            }
+            mat_retour=this.indicer_le_tableau( mat_retour );
+            return({"__xst" : __xsu ,"__xva" : mat_retour});
         }
         return({"__xst" : __xer ,"__xme" : 'la matrice en entrée de copier_morceau_de_matrice est vide'});
     }

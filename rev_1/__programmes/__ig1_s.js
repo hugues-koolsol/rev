@@ -73,7 +73,8 @@ class __ig1{
         "chemin_absolu_projet" : '' ,
         "repertoire_racine_de_tous_les_projets" : '' ,
         "base_de_reference" : 0 ,
-        "base_de_travail" : 0
+        "base_de_travail" : 0 ,
+        "erreur_controlee" : false
     };
     donnees_recues=null;
     asynchrone=false;
@@ -274,7 +275,11 @@ class __ig1{
                                                     let le_message='pile erreur 1=\n' + e.stack.replace( repl0 , '' ).replace( /https\:\/\/deno/g , 'deno' ).replace( /file\:\/\/\/\//g , '' );
                                                     le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
                                                     this.ma_trace1( le_message );
-                                                    this.donnees_retournees.__xsi[__xer].push( 'SERVEUR : <b>' + nom_du_fichier + '.' + nom_de_la_fonction_a_appeler + '()</b> n\'existe pas ou bien contient une erreur<br />' + this.nl2( e ) );
+                                                    if(this.options_generales.erreur_controlee === false){
+                                                        this.donnees_retournees.__xsi[__xer].push( 'SERVEUR : <b>' + nom_du_fichier + '.' + nom_de_la_fonction_a_appeler + '()</b> n\'existe pas ou bien contient une erreur<br />' + this.nl2( e ) );
+                                                    }else{
+                                                        this.donnees_retournees.__xsi[__xer].push( e.message );
+                                                    }
                                                     continuer=false;
                                                     continue;
                                                 }
@@ -1132,7 +1137,7 @@ class __ig1{
             "__xst" : 1 ,
             "__xva" : obj_le_message.hasOwnProperty( '__xva' ) ? ( obj_le_message ) : ( {} ) ,
             "__xac" : "" ,
-            "__xsi" :  /* m1(n1(__ig1),f1(affiche_les_messages())) */{0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
+            "__xsi" : /* m1(n1(__ig1),f1(affiche_les_messages())) */{0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
             "chi_id_acces" : this.donnees_retournees.chi_id_acces ,
             "chi_id_utilisateur" : this.donnees_retournees.chi_id_utilisateur ,
             "chi_id_projet" : this.donnees_retournees.chi_id_projet ,

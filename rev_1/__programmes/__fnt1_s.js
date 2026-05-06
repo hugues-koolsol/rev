@@ -155,7 +155,7 @@ class __fnt1{
       si s=0o777, on veut quand même mettre cette valeur en texte donc on ne teste pas est_num
     */
     sq4( s , nom_du_parametre='' ){
-        if(s === null ){
+        if(s === null){
             return 'NULL';
         }else if(s === undefined){
             let e1=(new Error()).stack;

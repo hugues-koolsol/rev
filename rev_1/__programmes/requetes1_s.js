@@ -539,74 +539,67 @@ class requetes1{
         ;
         */
         /*sql_inclure_fin*/ 354 , criteres_select_354 , this.__ig1.donnees_retournees , __db1 );
-        if(tt354[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+        if(tt354[__xst] !== __xsu || tt354[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [354 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt354[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer});
         }
-        if(tt354[__xst] === __xsu && tt354[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt354[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
-            }
-            let donnees_sql={
-                "c_chi_id_requete" : form['chi_id_requete'] ,
-                "n_che_est_souche_requete" : form['che_est_souche_requete'] ,
-                "n_chp_type_requete" : form['chp_type_requete'] ,
-                "n_cht_rev_requete" : form['cht_rev_requete'] === '' ? ( null ) : ( form['cht_rev_requete'] ) ,
-                "n_cht_sql_requete" : form['cht_sql_requete'] === '' ? ( null ) : ( form['cht_sql_requete'] ) ,
-                "n_cht_commentaire_requete" : form['cht_commentaire_requete'] === '' ? ( null ) : ( form['cht_commentaire_requete'] ) ,
-                "n_chp_table_reference_requete" : form['chp_table_reference_requete'] === '' ? ( null ) : ( form['chp_table_reference_requete'] )
-            };
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt355=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_requetes SET 
-               `che_est_souche_requete` = :n_che_est_souche_requete , 
-               `chp_type_requete` = :n_chp_type_requete , 
-               `cht_rev_requete` = :n_cht_rev_requete , 
-               `cht_sql_requete` = :n_cht_sql_requete , 
-               `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-               `chp_table_reference_requete` = :n_chp_table_reference_requete
-            WHERE `chi_id_requete` = :c_chi_id_requete ;
-            */
-            /*sql_inclure_fin*/ 355 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            if(tt355[__xst] !== __xsu){
-                if(tt355['__xme'] !== ''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt355['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt354[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true){
-                if(form['__mat_liste_si_ok']){
-                    let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                    let d=1;
-                    await this.filtre1( mat1 , 1 , __db1 );
-                }
-                return({"__xst" : __xsu});
-            }
-            let tt354_bis=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-            `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
-             FROM b1.tbl_requetes T0
-            WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
-            ;
-            */
-            /*sql_inclure_fin*/ 354 , criteres_select_354 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt354_bis;
-        }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt354;
+        let donnees_sql={
+            "c_chi_id_requete" : form['chi_id_requete'] ,
+            "n_che_est_souche_requete" : form['che_est_souche_requete'] ,
+            "n_chp_type_requete" : form['chp_type_requete'] ,
+            "n_cht_rev_requete" : form['cht_rev_requete'] === '' ? ( null ) : ( form['cht_rev_requete'] ) ,
+            "n_cht_sql_requete" : form['cht_sql_requete'] === '' ? ( null ) : ( form['cht_sql_requete'] ) ,
+            "n_cht_commentaire_requete" : form['cht_commentaire_requete'] === '' ? ( null ) : ( form['cht_commentaire_requete'] ) ,
+            "n_chp_table_reference_requete" : form['chp_table_reference_requete'] === '' ? ( null ) : ( form['chp_table_reference_requete'] )
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt355=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_requetes SET 
+           `che_est_souche_requete` = :n_che_est_souche_requete , 
+           `chp_type_requete` = :n_chp_type_requete , 
+           `cht_rev_requete` = :n_cht_rev_requete , 
+           `cht_sql_requete` = :n_cht_sql_requete , 
+           `cht_commentaire_requete` = :n_cht_commentaire_requete , 
+           `chp_table_reference_requete` = :n_chp_table_reference_requete
+        WHERE `chi_id_requete` = :c_chi_id_requete ;
+        */
+        /*sql_inclure_fin*/ 355 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt355.__xst !== __xsu || tt355.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt355.__xme});
         }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt354[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
+            return({"__xst" : __xer});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                let d=1;
+                await this.filtre1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
+        }
+        let tt354_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+         FROM b1.tbl_requetes T0
+        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
+        ;
+        */
+        /*sql_inclure_fin*/ 354 , criteres_select_354 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt354_bis;
         return({"__xst" : __xsu});
     }
     /*

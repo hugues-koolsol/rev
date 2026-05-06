@@ -827,12 +827,6 @@ class acces1{
         form['chx_metier_acces']=form['chx_metier_acces'] === null ? ( null ) : ( parseInt( form['chx_metier_acces'] , 10 ) );
         form['che_actif_acces']=form['che_actif_acces'] === null ? ( null ) : ( parseInt( form['che_actif_acces'] , 10 ) );
         /* conversion des données numériques fin */
-/*
-        if(form['chi_id_acces'] === 0 || form['chi_id_acces'] === null){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'on ne peut pas modifier l\'accès 0 [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-*/        
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -857,74 +851,67 @@ class acces1{
         ;
         */
         /*sql_inclure_fin*/ 136 , criteres_select_136 , this.__ig1.donnees_retournees , __db1 );
-        if(tt136[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+        if(tt136[__xst] !== __xsu || tt136[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [136 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt136[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer});
         }
-        if(tt136[__xst] === __xsu && tt136[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt136[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
-            }
-            let donnees_sql={
-                "c_chi_id_acces" : form['chi_id_acces'] ,
-                "n_chp_nom_acces" : form['chp_nom_acces'] ,
-                "n_chx_groupe_acces" : form['chx_groupe_acces'] ,
-                "n_chx_metier_acces" : form['chx_metier_acces'] ,
-                "n_che_actif_acces" : form['che_actif_acces']
-            };
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt138=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_acces SET 
-               `chp_nom_acces` = :n_chp_nom_acces , 
-               `chx_groupe_acces` = :n_chx_groupe_acces , 
-               `chx_metier_acces` = :n_chx_metier_acces , 
-               `che_actif_acces` = :n_che_actif_acces
-            WHERE `chi_id_acces` = :c_chi_id_acces ;
-            */
-            /*sql_inclure_fin*/ 138 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            if(tt138[__xst] !== __xsu || tt138.changements !== 1 ){
-                if(tt138['__xme'] !== ''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt138['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt136[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true){
-                if(form['__mat_liste_si_ok']){
-                    let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                    let d=1;
-                    await this.filtre1( mat1 , 1 , __db1 );
-                }
-                return({"__xst" : __xsu});
-            }
-            let tt136_bis=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
-            `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
-             FROM b1.tbl_acces T0
-             LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-            
-             LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
-            
-            WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
-            ;
-            */
-            /*sql_inclure_fin*/ 136 , criteres_select_136 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt136_bis;
-        }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt136;
+        let donnees_sql={
+            "c_chi_id_acces" : form['chi_id_acces'] ,
+            "n_chp_nom_acces" : form['chp_nom_acces'] ,
+            "n_chx_groupe_acces" : form['chx_groupe_acces'] ,
+            "n_chx_metier_acces" : form['chx_metier_acces'] ,
+            "n_che_actif_acces" : form['che_actif_acces']
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt138=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_acces SET 
+           `chp_nom_acces` = :n_chp_nom_acces , 
+           `chx_groupe_acces` = :n_chx_groupe_acces , 
+           `chx_metier_acces` = :n_chx_metier_acces , 
+           `che_actif_acces` = :n_che_actif_acces
+        WHERE `chi_id_acces` = :c_chi_id_acces ;
+        */
+        /*sql_inclure_fin*/ 138 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt138.__xst !== __xsu || tt138.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt138.__xme});
         }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt136[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
+            return({"__xst" : __xer});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                let d=1;
+                await this.filtre1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
+        }
+        let tt136_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+        `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
+         FROM b1.tbl_acces T0
+         LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+        
+         LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+        
+        WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
+        ;
+        */
+        /*sql_inclure_fin*/ 136 , criteres_select_136 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt136_bis;
         return({"__xst" : __xsu});
     }
     /*

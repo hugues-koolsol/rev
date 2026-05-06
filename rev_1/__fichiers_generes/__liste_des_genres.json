@@ -291,7 +291,7 @@
     "chi_id_genre": 13,
     "chp_nom_genre": "mot de passe",
     "chp_espece_genre": "VARCHAR",
-    "che_longueur_genre": "256",
+    "che_longueur_genre": null,
     "che_est_primaire_genre": 0,
     "che_est_incrément_genre": 0,
     "che_est_obligatoire_genre": 0,
