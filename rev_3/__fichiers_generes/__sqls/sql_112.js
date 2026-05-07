@@ -19,8 +19,8 @@ class sql_112{
            LEFT JOIN tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_tache'] ) + `
-         AND \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_utilisateur_tache'] ) + `)`;
+        const where0=` WHERE (\`T0\`.\`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_tache'] , 'T0_chi_id_tache' ) + `
+         AND \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_utilisateur_tache'] , 'T0_chx_utilisateur_tache' ) + `)`;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_112 sql0=',sql0); */
         let lignes=[];

@@ -28,7 +28,7 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_groupe'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du groupe'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1)
@@ -46,7 +46,7 @@ CREATE TABLE `tbl_groupes`(
             genre(8)
             )
             */
-             `chx_parent_groupe` INTEGER REFERENCES tbl_groupes(chi_id_groupe)  ON UPDATE CASCADE DEFAULT  NULL
+             `chx_parent_groupe` INTEGER REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE DEFAULT  NULL
     );
 
 
@@ -81,7 +81,7 @@ CREATE TABLE `tbl_metiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_metier'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du métier'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1)
@@ -99,7 +99,7 @@ CREATE TABLE `tbl_metiers`(
             genre(8)
             )
             */
-             `chx_parent_metier` INTEGER REFERENCES tbl_metiers(chi_id_metier)  ON UPDATE CASCADE DEFAULT  NULL
+             `chx_parent_metier` INTEGER REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE DEFAULT  NULL
     );
 
 
@@ -115,7 +115,7 @@ CREATE TABLE `tbl_acces`(
    table('tbl_acces'),
    genre_meta(table_de_base),rang_de_la_table(30),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
-   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(198,119))) 
+   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2),ne_pas_modifier(0)'),transform_base_sur_svg(translate(198,119))) 
 */
     
             /*
@@ -152,7 +152,7 @@ CREATE TABLE `tbl_acces`(
             genre(4)
             )
             */
-             `chx_groupe_acces` INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe)  ON UPDATE CASCADE
+             `chx_groupe_acces` INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE
     ,
     
             /*
@@ -164,7 +164,7 @@ CREATE TABLE `tbl_acces`(
             genre(4)
             )
             */
-             `chx_metier_acces` INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier)  ON UPDATE CASCADE
+             `chx_metier_acces` INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE
     ,
     
             /*
@@ -173,10 +173,10 @@ CREATE TABLE `tbl_acces`(
             nom_du_champ('cht_parametres_acces'),
             nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),
             typologie(cht),
-            genre(6)
+            genre(11)
             )
             */
-             `cht_parametres_acces` TEXT DEFAULT  NULL
+             `cht_parametres_acces` TEXT NOT NULL DEFAULT  '{}'
     ,
     
             /*
@@ -222,26 +222,13 @@ CREATE TABLE `tbl_autorisations`(
             /*
             meta(
             genre_meta(champ),
-            nom_du_champ('chp_nom_autorisation'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
-            typologie(chp),
-            genre(17),
-            est_libelle_lien(1)
-            )
-            */
-             `chp_nom_autorisation` VARCHAR(255) NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
             nom_du_champ('chx_acces_autorisation'),
             nom_bref_du_champ('acces'),abrege_du_champ('acces'),
             typologie(chx),
             genre(4)
             )
             */
-             `chx_acces_autorisation` INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces)  ON UPDATE CASCADE
+             `chx_acces_autorisation` INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces) ON UPDATE CASCADE
     ,
     
             /*
@@ -255,7 +242,19 @@ CREATE TABLE `tbl_autorisations`(
             refe_parent_gauche(1)
             )
             */
-             `chx_source_autorisation` INTEGER NOT NULL REFERENCES tbl_sources(chi_id_source)  ON UPDATE CASCADE
+             `chx_source_autorisation` INTEGER NOT NULL REFERENCES tbl_sources(chi_id_source) ON UPDATE CASCADE
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_pour_sous_liste_autorisation'),
+            nom_bref_du_champ('pour sous liste'),abrege_du_champ('pour accès sous liste'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_pour_sous_liste_autorisation` INTEGER NOT NULL DEFAULT  0
     );
 
 
@@ -320,7 +319,7 @@ CREATE TABLE `tbl_menus`(
             genre(4)
             )
             */
-             `chx_autorisation_menu` INTEGER NOT NULL REFERENCES tbl_autorisations(chi_id_autorisation)  ON UPDATE CASCADE
+             `chx_autorisation_menu` INTEGER NOT NULL REFERENCES tbl_autorisations(chi_id_autorisation) ON UPDATE CASCADE
     ,
     
             /*
@@ -533,6 +532,42 @@ CREATE TABLE `tbl_sources`(
             )
             */
              `che_autorisation_globale_source` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_condition_js_source'),
+            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),
+            typologie(cht),
+            genre(97)
+            )
+            */
+             `cht_condition_js_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_condition_rev_source'),
+            nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),
+            typologie(cht),
+            genre(98)
+            )
+            */
+             `cht_condition_rev_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_notification_ko_source'),
+            nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),
+            typologie(cht),
+            genre(6)
+            )
+            */
+             `cht_notification_ko_source` TEXT DEFAULT  NULL
     );
 
 
@@ -567,7 +602,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_de_connexion_utilisateur'),
-            nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion'),
+            nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion de l\'utilisateur'),
             typologie(cht),
             genre(3),
             est_libelle_lien(1)
@@ -621,7 +656,7 @@ CREATE TABLE `tbl_utilisateurs`(
             genre(4)
             )
             */
-             `chx_acces_utilisateur` INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces)  ON UPDATE CASCADE
+             `chx_acces_utilisateur` INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces) ON UPDATE CASCADE
     ,
     
             /*
@@ -688,7 +723,7 @@ CREATE TABLE `tbl_taches`(
    table('tbl_taches'),
    genre_meta(table_de_base),rang_de_la_table(80),permet_la_gestion_de('tâche'),
    distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(676,475))) 
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(691,526))) 
 */
     
             /*
@@ -712,7 +747,7 @@ CREATE TABLE `tbl_taches`(
             genre(18),est_en_session(1),nom_en_session('chi_id_utilisateur')
             )
             */
-             `chx_utilisateur_tache` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur)  ON UPDATE CASCADE
+             `chx_utilisateur_tache` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) ON UPDATE CASCADE
     ,
     
             /*
@@ -732,8 +767,8 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_priorite_tache'),
-            nom_bref_du_champ('priorite'),abrege_du_champ('priorite'),
-            typologie(),
+            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),
+            typologie(chi),
             genre(99)
             )
             */

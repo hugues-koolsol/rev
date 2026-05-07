@@ -12,7 +12,53 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
   =====================================================================================================================
 */
 class projets1{
-    /* function creer_le_repertoire_racine */
+    /*
+      =============================================================================================================
+    */
+    async vacuum_et_checkpoint( mat , d ){
+        let nom_fichier='bdd_' + this.__ig1.donnees_retournees.chi_id_projet;
+        let chemin_bdd=(this.__ig1.options_generales.chemin_des_bdd + nom_fichier) + '.sqlite';
+        /* this.__ig1.ma_trace1("chemin_bdd="+chemin_bdd); */
+        let __db=null;
+        try{
+            __db=new Database( chemin_bdd , {"create" : false} );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        try{
+            let cmd='';
+            cmd+='VACUUM;';
+            cmd+='PRAGMA journal_mode = OFF;';
+            cmd+='PRAGMA wal_checkpoint(FULL);';
+            await __db.exec( cmd );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        let chemin_fichier_wal=(this.__ig1.options_generales.chemin_des_bdd + nom_fichier) + '.sqlite-wal';
+        let chemin_fichier_shm=(this.__ig1.options_generales.chemin_des_bdd + nom_fichier) + '.sqlite-shm';
+        try{
+            if((await this.__ig1.is_file( chemin_fichier_wal ))){
+                await Deno.remove( chemin_fichier_wal );
+            }
+            if((await this.__ig1.is_file( chemin_fichier_shm ))){
+                await Deno.remove( chemin_fichier_shm );
+            }
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        try{
+            __db.close();
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        /*
+          
+        */
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async creer_le_repertoire_racine( mat , d ){
         /* , this.__ig1.donnees_recues , this.__ig1.donnees_retournees , this.__ig1.options_generales ]{ */
         let chi_id_projet=0;
@@ -167,6 +213,8 @@ class projets1{
     */
     async desactiver1( mat , d ){
         this.__ig1.donnees_retournees.chi_id_projet=0;
+        this.__ig1.__session_json.__autorisations_serveur={};
+        this.__ig1.reecrire_fichier_session();
         await this.__ig1.modifier_valeur_session( 'chi_id_projet' , this.__ig1.donnees_retournees.chi_id_projet );
         await this.__ig1.obtenir_les_menus( mat , d );
         await this.__ig1.obtenir_les_genres( mat , d );
@@ -189,8 +237,9 @@ class projets1{
                 chi_id_projet=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        this.__ig1.donnees_retournees.chi_id_projet=0;
-        this.__ig1.donnees_retournees['chi_id_projet']=chi_id_projet;
+        this.__ig1.donnees_retournees.chi_id_projet=chi_id_projet;
+        this.__ig1.__session_json.__autorisations_serveur={};
+        this.__ig1.reecrire_fichier_session();
         await this.__ig1.modifier_valeur_session( 'chi_id_projet' , this.__ig1.donnees_retournees.chi_id_projet );
         await this.__ig1.obtenir_les_menus( mat , d );
         await this.__ig1.obtenir_les_genres( mat , d );

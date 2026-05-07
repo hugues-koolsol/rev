@@ -10,24 +10,49 @@ class sql_161{
       =============================================================================================================
     */
     async sql( par ){
+        /* test "non nul" sur le champ "chp_texte_tache" */
+        if(par['n_chp_texte_tache'] === null || par['n_chp_texte_tache'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "texte" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        /* test "non nul" sur le champ "chp_priorite_tache" */
+        if(par['n_chp_priorite_tache'] === null || par['n_chp_priorite_tache'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite de la tâche" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        /*
+          === test spécifique sur le champ "chp_priorite_tache" ===
+        */
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , par['n_chp_priorite_tache'] , 'priorite de la tâche' );
+        if(__test_1_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
+        }
+        /*
+          === pas === de test sur le champ "chd__dtm_tache"
+        */
+        /* test "non nul" sur le champ "chx_utilisateur_tache" */
+        if(par['n_chx_utilisateur_tache'] === null || par['n_chx_utilisateur_tache'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "utilisateur" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
         let sql0='UPDATE `tbl_taches` SET \r\n';
         let tableau_champs=[];
         try{
             if(par['n_chp_texte_tache'] === undefined || par['n_chp_texte_tache'] === '' || par['n_chp_texte_tache'] === null){
                 tableau_champs.push( '`chp_texte_tache` = NULL' );
             }else{
-                tableau_champs.push( '`chp_texte_tache` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_texte_tache'] ) + '\'' );
+                tableau_champs.push( '`chp_texte_tache` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_texte_tache'] , 'n_chp_texte_tache' ) + '\'' );
             }
             if(par['n_chp_priorite_tache'] === undefined || par['n_chp_priorite_tache'] === '' || par['n_chp_priorite_tache'] === null){
                 tableau_champs.push( '`chp_priorite_tache` = NULL' );
             }else{
-                tableau_champs.push( '`chp_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chp_priorite_tache'] ) + '' );
+                tableau_champs.push( '`chp_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chp_priorite_tache'] , 'n_chp_priorite_tache' ) + '' );
             }
             tableau_champs.push( '`chd__dtm_tache` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             if(par['n_chx_utilisateur_tache'] === undefined || par['n_chx_utilisateur_tache'] === '' || par['n_chx_utilisateur_tache'] === null){
                 tableau_champs.push( '`chx_utilisateur_tache` = NULL' );
             }else{
-                tableau_champs.push( '`chx_utilisateur_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chx_utilisateur_tache'] ) + '' );
+                tableau_champs.push( '`chx_utilisateur_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chx_utilisateur_tache'] , 'n_chx_utilisateur_tache' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -41,10 +66,14 @@ class sql_161{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] ) + '\r\n';
+            where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] , 'c_chi_id_tache' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_161= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
+            /* si c'est une requete souche la maj DOIT se faire */
+            if(res === 0){
+                return({"__xst" : __xer ,"changements" : res ,"__xme" : 'pas d\'enregistrement à modifier'});
+            }
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 161 , e , sql0 , {} ));

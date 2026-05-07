@@ -73,7 +73,8 @@ class __ig1{
         "chemin_absolu_projet" : '' ,
         "repertoire_racine_de_tous_les_projets" : '' ,
         "base_de_reference" : 0 ,
-        "base_de_travail" : 0
+        "base_de_travail" : 0 ,
+        "erreur_controlee" : false
     };
     donnees_recues=null;
     asynchrone=false;
@@ -100,13 +101,24 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    reecrire_fichier_session(){
+        /* this.ma_trace1("this.__session_json",this.__session_json); */
+        try{
+            Deno.writeTextFile( './__sessions/' + this.options_generales.cle_de_session + '.json' , JSON.stringify( this.__session_json ) );
+        }catch(e){
+            console.error( 'e=' , e );
+        }
+    }
+    /*
+      =============================================================================================================
+    */
     async appel_fonction( mat , d ){
         /* , donnees_recues , donnees_retournees , options_generales ]{ */
         /* this.ma_trace1("this.donnees_recues=",this.donnees_recues.__xac); */
         let continuer=true;
         let l01=mat.length;
         let pm1_trouve=false;
-        let les_autorisations_verifiees={"__ig1_s.js" : true ,"__fnt1_s.js" : true};
+        let les_autorisations_verifiees={"__ig1_s.js" : true ,"__fnt1_s.js" : true ,"_connexion1_s.js" : true};
         for( let i=1 ; i < l01 && continuer === true ; i=mat[i][12] ){
             /* this.ma_trace1('mat[i][1]='+mat[i][1]); */
             if(mat[i][1] === 'pm1' && mat[i][2] === 'f'){
@@ -145,12 +157,47 @@ class __ig1{
                                                 nom_du_fichier='./' + n1 + '_s.js';
                                                 cle_pour_json_du_fichier=n1 + '_s.js';
                                             }
+                                            let controler_les_autorisations=true;
+                                            /* this.ma_trace1("cle_pour_json_du_fichier="+cle_pour_json_du_fichier); */
                                             if(les_autorisations_verifiees.hasOwnProperty( cle_pour_json_du_fichier )
                                                    && les_autorisations_verifiees[cle_pour_json_du_fichier] === true
                                             ){
+                                                controler_les_autorisations=false;
                                                 /* this.ma_trace1('autorisation OK pour "'+cle_pour_json_du_fichier+'"'); */
-                                            }else{
-                                                /* this.ma_trace1('à vérifier pour "'+cle_pour_json_du_fichier+'"'); */
+                                            }
+                                            if(controler_les_autorisations===true){
+                                                /*
+                                                  this.ma_trace1("là cle_pour_json_du_fichier=" , cle_pour_json_du_fichier );
+                                                */
+                                                if(this.__session_json.__autorisations_serveur.hasOwnProperty(cle_pour_json_du_fichier)){
+                                                    /* 
+                                                      on a déjà mis cette autorisation en session 
+                                                    */
+                                                    let elem=this.__session_json.__autorisations_serveur[cle_pour_json_du_fichier];
+                                                    /*
+                                                      this.ma_trace1("on a déjà mis cette autorisation en session , elem.che_pour_sous_liste_autorisation="+elem.che_pour_sous_liste_autorisation);
+                                                    */
+                                                    if(elem.che_pour_sous_liste_autorisation === 1){
+                                                        if(nom_de_la_fonction_a_appeler === 'sous_liste1'){
+                                                            controler_les_autorisations=false;
+                                                            /* this.ma_trace1("autorisation déjà controlée"); */
+                                                        }
+                                                    }else{
+                                                        if(elem.cht_condition_js_source === null){
+                                                            controler_les_autorisations=false;
+                                                            /* this.ma_trace1("autorisation déjà controlée"); */
+                                                        }else{
+                                                            let a=eval( elem.cht_condition_js_source );
+                                                            if(a && a === true){
+                                                                controler_les_autorisations=false;
+                                                                /* this.ma_trace1("autorisation déjà controlée"); */
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            if(controler_les_autorisations===true){
+                                                /* this.ma_trace1('à vérifier pour "'+cle_pour_json_du_fichier+'" session=' , this.__session_json); */
                                                 let chemin_des_autorisations='./__fichiers_generes/___autorisations1_pour_acces_' + this.donnees_retournees.chi_id_acces + '_serveur.json';
                                                 /* this.ma_trace1('chemin_des_autorisations='+chemin_des_autorisations); */
                                                 try{
@@ -162,24 +209,45 @@ class __ig1{
                                                         /* this.ma_trace1("elem[" + cle_pour_json_du_fichier + "]=" , elem ); */
                                                         /* http://localhost:6003/#pm1(m1(n1(autorisations1),f1(liste1(__num_page(0))))) */
                                                         if(elem.che_pour_sous_liste_autorisation === 1){
-                                                            this.ma_trace1( "vérifier nom_de_la_fonction_a_appeler=" + nom_de_la_fonction_a_appeler );
+                                                            /* this.ma_trace1( "vérifier nom_de_la_fonction_a_appeler=" + nom_de_la_fonction_a_appeler ); */
                                                             if(nom_de_la_fonction_a_appeler === 'sous_liste1'){
-                                                                this.ma_trace1( "autorisation sous liste mise à OK pour " + cle_pour_json_du_fichier );
+                                                                /*
+                                                                  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+                                                                */
                                                                 les_autorisations_verifiees[cle_pour_json_du_fichier]=true;
+                                                                this.__session_json.__autorisations_serveur[cle_pour_json_du_fichier]=elem;
+                                                                this.reecrire_fichier_session();
+                                                                /*
+                                                                  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+                                                                */
                                                             }else{
                                                                 this.donnees_retournees.__xsi[__xer].push( '<b>1autorisation non référencée ' + m1 + '.' + n1 + '</b>' + this.nl2() );
                                                                 return({"__xst" : __xer});
                                                             }
                                                         }else if(elem.che_pour_sous_liste_autorisation === 0){
                                                             if(elem.cht_condition_js_source === null){
-                                                                this.ma_trace1( "autorisation sans test de condition mise à OK pour " + cle_pour_json_du_fichier );
+                                                                /*
+                                                                  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+                                                                */
                                                                 les_autorisations_verifiees[cle_pour_json_du_fichier]=true;
+                                                                this.__session_json.__autorisations_serveur[cle_pour_json_du_fichier]=elem;
+                                                                this.reecrire_fichier_session();
+                                                                /*
+                                                                  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+                                                                */
                                                             }else{
                                                                 let a=eval( elem.cht_condition_js_source );
                                                                 /* this.ma_trace1("this.donnees_retournees.chi_id_projet" , this.donnees_retournees.chi_id_projet , elem.cht_condition_js_source , a); */
                                                                 if(a && a === true){
-                                                                    /* this.ma_trace1("autorisation avec test de condition mise à OK pour "+cle_pour_json_du_fichier); */
+                                                                    /*
+                                                                      = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+                                                                    */
                                                                     les_autorisations_verifiees[cle_pour_json_du_fichier]=true;
+                                                                    this.__session_json.__autorisations_serveur[cle_pour_json_du_fichier]=elem;
+                                                                    this.reecrire_fichier_session();
+                                                                    /*
+                                                                      = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+                                                                    */
                                                                 }else{
                                                                     if(elem.cht_notification_ko_source !== null && elem.cht_notification_ko_source){
                                                                         this.donnees_retournees.__xsi[__xer].push( elem.cht_notification_ko_source );
@@ -242,15 +310,15 @@ class __ig1{
                                                 let ret=null;
                                                 try{
                                                     /*
-                                                      =============
-                                                      ===================== APPEL CENTRAL ========================
-                                                      =============
+                                                      = = = = = = = = = = = = = = = = = = = = = = = = = =
+                                                      = = = = = = = =  TRAITEMENT CENTRAL = = = = = = = = 
+                                                      = = = = = = = = = = = = = = = = = = = = = = = = = =
                                                     */
                                                     ret=await this.objet_des_modules_charges[n1][nom_de_la_fonction_a_appeler]( mat , position_f1 );
                                                     /*
-                                                      =============
-                                                      =============
-                                                      =============
+                                                      = = = = = = = = = = = = = = = = = = = = = = = = = =
+                                                      = = = = = = = = = = = = = = = = = = = = = = = = = =
+                                                      = = = = = = = = = = = = = = = = = = = = = = = = = =
                                                     */
                                                     /* this.ma_trace1('après appel de la fonction '+nom_de_la_fonction_a_appeler+' du module, ret=',ret); */
                                                     if(ret === undefined){
@@ -274,7 +342,11 @@ class __ig1{
                                                     let le_message='pile erreur 1=\n' + e.stack.replace( repl0 , '' ).replace( /https\:\/\/deno/g , 'deno' ).replace( /file\:\/\/\/\//g , '' );
                                                     le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
                                                     this.ma_trace1( le_message );
-                                                    this.donnees_retournees.__xsi[__xer].push( 'SERVEUR : <b>' + nom_du_fichier + '.' + nom_de_la_fonction_a_appeler + '()</b> n\'existe pas ou bien contient une erreur<br />' + this.nl2( e ) );
+                                                    if(this.options_generales.erreur_controlee === false){
+                                                        this.donnees_retournees.__xsi[__xer].push( 'SERVEUR : <b>' + nom_du_fichier + '.' + nom_de_la_fonction_a_appeler + '()</b> n\'existe pas ou bien contient une erreur<br />' + this.nl2( e ) );
+                                                    }else{
+                                                        this.donnees_retournees.__xsi[__xer].push( e.message );
+                                                    }
                                                     continuer=false;
                                                     continue;
                                                 }
@@ -295,6 +367,8 @@ class __ig1{
         if(pm1_trouve === false){
             if('pm1(m1(n1(__ig1),f1(init0())))' === this.donnees_recues.__xac){
                 this.donnees_retournees.__xva['init0']=true;
+                this.__session_json.__autorisations_serveur={}
+                this.reecrire_fichier_session();
             }else{
                 this.donnees_retournees.__xsi[__xdv].push( 'pas de pm1 trouvé ' + this.donnees_recues.__xac + ' ' + this.nl2() + ' ' );
                 continuer=false;
@@ -466,7 +540,7 @@ class __ig1{
             if(ret.__xst === __xsu){
                 return this.donnees_retournees;
             }else{
-                this.ma_trace1( '__deverminage evenement.data=' , evenement.data );
+                this.ma_trace1( '__deverminage evenement.data=' , evenement.data.substr( 0 , 400 ) + '\n ... ' );
                 return this.donnees_retournees;
             }
         }catch(e123456){
@@ -797,11 +871,20 @@ class __ig1{
             console.log( '%c\nATTENTION API MISUSE, un await est il manquant quelquepart avant sql_' + numero_de_requete + ' ?\n\n' + e.stack , 'color:red;background-color:yellow;' );
         }
         let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
-        let le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
-        le_message=le_message.replace( /__programmes\// , '' );
-        le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+        let le_message='';
+        if(this.options_generales.erreur_controlee === true){
+            le_message=e.message;
+        }else{
+            le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
+            le_message=le_message.replace( /__programmes\// , '' );
+            le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+        }
         if(this.__deverminage === 0){
-            this.donnees_retournees.__xsi[__xer].push( 'Il y a une erreur dans le programme, veuillez appeler la maintenance'  );
+            if(this.options_generales.erreur_controlee === true){
+                this.donnees_retournees.__xsi[__xer].push( le_message );
+            }else{
+                this.donnees_retournees.__xsi[__xer].push( 'Il y a une erreur dans le programme, veuillez appeler la maintenance' );
+            }
         }else if(this.__deverminage === 1){
             this.donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
         }else if(this.__deverminage === 2){
@@ -809,10 +892,14 @@ class __ig1{
             /*
               dans le cas d'un appel asynchrone
             */
-            this.ma_trace1( "e8478324" , le_message );
+            if(this.options_generales.erreur_controlee === false){
+                this.ma_trace1( "e8478324" , le_message );
+            }
         }
         if(this.__deverminage > 0){
-            this.donnees_retournees.__xsi[__xer].push( 'aaaaaaa<b>' + le_message + 'xxxxxxxxx</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
+            if(this.options_generales.erreur_controlee === false){
+                this.donnees_retournees.__xsi[__xer].push( 'aaaaaaa<b>' + le_message + 'xxxxxxxxx</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
+            }
         }
         if(e.stack.indexOf( 'UNIQUE constraint' ) >= 0){
             __xme+='<b>doublon</b>';
@@ -845,7 +932,7 @@ class __ig1{
       =============================================================================================================
     */
     async ouvrir_bdd( chi_id_basedd , reouvrir_la_base=false , pour_connexion=false ){
-        /* this.donnees_retournees , this.options_generales , */
+        /* this.ma_trace1("ouvrir_bdd chi_id_basedd="+chi_id_basedd); */
         if(pour_connexion === true){
         }else{
             if(this.donnees_retournees.chi_id_utilisateur === 0){
@@ -866,8 +953,8 @@ class __ig1{
             return this.options_generales.bdd_ouvertes[chi_id_basedd].base;
         }
         let chemin_complet_bdd='./__bases_de_donnees/' + 'bdd_' + chi_id_basedd + '.sqlite';
-        /* this.ma_trace1("chemin_complet_bdd="+chemin_complet_bdd); */
         try{
+            /* this.ma_trace1("on ouvre Effectivement la base chemin_complet_bdd="+chemin_complet_bdd); */
             let __db=new Database( chemin_complet_bdd , {"create" : false} );
             let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
             /* this.ma_trace1("les_pragma_set=",les_pragma_set); */
@@ -1130,9 +1217,9 @@ class __ig1{
         let aa={
             "_CA_" : this._CA_ ,
             "__xst" : 1 ,
-            "__xva" : ( obj_le_message.hasOwnProperty( '__xva' ) ? ( obj_le_message ) : ( {} ) ),
-            "__xac" : "" , // m1(n1(__ig1),f1(affiche_les_messages()))
-            "__xsi" : {0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
+            "__xva" : obj_le_message.hasOwnProperty( '__xva' ) ? ( obj_le_message ) : ( {} ) ,
+            "__xac" : "" ,
+            "__xsi" : /* m1(n1(__ig1),f1(affiche_les_messages())) */{0 : [] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
             "chi_id_acces" : this.donnees_retournees.chi_id_acces ,
             "chi_id_utilisateur" : this.donnees_retournees.chi_id_utilisateur ,
             "chi_id_projet" : this.donnees_retournees.chi_id_projet ,

@@ -10,6 +10,21 @@ class sql_143{
       =============================================================================================================
     */
     async sql( par ){
+        /* test "non nul" sur le champ "chx_acces_autorisation" */
+        if(par['n_chx_acces_autorisation'] === null || par['n_chx_acces_autorisation'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "acces" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        /* test "non nul" sur le champ "chx_source_autorisation" */
+        if(par['n_chx_source_autorisation'] === null || par['n_chx_source_autorisation'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
+        if(par['n_che_pour_sous_liste_autorisation'] === null || par['n_che_pour_sous_liste_autorisation'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pour accès sous liste" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
         let sql0='UPDATE `tbl_autorisations` SET \r\n';
         let tableau_champs=[];
         try{
@@ -44,6 +59,10 @@ class sql_143{
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_143= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
+            /* si c'est une requete souche la maj DOIT se faire */
+            if(res === 0){
+                return({"__xst" : __xer ,"changements" : res ,"__xme" : 'pas d\'enregistrement à modifier'});
+            }
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 143 , e , sql0 , {} ));

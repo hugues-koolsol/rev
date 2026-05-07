@@ -10,13 +10,18 @@ class sql_154{
       =============================================================================================================
     */
     async sql( par ){
+        /* test "non nul" sur le champ "cht_parametres_acces" */
+        if(par['n_cht_parametres_acces'] === null || par['n_cht_parametres_acces'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "parametres" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
         let sql0='UPDATE `tbl_acces` SET \r\n';
         let tableau_champs=[];
         try{
             if(par['n_cht_parametres_acces'] === undefined || par['n_cht_parametres_acces'] === '' || par['n_cht_parametres_acces'] === null){
                 tableau_champs.push( '`cht_parametres_acces` = NULL' );
             }else{
-                tableau_champs.push( '`cht_parametres_acces` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_parametres_acces'] ) + '\'' );
+                tableau_champs.push( '`cht_parametres_acces` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_parametres_acces'] , 'n_cht_parametres_acces' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -30,7 +35,7 @@ class sql_154{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_acces'] ) + '\r\n';
+            where0+=` AND \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_acces'] , 'c_chi_id_acces' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_154= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

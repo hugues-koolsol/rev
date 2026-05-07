@@ -14,10 +14,6 @@ CREATE UNIQUE INDEX idx_acces_grp_metier ON `tbl_acces`
         /* meta(nom_de_l_index(idx_acces_grp_metier),genre_meta(index_de_table),message('')) */
          ( `chx_groupe_acces` , `chx_metier_acces` ) ;
 
-CREATE UNIQUE INDEX idx_unique1 ON `tbl_autorisations` 
-        /* meta(nom_de_l_index(idx_unique1),genre_meta(index_de_table),message('')) */
-         ( `chx_acces_autorisation` , `chx_source_autorisation` ) ;
-
 CREATE UNIQUE INDEX idx_projet_et_nom_dossiers ON `tbl_dossiers` 
         /* meta(nom_de_l_index(idx_projet_et_nom_dossiers),genre_meta(index_de_table),message('Ce dossier existe déjà')) */
          ( `chp_nom_dossier` , `chx_parent_dossier` ) ;
@@ -25,6 +21,10 @@ CREATE UNIQUE INDEX idx_projet_et_nom_dossiers ON `tbl_dossiers`
 CREATE UNIQUE INDEX idx_source ON `tbl_sources` 
         /* meta(nom_de_l_index(idx_source),genre_meta(index_de_table),message('')) */
          ( `chx_dossier_id_source` , `chp_nom_source` ) ;
+
+CREATE UNIQUE INDEX idx_unique1 ON `tbl_autorisations` 
+        /* meta(nom_de_l_index(idx_unique1),genre_meta(index_de_table),message('')) */
+         ( `chx_acces_autorisation` , `chx_source_autorisation` ) ;
 
 CREATE UNIQUE INDEX idx_nom_unique_utilisateurs ON `tbl_utilisateurs` 
         /* meta(nom_de_l_index(idx_nom_unique_utilisateurs),genre_meta(index_de_table),message('Ce nom d\'utilisateur existe déjà')) */

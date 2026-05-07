@@ -23,13 +23,14 @@ class sql_390{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_type_requete" */
-                if(par.donnees[i]['chp_type_requete'] === null || par.donnees[i]['chp_type_requete']===''){
+                if(elem['chp_type_requete'] === null || elem['chp_type_requete']===''){
                     this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "type de requête" doit être renseigné [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "che_est_souche_requete" */
-                if(par.donnees[i]['che_est_souche_requete'] === null || par.donnees[i]['che_est_souche_requete']===''){
+                if(elem['che_est_souche_requete'] === null || elem['che_est_souche_requete']===''){
                     this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "requête souche ?" doit être renseigné [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }

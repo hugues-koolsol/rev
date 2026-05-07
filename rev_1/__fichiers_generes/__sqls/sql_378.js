@@ -19,17 +19,18 @@ class sql_378{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                const elem=par.donnees[i];
                 /*
                   === test spécifique sur le champ "chp_nom_dossier" ===
                 */
-                let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1(par.donnees[i]['chp_nom_dossier'],'nom du dossier');
+                let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1(elem['chp_nom_dossier'],'nom du dossier');
                 if(__test_0_1.__xst !== __xsu){
                     this.__ig1.donnees_retournees.__xsi[__xer].push(__test_0_1.__xme);
                     return{"__xst" : __xer};
                 }
 
                 /* test "non nul" sur le champ "chx_parent_dossier" */
-                if(par.donnees[i]['chx_parent_dossier'] === null || par.donnees[i]['chx_parent_dossier']===''){
+                if(elem['chx_parent_dossier'] === null || elem['chx_parent_dossier']===''){
                     this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "parent" doit être renseigné [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }

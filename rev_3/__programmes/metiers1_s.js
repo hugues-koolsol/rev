@@ -109,14 +109,6 @@ class metiers1{
         form['chi_id_metier']=form['chi_id_metier'] === null ? ( null ) : ( parseInt( form['chi_id_metier'] , 10 ) );
         form['chx_parent_metier']=form['chx_parent_metier'] === null ? ( null ) : ( parseInt( form['chx_parent_metier'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_nom_metier'] === null || form['chp_nom_metier'] === ''){
-            this.__ig1.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_metier'] , 'nom' );
-        if(__test_0_1[__xst] !== __xsu){
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -138,72 +130,62 @@ class metiers1{
         ;
         */
         /*sql_inclure_fin*/ 125 , criteres_select_125 , this.__ig1.donnees_retournees , __db1 );
-        if(tt125[__xst] !== __xsu){
-            this.__ig1.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+        if(tt125[__xst] !== __xsu || tt125[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [125 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt125[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer});
+        }
+        let criteres_127={
+             /*  */
+            "c_chi_id_metier" : form['chi_id_metier'] ,
+            "n_chp_nom_metier" : form['chp_nom_metier'] ,
+            "n_chx_parent_metier" : form['chx_parent_metier'] === '' ? ( null ) : ( form['chx_parent_metier'] )
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt127=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_metiers SET 
+           `chp_nom_metier` = :n_chp_nom_metier , 
+           `chx_parent_metier` = :n_chx_parent_metier
+        WHERE `chi_id_metier` = :c_chi_id_metier ;
+        */
+        /*sql_inclure_fin*/ 127 , criteres_127 , this.__ig1.donnees_retournees , __db1 );
+        if(tt127.__xst !== __xsu || tt127.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt127.__xme});
+        }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt125[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
             this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
-        if(tt125[__xst] === __xsu && tt125[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt125[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                let d=1;
+                await this.filtre1( mat1 , 1 , __db1 );
             }
-            let criteres_127={
-                 /*  */
-                "c_chi_id_metier" : form['chi_id_metier'] ,
-                "n_chp_nom_metier" : form['chp_nom_metier'] ,
-                "n_chx_parent_metier" : form['chx_parent_metier'] === '' ? ( null ) : ( form['chx_parent_metier'] )
-            };
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt127=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_metiers SET 
-               `chp_nom_metier` = :n_chp_nom_metier , 
-               `chx_parent_metier` = :n_chx_parent_metier
-            WHERE `chi_id_metier` = :c_chi_id_metier ;
-            */
-            /*sql_inclure_fin*/ 127 , criteres_127 , this.__ig1.donnees_retournees , __db1 );
-            if(tt127[__xst] !== __xsu){
-                if(tt127['__xme'] !== ''){
-                    this.__ig1.__xsi[__xer].push( tt127['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                this.__ig1.donnees_retournees.__xst=__xer;
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt125[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-                this.__ig1.donnees_retournees.__xst=__xer;
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true){
-                if(form['__mat_liste_si_ok']){
-                    let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                    let d=1;
-                    await this.filtre1( mat1 , 1 , __db1 );
-                }
-                return({"__xst" : __xsu});
-            }
-            let tt125_bis=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-             FROM b1.tbl_metiers T0
-             LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-            
-            WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-            ;
-            */
-            /*sql_inclure_fin*/ 125 , criteres_select_125 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt125_bis;
-        }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt125;
+            return({"__xst" : __xsu});
         }
-        this.__ig1.donnees_retournees.__xst=__xsu;
+        let tt125_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
+         FROM b1.tbl_metiers T0
+         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
+        
+        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
+        ;
+        */
+        /*sql_inclure_fin*/ 125 , criteres_select_125 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt125_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -419,16 +401,6 @@ class metiers1{
         /* conversion des données numériques début */
         form['chx_parent_metier']=form['chx_parent_metier'] === null || form['chx_parent_metier'] === '' || form['chx_parent_metier'] === undefined ? ( null ) : ( parseInt( form['chx_parent_metier'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_nom_metier'] === null || form['chp_nom_metier'] === ''){
-            this.__ig1.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_metier'] , 'nom' );
-        if(__test_0_1[__xst] !== __xsu){
-            this.__ig1.__xsi[__xer].push( 'erreur sur le contenu de  "nom" [' + this.__ig1.nl2() + ']' );
-            this.__ig1.donnees_retournees.__xst=__xer;
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
@@ -525,12 +497,10 @@ class metiers1{
                 criteres_124[i]=formulaire[i];
             }
         }
-        
         criteres_124['metier_mini']=0;
         if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
             criteres_124['metier_mini']=3;
         }
-        
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -542,7 +512,8 @@ class metiers1{
          LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
         
         WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
-           AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+           AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
+           AND `T0`.`chi_id_metier` >= :metier_mini) 
         ORDER BY `T0`.`chi_id_metier` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -563,7 +534,8 @@ class metiers1{
              LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
             
             WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
-               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier) 
+               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
+               AND `T0`.`chi_id_metier` >= :metier_mini) 
             ORDER BY `T0`.`chi_id_metier` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;

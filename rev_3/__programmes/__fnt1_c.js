@@ -1658,12 +1658,12 @@ class __fnt1{
             this.__ig1.zone_d_edition_en_cours=zone_source;
             let aa=document.getElementById( zone_source );
             if(aa.selectionStart === aa.selectionEnd){
-                this.__ig1.affiche_les_messages({"__xst" : __xsu ,"__xme" : 'zone de sélection vide'});
+                this.__ig1.affiche_les_messages( {"__xst" : __xsu ,"__xme" : 'zone de sélection vide'} );
                 return({"__xst" : __xsu});
             }else{
                 let debut=aa.value.substr( 0 , aa.selectionStart );
                 let fin=aa.value.substr( aa.selectionEnd );
-                aa.value=debut+fin;
+                aa.value=debut + fin;
                 return({"__xst" : __xsu});
             }
             return({"__xst" : __xsu});
@@ -1695,7 +1695,7 @@ class __fnt1{
             };
             let aa=document.getElementById( zone_source );
             if(aa.selectionStart === aa.selectionEnd){
-                this.__ig1.affiche_les_messages({"__xst" : __xsu ,"__xme" : 'zone de sélection vide'});
+                this.__ig1.affiche_les_messages( {"__xst" : __xsu ,"__xme" : 'zone de sélection vide'} );
                 return({"__xst" : __xsu});
             }else{
                 let bb=document.getElementById( zone_source ).value.substr( aa.selectionStart , aa.selectionEnd - aa.selectionStart );

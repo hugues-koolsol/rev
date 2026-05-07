@@ -238,21 +238,6 @@ class taches1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        if(!form.hasOwnProperty( 'chp_texte_tache' ) || form['chp_texte_tache'] === null || form['chp_texte_tache'].trim() === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "texte" doit être renseignée ' );
-            return({"__xst" : __xer});
-        }
-        if(!form.hasOwnProperty( 'chp_priorite_tache' )
-               || form['chp_priorite_tache'] === null
-               || !this.__ig1.est_num( form['chp_priorite_tache'] )
-        ){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite" doit être renseignée ' );
-            return({"__xst" : __xer});
-        }
-        const __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , "priorite" );
-        if(__test_2_1[__xst] !== __xsu){
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_112={"T0_chi_id_tache" : form['chi_id_tache'] ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur};
         let tt112=await this.__ig1.sql_iii(
@@ -268,9 +253,9 @@ class taches1{
         */
         /*sql_inclure_fin*/ 112 , criteres_select_112 , this.__ig1.donnees_retournees , __db1 );
         if(tt112[__xst] !== __xsu || tt112[__xva].length !== 1){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [112 ' + this.__ig1.nl2() + ']'});
         }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
         let criteres_113={
              /*  */
             "c_chi_id_tache" : form['chi_id_tache'] ,
@@ -278,7 +263,7 @@ class taches1{
             "n_chp_texte_tache" : form['chp_texte_tache'] ,
             "n_chp_priorite_tache" : form['chp_priorite_tache']
         };
-        await __db1.exec( 'BEGIN TRANSACTION;' );
+        /* =========================== mise à jour effective ======================== */
         let tt113=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_taches SET 
@@ -289,13 +274,9 @@ class taches1{
            AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
         */
         /*sql_inclure_fin*/ 113 , criteres_113 , this.__ig1.donnees_retournees , __db1 );
-        if(tt113[__xst] !== __xsu){
-            if(tt113['__xme'] !== ''){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( tt113['__xme'] + ' [' + this.__ig1.nl2() );
-            }else{
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-            }
-            return({"__xst" : __xer});
+        if(tt113.__xst !== __xsu || tt113.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt113.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
@@ -499,21 +480,6 @@ class taches1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        if(!form.hasOwnProperty( 'chp_texte_tache' ) || form['chp_texte_tache'] === null || form['chp_texte_tache'].trim() === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "texte" doit être renseignée ' );
-            return({"__xst" : __xer});
-        }
-        if(!form.hasOwnProperty( 'chp_priorite_tache' )
-               || form['chp_priorite_tache'] === null
-               || !this.__ig1.est_num( form['chp_priorite_tache'] )
-        ){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite" doit être renseignée ' );
-            return({"__xst" : __xer});
-        }
-        const __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , form['chp_priorite_tache'] , "priorite" );
-        if(__test_2_1[__xst] !== __xsu){
-            return({"__xst" : __xer});
-        }
         let donnees_sql={
             "donnees" : [{
                         "chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
@@ -553,7 +519,7 @@ class taches1{
             }
             return({"__xst" : __xsu});
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( tt111['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
+            /* this.__ig1.donnees_retournees.__xsi[__xer].push( tt111['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' ); */
             return({"__xst" : __xer});
         }
     }

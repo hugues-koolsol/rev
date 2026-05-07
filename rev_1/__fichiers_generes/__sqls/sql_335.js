@@ -11,12 +11,20 @@ class sql_335{
     */
     verifier_coherence( par ){
         this.__ig1.options_generales.erreur_controlee=true;
-if(par.n_chp_espece_genre.toUpperCase() === 'VARCHAR' && par.n_che_longueur_genre === null){
-    throw new Error( 'une longueur doit être indiquée pour le l\'espèce VARCHAR' );
-}
-if(par.n_chp_espece_genre.toUpperCase() === 'DECIMAL' && par.n_che_longueur_genre === null){
-    throw new Error( 'une longueur doit être indiquée pour le l\'espèce DECIMAL' );
-}
+        if((par.n_chp_espece_genre
+                   || par.n_che_longueur_genre)
+               && par.n_chp_espece_genre.toUpperCase() === 'VARCHAR'
+               && par.n_che_longueur_genre === null
+        ){
+            throw new Error( 'une longueur doit être indiquée pour le l\'espèce VARCHAR' );
+        }
+        if((par.n_chp_espece_genre
+                   || par.n_che_longueur_genre)
+               && par.n_chp_espece_genre.toUpperCase() === 'DECIMAL'
+               && par.n_che_longueur_genre === null
+        ){
+            throw new Error( 'une longueur doit être indiquée pour le l\'espèce DECIMAL' );
+        }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }

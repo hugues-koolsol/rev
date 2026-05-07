@@ -982,7 +982,7 @@ class genres1{
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
                 await this.filtre1( mat1 , 1 , __db1 );
             }else{
-                await this.page_modification1( mat , d , this.__ig1.donnees_recues , this.__ig1.donnees_retournees , this.__ig1.options_generales , tt329['nouvel_id'] , __db1 );
+                await this.page_modification1( mat , d , tt329['nouvel_id'] , __db1 );
             }
             return({"__xst" : __xsu});
         }else{

@@ -10,13 +10,25 @@ class sql_156{
       =============================================================================================================
     */
     async sql( par ){
+        /* test "non nul" sur le champ "chp_priorite_tache" */
+        if(par['n_chp_priorite_tache'] === null || par['n_chp_priorite_tache'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite de la tâche" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        /*
+          === test spécifique sur le champ "chp_priorite_tache" ===
+        */
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , par['n_chp_priorite_tache'] , 'priorite de la tâche' );
+        if(__test_0_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
+        }
         let sql0='UPDATE `tbl_taches` SET \r\n';
         let tableau_champs=[];
         try{
             if(par['n_chp_priorite_tache'] === undefined || par['n_chp_priorite_tache'] === '' || par['n_chp_priorite_tache'] === null){
                 tableau_champs.push( '`chp_priorite_tache` = NULL' );
             }else{
-                tableau_champs.push( '`chp_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chp_priorite_tache'] ) + '' );
+                tableau_champs.push( '`chp_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chp_priorite_tache'] , 'n_chp_priorite_tache' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -30,8 +42,8 @@ class sql_156{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND chi_id_tache = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] ) + '\r\n';
-            where0+=` AND chx_utilisateur_tache = ` + this.__ig1.__fnt1.sq1( par['c_chx_utilisateur_tache'] ) + '\r\n';
+            where0+=` AND chi_id_tache = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] , 'c_chi_id_tache' ) + '\r\n';
+            where0+=` AND chx_utilisateur_tache = ` + this.__ig1.__fnt1.sq1( par['c_chx_utilisateur_tache'] , 'c_chx_utilisateur_tache' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_156= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

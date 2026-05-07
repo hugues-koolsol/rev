@@ -302,7 +302,7 @@ class v_svg_bdd1{
         try{
             let db_source=await new Database( chemin_bdd , {"create" : false} );
             let a=await db_source.exec( 'PRAGMA wal_checkpoint(FULL);' );
-            db_source.close();
+            await db_source.close();
         }catch(e){
             this.__ig1.ma_trace1( 'e=' + e.stack );
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur douverture base originale [' + this.__ig1.nl2( e ) + ']' );
@@ -315,6 +315,9 @@ class v_svg_bdd1{
         }
         let chemin_bdd_base_temporaire=repertoire + '/' + 'temporaire_' + this.__ig1.donnees_retournees.date_heure_serveur.replace( / /g , '' ) + '.db_temporaire';
         chemin_bdd_base_temporaire=this.__ig1.options_generales.chemin_des_bdd + '___________toto.sqlite';
+        try{
+            await Deno.remove( chemin_bdd_base_temporaire );
+        }catch(e){}
         let db1temp=null;
         try{
             db1temp=await new Database( chemin_bdd_base_temporaire , {"create" : true} );
@@ -362,7 +365,7 @@ class v_svg_bdd1{
                 let sql3='INSERT INTO `' + this.__ig1.__fnt1.sq0( v1 ) + '`(' + liste_des_champs + ') SELECT ' + liste_des_champs + ' FROM `source`.`' + this.__ig1.__fnt1.sq0( v1 ) + '`';
                 /* this.__ig1.ma_trace1('sql3=',sql3); */
                 try{
-                    db1temp.exec( sql3 );
+                    await db1temp.exec( sql3 );
                 }catch(e){
                     await db1temp.close();
                     this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_bdd_base_temporaire , this.__ig1.donnees_retournees );
@@ -378,10 +381,37 @@ class v_svg_bdd1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'boucle sur les tables [' + this.__ig1.nl2( e0 ) );
             return({"__xst" : __xer});
         }
+        let sql4='DETACH DATABASE \'source\';';
+        /* this.__ig1.ma_trace1('sql4=',sql4); */
+        try{
+            db1temp.exec( sql4 );
+        }catch(e){
+            await db1temp.close();
+            this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_bdd_base_temporaire , this.__ig1.donnees_retournees );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'detach impossible [' + this.__ig1.nl2( e ) );
+            return({"__xst" : __xer});
+        }
         /*
           il faut supprimer les connexions aux bases;
         */
-        await db1temp.close();
+        let cmd='';
+        cmd+='VACUUM;';
+        cmd+='PRAGMA journal_mode = OFF;';
+        cmd+='PRAGMA wal_checkpoint(FULL);';
+        await db1temp.exec( cmd );
+        try{
+            await db1temp.close();
+            /* this.__ig1.ma_trace1("on a bien fermé la base temporaire toto"); */
+        }catch(e){
+            /* this.__ig1.ma_trace1("\n\non a PAS fermé la base temporaire toto"); */
+        }
+        function sleep0( ms ){
+            return(new Promise( ( resolve ) => {
+                    setTimeout( resolve , ms );} ));
+        }
+        /* this.__ig1.ma_trace1("on fait une sieste"); */
+        await sleep0( 50 );
+        /* this.__ig1.ma_trace1("fin de la sieste"); */
         let obj1=await this.__ig1.__fnt1.sauvegarder_et_supprimer_fichier( chemin_bdd , this.__ig1.donnees_retournees );
         if(obj1.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur 111 sauvegarder_et_supprimer_fichier chemin_bdd="' + chemin_bdd + '" [' + this.__ig1.nl2() );
@@ -389,8 +419,7 @@ class v_svg_bdd1{
         }
         try{
             await Deno.rename( chemin_bdd_base_temporaire , chemin_bdd );
-            this.__ig1.donnees_retournees.__xsi[__xsu].push( 'La base (' + id_bdd_de_la_base + ') a été réécrite  [' + this.__ig1.nl2() + '] ' );
-            this.__ig1.donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
+            this.__ig1.donnees_retournees.__xsi[__xal].push( '👍 😎 La base (' + id_bdd_de_la_base + ') a bien été réécrite  [' + this.__ig1.nl2() + '] ' );
             return({"__xst" : __xsu});
         }catch(e){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'rename fichier temporaire impossible [' + this.__ig1.nl2( e ) );
@@ -462,7 +491,7 @@ class v_svg_bdd1{
             */
             chemin_absolu='./__bases_de_donnees/bdd_' + liste_des_autres_projets[k1] + '.sqlite';
             if((await this.__ig1.is_file( chemin_absolu ))){
-                this.__ig1.ma_trace1( 'chemin_absolu=' + chemin_absolu );
+                /* this.__ig1.ma_trace1( 'chemin_absolu=' + chemin_absolu ); */
                 let obj1=await this.reecrire_la_base( mat , d , liste_des_autres_projets[k1] , chemin_absolu , source_sql_de_la_base , liste_des_tables , liste_des_tables_champs );
                 if(obj1.__xst !== __xsu){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de réécriture 2 (' + liste_des_autres_projets[k1] + ') [' + this.__ig1.nl2() );

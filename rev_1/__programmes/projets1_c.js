@@ -116,6 +116,7 @@ class projets1{
     */
     f1( mat , d , le_message_du_serveur=null ){
         switch (mat[d][1]){
+            case 'vacuum_et_checkpoint' : 
             case 'creer_le_repertoire_racine' : 
             case 'initialiser_projet_2' : 
             case 'sauvegarder_la_base_systeme' : break;
@@ -749,6 +750,9 @@ class projets1{
                     lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_repertoire_racine(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="creer le repertoire racine">' + this.__ig1.les_svg.dossier + '</div>';
                 }else{
                     lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.dossier + '</div>';
+                }
+                if(elem['T0.chi_id_projet'] >= 3 && elem['T0.chi_id_projet'] === le_message_du_serveur.chi_id_projet){
+                    lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>';
                 }
                 lst+='</div>';
                 lst+='</td>';

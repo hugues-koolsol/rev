@@ -922,6 +922,37 @@ class __rev1{
       concat(concat(a,b),c) => concat(a,b,c) baisserNiveauEtSupprimer __m__rev1.baisser_le_niveau_et_supprimer
       =============================================================================================================
     */
+    copier_morceau_de_matrice( mat , id ){
+        let mat_retour=[];
+        let l01=mat.length;
+        if(l01 > 0){
+            mat_retour.push( mat[0] );
+            mat_retour.push( mat[id] );
+            let id_init=mat[id][0];
+            let niveau_init=mat[id][3];
+            /* ajustement manuel du premier élément */
+            mat_retour[1][0]=1;
+            mat_retour[1][3]=0;
+            mat_retour[1][7]=0;
+            let indice_courant=2;
+            for( let i=id + 1 ; i < l01 && mat[i][3] > niveau_init ; i++ ){
+                mat_retour.push( mat[i] );
+                mat_retour[indice_courant][0]=(mat_retour[indice_courant][0] - id_init) + 1;
+                mat_retour[indice_courant][3]=mat_retour[indice_courant][3] - niveau_init;
+                mat_retour[indice_courant][7]=(mat_retour[indice_courant][7] - id_init) + 1;
+                indice_courant++;
+            }
+            mat_retour=this.indicer_le_tableau( mat_retour );
+            return({"__xst" : __xsu ,"__xva" : mat_retour});
+        }
+        return({"__xst" : __xer ,"__xme" : 'la matrice en entrée de copier_morceau_de_matrice est vide'});
+    }
+    /*
+      =============================================================================================================
+      fonction qui supprime un élément dans la matrice et descend les enfants de cet élément d'un niveau
+      concat(concat(a,b),c) => concat(a,b,c) baisserNiveauEtSupprimer __m__rev1.baisser_le_niveau_et_supprimer
+      =============================================================================================================
+    */
     baisser_le_niveau_et_supprimer( tab , id , niveau ){
         var i=0;
         for( i=id + 1 ; i < tab.length ; i++ ){
@@ -948,7 +979,6 @@ class __rev1{
       =============================================================================================================
       fonction qui supprime un élément et ses enfants dans la matrice
       on supprime c de "a(b,c(d))" => a(b)
-      __m__rev1.supprimer_un_element_de_la_matrice
       =============================================================================================================
     */
     supprimer_un_element_de_la_matrice( tab , id , niveau , a_supprimer ){

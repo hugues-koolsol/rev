@@ -36,8 +36,8 @@ class menus1{
         let tt141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
-        `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
+        `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -116,8 +116,8 @@ class menus1{
         let tt141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
-        `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+        `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
+        `T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -302,22 +302,6 @@ class menus1{
         form['chi_id_menu']=form['chi_id_menu'] === null ? ( null ) : ( parseInt( form['chi_id_menu'] , 10 ) );
         form['chx_autorisation_menu']=form['chx_autorisation_menu'] === null ? ( null ) : ( parseInt( form['chx_autorisation_menu'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['cht_libelle_menu'] === null || form['cht_libelle_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "libelle" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_titre_menu'] === null || form['chp_titre_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "titre" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_autorisation_menu'] === null || form['chx_autorisation_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "autorisation" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_methode_menu'] === null || form['chp_methode_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "methode" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -333,7 +317,7 @@ class menus1{
         SELECT 
         `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
         `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu` 
+        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
          FROM b1.tbl_menus T0
          LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
         
@@ -345,85 +329,78 @@ class menus1{
         ;
         */
         /*sql_inclure_fin*/ 146 , criteres_select_146 , this.__ig1.donnees_retournees , __db1 );
-        if(tt146[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
+        if(tt146[__xst] !== __xsu || tt146[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [146 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt146[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer});
         }
-        if(tt146[__xst] === __xsu && tt146[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt146[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
-            }
-            let criteres_148={
-                 /*  */
-                "c_chi_id_menu" : form['chi_id_menu'] ,
-                "n_cht_libelle_menu" : form['cht_libelle_menu'] ,
-                "n_chp_titre_menu" : form['chp_titre_menu'] ,
-                "n_chx_autorisation_menu" : form['chx_autorisation_menu'] ,
-                "n_chp_methode_menu" : form['chp_methode_menu'] ,
-                "n_cht_condition_menu" : form['cht_condition_menu'] === '' ? ( null ) : ( form['cht_condition_menu'] ) ,
-                "n_cht_initialisation_menu" : form['cht_initialisation_menu'] === '' ? ( null ) : ( form['cht_initialisation_menu'] ) ,
-                "n_cht_condition_js_menu" : form['cht_condition_js_menu'] === '' ? ( null ) : ( form['cht_condition_js_menu'] )
-            };
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt148=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_menus SET 
-               `cht_libelle_menu` = :n_cht_libelle_menu , 
-               `chp_titre_menu` = :n_chp_titre_menu , 
-               `chx_autorisation_menu` = :n_chx_autorisation_menu , 
-               `chp_methode_menu` = :n_chp_methode_menu , 
-               `cht_condition_menu` = :n_cht_condition_menu , 
-               `cht_initialisation_menu` = :n_cht_initialisation_menu , 
-               `cht_condition_js_menu` = :n_cht_condition_js_menu
-            WHERE `chi_id_menu` = :c_chi_id_menu ;
-            */
-            /*sql_inclure_fin*/ 148 , criteres_148 , this.__ig1.donnees_retournees , __db1 );
-            if(tt148[__xst] !== __xsu){
-                if(tt148['__xme'] !== ''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt148['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt146[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true){
-                if(form['__mat_liste_si_ok']){
-                    /* this.__ig1.ma_trace1('form[__mat_liste_si_ok]='+form['__mat_liste_si_ok']); */
-                    let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                    let d=1;
-                    await this.filtre1( mat1 , 1 , __db1 );
-                }
-                return({"__xst" : __xsu});
-            }
-            let tt146_bis=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-            `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-            `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
-             FROM b1.tbl_menus T0
-             LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
-            
-             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
-            
-             LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
-            
-            WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
-            ;
-            */
-            /*sql_inclure_fin*/ 146 , criteres_select_146 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt146_bis;
-        }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt146;
+        let criteres_148={
+             /*  */
+            "c_chi_id_menu" : form['chi_id_menu'] ,
+            "n_cht_libelle_menu" : form['cht_libelle_menu'] ,
+            "n_chp_titre_menu" : form['chp_titre_menu'] ,
+            "n_chx_autorisation_menu" : form['chx_autorisation_menu'] ,
+            "n_chp_methode_menu" : form['chp_methode_menu'] ,
+            "n_cht_condition_menu" : form['cht_condition_menu'] === '' ? ( null ) : ( form['cht_condition_menu'] ) ,
+            "n_cht_initialisation_menu" : form['cht_initialisation_menu'] === '' ? ( null ) : ( form['cht_initialisation_menu'] ) ,
+            "n_cht_condition_js_menu" : form['cht_condition_js_menu'] === '' ? ( null ) : ( form['cht_condition_js_menu'] )
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt148=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_menus SET 
+           `cht_libelle_menu` = :n_cht_libelle_menu , 
+           `chp_titre_menu` = :n_chp_titre_menu , 
+           `chx_autorisation_menu` = :n_chx_autorisation_menu , 
+           `chp_methode_menu` = :n_chp_methode_menu , 
+           `cht_condition_menu` = :n_cht_condition_menu , 
+           `cht_initialisation_menu` = :n_cht_initialisation_menu , 
+           `cht_condition_js_menu` = :n_cht_condition_js_menu
+        WHERE `chi_id_menu` = :c_chi_id_menu ;
+        */
+        /*sql_inclure_fin*/ 148 , criteres_148 , this.__ig1.donnees_retournees , __db1 );
+        if(tt148.__xst !== __xsu || tt148.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt148.__xme});
         }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt146[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
+            return({"__xst" : __xer});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                /* this.__ig1.ma_trace1('form[__mat_liste_si_ok]='+form['__mat_liste_si_ok']); */
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                let d=1;
+                await this.filtre1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
+        }
+        let tt146_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+        `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
+        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
+         FROM b1.tbl_menus T0
+         LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+        
+         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+        
+         LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+        
+        WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
+        ;
+        */
+        /*sql_inclure_fin*/ 146 , criteres_select_146 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt146_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -457,7 +434,7 @@ class menus1{
         SELECT 
         `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
         `T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu` 
+        `T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
          FROM b1.tbl_menus T0
          LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
         
@@ -649,22 +626,6 @@ class menus1{
         /* conversion des données numériques début */
         form['chx_autorisation_menu']=form['chx_autorisation_menu'] === null || form['chx_autorisation_menu'] === '' || form['chx_autorisation_menu'] === undefined ? ( null ) : ( parseInt( form['chx_autorisation_menu'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_titre_menu'] === null || form['chp_titre_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "titre" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_autorisation_menu'] === null || form['chx_autorisation_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "autorisation" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chp_methode_menu'] === null || form['chp_methode_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "methode" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['cht_libelle_menu'] === null || form['cht_libelle_menu'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "libelle" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
@@ -777,7 +738,6 @@ class menus1{
         if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
             criteres145['acces_pas_dans']='(1,2)';
         }
-        
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -799,7 +759,8 @@ class menus1{
            AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
            AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
            AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
-           AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation) 
+           AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation
+           AND `T1`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
         ORDER BY `T0`.`chi_id_menu` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -830,7 +791,8 @@ class menus1{
                AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
                AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
                AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
-               AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation) 
+               AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation
+               AND `T1`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
             ORDER BY `T0`.`chi_id_menu` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;

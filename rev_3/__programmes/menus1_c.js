@@ -24,7 +24,7 @@ class menus1{
             "T0_cht_libelle_menu" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'libelle' ,"taille" : 8} ,
             "T0_chp_titre_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'titre' ,"taille" : 8} ,
             "T0_chx_autorisation_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id autorisation' ,"taille" : 8} ,
-            "T0_chp_methode_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'methode' ,"taille" : 8} ,
+            "T0_chp_methode_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'methode' ,"taille" : 8}
         } ,
         "sous_liste1" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
@@ -34,7 +34,7 @@ class menus1{
             "T0_cht_libelle_menu" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'libelle' ,"taille" : 8} ,
             "T0_chp_titre_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'titre' ,"taille" : 8} ,
             "T0_chx_autorisation_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id autorisation' ,"taille" : 8} ,
-            "T0_chp_methode_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'methode' ,"taille" : 8} ,
+            "T0_chp_methode_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'methode' ,"taille" : 8}
         }
     };
     fonction_liste='liste1';
@@ -1263,10 +1263,10 @@ class menus1{
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
                 if(elem['T0.cht_libelle_menu'] !== null){
-                    if(elem['T0.cht_libelle_menu'].substr(0,4) === '<svg'){
-                       lst+='<div style="width:25px;border:1px white solid;display:inline-block;background:var(--c_coul_fond4);">' + elem['T0.cht_libelle_menu'] + '</div>';
+                    if(elem['T0.cht_libelle_menu'].substr( 0 , 4 ) === '<svg'){
+                        lst+='<div style="width:25px;border:1px white solid;display:inline-block;background:var(--c_coul_fond4);">' + elem['T0.cht_libelle_menu'] + '</div>';
                     }else{
-                       lst+='' + this.__ig1.fi2( elem['T0.cht_libelle_menu'].substr( 0 , 100 ) );
+                        lst+='' + this.__ig1.fi2( elem['T0.cht_libelle_menu'].substr( 0 , 100 ) );
                     }
                 }
                 if(elem['T0.chp_titre_menu'] !== null){
@@ -1274,7 +1274,7 @@ class menus1{
                 }
                 lst+='<hr />';
                 if(elem['T0.cht_condition_menu'] !== null){
-                    lst+='<b>'+this.__ig1.fi2( elem['T0.cht_condition_menu'].substr( 0 , 200 ) )+'</b>';
+                    lst+='<b>' + this.__ig1.fi2( elem['T0.cht_condition_menu'].substr( 0 , 200 ) ) + '</b>';
                 }else{
                     lst+='<i>pas de condition</i>';
                 }

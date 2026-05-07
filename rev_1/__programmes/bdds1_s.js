@@ -476,10 +476,11 @@ class bdds1{
             /*
               création des csv des tables
             */
-            if(!(this.__ig1.donnees_retournees._CA_ === 2
-                       || this.__ig1.donnees_retournees._CA_ === 1
-                           && this.__ig1.donnees_retournees.chi_id_projet === 1)
-            ){
+            if(( this.__ig1.donnees_retournees._CA_ === 1 && chi_id_projet !== null ) || ( this.__ig1.donnees_retournees._CA_ === 1 && chi_id_projet === 1 )){
+                /* 
+                  dans le cas de la sauvegarde de la base système d'un autre projet , on ne fait pas de sauvegarde csv 
+                */
+            }else{
                 for(let k1 in les_tables){
                     let v1=les_tables[k1];
                     let chemin_fichier_csv_seulement=chemin_sauvegarde + 'csv_bdd_' + chi_id_basedd + '_table_' + les_tables[k1] + '.csv';

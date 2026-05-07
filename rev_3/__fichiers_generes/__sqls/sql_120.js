@@ -20,13 +20,29 @@ class sql_120{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                const elem=par.donnees[i];
+                /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
+                if(elem['chp_nom_de_connexion_utilisateur'] === null || elem['chp_nom_de_connexion_utilisateur']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom de connexion de l\'utilisateur" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "chx_acces_utilisateur" */
+                if(elem['chx_acces_utilisateur'] === null || elem['chx_acces_utilisateur']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "acces" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_actif_utilisateur" */
+                if(elem['che_actif_utilisateur'] === null || elem['che_actif_utilisateur']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "actif" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_de_connexion_utilisateur'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_acces_utilisateur'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_actif_utilisateur'] ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_de_connexion_utilisateur'] , 'chp_nom_de_connexion_utilisateur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_acces_utilisateur'] , 'chx_acces_utilisateur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_actif_utilisateur'] , 'che_actif_utilisateur' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

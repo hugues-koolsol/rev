@@ -54,7 +54,7 @@ class sql_145{
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T1`.`chx_acces_autorisation`' , par['T1_chx_acces_autorisation'] );
         }
         if(par.hasOwnProperty( 'acces_pas_dans' ) && par['acces_pas_dans'] !== ''){
-            where0+=` AND \`T0\`.\`chi_id_acces\` NOT IN ` + par['acces_pas_dans'] + '\r\n';
+            where0+=` AND \`T1\`.\`chx_acces_autorisation\` NOT IN ` + par['acces_pas_dans'] + '\r\n';
         }
         sql0+=where0;
         const order0=`

@@ -12,13 +12,13 @@ class sql_127{
     async sql( par ){
         /* test "non nul" sur le champ "chp_nom_metier" */
         if(par['n_chp_nom_metier'] === null || par['n_chp_nom_metier'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom du metier" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom du métier" doit être renseigné [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*
           === test spécifique sur le champ "chp_nom_metier" ===
         */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( par['n_chp_nom_metier'] , 'nom du metier' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( par['n_chp_nom_metier'] , 'nom du métier' );
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }

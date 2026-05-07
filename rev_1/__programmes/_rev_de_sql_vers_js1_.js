@@ -322,7 +322,8 @@ class _rev_de_sql_vers_js1{
         /* t+='const __xac=\'__xac\';\r\n'; */
         let contient_coherence1=false;
         t+='class sql_' + id_requete_en_base + '{\r\n';
-        if(type_de_requete === 'update'
+        if((type_de_requete === 'update'
+                   || type_de_requete === 'insert')
                && this.#obj_webs.bases[1].tables[obj3.liste_des_tables_pour_select_js].detail_table.txt_meta.indexOf( 'fonctions_coherence1(' ) >= 0
         ){
             let fonctions_coherence1='';
@@ -344,12 +345,22 @@ class _rev_de_sql_vers_js1{
                 let obj1=this.__m_rev_vers_js1.c_rev_vers_js( fonctions_coherence1 , {} );
                 if(obj1.__xst === __xsu){
                     contient_coherence1=true;
+                    let contenu=obj1.__xva.replace( /\r\n/g , '\n' ).replace( /\r/g , '\r' ).replace( /\n/g , '\r\n        ' );
+                    if(type_de_requete === 'update'){
+                        /*
+                          on test les 
+                          par.n_xxxx 
+                          alors que dans la fonction, on a écrit 
+                          par.xxxx 
+                        */
+                        contenu=contenu.replace( /par\./g , 'par.n_' );
+                    }
                     t+='    /*\r\n';
                     t+='      =============================================================================================================\r\n';
                     t+='    */\r\n';
                     t+='    verifier_coherence( par ){\r\n';
                     t+='        this.__ig1.options_generales.erreur_controlee=true;\r\n';
-                    t+=obj1.__xva + '\r\n';
+                    t+='        ' + contenu + '\r\n';
                     t+='        this.__ig1.options_generales.erreur_controlee=false;\r\n';
                     t+='        return({"__xst" : __xsu});\r\n';
                     t+='    }\r\n';
@@ -554,12 +565,12 @@ class _rev_de_sql_vers_js1{
             }
             t+='        let liste_des_valeurs=\'\';' + CRLF;
             t+='        try{' + CRLF;
-            let nom_d_acces='par.donnees[i]';
             if(this.#obj_webs.insert_brut === 1){
                 t+='            for( let i=0 ; i < par.length ; i++ ){' + CRLF;
-                nom_d_acces='par[i]';
+                t+='                const elem=par[i];' + CRLF;
             }else{
                 t+='            for( let i=0 ; i < par.donnees.length ; i++ ){' + CRLF;
+                t+='                const elem=par.donnees[i];' + CRLF;
             }
             /*
             */
@@ -584,7 +595,7 @@ class _rev_de_sql_vers_js1{
                 }else{
                     if(detail_champ.non_nulle === true){
                         t+='                /* test "non nul" sur le champ "' + nom_du_champ + '" */' + CRLF;
-                        t+='                if(' + nom_d_acces + '[\'' + nom_du_champ + '\'] === null || ' + nom_d_acces + '[\'' + nom_du_champ + '\']===\'\'){\n';
+                        t+='                if(elem[\'' + nom_du_champ + '\'] === null || elem[\'' + nom_du_champ + '\']===\'\'){\n';
                         t+='                    this.__ig1.donnees_retournees.__xsi[__xer].push(\'la valeur pour "' + detail_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__ig1.nl2() + \']\');\r\n';
                         t+='                    return{__xst:__xer};\r\n';
                         t+='                }\n';
@@ -620,7 +631,7 @@ class _rev_de_sql_vers_js1{
                                         }
                                     }
                                 }
-                                t+='' + nom_d_acces + '[\'' + nom_du_champ + '\'],\'' + detail_champ.meta.abrege_du_champ + '\');\r\n';
+                                t+='elem[\'' + nom_du_champ + '\'],\'' + detail_champ.meta.abrege_du_champ + '\');\r\n';
                                 t+='                if(__test_' + i + '_' + j + '.__xst !== __xsu){\n';
                                 t+='                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_' + i + '_' + j + '.__xme);\r\n';
                                 t+='                    return{"__xst" : __xer};\r\n';
@@ -631,6 +642,19 @@ class _rev_de_sql_vers_js1{
                         }
                     }
                 }
+            }
+            if(contient_coherence1 === true){
+                t+='                /*\r\n';
+                t+='                  =====================================================================================================\r\n';
+                t+='                  ================== appel de la fonction de coherence qui fait un throw ==============================\r\n';
+                t+='                  =====================================================================================================\r\n';
+                t+='                */\r\n';
+                t+='                this.verifier_coherence(elem);\r\n';
+                t+='                /*\r\n';
+                t+='                  =====================================================================================================\r\n';
+                t+='                  ================== appel de la fonction de coherence qui fait un throw ==============================\r\n';
+                t+='                  =====================================================================================================\r\n';
+                t+='                */\r\n';
             }
             /*
             */

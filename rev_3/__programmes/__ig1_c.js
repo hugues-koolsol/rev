@@ -2922,7 +2922,7 @@ class __ig1{
       =============================================================================================================
     */
     affiche_les_messages( obj=null , le_message_du_serveur=null ){
-        if(obj !== null && !Array.isArray(obj)){
+        if(obj !== null && !Array.isArray( obj )){
             this.ajoute_message( obj );
         }
         let dans_sous_fenetre=true;

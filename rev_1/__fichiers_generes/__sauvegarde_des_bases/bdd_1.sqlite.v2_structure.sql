@@ -28,8 +28,8 @@ CREATE TABLE `tbl_projets`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_projet'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
-            typologie(),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du projet'),
+            typologie(chi),
             genre(11),
             est_libelle_lien(1)
             )
@@ -41,8 +41,8 @@ CREATE TABLE `tbl_projets`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_commentaire_projet'),
-            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),
-            typologie(),
+            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire sur le projet'),
+            typologie(chi),
             genre(6)
             )
             */
@@ -120,7 +120,7 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_groupe'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du groupe'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1)
@@ -173,7 +173,7 @@ CREATE TABLE `tbl_metiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_metier'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du métier'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1)
@@ -207,7 +207,7 @@ CREATE TABLE `tbl_acces`(
    table('tbl_acces'),
    genre_meta(table_de_base),rang_de_la_table(30),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
-   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(254,174))) 
+   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2),ne_pas_modifier(0)'),transform_base_sur_svg(translate(254,174))) 
 */
     
             /*
@@ -315,7 +315,7 @@ CREATE TABLE `tbl_dossiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_dossier'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du dossier'),
             typologie(chp),
             genre(108),
             est_libelle_lien(1)
@@ -408,8 +408,8 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_source'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
-            typologie(),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du source'),
+            typologie(chi),
             genre(19),
             est_libelle_lien(1)
             )
@@ -610,10 +610,10 @@ CREATE TABLE `tbl_autorisations`(
             nom_du_champ('chx_acces_autorisation'),
             nom_bref_du_champ('acces'),abrege_du_champ('acces'),
             typologie(chx),
-            genre(8)
+            genre(4)
             )
             */
-             `chx_acces_autorisation` INTEGER REFERENCES tbl_acces(chi_id_acces) ON UPDATE CASCADE DEFAULT  NULL
+             `chx_acces_autorisation` INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces) ON UPDATE CASCADE
     ,
     
             /*
@@ -773,7 +773,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_de_connexion_utilisateur'),
-            nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion'),
+            nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion de l\'utilisateur'),
             typologie(cht),
             genre(3),
             est_libelle_lien(1)
@@ -786,7 +786,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_mot_de_passe_utilisateur'),
-            nom_bref_du_champ('mot de passe'),abrege_du_champ('mot de passe'),
+            nom_bref_du_champ('mot de passe'),abrege_du_champ('mot de passe de l\'utilisateur'),
             typologie(cht),
             genre(13)
             )
@@ -938,8 +938,8 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_priorite_tache'),
-            nom_bref_du_champ('priorite'),abrege_du_champ('priorite'),
-            typologie(),
+            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),
+            typologie(chi),
             genre(99)
             )
             */
@@ -1010,7 +1010,11 @@ CREATE TABLE `tbl_genres`(
    table('tbl_genres'),
    genre_meta(table_de_base),rang_de_la_table(100),permet_la_gestion_de('genre'),
    distinction_pour_liste('liste des genres'),
-   distinction_pour_isad('d\'un genre'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),transform_base_sur_svg(translate(28,529))) 
+   distinction_pour_isad('d\'un genre'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),fonctions_coherence1('
+choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstricte(appelf(element(par.chp_espece_genre),nomf(toUpperCase),p()),\'VARCHAR\'),egalstricte(par.che_longueur_genre,null))),alors(
+      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce VARCHAR\')))))))
+choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstricte(appelf(element(par.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\'),egalstricte(par.che_longueur_genre,null))),alors(
+      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))'),transform_base_sur_svg(translate(28,529))) 
 */
     
             /*
@@ -1029,7 +1033,7 @@ CREATE TABLE `tbl_genres`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_genre'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du genre'),
             typologie(chp),
             genre(3),
             est_libelle_lien(1)

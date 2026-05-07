@@ -147,7 +147,7 @@ class v_svg_bdd1{
             },
         {
                 "nom_du_meta_table" : 'fonctions_coherence1' ,
-                "exemple" : 'if(par.n_chp_espece_genre === \'VARCHAR\' && par.n_che_longueur_genre === null){\n    throw new Error( \'une longueur doit être indiquée pour le l\\\'espèce VARCHAR \' );\n}' ,
+                "exemple" : 'if((par.chp_espece_genre || par.che_longueur_genre) && par.chp_espece_genre === \'VARCHAR\' && par.che_longueur_genre === null){\n    throw new Error( \'une longueur doit être indiquée pour le l\\\'espèce VARCHAR \' );\n}' ,
                 "zone_html2" : 'textarea' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
@@ -2207,6 +2207,10 @@ class v_svg_bdd1{
                         try{
                             document.getElementById( nom_de_la_zone ).value=nom_bref_du_champ + ' de la ' + nom_court_de_la_table;
                         }catch(e){}
+                    }else if(methode === 'de_l'){
+                        try{
+                            document.getElementById( nom_de_la_zone ).value=nom_bref_du_champ + ' de l\'' + nom_court_de_la_table;
+                        }catch(e){}
                     }else{
                         try{
                             document.getElementById( nom_de_la_zone ).value=nom_bref_du_champ + ' du ' + nom_court_de_la_table;
@@ -2512,7 +2516,7 @@ class v_svg_bdd1{
         cmd+=' methode(de_la)';
         cmd+=' nom_de_la_table(' + nom_de_la_table + ')';
         cmd+=')))';
-        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >construire le nom "de la" </div>';
+        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >nom "de la" </div>';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
         cmd+=' nom_de_la_zone(meta_modifier__abrege_du_champ),';
@@ -2521,7 +2525,16 @@ class v_svg_bdd1{
         cmd+=' methode(du)';
         cmd+=' nom_de_la_table(' + nom_de_la_table + ')';
         cmd+=')))';
-        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >construire le nom "du" </div>';
+        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >nom "du" </div>';
+        var cmd='';
+        cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
+        cmd+=' nom_de_la_zone(meta_modifier__abrege_du_champ),';
+        cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        cmd+=' meta_champ(abrege)';
+        cmd+=' methode(de_l)';
+        cmd+=' nom_de_la_table(' + nom_de_la_table + ')';
+        cmd+=')))';
+        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >nom "de l\'" </div>';
         /*  */
         t+='<br />masquer_champ_dans_svg : ';
         t+='<input type="checkbox" id="masquer_champ_dans_svg" ' + (masquer_champ_dans_svg === 1 ? ( 'checked' ) : ( '' )) + ' />';

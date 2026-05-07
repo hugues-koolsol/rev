@@ -10,6 +10,11 @@ class sql_143{
       =============================================================================================================
     */
     async sql( par ){
+        /* test "non nul" sur le champ "chx_acces_autorisation" */
+        if(par['n_chx_acces_autorisation'] === null || par['n_chx_acces_autorisation'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "acces" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
         /* test "non nul" sur le champ "chx_source_autorisation" */
         if(par['n_chx_source_autorisation'] === null || par['n_chx_source_autorisation'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']' );

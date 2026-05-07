@@ -346,7 +346,7 @@ class taches2{
             "chi_id_tache" : form['chi_id_tache'] ,
             "chx_utilisateur_tache" : form['chx_utilisateur_tache']
         };
-        console.log("criteres_114",criteres_114);
+        console.log( "criteres_114" , criteres_114 );
         let tt114=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_taches

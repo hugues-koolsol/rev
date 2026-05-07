@@ -791,8 +791,7 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
 sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet'),
 ('565','groupes1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','
 sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet'),
-('566','groupes1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','
-sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet'),
+('566','groupes1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet'),
 ('567','x_ecran_coordonnees1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','
 sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté'),
 ('568','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','sup(this.donnees_retournees.chi_id_utilisateur,0)','this.donnees_retournees.chi_id_utilisateur > 0;','vous devez être connecté'),
@@ -930,14 +929,14 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','poipoip','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1258','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','poipoip','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1266','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'14','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (453) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (454) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  chp_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -2948,7 +2947,7 @@ sans avoir le droit de gérer les utilisateurs','99','2026-05-05 13:15:05.120','
 ('466','1','virer le champ chp_nom_autorisation','99','2026-05-05 07:39:00.859','2026-05-03 13:44:26.784','0','00_00_00'),
 ('467','1','ajouter les conditions pour les listes des 
 groupes/metiers/acces/autorisations....','99','2026-05-06 13:00:37.053','2026-05-03 15:10:06.600','0','00_00_00'),
-('468','1','mettre les autorisations utilisateur en session et les raz quand on modifie les autorisations coté interface','2','2026-05-03 17:16:14.869','2026-05-03 17:16:14.869','0','00_00_00'),
+('468','1','mettre les autorisations utilisateur en session et les raz quand on modifie les autorisations coté interface','99','2026-05-07 16:24:37.799','2026-05-03 17:16:14.869','0','00_00_00'),
 ('469','1','message après sauvegarde de base','99','2026-05-04 08:27:46.297','2026-05-03 18:13:03.074','0','00_00_00'),
 ('470','1','requete 145 sur env 3
 le source n''est pas bien maj sur disque quand on passe par l''interface de modification du sql','99','2026-05-05 13:14:34.758','2026-05-04 13:35:00.362','0','00_00_00'),
@@ -2968,13 +2967,17 @@ dans le test après update','99','2026-05-06 12:59:06.964','2026-05-05 18:34:11.
 ('474','1','ajouter des conditions combinées au niveau de la table
 par exemple, pour les genres
 VARCHAR(NNN)
-','1','2026-05-06 13:03:00.145','2026-05-06 13:01:23.641','0','00_00_00');
+
+update
+insert
+','99','2026-05-07 09:00:11.860','2026-05-06 13:01:23.641','0','00_00_00'),
+('475','1','renommer menu_arbre en __navigation','1','2026-05-07 12:27:43.211','2026-05-07 12:26:27.259','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (36) */
+/*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (37) */
 INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ,  che_est_session_genre ,  chp_nom_en_session_genre ,  che_est_positif_genre ,  cht_particularités_genre ) VALUES
 ('1','***indéfini***','36','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
 ('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-05-06 11:19:08.460','24','0',NULL,'1',NULL),
@@ -3011,7 +3014,8 @@ INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  ch
 ('107','fonctions de champ','33','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_fonctions_de_c_fonctions1()','0','0','0','2000-01-01 00:00:00.000','2025-10-03 18:16:54.710','3','0',NULL,'0',NULL),
 ('108','nom de dossier','31','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2026-04-30 16:01:50.901','1','0',NULL,'0',NULL),
 ('109','id projet','34','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-07 09:46:49.711','2026-01-17 12:57:08.547','3','1','chi_id_projet','0',NULL),
-('110','longueur de champ','35','chp','VARCHAR','20','0','0','0','1','0','NULL','0',NULL,'test_longueur_de_champ_dans_genre()','0','0','0','2026-03-29 13:29:01.613','2026-05-01 10:31:30.055','6','0',NULL,'0',NULL);
+('110','longueur de champ','35','chp','VARCHAR','20','0','0','0','1','0','NULL','0',NULL,'test_longueur_de_champ_dans_genre()','0','0','0','2026-03-29 13:29:01.613','2026-05-01 10:31:30.055','6','0',NULL,'0',NULL),
+('111','qqqqqq','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-05-07 08:53:05.885','2026-05-07 08:53:05.885','0','0',NULL,'0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
 
 
@@ -3024,7 +3028,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(31.5,28.5))
+   transform_base_sur_svg(translate(13.5,30.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_projets''),
@@ -3234,7 +3238,7 @@ créer_table(
             genre_meta(champ),
             nom_du_champ(''chp_nom_metier''),
             nom_bref_du_champ(''nom''),
-            abrege_du_champ(''nom du metier''),
+            abrege_du_champ(''nom du métier''),
             typologie(cht),
             genre(19),
             est_libelle_lien(1)
@@ -3758,17 +3762,15 @@ créer_table(
       champ(
          nom_du_champ(''chx_acces_autorisation''),
          espece_du_champ(INTEGER),
+         non_nulle(1),
          references(tbl_acces,chi_id_acces),
-         a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(NULL),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_acces_autorisation''),
             nom_bref_du_champ(''acces''),
             abrege_du_champ(''acces''),
             typologie(chx),
-            genre(8)
+            genre(4)
          )
       ),
       champ(
@@ -4253,9 +4255,9 @@ créer_table(
       distinction_pour_isad(''d\''un genre''),
       fonctions_spéciales1(''ne_pas_supprimer_id_un(1)''),
       fonctions_coherence1(''
-choix(si(condition(et(egalstricte(appelf(element(par.n_chp_espece_genre),nomf(toUpperCase),p()),\''VARCHAR\''),egalstricte(par.n_che_longueur_genre,null))),alors(
+choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstricte(appelf(element(par.chp_espece_genre),nomf(toUpperCase),p()),\''VARCHAR\''),egalstricte(par.che_longueur_genre,null))),alors(
       throw(new(appelf(nomf(Error),p(\''une longueur doit être indiquée pour le l\\\''espèce VARCHAR\'')))))))
-choix(si(condition(et(egalstricte(appelf(element(par.n_chp_espece_genre),nomf(toUpperCase),p()),\''DECIMAL\''),egalstricte(par.n_che_longueur_genre,null))),alors(
+choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstricte(appelf(element(par.chp_espece_genre),nomf(toUpperCase),p()),\''DECIMAL\''),egalstricte(par.che_longueur_genre,null))),alors(
       throw(new(appelf(nomf(Error),p(\''une longueur doit être indiquée pour le l\\\''espèce DECIMAL\'')))))))''),
       transform_base_sur_svg(translate(28,529))
    ),
@@ -5962,12 +5964,7 @@ WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:0
       )
    ),
    conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),
-         comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),
-         supegal(champ(`T0`,`chi_id_metier`),:metier_mini)
-      )
+      et(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),supegal(champ(`T0`,`chi_id_metier`),:metier_mini))
    ),
    complements(
       trier_par((champ(`T0`,`chi_id_metier`),décroissant())),
@@ -5978,7 +5975,7 @@ WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:0
  FROM b1.tbl_metiers T0
  LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
 
-WHERE ( /* */ `T0`.`chi_id_metier` = :T0_chi_id_metier
+WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
    AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
    AND `T0`.`chi_id_metier` >= :metier_mini) 
 ORDER BY `T0`.`chi_id_metier` DESC  

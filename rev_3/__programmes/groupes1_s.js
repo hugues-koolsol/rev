@@ -16,11 +16,9 @@ class groupes1{
     */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
         /*#
-          let obj=await this.faire_un_traitement( __xva_avant['T0.chi_id_groupe'] ,  this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
-          if(obj[__xst] === __xsu){
-              return({"__xst" : __xsu});
-          }else{
-              return({"__xst" : __xer});
+          let obj=await this.faire_un_traitement( __xva_avant['T0.chi_id_groupe'] , __db1 );
+          if(obj[__xst] !== __xsu){
+              return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']' });
           }
         */
         return({"__xst" : __xsu});
@@ -31,10 +29,8 @@ class groupes1{
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          this.__ig1.donnees_retournees.__xst=__xer;
           return({"__xst" : __xer});
         */
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -45,8 +41,7 @@ class groupes1{
                && this.__ig1.donnees_retournees.chi_id_utilisateur > 1
                && __xva_avant['T0.chi_id_groupe'] <= 2
         ){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' vous ne pouvez pas modifier le groupe (' + __xva_avant['T0.chi_id_groupe'] + ')' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : ' vous ne pouvez pas modifier le groupe (' + __xva_avant['T0.chi_id_groupe'] + ')'});
         }
         return({"__xst" : __xsu});
     }
@@ -109,14 +104,6 @@ class groupes1{
         form['chi_id_groupe']=form['chi_id_groupe'] === null ? ( null ) : ( parseInt( form['chi_id_groupe'] , 10 ) );
         form['chx_parent_groupe']=form['chx_parent_groupe'] === null ? ( null ) : ( parseInt( form['chx_parent_groupe'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_nom_groupe'] === null || form['chp_nom_groupe'] === ''){
-            this.__ig1.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_groupe'] , 'nom' );
-        if(__test_0_1[__xst] !== __xsu){
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -138,72 +125,61 @@ class groupes1{
         ;
         */
         /*sql_inclure_fin*/ 131 , criteres_select_131 , this.__ig1.donnees_retournees , __db1 );
-        if(tt131[__xst] !== __xsu){
-            this.__ig1.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
-            this.__ig1.donnees_retournees.__xst=__xer;
+        if(tt131[__xst] !== __xsu || tt131[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [131 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt131[__xva][0] , __db1 );
+        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer});
         }
-        if(tt131[__xst] === __xsu && tt131[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt131[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-                return({"__xst" : __xer});
-            }
-            let criteres_133={
-                 /*  */
-                "c_chi_id_groupe" : form['chi_id_groupe'] ,
-                "n_chp_nom_groupe" : form['chp_nom_groupe'] ,
-                "n_chx_parent_groupe" : form['chx_parent_groupe'] === '' ? ( null ) : ( form['chx_parent_groupe'] )
-            };
-            await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt133=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_groupes SET 
-               `chp_nom_groupe` = :n_chp_nom_groupe , 
-               `chx_parent_groupe` = :n_chx_parent_groupe
-            WHERE `chi_id_groupe` = :c_chi_id_groupe ;
-            */
-            /*sql_inclure_fin*/ 133 , criteres_133 , this.__ig1.donnees_retournees , __db1 );
-            if(tt133[__xst] !== __xsu){
-                if(tt133['__xme'] !== ''){
-                    this.__ig1.__xsi[__xer].push( tt133['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                this.__ig1.donnees_retournees.__xst=__xer;
-                return({"__xst" : __xer});
-            }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt131[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-                this.__ig1.donnees_retournees.__xst=__xer;
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true){
-                if(form['__mat_liste_si_ok']){
-                    let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                    let d=1;
-                    await this.filtre1( mat1 , 1 , __db1 );
-                }
-                return({"__xst" : __xsu});
-            }
-            let tt131_bis=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
-             FROM b1.tbl_groupes T0
-             LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
-            
-            WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
-            ;
-            */
-            /*sql_inclure_fin*/ 131 , criteres_select_131 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt131_bis;
-        }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt131;
+        let criteres_133={
+             /*  */
+            "c_chi_id_groupe" : form['chi_id_groupe'] ,
+            "n_chp_nom_groupe" : form['chp_nom_groupe'] ,
+            "n_chx_parent_groupe" : form['chx_parent_groupe'] === '' ? ( null ) : ( form['chx_parent_groupe'] )
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt133=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_groupes SET 
+           `chp_nom_groupe` = :n_chp_nom_groupe , 
+           `chx_parent_groupe` = :n_chx_parent_groupe
+        WHERE `chi_id_groupe` = :c_chi_id_groupe ;
+        */
+        /*sql_inclure_fin*/ 133 , criteres_133 , this.__ig1.donnees_retournees , __db1 );
+        if(tt133[__xst] !== __xsu || tt133.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt133.__xme});
         }
-        this.__ig1.donnees_retournees.__xst=__xsu;
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt131[__xva][0] , __db1 );
+        if(__taam[__xst] !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(form['__mat_liste_si_ok']){
+                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+                let d=1;
+                await this.filtre1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
+        }
+        let tt131_bis=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
+         FROM b1.tbl_groupes T0
+         LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
+        
+        WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
+        ;
+        */
+        /*sql_inclure_fin*/ 131 , criteres_select_131 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt131_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -419,16 +395,6 @@ class groupes1{
         /* conversion des données numériques début */
         form['chx_parent_groupe']=form['chx_parent_groupe'] === null || form['chx_parent_groupe'] === '' || form['chx_parent_groupe'] === undefined ? ( null ) : ( parseInt( form['chx_parent_groupe'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_nom_groupe'] === null || form['chp_nom_groupe'] === ''){
-            this.__ig1.__xsi[__xer].push( 'la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( form['chp_nom_groupe'] , 'nom' );
-        if(__test_0_1[__xst] !== __xsu){
-            this.__ig1.__xsi[__xer].push( 'erreur sur le contenu de  "nom" [' + this.__ig1.nl2() + ']' );
-            this.__ig1.donnees_retournees.__xst=__xer;
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
@@ -542,7 +508,8 @@ class groupes1{
         WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
            AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe
            AND `T0`.`chx_parent_groupe` = :T0_chx_parent_groupe
-           AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe) 
+           AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
+           AND `T0`.`chi_id_groupe` >= :groupe_mini) 
         ORDER BY `T0`.`chi_id_groupe` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -565,7 +532,8 @@ class groupes1{
             WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
                AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe
                AND `T0`.`chx_parent_groupe` = :T0_chx_parent_groupe
-               AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe) 
+               AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
+               AND `T0`.`chi_id_groupe` >= :groupe_mini) 
             ORDER BY `T0`.`chi_id_groupe` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;

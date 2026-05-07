@@ -155,18 +155,6 @@ class utilisateurs1{
         form['chx_acces_utilisateur']=form['chx_acces_utilisateur'] === null ? ( null ) : ( parseInt( form['chx_acces_utilisateur'] , 10 ) );
         form['che_actif_utilisateur']=form['che_actif_utilisateur'] === null ? ( null ) : ( parseInt( form['che_actif_utilisateur'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_nom_de_connexion_utilisateur'] === null || form['chp_nom_de_connexion_utilisateur'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom de connexion" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_acces_utilisateur'] === null || form['chx_acces_utilisateur'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "acces" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['che_actif_utilisateur'] === null || form['che_actif_utilisateur'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "actif" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -400,9 +388,7 @@ class utilisateurs1{
         /*sql_inclure_fin*/ 123 , criteres_123 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt123[__xst] !== __xsu){
-            if(this.__ig1.__deverminage > 1){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
-            }
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt121[__xva][0] , __db1 );
@@ -471,18 +457,6 @@ class utilisateurs1{
         /* conversion des données numériques début */
         form['chx_acces_utilisateur']=form['chx_acces_utilisateur'] === null || form['chx_acces_utilisateur'] === '' || form['chx_acces_utilisateur'] === undefined ? ( null ) : ( parseInt( form['chx_acces_utilisateur'] , 10 ) );
         /* conversion des données numériques fin */
-        if(form['chp_nom_de_connexion_utilisateur'] === null || form['chp_nom_de_connexion_utilisateur'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom de connexion" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['chx_acces_utilisateur'] === null || form['chx_acces_utilisateur'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "acces" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        if(form['che_actif_utilisateur'] === null || form['che_actif_utilisateur'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "actif" doit être renseigné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
@@ -576,7 +550,6 @@ class utilisateurs1{
         if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
             criteres119['acces_pas_dans']='(1,2)';
         }
-        
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -594,7 +567,8 @@ class utilisateurs1{
            AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur
            AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
            AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
-           AND `T1`.`che_actif_acces` = :T1_che_actif_acces) 
+           AND `T1`.`che_actif_acces` = :T1_che_actif_acces
+           AND `T0`.`chx_acces_utilisateur` NOT IN :acces_pas_dans) 
         ORDER BY `T0`.`chi_id_utilisateur` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -621,7 +595,8 @@ class utilisateurs1{
                AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur
                AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
                AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
-               AND `T1`.`che_actif_acces` = :T1_che_actif_acces) 
+               AND `T1`.`che_actif_acces` = :T1_che_actif_acces
+               AND `T0`.`chx_acces_utilisateur` NOT IN :acces_pas_dans) 
             ORDER BY `T0`.`chi_id_utilisateur` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;

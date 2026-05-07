@@ -862,5 +862,29 @@
     "chp_nom_en_session_genre": null,
     "che_est_positif_genre": 0,
     "cht_particularités_genre": null
+  },
+  "111": {
+    "chi_id_genre": 111,
+    "chp_nom_genre": "qqqqqq",
+    "chp_espece_genre": "VARCHAR",
+    "che_longueur_genre": "64",
+    "che_est_primaire_genre": 0,
+    "che_est_incrément_genre": 0,
+    "che_est_obligatoire_genre": 1,
+    "che_a_init_genre": 0,
+    "che_init_est_mot_genre": 0,
+    "cht_valeur_init_genre": null,
+    "chp_prefixe_genre": "chp",
+    "che_est_parmis_genre": 0,
+    "cht_parmis_genre": null,
+    "che_ordre_genre": 2,
+    "che_est_tsc_genre": 0,
+    "che_est_tsm_genre": 0,
+    "cht_fonctions_genre": null,
+    "che_est_nur_genre": 0,
+    "che_est_session_genre": 0,
+    "chp_nom_en_session_genre": null,
+    "che_est_positif_genre": 0,
+    "cht_particularités_genre": null
   }
 }

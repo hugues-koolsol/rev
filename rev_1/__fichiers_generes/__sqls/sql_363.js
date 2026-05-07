@@ -19,8 +19,9 @@ class sql_363{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_fournisseur_basedd" */
-                if(par.donnees[i]['chp_fournisseur_basedd'] === null || par.donnees[i]['chp_fournisseur_basedd']===''){
+                if(elem['chp_fournisseur_basedd'] === null || elem['chp_fournisseur_basedd']===''){
                     this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "fournisseur" doit être renseigné [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }

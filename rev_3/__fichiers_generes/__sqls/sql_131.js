@@ -19,7 +19,7 @@ class sql_131{
            LEFT JOIN tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_groupe\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_groupe'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_groupe\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_groupe'] , 'T0_chi_id_groupe' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_131 sql0=',sql0); */
         let lignes=[];

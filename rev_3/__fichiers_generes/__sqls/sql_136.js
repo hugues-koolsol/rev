@@ -22,7 +22,7 @@ class sql_136{
            LEFT JOIN tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_acces'] ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_acces'] , 'T0_chi_id_acces' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_136 sql0=',sql0); */
         let lignes=[];

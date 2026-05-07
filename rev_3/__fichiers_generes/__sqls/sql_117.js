@@ -22,15 +22,45 @@ class sql_117{
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
+                const elem=par.donnees[i];
+                /* test "non nul" sur le champ "chp_nom_source" */
+                if(elem['chp_nom_source'] === null || elem['chp_nom_source']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /*
+                  === test spécifique sur le champ "chp_nom_source" ===
+                */
+                let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(elem['chp_nom_source'],'nom');
+                if(__test_0_1.__xst !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_0_1.__xme);
+                    return{"__xst" : __xer};
+                }
+
+                /* test "non nul" sur le champ "che_binaire_source" */
+                if(elem['che_binaire_source'] === null || elem['che_binaire_source']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "binaire" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_contient_version_source" */
+                if(elem['che_contient_version_source'] === null || elem['che_contient_version_source']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "contient version" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
+                /* test "non nul" sur le champ "che_autorisation_globale_source" */
+                if(elem['che_autorisation_globale_source'] === null || elem['che_autorisation_globale_source']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "autorisation globale" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_source'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_binaire_source'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_commentaire_source'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_contient_version_source'] ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_autorisation_globale_source'] ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_source'] , 'chp_nom_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_binaire_source'] , 'che_binaire_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_commentaire_source'] , 'cht_commentaire_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_contient_version_source'] , 'che_contient_version_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_autorisation_globale_source'] , 'che_autorisation_globale_source' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

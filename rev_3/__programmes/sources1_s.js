@@ -54,13 +54,9 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
@@ -129,13 +125,9 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
@@ -206,13 +198,9 @@ class sources1{
             let tt116=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
              FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+            WHERE `T0`.`chi_id_source` = :T0_chi_id_source
             ;
             */
             /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
@@ -268,13 +256,9 @@ class sources1{
             let tt116=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
              FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+            WHERE `T0`.`chi_id_source` = :T0_chi_id_source
             ;
             */
             /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
@@ -377,13 +361,9 @@ class sources1{
             let tt116=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
              FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+            WHERE `T0`.`chi_id_source` = :T0_chi_id_source
             ;
             */
             /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
@@ -504,18 +484,7 @@ class sources1{
         /* this.__ig1.ma_trace1('this.__ig1.donnees_recues=',this.__ig1.donnees_recues); */
         let __dbn=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_402={"T0_chi_id_source" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_source.join( ',' ) + ')'};
-        let tt402=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
-        `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , `T0`.`cht_condition_js_source`
-         FROM b1.tbl_sources T0
-        WHERE (   `T0`.`chi_id_source` IN :T0_chi_id_source
-           AND `T0`.`chp_nom_source` LIKE '%.js'
-           AND `T0`.`che_binaire_source` = 0)
-        ;
-        */
-        /*sql_inclure_fin*/ 402 , criteres_select_402 , this.__ig1.donnees_retournees , __dbn );
+        let tt402=await this.__ig1.sql_iii( 402 , criteres_select_402 , this.__ig1.donnees_retournees , __dbn );
         if(tt402.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées  [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
@@ -554,27 +523,7 @@ class sources1{
                         }]
             };
             /*  */
-            let tt398=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            INSERT INTO b1.`tbl_travaux`(
-                `chp_resume_travail` , 
-                `cht_rev_travail` , 
-                `chx_utilisateur_travail` , 
-                `chd_dtc_travail` , 
-                `chp_etat_travail` , 
-                `chx_projet_travail` , 
-                `cht_utilisateur_travail`
-            ) VALUES (
-                :chp_resume_travail , 
-                :cht_rev_travail , 
-                :chx_utilisateur_travail , 
-                :chd_dtc_travail , 
-                :chp_etat_travail , 
-                :chx_projet_travail , 
-                :cht_utilisateur_travail
-            );
-            */
-            /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
+            let tt398=await this.__ig1.sql_iii( 398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
             if(tt398[__xst] !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
@@ -591,18 +540,7 @@ class sources1{
         let __dbn=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_402={"T0_chi_id_source" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_source.join( ',' ) + ')'};
         /* this.__ig1.ma_trace1( 'criteres_select_402=' , criteres_select_402 ); */
-        let tt402=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
-        `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , `T0`.`cht_condition_js_source`
-         FROM b1.tbl_sources T0
-        WHERE (   `T0`.`chi_id_source` IN :T0_chi_id_source
-           AND `T0`.`chp_nom_source` LIKE '%.js'
-           AND `T0`.`che_binaire_source` = 0)
-        ;
-        */
-        /*sql_inclure_fin*/ 402 , criteres_select_402 , this.__ig1.donnees_retournees , __dbn );
+        let tt402=await this.__ig1.sql_iii( 402 , criteres_select_402 , this.__ig1.donnees_retournees , __dbn );
         if(tt402.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées  [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
@@ -636,27 +574,7 @@ class sources1{
                         }]
             };
             /*  */
-            let tt398=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            INSERT INTO b1.`tbl_travaux`(
-                `chp_resume_travail` , 
-                `cht_rev_travail` , 
-                `chx_utilisateur_travail` , 
-                `chd_dtc_travail` , 
-                `chp_etat_travail` , 
-                `chx_projet_travail` , 
-                `cht_utilisateur_travail`
-            ) VALUES (
-                :chp_resume_travail , 
-                :cht_rev_travail , 
-                :chx_utilisateur_travail , 
-                :chd_dtc_travail , 
-                :chp_etat_travail , 
-                :chx_projet_travail , 
-                :cht_utilisateur_travail
-            );
-            */
-            /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
+            let tt398=await this.__ig1.sql_iii( 398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
             if(tt398[__xst] !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
@@ -726,13 +644,9 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
@@ -823,14 +737,7 @@ class sources1{
                 "n_cht_genere_source" : '' ,
                 "n_cht_rev_source" : ''
             };
-            let tt338=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_sources SET 
-               `cht_rev_source` = :n_cht_rev_source , 
-               `cht_genere_source` = :n_cht_genere_source
-            WHERE `chi_id_source` = :c_chi_id_source ;
-            */
-            /*sql_inclure_fin*/ 338 , criteres_select_338 , this.__ig1.donnees_retournees , __db1 );
+            let tt338=await this.__ig1.sql_iii( 338 , criteres_select_338 , this.__ig1.donnees_retournees , __db1 );
             if(tt338[__xst] !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de l\'enregistrement du source   [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
@@ -842,14 +749,7 @@ class sources1{
                 "n_cht_genere_source" : obj2.__xva ,
                 "n_cht_rev_source" : obj1.__xva
             };
-            let tt338=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_sources SET 
-               `cht_rev_source` = :n_cht_rev_source , 
-               `cht_genere_source` = :n_cht_genere_source
-            WHERE `chi_id_source` = :c_chi_id_source ;
-            */
-            /*sql_inclure_fin*/ 338 , criteres_select_338 , this.__ig1.donnees_retournees , __db1 );
+            let tt338=await this.__ig1.sql_iii( 338 , criteres_select_338 , this.__ig1.donnees_retournees , __db1 );
             if(tt338[__xst] !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de l\'enregistrement du source   [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
@@ -876,15 +776,7 @@ class sources1{
             "chp_provenance_rev" : 'source' ,
             "chx_source_rev" : chi_id_source
         };
-        let tt353=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(ne_pas_tester_les_dependances_de_suppression(1))
-        
-        DELETE FROM b1.tbl_revs
-        WHERE (`chp_provenance_rev` = :chp_provenance_rev
-           AND `chx_source_rev` = :chx_source_rev) ;
-        */
-        /*sql_inclure_fin*/ 353 , criteres_353 , this.__ig1.donnees_retournees , __db1 );
+        let tt353=await this.__ig1.sql_iii( 353 , criteres_353 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt353[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression des anciennes données de la table rev [' + this.__ig1.nl2() + ']' );
@@ -938,45 +830,7 @@ class sources1{
                     "chp_commentaire_rev" : matrice[i][13]
                 } );
             if(i > 0 && i% 10000 === 0){
-                let tt358=await this.__ig1.sql_iii(
-                /*sql_inclure_deb*/ /*#
-                INSERT INTO b1.`tbl_revs`(
-                    `chp_provenance_rev` , 
-                    `chx_source_rev` , 
-                    `chp_id_rev` , 
-                    `chp_valeur_rev` , 
-                    `chp_type_rev` , 
-                    `chp_niveau_rev` , 
-                    `chp_quotee_rev` , 
-                    `chp_pos_premier_rev` , 
-                    `chp_pos_dernier_rev` , 
-                    `chp_parent_rev` , 
-                    `chp_nbr_enfants_rev` , 
-                    `chp_num_enfant_rev` , 
-                    `chp_profondeur_rev` , 
-                    `chp_pos_ouver_parenthese_rev` , 
-                    `chp_enfant_suivant_rev` , 
-                    `chp_commentaire_rev`
-                ) VALUES (
-                    :chp_provenance_rev , 
-                    :chx_source_rev , 
-                    :chp_id_rev , 
-                    :chp_valeur_rev , 
-                    :chp_type_rev , 
-                    :chp_niveau_rev , 
-                    :chp_quotee_rev , 
-                    :chp_pos_premier_rev , 
-                    :chp_pos_dernier_rev , 
-                    :chp_parent_rev , 
-                    :chp_nbr_enfants_rev , 
-                    :chp_num_enfant_rev , 
-                    :chp_profondeur_rev , 
-                    :chp_pos_ouver_parenthese_rev , 
-                    :chp_enfant_suivant_rev , 
-                    :chp_commentaire_rev
-                );
-                */
-                /*sql_inclure_fin*/ 358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
+                let tt358=await this.__ig1.sql_iii( 358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
                 if(tt358.__xst !== __xsu){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
                     return({"__xst" : __xer});
@@ -986,45 +840,7 @@ class sources1{
         }
         /* this.__ig1.ma_trace1('a_sauvegarder.donnees.length=',a_sauvegarder.donnees.length); */
         if(a_sauvegarder.donnees.length > 0){
-            let tt358=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            INSERT INTO b1.`tbl_revs`(
-                `chp_provenance_rev` , 
-                `chx_source_rev` , 
-                `chp_id_rev` , 
-                `chp_valeur_rev` , 
-                `chp_type_rev` , 
-                `chp_niveau_rev` , 
-                `chp_quotee_rev` , 
-                `chp_pos_premier_rev` , 
-                `chp_pos_dernier_rev` , 
-                `chp_parent_rev` , 
-                `chp_nbr_enfants_rev` , 
-                `chp_num_enfant_rev` , 
-                `chp_profondeur_rev` , 
-                `chp_pos_ouver_parenthese_rev` , 
-                `chp_enfant_suivant_rev` , 
-                `chp_commentaire_rev`
-            ) VALUES (
-                :chp_provenance_rev , 
-                :chx_source_rev , 
-                :chp_id_rev , 
-                :chp_valeur_rev , 
-                :chp_type_rev , 
-                :chp_niveau_rev , 
-                :chp_quotee_rev , 
-                :chp_pos_premier_rev , 
-                :chp_pos_dernier_rev , 
-                :chp_parent_rev , 
-                :chp_nbr_enfants_rev , 
-                :chp_num_enfant_rev , 
-                :chp_profondeur_rev , 
-                :chp_pos_ouver_parenthese_rev , 
-                :chp_enfant_suivant_rev , 
-                :chp_commentaire_rev
-            );
-            */
-            /*sql_inclure_fin*/ 358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
+            let tt358=await this.__ig1.sql_iii( 358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
             if(tt358.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
@@ -1054,13 +870,9 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
@@ -1161,14 +973,7 @@ class sources1{
             "n_cht_genere_source" : source_compile ,
             "n_cht_rev_source" : rev_du_disque
         };
-        let tt338=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_sources SET 
-           `cht_rev_source` = :n_cht_rev_source , 
-           `cht_genere_source` = :n_cht_genere_source
-        WHERE `chi_id_source` = :c_chi_id_source ;
-        */
-        /*sql_inclure_fin*/ 338 , criteres_select_338 , this.__ig1.donnees_retournees , __db1 );
+        let tt338=await this.__ig1.sql_iii( 338 , criteres_select_338 , this.__ig1.donnees_retournees , __db1 );
         if(tt338[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de l\'enregistrement du source   [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
@@ -1235,13 +1040,9 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
@@ -1310,13 +1111,9 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_116 , this.__ig1.donnees_retournees , __db1 );
@@ -1497,13 +1294,9 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
@@ -1530,22 +1323,7 @@ class sources1{
                 "n_cht_notification_ko_source" : form['cht_notification_ko_source'] === '' ? ( null ) : ( form['cht_notification_ko_source'] )
             };
             await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt308=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_sources SET 
-               `chp_nom_source` = :n_chp_nom_source , 
-               `che_binaire_source` = :n_che_binaire_source , 
-               `chx_dossier_id_source` = :n_chx_dossier_id_source , 
-               `cht_rev_source` = :n_cht_rev_source , 
-               `cht_genere_source` = :n_cht_genere_source , 
-               `cht_commentaire_source` = :n_cht_commentaire_source , 
-               `che_autorisation_globale_source` = :n_che_autorisation_globale_source , 
-               `cht_condition_rev_source` = :n_cht_condition_rev_source , 
-               `cht_condition_js_source` = :n_cht_condition_js_source , 
-               `cht_notification_ko_source` = :n_cht_notification_ko_source
-            WHERE `chi_id_source` = :c_chi_id_source ;
-            */
-            /*sql_inclure_fin*/ 308 , criteres_308 , this.__ig1.donnees_retournees , __db1 );
+            let tt308=await this.__ig1.sql_iii( 308 , criteres_308 , this.__ig1.donnees_retournees , __db1 );
             if(tt308[__xst] !== __xsu){
                 if(tt308['__xme'] !== ''){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( tt308['__xme'] + ' [' + this.__ig1.nl2() );
@@ -1572,13 +1350,9 @@ class sources1{
             let tt116_bis=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
              FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+            WHERE `T0`.`chi_id_source` = :T0_chi_id_source
             ;
             */
             /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
@@ -1618,13 +1392,9 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , {"T0_chi_id_source" : chi_id_source} , this.__ig1.donnees_retournees , __db1 );
@@ -1653,13 +1423,9 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_116 , this.__ig1.donnees_retournees , __db1 );
@@ -1724,13 +1490,9 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , critere_116 , this.__ig1.donnees_retournees , __db1 );
@@ -1791,19 +1553,17 @@ class sources1{
         let tt117=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_sources`(
-            `chx_dossier_id_source` , 
             `chp_nom_source` , 
+            `che_binaire_source` , 
             `cht_commentaire_source` , 
-            `cht_rev_source` , 
-            `cht_genere_source` , 
-            `che_binaire_source`
+            `che_contient_version_source` , 
+            `che_autorisation_globale_source`
         ) VALUES (
-            :chx_dossier_id_source , 
             :chp_nom_source , 
+            :che_binaire_source , 
             :cht_commentaire_source , 
-            :cht_rev_source , 
-            :cht_genere_source , 
-            :che_binaire_source
+            :che_contient_version_source , 
+            :che_autorisation_globale_source
         );
         */
         /*sql_inclure_fin*/ 117 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
@@ -1882,21 +1642,18 @@ class sources1{
         let tt115=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , 
+        `T0`.`che_autorisation_globale_source` , `T0`.`chx_dossier_id_source`
          FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+        WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
            AND `T0`.`chi_id_source` = :T0_chi_id_source
            AND `T0`.`chi_id_source` > :T0_chi_id_source2
            AND `T0`.`chi_id_source` <= :T0_chi_id_source3
            AND `T0`.`che_binaire_source` = :T0_che_binaire_source
            AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
-           AND `T1`.`chp_nom_dossier` LIKE :T1_chp_nom_dossier
+           AND `T0`.`che_contient_version_source` = :T0_che_contient_version_source
            AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source) 
-        ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
+        ORDER BY `T0`.`chi_id_source` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
         */
@@ -1911,21 +1668,18 @@ class sources1{
             tt115=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , 
+            `T0`.`che_autorisation_globale_source` , `T0`.`chx_dossier_id_source`
              FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+            WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
                AND `T0`.`chi_id_source` = :T0_chi_id_source
                AND `T0`.`chi_id_source` > :T0_chi_id_source2
                AND `T0`.`chi_id_source` <= :T0_chi_id_source3
                AND `T0`.`che_binaire_source` = :T0_che_binaire_source
                AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
-               AND `T1`.`chp_nom_dossier` LIKE :T1_chp_nom_dossier
+               AND `T0`.`che_contient_version_source` = :T0_che_contient_version_source
                AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source) 
-            ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
+            ORDER BY `T0`.`chi_id_source` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */

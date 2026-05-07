@@ -10,6 +10,11 @@ class sql_107{
       =============================================================================================================
     */
     async sql( par ){
+        /* test "non nul" sur le champ "chi_compteur1_utilisateur" */
+        if(par['n_chi_compteur1_utilisateur'] === null || par['n_chi_compteur1_utilisateur'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "compteur1" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];
         try{
@@ -26,7 +31,7 @@ class sql_107{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_utilisateur'] ) + '\r\n';
+            where0+=` AND \`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_utilisateur'] , 'c_chi_id_utilisateur' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_107= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

@@ -271,7 +271,8 @@ class _connexion1{
             "chi_id_utilisateur" : this.__ig1.donnees_retournees['chi_id_utilisateur'] ,
             "chi_id_acces" : this.__ig1.donnees_retournees['chi_id_acces'] ,
             "chi_id_projet" : this.__ig1.donnees_retournees['chi_id_projet'] ,
-            "chp_nom_de_connexion_utilisateur" : this.__ig1.donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_nom_de_connexion_utilisateur']
+            "chp_nom_de_connexion_utilisateur" : this.__ig1.donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_nom_de_connexion_utilisateur'] ,
+            "__autorisations_serveur" : {}
         };
         if(!(await this.__ig1.is_dir( './__sessions' ))){
             try{
