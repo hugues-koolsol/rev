@@ -915,9 +915,14 @@ class x_ecran_concevoir_une_requete1{
             cmd+=')))';
             t+='<div class="rev_bouton" data-rev_click="' + cmd + '">' + tab_ex[i] + '</div>';
         }
-        t+='<div class="rev_bouton" data-rev_click="m1(n1(__fnt1),f1(formater_le_rev_de_textarea1(zone_source(zone_formule))))" title="formater le source rev" >(😊)</div>';
-        t+='<div class="rev_bouton" data-rev_click="m1(n1(__fnt1),f1(insérer_un_commentaire_rev1(zone_source(zone_formule))))" title="insérer un commentaire" >#(😎)</div>';
+//        t+='<div class="rev_bouton" data-rev_click="m1(n1(__fnt1),f1(formater_le_rev_de_textarea1(zone_source(zone_formule))))" title="formater le source rev" >(😊)</div>';
+//        t+='<div class="rev_bouton" data-rev_click="m1(n1(__fnt1),f1(insérer_un_commentaire_rev1(zone_source(zone_formule))))" title="insérer un commentaire" >#(😎)</div>';
+        
         t+='<div>egal,diff,comme,sup,supegal,inf,infegal,dans,est,n_est_pas,pas_comme,equivalent,pas_equivalent</div>';
+        t+='<div style="display:flex;">\r\n';
+        t+=this.__ig1.__fnt1.boutons_rev3( 'zone_formule' );
+        t+='</div>\r\n';
+        
         t+='<div class="yy_conteneur_txtara">';
         t+='<textarea id="zone_formule" data-editeur1="rev" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(destination === 'champs_visualisation'){

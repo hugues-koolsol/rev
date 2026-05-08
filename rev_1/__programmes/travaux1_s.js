@@ -284,7 +284,9 @@ class travaux1{
                     }
                 }
             }while(continuer === true);
+            this.__ig1.envoyer_un_message_a_l_utilisateur( {"__xst" : __xal ,"__xme" : '⏲️ 👍 les travaux en arrière plan sont terminés'} );
         }catch(e){
+            this.__ig1.envoyer_un_message_a_l_utilisateur( {"__xst" : __xer ,"__xme" : '⏲️ erreur dans les travaux en arrière plan'} );
             this.__ig1.ma_trace1( 'raaaah' , e );
             return({"__xst" : __xer});
         }

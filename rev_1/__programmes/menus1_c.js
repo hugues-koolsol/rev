@@ -756,6 +756,7 @@ class menus1{
         o1+=' type="hidden" ';
         o1+=' value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_autorisation_menu' )){
+            debugger
             o1+=this.__ig1.fi2( dupliquer['T0.chx_autorisation_menu'] );
         }else{
             o1+='';
@@ -768,6 +769,7 @@ class menus1{
                 o1+='*indéfini';
             }else{
                 o1+='(' + dupliquer['T0.chx_autorisation_menu'] + ') ';
+                o1+=' ' + dupliquer['T2.chp_nom_acces'] + '/' + dupliquer['T3.chp_nom_source'] + ' ';
             }
         }else{
             o1+='*indéfini';

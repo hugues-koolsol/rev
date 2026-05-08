@@ -12,7 +12,7 @@ const __xac=/* actions */'__xac';
 import {__rev1} from './f0?n0=__rev1_.js';
 import {__fnt1} from './f0?n0=__fnt1_c.js';
 import {__fnts_c_et_s} from './f0?n0=__fnts_c_et_s_.js';
-import {_menu_arbre1} from './f0?n0=_menu_arbre1_c.js';
+import {__navigation1} from './f0?n0=__navigation1_c.js';
 /*
   Interface Globale coté client
 */
@@ -936,29 +936,6 @@ class __ig1{
             }
         };
         this.envoyer_un_message_au_worker( message_a_envoyer );
-        /* document.getElementById("envoyer_hey").addEventListener( "click" , ()=>{             this.ma_connexion_socket.send("hey");             }); */
-        /*
-          window.addEventListener("drop", (e) => {
-          debugger
-          if ([...e.dataTransfer.items].some((item) => item.kind === "file")) {
-          e.preventDefault();
-          }
-          });        
-          
-          window.addEventListener("dragover", (e) => {
-          
-          const fileItems = [...e.dataTransfer.items].filter(
-          (item) => item.kind === "file",
-          );
-          if (fileItems.length > 0) {
-          e.preventDefault();
-          
-          //if (!dropZone.contains(e.target)) {
-          //  e.dataTransfer.dropEffect = "none";
-          //}
-          }
-          });        
-        */
     }
     /*
       =============================================================================================================
@@ -3498,7 +3475,8 @@ class __ig1{
                 t+='</div>';
                 t+='</div>';
             }
-            if(i === 15){
+            /* ici un exemple de sous menu */
+            if(true && i === 15){
                 t+='<div style="display:flex;">';
                 /*
                   
@@ -3508,7 +3486,12 @@ class __ig1{
                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un menu dans la page</div>';
                 t+='  <ul>';
                 t+='   <li>';
-                t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="liste des taches">taches 1</div>';
+                /* appel                                   m1() */
+                t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(\'\'))))" title="liste des taches">taches 1</div>';
+                t+='   </li>';
+                t+='   <li>';
+                /* appel                                   pm1() */
+                t+='     <div class="rev_bouton" data-rev_click="pm1(m1(n1(dossiers1),f1(liste1())))" title="liste des dossiers">dossiers 1</div>';
                 t+='   </li>';
                 t+='   <li>';
                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))" title="convertion de js">convertion de js</div>';
@@ -3635,7 +3618,7 @@ class __ig1{
             "background_color" : 'var(--c_coul_fond1)' ,
             "class_du_bouton_replier" : 'rev_bouton'
         };
-        var menu1=new _menu_arbre1( elt.id , options1 );
+        var menu1=new __navigation1( elt.id , options1 );
         return({"__xst" : __xsu});
     }
     /*

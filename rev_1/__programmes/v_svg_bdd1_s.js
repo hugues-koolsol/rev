@@ -576,7 +576,6 @@ class v_svg_bdd1{
                 auto_increment=true;
             }
         }catch(e){
-            this.__ig1.donnees_retournees.__xst=0;
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql = ' + sql + ' [' + this.__ig1.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
@@ -603,7 +602,6 @@ class v_svg_bdd1{
                 les_champs.push( lignes[i] );
             }
         }catch(e){
-            this.__ig1.donnees_retournees.__xst=0;
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql1 = PRAGMA table_info(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
@@ -745,7 +743,6 @@ class v_svg_bdd1{
                 };
             }
         }catch(e){
-            this.__ig1.donnees_retournees.__xst=0;
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql = PRAGMA foreign_key_list(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
@@ -792,14 +789,12 @@ class v_svg_bdd1{
                             liste_des_indexes[arr[1]]['champs'][arr1[2]]={"seqno" : arr1[0] ,"cid" : arr1[1] ,"name" : arr1[2]};
                         }
                     }catch(e2){
-                        this.__ig1.donnees_retournees.__xst=0;
                         this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql = PRAGMA table_info(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e2 ) + ']' );
                         return({"__xst" : __xer});
                     }
                 }
             }
         }catch(e){
-            this.__ig1.donnees_retournees.__xst=0;
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql = PRAGMA table_info(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
@@ -829,7 +824,6 @@ class v_svg_bdd1{
             lignes0=await statement.values();
             await statement.finalize();
         }catch(e){
-            this.__ig1.donnees_retournees.__xst=0;
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql0 = ' + sql0 + ' [' + this.__ig1.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
@@ -850,7 +844,6 @@ class v_svg_bdd1{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            this.__ig1.donnees_retournees.__xst=0;
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql = ' + sql + ' [' + this.__ig1.nl2( e ) + ']' );
             return({"__xst" : __xer});
         }
@@ -868,7 +861,6 @@ class v_svg_bdd1{
             }else{
                 await db1.exec( 'ROLLBACK;' );
                 await db1.close();
-                this.__ig1.donnees_retournees.__xst=0;
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur la table "' + v1 + '" [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
@@ -1044,7 +1036,9 @@ class v_svg_bdd1{
         }
         let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA journal_mode=WAL;'];
         let la_requete=this.__ig1.donnees_recues[__xva]['source_sql'];
-        if(la_requete.indexOf( 'ADD COLUMN' ) >= 0){
+        if(contexte === 'ordonner_les_champs'){
+            les_pragma_set.push( 'PRAGMA foreign_keys=OFF;' );
+        }else if(la_requete.indexOf( 'ADD COLUMN' ) >= 0){
             let regex=/\/\*[\s\S]*?\*\//g;
             la_requete=la_requete.replace( regex , '' ).replace( /\n/g , ' ' ).replace( /\r/g , ' ' );
             this.__ig1.ma_trace1( 'la_requete=' + la_requete );

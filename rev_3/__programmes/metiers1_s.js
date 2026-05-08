@@ -31,10 +31,9 @@ class metiers1{
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          this.__ig1.donnees_retournees.__xst=__xer;
+          
           return({"__xst" : __xer});
         */
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -56,10 +55,9 @@ class metiers1{
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          this.__ig1.donnees_retournees.__xst=__xer;
+          
           return({"__xst" : __xer});
         */
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -68,10 +66,9 @@ class metiers1{
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          this.__ig1.donnees_retournees.__xst=__xer;
+          
           return({"__xst" : __xer});
         */
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -80,10 +77,9 @@ class metiers1{
     async tests_avant_creer( mat , d , form , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          this.__ig1.donnees_retournees.__xst=__xer;
+          
           return({"__xst" : __xer});
         */
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -92,10 +88,9 @@ class metiers1{
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
         /*
           this.__ig1.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          this.__ig1.donnees_retournees.__xst=__xer;
+          
           return({"__xst" : __xer});
         */
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -162,7 +157,6 @@ class metiers1{
         if(__taam[__xst] !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             this.__ig1.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-            this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         await __db1.exec( 'COMMIT;' );
@@ -226,16 +220,13 @@ class metiers1{
         */
         /*sql_inclure_fin*/ 125 , {"T0_chi_id_metier" : chi_id_metier} , this.__ig1.donnees_retournees , __db1 );
         if(tt125[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt125[__xva][0] , __db1 );
         if(aetam[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt125;
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -274,11 +265,9 @@ class metiers1{
         /*sql_inclure_fin*/ 125 , criteres_125 , this.__ig1.donnees_retournees , __db1 );
         if(tt125[__xst] !== __xsu){
             this.__ig1.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt125;
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -290,7 +279,6 @@ class metiers1{
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
         if(form['chi_id_metier'] <= 2){
             this.__ig1.__xsi[__xer].push( 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']' );
-            this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         /*  */
@@ -312,13 +300,11 @@ class metiers1{
         /*sql_inclure_fin*/ 125 , criteres_125 , this.__ig1.donnees_retournees , __db1 );
         if(tt125[__xst] !== __xsu){
             this.__ig1.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt125[__xva][0] , __db1 );
         if(tas[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
         let criteres_129={
@@ -382,7 +368,6 @@ class metiers1{
         */
         /*sql_inclure_fin*/ 125 , critere_125 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt125;
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -443,11 +428,9 @@ class metiers1{
             }else{
                 await this.page_modification1( mat , d , tt126['nouvel_id'] , __db1 );
             }
-            this.__ig1.donnees_retournees.__xst=__xsu;
             return({"__xst" : __xsu});
         }else{
             this.__ig1.__xsi[__xer].push( tt126['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
-            this.__ig1.donnees_retournees.__xst=__xer;
             return({"__xst" : __xer});
         }
     }
@@ -464,7 +447,6 @@ class metiers1{
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*
@@ -551,7 +533,6 @@ class metiers1{
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
         this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt124;
-        this.__ig1.donnees_retournees.__xst=__xsu;
         return({"__xst" : __xsu});
     }
     /*

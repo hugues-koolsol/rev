@@ -15,10 +15,7 @@ class autorisations1{
       =============================================================================================================
     */
     async ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , chx_acces_autorisation , __db1 ){
-        if(this.__ig1.donnees_retournees._CA_ > 2
-               && this.__ig1.donnees_retournees.chi_id_utilisateur >= 2
-               && chx_acces_autorisation <= 2
-        ){
+        if(this.__ig1.donnees_retournees._CA_ > 2 && chx_acces_autorisation <= 2){
             /*
               l'utilisateur admin ( > 2 ) ne peut pas modifier les autorisations des accès < 2 ...
             */
@@ -94,7 +91,36 @@ class autorisations1{
         if(tt151[__xst] !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
-        let autorisations_globales={};
+        let autorisations_globales={
+          "_connexion1_c.js": {
+            id_autorisation: 0,
+            autorisation_cote_client: true,
+            cht_condition_js_source: null,
+            cht_notification_ko_source: null,
+            che_pour_sous_liste_autorisation: 0
+          },
+          "_connexion1_s.js": {
+            id_autorisation: 0,
+            autorisation_cote_client: true,
+            cht_condition_js_source: null,
+            cht_notification_ko_source: null,
+            che_pour_sous_liste_autorisation: 0
+          },
+          "__ig1_c.js": {
+            id_autorisation: 0,
+            autorisation_cote_client: true,
+            cht_condition_js_source: null,
+            cht_notification_ko_source: null,
+            che_pour_sous_liste_autorisation: 0
+          },
+          "__ig1_s.js": {
+            id_autorisation: 0,
+            autorisation_cote_client: true,
+            cht_condition_js_source: null,
+            cht_notification_ko_source: null,
+            che_pour_sous_liste_autorisation: 0
+          },
+        };
         for(let k1 in tt151.__xva){
             /* autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source'].substr( 0 , tt151.__xva[k1]['T0.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true}; */
             autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source']]={

@@ -774,7 +774,7 @@ class __ig1{
             "__xva" : {} ,
             "__xac" : 'pm1(m1(n1(__ig1),f1(connexion_socket_etablie())))'
         };
-        socket.send( JSON.stringify( le_machin ) );
+        this.__socket.send( JSON.stringify( le_machin ) );
     }
     /*
       =============================================================================================================

@@ -3,7 +3,7 @@
   #dessine_l_arbre
   construit_html_de_arbre
 */
-class _menu_arbre1{
+class __navigation1{
     #racine_html=null;
     arbre=[];
     #id_div='';
@@ -373,12 +373,20 @@ class _menu_arbre1{
         /* window.removeEventListener( 'mousemove' , this.#souris_bouge_listener , false ); */
         let aa=e.target.getAttribute( 'data-rev_click' );
         if(aa && aa !== '' && aa.indexOf( 'm1(' ) >= 0){
-            /* console.log('%ce.target.getAttribute(\'data-rev_click\') = ' + e.target.getAttribute('data-rev_click') , 'background:red;color:yellow;') */
+            e.target.style.visibility='visible';
             let lst4=document.querySelectorAll( '[data-pour_menu_haut="0"]' );
             if(lst4.length > 0){
+                /*#
+                  // ici on a :
+                  // <div id="les_enfants_du_menu_LAZoyU8FYJ2d2WsUATrp" data-pour_menu_haut="0" data-cle_aleatoire="LAZoyU8FYJ2d2WsUATrp">
+                  // et on doit passer à fermer le premier enfant :
+                  // <div data-niveau="0" data-enfants_de="1" style="flex-direction: column; ......">
+                */
                 for( let i=0 ; i < lst4.length ; i++ ){
-                    /* console.log('%clst4[i]=','color:red;background:navy;',lst4[i]) */
-                    lst4[i].style.display='none';
+                    let lst5=lst4[i].querySelectorAll( '[data-niveau="0"]' );
+                    for( let j=0 ; j < lst5.length ; j++ ){
+                        this.#fermer_le_menu( lst5[j] );
+                    }
                 }
             }
         }
@@ -927,4 +935,4 @@ class _menu_arbre1{
         }
     }
 }
-export{_menu_arbre1 as _menu_arbre1};
+export{__navigation1 as __navigation1};

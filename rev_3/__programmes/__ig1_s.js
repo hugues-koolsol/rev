@@ -165,12 +165,12 @@ class __ig1{
                                                 controler_les_autorisations=false;
                                                 /* this.ma_trace1('autorisation OK pour "'+cle_pour_json_du_fichier+'"'); */
                                             }
-                                            if(controler_les_autorisations===true){
+                                            if(controler_les_autorisations === true){
                                                 /*
                                                   this.ma_trace1("là cle_pour_json_du_fichier=" , cle_pour_json_du_fichier );
                                                 */
-                                                if(this.__session_json.__autorisations_serveur.hasOwnProperty(cle_pour_json_du_fichier)){
-                                                    /* 
+                                                if(this.__session_json.__autorisations_serveur.hasOwnProperty( cle_pour_json_du_fichier )){
+                                                    /*
                                                       on a déjà mis cette autorisation en session 
                                                     */
                                                     let elem=this.__session_json.__autorisations_serveur[cle_pour_json_du_fichier];
@@ -196,7 +196,7 @@ class __ig1{
                                                     }
                                                 }
                                             }
-                                            if(controler_les_autorisations===true){
+                                            if(controler_les_autorisations === true){
                                                 /* this.ma_trace1('à vérifier pour "'+cle_pour_json_du_fichier+'" session=' , this.__session_json); */
                                                 let chemin_des_autorisations='./__fichiers_generes/___autorisations1_pour_acces_' + this.donnees_retournees.chi_id_acces + '_serveur.json';
                                                 /* this.ma_trace1('chemin_des_autorisations='+chemin_des_autorisations); */
@@ -367,7 +367,7 @@ class __ig1{
         if(pm1_trouve === false){
             if('pm1(m1(n1(__ig1),f1(init0())))' === this.donnees_recues.__xac){
                 this.donnees_retournees.__xva['init0']=true;
-                this.__session_json.__autorisations_serveur={}
+                this.__session_json.__autorisations_serveur={};
                 this.reecrire_fichier_session();
             }else{
                 this.donnees_retournees.__xsi[__xdv].push( 'pas de pm1 trouvé ' + this.donnees_recues.__xac + ' ' + this.nl2() + ' ' );
@@ -774,7 +774,7 @@ class __ig1{
             "__xva" : {} ,
             "__xac" : 'pm1(m1(n1(__ig1),f1(connexion_socket_etablie())))'
         };
-        socket.send( JSON.stringify( le_machin ) );
+        this.__socket.send( JSON.stringify( le_machin ) );
     }
     /*
       =============================================================================================================

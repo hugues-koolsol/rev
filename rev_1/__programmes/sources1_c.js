@@ -615,7 +615,7 @@ class sources1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  data-editeur1="rev"  id="cht_condition_rev_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="rev"  id="cht_condition_rev_source" rows="5" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_condition_rev_source'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -645,7 +645,7 @@ class sources1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_source" rows="5" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_condition_js_source'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -670,7 +670,7 @@ class sources1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  id="cht_notification_ko_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_notification_ko_source" rows="5" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_notification_ko_source'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -695,7 +695,7 @@ class sources1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  id="cht_commentaire_source" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_commentaire_source" rows="5" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_commentaire_source'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -1474,11 +1474,21 @@ class sources1{
                 }else{
                     lst+='<div class="rev_bouton yy__4 yy__4_inactif" title="compiler">' + this.__ig1.les_svg.compiler + '</div>';
                 }
-                if(this.__ig1._CA_ === 2 || this.__ig1._CA_ === 1 && le_message_du_serveur.chi_id_projet >= 2){
+                if(this.__ig1._CA_ === 2){
                     /*  */
                     lst+='  <div class="rev_bouton yy__4" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + ')))))';
+                    lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(1)))))';
                     lst+='" >importer de 1</div>';
+                }else if( this.__ig1._CA_ === 1 && ( le_message_du_serveur.chi_id_projet === 2 || le_message_du_serveur.chi_id_projet === 3 ) ){
+                    /*  */
+                    lst+='  <div class="rev_bouton yy__4" data-rev_click="';
+                    lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(1)))))';
+                    lst+='" >importer de 1</div>';
+                }else if( this.__ig1._CA_ === 1 && le_message_du_serveur.chi_id_projet > 3){
+                    /*  */
+                    lst+='  <div class="rev_bouton yy__4" data-rev_click="';
+                    lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(3)))))';
+                    lst+='" >importer de 3</div>';
                 }
                 if(this.__ig1._CA_ === 2){
                     /*  */

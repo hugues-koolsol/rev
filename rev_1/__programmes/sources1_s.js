@@ -709,6 +709,7 @@ class sources1{
     async compiler_texte_js_vers_ast( mat , d , texte_js ){
         let tableau_des_commentaires_js=[];
         let ast=null;
+        /* this.__ig1.ma_trace1( "texte_js",( typeof texte_js === 'String' ? ( texte_js.substr(0,50) ) : (texte_js) ) ); */
         let js_moins_commentaires_sql=texte_js;
         let regex=/\/\*sql_inclure_deb[\s\S]*?sql_inclure_fin\*\//g;
         js_moins_commentaires_sql=js_moins_commentaires_sql.replace( regex , '' );
@@ -1128,8 +1129,11 @@ class sources1{
         }else if(projet_source === '../rev_1/'){
             chemin_fichier_source=chemin_fichier_rev_2.replace( projet_destination , projet_source );
             chemin_fichier_destin=chemin_fichier_rev_2;
+        }else if(projet_source === '../rev_3/'){
+            chemin_fichier_source=chemin_fichier_rev_2.replace( projet_destination , projet_source );
+            chemin_fichier_destin=chemin_fichier_rev_2;
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur les projets sources et destination ne peuvent être que rev_1 ou rev_2 [' + this.__ig1.nl2( e ) + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur les projets sources et destination ne peuvent être que rev_1 ou rev_2 [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /* this.__ig1.ma_trace1('chemin_fichier_source='+chemin_fichier_source,'chemin_fichier_destin='+chemin_fichier_destin); */
@@ -1162,11 +1166,18 @@ class sources1{
       Copie un fichier de l'environnement un vers l'environnement deux.
     */
     async importer_de_rev_un( mat , d ){
+        let origine=1;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'origine' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                origine=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
         let destination='../rev_2/';
         if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet > 2){
             destination='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/';
         }
-        let obj=await this.importer_ou_exporter( mat , d , '../rev_1/' , destination );
+        let obj=await this.importer_ou_exporter( mat , d , '../rev_' + origine + '/' , destination );
         if(obj[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'les source n\'a pas pu être transféré de rev_1 vers rev_2  [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});

@@ -344,7 +344,6 @@ class bdds1{
                 tableau_des_tables1=await statement.values();
                 await statement.finalize();
             }catch(e){
-                this.__ig1.donnees_retournees.__xst=0;
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de récupération des tables de la base [' + this.__ig1.nl2( e ) + ']' );
                 return({"__xst" : 0});
             }
@@ -476,8 +475,12 @@ class bdds1{
             /*
               création des csv des tables
             */
-            if(( this.__ig1.donnees_retournees._CA_ === 1 && chi_id_projet !== null ) || ( this.__ig1.donnees_retournees._CA_ === 1 && chi_id_projet === 1 )){
-                /* 
+            if(this.__ig1.donnees_retournees._CA_ === 1
+                       && chi_id_projet !== null
+                   || this.__ig1.donnees_retournees._CA_ === 1
+                       && chi_id_projet === 1
+            ){
+                /*
                   dans le cas de la sauvegarde de la base système d'un autre projet , on ne fait pas de sauvegarde csv 
                 */
             }else{

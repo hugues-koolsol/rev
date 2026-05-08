@@ -15,10 +15,7 @@ class autorisations1{
       =============================================================================================================
     */
     async ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , chx_acces_autorisation , __db1 ){
-        if(this.__ig1.donnees_retournees._CA_ > 2
-               && this.__ig1.donnees_retournees.chi_id_utilisateur >= 2
-               && chx_acces_autorisation <= 2
-        ){
+        if(this.__ig1.donnees_retournees._CA_ > 2 && chx_acces_autorisation <= 2){
             /*
               l'utilisateur admin ( > 2 ) ne peut pas modifier les autorisations des accès < 2 ...
             */
@@ -94,7 +91,36 @@ class autorisations1{
         if(tt151[__xst] !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
-        let autorisations_globales={};
+        let autorisations_globales={
+          "_connexion1_c.js": {
+            id_autorisation: 0,
+            autorisation_cote_client: true,
+            cht_condition_js_source: null,
+            cht_notification_ko_source: null,
+            che_pour_sous_liste_autorisation: 0
+          },
+          "_connexion1_s.js": {
+            id_autorisation: 0,
+            autorisation_cote_client: true,
+            cht_condition_js_source: null,
+            cht_notification_ko_source: null,
+            che_pour_sous_liste_autorisation: 0
+          },
+          "__ig1_c.js": {
+            id_autorisation: 0,
+            autorisation_cote_client: true,
+            cht_condition_js_source: null,
+            cht_notification_ko_source: null,
+            che_pour_sous_liste_autorisation: 0
+          },
+          "__ig1_s.js": {
+            id_autorisation: 0,
+            autorisation_cote_client: true,
+            cht_condition_js_source: null,
+            cht_notification_ko_source: null,
+            che_pour_sous_liste_autorisation: 0
+          },
+        };
         for(let k1 in tt151.__xva){
             /* autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source'].substr( 0 , tt151.__xva[k1]['T0.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true}; */
             autorisations_globales[tt151.__xva[k1]['T0.chp_nom_source']]={
@@ -105,6 +131,8 @@ class autorisations1{
                 "che_pour_sous_liste_autorisation" : 0
             };
         }
+        this.__ig1.ma_trace1("autorisations_globales=",autorisations_globales);
+        
         let criteres_select_152={"T1_chp_nom_source" : /* on récupère les autorisations serveur */'%_s.js'};
         let tt152=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -225,23 +253,23 @@ class autorisations1{
             this.__ig1.donnees_retournees.__xsi[__xal].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        /* 
+        /*
           il faut raz les autorisations des utilisateurs en cours de connexion
         */
         let repertoire_des_sessions='';
-        if(this.__ig1.donnees_retournees._CA_ === 1  ){
-            if(this.__ig1.donnees_retournees.chi_id_projet === 1 ){
+        if(this.__ig1.donnees_retournees._CA_ === 1){
+            if(this.__ig1.donnees_retournees.chi_id_projet === 1){
                 repertoire_des_sessions='./__sessions/';
-            }else if(this.__ig1.donnees_retournees.chi_id_projet >= 3 ){
+            }else if(this.__ig1.donnees_retournees.chi_id_projet >= 3){
                 repertoire_des_sessions='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__sessions/';
             }
-        }else if(this.__ig1.donnees_retournees._CA_ >= 3  ){
+        }else if(this.__ig1.donnees_retournees._CA_ >= 3){
             repertoire_des_sessions='./__sessions/';
         }
-        if(repertoire_des_sessions!==''){
+        if(repertoire_des_sessions !== ''){
             for await (const dirEntry of Deno.readDir( repertoire_des_sessions )){
                 if(dirEntry.isFile === true){
-                    let chemin_de_fichier=repertoire_des_sessions+dirEntry.name;
+                    let chemin_de_fichier=repertoire_des_sessions + dirEntry.name;
                     const text_json=await Deno.readTextFile( chemin_de_fichier );
                     let le_json=JSON.parse( text_json );
                     le_json.__autorisations_serveur={};
