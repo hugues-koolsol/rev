@@ -2563,7 +2563,7 @@ class x_ecran_generer_programmes1{
                     for( let j=1 ; j < l01 ; j=mat1[j][12] ){
                         if(mat1[j][2] === 'f'){
                             src_client2+='\n';
-                            src_client2+='        var __test=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
+                            src_client2+='        var __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
                             /* 0,99,fo1[\'chp_texte_tache\'],\'priorite\'];\r\n'; */
                             if(mat1[j][8] === 0){
                             }else{
@@ -2584,8 +2584,8 @@ class x_ecran_generer_programmes1{
                                 }
                             }
                             src_client2+='fo1[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.nom_bref_du_champ + '\');\r\n';
-                            src_client2+='        if(__test.__xst!==__xsu){\r\n';
-                            src_client2+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : \'erreur sur le contenu du champ "' + obj_champ.meta.abrege_du_champ + '"\'} );\r\n';
+                            src_client2+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
+                            src_client2+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
                             src_client2+='            this.__ig1.affiche_les_messages();\r\n';
                             src_client2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
                             src_client2+='            try{\r\n';

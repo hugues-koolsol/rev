@@ -779,7 +779,7 @@ class utilisateurs1{
                 }
                 lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_utilisateur(' + elem['T0.chi_id_utilisateur'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
                 lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_utilisateur(' + elem['T0.chi_id_utilisateur'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                if(elem['T0.chi_id_utilisateur'] > 1){
+                if(elem['T0.chi_id_utilisateur'] > 1 || le_message_du_serveur._CA_ >= 3 && le_message_du_serveur.chi_id_utilisateur === 2){
                     lst+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(ecran_changer_le_mot_de_passe(chi_id_utilisateur(' + elem['T0.chi_id_utilisateur'] + '))))">';
                     lst+=this.__ig1.les_svg.cle;
                     lst+='</div>';

@@ -66,7 +66,6 @@ class menus1{
             }
             this.__ig1.donnees_retournees[__xva]['cht_genere_source']=await this.__ig1.file_get_contents( chemin_fichier );
             this.__ig1.donnees_retournees[__xva]['chp_nom_source']=tt141[__xva][0]['T2.chp_nom_source'];
-            this.__ig1.donnees_retournees[__xst]=__xsu;
             return({"__xst" : __xsu});
         }
         this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );

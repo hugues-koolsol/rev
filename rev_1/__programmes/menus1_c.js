@@ -756,7 +756,6 @@ class menus1{
         o1+=' type="hidden" ';
         o1+=' value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_autorisation_menu' )){
-            debugger
             o1+=this.__ig1.fi2( dupliquer['T0.chx_autorisation_menu'] );
         }else{
             o1+='';
@@ -1238,27 +1237,7 @@ class menus1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chi_id_menu'] !== null){
-                    lst+='<b>(' + elem['T0.chi_id_menu'] + ')</b>';
-                }
-                if(elem['T0.chp_methode_menu'] !== null){
-                    lst+=' ' + this.__ig1.fi2( elem['T0.chp_methode_menu'] );
-                }
-                if(elem['T3.chp_nom_source'] !== null){
-                    lst+='<br />' + elem['T3.chp_nom_source'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
-                    lst+='(' + elem['T1.chx_source_autorisation'] + ')';
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_autorisation_menu'] !== null){
-                    lst+='(' + elem['T0.chx_autorisation_menu'] + ') ';
-                }
-                if(elem['T1.chx_acces_autorisation'] !== null){
-                    lst+='/(' + elem['T1.chx_acces_autorisation'] + ')';
-                }
-                if(elem['T2.chp_nom_acces'] !== null){
-                    lst+='<br />' + this.__ig1.fi2( elem['T2.chp_nom_acces'] );
+                    lst+=elem['T0.chi_id_menu'];
                 }
                 lst+='</td>';
                 /*
@@ -1274,11 +1253,32 @@ class menus1{
                 if(elem['T0.chp_titre_menu'] !== null){
                     lst+=' / ' + this.__ig1.fi2( elem['T0.chp_titre_menu'] );
                 }
-                lst+='<hr />';
+                lst+='<hr style="margin:0;" />';
                 if(elem['T0.cht_condition_menu'] !== null){
                     lst+='<b>' + this.__ig1.fi2( elem['T0.cht_condition_menu'].substr( 0 , 200 ) ) + '</b>';
                 }else{
                     lst+='<i>pas de condition</i>';
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T3.chp_nom_source'] !== null){
+                    lst+=' ' + elem['T3.chp_nom_source'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                    lst+='(' + elem['T1.chx_source_autorisation'] + ')';
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chx_autorisation_menu'] !== null){
+                    lst+='(' + elem['T0.chx_autorisation_menu'] + ') ';
+                }
+                if(elem['T1.chx_acces_autorisation'] !== null){
+                    lst+='/(' + elem['T1.chx_acces_autorisation'] + ')';
+                }
+                if(elem['T2.chp_nom_acces'] !== null){
+                    lst+=' ' + this.__ig1.fi2( elem['T2.chp_nom_acces'] );
                 }
                 lst+='</td>';
                 /*
@@ -1290,9 +1290,10 @@ class menus1{
                 o1+='<table border="1">';
                 o1+='<tr>';
                 o1+='<th>action</th>';
+                o1+='<th>id</th>';
+                o1+='<th style="max-width:360px;">titre/libelle/condition</th>';
                 o1+='<th>id,nom source,titre,méthode</th>';
                 o1+='<th>autorisation/id et nom accès </th>';
-                o1+='<th style="max-width:360px;">titre/libelle/condition</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

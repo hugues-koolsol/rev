@@ -29,6 +29,100 @@ class __fnts_c_et_s{
     /*
       =============================================================================================================
     */
+    test_heure_nulle_ou_comprise_entre( inf , sup , valeur , nom_du_champ ){
+        let sepa_heure=':';
+        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  00_00_00 et 23_59_59 inclus<br />';
+        if(valeur === '' || valeur === null){
+            return({"__xst" : __xsu});
+        }
+        if(valeur.length !== 8){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__ig1.nl2()});
+        }
+        if(!(this.__ig1.est_num( valeur.substr( 0 , 2 ) )
+                   && this.__ig1.est_num( valeur.substr( 3 , 2 ) )
+                   && this.__ig1.est_num( valeur.substr( 6 , 2 ) ))
+        ){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__ig1.nl2()});
+        }
+        if(!(valeur.substr( 2 , 1 ) === sepa_heure && valeur.substr( 5 , 1 ) === sepa_heure)){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__ig1.nl2() + ']'});
+        }
+        let heure_num=parseInt( valeur.substr( 0 , 2 ) , 10 );
+        if(heure_num < 0 || heure_num > 23){
+            return({"__xst" : __xer ,"__xme" : 'l\'heure doit être comprise entre 00 et 23 inclus '});
+        }
+        let minutes_num=parseInt( valeur.substr( 3 , 2 ) , 10 );
+        if(minutes_num < 0 || minutes_num > 59){
+            return({"__xst" : __xer ,"__xme" : ' les minutes doit être comprises entre 01 et 12 inclus'});
+        }
+        let secondes_num=parseInt( valeur.substr( 6 , 2 ) , 10 );
+        if(secondes_num < 0 || secondes_num > 59){
+            return({"__xst" : __xer ,"__xme" : 'les secondes doivent être comprises entre 00 et 59 inclus'});
+        }
+        if(valeur < inf || valeur > sup){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__ig1.nl2() + ']'});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    test_date_nulle_ou_comprise_entre( inf , sup , valeur , nom_du_champ ){
+        let sepa_date='-';
+        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  1000_01_01 et 9999_12_31 inclus<br />';
+        if(valeur === '' || valeur === null){
+            return({"__xst" : __xsu});
+        }
+        if(valeur.length !== 10){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__ig1.nl2()});
+        }
+        if(!(this.__ig1.est_num( valeur.substr( 0 , 4 ) )
+                   && this.__ig1.est_num( valeur.substr( 5 , 2 ) )
+                   && this.__ig1.est_num( valeur.substr( 8 , 2 ) ))
+        ){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' ' + this.__ig1.nl2()});
+        }
+        if(!(valeur.substr( 4 , 1 ) === sepa_date && valeur.substr( 7 , 1 ) === sepa_date)){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__ig1.nl2() + ']'});
+        }
+        let annee_num=parseInt( valeur.substr( 0 , 4 ) , 10 );
+        if(annee_num < 1000){
+            return({"__xst" : __xer ,"__xme" : ' l\'année doit être comprise entre 1000 et 9999 inclus '});
+        }
+        let mois_num=parseInt( valeur.substr( 5 , 2 ) , 10 );
+        if(mois_num < 1 || mois_num > 12){
+            return({"__xst" : __xer ,"__xme" : ' le mois doit être compris entre 01 et 12 inclus'});
+        }
+        let jour_num=parseInt( valeur.substr( 8 , 2 ) , 10 );
+        if(jour_num < 1 || jour_num > 31){
+            return({"__xst" : __xer ,"__xme" : ' le mois jour être compris entre 01 et 31 inclus'});
+        }
+        if(mois_num === 4 || mois_num === 6 || mois_num === 9 || mois_num === 11){
+            if(jour_num === 31){
+                return({"__xst" : __xer ,"__xme" : ' pour les mois 4,6,9 et 11 le jour ne doit pas être supérieur à 30 '});
+            }
+        }else if(mois_num === 2){
+            if(jour_num <= 28){
+            }else if(jour_num === 29){
+                if(annee_num% 4 === 0 && !(annee_num% 100 === 0) || annee_num% 400 === 0){
+                    /*
+                      une année est bisextile si elle est divisible par 4 et pas pas 100 ou bien divisible par 400 ( cf k&r  )
+                    */
+                }else{
+                    return({"__xst" : __xer ,"__xme" : ' cette année n\'est pas bisextile '});
+                }
+            }else{
+                return({"__xst" : __xer ,"__xme" : ' le mois de février ne comporte que 28 ou 29 jours '});
+            }
+        }
+        if(valeur < inf || valeur > sup){
+            return({"__xst" : __xer ,"__xme" : mes_err + ' [' + this.__ig1.nl2() + ']'});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     test_du_nom_de_fichier1( valeur , nom_champ ){
         if(valeur === null || valeur === ''){
             return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseigné (' + this.__cote_c_ou_s + ')'} ));

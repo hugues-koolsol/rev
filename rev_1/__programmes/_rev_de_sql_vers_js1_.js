@@ -324,10 +324,10 @@ class _rev_de_sql_vers_js1{
         t+='class sql_' + id_requete_en_base + '{\r\n';
         if((type_de_requete === 'update'
                    || type_de_requete === 'insert')
-               && this.#obj_webs.bases[1].tables[obj3.liste_des_tables_pour_select_js].detail_table.txt_meta.indexOf( 'fonctions_coherence1(' ) >= 0
+               && this.#obj_webs.bases[base_reference].tables[obj3.liste_des_tables_pour_select_js].detail_table.txt_meta.indexOf( 'fonctions_coherence1(' ) >= 0
         ){
             let fonctions_coherence1='';
-            let mat1=this.#obj_webs.bases[1].tables[obj3.liste_des_tables_pour_select_js].detail_table.mat_meta;
+            let mat1=this.#obj_webs.bases[base_reference].tables[obj3.liste_des_tables_pour_select_js].detail_table.mat_meta;
             let l03=mat1.length;
             for( let k=1 ; k < l03 ; k=mat1[k][12] ){
                 if(mat1[k][1] === 'meta' && mat1[k][2] === 'f'){
@@ -2323,7 +2323,14 @@ class _rev_de_sql_vers_js1{
                                                                 this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['meta'][tab[o][1]]=tab[o + 1][1];
                                                             }else if(tab[o][2] === 'f' && tab[o][8] === 2){
                                                                 this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['meta'][tab[o][1]]=[tab[o + 1][1],tab[o + 2][1]];
+                                                            }else if(tab[o][2] === 'f' && tab[o][8] === 3 && tab[o][1] === 'reference_externe'){
+                                                                /*
+                                                                  base, table,champ
+                                                                */
+                                                                this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['meta'][tab[o][1]]=[tab[o + 1][1],tab[o + 2][1],tab[o + 3][1]];
+                                                             
                                                             }else{
+                                                                debugger
                                                                 console.log( '%c meta "' + tab[o][1] + '" champ "' + nom_du_champ + '" non pris en compte ' , 'background:green;color:white;' );
                                                             }
                                                         }

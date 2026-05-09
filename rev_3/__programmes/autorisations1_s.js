@@ -131,8 +131,6 @@ class autorisations1{
                 "che_pour_sous_liste_autorisation" : 0
             };
         }
-        this.__ig1.ma_trace1("autorisations_globales=",autorisations_globales);
-        
         let criteres_select_152={"T1_chp_nom_source" : /* on récupère les autorisations serveur */'%_s.js'};
         let tt152=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
