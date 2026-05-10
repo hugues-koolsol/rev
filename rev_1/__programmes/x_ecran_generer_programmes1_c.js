@@ -233,6 +233,16 @@ class x_ecran_generer_programmes1{
                                     for( let l=k + 1 ; l < lngumat ; l=matu[l][12] ){
                                         if(matu[l][1] === 'champ' && matu[l][2] === 'f' && matu[l][8] === 1 && matu[l + 1][2] === 'c'){
                                             let nom_du_champ=matu[l + 1][1];
+                                            let on_affecte_une_constante='';
+                                            if(matu[k][8] === 2 && matu[matu[l][12]][2] === 'c' && matu[matu[l][12]][1].substr( 0 , 1 ) !== ':'){
+                                                if(matu[matu[l][12]][4] === 0){
+                                                    on_affecte_une_constante=matu[matu[l][12]][1];
+                                                }else if(matu[matu[l][12]][4] === 1){
+                                                    on_affecte_une_constante='\'' + matu[matu[l][12]][1] + '\'';
+                                                }else{
+                                                    debugger;
+                                                }
+                                            }
                                             let champ_session=false;
                                             let nom_champ_session='';
                                             if(this.#obj_table.champs[nom_du_champ].hasOwnProperty( 'table_mere' )
@@ -251,7 +261,8 @@ class x_ecran_generer_programmes1{
                                                     "alias_table_mere" : '' ,
                                                     "table_mere" : this.#obj_table.champs[matu[l + 1][1]].table_mere??'' ,
                                                     "champ_pere" : this.#obj_table.champs[matu[l + 1][1]].champ_pere??'' ,
-                                                    "nom_champ_session" : nom_champ_session
+                                                    "nom_champ_session" : nom_champ_session ,
+                                                    "on_affecte_une_constante" : on_affecte_une_constante
                                                 } );
                                         }
                                     }
@@ -1390,8 +1401,6 @@ class x_ecran_generer_programmes1{
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
-                if(nom_du_champ === 'fld_id_commercial_client'){
-                }
                 let reference_externe_base='';
                 let reference_externe_table='';
                 let reference_externe_champ='';
@@ -1429,10 +1438,14 @@ class x_ecran_generer_programmes1{
                        || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
                 ){
                 }else{
-                    if(obj_champ.non_nulle === false){
-                        src_serveur_js2+='                \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
+                    if(liste_des_champs_update[i].on_affecte_une_constante !== ''){
+                        src_serveur_js2+='                \'n_' + nom_du_champ + '\' : ' + liste_des_champs_update[i].on_affecte_une_constante + ' ,\n';
                     }else{
-                        src_serveur_js2+='                \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
+                        if(obj_champ.non_nulle === false){
+                            src_serveur_js2+='                \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\']===\'\'? ( null ) : ( form[\'' + nom_du_champ + '\'] ) ,\n';
+                        }else{
+                            src_serveur_js2+='                \'n_' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] ,\n';
+                        }
                     }
                 }
             }

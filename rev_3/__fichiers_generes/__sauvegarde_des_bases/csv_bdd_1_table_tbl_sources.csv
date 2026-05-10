@@ -1,8 +1,4 @@
 "chi_id_source","chp_nom_source","cht_rev_source","cht_genere_source","che_binaire_source","chx_dossier_id_source","cht_commentaire_source","chd__dtm_source","chd__dtc_source","che__nur_source","che_contient_version_source","che_autorisation_globale_source","cht_condition_js_source","cht_condition_rev_source","cht_notification_ko_source"
-"79","_connexion1_c.js",NULL,NULL,"0","2",NULL,"2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0","1",NULL,NULL,NULL
-"80","_connexion1_s.js",NULL,NULL,"0","2",NULL,"2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0","1",NULL,NULL,NULL
-"83","__ig1_c.js",NULL,NULL,"0","2",NULL,"2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0","1",NULL,NULL,NULL
-"84","__ig1_s.js",NULL,NULL,"0","2",NULL,"2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0","1",NULL,NULL,NULL
 "88","x_ecran_coordonnees1_c.js",NULL,NULL,"0","2",NULL,"2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0","0",NULL,NULL,NULL
 "89","x_ecran_coordonnees1_s.js",NULL,NULL,"0","2",NULL,"2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0","0",NULL,NULL,NULL
 "94","groupes1_c.js",NULL,NULL,"0","2","les groupes","2000-01-01 00:00:00.000","2000-01-01 00:00:00.000","0","0","0",NULL,NULL,NULL

@@ -85,73 +85,8 @@ class sources1{
                     this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+            this.vv_ecran_liste_boutons_avant+='';
         }
-    }
-    /*
-      =============================================================================================================
-    */
-    modifier1( mat , d , le_message_du_serveur=null ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    verifier_modifier1( mat , d , données ){
-        let retour_a_la_liste='';
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
-                retour_a_la_liste='retour_a_la_liste()';
-            }
-        }
-        let co1=données.__co1;
-        let fo1=données.__fo1[co1];
-        /*
-          tout a été vérifié
-        */
-        let __fo1={};
-        __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
-                 /*  */
-                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
-                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
-            } );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    page_modification1( mat , d , le_message_du_serveur=null ){
-        if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_modification1' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
-        }
-        let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi , 'chi_id_source' );
-        let o1='';
-        /*
-          =====================================================================================================
-        */
-        o1+='      <input type="hidden" id="chi_id_source" value="' + enreg['T0.chi_id_source'] + '">';
-        /*
-          =====================================================================================================
-        */
-        let cmd='';
-        cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
-            }
-        }
-        cmd+=')';
-        let obj2=this.__ig1.__rev1.rev_tm( cmd );
-        let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -187,13 +122,6 @@ class sources1{
             this.__ig1.maj_hash( mat , 0 );
         }
         this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    page_duplication1( mat , d , le_message_du_serveur ){
-        this.page_creer1( mat , d , le_message_du_serveur.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
     }
     /*

@@ -341,7 +341,9 @@ class __ig1{
                                                     const repl0=new RegExp( this.options_generales.repertoire_du_pgm_serveur , 'g' );
                                                     let le_message='pile erreur 1=\n' + e.stack.replace( repl0 , '' ).replace( /https\:\/\/deno/g , 'deno' ).replace( /file\:\/\/\/\//g , '' );
                                                     le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
-                                                    this.ma_trace1( le_message );
+                                                    if(this.options_generales.erreur_controlee === false){
+                                                        this.ma_trace1( le_message );
+                                                    }
                                                     if(this.options_generales.erreur_controlee === false){
                                                         this.donnees_retournees.__xsi[__xer].push( 'SERVEUR : <b>' + nom_du_fichier + '.' + nom_de_la_fonction_a_appeler + '()</b> n\'existe pas ou bien contient une erreur<br />' + this.nl2( e ) );
                                                     }else{
@@ -540,7 +542,9 @@ class __ig1{
             if(ret.__xst === __xsu){
                 return this.donnees_retournees;
             }else{
-                this.ma_trace1( '__deverminage evenement.data=' , evenement.data.substr( 0 , 400 ) + '\n ... ' );
+                if(this.options_generales.erreur_controlee === false){
+                    this.ma_trace1( '__deverminage evenement.data=' , evenement.data.substr( 0 , 400 ) + '\n ... ' );
+                }
                 return this.donnees_retournees;
             }
         }catch(e123456){
@@ -549,7 +553,9 @@ class __ig1{
                     await this.options_generales.bdd_ouvertes[ref_base].base.close();
                 } catch {}
             }
-            this.ma_trace1( 'erreur dans appel_fonction=' , e123456.stack );
+            if(this.options_generales.erreur_controlee === false){
+                this.ma_trace1( 'erreur dans appel_fonction=' , e123456.stack );
+            }
             return({"__xst" : __xer});
         }
     }
@@ -875,9 +881,14 @@ class __ig1{
         if(this.options_generales.erreur_controlee === true){
             le_message=e.message;
         }else{
-            le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
-            le_message=le_message.replace( /__programmes\// , '' );
-            le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+            let no_such_table='no such table';
+            if(e.stack.indexOf( no_such_table ) >= 0){
+                le_message=e.stack.substr( 0 , e.stack.indexOf( '\n' ) );
+            }else{
+                le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
+                le_message=le_message.replace( /__programmes\// , '' );
+                le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+            }
         }
         if(this.__deverminage === 0){
             if(this.options_generales.erreur_controlee === true){

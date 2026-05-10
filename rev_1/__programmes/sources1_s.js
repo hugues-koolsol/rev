@@ -1445,50 +1445,30 @@ class sources1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async tests_avant_creer( mat , d , form , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*

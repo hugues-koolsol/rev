@@ -247,7 +247,7 @@ class __ig1{
                     let re_source=this.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
                     this.ajoute_message( {
                             "__xst" : __xer ,
-                            "__xme" : 'erreur import du module <br><pre>' + re_source.__xva + '</pre><br />"' + nom_de_classe + '" ' + this.nl2( e )
+                            "__xme" : 'erreur import du module pour appel à ' + re_source.__xva + '<br />voir console pour numéro de ligne dans "' + nom_de_classe + '" ' + this.nl2( e )
                         } );
                 }
                 this.affiche_les_messages();
@@ -1969,6 +1969,15 @@ class __ig1{
         /* Un grand merci à https://rgx.tools/ */
         if(e_originale !== undefined){
             var stack=e.stack.toString().split( /\r\n|\n/ );
+            if(stack.length === 1){
+                let texte_erreur=stack[0].replace( /http:\/\// , '' );
+                texte_erreur=texte_erreur.replace( /https:\/\// , '' );
+                /* texte_erreur=texte_erreur.replace( /localhost/ , '' ); */
+                texte_erreur=texte_erreur.replace( /\/f0\?n0=/ , '-' ).replace( /\(:/ , '' );
+                texte_erreur=texte_erreur.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+                texte_erreur=texte_erreur.replace( /\&__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+                return texte_erreur;
+            }
             /* We want our caller's frame. It's index into |stack| depends on the */
             /* browser and browser version, so we need to search for the second frame: */
             var modele_champ_erreur=/:(\d+):(?:\d+)[^\d]*$/;
@@ -2027,6 +2036,8 @@ class __ig1{
             /* texte_erreur=texte_erreur.replace(/http:\/\//g,'').replace(/https:\/\//g,'').replace(/localhost:\d{4}/,'').replace(/\/f0\?n0=/,'') */
             texte_erreur=texte_erreur.replace( /http:\/\//g , '' ).replace( /https:\/\//g , '' );
             texte_erreur=texte_erreur.replace( /localhost/g , '' );
+            texte_erreur=texte_erreur.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+            texte_erreur=texte_erreur.replace( /\&__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
             var nom_fichier=texte_erreur.match( /\/([^\/:]+):/ )[1];
             nom_fichier=nom_fichier.replace( /f0\?n0=/ , '' );
             if(texte_erreur.match( / at ([^\.]+) \(/ ) === null){

@@ -146,18 +146,6 @@ CREATE TABLE `tbl_acces`(
             /*
             meta(
             genre_meta(champ),
-            nom_du_champ('chx_groupe_acces'),
-            nom_bref_du_champ('groupe'),abrege_du_champ('groupe'),
-            typologie(chx),
-            genre(4)
-            )
-            */
-             `chx_groupe_acces` INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
             nom_du_champ('chx_metier_acces'),
             nom_bref_du_champ('metier'),abrege_du_champ('metier'),
             typologie(chx),
@@ -165,6 +153,18 @@ CREATE TABLE `tbl_acces`(
             )
             */
              `chx_metier_acces` INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_groupe_acces'),
+            nom_bref_du_champ('groupe'),abrege_du_champ('groupe'),
+            typologie(chx),
+            genre(4)
+            )
+            */
+             `chx_groupe_acces` INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE
     ,
     
             /*

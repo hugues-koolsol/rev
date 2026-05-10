@@ -2130,13 +2130,32 @@ class _rev_de_sql_vers_js1{
                                 */
                                 var indice_du_champ=-1;
                                 var indice_de_la_variable=-1;
-                                var k=j + 1;
-                                for( k=j + 1 ; k < l01 ; k=tab[k][12] ){
+                                var on_affecte_une_constante=false;
+                                var valeur_de_la_constante='';
+                                for( let k=j + 1 ; k < l01 ; k=tab[k][12] ){
                                     if(tab[k][1] === 'champ' && tab[k][2] === 'f'){
+                                        /* si on met dans un champ le contenu d'un autre champ */
                                         indice_du_champ=k;
                                         nom_du_champ=tab[k + 1][1];
                                     }else if(tab[k][1].substr( 0 , 1 ) === ':' && tab[k][2] === 'c'){
+                                        /* si on met dans un champ le contenu d'une variable qui commence par un ":" */
                                         indice_de_la_variable=k;
+                                    }else if(tab[k][2] === 'c'){
+                                        /* si on met dans un champ une constante */
+                                        if(tab[k][4] === 0){
+                                            indice_de_la_variable=k;
+                                            on_affecte_une_constante=true;
+                                            valeur_de_la_constante=tab[k][1];
+                                        }else if(tab[k][4] === 1){
+                                            indice_de_la_variable=k;
+                                            on_affecte_une_constante=true;
+                                            valeur_de_la_constante='\'' + tab[k][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'';
+                                        }else{
+                                            /* voir dans quel car on peut ne pas affecter à un champ un autre champ ou une constante */
+                                            debugger;
+                                        }
+                                    }else{
+                                        debugger;
                                     }
                                 }
                                 if(indice_de_la_variable > 0 && indice_du_champ > 0){
@@ -2164,7 +2183,8 @@ class _rev_de_sql_vers_js1{
                                                 "nom_de_la_table" : nom_de_la_table ,
                                                 "nom_du_champ" : nom_du_champ ,
                                                 "indice_table" : 0 ,
-                                                "alias_du_champ" : alias_du_champ
+                                                "alias_du_champ" : alias_du_champ ,
+                                                "on_affecte_une_constante" : on_affecte_une_constante
                                             } );
                                     }
                                 }else{
@@ -2328,9 +2348,8 @@ class _rev_de_sql_vers_js1{
                                                                   base, table,champ
                                                                 */
                                                                 this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['meta'][tab[o][1]]=[tab[o + 1][1],tab[o + 2][1],tab[o + 3][1]];
-                                                             
                                                             }else{
-                                                                debugger
+                                                                debugger;
                                                                 console.log( '%c meta "' + tab[o][1] + '" champ "' + nom_du_champ + '" non pris en compte ' , 'background:green;color:white;' );
                                                             }
                                                         }
@@ -2404,7 +2423,7 @@ class _rev_de_sql_vers_js1{
             bases[indice_de_la_base]['selectionne']=false;
         }
         /*
-          this.traiter_donnees_bases_rev( bases );
+          
         */
         this.traiter_donnees_bases_rev( [] , 0 , bases );
         /* this.#enrichir_tableau_des_bases_tables_champs( bases ); */

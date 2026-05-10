@@ -31,7 +31,10 @@ class utilisateurs1{
                 chi_id_utilisateur=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        if(!(chi_id_utilisateur > 1 || this.__ig1.donnees_retournees._CA_ >= 3 && this.__ig1.donnees_retournees.chi_id_utilisateur === 2)){
+        if(!(chi_id_utilisateur > 1
+                   || this.__ig1.donnees_retournees._CA_ >= 3
+                       && this.__ig1.donnees_retournees.chi_id_utilisateur === 2)
+        ){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'vous ne pouvez pas modifier le mot de passe de cet utilisateur [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }

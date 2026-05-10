@@ -1479,12 +1479,12 @@ class sources1{
                     lst+='  <div class="rev_bouton yy__4" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(1)))))';
                     lst+='" >importer de 1</div>';
-                }else if( this.__ig1._CA_ === 1 && ( le_message_du_serveur.chi_id_projet === 2 || le_message_du_serveur.chi_id_projet === 3 ) ){
+                }else if(this.__ig1._CA_ === 1 && (le_message_du_serveur.chi_id_projet === 2 || le_message_du_serveur.chi_id_projet === 3)){
                     /*  */
                     lst+='  <div class="rev_bouton yy__4" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(1)))))';
                     lst+='" >importer de 1</div>';
-                }else if( this.__ig1._CA_ === 1 && le_message_du_serveur.chi_id_projet > 3){
+                }else if(this.__ig1._CA_ === 1 && le_message_du_serveur.chi_id_projet > 3){
                     /*  */
                     lst+='  <div class="rev_bouton yy__4" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(3)))))';
