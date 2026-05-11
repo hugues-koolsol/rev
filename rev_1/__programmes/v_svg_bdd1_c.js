@@ -171,7 +171,7 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    f1( mat , d , le_message_du_serveur=null ){
+    f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
             case 'compter_le_nombre_d_enregistrements' :
                 let aa=document.getElementById( 'vv_sous_fenetre1' );
@@ -3164,7 +3164,7 @@ class v_svg_bdd1{
     */
     /*
     */
-    creer_la_base_sur_disque_a_partir_du_shema( mat , d , le_message_du_serveur=null ){
+    creer_la_base_sur_disque_a_partir_du_shema( mat , d , le_colis1=null ){
         let id_bdd_de_la_base_en_cours=0;
         for( let i=0 ; i < mat.length ; i++ ){
             if((mat[i][1] === 'id_bdd_de_la_base_en_cours'
@@ -3914,7 +3914,7 @@ class v_svg_bdd1{
       =============================================================================================================
       retour serveur
     */
-    executer_sql3( mat , d , le_message_du_serveur ){
+    executer_sql3( mat , d , le_colis1 ){
         let contexte='';
         for( let i=d + 1 ; i < mat.length ; i++ ){
             if(mat[i][1] === 'contexte' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -5742,9 +5742,9 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    affiche_resultat_analyse_index( le_message_du_serveur ){
+    affiche_resultat_analyse_index( le_colis1 ){
         let t='<h1>résultat de l\'analyse d\'index</h1>';
-        let lmds=le_message_du_serveur.__xva;
+        let lmds=le_colis1.__xva;
         console.log( lmds );
         if(lmds.donnees0.length === 0){
             t='Aucun doublon';
@@ -5816,16 +5816,16 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    operation_table_dans_base( mat , d , le_message_du_serveur ){
-        if(le_message_du_serveur
-               && le_message_du_serveur.__xva.hasOwnProperty( 'operation_table' )
-               && le_message_du_serveur.__xva.operation_table === 'analyser_l_index'
+    operation_table_dans_base( mat , d , le_colis1 ){
+        if(le_colis1
+               && le_colis1.__xva.hasOwnProperty( 'operation_table' )
+               && le_colis1.__xva.operation_table === 'analyser_l_index'
         ){
             this.__ig1.fermer_la_sous_fenetre();
-            this.affiche_resultat_analyse_index( le_message_du_serveur );
+            this.affiche_resultat_analyse_index( le_colis1 );
             return({"__xst" : __xsu});
         }
-        if(le_message_du_serveur.__xst === __xsu){
+        if(le_colis1.__xst === __xsu){
             this.__ig1.fermer_la_sous_fenetre();
         }
         return({"__xst" : __xsu});
@@ -8849,7 +8849,7 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    editer_les_schemas2( mat , d , le_colis=null ){
+    editer_les_schemas2( mat , d , le_colis1=null ){
         let les_bases_a_editer='';
         let tab_les_bases_a_editer=[];
         let l01=mat.length;
@@ -8876,8 +8876,8 @@ class v_svg_bdd1{
         o1+='</div>';
         this.__ig1.maj_contenu_principal( o1 );
         document.getElementById( 'message_dans_le_svg' ).innerHTML='Veuillez patienter s\'il vous plaît !';
-        if(le_colis !== null){
-            let ret1=this.integrer_les_revs_des_bases( mat , d , le_colis );
+        if(le_colis1 !== null){
+            let ret1=this.integrer_les_revs_des_bases( mat , d , le_colis1 );
             if(ret1.__xst !== __xsu){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
                 return({"__xst" : __xer});
@@ -8911,32 +8911,32 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    integrer_les_revs_des_bases( mat , d , le_colis ){
+    integrer_les_revs_des_bases( mat , d , le_colis1 ){
         console.log( 'integrer_les_revs_des_bases' );
-        this.les_bases_du_projet=le_colis.__xva.les_bases_du_projet;
+        this.les_bases_du_projet=le_colis1.__xva.les_bases_du_projet;
         /* this.#arbre={}; */
-        for(let i in le_colis.__xva.les_bases_du_projet){
+        for(let i in le_colis1.__xva.les_bases_du_projet){
             /* obj */
-            this.#arbre[le_colis.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]={
+            this.#arbre[le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]={
                  /*  */
-                "chp_rev_travail_basedd" : le_colis.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] ,
+                "chp_rev_travail_basedd" : le_colis1.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] ,
                 "arbre_svg" : []
             };
-            if(le_colis.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === ''
-                   || le_colis.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === null
+            if(le_colis1.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === ''
+                   || le_colis1.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === null
             ){
                 /*
                   // this.__ig1.ajoute_message( {"__xst" : __xif ,"__xme" : this.__ig1.nl2() + 'le champ chp_rev_travail_basedd est vide'} ); 
                   this.__ig1.ajoute_message( {
                   "__xst" : __xer ,
-                  "__xme" : '<b>Pour la base ' + le_colis.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</b>, le champ chp_rev_travail_basedd est vide<br />' + this.__ig1.nl2()
+                  "__xme" : '<b>Pour la base ' + le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</b>, le champ chp_rev_travail_basedd est vide<br />' + this.__ig1.nl2()
                   } );
                   return({"__xst" : __xer});
                 */
             }else{
-                var obj1=this.__ig1.__rev1.rev_tm( le_colis.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] );
+                var obj1=this.__ig1.__rev1.rev_tm( le_colis1.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] );
                 if(obj1.__xst === __xsu){
-                    this.#arbre[le_colis.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]['matrice']=obj1.__xva;
+                    this.#arbre[le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]['matrice']=obj1.__xva;
                 }else{
                     this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
                     /* this.__ig1.remplis_les_messages_et_affiche( '' ); */

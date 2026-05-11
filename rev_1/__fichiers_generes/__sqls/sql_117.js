@@ -26,12 +26,12 @@ class sql_117{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chx_dossier_id_source" */
                 if(elem['chx_dossier_id_source'] === null || elem['chx_dossier_id_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "dossier id" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "dossier id" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "chp_nom_source" */
                 if(elem['chp_nom_source'] === null || elem['chp_nom_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du source" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /*
@@ -45,7 +45,7 @@ class sql_117{
 
                 /* test "non nul" sur le champ "che_binaire_source" */
                 if(elem['che_binaire_source'] === null || elem['che_binaire_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "binaire" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 if(liste_des_valeurs != ''){

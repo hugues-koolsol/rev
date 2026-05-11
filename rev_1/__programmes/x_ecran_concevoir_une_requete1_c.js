@@ -1967,11 +1967,11 @@ class x_ecran_concevoir_une_requete1{
     /*
       =============================================================================================================
     */
-    compiler_en_ligne( mat , d , le_message_du_serveur=null ){
+    compiler_en_ligne( mat , d , le_colis1=null ){
         /*
-          this.traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_message_du_serveur );
+          this.traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_colis1 );
         */
-        let obj=this._rev_de_sql_vers_js1.traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_message_du_serveur );
+        let obj=this._rev_de_sql_vers_js1.traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_colis1 );
         this.#globale_id_requete=obj.__xva.a_retourner.globale_id_requete;
         this.#globale_rev_requete=obj.__xva.a_retourner.globale_rev_requete;
         this.#globale_type_requete=obj.__xva.a_retourner.globale_type_requete;
@@ -1989,28 +1989,24 @@ class x_ecran_concevoir_une_requete1{
         /*  */
         /* console.log( '=========================compiler_en_ligne=' , this.#obj_webs ); */
         let donnees_recues_a_transmettre={
-            "__xva" : {
-                "les_bases_du_projet" : le_message_du_serveur.__xva.les_bases_du_projet ,
-                "chi_id_requete" : chi_id_requete ,
-                "requete" : le_message_du_serveur.__xva.requete
-            }
+            "__xva" : {"les_bases_du_projet" : le_colis1.__xva.les_bases_du_projet ,"chi_id_requete" : chi_id_requete ,"requete" : le_colis1.__xva.requete}
         };
         let obj0=this._rev_de_sql_vers_js1.compiler_requete_vers_js1( [] , 0 , donnees_recues_a_transmettre );
         if(obj0.__xst !== __xsu){
             donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        let obj1=this.transform_source_rev_vers_sql( le_message_du_serveur.__xva.requete['T0.cht_rev_requete'] , chi_id_requete );
+        let obj1=this.transform_source_rev_vers_sql( le_colis1.__xva.requete['T0.cht_rev_requete'] , chi_id_requete );
         return obj1;
     }
     /*
       =============================================================================================================
     */
-    charger_la_requete( mat , d , le_message_du_serveur=null ){
+    charger_la_requete( mat , d , le_colis1=null ){
         /*
-          this.traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_message_du_serveur );
+          this.traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_colis1 );
         */
-        let obj=this._rev_de_sql_vers_js1.traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_message_du_serveur );
+        let obj=this._rev_de_sql_vers_js1.traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_colis1 );
         this.#globale_id_requete=obj.__xva.a_retourner.globale_id_requete;
         this.#globale_rev_requete=obj.__xva.a_retourner.globale_rev_requete;
         this.#globale_type_requete=obj.__xva.a_retourner.globale_type_requete;
@@ -2024,7 +2020,7 @@ class x_ecran_concevoir_une_requete1{
     /*
       =============================================================================================================
     */
-    page_requete1( mat , d , le_message_du_serveur=null ){
+    page_requete1( mat , d , le_colis1=null ){
         let chi_id_requete=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){

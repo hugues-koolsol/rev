@@ -125,7 +125,7 @@ class __fnts_c_et_s{
     */
     test_du_nom_de_fichier1( valeur , nom_champ ){
         if(valeur === null || valeur === ''){
-            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseigné (' + this.__cote_c_ou_s + ')'} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseignée (' + this.__cote_c_ou_s + ')'} ));
         }
         let mes_err='erreur sur le champ "' + nom_champ + '" , ce caractère n\est pas admis : ';
         for( let i=0 ; i < valeur.length ; i++ ){
@@ -141,7 +141,7 @@ class __fnts_c_et_s{
     */
     test_du_nom_technique1( valeur , nom_champ ){
         if(valeur === null || valeur === ''){
-            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseigné'} ));
+            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseignée'} ));
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
             return({"__xst" : __xer});
         }

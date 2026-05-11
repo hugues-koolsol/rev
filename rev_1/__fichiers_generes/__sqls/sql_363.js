@@ -22,7 +22,7 @@ class sql_363{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_fournisseur_basedd" */
                 if(elem['chp_fournisseur_basedd'] === null || elem['chp_fournisseur_basedd']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "fournisseur" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 if(liste_des_valeurs != ''){

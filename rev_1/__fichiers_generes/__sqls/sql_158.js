@@ -12,7 +12,7 @@ class sql_158{
     async sql( par ){
         /* test "non nul" sur le champ "chp_priorite_tache" */
         if(par['n_chp_priorite_tache'] === null || par['n_chp_priorite_tache'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite de la tâche" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite de la tâche" doit être renseignée [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*

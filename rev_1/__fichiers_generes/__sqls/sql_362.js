@@ -12,7 +12,7 @@ class sql_362{
     async sql( par ){
         /* test "non nul" sur le champ "chp_fournisseur_basedd" */
         if(par['n_chp_fournisseur_basedd'] === null || par['n_chp_fournisseur_basedd'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "fournisseur" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let sql0='UPDATE `tbl_bdds` SET \r\n';

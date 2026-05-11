@@ -25,7 +25,7 @@ class sql_307{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chi_id_dossier" */
                 if(elem['chi_id_dossier'] === null || elem['chi_id_dossier']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "id" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /*
@@ -39,7 +39,7 @@ class sql_307{
 
                 /* test "non nul" sur le champ "chx_parent_dossier" */
                 if(elem['chx_parent_dossier'] === null || elem['chx_parent_dossier']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "parent" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /*

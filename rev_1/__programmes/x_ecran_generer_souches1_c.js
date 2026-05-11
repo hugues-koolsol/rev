@@ -174,10 +174,10 @@ class x_ecran_generer_souches1{
     /*
       =============================================================================================================
     */
-    charger_les_requetes_souches( mat , d , le_message_du_serveur=null ){
-        if(le_message_du_serveur && le_message_du_serveur.__xst === __xsu){
-            for(let req in le_message_du_serveur.__xva.requetes){
-                let elt=le_message_du_serveur.__xva.requetes[req];
+    charger_les_requetes_souches( mat , d , le_colis1=null ){
+        if(le_colis1 && le_colis1.__xst === __xsu){
+            for(let req in le_colis1.__xva.requetes){
+                let elt=le_colis1.__xva.requetes[req];
                 /*  */
                 this.#a_construire[elt['T0.chp_type_requete']]={"id" : parseInt( elt['T0.chi_id_requete'] , 10 ) ,"type" : elt['T0.chp_type_requete']};
             }
@@ -246,7 +246,7 @@ class x_ecran_generer_souches1{
     /*
       =============================================================================================================
     */
-    charger_base1( chi_id_basedd , nom_de_la_table , le_message_du_serveur=null ){
+    charger_base1( chi_id_basedd , nom_de_la_table , le_colis1=null ){
         let o1='';
         this.#mat=this.#arbre[chi_id_basedd];
         this.enrichir_objet_base( this.#mat.matrice );
@@ -326,7 +326,7 @@ class x_ecran_generer_souches1{
     /*
       =============================================================================================================
     */
-    recuperer_zone_travail_pour_les_bases2( mat , d , le_message_du_serveur=null ){
+    recuperer_zone_travail_pour_les_bases2( mat , d , le_colis1=null ){
         let chi_id_basedd=0;
         let nom_de_la_table='';
         let l01=mat.length;
@@ -346,29 +346,29 @@ class x_ecran_generer_souches1{
         o1+='m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases))))';
         o1+='">';
         o1+='<option  value="0" ' + (0 === chi_id_basedd ? ( ' selected ' ) : ( '' )) + '>sélectionnez une base </option>';
-        for(let i in le_message_du_serveur.__xva.les_bases_du_projet){
-            if(le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === null){
+        for(let i in le_colis1.__xva.les_bases_du_projet){
+            if(le_colis1.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === null){
             }else{
                 o1+='<option ';
-                o1+=' value="' + le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '" ';
+                o1+=' value="' + le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '" ';
                 o1+=' id="option_base_"';
-                o1+=le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'];
+                o1+=le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'];
                 o1+='"';
-                if(le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] === chi_id_basedd){
+                if(le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] === chi_id_basedd){
                     o1+=' selected ';
                 }
-                o1+='>' + le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</option>';
-                this.#arbre[le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]={"matrice" : null ,"tables" : []};
-                var obj1=this.__ig1.__rev1.rev_tm( le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] );
+                o1+='>' + le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</option>';
+                this.#arbre[le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]={"matrice" : null ,"tables" : []};
+                var obj1=this.__ig1.__rev1.rev_tm( le_colis1.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] );
                 if(obj1.__xst === __xsu){
-                    this.#arbre[le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']].matrice=obj1.__xva;
+                    this.#arbre[le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']].matrice=obj1.__xva;
                     let mat2=obj1.__xva;
                     let l02=mat2.length;
                     for( let j=1 ; j < l02 ; j=mat2[j][12] ){
                         if(mat2[j][1] === 'créer_table'){
                             for( let k=j + 1 ; k < l02 ; k=mat2[k][12] ){
                                 if(mat2[k][1] === 'nom_de_la_table' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                                    this.#arbre[le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']].tables.push( mat2[k + 1][1] );
+                                    this.#arbre[le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']].tables.push( mat2[k + 1][1] );
                                 }
                             }
                         }

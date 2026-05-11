@@ -56,24 +56,24 @@ class projets1{
     /*
       =============================================================================================================
     */
-    initialiser_le_clone( mat , d , le_message_du_serveur ){
-        this.__ig1.maj_menu( mat , d , le_message_du_serveur );
+    initialiser_le_clone( mat , d , le_colis1 ){
+        this.__ig1.maj_menu( mat , d , le_colis1 );
         this.entree_module( null , null );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    activer1( mat , d , le_message_du_serveur ){
+    activer1( mat , d , le_colis1 ){
         this.chi_id_projet=0;
-        if(le_message_du_serveur.__xst === __xsu){
-            this.chi_id_projet=le_message_du_serveur.chi_id_projet;
-            this.__ig1.executer1( 'm1(n1(__ig1),f1(maj_menu()))' , le_message_du_serveur );
+        if(le_colis1.__xst === __xsu){
+            this.chi_id_projet=le_colis1.chi_id_projet;
+            this.__ig1.executer1( 'm1(n1(__ig1),f1(maj_menu()))' , le_colis1 );
         }
         try{
-            let tt=le_message_du_serveur.__xva.chp_nom_de_connexion_utilisateur;
-            if(le_message_du_serveur.chi_id_projet > 0){
-                tt+=' ' + le_message_du_serveur.chi_id_projet;
+            let tt=le_colis1.__xva.chp_nom_de_connexion_utilisateur;
+            if(le_colis1.chi_id_projet > 0){
+                tt+=' ' + le_colis1.chi_id_projet;
             }
             document.getElementById( 'vv_bouton_connexion' ).title=tt;
         } catch {}
@@ -81,10 +81,10 @@ class projets1{
         if(aa){
             let tt='';
             tt+='<div class="yy_texte_clair_fond_fonce" style="margin:auto;" title="';
-            if(le_message_du_serveur._CA_ === 1){
-                tt+='projet ' + le_message_du_serveur.chi_id_projet + '" >p' + le_message_du_serveur.chi_id_projet + '/' + le_message_du_serveur.chp_nom_de_connexion_utilisateur.substr( 0 , 4 );
+            if(le_colis1._CA_ === 1){
+                tt+='projet ' + le_colis1.chi_id_projet + '" >p' + le_colis1.chi_id_projet + '/' + le_colis1.chp_nom_de_connexion_utilisateur.substr( 0 , 4 );
             }else{
-                tt+='utilisateur ' + le_message_du_serveur.chi_id_utilisateur + '" >' + le_message_du_serveur.chp_nom_de_connexion_utilisateur.substr( 0 , 4 );
+                tt+='utilisateur ' + le_colis1.chi_id_utilisateur + '" >' + le_colis1.chp_nom_de_connexion_utilisateur.substr( 0 , 4 );
             }
             tt+='</div>';
             try{
@@ -92,7 +92,7 @@ class projets1{
             }catch(e){
                 console.log( e );
             }
-            this.__ig1.maj_fav_icone( le_message_du_serveur._CA_ , le_message_du_serveur.chi_id_projet );
+            this.__ig1.maj_fav_icone( le_colis1._CA_ , le_colis1.chi_id_projet );
         }
         this.entree_module( null , null );
         return({"__xst" : __xsu});
@@ -100,21 +100,21 @@ class projets1{
     /*
       =============================================================================================================
     */
-    desactiver1( mat , d , le_message_du_serveur ){
+    desactiver1( mat , d , le_colis1 ){
         this.chi_id_projet=0;
-        this.__ig1.executer1( 'm1(n1(__ig1),f1(maj_menu()))' , le_message_du_serveur );
+        this.__ig1.executer1( 'm1(n1(__ig1),f1(maj_menu()))' , le_colis1 );
         try{
-            let tt=le_message_du_serveur.__xva.chp_nom_de_connexion_utilisateur;
+            let tt=le_colis1.__xva.chp_nom_de_connexion_utilisateur;
             document.getElementById( 'vv_bouton_connexion' ).title=tt;
         } catch {}
         this.entree_module( null , null );
-        this.__ig1.maj_fav_icone( le_message_du_serveur._CA_ , 0 );
+        this.__ig1.maj_fav_icone( le_colis1._CA_ , 0 );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    f1( mat , d , le_message_du_serveur=null ){
+    f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
             case 'vacuum_et_checkpoint' : 
             case 'creer_le_repertoire_racine' : 
@@ -130,7 +130,7 @@ class projets1{
     /*
       =============================================================================================================
     */
-    modifier1( mat , d , le_message_du_serveur=null ){
+    modifier1( mat , d , le_colis1=null ){
         return({"__xst" : __xsu});
     }
     /*
@@ -147,7 +147,7 @@ class projets1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chp_nom_projet'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "nom" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "nom" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -168,11 +168,11 @@ class projets1{
     /*
       =============================================================================================================
     */
-    page_modification1( mat , d , le_message_du_serveur=null ){
-        if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_modification1' )){
+    page_modification1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_modification1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];
+        let enreg=le_colis1.__xva.page_modification1.__xva[0];
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_projet'] , this.moi , 'chi_id_projet' );
         let o1='';
         /*
@@ -253,11 +253,11 @@ class projets1{
     /*
       =============================================================================================================
     */
-    page_confirmation_supprimer1( mat , d , le_message_du_serveur=null ){
-        if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
+    page_confirmation_supprimer1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];
+        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_projet'] , this.moi , 'chi_id_projet' );
         let o1='';
         /*
@@ -320,7 +320,7 @@ class projets1{
             }
         }
         if(fo1['chp_nom_projet'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "nom" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "nom" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -339,7 +339,7 @@ class projets1{
     /*
       =============================================================================================================
     */
-    page_creer1( mat , d , le_message_du_serveur ){
+    page_creer1( mat , d , le_colis1 ){
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_projet' );
         let o1='';
         /*
@@ -352,7 +352,7 @@ class projets1{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <textarea id="chp_nom_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+='Nouveau projet ' + le_message_du_serveur.__xva.nouveau_numero_projet;
+        o1+='Nouveau projet ' + le_colis1.__xva.nouveau_numero_projet;
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -393,15 +393,15 @@ class projets1{
     /*
       =============================================================================================================
     */
-    filtre1( mat , d , le_message_du_serveur=null ){
+    filtre1( mat , d , le_colis1=null ){
         let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
         if(a === null){
-            return(this[this.fonction_liste]( mat , d , le_message_du_serveur ));
+            return(this[this.fonction_liste]( mat , d , le_colis1 ));
         }
-        let tt=this.zones_liste1( le_message_du_serveur );
+        let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
         debugger;
-        this.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant );
+        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
@@ -423,7 +423,7 @@ class projets1{
     /*
       =============================================================================================================
     */
-    zones_filtres1( mat , d , le_message_du_serveur ){
+    zones_filtres1( mat , d , le_colis1 ){
         let l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -446,10 +446,10 @@ class projets1{
         }
         let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
         sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
-        if(le_message_du_serveur.__xva.hasOwnProperty( '__fo1' )
-               && le_message_du_serveur.__xva.__fo1 !== null
-               && le_message_du_serveur.__xva.__fo1.hasOwnProperty( 'origine' )
-               && le_message_du_serveur.__xva.__fo1.origine === 'aller_a_la_page'
+        if(le_colis1.__xva.hasOwnProperty( '__fo1' )
+               && le_colis1.__xva.__fo1 !== null
+               && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
+               && le_colis1.__xva.__fo1.origine === 'aller_a_la_page'
         ){
             document.getElementById( '__num_page' ).value=__num_page;
             return;
@@ -525,16 +525,16 @@ class projets1{
     /*
       =============================================================================================================
     */
-    supprimer1( mat , d , le_message_du_serveur ){
+    supprimer1( mat , d , le_colis1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    creer1( mat , d , le_message_du_serveur ){
+    creer1( mat , d , le_colis1 ){
         /* redirection vers modification */
-        if(le_message_du_serveur && le_message_du_serveur.__xva.hasOwnProperty( 'page_modification1' )){
-            this.page_modification1( mat , d , le_message_du_serveur );
+        if(le_colis1 && le_colis1.__xva.hasOwnProperty( 'page_modification1' )){
+            this.page_modification1( mat , d , le_colis1 );
         }
         return({"__xst" : __xsu});
     }
@@ -547,19 +547,19 @@ class projets1{
     /*
       =============================================================================================================
     */
-    sous_liste1( mat , d , le_message_du_serveur=null ){
+    sous_liste1( mat , d , le_colis1=null ){
         this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this , 'chi_id_projet' ));
+        return(this.__ig1.sous_liste_generique1( mat , d , le_colis1 , this , 'chi_id_projet' ));
     }
     /*
       =============================================================================================================
     */
-    liste1( mat , d , le_message_du_serveur=null ){
-        if(le_message_du_serveur == null || !le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
-            if(le_message_du_serveur == null){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le_message_du_serveur est null' + this.__ig1.nl2()} );
+    liste1( mat , d , le_colis1=null ){
+        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+            if(le_colis1 == null){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le_colis1 est null' + this.__ig1.nl2()} );
             }else{
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'pas de ' + this.fonction_liste + ' dans le_message_du_serveur' + this.__ig1.nl2()} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'pas de ' + this.fonction_liste + ' dans le_colis1' + this.__ig1.nl2()} );
             }
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -582,9 +582,9 @@ class projets1{
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
-        this.zones_filtres1( mat , d , le_message_du_serveur );
-        this.__ig1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_message_du_serveur );
+        this.zones_filtres1( mat , d , le_colis1 );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
@@ -600,12 +600,12 @@ class projets1{
     /*
       =============================================================================================================
     */
-    zones_sous_liste1( le_message_du_serveur ){
+    zones_sous_liste1( le_colis1 ){
         let o1='';
-        if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             let lst='';
-            for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){
-                let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
+                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
@@ -668,22 +668,22 @@ class projets1{
     /*
       =============================================================================================================
     */
-    zones_liste1( le_message_du_serveur ){
+    zones_liste1( le_colis1 ){
         let o1='';
-        if(le_message_du_serveur.chi_id_projet === 1 && le_message_du_serveur.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
+        if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
             document.getElementById( 'vv_nouveau_projet' ).style.visibility='visible';
         }else{
             document.getElementById( 'vv_nouveau_projet' ).style.visibility='hidden';
         }
-        if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             /*
               projet courant
             */
-            this.chi_id_projet=le_message_du_serveur.chi_id_projet;
+            this.chi_id_projet=le_colis1.chi_id_projet;
             /*  */
             let lst='';
-            for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){
-                let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
+                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
                 lst+='<tr>';
                 lst+='<td style="min-width:15em;">';
                 lst+='<div style="display:inline-flex;">';
@@ -724,34 +724,34 @@ class projets1{
                     lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</div>';
                 }else{
                     /* seul le dev principal peut supprimer un projet */
-                    if(le_message_du_serveur.chi_id_projet === 1 && le_message_du_serveur.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
+                    if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
                         lst+='<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
                     }else{
                         lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</div>';
                     }
                 }
                 if(elem['T0.chi_id_projet'] === 1
-                       && le_message_du_serveur.chi_id_projet === 1
-                       && le_message_du_serveur.chi_id_utilisateur === 1
+                       && le_colis1.chi_id_projet === 1
+                       && le_colis1.chi_id_utilisateur === 1
                        && this.__ig1._CA_ === 1
                 ){
                     lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >initprojet 2</div>';
                 }
-                if(elem['T0.chi_id_projet'] === 2 && le_message_du_serveur.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
+                if(elem['T0.chi_id_projet'] === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
                     lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
                 }
                 /* supprimer */
-                if(elem['T0.chi_id_projet'] < 3 || elem['T0.chi_id_projet'] !== le_message_du_serveur.chi_id_projet){
+                if(elem['T0.chi_id_projet'] < 3 || elem['T0.chi_id_projet'] !== le_colis1.chi_id_projet){
                     lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.disquette + '</div>';
                 }else{
                     lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(sauvegarder_la_base_systeme(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="sauvegarder la base systeme">' + this.__ig1.les_svg.disquette + '</div>';
                 }
-                if(elem['T0.chi_id_projet'] >= 3 || elem['T0.chi_id_projet'] === le_message_du_serveur.chi_id_projet){
+                if(elem['T0.chi_id_projet'] >= 3 || elem['T0.chi_id_projet'] === le_colis1.chi_id_projet){
                     lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_repertoire_racine(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="creer le repertoire racine">' + this.__ig1.les_svg.dossier + '</div>';
                 }else{
                     lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.dossier + '</div>';
                 }
-                if(elem['T0.chi_id_projet'] >= 3 && elem['T0.chi_id_projet'] === le_message_du_serveur.chi_id_projet){
+                if(elem['T0.chi_id_projet'] >= 3 && elem['T0.chi_id_projet'] === le_colis1.chi_id_projet){
                     lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>';
                 }
                 lst+='</div>';

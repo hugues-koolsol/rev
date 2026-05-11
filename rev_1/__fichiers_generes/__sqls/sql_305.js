@@ -12,7 +12,7 @@ class sql_305{
     async sql( par ){
         /* test "non nul" sur le champ "chp_nom_projet" */
         if(par['n_chp_nom_projet'] === null || par['n_chp_nom_projet'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom du projet" doit être renseignée [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let sql0='UPDATE `tbl_projets` SET \r\n';

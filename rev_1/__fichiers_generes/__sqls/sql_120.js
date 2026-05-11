@@ -23,17 +23,17 @@ class sql_120{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
                 if(elem['chp_nom_de_connexion_utilisateur'] === null || elem['chp_nom_de_connexion_utilisateur']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom de connexion de l\'utilisateur" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "chx_acces_utilisateur" */
                 if(elem['chx_acces_utilisateur'] === null || elem['chx_acces_utilisateur']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "acces" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "che_actif_utilisateur" */
                 if(elem['che_actif_utilisateur'] === null || elem['che_actif_utilisateur']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "actif" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 if(liste_des_valeurs != ''){

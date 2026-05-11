@@ -22,7 +22,7 @@ class sql_377{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_projet" */
                 if(elem['chp_nom_projet'] === null || elem['chp_nom_projet']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du projet" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du projet" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 if(liste_des_valeurs != ''){

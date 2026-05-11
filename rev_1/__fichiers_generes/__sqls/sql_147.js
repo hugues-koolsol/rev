@@ -27,22 +27,22 @@ class sql_147{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_titre_menu" */
                 if(elem['chp_titre_menu'] === null || elem['chp_titre_menu']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "titre" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "titre" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "chx_autorisation_menu" */
                 if(elem['chx_autorisation_menu'] === null || elem['chx_autorisation_menu']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "autorisation" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "autorisation" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "chp_methode_menu" */
                 if(elem['chp_methode_menu'] === null || elem['chp_methode_menu']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "methode" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "methode" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "cht_libelle_menu" */
                 if(elem['cht_libelle_menu'] === null || elem['cht_libelle_menu']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "libelle" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "libelle" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 if(liste_des_valeurs != ''){

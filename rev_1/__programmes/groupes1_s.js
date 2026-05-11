@@ -534,6 +534,19 @@ class groupes1{
     /*
       =============================================================================================================
     */
+    async sous_liste2( mat , d ){
+        const __nbMax=40;
+        let criteres_130={}
+        criteres_130['quantitee']=__nbMax;
+        criteres_130['groupe_mini']=0;
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            criteres_130['groupe_mini']=3;
+        }
+        return(await this.__ig1.generique_sous_liste2(mat , d , 130 , criteres_130 , __nbMax ));
+    }
+    /*
+      =============================================================================================================
+    */
     async liste1( mat , d ){
         this.fonction_liste='liste1';
         await this.filtre1( mat , d );

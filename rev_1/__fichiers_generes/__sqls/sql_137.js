@@ -23,17 +23,17 @@ class sql_137{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_acces" */
                 if(elem['chp_nom_acces'] === null || elem['chp_nom_acces']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "chx_groupe_acces" */
                 if(elem['chx_groupe_acces'] === null || elem['chx_groupe_acces']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "groupe" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "groupe" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "chx_metier_acces" */
                 if(elem['chx_metier_acces'] === null || elem['chx_metier_acces']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "metier" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "metier" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 if(liste_des_valeurs != ''){

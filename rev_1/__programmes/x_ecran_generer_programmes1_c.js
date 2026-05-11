@@ -1077,7 +1077,7 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    f1(mat,d,le_message_du_serveur=null){\r\n';
+        src_client2+='    f1( mat , d , le_colis1=null ){\r\n';
         src_client2+='        switch(mat[d][1]){\r\n';
         src_client2+='         case \'xxxxx\':\r\n';
         src_client2+='             /*';
@@ -1137,7 +1137,7 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    modifier1(mat , d , le_message_du_serveur=null){\r\n';
+        src_client2+='    modifier1(mat , d , le_colis1=null){\r\n';
         src_client2+='        return({__xst:__xsu});\r\n';
         src_client2+='    }\r\n';
         src_client2+='\r\n';
@@ -1188,7 +1188,7 @@ class x_ecran_generer_programmes1{
                 /* if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1 || obj_champ.hasOwnProperty('non_nulle') && obj_champ.non_nulle===true ){ */
                 if(obj_champ.non_nulle === true){
                     src_client2+='        if(fo1[\'' + nom_du_champ + '\']===\'\'){\r\n';
-                    src_client2+='            this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné\'  });\r\n';
+                    src_client2+='            this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseignée\'  });\r\n';
                     src_client2+='            this.__ig1.affiche_les_messages();\r\n';
                     src_client2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
                     src_client2+='            try{\r\n';
@@ -1219,7 +1219,7 @@ class x_ecran_generer_programmes1{
                         src_client2+='        if(fo1[\'' + nom_du_champ + '\'] !== \'\'){\r\n';
                         src_client2+='            let tab_est_parmis_' + i + '=\'' + obj_champ.genre_objet_du_champ.cht_parmis_genre.replace( /\'/g , '\\\'' ) + '\'.split(\',\');\r\n';
                         src_client2+='            if(!tab_est_parmis_' + i + '.includes(fo1[\'' + nom_du_champ + '\'])){\r\n';
-                        src_client2+='                this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être correctement renseigné (utilisez les boutons)\'  });\r\n';
+                        src_client2+='                this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être correctement renseignée (utilisez les boutons)\'  });\r\n';
                         src_client2+='                this.__ig1.affiche_les_messages();\r\n';
                         src_client2+='                this.__ig1.retablir_les_boutons_masques();\r\n';
                         src_client2+='                try{\r\n';
@@ -1522,11 +1522,11 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    page_modification1( mat , d , le_message_du_serveur=null ){\r\n';
-        src_client2+='        if(!le_message_du_serveur.__xva.hasOwnProperty( \'page_modification1\' )){\r\n';
+        src_client2+='    page_modification1( mat , d , le_colis1=null ){\r\n';
+        src_client2+='        if(!le_colis1.__xva.hasOwnProperty( \'page_modification1\' )){\r\n';
         src_client2+='            return( this.__ig1.affiche_les_messages({"__xst" : __xer ,"__xme" : \'cet élément n\\\'a pas été trouvé\'}) );\r\n';
         src_client2+='        }\r\n';
-        src_client2+='        let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];\r\n';
+        src_client2+='        let enreg=le_colis1.__xva.page_modification1.__xva[0];\r\n';
         src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_modification\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi , \'' + champ_primaire + '\' );\r\n';
         src_client2+='        let o1=\'\';\r\n';
         for( let i=0 ; i < liste_des_champs_visualisation_update.length ; i++ ){
@@ -1845,11 +1845,11 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    page_confirmation_supprimer1(mat , d , le_message_du_serveur=null){\r\n';
-        src_client2+='        if( !le_message_du_serveur.__xva.hasOwnProperty( \'page_confirmation_supprimer1\' )){\r\n';
+        src_client2+='    page_confirmation_supprimer1(mat , d , le_colis1=null){\r\n';
+        src_client2+='        if( !le_colis1.__xva.hasOwnProperty( \'page_confirmation_supprimer1\' )){\r\n';
         src_client2+='            return( this.__ig1.affiche_les_messages({"__xst" : __xer ,"__xme" : \'cet élément n\\\'a pas été trouvé\'}) );\r\n';
         src_client2+='        }\r\n';
-        src_client2+='        let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];\r\n';
+        src_client2+='        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];\r\n';
         src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_suppression\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi , \'' + champ_primaire + '\' );\r\n';
         src_client2+='        let o1=\'\';\r\n';
         for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
@@ -2012,11 +2012,11 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    page_voir1(mat , d , le_message_du_serveur=null){\r\n';
-        src_client2+='        if( !le_message_du_serveur.__xva.hasOwnProperty( \'page_voir1\' )){\r\n';
+        src_client2+='    page_voir1(mat , d , le_colis1=null){\r\n';
+        src_client2+='        if( !le_colis1.__xva.hasOwnProperty( \'page_voir1\' )){\r\n';
         src_client2+='            return( this.__ig1.affiche_les_messages({"__xst" : __xer ,"__xme" : \'cet élément n\\\'a pas été trouvé\'}) );\r\n';
         src_client2+='        }\r\n';
-        src_client2+='        let enreg=le_message_du_serveur.__xva.page_voir1.__xva[0];\r\n';
+        src_client2+='        let enreg=le_colis1.__xva.page_voir1.__xva[0];\r\n';
         src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_visualisation\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi , \'' + champ_primaire + '\' );\r\n';
         src_client2+='        let o1=\'\';\r\n';
         for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
@@ -2466,8 +2466,8 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    page_duplication1( mat , d , le_message_du_serveur ){\r\n';
-        src_client2+='        this.page_creer1( mat , d , le_message_du_serveur.__xva.page_duplication1.__xva[0]);\r\n';
+        src_client2+='    page_duplication1( mat , d , le_colis1 ){\r\n';
+        src_client2+='        this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0]);\r\n';
         src_client2+='        return({"__xst" : __xsu});\r\n';
         src_client2+='    }\r\n';
         src_client2+='\r\n';
@@ -2505,7 +2505,7 @@ class x_ecran_generer_programmes1{
                        && obj_champ.meta.est_utilisateur_autre_que_courant === 1
                 ){
                     src_client2+='        if(fo1[\'' + nom_du_champ + '\']===\'\'){\r\n';
-                    src_client2+='            this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné\'  });\r\n';
+                    src_client2+='            this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseignée\'  });\r\n';
                     src_client2+='            this.__ig1.affiche_les_messages();\r\n';
                     src_client2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
                     src_client2+='            try{\r\n';
@@ -2538,7 +2538,7 @@ class x_ecran_generer_programmes1{
                 if(obj_champ.genre_objet_du_champ){
                     if(obj_champ.non_nulle === true){
                         src_client2+='        if(fo1[\'' + nom_du_champ + '\']===\'\'){\r\n';
-                        src_client2+='            this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseigné\'  });\r\n';
+                        src_client2+='            this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseignée\'  });\r\n';
                         src_client2+='            this.__ig1.affiche_les_messages();\r\n';
                         src_client2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
                         src_client2+='            try{\r\n';
@@ -2554,7 +2554,7 @@ class x_ecran_generer_programmes1{
                             src_client2+='        if(fo1[\'' + nom_du_champ + '\'] !== \'\'){\r\n';
                             src_client2+='            let tab_est_parmis_' + i + '=\'' + obj_champ.genre_objet_du_champ.cht_parmis_genre.replace( /\'/g , '\\\'' ) + '\'.split(\',\');\r\n';
                             src_client2+='            if(!tab_est_parmis_' + i + '.includes(fo1[\'' + nom_du_champ + '\'])){\r\n';
-                            src_client2+='                this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être correctement renseigné (utilisez les boutons)\'  });\r\n';
+                            src_client2+='                this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être correctement renseignée (utilisez les boutons)\'  });\r\n';
                             src_client2+='                this.__ig1.affiche_les_messages();\r\n';
                             src_client2+='                this.__ig1.retablir_les_boutons_masques();\r\n';
                             src_client2+='                try{\r\n';
@@ -3444,14 +3444,14 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    filtre1( mat , d , le_message_du_serveur=null ){\r\n';
+        src_client2+='    filtre1( mat , d , le_colis1=null ){\r\n';
         src_client2+='        let a=document.getElementById( \'vv_ecran_liste_zone_contenu\' );\r\n';
         src_client2+='        if(a === null){\r\n';
-        src_client2+='            return(this[this.fonction_liste]( mat , d , le_message_du_serveur ));\r\n';
+        src_client2+='            return(this[this.fonction_liste]( mat , d , le_colis1 ));\r\n';
         src_client2+='        }\r\n';
-        src_client2+='        let tt=this.zones_liste1( le_message_du_serveur );\r\n';
+        src_client2+='        let tt=this.zones_liste1( le_colis1 );\r\n';
         src_client2+='        document.getElementById( \'vv_ecran_liste_zone_contenu\' ).innerHTML=tt.o1;\r\n';
-        src_client2+='        this.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant );\r\n';
+        src_client2+='        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );\r\n';
         src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
         src_client2+='        let lst=document.getElementById( \'vv_filtre1\' ).querySelectorAll( "input" );\r\n';
         src_client2+='        this.filtres={};\r\n';
@@ -3474,7 +3474,7 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    zones_filtres1( mat , d , le_message_du_serveur ){\r\n';
+        src_client2+='    zones_filtres1( mat , d , le_colis1 ){\r\n';
         src_client2+='        let l01=mat.length;\r\n';
         src_client2+='        let de_13=\'\';\r\n';
         src_client2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
@@ -3497,10 +3497,10 @@ class x_ecran_generer_programmes1{
         src_client2+='        }\r\n';
         src_client2+='        let cle_session=this.__ig1.cle_lst0 + \'_\' + this.moi +\'_\'+this.fonction_liste;\r\n';
         src_client2+='        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );\r\n';
-        src_client2+='        if(le_message_du_serveur.__xva.hasOwnProperty( \'__fo1\' )\r\n';
-        src_client2+='               && le_message_du_serveur.__xva.__fo1 !== null\r\n';
-        src_client2+='               && le_message_du_serveur.__xva.__fo1.hasOwnProperty( \'origine\' )\r\n';
-        src_client2+='               && le_message_du_serveur.__xva.__fo1.origine === \'aller_a_la_page\'\r\n';
+        src_client2+='        if(le_colis1.__xva.hasOwnProperty( \'__fo1\' )\r\n';
+        src_client2+='               && le_colis1.__xva.__fo1 !== null\r\n';
+        src_client2+='               && le_colis1.__xva.__fo1.hasOwnProperty( \'origine\' )\r\n';
+        src_client2+='               && le_colis1.__xva.__fo1.origine === \'aller_a_la_page\'\r\n';
         src_client2+='        ){\r\n';
         src_client2+='            document.getElementById( \'__num_page\' ).value=__num_page;\r\n';
         src_client2+='            return;\r\n';
@@ -3603,32 +3603,32 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    supprimer1(mat , d , le_message_du_serveur ){\r\n';
+        src_client2+='    supprimer1(mat , d , le_colis1 ){\r\n';
         src_client2+='        return({"__xst" : __xsu});\r\n';
         src_client2+='    }\r\n';
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    creer1(mat , d , le_message_du_serveur ){\r\n';
+        src_client2+='    creer1(mat , d , le_colis1 ){\r\n';
         src_client2+='        /* redirection vers modification */\r\n';
-        src_client2+='        if(le_message_du_serveur && le_message_du_serveur.__xva.hasOwnProperty(\'page_modification1\')){\r\n';
-        src_client2+='            this.page_modification1(mat,d,le_message_du_serveur);\r\n';
+        src_client2+='        if(le_colis1 && le_colis1.__xva.hasOwnProperty(\'page_modification1\')){\r\n';
+        src_client2+='            this.page_modification1(mat,d,le_colis1);\r\n';
         src_client2+='        }\r\n';
         src_client2+='        return({"__xst" : __xsu});\r\n';
         src_client2+='    }\r\n';
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    sous_liste1( mat , d , le_message_du_serveur=null ){\r\n';
+        src_client2+='    sous_liste1( mat , d , le_colis1=null ){\r\n';
         src_client2+='        this.fonction_liste=\'sous_liste1\';\r\n';
-        src_client2+='        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this , \'' + champ_primaire + '\' ));\r\n';
+        src_client2+='        return(this.__ig1.sous_liste_generique1( mat , d , le_colis1 , this , \'' + champ_primaire + '\' ));\r\n';
         src_client2+='    }\r\n';
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    liste1( mat , d , le_message_du_serveur=null ){\r\n';
-        src_client2+='        if(le_message_du_serveur==null || !le_message_du_serveur.__xva.hasOwnProperty(this.fonction_liste)){\r\n';
-        src_client2+='            if(le_message_du_serveur.__xva.hasOwnProperty(\'__nbEnregs\')){\r\n';
+        src_client2+='    liste1( mat , d , le_colis1=null ){\r\n';
+        src_client2+='        if(le_colis1==null || !le_colis1.__xva.hasOwnProperty(this.fonction_liste)){\r\n';
+        src_client2+='            if(le_colis1.__xva.hasOwnProperty(\'__nbEnregs\')){\r\n';
         src_client2+='            }else{\r\n';
         src_client2+='                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : \'il manque les données pour la liste de \' + this.moi} );\r\n';
         src_client2+='                this.__ig1.affiche_les_messages();\r\n';
@@ -3652,19 +3652,19 @@ class x_ecran_generer_programmes1{
         src_client2+='            a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;\r\n';
         src_client2+='            this.__ig1.afficher_les_zones( \'vv_ecran_liste\' );\r\n';
         src_client2+='        }\r\n';
-        src_client2+='        this.zones_filtres1( mat , d , le_message_du_serveur  );\r\n';
+        src_client2+='        this.zones_filtres1( mat , d , le_colis1  );\r\n';
         if(table_reference_est_table_virtuelle.length === 2){
-            src_client2+='        if(le_message_du_serveur.__xva.hasOwnProperty( \'__nbEnregs\' )\r\n';
-            src_client2+='               && !le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )\r\n';
+            src_client2+='        if(le_colis1.__xva.hasOwnProperty( \'__nbEnregs\' )\r\n';
+            src_client2+='               && !le_colis1.__xva.hasOwnProperty( this.fonction_liste )\r\n';
             src_client2+='        ){\r\n';
-            src_client2+='            document.getElementById( \'vv_ecran_liste_zone_contenu\' ).innerHTML=this.__ig1.la_liste_est_vide( le_message_du_serveur.__xva.__nbEnregs );\r\n';
+            src_client2+='            document.getElementById( \'vv_ecran_liste_zone_contenu\' ).innerHTML=this.__ig1.la_liste_est_vide( le_colis1.__xva.__nbEnregs );\r\n';
             src_client2+='        }else{\r\n';
-            src_client2+='            this.__ig1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant , this.fonction_liste );\r\n';
-            src_client2+='            document.getElementById( \'vv_ecran_liste_zone_contenu\' ).innerHTML=this.zones_liste1( le_message_du_serveur );\r\n';
+            src_client2+='            this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );\r\n';
+            src_client2+='            document.getElementById( \'vv_ecran_liste_zone_contenu\' ).innerHTML=this.zones_liste1( le_colis1 );\r\n';
             src_client2+='        }\r\n';
         }else{
-            src_client2+='        this.__ig1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant , this.fonction_liste );\r\n';
-            src_client2+='        document.getElementById( \'vv_ecran_liste_zone_contenu\' ).innerHTML=this.zones_liste1( le_message_du_serveur );\r\n';
+            src_client2+='        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );\r\n';
+            src_client2+='        document.getElementById( \'vv_ecran_liste_zone_contenu\' ).innerHTML=this.zones_liste1( le_colis1 );\r\n';
         }
         src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
         src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
@@ -3686,12 +3686,12 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    zones_sous_liste1( le_message_du_serveur ){\r\n';
+        src_client2+='    zones_sous_liste1( le_colis1 ){\r\n';
         src_client2+='        let o1=\'\';\r\n';
-        src_client2+='        if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty(this.fonction_liste)){\r\n';
+        src_client2+='        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty(this.fonction_liste)){\r\n';
         src_client2+='            let lst=\'\';\r\n';
-        src_client2+='            for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){\r\n';
-        src_client2+='                let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];\r\n';
+        src_client2+='            for(let i in le_colis1.__xva[this.fonction_liste].__xva){\r\n';
+        src_client2+='                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];\r\n';
         src_client2+='                lst+=\'<tr>\';\r\n';
         src_client2+='                lst+=\'<td style="text-wrap-mode: nowrap;">\';\r\n';
         src_client2+='                let parametres=\'\';\r\n';
@@ -3921,12 +3921,12 @@ class x_ecran_generer_programmes1{
         src_client2+='    /*\r\n';
         src_client2+='      =============================================================================================================\r\n';
         src_client2+='    */\r\n';
-        src_client2+='    zones_liste1( le_message_du_serveur ){\r\n';
+        src_client2+='    zones_liste1( le_colis1 ){\r\n';
         src_client2+='        let o1=\'\';\r\n';
-        src_client2+='        if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty(this.fonction_liste)){\r\n';
+        src_client2+='        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty(this.fonction_liste)){\r\n';
         src_client2+='            let lst=\'\';\r\n';
-        src_client2+='            for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){\r\n';
-        src_client2+='                let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];\r\n';
+        src_client2+='            for(let i in le_colis1.__xva[this.fonction_liste].__xva){\r\n';
+        src_client2+='                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];\r\n';
         src_client2+='                lst+=\'<tr>\';\r\n';
         src_client2+='                lst+=\'<td>\';\r\n';
         src_client2+='                lst+=\'<div style="display:inline-flex;">\';\r\n';
@@ -4704,7 +4704,7 @@ class x_ecran_generer_programmes1{
     /*
       =============================================================================================================
     */
-    recuperer_zone_travail_pour_les_bases2( mat , d , le_message_du_serveur=null ){
+    recuperer_zone_travail_pour_les_bases2( mat , d , le_colis1=null ){
         let chi_id_basedd=0;
         let nom_de_la_table='';
         let l01=mat.length;
@@ -4722,30 +4722,30 @@ class x_ecran_generer_programmes1{
         o1+=' id="vv_les_bases" ';
         o1+=' data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases))))">';
         o1+='<option  value="0" ' + (0 === chi_id_basedd ? ( ' selected ' ) : ( '' )) + '>sélectionnez une base </option>';
-        this.chi_id_projet=le_message_du_serveur.chi_id_projet;
-        for(let i in le_message_du_serveur.__xva.les_bases_du_projet){
-            if(le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === null){
+        this.chi_id_projet=le_colis1.chi_id_projet;
+        for(let i in le_colis1.__xva.les_bases_du_projet){
+            if(le_colis1.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] === null){
             }else{
                 o1+='<option ';
-                o1+=' value="' + le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '" ';
+                o1+=' value="' + le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '" ';
                 o1+=' id="option_base_"';
-                o1+=le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'];
+                o1+=le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'];
                 o1+='"';
-                if(le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] === chi_id_basedd){
+                if(le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] === chi_id_basedd){
                     o1+=' selected ';
                 }
-                o1+='>' + le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</option>';
-                this.#les_bases[le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]={"matrice" : null ,"tables" : []};
-                var obj1=this.__ig1.__rev1.rev_tm( le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] );
+                o1+='>' + le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd'] + '</option>';
+                this.#les_bases[le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']]={"matrice" : null ,"tables" : []};
+                var obj1=this.__ig1.__rev1.rev_tm( le_colis1.__xva.les_bases_du_projet[i]['T0.chp_rev_travail_basedd'] );
                 if(obj1.__xst === __xsu){
-                    this.#les_bases[le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']].matrice=obj1.__xva;
+                    this.#les_bases[le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']].matrice=obj1.__xva;
                     let mat2=obj1.__xva;
                     let l02=mat2.length;
                     for( let j=1 ; j < l02 ; j=mat2[j][12] ){
                         if(mat2[j][1] === 'créer_table'){
                             for( let k=j + 1 ; k < l02 ; k=mat2[k][12] ){
                                 if(mat2[k][1] === 'nom_de_la_table' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                                    this.#les_bases[le_message_du_serveur.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']].tables.push( mat2[k + 1][1] );
+                                    this.#les_bases[le_colis1.__xva.les_bases_du_projet[i]['T0.chi_id_basedd']].tables.push( mat2[k + 1][1] );
                                 }
                             }
                         }

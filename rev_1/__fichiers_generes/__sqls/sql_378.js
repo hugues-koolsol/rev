@@ -31,7 +31,7 @@ class sql_378{
 
                 /* test "non nul" sur le champ "chx_parent_dossier" */
                 if(elem['chx_parent_dossier'] === null || elem['chx_parent_dossier']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "parent" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 if(liste_des_valeurs != ''){

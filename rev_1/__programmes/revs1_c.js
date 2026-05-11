@@ -37,7 +37,7 @@ class revs1{
     /*
       =============================================================================================================
     */
-    f1( mat , d , le_message_du_serveur=null ){
+    f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
             case 'tout_supprimer' :
                 /*
@@ -86,7 +86,7 @@ class revs1{
     /*
       =============================================================================================================
     */
-    modifier1( mat , d , le_message_du_serveur=null ){
+    modifier1( mat , d , le_colis1=null ){
         return({"__xst" : __xsu});
     }
     /*
@@ -117,11 +117,11 @@ class revs1{
     /*
       =============================================================================================================
     */
-    page_modification1( mat , d , le_message_du_serveur=null ){
-        if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_modification1' )){
+    page_modification1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_modification1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];
+        let enreg=le_colis1.__xva.page_modification1.__xva[0];
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_rev'] , this.moi , 'chi_id_rev' );
         let o1='';
         /*
@@ -151,11 +151,11 @@ class revs1{
     /*
       =============================================================================================================
     */
-    page_confirmation_supprimer1( mat , d , le_message_du_serveur=null ){
-        if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
+    page_confirmation_supprimer1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];
+        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_rev'] , this.moi , 'chi_id_rev' );
         let o1='';
         /*
@@ -187,8 +187,8 @@ class revs1{
     /*
       =============================================================================================================
     */
-    page_duplication1( mat , d , le_message_du_serveur ){
-        this.page_creer1( mat , d , le_message_du_serveur.__xva.page_duplication1.__xva[0] );
+    page_duplication1( mat , d , le_colis1 ){
+        this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
     }
     /*
@@ -205,7 +205,7 @@ class revs1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chp_id_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -214,7 +214,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_type_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -223,7 +223,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_niveau_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "niveau" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "niveau" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -232,7 +232,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_quotee_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "quotee" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "quotee" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -241,7 +241,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_pos_premier_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pos premier" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pos premier" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -250,7 +250,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_pos_dernier_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pos dernier" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pos dernier" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -259,7 +259,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_parent_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -268,7 +268,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_nbr_enfants_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nbr enfants" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nbr enfants" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -277,7 +277,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_num_enfant_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "num enfant" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "num enfant" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -286,7 +286,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_profondeur_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "profondeur" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "profondeur" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -295,7 +295,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_pos_ouver_parenthese_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pos ouver parenthese" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pos ouver parenthese" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -304,7 +304,7 @@ class revs1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_enfant_suivant_rev'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "enfant suivant" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "enfant suivant" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -673,14 +673,14 @@ class revs1{
     /*
       =============================================================================================================
     */
-    filtre1( mat , d , le_message_du_serveur=null ){
+    filtre1( mat , d , le_colis1=null ){
         let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
         if(a === null){
-            return(this[this.fonction_liste]( mat , d , le_message_du_serveur ));
+            return(this[this.fonction_liste]( mat , d , le_colis1 ));
         }
-        let tt=this.zones_liste1( le_message_du_serveur );
+        let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
-        this.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant );
+        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
@@ -702,7 +702,7 @@ class revs1{
     /*
       =============================================================================================================
     */
-    zones_filtres1( mat , d , le_message_du_serveur ){
+    zones_filtres1( mat , d , le_colis1 ){
         let l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -725,10 +725,10 @@ class revs1{
         }
         let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
         sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
-        if(le_message_du_serveur.__xva.hasOwnProperty( '__fo1' )
-               && le_message_du_serveur.__xva.__fo1 !== null
-               && le_message_du_serveur.__xva.__fo1.hasOwnProperty( 'origine' )
-               && le_message_du_serveur.__xva.__fo1.origine === 'aller_a_la_page'
+        if(le_colis1.__xva.hasOwnProperty( '__fo1' )
+               && le_colis1.__xva.__fo1 !== null
+               && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
+               && le_colis1.__xva.__fo1.origine === 'aller_a_la_page'
         ){
             document.getElementById( '__num_page' ).value=__num_page;
             return;
@@ -812,16 +812,16 @@ class revs1{
     /*
       =============================================================================================================
     */
-    supprimer1( mat , d , le_message_du_serveur ){
+    supprimer1( mat , d , le_colis1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    creer1( mat , d , le_message_du_serveur ){
+    creer1( mat , d , le_colis1 ){
         /* redirection vers modification */
-        if(le_message_du_serveur && le_message_du_serveur.__xva.hasOwnProperty( 'page_modification1' )){
-            this.page_modification1( mat , d , le_message_du_serveur );
+        if(le_colis1 && le_colis1.__xva.hasOwnProperty( 'page_modification1' )){
+            this.page_modification1( mat , d , le_colis1 );
         }
         return({"__xst" : __xsu});
     }
@@ -834,15 +834,15 @@ class revs1{
     /*
       =============================================================================================================
     */
-    sous_liste1( mat , d , le_message_du_serveur=null ){
+    sous_liste1( mat , d , le_colis1=null ){
         this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this , 'chi_id_rev' ));
+        return(this.__ig1.sous_liste_generique1( mat , d , le_colis1 , this , 'chi_id_rev' ));
     }
     /*
       =============================================================================================================
     */
-    liste1( mat , d , le_message_du_serveur=null ){
-        if(le_message_du_serveur == null || !le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+    liste1( mat , d , le_colis1=null ){
+        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             /* F5 */
             debugger;
             /* this.#init1(null,'liste1'); */
@@ -865,9 +865,9 @@ class revs1{
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
-        this.zones_filtres1( mat , d , le_message_du_serveur );
-        this.__ig1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_message_du_serveur );
+        this.zones_filtres1( mat , d , le_colis1 );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
@@ -883,12 +883,12 @@ class revs1{
     /*
       =============================================================================================================
     */
-    zones_sous_liste1( le_message_du_serveur ){
+    zones_sous_liste1( le_colis1 ){
         let o1='';
-        if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             let lst='';
-            for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){
-                let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
+                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
@@ -962,12 +962,12 @@ class revs1{
     /*
       =============================================================================================================
     */
-    zones_liste1( le_message_du_serveur ){
+    zones_liste1( le_colis1 ){
         let o1='';
-        if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             let lst='';
-            for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){
-                let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
+                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';

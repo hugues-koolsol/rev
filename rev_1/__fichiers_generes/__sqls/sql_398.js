@@ -27,12 +27,12 @@ class sql_398{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_resume_travail" */
                 if(elem['chp_resume_travail'] === null || elem['chp_resume_travail']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "résumé du travail" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "chx_utilisateur_travail" */
                 if(elem['chx_utilisateur_travail'] === null || elem['chx_utilisateur_travail']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "utilisateur du travail" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /*
@@ -40,12 +40,12 @@ class sql_398{
                 */
                 /* test "non nul" sur le champ "chp_etat_travail" */
                 if(elem['chp_etat_travail'] === null || elem['chp_etat_travail']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "état du travail" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "chx_projet_travail" */
                 if(elem['chx_projet_travail'] === null || elem['chx_projet_travail']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "référence du projet" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "référence du projet" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 if(liste_des_valeurs != ''){

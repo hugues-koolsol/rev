@@ -12,7 +12,7 @@ class sql_397{
     async sql( par ){
         /* test "non nul" sur le champ "chp_resume_travail" */
         if(par['n_chp_resume_travail'] === null || par['n_chp_resume_travail'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*
@@ -20,12 +20,12 @@ class sql_397{
         */
         /* test "non nul" sur le champ "chp_etat_travail" */
         if(par['n_chp_etat_travail'] === null || par['n_chp_etat_travail'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /* test "non nul" sur le champ "chx_projet_travail" */
         if(par['n_chx_projet_travail'] === null || par['n_chx_projet_travail'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "référence du projet" doit être renseignée [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let sql0='UPDATE `tbl_travaux` SET \r\n';

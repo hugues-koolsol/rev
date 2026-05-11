@@ -329,10 +329,8 @@ class __ig1{
                                                             this.donnees_retournees.__xsi[ret.__xst].push( ret.__xme );
                                                             ret.__xme='';
                                                         }
-                                                        if(ret.__xst !== __xsu){
-                                                            if(ret.__xst === __xer){
-                                                                continuer=false;
-                                                            }
+                                                        if(ret.__xst !== __xsu && ret.__xst === __xer){
+                                                            continuer=false;
                                                         }else{
                                                             this.donnees_retournees.__xst=ret.__xst;
                                                         }
@@ -386,6 +384,72 @@ class __ig1{
                 return({"__xst" : __xer});
             }
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    async generique_sous_liste2(mat , d , id_sql , criteres_xxx , __nbMax ){
+        let module_appelant1='';
+        let module_appele1='';
+        let nom_champ_dans_parent2='';
+        let nom_libelle_dans_parent2='';
+        let l01=mat.length;
+        let option_de_13='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'de_13' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                option_de_13='de_13(' + mat[i + 1][1] + ')';
+            }else if(mat[i][1] === 'module_appelant1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                module_appelant1=mat[i + 1][1];
+            }else if(mat[i][1] === 'module_appele1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                module_appele1=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_champ_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_champ_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_libelle_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_libelle_dans_parent2=mat[i + 1][1];
+            }
+        }
+        let __num_page=0;
+        let formulaire=this.__fnt1.debut_filtre1( mat , d , 'sous_liste2' );
+        if(!formulaire.hasOwnProperty( '__num_page' ) || !this.est_num( formulaire.__num_page )){
+            __num_page=0;
+        }else{
+            __num_page=parseInt( formulaire.__num_page , 10 );
+        }
+        let __debut=__num_page * __nbMax;
+        criteres_xxx['debut']=__debut;
+        for(let i in formulaire){
+            if(i !== '__num_page'){
+                criteres_xxx[i]=formulaire[i];
+            }
+        }
+        let __db1=await this.ouvrir_bdd( this.options_generales.base_de_travail );
+        let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );
+        if(ttxxx.__xst !== __xsu){
+            return({"__xst" : __xer});
+        }
+        
+        if(ttxxx[__xst] === __xsu && ttxxx[__xva].length === 0 && __debut > 0){
+            __debut=0;
+            __num_page=0;
+            criteres_xxx['debut']=__debut;
+            ttxxx=await this.__ig1.sql_iii( id_sql , criteres_xxx , this.__ig1.donnees_retournees , __db1 );
+        }
+        
+        this.donnees_retournees.__xva['__nbMax']=__nbMax;
+        this.donnees_retournees[__xva]['__debut']=__debut;
+        this.donnees_retournees[__xva]['__num_page']=__num_page;
+        this.donnees_retournees[__xac]='pm1(m1(n1(' + module_appelant1 + '),f1(sous_liste2(' + option_de_13;
+        for(let i in formulaire){
+            this.donnees_retournees[__xac]+=this.__fnt1.critere_liste( formulaire , i );
+        }
+        this.donnees_retournees[__xac]+=',module_appelant1('+module_appelant1+')';
+        this.donnees_retournees[__xac]+=',module_appele1('+module_appele1+')';
+        this.donnees_retournees[__xac]+=',nom_champ_dans_parent2('+nom_champ_dans_parent2+')';
+        this.donnees_retournees[__xac]+=',nom_libelle_dans_parent2('+nom_libelle_dans_parent2+')';
+        this.donnees_retournees[__xac]+='))))';
+        this.donnees_retournees[__xva]['criteres2']=criteres_xxx;
+        this.donnees_retournees[__xva]['sous_liste2']=ttxxx;
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================

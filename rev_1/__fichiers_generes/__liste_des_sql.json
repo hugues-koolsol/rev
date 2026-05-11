@@ -12,7 +12,7 @@
     "cht_commentaire_requete": "utilisateurs",
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(`chi_compteur1_utilisateur`),plus(chi_compteur1_utilisateur,1))),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_utilisateurs,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chi_compteur1_utilisateur`),plus(chi_compteur1_utilisateur,1))),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))\n)  ",
     "chp_table_reference_requete": "tbl_utilisateurs"
   },
   "108": {

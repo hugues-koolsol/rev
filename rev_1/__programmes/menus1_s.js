@@ -28,7 +28,7 @@ class menus1{
             }
         }
         if(chi_id_autorisation === 0){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "autorisation" doit être renseigné [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "autorisation" doit être renseignée [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );

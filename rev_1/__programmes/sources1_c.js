@@ -142,10 +142,10 @@ class sources1{
       =============================================================================================================
       au retour du serveur
     */
-    charger_source_pour_compilation1( mat , d , le_message_du_serveur=null ){
+    charger_source_pour_compilation1( mat , d , le_colis1=null ){
         let tt=this.__ig1.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
         let action='m1(n1(_developpement1),f1(compiler_source1(' + tt.__xva + ')))';
-        this.__ig1.executer1( action , le_message_du_serveur );
+        this.__ig1.executer1( action , le_colis1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -188,15 +188,15 @@ class sources1{
     /*
       =============================================================================================================
     */
-    lire_ce_source_du_disque1( mat , d , le_message_du_serveur=null ){
-        document.getElementById( 'cht_genere_source' ).value=le_message_du_serveur.__xva.contenu_du_fichier;
+    lire_ce_source_du_disque1( mat , d , le_colis1=null ){
+        document.getElementById( 'cht_genere_source' ).value=le_colis1.__xva.contenu_du_fichier;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
       au retour du serveur
     */
-    enregistrer_un_source_compile1( mat , d , le_message_du_serveur=null ){
+    enregistrer_un_source_compile1( mat , d , le_colis1=null ){
         let chi_id_source=0;
         let bouton_compiler='';
         let pas_de_message_de_succes=0;
@@ -219,7 +219,7 @@ class sources1{
     /*
       =============================================================================================================
     */
-    f1( mat , d , le_message_du_serveur=null ){
+    f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
             case 'vv_sources_nouveau_numero1' :
                 this.__ig1.fermer_la_sous_fenetre();
@@ -283,7 +283,7 @@ class sources1{
     /*
       =============================================================================================================
     */
-    modifier1( mat , d , le_message_du_serveur=null ){
+    modifier1( mat , d , le_colis1=null ){
         return({"__xst" : __xsu});
     }
     /*
@@ -300,7 +300,7 @@ class sources1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chp_nom_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -318,7 +318,7 @@ class sources1{
             return({"__xst" : __xsu});
         }
         if(fo1['che_binaire_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -327,7 +327,7 @@ class sources1{
             return({"__xst" : __xsu});
         }
         if(fo1['chx_dossier_id_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -348,7 +348,7 @@ class sources1{
             }
         }
         if(fo1['che_autorisation_globale_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -394,11 +394,11 @@ class sources1{
     /*
       =============================================================================================================
     */
-    page_modification1( mat , d , le_message_du_serveur=null ){
-        if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_modification1' )){
+    page_modification1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_modification1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_message_du_serveur.__xva.page_modification1.__xva[0];
+        let enreg=le_colis1.__xva.page_modification1.__xva[0];
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi , 'chi_id_source' );
         let o1='';
         /*
@@ -742,11 +742,11 @@ class sources1{
     /*
       =============================================================================================================
     */
-    page_confirmation_supprimer1( mat , d , le_message_du_serveur=null ){
-        if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
+    page_confirmation_supprimer1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];
+        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi , 'chi_id_source' );
         let o1='';
         /*
@@ -867,8 +867,8 @@ class sources1{
     /*
       =============================================================================================================
     */
-    page_duplication1( mat , d , le_message_du_serveur ){
-        this.page_creer1( mat , d , le_message_du_serveur.__xva.page_duplication1.__xva[0] );
+    page_duplication1( mat , d , le_colis1 ){
+        this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
     }
     /*
@@ -885,7 +885,7 @@ class sources1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chx_dossier_id_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -894,7 +894,7 @@ class sources1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_nom_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -912,7 +912,7 @@ class sources1{
             return({"__xst" : __xsu});
         }
         if(fo1['che_binaire_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseigné'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -1106,14 +1106,14 @@ class sources1{
     /*
       =============================================================================================================
     */
-    filtre1( mat , d , le_message_du_serveur=null ){
+    filtre1( mat , d , le_colis1=null ){
         let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
         if(a === null){
-            return(this[this.fonction_liste]( mat , d , le_message_du_serveur ));
+            return(this[this.fonction_liste]( mat , d , le_colis1 ));
         }
-        let tt=this.zones_liste1( le_message_du_serveur );
+        let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
-        this.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant );
+        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
@@ -1135,7 +1135,7 @@ class sources1{
     /*
       =============================================================================================================
     */
-    zones_filtres1( mat , d , le_message_du_serveur ){
+    zones_filtres1( mat , d , le_colis1 ){
         let l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1158,10 +1158,10 @@ class sources1{
         }
         let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
         sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
-        if(le_message_du_serveur.__xva.hasOwnProperty( '__fo1' )
-               && le_message_du_serveur.__xva.__fo1 !== null
-               && le_message_du_serveur.__xva.__fo1.hasOwnProperty( 'origine' )
-               && le_message_du_serveur.__xva.__fo1.origine === 'aller_a_la_page'
+        if(le_colis1.__xva.hasOwnProperty( '__fo1' )
+               && le_colis1.__xva.__fo1 !== null
+               && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
+               && le_colis1.__xva.__fo1.origine === 'aller_a_la_page'
         ){
             document.getElementById( '__num_page' ).value=__num_page;
             return;
@@ -1245,16 +1245,16 @@ class sources1{
     /*
       =============================================================================================================
     */
-    supprimer1( mat , d , le_message_du_serveur ){
+    supprimer1( mat , d , le_colis1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    creer1( mat , d , le_message_du_serveur ){
+    creer1( mat , d , le_colis1 ){
         /* redirection vers modification */
-        if(le_message_du_serveur && le_message_du_serveur.__xva.hasOwnProperty( 'page_modification1' )){
-            this.page_modification1( mat , d , le_message_du_serveur );
+        if(le_colis1 && le_colis1.__xva.hasOwnProperty( 'page_modification1' )){
+            this.page_modification1( mat , d , le_colis1 );
         }
         return({"__xst" : __xsu});
     }
@@ -1267,15 +1267,15 @@ class sources1{
     /*
       =============================================================================================================
     */
-    sous_liste1( mat , d , le_message_du_serveur=null ){
+    sous_liste1( mat , d , le_colis1=null ){
         this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this , 'chi_id_source' ));
+        return(this.__ig1.sous_liste_generique1( mat , d , le_colis1 , this , 'chi_id_source' ));
     }
     /*
       =============================================================================================================
     */
-    liste1( mat , d , le_message_du_serveur=null ){
-        if(le_message_du_serveur == null || !le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+    liste1( mat , d , le_colis1=null ){
+        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             /* F5 */
             debugger;
             /* this.#init1(null,'liste1'); */
@@ -1304,9 +1304,9 @@ class sources1{
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
-        this.zones_filtres1( mat , d , le_message_du_serveur );
-        this.__ig1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_message_du_serveur );
+        this.zones_filtres1( mat , d , le_colis1 );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
@@ -1322,12 +1322,12 @@ class sources1{
     /*
       =============================================================================================================
     */
-    zones_sous_liste1( le_message_du_serveur ){
+    zones_sous_liste1( le_colis1 ){
         let o1='';
-        if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             let lst='';
-            for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){
-                let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
+                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
@@ -1426,12 +1426,12 @@ class sources1{
     /*
       =============================================================================================================
     */
-    zones_liste1( le_message_du_serveur ){
+    zones_liste1( le_colis1 ){
         let o1='';
-        if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             let lst='';
-            for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){
-                let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
+                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
@@ -1450,7 +1450,7 @@ class sources1{
                 }else{
                     /* sur rev1 / projet 1 ou 2, on ne peut compiler que la racine */
                     if(this.__ig1._CA_ === 1){
-                        if(le_message_du_serveur.chi_id_projet === 1 || le_message_du_serveur.chi_id_projet === 2){
+                        if(le_colis1.chi_id_projet === 1 || le_colis1.chi_id_projet === 2){
                             if(elem['T0.chx_dossier_id_source'] !== 1){
                                 affiche_bouton_compiler=false;
                             }else{
@@ -1479,12 +1479,12 @@ class sources1{
                     lst+='  <div class="rev_bouton yy__4" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(1)))))';
                     lst+='" >importer de 1</div>';
-                }else if(this.__ig1._CA_ === 1 && (le_message_du_serveur.chi_id_projet === 2 || le_message_du_serveur.chi_id_projet === 3)){
+                }else if(this.__ig1._CA_ === 1 && (le_colis1.chi_id_projet === 2 || le_colis1.chi_id_projet === 3)){
                     /*  */
                     lst+='  <div class="rev_bouton yy__4" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(1)))))';
                     lst+='" >importer de 1</div>';
-                }else if(this.__ig1._CA_ === 1 && le_message_du_serveur.chi_id_projet > 3){
+                }else if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 3){
                     /*  */
                     lst+='  <div class="rev_bouton yy__4" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(3)))))';
@@ -1497,7 +1497,7 @@ class sources1{
                     lst+='" >exporter dans 1</div>';
                     /*  */
                 }
-                if(this.__ig1._CA_ === 1 && le_message_du_serveur.chi_id_projet > 2){
+                if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 2){
                     lst+='  <div class="rev_bouton yy__2" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_base_de_prod1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))';
                     lst+='" >⎘ dans la base de prod</div>';

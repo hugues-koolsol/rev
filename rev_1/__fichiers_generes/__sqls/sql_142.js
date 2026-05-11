@@ -23,17 +23,17 @@ class sql_142{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chx_acces_autorisation" */
                 if(elem['chx_acces_autorisation'] === null || elem['chx_acces_autorisation']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "acces" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "chx_source_autorisation" */
                 if(elem['chx_source_autorisation'] === null || elem['chx_source_autorisation']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "source" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "source" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
                 if(elem['che_pour_sous_liste_autorisation'] === null || elem['che_pour_sous_liste_autorisation']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "pour accès sous liste" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "pour accès sous liste" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 if(liste_des_valeurs != ''){

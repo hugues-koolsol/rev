@@ -83,36 +83,6 @@ class _developpement1{
         this.#objet_conversion_astcss_vers_rev1=new w_ast_postcss_vers_rev1( __ig1 );
         this.#objet_conversion_rev_vers_css=new w_rev_vers_css1( __ig1 );
     }
-    /*#
-      =============================================================================================================
-      maj_liste_des_sql( mat , d , le_message_du_serveur ){
-          if(le_message_du_serveur && le_message_du_serveur.hasOwnProperty( '__liste_des_sql' )){
-              this.__ig1.__liste_des_sql=le_message_du_serveur.__liste_des_sql;
-          }else{
-              this.__ig1.__liste_des_sql={};
-          }
-          try{
-              if(le_message_du_serveur.chi_id_projet === 0 && le_message_du_serveur.chi_id_utilisateur === 0){
-                  document.getElementById( 'vv_info_projet' ).innerHTML='';
-              }else{
-                  document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="projet ' + le_message_du_serveur.chi_id_projet + '" style="margin:auto;">p' + le_message_du_serveur.chi_id_projet + '/' + le_message_du_serveur.chp_nom_de_connexion_utilisateur.substr( 0 , 4 ) + '</div>';
-              }
-          } catch {}
-          return({"__xst" : __xsu});
-      }
-    */
-    /*#
-      =============================================================================================================
-      maj_liste_des_genres( mat , d , le_message_du_serveur ){
-          debugger
-          if(le_message_du_serveur && le_message_du_serveur.hasOwnProperty( '__liste_des_genres' )){
-              this.__ig1.__liste_des_genres=le_message_du_serveur.__liste_des_genres;
-          }else{
-              this.__ig1.__liste_des_genres={};
-          }
-          return({"__xst" : __xsu});
-      }
-    */
     /*
       =============================================================================================================
     */
@@ -250,52 +220,45 @@ class _developpement1{
     /*
       =============================================================================================================
     */
-    compiler_source1( mat , d , le_message_du_serveur=null ){
+    compiler_source1( mat , d , le_colis1=null ){
         let xx=this.__ig1.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
         let format_rev_texte=xx.__xva;
-        /* console.log(le_message_du_serveur.__xva); */
-        let pas_de_message_de_succes=le_message_du_serveur.__xva.hasOwnProperty( 'pas_de_message_de_succes' ) ?
-          ( 
-            le_message_du_serveur.__xva.pas_de_message_de_succes
-          ) : ( 
-            0
-          );
-        let bouton_compiler=le_message_du_serveur.__xva.hasOwnProperty( 'bouton_compiler' ) ? ( le_message_du_serveur.__xva.bouton_compiler ) : ( '' );
+        /* console.log(le_colis1.__xva); */
+        let pas_de_message_de_succes=le_colis1.__xva.hasOwnProperty( 'pas_de_message_de_succes' ) ? ( le_colis1.__xva.pas_de_message_de_succes ) : ( 0 );
+        let bouton_compiler=le_colis1.__xva.hasOwnProperty( 'bouton_compiler' ) ? ( le_colis1.__xva.bouton_compiler ) : ( '' );
         /*
           A partir de ce nombre de lignes, on ne transmet pas la matrice du rev mais seumement le source_texte.
           Ce dernier sera converti en matrice dans le php.
           Si la matrice est trop grosse, il y a une erreur de transmission des données.
           
         */
-        if(!le_message_du_serveur.__xva.hasOwnProperty( 'contenu_bdd' )){
+        if(!le_colis1.__xva.hasOwnProperty( 'contenu_bdd' )){
             debugger;
         }
         let nombre_max_de_lignes_dans_la_matrice=64000;
-        if(le_message_du_serveur.__xva.contenu_bdd['T0.chx_dossier_id_source'] === null){
+        if(le_colis1.__xva.contenu_bdd['T0.chx_dossier_id_source'] === null){
             /*
               si le fichier n'existe pas sur disque, on compile le version rev
             */
-            if(le_message_du_serveur.__xva.contenu_bdd['T0.cht_rev_source'] === null
-                   || le_message_du_serveur.__xva.contenu_bdd['T0.cht_rev_source'] === ''
-            ){
+            if(le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] === null || le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] === ''){
                 /*
                   si le contenu rev est vide
                 */
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev est vide et le source n\'est pas rattaché à un répertoire ' + this.__ig1.nl2()} );
                 return({"__xst" : __xer});
             }else{
-                if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.htm'
-                       || le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 5 , 5 ) === '.html'
+                if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.htm'
+                       || le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 5 , 5 ) === '.html'
                 ){
                     /*
                       on transforme le rev en html 
                     */
-                    var obj1=this.#objet_conversion_rev_vers_html.c_rev_vers_html( le_message_du_serveur.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
+                    var obj1=this.#objet_conversion_rev_vers_html.c_rev_vers_html( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
                     if(obj1.__xst === __xsu){
                         let obj={
                             "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                             "__xva" : {
-                                "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                 "source_compile" : obj1.__xva ,
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
@@ -308,17 +271,17 @@ class _developpement1{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()} );
                         return({"__xst" : __xer});
                     }
-                }else if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.php'
+                }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.php'
                 ){
                     /*
                       on transforme le rev en php 
                     */
-                    var obj1=this.#objet_conversion_rev_vers_php.c_rev_vers_php( le_message_du_serveur.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
+                    var obj1=this.#objet_conversion_rev_vers_php.c_rev_vers_php( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
                     if(obj1.__xst === __xsu){
                         let obj={
                             "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                             "__xva" : {
-                                "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                 "source_compile" : obj1.__xva ,
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
@@ -331,17 +294,17 @@ class _developpement1{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()} );
                         return({"__xst" : __xer});
                     }
-                }else if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 3 , 3 ) === '.js'
+                }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 3 , 3 ) === '.js'
                 ){
                     /*
                       on transforme le rev en js
                     */
-                    var obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( le_message_du_serveur.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
+                    var obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
                     if(obj1.__xst === __xsu){
                         let obj={
                             "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                             "__xva" : {
-                                "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                 "source_compile" : obj1.__xva ,
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
@@ -354,12 +317,12 @@ class _developpement1{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()} );
                         return({"__xst" : __xer});
                     }
-                }else if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.sql'
+                }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.sql'
                 ){
                     /*
                       on transforme le rev en sql
                     */
-                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_message_du_serveur.__xva.contenu_bdd['T0.cht_rev_source'] );
+                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] );
                     let obj1=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
                     if(obj1.__xst === __xsu){
                         /* on transforme le rev en sql */
@@ -368,7 +331,7 @@ class _developpement1{
                             let obj={
                                 "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                                 "__xva" : {
-                                    "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                    "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                     "source_compile" : obj2.__xva ,
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
@@ -384,14 +347,14 @@ class _developpement1{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du sql n\'est pas bien formaté ' + this.__ig1.nl2()} );
                         return({"__xst" : __xer});
                     }
-                }else if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.css'
+                }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.css'
                 ){
-                    let obj1=this.#objet_conversion_rev_vers_css.c_rev_vers_css( le_message_du_serveur.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
+                    let obj1=this.#objet_conversion_rev_vers_css.c_rev_vers_css( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
                     if(obj1.__xst === __xsu){
                         let obj={
                             "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                             "__xva" : {
-                                "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                 "source_compile" : obj1.__xva ,
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
@@ -403,12 +366,12 @@ class _developpement1{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du css n\'est pas bien formaté ' + this.__ig1.nl2()} );
                         return({"__xst" : __xer});
                     }
-                }else if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.rev'
+                }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.rev'
                 ){
                     /*
                       on transforme le rev en rev
                     */
-                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_message_du_serveur.__xva.contenu_bdd['T0.cht_rev_source'] );
+                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] );
                     let obj1=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
                     if(obj1.__xst === __xsu){
                         let obj2=this.__ig1.__rev1.matrice_vers_source_rev1( obj1.__xva , 0 , true , 1 );
@@ -416,7 +379,7 @@ class _developpement1{
                             let obj={
                                 "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                                 "__xva" : {
-                                    "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                    "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                     "source_compile" : obj2.__xva ,
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
@@ -436,7 +399,7 @@ class _developpement1{
                     /*
                       on transforme le rev en texte
                     */
-                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_message_du_serveur.__xva.contenu_bdd['T0.cht_rev_source'] );
+                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] );
                     let obj1=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
                     if(obj1.__xst === __xsu){
                         let obj2=this.#objet_conversion_texte_vers_rev1.c_rev_vers_texte( obj1.__xva , 0 , 0 );
@@ -444,7 +407,7 @@ class _developpement1{
                             let obj={
                                 "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                                 "__xva" : {
-                                    "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                    "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                     "source_compile" : obj2.__xva ,
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
@@ -466,14 +429,14 @@ class _developpement1{
             /*
               on transforme le source du disque en rev puis le rev en source
             */
-            if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.htm'
-                   || le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 5 , 5 ) === '.html'
+            if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.htm'
+                   || le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 5 , 5 ) === '.html'
             ){
                 /*
                   =====================================================================================
                   html
                 */
-                var obj1=this.#objet_conversion_html_vers_rev.TransformHtmlEnRev( le_message_du_serveur.__xva['contenu_disque'] , 0 , {} );
+                var obj1=this.#objet_conversion_html_vers_rev.TransformHtmlEnRev( le_colis1.__xva['contenu_disque'] , 0 , {} );
                 if(obj1.__xst === __xsu){
                     var obj2=this.#objet_conversion_rev_vers_html.c_rev_vers_html( obj1.__xva , {} );
                     if(obj2.__xst === __xsu){
@@ -487,13 +450,13 @@ class _developpement1{
                         let obj={
                             "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                             "__xva" : {
-                                "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                 "source_compile" : obj2.__xva ,
                                 "rev_du_disque" : obj1.__xva ,
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                 "matrice_source" : matrice_source ,
-                                "chi_id_source" : le_message_du_serveur.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
                                 "enregistrer_la_matrice" : enregistrer_la_matrice
                             }
                         };
@@ -506,13 +469,13 @@ class _developpement1{
                     this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de convertion du html en rev ' + this.__ig1.nl2()} );
                     return({"__xst" : __xer});
                 }
-            }else if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.php'
+            }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.php'
             ){
                 /*
                   =====================================================================================
                   php
                 */
-                let a=this.normaliser_php( le_message_du_serveur.__xva['contenu_disque'] );
+                let a=this.normaliser_php( le_colis1.__xva['contenu_disque'] );
                 if(a.__xst === __xsu){
                     let matrice_source=null;
                     let enregistrer_la_matrice=__xsu;
@@ -524,13 +487,13 @@ class _developpement1{
                     let obj={
                         "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                         "__xva" : {
-                            "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                            "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                             "source_compile" : a.rev_vers_php.__xva ,
                             "rev_du_disque" : a.php_vers_rev.__xva ,
                             "bouton_compiler" : bouton_compiler ,
                             "pas_de_message_de_succes" : pas_de_message_de_succes ,
                             "matrice_source" : matrice_source ,
-                            "chi_id_source" : le_message_du_serveur.__xva.contenu_bdd['T0.chi_id_source'] ,
+                            "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
                             "enregistrer_la_matrice" : enregistrer_la_matrice
                         }
                     };
@@ -539,7 +502,7 @@ class _developpement1{
                     this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de normalisation du php ' + this.__ig1.nl2()} );
                     return({"__xst" : __xer});
                 }
-            }else if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.sql'
+            }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.sql'
             ){
                 /*
                   =====================================================================================
@@ -547,7 +510,7 @@ class _developpement1{
                 */
                 let ast_de_sql=null;
                 try{
-                    ast_de_sql=window.sqliteParser( le_message_du_serveur.__xva['contenu_disque'] , {} );
+                    ast_de_sql=window.sqliteParser( le_colis1.__xva['contenu_disque'] , {} );
                 }catch(e1){
                     if(e1.message.indexOf( 'on line ' )){
                         let tt=e1.message.substr( e1.message.indexOf( 'on line ' ) + 8 );
@@ -565,7 +528,7 @@ class _developpement1{
                   on récupère les commentaires pour les meta 
                 */
                 var tableau_des_commentaires=[];
-                const matches=le_message_du_serveur.__xva['contenu_disque'].match( /\/\*([\s\S]*?)\*\//g );
+                const matches=le_colis1.__xva['contenu_disque'].match( /\/\*([\s\S]*?)\*\//g );
                 if(matches !== null){
                     for( let a=0 ; a < matches.length ; a++ ){
                         if(matches[a].substr( 0 , 2 ) === '/*' && matches[a].substr( matches[a].length - 2 , 2 ) === '*/'){
@@ -618,13 +581,13 @@ class _developpement1{
                                 let obj={
                                     "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                                     "__xva" : {
-                                        "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                        "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                         "source_compile" : obj3.__xva ,
                                         "rev_du_disque" : obj1.__xva ,
                                         "bouton_compiler" : bouton_compiler ,
                                         "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                         "matrice_source" : matrice_source ,
-                                        "chi_id_source" : le_message_du_serveur.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                        "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
                                         "enregistrer_la_matrice" : enregistrer_la_matrice
                                     }
                                 };
@@ -641,13 +604,13 @@ class _developpement1{
                         return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + '<br />erreur lors de la convertion du sql'} ));
                     }
                 }
-            }else if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 3 , 3 ) === '.js'
+            }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 3 , 3 ) === '.js'
             ){
                 /*
                   =====================================================================================
                   javascript
                 */
-                let aa=this.normaliser_javascript( le_message_du_serveur.__xva['contenu_disque'] );
+                let aa=this.normaliser_javascript( le_colis1.__xva['contenu_disque'] );
                 if(aa.__xst === __xsu){
                     let matrice_source=null;
                     let enregistrer_la_matrice=__xsu;
@@ -659,13 +622,13 @@ class _developpement1{
                     let obj={
                         "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                         "__xva" : {
-                            "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                            "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                             "source_compile" : aa.rev_vers_js.__xva ,
                             "rev_du_disque" : aa.js_vers_rev.__xva ,
                             "bouton_compiler" : bouton_compiler ,
                             "pas_de_message_de_succes" : pas_de_message_de_succes ,
                             "matrice_source" : matrice_source ,
-                            "chi_id_source" : le_message_du_serveur.__xva.contenu_bdd['T0.chi_id_source'] ,
+                            "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
                             "enregistrer_la_matrice" : enregistrer_la_matrice
                         }
                     };
@@ -674,7 +637,7 @@ class _developpement1{
                     this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
                     return({"__xst" : __xer});
                 }
-            }else if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.css'
+            }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.css'
             ){
                 /*
                   =====================================================================================
@@ -691,7 +654,7 @@ class _developpement1{
                 if(this.#parseur_cssparseur !== null){
                     let ast_de_css=null;
                     try{
-                        ast_de_css=window.postcss.parse( le_message_du_serveur.__xva['contenu_disque'] , {} );
+                        ast_de_css=window.postcss.parse( le_colis1.__xva['contenu_disque'] , {} );
                         try{
                             let obj1=this.#objet_conversion_astcss_vers_rev1.traite_ast_postcss( ast_de_css , {} );
                             if(obj1.__xst === __xsu){
@@ -707,13 +670,13 @@ class _developpement1{
                                     let obj={
                                         "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                                         "__xva" : {
-                                            "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                            "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                             "source_compile" : obj2.__xva ,
                                             "rev_du_disque" : obj1.__xva ,
                                             "bouton_compiler" : bouton_compiler ,
                                             "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                             "matrice_source" : matrice_source ,
-                                            "chi_id_source" : le_message_du_serveur.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                            "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
                                             "enregistrer_la_matrice" : enregistrer_la_matrice
                                         }
                                     };
@@ -738,9 +701,9 @@ class _developpement1{
                     this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de chargement  du parseur css ' + this.__ig1.nl2()} );
                     return({"__xst" : __xer});
                 }
-            }else if(le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_message_du_serveur.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.rev'
+            }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.rev'
             ){
-                let tableau1=this.__ig1.__rev1.txt_en_tableau( le_message_du_serveur.__xva['contenu_disque'] );
+                let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva['contenu_disque'] );
                 let obj1=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
                 if(obj1.__xst === __xsu){
                     let obj2=this.__ig1.__rev1.matrice_vers_source_rev1( obj1.__xva , 0 , true , 1 );
@@ -755,13 +718,13 @@ class _developpement1{
                         let obj={
                             "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                             "__xva" : {
-                                "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                 "source_compile" : obj2.__xva ,
                                 "rev_du_disque" : obj2.__xva ,
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                 "matrice_source" : matrice_source ,
-                                "chi_id_source" : le_message_du_serveur.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
                                 "enregistrer_la_matrice" : enregistrer_la_matrice
                             }
                         };
@@ -775,7 +738,7 @@ class _developpement1{
                     return({"__xst" : __xer});
                 }
             }else{
-                let obj1=this.#objet_conversion_texte_vers_rev1.texte1_vers_rev( le_message_du_serveur.__xva['contenu_disque'] , {} );
+                let obj1=this.#objet_conversion_texte_vers_rev1.texte1_vers_rev( le_colis1.__xva['contenu_disque'] , {} );
                 if(obj1.__xst === __xsu){
                     let tableau1=this.__ig1.__rev1.txt_en_tableau( obj1.__xva );
                     let obj2=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
@@ -788,13 +751,13 @@ class _developpement1{
                             let obj={
                                 "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
                                 "__xva" : {
-                                    "contenu_bdd" : le_message_du_serveur.__xva.contenu_bdd ,
+                                    "contenu_bdd" : le_colis1.__xva.contenu_bdd ,
                                     "source_compile" : obj3.__xva ,
                                     "rev_du_disque" : obj1.__xva ,
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                     "matrice_source" : matrice_source ,
-                                    "chi_id_source" : le_message_du_serveur.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                    "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
                                     "enregistrer_la_matrice" : enregistrer_la_matrice
                                 }
                             };

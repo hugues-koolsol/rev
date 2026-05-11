@@ -596,7 +596,7 @@ class _rev_de_sql_vers_js1{
                     if(detail_champ.non_nulle === true){
                         t+='                /* test "non nul" sur le champ "' + nom_du_champ + '" */' + CRLF;
                         t+='                if(elem[\'' + nom_du_champ + '\'] === null || elem[\'' + nom_du_champ + '\']===\'\'){\n';
-                        t+='                    this.__ig1.donnees_retournees.__xsi[__xer].push(\'la valeur pour "' + detail_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__ig1.nl2() + \']\');\r\n';
+                        t+='                    this.__ig1.donnees_retournees.__xsi[__xer].push(\'la valeur pour "' + detail_champ.meta.abrege_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\');\r\n';
                         t+='                    return{__xst:__xer};\r\n';
                         t+='                }\n';
                     }
@@ -773,7 +773,7 @@ class _rev_de_sql_vers_js1{
                     if(detail_champ.non_nulle === true){
                         t+='        /* test "non nul" sur le champ "' + nom_du_champ + '" */' + CRLF;
                         t+='        if(par[\'n_' + nom_du_champ + '\'] === null || par[\'n_' + nom_du_champ + '\'] === \'\'){\n';
-                        t+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'la valeur pour "' + detail_champ.meta.abrege_du_champ + '" doit être renseigné [\' + this.__ig1.nl2() + \']\' );\r\n';
+                        t+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'la valeur pour "' + detail_champ.meta.abrege_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\' );\r\n';
                         t+='            return({"__xst" : __xer});\r\n';
                         t+='        }\n';
                     }
@@ -2154,6 +2154,11 @@ class _rev_de_sql_vers_js1{
                                             /* voir dans quel car on peut ne pas affecter à un champ un autre champ ou une constante */
                                             debugger;
                                         }
+                                    }else if(tab[k][2] === 'f'){
+                                        /*
+                                          c'est une fonction, par exemple requetes 107,159,158
+                                          le traitement se fera plus loin
+                                        */
                                     }else{
                                         debugger;
                                     }
@@ -2402,7 +2407,7 @@ class _rev_de_sql_vers_js1{
     /*
       =============================================================================================================
     */
-    traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_message_du_serveur=null ){
+    traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_colis1=null ){
         this.#obj_webs=this.#obj_webs_init;
         let chi_id_requete=0;
         let l01=mat.length;
@@ -2413,7 +2418,7 @@ class _rev_de_sql_vers_js1{
         }
         this.#div_de_travail=document.getElementById( 'div_de_travail' );
         this.#globale_id_requete=chi_id_requete;
-        let bases=le_message_du_serveur.__xva.les_bases_du_projet;
+        let bases=le_colis1.__xva.les_bases_du_projet;
         for(let indice_de_la_base in bases){
             var obj1=this.__ig1.__rev1.rev_tm( bases[indice_de_la_base]['T0.chp_rev_travail_basedd'] );
             if(obj1.__xst !== __xsu){
@@ -2438,12 +2443,12 @@ class _rev_de_sql_vers_js1{
         };
         a_retourner.obj_webs=this.#obj_webs;
         if(chi_id_requete > 0){
-            this.#globale_id_requete=le_message_du_serveur.__xva.requete['T0.chi_id_requete'];
-            this.#globale_rev_requete=le_message_du_serveur.__xva.requete['T0.cht_rev_requete'];
-            this.#globale_type_requete=le_message_du_serveur.__xva.requete['T0.chp_type_requete'];
-            this.#globale_commentaire_requete=le_message_du_serveur.__xva.requete['T0.cht_commentaire_requete']??'';
-            this.#globale_chp_table_reference_requete=le_message_du_serveur.__xva.requete['T0.chp_table_reference_requete']??'';
-            this.#che_est_souche_requete=le_message_du_serveur.__xva.requete['T0.che_est_souche_requete'];
+            this.#globale_id_requete=le_colis1.__xva.requete['T0.chi_id_requete'];
+            this.#globale_rev_requete=le_colis1.__xva.requete['T0.cht_rev_requete'];
+            this.#globale_type_requete=le_colis1.__xva.requete['T0.chp_type_requete'];
+            this.#globale_commentaire_requete=le_colis1.__xva.requete['T0.cht_commentaire_requete']??'';
+            this.#globale_chp_table_reference_requete=le_colis1.__xva.requete['T0.chp_table_reference_requete']??'';
+            this.#che_est_souche_requete=le_colis1.__xva.requete['T0.che_est_souche_requete'];
             /*
               this.convertir_rev_pour_construction( bases );
             */
@@ -2500,7 +2505,7 @@ class _rev_de_sql_vers_js1{
             this.convertir_rev_pour_construction( mat , d , les_bases_et_la_requete );
         }
         /*
-          2°] le partie transform_source_rev_vers_sql( le_message_du_serveur.__xva.requete['T0.cht_rev_requete'] , chi_id_requete );
+          2°] le partie transform_source_rev_vers_sql( le_colis1.__xva.requete['T0.cht_rev_requete'] , chi_id_requete );
         */
         var obj1=this.__ig1.__rev1.rev_tm( this.#globale_rev_requete );
         if(obj1.__xst !== __xsu){

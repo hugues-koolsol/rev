@@ -11,18 +11,18 @@ class _connexion1{
     /*
       =============================================================================================================
     */
-    deconnexion1( mat , d , le_message_du_serveur ){
+    deconnexion1( mat , d , le_colis1 ){
         try{
             document.getElementById( 'vv_info_projet' ).innerHTML='';
         } catch {}
-        this.__ig1.maj_fav_icone( le_message_du_serveur._CA_ , 0 );
+        this.__ig1.maj_fav_icone( le_colis1._CA_ , 0 );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    verifier_connexion1( mat , d , le_message_du_serveur ){
-        if(le_message_du_serveur.chi_id_utilisateur > 0){
+    verifier_connexion1( mat , d , le_colis1 ){
+        if(le_colis1.chi_id_utilisateur > 0){
             try{
                 document.getElementById( 'vv_se_deconnecter' ).style.display='block';
                 document.getElementById( 'vv_bouton_connexion' ).classList.remove( 'yy__1' );
@@ -30,9 +30,9 @@ class _connexion1{
             } catch {}
             try{
                 if(this._CA_ === 1){
-                    document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="projet ' + le_message_du_serveur.chi_id_projet + '" style="margin:auto;">p' + le_message_du_serveur.chi_id_projet + '/' + le_message_du_serveur.chp_nom_de_connexion_utilisateur.substr( 0 , 4 ) + '</div>';
+                    document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="projet ' + le_colis1.chi_id_projet + '" style="margin:auto;">p' + le_colis1.chi_id_projet + '/' + le_colis1.chp_nom_de_connexion_utilisateur.substr( 0 , 4 ) + '</div>';
                 }else{
-                    document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + le_message_du_serveur.chi_id_utilisateur + '" style="margin:auto;">' + le_message_du_serveur.chp_nom_de_connexion_utilisateur.substr( 0 , 4 ) + '</div>';
+                    document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + le_colis1.chi_id_utilisateur + '" style="margin:auto;">' + le_colis1.chp_nom_de_connexion_utilisateur.substr( 0 , 4 ) + '</div>';
                 }
             } catch {}
         }else{
@@ -50,19 +50,19 @@ class _connexion1{
     /*
       =============================================================================================================
     */
-    page_connexion1( mat , d , le_message_du_serveur ){
+    page_connexion1( mat , d , le_colis1 ){
         let t='';
         t+='<h1>connexion</h1>';
         let aff='none';
-        if(le_message_du_serveur && le_message_du_serveur.chi_id_utilisateur === 0){
+        if(le_colis1 && le_colis1.chi_id_utilisateur === 0){
             try{
                 document.getElementById( 'vv_bouton_connexion' ).classList.remove( 'yy__0' );
                 document.getElementById( 'vv_bouton_connexion' ).classList.add( 'yy__1' );
             } catch {}
         }else{
             if(document.getElementById( 'vv_bouton_connexion' ).className.indexOf( 'yy__0' ) >= 0
-                   || le_message_du_serveur
-                       && le_message_du_serveur.chi_id_utilisateur > 0
+                   || le_colis1
+                       && le_colis1.chi_id_utilisateur > 0
             ){
                 aff='block;';
             }
