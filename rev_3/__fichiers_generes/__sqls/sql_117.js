@@ -25,7 +25,7 @@ class sql_117{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_source" */
                 if(elem['chp_nom_source'] === null || elem['chp_nom_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /*
@@ -39,17 +39,17 @@ class sql_117{
 
                 /* test "non nul" sur le champ "che_binaire_source" */
                 if(elem['che_binaire_source'] === null || elem['che_binaire_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "binaire" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "che_contient_version_source" */
                 if(elem['che_contient_version_source'] === null || elem['che_contient_version_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "contient version" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "contient version" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /* test "non nul" sur le champ "che_autorisation_globale_source" */
                 if(elem['che_autorisation_globale_source'] === null || elem['che_autorisation_globale_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "autorisation globale" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 if(liste_des_valeurs != ''){

@@ -563,13 +563,6 @@ class sources1{
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
         for(let i in tt402.__xva){
-            /*
-              {
-              "T0.chi_id_source": 565,
-              "T0.chp_nom_source": "groupes1_c.js",
-              "T0.chx_dossier_id_source": 2
-              },            
-            */
             let chemin=await o.construire_chemin( tt402.__xva[i]['T0.chx_dossier_id_source'] , __dbn );
             if(chemin[__xst] !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur sur la construction du chemin pour le source ' + chi_id_source + '[' + this.__ig1.nl2() + ']' );
@@ -650,13 +643,6 @@ class sources1{
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
         for(let i in tt402.__xva){
-            /*
-              {
-              "T0.chi_id_source": 565,
-              "T0.chp_nom_source": "groupes1_c.js",
-              "T0.chx_dossier_id_source": 2
-              },            
-            */
             let chemin=await o.construire_chemin( tt402.__xva[i]['T0.chx_dossier_id_source'] , __dbn );
             if(chemin[__xst] !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur sur la construction du chemin pour le source ' + chi_id_source + '[' + this.__ig1.nl2() + ']' );
@@ -1926,16 +1912,18 @@ class sources1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
-        this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+    async sous_liste2( mat , d ){
+        const __nbMax=40;
+        let criteres_115={};
+        criteres_115['quantitee']=__nbMax;
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        return(await this.__ig1.generique_sous_liste2( mat , d , 115 , criteres_115 , __nbMax , __db1 ));
     }
     /*
       =============================================================================================================
     */
-    async sous_liste1( mat , d ){
-        this.fonction_liste='sous_liste1';
+    async liste1( mat , d ){
+        this.fonction_liste='liste1';
         await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }

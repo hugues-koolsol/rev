@@ -336,6 +336,12 @@ class __ig1{
                                                         }
                                                     }
                                                 }catch(e){
+                                                    /* this.ma_trace1("e=",e.stack); */
+                                                    if(e.message.indexOf('is not a function')>=0){
+                                                        this.donnees_retournees.__xsi[__xer].push( 'la fonction serveur "' + n1 + '.' + nom_de_la_fonction_a_appeler + '" n\a pas été trouvée' );
+                                                        continuer=false;
+                                                        continue;
+                                                    }
                                                     const repl0=new RegExp( this.options_generales.repertoire_du_pgm_serveur , 'g' );
                                                     let le_message='pile erreur 1=\n' + e.stack.replace( repl0 , '' ).replace( /https\:\/\/deno/g , 'deno' ).replace( /file\:\/\/\/\//g , '' );
                                                     le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
@@ -388,7 +394,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    async generique_sous_liste2(mat , d , id_sql , criteres_xxx , __nbMax ){
+    async generique_sous_liste2( mat , d , id_sql , criteres_xxx , __nbMax , __db1=null ){
         let module_appelant1='';
         let module_appele1='';
         let nom_champ_dans_parent2='';
@@ -422,19 +428,19 @@ class __ig1{
                 criteres_xxx[i]=formulaire[i];
             }
         }
-        let __db1=await this.ouvrir_bdd( this.options_generales.base_de_travail );
+        if(__db1 === null){
+            __db1=await this.ouvrir_bdd( this.options_generales.base_de_travail );
+        }
         let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );
         if(ttxxx.__xst !== __xsu){
             return({"__xst" : __xer});
         }
-        
         if(ttxxx[__xst] === __xsu && ttxxx[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres_xxx['debut']=__debut;
             ttxxx=await this.__ig1.sql_iii( id_sql , criteres_xxx , this.__ig1.donnees_retournees , __db1 );
         }
-        
         this.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.donnees_retournees[__xva]['__debut']=__debut;
         this.donnees_retournees[__xva]['__num_page']=__num_page;
@@ -442,10 +448,10 @@ class __ig1{
         for(let i in formulaire){
             this.donnees_retournees[__xac]+=this.__fnt1.critere_liste( formulaire , i );
         }
-        this.donnees_retournees[__xac]+=',module_appelant1('+module_appelant1+')';
-        this.donnees_retournees[__xac]+=',module_appele1('+module_appele1+')';
-        this.donnees_retournees[__xac]+=',nom_champ_dans_parent2('+nom_champ_dans_parent2+')';
-        this.donnees_retournees[__xac]+=',nom_libelle_dans_parent2('+nom_libelle_dans_parent2+')';
+        this.donnees_retournees[__xac]+=',module_appelant1(' + module_appelant1 + ')';
+        this.donnees_retournees[__xac]+=',module_appele1(' + module_appele1 + ')';
+        this.donnees_retournees[__xac]+=',nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
+        this.donnees_retournees[__xac]+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
         this.donnees_retournees[__xac]+='))))';
         this.donnees_retournees[__xva]['criteres2']=criteres_xxx;
         this.donnees_retournees[__xva]['sous_liste2']=ttxxx;
@@ -627,98 +633,109 @@ class __ig1{
       =============================================================================================================
     */
     async contenu_de_get( req1 ){
-        const url0=new URL( req1.url );
-        const chemin_get0=url0.pathname;
-        /* console.log(chemin_get0); */
-        if(chemin_get0 === "/f0"){
-            let n0=url0.searchParams.get( "n0" );
-            let content_type='text/javascript; charset=UTF-8';
-            let chemin_du_fichier='';
-            if(n0.slice( -4 ) === '_.js' || n0.slice( -5 ) === '_c.js'){
-                chemin_du_fichier='./__programmes/' + n0;
-            }else{
-                /* console.log( 'req1=' , req1 ); */
-                chemin_du_fichier='./__fichiers_binaires/' + n0;
-                if(chemin_du_fichier.slice( -4 ) === '.gif'){
-                    content_type='image/gif';
-                }else if(chemin_du_fichier.slice( -4 ) === '.png'){
-                    content_type='image/png';
-                }else if(chemin_du_fichier.slice( -4 ) === '.jpg'){
-                    content_type='image/jpeg';
+        try{
+            const url0=new URL( req1.url );
+            const chemin_get0=url0.pathname;
+            /* console.log(chemin_get0); */
+            if(chemin_get0 === "/f0"){
+                let n0=url0.searchParams.get( "n0" );
+                let content_type='text/javascript; charset=UTF-8';
+                let chemin_du_fichier='';
+                if(n0.slice( -4 ) === '_.js' || n0.slice( -5 ) === '_c.js'){
+                    chemin_du_fichier='./__programmes/' + n0;
                 }else{
-                    return(new Response( "404: Not Found :  ce type de fichier n'est pas pris en compte" , {"status" : 404} ));
+                    /* console.log( 'req1=' , req1 ); */
+                    chemin_du_fichier='./__fichiers_binaires/' + n0;
+                    if(chemin_du_fichier.slice( -4 ) === '.gif'){
+                        content_type='image/gif';
+                    }else if(chemin_du_fichier.slice( -4 ) === '.png'){
+                        content_type='image/png';
+                    }else if(chemin_du_fichier.slice( -4 ) === '.jpg'){
+                        content_type='image/jpeg';
+                    }else{
+                        return(new Response( "404: Not Found :  ce type de fichier n'est pas pris en compte" , {"status" : 404} ));
+                    }
                 }
+                let contenu_fichier='';
+                let entetes_reponse_http={};
+                try{
+                    contenu_fichier=await Deno.readFile( chemin_du_fichier );
+                    entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
+                }catch(e){
+                    entetes_reponse_http={"status" : 404};
+                }
+                return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu_fichier ,"entetes_reponse_http" : entetes_reponse_http}});
+            }else if(chemin_get0 === "/"){
+                let __le_serveur=url0.hostname;
+                /* console.log( '__gi1_s contenu_de_get url0=' , url0.hostname ); */
+                let contenu='<!DOCTYPE html>';
+                contenu+='<html lang="fr">';
+                contenu+='<head id="vv_head1">';
+                contenu+='<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />';
+                contenu+='<meta id="vv_content1" name="description" content="rev_' + this._CA_ + '" />';
+                contenu+='<title id="vv_titre1">rev_' + this._CA_ + '</title>';
+                contenu+='<style id="vv_style1" type="text/css"></style>';
+                contenu+='<link id="vv_icon1" rel="icon" type="image/svg+xml" href=\'';
+                if(this._CA_ === 1){
+                    contenu+='data:image/svg+xml,';
+                    contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
+                    contenu+='<rect x="-50" y="-50" width="100" height="100" fill="bisque" />';
+                    contenu+='<text x="-30.5" y="40.5" style="font-size:106;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;">a</text>';
+                    contenu+='</svg>';
+                }else if(this._CA_ === 2){
+                    contenu+='data:image/svg+xml,';
+                    contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
+                    contenu+='<rect x="-50" y="-50" width="100" height="100" fill="lightblue" />';
+                    contenu+='<text x="-30.5" y="40.5" style="font-size:106;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;" >2</text>';
+                    contenu+='</svg>';
+                }else{
+                    contenu+='data:image/svg+xml,';
+                    contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
+                    contenu+='<rect x="-50" y="-50" width="100" height="100" fill="yellow" />';
+                    contenu+='<text x="-20.5" y="20.5" style="font-size:80;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;">' + this._CA_ + '</text>';
+                    contenu+='</svg>';
+                }
+                contenu+='\'>';
+                contenu+='<script type="text/javascript">\r\n';
+                contenu+='var __ig0=null;\r\n';
+                contenu+='const __version=\'' + this.__version + '\';\r\n';
+                contenu+='const __le_serveur=\'' + __le_serveur + '\';\r\n';
+                contenu+='const __le_port=\'' + this.__le_port + '\';\r\n';
+                contenu+='const _CA_=' + this._CA_ + ';\r\n';
+                contenu+='const __xer=0;const __xsu=1;const __xal=2;const __xif=3;const __xdv=4;\r\n';
+                contenu+='</script>\r\n';
+                contenu+='</head>';
+                contenu+='<body id="vv_le_body1"></body>\r\n';
+                contenu+='<script type="module" src="f0?n0=__ig1_c.js&__version=' + this.__version + '"></script>';
+                contenu+='</html>';
+                const date_heure_serveur=formater_la_date( new Date() , "yyyy-MM-dd HH:mm:ss.SSS" , {"timeZone" : 'Europe/Paris'} );
+                /* console.log("__ig1_s contenu_de_get date_heure_serveur" , date_heure_serveur ); // */
+                const cookies=getCookies( req1.headers );
+                let la_cle=(prefixe_nom_fichier_session + this._CA_) + '_' + date_heure_serveur.substr( 0 , 10 ) + '_' + (await crypto.randomUUID());
+                if(cookies.hasOwnProperty( this.__ndlcs )
+                       && cookies[this.__ndlcs] !== ''
+                       && cookies[this.__ndlcs].substr( 0 , String( (prefixe_nom_fichier_session + this._CA_) + '_' ).length ) === (prefixe_nom_fichier_session + this._CA_) + '_'
+                ){
+                    /* console.log("cookie trouve") */
+                    la_cle=cookies[this.__ndlcs];
+                }
+                let le_cookie='cle_de_session_rev_' + this._CA_ + '_websocket=' + la_cle + '; Secure; HttpOnly; SameSite=Strict; Path=/;';
+                const headers=new Headers();
+                headers.append( "status" , "200" );
+                headers.append( "Content-Type" , "text/html; charset=utf-8" );
+                headers.append( "Set-Cookie" , le_cookie );
+                let entetes_reponse_http={"headers" : headers};
+                return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu ,"entetes_reponse_http" : entetes_reponse_http}});
             }
-            let contenu_fichier='';
-            let entetes_reponse_http={};
-            try{
-                contenu_fichier=await Deno.readFile( chemin_du_fichier );
-                entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
-            }catch(e){
-                entetes_reponse_http={"status" : 404};
-            }
-            return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu_fichier ,"entetes_reponse_http" : entetes_reponse_http}});
-        }else if(chemin_get0 === "/"){
-            let __le_serveur=url0.hostname;
-            /* console.log( '__gi1_s contenu_de_get url0=' , url0.hostname ); */
-            let contenu='<!DOCTYPE html>';
-            contenu+='<html lang="fr">';
-            contenu+='<head id="vv_head1">';
-            contenu+='<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />';
-            contenu+='<meta id="vv_content1" name="description" content="rev_' + this._CA_ + '" />';
-            contenu+='<title id="vv_titre1">rev_' + this._CA_ + '</title>';
-            contenu+='<style id="vv_style1" type="text/css"></style>';
-            contenu+='<link id="vv_icon1" rel="icon" type="image/svg+xml" href=\'';
-            if(this._CA_ === 1){
-                contenu+='data:image/svg+xml,';
-                contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
-                contenu+='<rect x="-50" y="-50" width="100" height="100" fill="bisque" />';
-                contenu+='<text x="-30.5" y="40.5" style="font-size:106;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;">a</text>';
-                contenu+='</svg>';
-            }else if(this._CA_ === 2){
-                contenu+='data:image/svg+xml,';
-                contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
-                contenu+='<rect x="-50" y="-50" width="100" height="100" fill="lightblue" />';
-                contenu+='<text x="-30.5" y="40.5" style="font-size:106;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;" >2</text>';
-                contenu+='</svg>';
-            }else{
-                contenu+='data:image/svg+xml,';
-                contenu+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">';
-                contenu+='<rect x="-50" y="-50" width="100" height="100" fill="yellow" />';
-                contenu+='<text x="-20.5" y="20.5" style="font-size:80;stroke-width:4;stroke:black;fill:blue;font-family:Verdana;">' + this._CA_ + '</text>';
-                contenu+='</svg>';
-            }
-            contenu+='\'>';
-            contenu+='<script type="text/javascript">\r\n';
-            contenu+='var __ig0=null;\r\n';
-            contenu+='const __version=\'' + this.__version + '\';\r\n';
-            contenu+='const __le_serveur=\'' + __le_serveur + '\';\r\n';
-            contenu+='const __le_port=\'' + this.__le_port + '\';\r\n';
-            contenu+='const _CA_=' + this._CA_ + ';\r\n';
-            contenu+='const __xer=0;const __xsu=1;const __xal=2;const __xif=3;const __xdv=4;\r\n';
-            contenu+='</script>\r\n';
-            contenu+='</head>';
-            contenu+='<body id="vv_le_body1"></body>\r\n';
-            contenu+='<script type="module" src="f0?n0=__ig1_c.js&__version=' + this.__version + '"></script>';
-            contenu+='</html>';
-            const cookies=getCookies( req1.headers );
-            let la_cle=(prefixe_nom_fichier_session + this._CA_) + '_' + (await crypto.randomUUID());
-            if(cookies.hasOwnProperty( this.__ndlcs )
-                   && cookies[this.__ndlcs] !== ''
-                   && cookies[this.__ndlcs].substr( 0 , String( (prefixe_nom_fichier_session + this._CA_) + '_' ).length ) === (prefixe_nom_fichier_session + this._CA_) + '_'
-            ){
-                /* console.log("cookie trouve") */
-                la_cle=cookies[this.__ndlcs];
-            }
-            let le_cookie='cle_de_session_rev_' + this._CA_ + '_websocket=' + la_cle + '; Secure; HttpOnly; SameSite=Strict; Path=/;';
+            return({"__xst" : __xer});
+        }catch(e){
+            let text_erreur='Erreur, consultez la maintenance [' + this.nl2( e ) + ']';
             const headers=new Headers();
             headers.append( "status" , "200" );
             headers.append( "Content-Type" , "text/html; charset=utf-8" );
-            headers.append( "Set-Cookie" , le_cookie );
             let entetes_reponse_http={"headers" : headers};
-            return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu ,"entetes_reponse_http" : entetes_reponse_http}});
+            return({"__xst" : __xsu ,"__xva" : {"contenu" : text_erreur ,"entetes_reponse_http" : entetes_reponse_http}});
         }
-        return({"__xst" : __xer});
     }
     /*
       =============================================================================================================

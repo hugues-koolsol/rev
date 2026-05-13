@@ -21,13 +21,6 @@ class groupes1{
             "T0_chx_parent_groupe" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'parent' ,"taille" : 8} ,
             "T1_chp_nom_groupe" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom groupe' ,"taille" : 8}
         } ,
-        "sous_liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_groupe" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_groupe" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_chx_parent_groupe" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'parent' ,"taille" : 8} ,
-            "T1_chp_nom_groupe" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom groupe' ,"taille" : 8}
-        } ,
         "sous_liste2" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
             "T0_chi_id_groupe" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
@@ -63,13 +56,6 @@ class groupes1{
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
-        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
-            if(mat[i][1] === 'nom_champ_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                this.nom_champ_dans_parent1=mat[i + 1][1];
-            }else if(mat[i][1] === 'nom_libelle_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                this.nom_libelle_dans_parent1=mat[i + 1][1];
-            }
-        }
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){
@@ -183,7 +169,7 @@ class groupes1{
         o1+='(' + enreg['T0.chx_parent_groupe'] + ') ';
         o1+=this.__ig1.fi2( enreg['T1.chp_nom_groupe'] );
         o1+='</span>';
-        o1+=this.__ig1.lien_parent( 'groupes1' , 'chx_parent_groupe' , 'chx_parent_groupe_libelle' );
+        o1+=this.__ig1.lien_parent2( 'groupes1' , 'chx_parent_groupe' , 'chx_parent_groupe_libelle' , this.moi );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -387,7 +373,7 @@ class groupes1{
         /*
           ;
         */
-        o1+=this.__ig1.lien_parent( 'groupes1' , 'chx_parent_groupe' , 'chx_parent_groupe_libelle' );
+        o1+=this.__ig1.lien_parent2( 'groupes1' , 'chx_parent_groupe' , 'chx_parent_groupe_libelle' , this.moi );
         /*  */
         o1+='    </div>';
         o1+='  </div>';
@@ -575,13 +561,6 @@ class groupes1{
     /*
       =============================================================================================================
     */
-    sous_liste1( mat , d , le_colis1=null ){
-        this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_colis1 , this , 'chi_id_groupe' ));
-    }
-    /*
-      =============================================================================================================
-    */
     liste1( mat , d , le_colis1=null ){
         if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             /* F5 */
@@ -624,11 +603,17 @@ class groupes1{
     /*
       =============================================================================================================
     */
+    sous_liste2( mat , d , le_colis1 ){
+        return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
+    }
+    /*
+      =============================================================================================================
+    */
     zones_sous_liste2( mat , d , le_colis1 ){
         let o1='';
-        let obj2=this.__ig1.construire_les_zones_filtres2( mat, d , le_colis1 , this );
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this );
         o1+=obj2.html2;
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty('sous_liste2')){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
             let lst='';
             for(let i in le_colis1.__xva['sous_liste2'].__xva){
                 let elem=le_colis1.__xva['sous_liste2'].__xva[i];
@@ -693,81 +678,8 @@ class groupes1{
                 o1+=this.__ig1.la_liste_est_vide();
             }
         }
-        document.getElementById('contenu_de_sous_liste2').innerHTML=o1;
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        this.__ig1.initialisation_filtre_sous_fenetre2('sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE);
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    zones_sous_liste1( le_colis1 ){
-        let o1='';
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
-            let lst='';
-            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
-                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
-                lst+='<tr>';
-                lst+='<td style="text-wrap-mode: nowrap;">';
-                let parametres='';
-                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre1(';
-                parametres+=' nom_champ_dans_parent1(' + this.nom_champ_dans_parent1 + ')';
-                parametres+=' nom_libelle_dans_parent1(' + this.nom_libelle_dans_parent1 + ')';
-                parametres+=' id1(' + elem['T0.chi_id_groupe'] + ')';
-                let libelle1='';
-                libelle1+='(' + elem['T0.chi_id_groupe'] + ') ';
-                libelle1+=elem['T0.chp_nom_groupe'] ? ( ' , ' + elem['T0.chp_nom_groupe'] ) : ( '' );
-                parametres+=' libelle1(\'' + this.__ig1.fi1( libelle1 ) + '\')';
-                parametres+=')))';
-                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_groupe'] !== null){
-                    lst+=elem['T0.chi_id_groupe'];
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_nom_groupe'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_nom_groupe'].substr( 0 , 100 ) );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_parent_groupe'] !== null){
-                    lst+=elem['T0.chx_parent_groupe'];
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T1.chp_nom_groupe'] !== null){
-                    lst+=this.__ig1.fi2( elem['T1.chp_nom_groupe'].substr( 0 , 100 ) );
-                }
-                lst+='</td>';
-                lst+='</tr>';
-            }
-            if(lst !== ''){
-                o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
-                o1+='<tr>';
-                o1+='<th>action</th>';
-                o1+=/* chi_id_groupe */'<th>id</th>';
-                o1+=/* chp_nom_groupe */'<th>nom</th>';
-                o1+=/* chx_parent_groupe */'<th>parent</th>';
-                o1+=/* chp_nom_groupe */'<th>nom groupe</th>';
-                o1+='</tr>';
-                o1+=lst;
-                o1+='</table>';
-                o1+='</div>';
-            }else{
-                o1+=this.__ig1.la_liste_est_vide();
-            }
-        }
-        return o1;
     }
     /*
       =============================================================================================================

@@ -25,7 +25,7 @@ class acces1{
             "T0_chx_metier_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id metier' ,"taille" : 8} ,
             "T2_chp_nom_metier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom metier' ,"taille" : 8}
         } ,
-        "sous_liste1" : {
+        "sous_liste2" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
             "T0_chi_id_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
@@ -289,13 +289,6 @@ class acces1{
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
-        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
-            if(mat[i][1] === 'nom_champ_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                this.nom_champ_dans_parent1=mat[i + 1][1];
-            }else if(mat[i][1] === 'nom_libelle_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                this.nom_libelle_dans_parent1=mat[i + 1][1];
-            }
-        }
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){
@@ -386,15 +379,12 @@ class acces1{
             } );
         return({"__xst" : __xsu});
     }
-    
     /*
       =============================================================================================================
     */
-    sous_liste2(mat , d , le_colis1){
-     
-        return( this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
+    sous_liste2( mat , d , le_colis1 ){
+        return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
-    
     /*
       =============================================================================================================
     */
@@ -452,7 +442,6 @@ class acces1{
         o1+='(' + enreg['T0.chx_groupe_acces'] + ') , ';
         o1+=this.__ig1.fi2( enreg['T1.chp_nom_groupe'] );
         o1+='</span>';
-        /* o1+=this.__ig1.lien_parent( 'groupes1' , 'chx_groupe_acces' , 'chx_groupe_acces_libelle' ); */
         o1+=this.__ig1.lien_parent2( 'groupes1' , 'chx_groupe_acces' , 'chx_groupe_acces_libelle' , this.moi );
         o1+='    </div>';
         o1+='  </div>';
@@ -474,7 +463,6 @@ class acces1{
         o1+='(' + enreg['T0.chx_metier_acces'] + ') , ';
         o1+=this.__ig1.fi2( enreg['T2.chp_nom_metier'] );
         o1+='</span>';
-//        o1+=this.__ig1.lien_parent( 'metiers1' , 'chx_metier_acces' , 'chx_metier_acces_libelle' );
         o1+=this.__ig1.lien_parent2( 'metiers1' , 'chx_metier_acces' , 'chx_metier_acces_libelle' , this.moi );
         o1+='    </div>';
         o1+='  </div>';
@@ -704,9 +692,9 @@ class acces1{
         }
         o1+='</span>';
         /*
-          ;
+          
         */
-        o1+=this.__ig1.lien_parent( 'groupes1' , 'chx_groupe_acces' , 'chx_groupe_acces_libelle' );
+        o1+=this.__ig1.lien_parent2( 'groupes1' , 'chx_groupe_acces' , 'chx_groupe_acces_libelle' , this.moi );
         /*  */
         o1+='    </div>';
         o1+='  </div>';
@@ -742,9 +730,9 @@ class acces1{
         }
         o1+='</span>';
         /*
-          ;
+          
         */
-        o1+=this.__ig1.lien_parent( 'metiers1' , 'chx_metier_acces' , 'chx_metier_acces_libelle' );
+        o1+=this.__ig1.lien_parent2( 'metiers1' , 'chx_metier_acces' , 'chx_metier_acces_libelle' , this.moi );
         /*  */
         o1+='    </div>';
         o1+='  </div>';
@@ -932,13 +920,6 @@ class acces1{
     /*
       =============================================================================================================
     */
-    sous_liste1( mat , d , le_colis1=null ){
-        this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_colis1 , this , 'chi_id_acces' ));
-    }
-    /*
-      =============================================================================================================
-    */
     liste1( mat , d , le_colis1=null ){
         if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             /* F5 */
@@ -981,25 +962,27 @@ class acces1{
     /*
       =============================================================================================================
     */
-    zones_sous_liste1( le_colis1 ){
+    zones_sous_liste2( mat , d , le_colis1 ){
         let o1='';
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this );
+        o1+=obj2.html2;
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
             let lst='';
-            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
-                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva['sous_liste2'].__xva){
+                let elem=le_colis1.__xva['sous_liste2'].__xva[i];
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
-                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre1(';
-                parametres+=' nom_champ_dans_parent1(' + this.nom_champ_dans_parent1 + ')';
-                parametres+=' nom_libelle_dans_parent1(' + this.nom_libelle_dans_parent1 + ')';
-                parametres+=' id1(' + elem['T0.chi_id_acces'] + ')';
+                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
+                parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
+                parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
+                parametres+=' id2(' + elem['T0.chi_id_acces'] + ')';
                 let libelle1='';
                 libelle1+='(' + elem['T0.chi_id_acces'] + ') ';
                 libelle1+=elem['T0.chp_nom_acces'] ? ( ' , ' + elem['T0.chp_nom_acces'] ) : ( '' );
-                parametres+=' libelle1(\'' + this.__ig1.fi1( libelle1 ) + '\')';
+                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle1 ) + '\')';
                 parametres+=')))';
-                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=></div>';
+                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
                 lst+='</td>';
                 /*
                 */
@@ -1064,7 +1047,8 @@ class acces1{
                 o1+=this.__ig1.la_liste_est_vide();
             }
         }
-        return o1;
+        this.__ig1.initialisation_filtre_sous_fenetre2('sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE);
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -1090,11 +1074,7 @@ class acces1{
                     projet_1_ou_2=true;
                 }
                 let boutons_activés=false;
-                if(projet_1_ou_2 === true
-                       && le_colis1.chi_id_utilisateur === 1
-                       && (elem['T0.chi_id_acces'] === 1
-                           || elem['T0.chi_id_acces'] === 2)
-                ){
+                if(projet_1_ou_2 === true && le_colis1.chi_id_utilisateur === 1){
                     boutons_activés=true;
                 }else if(projet_1_ou_2 === true && le_colis1.chi_id_utilisateur === 2 && elem['T0.chi_id_acces'] > 2){
                     boutons_activés=true;

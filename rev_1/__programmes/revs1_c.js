@@ -22,7 +22,7 @@ class revs1{
             "T0_chp_valeur_rev" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'valeur' ,"taille" : 8} ,
             "T0_chx_source_rev" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'source' ,"taille" : 8}
         } ,
-        "sous_liste1" : {
+        "sous_liste2" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
             "T0_chi_id_rev" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_chp_provenance_rev" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'provenance' ,"taille" : 8} ,
@@ -58,13 +58,6 @@ class revs1{
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
-        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
-            if(mat[i][1] === 'nom_champ_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                this.nom_champ_dans_parent1=mat[i + 1][1];
-            }else if(mat[i][1] === 'nom_libelle_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                this.nom_libelle_dans_parent1=mat[i + 1][1];
-            }
-        }
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){
@@ -222,6 +215,18 @@ class revs1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['chp_type_rev'] !== ''){
+            let tab_est_parmis_4='i,c,f'.split( ',' );
+            if(!tab_est_parmis_4.includes( fo1['chp_type_rev'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_type_rev' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         if(fo1['chp_niveau_rev'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "niveau" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -312,7 +317,7 @@ class revs1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques début */
+        /* conversion des données numériques verifier_creer début */
         fo1['chx_source_rev']=fo1['chx_source_rev'] === '' ? ( null ) : ( parseInt( fo1['chx_source_rev'] , 10 ) );
         fo1['chp_id_rev']=fo1['chp_id_rev'] === '' ? ( null ) : ( parseInt( fo1['chp_id_rev'] , 10 ) );
         fo1['chp_niveau_rev']=fo1['chp_niveau_rev'] === '' ? ( null ) : ( parseInt( fo1['chp_niveau_rev'] , 10 ) );
@@ -330,7 +335,7 @@ class revs1{
             parseInt( fo1['chp_pos_ouver_parenthese_rev'] , 10 )
           );
         fo1['chp_enfant_suivant_rev']=fo1['chp_enfant_suivant_rev'] === '' ? ( null ) : ( parseInt( fo1['chp_enfant_suivant_rev'] , 10 ) );
-        /* conversion des données numériques fin */
+        /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
         */
@@ -347,6 +352,8 @@ class revs1{
       =============================================================================================================
     */
     page_creer1( mat , d , dupliquer=null ){
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_rev' );
+        let o1='';
         let a=document.getElementById( 'vv_titre_de_la_page' );
         if(a === null){
             this.__ig1.initialisation_des_zones( '' + this.moi + '' );
@@ -357,7 +364,6 @@ class revs1{
             a.innerHTML='création ' + this.DUN_DUNE_ELEMENT_GERE;
             this.__ig1.afficher_les_zones( 'vv_ecran_creation' );
         }
-        let o1='';
         /*
           =====================================================================================================
         */
@@ -366,7 +372,7 @@ class revs1{
         o1+='      <span>provenance</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_provenance_rev" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_provenance_rev" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_provenance_rev' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_provenance_rev'] );
         }else{
@@ -442,20 +448,20 @@ class revs1{
         o1+='      <span>type</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  disabled  type="text"  size="1"   maxlength="1"  id="chp_type_rev" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        o1+='         <input  disabled  type="text"  size="1"   maxlength="1"  id="chp_type_rev" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_type_rev' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_type_rev'] );
         }else{
             o1+='i';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='        <div>';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_type_rev' );
-        o1+='    </div>';
-        o1+='      <br />';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_rev),valeur(valeur_constante(i)))))">i</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_rev),valeur(valeur_constante(c)))))">c</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_rev),valeur(valeur_constante(f)))))">f</div>';
+        o1+='        </div>';
+        o1+='        <br />';
+        o1+='        <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_rev),valeur(valeur_constante(i)))))">i</div>';
+        o1+='        <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_rev),valeur(valeur_constante(c)))))">c</div>';
+        o1+='        <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_rev),valeur(valeur_constante(f)))))">f</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -834,13 +840,6 @@ class revs1{
     /*
       =============================================================================================================
     */
-    sous_liste1( mat , d , le_colis1=null ){
-        this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_colis1 , this , 'chi_id_rev' ));
-    }
-    /*
-      =============================================================================================================
-    */
     liste1( mat , d , le_colis1=null ){
         if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             /* F5 */
@@ -879,85 +878,6 @@ class revs1{
     entree_module( mat , d ){
         this.__ig1.recupere_liste_initiale( mat , d , this );
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    zones_sous_liste1( le_colis1 ){
-        let o1='';
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
-            let lst='';
-            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
-                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
-                lst+='<tr>';
-                lst+='<td style="text-wrap-mode: nowrap;">';
-                let parametres='';
-                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre1(';
-                parametres+=' nom_champ_dans_parent1(' + this.nom_champ_dans_parent1 + ')';
-                parametres+=' nom_libelle_dans_parent1(' + this.nom_libelle_dans_parent1 + ')';
-                parametres+=' id1(' + elem['T0.chi_id_rev'] + ')';
-                let libelle1='';
-                libelle1+='(' + elem['T0.chi_id_rev'] + ') ';
-                parametres+=' libelle1(\'' + this.__ig1.fi1( libelle1 ) + '\')';
-                parametres+=')))';
-                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=></div>';
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_rev'] !== null){
-                    lst+=elem['T0.chi_id_rev'];
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_provenance_rev'] !== null){
-                    lst+=elem['T0.chp_provenance_rev'].substr( 0 , 100 ).replace( />/g , '>' ).replace( /</g , '<' );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T1.chp_nom_source'] !== null){
-                    lst+=elem['T1.chp_nom_source'].substr( 0 , 100 ).replace( />/g , '>' ).replace( /</g , '<' );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_valeur_rev'] !== null){
-                    lst+=elem['T0.chp_valeur_rev'].substr( 0 , 100 ).replace( />/g , '>' ).replace( /</g , '<' );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_source_rev'] !== null){
-                    lst+=elem['T0.chx_source_rev'];
-                }
-                lst+='</td>';
-                lst+='</tr>';
-            }
-            if(lst !== ''){
-                o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
-                o1+='<tr>';
-                o1+='<th>action</th>';
-                o1+='<th>id</th>';
-                o1+='<th>provenance</th>';
-                o1+='<th>nom source</th>';
-                o1+='<th>valeur</th>';
-                o1+='<th>source</th>';
-                o1+='</tr>';
-                o1+=lst;
-                o1+='</table>';
-                o1+='</div>';
-            }else{
-                o1+=this.__ig1.la_liste_est_vide();
-            }
-        }
-        return o1;
     }
     /*
       =============================================================================================================

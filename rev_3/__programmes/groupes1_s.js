@@ -534,16 +534,22 @@ class groupes1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
-        this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+    async sous_liste2( mat , d ){
+        const __nbMax=40;
+        let criteres_130={};
+        criteres_130['quantitee']=__nbMax;
+        criteres_130['groupe_mini']=0;
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            criteres_130['groupe_mini']=3;
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        return(await this.__ig1.generique_sous_liste2( mat , d , 130 , criteres_130 , __nbMax , __db1 ));
     }
     /*
       =============================================================================================================
     */
-    async sous_liste1( mat , d ){
-        this.fonction_liste='sous_liste1';
+    async liste1( mat , d ){
+        this.fonction_liste='liste1';
         await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }

@@ -22,7 +22,7 @@ class sql_132{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_groupe" */
                 if(elem['chp_nom_groupe'] === null || elem['chp_nom_groupe']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du groupe" doit être renseigné [' + this.__ig1.nl2() + ']');
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du groupe" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
                 /*

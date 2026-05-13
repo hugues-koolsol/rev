@@ -620,16 +620,22 @@ class utilisateurs1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
-        this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+    async sous_liste2( mat , d ){
+        const __nbMax=40;
+        let criteres_119={};
+        criteres_119['quantitee']=__nbMax;
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 119 , criteres_119 , __nbMax , __db1 );
+        if(liste2.__xst === __xsu){
+            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
+        }
+        return liste2;
     }
     /*
       =============================================================================================================
     */
-    async sous_liste1( mat , d ){
-        this.fonction_liste='sous_liste1';
+    async liste1( mat , d ){
+        this.fonction_liste='liste1';
         await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }

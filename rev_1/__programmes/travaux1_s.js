@@ -22,6 +22,8 @@ class travaux1{
             return(new Promise( ( resolve ) => {
                     setTimeout( resolve , ms );} ));
         }
+        let t_init=performance.now();
+        
         /*
           on attend 0.3 secondes
         */
@@ -43,6 +45,7 @@ class travaux1{
             }catch(e){
                 this.__ig1.ma_trace1( 'e=' , e , e.stack );
                 this.__ig1.ma_trace1( 'Erreur ouverture ' + chemin_bdd_1 );
+                this.__ig1.ma_trace1("return __xer");
                 return({"__xst" : __xer});
             }
             let criteres_316={"T0_chi_id_projet" : 3};
@@ -64,12 +67,12 @@ class travaux1{
             }else{
                 if(tt316.__xst !== __xsu || tt316.__xva.length === 0){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
+                    this.__ig1.ma_trace1("return __xer");
                     return({"__xst" : __xer});
                 }
             }
             await __db1.close();
-            let t0=performance.now();
-            this.__ig1.ma_trace1( 't0=' + t0 );
+            this.__ig1.ma_trace1( 't_init=' + t_init );
             let continuer=true;
             /* this.__ig1.ma_trace1( 'tt316.__xva=' , tt316.__xva ); */
             do{
@@ -159,6 +162,7 @@ class travaux1{
                             let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_travail );
                             if(obj_matrice[__xst] !== __xsu){
                                 this.__ig1.donnees_retournees.__xsi[__xal].push( ' erreur de convertion en matrice [' + this.__ig1.nl2() + ']' );
+                                this.__ig1.ma_trace1("return __xer");
                                 return({"__xst" : __xer});
                             }
                             let ret=null;
@@ -183,6 +187,7 @@ class travaux1{
                                 await sleep1( 50 );
                             }catch(e){
                                 this.__ig1.donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2( e ) + ']' );
+                                this.__ig1.ma_trace1("return __xer");
                                 ret={"__xst" : __xer};
                             }
                             if(ret.__xst !== __xsu){
@@ -209,10 +214,12 @@ class travaux1{
                                         this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
                                     }
                                     await __dbn.close();
+                                    this.__ig1.ma_trace1("return __xer");
                                     return({"__xst" : __xer});
                                 }
                                 this.__ig1.donnees_retournees.__xsi[__xal].push( ' erreur de appel_fonction [' + this.__ig1.nl2() + ']' );
                                 await __dbn.close();
+                                this.__ig1.ma_trace1("return __xer");
                                 return({"__xst" : __xer});
                             }
                             let heure_fin_travail=performance.now();
@@ -246,12 +253,13 @@ class travaux1{
                                     this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
                                 }
                                 await __dbn.close();
+                                this.__ig1.ma_trace1("return __xer");
                                 return({"__xst" : __xer});
                             }
                             await __dbn.close();
                         }
                         let t1=performance.now();
-                        let delta=t1 - t0;
+                        let delta=t1 - t_init;
                         if(delta < 55000){
                             /*
                               à priori, on continue
@@ -1013,14 +1021,6 @@ class travaux1{
     */
     async liste1( mat , d ){
         this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async sous_liste1( mat , d ){
-        this.fonction_liste='sous_liste1';
         await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }

@@ -75,14 +75,6 @@ class menus1{
       =============================================================================================================
     */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        /*#
-          let obj=await this.faire_un_traitement( __xva_avant['T0.chi_id_menu'] ,  this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
-          if(obj[__xst] === __xsu){
-              return({"__xst" : __xsu});
-          }else{
-              return({"__xst" : __xer});
-          }
-        */
         return({"__xst" : __xsu});
     }
     /*
@@ -127,8 +119,7 @@ class menus1{
         */
         /*sql_inclure_fin*/ 141 , criteres_select_141 , this.__ig1.donnees_retournees , __db1 );
         if(tt141[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() + ']'});
         }
         /* this.__ig1.ma_trace1( 'tt141=' , tt141[__xva][0] ); */
         if(tt141[__xva][0]['T0.chx_acces_autorisation'] === null){
@@ -137,8 +128,7 @@ class menus1{
             /* return({"__xst" : __xsu}); */
         }
         if(tt141[__xva][0]['T2.chp_nom_source'].slice( -5 ) === '_s.js'){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'autorisation de ce menu pointe sur un source serveur et devrait pointer sur un source client' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'l\'autorisation de ce menu pointe sur un source serveur et devrait pointer sur un source client'});
         }
         let criteres_136={
              /*  */
@@ -159,8 +149,7 @@ class menus1{
         */
         /*sql_inclure_fin*/ 136 , criteres_136 , this.__ig1.donnees_retournees , __db1 );
         if(tt136[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         /* this.__ig1.ma_trace1( 'tt136=' , tt136[__xva] ); */
         let json_de_l_acces=JSON.parse( tt136[__xva][0]['T0.cht_parametres_acces'] );
@@ -220,8 +209,7 @@ class menus1{
                 */
                 /*sql_inclure_fin*/ 154 , criteres_154 , this.__ig1.donnees_retournees , __db1 );
                 if(tt154[__xst] !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
                 }
             }
         }
@@ -231,8 +219,7 @@ class menus1{
         let o=new m['acces1']( this.__ig1 );
         let obj=await o.produire_le_menu( mat , d , __db1 );
         if(obj[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de génération du menu [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de génération du menu [' + this.__ig1.nl2()});
         }
         if(this.__ig1.donnees_retournees._CA_ === this.__ig1.donnees_retournees.chi_id_projet){
             await this.__ig1.obtenir_les_menus( mat , d );
@@ -297,10 +284,16 @@ class menus1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
-        /* conversion des données numériques début */
+        /*
+          conversion des données numériques début
+          =====================================================================================================
+        */
         form['chi_id_menu']=form['chi_id_menu'] === null ? ( null ) : ( parseInt( form['chi_id_menu'] , 10 ) );
         form['chx_autorisation_menu']=form['chx_autorisation_menu'] === null ? ( null ) : ( parseInt( form['chx_autorisation_menu'] , 10 ) );
-        /* conversion des données numériques fin */
+        /*
+          =====================================================================================================
+          conversion des données numériques fin
+        */
         let retour_a_la_liste=false;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -557,7 +550,7 @@ class menus1{
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt146[__xva][0] , __db1 );
         if(aac[__xst] === __xer){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après supprimer ont échouées [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
@@ -630,15 +623,15 @@ class menus1{
         if(__tac[__xst] !== __xsu){
             return({"__xst" : __xer});
         }
-        let donnees_sql={
+        let criteres_147={
             "donnees" : [{
                         "chp_titre_menu" : form['chp_titre_menu'] ,
                         "chx_autorisation_menu" : form['chx_autorisation_menu'] ,
                         "chp_methode_menu" : form['chp_methode_menu'] ,
                         "cht_libelle_menu" : form['cht_libelle_menu'] ,
                         "cht_condition_menu" : form['cht_condition_menu'] === '' ? ( null ) : ( form['cht_condition_menu'] ) ,
-                        "cht_condition_js_menu" : form['cht_condition_js_menu'] === '' ? ( null ) : ( form['cht_condition_js_menu'] ) ,
-                        "cht_initialisation_menu" : form['cht_initialisation_menu'] === '' ? ( null ) : ( form['cht_initialisation_menu'] )
+                        "cht_initialisation_menu" : form['cht_initialisation_menu'] === '' ? ( null ) : ( form['cht_initialisation_menu'] ) ,
+                        "cht_condition_js_menu" : form['cht_condition_js_menu'] === '' ? ( null ) : ( form['cht_condition_js_menu'] )
                     }]
         };
         /*  */
@@ -663,7 +656,7 @@ class menus1{
             :cht_condition_js_menu
         );
         */
-        /*sql_inclure_fin*/ 147 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 147 , criteres_147 , this.__ig1.donnees_retournees , __db1 );
         if(tt147[__xst] === __xsu){
             if(tt147['changements'] === 0){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
@@ -684,7 +677,11 @@ class menus1{
             }
             return({"__xst" : __xsu});
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( tt147['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
+            if(this.__ig1.__deverminage === 0){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( tt147['__xme'] + '\nl\'insertion a échoué' );
+            }else{
+                this.__ig1.donnees_retournees.__xsi[__xer].push( tt147['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
+            }
             return({"__xst" : __xer});
         }
     }
@@ -723,19 +720,19 @@ class menus1{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres145={
+        let criteres_145={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres145[i]=formulaire[i];
+                criteres_145[i]=formulaire[i];
             }
         }
-        criteres145['acces_pas_dans']='(-1)';
+        criteres_145['acces_pas_dans']='(-1)';
         if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
-            criteres145['acces_pas_dans']='(1,2)';
+            criteres_145['acces_pas_dans']='(1,2)';
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -764,14 +761,14 @@ class menus1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 145 , criteres145 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 145 , criteres_145 , this.__ig1.donnees_retournees , __db1 );
         if(tt145.__xst !== __xsu){
             return({"__xst" : __xer});
         }
         if(tt145[__xst] === __xsu && tt145[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
-            criteres145['debut']=__debut;
+            criteres_145['debut']=__debut;
             tt145=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
@@ -796,7 +793,7 @@ class menus1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 145 , criteres145 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 145 , criteres_145 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
@@ -814,14 +811,6 @@ class menus1{
     */
     async liste1( mat , d ){
         this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async sous_liste1( mat , d ){
-        this.fonction_liste='sous_liste1';
         await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }

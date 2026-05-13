@@ -1893,16 +1893,40 @@ class dossiers1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
-        this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+    async sous_liste2( mat , d ){
+        const __nbMax=40;
+        let criteres_389={};
+        criteres_389['quantitee']=__nbMax;
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 389 , criteres_389 , __nbMax , __db1 );
+        if(liste2.__xst === __xsu){
+            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
+            let m=await import( './dossiers1_s.js' );
+            let o=new m['dossiers1']( this.__ig1 );
+            let le_chemin={};
+            for(let i in this.__ig1.donnees_retournees.__xva.sous_liste2.__xva){
+                let elem=this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i];
+                le_chemin=await o.construire_chemin( elem['T0.chi_id_dossier'] , __db1 );
+                if(le_chemin[__xst] !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur sur la construction du chemin pour le source ' + elem['T0.chi_id_dossier'] + '[' + this.__ig1.nl2() + ']' );
+                    return({"__xst" : __xer});
+                }
+                this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i]['nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
+                le_chemin=await o.construire_chemin( elem['T0.chx_parent_dossier'] , __db1 );
+                if(le_chemin[__xst] !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur sur la construction du chemin pour le source ' + elem['T0.chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']' );
+                    return({"__xst" : __xer});
+                }
+                this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
+            }
+        }
+        return liste2;
     }
     /*
       =============================================================================================================
     */
-    async sous_liste1( mat , d ){
-        this.fonction_liste='sous_liste1';
+    async liste1( mat , d ){
+        this.fonction_liste='liste1';
         await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }

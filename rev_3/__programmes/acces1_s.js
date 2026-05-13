@@ -1298,16 +1298,18 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
-        this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+    async sous_liste2( mat , d ){
+        const __nbMax=40;
+        let criteres_135={};
+        criteres_135['quantitee']=__nbMax;
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        return(await this.__ig1.generique_sous_liste2( mat , d , 135 , criteres_135 , __nbMax , __db1 ));
     }
     /*
       =============================================================================================================
     */
-    async sous_liste1( mat , d ){
-        this.fonction_liste='sous_liste1';
+    async liste1( mat , d ){
+        this.fonction_liste='liste1';
         await this.filtre1( mat , d );
         return({"__xst" : __xsu});
     }
