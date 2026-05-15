@@ -1063,7 +1063,7 @@ class sources1{
       fonction utile seulement dans rev_2
       permet de copier des fichiers de l'environnement 1 vers l'environnement 2 et inversement
     */
-    async importer_ou_exporter( mat , d , projet_source , projet_destination ){
+    async importer_ou_exporter( mat , d , projet_source , projet_cible ){
         let chi_id_source=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1111,15 +1111,15 @@ class sources1{
         /* this.__ig1.ma_trace1('projet_source='+projet_source); */
         if(projet_source === '../rev_2/'){
             chemin_fichier_source=chemin_fichier_rev_2;
-            chemin_fichier_destin=chemin_fichier_rev_2.replace( projet_source , projet_destination );
+            chemin_fichier_destin=chemin_fichier_rev_2.replace( projet_source , projet_cible );
         }else if(projet_source === '../rev_1/'){
-            chemin_fichier_source=chemin_fichier_rev_2.replace( projet_destination , projet_source );
+            chemin_fichier_source=chemin_fichier_rev_2.replace( projet_cible , projet_source );
             chemin_fichier_destin=chemin_fichier_rev_2;
         }else if(projet_source === '../rev_3/'){
-            chemin_fichier_source=chemin_fichier_rev_2.replace( projet_destination , projet_source );
+            chemin_fichier_source=chemin_fichier_rev_2.replace( projet_cible , projet_source );
             chemin_fichier_destin=chemin_fichier_rev_2;
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur les projets sources et destination ne peuvent être que rev_1 ou rev_2 [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur les projets source et cible ne peuvent être que rev_1 ou rev_2 [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /* this.__ig1.ma_trace1('chemin_fichier_source='+chemin_fichier_source,'chemin_fichier_destin='+chemin_fichier_destin); */
@@ -1159,11 +1159,11 @@ class sources1{
                 origine=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        let destination='../rev_2/';
+        let cible='../rev_2/';
         if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet > 2){
-            destination='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/';
+            cible='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/';
         }
-        let obj=await this.importer_ou_exporter( mat , d , '../rev_' + origine + '/' , destination );
+        let obj=await this.importer_ou_exporter( mat , d , '../rev_' + origine + '/' , cible );
         if(obj[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'les source n\'a pas pu être transféré de rev_1 vers rev_2  [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
@@ -1383,6 +1383,10 @@ class sources1{
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
+        if(__xva_avant['T0.chx_dossier_id_source'] === null || form['chx_dossier_id_source'] === null ){
+            return({"__xst" : __xsu});
+        }
+        
         let dossier_ancien=await o.construire_chemin( __xva_avant['T0.chx_dossier_id_source'] , __db1 );
         if(dossier_ancien[__xst] === __xsu){
             if(!(await this.__ig1.is_dir( dossier_ancien[__xva]['chemin_absolu'] ))){
@@ -1518,8 +1522,10 @@ class sources1{
             "n_che_autorisation_globale_source" : form['che_autorisation_globale_source'] ,
             "n_cht_condition_rev_source" : form['cht_condition_rev_source'] === '' ? ( null ) : ( form['cht_condition_rev_source'] ) ,
             "n_cht_condition_js_source" : form['cht_condition_js_source'] === '' ? ( null ) : ( form['cht_condition_js_source'] ) ,
-            "n_cht_notification_ko_source" : form['cht_notification_ko_source'] === '' ? ( null ) : ( form['cht_notification_ko_source'] )
+            "n_cht_notification_ko_source" : form['cht_notification_ko_source'] === '' ? ( null ) : ( form['cht_notification_ko_source'] ) ,
+            "n_chp_usage_source" : form['chp_usage_source']
         };
+        
         /* =========================== mise à jour effective ======================== */
         let tt308=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -1541,7 +1547,9 @@ class sources1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt308.__xme});
         }
+        this.__ig1.ma_trace1("OK" );
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt116[__xva][0] , __db1 );
+        this.__ig1.ma_trace1("OK" , __taam);
         if(__taam[__xst] !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
@@ -1750,7 +1758,8 @@ class sources1{
                         "cht_commentaire_source" : form['cht_commentaire_source'] === '' ? ( null ) : ( form['cht_commentaire_source'] ) ,
                         "cht_rev_source" : form['cht_rev_source'] === '' ? ( null ) : ( form['cht_rev_source'] ) ,
                         "cht_genere_source" : form['cht_genere_source'] === '' ? ( null ) : ( form['cht_genere_source'] ) ,
-                        "che_binaire_source" : form['che_binaire_source']
+                        "che_binaire_source" : form['che_binaire_source'] ,
+                        "chp_usage_source" : form['chp_usage_source']
                     }]
         };
         /*  */

@@ -1208,7 +1208,7 @@ class _rev_de_sql_vers_js1{
                 if(obj3.tableau_des_champs_pour_select_js[i].type === 'champ'){
                     t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '.' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : col[' + i + ']';
                 }else{
-                    t+='                    "' + i + '" => col[' + i + ']';
+                    t+='                    "' + i + '" : col[' + i + ']';
                 }
                 if(i < obj3.tableau_des_champs_pour_select_js.length - 1){
                     t+=' ,';

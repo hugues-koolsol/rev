@@ -55,11 +55,6 @@ class sql_314{
                 /*
                   === pas === de test sur le champ "chd__dtc_source"
                 */
-                /* test "non nul" sur le champ "chx_dossier_id_source" */
-                if(elem['chx_dossier_id_source'] === null || elem['chx_dossier_id_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "dossier id" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
-                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

@@ -17,7 +17,7 @@ CREATE TABLE `tbl_projets`(
             genre_meta(champ),
             nom_du_champ('chi_id_projet'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),
-            typologie(),
+            typologie(chi),
             genre(2),est_en_session(1)
             )
             */
@@ -31,7 +31,7 @@ CREATE TABLE `tbl_projets`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom du projet'),
             typologie(chi),
             genre(11),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('projet')
             )
             */
              `chp_nom_projet` TEXT NOT NULL
@@ -123,7 +123,7 @@ CREATE TABLE `tbl_groupes`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom du groupe'),
             typologie(cht),
             genre(19),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('groupe')
             )
             */
              `chp_nom_groupe` VARCHAR(128) NOT NULL
@@ -176,7 +176,7 @@ CREATE TABLE `tbl_metiers`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom du métier'),
             typologie(cht),
             genre(19),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('metier')
             )
             */
              `chp_nom_metier` VARCHAR(128) NOT NULL
@@ -229,7 +229,7 @@ CREATE TABLE `tbl_acces`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom'),
             typologie(chp),
             genre(3),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('acces')
             )
             */
              `chp_nom_acces` VARCHAR(64) NOT NULL
@@ -304,7 +304,7 @@ CREATE TABLE `tbl_dossiers`(
             genre_meta(champ),
             nom_du_champ('chi_id_dossier'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),
-            typologie(),
+            typologie(chi),
             genre(2)
             )
             */
@@ -318,7 +318,7 @@ CREATE TABLE `tbl_dossiers`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom du dossier'),
             typologie(chp),
             genre(108),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('dossier')
             )
             */
              `chp_nom_dossier` VARCHAR(64) DEFAULT  NULL
@@ -329,7 +329,7 @@ CREATE TABLE `tbl_dossiers`(
             genre_meta(champ),
             nom_du_champ('chx_parent_dossier'),
             nom_bref_du_champ('parent'),abrege_du_champ('parent'),
-            typologie(),
+            typologie(chx),
             genre(4),
             refe_parent_gauche(1)
             )
@@ -397,7 +397,7 @@ CREATE TABLE `tbl_sources`(
             genre_meta(champ),
             nom_du_champ('chi_id_source'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),
-            typologie(),
+            typologie(chi),
             genre(2)
             )
             */
@@ -411,7 +411,7 @@ CREATE TABLE `tbl_sources`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom du source'),
             typologie(chi),
             genre(19),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('source')
             )
             */
              `chp_nom_source` VARCHAR(128) NOT NULL
@@ -459,10 +459,10 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('chx_dossier_id_source'),
             nom_bref_du_champ('dossier id'),abrege_du_champ('dossier id'),
             typologie(chx),
-            genre(4)
+            genre(8)
             )
             */
-             `chx_dossier_id_source` INTEGER NOT NULL REFERENCES tbl_dossiers(chi_id_dossier) ON UPDATE CASCADE
+             `chx_dossier_id_source` INTEGER REFERENCES tbl_dossiers(chi_id_dossier) ON UPDATE CASCADE DEFAULT  NULL
     ,
     
             /*
@@ -470,7 +470,7 @@ CREATE TABLE `tbl_sources`(
             genre_meta(champ),
             nom_du_champ('cht_commentaire_source'),
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),
-            typologie(),
+            typologie(cht),
             genre(6)
             )
             */
@@ -562,7 +562,7 @@ CREATE TABLE `tbl_sources`(
             )
             */
              `cht_notification_ko_source` TEXT DEFAULT  NULL
-    );
+    , `chp_usage_source` VARCHAR(32) NOT NULL DEFAULT  'fichier');
 
 
 
@@ -675,7 +675,7 @@ CREATE TABLE `tbl_menus`(
             nom_bref_du_champ('titre'),abrege_du_champ('titre'),
             typologie(chp),
             genre(3),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('menu')
             )
             */
              `chp_titre_menu` VARCHAR(64) NOT NULL
@@ -721,7 +721,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_condition_menu'),
-            nom_bref_du_champ('condition'),abrege_du_champ('condition'),
+            nom_bref_du_champ('condition'),abrege_du_champ('condition au format rev'),
             typologie(cht),
             genre(98)
             )
@@ -776,7 +776,7 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion de l\'utilisateur'),
             typologie(cht),
             genre(3),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('utilisateur')
             )
             */
              `chp_nom_de_connexion_utilisateur` VARCHAR(64) NOT NULL
@@ -902,7 +902,7 @@ CREATE TABLE `tbl_taches`(
             genre_meta(champ),
             nom_du_champ('chi_id_tache'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),
-            typologie(),
+            typologie(chi),
             genre(2)
             )
             */
@@ -926,9 +926,9 @@ CREATE TABLE `tbl_taches`(
             genre_meta(champ),
             nom_du_champ('chp_texte_tache'),
             nom_bref_du_champ('texte'),abrege_du_champ('texte'),
-            typologie(),
+            typologie(cht),
             genre(11),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('tache')
             )
             */
              `chp_texte_tache` TEXT NOT NULL
@@ -1036,7 +1036,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             nom_bref_du_champ('nom'),abrege_du_champ('nom du genre'),
             typologie(chp),
             genre(3),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('genre')
             )
             */
              `chp_nom_genre` VARCHAR(64) NOT NULL
@@ -1342,7 +1342,7 @@ CREATE TABLE `tbl_bdds`(
             genre_meta(champ),
             nom_du_champ('chi_id_basedd'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),
-            typologie(),
+            typologie(chi),
             genre(2)
             )
             */
@@ -1354,7 +1354,7 @@ CREATE TABLE `tbl_bdds`(
             genre_meta(champ),
             nom_du_champ('chp_rev_travail_basedd'),
             nom_bref_du_champ('rev travail'),abrege_du_champ('rev travail'),
-            typologie(),
+            typologie(cht),
             genre(98)
             )
             */
@@ -1378,7 +1378,7 @@ CREATE TABLE `tbl_bdds`(
             genre_meta(champ),
             nom_du_champ('chp_commentaire_basedd'),
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),
-            typologie(),
+            typologie(cht),
             genre(6)
             )
             */
@@ -1459,7 +1459,7 @@ CREATE TABLE `tbl_requetes`(
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),
             typologie(cht),
             genre(6),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('requete')
             )
             */
              `cht_commentaire_requete` TEXT DEFAULT  NULL

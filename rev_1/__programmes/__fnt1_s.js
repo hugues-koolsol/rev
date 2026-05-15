@@ -117,7 +117,6 @@ class __fnt1{
     /*#
        =====================================================================================================================
       * JavaScript equivalent of PHP's strtr()
-      * Supports both:
       *  - strtr(string, from, to)  // character translation
       *  - strtr(string, replacements) // object map replacement
     */

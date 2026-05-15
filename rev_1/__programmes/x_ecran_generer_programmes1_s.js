@@ -11,6 +11,28 @@ const __xac='__xac';
   =====================================================================================================================
 */
 class x_ecran_generer_programmes1{
+ 
+    async integrer_un_source_genere_dans_la_table_source(mat , d){
+        let nom_du_source=this.__ig1.donnees_recues.__xva.nom_du_source;
+//                         cht_genere_source : cht_genere_source , 
+//                     : nom_du_source 
+        this.__ig1.ma_trace1( "nom_du_source=" , nom_du_source );
+        let critere_416={"T0_chp_nom_source" : nom_du_source};
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let tt416=await this.__ig1.sql_iii(416 , critere_416 , this.__ig1.donnees_retournees , __db1 );
+//        this.__ig1.ma_trace1("tt416",tt416);
+        if(tt416.__xst !== __xsu || tt416.__xva.length !== 1 ){
+            return({"__xst" : __xer});
+        }
+        let chemin_source='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + nom_du_source;
+        try{
+            await Deno.writeTextFile( chemin_source , this.__ig1.donnees_recues.__xva.cht_genere_source );
+            this.__ig1.ma_trace1("ok" + chemin_source);
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : '[' + this.__ig1.nl2(e) + ']'});
+        }
+        return({"__xst" : __xsu});
+    }
     /*
       =============================================================================================================
     */

@@ -104,6 +104,7 @@ class x_ecran_generer_programmes1{
         for(let i in this.#obj_table.champs){
             if(this.#obj_table.champs[i].genre_objet_du_champ.che_est_incrément_genre === 1
                    || this.#obj_table.champs[i].genre_objet_du_champ.che_est_primaire_genre === 1
+                   || this.#obj_table.champs[i].primary_key === true
             ){
                 champ_primaire=i;
                 break;
@@ -1388,10 +1389,10 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
-            src_serveur_js2+='        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt' + ref_select + '[__xva][0] , __db1 );\r\n';
-            src_serveur_js2+='        if(__actions_et_tests_avant_modifier.__xst !== __xsu){\r\n';
+            src_serveur_js2+='        let __atavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt' + ref_select + '[__xva][0] , __db1 );\r\n';
+            src_serveur_js2+='        if(__atavm.__xst !== __xsu){\r\n';
             src_serveur_js2+='            await __db1.exec(\'ROLLBACK;\');\r\n';
-            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __atavm.__xme});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let criteres_' + ref_update + '={\r\n';
             src_serveur_js2+='                /**/\r\n';
@@ -1471,7 +1472,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        let __taam=await this.tests_et_actions_apres_modifier(mat , d , form , tt' + ref_select + '[__xva][0] , __db1);\r\n';
             src_serveur_js2+='        if(__taam.__xst !== __xsu ){\r\n';
             src_serveur_js2+='            await __db1.exec(\'ROLLBACK;\');\r\n';
-            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'erreur après modification [\' + this.__ig1.nl2() + \']\'});\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __taam.__xme});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        await __db1.exec(\'COMMIT;\');\r\n';
             src_serveur_js2+='        if(retour_a_la_liste === true){\r\n';
@@ -1524,7 +1525,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let aetam=await this.actions_et_tests_apres_page_modifications(mat , d , tt' + ref_select + '[__xva][0] , __db1);\r\n';
             src_serveur_js2+='        if(aetam[__xst] !== __xsu){\r\n';
-            src_serveur_js2+='            return({"__xst" : __xer});\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : aetam.__xme});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees[__xva][\'page_modification1\']=tt' + ref_select + ';\r\n';
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
@@ -1706,15 +1707,14 @@ class x_ecran_generer_programmes1{
                       si c'est une date aaaa_mm_jj
                     */
                     src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" size="10" maxlength="10" value="\' + this.__ig1.fi2( enreg[\'T0.' + obj_champ.nom_du_champ + '\'] ) + \'" />\';\r\n';
-                    src_client2+='        o1+=\'      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(maj_date1(nom_du_champ(' + obj_champ.nom_du_champ + '))))">\' + this.__ig1.les_svg.calendrier + \'</div>\';\r\n';
-                    src_client2+='        o1+=\'      <div class="rev_b_svg rev_b_ctxt yy__1" data-rev_click="m1(n1(__fnt1),f1(jour_courant1(nom_du_champ(' + obj_champ.nom_du_champ + '))))" title="jour courant">JC</div>\';\r\n';
+                    src_client2+='        o1+=this.__ig1.__fnt1.boutons_date1( \'' + obj_champ.nom_du_champ + '\' );\r\n';
                     /*  */
                 }else if(obj_champ.genre_objet_du_champ.chi_id_genre === 23){
                     /*
                       si c'est une heure hh_mm_ss
                     */
                     src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" size="10" maxlength="10" value="\' + this.__ig1.fi2( enreg[\'T0.' + obj_champ.nom_du_champ + '\'] ) + \'" />\';\r\n';
-                    src_client2+='        o1+=\'      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(popup_horloge1(nom_du_champ(' + obj_champ.nom_du_champ + '))))">\' + this.__ig1.les_svg.calendrier + \'</div>\';\r\n';
+                    src_client2+='        o1+=this.__ig1.__fnt1.boutons_heure1( \'' + obj_champ.nom_du_champ + '\' );\r\n';
                     /*  */
                 }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'VARCHAR'){
                     let size='';
@@ -3252,10 +3252,10 @@ class x_ecran_generer_programmes1{
                             src_client2+='        }\r\n';
                             src_client2+='        o1+=\'" />\';\r\n';
                             src_client2+='        o1+=\'      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(maj_date1(nom_du_champ(' + obj_champ.nom_du_champ + '))))">\' + this.__ig1.les_svg.calendrier + \'</div>\';\r\n';
-                            src_client2+='        o1+=\'      <div class="rev_b_svg rev_b_ctxt yy__1" data-rev_click="m1(n1(__fnt1),f1(jour_courant1(nom_du_champ(' + obj_champ.nom_du_champ + '))))" title="jour courant">JC</div>\';\r\n';
+                            src_client2+='        o1+=this.__ig1.__fnt1.boutons_date1( \'' + obj_champ.nom_du_champ + '\' );\r\n';
                         }else if(obj_champ.genre_objet_du_champ.chi_id_genre === 23){
                             /*
-                              si c'est une date aaaa_mm_jj
+                              si c'est une heure hh_mm_ss
                             */
                             src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" size="8" maxlength="8" value="\';\r\n';
                             src_client2+='        if(dupliquer && dupliquer.hasOwnProperty( \'T0.' + obj_champ.nom_du_champ + '\' )){\r\n';
@@ -3264,7 +3264,7 @@ class x_ecran_generer_programmes1{
                             src_client2+='            o1+=\'\';\r\n';
                             src_client2+='        }\r\n';
                             src_client2+='        o1+=\'" />\';\r\n';
-                            src_client2+='        o1+=\'      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(popup_horloge1(nom_du_champ(' + obj_champ.nom_du_champ + '))))">\' + this.__ig1.les_svg.calendrier + \'</div>\';\r\n';
+                            src_client2+='        o1+=this.__ig1.__fnt1.boutons_heure1( \'' + obj_champ.nom_du_champ + '\' );\r\n';
                         }else{
                             let size='';
                             if(obj_champ.genre_objet_du_champ.che_longueur_genre <= 48){
@@ -4490,6 +4490,45 @@ class x_ecran_generer_programmes1{
     /*
       =============================================================================================================
     */
+    integrer_un_source_genere_dans_la_table_source( mat , d ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    bouton_integrer_ce_source_genere_dans_la_table_source(mat , d){
+     
+        let cible_source='';
+        let l01=mat.length;
+        let zone='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'cible_source' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
+                cible_source=mat[i + 1][1];
+            }
+        }
+        let nom_du_source=this.#nom_de_la_classe_générée2+cible_source;
+        if(confirm('intégrer ' + nom_du_source )){
+            let cht_genere_source=''
+            if(cible_source === '_c.js'){
+                cht_genere_source=document.getElementById('JS_client2').value;
+            }else if(cible_source === '_s.js'){
+                cht_genere_source=document.getElementById('serveur_js2').value;
+            }
+            let obj={
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(integrer_un_source_genere_dans_la_table_source())))' , 
+                "__xva" : { 
+                     /*  */
+                    cht_genere_source : cht_genere_source , 
+                    nom_du_source : nom_du_source 
+                }
+            };
+            this.__ig1.envoyer_un_message_au_worker( obj );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     charger_base1( chi_id_basedd , nom_de_la_table ){
         /* mat , d  ]{ */
         /*
@@ -4589,11 +4628,16 @@ class x_ecran_generer_programmes1{
         /*
         */
         o1+='<div class="yy_conteneur_txtara">';
-        o1+=' <div>';
-        o1+='  JS client 2:';
+        o1+='   <div>';
+        o1+='      JS client 2:';
         o1+=this.__ig1.__fnt1.boutons_edition1( 'JS_client2' );
-        o1+=' </div>';
-        o1+=' <textarea id="JS_client2" rows="10" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
+        /*  */
+        o1+='      <div class="rev_bouton yy__0"';
+        o1+=' data-rev_click="m1(n1(' + this.moi + '),f1(bouton_integrer_ce_source_genere_dans_la_table_source(cible_source(\'_c.js\'))))';
+        o1+='">integrer dans la table source</div>';
+        /*  */
+        o1+='   </div>';
+        o1+='   <textarea id="JS_client2" rows="10" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
         o1+='</div>';
         /*
         */
@@ -4601,6 +4645,10 @@ class x_ecran_generer_programmes1{
         o1+=' <div>';
         o1+='  JS serveur 2 : ';
         o1+=this.__ig1.__fnt1.boutons_edition1( 'serveur_js2' );
+        /*  */
+        o1+='      <div class="rev_bouton yy__0"';
+        o1+=' data-rev_click="m1(n1(' + this.moi + '),f1(bouton_integrer_ce_source_genere_dans_la_table_source(cible_source(\'_s.js\'))))';
+        o1+='">integrer la table source</div>';
         o1+=' </div>';
         o1+=' <textarea id="serveur_js2" rows="10" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
         o1+='</div>';

@@ -17,18 +17,14 @@ class sql_117{
          \`cht_commentaire_source\` , 
          \`cht_rev_source\` , 
          \`cht_genere_source\` , 
-         \`che_binaire_source\`
+         \`che_binaire_source\` , 
+         \`chp_usage_source\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
-                /* test "non nul" sur le champ "chx_dossier_id_source" */
-                if(elem['chx_dossier_id_source'] === null || elem['chx_dossier_id_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "dossier id" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
-                }
                 /* test "non nul" sur le champ "chp_nom_source" */
                 if(elem['chp_nom_source'] === null || elem['chp_nom_source']===''){
                     this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']');
@@ -48,6 +44,11 @@ class sql_117{
                     this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']');
                     return{__xst:__xer};
                 }
+                /* test "non nul" sur le champ "chp_usage_source" */
+                if(elem['chp_usage_source'] === null || elem['chp_usage_source']===''){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "usage du source" doit être renseignée [' + this.__ig1.nl2() + ']');
+                    return{__xst:__xer};
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
@@ -57,7 +58,8 @@ class sql_117{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_commentaire_source'] , 'cht_commentaire_source' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_rev_source'] , 'cht_rev_source' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_genere_source'] , 'cht_genere_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_binaire_source'] , 'che_binaire_source' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_binaire_source'] , 'che_binaire_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_usage_source'] , 'chp_usage_source' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

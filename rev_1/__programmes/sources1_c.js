@@ -76,7 +76,9 @@ class sources1{
         let la_liste=[];
         let lst=document.getElementById( 'vv_ecran_liste_zone_contenu' ).querySelectorAll( "[data-chi_id_source]" );
         for( let i=0 ; i < lst.length ; i++ ){
-            la_liste.push( lst[i].getAttribute( 'data-chi_id_source' ) );
+            if(!lst[i].getAttribute( 'data-chx_dossier_id_source')==='null'){
+               la_liste.push( lst[i].getAttribute( 'data-chi_id_source' ) );
+            }
         }
         if(la_liste.length > 0 && document.getElementById( 'vv_chaine_remplacee' ).value !== ''){
             this.__ig1.envoyer_un_message_au_worker( {
@@ -319,15 +321,6 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chx_dossier_id_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_dossier_id_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         if(fo1['cht_rev_source'] !== null && fo1['cht_rev_source'] !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_rev_source'] );
             if(obj1.__xst !== __xsu){
@@ -361,6 +354,28 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
+        if(fo1['chp_usage_source'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chp_usage_source' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['chp_usage_source'] !== ''){
+            let tab_est_parmis_10='fichier,fonction'.split( ',' );
+            if(!tab_est_parmis_10.includes( fo1['chp_usage_source'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_usage_source' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        
         /* conversion des données numériques début */
         fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
@@ -407,6 +422,25 @@ class sources1{
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source" size="64"  maxlength="128"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_source'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_source' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>usage du source</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.chp_usage_source'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_usage_source"  size="32"   maxlength="32"  value="' + this.__ig1.fi2( enreg['T0.chp_usage_source'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_usage_source' );
+        o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fichier)))))">fichier</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fonction)))))">fonction</div>';
+        o1+='      </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -877,15 +911,6 @@ class sources1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chx_dossier_id_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_dossier_id_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         if(fo1['chp_nom_source'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -913,6 +938,27 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['chp_usage_source'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chp_usage_source' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['chp_usage_source'] !== ''){
+            let tab_est_parmis_6='fichier,fonction'.split( ',' );
+            if(!tab_est_parmis_6.includes( fo1['chp_usage_source'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_usage_source' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }        
         /* conversion des données numériques début */
         fo1['chx_dossier_id_source']=fo1['chx_dossier_id_source'] === '' ? ( null ) : ( parseInt( fo1['chx_dossier_id_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
@@ -990,6 +1036,29 @@ class sources1{
         o1+='" />';
         o1+='    <div>';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_source' );
+        o1+='    </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>usage du source</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input  disabled  type="text"  size="32"   maxlength="32"  id="chp_usage_source" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_usage_source' )){
+            o1+=this.__ig1.fi2( dupliquer['T0.chp_usage_source'] );
+        }else{
+            o1+='fichier';
+        }
+        o1+='" />';
+        o1+='    <div>';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_usage_source' );
+        o1+='      <br />';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fichier)))))">fichier</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fonction)))))">fonction</div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1268,7 +1337,7 @@ class sources1{
             return({"__xst" : __xsu});
         }
         this.vv_ecran_liste_boutons_avant='';
-        this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_js_en_cron1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >compiler cette liste en cron</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_js_en_cron1()))" title="compiler" >compiler cette liste en cron</div>';
         this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         if(this.__ig1.chi_id_projet >= 3){
             this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xal" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_une_chaine_par_une_autre_dans_les_sources()))" title="remplacer une chaîne par une autre">remplacer</div>';
@@ -1440,7 +1509,7 @@ class sources1{
                 lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
                 lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
                 let affiche_bouton_compiler=true;
-                if(elem['T0.che_binaire_source'] === 1){
+                if(elem['T0.che_binaire_source'] === 1 || elem['T0.chx_dossier_id_source'] === null ){
                     affiche_bouton_compiler=false;
                 }else{
                     /* sur rev1 / projet 1 ou 2, on ne peut compiler que la racine */
@@ -1488,7 +1557,7 @@ class sources1{
                     /*  */
                     lst+='  <div class="rev_bouton yy__4" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(3)))))';
-                    lst+='" >importer de 3</div>';
+                    lst+='" >&lt; de 3</div>';
                 }
                 if(this.__ig1._CA_ === 2){
                     /*  */
@@ -1500,7 +1569,7 @@ class sources1{
                 if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 2){
                     lst+='  <div class="rev_bouton yy__2" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_base_de_prod1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))';
-                    lst+='" >⎘ dans la base de prod</div>';
+                    lst+='" >⎘ -&gt; prod</div>';
                 }
                 lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_source1(chi_id_source(' + elem['T0.chi_id_source'] + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
                 /*
@@ -1514,7 +1583,7 @@ class sources1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chi_id_source'] !== null){
-                    lst+='<span data-chi_id_source="' + elem['T0.chi_id_source'] + '">' + elem['T0.chi_id_source'] + '</span>';
+                    lst+='<span data-chi_id_source="' + elem['T0.chi_id_source'] + '" data-chx_dossier_id_source="' + elem['T0.chx_dossier_id_source']+ '">' + elem['T0.chi_id_source'] + '</span>';
                 }
                 lst+='</td>';
                 /*
@@ -1538,6 +1607,7 @@ class sources1{
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
+                lst+=' '+this.__ig1.fi2( elem['T0.chp_usage_source'] );
                 lst+='<br />';
                 if(elem['T0.chx_dossier_id_source'] !== null){
                     lst+='(' + elem['T0.chx_dossier_id_source'] + ')';

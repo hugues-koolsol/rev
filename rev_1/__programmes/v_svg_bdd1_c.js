@@ -768,6 +768,7 @@ class v_svg_bdd1{
         rev+='    genre(' + genre + ')';
         rev+='    nom_bref_du_champ(\'' + document.getElementById( 'meta_ajouter__nom_bref_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    abrege_du_champ(\'' + document.getElementById( 'meta_ajouter__abrege_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        rev+='    nom_bref_libelle_lien(\'' + document.getElementById( 'meta_ajouter__nom_bref_libelle_lien' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + ')';
         rev+='    est_en_session(' + est_en_session + ')';
         rev+='    est_pas_cascade_quand_maj(' + est_pas_cascade_quand_maj + ')';
@@ -1678,6 +1679,7 @@ class v_svg_bdd1{
             "est_libelle_lien" : a.proprietes.est_libelle_lien ,
             "nom_bref_du_champ" : document.getElementById( 'meta_modifier__nom_bref_du_champ' ).value ,
             "abrege_du_champ" : document.getElementById( 'meta_modifier__abrege_du_champ' ).value ,
+            "nom_bref_libelle_lien" : document.getElementById( 'meta_modifier__nom_bref_libelle_lien' ).value ,
             "typologie" : /* meta_modifier__typologie */document.getElementById( 'chp_prefixe_genre' ).value ,
             "genre" : /* meta_modifier__genre */document.getElementById( 'vv_genre1' ).value ,
             "reference_externe" : a.reference_externe ,
@@ -1955,6 +1957,7 @@ class v_svg_bdd1{
         if(zone_cible !== '' && zone_select !== ''){
             document.getElementById( zone_cible ).value=document.getElementById( zone_select ).value;
         }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -2028,6 +2031,7 @@ class v_svg_bdd1{
                 }
             }
         }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -2356,6 +2360,7 @@ class v_svg_bdd1{
         let genre=obj_donnees_rev_du_champ.genre;
         let nom_bref_du_champ=obj_donnees_rev_du_champ.nom_bref_du_champ;
         let abrege_du_champ=obj_donnees_rev_du_champ.abrege_du_champ;
+        let nom_bref_libelle_lien=obj_donnees_rev_du_champ.nom_bref_libelle_lien;
         let masquer_champ_dans_svg=obj_donnees_rev_du_champ.masquer_champ_dans_svg;
         let est_en_session=obj_donnees_rev_du_champ.est_en_session;
         let est_pas_cascade_quand_maj=obj_donnees_rev_du_champ.est_pas_cascade_quand_maj;
@@ -2543,6 +2548,8 @@ class v_svg_bdd1{
         t+='<br />refe_enfant_droite : <input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />refe_parent_gauche : <input type="checkbox" id="refe_parent_gauche" ' + (refe_parent_gauche === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />est_libelle_lien : <input type="checkbox" id="est_libelle_lien" ' + (est_libelle_lien === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />nom_bref_libelle_lien : ';
+        t+='<input type="text" id="meta_modifier__nom_bref_libelle_lien" value="' + nom_bref_libelle_lien.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
         t+='<br />est_utilisateur_autre_que_courant : <input type="checkbox" id="est_utilisateur_autre_que_courant" ' + (est_utilisateur_autre_que_courant === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />';
         var cmd='';
@@ -4946,6 +4953,7 @@ class v_svg_bdd1{
         t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
         t+='<br />refe_parent_gauche : <input id="refe_parent_gauche" type="checkbox" />';
         t+='<br />est_libelle_lien : <input id="est_libelle_lien" type="checkbox" />';
+        t+='<br />nom_bref_libelle_lien : <input type="text" id="meta_ajouter__nom_bref_libelle_lien" value="" autocapitalize="off" />';
         t+='<br />est_utilisateur_autre_que_courant : <input id="est_utilisateur_autre_que_courant" type="checkbox" />';
         t+='<br />';
         var cmd='';
@@ -6897,6 +6905,7 @@ class v_svg_bdd1{
         let valeur_par_defaut='';
         let nom_bref_du_champ='';
         let abrege_du_champ='';
+        let nom_bref_libelle_lien='';
         let typologie='';
         let genre='1';
         let masquer_champ_dans_svg=0;
@@ -6963,6 +6972,11 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.abrege_du_champ;
                             }
                             abrege_du_champ=mat2[k + 1][1];
+                        }else if(mat2[k][1] === 'nom_bref_libelle_lien' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'nom_bref_libelle_lien' )){
+                                mat2[k + 1][1]=nouvelles_valeurs.nom_bref_libelle_lien;
+                            }
+                            nom_bref_libelle_lien=mat2[k + 1][1];
                         }else if(mat2[k][1] === 'masquer_champ_dans_svg' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'masquer_champ_dans_svg' )){
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.masquer_champ_dans_svg , 10 );
@@ -7038,6 +7052,8 @@ class v_svg_bdd1{
                                 nom_bref_du_champ=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'abrege_du_champ' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 abrege_du_champ=mat2[k + 2][1];
+                            }else if(mat2[k + 1][1] === 'nom_bref_libelle_lien' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
+                                nom_bref_libelle_lien=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'masquer_champ_dans_svg' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 masquer_champ_dans_svg=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'typologie' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
@@ -7166,6 +7182,10 @@ class v_svg_bdd1{
                 abrege_du_champ=tab.join( ' ' );
             }
         }
+        if(nom_bref_libelle_lien === '' || nom_bref_libelle_lien.indexOf( 'à faire' ) >= 0 || nom_bref_libelle_lien.indexOf( 'A faire' ) >= 0){
+            let tab=nom_du_champ.split( '_' );
+            nom_bref_libelle_lien=tab[tab.length - 1];
+        }
         o1+='meta(';
         o1+='    genre_meta(champ),';
         o1+='    nom_du_champ(\'' + nom_du_champ + '\'),';
@@ -7191,6 +7211,11 @@ class v_svg_bdd1{
         }
         if(est_libelle_lien === 1){
             o1+='    est_libelle_lien(' + est_libelle_lien + '),';
+            if(nom_bref_libelle_lien.indexOf( '\\\'' ) >= 0){
+                o1+='    nom_bref_libelle_lien(\'' + nom_bref_libelle_lien + '\'),';
+            }else{
+                o1+='    nom_bref_libelle_lien(\'' + nom_bref_libelle_lien.replace( /\'/g , '\\\'' ) + '\'),';
+            }
         }
         if(est_utilisateur_autre_que_courant === 1){
             o1+='    est_utilisateur_autre_que_courant(' + est_utilisateur_autre_que_courant + '),';
@@ -7236,7 +7261,7 @@ class v_svg_bdd1{
                 "la_valeur_par_defaut_est_caractere" : la_valeur_par_defaut_est_caractere ,
                 "valeur_par_defaut" : valeur_par_defaut ,
                 "nom_bref_du_champ" : nom_bref_du_champ ,
-                "abrege_du_champ" : abrege_du_champ ,
+                "abrege_du_champ" : abrege_du_champ , 
                 "typologie" : typologie ,
                 "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
                 "est_en_session" : est_en_session ,
@@ -7248,6 +7273,7 @@ class v_svg_bdd1{
                 "longueur_du_champ" : longueur_du_champ ,
                 "genre" : genre ,
                 "est_libelle_lien" : est_libelle_lien ,
+                "nom_bref_libelle_lien" : nom_bref_libelle_lien ,
                 "reference_externe" : reference_externe ,
                 "est_utilisateur_autre_que_courant" : est_utilisateur_autre_que_courant
             });

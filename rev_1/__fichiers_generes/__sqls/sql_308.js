@@ -27,14 +27,14 @@ class sql_308{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        /* test "non nul" sur le champ "chx_dossier_id_source" */
-        if(par['n_chx_dossier_id_source'] === null || par['n_chx_dossier_id_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "dossier id" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
         /* test "non nul" sur le champ "che_autorisation_globale_source" */
         if(par['n_che_autorisation_globale_source'] === null || par['n_che_autorisation_globale_source'] === ''){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer});
+        }
+        /* test "non nul" sur le champ "chp_usage_source" */
+        if(par['n_chp_usage_source'] === null || par['n_chp_usage_source'] === ''){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "usage du source" doit être renseignée [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let sql0='UPDATE `tbl_sources` SET \r\n';
@@ -89,6 +89,11 @@ class sql_308{
                 tableau_champs.push( '`cht_notification_ko_source` = NULL' );
             }else{
                 tableau_champs.push( '`cht_notification_ko_source` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_notification_ko_source'] , 'n_cht_notification_ko_source' ) + '\'' );
+            }
+            if(par['n_chp_usage_source'] === undefined || par['n_chp_usage_source'] === '' || par['n_chp_usage_source'] === null){
+                tableau_champs.push( '`chp_usage_source` = NULL' );
+            }else{
+                tableau_champs.push( '`chp_usage_source` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_usage_source'] , 'n_chp_usage_source' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({

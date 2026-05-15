@@ -290,14 +290,18 @@ ne l'est pas car une parenthèse fermante a été supprimée juste après le x.
 
 - javascript
 
-- php ( peut contenir du html donc du javascript )
-
 - sql
 
 - css ( à un niveau basique )
 
-Je prévois d'intégrer d'autres langages  au fur et à mesure de l'avancée des développements mais pour l'instant  
-ça me suffit pour valider toute la chaîne de traitement .
+- php ( peut contenir du html donc du javascript mais n'est plus utilisé dans le projet courant )
+
+Il est prévu d'intégrer d'autres langages  au fur et à mesure de l'avancée des développements mais pour l'instant  
+ça me suffit pour valider toute la chaîne de traitement.
+
+Comme il faut pouvoir intégrer à la fois les langages de type description ( html ou css ) et de traitement ( javascript ou php ),
+il existe une fonction rev (appelf) qui permet d'appeler une fonction.
+
 
 **5°) les programmes existants**  sont convertis.
 
