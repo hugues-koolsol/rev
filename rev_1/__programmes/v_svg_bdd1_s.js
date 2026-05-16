@@ -271,7 +271,7 @@ class v_svg_bdd1{
                     if(v1['T0.chi_id_projet'] > 1){
                         /* let nom_de_fichier_bdd=chemin[__xva]['chemin_absolu'] + 'bdd_' + v1['T0.chi_id_projet'] + '.sqlite'; */
                         let nom_de_fichier_bdd='./__bases_de_donnees/bdd_' + v1['T0.chi_id_projet'] + '.sqlite';
-                        this.__ig1.ma_trace1( 'nom_de_fichier_bdd=' + nom_de_fichier_bdd );
+                        /* this.__ig1.ma_trace1( 'nom_de_fichier_bdd=' + nom_de_fichier_bdd ); */
                         if((await this.__ig1.is_file( nom_de_fichier_bdd ))){
                             let db1temp=null;
                             try{

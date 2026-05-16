@@ -1227,7 +1227,13 @@ class w_rev_vers_sql1{
                             }
                             if(this.#tb[j][1] === 'champs' && this.#tb[j][8] >= 1){
                                 for( k=j + 1 ; k < this.#l02 ; k=this.#tb[k][12] ){
-                                    list+=' `' + this.#tb[k][1] + '` ,';
+                                    if(this.#tb[k][2] === 'c'){
+                                       list+=' `' + this.#tb[k][1] + '` ,';
+                                    }else if(this.#tb[k][2] === 'f' && this.#tb[k][1] === 'null_est_unique' && this.#tb[k][8] === 1 && this.#tb[k +1][2] === 'c' ){
+                                       list+=' `' + this.#tb[k+1][1] + '`  IS NULL ,';
+                                    }else{
+                                        return(this.#rev_sql_le( {"__xst" : __xer ,"__xva" : t ,"id" : i ,"__xme" : 'ajouter_index [' + this.__ig1.__rev1.nl2() + ']'} ));
+                                    }
                                 }
                             }
                             if(this.#tb[j][1] === 'meta' && this.#tb[j][2] === 'f' && this.#tb[j][8] > 0){

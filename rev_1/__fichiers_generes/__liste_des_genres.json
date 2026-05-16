@@ -900,7 +900,7 @@
     "cht_valeur_init_genre": "fichier",
     "chp_prefixe_genre": "chp",
     "che_est_parmis_genre": 1,
-    "cht_parmis_genre": "fichier,fonction",
+    "cht_parmis_genre": "fichier,fragment",
     "che_ordre_genre": 37,
     "che_est_tsc_genre": 0,
     "che_est_tsm_genre": 0,

@@ -1,4 +1,5 @@
 import {_developpement1} from '/f0?n0=_developpement1_c.js';
+import {w_rev_vers_js1} from './f0?n0=w_rev_vers_js1_.js';
 /*
   enrichir_objet_base
 */
@@ -36,6 +37,8 @@ class x_ecran_generer_programmes1{
     __ig1=null;
     chi_id_projet=0;
     #dependances={};
+    #rev_serveur_mat=null;
+    #objet_conversion_rev_vers_js=null;
     /*
       =============================================================================================================
     */
@@ -46,7 +49,43 @@ class x_ecran_generer_programmes1{
         /* debugger; */
         /* console.log( 'ici' ); */
         this.#_developpement1=new _developpement1( [] , 0 , this.__ig1 );
+        this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , this.__ig1 );
+        
     }
+    /*
+      =============================================================================================================
+    */
+    recupere_elements_pour_générer_les_programmes(mat , d , le_colis=null ){
+        if(le_colis===null){
+            this.#rev_serveur_mat=null;
+            let chi_id_basedd_de_reference=parseInt( document.getElementById( 'vv_les_bases' ).value , 10 );
+            let table_de_reference=document.getElementById( 'vv_les_tables' ).value;
+            let incice_de_la_classe=document.getElementById( 'incice_de_la_classe' ).value;
+            let obj={
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(recupere_elements_pour_générer_les_programmes())))' , 
+                "__xva" : { 
+                     /*  */
+                    chi_id_basedd_de_reference : chi_id_basedd_de_reference , 
+                    table_de_reference : table_de_reference ,
+                    incice_de_la_classe : incice_de_la_classe
+                }
+            };
+            this.__ig1.envoyer_un_message_au_worker( obj );
+            return({"__xst" : __xsu});
+        }else{
+            if(le_colis.__xva.rev_serveur!==null){
+                let objs=this.__ig1.__rev1.rev_tm(le_colis.__xva.rev_serveur);
+                if(objs.__xst !== __xsu){
+                    return({"__xst" : __xer , __xme : 'erreur de convertion du fragment serveur'});
+                }
+                this.#rev_serveur_mat=objs.__xva;
+            }
+            let ret=this.générer_les_programmes();
+            
+            return({"__xst" : ret.__xst});
+        }
+    }
+    
     /*
       =============================================================================================================
     */
@@ -449,36 +488,6 @@ class x_ecran_generer_programmes1{
         for(let i in liste_des_champs_visualisation_update){
             let prefixe_du_champ=liste_des_champs_visualisation_update[i].prefixe_du_champ;
             let nom_du_champ=liste_des_champs_visualisation_update[i].nom_du_champ;
-            /*#
-              modifier(
-                 valeurs(
-                    affecte(champ(`fld_visa_commercial_prestation`),:n_fld_visa_commercial_prestation),
-                    affecte(champ(`fld_qte_facturee_prestation`),:n_fld_qte_facturee_prestation),
-                    affecte(champ(`fld_cout_prestation`),:n_fld_cout_prestation),
-                    affecte(champ(`fld_tva_prestation`),:n_fld_tva_prestation)
-                 ),
-                 champs_visualisation(
-                    champ(`T0`,`fld_nom_prestation`),
-                    champ(`T0`,`fld_date_prestation`),
-                    champ(`T0`,`fld_type_prestation`),
-                    champ(`T0`,`fld_qte_prestation`),
-                    champ(`T2`,`fld_nom_mission`)
-                 ),
-                 provenance(
-                    table_reference(
-                       source(nom_de_la_table(prestations,alias(T0),base(b2)))
-                    ),
-                    jointure_croisée(
-                       source(nom_de_la_table(affectations_aux_missions,alias(T1),base(b2)))
-                    ),
-                    jointure_croisée(
-                       source(nom_de_la_table(missions,alias(T2),base(b2)))
-                    )
-                 ),
-                 conditions(egal(champ(`fld_id_prestation`),:c_fld_id_prestation))
-              )  
-            */
-            /* 1°] */
         }
         /* pour chaque champ de liste_des_champs_visualisation_update, il faut aller chercher le champ de la base */
         let update_contient_nur='';
@@ -896,6 +905,89 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='class ' + this.#nom_de_la_classe_générée2 + '{\r\n';
         /*
         */
+        let liste_des_methodes_serveur_normalisees=[
+            'actions_et_tests_apres_page_modifications' ,
+            'tests_et_actions_apres_modifier' ,
+            'actions_et_tests_avant_modifier' ,
+            'test_avant_supprimer' ,
+            'actions_apres_supprimer' ,
+            'tests_avant_creer' ,
+            'action_apres_creer'
+        ];
+        let tableau_des_fragments_serveur=[];
+        if(this.#rev_serveur_mat!==null){
+            /*
+            definition_de_classe(
+               nom_classe(missions1),
+               contenu(
+                  #(
+                    =========================================================================================================
+                  ),
+                  méthode(
+                     definition(
+                        nom(actions_et_tests_avant_modifier),
+            */         
+         
+            let lng01=this.#rev_serveur_mat.length;
+            for(let i=1 ; i < lng01 ; i=this.#rev_serveur_mat[i][12]){
+                if(this.#rev_serveur_mat[i][1]==='definition_de_classe' && this.#rev_serveur_mat[i][2]==='f'){
+                    for(let j=i+1 ; j < lng01 ; j=this.#rev_serveur_mat[j][12]){
+                        if(this.#rev_serveur_mat[j][1]==='contenu' && this.#rev_serveur_mat[j][2]==='f'){
+                            for(let k=j+1 ; k < lng01 ; k=this.#rev_serveur_mat[k][12]){
+                                if(this.#rev_serveur_mat[k][1]==='méthode' && this.#rev_serveur_mat[k][2]==='f'){
+                                    let position_methode_serveur=k;
+                                    let position_contenu_methode_serveur='';
+                                    let nom_methode_serveur='';
+                                    for(let l=k+1 ; l < lng01 ; l=this.#rev_serveur_mat[l][12]){
+                                        if(this.#rev_serveur_mat[l][1]==='definition' && this.#rev_serveur_mat[l][2]==='f'){
+                                            for(let m=l+1 ; m < lng01 ; m=this.#rev_serveur_mat[m][12]){
+                                                if(this.#rev_serveur_mat[m][1]==='nom' && this.#rev_serveur_mat[m][2]==='f' && this.#rev_serveur_mat[m][8]===1 && this.#rev_serveur_mat[m+1][2]==='c'){
+                                                    nom_methode_serveur=this.#rev_serveur_mat[m+1][1];
+                                                }
+                                            }
+                                        }else if(this.#rev_serveur_mat[l][1]==='contenu' && this.#rev_serveur_mat[l][2]==='f'){
+                                            for(let m=l+1 ; m < lng01 ; m=this.#rev_serveur_mat[m][12]){
+                                                if(this.#rev_serveur_mat[m][1]==='nom' && this.#rev_serveur_mat[m][2]==='f' && this.#rev_serveur_mat[m][8]===1 && this.#rev_serveur_mat[m+1][2]==='c'){
+                                                    position_contenu_methode_serveur=m+1;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    if(nom_methode_serveur !== '' ){
+                                        let src_js='';
+                                        
+                                        let obj_src_rev_txt=this.__ig1.__rev1.matrice_vers_source_rev1(this.#rev_serveur_mat , k , true , k+1);
+                                        if(obj_src_rev_txt.__xst === __xsu){
+                                            let src_rev='#(\r\n';
+                                            src_rev+='  =========================== ';
+                                            src_rev+='fragment';
+                                            src_rev+=' ========================================================================\r\n';
+                                            src_rev+='),méthode(' + obj_src_rev_txt.__xva + ')';
+                                            let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( src_rev , {} );
+                                            if(obj1.__xst === __xsu){
+                                                src_js='\n    '+obj1.__xva.replace(/\n/g,'\n    ');
+                                            }
+                                            
+                                            
+                                        }
+                                        tableau_des_fragments_serveur.push({
+                                             /*  */
+                                            nom_methode_serveur : nom_methode_serveur ,
+                                            position_methode_serveur : position_methode_serveur ,
+                                            position_contenu_methode_serveur : position_contenu_methode_serveur ,
+                                            src_js : src_js
+                                        })
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        let fragment_trouve=-1;
+        /*
+        */
         src_serveur_js2+='    /*\r\n';
         src_serveur_js2+='      =============================================================================================================\r\n';
         src_serveur_js2+='    */\r\n';
@@ -904,9 +996,9 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='          return({"__xst" : __xer,"__xme" : \' [\' + this.__ig1.nl2() + \']\'});\r\n';
         src_serveur_js2+='        */\r\n';
         src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
-        src_serveur_js2+='\r\n';
         src_serveur_js2+='    }\r\n';
-        src_serveur_js2+='\r\n';
+        /*
+        */
         src_serveur_js2+='    /*\r\n';
         src_serveur_js2+='      =============================================================================================================\r\n';
         src_serveur_js2+='    */\r\n';
@@ -918,15 +1010,27 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='    }\r\n';
         /*
         */
-        src_serveur_js2+='    /*\r\n';
-        src_serveur_js2+='      =============================================================================================================\r\n';
-        src_serveur_js2+='    */\r\n';
-        src_serveur_js2+='    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){\r\n';
-        src_serveur_js2+='        /*\r\n';
-        src_serveur_js2+='          return({"__xst" : __xer,"__xme" : \' [\' + this.__ig1.nl2() + \']\'});\r\n';
-        src_serveur_js2+='        */\r\n';
-        src_serveur_js2+='        return{__xst:__xsu};\r\n';
-        src_serveur_js2+='    }\r\n';
+        // 
+        fragment_trouve=-1;
+        for(let i=0 ; i < tableau_des_fragments_serveur.length;i++){
+           if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'actions_et_tests_avant_modifier'){
+               fragment_trouve=i;
+               break;
+           }
+        }
+        if(fragment_trouve>=0){
+            src_serveur_js2+=tableau_des_fragments_serveur[fragment_trouve].src_js;
+        }else{
+            src_serveur_js2+='    /*\r\n';
+            src_serveur_js2+='      =============================================================================================================\r\n';
+            src_serveur_js2+='    */\r\n';
+            src_serveur_js2+='    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){\r\n';
+            src_serveur_js2+='        /*\r\n';
+            src_serveur_js2+='          return({"__xst" : __xer,"__xme" : \' [\' + this.__ig1.nl2() + \']\'});\r\n';
+            src_serveur_js2+='        */\r\n';
+            src_serveur_js2+='        return{__xst:__xsu};\r\n';
+            src_serveur_js2+='    }\r\n';
+        }
         /*
         */
         src_serveur_js2+='    /*\r\n';
@@ -4202,6 +4306,7 @@ class x_ecran_generer_programmes1{
         }
         if(this.#liste_des_types_de_requetes.liste_ecran === true){
             document.getElementById( 'gererer_le_js_bdd1' ).style.visibility='visible';
+            this.#rev_serveur_mat=null;
             let obj=this.générer_les_programmes( null );
             if(obj.__xst === __xsu){
             }else{
@@ -4624,7 +4729,7 @@ class x_ecran_generer_programmes1{
         o1+='</select>';
         o1+=', ne pas prendre les valeurs en session : ';
         o1+='<input id="ne_pas_prendre_les_valeurs_en_session" type="checkbox" />';
-        o1+='<div id="gererer_le_js_bdd1" data-rev_click="m1(n1(' + this.moi + '),f1(générer_les_programmes()))" style="visibility:hidden;" class="rev_bouton yy__1">générer les programmes</div>';
+        o1+='<div id="gererer_le_js_bdd1" data-rev_click="m1(n1(' + this.moi + '),f1(recupere_elements_pour_générer_les_programmes()))" style="visibility:hidden;" class="rev_bouton yy__1">générer les programmes</div>';
         /*
         */
         o1+='<div class="yy_conteneur_txtara">';
@@ -4634,7 +4739,7 @@ class x_ecran_generer_programmes1{
         /*  */
         o1+='      <div class="rev_bouton yy__0"';
         o1+=' data-rev_click="m1(n1(' + this.moi + '),f1(bouton_integrer_ce_source_genere_dans_la_table_source(cible_source(\'_c.js\'))))';
-        o1+='">integrer dans la table source</div>';
+        o1+='">integrer dans tbl_source</div>';
         /*  */
         o1+='   </div>';
         o1+='   <textarea id="JS_client2" rows="10" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
@@ -4648,7 +4753,7 @@ class x_ecran_generer_programmes1{
         /*  */
         o1+='      <div class="rev_bouton yy__0"';
         o1+=' data-rev_click="m1(n1(' + this.moi + '),f1(bouton_integrer_ce_source_genere_dans_la_table_source(cible_source(\'_s.js\'))))';
-        o1+='">integrer la table source</div>';
+        o1+='">integrer dans tbl_source</div>';
         o1+=' </div>';
         o1+=' <textarea id="serveur_js2" rows="10" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
         o1+='</div>';

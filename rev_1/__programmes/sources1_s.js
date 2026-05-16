@@ -1060,7 +1060,7 @@ class sources1{
     }
     /*
       =============================================================================================================
-      fonction utile seulement dans rev_2
+      utile seulement dans rev_2
       permet de copier des fichiers de l'environnement 1 vers l'environnement 2 et inversement
     */
     async importer_ou_exporter( mat , d , projet_source , projet_cible ){
@@ -1133,7 +1133,7 @@ class sources1{
     }
     /*
       =============================================================================================================
-      fonction utile seulement dans rev_2
+      utile seulement dans rev_2
       Copie un fichier de l'environnement deux vers l'environnement un.
     */
     async exporter_dans_rev_un( mat , d ){
@@ -1148,7 +1148,7 @@ class sources1{
     }
     /*
       =============================================================================================================
-      fonction utile seulement dans rev_2
+      utile seulement dans rev_2
       Copie un fichier de l'environnement un vers l'environnement deux.
     */
     async importer_de_rev_un( mat , d ){

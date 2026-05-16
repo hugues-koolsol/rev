@@ -364,7 +364,7 @@ class sources1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_usage_source'] !== ''){
-            let tab_est_parmis_10='fichier,fonction'.split( ',' );
+            let tab_est_parmis_10='fichier,fragment,fonction'.split( ',' );
             if(!tab_est_parmis_10.includes( fo1['chp_usage_source'] )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
@@ -439,6 +439,7 @@ class sources1{
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_usage_source' );
         o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fichier)))))">fichier</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fragment)))))">fragment</div>';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fonction)))))">fonction</div>';
         o1+='      </div>';
         o1+='    </div>';
@@ -948,7 +949,7 @@ class sources1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_usage_source'] !== ''){
-            let tab_est_parmis_6='fichier,fonction'.split( ',' );
+            let tab_est_parmis_6='fichier,fragment,fonction'.split( ',' );
             if(!tab_est_parmis_6.includes( fo1['chp_usage_source'] )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
@@ -1058,6 +1059,7 @@ class sources1{
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_usage_source' );
         o1+='      <br />';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fichier)))))">fichier</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fragment)))))">fragment</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fonction)))))">fonction</div>';
         o1+='    </div>';
         o1+='    </div>';
@@ -1607,7 +1609,12 @@ class sources1{
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
-                lst+=' '+this.__ig1.fi2( elem['T0.chp_usage_source'] );
+                if(elem['T0.chp_usage_source']==='fragment'){
+                    lst+=' <b style="color:red;">'+this.__ig1.fi2( elem['T0.chp_usage_source'] ) + '</b>';
+                }else if(elem['T0.chp_usage_source']==='fichier'){
+                }else{
+                    lst+=' <b style="color:blue;">'+this.__ig1.fi2( elem['T0.chp_usage_source'] ) + '</b>';
+                }
                 lst+='<br />';
                 if(elem['T0.chx_dossier_id_source'] !== null){
                     lst+='(' + elem['T0.chx_dossier_id_source'] + ')';
