@@ -1136,11 +1136,11 @@
     "chp_table_reference_requete": "tbl_sources"
   },
   "416": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_source` , `T0`.`chx_dossier_id_source`\r\n FROM b1.tbl_sources T0\r\nWHERE `T0`.`chp_nom_source` = :T0_chp_nom_source\r\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_source` , `T0`.`chx_dossier_id_source`\r\n FROM b1.tbl_sources T0\r\nWHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source\r\n   AND `T0`.`chx_dossier_id_source` IS NOT NULL)\r\n;",
     "cht_commentaire_requete": null,
     "chp_type_requete": "select",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_source`),champ(`T0`,`chx_dossier_id_source`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source))\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_source`),champ(`T0`,`chx_dossier_id_source`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),\n         n_est_pas(champ(`T0`,`chx_dossier_id_source`),NULL)\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_sources"
   },
   "417": {

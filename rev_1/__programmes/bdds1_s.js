@@ -479,6 +479,8 @@ class bdds1{
                        && chi_id_projet !== null
                    || this.__ig1.donnees_retournees._CA_ === 1
                        && chi_id_projet === 1
+                   || this.__ig1.donnees_retournees._CA_ === 1
+                       && this.__ig1.donnees_retournees.chi_id_projet === 1
             ){
                 /*
                   dans le cas de la sauvegarde de la base système d'un autre projet , on ne fait pas de sauvegarde csv 

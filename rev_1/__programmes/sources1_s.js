@@ -95,7 +95,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -170,7 +170,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -247,7 +247,7 @@ class sources1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -309,7 +309,7 @@ class sources1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -418,7 +418,7 @@ class sources1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -643,48 +643,52 @@ class sources1{
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
         for(let i in tt402.__xva){
-            let chemin=await o.construire_chemin( tt402.__xva[i]['T0.chx_dossier_id_source'] , __dbn );
-            if(chemin[__xst] !== __xsu){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur sur la construction du chemin pour le source ' + chi_id_source + '[' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
-            }
-            let chemin_fichier=chemin[__xva]['chemin_absolu'] + tt402[__xva][i]['T0.chp_nom_source'];
-            let donnees_sql={
-                "donnees" : [{
-                            "chp_resume_travail" : 'compilation ' + chemin_fichier ,
-                            "cht_rev_travail" : 'pm1(m1(n1(sources1),f1(compiler_source_js_par_id_en_arriere_plan(chi_id_source(' + tt402.__xva[i]['T0.chi_id_source'] + ')))))' ,
-                            "chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
-                            "cht_utilisateur_travail" : this.__ig1.donnees_retournees.chp_nom_de_connexion_utilisateur ,
-                            "chp_etat_travail" : 'en_file_d_attente' ,
-                            "chx_projet_travail" : this.__ig1.donnees_retournees.chi_id_projet ,
-                            "chd_dtc_travail" : this.__ig1.donnees_retournees.date_heure_serveur
-                        }]
-            };
-            /*  */
-            let tt398=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            INSERT INTO b1.`tbl_travaux`(
-                `chp_resume_travail` , 
-                `cht_rev_travail` , 
-                `chx_utilisateur_travail` , 
-                `chd_dtc_travail` , 
-                `chp_etat_travail` , 
-                `chx_projet_travail` , 
-                `cht_utilisateur_travail`
-            ) VALUES (
-                :chp_resume_travail , 
-                :cht_rev_travail , 
-                :chx_utilisateur_travail , 
-                :chd_dtc_travail , 
-                :chp_etat_travail , 
-                :chx_projet_travail , 
-                :cht_utilisateur_travail
-            );
+            /*
+              pour les fragments on ne fait rien
             */
-            /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
-            if(tt398[__xst] !== __xsu){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
+            if(tt402.__xva[i]['T0.chx_dossier_id_source'] !== null){
+                let chemin=await o.construire_chemin( tt402.__xva[i]['T0.chx_dossier_id_source'] , __dbn );
+                if(chemin[__xst] !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : chemin.__xme});
+                }
+                let chemin_fichier=chemin[__xva]['chemin_absolu'] + tt402[__xva][i]['T0.chp_nom_source'];
+                let donnees_sql={
+                    "donnees" : [{
+                                "chp_resume_travail" : 'compilation ' + chemin_fichier ,
+                                "cht_rev_travail" : 'pm1(m1(n1(sources1),f1(compiler_source_js_par_id_en_arriere_plan(chi_id_source(' + tt402.__xva[i]['T0.chi_id_source'] + ')))))' ,
+                                "chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
+                                "cht_utilisateur_travail" : this.__ig1.donnees_retournees.chp_nom_de_connexion_utilisateur ,
+                                "chp_etat_travail" : 'en_file_d_attente' ,
+                                "chx_projet_travail" : this.__ig1.donnees_retournees.chi_id_projet ,
+                                "chd_dtc_travail" : this.__ig1.donnees_retournees.date_heure_serveur
+                            }]
+                };
+                /*  */
+                let tt398=await this.__ig1.sql_iii(
+                /*sql_inclure_deb*/ /*#
+                INSERT INTO b1.`tbl_travaux`(
+                    `chp_resume_travail` , 
+                    `cht_rev_travail` , 
+                    `chx_utilisateur_travail` , 
+                    `chd_dtc_travail` , 
+                    `chp_etat_travail` , 
+                    `chx_projet_travail` , 
+                    `cht_utilisateur_travail`
+                ) VALUES (
+                    :chp_resume_travail , 
+                    :cht_rev_travail , 
+                    :chx_utilisateur_travail , 
+                    :chd_dtc_travail , 
+                    :chp_etat_travail , 
+                    :chx_projet_travail , 
+                    :cht_utilisateur_travail
+                );
+                */
+                /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
+                if(tt398[__xst] !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
+                    return({"__xst" : __xer});
+                }
             }
         }
         return({"__xst" : __xsu});
@@ -754,7 +758,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1082,7 +1086,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1273,7 +1277,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1348,7 +1352,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1383,10 +1387,9 @@ class sources1{
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
-        if(__xva_avant['T0.chx_dossier_id_source'] === null || form['chx_dossier_id_source'] === null ){
+        if(__xva_avant['T0.chx_dossier_id_source'] === null || form['chx_dossier_id_source'] === null){
             return({"__xst" : __xsu});
         }
-        
         let dossier_ancien=await o.construire_chemin( __xva_avant['T0.chx_dossier_id_source'] , __db1 );
         if(dossier_ancien[__xst] === __xsu){
             if(!(await this.__ig1.is_dir( dossier_ancien[__xva]['chemin_absolu'] ))){
@@ -1494,7 +1497,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1525,7 +1528,6 @@ class sources1{
             "n_cht_notification_ko_source" : form['cht_notification_ko_source'] === '' ? ( null ) : ( form['cht_notification_ko_source'] ) ,
             "n_chp_usage_source" : form['chp_usage_source']
         };
-        
         /* =========================== mise à jour effective ======================== */
         let tt308=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -1539,7 +1541,8 @@ class sources1{
            `che_autorisation_globale_source` = :n_che_autorisation_globale_source , 
            `cht_condition_rev_source` = :n_cht_condition_rev_source , 
            `cht_condition_js_source` = :n_cht_condition_js_source , 
-           `cht_notification_ko_source` = :n_cht_notification_ko_source
+           `cht_notification_ko_source` = :n_cht_notification_ko_source , 
+           `chp_usage_source` = :n_chp_usage_source
         WHERE `chi_id_source` = :c_chi_id_source ;
         */
         /*sql_inclure_fin*/ 308 , criteres_308 , this.__ig1.donnees_retournees , __db1 );
@@ -1547,9 +1550,7 @@ class sources1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt308.__xme});
         }
-        this.__ig1.ma_trace1("OK" );
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt116[__xva][0] , __db1 );
-        this.__ig1.ma_trace1("OK" , __taam);
         if(__taam[__xst] !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
@@ -1569,7 +1570,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1612,7 +1613,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1647,7 +1648,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1718,7 +1719,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1772,14 +1773,16 @@ class sources1{
             `cht_commentaire_source` , 
             `cht_rev_source` , 
             `cht_genere_source` , 
-            `che_binaire_source`
+            `che_binaire_source` , 
+            `chp_usage_source`
         ) VALUES (
             :chx_dossier_id_source , 
             :chp_nom_source , 
             :cht_commentaire_source , 
             :cht_rev_source , 
             :cht_genere_source , 
-            :che_binaire_source
+            :che_binaire_source , 
+            :chp_usage_source
         );
         */
         /*sql_inclure_fin*/ 117 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
@@ -1860,7 +1863,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1889,7 +1892,7 @@ class sources1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             

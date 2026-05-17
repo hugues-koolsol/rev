@@ -14,33 +14,40 @@ class x_ecran_generer_programmes1{
     /*
       =============================================================================================================
     */
-    async recupere_elements_pour_générer_les_programmes(mat , d){
+    async recupere_elements_pour_générer_les_programmes( mat , d ){
         /* this.__ig1.ma_trace1("this.__ig1.donnees_recues=",this.__ig1.donnees_recues); */
         let chi_id_basedd_de_reference=this.__ig1.donnees_recues.__xva.chi_id_basedd_de_reference;
         let table_de_reference=this.__ig1.donnees_recues.__xva.table_de_reference;
         let incice_de_la_classe=this.__ig1.donnees_recues.__xva.incice_de_la_classe;
         let nom_de_la_classe='';
-        
         if(table_de_reference.substr( 0 , 4 ) === 'tbl_'){
-            nom_de_la_classe=table_de_reference.substr( 4 )+incice_de_la_classe;
+            nom_de_la_classe=table_de_reference.substr( 4 ) + incice_de_la_classe;
         }else{
-            nom_de_la_classe=table_de_reference+incice_de_la_classe;
+            nom_de_la_classe=table_de_reference + incice_de_la_classe;
         }
-        let nom_source_serveur=nom_de_la_classe+'_s.js';
-        let nom_source_client=nom_de_la_classe+'_c.js';
-        
+        let nom_source_serveur=nom_de_la_classe + '_s.js';
+        let nom_source_client=nom_de_la_classe + '_c.js';
         /* this.__ig1.ma_trace1("nom_source_serveur="+nom_source_serveur); */
-        
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_417={"T0_chp_nom_source" : nom_source_serveur};
-        let tt417=await this.__ig1.sql_iii(417 , critere_417 , this.__ig1.donnees_retournees , __db1 );
-        if(tt417.__xst !== __xsu ){
+        let tt417=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`cht_rev_source` , `T0`.`cht_genere_source`
+         FROM b1.tbl_sources T0
+        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
+           AND `T0`.`chp_usage_source` = 'fragment'
+           AND `T0`.`chx_dossier_id_source` IS NULL)
+        ;
+        */
+        /*sql_inclure_fin*/ 417 , critere_417 , this.__ig1.donnees_retournees , __db1 );
+        if(tt417.__xst !== __xsu){
             return({"__xst" : __xer});
         }
         let rev_serveur=null;
         /* this.__ig1.ma_trace1("tt417.__xva",tt417.__xva); */
-        if( tt417.__xva.length === 1){
-            rev_serveur=tt417.__xva[0]['T0.cht_rev_source']
+        if(tt417.__xva.length === 1){
+            rev_serveur=tt417.__xva[0]['T0.cht_rev_source'];
         }
         this.__ig1.donnees_retournees.__xva['rev_serveur']=rev_serveur;
         return({"__xst" : __xsu});
@@ -48,21 +55,30 @@ class x_ecran_generer_programmes1{
     /*
       =============================================================================================================
     */
-    async integrer_un_source_genere_dans_la_table_source(mat , d){
+    async integrer_un_source_genere_dans_la_table_source( mat , d ){
         let nom_du_source=this.__ig1.donnees_recues.__xva.nom_du_source;
         /* this.__ig1.ma_trace1( "nom_du_source=" , nom_du_source ); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_416={"T0_chp_nom_source" : nom_du_source};
-        let tt416=await this.__ig1.sql_iii(416 , critere_416 , this.__ig1.donnees_retournees , __db1 );
-        if(tt416.__xst !== __xsu || tt416.__xva.length !== 1 ){
-            return({"__xst" : __xer});
+        let tt416=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source`
+         FROM b1.tbl_sources T0
+        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
+           AND `T0`.`chx_dossier_id_source` IS NOT NULL)
+        ;
+        */
+        /*sql_inclure_fin*/ 416 , critere_416 , this.__ig1.donnees_retournees , __db1 );
+        if(tt416.__xst !== __xsu || tt416.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : this.__gi1.nl2()});
         }
         let chemin_source='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + nom_du_source;
         try{
             await Deno.writeTextFile( chemin_source , this.__ig1.donnees_recues.__xva.cht_genere_source );
             /* this.__ig1.ma_trace1("ok" + chemin_source); */
         }catch(e){
-            return({"__xst" : __xer , "__xme" : '[' + this.__ig1.nl2(e) + ']'});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2( e ) + ']'});
         }
         return({"__xst" : __xsu});
     }

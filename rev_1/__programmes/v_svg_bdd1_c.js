@@ -1234,38 +1234,6 @@ class v_svg_bdd1{
             return({"__xst" : __xsu});
         }
         return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de l\'analyse de l\'index '} ));
-        /*
-          
-          SELECT T0.fld_id_prestation , T1.fld_id_prestation , T0.fld_nom_prestation , T1.fld_nom_prestation 
-          FROM prestations T0 , prestations T1 
-          WHERE T0.fld_nom_prestation = T1.fld_nom_prestation 
-          AND T0.fld_date_prestation = T1.fld_date_prestation 
-          AND T0.fld_type_prestation = T1.fld_type_prestation 
-          AND T0.fld_id_affectation_prestation = T1.fld_id_affectation_prestation
-          AND T0.fld_id_prestation <> T1.fld_id_prestation
-          LIMIT 50;
-          
-        */
-        /*
-          let definition_de_l_index='';
-          definition_de_l_index+='\n#(=================================================================)';
-          definition_de_l_index+='\najouter_index(';
-          definition_de_l_index+='\n #(),';
-          let nom_de_la_table_pour_l_index=element_svg_rectangle_de_l_index.getAttribute( 'nom_de_la_table_pour_l_index' );
-          definition_de_l_index+='\n nom_de_la_table_pour_l_index(\'' + nom_de_la_table_pour_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
-          let nom_de_l_index=element_svg_rectangle_de_l_index.getAttribute( 'nom_de_l_index' );
-          definition_de_l_index+='\n nom_de_l_index(\'' + nom_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
-          let meta=element_svg_rectangle_de_l_index.getAttribute( 'donnees_rev_de_l_index' );
-          definition_de_l_index+='\n ' + meta + '';
-          let champs=element_svg_rectangle_de_l_index.getAttribute( 'champs' );
-          definition_de_l_index+='\n champs(' + champs + '),';
-          let unique=element_svg_rectangle_de_l_index.getAttribute( 'unique' );
-          if(unique === '1'){
-          definition_de_l_index+='\n unique(),';
-          }
-          definition_de_l_index+=')';
-          return definition_de_l_index;
-        */
     }
     /*
       =============================================================================================================
@@ -1284,8 +1252,8 @@ class v_svg_bdd1{
             }
         }
         let obji=this.#creer_definition_index_en_rev( document.getElementById( id_svg_rectangle_de_l_index ) );
-        if(obji.__xst !== __xsu ){
-            return({"__xst" : __xer , __xme : obji.__xme});
+        if(obji.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : obji.__xme});
         }
         let rev_texte=obji.__xva;
         var obj1=this.__ig1.__rev1.rev_tm( rev_texte );
@@ -1797,6 +1765,7 @@ class v_svg_bdd1{
         t+='m1(n1(' + this.moi + ')f1(raz_liste_des_champs_de_l_index(';
         t+=' nom_du_champ(\'liste_des_champs_de_l_index\'),';
         t+=')))" >raz</div>';
+        t+='<br />';
         var liste_des_champs=[];
         var lst=document.getElementById( id_svg_conteneur_table ).getElementsByTagName( 'text' );
         for( let i=0 ; i < lst.length ; i++ ){
@@ -1812,6 +1781,15 @@ class v_svg_bdd1{
             t+='<div class="rev_bouton yy__3" data-rev_click="';
             t+='m1(n1(' + this.moi + '),f1(ajouter_un_champ_a_l_index_dans_modale(';
             t+=' nom_du_champ(\'' + liste_des_champs[i] + '\')';
+            t+=' null_est_unique(0)';
+            t+=')))" >' + liste_des_champs[i] + '</div>';
+        }
+        t+='<br />avec null_est_unique<br />';
+        for( let i=0 ; i < liste_des_champs.length ; i++ ){
+            t+='<div class="rev_bouton yy__3" data-rev_click="';
+            t+='m1(n1(' + this.moi + '),f1(ajouter_un_champ_a_l_index_dans_modale(';
+            t+=' nom_du_champ(\'' + liste_des_champs[i] + '\')';
+            t+=' null_est_unique(1)';
             t+=')))" >' + liste_des_champs[i] + '</div>';
         }
         /*
@@ -3624,11 +3602,6 @@ class v_svg_bdd1{
                 ){
                     tab_des_index_rev.push( 'ajouter_index(' + lst[i].getAttribute( 'donnees_rev_de_l_index' ) + ')' );
                 }
-                /*
-                  if[lst[i].getAttribute[ 'donnees_rev_de_l_index' ].indexOf[ 'nom_de_la_table_pour_l_index[\'' + nom_de_la_table ] >= 0]{
-                  tab_des_index_rev.push[ 'ajouter_index[' + lst[i].getAttribute[ 'donnees_rev_de_l_index' ] + ']' ];
-                  }
-                */
             }
         }
         debugger;
@@ -3727,7 +3700,7 @@ class v_svg_bdd1{
             if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) === 'rectangle_d_index'){
                 let obji=this.#creer_definition_index_en_rev( lst[i] );
                 if(obji.__xst !== __xsu){
-                    return({"__xst" : __xsu , __xme : obji.__xme});
+                    return({"__xst" : __xsu ,"__xme" : obji.__xme});
                 }
                 chaine_des_index+=obji.__xva;
             }
@@ -3878,8 +3851,8 @@ class v_svg_bdd1{
         for( let i=0 ; i < lst.length ; i++ ){
             if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) === 'rectangle_d_index'){
                 let obji=this.#creer_definition_index_en_rev( lst[i] );
-                if(obji.__xst !== __xsu ){
-                    return({"__xst" : __xer , __xme : obji.__xme});
+                if(obji.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : obji.__xme});
                 }
                 chaine_des_index+=obji.__xva;
             }
@@ -4075,6 +4048,7 @@ class v_svg_bdd1{
             this.__ig1.fermer_la_sous_fenetre();
             this.#dessiner_le_svg();
         }
+        return({"__xst" : __xsu});
     }
     /*
       
@@ -4082,25 +4056,36 @@ class v_svg_bdd1{
     */
     raz_liste_des_champs_de_l_index(){
         document.getElementById( 'liste_des_champs_de_l_index' ).value='';
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     ajouter_un_champ_a_l_index_dans_modale( mat ){
         var nom_du_champ='';
+        var null_est_unique=0;
         for( let i=0 ; i < mat.length ; i++ ){
             if(mat[i][1] === 'nom_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][1] === 'null_est_unique' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                null_est_unique=parseInt( mat[i + 1][1] , 10 );
             }
         }
         var contenu_actuel=document.getElementById( 'liste_des_champs_de_l_index' ).value;
-        if(contenu_actuel === ''){
-            document.getElementById( 'liste_des_champs_de_l_index' ).value='\'' + nom_du_champ.replace( /\\/ , '\\\\' ).replace( /\'/ , '\\\'' ) + '\'';
-            document.getElementById( 'liste_des_champs_de_l_index' ).title='\'' + nom_du_champ.replace( /\\/ , '\\\\' ).replace( /\'/ , '\\\'' ) + '\'';
+        let a_ajouter='';
+        if(null_est_unique === 0){
+            a_ajouter='\'' + nom_du_champ.replace( /\\/ , '\\\\' ).replace( /\'/ , '\\\'' ) + '\'';
         }else{
-            document.getElementById( 'liste_des_champs_de_l_index' ).value=document.getElementById( 'liste_des_champs_de_l_index' ).value + ',\'' + nom_du_champ.replace( /\\/ , '\\\\' ).replace( /\'/ , '\\\'' ) + '\'';
-            document.getElementById( 'liste_des_champs_de_l_index' ).title=document.getElementById( 'liste_des_champs_de_l_index' ).value + ',\'' + nom_du_champ.replace( /\\/ , '\\\\' ).replace( /\'/ , '\\\'' ) + '\'';
+            a_ajouter='null_est_unique(\'' + nom_du_champ.replace( /\\/ , '\\\\' ).replace( /\'/ , '\\\'' ) + '\')';
         }
+        if(contenu_actuel === ''){
+            document.getElementById( 'liste_des_champs_de_l_index' ).value='' + a_ajouter + '';
+            document.getElementById( 'liste_des_champs_de_l_index' ).title='' + a_ajouter + '';
+        }else{
+            document.getElementById( 'liste_des_champs_de_l_index' ).value=document.getElementById( 'liste_des_champs_de_l_index' ).value + ',' + a_ajouter + '';
+            document.getElementById( 'liste_des_champs_de_l_index' ).title=document.getElementById( 'liste_des_champs_de_l_index' ).value + ',' + a_ajouter + '';
+        }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -5712,49 +5697,7 @@ class v_svg_bdd1{
         let meta=element_svg_rectangle_de_l_index.getAttribute( 'donnees_rev_de_l_index' );
         definition_de_l_index+='\n ' + meta + '';
         /*  */
-        let liste_de_champs=element_svg_rectangle_de_l_index.getAttribute( 'champs' );
-        /*
-          quand un champ peut être NULL, il faut ajouter une valeur is_null
-        */
-        /*
-          pour l'instant on prend la définition brut
-        */
         let champs=element_svg_rectangle_de_l_index.getAttribute( 'champs' );
-        let mat_champs=this.__ig1.__rev1.rev_tcm(liste_de_champs);
-        if(mat_champs.__xst !== __xsu){
-            return({__xst : __xer , __xme : "erreur dans la liste des champs de l'index [" + this.__ig1.nl2() + "]"});
-        }
-        let racine_boite_table=element_svg_rectangle_de_l_index.parentNode;
-        let boucler=50;
-        while(boucler>0){
-            boucler--;
-            if(racine_boite_table.getAttribute('type_element')==='conteneur_de_table'){
-                boucler=0;
-            }else{
-                racine_boite_table=racine_boite_table.parentNode;
-            }
-        }
-        let nouveau_champs='';
-        let liste1=racine_boite_table.querySelectorAll( '[type_element="rectangle_de_champ"]' )
-        for( let j=1 ; j < mat_champs.__xva.length ; j=mat_champs.__xva[j][12]){
-            for(let i=0 ; i < liste1.length ; i++){
-                let nom_du_champ=liste1[i].getAttribute('nom_du_champ');
-                let non_nulle=liste1[i].getAttribute('non_nulle');
-                if(nom_du_champ === mat_champs.__xva[j][1]){
-                    if(non_nulle==="0"){
-                        nouveau_champs+=',null_est_unique(`'+nom_du_champ+'`)'
-                    }else if(non_nulle==="1"){
-                        nouveau_champs+=',`'+nom_du_champ+'`'
-                    }else{
-                       return({__xst : __xer , __xme : "erreur dans la liste des champs de l'index [" + this.__ig1.nl2() + "]"});
-                    }
-                }
-            }
-        }
-        if(nouveau_champs !== ''){
-            nouveau_champs=nouveau_champs.substr(1);
-            champs=nouveau_champs;
-        }
         definition_de_l_index+='\n champs(' + champs + '),';
         /*  */
         let unique=element_svg_rectangle_de_l_index.getAttribute( 'unique' );
@@ -5764,7 +5707,7 @@ class v_svg_bdd1{
         /*  */
         definition_de_l_index+=')';
         /* debugger */
-        return {__xst : __xsu , __xva : definition_de_l_index};
+        return({"__xst" : __xsu ,"__xva" : definition_de_l_index});
     }
     /*
       =============================================================================================================
@@ -7236,7 +7179,10 @@ class v_svg_bdd1{
                 abrege_du_champ=tab.join( ' ' );
             }
         }
-        if(nom_bref_libelle_lien === '' || nom_bref_libelle_lien.indexOf( 'à faire' ) >= 0 || nom_bref_libelle_lien.indexOf( 'A faire' ) >= 0){
+        if(nom_bref_libelle_lien === ''
+               || nom_bref_libelle_lien.indexOf( 'à faire' ) >= 0
+               || nom_bref_libelle_lien.indexOf( 'A faire' ) >= 0
+        ){
             let tab=nom_du_champ.split( '_' );
             nom_bref_libelle_lien=tab[tab.length - 1];
         }
@@ -7315,7 +7261,7 @@ class v_svg_bdd1{
                 "la_valeur_par_defaut_est_caractere" : la_valeur_par_defaut_est_caractere ,
                 "valeur_par_defaut" : valeur_par_defaut ,
                 "nom_bref_du_champ" : nom_bref_du_champ ,
-                "abrege_du_champ" : abrege_du_champ , 
+                "abrege_du_champ" : abrege_du_champ ,
                 "typologie" : typologie ,
                 "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
                 "est_en_session" : est_en_session ,
@@ -7795,8 +7741,8 @@ class v_svg_bdd1{
             for( let i=0 ; i < lst.length ; i++ ){
                 if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) === 'rectangle_d_index'){
                     let obji=this.#creer_definition_index_en_rev( lst[i] );
-                    if(obji.__xst !== __xsu ){
-                        return({"__xst" : __xer ,"__xme" : obji.__xme });
+                    if(obji.__xst !== __xsu){
+                        return({"__xst" : __xer ,"__xme" : obji.__xme});
                     }
                     t+=obji.__xva;
                 }
@@ -8541,7 +8487,7 @@ class v_svg_bdd1{
                         var donnees_rev_de_l_index='';
                         var nom_de_la_table_pour_l_index='';
                         var nom_de_l_index='';
-                        var champs='';
+                        var champs_de_l_index='';
                         var unique=0;
                         let indice_meta=0;
                         for( let k=i + 1 ; k < l01 ; k=tab[k][12] ){
@@ -8561,10 +8507,17 @@ class v_svg_bdd1{
                                 unique=1;
                             }else if('champs' === tab[k][1]){
                                 for( let l=k + 1 ; l < l01 ; l=tab[l][12] ){
-                                    if(champs !== ''){
-                                        champs+=',';
+                                    if(champs_de_l_index !== ''){
+                                        champs_de_l_index+=',';
                                     }
-                                    champs+='\'' + tab[l][1].replace( /\\/ , '\\\\' ).replace( /\'/ , '\\\'' ) + '\'';
+                                    if(tab[l][2] === 'c'){
+                                        champs_de_l_index+='\'' + tab[l][1].replace( /\\/ , '\\\\' ).replace( /\'/ , '\\\'' ) + '\'';
+                                    }else if(tab[l][2] === 'f' && tab[l][1] === 'null_est_unique' && tab[l + 1][2] === 'c' && tab[l][8] === 1){
+                                        champs_de_l_index+='null_est_unique(\'' + tab[l + 1][1].replace( /\\/ , '\\\\' ).replace( /\'/ , '\\\'' ) + '\')';
+                                    }else{
+                                        debugger;
+                                        return({"__xst" : __xer ,"__xme" : 'erreur lecture de l\'index pour "' + nom_de_la_table + '"'});
+                                    }
                                 }
                             }else if('meta' === tab[k][1]){
                                 indice_meta=k;
@@ -8583,7 +8536,7 @@ class v_svg_bdd1{
                             }
                         }
                         id_svg_champ_en_cours=indice_courant;
-                        var a=this.#ajouter_index_a_table( id_bdd_de_la_base , indice_courant , nom_de_l_index , id_svg_conteneur_table , nom_de_la_table , donnees_rev_de_l_index , champs , unique );
+                        var a=this.#ajouter_index_a_table( id_bdd_de_la_base , indice_courant , nom_de_l_index , id_svg_conteneur_table , nom_de_la_table , donnees_rev_de_l_index , champs_de_l_index , unique );
                         indice_courant=a.indice_courant;
                         break;
                     }

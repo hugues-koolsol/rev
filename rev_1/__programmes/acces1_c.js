@@ -1047,7 +1047,7 @@ class acces1{
                 o1+=this.__ig1.la_liste_est_vide();
             }
         }
-        this.__ig1.initialisation_filtre_sous_fenetre2('sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE);
+        this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE );
         return({"__xst" : __xsu});
     }
     /*

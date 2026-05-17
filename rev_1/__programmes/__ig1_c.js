@@ -820,41 +820,45 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    initialisation_filtre_sous_fenetre2(nom_de_zone , contenu_de_sous_liste2 , titre ){
+    initialisation_filtre_sous_fenetre2( nom_de_zone , contenu_de_sous_liste2 , titre ){
         document.getElementById( 'vv_contenu_de_sous_liste2' ).innerHTML=contenu_de_sous_liste2;
         document.getElementById( 'vv_titre_sous_liste_2' ).innerText='selection ' + titre;
-        let zones_filtre2=document.getElementById(nom_de_zone);
+        let zones_filtre2=document.getElementById( nom_de_zone );
         if(zones_filtre2){
-            let lst_inp=zones_filtre2.getElementsByTagName('input');
-            if(lst_inp.length>0){
-              let a_selectionner=null;
-              for(let i=0 ; i < lst_inp.length && a_selectionner === null ; i++){
-                  if(a_selectionner===null && lst_inp[i].value !== ''){
-                      a_selectionner=lst_inp[i];
-                      break;
-                  }
-              }
-              if(a_selectionner !== null){
-                  a_selectionner.select();
-              }else{
-                  lst_inp[0].select();
-              }
-            }
-            this.ajoute_les_evenements_aux_boutons( null );
-            zones_filtre2.addEventListener('keyup' , ( e ) => {
-                if(e.keyCode === 13 && e.altKey === false && e.ctrlKey === false && e.metaKey === false && e.shiftKey === false){
-                    console.log('faire quelquechose ici e=' , e );
-                    let btn2=document.getElementById('yy_bouton_loupe_sous_fenetre2');
-                    if(btn2){
-                        let cmd2=btn2.getAttribute('data-rev_click');
-                        if(cmd2){
-                            console.log('cmd2='+cmd2);
-                            this.executer1( cmd2 , null , e );
-                            return;
-                        }
+            let lst_inp=zones_filtre2.getElementsByTagName( 'input' );
+            if(lst_inp.length > 0){
+                let a_selectionner=null;
+                for( let i=0 ; i < lst_inp.length && a_selectionner === null ; i++ ){
+                    if(a_selectionner === null && lst_inp[i].value !== ''){
+                        a_selectionner=lst_inp[i];
+                        break;
                     }
                 }
-            });
+                if(a_selectionner !== null){
+                    a_selectionner.select();
+                }else{
+                    lst_inp[0].select();
+                }
+            }
+            this.ajoute_les_evenements_aux_boutons( null );
+            zones_filtre2.addEventListener( 'keyup' , ( e ) => {
+                    if(e.keyCode === 13
+                           && e.altKey === false
+                           && e.ctrlKey === false
+                           && e.metaKey === false
+                           && e.shiftKey === false
+                    ){
+                        console.log( 'faire quelquechose ici e=' , e );
+                        let btn2=document.getElementById( 'yy_bouton_loupe_sous_fenetre2' );
+                        if(btn2){
+                            let cmd2=btn2.getAttribute( 'data-rev_click' );
+                            if(cmd2){
+                                console.log( 'cmd2=' + cmd2 );
+                                this.executer1( cmd2 , null , e );
+                                return;
+                            }
+                        }
+                    }} );
         }
     }
     /*
@@ -3042,8 +3046,8 @@ class __ig1{
         if(this.#liste_des_appels_au_serveur.length > 0){
             this.ajoute_message( {"__xst" : __xal ,"__xme" : 'Un appel au serveur est déjà en cours '} );
             this.affiche_les_messages();
-            this.ma_trace1(" afr voir bug sur batch ");
-//            return({"__xst" : __xer});
+            this.ma_trace1( " afr voir bug sur batch " );
+            /* return({"__xst" : __xer}); */
         }
         this.#boutons_masques_avant_appel.push( elt );
         let mat=obj1.__xva;

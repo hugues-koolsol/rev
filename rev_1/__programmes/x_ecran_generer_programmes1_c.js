@@ -50,42 +50,39 @@ class x_ecran_generer_programmes1{
         /* console.log( 'ici' ); */
         this.#_developpement1=new _developpement1( [] , 0 , this.__ig1 );
         this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , this.__ig1 );
-        
     }
     /*
       =============================================================================================================
     */
-    recupere_elements_pour_générer_les_programmes(mat , d , le_colis=null ){
-        if(le_colis===null){
+    recupere_elements_pour_générer_les_programmes( mat , d , le_colis=null ){
+        if(le_colis === null){
             this.#rev_serveur_mat=null;
             let chi_id_basedd_de_reference=parseInt( document.getElementById( 'vv_les_bases' ).value , 10 );
             let table_de_reference=document.getElementById( 'vv_les_tables' ).value;
             let incice_de_la_classe=document.getElementById( 'incice_de_la_classe' ).value;
             let obj={
-                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(recupere_elements_pour_générer_les_programmes())))' , 
-                "__xva" : { 
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(recupere_elements_pour_générer_les_programmes())))' ,
+                "__xva" : {
                      /*  */
-                    chi_id_basedd_de_reference : chi_id_basedd_de_reference , 
-                    table_de_reference : table_de_reference ,
-                    incice_de_la_classe : incice_de_la_classe
+                    "chi_id_basedd_de_reference" : chi_id_basedd_de_reference ,
+                    "table_de_reference" : table_de_reference ,
+                    "incice_de_la_classe" : incice_de_la_classe
                 }
             };
             this.__ig1.envoyer_un_message_au_worker( obj );
             return({"__xst" : __xsu});
         }else{
-            if(le_colis.__xva.rev_serveur!==null){
-                let objs=this.__ig1.__rev1.rev_tm(le_colis.__xva.rev_serveur);
+            if(le_colis.__xva.rev_serveur !== null){
+                let objs=this.__ig1.__rev1.rev_tm( le_colis.__xva.rev_serveur );
                 if(objs.__xst !== __xsu){
-                    return({"__xst" : __xer , __xme : 'erreur de convertion du fragment serveur'});
+                    return({"__xst" : __xer ,"__xme" : 'erreur de convertion du fragment serveur'});
                 }
                 this.#rev_serveur_mat=objs.__xva;
             }
             let ret=this.générer_les_programmes();
-            
             return({"__xst" : ret.__xst});
         }
     }
-    
     /*
       =============================================================================================================
     */
@@ -906,57 +903,63 @@ class x_ecran_generer_programmes1{
         /*
         */
         let liste_des_methodes_serveur_normalisees=[
-            'actions_et_tests_apres_page_modifications' ,
-            'tests_et_actions_apres_modifier' ,
-            'actions_et_tests_avant_modifier' ,
-            'test_avant_supprimer' ,
-            'actions_apres_supprimer' ,
-            'tests_avant_creer' ,
+            'actions_et_tests_apres_page_modifications',
+            'tests_et_actions_apres_modifier',
+            'actions_et_tests_avant_modifier',
+            'test_avant_supprimer',
+            'actions_apres_supprimer',
+            'tests_avant_creer',
             'action_apres_creer'
         ];
         let tableau_des_fragments_serveur=[];
-        if(this.#rev_serveur_mat!==null){
+        if(this.#rev_serveur_mat !== null){
             /*
-            definition_de_classe(
-               nom_classe(missions1),
-               contenu(
-                  #(
-                    =========================================================================================================
-                  ),
-                  méthode(
-                     definition(
-                        nom(actions_et_tests_avant_modifier),
-            */         
-         
+              definition_de_classe[
+              nom_classe[missions1],
+              contenu[
+              #[
+              =============================================================================================
+              ],
+              méthode[
+              definition[
+              nom[actions_et_tests_avant_modifier],
+            */
             let lng01=this.#rev_serveur_mat.length;
-            for(let i=1 ; i < lng01 ; i=this.#rev_serveur_mat[i][12]){
-                if(this.#rev_serveur_mat[i][1]==='definition_de_classe' && this.#rev_serveur_mat[i][2]==='f'){
-                    for(let j=i+1 ; j < lng01 ; j=this.#rev_serveur_mat[j][12]){
-                        if(this.#rev_serveur_mat[j][1]==='contenu' && this.#rev_serveur_mat[j][2]==='f'){
-                            for(let k=j+1 ; k < lng01 ; k=this.#rev_serveur_mat[k][12]){
-                                if(this.#rev_serveur_mat[k][1]==='méthode' && this.#rev_serveur_mat[k][2]==='f'){
+            for( let i=1 ; i < lng01 ; i=this.#rev_serveur_mat[i][12] ){
+                if(this.#rev_serveur_mat[i][1] === 'definition_de_classe' && this.#rev_serveur_mat[i][2] === 'f'){
+                    for( let j=i + 1 ; j < lng01 ; j=this.#rev_serveur_mat[j][12] ){
+                        if(this.#rev_serveur_mat[j][1] === 'contenu' && this.#rev_serveur_mat[j][2] === 'f'){
+                            for( let k=j + 1 ; k < lng01 ; k=this.#rev_serveur_mat[k][12] ){
+                                if(this.#rev_serveur_mat[k][1] === 'méthode' && this.#rev_serveur_mat[k][2] === 'f'){
                                     let position_methode_serveur=k;
                                     let position_contenu_methode_serveur='';
                                     let nom_methode_serveur='';
-                                    for(let l=k+1 ; l < lng01 ; l=this.#rev_serveur_mat[l][12]){
-                                        if(this.#rev_serveur_mat[l][1]==='definition' && this.#rev_serveur_mat[l][2]==='f'){
-                                            for(let m=l+1 ; m < lng01 ; m=this.#rev_serveur_mat[m][12]){
-                                                if(this.#rev_serveur_mat[m][1]==='nom' && this.#rev_serveur_mat[m][2]==='f' && this.#rev_serveur_mat[m][8]===1 && this.#rev_serveur_mat[m+1][2]==='c'){
-                                                    nom_methode_serveur=this.#rev_serveur_mat[m+1][1];
+                                    for( let l=k + 1 ; l < lng01 ; l=this.#rev_serveur_mat[l][12] ){
+                                        if(this.#rev_serveur_mat[l][1] === 'definition' && this.#rev_serveur_mat[l][2] === 'f'){
+                                            for( let m=l + 1 ; m < lng01 ; m=this.#rev_serveur_mat[m][12] ){
+                                                if(this.#rev_serveur_mat[m][1] === 'nom'
+                                                       && this.#rev_serveur_mat[m][2] === 'f'
+                                                       && this.#rev_serveur_mat[m][8] === 1
+                                                       && this.#rev_serveur_mat[m + 1][2] === 'c'
+                                                ){
+                                                    nom_methode_serveur=this.#rev_serveur_mat[m + 1][1];
                                                 }
                                             }
-                                        }else if(this.#rev_serveur_mat[l][1]==='contenu' && this.#rev_serveur_mat[l][2]==='f'){
-                                            for(let m=l+1 ; m < lng01 ; m=this.#rev_serveur_mat[m][12]){
-                                                if(this.#rev_serveur_mat[m][1]==='nom' && this.#rev_serveur_mat[m][2]==='f' && this.#rev_serveur_mat[m][8]===1 && this.#rev_serveur_mat[m+1][2]==='c'){
-                                                    position_contenu_methode_serveur=m+1;
+                                        }else if(this.#rev_serveur_mat[l][1] === 'contenu' && this.#rev_serveur_mat[l][2] === 'f'){
+                                            for( let m=l + 1 ; m < lng01 ; m=this.#rev_serveur_mat[m][12] ){
+                                                if(this.#rev_serveur_mat[m][1] === 'nom'
+                                                       && this.#rev_serveur_mat[m][2] === 'f'
+                                                       && this.#rev_serveur_mat[m][8] === 1
+                                                       && this.#rev_serveur_mat[m + 1][2] === 'c'
+                                                ){
+                                                    position_contenu_methode_serveur=m + 1;
                                                 }
                                             }
                                         }
                                     }
-                                    if(nom_methode_serveur !== '' ){
+                                    if(nom_methode_serveur !== ''){
                                         let src_js='';
-                                        
-                                        let obj_src_rev_txt=this.__ig1.__rev1.matrice_vers_source_rev1(this.#rev_serveur_mat , k , true , k+1);
+                                        let obj_src_rev_txt=this.__ig1.__rev1.matrice_vers_source_rev1( this.#rev_serveur_mat , k , true , k + 1 );
                                         if(obj_src_rev_txt.__xst === __xsu){
                                             let src_rev='#(\r\n';
                                             src_rev+='  =========================== ';
@@ -965,18 +968,16 @@ class x_ecran_generer_programmes1{
                                             src_rev+='),méthode(' + obj_src_rev_txt.__xva + ')';
                                             let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( src_rev , {} );
                                             if(obj1.__xst === __xsu){
-                                                src_js='\n    '+obj1.__xva.replace(/\n/g,'\n    ');
+                                                src_js='\n    ' + obj1.__xva.replace( /\n/g , '\n    ' );
                                             }
-                                            
-                                            
                                         }
-                                        tableau_des_fragments_serveur.push({
-                                             /*  */
-                                            nom_methode_serveur : nom_methode_serveur ,
-                                            position_methode_serveur : position_methode_serveur ,
-                                            position_contenu_methode_serveur : position_contenu_methode_serveur ,
-                                            src_js : src_js
-                                        })
+                                        tableau_des_fragments_serveur.push( {
+                                                 /*  */
+                                                "nom_methode_serveur" : nom_methode_serveur ,
+                                                "position_methode_serveur" : position_methode_serveur ,
+                                                "position_contenu_methode_serveur" : position_contenu_methode_serveur ,
+                                                "src_js" : src_js
+                                            } );
                                     }
                                 }
                             }
@@ -1010,15 +1011,14 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='    }\r\n';
         /*
         */
-        // 
         fragment_trouve=-1;
-        for(let i=0 ; i < tableau_des_fragments_serveur.length;i++){
-           if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'actions_et_tests_avant_modifier'){
-               fragment_trouve=i;
-               break;
-           }
+        for( let i=0 ; i < tableau_des_fragments_serveur.length ; i++ ){
+            if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'actions_et_tests_avant_modifier'){
+                fragment_trouve=i;
+                break;
+            }
         }
-        if(fragment_trouve>=0){
+        if(fragment_trouve >= 0){
             src_serveur_js2+=tableau_des_fragments_serveur[fragment_trouve].src_js;
         }else{
             src_serveur_js2+='    /*\r\n';
@@ -1288,6 +1288,7 @@ class x_ecran_generer_programmes1{
             if(reference_externe_base === 1
                    && reference_externe_table === 'tbl_utilisateurs'
                    && reference_externe_champ === 'chi_id_utilisateur'
+                   && ne_pas_prendre_les_valeurs_en_session === false
             ){
                 src_client2+='    /*\r\n';
                 src_client2+='      =====================================================================================================\r\n';
@@ -1678,13 +1679,23 @@ class x_ecran_generer_programmes1{
                   this.#les_bases
                 */
             }
+            if(obj_champ.nom_du_champ === 'fld_id_commercial_client'){
+                debugger;
+            }
             if(reference_externe_base === 1
                    && reference_externe_table === 'tbl_utilisateurs'
                    && reference_externe_champ === 'chi_id_utilisateur'
             ){
+                let afficher=false;
                 if(obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
                        && obj_champ.meta.est_utilisateur_autre_que_courant === 1
                 ){
+                    afficher=true;
+                }
+                if(obj_champ.hasOwnProperty( 'nom_en_session1' ) && obj_champ.nom_en_session1 === 'chi_id_utilisateur'){
+                    afficher=false;
+                }
+                if(afficher === true){
                     src_client2+='        /*\r\n';
                     src_client2+='          =====================================================================================================\r\n';
                     src_client2+='        */\r\n';
@@ -1721,10 +1732,16 @@ class x_ecran_generer_programmes1{
                    && obj_champ.table_mere !== ''
                    && obj_champ.champ_pere !== ''
             ){
+                let afficher=true;
                 if(this.#obj_table.champs[nom_du_champ].hasOwnProperty( 'champ_pere_est_en_session' )
                        && this.#obj_table.champs[nom_du_champ].champ_pere_est_en_session === true
                 ){
-                }else{
+                    afficher=false;
+                }
+                if(obj_champ.hasOwnProperty( 'nom_en_session1' ) && obj_champ.nom_en_session1 === 'chi_id_utilisateur'){
+                    afficher=false;
+                }
+                if(afficher === true){
                     src_client2+='        /*\r\n';
                     src_client2+='          =====================================================================================\r\n';
                     src_client2+='        */\r\n';
@@ -3841,7 +3858,8 @@ class x_ecran_generer_programmes1{
             src_client2+='                parametres += \' nom_champ_dans_parent2(\' + obj2.nom_champ_dans_parent2 + \')\';\r\n';
             src_client2+='                parametres += \' nom_libelle_dans_parent2(\' + obj2.nom_libelle_dans_parent2 + \')\';\r\n';
             src_client2+='                parametres += \' id2(\' + elem[\'T0.' + champ_primaire + '\'] + \')\';\r\n';
-            src_client2+='                let libelle2=\'\';\r\n';  // libelle1
+            src_client2+='                let libelle2=\'\';\r\n';
+            /* libelle1 */
             src_client2+='                libelle2+=\'(\';\r\n';
             src_client2+='                libelle2+=elem[\'T0.' + champ_primaire + '\'];\r\n';
             src_client2+='                libelle2+=\') \';\r\n';
@@ -4307,7 +4325,7 @@ class x_ecran_generer_programmes1{
         if(this.#liste_des_types_de_requetes.liste_ecran === true){
             document.getElementById( 'gererer_le_js_bdd1' ).style.visibility='visible';
             this.#rev_serveur_mat=null;
-            let obj=this.générer_les_programmes( null );
+            let obj=this.recupere_elements_pour_générer_les_programmes( null );
             if(obj.__xst === __xsu){
             }else{
                 this.__ig1.affiche_les_messages();
@@ -4601,8 +4619,7 @@ class x_ecran_generer_programmes1{
     /*
       =============================================================================================================
     */
-    bouton_integrer_ce_source_genere_dans_la_table_source(mat , d){
-     
+    bouton_integrer_ce_source_genere_dans_la_table_source( mat , d ){
         let cible_source='';
         let l01=mat.length;
         let zone='';
@@ -4611,20 +4628,20 @@ class x_ecran_generer_programmes1{
                 cible_source=mat[i + 1][1];
             }
         }
-        let nom_du_source=this.#nom_de_la_classe_générée2+cible_source;
-        if(confirm('intégrer ' + nom_du_source )){
-            let cht_genere_source=''
+        let nom_du_source=this.#nom_de_la_classe_générée2 + cible_source;
+        if(confirm( 'intégrer ' + nom_du_source )){
+            let cht_genere_source='';
             if(cible_source === '_c.js'){
-                cht_genere_source=document.getElementById('JS_client2').value;
+                cht_genere_source=document.getElementById( 'JS_client2' ).value;
             }else if(cible_source === '_s.js'){
-                cht_genere_source=document.getElementById('serveur_js2').value;
+                cht_genere_source=document.getElementById( 'serveur_js2' ).value;
             }
             let obj={
-                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(integrer_un_source_genere_dans_la_table_source())))' , 
-                "__xva" : { 
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(integrer_un_source_genere_dans_la_table_source())))' ,
+                "__xva" : {
                      /*  */
-                    cht_genere_source : cht_genere_source , 
-                    nom_du_source : nom_du_source 
+                    "cht_genere_source" : cht_genere_source ,
+                    "nom_du_source" : nom_du_source
                 }
             };
             this.__ig1.envoyer_un_message_au_worker( obj );

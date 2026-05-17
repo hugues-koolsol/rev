@@ -76,8 +76,8 @@ class sources1{
         let la_liste=[];
         let lst=document.getElementById( 'vv_ecran_liste_zone_contenu' ).querySelectorAll( "[data-chi_id_source]" );
         for( let i=0 ; i < lst.length ; i++ ){
-            if(!lst[i].getAttribute( 'data-chx_dossier_id_source')==='null'){
-               la_liste.push( lst[i].getAttribute( 'data-chi_id_source' ) );
+            if(!lst[i].getAttribute( 'data-chx_dossier_id_source' ) === 'null'){
+                la_liste.push( lst[i].getAttribute( 'data-chi_id_source' ) );
             }
         }
         if(la_liste.length > 0 && document.getElementById( 'vv_chaine_remplacee' ).value !== ''){
@@ -375,7 +375,6 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        
         /* conversion des données numériques début */
         fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
@@ -959,7 +958,7 @@ class sources1{
                 } catch {}
                 return({"__xst" : __xsu});
             }
-        }        
+        }
         /* conversion des données numériques début */
         fo1['chx_dossier_id_source']=fo1['chx_dossier_id_source'] === '' ? ( null ) : ( parseInt( fo1['chx_dossier_id_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
@@ -1480,7 +1479,7 @@ class sources1{
                 o1+=this.__ig1.la_liste_est_vide();
             }
         }
-        this.__ig1.initialisation_filtre_sous_fenetre2('sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE);
+        this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE );
         return({"__xst" : __xsu});
     }
     /*
@@ -1511,7 +1510,7 @@ class sources1{
                 lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
                 lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
                 let affiche_bouton_compiler=true;
-                if(elem['T0.che_binaire_source'] === 1 || elem['T0.chx_dossier_id_source'] === null ){
+                if(elem['T0.che_binaire_source'] === 1 || elem['T0.chx_dossier_id_source'] === null){
                     affiche_bouton_compiler=false;
                 }else{
                     /* sur rev1 / projet 1 ou 2, on ne peut compiler que la racine */
@@ -1546,7 +1545,10 @@ class sources1{
                     lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(1)))))';
                     lst+='" >importer de 1(0)</div>';
                 }else if(this.__ig1._CA_ === 1 && (le_colis1.chi_id_projet === 2 || le_colis1.chi_id_projet === 3)){
-                    if(le_colis1.chi_id_projet === 3 && ( elem['T0.chp_nom_source'] === 'sources1_c.js' || elem['T0.chp_nom_source'] === 'sources1_s.js' )){
+                    if(le_colis1.chi_id_projet === 3
+                           && (elem['T0.chp_nom_source'] === 'sources1_c.js'
+                               || elem['T0.chp_nom_source'] === 'sources1_s.js')
+                    ){
                         /*  */
                         lst+='  <div class="rev_bouton yy__4 yy__4_inactif">importer de 1(1)</div>';
                     }else{
@@ -1585,7 +1587,7 @@ class sources1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chi_id_source'] !== null){
-                    lst+='<span data-chi_id_source="' + elem['T0.chi_id_source'] + '" data-chx_dossier_id_source="' + elem['T0.chx_dossier_id_source']+ '">' + elem['T0.chi_id_source'] + '</span>';
+                    lst+='<span data-chi_id_source="' + elem['T0.chi_id_source'] + '" data-chx_dossier_id_source="' + elem['T0.chx_dossier_id_source'] + '">' + elem['T0.chi_id_source'] + '</span>';
                 }
                 lst+='</td>';
                 /*
@@ -1609,11 +1611,11 @@ class sources1{
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
-                if(elem['T0.chp_usage_source']==='fragment'){
-                    lst+=' <b style="color:red;">'+this.__ig1.fi2( elem['T0.chp_usage_source'] ) + '</b>';
-                }else if(elem['T0.chp_usage_source']==='fichier'){
+                if(elem['T0.chp_usage_source'] === 'fragment'){
+                    lst+=' <b style="color:red;">' + this.__ig1.fi2( elem['T0.chp_usage_source'] ) + '</b>';
+                }else if(elem['T0.chp_usage_source'] === 'fichier'){
                 }else{
-                    lst+=' <b style="color:blue;">'+this.__ig1.fi2( elem['T0.chp_usage_source'] ) + '</b>';
+                    lst+=' <b style="color:blue;">' + this.__ig1.fi2( elem['T0.chp_usage_source'] ) + '</b>';
                 }
                 lst+='<br />';
                 if(elem['T0.chx_dossier_id_source'] !== null){

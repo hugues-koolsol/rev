@@ -170,7 +170,7 @@ class dossiers1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -529,7 +529,7 @@ class dossiers1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -833,8 +833,12 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : id_dossier} , this.__ig1.donnees_retournees , __db1 );
-        if(tt386[__xst] !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'problème sur construire_chemin [' + this.__ig1.nl2() + ']'});
+        if(tt386[__xst] !== __xsu || tt386[__xva].length !== 1){
+            if(this.__ig1.__deverminage === 2){
+                let e=new Error( 'construire_chemin' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.formatter_erreur_serveur( e.stack ) + ' ' + this.__ig1.nl2( e ) );
+            }
+            return({"__xst" : __xer ,"__xme" : 'problème sur construire_chemin pour id_dossier=' + id_dossier + ' [' + this.__ig1.nl2() + ']'});
         }
         let chemin='';
         /*
@@ -1273,14 +1277,16 @@ class dossiers1{
                 `cht_commentaire_source` , 
                 `cht_rev_source` , 
                 `cht_genere_source` , 
-                `che_binaire_source`
+                `che_binaire_source` , 
+                `chp_usage_source`
             ) VALUES (
                 :chx_dossier_id_source , 
                 :chp_nom_source , 
                 :cht_commentaire_source , 
                 :cht_rev_source , 
                 :cht_genere_source , 
-                :che_binaire_source
+                :che_binaire_source , 
+                :chp_usage_source
             );
             */
             /*sql_inclure_fin*/ 117 , donnees_sql , this.__ig1.donnees_retournees , __db1 );

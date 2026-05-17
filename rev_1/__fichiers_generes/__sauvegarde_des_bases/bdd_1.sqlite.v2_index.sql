@@ -35,6 +35,6 @@ CREATE UNIQUE INDEX idx_ligne_rev ON `tbl_revs`
          ( `chp_provenance_rev` , `chx_source_rev` , `chi_id_rev` ) ;
 
 CREATE UNIQUE INDEX idx_source ON `tbl_sources` 
-        /* meta(genre_meta(index_de_table),message('')) */
-         ( `chx_dossier_id_source` , `chp_nom_source` , `chp_usage_source` ) ;
+        /* meta(nom_de_l_index(idx_source),genre_meta(index_de_table),message('')) */
+         ( `chx_dossier_id_source`  IS NULL , `chp_nom_source` , `chp_usage_source` ) ;
 
