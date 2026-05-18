@@ -100,7 +100,7 @@ class revs1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -341,7 +341,7 @@ class revs1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}

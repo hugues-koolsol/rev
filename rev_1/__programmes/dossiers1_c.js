@@ -85,7 +85,7 @@ class dossiers1{
             cmd+=' chi_id_basedd(' + chi_id_basedd + '),';
             cmd+=' la_table(\'' + la_table + '\')';
             cmd+='))))';
-            this.__ig1.envoyer_un_message_au_worker( {"__xac" : cmd ,"__xva" : {}} );
+            this.__ig1.envoyer_un_colis_au_worker( {"__xac" : cmd ,"__xva" : {}} );
         }
         return({"__xst" : __xsu});
     }
@@ -123,7 +123,7 @@ class dossiers1{
                     cmd+=' vv_nb_enreg(' + vv_nb_enreg + ')';
                     cmd+=' vv_sauter_enreg(' + vv_sauter_enreg + ')';
                     cmd+='))))';
-                    this.__ig1.envoyer_un_message_au_worker( {"__xac" : cmd ,"__xva" : {"les_champs" : les_champs}} );
+                    this.__ig1.envoyer_un_colis_au_worker( {"__xac" : cmd ,"__xva" : {"les_champs" : les_champs}} );
                     return({"__xst" : __xsu});
                 }
             }
@@ -659,7 +659,7 @@ class dossiers1{
             case 'televerser1' :
                 this.__ig1.fermer_la_sous_fenetre();
                 /* this.entree_module( null ); */
-                this.__ig1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(8)))))' ,"__xva" : {}} );
+                this.__ig1.envoyer_un_colis_au_worker( {"__xac" : 'pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(8)))))' ,"__xva" : {}} );
                 break;
                 
             default:
@@ -736,7 +736,7 @@ class dossiers1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : co1}} );
+        this.__ig1.envoyer_un_colis_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : co1}} );
         return({"__xst" : __xsu});
     }
     /*
@@ -947,7 +947,7 @@ class dossiers1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : co1}} );
+        this.__ig1.envoyer_un_colis_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : co1}} );
         return({"__xst" : __xsu});
     }
     /*

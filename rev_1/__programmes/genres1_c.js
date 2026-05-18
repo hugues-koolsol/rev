@@ -135,7 +135,7 @@ class genres1{
             "__xac" : 'pm1(m1(n1(genres1),f1(enregister_l_ordre_des_genres())))' ,
             "__xva" : {"tableau_des_ordre" : tableau_des_ordre}
         };
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -421,7 +421,7 @@ class genres1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -1291,7 +1291,7 @@ class genres1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}

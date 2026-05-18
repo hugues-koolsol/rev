@@ -50,7 +50,7 @@ class requetes1{
         for( let i=0 ; i < lst.length ; i++ ){
             liste_des_chi_id_requete.push( parseInt( lst[i].getAttribute( 'data-chi_id_requete' ) , 10 ) );
         }
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_sql_en_cron2())))' ,
                 "__xva" : {"liste_des_chi_id_requete" : liste_des_chi_id_requete}
@@ -86,7 +86,7 @@ class requetes1{
                     "chp_table_reference_requete" : obj.chp_table_reference_requete
                 }
             };
-            this.__ig1.envoyer_un_message_au_worker( obj1 );
+            this.__ig1.envoyer_un_colis_au_worker( obj1 );
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer});
@@ -109,7 +109,7 @@ class requetes1{
             "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(recuperer_requete_et_base_pour_compilation_en_ligne(chi_id_requete(' + chi_id_requete + '),bouton_compiler(' + bouton_compiler + '),))))' ,
             "__xva" : {}
         };
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -232,7 +232,7 @@ class requetes1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -554,7 +554,7 @@ class requetes1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -980,8 +980,10 @@ class requetes1{
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;" title="' + this.__ig1.fi2( elem['T0.cht_sql_requete'] ) + '" id="T0.cht_sql_requete_' + elem['T0.chi_id_requete'] + '" style="max-width:360px;overflow:hidden;">';
                 if(elem['T0.cht_sql_requete'] !== null){
-                    let cmd='m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0.cht_sql_requete_' + elem['T0.chi_id_requete'] + ')))';
-                    lst+='<div  class="rev_b_svg" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.agrandir + '</div>';
+                    /*  */
+                    let cmd1='m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0.cht_sql_requete_' + elem['T0.chi_id_requete'] + ')))';
+                    lst+='<div  class="rev_b_svg" data-rev_click="' + cmd1 + '">' + this.__ig1.les_svg.agrandir + '</div>';
+                    /*  */
                     lst+=this.__ig1.fi2( elem['T0.cht_sql_requete'].substr( 0 , 100 ) );
                 }
                 lst+='</td>';

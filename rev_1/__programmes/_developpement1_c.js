@@ -265,7 +265,7 @@ class _developpement1{
                                 "enregistrer_la_matrice" : __xsu
                             }
                         };
-                        this.__ig1.envoyer_un_message_au_worker( obj );
+                        this.__ig1.envoyer_un_colis_au_worker( obj );
                         /* debugger */
                     }else{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()} );
@@ -288,7 +288,7 @@ class _developpement1{
                                 "enregistrer_la_matrice" : __xsu
                             }
                         };
-                        this.__ig1.envoyer_un_message_au_worker( obj );
+                        this.__ig1.envoyer_un_colis_au_worker( obj );
                         /* debugger */
                     }else{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()} );
@@ -311,7 +311,7 @@ class _developpement1{
                                 "enregistrer_la_matrice" : __xsu
                             }
                         };
-                        this.__ig1.envoyer_un_message_au_worker( obj );
+                        this.__ig1.envoyer_un_colis_au_worker( obj );
                         /* debugger */
                     }else{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()} );
@@ -338,7 +338,7 @@ class _developpement1{
                                     "enregistrer_la_matrice" : __xsu
                                 }
                             };
-                            this.__ig1.envoyer_un_message_au_worker( obj );
+                            this.__ig1.envoyer_un_colis_au_worker( obj );
                         }else{
                             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
                             return({"__xst" : __xer});
@@ -361,7 +361,7 @@ class _developpement1{
                                 "enregistrer_la_matrice" : __xsu
                             }
                         };
-                        this.__ig1.envoyer_un_message_au_worker( obj );
+                        this.__ig1.envoyer_un_colis_au_worker( obj );
                     }else{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du css n\'est pas bien formaté ' + this.__ig1.nl2()} );
                         return({"__xst" : __xer});
@@ -386,7 +386,7 @@ class _developpement1{
                                     "enregistrer_la_matrice" : __xsu
                                 }
                             };
-                            this.__ig1.envoyer_un_message_au_worker( obj );
+                            this.__ig1.envoyer_un_colis_au_worker( obj );
                         }else{
                             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de conversion de matrice vers rev ' + this.__ig1.nl2()} );
                             return({"__xst" : __xer});
@@ -414,7 +414,7 @@ class _developpement1{
                                     "enregistrer_la_matrice" : __xsu
                                 }
                             };
-                            this.__ig1.envoyer_un_message_au_worker( obj );
+                            this.__ig1.envoyer_un_colis_au_worker( obj );
                         }else{
                             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le rev du texte n\'a pas pu être convertit ' + this.__ig1.nl2()} );
                             return({"__xst" : __xer});
@@ -460,7 +460,7 @@ class _developpement1{
                                 "enregistrer_la_matrice" : enregistrer_la_matrice
                             }
                         };
-                        this.__ig1.envoyer_un_message_au_worker( obj );
+                        this.__ig1.envoyer_un_colis_au_worker( obj );
                     }else{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de convertion du rev en html ' + this.__ig1.nl2()} );
                         return({"__xst" : __xer});
@@ -497,7 +497,7 @@ class _developpement1{
                             "enregistrer_la_matrice" : enregistrer_la_matrice
                         }
                     };
-                    this.__ig1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_colis_au_worker( obj );
                 }else{
                     this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de normalisation du php ' + this.__ig1.nl2()} );
                     return({"__xst" : __xer});
@@ -591,7 +591,7 @@ class _developpement1{
                                         "enregistrer_la_matrice" : enregistrer_la_matrice
                                     }
                                 };
-                                this.__ig1.envoyer_un_message_au_worker( obj );
+                                this.__ig1.envoyer_un_colis_au_worker( obj );
                             }else{
                                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
                                 return({"__xst" : __xer});
@@ -632,7 +632,7 @@ class _developpement1{
                             "enregistrer_la_matrice" : enregistrer_la_matrice
                         }
                     };
-                    this.__ig1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_colis_au_worker( obj );
                 }else{
                     this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
                     return({"__xst" : __xer});
@@ -680,7 +680,7 @@ class _developpement1{
                                             "enregistrer_la_matrice" : enregistrer_la_matrice
                                         }
                                     };
-                                    this.__ig1.envoyer_un_message_au_worker( obj );
+                                    this.__ig1.envoyer_un_colis_au_worker( obj );
                                 }else{
                                     this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du css n\'est pas bien formaté ' + this.__ig1.nl2()} );
                                     return({"__xst" : __xer});
@@ -728,7 +728,7 @@ class _developpement1{
                                 "enregistrer_la_matrice" : enregistrer_la_matrice
                             }
                         };
-                        this.__ig1.envoyer_un_message_au_worker( obj );
+                        this.__ig1.envoyer_un_colis_au_worker( obj );
                     }else{
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de conversion de matrice vers rev ' + this.__ig1.nl2()} );
                         return({"__xst" : __xer});
@@ -761,7 +761,7 @@ class _developpement1{
                                     "enregistrer_la_matrice" : enregistrer_la_matrice
                                 }
                             };
-                            this.__ig1.envoyer_un_message_au_worker( obj );
+                            this.__ig1.envoyer_un_colis_au_worker( obj );
                         }else{
                             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
                             return({"__xst" : __xer});

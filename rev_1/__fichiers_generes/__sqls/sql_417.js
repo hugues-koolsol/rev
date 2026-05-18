@@ -17,7 +17,7 @@ class sql_417{
         const from0=`
           FROM  tbl_sources T0        `;
         sql0+=from0;
-        const where0=` WHERE ( \`T0\`.\`chp_nom_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_source'] , 'T0_chp_nom_source' ) + `
+        const where0=` WHERE (\`T0\`.\`chp_nom_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_source'] , 'T0_chp_nom_source' ) + `
          AND \`T0\`.\`chp_usage_source\` = 'fragment'
          AND \`T0\`.\`chx_dossier_id_source\` IS NULL)`;
         sql0+=where0;

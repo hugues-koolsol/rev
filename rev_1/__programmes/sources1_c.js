@@ -81,7 +81,7 @@ class sources1{
             }
         }
         if(la_liste.length > 0 && document.getElementById( 'vv_chaine_remplacee' ).value !== ''){
-            this.__ig1.envoyer_un_message_au_worker( {
+            this.__ig1.envoyer_un_colis_au_worker( {
                      /*  */
                     "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(remplacer_une_chaine_par_une_autre())))' ,
                     "__xva" : {
@@ -132,7 +132,7 @@ class sources1{
         for( let i=0 ; i < lst.length ; i++ ){
             liste_des_chi_id_source.push( parseInt( lst[i].getAttribute( 'data-chi_id_source' ) , 10 ) );
         }
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_js_en_cron2())))' ,
                 "__xva" : {"liste_des_chi_id_source" : liste_des_chi_id_source}
@@ -391,7 +391,7 @@ class sources1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -968,7 +968,7 @@ class sources1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}

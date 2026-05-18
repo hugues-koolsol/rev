@@ -27,7 +27,7 @@
                 "id_bdd_de_la_base" : id_bdd_de_la_base_en_cours
             }
         };
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
 */
 const __xer=0;
 const __xsu=1;
@@ -404,7 +404,7 @@ class v_svg_bdd1{
                         "operation_table" : 'renommer_une_table'
                     }
                 };
-                this.__ig1.envoyer_un_message_au_worker( obj );
+                this.__ig1.envoyer_un_colis_au_worker( obj );
                 return({"__xst" : __xsu});
             }
         }
@@ -944,7 +944,7 @@ class v_svg_bdd1{
                         "operation_table" : 'renommer_un_champs'
                     }
                 };
-                this.__ig1.envoyer_un_message_au_worker( obj );
+                this.__ig1.envoyer_un_colis_au_worker( obj );
                 return({"__xst" : __xsu});
             }
         }
@@ -1134,7 +1134,7 @@ class v_svg_bdd1{
                 "operation_table" : 'supprimer_l_index'
             }
         };
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -1230,7 +1230,7 @@ class v_svg_bdd1{
                     "liste_des_champs_avec_type" : liste_des_champs_avec_type
                 }
             };
-            this.__ig1.envoyer_un_message_au_worker( obj );
+            this.__ig1.envoyer_un_colis_au_worker( obj );
             return({"__xst" : __xsu});
         }
         return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de l\'analyse de l\'index '} ));
@@ -1270,7 +1270,7 @@ class v_svg_bdd1{
                         "operation_table" : 'ajouter_l_index'
                     }
                 };
-                this.__ig1.envoyer_un_message_au_worker( obj );
+                this.__ig1.envoyer_un_colis_au_worker( obj );
                 return({"__xst" : __xsu});
             }
         }
@@ -1317,7 +1317,7 @@ class v_svg_bdd1{
                             "operation_table" : 'ajouter_un_champ'
                         }
                     };
-                    this.__ig1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_colis_au_worker( obj );
                 }else{
                     debugger;
                 }
@@ -1919,7 +1919,7 @@ class v_svg_bdd1{
         cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+='))))';
         let obj={"__xac" : cmd ,"__xva" : {"source_sql" : source_sql ,"operation_table" : 'supprimer_en_bdd_le_champ'}};
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -3133,7 +3133,7 @@ class v_svg_bdd1{
                             "id_bdd_de_la_base_en_cours" : id_bdd_de_la_base_en_cours
                         }
                     };
-                    this.__ig1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_colis_au_worker( obj );
                     er=__xsu;
                 }else{
                     return({"__xst" : __xer});
@@ -3198,7 +3198,7 @@ class v_svg_bdd1{
                 "id_bdd_de_la_base" : id_bdd_de_la_base_en_cours
             }
         };
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -3282,7 +3282,7 @@ class v_svg_bdd1{
                 "liste_des_tables_champs" : liste_des_tables_champs
             }
         };
-        this.__ig1.envoyer_un_message_au_worker( obj1 );
+        this.__ig1.envoyer_un_colis_au_worker( obj1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -3463,7 +3463,7 @@ class v_svg_bdd1{
         cmd+=' id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')';
         cmd+='))))';
         let obj={"__xac" : cmd ,"__xva" : {"source_sql" : source_sql}};
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -3899,7 +3899,7 @@ class v_svg_bdd1{
                  /* "maj" : maj */
                 }
         };
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -4391,7 +4391,7 @@ class v_svg_bdd1{
                         "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
                         "__xva" : {"source_sql" : source_sql ,"operation_table" : operation}
                     };
-                    this.__ig1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_colis_au_worker( obj );
                     return({"__xst" : __xsu});
                 }
             }
@@ -4471,7 +4471,7 @@ class v_svg_bdd1{
                         "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
                         "__xva" : {"source_sql" : source_sql ,"operation_table" : operation}
                     };
-                    this.__ig1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_colis_au_worker( obj );
                     return({"__xst" : __xsu});
                 }
             }
@@ -4542,7 +4542,7 @@ class v_svg_bdd1{
                         "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
                         "__xva" : {"source_sql" : source_sql ,"operation_table" : operation}
                     };
-                    this.__ig1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_colis_au_worker( obj );
                     return({"__xst" : __xsu});
                 }
             }
@@ -4618,7 +4618,7 @@ class v_svg_bdd1{
                         "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(operation_table_dans_base(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,
                         "__xva" : {"source_sql" : source_sql ,"operation_table" : 'insérer_les_donnees_dans_la_table_virtuelle'}
                     };
-                    this.__ig1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_colis_au_worker( obj );
                     return({"__xst" : __xsu});
                 }
             }
@@ -5739,7 +5739,7 @@ class v_svg_bdd1{
                     "operation_table" : 'ajouter_indicateur_pour_correction_index'
                 }
             };
-            this.__ig1.envoyer_un_message_au_worker( obj );
+            this.__ig1.envoyer_un_colis_au_worker( obj );
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer});
@@ -5859,7 +5859,7 @@ class v_svg_bdd1{
                 "operation_table" : 'supprimer_une_table'
             }
         };
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -5891,7 +5891,7 @@ class v_svg_bdd1{
                             "source_sql" : obj2.__xva
                         }
                     };
-                    this.__ig1.envoyer_un_message_au_worker( obj );
+                    this.__ig1.envoyer_un_colis_au_worker( obj );
                 }else{
                     debugger;
                 }
@@ -7785,7 +7785,7 @@ class v_svg_bdd1{
                         /*
                           "tableau_des_dependances" : obj_tableau_des_dependances.__xva
                         */
-                        this.__ig1.envoyer_un_message_au_worker( a_envoyer );
+                        this.__ig1.envoyer_un_colis_au_worker( a_envoyer );
                         return({"__xst" : __xsu});
                     }
                 }
@@ -8942,7 +8942,7 @@ class v_svg_bdd1{
             return({"__xst" : __xsu});
         }
         /* this.les_bases_du_projet=null; */
-        /* this.__ig1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(recuperer_les_revs_des_bases())))' ,"__xva" : {"les_bases_a_editer" : les_bases_a_editer}} ); */
+        /* this.__ig1.envoyer_un_colis_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(recuperer_les_revs_des_bases())))' ,"__xva" : {"les_bases_a_editer" : les_bases_a_editer}} ); */
         return({"__xst" : __xer});
     }
     /*

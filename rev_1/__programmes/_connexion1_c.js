@@ -16,6 +16,8 @@ class _connexion1{
             document.getElementById( 'vv_info_projet' ).innerHTML='';
         } catch {}
         this.__ig1.maj_fav_icone( le_colis1._CA_ , 0 );
+        let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
+        a.select();
         return({"__xst" : __xsu});
     }
     /*
@@ -50,6 +52,16 @@ class _connexion1{
     /*
       =============================================================================================================
     */
+    traite_touche_haut_sur_formulaire_de_connexion( e ){
+        /* console.log(' dans keyup traite_touche_haut_sur_formulaire_de_connexion e=',e); */
+        if(e.keyCode === 13){
+            let aaa='fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(' + this.moi + '),f1(verifier_connexion1()))))';
+            this.__ig1.executer1( aaa , null , null );
+        }
+    }
+    /*
+      =============================================================================================================
+    */
     page_connexion1( mat , d , le_colis1 ){
         let t='';
         t+='<h1>connexion</h1>';
@@ -76,7 +88,7 @@ class _connexion1{
         t+=' <tbody>';
         t+='  <tr>';
         t+='   <td style="text-align:right;">nom&nbsp;</td>  ';
-        t+='   <td><input type="text" id="chp_nom_de_connexion_utilisateur" style="width:100%;" value="" autocapitalize="off"></td> ';
+        t+='   <td><input type="text" aria-autocomplete="list" id="chp_nom_de_connexion_utilisateur" style="width:100%;" value="" autocapitalize="off"></td> ';
         t+='  </tr> ';
         t+='  <tr>  ';
         t+='   <td style="text-align:right;">mot de passe&nbsp;</td>  ';
@@ -88,12 +100,6 @@ class _connexion1{
         t+='     <div style="margin:0 auto;" class="rev_bouton yy__3" data-rev_click="fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(' + this.moi + '),f1(verifier_connexion1()))))" title="Cliquez ici pour vous connecter" >connexion</div>  ';
         t+='    </td> ';
         t+='  </tr>';
-        /*
-          t+='  <tr>  ';
-          t+='   <td>se souvenir &nbsp;<br>de mon nom&nbsp;</td>  ';
-          t+='   <td style="text-align:center;"><input type="checkbox" id="vv_se_souvenir_de_moi" ></td> ';
-          t+='  </tr> ';
-        */
         t+=' </tbody>';
         t+='</table>';
         t+='</div>';
@@ -103,6 +109,23 @@ class _connexion1{
         this.__ig1.maj_contenu_principal( t );
         this.__ig1.activer_menu( null , null , '-3' );
         this.__ig1.maj_hash( mat , 0 );
+        let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
+        a.addEventListener( 'keyup' , function( e ){
+                /* console.log(e.keyCode) */
+                if(e.keyCode === 39 || e.keyCode === 35){
+                    /* touche flèche droite ou fin */
+                    let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
+                    a.select();
+                }
+            } );
+        let b=document.getElementById( 'vv_formulaire_de_connexion' );
+        b.addEventListener( 'keyup' , this.traite_touche_haut_sur_formulaire_de_connexion.bind( this ) );
+        setTimeout( () => {
+                let b=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
+                b.focus();
+                b.select();
+                /* console.log('a.value="'+a.value+'"'); */} , 250 );
+        /* =============================================================== */
         this.__ig1.maj_title_htm1( 'connexion' );
         return({"__xst" : __xsu});
     }

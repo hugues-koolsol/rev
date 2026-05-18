@@ -69,7 +69,7 @@ class x_ecran_generer_programmes1{
                     "incice_de_la_classe" : incice_de_la_classe
                 }
             };
-            this.__ig1.envoyer_un_message_au_worker( obj );
+            this.__ig1.envoyer_un_colis_au_worker( obj );
             return({"__xst" : __xsu});
         }else{
             if(le_colis.__xva.rev_serveur !== null){
@@ -1419,7 +1419,7 @@ class x_ecran_generer_programmes1{
         src_client2+='        let __fo1={};\r\n';
         src_client2+='        __fo1[co1]=fo1;\r\n';
         src_client2+='\r\n';
-        src_client2+='        this.__ig1.envoyer_un_message_au_worker( {/**/\r\n';
+        src_client2+='        this.__ig1.envoyer_un_colis_au_worker( {/**/\r\n';
         src_client2+='            "__xac" : \'pm1(m1(n1(\'+this.moi+\'),f1(modifier1(\'+retour_a_la_liste+\'))))\',\r\n';
         src_client2+='            "__xva" : { "__fo1" : __fo1 , "__co1" : co1 }\r\n';
         src_client2+='\r\n';
@@ -2782,7 +2782,7 @@ class x_ecran_generer_programmes1{
         src_client2+='        let __fo1={};\r\n';
         src_client2+='        __fo1[co1]=fo1;\r\n';
         src_client2+='\r\n';
-        src_client2+='        this.__ig1.envoyer_un_message_au_worker( {/**/\r\n';
+        src_client2+='        this.__ig1.envoyer_un_colis_au_worker( {/**/\r\n';
         src_client2+='            "__xac" : \'pm1(m1(n1(\'+this.moi+\'),f1(creer1(\'+retour_a_la_liste+\'))))\',\r\n';
         src_client2+='            "__xva" : { "__fo1" : __fo1 , "__co1" : co1 }\r\n';
         src_client2+='\r\n';
@@ -4644,7 +4644,7 @@ class x_ecran_generer_programmes1{
                     "nom_du_source" : nom_du_source
                 }
             };
-            this.__ig1.envoyer_un_message_au_worker( obj );
+            this.__ig1.envoyer_un_colis_au_worker( obj );
         }
         return({"__xst" : __xsu});
     }
@@ -4961,7 +4961,7 @@ class x_ecran_generer_programmes1{
         cmd+=' nom_du_module2(' + this.moi + '),';
         cmd+='))))';
         let obj={"__xac" : cmd};
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'générer les programmes' );
         return({"__xst" : __xsu});

@@ -90,7 +90,7 @@ class x_ecran_concevoir_une_requete1{
                         "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value
                     }
                 };
-                this.__ig1.envoyer_un_message_au_worker( obj );
+                this.__ig1.envoyer_un_colis_au_worker( obj );
             }else{
                 debugger;
                 return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
@@ -1958,7 +1958,7 @@ class x_ecran_concevoir_une_requete1{
                         "retour_a_la_liste" : retour_a_la_liste
                     }
                 };
-                this.__ig1.envoyer_un_message_au_worker( obj );
+                this.__ig1.envoyer_un_colis_au_worker( obj );
                 return({"__xst" : __xsu});
             }
         }
@@ -2046,7 +2046,7 @@ class x_ecran_concevoir_une_requete1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'concevoir un sql' );
         let obj={"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(charger_la_requete(chi_id_requete(' + chi_id_requete + ')))))'};
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*

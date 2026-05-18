@@ -26,10 +26,12 @@ class __navigation1{
     #ref_div_contenant_les_boutons=null;
     #ref_div_contenant_la_zone_scrollable=null;
     #pour_menu_haut=0;
+    __ig1=null;
     /*
       =============================================================================================================
     */
-    constructor( par_id_de_l_element , options ){
+    constructor( par_id_de_l_element , options , __ig1 ){
+        this.__ig1=__ig1;
         /* console.log('constructor de ',par_id_de_l_element) */
         if(document.getElementById( par_id_de_l_element ) === null){
             console.error( 'menu_arbre1 id="' + par_id_de_l_element + '" non trouvé :-/' );

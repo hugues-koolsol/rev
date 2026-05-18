@@ -35,7 +35,7 @@ class x_ecran_generer_programmes1{
         SELECT 
         `T0`.`cht_rev_source` , `T0`.`cht_genere_source`
          FROM b1.tbl_sources T0
-        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
+        WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
            AND `T0`.`chp_usage_source` = 'fragment'
            AND `T0`.`chx_dossier_id_source` IS NULL)
         ;
@@ -65,7 +65,7 @@ class x_ecran_generer_programmes1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source`
          FROM b1.tbl_sources T0
-        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
+        WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
            AND `T0`.`chx_dossier_id_source` IS NOT NULL)
         ;
         */

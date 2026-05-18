@@ -239,7 +239,7 @@ class x_ecran_generer_souches1{
             cmd+=' nom_du_module2(' + this.moi + '),';
             cmd+='))))';
             let obj={"__xac" : cmd};
-            this.__ig1.envoyer_un_message_au_worker( obj );
+            this.__ig1.envoyer_un_colis_au_worker( obj );
         }
         return({"__xst" : __xsu});
     }
@@ -436,7 +436,7 @@ class x_ecran_generer_souches1{
         /* cmd+=' fonction_a_appeler(charger_base1)'; */
         cmd+='))))';
         let obj={"__xac" : cmd};
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'générer les requêtes souches' );
         return({"__xst" : __xsu});
