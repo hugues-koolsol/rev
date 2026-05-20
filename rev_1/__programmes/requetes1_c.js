@@ -166,6 +166,11 @@ class requetes1{
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
+        /*
+          import( '/f0?n0=x_ecran_concevoir_une_requete1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
+          this.concevoir_une_requete1=new m['x_ecran_concevoir_une_requete1']( [] , 0 , this );
+          } );
+        */
         this.concevoir_une_requete1=new x_ecran_concevoir_une_requete1( [] , 0 , __ig1 );
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};

@@ -40,6 +40,7 @@ class acces1{
     filtres={};
     vv_ecran_liste_boutons_avant='';
     #reference_arbre_du_menu=null;
+    _tri_arbre1=null;
     /*
       =============================================================================================================
     */
@@ -261,7 +262,7 @@ class acces1{
         options.boutons_du_menu.push( {"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2.bind( this )} );
         options['afficher_le_bouton_editer']=1;
         options['class_du_bouton_editer']='rev_bouton yy__3';
-        this.#reference_arbre_du_menu=new _tri_arbre1( id , options );
+        this._tri_arbre1.construire_arbre( id , options );
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
@@ -289,6 +290,10 @@ class acces1{
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
+        import( '/f0?n0=_tri_arbre1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
+                this._tri_arbre1=new m['_tri_arbre1']( this );
+                this.#reference_arbre_du_menu=this._tri_arbre1;
+            } );
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){

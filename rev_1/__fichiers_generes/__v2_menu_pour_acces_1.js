@@ -13,9 +13,9 @@ class v2_menu_pour_acces_1{
         let les_menu1='';
         /* contenu initialisé avec une chaine vide pour indice 0 */
         let les_sous_menus=[''];
-        les_menu1+=`<li><div id="menu_1" data-id_auto="52" data-id_menu="24" class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets</div></li>`;
+        les_menu1+=`<li><div id="menu_2" data-id_auto="52" data-id_menu="24" class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets</div></li>`;
         if(this.__ig1.donnees_retournees.chi_id_projet > 0){
-            les_menu1+=`<li><div id="menu_2" data-id_auto="53" data-id_menu="31" class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="Liste des tâches">tâches</div></li>`;
+            les_menu1+=`<li><div id="menu_1" data-id_auto="53" data-id_menu="31" class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="Liste des tâches">tâches</div></li>`;
         }
         if(donnees_retournees.chi_id_projet > 0){
             les_menu1+=`<li><div id="menu_3" data-id_auto="25" data-id_menu="9" class="rev_bouton" data-rev_click="m1(n1(dossiers1),f1(entree_module()))" title="liste des dossiers et des fichiers">dossiers</div></li>`;
@@ -59,7 +59,7 @@ class v2_menu_pour_acces_1{
             les_sous_menus[0]+=`<li><div  id="menu_17"   data-id_auto="34" data-id_menu="19" class="rev_bouton"  title="liste des menus" data-rev_click="m1(n1(menus1),f1(entree_module()))">menus</div></li>`;
         }
         if(donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1){
-            les_sous_menus[0]+=`<li><div  id="menu_18"   data-id_auto="35" data-id_menu="17" class="rev_bouton"  title="liste des utilisateurs" data-rev_click="m1(n1(utilisateurs1),f1(entree_module(null)))">utilisateurs</div></li>`;
+            les_sous_menus[0]+=`<li><div  id="menu_18"   data-id_auto="35" data-id_menu="17" class="rev_bouton"  title="liste des utilisateurs" data-rev_click="m1(n1(utilisateurs1),f1(entree_module()))">utilisateurs</div></li>`;
         }
         les_sous_menus[0]+=`<li data-separateur="1">outils génération</li>`;
         if(donnees_retournees.chi_id_projet > 0){

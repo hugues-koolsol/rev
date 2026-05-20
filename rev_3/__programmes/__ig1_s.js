@@ -178,7 +178,7 @@ class __ig1{
                                                       this.ma_trace1("on a déjà mis cette autorisation en session , elem.che_pour_sous_liste_autorisation="+elem.che_pour_sous_liste_autorisation);
                                                     */
                                                     if(elem.che_pour_sous_liste_autorisation === 1){
-                                                        if(nom_de_la_fonction_a_appeler === 'sous_liste1'){
+                                                        if(nom_de_la_fonction_a_appeler === 'sous_liste2'){
                                                             controler_les_autorisations=false;
                                                             /* this.ma_trace1("autorisation déjà controlée"); */
                                                         }
@@ -210,7 +210,7 @@ class __ig1{
                                                         /* http://localhost:6003/#pm1(m1(n1(autorisations1),f1(liste1(__num_page(0))))) */
                                                         if(elem.che_pour_sous_liste_autorisation === 1){
                                                             /* this.ma_trace1( "vérifier nom_de_la_fonction_a_appeler=" + nom_de_la_fonction_a_appeler ); */
-                                                            if(nom_de_la_fonction_a_appeler === 'sous_liste1'){
+                                                            if(nom_de_la_fonction_a_appeler === 'sous_liste2'){
                                                                 /*
                                                                   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
                                                                 */
@@ -337,8 +337,8 @@ class __ig1{
                                                     }
                                                 }catch(e){
                                                     /* this.ma_trace1("e=",e.stack); */
-                                                    if(e.message.indexOf('is not a function')>=0){
-                                                        this.donnees_retournees.__xsi[__xer].push( 'la fonction serveur "' + n1 + '.' + nom_de_la_fonction_a_appeler + '" n\a pas été trouvée' );
+                                                    if(e.message.indexOf( 'is not a function' ) >= 0){
+                                                        this.donnees_retournees.__xsi[__xer].push( 'la fonction serveur "' + n1 + '.' + nom_de_la_fonction_a_appeler + '" n\'a pas été trouvée' );
                                                         continuer=false;
                                                         continue;
                                                     }
@@ -667,7 +667,7 @@ class __ig1{
                 return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu_fichier ,"entetes_reponse_http" : entetes_reponse_http}});
             }else if(chemin_get0 === "/"){
                 let __le_serveur=url0.hostname;
-                /* console.log( '__gi1_s contenu_de_get url0=' , url0.hostname ); */
+                /* console.log( '__ig1_s contenu_de_get url0=' , url0.hostname ); */
                 let contenu='<!DOCTYPE html>';
                 contenu+='<html lang="fr">';
                 contenu+='<head id="vv_head1">';
@@ -749,7 +749,7 @@ class __ig1{
     */
     ajoute_message( obj ){
         this.donnees_retournees.__xsi[obj.__xst].push( obj.__xme );
-        this.ma_trace1( 'dans ajoute_message, obj=' , obj );
+        /* this.ma_trace1( 'dans ajoute_message, obj=' , obj ); */
         return({"__xst" : obj.__xst});
     }
     /*
@@ -1331,6 +1331,18 @@ class __ig1{
             this.__socket.send( JSON.stringify( aa ) );
         } catch {}
         return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    formatter_erreur_serveur( str ){
+        let o=str;
+        const repl0=new RegExp( this.repertoire_du_pgm_serveur , 'g' );
+        o=o.replace( repl0 , '' );
+        const repl1=new RegExp( 'file:////' , 'g' );
+        o=o.replace( repl1 , '' );
+        o=o.replace( /\n/g , '<br />\n' );
+        return o;
     }
     /*
       =============================================================================================================

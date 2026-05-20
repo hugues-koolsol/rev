@@ -71,7 +71,7 @@ class x_ecran_generer_programmes1{
         */
         /*sql_inclure_fin*/ 416 , critere_416 , this.__ig1.donnees_retournees , __db1 );
         if(tt416.__xst !== __xsu || tt416.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : this.__gi1.nl2()});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let chemin_source='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + nom_du_source;
         try{

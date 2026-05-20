@@ -24,18 +24,16 @@ class __worker1{
     #debut_timer1=performance.now();
     le_niveau_de_deverminage=0;
     /* objet des fonctions de traitement des revs */
-    __rev1=null;
     #objet_envoye_au_serveur=null;
     __deverminage=0;
     ma_connexion_socket=null;
+    __rev1=null;
     /*
       =============================================================================================================
     */
-    constructor(){
+    constructor( href ){
         this.__rev1=new __rev1( null );
-        /*
-          console.log( 'constructor de __worker' );
-        */
+        /* console.log( 'constructor de __worker' ); */
     }
     /*
       =============================================================================================================
@@ -175,7 +173,16 @@ class __worker1{
       =============================================================================================================
     */
 }
-ce__worker1=new __worker1( 'ce__worker1' );
+/*
+  let __version='0';
+  let les_parametres_de_l_url = new URLSearchParams(self.location.href);
+  for(const [key, value] of les_parametres_de_l_url) {
+  if(key==='__version'){
+  __version=value;
+  }
+  }      
+*/
+ce__worker1=new __worker1( self.location.href );
 onmessage=function( message_recu ){
     ce__worker1.action_quand_message_recu_du_js_principal( message_recu );
 };

@@ -35,7 +35,7 @@ const __xal=2;
 const __xif=3;
 const __xdv=4;
 import {w_rev_vers_sql1} from '/f0?n0=w_rev_vers_sql1_.js';
-import {_tri_arbre1} from '/f0?n0=_tri_arbre1_c.js';
+/* import {_tri_arbre1} from '/f0?n0=_tri_arbre1_c.js'; */
 /* pour les fonctions_coherence1 */
 import {w_ast_js_vers_rev1} from './f0?n0=w_ast_js_vers_rev1_.js';
 import {w_rev_vers_js1} from './f0?n0=w_rev_vers_js1_.js';
@@ -79,6 +79,7 @@ class v_svg_bdd1{
     #hauteur_de_boite_affichage=30;
     #objet_conversion_ast_js_vers_rev=null;
     #objet_conversion_rev_vers_js=null;
+    _tri_arbre1=null;
     #liste_des_meta_table=[
         /*  */
         {
@@ -5324,7 +5325,6 @@ class v_svg_bdd1{
             "arborescent" : false ,
             "class_du_bouton_deplacer" : 'rev_bouton'
         };
-        new _tri_arbre1( 'ordre_modifie' , options1 );
         let options2={
             "triable" : false ,
             "hauteur_max_en_vh" : 80 ,
@@ -5334,7 +5334,13 @@ class v_svg_bdd1{
             "arborescent" : false ,
             "class_du_bouton_deplacer" : 'rev_bouton'
         };
-        new _tri_arbre1( 'ordre_original' , options2 );
+        import( '/f0?n0=_tri_arbre1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
+                /* debugger */
+                let aa=new m['_tri_arbre1']( this );
+                aa.construire_arbre( 'ordre_modifie' , options1 );
+                let bb=new m['_tri_arbre1']( this );
+                bb.construire_arbre( 'ordre_original' , options1 );
+            } );
         if(scrollTop > 0){
             setTimeout( () => {
                     document.getElementById( 'vv_sous_fenetre1' ).scrollTop=scrollTop;} , 5 );

@@ -26,10 +26,12 @@ class __navigation1{
     #ref_div_contenant_les_boutons=null;
     #ref_div_contenant_la_zone_scrollable=null;
     #pour_menu_haut=0;
+    __ig1=null;
     /*
       =============================================================================================================
     */
-    constructor( par_id_de_l_element , options ){
+    constructor( par_id_de_l_element , options , __ig1 ){
+        this.__ig1=__ig1;
         /* console.log('constructor de ',par_id_de_l_element) */
         if(document.getElementById( par_id_de_l_element ) === null){
             console.error( 'menu_arbre1 id="' + par_id_de_l_element + '" non trouvé :-/' );
@@ -665,6 +667,8 @@ class __navigation1{
                             tt+='  overscroll-behavior:none;';
                             tt+='  background:' + this.#options.background_color + ';">\n';
                             le_sous_html=this.construit_html_de_arbre( this.arbre[i].id_interne , niveau + 1 , this.arbre[i].id_interne );
+                            le_sous_html=le_sous_html.replace( /data-rev_event_click=&quot;1&quot;/g , '' ).replace( /tabindex=&quot;0&quot;/g , '' );
+                            le_sous_html=le_sous_html.replace( /data-rev_event_click="1"/g , '' ).replace( /tabindex="0"/g , '' );
                             tt+=le_sous_html;
                             tt+='</div>\n';
                         }
@@ -678,7 +682,11 @@ class __navigation1{
               màj du HTML
               =============================================================================================
             */
-            /* console.log( 'le_html=\n' , le_html ); */
+            /* debugger */
+            /* substr(500 , 200). */
+            le_html=le_html.replace( /data-rev_event_click=&quot;1&quot;/g , '' ).replace( /tabindex=&quot;0&quot;/g , '' );
+            le_html=le_html.replace( /data-rev_event_click="1"/g , '' ).replace( /tabindex="0"/g , '' );
+            /* console.log("le_html=",le_html); */
             document.getElementById( this.#id_div ).innerHTML=le_html;
             /*
               =============================================================================================

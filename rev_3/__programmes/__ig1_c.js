@@ -9,10 +9,10 @@ const __xst=/* statut */'__xst';
 const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
-import {__rev1} from './f0?n0=__rev1_.js';
-import {__fnt1} from './f0?n0=__fnt1_c.js';
-import {__fnts_c_et_s} from './f0?n0=__fnts_c_et_s_.js';
-import {__navigation1} from './f0?n0=__navigation1_c.js';
+/*
+  #html_initial
+  affiche_page_d_accueil()
+*/
 /*
   Interface Globale coté client
 */
@@ -546,7 +546,7 @@ class __ig1{
                             }
                             if(contient_des_fichier_a_televerser === true){
                             }else{
-                                this.envoyer_un_message_au_worker( {
+                                this.envoyer_un_colis_au_worker( {
                                         "__xac" : 'pm1(' + re_source.__xva + ')' ,
                                         "__xva" : {
                                              /*  */
@@ -581,10 +581,10 @@ class __ig1{
                         return({"__xst" : __xer});
                         /* source=re_source.__xva; */
                     }
-                    this.envoyer_un_message_au_worker( {"__xac" : 'pm1(' + re_source.__xva + ')' ,"__xva" : {}} );
+                    this.envoyer_un_colis_au_worker( {"__xac" : 'pm1(' + re_source.__xva + ')' ,"__xva" : {}} );
                 }else{
                     if(i > 1 && données.__xva.hasOwnProperty( 'redirection' ) && données.__xva.redirection !== ''){
-                        this.envoyer_un_message_au_worker( {"__xac" : données.__xva.redirection ,"__xva" : {}} );
+                        this.envoyer_un_colis_au_worker( {"__xac" : données.__xva.redirection ,"__xva" : {}} );
                     }else{
                         let ret1=await this.__xac( mat , i , données );
                         if(ret1.__xst !== __xsu){
@@ -634,17 +634,17 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    envoyer_un_message_au_worker( obj ){
+    envoyer_un_colis_au_worker( obj ){
         if(!obj.hasOwnProperty( '__xva' )){
             obj[__xva]={};
         }
         if(!obj.hasOwnProperty( '__xac' )){
-            this.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque __xac pour l\'appel à envoyer_un_message_au_worker() '} );
+            this.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque __xac pour l\'appel à envoyer_un_colis_au_worker() '} );
             this.affiche_les_messages();
             return({"__xst" : __xer});
         }
         obj.__xva['__parametres']=this.stockage_local['parametres'];
-        this.#liste_des_appels_au_serveur.push( {"contexte" : 'envoyer_un_message_au_worker' ,"__xac" : obj.__xac} );
+        this.#liste_des_appels_au_serveur.push( {"contexte" : 'envoyer_un_colis_au_worker' ,"__xac" : obj.__xac} );
         this.#__worker.postMessage( obj );
     }
     /*
@@ -820,41 +820,45 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    initialisation_filtre_sous_fenetre2(nom_de_zone , contenu_de_sous_liste2 , titre ){
+    initialisation_filtre_sous_fenetre2( nom_de_zone , contenu_de_sous_liste2 , titre ){
         document.getElementById( 'vv_contenu_de_sous_liste2' ).innerHTML=contenu_de_sous_liste2;
         document.getElementById( 'vv_titre_sous_liste_2' ).innerText='selection ' + titre;
-        let zones_filtre2=document.getElementById(nom_de_zone);
+        let zones_filtre2=document.getElementById( nom_de_zone );
         if(zones_filtre2){
-            let lst_inp=zones_filtre2.getElementsByTagName('input');
-            if(lst_inp.length>0){
-              let a_selectionner=null;
-              for(let i=0 ; i < lst_inp.length && a_selectionner === null ; i++){
-                  if(a_selectionner===null && lst_inp[i].value !== ''){
-                      a_selectionner=lst_inp[i];
-                      break;
-                  }
-              }
-              if(a_selectionner !== null){
-                  a_selectionner.select();
-              }else{
-                  lst_inp[0].select();
-              }
-            }
-            this.ajoute_les_evenements_aux_boutons( null );
-            zones_filtre2.addEventListener('keyup' , ( e ) => {
-                if(e.keyCode === 13 && e.altKey === false && e.ctrlKey === false && e.metaKey === false && e.shiftKey === false){
-                    console.log('faire quelquechose ici e=' , e );
-                    let btn2=document.getElementById('yy_bouton_loupe_sous_fenetre2');
-                    if(btn2){
-                        let cmd2=btn2.getAttribute('data-rev_click');
-                        if(cmd2){
-                            console.log('cmd2='+cmd2);
-                            this.executer1( cmd2 , null , e );
-                            return;
-                        }
+            let lst_inp=zones_filtre2.getElementsByTagName( 'input' );
+            if(lst_inp.length > 0){
+                let a_selectionner=null;
+                for( let i=0 ; i < lst_inp.length && a_selectionner === null ; i++ ){
+                    if(a_selectionner === null && lst_inp[i].value !== ''){
+                        a_selectionner=lst_inp[i];
+                        break;
                     }
                 }
-            });
+                if(a_selectionner !== null){
+                    a_selectionner.select();
+                }else{
+                    lst_inp[0].select();
+                }
+            }
+            this.ajoute_les_evenements_aux_boutons( null );
+            zones_filtre2.addEventListener( 'keyup' , ( e ) => {
+                    if(e.keyCode === 13
+                           && e.altKey === false
+                           && e.ctrlKey === false
+                           && e.metaKey === false
+                           && e.shiftKey === false
+                    ){
+                        console.log( 'faire quelquechose ici e=' , e );
+                        let btn2=document.getElementById( 'yy_bouton_loupe_sous_fenetre2' );
+                        if(btn2){
+                            let cmd2=btn2.getAttribute( 'data-rev_click' );
+                            if(cmd2){
+                                console.log( 'cmd2=' + cmd2 );
+                                this.executer1( cmd2 , null , e );
+                                return;
+                            }
+                        }
+                    }} );
         }
     }
     /*
@@ -979,37 +983,6 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    sous_liste_generique1( mat , d , le_colis11=null , that , nom_du_champ_cle ){
-        if(le_colis11 == null || !le_colis11.__xva.hasOwnProperty( that.fonction_liste )){
-            return({"__xst" : __xer});
-        }
-        let o1='';
-        let initialisation_fait=false;
-        let a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a === null){
-            this.initialisation_des_zones( that.moi , nom_du_champ_cle );
-            initialisation_fait=true;
-        }
-        let le_titre='sélection ' + that.DUN_DUNE_ELEMENT_GERE;
-        a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a.innerHTML === le_titre){
-        }else{
-            if(initialisation_fait === false){
-                this.initialisation_des_zones( that.moi , nom_du_champ_cle );
-                a=document.getElementById( 'vv_titre_de_la_page' );
-            }
-            a.innerHTML=le_titre;
-            this.afficher_les_zones( 'vv_ecran_liste' );
-        }
-        that.zones_filtres1( mat , d , le_colis11 );
-        this.vv_ecran_liste_zones_navigation1( le_colis11 , '' , that.fonction_liste );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=that.zones_sous_liste1( le_colis11 );
-        this.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     generique_sous_liste2( mat , d , le_colis1 , nom_du_module_appelant ){
         let l01=mat.length;
         let module_appelant1='';
@@ -1060,7 +1033,7 @@ class __ig1{
             if(mat[i][1] === 'pm1' && mat[i][2] === 'f' && mat[i][8] > 0){
                 let obj1=this.__rev1.matrice_vers_source_rev1( mat , i , false , i + 1 );
                 if(obj1.__xst === __xsu){
-                    this.envoyer_un_message_au_worker( {
+                    this.envoyer_un_colis_au_worker( {
                              /*  */
                             "__xac" : 'pm1(' + obj1.__xva + ')' ,
                             "__xva" : {"__fo1" : {} ,"__co1" : ''}
@@ -1101,12 +1074,19 @@ class __ig1{
         this.__le_port=__le_port;
         this.__le_serveur=__le_serveur;
         this._CA_=_CA_;
-        this.__rev1=new __rev1( this );
-        this.__fnt1=new __fnt1( [] , 0 , this );
-        this.__fnts_c_et_s=new __fnts_c_et_s( this , 'cote_client' );
         this.#liste_des_modules_dynamiques['__ig1']={"objet1" : this};
-        this.#liste_des_modules_dynamiques['__rev1']={"objet1" : this.__rev1};
-        this.#liste_des_modules_dynamiques['__fnt1']={"objet1" : this.__fnt1};
+        import( '/f0?n0=__rev1_.js&__version=' + this.__version ).then( ( m ) => {
+                this.__rev1=new m['__rev1']( this );
+                this.#liste_des_modules_dynamiques['__rev1']={"objet1" : this.__rev1};
+            } );
+        import( '/f0?n0=__fnt1_c.js&__version=' + this.__version ).then( ( m ) => {
+                this.__fnt1=new m['__fnt1']( [] , 0 , this );
+                this.#liste_des_modules_dynamiques['__fnt1']={"objet1" : this.__fnt1};
+            } );
+        import( '/f0?n0=__fnts_c_et_s_.js&__version=' + this.__version ).then( ( m ) => {
+                this.__fnts_c_et_s=new m['__fnts_c_et_s']( [] , 0 , this );
+                this.#liste_des_modules_dynamiques['__fnts_c_et_s']={"objet1" : this.__fnts_c_et_s};
+            } );
         /* console.log('dans __ig1_c.constructor this.__version=' + this.__version + ' , this.__le_port=' + this.__le_port); */
         try{
             if(window.parent[0] === undefined){
@@ -1169,7 +1149,7 @@ class __ig1{
                 "__parametres" : this.stockage_local['parametres']
             }
         };
-        this.envoyer_un_message_au_worker( message_a_envoyer );
+        this.envoyer_un_colis_au_worker( message_a_envoyer );
     }
     /*
       =============================================================================================================
@@ -2398,7 +2378,7 @@ class __ig1{
                 if(de_13 !== ''){
                     option_de_13='de_13(' + de_13 + ')';
                 }
-                this.envoyer_un_message_au_worker( {
+                this.envoyer_un_colis_au_worker( {
                         "__xac" : 'pm1(m1(n1(' + nom_de_module + '),f1(' + fonction_liste + '(' + option_de_13 + '))))' ,
                         "__xva" : {"__fo1" : __fo1 ,"__co1" : fonction_liste}
                     } );
@@ -3042,8 +3022,8 @@ class __ig1{
         if(this.#liste_des_appels_au_serveur.length > 0){
             this.ajoute_message( {"__xst" : __xal ,"__xme" : 'Un appel au serveur est déjà en cours '} );
             this.affiche_les_messages();
-            this.ma_trace1(" afr voir bug sur batch ");
-//            return({"__xst" : __xer});
+            this.ma_trace1( " afr voir bug sur batch " );
+            /* return({"__xst" : __xer}); */
         }
         this.#boutons_masques_avant_appel.push( elt );
         let mat=obj1.__xva;
@@ -3063,6 +3043,7 @@ class __ig1{
       =============================================================================================================
     */
     ajoute_les_evenements_aux_boutons(){
+        /* console.log('ajoute_les_evenements_aux_boutons'); */
         let lst=document.querySelectorAll( "[data-rev_menu]" );
         for( let i=0 ; i < lst.length ; i++ ){
             if(!lst[i].getAttribute( 'data-rev_event' )){
@@ -3676,27 +3657,41 @@ class __ig1{
                     t+='<div class="rev_bouton yy__' + j + '" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
                 }
             }
-            if(i === 10){
+            if(true && i === 10){
                 tri_affiche=true;
                 t+='<div  style="display:flex;">';
-                t+='<div style="margin : 0 auto 0 auto;">';
-                t+='<ul id="vv_tri_bidon">';
-                t+='<li>pouvez</li>';
-                t+='<li>vous</li>';
-                t+='<li>hiérarchiser</li>';
-                t+='<li>cette</li>';
-                t+='<li>liste</li>';
-                t+='<li>qui</li>';
-                t+='<li>contient</li>';
-                t+='<li>beaucoup</li>';
-                t+='<li>d\'éléments</li>';
-                t+='<li>?</li>';
-                t+='</ul>';
-                t+='</div>';
+                t+=' <div style="margin : 0 auto 0 auto;">';
+                t+='   <ul id="vv_tri_bidon1">';
+                t+='      <li>pouvez</li>';
+                t+='      <li>vous</li>';
+                t+='      <li>hiérarchiser</li>';
+                t+='      <li>cette</li>';
+                t+='      <li>liste</li>';
+                t+='      <li>qui</li>';
+                t+='      <li>contient</li>';
+                t+='      <li>beaucoup</li>';
+                t+='      <li>d\'éléments</li>';
+                t+='      <li>?</li>';
+                t+='   </ul>';
+                t+=' </div>';
+                t+=' <div style="margin : 0 auto 0 auto;">';
+                t+='   <ul id="vv_tri_bidon2">';
+                t+='      <li>vous</li>';
+                t+='      <li>pouvez</li>';
+                t+='      <li>hiérarchiser</li>';
+                t+='      <li>cette</li>';
+                t+='      <li>liste</li>';
+                t+='      <li>qui</li>';
+                t+='      <li>contient</li>';
+                t+='      <li>beaucoup</li>';
+                t+='      <li>d\'éléments</li>';
+                t+='      <li>?</li>';
+                t+='   </ul>';
+                t+=' </div>';
                 t+='</div>';
             }
             /* ici un exemple de sous menu */
-            if(true && i === 15){
+            if(false && i === 15){
                 t+='<div style="display:flex;">';
                 /*
                   
@@ -3775,7 +3770,10 @@ class __ig1{
             options['afficher_le_bouton_editer']=0;
             options['class_du_bouton_editer']='rev_bouton yy__xif';
             import( './f0?n0=_tri_arbre1_c.js&__version=' + this.__version ).then( ( le_module ) => {
-                    new le_module['_tri_arbre1']( 'vv_tri_bidon' , options );
+                    let aa=new le_module['_tri_arbre1']( this );
+                    aa.construire_arbre( 'vv_tri_bidon1' , options );
+                    let bb=new le_module['_tri_arbre1']( this );
+                    bb.construire_arbre( 'vv_tri_bidon2' , options );
                 } );
         }
         this.activer_menu( '-1' );
@@ -3818,7 +3816,7 @@ class __ig1{
         }
         let __fo1={};
         __fo1[that.fonction_liste]=that.filtres[that.fonction_liste];
-        this.envoyer_un_message_au_worker( {
+        this.envoyer_un_colis_au_worker( {
                 "__xac" : 'pm1(m1(n1(' + that.moi + '),f1(' + that.fonction_liste + '())))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : that.fonction_liste}
             } );
@@ -3838,7 +3836,12 @@ class __ig1{
             "background_color" : 'var(--c_coul_fond1)' ,
             "class_du_bouton_replier" : 'rev_bouton'
         };
-        var menu1=new __navigation1( elt.id , options1 );
+        /* var menu1=new __navigation1( elt.id , options1 ); */
+        /* let menu1=null; */
+        import( '/f0?n0=__navigation1_c.js&__version=' + this.__version ).then( ( m ) => {
+                let menu1=new m['__navigation1']( elt.id , options1 );
+                this.ajoute_les_evenements_aux_boutons();
+            } );
         return({"__xst" : __xsu});
     }
     /*
@@ -4067,7 +4070,7 @@ class __ig1{
                     "__hash" : decodeURIComponent( window.location.hash )
                 }
             };
-            this.envoyer_un_message_au_worker( message_a_envoyer );
+            this.envoyer_un_colis_au_worker( message_a_envoyer );
         }else{
             /*
               c'est le retour du serveur

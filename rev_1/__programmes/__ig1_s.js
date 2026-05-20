@@ -667,7 +667,7 @@ class __ig1{
                 return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu_fichier ,"entetes_reponse_http" : entetes_reponse_http}});
             }else if(chemin_get0 === "/"){
                 let __le_serveur=url0.hostname;
-                /* console.log( '__gi1_s contenu_de_get url0=' , url0.hostname ); */
+                /* console.log( '__ig1_s contenu_de_get url0=' , url0.hostname ); */
                 let contenu='<!DOCTYPE html>';
                 contenu+='<html lang="fr">';
                 contenu+='<head id="vv_head1">';

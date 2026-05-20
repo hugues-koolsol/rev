@@ -124,7 +124,7 @@ class __zip1{
             console.log(`✅ Created ZIP: ${outputZip}`);
           }
           
-          // Example usage
+          // Example 
           try {
             const inputPath = "./myfolder"; // Can be a folder or a single file
             const outputZip = "./archive.zip";

@@ -9,10 +9,10 @@ const __xst=/* statut */'__xst';
 const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
-/* import {__rev1} from './f0?n0=__rev1_.js'; */
-/* import {__fnt1} from './f0?n0=__fnt1_c.js'; */
-/* import {__fnts_c_et_s} from './f0?n0=__fnts_c_et_s_.js'; */
-import {__navigation1} from './f0?n0=__navigation1_c.js';
+/*
+  #html_initial
+  affiche_page_d_accueil()
+*/
 /*
   Interface Globale coté client
 */
@@ -1074,19 +1074,19 @@ class __ig1{
         this.__le_port=__le_port;
         this.__le_serveur=__le_serveur;
         this._CA_=_CA_;
+        this.#liste_des_modules_dynamiques['__ig1']={"objet1" : this};
         import( '/f0?n0=__rev1_.js&__version=' + this.__version ).then( ( m ) => {
                 this.__rev1=new m['__rev1']( this );
+                this.#liste_des_modules_dynamiques['__rev1']={"objet1" : this.__rev1};
             } );
         import( '/f0?n0=__fnt1_c.js&__version=' + this.__version ).then( ( m ) => {
                 this.__fnt1=new m['__fnt1']( [] , 0 , this );
+                this.#liste_des_modules_dynamiques['__fnt1']={"objet1" : this.__fnt1};
             } );
         import( '/f0?n0=__fnts_c_et_s_.js&__version=' + this.__version ).then( ( m ) => {
                 this.__fnts_c_et_s=new m['__fnts_c_et_s']( [] , 0 , this );
+                this.#liste_des_modules_dynamiques['__fnts_c_et_s']={"objet1" : this.__fnts_c_et_s};
             } );
-        this.#liste_des_modules_dynamiques['__ig1']={"objet1" : this};
-        this.#liste_des_modules_dynamiques['__rev1']={"objet1" : this.__rev1};
-        this.#liste_des_modules_dynamiques['__fnt1']={"objet1" : this.__fnt1};
-        this.#liste_des_modules_dynamiques['__fnts_c_et_s']={"objet1" : this.__fnts_c_et_s};
         /* console.log('dans __ig1_c.constructor this.__version=' + this.__version + ' , this.__le_port=' + this.__le_port); */
         try{
             if(window.parent[0] === undefined){
@@ -3043,6 +3043,7 @@ class __ig1{
       =============================================================================================================
     */
     ajoute_les_evenements_aux_boutons(){
+        /* console.log('ajoute_les_evenements_aux_boutons'); */
         let lst=document.querySelectorAll( "[data-rev_menu]" );
         for( let i=0 ; i < lst.length ; i++ ){
             if(!lst[i].getAttribute( 'data-rev_event' )){
@@ -3651,32 +3652,46 @@ class __ig1{
         t+='<div>\r\n';
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
             t+='<span>&nbsp;bidon=' + (i + 1) + '</span><br />';
-            if(i === 5){
+            if(false && i === 3){
                 for( let j=0 ; j <= 4 ; j++ ){
                     t+='<div class="rev_bouton yy__' + j + '" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
                 }
             }
-            if(i === 10){
+            if(false && i === 8){
                 tri_affiche=true;
                 t+='<div  style="display:flex;">';
-                t+='<div style="margin : 0 auto 0 auto;">';
-                t+='<ul id="vv_tri_bidon">';
-                t+='<li>pouvez</li>';
-                t+='<li>vous</li>';
-                t+='<li>hiérarchiser</li>';
-                t+='<li>cette</li>';
-                t+='<li>liste</li>';
-                t+='<li>qui</li>';
-                t+='<li>contient</li>';
-                t+='<li>beaucoup</li>';
-                t+='<li>d\'éléments</li>';
-                t+='<li>?</li>';
-                t+='</ul>';
-                t+='</div>';
+                t+=' <div style="margin : 0 auto 0 auto;">';
+                t+='   <ul id="vv_tri_bidon1">';
+                t+='      <li>pouvez</li>';
+                t+='      <li>vous</li>';
+                t+='      <li>hiérarchiser</li>';
+                t+='      <li>cette</li>';
+                t+='      <li>liste</li>';
+                t+='      <li>qui</li>';
+                t+='      <li>contient</li>';
+                t+='      <li>beaucoup</li>';
+                t+='      <li>d\'éléments</li>';
+                t+='      <li>?</li>';
+                t+='   </ul>';
+                t+=' </div>';
+                t+=' <div style="margin : 0 auto 0 auto;">';
+                t+='   <ul id="vv_tri_bidon2">';
+                t+='      <li>vous</li>';
+                t+='      <li>pouvez</li>';
+                t+='      <li>hiérarchiser</li>';
+                t+='      <li>cette</li>';
+                t+='      <li>liste</li>';
+                t+='      <li>qui</li>';
+                t+='      <li>contient</li>';
+                t+='      <li>beaucoup</li>';
+                t+='      <li>d\'éléments</li>';
+                t+='      <li>?</li>';
+                t+='   </ul>';
+                t+=' </div>';
                 t+='</div>';
             }
             /* ici un exemple de sous menu */
-            if(true && i === 15){
+            if(true && i === 8){
                 t+='<div style="display:flex;">';
                 /*
                   
@@ -3686,11 +3701,12 @@ class __ig1{
                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un menu dans la page</div>';
                 t+='  <ul>';
                 t+='   <li>';
-                /* appel                                   m1() */
+                t+='     <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil</div>';
+                t+='   </li>';
+                t+='   <li>';
                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(\'\'))))" title="liste des taches">taches 1</div>';
                 t+='   </li>';
                 t+='   <li>';
-                /* appel                                   pm1() */
                 t+='     <div class="rev_bouton" data-rev_click="pm1(m1(n1(dossiers1),f1(liste1())))" title="liste des dossiers">dossiers 1</div>';
                 t+='   </li>';
                 t+='   <li>';
@@ -3755,7 +3771,10 @@ class __ig1{
             options['afficher_le_bouton_editer']=0;
             options['class_du_bouton_editer']='rev_bouton yy__xif';
             import( './f0?n0=_tri_arbre1_c.js&__version=' + this.__version ).then( ( le_module ) => {
-                    new le_module['_tri_arbre1']( 'vv_tri_bidon' , options );
+                    let aa=new le_module['_tri_arbre1']( this );
+                    aa.construire_arbre( 'vv_tri_bidon1' , options );
+                    let bb=new le_module['_tri_arbre1']( this );
+                    bb.construire_arbre( 'vv_tri_bidon2' , options );
                 } );
         }
         this.activer_menu( '-1' );
@@ -3818,16 +3837,12 @@ class __ig1{
             "background_color" : 'var(--c_coul_fond1)' ,
             "class_du_bouton_replier" : 'rev_bouton'
         };
+        /* var menu1=new __navigation1( elt.id , options1 ); */
         /* let menu1=null; */
-        /*
-          import( '/f0?n0=__navigation1_c.js&__version=' + this.__version ).then( ( m ) => {
-          debugger
-          let menu1=new m['__navigation1']( elt.id , options1 );
-          this.ajoute_les_evenements_aux_boutons();
-          
-          } );
-        */
-        var menu1=new __navigation1( elt.id , options1 );
+        import( '/f0?n0=__navigation1_c.js&__version=' + this.__version ).then( ( m ) => {
+                let menu1=new m['__navigation1']( elt.id , options1 , this );
+                this.ajoute_les_evenements_aux_boutons();
+            } );
         return({"__xst" : __xsu});
     }
     /*

@@ -1,4 +1,3 @@
-import {_tri_arbre1} from '/f0?n0=_tri_arbre1_c.js';
 class genres1{
     /*
       ref_select=330
@@ -39,6 +38,7 @@ class genres1{
     fonction_liste='liste1';
     filtres={};
     vv_ecran_liste_boutons_avant='';
+    _tri_arbre1=null;
     /*
       =============================================================================================================
     */
@@ -166,7 +166,7 @@ class genres1{
         options.boutons_du_menu.push( {"libelle" : '💾 enregistrer cet ordre' ,"fonction" : this.enregistrer_l_ordre_des_genres_du_bouton1.bind( this )} );
         options['afficher_le_bouton_editer']=0;
         options['class_du_bouton_editer']='rev_bouton yy__xif';
-        new _tri_arbre1( 'trier_les_genres' , options );
+        this._tri_arbre1.construire_arbre( 'trier_les_genres' , options );
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
@@ -188,6 +188,9 @@ class genres1{
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
+        import( '/f0?n0=_tri_arbre1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
+                this._tri_arbre1=new m['_tri_arbre1']( this );
+            } );
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){
