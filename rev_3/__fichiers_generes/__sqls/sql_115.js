@@ -50,6 +50,9 @@ class sql_115{
         if(par.hasOwnProperty( 'T0_che_autorisation_globale_source' ) && par['T0_che_autorisation_globale_source'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_autorisation_globale_source`' , par['T0_che_autorisation_globale_source'] );
         }
+        if(par.hasOwnProperty( 'T0_che_pour_util_source' ) && par['T0_che_pour_util_source'] !== ''){
+            where0+=` AND \`T0\`.\`che_pour_util_source\` IN (` + par['T0_che_pour_util_source'] + `)` + '\r\n';
+        }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_source\` DESC`;

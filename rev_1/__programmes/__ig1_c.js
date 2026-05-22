@@ -141,7 +141,8 @@ class __ig1{
                     if(obj2.hasOwnProperty( 'cumul_message' ) && obj2.cumul_message === __xer){
                         cumul_message=__xer;
                     }else{
-                        if(this.__deverminage > 0){
+                        debugger
+                        if(!obj2.hasOwnProperty('__xme')){
                             this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
                         }
                     }
@@ -1084,7 +1085,7 @@ class __ig1{
                 this.#liste_des_modules_dynamiques['__fnt1']={"objet1" : this.__fnt1};
             } );
         import( '/f0?n0=__fnts_c_et_s_.js&__version=' + this.__version ).then( ( m ) => {
-                this.__fnts_c_et_s=new m['__fnts_c_et_s']( [] , 0 , this );
+                this.__fnts_c_et_s=new m['__fnts_c_et_s']( [] , 0 , this , 'client' );
                 this.#liste_des_modules_dynamiques['__fnts_c_et_s']={"objet1" : this.__fnts_c_et_s};
             } );
         /* console.log('dans __ig1_c.constructor this.__version=' + this.__version + ' , this.__le_port=' + this.__le_port); */

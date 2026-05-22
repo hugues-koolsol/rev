@@ -19,8 +19,7 @@ class sql_407{
         }
         /* test "non nul" sur le champ "chx_parent_dossier" */
         if(par['n_chx_parent_dossier'] === null || par['n_chx_parent_dossier'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_dossiers` SET \r\n';
         let tableau_champs=[];

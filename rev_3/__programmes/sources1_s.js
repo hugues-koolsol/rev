@@ -23,82 +23,6 @@ class sources1{
     /*
       =============================================================================================================
     */
-    async exporter_dans_base_de_prod1( mat , d ){
-        let chi_id_source=0;
-        const l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_source' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                chi_id_source=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chi_id_source === 0){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_116={"T0_chi_id_source" : chi_id_source};
-        let tt116=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
-         FROM b1.tbl_sources T0
-        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
-        ;
-        */
-        /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
-        if(tt116[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
-        }
-        /* this.__ig1.ma_trace1('tt116[__xva]=',tt116[__xva]); */
-        let sql0=`
-            UPDATE tbl_sources SET 
-                chi_id_source = ` + chi_id_source + ` , 
-                chx_dossier_id_source = ` + tt116[__xva][0]['T0.chx_dossier_id_source'] + ` , 
-                chp_nom_source = ` + this.__ig1.__fnt1.sq1( tt116[__xva][0]['T0.chp_nom_source'] ) + ` ,  
-                cht_commentaire_source = ` + this.__ig1.__fnt1.sq1( tt116[__xva][0]['T0.cht_commentaire_source'] ) + ` ,  
-                che_binaire_source = ` + tt116[__xva][0]['T0.che_binaire_source'] + ` ,  
-                che_autorisation_globale_source = ` + tt116[__xva][0]['T0.che_autorisation_globale_source'] + `
-            WHERE chi_id_source = ` + tt116[__xva][0]['T0.chi_id_source'] + ` ;
-                
-            INSERT OR IGNORE INTO tbl_sources( 
-                \`chi_id_source\` , 
-                \`chx_dossier_id_source\` , 
-                \`chp_nom_source\` , 
-                \`cht_commentaire_source\` , 
-                \`che_binaire_source\` , 
-                \`che_autorisation_globale_source\` 
-            ) values(
-                ` + tt116[__xva][0]['T0.chi_id_source'] + ` , 
-                ` + tt116[__xva][0]['T0.chx_dossier_id_source'] + ` , 
-                ` + this.__ig1.__fnt1.sq1( tt116[__xva][0]['T0.chp_nom_source'] ) + ` , 
-                ` + this.__ig1.__fnt1.sq1( tt116[__xva][0]['T0.cht_commentaire_source'] ) + ` ,
-                ` + tt116[__xva][0]['T0.che_binaire_source'] + ` , 
-                ` + tt116[__xva][0]['T0.che_autorisation_globale_source'] + ` 
-            );`;
-        /* this.__ig1.ma_trace1('this.__ig1.options_generales=',this.__ig1.options_generales); */
-        let chemin_bdd=(await this.__ig1.options_generales.chemin_absolu_projet) + '__bases_de_donnees/bdd_1.sqlite';
-        this.__ig1.ma_trace1( 'chemin_bdd=' + chemin_bdd );
-        let __db_1=null;
-        try{
-            __db_1=await this.__ig1.ouvrir_bdd_temp( chemin_bdd );
-        }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
-        }
-        try{
-            await __db_1.exec( sql0 );
-            await __db_1.close();
-        }catch(e){
-            await __db_1.close();
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
@@ -279,10 +203,16 @@ class sources1{
     /*
       =============================================================================================================
     */
-    async sous_liste1( mat , d ){
-        this.fonction_liste='sous_liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+    async sous_liste2( mat , d ){
+        const __nbMax=40;
+        let criteres_115={"T0_che_pour_util_source" : 1 };
+        criteres_115['quantitee']=__nbMax;
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 115 , criteres_115 , __nbMax , __db1 );
+        if(liste2.__xst === __xsu){
+            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
+        }
+        return liste2;
     }
     /*
       =============================================================================================================

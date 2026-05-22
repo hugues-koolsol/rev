@@ -33,36 +33,46 @@ class __worker1{
     */
     constructor( href ){
         this.__rev1=new __rev1( null );
+        let __version='0';
+        let les_parametres_de_l_url=new URLSearchParams( href );
+        for(const [key,value] of les_parametres_de_l_url){
+            if(key === '__version'){
+                __version=value;
+            }
+        }
+        import( './f0?n0=__rev1_.js&__version=' + __version ).then( ( le_module ) => {
+                this.__rev1=new le_module['__rev1']( null );
+            } );
         /* console.log( 'constructor de __worker' ); */
     }
     /*
       =============================================================================================================
     */
-    async action_quand_message_recu_du_js_principal( le_message ){
-        this.__deverminage=le_message.data.__xva.__parametres.__deverminage.valeur;
+    async action_quand_message_recu_du_js_principal( le_colis ){
+        this.__deverminage=le_colis.data.__xva.__parametres.__deverminage.valeur;
         if(this.__deverminage === 2){
-            console.log( 'le_message.data=' , le_message.data );
+            console.log( 'le_colis.data=' , le_colis.data );
         }
-        let obj=le_message.data;
+        let obj=le_colis.data;
         let mat=null;
         let mat_hash=[];
-        if(!le_message.data.hasOwnProperty( '__xac' )){
+        if(!le_colis.data.hasOwnProperty( '__xac' )){
             let prop_trouvees='';
-            for(let i in le_message.data){
+            for(let i in le_colis.data){
                 prop_trouvees+=i + ',';
             }
             postMessage( {
                     "__xst" : __xer ,
                     "__xme" : '<b>Le serveur ne peut être appelé.</b><br />Il manque la propriété "__xac"<br /> les propriétés trouvées sont ' + prop_trouvees + '' ,
-                    "__xva" : le_message.data
+                    "__xva" : le_colis.data
                 } );
             return;
         }
-        let obj1=this.__rev1.rev_tcm( le_message.data.__xac );
+        let obj1=this.__rev1.rev_tcm( le_colis.data.__xac );
         if(obj1.__xst === __xsu){
             mat=obj1.__xva;
         }else{
-            postMessage( {"__xst" : __xer ,"__xme" : obj1.__xme ,"__xva" : le_message.data} );
+            postMessage( {"__xst" : __xer ,"__xme" : obj1.__xme ,"__xva" : le_colis.data} );
             return;
         }
         obj['mat']=mat;
@@ -142,12 +152,12 @@ class __worker1{
                         let le_retour_ko={"__xst" : __xer ,"__xme" : e.stack};
                         postMessage( le_retour_ko );
                     }} );
-            let url=le_message.data.__xva.__href;
+            let url=le_colis.data.__xva.__href;
             if(url.indexOf( '#' ) > 0){
                 url=url.substr( 0 , url.indexOf( '#' ) );
             }
             this.#url_du_site=url.substr( 0 , url.lastIndexOf( '/' ) + 1 );
-            let hash=le_message.data.__xva.__hash;
+            let hash=le_colis.data.__xva.__hash;
             if(hash.indexOf( '#' ) >= 0){
                 hash=hash.substr( 1 );
             }
@@ -182,7 +192,7 @@ class __worker1{
   }
   }      
 */
-ce__worker1=new __worker1( self.location.href );
+ce__worker1=await new __worker1( self.location.href );
 onmessage=function( message_recu ){
     ce__worker1.action_quand_message_recu_du_js_principal( message_recu );
 };

@@ -190,7 +190,8 @@ class sources1{
                 chp_nom_source = ` + this.__ig1.__fnt1.sq1( tt116[__xva][0]['T0.chp_nom_source'] ) + ` ,  
                 cht_commentaire_source = ` + this.__ig1.__fnt1.sq1( tt116[__xva][0]['T0.cht_commentaire_source'] ) + ` ,  
                 che_binaire_source = ` + tt116[__xva][0]['T0.che_binaire_source'] + ` ,  
-                che_autorisation_globale_source = ` + tt116[__xva][0]['T0.che_autorisation_globale_source'] + `
+                che_autorisation_globale_source = ` + tt116[__xva][0]['T0.che_autorisation_globale_source'] + ` ,
+                che_pour_util_source = ` + tt116[__xva][0]['T0.che_pour_util_source'] + `
             WHERE chi_id_source = ` + tt116[__xva][0]['T0.chi_id_source'] + ` ;
                 
             INSERT OR IGNORE INTO tbl_sources( 
@@ -199,14 +200,16 @@ class sources1{
                 \`chp_nom_source\` , 
                 \`cht_commentaire_source\` , 
                 \`che_binaire_source\` , 
-                \`che_autorisation_globale_source\` 
+                \`che_autorisation_globale_source\` ,
+                \`che_pour_util_source\`
             ) values(
                 ` + tt116[__xva][0]['T0.chi_id_source'] + ` , 
                 ` + tt116[__xva][0]['T0.chx_dossier_id_source'] + ` , 
                 ` + this.__ig1.__fnt1.sq1( tt116[__xva][0]['T0.chp_nom_source'] ) + ` , 
                 ` + this.__ig1.__fnt1.sq1( tt116[__xva][0]['T0.cht_commentaire_source'] ) + ` ,
                 ` + tt116[__xva][0]['T0.che_binaire_source'] + ` , 
-                ` + tt116[__xva][0]['T0.che_autorisation_globale_source'] + ` 
+                ` + tt116[__xva][0]['T0.che_autorisation_globale_source'] + ` ,
+                ` + tt116[__xva][0]['T0.che_pour_util_source'] + ` 
             );`;
         /* this.__ig1.ma_trace1('this.__ig1.options_generales=',this.__ig1.options_generales); */
         let chemin_bdd=(await this.__ig1.options_generales.chemin_absolu_projet) + '__bases_de_donnees/bdd_1.sqlite';
@@ -1481,6 +1484,7 @@ class sources1{
           ) : ( 
             parseInt( form['che_autorisation_globale_source'] , 10 )
           );
+        form['che_pour_util_source']=form['che_pour_util_source'] === null ? ( null ) : ( parseInt( form['che_pour_util_source'] , 10 ) );
         /* conversion des données numériques fin */
         let retour_a_la_liste=false;
         let l01=mat.length;
@@ -1526,7 +1530,8 @@ class sources1{
             "n_cht_condition_rev_source" : form['cht_condition_rev_source'] === '' ? ( null ) : ( form['cht_condition_rev_source'] ) ,
             "n_cht_condition_js_source" : form['cht_condition_js_source'] === '' ? ( null ) : ( form['cht_condition_js_source'] ) ,
             "n_cht_notification_ko_source" : form['cht_notification_ko_source'] === '' ? ( null ) : ( form['cht_notification_ko_source'] ) ,
-            "n_chp_usage_source" : form['chp_usage_source']
+            "n_chp_usage_source" : form['chp_usage_source'] ,
+            "n_che_pour_util_source" : form['che_pour_util_source']
         };
         /* =========================== mise à jour effective ======================== */
         let tt308=await this.__ig1.sql_iii(
@@ -1542,7 +1547,8 @@ class sources1{
            `cht_condition_rev_source` = :n_cht_condition_rev_source , 
            `cht_condition_js_source` = :n_cht_condition_js_source , 
            `cht_notification_ko_source` = :n_cht_notification_ko_source , 
-           `chp_usage_source` = :n_chp_usage_source
+           `chp_usage_source` = :n_chp_usage_source ,
+           `che_pour_util_source` = :n_che_pour_util_source
         WHERE `chi_id_source` = :c_chi_id_source ;
         */
         /*sql_inclure_fin*/ 308 , criteres_308 , this.__ig1.donnees_retournees , __db1 );

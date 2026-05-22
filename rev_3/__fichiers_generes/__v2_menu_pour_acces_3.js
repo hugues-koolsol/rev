@@ -13,8 +13,8 @@ class v2_menu_pour_acces_3{
         let les_menu1='';
         /* contenu initialisé avec une chaine vide pour indice 0 */
         let les_sous_menus=[''];
-        les_menu1+=`<li><div id="menu_2" data-id_auto="34" data-id_menu="14" class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module()))" title="mes tâches">mes tâches</div></li>`;
-        les_menu1+=`<li><div id="menu_1" data-id_auto="19" data-id_menu="12" class="rev_bouton" data-rev_click="m1(n1(x_ecran_coordonnees1),f1(entree_module()))" title="mes coordonnées">mes coordonnées</div></li>`;
+        les_menu1+=`<li><div id="menu_1" data-id_auto="34" data-id_menu="14" class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module()))" title="mes tâches">mes tâches</div></li>`;
+        les_menu1+=`<li><div id="menu_2" data-id_auto="19" data-id_menu="12" class="rev_bouton" data-rev_click="m1(n1(x_ecran_coordonnees1),f1(entree_module()))" title="mes coordonnées">mes coordonnées</div></li>`;
 
 
         if(les_menu1 !== ''){

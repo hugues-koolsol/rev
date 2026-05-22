@@ -25,7 +25,7 @@ class sources1{
             "T0_che_contient_version_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'contient version' ,"taille" : 8} ,
             "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8}
         } ,
-        "sous_liste1" : {
+        "sous_liste2" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
             "T0_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
             "T0_chi_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
@@ -43,7 +43,7 @@ class sources1{
     /*
       =============================================================================================================
     */
-    f1( mat , d , le_message_du_serveur=null ){
+    f1( mat , d , le_colis=null ){
         switch (mat[d][1]){
             case 'xxxxx' :
                 /*
@@ -91,17 +91,17 @@ class sources1{
     /*
       =============================================================================================================
     */
-    page_confirmation_supprimer1( mat , d , le_message_du_serveur=null ){
-        if(!le_message_du_serveur.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
+    page_confirmation_supprimer1( mat , d , le_colis=null ){
+        if(!le_colis.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0];
+        let enreg=le_colis.__xva.page_confirmation_supprimer1.__xva[0];
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi , 'chi_id_source' );
         let o1='';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_source" value="' + le_message_du_serveur.__xva.page_confirmation_supprimer1.__xva[0]['T0.chi_id_source'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_source" value="' + le_colis.__xva.page_confirmation_supprimer1.__xva[0]['T0.chi_id_source'] + '" />';
         /*
           =====================================================================================================
         */
@@ -202,7 +202,7 @@ class sources1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -331,14 +331,14 @@ class sources1{
     /*
       =============================================================================================================
     */
-    filtre1( mat , d , le_message_du_serveur=null ){
+    filtre1( mat , d , le_colis=null ){
         let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
         if(a === null){
-            return(this[this.fonction_liste]( mat , d , le_message_du_serveur ));
+            return(this[this.fonction_liste]( mat , d , le_colis ));
         }
-        let tt=this.zones_liste1( le_message_du_serveur );
+        let tt=this.zones_liste1( le_colis );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
-        this.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant );
+        this.vv_ecran_liste_zones_navigation1( le_colis , this.vv_ecran_liste_boutons_avant );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
@@ -360,7 +360,7 @@ class sources1{
     /*
       =============================================================================================================
     */
-    zones_filtres1( mat , d , le_message_du_serveur ){
+    zones_filtres1( mat , d , le_colis ){
         let l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -383,10 +383,10 @@ class sources1{
         }
         let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
         sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
-        if(le_message_du_serveur.__xva.hasOwnProperty( '__fo1' )
-               && le_message_du_serveur.__xva.__fo1 !== null
-               && le_message_du_serveur.__xva.__fo1.hasOwnProperty( 'origine' )
-               && le_message_du_serveur.__xva.__fo1.origine === 'aller_a_la_page'
+        if(le_colis.__xva.hasOwnProperty( '__fo1' )
+               && le_colis.__xva.__fo1 !== null
+               && le_colis.__xva.__fo1.hasOwnProperty( 'origine' )
+               && le_colis.__xva.__fo1.origine === 'aller_a_la_page'
         ){
             document.getElementById( '__num_page' ).value=__num_page;
             return;
@@ -470,16 +470,16 @@ class sources1{
     /*
       =============================================================================================================
     */
-    supprimer1( mat , d , le_message_du_serveur ){
+    supprimer1( mat , d , le_colis ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    creer1( mat , d , le_message_du_serveur ){
+    creer1( mat , d , le_colis ){
         /* redirection vers modification */
-        if(le_message_du_serveur && le_message_du_serveur.__xva.hasOwnProperty( 'page_modification1' )){
-            this.page_modification1( mat , d , le_message_du_serveur );
+        if(le_colis && le_colis.__xva.hasOwnProperty( 'page_modification1' )){
+            this.page_modification1( mat , d , le_colis );
         }
         return({"__xst" : __xsu});
     }
@@ -491,16 +491,16 @@ class sources1{
     }
     /*
       =============================================================================================================
-    */
-    sous_liste1( mat , d , le_message_du_serveur=null ){
+    sous_liste1( mat , d , le_colis=null ){
         this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_message_du_serveur , this , 'chi_id_source' ));
+        return(this.__ig1.sous_liste_generique1( mat , d , le_colis , this , 'chi_id_source' ));
     }
+    */
     /*
       =============================================================================================================
     */
-    liste1( mat , d , le_message_du_serveur=null ){
-        if(le_message_du_serveur == null || !le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+    liste1( mat , d , le_colis=null ){
+        if(le_colis == null || !le_colis.__xva.hasOwnProperty( this.fonction_liste )){
             /* F5 */
             debugger;
             /* this.#init1(null,'liste1'); */
@@ -523,13 +523,19 @@ class sources1{
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
-        this.zones_filtres1( mat , d , le_message_du_serveur );
-        this.__ig1.vv_ecran_liste_zones_navigation1( le_message_du_serveur , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_message_du_serveur );
+        this.zones_filtres1( mat , d , le_colis );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    sous_liste2( mat , d , le_colis1 ){
+        return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
       =============================================================================================================
@@ -541,23 +547,25 @@ class sources1{
     /*
       =============================================================================================================
     */
-    zones_sous_liste1( le_message_du_serveur ){
+    zones_sous_liste2( mat , d , le_colis1 ){
         let o1='';
-        if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this );
+        o1+=obj2.html2;
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
             let lst='';
-            for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){
-                let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva['sous_liste2'].__xva){
+                let elem=le_colis1.__xva['sous_liste2'].__xva[i];
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
-                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre1(';
-                parametres+=' nom_champ_dans_parent1(' + this.nom_champ_dans_parent1 + ')';
-                parametres+=' nom_libelle_dans_parent1(' + this.nom_libelle_dans_parent1 + ')';
-                parametres+=' id1(' + elem['T0.chi_id_source'] + ')';
+                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
+                parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
+                parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
+                parametres+=' id2(' + elem['T0.chi_id_source'] + ')';
                 let libelle1='';
                 libelle1+='(' + elem['T0.chi_id_source'] + ') ';
                 libelle1+=elem['T0.chp_nom_source'] ? ( ' , ' + elem['T0.chp_nom_source'] ) : ( '' );
-                parametres+=' libelle1(\'' + this.__ig1.fi1( libelle1 ) + '\')';
+                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle1 ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
                 lst+='</td>';
@@ -640,21 +648,22 @@ class sources1{
                 o1+=this.__ig1.la_liste_est_vide();
             }
         }
-        return o1;
+        this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    zones_liste1( le_message_du_serveur ){
+    zones_liste1( le_colis ){
         let o1='';
-        if(le_message_du_serveur !== null && le_message_du_serveur.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis !== null && le_colis.__xva.hasOwnProperty( this.fonction_liste )){
             let lst='';
-            for(let i in le_message_du_serveur.__xva[this.fonction_liste].__xva){
-                let elem=le_message_du_serveur.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis.__xva[this.fonction_liste].__xva){
+                let elem=le_colis.__xva[this.fonction_liste].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
-                if(le_message_du_serveur.chi_id_utilisateur >= 2){
+                if(le_colis.chi_id_utilisateur >= 2){
                     /*
                       seul l\'utilisateur dev peut supprimer des sources disponibles 
                     */

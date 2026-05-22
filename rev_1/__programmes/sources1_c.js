@@ -23,7 +23,8 @@ class sources1{
             "T0_che_binaire_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8} ,
             "T0_chx_dossier_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
             "T1_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8} ,
-            "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8}
+            "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8} ,
+            "T0_che_pour_util_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour util' ,"taille" : 8}
         } ,
         "sous_liste2" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
@@ -34,7 +35,8 @@ class sources1{
             "T0_che_binaire_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8} ,
             "T0_chx_dossier_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
             "T1_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8} ,
-            "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8}
+            "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8} ,
+            "T0_che_pour_util_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour util' ,"taille" : 8}
         }
     };
     fonction_liste='liste1';
@@ -375,6 +377,28 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
+        if(fo1['che_pour_util_source'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_pour_util_source' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['che_pour_util_source'] !== ''){
+            let tab_est_parmis_11='0,1'.split( ',' );
+            if(!tab_est_parmis_11.includes( fo1['che_pour_util_source'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_pour_util_source' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        
         /* conversion des données numériques début */
         fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
@@ -385,6 +409,7 @@ class sources1{
           ) : ( 
             parseInt( fo1['che_autorisation_globale_source'] , 10 )
           );
+        fo1['che_pour_util_source']=fo1['che_pour_util_source'] === '' ? ( null ) : ( parseInt( fo1['che_pour_util_source'] , 10 ) );
         /* conversion des données numériques fin */
         /*
           tout a été vérifié
@@ -455,6 +480,20 @@ class sources1{
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_binaire_source'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>pour util</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.che_pour_util_source'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <input type="range" id="che_pour_util_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_pour_util_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1673,6 +1712,17 @@ class sources1{
                 lst+='</td>';
                 /*
                 */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.che_pour_util_source'] !== null){
+                    if(elem['T0.che_pour_util_source'] === 0){
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
+                }
+                lst+='</td>';
+                /*
+                */
                 lst+='</tr>';
             }
             if(lst !== ''){
@@ -1690,6 +1740,7 @@ class sources1{
                 /* o1+='<th>autorisation globale</th>'; */
                 o1+=/* cht_condition_rev_source */'<th style="max-width:360px;">condition rev</th>';
                 o1+='<th style="max-width:360px;">commentaire</th>';
+                o1+=/* che_pour_util_source */'<th>pour util</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

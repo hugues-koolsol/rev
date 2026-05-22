@@ -20,7 +20,7 @@ class sql_115{
         champs0=`
           \`T0\`.\`chi_id_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`cht_rev_source\` , 
           \`T0\`.\`cht_genere_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`cht_condition_rev_source\` , 
-          \`T0\`.\`cht_condition_js_source\` , \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`chp_usage_source\`
+          \`T0\`.\`cht_condition_js_source\` , \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`chp_usage_source\` , \`T0\`.\`che_pour_util_source\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -53,6 +53,9 @@ class sql_115{
         if(par.hasOwnProperty( 'T0_che_autorisation_globale_source' ) && par['T0_che_autorisation_globale_source'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_autorisation_globale_source`' , par['T0_che_autorisation_globale_source'] );
         }
+        if(par.hasOwnProperty( 'T0_che_pour_util_source' ) && par['T0_che_pour_util_source'] !== ''){
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_pour_util_source`' , par['T0_che_pour_util_source'] );
+        }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chx_dossier_id_source\` ASC, \`T0\`.\`chp_nom_source\` ASC, \`T0\`.\`chi_id_source\` ASC`;
@@ -84,7 +87,8 @@ class sql_115{
                     "T0.cht_condition_rev_source" : lignes[numero_de_ligne][9] ,
                     "T0.cht_condition_js_source" : lignes[numero_de_ligne][10] ,
                     "T0.cht_notification_ko_source" : lignes[numero_de_ligne][11] ,
-                    "T0.chp_usage_source" : lignes[numero_de_ligne][12]
+                    "T0.chp_usage_source" : lignes[numero_de_ligne][12] ,
+                    "T0.che_pour_util_source" : lignes[numero_de_ligne][13]
                 } );
         }
         /* comptage */

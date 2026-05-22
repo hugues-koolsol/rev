@@ -1084,7 +1084,7 @@ class __ig1{
                 this.#liste_des_modules_dynamiques['__fnt1']={"objet1" : this.__fnt1};
             } );
         import( '/f0?n0=__fnts_c_et_s_.js&__version=' + this.__version ).then( ( m ) => {
-                this.__fnts_c_et_s=new m['__fnts_c_et_s']( [] , 0 , this );
+                this.__fnts_c_et_s=new m['__fnts_c_et_s']( [] , 0 , this , 'client' );
                 this.#liste_des_modules_dynamiques['__fnts_c_et_s']={"objet1" : this.__fnts_c_et_s};
             } );
         /* console.log('dans __ig1_c.constructor this.__version=' + this.__version + ' , this.__le_port=' + this.__le_port); */
@@ -3652,12 +3652,12 @@ class __ig1{
         t+='<div>\r\n';
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
             t+='<span>&nbsp;bidon=' + (i + 1) + '</span><br />';
-            if(i === 5){
+            if(false && i === 3){
                 for( let j=0 ; j <= 4 ; j++ ){
                     t+='<div class="rev_bouton yy__' + j + '" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
                 }
             }
-            if(true && i === 10){
+            if(false && i === 8){
                 tri_affiche=true;
                 t+='<div  style="display:flex;">';
                 t+=' <div style="margin : 0 auto 0 auto;">';
@@ -3691,7 +3691,7 @@ class __ig1{
                 t+='</div>';
             }
             /* ici un exemple de sous menu */
-            if(false && i === 15){
+            if(true && i === 8){
                 t+='<div style="display:flex;">';
                 /*
                   
@@ -3701,11 +3701,12 @@ class __ig1{
                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un menu dans la page</div>';
                 t+='  <ul>';
                 t+='   <li>';
-                /* appel                                   m1() */
+                t+='     <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil</div>';
+                t+='   </li>';
+                t+='   <li>';
                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(\'\'))))" title="liste des taches">taches 1</div>';
                 t+='   </li>';
                 t+='   <li>';
-                /* appel                                   pm1() */
                 t+='     <div class="rev_bouton" data-rev_click="pm1(m1(n1(dossiers1),f1(liste1())))" title="liste des dossiers">dossiers 1</div>';
                 t+='   </li>';
                 t+='   <li>';
@@ -3839,7 +3840,7 @@ class __ig1{
         /* var menu1=new __navigation1( elt.id , options1 ); */
         /* let menu1=null; */
         import( '/f0?n0=__navigation1_c.js&__version=' + this.__version ).then( ( m ) => {
-                let menu1=new m['__navigation1']( elt.id , options1 );
+                let menu1=new m['__navigation1']( elt.id , options1 , this );
                 this.ajoute_les_evenements_aux_boutons();
             } );
         return({"__xst" : __xsu});

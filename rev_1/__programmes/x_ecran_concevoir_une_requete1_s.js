@@ -27,7 +27,7 @@ class x_ecran_concevoir_une_requete1{
            AND `chx_source_rev` = :chx_source_rev) ;
         */
         /*sql_inclure_fin*/ 353 , criteres_353 , this.__ig1.donnees_retournees , __db1 );
-        if(tt353[__xst] !== __xsu){
+        if(tt353.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + tt353['__xme'] + ' ' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
@@ -44,7 +44,7 @@ class x_ecran_concevoir_une_requete1{
         ;
         */
         /*sql_inclure_fin*/ 354 , {"T0_chi_id_requete" : chi_id_requete} , this.__ig1.donnees_retournees , __db1 );
-        if(tt354[__xst] !== __xsu || tt354[__xva].length !== 1){
+        if(tt354.__xst !== __xsu || tt354[__xva].length !== 1){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
@@ -133,7 +133,7 @@ class x_ecran_concevoir_une_requete1{
         ;
         */
         /*sql_inclure_fin*/ 385 , criteres_385 , this.__ig1.donnees_retournees , __db1 );
-        if(tt385[__xst] !== __xsu){
+        if(tt385.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
@@ -200,7 +200,7 @@ class x_ecran_concevoir_une_requete1{
         );
         */
         /*sql_inclure_fin*/ 390 , criteres_390 , this.__ig1.donnees_retournees , __db1 );
-        if(tt390[__xst] !== __xsu){
+        if(tt390.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( tt390['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
@@ -257,11 +257,11 @@ class x_ecran_concevoir_une_requete1{
         WHERE `chi_id_requete` = :c_chi_id_requete ;
         */
         /*sql_inclure_fin*/ 355 , criteres_355 , this.__ig1.donnees_retournees , __db1 );
-        if(tt355[__xst] !== __xsu){
+        if(tt355.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }
-        if(tt355[__xst] === __xsu){
+        if(tt355.__xst === __xsu){
             let chemin_fichier='';
             /* this.__ig1.ma_trace1( 'this.__ig1.donnees_retournees._CA_=' + this.__ig1.donnees_retournees._CA_ ); */
             if(this.__ig1.donnees_retournees._CA_ === 2){
@@ -310,7 +310,7 @@ class x_ecran_concevoir_une_requete1{
             ;
             */
             /*sql_inclure_fin*/ 354 , criteres_354 , this.__ig1.donnees_retournees , __db1 );
-            if(tt354[__xst] === __xsu && tt354[__xva].length === 1){
+            if(tt354.__xst === __xsu && tt354[__xva].length === 1){
                 requete=tt354[__xva][0];
             }
         }
@@ -328,7 +328,7 @@ class x_ecran_concevoir_une_requete1{
         ;
         */
         /*sql_inclure_fin*/ 171 , criteres_select_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171[__xst] !== __xsu){
+        if(tt171.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
         }

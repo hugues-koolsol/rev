@@ -12,23 +12,19 @@ class sql_138{
     async sql( par ){
         /* test "non nul" sur le champ "chp_nom_acces" */
         if(par['n_chp_nom_acces'] === null || par['n_chp_nom_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_groupe_acces" */
         if(par['n_chx_groupe_acces'] === null || par['n_chx_groupe_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "groupe" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_metier_acces" */
         if(par['n_chx_metier_acces'] === null || par['n_chx_metier_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "metier" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "metier" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_actif_acces" */
         if(par['n_che_actif_acces'] === null || par['n_che_actif_acces'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           dans la définition de la table : fonctions_spéciales1(ne_pas_modifier(0))

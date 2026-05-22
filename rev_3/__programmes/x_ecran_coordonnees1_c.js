@@ -83,7 +83,7 @@ class x_ecran_coordonnees1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1())))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : co1}} );
+        this.__ig1.envoyer_un_colis_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1())))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : co1}} );
         return({"__xst" : __xsu});
     }
     /*
@@ -137,7 +137,7 @@ class x_ecran_coordonnees1{
         let cmd='';
         cmd+='pm1(m1(n1(' + this.moi + '),f1(recupérer_mes_coordonnées())))';
         let obj={"__xac" : cmd};
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
 }

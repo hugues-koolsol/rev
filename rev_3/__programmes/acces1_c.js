@@ -40,6 +40,7 @@ class acces1{
     filtres={};
     vv_ecran_liste_boutons_avant='';
     #reference_arbre_du_menu=null;
+    _tri_arbre1=null;
     /*
       =============================================================================================================
     */
@@ -59,7 +60,7 @@ class acces1{
             "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(enregister_le_menu_de_l_acces2())))' ,
             "__xva" : {"chi_id_acces" : chi_id_acces ,"le_json" : le_json ,"le_html" : le_html}
         };
-        this.__ig1.envoyer_un_message_au_worker( obj );
+        this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
     /*
@@ -261,7 +262,7 @@ class acces1{
         options.boutons_du_menu.push( {"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2.bind( this )} );
         options['afficher_le_bouton_editer']=1;
         options['class_du_bouton_editer']='rev_bouton yy__3';
-        this.#reference_arbre_du_menu=new _tri_arbre1( id , options );
+        this._tri_arbre1.construire_arbre( id , options );
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
@@ -289,6 +290,10 @@ class acces1{
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
+        import( '/f0?n0=_tri_arbre1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
+                this._tri_arbre1=new m['_tri_arbre1']( this );
+                this.#reference_arbre_du_menu=this._tri_arbre1;
+            } );
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){
@@ -372,7 +377,7 @@ class acces1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -627,7 +632,7 @@ class acces1{
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_message_au_worker( {
+        this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
@@ -1047,7 +1052,7 @@ class acces1{
                 o1+=this.__ig1.la_liste_est_vide();
             }
         }
-        this.__ig1.initialisation_filtre_sous_fenetre2('sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE);
+        this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE );
         return({"__xst" : __xsu});
     }
     /*

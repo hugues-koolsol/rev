@@ -132,10 +132,8 @@ class __navigation1{
       =============================================================================================================
     */
     isTouchDevice(){
-       return (('ontouchstart' in window) ||
-          (navigator.maxTouchPoints > 0) ||
-          (navigator.msMaxTouchPoints > 0));
-     }    
+        return('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0);
+    }
     /*
       =============================================================================================================
     */
@@ -177,7 +175,7 @@ class __navigation1{
       =============================================================================================================
     */
     #fermer_le_menu( ref ){
-        /* console.log( '#fermer_le_menu' , ref ); // <div data-niveau="0" data-enfants_de="10"  */
+        /* console.log( '#fermer_le_menu' , ref ); // <div data-niveau="0" data-enfants_de="10" */
         ref.style.display='none';
         let lst4=document.querySelectorAll( '[data-bouton_plusmoins_de="' + ref.getAttribute( 'data-enfants_de' ) + '"]' );
         if(lst4.length > 0){
@@ -198,19 +196,25 @@ class __navigation1{
         /* let lst1=this.#ref_div_contenant_les_boutons.querySelectorAll( '[data-niveau="0"]' ); */
         let lst1=document.querySelectorAll( '[data-niveau="0"]' );
         /* console.log(lst1); */
-        
         let c_est_un_bouton_rev='';
-        if(event.target && event.target.hasAttribute('data-rev_click') && event.target.getAttribute('data-rev_click').indexOf('m1(')>=0){
+        if(event.target
+               && event.target.hasAttribute( 'data-rev_click' )
+               && event.target.getAttribute( 'data-rev_click' ).indexOf( 'm1(' ) >= 0
+        ){
             /* console.log('%c on est ici car on a cliqué dans le menu et il faut fermer ce menu','background:hotpink;color:black;'); */
-            c_est_un_bouton_rev=event.target.getAttribute('data-rev_click');
+            c_est_un_bouton_rev=event.target.getAttribute( 'data-rev_click' );
         }
-        
         let le_menu=null;
         for( let i=0 ; i < lst1.length ; i++ ){
             if(lst1[i].style.display !== 'none'){
                 let gb1=lst1[i].getBoundingClientRect();
-                if(c_est_un_bouton_rev!='' || (event.clientX < gb1.left || event.clientX > gb1.right || event.clientY > gb1.bottom || event.clientY < gb1.top)){
-//                    console.log( 'lst1['+i+'].style.display='+lst1[i].style.display , event.clientX )
+                if(c_est_un_bouton_rev != ''
+                       || (event.clientX < gb1.left
+                           || event.clientX > gb1.right
+                           || event.clientY > gb1.bottom
+                           || event.clientY < gb1.top)
+                ){
+                    /* console.log( 'lst1['+i+'].style.display='+lst1[i].style.display , event.clientX ) */
                     if(event.target.getAttribute( 'data-replie' ) !== lst1[i].getAttribute( 'data-enfants_de' )){
                         le_menu=lst1[i];
                         break;
@@ -220,8 +224,8 @@ class __navigation1{
         }
         if(le_menu !== null){
             this.#fermer_le_menu( le_menu );
-            if(c_est_un_bouton_rev!==''){
-                this.__ig1.executer1(c_est_un_bouton_rev);
+            if(c_est_un_bouton_rev !== ''){
+                this.__ig1.executer1( c_est_un_bouton_rev );
             }
             return;
         }
@@ -271,7 +275,7 @@ class __navigation1{
             for( let i=0 ; i < lst3.length ; i++ ){
                 let niveau=lst3[i].getAttribute( 'data-niveau' );
                 if(niveau === '0'){
-                    /* console.log('dans #defilement_menu');  */
+                    /* console.log('dans #defilement_menu'); */
                     this.#fermer_le_menu( lst3[i] );
                 }
             }
@@ -341,18 +345,18 @@ class __navigation1{
       =============================================================================================================
     */
     #souris_bas_branche( e ){
-       console.log('dans #souris_bas_branche' , e.target);
+        console.log( 'dans #souris_bas_branche' , e.target );
     }
     /*
       =============================================================================================================
     */
     #doigt_haut1( e ){
-        console.log('dans #doigt_haut1')
+        console.log( 'dans #doigt_haut1' );
         window.removeEventListener( 'touchend' , this.#doigt_haut_listener0 , false );
         /* window.removeEventListener( 'touchmove' , this.#doigt_bouge_listener , false ); */
         /* console.log(e.changedTouches[0]) */
         try{
-            if(this.#pour_menu_haut===0){
+            if(this.#pour_menu_haut === 0){
                 document.getElementById( this.#id_div ).style.overflowY='scroll';
             }
         } catch {}
@@ -363,44 +367,48 @@ class __navigation1{
       =============================================================================================================
     */
     #doigt_bas_plus_moins0( e ){
-        console.log('dans #doigt_bas_plus_moins0')
-        try{e.stopPropagation();}catch{}
-        try{e.preventDefault();;}catch{}
+        console.log( 'dans #doigt_bas_plus_moins0' );
+        try{
+            e.stopPropagation();
+        } catch {}
+        try{
+            e.preventDefault();
+        } catch {}
         /* window.addEventListener( 'touchmove' , this.#doigt_bouge_listener , false ); */
         try{
-            /* déclenche un défilement*/
-            console.log('this.#pour_menu_haut=',this.#pour_menu_haut);
-            if(this.#pour_menu_haut===0){
-//                document.getElementById( this.#id_div ).style.overflowY='hidden';
+            /* déclenche un défilement */
+            console.log( 'this.#pour_menu_haut=' , this.#pour_menu_haut );
+            if(this.#pour_menu_haut === 0){
+                /* document.getElementById( this.#id_div ).style.overflowY='hidden'; */
             }
-//            debugger
-        }catch{}
+            /* debugger */
+        } catch {}
         let action='';
-        if(e.touches[0].target.innerHTML===this.#general_libelle_plus){
+        if(e.touches[0].target.innerHTML === this.#general_libelle_plus){
             action='ouvrir_menu';
         }else{
             action='fermer_menu';
         }
-        let aa=e.touches[0].target.getAttribute('data-plus_ou_moins_sur_racine');
+        let aa=e.touches[0].target.getAttribute( 'data-plus_ou_moins_sur_racine' );
         if(aa){
-           action+='_racine';
-           /* on a cliqué sur un plus ou moins de la racine */
-           if(e.target.innerHTML===this.#general_libelle_plus){
-               console.log('on ouvre le menu principal avec le doigt ')
-               window.addEventListener( 'touchend' , this.#doigt_haut_listener0 , false );
-               window.removeEventListener( 'mouseup' , this.#souris_haut_listener0 , false );
-           }else if(e.target.innerHTML===this.#general_libelle_moins){
-               console.log('on ferme le menu principal avec le doigt ')
-               window.removeEventListener( 'touchend' , this.#doigt_haut_listener0 , false );
-               window.removeEventListener( 'mouseup' , this.#souris_haut_listener0 , false );
-           }
+            action+='_racine';
+            /* on a cliqué sur un plus ou moins de la racine */
+            if(e.target.innerHTML === this.#general_libelle_plus){
+                console.log( 'on ouvre le menu principal avec le doigt ' );
+                window.addEventListener( 'touchend' , this.#doigt_haut_listener0 , false );
+                window.removeEventListener( 'mouseup' , this.#souris_haut_listener0 , false );
+            }else if(e.target.innerHTML === this.#general_libelle_moins){
+                console.log( 'on ferme le menu principal avec le doigt ' );
+                window.removeEventListener( 'touchend' , this.#doigt_haut_listener0 , false );
+                window.removeEventListener( 'mouseup' , this.#souris_haut_listener0 , false );
+            }
         }else{
-           action+='_secondaire';
-           if(e.target.innerHTML===this.#general_libelle_plus){
-               console.log('on ouvre un menu secondaire avec le doigt ')
-           }else if(e.target.innerHTML===this.#general_libelle_moins){
-               console.log('on ferme le menu secondaire avec le doigt ')
-           }
+            action+='_secondaire';
+            if(e.target.innerHTML === this.#general_libelle_plus){
+                console.log( 'on ouvre un menu secondaire avec le doigt ' );
+            }else if(e.target.innerHTML === this.#general_libelle_moins){
+                console.log( 'on ferme le menu secondaire avec le doigt ' );
+            }
         }
         this.#souris_ou_doigt_bas( e.touches[0] , action );
     }
@@ -409,34 +417,37 @@ class __navigation1{
     */
     #souris_bas_plus_moins0( e ){
         /* console.log('dans #souris_bas_plus_moins0') */
-        try{e.stopPropagation();}catch{}
-        try{e.preventDefault();;}catch{}
+        try{
+            e.stopPropagation();
+        } catch {}
+        try{
+            e.preventDefault();
+        } catch {}
         /* console.log('#souris_bas_plus_moins0', e , e.target.innerHTML  , e.target ); */
         let action='';
-        if(e.target.innerHTML===this.#general_libelle_plus){
+        if(e.target.innerHTML === this.#general_libelle_plus){
             action='ouvrir_menu';
         }else{
             action='fermer_menu';
         }
-        let aa=e.target.getAttribute('data-plus_ou_moins_sur_racine');
+        let aa=e.target.getAttribute( 'data-plus_ou_moins_sur_racine' );
         if(aa){
-           action+='_racine';
-           /* on a cliqué sur un plus ou moins de la racine */
-           if(e.target.innerHTML===this.#general_libelle_plus){
-               /* console.log('on ouvre le menu principal avec la souris ') */
-               window.addEventListener( 'mouseup' , this.#souris_haut_listener0 , false );
-               
-           }else if(e.target.innerHTML===this.#general_libelle_moins){
-               console.log('on ferme le menu principal avec la souris ')
-               window.removeEventListener( 'mouseup' , this.#souris_haut_listener0 , false );
-           }
+            action+='_racine';
+            /* on a cliqué sur un plus ou moins de la racine */
+            if(e.target.innerHTML === this.#general_libelle_plus){
+                /* console.log('on ouvre le menu principal avec la souris ') */
+                window.addEventListener( 'mouseup' , this.#souris_haut_listener0 , false );
+            }else if(e.target.innerHTML === this.#general_libelle_moins){
+                console.log( 'on ferme le menu principal avec la souris ' );
+                window.removeEventListener( 'mouseup' , this.#souris_haut_listener0 , false );
+            }
         }else{
-           action+='_secondaire';
-           if(e.target.innerHTML===this.#general_libelle_plus){
-               console.log('on ouvre un menu secondaire avec la souris ')
-           }else if(e.target.innerHTML===this.#general_libelle_moins){
-               console.log('on ferme le menu secondaire avec la souris ')
-           }
+            action+='_secondaire';
+            if(e.target.innerHTML === this.#general_libelle_plus){
+                console.log( 'on ouvre un menu secondaire avec la souris ' );
+            }else if(e.target.innerHTML === this.#general_libelle_moins){
+                console.log( 'on ferme le menu secondaire avec la souris ' );
+            }
         }
         this.#souris_ou_doigt_bas( e , action );
         return;
@@ -469,12 +480,11 @@ class __navigation1{
             }else{
                 let lst5=document.querySelectorAll( '[data-enfants_de]' );
                 if(lst5.length > 0){
-                    for(let i=0;i<lst5.length;i++){
-                        //         console.log( '#fermer_le_menu' , ref ); // <div data-niveau="0" data-enfants_de="10" 
-//                        console.log(lst5[i]);
+                    for( let i=0 ; i < lst5.length ; i++ ){
+                        /* console.log( '#fermer_le_menu' , ref ); // <div data-niveau="0" data-enfants_de="10" */
+                        /* console.log(lst5[i]); */
                         this.#fermer_le_menu( lst5[i] );
                         break;
-
                     }
                 }
             }
@@ -789,10 +799,9 @@ class __navigation1{
             for( let i=0 ; i < lst2.length ; i++ ){
                 if(this.cle_aleatoire === lst2[i].getAttribute( 'data-cle_aleatoire' )){
                     lst2[i].addEventListener( 'click' , this.#souris_bas_plus_moins_listener0 , false );
-                    if(this.#ecran_tactile===true){
+                    if(this.#ecran_tactile === true){
                         lst2[i].addEventListener( 'touchstart' , this.#doigt_bas_plus_moins_listener0 , false );
                     }
-                    
                     /* console.log['on ajoute un listener sur ' , lst2[i] , this.cle_aleatoire ] //, lst2[i].parentNode.parentNode] */
                 }
             }

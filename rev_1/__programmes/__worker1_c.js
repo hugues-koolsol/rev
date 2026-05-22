@@ -34,14 +34,14 @@ class __worker1{
     constructor( href ){
         this.__rev1=new __rev1( null );
         let __version='0';
-        let les_parametres_de_l_url = new URLSearchParams(href);
-        for(const [key, value] of les_parametres_de_l_url) {
+        let les_parametres_de_l_url=new URLSearchParams( href );
+        for(const [key,value] of les_parametres_de_l_url){
             if(key === '__version'){
                 __version=value;
             }
-        }      
+        }
         import( './f0?n0=__rev1_.js&__version=' + __version ).then( ( le_module ) => {
-                this.__rev1=new le_module['__rev1'](null);
+                this.__rev1=new le_module['__rev1']( null );
             } );
         /* console.log( 'constructor de __worker' ); */
     }

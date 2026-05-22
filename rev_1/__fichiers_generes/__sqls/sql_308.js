@@ -12,8 +12,7 @@ class sql_308{
     async sql( par ){
         /* test "non nul" sur le champ "chp_nom_source" */
         if(par['n_chp_nom_source'] === null || par['n_chp_nom_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "chp_nom_source" ===
@@ -24,18 +23,19 @@ class sql_308{
         }
         /* test "non nul" sur le champ "che_binaire_source" */
         if(par['n_che_binaire_source'] === null || par['n_che_binaire_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_autorisation_globale_source" */
         if(par['n_che_autorisation_globale_source'] === null || par['n_che_autorisation_globale_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_usage_source" */
         if(par['n_chp_usage_source'] === null || par['n_chp_usage_source'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "usage du source" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
+        /* test "non nul" sur le champ "che_pour_util_source" */
+        if(par['n_che_pour_util_source'] === null || par['n_che_pour_util_source'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_sources` SET \r\n';
         let tableau_champs=[];
@@ -94,6 +94,11 @@ class sql_308{
                 tableau_champs.push( '`chp_usage_source` = NULL' );
             }else{
                 tableau_champs.push( '`chp_usage_source` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_usage_source'] , 'n_chp_usage_source' ) + '\'' );
+            }
+            if(par['n_che_pour_util_source'] === undefined || par['n_che_pour_util_source'] === '' || par['n_che_pour_util_source'] === null){
+                tableau_champs.push( '`che_pour_util_source` = NULL' );
+            }else{
+                tableau_champs.push( '`che_pour_util_source` = ' + this.__ig1.__fnt1.sq0( par['n_che_pour_util_source'] , 'n_che_pour_util_source' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({

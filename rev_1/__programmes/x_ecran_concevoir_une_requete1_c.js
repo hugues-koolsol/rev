@@ -1079,7 +1079,7 @@ class x_ecran_concevoir_une_requete1{
                     "base_reference" : obj5.base_reference
                 });
         }else{
-            return(this.__ig1.ajoute_message( {"__xst" : __xer ,"source_sql" : obj2.__xva ,"__xme" : this.__ig1.__rev1.nl2() + 'conversion en js '} ));
+            return(obj5);
         }
     }
     /*
@@ -1114,10 +1114,7 @@ class x_ecran_concevoir_une_requete1{
                 document.getElementById( 'chp_table_reference_requete' ).value=obj1.table_reference;
             }
         }else{
-            if(obj1.hasOwnProperty( 'source_sql' )){
-                document.getElementById( txtarea_dest ).value=obj1.source_sql;
-            }
-            this.__ig1.affiche_les_messages();
+            return(obj1)
         }
         return({"__xst" : __xsu});
     }

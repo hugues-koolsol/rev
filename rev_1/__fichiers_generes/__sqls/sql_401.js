@@ -12,8 +12,7 @@ class sql_401{
     async sql( par ){
         /* test "non nul" sur le champ "chp_etat_travail" */
         if(par['n_chp_etat_travail'] === null || par['n_chp_etat_travail'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_travaux` SET \r\n';
         let tableau_champs=[];

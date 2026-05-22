@@ -19,7 +19,7 @@ class __fnts_c_et_s{
     /*
       =============================================================================================================
     */
-    constructor( __ig1 , __cote_c_ou_s ){
+    constructor( mat , d , __ig1 , __cote_c_ou_s ){
         /*
           console.log( 'constructor fnt1' , mat , d , __ig1 );
         */

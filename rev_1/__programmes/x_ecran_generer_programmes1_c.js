@@ -79,8 +79,7 @@ class x_ecran_generer_programmes1{
                 }
                 this.#rev_serveur_mat=objs.__xva;
             }
-            let ret=this.générer_les_programmes();
-            return({"__xst" : ret.__xst});
+            return(this.générer_les_programmes());
         }
     }
     /*
@@ -147,8 +146,7 @@ class x_ecran_generer_programmes1{
             }
         }
         if(champ_primaire === ''){
-            debugger;
-            return({"__xst" : __xer});
+            return({"__xst" : __xer,"__xme" : 'le champ primaire est absent de cette table<br /> [' + this.__ig1.nl2() + ']'});
         }
         let ref_select=document.getElementById( 'reference_requete_select' ).value;
         let ref_insert=document.getElementById( 'reference_requete_insert' ).value;
@@ -1625,11 +1623,11 @@ class x_ecran_generer_programmes1{
             }
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let tt' + ref_select + '=await this.__ig1.sql_iii( ' + ref_select + ' , {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , this.__ig1.donnees_retournees , __db1 );\r\n';
-            src_serveur_js2+='        if(tt' + ref_select + '[__xst] !== __xsu){\r\n';
+            src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu){\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let aetam=await this.actions_et_tests_apres_page_modifications(mat , d , tt' + ref_select + '[__xva][0] , __db1);\r\n';
-            src_serveur_js2+='        if(aetam[__xst] !== __xsu){\r\n';
+            src_serveur_js2+='        if(aetam.__xst !== __xsu){\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : aetam.__xme});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees[__xva][\'page_modification1\']=tt' + ref_select + ';\r\n';
@@ -2377,7 +2375,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            "T0_' + champ_primaire + '" : ' + champ_primaire + '\r\n';
             src_serveur_js2+='        };\r\n';
             src_serveur_js2+='        let tt' + ref_select + '=await this.__ig1.sql_iii( ' + ref_select + ' , criteres_' + ref_select + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
-            src_serveur_js2+='        if(tt' + ref_select + '[__xst] !== __xsu){\r\n';
+            src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu){\r\n';
             src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'[\' + this.__ig1.nl2() + \']\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
@@ -2489,13 +2487,13 @@ class x_ecran_generer_programmes1{
             }
             src_serveur_js2+='        };\r\n';
             src_serveur_js2+='        let tt' + ref_select + '=await this.__ig1.sql_iii( ' + ref_select + ' , criteres_' + ref_select + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
-            src_serveur_js2+='        if(tt' + ref_select + '[__xst] !== __xsu){\r\n';
+            src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu){\r\n';
             src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'[\' + this.__ig1.nl2() + \']\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        /**/\r\n';
             src_serveur_js2+='        let tas=await this.test_avant_supprimer( mat , d , form , tt' + ref_select + '[__xva][0] , __db1 );\r\n';
-            src_serveur_js2+='        if(tas[__xst] !== __xsu){\r\n';
+            src_serveur_js2+='        if(tas.__xst !== __xsu){\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let criteres_' + ref_delete + '={/**/\r\n';
@@ -2522,12 +2520,12 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        };\r\n';
             src_serveur_js2+='        let tt' + ref_delete + '=await this.__ig1.sql_iii( ' + ref_delete + ' , criteres_' + ref_delete + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
             src_serveur_js2+='        /**/\r\n';
-            src_serveur_js2+='        if(tt' + ref_delete + '[__xst] !== __xsu){\r\n';
+            src_serveur_js2+='        if(tt' + ref_delete + '.__xst !== __xsu){\r\n';
             src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'erreur lors de le suppression [\' + this.__ig1.nl2() + \']\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let aac=await this.actions_apres_supprimer( mat , d , form , tt' + ref_select + '[__xva][0] , __db1 );\r\n';
-            src_serveur_js2+='        if(aac[__xst] === __xer){\r\n';
+            src_serveur_js2+='        if(aac.__xst === __xer){\r\n';
             src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'les actions après supprimer ont échouées [\' + this.__ig1.nl2() + \']\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
@@ -2879,7 +2877,7 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
             }
             src_serveur_js2+='        let __tac=await this.tests_avant_creer(mat , d , form,__db1);\r\n';
-            src_serveur_js2+='        if(__tac[__xst] !== __xsu){\r\n';
+            src_serveur_js2+='        if(__tac.__xst !== __xsu){\r\n';
             src_serveur_js2+='            return({"__xst" : __xer});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let criteres_' + ref_insert + '={\r\n';
@@ -2950,13 +2948,13 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        /**/\r\n';
             src_serveur_js2+='        await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
             src_serveur_js2+='        let tt' + ref_insert + '=await this.__ig1.sql_iii( ' + ref_insert + ' , criteres_' + ref_insert + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
-            src_serveur_js2+='        if(tt' + ref_insert + '[__xst] === __xsu){\r\n';
+            src_serveur_js2+='        if(tt' + ref_insert + '.__xst === __xsu){\r\n';
             src_serveur_js2+='            if(tt' + ref_insert + '[\'changements\'] === 0){\r\n';
             src_serveur_js2+='                this.__ig1.donnees_retournees.__xsi[__xer].push( \'l\\\'insertion a échoué [\' + this.__ig1.nl2() + \']\' );\r\n';
             src_serveur_js2+='                return({"__xst" : __xer});\r\n';
             src_serveur_js2+='            }\r\n';
             src_serveur_js2+='            let aac=await this.action_apres_creer( mat , d , tt' + ref_insert + '[\'nouvel_id\'] , form , __db1 );\r\n';
-            src_serveur_js2+='            if(aac[__xst] === __xer){\r\n';
+            src_serveur_js2+='            if(aac.__xst === __xer){\r\n';
             src_serveur_js2+='                await __db1.exec( \'ROLLBACK;\' );\r\n';
             src_serveur_js2+='                this.__ig1.donnees_retournees.__xsi[__xer].push( \'les actions après créer ont échouées [\' + this.__ig1.nl2() + \']\' );\r\n';
             src_serveur_js2+='                return({"__xst" : __xer});\r\n';
@@ -3109,7 +3107,7 @@ class x_ecran_generer_programmes1{
             if(table_reference_est_table_virtuelle.length === 2){
                 /* pas dans le cas des tables virtuelles */
             }else{
-                src_serveur_js2+='        if(tt' + ref_liste_ecran + '[__xst] === __xsu && tt' + ref_liste_ecran + '[__xva].length === 0 && __debut > 0){\r\n';
+                src_serveur_js2+='        if(tt' + ref_liste_ecran + '.__xst === __xsu && tt' + ref_liste_ecran + '[__xva].length === 0 && __debut > 0){\r\n';
                 src_serveur_js2+='            __debut=0;\r\n';
                 src_serveur_js2+='            __num_page=0;\r\n';
                 src_serveur_js2+='            criteres_' + ref_liste_ecran + '[\'debut\']=__debut;\r\n';

@@ -88,8 +88,8 @@ class autorisations1{
         ;
         */
         /*sql_inclure_fin*/ 151 , criteres_select_151 , this.__ig1.donnees_retournees , __db1 );
-        if(tt151[__xst] !== __xsu){
-            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
+        if(tt151.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt151.__xme});
         }
         let autorisations_globales={
             "_connexion1_c.js" : {
@@ -288,7 +288,7 @@ class autorisations1{
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
-        if(obj[__xst] === __xsu){
+        if(obj.__xst === __xsu){
             return({"__xst" : __xsu});
         }else{
             return({"__xst" : __xer});
@@ -319,7 +319,7 @@ class autorisations1{
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
-        if(obj[__xst] === __xsu){
+        if(obj.__xst === __xsu){
             return({"__xst" : __xsu});
         }else{
             return({"__xst" : __xer});
@@ -346,7 +346,7 @@ class autorisations1{
     */
     async action_apres_commit_creer( mat , d , nouvel_id , form , __db1 ){
         let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
-        if(obj[__xst] === __xsu){
+        if(obj.__xst === __xsu){
             return({"__xst" : __xsu});
         }else{
             return({"__xst" : __xer});
@@ -394,12 +394,12 @@ class autorisations1{
         ;
         */
         /*sql_inclure_fin*/ 141 , criteres_select_141 , this.__ig1.donnees_retournees , __db1 );
-        if(tt141[__xst] !== __xsu || tt141[__xva].length !== 1){
+        if(tt141.__xst !== __xsu || tt141[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [141 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
         let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt141[__xva][0] , __db1 );
-        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer});
         }
@@ -420,12 +420,12 @@ class autorisations1{
         WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;
         */
         /*sql_inclure_fin*/ 143 , criteres_143 , this.__ig1.donnees_retournees , __db1 );
-        if(tt143[__xst] !== __xsu || tt143.changements !== 1){
+        if(tt143.__xst !== __xsu || tt143.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt143.__xme});
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt141[__xva][0] , __db1 );
-        if(__taam[__xst] !== __xsu){
+        if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
             return({"__xst" : __xer});
@@ -496,11 +496,11 @@ class autorisations1{
         ;
         */
         /*sql_inclure_fin*/ 141 , {"T0_chi_id_autorisation" : chi_id_autorisation} , this.__ig1.donnees_retournees , __db1 );
-        if(tt141[__xst] !== __xsu){
+        if(tt141.__xst !== __xsu){
             return({"__xst" : __xer});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt141[__xva][0] , __db1 );
-        if(aetam[__xst] !== __xsu){
+        if(aetam.__xst !== __xsu){
             return({"__xst" : __xer});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt141;
@@ -543,7 +543,7 @@ class autorisations1{
         ;
         */
         /*sql_inclure_fin*/ 141 , criteres_141 , this.__ig1.donnees_retournees , __db1 );
-        if(tt141[__xst] !== __xsu){
+        if(tt141.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
@@ -576,13 +576,13 @@ class autorisations1{
         ;
         */
         /*sql_inclure_fin*/ 141 , criteres_141 , this.__ig1.donnees_retournees , __db1 );
-        if(tt141[__xst] !== __xsu){
+        if(tt141.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt141[__xva][0] , __db1 );
-        if(tas[__xst] !== __xsu){
+        if(tas.__xst !== __xsu){
             return({"__xst" : __xer});
         }
         let criteres_144={
@@ -596,12 +596,12 @@ class autorisations1{
         */
         /*sql_inclure_fin*/ 144 , criteres_144 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt144[__xst] !== __xsu){
+        if(tt144.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt141[__xva][0] , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
@@ -676,7 +676,7 @@ class autorisations1{
         /* conversion des données numériques fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
-        if(__tac[__xst] !== __xsu){
+        if(__tac.__xst !== __xsu){
             return({"__xst" : __xer});
         }
         let donnees_sql={
@@ -701,13 +701,13 @@ class autorisations1{
         );
         */
         /*sql_inclure_fin*/ 142 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt142[__xst] === __xsu){
+        if(tt142.__xst === __xsu){
             if(tt142['changements'] === 0){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
             }
             let aac=await this.action_apres_creer( mat , d , tt142['nouvel_id'] , form , __db1 );
-            if(aac[__xst] === __xer){
+            if(aac.__xst === __xer){
                 await __db1.exec( 'ROLLBACK;' );
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer});
@@ -803,7 +803,7 @@ class autorisations1{
         if(tt140.__xst !== __xsu){
             return({"__xst" : __xer});
         }
-        if(tt140[__xst] === __xsu && tt140[__xva].length === 0 && __debut > 0){
+        if(tt140.__xst === __xsu && tt140[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres_140['debut']=__debut;

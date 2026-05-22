@@ -96,9 +96,8 @@ class x_ecran_generer_programmes1{
         ;
         */
         /*sql_inclure_fin*/ 171 , criteres_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+        if(tt171.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2( e ) + ']'});
         }
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt171[__xva];
         return({"__xst" : __xsu});

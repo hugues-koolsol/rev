@@ -35,8 +35,7 @@ class sql_335{
     async sql( par ){
         /* test "non nul" sur le champ "che_ordre_genre" */
         if(par['n_che_ordre_genre'] === null || par['n_che_ordre_genre'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "ordre" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "ordre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           =====================================================================================================

@@ -11,7 +11,8 @@ class sql_116{
     */
     async sql( par ){
         const champs0=`
-          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_contient_version_source\` , \`T0\`.\`che_autorisation_globale_source\`
+          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_contient_version_source\` , \`T0\`.\`che_autorisation_globale_source\` , 
+          \`T0\`.\`che_pour_util_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -35,7 +36,8 @@ class sql_116{
                     "T0.chp_nom_source" : col[1] ,
                     "T0.cht_commentaire_source" : col[2] ,
                     "T0.che_contient_version_source" : col[3] ,
-                    "T0.che_autorisation_globale_source" : col[4]
+                    "T0.che_autorisation_globale_source" : col[4] ,
+                    "T0.che_pour_util_source" : col[5]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

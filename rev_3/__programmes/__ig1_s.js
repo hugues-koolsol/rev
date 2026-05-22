@@ -91,7 +91,7 @@ class __ig1{
         this.repertoire_racine_de_tous_les_projets=repertoire_racine_de_tous_les_projets;
         this.__fnt1=new __fnt1( [] , 0 , this );
         this.__rev1=new __rev1( this );
-        this.__fnts_c_et_s=new __fnts_c_et_s( this , 'cote_serveur' );
+        this.__fnts_c_et_s=new __fnts_c_et_s( [] , 0 , this , 'serveur' );
         this.objet_des_modules_charges['__fnt1']=this.__fnt1;
         this.objet_des_modules_charges['__rev1']=this.__rev1;
         this.__ndlcs='cle_de_session_rev_' + _CA_ + '_websocket';

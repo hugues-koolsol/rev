@@ -16,7 +16,7 @@ class _connexion1{
             document.getElementById( 'vv_info_projet' ).innerHTML='';
         } catch {}
         this.__ig1.maj_fav_icone( le_colis1._CA_ , 0 );
-        let a=document.getElementById('chp_nom_de_connexion_utilisateur');
+        let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
         a.select();
         return({"__xst" : __xsu});
     }
@@ -52,11 +52,11 @@ class _connexion1{
     /*
       =============================================================================================================
     */
-    traite_touche_haut_sur_formulaire_de_connexion(e){
+    traite_touche_haut_sur_formulaire_de_connexion( e ){
         /* console.log(' dans keyup traite_touche_haut_sur_formulaire_de_connexion e=',e); */
-        if(e.keyCode===13){
+        if(e.keyCode === 13){
             let aaa='fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(' + this.moi + '),f1(verifier_connexion1()))))';
-            this.__ig1.executer1(aaa,null,null);
+            this.__ig1.executer1( aaa , null , null );
         }
     }
     /*
@@ -109,27 +109,23 @@ class _connexion1{
         this.__ig1.maj_contenu_principal( t );
         this.__ig1.activer_menu( null , null , '-3' );
         this.__ig1.maj_hash( mat , 0 );
-        let a=document.getElementById('chp_nom_de_connexion_utilisateur');
-        a.addEventListener(
-            'keyup',
-            function(e){
+        let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
+        a.addEventListener( 'keyup' , function( e ){
                 /* console.log(e.keyCode) */
-                if(e.keyCode===39 || e.keyCode===35){
+                if(e.keyCode === 39 || e.keyCode === 35){
                     /* touche flèche droite ou fin */
-                    let a=document.getElementById('chp_nom_de_connexion_utilisateur');
+                    let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
                     a.select();
                 }
-            }
-        )
-        let b=document.getElementById('vv_formulaire_de_connexion');
-        b.addEventListener( 'keyup', this.traite_touche_haut_sur_formulaire_de_connexion.bind(this));
-        setTimeout(()=>{
-              let b=document.getElementById('chp_nom_de_connexion_utilisateur');
-              b.focus()
-              b.select()
-              //console.log('a.value="'+a.value+'"');
-           },250);
-        // ===============================================================
+            } );
+        let b=document.getElementById( 'vv_formulaire_de_connexion' );
+        b.addEventListener( 'keyup' , this.traite_touche_haut_sur_formulaire_de_connexion.bind( this ) );
+        setTimeout( () => {
+                let b=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
+                b.focus();
+                b.select();
+                /* console.log('a.value="'+a.value+'"'); */} , 250 );
+        /* =============================================================== */
         this.__ig1.maj_title_htm1( 'connexion' );
         return({"__xst" : __xsu});
     }

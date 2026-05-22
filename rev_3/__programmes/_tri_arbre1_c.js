@@ -48,10 +48,17 @@ class _tri_arbre1{
         "class_du_bouton_editer" : '' ,
         "class_du_bouton_replier" : ''
     };
+    __ig1=null;
     /*
       =============================================================================================================
     */
-    constructor( par_id_de_l_element , options ){
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
+    }
+    /*
+      =============================================================================================================
+    */
+    construire_arbre( par_id_de_l_element , options ){
         if(document.getElementById( par_id_de_l_element ) === null){
             console.error( 'v_tri_arbre1 id="' + par_id_de_l_element + '" non trouvé :-/' );
             return;
