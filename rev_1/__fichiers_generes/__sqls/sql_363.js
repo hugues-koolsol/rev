@@ -21,9 +21,8 @@ class sql_363{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_fournisseur_basedd" */
-                if(elem['chp_fournisseur_basedd'] === null || elem['chp_fournisseur_basedd']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_fournisseur_basedd'] === null || elem['chp_fournisseur_basedd'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
@@ -48,7 +47,14 @@ class sql_363{
                     nouvel_id=lignes[numero_de_ligne][0];
                 }
             }
-            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 363 , e , sql0 , {} ));
         }

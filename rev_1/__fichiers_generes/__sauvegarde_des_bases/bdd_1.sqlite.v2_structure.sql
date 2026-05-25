@@ -207,7 +207,7 @@ CREATE TABLE `tbl_acces`(
    table('tbl_acces'),
    genre_meta(table_de_base),rang_de_la_table(30),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
-   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2),ne_pas_modifier(0)'),transform_base_sur_svg(translate(254,174))) 
+   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2),ne_pas_modifier(0)'),transform_base_sur_svg(translate(238,203))) 
 */
     
             /*
@@ -562,7 +562,31 @@ CREATE TABLE `tbl_sources`(
             )
             */
              `cht_notification_ko_source` TEXT DEFAULT  NULL
-    , `chp_usage_source` VARCHAR(32) NOT NULL DEFAULT  'fichier');
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_pour_util_source'),
+            nom_bref_du_champ('pour util'),abrege_du_champ('pour util'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_pour_util_source` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_usage_source'),
+            nom_bref_du_champ('usage'),abrege_du_champ('usage du source'),
+            typologie(chp),
+            genre(112)
+            )
+            */
+             `chp_usage_source` VARCHAR(32) NOT NULL DEFAULT  'fichier'
+    );
 
 
 
@@ -1014,7 +1038,7 @@ CREATE TABLE `tbl_genres`(
 choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstricte(appelf(element(par.chp_espece_genre),nomf(toUpperCase),p()),\'VARCHAR\'),egalstricte(par.che_longueur_genre,null))),alors(
       throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce VARCHAR\')))))))
 choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstricte(appelf(element(par.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\'),egalstricte(par.che_longueur_genre,null))),alors(
-      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))'),transform_base_sur_svg(translate(28,529))) 
+      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))'),transform_base_sur_svg(translate(17,458))) 
 */
     
             /*
@@ -1725,7 +1749,7 @@ CREATE TABLE `tbl_revs`(
    table('tbl_revs'),
    genre_meta(table_de_base),rang_de_la_table(9999),permet_la_gestion_de('rev'),
    distinction_pour_liste('liste des revs'),
-   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(334,554))) 
+   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(320,528))) 
 */
     
             /*

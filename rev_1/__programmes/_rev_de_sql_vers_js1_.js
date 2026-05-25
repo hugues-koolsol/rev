@@ -366,7 +366,7 @@ class _rev_de_sql_vers_js1{
                     t+='    }\r\n';
                     t+='\r\n';
                 }else{
-                    return({"__xst" : __xer,"__xme" : 'erreur de décompilation de la fonction de coherence'});
+                    return({"__xst" : __xer ,"__xme" : 'erreur de décompilation de la fonction de coherence'});
                 }
             }
         }
@@ -507,7 +507,7 @@ class _rev_de_sql_vers_js1{
                 }
                 if(nom_du_champ_cle !== ''){
                     if(nouvelle_chaine.indexOf( nom_du_champ_cle ) < 0){
-                        return({"__xst" : __xer, "__xme" : 'cette requete supprimer ne peut pas tester les dépendances sur le champ "' + nom_du_champ_cle + '"'});
+                        return({"__xst" : __xer ,"__xme" : 'cette requete supprimer ne peut pas tester les dépendances sur le champ "' + nom_du_champ_cle + '"'});
                     }
                     t+='        let obj1=await this.__ig1.tester_les_dependances1( {';
                     t+='"table_parente" : \'' + nom_de_la_table + '\' ,';
@@ -549,9 +549,12 @@ class _rev_de_sql_vers_js1{
             t+='        }\r\n';
             t+='    }\r\n';
             /*
-              
+              =============================================================================================
             */
         }else if(type_de_requete === 'insert'){
+            /*
+              =============================================================================================
+            */
             var nom_de_la_table=obj3.liste_des_tables_pour_select_js;
             nouvelle_chaine=obj3.debut_sql_pour_insert_js;
             if(this.#obj_webs.insert_brut === 1){
@@ -593,7 +596,7 @@ class _rev_de_sql_vers_js1{
                 }else{
                     if(detail_champ.non_nulle === true){
                         t+='                /* test "non nul" sur le champ "' + nom_du_champ + '" */' + CRLF;
-                        t+='                if(elem[\'' + nom_du_champ + '\'] === null || elem[\'' + nom_du_champ + '\']===\'\'){\n';
+                        t+='                if(elem[\'' + nom_du_champ + '\'] === null || elem[\'' + nom_du_champ + '\'] === \'\'){\n';
                         t+='                    return({"__xst" : __xer ,"__xme" : \'la valeur pour "' + detail_champ.meta.abrege_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\'});\r\n';
                         t+='                }\n';
                     }
@@ -733,7 +736,14 @@ class _rev_de_sql_vers_js1{
             t+='                    nouvel_id=lignes[numero_de_ligne][0];\r\n';
             t+='                }\r\n';
             t+='            }\r\n';
-            t+='            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});\r\n';
+            t+='            return({\r\n';
+            t+='                    "__xst" : __xsu ,\r\n';
+            t+='                    "__xva" : {} ,\r\n';
+            t+='                    "sql0" : sql0 ,\r\n';
+            t+='                    "changements" : res ,\r\n';
+            t+='                    "nouvel_id" : nouvel_id ,\r\n';
+            t+='                    "__xme" : \'\'\r\n';
+            t+='                });\r\n';
             t+='        }catch(e){\r\n';
             t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , {} ));\r\n';
             t+='        }\r\n';

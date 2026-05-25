@@ -114,8 +114,7 @@ class projets1{
             case 'initialiser_projet_2' : 
             case 'sauvegarder_la_base_systeme' : break;
             default:
-                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});

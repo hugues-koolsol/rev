@@ -228,7 +228,10 @@ class acces1{
                       =============================================================================
                     */
                     if(le_contenu_recursif.__xst !== __xsu){
-                        return({"__xst" : __xer ,"__xme" : (le_contenu_recursif.hasOwnProperty( '__xme' ) ? ( le_contenu_recursif.__xma ) : ( '' )) + '[' + this.__ig1.nl2() + ']'});
+                        return({
+                                "__xst" : __xer ,
+                                "__xme" : (le_contenu_recursif.hasOwnProperty( '__xme' ) ? ( le_contenu_recursif.__xma ) : ( '' )) + '[' + this.__ig1.nl2() + ']'
+                            });
                     }
                     contenu_menu1+=le_contenu_recursif.__xva;
                     contenu_menu1+='        /* niveau ' + niveau + ' */' + '\r\n';
@@ -285,12 +288,12 @@ class acces1{
         */
         /*sql_inclure_fin*/ 136 , criteres_136 , this.__ig1.donnees_retournees , __db1 );
         if(tt136.__xst !== __xsu){
-            return({"__xst" : __xer,"__xme" : tt136.__xme});
+            return({"__xst" : __xer ,"__xme" : tt136.__xme});
         }
         let le_contenu_du_menu='';
         let cht_parametres_acces=tt136[__xva][0]['T0.cht_parametres_acces'];
         if(cht_parametres_acces === null){
-            return({"__xst" : __xer,"__xme" : '[' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }else{
             cht_parametres_acces=JSON.parse( cht_parametres_acces );
         }
@@ -347,7 +350,7 @@ class acces1{
         try{
             await this.__ig1.file_put_contents( fichier2 , contenu_fichier2 );
         }catch(e){
-            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2(e) + ']'});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2( e ) + ']'});
         }
         return({"__xst" : __xsu});
     }
@@ -357,11 +360,11 @@ class acces1{
     async enregister_le_menu_de_l_acces2( mat , d ){
         if(this.__ig1.donnees_retournees.chi_id_utilisateur === 1){
             if(this.__ig1.donnees_retournees.chi_id_acces > 2){
-                return({"__xst" : __xer,"__xme" : 'Le développeur ne peut que modifier son menu ainsi que celui de l\'admin [' + this.__ig1.nl2() + ']' });
+                return({"__xst" : __xer ,"__xme" : 'Le développeur ne peut que modifier son menu ainsi que celui de l\'admin [' + this.__ig1.nl2() + ']'});
             }
         }else if(this.__ig1.donnees_retournees.chi_id_utilisateur === 2){
             if(!(this.__ig1.donnees_recues[__xva]['chi_id_acces'] > 2 || this.__ig1.donnees_recues[__xva]['chi_id_acces'] === 0)){
-                return({"__xst" : __xer ,"__xme" : 'l\'admin peut modifier les menus >2  [' + this.__ig1.nl2() + ']' });
+                return({"__xst" : __xer ,"__xme" : 'l\'admin peut modifier les menus >2  [' + this.__ig1.nl2() + ']'});
             }
         }else{
             return({"__xst" : __xer ,"__xme" : 'seuls l\'administrateur et le développeur peuvent modifier un menu  [' + this.__ig1.nl2() + ']'});
@@ -475,7 +478,7 @@ class acces1{
             }
         }
         if(chi_id_acces === -1){
-            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']' });
+            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let liste_des_menus=[];
@@ -787,7 +790,7 @@ class acces1{
         let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt136[__xva][0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aetavm.__xme });
+            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let donnees_sql={
             "c_chi_id_acces" : form['chi_id_acces'] ,

@@ -22,19 +22,16 @@ class sql_120{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
-                if(elem['chp_nom_de_connexion_utilisateur'] === null || elem['chp_nom_de_connexion_utilisateur']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_nom_de_connexion_utilisateur'] === null || elem['chp_nom_de_connexion_utilisateur'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_acces_utilisateur" */
-                if(elem['chx_acces_utilisateur'] === null || elem['chx_acces_utilisateur']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chx_acces_utilisateur'] === null || elem['chx_acces_utilisateur'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_actif_utilisateur" */
-                if(elem['che_actif_utilisateur'] === null || elem['che_actif_utilisateur']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['che_actif_utilisateur'] === null || elem['che_actif_utilisateur'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
@@ -60,7 +57,14 @@ class sql_120{
                     nouvel_id=lignes[numero_de_ligne][0];
                 }
             }
-            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 120 , e , sql0 , {} ));
         }

@@ -72,7 +72,7 @@ class genres1{
             this.__ig1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -109,7 +109,7 @@ class genres1{
             this.__ig1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -177,8 +177,7 @@ class genres1{
         switch (mat[d][1]){
             case 'xxxxx' : break;
             default:
-                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});

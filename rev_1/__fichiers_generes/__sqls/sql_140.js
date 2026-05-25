@@ -19,7 +19,7 @@ class sql_140{
         /*  */
         champs0=`
           \`T0\`.\`chi_id_autorisation\` , \`T0\`.\`chx_acces_autorisation\` , \`T0\`.\`chx_source_autorisation\` , \`T0\`.\`che_pour_sous_liste_autorisation\` , \`T1\`.\`chp_nom_acces\` , 
-          \`T2\`.\`chp_nom_source\` , \`T2\`.\`chx_dossier_id_source\`
+          \`T2\`.\`chp_nom_source\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -32,9 +32,6 @@ class sql_140{
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T2_chp_nom_source' ) && par['T2_chp_nom_source'] !== ''){
             where0+=` AND \`T2\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( par['T2_chp_nom_source'] , 'T2_chp_nom_source' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chi_id_autorisation' ) && par['T0_chi_id_autorisation'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_autorisation`' , par['T0_chi_id_autorisation'] );
         }
         if(par.hasOwnProperty( 'T0_chx_acces_autorisation' ) && par['T0_chx_acces_autorisation'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_acces_autorisation`' , par['T0_chx_acces_autorisation'] );
@@ -50,6 +47,9 @@ class sql_140{
         }
         if(par.hasOwnProperty( 'acces_pas_dans' ) && par['acces_pas_dans'] !== ''){
             where0+=` AND \`T0\`.\`chx_acces_autorisation\` NOT IN ` + par['acces_pas_dans'] + '\r\n';
+        }
+        if(par.hasOwnProperty( 'T0_chi_id_autorisation' ) && par['T0_chi_id_autorisation'] !== ''){
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_autorisation`' , par['T0_chi_id_autorisation'] );
         }
         sql0+=where0;
         const order0=`
@@ -75,8 +75,7 @@ class sql_140{
                     "T0.chx_source_autorisation" : lignes[numero_de_ligne][2] ,
                     "T0.che_pour_sous_liste_autorisation" : lignes[numero_de_ligne][3] ,
                     "T1.chp_nom_acces" : lignes[numero_de_ligne][4] ,
-                    "T2.chp_nom_source" : lignes[numero_de_ligne][5] ,
-                    "T2.chx_dossier_id_source" : lignes[numero_de_ligne][6]
+                    "T2.chp_nom_source" : lignes[numero_de_ligne][5]
                 } );
         }
         /* comptage */

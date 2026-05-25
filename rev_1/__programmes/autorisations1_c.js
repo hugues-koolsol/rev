@@ -17,7 +17,7 @@ class autorisations1{
         "liste1" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
             "T2_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
-            "T0_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
+            "T0_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'acces' ,"taille" : 8} ,
             "T0_che_pour_sous_liste_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour s/liste' ,"taille" : 8} ,
             "T0_chx_source_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id source' ,"taille" : 8} ,
             "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
@@ -41,7 +41,7 @@ class autorisations1{
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
-            case 'gererer_les_autorisation_serveur' : break;
+            case 'aagererer_les_autorisation_serveur' : break;
             case 'xxx' :
                 /*
                   this.__ig1.fermer_la_sous_fenetre();
@@ -50,8 +50,7 @@ class autorisations1{
                 break;
                 
             default:
-                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});
@@ -126,9 +125,9 @@ class autorisations1{
             return({"__xst" : __xsu});
         }
         if(fo1['che_pour_sous_liste_autorisation'] !== ''){
-            let tab_est_parmis_3='0,1'.split( ',' );
-            if(!tab_est_parmis_3.includes( fo1['che_pour_sous_liste_autorisation'] )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être correctement renseigné (utilisez les boutons)'} );
+            let tab_est_parmis_2='0,1'.split( ',' );
+            if(!tab_est_parmis_2.includes( fo1['che_pour_sous_liste_autorisation'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
                 try{
@@ -137,7 +136,7 @@ class autorisations1{
                 return({"__xst" : __xsu});
             }
         }
-        /* conversion des données numériques début */
+        /* conversion des données numériques verifier_modifier début */
         fo1['chi_id_autorisation']=fo1['chi_id_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chi_id_autorisation'] , 10 ) );
         fo1['chx_acces_autorisation']=fo1['chx_acces_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_acces_autorisation'] , 10 ) );
         fo1['chx_source_autorisation']=fo1['chx_source_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_source_autorisation'] , 10 ) );
@@ -147,7 +146,7 @@ class autorisations1{
           ) : ( 
             parseInt( fo1['che_pour_sous_liste_autorisation'] , 10 )
           );
-        /* conversion des données numériques fin */
+        /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié
         */
@@ -358,6 +357,15 @@ class autorisations1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        if(fo1['chx_acces_autorisation'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chx_acces_autorisation' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         if(fo1['chx_source_autorisation'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -377,9 +385,9 @@ class autorisations1{
             return({"__xst" : __xsu});
         }
         if(fo1['che_pour_sous_liste_autorisation'] !== ''){
-            let tab_est_parmis_3='0,1'.split( ',' );
-            if(!tab_est_parmis_3.includes( fo1['che_pour_sous_liste_autorisation'] )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être correctement renseigné (utilisez les boutons)'} );
+            let tab_est_parmis_2='0,1'.split( ',' );
+            if(!tab_est_parmis_2.includes( fo1['che_pour_sous_liste_autorisation'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
                 try{
@@ -388,7 +396,7 @@ class autorisations1{
                 return({"__xst" : __xsu});
             }
         }
-        /* conversion des données numériques début */
+        /* conversion des données numériques verifier_creer début */
         fo1['chx_acces_autorisation']=fo1['chx_acces_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_acces_autorisation'] , 10 ) );
         fo1['chx_source_autorisation']=fo1['chx_source_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_source_autorisation'] , 10 ) );
         fo1['che_pour_sous_liste_autorisation']=fo1['che_pour_sous_liste_autorisation'] === '' ?
@@ -397,7 +405,7 @@ class autorisations1{
           ) : ( 
             parseInt( fo1['che_pour_sous_liste_autorisation'] , 10 )
           );
-        /* conversion des données numériques fin */
+        /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
         */
@@ -416,8 +424,18 @@ class autorisations1{
     page_creer1( mat , d , dupliquer=null ){
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_autorisation' );
         let o1='';
+        let a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a === null){
+            this.__ig1.initialisation_des_zones( '' + this.moi + '' );
+        }
+        a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a.innerHTML === 'création ' + this.DUN_DUNE_ELEMENT_GERE){
+        }else{
+            a.innerHTML='création ' + this.DUN_DUNE_ELEMENT_GERE;
+            this.__ig1.afficher_les_zones( 'vv_ecran_creation' );
+        }
         /*
-          
+          =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
@@ -455,7 +473,7 @@ class autorisations1{
         o1+='    </div>';
         o1+='  </div>';
         /*
-          
+          =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
@@ -648,7 +666,6 @@ class autorisations1{
                 lst[i].addEventListener( 'keyup' , ( e ) => {
                         if(e.keyCode === 13){
                             this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                            console.log( e , this );
                         }} );
             }
         }else{
@@ -672,6 +689,12 @@ class autorisations1{
     /*
       =============================================================================================================
     */
+    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
+    }
+    /*
+      =============================================================================================================
+    */
     supprimer1( mat , d , le_colis1 ){
         return({"__xst" : __xsu});
     }
@@ -688,18 +711,14 @@ class autorisations1{
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
-    }
-    /*
-      =============================================================================================================
-    */
     liste1( mat , d , le_colis1=null ){
         if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
-            /* F5 */
-            debugger;
-            /* this.#init1(null,'liste1'); */
-            return({"__xst" : __xsu});
+            if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
+            }else{
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
+                this.__ig1.affiche_les_messages();
+                return({"__xst" : __xsu});
+            }
         }
         let o1='';
         let initialisation_fait=false;
@@ -735,6 +754,7 @@ class autorisations1{
     }
     /*
       =============================================================================================================
+      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================
     */
     sous_liste2( mat , d , le_colis1 ){
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
@@ -757,9 +777,12 @@ class autorisations1{
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
                 parametres+=' id2(' + elem['T0.chi_id_autorisation'] + ')';
-                let libelle1='';
-                libelle1+='(' + elem['T0.chi_id_autorisation'] + ') ' + elem['T1.chp_nom_acces'] + '/' + elem['T2.chp_nom_source'] + ' ';
-                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle1 ) + '\')';
+                let libelle2='';
+                libelle2+='(';
+                libelle2+=elem['T0.chi_id_autorisation'];
+                libelle2+=') ';
+                libelle2+=elem['T1.chp_nom_acces'] + '/' + elem['T2.chp_nom_source'] + ' ';
+                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
                 lst+='</td>';
@@ -787,15 +810,26 @@ class autorisations1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
+                if(elem['T0.che_pour_sous_liste_autorisation'] !== null){
+                    if(elem['T0.che_pour_sous_liste_autorisation'] === 0){
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
                 if(elem['T1.chp_nom_acces'] !== null){
-                    lst+=elem['T1.chp_nom_acces'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                    lst+=this.__ig1.fi2( elem['T1.chp_nom_acces'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T2.chp_nom_source'] !== null){
-                    lst+=elem['T2.chp_nom_source'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                    lst+=this.__ig1.fi2( elem['T2.chp_nom_source'] );
                 }
                 lst+='</td>';
                 /*
@@ -816,10 +850,11 @@ class autorisations1{
                 o1+='<table border="1">';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+='<th>id</th>';
-                o1+='<th>acces</th>';
-                o1+='<th>source</th>';
-                o1+='<th>nom accès</th>';
+                o1+=/* chi_id_autorisation */'<th>id</th>';
+                o1+=/* chx_acces_autorisation */'<th>acces</th>';
+                o1+=/* chx_source_autorisation */'<th>source</th>';
+                o1+=/* che_pour_sous_liste_autorisation */'<th>pour sous liste</th>';
+                o1+=/* chp_nom_acces */'<th>nom accès</th>';
                 o1+='<th>nom source</th>';
                 o1+=/* che_pour_sous_liste_autorisation */'<th>s/liste</th>';
                 o1+='</tr>';

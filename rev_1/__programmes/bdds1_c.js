@@ -37,8 +37,7 @@ class bdds1{
             case 'dump_de_la_base' : 
             case 'enregistrer_la_matrice_dans_la_table_rev' : break;
             default:
-                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});

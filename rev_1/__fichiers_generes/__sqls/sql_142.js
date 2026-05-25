@@ -22,19 +22,16 @@ class sql_142{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chx_acces_autorisation" */
-                if(elem['chx_acces_autorisation'] === null || elem['chx_acces_autorisation']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chx_acces_autorisation'] === null || elem['chx_acces_autorisation'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_source_autorisation" */
-                if(elem['chx_source_autorisation'] === null || elem['chx_source_autorisation']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "source" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chx_source_autorisation'] === null || elem['chx_source_autorisation'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
-                if(elem['che_pour_sous_liste_autorisation'] === null || elem['che_pour_sous_liste_autorisation']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "pour accès sous liste" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['che_pour_sous_liste_autorisation'] === null || elem['che_pour_sous_liste_autorisation'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
@@ -60,7 +57,14 @@ class sql_142{
                     nouvel_id=lignes[numero_de_ligne][0];
                 }
             }
-            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 142 , e , sql0 , {} ));
         }

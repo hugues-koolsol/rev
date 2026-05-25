@@ -26,27 +26,23 @@ class sql_398{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_resume_travail" */
-                if(elem['chp_resume_travail'] === null || elem['chp_resume_travail']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_resume_travail'] === null || elem['chp_resume_travail'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_utilisateur_travail" */
-                if(elem['chx_utilisateur_travail'] === null || elem['chx_utilisateur_travail']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chx_utilisateur_travail'] === null || elem['chx_utilisateur_travail'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ "chd_dtc_travail"
                 */
                 /* test "non nul" sur le champ "chp_etat_travail" */
-                if(elem['chp_etat_travail'] === null || elem['chp_etat_travail']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_etat_travail'] === null || elem['chp_etat_travail'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_projet_travail" */
-                if(elem['chx_projet_travail'] === null || elem['chx_projet_travail']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "référence du projet" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chx_projet_travail'] === null || elem['chx_projet_travail'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "référence du projet" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
@@ -76,7 +72,14 @@ class sql_398{
                     nouvel_id=lignes[numero_de_ligne][0];
                 }
             }
-            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 398 , e , sql0 , {} ));
         }

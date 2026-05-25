@@ -2030,6 +2030,13 @@ class w_ast_js_vers_rev1{
         if(element.superClass){
             if('Identifier' === element.superClass.type){
                 etend=',étend(' + element.superClass.name + ')';
+            }else if('MemberExpression' === element.superClass.type){
+                obj=this.#traite_MemberExpression( element.superClass , niveau + 1 , element , tab_comm );
+                if(obj.__xst === __xsu){
+                    etend=',étend(' + obj.__xva + ')';
+                }else{
+                    return(this.#astjs_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() ,"element" : element} ));
+                }
             }else{
                 return(this.#astjs_le( {"__xst" : __xer ,"__xme" : this.__rev1.nl2() ,"element" : element} ));
             }

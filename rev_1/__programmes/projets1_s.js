@@ -76,8 +76,7 @@ class projets1{
         if(chi_id_projet >= 3){
             let repertoire_racine_du_projet=this.__ig1.options_generales.repertoire_racine_de_tous_les_projets + 'rev_' + chi_id_projet;
             if((await this.__ig1.is_dir( repertoire_racine_du_projet ))){
-                this.__ig1.donnees_retournees.__xsi[__xsu].push( 'le répertoire racine de ce projet existe déjà' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'le répertoire racine de ce projet existe déjà'});
             }
             try{
                 await Deno.mkdir( repertoire_racine_du_projet , {"mode" : 0o777} );
@@ -87,8 +86,7 @@ class projets1{
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur lors de la création du dossier [' + this.__ig1.nl2( e ) + ']' );
             }
         }
-        this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
     }
     /*
       =============================================================================================================
@@ -106,12 +104,11 @@ class projets1{
             let o=new m['bdds1']( this.__ig1 );
             let obj=await o.dump_de_la_base( mat , d , chi_id_projet );
             if(obj[__xst] !== __xsu){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
             }
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
     }
     /*
       =============================================================================================================
@@ -125,8 +122,7 @@ class projets1{
                 /* this.__ig1.ma_trace1('chemin='+chemin); */
                 await Deno.mkdir( dir2 , {"mode" : 0o777} );
             }catch(e){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur lors de la création du dossier [' + this.__ig1.nl2( e ) + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'Erreur lors de la création du dossier [' + this.__ig1.nl2( e ) + ']'});
             }
         }
         let objects=await this.__ig1.scandir( dir1 );
@@ -134,8 +130,10 @@ class projets1{
             if(objects[objet].type_element === 'd'){
                 let obj=await this.rcopydir( dir1 + '/' + objects[objet].nom , dir2 + '/' + objects[objet].nom );
                 if(obj[__xst] !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur INTERNE lors de la copie du dossier de "' + dir1 + '/' + objects[objet].nom + '" vers "' + dir2 + '/' + object + '" [' + this.__ig1.nl2( e ) + ']' );
-                    return({"__xst" : __xer});
+                    return({
+                            "__xst" : __xer ,
+                            "__xme" : 'Erreur INTERNE lors de la copie du dossier de "' + dir1 + '/' + objects[objet].nom + '" vers "' + dir2 + '/' + object + '" [' + this.__ig1.nl2( e ) + ']'
+                        });
                 }
             }else{
                 let nom1=dir1 + '/' + objects[objet].nom;
@@ -144,8 +142,10 @@ class projets1{
                     /* this.__ig1.ma_trace1(dir1 + '/' + objects[objet].nom , dir2 + '/' + objects[objet].nom ); */
                     await Deno.copyFile( dir1 + '/' + objects[objet].nom , dir2 + '/' + objects[objet].nom );
                 }catch(e){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur INTERNE lors de la copie du fichier de "' + dir1 + '/' + objects[objet].nom + '" vers "' + dir2 + '/' + objects[objet].nom + '" [' + this.__ig1.nl2( e ) + ']' );
-                    return({"__xst" : __xer});
+                    return({
+                            "__xst" : __xer ,
+                            "__xme" : 'Erreur INTERNE lors de la copie du fichier de "' + dir1 + '/' + objects[objet].nom + '" vers "' + dir2 + '/' + objects[objet].nom + '" [' + this.__ig1.nl2( e ) + ']'
+                        });
                 }
             }
         }
@@ -158,8 +158,7 @@ class projets1{
     async initialiser_le_clone( mat , d ){
         this.__ig1.donnees_retournees.chi_id_projet=1;
         if(this.__ig1.donnees_retournees._CA_ !== 2){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de création du dossier rev_2 ' + this.__ig1.nl2( e ) );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de création du dossier rev_2 ' + this.__ig1.nl2( e )});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         let criteres_409={"chi_id_projet" : 2};
@@ -171,8 +170,7 @@ class projets1{
         /*sql_inclure_fin*/ 409 , criteres_409 , this.__ig1.donnees_retournees , __db1 );
         /* this.__ig1.ma_trace1( 'tt409=' , tt409 ); */
         if(tt409[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors du begin transaction [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur lors du begin transaction [' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.chi_id_projet=0;
         return({"__xst" : __xsu});
@@ -190,23 +188,20 @@ class projets1{
         try{
             await Deno.remove( chemin_racine2 , {"recursive" : true} );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de suppression du dossier rev_2 ' + this.__ig1.nl2( e ) );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de suppression du dossier rev_2 ' + this.__ig1.nl2( e )});
         }
         try{
             await Deno.mkdir( chemin_racine2 , {"mode" : 0o777} );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de création du dossier rev_2 ' + this.__ig1.nl2( e ) );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de création du dossier rev_2 ' + this.__ig1.nl2( e )});
         }
         let chemin_racine1='../rev_1';
         let obj=await this.rcopydir( chemin_racine1 , chemin_racine2 , this.__ig1.donnees_retournees );
         if(obj[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la copie récursive des fichiers n\'a pas fonctionné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            this.__ig1.donnees_retournees.__xsi[__xer].push();
+            return({"__xst" : __xer ,"__xme" : 'la copie récursive des fichiers n\'a pas fonctionné [' + this.__ig1.nl2() + ']'});
         }
-        this.__ig1.donnees_retournees.__xsi[__xsu].push( 'le projet 2 a été initialisé [' + this.__ig1.nl2() + ']' );
-        return({"__xst" : __xsu});
+        return({"__xst" : __xsu ,"__xme" : 'le projet 2 a été initialisé [' + this.__ig1.nl2() + ']'});
     }
     /*
       =============================================================================================================
@@ -275,12 +270,7 @@ class projets1{
             */
             /*sql_inclure_fin*/ 305 , donnees_sql , this.__ig1.donnees_retournees , __db );
             if(tt305[__xst] !== __xsu){
-                if(tt305['__xme'] !== ''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( tt305['__xme'] + ' [' + this.__ig1.nl2() );
-                }else{
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                }
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : tt305.__xme});
             }
             await __db.close();
         }
@@ -290,20 +280,12 @@ class projets1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
@@ -311,8 +293,7 @@ class projets1{
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         if(__xva_avant['T0.chi_id_projet'] <= 3){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'ce projet ne peut pas être supprimé [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'ce projet ne peut pas être supprimé [' + this.__ig1.nl2( e ) + ']'});
         }
         let chemin='../rev_' + __xva_avant['T0.chi_id_projet'];
         if(!this.__ig1.is_dir( chemin )){
@@ -328,15 +309,13 @@ class projets1{
             try{
                 await Deno.mkdir( repertoire_absolu_sauvegarde , {"mode" : 0o777 ,"recursive" : true} );
             }catch(e){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de création du répertoire "' + repertoire_absolu_sauvegarde + '" ' + this.__ig1.nl2( e ) );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur de création du répertoire "' + repertoire_absolu_sauvegarde + '" ' + this.__ig1.nl2( e )});
             }
         }
         /* copie de rev_nnn dans la sauvegarde */
         let obj=await this.rcopydir( chemin , chemin_absolu_sauvegarde , this.__ig1.donnees_retournees );
         if(obj[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la copie récursive des fichiers n\'a pas fonctionné [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la copie récursive des fichiers n\'a pas fonctionné [' + this.__ig1.nl2() + ']'});
         }
         /* suppression de l'ancien dossier rev_nnn */
         try{
@@ -344,9 +323,10 @@ class projets1{
             await Deno.remove( chemin , {"recursive" : true} );
             return({"__xst" : __xsu});
         }catch(e){
-            this.__ig1.ma_trace1( 'e=' , e );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de renommage du fichier "' + chemin + '" vers "' + chemin_absolu_sauvegarde + '"' + this.__ig1.nl2( e ) );
-            return({"__xst" : __xer});
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : 'erreur de renommage du fichier "' + chemin + '" vers "' + chemin_absolu_sauvegarde + '"' + this.__ig1.nl2( e )
+                });
         }
         return({"__xst" : __xsu});
     }
@@ -354,10 +334,6 @@ class projets1{
       =============================================================================================================
     */
     async tests_avant_creer( mat , d , form , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
@@ -375,8 +351,7 @@ class projets1{
             /*
               pourquoi ce fichier existe ?
             */
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'le fichier la base de donnée du projet existe déjà [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'le fichier la base de donnée du projet existe déjà [' + this.__ig1.nl2() + ']'});
         }
         let chemin='../rev_' + nouvel_id;
         /*
@@ -394,8 +369,7 @@ class projets1{
                 await Deno.mkdir( chemin , {"mode" : 0o777} );
                 this.__ig1.donnees_retournees.__xsi[__xif].push( 'le dossier a été créé du disque [' + this.__ig1.nl2() + ']' );
             }catch(e){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur lors de la création du dossier [' + this.__ig1.nl2( e ) + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'Erreur lors de la création du dossier [' + this.__ig1.nl2( e ) + ']'});
             }
         }
         let chemin_base_modele='./__bases_de_donnees/bdd_3.sqlite';
@@ -415,8 +389,7 @@ class projets1{
             await Deno.copyFile( chemin_base_modele , chemin_base_systeme_du_projet );
         }catch(e){
             this.__ig1.ma_trace1( 'e=' , e );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur lors de la création(copie) de la base système [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'Erreur lors de la création(copie) de la base système [' + this.__ig1.nl2( e ) + ']'});
         }
         let __db_nouvelle=await this.__ig1.ouvrir_bdd( nouvel_id );
         let criteres_394={
@@ -436,16 +409,14 @@ class projets1{
         /* this.__ig1.ma_trace1('tt394=',tt394); */
         if(tt394[__xst] !== __xsu){
             await __db_nouvelle.close();
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'le numéro de projet n\'a pas pu être changé dans la nouvelle base système [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'le numéro de projet n\'a pas pu être changé dans la nouvelle base système [' + this.__ig1.nl2() + ']'});
         }
         await __db_nouvelle.close();
         let chemin_3='../rev_3';
         let chemin_nouveau='../rev_' + nouvel_id;
         let obj=await this.rcopydir( chemin_3 , chemin_nouveau , this.__ig1.donnees_retournees );
         if(obj[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la copie récursive des fichiers n\'a pas fonctionné [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la copie récursive des fichiers n\'a pas fonctionné [' + this.__ig1.nl2( e ) + ']'});
         }
         return({"__xst" : __xsu});
     }
@@ -486,12 +457,11 @@ class projets1{
         */
         /*sql_inclure_fin*/ 375 , criteres_select_375 , this.__ig1.donnees_retournees , __db1 );
         if(tt375[__xst] !== __xsu || tt375[__xva].length !== 1){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2()});
         }
         let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt375[__xva][0] , __db1 );
         if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
         }
         let donnees_sql={
             "c_chi_id_projet" : form['chi_id_projet'] ,
@@ -514,8 +484,7 @@ class projets1{
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt375[__xva][0] , __db1 );
         if(__taam[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur après modification [' + this.__ig1.nl2()});
         }
         /* this.__ig1.ma_trace1('apres'); */
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt375;
@@ -541,8 +510,7 @@ class projets1{
             this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + chi_id_projet + ')))))';
         }
         if(chi_id_projet === null){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
@@ -557,11 +525,11 @@ class projets1{
         */
         /*sql_inclure_fin*/ 375 , {"T0_chi_id_projet" : chi_id_projet} , this.__ig1.donnees_retournees , __db1 );
         if(tt375[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt375.__xme});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt375[__xva][0] , __db1 );
         if(aetam[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt375;
         return({"__xst" : __xsu});
@@ -574,8 +542,7 @@ class projets1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
         if(form['chi_id_projet'] <= 3){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
@@ -593,13 +560,12 @@ class projets1{
         */
         /*sql_inclure_fin*/ 375 , criteres_375 , this.__ig1.donnees_retournees , __db1 );
         if(tt375[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt375.__xme});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt375[__xva][0] , __db1 );
         if(tas[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_382={
              /*  */
@@ -613,12 +579,12 @@ class projets1{
         /*sql_inclure_fin*/ 382 , criteres_382 , this.__ig1.donnees_retournees , __db1 );
         if(tt382[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt382.__xme});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt375[__xva][0] , __db1 );
         if(aac[__xst] === __xer){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
         if(form['__mat_liste_si_ok'] !== ''){
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
@@ -643,8 +609,8 @@ class projets1{
             }
         }
         if(chi_id_projet === 0){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            this.__ig1.donnees_retournees.__xsi[__xer].push();
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         let critere_375={"T0_chi_id_projet" : chi_id_projet};
@@ -678,7 +644,7 @@ class projets1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
         let donnees_sql={
             "donnees" : [{
@@ -700,33 +666,27 @@ class projets1{
         );
         */
         /*sql_inclure_fin*/ 377 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt377[__xst] === __xsu){
-            if(tt377['changements'] === 0){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
-            }
-            let aac=await this.action_apres_creer( mat , d , tt377['nouvel_id'] , form , __db1 );
-            if(aac[__xst] === __xer){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(form['__mat_liste_si_ok'] !== ''){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                await this.filtre1( mat1 , 1 , __db1 );
-            }else{
-                /*
-                  lors de la création d'un projet, on DOIT revenir à l'écran liste
-                  et activer le projet pour pouvoir le modifier
-                */
-                return({"__xst" : __xer});
-            }
-            return({"__xst" : __xsu});
-        }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( tt377['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+        if(tt377[__xst] !== __xsu || tt377['changements'] === 0){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt377.__xme});
         }
+        let aac=await this.action_apres_creer( mat , d , tt377['nouvel_id'] , form , __db1 );
+        if(aac[__xst] === __xer){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : aac.__xme});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(form['__mat_liste_si_ok'] !== ''){
+            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            await this.filtre1( mat1 , 1 , __db1 );
+        }else{
+            /*
+              lors de la création d'un projet, on DOIT revenir à l'écran liste
+              et activer le projet pour pouvoir le modifier
+            */
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -744,8 +704,7 @@ class projets1{
         */
         /*sql_inclure_fin*/ 393 , {} , this.__ig1.donnees_retournees , __db1 );
         if(tt393[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt393.__xme});
         }
         const nouveau_numero_projet=tt393[__xva][0]['T0.chi_id_projet'] + 1;
         /* this.__ig1.ma_trace1('nouveau_numero_projet=',nouveau_numero_projet); */
@@ -754,11 +713,12 @@ class projets1{
         try{
             const stats=await Deno.lstat( chemin_base_systeme_du_projet );
             /* if(stats.isFile === true || stats.isDirectory === true || stats.isSymlink === true ){ */
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la base de donnée système "bdd_' + nouveau_numero_projet + '" existe donc le projet ne peut être créé. [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : 'la base de donnée système "bdd_' + nouveau_numero_projet + '" existe donc le projet ne peut être créé. [' + this.__ig1.nl2() + ']'
+                });
         }catch(e){
-            /* this.__ig1.donnees_retournees.__xsi[__xer].push(this.__ig1.nl2()); */
-            /* return {__xst:__xer}; */
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
         }
         this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
         return({"__xst" : __xsu});
@@ -811,7 +771,7 @@ class projets1{
         */
         /*sql_inclure_fin*/ 374 , criteres374 , this.__ig1.donnees_retournees , __db1 );
         if(tt374.__xst !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt374.__xme});
         }
         if(tt374[__xst] === __xsu && tt374[__xva].length === 0 && __debut > 0){
             __debut=0;

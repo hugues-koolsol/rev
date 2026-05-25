@@ -30,9 +30,8 @@ class sql_378{
                 }
 
                 /* test "non nul" sur le champ "chx_parent_dossier" */
-                if(elem['chx_parent_dossier'] === null || elem['chx_parent_dossier']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chx_parent_dossier'] === null || elem['chx_parent_dossier'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
@@ -57,7 +56,14 @@ class sql_378{
                     nouvel_id=lignes[numero_de_ligne][0];
                 }
             }
-            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 378 , e , sql0 , {} ));
         }

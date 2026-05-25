@@ -173,7 +173,7 @@ class v_svg_bdd1{
             this.__ig1.donnees_retournees.__xva['id_bdd_de_la_base']=this.__ig1.donnees_recues[__xva]['id_bdd_de_la_base'];
             this.__ig1.donnees_retournees.__xva['liste_des_champs_avec_type']=this.__ig1.donnees_recues[__xva]['liste_des_champs_avec_type'];
         }catch(e){
-            this.__ig1.ma_trace1("this.__ig1.donnees_recues[__xva]['source_sql']="+this.__ig1.donnees_recues[__xva]['source_sql']);
+            this.__ig1.ma_trace1( "this.__ig1.donnees_recues[__xva]['source_sql']=" + this.__ig1.donnees_recues[__xva]['source_sql'] );
             this.__ig1.ma_trace1( e.stack );
         }
     }

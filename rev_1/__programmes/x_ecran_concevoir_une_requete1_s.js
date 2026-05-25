@@ -31,7 +31,7 @@ class x_ecran_concevoir_une_requete1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + tt353['__xme'] + ' ' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer});
         }
-        if(false && this.__ig1.donnees_recues._CA_ === 1 && this.__ig1.donnees_recues.chi_id_projet === 1){
+        if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1){
             return({"__xst" : __xsu});
         }
         let tt354=await this.__ig1.sql_iii(

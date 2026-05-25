@@ -141,9 +141,11 @@ class __ig1{
                     if(obj2.hasOwnProperty( 'cumul_message' ) && obj2.cumul_message === __xer){
                         cumul_message=__xer;
                     }else{
-                        debugger
-                        if(!obj2.hasOwnProperty('__xme')){
-                            this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
+                        debugger;
+                        if(!obj2.hasOwnProperty( '__xme' )){
+                            if(this.__deverminage >= 2){
+                                this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
+                            }
                         }
                     }
                     this.affiche_les_messages();
@@ -3026,6 +3028,9 @@ class __ig1{
             this.ma_trace1( " afr voir bug sur batch " );
             /* return({"__xst" : __xer}); */
         }
+        try{
+            document.getElementById( 'vv_div_des_positions_du_curseur' ).innerHTML='';
+        } catch {}
         this.#boutons_masques_avant_appel.push( elt );
         let mat=obj1.__xva;
         let obj=this.__xac( mat , 0 , null , e );

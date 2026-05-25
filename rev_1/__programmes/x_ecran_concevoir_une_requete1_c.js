@@ -1079,7 +1079,7 @@ class x_ecran_concevoir_une_requete1{
                     "base_reference" : obj5.base_reference
                 });
         }else{
-            return(obj5);
+            return obj5;
         }
     }
     /*
@@ -1114,7 +1114,7 @@ class x_ecran_concevoir_une_requete1{
                 document.getElementById( 'chp_table_reference_requete' ).value=obj1.table_reference;
             }
         }else{
-            return(obj1)
+            return obj1;
         }
         return({"__xst" : __xsu});
     }

@@ -33,8 +33,7 @@ class requetes1{
             }
         }
         if(chi_id_requete === 0){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'le paramètre chi_id_requete est à zéro ' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'le paramètre chi_id_requete est à zéro ' + this.__ig1.nl2()});
         }
         /* this.__ig1.ma_trace1( 'chi_id_requete=' + chi_id_requete ); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -54,8 +53,7 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 373 , criteres_373_1 , this.__ig1.donnees_retournees , __db1 );
         if(tt373_1[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur de sélection de la requête [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt373.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']={};
         let criteres_select_171={};
@@ -68,12 +66,7 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 171 , criteres_select_171 , this.__ig1.donnees_retournees , __db1 );
         if(tt171[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
-        }
-        if(!(tt373_1[__xst] === __xsu && tt171[__xst] === __xsu)){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt171.__xme});
         }
         let bases_du_projet={};
         for(let k1 in tt171[__xva]){
@@ -97,8 +90,7 @@ class requetes1{
         */
         let obj0=await this._rev_de_sql_vers_js1.compiler_requete_vers_js1( [] , 0 , les_bases_et_la_requete );
         if(obj0.__xst !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         /*
           =====================================================================================================
@@ -114,8 +106,10 @@ class requetes1{
         try{
             await this.__ig1.file_put_contents( chemin_fichier , contenu );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'ecriture du fichier sql_' + chi_id_requete + '<br /><b>Le répertoire existe-t-il ?</b> [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : 'ecriture du fichier sql_' + chi_id_requete + '<br /><b>Le répertoire existe-t-il ?</b> [' + this.__ig1.nl2()
+                });
         }
         /*
           =====================================================================================================
@@ -147,8 +141,7 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 405 , criteres_select_405 , this.__ig1.donnees_retournees , __db1 );
         if(tt405.__xst !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées  [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt405.__xme});
         }
         /* this.__ig1.ma_trace1( 'tt405.__xva=' , tt405.__xva ); */
         for(let i in tt405.__xva){
@@ -187,8 +180,7 @@ class requetes1{
             */
             /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
             if(tt398[__xst] !== __xsu){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : tt398.__xme});
             }
         }
         return({"__xst" : __xsu});
@@ -221,8 +213,7 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 343 , criteres_343 , this.__ig1.donnees_retournees , __db1 );
         if(tt343[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( tt343['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt343['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
         let chemin_fichier='';
         if(this.__ig1.donnees_retournees._CA_ === 2){
@@ -234,8 +225,10 @@ class requetes1{
         try{
             await this.__ig1.file_put_contents( chemin_fichier , contenu );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'ecriture du fichier sql_' + this.__ig1.donnees_recues[__xva]['chi_id_requete'] + '<br /><b>Le répertoire existe-t-il ?</b> [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : 'ecriture du fichier sql_' + this.__ig1.donnees_recues[__xva]['chi_id_requete'] + '<br /><b>Le répertoire existe-t-il ?</b> [' + this.__ig1.nl2()
+                });
         }
         if(!(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1)){
             await this.concevoir_une_requete1_s.sauvegarder_une_matrice_de_requete( mat , d , this.__ig1.donnees_recues[__xva]['chi_id_requete'] , __db1 );
@@ -255,8 +248,8 @@ class requetes1{
             }
         }
         if(chi_id_requete === 0){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            this.__ig1.donnees_retournees.__xsi[__xer].push();
+            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_373_1={"T0_chi_id_requete" : chi_id_requete};
@@ -271,10 +264,8 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 373 , criteres_373_1 , this.__ig1.donnees_retournees , __db1 );
         if(tt373_1[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur de sélection de la requête ancienne [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt373_1.__xme});
         }
-        /* this.__ig1.ma_trace1(tt373_1[__xva]); */
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']={};
         let criteres_select_171={};
         let tt171=await this.__ig1.sql_iii(
@@ -286,21 +277,15 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 171 , criteres_select_171 , this.__ig1.donnees_retournees , __db1 );
         if(tt171[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt171.__xme});
         }
-        if(tt373_1[__xst] === __xsu && tt171[__xst] === __xsu){
-            let bases_du_projet={};
-            for(let k1 in tt171[__xva]){
-                bases_du_projet[tt171[__xva][k1]['T0.chi_id_basedd']]=tt171[__xva][k1];
-            }
-            this.__ig1.donnees_retournees[__xva]['requete']=tt373_1[__xva][0];
-            this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=bases_du_projet;
-            return({"__xst" : __xsu});
-        }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+        let bases_du_projet={};
+        for(let k1 in tt171[__xva]){
+            bases_du_projet[tt171[__xva][k1]['T0.chi_id_basedd']]=tt171[__xva][k1];
         }
+        this.__ig1.donnees_retournees[__xva]['requete']=tt373_1[__xva][0];
+        this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=bases_du_projet;
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -313,14 +298,12 @@ class requetes1{
         if(form['vv_nouveau_numero_de_requete'] && this.__ig1.est_num( form['vv_nouveau_numero_de_requete'] )){
             chi_id_requete_nouvelle=parseInt( form['vv_nouveau_numero_de_requete'] , 10 );
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' le nouveau numéro doit être numérique [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : ' le nouveau numéro doit être numérique [' + this.__ig1.nl2() + ']'});
         }
         if(form['vv_ancien_numero_de_requete'] && this.__ig1.est_num( form['vv_ancien_numero_de_requete'] )){
             chi_id_requete_ancienne=parseInt( form['vv_ancien_numero_de_requete'] , 10 );
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'ancien numéro doit être numérique [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'l\'ancien numéro doit être numérique [' + this.__ig1.nl2() + ']'});
         }
         /*
           Récupération de la requête actuelle.
@@ -339,7 +322,7 @@ class requetes1{
         /*sql_inclure_fin*/ 373 , criteres_373_1 , this.__ig1.donnees_retournees , __db1 );
         if(tt373_1[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur de sélection de la requête ancienne [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt373_1.__xme});
         }
         /*
           Essai de récupération de la nouvelle requête.
@@ -357,14 +340,13 @@ class requetes1{
         /*sql_inclure_fin*/ 373 , criteres_373_2 , this.__ig1.donnees_retournees , __db1 );
         if(tt373_2[__xst] !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur de sélection de la requête nouvelle [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt373_2.__xme});
         }
         if(tt373_2[__xva].length >= 1){
             /*
               c'est une erreur si la requête existe déjà en base.
             */
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la requête portant le numéro ' + chi_id_requete_nouvelle + ' existe déjà [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la requête portant le numéro ' + chi_id_requete_nouvelle + ' existe déjà [' + this.__ig1.nl2()});
         }
         let chemin_fichier_ancien='';
         if(this.__ig1.donnees_retournees._CA_ === 2){
@@ -381,8 +363,7 @@ class requetes1{
         try{
             contenu=await this.__ig1.file_get_contents( chemin_fichier_ancien );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de lecture du fichier sur disque [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de lecture du fichier sur disque [' + this.__ig1.nl2()});
         }
         const repl0=new RegExp( 'sql_' + chi_id_requete_ancienne , 'g' );
         let nouveau_js=contenu.replace( repl0 , 'sql_' + chi_id_requete_nouvelle );
@@ -403,8 +384,7 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 351 , criteres_351 , this.__ig1.donnees_retournees , __db1 );
         if(tt351[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( tt351['__xme'] + 'la renumérotation a échoué [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt351.__xme});
         }
         /*
           Suppression de l'ancien fichier et création du nouveau fichier.
@@ -419,17 +399,13 @@ class requetes1{
         try{
             this.__ig1.file_put_contents( chemin_fichier_nouveau , nouveau_js );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'écriture du fichier a échoué [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'l\'écriture du fichier a échoué [' + this.__ig1.nl2( e ) + ']'});
         }
         this.__ig1.donnees_recues['chi_id_requete']=chi_id_requete_nouvelle;
         await this.concevoir_une_requete1_s.sauvegarder_une_matrice_de_requete( mat , d , chi_id_requete_nouvelle , __db1 );
         await this.concevoir_une_requete1_s.construire_le_js_contenant_la_liste_des_requetes( mat , d , __db1 );
         return({"__xst" : __xsu});
     }
-    /*
-      =============================================================================================================
-    */
     /*
       =============================================================================================================
     */
@@ -443,7 +419,7 @@ class requetes1{
         this.__ig1.donnees_recues['chi_id_requete']=__xva_avant['T0.chi_id_requete'];
         let ret1=await this.concevoir_une_requete1_s.sauvegarder_une_matrice_de_requete( mat , d , __xva_avant['T0.chi_id_requete'] , __db1 );
         if(ret1.__xst !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : ret1.__xme});
         }
         await this.concevoir_une_requete1_s.construire_le_js_contenant_la_liste_des_requetes( mat , d , __db1 );
         return({"__xst" : __xsu});
@@ -452,20 +428,12 @@ class requetes1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
@@ -481,8 +449,8 @@ class requetes1{
         let obj2=await this.__ig1.__fnt1.sauvegarder_et_supprimer_fichier( chemin_fichier , this.__ig1.donnees_retournees );
         if((await this.__ig1.is_file( chemin_fichier ))){
             if(obj2.__xst !== __xsu){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'la suppression du fichier n\'a pas fonctionné [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
+                this.__ig1.donnees_retournees.__xsi[__xer].push();
+                return({"__xst" : __xer ,"__xme" : 'la suppression du fichier n\'a pas fonctionné [' + this.__ig1.nl2()});
             }
         }
         await this.concevoir_une_requete1_s.construire_le_js_contenant_la_liste_des_requetes( mat , d , __db1 );
@@ -492,20 +460,12 @@ class requetes1{
       =============================================================================================================
     */
     async tests_avant_creer( mat , d , form , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
@@ -546,7 +506,7 @@ class requetes1{
         let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt354[__xva][0] , __db1 );
         if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
         }
         let donnees_sql={
             "c_chi_id_requete" : form['chi_id_requete'] ,
@@ -577,8 +537,7 @@ class requetes1{
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt354[__xva][0] , __db1 );
         if(__taam[__xst] !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
@@ -622,8 +581,7 @@ class requetes1{
             this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + chi_id_requete + ')))))';
         }
         if(chi_id_requete === null){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -639,11 +597,11 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 354 , {"T0_chi_id_requete" : chi_id_requete} , this.__ig1.donnees_retournees , __db1 );
         if(tt354[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt354.__xme});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt354[__xva][0] , __db1 );
         if(aetam[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt354;
         return({"__xst" : __xsu});
@@ -682,8 +640,7 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 354 , criteres_354 , this.__ig1.donnees_retournees , __db1 );
         if(tt354[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt354.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt354;
         return({"__xst" : __xsu});
@@ -711,13 +668,12 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 354 , criteres_354 , this.__ig1.donnees_retournees , __db1 );
         if(tt354[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt354.__xme});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt354[__xva][0] , __db1 );
         if(tas[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_352={
              /*  */
@@ -731,13 +687,11 @@ class requetes1{
         /*sql_inclure_fin*/ 352 , criteres_352 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt352[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt352.__xme});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt354[__xva][0] , __db1 );
         if(aac[__xst] === __xer){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
@@ -763,8 +717,7 @@ class requetes1{
             }
         }
         if(chi_id_requete === 0){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let liste_des_sources_utilisant_cette_requete={};
@@ -796,22 +749,9 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 411 , critere_411 , this.__ig1.donnees_retournees , __db1 );
         if(tt411[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt411.__xme});
         }
         if(tt411[__xva].length > 0){
-            /* this.__ig1.ma_trace1('tt411[__xva]=',tt411[__xva]); */
-            /*
-              position du 'p' de p(110)
-              83|10519
-              91|2748
-              91|2803
-              93|2578
-              93|2633
-              110|641
-              110|1296
-              110|17214
-            */
             let liste_des_chx_source_rev='';
             let liste_des_chp_parent_rev_de_id_requete='';
             for(let i in tt411[__xva]){
@@ -820,23 +760,6 @@ class requetes1{
             }
             liste_des_chx_source_rev='(' + liste_des_chx_source_rev.substr( 1 ) + ')';
             liste_des_chp_parent_rev_de_id_requete='(' + liste_des_chp_parent_rev_de_id_requete.substr( 1 ) + ')';
-            /*
-              this.__ig1.ma_trace1('liste_des_chx_source_rev='+liste_des_chx_source_rev);
-              this.__ig1.ma_trace1('liste_des_chp_parent_rev_de_id_requete='+liste_des_chp_parent_rev_de_id_requete);
-            */
-            /*#
-              SELECT `T0`.`chp_parent_rev` FROM  tbl_revs T0 WHERE (`T0`.`chp_provenance_rev` = 'source' AND `T0`.`chp_valeur_rev` = 'p' AND `T0`.`chp_type_rev` = 'f' 
-                       AND `T0`.`chx_source_rev` IN (83,91,91,93,93,110,110,110)
-                       AND `T0`.`chp_id_rev` IN ( 10520 , 2749 , 2804 , 2579 , 2634 , 642 , 1297 , 17224) )                
-                       
-              recherche des éléments qui contiennent p et 
-            */
-            /*
-              [
-              { "T0.chp_parent_rev": 2746 } ,
-              { "T0.chp_parent_rev": 2801 } 
-              ]
-            */
             if(liste_des_chx_source_rev !== ''){
                 /*
                   recherche des parents de ces "p"
@@ -856,35 +779,14 @@ class requetes1{
                 */
                 /*sql_inclure_fin*/ 412 , critere_412 , this.__ig1.donnees_retournees , __db1 );
                 if(tt412[__xst] !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : tt412.__xme});
                 }
                 let liste_des_parents_des_p_chp_parent_rev='';
                 for(let i in tt412[__xva]){
                     liste_des_parents_des_p_chp_parent_rev+=',' + tt412[__xva][i]['T0.chp_parent_rev'];
                 }
-                /* this.__ig1.ma_trace1('tt412[__xva]=',tt412[__xva]); */
                 if(liste_des_parents_des_p_chp_parent_rev !== ''){
                     liste_des_parents_des_p_chp_parent_rev='(' + liste_des_parents_des_p_chp_parent_rev.substr( 1 ) + ')';
-                    /* this.__ig1.ma_trace1('liste_des_parents_des_p_chp_parent_rev='+liste_des_parents_des_p_chp_parent_rev); */
-                    /*#
-                      [
-                        { "T0.chp_parent_rev": 10495 },
-                        { "T0.chp_parent_rev": 2743 },
-                        { "T0.chp_parent_rev": 2798 },
-                        { "T0.chp_parent_rev": 2573 },
-                        { "T0.chp_parent_rev": 2628 },
-                        { "T0.chp_parent_rev": 83 },
-                        { "T0.chp_parent_rev": 660 }
-                      ]
-                    */
-                    /*
-                      liste des enfants de ces id de type nomf
-                      SELECT `T0`.`chp_id_rev` FROM b1.tbl_revs T0 WHERE (`T0`.`chp_provenance_rev` = 'source'    AND `T0`.`chp_valeur_rev` = 'nomf'    AND `T0`.`chp_type_rev` = 'f'
-                      AND `T0`.`chx_source_rev` IN :T0_chx_source_rev
-                      AND `T0`.`chp_parent_rev` IN :T0_chp_parent_rev)
-                      ;
-                    */
                     let critere_413={"T0_chx_source_rev" : liste_des_chx_source_rev ,"T0_chp_parent_rev" : liste_des_parents_des_p_chp_parent_rev};
                     let tt413=await this.__ig1.sql_iii(
                     /*sql_inclure_deb*/ /*#
@@ -900,8 +802,7 @@ class requetes1{
                     */
                     /*sql_inclure_fin*/ 413 , critere_413 , this.__ig1.donnees_retournees , __db1 );
                     if(tt413[__xst] !== __xsu){
-                        this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : tt413.__xme});
                     }
                     /* this.__ig1.ma_trace1('tt413[__xva]=',tt413[__xva]); */
                     let liste_des_nomf_chp_id_rev='';
@@ -926,8 +827,7 @@ class requetes1{
                         */
                         /*sql_inclure_fin*/ 414 , critere_414 , this.__ig1.donnees_retournees , __db1 );
                         if(tt414[__xst] !== __xsu){
-                            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : tt414.__xme});
                         }
                         /* this.__ig1.ma_trace1('tt414[__xva]=',tt414[__xva]); */
                         for(let i in tt414[__xva]){
@@ -937,7 +837,6 @@ class requetes1{
                                 liste_des_sources_utilisant_cette_requete[tt414[__xva][i]['T0.chx_source_rev']]+=1;
                             }
                         }
-                        /* this.__ig1.ma_trace1('liste_des_sources_utilisant_cette_requete=',liste_des_sources_utilisant_cette_requete); */
                     }
                 }
             }
@@ -948,8 +847,7 @@ class requetes1{
             this.__ig1.donnees_retournees.__xsi[__xal].push( 'id_du source = ' + i + ' , ' + liste_des_sources_utilisant_cette_requete[i] + ' fois' );
         }
         if(la_requete_est_utilisee_dans_un_source === true){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la requête ' + chi_id_requete + ' est utilisée dans des sources' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la requête ' + chi_id_requete + ' est utilisée dans des sources'});
         }
         let critere_354={"T0_chi_id_requete" : chi_id_requete};
         let tt354=await this.__ig1.sql_iii(
@@ -984,7 +882,7 @@ class requetes1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
         let donnees_sql={
             "donnees" : [{
@@ -1017,29 +915,24 @@ class requetes1{
         );
         */
         /*sql_inclure_fin*/ 390 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt390[__xst] === __xsu){
-            if(tt390['changements'] === 0){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
-            }
-            let aac=await this.action_apres_creer( mat , d , tt390['nouvel_id'] , form , __db1 );
-            if(aac[__xst] === __xer){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                await this.filtre1( mat1 , 1 , this.__ig1.donnees_recues , this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
-            }else{
-                await this.page_modification1( mat , d , tt390['nouvel_id'] , __db1 );
-            }
-            return({"__xst" : __xsu});
-        }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( tt390['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+        if(tt390[__xst] !== __xsu || tt390['changements'] !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt390.__xme});
         }
+        let aac=await this.action_apres_creer( mat , d , tt390['nouvel_id'] , form , __db1 );
+        if(aac[__xst] === __xer){
+            await __db1.exec( 'ROLLBACK;' );
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer ,"__xme" : aac.__xme});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
+            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            await this.filtre1( mat1 , 1 , this.__ig1.donnees_recues , this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
+        }else{
+            await this.page_modification1( mat , d , tt390['nouvel_id'] , __db1 );
+        }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -1108,7 +1001,7 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 350 , criteres350 , this.__ig1.donnees_retournees , __db1 );
         if(tt350.__xst !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt350.__xme});
         }
         if(tt350[__xst] === __xsu && tt350[__xva].length === 0 && __debut > 0){
             __debut=0;

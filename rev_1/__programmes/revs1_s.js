@@ -26,8 +26,7 @@ class revs1{
         /*sql_inclure_fin*/ 360 , criteres_360 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt360[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt390.__xme});
         }
         await this.filtre1( mat , 1 , __db1 );
         return({"__xst" : __xsu});
@@ -36,74 +35,42 @@ class revs1{
       =============================================================================================================
     */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        /*#
-          let obj=await this.faire_un_traitement( __xva_avant['T0.chi_id_rev'] ,  this.__ig1.donnees_retournees , this.__ig1.options_generales , __db1 );
-          if(obj[__xst] === __xsu){
-              return({"__xst" : __xsu});
-          }else{
-              return({"__xst" : __xer});
-          }
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async tests_avant_creer( mat , d , form , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
@@ -142,8 +109,7 @@ class revs1{
         */
         /*sql_inclure_fin*/ 344 , criteres_344 , this.__ig1.donnees_retournees , __db1 );
         if(tt344[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt344.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt344;
         return({"__xst" : __xsu});
@@ -183,7 +149,7 @@ class revs1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : afr});
         }
         let donnees_sql={
             "donnees" : [{
@@ -249,13 +215,13 @@ class revs1{
         if(tt358[__xst] === __xsu){
             if(tt358['changements'] === 0){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : afr});
             }
             let aac=await this.action_apres_creer( mat , d , tt358['nouvel_id'] , form , __db1 );
             if(aac[__xst] === __xer){
                 await __db1.exec( 'ROLLBACK;' );
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : afr});
             }
             await __db1.exec( 'COMMIT;' );
             if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
@@ -267,7 +233,7 @@ class revs1{
             return({"__xst" : __xsu});
         }else{
             this.__ig1.donnees_retournees.__xsi[__xer].push( tt358['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : afr});
         }
     }
     /*
@@ -340,7 +306,7 @@ class revs1{
         */
         /*sql_inclure_fin*/ 359 , criteres359 , this.__ig1.donnees_retournees , __db1 );
         if(tt359.__xst !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : afr});
         }
         if(tt359[__xst] === __xsu && tt359[__xva].length === 0 && __debut > 0){
             __debut=0;

@@ -35,64 +35,52 @@ class sql_358{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_id_rev" */
-                if(elem['chp_id_rev'] === null || elem['chp_id_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_id_rev'] === null || elem['chp_id_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_type_rev" */
-                if(elem['chp_type_rev'] === null || elem['chp_type_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "type" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_type_rev'] === null || elem['chp_type_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "type" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_niveau_rev" */
-                if(elem['chp_niveau_rev'] === null || elem['chp_niveau_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "niveau" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_niveau_rev'] === null || elem['chp_niveau_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "niveau" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_quotee_rev" */
-                if(elem['chp_quotee_rev'] === null || elem['chp_quotee_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "quotee" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_quotee_rev'] === null || elem['chp_quotee_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "quotee" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_premier_rev" */
-                if(elem['chp_pos_premier_rev'] === null || elem['chp_pos_premier_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "pos premier" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_pos_premier_rev'] === null || elem['chp_pos_premier_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pos premier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_dernier_rev" */
-                if(elem['chp_pos_dernier_rev'] === null || elem['chp_pos_dernier_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "pos dernier" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_pos_dernier_rev'] === null || elem['chp_pos_dernier_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pos dernier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_parent_rev" */
-                if(elem['chp_parent_rev'] === null || elem['chp_parent_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_parent_rev'] === null || elem['chp_parent_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nbr_enfants_rev" */
-                if(elem['chp_nbr_enfants_rev'] === null || elem['chp_nbr_enfants_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nbr enfants" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_nbr_enfants_rev'] === null || elem['chp_nbr_enfants_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nbr enfants" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_num_enfant_rev" */
-                if(elem['chp_num_enfant_rev'] === null || elem['chp_num_enfant_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "num enfant" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_num_enfant_rev'] === null || elem['chp_num_enfant_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "num enfant" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_profondeur_rev" */
-                if(elem['chp_profondeur_rev'] === null || elem['chp_profondeur_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "profondeur" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_profondeur_rev'] === null || elem['chp_profondeur_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "profondeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_ouver_parenthese_rev" */
-                if(elem['chp_pos_ouver_parenthese_rev'] === null || elem['chp_pos_ouver_parenthese_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "pos ouver parenthese" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_pos_ouver_parenthese_rev'] === null || elem['chp_pos_ouver_parenthese_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pos ouver parenthese" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_enfant_suivant_rev" */
-                if(elem['chp_enfant_suivant_rev'] === null || elem['chp_enfant_suivant_rev']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "enfant suivant" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_enfant_suivant_rev'] === null || elem['chp_enfant_suivant_rev'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "enfant suivant" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
@@ -131,7 +119,14 @@ class sql_358{
                     nouvel_id=lignes[numero_de_ligne][0];
                 }
             }
-            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 358 , e , sql0 , {} ));
         }

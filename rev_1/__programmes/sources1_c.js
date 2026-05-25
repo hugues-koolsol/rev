@@ -69,7 +69,7 @@ class sources1{
             this.__ig1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -94,7 +94,7 @@ class sources1{
                 } );
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -167,13 +167,13 @@ class sources1{
             }
         }
         if(zone_source === '' || zone_resultat === ''){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         this.__ig1.zone_d_edition_en_cours=zone_source;
         let t1=document.getElementById( zone_source );
         let t2=document.getElementById( zone_resultat );
         if(!(t1 && t2)){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         t2.innerHTML='';
         let tableau1=this.__ig1.__rev1.txt_en_tableau( t1.value );
@@ -187,7 +187,7 @@ class sources1{
                 return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __ig1.__rev1.nl2() + '<br />de la matrice'} ));
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -241,8 +241,7 @@ class sources1{
             case 'charger_source_pour_compilation2' : 
             case 'exporter_dans_base_de_prod1' : break;
             default:
-                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});
@@ -398,7 +397,6 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        
         /* conversion des données numériques début */
         fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );

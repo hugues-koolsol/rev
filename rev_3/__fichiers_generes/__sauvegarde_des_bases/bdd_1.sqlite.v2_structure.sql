@@ -31,7 +31,7 @@ CREATE TABLE `tbl_groupes`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom du groupe'),
             typologie(cht),
             genre(19),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('groupe')
             )
             */
              `chp_nom_groupe` VARCHAR(128) NOT NULL
@@ -84,7 +84,7 @@ CREATE TABLE `tbl_metiers`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom du métier'),
             typologie(cht),
             genre(19),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('metier')
             )
             */
              `chp_nom_metier` VARCHAR(128) NOT NULL
@@ -137,7 +137,7 @@ CREATE TABLE `tbl_acces`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom'),
             typologie(chp),
             genre(3),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('acces')
             )
             */
              `chp_nom_acces` VARCHAR(64) NOT NULL
@@ -270,7 +270,7 @@ CREATE TABLE `tbl_menus`(
    table('tbl_menus'),
    genre_meta(table_de_base),rang_de_la_table(50),permet_la_gestion_de('menu'),
    distinction_pour_liste('liste des menus'),
-   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(677,100))) 
+   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(701,81))) 
 */
     
             /*
@@ -304,7 +304,7 @@ CREATE TABLE `tbl_menus`(
             nom_bref_du_champ('titre'),abrege_du_champ('titre'),
             typologie(chp),
             genre(3),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('menu')
             )
             */
              `chp_titre_menu` VARCHAR(64) NOT NULL
@@ -383,7 +383,7 @@ CREATE TABLE `tbl_sources`(
    table('tbl_sources'),
    genre_meta(table_de_base),rang_de_la_table(60),permet_la_gestion_de('source'),
    distinction_pour_liste('liste des sources'),
-   distinction_pour_isad('d\'un source'),transform_base_sur_svg(translate(679,261))) 
+   distinction_pour_isad('d\'un source'),transform_base_sur_svg(translate(702,248))) 
 */
     
             /*
@@ -405,7 +405,7 @@ CREATE TABLE `tbl_sources`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom'),
             typologie(),
             genre(19),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('source')
             )
             */
              `chp_nom_source` VARCHAR(128) NOT NULL
@@ -568,6 +568,18 @@ CREATE TABLE `tbl_sources`(
             )
             */
              `cht_notification_ko_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_pour_util_source'),
+            nom_bref_du_champ('pas pour util'),abrege_du_champ('pas pour util'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_pour_util_source` INTEGER NOT NULL DEFAULT  0
     );
 
 
@@ -605,7 +617,7 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion de l\'utilisateur'),
             typologie(cht),
             genre(3),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('utilisateur')
             )
             */
              `chp_nom_de_connexion_utilisateur` VARCHAR(64) NOT NULL
@@ -723,7 +735,7 @@ CREATE TABLE `tbl_taches`(
    table('tbl_taches'),
    genre_meta(table_de_base),rang_de_la_table(80),permet_la_gestion_de('tâche'),
    distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(691,526))) 
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(687,570))) 
 */
     
             /*
@@ -757,7 +769,7 @@ CREATE TABLE `tbl_taches`(
             nom_bref_du_champ('texte'),abrege_du_champ('texte'),
             typologie(),
             genre(11),
-            est_libelle_lien(1)
+            est_libelle_lien(1),nom_bref_libelle_lien('tache')
             )
             */
              `chp_texte_tache` TEXT NOT NULL

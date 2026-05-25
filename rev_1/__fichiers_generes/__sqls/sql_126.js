@@ -21,9 +21,8 @@ class sql_126{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_metier" */
-                if(elem['chp_nom_metier'] === null || elem['chp_nom_metier']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom du métier" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_nom_metier'] === null || elem['chp_nom_metier'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du métier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_nom_metier" ===
@@ -57,7 +56,14 @@ class sql_126{
                     nouvel_id=lignes[numero_de_ligne][0];
                 }
             }
-            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 126 , e , sql0 , {} ));
         }
