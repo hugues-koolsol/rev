@@ -41,7 +41,7 @@ class __navigation1{
         }
         let lst1=document.querySelectorAll( '[data-id_original_pour_menu="' + par_id_de_l_element + '"]' );
         if(lst1.length > 0){
-            console.error( 'menu_arbre1 id="' + par_id_de_l_element + '" déjà défini :-/' );
+            /* console.error( 'menu_arbre1 id="' + par_id_de_l_element + '" déjà défini :-/' ); */
             return;
         }
         this.#racine_html=document.getElementById( par_id_de_l_element );

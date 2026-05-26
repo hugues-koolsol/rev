@@ -53,8 +53,7 @@ class sources1{
                 break;
                 
             default:
-                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans ' + this.moi + '_c, la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'dans ' + this.moi + '_c, la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});
@@ -491,10 +490,10 @@ class sources1{
     }
     /*
       =============================================================================================================
-    sous_liste1( mat , d , le_colis=null ){
-        this.fonction_liste='sous_liste1';
-        return(this.__ig1.sous_liste_generique1( mat , d , le_colis , this , 'chi_id_source' ));
-    }
+      sous_liste1( mat , d , le_colis=null ){
+      this.fonction_liste='sous_liste1';
+      return(this.__ig1.sous_liste_generique1( mat , d , le_colis , this , 'chi_id_source' ));
+      }
     */
     /*
       =============================================================================================================

@@ -39,14 +39,14 @@ class x_ecran_rev_vers_css1{
             }
         }
         if(zone_source === '' || zone_resultat === ''){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
         }
         this.__ig1.zone_d_edition_en_cours=zone_source;
         let t1=document.getElementById( zone_source );
         let t2=document.getElementById( zone_resultat );
         t2.innerHTML='';
         if(!(t1 && t2)){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
         }
         /* on transforme le rev en css */
         let tableau1=this.__ig1.__rev1.txt_en_tableau( t1.value );
@@ -62,7 +62,7 @@ class x_ecran_rev_vers_css1{
         }else{
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} );
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
     }
     /*
       =============================================================================================================

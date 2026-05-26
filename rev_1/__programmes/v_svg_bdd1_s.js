@@ -29,15 +29,13 @@ class v_svg_bdd1{
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base_en_cours + '.sqlite';
         if(!(await this.__ig1.is_file( chemin_bdd ))){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' le fichier de la base n\'existe pas [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'le fichier de la base n\'existe pas [' + this.__ig1.nl2()});
         }
         let db1temp=null;
         try{
             db1temp=new Database( chemin_bdd , {"create" : false} );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur d\'ouverture de la base ' + chemin_bdd + ' [' + this.__ig1.nl2( e ) );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur d\'ouverture de la base ' + chemin_bdd + ' [' + this.__ig1.nl2( e )});
         }
         let sql0='SELECT COUNT(*) FROM `' + nom_de_la_table + '`;';
         let lignes=[];
@@ -47,8 +45,7 @@ class v_svg_bdd1{
             await statement.finalize();
         }catch(e){
             db1temp.close();
-            this.__ig1.donnees_retournees.__xsi[__xer].push( e.stack + ' ' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : e.stack + ' ' + this.__ig1.nl2()});
         }
         db1temp.close();
         let donnees0=[];
@@ -76,8 +73,7 @@ class v_svg_bdd1{
         */
         /*sql_inclure_fin*/ 171 , criteres_171 , this.__ig1.donnees_retournees , __db1 );
         if(tt171[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=[];
         if(tt171[__xva].length > 0){
@@ -109,20 +105,20 @@ class v_svg_bdd1{
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
         if(tt371[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + this.__ig1.donnees_recues[__xva]['id_bdd_de_la_base'] + '.sqlite';
         if((await this.__ig1.is_file( chemin_bdd ))){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'le fichier bdd existe déjà [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'le fichier bdd existe déjà [' + this.__ig1.nl2()});
         }
         let db1temp=null;
         try{
             db1temp=await new Database( chemin_bdd , {"create" : true} );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur sur new base ' + this.__ig1.donnees_recues[__xva]['id_bdd_de_la_base'] + '[' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : ' erreur sur new base ' + this.__ig1.donnees_recues[__xva]['id_bdd_de_la_base'] + '[' + this.__ig1.nl2( e ) + ']'
+                });
         }
         await db1temp.exec( 'BEGIN TRANSACTION;' );
         try{
@@ -130,8 +126,7 @@ class v_svg_bdd1{
         }catch(e){
             await db1temp.exec( 'ROLLBACK;' );
             await db1temp.close();
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur ssur source de la base [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur ssur source de la base [' + this.__ig1.nl2() + ']'});
         }
         await db1temp.exec( 'COMMIT;' );
         await db1temp.close();
@@ -210,8 +205,7 @@ class v_svg_bdd1{
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
         if(tt371[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
         /* this.__ig1.ma_trace1( 'chemin_bdd=' , chemin_bdd ); */
@@ -219,13 +213,14 @@ class v_svg_bdd1{
         try{
             db1=await new Database( chemin_bdd , {"create" : false} );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur sur new base ' + id_bdd_de_la_base + '[' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur sur new base ' + id_bdd_de_la_base + '[' + this.__ig1.nl2( e ) + ']'});
         }
         if(this.__ig1.donnees_recues[__xva]['source_sql'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' operation_table_dans_base(' + this.__ig1.donnees_recues[__xva]['operation_table'] + ') source sql vide [' + this.__ig1.nl2( e ) + ']' );
             await db1.close();
-            return({"__xst" : __xer});
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : ' operation_table_dans_base(' + this.__ig1.donnees_recues[__xva]['operation_table'] + ') source sql vide [' + this.__ig1.nl2( e ) + ']'
+                });
         }
         if(this.__ig1.donnees_recues[__xva]['operation_table'] === 'analyser_l_index'){
             await this.analyser_l_index( mat , d , db1 );
@@ -236,9 +231,10 @@ class v_svg_bdd1{
                 this.__ig1.donnees_retournees.__xsi[__xsu].push( this.__ig1.donnees_recues[__xva]['operation_table'] + ' dans la base physique réussie  [' + this.__ig1.nl2() + ']' );
             }catch(e){
                 await db1.close();
-                /* this.__ig1.ma_trace1('e='+e.stack); */
-                this.__ig1.donnees_retournees.__xsi[__xer].push( ' ' + this.__ig1.donnees_recues[__xva]['operation_table'] + ' dans la base physique impossible  [' + this.__ig1.nl2( e ) + '] <pre>' + this.__ig1.donnees_recues[__xva]['source_sql'].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '</pre>' );
-                return({"__xst" : __xer});
+                return({
+                        "__xst" : __xer ,
+                        "__xme" : ' ' + this.__ig1.donnees_recues[__xva]['operation_table'] + ' dans la base physique impossible  [' + this.__ig1.nl2( e ) + '] <pre>' + this.__ig1.donnees_recues[__xva]['source_sql'].replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '</pre>'
+                    });
             }
         }
         await db1.close();
@@ -265,7 +261,7 @@ class v_svg_bdd1{
                 /*sql_inclure_fin*/ 316 , criteres_316 , this.__ig1.donnees_retournees , __db1 );
                 if(tt316[__xst] !== __xsu){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de 316 [' + this.__ig1.nl2() );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : tt316.__xme});
                 }
                 for(let k1 in tt316[__xva]){
                     let v1=tt316[__xva][k1];
@@ -278,8 +274,7 @@ class v_svg_bdd1{
                             try{
                                 db1temp=await new Database( nom_de_fichier_bdd , {"create" : false} );
                             }catch(e2){
-                                this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur sur new db1temp ' + id_bdd_de_la_base + '[' + this.__ig1.nl2( e2 ) + ']' );
-                                return({"__xst" : __xer});
+                                return({"__xst" : __xer ,"__xme" : 'erreur sur new db1temp ' + id_bdd_de_la_base + '[' + this.__ig1.nl2( e2 ) + ']'});
                             }
                             try{
                                 db1temp.exec( this.__ig1.donnees_recues[__xva]['source_sql'] );
@@ -305,14 +300,11 @@ class v_svg_bdd1{
             let a=await db_source.exec( 'PRAGMA wal_checkpoint(FULL);' );
             await db_source.close();
         }catch(e){
-            this.__ig1.ma_trace1( 'e=' + e.stack );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur douverture base originale [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur douverture base originale [' + this.__ig1.nl2( e ) + ']'});
         }
         let repertoire=chemin_bdd.substr( 0 , chemin_bdd.lastIndexOf( '/' ) );
         if(!(await this.__ig1.is_file( chemin_bdd ))){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'fichier de bdd non trouvé [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'fichier de bdd non trouvé [' + this.__ig1.nl2()});
         }
         let chemin_bdd_base_temporaire=repertoire + '/' + 'temporaire_' + this.__ig1.donnees_retournees.date_heure_serveur.replace( / /g , '' ) + '.db_temporaire';
         chemin_bdd_base_temporaire=this.__ig1.options_generales.chemin_des_bdd + '___________toto.sqlite';
@@ -323,8 +315,7 @@ class v_svg_bdd1{
         try{
             db1temp=await new Database( chemin_bdd_base_temporaire , {"create" : true} );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de création de la bdd temporaire [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de création de la bdd temporaire [' + this.__ig1.nl2( e ) + ']'});
         }
         /*
           Attention foreign_keys=OFF
@@ -336,8 +327,7 @@ class v_svg_bdd1{
             }catch(e){
                 await db1temp.close();
                 this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_bdd_base_temporaire , this.__ig1.donnees_retournees );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de création des tables de la bdd temporaire [' + this.__ig1.nl2( e ) + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur de création des tables de la bdd temporaire [' + this.__ig1.nl2( e ) + ']'});
             }
         }
         let ret1=null;
@@ -346,8 +336,7 @@ class v_svg_bdd1{
         }catch(e){
             await db1temp.close();
             this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_bdd_base_temporaire , this.__ig1.donnees_retournees );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de création des tables de la bdd temporaire [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de création des tables de la bdd temporaire [' + this.__ig1.nl2( e ) + ']'});
         }
         let sql2='ATTACH DATABASE \'' + this.__ig1.__fnt1.sq0( chemin_bdd ) + '\' as \'source\';';
         /* this.__ig1.ma_trace1('sql2=',sql2); */
@@ -356,8 +345,7 @@ class v_svg_bdd1{
         }catch(e){
             await db1temp.close();
             this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_bdd_base_temporaire , this.__ig1.donnees_retournees );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'attach impossible [' + this.__ig1.nl2( e ) );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'attach impossible [' + this.__ig1.nl2( e )});
         }
         try{
             for(let k1 in liste_des_tables){
@@ -370,17 +358,16 @@ class v_svg_bdd1{
                 }catch(e){
                     await db1temp.close();
                     this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_bdd_base_temporaire , this.__ig1.donnees_retournees );
-                    console.log( 'e=' , e , e.stack );
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql sql3=' + sql3 + ' [' + this.__ig1.nl2( e ) );
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( '<b> les donnees de ' + v1 + ' ne peuvent être copiées [' + this.__ig1.nl2() );
-                    return({"__xst" : __xer});
+                    return({
+                            "__xst" : __xer ,
+                            "__xme" : 'erreur sql sql3=' + sql3 + ' [' + this.__ig1.nl2( e ) + '<b> les donnees de ' + v1 + ' ne peuvent être copiées ['
+                        });
                 }
             }
         }catch(e0){
             await db1temp.close();
             this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_bdd_base_temporaire , this.__ig1.donnees_retournees );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'boucle sur les tables [' + this.__ig1.nl2( e0 ) );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'boucle sur les tables [' + this.__ig1.nl2( e0 )});
         }
         let sql4='DETACH DATABASE \'source\';';
         /* this.__ig1.ma_trace1('sql4=',sql4); */
@@ -389,8 +376,7 @@ class v_svg_bdd1{
         }catch(e){
             await db1temp.close();
             this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_bdd_base_temporaire , this.__ig1.donnees_retournees );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'detach impossible [' + this.__ig1.nl2( e ) );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'detach impossible [' + this.__ig1.nl2( e )});
         }
         /*
           il faut supprimer les connexions aux bases;
@@ -415,16 +401,14 @@ class v_svg_bdd1{
         /* this.__ig1.ma_trace1("fin de la sieste"); */
         let obj1=await this.__ig1.__fnt1.sauvegarder_et_supprimer_fichier( chemin_bdd , this.__ig1.donnees_retournees );
         if(obj1.__xst !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur 111 sauvegarder_et_supprimer_fichier chemin_bdd="' + chemin_bdd + '" [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur 111 sauvegarder_et_supprimer_fichier chemin_bdd="' + chemin_bdd + '" [' + this.__ig1.nl2()});
         }
         try{
             await Deno.rename( chemin_bdd_base_temporaire , chemin_bdd );
             this.__ig1.donnees_retournees.__xsi[__xal].push( '👍 😎 La base (' + id_bdd_de_la_base + ') a bien été réécrite  [' + this.__ig1.nl2() + '] ' );
             return({"__xst" : __xsu});
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'rename fichier temporaire impossible [' + this.__ig1.nl2( e ) );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'rename fichier temporaire impossible [' + this.__ig1.nl2( e )});
         }
     }
     /*
@@ -450,8 +434,7 @@ class v_svg_bdd1{
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
         if(tt371[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt371.__xme});
         }
         let chemin_absolu='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
         let liste_des_autres_projets=[];
@@ -471,8 +454,7 @@ class v_svg_bdd1{
             */
             /*sql_inclure_fin*/ 316 , criteres_316 , this.__ig1.donnees_retournees , __db1 );
             if(tt316[__xst] !== __xsu){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : tt316.__xme});
             }
             for(let i in tt316[__xva]){
                 if(id_bdd_de_la_base !== tt316[__xva][i]['T0.chi_id_projet']){
@@ -483,8 +465,7 @@ class v_svg_bdd1{
         await __db1.close();
         let obj=await this.reecrire_la_base( mat , d , id_bdd_de_la_base , chemin_absolu , this.__ig1.donnees_recues[__xva]['source_sql_de_la_base'] , liste_des_tables , liste_des_tables_champs );
         if(obj.__xst !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de réécriture 1 [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de réécriture 1 [' + this.__ig1.nl2()});
         }
         for(let k1 in liste_des_autres_projets){
             /*
@@ -495,8 +476,7 @@ class v_svg_bdd1{
                 /* this.__ig1.ma_trace1( 'chemin_absolu=' + chemin_absolu ); */
                 let obj1=await this.reecrire_la_base( mat , d , liste_des_autres_projets[k1] , chemin_absolu , source_sql_de_la_base , liste_des_tables , liste_des_tables_champs );
                 if(obj1.__xst !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de réécriture 2 (' + liste_des_autres_projets[k1] + ') [' + this.__ig1.nl2() );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'erreur de réécriture 2 (' + liste_des_autres_projets[k1] + ') [' + this.__ig1.nl2()});
                 }
             }else{
                 this.__ig1.donnees_retournees.__xsi[__xal].push( 'la base (' + chemin_absolu + ') n\'a pas pu être réécrite car le fichier est absent du disque<br /> [' + this.__ig1.nl2() );
@@ -515,8 +495,7 @@ class v_svg_bdd1{
             try{
                 await Deno.mkdir( chemin_fichier_temporaire , {"mode" : 0o777 ,"recursive" : true} );
             }catch(e){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de création de répertoire temporaire [' + this.__ig1.nl2( e ) + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur de création de répertoire temporaire [' + this.__ig1.nl2( e ) + ']'});
             }
         }
         let fichier_temporaire=(chemin_fichier_temporaire + (await this.__ig1.cle_aleatoire())) + '_utilisateur_' + this.__ig1.donnees_retournees.chi_id_utilisateur + '.sqlite';
@@ -525,16 +504,13 @@ class v_svg_bdd1{
         try{
             dbtemp=await new Database( fichier_temporaire , {"enableForeignKeyConstraints" : true} );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de création de la bdd temporaire [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de création de la bdd temporaire [' + this.__ig1.nl2( e ) + ']'});
         }
         /* this.__ig1.ma_trace1( 'source' , source ); */
         try{
             let res0=await dbtemp.exec( source );
         }catch(e){
-            this.__ig1.ma_trace1( 'e.stack=' , e.stack );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de la création des table dans la base temporaire [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur lors de la création des table dans la base temporaire [' + this.__ig1.nl2( e ) + ']'});
         }
         await dbtemp.close();
         let essayer_auto_increment=true;
@@ -543,8 +519,7 @@ class v_svg_bdd1{
         }
         let ret=await this.obtenir_la_structure_de_la_base_sqlite( mat , d , fichier_temporaire , essayer_auto_increment );
         if(ret[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'de récupération de la structure de la base [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'de récupération de la structure de la base [' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( fichier_temporaire , this.__ig1.donnees_retournees );
         return({"__xst" : __xsu ,"value" : ret['value']});
@@ -560,8 +535,7 @@ class v_svg_bdd1{
         try{
             let res0=await db.exec( 'create table ____temporaire_____ (id integer primary key autoincrement)' );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de la création de la table temporaire [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur lors de la création de la table temporaire [' + this.__ig1.nl2( e ) + ']'});
         }
         let auto_increment=false;
         /*
@@ -577,14 +551,12 @@ class v_svg_bdd1{
                 auto_increment=true;
             }
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql = ' + sql + ' [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur sql = ' + sql + ' [' + this.__ig1.nl2( e ) + ']'});
         }
         try{
             let res0=await db.exec( 'drop table ____temporaire_____' );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de la suppression de la table temporaire [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur lors de la suppression de la table temporaire [' + this.__ig1.nl2( e ) + ']'});
         }
         let les_champs=[];
         try{
@@ -596,15 +568,13 @@ class v_svg_bdd1{
                 lignes=await statement.values();
                 await statement.finalize();
             }catch(e){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur PRAGMA table_info(\'' + nom_de_la_table + '\') [' + this.__ig1.nl2( e ) + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur PRAGMA table_info(\'' + nom_de_la_table + '\') [' + this.__ig1.nl2( e ) + ']'});
             }
             for( let i=0 ; i < lignes.length ; i++ ){
                 les_champs.push( lignes[i] );
             }
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql1 = PRAGMA table_info(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur sql1 = PRAGMA table_info(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']'});
         }
         /* return( this.__ig1.bug1(this.__ig1.donnees_retournees,les_champs)); */
         let liste_des_champs={};
@@ -656,8 +626,7 @@ class v_svg_bdd1{
                 const r1=db.prepare( 'SELECT COUNT(*) FROM ' + nom_de_la_table ).all();
                 __nbEnregs=r1[0]['__nbEnregs'];
             }catch(e){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de la création de la table temporaire [' + this.__ig1.nl2( e ) + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur lors de la création de la table temporaire [' + this.__ig1.nl2( e ) + ']'});
             }
             if(__nbEnregs === 0){
                 /* si le nombre d'enregistrements est supérieur à zéro */
@@ -666,8 +635,7 @@ class v_svg_bdd1{
                 try{
                     let res0=await db.exec( 'PRAGMA foreign_keys=OFF' );
                 }catch(e){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur PRAGMA foreign_keys=OFF [' + this.__ig1.nl2( e ) + ']' );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'erreur PRAGMA foreign_keys=OFF [' + this.__ig1.nl2( e ) + ']'});
                 }
                 let sql2='INSERT INTO `' + nom_de_la_table + '`(`' + a_des_champs_index + '`';
                 for(let k1 in liste_des_champs_non_null){
@@ -681,8 +649,7 @@ class v_svg_bdd1{
                 try{
                     let res0=await db.exec( sql2 );
                 }catch(e){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql2=' + sql2 + ' [' + this.__ig1.nl2( e ) + ']' );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'erreur sql2=' + sql2 + ' [' + this.__ig1.nl2( e ) + ']'});
                 }
                 let tab1=[];
                 try{
@@ -690,8 +657,10 @@ class v_svg_bdd1{
                     tab1=await statement.values();
                     await statement.finalize();
                 }catch(e){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur SELECT * FROM sqlite_sequence WHERE name = \'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']' );
-                    return({"__xst" : __xer});
+                    return({
+                            "__xst" : __xer ,
+                            "__xme" : 'erreur SELECT * FROM sqlite_sequence WHERE name = \'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']'
+                        });
                 }
                 for( let i=0 ; i < tab1.length ; i++ ){
                     liste_des_champs[a_des_champs_index]['auto_increment']=true;
@@ -699,21 +668,18 @@ class v_svg_bdd1{
                 try{
                     let res0=await db.exec( 'PRAGMA foreign_keys=ON' );
                 }catch(e){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'PRAGMA foreign_keys=ON [' + this.__ig1.nl2( e ) + ']' );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'PRAGMA foreign_keys=ON [' + this.__ig1.nl2( e ) + ']'});
                 }
                 let sql3='DELETE FROM `' + nom_de_la_table + '` WHERE `' + a_des_champs_index + '` = 1';
                 try{
                     let res0=await db.exec( sql3 );
                 }catch(e){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql3=' + sql3 + ' [' + this.__ig1.nl2( e ) + ']' );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'erreur sql3=' + sql3 + ' [' + this.__ig1.nl2( e ) + ']'});
                 }
                 try{
                     let res0=await db.exec( 'PRAGMA foreign_keys=ON' );
                 }catch(e){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'PRAGMA foreign_keys=ON [' + this.__ig1.nl2( e ) + ']' );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'PRAGMA foreign_keys=ON [' + this.__ig1.nl2( e ) + ']'});
                 }
             }
         }
@@ -727,8 +693,7 @@ class v_svg_bdd1{
                 lignes=await statement.values();
                 await statement.finalize();
             }catch(e){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur PRAGMA foreign_key_list(\'' + nom_de_la_table + '\') [' + this.__ig1.nl2( e ) + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur PRAGMA foreign_key_list(\'' + nom_de_la_table + '\') [' + this.__ig1.nl2( e ) + ']'});
             }
             for( let i=0 ; i < lignes.length ; i++ ){
                 let arr=lignes[i];
@@ -744,8 +709,7 @@ class v_svg_bdd1{
                 };
             }
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql = PRAGMA foreign_key_list(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur sql = PRAGMA foreign_key_list(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']'});
         }
         try{
             let lignes=[];
@@ -756,8 +720,7 @@ class v_svg_bdd1{
                 lignes=await statement.values();
                 await statement.finalize();
             }catch(e){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur PRAGMA index_list(\'' + nom_de_la_table + '\') [' + this.__ig1.nl2( e ) + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur PRAGMA index_list(\'' + nom_de_la_table + '\') [' + this.__ig1.nl2( e ) + ']'});
             }
             for( let i=0 ; i < lignes.length ; i++ ){
                 let arr=lignes[i];
@@ -782,22 +745,19 @@ class v_svg_bdd1{
                             lignes1=await statement.values();
                             await statement.finalize();
                         }catch(e){
-                            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur PRAGMA index_info(\'' + arr[1] + '\') [' + this.__ig1.nl2( e ) + ']' );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : 'erreur PRAGMA index_info(\'' + arr[1] + '\') [' + this.__ig1.nl2( e ) + ']'});
                         }
                         for( let j=0 ; j < lignes1.length ; j++ ){
                             let arr1=lignes1[j];
                             liste_des_indexes[arr[1]]['champs'][arr1[2]]={"seqno" : arr1[0] ,"cid" : arr1[1] ,"name" : arr1[2]};
                         }
                     }catch(e2){
-                        this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql = PRAGMA table_info(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e2 ) + ']' );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'erreur sql = PRAGMA table_info(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e2 ) + ']'});
                     }
                 }
             }
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql = PRAGMA table_info(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur sql = PRAGMA table_info(\'' + nom_de_la_table + '\' [' + this.__ig1.nl2( e ) + ']'});
         }
         let tableau={"liste_des_champs" : liste_des_champs ,"liste_des_indexes" : liste_des_indexes};
         /* return(this.__ig1.bug1(this.__ig1.donnees_retournees,tableau)); */
@@ -812,8 +772,7 @@ class v_svg_bdd1{
         try{
             db1=new Database( chemin_base , {"create" : false} );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur d\'ouverture de la base ' + chemin_base + ' [' + this.__ig1.nl2( e ) );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur d\'ouverture de la base ' + chemin_base + ' [' + this.__ig1.nl2( e )});
         }
         /*
           NE pas prendre les sous tables de CREATE VIRTUAL
@@ -825,8 +784,7 @@ class v_svg_bdd1{
             lignes0=await statement.values();
             await statement.finalize();
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql0 = ' + sql0 + ' [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur sql0 = ' + sql0 + ' [' + this.__ig1.nl2( e ) + ']'});
         }
         let complementaire_sans_virtuelles='';
         if(lignes0.length > 0){
@@ -845,8 +803,7 @@ class v_svg_bdd1{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sql = ' + sql + ' [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur sql = ' + sql + ' [' + this.__ig1.nl2( e ) + ']'});
         }
         let tableau_des_tables=[];
         for(let col of lignes){
@@ -862,8 +819,7 @@ class v_svg_bdd1{
             }else{
                 await db1.exec( 'ROLLBACK;' );
                 await db1.close();
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur la table "' + v1 + '" [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur sur la table "' + v1 + '" [' + this.__ig1.nl2() + ']'});
             }
         }
         await db1.exec( 'ROLLBACK;' );
@@ -890,14 +846,15 @@ class v_svg_bdd1{
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
         if(tt371[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
         /* this.__ig1.ma_trace1( 'chemin_bdd=' , chemin_bdd ); */
         if(!(await this.__ig1.is_file( chemin_bdd ))){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' fichier de la base de donnée sqlite introuvable pour la base ' + id_bdd_de_la_base + '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : ' fichier de la base de donnée sqlite introuvable pour la base ' + id_bdd_de_la_base + '[' + this.__ig1.nl2() + ']'
+                });
         }
         let essayer_auto_increment=true;
         if(this.__ig1.donnees_retournees.chi_id_projet > 2){
@@ -905,16 +862,17 @@ class v_svg_bdd1{
         }
         let ret=await this.obtenir_la_structure_de_la_base_sqlite( mat , d , chemin_bdd , essayer_auto_increment );
         if(ret[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur sur la structure de la base ' + id_bdd_de_la_base + '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur sur la structure de la base ' + id_bdd_de_la_base + '[' + this.__ig1.nl2() + ']'});
         }
         let tableauDesTables=ret['value'];
         let ret2=await this.produire_un_tableau_de_la_structure_d_une_bdd_grace_a_un_source_de_structure( mat , d , source_base_virtuelle );
         if(ret2[__xst] === __xsu){
             tableaux_retournes={"tableau1" : ret['value'] ,"tableau2" : ret2['value']};
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur sur la structure de la base 2 de la zone "genere"e ' + id_bdd_de_la_base + '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : 'erreur sur la structure de la base 2 de la zone "genere"e ' + id_bdd_de_la_base + '[' + this.__ig1.nl2() + ']'
+                });
         }
         return({"__xst" : __xsu ,"__xva" : tableaux_retournes});
     }
@@ -951,8 +909,7 @@ class v_svg_bdd1{
             this.__ig1.donnees_retournees[__xva]['maj']=maj;
             return({"__xst" : __xsu});
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur dans recuperer_les_tableaux_des_bases [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur dans recuperer_les_tableaux_des_bases [' + this.__ig1.nl2() + ']'});
         }
     }
     /*
@@ -997,8 +954,7 @@ class v_svg_bdd1{
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
         if(tt371[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let liste_des_projets=[];
         if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1){
@@ -1013,8 +969,7 @@ class v_svg_bdd1{
             */
             /*sql_inclure_fin*/ 316 , criteres_316 , this.__ig1.donnees_retournees , __db1 );
             if(tt316[__xst] !== __xsu){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
             }
             liste_des_projets=tt316[__xva];
         }
@@ -1025,15 +980,13 @@ class v_svg_bdd1{
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
         if(!(await this.__ig1.is_file( chemin_bdd ))){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' le fichier de la base n\'existe pas [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'le fichier de la base n\'existe pas [' + this.__ig1.nl2()});
         }
         let db1temp=null;
         try{
             db1temp=new Database( chemin_bdd , {"create" : false} );
         }catch(e){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur d\'ouverture de la base ' + chemin_bdd + ' [' + this.__ig1.nl2( e ) );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur d\'ouverture de la base ' + chemin_bdd + ' [' + this.__ig1.nl2( e )});
         }
         let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA journal_mode=WAL;'];
         let la_requete=this.__ig1.donnees_recues[__xva]['source_sql'];
@@ -1062,21 +1015,23 @@ class v_svg_bdd1{
             await db1temp.close();
             this.__ig1.donnees_retournees.__xsi[__xsu].push( 'la base ' + id_bdd_de_la_base + ' a bien été modifiée contexte(' + contexte + ')' );
         }catch(e){
+            await db1temp.close();
             if(e.stack.indexOf( 'duplicate column name' ) >= 0 && la_requete.indexOf( 'ADD COLUMN' ) >= 0){
-                this.__ig1.ma_trace1( 'e=' , e , '\n la_requete=' + la_requete );
+                /* si la colonne a déjà été supprimée, ce n'est pas vraiment une erreur et on continue pour le faire sur les autres bases systèmes */
                 this.__ig1.donnees_retournees.__xsi[__xal].push( 'la colonne existe déjà dans la base ' + id_bdd_de_la_base + ' contexte(' + contexte + ')' );
             }else if(e.stack.indexOf( 'no such column' ) >= 0 && la_requete.indexOf( 'DROP COLUMN' ) >= 0){
-                /* si la colonne a déjà été supprimée, ce n'est pas vraiment une erreur */
+                /* si la colonne a déjà été supprimée, ce n'est pas vraiment une erreur et on continue pour le faire sur les autres bases systèmes */
                 this.__ig1.donnees_retournees.__xsi[__xal].push( 'la colonne a déjà été supprimée de la base ' + id_bdd_de_la_base + ' contexte(' + contexte + ')' );
                 await db1temp.close();
             }else{
                 this.__ig1.ma_trace1( 'bug dans la requête ' + la_requete + e.stack );
-                await db1temp.close();
-                this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur d\'exécution de la requête de la base ' + chemin_bdd + ' <pre>' + la_requete + '</pre> [' + this.__ig1.nl2( e ) );
                 if(la_requete.indexOf( 'DROP' ) >= 0 && la_requete.indexOf( 'COLUMN' ) >= 0){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( ' <b>REMARQUE : </b><br /> si la colonne à supprimer est la dernière de la table, il faut la déplacer en avant dernière position pour la supprimer ' );
                 }
-                return({"__xst" : __xer});
+                return({
+                        "__xst" : __xer ,
+                        "__xme" : ' erreur d\'exécution de la requête de la base ' + chemin_bdd + ' <pre>' + la_requete + '</pre> [' + this.__ig1.nl2( e )
+                    });
             }
         }
         if(this.__ig1.donnees_retournees._CA_ === 1
@@ -1099,8 +1054,7 @@ class v_svg_bdd1{
                         try{
                             db1temp=new Database( chemin_bdd , {"create" : false} );
                         }catch(e){
-                            this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur d\'ouverture de la base ' + chemin_bdd + ' [' + this.__ig1.nl2( e ) );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : ' erreur d\'ouverture de la base ' + chemin_bdd + ' [' + this.__ig1.nl2( e )});
                         }
                         try{
                             let b=await db1temp.exec( la_requete );
@@ -1117,8 +1071,10 @@ class v_svg_bdd1{
                                 await db1temp.close();
                             }else{
                                 await db1temp.close();
-                                this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur d\'exécution de la requête de la base ' + chemin_bdd + ' <pre>' + la_requete + '</pre> [' + this.__ig1.nl2( e ) );
-                                return({"__xst" : __xer});
+                                return({
+                                        "__xst" : __xer ,
+                                        "__xme" : ' erreur d\'exécution de la requête de la base ' + chemin_bdd + ' <pre>' + la_requete + '</pre> [' + this.__ig1.nl2( e )
+                                    });
                             }
                         }
                     }
@@ -1145,12 +1101,7 @@ class v_svg_bdd1{
         */
         /*sql_inclure_fin*/ 356 , criteres_356 , this.__ig1.donnees_retournees , __db1 );
         if(tt356[__xst] !== __xsu || tt356['changements'] !== 1){
-            if(tt356['__xme'] !== ''){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( tt356['__xme'] + ' [' + this.__ig1.nl2() );
-            }else{
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-            }
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt356.__xme});
         }
         /*
           Construction du fichier des dépendances.
@@ -1166,8 +1117,7 @@ class v_svg_bdd1{
         */
         /*sql_inclure_fin*/ 372 , {} , this.__ig1.donnees_retournees , __db1 );
         if(tt372[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt372.__xme});
         }
         let tableau_liste_des_bases=[];
         let les_dependances_json={};
@@ -1178,8 +1128,7 @@ class v_svg_bdd1{
             /* this.__ig1.ma_trace1('id_basedd='+id_basedd+' , rev_basedd=' + rev_basedd.substr(0,200)); */
             let omat=this.__ig1.__rev1.rev_tm( rev_basedd );
             if(omat.__xst !== __xsu){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur d\'écriture du fichier js des dependances [' + this.__ig1.nl2( e ) + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur d\'écriture du fichier js des dependances [' + this.__ig1.nl2( e ) + ']'});
             }
             let mat1=omat.__xva;
             for( let i=0 ; i < 10 ; i++ ){
@@ -1195,8 +1144,7 @@ class v_svg_bdd1{
                                     for( let l=k + 1 ; l < l01 ; l=mat1[l][12] ){
                                         if(mat1[l][1] === 'references' && mat1[l][2] === 'f'){
                                             if(!(mat1[l][8] === 2 && mat1[l + 1][2] === 'c' && mat1[l + 2][2] === 'c')){
-                                                this.__ig1.donnees_retournees.__xsi[__xer].push( 'un champ "references" ne contient pas le bon nombre d\'arguments [' + this.__ig1.nl2() );
-                                                return({"__xst" : __xer});
+                                                return({"__xst" : __xer ,"__xme" : 'un champ "references" ne contient pas le bon nombre d\'arguments [' + this.__ig1.nl2()});
                                             }
                                             let id_bdd_de_la_base_parente=id_basedd;
                                             let nom_de_la_table_parente=mat1[l + 1][1];
@@ -1210,8 +1158,7 @@ class v_svg_bdd1{
                                             for( let m=i + 1 ; m < l01 ; m=mat1[m][12] ){
                                                 if(mat1[m][1] === 'nom_de_la_table' && mat1[m][2] === 'f'){
                                                     if(!(mat1[m][8] === 1 && mat1[m + 1][2] === 'c')){
-                                                        this.__ig1.donnees_retournees.__xsi[__xer].push( 'le champ "nom_de_la_table" ne contient pas le bon nombre d\'argument [' + this.__ig1.nl2() );
-                                                        return({"__xst" : __xer});
+                                                        return({"__xst" : __xer ,"__xme" : 'le champ "nom_de_la_table" ne contient pas le bon nombre d\'argument [' + this.__ig1.nl2()});
                                                     }
                                                     nom_de_la_table_enfant=mat1[m + 1][1];
                                                 }
@@ -1219,8 +1166,7 @@ class v_svg_bdd1{
                                             for( let m=k + 1 ; m < l01 ; m=mat1[m][12] ){
                                                 if(mat1[m][1] === 'nom_du_champ' && mat1[m][2] === 'f'){
                                                     if(!(mat1[m][8] === 1 && mat1[m + 1][2] === 'c')){
-                                                        this.__ig1.donnees_retournees.__xsi[__xer].push( 'le champ "nom_du_champ" ne contient pas le bon nombre d\'argument [' + this.__ig1.nl2() );
-                                                        return({"__xst" : __xer});
+                                                        return({"__xst" : __xer ,"__xme" : 'le champ "nom_du_champ" ne contient pas le bon nombre d\'argument [' + this.__ig1.nl2()});
                                                     }
                                                     nom_du_champ_enfant=mat1[m + 1][1];
                                                 }
@@ -1242,8 +1188,7 @@ class v_svg_bdd1{
                                             for( let m=l + 1 ; m < l01 ; m=mat1[m][12] ){
                                                 if(mat1[m][1] === 'reference_externe' && mat1[m][2] === 'f'){
                                                     if(!(mat1[m][8] === 3 && mat1[m + 1][2] === 'c' && mat1[m + 2][2] === 'c' && mat1[m + 2][2] === 'c')){
-                                                        this.__ig1.donnees_retournees.__xsi[__xer].push( 'un champ "reference_externe" ne contient pas le bon nombre d\'arguments [' + this.__ig1.nl2() );
-                                                        return({"__xst" : __xer});
+                                                        return({"__xst" : __xer ,"__xme" : 'un champ "reference_externe" ne contient pas le bon nombre d\'arguments [' + this.__ig1.nl2()});
                                                     }
                                                     let id_bdd_de_la_base_parente=parseInt( mat1[m + 1][1] , 10 );
                                                     let nom_de_la_table_parente=mat1[m + 2][1];
@@ -1257,8 +1202,7 @@ class v_svg_bdd1{
                                                     for( let n=i + 1 ; n < l01 ; n=mat1[n][12] ){
                                                         if(mat1[n][1] === 'nom_de_la_table' && mat1[n][2] === 'f'){
                                                             if(!(mat1[n][8] === 1 && mat1[n + 1][2] === 'c')){
-                                                                this.__ig1.donnees_retournees.__xsi[__xer].push( 'le champ "nom_de_la_table" ne contient pas le bon nombre d\'argument [' + this.__ig1.nl2() );
-                                                                return({"__xst" : __xer});
+                                                                return({"__xst" : __xer ,"__xme" : 'le champ "nom_de_la_table" ne contient pas le bon nombre d\'argument [' + this.__ig1.nl2()});
                                                             }
                                                             nom_de_la_table_enfant=mat1[n + 1][1];
                                                         }
@@ -1266,8 +1210,7 @@ class v_svg_bdd1{
                                                     for( let n=k + 1 ; n < l01 ; n=mat1[m][12] ){
                                                         if(mat1[n][1] === 'nom_du_champ' && mat1[n][2] === 'f'){
                                                             if(!(mat1[n][8] === 1 && mat1[n + 1][2] === 'c')){
-                                                                this.__ig1.donnees_retournees.__xsi[__xer].push( 'le champ "nom_du_champ" ne contient pas le bon nombre d\'argument [' + this.__ig1.nl2() );
-                                                                return({"__xst" : __xer});
+                                                                return({"__xst" : __xer ,"__xme" : 'le champ "nom_du_champ" ne contient pas le bon nombre d\'argument [' + this.__ig1.nl2()});
                                                             }
                                                             nom_du_champ_enfant=mat1[n + 1][1];
                                                         }
@@ -1302,8 +1245,7 @@ class v_svg_bdd1{
         try{
             await this.__ig1.file_put_contents( chemin_fichier__liste_des_bases , contenu_fichier__liste_des_bases );
         }catch{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur d\'écriture du fichier js des liste_des_bases [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur d\'écriture du fichier js des liste_des_bases [' + this.__ig1.nl2( e ) + ']'});
         }
         let chemin_fichier__liste_des_dependances='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__liste_des_dependances_bases.json';
         let contenu_fichier__liste_des_dependances='' + JSON.stringify( les_dependances_json , null , 2 ) + '';
@@ -1311,8 +1253,7 @@ class v_svg_bdd1{
         try{
             await this.__ig1.file_put_contents( chemin_fichier__liste_des_dependances , contenu_fichier__liste_des_dependances );
         }catch{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur d\'écriture du fichier js des dependances [' + this.__ig1.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur d\'écriture du fichier js des dependances [' + this.__ig1.nl2( e ) + ']'});
         }
         if(this.__ig1.donnees_retournees.chi_id_projet >= 4){
             let chi_id_basedd=0;
@@ -1327,12 +1268,10 @@ class v_svg_bdd1{
                 let o=new m['bdds1']( this.__ig1 );
                 let obj=await o.enregistrer_la_matrice_dans_la_table_rev( mat , d , __db1 );
                 if(obj[__xst] !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de sauvegarde de matrice de la base [' + this.__ig1.nl2() );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'erreur de sauvegarde de matrice de la base [' + this.__ig1.nl2()});
                 }
             }else{
-                this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2()});
             }
         }
         this.__ig1.donnees_retournees.__xsi[__xsu].push( 'le schéma de la base a bien été sauvegardée et le fichier des dépendances reconstruit' );

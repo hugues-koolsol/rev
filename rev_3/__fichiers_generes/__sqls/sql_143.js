@@ -12,18 +12,15 @@ class sql_143{
     async sql( par ){
         /* test "non nul" sur le champ "chx_acces_autorisation" */
         if(par['n_chx_acces_autorisation'] === null || par['n_chx_acces_autorisation'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_source_autorisation" */
         if(par['n_chx_source_autorisation'] === null || par['n_chx_source_autorisation'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "source" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
         if(par['n_che_pour_sous_liste_autorisation'] === null || par['n_che_pour_sous_liste_autorisation'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "pour accès sous liste" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_autorisations` SET \r\n';
         let tableau_champs=[];

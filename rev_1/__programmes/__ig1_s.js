@@ -221,8 +221,7 @@ class __ig1{
                                                                   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
                                                                 */
                                                             }else{
-                                                                this.donnees_retournees.__xsi[__xer].push( '<b>1autorisation non référencée ' + m1 + '.' + n1 + '</b>' + this.nl2() );
-                                                                return({"__xst" : __xer});
+                                                                return({"__xst" : __xer ,"__xme" : '<b>1autorisation non référencée ' + m1 + '.' + n1 + '</b>' + this.nl2()});
                                                             }
                                                         }else if(elem.che_pour_sous_liste_autorisation === 0){
                                                             if(elem.cht_condition_js_source === null){
@@ -252,18 +251,15 @@ class __ig1{
                                                                     if(elem.cht_notification_ko_source !== null && elem.cht_notification_ko_source){
                                                                         this.donnees_retournees.__xsi[__xer].push( elem.cht_notification_ko_source );
                                                                     }
-                                                                    this.donnees_retournees.__xsi[__xer].push( 'erreur autorisation serveur 2 ' + this.nl2() );
-                                                                    return({"__xst" : __xer});
+                                                                    return({"__xst" : __xer ,"__xme" : 'erreur autorisation serveur 2 ' + this.nl2()});
                                                                 }
                                                             }
                                                         }
                                                     }else{
-                                                        this.donnees_retournees.__xsi[__xer].push( '<b>3:autorisation serveur non référencée ' + n1 + '</b>' );
-                                                        return({"__xst" : __xer});
+                                                        return({"__xst" : __xer ,"__xme" : '<b>3:autorisation serveur non référencée ' + n1 + '</b>'});
                                                     }
                                                 }catch(e){
-                                                    this.donnees_retournees.__xsi[__xer].push( 'erreur autorisation serveur 4 ' + this.nl2( e ) );
-                                                    return({"__xst" : __xer});
+                                                    return({"__xst" : __xer ,"__xme" : 'erreur autorisation serveur 4 ' + this.nl2( e )});
                                                 }
                                             }
                                             /* this.ma_trace1('nom_du_fichier='+nom_du_fichier,this.objet_des_modules_charges); */
@@ -387,7 +383,7 @@ class __ig1{
             if(this.donnees_retournees.__xst !== __xsu){
                 return({"__xst" : this.donnees_retournees.__xst});
             }else{
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2()});
             }
         }
     }
@@ -433,7 +429,7 @@ class __ig1{
         }
         let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );
         if(ttxxx.__xst !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         if(ttxxx[__xst] === __xsu && ttxxx[__xva].length === 0 && __debut > 0){
             __debut=0;
@@ -626,7 +622,7 @@ class __ig1{
             if(this.options_generales.erreur_controlee === false){
                 this.ma_trace1( 'erreur dans appel_fonction=' , e123456.stack );
             }
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
     }
     /*
@@ -727,7 +723,7 @@ class __ig1{
                 let entetes_reponse_http={"headers" : headers};
                 return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu ,"entetes_reponse_http" : entetes_reponse_http}});
             }
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }catch(e){
             let text_erreur='Erreur, consultez la maintenance [' + this.nl2( e ) + ']';
             const headers=new Headers();
@@ -834,7 +830,7 @@ class __ig1{
             }
         }
         if(les_erreurs > 0){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }else{
             return({"__xst" : __xsu});
         }
@@ -1006,8 +1002,7 @@ class __ig1{
         let la_classe_sql='sql_' + numero_de_sql;
         let nom_du_fichier='/__fichiers_generes/__sqls/' + la_classe_sql + '.js';
         if(!this.is_file( '..' + nom_du_fichier )){
-            donnees_retournees.__xsi[__xer].push( 'Le fichier sql_' + numero_de_sql + ' n\'a pas été trouvé [' + this.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'Le fichier sql_' + numero_de_sql + ' n\'a pas été trouvé [' + this.nl2( e ) + ']'});
         }
         try{
             /* this.ma_trace1('nom_du_fichier='+nom_du_fichier); */
@@ -1016,8 +1011,7 @@ class __ig1{
             let ret=o.sql( par , donnees_retournees );
             return ret;
         }catch(e){
-            donnees_retournees.__xsi[__xer].push( 'Le sql_' + numero_de_sql + ' comporte une erreur [' + this.nl2( e ) + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'Le sql_' + numero_de_sql + ' comporte une erreur [' + this.nl2( e ) + ']'});
         }
     }
     /*

@@ -400,7 +400,7 @@ class __televersement1{
                 }
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -448,7 +448,7 @@ class __televersement1{
             return({"__xst" : __xsu});
         }
         this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'des paramètres doivent être indiqués dans le contenu de cet appel '} );
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================

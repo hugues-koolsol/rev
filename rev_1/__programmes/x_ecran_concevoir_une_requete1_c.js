@@ -1959,7 +1959,7 @@ class x_ecran_concevoir_une_requete1{
                 return({"__xst" : __xsu});
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1990,8 +1990,7 @@ class x_ecran_concevoir_une_requete1{
         };
         let obj0=this._rev_de_sql_vers_js1.compiler_requete_vers_js1( [] , 0 , donnees_recues_a_transmettre );
         if(obj0.__xst !== __xsu){
-            donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         let obj1=this.transform_source_rev_vers_sql( le_colis1.__xva.requete['T0.cht_rev_requete'] , chi_id_requete );
         return obj1;

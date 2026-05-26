@@ -34,8 +34,7 @@ class sql_117{
                 */
                 let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(elem['chp_nom_source'],'nom du source');
                 if(__test_1_1.__xst !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_1_1.__xme);
-                    return{"__xst" : __xer};
+                    return{"__xst" : __xer ,"__xme" : __test_1_1.__xme};
                 }
 
                 /* test "non nul" sur le champ "che_binaire_source" */

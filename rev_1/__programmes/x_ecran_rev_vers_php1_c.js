@@ -72,14 +72,14 @@ class x_ecran_rev_vers_php1{
             }
         }
         if(zone_source === '' || zone_resultat === ''){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
         }
         this.__ig1.zone_d_edition_en_cours=zone_source;
         let t1=document.getElementById( zone_source );
         let t2=document.getElementById( zone_resultat );
         t2.innerHTML='';
         if(!(t1 && t2)){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
         }
         /* on transforme le rev en php */
         let obj1=this.#objet_conversion_rev_vers_php.c_rev_vers_php( t1.value , {} );
@@ -89,7 +89,7 @@ class x_ecran_rev_vers_php1{
         }else{
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} );
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
     }
     /*
       =============================================================================================================
@@ -99,7 +99,7 @@ class x_ecran_rev_vers_php1{
             try{
                 this.#parseur_phpparseur=window.PhpParser.Engine( {"parser" : {"extractDoc" : true} ,"ast" : {"withPositions" : true}} );
             }catch(e){
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2( e )});
             }
         }
         let l01=mat.length;

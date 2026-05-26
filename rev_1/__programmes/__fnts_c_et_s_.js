@@ -142,8 +142,6 @@ class __fnts_c_et_s{
     test_du_nom_technique1( valeur , nom_champ ){
         if(valeur === null || valeur === ''){
             return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit être renseignée'} ));
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
-            return({"__xst" : __xer});
         }
         let mes_err='erreur sur le champ "' + nom_champ + '" car ce caractère n\'est pas admis : ';
         for( let i=0 ; i < valeur.length ; i++ ){
@@ -178,7 +176,7 @@ class __fnts_c_et_s{
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'des fonctions ne sont pas définies " ' + des_fonctions_non_trouvees + '" ' + this.__ig1.nl2()} );
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -191,8 +189,7 @@ class __fnts_c_et_s{
             let v=parseFloat( valeur );
             /* si on a entré "3.4" 34  est différent de 30 ] */
             if(v * 10 !== parseInt( v , 10 ) * 10){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir une nombre avec une virgule ( "," )' + this.__ig1.nl2()} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir une nombre avec une virgule ( "," )' + this.__ig1.nl2()});
             }
             return({"__xst" : __xsu});
         }
@@ -204,22 +201,19 @@ class __fnts_c_et_s{
                     contient_virgule=true;
                 }
             }else{
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir des chiffres et/ou des virgules' + this.__ig1.nl2()} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir des chiffres et/ou des virgules' + this.__ig1.nl2()});
             }
         }
         if(contient_virgule === true){
             /* c'est probablement un champ décimal */
             let tab=valeur.split( ',' );
             if(tab.length > 2){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit  contenir une virgule uniquement' + this.__ig1.nl2()} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit  contenir une virgule uniquement' + this.__ig1.nl2()});
             }
             let val1=parseInt( tab[0] , 10 );
             let val2=parseInt( tab[1] , 10 );
             if(val1 + val2 > 20){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" contenir une longueur cumulée de 20' + this.__ig1.nl2()} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" contenir une longueur cumulée de 20' + this.__ig1.nl2()});
             }
         }
         return({"__xst" : __xsu});
@@ -231,8 +225,7 @@ class __fnts_c_et_s{
         if(valeur && valeur.length === n){
             return({"__xst" : __xsu});
         }
-        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit doit contenir ' + n + ' caractères.' + this.__ig1.nl2()} );
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit doit contenir ' + n + ' caractères.' + this.__ig1.nl2()});
     }
     /*
       =============================================================================================================

@@ -53,26 +53,14 @@ class menus1{
             try{
                 parseur_javascript=window.acorn.Parser;
             }catch(e){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de chargement du parseur js ' + this.__ig1.__m_rev1.nl2( e )} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur de chargement du parseur js ' + this.__ig1.__m_rev1.nl2( e )});
             }
             let tableau_des_commentaires_js=[];
             let obj=null;
             try{
                 obj=parseur_javascript.parse( données.__xva['cht_genere_source'] , {"ecmaVersion" : 'latest' ,"sourceType" : 'module' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
             }catch(e){
-                if(e.message){
-                    let tt=e.message.substr( e.message.indexOf( 'Unexpected token ' ) + 17 );
-                    let lig_col=null;
-                    /* const text = "anything(aa:bb)otherthing"; */
-                    const regex=/(?<=\()(\w+):(\w+)(?=\))/;
-                    const match=tt.match( regex );
-                    if(match && this.__ig1.est_num( match[1] ) && this.__ig1.est_num( match[2] )){
-                        lig_col=[parseInt( match[1] , 10 ),parseInt( match[2] , 10 )];
-                    }
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ' <br />erreur dans le javascript :' + e.message} );
-                }
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' <br />erreur dans le javascript :' + e.message});
             }
             /*
               =============================================================================================
@@ -80,8 +68,7 @@ class menus1{
             */
             let obj1=this.#objet_conversion_ast_js_vers_rev.traite_ast( obj.body , tableau_des_commentaires_js , {} );
             if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de transformation du js en rev ' + chi_id_source + '[' + this.__ig1.nl2() + ']'} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur de transformation du js en rev ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
             }
             /*
               =============================================================================================
@@ -89,8 +76,7 @@ class menus1{
             */
             let obj2=this.__ig1.__rev1.rev_tm( obj1.__xva );
             if(obj2.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
             }
             let mat1=obj2.__xva;
             let l01=mat1.length;
@@ -163,8 +149,7 @@ class menus1{
                 break;
                 
             default:
-                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});

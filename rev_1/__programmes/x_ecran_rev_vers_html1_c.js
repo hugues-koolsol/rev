@@ -53,14 +53,14 @@ class x_ecran_rev_vers_html1{
             }
         }
         if(zone_source === '' || zone_resultat === ''){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
         }
         this.__ig1.zone_d_edition_en_cours=zone_source;
         let t1=document.getElementById( zone_source );
         let t2=document.getElementById( zone_resultat );
         t2.innerHTML='';
         if(!(t1 && t2)){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
         }
         /* on transforme le rev en html */
         var obj1=this.#objet_conversion_rev_vers_html.c_rev_vers_html( t1.value , {} );
@@ -70,7 +70,6 @@ class x_ecran_rev_vers_html1{
         }else{
             return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} ));
         }
-        return({"__xst" : __xer});
     }
     /*
       =============================================================================================================
@@ -117,7 +116,7 @@ class x_ecran_rev_vers_html1{
                 }
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
     }
     /*
       =============================================================================================================

@@ -472,7 +472,7 @@ class taches1{
                         "chp_priorite_tache" : form['chp_priorite_tache']
                     }]
         };
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
         let tt111=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_taches`(
@@ -490,7 +490,7 @@ class taches1{
         );
         */
         /*sql_inclure_fin*/ 111 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt111[__xst] !== __xsu || tt111['changements'] !== 0){
+        if(tt111[__xst] !== __xsu || tt111['changements'] !== 1){
             return({"__xst" : __xer ,"__xme" : tt111.__xme});
         }
         if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){

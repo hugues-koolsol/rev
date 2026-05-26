@@ -24,9 +24,8 @@ class sql_117{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_source" */
-                if(elem['chp_nom_source'] === null || elem['chp_nom_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_nom_source'] === null || elem['chp_nom_source'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_nom_source" ===
@@ -38,19 +37,16 @@ class sql_117{
                 }
 
                 /* test "non nul" sur le champ "che_binaire_source" */
-                if(elem['che_binaire_source'] === null || elem['che_binaire_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['che_binaire_source'] === null || elem['che_binaire_source'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_contient_version_source" */
-                if(elem['che_contient_version_source'] === null || elem['che_contient_version_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "contient version" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['che_contient_version_source'] === null || elem['che_contient_version_source'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "contient version" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_autorisation_globale_source" */
-                if(elem['che_autorisation_globale_source'] === null || elem['che_autorisation_globale_source']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['che_autorisation_globale_source'] === null || elem['che_autorisation_globale_source'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
@@ -78,7 +74,14 @@ class sql_117{
                     nouvel_id=lignes[numero_de_ligne][0];
                 }
             }
-            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 117 , e , sql0 , {} ));
         }

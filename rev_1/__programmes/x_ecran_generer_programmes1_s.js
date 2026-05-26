@@ -42,7 +42,7 @@ class x_ecran_generer_programmes1{
         */
         /*sql_inclure_fin*/ 417 , critere_417 , this.__ig1.donnees_retournees , __db1 );
         if(tt417.__xst !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt147.__xme});
         }
         let rev_serveur=null;
         /* this.__ig1.ma_trace1("tt417.__xva",tt417.__xva); */

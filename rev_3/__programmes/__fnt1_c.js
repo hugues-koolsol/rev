@@ -32,16 +32,14 @@ class __fnt1{
             }
         }
         if(nom_du_champ === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'});
         }
         let ref_champ_heure=null;
         try{
             ref_champ_heure=document.getElementById( nom_du_champ );
         } catch {}
         if(ref_champ_heure === null){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : '"' + nom_du_champ + '" non trouvé dans la page !'} );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : '"' + nom_du_champ + '" non trouvé dans la page !'});
         }
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         let dim=null;
@@ -1102,16 +1100,14 @@ class __fnt1{
             }
         }
         if(nom_du_champ === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'});
         }
         let ref_champ_date=null;
         try{
             ref_champ_date=document.getElementById( nom_du_champ );
         } catch {}
         if(ref_champ_date === null){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : '"' + nom_du_champ + '" non trouvé dans la page !'} );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : '"' + nom_du_champ + '" non trouvé dans la page !'});
         }
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         let dim=null;
@@ -1217,8 +1213,7 @@ class __fnt1{
             }
         }
         if(nom_du_champ === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'} );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ" non trouvé !'});
         }
         let maintenant=new Date();
         let t=maintenant.getFullYear() + sepa_date + (maintenant.getMonth() + 1 < 10 ? ( '0' + (maintenant.getMonth() + 1) ) : ( maintenant.getMonth() + 1 )) + sepa_date + (maintenant.getDate() < 10 ? ( '0' + maintenant.getDate() ) : ( maintenant.getDate() ));
@@ -1250,7 +1245,7 @@ class __fnt1{
             }
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1284,9 +1279,8 @@ class __fnt1{
                 aa.selectionStart=pos_deb;
                 aa.selectionEnd=pos_deb + colonne;
                 let toto=this.getCaretPos( aa , ligne );
-                /* console.log('toto=',toto); */
             }catch(e){
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
             }
         }
         return({"__xst" : __xsu});
@@ -1325,7 +1319,7 @@ class __fnt1{
                 }
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1355,10 +1349,9 @@ class __fnt1{
                 }
             }
         }else{
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'zone source non trouvée ' + this.__ig1.nl2()} );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'zone source non trouvée ' + this.__ig1.nl2()});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1381,7 +1374,7 @@ class __fnt1{
                 return({"__xst" : __xsu});
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1403,7 +1396,7 @@ class __fnt1{
                 return({"__xst" : __xsu});
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1449,7 +1442,7 @@ class __fnt1{
                 return({"__xst" : __xsu});
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1476,7 +1469,7 @@ class __fnt1{
                 return({"__xst" : __xsu});
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1509,7 +1502,7 @@ class __fnt1{
             o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_la_valeur_dans_la_zone(zone_source(' + zone_source + '))))" title="remplacer_dans_la_zone" >remplacer</div>\r\n';
             this.__ig1.affiche_sous_fenetre1( o1 );
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1536,7 +1529,7 @@ class __fnt1{
             copyToClipboard( document.getElementById( zone_source ).value );
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1565,7 +1558,7 @@ class __fnt1{
             }
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1601,7 +1594,7 @@ class __fnt1{
             }
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1807,7 +1800,7 @@ class __fnt1{
             }
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -1846,7 +1839,7 @@ class __fnt1{
             }
             return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     #btn_esvege={
         "scotcher" : '<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el" viewBox="0 0  100 100"><g transform=""><path d=" M 0 0 C 36 0 65 0 100 0 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:0.1;fill-opacity:0.5;"></path><path stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M 68 63 C 97 66 97 82 92 89  C 86 96 48 98 36 87 C 25 77 51 79 74 83 C 67 76 72 74 62 69" style="stroke:orange;fill:gold;stroke-width:4;fill-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M 3 28 C 10 20 20 10 27 3 C 30 10 42 26 65 47 C 67 49 66 52 64 54 C 66 56 68 58 70 60 C 68 63 63 67 60 70 C 58 68 57 67 55 65 C 53 67 49 65 47 64 C 25 39 11 30 3 28 " style="stroke:rgb(0, 0, 0);fill:fuchsia;stroke-width:4;"></path></g></svg>'

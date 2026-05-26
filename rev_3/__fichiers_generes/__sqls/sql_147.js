@@ -26,24 +26,20 @@ class sql_147{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chp_titre_menu" */
-                if(elem['chp_titre_menu'] === null || elem['chp_titre_menu']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "titre" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_titre_menu'] === null || elem['chp_titre_menu'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_autorisation_menu" */
-                if(elem['chx_autorisation_menu'] === null || elem['chx_autorisation_menu']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "autorisation" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chx_autorisation_menu'] === null || elem['chx_autorisation_menu'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_methode_menu" */
-                if(elem['chp_methode_menu'] === null || elem['chp_methode_menu']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "methode" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_methode_menu'] === null || elem['chp_methode_menu'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "cht_libelle_menu" */
-                if(elem['cht_libelle_menu'] === null || elem['cht_libelle_menu']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "libelle" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['cht_libelle_menu'] === null || elem['cht_libelle_menu'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
@@ -73,7 +69,14 @@ class sql_147{
                     nouvel_id=lignes[numero_de_ligne][0];
                 }
             }
-            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 147 , e , sql0 , {} ));
         }

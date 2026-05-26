@@ -374,9 +374,7 @@ class x_ecran_generer_souches1{
                         }
                     }
                 }else{
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} );
-                    /* this.__ig1.remplis_les_messages_et_affiche( '' ); */
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()});
                 }
             }
         }

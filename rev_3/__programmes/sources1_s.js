@@ -35,15 +35,15 @@ class sources1{
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source` , 
+        `T0`.`che_pour_util_source`
          FROM b1.tbl_sources T0
         WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_116 , this.__ig1.donnees_retournees , __db1 );
         if(tt116[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let criteres_118={
@@ -58,8 +58,7 @@ class sources1{
         /*sql_inclure_fin*/ 118 , criteres_118 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt118[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'erreur lors de le suppression [' + this.__ig1.nl2() + ']'});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
@@ -85,15 +84,15 @@ class sources1{
             }
         }
         if(chi_id_source === 0){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_116={"T0_chi_id_source" : chi_id_source};
         let tt116=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source`
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_contient_version_source` , `T0`.`che_autorisation_globale_source` , 
+        `T0`.`che_pour_util_source`
          FROM b1.tbl_sources T0
         WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
@@ -148,14 +147,15 @@ class sources1{
            AND `T0`.`che_binaire_source` = :T0_che_binaire_source
            AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
            AND `T0`.`che_contient_version_source` = :T0_che_contient_version_source
-           AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source) 
+           AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
+           AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
         ORDER BY `T0`.`chi_id_source` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
         */
         /*sql_inclure_fin*/ 115 , criteres115 , this.__ig1.donnees_retournees , __db1 );
         if(tt115.__xst !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt115.__xme});
         }
         if(tt115[__xst] === __xsu && tt115[__xva].length === 0 && __debut > 0){
             __debut=0;
@@ -174,7 +174,8 @@ class sources1{
                AND `T0`.`che_binaire_source` = :T0_che_binaire_source
                AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
                AND `T0`.`che_contient_version_source` = :T0_che_contient_version_source
-               AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source) 
+               AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
+               AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
             ORDER BY `T0`.`chi_id_source` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
@@ -205,7 +206,7 @@ class sources1{
     */
     async sous_liste2( mat , d ){
         const __nbMax=40;
-        let criteres_115={"T0_che_pour_util_source" : 1 };
+        let criteres_115={"T0_che_pour_util_source" : 1};
         criteres_115['quantitee']=__nbMax;
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let liste2=await this.__ig1.generique_sous_liste2( mat , d , 115 , criteres_115 , __nbMax , __db1 );

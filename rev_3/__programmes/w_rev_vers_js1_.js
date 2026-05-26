@@ -3118,6 +3118,7 @@ class w_rev_vers_js1{
                         'send',
                         'setAttribute',
                         'slice',
+                        'some',
                         'splice',
                         'split',
                         'startsWith',

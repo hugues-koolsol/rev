@@ -48,8 +48,7 @@ class utilisateurs1{
             }
         }
         if(chi_id_utilisateur === 0){
-            __ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : __ig1.nl2()} );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let o1='';
         o1+='<h1>Changer le mot de passe</h1>';
@@ -78,8 +77,7 @@ class utilisateurs1{
                 break;
                 
             default:
-                this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});

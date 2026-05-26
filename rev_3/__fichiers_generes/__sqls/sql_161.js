@@ -12,13 +12,11 @@ class sql_161{
     async sql( par ){
         /* test "non nul" sur le champ "chp_texte_tache" */
         if(par['n_chp_texte_tache'] === null || par['n_chp_texte_tache'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_priorite_tache" */
         if(par['n_chp_priorite_tache'] === null || par['n_chp_priorite_tache'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "priorite de la tâche" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "chp_priorite_tache" ===
@@ -32,8 +30,7 @@ class sql_161{
         */
         /* test "non nul" sur le champ "chx_utilisateur_tache" */
         if(par['n_chx_utilisateur_tache'] === null || par['n_chx_utilisateur_tache'] === ''){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_taches` SET \r\n';
         let tableau_champs=[];

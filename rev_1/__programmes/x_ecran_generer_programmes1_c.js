@@ -90,6 +90,12 @@ class x_ecran_generer_programmes1{
         let src_serveur_js2='';
         let chi_id_basedd_de_reference=parseInt( document.getElementById( 'vv_les_bases' ).value , 10 );
         let table_de_reference=document.getElementById( 'vv_les_tables' ).value;
+        /*
+          généralement, ne_pas_prendre_les_valeurs_en_session est décoché ( false )
+          cad que les champs de la table qui sont marqués en session ( utilisateur , projet , acces )
+          sont pris à partir de ceux de session
+        */
+        let ne_pas_prendre_les_valeurs_en_session=document.getElementById( 'ne_pas_prendre_les_valeurs_en_session' ).checked;
         console.log( '%c référence : base=' + chi_id_basedd_de_reference + ' , table=' + table_de_reference , 'background:lightblue;' );
         /*
           si des_champs_sont_references_dans_une_autre_table === true
@@ -118,12 +124,6 @@ class x_ecran_generer_programmes1{
                 }
             }
         }
-        /*
-          généralement, ne_pas_prendre_les_valeurs_en_session est décoché ( false )
-          cad que les champs de la table qui sont marqués en session ( utilisateur , projet , acces )
-          sont pris à partir de ceux de session
-        */
-        let ne_pas_prendre_les_valeurs_en_session=document.getElementById( 'ne_pas_prendre_les_valeurs_en_session' ).checked;
         let def_table=this.#obj_bdd[this.#nom_de_la_table];
         let incice_de_la_classe=document.getElementById( 'incice_de_la_classe' ).value;
         if(this.#nom_de_la_table.substr( 0 , 4 ) === 'tbl_'){
@@ -990,9 +990,6 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='      =============================================================================================================\r\n';
         src_serveur_js2+='    */\r\n';
         src_serveur_js2+='    async actions_et_tests_apres_page_modifications(mat , d , __xva_avant , __db1){\r\n';
-        src_serveur_js2+='        /*#\r\n';
-        src_serveur_js2+='          return({"__xst" : __xer,"__xme" : \' [\' + this.__ig1.nl2() + \']\'});\r\n';
-        src_serveur_js2+='        */\r\n';
         src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
         src_serveur_js2+='    }\r\n';
         /*
@@ -1001,9 +998,6 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='      =============================================================================================================\r\n';
         src_serveur_js2+='    */\r\n';
         src_serveur_js2+='    async tests_et_actions_apres_modifier(mat , d , form , __xva_avant , __db1){\r\n';
-        src_serveur_js2+='        /*\r\n';
-        src_serveur_js2+='          return({"__xst" : __xer,"__xme" : \' [\' + this.__ig1.nl2() + \']\'});\r\n';
-        src_serveur_js2+='        */\r\n';
         src_serveur_js2+='        return{__xst:__xsu};\r\n';
         src_serveur_js2+='    }\r\n';
         /*
@@ -1022,9 +1016,6 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){\r\n';
-            src_serveur_js2+='        /*\r\n';
-            src_serveur_js2+='          return({"__xst" : __xer,"__xme" : \' [\' + this.__ig1.nl2() + \']\'});\r\n';
-            src_serveur_js2+='        */\r\n';
             src_serveur_js2+='        return{__xst:__xsu};\r\n';
             src_serveur_js2+='    }\r\n';
         }
@@ -1034,9 +1025,6 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='      =============================================================================================================\r\n';
         src_serveur_js2+='    */\r\n';
         src_serveur_js2+='    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){\r\n';
-        src_serveur_js2+='        /*\r\n';
-        src_serveur_js2+='          return({"__xst" : __xer,"__xme" : \' [\' + this.__ig1.nl2() + \']\'});\r\n';
-        src_serveur_js2+='        */\r\n';
         src_serveur_js2+='        return{__xst:__xsu};\r\n';
         src_serveur_js2+='    }\r\n';
         /*
@@ -1045,9 +1033,6 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='      =============================================================================================================\r\n';
         src_serveur_js2+='    */\r\n';
         src_serveur_js2+='    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){\r\n';
-        src_serveur_js2+='        /*\r\n';
-        src_serveur_js2+='          return({"__xst" : __xer,"__xme" : \' [\' + this.__ig1.nl2() + \']\'});\r\n';
-        src_serveur_js2+='        */\r\n';
         src_serveur_js2+='        return{__xst:__xsu};\r\n';
         src_serveur_js2+='    }\r\n';
         /*
@@ -1056,9 +1041,6 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='      =============================================================================================================\r\n';
         src_serveur_js2+='    */\r\n';
         src_serveur_js2+='    async tests_avant_creer( mat , d , form , __db1 ){\r\n';
-        src_serveur_js2+='        /*\r\n';
-        src_serveur_js2+='          return({"__xst" : __xer,"__xme" : \' [\' + this.__ig1.nl2() + \']\'});\r\n';
-        src_serveur_js2+='        */\r\n';
         src_serveur_js2+='        return{__xst:__xsu};\r\n';
         src_serveur_js2+='    }\r\n';
         /*
@@ -1067,9 +1049,6 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='      =============================================================================================================\r\n';
         src_serveur_js2+='    */\r\n';
         src_serveur_js2+='    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){\r\n';
-        src_serveur_js2+='        /*\r\n';
-        src_serveur_js2+='          return({"__xst" : __xer,"__xme" : \' [\' + this.__ig1.nl2() + \']\'});\r\n';
-        src_serveur_js2+='        */\r\n';
         src_serveur_js2+='        return{__xst:__xsu};\r\n';
         src_serveur_js2+='    }\r\n';
         /*
@@ -1293,9 +1272,8 @@ class x_ecran_generer_programmes1{
             }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                    || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
                    || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
-                   || obj_champ.genre_objet_du_champ.che_est_session_genre === 1
-                       && obj_champ.genre_objet_du_champ.chp_nom_en_session_genre !== null
-                   || obj_champ.genre_objet_du_champ.che_est_session_genre === 1
+                   || ( obj_champ.genre_objet_du_champ.che_est_session_genre === 1
+                       && obj_champ.genre_objet_du_champ.chp_nom_en_session_genre !== null && ne_pas_prendre_les_valeurs_en_session === false )
             ){
             }else{
                 liste_des_conversions_modification.push( obj_champ );
@@ -1690,6 +1668,9 @@ class x_ecran_generer_programmes1{
                 if(obj_champ.hasOwnProperty( 'nom_en_session1' ) && obj_champ.nom_en_session1 === 'chi_id_utilisateur'){
                     afficher=false;
                 }
+                if(ne_pas_prendre_les_valeurs_en_session === true){
+                    afficher=true;
+                }
                 if(afficher === true){
                     src_client2+='        /*\r\n';
                     src_client2+='          =====================================================================================================\r\n';
@@ -1997,6 +1978,7 @@ class x_ecran_generer_programmes1{
             if(reference_externe_base === 1
                    && reference_externe_table === 'tbl_utilisateurs'
                    && reference_externe_champ === 'chi_id_utilisateur'
+                   && ne_pas_prendre_les_valeurs_en_session === false
             ){
                 src_client2+='        /*\r\n';
                 src_client2+='          =====================================================================================================\r\n';
@@ -2006,6 +1988,7 @@ class x_ecran_generer_programmes1{
                    && obj_champ.hasOwnProperty( 'champ_pere' )
                    && obj_champ.table_mere !== ''
                    && obj_champ.champ_pere !== ''
+                   && ne_pas_prendre_les_valeurs_en_session === true
             ){
                 src_client2+='        /*\r\n';
                 src_client2+='          =====================================================================================\r\n';
@@ -2165,8 +2148,10 @@ class x_ecran_generer_programmes1{
                    && reference_externe_table === 'tbl_utilisateurs'
                    && reference_externe_champ === 'chi_id_utilisateur'
             ){
-                if(obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
-                       && obj_champ.meta.est_utilisateur_autre_que_courant === 1
+                if((obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
+                       && obj_champ.meta.est_utilisateur_autre_que_courant === 1)
+                      ||                    ne_pas_prendre_les_valeurs_en_session === true
+
                 ){
                     src_client2+='        /*\r\n';
                     src_client2+='          =====================================================================================================\r\n';
@@ -2373,7 +2358,6 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        };\r\n';
             src_serveur_js2+='        let tt' + ref_select + '=await this.__ig1.sql_iii( ' + ref_select + ' , criteres_' + ref_select + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
             src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu){\r\n';
-            src_serveur_js2+='            this.__ig1.donnees_retournees.__xsi[__xer].push( \'[\' + this.__ig1.nl2() + \']\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : tt' + ref_select + '.__xme});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees[__xva][\'page_duplication1\']=tt' + ref_select + ';\r\n';
@@ -2623,8 +2607,10 @@ class x_ecran_generer_programmes1{
                    && reference_externe_table === 'tbl_utilisateurs'
                    && reference_externe_champ === 'chi_id_utilisateur'
             ){
-                if(obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
-                       && obj_champ.meta.est_utilisateur_autre_que_courant === 1
+                if((obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
+                       && obj_champ.meta.est_utilisateur_autre_que_courant === 1)
+                      || ne_pas_prendre_les_valeurs_en_session === true
+                      
                 ){
                     src_client2+='        if(fo1[\'' + nom_du_champ + '\']===\'\'){\r\n';
                     src_client2+='            this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseignée\'  });\r\n';
@@ -2753,6 +2739,8 @@ class x_ecran_generer_programmes1{
                 if(reference_externe_base === 1
                        && reference_externe_table === 'tbl_utilisateurs'
                        && reference_externe_champ === 'chi_id_utilisateur'
+                       && ne_pas_prendre_les_valeurs_en_session === false
+
                 ){
                     src_client2+='        /* pas de convertion pour le champ ' + liste_des_conversions[i].nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur ) */';
                 }else{
@@ -2826,6 +2814,7 @@ class x_ecran_generer_programmes1{
                     ){
                         if(obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
                                && obj_champ.meta.est_utilisateur_autre_que_courant === 1
+                              || ne_pas_prendre_les_valeurs_en_session === true
                         ){
                             src_serveur_js2+='        form[\'' + liste_des_conversions[i].nom_du_champ + '\']=';
                             src_serveur_js2+='form[\'' + liste_des_conversions[i].nom_du_champ + '\'] === null || ';
@@ -2893,8 +2882,9 @@ class x_ecran_generer_programmes1{
                        && reference_externe_table === 'tbl_utilisateurs'
                        && reference_externe_champ === 'chi_id_utilisateur'
                 ){
-                    if(obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
-                           && obj_champ.meta.est_utilisateur_autre_que_courant === 1
+                    if((obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
+                           && obj_champ.meta.est_utilisateur_autre_que_courant === 1)
+                          || ne_pas_prendre_les_valeurs_en_session === true
                     ){
                         if(obj_champ.non_nulle === false){
                             src_serveur_js2+='                    \'' + nom_du_champ + '\' : form[\'' + nom_du_champ + '\'] === \'\' ? ( null ) : ( form[\'' + nom_du_champ + '\'] ),\n';
@@ -2939,9 +2929,9 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        /**/\r\n';
             src_serveur_js2+='        await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
             src_serveur_js2+='        let tt' + ref_insert + '=await this.__ig1.sql_iii( ' + ref_insert + ' , criteres_' + ref_insert + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
-            src_serveur_js2+='        if(tt' + ref_insert + '.__xst === __xsu || tt' + ref_insert + '[\'changements\'] !== 1){\r\n';
+            src_serveur_js2+='        if(tt' + ref_insert + '.__xst !== __xsu || tt' + ref_insert + '[\'changements\'] !== 1){\r\n';
             src_serveur_js2+='            await __db1.exec( \'ROLLBACK;\' );\r\n';
-            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : tt' + ref_insert + '[\'__xme\'] + \' l\\\'insertion a échoué [\' + this.__ig1.nl2() + \']\'});\r\n';
+            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : tt' + ref_insert + '.__xme + \' l\\\'insertion a échoué [\' + this.__ig1.nl2() + \']\'});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let aac=await this.action_apres_creer( mat , d , tt' + ref_insert + '[\'nouvel_id\'] , form , __db1 );\r\n';
             src_serveur_js2+='        if(aac.__xst === __xer){\r\n';
@@ -3166,8 +3156,9 @@ class x_ecran_generer_programmes1{
                        && reference_externe_table === 'tbl_utilisateurs'
                        && reference_externe_champ === 'chi_id_utilisateur'
                 ){
-                    if(obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
-                           && obj_champ.meta.est_utilisateur_autre_que_courant === 1
+                    if((obj_champ.meta.hasOwnProperty( 'est_utilisateur_autre_que_courant' )
+                           && obj_champ.meta.est_utilisateur_autre_que_courant === 1)
+                       || ne_pas_prendre_les_valeurs_en_session === true
                     ){
                         /* exemple : fdl_id_prestataire_missaffect */
                         src_client2+='        /*\r\n';

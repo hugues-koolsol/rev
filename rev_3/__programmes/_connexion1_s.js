@@ -134,7 +134,7 @@ class _connexion1{
             await __db1.close();
         }catch(e){
             await __db1.close();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2( e )});
         }
     }
     /*

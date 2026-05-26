@@ -111,18 +111,15 @@ class _developpement1{
                 js_moins_commentaires_sql=js_moins_commentaires_sql.replace( regex , '' );
                 obj=this.#parseur_javascript.parse( js_moins_commentaires_sql , {"ecmaVersion" : 'latest' ,"sourceType" : 'module' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
             }catch(e){
-                if(e.message){
-                    let tt=e.message.substr( e.message.indexOf( 'Unexpected token ' ) + 17 );
-                    let lig_col=null;
-                    /* const text = "anything(aa:bb)otherthing"; */
-                    const regex=/(?<=\()(\w+):(\w+)(?=\))/;
-                    const match=tt.match( regex );
-                    if(match && this.__ig1.est_num( match[1] ) && this.__ig1.est_num( match[2] )){
-                        lig_col=[parseInt( match[1] , 10 ),parseInt( match[2] , 10 )];
-                    }
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' <br />erreur dans le javascript :' + e.message} );
+                let tt=e.message.substr( e.message.indexOf( 'Unexpected token ' ) + 17 );
+                let lig_col=null;
+                /* const text = "anything(aa:bb)otherthing"; */
+                const regex=/(?<=\()(\w+):(\w+)(?=\))/;
+                const match=tt.match( regex );
+                if(match && this.__ig1.est_num( match[1] ) && this.__ig1.est_num( match[2] )){
+                    lig_col=[parseInt( match[1] , 10 ),parseInt( match[2] , 10 )];
                 }
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' <br />erreur dans le javascript :' + e.message});
             }
             let commentaires_a_remplacer=['<![CDATA[',']]>','<source_javascript_rev>','</source_javascript_rev>'];
             for( let nn=0 ; nn < commentaires_a_remplacer.length ; nn++ ){
@@ -158,7 +155,7 @@ class _developpement1{
         }else{
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de chargement  du parseur js ' + this.__ig1.nl2()} );
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -244,8 +241,7 @@ class _developpement1{
                 /*
                   si le contenu rev est vide
                 */
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev est vide et le source n\'est pas rattaché à un répertoire ' + this.__ig1.nl2()} );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'le contenu rev est vide et le source n\'est pas rattaché à un répertoire ' + this.__ig1.nl2()});
             }else{
                 if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.htm'
                        || le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 5 , 5 ) === '.html'
@@ -268,8 +264,7 @@ class _developpement1{
                         this.__ig1.envoyer_un_colis_au_worker( obj );
                         /* debugger */
                     }else{
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
                 }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.php'
                 ){
@@ -291,8 +286,7 @@ class _developpement1{
                         this.__ig1.envoyer_un_colis_au_worker( obj );
                         /* debugger */
                     }else{
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
                 }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 3 , 3 ) === '.js'
                 ){
@@ -314,8 +308,7 @@ class _developpement1{
                         this.__ig1.envoyer_un_colis_au_worker( obj );
                         /* debugger */
                     }else{
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
                 }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.sql'
                 ){
@@ -340,12 +333,10 @@ class _developpement1{
                             };
                             this.__ig1.envoyer_un_colis_au_worker( obj );
                         }else{
-                            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                         }
                     }else{
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du sql n\'est pas bien formaté ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'le contenu rev du sql n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
                 }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.css'
                 ){
@@ -363,8 +354,7 @@ class _developpement1{
                         };
                         this.__ig1.envoyer_un_colis_au_worker( obj );
                     }else{
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du css n\'est pas bien formaté ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'le contenu rev du css n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
                 }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.rev'
                 ){
@@ -388,12 +378,10 @@ class _developpement1{
                             };
                             this.__ig1.envoyer_un_colis_au_worker( obj );
                         }else{
-                            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de conversion de matrice vers rev ' + this.__ig1.nl2()} );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : 'erreur de conversion de matrice vers rev ' + this.__ig1.nl2()});
                         }
                     }else{
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de conversion de rev vers matrice ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'erreur de conversion de rev vers matrice ' + this.__ig1.nl2()});
                     }
                 }else{
                     /*
@@ -416,12 +404,10 @@ class _developpement1{
                             };
                             this.__ig1.envoyer_un_colis_au_worker( obj );
                         }else{
-                            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le rev du texte n\'a pas pu être convertit ' + this.__ig1.nl2()} );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : 'le rev du texte n\'a pas pu être convertit ' + this.__ig1.nl2()});
                         }
                     }else{
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du texte n\'est pas bien formaté ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'le contenu rev du texte n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
                 }
             }
@@ -462,12 +448,10 @@ class _developpement1{
                         };
                         this.__ig1.envoyer_un_colis_au_worker( obj );
                     }else{
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de convertion du rev en html ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'erreur de convertion du rev en html ' + this.__ig1.nl2()});
                     }
                 }else{
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de convertion du html en rev ' + this.__ig1.nl2()} );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'erreur de convertion du html en rev ' + this.__ig1.nl2()});
                 }
             }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.php'
             ){
@@ -499,8 +483,7 @@ class _developpement1{
                     };
                     this.__ig1.envoyer_un_colis_au_worker( obj );
                 }else{
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de normalisation du php ' + this.__ig1.nl2()} );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'Erreur de normalisation du php ' + this.__ig1.nl2()});
                 }
             }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.sql'
             ){
@@ -593,12 +576,10 @@ class _developpement1{
                                 };
                                 this.__ig1.envoyer_un_colis_au_worker( obj );
                             }else{
-                                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
-                                return({"__xst" : __xer});
+                                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                             }
                         }else{
-                            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du sql n\'est pas bien formaté ' + this.__ig1.nl2()} );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : 'le contenu rev du sql n\'est pas bien formaté ' + this.__ig1.nl2()});
                         }
                     }else{
                         return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + '<br />erreur lors de la convertion du sql'} ));
@@ -634,8 +615,7 @@ class _developpement1{
                     };
                     this.__ig1.envoyer_un_colis_au_worker( obj );
                 }else{
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                 }
             }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.css'
             ){
@@ -647,8 +627,7 @@ class _developpement1{
                     try{
                         this.#parseur_cssparseur=postcss.parse( 'html{}' , {} );
                     }catch(e){
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de chargement  du parseur css ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'erreur de chargement  du parseur css ' + this.__ig1.nl2()});
                     }
                 }
                 if(this.#parseur_cssparseur !== null){
@@ -682,24 +661,19 @@ class _developpement1{
                                     };
                                     this.__ig1.envoyer_un_colis_au_worker( obj );
                                 }else{
-                                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du css n\'est pas bien formaté ' + this.__ig1.nl2()} );
-                                    return({"__xst" : __xer});
+                                    return({"__xst" : __xer ,"__xme" : 'le contenu rev du css n\'est pas bien formaté ' + this.__ig1.nl2()});
                                 }
                             }else{
-                                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur dans parseur css ' + this.__ig1.nl2()} );
-                                return({"__xst" : __xer});
+                                return({"__xst" : __xer ,"__xme" : 'erreur dans parseur css ' + this.__ig1.nl2()});
                             }
                         }catch(e1){
-                            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur dans parseur css ' + this.__ig1.__rev1.nl2( e )} );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : 'erreur dans parseur css ' + this.__ig1.__rev1.nl2( e )});
                         }
                     }catch(e1){
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur dans parseur css ' + this.__ig1.__rev1.nl2( e )} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'erreur dans parseur css ' + this.__ig1.__rev1.nl2( e )});
                     }
                 }else{
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de chargement  du parseur css ' + this.__ig1.nl2()} );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'erreur de chargement  du parseur css ' + this.__ig1.nl2()});
                 }
             }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.rev'
             ){
@@ -730,12 +704,10 @@ class _developpement1{
                         };
                         this.__ig1.envoyer_un_colis_au_worker( obj );
                     }else{
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de conversion de matrice vers rev ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'erreur de conversion de matrice vers rev ' + this.__ig1.nl2()});
                     }
                 }else{
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur de conversion de rev vers matrice ' + this.__ig1.nl2()} );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'erreur de conversion de rev vers matrice ' + this.__ig1.nl2()});
                 }
             }else{
                 let obj1=this.#objet_conversion_texte_vers_rev1.texte1_vers_rev( le_colis1.__xva['contenu_disque'] , {} );
@@ -763,16 +735,13 @@ class _developpement1{
                             };
                             this.__ig1.envoyer_un_colis_au_worker( obj );
                         }else{
-                            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2()} );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                         }
                     }else{
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu rev du texte n\'est pas bien formaté ' + this.__ig1.nl2()} );
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : 'le contenu rev du texte n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
                 }else{
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur dans parseur texte ' + this.__ig1.nl2()} );
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : 'erreur dans parseur texte ' + this.__ig1.nl2()});
                 }
             }
         }

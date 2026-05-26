@@ -57,8 +57,7 @@ class __fnt1{
     async sauvegarder_et_supprimer_fichier( chemin , donnees_retournees ){
         /* ne_pas_faire_une_sauvegarde]{ */
         if(donnees_retournees.chi_id_projet === 0){
-            donnees_retournees[__xsi][__xer].push( 'on ne peut pas supprimer un fichier si on n\'a pas sélectionné un environnement ' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'on ne peut pas supprimer un fichier si on n\'a pas sélectionné un environnement ' + this.__ig1.nl2()});
         }
         let prefix1='../rev_' + donnees_retournees.chi_id_projet + '/';
         let sous_chemin=chemin.substr( prefix1.length );
@@ -75,8 +74,7 @@ class __fnt1{
                 await Deno.mkdir( repertoire_absolu_sauvegarde , {"mode" : 0o777 ,"recursive" : true} );
                 /* this.__ig1.ma_trace1( 'repertoire créé' ); */
             }catch(e){
-                donnees_retournees[__xsi][__xer].push( 'erreur de création du répertoire "' + repertoire_absolu_sauvegarde + '" ' + this.__ig1.nl2( e ) );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : 'erreur de création du répertoire "' + repertoire_absolu_sauvegarde + '" ' + this.__ig1.nl2( e )});
             }
         }else{
             /* this.__ig1.ma_trace1('repertoire existe repertoire_absolu_sauvegarde='+repertoire_absolu_sauvegarde); */
@@ -93,13 +91,15 @@ class __fnt1{
                 return({"__xst" : __xsu});
             }catch(e){
                 this.__ig1.ma_trace1( 'e=' , e );
-                donnees_retournees[__xsi][__xer].push( 'erreur de renommage du fichier "' + chemin + '" vers "' + chemin_absolu_sauvegarde + '"' + this.__ig1.nl2( e ) );
-                return({"__xst" : __xer});
+                return({
+                        "__xst" : __xer ,
+                        "__xme" : 'erreur de renommage du fichier "' + chemin + '" vers "' + chemin_absolu_sauvegarde + '"' + this.__ig1.nl2( e )
+                    });
             }
         }else{
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================

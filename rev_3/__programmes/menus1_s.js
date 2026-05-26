@@ -28,8 +28,7 @@ class menus1{
             }
         }
         if(chi_id_autorisation === 0){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'la valeur pour "autorisation" doit être renseignée [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_141={"T0_chi_id_autorisation" : chi_id_autorisation};
@@ -48,12 +47,10 @@ class menus1{
         */
         /*sql_inclure_fin*/ 141 , criteres_select_141 , this.__ig1.donnees_retournees , __db1 );
         if(tt141[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt141.__xme});
         }
         if(tt141[__xva][0]['T2.che_binaire_source'] === 1){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : 'on ne peut pas récupérer les méthodes d\'un fichier binaire [' + this.__ig1.nl2() + ']'});
         }
         let chemin_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + tt141[__xva][0]['T2.chp_nom_source'];
         if(tt141[__xva][0]['T2.chp_nom_source'].substr( tt141[__xva][0]['T2.chp_nom_source'].length - 3 ) === '.js'){
@@ -61,15 +58,13 @@ class menus1{
               si c'est un source js, on retource le source et on fera le traitement dans c_menus1.js
             */
             if(!(await this.__ig1.is_file( chemin_fichier ))){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( ' erreur sur la construction du chemin [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin [' + this.__ig1.nl2() + ']'});
             }
             this.__ig1.donnees_retournees[__xva]['cht_genere_source']=await this.__ig1.file_get_contents( chemin_fichier );
             this.__ig1.donnees_retournees[__xva]['chp_nom_source']=tt141[__xva][0]['T2.chp_nom_source'];
             return({"__xst" : __xsu});
         }
-        this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
     }
     /*
       =============================================================================================================
@@ -230,51 +225,30 @@ class menus1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async tests_avant_creer( mat , d , form , __db1 ){
-        /* afr vérifier que le js et le rev correspondent bien */
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
-        /*
-          this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() + ']' );
-          return({"__xst" : __xer});
-        */
         return({"__xst" : __xsu});
     }
     /*
@@ -328,7 +302,7 @@ class menus1{
         let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt146[__xva][0] , __db1 );
         if(__actions_et_tests_avant_modifier.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
         }
         let criteres_148={
              /*  */
@@ -362,8 +336,7 @@ class menus1{
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt146[__xva][0] , __db1 );
         if(__taam[__xst] !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur après modification [' + this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
@@ -415,8 +388,7 @@ class menus1{
             this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + chi_id_menu + ')))))';
         }
         if(chi_id_menu === null){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -439,11 +411,11 @@ class menus1{
         */
         /*sql_inclure_fin*/ 146 , {"T0_chi_id_menu" : chi_id_menu} , this.__ig1.donnees_retournees , __db1 );
         if(tt146[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt146.__xme});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt146[__xva][0] , __db1 );
         if(aetam[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt146;
         return({"__xst" : __xsu});
@@ -489,8 +461,7 @@ class menus1{
         */
         /*sql_inclure_fin*/ 146 , criteres_146 , this.__ig1.donnees_retournees , __db1 );
         if(tt146[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt146.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt146;
         return({"__xst" : __xsu});
@@ -525,13 +496,12 @@ class menus1{
         */
         /*sql_inclure_fin*/ 146 , criteres_146 , this.__ig1.donnees_retournees , __db1 );
         if(tt146[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt146.__xme});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt146[__xva][0] , __db1 );
         if(tas[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_149={
              /*  */
@@ -545,13 +515,11 @@ class menus1{
         /*sql_inclure_fin*/ 149 , criteres_149 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt149[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt149.__xme});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt146[__xva][0] , __db1 );
         if(aac[__xst] === __xer){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après supprimer ont échouées [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
@@ -577,8 +545,7 @@ class menus1{
             }
         }
         if(chi_id_menu === 0){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.nl2() );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_146={"T0_chi_id_menu" : chi_id_menu};
@@ -621,7 +588,7 @@ class menus1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac[__xst] !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
         let criteres_147={
             "donnees" : [{
@@ -657,33 +624,23 @@ class menus1{
         );
         */
         /*sql_inclure_fin*/ 147 , criteres_147 , this.__ig1.donnees_retournees , __db1 );
-        if(tt147[__xst] === __xsu){
-            if(tt147['changements'] === 0){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
-            }
-            let aac=await this.action_apres_creer( mat , d , tt147['nouvel_id'] , form , __db1 );
-            if(aac[__xst] === __xer){
-                await __db1.exec( 'ROLLBACK;' );
-                this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                await this.filtre1( mat1 , 1 , __db1 );
-            }else{
-                await this.page_modification1( mat , d , tt147['nouvel_id'] , __db1 );
-            }
-            return({"__xst" : __xsu});
-        }else{
-            if(this.__ig1.__deverminage === 0){
-                this.__ig1.donnees_retournees.__xsi[__xer].push( tt147['__xme'] + '\nl\'insertion a échoué' );
-            }else{
-                this.__ig1.donnees_retournees.__xsi[__xer].push( tt147['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']' );
-            }
-            return({"__xst" : __xer});
+        if(tt147[__xst] !== __xsu || tt147['changements'] !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt147.__xme});
         }
+        let aac=await this.action_apres_creer( mat , d , tt147['nouvel_id'] , form , __db1 );
+        if(aac[__xst] === __xer){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : aac.__xme});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
+            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            await this.filtre1( mat1 , 1 , __db1 );
+        }else{
+            await this.page_modification1( mat , d , tt147['nouvel_id'] , __db1 );
+        }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -763,7 +720,7 @@ class menus1{
         */
         /*sql_inclure_fin*/ 145 , criteres_145 , this.__ig1.donnees_retournees , __db1 );
         if(tt145.__xst !== __xsu){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : tt145.__xme});
         }
         if(tt145[__xst] === __xsu && tt145[__xva].length === 0 && __debut > 0){
             __debut=0;

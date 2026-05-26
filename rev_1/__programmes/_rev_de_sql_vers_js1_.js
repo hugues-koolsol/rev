@@ -633,8 +633,7 @@ class _rev_de_sql_vers_js1{
                                 }
                                 t+='elem[\'' + nom_du_champ + '\'],\'' + detail_champ.meta.abrege_du_champ + '\');\r\n';
                                 t+='                if(__test_' + i + '_' + j + '.__xst !== __xsu){\n';
-                                t+='                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_' + i + '_' + j + '.__xme);\r\n';
-                                t+='                    return{"__xst" : __xer};\r\n';
+                                t+='                    return{"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme};\r\n';
                                 t+='                }\n\n';
                             }else{
                                 return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});

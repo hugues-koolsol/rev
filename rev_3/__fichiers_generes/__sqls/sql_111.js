@@ -24,19 +24,16 @@ class sql_111{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chx_utilisateur_tache" */
-                if(elem['chx_utilisateur_tache'] === null || elem['chx_utilisateur_tache']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chx_utilisateur_tache'] === null || elem['chx_utilisateur_tache'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_texte_tache" */
-                if(elem['chp_texte_tache'] === null || elem['chp_texte_tache']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_texte_tache'] === null || elem['chp_texte_tache'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_priorite_tache" */
-                if(elem['chp_priorite_tache'] === null || elem['chp_priorite_tache']===''){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push('la valeur pour "priorite de la tâche" doit être renseignée [' + this.__ig1.nl2() + ']');
-                    return{__xst:__xer};
+                if(elem['chp_priorite_tache'] === null || elem['chp_priorite_tache'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_priorite_tache" ===
@@ -79,7 +76,14 @@ class sql_111{
                     nouvel_id=lignes[numero_de_ligne][0];
                 }
             }
-            return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res ,"nouvel_id" : nouvel_id});
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
         }catch(e){
             return(this.__ig1.traite_erreur_sql( 111 , e , sql0 , {} ));
         }

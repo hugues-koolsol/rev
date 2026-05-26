@@ -81,7 +81,7 @@ class __ig1{
                 document.getElementById( 'vv_contenu_principal' ).innerHTML='';
             } catch {}
             this.retablir_les_boutons_masques( null );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         this.#maj_hash_init_fait=false;
         this.#maj_hash_fait=false;
@@ -117,7 +117,7 @@ class __ig1{
             /* this.fermer_la_sous_fenetre(); */
             this.affiche_les_messages();
             this.retablir_les_boutons_masques( le_colis1 );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }else{
             if(le_colis1.__xva.hasOwnProperty( '__liste_des_autorisations1' )){
                 this.__liste_des_autorisations1=le_colis1.__xva.__liste_des_autorisations1;
@@ -127,7 +127,7 @@ class __ig1{
                 if(obj1.__xst !== __xsu){
                     this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de message reçu du worker' + this.nl2() + obj1.__xme} );
                     this.affiche_les_messages();
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : this.nl2()});
                 }
                 /*
                   ============= appel des actions ==============
@@ -149,7 +149,7 @@ class __ig1{
                         }
                     }
                     this.affiche_les_messages();
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : this.nl2()});
                 }else{
                     if(this.avec_maj_de_hash === __xsu){
                         debugger;
@@ -162,7 +162,7 @@ class __ig1{
         if(un_message_trouve === true){
             this.affiche_les_messages( null , le_colis1 );
             if(un_message_d_erreur_trouve === true){
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2()});
             }else{
                 return({"__xst" : __xsu});
             }
@@ -218,7 +218,7 @@ class __ig1{
                                     }else{
                                         this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 1 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     }
-                                    return({"__xst" : __xer});
+                                    return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }else{
                                 /* ok, pas de condition particulière à tester */
@@ -226,12 +226,12 @@ class __ig1{
                             if(elem.che_pour_sous_liste_autorisation === 1){
                                 if(mat[d + 1][1] !== 'zones_sous_liste2'){
                                     this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
-                                    return({"__xst" : __xer});
+                                    return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
                         }else{
                             this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : this.nl2()});
                         }
                     }catch(e){
                         console.error( e.stack );
@@ -254,7 +254,7 @@ class __ig1{
                         } );
                 }
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2()});
             }
             /* ancienne position */
             /* this.#liste_des_modules_dynamiques[m1]={"objet1" : null}; */
@@ -268,7 +268,7 @@ class __ig1{
                             "__xme" : 'erreur new "' + nom_de_classe + '"<br /><b>Regardez la console pour repérer l\'erreur</b> ' + this.nl2( e )
                         } );
                     this.affiche_les_messages();
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : this.nl2()});
                 }
             }
             for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
@@ -305,7 +305,7 @@ class __ig1{
                             "__xme" : 'Impossible d\'appeler la fonction "' + mat[i][1] + '" du module "' + m1 + '" ' + complement + '<br />' + this.nl2( e )
                         } );
                     this.affiche_les_messages();
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : this.nl2()});
                 }
                 if(obj){
                     if(obj.hasOwnProperty( '__xst' ) && obj.__xst !== __xsu){
@@ -315,7 +315,7 @@ class __ig1{
                                 "__xme" : 'Impossible d\'appeler la fonction "' + mat[i][1] + '" du module "' + m1 + '" <br />Existe-t-elle ? est-elle publique 2? <br />' + this.nl2()
                             } );
                         this.affiche_les_messages();
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : this.nl2()});
                     }else{
                         /* console.error('%c AFR CAS NON TRAITE m1(n1('+m1+'),f1('+mat[i][1]+'))','background:red;color:yellow;'); */
                     }
@@ -341,7 +341,7 @@ class __ig1{
                                     }else{
                                         this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 2 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     }
-                                    return({"__xst" : __xer});
+                                    return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }else{
                                 /* ok, pas de condition particulière à tester */
@@ -349,12 +349,12 @@ class __ig1{
                             if(elem.che_pour_sous_liste_autorisation === 1){
                                 if(mat[d + 1][1] !== 'zones_sous_liste2'){
                                     this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 6 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
-                                    return({"__xst" : __xer});
+                                    return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
                         }else{
                             this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 4 <br />cette action n\'est pas disponnible'} );
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : this.nl2()});
                         }
                     }catch(e){
                         console.error( e.stack );
@@ -436,7 +436,7 @@ class __ig1{
                                 t1+='la méthode "' + mat[i][1] + '" existe-t-elle ? est-elle publique 3? retourne-t-elle __xst:__xsu';
                                 this.ajoute_message( {"__xst" : __xer ,"__xme" : t1} );
                                 this.affiche_les_messages();
-                                return({"__xst" : __xer});
+                                return({"__xst" : __xer ,"__xme" : this.nl2()});
                             }
                         }else{
                             this.retablir_les_boutons_masques( __xva_param );
@@ -446,7 +446,7 @@ class __ig1{
                             t1+='la méthode "' + mat[i][1] + '" existe-t-elle ? est-elle publique 4? retourne-t-elle __xst:__xsu';
                             this.ajoute_message( {"__xst" : __xer ,"__xme" : t1} );
                             this.affiche_les_messages();
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : this.nl2()});
                         }
                     }
                 }catch(e1){
@@ -457,7 +457,7 @@ class __ig1{
                     t1+='la méthode "' + mat[i][1] + '" existe-t-elle ? est-elle publique 5? retourne-t-elle __xst:__xsu';
                     this.ajoute_message( {"__xst" : __xer ,"__xme" : t1} );
                     this.affiche_les_messages();
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : this.nl2()});
                 }
             }
             if(this.#liste_des_appels_au_serveur.length > 0){
@@ -475,7 +475,7 @@ class __ig1{
         if(!Array.isArray( mat )){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : 'oops, on n\'a pas reçu une matrice dans __ig1.__xac() ' + this.nl2()} );
             this.affiche_les_messages();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         let comptage_action=0;
         let l01=mat.length;
@@ -504,7 +504,7 @@ class __ig1{
                             if(t1 === null){
                                 this.ajoute_message( {"__xst" : __xer ,"__xme" : ' l\'id ' + co1 + ' n\'a pas été trouvé dans la page' + this.nl2()} );
                                 this.affiche_les_messages();
-                                return({"__xst" : __xer});
+                                return({"__xst" : __xer ,"__xme" : this.nl2()});
                             }
                             fo1[co1]={};
                             let lst=t1.getElementsByTagName( '*' );
@@ -533,7 +533,7 @@ class __ig1{
                     if(co1 === ''){
                         this.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque le nom du formulaire co1(xxx) ' + this.nl2()} );
                         this.affiche_les_messages();
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : this.nl2()});
                     }
                     for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
                         if(mat[j][1] === 'pm1' && mat[j][2] === 'f'){
@@ -544,7 +544,7 @@ class __ig1{
                             if(re_source.__xst !== __xsu){
                                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de convertion de matrice en source ' + this.nl2()} );
                                 this.affiche_les_messages();
-                                return({"__xst" : __xer});
+                                return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 /* source=re_source.__xva; */
                             }
                             if(contient_des_fichier_a_televerser === true){
@@ -581,7 +581,7 @@ class __ig1{
                     if(re_source.__xst !== __xsu){
                         this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de convertion de matrice en source ' + this.nl2()} );
                         this.affiche_les_messages();
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : this.nl2()});
                         /* source=re_source.__xva; */
                     }
                     this.envoyer_un_colis_au_worker( {"__xac" : 'pm1(' + re_source.__xva + ')' ,"__xva" : {}} );
@@ -591,7 +591,7 @@ class __ig1{
                     }else{
                         let ret1=await this.__xac( mat , i , données );
                         if(ret1.__xst !== __xsu){
-                            return({"__xst" : __xer});
+                            return({"__xst" : __xer ,"__xme" : this.nl2()});
                         }
                     }
                 }
@@ -609,14 +609,14 @@ class __ig1{
                 if(n1 !== '' && indice > 0){
                     let ret1=await this.m1( n1 , mat , indice , données , evenement );
                     if(ret1.__xst !== __xsu){
-                        return({"__xst" : __xer});
+                        return({"__xst" : __xer ,"__xme" : this.nl2()});
                     }
                 }else{
                     debugger;
                     let re_source=this.__rev1.matrice_vers_source_rev1( mat , 0 , true , 1 );
                     this.ajoute_message( {"__xst" : __xer ,"__xme" : '<b>n1 vide ou f1 non trouvé dans :</b><br /><pre>' + re_source.__xva + '</pre> <br />' + this.nl2()} );
                     this.affiche_les_messages();
-                    return({"__xst" : __xer});
+                    return({"__xst" : __xer ,"__xme" : this.nl2()});
                 }
             }else if(mat[i][1] === 'confirmer1' && mat[i][8] > 0){
                 comptage_action++;
@@ -630,7 +630,7 @@ class __ig1{
             }
         }
         if(comptage_action === 0){
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         return({"__xst" : __xsu});
     }
@@ -644,7 +644,7 @@ class __ig1{
         if(!obj.hasOwnProperty( '__xac' )){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque __xac pour l\'appel à envoyer_un_colis_au_worker() '} );
             this.affiche_les_messages();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         obj.__xva['__parametres']=this.stockage_local['parametres'];
         this.#liste_des_appels_au_serveur.push( {"contexte" : 'envoyer_un_colis_au_worker' ,"__xac" : obj.__xac} );
@@ -725,7 +725,7 @@ class __ig1{
         if(nom_module !== '' && nom_du_champ_cle !== '' && document.getElementById( nom_du_champ_cle )){
             let zone=document.getElementById( nom_du_champ_cle );
             if(!this.est_entier_positif( zone.value )){
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2()});
             }
             let aller_a='pm1(m1(n1(' + nom_module + '),f1(page_confirmation_supprimer1(' + nom_du_champ_cle + '(' + zone.value + ')))))';
             return(this.executer1( aller_a , null , null ));
@@ -749,7 +749,7 @@ class __ig1{
         if(nom_module !== '' && nom_du_champ_cle !== '' && document.getElementById( nom_du_champ_cle )){
             let zone=document.getElementById( nom_du_champ_cle );
             if(!this.est_entier_positif( zone.value )){
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2()});
             }
             let aller_a='pm1(m1(n1(' + nom_module + '),f1(page_modification1(' + nom_du_champ_cle + '(' + zone.value + ')))))';
             return(this.executer1( aller_a , null , null ));
@@ -1130,7 +1130,7 @@ class __ig1{
             */
             this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur dans le source du worker<br />'} );
             this.affiche_les_messages();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }.bind( this );
         /*
         */
@@ -2680,7 +2680,7 @@ class __ig1{
                 return({"__xst" : __xsu});
             }
         }
-        return({"__xst" : __xer});
+        return({"__xst" : __xer ,"__xme" : this.nl2()});
     }
     /*
       =============================================================================================================
@@ -2799,7 +2799,7 @@ class __ig1{
                     "__xme" : 'Dans #action_change_ou_entree<br />action="<b>' + this.fi1( action ) + '</b>",erreur de convertion de source en matrice ' + this.nl2() + '<br />' + obj1.__xme
                 } );
             this.affiche_les_messages();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         mat=obj1.__xva;
         let obj=this.__xac( mat , 0 , null );
@@ -2810,7 +2810,7 @@ class __ig1{
                 } );
             this.affiche_les_messages();
             this.retablir_les_boutons_masques();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         return({"__xst" : __xsu});
     }
@@ -2852,7 +2852,7 @@ class __ig1{
         if(action !== null && action !== ''){
             this.#action_change_ou_entree( e , action );
         }else{
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         return false;
     }
@@ -3008,7 +3008,7 @@ class __ig1{
         if(action_rev === null || action_rev === ''){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'action_rev n\'est pas définie ' + this.nl2()} );
             this.affiche_les_messages();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         let source=action_rev + '';
         let obj1=this.__rev1.rev_tcm( source );
@@ -3019,14 +3019,12 @@ class __ig1{
                 } );
             this.affiche_les_messages();
             __ig1.fermer_la_sous_fenetre();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         elt.classList.add( 'yy_invisible' );
         if(this.#liste_des_appels_au_serveur.length > 0){
             this.ajoute_message( {"__xst" : __xal ,"__xme" : 'Un appel au serveur est déjà en cours '} );
             this.affiche_les_messages();
-            this.ma_trace1( " afr voir bug sur batch " );
-            /* return({"__xst" : __xer}); */
         }
         try{
             document.getElementById( 'vv_div_des_positions_du_curseur' ).innerHTML='';
@@ -3041,7 +3039,7 @@ class __ig1{
                 } );
             this.affiche_les_messages();
             this.retablir_les_boutons_masques();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         return({"__xst" : __xsu});
     }
@@ -3283,7 +3281,7 @@ class __ig1{
         let obj1=this.__rev1.matrice_vers_source_rev1( mat2 , 0 , false , 1 );
         if(obj1.__xst !== __xsu){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         let hash=obj1.__xva;
         window.location.hash='#' + hash;
@@ -3407,7 +3405,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'inner_html' && valeur_de_champ !== ''){
             try{
@@ -3416,7 +3414,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'libelle_html'){
             try{
@@ -3425,7 +3423,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'valeur_constante'){
             try{
@@ -3433,7 +3431,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'style' && valeur_de_champ !== ''){
             try{
@@ -3441,7 +3439,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'style' && valeur_de_style !== ''){
             try{
@@ -3455,7 +3453,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'ajouter_class' && nom_de_la_classe !== '' && le_colis11 !== null){
             try{
@@ -3471,7 +3469,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else{
             console.log( 'Aucune action pour la matrice\n' , 'background:yellow;color:yellow;' , mat );
@@ -3534,7 +3532,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'inner_html' && valeur_de_champ !== ''){
             try{
@@ -3543,7 +3541,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'libelle_html'){
             try{
@@ -3552,7 +3550,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'valeur_constante'){
             try{
@@ -3560,7 +3558,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'style' && valeur_de_champ !== ''){
             try{
@@ -3568,7 +3566,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'style' && valeur_de_style !== ''){
             try{
@@ -3592,7 +3590,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else if(id !== '' && type_cible === 'ajouter_class' && nom_de_la_classe !== '' && le_colis11 !== null){
             try{
@@ -3609,7 +3607,7 @@ class __ig1{
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
-                return({"__xst" : __xer});
+                return({"__xst" : __xer ,"__xme" : this.nl2( e )});
             }
         }else{
             console.log( 'Aucune action pour la matrice\n' , 'background:yellow;color:yellow;' , mat );
@@ -3859,7 +3857,7 @@ class __ig1{
         if(obj1.__xst !== __xsu){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
             this.affiche_les_messages();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         this.__xac( obj1.__xva , 0 , données );
         return({"__xst" : __xsu});
@@ -3872,7 +3870,7 @@ class __ig1{
         if(obj1.__xst !== __xsu){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
             this.affiche_les_messages();
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         this.__xac( obj1.__xva , 0 , données , evenement );
         return({"__xst" : __xsu});
@@ -4105,7 +4103,7 @@ class __ig1{
                 document.getElementById( 'vv_contenu_principal' ).innerHTML='';
             } catch {}
             this.retablir_les_boutons_masques( null );
-            return({"__xst" : __xer});
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
         }else{
             let tt='tentatuve de reconnexion en cours, surveillez le rond ';
             tt+='<div class="rev_bouton_carre yy__bidon_reconnexion1">' + this.les_svg.rond_rouge1 + '</div>';

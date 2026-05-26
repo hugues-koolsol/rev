@@ -43,6 +43,9 @@ class sql_110{
         if(par.hasOwnProperty( 'T0_chp_priorite_tache2' ) && par['T0_chp_priorite_tache2'] !== ''){
             where0+=` AND \`T0\`.\`chp_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_chp_priorite_tache2'] , 'T0_chp_priorite_tache2' ) + '\r\n';
         }
+        if(par.hasOwnProperty( 'T1_chp_nom_de_connexion_utilisateur' ) && par['T1_chp_nom_de_connexion_utilisateur'] !== ''){
+            where0+=` AND \`T1\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_de_connexion_utilisateur'] , 'T1_chp_nom_de_connexion_utilisateur' ) + '\r\n';
+        }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chp_priorite_tache\` ASC`;
