@@ -41,7 +41,7 @@ class autorisations1{
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
-            case 'aagererer_les_autorisation_serveur' : break;
+            case 'gererer_les_autorisation_serveur' : break;
             case 'xxx' :
                 /*
                   this.__ig1.fermer_la_sous_fenetre();
@@ -214,7 +214,11 @@ class autorisations1{
         o1+='(' + enreg['T0.chx_source_autorisation'] + ') ';
         o1+=this.__ig1.fi2( enreg['T2.chp_nom_source'] );
         o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'sources1' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
+        if(this.__ig1._CA_ === 1){
+            o1+=this.__ig1.lien_parent2( 'sources1' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
+        }else{
+            o1+=this.__ig1.lien_parent2( 'sources2' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
+        }
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -506,7 +510,11 @@ class autorisations1{
         /*
           ;
         */
-        o1+=this.__ig1.lien_parent2( 'sources1' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
+        if(this.__ig1._CA_ === 1){
+            o1+=this.__ig1.lien_parent2( 'sources1' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
+        }else{
+            o1+=this.__ig1.lien_parent2( 'sources2' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
+        }
         /*  */
         o1+='    </div>';
         o1+='  </div>';

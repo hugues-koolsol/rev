@@ -46,7 +46,7 @@ class menus1{
         ;
         */
         /*sql_inclure_fin*/ 141 , criteres_select_141 , this.__ig1.donnees_retournees , __db1 );
-        if(tt141[__xst] !== __xsu){
+        if(tt141.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt141.__xme});
         }
         if(tt141[__xva][0]['T2.che_binaire_source'] === 1){
@@ -113,7 +113,7 @@ class menus1{
         ;
         */
         /*sql_inclure_fin*/ 141 , criteres_select_141 , this.__ig1.donnees_retournees , __db1 );
-        if(tt141[__xst] !== __xsu){
+        if(tt141.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() + ']'});
         }
         /* this.__ig1.ma_trace1( 'tt141=' , tt141[__xva][0] ); */
@@ -143,7 +143,7 @@ class menus1{
         ;
         */
         /*sql_inclure_fin*/ 136 , criteres_136 , this.__ig1.donnees_retournees , __db1 );
-        if(tt136[__xst] !== __xsu){
+        if(tt136.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         /* this.__ig1.ma_trace1( 'tt136=' , tt136[__xva] ); */
@@ -203,7 +203,7 @@ class menus1{
                 WHERE `chi_id_acces` = :c_chi_id_acces ;
                 */
                 /*sql_inclure_fin*/ 154 , criteres_154 , this.__ig1.donnees_retournees , __db1 );
-                if(tt154[__xst] !== __xsu){
+                if(tt154.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
                 }
             }
@@ -213,7 +213,7 @@ class menus1{
         let m=await import( './acces1_s.js' );
         let o=new m['acces1']( this.__ig1 );
         let obj=await o.produire_le_menu( mat , d , __db1 );
-        if(obj[__xst] !== __xsu){
+        if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de génération du menu [' + this.__ig1.nl2()});
         }
         if(this.__ig1.donnees_retournees._CA_ === this.__ig1.donnees_retournees.chi_id_projet){
@@ -295,7 +295,7 @@ class menus1{
         ;
         */
         /*sql_inclure_fin*/ 146 , criteres_select_146 , this.__ig1.donnees_retournees , __db1 );
-        if(tt146[__xst] !== __xsu || tt146[__xva].length !== 1){
+        if(tt146.__xst !== __xsu || tt146[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [146 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
@@ -334,7 +334,7 @@ class menus1{
             return({"__xst" : __xer ,"__xme" : tt148.__xme});
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt146[__xva][0] , __db1 );
-        if(__taam[__xst] !== __xsu){
+        if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
@@ -410,11 +410,11 @@ class menus1{
         ;
         */
         /*sql_inclure_fin*/ 146 , {"T0_chi_id_menu" : chi_id_menu} , this.__ig1.donnees_retournees , __db1 );
-        if(tt146[__xst] !== __xsu){
+        if(tt146.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt146.__xme});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt146[__xva][0] , __db1 );
-        if(aetam[__xst] !== __xsu){
+        if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt146;
@@ -460,7 +460,7 @@ class menus1{
         ;
         */
         /*sql_inclure_fin*/ 146 , criteres_146 , this.__ig1.donnees_retournees , __db1 );
-        if(tt146[__xst] !== __xsu){
+        if(tt146.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer ,"__xme" : tt146.__xme});
         }
@@ -496,13 +496,13 @@ class menus1{
         ;
         */
         /*sql_inclure_fin*/ 146 , criteres_146 , this.__ig1.donnees_retournees , __db1 );
-        if(tt146[__xst] !== __xsu){
+        if(tt146.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer ,"__xme" : tt146.__xme});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt146[__xva][0] , __db1 );
-        if(tas[__xst] !== __xsu){
+        if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_149={
@@ -516,11 +516,11 @@ class menus1{
         */
         /*sql_inclure_fin*/ 149 , criteres_149 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt149[__xst] !== __xsu){
+        if(tt149.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt149.__xme});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt146[__xva][0] , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
         /*  */
@@ -589,7 +589,7 @@ class menus1{
         /* conversion des données numériques fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
-        if(__tac[__xst] !== __xsu){
+        if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
         let criteres_147={
@@ -626,12 +626,12 @@ class menus1{
         );
         */
         /*sql_inclure_fin*/ 147 , criteres_147 , this.__ig1.donnees_retournees , __db1 );
-        if(tt147[__xst] !== __xsu || tt147['changements'] !== 1){
+        if(tt147.__xst !== __xsu || tt147['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt147.__xme});
         }
         let aac=await this.action_apres_creer( mat , d , tt147['nouvel_id'] , form , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -724,7 +724,7 @@ class menus1{
         if(tt145.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt145.__xme});
         }
-        if(tt145[__xst] === __xsu && tt145[__xva].length === 0 && __debut > 0){
+        if(tt145.__xst === __xsu && tt145[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres_145['debut']=__debut;

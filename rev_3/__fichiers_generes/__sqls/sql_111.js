@@ -40,8 +40,7 @@ class sql_111{
                 */
                 let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre(0,99,elem['chp_priorite_tache'],'priorite de la tâche');
                 if(__test_2_1.__xst !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_2_1.__xme);
-                    return{"__xst" : __xer};
+                    return{"__xst" : __xer ,"__xme" : __test_2_1.__xme};
                 }
 
                 /*

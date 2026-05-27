@@ -152,7 +152,7 @@ class travaux1{
                             let cht_rev_travail=tt400.__xva[i]['T0.cht_rev_travail'];
                             /* this.__ig1.ma_trace1('cht_rev_travail='+cht_rev_travail); */
                             let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_travail );
-                            if(obj_matrice[__xst] !== __xsu){
+                            if(obj_matrice.__xst !== __xsu){
                                 return({"__xst" : __xer ,"__xme" : ' erreur de convertion en matrice [' + this.__ig1.nl2() + ']'});
                             }
                             let ret=null;
@@ -197,7 +197,7 @@ class travaux1{
                                 WHERE `chi_id_travail` = :c_chi_id_travail ;
                                 */
                                 /*sql_inclure_fin*/ 401 , criteres_401 , this.__ig1.donnees_retournees , __dbn );
-                                if(tt401[__xst] !== __xsu){
+                                if(tt401.__xst !== __xsu){
                                     await __dbn.close();
                                     return({"__xst" : __xer ,"__xme" : tt401.__xme});
                                 }
@@ -228,7 +228,7 @@ class travaux1{
                             WHERE `chi_id_travail` = :c_chi_id_travail ;
                             */
                             /*sql_inclure_fin*/ 401 , criteres_401 , this.__ig1.donnees_retournees , __dbn );
-                            if(tt401[__xst] !== __xsu){
+                            if(tt401.__xst !== __xsu){
                                 await __dbn.close();
                                 return({"__xst" : __xer ,"__xme" : tt401.__xme});
                             }
@@ -300,7 +300,7 @@ class travaux1{
         WHERE `chp_etat_travail` = :chp_etat_travail ;
         */
         /*sql_inclure_fin*/ 404 , criteres_404 , this.__ig1.donnees_retournees , __db1 );
-        if(tt404[__xst] !== __xsu){
+        if(tt404.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt404.__xme});
         }
         return({"__xst" : __xsu});
@@ -321,7 +321,7 @@ class travaux1{
         */
         /*sql_inclure_fin*/ 403 , criteres_403 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt403[__xst] !== __xsu){
+        if(tt403.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt403.__xme});
         }
         return({"__xst" : __xsu});
@@ -367,7 +367,7 @@ class travaux1{
         this.__ig1.donnees_recues.chi_id_acces=tt396.__xva[0]['T1.chx_acces_utilisateur'];
         let cht_rev_travail=tt396.__xva[0]['T0.cht_rev_travail'];
         let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_travail );
-        if(obj_matrice[__xst] !== __xsu){
+        if(obj_matrice.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' erreur de convertion en matrice [' + this.__ig1.nl2() + ']'});
         }
         /* this.__ig1.ma_trace1('cht_rev_travail=',cht_rev_travail); */
@@ -502,12 +502,12 @@ class travaux1{
         ;
         */
         /*sql_inclure_fin*/ 396 , criteres_select_396 , this.__ig1.donnees_retournees , __db1 );
-        if(tt396[__xst] !== __xsu || tt396[__xva].length !== 1){
+        if(tt396.__xst !== __xsu || tt396[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [396 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
         let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt396[__xva][0] , __db1 );
-        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
         }
@@ -538,7 +538,7 @@ class travaux1{
             return({"__xst" : __xer ,"__xme" : tt397.__xme});
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt396[__xva][0] , __db1 );
-        if(__taam[__xst] !== __xsu){
+        if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
@@ -607,11 +607,11 @@ class travaux1{
         ;
         */
         /*sql_inclure_fin*/ 396 , {"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt396[__xst] !== __xsu){
+        if(tt396.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt396.__xme});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt396[__xva][0] , __db1 );
-        if(aetam[__xst] !== __xsu){
+        if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt396;
@@ -655,7 +655,7 @@ class travaux1{
         ;
         */
         /*sql_inclure_fin*/ 396 , criteres_396 , this.__ig1.donnees_retournees , __db1 );
-        if(tt396[__xst] !== __xsu){
+        if(tt396.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt396.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt396;
@@ -688,12 +688,12 @@ class travaux1{
         ;
         */
         /*sql_inclure_fin*/ 396 , criteres_396 , this.__ig1.donnees_retournees , __db1 );
-        if(tt396[__xst] !== __xsu){
+        if(tt396.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt396.__xme});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt396[__xva][0] , __db1 );
-        if(tas[__xst] !== __xsu){
+        if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_399={
@@ -707,11 +707,11 @@ class travaux1{
         */
         /*sql_inclure_fin*/ 399 , criteres_399 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt399[__xst] !== __xsu){
+        if(tt399.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt399.__xme});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt396[__xva][0] , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
         /*  */
@@ -777,7 +777,7 @@ class travaux1{
         /* conversion des données numériques fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
-        if(__tac[__xst] !== __xsu){
+        if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
         let donnees_sql={
@@ -813,11 +813,11 @@ class travaux1{
         );
         */
         /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt398[__xst] !== __xsu || tt398['changements'] !== 1){
+        if(tt398.__xst !== __xsu || tt398['changements'] !== 1){
             return({"__xst" : __xer ,"__xme" : tt398.__xme});
         }
         let aac=await this.action_apres_creer( mat , d , tt398['nouvel_id'] , form , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -904,7 +904,7 @@ class travaux1{
         if(tt395.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt395.__xme});
         }
-        if(tt395[__xst] === __xsu && tt395[__xva].length === 0 && __debut > 0){
+        if(tt395.__xst === __xsu && tt395[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres_395['debut']=__debut;

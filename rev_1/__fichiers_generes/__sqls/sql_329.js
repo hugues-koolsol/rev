@@ -81,8 +81,7 @@ class sql_329{
                 */
                 let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres(3,elem['chp_prefixe_genre'],'prefixe');
                 if(__test_2_1.__xst !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_2_1.__xme);
-                    return{"__xst" : __xer};
+                    return{"__xst" : __xer ,"__xme" : __test_2_1.__xme};
                 }
 
                 /* test "non nul" sur le champ "chp_espece_genre" */
@@ -94,8 +93,7 @@ class sql_329{
                 */
                 let __test_4_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre(elem['che_longueur_genre'],'longueur du genre');
                 if(__test_4_1.__xst !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_4_1.__xme);
-                    return{"__xst" : __xer};
+                    return{"__xst" : __xer ,"__xme" : __test_4_1.__xme};
                 }
 
                 /* test "non nul" sur le champ "che_est_primaire_genre" */
@@ -127,8 +125,7 @@ class sql_329{
                 */
                 let __test_13_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1(elem['cht_fonctions_genre'],'fonctions');
                 if(__test_13_1.__xst !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_13_1.__xme);
-                    return{"__xst" : __xer};
+                    return{"__xst" : __xer ,"__xme" : __test_13_1.__xme};
                 }
 
                 /* test "non nul" sur le champ "che_est_nur_genre" */

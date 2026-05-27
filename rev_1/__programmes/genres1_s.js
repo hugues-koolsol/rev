@@ -53,7 +53,7 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 330 , criteres_select_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330[__xst] !== __xsu){
+        if(tt330.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2()});
         }
         let donnees_sql={
@@ -143,7 +143,7 @@ class genres1{
         );
         */
         /*sql_inclure_fin*/ 345 , donnees_sql , this.__ig1.donnees_retournees , __db_autre );
-        if(tt345[__xst] !== __xsu){
+        if(tt345.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt345.__xme});
         }
         await __db_autre.close();
@@ -164,7 +164,7 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 316 , criteres_select_316 , this.__ig1.donnees_retournees , __db1 );
-        if(tt316[__xst] !== __xsu){
+        if(tt316.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt316.__xme});
         }
         this.__ig1.donnees_retournees[__xva]=tt316[__xva];
@@ -175,12 +175,6 @@ class genres1{
     */
     async vv_genres_nouveau_numero1( mat , d ){
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][this.__ig1.donnees_recues[__xva]['__co1']];
-        /*
-          [
-          'vv_ancien_numero_de_genre' => '110',
-          'vv_nouveau_numero_de_genre' => '110',
-          ]
-        */
         let chi_id_genre_ancienne=0;
         let chi_id_genre_nouvelle=0;
         if(form.hasOwnProperty( 'vv_nouveau_numero_de_genre' ) && this.__ig1.est_num( form['vv_nouveau_numero_de_genre'] )){
@@ -191,7 +185,6 @@ class genres1{
         if(form.hasOwnProperty( 'vv_ancien_numero_de_genre' ) && this.__ig1.est_num( form['vv_ancien_numero_de_genre'] )){
             chi_id_genre_ancienne=parseInt( form['vv_ancien_numero_de_genre'] , 10 );
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push();
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
         if(chi_id_genre_ancienne === chi_id_genre_nouvelle){
@@ -212,7 +205,7 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 330 , criteres_select_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330[__xst] !== __xsu){
+        if(tt330.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt330.__xme});
         }
         let criteres_select_330_2={"T0_chi_id_genre" : chi_id_genre_nouvelle};
@@ -229,7 +222,7 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 330 , criteres_select_330_2 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330_2[__xst] !== __xsu){
+        if(tt330_2.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
             return({"__xst" : __xer ,"__xme" : tt330_2.__xme});
         }
@@ -237,7 +230,7 @@ class genres1{
             return({"__xst" : __xer ,"__xme" : 'le genre ' + chi_id_genre_nouvelle + ' existe déjà [' + this.__ig1.nl2() + ']'});
         }
         let obj=await this.verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , chi_id_genre_ancienne , __db1 );
-        if(obj[__xst] !== __xsu){
+        if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le genre est utilisé dans une base [' + this.__ig1.nl2() + ']'});
         }
         if(chi_id_genre_nouvelle < 100
@@ -256,7 +249,7 @@ class genres1{
         WHERE `chi_id_genre` = :c_chi_id_genre ;
         */
         /*sql_inclure_fin*/ 334 , criteres_334 , this.__ig1.donnees_retournees , __db1 );
-        if(tt334[__xst] !== __xsu){
+        if(tt334.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt334.__xme});
         }
         if(chi_id_genre_nouvelle < 100
@@ -288,7 +281,7 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 333 , criteres_select_333 , this.__ig1.donnees_retournees , __db1 );
-        if(tt333[__xst] !== __xsu){
+        if(tt333.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrements non trouvés [' + this.__ig1.nl2() );
             return({"__xst" : __xer ,"__xme" : tt333.__xme});
         }
@@ -355,12 +348,12 @@ class genres1{
             WHERE `chi_id_genre` = :c_chi_id_genre ;
             */
             /*sql_inclure_fin*/ 335 , criteres_select_335 , this.__ig1.donnees_retournees , __db1 );
-            if(tt335[__xst] !== __xsu){
+            if(tt335.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt335.__xme});
             }
         }
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
-        if(obj[__xst] !== __xsu){
+        if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : obj.__xme});
         }
         return({"__xst" : __xsu});
@@ -383,7 +376,7 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 333 , criteres_select_333 , this.__ig1.donnees_retournees , __db1 );
-        if(tt333[__xst] !== __xsu){
+        if(tt333.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt333.__xme});
         }
         this.__ig1.donnees_retournees[__xva]=tt333[__xva];
@@ -402,13 +395,13 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 171 , criteres_select_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171[__xst] !== __xsu){
+        if(tt171.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt171.__xme});
         }
         for(let k1 in tt171[__xva]){
             let v1=tt171[__xva][k1];
             let obj_matrice=this.__ig1.__rev1.rev_tm( v1['T0.chp_rev_travail_basedd'] );
-            if(obj_matrice[__xst] !== __xsu){
+            if(obj_matrice.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
             }
             let mat=obj_matrice[__xva];
@@ -439,7 +432,7 @@ class genres1{
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
-        if(obj[__xst] !== __xsu){
+        if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : obj.__xme});
         }
         return({"__xst" : __xsu});
@@ -455,7 +448,7 @@ class genres1{
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , form['chi_id_genre'] , __db1 );
-        if(obj[__xst] !== __xsu){
+        if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : obj.__xme});
         }
         return({"__xst" : __xsu});
@@ -465,7 +458,7 @@ class genres1{
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
-        if(obj[__xst] !== __xsu){
+        if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : obj.__xme});
         }
         return({"__xst" : __xsu});
@@ -481,7 +474,7 @@ class genres1{
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
-        if(obj[__xst] !== __xsu){
+        if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : obj.__xme});
         }
         return({"__xst" : __xsu});
@@ -531,7 +524,7 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 330 , criteres_select_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330[__xst] !== __xsu || tt330[__xva].length !== 1){
+        if(tt330.__xst !== __xsu || tt330[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [330 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
@@ -594,12 +587,12 @@ class genres1{
         WHERE `chi_id_genre` = :c_chi_id_genre ;
         */
         /*sql_inclure_fin*/ 331 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt331[__xst] !== __xsu || tt331.changements !== 1){
+        if(tt331.__xst !== __xsu || tt331.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt331.__xme});
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt330[__xva][0] , __db1 );
-        if(__taam[__xst] !== __xsu){
+        if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
@@ -666,11 +659,11 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 330 , {"T0_chi_id_genre" : chi_id_genre} , this.__ig1.donnees_retournees , __db1 );
-        if(tt330[__xst] !== __xsu){
+        if(tt330.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt330.__xme});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt330[__xva][0] , __db1 );
-        if(aetam[__xst] !== __xsu){
+        if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt330;
@@ -711,7 +704,7 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 330 , criteres_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330[__xst] !== __xsu){
+        if(tt330.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt330.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt330;
@@ -746,12 +739,12 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 330 , criteres_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330[__xst] !== __xsu){
+        if(tt330.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt330.__xme});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt330[__xva][0] , __db1 );
-        if(tas[__xst] !== __xsu){
+        if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_332={
@@ -765,11 +758,11 @@ class genres1{
         */
         /*sql_inclure_fin*/ 332 , criteres_332 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt332[__xst] !== __xsu){
+        if(tt332.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt332.__xme});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt330[__xva][0] , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
         /*  */
@@ -845,7 +838,7 @@ class genres1{
         /* conversion des données numériques fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
-        if(__tac[__xst] !== __xsu){
+        if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tac.__xme});
         }
         let donnees_sql={
@@ -928,12 +921,12 @@ class genres1{
         );
         */
         /*sql_inclure_fin*/ 329 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt329[__xst] !== __xsu || tt329['changements'] !== 1){
+        if(tt329.__xst !== __xsu || tt329['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt329.__xme});
         }
         let aac=await this.action_apres_creer( mat , d , tt329['nouvel_id'] , form , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -1012,7 +1005,7 @@ class genres1{
         if(tt328.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt328.__xme});
         }
-        if(tt328[__xst] === __xsu && tt328[__xva].length === 0 && __debut > 0){
+        if(tt328.__xst === __xsu && tt328[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres328['debut']=__debut;

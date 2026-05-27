@@ -63,8 +63,8 @@ class bdds1{
         ;
         */
         /*sql_inclure_fin*/ 357 , criteres_357 , this.__ig1.donnees_retournees , __db1 );
-        if(tt357[__xst] !== __xsu){
-            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
+        if(tt357.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt357.__xme});
         }
         let criteres_353={"chp_provenance_rev" : 'base' ,"chx_source_rev" : chi_id_basedd};
         /* suppression des anciennes données de la table rev */
@@ -77,14 +77,14 @@ class bdds1{
            AND `chx_source_rev` = :chx_source_rev) ;
         */
         /*sql_inclure_fin*/ 353 , criteres_353 , this.__ig1.donnees_retournees , __db1 );
-        if(tt353[__xst] !== __xsu){
+        if(tt353.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1){
             return({"__xst" : __xsu});
         }
         let obj_matrice=await this.__ig1.__rev1.rev_tcm( tt357[__xva][0]['T0.chp_rev_travail_basedd'] );
-        if(obj_matrice[__xst] !== __xsu){
+        if(obj_matrice.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         const repl0=new RegExp( '¶' + 'LF¶' , 'g' );
@@ -204,11 +204,6 @@ class bdds1{
                 if(!(await this.__ig1.is_dir( chemin_sauvegarde ))){
                     await Deno.mkdir( chemin_sauvegarde , {"mode" : 0o777} );
                 }
-                /*
-                  chemin_fichier_definition_de_la_base='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_structure.sql';
-                  chemin_fichier_definition_des_index ='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_index.sql';
-                  chemin_fichier_insert_seulement     ='../rev_1/__fichiers_generes/bdd_' + chi_id_projet + '.sqlite.systeme_donnees.sql';
-                */
                 chemin_fichier_definition_de_la_base=chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_structure.sql';
                 chemin_fichier_definition_des_index=chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_index.sql';
                 chemin_fichier_insert_seulement=chemin_sauvegarde + 'bdd_' + chi_id_projet + '.sqlite.systeme_donnees.sql';
@@ -230,7 +225,7 @@ class bdds1{
                 */
                 /*sql_inclure_fin*/ 371 , criteres_select_371 , this.__ig1.donnees_retournees , __db1 );
                 __db1.close();
-                if(tt371[__xst] !== __xsu){
+                if(tt371.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : 'base non trouvée [' + this.__ig1.nl2() + ']'});
                 }
                 /* this.__ig1.ma_trace1("tt371=" , tt371 ); */
@@ -240,15 +235,6 @@ class bdds1{
                 if(obj1.__xst !== 1){
                     return({"__xst" : __xer ,"__xme" : 'erreur de transformation du rev de la base en matrice [' + this.__ig1.nl2() + ']'});
                 }
-                /*#
-                  créer_table[
-                     nom_de_la_table['rpps_fts'],
-                     meta[
-                        nom_de_la_table['rpps_fts'],
-                        table['rpps_fts'],
-                        genre_meta[table_de_base],
-                        est_table_virtuelle['1'],
-                */
                 let l01=obj1.__xva.length;
                 for( let i=1 ; i < l01 ; i=obj1.__xva[i][12] ){
                     if(obj1.__xva[i][1] === 'créer_table' && obj1.__xva[i][2] === 'f'){
@@ -260,7 +246,6 @@ class bdds1{
                                    && obj1.__xva[j + 1][2] === 'c'
                             ){
                                 nom_de_la_table=obj1.__xva[j + 1][1];
-                                /* this.__ig1.ma_trace1("nom_de_la_table=",nom_de_la_table); */
                             }
                         }
                         for( let j=i + 1 ; j < l01 ; j=obj1.__xva[j][12] ){
@@ -285,38 +270,21 @@ class bdds1{
                 }
                 let chemin_de_la_base=this.__ig1.options_generales.repertoire_racine_de_tous_les_projets + 'rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
                 if(!(await this.__ig1.is_file( chemin_de_la_base ))){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'base non trouvée [' + this.__ig1.nl2() + ']' );
-                    return({"__xst" : 0});
+                    return({"__xst" : __xer ,"__xme" : 'base non trouvée [' + this.__ig1.nl2() + ']'});
                 }
-                db=await this.__ig1.ouvrir_bdd_temp( chemin_de_la_base );
                 if(chi_id_basedd === 0){
                     return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
                 }
+                db=await this.__ig1.ouvrir_bdd_temp( chemin_de_la_base );
                 let m=await import( './dossiers1_s.js' );
-                /*
-                  try{
-                  }catch(e){
-                  return({"__xst" : __xer , __xme : 'Erreur d\'import du module  '});
-                  }
-                */
                 let o=new m['dossiers1']( this.__ig1 );
                 if(this.__ig1.donnees_retournees._CA_ === 2){
                     chemin_sauvegarde='../rev_2/__fichiers_generes/__sauvegarde_des_bases/';
-                    /*
-                      chemin_fichier_definition_de_la_base = '../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
-                      chemin_fichier_definition_des_index  = '../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
-                      chemin_fichier_insert_seulement      = '../rev_2/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
-                    */
                     chemin_fichier_definition_de_la_base=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
                     chemin_fichier_definition_des_index=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
                     chemin_fichier_insert_seulement=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
                 }else{
                     chemin_sauvegarde='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sauvegarde_des_bases/';
-                    /*
-                      chemin_fichier_definition_de_la_base = '../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
-                      chemin_fichier_definition_des_index  = '../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
-                      chemin_fichier_insert_seulement      = '../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
-                    */
                     chemin_fichier_definition_de_la_base=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_structure.sql';
                     chemin_fichier_definition_des_index=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_index.sql';
                     chemin_fichier_insert_seulement=chemin_sauvegarde + 'bdd_' + chi_id_basedd + '.sqlite.v2_donnees.sql';
@@ -373,7 +341,6 @@ class bdds1{
             let statement1=await db.prepare( sql1 );
             let lignes1=await statement1.values();
             await statement1.finalize();
-            /* return(this.__ig1.bug1(this.__ig1.donnees_retournees,lignes1)); */
             for(let i in lignes1){
                 const sql2="SELECT sql FROM sqlite_master WHERE tbl_name='" + lignes1[i][1] + "' and name='" + lignes1[i][0] + "';";
                 let statement1=await db.prepare( sql2 );
@@ -401,8 +368,6 @@ class bdds1{
                 let statement22=await db.prepare( sql22 );
                 let lignes22=await statement22.values();
                 await statement22.finalize();
-                /* [[0,"chi_id_rev","INTEGER",1,null,1],[1,"chp_provenance_rev","VARCHAR(64)",0,"NULL",0], */
-                /* return(this.__ig1.bug1(this.__ig1.donnees_retournees,lignes2)); */
                 let liste_des_champs=[];
                 for( let i=0 ; i < lignes22.length ; i++ ){
                     debut_de_insert+=' ' + lignes22[i][1] + ' , ';
@@ -575,8 +540,8 @@ class bdds1{
         ;
         */
         /*sql_inclure_fin*/ 171 , criteres_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171[__xst] !== __xsu){
-            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
+        if(tt171.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt171.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=[];
         if(tt171[__xva].length > 0){
@@ -658,12 +623,12 @@ class bdds1{
         ;
         */
         /*sql_inclure_fin*/ 371 , criteres_select_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371[__xst] !== __xsu || tt371[__xva].length !== 1){
+        if(tt371.__xst !== __xsu || tt371[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [371 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
         let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt371[__xva][0] , __db1 );
-        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
         }
@@ -683,12 +648,12 @@ class bdds1{
         WHERE `chi_id_basedd` = :c_chi_id_basedd ;
         */
         /*sql_inclure_fin*/ 362 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt362[__xst] !== __xsu || tt362.changements !== 1){
+        if(tt362.__xst !== __xsu || tt362.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt362.__xme});
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt371[__xva][0] , __db1 );
-        if(__taam[__xst] !== __xsu){
+        if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
@@ -747,11 +712,11 @@ class bdds1{
         ;
         */
         /*sql_inclure_fin*/ 371 , {"T0_chi_id_basedd" : chi_id_basedd} , this.__ig1.donnees_retournees , __db1 );
-        if(tt371[__xst] !== __xsu){
+        if(tt371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt371.__xme});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt371[__xva][0] , __db1 );
-        if(aetam[__xst] !== __xsu){
+        if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt371;
@@ -789,7 +754,7 @@ class bdds1{
         ;
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371[__xst] !== __xsu){
+        if(tt371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt371.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt371;
@@ -820,12 +785,12 @@ class bdds1{
         ;
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371[__xst] !== __xsu){
+        if(tt371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt371.__xme});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt371[__xva][0] , __db1 );
-        if(tas[__xst] !== __xsu){
+        if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_364={
@@ -839,11 +804,11 @@ class bdds1{
         */
         /*sql_inclure_fin*/ 364 , criteres_364 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt364[__xst] !== __xsu){
+        if(tt364.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt364.__xme});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt371[__xva][0] , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
         /*  */
@@ -901,7 +866,7 @@ class bdds1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
-        if(__tac[__xst] !== __xsu){
+        if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
         let donnees_sql={
@@ -923,11 +888,11 @@ class bdds1{
         );
         */
         /*sql_inclure_fin*/ 363 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt363[__xst] !== __xsu || tt363['changements'] !== 1){
+        if(tt363.__xst !== __xsu || tt363['changements'] !== 1){
             return({"__xst" : __xer ,"__xme" : tt363.__xme});
         }
         let aac=await this.action_apres_creer( mat , d , tt363['nouvel_id'] , form , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -1002,7 +967,7 @@ class bdds1{
         if(tt361.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt361.__xme});
         }
-        if(tt361[__xst] === __xsu && tt361[__xva].length === 0 && __debut > 0){
+        if(tt361.__xst === __xsu && tt361[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres361['debut']=__debut;

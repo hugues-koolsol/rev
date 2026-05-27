@@ -19,13 +19,11 @@ class sql_110{
         /*  */
         champs0=`
           \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`chp_priorite_tache\` , \`T0\`.\`chd__dtm_tache\` , 
-          \`T0\`.\`chd__dtc_tache\` , \`T0\`.\`che__nur_tache\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\`
+          \`T0\`.\`chd__dtc_tache\` , \`T0\`.\`che__nur_tache\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
-          FROM  tbl_taches T0
-            LEFT JOIN tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-         `;
+          FROM  tbl_taches T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_tache' ) && par['T0_chi_id_tache'] !== ''){
@@ -42,9 +40,6 @@ class sql_110{
         }
         if(par.hasOwnProperty( 'T0_chp_priorite_tache2' ) && par['T0_chp_priorite_tache2'] !== ''){
             where0+=` AND \`T0\`.\`chp_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_chp_priorite_tache2'] , 'T0_chp_priorite_tache2' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T1_chp_nom_de_connexion_utilisateur' ) && par['T1_chp_nom_de_connexion_utilisateur'] !== ''){
-            where0+=` AND \`T1\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_de_connexion_utilisateur'] , 'T1_chp_nom_de_connexion_utilisateur' ) + '\r\n';
         }
         sql0+=where0;
         const order0=`
@@ -71,8 +66,7 @@ class sql_110{
                     "T0.chp_priorite_tache" : lignes[numero_de_ligne][3] ,
                     "T0.chd__dtm_tache" : lignes[numero_de_ligne][4] ,
                     "T0.chd__dtc_tache" : lignes[numero_de_ligne][5] ,
-                    "T0.che__nur_tache" : lignes[numero_de_ligne][6] ,
-                    "T1.chp_nom_de_connexion_utilisateur" : lignes[numero_de_ligne][7]
+                    "T0.che__nur_tache" : lignes[numero_de_ligne][6]
                 } );
         }
         /* comptage */

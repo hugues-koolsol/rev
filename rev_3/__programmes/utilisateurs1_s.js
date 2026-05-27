@@ -57,7 +57,7 @@ class utilisateurs1{
         WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
         */
         /*sql_inclure_fin*/ 150 , criteres_150 , this.__ig1.donnees_retournees , __db1 );
-        if(tt150[__xst] !== __xsu){
+        if(tt150.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de maj du mot de passe [' + this.__ig1.nl2() + ']'});
         }
         return({"__xst" : __xsu});
@@ -148,12 +148,12 @@ class utilisateurs1{
         ;
         */
         /*sql_inclure_fin*/ 121 , criteres_select_121 , this.__ig1.donnees_retournees , __db1 );
-        if(tt121[__xst] !== __xsu){
+        if(tt121.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt121.__xme});
         }
-        if(tt121[__xst] === __xsu && tt121[__xva].length === 1){
+        if(tt121.__xst === __xsu && tt121[__xva].length === 1){
             let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt121[__xva][0] , __db1 );
-            if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+            if(__actions_et_tests_avant_modifier.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
             }
             let donnees_sql={
@@ -172,11 +172,11 @@ class utilisateurs1{
             WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
             */
             /*sql_inclure_fin*/ 122 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            if(tt122[__xst] !== __xsu){
+            if(tt122.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt122.__xme});
             }
             let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt121[__xva][0] , __db1 );
-            if(__taam[__xst] !== __xsu){
+            if(__taam.__xst !== __xsu){
                 await __db1.exec( 'ROLLBACK;' );
                 return({"__xst" : __xer ,"__xme" : __taam.__xme});
             }
@@ -246,11 +246,11 @@ class utilisateurs1{
         ;
         */
         /*sql_inclure_fin*/ 121 , {"T0_chi_id_utilisateur" : chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt121[__xst] !== __xsu){
+        if(tt121.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt121.__xme});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt121[__xva][0] , __db1 );
-        if(aetam[__xst] !== __xsu){
+        if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt121;
@@ -292,7 +292,7 @@ class utilisateurs1{
         ;
         */
         /*sql_inclure_fin*/ 121 , criteres_121 , this.__ig1.donnees_retournees , __db1 );
-        if(tt121[__xst] !== __xsu){
+        if(tt121.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt121.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt121;
@@ -327,12 +327,12 @@ class utilisateurs1{
         ;
         */
         /*sql_inclure_fin*/ 121 , criteres_121 , this.__ig1.donnees_retournees , __db1 );
-        if(tt121[__xst] !== __xsu){
+        if(tt121.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt121.__xme});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt121[__xva][0] , __db1 );
-        if(tas[__xst] !== __xsu){
+        if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_123={
@@ -346,11 +346,11 @@ class utilisateurs1{
         */
         /*sql_inclure_fin*/ 123 , criteres_123 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt123[__xst] !== __xsu){
+        if(tt123.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt123.__xme});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt121[__xva][0] , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
         /*  */
@@ -415,7 +415,7 @@ class utilisateurs1{
         /* conversion des données numériques fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
-        if(__tac[__xst] !== __xsu){
+        if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
         let donnees_sql={
@@ -440,12 +440,12 @@ class utilisateurs1{
         );
         */
         /*sql_inclure_fin*/ 120 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt120[__xst] !== __xsu || tt120['changements'] !== 1){
+        if(tt120.__xst !== __xsu || tt120['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt120.__xme});
         }
         let aac=await this.action_apres_creer( mat , d , tt120['nouvel_id'] , form , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -527,7 +527,7 @@ class utilisateurs1{
         if(tt119.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt119.__xme});
         }
-        if(tt119[__xst] === __xsu && tt119[__xva].length === 0 && __debut > 0){
+        if(tt119.__xst === __xsu && tt119[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres119['debut']=__debut;

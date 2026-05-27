@@ -54,7 +54,6 @@ class sql_350{
         const plage0=`
         LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
         sql0+=plage0;
-        /* this.__ig1.ma_trace1('sql_350 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );

@@ -47,7 +47,7 @@ class x_ecran_coordonnees1{
         ;
         */
         /*sql_inclure_fin*/ 101 , {"T0_chp_nom_de_connexion_utilisateur" : form['chp_nom_de_connexion_utilisateur_ancien']} , this.__ig1.donnees_retournees , __db1 );
-        if(tt101[__xst] !== __xsu || tt101[__xva].length !== 1){
+        if(tt101.__xst !== __xsu || tt101[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : tt101.__xme});
         }
         const isValid=await compare( form['chp_mot_de_passe_utilisateur3'] , tt101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] );
@@ -69,7 +69,7 @@ class x_ecran_coordonnees1{
         WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
         */
         /*sql_inclure_fin*/ 109 , critere_109 , this.__ig1.donnees_retournees , __db1 );
-        if(tt109[__xst] !== __xsu){
+        if(tt109.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt109.__xme});
         }
         return({"__xst" : __xsu});
@@ -94,7 +94,7 @@ class x_ecran_coordonnees1{
         ;
         */
         /*sql_inclure_fin*/ 108 , {"T0_chi_id_utilisateur" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt108[__xst] !== __xsu){
+        if(tt108.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt108.__xme});
         }
         this.__ig1.donnees_retournees[__xva]=tt108;

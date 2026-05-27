@@ -1,12 +1,12 @@
-class sources1{
+class sources2{
     /*
-      ref_select=116
-      ref_insert=117
+      ref_select=174
+      ref_insert=
       ref_delete=118
       ref_update=
-      ref_liste_ecran=115
+      ref_liste_ecran=173
     */
-    moi='sources1';
+    moi='sources2';
     DUN_DUNE_ELEMENT_GERE='d\'un source';
     LISTE_DES_ELEMENTS_GERES='liste des sources';
     __ig1=null;
@@ -21,8 +21,6 @@ class sources1{
             "T0_chi_id_source2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &gt;' ,"taille" : 12} ,
             "T0_chi_id_source3" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &lt;=' ,"taille" : 12} ,
             "T0_che_binaire_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8} ,
-            "T0_chx_dossier_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
-            "T0_che_contient_version_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'contient version' ,"taille" : 8} ,
             "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8}
         } ,
         "sous_liste2" : {
@@ -32,8 +30,6 @@ class sources1{
             "T0_chi_id_source2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &gt;' ,"taille" : 12} ,
             "T0_chi_id_source3" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &lt;=' ,"taille" : 12} ,
             "T0_che_binaire_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8} ,
-            "T0_chx_dossier_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
-            "T0_che_contient_version_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'contient version' ,"taille" : 8} ,
             "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8}
         }
     };
@@ -43,17 +39,17 @@ class sources1{
     /*
       =============================================================================================================
     */
-    f1( mat , d , le_colis=null ){
+    f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
             case 'xxxxx' :
                 /*
                   this.__ig1.fermer_la_sous_fenetre();
-                  this.liste_du_menu0( null );
+                  this.entree_module( null );
                 */
                 break;
                 
             default:
-                return({"__xst" : __xer ,"__xme" : 'dans ' + this.moi + '_c, la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
+                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});
@@ -63,13 +59,6 @@ class sources1{
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
-        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
-            if(mat[i][1] === 'nom_champ_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                this.nom_champ_dans_parent1=mat[i + 1][1];
-            }else if(mat[i][1] === 'nom_libelle_dans_parent1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                this.nom_libelle_dans_parent1=mat[i + 1][1];
-            }
-        }
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){
@@ -84,23 +73,25 @@ class sources1{
                     this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='';
+            /*
+              this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1('+this.moi+'),f1(page_creer1()))" title="création'+this.DUN_DUNE_ELEMENT_GERE +'" >' + this.__ig1.les_svg.nouveau_document+'</div>';
+            */
         }
     }
     /*
       =============================================================================================================
     */
-    page_confirmation_supprimer1( mat , d , le_colis=null ){
-        if(!le_colis.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
+    page_confirmation_supprimer1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_colis.__xva.page_confirmation_supprimer1.__xva[0];
+        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi , 'chi_id_source' );
         let o1='';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_source" value="' + le_colis.__xva.page_confirmation_supprimer1.__xva[0]['T0.chi_id_source'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_source" value="' + enreg['T0.chi_id_source'] + '" />';
         /*
           =====================================================================================================
         */
@@ -126,218 +117,33 @@ class sources1{
     /*
       =============================================================================================================
     */
-    verifier_creer1( mat , d , données ){
-        let retour_a_la_liste='';
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
-                retour_a_la_liste='retour_a_la_liste()';
-            }
+    page_voir1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let co1=données.__co1;
-        let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseigné'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        var __test=this.__ig1.__fnt1.test_du_nom_technique1( fo1['chp_nom_source'] , 'nom' );
-        if(__test.__xst !== __xsu){
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1['che_binaire_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseigné'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_binaire_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1['che_contient_version_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "contient version" doit être renseigné'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_contient_version_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1['che_autorisation_globale_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseigné'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_autorisation_globale_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques début */
-        fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
-        fo1['che_contient_version_source']=fo1['che_contient_version_source'] === '' ?
-          ( 
-            null
-          ) : ( 
-            parseInt( fo1['che_contient_version_source'] , 10 )
-          );
-        fo1['che_autorisation_globale_source']=fo1['che_autorisation_globale_source'] === '' ?
-          ( 
-            null
-          ) : ( 
-            parseInt( fo1['che_autorisation_globale_source'] , 10 )
-          );
-        /* conversion des données numériques fin */
-        /*
-          tout a été vérifié
-        */
-        let __fo1={};
-        __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_colis_au_worker( {
-                 /*  */
-                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
-                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
-            } );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    page_creer1( mat , d , dupliquer=null ){
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_source' );
+        let enreg=le_colis1.__xva.page_voir1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi , 'chi_id_source' );
         let o1='';
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text"   maxlength="128"  id="chp_nom_source" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_source'] );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='    <div>';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_source' );
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>binaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_binaire_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_binaire_source'] );
-        }else{
-            o1+='0';
-        }
-        o1+='" />';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <div>\r\n';
-        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_source' );
-        o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_commentaire_source" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_commentaire_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_commentaire_source'] );
-        }else{
-            o1+='';
-        }
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>contient version</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_contient_version_source" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_contient_version_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_contient_version_source'] );
-        }else{
-            o1+='0';
-        }
-        o1+='" />';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>autorisation globale</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_autorisation_globale_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_autorisation_globale_source'] );
-        }else{
-            o1+='0';
-        }
-        o1+='" />';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        let cmd='';
-        cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
-            }
-        }
-        cmd+=')';
-        let obj2=this.__ig1.__rev1.rev_tm( cmd );
-        let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
+        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
+        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    filtre1( mat , d , le_colis=null ){
+    filtre1( mat , d , le_colis1=null ){
         let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
         if(a === null){
-            return(this[this.fonction_liste]( mat , d , le_colis ));
+            return(this[this.fonction_liste]( mat , d , le_colis1 ));
         }
-        let tt=this.zones_liste1( le_colis );
+        let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
-        this.vv_ecran_liste_zones_navigation1( le_colis , this.vv_ecran_liste_boutons_avant );
+        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
@@ -359,7 +165,7 @@ class sources1{
     /*
       =============================================================================================================
     */
-    zones_filtres1( mat , d , le_colis ){
+    zones_filtres1( mat , d , le_colis1 ){
         let l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -382,10 +188,10 @@ class sources1{
         }
         let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
         sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
-        if(le_colis.__xva.hasOwnProperty( '__fo1' )
-               && le_colis.__xva.__fo1 !== null
-               && le_colis.__xva.__fo1.hasOwnProperty( 'origine' )
-               && le_colis.__xva.__fo1.origine === 'aller_a_la_page'
+        if(le_colis1.__xva.hasOwnProperty( '__fo1' )
+               && le_colis1.__xva.__fo1 !== null
+               && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
+               && le_colis1.__xva.__fo1.origine === 'aller_a_la_page'
         ){
             document.getElementById( '__num_page' ).value=__num_page;
             return;
@@ -407,7 +213,7 @@ class sources1{
                         }
                     }
                     o1+='        <div>\r\n';
-                    o1+='          <input aria-autocomplete="list" type="text" id="' + i + '" aria-autocomplete="list" ';
+                    o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
                     o1+='           value="' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
                     o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
                     o1+='           maxlength="64" ';
@@ -469,41 +275,36 @@ class sources1{
     /*
       =============================================================================================================
     */
-    supprimer1( mat , d , le_colis ){
+    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
+    }
+    /*
+      =============================================================================================================
+    */
+    supprimer1( mat , d , le_colis1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    creer1( mat , d , le_colis ){
+    creer1( mat , d , le_colis1 ){
         /* redirection vers modification */
-        if(le_colis && le_colis.__xva.hasOwnProperty( 'page_modification1' )){
-            this.page_modification1( mat , d , le_colis );
+        if(le_colis1 && le_colis1.__xva.hasOwnProperty( 'page_modification1' )){
+            this.page_modification1( mat , d , le_colis1 );
         }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
-    }
-    /*
-      =============================================================================================================
-      sous_liste1( mat , d , le_colis=null ){
-      this.fonction_liste='sous_liste1';
-      return(this.__ig1.sous_liste_generique1( mat , d , le_colis , this , 'chi_id_source' ));
-      }
-    */
-    /*
-      =============================================================================================================
-    */
-    liste1( mat , d , le_colis=null ){
-        if(le_colis == null || !le_colis.__xva.hasOwnProperty( this.fonction_liste )){
-            /* F5 */
-            debugger;
-            /* this.#init1(null,'liste1'); */
-            return({"__xst" : __xsu});
+    liste1( mat , d , le_colis1=null ){
+        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+            if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
+            }else{
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
+                this.__ig1.affiche_les_messages();
+                return({"__xst" : __xsu});
+            }
         }
         let o1='';
         let initialisation_fait=false;
@@ -522,19 +323,13 @@ class sources1{
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
-        this.zones_filtres1( mat , d , le_colis );
-        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis );
+        this.zones_filtres1( mat , d , le_colis1 );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    sous_liste2( mat , d , le_colis1 ){
-        return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
       =============================================================================================================
@@ -561,67 +356,57 @@ class sources1{
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
                 parametres+=' id2(' + elem['T0.chi_id_source'] + ')';
-                let libelle1='';
-                libelle1+='(' + elem['T0.chi_id_source'] + ') ';
-                libelle1+=elem['T0.chp_nom_source'] ? ( ' , ' + elem['T0.chp_nom_source'] ) : ( '' );
-                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle1 ) + '\')';
+                let libelle2='';
+                libelle2+='(';
+                libelle2+=elem['T0.chi_id_source'];
+                libelle2+=') ';
+                libelle2+=' ';
+                libelle2+=elem['T0.chp_nom_source'] ? ( ' , ' + elem['T0.chp_nom_source'] ) : ( '' );
+                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
+                if(elem['T0.chi_id_source'] !== null){
+                    lst+=elem['T0.chi_id_source'];
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
                 if(elem['T0.chp_nom_source'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_nom_source'].substr( 0 , 100 ) );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_source'] !== null){
-                    lst+=elem['T0.chi_id_source'];
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_source'] !== null){
-                    lst+=elem['T0.chi_id_source'];
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_source'] !== null){
-                    lst+=elem['T0.chi_id_source'];
+                    lst+=this.__ig1.fi2( elem['T0.chp_nom_source'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.che_binaire_source'] !== null){
-                    lst+=elem['T0.che_binaire_source'];
+                    if(elem['T0.che_binaire_source'] === 0){
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
                 }
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_dossier_id_source'] !== null){
-                    lst+=elem['T0.chx_dossier_id_source'];
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.che_contient_version_source'] !== null){
-                    lst+=elem['T0.che_contient_version_source'];
+                lst+='<td style="max-width:360px;overflow:hidden;">';
+                if(elem['T0.cht_commentaire_source'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.cht_commentaire_source'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.che_autorisation_globale_source'] !== null){
-                    lst+=elem['T0.che_autorisation_globale_source'];
+                    if(elem['T0.che_autorisation_globale_source'] === 0){
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -631,13 +416,10 @@ class sources1{
                 o1+='<table border="1">';
                 o1+='<tr>';
                 o1+='<th>action</th>';
+                o1+=/* chi_id_source */'<th>id</th>';
                 o1+=/* chp_nom_source */'<th>nom</th>';
-                o1+=/* chi_id_source */'<th>id</th>';
-                o1+=/* chi_id_source */'<th>id</th>';
-                o1+=/* chi_id_source */'<th>id</th>';
                 o1+=/* che_binaire_source */'<th>binaire</th>';
-                o1+=/* chx_dossier_id_source */'<th>dossier id</th>';
-                o1+=/* che_contient_version_source */'<th>contient version</th>';
+                o1+=/* cht_commentaire_source */'<th style="max-width:360px;">commentaire</th>';
                 o1+=/* che_autorisation_globale_source */'<th>autorisation globale</th>';
                 o1+='</tr>';
                 o1+=lst;
@@ -653,23 +435,25 @@ class sources1{
     /*
       =============================================================================================================
     */
-    zones_liste1( le_colis ){
+    zones_liste1( le_colis1 ){
         let o1='';
-        if(le_colis !== null && le_colis.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             let lst='';
-            for(let i in le_colis.__xva[this.fonction_liste].__xva){
-                let elem=le_colis.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
+                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
-                if(le_colis.chi_id_utilisateur >= 2){
-                    /*
-                      seul l\'utilisateur dev peut supprimer des sources disponibles 
-                    */
-                    lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                }
+                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.voir + '</div>';
+                /*
+                  lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_modification1(chi_id_source('+elem['T0.chi_id_source']+')))))">'+this.__ig1.les_svg.editer+'</div>';
+                  
+                */
+                /*
+                  lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_duplication1(chi_id_source('+elem['T0.chi_id_source']+')))))">'+this.__ig1.les_svg.dupliquer+'</div>';
+                  
+                */
                 lst+='</div>';
                 lst+='</td>';
                 /*
@@ -707,30 +491,12 @@ class sources1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_contient_version_source'] !== null){
-                    if(elem['T0.che_contient_version_source'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
                 if(elem['T0.che_autorisation_globale_source'] !== null){
                     if(elem['T0.che_autorisation_globale_source'] === 0){
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_dossier_id_source'] !== null){
-                    lst+=elem['T0.chx_dossier_id_source'];
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -744,9 +510,7 @@ class sources1{
                 o1+=/* chp_nom_source */'<th>nom</th>';
                 o1+=/* che_binaire_source */'<th>binaire</th>';
                 o1+=/* cht_commentaire_source */'<th style="max-width:360px;">commentaire</th>';
-                o1+=/* che_contient_version_source */'<th>contient version</th>';
                 o1+=/* che_autorisation_globale_source */'<th>autorisation globale</th>';
-                o1+=/* chx_dossier_id_source */'<th>dossier id</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -761,4 +525,4 @@ class sources1{
       =============================================================================================================
     */
 }
-export{sources1 as sources1};
+export{sources2 as sources2};

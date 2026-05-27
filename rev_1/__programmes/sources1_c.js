@@ -1607,12 +1607,12 @@ class sources1{
                     lst+='" >exporter dans 1</div>';
                     /*  */
                 }
-                if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 2){
+                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_source1(chi_id_source(' + elem['T0.chi_id_source'] + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
+                if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 2 && elem['T0.che_pour_util_source'] === 1){
                     lst+='  <div class="rev_bouton yy__2" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_base_de_prod1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))';
-                    lst+='" >⎘ -&gt; prod</div>';
+                    lst+='" >-&gt; prod</div>';
                 }
-                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_source1(chi_id_source(' + elem['T0.chi_id_source'] + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
                 /*
                   =====================================================================================
                   boutons de la liste fin

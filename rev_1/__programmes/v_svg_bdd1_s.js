@@ -72,7 +72,7 @@ class v_svg_bdd1{
         ;
         */
         /*sql_inclure_fin*/ 171 , criteres_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171[__xst] !== __xsu){
+        if(tt171.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=[];
@@ -104,7 +104,7 @@ class v_svg_bdd1{
         ;
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371[__xst] !== __xsu){
+        if(tt371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + this.__ig1.donnees_recues[__xva]['id_bdd_de_la_base'] + '.sqlite';
@@ -204,7 +204,7 @@ class v_svg_bdd1{
         ;
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371[__xst] !== __xsu){
+        if(tt371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
@@ -259,7 +259,7 @@ class v_svg_bdd1{
                 ;
                 */
                 /*sql_inclure_fin*/ 316 , criteres_316 , this.__ig1.donnees_retournees , __db1 );
-                if(tt316[__xst] !== __xsu){
+                if(tt316.__xst !== __xsu){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de 316 [' + this.__ig1.nl2() );
                     return({"__xst" : __xer ,"__xme" : tt316.__xme});
                 }
@@ -433,7 +433,7 @@ class v_svg_bdd1{
         ;
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371[__xst] !== __xsu){
+        if(tt371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt371.__xme});
         }
         let chemin_absolu='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
@@ -453,7 +453,7 @@ class v_svg_bdd1{
             ;
             */
             /*sql_inclure_fin*/ 316 , criteres_316 , this.__ig1.donnees_retournees , __db1 );
-            if(tt316[__xst] !== __xsu){
+            if(tt316.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt316.__xme});
             }
             for(let i in tt316[__xva]){
@@ -518,7 +518,7 @@ class v_svg_bdd1{
             essayer_auto_increment=false;
         }
         let ret=await this.obtenir_la_structure_de_la_base_sqlite( mat , d , fichier_temporaire , essayer_auto_increment );
-        if(ret[__xst] !== __xsu){
+        if(ret.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'de récupération de la structure de la base [' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( fichier_temporaire , this.__ig1.donnees_retournees );
@@ -814,7 +814,7 @@ class v_svg_bdd1{
         for(let k1 in tableau_des_tables){
             let v1=tableau_des_tables[k1];
             let obj=await this.obtenir_tableau_sqlite_de_la_table( mat , d , v1 , db1 , essayer_auto_increment );
-            if(obj[__xst] === __xsu){
+            if(obj.__xst === __xsu){
                 tableauDesTables[v1]=obj['value'];
             }else{
                 await db1.exec( 'ROLLBACK;' );
@@ -845,7 +845,7 @@ class v_svg_bdd1{
         ;
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371[__xst] !== __xsu){
+        if(tt371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
@@ -861,12 +861,12 @@ class v_svg_bdd1{
             essayer_auto_increment=false;
         }
         let ret=await this.obtenir_la_structure_de_la_base_sqlite( mat , d , chemin_bdd , essayer_auto_increment );
-        if(ret[__xst] !== __xsu){
+        if(ret.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur sur la structure de la base ' + id_bdd_de_la_base + '[' + this.__ig1.nl2() + ']'});
         }
         let tableauDesTables=ret['value'];
         let ret2=await this.produire_un_tableau_de_la_structure_d_une_bdd_grace_a_un_source_de_structure( mat , d , source_base_virtuelle );
-        if(ret2[__xst] === __xsu){
+        if(ret2.__xst === __xsu){
             tableaux_retournes={"tableau1" : ret['value'] ,"tableau2" : ret2['value']};
         }else{
             return({
@@ -893,7 +893,7 @@ class v_svg_bdd1{
             }
         }
         let obj=await this.comparer_une_base_physique_et_une_base_virtuelle( mat , d , id_bdd_de_la_base_en_cours , this.__ig1.donnees_recues[__xva]['source_base_sql'] );
-        if(obj[__xst] === __xsu){
+        if(obj.__xst === __xsu){
             this.__ig1.donnees_retournees[__xva]=obj[__xva];
             this.__ig1.donnees_retournees[__xva]['id_bdd_de_la_base_en_cours']=id_bdd_de_la_base_en_cours;
             let maj='';
@@ -953,7 +953,7 @@ class v_svg_bdd1{
         ;
         */
         /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371[__xst] !== __xsu){
+        if(tt371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let liste_des_projets=[];
@@ -968,7 +968,7 @@ class v_svg_bdd1{
             ;
             */
             /*sql_inclure_fin*/ 316 , criteres_316 , this.__ig1.donnees_retournees , __db1 );
-            if(tt316[__xst] !== __xsu){
+            if(tt316.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
             }
             liste_des_projets=tt316[__xva];
@@ -1100,7 +1100,7 @@ class v_svg_bdd1{
         WHERE `chi_id_basedd` = :c_chi_id_basedd ;
         */
         /*sql_inclure_fin*/ 356 , criteres_356 , this.__ig1.donnees_retournees , __db1 );
-        if(tt356[__xst] !== __xsu || tt356['changements'] !== 1){
+        if(tt356.__xst !== __xsu || tt356['changements'] !== 1){
             return({"__xst" : __xer ,"__xme" : tt356.__xme});
         }
         /*
@@ -1116,7 +1116,7 @@ class v_svg_bdd1{
         ;
         */
         /*sql_inclure_fin*/ 372 , {} , this.__ig1.donnees_retournees , __db1 );
-        if(tt372[__xst] !== __xsu){
+        if(tt372.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt372.__xme});
         }
         let tableau_liste_des_bases=[];
@@ -1267,7 +1267,7 @@ class v_svg_bdd1{
                 let m=await import( './bdds1_s.js' );
                 let o=new m['bdds1']( this.__ig1 );
                 let obj=await o.enregistrer_la_matrice_dans_la_table_rev( mat , d , __db1 );
-                if(obj[__xst] !== __xsu){
+                if(obj.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : 'erreur de sauvegarde de matrice de la base [' + this.__ig1.nl2()});
                 }
             }else{

@@ -4,7 +4,7 @@ class taches2{
       ref_insert=111
       ref_delete=114
       ref_update=161
-      ref_liste_ecran=110
+      ref_liste_ecran=172
     */
     moi='taches2';
     DUN_DUNE_ELEMENT_GERE='d\'une tâche';
@@ -114,9 +114,19 @@ class taches2{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['chx_utilisateur_tache'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chx_utilisateur_tache' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         /* conversion des données numériques verifier_modifier début */
         fo1['chi_id_tache']=fo1['chi_id_tache'] === '' ? ( null ) : ( parseInt( fo1['chi_id_tache'] , 10 ) );
         fo1['chp_priorite_tache']=fo1['chp_priorite_tache'] === '' ? ( null ) : ( parseInt( fo1['chp_priorite_tache'] , 10 ) );
+        fo1['chx_utilisateur_tache']=fo1['chx_utilisateur_tache'] === '' ? ( null ) : ( parseInt( fo1['chx_utilisateur_tache'] , 10 ) );
         /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié

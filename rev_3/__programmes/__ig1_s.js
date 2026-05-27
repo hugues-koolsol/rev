@@ -431,7 +431,7 @@ class __ig1{
         if(ttxxx.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
-        if(ttxxx[__xst] === __xsu && ttxxx[__xva].length === 0 && __debut > 0){
+        if(ttxxx.__xst === __xsu && ttxxx[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres_xxx['debut']=__debut;

@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_115{
+class sql_173{
     /*
       =============================================================================================================
     */
@@ -18,8 +18,7 @@ class sql_115{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_contient_version_source\` , 
-          \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`chx_dossier_id_source\`
+          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_autorisation_globale_source\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -41,12 +40,6 @@ class sql_115{
         if(par.hasOwnProperty( 'T0_che_binaire_source' ) && par['T0_che_binaire_source'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_binaire_source`' , par['T0_che_binaire_source'] );
         }
-        if(par.hasOwnProperty( 'T0_chx_dossier_id_source' ) && par['T0_chx_dossier_id_source'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_dossier_id_source`' , par['T0_chx_dossier_id_source'] );
-        }
-        if(par.hasOwnProperty( 'T0_che_contient_version_source' ) && par['T0_che_contient_version_source'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_contient_version_source`' , par['T0_che_contient_version_source'] );
-        }
         if(par.hasOwnProperty( 'T0_che_autorisation_globale_source' ) && par['T0_che_autorisation_globale_source'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_autorisation_globale_source`' , par['T0_che_autorisation_globale_source'] );
         }
@@ -60,14 +53,14 @@ class sql_115{
         const plage0=`
         LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
         sql0+=plage0;
-        /* this.__ig1.ma_trace1('sql_115 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_173 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 115 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 173 , e , sql0 , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
@@ -76,9 +69,7 @@ class sql_115{
                     "T0.chp_nom_source" : lignes[numero_de_ligne][1] ,
                     "T0.che_binaire_source" : lignes[numero_de_ligne][2] ,
                     "T0.cht_commentaire_source" : lignes[numero_de_ligne][3] ,
-                    "T0.che_contient_version_source" : lignes[numero_de_ligne][4] ,
-                    "T0.che_autorisation_globale_source" : lignes[numero_de_ligne][5] ,
-                    "T0.chx_dossier_id_source" : lignes[numero_de_ligne][6]
+                    "T0.che_autorisation_globale_source" : lignes[numero_de_ligne][4]
                 } );
         }
         /* comptage */
@@ -102,7 +93,7 @@ class sql_115{
     /*
       =============================================================================================================
     */
-    moi='sql_115';
+    moi='sql_173';
     __ig1=null;
     __db1=null;
     /*
@@ -113,4 +104,4 @@ class sql_115{
         this.__db1=__db1;
     }
 }
-export{sql_115 as sql_115};
+export{sql_173 as sql_173};

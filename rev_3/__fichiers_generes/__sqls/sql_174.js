@@ -5,14 +5,13 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_116{
+class sql_174{
     /*
       =============================================================================================================
     */
     async sql( par ){
         const champs0=`
-          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_contient_version_source\` , \`T0\`.\`che_autorisation_globale_source\` , 
-          \`T0\`.\`che_pour_util_source\`
+          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`che_pour_util_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -20,14 +19,14 @@ class sql_116{
         sql0+=from0;
         const where0=` WHERE \`T0\`.\`chi_id_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_source'] , 'T0_chi_id_source' ) + ``;
         sql0+=where0;
-        /* this.__ig1.ma_trace1('sql_116 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_174 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 116 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 174 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -35,9 +34,8 @@ class sql_116{
                     "T0.chi_id_source" : col[0] ,
                     "T0.chp_nom_source" : col[1] ,
                     "T0.cht_commentaire_source" : col[2] ,
-                    "T0.che_contient_version_source" : col[3] ,
-                    "T0.che_autorisation_globale_source" : col[4] ,
-                    "T0.che_pour_util_source" : col[5]
+                    "T0.che_autorisation_globale_source" : col[3] ,
+                    "T0.che_pour_util_source" : col[4]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});
@@ -45,7 +43,7 @@ class sql_116{
     /*
       =============================================================================================================
     */
-    moi='sql_116';
+    moi='sql_174';
     __ig1=null;
     __db1=null;
     /*
@@ -56,4 +54,4 @@ class sql_116{
         this.__db1=__db1;
     }
 }
-export{sql_116 as sql_116};
+export{sql_174 as sql_174};

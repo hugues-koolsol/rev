@@ -21,7 +21,7 @@ class v2_menu_pour_acces_1{
         les_sous_menus[0]+=`<li><div  id="menu_6"   data-id_auto="5" data-id_menu="5" class="rev_bouton"  title="métier" data-rev_click="m1(n1(metiers1),f1(entree_module()))">métier</div></li>`;
         les_sous_menus[0]+=`<li><div  id="menu_7"   data-id_auto="7" data-id_menu="7" class="rev_bouton"  title="accès" data-rev_click="m1(n1(acces1),f1(entree_module()))">accès</div></li>`;
         les_sous_menus[0]+=`<li><div  id="menu_8"   data-id_auto="3" data-id_menu="3" class="rev_bouton"  title="utilisateurs" data-rev_click="m1(n1(utilisateurs1),f1(entree_module()))">utilisateurs</div></li>`;
-        les_sous_menus[0]+=`<li><div  id="menu_9"   data-id_auto="2" data-id_menu="2" class="rev_bouton"  title="sources" data-rev_click="m1(n1(sources1),f1(entree_module()))">sources</div></li>`;
+        les_sous_menus[0]+=`<li><div  id="menu_9"   data-id_auto="2" data-id_menu="2" class="rev_bouton"  title="sources" data-rev_click="m1(n1(sources2),f1(entree_module(null)))">sources</div></li>`;
         les_sous_menus[0]+=`<li><div  id="menu_10"   data-id_auto="4" data-id_menu="4" class="rev_bouton"  title="autorisations" data-rev_click="m1(n1(autorisations1),f1(entree_module()))">autorisations</div></li>`;
         les_sous_menus[0]+=`<li><div  id="menu_11"   data-id_auto="6" data-id_menu="6" class="rev_bouton"  title="menus" data-rev_click="m1(n1(menus1),f1(entree_module()))">menus</div></li>`;
         /* niveau 0 */

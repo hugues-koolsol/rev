@@ -192,7 +192,7 @@ class _connexion1{
         ;
         */
         /*sql_inclure_fin*/ 101 , {"T0_chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur} , this.donnees_retournees , __db1 );
-        if(tt101[__xst] !== __xsu || tt101[__xva].length !== 1){
+        if(tt101.__xst !== __xsu || tt101[__xva].length !== 1){
             return({
                     "__xst" : __xer ,
                     "__xme" : 'la combinaison du nom d\'utilisateur et du mot de passe est incorrecte ou bien cet utilisateur est inactif'

@@ -34,13 +34,6 @@
     "cht_notification_ko_source": null,
     "che_pour_sous_liste_autorisation": 0
   },
-  "sources1_c.js": {
-    "id_autorisation": 2,
-    "autorisation_cote_client": 0,
-    "cht_condition_js_source": null,
-    "cht_notification_ko_source": null,
-    "che_pour_sous_liste_autorisation": 0
-  },
   "autorisations1_c.js": {
     "id_autorisation": 4,
     "autorisation_cote_client": 0,
@@ -64,6 +57,13 @@
   },
   "taches1_c.js": {
     "id_autorisation": 1,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
+  },
+  "sources2_c.js": {
+    "id_autorisation": 43,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
     "cht_notification_ko_source": null,

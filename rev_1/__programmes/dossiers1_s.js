@@ -42,7 +42,7 @@ class dossiers1{
         if(chi_id_dossier > 0 && chp_nom_source !== ''){
             let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
             let obj=await this.construire_chemin( chi_id_dossier , __db1 );
-            if(obj[__xst] !== __xsu){
+            if(obj.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
             let chemin_fichier_zip=obj[__xva]['chemin_absolu'] + '/' + chp_nom_source;
@@ -84,7 +84,7 @@ class dossiers1{
         if(chi_id_dossier > 0 && chp_nom_source !== ''){
             let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
             let obj=await this.construire_chemin( chi_id_dossier , __db1 );
-            if(obj[__xst] !== __xsu){
+            if(obj.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
             let chemin_fichier_zip=obj[__xva]['chemin_absolu'] + '/' + chp_nom_source;
@@ -151,7 +151,7 @@ class dossiers1{
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
         let obj=await this.construire_chemin( chi_id_dossier , __db1 );
-        if(obj[__xst] !== __xsu){
+        if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
         let criteres_select_116={"T0_chi_id_source" : chi_id_source};
@@ -168,7 +168,7 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
-        if(tt116[__xst] !== __xsu){
+        if(tt116.__xst !== __xsu){
             return({
                     "__xst" : __xer ,
                     "__xme" : 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
@@ -513,7 +513,7 @@ class dossiers1{
             /* let nom_complet_du_fichier='./__fichiers_generes/' + nom_du_fichier; */
             let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
             let obj=await this.construire_chemin( chi_id_dossier , __db1 );
-            if(obj[__xst] !== __xsu){
+            if(obj.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
             let criteres_select_116={"T0_chi_id_source" : chi_id_source};
@@ -530,7 +530,7 @@ class dossiers1{
             ;
             */
             /*sql_inclure_fin*/ 116 , criteres_select_116 , this.__ig1.donnees_retournees , __db1 );
-            if(tt116[__xst] !== __xsu){
+            if(tt116.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : tt116.__xme});
             }
@@ -614,7 +614,7 @@ class dossiers1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         if(chi_id_dossier > 0 && chp_nom_source !== ''){
             let obj=await this.construire_chemin( chi_id_dossier , __db1 );
-            if(obj[__xst] !== __xsu){
+            if(obj.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
             let chemin_du_fichier=obj[__xva]['chemin_absolu'] + chp_nom_source;
@@ -643,7 +643,7 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 171 , criteres_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171[__xst] !== __xsu){
+        if(tt171.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer ,"__xme" : tt171.__xme});
         }
@@ -724,7 +724,7 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 386 , criteres_386_1 , this.__ig1.donnees_retournees , __db1 );
-        if(tt386_1[__xst] !== __xsu){
+        if(tt386_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt386_1.__xme});
         }
         /*
@@ -742,7 +742,7 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 386 , criteres_386_2 , this.__ig1.donnees_retournees , __db1 );
-        if(tt386_2[__xst] !== __xsu){
+        if(tt386_2.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt386_2.__xme});
         }
         if(tt386_2[__xva].length >= 1){
@@ -759,7 +759,7 @@ class dossiers1{
         WHERE `chi_id_dossier` = :c_chi_id_dossier ;
         */
         /*sql_inclure_fin*/ 406 , criteres_406 , this.__ig1.donnees_retournees , __db1 );
-        if(tt406[__xst] !== __xsu){
+        if(tt406.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur de sélection du dossier ancien [' + this.__ig1.nl2() );
             return({"__xst" : __xer ,"__xme" : tt406.__xme});
         }
@@ -805,7 +805,7 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : id_dossier} , this.__ig1.donnees_retournees , __db1 );
-        if(tt386[__xst] !== __xsu || tt386[__xva].length !== 1){
+        if(tt386.__xst !== __xsu || tt386[__xva].length !== 1){
             if(this.__ig1.__deverminage === 2){
                 let e=new Error( 'construire_chemin' );
                 this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.formatter_erreur_serveur( e.stack ) + ' ' + this.__ig1.nl2( e ) );
@@ -819,7 +819,7 @@ class dossiers1{
         let continuer=30;
         do{
             continuer--;
-            if(tt386[__xst] === __xsu){
+            if(tt386.__xst === __xsu){
                 if(tt386[__xva][0]['T0.chx_parent_dossier'] === 1){
                     chemin='/' + tt386[__xva][0]['T0.chp_nom_dossier'] + chemin;
                     continuer=0;
@@ -845,7 +845,7 @@ class dossiers1{
                     }
                 }
             }else{
-                return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
+                return({"__xst" : __xer ,"__xme" : tt386.__xme});
             }
         }while(continuer > 0);
         tt386=null;
@@ -899,8 +899,8 @@ class dossiers1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         if(chi_id_dossier > 0 && chp_nom_source !== ''){
             let obj=await this.construire_chemin( chi_id_dossier , __db1 );
-            if(obj[__xst] !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : obj.__xme});
             }
             let chemin_fichier=obj[__xva]['chemin_absolu'] + chp_nom_source;
             let obj2=await this.__ig1.__fnt1.sauvegarder_et_supprimer_fichier( chemin_fichier , this.__ig1.donnees_retournees );
@@ -934,7 +934,7 @@ class dossiers1{
             return({"__xst" : __xer ,"__xme" : ' erreur sur is_dir=' + obj[__xva].chemin_absolu + ' [' + this.__ig1.nl2() + ']'});
         }
         if(isd === true){
-            for await (const dirEntry of Deno.readDir( obj[__xva].chemin_absolu )){
+            for await (const dirEntry of Deno.readDir( obj.__xva.chemin_absolu )){
                 if(dirEntry.isDirectory === true){
                     liste_des_fido.push( {"type_element" : 'd' ,"nom" : dirEntry.name ,"present_en_base" : __xer ,"chi_id_dossier" : 0} );
                 }else if(dirEntry.isFile === true){
@@ -978,7 +978,7 @@ class dossiers1{
             ;
             */
             /*sql_inclure_fin*/ 341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
-            if(tt341[__xst] === __xsu){
+            if(tt341.__xst === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
                     if(v1['type_element'] === 'f'){
@@ -1002,7 +1002,7 @@ class dossiers1{
             ;
             */
             /*sql_inclure_fin*/ 169 , {"T0_chx_parent_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
-            if(tt169[__xst] === __xsu){
+            if(tt169.__xst === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
                     if(v1['type_element'] === 'd'){
@@ -1096,7 +1096,7 @@ class dossiers1{
             let continuer=30;
             do{
                 continuer--;
-                if(tt386[__xst] === __xsu){
+                if(tt386.__xst === __xsu){
                     if(tt386[__xva][0]['T0.chx_parent_dossier'] === id_actuel){
                         continuer=0;
                         return({"__xst" : __xer ,"__xme" : 'un dossier ne peut être déplacé sous un de ses enfants [' + this.__ig1.nl2() + ']'});
@@ -1144,7 +1144,7 @@ class dossiers1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         if(chi_id_dossier > 0){
             let obj=await this.construire_chemin( chi_id_dossier , __db1 );
-            if(obj[__xst] !== __xsu){
+            if(obj.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
             if((await this.__ig1.is_dir( obj[__xva]['chemin_absolu'] ))){
@@ -1156,7 +1156,6 @@ class dossiers1{
                     await this.liste_des_fidos( 1 , __db1 );
                     return({"__xst" : __xsu});
                 }catch(e){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push();
                     return({"__xst" : __xer ,"__xme" : 'Erreur lors de la création du dossier [' + this.__ig1.nl2( e ) + ']'});
                 }
             }
@@ -1195,7 +1194,7 @@ class dossiers1{
         if(chi_id_dossier > 0 && chp_nom_source !== ''){
             let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
             let obj=await this.construire_chemin( chi_id_dossier , __db1 );
-            if(obj[__xst] !== __xsu){
+            if(obj.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
             let chemin_fichier=obj[__xva]['chemin_absolu'] + '/' + chp_nom_source;
@@ -1255,7 +1254,7 @@ class dossiers1{
             );
             */
             /*sql_inclure_fin*/ 117 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            if(tt117[__xst] !== __xsu){
+            if(tt117.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'le fichier n\'a pas pu être intégré [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : tt117.__xme});
             }
@@ -1298,7 +1297,7 @@ class dossiers1{
         if(chi_id_dossier > 0 && chp_nom_dossier !== ''){
             let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
             let obj=await this.construire_chemin( chi_id_dossier , __db1 );
-            if(obj[__xst] !== __xsu){
+            if(obj.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
             let chemin_dossier=obj[__xva]['chemin_absolu'] + chp_nom_dossier;
@@ -1349,7 +1348,7 @@ class dossiers1{
             */
             /*sql_inclure_fin*/ 378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
             let obj=await this.construire_chemin( chx_parent_dossier , __db1 );
-            if(obj[__xst] === __xsu){
+            if(obj.__xst === __xsu){
                 let chemin_absolu=obj[__xva]['chemin_absolu'];
                 await this.liste_des_fidos( chx_parent_dossier , __db1 );
                 if(provenance === 'racine' && liste1 > 0){
@@ -1358,7 +1357,7 @@ class dossiers1{
                 }
                 return({"__xst" : __xsu});
             }else{
-                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                return({"__xst" : __xer ,"__xme" : obj.__xme});
             }
         }
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
@@ -1368,7 +1367,7 @@ class dossiers1{
     */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
         let obj=await this.liste_des_fidos( __xva_avant['T0.chi_id_dossier'] , __db1 );
-        if(obj[__xst] === __xsu){
+        if(obj.__xst === __xsu){
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
@@ -1379,12 +1378,12 @@ class dossiers1{
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*  */
         let obj_construire_chemin_ancien_de_parent=await this.construire_chemin( __xva_avant['T0.chx_parent_dossier'] , __db1 );
-        if(obj_construire_chemin_ancien_de_parent[__xst] !== __xsu){
+        if(obj_construire_chemin_ancien_de_parent.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu ancien n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
         let chemin_absolu_ancien_nom=obj_construire_chemin_ancien_de_parent[__xva]['chemin_absolu'] + __xva_avant['T0.chp_nom_dossier'];
         let obj_construire_chemin_nouveau=await this.construire_chemin( form['chx_parent_dossier'] , __db1 );
-        if(obj_construire_chemin_nouveau[__xst] !== __xsu){
+        if(obj_construire_chemin_nouveau.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
         let chemin_absolu_nouveau_nom=obj_construire_chemin_nouveau[__xva]['chemin_absolu'] + form['chp_nom_dossier'];
@@ -1449,7 +1448,7 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 386 , criteres_select_386 , this.__ig1.donnees_retournees , __db1 );
-        if(tt386[__xst] !== __xsu || tt386[__xva].length !== 1){
+        if(tt386.__xst !== __xsu || tt386[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [386 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
@@ -1472,12 +1471,12 @@ class dossiers1{
         WHERE `chi_id_dossier` = :c_chi_id_dossier ;
         */
         /*sql_inclure_fin*/ 407 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt407[__xst] !== __xsu || tt407.changements !== 1){
+        if(tt407.__xst !== __xsu || tt407.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt407.__xme});
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt386[__xva][0] , __db1 );
-        if(__taam[__xst] !== __xsu){
+        if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
@@ -1541,12 +1540,11 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
-        if(tt386[__xst] !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push();
+        if(tt386.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [' + this.__ig1.nl2() + ']'});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt386[__xva][0] , __db1 );
-        if(aetam[__xst] !== __xsu){
+        if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt386;
@@ -1573,7 +1571,7 @@ class dossiers1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let tac=await this.tests_avant_creer( mat , d , form , __db1 );
-        if(tac[__xst] !== __xsu){
+        if(tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tac.__xme});
         }
         let donnees_sql={"donnees" : [{"chx_parent_dossier" : form['chx_parent_dossier'] ,"chp_nom_dossier" : form['chp_nom_dossier']}]};
@@ -1589,7 +1587,7 @@ class dossiers1{
         );
         */
         /*sql_inclure_fin*/ 378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt378[__xst] === __xsu){
+        if(tt378.__xst === __xsu){
             if(tt378['changements'] === 0){
                 return({"__xst" : __xer ,"__xme" : 'l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
             }
@@ -1602,8 +1600,7 @@ class dossiers1{
             }
             return({"__xst" : __xsu});
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push();
-            return({"__xst" : __xer ,"__xme" : tt378['__xme'] + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tt378.__xme + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
     }
     /*
@@ -1611,11 +1608,11 @@ class dossiers1{
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.construire_chemin( __xva_avant['T0.chi_id_dossier'] , __db1 );
-        if(obj[__xst] !== __xsu){
+        if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
         let obj2=await this.test_dossier_vide( obj[__xva]['chemin_absolu'] );
-        if(obj2[__xst] === __xsu){
+        if(obj2.__xst === __xsu){
             /*
               ok il est vide, on l'efface du disque
             */
@@ -1659,11 +1656,11 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : form['chi_id_dossier']} , this.__ig1.donnees_retournees , __db1 );
-        if(tt386[__xst] !== __xsu){
+        if(tt386.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         let __tests_avant_supprimer=await this.test_avant_supprimer( mat , d , form , tt386[__xva][0] , __db1 );
-        if(__tests_avant_supprimer[__xst] !== __xsu){
+        if(__tests_avant_supprimer.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tests_avant_supprimer.__xme});
         }
         let tt410=await this.__ig1.sql_iii(
@@ -1672,7 +1669,7 @@ class dossiers1{
         WHERE `chi_id_dossier` = :chi_id_dossier ;
         */
         /*sql_inclure_fin*/ 410 , {"chi_id_dossier" : form['chi_id_dossier']} , this.__ig1.donnees_retournees , __db1 );
-        if(tt410[__xst] !== __xsu){
+        if(tt410.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt410.__xme});
         }
         if(form['__mat_liste_si_ok'] !== ''){
@@ -1770,7 +1767,7 @@ class dossiers1{
         if(tt389.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt389.__xme});
         }
-        if(tt389[__xst] === __xsu && tt389[__xva].length === 0 && __debut > 0){
+        if(tt389.__xst === __xsu && tt389[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres389['debut']=__debut;
@@ -1799,25 +1796,22 @@ class dossiers1{
         let le_chemin={};
         for(let i in tt389.__xva){
             le_chemin=await o.construire_chemin( tt389.__xva[i]['T0.chi_id_dossier'] , __db1 );
-            if(le_chemin[__xst] !== __xsu){
+            if(le_chemin.__xst !== __xsu){
                 return({
                         "__xst" : __xer ,
-                        "__xme" : ' erreur sur la construction du chemin pour le source ' + __xva_avant[les_chemins[i]] + '[' + this.__ig1.nl2() + ']'
+                        "__xme" : ' erreur sur la construction du chemin ' + tt389.__xva[i]['T0.chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'
                     });
             }
             tt389.__xva[i]['nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
             le_chemin=await o.construire_chemin( tt389.__xva[i]['T0.chx_parent_dossier'] , __db1 );
-            if(le_chemin[__xst] !== __xsu){
+            if(le_chemin.__xst !== __xsu){
                 return({
                         "__xst" : __xer ,
-                        "__xme" : ' erreur sur la construction du chemin pour le source ' + __xva_avant[les_chemins[i]] + '[' + this.__ig1.nl2() + ']'
+                        "__xme" : ' erreur sur la construction du chemin ' + tt389.__xva[i]['T0.chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'
                     });
             }
             tt389.__xva[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
         }
-        /*
-          this.__ig1.donnees_retournees[__xva]['les_chemins'][les_chemins[i]]=le_chemin.__xva.nom_chemin_relatif1;
-        */
         if(this.fonction_liste === 'liste1'){
             await this.liste_des_fidos( 1 , __db1 );
         }
@@ -1842,26 +1836,19 @@ class dossiers1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let liste2=await this.__ig1.generique_sous_liste2( mat , d , 389 , criteres_389 , __nbMax , __db1 );
         if(liste2.__xst === __xsu){
-            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
             let m=await import( './dossiers1_s.js' );
             let o=new m['dossiers1']( this.__ig1 );
             let le_chemin={};
             for(let i in this.__ig1.donnees_retournees.__xva.sous_liste2.__xva){
                 let elem=this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i];
                 le_chemin=await o.construire_chemin( elem['T0.chi_id_dossier'] , __db1 );
-                if(le_chemin[__xst] !== __xsu){
-                    return({
-                            "__xst" : __xer ,
-                            "__xme" : ' erreur sur la construction du chemin pour le source ' + elem['T0.chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'
-                        });
+                if(le_chemin.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin ' + elem['T0.chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'});
                 }
                 this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i]['nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
                 le_chemin=await o.construire_chemin( elem['T0.chx_parent_dossier'] , __db1 );
-                if(le_chemin[__xst] !== __xsu){
-                    return({
-                            "__xst" : __xer ,
-                            "__xme" : ' erreur sur la construction du chemin pour le source ' + elem['T0.chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'
-                        });
+                if(le_chemin.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin ' + elem['T0.chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'});
                 }
                 this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
             }

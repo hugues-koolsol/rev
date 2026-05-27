@@ -322,7 +322,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1332','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1334','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -2431,7 +2431,7 @@ remplacer les
 
 __ig1.__xsi[__xer]
 
-','2','2026-05-25 10:25:00.896','2026-05-22 13:52:36.707','0','00_00_00'),
+','2','2026-05-27 11:22:30.114','2026-05-22 13:52:36.707','0','00_00_00'),
 ('493','1','supprimer
 this.__ig1.donnees_retournees.__xst=__xer;','99','2026-05-26 15:42:34.477','2026-05-26 11:27:36.216','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
@@ -4987,7 +4987,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (144) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (145) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ) VALUES
 ('101','utilisateur par nom_de_connexion','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -5073,21 +5073,15 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00
       champ(`T0`,`chp_priorite_tache`),
       champ(`T0`,`chd__dtm_tache`),
       champ(`T0`,`chd__dtc_tache`),
-      champ(`T0`,`che__nur_tache`),
-      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
+      champ(`T0`,`che__nur_tache`)
    ),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
       )
    ),
    conditions(
       et(
-         #(),
          egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
          egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
          comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
@@ -5101,11 +5095,9 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00
    )
 )  ','SELECT 
 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
-`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
  FROM b1.tbl_taches T0
- LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-
-WHERE ( /* */ `T0`.`chi_id_tache` = :T0_chi_id_tache
+WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
    AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
    AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
    AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
@@ -5788,12 +5780,12 @@ WHERE `chi_id_acces` = :c_chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','20
 WHERE `chi_id_acces` = :chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
 ('140','autorisations','liste_ecran','sélectionner(
    valeurs(
-      champ(`T0`,`chi_id_autorisation`),
       champ(`T0`,`chx_acces_autorisation`),
       champ(`T0`,`chx_source_autorisation`),
       champ(`T0`,`che_pour_sous_liste_autorisation`),
       champ(`T1`,`chp_nom_acces`),
-      champ(`T2`,`chp_nom_source`)
+      champ(`T2`,`chp_nom_source`),
+      champ(`T0`,`chi_id_autorisation`)
    ),
    provenance(
       table_reference(
@@ -5824,8 +5816,8 @@ WHERE `chi_id_acces` = :chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000
       limité_à(quantité(:quantitee),début(:debut))
    )
 )  ','SELECT 
-`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
-`T2`.`chp_nom_source`
+`T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , 
+`T0`.`chi_id_autorisation`
  FROM b1.tbl_autorisations T0
  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
 
@@ -6482,6 +6474,55 @@ DELETE FROM b1.tbl_dossiers',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:0
 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
  FROM b1.tbl_bdds T0
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
+('172','','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_tache`),
+      champ(`T0`,`chx_utilisateur_tache`),
+      champ(`T0`,`chp_texte_tache`),
+      champ(`T0`,`chp_priorite_tache`),
+      champ(`T0`,`chd__dtm_tache`),
+      champ(`T0`,`chd__dtc_tache`),
+      champ(`T0`,`che__nur_tache`),
+      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
+      )
+   ),
+   conditions(
+      et(
+         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
+         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
+         comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
+         egal(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
+         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2),
+         comme(champ(`T1`,`chp_nom_de_connexion_utilisateur`),:T1_chp_nom_de_connexion_utilisateur)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chp_priorite_tache`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
+`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+ FROM b1.tbl_taches T0
+ LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
+
+WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
+   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+   AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
+   AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
+   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
+   AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur) 
+ORDER BY `T0`.`chp_priorite_tache` ASC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('305','projets','update','modifier(
    valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),
    provenance(

@@ -25,7 +25,7 @@ class revs1{
         */
         /*sql_inclure_fin*/ 360 , criteres_360 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt360[__xst] !== __xsu){
+        if(tt360.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt390.__xme});
         }
         await this.filtre1( mat , 1 , __db1 );
@@ -108,7 +108,7 @@ class revs1{
         ;
         */
         /*sql_inclure_fin*/ 344 , criteres_344 , this.__ig1.donnees_retournees , __db1 );
-        if(tt344[__xst] !== __xsu){
+        if(tt344.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt344.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt344;
@@ -148,7 +148,7 @@ class revs1{
         /* conversion des données numériques fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
-        if(__tac[__xst] !== __xsu){
+        if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : afr});
         }
         let donnees_sql={
@@ -212,13 +212,13 @@ class revs1{
         );
         */
         /*sql_inclure_fin*/ 358 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt358[__xst] === __xsu){
+        if(tt358.__xst === __xsu){
             if(tt358['changements'] === 0){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'l\'insertion a échoué [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : afr});
             }
             let aac=await this.action_apres_creer( mat , d , tt358['nouvel_id'] , form , __db1 );
-            if(aac[__xst] === __xer){
+            if(aac.__xst === __xer){
                 await __db1.exec( 'ROLLBACK;' );
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : afr});
@@ -308,7 +308,7 @@ class revs1{
         if(tt359.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : afr});
         }
-        if(tt359[__xst] === __xsu && tt359[__xva].length === 0 && __debut > 0){
+        if(tt359.__xst === __xsu && tt359[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres359['debut']=__debut;

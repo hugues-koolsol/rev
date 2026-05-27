@@ -43,7 +43,7 @@ class taches1{
             ;
             */
             /*sql_inclure_fin*/ 112 , {"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-            if(tt112[__xst] !== __xsu){
+            if(tt112.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt112.__xme});
             }
             let tt158=await this.__ig1.sql_iii(
@@ -55,7 +55,7 @@ class taches1{
                AND `chp_priorite_tache` >= 1) ;
             */
             /*sql_inclure_fin*/ 158 , {"c_chi_id_tache" : chi_id_tache ,"c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-            if(tt158[__xst] !== __xsu){
+            if(tt158.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt158.__xme});
             }
             return({"__xst" : __xsu});
@@ -92,7 +92,7 @@ class taches1{
             ;
             */
             /*sql_inclure_fin*/ 112 , {"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-            if(tt112[__xst] !== __xsu){
+            if(tt112.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt112.__xme});
             }
             let tt159=await this.__ig1.sql_iii(
@@ -104,7 +104,7 @@ class taches1{
                AND `chp_priorite_tache` < 99) ;
             */
             /*sql_inclure_fin*/ 159 , {"c_chi_id_tache" : chi_id_tache ,"c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-            if(tt159[__xst] !== __xsu){
+            if(tt159.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt159.__xme});
             }
             return({"__xst" : __xsu});
@@ -149,7 +149,7 @@ class taches1{
             ;
             */
             /*sql_inclure_fin*/ 112 , {"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-            if(tt112[__xst] !== __xsu){
+            if(tt112.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
             }
             let tt157=await this.__ig1.sql_iii(
@@ -165,7 +165,7 @@ class taches1{
                 "c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
                 "n_chp_priorite_tache" : valeur
             } , this.__ig1.donnees_retournees , __db1 );
-            if(tt157[__xst] !== __xsu){
+            if(tt157.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt157.__xme});
             }
             return({"__xst" : __xsu});
@@ -189,8 +189,8 @@ class taches1{
         ;
         */
         /*sql_inclure_fin*/ 155 , {"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,"T0_chp_priorite_tache" : 50} , this.__ig1.donnees_retournees , __db1 );
-        if(tt155[__xst] !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt115.__xme});
+        if(tt155.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt155.__xme});
         }
         let nouvelle_priorite=1;
         for(let k1 in tt155[__xva]){
@@ -207,9 +207,8 @@ class taches1{
                     "c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
                     "c_chi_id_tache" : tt155[__xva][k1]['T0.chi_id_tache']
                 } , this.__ig1.donnees_retournees , __db1 );
-                if(tt156[__xst] === __xer){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de modification sur les priorités [' + this.__ig1.nl2() + ']' );
-                    return;
+                if(tt156.__xst === __xer){
+                    return({"__xst" : __xer ,"__xme" : tt156.__xme});
                 }
             }
             nouvelle_priorite++;
@@ -243,7 +242,7 @@ class taches1{
         ;
         */
         /*sql_inclure_fin*/ 112 , criteres_select_112 , this.__ig1.donnees_retournees , __db1 );
-        if(tt112[__xst] !== __xsu || tt112[__xva].length !== 1){
+        if(tt112.__xst !== __xsu || tt112[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [112 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
@@ -329,7 +328,7 @@ class taches1{
         ;
         */
         /*sql_inclure_fin*/ 112 , {"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt112[__xst] !== __xsu){
+        if(tt112.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt112.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt112;
@@ -371,7 +370,7 @@ class taches1{
         ;
         */
         /*sql_inclure_fin*/ 112 , criteres_112 , this.__ig1.donnees_retournees , __db1 );
-        if(tt112[__xst] !== __xsu){
+        if(tt112.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt112.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt112;
@@ -397,7 +396,7 @@ class taches1{
         ;
         */
         /*sql_inclure_fin*/ 112 , {"T0_chi_id_tache" : form['chi_id_tache'] ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt112[__xst] !== __xsu){
+        if(tt112.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt112.__xme});
         }
         let tt114=await this.__ig1.sql_iii(
@@ -407,7 +406,7 @@ class taches1{
            AND `chx_utilisateur_tache` = :chx_utilisateur_tache) ;
         */
         /*sql_inclure_fin*/ 114 , {"chi_id_tache" : form['chi_id_tache'] ,"chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt114[__xst] !== __xsu){
+        if(tt114.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt114.__xme});
         }
         if(form['__mat_liste_si_ok'] !== ''){
@@ -490,7 +489,7 @@ class taches1{
         );
         */
         /*sql_inclure_fin*/ 111 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt111[__xst] !== __xsu || tt111['changements'] !== 1){
+        if(tt111.__xst !== __xsu || tt111['changements'] !== 1){
             return({"__xst" : __xer ,"__xme" : tt111.__xme});
         }
         if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
@@ -540,11 +539,9 @@ class taches1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
-        `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+        `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
          FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE (   `T0`.`chi_id_tache` = :T0_chi_id_tache
+        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
            AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
            AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
            AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
@@ -557,7 +554,7 @@ class taches1{
         if(tt110.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt110.__xme});
         }
-        if(tt110[__xst] === __xsu && tt110[__xva].length === 0 && __debut > 0){
+        if(tt110.__xst === __xsu && tt110[__xva].length === 0 && __debut > 0){
             /* this.__ig1.ma_trace1("__debut=",__debut); */
             __debut=0;
             __num_page=0;
@@ -566,11 +563,9 @@ class taches1{
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
-            `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+            `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
              FROM b1.tbl_taches T0
-             LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-            
-            WHERE (   `T0`.`chi_id_tache` = :T0_chi_id_tache
+            WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
                AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
                AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
                AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache

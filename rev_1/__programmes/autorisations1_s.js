@@ -579,12 +579,10 @@ class autorisations1{
         /*sql_inclure_fin*/ 144 , criteres_144 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt144.__xst !== __xsu){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de le suppression [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer ,"__xme" : tt144.__xme});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt141[__xva][0] , __db1 );
         if(aac.__xst === __xer){
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
         /*  */
@@ -756,8 +754,8 @@ class autorisations1{
         let tt140=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
-        `T2`.`chp_nom_source`
+        `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , 
+        `T0`.`chi_id_autorisation`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
@@ -785,8 +783,8 @@ class autorisations1{
             tt140=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
-            `T2`.`chp_nom_source`
+            `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , 
+            `T0`.`chi_id_autorisation`
              FROM b1.tbl_autorisations T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
             

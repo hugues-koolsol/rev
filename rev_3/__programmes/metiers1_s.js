@@ -109,12 +109,12 @@ class metiers1{
         ;
         */
         /*sql_inclure_fin*/ 125 , criteres_select_125 , this.__ig1.donnees_retournees , __db1 );
-        if(tt125[__xst] !== __xsu || tt125[__xva].length !== 1){
+        if(tt125.__xst !== __xsu || tt125[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [125 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
         let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt125[__xva][0] , __db1 );
-        if(__actions_et_tests_avant_modifier[__xst] !== __xsu){
+        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
@@ -138,7 +138,7 @@ class metiers1{
             return({"__xst" : __xer ,"__xme" : tt127.__xme});
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt125[__xva][0] , __db1 );
-        if(__taam[__xst] !== __xsu){
+        if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : 'erreur après modification [' + this.__ig1.nl2() + ']'});
         }
@@ -201,11 +201,11 @@ class metiers1{
         ;
         */
         /*sql_inclure_fin*/ 125 , {"T0_chi_id_metier" : chi_id_metier} , this.__ig1.donnees_retournees , __db1 );
-        if(tt125[__xst] !== __xsu){
+        if(tt125.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt125[__xva][0] , __db1 );
-        if(aetam[__xst] !== __xsu){
+        if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt125;
@@ -245,7 +245,7 @@ class metiers1{
         ;
         */
         /*sql_inclure_fin*/ 125 , criteres_125 , this.__ig1.donnees_retournees , __db1 );
-        if(tt125[__xst] !== __xsu){
+        if(tt125.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt125;
@@ -278,12 +278,12 @@ class metiers1{
         ;
         */
         /*sql_inclure_fin*/ 125 , criteres_125 , this.__ig1.donnees_retournees , __db1 );
-        if(tt125[__xst] !== __xsu){
+        if(tt125.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt125[__xva][0] , __db1 );
-        if(tas[__xst] !== __xsu){
+        if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
         let criteres_129={
@@ -297,11 +297,11 @@ class metiers1{
         */
         /*sql_inclure_fin*/ 129 , criteres_129 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt129[__xst] !== __xsu){
+        if(tt129.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur lors de le suppression [' + this.__ig1.nl2() + ']'});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt125[__xva][0] , __db1 );
-        if(aac[__xst] === __xer){
+        if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']'});
         }
         /*  */
@@ -364,7 +364,7 @@ class metiers1{
         /* conversion des données numériques fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
-        if(__tac[__xst] !== __xsu){
+        if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
         let donnees_sql={
@@ -386,12 +386,12 @@ class metiers1{
         );
         */
         /*sql_inclure_fin*/ 126 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt126[__xst] === __xsu){
+        if(tt126.__xst === __xsu){
             if(tt126['changements'] === 0){
                 return({"__xst" : __xer ,"__xme" : 'l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
             }
             let aac=await this.action_apres_creer( mat , d , tt126['nouvel_id'] , form , __db1 );
-            if(aac[__xst] === __xer){
+            if(aac.__xst === __xer){
                 await __db1.exec( 'ROLLBACK;' );
                 return({"__xst" : __xer ,"__xme" : 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']'});
             }
@@ -477,7 +477,7 @@ class metiers1{
         if(tt124.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
-        if(tt124[__xst] === __xsu && tt124[__xva].length === 0 && __debut > 0){
+        if(tt124.__xst === __xsu && tt124[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
             criteres_124['debut']=__debut;

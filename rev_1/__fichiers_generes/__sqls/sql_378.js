@@ -25,8 +25,7 @@ class sql_378{
                 */
                 let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1(elem['chp_nom_dossier'],'nom du dossier');
                 if(__test_0_1.__xst !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push(__test_0_1.__xme);
-                    return{"__xst" : __xer};
+                    return{"__xst" : __xer ,"__xme" : __test_0_1.__xme};
                 }
 
                 /* test "non nul" sur le champ "chx_parent_dossier" */
