@@ -610,6 +610,10 @@ class __ig1{
             }else{
                 if(this.options_generales.erreur_controlee === false){
                     this.ma_trace1( '__deverminage evenement.data=' , evenement.data.substr( 0 , 400 ) + '\n ... ' );
+                }else{
+                    if(ret.hasOwnProperty('__xme') && ret.__xme !== ''){
+                        this.donnees_retournees.__xsi[ret.__xst].push(ret.__xme);
+                    }
                 }
                 return this.donnees_retournees;
             }

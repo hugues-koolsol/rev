@@ -466,14 +466,14 @@ class taches2{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres_110={
+        let criteres_172={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres_110[i]=formulaire[i];
+                criteres_172[i]=formulaire[i];
             }
         }
         if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
@@ -484,7 +484,7 @@ class taches2{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 1 );
         }
-        let tt110=await this.__ig1.sql_iii(
+        let tt172=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
@@ -502,15 +502,15 @@ class taches2{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 110 , criteres_110 , this.__ig1.donnees_retournees , __db1 );
-        if(tt110.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt110.__xme});
+        /*sql_inclure_fin*/ 172 , criteres_172 , this.__ig1.donnees_retournees , __db1 );
+        if(tt172.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt172.__xme});
         }
-        if(tt110.__xst === __xsu && tt110[__xva].length === 0 && __debut > 0){
+        if(tt172.__xst === __xsu && tt172[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
-            criteres_110['debut']=__debut;
-            tt110=await this.__ig1.sql_iii(
+            criteres_172['debut']=__debut;
+            tt172=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
@@ -528,7 +528,7 @@ class taches2{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 110 , criteres_110 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 172 , criteres_172 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
@@ -538,7 +538,7 @@ class taches2{
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt110;
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt172;
         return({"__xst" : __xsu});
     }
     /*

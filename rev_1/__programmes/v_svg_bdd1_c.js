@@ -7179,11 +7179,11 @@ class v_svg_bdd1{
         }
         if(est_libelle_lien === 1){
             o1+='    est_libelle_lien(' + est_libelle_lien + '),';
-            if(nom_bref_libelle_lien.indexOf( '\\\'' ) >= 0){
-                o1+='    nom_bref_libelle_lien(\'' + nom_bref_libelle_lien + '\'),';
-            }else{
-                o1+='    nom_bref_libelle_lien(\'' + nom_bref_libelle_lien.replace( /\'/g , '\\\'' ) + '\'),';
-            }
+        }
+        if(nom_bref_libelle_lien.indexOf( '\\\'' ) >= 0){
+            o1+='    nom_bref_libelle_lien(\'' + nom_bref_libelle_lien + '\'),';
+        }else{
+            o1+='    nom_bref_libelle_lien(\'' + nom_bref_libelle_lien.replace( /\'/g , '\\\'' ) + '\'),';
         }
         if(est_utilisateur_autre_que_courant === 1){
             o1+='    est_utilisateur_autre_que_courant(' + est_utilisateur_autre_que_courant + '),';
