@@ -44,12 +44,34 @@ class x_ecran_generer_programmes1{
         if(tt417.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt147.__xme});
         }
-        let rev_serveur=null;
+        let rev_fragment=null;
         /* this.__ig1.ma_trace1("tt417.__xva",tt417.__xva); */
         if(tt417.__xva.length === 1){
-            rev_serveur=tt417.__xva[0]['T0.cht_rev_source'];
+            rev_fragment={};
+            rev_fragment[tt417.__xva[0]['T0.chp_nom_source']]=tt417.__xva[0]['T0.cht_rev_source'];
         }
-        this.__ig1.donnees_retournees.__xva['rev_serveur']=rev_serveur;
+        let critere2_417={"T0_chp_nom_source" : nom_source_client};
+        let tt417_2=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`cht_rev_source` , `T0`.`cht_genere_source`
+         FROM b1.tbl_sources T0
+        WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
+           AND `T0`.`chp_usage_source` = 'fragment'
+           AND `T0`.`chx_dossier_id_source` IS NULL)
+        ;
+        */
+        /*sql_inclure_fin*/ 417 , critere2_417 , this.__ig1.donnees_retournees , __db1 );
+        if(tt417_2.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt417_2.__xme});
+        }
+        if(tt417_2.__xva.length === 1){
+            if(rev_fragment===null){
+                rev_fragment={};
+            }
+            rev_fragment[tt417_2.__xva[0]['T0.chp_nom_source']]=tt417_2.__xva[0]['T0.cht_rev_source'];
+        }
+        this.__ig1.donnees_retournees.__xva['rev_fragment']=rev_fragment;
         return({"__xst" : __xsu});
     }
     /*

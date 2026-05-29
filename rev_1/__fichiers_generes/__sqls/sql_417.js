@@ -11,7 +11,7 @@ class sql_417{
     */
     async sql( par ){
         const champs0=`
-          \`T0\`.\`cht_rev_source\` , \`T0\`.\`cht_genere_source\`
+          \`T0\`.\`cht_rev_source\` , \`T0\`.\`cht_genere_source\` , \`T0\`.\`chp_nom_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -34,7 +34,8 @@ class sql_417{
         for(let col of lignes){
             donnees0.push( {
                     "T0.cht_rev_source" : col[0] ,
-                    "T0.cht_genere_source" : col[1]
+                    "T0.cht_genere_source" : col[1] ,
+                    "T0.chp_nom_source" : col[2]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});
