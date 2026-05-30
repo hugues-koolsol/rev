@@ -54,6 +54,9 @@ class sql_334{
             if(par['n_chi_id_genre'] === undefined || par['n_chi_id_genre'] === '' || par['n_chi_id_genre'] === null){
                 tableau_champs.push( '`chi_id_genre` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chi_id_genre'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id" doit être numérique'});
+                }
                 tableau_champs.push( '`chi_id_genre` = ' + this.__ig1.__fnt1.sq0( par['n_chi_id_genre'] , 'n_chi_id_genre' ) + '' );
             }
             if(tableau_champs.length === 0){

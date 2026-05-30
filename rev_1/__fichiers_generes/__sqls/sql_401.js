@@ -30,6 +30,9 @@ class sql_401{
             if(par['n_chn_duree_travail'] === undefined || par['n_chn_duree_travail'] === '' || par['n_chn_duree_travail'] === null){
                 tableau_champs.push( '`chn_duree_travail` = NULL' );
             }else{
+                if(isNaN(parseFloat( par['n_chn_duree_travail'] ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "durée" doit être numérique'});
+                }
                 tableau_champs.push( '`chn_duree_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chn_duree_travail'] , 'n_chn_duree_travail' ) + '' );
             }
             if(tableau_champs.length === 0){

@@ -33,11 +33,17 @@ class sql_122{
             if(par['n_chx_acces_utilisateur'] === undefined || par['n_chx_acces_utilisateur'] === '' || par['n_chx_acces_utilisateur'] === null){
                 tableau_champs.push( '`chx_acces_utilisateur` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chx_acces_utilisateur'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "acces" doit être numérique'});
+                }
                 tableau_champs.push( '`chx_acces_utilisateur` = ' + this.__ig1.__fnt1.sq0( par['n_chx_acces_utilisateur'] , 'n_chx_acces_utilisateur' ) + '' );
             }
             if(par['n_che_actif_utilisateur'] === undefined || par['n_che_actif_utilisateur'] === '' || par['n_che_actif_utilisateur'] === null){
                 tableau_champs.push( '`che_actif_utilisateur` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_che_actif_utilisateur'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "actif" doit être numérique'});
+                }
                 tableau_champs.push( '`che_actif_utilisateur` = ' + this.__ig1.__fnt1.sq0( par['n_che_actif_utilisateur'] , 'n_che_actif_utilisateur' ) + '' );
             }
             if(tableau_champs.length === 0){

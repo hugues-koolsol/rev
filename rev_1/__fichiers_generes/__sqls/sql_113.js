@@ -39,6 +39,9 @@ class sql_113{
             if(par['n_chp_priorite_tache'] === undefined || par['n_chp_priorite_tache'] === '' || par['n_chp_priorite_tache'] === null){
                 tableau_champs.push( '`chp_priorite_tache` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chp_priorite_tache'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "priorite" doit être numérique'});
+                }
                 tableau_champs.push( '`chp_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chp_priorite_tache'] , 'n_chp_priorite_tache' ) + '' );
             }
             tableau_champs.push( '`chd__dtm_tache` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );

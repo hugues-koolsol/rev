@@ -24,6 +24,9 @@ class sql_394{
             if(par['n_chi_id_projet'] === undefined || par['n_chi_id_projet'] === '' || par['n_chi_id_projet'] === null){
                 tableau_champs.push( '`chi_id_projet` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chi_id_projet'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id" doit être numérique'});
+                }
                 tableau_champs.push( '`chi_id_projet` = ' + this.__ig1.__fnt1.sq0( par['n_chi_id_projet'] , 'n_chi_id_projet' ) + '' );
             }
             if(par['n_chp_nom_projet'] === undefined || par['n_chp_nom_projet'] === '' || par['n_chp_nom_projet'] === null){

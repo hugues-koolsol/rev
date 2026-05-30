@@ -32,6 +32,9 @@ class sql_407{
             if(par['n_chx_parent_dossier'] === undefined || par['n_chx_parent_dossier'] === '' || par['n_chx_parent_dossier'] === null){
                 tableau_champs.push( '`chx_parent_dossier` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chx_parent_dossier'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "parent" doit être numérique'});
+                }
                 tableau_champs.push( '`chx_parent_dossier` = ' + this.__ig1.__fnt1.sq0( par['n_chx_parent_dossier'] , 'n_chx_parent_dossier' ) + '' );
             }
             if(tableau_champs.length === 0){

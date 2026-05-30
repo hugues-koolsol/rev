@@ -657,15 +657,34 @@ class _rev_de_sql_vers_js1{
             }
             /*
             */
+            for( i=0 ; i < obj3.tableau_des_valeurs_pour_insert_ou_update_js.length ; i++ ){
+                /* console.log(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1]]); */
+                let nom_du_champ=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1];
+                let detail_champ=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1]];
+                if('fld_qte_prestation' === nom_du_champ){
+                    if(this.#obj_webs.insert_brut === 0){
+                        if(detail_champ.espece_du_champ === 'DECIMAL' || detail_champ.espece_du_champ === 'FLOAT'){
+                            t+='                if(par.donnees[i][\'' + nom_du_champ + '\'] !== null && isNaN( parseFloat( par.donnees[i][\'' + nom_du_champ + '\'] ) )){\r\n';
+                            t+='                    return({"__xst" : __xer ,"__xme" : \'la valeur pour "' + detail_champ.meta.nom_bref_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '" doit être numérique \'+( i === 0 ? \'\' : \' pour i="\'+i+\'"\')});\r\n';
+                            t+='                }\r\n';
+                        }else if(detail_champ.espece_du_champ === 'INTEGER'){
+                            t+='                if(par.donnees[i][\'' + nom_du_champ + '\'] !== null && isNaN( parseInt( par.donnees[i][\'' + nom_du_champ + '\'] , 10 ) ) ){\r\n';
+                            t+='                    return({"__xst" : __xer ,"__xme" : \'la valeur pour "' + detail_champ.meta.nom_bref_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '" doit être numérique \'+(i === 0 ? \'\' : \' pour i="\'+i+\'"\')});\r\n';
+                            t+='                }\r\n';
+                        }
+                    }
+                }
+            }
             t+='                if(liste_des_valeurs != \'\'){' + CRLF;
             t+='                    liste_des_valeurs+=\',\';' + CRLF;
             t+='                }' + CRLF;
             t+='                liste_des_valeurs+=\'(\';' + CRLF;
             let tableau_des_insert=[];
-            /* this.__ig1.ma_trace1('obj3.tableau_des_valeurs_pour_insert_ou_update_js=',obj3.tableau_des_valeurs_pour_insert_ou_update_js); */
             for( i=0 ; i < obj3.tableau_des_valeurs_pour_insert_ou_update_js.length ; i++ ){
                 /* console.log(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1]]); */
+                let nom_du_champ=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1];
                 let detail_champ=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1]];
+                /* obj3.tableau_des_valeurs_pour_insert_ou_update_js */
                 if(this.#obj_webs.insert_brut === 1){
                     let virgule=',';
                     if(i === obj3.tableau_des_valeurs_pour_insert_ou_update_js.length - 1){
@@ -1053,6 +1072,20 @@ class _rev_de_sql_vers_js1{
                     liste_des_champs_pour_update3+='            if(par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] === undefined || par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] === \'\' || par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] === null){' + CRLF;
                     liste_des_champs_pour_update3+='                tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = NULL\' );' + CRLF;
                     liste_des_champs_pour_update3+='            }else{' + CRLF;
+                    if(la_sortie.champ_en_bdd.espece_du_champ === 'DECIMAL'
+                           || la_sortie.champ_en_bdd.espece_du_champ === 'FLOAT'
+                           || la_sortie.champ_en_bdd.espece_du_champ === 'INTEGER'
+                    ){
+                        if(la_sortie.champ_en_bdd.espece_du_champ === 'INTEGER'){
+                            liste_des_champs_pour_update3+='                if(isNaN(parseInt( par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] , 10 ))){\r\n';
+                            liste_des_champs_pour_update3+='                    return({"__xst" : __xer ,"__xme" : \'le champ "' + la_sortie.champ_en_bdd.meta.nom_bref_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '" doit être numérique\'});\r\n';
+                            liste_des_champs_pour_update3+='                }\r\n';
+                        }else if(la_sortie.champ_en_bdd.espece_du_champ === 'DECIMAL' || la_sortie.champ_en_bdd.espece_du_champ === 'FLOAT'){
+                            liste_des_champs_pour_update3+='                if(isNaN(parseFloat( par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] ))){\r\n';
+                            liste_des_champs_pour_update3+='                    return({"__xst" : __xer ,"__xme" : \'le champ "' + la_sortie.champ_en_bdd.meta.nom_bref_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '" doit être numérique\'});\r\n';
+                            liste_des_champs_pour_update3+='                }\r\n';
+                        }
+                    }
                     liste_des_champs_pour_update3+='                tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\' );' + CRLF;
                     liste_des_champs_pour_update3+='            }' + CRLF;
                 }

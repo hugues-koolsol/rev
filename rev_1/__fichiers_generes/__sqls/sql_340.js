@@ -27,6 +27,9 @@ class sql_340{
             if(par['n_che_est_souche_requete'] === undefined || par['n_che_est_souche_requete'] === '' || par['n_che_est_souche_requete'] === null){
                 tableau_champs.push( '`che_est_souche_requete` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_che_est_souche_requete'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "est souche" doit être numérique'});
+                }
                 tableau_champs.push( '`che_est_souche_requete` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_souche_requete'] , 'n_che_est_souche_requete' ) + '' );
             }
             tableau_champs.push( '`chd__dtm_requete` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );

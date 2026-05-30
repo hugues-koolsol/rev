@@ -54,6 +54,9 @@ class sql_335{
             if(par['n_che_ordre_genre'] === undefined || par['n_che_ordre_genre'] === '' || par['n_che_ordre_genre'] === null){
                 tableau_champs.push( '`che_ordre_genre` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_che_ordre_genre'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "ordre" doit être numérique'});
+                }
                 tableau_champs.push( '`che_ordre_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_ordre_genre'] , 'n_che_ordre_genre' ) + '' );
             }
             if(tableau_champs.length === 0){

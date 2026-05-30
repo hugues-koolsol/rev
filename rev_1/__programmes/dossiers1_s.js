@@ -1229,7 +1229,7 @@ class dossiers1{
                             "cht_genere_source" : contenu_fichier ,
                             "che_binaire_source" : che_binaire_source ,
                             "che_autorisation_globale_source" : 0 ,
-                            "chp_usage_source" : 'fichier' ,
+                            "chp_usage_source" : 'fichier'
                         }]
             };
             /* this.__ig1.ma_trace1( 'che_binaire_source=' , che_binaire_source ); */

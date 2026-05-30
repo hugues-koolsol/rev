@@ -47,6 +47,9 @@ class sql_397{
             if(par['n_chx_projet_travail'] === undefined || par['n_chx_projet_travail'] === '' || par['n_chx_projet_travail'] === null){
                 tableau_champs.push( '`chx_projet_travail` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chx_projet_travail'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "projet" doit être numérique'});
+                }
                 tableau_champs.push( '`chx_projet_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chx_projet_travail'] , 'n_chx_projet_travail' ) + '' );
             }
             if(par['n_cht_log_travail'] === undefined || par['n_cht_log_travail'] === '' || par['n_cht_log_travail'] === null){

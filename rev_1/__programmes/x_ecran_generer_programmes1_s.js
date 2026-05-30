@@ -33,7 +33,7 @@ class x_ecran_generer_programmes1{
         let tt417=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`cht_rev_source` , `T0`.`cht_genere_source`
+        `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
          FROM b1.tbl_sources T0
         WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
            AND `T0`.`chp_usage_source` = 'fragment'
@@ -54,7 +54,7 @@ class x_ecran_generer_programmes1{
         let tt417_2=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`cht_rev_source` , `T0`.`cht_genere_source`
+        `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
          FROM b1.tbl_sources T0
         WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
            AND `T0`.`chp_usage_source` = 'fragment'
@@ -66,7 +66,7 @@ class x_ecran_generer_programmes1{
             return({"__xst" : __xer ,"__xme" : tt417_2.__xme});
         }
         if(tt417_2.__xva.length === 1){
-            if(rev_fragment===null){
+            if(rev_fragment === null){
                 rev_fragment={};
             }
             rev_fragment[tt417_2.__xva[0]['T0.chp_nom_source']]=tt417_2.__xva[0]['T0.cht_rev_source'];

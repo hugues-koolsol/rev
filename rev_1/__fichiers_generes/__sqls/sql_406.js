@@ -20,6 +20,9 @@ class sql_406{
             if(par['n_chi_id_dossier'] === undefined || par['n_chi_id_dossier'] === '' || par['n_chi_id_dossier'] === null){
                 tableau_champs.push( '`chi_id_dossier` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chi_id_dossier'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id" doit être numérique'});
+                }
                 tableau_champs.push( '`chi_id_dossier` = ' + this.__ig1.__fnt1.sq0( par['n_chi_id_dossier'] , 'n_chi_id_dossier' ) + '' );
             }
             if(tableau_champs.length === 0){

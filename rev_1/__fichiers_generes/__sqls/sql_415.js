@@ -20,6 +20,9 @@ class sql_415{
             if(par['n_chi_id_source'] === undefined || par['n_chi_id_source'] === '' || par['n_chi_id_source'] === null){
                 tableau_champs.push( '`chi_id_source` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chi_id_source'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id" doit être numérique'});
+                }
                 tableau_champs.push( '`chi_id_source` = ' + this.__ig1.__fnt1.sq0( par['n_chi_id_source'] , 'n_chi_id_source' ) + '' );
             }
             if(tableau_champs.length === 0){
