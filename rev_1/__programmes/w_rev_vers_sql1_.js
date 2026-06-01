@@ -91,6 +91,8 @@ class w_rev_vers_sql1{
             t='compter';
         }else if(op === 'limité_à'){
             t='LIMIT';
+        }else if(op === 'session'){
+            t=' ';
         }else if(op === 'quantité'){
             t='';
         }else if(op === 'début'){
@@ -255,8 +257,13 @@ class w_rev_vers_sql1{
                                     t+='-' + tab[i][1];
                                     t_js+='-' + tab[i][1];
                                 }else{
-                                    t+=tab[i][1];
-                                    t_js+=tab[i][1];
+                                    if(tab[tab[i][7]][1] === 'session'){
+                                        t+='session(' + tab[i][1] + ')';
+                                        t_js+='session(' + tab[i][1] + ')';
+                                    }else{
+                                        t+=tab[i][1];
+                                        t_js+=tab[i][1];
+                                    }
                                 }
                             }
                         }else{

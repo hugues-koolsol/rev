@@ -1387,6 +1387,9 @@ class _rev_de_sql_vers_js1{
                                                        || tab[j][1] === 'est'
                                                        || tab[j][1] === 'n_est_pas')
                                             ){
+                                                if(j===42){
+                                                    debugger
+                                                }
                                                 var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
                                                 if(obj.__xst === __xsu){
                                                     var parametre=obj.t_js.match( /\par\[(.*)\]/ );
@@ -1396,7 +1399,7 @@ class _rev_de_sql_vers_js1{
                                                                 "valeur" : obj.t_js ,
                                                                 "type" : options.type_de_champ_pour_where ,
                                                                 "nom_du_champ_pour_where" : options.nom_du_champ_pour_where ,
-                                                                "espece_du_champ_pour_where" : options.espece_du_champ_pour_where
+                                                                "espece_du_champ_pour_where" : options.espece_du_champ_pour_where,
                                                             } );
                                                     }else{
                                                         tableau_des_conditions.push( {
@@ -1469,7 +1472,9 @@ class _rev_de_sql_vers_js1{
                 for( var i=0 ; i < tableau_des_conditions.length ; i++ ){
                     var elem=tableau_des_conditions[i];
                     if(elem.type_condition === 'constante'){
-                        t+='        where0+=` AND ' + elem.valeur + '`;' + CRLF;
+                        let valeur=elem.valeur;
+                        valeur=valeur.replace(/session\(chi_id_utilisateur\)/,'` + this.__ig1.donnees_retournees.chi_id_utilisateur + `')
+                        t+='        where0+=` AND ' + valeur + '`;' + CRLF;
                     }else if(elem.type_condition === 'variable'){
                         t+='        if(par.hasOwnProperty( ' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + ' ) && par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] !== \'\'){' + CRLF;
                         if((elem.espece_du_champ_pour_where.toLowerCase() === 'integer'
@@ -1484,7 +1489,6 @@ class _rev_de_sql_vers_js1{
                             }else{
                                 t+='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
                             }
-                            /* PHP_EOL */
                         }
                         t+='        }' + CRLF;
                     }
