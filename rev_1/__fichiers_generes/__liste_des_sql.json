@@ -1158,13 +1158,5 @@
     "che_est_souche_requete": 0,
     "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`cht_rev_source`),champ(`T0`,`cht_genere_source`),champ(`T0`,`chp_nom_source`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),\n         egal(champ(`T0`,`chp_usage_source`),:T0_chp_usage_source),\n         est(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source)\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_sources"
-  },
-  "418": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`\r\n FROM b1.tbl_sources T0\r\nWHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source\r\n   AND `T0`.`chp_usage_source` = :T0_chp_usage_source\r\n   AND `T0`.`chx_dossier_id_source` IS NOT :T0_chx_dossier_id_source)\r\n;",
-    "cht_commentaire_requete": "",
-    "chp_type_requete": "select",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`cht_rev_source`),champ(`T0`,`cht_genere_source`),champ(`T0`,`chp_nom_source`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),\n         egal(champ(`T0`,`chp_usage_source`),:T0_chp_usage_source),\n         n_est_pas(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source)\n      )\n   )\n)  ",
-    "chp_table_reference_requete": "tbl_sources"
   }
 }

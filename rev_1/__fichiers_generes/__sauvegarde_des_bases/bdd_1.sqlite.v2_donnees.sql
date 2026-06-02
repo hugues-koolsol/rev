@@ -322,7 +322,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1346','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1348','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -5122,7 +5122,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (146) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (145) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ) VALUES
 ('101','utilisateur par nom_de_connexion','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -8642,27 +8642,5 @@ WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
 WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
    AND `T0`.`chp_usage_source` = :T0_chp_usage_source
    AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
-('418','','select','sélectionner(
-   valeurs(champ(`T0`,`cht_rev_source`),champ(`T0`,`cht_genere_source`),champ(`T0`,`chp_nom_source`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),
-         egal(champ(`T0`,`chp_usage_source`),:T0_chp_usage_source),
-         n_est_pas(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source)
-      )
-   )
-)  ','SELECT 
-`T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
- FROM b1.tbl_sources T0
-WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
-   AND `T0`.`chp_usage_source` = :T0_chp_usage_source
-   AND `T0`.`chx_dossier_id_source` IS NOT :T0_chx_dossier_id_source)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */

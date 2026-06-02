@@ -1208,6 +1208,7 @@ class _rev_de_sql_vers_js1{
                 var tableau2=this.__ig1.__rev1.txt_en_tableau( formule );
                 var matriceFonction=this.__ig1.__rev1.tb_vers_matrice( tableau2.__xva , true , false , '' );
                 var les_conditions=this.__m_rev_vers_sql1.c_tab_vers_sql( matriceFonction.__xva , {"au_format_programme" : true} );
+                les_conditions.t_js=les_conditions.t_js.replace( /session\(chi_id_utilisateur\)/ , '` + this.__ig1.donnees_retournees.chi_id_utilisateur + `' );
                 if(les_conditions.__xst === __xsu){
                     t+='        const where0=` WHERE ' + les_conditions.t_js + '`;' + CRLF;
                 }else{
@@ -1387,8 +1388,8 @@ class _rev_de_sql_vers_js1{
                                                        || tab[j][1] === 'est'
                                                        || tab[j][1] === 'n_est_pas')
                                             ){
-                                                if(j===42){
-                                                    debugger
+                                                if(j === 42){
+                                                    debugger;
                                                 }
                                                 var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
                                                 if(obj.__xst === __xsu){
@@ -1399,7 +1400,7 @@ class _rev_de_sql_vers_js1{
                                                                 "valeur" : obj.t_js ,
                                                                 "type" : options.type_de_champ_pour_where ,
                                                                 "nom_du_champ_pour_where" : options.nom_du_champ_pour_where ,
-                                                                "espece_du_champ_pour_where" : options.espece_du_champ_pour_where,
+                                                                "espece_du_champ_pour_where" : options.espece_du_champ_pour_where
                                                             } );
                                                     }else{
                                                         tableau_des_conditions.push( {
@@ -1473,7 +1474,7 @@ class _rev_de_sql_vers_js1{
                     var elem=tableau_des_conditions[i];
                     if(elem.type_condition === 'constante'){
                         let valeur=elem.valeur;
-                        valeur=valeur.replace(/session\(chi_id_utilisateur\)/,'` + this.__ig1.donnees_retournees.chi_id_utilisateur + `')
+                        valeur=valeur.replace( /session\(chi_id_utilisateur\)/ , '` + this.__ig1.donnees_retournees.chi_id_utilisateur + `' );
                         t+='        where0+=` AND ' + valeur + '`;' + CRLF;
                     }else if(elem.type_condition === 'variable'){
                         t+='        if(par.hasOwnProperty( ' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + ' ) && par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] !== \'\'){' + CRLF;

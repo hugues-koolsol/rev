@@ -29,19 +29,15 @@ class x_ecran_generer_programmes1{
         let nom_source_client=nom_de_la_classe + '_c.js';
         /* this.__ig1.ma_trace1("nom_source_serveur="+nom_source_serveur); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_417={
-            "T0_chp_nom_source" : nom_source_serveur ,
-            "T0_chp_usage_source" : 'fragment' ,
-            "T0_chx_dossier_id_source" : null ,
-        };
+        let critere_417={"T0_chp_nom_source" : nom_source_serveur ,"T0_chp_usage_source" : 'fragment' ,"T0_chx_dossier_id_source" : null};
         let tt417=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
          FROM b1.tbl_sources T0
-        WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
-           AND `T0`.`chp_usage_source` = 'fragment'
-           AND `T0`.`chx_dossier_id_source` IS NULL)
+        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
+           AND `T0`.`chp_usage_source` = :T0_chp_usage_source
+           AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
         ;
         */
         /*sql_inclure_fin*/ 417 , critere_417 , this.__ig1.donnees_retournees , __db1 );
@@ -54,19 +50,15 @@ class x_ecran_generer_programmes1{
             rev_fragment={};
             rev_fragment[tt417.__xva[0]['T0.chp_nom_source']]=tt417.__xva[0]['T0.cht_rev_source'];
         }
-        let critere2_417={
-            "T0_chp_nom_source" : nom_source_client ,
-            "T0_chp_usage_source" : 'fragment' ,
-            "T0_chx_dossier_id_source" : null ,
-        };
+        let critere2_417={"T0_chp_nom_source" : nom_source_client ,"T0_chp_usage_source" : 'fragment' ,"T0_chx_dossier_id_source" : null};
         let tt417_2=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
          FROM b1.tbl_sources T0
-        WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
-           AND `T0`.`chp_usage_source` = 'fragment'
-           AND `T0`.`chx_dossier_id_source` IS NULL)
+        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
+           AND `T0`.`chp_usage_source` = :T0_chp_usage_source
+           AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
         ;
         */
         /*sql_inclure_fin*/ 417 , critere2_417 , this.__ig1.donnees_retournees , __db1 );
@@ -79,52 +71,54 @@ class x_ecran_generer_programmes1{
             }
             rev_fragment[tt417_2.__xva[0]['T0.chp_nom_source']]=tt417_2.__xva[0]['T0.cht_rev_source'];
         }
+        let tab_ref={
+            "ref_liste_ecran" : 0 ,
+            "ref_select" : 0 ,
+            "ref_insert" : 0 ,
+            "ref_update" : 0 ,
+            "ref_delete" : 0 ,
+            "pour_sous_liste_uniquement" : 0 ,
+            "ne_pas_prendre_les_valeurs_en_session" : 0
+        };
+        let le_source_n_existe_pas=false;
         let contenu_du_source_client='';
         let chemin_vers_source_client='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + nom_source_client;
         try{
             contenu_du_source_client=await Deno.readTextFile( chemin_vers_source_client );
         }catch(e){
-            this.__ig1.ma_trace1( "e" , e.stack );
+            le_source_n_existe_pas=true;
         }
-        this.__ig1.ma_trace1("contenu_du_source_client=" , contenu_du_source_client);
-        let tab_ref={
-            'ref_liste_ecran' : 0 ,
-            'ref_select' : 0 ,
-            'ref_insert' : 0 ,
-            'ref_update' : 0 ,
-            'ref_delete' : 0 ,
-            'pour_sous_liste_uniquement' : 0 ,
-            'ne_pas_prendre_les_valeurs_en_session' : 0
-        }
-        let debut_source=contenu_du_source_client.substr(0,500);
+        this.__ig1.ma_trace1( "contenu_du_source_client=" , contenu_du_source_client );
+        let debut_source=contenu_du_source_client.substr( 0 , 500 );
         /* this.__ig1.ma_trace1("debut_source=",debut_source); */
-        let tab_debut_source=debut_source.split('\n');
+        let tab_debut_source=debut_source.split( '\n' );
         /* this.__ig1.ma_trace1("tab_debut_source",tab_debut_source); */
-        for( let ref in tab_ref){
-            for(let i=0;i<tab_debut_source.length;i++){
-                if(tab_debut_source[i].indexOf(ref+'=')>=0){
-                   let aa=tab_debut_source[i].substr(tab_debut_source[i].indexOf(ref+'=')+String(ref+'=').length).replace(/;/g,'');
-                   let bb=parseInt(aa,10);
-                   if(!isNaN(bb) && this.__ig1.est_num(bb)){
-                       tab_ref[ref]=bb;
-                       /* this.__ig1.ma_trace1("ref,bb",ref,bb); */
-                   }
+        for(let ref in tab_ref){
+            for( let i=0 ; i < tab_debut_source.length ; i++ ){
+                if(tab_debut_source[i].indexOf( ref + '=' ) >= 0){
+                    let aa=tab_debut_source[i].substr( tab_debut_source[i].indexOf( ref + '=' ) + String( ref + '=' ).length ).replace( /;/g , '' );
+                    let bb=parseInt( aa , 10 );
+                    if(!isNaN( bb ) && this.__ig1.est_num( bb )){
+                        tab_ref[ref]=bb;
+                        /* this.__ig1.ma_trace1("ref,bb",ref,bb); */
+                    }
                 }
             }
         }
         /*
           o1+=this.__ig1.lien_parent2( 'affectations_aux_missions2' , 'fld_id_affectation_prestation' , 'fld_id_affectation_prestation_libelle' , this.moi );
         */
-        let tab_liens_parents=[]
-        let tab_source=contenu_du_source_client.split('\n');
-        for(let i=0;i<tab_source.length;i++){
-            if(tab_source[i].indexOf('lien_parent2(')>=0){
-                tab_liens_parents.push(tab_source[i].replace(/o1\+=this\.__ig1\./,'').replace(/\r/,'').replace(/;/,''))
+        let tab_liens_parents=[];
+        let tab_source=contenu_du_source_client.split( '\n' );
+        for( let i=0 ; i < tab_source.length ; i++ ){
+            if(tab_source[i].indexOf( 'lien_parent2(' ) >= 0){
+                tab_liens_parents.push( tab_source[i].replace( /o1\+=this\.__ig1\./ , '' ).replace( /\r/ , '' ).replace( /;/ , '' ) );
             }
         }
         this.__ig1.donnees_retournees.__xva['tab_liens_parents']=tab_liens_parents;
         this.__ig1.donnees_retournees.__xva['tab_ref']=tab_ref;
         this.__ig1.donnees_retournees.__xva['rev_fragment']=rev_fragment;
+        this.__ig1.donnees_retournees.__xva['le_source_n_existe_pas']=le_source_n_existe_pas;
         return({"__xst" : __xsu});
     }
     /*

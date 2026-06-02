@@ -15,6 +15,13 @@ let repertoire_racine_de_tous_les_projets=repertoire_du_pgm_serveur.substr( 0 , 
 /* clé application */
 const _CA_=parseInt( repertoire_du_pgm_serveur.substr( repertoire_du_pgm_serveur.lastIndexOf( '_' ) + 1 ) , 10 );
 const __le_port=_CA_ + 6000;
+let __liste_des_bases=[1];
+if(_CA_ > 2){
+    try{
+        const text_json=await Deno.readTextFile( './__fichiers_generes/__liste_des_bases.json' );
+        __liste_des_bases=JSON.parse(text_json);
+    }catch{}
+}
 console.log( '__serveur.js _CA_=' + _CA_ + ',port=' + __le_port );
 Deno.serve( {
         "port" : __le_port ,
@@ -49,11 +56,11 @@ Deno.serve( {
         const { socket  , response }=Deno.upgradeWebSocket( req1 );
         socket.addEventListener( "open" , () => {
                 /* console.log('__serveur.js  open ws ') */
-                let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket );
+                let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
                 let traitement_open_socket=__ig1.traiter_open_socket( req1 , socket );
                 __ig1=null;} );
         socket.addEventListener( "message" , async ( evenement ) => {
-                let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket );
+                let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
                 let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , req1 );
                 /* console.log('__serveur.js ', traitement_mesage_socket ) */
                 if(traitement_mesage_socket.__xst === __xsu){

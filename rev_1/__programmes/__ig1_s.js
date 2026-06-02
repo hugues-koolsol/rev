@@ -81,7 +81,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    constructor( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , __socket=null ){
+    constructor( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , __socket=null , __liste_des_bases=[1] ){
         /* , repertoire_du_pgm_serveur , repertoire_des_programmes , repertoire_racine_de_tous_les_projets , __deverminage ]{ */
         /* console.log('dans __ig1_s.constructor , _CA_='+_CA_+',__le_port='+__le_port+',__version='+__version) */
         this._CA_=_CA_;
@@ -95,7 +95,7 @@ class __ig1{
         this.objet_des_modules_charges['__fnt1']=this.__fnt1;
         this.objet_des_modules_charges['__rev1']=this.__rev1;
         this.__ndlcs='cle_de_session_rev_' + _CA_ + '_websocket';
-        this.__liste_des_bases=[1];
+        this.__liste_des_bases=__liste_des_bases;
         this.__socket=__socket;
     }
     /*
