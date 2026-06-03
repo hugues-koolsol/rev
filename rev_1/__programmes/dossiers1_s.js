@@ -583,7 +583,6 @@ class dossiers1{
         if(this.__ig1.donnees_retournees._CA_ === 2){
             chi_id_basedd=1;
         }
-        /* let chemin_complet_bdd=this.__ig1.options_generales.chemin_des_bdd + 'bdd_' + chi_id_basedd + '.sqlite'; */
         this.__ig1.options_generales.bdd_ouvertes[chi_id_basedd]=null;
         try{
             __db1.close();

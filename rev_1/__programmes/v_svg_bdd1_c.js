@@ -3154,16 +3154,16 @@ class v_svg_bdd1{
         this.__ig1.supprimer_les_messages();
         let obj=this.#creer_rev_de_la_base_a_partir_de_svg( this.#id_bdd_de_la_base_en_cours );
         if(obj.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'Problème sur reecrire_la_base ' + this.__gi1.nl2()});
+            return({"__xst" : __xer ,"__xme" : 'Problème sur ' + this.__gi1.nl2()});
         }
         var texte_rev=obj.__xva;
         var obj2=this.__ig1.__rev1.rev_tm( texte_rev );
         if(obj2.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'Problème sur reecrire_la_base ' + this.__ig1.nl2()});
+            return({"__xst" : __xer ,"__xme" : 'Problème sur ' + this.__ig1.nl2()});
         }
         var obj3=this.__m_rev_vers_sql1.c_tab_vers_sql( obj2.__xva , {} );
-        if(true || obj3.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'Problème sur reecrire_la_base ' + this.__ig1.nl2()});
+        if(obj3.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : 'Problème sur ' + this.__ig1.nl2()});
         }
         obj={
             "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer_la_base_sur_disque_a_partir_du_shema(id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + ')))))' ,

@@ -118,6 +118,11 @@
         "table_dependante": "tbl_taches",
         "champ_dependant": "chx_utilisateur_tache",
         "id_bdd_de_la_base_dependante": 1
+      },
+      {
+        "table_dependante": "tbl_acteurs",
+        "champ_dependant": "chx_utilisateur_acteur",
+        "id_bdd_de_la_base_dependante": 2
       }
     ]
   }

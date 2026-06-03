@@ -483,7 +483,7 @@ class __ig1{
             "cle_de_session" : '' ,
             "repertoire_du_pgm_serveur" : this.repertoire_du_pgm_serveur ,
             "bdd_ouvertes" : {} ,
-            "chemin_des_bdd" : '' ,
+            "chemin_des_bdd" : './__bases_de_donnees/' ,
             "chemin_absolu_projet" : '' ,
             "repertoire_racine_de_tous_les_projets" : this.repertoire_racine_de_tous_les_projets ,
             "base_de_reference" : 1 ,
@@ -1043,19 +1043,21 @@ class __ig1{
             return this.options_generales.bdd_ouvertes[chi_id_basedd].base;
         }
         let chemin_complet_bdd='./__bases_de_donnees/' + 'bdd_' + chi_id_basedd + '.sqlite';
+        this.ma_trace1("chemin_complet_bdd="+chemin_complet_bdd , this.__liste_des_bases);
         try{
-            /* this.ma_trace1("on ouvre Effectivement la base chemin_complet_bdd="+chemin_complet_bdd); */
+            this.ma_trace1("on ouvre Effectivement la base chemin_complet_bdd="+chemin_complet_bdd);
             let __db=new Database( chemin_complet_bdd , {"create" : false} );
             let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
-            /* this.ma_trace1("les_pragma_set=",les_pragma_set); */
             if(this.donnees_retournees._CA_ > 2 && this.__liste_des_bases.length > 0){
                 for( let i=0 ; i < this.__liste_des_bases.length ; i++ ){
                     if(chi_id_basedd !== this.__liste_des_bases[i]){
+                        this.ma_trace1("this.options_generales.chemin_des_bdd="+this.options_generales.chemin_des_bdd);
                         let chemin_complet_bdd1=this.options_generales.chemin_des_bdd + 'bdd_' + this.__liste_des_bases[i] + '.sqlite';
                         les_pragma_set.push( 'attach database "' + chemin_complet_bdd1 + '" as b' + this.__liste_des_bases[i] );
                     }
                 }
             }
+            this.ma_trace1("les_pragma_set=",les_pragma_set);
             for(let i in les_pragma_set){
                 let a=await __db.exec( les_pragma_set[i] );
             }

@@ -215,6 +215,7 @@ class _connexion1{
       =============================================================================================================
     */
     async verifier_connexion1( mat , d ){
+        /* this.__ig1.ma_trace1( 'this.__ig1.donnees_recues=' , this.__ig1.donnees_recues ); */
         const nom_du_fichier_bdd='';
         const chemin_du_fichier_bdd='./__bases_de_donnees/bdd_1.sqlite';
         try{
@@ -226,8 +227,9 @@ class _connexion1{
         }catch(e){
             await this.initialiser_la_base_a_partir_de_la_sauvegarde( mat , d );
         }
+        this.__ig1.ma_trace1("ici");
         let __db1=await this.__ig1.ouvrir_bdd( 1 , false , true );
-        /* this.__ig1.ma_trace1( 'this.__ig1.donnees_recues=' , this.__ig1.donnees_recues ); */
+        this.__ig1.ma_trace1( 'this.__ig1.donnees_recues=' , this.__ig1.donnees_recues );
         const user=await this.recherche_utilisateur_dans_la_base( mat , d , __db1 );
         if(user.__xst !== __xsu){
             return user;

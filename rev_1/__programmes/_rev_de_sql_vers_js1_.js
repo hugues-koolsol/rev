@@ -1388,9 +1388,6 @@ class _rev_de_sql_vers_js1{
                                                        || tab[j][1] === 'est'
                                                        || tab[j][1] === 'n_est_pas')
                                             ){
-                                                if(j === 42){
-                                                    debugger;
-                                                }
                                                 var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , j , 0 , options );
                                                 if(obj.__xst === __xsu){
                                                     var parametre=obj.t_js.match( /\par\[(.*)\]/ );

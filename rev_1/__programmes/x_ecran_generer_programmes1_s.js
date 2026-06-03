@@ -88,7 +88,7 @@ class x_ecran_generer_programmes1{
         }catch(e){
             le_source_n_existe_pas=true;
         }
-        this.__ig1.ma_trace1( "contenu_du_source_client=" , contenu_du_source_client );
+        /* this.__ig1.ma_trace1( "contenu_du_source_client=" , contenu_du_source_client ); */
         let debut_source=contenu_du_source_client.substr( 0 , 500 );
         /* this.__ig1.ma_trace1("debut_source=",debut_source); */
         let tab_debut_source=debut_source.split( '\n' );
@@ -100,6 +100,17 @@ class x_ecran_generer_programmes1{
                     let bb=parseInt( aa , 10 );
                     if(!isNaN( bb ) && this.__ig1.est_num( bb )){
                         tab_ref[ref]=bb;
+                        /* this.__ig1.ma_trace1("this.__ig1.donnees_recues",this.__ig1.donnees_recues); */
+                        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( 'obj_clic' )
+                               && this.__ig1.donnees_recues.__xva.obj_clic.hasOwnProperty( ref )
+                        ){
+                            this.__ig1.ma_trace1( "this.__ig1.donnees_recues.__xva.obj_clic[ref]" + this.__ig1.donnees_recues.__xva.obj_clic[ref] + ' ' + bb );
+                            if(this.__ig1.donnees_recues.__xva.obj_clic[ref] !== bb){
+                                this.__ig1.ma_trace1( "this.__ig1.donnees_retournees.__xsi" , this.__ig1.donnees_retournees.__xsi );
+                                this.__ig1.donnees_retournees.__xsi[__xal].push( 'changement de ref="' + ref + '" dans source : "' + bb + '" , dans écran : "' + this.__ig1.donnees_recues.__xva.obj_clic[ref] + '"' );
+                            }
+                            tab_ref[ref]=this.__ig1.donnees_recues.__xva.obj_clic[ref];
+                        }
                         /* this.__ig1.ma_trace1("ref,bb",ref,bb); */
                     }
                 }

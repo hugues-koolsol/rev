@@ -264,12 +264,15 @@ class __fnt1{
       =============================================================================================================
       quand un champ de recherche contient des id, ils sont séparés par des virgules ou des points
       par exemple, 1,2,3 ou bien 1.2.3  , le where doit être sous la forme WHERE id in ( 1 , 2 , 3 )
+      si il contient '0', on recherche IS NULL
       =============================================================================================================
     */
     construction_where_sql_sur_id1( nom_du_champ , critere ){
         let champ_where='';
         critere=String( '' + critere + '' ).replace( /\./g , ',' );
-        if(critere !== null && critere.indexOf( ',' ) >= 0){
+        if(critere !== null && critere === '0'){
+            champ_where+='AND ' + this.sq0( nom_du_champ ) + ' IS NULL ';
+        }else if(critere !== null && critere.indexOf( ',' ) >= 0){
             let tableau_liste_des_valeurs=critere.split( ',' );
             let chaine_recherche='';
             for(let i in tableau_liste_des_valeurs){

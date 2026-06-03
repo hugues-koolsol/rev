@@ -1145,7 +1145,7 @@ class x_ecran_concevoir_une_requete1{
         t+='<option value="delete"           ' + (this.#obj_webs.type_de_requete === 'delete' ? ( ' selected="true"' ) : ( '' )) + '>delete</option>';
         t+='<option value="requete_manuelle" ' + (this.#obj_webs.type_de_requete === 'requete_manuelle' ? ( ' selected="true"' ) : ( '' )) + '>requete_manuelle</option>';
         t+='</select>';
-        t+='<br />';
+        t+=' ';
         if(this.#obj_webs.type_de_requete === 'delete'){
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(maj_ne_pas_tester_les_dependances_de_suppression(';
@@ -1205,13 +1205,13 @@ class x_ecran_concevoir_une_requete1{
             t+='<input style="display:none;" id="vv_inclure_le_prefixe_de_la_base_devant_la_table" type="checkbox" checked="false" />';
         }
         t+='</div>';
-        t+='<table border="1">';
+        t+='<table border="0" style="max-width:100%;border: 1px #909090 solid;border-collapse: collapse;">';
         var la_class_de_la_base='';
         var la_classe_de_la_table='';
         var ind={};
         for(ind in this.#obj_webs['bases']){
             t+='<tr>';
-            t+='<td>';
+            t+='<td style="width:6em;border: 1px #909090 solid;border-collapse: collapse;">';
             la_class_de_la_base='';
             if(this.#obj_webs['bases'][ind].selectionne === true){
                 la_class_de_la_base='yy__1';
@@ -1223,7 +1223,7 @@ class x_ecran_concevoir_une_requete1{
             t+='<div class="rev_bouton ' + la_class_de_la_base + '" data-rev_click="' + cmd + '">bdd_' + this.#obj_webs['bases'][ind].chi_id_basedd + '</div>';
             t+='</td>';
             if(la_class_de_la_base !== ''){
-                t+='<td>';
+                t+='<td style="border: 1px #909090 solid;border-collapse: collapse;">';
                 var nom_de_la_table={};
                 for(nom_de_la_table in this.#obj_webs['bases'][ind]['tables']){
                     la_classe_de_la_table='';
@@ -1255,13 +1255,13 @@ class x_ecran_concevoir_une_requete1{
         t+='<hr />';
         let jointure_gauche_selectionnee=false;
         if(this.#obj_webs['ordre_des_tables'].length > 0){
-            t+='<table border="1" id="ordre_des_tables" style="max-width:100%;">';
+            t+='<table border="0" id="ordre_des_tables" style="max-width:100%;border: 1px #909090 solid;border-collapse: collapse;">';
             var i=0;
             for( i=0 ; i < this.#obj_webs['ordre_des_tables'].length ; i++ ){
                 var elem=this.#obj_webs['ordre_des_tables'][i];
                 t+='<tr>';
-                t+='<td>';
-                t+=elem.id_bdd + ' ' + elem.nom_de_la_table + ' T' + this.#obj_webs['ordre_des_tables'][i].indice_table;
+                t+='<td style="width:10em;column-wrap: wrap;text-wrap-mode: wrap;border: 1px #909090 solid;border-collapse: collapse;">';
+                t+=elem.id_bdd + ' <div style="display:inline-block;max-width:100px;overflow-wrap: break-word;">' + elem.nom_de_la_table + '</div> T' + this.#obj_webs['ordre_des_tables'][i].indice_table;
                 var cmd='';
                 cmd+='m1(n1(' + this.moi + '),f1(selectionner_ou_deselectionner_cette_table(';
                 cmd+=' id_bdd(' + elem.id_bdd + '),';
@@ -1271,10 +1271,9 @@ class x_ecran_concevoir_une_requete1{
                 cmd+=' alias_de_la_table(' + elem.alias_de_la_table + '),';
                 cmd+=')))';
                 t+='<div class="rev_bouton yy__0" data-rev_click="' + cmd + '" title="retirer">-</div>';
-                t+='</td>';
-                /* t+='<td> aa'; */
+                t+='<br />';
                 if(i > 0){
-                    t+='<td>';
+                    /* t+='<td>'; */
                     var cmd='';
                     cmd+='m1(n1(' + this.moi + '),f1(changer_la_jointure(ind(' + i + '),nom_zone(type_de_jointure_' + i + '))))';
                     t+='<select id="type_de_jointure_' + i + '" data-rev_change="' + cmd + '" >';
@@ -1295,11 +1294,13 @@ class x_ecran_concevoir_une_requete1{
                             }
                         }
                     }
-                    t+='</td>';
+                    /* t+='</td>'; */
                 }else{
-                    t+='<td>table_reference</td>';
+                    /* t+='<td>table_reference</td>'; */
+                    t+='table_reference';
                 }
-                t+='<td>';
+                t+='</td>';
+                t+='<td style="border: 1px #909090 solid;border-collapse: collapse;">';
                 var id_du_champ={};
                 for(id_du_champ in this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs']){
                     let Tn='';
@@ -1325,7 +1326,7 @@ class x_ecran_concevoir_une_requete1{
                 }
                 t+='</td>';
                 if(this.#obj_webs['ordre_des_tables'][i].jointure === 'jointure_gauche'){
-                    t+='<td>';
+                    t+='<td style="width:100px;border: 1px #909090 solid;border-collapse: collapse;">';
                     t+='ON:';
                     var cmd='';
                     cmd+='m1(n1(' + this.moi + '),f1(selectionner_champs_destination1(';
@@ -1350,9 +1351,9 @@ class x_ecran_concevoir_une_requete1{
                            && this.#obj_webs.ordre_des_tables[i].champs_jointure_gauche.hasOwnProperty( 'champ_table_mere' )
                            && this.#obj_webs.ordre_des_tables[i].champs_jointure_gauche.champ_table_mere !== null
                     ){
-                        t+='( T' + this.#obj_webs.ordre_des_tables[i].champs_jointure_gauche.champ_table_mere.indice_table + ' , ' + this.#obj_webs.ordre_des_tables[i].champs_jointure_gauche.champ_table_mere.nom_du_champ + ')';
+                        t+=' T' + this.#obj_webs.ordre_des_tables[i].champs_jointure_gauche.champ_table_mere.indice_table + ' , ' + this.#obj_webs.ordre_des_tables[i].champs_jointure_gauche.champ_table_mere.nom_du_champ + '';
                     }
-                    t+=' &nbsp; = &nbsp; ';
+                    t+='<br /> &nbsp; = &nbsp;<br />';
                     var chacked='';
                     if(this.#obj_webs.nom_zone_cible === 'champs_jointure_gauche'
                            && this.#obj_webs.indice_table_pour_jointure_gauche === i
@@ -1380,6 +1381,8 @@ class x_ecran_concevoir_une_requete1{
                         t+='( T' + this.#obj_webs.ordre_des_tables[i].champs_jointure_gauche.champ_table_fille.indice_table + ' , ' + this.#obj_webs.ordre_des_tables[i].champs_jointure_gauche.champ_table_fille.nom_du_champ + ')';
                     }
                     t+='</td>';
+                }else{
+                    t+='<td style="width:100px;"></td>';
                 }
                 t+='</tr>';
             }

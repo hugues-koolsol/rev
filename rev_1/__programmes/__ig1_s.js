@@ -483,7 +483,7 @@ class __ig1{
             "cle_de_session" : '' ,
             "repertoire_du_pgm_serveur" : this.repertoire_du_pgm_serveur ,
             "bdd_ouvertes" : {} ,
-            "chemin_des_bdd" : '' ,
+            "chemin_des_bdd" : './__bases_de_donnees/' ,
             "chemin_absolu_projet" : '' ,
             "repertoire_racine_de_tous_les_projets" : this.repertoire_racine_de_tous_les_projets ,
             "base_de_reference" : 1 ,
