@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_117{
+class sql_420{
     /*
       =============================================================================================================
     */
@@ -62,7 +62,7 @@ class sql_117{
             let nouvel_id=-1;
             if(liste_des_valeurs !== ''){
                 sql0+=liste_des_valeurs;
-                /* this.__ig1.ma_trace1( 'sql_117=' + sql0 ); */
+                /* this.__ig1.ma_trace1( 'sql_420=' + sql0 ); */
                 res=await this.__db1.exec( sql0 );
                 /* this.__ig1.ma_trace1('res=',res); */
                 const sql1='SELECT last_insert_rowid() as nouvel_id; ';
@@ -82,13 +82,13 @@ class sql_117{
                     "__xme" : ''
                 });
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 117 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 420 , e , sql0 , {} ));
         }
     }
     /*
       =============================================================================================================
     */
-    moi='sql_117';
+    moi='sql_420';
     __ig1=null;
     __db1=null;
     /*
@@ -99,4 +99,4 @@ class sql_117{
         this.__db1=__db1;
     }
 }
-export{sql_117 as sql_117};
+export{sql_420 as sql_420};

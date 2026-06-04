@@ -688,12 +688,14 @@ class taches2{
             }
         }else{
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
-                if(this.filtres[this.fonction_liste][i] !== ''){
-                    document.getElementById( i ).style.background='yellow';
-                }else{
-                    document.getElementById( i ).style.background='';
-                }
+                try{
+                    document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
+                    if(this.filtres[this.fonction_liste][i] !== ''){
+                        document.getElementById( i ).style.background='yellow';
+                    }else{
+                        document.getElementById( i ).style.background='';
+                    }
+                }catch{}
             }
         }
         if(de_13 === ''){
@@ -746,7 +748,7 @@ class taches2{
             initialisation_fait=true;
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){
+        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES && a.getAttribute('data-contexte') === this.moi){
         }else{
             if(initialisation_fait === false){
                 this.__ig1.initialisation_des_zones( this.moi , 'chi_id_tache' );

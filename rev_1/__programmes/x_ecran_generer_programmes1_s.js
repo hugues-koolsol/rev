@@ -100,7 +100,7 @@ class x_ecran_generer_programmes1{
                     let bb=parseInt( aa , 10 );
                     if(!isNaN( bb ) && this.__ig1.est_num( bb )){
                         tab_ref[ref]=bb;
-                        /* this.__ig1.ma_trace1("this.__ig1.donnees_recues",this.__ig1.donnees_recues); */
+                        this.__ig1.ma_trace1("this.__ig1.donnees_recues",this.__ig1.donnees_recues)
                         if(this.__ig1.donnees_recues.__xva.hasOwnProperty( 'obj_clic' )
                                && this.__ig1.donnees_recues.__xva.obj_clic.hasOwnProperty( ref )
                         ){
@@ -112,6 +112,10 @@ class x_ecran_generer_programmes1{
                             tab_ref[ref]=this.__ig1.donnees_recues.__xva.obj_clic[ref];
                         }
                         /* this.__ig1.ma_trace1("ref,bb",ref,bb); */
+                    }
+                }else{
+                    if(this.__ig1.donnees_recues.__xva.hasOwnProperty('obj_clic') && this.__ig1.donnees_recues.__xva.obj_clic.hasOwnProperty( ref )){
+                        tab_ref[ref]=this.__ig1.donnees_recues.__xva.obj_clic[ref];
                     }
                 }
             }

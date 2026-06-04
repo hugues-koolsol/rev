@@ -42,6 +42,9 @@ class sql_148{
             if(par['n_chx_autorisation_menu'] === undefined || par['n_chx_autorisation_menu'] === '' || par['n_chx_autorisation_menu'] === null){
                 tableau_champs.push( '`chx_autorisation_menu` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chx_autorisation_menu'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "autorisation" doit être numérique'});
+                }
                 tableau_champs.push( '`chx_autorisation_menu` = ' + this.__ig1.__fnt1.sq0( par['n_chx_autorisation_menu'] , 'n_chx_autorisation_menu' ) + '' );
             }
             if(par['n_chp_methode_menu'] === undefined || par['n_chp_methode_menu'] === '' || par['n_chp_methode_menu'] === null){

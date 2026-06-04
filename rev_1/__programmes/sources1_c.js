@@ -1,10 +1,10 @@
 class sources1{
     /*
-      ref_select=116
-      ref_insert=117
+      ref_select=419
+      ref_insert=420
       ref_delete=118
       ref_update=308
-      ref_liste_ecran=115
+      ref_liste_ecran=418
     */
     moi='sources1';
     DUN_DUNE_ELEMENT_GERE='d\'un source';
@@ -1388,7 +1388,7 @@ class sources1{
             initialisation_fait=true;
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){
+        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES && a.getAttribute('data-contexte') === this.moi){
         }else{
             if(initialisation_fait === false){
                 this.__ig1.initialisation_des_zones( this.moi , 'chi_id_source' );

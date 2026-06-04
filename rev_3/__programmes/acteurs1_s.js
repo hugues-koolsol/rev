@@ -359,9 +359,7 @@ class acteurs1{
         let tt179=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b2.tbl_acteurs
-        WHERE (`chx_utilisateur_acteur` = :chx_utilisateur_acteur
-           AND `chp_nom_acteur` = :chp_nom_acteur
-           AND `chp_prenom_acteur` = :chp_prenom_acteur) ;
+        WHERE `chx_utilisateur_acteur` = :chx_utilisateur_acteur ;
         */
         /*sql_inclure_fin*/ 179 , criteres_179 , this.__ig1.donnees_retournees , __db1 );
         /*  */

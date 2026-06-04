@@ -43,16 +43,25 @@ class sql_138{
             if(par['n_chx_groupe_acces'] === undefined || par['n_chx_groupe_acces'] === '' || par['n_chx_groupe_acces'] === null){
                 tableau_champs.push( '`chx_groupe_acces` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chx_groupe_acces'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "groupe" doit être numérique'});
+                }
                 tableau_champs.push( '`chx_groupe_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_groupe_acces'] , 'n_chx_groupe_acces' ) + '' );
             }
             if(par['n_chx_metier_acces'] === undefined || par['n_chx_metier_acces'] === '' || par['n_chx_metier_acces'] === null){
                 tableau_champs.push( '`chx_metier_acces` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chx_metier_acces'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "metier" doit être numérique'});
+                }
                 tableau_champs.push( '`chx_metier_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_metier_acces'] , 'n_chx_metier_acces' ) + '' );
             }
             if(par['n_che_actif_acces'] === undefined || par['n_che_actif_acces'] === '' || par['n_che_actif_acces'] === null){
                 tableau_champs.push( '`che_actif_acces` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_che_actif_acces'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "actif" doit être numérique'});
+                }
                 tableau_champs.push( '`che_actif_acces` = ' + this.__ig1.__fnt1.sq0( par['n_che_actif_acces'] , 'n_che_actif_acces' ) + '' );
             }
             if(tableau_champs.length === 0){

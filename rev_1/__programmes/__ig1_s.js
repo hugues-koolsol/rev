@@ -1044,15 +1044,14 @@ class __ig1{
         }
         let chemin_complet_bdd='./__bases_de_donnees/' + 'bdd_' + chi_id_basedd + '.sqlite';
         try{
-            /* this.ma_trace1("on ouvre Effectivement la base chemin_complet_bdd="+chemin_complet_bdd); */
+            /* this.ma_trace1( "on ouvre Effectivement la base chemin_complet_bdd=" + chemin_complet_bdd ); */
             let __db=new Database( chemin_complet_bdd , {"create" : false} );
             let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
-            /* this.ma_trace1("les_pragma_set=",les_pragma_set); */
-            if(this.donnees_retournees._CA_ > 2 && this.donnees_retournees.__liste_des_bases.length > 0){
-                for( let i=0 ; i < this.donnees_retournees.__liste_des_bases.length ; i++ ){
-                    if(chi_id_basedd !== this.donnees_retournees.__liste_des_bases[i]){
-                        let chemin_complet_bdd1=this.options_generales.chemin_des_bdd + 'bdd_' + this.donnees_retournees.__liste_des_bases[i] + '.sqlite';
-                        les_pragma_set.push( 'attach database "' + chemin_complet_bdd1 + '" as b' + this.donnees_retournees.__liste_des_bases[i] );
+            if(this.donnees_retournees._CA_ > 2 && this.__liste_des_bases.length > 0){
+                for( let i=0 ; i < this.__liste_des_bases.length ; i++ ){
+                    if(chi_id_basedd !== this.__liste_des_bases[i]){
+                        let chemin_complet_bdd1=this.options_generales.chemin_des_bdd + 'bdd_' + this.__liste_des_bases[i] + '.sqlite';
+                        les_pragma_set.push( 'attach database "' + chemin_complet_bdd1 + '" as b' + this.__liste_des_bases[i] );
                     }
                 }
             }

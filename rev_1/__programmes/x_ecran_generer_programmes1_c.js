@@ -59,6 +59,12 @@ class x_ecran_generer_programmes1{
         let obj_clic={
             "ne_pas_prendre_les_valeurs_en_session" : document.getElementById( 'ne_pas_prendre_les_valeurs_en_session' ).checked ? ( 1 ) : ( 0 ) ,
             "pour_sous_liste_uniquement" : document.getElementById( 'pour_sous_liste_uniquement' ).checked ? ( 1 ) : ( 0 ) ,
+            "ref_liste_ecran" : document.getElementById( 'reference_requete_liste_ecran' ).value === '' ?
+              ( 
+                0
+              ) : ( 
+                parseInt( document.getElementById( 'reference_requete_liste_ecran' ).value , 10 )
+              ) ,
             "ref_select" : document.getElementById( 'reference_requete_select' ).value === '' ?
               ( 
                 0
@@ -1361,7 +1367,7 @@ class x_ecran_generer_programmes1{
             src_client2+='            /*\r\n';
         }
         src_client2+='            this.vv_ecran_liste_boutons_avant+=';
-        src_client2+='\'<div class="rev_bouton yy__xif" data-rev_click="m1(n1(\'+this.moi+\'),f1(page_creer1()))" title="création\'+this.DUN_DUNE_ELEMENT_GERE +\'" >\' + this.__ig1.les_svg.nouveau_document+\'</div>\';\r\n';
+        src_client2+='\'<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(\'+this.moi+\'),f1(page_creer1()))" title="création\'+this.DUN_DUNE_ELEMENT_GERE +\'" >\' + this.__ig1.les_svg.nouveau_document + \'</div>\';\r\n';
         if(ref_insert === ''){
             src_client2+='            */\r\n';
         }
@@ -1382,13 +1388,12 @@ class x_ecran_generer_programmes1{
             src_client2+='    */\r\n';
             src_client2+='    verifier_modifier1(mat , d , données){\r\n';
             src_client2+='        let retour_a_la_liste=\'\';\r\n';
-            src_client2+='        let l01=mat.length;\r\n';
+            src_client2+='        const l01=mat.length;\r\n';
             src_client2+='        for(let i=d+1;i<l01;i=mat[i][12]){\r\n';
             src_client2+='            if(mat[i][1]===\'retour_a_la_liste\' && mat[i][2]===\'f\' ){\r\n';
             src_client2+='                retour_a_la_liste=\'retour_a_la_liste()\';\r\n';
             src_client2+='            }\r\n';
             src_client2+='        }\r\n';
-            src_client2+='\r\n';
             src_client2+='        let co1=données.__co1;\r\n';
             src_client2+='        let fo1=données.__fo1[co1];\r\n';
             var liste_des_conversions_modification=[];
@@ -1447,8 +1452,7 @@ class x_ecran_generer_programmes1{
                         src_client2+='                return({__xst:__xsu})\r\n';
                         src_client2+='            }\r\n';
                         src_client2+='        }\r\n';
-                        src_client2+='\r\n';
-                    }
+                                }
                     if(obj_champ.genre_objet_du_champ.che_est_parmis_genre === 1){
                         if(obj_champ.genre_objet_du_champ.cht_parmis_genre.indexOf( '\'' ) >= 0){
                             src_client2+='        console.log(\'%c IL MANQUE UN TEST POUR LE CHAMP ' + nom_du_champ + '\',\'color:red;background:lightblue;\')\r\n';
@@ -1508,8 +1512,7 @@ class x_ecran_generer_programmes1{
                                 src_client2+='            }catch{}\r\n';
                                 src_client2+='            return({__xst:__xsu})\r\n';
                                 src_client2+='        }\r\n';
-                                src_client2+='\r\n';
-                            }else{
+                                                }else{
                                 return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                             }
                         }
@@ -1551,15 +1554,11 @@ class x_ecran_generer_programmes1{
             src_client2+='        */\r\n';
             src_client2+='        let __fo1={};\r\n';
             src_client2+='        __fo1[co1]=fo1;\r\n';
-            src_client2+='\r\n';
             src_client2+='        this.__ig1.envoyer_un_colis_au_worker( {/**/\r\n';
             src_client2+='            "__xac" : \'pm1(m1(n1(\'+this.moi+\'),f1(modifier1(\'+retour_a_la_liste+\'))))\',\r\n';
             src_client2+='            "__xva" : { "__fo1" : __fo1 , "__co1" : co1 }\r\n';
-            src_client2+='\r\n';
             src_client2+='        } );\r\n';
             src_client2+='        return({__xst:__xsu})\r\n';
-            src_client2+='\r\n';
-            src_client2+='\r\n';
             src_client2+='    }\r\n';
         }
         if(ref_update !== '' && ref_select !== ''){
@@ -1599,7 +1598,7 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        */\r\n';
             }
             src_serveur_js2+='        let retour_a_la_liste=false;\r\n';
-            src_serveur_js2+='        let l01=mat.length;\r\n';
+            src_serveur_js2+='        const l01=mat.length;\r\n';
             src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
             src_serveur_js2+='            if(mat[i][1] === \'retour_a_la_liste\' && mat[i][2] === \'f\'){\r\n';
             src_serveur_js2+='                retour_a_la_liste=true;\r\n';
@@ -1724,7 +1723,6 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        if(retour_a_la_liste === true){\r\n';
             src_serveur_js2+='            if(form[\'__mat_liste_si_ok\']){\r\n';
             src_serveur_js2+='                let mat1=JSON.parse( form[\'__mat_liste_si_ok\'] );\r\n';
-            src_serveur_js2+='                let d=1;\r\n';
             src_serveur_js2+='                await this.filtre1( mat1 , 1 , __db1 );\r\n';
             src_serveur_js2+='            }\r\n';
             src_serveur_js2+='            return({"__xst" : __xsu});\r\n';
@@ -1740,7 +1738,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async page_modification1( mat , d , ' + champ_primaire + '=null , __db1=null ){\r\n';
             src_serveur_js2+='        if(' + champ_primaire + ' === null){\r\n';
-            src_serveur_js2+='            let l01=mat.length;\r\n';
+            src_serveur_js2+='            const l01=mat.length;\r\n';
             src_serveur_js2+='            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
             src_serveur_js2+='                if(mat[i][1] === \'' + champ_primaire + '\'\r\n';
             src_serveur_js2+='                       && mat[i][2] === \'f\'\r\n';
@@ -1880,8 +1878,7 @@ class x_ecran_generer_programmes1{
                         src_client2+='        /*\r\n';
                         src_client2+='          =====================================================================================\r\n';
                         src_client2+='        */\r\n';
-                        src_client2+='\r\n';
-                        src_client2+='        o1+=\'  <div class="yy_edition_champ1">\' ;\r\n';
+                                    src_client2+='        o1+=\'  <div class="yy_edition_champ1">\' ;\r\n';
                         src_client2+='        o1+=\'    <div class="yy_edition_libelle1">\' ;\r\n';
                         src_client2+='        o1+=\'      <span>' + obj_champ.meta.abrege_du_champ + '</span>\' ;\r\n';
                         src_client2+='        o1+=\'    </div>\' ;\r\n';
@@ -1900,8 +1897,7 @@ class x_ecran_generer_programmes1{
                                    && obj_champ.nom_du_champ === les_jointures[j].champ2
                             ){
                                 indice_jointure=j;
-                                src_client2+='\r\n';
-                                for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
+                                                    for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
                                     src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
                                     un_champ_libelle_trouve=true;
                                 }
@@ -1991,8 +1987,7 @@ class x_ecran_generer_programmes1{
                         }
                         src_client2+='        o1+= \'    </div>\' ;\r\n';
                         src_client2+='        o1+= \'  </div>\' ;\r\n';
-                        src_client2+='\r\n';
-                    }
+                                }
                 }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1 || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1){
                 }else if(obj_champ.genre_objet_du_champ.che_est_nur_genre === 1){
                     /* mettre le nur */
@@ -2043,8 +2038,7 @@ class x_ecran_generer_programmes1{
                         src_client2+='" ';
                         src_client2+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' ;\r\n';
                         src_client2+='        o1 +=this.__ig1.__fnt1.boutons_edition_text( \'' + obj_champ.nom_du_champ + '\' );\r\n';
-                        src_client2+='\r\n';
-                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre !== null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
+                                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre !== null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
                             let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split( ',' );
                             src_client2+='        o1 += \'      <div style="display : inline-flex;flex-wrap : balance;">\';\r\n';
                             for(let opt in tab){
@@ -2073,16 +2067,14 @@ class x_ecran_generer_programmes1{
                             src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition1(\'' + obj_champ.nom_du_champ + '\');\r\n';
                             src_client2+='        o1+=\'</div>\\r\\n\';\r\n';
                         }
-                        src_client2+='\r\n';
-                        src_client2+='        var sty=\'\';\r\n';
+                                    src_client2+='        var sty=\'\';\r\n';
                         src_client2+='        if( enreg[\'T0.cht_initialisation_menu\']===null){\r\n';
                         src_client2+='            sty=\' style="height:5vh;" \';\r\n';
                         src_client2+='        }\r\n';
                         src_client2+='        o1+=\'            <textarea ' + format_source + ' id="' + obj_champ.nom_du_champ + '" rows="10" cols="50" \'+sty+\' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\';\r\n';
                         src_client2+='        o1+=this.__ig1.fi2( enreg[\'T0.' + obj_champ.nom_du_champ + '\'] );\r\n';
                         src_client2+='        o1+=\'</textarea>\';\r\n';
-                        src_client2+='\r\n';
-                        src_client2+='            o1 += \'        </div>\' ;\r\n';
+                                    src_client2+='            o1 += \'        </div>\' ;\r\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'INTEGER'
                            || obj_champ.genre_objet_du_champ.chp_espece_genre === 'FLOAT'
                     ){
@@ -2094,6 +2086,27 @@ class x_ecran_generer_programmes1{
                             src_client2+='" ';
                             src_client2+='type="number" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
                             src_client2+='autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' ;\r\n';
+                            if(obj_champ.meta.hasOwnProperty( 'suggestion_du_champ' ) && obj_champ.meta.suggestion_du_champ !== ''){
+                                src_client2+='        o1+=\'      <div style="display : inline-flex;flex-wrap : balance;">\';\r\n';
+                                let obj_mat_rev=this.__ig1.__rev1.rev_tcm( obj_champ.meta.suggestion_du_champ );
+                                if(obj_mat_rev.__xst !== __xsu){
+                                    return({"__xst" : __xer ,"__xme" : 'Erreur de convertion de suggestion_du_champ pour le champ "' + obj_champ.nom_du_champ + '" '});
+                                }
+                                for( let isuggestion_du_champ=1 ; isuggestion_du_champ < obj_mat_rev.__xva.length ; isuggestion_du_champ=obj_mat_rev.__xva[isuggestion_du_champ][12] ){
+                                    src_client2+='        o1+=\'          <div';
+                                    src_client2+=' class="rev_bouton"';
+                                    src_client2+=' data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + obj_champ.nom_du_champ + '),valeur(valeur_constante(';
+                                    if(this.__ig1.est_num( obj_mat_rev.__xva[isuggestion_du_champ][1] )){
+                                        src_client2+=obj_mat_rev.__xva[isuggestion_du_champ][1];
+                                    }else{
+                                        src_client2+='\'' + obj_mat_rev.__xva[isuggestion_du_champ][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'';
+                                    }
+                                    src_client2+=')))))">';
+                                    src_client2+=obj_mat_rev.__xva[isuggestion_du_champ][1];
+                                    src_client2+='</div>\';\r\n';
+                                }
+                                src_client2+='        o1+=\'      </div>\';\r\n';
+                            }
                         }else{
                             if(obj_champ.genre_objet_du_champ.cht_parmis_genre === '0,1'){
                                 src_client2+='        o1 += \'        ';
@@ -2262,8 +2275,7 @@ class x_ecran_generer_programmes1{
                     src_client2+='        o1 += \'</span>\' ;\r\n';
                     src_client2+='        o1 += \'    </div>\' ;\r\n';
                     src_client2+='        o1 += \'  </div>\' ;\r\n';
-                    src_client2+='\r\n';
-                }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
+                        }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
                 ){
@@ -2413,9 +2425,7 @@ class x_ecran_generer_programmes1{
             src_client2+='        }\r\n';
             src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
             src_client2+='        return({"__xst" : __xsu});\r\n';
-            src_client2+='\r\n';
             src_client2+='    }\r\n';
-            src_client2+='\r\n';
         }
         /*
           
@@ -2476,8 +2486,7 @@ class x_ecran_generer_programmes1{
                         src_client2+='        o1+=\'</span>\';\r\n';
                         src_client2+='        o1+=\'    </div>\';\r\n';
                         src_client2+='        o1+=\'  </div>\';\r\n';
-                        src_client2+='\r\n';
-                    }else{
+                                }else{
                         src_client2+='        /*\r\n';
                         src_client2+='          =====================================================================================================\r\n';
                         src_client2+='          pas d\'édition pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur )\r\n';
@@ -2521,8 +2530,7 @@ class x_ecran_generer_programmes1{
                     src_client2+='        o1 += \'</span>\' ;\r\n';
                     src_client2+='        o1 += \'    </div>\' ;\r\n';
                     src_client2+='        o1 += \'  </div>\' ;\r\n';
-                    src_client2+='\r\n';
-                }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
+                        }else if(obj_champ.genre_objet_du_champ.che_est_tsm_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
                        || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
                 ){
@@ -2615,9 +2623,7 @@ class x_ecran_generer_programmes1{
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
             src_client2+='        return({"__xst" : __xsu});\r\n';
-            src_client2+='\r\n';
             src_client2+='    }\r\n';
-            src_client2+='\r\n';
         }
         /*
           
@@ -2634,7 +2640,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='\r\n';
             src_serveur_js2+='        if(' + champ_primaire + '===null){\r\n';
             src_serveur_js2+='\r\n';
-            src_serveur_js2+='            let l01=mat.length;\r\n';
+            src_serveur_js2+='            const l01=mat.length;\r\n';
             src_serveur_js2+='            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
             src_serveur_js2+='                if(mat[i][1] === \'' + champ_primaire + '\'\r\n';
             src_serveur_js2+='                       && mat[i][2] === \'f\'\r\n';
@@ -2673,7 +2679,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async page_voir1( mat , d ){\r\n';
             src_serveur_js2+='        let ' + champ_primaire + '=0;\r\n';
-            src_serveur_js2+='        let l01=mat.length;\r\n';
+            src_serveur_js2+='        const l01=mat.length;\r\n';
             src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
             src_serveur_js2+='            if(mat[i][1] === \'' + champ_primaire + '\'\r\n';
             src_serveur_js2+='                   && mat[i][2] === \'f\'\r\n';
@@ -2764,7 +2770,9 @@ class x_ecran_generer_programmes1{
                        && liste_des_champs_condition_select[i].champ_dans_la_base.champ_pere_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
                 ){
-                    src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
+                    if(liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 !== 'chi_id_utilisateur' ){
+                        src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
+                    }
                     deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
                 }else if(liste_des_champs_condition_select[i].hasOwnProperty( 'champ_dans_la_base' )
                        && liste_des_champs_condition_select[i].champ_dans_la_base !== undefined
@@ -2832,7 +2840,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async page_confirmation_supprimer1( mat , d ){\r\n';
             src_serveur_js2+='        let ' + champ_primaire + '=0;\r\n';
-            src_serveur_js2+='        let l01=mat.length;\r\n';
+            src_serveur_js2+='        const l01=mat.length;\r\n';
             src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
             src_serveur_js2+='            if(mat[i][1] === \'' + champ_primaire + '\'\r\n';
             src_serveur_js2+='                   && mat[i][2] === \'f\'\r\n';
@@ -2902,13 +2910,12 @@ class x_ecran_generer_programmes1{
             src_client2+='    */\r\n';
             src_client2+='    verifier_creer1(mat , d , données){\r\n';
             src_client2+='        let retour_a_la_liste=\'\';\r\n';
-            src_client2+='        let l01=mat.length;\r\n';
+            src_client2+='        const l01=mat.length;\r\n';
             src_client2+='        for(let i=d+1;i<l01;i=mat[i][12]){\r\n';
             src_client2+='            if(mat[i][1]===\'retour_a_la_liste\' && mat[i][2]===\'f\' ){\r\n';
             src_client2+='                retour_a_la_liste=\'retour_a_la_liste()\';\r\n';
             src_client2+='            }\r\n';
             src_client2+='        }\r\n';
-            src_client2+='\r\n';
             src_client2+='        let co1=données.__co1;\r\n';
             src_client2+='        let fo1=données.__fo1[co1];\r\n';
             var liste_des_conversions=[];
@@ -3030,8 +3037,7 @@ class x_ecran_generer_programmes1{
                                 src_client2+='            }catch{}\r\n';
                                 src_client2+='            return({__xst:__xsu})\r\n';
                                 src_client2+='        }\r\n';
-                                src_client2+='\r\n';
-                            }else{
+                                                }else{
                                 return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                             }
                         }
@@ -3073,17 +3079,12 @@ class x_ecran_generer_programmes1{
             src_client2+='        */\r\n';
             src_client2+='        let __fo1={};\r\n';
             src_client2+='        __fo1[co1]=fo1;\r\n';
-            src_client2+='\r\n';
             src_client2+='        this.__ig1.envoyer_un_colis_au_worker( {/**/\r\n';
             src_client2+='            "__xac" : \'pm1(m1(n1(\'+this.moi+\'),f1(creer1(\'+retour_a_la_liste+\'))))\',\r\n';
             src_client2+='            "__xva" : { "__fo1" : __fo1 , "__co1" : co1 }\r\n';
-            src_client2+='\r\n';
             src_client2+='        } );\r\n';
             src_client2+='        return({__xst:__xsu})\r\n';
-            src_client2+='\r\n';
-            src_client2+='\r\n';
             src_client2+='    }\r\n';
-            src_client2+='\r\n';
         }
         /*
           
@@ -3098,7 +3099,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async creer1( mat , d ){\r\n';
             src_serveur_js2+='        let retour_a_la_liste=false;\r\n';
-            src_serveur_js2+='        let l01=mat.length;\r\n';
+            src_serveur_js2+='        const l01=mat.length;\r\n';
             src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
             src_serveur_js2+='            if(mat[i][1] === \'retour_a_la_liste\' && mat[i][2] === \'f\'){\r\n';
             src_serveur_js2+='                retour_a_la_liste=true;\r\n';
@@ -3286,7 +3287,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async filtre1( mat , d , __db1=null ){\r\n';
-            src_serveur_js2+='        let l01=mat.length;\r\n';
+            src_serveur_js2+='        const l01=mat.length;\r\n';
             src_serveur_js2+='        let option_de_13=\'\';\r\n';
             src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
             src_serveur_js2+='            if(mat[i][1] === \'de_13\' && mat[i][2] === \'f\' && mat[i][8] === 1 && mat[i+1][2] === \'c\'){\r\n';
@@ -3295,7 +3296,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        const __nbMax=40;\r\n';
             src_serveur_js2+='        let __num_page=0;\r\n';
-            src_serveur_js2+='        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );\r\n';
+            src_serveur_js2+='        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );\r\n';
             src_serveur_js2+='\r\n';
             src_serveur_js2+='        if(!formulaire.hasOwnProperty( \'__num_page\' ) || !this.__ig1.est_num( formulaire.__num_page )){\r\n';
             src_serveur_js2+='            __num_page=0;\r\n';
@@ -3515,8 +3516,7 @@ class x_ecran_generer_programmes1{
                             src_client2+='        /*  */\r\n';
                             src_client2+='        o1+=\'    </div>\';\r\n';
                             src_client2+='        o1+=\'  </div>\';\r\n';
-                            src_client2+='\r\n';
-                        }else{
+                                        }else{
                             src_client2+='    /*\r\n';
                             src_client2+='      =====================================================================================================\r\n';
                             src_client2+='      pas d\'édition pour le champ ' + obj_champ.nom_du_champ + ' lié à (1 , tbl_utilisateurs , chi_id_utilisateur )\r\n';
@@ -3777,7 +3777,7 @@ class x_ecran_generer_programmes1{
                                 src_client2+='        o1+=\'            <div>\\r\\n\';\r\n';
                                 src_client2+='        o1+=\'              \'+this.__ig1.__fnt1.boutons_rev3(\'' + obj_champ.nom_du_champ + '\');\r\n';
                                 src_client2+='        o1+=\'            </div>\\r\\n\';\r\n';
-                                format_source=' data-editeur1="rev" ';
+                                format_source=' data-editeur1="rev"';
                             }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
                                 src_client2+='        o1+=\'            <div>\\r\\n\';\r\n';
                                 src_client2+='        o1+=\'              \'+this.__ig1.__fnt1.boutons_edition1(\'' + obj_champ.nom_du_champ + '\');\r\n';
@@ -3842,6 +3842,29 @@ class x_ecran_generer_programmes1{
                                 }
                                 src_client2+='        }\n';
                                 src_client2+='        o1 += \'"/>\';\r\n';
+                                
+                                if(obj_champ.meta.hasOwnProperty( 'suggestion_du_champ' ) && obj_champ.meta.suggestion_du_champ !== ''){
+                                    src_client2+='        o1+=\'      <div style="display : inline-flex;flex-wrap : balance;">\';\r\n';
+                                    let obj_mat_rev=this.__ig1.__rev1.rev_tcm( obj_champ.meta.suggestion_du_champ );
+                                    if(obj_mat_rev.__xst !== __xsu){
+                                        return({"__xst" : __xer ,"__xme" : 'Erreur de convertion de suggestion_du_champ pour le champ "' + obj_champ.nom_du_champ + '" '});
+                                    }
+                                    for( let isuggestion_du_champ=1 ; isuggestion_du_champ < obj_mat_rev.__xva.length ; isuggestion_du_champ=obj_mat_rev.__xva[isuggestion_du_champ][12] ){
+                                        src_client2+='        o1+=\'          <div';
+                                        src_client2+=' class="rev_bouton"';
+                                        src_client2+=' data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + obj_champ.nom_du_champ + '),valeur(valeur_constante(';
+                                        if(this.__ig1.est_num( obj_mat_rev.__xva[isuggestion_du_champ][1] )){
+                                            src_client2+=obj_mat_rev.__xva[isuggestion_du_champ][1];
+                                        }else{
+                                            src_client2+='\'' + obj_mat_rev.__xva[isuggestion_du_champ][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'';
+                                        }
+                                        src_client2+=')))))">';
+                                        src_client2+=obj_mat_rev.__xva[isuggestion_du_champ][1];
+                                        src_client2+='</div>\';\r\n';
+                                    }
+                                    src_client2+='        o1+=\'      </div>\';\r\n';
+                                }
+                                
                             }else{
                                 if(obj_champ.genre_objet_du_champ.cht_parmis_genre === '0,1'){
                                     src_client2+='        o1 += \'        <input type="range" id="' + obj_champ.nom_du_champ + '" class="yy_ouinon" min="0" max="1" step="1" value="\';\r\n';
@@ -3937,7 +3960,6 @@ class x_ecran_generer_programmes1{
             src_client2+='        let obj2=this.__ig1.__rev1.rev_tm(cmd);\r\n';
             src_client2+='        let jso=JSON.stringify(obj2.__xva);\r\n';
             src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" value="\'+this.__ig1.fi2(jso)+\'" />\';\r\n';
-            src_client2+='\r\n';
             src_client2+='        document.getElementById( \'vv_ecran_creation_zone_contenu\' ).innerHTML=o1;\r\n';
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(\'création \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
@@ -3986,7 +4008,7 @@ class x_ecran_generer_programmes1{
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
             src_client2+='    zones_filtres1( mat , d , le_colis1 ){\r\n';
-            src_client2+='        let l01=mat.length;\r\n';
+            src_client2+='        const l01=mat.length;\r\n';
             src_client2+='        let de_13=\'\';\r\n';
             src_client2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
             src_client2+='            if(\'de_13\' === mat[i][1] && mat[i][2] === \'f\' && mat[i][8] === 1 && mat[i+1][2] === \'c\' ){\r\n';
@@ -4046,7 +4068,6 @@ class x_ecran_generer_programmes1{
             src_client2+='                   o1+=\'    </div>\\r\\n\';\r\n';
             src_client2+='                }\r\n';
             src_client2+='            }\r\n';
-            src_client2+='\r\n';
             src_client2+='            o1+=\'   <div>\';\r\n';
             src_client2+='            o1+=\'     <div>\';\r\n';
             src_client2+='            o1+=\'       <span>&nbsp;</span>\';\r\n';
@@ -4059,7 +4080,7 @@ class x_ecran_generer_programmes1{
                 src_client2+='            o1+=\'fo1(co1(\'+this.fonction_liste+\'),pm1(m1(n1(\'+this.moi+\'),f1(\'+this.fonction_liste+\'(__num_page(0))))))\';\r\n';
             }
             src_client2+='            o1+=\'"\';\r\n';
-            src_client2+='            o1+=\'        >🔎</div>\';\r\n';
+            src_client2+='            o1+=\'        >\' + this.__ig1.les_svg.loupe + \'</div>\';\r\n';
             src_client2+='            o1+=\'     </div>\';\r\n';
             src_client2+='            for(let i in this.tableau_des_filtres[this.fonction_liste]){\r\n';
             src_client2+='             if(this.tableau_des_filtres[this.fonction_liste][i].masqué===true){\r\n';
@@ -4082,12 +4103,9 @@ class x_ecran_generer_programmes1{
                 src_client2+='                  this.aller_a_la_page( null , null , \'__num_page\' , 0 , false , e.target.id )\r\n';
             }
             src_client2+='                 }\r\n';
-            src_client2+='\r\n';
             src_client2+='                })\r\n';
             src_client2+='            }\r\n';
-            src_client2+='\r\n';
             src_client2+='        }else{\r\n';
-            src_client2+='\r\n';
             src_client2+='            for(let i in this.tableau_des_filtres[this.fonction_liste]){\r\n';
             src_client2+='                document.getElementById(i).value=this.filtres[this.fonction_liste][i];\r\n';
             src_client2+='                if(this.filtres[this.fonction_liste][i]!==\'\'){\r\n';
@@ -4131,7 +4149,7 @@ class x_ecran_generer_programmes1{
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
             src_client2+='    liste1( mat , d , le_colis1=null ){\r\n';
-            src_client2+='        if(le_colis1==null || !le_colis1.__xva.hasOwnProperty(this.fonction_liste)){\r\n';
+            src_client2+='        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty(this.fonction_liste)){\r\n';
             src_client2+='            if(le_colis1.__xva.hasOwnProperty(\'__nbEnregs\')){\r\n';
             src_client2+='            }else{\r\n';
             src_client2+='                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : \'il manque les données pour la liste de \' + this.moi} );\r\n';
@@ -4147,7 +4165,7 @@ class x_ecran_generer_programmes1{
             src_client2+='            initialisation_fait=true;\r\n';
             src_client2+='        }\r\n';
             src_client2+='        a=document.getElementById( \'vv_titre_de_la_page\' );\r\n';
-            src_client2+='        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){\r\n';
+            src_client2+='        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES && a.getAttribute(\'data-contexte\') === this.moi){\r\n';
             src_client2+='        }else{\r\n';
             src_client2+='            if(initialisation_fait===false){\r\n';
             src_client2+='               this.__ig1.initialisation_des_zones( this.moi , \'' + champ_primaire + '\' );\r\n';
@@ -4174,7 +4192,6 @@ class x_ecran_generer_programmes1{
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(this.LISTE_DES_ELEMENTS_GERES);\r\n';
             src_client2+='        return({"__xst" : __xsu});\r\n';
-            src_client2+='\r\n';
             src_client2+='    }\r\n';
             /*
             */
@@ -4347,8 +4364,7 @@ class x_ecran_generer_programmes1{
                                 src_client2+='                    }else{\r\n';
                                 src_client2+='                        lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">\'+this.__ig1.les_svg.rond_vert1+\'</div>\';\r\n';
                                 src_client2+='                    }\r\n';
-                                src_client2+='\r\n';
-                                src_client2+='            }\r\n';
+                                                    src_client2+='            }\r\n';
                             }else{
                                 src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
                                 src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
@@ -4405,7 +4421,6 @@ class x_ecran_generer_programmes1{
             src_client2+='                o1+=\'</div>\';\r\n';
             src_client2+='            }else{\r\n';
             src_client2+='                o1+=this.__ig1.la_liste_est_vide();\r\n';
-            src_client2+='\r\n';
             src_client2+='            }\r\n';
             src_client2+='        }\r\n';
             src_client2+='        this.__ig1.initialisation_filtre_sous_fenetre2(\'sous_liste2\' , o1 , this.DUN_DUNE_ELEMENT_GERE);\r\n';
@@ -4436,8 +4451,7 @@ class x_ecran_generer_programmes1{
                 src_client2+='                lst+=\'<td>\';\r\n';
                 src_client2+='                lst+=\'<div style="display:inline-flex;">\';\r\n';
                 src_client2+='';
-                src_client2+='\r\n';
-                if(this.#obj_table.meta.hasOwnProperty( 'fonctions_spéciales1' ) && this.#obj_table.meta.fonctions_spéciales1 !== ''){
+                    if(this.#obj_table.meta.hasOwnProperty( 'fonctions_spéciales1' ) && this.#obj_table.meta.fonctions_spéciales1 !== ''){
                     let obj1=this.__ig1.__rev1.rev_tm( this.#obj_table.meta.fonctions_spéciales1 );
                     let fonction_npsiu_trouvee=false;
                     if(obj1.__xst === __xsu){
@@ -4497,8 +4511,7 @@ class x_ecran_generer_programmes1{
                 src_client2+='                lst+=\'<div class="rev_b_svg yy__3" data-rev_click="';
                 src_client2+='pm1(m1(n1(\'+this.moi+\'),f1(page_modification1(' + champ_primaire + '(\'+elem[\'T0.' + champ_primaire + '\']+\')))))';
                 src_client2+='">\'+this.__ig1.les_svg.editer+\'</div>\';\r\n';
-                src_client2+='\r\n';
-                if(ref_select === '' || ref_update === ''){
+                    if(ref_select === '' || ref_update === ''){
                     src_client2+='                */\r\n';
                 }
                 /*
@@ -4510,8 +4523,7 @@ class x_ecran_generer_programmes1{
                 src_client2+='                lst+=\'<div class="rev_b_svg yy__4" data-rev_click="';
                 src_client2+='pm1(m1(n1(\'+this.moi+\'),f1(page_duplication1(' + champ_primaire + '(\'+elem[\'T0.' + champ_primaire + '\']+\')))))';
                 src_client2+='">\'+this.__ig1.les_svg.dupliquer+\'</div>\';\r\n';
-                src_client2+='\r\n';
-                if(ref_select === '' || ref_insert === ''){
+                    if(ref_select === '' || ref_insert === ''){
                     src_client2+='                */\r\n';
                 }
                 src_client2+='                lst+=\'</div>\';\r\n';
@@ -4580,8 +4592,7 @@ class x_ecran_generer_programmes1{
                                     src_client2+='                    }else{\r\n';
                                     src_client2+='                        lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">\'+this.__ig1.les_svg.rond_vert1+\'</div>\';\r\n';
                                     src_client2+='                    }\r\n';
-                                    src_client2+='\r\n';
-                                    src_client2+='            }\r\n';
+                                                            src_client2+='            }\r\n';
                                 }else{
                                     src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
                                     src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
@@ -4638,13 +4649,11 @@ class x_ecran_generer_programmes1{
                 src_client2+='                o1+=\'</div>\';\r\n';
                 src_client2+='            }else{\r\n';
                 src_client2+='                o1+=this.__ig1.la_liste_est_vide();\r\n';
-                src_client2+='\r\n';
-                src_client2+='            }\r\n';
+                    src_client2+='            }\r\n';
                 src_client2+='        }\r\n';
                 src_client2+='        return(o1);\r\n';
                 src_client2+='    }\r\n';
-                src_client2+='\r\n';
-                /*
+                    /*
                   
                   
                   
@@ -4664,8 +4673,7 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='    */\r\n';
         src_serveur_js2+='    async liste1( mat , d ){\r\n';
         src_serveur_js2+='        this.fonction_liste=\'liste1\';\r\n';
-        src_serveur_js2+='        await this.filtre1( mat , d );\r\n';
-        src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+        src_serveur_js2+='        return(await this.filtre1( mat , d ));\r\n';
         src_serveur_js2+='    }\r\n';
         src_serveur_js2+='    /*\r\n';
         src_serveur_js2+='      =============================================================================================================\r\n';
@@ -4750,7 +4758,7 @@ class x_ecran_generer_programmes1{
       =============================================================================================================
     */
     aller_a_la_requete( mat , d ){
-        let l01=mat.length;
+        const l01=mat.length;
         let zone='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if((mat[i][1] === 'liste_ecran'
@@ -4995,7 +5003,7 @@ class x_ecran_generer_programmes1{
       =============================================================================================================
     */
     agrandir_la_zone_req( mat , d ){
-        let l01=mat.length;
+        const l01=mat.length;
         let zone='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'zone' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
@@ -5009,7 +5017,7 @@ class x_ecran_generer_programmes1{
       =============================================================================================================
     */
     retrecir_la_zone_req( mat , d ){
-        let l01=mat.length;
+        const l01=mat.length;
         let zone='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'zone' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
@@ -5030,7 +5038,7 @@ class x_ecran_generer_programmes1{
     */
     bouton_integrer_ce_source_genere_dans_la_table_source( mat , d ){
         let cible_source='';
-        let l01=mat.length;
+        const l01=mat.length;
         let zone='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'cible_source' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
@@ -5175,7 +5183,7 @@ class x_ecran_generer_programmes1{
     selectionner_un_indice_classe( mat , d ){
         document.getElementById( 'contenu_generer_le_programme' ).innerHTML='';
         let zone_select='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'zone_select' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
                 zone_select=mat[i + 1][1];
@@ -5213,7 +5221,7 @@ class x_ecran_generer_programmes1{
     selectionner_une_table( mat , d ){
         document.getElementById( 'contenu_generer_le_programme' ).innerHTML='';
         let zone_select='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'zone_select' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
                 zone_select=mat[i + 1][1];
@@ -5250,7 +5258,7 @@ class x_ecran_generer_programmes1{
         /* debugger */
         document.getElementById( 'contenu_generer_le_programme' ).innerHTML='';
         let zone_select='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'zone_select' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
                 zone_select=mat[i + 1][1];
@@ -5278,7 +5286,7 @@ class x_ecran_generer_programmes1{
         let chi_id_basedd=0;
         let nom_de_la_table='';
         let indice_de_la_classe=0;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_basedd' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
                 chi_id_basedd=parseInt( mat[i + 1][1] );
@@ -5385,7 +5393,7 @@ class x_ecran_generer_programmes1{
       =============================================================================================================
     */
     entree_module( mat , d ){
-        let l01=mat.length;
+        const l01=mat.length;
         let nom_de_la_table='';
         let chi_id_basedd=0;
         let indice_de_la_classe=0;

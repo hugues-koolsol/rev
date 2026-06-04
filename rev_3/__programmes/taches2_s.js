@@ -492,7 +492,7 @@ class taches2{
          FROM b1.tbl_taches T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         
-        WHERE (   `T0`.`chi_id_tache` = :T0_chi_id_tache
+        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
            AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
            AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
            AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
@@ -518,7 +518,7 @@ class taches2{
              FROM b1.tbl_taches T0
              LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
             
-            WHERE (   `T0`.`chi_id_tache` = :T0_chi_id_tache
+            WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
                AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
                AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
                AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache

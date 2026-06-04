@@ -26,20 +26,20 @@ class sql_110{
           FROM  tbl_taches T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
+        if(par.hasOwnProperty( 'T0_chp_texte_tache' ) && par['T0_chp_texte_tache'] !== ''){
+            where0+=` AND \`T0\`.\`chp_texte_tache\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_texte_tache'] , 'T0_chp_texte_tache' ) + '\r\n';
+        }
+        if(par.hasOwnProperty( 'T0_chp_priorite_tache2' ) && par['T0_chp_priorite_tache2'] !== ''){
+            where0+=` AND \`T0\`.\`chp_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_chp_priorite_tache2'] , 'T0_chp_priorite_tache2' ) + '\r\n';
+        }
+        if(par.hasOwnProperty( 'T0_chp_priorite_tache' ) && par['T0_chp_priorite_tache'] !== ''){
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chp_priorite_tache`' , par['T0_chp_priorite_tache'] );
+        }
         if(par.hasOwnProperty( 'T0_chi_id_tache' ) && par['T0_chi_id_tache'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_tache`' , par['T0_chi_id_tache'] );
         }
         if(par.hasOwnProperty( 'T0_chx_utilisateur_tache' ) && par['T0_chx_utilisateur_tache'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_utilisateur_tache`' , par['T0_chx_utilisateur_tache'] );
-        }
-        if(par.hasOwnProperty( 'T0_chp_texte_tache' ) && par['T0_chp_texte_tache'] !== ''){
-            where0+=` AND \`T0\`.\`chp_texte_tache\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_texte_tache'] , 'T0_chp_texte_tache' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chp_priorite_tache' ) && par['T0_chp_priorite_tache'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chp_priorite_tache`' , par['T0_chp_priorite_tache'] );
-        }
-        if(par.hasOwnProperty( 'T0_chp_priorite_tache2' ) && par['T0_chp_priorite_tache2'] !== ''){
-            where0+=` AND \`T0\`.\`chp_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_chp_priorite_tache2'] , 'T0_chp_priorite_tache2' ) + '\r\n';
         }
         sql0+=where0;
         const order0=`

@@ -43,12 +43,18 @@ class sql_161{
             if(par['n_chp_priorite_tache'] === undefined || par['n_chp_priorite_tache'] === '' || par['n_chp_priorite_tache'] === null){
                 tableau_champs.push( '`chp_priorite_tache` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chp_priorite_tache'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "priorite" doit être numérique'});
+                }
                 tableau_champs.push( '`chp_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chp_priorite_tache'] , 'n_chp_priorite_tache' ) + '' );
             }
             tableau_champs.push( '`chd__dtm_tache` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             if(par['n_chx_utilisateur_tache'] === undefined || par['n_chx_utilisateur_tache'] === '' || par['n_chx_utilisateur_tache'] === null){
                 tableau_champs.push( '`chx_utilisateur_tache` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chx_utilisateur_tache'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "utilisateur" doit être numérique'});
+                }
                 tableau_champs.push( '`chx_utilisateur_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chx_utilisateur_tache'] , 'n_chx_utilisateur_tache' ) + '' );
             }
             if(tableau_champs.length === 0){

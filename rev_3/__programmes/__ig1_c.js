@@ -760,10 +760,11 @@ class __ig1{
       =============================================================================================================
     */
     initialisation_des_zones( nom_module , nom_du_champ_cle ){
+        console.log( 'nom_module='+nom_module )
         let o1='';
         let tt1='';
         o1+='<div>';
-        o1+=' <h1 id="vv_titre_de_la_page"></h1>';
+        o1+=' <h1 id="vv_titre_de_la_page" data-contexte="' + nom_module + '"></h1>';
         /* liste */
         o1+='<div id="vv_ecran_liste_zone_filtre" style="display:none;"></div>';
         o1+='<div id="vv_ecran_liste_zones_navigation1"  class="yy_navigation_liste"  style="display:none;">';
@@ -1784,8 +1785,8 @@ class __ig1{
         t+='}';
         /*  */
         t+='#vv_sous_fenetre1 {';
-        t+='    min-width: 70vw;';
-        t+='    max-width: calc(min(90vw,' + val_fenetre + 'px));';
+        /* t+='    min-width: 70vw;'; */
+        t+='    max-width: ' + parseInt( val_fenetre * 0.85 , 10 ) + 'px;';
         t+='    min-height: 85vh;';
         t+='    border: var(--t_border) var(--c_coul_4) solid;';
         t+='    border-radius: 9px;';

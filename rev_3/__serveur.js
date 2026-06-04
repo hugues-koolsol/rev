@@ -19,8 +19,8 @@ let __liste_des_bases=[1];
 if(_CA_ > 2){
     try{
         const text_json=await Deno.readTextFile( './__fichiers_generes/__liste_des_bases.json' );
-        __liste_des_bases=JSON.parse(text_json);
-    }catch{}
+        __liste_des_bases=JSON.parse( text_json );
+    } catch {}
 }
 console.log( '__serveur.js _CA_=' + _CA_ + ',port=' + __le_port );
 Deno.serve( {

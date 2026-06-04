@@ -322,14 +322,14 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1350','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1354','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (473) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (474) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  chp_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -2439,7 +2439,17 @@ this.__ig1.donnees_retournees.__xst=__xer;','99','2026-05-26 15:42:34.477','2026
 ('496','1','rechercher les factures = null dans la liste des prestations','99','2026-06-03 12:05:52.824','2026-05-31 08:44:48.949','0','00_00_00'),
 ('497','1','dans la requete 186
 
-   egal(champ(`T1`,`fdl_id_prestataire_missaffect`),session(chi_id_utilisateur))','99','2026-06-03 09:31:31.052','2026-05-31 09:41:48.592','0','00_00_00');
+   egal(champ(`T1`,`fdl_id_prestataire_missaffect`),session(chi_id_utilisateur))','99','2026-06-03 09:31:31.052','2026-05-31 09:41:48.592','0','00_00_00'),
+('498','1','dans rev_1
+115 => 418
+116 => 419
+117 => 420
+118 => 421 ( delete )
+
+dans rev_3
+173 => 500
+174 => 501
+160 => 500','0','2026-06-04 16:46:34.481','2026-06-04 09:53:04.363','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -2496,7 +2506,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(1.5,7.5))
+   transform_base_sur_svg(translate(49.5,77.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_projets''),
@@ -3735,6 +3745,7 @@ créer_table(
             nom_du_champ(''chp_priorite_tache''),
             nom_bref_du_champ(''priorite''),
             abrege_du_champ(''priorite de la tâche''),
+            suggestion_du_champ(''00,20,50,80,99''),
             typologie(chi),
             genre(99),
             nom_bref_libelle_lien(''tache'')
@@ -5122,7 +5133,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (145) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (144) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ) VALUES
 ('101','utilisateur par nom_de_connexion','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -5217,11 +5228,11 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00
    ),
    conditions(
       et(
-         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
-         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
          comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
+         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2),
          egal(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
-         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2)
+         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
+         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache)
       )
    ),
    complements(
@@ -5232,11 +5243,11 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00
 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
 `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
  FROM b1.tbl_taches T0
-WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-   AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
+WHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
+   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
    AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
-   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2) 
+   AND `T0`.`chi_id_tache` = :T0_chi_id_tache
+   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache) 
 ORDER BY `T0`.`chp_priorite_tache` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'2','2025-09-07 10:51:12.709','2000-01-01 00:00:00.000','1','tbl_taches'),
@@ -5272,7 +5283,7 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`chx_utilisateur_tache`),
       champ(`T0`,`chp_texte_tache`),
       champ(`T0`,`chp_priorite_tache`),
-      champ(`T1`,`chp_nom_de_connexion_utilisateur`),
+      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
    ),
    provenance(
       table_reference(
@@ -5284,7 +5295,7 @@ LIMIT :quantitee OFFSET :debut
       )
    ),
    conditions(
-      et(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache))
+      et(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur)))
    )
 )  ','SELECT 
 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
@@ -5292,7 +5303,7 @@ LIMIT :quantitee OFFSET :debut
  LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
 
 WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+   AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('113','tâches texte et priorité par id','update','modifier(
    valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),
@@ -5317,147 +5328,11 @@ WHERE (`chi_id_tache` = :c_chi_id_tache
       )
    ),
    conditions(
-      et(egal(champ(`chi_id_tache`),:chi_id_tache),egal(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache))
+      et(egal(champ(`chi_id_tache`),:chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)))
    )
 )  ','DELETE FROM b1.tbl_taches
 WHERE (`chi_id_tache` = :chi_id_tache
-   AND `chx_utilisateur_tache` = :chx_utilisateur_tache) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
-('115','sources','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_source`),
-      champ(`T0`,`chx_dossier_id_source`),
-      champ(`T0`,`chp_nom_source`),
-      champ(`T0`,`cht_commentaire_source`),
-      champ(`T0`,`cht_rev_source`),
-      champ(`T0`,`cht_genere_source`),
-      champ(`T1`,`chp_nom_dossier`),
-      champ(`T0`,`che_binaire_source`),
-      champ(`T0`,`che_autorisation_globale_source`),
-      champ(`T0`,`cht_condition_rev_source`),
-      champ(`T0`,`cht_condition_js_source`),
-      champ(`T0`,`cht_notification_ko_source`),
-      champ(`T0`,`chp_usage_source`),
-      champ(`T0`,`che_pour_util_source`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_dossier_id_source)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),
-         egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source),
-         sup(champ(`T0`,`chi_id_source`),:T0_chi_id_source2),
-         infegal(champ(`T0`,`chi_id_source`),:T0_chi_id_source3),
-         egal(champ(`T0`,`che_binaire_source`),:T0_che_binaire_source),
-         egal(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source),
-         comme(champ(`T1`,`chp_nom_dossier`),:T1_chp_nom_dossier),
-         egal(champ(`T0`,`che_autorisation_globale_source`),:T0_che_autorisation_globale_source),
-         egal(champ(`T0`,`che_pour_util_source`),:T0_che_pour_util_source)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chx_dossier_id_source`),croissant()),(champ(`T0`,`chp_nom_source`),croissant()),(champ(`T0`,`chi_id_source`),croissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-`T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , 
-`T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source`
- FROM b1.tbl_sources T0
- LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-
-WHERE ( /* */ `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
-   AND `T0`.`chi_id_source` = :T0_chi_id_source
-   AND `T0`.`chi_id_source` > :T0_chi_id_source2
-   AND `T0`.`chi_id_source` <= :T0_chi_id_source3
-   AND `T0`.`che_binaire_source` = :T0_che_binaire_source
-   AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
-   AND `T1`.`chp_nom_dossier` LIKE :T1_chp_nom_dossier
-   AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
-   AND `T0`.`che_pour_util_source` = :T0_che_pour_util_source) 
-ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
-('116','sources','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_source`),
-      champ(`T0`,`chx_dossier_id_source`),
-      champ(`T0`,`chp_nom_source`),
-      champ(`T0`,`cht_commentaire_source`),
-      champ(`T0`,`cht_rev_source`),
-      champ(`T0`,`cht_genere_source`),
-      champ(`T0`,`che_binaire_source`),
-      champ(`T0`,`che_autorisation_globale_source`),
-      champ(`T1`,`chp_nom_dossier`),
-      champ(`T0`,`cht_condition_rev_source`),
-      champ(`T0`,`cht_condition_js_source`),
-      champ(`T0`,`cht_notification_ko_source`),
-      champ(`T0`,`chp_usage_source`),
-      champ(`T0`,`che_pour_util_source`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_dossier_id_source)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source)
-      )
-   )
-)  ','SELECT 
-`T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-`T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-`T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source`
- FROM b1.tbl_sources T0
- LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-
-WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source)
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
-('117','sources','insert','insérer(
-   valeurs(
-      affecte(champ(`chx_dossier_id_source`),:chx_dossier_id_source),
-      affecte(champ(`chp_nom_source`),:chp_nom_source),
-      affecte(champ(`cht_commentaire_source`),:cht_commentaire_source),
-      affecte(champ(`cht_rev_source`),:cht_rev_source),
-      affecte(champ(`cht_genere_source`),:cht_genere_source),
-      affecte(champ(`che_binaire_source`),:che_binaire_source),
-      affecte(champ(`chp_usage_source`),:chp_usage_source)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_sources`(
-    `chx_dossier_id_source` , 
-    `chp_nom_source` , 
-    `cht_commentaire_source` , 
-    `cht_rev_source` , 
-    `cht_genere_source` , 
-    `che_binaire_source` , 
-    `chp_usage_source`
-) VALUES (
-    :chx_dossier_id_source , 
-    :chp_nom_source , 
-    :cht_commentaire_source , 
-    :cht_rev_source , 
-    :cht_genere_source , 
-    :che_binaire_source , 
-    :chp_usage_source
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+   AND `chx_utilisateur_tache` = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('118','sources','delete','supprimer(
    provenance(
       table_reference(
@@ -6609,55 +6484,6 @@ DELETE FROM b1.tbl_dossiers',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:0
 `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
  FROM b1.tbl_bdds T0
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
-('172','','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_tache`),
-      champ(`T0`,`chx_utilisateur_tache`),
-      champ(`T0`,`chp_texte_tache`),
-      champ(`T0`,`chp_priorite_tache`),
-      champ(`T0`,`chd__dtm_tache`),
-      champ(`T0`,`chd__dtc_tache`),
-      champ(`T0`,`che__nur_tache`),
-      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
-      )
-   ),
-   conditions(
-      et(
-         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
-         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
-         comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
-         egal(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
-         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2),
-         comme(champ(`T1`,`chp_nom_de_connexion_utilisateur`),:T1_chp_nom_de_connexion_utilisateur)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chp_priorite_tache`),croissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
-`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
- FROM b1.tbl_taches T0
- LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-
-WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-   AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
-   AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
-   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
-   AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur) 
-ORDER BY `T0`.`chp_priorite_tache` ASC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('305','projets','update','modifier(
    valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),
    provenance(
@@ -8642,5 +8468,141 @@ WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
 WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
    AND `T0`.`chp_usage_source` = :T0_chp_usage_source
    AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources');
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
+('418','sources','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_source`),
+      champ(`T0`,`chx_dossier_id_source`),
+      champ(`T0`,`chp_nom_source`),
+      champ(`T0`,`cht_commentaire_source`),
+      champ(`T0`,`cht_rev_source`),
+      champ(`T0`,`cht_genere_source`),
+      champ(`T1`,`chp_nom_dossier`),
+      champ(`T0`,`che_binaire_source`),
+      champ(`T0`,`che_autorisation_globale_source`),
+      champ(`T0`,`cht_condition_rev_source`),
+      champ(`T0`,`cht_condition_js_source`),
+      champ(`T0`,`cht_notification_ko_source`),
+      champ(`T0`,`chp_usage_source`),
+      champ(`T0`,`che_pour_util_source`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_dossier_id_source)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),
+         egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source),
+         sup(champ(`T0`,`chi_id_source`),:T0_chi_id_source2),
+         infegal(champ(`T0`,`chi_id_source`),:T0_chi_id_source3),
+         egal(champ(`T0`,`che_binaire_source`),:T0_che_binaire_source),
+         egal(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source),
+         comme(champ(`T1`,`chp_nom_dossier`),:T1_chp_nom_dossier),
+         egal(champ(`T0`,`che_autorisation_globale_source`),:T0_che_autorisation_globale_source),
+         egal(champ(`T0`,`che_pour_util_source`),:T0_che_pour_util_source)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chx_dossier_id_source`),croissant()),(champ(`T0`,`chp_nom_source`),croissant()),(champ(`T0`,`chi_id_source`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+`T0`.`cht_genere_source` , `T1`.`chp_nom_dossier` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , 
+`T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source`
+ FROM b1.tbl_sources T0
+ LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+
+WHERE ( /* */ `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+   AND `T0`.`chi_id_source` = :T0_chi_id_source
+   AND `T0`.`chi_id_source` > :T0_chi_id_source2
+   AND `T0`.`chi_id_source` <= :T0_chi_id_source3
+   AND `T0`.`che_binaire_source` = :T0_che_binaire_source
+   AND `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
+   AND `T1`.`chp_nom_dossier` LIKE :T1_chp_nom_dossier
+   AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
+   AND `T0`.`che_pour_util_source` = :T0_che_pour_util_source) 
+ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+('419','sources','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_source`),
+      champ(`T0`,`chx_dossier_id_source`),
+      champ(`T0`,`chp_nom_source`),
+      champ(`T0`,`cht_commentaire_source`),
+      champ(`T0`,`cht_rev_source`),
+      champ(`T0`,`cht_genere_source`),
+      champ(`T0`,`che_binaire_source`),
+      champ(`T0`,`che_autorisation_globale_source`),
+      champ(`T1`,`chp_nom_dossier`),
+      champ(`T0`,`cht_condition_rev_source`),
+      champ(`T0`,`cht_condition_js_source`),
+      champ(`T0`,`cht_notification_ko_source`),
+      champ(`T0`,`chp_usage_source`),
+      champ(`T0`,`che_pour_util_source`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_dossier_id_source)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source)
+      )
+   )
+)  ','SELECT 
+`T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+`T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+`T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source`
+ FROM b1.tbl_sources T0
+ LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+
+WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+('420','sources','insert','insérer(
+   valeurs(
+      affecte(champ(`chx_dossier_id_source`),:chx_dossier_id_source),
+      affecte(champ(`chp_nom_source`),:chp_nom_source),
+      affecte(champ(`cht_commentaire_source`),:cht_commentaire_source),
+      affecte(champ(`cht_rev_source`),:cht_rev_source),
+      affecte(champ(`cht_genere_source`),:cht_genere_source),
+      affecte(champ(`che_binaire_source`),:che_binaire_source),
+      affecte(champ(`chp_usage_source`),:chp_usage_source)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_sources`(
+    `chx_dossier_id_source` , 
+    `chp_nom_source` , 
+    `cht_commentaire_source` , 
+    `cht_rev_source` , 
+    `cht_genere_source` , 
+    `che_binaire_source` , 
+    `chp_usage_source`
+) VALUES (
+    :chx_dossier_id_source , 
+    :chp_nom_source , 
+    :cht_commentaire_source , 
+    :cht_rev_source , 
+    :cht_genere_source , 
+    :che_binaire_source , 
+    :chp_usage_source
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */

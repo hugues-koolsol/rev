@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_173{
+class sql_500{
     /*
       =============================================================================================================
     */
@@ -53,14 +53,14 @@ class sql_173{
         const plage0=`
         LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
         sql0+=plage0;
-        /* this.__ig1.ma_trace1('sql_173 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_500 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 173 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 500 , e , sql0 , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
@@ -93,7 +93,7 @@ class sql_173{
     /*
       =============================================================================================================
     */
-    moi='sql_173';
+    moi='sql_500';
     __ig1=null;
     __db1=null;
     /*
@@ -104,4 +104,4 @@ class sql_173{
         this.__db1=__db1;
     }
 }
-export{sql_173 as sql_173};
+export{sql_500 as sql_500};

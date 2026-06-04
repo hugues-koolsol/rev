@@ -73,8 +73,8 @@ class sources2{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let critere_174={"T0_chi_id_source" : chi_id_source};
-        let tt174=await this.__ig1.sql_iii(
+        let critere_501={"T0_chi_id_source" : chi_id_source};
+        let tt501=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
@@ -82,8 +82,8 @@ class sources2{
         WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
-        /*sql_inclure_fin*/ 174 , critere_174 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt174;
+        /*sql_inclure_fin*/ 501 , critere_501 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt501;
         return({"__xst" : __xsu});
     }
     /*
@@ -94,11 +94,11 @@ class sources2{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let criteres_174={
+        let criteres_501={
              /*  */
             "T0_chi_id_source" : form['chi_id_source']
         };
-        let tt174=await this.__ig1.sql_iii(
+        let tt501=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
@@ -106,12 +106,12 @@ class sources2{
         WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
-        /*sql_inclure_fin*/ 174 , criteres_174 , this.__ig1.donnees_retournees , __db1 );
-        if(tt174.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt174.__xme});
+        /*sql_inclure_fin*/ 501 , criteres_501 , this.__ig1.donnees_retournees , __db1 );
+        if(tt501.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt501.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt174[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt501[__xva][0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
@@ -129,7 +129,7 @@ class sources2{
         if(tt118.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt118.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt174[__xva][0] , __db1 );
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt501[__xva][0] , __db1 );
         if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -160,8 +160,8 @@ class sources2{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let critere_174={"T0_chi_id_source" : chi_id_source};
-        let tt174=await this.__ig1.sql_iii(
+        let critere_501={"T0_chi_id_source" : chi_id_source};
+        let tt501=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
@@ -169,8 +169,8 @@ class sources2{
         WHERE `T0`.`chi_id_source` = :T0_chi_id_source
         ;
         */
-        /*sql_inclure_fin*/ 174 , critere_174 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt174;
+        /*sql_inclure_fin*/ 501 , critere_501 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt501;
         return({"__xst" : __xsu});
     }
     /*
@@ -193,14 +193,14 @@ class sources2{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres_173={
+        let criteres_500={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres_173[i]=formulaire[i];
+                criteres_500[i]=formulaire[i];
             }
         }
         if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
@@ -211,7 +211,7 @@ class sources2{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 1 );
         }
-        let tt173=await this.__ig1.sql_iii(
+        let tt500=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
@@ -227,18 +227,18 @@ class sources2{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 173 , criteres_173 , this.__ig1.donnees_retournees , __db1 );
-        if(tt173.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt173.__xme});
+        /*sql_inclure_fin*/ 500 , criteres_500 , this.__ig1.donnees_retournees , __db1 );
+        if(tt500.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt500.__xme});
         }
-        if(tt173.__xst === __xsu && tt173.__xva.length === 0 && __debut > 0){
+        if(tt500.__xst === __xsu && tt500.__xva.length === 0 && __debut > 0){
             /*
               si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
             */
             __debut=0;
             __num_page=0;
-            criteres_173['debut']=__debut;
-            tt173=await this.__ig1.sql_iii(
+            criteres_500['debut']=__debut;
+            tt500=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
@@ -254,7 +254,7 @@ class sources2{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 173 , criteres_173 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 500 , criteres_500 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
@@ -264,7 +264,7 @@ class sources2{
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt173;
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt500;
         return({"__xst" : __xsu});
     }
     /*
@@ -272,11 +272,11 @@ class sources2{
     */
     async sous_liste2( mat , d ){
         const __nbMax=40;
-        let criteres_173={};
-        criteres_173['quantitee']=__nbMax;
+        let criteres_500={};
+        criteres_500['quantitee']=__nbMax;
         /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 173 , criteres_173 , __nbMax , __db1 );
+        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 500 , criteres_500 , __nbMax , __db1 );
         if(liste2.__xst === __xsu){
             /* faire éventuellement faire quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
             /* voir par exemple dossiers1_s.js */

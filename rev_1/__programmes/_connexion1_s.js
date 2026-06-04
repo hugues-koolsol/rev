@@ -227,7 +227,6 @@ class _connexion1{
             await this.initialiser_la_base_a_partir_de_la_sauvegarde( mat , d );
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 , false , true );
-        /* this.__ig1.ma_trace1( 'this.__ig1.donnees_recues=' , this.__ig1.donnees_recues ); */
         const user=await this.recherche_utilisateur_dans_la_base( mat , d , __db1 );
         if(user.__xst !== __xsu){
             return user;

@@ -32,6 +32,9 @@ class sql_127{
             if(par['n_chx_parent_metier'] === undefined || par['n_chx_parent_metier'] === '' || par['n_chx_parent_metier'] === null){
                 tableau_champs.push( '`chx_parent_metier` = NULL' );
             }else{
+                if(isNaN(parseInt( par['n_chx_parent_metier'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "parent" doit être numérique'});
+                }
                 tableau_champs.push( '`chx_parent_metier` = ' + this.__ig1.__fnt1.sq0( par['n_chx_parent_metier'] , 'n_chx_parent_metier' ) + '' );
             }
             if(tableau_champs.length === 0){
